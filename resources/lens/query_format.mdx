@@ -82,7 +82,6 @@ query LensQuery {
     ) {
       customer_name
       marital_status
-      customer_key
     }
   }
 }
@@ -91,8 +90,7 @@ query LensQuery {
 ### `startsWith`
 
 The `startsWith` filter acts as a case-insensitive `LIKE` operator with a
-wildcard at the end. In the majority of SQL backends, it uses the `ILIKE`
-operator with `%` at the end of each value. It supports multiple values.
+wildcard at the end. In the majority of SQL backends, it uses the `%` at the end of each value. It supports multiple values.
 
 * Dimension types: `string`.
 
@@ -104,7 +102,309 @@ query LensQuery {
     ) {
       customer_name
       marital_status
+    }
+  }
+}
+```
+
+### `notStartsWith`
+
+The opposite operator of `startsWith`.
+
+### `endsWith`
+
+The `endsWith` filter acts as a case-insensitive `LIKE` operator with a wildcard at the beginning. In the majority of SQL backends, it uses the
+`%` at the beginning of each value. It supports multiple values.
+
+* Dimension types: `string`.
+
+```graphql
+query LensQuery {
+  table(limit: 10) {
+    customers(
+      where: {customer_name: {endsWith: "FERNANDEZ"}}
+    ) {
+      customer_name
+      marital_status
       customer_key
+    }
+  }
+}
+```
+
+### `notEndsWith`
+
+The opposite operator of `endsWith`.
+
+### `gt`
+
+The `gt` operator means **greater than** and is used with measures or dimensions
+of type `number`.
+
+* Applied to measures.
+
+* Dimension types: `number`.
+
+```graphql
+query LensQuery {
+  table(limit: 10) {
+    customers(
+      where: { annual_income: { gt: 10000 } }
+    ) {
+      customer_name
+    }
+  }
+}
+```
+
+### `gte`
+
+The `gte` operator means **greater than or equal to** and is used with measures or dimensions of type `number`.
+
+* Applied to measures.
+
+* Dimension types: `number`.
+
+```graphql
+query LensQuery {
+  table(limit: 10) {
+    customers(
+      where: { annual_income: { gte: 100 } }
+    ) {
+      customer_name
+      marital_status
+      customer_key
+    }
+  }
+}
+
+```
+
+Similarly, if you want to apply multiple filters using OR or other conditions, here’s an extended example:
+
+```graphql
+query LensQuery {
+  table(limit: 10) {
+    customers(
+      where: { AND: [{ annual_income: { gte: 10000 } },
+       { marital_status: { equals: "M"} }
+      ] 
+      } 
+    ) {
+      customer_name
+      marital_status
+      customer_key
+    }
+  }
+}
+```
+
+## `lt`
+
+The `lt` operator means **less than** and is used with measures or dimensions of
+type `number`.
+
+* Applied to measures.
+
+* Dimension types: `number`.
+
+```json
+query LensQuery {
+  table(limit: 10) {
+    customers(
+      where: {  annual_income: { lt: 15000 } }
+    ) {
+      customer_name
+    }
+  }
+}
+```
+
+### `lte`
+
+The `lte` operator means **less than or equal to** and is used with measures or
+dimensions of type `number`.
+
+* Applied to measures.
+
+* Dimension types: `number`.
+
+```graphql
+query LensQuery {
+  table(limit: 10) {
+    customers(
+      where: {  annual_income: { lte: 15000 } }
+    ) {
+      customer_name
+      marital_status
+      customer_key
+    }
+  }
+}
+```
+
+### `set`
+
+Operator `set` checks whether the value of the member **is not** `NULL`. You
+don't need to pass `values` for this operator.
+
+* Applied to measures.
+
+* Dimension types: `number`, `string`, `time`.
+
+This will return customers where the customer\_name field is not set.
+
+```graphql
+query LensQuery {
+  table(limit: 10) {
+    customers(
+      where: { customer_name: { set: false } }
+    ) {
+      customer_name
+    }
+  }
+}
+```
+
+### `inDateRange`
+
+The operator `inDateRange` is used to filter a time dimension into a specific date range. The values must be an array of dates with the format 'YYYY-MM-DD' or `YYYY-MM-DDTHH:mm:ss.SSS` format. If only one date specified the filter would be set exactly to this date.
+
+- `granularity`: A granularity for a time dimension. It can be one of the default granularities (e.g., `year` or `week`).
+
+* Dimension types: `time`.
+
+```graphql
+query LensQuery {
+  table(limit: 10) {
+    customers(
+      where: { birth_date: { inDateRange: ["2000-01-01", "2000-12-31"] } }
+    ) {
+      customer_name
+      annual_income
+    }
+  }
+}
+```
+
+### `notInDateRange`
+
+An opposite operator to `inDateRange`, use it when you want to exclude specific dates. The values format is the same as for `inDateRange`.
+
+* Dimension types: `time`.
+
+```graphql
+query LensQuery {
+  table(limit: 10) {
+    customers(
+      where: { birth_date: { notInDateRange: ["2000-01-01", "2000-12-31"] } }
+    ) {
+      customer_name
+      annual_income
+    }
+  }
+}
+```
+
+### `beforeDate`
+
+Use it when you want to retrieve all results before some specific date. The
+values should be an array of one element in `YYYY-MM-DD` timestamp format.
+
+* Dimension types: `time`.
+
+```graphql
+query LensQuery {
+  table(limit: 10) {
+    customers(
+      where: { birth_date: { beforeDate: "2000-01-01" } }
+    ) {
+      customer_name
+      annual_income
+      birth_date {
+          value
+      }
+    }
+  }
+}
+```
+
+### `afterDate`
+
+
+The same as `beforeDate`, but is used to get all results after a specific date.
+
+- Dimension types: `time`.
+
+```json
+query LensQuery {
+  table(limit: 10) {
+    customers(
+      where: { birth_date: { afterDate: "2000-01-01" } }
+    ) {
+      customer_name
+      annual_income
+      birth_date {
+          value
+      }
+    }
+  }
+}
+```
+
+## Boolean logical operators
+
+Filters can contain `or` and `and` logical operators. Logical operators have
+only one of the following properties:
+
+- `or` An array with one or more filters or other logical operators
+- `and` An array with one or more filters or other logical operators
+
+```graphql
+query LensQuery {
+  table(limit: 10) {
+    customers(
+      where: {
+        OR: [
+          { annual_income: { gte: 10000 } }        # Customers with income >= 50k
+           # Customers who are married
+        ],
+        AND: [
+   { customer_name: { contains: "MR" } }            # Customers who are homeowners
+            # Customers in the US
+        ]
+      }
+    ) {
+      customer_name
+      marital_status
+      annual_income
+      
+      home_owner
+      
+    }
+  }
+}
+```
+
+You can not put dimensions and measures filters in the same logical operator. When Cube generates a SQL query to the data source, dimension and measure filters are translated to expressions in WHERE and HAVING clauses, respectively.
+
+In other words, dimension filters apply to raw (unaggregated) data and measure filters apply to aggregated data, so it's not possible to express such filters in SQL semantics.
+
+In such case you can use the nested AND and OR to query the dimension filter and measure filter together:
+
+```graphql
+query LensQuery {
+  table(
+    limit: 10
+    offset: 0
+    timezone: "UTC"
+    orderBy: {}
+    where: {AND: {AND: [{customers: {total_customer: {set: true}}}]}, OR: {AND: [{OR: [{customers: {annual_income: {in: [100000]}}}]}]}}
+  ) {
+    customers {
+      annual_income
+      total_customer
+      
     }
   }
 }
