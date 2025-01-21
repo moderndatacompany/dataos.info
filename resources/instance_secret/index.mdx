@@ -5,7 +5,7 @@ search: "[object Object]"
 
 An Instance Secret is a DataOS Resource designed for securely storing sensitive information at the DataOS instance level. This includes usernames, passwords, certificates, tokens, and keys. The primary purpose of an Instance Secret is to address the inherent exposure risk associated with directly embedding such confidential data within application code or manifest files (YAML configuration files).
 
-Instance secrets establish a critical segregation between sensitive data and Resource definitions. This division minimizes inadvertent exposure during various Resource management phases, including creation, viewing, or editing. By leveraging Instance Secrets, data developers safeguard sensitive information, mitigating security vulnerabilities inherent in their data workflows.&#x20;
+Instance secrets establish a critical segregation between sensitive data and Resource definitions. This division minimizes inadvertent exposure during various Resource management phases, including creation, viewing, or editing. By leveraging Instance Secrets, data developers safeguard sensitive information, mitigating security vulnerabilities inherent in their data workflows.
 
 Operators can exercise precise control over who can retrieve credentials from Secrets, if in your organization any data developer needs access to secrets you can assign them a 'read instance secret' use case using \[Bifrost]\(/interfaces/bifrost/).
 
@@ -31,21 +31,19 @@ Operators can exercise precise control over who can retrieve credentials from Se
 
 The structure of the Instance Secret manifest file is outlined as follows:
 
-![](/resources/instance_secret/instance_secret_manifest_structure.jpg)
+## How to create an Instance Secret?
 
-## Templates
-
-We have compiled a collection of pre-defined manifest templates to facilitate the creation of Instance Secret, which accesses commonly used data sources and repositories. These templates serve as a starting point.
-
-We have compiled a collection of pre-defined manifest templates that serve as a starting point for creating Instance Secret, which accesses commonly used data sources and repositories.
+This section includes steps for creating the Instance Secret for securing commonly used data sources and repositories.
 
 <AccordionGroup>
   <Accordion title="ABFSS" defaultOpen={false}>
-    ## Create an Instance Secret for securing ABFSS credentials
+    ### Create an Instance Secret for securing ABFSS credentials
+
+    Azure Blob File System Secure (ABFSS) is an object storage system. Object stores are distributed storage systems designed to store and manage large amounts of unstructured data.
 
     To create an Azure Blob File System Secure (ABFSS) Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
 
-    ### Create a manifest file
+    ### Step 1: Create a manifest file
 
     Begin by creating a manifest file to hold the configuration details for your ABFSS Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
@@ -101,7 +99,7 @@ We have compiled a collection of pre-defined manifest templates that serve as a 
 
     For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
-    ### Apply the manifest
+    ### Step 2: Apply the manifest
 
     To create the ABFSS Instance Secret within DataOS, use the `apply` command. Since ABFSS Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
 
@@ -124,159 +122,1520 @@ We have compiled a collection of pre-defined manifest templates that serve as a 
       INFO[0004] 🛠 apply...complete
       ```
     </CodeGroup>
+  </Accordion>
 
-    ## Manage an ABFSS Instance Secret
+  <Accordion title="WASBS" defaultOpen={false}>
+    ### Create an instance secret for securing WASBS credentials
 
-    ### Validate the Instance Secret
+    Windows Azure Storage Blob Service (WASBS) is an object storage system. Object stores are distributed storage systems designed to store and manage large amounts of unstructured data.
 
-    To validate the proper creation of the ABFSS Instance Secret in DataOS, use the `get` command.
+    To create a Windows Azure Storage Blob Service (WASBS) Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
+
+    ### Step 1: Create a manifest file
+
+    Begin by creating a manifest file to hold the configuration details for your WASBS Instance Secret. Below are the templates for the read-only and read-write manifests:
 
     <CodeGroup>
-      ```bash Command
-      dataos-ctl resource get -t instance-secret
+      ```yaml Read-only instance-secret
+      name: ${wasbs-depot-name}-r # Name of the instance-secret, indicating it's for read-only access.
+      version: v1 # Manifest Version           
+      type: instance-secret # Resource-type
+      description: ${description}   # Optional: Brief description of the instance-secret's purpose.
+      layer: user # DataOS Layer                 
+      instance-secret:
+        type: key-value-properties  # Type of Instance-secret
+        acl: r                     # Access control level, set to 'r' for read-only access.
+        data:                       
+          azureendpointsuffix: ${azure-endpoint-suffix}  # Endpoint suffix for the Azure storage account.
+          azurestorageaccountkey: ${azure-storage-account-key}  # Access key for the Azure storage account.
+          azurestorageaccountname: ${azure-storage-account-name}  # Name of the Azure storage account.
       ```
 
-      ```bash Expected output
-      INFO[0000] 🔍 get...                                     
-      INFO[0000] 🔍 get...complete                             
-
-              NAME     | VERSION |      TYPE       | WORKSPACE | STATUS |  RUNTIME  |  OWNER             
-      -----------------|---------|-----------------|-----------|--------|-----------|------------------------------
-           depotsecret | v1      | instance-secret |           | active |           | iamgroot
+      ```yaml Read-write instance-secret
+      name: ${wasbs-depot-name}-rw  # Name of the instance-secret, indicating it's for read-write access.
+      version: v1 # Manifest Version           
+      type: instance-secret # Resource-type
+      description: ${description}   # Optional: Brief description of the instance-secret's purpose.
+      layer: user # DataOS Layer                 
+      instance-secret:
+        type: key-value-properties  # Type of Instance-secret
+        acl: rw                     # Access control level, set to 'rw' for read-write access.
+        data:                       
+          azureendpointsuffix: ${azure-endpoint-suffix}  # Endpoint suffix for the Azure storage account.
+          azurestorageaccountkey: ${azure-storage-account-key}  # Access key for the Azure storage account.
+          azurestorageaccountname: ${azure-storage-account-name}  # Name of the Azure storage account.
       ```
     </CodeGroup>
 
-    To get the list of all the Instance Secret within the Dataos environment execute the following command.
+    ### Resource meta section
+
+    The WASBS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Instance-secret specific section
+
+    This section focuses on attributes specific to WASBS Instance Secrets. It includes details like:
+
+    * `type`: Specifies the Instance Secret type (key-value-properties).
+
+    * `acl`: Access control level (read-only or read-write).
+
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+
+    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Step 2: Apply the manifest
+
+    To create the WASBS Instance Secret within DataOS, use the `apply` command. Since these Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.
 
     <CodeGroup>
       ```bash Command
-      dataos-ctl resource get -t instance-secret -a
-      ```
-
-      ```bash Expected output
-      dataos-ctl resource get -t instance-secret -a
-      INFO[0000] 🔍 get...                                     
-      INFO[0000] 🔍 get...complete                             
-
-                   NAME            | VERSION |      TYPE       | WORKSPACE | STATUS | RUNTIME |         OWNER          
-      -----------------------------|---------|-----------------|-----------|--------|---------|------------------------
-        abfssv2alpha-r             | v1      | instance-secret |           | active |         | iamgroot       
-        abfssv2alpha-rw            | v1      | instance-secret |           | active |         | iamgroot       
-        abfsswithoutmetastore-r    | v1      | instance-secret |           | active |         | thisisthor              
-        abfsswithoutmetastore-rw   | v1      | instance-secret |           | active |         | thisisthor              
-
-      ```
-    </CodeGroup>
-
-    ### Delete the Instance Secret
-
-    <Warning>
-      Before you can delete an Instance Secret, you need to make sure there are no other Resources dependent on it. For example, if a Depot has a dependency on an Instance Secret, trying to delete that Instance Secret will cause an error. So, you'll need to remove the Depot first, and then you can delete the Instance Secret. This rule applies to not just Depot, but all dependent Resources, such as Workflow, Service, Worker, etc. The following error will be thrown if any Resource has a dependency on Instance Secret as shown below. Example usage:
-
-      ```bash
-      dataos-ctl delete -t instance-secret -n sampleinstsecret
-      INFO[0000] 🗑 delete...                                  
-      INFO[0000] 🗑 deleting sampleinstsecret:v1:instance-secret... 
-      INFO[0001] 🗑 deleting sampleinstsecret:v1:instance-secret...error 
-      WARN[0001] 🗑 delete...error                             
-      ERRO[0001] Invalid Parameter - failure deleting instance resource : cannot delete resource, it is a dependency of 'depot:v2alpha:sampleinstdepot'
-      ```
-    </Warning>
-
-    [](https://dataos.info/resources/instance_secret/first_steps/#__codelineno-15-1)
-
-    To delete the ABFSS Instance Secret, use one of the following methods:
-
-    **Method 1:**  Specify the Workspace, Resource-type, and Instance Secret name in the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
-
-    <CodeGroup>
-      ```bash Command
-      dataos-ctl resource delete -t ${resource-type} -n ${resource-name}
+      dataos-ctl resource apply -f ${manifest-file-path}
       ```
 
       ```bash Alternative command
-      dataos-ctl delete -t ${resource-type} -n ${resource-name}
+      dataos-ctl apply -f ${manifest-file-path}
       ```
 
-      ```bash Example usage
-      dataos-ctl resource delete -t instance-secret -n sampleinstsecret
-      Expected output:
-      dataos-ctl delete -t instance-secret -n sampleinstsecret
-      INFO[0000] 🗑 delete...                                  
-      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
-      INFO[0000] 🗑 delete...complete
+      ```bash Example usage 
+      dataos-ctl resource apply -f depot_secret.yaml
+      Example usage:
+      $ dataos-ctl apply -f depot_secret.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
+      INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
+      INFO[0004] 🛠 apply...complete
+      ```
+    </CodeGroup>
+  </Accordion>
+
+  <Accordion title="GCS" defaultOpen={false}>
+    ### Create an Instance Secret for securing GCS credentials
+
+    Google Cloud Storage (GCS) is an object storage system. Object stores are distributed storage systems designed to store and manage large amounts of unstructured data.
+
+    To create a Google Cloud Storage (GCS) Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
+
+    ### Step 1: Create a manifest file
+
+    Begin by creating a manifest file to hold the configuration details for your GCS Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+
+    <CodeGroup>
+      ```yaml Read-only instance-secret
+      name: ${gcs-depot-name}-r  # Name of the instance-secret, indicating it's for read-only access.
+      version: v1  # Version of the instance-secret.
+      type: instance-secret  # Specifies that this is an instance-secret.
+      description: ${description}  # Optional: Brief description of the instance-secret's purpose.
+      layer: user  # DataOS layer where the secret is assigned.
+      instance-secret:
+        type: key-value-properties  # Type of Instance-secret, stored as key-value pairs.
+        acl: r  # Access control level, set to 'r' for read-only access.
+        data:
+          projectid: ${project-id}  # Unique identifier of the Google Cloud project that your GCS bucket resides in.
+          email: ${client-email}  # Email address associated with the Google Cloud service account.
+        files:
+          gcskey_json: ${path-to-gcskey-json}  # Path to the JSON key file for the Google Cloud service account.
+
+      ```
+
+      ```yaml Read-write instance-secret
+      name: ${gcs-depot-name}-rw  # Name of the instance-secret, indicating it's for read-write access.
+      version: v1  # Version of the instance-secret.
+      type: instance-secret  # Specifies that this is an instance-secret.
+      description: ${description}  # Optional: Brief description of the instance-secret's purpose.
+      layer: user  # DataOS layer where the secret is assigned.
+      instance-secret:
+        type: key-value-properties  # Type of Instance-secret, stored as key-value pairs.
+        acl: rw  # Access control level, set to 'rw' for read-write access.
+        data:
+          projectid: ${project-id}  # Unique identifier of the Google Cloud project that your GCS bucket resides in.
+          email: ${client-email}  # Email address associated with the Google Cloud service account.
+        files:
+          gcskey_json: ${path-to-gcskey-json}  # Path to the JSON key file for the Google Cloud service account.
       ```
     </CodeGroup>
 
+    ### **Resource meta section**
 
+    The GCS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
-    **Method 2:**  Copy the Instance Secret name, version, and Resource-type from the output of the [`get`](https://dataos.info/interfaces/cli/command_reference/#get) command seperated by '|' enclosed within quotes and use it as a string in the delete command.
+    ### Instance-secret specific section
+
+    This section focuses on attributes specific to GCS Instance Secrets. It includes details like:
+
+    * `type`: Specifies the Instance Secret type (key-value-properties).
+
+    * `acl`: Access control level (read-only or read-write).
+
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+
+    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Step 2: Apply the manifest
+
+    To create the GCS Instance Secret within DataOS, use the `apply` command. Since GCS Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
 
     <CodeGroup>
       ```bash Command
-      dataos-ctl resource delete -i ${resource-name:version:resource-type}
+      dataos-ctl resource apply -f ${manifest-file-path}
       ```
 
       ```bash Alternative command
-      dataos-ctl delete -i ${resource-name:version:resource-type}
+      dataos-ctl apply -f ${manifest-file-path}
       ```
 
-      ```bash Example usage
-      dataos-ctl resource delete -i sampleinstsecret:v1:instance-secret
-      Expected output:
-      INFO[0000] 🗑 delete...                                  
-      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
-      INFO[0000] 🗑 delete...complete
+      ```bash Example usage 
+      dataos-ctl resource apply -f depot_secret.yaml
+      Example usage:
+      $ dataos-ctl apply -f depot_secret.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
+      INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
+      INFO[0004] 🛠 apply...complete
+      ```
+    </CodeGroup>
+  </Accordion>
+
+  <Accordion title="S3" defaultOpen={false}>
+    ### Create an Instance Secret for securing Amazon S3 credentials
+
+    Amazon Simple Storage Service (S3) is an object storage system. Object stores are distributed storage systems designed to store and manage large amounts of unstructured data.
+
+    To create an S3 Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
+
+    ### Step 1: Create a manifest file
+
+    Begin by creating a manifest file to hold the configuration details for your S3 Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+
+    <CodeGroup>
+      ```yaml Read-only instance-secret
+      # Amazon S3 Read Instance-secret Manifest
+
+      name: ${s3-depot-name}-r # Unique identifier for Resource, replace ${s3-depot-name} with depot name
+      version: v1 # Manifest version
+      type: instance-secret # Type of the Resource
+      description: ${description} # Purpose of the Instance-secret
+      layer: user # DataOS layer
+      instance-secret:
+        type: key-value-properties # Secret type
+        acl: r # Access control: 'r' for read-only
+        data:
+          accesskeyid: ${access-key-id} # Replace with access key ID
+          awsaccesskeyid: ${aws-access-key-id} # Replace with AWS access key ID
+          awssecretaccesskey: ${aws-secret-access-key} # Replace with AWS secret access key
+          secretkey: ${secret-key} # Replace with secret key
+      ```
+
+      ```yaml Read-write instance-secret
+      # Amazon S3 Read Write Instance-secret Manifest
+
+      name: ${s3-depot-name}-rw # Unique identifier for Resource, replace ${s3-depot-name} with depot name
+      version: v1 # Manifest version
+      type: instance-secret # Type of the Resource
+      description: ${description} # Purpose of the Instance-secret
+      layer: user # DataOS layer
+      instance-secret:
+        type: key-value-properties # Secret type
+        acl: rw # Access control: 'rw' for read-write
+        data:
+          accesskeyid: ${access-key-id} # Replace with access key ID
+          awsaccesskeyid: ${aws-access-key-id} # Replace with AWS access key ID
+          awssecretaccesskey: ${aws-secret-access-key} # Replace with AWS secret access key
+          secretkey: ${secret-key} # Replace with secret key
       ```
     </CodeGroup>
 
+    ### **Resource meta section**
 
+    The S3 manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
-    **Method 3:** Specify the path of the manifest file and use the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+    ### Instance-secret specific section
+
+    This section focuses on attributes specific to S3 Instance Secrets. It includes details like:
+
+    * `type`: Specifies the Instance Secret type (key-value-properties).
+
+    * `acl`: Access control level (read-only or read-write).
+
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+
+    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Step 2: Apply the manifest
+
+    To create the S3 Instance Secret within DataOS, use the `apply` command. Since S3 Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
 
     <CodeGroup>
       ```bash Command
-      dataos-ctl resource delete -f ${manifest-file-path}
+      dataos-ctl resource apply -f ${manifest-file-path}
       ```
 
       ```bash Alternative command
-      dataos-ctl delete -f ${manifest-file-path}
+      dataos-ctl apply -f ${manifest-file-path}
       ```
 
-      ```bash Example usage
-      dataos-ctl delete -f /home/desktop/connect-city/instance_secret.yaml
-      Expected output:
-      INFO[0000] 🗑 delete...                                  
-      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
-      INFO[0000] 🗑 delete...complete
+      ```bash Example usage 
+      dataos-ctl resource apply -f depot_secret.yaml
+      Example usage:
+      $ dataos-ctl apply -f depot_secret.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
+      INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
+      INFO[0004] 🛠 apply...complete
       ```
     </CodeGroup>
   </Accordion>
 
-  <Accordion title="New Accordion" defaultOpen="false">
-    b
+  <Accordion title="Bigquery" defaultOpen={false}>
+    ## Create an Instance Secret for securing Bigquery credentials
+
+    Bigquery is a data warehouse that serves as a centralized repository for structured data, enabling efficient query and analysis.
+
+    To create a Bigquery Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
+
+    ### Step 1: Create a manifest file
+
+    Begin by creating a manifest file to hold the configuration details for your Bigquery Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+
+    <CodeGroup>
+      ```yaml Read-only instance-secret
+      # Google Bigquery Read Instance-secret Manifest
+
+      name: ${bigquery-depot-name}-r # Unique identifier for Resource, replace ${bigquery-depot-name} with depot name
+      version: v1 # Manifest version
+      type: instance-secret # Type of the Resource
+      description: ${description} # Purpose of the Instance-secret
+      layer: user # DataOS layer
+      instance-secret:
+        type: key-value-properties # Secret type
+        acl: r # Access control: 'r' for read-only
+        data:
+          projectid: ${project-name} # Replace with Bigquery project ID
+          email: ${email-id} # Replace with Bigquery email ID
+        files:
+          json_keyfile: ${json-file-path}
+
+      ```
+
+      ```yaml Read-write instance-secret
+      # Google Bigquery Read-Write Instance-secret Manifest
+
+      name: ${bigquery-depot-name}-rw # Unique identifier for Resource, replace ${bigquery-depot-name} with depot name
+      version: v1 # Manifest version
+      type: instance-secret # Type of the Resource
+      description: ${description} # Purpose of the Instance-secret
+      layer: user # DataOS layer
+      instance-secret:
+        type: key-value-properties # Secret type
+        acl: rw # Access control: 'rw' for read-write
+        data:
+          projectid: ${project-name} # Replace with Bigquery project ID
+          email: ${email-id} # Replace with Bigquery email ID
+        files:
+          json_keyfile: ${json-file-path}
+      ```
+    </CodeGroup>
+
+    ### **Resource meta section**
+
+    The Bigquery Instance Secret manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Instance-secret specific section
+
+    This section focuses on attributes specific to Bigquery Instance Secrets. It includes details like:
+
+    * `type`: Specifies the Instance Secret type (key-value-properties).
+
+    * `acl`: Access control level (read-only or read-write).
+
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+
+    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Step 2: Apply the manifest
+
+    To create the Bigquery Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource apply -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl apply -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage 
+      dataos-ctl resource apply -f depot_secret.yaml
+      Example usage:
+      $ dataos-ctl apply -f depot_secret.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
+      INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
+      INFO[0004] 🛠 apply...complete
+      ```
+    </CodeGroup>
   </Accordion>
 
-  <Accordion title="New Accordion" defaultOpen="false">
-    j
+  <Accordion title="Snowflake" defaultOpen={false}>
+    ## Create an Instance Secret for securing Snowflake credentials
+
+    Snowflake is a data warehouse that serves as a centralized repository for structured data, enabling efficient query and analysis.
+
+    To create a Snowflake Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
+
+    ### Step 1: Create a manifest file
+
+    Begin by creating a manifest file to hold the configuration details for your Snowflake Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+
+    <CodeGroup>
+      ```yaml Read-only instance-secret
+      # Snowflake Read Instance-secret Manifest
+
+      name: ${snowflake-depot-name}-r # Unique identifier for Resource, replace ${snowflake-depot-name} with depot name
+      version: v1 # Manifest version
+      type: instance-secret # Type of the Resource
+      description: ${description} # Purpose of the Instance-secret
+      layer: user # DataOS layer
+      instance-secret:
+        type: key-value-properties # Secret type
+        acl: r # Access control: 'r' for read-only
+        data:
+          username: ${username} # replace with snowflake username
+          password: ${password} # replace with snowflake password
+
+      ```
+
+      ```yaml Read-write instance-secret
+      # Snowflake Read Write Instance-secret Manifest
+
+      name: ${snowflake-depot-name}-rw # Unique identifier for Resource, replace ${snowflake-depot-name} with depot name
+      version: v1 # Manifest version
+      type: instance-secret # Type of the Resource
+      description: ${description} # Purpose of the Instance-secret
+      layer: user # DataOS layer
+      instance-secret:
+        type: key-value-properties # Secret type
+        acl: rw # Access control: 'rw' for read-write
+        data:
+          username: ${username} # replace with snowflake username
+          password: ${password} # replace with snowflake password
+      ```
+    </CodeGroup>
+
+    ### **Resource meta section**
+
+    The Instance Secret manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Instance-secret specific section
+
+    This section focuses on attributes specific to Snowflake Instance Secrets. It includes details like:
+
+    * `type`: Specifies the Instance Secret type (key-value-properties).
+
+    * `acl`: Access control level (read-only or read-write).
+
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+
+    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Step 2: Apply the manifest
+
+    To create the Snowflake Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource apply -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl apply -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage 
+      dataos-ctl resource apply -f depot_secret.yaml
+      Example usage:
+      $ dataos-ctl apply -f depot_secret.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
+      INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
+      INFO[0004] 🛠 apply...complete
+      ```
+    </CodeGroup>
   </Accordion>
 
-  <Accordion title="New Accordion" defaultOpen="false">
-    j
+  <Accordion title="Redshift" defaultOpen={false}>
+    ## Create an Instance Secret for securing Redshift credentials
+
+    Redshift is a data warehouse that serves as a centralized repository for structured data, enabling efficient query and analysis.
+
+    To create a Redshift Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
+
+    ### Step 1: Create a manifest file
+
+    Begin by creating a manifest file to hold the configuration details for your Redshift Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding manifest template provided below.
+
+    <CodeGroup>
+      ```yaml Read-only instance-secret
+      name: ${redshift-depot-name}-r # Unique identifier for Resource, replace ${re-depot-name} with depot name
+      version: v1 # Manifest version
+      type: instance-secret # Type of the Resource
+      description: ${description} # Purpose of the Instance-secret
+      layer: user # DataOS layer
+      instance-secret:
+        type: key-value-properties # Secret type
+        acl: r # Access control: 'r' for read-only
+        data:
+          username: ${username} # replace with Redshift username
+          password: ${password} # replace with Redshift password
+          awsaccesskeyid: ${access key} # replace with AWS access ID
+          awssecretaccesskey: ${secret key}  # replace with AWS access key
+      ```
+
+      ```yaml Read-write instance-secret
+      name: ${redshift-depot-name}-rw # Unique identifier for Resource, replace ${re-depot-name} with depot name
+      version: v1 # Manifest version
+      type: instance-secret # Type of the Resource
+      description: ${description} # Purpose of the Instance-secret
+      layer: user # DataOS layer
+      instance-secret:
+        type: key-value-properties # Secret type
+        acl: rw # Access control: 'rw' for read-write
+        data:
+          username: ${username} # replace with Redshift username
+          password: ${password} # replace with Redshift password
+          awsaccesskeyid: ${access key} # replace with AWS access ID
+          awssecretaccesskey: ${secret key}  # replace with AWS access key
+      ```
+    </CodeGroup>
+
+    ### **Resource meta section**
+
+    The Instance Secret manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Instance-secret specific section
+
+    This section focuses on attributes specific to Redshift Instance Secrets. It includes details like:
+
+    * `type`: Specifies the Instance Secret type (key-value-properties).
+
+    * `acl`: Access control level (read-only or read-write).
+
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+
+    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Step 2: Apply the manifest
+
+    To create the Redshift Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource apply -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl apply -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage 
+      dataos-ctl resource apply -f depot_secret.yaml
+      Example usage:
+      $ dataos-ctl apply -f depot_secret.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
+      INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
+      INFO[0004] 🛠 apply...complete
+      ```
+    </CodeGroup>
   </Accordion>
 
-  <Accordion title="New Accordion" defaultOpen="false">
-    j
+  <Accordion title="MySQL" defaultOpen={false}>
+    ## Create an Instance Secret for securing MySQL credentials
+
+    MySQL is a SQL database. SQL databases are typically centralized systems designed for structured data, organized into tables with a predefined schema.
+
+    To create a MySQL Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
+
+    ### Step 1: Create a manifest file
+
+    Begin by creating a manifest file to hold the configuration details for your MySQL Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+
+    <CodeGroup>
+      ```yaml Read-only instance-secret
+      # MySQL Read Instance-secret Manifest
+
+      name: ${mysql-depot-name}-r # Unique identifier for Resource, replace ${mysql-depot-name} with depot name
+      version: v1 # Manifest version
+      type: instance-secret # Type of the Resource
+      description: ${description} # Purpose of the Instance-secret
+      layer: user # DataOS layer
+      instance-secret:
+        type: key-value-properties # Secret type
+        acl: r # Access control: 'r' for read-only
+        data:
+          username: ${username} # replace with MySQL username
+          password: ${password} # replace with MySQL password
+      ```
+
+      ```yaml Read-write instance-secret
+      # MySQL Read Write Instance-secret Manifest
+
+      name: ${mysql-depot-name}-rw # Unique identifier for Resource, replace ${mysql-depot-name} with depot name
+      version: v1 # Manifest version
+      type: instance-secret # Type of the Resource
+      description: ${description} # Purpose of the Instance-secret
+      layer: user # DataOS layer
+      instance-secret:
+        type: key-value-properties # Secret type
+        acl: rw # Access control: 'rw' for read-write
+        data:
+          username: ${username} # replace with MySQL username
+          password: ${password} # replace with MySQL password
+      ```
+    </CodeGroup>
+
+    ### **Resource meta section**
+
+    The GCS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Instance-secret specific section
+
+    This section focuses on attributes specific to GCS Instance Secrets. It includes details like:
+
+    * `type`: Specifies the Instance Secret type (key-value-properties).
+
+    * `acl`: Access control level (read-only or read-write).
+
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+
+    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Step 2: Apply the manifest
+
+    To create the GCS Instance Secret within DataOS, use the `apply` command. Since GCS Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource apply -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl apply -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage 
+      dataos-ctl resource apply -f depot_secret.yaml
+      Example usage:
+      $ dataos-ctl apply -f depot_secret.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
+      INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
+      INFO[0004] 🛠 apply...complete
+      ```
+    </CodeGroup>
   </Accordion>
 
-  <Accordion title="New Accordion" defaultOpen="false">
-    h
+  <Accordion title="MSSQL" defaultOpen={false}>
+    ## Create an Instance Secret for securing MSSQL credentials
+
+    Microsoft SQL Server (MSSQL) is a SQL database. SQL databases are typically centralized systems designed for structured data, organized into tables with a predefined schema.
+
+    To create a MSSQL Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
+
+    ### Step 1: Create a manifest file
+
+    Begin by creating a manifest file to hold the configuration details for your MSSQL Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+
+    <CodeGroup>
+      ```yaml Read-only instance-secret
+      name: ${mssql-depot-name}-r # Unique identifier for Resource, replace ${mssql-depot-name} with depot name
+      version: v1 # Manifest version
+      type: instance-secret # Type of the Resource
+      description: ${description} # Purpose of the Instance-secret
+      layer: user # DataOS layer
+      instance-secret:
+        type: key-value-properties # Secret type
+        acl: r # Access control: 'r' for read-only
+        data:
+          username: ${username} # replace with MsSQL username
+          password: ${password} # replace with MsSQL password
+      ```
+
+      ```yaml Read-write instance-secret
+      name: ${mssql-depot-name}-rw # Unique identifier for Resource, replace ${mssql-depot-name} with depot name
+      version: v1 # Manifest version
+      type: instance-secret # Type of the Resource
+      description: ${description} # Purpose of the Instance-secret
+      layer: user # DataOS layer
+      instance-secret:
+        type: key-value-properties # Secret type
+        acl: rw # Access control: 'rw' for read-write
+        data:
+          username: ${username} # replace with MsSQL username
+          password: ${password} # replace with MsSQL password
+      ```
+    </CodeGroup>
+
+    ### **Resource meta section**
+
+    The GCS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Instance-secret specific section
+
+    This section focuses on attributes specific to MSSQL Instance Secrets. It includes details like:
+
+    * `type`: Specifies the Instance Secret type (key-value-properties).
+
+    * `acl`: Access control level (read-only or read-write).
+
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+
+    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Step 2: Apply the manifest
+
+    To create the MSSQL Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource apply -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl apply -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage 
+      dataos-ctl resource apply -f depot_secret.yaml
+      Example usage:
+      $ dataos-ctl apply -f depot_secret.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
+      INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
+      INFO[0004] 🛠 apply...complete
+      ```
+    </CodeGroup>
   </Accordion>
 
-  <Accordion title="New Accordion" defaultOpen="false">
-    d
+  <Accordion title="JDBC" defaultOpen={false}>
+    ## Create an Instance Secret for securing JDBC credentials
+
+    Java Database Connectivity (JDBC) is a SQL database. SQL databases are typically centralized systems designed for structured data, organized into tables with a predefined schema.
+
+    To create a JDBC Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
+
+    ### Step 1: Create a manifest file
+
+    Begin by creating a manifest file to hold the configuration details for your JDBC Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+
+    <CodeGroup>
+      ```yaml Read-only instance-secret
+      # JDBC Read Instance-secret Manifest
+
+      name: ${jdbc-depot-name}-r # Unique identifier for Resource, replace ${jdbc-depot-name} with depot name
+      version: v1 # Manifest version
+      type: instance-secret # Type of the Resource
+      description: ${description} # Purpose of the Instance-secret
+      layer: user # DataOS layer
+      instance-secret:
+        type: key-value-properties # Secret type
+        acl: r # Access control: 'r' for read-only
+        data:
+          username: ${username} # replace with JDBC username
+          password: ${password} # replace with JDBC password
+
+      ```
+
+      ```yaml Read-write instance-secret
+      # JDBC Read Write Instance-secret Manifest
+
+      name: ${jdbc-depot-name}-rw # Unique identifier for Resource, replace ${jdbc-depot-name} with depot name
+      version: v1 # Manifest version
+      type: instance-secret # Type of the Resource
+      description: ${description} # Purpose of the Instance-secret
+      layer: user # DataOS layer
+      instance-secret:
+        type: key-value-properties # Secret type
+        acl: rw # Access control: 'rw' for read-write
+        data:
+          username: ${username} # replace with JDBC username
+          password: ${password} # replace with JDBC password
+      ```
+    </CodeGroup>
+
+    ### **Resource meta section**
+
+    The GCS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Instance-secret specific section
+
+    This section focuses on attributes specific to JDBC Instance Secrets. It includes details like:
+
+    * `type`: Specifies the Instance Secret type (key-value-properties).
+
+    * `acl`: Access control level (read-only or read-write).
+
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+
+    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Step 2: Apply the manifest
+
+    To create the JDBC Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource apply -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl apply -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage 
+      dataos-ctl resource apply -f depot_secret.yaml
+      Example usage:
+      $ dataos-ctl apply -f depot_secret.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
+      INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
+      INFO[0004] 🛠 apply...complete
+      ```
+    </CodeGroup>
+  </Accordion>
+
+  <Accordion title="Oracle" defaultOpen={false}>
+    ## Create an Instance Secret for securing GCS credentials
+
+    Google Cloud Storage (GCS) is an object storage system. Object stores are distributed storage systems designed to store and manage large amounts of unstructured data.
+
+    To create a Google Cloud Storage (GCS) Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
+
+    ### Step 1: Create a manifest file
+
+    Begin by creating a manifest file to hold the configuration details for your GCS Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+
+    <CodeGroup>
+      ```yaml Read-only instance-secret
+      name: ${gcs-depot-name}-r  # Name of the instance-secret, indicating it's for read-only access.
+      version: v1  # Version of the instance-secret.
+      type: instance-secret  # Specifies that this is an instance-secret.
+      description: ${description}  # Optional: Brief description of the instance-secret's purpose.
+      layer: user  # DataOS layer where the secret is assigned.
+      instance-secret:
+        type: key-value-properties  # Type of Instance-secret, stored as key-value pairs.
+        acl: r  # Access control level, set to 'r' for read-only access.
+        data:
+          projectid: ${project-id}  # Unique identifier of the Google Cloud project that your GCS bucket resides in.
+          email: ${client-email}  # Email address associated with the Google Cloud service account.
+        files:
+          gcskey_json: ${path-to-gcskey-json}  # Path to the JSON key file for the Google Cloud service account.
+
+      ```
+
+      ```yaml Read-write instance-secret
+      name: ${gcs-depot-name}-rw  # Name of the instance-secret, indicating it's for read-write access.
+      version: v1  # Version of the instance-secret.
+      type: instance-secret  # Specifies that this is an instance-secret.
+      description: ${description}  # Optional: Brief description of the instance-secret's purpose.
+      layer: user  # DataOS layer where the secret is assigned.
+      instance-secret:
+        type: key-value-properties  # Type of Instance-secret, stored as key-value pairs.
+        acl: rw  # Access control level, set to 'rw' for read-write access.
+        data:
+          projectid: ${project-id}  # Unique identifier of the Google Cloud project that your GCS bucket resides in.
+          email: ${client-email}  # Email address associated with the Google Cloud service account.
+        files:
+          gcskey_json: ${path-to-gcskey-json}  # Path to the JSON key file for the Google Cloud service account.
+      ```
+    </CodeGroup>
+
+    ### **Resource meta section**
+
+    The GCS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Instance-secret specific section
+
+    This section focuses on attributes specific to GCS Instance Secrets. It includes details like:
+
+    * `type`: Specifies the Instance Secret type (key-value-properties).
+
+    * `acl`: Access control level (read-only or read-write).
+
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+
+    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Step 2: Apply the manifest
+
+    To create the GCS Instance Secret within DataOS, use the `apply` command. Since GCS Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource apply -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl apply -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage 
+      dataos-ctl resource apply -f depot_secret.yaml
+      Example usage:
+      $ dataos-ctl apply -f depot_secret.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
+      INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
+      INFO[0004] 🛠 apply...complete
+      ```
+    </CodeGroup>
+  </Accordion>
+
+  <Accordion title="Postgres" defaultOpen={false}>
+    ## Create an Instance Secret for securing GCS credentials
+
+    Google Cloud Storage (GCS) is an object storage system. Object stores are distributed storage systems designed to store and manage large amounts of unstructured data.
+
+    To create a Google Cloud Storage (GCS) Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
+
+    ### Step 1: Create a manifest file
+
+    Begin by creating a manifest file to hold the configuration details for your GCS Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+
+    <CodeGroup>
+      ```yaml Read-only instance-secret
+      name: ${gcs-depot-name}-r  # Name of the instance-secret, indicating it's for read-only access.
+      version: v1  # Version of the instance-secret.
+      type: instance-secret  # Specifies that this is an instance-secret.
+      description: ${description}  # Optional: Brief description of the instance-secret's purpose.
+      layer: user  # DataOS layer where the secret is assigned.
+      instance-secret:
+        type: key-value-properties  # Type of Instance-secret, stored as key-value pairs.
+        acl: r  # Access control level, set to 'r' for read-only access.
+        data:
+          projectid: ${project-id}  # Unique identifier of the Google Cloud project that your GCS bucket resides in.
+          email: ${client-email}  # Email address associated with the Google Cloud service account.
+        files:
+          gcskey_json: ${path-to-gcskey-json}  # Path to the JSON key file for the Google Cloud service account.
+
+      ```
+
+      ```yaml Read-write instance-secret
+      name: ${gcs-depot-name}-rw  # Name of the instance-secret, indicating it's for read-write access.
+      version: v1  # Version of the instance-secret.
+      type: instance-secret  # Specifies that this is an instance-secret.
+      description: ${description}  # Optional: Brief description of the instance-secret's purpose.
+      layer: user  # DataOS layer where the secret is assigned.
+      instance-secret:
+        type: key-value-properties  # Type of Instance-secret, stored as key-value pairs.
+        acl: rw  # Access control level, set to 'rw' for read-write access.
+        data:
+          projectid: ${project-id}  # Unique identifier of the Google Cloud project that your GCS bucket resides in.
+          email: ${client-email}  # Email address associated with the Google Cloud service account.
+        files:
+          gcskey_json: ${path-to-gcskey-json}  # Path to the JSON key file for the Google Cloud service account.
+      ```
+    </CodeGroup>
+
+    ### **Resource meta section**
+
+    The GCS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Instance-secret specific section
+
+    This section focuses on attributes specific to GCS Instance Secrets. It includes details like:
+
+    * `type`: Specifies the Instance Secret type (key-value-properties).
+
+    * `acl`: Access control level (read-only or read-write).
+
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+
+    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Step 2: Apply the manifest
+
+    To create the GCS Instance Secret within DataOS, use the `apply` command. Since GCS Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource apply -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl apply -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage 
+      dataos-ctl resource apply -f depot_secret.yaml
+      Example usage:
+      $ dataos-ctl apply -f depot_secret.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
+      INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
+      INFO[0004] 🛠 apply...complete
+      ```
+    </CodeGroup>
+  </Accordion>
+
+  <Accordion title="MongoDB" defaultOpen={false}>
+    ## Create an Instance Secret for securing GCS credentials
+
+    Google Cloud Storage (GCS) is an object storage system. Object stores are distributed storage systems designed to store and manage large amounts of unstructured data.
+
+    To create a Google Cloud Storage (GCS) Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
+
+    ### Step 1: Create a manifest file
+
+    Begin by creating a manifest file to hold the configuration details for your GCS Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+
+    <CodeGroup>
+      ```yaml Read-only instance-secret
+      name: ${gcs-depot-name}-r  # Name of the instance-secret, indicating it's for read-only access.
+      version: v1  # Version of the instance-secret.
+      type: instance-secret  # Specifies that this is an instance-secret.
+      description: ${description}  # Optional: Brief description of the instance-secret's purpose.
+      layer: user  # DataOS layer where the secret is assigned.
+      instance-secret:
+        type: key-value-properties  # Type of Instance-secret, stored as key-value pairs.
+        acl: r  # Access control level, set to 'r' for read-only access.
+        data:
+          projectid: ${project-id}  # Unique identifier of the Google Cloud project that your GCS bucket resides in.
+          email: ${client-email}  # Email address associated with the Google Cloud service account.
+        files:
+          gcskey_json: ${path-to-gcskey-json}  # Path to the JSON key file for the Google Cloud service account.
+
+      ```
+
+      ```yaml Read-write instance-secret
+      name: ${gcs-depot-name}-rw  # Name of the instance-secret, indicating it's for read-write access.
+      version: v1  # Version of the instance-secret.
+      type: instance-secret  # Specifies that this is an instance-secret.
+      description: ${description}  # Optional: Brief description of the instance-secret's purpose.
+      layer: user  # DataOS layer where the secret is assigned.
+      instance-secret:
+        type: key-value-properties  # Type of Instance-secret, stored as key-value pairs.
+        acl: rw  # Access control level, set to 'rw' for read-write access.
+        data:
+          projectid: ${project-id}  # Unique identifier of the Google Cloud project that your GCS bucket resides in.
+          email: ${client-email}  # Email address associated with the Google Cloud service account.
+        files:
+          gcskey_json: ${path-to-gcskey-json}  # Path to the JSON key file for the Google Cloud service account.
+      ```
+    </CodeGroup>
+
+    ### **Resource meta section**
+
+    The GCS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Instance-secret specific section
+
+    This section focuses on attributes specific to GCS Instance Secrets. It includes details like:
+
+    * `type`: Specifies the Instance Secret type (key-value-properties).
+
+    * `acl`: Access control level (read-only or read-write).
+
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+
+    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Step 2: Apply the manifest
+
+    To create the GCS Instance Secret within DataOS, use the `apply` command. Since GCS Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource apply -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl apply -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage 
+      dataos-ctl resource apply -f depot_secret.yaml
+      Example usage:
+      $ dataos-ctl apply -f depot_secret.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
+      INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
+      INFO[0004] 🛠 apply...complete
+      ```
+    </CodeGroup>
+  </Accordion>
+
+  <Accordion title="Eventhub" defaultOpen={false}>
+    ## Create an Instance Secret for securing GCS credentials
+
+    Google Cloud Storage (GCS) is an object storage system. Object stores are distributed storage systems designed to store and manage large amounts of unstructured data.
+
+    To create a Google Cloud Storage (GCS) Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
+
+    ### Step 1: Create a manifest file
+
+    Begin by creating a manifest file to hold the configuration details for your GCS Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+
+    <CodeGroup>
+      ```yaml Read-only instance-secret
+      name: ${gcs-depot-name}-r  # Name of the instance-secret, indicating it's for read-only access.
+      version: v1  # Version of the instance-secret.
+      type: instance-secret  # Specifies that this is an instance-secret.
+      description: ${description}  # Optional: Brief description of the instance-secret's purpose.
+      layer: user  # DataOS layer where the secret is assigned.
+      instance-secret:
+        type: key-value-properties  # Type of Instance-secret, stored as key-value pairs.
+        acl: r  # Access control level, set to 'r' for read-only access.
+        data:
+          projectid: ${project-id}  # Unique identifier of the Google Cloud project that your GCS bucket resides in.
+          email: ${client-email}  # Email address associated with the Google Cloud service account.
+        files:
+          gcskey_json: ${path-to-gcskey-json}  # Path to the JSON key file for the Google Cloud service account.
+
+      ```
+
+      ```yaml Read-write instance-secret
+      name: ${gcs-depot-name}-rw  # Name of the instance-secret, indicating it's for read-write access.
+      version: v1  # Version of the instance-secret.
+      type: instance-secret  # Specifies that this is an instance-secret.
+      description: ${description}  # Optional: Brief description of the instance-secret's purpose.
+      layer: user  # DataOS layer where the secret is assigned.
+      instance-secret:
+        type: key-value-properties  # Type of Instance-secret, stored as key-value pairs.
+        acl: rw  # Access control level, set to 'rw' for read-write access.
+        data:
+          projectid: ${project-id}  # Unique identifier of the Google Cloud project that your GCS bucket resides in.
+          email: ${client-email}  # Email address associated with the Google Cloud service account.
+        files:
+          gcskey_json: ${path-to-gcskey-json}  # Path to the JSON key file for the Google Cloud service account.
+      ```
+    </CodeGroup>
+
+    ### **Resource meta section**
+
+    The GCS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Instance-secret specific section
+
+    This section focuses on attributes specific to GCS Instance Secrets. It includes details like:
+
+    * `type`: Specifies the Instance Secret type (key-value-properties).
+
+    * `acl`: Access control level (read-only or read-write).
+
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+
+    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Step 2: Apply the manifest
+
+    To create the GCS Instance Secret within DataOS, use the `apply` command. Since GCS Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource apply -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl apply -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage 
+      dataos-ctl resource apply -f depot_secret.yaml
+      Example usage:
+      $ dataos-ctl apply -f depot_secret.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
+      INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
+      INFO[0004] 🛠 apply...complete
+      ```
+    </CodeGroup>
+  </Accordion>
+
+  <Accordion title="Git" defaultOpen={false}>
+    ## Create an Instance Secret for securing GCS credentials
+
+    Google Cloud Storage (GCS) is an object storage system. Object stores are distributed storage systems designed to store and manage large amounts of unstructured data.
+
+    To create a Google Cloud Storage (GCS) Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
+
+    ### Step 1: Create a manifest file
+
+    Begin by creating a manifest file to hold the configuration details for your GCS Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+
+    <CodeGroup>
+      ```yaml Read-only instance-secret
+      name: ${gcs-depot-name}-r  # Name of the instance-secret, indicating it's for read-only access.
+      version: v1  # Version of the instance-secret.
+      type: instance-secret  # Specifies that this is an instance-secret.
+      description: ${description}  # Optional: Brief description of the instance-secret's purpose.
+      layer: user  # DataOS layer where the secret is assigned.
+      instance-secret:
+        type: key-value-properties  # Type of Instance-secret, stored as key-value pairs.
+        acl: r  # Access control level, set to 'r' for read-only access.
+        data:
+          projectid: ${project-id}  # Unique identifier of the Google Cloud project that your GCS bucket resides in.
+          email: ${client-email}  # Email address associated with the Google Cloud service account.
+        files:
+          gcskey_json: ${path-to-gcskey-json}  # Path to the JSON key file for the Google Cloud service account.
+
+      ```
+
+      ```yaml Read-write instance-secret
+      name: ${gcs-depot-name}-rw  # Name of the instance-secret, indicating it's for read-write access.
+      version: v1  # Version of the instance-secret.
+      type: instance-secret  # Specifies that this is an instance-secret.
+      description: ${description}  # Optional: Brief description of the instance-secret's purpose.
+      layer: user  # DataOS layer where the secret is assigned.
+      instance-secret:
+        type: key-value-properties  # Type of Instance-secret, stored as key-value pairs.
+        acl: rw  # Access control level, set to 'rw' for read-write access.
+        data:
+          projectid: ${project-id}  # Unique identifier of the Google Cloud project that your GCS bucket resides in.
+          email: ${client-email}  # Email address associated with the Google Cloud service account.
+        files:
+          gcskey_json: ${path-to-gcskey-json}  # Path to the JSON key file for the Google Cloud service account.
+      ```
+    </CodeGroup>
+
+    ### **Resource meta section**
+
+    The GCS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Instance-secret specific section
+
+    This section focuses on attributes specific to GCS Instance Secrets. It includes details like:
+
+    * `type`: Specifies the Instance Secret type (key-value-properties).
+
+    * `acl`: Access control level (read-only or read-write).
+
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+
+    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Step 2: Apply the manifest
+
+    To create the GCS Instance Secret within DataOS, use the `apply` command. Since GCS Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource apply -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl apply -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage 
+      dataos-ctl resource apply -f depot_secret.yaml
+      Example usage:
+      $ dataos-ctl apply -f depot_secret.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
+      INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
+      INFO[0004] 🛠 apply...complete
+      ```
+    </CodeGroup>
+  </Accordion>
+
+  <Accordion title="Bitbucket" defaultOpen={false}>
+    ## Create an Instance Secret for securing GCS credentials
+
+    Google Cloud Storage (GCS) is an object storage system. Object stores are distributed storage systems designed to store and manage large amounts of unstructured data.
+
+    To create a Google Cloud Storage (GCS) Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
+
+    ### Step 1: Create a manifest file
+
+    Begin by creating a manifest file to hold the configuration details for your GCS Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+
+    <CodeGroup>
+      ```yaml Read-only instance-secret
+      name: ${gcs-depot-name}-r  # Name of the instance-secret, indicating it's for read-only access.
+      version: v1  # Version of the instance-secret.
+      type: instance-secret  # Specifies that this is an instance-secret.
+      description: ${description}  # Optional: Brief description of the instance-secret's purpose.
+      layer: user  # DataOS layer where the secret is assigned.
+      instance-secret:
+        type: key-value-properties  # Type of Instance-secret, stored as key-value pairs.
+        acl: r  # Access control level, set to 'r' for read-only access.
+        data:
+          projectid: ${project-id}  # Unique identifier of the Google Cloud project that your GCS bucket resides in.
+          email: ${client-email}  # Email address associated with the Google Cloud service account.
+        files:
+          gcskey_json: ${path-to-gcskey-json}  # Path to the JSON key file for the Google Cloud service account.
+
+      ```
+
+      ```yaml Read-write instance-secret
+      name: ${gcs-depot-name}-rw  # Name of the instance-secret, indicating it's for read-write access.
+      version: v1  # Version of the instance-secret.
+      type: instance-secret  # Specifies that this is an instance-secret.
+      description: ${description}  # Optional: Brief description of the instance-secret's purpose.
+      layer: user  # DataOS layer where the secret is assigned.
+      instance-secret:
+        type: key-value-properties  # Type of Instance-secret, stored as key-value pairs.
+        acl: rw  # Access control level, set to 'rw' for read-write access.
+        data:
+          projectid: ${project-id}  # Unique identifier of the Google Cloud project that your GCS bucket resides in.
+          email: ${client-email}  # Email address associated with the Google Cloud service account.
+        files:
+          gcskey_json: ${path-to-gcskey-json}  # Path to the JSON key file for the Google Cloud service account.
+      ```
+    </CodeGroup>
+
+    ### **Resource meta section**
+
+    The GCS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Instance-secret specific section
+
+    This section focuses on attributes specific to GCS Instance Secrets. It includes details like:
+
+    * `type`: Specifies the Instance Secret type (key-value-properties).
+
+    * `acl`: Access control level (read-only or read-write).
+
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+
+    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Step 2: Apply the manifest
+
+    To create the GCS Instance Secret within DataOS, use the `apply` command. Since GCS Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource apply -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl apply -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage 
+      dataos-ctl resource apply -f depot_secret.yaml
+      Example usage:
+      $ dataos-ctl apply -f depot_secret.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
+      INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
+      INFO[0004] 🛠 apply...complete
+      ```
+    </CodeGroup>
+  </Accordion>
+
+  <Accordion title="AWS CodeCommit" defaultOpen={false}>
+    ## Create an Instance Secret for securing GCS credentials
+
+    Google Cloud Storage (GCS) is an object storage system. Object stores are distributed storage systems designed to store and manage large amounts of unstructured data.
+
+    To create a Google Cloud Storage (GCS) Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
+
+    ### Step 1: Create a manifest file
+
+    Begin by creating a manifest file to hold the configuration details for your GCS Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+
+    <CodeGroup>
+      ```yaml Read-only instance-secret
+      name: ${gcs-depot-name}-r  # Name of the instance-secret, indicating it's for read-only access.
+      version: v1  # Version of the instance-secret.
+      type: instance-secret  # Specifies that this is an instance-secret.
+      description: ${description}  # Optional: Brief description of the instance-secret's purpose.
+      layer: user  # DataOS layer where the secret is assigned.
+      instance-secret:
+        type: key-value-properties  # Type of Instance-secret, stored as key-value pairs.
+        acl: r  # Access control level, set to 'r' for read-only access.
+        data:
+          projectid: ${project-id}  # Unique identifier of the Google Cloud project that your GCS bucket resides in.
+          email: ${client-email}  # Email address associated with the Google Cloud service account.
+        files:
+          gcskey_json: ${path-to-gcskey-json}  # Path to the JSON key file for the Google Cloud service account.
+
+      ```
+
+      ```yaml Read-write instance-secret
+      name: ${gcs-depot-name}-rw  # Name of the instance-secret, indicating it's for read-write access.
+      version: v1  # Version of the instance-secret.
+      type: instance-secret  # Specifies that this is an instance-secret.
+      description: ${description}  # Optional: Brief description of the instance-secret's purpose.
+      layer: user  # DataOS layer where the secret is assigned.
+      instance-secret:
+        type: key-value-properties  # Type of Instance-secret, stored as key-value pairs.
+        acl: rw  # Access control level, set to 'rw' for read-write access.
+        data:
+          projectid: ${project-id}  # Unique identifier of the Google Cloud project that your GCS bucket resides in.
+          email: ${client-email}  # Email address associated with the Google Cloud service account.
+        files:
+          gcskey_json: ${path-to-gcskey-json}  # Path to the JSON key file for the Google Cloud service account.
+      ```
+    </CodeGroup>
+
+    ### **Resource meta section**
+
+    The GCS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Instance-secret specific section
+
+    This section focuses on attributes specific to GCS Instance Secrets. It includes details like:
+
+    * `type`: Specifies the Instance Secret type (key-value-properties).
+
+    * `acl`: Access control level (read-only or read-write).
+
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+
+    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Step 2: Apply the manifest
+
+    To create the GCS Instance Secret within DataOS, use the `apply` command. Since GCS Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource apply -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl apply -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage 
+      dataos-ctl resource apply -f depot_secret.yaml
+      Example usage:
+      $ dataos-ctl apply -f depot_secret.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
+      INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
+      INFO[0004] 🛠 apply...complete
+      ```
+    </CodeGroup>
   </Accordion>
 </AccordionGroup>
+
+## How to manage an Instance Secret?
+
+### Validate the Instance Secret
+
+To validate the proper creation of the ABFSS Instance Secret in DataOS, use the `get` command.
+
+<CodeGroup>
+  ```bash Command
+  dataos-ctl resource get -t instance-secret
+  ```
+
+  ```bash Expected output
+  INFO[0000] 🔍 get...                                     
+  INFO[0000] 🔍 get...complete                             
+
+          NAME     | VERSION |      TYPE       | WORKSPACE | STATUS |  RUNTIME  |  OWNER             
+  -----------------|---------|-----------------|-----------|--------|-----------|------------------------------
+       depotsecret | v1      | instance-secret |           | active |           | iamgroot
+  ```
+</CodeGroup>
+
+To get the list of all the Instance Secret within the Dataos environment execute the following command.
+
+<CodeGroup>
+  ```bash Command
+  dataos-ctl resource get -t instance-secret -a
+  ```
+
+  ```bash Expected output
+  dataos-ctl resource get -t instance-secret -a
+  INFO[0000] 🔍 get...                                     
+  INFO[0000] 🔍 get...complete                             
+
+               NAME            | VERSION |      TYPE       | WORKSPACE | STATUS | RUNTIME |         OWNER          
+  -----------------------------|---------|-----------------|-----------|--------|---------|------------------------
+    abfssv2alpha-r             | v1      | instance-secret |           | active |         | iamgroot       
+    abfssv2alpha-rw            | v1      | instance-secret |           | active |         | iamgroot       
+    abfsswithoutmetastore-r    | v1      | instance-secret |           | active |         | thisisthor              
+    abfsswithoutmetastore-rw   | v1      | instance-secret |           | active |         | thisisthor              
+
+  ```
+</CodeGroup>
+
+### Delete the Instance Secret
+
+<Warning>
+  Before you can delete an Instance Secret, you need to make sure there are no other Resources dependent on it. For example, if a Depot has a dependency on an Instance Secret, trying to delete that Instance Secret will cause an error. So, you'll need to remove the Depot first, and then you can delete the Instance Secret. This rule applies to not just Depot, but all dependent Resources, such as Workflow, Service, Worker, etc. The following error will be thrown if any Resource has a dependency on Instance Secret as shown below. Example usage:
+
+  ```bash
+  dataos-ctl delete -t instance-secret -n sampleinstsecret
+  INFO[0000] 🗑 delete...                                  
+  INFO[0000] 🗑 deleting sampleinstsecret:v1:instance-secret... 
+  INFO[0001] 🗑 deleting sampleinstsecret:v1:instance-secret...error 
+  WARN[0001] 🗑 delete...error                             
+  ERRO[0001] Invalid Parameter - failure deleting instance resource : cannot delete resource, it is a dependency of 'depot:v2alpha:sampleinstdepot'
+  ```
+</Warning>
+
+[](https://dataos.info/resources/instance_secret/first_steps/#__codelineno-15-1)
+
+To delete the ABFSS Instance Secret, use one of the following methods:
+
+**Method 1:**  Specify the Workspace, Resource-type, and Instance Secret name in the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+<CodeGroup>
+  ```bash Command
+  dataos-ctl resource delete -t ${resource-type} -n ${resource-name}
+  ```
+
+  ```bash Alternative command
+  dataos-ctl delete -t ${resource-type} -n ${resource-name}
+  ```
+
+  ```bash Example usage
+  dataos-ctl resource delete -t instance-secret -n sampleinstsecret
+  Expected output:
+  dataos-ctl delete -t instance-secret -n sampleinstsecret
+  INFO[0000] 🗑 delete...                                  
+  INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+  INFO[0000] 🗑 delete...complete
+  ```
+</CodeGroup>
+
+**Method 2:**  Copy the Instance Secret name, version, and Resource-type from the output of the [`get`](https://dataos.info/interfaces/cli/command_reference/#get) command seperated by '|' enclosed within quotes and use it as a string in the delete command.
+
+<CodeGroup>
+  ```bash Command
+  dataos-ctl resource delete -i ${resource-name:version:resource-type}
+  ```
+
+  ```bash Alternative command
+  dataos-ctl delete -i ${resource-name:version:resource-type}
+  ```
+
+  ```bash Example usage
+  dataos-ctl resource delete -i sampleinstsecret:v1:instance-secret
+  Expected output:
+  INFO[0000] 🗑 delete...                                  
+  INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+  INFO[0000] 🗑 delete...complete
+  ```
+</CodeGroup>
+
+**Method 3:** Specify the path of the manifest file and use the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+<CodeGroup>
+  ```bash Command
+  dataos-ctl resource delete -f ${manifest-file-path}
+  ```
+
+  ```bash Alternative command
+  dataos-ctl delete -f ${manifest-file-path}
+  ```
+
+  ```bash Example usage
+  dataos-ctl delete -f /home/desktop/connect-city/instance_secret.yaml
+  Expected output:
+  INFO[0000] 🗑 delete...                                  
+  INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+  INFO[0000] 🗑 delete...complete
+  ```
+</CodeGroup>
 
 ## First steps
 

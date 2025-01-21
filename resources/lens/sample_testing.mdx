@@ -1,9 +1,436 @@
 ---
-title: "Sample Testing"
+title: "Instance Secret"
+search: "[object Object]"
 ---
 
+An Instance Secret is a DataOS Resource designed for securely storing sensitive information at the DataOS instance level. This includes usernames, passwords, certificates, tokens, and keys. The primary purpose of an Instance Secret is to address the inherent exposure risk associated with directly embedding such confidential data within application code or manifest files (YAML configuration files).
+
+Instance secrets establish a critical segregation between sensitive data and Resource definitions. This division minimizes inadvertent exposure during various Resource management phases, including creation, viewing, or editing. By leveraging Instance Secrets, data developers safeguard sensitive information, mitigating security vulnerabilities inherent in their data workflows.&#x20;
+
+Operators can exercise precise control over who can retrieve credentials from Secrets, if in your organization any data developer needs access to secrets you can assign them a 'read instance secret' use case using \[Bifrost]\(/interfaces/bifrost/).
+
+<Tip>
+  **Instance Secret in the Data Product Lifecycle**
+
+  In the Data Product Lifecycle, Instance Secrets play a crucial role in securely managing credentials and sensitive information. They are particularly useful when your data product requires:
+
+  * **Secure Credential Management**: Storing and managing sensitive information such as usernames, passwords, API keys, or certificates securely within an instance. For example, an instance secret can securely store the credentials needed to connect to a database, ensuring that these credentials are not exposed in the codebase or configuration files.
+
+  * **Access Control**: Ensuring that only authorized components and services within the instance can access the credentials. For instance, an instance secret can be used to provide a web application with the credentials to access a third-party service without exposing those credentials to the broader environment.
+
+  * **Auditing and Compliance**: Maintaining a secure and auditable method of handling sensitive data, complying with security policies and regulatory requirements. Instance secrets ensure that credential usage is logged and can be monitored for compliance purposes.
+
+  By using instance secrets, you can manage sensitive information securely and efficiently, mitigating the risk of exposing credentials while enabling seamless access for your applications and services.
+</Tip>
+
+<Info>
+  In the DataOS ecosystem, there are two specialized Resources designed to protect sensitive information: Instance Secret and [Secret](https://dataos.info/resources/secret/). The Instance Secret offers a wider scope, extending across the entirety of the [DataOS Instance](https://dataos.info/resources/types_of_dataos_resources/#instance-level-resources). Resources within any Workspace can utilize Instance Secrets for securely retrieving sensitive data. In contrast, Secrets are limited to the [Workspace level](https://dataos.info/resources/types_of_dataos_resources/#workspace-level-resources), accessible exclusively within a specific Workspace and only by Resources associated with that Workspace.
+</Info>
+
+## Structure of an Instance Secret manifest
+
+The structure of the Instance Secret manifest file is outlined as follows:
 
 
-```bash
-dataos-ctl user apikey get
-```
+## How to create an Instance Secret?
+
+This section includes steps for creating the Instance Secret for securing commonly used data sources and repositories.&#x20;
+
+<AccordionGroup>
+  <Accordion title="ABFSS" defaultOpen={false}>
+    ## Create an Instance Secret for securing ABFSS credentials
+
+    To create an Azure Blob File System Secure (ABFSS) Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
+
+    ### Step 1: Create a manifest file
+
+    Begin by creating a manifest file to hold the configuration details for your ABFSS Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+
+    <CodeGroup>
+      ```yaml Read-only instance-secret
+      # Azure Blob File System Secure (ABFSS) Read Instance Secret Manifest
+
+      name: ${abfss-depot-name}-r # Name of the instance-secret, indicating it's for read-only access.
+      version: v1 # Manifest Version           
+      type: instance-secret # Resource-type
+      description: ${description}   # Optional: Brief description of the instance-secret's purpose.
+      layer: user # DataOS Layer                 
+      instance-secret:
+        type: key-value-properties  # Type of Instance-secret
+        acl: r                     # Access control level, set to 'r' for read-only access.
+        data:                       
+          azureendpointsuffix: ${azure-endpoint-suffix}  # Endpoint suffix for the Azure storage account.
+          azurestorageaccountkey: ${azure-storage-account-key}  # Access key for the Azure storage account.
+          azurestorageaccountname: ${azure-storage-account-name}  # Name of the Azure storage account.
+      ```
+
+      ```yaml Read-write instance-secret
+      # Azure Blob File System Secure (ABFSS) Read Write Instance Secret Manifest
+
+      name: ${abfss-depot-name}-rw  # Name of the instance-secret, indicating it's for read-write access.
+      version: v1 # Manifest Version           
+      type: instance-secret # Resource-type
+      description: ${description}   # Optional: Brief description of the instance-secret's purpose.
+      layer: user # DataOS Layer                 
+      instance-secret:
+        type: key-value-properties  # Type of Instance-secret
+        acl: rw                     # Access control level, set to 'rw' for read-write access.
+        data:                       
+          azureendpointsuffix: ${azure-endpoint-suffix}  # Endpoint suffix for the Azure storage account.
+          azurestorageaccountkey: ${azure-storage-account-key}  # Access key for the Azure storage account.
+          azurestorageaccountname: ${azure-storage-account-name}  # Name of the Azure storage account.
+      ```
+    </CodeGroup>
+
+    ### **Resource meta section**
+
+    The ABFSS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Instance-secret specific section
+
+    This section focuses on attributes specific to ABFSS Instance Secrets. It includes details like:
+
+    * `type`: Specifies the Instance Secret type (key-value-properties).
+
+    * `acl`: Access control level (read-only or read-write).
+
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+
+    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Step 2: Apply the manifest
+
+    To create the ABFSS Instance Secret within DataOS, use the `apply` command. Since ABFSS Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource apply -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl apply -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage 
+      dataos-ctl resource apply -f depot_secret.yaml
+      Example usage:
+      $ dataos-ctl apply -f depot_secret.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
+      INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
+      INFO[0004] 🛠 apply...complete
+      ```
+    </CodeGroup>
+    
+  </Accordion>
+
+  <Accordion title="WASBS" defaultOpen={false}>
+    ## Create an instance secret for securing WASBS credentials
+
+    To create a Windows Azure Storage Blob Service (WASBS) Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
+
+    ### Step 1: Create a manifest file
+
+    Begin by creating a manifest file to hold the configuration details for your WASBS Instance Secret. Below are the templates for the read-only and read-write manifests:
+
+    <CodeGroup>
+      ```yaml Read-only instance-secret
+      name: ${wasbs-depot-name}-r # Name of the instance-secret, indicating it's for read-only access.
+      version: v1 # Manifest Version           
+      type: instance-secret # Resource-type
+      description: ${description}   # Optional: Brief description of the instance-secret's purpose.
+      layer: user # DataOS Layer                 
+      instance-secret:
+        type: key-value-properties  # Type of Instance-secret
+        acl: r                     # Access control level, set to 'r' for read-only access.
+        data:                       
+          azureendpointsuffix: ${azure-endpoint-suffix}  # Endpoint suffix for the Azure storage account.
+          azurestorageaccountkey: ${azure-storage-account-key}  # Access key for the Azure storage account.
+          azurestorageaccountname: ${azure-storage-account-name}  # Name of the Azure storage account.
+      ```
+
+      ```yaml Read-write instance-secret
+      name: ${wasbs-depot-name}-rw  # Name of the instance-secret, indicating it's for read-write access.
+      version: v1 # Manifest Version           
+      type: instance-secret # Resource-type
+      description: ${description}   # Optional: Brief description of the instance-secret's purpose.
+      layer: user # DataOS Layer                 
+      instance-secret:
+        type: key-value-properties  # Type of Instance-secret
+        acl: rw                     # Access control level, set to 'rw' for read-write access.
+        data:                       
+          azureendpointsuffix: ${azure-endpoint-suffix}  # Endpoint suffix for the Azure storage account.
+          azurestorageaccountkey: ${azure-storage-account-key}  # Access key for the Azure storage account.
+          azurestorageaccountname: ${azure-storage-account-name}  # Name of the Azure storage account.
+      ```
+    </CodeGroup>
+
+    ### Resource meta section
+
+    The WASBS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Instance-secret specific section
+
+    This section focuses on attributes specific to WASBS Instance Secrets. It includes details like:
+
+    * `type`: Specifies the Instance Secret type (key-value-properties).
+
+    * `acl`: Access control level (read-only or read-write).
+
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+
+    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Step 2: Apply the manifest
+
+    To create the WASBS Instance Secret within DataOS, use the `apply` command. Since these Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource apply -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl apply -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage 
+      dataos-ctl resource apply -f depot_secret.yaml
+      Example usage:
+      $ dataos-ctl apply -f depot_secret.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
+      INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
+      INFO[0004] 🛠 apply...complete
+      ```
+    </CodeGroup>
+  </Accordion>
+
+  <Accordion title="GCS" defaultOpen={false}>
+    ## Create an Instance Secret for Securing GCS Credentials
+
+    To create a Google Cloud Storage (GCS) Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
+
+    ### Step 1: Create a Manifest File
+
+    Begin by creating a manifest file to hold the configuration details for your GCS Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+
+<AccordionGroup>
+  <Accordion title="ABFSS" defaultOpen={false}>
+    ## Create an Instance Secret for securing ABFSS credentials
+
+    To create an Azure Blob File System Secure (ABFSS) Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
+
+    ### Step 1: Create a manifest file
+
+    Begin by creating a manifest file to hold the configuration details for your ABFSS Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+
+    <CodeGroup>
+      ```yaml Read-only instance-secret
+      # Azure Blob File System Secure (ABFSS) Read Instance Secret Manifest
+
+      name: ${abfss-depot-name}-r # Name of the instance-secret, indicating it's for read-only access.
+      version: v1 # Manifest Version           
+      type: instance-secret # Resource-type
+      description: ${description}   # Optional: Brief description of the instance-secret's purpose.
+      layer: user # DataOS Layer                 
+      instance-secret:
+        type: key-value-properties  # Type of Instance-secret
+        acl: r                     # Access control level, set to 'r' for read-only access.
+        data:                       
+          azureendpointsuffix: ${azure-endpoint-suffix}  # Endpoint suffix for the Azure storage account.
+          azurestorageaccountkey: ${azure-storage-account-key}  # Access key for the Azure storage account.
+          azurestorageaccountname: ${azure-storage-account-name}  # Name of the Azure storage account.
+      ```
+
+      ```yaml Read-write instance-secret
+      # Azure Blob File System Secure (ABFSS) Read Write Instance Secret Manifest
+
+      name: ${abfss-depot-name}-rw  # Name of the instance-secret, indicating it's for read-write access.
+      version: v1 # Manifest Version           
+      type: instance-secret # Resource-type
+      description: ${description}   # Optional: Brief description of the instance-secret's purpose.
+      layer: user # DataOS Layer                 
+      instance-secret:
+        type: key-value-properties  # Type of Instance-secret
+        acl: rw                     # Access control level, set to 'rw' for read-write access.
+        data:                       
+          azureendpointsuffix: ${azure-endpoint-suffix}  # Endpoint suffix for the Azure storage account.
+          azurestorageaccountkey: ${azure-storage-account-key}  # Access key for the Azure storage account.
+          azurestorageaccountname: ${azure-storage-account-name}  # Name of the Azure storage account.
+      ```
+    </CodeGroup>
+    
+
+    ### Resource Meta Section
+
+    The GCS manifest includes a **Resource meta** section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the **Attributes of Resource Meta Section**.
+
+    ### Instance-secret Specific Section
+
+    This section focuses on attributes specific to GCS Instance Secrets. It includes the following details:
+
+    * **type**: Specifies the Instance Secret type (key-value-properties).
+
+    * **acl**: Access control level (read-only or read-write). You can choose either **r** (read-only) or **rw** (read-write).
+
+    * **data**: Contains sensitive information such as Google Cloud project ID and the service account’s email.
+
+    * **files**: Points to the JSON key file used for authentication with Google Cloud.
+
+    #### Step 2: Apply the Manifest
+
+    After creating the manifest file, you need to apply it to your DataOS environment using the CLI. The process will authenticate your Google Cloud service account and establish secure access to the specified GCS bucket based on the defined access control level (read-only or read-write).
+  </Accordion>
+
+  <Accordion title="New Accordion" defaultOpen="false">
+    j
+  </Accordion>
+
+  <Accordion title="New Accordion" defaultOpen="false">
+    j
+  </Accordion>
+
+  <Accordion title="New Accordion" defaultOpen="false">
+    h
+  </Accordion>
+
+  <Accordion title="New Accordion" defaultOpen="false">
+    d
+  </Accordion>
+</AccordionGroup>
+
+## How to manage an Instance Secret?
+
+### Validate the Instance Secret
+
+To validate the proper creation of the ABFSS Instance Secret in DataOS, use the `get` command.
+
+<CodeGroup>
+  ```bash Command
+  dataos-ctl resource get -t instance-secret
+  ```
+
+  ```bash Expected output
+  INFO[0000] 🔍 get...                                     
+  INFO[0000] 🔍 get...complete                             
+
+          NAME     | VERSION |      TYPE       | WORKSPACE | STATUS |  RUNTIME  |  OWNER             
+  -----------------|---------|-----------------|-----------|--------|-----------|------------------------------
+       depotsecret | v1      | instance-secret |           | active |           | iamgroot
+  ```
+</CodeGroup>
+
+To get the list of all the Instance Secret within the Dataos environment execute the following command.
+
+<CodeGroup>
+  ```bash Command
+  dataos-ctl resource get -t instance-secret -a
+  ```
+
+  ```bash Expected output
+  dataos-ctl resource get -t instance-secret -a
+  INFO[0000] 🔍 get...                                     
+  INFO[0000] 🔍 get...complete                             
+
+               NAME            | VERSION |      TYPE       | WORKSPACE | STATUS | RUNTIME |         OWNER          
+  -----------------------------|---------|-----------------|-----------|--------|---------|------------------------
+    abfssv2alpha-r             | v1      | instance-secret |           | active |         | iamgroot       
+    abfssv2alpha-rw            | v1      | instance-secret |           | active |         | iamgroot       
+    abfsswithoutmetastore-r    | v1      | instance-secret |           | active |         | thisisthor              
+    abfsswithoutmetastore-rw   | v1      | instance-secret |           | active |         | thisisthor              
+
+  ```
+</CodeGroup>
+
+### Delete the Instance Secret
+
+<Warning>
+  Before you can delete an Instance Secret, you need to make sure there are no other Resources dependent on it. For example, if a Depot has a dependency on an Instance Secret, trying to delete that Instance Secret will cause an error. So, you'll need to remove the Depot first, and then you can delete the Instance Secret. This rule applies to not just Depot, but all dependent Resources, such as Workflow, Service, Worker, etc. The following error will be thrown if any Resource has a dependency on Instance Secret as shown below. Example usage:
+
+  ```bash
+  dataos-ctl delete -t instance-secret -n sampleinstsecret
+  INFO[0000] 🗑 delete...                                  
+  INFO[0000] 🗑 deleting sampleinstsecret:v1:instance-secret... 
+  INFO[0001] 🗑 deleting sampleinstsecret:v1:instance-secret...error 
+  WARN[0001] 🗑 delete...error                             
+  ERRO[0001] Invalid Parameter - failure deleting instance resource : cannot delete resource, it is a dependency of 'depot:v2alpha:sampleinstdepot'
+  ```
+</Warning>
+
+[](https://dataos.info/resources/instance_secret/first_steps/#__codelineno-15-1)
+
+To delete the ABFSS Instance Secret, use one of the following methods:
+
+**Method 1:**  Specify the Workspace, Resource-type, and Instance Secret name in the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+<CodeGroup>
+  ```bash Command
+  dataos-ctl resource delete -t ${resource-type} -n ${resource-name}
+  ```
+
+  ```bash Alternative command
+  dataos-ctl delete -t ${resource-type} -n ${resource-name}
+  ```
+
+  ```bash Example usage
+  dataos-ctl resource delete -t instance-secret -n sampleinstsecret
+  Expected output:
+  dataos-ctl delete -t instance-secret -n sampleinstsecret
+  INFO[0000] 🗑 delete...                                  
+  INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+  INFO[0000] 🗑 delete...complete
+  ```
+</CodeGroup>
+
+**Method 2:**  Copy the Instance Secret name, version, and Resource-type from the output of the [`get`](https://dataos.info/interfaces/cli/command_reference/#get) command seperated by '|' enclosed within quotes and use it as a string in the delete command.
+
+<CodeGroup>
+  ```bash Command
+  dataos-ctl resource delete -i ${resource-name:version:resource-type}
+  ```
+
+  ```bash Alternative command
+  dataos-ctl delete -i ${resource-name:version:resource-type}
+  ```
+
+  ```bash Example usage
+  dataos-ctl resource delete -i sampleinstsecret:v1:instance-secret
+  Expected output:
+  INFO[0000] 🗑 delete...                                  
+  INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+  INFO[0000] 🗑 delete...complete
+  ```
+</CodeGroup>
+
+**Method 3:** Specify the path of the manifest file and use the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+<CodeGroup>
+  ```bash Command
+  dataos-ctl resource delete -f ${manifest-file-path}
+  ```
+
+  ```bash Alternative command
+  dataos-ctl delete -f ${manifest-file-path}
+  ```
+
+  ```bash Example usage
+  dataos-ctl delete -f /home/desktop/connect-city/instance_secret.yaml
+  Expected output:
+  INFO[0000] 🗑 delete...                                  
+  INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+  INFO[0000] 🗑 delete...complete
+  ```
+</CodeGroup>
+
+## First steps
+
+Instance-secret Resource in DataOS can be created by applying the manifest file using the DataOS CLI. To learn more about this process, navigate to the link: First steps.
+
+## Configuration
+
+Instance-secret can be configured to secure the credentials information in the form of key-value pairs. For a detailed breakdown of the configuration options and attributes, please refer to the documentation: Attributes of Instance Secret manifest.
+
+## Recipes
+
+How to refer to Instance Secret in other DataOS Resources?
