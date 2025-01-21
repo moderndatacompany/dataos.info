@@ -2,6 +2,8 @@
 title: "GraphQL Query Examples"
 ---
 
+Following are the examples of GraphQL query with different filters for analytical needs.
+
 ### `equals`
 
 Use it when you need an exact match. It supports multiple values.
@@ -74,7 +76,7 @@ The opposite operator of `contains`. It supports multiple values.
 
 * Dimension types: `string`.
 
-```json
+```graphql
 query LensQuery {
   table(limit: 10) {
     customers(
@@ -208,7 +210,7 @@ type `number`.
 
 * Dimension types: `number`.
 
-```json
+```graphql
 query LensQuery {
   table(limit: 10) {
     customers(
@@ -270,7 +272,7 @@ query LensQuery {
 
 The operator `inDateRange` is used to filter a time dimension into a specific date range. The values must be an array of dates with the format 'YYYY-MM-DD' or `YYYY-MM-DDTHH:mm:ss.SSS` format. If only one date specified the filter would be set exactly to this date.
 
-- `granularity`: A granularity for a time dimension. It can be one of the default granularities (e.g., `year` or `week`).
+* `granularity`: A granularity for a time dimension. It can be one of the default granularities (e.g., `year` or `week`).
 
 * Dimension types: `time`.
 
@@ -331,12 +333,11 @@ query LensQuery {
 
 ### `afterDate`
 
-
 The same as `beforeDate`, but is used to get all results after a specific date.
 
-- Dimension types: `time`.
+* Dimension types: `time`.
 
-```json
+```graphql
 query LensQuery {
   table(limit: 10) {
     customers(
@@ -357,8 +358,9 @@ query LensQuery {
 Filters can contain `or` and `and` logical operators. Logical operators have
 only one of the following properties:
 
-- `or` An array with one or more filters or other logical operators
-- `and` An array with one or more filters or other logical operators
+* `or` An array with one or more filters or other logical operators
+
+* `and` An array with one or more filters or other logical operators
 
 ```graphql
 query LensQuery {
