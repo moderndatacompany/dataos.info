@@ -7,7 +7,7 @@ An Instance Secret is a DataOS Resource designed for securely storing sensitive 
 
 Instance secrets establish a critical segregation between sensitive data and Resource definitions. This division minimizes inadvertent exposure during various Resource management phases, including creation, viewing, or editing. By leveraging Instance Secrets, data developers safeguard sensitive information, mitigating security vulnerabilities inherent in their data workflows.
 
-Operators can exercise precise control over who can retrieve credentials from Secrets, if in your organization any data developer needs access to secrets you can assign them a 'read instance secret' use case using \[Bifrost]\(/interfaces/bifrost/).
+Operators can exercise precise control over who can retrieve credentials from Secrets, if in your organization any data developer needs access to secrets you can assign them a 'read instance secret' use case using Bifrost.
 
 <Tip>
   **Instance Secret in the Data Product Lifecycle**
@@ -1565,7 +1565,7 @@ To get the list of all the Instance Secret within the Dataos environment execute
 
 To delete the ABFSS Instance Secret, use one of the following methods:
 
-**Method 1:**  Specify the Workspace, Resource-type, and Instance Secret name in the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+**Method 1:**  Specify the Resource-type and Instance Secret name in the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
 
 <CodeGroup>
   ```bash Command
@@ -1586,7 +1586,7 @@ To delete the ABFSS Instance Secret, use one of the following methods:
   ```
 </CodeGroup>
 
-**Method 2:**  Copy the Instance Secret name, version, and Resource-type from the output of the [`get`](https://dataos.info/interfaces/cli/command_reference/#get) command seperated by '|' enclosed within quotes and use it as a string in the delete command.
+**Method 2:**  Copy the Instance Secret name, version, and Resource-type from the output of the [`get`](https://dataos.info/interfaces/cli/command_reference/#get) command separated by '|' enclosed within quotes and use it as a string in the delete command.
 
 <CodeGroup>
   ```bash Command
@@ -1625,10 +1625,6 @@ To delete the ABFSS Instance Secret, use one of the following methods:
   INFO[0000] 🗑 delete...complete
   ```
 </CodeGroup>
-
-## First steps
-
-Instance-secret Resource in DataOS can be created by applying the manifest file using the DataOS CLI. To learn more about this process, navigate to the link: First steps.
 
 ## Configuration
 
