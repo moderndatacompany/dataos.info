@@ -37,36 +37,11 @@ Begin by creating a manifest file that will hold the configuration details for y
 
 The Instance Secret manifest comprises a Resource meta section that outlines essential metadata attributes applicable to all Resource types. Note that within this section some attributes are optional, while others are mandatory.
 
-```yaml
-# Resource meta section
-name: ${depotsecret-r} # Resource name (mandatory)
-version: v1 # Manifest version (mandatory)
-type: instance-secret # Resource-type (mandatory)
-tags: 
-  - ${new instance secret} # Tags (optional)
-  - ${resource}
-description: ${resource description} # Description (optional)
-owner: ${iamgroot} # Owner's DataOS UserID (optional)
-layer: ${user} # Layer (optional)
-instance-secret: # Instance-secret specific section
-```
-
 For more information about the various attributes in the Resource meta section, refer to the [Attributes of Resource meta section](https://dataos.info/resources/manifest_attributes/).
 
 #### **Instance Secret specific section**
 
 This section focuses on Instance Secret attributes, outlining details such as Instance Secret `type`, `acl`(access control list), sensitive `data` to be stored. Additionally, it allows for the optional inclusion of file paths of sensitive information to be stored using the `files` attribute.
-
-```yaml
-instance-secret: # Instance-secret specific section
-  type: ${{key-value-properties}} # Type of Instance-secret (mandatory)
-  acl: ${{r|rw}} # Access control list (mandatory)
-  data: # Data section mapping (either files or data is required)
-    ${{username: iamgroot}}
-    ${{password: abcd1234}}
-  files: # Manifest file path (either files or data is required)
-    ${{xyz: /home/instance-secret.yaml}}
-```
 
 [](https://dataos.info/resources/instance_secret/first_steps/#__codelineno-2-1)
 
@@ -114,7 +89,7 @@ To create an Instance Secret Resource instance  within the DataOS, use the`apply
 
 ### **Manage an Instance-Secret**
 
-#### **Validate the Instance Secret**instance secret
+#### **Validate the Instance Secret**
 
 To validate the proper creation of the Instance Secret Resource within the DataOS environment, employ the `get` command. Execute the following commands to ascertain the existence of the Instance Secret Resource.
 
@@ -166,6 +141,12 @@ To validate the proper creation of the Instance Secret Resource within the DataO
 To remove the Instance Secret Resource from the DataOS environment, utilize the `delete` command. Execute the following commands to initiate the deletion process:
 
 **Method 1:**  Specify the Workspace, Resource-type, and Instance Secret name in the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+<CodeGroup>
+  ```javascript helloWorld.js
+  console.log("Hello World");
+  ```
+</CodeGroup>
 
 [Command](https://dataos.info/resources/instance_secret/first_steps/#command_2)[Example Usage](https://dataos.info/resources/instance_secret/first_steps/#example-usage_2)
 
