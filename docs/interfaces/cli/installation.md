@@ -155,7 +155,7 @@ Follow the steps enumerated below to install the Command Line Interface. Check t
     >     ```
     >     
 
-You have successfully installed the CLI, now the next step is to [initialize](#initialize) the DataOS context. 
+You have successfully installed the CLI, now the next step is to [initialize](/interfaces/cli/initialization/) the DataOS context. 
 
 
    <br>
@@ -294,7 +294,7 @@ You have successfully installed the CLI, now the next step is to [initialize](#i
     >     ```
     >     
 
-You have successfully installed the CLI, now the next step is to [initialize](#initialize) the DataOS context. 
+You have successfully installed the CLI, now the next step is to [initialize](/interfaces/cli/initialization/) the DataOS context. 
 
 ## Installation on Windows
 
