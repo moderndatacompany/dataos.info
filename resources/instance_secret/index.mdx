@@ -905,48 +905,47 @@ This section includes steps for creating the Instance Secret for securing common
   </Accordion>
 
   <Accordion title="Oracle" defaultOpen={false}>
-    ## Create an Instance Secret for securing GCS credentials
+    ## Create an Instance Secret for securing Oracle credentials
 
-    Google Cloud Storage (GCS) is an object storage system. Object stores are distributed storage systems designed to store and manage large amounts of unstructured data.
+    Oracle is a SQL database. SQL databases are typically centralized systems designed for structured data, organized into tables with a predefined schema.
 
-    To create a Google Cloud Storage (GCS) Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
+    To create a Oracle Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
 
     ### Step 1: Create a manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your GCS Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+    Begin by creating a manifest file to hold the configuration details for your Oracle Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <CodeGroup>
       ```yaml Read-only instance-secret
-      name: ${gcs-depot-name}-r  # Name of the instance-secret, indicating it's for read-only access.
-      version: v1  # Version of the instance-secret.
-      type: instance-secret  # Specifies that this is an instance-secret.
-      description: ${description}  # Optional: Brief description of the instance-secret's purpose.
-      layer: user  # DataOS layer where the secret is assigned.
-      instance-secret:
-        type: key-value-properties  # Type of Instance-secret, stored as key-value pairs.
-        acl: r  # Access control level, set to 'r' for read-only access.
-        data:
-          projectid: ${project-id}  # Unique identifier of the Google Cloud project that your GCS bucket resides in.
-          email: ${client-email}  # Email address associated with the Google Cloud service account.
-        files:
-          gcskey_json: ${path-to-gcskey-json}  # Path to the JSON key file for the Google Cloud service account.
+      # Oracle Read Instance-secret Manifest
 
+      name: ${oracle-depot-name}-r # Unique identifier for Resource, replace ${oracle-depot-name} with depot name
+      version: v1 # Manifest version
+      type: instance-secret # Type of the Resource
+      description: ${description} # Purpose of the Instance-secret
+      layer: user # DataOS layer
+      instance-secret:
+        type: key-value-properties # Secret type
+        acl: r # Access control: 'r' for read-only
+        data:
+          username: ${username} # replace with oracle username
+          password: ${password} # replace with oracle password
       ```
 
       ```yaml Read-write instance-secret
-      name: ${gcs-depot-name}-rw  # Name of the instance-secret, indicating it's for read-write access.
-      version: v1  # Version of the instance-secret.
-      type: instance-secret  # Specifies that this is an instance-secret.
-      description: ${description}  # Optional: Brief description of the instance-secret's purpose.
-      layer: user  # DataOS layer where the secret is assigned.
+      # Oracle Read Write Instance-secret Manifest
+
+      name: ${oracle-depot-name}-r # Unique identifier for Resource, replace ${oracle-depot-name} with depot name
+      version: v1 # Manifest version
+      type: instance-secret # Type of the Resource
+      description: ${description} # Purpose of the Instance-secret
+      layer: user # DataOS layer
       instance-secret:
-        type: key-value-properties  # Type of Instance-secret, stored as key-value pairs.
-        acl: rw  # Access control level, set to 'rw' for read-write access.
+        type: key-value-properties # Secret type
+        acl: rw # Access control: 'rw' for read-write
         data:
-          projectid: ${project-id}  # Unique identifier of the Google Cloud project that your GCS bucket resides in.
-          email: ${client-email}  # Email address associated with the Google Cloud service account.
-        files:
-          gcskey_json: ${path-to-gcskey-json}  # Path to the JSON key file for the Google Cloud service account.
+          username: ${username} # replace with oracle username
+          password: ${password} # replace with oracle password
       ```
     </CodeGroup>
 
@@ -968,7 +967,7 @@ This section includes steps for creating the Instance Secret for securing common
 
     ### Step 2: Apply the manifest
 
-    To create the GCS Instance Secret within DataOS, use the `apply` command. Since GCS Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create an Oracle Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
 
     <CodeGroup>
       ```bash Command
@@ -992,15 +991,15 @@ This section includes steps for creating the Instance Secret for securing common
   </Accordion>
 
   <Accordion title="Postgres" defaultOpen={false}>
-    ## Create an Instance Secret for securing GCS credentials
+    ## Create an Instance Secret for securing Postgres credentials
 
-    Google Cloud Storage (GCS) is an object storage system. Object stores are distributed storage systems designed to store and manage large amounts of unstructured data.
+    &#x20;Postgres is a SQL database. SQL databases are typically centralized systems designed for structured data, organized into tables with a predefined schema.
 
-    To create a Google Cloud Storage (GCS) Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
+    To create a Postgres Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
 
     ### Step 1: Create a manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your GCS Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+    Begin by creating a manifest file to hold the configuration details for your Postgres Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <CodeGroup>
       ```yaml Read-only instance-secret
@@ -1039,11 +1038,11 @@ This section includes steps for creating the Instance Secret for securing common
 
     ### **Resource meta section**
 
-    The GCS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    The Instance Secret manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Instance-secret specific section
 
-    This section focuses on attributes specific to GCS Instance Secrets. It includes details like:
+    This section focuses on attributes specific to Postgres Instance Secrets. It includes details like:
 
     * `type`: Specifies the Instance Secret type (key-value-properties).
 
@@ -1055,7 +1054,7 @@ This section includes steps for creating the Instance Secret for securing common
 
     ### Step 2: Apply the manifest
 
-    To create the GCS Instance Secret within DataOS, use the `apply` command. Since GCS Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the Postgres Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
 
     <CodeGroup>
       ```bash Command
@@ -1079,15 +1078,15 @@ This section includes steps for creating the Instance Secret for securing common
   </Accordion>
 
   <Accordion title="MongoDB" defaultOpen={false}>
-    ## Create an Instance Secret for securing GCS credentials
+    ## Create an Instance Secret for securing MongoDB credentials
 
-    Google Cloud Storage (GCS) is an object storage system. Object stores are distributed storage systems designed to store and manage large amounts of unstructured data.
+    MongoDB is a NoSQL database. NoSQL databases are designed for flexible, distributed data storage, accommodating unstructured or semi-structured data.
 
-    To create a Google Cloud Storage (GCS) Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
+    To create a MongoDB Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
 
     ### Step 1: Create a manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your GCS Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+    Begin by creating a manifest file to hold the configuration details for your MongoDB Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <CodeGroup>
       ```yaml Read-only instance-secret
@@ -1126,11 +1125,11 @@ This section includes steps for creating the Instance Secret for securing common
 
     ### **Resource meta section**
 
-    The GCS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    The MongoDB Instance Secret manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Instance-secret specific section
 
-    This section focuses on attributes specific to GCS Instance Secrets. It includes details like:
+    This section focuses on attributes specific to MongoDB Instance Secrets. It includes details like:
 
     * `type`: Specifies the Instance Secret type (key-value-properties).
 
@@ -1142,7 +1141,7 @@ This section includes steps for creating the Instance Secret for securing common
 
     ### Step 2: Apply the manifest
 
-    To create the GCS Instance Secret within DataOS, use the `apply` command. Since GCS Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the MongoDB Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
 
     <CodeGroup>
       ```bash Command
@@ -1166,48 +1165,48 @@ This section includes steps for creating the Instance Secret for securing common
   </Accordion>
 
   <Accordion title="Eventhub" defaultOpen={false}>
-    ## Create an Instance Secret for securing GCS credentials
+    ### Create an Instance Secret for securing Eventhub credentials
 
-    Google Cloud Storage (GCS) is an object storage system. Object stores are distributed storage systems designed to store and manage large amounts of unstructured data.
+    Eventhub is a streaming service platform. Streaming refers to the continuous and real-time transmission of data from a source to a destination. 
 
-    To create a Google Cloud Storage (GCS) Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
+    To create a Eventhub Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
 
     ### Step 1: Create a manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your GCS Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+    Begin by creating a manifest file to hold the configuration details for your Eventhub Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <CodeGroup>
       ```yaml Read-only instance-secret
-      name: ${gcs-depot-name}-r  # Name of the instance-secret, indicating it's for read-only access.
-      version: v1  # Version of the instance-secret.
-      type: instance-secret  # Specifies that this is an instance-secret.
-      description: ${description}  # Optional: Brief description of the instance-secret's purpose.
-      layer: user  # DataOS layer where the secret is assigned.
+      # Eventhub Read Instance-secret Manifest
+
+      name: ${eventhub-depot-name}-r # Unique identifier for Resource, replace ${eventhub-depot-name} with depot name
+      version: v1 # Manifest version
+      type: instance-secret # Type of the Resource
+      description: ${description} # Purpose of the Instance-secret
+      layer: user # DataOS layer
       instance-secret:
-        type: key-value-properties  # Type of Instance-secret, stored as key-value pairs.
-        acl: r  # Access control level, set to 'r' for read-only access.
+        type: key-value-properties # Secret type
+        acl: r # Access control: 'r' for read-only
         data:
-          projectid: ${project-id}  # Unique identifier of the Google Cloud project that your GCS bucket resides in.
-          email: ${client-email}  # Email address associated with the Google Cloud service account.
-        files:
-          gcskey_json: ${path-to-gcskey-json}  # Path to the JSON key file for the Google Cloud service account.
+          eh_shared_access_key_name: ${EH_SHARED_ACCESS_KEY_NAME} # replace with eventhub access key name
+          eh_shared_access_key: ${EH_SHARED_ACCESS_KEY} # replace with eventhub access key
 
       ```
 
       ```yaml Read-write instance-secret
-      name: ${gcs-depot-name}-rw  # Name of the instance-secret, indicating it's for read-write access.
-      version: v1  # Version of the instance-secret.
-      type: instance-secret  # Specifies that this is an instance-secret.
-      description: ${description}  # Optional: Brief description of the instance-secret's purpose.
-      layer: user  # DataOS layer where the secret is assigned.
+      # Eventhub Read Write Instance-secret Manifest
+
+      name: ${eventhub-depot-name}-rw # Unique identifier for Resource, replace ${eventhub-depot-name} with depot name
+      version: v1 # Manifest version
+      type: instance-secret # Type of the Resource
+      description: ${description} # Purpose of the Instance-secret
+      layer: user # DataOS layer
       instance-secret:
-        type: key-value-properties  # Type of Instance-secret, stored as key-value pairs.
-        acl: rw  # Access control level, set to 'rw' for read-write access.
+        type: key-value-properties # Secret type
+        acl: rw # Access control: 'rw' for read-write
         data:
-          projectid: ${project-id}  # Unique identifier of the Google Cloud project that your GCS bucket resides in.
-          email: ${client-email}  # Email address associated with the Google Cloud service account.
-        files:
-          gcskey_json: ${path-to-gcskey-json}  # Path to the JSON key file for the Google Cloud service account.
+          eh_shared_access_key_name: ${EH_SHARED_ACCESS_KEY_NAME} # replace with eventhub access key name
+          eh_shared_access_key: ${EH_SHARED_ACCESS_KEY} # replace with eventhub access key
       ```
     </CodeGroup>
 
@@ -1217,7 +1216,7 @@ This section includes steps for creating the Instance Secret for securing common
 
     ### Instance-secret specific section
 
-    This section focuses on attributes specific to GCS Instance Secrets. It includes details like:
+    This section focuses on attributes specific to Eventhub Instance Secrets. It includes details like:
 
     * `type`: Specifies the Instance Secret type (key-value-properties).
 
@@ -1229,7 +1228,7 @@ This section includes steps for creating the Instance Secret for securing common
 
     ### Step 2: Apply the manifest
 
-    To create the GCS Instance Secret within DataOS, use the `apply` command. Since GCS Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the Eventhub Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
 
     <CodeGroup>
       ```bash Command
@@ -1253,58 +1252,53 @@ This section includes steps for creating the Instance Secret for securing common
   </Accordion>
 
   <Accordion title="Git" defaultOpen={false}>
-    ## Create an Instance Secret for securing GCS credentials
+    ### Create an Instance Secret for securing Git repository credentials
 
-    Google Cloud Storage (GCS) is an object storage system. Object stores are distributed storage systems designed to store and manage large amounts of unstructured data.
+    Git repository is a central storage location where code, documentation, and related files are managed and versioned. It allows developers to track changes over time, collaborate on code by merging contributions from multiple developers, and maintain a history of modifications.
 
-    To create a Google Cloud Storage (GCS) Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
+    To create a Git repository Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
 
     ### Step 1: Create a manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your GCS Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+    Begin by creating a manifest file to hold the configuration details for your Git repository Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <CodeGroup>
       ```yaml Read-only instance-secret
-      name: ${gcs-depot-name}-r  # Name of the instance-secret, indicating it's for read-only access.
-      version: v1  # Version of the instance-secret.
-      type: instance-secret  # Specifies that this is an instance-secret.
-      description: ${description}  # Optional: Brief description of the instance-secret's purpose.
-      layer: user  # DataOS layer where the secret is assigned.
+      name: ${{gitcred-r}}
+      version: ${{v1}}
+      type: instance-secret
+      description: ${{"git credentials"}}
+      layer: ${{user}}
       instance-secret:
-        type: key-value-properties  # Type of Instance-secret, stored as key-value pairs.
-        acl: r  # Access control level, set to 'r' for read-only access.
+        type: ${{key-value}}
+        acl: ${{r}}
         data:
-          projectid: ${project-id}  # Unique identifier of the Google Cloud project that your GCS bucket resides in.
-          email: ${client-email}  # Email address associated with the Google Cloud service account.
-        files:
-          gcskey_json: ${path-to-gcskey-json}  # Path to the JSON key file for the Google Cloud service account.
-
+          GITSYNC_USERNAME: ${{"iamgroot"}}
+          GITSYNC_PASSWORD: ${{"56F4japOhkkQDS3trUnZsetFB2J3lnclDPgHThHLto="}}
       ```
 
       ```yaml Read-write instance-secret
-      name: ${gcs-depot-name}-rw  # Name of the instance-secret, indicating it's for read-write access.
-      version: v1  # Version of the instance-secret.
-      type: instance-secret  # Specifies that this is an instance-secret.
-      description: ${description}  # Optional: Brief description of the instance-secret's purpose.
-      layer: user  # DataOS layer where the secret is assigned.
+      name: ${{gitcred-rw}}
+      version: ${{v1}}
+      type: instance-secret
+      description: ${{"git credentials"}}
+      layer: ${{user}}
       instance-secret:
-        type: key-value-properties  # Type of Instance-secret, stored as key-value pairs.
-        acl: rw  # Access control level, set to 'rw' for read-write access.
+        type: ${{key-value}}
+        acl: ${{rw}}
         data:
-          projectid: ${project-id}  # Unique identifier of the Google Cloud project that your GCS bucket resides in.
-          email: ${client-email}  # Email address associated with the Google Cloud service account.
-        files:
-          gcskey_json: ${path-to-gcskey-json}  # Path to the JSON key file for the Google Cloud service account.
+          GITSYNC_USERNAME: ${{"iamgroot"}}
+          GITSYNC_PASSWORD: ${{"56F4japOhkkQDS3trUnZsetFB2J3lnclDPgHThHLto="}}
       ```
     </CodeGroup>
 
     ### **Resource meta section**
 
-    The GCS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    The Instance Secret manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Instance-secret specific section
 
-    This section focuses on attributes specific to GCS Instance Secrets. It includes details like:
+    This section focuses on attributes specific to Git repository Instance Secret. It includes details like:
 
     * `type`: Specifies the Instance Secret type (key-value-properties).
 
@@ -1316,7 +1310,7 @@ This section includes steps for creating the Instance Secret for securing common
 
     ### Step 2: Apply the manifest
 
-    To create the GCS Instance Secret within DataOS, use the `apply` command. Since GCS Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the Git repository Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
 
     <CodeGroup>
       ```bash Command
@@ -1340,58 +1334,53 @@ This section includes steps for creating the Instance Secret for securing common
   </Accordion>
 
   <Accordion title="Bitbucket" defaultOpen={false}>
-    ## Create an Instance Secret for securing GCS credentials
+    ### Create an Instance Secret for securing Bitbucket repository credentials
 
-    Google Cloud Storage (GCS) is an object storage system. Object stores are distributed storage systems designed to store and manage large amounts of unstructured data.
+    Bitbucket repository is a central storage location where code, documentation, and related files are managed and versioned. It allows developers to track changes over time, collaborate on code by merging contributions from multiple developers, and maintain a history of modifications.
 
-    To create a Google Cloud Storage (GCS) Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
+    To create a Bitbucket repository Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
 
     ### Step 1: Create a manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your GCS Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+    Begin by creating a manifest file to hold the configuration details for your Bitbucket repository Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <CodeGroup>
       ```yaml Read-only instance-secret
-      name: ${gcs-depot-name}-r  # Name of the instance-secret, indicating it's for read-only access.
-      version: v1  # Version of the instance-secret.
-      type: instance-secret  # Specifies that this is an instance-secret.
-      description: ${description}  # Optional: Brief description of the instance-secret's purpose.
-      layer: user  # DataOS layer where the secret is assigned.
+      name: ${{bitbucket-r}}
+      version: ${{v1}}
+      type: instance-secret
+      description: ${{"bitbucket credentials"}}
+      layer: ${{user}}
       instance-secret:
-        type: key-value-properties  # Type of Instance-secret, stored as key-value pairs.
-        acl: r  # Access control level, set to 'r' for read-only access.
+        type: ${{key-value}}
+        acl: ${{r}}
         data:
-          projectid: ${project-id}  # Unique identifier of the Google Cloud project that your GCS bucket resides in.
-          email: ${client-email}  # Email address associated with the Google Cloud service account.
-        files:
-          gcskey_json: ${path-to-gcskey-json}  # Path to the JSON key file for the Google Cloud service account.
-
+          GITSYNC_USERNAME: ${{"iamgroot"}}
+          GITSYNC_PASSWORD: ${{"56F4japOhkkQDS3trUnZsetFB2J3lnclDPgHThHLto="}}
       ```
 
       ```yaml Read-write instance-secret
-      name: ${gcs-depot-name}-rw  # Name of the instance-secret, indicating it's for read-write access.
-      version: v1  # Version of the instance-secret.
-      type: instance-secret  # Specifies that this is an instance-secret.
-      description: ${description}  # Optional: Brief description of the instance-secret's purpose.
-      layer: user  # DataOS layer where the secret is assigned.
+      name: ${{bitbucket-rw}}
+      version: ${{v1}}
+      type: instance-secret
+      description: ${{"bitbucket credentials"}}
+      layer: ${{user}}
       instance-secret:
-        type: key-value-properties  # Type of Instance-secret, stored as key-value pairs.
-        acl: rw  # Access control level, set to 'rw' for read-write access.
+        type: ${{key-value}}
+        acl: ${{rw}}
         data:
-          projectid: ${project-id}  # Unique identifier of the Google Cloud project that your GCS bucket resides in.
-          email: ${client-email}  # Email address associated with the Google Cloud service account.
-        files:
-          gcskey_json: ${path-to-gcskey-json}  # Path to the JSON key file for the Google Cloud service account.
+          GITSYNC_USERNAME: ${{"iamgroot"}}
+          GITSYNC_PASSWORD: ${{"56F4japOhkkQDS3trUnZsetFB2J3lnclDPgHThHLto="}}
       ```
     </CodeGroup>
 
     ### **Resource meta section**
 
-    The GCS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    The manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Instance-secret specific section
 
-    This section focuses on attributes specific to GCS Instance Secrets. It includes details like:
+    This section focuses on attributes specific to Bitbucket repository Instance Secrets. It includes details like:
 
     * `type`: Specifies the Instance Secret type (key-value-properties).
 
@@ -1403,7 +1392,7 @@ This section includes steps for creating the Instance Secret for securing common
 
     ### Step 2: Apply the manifest
 
-    To create the GCS Instance Secret within DataOS, use the `apply` command. Since GCS Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the Bitbucket repository Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
 
     <CodeGroup>
       ```bash Command
@@ -1427,15 +1416,15 @@ This section includes steps for creating the Instance Secret for securing common
   </Accordion>
 
   <Accordion title="AWS CodeCommit" defaultOpen={false}>
-    ## Create an Instance Secret for securing GCS credentials
+    ## Create an Instance Secret for securing AWS CodeCommit credentials
 
-    Google Cloud Storage (GCS) is an object storage system. Object stores are distributed storage systems designed to store and manage large amounts of unstructured data.
+    AWS CodeCommit is a central storage location where code, documentation, and related files are managed and versioned. It allows developers to track changes over time, collaborate on code by merging contributions from multiple developers, and maintain a history of modifications.
 
-    To create a Google Cloud Storage (GCS) Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
+    To create a AWS CodeCommit Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
 
     ### Step 1: Create a manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your GCS Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+    Begin by creating a manifest file to hold the configuration details for your AWS CodeCommit Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <CodeGroup>
       ```yaml Read-only instance-secret
@@ -1474,11 +1463,11 @@ This section includes steps for creating the Instance Secret for securing common
 
     ### **Resource meta section**
 
-    The GCS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    The manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Instance-secret specific section
 
-    This section focuses on attributes specific to GCS Instance Secrets. It includes details like:
+    This section focuses on attributes specific to AWS CodeCommit Instance Secrets. It includes details like:
 
     * `type`: Specifies the Instance Secret type (key-value-properties).
 
@@ -1490,7 +1479,7 @@ This section includes steps for creating the Instance Secret for securing common
 
     ### Step 2: Apply the manifest
 
-    To create the GCS Instance Secret within DataOS, use the `apply` command. Since GCS Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the AWS CodeCommit Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
 
     <CodeGroup>
       ```bash Command
