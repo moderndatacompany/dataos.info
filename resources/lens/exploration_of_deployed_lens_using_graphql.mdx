@@ -26,25 +26,25 @@ To authenticate API requests, you need a DataOS API key. This key validates your
 
 **Steps to Generate an API Key:**
 
-1. Open your terminal and run the following command to create a new API key:
+* Open your terminal and run the following command to create a new API key:&#x20;
 
 ```bash
 dataos-ctl user apikey create
 ```
 
-1. To view existing API keys, use:
+* To view existing API keys, use:
 
 ```bash
 dataos-ctl user apikey get
 ```
 
-1. Note down your API key and keep it secure. You will use this key to authenticate your API requests.
+* Note down your API key and keep it secure. You will use this key to authenticate your API requests.
 
 API key tokens can also be fetched from the DataOS GUI, for more details refer to the [documentation here](/interfaces/#create-tokens).
 
 ### **Configuring User Groups**
 
-To access and query data via the GraphQL endpoint, users must be part of a user group with the required permissions. The necessary permissions are defined using the `api_scopes` attribute within the user group configuration located in the Lens directory.
+To access and query data through the GraphQL endpoint, users need to belong to a user group that has the appropriate permissions. These permissions are granted through the `api_scopes` attribute in the user group configuration, which can be found in the Lens directory. Each user group defines the API scopes (such as meta, data, source, or graphql) that determine the access level for various API endpoints.
 
 **Example User Group Configuration**
 
@@ -98,25 +98,25 @@ user_groups:
 
 The Explorer Studio of Data Product Hub provides an intuitive, in-browser interface to interact with the GraphQL API.
 
-1. **Open Metis:** Go to the Metis application on the DataOS GUI and navigate to the Resource section here click on Lens choose the desired deployed Lens model.
+* **Open Metis:** Go to the Metis application on the DataOS GUI and navigate to the Resource section here click on Lens choose the desired deployed Lens model.
 
 <div>
   <img src="/resources/lens/consumption_of_deployed_lens/graphql/graphql1.png" alt="graphql" />
 </div>
 
-1. **Access GraphQL Tab:** Click on the ‘Explore in Studio’ button, the Studio will appear from here navigate to the GraphQL tab.
+* **Access GraphQL Tab:** Click on the ‘Explore in Studio’ button, the Studio will appear from here navigate to the GraphQL tab.
 
 <div>
   <img src="/resources/lens/consumption_of_deployed_lens/graphql/graphql2.png" alt="graphql" />
 </div>
 
-1. **Compose a Query:** Enter your GraphQL query in the left pane.
+* **Compose a Query:** Enter your GraphQL query in the left pane.
 
 <div>
   <img src="/resources/lens/consumption_of_deployed_lens/graphql/graphql3.png" alt="graphql" />
 </div>
 
-You can press `Ctrl + Space` to bring up the autocomplete window. For example:																				&#x9;
+* You can press `Ctrl + Space` to bring up the autocomplete window. For example:
 
 ```graphql
 query LensQuery {
@@ -128,7 +128,7 @@ query LensQuery {
   }
 ```
 
-1. **Execute the Query:** Click the 'Execute' button or press `Ctrl + Enter` to run the query. The results will appear in the right pane.
+* **Execute the Query:** Click the 'Execute' button or press `Ctrl + Enter` to run the query. The results will appear in the right pane.
 
 ```graphql
 {
@@ -148,7 +148,7 @@ query LensQuery {
 
 Curl is a command-line tool used for transferring data with URLs, making it a convenient choice for interacting with APIs directly from the terminal. Ensure that `curl` is installed on your system before proceeding.
 
-1. **Prepare the Request:** To send a GraphQL query using Curl, construct your request with the following template:
+**Prepare the Request:** To send a GraphQL query using Curl, construct your request with the following template:
 
 <CodeGroup>
   ```bash Syntax
@@ -166,23 +166,23 @@ Curl is a command-line tool used for transferring data with URLs, making it a co
   ```
 </CodeGroup>
 
-* **Replace `<URL>` with the appropriate endpoint based on your environment**:
+**Replace `<URL>` with the appropriate endpoint based on your environment**:
 
 ```bash
 https://<DATAOS_FQDN>/lens2/api/<WORKSPACE>:<NAME_OF_LENS>/v2/graphql
 ```
 
-* **Replace `<DATAOS_API_KEY>`with your actual DataOS API key:** Refer to the \[Generating an API Key]\(#generating-an-api-key) section for more information on obtaining an API key.
+**Replace `<DATAOS_API_KEY>`with your actual DataOS API key:** Refer to the \[Generating an API Key]\(#generating-an-api-key) section for more information on obtaining an API key.
 
-  * **Replace `<DATAOS_FQDN>` with the fully qualified domain name of your DataOS instance:** For example: \`alpha-omega.dataos.app\` or \`happy-kangaroo.dataos.app\`.
+* **Replace `<DATAOS_FQDN>` with the fully qualified domain name of your DataOS instance:** For example: \`alpha-omega.dataos.app\` or \`happy-kangaroo.dataos.app\`.
 
-  * **Replace `<WORKSPACE>` with the DataOS Workspace name where the Lens is deployed:** This is typically the name of the DataOS Workspace where the Lens is deployed. For example: `public`, `sandbox`, etc.
+* **Replace `<WORKSPACE>` with the DataOS Workspace name where the Lens is deployed:** This is typically the name of the DataOS Workspace where the Lens is deployed. For example: `public`, `sandbox`, etc.
 
-  * **Replace `<NAME_OF_LENS>` with the name of your deployed Lens model:** This corresponds to the specific Lens model you want to query.
+* **Replace `<NAME_OF_LENS>` with the name of your deployed Lens model:** This corresponds to the specific Lens model you want to query.
 
-  * **Replace `<GRAPHQL_QUERY>` with your GraphQL query:**  Format the query as a valid JSON string.
+* **Replace `<GRAPHQL_QUERY>` with your GraphQL query:**  Format the query as a valid JSON string.
 
-1. **Execute the Command:**  Run the command in your terminal to execute the query and view the response.
+**Execute the Command:**  Run the command in your terminal to execute the query and view the response.
 
 <Note>
   Ensure you replace the placeholders with the actual values specific to your environment. Properly formatted queries and valid API keys are essential for successful API interactions.
@@ -192,29 +192,29 @@ https://<DATAOS_FQDN>/lens2/api/<WORKSPACE>:<NAME_OF_LENS>/v2/graphql
 
 When working with a Postman collection to test APIs, you typically need to configure authorization, set request methods, and provide the request body. Below are the steps to get started:
 
-1. **Open Postman and import the Postman collection:**
+**Open Postman and import the Postman collection:**
 
-   * Open Postman and click on the **Import** button located at the top-left corner.
+1. Open Postman and click on the **Import** button located at the top-left corner.
 
-   * Import the Postman Collection file you’ve been given. For example, if you import the Lens API collection from the provided link, you will see a collection of API requests neatly organized into folders. Refer to the below image for subsequent steps.
+2. Import the Postman Collection file you’ve been given. For example, if you import the Lens API collection from the provided link, you will see a collection of API requests neatly organized into folders. Refer to the below image for subsequent steps.
 
 ![postman](https://dataos.info/resources/lens/exploring_deployed_lens_using_rest_apis/Untitled1.png "Postman")
 
-1. **Set up Authorization (bearer token):**
+**Set up Authorization (bearer token):**
 
-   * Once the collection is imported, click on the specific API request you want to test.
+1. Once the collection is imported, click on the specific API request you want to test.
 
-   * Go to the **Authorization** tab.
+2. Go to the **Authorization** tab.
 
-   * From the **Auth Type** dropdown, select **Bearer Token**.
+3. From the **Auth Type** dropdown, select **Bearer Token**.
 
-   * In the Token field, paste your Bearer token, which you have received from your authentication process.
+4. In the Token field, paste your Bearer token, which you have received from your authentication process.
 
-   * This token grants you access to the meta and data scopes.
+5. This token grants you access to the meta and data scopes.
 
-2. **Set the Request type:** Select the API request type as `POST` from the dropdown next to the API URL.
+**Set the Request type:** Select the API request type as `POST` from the dropdown next to the API URL.
 
-3. **Prepare the URL and Query the API:**  Prepare the URL according to what data you want to fetch.
+**Prepare the URL and Query the API:**  Prepare the URL according to what data you want to fetch.
 
 ```bash
 
@@ -231,9 +231,9 @@ https://<DATAOS_FQDN>/lens2/api/<WORKSPACE>:<NAME_OF_LENS>/v2/graphql
 
 * **Replace `<QUERY>` with the specific fields you want to query from schema.** Make sure to format the query string as valid JSON.
 
-1. **Set the Request Body in Postman (for POST Methods):** for `POST` requests, you must configure the Body tab for graphql. Refer to the below image for subsequent steps.
-   ![graphql](https://dataos.info/resources/lens/exploring_deployed_lens_using_rest_apis/graphql.png)
-   *Postman GraphQL request body tab*
+**Set the Request Body in Postman (for POST Methods):** for `POST` requests, you must configure the Body tab for graphql. Refer to the below image for subsequent steps.
+![graphql](https://dataos.info/resources/lens/exploring_deployed_lens_using_rest_apis/graphql.png)
+*Postman GraphQL request body tab*
 
 * In the `Body` tab, select `GraphQL` from the format options.
 
@@ -322,7 +322,7 @@ query {
 | TableQueryArgs | TableQueryArgs | Options that apply to the entire query      |
 | TableArgs      | TableArgs      | Options that apply only to a specific table |
 
-### TableQueryArgs
+### tableQueryArgs
 
 * **`limit` (`Int`):** A [row limit](https://cube.dev/docs/product/apis-integrations/queries#row-limit) for your query.
 
@@ -330,22 +330,37 @@ query {
 
 * **`timezone` (`String`):** The [time zone](https://cube.dev/docs/product/apis-integrations/queries#time-zone) for your query. You can set the desired time zone in the [TZ Database Name(opens in a new tab)](https://en.wikipedia.org/wiki/Tz_database) format, e.g., `America/Los_Angeles`.
 
-### TableArgs
+### tableArgs
 
-| Key     | Schema            | Description                                                                                                                                                                                                                                  |
-| ------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| where   | TableWhereInput   | The 'where' clause conditions specify the logical operators and filters you can use inside the where argument to refine your query. It uses logical operators like `AND`, `OR`  and to [filter](#filters) the specific table member filters. |
-| orderBy | TableOrderByInput | The `orderBy` clause specifies how to sort the query results. You can use it to sort by specific **table members** (fields/columns) in either ascending or descending order.                                                                 |
+| Key       | Schema                                  | Description                                                                                                                                                                                                                                  |
+| --------- | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `where`   | [`TableWhereInput`](#table-where-input) | The 'where' clause conditions specify the logical operators and filters you can use inside the where argument to refine your query. It uses logical operators like `AND`, `OR`  and to [filter](#filters) the specific table member filters. |
+| `orderBy` | `TableOrderByInput`                     | The `orderBy` clause specifies how to sort the query results. You can use it to sort by specific table members (fields/columns) in either ascending or descending order.                                                                     |
 
-### Filters
+### `tableWhereInput`
 
-* Datetime filters
+| Key             | Schema              | Description                                                                                                                                                                                                   |
+| --------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `AND`           | `[RootWhereInput!]` | The `AND` condition allows you to combine multiple filter conditions. All conditions within this group must be true for the query to return results.                                                          |
+| `OR`            | `[RootWhereInput!]` | The `OR` condition allows you to combine multiple filter conditions. At least one condition within this group must be true for the query to return results.                                                   |
+| `<tableMember>` | `Filter`            | Represents a filter for a specific member (field) of the table. You can use different filter types like `DateTimeFilter`, `FloatFilter`, and `StringFilter` to refine results based on specific field values. |
 
-*
+### `tableOrderByInput`
 
-These filters are used within the `where` clause to refine query results based on different data types like `DateTime`, `Float`, and `String`.
+| Key             | Schema                 | Description |
+| --------------- | ---------------------- | ----------- |
+| `<tableMember>` | [`OrderBy`](#order-by) |             |
 
-### `datetime` filter
+## Filters
+
+These filters are used within the `where` clause to refine query results based on different data types like `DateTime`,
+
+[`DateTimeFilter`](#date-time-filter) | [`FloatFilter`](#float-time-filter) |
+[`StringFilter`](#string-time-filter)
+
+`Float`, and `String`.
+
+### **`datetime` filter**
 
 | Key              | Schema     | Description                                      |
 | ---------------- | ---------- | ------------------------------------------------ |
@@ -359,7 +374,7 @@ These filters are used within the `where` clause to refine query results based o
 | `afterDate`      | `String`   | Matches any datetime after the specified date.   |
 | `set`            | `Boolean`  | Indicates if the datetime field is set.          |
 
-### `float` filter
+### **`float` filter**
 
 | Key         | Schema    | Description                                   |
 | ----------- | --------- | --------------------------------------------- |
@@ -369,7 +384,7 @@ These filters are used within the `where` clause to refine query results based o
 | `notIn`     | `[Float]` | Does not match any float value from the list. |
 | `set`       | `Boolean` | Indicates if the float field is set.          |
 
-### `string` filter
+### **`string` filter**
 
 | Key           | Schema     | Description                                              |
 | ------------- | ---------- | -------------------------------------------------------- |
@@ -381,7 +396,7 @@ These filters are used within the `where` clause to refine query results based o
 | `notContains` | `String`   | Does not match strings that contain the specified value. |
 | `set`         | `Boolean`  | Indicates if the string field is set.                    |
 
-### orderBy
+### **orderBy**
 
 `asc` | `desc`
 
@@ -464,7 +479,7 @@ query LensQuery {
 Filters can be set on the load query or on a specific table. Specifying the filter on the load query applies it to all tables in the query. Filters can be added to the query as follows:
 
 <CodeGroup>
-  ```javascript Query
+  ```graphql Query
   query LensQuery {
       table{
       account(
@@ -530,7 +545,7 @@ Filters can be set on the load query or on a specific table. Specifying the filt
 A GraphQL query that specifies an order by condition and limits the number of results returned would look like this:
 
 <CodeGroup>
-  ```javascript Query
+  ```graphql Query
   query LensQuery {
       table(limit: 10) {
       account(
@@ -616,7 +631,7 @@ A GraphQL query that specifies an order by condition and limits the number of re
 Using the same `account` table as before, let’s try and get the revenue for each. We can do this by adding the `sales` table to our query as follows:
 
 <CodeGroup>
-  ```javascript Query
+  ```graphql Query
   query LensQuery {
       table{
       account{
