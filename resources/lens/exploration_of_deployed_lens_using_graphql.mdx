@@ -237,25 +237,25 @@ https://<DATAOS_FQDN>/lens2/api/<WORKSPACE>:<NAME_OF_LENS>/v2/graphql
 
 * In the `Body` tab, select `GraphQL` from the format options.
 
-* Enter the GraphQL query in the provided field in the following format.
+* Enter the GraphQL query in the provided field in the following format.&#x20;
 
-```json
-query LensQuery {
-  table(limit: <int>, offset: <int> timezone:<>) {
-    <TABLE1_NAME> {
-      <DIMENSION>
-      <MEASURE_1>
-      <MEAUSRE_2>
-    }
-    <TABLE2_NAME>
-  }
-}
-```
-
-* Replace the table name and choose the required dimensions and measures.\*\*\*\* For instance,  to compare the average price and average margin of two major categories: Apparel and Footwear for the `products` table. The request body will be:
+* Replace the table name and choose the required dimensions and measures. For instance,  to compare the average price and average margin of two major categories: Apparel and Footwear for the `products` table. The request body will be as shown in the below example:
 
 <CodeGroup>
-  ```json Query
+  ```graphql Syntax
+  query <QueryName> {
+    table(limit: <int>, offset: <int> timezone:<>) {
+      <TABLE1_NAME> {
+        <DIMENSION>
+        <MEASURE_1>
+        <MEAUSRE_2>
+      }
+      <TABLE2_NAME>
+    }
+   }
+  ```
+
+  ```graphql Example
   query LensQuery {
     table(limit: 10, offset: 0) {
       products {
@@ -263,41 +263,6 @@ query LensQuery {
         average_price
         average_margin
       }
-    }
-  }
-  ```
-
-  ```
-  query LensQuery {
-    table(limit: 10, offset: 0) {
-      products {
-        productcategory
-        average_price
-        average_margin
-      }
-    }
-  }
-  ```
-
-  ```json Response
-  {
-    "data": {
-      "table": [
-        {
-          "products": {
-            "productcategory": "Apparel",
-            "average_price": 84.94859281437131,
-            "average_margin": 50.872714570858385
-          }
-        },
-        {
-          "products": {
-            "productcategory": "Footwear",
-            "average_price": 83.98569138276541,
-            "average_margin": 49.84462925851698
-          }
-        }
-      ]
     }
   }
   ```
@@ -343,7 +308,7 @@ query {
 | --------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `AND`           | `[RootWhereInput!]` | The `AND` condition allows you to combine multiple filter conditions. All conditions within this group must be true for the query to return results.                                                          |
 | `OR`            | `[RootWhereInput!]` | The `OR` condition allows you to combine multiple filter conditions. At least one condition within this group must be true for the query to return results.                                                   |
-| `<tableMember>` | `Filter`            | Represents a filter for a specific member (field) of the table. You can use different filter types like `DateTimeFilter`, `FloatFilter`, and `StringFilter` to refine results based on specific field values. |
+| `<tableMember>` | [`Filter`](#filter)           | Represents a filter for a specific member (field) of the table. You can use different filter types like `DateTimeFilter`, `FloatFilter`, and `StringFilter` to refine results based on specific field values. |
 
 ### **`tableOrderByInput`**
 
@@ -394,7 +359,7 @@ These filters are used within the `where` clause to refine query results based o
 | `notContains` | `String`   | Does not match strings that contain the specified value. |
 | `set`         | `Boolean`  | Indicates if the string field is set.                    |
 
-### **orderBy**
+## **orderBy**
 
 `asc` | `desc`
 
