@@ -26,23 +26,29 @@ curl --location --request POST '${URL}' --header 'apikey: ${APIKEY}' --output ${
 
 **Parameters:**
 
-1. **URL:**  This is the API endpoint for syncing lens with PowerBI. It contains DATAOS\_FQDN, name and workspace of lens.```bash
+1. **URL:**  This is the API endpoint for syncing lens with PowerBI. It contains DATAOS\_FQDN, name and workspace of lens.
+
+```bash
    https://<DATAOS_FQDN>/lens2/sync/api/v1/power-bi/<workspace_name>:<lens_name> 
-   ```
+```
 
-   * **DATAOS\_FQDN:** Replace DATAOS\_FQDN with the current Fully Qualified Domain Name (FQDN) where the Lens is deployed. For example, liberal-monkey.dataos.app,. is the FQDN and `liberal monkey` is the context name.
+* **DATAOS\_FQDN:** Replace DATAOS\_FQDN with the current Fully Qualified Domain Name (FQDN) where the Lens is deployed. For example, liberal-monkey.dataos.app,. is the FQDN and `liberal monkey` is the context name.
 
-   * **WORKSPACE\_NAME:** Replace `<workspace_name>` with the actual workspace where Lens has been deployed. for e.g., `public`, `sandbox`, `curriculum`.
+* **WORKSPACE\_NAME:** Replace `<workspace_name>` with the actual workspace where Lens has been deployed. for e.g., `public`, `sandbox`, `curriculum`.
 
-   * **LENS\_NAME:** The name of the Lens model to be synced with Tableau. For example sales360.
+* **LENS\_NAME:** The name of the Lens model to be synced with Tableau. For example sales360.
 
-2. **Headers:**&#x54;he DataOS API key for the user can be obtained by executing the command below.```bash
-   dataos-ctl user apikey get
-   ```
+1. **Headers:**
 
    * **apikey:** User's API key for the current context in Lens.
 
-3. **Output:** A `file.zip` archive is downloaded, containing the main components of a Power BI project. The name of the zip file can be specified during the curl command execution, and it will be saved accordingly.
+The DataOS API key for the user can be obtained by executing the command below.
+
+```bash
+dataos-ctl user apikey get
+```
+
+1. **Output:** A `file.zip` archive is downloaded, containing the main components of a Power BI project. The name of the zip file can be specified during the curl command execution, and it will be saved accordingly.
 
 The `file.zip` includes essential components for syncing a Lens Model with Power BI, organized into folders such as `.Report` and `.SemanticModel`:
 
