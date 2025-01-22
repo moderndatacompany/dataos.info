@@ -113,9 +113,20 @@ DATAOS_RUN_AS_APIKEY: ****** # Add the user API Key for the env
 
 To connect via the Cluster, refer to the provided environmental variables in the syntax below.
 
-When connecting with different sources, refer to the [data source guide](/resources/lens/data_sources/) for various sources, as each may need its own specific settings.
+```
+# Data Source
+# This defines env variables for connecting to the source via the cluster
+LENS2_SOURCE_TYPE: minerva #If you want to connect via Themis, change the source type to Themis 
+LENS2_SOURCE_NAME: cluster_name #add the cluster name
+LENS2_SOURCE_CATALOG_NAME: catalog_name #add the catalog name
+DATAOS_RUN_AS_APIKEY: ******
+```
+
+When connecting with different sources, refer to the [data source guide](/resources/lens/data_sources/) for various sources, as each may need its specific settings.
 
 * **Verify Service configuration:** In the service configuration, the image attribute specifies the container image to be used. Ensure that the image tag is up to date or matches the version pulled during the prerequisite setup.
+
+To know more about the configurations of the docker-compose click [here](/resources/lens/docker_compose_attribute/)
 
 ## Testing Lens in the development environment
 
@@ -156,8 +167,6 @@ Before using APIS to explore a Lens, the Lens name needs to be retrieved, verify
 psql: error: connection to server at "localhost" (127.0.0.1), port 25432 failed: Connection refused
 ```
 
-
-
 **via SQL API**
 
 Lens exposes a PostgreSQL-compatible interface, to query Lens tables and views using standard PostgreSQL syntax.
@@ -170,7 +179,7 @@ To interact with Lens through PostgreSQL, the following options are available:
 
 **Using PostgreSQL client (psql)**
 
-Enter the host name as `localhost`, port as given in the service of the `docker-compose.yml` and name of the Lens and its workspace in `lens:${workspace_name}:${lens_name}` format.
+Enter the hostname as `localhost`, port as given in the service of the `docker-compose.yml` and the name of the Lens and its workspace in `lens:${workspace_name}:${lens_name}` format.
 
 <Tip>
   Always refer to 'ports' within the services section in `docker-compose.yml` for the exposed port.
