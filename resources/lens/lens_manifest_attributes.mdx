@@ -137,13 +137,7 @@ lens:
  compute: runnable-default
 ```
 
-***
-
 ### **`runAsApiKey`**
-
-<aside class="callout">
-  🗣 The <b>runAsApiKey</b> attribute allows a user to assume the identity of another user through the provision of the latter's API key.
-</aside>
 
 **Description:** The `runAsApiKey` attribute allows a user to assume the identity of another user by providing the latter's API key.
 
@@ -180,9 +174,9 @@ lens:
 
 ### **`runAsUser`**
 
-<aside class="callout">
-  🗣 Before applying the manifest file for a resource that includes the user ID of the use-case assignee using the runAsUser attribute, ensure that the same person has assigned the appropriate use-case to you
-</aside>
+<Tip>
+   Before applying the manifest file for a resource that includes the user ID of the use-case assignee using the runAsUser attribute, ensure that the same person has assigned the appropriate use-case to you
+</Tip>
 
 **Description:** When the `runAsUser` attribute is configured with the UserID of the use-case assignee, it grants the authority to perform operations on behalf of that user.
 
@@ -251,7 +245,7 @@ lens:
 
 **Example usage:** If the codebase for your Lens is stored in a private code repository, you can create a Secret for the same and refer to it within the manifest file of Lens in the following way:
 
-```yaml title="instance_secret.yml"
+```yaml instance_secret.yml
 name: github-r
 version: v1
 type: instance-secret
@@ -265,7 +259,7 @@ instance-secret:
   GITSYNC_PASSWORD: ${PASSWORD}
 ```
 
-```yaml
+```yaml lens_deployment.yml
 # Referred in Lens manifest file
 lens:
 	secrets:
