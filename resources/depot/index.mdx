@@ -184,105 +184,109 @@ To create Depots, ensure that you possess the following tags.
     </CodeGroup>
   </Accordion>
 
-  <Accordion title="Bigquery" defaultOpen={false}>
-    ### Pre-requisites
+  <Accordion title="Google Bigquery" defaultOpen={false}>
+    ### Pre-requisites specific to the Bigquery Depot
 
-    To create an Instance Secret for securing BigQuery credentials, you must have the following information:
+    To create a Bigquery Depot you must have the following details:
 
-    * **Project ID**: The BigQuery project ID used to identify your Google Cloud project. You can retrieve this from the Google Cloud Console by navigating to the project dashboard and locating the **Project ID** under project information.
+    * **projectid**: The unique identifier of the Google Cloud project where your GCS bucket resides. You can find this in the Google Cloud Console under the "Project Info" section of your project's dashboard. It is essential for associating operations with the correct project.
 
-    * **Email ID**: The email address associated with the service account used to access BigQuery. This can be found in the **IAM & Admin > Service Accounts** section of the Google Cloud Console by selecting the relevant service account and viewing its details.
+    * **email**: The email address associated with the Google Cloud service account. You can retrieve this by navigating to the Google Cloud Console under "IAM & Admin" > "Service Accounts" and selecting the relevant service account. This email is used for authenticating requests to GCS.
 
-    * **JSON Key File**: The path to the JSON key file for the service account, used for authentication. To obtain this, go to **IAM & Admin > Service Accounts** in the Google Cloud Console, select the service account, click **Keys**, and download the JSON key file by selecting **Add Key > JSON**. Ensure the file is securely stored and note its path.
+    * **json\_keyfile**: The path to the JSON key file associated with the Google Cloud service account. This file is used for authentication and can be downloaded from the Google Cloud Console under "IAM & Admin" > "Service Accounts." Select the service account, click on "Keys," and download the key by selecting "Add Key" > "JSON." Ensure the file is securely stored and the path is accessible.
 
-    Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
+    * **project**: (Optional) The name of the Google Cloud project. While not always required, it can be specified to provide additional context. You can find it in the Google Cloud Console under the "Project Info" section.
 
-    ## Create an Instance Secret for securing Bigquery credentials
+    ### Create a Bigquery Depot
 
-    Bigquery is a data warehouse that serves as a centralized repository for structured data, enabling efficient query and analysis.
+    Azure Blob File System Secure (ABFSS) is an object storage system. Object stores are distributed storage systems designed to store and manage large amounts of unstructured data.
 
-    To create a Bigquery Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
+    DataOS enables the creation of a Depot of type 'Bigquery' to facilitate the reading of data stored in an Azure Blob Storage account. This Depot provides access to the storage account, which can consist of multiple containers. A container serves as a grouping mechanism for multiple blobs. It is recommended to define a separate Depot for each container. To create a Depot of type ‘ABFSS‘, follow the below steps:
 
-    ### Step 1: Create a manifest file
+    ### Step 1: Create an Instance Secret for securing Bigquery credentails
 
-    Begin by creating a manifest file to hold the configuration details for your Bigquery Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+    <Warning>
+      This step can be skipped if you prefer to create a Depot without referencing an Instance Secret.
+    </Warning>
+
+    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).&#x20;
+
+    ### Step 2: Create a Bigquery Depot manifest file
+
+    Begin by creating a manifest file to hold the configuration details for your Bigquery Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
 
     <CodeGroup>
-      ```yaml Read-only instance-secret
-      # Google Bigquery Read Instance-secret Manifest
-
-      name: ${bigquery-depot-name}-r # Unique identifier for Resource, replace ${bigquery-depot-name} with depot name
-      version: v1 # Manifest version
-      type: instance-secret # Type of the Resource
-      description: ${description} # Purpose of the Instance-secret
-      layer: user # DataOS layer
-      instance-secret:
-        type: key-value-properties # Secret type
-        acl: r # Access control: 'r' for read-only
-        data:
-          projectid: ${project-name} # Replace with Bigquery project ID
-          email: ${email-id} # Replace with Bigquery email ID
-        files:
-          json_keyfile: ${json-file-path}
-
+      ```yaml Inline credentials Depot manifest file
+      name: ${{depot-name}}
+      version: v1
+      type: depot
+      tags:
+        - ${{tag1}}
+        - ${{tag2}}
+      owner: ${{owner-name}}
+      layer: user
+      depot:
+        type: ABFSS                                       
+        description: ${{description}}
+        external: ${{true}}
+        compute: ${{runnable-default}}
+        connectionSecret:                                 
+          - acl: rw
+            type: key-value-properties
+            data:
+              azurestorageaccountname: ${{account-name}}
+              azurestorageaccountkey: ${{account-key}}
+          - acl: r
+            type: key-value-properties
+            data:
+              azurestorageaccountname: ${{account-name}}
+              azurestorageaccountkey: ${{account-key}}
+        spec:                                             
+          account: ${{account-name}}
+          container: ${{container-name}}
+          relativePath: ${{relative-path}}
+          format: ${{format}}
       ```
 
-      ```yaml Read-write instance-secret
-      # Google Bigquery Read-Write Instance-secret Manifest
+      ```yaml Instance Secret reference Depot manifest file
+      name: ${{depot-name}}
+      version: v2alpha
+      type: depot
+      tags:
+        - ${{tag1}}
+        - ${{tag2}}
+      owner: ${{owner-name}}
+      layer: user
+      depot:
+        type: ABFSS                                       
+        description: ${{description}}
+        external: ${{true}}
+        compute: ${{runnable-default}}
+        secrets:
+          - name: ${{abfss-instance-secret-name}}-r
+            allkeys: true
 
-      name: ${bigquery-depot-name}-rw # Unique identifier for Resource, replace ${bigquery-depot-name} with depot name
-      version: v1 # Manifest version
-      type: instance-secret # Type of the Resource
-      description: ${description} # Purpose of the Instance-secret
-      layer: user # DataOS layer
-      instance-secret:
-        type: key-value-properties # Secret type
-        acl: rw # Access control: 'rw' for read-write
-        data:
-          projectid: ${project-name} # Replace with Bigquery project ID
-          email: ${email-id} # Replace with Bigquery email ID
-        files:
-          json_keyfile: ${json-file-path}
+          - name: ${{abfss-instance-secret-name}}-rw
+            allkeys: true
+        abfss:                                             
+          account: ${{account-name}}
+          container: ${{container-name}}
+          relativePath: ${{relative-path}}
+          format: ${{format}}
       ```
     </CodeGroup>
 
-    ### **Resource meta section**
+    ### Step 3: Apply the Depot manifest file
 
-    The Bigquery Instance Secret manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
-
-    ### Instance-secret specific section
-
-    This section focuses on attributes specific to Bigquery Instance Secrets. It includes details like:
-
-    * `type`: Specifies the Instance Secret type (key-value-properties).
-
-    * `acl`: Access control level (read-only or read-write).
-
-    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
-
-    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
-
-    ### Step 2: Apply the manifest
-
-    To create the Bigquery Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    Once you have the manifest file ready in your code editor, simply copy the path of the manifest file and apply it through the DataOS CLI by pasting the path in the placeholder, using the command given below:
 
     <CodeGroup>
       ```bash Command
-      dataos-ctl resource apply -f ${manifest-file-path}
+      dataos-ctl resource apply -f ${{yamlfilepath}}
       ```
 
       ```bash Alternative command
-      dataos-ctl apply -f ${manifest-file-path}
-      ```
-
-      ```bash Example usage 
-      dataos-ctl resource apply -f depot_secret.yaml
-      Example usage:
-      $ dataos-ctl apply -f depot_secret.yaml
-      INFO[0000] 🛠 apply...                                   
-      INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
-      INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
-      INFO[0004] 🛠 apply...complete
+      dataos-ctl apply -f ${{yamlfilepath}}
       ```
     </CodeGroup>
   </Accordion>
