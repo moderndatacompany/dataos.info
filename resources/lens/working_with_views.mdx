@@ -14,8 +14,6 @@ Views act as an abstraction layer over the data graph of tables, allowing consum
 
 ## Types of Views
 
-
-
 * **Entity-first:** An Entity-first view is structured around an real-world entity in your data model or object of interest, such as a `customer`, `product`, or `transaction`. In this type of view, the focus is on describing all the attributes and relationships of a single entity. The goal is to allow users to explore and analyze the characteristics and behaviors of these entities without necessarily being focused on metrics or aggregated measures. For example, an Entity-first view could include detailed customer profiles, product details, or individual transaction records.
 
 * **Metric-first:** A Metric is a type of logical view that, by default, provides a logical view of a logical table, containing only one measure and a time dimension. This means that a Metric represents a specific data point or calculation over time, focusing on one key measure, such as average spent per category, retention rate, or churn rate, and linking it to a time period for analysis.
@@ -153,8 +151,6 @@ Views are named after the specific metric they represent, making them easy to id
   ```
 </CodeGroup>
 
-
-
 If needed, you can create multiple views for different use cases from a single entity. This approach prevents users from being overwhelmed with too much data by presenting focused data slices in separate views, each highlighting only relevant measures and dimensions.
 
 **Multiple metrics in the single view**
@@ -227,7 +223,7 @@ views:
 
 ## **Exploration and activation**
 
-* **Exploration**: Views can be explored using tools such as **Iris Board,** which provides automated, dynamic dashboards for visualizing and analyzing performance metrics. These tools help detect anomalies and reveal trends over time. You can also query the view in Lens Studio directly.
+* **Exploration**: Views can be explored using tools such as Iris Board, which provides automated, dynamic dashboards for visualizing and analyzing performance metrics. These tools help detect anomalies and reveal trends over time. You can also query the view in Lens Studio directly.
 
 * **Activation**: Metrics can be embedded into operational workflows, triggering alerts, populating Excel models for cross-tab analysis, or integrated into email automation tools for marketing or retention strategies.
 
@@ -241,19 +237,15 @@ views:
 
 To explore the view via Iris Board, follow the same steps as above to navigate to the Lens Studio page.
 
-<div>
-  <img src="/resources/lens/working_with_views/iris01.png" alt="Tables and Views" />
-
-  <figcaption> Iris button on Metis </figcaption>
-</div>
+<Frame caption="Iris button on Metis">
+  <img src="/resources/lens/working_with_views/iris01.png" />
+</Frame>
 
 Once on the Lens Studio page, click the Iris button located beside the Explore button to explore the view via the Iris Board. An Iris board exploration page will be displayed, listing all the views.
 
-<div>
-  <img src="/resources/lens/working_with_views/iris02.png" alt="Tables and Views" />
-
-  <figcaption> View in Iris </figcaption>
-</div>
+<Frame caption="View in Iris">
+  <img src="/resources/lens/working_with_views/iris02.png" />
+</Frame>
 
 ### **Exploring Views on Data Products Hub**
 
@@ -261,68 +253,58 @@ Follow these steps to explore views and metrics within the Data Products Hub (DP
 
 **Step 1: Access DataOS Home Page**
 
-* Open the **DataOS Home Page** in your browser.
+* Open the DataOS Home Page in your browser.
 
-* On the home page, click on the **Data Products Hub** application.
+* On the home page, click on the Data Products Hub application.
 
-<div>
-  <img src="/resources/lens/working_with_views/dph1.png" alt="Tables and Views" />
-
-  <figcaption> DataOS Home Page </figcaption>
-</div>
+<Frame caption="DataOS Home Page">
+  <img src="/resources/lens/working_with_views/dph1.png" />
+</Frame>
 
 **Step 2: Search for a Data Product**
 
 * Use the search bar in **Data Products Hub 2.0** to find the desired data product. For example, search for *Customer Churn Prediction*.
 
-<div>
-  <img src="/resources/lens/working_with_views/dph2.png" alt="Tables and Views" />
-
-  <figcaption> Data Product Hub </figcaption>
-</div>
+<Frame caption="DataOS Home Page">
+  <img src="/resources/lens/working_with_views/dph1.png" />
+</Frame>
 
 **Step 3: Explore Metrics**
 
-* The **Overview** tab will load by default.
+* The 'Overview' tab will load by default.
 
-* Click on either **Entitites** or **Metrics** tab to view all available views for the selected data product.
+* Click on either Entitites or Metrics tab to view all available views for the selected data product.
 
 * This section provides an overview of the metric-first approach and displays key metrics associated with the data product.
 
-<div>
-  <img src="/resources/lens/working_with_views/dph3.png" alt="Tables and Views" />
-
-  <figcaption />
-</div>
+<Frame caption="">
+  <img src="/resources/lens/working_with_views/dph3.png" />
+</Frame>
 
 **Step 4: View data lineage**
 
-* You can trace the data source for each metric. For example, a metric for *Customer Churn Prediction* might be sourced from the *purchase\_data* table.
+* You can trace the data source for each metric. For example, a metric for *Customer Churn Prediction* might be sourced from the `purchase_data` table.
 
 * To explore data lineage, click on the drop-down arrow. This will show the origin of the metric, including the table and dimensions used in the calculation.
 
 * The lineage view also helps you understand how the metric is calculated and which data sources contribute to it.
 
-<div>
-  <img src="/resources/lens/working_with_views/dph4.png" alt="Tables and Views" />
-
-  <figcaption> Data Lineage </figcaption>
-</div>
+<Frame caption="Data Lineage">
+  <img src="/resources/lens/working_with_views/dph4.png" />
+</Frame>
 
 **Step 5: Access the Iris board for Metric analysis**
 
-* Click on the Quick Insights link at the **References** section's top-r**ight** corner.
+* Click on the Quick Insights link at the References section's top-right corner.
 
-* This will take you directly to the **Iris Board**, where you can observe and analyze the metric view in more detail.
+* This will take you directly to the Iris Board, where you can observe and analyze the metric view in more detail.
 
 **Step 6: Navigate to the DPH Studio**
 
-* Next to the **Quick Insights** button, click the **Explore** button.
+* Next to the Quick Insights button, click the Explore button.
 
-* This will open the **DPH Exploration Page**, with the default tab set to **Studio**. Query your metrics here.
+* This will open the DPH Exploration Page, with the default tab set to Studio. Query your metrics here.
 
-<div>
-  <img src="/resources/lens/working_with_views/dph5.png" alt="Tables and Views" />
-
-  <figcaption> Entities and Metrics </figcaption>
-</div>
+<Frame caption="Entities and Metrics">
+  <img src="/resources/lens/working_with_views/dph5.png" />
+</Frame>
