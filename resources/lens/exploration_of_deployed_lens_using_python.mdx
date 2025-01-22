@@ -3,12 +3,11 @@ title: "Exploration of Lens using python"
 navigation.title: "using Python"
 ---
 
-
 ## Using Lens APIs
 
-> As per the use case, utilize any of the APIs available, such as load, SQL, or meta.
+> As per the use case, utilize any of the APIs endpoint available, such as `load`,`sql`, or `meta`.
 
-### **Step 1: Import Required Libraries**
+### **Step 1: Import required libraries**
 
 First, import the necessary libraries. You need `requests` for making HTTP requests, `json` for handling JSON data, and `pandas` for data manipulation.
 
@@ -18,7 +17,7 @@ import json
 import pandas as pd
 ```
 
-### **Step 2: Define the URL and Headers**
+### **Step 2: Define the URL and headers**
 
 Define the URL for the API endpoint and the headers required for the request. The headers include the content type, authorization token. Replace `<apikey>` with your `<dataos_api_token>`.
 
@@ -33,7 +32,7 @@ headers = {
 }
 ```
 
-**Code Parameters:**
+**Code parameters:**
 
 **URL:**
 
@@ -51,7 +50,7 @@ headers = {
 dataos-ctl user apikey get
 ```
 
-### **Step 3: Create the Payload**
+### **Step 3: Create the payload**
 
 Create the payload for the POST request. This payload is a JSON object containing the query parameters, such as measures, dimensions, segments, filters, time dimensions, limit, and response format.
 
@@ -122,48 +121,50 @@ df.head()
 
 Here is the complete script for reference:
 
-```python
-import requests
-import json
-import pandas as pd
+<Accordion title="Click here to view the complete script" defaultOpen={false}>
+  ```
+  import requests
+  import json
+  import pandas as pd
 
-url = "https://liberal-donkey.dataos.app/lens2/api/public:flashtest/v2/load"
-headers = {
-  'Content-Type': 'application/json',
-  'Authorization': 'Bearer <apikey>',
-  'Cookie': 'connect.sid=s%3A2chO2fMucxnKmX3BGd98hiGu4VEQhxL7.g1ud0spLM046rqygt2VANHSGr7pjjf4%2FuUyEicUVcIA'
-}
-payload = json.dumps({
-  "query": {
-    "measures": [
-    "customer.average_age",
-    "customer.total_customers"
-    ],
-    "dimensions": [],
-    "segments": [],
-    "filters": [],
-    "timeDimensions": [],
-    "limit": 10000,
-    "responseFormat": "compact"
+  url = "https://liberal-donkey.dataos.app/lens2/api/public:flashtest/v2/load"
+  headers = {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer <apikey>',
+    'Cookie': 'connect.sid=s%3A2chO2fMucxnKmX3BGd98hiGu4VEQhxL7.g1ud0spLM046rqygt2VANHSGr7pjjf4%2FuUyEicUVcIA'
   }
-})
+  payload = json.dumps({
+    "query": {
+      "measures": [
+      "customer.average_age",
+      "customer.total_customers"
+      ],
+      "dimensions": [],
+      "segments": [],
+      "filters": [],
+      "timeDimensions": [],
+      "limit": 10000,
+      "responseFormat": "compact"
+    }
+  })
 
-response = requests.request("POST", url, headers=headers, data=payload)
+  response = requests.request("POST", url, headers=headers, data=payload)
 
-response_json = response.json()
+  response_json = response.json()
 
-data = response_json.get('data', {})
-members = data.get('members', [])
-dataset = data.get('dataset', [])
+  data = response_json.get('data', {})
+  members = data.get('members', [])
+  dataset = data.get('dataset', [])
 
-df = pd.DataFrame(dataset, columns=members)
+  df = pd.DataFrame(dataset, columns=members)
 
-df.head()
-```
+  df.head()
+  ```
+</Accordion>
 
-<aside class="callout">
-  💡 For the meta API endpoint, employ the <b>`GET`</b> method, while for other endpoints, utilize the <b>`POST`</b> method.
-</aside>
+<Info>
+  For the meta API endpoint, employ the \<b>\`GET\`\</b> method, while for other endpoints, utilize the \<b>\`POST\`\</b> method.
+</Info>
 
 ## Using Postgres DB
 
@@ -190,39 +191,49 @@ import pandas as pd
 
 We define the connection details for the database. This includes the username, password, host, port, and database name.
 
-You can get your DATAOS Username by using the following command
+Get  DATAOS Username by using the following command
 
 ```shell
 dataos-ctl user get
 ```
 
-Similarly to get your  apikey use:
+Similarly to get API key use:
 
 ```shell
 dataos-ctl user apikey get 
 ```
 
-\=== "Syntax"
+To  configure the database correctly, following  information needs to be provided:
 
-```python
-db_username = <DATAOS_USERNAME>
-db_password = <DATAOS_APIKEY>
-db_host = 'tcp.<DATAOS_FQDN>.dataos.app'
-db_port = '6432'
-db_name = 'lens:<WORKSPACE_NAME>:<LENS_NAME>'  # The name of your lens
-```
+* **Username (`db_username`)**: Enter your DataOS username (e.g., `iamgroot`).
 
-\=== "Example"
+* **Password (`db_password`)**: Use your DataOS API key as the password.
 
-```python
-db_username = iamgroot
-db_password = eyawbejweiyY==
-db_host = 'tcp.liberal-donkey.dataos.app'
-db_port = '6432'
-db_name = 'lens:public:sales360'  # The name of your lens
-```
+* **Host (`db_host`)**: Specify the host corresponding to your deployment environment. For instance, if your environment is `liberal-monkey.dataos.app`, the host should be `tcp.liberal-monkey.dataos.app`.
 
-### **Step 4: Create Connection String**
+* **Port (`db_port`)**: Use port `6432`.
+
+* **Database Name (`db_name`)**: Enter the name of your Lens in the format `lens:<WORKSPACE_NAME>:<LENS_NAME>`. For example, if the workspace name is `curriculum` and the Lens name is `sales-analysis`, the database name would be `lens:curriculum:sales-analysis`.
+
+<CodeGroup>
+  ```bash Syntax
+  db_username = <DATAOS_USERNAME>
+  db_password = <DATAOS_APIKEY>
+  db_host = 'tcp.<DATAOS_FQDN>.dataos.app'
+  db_port = '6432'
+  db_name = 'lens:<WORKSPACE_NAME>:<LENS_NAME>'  # The name of your lens
+  ```
+
+  ```
+  db_username = iamgroot
+  db_password = eyawbejweiyY==
+  db_host = 'tcp.liberal-donkey.dataos.app'
+  db_port = '6432'
+  db_name = 'lens:public:sales36'  # The name of your lens
+  ```
+</CodeGroup>
+
+### **Step 4: Create a connection string**
 
 Using the defined connection details, we create a connection string to connect to the PostgreSQL database.
 
@@ -291,53 +302,55 @@ conn.close()
 
 Here is the complete script for reference:
 
-```python
-!pip install psycopg2
-import psycopg2
-import pandas as pd
+<Accordion title="Click here to view the complete script" defaultOpen={false}>
+  ```
+  !pip install psycopg2
+  import psycopg2
+  import pandas as pd
 
-# Define your lens connection details
-db_username = '**' #dataos username
-db_password = '***' #apikey
-db_host = 'tcp.liberal-donkey.dataos.app' 
-db_port = '6432'
-db_name = 'lens:public:customer'  # The name of your lens
+  # Define your lens connection details
+  db_username = '**' #dataos username
+  db_password = '***' #apikey
+  db_host = 'tcp.liberal-donkey.dataos.app' 
+  db_port = '6432'
+  db_name = 'lens:public:customer'  # The name of your lens
 
-# Create the connection string
-conn = psycopg2.connect(
-        host=db_host,
-        database=db_name,
-        user=db_username,
-        password=db_password,
-        port=db_port
-    )
-print("Connection successful")
-# Create a cursor object
-cur = conn.cursor()
+  # Create the connection string
+  conn = psycopg2.connect(
+          host=db_host,
+          database=db_name,
+          user=db_username,
+          password=db_password,
+          port=db_port
+      )
+  print("Connection successful")
+  # Create a cursor object
+  cur = conn.cursor()
 
-# Show the tables
-cur.execute("SELECT table_name FROM information_schema.tables WHERE table_schema='public';")
-tables = cur.fetchall()
+  # Show the tables
+  cur.execute("SELECT table_name FROM information_schema.tables WHERE table_schema='public';")
+  tables = cur.fetchall()
 
-# Convert the result to a readable format using pandas
-tables_df = pd.DataFrame(tables, columns=['Table Name'])
-print(tables_df)
+  # Convert the result to a readable format using pandas
+  tables_df = pd.DataFrame(tables, columns=['Table Name'])
+  print(tables_df)
 
-#Column Names in Table with Data Type
-query = f"""SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'customer';"""
-cur.execute(query)
-result = cur.fetchall()
-result_df = pd.DataFrame(result, columns=['Column Name', 'Data Type'])
-result_df
+  #Column Names in Table with Data Type
+  query = f"""SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'customer';"""
+  cur.execute(query)
+  result = cur.fetchall()
+  result_df = pd.DataFrame(result, columns=['Column Name', 'Data Type'])
+  result_df
 
-#Query the Table with Column Name
-query = f"SELECT customer_id,degree_of_loyalty FROM customer;"
-cur.execute(query)
-result = cur.fetchall()
-result_df = pd.DataFrame(result, columns=['customer_id','degree_of_loyalty'])
-result_df
+  #Query the Table with Column Name
+  query = f"SELECT customer_id,degree_of_loyalty FROM customer;"
+  cur.execute(query)
+  result = cur.fetchall()
+  result_df = pd.DataFrame(result, columns=['customer_id','degree_of_loyalty'])
+  result_df
 
-# Close the cursor and connection
-cur.close()
-conn.close()
-```
+  # Close the cursor and connection
+  cur.close()
+  conn.close()
+  ```
+</Accordion>
