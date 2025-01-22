@@ -1,10 +1,8 @@
 # Power BI
 
 <Tip>
-   For a streamlined and user-friendly integration with Power BI, use the Data Product Hub interface. This approach eliminates the need for manually working with \`curl\` commands, providing an easy way to connect to your Lens semantic model. To get started with Power BI integration through Data Product Hub, refer the below link: [Access the Power BI integration guide](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/powerbi/).
+   For a streamlined and user-friendly integration with Power BI, use the Data Product Hub interface. This approach eliminates the need for manually working with \`curl\` commands, providing an easy way to connect to your Lens semantic model. To get started with Power BI integration through Data Product Hub, refer the below link: [Access the Power BI integration guide](/interfaces/data_product_hub/activation/bi_sync/powerbi/).
 </Tip>
-
-#
 
 ## Prerequisites
 
@@ -14,9 +12,11 @@
 
 * **Access credentials**: You will need access credentials such as username, password, and host for Power BI.
 
-* **DataOS API key**: Ensure you have your DataOS API key. The API key can be obtained by executing the command below.```bash
-  dataos-ctl user apikey get
-  ```
+* **DataOS API key**: Ensure you have your DataOS API key. The API key can be obtained by executing the command below.
+
+```bash
+dataos-ctl user apikey get
+```
 
 **Curl command**
 
@@ -50,9 +50,9 @@ The `file.zip` includes essential components for syncing a Lens Model with Power
 
 * **public-sales360-table.SemanticModel:** This folder includes files that establish the underlying data model for a Power BI project. The Semantic Model is crucial for managing data interactions, including the setup of relationships, hierarchies, and measures.
 
-  * **definition.bism:** This file represents the Business Intelligence Semantic Model (BISM). It defines the structure of the data, detailing data sources, relationships, tables, and measures. The `.bism` file contains essential metadata that enables Power BI to understand and query the data, forming the foundation of the data model for report creation and analysis.
+* **definition.bism:** This file represents the Business Intelligence Semantic Model (BISM). It defines the structure of the data, detailing data sources, relationships, tables, and measures. The `.bism` file contains essential metadata that enables Power BI to understand and query the data, forming the foundation of the data model for report creation and analysis.
 
-  * **model.bim:** The `.bim` file is utilized to generate queries and manage interactions with the dataset. This semantic model is referenced to ensure the correct structure is applied to the data during report or dashboard creation in Power BI.
+* **model.bim:** The `.bim` file is utilized to generate queries and manage interactions with the dataset. This semantic model is referenced to ensure the correct structure is applied to the data during report or dashboard creation in Power BI.
 
 * **public-sales-360-table.pbip:** This file serves as a Power BI project template or configuration file. Files such as `.pbip` or `.pbix` encapsulate reports, datasets, and visualizations. The `.pbip` file integrates the semantic model and report definitions from the other folders, acting as the entry point for project work in Power BI Desktop or the Power BI service.
 
@@ -68,23 +68,23 @@ curl --location --request POST 'https://tcp.liberal-monkey.dataos.app/lens2/sync
 
 **Step 2 Download the zip file:**  Once the command is executed, a zip file will be downloaded to the specified directory. The downloaded file should be unzipped. Three folders will be found inside, all of which are necessary for semantic synchronization with Power BI.
 
-![Superset Configuration](https://dataos.info/resources/lens/bi_integration/powerbi2.png)
+![Superset Configuration](/resources/lens/bi_integration/powerbi2.png)
 
 **Step 3 Open the PowerBI file:** Open the Power BI file using Power BI Desktop.
 
-![Superset Configuration](https://dataos.info/resources/lens/bi_integration/powerbi3.png)
+![Superset Configuration](/resources/lens/bi_integration/powerbi3.png)
 
 **Step 4 Enter credentials:**  After opening the file, a popup will prompt for credentials. The DataOS username and API key should be entered.
 
-![Superset Configuration](https://dataos.info/resources/lens/bi_integration/powerbi4.png)
+![Superset Configuration](/resources/lens/bi_integration/powerbi4.png)
 
 **Step 5 Connect to DataOS:** Click on the connect button. A popup will appear. Click Ok.
 
-![Superset Configuration](https://dataos.info/resources/lens/bi_integration/powerbi6.png)
+![Superset Configuration](/resources/lens/bi_integration/powerbi6.png)
 
 **Step 6 Access tables with dimensions and measures:** Upon successful connection, tables and views will be accessible, displaying dimensions and measures.
 
-![Superset Configuration](https://dataos.info/resources/lens/bi_integration/powerbi7.png)
+![Superset Configuration](/resources/lens/bi_integration/powerbi7.png)
 
 ## Important considerations
 
@@ -108,7 +108,7 @@ Adhering to best practices ensures that you effectively utilize the Data Product
 
 Ensure that `.pbip` folders are fully extracted before opening them. Failure to do so may result in missing file errors, as shown below:
 
-![Superset Configuration](https://dataos.info/resources/lens/bi_integration/image.png)
+![Superset Configuration](/resources/lens/bi_integration/image.png)
 
 ### **Data retrieval and field selection considerations**
 

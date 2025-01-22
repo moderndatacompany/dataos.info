@@ -3,7 +3,7 @@ title: "Superset"
 ---
 
 <Tip>
-  For a streamlined and user-friendly integration with Superset, use the Data Product Hub interface. This approach allows you to easily integrate your Lens model's semantic model with Superset, eliminating the need to manually work with \`curl\` commands. To get started with Superset integration through the Data Product Hub, refer to the link below: [Access the Superset integration guide](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/superset/).
+  For a streamlined and user-friendly integration with Superset, use the Data Product Hub interface. This approach allows you to easily integrate your Lens model's semantic model with Superset, eliminating the need to manually work with \`curl\` commands. To get started with Superset integration through the Data Product Hub, refer to the link below: [Access the Superset integration guide](/interfaces/data_product_hub/activation/bi_sync/superset/).
 </Tip>
 
 ## Prerequisites
@@ -50,8 +50,6 @@ Copy the curl command syntax below and replace the placeholders with the actual 
   ```
 </CodeGroup>
 
-
-
 **Command parameters:**
 
 * **`URL`**: [`https://liberal-monkey.dataos.app/lens2/sync/api/v1/superset/public:quality360`.](https://liberal-monkey.dataos.app/lens2/sync/api/v1/superset/public:quality360.) This is the endpoint for syncing with Superset.
@@ -62,8 +60,8 @@ Copy the curl command syntax below and replace the placeholders with the actual 
 
 * **`Lens_Name`**: Name of the Lens, e.g., `quality360`.
 
-* **`API_Key`**: DataOS API key. The DataOS API key for the user can be obtained by executing the command below.```bash
-  dataos-ctl user apikey get
+* **`API_Key`**: DataOS API key. The DataOS API key for the user can be obtained by executing the command below.\`\`\`bash
+  dataos-ctl user apikey get```
   ```
 
 Upon initiation, a response will be received:
@@ -82,13 +80,13 @@ Once the command is executed in the terminal, results will be visible in the Sup
 
 Please follow the steps outlined to see the result:
 
-**Step 1 Go to DataOS**: Go to DataOS and select Superset.
+**Step 2 Go to DataOS**: Go to DataOS and select Superset.
 
-![Superset Configuration](https://dataos.info/resources/lens/bi_integration/superset2.png)
+![Superset Configuration](/resources/lens/bi_integration/superset2.png)
 
-**Step 2 Navigate to Datasets tab:** Here, each entity will appear as a dataset.
+**Step 3 Navigate to Datasets tab:** Here, each entity will appear as a dataset.
 
-![Superset Configuration](https://dataos.info/resources/lens/bi_integration/superset3.png)
+![Superset Configuration](/resources/lens/bi_integration/superset3.png)
 
 The setup is complete. Further exploration and analysis can be performed in Superset.
 
