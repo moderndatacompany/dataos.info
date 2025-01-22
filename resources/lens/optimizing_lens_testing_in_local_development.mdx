@@ -15,8 +15,8 @@ To do local testing, add `docker-compose.yml` manifest file. This file allows 
 
 > Always create the docker-compose.yml file in parallel to the model directory.
 
-<Accordion title="To view the docker-compose.yml file, click here." defaultOpen={false}>
-  ```
+<Accordion title="To view the docker-compose.yml manifest file, click here." defaultOpen={false}>
+  ```yaml
   version: "2.2"
 
   x-lens2-environment: &lens2-environment
@@ -79,13 +79,10 @@ Configure the `docker-compose.yml` manifest file to tailor it to include envir
 * **Adjust the environment URL according to preferences.**
 
 ```yaml
-# edit this section in your docker-compose.yml file
-# DataOS
-  DATAOS_FQDN: emerging-hawk.dataos.app #add the URL for the environment you prefer to use.
+DATAOS_FQDN: emerging-hawk.dataos.app #add the URL for the environment you prefer to use.
 ```
 
-* **Update Lens meta info, including name, description, tags, and author details.**[
-  ](https://dataos.info/resources/lens/optimizing_lens_testing_in_local_development/#__codelineno-2-1)
+* **Update Lens meta info, including name, description, tags, and author details.**
 
 ```yaml
 # Overview
@@ -114,13 +111,13 @@ DATAOS_RUN_AS_APIKEY: ****** # Add the user API Key for the env
 
 **Data Source attributes to connect via Minerva or Themis Cluster:**
 
-To connect via the Cluster, refer to the provided environmental variables in the syntax below. &#x20;
+To connect via the Cluster, refer to the provided environmental variables in the syntax below.
 
-When connecting with different sources, refer to the [data source guide](https://dataos.info/resources/lens/data_sources/) for various sources, as each may need its own specific settings.
+When connecting with different sources, refer to the [data source guide](/resources/lens/data_sources/) for various sources, as each may need its own specific settings.
 
-* **Verify Service Configuration:** In the service configuration, the image attribute specifies the container image to be used. Ensure that the image tag is up to date or matches the version pulled during the prerequisite setup.
+* **Verify Service configuration:** In the service configuration, the image attribute specifies the container image to be used. Ensure that the image tag is up to date or matches the version pulled during the prerequisite setup.
 
-## Testing Lens in development environment
+## Testing Lens in the development environment
 
 Before running ensure that the working directory is the Lens project directory and that the API key is correctly configured as specified in the `docker-compose.yml` file.
 
@@ -147,13 +144,19 @@ The above-given output indicates that the Lens server has successfully started l
 
 ## Exploring Lens in development environment
 
-## [](https://dataos.info/resources/lens/optimizing_lens_testing_in_local_development/#__codelineno-4-1)
-
 <Info>
   To quickly get started with testing Lens locally, follow the [quick guide on testing your Lens model locally](https://dataos.info/quick_guides/test_data_model/). This guide provides a step-by-step approach to validating your SQL queries within the semantic model and ensures that tables and joins work as expected before deploying them to DataOS.
 </Info>
 
 Now that Lens model is successfully running without errors using docker-compose, one can begin exploring it using SQL APIs, REST APIs, or GraphQL APIs. This setup allows to thoroughly test Lens before proceeding to deployment, ensuring all functionalities are working as expected.
+
+Before using APIS to explore a Lens, the Lens name needs to be retrieved, verify the name of the Lens in the `docker-compose.yml` file. Additionally, ensure that the docker-compose is running in the background, as failing to do so may result in the following error:
+
+```bash
+psql: error: connection to server at "localhost" (127.0.0.1), port 25432 failed: Connection refused
+```
+
+
 
 **via SQL API**
 
@@ -161,24 +164,43 @@ Lens exposes a PostgreSQL-compatible interface, to query Lens tables and views u
 
 To interact with Lens through PostgreSQL, the following options are available:
 
-* **PostgreSQL Client (psql):** This command-line tool allows direct interaction with PostgreSQL database. Use psql to run queries, manage databases, and perform various administrative tasks. Ensure postgres-client-16 is installed.
+* **PostgreSQL client (psql):** This command-line tool allows direct interaction with PostgreSQL database. Use psql to run queries, manage databases, and perform various administrative tasks. Ensure postgres-client-16 is installed.
 
-* **VS Code Extension:** Use the PostgreSQL Client extension for Visual Studio Code. This extension enables SQL query execution and database management within VS Code.
+* **VS Code extension:** Use the PostgreSQL Client extension for Visual Studio Code. This extension enables SQL query execution and database management within VS Code.
 
-**Using PostgreSQL Client (psql)**
+**Using PostgreSQL client (psql)**
 
 Enter the host name as `localhost`, port as given in the service of the `docker-compose.yml` and name of the Lens and its workspace in `lens:${workspace_name}:${lens_name}` format.
 
 <Tip>
-  Always refer to 'ports' within the services section in `docker-compose.yml` for the exposed port.[
-  ](https://dataos.info/resources/lens/optimizing_lens_testing_in_local_development/#__codelineno-4-1)
+  Always refer to 'ports' within the services section in `docker-compose.yml` for the exposed port.
 </Tip>
 
-```
+```bash
 psql -h ${host_name} -p ${port_name} -U${user_name} -d ${lens:<workspace-name>:<lens-name>}
 ```
 
-For more details, click [here](https://dataos.info/resources/lens/exploration_of_deployed_lens_using_sql_apis/).
+For local testing, set the host as the localhost:
+
+```bash
+psql localhost -p 6432 -U iamgroot -d lens:curriculum:product-analysis
+```
+
+When prompted, enter the DataOS API Key as the password.
+
+The connection is successful. Verify the connection by listing the available relations using the `\dt` command:
+
+```bash
+iamgroot=> \dt
+```
+
+To exit `psql`, type:
+
+```bash
+iamgroot=> \q
+```
+
+To know about how to explore the deployed Lens using SQL API, click [here](/resources/lens/exploration_of_deployed_lens_using_sql_apis/).
 
 **Using VS Code Extension:**
 
@@ -234,43 +256,48 @@ To interact with REST APIs use tools like `curl`, [Postman](https://www.postma
 
 For instance, to test Lens in a development environment using Postman, upload the following API collection to Postman.
 
-[Lens2-API](https://dataos.info/resources/lens/lens_model_folder_setup/Lens2-APIs.postman_collection.json)
+[Lens2-API](/resources/lens/lens_model_folder_setup/Lens2-APIs.postman_collection.json)
 
 Now, to make a basic `GET` request using Postman, follow these steps:
 
-1. **Create a new request**:
+**Create a new request**: Open Postman and click on the **New** button in the top left corner. Select **Request** from the dropdown menu.
 
-   * Open Postman and click on the **New** button in the top left corner.
+**Configure the request**:
 
-   * Select **Request** from the dropdown menu.
+1. **Enter request name**: Provide a name for the request.
 
-2. **Configure the request**:
+2. **Select collection**: Choose the uploaded collection.
 
-   * **Enter request name**: Provide a name for the request.
+**Set the HTTPS method**: In the request tab, select `GET` from the dropdown menu next to the URL input field.
 
-   * **Select collection**: Choose the uploaded collection.
+**Ensure the following header is passed in Authorization when running the API**
 
-3. **Set the HTTPS method**:
+```bash
+Type: Bearer Token
+Token: <DATAOS API Key> #Use the API key of the env defined in docker-compose.yml
+```
 
-   * In the request tab, select `GET` from the dropdown menu next to the URL input field.
+**Enter the request URL**: Enter the full URL for the API endpoint you want to access. For example:
 
-4. **Enter the request URL**:
+```bash
+http://localhost:8080/lens2/api/${lens_name}`/v2/meta  
+```
 
-   * Enter the full URL for the API endpoint you want to access. For example:
-     [](https://dataos.info/resources/lens/optimizing_lens_testing_in_local_development/#__codelineno-10-1)`http://localhost:8080/lens2/api/${lens_name}`/v2/meta
-     **Command parameter**
+**Command parameter**
 
-   * `localhost:8080` represents the local or development environment for Lens, used for building and testing configurations.
+* `localhost:8080` represents the local or development environment for Lens, used for building and testing configurations.
 
-   * `/lens2/api/` is the API prefix
+* `/lens2/api/` is the API prefix.
 
-   * `${lens_name}` is the placeholder for Lens, replace it with the actual Lens undergoing testing. For example, sales360, retail360.
+* `${lens_name}` is the placeholder for Lens, replace it with the actual Lens undergoing testing. For example, sales360, retail360.
 
-5. **Ensure the following header is passed in Authorization when running the API**
-   [](https://dataos.info/resources/lens/optimizing_lens_testing_in_local_development/#__codelineno-11-1)`Type: Bearer `Token
-   [](https://dataos.info/resources/lens/optimizing_lens_testing_in_local_development/#__codelineno-11-2)`Token: <DATAOS API Key> #Use the API key of the env defined in docker-compose.yml`
+* After configuring the URL with appropriate parameters the URL will be as follows:
 
-6. Click **Send**
+```
+http://localhost:8080/lens2/api/curriculum:sales-analysis/v2/meta  
+```
+
+Click **Send**
 
 **Example response:**
 
@@ -294,8 +321,6 @@ Now, to make a basic `GET` request using Postman, follow these steps:
 }        
 ```
 
-[](https://dataos.info/resources/lens/optimizing_lens_testing_in_local_development/#__codelineno-12-1)`    `
-
 *You can now successfully test your Lens in a development environment using Postman via REST APIS.*
 
-To interact with the deployed Lens using REST APIs read the detailed doc [here](https://dataos.info/resources/lens/exploration_of_deployed_lens_using_rest_apis/)
+To interact with the deployed Lens using REST APIs read the detailed doc [here](/resources/lens/exploration_of_deployed_lens_using_rest_apis/)
