@@ -7,9 +7,7 @@ Depot in DataOS is a Resource used to connect different data sources to DataOS
 
 Within DataOS, the hierarchical structure of a data source is represented as follows:
 
-![Hierarchical Structure of a Data Source within DataOS](https://dataos.info/resources/depot/udl.png)
-
-*Hierarchical Structure of a Data Source within DataOS*
+![Hierarchical Structure of a Data Source within DataOS](/resources/depot/udl.png "Hierarchical Structure of a Data Source within DataOS")
 
 The Depot serves as the registration of data locations to be made accessible to DataOS. Through the Depot Service, each source system is assigned a unique address, referred to as a **Uniform Data Link (UDL)**. The UDL grants convenient access and manipulation of data within the source system, eliminating the need for repetitive credential entry. The UDL follows this format:
 
@@ -37,7 +35,9 @@ To create a Depot in DataOS, simply compose a manifest configuration file for a 
 
 ### **Structure of a Depot manifest**
 
-![Structure of a Depot manifest](https://dataos.info/resources/depot/depot_yaml.png "Structure of a Depot manifest")To know more about the attributes of Depot manifest Configuration, refer to the link: [Attributes of Depot manifest](https://dataos.info/resources/depot/configurations/).
+![](/resources/depot/depot_yaml.png)
+
+To know more about the attributes of Depot manifest Configuration, refer to the link: [Attributes of Depot manifest](https://dataos.info/resources/depot/configurations/).
 
 ### **Prerequisites**
 
@@ -74,6 +74,22 @@ To create Depots, ensure that you possess the following tags.
 
 <AccordionGroup>
   <Accordion title="ABFSS" defaultOpen={false}>
+    ### Pre-requisites specific to the ABFSS Depot
+
+    To create an ABFSS Depot you must have the following details:
+
+    * **azurestorageaccountname**: This is the name of the Azure Storage account where your data resides. You can find this in the Azure portal under the "Storage accounts" section. It serves as a unique identifier for your storage service.
+
+    * **azurestorageaccountkey**: This key is used to authenticate and access your Azure Storage account. You can retrieve it from the Azure portal by navigating to "Storage accounts" > "Access keys." It is critical to store this key securely as it allows access to your data.
+
+    * **account**: The name of the Azure Storage account. It is the same as the `azurestorageaccountname` and can be found in the Azure portal under the "Storage accounts" section. It identifies the specific storage account where your data is stored.
+
+    * **container**: The name of the container within the Azure Storage account. A container acts like a folder or directory that holds the data. You can create and find containers in the Azure portal under your specific storage account > "Containers."
+
+    * **relativePath**: This is the relative path to the data within the container. It specifies the exact location of the data or folder, such as "data/customer" or "files/raw\_data." You will need to specify this path based on where your data is stored inside the container.
+
+    * **format**: This defines the format of the data stored in the Azure Storage container. Common formats include "CSV," "JSON," or "Parquet." Specify the format according to the type of data you are working with.
+
     ### Create a ABFSS Depot
 
     Azure Blob File System Secure (ABFSS) is an object storage system. Object stores are distributed storage systems designed to store and manage large amounts of unstructured data.
@@ -166,8 +182,6 @@ To create Depots, ensure that you possess the following tags.
       dataos-ctl apply -f ${{yamlfilepath}}
       ```
     </CodeGroup>
-
-
   </Accordion>
 
   <Accordion title="Bigquery" defaultOpen={false}>
