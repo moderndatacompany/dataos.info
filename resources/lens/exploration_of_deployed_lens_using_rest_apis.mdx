@@ -216,7 +216,7 @@ When working with a Postman collection to test APIs, you typically need to confi
 
     * From the dropdown next to `raw`, select `JSON`.
 
-    * Enter the `JSON` query in the request body in the following format.&#x20;
+    * Enter the `JSON` query in the request body in the following format.
 
     <CodeGroup>
       ```javascript Syntax
@@ -417,6 +417,12 @@ print(response.json())
 
 ```
 https://<DATAOS_FQDN>/lens2/api/<WORKSPACE>:<NAME_OF_LENS>/v2/load
+```
+
+For example, if the Lens named`sales-analysis` is deployed in the `cyrriculum` workspace on the `alpha-omega.dataos.app` environment then the URL will be as follows:
+
+```
+https://alpha-omega.dataos.app`/lens2/api/curriculum:sales-analysis/v2/load
 ```
 
 * **Replace `<DATAOS_API_KEY>` with your actual DataOS API key.** Refer to the [Generating an API Key](https://dataosinfo.mintlify.app/resources/lens/exploration_of_deployed_lens_using_rest_apis#generating-an-api-key) section for more information on obtaining an API key.
