@@ -4,21 +4,57 @@ title: "Connecting to Postgres via Depot"
 
 ## Prerequisites
 
+* an active bigquery depot.
+
 While creating a semantic model on bigquery source, the following aspects need to be considered:
 
-* SQL dialect used in the `model/sql` should be changed to the Bigquery one.
+*
 
-* The table naming when referencing the source in the `model/sql` folder should be of the following format `project_id.dataset.table`.
 
-* Use `STRING` for text data types instead of `VARCHAR`.
 
-* Use `Extract` date function of the Bigquery.
+### **1. Prepare the Lens Model Folder**
 
-## Depot manifest file
-
-Here is the template for Bigquery Depot
+Start by setting up the **Lens Model Folder**
 
 ```
+model
+├── sqls
+│   └── sample.sql  # SQL script for table dimensions
+├── tables
+│   └── sample_table.yml  # Logical table definition (joins, dimensions, measures, segments)
+├── views
+│   └── sample_view.yml  # Logical views referencing tables
+└── user_groups.yml  # User group policies for governance
+```
+
+1. **SQL Scripts (`model/sqls`)**
+
+   * Add SQL files defining table structures and transformations.
+
+   * Ensure the SQL dialect matches BigQuery syntax. Format table names as:
+     `project_id.dataset.table`
+
+   * Use `STRING` for text data types instead of `VARCHAR`.
+
+   * Replace generic functions with BigQuery's `EXTRACT` function.
+
+2. **Tables (`model/tables`)**
+
+   * Define logical tables in separate YAML files. Include dimensions, measures, segments, and joins.
+
+3. **Views (`model/views`)**
+
+   * Define views in YAML files, referencing the logical tables.
+
+4. **User Groups (`user_groups.yml`)**
+
+   * Define access control by creating user groups and assigning permissions.
+
+### **2. BigQuery Depot manifest template file**
+
+Below is a template for configuring the BigQuery Depot:
+
+```yaml
 name: ${{depot-name}}
 version: v1
 type: depot
@@ -53,9 +89,35 @@ depot: # mandatory
       ${{"key2": "value2"}}
 ```
 
-## Deployment manifest file
+### 3. Deployment manifest file
 
-The below manifest is intended for source-type depot named `bigquerydepot`, created on the bigquery source.
+After setting up the Lens model folder, the next step is to configure the **deployment manifest**. This involves:
+
+* **Defining the Source:**
+
+  * **Source type:**  The `type` attribute in the `source` section must be explicitly set to `depot`.
+
+  * **Source name:** The `name` attribute in the `source` section should specify the name of the Bigquery Depot created .
+
+* **Setting Up Compute and Secrets:**
+
+  * Define the compute settings, such as which engine (e.g., `runnable-default`) will process the data.
+
+  * Include any necessary secrets (e.g., credentials for Bitbucket or AWS) for secure access to data and repositories.
+
+* **Defining Repository:**
+
+  * &#x20; **Repo name:** The `url` attribute in the repo section specifies the Git repository where the Lens model files are stored. For instance, if your repo name is lensTutorial then the repo `url` will be  [https://bitbucket.org/tmdc/lensTutorial](https://bitbucket.org/tmdc/lensTutorial)
+
+    * **Lens directory name:**  The `lensBaseDir` attribute refers to the directory in the repository containing the Lens model. Example: `sample/lens/source/depot/bigquery/model`.
+
+    - **Secret id:**  The `secretId` attribute is used to access private repositories (e.g., Bitbucket, GitHub) . It specifies the secret needed to securely authenticate and access the repository.
+
+    - SyncFlags:  Specifies additional flags to control repository synchronization. Example: `--ref=dev` specifies that the Lens model rsides in the dev branch.&#x20;
+
+* **Configuring API and Worker Settings (Optional):** Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
+
+After configuring the deployment file with the necessary settings and specifications, use the following sample YAML as a template to guide your Lens deployment.
 
 ```yaml
 version: v1alpha
@@ -84,12 +146,6 @@ lens:
   api:   # optional
     replicas: 1 # optional
     logLevel: info  # optional
-    envs:
-      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-      LENS2_DEV_MODE: "true"
-      LENS2_CONCURRENCY: 10
-      LENS2_DB_MAX_POOL: 15
-      LENS2_DB_TIMEOUT: 1500000
       
     resources: # optional
       requests:
@@ -101,11 +157,6 @@ lens:
   worker: # optional
     replicas: 2 # optional
     logLevel: debug  # optional
-    envs:
-      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-      LENS2_DEV_MODE: "true"
-
-
     resources: # optional
       requests:
         cpu: 100m
@@ -113,6 +164,7 @@ lens:
       limits:
         cpu: 6000m
         memory: 6048Mi
+        
   router: # optional
     logLevel: info  # optional
     resources: # optional
@@ -133,14 +185,7 @@ lens:
         memory: 6048Mi
 ```
 
-**Required Bigquery Depot Source Attributes**
 
-```yaml
-# Data Source
-LENS2_SOURCE_TYPE: ${depot}  #source type should be depot
-LENS2_SOURCE_NAME: ${bigquerydepot} # name of the bigquery depot (it could be anything)
-
-```
 
 ## Docker compose manifest file
 
