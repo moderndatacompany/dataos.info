@@ -86,12 +86,11 @@
         }
       ]
     },
-
-        {
-          "group": "Depot",
-          "pages": [
-            "resources/depot/index",
-          ]
+    {
+      "group": "Depot",
+      "pages": [
+        "resources/depot/index",
+      ]
     },
     
     {
