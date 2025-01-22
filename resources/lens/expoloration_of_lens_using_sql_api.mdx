@@ -1,3 +1,7 @@
+---
+title: "Exploration of Lens using SQL API"
+---
+
 import CreateApiKey from '/snippets/create_api_key.mdx';
 
 Lens exposes a PostgreSQL-compatible interface, enabling interaction with the semantic model(Lens) using PostgreSQL syntax. The PostgreSQL client tool `psql` is required to query the database and manage Lens data.
@@ -216,17 +220,17 @@ One can also use the PostgreSQL extension on VS Code. Use the following details 
 
 3. Configure the connection with the following details and click '+connect':
 
-| **POSTGRES PROPERTY** | **DESCRIPTION**    | **EXAMPLE** |
-| --------------------- | ------------------ | ----------- |
-| Host                  | host name          | `localhost` |
-| Port                  | port name          | `25432`     |
-| Database              | database name      | `postgres`  |
-| Username              | dataos-username    | `postgres` or `iamgroot`|
+| **POSTGRES PROPERTY** | **DESCRIPTION**    | **EXAMPLE**                    |
+| --------------------- | ------------------ | ------------------------------ |
+| Host                  | host name          | `localhost`                    |
+| Port                  | port name          | `25432`                        |
+| Database              | database name      | `postgres`                     |
+| Username              | dataos-username    | `postgres` or `iamgroot`       |
 | Password              | dataos-user-apikey | `dskhcknskhknsmdnalklquajzZr=` |
 
-5. Once connected, hover over the postgres folder and click the terminal icon to open the terminal for querying.
+1. Once connected, hover over the postgres folder and click the terminal icon to open the terminal for querying.
 
-6. Execute [commands](#commands) in the terminal as needed.
+2. Execute [commands](#commands) in the terminal as needed.
 
 ## Commands
 

@@ -86,12 +86,6 @@
         }
       ]
     },
-    {
-      "group": "Depot",
-      "pages": [
-        "resources/depot/index"
-      ]
-    },
     
     {
       "group": "Lens",
@@ -124,10 +118,10 @@
           "group": "Supported Data Sources",
           "pages": [
             "resources/lens/data_sources/bigquery",
+            "resources/lens/data_sources/awsredshift",
             "resources/lens/data_sources/flash",
             "resources/lens/data_sources/minerva",
             "resources/lens/data_sources/postgres",
-            "resources/lens/data_sources/awsredshift",
             "resources/lens/data_sources/themis"
           ]
         },
@@ -147,29 +141,27 @@
           ]
         },
         {
-          "group": "Reference",
-          "pages": [
-            "resources/lens/working_with_payload",
-            "resources/lens/working_with_segments",
-            "resources/lens/working_with_views",
-            "resources/lens/working_with_user_groups_and_data_policies",
-            "resources/lens/optimizing_lens_testing_in_local_development",
-            "resources/lens/query_format"
-          ]
-        },
-        {
           "group": "Exploration",
           "pages": [
             "resources/lens/exploration_of_deployed_lens_using_graphql",
             "resources/lens/exploration_of_deployed_lens_using_sql_apis",
             "resources/lens/exploration_of_deployed_lens_using_python",
             "resources/lens/exploration_of_deployed_lens_using_rest_apis",
-        "resources/lens/exploration_of_deployed_lens_using_iris_dashboard"
-      
-          
+        "resources/lens/exploration_of_deployed_lens_using_iris_dashboard" 
+          ]
+        },
+        {
+          "group": "Reference",
+          "pages": [
+            "resources/lens/working_with_payload",
+            "resources/lens/working_with_segments",
+            "resources/lens/working_with_views",
+            "resources/lens/working_with_user_groups_and_data_policies",
+            "resources/lens/optimizing_lens_testing_in_local_development"
             
           ]
         },
+
         "resources/lens/fine_tuning_a_lens_model"
           ]
         },
