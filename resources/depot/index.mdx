@@ -389,25 +389,21 @@ To create Depots, ensure that you possess the following tags.
   </Accordion>
 
   <Accordion title="GCS" defaultOpen={false}>
-    ### Pre-requisites specific to the Bigquery Depot
+    ### Pre-requisites specific to the GCS Depot
 
-    To create a Bigquery Depot you must have the following details:
+    To create a GCS Depot you must have the following details:
 
-    * **projectid**: The unique identifier of the Google Cloud project where your GCS bucket resides. You can find this in the Google Cloud Console under the "Project Info" section of your project's dashboard. It is essential for associating operations with the correct project.
+    * **projectid**: The unique identifier of the Google Cloud project where the GCS bucket resides. This can be obtained from the Google Cloud Console by navigating to the "Project Info" section on your project's dashboard. It is used to associate operations with the correct Google Cloud project.
 
-    * **email**: The email address associated with the Google Cloud service account. You can retrieve this by navigating to the Google Cloud Console under "IAM & Admin" > "Service Accounts" and selecting the relevant service account. This email is used for authenticating requests to GCS.
+    * **email**: The email address of the Google Cloud service account used for accessing GCS. This can be found in the Google Cloud Console under "IAM & Admin" > "Service Accounts" by selecting the relevant service account. This email is used for authenticating API requests.
 
-    * **json\_keyfile**: The path to the JSON key file associated with the Google Cloud service account. This file is used for authentication and can be downloaded from the Google Cloud Console under "IAM & Admin" > "Service Accounts." Select the service account, click on "Keys," and download the key by selecting "Add Key" > "JSON." Ensure the file is securely stored and the path is accessible.
+    * **gcskey\_json**: The file path to the JSON key associated with the Google Cloud service account. This key is essential for authentication. You can download it from the Google Cloud Console by going to "IAM & Admin" > "Service Accounts," selecting the service account, and clicking on "Keys." Choose "Add Key" > "JSON" to generate and download the key securely.
 
-    * **project**: (Optional) The name of the Google Cloud project. While not always required, it can be specified to provide additional context. You can find it in the Google Cloud Console under the "Project Info" section.
+    ### Create a GCS Depot
 
-    ### Create a Bigquery Depot
+    DataOS provides the capability to connect to Google Cloud Storage data using Depot. To create a Depot of Google Cloud Storage follow the below steps:
 
-    Azure Blob File System Secure (ABFSS) is an object storage system. Object stores are distributed storage systems designed to store and manage large amounts of unstructured data.
-
-    DataOS enables the creation of a Depot of type 'Bigquery' to facilitate the reading of data stored in an Azure Blob Storage account. This Depot provides access to the storage account, which can consist of multiple containers. A container serves as a grouping mechanism for multiple blobs. It is recommended to define a separate Depot for each container. To create a Depot of type ‘ABFSS‘, follow the below steps:
-
-    ### Step 1: Create an Instance Secret for securing Bigquery credentails
+    ### Step 1: Create an Instance Secret for securing GCS credentails
 
     <Warning>
       This step can be skipped if you prefer to create a Depot without referencing an Instance Secret.
@@ -415,68 +411,59 @@ To create Depots, ensure that you possess the following tags.
 
     Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).&#x20;
 
-    ### Step 2: Create a Bigquery Depot manifest file
+    ### Step 2: Create a GCS Depot manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your Bigquery Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
+    Begin by creating a manifest file to hold the configuration details for your GCS Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
 
     <CodeGroup>
       ```yaml Inline credentials Depot manifest file
-      name: ${{depot-name}}
+      name: ${{"sanitygcs01"}}
       version: v1
       type: depot
       tags:
-        - ${{tag1}}
-        - ${{tag2}}
-      owner: ${{owner-name}}
+        - ${{GCS}}
+        - ${{Sanity}}
       layer: user
       depot:
-        type: ABFSS                                       
-        description: ${{description}}
-        external: ${{true}}
+        type: GCS
+        description: ${{"GCS depot for sanity"}}
         compute: ${{runnable-default}}
-        connectionSecret:                                 
-          - acl: rw
+        spec:
+          bucket: ${{"airbyte-minio-testing"}}
+          relativePath: ${{"/sanity"}}
+        external: ${{true}}
+        connectionSecret:
+          - acl: ${{rw}}
             type: key-value-properties
             data:
-              azurestorageaccountname: ${{account-name}}
-              azurestorageaccountkey: ${{account-key}}
-          - acl: r
-            type: key-value-properties
-            data:
-              azurestorageaccountname: ${{account-name}}
-              azurestorageaccountkey: ${{account-key}}
-        spec:                                             
-          account: ${{account-name}}
-          container: ${{container-name}}
-          relativePath: ${{relative-path}}
-          format: ${{format}}
+              projectid: ${{$GCS_PROJECT_ID}}
+              email: ${{$GCS_ACCOUNT_EMAIL}}
+            files:
+              gcskey_json: ${{$GCS_KEY_JSON}}
       ```
 
       ```yaml Instance Secret reference Depot manifest file
-      name: ${{depot-name}}
+      name: ${{"sanitygcs01"}}
       version: v2alpha
       type: depot
       tags:
-        - ${{tag1}}
-        - ${{tag2}}
-      owner: ${{owner-name}}
+        - ${{GCS}}
+        - ${{Sanity}}
       layer: user
       depot:
-        type: ABFSS                                       
-        description: ${{description}}
-        external: ${{true}}
+        type: GCS
+        description: ${{"GCS depot for sanity"}}
         compute: ${{runnable-default}}
+        gcs:
+          bucket: ${{"airbyte-minio-testing"}}
+          relativePath: ${{"/sanity"}}
+        external: ${{true}}
         secrets:
-          - name: ${{abfss-instance-secret-name}}-r
+          - name: ${{gcs-instance-secret-name}}-r
             allkeys: true
 
-          - name: ${{abfss-instance-secret-name}}-rw
+          - name: ${{gcs-instance-secret-name}}-rw
             allkeys: true
-        abfss:                                             
-          account: ${{account-name}}
-          container: ${{container-name}}
-          relativePath: ${{relative-path}}
-          format: ${{format}}
       ```
     </CodeGroup>
 
