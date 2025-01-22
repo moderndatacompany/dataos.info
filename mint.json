@@ -86,6 +86,13 @@
         }
       ]
     },
+
+        {
+          "group": "Depot",
+          "pages": [
+            "resources/depot/index",
+          ]
+    },
     
     {
       "group": "Lens",
