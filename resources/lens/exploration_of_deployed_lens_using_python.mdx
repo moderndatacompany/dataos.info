@@ -75,7 +75,7 @@ payload = json.dumps({
 )
 ```
 
-### **Step 4: Send the POST Request**
+### **Step 4: Send the POST request**
 
 Send the POST request to the API endpoint using the `requests` library and store the response.
 
@@ -83,7 +83,7 @@ Send the POST request to the API endpoint using the `requests` library and store
 response = requests.request("POST", url, headers=headers, data=payload)
 ```
 
-### **Step 5: Parse the JSON Response**
+### **Step 5: Parse the JSON response**
 
 Parse the JSON response to extract the data.
 
@@ -91,7 +91,7 @@ Parse the JSON response to extract the data.
 response_json = response.json()
 ```
 
-### **Step 6: Extract Specific Fields from the Response**
+### **Step 6: Extract specific fields from the response**
 
 Extract the `members` and `dataset` fields from the JSON response. The `members` represent the columns, and the `dataset` represents the data rows.
 
@@ -101,7 +101,7 @@ members = data.get('members', [])
 dataset = data.get('dataset', [])
 ```
 
-### **Step 7: Create a DataFrame**
+### **Step 7: Create a dataFrame**
 
 Create a pandas DataFrame from the extracted data. The columns of the DataFrame are defined by the `members`, and the data is populated by the `dataset`.
 
@@ -109,7 +109,7 @@ Create a pandas DataFrame from the extracted data. The columns of the DataFrame 
 df = pd.DataFrame(dataset, columns=members)
 ```
 
-### **Step 8: Display the DataFrame**
+### **Step 8: Display the dataFrame**
 
 Display the first few rows of the DataFrame to verify the data.
 
@@ -117,7 +117,7 @@ Display the first few rows of the DataFrame to verify the data.
 df.head()
 ```
 
-### **Complete Script**
+### **Complete script**
 
 Here is the complete script for reference:
 
@@ -168,7 +168,7 @@ Here is the complete script for reference:
 
 ## Using Postgres DB
 
-### **Step 1: Install Required Libraries**
+### **Step 1: Install required libraries**
 
 First, we need to install the `psycopg2` library, which is a PostgreSQL adapter for Python. This allows Python code to interact with PostgreSQL databases
 
@@ -178,7 +178,7 @@ First, we need to install the `psycopg2` library, which is a PostgreSQL adapter 
 !pip install psycopg2-binary
 ```
 
-### **Step 2: Import Libraries**
+### **Step 2: Import libraries**
 
 We import the necessary libraries. `psycopg2` is used for database connections and interactions, and `pandas` is used for data manipulation and visualization.
 
@@ -187,11 +187,11 @@ import psycopg2
 import pandas as pd
 ```
 
-### Step 3: **Define Database Connection Details**
+### Step 3: **Define database connection details**
 
 We define the connection details for the database. This includes the username, password, host, port, and database name.
 
-Get  DATAOS Username by using the following command
+Get the DATAOS Username by using the following command
 
 ```shell
 dataos-ctl user get
@@ -203,7 +203,7 @@ Similarly to get API key use:
 dataos-ctl user apikey get 
 ```
 
-To  configure the database correctly, following  information needs to be provided:
+To  configure the database correctly, the following  information needs to be provided:
 
 * **Username (`db_username`)**: Enter your DataOS username (e.g., `iamgroot`).
 
@@ -224,7 +224,7 @@ To  configure the database correctly, following  information needs to be provide
   db_name = 'lens:<WORKSPACE_NAME>:<LENS_NAME>'  # The name of your lens
   ```
 
-  ```
+  ```bash Example
   db_username = iamgroot
   db_password = eyawbejweiyY==
   db_host = 'tcp.liberal-donkey.dataos.app'
@@ -248,7 +248,7 @@ conn = psycopg2.connect(
 print("Connection successful")
 ```
 
-### **Step 5: Create a Cursor Object**
+### **Step 5: Create a cursor object**
 
 A cursor object is created using the connection. The cursor allows us to execute SQL queries.
 
@@ -256,7 +256,7 @@ A cursor object is created using the connection. The cursor allows us to execute
 cur = conn.cursor()
 ```
 
-### **Step 6: Show the Tables**
+### **Step 6: Show the tables**
 
 We execute a query to retrieve the names of all tables in the `public` schema of the database. The result is fetched and printed in a readable format using `pandas`
 
@@ -270,7 +270,7 @@ print(tables_df)
 
 ```
 
-### **Step 7: Retrieve Column Names and Data Types from a Specific Table**
+### **Step 7: Retrieve column names and data types from a specific table**
 
 We query the `information_schema.columns` to get the column names and data types of a specific table (`customer`). The result is then converted to a DataFrame for better readability.
 
@@ -282,7 +282,7 @@ result_df = pd.DataFrame(result, columns=['Column Name', 'Data Type'])
 result_df
 ```
 
-### **Step 8: Query Specific Columns from a Table**
+### **Step 8: Query specific columns from a table**
 
 We execute a query to fetch specific columns (`customer_id` and `degree_of_loyalty`) from the `customer` table and convert the result to a DataFrame.
 
@@ -298,7 +298,7 @@ cur.close()
 conn.close()
 ```
 
-### **Complete Script**
+### **Complete script**
 
 Here is the complete script for reference:
 
