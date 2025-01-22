@@ -1,18 +1,28 @@
 ---
-title: "Themis"
+title: "Connecting to themis using Cluster"
 ---
 
 ##
 
-### **Prerequisites**
-
 The following aspects need to be considered when creating a lens on the Themis cluster source:
 
-* The source name should be Themis.
+1. **Source Type**
 
-* The name of the cluster created on Themis source.
+   * The `type` attribute in the `source` section must be explicitly set to `themis`.
 
-* The name of the Depot.
+2. **Cluster Name**
+
+   * The `name` attribute in the `source` section should specify the name of the cluster created on Themis.
+
+   * For example, if the cluster created on Themis is named `lenstestingthemis`, the `name` value in the YAML must also be `lenstestingthemis`.
+
+   * This ensures Lens correctly identifies and connects to the intended Themis cluster.
+
+3. **Catalog Name**
+
+   * The `catalog` attribute must define the specific depot within the Themis cluster that will be used for querying.
+
+   * For instance, if the depot is named `icebase`, ensure this is accurately set in the `catalog` field.
 
 ### **Deployment manifest file**
 

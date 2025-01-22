@@ -1,10 +1,28 @@
 ---
-title: Redshift
+title: "Connecting to Postgres via Depot"
 ---
 
-## Prerequisites
+Before configuring Lens to connect to a **Depot source**, ensure the following:
 
-Ensure that you have an active AWS Redshift Depot.
+1. **Active Depot Instance**
+
+   * Verify that you have an active **AWS Redshift Depot** instance.
+
+   * The depot must be properly configured and accessible within your environment to ensure successful integration.
+
+2. **Source Type**
+
+   * Set the `type` attribute in the `source` section to `depot`.
+
+   * This specifies that the source is a generic depot rather than a cluster (e.g., Minerva or Themis).
+
+3. **Depot Name**
+
+   * Specify the `name` attribute as the exact name of the depot you wish to connect to.
+
+   * For example, if the depot's name is `redshiftdepot`, the `name` field in the YAML must match this value.
+
+   * This ensures that Lens correctly identifies and communicates with the intended Depot instance.
 
 ## Deployment manifest file
 

@@ -1,5 +1,5 @@
 ---
-title: Bigquery
+title: "Connecting to Postgres via Depot"
 ---
 
 ## Prerequisites
@@ -13,6 +13,45 @@ While creating a semantic model on bigquery source, the following aspects need t
 * Use `STRING` for text data types instead of `VARCHAR`.
 
 * Use `Extract` date function of the Bigquery.
+
+## Depot manifest file
+
+Here is the template for Bigquery Depot
+
+```
+name: ${{depot-name}}
+version: v1
+type: depot
+tags:
+  - ${{dropzone}}
+  - ${{bigquery}}
+owner: ${{owner-name}}
+layer: user
+depot: # mandatory
+  type: BIGQUERY  # mandatory               
+  description: ${{description}} # optional
+  external: ${{true}} # mandatory
+  connectionSecret:            
+    - acl: rw
+      type: key-value-properties
+      data:
+        projectid: ${{project-name}}
+        email: ${{email-id}}
+      files:
+        json_keyfile: ${{json-file-path}}
+    - acl: r
+      type: key-value-properties
+      data:
+        projectid: ${{project-name}}
+        email: ${{email-id}}
+      files:
+        json_keyfile: ${{json-file-path}}
+  spec:  # optional                         
+    project: ${{project-name}} # optional
+    params: # optional
+      ${{"key1": "value1"}}
+      ${{"key2": "value2"}}
+```
 
 ## Deployment manifest file
 

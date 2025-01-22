@@ -1,18 +1,28 @@
 ---
-title: Minerva
+title: "Connecting to Minerva using cluster"
 ---
 
-## Connecting to Minerva using Depot/Cluster
-
-### **Prerequisites**
+##
 
 While migrating to Minerva the following aspects need to be considered:
 
-* The source name should be Minerva.
+1. **Source Type**
 
-* The name of the cluster created on Minerva source.
+   * The `type` attribute in the `source` section must be explicitly set to `minerva`.
 
-* The name of the catalog.&#x20;
+2. **Cluster Name**
+
+   * The `name` attribute in the `source` section should specify the name of the Minerva cluster you have created.
+
+   * For example, if the cluster created in Minerva is named `miniature`, then the `name` value must also be `miniature`.
+
+   * This ensures that Lens correctly identifies and connects to the intended Minerva cluster.
+
+3. **Catalog Name**
+
+   * The `catalog` attribute must define the specific catalog name within the Minerva cluster that you intend to use.
+
+   * For instance, if the catalog is named `icebase`, ensure this is accurately reflected in the `catalog` field.
 
 ### **Deployment manifest file**
 

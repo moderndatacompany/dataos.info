@@ -1,14 +1,45 @@
 ---
-title: Postgres
+title: "Connecting to Postgres via Depot"
 ---
 
-## Prerequisites
+##
 
 While creating Lens on Postgres Depot the following aspects need to be considered:
 
 * The SQL dialect used in the `model/sql` folder to load data from the Postgres source should be of the Postgres dialect.
 
-* The table naming in the `model/table` sho should be of the format: `schema.table`.
+* The table naming in the `model/table`  should be of the format: `schema.table`.
+
+## Depot manifest file
+
+```
+name: postgres
+version: v2alpha
+type: depot
+layer: user
+depot:
+  type: jdbc                 
+  description: default postgres depot
+  external: true
+  secrets:
+    - name: postgres-rw
+      keys: 
+        - postgres-rw
+      allkeys: true
+
+    - name: postgres-r
+      keys: 
+        - postgres-r
+      allkeys: true
+    
+  jdbc:
+    subprotocol: postgresql
+    host: usr-db-dataos-ck-oynn-dataostra-stg.postgres.database.azure.com
+    port: 5432
+    database: postgres
+```
+
+##
 
 ## Deployment manifest file
 
@@ -40,12 +71,6 @@ lens:
   api:   # optional
     replicas: 1 # optional
     logLevel: info  # optional
-    envs:
-      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-      LENS2_DEV_MODE: "true"
-      LENS2_CONCURRENCY: 10
-      LENS2_DB_MAX_POOL: 15
-      LENS2_DB_TIMEOUT: 1500000
       
     resources: # optional
       requests:
@@ -57,10 +82,6 @@ lens:
   worker: # optional
     replicas: 2 # optional
     logLevel: debug  # optional
-    envs:
-      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-      LENS2_DEV_MODE: "true"
-
 
     resources: # optional
       requests:
@@ -71,9 +92,6 @@ lens:
         memory: 6048Mi
   router: # optional
     logLevel: info  # optional
-    envs:
-      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-      LENS2_DEV_MODE: "true"
     resources: # optional
       requests:
         cpu: 100m
