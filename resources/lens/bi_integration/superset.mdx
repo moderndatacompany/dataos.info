@@ -1,23 +1,18 @@
 ---
-title: Superset
+title: "Superset"
 ---
 
-<aside class="callout">
-💡 For a streamlined and user-friendly integration with Superset, use the Data Product Hub interface. This approach allows you to easily integrate your Lens model's semantic model with Superset, eliminating the need to manually work with `curl` commands.
-
-To get started with Superset integration through the Data Product Hub, refer to the link below:
-
-<a href="/interfaces/data_product_hub/activation/bi_sync/superset/">Access the Superset integration guide</a>.
-</aside>
-
+<Tip>
+  For a streamlined and user-friendly integration with Superset, use the Data Product Hub interface. This approach allows you to easily integrate your Lens model's semantic model with Superset, eliminating the need to manually work with \`curl\` commands. To get started with Superset integration through the Data Product Hub, refer to the link below: [Access the Superset integration guide](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/superset/).
+</Tip>
 
 ## Prerequisites
 
-- **Curl**: Ensure `curl` is installed on the system. For Windows users, `curl.exe` may be required.
+* **Curl**: Ensure `curl` is installed on the system. For Windows users, `curl.exe` may be required.
 
-- **Lens API endpoint**: The API endpoint provided by Lens to sync semantic model, enabling integration with Superset.
+* **Lens API endpoint**: The API endpoint provided by Lens to sync semantic model, enabling integration with Superset.
 
-- **Access credentials**: Access credentials such as username, password, and host are required for Superset.
+* **Access credentials**: Access credentials such as username, password, and host are required for Superset.
 
 Superset requires the login credentials (username and password) and the host address where Superset is hosted. The command establishes a database and table with a live connection to the Lens model in Superset, enabling direct interaction with and visualization of data from Lens within the Superset environment.
 
@@ -29,49 +24,47 @@ To sync the Lens model with Superset, follow these steps:
 
 Copy the curl command syntax below and replace the placeholders with the actual values.
 
-=== "Syntax"
+<CodeGroup>
+  ```bash Syntax
+  curl --location --request POST 'https://<DATAOS_FQDN>/lens2/sync/api/v1/superset/<WORKSPACE_NAME>:<LENS-NAME>' \
+  --header 'apikey: <apikey>' \
+  --header 'Content-Type: application/json' \
+  --data-raw '
+  {
+      "username": "<superset username>",
+      "password": "<superset password>",
+      "host": "https://superset-<DATAOS_FQDN>"
+  }
+  ```
 
-    ```bash
-    curl --location --request POST 'https://<DATAOS_FQDN>/lens2/sync/api/v1/superset/<WORKSPACE_NAME>:<LENS-NAME>' \
-    --header 'apikey: <apikey>' \
-    --header 'Content-Type: application/json' \
-    --data-raw '
-    {
-        "username": "<superset username>",
-        "password": "<superset password>",
-        "host": "https://superset-<DATAOS_FQDN>"
-    }
-    ```
+  ```bash Example
+  curl --location --request POST 'https://liberal-monkey.dataos.app/lens2/sync/api/v1/superset/public:company-intelligence' \
+  --header 'apikey: aueniekQa==' \
+  --header 'Content-Type: application/json' \
+  --data-raw '
+  {
+      "username": "adder_1",
+      "password": "adder_1",
+      "host": "https://superset-liberal-monkey.dataos.app"
+  }
+  ```
+</CodeGroup>
 
-=== "Example"
 
-    ```bash
-    curl --location --request POST 'https://liberal-monkey.dataos.app/lens2/sync/api/v1/superset/public:company-intelligence' \
-    --header 'apikey: aueniekQa==' \
-    --header 'Content-Type: application/json' \
-    --data-raw '
-    {
-        "username": "adder_1",
-        "password": "adder_1",
-        "host": "https://superset-liberal-monkey.dataos.app"
-    }
-    ```
 
 **Command parameters:**
 
-- **`URL`**: `https://liberal-monkey.dataos.app/lens2/sync/api/v1/superset/public:quality360`. This is the endpoint for syncing with Superset.
+* **`URL`**: [`https://liberal-monkey.dataos.app/lens2/sync/api/v1/superset/public:quality360`.](https://liberal-monkey.dataos.app/lens2/sync/api/v1/superset/public:quality360.) This is the endpoint for syncing with Superset.
 
-- **`DataOS FQDN`**: Current DataOS FQDN, e.g., `liberal-monkey.dataos.app`.
+* **`DataOS FQDN`**: Current DataOS FQDN, e.g., `liberal-monkey.dataos.app`.
 
-- **`--header 'Content-Type: application/json'`**: Specifies the content type as JSON.
+* **`--header 'Content-Type: application/json'`**: Specifies the content type as JSON.
 
-- **`Lens_Name`**: Name of the Lens, e.g., `quality360`.
+* **`Lens_Name`**: Name of the Lens, e.g., `quality360`.
 
-- **`API_Key`**: DataOS API key. The DataOS API key for the user can be obtained by executing the command below.
-
-    ```bash
-    dataos-ctl user apikey get
-    ```
+* **`API_Key`**: DataOS API key. The DataOS API key for the user can be obtained by executing the command below.```bash
+  dataos-ctl user apikey get
+  ```
 
 Upon initiation, a response will be received:
 
@@ -89,20 +82,15 @@ Once the command is executed in the terminal, results will be visible in the Sup
 
 Please follow the steps outlined to see the result:
 
-**Step 2 Go to DataOS**: Go to DataOS and select Superset.
+**Step 1 Go to DataOS**: Go to DataOS and select Superset.
 
-   <div>
-      <img src="/resources/lens/bi_integration/superset2.png" alt="Superset Configuration" / >
-  </div>
+![Superset Configuration](https://dataos.info/resources/lens/bi_integration/superset2.png)
 
-**Step 3 Navigate to Datasets tab:** Here, each entity will appear as a dataset.
+**Step 2 Navigate to Datasets tab:** Here, each entity will appear as a dataset.
 
-   <div>
-      <img src="/resources/lens/bi_integration/superset3.png" alt="Superset Configuration" / >
-  </div>
+![Superset Configuration](https://dataos.info/resources/lens/bi_integration/superset3.png)
 
 The setup is complete. Further exploration and analysis can be performed in Superset.
-
 
 ## Data policies and security
 
