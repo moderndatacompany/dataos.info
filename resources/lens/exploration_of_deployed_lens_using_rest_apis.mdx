@@ -100,13 +100,13 @@ user_groups:
 
 Explore lens using REST APIs using the following methods:
 
-1. [**Postman**](#postman): A API Testing tool for data application developers
+1. [**Postman**](#postman): An API Testing tool for data application developers
 
 2. [**Curl**](#using-curl): A command-line tool for transferring data with URLs, useful for automated scripts.
 
 3. [**Python**](#using-python): Use Python's `requests` library for more complex interactions with the API.
 
-### **Postman**
+## Using Postman
 
 Use [Postman](https://www.postman.com/) to interact with Lens via REST APIs. Start by importing the following Postman collection.
 
@@ -136,7 +136,7 @@ When working with a Postman collection to test APIs, you typically need to confi
 
 1. Select the API method you want to use (e.g., `GET`, `POST`) from the dropdown next to the API URL.
 
-**Prepare the URL:**  Prepare the URL according to the workspace and environment where your Lens is deployed.
+**Prepare the URL:**  Prepare the URL according to the workspace and environment where your Lens is deployed. For example, if the Lens named`sales-analysis` is deployed in the `curriculum` workspace on the `alpha-omega.dataos.app` environment then the URL will be as given in the example below:
 
 <Tabs>
   <Tab title="Syntax">
@@ -147,7 +147,7 @@ When working with a Postman collection to test APIs, you typically need to confi
 
   <Tab title="Example">
     ```
-    https://<DATAOS_FQDN>/lens2/api/<WORKSPACE>:<NAME_OF_LENS>/v2/meta
+    https://alpha-omega.dataos.app/lens2/api/curriculum:sales-affinity/v2/meta
     ```
   </Tab>
 </Tabs>
@@ -320,6 +320,12 @@ curl -X POST <https://<DATAOS_FQDN>/lens2/api/<WORKSPACE>:<NAME_OF_LENS>/v2/load
 https://<DATAOS_FQDN>/lens2/api/<WORKSPACE>:<NAME_OF_LENS>/v2/load
 ```
 
+For example, if the Lens named`sales-analysis` is deployed in the `curriculum` workspace on the `alpha-omega.dataos.app` environment then the URL will be as follows:
+
+```bash
+https://alpha-omega.dataos.app/lens2/api/curriculum:sales-analysis>/v2/load
+```
+
 * **Replace `<DATAOS_API_KEY>` with your actual DataOS API key:** Refer to the [Generating an API Key](https://dataosinfo.mintlify.app/resources/lens/exploration_of_deployed_lens_using_rest_apis#generating-an-api-key) section for more information on obtaining an API key.
 
 * **Replace `<DATAOS_FQDN>` with the fully qualified domain name of your DataOS instance.** For example: `alpha-omega.dataos.app` or `happy-kangaroo.dataos.app`.
@@ -419,7 +425,7 @@ print(response.json())
 https://<DATAOS_FQDN>/lens2/api/<WORKSPACE>:<NAME_OF_LENS>/v2/load
 ```
 
-For example, if the Lens named`sales-analysis` is deployed in the `cyrriculum` workspace on the `alpha-omega.dataos.app` environment then the URL will be as follows:
+For example, if the Lens named`sales-analysis` is deployed in the `curriculum` workspace on the `alpha-omega.dataos.app` environment then the URL will be as follows:
 
 ```
 https://alpha-omega.dataos.app`/lens2/api/curriculum:sales-analysis/v2/load
