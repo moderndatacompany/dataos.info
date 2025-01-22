@@ -483,25 +483,27 @@ To create Depots, ensure that you possess the following tags.
   </Accordion>
 
   <Accordion title="JDBC" defaultOpen={false}>
-    ### Pre-requisites specific to the Bigquery Depot
+    ### Pre-requisites specific to the JDBC Depot
 
-    To create a Bigquery Depot you must have the following details:
+    To create a JDBC Depot you must have the following details:
 
-    * **projectid**: The unique identifier of the Google Cloud project where your GCS bucket resides. You can find this in the Google Cloud Console under the "Project Info" section of your project's dashboard. It is essential for associating operations with the correct project.
+    * **username**: The JDBC username used to authenticate and connect to the database. This username is assigned during database setup or can be obtained from the database administrator.
 
-    * **email**: The email address associated with the Google Cloud service account. You can retrieve this by navigating to the Google Cloud Console under "IAM & Admin" > "Service Accounts" and selecting the relevant service account. This email is used for authenticating requests to GCS.
+    * **password**: The password associated with the JDBC username for authentication. This is set during account creation or provided securely by the database administrator.
 
-    * **json\_keyfile**: The path to the JSON key file associated with the Google Cloud service account. This file is used for authentication and can be downloaded from the Google Cloud Console under "IAM & Admin" > "Service Accounts." Select the service account, click on "Keys," and download the key by selecting "Add Key" > "JSON." Ensure the file is securely stored and the path is accessible.
+    * **subprotocol**: Specifies the subprotocol used by the JDBC connection, such as `mysql`, `postgresql`, or `oracle`. This identifies the type of database to which the connection is being established. Refer to your database configuration or documentation for the correct value.
 
-    * **project**: (Optional) The name of the Google Cloud project. While not always required, it can be specified to provide additional context. You can find it in the Google Cloud Console under the "Project Info" section.
+    * **host**: The hostname or IP address of the server hosting the database. You can obtain this from the database administrator or your organization’s network team.
 
-    ### Create a Bigquery Depot
+    * **port**: The port number on which the database is running. Common examples include `3306` for MySQL or `5432` for PostgreSQL. This information is typically available from the database administrator.
 
-    Azure Blob File System Secure (ABFSS) is an object storage system. Object stores are distributed storage systems designed to store and manage large amounts of unstructured data.
+    * **database**: The name of the specific database to which the connection is made. You can find this in your database management system or ask the database administrator for the database name.
 
-    DataOS enables the creation of a Depot of type 'Bigquery' to facilitate the reading of data stored in an Azure Blob Storage account. This Depot provides access to the storage account, which can consist of multiple containers. A container serves as a grouping mechanism for multiple blobs. It is recommended to define a separate Depot for each container. To create a Depot of type ‘ABFSS‘, follow the below steps:
+    ### Create a JDBC Depot
 
-    ### Step 1: Create an Instance Secret for securing Bigquery credentails
+    DataOS provides the capability to establish a connection to a database using the JDBC driver in order to read data from tables using a Depot. The Depot facilitates access to all schemas visible to the specified user within the configured database. To create a Depot of type ‘JDBC‘, follow the below steps:
+
+    ### Step 1: Create an Instance Secret for securing JDBC credentails
 
     <Warning>
       This step can be skipped if you prefer to create a Depot without referencing an Instance Secret.
@@ -509,9 +511,9 @@ To create Depots, ensure that you possess the following tags.
 
     Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).&#x20;
 
-    ### Step 2: Create a Bigquery Depot manifest file
+    ### Step 2: Create a JDBC Depot manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your Bigquery Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
+    Begin by creating a manifest file to hold the configuration details for your JDBC Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
 
     <CodeGroup>
       ```yaml Inline credentials Depot manifest file
@@ -520,30 +522,31 @@ To create Depots, ensure that you possess the following tags.
       type: depot
       tags:
         - ${{tag1}}
-        - ${{tag2}}
       owner: ${{owner-name}}
       layer: user
       depot:
-        type: ABFSS                                       
+        type: JDBC                                      
         description: ${{description}}
         external: ${{true}}
-        compute: ${{runnable-default}}
-        connectionSecret:                                 
+        connectionSecret:                              
           - acl: rw
             type: key-value-properties
             data:
-              azurestorageaccountname: ${{account-name}}
-              azurestorageaccountkey: ${{account-key}}
+              username: ${{jdbc-username}}
+              password: ${{jdbc-password}}
           - acl: r
             type: key-value-properties
             data:
-              azurestorageaccountname: ${{account-name}}
-              azurestorageaccountkey: ${{account-key}}
-        spec:                                             
-          account: ${{account-name}}
-          container: ${{container-name}}
-          relativePath: ${{relative-path}}
-          format: ${{format}}
+              username: ${{jdbc-username}}
+              password: ${{jdbc-password}}
+        spec:                                           
+          subprotocol: ${{subprotocol}}
+          host: ${{host}}
+          port: ${{port}}
+          database: ${{database-name}}
+          params:
+            ${{"key1": "value1"}}
+            ${{"key2": "value2"}}
       ```
 
       ```yaml Instance Secret reference Depot manifest file
@@ -552,25 +555,26 @@ To create Depots, ensure that you possess the following tags.
       type: depot
       tags:
         - ${{tag1}}
-        - ${{tag2}}
       owner: ${{owner-name}}
       layer: user
       depot:
-        type: ABFSS                                       
+        type: JDBC                                      
         description: ${{description}}
         external: ${{true}}
-        compute: ${{runnable-default}}
         secrets:
-          - name: ${{abfss-instance-secret-name}}-r
+          - name: ${{sf-instance-secret-name}}-r
             allkeys: true
 
-          - name: ${{abfss-instance-secret-name}}-rw
+          - name: ${{sf-instance-secret-name}}-rw
             allkeys: true
-        abfss:                                             
-          account: ${{account-name}}
-          container: ${{container-name}}
-          relativePath: ${{relative-path}}
-          format: ${{format}}
+        jdbc:                                           
+          subprotocol: ${{subprotocol}}
+          host: ${{host}}
+          port: ${{port}}
+          database: ${{database-name}}
+          params:
+            ${{"key1": "value1"}}
+            ${{"key2": "value2"}}
       ```
     </CodeGroup>
 
@@ -590,9 +594,9 @@ To create Depots, ensure that you possess the following tags.
   </Accordion>
 
   <Accordion title="MongoDB" defaultOpen={false}>
-    ### Pre-requisites specific to the Bigquery Depot
+    ### Pre-requisites specific to the MongoDB Depot
 
-    To create a Bigquery Depot you must have the following details:
+    To create a MongoDB Depot you must have the following details:
 
     * **projectid**: The unique identifier of the Google Cloud project where your GCS bucket resides. You can find this in the Google Cloud Console under the "Project Info" section of your project's dashboard. It is essential for associating operations with the correct project.
 
@@ -602,13 +606,13 @@ To create Depots, ensure that you possess the following tags.
 
     * **project**: (Optional) The name of the Google Cloud project. While not always required, it can be specified to provide additional context. You can find it in the Google Cloud Console under the "Project Info" section.
 
-    ### Create a Bigquery Depot
+    ### Create a MongoDB Depot
 
     Azure Blob File System Secure (ABFSS) is an object storage system. Object stores are distributed storage systems designed to store and manage large amounts of unstructured data.
 
     DataOS enables the creation of a Depot of type 'Bigquery' to facilitate the reading of data stored in an Azure Blob Storage account. This Depot provides access to the storage account, which can consist of multiple containers. A container serves as a grouping mechanism for multiple blobs. It is recommended to define a separate Depot for each container. To create a Depot of type ‘ABFSS‘, follow the below steps:
 
-    ### Step 1: Create an Instance Secret for securing Bigquery credentails
+    ### Step 1: Create an Instance Secret for securing MongoDB credentails
 
     <Warning>
       This step can be skipped if you prefer to create a Depot without referencing an Instance Secret.
@@ -616,9 +620,9 @@ To create Depots, ensure that you possess the following tags.
 
     Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).&#x20;
 
-    ### Step 2: Create a Bigquery Depot manifest file
+    ### Step 2: Create a MongoDB Depot manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your Bigquery Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
+    Begin by creating a manifest file to hold the configuration details for your MongoDB Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
 
     <CodeGroup>
       ```yaml Inline credentials Depot manifest file
