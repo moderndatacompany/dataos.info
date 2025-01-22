@@ -4,12 +4,12 @@ title: Installing Prerequisites
 
 Before setting up Lens on your local system, ensure you meet the following requirements.
 
-| **Dependency** | **Purpose** |
-| --- | --- |
-| **Docker** | Runs Lens in an isolated environment on your local system. |
-| **Docker Compose** | Configures and manages multi-container Docker applications for Lens. |
-| **Postman App/Postman VSCode Extension** | Queries and tests Lens to ensure your setup functions correctly. |
-| **VS Code** | Builds and manages Lens Model YAMLs as a code editor. |
+| **Dependency**                           | **Purpose**                                                          |
+| ---------------------------------------- | -------------------------------------------------------------------- |
+| **Docker**                               | Runs Lens in an isolated environment on your local system.           |
+| **Docker Compose**                       | Configures and manages multi-container Docker applications for Lens. |
+| **Postman App/Postman VSCode Extension** | Queries and tests Lens to ensure your setup functions correctly.     |
+| **VS Code**                              | Builds and manages Lens Model YAMLs as a code editor.                |
 
 ### **Docker**
 
@@ -31,26 +31,26 @@ Docker version 20.10.7, build f0df350
 
 If Docker is not installed, follow the appropriate installation guide for particular operating system:
 
-- **Linux:** Follow the installation guide for the Docker engine for Linux here: [Install Docker on Linux](https://docs.docker.com/desktop/install/linux-install/). It is recommended that you install the Docker Desktop version.
-- **Windows:** Follow the installation guide of the Docker engine for Windows here: [Install Docker on Windows](https://docs.docker.com/desktop/install/windows-install/).
-- **macOS:** Follow the installation guide of the Docker engine for Linux here: [Install Docker on macOS](https://docs.docker.com/desktop/install/mac-install/).
+* **Linux:** Follow the installation guide for the Docker engine for Linux here: [Install Docker on Linux](https://docs.docker.com/desktop/install/linux-install/). It is recommended that you install the Docker Desktop version.
+
+* **Windows:** Follow the installation guide of the Docker engine for Windows here: [Install Docker on Windows](https://docs.docker.com/desktop/install/windows-install/).
+
+* **macOS:** Follow the installation guide of the Docker engine for Linux here: [Install Docker on macOS](https://docs.docker.com/desktop/install/mac-install/).
 
 **Docker login**
 
 Before pulling or pushing images from or to a private repository, it is necessary to log in to Docker Hub using the command line. The docker login command can be used to authenticate with Docker Hub by providing the Docker Hub username and password.
 
-=== "Syntax"     
+<CodeGroup>
+  ```javascript Syntax
+  docker login --username=${DOCKERHUB_USERNAME}
+  ```
 
-    ```bash
-    docker login --username=${DOCKERHUB_USERNAME}
-    ```
+  ```
+  docker login --username=lensuser01
+  ```
+</CodeGroup>
 
-
-=== "Example"
-
-    ```bash
-    docker login --username=lensuser01
-    ```
 After executing the command, replacing ${DOCKERHUB_USERNAME} with the actual Docker Hub username, the system will prompt for the Docker account password.
 
 ```bash
@@ -66,30 +66,33 @@ https://docs.docker.com/engine/reference/commandline/login/#credentials-store
 Login Succeeded
 ```
 
-<aside >
-💡 To obtain the username and password required to pull the Lens image, contact the DataOS Administrator or Operator within your organization.
-</aside>
-
+<Tip>
+  To obtain the username and password required to pull the Lens image, contact the DataOS Administrator or Operator within your organization.
+</Tip>
 
 **Pull the image**
 
 To pull a Docker image from a registry, use the docker pull command. If no tag is specified, Docker will automatically pull the latest version of the image. This command is required to fetch images from public or private registries.
 
-=== "Syntax"
+<CodeGroup>
+  ```javascript Syntax
+  docker pull [REGISTRY_HOST/]USERNAME/IMAGE[:TAG]
+  ```
 
-    ```bash
-    docker pull [REGISTRY_HOST/]USERNAME/IMAGE[:TAG]
-    ```
+  ```
+  docker pull lensuser01/lens2:0.35.55-01    
+  ```
+</CodeGroup>
 
-=== "Example"
 
-    ```bash
-    docker pull lensuser01/lens2:0.35.55-01    
-    ```
 
-<aside>
-💡  Tags are used to identify specific versions of an image and can be updated over time. Ensure the latest image tag or the tag specified in the docker-compose YAML is pulled.
-</aside>
+```bash
+docker pull [REGISTRY_HOST/]USERNAME/IMAGE[:TAG]
+```
+
+<Info>
+  Tags are used to identify specific versions of an image and can be updated over time. Ensure the latest image tag or the tag specified in the docker-compose YAML is pulled.
+</Info>
 
 **Docker compose**
 
@@ -98,16 +101,17 @@ Lens utilizes Docker Compose to configure multi-container Docker applications th
 **Checking for existing installation**
 
 Before installing Docker Compose, it is advisable to check if it is already installed on the system.
-    
+
 ```bash
 docker-compose --version
 ```
+
 This command will return the installed version of Docker Compose, if present. For example:
 
 ```bash
 docker-compose version 1.29.2, build 5becea4c
 ```
-    
+
 **Installing Docker compose**
 
 If Docker Compose is not installed, refer to the following link to [install Docker Compose](https://docs.docker.com/compose/install/).
@@ -118,11 +122,11 @@ Visual Studio Code (VS Code) must be installed on the local system to create a L
 
 **Installation links by Operating System**
 
-- **Linux**: Follow the detailed steps to install VS Code on your Linux system by accessing the [Install VS Code on Linux guide](https://code.visualstudio.com/docs/setup/linux).
+* **Linux**: Follow the detailed steps to install VS Code on your Linux system by accessing the [Install VS Code on Linux guide](https://code.visualstudio.com/docs/setup/linux).
 
-- **Windows**: To install VS Code on a Windows machine, refer to the [Install VS Code on Windows guide](https://code.visualstudio.com/docs/setup/windows).
+* **Windows**: To install VS Code on a Windows machine, refer to the [Install VS Code on Windows guide](https://code.visualstudio.com/docs/setup/windows).
 
-- **MacOS**: For MacOS users, installation instructions can be found in the [Install VS Code on macOS guide](https://code.visualstudio.com/docs/setup/mac).
+* **MacOS**: For MacOS users, installation instructions can be found in the [Install VS Code on macOS guide](https://code.visualstudio.com/docs/setup/mac).
 
 ### **Python**
 
@@ -135,52 +139,46 @@ python3 --version
 #Expected_Output
 Python 3.8.14
 ```
-  <aside>
-  🗣️ Ensure that the version is 3.7 or higher to meet Lens requirements. If not update the Python to the version equal to or greater than 3.7.
-  </aside>
 
-**Installing Python** 
+<Info>
+  Ensure that the version is 3.7 or higher to meet Lens requirements. If not update the Python to the version equal to or greater than 3.7.
+</Info>
+
+**Installing Python**
 
 If Python is not already installed on the system, follow the steps below to download and install the appropriate version.
 
 1. **Access the installation guide**: Visit the [Python Installation Guide](https://realpython.com/installing-python/#how-to-install-python-on-windows). This guide provides detailed instructions for installing Python on various operating systems, including Windows, macOS, and Linux.
 
 2. **Download Python**: From the guide, select the link corresponding to the operating system and download the latest version of Python.
-        
+
 3. **Install Python**: Run the downloaded installer. Be sure to check the box that says "Add Python 3.x to PATH" before clicking "Install Now". This step is crucial as it makes Python accessible from the command line.
 
-4. **Verify installation**: After installation, open a command line interface and run the following  command to check the installed version of Python. The expected output should be **`Python 3.X`** or another version that is greater than 3.7.
-          
-    ```bash
-    python3 -V
-    #Expected_Output
-    Python 3.8.14
-    ```
+4. **Verify installation**: After installation, open a command line interface and run the following  command to check the installed version of Python. The expected output should be **`Python 3.X`** or another version that is greater than 3.7.```bash
+   python3 -V
+   #Expected_Output
+   Python 3.8.14
+   ```
 
 5. **Update Python**: If installed version of Python is older than 3.7, follow the guide on [Updating Python](https://ioflood.com/blog/update-python-step-by-step-guide/) to upgrade to a newer version that meets the Lens prerequisites.
-    
+
 ### **Postman**
 
 Postman is a tool that allows data developers to perform querying and testing within the Lens environment by sending API requests through an intuitive user interface. Follow the [Postman Installation Guide](https://learning.postman.com/docs/getting-started/installation/installation-and-updates/) to install Postman on your local system.
-
 
 **Install Postman VS Code extension**:
 
 Alternatively, you can also install Postman Extension on your Code Editor.
 
-- Search for **Postman** in the VS Code Extensions Marketplace and install the Postman extension.
+* Search for **Postman** in the VS Code Extensions Marketplace and install the Postman extension.
 
-- Open the extension within VS Code to start creating and sending requests directly from the editor.
-    
-<div>
-<br></br>
-    <img src="/resources/lens/installing_prerequisites/postman_extension.png" alt="Postman Extension" / >
-</div>
+* Open the extension within VS Code to start creating and sending requests directly from the editor.
 
-- Once installed, you can access the Postman extension by clicking on the Postman icon in the Activity Bar on the side of VS Code.
+![Postman Extension](https://dataos.info/resources/lens/installing_prerequisites/postman_extension.png "Postman Extension")
 
-With all prerequisites including Docker, VS Code, Python, and Postman installed, you are now ready to build Lens models on your system. 
+* Once installed, you can access the Postman extension by clicking on the Postman icon in the Activity Bar on the side of VS Code.
 
+With all prerequisites including Docker, VS Code, Python, and Postman installed, you are now ready to build Lens models on your system.
 
 ## Next steps
 
