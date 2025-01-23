@@ -91,7 +91,14 @@
       "group": "Depot",
       "pages": [
         "resources/depot/index",
-        "resources/depot/configurations"
+        "resources/depot/configurations",
+        {
+          "group": "Supported Storage Architecture",
+          "pages": [
+            "resources/depot/iecbase/index",
+            "resources/depot/fastbase/index"
+          ]
+        }
       ]
     },    
     
