@@ -1,5 +1,5 @@
 ---
-title: "Connecting to Postgres via Depot"
+title: "Bigquery"
 ---
 
 ## Prerequisites
@@ -8,11 +8,7 @@ title: "Connecting to Postgres via Depot"
 
 While creating a semantic model on bigquery source, the following aspects need to be considered:
 
-*
-
-
-
-### **1. Prepare the Lens Model Folder**
+### **1. Prepare the Lens model folder**
 
 Start by setting up the **Lens Model Folder**
 
@@ -111,9 +107,9 @@ After setting up the Lens model folder, the next step is to configure the **depl
 
     * **Lens directory name:**  The `lensBaseDir` attribute refers to the directory in the repository containing the Lens model. Example: `sample/lens/source/depot/bigquery/model`.
 
-    - **Secret id:**  The `secretId` attribute is used to access private repositories (e.g., Bitbucket, GitHub) . It specifies the secret needed to securely authenticate and access the repository.
+    * **Secret id:**  The `secretId` attribute is used to access private repositories (e.g., Bitbucket, GitHub) . It specifies the secret needed to securely authenticate and access the repository.
 
-    - SyncFlags:  Specifies additional flags to control repository synchronization. Example: `--ref=dev` specifies that the Lens model rsides in the dev branch.&#x20;
+    * SyncFlags:  Specifies additional flags to control repository synchronization. Example: `--ref=dev` specifies that the Lens model rsides in the dev branch.&#x20;
 
 * **Configuring API and Worker Settings (Optional):** Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
 
@@ -184,8 +180,6 @@ lens:
         cpu: 6000m
         memory: 6048Mi
 ```
-
-
 
 ## Docker compose manifest file
 
