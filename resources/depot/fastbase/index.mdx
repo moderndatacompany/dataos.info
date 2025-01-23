@@ -66,14 +66,11 @@ dataos-ctl dataset create -a ${{udl-address}} -f ${{yaml-file-path}}
 <Note>
   Note:
 
-
   * Pulsar supports quantifiable distribution while partitioning the data. The value of the partitions key is in the \`int\` form, and it doesn’t support categorical partition.
 
   * The minimum partition value should be 2.
 
   * Pulsar is based on the number of distributions, while iceberg is based on the type of distributions you need.
-
-
 </Note>
 
 ### **Fetch a Dataset**
@@ -88,7 +85,7 @@ dataos-ctl dataset -a dataos://fastbase:default/${{topic-name}}  get
 
 Messages in Pulsar are published to topics and organized in a three-level hierarchy structure.
 
-![Pulsar Hierarchy](https://dataos.info/resources/depot/fastbase/hierarchy.png)
+![](/resources/depot/fastbase/hierarchy.png)
 
 * One `tenant` represents a specific business unit or a product line. Topics created under a `tenant` share the same business context that is distinct from others.
 
@@ -159,8 +156,6 @@ INFO[0001] 🔍 list...complete
 -----------------
   public/default
 ```
-
-
 
 ### **Topics**
 
@@ -270,8 +265,6 @@ dataos-ctl fastbase topic consume -p -s -t persistent://public/default/random_us
   ```
 </Accordion>
 
-
-
 **Command (-p,-s,-t,-l flags)**
 
 ```bash
@@ -305,8 +298,6 @@ dataos-ctl fastbase topic consume -p -s -t persistent://public/default/usaflogs 
   ```
 </Accordion>
 
-[](https://dataos.info/resources/depot/fastbase/#__codelineno-20-1)[](https://dataos.info/resources/depot/fastbase/#__codelineno-20-2)[](https://dataos.info/resources/depot/fastbase/#__codelineno-20-3)[](https://dataos.info/resources/depot/fastbase/#__codelineno-20-4)[](https://dataos.info/resources/depot/fastbase/#__codelineno-20-5)[](https://dataos.info/resources/depot/fastbase/#__codelineno-20-6)[](https://dataos.info/resources/depot/fastbase/#__codelineno-20-7)[](https://dataos.info/resources/depot/fastbase/#__codelineno-20-8)[](https://dataos.info/resources/depot/fastbase/#__codelineno-20-9)[](https://dataos.info/resources/depot/fastbase/#__codelineno-20-10)[](https://dataos.info/resources/depot/fastbase/#__codelineno-20-11)[](https://dataos.info/resources/depot/fastbase/#__codelineno-20-12)[](https://dataos.info/resources/depot/fastbase/#__codelineno-20-13)[](https://dataos.info/resources/depot/fastbase/#__codelineno-20-14)[](https://dataos.info/resources/depot/fastbase/#__codelineno-20-15)[](https://dataos.info/resources/depot/fastbase/#__codelineno-20-16)[](https://dataos.info/resources/depot/fastbase/#__codelineno-20-17)[](https://dataos.info/resources/depot/fastbase/#__codelineno-20-18)[](https://dataos.info/resources/depot/fastbase/#__codelineno-20-19)[](https://dataos.info/resources/depot/fastbase/#__codelineno-20-20)
-
 #### **Topic read**
 
 The command helps to read the topic, additional flags are given below
@@ -323,17 +314,30 @@ Flags:
   -t, --topic string       FastBase topic to read message from
 ```
 
-[](https://dataos.info/resources/depot/fastbase/#__codelineno-21-1)
-
 **Command (-p,-t flags)**
 
 ```bash
 dataos-ctl fastbase topic read -p -t persistent://public/default/random_users_02
 ```
 
-[](https://dataos.info/resources/depot/fastbase/#__codelineno-22-1)
-
-[](https://dataos.info/resources/depot/fastbase/#__codelineno-23-1)[](https://dataos.info/resources/depot/fastbase/#__codelineno-23-2)[](https://dataos.info/resources/depot/fastbase/#__codelineno-23-3)[](https://dataos.info/resources/depot/fastbase/#__codelineno-23-4)[](https://dataos.info/resources/depot/fastbase/#__codelineno-23-5)[](https://dataos.info/resources/depot/fastbase/#__codelineno-23-6)[](https://dataos.info/resources/depot/fastbase/#__codelineno-23-7)[](https://dataos.info/resources/depot/fastbase/#__codelineno-23-8)[](https://dataos.info/resources/depot/fastbase/#__codelineno-23-9)[](https://dataos.info/resources/depot/fastbase/#__codelineno-23-10)[](https://dataos.info/resources/depot/fastbase/#__codelineno-23-11)[](https://dataos.info/resources/depot/fastbase/#__codelineno-23-12)[](https://dataos.info/resources/depot/fastbase/#__codelineno-23-13)[](https://dataos.info/resources/depot/fastbase/#__codelineno-23-14)
+<Accordion title="Output" defaultOpen={false}>
+  ```bash
+  INFO[0000] 🔍 read...                                   
+  INFO[0006] [Connecting to broker]                        remote_addr="pulsar+ssl://tcp.above-dragon.dataos.app:6651"
+  INFO[0007] [TCP connection established]                  local_addr="192.168.68.62:50854" remote_addr="pulsar+ssl://tcp.above-dragon.dataos.app:6651"
+  INFO[0007] [Connection is ready]                         local_addr="192.168.68.62:50854" remote_addr="pulsar+ssl://tcp.above-dragon.dataos.app:6651"
+  INFO[0008] [Connecting to broker]                        remote_addr="pulsar+ssl://tcp.above-dragon.dataos.app:6651"
+  INFO[0009] [TCP connection established]                  local_addr="192.168.68.62:50856" remote_addr="pulsar+ssl://tcp.above-dragon.dataos.app:6651"
+  INFO[0010] [Connection is ready]                         local_addr="192.168.68.62:50856" remote_addr="pulsar+ssl://tcp.above-dragon.dataos.app:6651"
+  INFO[0010] [Connected consumer]                          consumerID=1 name=kipsy subscription=023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408 topic="persistent://public/default/random_users_02"
+  INFO[0010] [Created consumer]                            consumerID=1 name=kipsy subscription=023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408 topic="persistent://public/default/random_users_02"
+  {"id":"CKoKEAAYACAA","string_id":"1322:0:0","payload":{"age":"","city":"Nova Iguaçu","country":"Brazil","email":"ivone.rezende@example.com","first_name":"Ivone","gender":"female","id":"f87624d4-d04e-47b2-aa1a-81a5a887bc7a","last_name":"","phone":"(76) 7285-1917","postcode":"87183","state":"Mato Grosso","title":"Ms"},"publish_time":"2022-06-22T12:10:12.581+05:30","event_time":"2022-06-22T12:10:12.581+05:30","producer_name":"pulsar-4-623","topic":"persistent://public/default/random_users_02"}
+  {"id":"CKoKEAEYACAA","string_id":"1322:1:0","payload":{"age":"","city":"Shannon","country":"Ireland","email":"kathleen.richards@example.com","first_name":"Kathleen","gender":"female","id":"9efe2757-f81d-4ec7-9940-14c9a34d1c5c","last_name":"","phone":"051-256-6998","postcode":"55659","state":"Leitrim","title":"Mrs"},"publish_time":"2022-06-22T12:10:12.6+05:30","event_time":"2022-06-22T12:10:12.6+05:30","producer_name":"pulsar-4-623","topic":"persistent://public/default/random_users_02"}
+  {"id":"CKoKEAIYACAA","string_id":"1322:2:0","payload":{"age":"","city":"Limeira","country":"Brazil","email":"silnior.nogueira@example.com","first_name":"Sílnior","gender":"female","id":"d399586e-d54d-4a92-84fd-b30b4b320012","last_name":"","phone":"(92) 6422-7741","postcode":"74804","state":"Alagoas","title":"Miss"},"publish_time":"2022-06-22T12:10:12.616+05:30","event_time":"2022-06-22T12:10:12.616+05:30","producer_name":"pulsar-4-623","topic":"persistent://public/default/random_users_02"}
+  {"id":"CKoKEAMYACAA","string_id":"1322:3:0","payload":{"age":"","city":"Weimar","country":"Germany","email":"brigitta.godecke@example.com","first_name":"Brigitta","gender":"female","id":"ffca87ba-72c2-4f40-996e-5aaf233dbd03","last_name":"","phone":"0446-7765109","postcode":"46669","state":"Nordrhein-Westfalen","title":"Mrs"},"publish_time":"2022-06-22T12:10:12.63+05:30","event_time":"2022-06-22T12:10:12.63+05:30","producer_name":"pulsar-4-623","topic":"persistent://public/default/random_users_02"}
+  {"id":"CKoKEAQYACAA","string_id":"1322:4:0","payload":{"age":"","city":"Ryslinge","country":"Denmark","email":"alberte.mortensen@example.com","first_name":"Alberte","gender":"female","id":"6b3cebd5-b41a-474b-9d5e-4209b29b5097","last_name":"","phone":"15539760","postcode":"70648","state":"Danmark","title":"Ms"},"publish_time":"2022-06-22T12:10:12.727+05:30","event_time":"2022-06-22T12:10:12.727+05:30","producer_name":"pulsar-4-623","topic":"persistent://public/default/random_users_02"}
+  ```
+</Accordion>
 
 **Command (-p,-t,-m flags)**
 
@@ -341,9 +345,29 @@ dataos-ctl fastbase topic read -p -t persistent://public/default/random_users_02
 dataos-ctl fastbase topic read -p -t persistent://public/default/random_users_02
 ```
 
-[](https://dataos.info/resources/depot/fastbase/#__codelineno-24-1)
-
-[](https://dataos.info/resources/depot/fastbase/#__codelineno-25-1)[](https://dataos.info/resources/depot/fastbase/#__codelineno-25-2)[](https://dataos.info/resources/depot/fastbase/#__codelineno-25-3)[](https://dataos.info/resources/depot/fastbase/#__codelineno-25-4)[](https://dataos.info/resources/depot/fastbase/#__codelineno-25-5)[](https://dataos.info/resources/depot/fastbase/#__codelineno-25-6)[](https://dataos.info/resources/depot/fastbase/#__codelineno-25-7)[](https://dataos.info/resources/depot/fastbase/#__codelineno-25-8)[](https://dataos.info/resources/depot/fastbase/#__codelineno-25-9)[](https://dataos.info/resources/depot/fastbase/#__codelineno-25-10)[](https://dataos.info/resources/depot/fastbase/#__codelineno-25-11)[](https://dataos.info/resources/depot/fastbase/#__codelineno-25-12)[](https://dataos.info/resources/depot/fastbase/#__codelineno-25-13)[](https://dataos.info/resources/depot/fastbase/#__codelineno-25-14)[](https://dataos.info/resources/depot/fastbase/#__codelineno-25-15)[](https://dataos.info/resources/depot/fastbase/#__codelineno-25-16)[](https://dataos.info/resources/depot/fastbase/#__codelineno-25-17)[](https://dataos.info/resources/depot/fastbase/#__codelineno-25-18)[](https://dataos.info/resources/depot/fastbase/#__codelineno-25-19)
+<Accordion title="Output" defaultOpen={false}>
+  ```
+  INFO[0000] 🔍 read...                                   
+  INFO[0006] [Connecting to broker]                        remote_addr="pulsar+ssl://tcp.above-dragon.dataos.app:6651"
+  INFO[0007] [TCP connection established]                  local_addr="192.168.68.62:50854" remote_addr="pulsar+ssl://tcp.above-dragon.dataos.app:6651"
+  INFO[0007] [Connection is ready]                         local_addr="192.168.68.62:50854" remote_addr="pulsar+ssl://tcp.above-dragon.dataos.app:6651"
+  INFO[0008] [Connecting to broker]                        remote_addr="pulsar+ssl://tcp.above-dragon.dataos.app:6651"
+  INFO[0009] [TCP connection established]                  local_addr="192.168.68.62:50856" remote_addr="pulsar+ssl://tcp.above-dragon.dataos.app:6651"
+  INFO[0010] [Connection is ready]                         local_addr="192.168.68.62:50856" remote_addr="pulsar+ssl://tcp.above-dragon.dataos.app:6651"
+  INFO[0010] [Connected consumer]                          consumerID=1 name=kipsy subscription=023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408 topic="persistent://public/default/random_users_02"
+  INFO[0010] [Created consumer]                            
+  ERRO[0013] [Failed to get last message id]               consumerID=1 error="connection closed" name=023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408 subscription=reader-nevot topic="persistent://public/default/usaflogs"
+  ERRO[0013] [Failed to get last message id from broker]   error="connection closed" topic="persistent://public/default/usaflogs"
+  INFO[0013] [Connected consumer]                          consumerID=1 name=023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408 subscription=reader-nevot topic="persistent://public/default/usaflogs"
+  INFO[0013] [Reconnected consumer to broker]              consumerID=1 name=023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408 subscription=reader-nevot topic="persistent://public/default/usaflogs"
+  {"id":"CNkBEIsdGAAgAA==","string_id":"217:3723:0","payload":"JjIwMjItMDgtMzFUMTI6MTE6NDBINGNiMTAyNTItNjcwOC00NzgwLWJhOTMtYzg3N2E5NDc0NDgzEkZ1ZWxTcGVudAgyNDQ4DGxpdHJlcw==","publish_time":"2022-08-31T17:41:40.27+05:30","event_time":"2022-08-31T17:41:40.27+05:30","producer_name":"pulsar-2-4","topic":"persistent://public/default/usaflogs"}
+  {"id":"CNkBEIwdGAAgAA==","string_id":"217:3724:0","payload":"JjIwMjItMDgtMzFUMTI6MTE6NDJIOGVkMGQ5OGUtNmUwNS00NDhhLWEzNTgtNzQ0MzRlYWVkMjg0EkZ1ZWxTcGVudAY2NzkOZ2FsbG9ucw==","publish_time":"2022-08-31T17:41:42.254+05:30","event_time":"2022-08-31T17:41:42.254+05:30","producer_name":"pulsar-2-4","topic":"persistent://public/default/usaflogs"}
+  {"id":"CNkBEI0dGAAgAA==","string_id":"217:3725:0","payload":"JjIwMjItMDgtMzFUMTI6MTE6NDRINGNiMTAyNTItNjcwOC00NzgwLWJhOTMtYzg3N2E5NDc0NDgzFEZ1ZWxJbmdlc3QGODQ4DGxpdHJlcw==","publish_time":"2022-08-31T17:41:44.256+05:30","event_time":"2022-08-31T17:41:44.256+05:30","producer_name":"pulsar-2-4","topic":"persistent://public/default/usaflogs"}
+  {"id":"CNkBEI4dGAAgAA==","string_id":"217:3726:0","payload":"JjIwMjItMDgtMzFUMTI6MTE6NDZIOGVkMGQ5OGUtNmUwNS00NDhhLWEzNTgtNzQ0MzRlYWVkMjg0FEZ1ZWxJbmdlc3QGNDEwDmdhbGxvbnM=","publish_time":"2022-08-31T17:41:46.234+05:30","event_time":"2022-08-31T17:41:46.233+05:30","producer_name":"pulsar-2-4","topic":"persistent://public/default/usaflogs"}
+  {"id":"CNkBEI8dGAAgAA==","string_id":"217:3727:0","payload":"JjIwMjItMDgtMzFUMTI6MTE6NDhINGNiMTAyNTItNjcwOC00NzgwLWJhOTMtYzg3N2E5NDc0NDgzFEZ1ZWxJbmdlc3QGODMyDGxpdHJlcw==","publish_time":"2022-08-31T17:41:48.137+05:30","event_time":"2022-08-31T17:41:48.137+05:30","producer_name":"pulsar-2-4","topic":"persistent://public/default/usaflogs"}
+  {"id":"CNkBEJAdGAAgAA==","string_id":"217:3728:0","payload":"JjIwMjItMDgtMzFUMTI6MTE6NDlINGNiMTAyNTItNjcwOC00NzgwLWJhOTMtYzg3N2E5NDc0NDgzEkZ1ZWxTcGVudAY2NzkMbGl0cmVz","publish_time":"2022-08-31T17:41:50.021+05:30","event_time":"2022-08-31T17:41:50.021+05:30","producer_name":"pulsar-2-4","topic":"persistent://public/default/usaflogs"}
+  ```
+</Accordion>
 
 **Command (-p, -t, -m flags)**
 
@@ -351,9 +375,45 @@ dataos-ctl fastbase topic read -p -t persistent://public/default/random_users_02
 dataos-ctl fastbase topic read -p -t persistent://public/default/random_users_02
 ```
 
-[](https://dataos.info/resources/depot/fastbase/#__codelineno-26-1)
-
-[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-1)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-2)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-3)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-4)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-5)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-6)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-7)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-8)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-9)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-10)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-11)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-12)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-13)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-14)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-15)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-16)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-17)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-18)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-19)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-20)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-21)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-22)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-23)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-24)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-25)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-26)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-27)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-28)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-29)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-30)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-31)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-32)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-33)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-34)[](https://dataos.info/resources/depot/fastbase/#__codelineno-27-35)
+<Accordion title="Output" defaultOpen={false}>
+  ```
+  ERRO[0014] [Failed to get last message id from broker]   error="connection closed" topic="persistent://public/default/usaflogs"
+  ERRO[0014] [Failed to get last message id]               consumerID=1 error="connection closed" name=023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408 subscription=reader-bodoo topic="persistent://public/default/usaflogs"
+  ERRO[0014] [Failed to get last message id from broker]   error="connection closed" topic="persistent://public/default/usaflogs"
+  ERRO[0014] [Failed to get last message id]               consumerID=1 error="connection closed" name=023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408 subscription=reader-bodoo topic="persistent://public/default/usaflogs"
+  ERRO[0014] [Failed to get last message id from broker]   error="connection closed" topic="persistent://public/default/usaflogs"
+  ERRO[0014] [Failed to get last message id]               consumerID=1 error="connection closed" name=023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408 subscription=reader-bodoo topic="persistent://public/default/usaflogs"
+  ERRO[0014] [Failed to get last message id from broker]   error="connection closed" topic="persistent://public/default/usaflogs"
+  ERRO[0014] [Failed to get last message id]               consumerID=1 error="connection closed" name=023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408 subscription=reader-bodoo topic="persistent://public/default/usaflogs"
+  ERRO[0014] [Failed to get last message id from broker]   error="connection closed" topic="persistent://public/default/usaflogs"
+  INFO[0014] [Connected consumer]                          consumerID=1 name=023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408 subscription=reader-bodoo topic="persistent://public/default/usaflogs"
+  INFO[0014] [Reconnected consumer to broker]              consumerID=1 name=023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408 subscription=reader-bodoo topic="persistent://public/default/usaflogs"
+  {"id":"CNkBEMccGAAgAA==","string_id":"217:3655:0","payload":"JjIwMjItMDgtMzFUMTI6MDc6NDdINGNiMTAyNTItNjcwOC00NzgwLWJhOTMtYzg3N2E5NDc0NDgzFEZ1ZWxJbmdlc3QGMTEwDGxpdHJlcw==","publish_time":"2022-08-31T17:37:47.659+05:30","event_time":"2022-08-31T17:37:47.659+05:30","producer_name":"pulsar-2-4","topic":"persistent://public/default/usaflogs"}
+  {"id":"CNkBEMgcGAAgAA==","string_id":"217:3656:0","payload":"JjIwMjItMDgtMzFUMTI6MDc6NTFINGNiMTAyNTItNjcwOC00NzgwLWJhOTMtYzg3N2E5NDc0NDgzEkZ1ZWxTcGVudAY3NjcMbGl0cmVz","publish_time":"2022-08-31T17:37:51.643+05:30","event_time":"2022-08-31T17:37:51.643+05:30","producer_name":"pulsar-2-4","topic":"persistent://public/default/usaflogs"}
+  {"id":"CNkBEMkcGAAgAA==","string_id":"217:3657:0","payload":"JjIwMjItMDgtMzFUMTI6MDc6NTZIOGVkMGQ5OGUtNmUwNS00NDhhLWEzNTgtNzQ0MzRlYWVkMjg0EkZ1ZWxTcGVudAQxMA5nYWxsb25z","publish_time":"2022-08-31T17:37:56.769+05:30","event_time":"2022-08-31T17:37:56.769+05:30","producer_name":"pulsar-2-4","topic":"persistent://public/default/usaflogs"}
+  {"id":"CNkBEMocGAAgAA==","string_id":"217:3658:0","payload":"JjIwMjItMDgtMzFUMTI6MDg6MDFIOGVkMGQ5OGUtNmUwNS00NDhhLWEzNTgtNzQ0MzRlYWVkMjg0FEZ1ZWxJbmdlc3QGMTMwDmdhbGxvbnM=","publish_time":"2022-08-31T17:38:01.823+05:30","event_time":"2022-08-31T17:38:01.823+05:30","producer_name":"pulsar-2-4","topic":"persistent://public/default/usaflogs"}
+  {"id":"CNkBEMscGAAgAA==","string_id":"217:3659:0","payload":"JjIwMjItMDgtMzFUMTI6MDg6MDZIOGVkMGQ5OGUtNmUwNS00NDhhLWEzNTgtNzQ0MzRlYWVkMjg0FEZ1ZWxJbmdlc3QGMzkyDmdhbGxvbnM=","publish_time":"2022-08-31T17:38:06.941+05:30","event_time":"2022-08-31T17:38:06.941+05:30","producer_name":"pulsar-2-4","topic":"persistent://public/default/usaflogs"}
+  {"id":"CNkBEMwcGAAgAA==","string_id":"217:3660:0","payload":"JjIwMjItMDgtMzFUMTI6MDg6MTBIOGVkMGQ5OGUtNmUwNS00NDhhLWEzNTgtNzQ0MzRlYWVkMjg0FEZ1ZWxJbmdlc3QGNzk3DmdhbGxvbnM=","publish_time":"2022-08-31T17:38:10.958+05:30","event_time":"2022-08-31T17:38:10.958+05:30","producer_name":"pulsar-2-4","topic":"persistent://public/default/usaflogs"}
+  {"id":"CNkBEM0cGAAgAA==","string_id":"217:3661:0","payload":"JjIwMjItMDgtMzFUMTI6MDg6MTVIOGVkMGQ5OGUtNmUwNS00NDhhLWEzNTgtNzQ0MzRlYWVkMjg0FEZ1ZWxJbmdlc3QGMTg3DmdhbGxvbnM=","publish_time":"2022-08-31T17:38:15.945+05:30","event_time":"2022-08-31T17:38:15.945+05:30","producer_name":"pulsar-2-4","topic":"persistent://public/default/usaflogs"}
+  {"id":"CNkBEM4cGAAgAA==","string_id":"217:3662:0","payload":"JjIwMjItMDgtMzFUMTI6MDg6MTlIOGVkMGQ5OGUtNmUwNS00NDhhLWEzNTgtNzQ0MzRlYWVkMjg0EkZ1ZWxTcGVudAYzMzUOZ2FsbG9ucw==","publish_time":"2022-08-31T17:38:19.847+05:30","event_time":"2022-08-31T17:38:19.846+05:30","producer_name":"pulsar-2-4","topic":"persistent://public/default/usaflogs"}
+  {"id":"CNkBEM8cGAAgAA==","string_id":"217:3663:0","payload":"JjIwMjItMDgtMzFUMTI6MDg6MjNINGNiMTAyNTItNjcwOC00NzgwLWJhOTMtYzg3N2E5NDc0NDgzEkZ1ZWxTcGVudAY0MDAMbGl0cmVz","publish_time":"2022-08-31T17:38:23.936+05:30","event_time":"2022-08-31T17:38:23.936+05:30","producer_name":"pulsar-2-4","topic":"persistent://public/default/usaflogs"}
+  {"id":"CNkBENAcGAAgAA==","string_id":"217:3664:0","payload":"JjIwMjItMDgtMzFUMTI6MDg6MzZINGNiMTAyNTItNjcwOC00NzgwLWJhOTMtYzg3N2E5NDc0NDgzFEZ1ZWxJbmdlc3QGNDk3DGxpdHJlcw==","publish_time":"2022-08-31T17:38:36.621+05:30","event_time":"2022-08-31T17:38:36.621+05:30","producer_name":"pulsar-2-4","topic":"persistent://public/default/usaflogs"}
+  {"id":"CNkBENEcGAAgAA==","string_id":"217:3665:0","payload":"JjIwMjItMDgtMzFUMTI6MDg6NDBIOGVkMGQ5OGUtNmUwNS00NDhhLWEzNTgtNzQ0MzRlYWVkMjg0EkZ1ZWxTcGVudAY0NzEOZ2FsbG9ucw==","publish_time":"2022-08-31T17:38:40.433+05:30","event_time":"2022-08-31T17:38:40.433+05:30","producer_name":"pulsar-2-4","topic":"persistent://public/default/usaflogs"}
+  {"id":"CNkBENIcGAAgAA==","string_id":"217:3666:0","payload":"JjIwMjItMDgtMzFUMTI6MDg6NTBIOGVkMGQ5OGUtNmUwNS00NDhhLWEzNTgtNzQ0MzRlYWVkMjg0FEZ1ZWxJbmdlc3QGMTk1DmdhbGxvbnM=","publish_time":"2022-08-31T17:38:50.739+05:30","event_time":"2022-08-31T17:38:50.739+05:30","producer_name":"pulsar-2-4","topic":"persistent://public/default/usaflogs"}
+  {"id":"CNkBENMcGAAgAA==","string_id":"217:3667:0","payload":"JjIwMjItMDgtMzFUMTI6MDg6NTRIOGVkMGQ5OGUtNmUwNS00NDhhLWEzNTgtNzQ0MzRlYWVkMjg0FEZ1ZWxJbmdlc3QGMjgyDmdhbGxvbnM=","publish_time":"2022-08-31T17:38:54.638+05:30","event_time":"2022-08-31T17:38:54.637+05:30","producer_name":"pulsar-2-4","topic":"persistent://public/default/usaflogs"}
+  {"id":"CNkBENQcGAAgAA==","string_id":"217:3668:0","payload":"JjIwMjItMDgtMzFUMTI6MDg6NThINGNiMTAyNTItNjcwOC00NzgwLWJhOTMtYzg3N2E5NDc0NDgzFEZ1ZWxJbmdlc3QGMzk0DGxpdHJlcw==","publish_time":"2022-08-31T17:38:58.526+05:30","event_time":"2022-08-31T17:38:58.526+05:30","producer_name":"pulsar-2-4","topic":"persistent://public/default/usaflogs"}
+  {"id":"CNkBENUcGAAgAA==","string_id":"217:3669:0","payload":"JjIwMjItMDgtMzFUMTI6MDk6MDBINGNiMTAyNTItNjcwOC00NzgwLWJhOTMtYzg3N2E5NDc0NDgzEkZ1ZWxTcGVudAQ1OAxsaXRyZXM=","publish_time":"2022-08-31T17:39:00.344+05:30","event_time":"2022-08-31T17:39:00.344+05:30","producer_name":"pulsar-2-4","topic":"persistent://public/default/usaflogs"}
+  {"id":"CNkBENYcGAAgAA==","string_id":"217:3670:0","payload":"JjIwMjItMDgtMzFUMTI6MDk6MDJIOGVkMGQ5OGUtNmUwNS00NDhhLWEzNTgtNzQ0MzRlYWVkMjg0EkZ1ZWxTcGVudAYxMDQOZ2FsbG9ucw==","publish_time":"2022-08-31T17:39:02.353+05:30","event_time":"2022-08-31T17:39:02.353+05:30","producer_name":"pulsar-2-4","topic":"persistent://public/default/usaflogs"}
+  {"id":"CNkBENccGAAgAA==","string_id":"217:3671:0","payload":"JjIwMjItMDgtMzFUMTI6MDk6MDVIOGVkMGQ5OGUtNmUwNS00NDhhLWEzNTgtNzQ0MzRlYWVkMjg0EkZ1ZWxTcGVudAgxMDI3DmdhbGxvbnM=","publish_time":"2022-08-31T17:39:05.236+05:30","event_time":"2022-08-31T17:39:05.236+05:30","producer_name":"pulsar-2-4","topic":"persistent://public/default/usaflogs"}
+  {"id":"CNkBENgcGAAgAA==","string_id":"217:3672:0","payload":"JjIwMjItMDgtMzFUMTI6MDk6MDdIOGVkMGQ5OGUtNmUwNS00NDhhLWEzNTgtNzQ0MzRlYWVkMjg0EkZ1ZWxTcGVudAQyMg5nYWxsb25z","publish_time":"2022-08-31T17:39:07.232+05:30","event_time":"2022-08-31T17:39:07.232+05:30","producer_name":"pulsar-2-4","topic":"persistent://public/default/usaflogs"}
+  {"id":"CNkBENkcGAAgAA==","string_id":"217:3673:0","payload":"JjIwMjItMDgtMzFUMTI6MDk6MTJIOGVkMGQ5OGUtNmUwNS00NDhhLWEzNTgtNzQ0MzRlYWVkMjg0FEZ1ZWxJbmdlc3QGNzY3DmdhbGxvbnM=","publish_time":"2022-08-31T17:39:12.939+05:30","event_time":"2022-08-31T17:39:12.939+05:30","producer_name":"pulsar-2-4","topic":"persistent://public/default/usaflogs"}
+  INFO[0016] no more messages to read...exiting           
+  INFO[0016] Closing consumer=1                            consumerID=1 name=023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408 subscription=reader-bodoo topic="persistent://public/default/usaflogs"
+  INFO[0016] [Closed consumer]                             consumerID=1 name=023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408 subscription=reader-bodoo topic="persistent://public/default/usaflogs"
+  INFO[0016] [close consumer, exit reconnect]              consumerID=1 name=023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408 subscription=reader-bodoo topic="persistent://public/default/usaflogs"
+  INFO[0016] 🔍 read...complete
+  ```
+</Accordion>
 
 **Command (-p,-t,-l flags)**
 
@@ -361,6 +421,27 @@ dataos-ctl fastbase topic read -p -t persistent://public/default/random_users_02
 dataos-ctl fastbase topic read -p -t persistent://public/default/random_users_02
 ```
 
-[](https://dataos.info/resources/depot/fastbase/#__codelineno-28-1)
-
-[](https://dataos.info/resources/depot/fastbase/#__codelineno-29-1)[](https://dataos.info/resources/depot/fastbase/#__codelineno-29-2)[](https://dataos.info/resources/depot/fastbase/#__codelineno-29-3)[](https://dataos.info/resources/depot/fastbase/#__codelineno-29-4)[](https://dataos.info/resources/depot/fastbase/#__codelineno-29-5)[](https://dataos.info/resources/depot/fastbase/#__codelineno-29-6)[](https://dataos.info/resources/depot/fastbase/#__codelineno-29-7)[](https://dataos.info/resources/depot/fastbase/#__codelineno-29-8)[](https://dataos.info/resources/depot/fastbase/#__codelineno-29-9)[](https://dataos.info/resources/depot/fastbase/#__codelineno-29-10)[](https://dataos.info/resources/depot/fastbase/#__codelineno-29-11)[](https://dataos.info/resources/depot/fastbase/#__codelineno-29-12)[](https://dataos.info/resources/depot/fastbase/#__codelineno-29-13)[](https://dataos.info/resources/depot/fastbase/#__codelineno-29-14)[](https://dataos.info/resources/depot/fastbase/#__codelineno-29-15)[](https://dataos.info/resources/depot/fastbase/#__codelineno-29-16)[](https://dataos.info/resources/depot/fastbase/#__codelineno-29-17)[](https://dataos.info/resources/depot/fastbase/#__codelineno-29-18)[](https://dataos.info/resources/depot/fastbase/#__codelineno-29-19)[](https://dataos.info/resources/depot/fastbase/#__codelineno-29-20)
+<Accordion title="Output" defaultOpen={false}>
+  ```
+  ERRO[0008] [Failed to get last message id from broker]   error="connection closed" topic="persistent://public/default/usaflogs"
+  ERRO[0008] [Failed to get last message id]               consumerID=1 error="connection closed" name=023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408 subscription=reader-flbtz topic="persistent://public/default/usaflogs"
+  ERRO[0008] [Failed to get last message id from broker]   error="connection closed" topic="persistent://public/default/usaflogs"
+  ERRO[0008] [Failed to get last message id]               consumerID=1 error="connection closed" name=023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408 subscription=reader-flbtz topic="persistent://public/default/usaflogs"
+  ERRO[0008] [Failed to get last message id from broker]   error="connection closed" topic="persistent://public/default/usaflogs"
+  ERRO[0008] [Failed to get last message id]               consumerID=1 error="connection closed" name=023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408 subscription=reader-flbtz topic="persistent://public/default/usaflogs"
+  ERRO[0008] [Failed to get last message id from broker]   error="connection closed" topic="persistent://public/default/usaflogs"
+  ERRO[0008] [Failed to get last message id]               consumerID=1 error="connection closed" name=023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408 subscription=reader-flbtz topic="persistent://public/default/usaflogs"
+  ERRO[0008] [Failed to get last message id from broker]   error="connection closed" topic="persistent://public/default/usaflogs"
+  ERRO[0008] [Failed to get last message id]               consumerID=1 error="connection closed" name=023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408 subscription=reader-flbtz topic="persistent://public/default/usaflogs"
+  INFO[0008] [Connected consumer]                          consumerID=1 name=023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408 subscription=reader-flbtz topic="persistent://public/default/usaflogs"
+  INFO[0008] [Reconnected consumer to broker]              consumerID=1 name=023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408 subscription=reader-flbtz topic="persistent://public/default/usaflogs"
+  ERRO[0008] [Failed to get last message id from broker]   error="connection closed" topic="persistent://public/default/usaflogs"
+  INFO[0008] no more messages to read...exiting           
+  INFO[0008] Closing consumer=1                            consumerID=1 name=023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408 subscription=reader-flbtz topic="persistent://public/default/usaflogs"
+  {"id":"CNkBEMYcGAAgAA==","string_id":"217:3654:0","payload":"JjIwMjItMDgtMzFUMTI6MDc6NDNINGNiMTAyNTItNjcwOC00NzgwLWJhOTMtYzg3N2E5NDc0NDgzFEZ1ZWxJbmdlc3QGODc3DGxpdHJlcw==","publish_time":"2022-08-31T17:37:43.841+05:30","event_time":"2022-08-31T17:37:43.841+05:30","producer_name":"pulsar-2-4","topic":"persistent://public/default/usaflogs"}
+  {"id":"CNkBEMccGAAgAA==","string_id":"217:3655:0","payload":"JjIwMjItMDgtMzFUMTI6MDc6NDdINGNiMTAyNTItNjcwOC00NzgwLWJhOTMtYzg3N2E5NDc0NDgzFEZ1ZWxJbmdlc3QGMTEwDGxpdHJlcw==","publish_time":"2022-08-31T17:37:47.659+05:30","event_time":"2022-08-31T17:37:47.659+05:30","producer_name":"pulsar-2-4","topic":"persistent://public/default/usaflogs"}
+  INFO[0009] [Closed consumer]                             consumerID=1 name=023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408 subscription=reader-flbtz topic="persistent://public/default/usaflogs"
+  INFO[0009] [close consumer, exit reconnect]              consumerID=1 name=023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408 subscription=reader-flbtz topic="persistent://public/default/usaflogs"
+  INFO[0009] 🔍 read...complete
+  ```
+</Accordion>
