@@ -70,7 +70,9 @@ To create Depots, ensure that you possess the following tags.
   &#x20;If you do not possess these tags, contact the DataOS Operator or Administrator within your organization to assign you the necessary tag or the use case for the creation of the Depot.
 </Warning>
 
-### **Create a Depot manifest file**
+### **Steps to create a Depot**
+
+This section involves steps for creating a Depot for different data sources supported by DataOS.
 
 <AccordionGroup>
   <Accordion title="ABFSS" defaultOpen={false}>
@@ -78,17 +80,15 @@ To create Depots, ensure that you possess the following tags.
 
     To create an ABFSS Depot you must have the following details:
 
-    * **azurestorageaccountname**: This is the name of the Azure Storage account where your data resides. You can find this in the Azure portal under the "Storage accounts" section. It serves as a unique identifier for your storage service.
+    * **Storage Account Name**: The name of the Azure storage account used to store your data. This can be obtained from the Azure portal under your storage account settings or from the administrator managing your Azure resources.
 
-    * **azurestorageaccountkey**: This key is used to authenticate and access your Azure Storage account. You can retrieve it from the Azure portal by navigating to "Storage accounts" > "Access keys." It is critical to store this key securely as it allows access to your data.
+    * **Storage Account Key**: The key used to authenticate and access the Azure storage account. It is generated when the storage account is created and can be retrieved from the Azure portal under the "Access keys" section of your storage account.
 
-    * **account**: The name of the Azure Storage account. It is the same as the `azurestorageaccountname` and can be found in the Azure portal under the "Storage accounts" section. It identifies the specific storage account where your data is stored.
+    * **Container**: The name of the container within the Azure storage account that holds your data. You can find this information in the Azure portal under the "Containers" section of your storage account, or it can be provided by your Azure administrator.
 
-    * **container**: The name of the container within the Azure Storage account. A container acts like a folder or directory that holds the data. You can create and find containers in the Azure portal under your specific storage account > "Containers."
+    * **Relative Path**: The relative path to the specific data within the container. This path is relative to the root of the container, and can be provided by the person managing the data stored in the container or found by navigating through the container in Azure Blob Storage.
 
-    * **relativePath**: This is the relative path to the data within the container. It specifies the exact location of the data or folder, such as "data/customer" or "files/raw\_data." You will need to specify this path based on where your data is stored inside the container.
-
-    * **format**: This defines the format of the data stored in the Azure Storage container. Common formats include "CSV," "JSON," or "Parquet." Specify the format according to the type of data you are working with.
+    * **Data Format Stored in the Container**: The format of the data stored in the container (e.g., Parquet, CSV, JSON). This should be specified during data storage and can be verified by reviewing the data files or by asking the administrator managing the data.
 
     ### Create a ABFSS Depot
 
@@ -189,13 +189,13 @@ To create Depots, ensure that you possess the following tags.
 
     To create a Bigquery Depot you must have the following details:
 
-    * **projectid**: The unique identifier of the Google Cloud project where your GCS bucket resides. You can find this in the Google Cloud Console under the "Project Info" section of your project's dashboard. It is essential for associating operations with the correct project.
+    * **Project ID**: The unique identifier for your Google Cloud project used by BigQuery. You can find this in the Google Cloud Console under "Project Info" on your project dashboard.
 
-    * **email**: The email address associated with the Google Cloud service account. You can retrieve this by navigating to the Google Cloud Console under "IAM & Admin" > "Service Accounts" and selecting the relevant service account. This email is used for authenticating requests to GCS.
+    * **Email ID**: The email address associated with the Google Cloud service account used to access BigQuery. This can be found in the IAM & Admin section of the Google Cloud Console under the "Service Accounts" tab, where the email is listed for each service account.
 
-    * **json\_keyfile**: The path to the JSON key file associated with the Google Cloud service account. This file is used for authentication and can be downloaded from the Google Cloud Console under "IAM & Admin" > "Service Accounts." Select the service account, click on "Keys," and download the key by selecting "Add Key" > "JSON." Ensure the file is securely stored and the path is accessible.
+    * **Credential Properties in JSON File**: A JSON file containing the necessary credential properties for authentication. This file is generated when you create a service account in Google Cloud. You can download it from the IAM & Admin > Service Accounts section in the Google Cloud Console by selecting a service account and clicking "Add Key" > "JSON".
 
-    * **project**: (Optional) The name of the Google Cloud project. While not always required, it can be specified to provide additional context. You can find it in the Google Cloud Console under the "Project Info" section.
+    * **Additional Parameters**: Any extra configuration parameters required to establish the connection, such as project settings or specific access scopes. These may be provided by the administrator or defined in the BigQuery API documentation based on the integration you are working with.
 
     ### Create a Bigquery Depot
 
@@ -296,9 +296,11 @@ To create Depots, ensure that you possess the following tags.
 
     To create a Eventhub Depot you must have the following details:
 
-    * **Eventhub Shared Access Key Name**: The name of the shared access key for the Azure Eventhub. You can retrieve this from the Azure Portal by navigating to your Eventhub namespace, selecting “Shared access policies,” and locating the key name under the policy details.
+    * **Endpoint**: The URL endpoint used to connect to your EventHub instance. This can be found in the Azure portal under your EventHub namespace settings. It is typically in the format `your-namespace-name.servicebus.windows.net`.
 
-    * **Eventhub Shared Access Key**: The shared access key associated with the Eventhub shared access key name. You can retrieve this from the Azure Portal by navigating to your Eventhub namespace, selecting “Shared access policies,” and copying the key value under the selected policy.
+    * **Eventhub Shared Access Key Name**: The name of the shared access key used to authenticate access to the EventHub. You can retrieve this from the Azure portal under your EventHub namespace’s "Shared Access Policies" section, where you can create or view existing access keys.
+
+    * **Eventhub Shared Access Key**: The actual shared access key used to authenticate with EventHub. This key is found alongside the "Shared Access Key Name" in the "Shared Access Policies" section of your EventHub namespace settings in the Azure portal. Ensure that this key is securely stored and handled.
 
     ### Create a Eventhub Depot
 
@@ -393,11 +395,15 @@ To create Depots, ensure that you possess the following tags.
 
     To create a GCS Depot you must have the following details:
 
-    * **projectid**: The unique identifier of the Google Cloud project where the GCS bucket resides. This can be obtained from the Google Cloud Console by navigating to the "Project Info" section on your project's dashboard. It is used to associate operations with the correct Google Cloud project.
+    * **GCS Bucket**: The name of the Google Cloud Storage bucket you want to access. You can find the bucket name in the Google Cloud Console under the "Storage" section, where all your buckets are listed.
 
-    * **email**: The email address of the Google Cloud service account used for accessing GCS. This can be found in the Google Cloud Console under "IAM & Admin" > "Service Accounts" by selecting the relevant service account. This email is used for authenticating API requests.
+    * **Relative Path**: The path to the specific file or directory within the GCS bucket. This path can be obtained by navigating to the file or directory in the Google Cloud Console and copying the relative path from the bucket.
 
-    * **gcskey\_json**: The file path to the JSON key associated with the Google Cloud service account. This key is essential for authentication. You can download it from the Google Cloud Console by going to "IAM & Admin" > "Service Accounts," selecting the service account, and clicking on "Keys." Choose "Add Key" > "JSON" to generate and download the key securely.
+    * **GCS Project ID**: The unique identifier of the Google Cloud project associated with the GCS bucket. This can be found in the Google Cloud Console under "Project Info" on your project dashboard.
+
+    * **GCS Account Email**: The email address associated with the Google Cloud service account that has access to GCS. This can be found in the IAM & Admin section of the Google Cloud Console under the "Service Accounts" tab.
+
+    * **GCS Key**: The JSON key file associated with the Google Cloud service account used for authentication. You can download this key by going to the IAM & Admin > Service Accounts section in the Google Cloud Console, selecting the service account, and clicking "Add Key" > "JSON".
 
     ### Create a GCS Depot
 
@@ -487,17 +493,19 @@ To create Depots, ensure that you possess the following tags.
 
     To create a JDBC Depot you must have the following details:
 
-    * **username**: The JDBC username used to authenticate and connect to the database. This username is assigned during database setup or can be obtained from the database administrator.
+    * **Database Name**: The name of the database you want to connect to. This can be provided by the database administrator or found in the database management interface, where your desired database is listed.
 
-    * **password**: The password associated with the JDBC username for authentication. This is set during account creation or provided securely by the database administrator.
+    * **Subprotocol Name**: The subprotocol specifies the type of database you are connecting to, such as `mysql`, `postgresql`, etc. This should match the JDBC driver you're using to establish the connection, and can typically be found in the documentation of the specific database or JDBC driver.
 
-    * **subprotocol**: Specifies the subprotocol used by the JDBC connection, such as `mysql`, `postgresql`, or `oracle`. This identifies the type of database to which the connection is being established. Refer to your database configuration or documentation for the correct value.
+    * **Hostname/URL of the Server**: The hostname or URL of the server where the database is hosted. This is typically provided by the database administrator or hosting service, and points to the location of your database.
 
-    * **host**: The hostname or IP address of the server hosting the database. You can obtain this from the database administrator or your organization’s network team.
+    * **Port**: The port number through which the database connection is made (e.g., `3306` for MySQL, `5432` for PostgreSQL). This information can also be obtained from the database administrator or found in the configuration of the database server.
 
-    * **port**: The port number on which the database is running. Common examples include `3306` for MySQL or `5432` for PostgreSQL. This information is typically available from the database administrator.
+    * **Parameters**: Any additional connection parameters needed for the JDBC connection, such as SSL settings, timeouts, or specific options for the database connection. These can be found in the JDBC driver documentation or obtained from the database administrator if custom configurations are required.
 
-    * **database**: The name of the specific database to which the connection is made. You can find this in your database management system or ask the database administrator for the database name.
+    * **Username**: The username used to authenticate the JDBC connection. This can be provided by the database administrator or set when the user account is created in the database management system.
+
+    * **Password**: The password associated with the provided username. This is typically set when the user account is created and must be securely stored or retrieved from a safe location if forgotten.
 
     ### Create a JDBC Depot
 
@@ -905,9 +913,15 @@ To create Depots, ensure that you possess the following tags.
 
     To create a MSSQL Depot you must have the following details:
 
-    * **Username**: The MSSQL username used to authenticate and access your MSSQL database. You can retrieve this from the MSSQL database admin by asking them to provide the username for your account.
+    * **Host URL and Parameters**: The URL or hostname of the SQL Server where the database is hosted. This is typically provided by the database administrator. Additional connection parameters (such as encryption settings or timeout values) might be needed depending on the specific requirements of the SQL Server and the connection method.
 
-    * **Password**: The password associated with the MSSQL username for authentication. You can obtain this from the MSSQL database admin, or if the password is already set, you will need to securely retrieve it.
+    * **Database Schema**: The schema in the Microsoft SQL Server where your tables and other database objects are located. This can be provided by the database administrator, and it helps define the structure and organization of the data within the database.
+
+    * **Port**: The port number used to connect to the SQL Server. The default port for Microsoft SQL Server is `1433`, but it might vary depending on the configuration. This information can be obtained from the database administrator.
+
+    * **Username**: The username used for authentication to the Microsoft SQL Server. This is typically provided by the database administrator or set up by the user account when created in the SQL Server.
+
+    * **Password**: The password associated with the provided username for authentication. This password is securely stored and is required for establishing the connection to the SQL Server. It can be set when the user account is created and should be securely retrieved if forgotten.
 
     ### Create a MSSQL Depot
 
@@ -924,6 +938,8 @@ To create Depots, ensure that you possess the following tags.
     ### Step 2: Create a MSSQL Depot manifest file
 
     Begin by creating a manifest file to hold the configuration details for your MSSQL Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
+
+    **Use the below template, if self-signed certificate is enabled.**
 
     <CodeGroup>
       ```yaml Inline credentials Depot manifest file
@@ -985,6 +1001,73 @@ To create Depots, ensure that you possess the following tags.
           format: ${{format}}
       ```
     </CodeGroup>
+
+    **Use the template, if self-signed certificate is not enabled.**
+
+    <CodeGroup>
+      ```yaml Inline credentials  Depot manifest file
+      name: ${{mssql01}}
+      version: v1
+      type: depot
+      tags:
+        - ${{dropzone}}
+        - ${{mssql}}
+      layer: user
+      depot:
+        type: JDBC
+        description: ${{MSSQL Sample data}}
+        spec:
+          subprotocol: ${{sqlserver}}
+          host: ${{host}}
+          port: ${{port}}
+          database: ${{database}}
+          params: # Required
+            encrypt: ${{false}}
+        external: ${{true}}
+        hiveSync: ${{false}}
+        connectionSecret:
+          - acl: r
+            type: key-value-properties
+            data:
+              username: ${{username}}
+              password: ${{password}}  
+          - acl: rw
+            type: key-value-properties
+            data:
+              username: ${{username}}
+              password: ${{password}}
+      ```
+
+      ```yaml Instance Secret reference Depot manifest file
+      name: ${{mssql01}}
+      version: v2alpha
+      type: depot
+      tags:
+        - ${{dropzone}}
+        - ${{mssql}}
+      layer: user
+      depot:
+        type: JDBC
+        description: ${{MSSQL Sample data}}
+        jdbc:
+          subprotocol: ${{sqlserver}}
+          host: ${{host}}
+          port: ${{port}}
+          database: ${{database}}
+          params: # Required
+            encrypt: ${{false}}
+        external: ${{true}}
+        hiveSync: ${{false}}
+        secrets:
+          - name: ${{sf-instance-secret-name}}-r
+            allkeys: true
+
+          - name: ${{sf-instance-secret-name}}-rw
+            allkeys: true
+      ```
+    </CodeGroup>
+
+
 
     ### Step 3: Apply the Depot manifest file
 
@@ -1006,9 +1089,13 @@ To create Depots, ensure that you possess the following tags.
 
     To create a MySQL Depot you must have the following details:
 
-    * **Username**: The MySQL username used to authenticate and access your MySQL database. This can be obtained from the database admin who manages user access.
+    * **Host URL and Parameters**: The URL or hostname of the MySQL server where the database is hosted. This is typically provided by the database administrator. Additional parameters (such as character set or connection timeout) may be needed based on the specific configuration of the MySQL server.
 
-    * **Password**: The password associated with the MySQL username for authentication. This is typically set when the user account is created and must be provided by the MySQL admin or securely retrieved if forgotten.
+    * **Port**: The port number used to connect to the MySQL server. By default, MySQL uses port `3306`, but this could vary if a custom port is configured. This information should be provided by the database administrator.
+
+    * **Username**: The username used to authenticate the connection to the MySQL database. This username is typically created by the database administrator and must have the necessary privileges to access the desired database.
+
+    * **Password**: The password associated with the provided username for authentication. The password is typically set when the username is created and must be kept secure. It is required to establish a successful connection to the database.
 
     ### Create a MySQL Depot
 
@@ -1025,6 +1112,8 @@ To create Depots, ensure that you possess the following tags.
     ### Step 2: Create a MySQL Depot manifest file
 
     Begin by creating a manifest file to hold the configuration details for your MySQL Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
+
+    **Use this template, if self-signed certificate is enabled.**
 
     <CodeGroup>
       ```yaml Inline credentials Depot manifest file
@@ -1087,6 +1176,16 @@ To create Depots, ensure that you possess the following tags.
       ```
     </CodeGroup>
 
+    **Use this template, if self-signed certificate is not enabled.**
+
+    <CodeGroup>
+      ```javascript helloWorld.js
+      console.log("Hello World");
+      ```
+    </CodeGroup>
+
+
+
     ### Step 3: Apply the Depot manifest file
 
     Once you have the manifest file ready in your code editor, simply copy the path of the manifest file and apply it through the DataOS CLI by pasting the path in the placeholder, using the command given below:
@@ -1107,9 +1206,15 @@ To create Depots, ensure that you possess the following tags.
 
     To create a Oracle Depot you must have the following details:
 
-    * **Username**: The Oracle username used to authenticate and access your Oracle database. This can be obtained from the database administrator who manages user access.
+    * **URL of your Oracle account**: The URL or hostname of the Oracle database server where the database is hosted. This is typically provided by the database administrator and may include additional connection parameters.
 
-    * **Password**: The password associated with the Oracle username for authentication. This can be obtained from the database administrator, or if the password is already set, you will need to securely retrieve it.
+    * **Username**: The login username used to authenticate the connection to the Oracle database. This username is created by the database administrator and must have the appropriate permissions to access the desired database.
+
+    * **Password**: The password associated with the provided username for authentication. This is required to establish a secure connection and is typically set by the administrator or the user during account creation.
+
+    * **Database Name**: The name of the Oracle database you want to connect to. This is used to specify the target database within the Oracle server and is provided by the database administrator.
+
+    * **Database Schema**: The schema in the Oracle database where your desired tables are located. Schemas are logical containers for database objects like tables, views, and indexes, and this information helps you access the correct data.
 
     ### Create a Oracle Depot
 
@@ -2103,273 +2208,130 @@ To create Depots, ensure that you possess the following tags.
 
 The manifest configuration file for a Depot can be divided into four main sections: [Resource section](https://dataos.info/resources/depot/#configure-resource-section), [Depot-specific section](https://dataos.info/resources/depot/#configure-depot-specific-section), [Connection Secrets section](https://dataos.info/resources/depot/#configure-connection-secrets-section), and [Specifications section](https://dataos.info/resources/depot/#configure-spec-section%C2%B6). Each section serves a distinct purpose and contains specific attributes.
 
-**Configure Resource section**
+## **How to manage a Depot?**
 
-The Resource section of the manifest configuration file consists of attributes that are common across all resource types. For more details regarding attributes in the Resource section, refer to the link: [Attributes of Resource section.](https://dataos.info/resources/manifest_attributes/)
-
-**Configure Depot-specific section**
-
-The Depot-specific section of the configuration file includes key-value properties specific to the Depot-type being created. Each Depot type represents a Depot created for a particular data source. Multiple Depots can be established for the same data source, and they will be considered as a single Depot type.&#x20;
-
-**Configure connection Secrets section**
-
-The configuration of connection secrets is specific to each Depot type and depends on the underlying data source. The details for these connection secrets, such as credentials and authentication information, should be obtained from your enterprise or data source provider. For commonly used data sources, we have compiled the connection secrets [here.](https://dataos.info/resources/depot/depot_config_templates/) Please refer to these templates for guidance on how to configure the connection secrets for your specific data source.
-
-🗣 The credentials you use here need to have access to the schemas in the configured database.
-
-**Examples**
-
-Here are examples demonstrating how the key-value properties can be defined for different Depot-types:
-
-**Alternative approach: using Instance Secret**
-
-[Instance Secret](https://dataos.info/resources/instance_secret/) is also a [Resource](https://dataos.info/resources/) in DataOS that allows users to securely store sensitive piece of information such as username, password, etc. Using Secrets in conjunction with [Depots](https://dataos.info/resources/depot/), [Stacks](https://dataos.info/resources/stacks/) allows for decoupling of sensitive information from Depot and Stack YAMLs. For more clarity, let’s take the example of MySQL data source to understand how you can use Instance Secret Resource for Depot creation:
-
-* Create an Instance Secret file with the details on the connection secret:
-
-[](https://dataos.info/resources/depot/#__codelineno-7-1)`name: $${{mysql-secret}}`
-[](https://dataos.info/resources/depot/#__codelineno-7-2)`version: v1      `
-[](https://dataos.info/resources/depot/#__codelineno-7-3)`type: instance-secret`
-[](https://dataos.info/resources/depot/#__codelineno-7-4)`instance-secret:`
-[](https://dataos.info/resources/depot/#__codelineno-7-5)`  type: key-value-properties`
-[](https://dataos.info/resources/depot/#__codelineno-7-6)`  acl: rw`
-[](https://dataos.info/resources/depot/#__codelineno-7-7)`  data:`
-[](https://dataos.info/resources/depot/#__codelineno-7-8)`    connection-user: $${{user}}`
-[](https://dataos.info/resources/depot/#__codelineno-7-9)`    connection-password: $${{password}}`
-
-* Apply this YAML file on DataOS CLI
-
-[](https://dataos.info/resources/depot/#__codelineno-8-1)`dataos-ctl apply -f $${{path/instance_secret.yaml}}`
-
-For example, if a user wishes to create a MySQL Depot, they can define a Depot configuration file as follows:
-
-YAML Configuration File
-
-[](https://dataos.info/resources/depot/#__codelineno-9-1)[](https://dataos.info/resources/depot/#__codelineno-9-2)[](https://dataos.info/resources/depot/#__codelineno-9-3)[](https://dataos.info/resources/depot/#__codelineno-9-4)[](https://dataos.info/resources/depot/#__codelineno-9-5)[](https://dataos.info/resources/depot/#__codelineno-9-6)[](https://dataos.info/resources/depot/#__codelineno-9-7)[](https://dataos.info/resources/depot/#__codelineno-9-8)[](https://dataos.info/resources/depot/#__codelineno-9-9)[](https://dataos.info/resources/depot/#__codelineno-9-10)[](https://dataos.info/resources/depot/#__codelineno-9-11)[](https://dataos.info/resources/depot/#__codelineno-9-12)[](https://dataos.info/resources/depot/#__codelineno-9-13)[](https://dataos.info/resources/depot/#__codelineno-9-14)[](https://dataos.info/resources/depot/#__codelineno-9-15)[](https://dataos.info/resources/depot/#__codelineno-9-16)[](https://dataos.info/resources/depot/#__codelineno-9-17)[](https://dataos.info/resources/depot/#__codelineno-9-18)[](https://dataos.info/resources/depot/#__codelineno-9-19)[](https://dataos.info/resources/depot/#__codelineno-9-20)[](https://dataos.info/resources/depot/#__codelineno-9-21)[](https://dataos.info/resources/depot/#__codelineno-9-22)
-
-To learn more about Instance Secrets as a Resource and their usage, refer to the documentation [here](https://dataos.info/resources/instance_secret/).
-
-**Configure spec section**
-
-The `spec` section in the manifest configuration file plays a crucial role in directing the Depot to the precise location of your data and providing it with the hierarchical structure of the data source. By defining the specification parameters, you establish a mapping between the data and the hierarchy followed within DataOS.
-
-Let's understand this hierarchy through real-world examples:
-
-[BigQuery](https://dataos.info/resources/depot/#bigquery_1)[Amazon S3](https://dataos.info/resources/depot/#amazon-s3)[Kafka](https://dataos.info/resources/depot/#kafka)
-
-In the case of BigQuery, the data is structured as "Projects" containing "Datasets" that, in turn, contain "Tables". In DataOS terminology, the "Project" corresponds to the "Depot", the "Dataset" corresponds to the "Collection", and the "Table" corresponds to the "Dataset".
-
-Consider the following structure in [BigQuery](https://dataos.info/resources/depot/depot_config_templates/google_bigquery/):
-
-* Project name: `bigquery-public-data` (Depot)
-
-* Dataset name: `covid19_usa` (Collection)
-
-* Table name: `datafile_01` (Dataset)
-
-The UDL for accessing this data would be `dataos://bigquery-public-data:covid19_usa/datafile_01`.
-
-In the YAML example below, the necessary values are filled in to create a [BigQuery](https://dataos.info/resources/depot/depot_config_templates/google_bigquery/) Depot:
-
-Bigquery Depot manifest Configuration
-
-[](https://dataos.info/resources/depot/#__codelineno-10-1)[](https://dataos.info/resources/depot/#__codelineno-10-2)[](https://dataos.info/resources/depot/#__codelineno-10-3)[](https://dataos.info/resources/depot/#__codelineno-10-4)[](https://dataos.info/resources/depot/#__codelineno-10-5)[](https://dataos.info/resources/depot/#__codelineno-10-6)[](https://dataos.info/resources/depot/#__codelineno-10-7)[](https://dataos.info/resources/depot/#__codelineno-10-8)[](https://dataos.info/resources/depot/#__codelineno-10-9)[](https://dataos.info/resources/depot/#__codelineno-10-10)[](https://dataos.info/resources/depot/#__codelineno-10-11)[](https://dataos.info/resources/depot/#__codelineno-10-12)
-
-In this example, the Depot is named "covidbq" and references the project "bigquery-public-data" within Google Cloud. As a result, all the datasets and tables within this project can be accessed using the UDL `dataos://covidbq:<collection name>/<dataset name>`.
-
-By appropriately configuring the specifications, you ensure that the Depot is accurately linked to the data source's structure, enabling seamless access and manipulation of datasets within DataOS.
-
-### **Apply Depot YAML**[¶](https://dataos.info/resources/depot/#apply-depot-yaml "Permanent link")
-
-Once you have the manifest file ready in your code editor, simply copy the path of the manifest file and apply it through the DataOS CLI, using the command given below:
-
-[](https://dataos.info/resources/depot/#__codelineno-14-1)`dataos-ctl apply -f ${{yamlfilepath}}`
-
-## **How to manage a Depot?**[¶](https://dataos.info/resources/depot/#how-to-manage-a-depot "Permanent link")
-
-### **Verify Depot creation**[¶](https://dataos.info/resources/depot/#verify-depot-creation "Permanent link")
+### **Verify the Depot creation**
 
 To ensure that your Depot has been successfully created, you can verify it in two ways:
 
-* Check the name of the newly created Depot in the list of Depots where you are named as the owner:
+* Check the name of the newly created Depot in the list of Depots where you are named as the owner:&#x20;
 
-[](https://dataos.info/resources/depot/#__codelineno-15-1)`dataos-ctl get -t `depot
+```bash
+dataos-ctl get -t depot
+```
 
-* Alternatively, retrieve the list of all Depots created in your organization:
+[](https://dataos.info/resources/depot/#__codelineno-15-1)
 
-[](https://dataos.info/resources/depot/#__codelineno-16-1)`dataos-ctl get -t depot `-a
+* Additionally, retrieve the list of all Depots created in your organization:
+
+```bash
+dataos-ctl get -t depot -a
+```
+
+[](https://dataos.info/resources/depot/#__codelineno-16-1)
 
 You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
 
-### **Delete Depot**[¶](https://dataos.info/resources/depot/#delete-depot "Permanent link")
+### **Delete a Depot**
 
-📖 **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
+<Tip>
+  **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
+</Tip>
 
 If you need to delete a Depot, use the following command in the DataOS CLI:
 
-[](https://dataos.info/resources/depot/#__codelineno-17-1)`dataos-ctl delete -t depot -n ${{name of Depot}}`
+<CodeGroup>
+  ```bash Command
+  dataos-ctl delete -t depot -n ${{name of Depot}}
+  ```
+
+  ```
+  dataos-ctl delete -f ${{path of your manifest file}}
+  ```
+</CodeGroup>
+
+[](https://dataos.info/resources/depot/#__codelineno-17-1)
 
 By executing the above command, the specified Depot will be deleted from your DataOS environment.
 
-## **How to utilize Depots?**[¶](https://dataos.info/resources/depot/#how-to-utilize-depots "Permanent link")
+## **How to utilize Depots?**
 
 Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to access data without physically moving it. The UDLs play a crucial role in various scenarios within DataOS.
 
-### **Work with Stacks**[¶](https://dataos.info/resources/depot/#work-with-stacks "Permanent link")
+### **Work with Stacks**
 
-Depots are compatible with different Stacks in DataOS. [Stacks](https://dataos.info/resources/stacks/) provide distinct approaches to interact with the system and enable various programming paradigms in DataOS. Several Stacks are available that can be utilized with Depots, including [Scanner](https://dataos.info/resources/stacks/scanner/) for introspecting Depots, [Flare](https://dataos.info/resources/stacks/flare/) for data ingestion, transformation, syndication, etc., [Benthos](https://dataos.info/resources/stacks/benthos/) for stream processing and [Data Toolbox](https://dataos.info/resources/stacks/data_toolbox/) for managing [Icebase](https://dataos.info/resources/depot/icebase/) DDL and DML.
+Depots are compatible with different Stacks in DataOS. [Stacks](https://dataos.info/resources/stacks/) provide distinct approaches to interact with the system and enable various programming paradigms in DataOS. Several Stacks are available that can be utilized with Depots, including [Scanner](https://dataos.info/resources/stacks/scanner/) for introspecting Depots, [Flare](https://dataos.info/resources/stacks/flare/) for data ingestion, transformation, syndication, etc., [Benthos](https://dataos.info/resources/stacks/benthos/) for stream processing, and [Data Toolbox](https://dataos.info/resources/stacks/data_toolbox/) for managing [Icebase](https://dataos.info/resources/depot/icebase/) DDL and DML.
 
 [Flare](https://dataos.info/resources/stacks/flare/) and [Scanner](https://dataos.info/resources/stacks/scanner/) Stacks are supported by all Depots, while [Benthos](https://dataos.info/resources/stacks/benthos/), the stream-processing Stack, is compatible with read/write operations from streaming Depots like [Fastbase](https://dataos.info/resources/depot/fastbase/) and Kafka Depots.
 
 The UDL references are used as addresses for your input and output datasets within the manifest configuration file.
 
-### **Limit data source's file format**[¶](https://dataos.info/resources/depot/#limit-data-sources-file-format "Permanent link")
+### **Limit the data source's file format**
 
-Another important function that a Depot can play is to limit the file type which you can read from and write to a particular data source. In the `spec` section of manifest config file, simply mention the `format` of the files you want to allow access for.
+Another important function that a Depot can play is to limit the file type that can read from and write to a particular data source. In the `spec` section of the config file, simply mention the `format` of the files you want to allow access to.
 
-[](https://dataos.info/resources/depot/#__codelineno-18-1)`depot:`
-[](https://dataos.info/resources/depot/#__codelineno-18-2)`  type: S3`
-[](https://dataos.info/resources/depot/#__codelineno-18-3)`  description: $${{description}}`
-[](https://dataos.info/resources/depot/#__codelineno-18-4)`  external: true`
-[](https://dataos.info/resources/depot/#__codelineno-18-5)`  spec:`
-[](https://dataos.info/resources/depot/#__codelineno-18-6)`    scheme: $${{s3a}}`
-[](https://dataos.info/resources/depot/#__codelineno-18-7)`    bucket: $${{bucket-name}}`
-[](https://dataos.info/resources/depot/#__codelineno-18-8)`     relativePath: "raw"  `
-[](https://dataos.info/resources/depot/#__codelineno-18-9)`    format: $${{format}}  # mention the file format, such as JSON`
+```yaml
+depot:
+  type: S3
+  description: $${{description}}
+  external: true
+  spec:
+    scheme: $${{s3a}}
+    bucket: $${{bucket-name}}
+    relativePath: "raw" 
+    format: $${{format}}  # mention the file format, such as JSON
+```
 
 For file based systems, if you define the format as ‘Iceberg’, you can choose the meta-store catalog between Hadoop and Hive. This is how you do it:
 
-[](https://dataos.info/resources/depot/#__codelineno-19-1)`depot:`
-[](https://dataos.info/resources/depot/#__codelineno-19-2)`  type: ABFSS`
-[](https://dataos.info/resources/depot/#__codelineno-19-3)`  description: "ABFSS Iceberg Depot for sanity"`
-[](https://dataos.info/resources/depot/#__codelineno-19-4)`  compute: runnable-default`
-[](https://dataos.info/resources/depot/#__codelineno-19-5)`  spec:`
-[](https://dataos.info/resources/depot/#__codelineno-19-6)`     account:  `
-[](https://dataos.info/resources/depot/#__codelineno-19-7)`     container:  `
-[](https://dataos.info/resources/depot/#__codelineno-19-8)`    relativePath:`
-[](https://dataos.info/resources/depot/#__codelineno-19-9)`    format: ICEBERG`
-[](https://dataos.info/resources/depot/#__codelineno-19-10)`    endpointSuffix:`
-[](https://dataos.info/resources/depot/#__codelineno-19-11)`    icebergCatalogType: Hive`
+```yaml
+depot:
+  type: ABFSS
+  description: "ABFSS Iceberg Depot for sanity"
+  compute: runnable-default
+  spec:
+    account: 
+    container: 
+    relativePath:
+    format: ICEBERG
+    endpointSuffix:
+    icebergCatalogType: Hive
+```
 
 If you do not mention the catalog name as Hive, it will use Hadoop as the default catalog for Iceberg format.
 
 ![Flow when Hive is chosen as the catalog type](https://dataos.info/resources/depot/depot_catalog.png)
 
-*Flow when Hive is chosen as the catalog type*
+Hive automatically keeps the pointer updated to the latest metadata version. If you use Hadoop, you have to manually do this by running the set metadata command as described on this page: [Set Metadata](https://dataos.info/resources/depot/icebase/).
 
-Hive, automatically keeps the pointer updated to the latest metadata version. If you use Hadoop, you have to manually do this by running the set metadata command as described on this page: [Set Metadata](https://dataos.info/resources/depot/icebase/).
-
-### **Scan and catalog metadata**[¶](https://dataos.info/resources/depot/#scan-and-catalog-metadata "Permanent link")
+### **Scan and catalog metadata**
 
 By running the [Scanner](https://dataos.info/resources/stacks/scanner/), you can scan the metadata from a source system via the Depot interface. Once the metadata is scanned, you can utilize [Metis](https://dataos.info/interfaces/metis/) to catalog and explore the metadata in a structured manner. This allows for efficient management and organization of data resources.
 
-### **Add Depot to Cluster sources to query the data**[¶](https://dataos.info/resources/depot/#add-depot-to-cluster-sources-to-query-the-data "Permanent link")
+### **Add Depot to Cluster sources to query the data**
 
 To enable the [Minerva](https://dataos.info/resources/cluster/#minerva) Query Engine to access a specific source system, you can add the Depot to the list of sources in the [Cluster](https://dataos.info/resources/cluster/). This allows you to query the data using the DataOS [Workbench](https://dataos.info/interfaces/workbench/).
 
-### **Create Policies upon Depots to govern the data**[¶](https://dataos.info/resources/depot/#create-policies-upon-depots-to-govern-the-data "Permanent link")
+### **Create Policies upon Depots to govern the data**
 
 [Access](https://dataos.info/resources/#access-policy) and [Data Policies](https://dataos.info/resources/#data-policy) can be created upon Depots to govern the data. This helps in reducing data breach risks and simplifying compliance with regulatory requirements. Access Policies can restrict access to specific Depots, collections, or datasets, while Data Policies allow you to control the visibility and usage of data.
 
-### **Building data models**[¶](https://dataos.info/resources/depot/#building-data-models "Permanent link")
+### **Building data models**
 
 You can use Lens to create Data Models on top of Depots and explore them using the [Lens App UI](https://dataos.info/interfaces/lens/).
 
-## **Supported storage architectures in DataOS**[¶](https://dataos.info/resources/depot/#supported-storage-architectures-in-dataos "Permanent link")
+## **Supported storage architectures in DataOS**
 
 DataOS Depots facilitate seamless connectivity with diverse storage systems while eliminating the need for data relocation. This resolves challenges pertaining to accessibility across heterogeneous data sources. However, the escalating intricacy of pipelines and the exponential growth of data pose potential issues, resulting in cumbersome, expensive, and unattainable storage solutions. In order to address this critical concern, DataOS introduces support for two distinct and specialized storage architectures - [Icebase](https://dataos.info/resources/depot/icebase/) Depot, the Unified Lakehouse designed for OLAP data, and [Fastbase](https://dataos.info/resources/depot/fastbase/) Depot, the Unified Streaming solution tailored for handling streaming data.
 
-### **Icebase**[¶](https://dataos.info/resources/depot/#icebase "Permanent link")
+### **Icebase**
 
 Icebase-type Depots are designed to store data suitable for OLAP processes. It offers built-in functionalities such as [schema evolution](https://dataos.info/resources/depot/icebase/#schema-evolution), [upsert commands](https://dataos.info/resources/depot/icebase/#creating-and-getting-datasets), and [time-travel capabilities](https://dataos.info/resources/depot/icebase/#maintenance-snapshot-modelling-and-metadata-listing) for datasets. With Icebase, you can conveniently perform these actions directly through the DataOS CLI, eliminating the need for additional Stacks like [Flare](https://dataos.info/resources/stacks/flare/). Moreover, queries executed on data stored in Icebase exhibit enhanced performance. For detailed information, refer to the Icebase [page](https://dataos.info/resources/depot/icebase/).
 
-### **Fastbase**[¶](https://dataos.info/resources/depot/#fastbase "Permanent link")
+### **Fastbase**catalog
 
-Fastbase type Depots are optimized for handling streaming data workloads. It provides features such as [creating](https://dataos.info/resources/depot/fastbase/#create-a-dataset) and [listing topics](https://dataos.info/resources/depot/fastbase/#list-topics), which can be executed effortlessly using the DataOS CLI. To explore Fastbase further, consult the [link](https://dataos.info/resources/depot/fastbase/).
+Fastbase-type Depots are optimized for handling streaming data workloads. It provides features such as [creating](https://dataos.info/resources/depot/fastbase/#create-a-dataset) and [listing topics](https://dataos.info/resources/depot/fastbase/#list-topics), which can be executed effortlessly using the DataOS CLI. To explore Fastbase further, consult the [link](https://dataos.info/resources/depot/fastbase/).
 
-## **Data integration - Supported connectors in DataOS**[¶](https://dataos.info/resources/depot/#data-integration-supported-connectors-in-dataos "Permanent link")
+## **Data integration - Supported connectors in DataOS**
 
-The catalogue of data sources accessible by one or more components within DataOS is provided on the following page: [Supported Connectors in DataOS](https://dataos.info/resources/depot/list_of_connectors/).
-
-## **Templates of Depot for different source systems**[¶](https://dataos.info/resources/depot/#templates-of-depot-for-different-source-systems "Permanent link")
-
-To facilitate the creation of Depots accessing commonly used data sources, we have compiled a collection of pre-defined manifest templates. These templates serve as a starting point, allowing you to quickly set up Depots for popular data sources.
-
-To make the process of creating a Depot configuration easier, we provide a set of predefined templates for various data sources. These templates serve as a starting point for configuring your Depot based on the specific data source you are working with. Simply choose the template that corresponds to your organization's data source and follow the instructions provided to fill in the required information.
-
-🗣️ When using these templates, you will need to populate the key-value properties in the manifest file with the appropriate values for your data source. This requires a basic understanding of your organization's data infrastructure and the necessary credentials or connection details.
-
-You can access these templates by visiting the following tabs:
-
-[Data
-Warehouse](https://dataos.info/resources/depot/#data-warehouse)[Lakehouse or
-Data Lake](https://dataos.info/resources/depot/#lakehouse-or-data-lake)[Streaming
-Source](https://dataos.info/resources/depot/#streaming-source)[NoSQL
-Database](https://dataos.info/resources/depot/#nosql-database)[Relational
-Database](https://dataos.info/resources/depot/#relational-database)
-
-[Amazon Redshift](https://dataos.info/resources/depot/#amazon-redshift)[Google BigQuery](https://dataos.info/resources/depot/#google-bigquery)[Snowflake](https://dataos.info/resources/depot/#snowflake)
-
-DataOS provides the capability to establish a connection with the Amazon Redshift database. We have provided the template for the manifest file to establish this connection. To create a Depot of type ‘REDSHIFT‘, utilize the following template:
-
-🗣️ Please note that the credentials are directly specified in the Depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](https://dataos.info/resources/instance_secret/) as `secrets` or `dataosSecrets`.
-
-[Inline Credentials](https://dataos.info/resources/depot/#inline-credentials)[Instance Secret Reference](https://dataos.info/resources/depot/#instance-secret-reference)
-
-**redshift\_v1.yaml**
-
-[](https://dataos.info/resources/depot/#__codelineno-20-1)`name: ${{redshift-depot-name}}`
-[](https://dataos.info/resources/depot/#__codelineno-20-2)`version: v1`
-[](https://dataos.info/resources/depot/#__codelineno-20-3)`type: depot`
-[](https://dataos.info/resources/depot/#__codelineno-20-4)`tags:`
-[](https://dataos.info/resources/depot/#__codelineno-20-5)`  - ${{redshift}}`
-[](https://dataos.info/resources/depot/#__codelineno-20-6)`layer: user`
-[](https://dataos.info/resources/depot/#__codelineno-20-7)`description: ${{Redshift Sample data}}`
-[](https://dataos.info/resources/depot/#__codelineno-20-8)`depot:`
-[](https://dataos.info/resources/depot/#__codelineno-20-9)`  type: REDSHIFT`
-[](https://dataos.info/resources/depot/#__codelineno-20-10)`  spec:`
-[](https://dataos.info/resources/depot/#__codelineno-20-11)`    host: ${{hostname}}`
-[](https://dataos.info/resources/depot/#__codelineno-20-12)`    subprotocol: ${{subprotocol}}`
-[](https://dataos.info/resources/depot/#__codelineno-20-13)`    port: ${{5439}}`
-[](https://dataos.info/resources/depot/#__codelineno-20-14)`    database: ${{sample-database}}`
-[](https://dataos.info/resources/depot/#__codelineno-20-15)`    bucket: ${{tmdc-dataos}}`
-[](https://dataos.info/resources/depot/#__codelineno-20-16)`    relativePath: ${{development/redshift/data_02/}}`
-[](https://dataos.info/resources/depot/#__codelineno-20-17)`  external: ${{true}}`
-[](https://dataos.info/resources/depot/#__codelineno-20-18)`  connectionSecret:`
-[](https://dataos.info/resources/depot/#__codelineno-20-19)`    - acl: ${{rw}}`
-[](https://dataos.info/resources/depot/#__codelineno-20-20)`      type: key-value-properties`
-[](https://dataos.info/resources/depot/#__codelineno-20-21)`      data:`
-[](https://dataos.info/resources/depot/#__codelineno-20-22)`        username: ${{username}}`
-[](https://dataos.info/resources/depot/#__codelineno-20-23)`        password: ${{password}}`
-[](https://dataos.info/resources/depot/#__codelineno-20-24)`        awsaccesskeyid: ${{access key}}`
-[](https://dataos.info/resources/depot/#__codelineno-20-25)`        awssecretaccesskey: ${{secret key}}`
-
-Follow these steps to create the Depot:
-
-* **Step 1**: Create a manifest file.
-
-* **Step 2**: Copy the template from above and paste it in a code.
-
-* **Step 3**: Fill the values for the atttributes/fields declared in the YAML-based manifest file.
-
-* **Step 4**: Apply the file through DataOS CLI.
-
-**Requirements** To establish a connection with Redshift, the following information is required:
-
-* Hostname
-
-* Port
-
-* Database name
-
-* User name and password
-
-Additionally, when accessing the Redshift Database in Workflows or other DataOS Resources, the following details are also necessary:
-
-* Bucket name where the data resides
-
-* Relative path
-
-* AWS access key
-
-* AWS secret key
+The catalog of data sources accessible by one or more components within DataOS is provided on the following page: [Supported Connectors in DataOS](https://dataos.info/resources/depot/list_of_connectors/)
