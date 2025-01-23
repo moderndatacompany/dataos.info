@@ -29,7 +29,7 @@ model
 
 4. **User Groups (`user_groups.yml`):** Define access control by creating user groups and assigning permissions.
 
-## Step 2: Create deployment manifest file
+## Step 2: Create a deployment manifest file
 
 After preparing the Lens semantic model create a `lens_deployemnt.yml` parallel to the `model` folder.
 
@@ -59,14 +59,7 @@ lens:
 
   api:   # optional
     replicas: 1 # optional
-    logLevel: info  # optional
-    envs:
-      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-      LENS2_DEV_MODE: "true"
-      LENS2_CONCURRENCY: 10
-      LENS2_DB_MAX_POOL: 15
-      LENS2_DB_TIMEOUT: 1500000
-      
+    logLevel: info  # optional 
     resources: # optional
       requests:
         cpu: 100m
@@ -74,13 +67,10 @@ lens:
       limits:
         cpu: 2000m
         memory: 2048Mi
+
   worker: # optional
     replicas: 2 # optional
     logLevel: debug  # optional
-    envs:
-      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-      LENS2_DEV_MODE: "true"
-
 
     resources: # optional
       requests:
@@ -89,11 +79,9 @@ lens:
       limits:
         cpu: 6000m
         memory: 6048Mi
+
   router: # optional
     logLevel: info  # optional
-    envs:
-      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-      LENS2_DEV_MODE: "true"
     resources: # optional
       requests:
         cpu: 100m
@@ -120,7 +108,7 @@ Each section of the YAML template outlines essential elements of the Lens deploy
 
   * **`type`:**  The `type` attribute in the `source` section must be explicitly set to `minerva`.
 
-  * **`name`:** The `name` attribute in the `source` section should specify the name of the Minerva Cluster. For example if the name of your Minerva Cluster is miniature the Source name would be `miniature`.
+  * **`name`:** The `name` attribute in the `source` section should specify the name of the Minerva Cluster. For example, if the name of your Minerva Cluster is miniature the Source name would be `miniature`.
 
   * **`catalog`:** The `catalog` attribute must define the specific catalog name within the Minerva Cluster that you intend to use. For instance, if the catalog is named icebase, ensure this is accurately reflected in the catalog field.
 

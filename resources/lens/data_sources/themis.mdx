@@ -2,29 +2,37 @@
 title: "Themis"
 ---
 
-##
 
-The following aspects need to be considered when creating a lens on the Themis cluster source:
+## Prerequisite
 
-1. **Source Type**
+Ensure you have an active and running Minerva Cluster.
 
-   * The `type` attribute in the `source` section must be explicitly set to `themis`.
+## Step 1: Prepare the Lens model folder
 
-2. **Cluster Name**
+Organize the Lens model folder with the following structure to define tables, views, and governance policies:
 
-   * The `name` attribute in the `source` section should specify the name of the cluster created on Themis.
+```
+model
+├── sqls
+│   └── sample.sql  # SQL script for table dimensions
+├── tables
+│   └── sample_table.yml  # Logical table definition (joins, dimensions, measures, segments)
+├── views
+│   └── sample_view.yml  # Logical views referencing tables
+└── user_groups.yml  # User group policies for governance
+```
 
-   * For example, if the cluster created on Themis is named `lenstestingthemis`, the `name` value in the YAML must also be `lenstestingthemis`.
+1. **SQL Scripts (`model/sqls`):** Add SQL files defining table structures and transformations.
 
-   * This ensures Lens correctly identifies and connects to the intended Themis cluster.
+2. **Tables (`model/tables`):** Define logical tables in separate YAML files. Include dimensions, measures, segments, and joins.
 
-3. **Catalog Name**
+3. **Views (`model/views`):** Define views in YAML files, referencing the logical tables.
 
-   * The `catalog` attribute must define the specific depot within the Themis cluster that will be used for querying.
+4. **User Groups (`user_groups.yml`):** Define access control by creating user groups and assigning permissions.
 
-   * For instance, if the depot is named `icebase`, ensure this is accurately set in the `catalog` field.
+## Step 2: Create a deployment manifest file
 
-### **Deployment manifest file**
+After preparing the Lens semantic model create a `lens_deployemnt.yml` parallel to the `model` folder.
 
 ```yaml
 version: v1alpha
@@ -87,6 +95,31 @@ lens:
         cpu: 6000m
         memory: 6048Mi
 ```
+
+The YAML manifest provided is designed for a cluster named `minervacluster`, created on the `Minerva` source, with a data catalog named `icebase`. To utilize this manifest, duplicate the file and update the source details as needed.
+
+Each section of the YAML template outlines essential elements of the Lens deployment. Below is a detailed breakdown of its components:
+
+* **Defining the Source:**
+
+  * **`type`:**  The `type` attribute in the `source` section must be explicitly set to `themis`.
+
+  * **`name`:** The `name` attribute in the `source` section should specify the name of the Themis Cluster. For example, if the name of your Themis Cluster is `clthemis` the Source name would be `clthemis`.
+
+  * **`catalog`:** The `catalog` attribute must define the specific catalog name within the Themis Cluster that you intend to use. For instance, if the catalog is named `lakehouse_retail`, ensure this is accurately reflected in the catalog field.
+
+* **Defining Repository:**
+
+  * **`url`** The `url` attribute in the repo section specifies the Git repository where the Lens model files are stored. For instance, if your repo name is lensTutorial then the repo `url` will be  [https://bitbucket.org/tmdc/lensTutorial](https://bitbucket.org/tmdc/lensTutorial)
+
+  * **`lensBaseDir`:**  The `lensBaseDir` attribute refers to the directory in the repository containing the Lens model. Example: `sample/lens/source/depot/awsredshift/model`.
+
+  * **`secretId`:**  The `secretId` attribute is used to access private repositories (e.g., Bitbucket, GitHub). It specifies the secret needed to authenticate and access the repository securely.
+
+  * **`syncFlags`**:  Specifies additional flags to control repository synchronization. Example: `--ref=dev` specifies that the Lens model resides in the dev branch.
+
+* **Configure API, Worker, and Metric Settings (Optional):** Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
+
 
 The above manifest is intended for a cluster named `lenstestingthemis`, created on the themis source, with the depot or data catalog named `icebase`. To use this manifest, copy the file and update the source details accordingly.
 
