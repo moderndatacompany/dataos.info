@@ -95,7 +95,7 @@
         {
           "group": "Supported Storage Architecture",
           "pages": [
-            "resources/depot/iecbase/index",
+            "resources/depot/icebase/index",
             "resources/depot/fastbase/index"
           ]
         }
