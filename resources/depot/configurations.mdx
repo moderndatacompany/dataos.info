@@ -43,113 +43,220 @@ sidebarTitle: "Configurations"
 
 ## **`depot`**
 
-**Description:** specifies the configuration for the Depot section
+**Description:** specifies the configuration for the Depot section.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | --------------- | ----------------- | ------------------ |
+| mapping       | mandatory       | none              | none               |
 
 **Example Usage:**
 
-[](https://dataos.info/resources/depot/configurations/#__codelineno-1-1)`depot:`
-[](https://dataos.info/resources/depot/configurations/#__codelineno-1-2)`  {}`
+```bash
+depot:
+  {}
+```
+
+[](https://dataos.info/resources/depot/configurations/#__codelineno-1-1)
 
 ### **`type`**
 
 **Description:** Specifies the type of Depot
 
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value**                                                                                                                      |
+| ------------- | --------------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| string        | mandatory       | none              | ABFSS, WASBS, REDSHIFT, S3, ELASTICSEARCH, EVENTHUB, PULSAR, BIGQUERY, GCS, JDBC, MSSQL, MYSQL, OPENSEARCH, ORACLE, POSTGRES, SNOWFLAKE |
+
 **Example Usage:**
 
-[](https://dataos.info/resources/depot/configurations/#__codelineno-2-1)`type: ABFSS`
+```bash
+type: ABFSS
+```
+
+[](https://dataos.info/resources/depot/configurations/#__codelineno-2-1)
 
 ### **`description`**
 
 **Description:** Provides a description for the Depot
 
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | --------------- | ----------------- | ------------------ |
+| string        | optional        | none              | any string         |
+
 **Example Usage:**
 
-[](https://dataos.info/resources/depot/configurations/#__codelineno-3-1)`description: Azure Blob Storage Depot`
+```bash
+description: Azure Blob Storage Depot
+```
+
+[](https://dataos.info/resources/depot/configurations/#__codelineno-3-1)
 
 ### **`external`**
 
 **Description:** Specifies whether the depot is external. Set to true if the depot is external
 
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | --------------- | ----------------- | ------------------ |
+| string        | mandatory       | false             | true/false         |
+
 **Example Usage:**
 
-[](https://dataos.info/resources/depot/configurations/#__codelineno-4-1)`external: true`
+```bash
+external: true
+```
+
+[](https://dataos.info/resources/depot/configurations/#__codelineno-4-1)
 
 ### **`source`**
 
 **Description:** Maps the depot to the metadata source name in Metis. Running a scanner job on this depot will save the metadata in Metis DB under the specified 'source' name. If this key-value property is not mentioned, the metadata will surface under the depot name on Metis UI.
 
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | --------------- | ----------------- | ------------------ |
+| string        | optional        | depot name        | any string         |
+
 **Example Usage:**
 
-[](https://dataos.info/resources/depot/configurations/#__codelineno-5-1)`source: bigquerymetadata`
+```bash
+source: bigquerymetadata
+```
+
+[](https://dataos.info/resources/depot/configurations/#__codelineno-5-1)
 
 ### **`compute`**
 
 **Description:** Specifies the compute resource for the depot being created.
 
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value**   |
+| ------------- | --------------- | ----------------- | -------------------- |
+| string        | optional        | runnable-default  | any Compute Resource |
+
 **Example Usage:**
 
-[](https://dataos.info/resources/depot/configurations/#__codelineno-6-1)`compute: runnable-default`
+```bash
+compute: runnable-default
+```
+
+[](https://dataos.info/resources/depot/configurations/#__codelineno-6-1)
 
 ### **`connectionSecret`**
 
 **Description:** Specifies the connection secrets for the data source.
 
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value**          |
+| ------------- | --------------- | ----------------- | --------------------------- |
+| mapping       | optional        | none              | varies between data sources |
+
 **Example Usage:**
 
-[](https://dataos.info/resources/depot/configurations/#__codelineno-7-1)`connectionSecret:`
-[](https://dataos.info/resources/depot/configurations/#__codelineno-7-2)`   {}  `
+```bash
+connectionSecret:
+  {} 
+```
+
+[](https://dataos.info/resources/depot/configurations/#__codelineno-7-1)
 
 ### **`acl`**
 
 **Description:** Declares the access policy for the depot. Multiple connections with different access levels can be created for the same depot. For example, read and write permissions for a specific transformation and read-only permission for another operation using the same depot.
 
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | --------------- | ----------------- | ------------------ |
+| string        | optional        | r                 | r/rw               |
+
 **Example Usage:**
 
-[](https://dataos.info/resources/depot/configurations/#__codelineno-8-1)`acl: rw`
+```bash
+acl: rw
+```
+
+[](https://dataos.info/resources/depot/configurations/#__codelineno-8-1)
 
 ### **`type`**
 
 **Description:** Specifies the type of Secret
 
+| **Data Type** | **Requirement** | **Default Value**    | **Possible Value**   |
+| ------------- | --------------- | -------------------- | -------------------- |
+| string        | optional        | key-value-properties | key-value-properties |
+
 **Example Usage:**
 
-[](https://dataos.info/resources/depot/configurations/#__codelineno-9-1)`type: key-value-properties `
+```bash
+type: key-value-properties
+```
+
+[](https://dataos.info/resources/depot/configurations/#__codelineno-9-1)
 
 ### **`data`**
 
 **Description:** Provides the credentials and additional information needed to connect with the data source, such as access key ID, secret key ID, username, and passwords.
 
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value**          |
+| ------------- | --------------- | ----------------- | --------------------------- |
+| mapping       | optional        | none              | varies between data sources |
+
 **Example Usage:**
 
-[](https://dataos.info/resources/depot/configurations/#__codelineno-10-1)`data:`
-[](https://dataos.info/resources/depot/configurations/#__codelineno-10-2)`  projectid: project-name`
-[](https://dataos.info/resources/depot/configurations/#__codelineno-10-3)`   email:  `[`iamgroot@tmdc.io`](mailto:iamgroot@tmdc.io)
+```bash
+data:
+  username: iamgroot
+  password: 12345
+```
+
+[](https://dataos.info/resources/depot/configurations/#__codelineno-10-1)
 
 ### **`files`**
 
 **Description:** Allows storing sensitive information in a separate JSON file. Specify the absolute path to the JSON file containing the credentials.
 
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value**  |
+| ------------- | --------------- | ----------------- | ------------------- |
+| string        | optional        | none              | valid absolute path |
+
 **Example Usage:**
 
-[](https://dataos.info/resources/depot/configurations/#__codelineno-11-1)`files:`
-[](https://dataos.info/resources/depot/configurations/#__codelineno-11-2)`  json_keyfile: secrets/gcp-demo-sa.json`
+```bash
+files:
+  json_keyfile: secrets/gcp-demo-sa.json
+```
+
+[](https://dataos.info/resources/depot/configurations/#__codelineno-11-1)
 
 ### **`spec`**
 
 **Description:** Specifies the precise location of the data and provides the hierarchical structure in which the data is stored.
 
-**Data TypeRequirementDefault ValuePossible Value**
-
-mapping
-
-mandatory
-
-none
-
-varies between data sources
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value**          |
+| ------------- | --------------- | ----------------- | --------------------------- |
+| mapping       | mandatory       | none              | varies between data sources |
 
 **Example Usage:**
 
-[](https://dataos.info/resources/depot/configurations/#__codelineno-12-1)`spec:`
-[](https://dataos.info/resources/depot/configurations/#__codelineno-12-2)`  host: host`
-[](https://dataos.info/resources/depot/configurations/#__codelineno-12-3)`  port: port`
+```bash
+spec:
+  host: host
+  port: port
+```
+
+### **`secrets`**
+
+**`Description:  `**`Used to refer the Secrets.`
+
+
+
+**`Example Usage:`**
+
+```bash
+  secrets:
+    - name: $abfss-instance-secret-name-r
+      allkeys: true
+
+    - name: abfss-instance-secret-name-rw
+      allkeys: true
+```
+
+
+
+
+
+[](https://dataos.info/resources/depot/configurations/#__codelineno-12-1)
