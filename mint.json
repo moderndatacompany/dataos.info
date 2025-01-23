@@ -90,7 +90,8 @@
     {
       "group": "Depot",
       "pages": [
-        "resources/depot/index"
+        "resources/depot/index",
+        "resources/depot/configurations"
       ]
     },    
     

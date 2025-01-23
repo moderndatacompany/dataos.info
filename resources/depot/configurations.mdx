@@ -44,116 +44,79 @@ title: "Attributes of Depot specific section"
 
 **Description:** specifies the configuration for the Depot section
 
-
-
 **Example Usage:**
 
 [](https://dataos.info/resources/depot/configurations/#__codelineno-1-1)`depot:`
 [](https://dataos.info/resources/depot/configurations/#__codelineno-1-2)`  {}`
 
-
 ### **`type`**
 
 **Description:** Specifies the type of Depot
-
-
 
 **Example Usage:**
 
 [](https://dataos.info/resources/depot/configurations/#__codelineno-2-1)`type: ABFSS`
 
-
-
-
 ### **`description`**
 
 **Description:** Provides a description for the Depot
-
-
 
 **Example Usage:**
 
 [](https://dataos.info/resources/depot/configurations/#__codelineno-3-1)`description: Azure Blob Storage Depot`
 
-
-
-
 ### **`external`**
 
 **Description:** Specifies whether the depot is external. Set to true if the depot is external
-
-
 
 **Example Usage:**
 
 [](https://dataos.info/resources/depot/configurations/#__codelineno-4-1)`external: true`
 
-
-
-
 ### **`source`**
 
 **Description:** Maps the depot to the metadata source name in Metis. Running a scanner job on this depot will save the metadata in Metis DB under the specified 'source' name. If this key-value property is not mentioned, the metadata will surface under the depot name on Metis UI.
-
-
 
 **Example Usage:**
 
 [](https://dataos.info/resources/depot/configurations/#__codelineno-5-1)`source: bigquerymetadata`
 
-
 ### **`compute`**
 
 **Description:** Specifies the compute resource for the depot being created.
-
-
 
 **Example Usage:**
 
 [](https://dataos.info/resources/depot/configurations/#__codelineno-6-1)`compute: runnable-default`
 
-
 ### **`connectionSecret`**
 
 **Description:** Specifies the connection secrets for the data source.
-
-
 
 **Example Usage:**
 
 [](https://dataos.info/resources/depot/configurations/#__codelineno-7-1)`connectionSecret:`
 [](https://dataos.info/resources/depot/configurations/#__codelineno-7-2)`   {}  `
 
-
-
-
 ### **`acl`**
 
 **Description:** Declares the access policy for the depot. Multiple connections with different access levels can be created for the same depot. For example, read and write permissions for a specific transformation and read-only permission for another operation using the same depot.
-
-
 
 **Example Usage:**
 
 [](https://dataos.info/resources/depot/configurations/#__codelineno-8-1)`acl: rw`
 
-
 ### **`type`**
 
 **Description:** Specifies the type of Secret
-
-
 
 **Example Usage:**
 
 [](https://dataos.info/resources/depot/configurations/#__codelineno-9-1)`type: key-value-properties `
 
-
 ### **`data`**
 
 **Description:** Provides the credentials and additional information needed to connect with the data source, such as access key ID, secret key ID, username, and passwords.
-
-
 
 **Example Usage:**
 
@@ -161,18 +124,14 @@ title: "Attributes of Depot specific section"
 [](https://dataos.info/resources/depot/configurations/#__codelineno-10-2)`  projectid: project-name`
 [](https://dataos.info/resources/depot/configurations/#__codelineno-10-3)`   email:  `[`iamgroot@tmdc.io`](mailto:iamgroot@tmdc.io)
 
-
 ### **`files`**
 
 **Description:** Allows storing sensitive information in a separate JSON file. Specify the absolute path to the JSON file containing the credentials.
-
-
 
 **Example Usage:**
 
 [](https://dataos.info/resources/depot/configurations/#__codelineno-11-1)`files:`
 [](https://dataos.info/resources/depot/configurations/#__codelineno-11-2)`  json_keyfile: secrets/gcp-demo-sa.json`
-
 
 ### **`spec`**
 
