@@ -1,6 +1,5 @@
 ---
 title: "Introduction"
-description: "Description of your new file."
 ---
 
 Depot in DataOS is a Resource used to connect different data sources to DataOS by abstracting the complexities associated with the underlying source system (including protocols, credentials, and connection schemas). It enables users to establish connections and retrieve data from various data sources, such as file systems (e.g., AWS S3, Google GCS, Azure Blob Storage), data lake systems, database systems (e.g., Redshift, SnowflakeDB, Bigquery, Postgres), and event systems (e.g., Kafka, Pulsar) without moving the data.
@@ -1067,8 +1066,6 @@ This section involves steps for creating a Depot for different data sources supp
       ```
     </CodeGroup>
 
-
-
     ### Step 3: Apply the Depot manifest file
 
     Once you have the manifest file ready in your code editor, simply copy the path of the manifest file and apply it through the DataOS CLI by pasting the path in the placeholder, using the command given below:
@@ -1183,8 +1180,6 @@ This section involves steps for creating a Depot for different data sources supp
       console.log("Hello World");
       ```
     </CodeGroup>
-
-
 
     ### Step 3: Apply the Depot manifest file
 
@@ -2328,7 +2323,7 @@ DataOS Depots facilitate seamless connectivity with diverse storage systems whil
 
 Icebase-type Depots are designed to store data suitable for OLAP processes. It offers built-in functionalities such as [schema evolution](https://dataos.info/resources/depot/icebase/#schema-evolution), [upsert commands](https://dataos.info/resources/depot/icebase/#creating-and-getting-datasets), and [time-travel capabilities](https://dataos.info/resources/depot/icebase/#maintenance-snapshot-modelling-and-metadata-listing) for datasets. With Icebase, you can conveniently perform these actions directly through the DataOS CLI, eliminating the need for additional Stacks like [Flare](https://dataos.info/resources/stacks/flare/). Moreover, queries executed on data stored in Icebase exhibit enhanced performance. For detailed information, refer to the Icebase [page](https://dataos.info/resources/depot/icebase/).
 
-### **Fastbase**catalog
+### **Fastbasecatalog**
 
 Fastbase-type Depots are optimized for handling streaming data workloads. It provides features such as [creating](https://dataos.info/resources/depot/fastbase/#create-a-dataset) and [listing topics](https://dataos.info/resources/depot/fastbase/#list-topics), which can be executed effortlessly using the DataOS CLI. To explore Fastbase further, consult the [link](https://dataos.info/resources/depot/fastbase/).
 
