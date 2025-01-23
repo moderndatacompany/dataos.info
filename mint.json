@@ -98,7 +98,8 @@
             "resources/depot/icebase/index",
             "resources/depot/fastbase/index"
           ]
-        }
+        },
+        "resources/depot/supported_connectors"
       ]
     },    
     
