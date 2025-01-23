@@ -7,6 +7,7 @@ sidebarTitle: "Configurations"
 
 <CodeGroup>
   ```yaml Inline credential
+  # v1 version
   depot:
     type: ${{S3}}                                          
     description: ${{description}}
@@ -23,6 +24,7 @@ sidebarTitle: "Configurations"
   ```
 
   ```yaml Instance Secret Reference
+  # v2alpha version
   depot:
     type: ${{ABFSS}}                                       
     description: ${{description}}
@@ -240,11 +242,13 @@ spec:
 
 ### **`secrets`**
 
-**`Description:  `**`Used to refer the Secrets.`
+**Description:** Used to refer the Secrets.
 
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value**          |
+| ------------- | --------------- | ----------------- | --------------------------- |
+| mapping       | mandatory       | none              | varies between data sources |
 
-
-**`Example Usage:`**
+**Example Usage:**
 
 ```bash
   secrets:
@@ -254,9 +258,3 @@ spec:
     - name: abfss-instance-secret-name-rw
       allkeys: true
 ```
-
-
-
-
-
-[](https://dataos.info/resources/depot/configurations/#__codelineno-12-1)
