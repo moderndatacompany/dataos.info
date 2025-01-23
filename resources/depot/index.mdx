@@ -11,7 +11,7 @@ Within DataOS, the hierarchical structure of a data source is represented as fol
 
 The Depot serves as the registration of data locations to be made accessible to DataOS. Through the Depot Service, each source system is assigned a unique address, referred to as a **Uniform Data Link (UDL)**. The UDL grants convenient access and manipulation of data within the source system, eliminating the need for repetitive credential entry. The UDL follows this format:
 
-**`                                                                dataos://[depot]:[collection]/[dataset]`**
+**`                                                             dataos://[depot]:[collection]/[dataset]`**
 
 <Info>
   Depot Service is a DataOS Service that manages the Depot Resource. It facilitates in-depth introspection of Depots and their associated storage engines. Once a Depot is created, users can obtain comprehensive information about the datasets contained within, including details such as constraints, partition, indexing, etc.
@@ -594,110 +594,332 @@ To create Depots, ensure that you possess the following tags.
   </Accordion>
 
   <Accordion title="MongoDB" defaultOpen={false}>
-    ### Pre-requisites specific to the MongoDB Depot
+    ## &#x20;**How to create a MongoDB Depot?**
 
-    To create a MongoDB Depot you must have the following details:
+    There are two ways to set up the MongoDB connection: Through \`username\` and \`password\`, and certificate authentication. Follow the sections below to create the Depot using both methods.
 
-    * **projectid**: The unique identifier of the Google Cloud project where your GCS bucket resides. You can find this in the Google Cloud Console under the "Project Info" section of your project's dashboard. It is essential for associating operations with the correct project.
+    ### **Prerequisites**
 
-    * **email**: The email address associated with the Google Cloud service account. You can retrieve this by navigating to the Google Cloud Console under "IAM & Admin" > "Service Accounts" and selecting the relevant service account. This email is used for authenticating requests to GCS.
+    The following are the prerequisites for creating a MongoDB Depot.
 
-    * **json\_keyfile**: The path to the JSON key file associated with the Google Cloud service account. This file is used for authentication and can be downloaded from the Google Cloud Console under "IAM & Admin" > "Service Accounts." Select the service account, click on "Keys," and download the key by selecting "Add Key" > "JSON." Ensure the file is securely stored and the path is accessible.
+    **For username and password authentication:**
 
-    * **project**: (Optional) The name of the Google Cloud project. While not always required, it can be specified to provide additional context. You can find it in the Google Cloud Console under the "Project Info" section.
+    1\. Obtain the username and password for MongoDB from your organization's database administrator.
 
-    ### Create a MongoDB Depot
+    2\. Also, obtain the MongoDB node's details from the database administrator.
 
-    Azure Blob File System Secure (ABFSS) is an object storage system. Object stores are distributed storage systems designed to store and manage large amounts of unstructured data.
+    **For certificate authentication:**
 
-    DataOS enables the creation of a Depot of type 'Bigquery' to facilitate the reading of data stored in an Azure Blob Storage account. This Depot provides access to the storage account, which can consist of multiple containers. A container serves as a grouping mechanism for multiple blobs. It is recommended to define a separate Depot for each container. To create a Depot of type ‘ABFSS‘, follow the below steps:
+    1\. Obtain the username and password for MongoDB from your organization's database administrator.
 
-    ### Step 1: Create an Instance Secret for securing MongoDB credentails
+    2\. Obtain the MongoDB node's details from the database administrator.
 
-    <Warning>
-      This step can be skipped if you prefer to create a Depot without referencing an Instance Secret.
-    </Warning>
+    3\. Obtain the \`.crt\` certificate file for the MongoDB connection from the database administrator for creating the Depot through certificate authentication.
 
-    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).&#x20;
+    4\. Java 17 must be installed in your system.
 
-    ### Step 2: Create a MongoDB Depot manifest file
+    5\. Create a Keystore and Truststore file from a \`.crt\` file. Follow the below steps to create the keystore and trust store files from the \`.crt\` file.
 
-    Begin by creating a manifest file to hold the configuration details for your MongoDB Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
+    &#x20;   1\. Initialize the Keystore, remember the password you create while initializing the Keystore.
 
-    <CodeGroup>
-      ```yaml Inline credentials Depot manifest file
-      name: ${{depot-name}}
-      version: v1
-      type: depot
-      tags:
-        - ${{tag1}}
-        - ${{tag2}}
-      owner: ${{owner-name}}
-      layer: user
-      depot:
-        type: ABFSS                                       
-        description: ${{description}}
-        external: ${{true}}
-        compute: ${{runnable-default}}
-        connectionSecret:                                 
-          - acl: rw
-            type: key-value-properties
-            data:
-              azurestorageaccountname: ${{account-name}}
-              azurestorageaccountkey: ${{account-key}}
-          - acl: r
-            type: key-value-properties
-            data:
-              azurestorageaccountname: ${{account-name}}
-              azurestorageaccountkey: ${{account-key}}
-        spec:                                             
-          account: ${{account-name}}
-          container: ${{container-name}}
-          relativePath: ${{relative-path}}
-          format: ${{format}}
-      ```
+    &#x20;   2\. Run the following command, to import a certificate (\`demo-ssl-public-cert.cert\`) into the Java KeyStore with the alias (\`moderncert03\`). It will create a keystore and trust store files in the JAVA folder.
 
-      ```yaml Instance Secret reference Depot manifest file
-      name: ${{depot-name}}
-      version: v2alpha
-      type: depot
-      tags:
-        - ${{tag1}}
-        - ${{tag2}}
-      owner: ${{owner-name}}
-      layer: user
-      depot:
-        type: ABFSS                                       
-        description: ${{description}}
-        external: ${{true}}
-        compute: ${{runnable-default}}
-        secrets:
-          - name: ${{abfss-instance-secret-name}}-r
-            allkeys: true
+    ```bash
+    sudo  keytool -importcert -alias moderncert03 -keystore $JAVA_HOME/lib/security/cacerts -storepass 123456 -file /Users/iamgroot/office/poc-squad/mongodb-poc/demo-ssl-public-cert.cert
+    ```
 
-          - name: ${{abfss-instance-secret-name}}-rw
-            allkeys: true
-        abfss:                                             
-          account: ${{account-name}}
-          container: ${{container-name}}
-          relativePath: ${{relative-path}}
-          format: ${{format}}
-      ```
-    </CodeGroup>
 
-    ### Step 3: Apply the Depot manifest file
 
-    Once you have the manifest file ready in your code editor, simply copy the path of the manifest file and apply it through the DataOS CLI by pasting the path in the placeholder, using the command given below:
+    * &#x20;\`keystore\`: Points to the KeyStore file to update.
 
-    <CodeGroup>
-      ```bash Command
-      dataos-ctl resource apply -f ${{yamlfilepath}}
-      ```
+    * \`importcert\`: Specifies the operation of importing a certificate.
 
-      ```bash Alternative command
-      dataos-ctl apply -f ${{yamlfilepath}}
-      ```
-    </CodeGroup>
+    * &#x20;\`alias moderncert03\`: Assigns the alias \`moderncert03\` to the imported certificate.
+
+    * &#x20;\`storepass 123456\`: Provide the password for the keystone you created while initializing the keystore.
+
+    * &#x20;\`file\`: Specifies the path to the certificate file to import.
+
+    ### **Steps to create MongoDB Depot through username and password authentication**
+
+    This section involves the alternative steps to create a MongoDB  Depot without an Instance Secret.
+
+    1\. Create a manifest file for Depot containing the following code and update the details.
+
+    ```yaml
+    version: ${{v1}} # depot version
+    name: ${{"mongodb03"}}
+    type: ${{depot}}
+    tags:
+      - ${{MongoDb}}
+      - ${{Sanity}}
+    layer: ${{user}}
+    depot:
+      type: ${{mongodb}}
+      description: ${{"MongoDb depot for sanity"}}
+      compute: ${{query-default}}
+      spec:
+        subprotocol: ${{"mongodb"}}
+        nodes: ${{["mongodb-tmdc.dataos.info:27017"]}}
+        params: 
+          tls: ${{false}}
+      external: ${{true}}
+      connectionSecret:
+        - acl: ${{rw}}
+          type: ${{key-value-properties}}
+          data:
+            username: ${{root}}
+            password: ${{f5ce9b0d972fd9555560}}
+    ```
+
+    &#x20;  &#x20;
+
+    2\. Apply the Depot manifest file by executing the below command.
+
+    &#x20;  &#x20;
+
+    ```bash
+    dataos-ctl apply -f /home/office/depots/mongo_depot.yaml
+    ```
+
+    3\. Verify the Depot creation by executing the below command.
+
+    &#x20;  &#x20;
+
+    ```bash
+    dataos-ctl get -t depot -n mongodb03 -w public
+    ```
+
+    &#x20;  &#x20;
+
+    4\. Scan the metadata. By creating and applying the Scanner Workflow by referring to the MongoDB Depot name, you can extract the metadata that can be accessed on the Metis App.
+
+    &#x20;  &#x20;
+
+    ```yaml
+    version: v1
+    name: depotscanner
+    type: workflow
+    tags:
+      - postgres
+      - scanner
+    description: The job scans schema tables and register metadata
+    workflow:
+      dag:
+        - name: depotjob
+          description: The job scans schema from postgres depot tables and register metadata to metis
+          spec:
+            stack: scanner:2.0
+            compute: runnable-default
+            stackSpec:
+              depot: dataos://mongodb03         # MongoDB depot name
+    ```
+
+
+
+    &#x20;  &#x20;
+
+    5\. Apply the Scanner Workflow by executing the below command.
+
+    ```yaml
+    dataos-ctl apply -f /home/office/workflow/depot_scanner.yaml
+    ```
+
+
+
+    ### &#x20;**Steps to create MongoDB Depot through certificate authentication**
+
+    This section involves the alternative steps to create a MongoDB  Depot without an Instance Secret.
+
+    1\. Create a manifest file for Depot containing the following code and update the details.
+
+    &#x20;  &#x20;
+
+    ```yaml
+    version: ${{v1}} # depot version
+    name: ${{"mongodb"}}
+    type: ${{depot}}
+    tags:
+      - ${{MongoDb}}
+      - ${{Sanity}}
+    layer: ${{user}}
+    depot:
+      type: ${{mongodb}}
+      description: ${{"MongoDb depot for sanity"}}
+      compute: ${{query-default}}
+      spec:
+        subprotocol: ${{"mongodb"}}
+        nodes: ${{["SG-demo-66793.servers.mongodirector.com:27071"]}}
+        params: 
+          tls: ${{true}}
+      external: ${{true}}
+      connectionSecret:
+        - acl: ${{rw}}
+          type: ${{key-value-properties}}
+          data:
+            username: ${{admin}}
+            password: ${{Kl6swyCRLPteqljkdyrf}}
+            keyStorePassword: ${{123456}}
+            trustStorePassword: ${{123456}}
+          files:
+            ca_file: ${{mongodb-poc/demo-ssl-public-cert.cert}}
+            key_store_file: ${{/Library/Java/JavaVirtualMachines/jdk-22.jdk/Contents/Home/lib/security/cacerts}}
+            trust_store_file: ${{/Library/Java/JavaVirtualMachines/jdk-22.jdk/Contents/Home/lib/security/cacerts}}
+    ```
+
+    &#x20;  &#x20;
+
+    2\. Apply the Depot manifest file by executing the below command.
+
+    &#x20;  &#x20;
+
+    ```bash
+    dataos-ctl apply -f /home/office/depots/mongo_depot.yaml
+    ```
+
+    &#x20;  &#x20;
+
+    3\. Verify the Depot creation by executing the below command.
+
+    &#x20;  &#x20;
+
+    ```bash
+    dataos-ctl get -t depot -n mongodb03 -w public
+    ```
+
+    &#x20;
+
+    4\. Scan the metadata. By creating and applying the Scanner Workflow by referring to the MongoDB Depot name, you can extract the metadata that can be accessed on the Metis App.
+
+    &#x20;  &#x20;
+
+    ```yaml
+    version: v1
+    name: depotscanner
+    type: workflow
+    tags:
+      - postgres
+      - scanner
+    description: The job scans schema tables and register metadata
+    workflow:
+      dag:
+        - name: depotjob
+          description: The job scans schema from postgres depot tables and register metadata to metis
+          spec:
+            stack: scanner:2.0
+            compute: runnable-default
+            stackSpec:
+              depot: dataos://mongodb         # MongoDB depot name
+    ```
+
+    &#x20;  &#x20;
+
+    5\. Apply the Scanner Workflow by executing the below command.
+
+    ```bash
+    dataos-ctl apply -f /home/office/workflow/udscoremongodb.yaml
+    ```
+
+
+
+    ### &#x20;**Steps to create MongoDB Depot through VPCE**
+
+    This section involves the alternative steps to create a MongoDB  Depot without an Instance Secret. VPCE-based Depot is similar to certificate authentication Depot just additional parameters have been added that allow connection with VPCs.
+
+    1\. Create a manifest file for Depot containing the following code and update the details.
+
+    ```yaml
+    version: ${{v1}}
+    name: ${{"ldmmongodb"}}
+    type: ${{depot}}
+    tags:
+      - ${{Mongodb}}
+    layer: ${{user}}
+    depot:
+      type: ${{mongodb}}
+      description: ${{"MongoDb depot for sanity"}}
+      compute: ${{query-default}}
+      spec:
+        subprotocol: ${{"mongodb"}}
+        nodes: ${{["SG-demo-664533.servers.mongodirector.com:27071"]}}
+        params: 
+          tls: ${{true}}
+          tlsAllowInvalidHostnames: ${{true}}
+          directConnection: ${{true}}
+      external: ${{true}}
+      secrets:
+      connectionSecret:
+        - acl: ${{rw}}
+          type: ${{key-value-properties}}
+          data:
+            username: ${{admin}}
+            password: ${{Kl6lyCRLPteqljkdyrf}}
+            keyStorePassword: ${{changeit}}
+            trustStorePassword: ${{changeit}}
+          files:
+            ca_file: ${{/Users/iamgroot/Downloads/ca-chain-cn-qa.crt}}
+            key_store_file: ${{$JAVA_HOME/lib/security/cacerts}}
+            trust_store_file: ${{$JAVA_HOME/lib/security/cacerts}}
+    ```
+
+
+
+    2\. Apply the Depot manifest file by executing the below command.
+
+    &#x20;  &#x20;
+
+    ```bash
+    dataos-ctl apply -f /home/office/depots/mongo_depot.yaml
+    ```
+
+
+
+    &#x20;  &#x20;
+
+    3\. Verify the Depot creation by executing the below command.
+
+    &#x20;  &#x20;
+
+    ```bash
+    dataos-ctl get -t depot -n mongodb03 -w public
+    ```
+
+
+
+    4\. Scan the metadata. By creating and applying the Scanner Workflow by referring to the MongoDB Depot name, you can extract the metadata that can be accessed on the Metis App.
+
+    ```yaml
+    version: v1
+    name: depotscanner
+    type: workflow
+    tags:
+      - postgres
+      - scanner
+    description: The job scans schema tables and register metadata
+    workflow:
+      dag:
+        - name: depotjob
+          description: The job scans schema from postgres depot tables and register metadata to metis
+          spec:
+            stack: scanner:2.0
+            compute: runnable-default
+            stackSpec:
+              depot: dataos://mongodb         # MongoDB depot name
+    ```
+
+
+
+    5\. Apply the Scanner Workflow by executing the below command.
+
+    &#x20;  &#x20;
+
+    ```bash
+    dataos-ctl apply -f /home/office/workflow/udscoremongodb.yaml
+    ```
+
+
+
+
   </Accordion>
 
   <Accordion title="MSSQL" defaultOpen={false}>
