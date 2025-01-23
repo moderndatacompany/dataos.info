@@ -2,31 +2,64 @@
 title: "AWS Redshift"
 ---
 
+## Step 1: Create the Depot
+
+If the Depot is not active, you need to create one using the provided template.
+
+```yaml
+name: ${{redshift-depot-name}}
+version: v2alpha
+type: depot
+tags:
+  - ${{redshift}}
+layer: user
+description: ${{Redshift Sample data}}
+depot:
+  type: REDSHIFT
+  redshift:
+    host: ${{hostname}}
+    subprotocol: ${{subprotocol}}
+    port: ${{5439}}
+    database: ${{sample-database}}
+    bucket: ${{tmdc-dataos}}
+    relativePath: ${{development/redshift/data_02/}}
+  external: ${{true}}
+  secrets:
+    - name: ${{redshift-instance-secret-name}}-r
+      allkeys: true
+
+    - name: ${{redshift-instance-secret-name}}-rw
+      allkeys: true
+```
+
 Before configuring Lens to connect to a **Depot source**, ensure the following:
 
-1. **Active Depot Instance**
+## Step 2: Prepare the Lens model folder
 
-   * Verify that you have an active **AWS Redshift Depot** instance.
+Organize the Lens model folder with the following structure to define tables, views, and governance policies:
 
-   * The depot must be properly configured and accessible within your environment to ensure successful integration.
+```
+model
+├── sqls
+│   └── sample.sql  # SQL script for table dimensions
+├── tables
+│   └── sample_table.yml  # Logical table definition (joins, dimensions, measures, segments)
+├── views
+│   └── sample_view.yml  # Logical views referencing tables
+└── user_groups.yml  # User group policies for governance
+```
 
-2. **Source Type**
+1. **SQL Scripts (`model/sqls`):** Add SQL files defining table structures and transformations.
 
-   * Set the `type` attribute in the `source` section to `depot`.
+2. **Tables (`model/tables`):** Define logical tables in separate YAML files. Include dimensions, measures, segments, and joins.
 
-   * This specifies that the source is a generic depot rather than a cluster (e.g., Minerva or Themis).
+3. **Views (`model/views`):** Define views in YAML files, referencing the logical tables.
 
-3. **Depot Name**
+4. **User Groups (`user_groups.yml`):** Define access control by creating user groups and assigning permissions.
 
-   * Specify the `name` attribute as the exact name of the depot you wish to connect to.
+## Step 3: Deployment manifest file
 
-   * For example, if the depot's name is `redshiftdepot`, the `name` field in the YAML must match this value.
-
-   * This ensures that Lens correctly identifies and communicates with the intended Depot instance.
-
-## Deployment manifest file
-
-The below manifest is intended for source-type depot named `awsredshift`, created on the Redshift source.
+After setting up the Lens model folder, the next step is to configure the deployment manifest. Below is the YAML template for configuring a Lens deployment.
 
 ```yaml
 version: v1alpha
@@ -89,18 +122,84 @@ lens:
       limits:
         cpu: 6000m
         memory: 6048Mi
+  metric:
+    logLevel: info  # Logging level for the metric component
 ```
 
-**Required AWS Redshift Depot Source Attributes**
+Each section of the YAML template defines key aspects of the Lens deployment. Below is a detailed explanation of its components:
 
-**Replace the placeholders with the actual Depot name.**
+* **Defining the Source:**
 
-```yaml
-LENS2_SOURCE_TYPE: depot  
-LENS2_SOURCE_NAME: ${redshiftdepot}
-```
+  * **`type`:**  The `type` attribute in the `source` section must be explicitly set to `depot`.
+
+  * **`name`:** The `name` attribute in the `source` section should specify the name of the AWS Redshift Depot created.
+
+* **Setting Up Compute and Secrets:**
+
+  * Define the compute settings, such as which engine (e.g., `runnable-default`) will process the data.
+
+  * Include any necessary secrets (e.g., credentials for Bitbucket or AWS) for secure access to data and repositories.
+
+* **Defining Repository:**
+
+  * **`url`** The `url` attribute in the repo section specifies the Git repository where the Lens model files are stored. For instance, if your repo name is lensTutorial then the repo `url` will be  [https://bitbucket.org/tmdc/lensTutorial](https://bitbucket.org/tmdc/lensTutorial)
+
+  * **`lensBaseDir`:**  The `lensBaseDir` attribute refers to the directory in the repository containing the Lens model. Example: `sample/lens/source/depot/awsredshift/model`.
+
+  * **`secretId`:**  The `secretId` attribute is used to access private repositories (e.g., Bitbucket, GitHub). It specifies the secret needed to authenticate and access the repository securely.
+
+  * **`syncFlags`**:  Specifies additional flags to control repository synchronization. Example: `--ref=dev` specifies that the Lens model resides in the dev branch.
+
+* **Configure API, Worker, and Metric Settings (Optional):** Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
 
 ## Docker compose manifest file
+
+<Accordion title="Click here to view the complete docker manifest" defaultOpen={false}>
+  ```
+  version: "2.2"
+
+  x-lens2-environment: &lens2-environment
+    # DataOS
+    DATAOS_FQDN: liberal-donkey.dataos.app
+
+    # Overview
+    LENS2_NAME: ${redshiftlens}
+    LENS2_DESCRIPTION: "Ecommerce use case on sales data"
+    LENS2_TAGS: "lens2, ecom, sales and customer insights"
+    LENS2_AUTHORS: "iamgroot"
+    LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
+    # Data Source
+    LENS2_SOURCE_TYPE: ${depot}  
+    LENS2_SOURCE_NAME: ${redshiftdepot}
+    LENS2_SOURCE_CATALOG_NAME: ${redshiftdepot}
+
+    # Log
+    LENS2_LOG_LEVEL: error
+    CACHE_LOG_LEVEL: "trace"
+    # Operation
+    #LENS_DB_QUERY_TIMEOUT: 15m
+    LENS2_DEV_MODE: true
+    LENS2_DEV_MODE_PLAYGROUND: false
+    LENS2_REFRESH_WORKER: true
+    LENS2_SCHEMA_PATH: model
+    LENS2_PG_SQL_PORT: 5432
+    CACHE_DATA_DIR: "/var/work/.store"
+    NODE_ENV: production
+    LENS2_ALLOW_UNGROUPED_WITHOUT_PRIMARY_KEY: "true"
+  services:
+    api:
+      restart: always
+      image: rubiklabs/lens2:0.35.41-02
+      ports:
+        - 4000:4000
+        - 25432:5432
+        - 13306:13306
+      environment:
+        <<: *lens2-environment   
+      volumes:
+        - ./model:/etc/dataos/work/model
+  ```
+</Accordion>
 
 ## Check query statistics for AWSRedshift
 
@@ -111,45 +210,45 @@ LENS2_SOURCE_NAME: ${redshiftdepot}
 a. Login to the AWS Console.<br />
 b. Search for 'Redshift' in the AWS Console search bar.
 
-<div>
-  <img src="/resources/lens/data_sources/awsredshift/Untitled1.png" alt="Untitled" />
-</div>
+<Frame title="AWS Redshift Data Source">
+  <img src="/resources/lens/data_sources/awsredshift/Untitled1.png" />
+</Frame>
 
 ### **2. Select Redshift Cluster**
 
 a. Click on 'Amazon Redshift' from the search results. You will be directed to the Redshift dashboard.<br />
 b. Select the appropriate region and choose the desired cluster name from the list.
 
-<div>
-  <img src="/resources/lens/data_sources/awsredshift/Untitled2.png" alt="Untitled" />
-</div>
+<Frame>
+  <img src="/resources/lens/data_sources/awsredshift/Untitled2.png" />
+</Frame>
 
 ### **3. Access Query Monitoring**
 
 a. Select the cluster you want to monitor.<br />
 b. Navigate to the 'Query monitoring' tab to view query statistics.
 
-<div>
-  <img src="/resources/lens/data_sources/awsredshift/Untitled3.png" alt="Untitled" />
-</div>
+<Frame>
+  <img src="/resources/lens/data_sources/awsredshift/Untitled3.png" />
+</Frame>
 
 ### **4. View running and completed queries**
 
 a. In the 'Query monitoring' tab, you will see a list of running and completed queries.
 
-<div>
-  <img src="/resources/lens/data_sources/awsredshift/Untitled4.png" alt="Untitled" />
-</div>
+<Frame>
+  <img src="/resources/lens/data_sources/awsredshift/Untitled4.png" />
+</Frame>
 
 ### **5. Monitor specific query**
 
 a. Click on the query you want to monitor.
 b. View the query statistics, as shown in the example below.
 
-<div>
-  <img src="/resources/lens/data_sources/awsredshift/Untitled5.png" alt="Untitled" />
-</div>
+<Frame>
+  <img src="/resources/lens/data_sources/awsredshift/Untitled5.png" />
+</Frame>
 
-<div>
-  <img src="/resources/lens/data_sources/awsredshift/Untitled6.png" alt="Untitled" />
-</div>
+<Frame>
+  <img src="/resources/lens/data_sources/awsredshift/Untitled6.png" />
+</Frame>
