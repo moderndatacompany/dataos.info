@@ -2,29 +2,36 @@
 title: "Minerva "
 ---
 
-##
+## Prerequisite
 
-While migrating to Minerva the following aspects need to be considered:
+Ensure you have an active and running Minerva Cluster.
 
-1. **Source Type**
+## Step 1: Prepare the Lens model folder
 
-   * The `type` attribute in the `source` section must be explicitly set to `minerva`.
+Organize the Lens model folder with the following structure to define tables, views, and governance policies:
 
-2. **Cluster Name**
+```
+model
+├── sqls
+│   └── sample.sql  # SQL script for table dimensions
+├── tables
+│   └── sample_table.yml  # Logical table definition (joins, dimensions, measures, segments)
+├── views
+│   └── sample_view.yml  # Logical views referencing tables
+└── user_groups.yml  # User group policies for governance
+```
 
-   * The `name` attribute in the `source` section should specify the name of the Minerva cluster you have created.
+1. **SQL Scripts (`model/sqls`):** Add SQL files defining table structures and transformations.
 
-   * For example, if the cluster created in Minerva is named `miniature`, then the `name` value must also be `miniature`.
+2. **Tables (`model/tables`):** Define logical tables in separate YAML files. Include dimensions, measures, segments, and joins.
 
-   * This ensures that Lens correctly identifies and connects to the intended Minerva cluster.
+3. **Views (`model/views`):** Define views in YAML files, referencing the logical tables.
 
-3. **Catalog Name**
+4. **User Groups (`user_groups.yml`):** Define access control by creating user groups and assigning permissions.
 
-   * The `catalog` attribute must define the specific catalog name within the Minerva cluster that you intend to use.
+## Step 2: Create deployment manifest file
 
-   * For instance, if the catalog is named `icebase`, ensure this is accurately reflected in the `catalog` field.
-
-### **Deployment manifest file**
+After preparing the Lens semantic model create a `lens_deployemnt.yml` parallel to the `model` folder.
 
 ```yaml
 version: v1alpha
@@ -105,128 +112,60 @@ lens:
         memory: 6048Mi
 ```
 
-The above YAML manifest is intended for a cluster named `minervacluster`, created on the Minerva source, with the data catalog named `icebase`. To use this manifest file, copy the file and update the source details accordingly.
+The YAML manifest provided is designed for a cluster named `minervacluster`, created on the `Minerva` source, with a data catalog named `icebase`. To utilize this manifest, duplicate the file and update the source details as needed.
+
+Each section of the YAML template outlines essential elements of the Lens deployment. Below is a detailed breakdown of its components:
+
+* **Defining the Source:**
+
+  * **`type`:**  The `type` attribute in the `source` section must be explicitly set to `minerva`.
+
+  * **`name`:** The `name` attribute in the `source` section should specify the name of the Minerva Cluster. For example if the name of your Minerva Cluster is miniature the Source name would be `miniature`.
+
+  * **`catalog`:** The `catalog` attribute must define the specific catalog name within the Minerva Cluster that you intend to use. For instance, if the catalog is named icebase, ensure this is accurately reflected in the catalog field.
+
+* **Defining Repository:**
+
+  * **`url`** The `url` attribute in the repo section specifies the Git repository where the Lens model files are stored. For instance, if your repo name is lensTutorial then the repo `url` will be  [https://bitbucket.org/tmdc/lensTutorial](https://bitbucket.org/tmdc/lensTutorial)
+
+  * **`lensBaseDir`:**  The `lensBaseDir` attribute refers to the directory in the repository containing the Lens model. Example: `sample/lens/source/depot/awsredshift/model`.
+
+  * **`secretId`:**  The `secretId` attribute is used to access private repositories (e.g., Bitbucket, GitHub). It specifies the secret needed to authenticate and access the repository securely.
+
+  * **`syncFlags`**:  Specifies additional flags to control repository synchronization. Example: `--ref=dev` specifies that the Lens model resides in the dev branch.
+
+* **Configure API, Worker, and Metric Settings (Optional):** Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
 
 <Info>
   Within the Themis and Minerva cluster, all depots (such as Icebase, Redshift, Snowflake, etc.) are integrated. When configuring Lens, you only need to specify one depot in the \`catalog\` field, as Lens can connect to and utilize depots from all sources available in the Themis cluster.
 </Info>
 
-### **Docker compose manifest file**
+## Docker compose manifest file
 
-### **Prerequisites**
-
-* The hostname for the Trino database server.
-
-* The username for the DataOS User.
-
-* The name of the database to use with the Minerva query engine database server.
-
-### **Docker compose configuration**
-
-Add the following environment variables to your Lens (.env) file
-
-<CodeGroup>
-  ```yaml Syntax
-  # Trino configuration
-  LENS2_DB_TYPE=trino
-  LENS2_DB_HOST=tcp.${DATAOS_FQDN}
-  LENS2_DB_USER=${DATAOS_USER_NAME}
-  LENS2_DB_PASS=${DATAOS_WRAP_TOKEN}
-  LENS2_DB_PRESTO_CATALOG=${CATALOG_NAME}
-  LENS2_DB_PORT=${PORT_NUMBER}
+<Accordion title="Click here to view the complete docker compose  manifest and it's procedure" defaultOpen={false}>
   ```
+  Prerequisites
+  The hostname for the Trino database server.
+  The username for the DataOS User.
+  The name of the database to use with the Minerva query engine database server.
+  Docker compose configuration
+  Add the following environment variables to your Lens (.env) file
+  Environment variables attribute
+  Example
+  trino.zip
 
-  ```
-  # Trino configuration
-  LENS2_DB_TYPE=trino
-  LENS2_DB_HOST="tcp.alpha-omega.dataos.app"
-  LENS2_DB_USER="iamgroot"
-  LENS2_DB_PASS="abcdefghijklmnopqrstuvwxyz"
-  LENS2_DB_PRESTO_CATALOG="icebase"
-  LENS2_DB_PORT=7432
-  ```
-
-  ```
-  # Trino configuration
-  LENS2_DB_HOST=tcp.alpha-omega.dataos.app
-  LENS2_DB_PORT=7432
-  LENS2_DB_USER=iamgroot
-  LENS2_DB_PASS="abcdefghijklmnpqrstuvwyzabcdefghijklmnopqrstuvwzyz"
-  LENS2_DB_PRESTO_CATALOG=icebase
-  LENS2_DB_TYPE=trino
-  ```
-</CodeGroup>
-
-<Accordion title="Click here to see complete Docker compose manifest file " defaultOpen={false}>
-  ```yaml
-  LENS2_VERSION=0.35.55-01 
-
-  # Minerva configuration
-  LENS2_DB_HOST=tcp.alpha-omega.dataos.app
-  LENS2_DB_PORT=7432
-  LENS2_DB_USER=iamgroot
-  LENS2_DB_PASS="abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwzyz"
-  LENS2_DB_PRESTO_CATALOG=icebase
-  LENS2_DB_SSL=true
-  LENS2_DB_TYPE=trino
-
-  # Meta information
-  LENS2_NAME=trinolens # fetch from CLI
-  LENS2_DESCRIPTION="Trino lens generated"
-  LENS2_TAGS="lens2, sales, customer insights"
-  LENS2_AUTHORS="iamgroot"
-
-  LENS2_DEV_MODE="true"
-  LENS2_SCHEMA_PATH=model
-
-  LENS2_LOG_LEVEL="error"
-  LENS2_LOADER_LOG_LEVEL="error"
-  CACHE_LOG_LEVEL="error" #
-
-  DATAOS_FQDN=alpha-omega.dataos.app
-  DATAOS_USER_NAME=iamgroot
-  DATAOS_USER_APIKEY=abcdeghijklmopqrstuvwxyz
-
-  LENS2_DEPOT_SERVICE_URL="https://alpha-omega.dataos.app/ds" 
-  LENS2_HEIMDALL_BASE_URL="https://alpa-omega.dataos.app/heimdall" 
-
-  LENS2_SOURCE_TYPE=trino
-  LENS2_SOURCE_NAME=system
-  LENS2_SOURCE_CATALOG_NAME=icebase 
-
-  LENS2_BASE_URL="http://localhost:4000/lens2/api"
-  LENS2_META_PATH="/v2/meta"
-  LENS2_RILL_PATH=boards
-  LENS2_CHECKS_PATH=checks
-  LENS2_BOARD_PATH=boards
   ```
 </Accordion>
 
-### **Environment variables attribute**
-
-| **Environment Variable**  | **Description**                                                                                                                                                               | **Possible Values**                                                                                                                                                                                     | **Example Value**            | **Required** |
-| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | ------------ |
-| `LENS2_DB_TYPE`           | The type of database                                                                                                                                                          | trino                                                                                                                                                                                                   | trino                        | ✅            |
-| `LENS2_DB_HOST`           | The host URL for the database                                                                                                                                                 | A valid database host URL of the form `tcp.${DATAOS-FQDN}` where `${DATAOS-FQDN}` is the placeholder for DataOS’ fully qualified domain name. Replace the placeholder with your respective domain name. | `tcp.alpha-omega.dataos.app` | ✅            |
-| `LENS2_DB_PORT`           | The port for the database connection                                                                                                                                          | A valid port number                                                                                                                                                                                     | `7432`                       | ❌            |
-| `LENS2_DB_USER`           | The DataOS user-id used to connect to the database. It can be retrieved from the second column of the output by running the `dataos-ctl user get` command from the DataOS CLI | A valid DataOS user-id                                                                                                                                                                                  | `iamgroot`                   | ✅            |
-| `LENS2_DB_PASS`           | The DataOS Wrap Token that serves as a password used to connect to the database                                                                                               | A valid Cluster Wrap Token. Learn more about how to create a Cluster Wrap Token [**here.**](https://dataos.info/interfaces/atlas/bi_tools/tableau/#generate-dataos-api-token)                           | `abcdefghijklmnopqrstuvwxyz` | ✅            |
-| `LENS2_DB_PRESTO_CATALOG` | The catalog within Trino/Presto to connect to                                                                                                                                 | A valid catalog name within the Trino/Presto database                                                                                                                                                   | `icebase`                    | ✅            |
-| `LENS2_DB_SSL`            | If `true`, enables SSL encryption for database connections from Lens2.                                                                                                        | `true`, `false`                                                                                                                                                                                         | `true`                       | ❌            |
-
-### **Example**
-
-[trino.zip](/resources/lens/data_sources/trino/trino.zip)
-
-## Check Query Stats for Minerva
+### Check Query Stats for Minerva
 
 To check the query statistics, please follow the steps below:
 
-1. **Access Minerva Queries:** Navigate to the operation section and then to Minerva queries. Set the filters as follows:
+**1. Access Minerva queries:** Navigate to the operation section and then to Minerva queries. Set the filters as follows:
 
-<div>
-  <img src="/resources/lens/data_sources/minerva/Untitled1.png" alt="Untitled" />
-</div>
+<Frame>
+  <img src="/resources/lens/data_sources/minerva/Untitled1.png" />
+</Frame>
 
 * Source: `lens2`
 
@@ -234,8 +173,8 @@ To check the query statistics, please follow the steps below:
 
 * You can also filter by cluster, username, and other criteria as per your choice.
 
-1. **Select the Query ID:** Choose the query ID you are interested in. You will then be able to check the statistics, as shown in the example below:
+**2. Select the query ID:** Choose the query ID you are interested in. You will then be able to check the statistics, as shown in the example below:
 
-<div>
-  <img src="/resources/lens/data_sources/minerva/Untitled1.png" alt="Untitled" />
-</div>
+<Frame>
+  <img src="/resources/lens/data_sources/minerva/Untitled1.png" />
+</Frame>

@@ -1,11 +1,13 @@
 ---
-title: Flash
+title: "Flash"
 ---
 
 This section guides on configuring the Lens using [Flash](/resources/stacks/flash/) [Service](/resources/service/).
 
 <Info>
-  Flash is not a DataOS source but is used for query optimization. It is included in the list of DataOS sources&#x20;
+  Flash is not classified as a DataOS source; instead, it serves query optimization to the Lens. However, it is included in the list of DataOS sources for user convenience and accessibility.
+
+
 </Info>
 
 ### **Prerequisites**
@@ -55,7 +57,7 @@ service:
       - create or replace table m_products as (select * from product_data_master)
 ```
 
-### **How Does This Process Work?**
+### **How does this process work?**
 
 The flow of Flash operates as follows:
 
@@ -71,7 +73,7 @@ For example, in the manifest referenced, the `f_sales` table is first loaded fro
 
 > <b>Note</b> Flash directly uses the deployment.yml manifest file to create a Lens.
 
-## Deployment Manifest File
+## Deployment manifest file
 
 ```yaml
 version: v1alpha
