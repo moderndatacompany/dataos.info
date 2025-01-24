@@ -12,6 +12,8 @@ depot:
     warehouse: ${{warehouse-name}}
     url: ${{snowflake-url}}
     database: ${{database-name}}
+    account: ${{snowflake-account-identifier}}
+  source: ${{snowflake-depot}}  
   external: true
   secrets:
     - name: ${{redshift-instance-secret-name}}-r
