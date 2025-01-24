@@ -8,7 +8,7 @@ To start the integration, go to the 'Access Options' tab and scroll to the 'Exce
     
 ![powerbi_conn_details.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/powerbi_conn_details.png)
     
-### **Step 2: Extract the Files**
+### **Step 2: Extract the files**
     
 After downloading the ZIP file, extract it to a directory on your local machine. Inside the extracted folder, you will find the essential files that help maintain semantic synchronization between the Data Product and Power BI.
     
@@ -24,9 +24,9 @@ Following is a brief description of each:
     - **model.bim:** Power BI uses the `.bim` file to generate queries and manage interactions with the dataset. When you build reports or dashboards in Power BI, it references this semantic model to ensure the correct structure is applied to the data.
 - **public-productaffinity.pbip:** This file is a Power BI project template or configuration file. Power BI uses files like `.pbip` or `.pbix` to encapsulate reports, datasets, and visualizations. The `.pbip` file ties together the semantic model and report definitions from the other folders, acting as the entry point for working on the project in Power BI Desktop or the Power BI service.
 
-### **Step 3: Open the File in Power BI and Connect**
+### **Step 3: Open the file in Power BI and connect**
 
-Open the `public_productaffinity` file in Power BI. A popup will appear prompting you to enter your 'DataOS username' and 'API key'.
+Open the `public_productaffinity.pbip` file in Power BI. A popup will appear prompting you to enter your 'DataOS username' and 'API key'.
 
 ![powerbi_ui.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/powerbi_ui.png)
 
@@ -34,7 +34,7 @@ After entering your credentials, click 'Connect'. A confirmation popup will appe
 
 ![powerbi_pop_up.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/powerbi_pop_up.png)
 
-### **Step 4: Access Data Tables and Start Building Dashboards**
+### **Step 4: Access data tables and start building dashboards**
 
 Once connected, you can see tables and views containing all dimensions and measures from the Data Product. You can now start building your dashboard by selecting the relevant fields for analysis.
 
@@ -86,7 +86,7 @@ Ensure that `.pbip` folders are fully extracted before opening them. Failure to 
 
 ### **Data retrieval and field selection considerations**
 
-- **Row Limit:** The Lens API has a maximum return limit of 50,000 rows per request. To obtain additional data, it is necessary to set an offset. This row limit is in place to manage resources efficiently and ensure optimal performance.
+- **Row limit:** The Lens API has a maximum return limit of 50,000 rows per request. To obtain additional data, it is necessary to set an offset. This row limit is in place to manage resources efficiently and ensure optimal performance.
 
 - **Selection:** It is important to select fields from tables that are directly related or logically joined, as the system does not automatically identify relationships between tables through transitive joins. Selecting fields from unrelated tables may result in incorrect or incomplete results.
 

@@ -29,7 +29,7 @@ lens:
   source:
     type: depot # source type is depot here
     name: bigquerydepot # name of the bigquery depot
-    catalog: bigquerydepot  # catalog name/bigquery depot name
+    
   repo:
     url: https://bitbucket.org/tmdc/sample
     lensBaseDir: sample/lens/source/depot/bigquery/model 
