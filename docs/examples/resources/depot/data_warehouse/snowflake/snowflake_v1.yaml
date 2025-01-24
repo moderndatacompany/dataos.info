@@ -12,6 +12,7 @@ depot:
     warehouse: ${{warehouse-name}}
     url: ${{snowflake-url}}
     database: ${{database-name}}
+    account: ${{snowflake-account-identifier}}
   external: true
   connectionSecret:
     - acl: rw
