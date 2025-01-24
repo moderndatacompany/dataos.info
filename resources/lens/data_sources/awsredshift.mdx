@@ -4,7 +4,7 @@ title: "AWS Redshift"
 
 ## Step 1: Create the Depot
 
-If the Depot is not active, you need to create one using the provided template.
+If the Depot is inactive, you must create one using the provided template.
 
 ```yaml
 name: ${{redshift-depot-name}}
@@ -58,7 +58,6 @@ model
 ## Step 3: Deployment manifest file
 
 Once the Lens with semantic model is prepared, create a `lens_deployment.yml` file parallel to the model folder to configure the deployment using the YAML template below.
-
 
 ```yaml
 version: v1alpha
