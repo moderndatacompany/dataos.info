@@ -1,19 +1,37 @@
 # Minerva
 
-## Connecting to Minerva using Depot/Cluster 
+## Prerequisite
 
-### **Prerequisites**
+Ensure you have an active and running Minerva Cluster.
 
-While migrating to Minerva the following aspects need to be considered:
+## Step 1: Prepare the Lens model folder
 
-- The source name should be Minerva.
-- The name of the cluster created on Minerva source.
-- The name of the Depot.
+Organize the Lens model folder with the following structure to define tables, views, and governance policies:
 
+```
+model
+├── sqls
+│   └── sample.sql  # SQL script for table dimensions
+├── tables
+│   └── sample_table.yml  # Logical table definition (joins, dimensions, measures, segments)
+├── views
+│   └── sample_view.yml  # Logical views referencing tables
+└── user_groups.yml  # User group policies for governance
+```
 
-### **Deployment manifest file**
+1. **SQL Scripts (`model/sqls`):** Add SQL files defining table structures and transformations.
 
-```yaml hl_lines="13-16"
+2. **Tables (`model/tables`):** Define logical tables in separate YAML files. Include dimensions, measures, segments, and joins.
+
+3. **Views (`model/views`):** Define views in YAML files, referencing the logical tables.
+
+4. **User Groups (`user_groups.yml`):** Define access control by creating user groups and assigning permissions.
+
+## Step 2: Create a deployment manifest file
+
+After preparing the Lens semantic model create a `lens_deployemnt.yml` parallel to the `model` folder.
+
+```yaml
 version: v1alpha
 name: "minervalens"
 layer: user
@@ -39,14 +57,7 @@ lens:
 
   api:   # optional
     replicas: 1 # optional
-    logLevel: info  # optional
-    envs:
-      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-      LENS2_DEV_MODE: "true"
-      LENS2_CONCURRENCY: 10
-      LENS2_DB_MAX_POOL: 15
-      LENS2_DB_TIMEOUT: 1500000
-      
+    logLevel: info  # optional 
     resources: # optional
       requests:
         cpu: 100m
@@ -54,13 +65,10 @@ lens:
       limits:
         cpu: 2000m
         memory: 2048Mi
+
   worker: # optional
     replicas: 2 # optional
     logLevel: debug  # optional
-    envs:
-      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-      LENS2_DEV_MODE: "true"
-
 
     resources: # optional
       requests:
@@ -69,11 +77,9 @@ lens:
       limits:
         cpu: 6000m
         memory: 6048Mi
+
   router: # optional
     logLevel: info  # optional
-    envs:
-      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-      LENS2_DEV_MODE: "true"
     resources: # optional
       requests:
         cpu: 100m
@@ -92,6 +98,30 @@ lens:
         memory: 6048Mi
 ```
 
+The YAML manifest provided is designed for a cluster named `minervacluster`, created on the `Minerva` source, with a data catalog named `icebase`. To utilize this manifest, duplicate the file and update the source details as needed.
+
+Each section of the YAML template outlines essential elements of the Lens deployment. Below is a detailed breakdown of its components:
+
+* **Defining the source:**
+
+      * **`type`:**  The `type` attribute in the `source` section must be explicitly set to `minerva`.
+
+      * **`name`:** The `name` attribute in the `source` section should specify the name of the Minerva Cluster. For example, if the name of your Minerva Cluster is miniature the Source name would be `miniature`.
+
+      * **`catalog`:** The `catalog` attribute must define the specific catalog name within the Minerva Cluster that you intend to use. For instance, if the catalog is named icebase, ensure this is accurately reflected in the catalog field.
+
+* **Defining repository:**
+
+      * **`url`** The `url` attribute in the repo section specifies the Git repository where the Lens model files are stored. For instance, if your repo name is lensTutorial then the repo `url` will be  [https://bitbucket.org/tmdc/lensTutorial](https://bitbucket.org/tmdc/lensTutorial)
+
+      * **`lensBaseDir`:**  The `lensBaseDir` attribute refers to the directory in the repository containing the Lens model. Example: `sample/lens/source/depot/awsredshift/model`.
+
+      * **`secretId`:**  The `secretId` attribute is used to access private repositories (e.g., Bitbucket, GitHub). It specifies the secret needed to authenticate and access the repository securely.
+
+      * **`syncFlags`**:  Specifies additional flags to control repository synchronization. Example: `--ref=dev` specifies that the Lens model resides in the dev branch.
+
+* **Configure API, Worker, and Metric Settings (Optional):** Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
+
 The above YAML manifest is intended for a cluster named `minervacluster`, created on the minerva source, with the data catalog named `icebase`. To use this manifest file, copy the file and update the source details accordingly.
 
 <aside class="callout">
@@ -99,7 +129,7 @@ The above YAML manifest is intended for a cluster named `minervacluster`, create
 </aside>
 
 
-### **Docker compose manifest file**
+## Docker compose manifest file
 
 <details>
 
@@ -171,7 +201,7 @@ LENS2_SOURCE_NAME: minervacluster  #cluster name
 LENS2_SOURCE_CATALOG_NAME: icebase   #depot name, specify any catalog
 DATAOS_RUN_AS_APIKEY: *****
 ``` -->
-
+<!-- 
 ## Connecting to Minerva without Depot/Cluster 
 
 <aside class="callout">
@@ -265,7 +295,7 @@ LENS2_BOARD_PATH=boards
 | `LENS2_DB_USER` | The DataOS user-id used to connect to the database. It can be retrieved from the second column of the output by running the `dataos-ctl user get` command from the DataOS CLI | A valid DataOS user-id | `iamgroot` | ✅ |
 | `LENS2_DB_PASS` | The DataOS Wrap Token that serves as a password used to connect to the database | A valid Cluster Wrap Token. Learn more about how to create a Cluster Wrap Token [**here.**](https://dataos.info/interfaces/atlas/bi_tools/tableau/#generate-dataos-api-token) | `abcdefghijklmnopqrstuvwxyz` | ✅ |
 | `LENS2_DB_PRESTO_CATALOG` | The catalog within Trino/Presto to connect to | A valid catalog name within the Trino/Presto database | `icebase` | ✅ |
-| `LENS2_DB_SSL` | If `true`, enables SSL encryption for database connections from Lens2. | `true`, `false` | `true` | ❌ |
+| `LENS2_DB_SSL` | If `true`, enables SSL encryption for database connections from Lens2. | `true`, `false` | `true` | ❌ | -->
 
 ### **Example**
 

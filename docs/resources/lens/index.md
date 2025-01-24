@@ -147,6 +147,8 @@ Lens integrates with a variety of data sources to streamline data analysis and m
 
 - [Flash](/resources/lens/data_sources/flash/)
 
+- [Snowflake](/resources/lens/data_sources/snowflake)
+
 <!-- [Snowflake](/resources/lens/data_sources/snowflake/) -->
 
 ## Optimizing Lens model

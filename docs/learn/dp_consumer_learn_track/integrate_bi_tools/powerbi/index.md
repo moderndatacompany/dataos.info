@@ -40,7 +40,6 @@ Once connected, you can see tables and views containing all dimensions and measu
 
 ![powerbi_dashboard.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/powerbi_dashboard.png)
 
-Happy dashboarding!
 
 <aside class="callout">
 🗣️ Power BI also provides the functionality to interact with the downloaded file in Excel.
