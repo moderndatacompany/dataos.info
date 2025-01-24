@@ -69,3 +69,18 @@ The final step is to deploy the Data Product, making it available for consumptio
 - [#4 Implementing CI/CD integration to automate updates for reliable Data Products](/learn/dp_developer_learn_track/ci_cd/)
 
 </div>
+
+## Checklist for success
+
+To complete the Data Product Developer learning track, ensure you accomplish the following tasks using DataOS components:
+
+1. :white_check_mark: Verify DataOS CLI installation and initialization.  
+2. :white_check_mark: Create Depot manifests using Instance Secrets to store credentials securely.  
+3. :white_check_mark: Explore Data on Workbench and Access Metis for Quality and Lineage to ensure suitability with the use case.  
+4. :white_check_mark: Create pipelines (Workflows) for data ingestion (if the use case requires), ensuring desired schedule and observability.  
+5. :white_check_mark: Define and implement SLOs for accuracy, freshness, completeness, uniqueness, schema, and validity using Soda Workflow using SodaCL.  
+6. :white_check_mark: Monitor Quality Checks in Metis with SLO-based results and trend analysis via detailed metrics and charts.  
+7. :white_check_mark: Write SQL Scripts to extract necessary columns and define logical table manifests along with metrics.  
+9. :white_check_mark: Define segments and manage access controls with user groups.  
+10. :white_check_mark: Build Data APIs to create data applications.  
+11. :white_check_mark: Deploy the Data Product and verify that it is visible and accessible to intended users.  
