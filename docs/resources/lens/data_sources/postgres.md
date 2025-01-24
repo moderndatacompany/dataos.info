@@ -28,7 +28,6 @@ lens:
   source:
     type: depot #minerva/themis/depot
     name: postgresdepot
-    catalog: icebase
   repo:
     url: https://bitbucket.org/tmdc/sample
     lensBaseDir: sample/lens/source/depot/postgres/model 
@@ -39,12 +38,6 @@ lens:
   api:   # optional
     replicas: 1 # optional
     logLevel: info  # optional
-    envs:
-      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-      LENS2_DEV_MODE: "true"
-      LENS2_CONCURRENCY: 10
-      LENS2_DB_MAX_POOL: 15
-      LENS2_DB_TIMEOUT: 1500000
       
     resources: # optional
       requests:
@@ -56,10 +49,6 @@ lens:
   worker: # optional
     replicas: 2 # optional
     logLevel: debug  # optional
-    envs:
-      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-      LENS2_DEV_MODE: "true"
-
 
     resources: # optional
       requests:
@@ -70,9 +59,6 @@ lens:
         memory: 6048Mi
   router: # optional
     logLevel: info  # optional
-    envs:
-      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-      LENS2_DEV_MODE: "true"
     resources: # optional
       requests:
         cpu: 100m
