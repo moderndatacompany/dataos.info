@@ -12,7 +12,7 @@ To start the integration, go to the 'Access Options' tab and scroll to the 'Exce
     
 After downloading the ZIP file, extract it to a directory on your local machine. Inside the extracted folder, you will find the essential files that help maintain semantic synchronization between the Data Product and Power BI.
     
-The folder stores the main components of a Power BI project for syncing the Lens Model (here `product Affinity`), including folders like the`.Report` and `.SemanticModel`. 
+The folder stores the main components of a Power BI project for syncing the Lens Model (here `Product Affinity`), including folders like the`.Report` and `.SemanticModel`. 
     
 ![folder_structure.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/folder_structure.png)
     
