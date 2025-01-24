@@ -708,6 +708,8 @@ You can access these templates by visiting the following tabs:
         🗣️ Please note that the credentials are directly specified in the Depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
         </aside>
 
+        Please make sure your DataOS CLI is updated to the latest version.
+
         === "Inline Credentials"
 
             ```yaml title="snowflake_v2alpha.yaml" 
@@ -740,7 +742,8 @@ You can access these templates by visiting the following tabs:
         - Snowflake Username: Your Snowflake login username.
         - Snowflake User Password: The password associated with your Snowflake user account.
         - Snowflake Database Name: The name of the Snowflake database you want to connect to.
-        - Database Schema: The schema in the Snowflake database where your desired table resides.    
+        - Database Schema: The schema in the Snowflake database where your desired table resides. 
+        - Account Identifier: Account Identifier of your Snowflake account.   
    
 
 === "Lakehouse or <br> Data Lake"
