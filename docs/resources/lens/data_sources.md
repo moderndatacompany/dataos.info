@@ -12,6 +12,8 @@
 
 [Minerva](/resources/lens/data_sources/minerva/)
 
+[Snowflake](/resources/lens/data_sources/snowflake)
+
 [Flash](/resources/lens/data_sources/flash/)
 
 <!-- [Snowflake](/resources/lens/data_sources/snowflake/) -->
