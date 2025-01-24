@@ -4,13 +4,11 @@ sidebarTitle: "Do's and Dont's"
 description: "This documentation outlines essential guidelines while creating a semantic model, highlighting key best practices, such as when to create views and how to avoid common errors. It offers a comprehensive set of do’s and don’ts to help ensure optimal model design and smooth implementation."
 ---
 
+# Do's
 
+## **Data modeling**
 
-## Do's
-
-### **Data modelling**
-
-#### **Calling a Measure to create another Measure in the same Table**
+### **Reference a Measure to create another Measure in the same Table**
 
 When creating a measure that references another measure within the same table, use curly braces `{}`.
 
@@ -32,7 +30,7 @@ When creating a measure that references another measure within the same table, u
   type: number
 ```
 
-#### **Proxy Dimension: Referencing Dimensions from another Table**
+### **Proxy Dimension: Referencing Dimensions from another Table**
 
 To reference a dimension from one  while creating a measure in another, use the curly braces `{}`. Specify the dimension using `{.column}` if it is from another table, or `{column name}` if it is within the same table.
 
@@ -48,7 +46,7 @@ measures:
     type: sum
 ```
 
-#### **Calling a Measure from another Table**
+### **Calling a Measure from another Table**
 
 When referencing a measure from another table, set `sub_query` to `true`.
 
@@ -59,7 +57,7 @@ When referencing a measure from another table, set `sub_query` to `true`.
   type: number
 ```
 
-#### **Transforming Dimension and calling it in a Measure**
+### **Transforming Dimension and calling it in a Measure**
 
 Use curly braces `{}` when calling a transformed dimension within measures.
 
@@ -77,7 +75,7 @@ measures:
       - sql: year({quarter}) = 1
 ```
 
-#### **Working with window function**
+### **Working with windows function**
 
 To correctly aggregate a measure within a window, use the rolling\_window parameter when defining the measure. This ensures that any filters applied to the measure are correctly placed in the WHERE clause, which is essential for accurate results. Without rolling\_window, filters might go into the HAVING clause, leading to incorrect calculations.
 
@@ -102,7 +100,7 @@ To correctly aggregate a measure within a window, use the rolling\_window parame
 
 * Comparative analysis (e.g., previous/next values or differences between rows).
 
-### **Views**
+## **Views**
 
 1. **Purpose:** Create views to provide a limited part of your data model to the consumer layer, such as any BI tool. Views are useful for defining metrics, managing governance and data access, and controlling ambiguous join paths.
 
@@ -152,11 +150,11 @@ views:
           - state
 ```
 
-### **Jinja macros**
+## **Jinja macros**
 
 Lens data models support Jinja macros, allowing you to define reusable snippets of code. This feature helps in creating dynamic data models and SQL properties efficiently.
 
-#### **Dynamic data models**
+### **Dynamic data models**
 
 In the example below, we define a macro called `dimension()` which generates a dimension. This macro is then invoked multiple times to generate various dimensions.
 
@@ -196,7 +194,7 @@ tables:
       {{ dimension('county_name', description='County name of the customer.') }}
 ```
 
-#### **SQL property**
+### **SQL property**
 
 Macros can also be used to generate SQL snippets for use in the `sql` property. For example, to avoid division by zero errors when creating measures, define a macro and use it in multiple measures.
 
@@ -214,25 +212,25 @@ measures:
     type: number
 ```
 
-#### **Dynamic Segments with secure access**
+### **Dynamic Segments with secure access**
 
 You can create dynamic segments with secure access using Jinja macros. This example sets up segments for different categories with user group restrictions.
 
 **Example:**
 
 ```yaml
-{%- set categories = ["Wine", "Beer", "Spirits", "NAB"] -%}
+{%- set personas = ["data_consumer", "data_developer", "data_analyst", "data_scientist"] -%}
 
 segments:
-  {% for name in categories %}
-    - name: {{ "segment_" ~ name }}
+  {% for persona in personas %}
+    - name: {{ "segment_" ~ persona }}
       public: true
-      sql: {{ "{category_name} = '" ~ name ~ "'" }}
+      sql: {{ "{user_role} = '" ~ persona ~ "'" }}
       meta:
         secure:
           user_groups:
             includes:
-              - {{ name }}
+              - {{ persona }}
             excludes:
               - default
   {% endfor %}
@@ -242,65 +240,54 @@ segments:
 
 ```yaml
 user_groups:
-  - name: Wine
+  - name: data_consumer
+    api_scopes:
+      - data
+      - graphql
+    includes:
+      - users:id:iamgroot
+      - users:id:harrypotter
+  - name: data_developer
     api_scopes:
       - meta
       - data
       - graphql
-      # - jobs
-      # - source
+      - jobs
     includes:
-      - users:id:***
-      - users:id:***
-      - users:id:***
-  - name: Beer
+      - users:id:tonystark
+      - users:id:brucebanner
+  - name: data_analyst
     api_scopes:
       - meta
       - data
       - graphql
-      # - jobs
-      # - source
     includes:
-      - users:id:***
-      - users:id:***
-  - name: Spirits
+      - users:id:sherlockholmes
+      - users:id:watson
+  - name: data_scientist
     api_scopes:
       - meta
       - data
       - graphql
-      # - jobs
-      # - source
+      - jobs
+      - source
     includes:
-      - users:id:***
-      - users:id:***
-      - users:id:***
-  - name: NAB
-    api_scopes:
-      - meta
-      - data
-      - graphql
-      # - jobs
-      # - source
-    includes:
-      - users:id:***
-      - users:id:***
+      - users:id:drstrange
+      - users:id:spiderman
   - name: default
     includes: "*"
     api_scopes:
-      - meta
       - data
       - graphql
-      # - jobs
-      # - source
 ```
 
 By leveraging Jinja macros, you can create efficient, reusable, and dynamic configurations in your Lens data models.
 
-## Don’t
+# Don’t
 
-When creating Lens, avoid the following practices to ensure functionality and maintainability:
+When creating semantic model, avoid the following practices to ensure functionality and maintainability:
 
-### **Avoid using curly braces `{}` in descriptions**
+## **Avoid using curly braces `{}` in descriptions**
 
 Since Jinja is supported, using curly braces `{}` in descriptions can cause issues.
 
@@ -314,7 +301,7 @@ dimensions:
     description: It is the primary key of sales
 ```
 
-### **Avoid using single quotes in Measures, Dimensions, and Segments**
+## **Avoid using single quotes in Measures, Dimensions, and Segments**
 
 Using single quotes can throw errors. Instead, use double quotes.
 
@@ -338,95 +325,97 @@ tables:
         type: string
 ```
 
-### **Avoid filtering Measures and Dimensions from the same Table with OR operator**
+## **Avoid filtering Measures and Dimensions from the same Table with the OR operator**
 
 Measures and dimensions from the same table cannot be filtered simultaneously using the 'OR' operator.
 
-\=== "Incorrect Example"
+<Tabs>
+  <Tab title="Incorrect example">
+    ```
+    {
+      "measures": [
+        "sales.total_revenue"
+      ],
+      "dimensions": [
+        "sales.site_number"
+      ],
+      "segments": [],
+      "filters": [
+        {
+          "or": [
+            {
+              "member": "sales.site_number",
+              "operator": "equals",
+              "values": [
+                "1",
+                "21"
+              ]
+            },
+            {
+              "member": "sales.total_revenue",
+              "operator": "gt",
+              "values": [
+                "0"
+              ]
+            }
+          ]
+        }
+      ],
+      "timeDimensions": [],
+      "limit": 10,
+      "offset": 0
+    }
+    ```
+  </Tab>
 
-```json
-{
-  "measures": [
-    "sales.total_revenue"
-  ],
-  "dimensions": [
-    "sales.site_number"
-  ],
-  "segments": [],
-  "filters": [
+  <Tab title="Correct example">
+    Avoid combining dimensions and measures in the same 'OR' condition. Use separate conditions for clarity.
+
+    ```json
     {
       "or": [
+        {
+          "member": "sales.invoice_no",
+          "operator": "equals",
+          "values": [
+            "448",
+            "1265",
+            "45",
+            "517",
+            "2874",
+            "1",
+            "837"
+          ]
+        },
         {
           "member": "sales.site_number",
           "operator": "equals",
           "values": [
             "1",
-            "21"
+            "21",
+            "6",
+            "18"
           ]
         },
         {
-          "member": "sales.total_revenue",
+          "member": "sales.posting_period",
+          "operator": "inDateRange",
+          "values": [
+            "2022-01-01",
+            "2024-06-01"
+          ]
+        },
+        {
+          "member": "sales.revenue",
           "operator": "gt",
           "values": [
-            "0"
+            "30000"
           ]
         }
       ]
     }
-  ],
-  "timeDimensions": [],
-  "limit": 10,
-  "offset": 0
-}
-```
-
-\=== "Correct Example"
-
-Avoid combining dimensions and measures in the same 'OR' condition. Use separate conditions for clarity.
-
-```json
-{
-  "or": [
-    {
-      "member": "sales.invoice_no",
-      "operator": "equals",
-      "values": [
-        "448",
-        "1265",
-        "45",
-        "517",
-        "2874",
-        "1",
-        "837"
-      ]
-    },
-    {
-      "member": "sales.site_number",
-      "operator": "equals",
-      "values": [
-        "1",
-        "21",
-        "6",
-        "18"
-      ]
-    },
-    {
-      "member": "sales.posting_period",
-      "operator": "inDateRange",
-      "values": [
-        "2022-01-01",
-        "2024-06-01"
-      ]
-    },
-    {
-      "member": "sales.revenue",
-      "operator": "gt",
-      "values": [
-        "30000"
-      ]
-    }
-  ]
-}
-```
+    ```
+  </Tab>
+</Tabs>
 
 By adhering to these guidelines, you can avoid common pitfalls and ensure your Lens functions correctly and efficiently.
