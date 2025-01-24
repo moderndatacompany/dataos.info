@@ -110,3 +110,15 @@ Unlock the power of Data Products by connecting them to BI tools. Learn to use t
 
 </div>
 
+## Checklist for success
+
+To successfully complete the Data Product Consumer learning track, ensure you complete the following:
+
+1. :white_check_mark: Discover and access relevant Data Products through the Data Product Hub using search, filters, and categories.
+2. :white_check_mark: Interpret metadata to evaluate usability for business needs.
+3. :white_check_mark: Navigate semantic models to understand relationships between data entities.
+4. :white_check_mark: Use the Studio feature to write queries to analyze and visualize data as tables, pivot tables, and charts.
+5. :white_check_mark: Evaluate data quality for accuracy, consistency, and completeness.
+6. :white_check_mark: Understand governance policies and align data usage with security standards.
+7. :white_check_mark: Access Perspectives to revisit saved analyses.
+8. :white_check_mark: Activate Data Products using BI tools, APIs, or other interfaces.
