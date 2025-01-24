@@ -1,0 +1,28 @@
+---
+title: "Scanner Stack "
+description: "Description of your new file."
+---
+
+The Scanner stack in DataOS is a Python-based framework designed for developers to extract metadata from external source systems (such as RDBMS, Data Warehouses, Messaging services, Dashboards, etc.) and the components/services within the DataOS environment to extract information about Data products and DataOS Resources.
+
+With the DataOS Scanner stack, you can extract both general information about datasets/tables, such as their names, owners, and tags, as well as more detailed metadata like table schemas, column names, and descriptions. Additionally, this stack can help you retrieve metadata related to data quality and profiling, query usage, and user information associated with your data assets.
+
+It can also connect with Dashboard and Messaging services to get the related metadata. For example, in the case of dashboards, it extracts information about the dashboard, dashboard Elements, and associated data sources.
+
+Using the Scanner stack within DataOS, metadata can be extracted from DataOS Products and DataOS Resources. The extracted metadata offers detailed insights into the input, output & SLOs (Service Level Objectives) for every data product, along with all the data access permissions, infrastructure resources used for creating it and more. Users can track the entire life cycle of data product creation. The Scanner stack collects comprehensive metadata across 	 Resources such as Workflows, Services, Clusters, Depots, etc.including their historical runtime and operations data.
+
+## How Does Scanner Stack Work?
+
+In DataOS, metadata extraction is treated as a job, which is accomplished using a DataOS resource called Workflow. This stack provides the ability to write workflows that extract metadata from various sources and store it in a metadata store. The Scanner workflow typically includes a source, transformations, and a sink.
+
+Similar to an ETL (Extract, Transform, Load) job, the Scanner workflow connects to the metadata source, extracts the metadata, and applies transformations to convert it into a standardized format. The transformed metadata is then pushed to a REST API server, which is backed by a centralized metadata store or database such as MySQL or Postgres. This process can be performed in either a batch or scheduled manner, depending on the requirements.
+
+<Info>
+  The default metadata store in DataOS is MetisDB which is a Postgres database.
+</Info>
+
+The stored metadata is used by various DataOS components for discoverability, governance, and observability. External apps running on top of DataOS can also fetch this metadata via Metis server APIs.
+
+<Info>
+  In DataOS, all the metadata entities are defined and consumed in JSON format.
+</Info>
