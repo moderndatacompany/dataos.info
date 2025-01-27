@@ -1,8 +1,7 @@
 ---
 title: "Introduction"
 search: "[object Object]"
-description: "An Instance Secret is a DataOS Resource designed for securely storing sensitive information at the DataOS instance level. This includes usernames, passwords, certificates, tokens, and keys. The primary purpose of an Instance Secret is to address the inherent exposure risk associated with directly embedding such confidential data within application code or manifest files (YAML configuration files).
-Instance secrets establish a critical segregation between sensitive data and Resource definitions. This division minimizes inadvertent exposure during various Resource management phases, including creation, viewing, or editing. By leveraging Instance Secrets, data developers safeguard sensitive information, mitigating security vulnerabilities inherent in their data workflows."
+description: "An Instance Secret is a DataOS Resource designed for securely storing sensitive information at the DataOS instance level. This includes usernames, passwords, certificates, tokens, and keys. The primary purpose of an Instance Secret is to address the inherent exposure risk associated with directly embedding such confidential data within application code or manifest files (YAML configuration files). Instance secrets establish a critical segregation between sensitive data and Resource definitions. This division minimizes inadvertent exposure during various Resource management phases, including creation, viewing, or editing. By leveraging Instance Secrets, data developers safeguard sensitive information, mitigating security vulnerabilities inherent in their data workflows."
 ---
 
 Operators can exercise precise control over who can retrieve credentials from Secrets. If any data developer in your organization needs access to secrets, you can assign them a 'read instance secret' use case using Bifrost.
@@ -362,6 +361,131 @@ This section includes steps for creating the Instance Secret to secure commonly 
       INFO[0004] 🛠 apply...complete
       ```
     </CodeGroup>
+
+    ### Step 3: Validate the Instance Secret
+
+    To validate the proper creation of the Bigquery Instance Secret in DataOS, use the `get` command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret
+      ```
+
+      ```bash Expected output
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+              NAME     | VERSION |      TYPE       | WORKSPACE | STATUS |  RUNTIME  |  OWNER             
+      -----------------|---------|-----------------|-----------|--------|-----------|------------------------------
+           depotsecret | v1      | instance-secret |           | active |           | iamgroot
+      ```
+    </CodeGroup>
+
+    To get the list of all the Instance Secret within the Dataos environment execute the following command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret -a
+      ```
+
+      ```bash Expected output
+      dataos-ctl resource get -t instance-secret -a
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+                   NAME            | VERSION |      TYPE       | WORKSPACE | STATUS | RUNTIME |         OWNER          
+      -----------------------------|---------|-----------------|-----------|--------|---------|------------------------
+        abfssv2alpha-r             | v1      | instance-secret |           | active |         | iamgroot       
+        abfssv2alpha-rw            | v1      | instance-secret |           | active |         | iamgroot       
+        abfsswithoutmetastore-r    | v1      | instance-secret |           | active |         | thisisthor              
+        abfsswithoutmetastore-rw   | v1      | instance-secret |           | active |         | thisisthor              
+
+      ```
+    </CodeGroup>
+
+    Alternatively, you can also check on Metis UI by searching the Instance Secret by name.
+
+    ![](/Screenshotfrom2025-01-2716-25-53.png)
+
+    ### Delete the Instance Secret
+
+    <Warning>
+      Before you can delete an Instance Secret, you need to make sure there are no other Resources dependent on it. For example, if a Depot has a dependency on an Instance Secret, trying to delete that Instance Secret will cause an error. So, you'll need to remove the Depot first, and then you can delete the Instance Secret. This rule applies to not just Depot, but all dependent Resources, such as Workflow, Service, Worker, etc. The following error will be thrown if any Resource has a dependency on Instance Secret as shown below. Example usage:
+
+      ```bash
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:v1:instance-secret... 
+      INFO[0001] 🗑 deleting sampleinstsecret:v1:instance-secret...error 
+      WARN[0001] 🗑 delete...error                             
+      ERRO[0001] Invalid Parameter - failure deleting instance resource : cannot delete resource, it is a dependency of 'depot:v2alpha:sampleinstdepot'
+      ```
+    </Warning>
+
+    [](https://dataos.info/resources/instance_secret/first_steps/#__codelineno-15-1)
+
+    To delete an  Instance Secret, use one of the following methods:
+
+    **Method 1:**  Specify the Resource type and Instance Secret name in the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -t instance-secret -n sampleinstsecret
+      Expected output:
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 2:**  Copy the Instance Secret name, version, and Resource-type from the output of the [`get`](https://dataos.info/interfaces/cli/command_reference/#get) command separated by '|' enclosed within quotes and use it as a string in the delete command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -i sampleinstsecret:v1:instance-secret
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 3:** Specify the path of the manifest file and use the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage
+      dataos-ctl delete -f /home/desktop/connect-city/instance_secret.yaml
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
   </Accordion>
 
   <Accordion title="Eventhub" defaultOpen={false}>
@@ -456,6 +580,131 @@ This section includes steps for creating the Instance Secret to secure commonly 
       INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
       INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
       INFO[0004] 🛠 apply...complete
+      ```
+    </CodeGroup>
+
+    ### Step 3: Validate the Instance Secret
+
+    To validate the proper creation of the Bigquery Instance Secret in DataOS, use the `get` command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret
+      ```
+
+      ```bash Expected output
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+              NAME     | VERSION |      TYPE       | WORKSPACE | STATUS |  RUNTIME  |  OWNER             
+      -----------------|---------|-----------------|-----------|--------|-----------|------------------------------
+           depotsecret | v1      | instance-secret |           | active |           | iamgroot
+      ```
+    </CodeGroup>
+
+    To get the list of all the Instance Secret within the Dataos environment execute the following command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret -a
+      ```
+
+      ```bash Expected output
+      dataos-ctl resource get -t instance-secret -a
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+                   NAME            | VERSION |      TYPE       | WORKSPACE | STATUS | RUNTIME |         OWNER          
+      -----------------------------|---------|-----------------|-----------|--------|---------|------------------------
+        abfssv2alpha-r             | v1      | instance-secret |           | active |         | iamgroot       
+        abfssv2alpha-rw            | v1      | instance-secret |           | active |         | iamgroot       
+        abfsswithoutmetastore-r    | v1      | instance-secret |           | active |         | thisisthor              
+        abfsswithoutmetastore-rw   | v1      | instance-secret |           | active |         | thisisthor              
+
+      ```
+    </CodeGroup>
+
+    Alternatively, you can also check on Metis UI by searching the Instance Secret by name.
+
+    ![](/Screenshotfrom2025-01-2716-25-53.png)
+
+    ### Delete the Instance Secret
+
+    <Warning>
+      Before you can delete an Instance Secret, you need to make sure there are no other Resources dependent on it. For example, if a Depot has a dependency on an Instance Secret, trying to delete that Instance Secret will cause an error. So, you'll need to remove the Depot first, and then you can delete the Instance Secret. This rule applies to not just Depot, but all dependent Resources, such as Workflow, Service, Worker, etc. The following error will be thrown if any Resource has a dependency on Instance Secret as shown below. Example usage:
+
+      ```bash
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:v1:instance-secret... 
+      INFO[0001] 🗑 deleting sampleinstsecret:v1:instance-secret...error 
+      WARN[0001] 🗑 delete...error                             
+      ERRO[0001] Invalid Parameter - failure deleting instance resource : cannot delete resource, it is a dependency of 'depot:v2alpha:sampleinstdepot'
+      ```
+    </Warning>
+
+    [](https://dataos.info/resources/instance_secret/first_steps/#__codelineno-15-1)
+
+    To delete an  Instance Secret, use one of the following methods:
+
+    **Method 1:**  Specify the Resource type and Instance Secret name in the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -t instance-secret -n sampleinstsecret
+      Expected output:
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 2:**  Copy the Instance Secret name, version, and Resource-type from the output of the [`get`](https://dataos.info/interfaces/cli/command_reference/#get) command separated by '|' enclosed within quotes and use it as a string in the delete command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -i sampleinstsecret:v1:instance-secret
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 3:** Specify the path of the manifest file and use the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage
+      dataos-ctl delete -f /home/desktop/connect-city/instance_secret.yaml
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
       ```
     </CodeGroup>
   </Accordion>
@@ -557,6 +806,131 @@ This section includes steps for creating the Instance Secret to secure commonly 
       INFO[0004] 🛠 apply...complete
       ```
     </CodeGroup>
+
+    ### Step 3: Validate the Instance Secret
+
+    To validate the proper creation of the Instance Secret in DataOS, use the `get` command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret
+      ```
+
+      ```bash Expected output
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+              NAME     | VERSION |      TYPE       | WORKSPACE | STATUS |  RUNTIME  |  OWNER             
+      -----------------|---------|-----------------|-----------|--------|-----------|------------------------------
+           depotsecret | v1      | instance-secret |           | active |           | iamgroot
+      ```
+    </CodeGroup>
+
+    To get the list of all the Instance Secret within the Dataos environment execute the following command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret -a
+      ```
+
+      ```bash Expected output
+      dataos-ctl resource get -t instance-secret -a
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+                   NAME            | VERSION |      TYPE       | WORKSPACE | STATUS | RUNTIME |         OWNER          
+      -----------------------------|---------|-----------------|-----------|--------|---------|------------------------
+        abfssv2alpha-r             | v1      | instance-secret |           | active |         | iamgroot       
+        abfssv2alpha-rw            | v1      | instance-secret |           | active |         | iamgroot       
+        abfsswithoutmetastore-r    | v1      | instance-secret |           | active |         | thisisthor              
+        abfsswithoutmetastore-rw   | v1      | instance-secret |           | active |         | thisisthor              
+
+      ```
+    </CodeGroup>
+
+    Alternatively, you can also check on Metis UI by searching the Instance Secret by name.
+
+    ![](/Screenshotfrom2025-01-2716-25-53.png)
+
+    ### Delete the Instance Secret
+
+    <Warning>
+      Before you can delete an Instance Secret, you need to make sure there are no other Resources dependent on it. For example, if a Depot has a dependency on an Instance Secret, trying to delete that Instance Secret will cause an error. So, you'll need to remove the Depot first, and then you can delete the Instance Secret. This rule applies to not just Depot, but all dependent Resources, such as Workflow, Service, Worker, etc. The following error will be thrown if any Resource has a dependency on Instance Secret as shown below. Example usage:
+
+      ```bash
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:v1:instance-secret... 
+      INFO[0001] 🗑 deleting sampleinstsecret:v1:instance-secret...error 
+      WARN[0001] 🗑 delete...error                             
+      ERRO[0001] Invalid Parameter - failure deleting instance resource : cannot delete resource, it is a dependency of 'depot:v2alpha:sampleinstdepot'
+      ```
+    </Warning>
+
+    [](https://dataos.info/resources/instance_secret/first_steps/#__codelineno-15-1)
+
+    To delete an Instance Secret, use one of the following methods:
+
+    **Method 1:**  Specify the Resource type and Instance Secret name in the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -t instance-secret -n sampleinstsecret
+      Expected output:
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 2:**  Copy the Instance Secret name, version, and Resource-type from the output of the [`get`](https://dataos.info/interfaces/cli/command_reference/#get) command separated by '|' enclosed within quotes and use it as a string in the delete command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -i sampleinstsecret:v1:instance-secret
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 3:** Specify the path of the manifest file and use the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage
+      dataos-ctl delete -f /home/desktop/connect-city/instance_secret.yaml
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
   </Accordion>
 
   <Accordion title="JDBC" defaultOpen={false}>
@@ -651,6 +1025,131 @@ This section includes steps for creating the Instance Secret to secure commonly 
       INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
       INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
       INFO[0004] 🛠 apply...complete
+      ```
+    </CodeGroup>
+
+    ### Step 3: Validate the Instance Secret
+
+    To validate the proper creation of the Instance Secret in DataOS, use the `get` command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret
+      ```
+
+      ```bash Expected output
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+              NAME     | VERSION |      TYPE       | WORKSPACE | STATUS |  RUNTIME  |  OWNER             
+      -----------------|---------|-----------------|-----------|--------|-----------|------------------------------
+           depotsecret | v1      | instance-secret |           | active |           | iamgroot
+      ```
+    </CodeGroup>
+
+    To get the list of all the Instance Secret within the Dataos environment execute the following command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret -a
+      ```
+
+      ```bash Expected output
+      dataos-ctl resource get -t instance-secret -a
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+                   NAME            | VERSION |      TYPE       | WORKSPACE | STATUS | RUNTIME |         OWNER          
+      -----------------------------|---------|-----------------|-----------|--------|---------|------------------------
+        abfssv2alpha-r             | v1      | instance-secret |           | active |         | iamgroot       
+        abfssv2alpha-rw            | v1      | instance-secret |           | active |         | iamgroot       
+        abfsswithoutmetastore-r    | v1      | instance-secret |           | active |         | thisisthor              
+        abfsswithoutmetastore-rw   | v1      | instance-secret |           | active |         | thisisthor              
+
+      ```
+    </CodeGroup>
+
+    Alternatively, you can also check on Metis UI by searching the Instance Secret by name.
+
+    ![](/Screenshotfrom2025-01-2716-25-53.png)
+
+    ### Delete the Instance Secret
+
+    <Warning>
+      Before you can delete an Instance Secret, you need to make sure there are no other Resources dependent on it. For example, if a Depot has a dependency on an Instance Secret, trying to delete that Instance Secret will cause an error. So, you'll need to remove the Depot first, and then you can delete the Instance Secret. This rule applies to not just Depot, but all dependent Resources, such as Workflow, Service, Worker, etc. The following error will be thrown if any Resource has a dependency on Instance Secret as shown below. Example usage:
+
+      ```bash
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:v1:instance-secret... 
+      INFO[0001] 🗑 deleting sampleinstsecret:v1:instance-secret...error 
+      WARN[0001] 🗑 delete...error                             
+      ERRO[0001] Invalid Parameter - failure deleting instance resource : cannot delete resource, it is a dependency of 'depot:v2alpha:sampleinstdepot'
+      ```
+    </Warning>
+
+    [](https://dataos.info/resources/instance_secret/first_steps/#__codelineno-15-1)
+
+    To delete an Instance Secret, use one of the following methods:
+
+    **Method 1:**  Specify the Resource type and Instance Secret name in the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -t instance-secret -n sampleinstsecret
+      Expected output:
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 2:**  Copy the Instance Secret name, version, and Resource-type from the output of the [`get`](https://dataos.info/interfaces/cli/command_reference/#get) command separated by '|' enclosed within quotes and use it as a string in the delete command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -i sampleinstsecret:v1:instance-secret
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 3:** Specify the path of the manifest file and use the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage
+      dataos-ctl delete -f /home/desktop/connect-city/instance_secret.yaml
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
       ```
     </CodeGroup>
   </Accordion>
@@ -748,6 +1247,131 @@ This section includes steps for creating the Instance Secret to secure commonly 
       INFO[0004] 🛠 apply...complete
       ```
     </CodeGroup>
+
+    ### Step 3: Validate the Instance Secret
+
+    To validate the proper creation of the Instance Secret in DataOS, use the `get` command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret
+      ```
+
+      ```bash Expected output
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+              NAME     | VERSION |      TYPE       | WORKSPACE | STATUS |  RUNTIME  |  OWNER             
+      -----------------|---------|-----------------|-----------|--------|-----------|------------------------------
+           depotsecret | v1      | instance-secret |           | active |           | iamgroot
+      ```
+    </CodeGroup>
+
+    To get the list of all the Instance Secret within the Dataos environment execute the following command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret -a
+      ```
+
+      ```bash Expected output
+      dataos-ctl resource get -t instance-secret -a
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+                   NAME            | VERSION |      TYPE       | WORKSPACE | STATUS | RUNTIME |         OWNER          
+      -----------------------------|---------|-----------------|-----------|--------|---------|------------------------
+        abfssv2alpha-r             | v1      | instance-secret |           | active |         | iamgroot       
+        abfssv2alpha-rw            | v1      | instance-secret |           | active |         | iamgroot       
+        abfsswithoutmetastore-r    | v1      | instance-secret |           | active |         | thisisthor              
+        abfsswithoutmetastore-rw   | v1      | instance-secret |           | active |         | thisisthor              
+
+      ```
+    </CodeGroup>
+
+    Alternatively, you can also check on Metis UI by searching the Instance Secret by name.
+
+    ![](/Screenshotfrom2025-01-2716-25-53.png)
+
+    ### Delete the Instance Secret
+
+    <Warning>
+      Before you can delete an Instance Secret, you need to make sure there are no other Resources dependent on it. For example, if a Depot has a dependency on an Instance Secret, trying to delete that Instance Secret will cause an error. So, you'll need to remove the Depot first, and then you can delete the Instance Secret. This rule applies to not just Depot, but all dependent Resources, such as Workflow, Service, Worker, etc. The following error will be thrown if any Resource has a dependency on Instance Secret as shown below. Example usage:
+
+      ```bash
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:v1:instance-secret... 
+      INFO[0001] 🗑 deleting sampleinstsecret:v1:instance-secret...error 
+      WARN[0001] 🗑 delete...error                             
+      ERRO[0001] Invalid Parameter - failure deleting instance resource : cannot delete resource, it is a dependency of 'depot:v2alpha:sampleinstdepot'
+      ```
+    </Warning>
+
+    [](https://dataos.info/resources/instance_secret/first_steps/#__codelineno-15-1)
+
+    To delete an Instance Secret, use one of the following methods:
+
+    **Method 1:**  Specify the Resource type and Instance Secret name in the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -t instance-secret -n sampleinstsecret
+      Expected output:
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 2:**  Copy the Instance Secret name, version, and Resource-type from the output of the [`get`](https://dataos.info/interfaces/cli/command_reference/#get) command separated by '|' enclosed within quotes and use it as a string in the delete command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -i sampleinstsecret:v1:instance-secret
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 3:** Specify the path of the manifest file and use the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage
+      dataos-ctl delete -f /home/desktop/connect-city/instance_secret.yaml
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
   </Accordion>
 
   <Accordion title="MSSQL" defaultOpen={false}>
@@ -837,6 +1461,131 @@ This section includes steps for creating the Instance Secret to secure commonly 
       INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
       INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
       INFO[0004] 🛠 apply...complete
+      ```
+    </CodeGroup>
+
+    ### Step 3: Validate the Instance Secret
+
+    To validate the proper creation of the Instance Secret in DataOS, use the `get` command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret
+      ```
+
+      ```bash Expected output
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+              NAME     | VERSION |      TYPE       | WORKSPACE | STATUS |  RUNTIME  |  OWNER             
+      -----------------|---------|-----------------|-----------|--------|-----------|------------------------------
+           depotsecret | v1      | instance-secret |           | active |           | iamgroot
+      ```
+    </CodeGroup>
+
+    To get the list of all the Instance Secret within the Dataos environment execute the following command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret -a
+      ```
+
+      ```bash Expected output
+      dataos-ctl resource get -t instance-secret -a
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+                   NAME            | VERSION |      TYPE       | WORKSPACE | STATUS | RUNTIME |         OWNER          
+      -----------------------------|---------|-----------------|-----------|--------|---------|------------------------
+        abfssv2alpha-r             | v1      | instance-secret |           | active |         | iamgroot       
+        abfssv2alpha-rw            | v1      | instance-secret |           | active |         | iamgroot       
+        abfsswithoutmetastore-r    | v1      | instance-secret |           | active |         | thisisthor              
+        abfsswithoutmetastore-rw   | v1      | instance-secret |           | active |         | thisisthor              
+
+      ```
+    </CodeGroup>
+
+    Alternatively, you can also check on Metis UI by searching the Instance Secret by name.
+
+    ![](/Screenshotfrom2025-01-2716-25-53.png)
+
+    ### Delete the Instance Secret
+
+    <Warning>
+      Before you can delete an Instance Secret, you need to make sure there are no other Resources dependent on it. For example, if a Depot has a dependency on an Instance Secret, trying to delete that Instance Secret will cause an error. So, you'll need to remove the Depot first, and then you can delete the Instance Secret. This rule applies to not just Depot, but all dependent Resources, such as Workflow, Service, Worker, etc. The following error will be thrown if any Resource has a dependency on Instance Secret as shown below. Example usage:
+
+      ```bash
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:v1:instance-secret... 
+      INFO[0001] 🗑 deleting sampleinstsecret:v1:instance-secret...error 
+      WARN[0001] 🗑 delete...error                             
+      ERRO[0001] Invalid Parameter - failure deleting instance resource : cannot delete resource, it is a dependency of 'depot:v2alpha:sampleinstdepot'
+      ```
+    </Warning>
+
+    [](https://dataos.info/resources/instance_secret/first_steps/#__codelineno-15-1)
+
+    To delete an Instance Secret, use one of the following methods:
+
+    **Method 1:**  Specify the Resource type and Instance Secret name in the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -t instance-secret -n sampleinstsecret
+      Expected output:
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 2:**  Copy the Instance Secret name, version, and Resource-type from the output of the [`get`](https://dataos.info/interfaces/cli/command_reference/#get) command separated by '|' enclosed within quotes and use it as a string in the delete command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -i sampleinstsecret:v1:instance-secret
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 3:** Specify the path of the manifest file and use the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage
+      dataos-ctl delete -f /home/desktop/connect-city/instance_secret.yaml
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
       ```
     </CodeGroup>
   </Accordion>
@@ -934,6 +1683,131 @@ This section includes steps for creating the Instance Secret to secure commonly 
       INFO[0004] 🛠 apply...complete
       ```
     </CodeGroup>
+
+    ### Step 3: Validate the Instance Secret
+
+    To validate the proper creation of the Instance Secret in DataOS, use the `get` command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret
+      ```
+
+      ```bash Expected output
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+              NAME     | VERSION |      TYPE       | WORKSPACE | STATUS |  RUNTIME  |  OWNER             
+      -----------------|---------|-----------------|-----------|--------|-----------|------------------------------
+           depotsecret | v1      | instance-secret |           | active |           | iamgroot
+      ```
+    </CodeGroup>
+
+    To get the list of all the Instance Secret within the Dataos environment execute the following command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret -a
+      ```
+
+      ```bash Expected output
+      dataos-ctl resource get -t instance-secret -a
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+                   NAME            | VERSION |      TYPE       | WORKSPACE | STATUS | RUNTIME |         OWNER          
+      -----------------------------|---------|-----------------|-----------|--------|---------|------------------------
+        abfssv2alpha-r             | v1      | instance-secret |           | active |         | iamgroot       
+        abfssv2alpha-rw            | v1      | instance-secret |           | active |         | iamgroot       
+        abfsswithoutmetastore-r    | v1      | instance-secret |           | active |         | thisisthor              
+        abfsswithoutmetastore-rw   | v1      | instance-secret |           | active |         | thisisthor              
+
+      ```
+    </CodeGroup>
+
+    Alternatively, you can also check on Metis UI by searching the Instance Secret by name.
+
+    ![](/Screenshotfrom2025-01-2716-25-53.png)
+
+    ### Delete the Instance Secret
+
+    <Warning>
+      Before you can delete an Instance Secret, you need to make sure there are no other Resources dependent on it. For example, if a Depot has a dependency on an Instance Secret, trying to delete that Instance Secret will cause an error. So, you'll need to remove the Depot first, and then you can delete the Instance Secret. This rule applies to not just Depot, but all dependent Resources, such as Workflow, Service, Worker, etc. The following error will be thrown if any Resource has a dependency on Instance Secret as shown below. Example usage:
+
+      ```bash
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:v1:instance-secret... 
+      INFO[0001] 🗑 deleting sampleinstsecret:v1:instance-secret...error 
+      WARN[0001] 🗑 delete...error                             
+      ERRO[0001] Invalid Parameter - failure deleting instance resource : cannot delete resource, it is a dependency of 'depot:v2alpha:sampleinstdepot'
+      ```
+    </Warning>
+
+    [](https://dataos.info/resources/instance_secret/first_steps/#__codelineno-15-1)
+
+    To delete an Instance Secret, use one of the following methods:
+
+    **Method 1:**  Specify the Resource type and Instance Secret name in the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -t instance-secret -n sampleinstsecret
+      Expected output:
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 2:**  Copy the Instance Secret name, version, and Resource-type from the output of the [`get`](https://dataos.info/interfaces/cli/command_reference/#get) command separated by '|' enclosed within quotes and use it as a string in the delete command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -i sampleinstsecret:v1:instance-secret
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 3:** Specify the path of the manifest file and use the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage
+      dataos-ctl delete -f /home/desktop/connect-city/instance_secret.yaml
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
   </Accordion>
 
   <Accordion title="Oracle" defaultOpen={false}>
@@ -1027,6 +1901,131 @@ This section includes steps for creating the Instance Secret to secure commonly 
       INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
       INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
       INFO[0004] 🛠 apply...complete
+      ```
+    </CodeGroup>
+
+    ### Step 3: Validate the Instance Secret
+
+    To validate the proper creation of the Instance Secret in DataOS, use the `get` command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret
+      ```
+
+      ```bash Expected output
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+              NAME     | VERSION |      TYPE       | WORKSPACE | STATUS |  RUNTIME  |  OWNER             
+      -----------------|---------|-----------------|-----------|--------|-----------|------------------------------
+           depotsecret | v1      | instance-secret |           | active |           | iamgroot
+      ```
+    </CodeGroup>
+
+    To get the list of all the Instance Secret within the Dataos environment execute the following command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret -a
+      ```
+
+      ```bash Expected output
+      dataos-ctl resource get -t instance-secret -a
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+                   NAME            | VERSION |      TYPE       | WORKSPACE | STATUS | RUNTIME |         OWNER          
+      -----------------------------|---------|-----------------|-----------|--------|---------|------------------------
+        abfssv2alpha-r             | v1      | instance-secret |           | active |         | iamgroot       
+        abfssv2alpha-rw            | v1      | instance-secret |           | active |         | iamgroot       
+        abfsswithoutmetastore-r    | v1      | instance-secret |           | active |         | thisisthor              
+        abfsswithoutmetastore-rw   | v1      | instance-secret |           | active |         | thisisthor              
+
+      ```
+    </CodeGroup>
+
+    Alternatively, you can also check on Metis UI by searching the Instance Secret by name.
+
+    ![](/Screenshotfrom2025-01-2716-25-53.png)
+
+    ### Delete the Instance Secret
+
+    <Warning>
+      Before you can delete an Instance Secret, you need to make sure there are no other Resources dependent on it. For example, if a Depot has a dependency on an Instance Secret, trying to delete that Instance Secret will cause an error. So, you'll need to remove the Depot first, and then you can delete the Instance Secret. This rule applies to not just Depot, but all dependent Resources, such as Workflow, Service, Worker, etc. The following error will be thrown if any Resource has a dependency on Instance Secret as shown below. Example usage:
+
+      ```bash
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:v1:instance-secret... 
+      INFO[0001] 🗑 deleting sampleinstsecret:v1:instance-secret...error 
+      WARN[0001] 🗑 delete...error                             
+      ERRO[0001] Invalid Parameter - failure deleting instance resource : cannot delete resource, it is a dependency of 'depot:v2alpha:sampleinstdepot'
+      ```
+    </Warning>
+
+    [](https://dataos.info/resources/instance_secret/first_steps/#__codelineno-15-1)
+
+    To delete an Instance Secret, use one of the following methods:
+
+    **Method 1:**  Specify the Resource type and Instance Secret name in the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -t instance-secret -n sampleinstsecret
+      Expected output:
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 2:**  Copy the Instance Secret name, version, and Resource-type from the output of the [`get`](https://dataos.info/interfaces/cli/command_reference/#get) command separated by '|' enclosed within quotes and use it as a string in the delete command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -i sampleinstsecret:v1:instance-secret
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 3:** Specify the path of the manifest file and use the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage
+      dataos-ctl delete -f /home/desktop/connect-city/instance_secret.yaml
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
       ```
     </CodeGroup>
   </Accordion>
@@ -1123,6 +2122,131 @@ This section includes steps for creating the Instance Secret to secure commonly 
       INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
       INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
       INFO[0004] 🛠 apply...complete
+      ```
+    </CodeGroup>
+
+    ### Step 3: Validate the Instance Secret
+
+    To validate the proper creation of the Instance Secret in DataOS, use the `get` command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret
+      ```
+
+      ```bash Expected output
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+              NAME     | VERSION |      TYPE       | WORKSPACE | STATUS |  RUNTIME  |  OWNER             
+      -----------------|---------|-----------------|-----------|--------|-----------|------------------------------
+           depotsecret | v1      | instance-secret |           | active |           | iamgroot
+      ```
+    </CodeGroup>
+
+    To get the list of all the Instance Secret within the Dataos environment execute the following command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret -a
+      ```
+
+      ```bash Expected output
+      dataos-ctl resource get -t instance-secret -a
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+                   NAME            | VERSION |      TYPE       | WORKSPACE | STATUS | RUNTIME |         OWNER          
+      -----------------------------|---------|-----------------|-----------|--------|---------|------------------------
+        abfssv2alpha-r             | v1      | instance-secret |           | active |         | iamgroot       
+        abfssv2alpha-rw            | v1      | instance-secret |           | active |         | iamgroot       
+        abfsswithoutmetastore-r    | v1      | instance-secret |           | active |         | thisisthor              
+        abfsswithoutmetastore-rw   | v1      | instance-secret |           | active |         | thisisthor              
+
+      ```
+    </CodeGroup>
+
+    Alternatively, you can also check on Metis UI by searching the Instance Secret by name.
+
+    ![](/Screenshotfrom2025-01-2716-25-53.png)
+
+    ### Delete the Instance Secret
+
+    <Warning>
+      Before you can delete an Instance Secret, you need to make sure there are no other Resources dependent on it. For example, if a Depot has a dependency on an Instance Secret, trying to delete that Instance Secret will cause an error. So, you'll need to remove the Depot first, and then you can delete the Instance Secret. This rule applies to not just Depot, but all dependent Resources, such as Workflow, Service, Worker, etc. The following error will be thrown if any Resource has a dependency on Instance Secret as shown below. Example usage:
+
+      ```bash
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:v1:instance-secret... 
+      INFO[0001] 🗑 deleting sampleinstsecret:v1:instance-secret...error 
+      WARN[0001] 🗑 delete...error                             
+      ERRO[0001] Invalid Parameter - failure deleting instance resource : cannot delete resource, it is a dependency of 'depot:v2alpha:sampleinstdepot'
+      ```
+    </Warning>
+
+    [](https://dataos.info/resources/instance_secret/first_steps/#__codelineno-15-1)
+
+    To delete an Instance Secret, use one of the following methods:
+
+    **Method 1:**  Specify the Resource type and Instance Secret name in the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -t instance-secret -n sampleinstsecret
+      Expected output:
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 2:**  Copy the Instance Secret name, version, and Resource-type from the output of the [`get`](https://dataos.info/interfaces/cli/command_reference/#get) command separated by '|' enclosed within quotes and use it as a string in the delete command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -i sampleinstsecret:v1:instance-secret
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 3:** Specify the path of the manifest file and use the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage
+      dataos-ctl delete -f /home/desktop/connect-city/instance_secret.yaml
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
       ```
     </CodeGroup>
   </Accordion>
@@ -1222,6 +2346,131 @@ This section includes steps for creating the Instance Secret to secure commonly 
       INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
       INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
       INFO[0004] 🛠 apply...complete
+      ```
+    </CodeGroup>
+
+    ### Step 3: Validate the Instance Secret
+
+    To validate the proper creation of the Instance Secret in DataOS, use the `get` command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret
+      ```
+
+      ```bash Expected output
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+              NAME     | VERSION |      TYPE       | WORKSPACE | STATUS |  RUNTIME  |  OWNER             
+      -----------------|---------|-----------------|-----------|--------|-----------|------------------------------
+           depotsecret | v1      | instance-secret |           | active |           | iamgroot
+      ```
+    </CodeGroup>
+
+    To get the list of all the Instance Secret within the Dataos environment execute the following command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret -a
+      ```
+
+      ```bash Expected output
+      dataos-ctl resource get -t instance-secret -a
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+                   NAME            | VERSION |      TYPE       | WORKSPACE | STATUS | RUNTIME |         OWNER          
+      -----------------------------|---------|-----------------|-----------|--------|---------|------------------------
+        abfssv2alpha-r             | v1      | instance-secret |           | active |         | iamgroot       
+        abfssv2alpha-rw            | v1      | instance-secret |           | active |         | iamgroot       
+        abfsswithoutmetastore-r    | v1      | instance-secret |           | active |         | thisisthor              
+        abfsswithoutmetastore-rw   | v1      | instance-secret |           | active |         | thisisthor              
+
+      ```
+    </CodeGroup>
+
+    Alternatively, you can also check on Metis UI by searching the Instance Secret by name.
+
+    ![](/Screenshotfrom2025-01-2716-25-53.png)
+
+    ### Delete the Instance Secret
+
+    <Warning>
+      Before you can delete an Instance Secret, you need to make sure there are no other Resources dependent on it. For example, if a Depot has a dependency on an Instance Secret, trying to delete that Instance Secret will cause an error. So, you'll need to remove the Depot first, and then you can delete the Instance Secret. This rule applies to not just Depot, but all dependent Resources, such as Workflow, Service, Worker, etc. The following error will be thrown if any Resource has a dependency on Instance Secret as shown below. Example usage:
+
+      ```bash
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:v1:instance-secret... 
+      INFO[0001] 🗑 deleting sampleinstsecret:v1:instance-secret...error 
+      WARN[0001] 🗑 delete...error                             
+      ERRO[0001] Invalid Parameter - failure deleting instance resource : cannot delete resource, it is a dependency of 'depot:v2alpha:sampleinstdepot'
+      ```
+    </Warning>
+
+    [](https://dataos.info/resources/instance_secret/first_steps/#__codelineno-15-1)
+
+    To delete an Instance Secret, use one of the following methods:
+
+    **Method 1:**  Specify the Resource type and Instance Secret name in the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -t instance-secret -n sampleinstsecret
+      Expected output:
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 2:**  Copy the Instance Secret name, version, and Resource-type from the output of the [`get`](https://dataos.info/interfaces/cli/command_reference/#get) command separated by '|' enclosed within quotes and use it as a string in the delete command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -i sampleinstsecret:v1:instance-secret
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 3:** Specify the path of the manifest file and use the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage
+      dataos-ctl delete -f /home/desktop/connect-city/instance_secret.yaml
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
       ```
     </CodeGroup>
   </Accordion>
@@ -1328,6 +2577,131 @@ This section includes steps for creating the Instance Secret to secure commonly 
       INFO[0004] 🛠 apply...complete
       ```
     </CodeGroup>
+
+    ### Step 3: Validate the Instance Secret
+
+    To validate the proper creation of the Instance Secret in DataOS, use the `get` command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret
+      ```
+
+      ```bash Expected output
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+              NAME     | VERSION |      TYPE       | WORKSPACE | STATUS |  RUNTIME  |  OWNER             
+      -----------------|---------|-----------------|-----------|--------|-----------|------------------------------
+           depotsecret | v1      | instance-secret |           | active |           | iamgroot
+      ```
+    </CodeGroup>
+
+    To get the list of all the Instance Secret within the Dataos environment execute the following command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret -a
+      ```
+
+      ```bash Expected output
+      dataos-ctl resource get -t instance-secret -a
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+                   NAME            | VERSION |      TYPE       | WORKSPACE | STATUS | RUNTIME |         OWNER          
+      -----------------------------|---------|-----------------|-----------|--------|---------|------------------------
+        abfssv2alpha-r             | v1      | instance-secret |           | active |         | iamgroot       
+        abfssv2alpha-rw            | v1      | instance-secret |           | active |         | iamgroot       
+        abfsswithoutmetastore-r    | v1      | instance-secret |           | active |         | thisisthor              
+        abfsswithoutmetastore-rw   | v1      | instance-secret |           | active |         | thisisthor              
+
+      ```
+    </CodeGroup>
+
+    Alternatively, you can also check on Metis UI by searching the Instance Secret by name.
+
+    ![](/Screenshotfrom2025-01-2716-25-53.png)
+
+    ### Delete the Instance Secret
+
+    <Warning>
+      Before you can delete an Instance Secret, you need to make sure there are no other Resources dependent on it. For example, if a Depot has a dependency on an Instance Secret, trying to delete that Instance Secret will cause an error. So, you'll need to remove the Depot first, and then you can delete the Instance Secret. This rule applies to not just Depot, but all dependent Resources, such as Workflow, Service, Worker, etc. The following error will be thrown if any Resource has a dependency on Instance Secret as shown below. Example usage:
+
+      ```bash
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:v1:instance-secret... 
+      INFO[0001] 🗑 deleting sampleinstsecret:v1:instance-secret...error 
+      WARN[0001] 🗑 delete...error                             
+      ERRO[0001] Invalid Parameter - failure deleting instance resource : cannot delete resource, it is a dependency of 'depot:v2alpha:sampleinstdepot'
+      ```
+    </Warning>
+
+    [](https://dataos.info/resources/instance_secret/first_steps/#__codelineno-15-1)
+
+    To delete an Instance Secret, use one of the following methods:
+
+    **Method 1:**  Specify the Resource type and Instance Secret name in the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -t instance-secret -n sampleinstsecret
+      Expected output:
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 2:**  Copy the Instance Secret name, version, and Resource-type from the output of the [`get`](https://dataos.info/interfaces/cli/command_reference/#get) command separated by '|' enclosed within quotes and use it as a string in the delete command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -i sampleinstsecret:v1:instance-secret
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 3:** Specify the path of the manifest file and use the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage
+      dataos-ctl delete -f /home/desktop/connect-city/instance_secret.yaml
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
   </Accordion>
 
   <Accordion title="Snowflake" defaultOpen={false}>
@@ -1425,6 +2799,131 @@ This section includes steps for creating the Instance Secret to secure commonly 
       INFO[0004] 🛠 apply...complete
       ```
     </CodeGroup>
+
+    ### Step 3: Validate the Instance Secret
+
+    To validate the proper creation of the Instance Secret in DataOS, use the `get` command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret
+      ```
+
+      ```bash Expected output
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+              NAME     | VERSION |      TYPE       | WORKSPACE | STATUS |  RUNTIME  |  OWNER             
+      -----------------|---------|-----------------|-----------|--------|-----------|------------------------------
+           depotsecret | v1      | instance-secret |           | active |           | iamgroot
+      ```
+    </CodeGroup>
+
+    To get the list of all the Instance Secret within the Dataos environment execute the following command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret -a
+      ```
+
+      ```bash Expected output
+      dataos-ctl resource get -t instance-secret -a
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+                   NAME            | VERSION |      TYPE       | WORKSPACE | STATUS | RUNTIME |         OWNER          
+      -----------------------------|---------|-----------------|-----------|--------|---------|------------------------
+        abfssv2alpha-r             | v1      | instance-secret |           | active |         | iamgroot       
+        abfssv2alpha-rw            | v1      | instance-secret |           | active |         | iamgroot       
+        abfsswithoutmetastore-r    | v1      | instance-secret |           | active |         | thisisthor              
+        abfsswithoutmetastore-rw   | v1      | instance-secret |           | active |         | thisisthor              
+
+      ```
+    </CodeGroup>
+
+    Alternatively, you can also check on Metis UI by searching the Instance Secret by name.
+
+    ![](/Screenshotfrom2025-01-2716-25-53.png)
+
+    ### Delete the Instance Secret
+
+    <Warning>
+      Before you can delete an Instance Secret, you need to make sure there are no other Resources dependent on it. For example, if a Depot has a dependency on an Instance Secret, trying to delete that Instance Secret will cause an error. So, you'll need to remove the Depot first, and then you can delete the Instance Secret. This rule applies to not just Depot, but all dependent Resources, such as Workflow, Service, Worker, etc. The following error will be thrown if any Resource has a dependency on Instance Secret as shown below. Example usage:
+
+      ```bash
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:v1:instance-secret... 
+      INFO[0001] 🗑 deleting sampleinstsecret:v1:instance-secret...error 
+      WARN[0001] 🗑 delete...error                             
+      ERRO[0001] Invalid Parameter - failure deleting instance resource : cannot delete resource, it is a dependency of 'depot:v2alpha:sampleinstdepot'
+      ```
+    </Warning>
+
+    [](https://dataos.info/resources/instance_secret/first_steps/#__codelineno-15-1)
+
+    To delete an Instance Secret, use one of the following methods:
+
+    **Method 1:**  Specify the Resource type and Instance Secret name in the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -t instance-secret -n sampleinstsecret
+      Expected output:
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 2:**  Copy the Instance Secret name, version, and Resource-type from the output of the [`get`](https://dataos.info/interfaces/cli/command_reference/#get) command separated by '|' enclosed within quotes and use it as a string in the delete command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -i sampleinstsecret:v1:instance-secret
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 3:** Specify the path of the manifest file and use the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage
+      dataos-ctl delete -f /home/desktop/connect-city/instance_secret.yaml
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
   </Accordion>
 
   <Accordion title="WASBS" defaultOpen={false}>
@@ -1519,14 +3018,346 @@ This section includes steps for creating the Instance Secret to secure commonly 
       INFO[0004] 🛠 apply...complete
       ```
     </CodeGroup>
-  </Accordion>
 
-  <Accordion title="Kafka" defaultOpen={false}>
-    g
+    ### Step 3: Validate the Instance Secret
+
+    To validate the proper creation of the Instance Secret in DataOS, use the `get` command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret
+      ```
+
+      ```bash Expected output
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+              NAME     | VERSION |      TYPE       | WORKSPACE | STATUS |  RUNTIME  |  OWNER             
+      -----------------|---------|-----------------|-----------|--------|-----------|------------------------------
+           depotsecret | v1      | instance-secret |           | active |           | iamgroot
+      ```
+    </CodeGroup>
+
+    To get the list of all the Instance Secret within the Dataos environment execute the following command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret -a
+      ```
+
+      ```bash Expected output
+      dataos-ctl resource get -t instance-secret -a
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+                   NAME            | VERSION |      TYPE       | WORKSPACE | STATUS | RUNTIME |         OWNER          
+      -----------------------------|---------|-----------------|-----------|--------|---------|------------------------
+        abfssv2alpha-r             | v1      | instance-secret |           | active |         | iamgroot       
+        abfssv2alpha-rw            | v1      | instance-secret |           | active |         | iamgroot       
+        abfsswithoutmetastore-r    | v1      | instance-secret |           | active |         | thisisthor              
+        abfsswithoutmetastore-rw   | v1      | instance-secret |           | active |         | thisisthor              
+
+      ```
+    </CodeGroup>
+
+    Alternatively, you can also check on Metis UI by searching the Instance Secret by name.
+
+    ![](/Screenshotfrom2025-01-2716-25-53.png)
+
+    ### Delete the Instance Secret
+
+    <Warning>
+      Before you can delete an Instance Secret, you need to make sure there are no other Resources dependent on it. For example, if a Depot has a dependency on an Instance Secret, trying to delete that Instance Secret will cause an error. So, you'll need to remove the Depot first, and then you can delete the Instance Secret. This rule applies to not just Depot, but all dependent Resources, such as Workflow, Service, Worker, etc. The following error will be thrown if any Resource has a dependency on Instance Secret as shown below. Example usage:
+
+      ```bash
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:v1:instance-secret... 
+      INFO[0001] 🗑 deleting sampleinstsecret:v1:instance-secret...error 
+      WARN[0001] 🗑 delete...error                             
+      ERRO[0001] Invalid Parameter - failure deleting instance resource : cannot delete resource, it is a dependency of 'depot:v2alpha:sampleinstdepot'
+      ```
+    </Warning>
+
+    [](https://dataos.info/resources/instance_secret/first_steps/#__codelineno-15-1)
+
+    To delete an Instance Secret, use one of the following methods:
+
+    **Method 1:**  Specify the Resource type and Instance Secret name in the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -t instance-secret -n sampleinstsecret
+      Expected output:
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 2:**  Copy the Instance Secret name, version, and Resource-type from the output of the [`get`](https://dataos.info/interfaces/cli/command_reference/#get) command separated by '|' enclosed within quotes and use it as a string in the delete command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -i sampleinstsecret:v1:instance-secret
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 3:** Specify the path of the manifest file and use the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage
+      dataos-ctl delete -f /home/desktop/connect-city/instance_secret.yaml
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
   </Accordion>
 
   <Accordion title="Opensearch" defaultOpen={false}>
-    r
+    To create an Instance Secret for securing OpenSearch credentials, you must have the following information:
+
+    * **Username:** The OpenSearch username used to authenticate access to the OpenSearch instance. This is typically a user-specific or role-based identifier.&#x20;
+
+    * **Password:** The OpenSearch password corresponding to the username for authentication. You can retrieve it from your OpenSearch configuration or admin settings, depending on how the instance credentials are managed in your organization.
+
+    Ensure that you have these details ready before proceeding with the Instance Secret creation process.
+
+    ### Create an instance secret for securing OpenSearch credentials
+
+    OpenSearch is a distributed search and analytics engine designed to handle large volumes of structured and unstructured data. It is commonly used for log analytics, full-text search, and real-time monitoring applications.
+
+    To create an OpenSearch Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the necessary permissions. Follow the steps below to complete the creation process efficiently and securely.
+
+    ### Step 1: Create a manifest file
+
+    Begin by creating a manifest file to hold the configuration details for your OpenSearch Instance Secret. Below are the templates for the read-only and read-write manifests:
+
+    <CodeGroup>
+      ```yaml Read-only instance-secret
+      name: ${opensearch-depot-name}-r # Name of the instance-secret, indicating it's for read-only access.
+      version: v1 # Manifest Version           
+      type: instance-secret # Resource-type
+      description: ${description}   # Optional: Brief description of the instance-secret's purpose.
+      layer: user # DataOS Layer                 
+      instance-secret:
+        type: key-value-properties  # Type of Instance-secret
+        acl: r                     # Access control level, set to 'r' for read-only access.
+        data:
+          username: ${{Opensearch username}}
+          password: ${{Opensearch password}}
+      ```
+
+      ```yaml Read-write instance-secret
+      name: ${opensearch-depot-name}-rw # Name of the instance-secret, indicating it's for read-write access.
+      version: v1 # Manifest Version           
+      type: instance-secret # Resource-type
+      description: ${description}   # Optional: Brief description of the instance-secret's purpose.
+      layer: user # DataOS Layer                 
+      instance-secret:
+        type: key-value-properties  # Type of Instance-secret
+        acl: rw                     # Access control level, set to 'rw' for read-write access.
+        data:
+          username: ${{username}}
+          password: ${{password}}
+      ```
+    </CodeGroup>
+
+    ### Resource meta section
+
+    The Opensearch manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Instance-secret specific section
+
+    This section focuses on attributes specific to OpenSearch Instance Secrets. It includes details like:
+
+    * `type`: Specifies the Instance Secret type (key-value-properties).
+
+    * `acl`: Access control level (read-only or read-write).
+
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+
+    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Step 2: Apply the manifest
+
+    To create the OpenSearch Instance Secret within DataOS, use the `apply` command. Since these Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource apply -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl apply -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage 
+      dataos-ctl resource apply -f depot_secret.yaml
+      Example usage:
+      $ dataos-ctl apply -f depot_secret.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
+      INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
+      INFO[0004] 🛠 apply...complete
+      ```
+    </CodeGroup>
+
+    ### Step 3: Validate the Instance Secret
+
+    To validate the proper creation of the Instance Secret in DataOS, use the `get` command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret
+      ```
+
+      ```bash Expected output
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+              NAME     | VERSION |      TYPE       | WORKSPACE | STATUS |  RUNTIME  |  OWNER             
+      -----------------|---------|-----------------|-----------|--------|-----------|------------------------------
+           depotsecret | v1      | instance-secret |           | active |           | iamgroot
+      ```
+    </CodeGroup>
+
+    To get the list of all the Instance Secret within the Dataos environment execute the following command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret -a
+      ```
+
+      ```bash Expected output
+      dataos-ctl resource get -t instance-secret -a
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+                   NAME            | VERSION |      TYPE       | WORKSPACE | STATUS | RUNTIME |         OWNER          
+      -----------------------------|---------|-----------------|-----------|--------|---------|------------------------
+        abfssv2alpha-r             | v1      | instance-secret |           | active |         | iamgroot       
+        abfssv2alpha-rw            | v1      | instance-secret |           | active |         | iamgroot       
+        abfsswithoutmetastore-r    | v1      | instance-secret |           | active |         | thisisthor              
+        abfsswithoutmetastore-rw   | v1      | instance-secret |           | active |         | thisisthor              
+
+      ```
+    </CodeGroup>
+
+    Alternatively, you can also check on Metis UI by searching the Instance Secret by name.
+
+    ![](/Screenshotfrom2025-01-2716-25-53.png)
+
+    ### Delete the Instance Secret
+
+    <Warning>
+      Before you can delete an Instance Secret, you need to make sure there are no other Resources dependent on it. For example, if a Depot has a dependency on an Instance Secret, trying to delete that Instance Secret will cause an error. So, you'll need to remove the Depot first, and then you can delete the Instance Secret. This rule applies to not just Depot, but all dependent Resources, such as Workflow, Service, Worker, etc. The following error will be thrown if any Resource has a dependency on Instance Secret as shown below. Example usage:
+
+      ```bash
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:v1:instance-secret... 
+      INFO[0001] 🗑 deleting sampleinstsecret:v1:instance-secret...error 
+      WARN[0001] 🗑 delete...error                             
+      ERRO[0001] Invalid Parameter - failure deleting instance resource : cannot delete resource, it is a dependency of 'depot:v2alpha:sampleinstdepot'
+      ```
+    </Warning>
+
+    [](https://dataos.info/resources/instance_secret/first_steps/#__codelineno-15-1)
+
+    To delete an Instance Secret, use one of the following methods:
+
+    **Method 1:**  Specify the Resource type and Instance Secret name in the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -t instance-secret -n sampleinstsecret
+      Expected output:
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 2:**  Copy the Instance Secret name, version, and Resource-type from the output of the [`get`](https://dataos.info/interfaces/cli/command_reference/#get) command separated by '|' enclosed within quotes and use it as a string in the delete command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -i sampleinstsecret:v1:instance-secret
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 3:** Specify the path of the manifest file and use the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage
+      dataos-ctl delete -f /home/desktop/connect-city/instance_secret.yaml
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
   </Accordion>
 
   <Accordion title="Elasticsearch" defaultOpen={false} />
