@@ -1,13 +1,12 @@
 ---
 title: "Introduction"
 search: "[object Object]"
+description: "An Instance Secret is a DataOS Resource designed for securely storing sensitive information at the DataOS instance level. This includes usernames, passwords, certificates, tokens, and keys. The primary purpose of an Instance Secret is to address the inherent exposure risk associated with directly embedding such confidential data within application code or manifest files (YAML configuration files).
+
+Instance secrets establish a critical segregation between sensitive data and Resource definitions. This division minimizes inadvertent exposure during various Resource management phases, including creation, viewing, or editing. By leveraging Instance Secrets, data developers safeguard sensitive information, mitigating security vulnerabilities inherent in their data workflows."
 ---
 
-An Instance Secret is a DataOS Resource designed for securely storing sensitive information at the DataOS instance level. This includes usernames, passwords, certificates, tokens, and keys. The primary purpose of an Instance Secret is to address the inherent exposure risk associated with directly embedding such confidential data within application code or manifest files (YAML configuration files).
-
-Instance secrets establish a critical segregation between sensitive data and Resource definitions. This division minimizes inadvertent exposure during various Resource management phases, including creation, viewing, or editing. By leveraging Instance Secrets, data developers safeguard sensitive information, mitigating security vulnerabilities inherent in their data workflows.
-
-Operators can exercise precise control over who can retrieve credentials from Secrets, if in your organization any data developer needs access to secrets you can assign them a 'read instance secret' use case using Bifrost.
+Operators can exercise precise control over who can retrieve credentials from Secrets. If any data developer in your organization needs access to secrets, you can assign them a 'read instance secret' use case using Bifrost.
 
 <Tip>
   **Instance Secret in the Data Product Lifecycle**
@@ -116,6 +115,131 @@ This section includes steps for creating the Instance Secret to secure commonly 
     ### Step 2: Apply the manifest
 
     To create the ABFSS Instance Secret within DataOS, use the `apply` command. Since ABFSS Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+
+    ### Step 3: Validate the Instance Secret
+
+    To validate the proper creation of the ABFSS Instance Secret in DataOS, use the `get` command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret
+      ```
+
+      ```bash Expected output
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+              NAME     | VERSION |      TYPE       | WORKSPACE | STATUS |  RUNTIME  |  OWNER             
+      -----------------|---------|-----------------|-----------|--------|-----------|------------------------------
+           depotsecret | v1      | instance-secret |           | active |           | iamgroot
+      ```
+    </CodeGroup>
+
+    To get the list of all the Instance Secret within the Dataos environment execute the following command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret -a
+      ```
+
+      ```bash Expected output
+      dataos-ctl resource get -t instance-secret -a
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+                   NAME            | VERSION |      TYPE       | WORKSPACE | STATUS | RUNTIME |         OWNER          
+      -----------------------------|---------|-----------------|-----------|--------|---------|------------------------
+        abfssv2alpha-r             | v1      | instance-secret |           | active |         | iamgroot       
+        abfssv2alpha-rw            | v1      | instance-secret |           | active |         | iamgroot       
+        abfsswithoutmetastore-r    | v1      | instance-secret |           | active |         | thisisthor              
+        abfsswithoutmetastore-rw   | v1      | instance-secret |           | active |         | thisisthor              
+
+      ```
+    </CodeGroup>
+
+    ### Delete the Instance Secret
+
+    <Warning>
+      Before you can delete an Instance Secret, you need to make sure there are no other Resources dependent on it. For example, if a Depot has a dependency on an Instance Secret, trying to delete that Instance Secret will cause an error. So, you'll need to remove the Depot first, and then you can delete the Instance Secret. This rule applies to not just Depot, but all dependent Resources, such as Workflow, Service, Worker, etc. The following error will be thrown if any Resource has a dependency on Instance Secret as shown below. Example usage:
+
+      ```bash
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:v1:instance-secret... 
+      INFO[0001] 🗑 deleting sampleinstsecret:v1:instance-secret...error 
+      WARN[0001] 🗑 delete...error                             
+      ERRO[0001] Invalid Parameter - failure deleting instance resource : cannot delete resource, it is a dependency of 'depot:v2alpha:sampleinstdepot'
+      ```
+    </Warning>
+
+    [](https://dataos.info/resources/instance_secret/first_steps/#__codelineno-15-1)
+
+    To delete the ABFSS Instance Secret, use one of the following methods:
+
+    **Method 1:**  Specify the Resource type and Instance Secret name in the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -t instance-secret -n sampleinstsecret
+      Expected output:
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 2:**  Copy the Instance Secret name, version, and Resource-type from the output of the [`get`](https://dataos.info/interfaces/cli/command_reference/#get) command separated by '|' enclosed within quotes and use it as a string in the delete command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -i sampleinstsecret:v1:instance-secret
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 3:** Specify the path of the manifest file and use the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage
+      dataos-ctl delete -f /home/desktop/connect-city/instance_secret.yaml
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    ##
+
+
 
     <CodeGroup>
       ```bash Command
@@ -1397,6 +1521,34 @@ This section includes steps for creating the Instance Secret to secure commonly 
       ```
     </CodeGroup>
   </Accordion>
+
+  <Accordion title="Kafka" defaultOpen={false}>
+    g
+  </Accordion>
+
+  <Accordion title="Opensearch" defaultOpen={false}>
+    r
+  </Accordion>
+
+  <Accordion title="Elasticsearch" defaultOpen={false}>
+
+  </Accordion>
+
+  <Accordion title="Redis" defaultOpen={false}>
+
+  </Accordion>
+
+  <Accordion title="HTTP" defaultOpen={false}>
+
+  </Accordion>
+
+  <Accordion title="Presto" defaultOpen={false}>
+
+  </Accordion>
+
+  <Accordion title="File" defaultOpen={false}>
+
+  </Accordion>
 </AccordionGroup>
 
 #### Repositories:
@@ -1783,4 +1935,4 @@ Instance-secret can be configured to secure the credentials information in the f
 
 ## Recipes
 
-[How to refer to Instance Secret in other DataOS Resources?](         /resources/instance_secret/how_to_guide/recipe_1)
+[How to refer to Instance Secret in other DataOS Resources?](/resources/instance_secret/how_to_guide/recipe_1)
