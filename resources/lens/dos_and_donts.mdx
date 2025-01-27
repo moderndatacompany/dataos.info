@@ -8,6 +8,122 @@ description: "This documentation outlines essential guidelines while creating a 
 
 ## **Data modeling**
 
+### Follow naming conventions where names start with a letter.
+
+Use only letters, numbers, and underscore (\_) symbol in names, and follow snake\_case for naming tables, views, measures, and dimensions.
+
+**Example naming conventions:**
+
+Tables: `orders`, `stripe_invoices`, `base_payments`
+Views: `opportunities`, `cloud_accounts`,
+Measures: `count`, `avg_price`, `total_amount_shipped`
+Dimensions: `name`, `is_shipped`, `created_at`
+
+### Case sensitivity
+
+If your database uses case-sensitive identifiers, ensure you properly quote table and column names. For example, to reference a Postgres table with uppercase letters:
+
+```yaml
+SELECT
+  site_number,
+  site_name,
+  site_region
+FROM
+  'public."Site"'
+```
+
+### References
+
+To build reusable data models, it’s important to reference various members of tables and views, such as measures, dimensions, and columns. Lens uses specific syntax for handling these references:
+
+### **Column references**
+
+To reference a column in your data model, you have the following options:
+
+**Direct column reference:** In general, for simple cases, you can use column names directly without the need for curly braces, like this: `column_name`. However, if you’re dealing with joins or complex queries, you may need to qualify the references for clarity.
+
+```yaml
+tables:
+  - name: order
+    sql: {{ load_sql('order') }}
+    description: Table containing order information
+    public: true
+    meta:
+      export_to_board: false
+    dimensions:
+      - name: status
+        sql: status
+        type: string
+```
+
+In this example, the column status from the order table is referenced directly in the sql parameter.
+
+**Prefix with table name:** When referencing a column from a specific table, prefix the column with the table name `table_name.column_name` (e.g., `order.status`). This is especially important when working with joined tables that may have columns with the same name.
+
+```yaml
+tables:
+  - name: users
+    sql: {{ load_sql('users') }}
+    joins:
+      - name: contacts
+        sql: "{users}.contact_id = {contacts}.id"
+        relationship: one_to_one
+    dimensions:
+      - name: id
+        sql: "{users}.id"
+        type: number
+        primary_key: true
+      - name: name
+        sql: "COALESCE({users}.name, {contacts}.name)"
+        type: string
+
+  - name: contacts
+    sql: {{ load_sql('contacts') }}
+    dimensions:
+      - name: id
+        sql: "{contacts}.id"
+        type: number
+        primary_key: true
+      - name: name
+        sql: "{contacts}.name"
+        type: string
+```
+
+In this case, the name field is referenced from both the users and contacts tables. Using `"{users}.name"` and `"{contacts}.name"` ensures that there’s no ambiguity.
+
+**Use the TABLE constant:** If you need to refer to a column in the current table, use the TABLE constant `"{TABLE}.column_name"` (e.g., `"{TABLE.status}"` to avoid repeating the table's name.
+
+```yaml
+tables:
+  - name: users
+    sql: {{ load_sql('users') }}
+    joins:
+      - name: contacts
+        sql: "{TABLE}.contact_id = {contacts}.id"
+        relationship: one_to_one
+    dimensions:
+      - name: id
+        sql: "{TABLE}.id"
+        type: number
+        primary_key: true
+      - name: name
+        sql: "COALESCE({TABLE}.name, {contacts}.name)"
+        type: string
+
+  - name: contacts
+    sql: {{ load_sql('contacts') }}
+    dimensions:
+      - name: id
+        sql: "{TABLE}.id"
+        type: number
+        primary_key: true
+      - name: name
+        sql: "{TABLE}.name"
+        type: string
+```
+
+In this example, the `{TABLE}` constant is used to refer to columns in the users table, reducing repetition and making the code more efficient.
+
 ### **Reference a Measure to create another Measure in the same Table**
 
 When creating a measure that references another measure within the same table, use curly braces `{}`.
