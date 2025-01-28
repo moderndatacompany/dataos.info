@@ -2,7 +2,7 @@
 title: "Instance Secret Attributes"
 ---
 
-some attributes are optional within this section
+some attributes are optional within this section.
 
 ## Structure of Instance Secret manifest
 
@@ -74,7 +74,6 @@ DataOS provides several built-in types for some common usage scenarios. These ty
 
 | Instance Secret Type   | Description                                                                                                                                                                            |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `cloud-kernel`         | This type stores arbitrary user-defined data in the form of key-value pair as a Kubernetes Secret with the same name as the Instance Secret Resource.                                  |
 | `key-value`            | This type stores arbitrary user-defined data as key-value pairs within an Instance Secret, with each pair being encoded separately in base64 format.                                   |
 | `key-value-properties` | This type conserves arbitrary user-defined data as an Instance Secret by transforming multiple key-value pairs into a singular key-value pair, which is then encoded in base64 format. |
 | `certificates`         | This is an instance secret type used to securely store certificates, which are often necessary for secured communication in the system.                                                |
@@ -82,28 +81,6 @@ DataOS provides several built-in types for some common usage scenarios. These ty
 For a more detailed analysis of each type and to explore the syntax, please navigate the below tabs.
 
 <Tabs>
-  <Tab title="cloud-kernel">
-    The cloud-kernel instance secret type means that a Kubernetes secret will be created with the same name as the Instance Secret Resource.
-
-    **Syntax:**
-
-    ```yaml
-    # Instance Secret Manifest type: cloud-kernel
-
-    name: ${my-instancesecret}
-    version: v1
-    type: instance-secret
-    description: ${cloud kernel instance secret}
-    instance-secret:
-      type: cloud-kernel
-      acl: r
-      data:
-        ${a: b}
-        ${c: d}
-        ${e: f}
-    ```
-  </Tab>
-
   <Tab title="key-value">
     This Instance Secret type is for storing simple pairs of keys and values. They are stored in Heimdall vault.
 
