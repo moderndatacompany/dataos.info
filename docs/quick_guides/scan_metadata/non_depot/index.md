@@ -1,6 +1,6 @@
 # Scan Metadata without Depot
 
-!!! info(Information)
+!!! info "Information"
     This guide will demonstrate the steps to perform metadata scanning from external data stored in structured data sources (RDBMS/Data Warehouses) without using Depot. In this case, you must set up a source connection within the Scanner workflow and provide configuration to capture schema details.
 
 ## Quick Steps

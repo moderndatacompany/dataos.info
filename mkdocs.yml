@@ -555,6 +555,10 @@ nav:
             - learn/dp_consumer_learn_track/integrate_graphql/index.md
           - Integration with data APIs:
             - learn/dp_consumer_learn_track/integrate_api/index.md
+          - Custom apps to consume Data Products:
+            - learn/dp_consumer_learn_track/apps_consume_data_products/index.md
+            - Building an App with Appsmith:
+              - learn/dp_consumer_learn_track/apps_consume_data_products/build_app_appsmith/index.md
       - Data Product Developer:
         - learn/dp_developer_learn_track/index.md
         - Understanding business goals:
@@ -683,6 +687,8 @@ nav:
       - Deploying and securing data applications:
         - Deploying data application using Container Stack: 
           - quick_guides/deploy_data_app_using_container_stack/index.md
+        - Listing Your App on DataOS Home:
+          - quick_guides//app_on_dataos_home/index.md  
         - Securing deployed data applications: 
           - quick_guides/secure_deployed_app/index.md   
     - Videos: videos/index.md
