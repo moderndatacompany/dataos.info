@@ -47,25 +47,25 @@ The process begins with creating a new Lens project and generating a data model.
       version: v2alpha
       type: depot
       tags:
-        - ${{redshift}}
+      - ${{redshift}}
       layer: user
       description: ${{Redshift Sample data}}
       depot:
-        type: REDSHIFT
-        redshift:
-          host: ${{hostname}}
-          subprotocol: ${{subprotocol}}
-          port: ${{5439}}
-          database: ${{sample-database}}
-          bucket: ${{tmdc-dataos}}
-          relativePath: ${{development/redshift/data_02/}}
-        external: ${{true}}
-        secrets:
-          - name: ${{redshift-instance-secret-name}}-r
-            allkeys: true
+      type: REDSHIFT
+      redshift:
+        host: ${{hostname}}
+        subprotocol: ${{subprotocol}}
+        port: ${{5439}}
+        database: ${{sample-database}}
+        bucket: ${{tmdc-dataos}}
+        relativePath: ${{development/redshift/data_02/}}
+      external: ${{true}}
+      secrets:
+        - name: ${{redshift-instance-secret-name}}-r
+          allkeys: true
 
-          - name: ${{redshift-instance-secret-name}}-rw
-            allkeys: true
+        - name: ${{redshift-instance-secret-name}}-rw
+          allkeys: true
       ```
 
       ## Step 2: Prepare the sematic model folder
@@ -288,8 +288,6 @@ The process begins with creating a new Lens project and generating a data model.
       ## Step 4: Apply the Lens deployment manifest file
 
       After configuring the deployment file with the necessary settings and specifications, apply the manifest using the following command:
-
-
 
       <CodeGroup>
         ```javascript Command
@@ -1147,13 +1145,568 @@ The process begins with creating a new Lens project and generating a data model.
 
 <Accordion title="Multi source" defaultOpen={false}>
   <Tabs>
-    <Tab title="Minerva " />
+    <Tab title="Minerva ">
+      If you have data from multiple sources and want to create a semantic model using all these sources, configure your Lens project through the Minerva cluster, as it support depots from all sources, such as Redshift, and Snowflake.
 
-    <Tab title="Themis" />
+      ## Step 1: Prepare the sematic model folder
+
+      In the Model folder, the Lens semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each subfolder contains specific files related to the Lens model. You can download the Lens  template to quickly get started.
+
+      [lens template](/resources/lens/lens_model_folder_setup/lens-project-template.zip)
+
+      <Steps>
+        <Step title="Load data from the data source" titleSize="h3">
+          In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure that only the necessary columns are extracted, and the SQL dialect is specific to the data source.
+
+          For example, a simple data load might look like this:
+
+          ```sql
+          SELECT
+            *
+          FROM
+            "icebase"."sales_360".channel;
+          ```
+
+          Alternatively, you can write more advanced queries that include transformations, such as:
+
+          ```sql
+          SELECT
+            CAST(customer_id AS VARCHAR) AS customer_id,
+            first_name,
+            CAST(DATE_PARSE(birth_date, '%d-%m-%Y') AS TIMESTAMP) AS birth_date,
+            age,
+            CAST(register_date AS TIMESTAMP) AS register_date,
+            occupation,
+            annual_income,
+            city,
+            state,
+            country,
+            zip_code
+          FROM
+            "icebase"."sales_360".customer;
+          ```
+        </Step>
+
+        <Step title="Define the Table in the Model" titleSize="h2">
+          Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For example, to define a table for `sales `data:
+
+          ```yaml
+          table:
+            - name: customers
+              sql: {{ load_sql('customers') }}
+              description: Table containing information about sales transactions.
+          ```
+
+          ### Add Dimensions and Measures
+
+          After defining the base table, add the necessary dimensions and measures. For example, to create a table for sales data with measures and dimensions, the YAML definition could look like this:
+
+          ```yaml
+          tables:
+            - name: sales
+              sql: {{ load_sql('sales') }}
+              description: Table containing sales records with order details.
+
+              dimensions:
+                - name: order_id
+                  type: number
+                  description: Unique identifier for each order.
+                  sql: order_id
+                  primary_key: true
+                  public: true
+
+              measures:
+                - name: total_orders_count
+                  type: count
+                  sql: id
+                  description: Total number of orders.
+          ```
+
+          ### Add Segments to filter
+
+          Segments are filters that allow for the application of specific conditions to refine the data analysis. By defining segments, you can focus on particular subsets of data, ensuring that only the relevant records are included in your analysis. For example, to filter for records where the state is either Illinois or Ohio, you can define a segment like this:
+
+          ```yaml
+          segments:
+            - name: state_filter
+              sql: "{TABLE}.state IN ('Illinois', 'Ohio')"
+          ```
+
+          To know more about Segments click [here](https://dataos.info/resources/lens/working_with_segments/).
+        </Step>
+
+        <Step title="Create the Views" titleSize="h2">
+          Create a **views** folder to store all logical views, with each view defined in a separate YAML file (e.g., `sample_view.yml`). Each view references dimensions, measures, and segments from multiple logical tables. For instance the following`customer_churn` view is created.
+
+          ```yaml
+          views:
+            - name: customer_churn_prediction
+              description: Contains customer churn information.
+              tables:
+                - join_path: marketing_campaign
+                  includes:
+                    - engagement_score
+                    - customer_id
+                - join_path: customer
+                  includes:
+                    - country
+                    - customer_segments
+          ```
+
+          To know more about the Views click [here](https://dataos.info/resources/lens/working_with_views/).
+        </Step>
+
+        <Step title="Create User Groups" titleSize="h2">
+          This YAML manifest file is used to manage access levels for the Lens semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, there is a 'default' user group in the YAML file that includes all users.
+
+          ```yaml
+          user_groups:
+            - name: default
+              description: this is default user group
+              includes: "*"
+          ```
+
+          To know more about the User Groups click [here](https://dataos.info/resources/lens/working_with_user_groups_and_data_policies/)
+        </Step>
+      </Steps>
+
+      ## Step 2: Create a deployment manifest file
+
+      After preparing the Lens semantic model create a `lens_deployemnt.yml` parallel to the `model` folder.
+
+      ```yaml
+      version: v1alpha
+      name: "minervalens"
+      layer: user
+      type: lens
+      tags:
+        - lens
+      description: minerva deployment on lens2
+      lens:
+        compute: runnable-default
+        secrets:
+          - name: bitbucket-cred
+            allKeys: true
+        source:
+          type: minerva #minerva/themis/depot
+          name: minervacluster  #name of minerva cluster
+          catalog: icebase
+        repo:
+          url: https://bitbucket.org/tmdc/sample
+          lensBaseDir: sample/lens/source/minerva/model 
+          # secretId: lens2_bitbucket_r
+          syncFlags:
+            - --ref=lens
+
+        api:   # optional
+          replicas: 1 # optional
+          logLevel: info  # optional 
+          resources: # optional
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 2000m
+              memory: 2048Mi
+
+        worker: # optional
+          replicas: 2 # optional
+          logLevel: debug  # optional
+
+          resources: # optional
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 6000m
+              memory: 6048Mi
+
+        router: # optional
+          logLevel: info  # optional
+          resources: # optional
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 6000m
+              memory: 6048Mi
+        iris:
+          logLevel: info  
+          resources: # optional
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 6000m
+              memory: 6048Mi
+      ```
+
+      The YAML manifest provided is designed for a cluster named `minervacluster`, created on the `Minerva` source, with a data catalog named `icebase`. To utilize this manifest, duplicate the file and update the source details as needed.
+
+      Each section of the YAML template outlines essential elements of the Lens deployment. Below is a detailed breakdown of its components:
+
+      * **Defining the Source:**
+
+        * **`type`:**  The `type` attribute in the `source` section must be explicitly set to `minerva`.
+
+        * **`name`:** The `name` attribute in the `source` section should specify the name of the Minerva Cluster. For example, if the name of your Minerva Cluster is miniature the Source name would be `miniature`.
+
+        * **`catalog`:** The `catalog` attribute must define the specific catalog name within the Minerva Cluster that you intend to use. For instance, if the catalog is named icebase, ensure this is accurately reflected in the catalog field.
+
+      * **Defining Repository:**
+
+        * **`url`** The `url` attribute in the repo section specifies the Git repository where the Lens model files are stored. For instance, if your repo name is lensTutorial then the repo `url` will be  [https://bitbucket.org/tmdc/lensTutorial](https://bitbucket.org/tmdc/lensTutorial)
+
+        * **`lensBaseDir`:**  The `lensBaseDir` attribute refers to the directory in the repository containing the Lens model. Example: `sample/lens/source/depot/awsredshift/model`.
+
+        * **`secretId`:**  The `secretId` attribute is used to access private repositories (e.g., Bitbucket, GitHub). It specifies the secret needed to authenticate and access the repository securely.
+
+        * **`syncFlags`**:  Specifies additional flags to control repository synchronization. Example: `--ref=dev` specifies that the Lens model resides in the dev branch.
+
+      * **Configure API, Worker, and Metric Settings (Optional):** Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
+
+      <Info>
+        Within the Themis and Minerva cluster, all depots (such as Icebase, Redshift, Snowflake, etc.) are integrated. When configuring Lens, you only need to specify one depot in the \`catalog\` field, as Lens can connect to and utilize depots from all sources available in the Themis cluster.
+      </Info>
+
+      ## Docker compose manifest file
+
+      <Accordion title="Click here to view the complete docker compose  manifest and it's procedure" defaultOpen={false}>
+        ```
+        Prerequisites
+        The hostname for the Trino database server.
+        The username for the DataOS User.
+        The name of the database to use with the Minerva query engine database server.
+        Docker compose configuration
+        Add the following environment variables to your Lens (.env) file
+        Environment variables attribute
+        Example
+        trino.zip
+
+        ```
+      </Accordion>
+
+      ### Check Query Stats for Minerva
+
+      To check the query statistics, please follow the steps below:
+
+      **1. Access Minerva queries:** Navigate to the operation section and then to Minerva queries. Set the filters as follows:
+
+      <Frame>
+        <img src="/resources/lens/data_sources/minerva/Untitled1.png" />
+      </Frame>
+
+      * Source: `lens2`
+
+      * Dialect: `trino_sql`
+
+      * You can also filter by cluster, username, and other criteria as per your choice.
+
+      **2. Select the query ID:** Choose the query ID you are interested in. You will then be able to check the statistics, as shown in the example below:
+
+      <Frame>
+        <img src="/resources/lens/data_sources/minerva/Untitled1.png" />
+      </Frame>
+    </Tab>
+
+    <Tab title="Themis">
+      If you have data from multiple sources and want to create a semantic model using all these sources, configure your Lens project through the Minerva cluster, as it support depots from all sources, such as Redshift, and Snowflake.
+
+      ## Step 1: Prepare the sematic model folder
+
+      In the Model folder, the Lens semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each subfolder contains specific files related to the Lens model. You can download the Lens  template to quickly get started.
+
+      [lens template](/resources/lens/lens_model_folder_setup/lens-project-template.zip)
+
+      <Steps>
+        <Step title="Load data from the data source" titleSize="h3">
+          In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure that only the necessary columns are extracted, and the SQL dialect is specific to the data source.
+
+          For example, a simple data load might look like this:
+
+          ```sql
+          SELECT
+            *
+          FROM
+            "icebase"."sales_360".channel;
+          ```
+
+          Alternatively, you can write more advanced queries that include transformations, such as:
+
+          ```sql
+          SELECT
+            CAST(customer_id AS VARCHAR) AS customer_id,
+            first_name,
+            CAST(DATE_PARSE(birth_date, '%d-%m-%Y') AS TIMESTAMP) AS birth_date,
+            age,
+            CAST(register_date AS TIMESTAMP) AS register_date,
+            occupation,
+            annual_income,
+            city,
+            state,
+            country,
+            zip_code
+          FROM
+            "icebase"."sales_360".customer;
+          ```
+        </Step>
+
+        <Step title="Define the Table in the Model" titleSize="h2">
+          Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For example, to define a table for `sales `data:
+
+          ```yaml
+          table:
+            - name: customers
+              sql: {{ load_sql('customers') }}
+              description: Table containing information about sales transactions.
+          ```
+
+          ### Add Dimensions and Measures
+
+          After defining the base table, add the necessary dimensions and measures. For example, to create a table for sales data with measures and dimensions, the YAML definition could look like this:
+
+          ```yaml
+          tables:
+            - name: sales
+              sql: {{ load_sql('sales') }}
+              description: Table containing sales records with order details.
+
+              dimensions:
+                - name: order_id
+                  type: number
+                  description: Unique identifier for each order.
+                  sql: order_id
+                  primary_key: true
+                  public: true
+
+              measures:
+                - name: total_orders_count
+                  type: count
+                  sql: id
+                  description: Total number of orders.
+          ```
+
+          ### Add Segments to filter
+
+          Segments are filters that allow for the application of specific conditions to refine the data analysis. By defining segments, you can focus on particular subsets of data, ensuring that only the relevant records are included in your analysis. For example, to filter for records where the state is either Illinois or Ohio, you can define a segment like this:
+
+          ```yaml
+          segments:
+            - name: state_filter
+              sql: "{TABLE}.state IN ('Illinois', 'Ohio')"
+          ```
+
+          To know more about Segments click [here](https://dataos.info/resources/lens/working_with_segments/).
+        </Step>
+
+        <Step title="Create the Views" titleSize="h2">
+          Create a **views** folder to store all logical views, with each view defined in a separate YAML file (e.g., `sample_view.yml`). Each view references dimensions, measures, and segments from multiple logical tables. For instance the following`customer_churn` view is created.
+
+          ```yaml
+          views:
+            - name: customer_churn_prediction
+              description: Contains customer churn information.
+              tables:
+                - join_path: marketing_campaign
+                  includes:
+                    - engagement_score
+                    - customer_id
+                - join_path: customer
+                  includes:
+                    - country
+                    - customer_segments
+          ```
+
+          To know more about the Views click [here](https://dataos.info/resources/lens/working_with_views/).
+        </Step>
+
+        <Step title="Create User Groups" titleSize="h2">
+          This YAML manifest file is used to manage access levels for the Lens semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, there is a 'default' user group in the YAML file that includes all users.
+
+          ```yaml
+          user_groups:
+            - name: default
+              description: this is default user group
+              includes: "*"
+          ```
+
+          To know more about the User Groups click [here](https://dataos.info/resources/lens/working_with_user_groups_and_data_policies/)
+        </Step>
+      </Steps>
+
+      ## Step 2: Create a deployment manifest file
+
+      After preparing the Lens semantic model create a `lens_deployemnt.yml` parallel to the `model` folder.
+
+      ```yaml
+      version: v1alpha
+      name: "themis-lens"
+      layer: user
+      type: lens
+      tags:
+        - lens
+      description: themis lens deployment on lens2
+      lens:
+        compute: runnable-default
+        secrets:
+          - name: bitbucket-cred
+            allKeys: true
+        source:
+          type: themis #minerva/themis/depot
+          name: lenstestingthemis
+          catalog: icebase
+        repo:
+          url: https://bitbucket.org/tmdc/sample
+          lensBaseDir: sample/lens/source/themis/model 
+          # secretId: lens2_bitbucket_r
+          syncFlags:
+            - --ref=main #repo-name
+
+        api:   # optional
+          replicas: 1 # optional
+          logLevel: info  # optional    
+          resources: # optional
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 2000m
+              memory: 2048Mi
+        worker: # optional
+          replicas: 2 # optional
+          resources: # optional
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 6000m
+              memory: 6048Mi
+        router: # optional
+          resources: # optional
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 6000m
+              memory: 6048Mi
+        iris:
+          logLevel: info  
+          resources: # optional
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 6000m
+              memory: 6048Mi
+      ```
+
+      The YAML manifest provided is designed for a cluster named `minervacluster`, created on the `Minerva` source, with a data catalog named `icebase`. To utilize this manifest, duplicate the file and update the source details as needed.
+
+      Each section of the YAML template outlines essential elements of the Lens deployment. Below is a detailed breakdown of its components:
+
+      * **Defining the Source:**
+
+        * **`type`:**  The `type` attribute in the `source` section must be explicitly set to `themis`.
+
+        * **`name`:** The `name` attribute in the `source` section should specify the name of the Themis Cluster. For example, if the name of your Themis Cluster is `clthemis` the Source name would be `clthemis`.
+
+        * **`catalog`:** The `catalog` attribute must define the specific catalog name within the Themis Cluster that you intend to use. For instance, if the catalog is named `lakehouse_retail`, ensure this is accurately reflected in the catalog field.
+
+      * **Defining Repository:**
+
+        * **`url`** The `url` attribute in the repo section specifies the Git repository where the Lens model files are stored. For instance, if your repo name is lensTutorial then the repo `url` will be  [https://bitbucket.org/tmdc/lensTutorial](https://bitbucket.org/tmdc/lensTutorial)
+
+        * **`lensBaseDir`:**  The `lensBaseDir` attribute refers to the directory in the repository containing the Lens model. Example: `sample/lens/source/depot/awsredshift/model`.
+
+        * **`secretId`:**  The `secretId` attribute is used to access private repositories (e.g., Bitbucket, GitHub). It specifies the secret needed to authenticate and access the repository securely.
+
+        * **`syncFlags`**:  Specifies additional flags to control repository synchronization. Example: `--ref=dev` specifies that the Lens model resides in the dev branch.
+
+      * **Configure API, Worker, and Metric Settings (Optional):** Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
+
+      The above manifest is intended for a cluster named `lenstestingthemis`, created on the themis source, with the depot or data catalog named `icebase`. To use this manifest, copy the file and update the source details accordingly.
+
+      <Info>
+        Within the Themis and Minerva cluster, all depots (such as Icebase, Redshift, Snowflake, etc.) are integrated. When configuring Lens, you only need to specify one depot in the \`catalog\` field, as Lens can connect to and utilize depots from all sources available in the Themis cluster.
+      </Info>
+
+      ## Docker compose manifest file
+
+      <Accordion title="Click here to see the complete docker compose" defaultOpen={false}>
+        ```
+        LENS2_VERSION=0.34.60-10-scratch2
+        LENS2_CACHE_VERSION=0.34.60-amd64v8
+
+        # source
+        LENS2_DB_HOST=tcp.alpha-omega.dataos.app
+        LENS2_DB_PORT=7432
+        LENS2_DB_USER=iamgroot
+        LENS2_DB_PASS=mypassword
+        LENS2_DB_PRESTO_CATALOG=adventureworks
+        LENS2_DB_SSL=true
+        LENS2_DB_TYPE=themis
+
+        LENS2_NAME=themislens
+        LENS2_DESCRIPTION="Ecommerce use case on sales data"
+        LENS2_TAGS="lens2, ecom, sales and customer insights"
+        LENS2_AUTHORS="iamgroot, thor"
+        LENS2_LOG_LEVEL=trace
+        LENS2_LOADER_LOG_LEVEL=debug
+
+        LENS2_HEIMDALL_BASE_URL="https://alpha-omega.dataos.app/heimdall"
+
+        LENS2_SCHEDULED_REFRESH_DEFAULT="false"
+        LENS2_API_SECRET=1245ABDJSJDIR56
+
+        CACHE_TELEMETRY=false
+        CACHE_LOG_LEVEL=error
+        LENS2_BOARD_PATH=boards
+        LENS2_BASE_URL="http://localhost:4000/lens2/api"
+        LENS2_META_PATH="/v2/meta"
+        LENS2_RILL_PATH=boards
+        LENS2_CHECKS_PATH=checks
+
+        DATAOS_USER_APIKEY="abcdefghijklmnopqrstuvwxyz"
+        DATAOS_USER_NAME="iamgroot"
+
+        LENS2_LOCAL_PG_DB_NAME=db
+        LENS2_LOCAL_PG_HOST=localhost
+        LENS2_LOCAL_PG_PORT=15432
+        LENS2_LOCAL_PG_PASSWORD="abcdefghijklmnopqrstuvwxyz"
+        LENS2_LOCAL_PG_USER=iamgroot
+        ```
+      </Accordion>
+
+      ## Check Query Stats for Themis
+
+      <Info>
+        Please ensure you have the required permission to access the Operations.
+      </Info>
+
+      To check the query statistics, please follow the steps below:
+
+      1. **Access the Themis Cluster:** Navigate to the Themis cluster. You should see a screen similar to the image below:
+
+      2. **Select the Running Driver:** Choose the running driver. **This driver will always be the same, regardless of the user, as queries will be directed to the creator of the Themis cluster**. The running driver remains consistent for all users.
+
+      3. **View the Spark UI:** Go to terminal and use the following command to view the spark UI:
+
+      ```yaml
+      dataos-ctl -t cluster -w public -n themislens --node themis-themislens-iamgroot-default-a650032d-ad6b-4668-b2d2-cd372579020a-driver view sparkui
+
+      dataos-ctl -t cluster -w public -n themis_cluster_name --node  driver_name view sparkui
+      ```
+
+      You should see the following interface:
+
+      ![](/resources/lens/data_sources/Themis/Untitled\(9\).png)
+    </Tab>
   </Tabs>
 </Accordion>
 
-<Accordion title="Query Accelration" defaultOpen={false} />
+<Accordion title="Query Accelration" defaultOpen={false}>
+
+</Accordion>
 
 ## Configurations
 
