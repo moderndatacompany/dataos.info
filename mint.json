@@ -172,9 +172,7 @@
             "resources/lens/working_with_payload",
             "resources/lens/working_with_segments",
             "resources/lens/working_with_views",
-            "resources/lens/working_with_user_groups_and_data_policies",
-            "resources/lens/optimizing_lens_testing_in_local_development"
-            
+            "resources/lens/working_with_user_groups_and_data_policies"   
           ]
         },
 

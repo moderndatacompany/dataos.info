@@ -4,22 +4,21 @@ sidebarTitle: "Do's and Dont's"
 description: "This documentation outlines essential guidelines while creating a semantic model, highlighting key best practices, such as when to create views and how to avoid common errors. It offers a comprehensive set of do’s and don’ts to help ensure optimal model design and smooth implementation."
 ---
 
-# Do's
+# **Do's**
 
-## **Data modeling**
+## Naming conventions
 
-### **Naming conventions**
-
-Use only letters, numbers, and underscore (\_) symbol in names, and follow snake\_case for naming tables, views, measures, and dimensions.
-
+- Use only letters, numbers, and underscores (_); avoid special characters.
+- Adopt snake_case for naming tables, views, measures, and dimensions.
+- 
 **Example naming conventions:**
 
-Tables: `orders`, `stripe_invoices`, `base_payments`
-Views: `opportunities`, `cloud_accounts`,
-measures: `count`, `avg_price`, `total_amount_shipped`
-dimensions: `name`, `is_shipped`, `created_at`
+- Tables: `orders`, `stripe_invoices`, `base_payments`
+- Views: `opportunities`, `cloud_accounts`,
+-  Measures: `count`, `avg_price`, `total_amount_shipped`
+- Dimensions: `name`, `is_shipped`, `created_at`
 
-### **Case sensitivity**
+## Case sensitivity
 
 If your database uses case-sensitive identifiers, ensure you properly quote table and column names. For example, to reference a Postgres table with uppercase letters:
 
@@ -32,13 +31,13 @@ FROM
   'public."Site"'
 ```
 
-### **Dimension References**
+## Dimension References
 
 To build reusable data models, it’s important to reference various members of tables and views, such as measures, dimensions, and columns. Lens uses specific syntax for handling these references:
 
-To reference a column(dimensions) in your data model, you have the following options:
+### **Direct Column Reference:** 
 
-**Direct column reference:** In general, for simple cases, you can use column names directly without the need for curly braces, like this: `column_name`. However, if you’re dealing with joins or complex queries, you may need to qualify the references for clarity.
+In general, for simple cases, you can use column names directly without the need for curly braces, like this: `column_name`. However, if you’re dealing with joins or complex queries, you may need to qualify the references for clarity.
 
 ```yaml
 tables:
@@ -54,9 +53,12 @@ tables:
         type: string
 ```
 
-In this example, the column status from the order table is referenced directly in the sql parameter.
+In this example, the column status from the order table is referenced directly in the sql parameter. This syntax works great for simple use cases. However, if your tables have joins and joined tables have columns with the same name, the generated SQL query might become ambiguous. See below how to work around that.
 
-**Prefix with table name:** When referencing a column from a specific table, prefix the column with the table name `table_name.column_name` (e.g., `order.status`). This is especially important when working with joined tables that may have columns with the same name.
+
+### **Prefix with table name:** 
+
+When referencing a column from a specific table, prefix the column with the table name `table_name.column_name` (e.g., `order.status`). This is especially important when working with joined tables that may have columns with the same name.
 
 ```yaml
 tables:
@@ -89,7 +91,9 @@ tables:
 
 In this case, the name field is referenced from both the users and contacts tables. Using `"{users}.name"` and `"{contacts}.name"` ensures that there’s no ambiguity.
 
-**Use the TABLE constant:** If you need to refer to a column in the current table, use the TABLE constant `"{TABLE}.column_name"` (e.g., `"{TABLE.status}"` to avoid repeating the table's name.
+### **Use the `TABLE` constant:** 
+
+If you need to refer to a column in the current table, use the TABLE constant `"{TABLE}.column_name"` (e.g., `"{TABLE.status}"` to avoid repeating the table's name.
 
 ```yaml
 tables:
@@ -122,7 +126,7 @@ tables:
 
 In this example, the `{TABLE}` constant is used to refer to columns in the users table, reducing repetition and making the code more efficient.
 
-### Measure References
+## Measure References
 
 ### **Creating a measure based on another measure within the same table**
 
@@ -268,7 +272,7 @@ views:
           - state
 ```
 
-## **Jinja macros**
+## Jinja macros
 
 Lens data models support Jinja macros, allowing you to define reusable snippets of code. This feature helps in creating dynamic data models and SQL properties efficiently.
 
@@ -354,7 +358,7 @@ segments:
   {% endfor %}
 ```
 
-#### **User group Configuration**
+### **User group Configuration**
 
 ```yaml
 user_groups:
@@ -401,11 +405,11 @@ user_groups:
 
 By leveraging Jinja macros, you can create efficient, reusable, and dynamic configurations in your Lens data models.
 
-# Don’t
+## **Don’t**
 
 When creating a semantic model, avoid the following practices to ensure functionality and maintainability:
 
-## **Avoid using curly braces `{}` in descriptions**
+## Avoid using curly braces `{}` in descriptions
 
 Since Jinja is supported, using curly braces `{}` in descriptions can cause issues.
 
@@ -419,7 +423,7 @@ dimensions:
     description: It is the primary key of sales
 ```
 
-## **Avoid using single quotes in measures, dimensions, and Segments**
+## Avoid using single quotes in measures, dimensions, and segments
 
 Using single quotes can throw errors. Instead, use double quotes.
 
@@ -443,9 +447,9 @@ tables:
         type: string
 ```
 
-## **Avoid filtering measures and dimensions from the same table with the OR operator**
+## Avoid filtering measures and dimensions from the same table with the OR operator
 
-measures and dimensions from the same table cannot be filtered simultaneously using the 'OR' operator.
+Measures and dimensions from the same table cannot be filtered simultaneously using the 'OR' operator.
 
 <Tabs>
   <Tab title="Incorrect example">
