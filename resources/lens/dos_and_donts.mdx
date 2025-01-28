@@ -8,7 +8,7 @@ description: "This documentation outlines essential guidelines while creating a 
 
 ## **Data modeling**
 
-### Follow naming conventions where names start with a letter.
+### **Naming conventions**
 
 Use only letters, numbers, and underscore (\_) symbol in names, and follow snake\_case for naming tables, views, measures, and dimensions.
 
@@ -16,10 +16,10 @@ Use only letters, numbers, and underscore (\_) symbol in names, and follow snake
 
 Tables: `orders`, `stripe_invoices`, `base_payments`
 Views: `opportunities`, `cloud_accounts`,
-Measures: `count`, `avg_price`, `total_amount_shipped`
-Dimensions: `name`, `is_shipped`, `created_at`
+measures: `count`, `avg_price`, `total_amount_shipped`
+dimensions: `name`, `is_shipped`, `created_at`
 
-### Case sensitivity
+### **Case sensitivity**
 
 If your database uses case-sensitive identifiers, ensure you properly quote table and column names. For example, to reference a Postgres table with uppercase letters:
 
@@ -32,13 +32,11 @@ FROM
   'public."Site"'
 ```
 
-### References
+### **Dimension References**
 
 To build reusable data models, it’s important to reference various members of tables and views, such as measures, dimensions, and columns. Lens uses specific syntax for handling these references:
 
-### **Column references**
-
-To reference a column in your data model, you have the following options:
+To reference a column(dimensions) in your data model, you have the following options:
 
 **Direct column reference:** In general, for simple cases, you can use column names directly without the need for curly braces, like this: `column_name`. However, if you’re dealing with joins or complex queries, you may need to qualify the references for clarity.
 
@@ -46,7 +44,7 @@ To reference a column in your data model, you have the following options:
 tables:
   - name: order
     sql: {{ load_sql('order') }}
-    description: Table containing order information
+    description: table containing order information
     public: true
     meta:
       export_to_board: false
@@ -124,9 +122,11 @@ tables:
 
 In this example, the `{TABLE}` constant is used to refer to columns in the users table, reducing repetition and making the code more efficient.
 
-### **Reference a Measure to create another Measure in the same Table**
+### Measure References
 
-When creating a measure that references another measure within the same table, use curly braces `{}`.
+### **Creating a measure based on another measure within the same table**
+
+When you need to create a new measure that depends on the value of an existing measure within the same table, you can reference the existing measure using curly braces `{}`. This allows you to reference and perform operations on already defined measures without repeating their logic.
 
 ```yaml
 - name: current_month_sum
@@ -146,7 +146,9 @@ When creating a measure that references another measure within the same table, u
   type: number
 ```
 
-### **Proxy Dimension: Referencing Dimensions from another Table**
+In the above example, the `month_over_month_ratio` measure references the two previously defined measures and divides the `current_month_sum` by the `previous_month_sum` to get the month-over-month ratio.
+
+### **Proxy dimension: Referencing dimensions from another table**
 
 To reference a dimension from one  while creating a measure in another, use the curly braces `{}`. Specify the dimension using `{.column}` if it is from another table, or `{column name}` if it is within the same table.
 
@@ -162,7 +164,7 @@ measures:
     type: sum
 ```
 
-### **Calling a Measure from another Table**
+### **Calling a measure from another table**
 
 When referencing a measure from another table, set `sub_query` to `true`.
 
@@ -173,7 +175,7 @@ When referencing a measure from another table, set `sub_query` to `true`.
   type: number
 ```
 
-### **Transforming Dimension and calling it in a Measure**
+### **Transforming dimension and calling it in a measure**
 
 Use curly braces `{}` when calling a transformed dimension within measures.
 
@@ -296,7 +298,7 @@ In the example below, we define a macro called `dimension()` which generates a d
 tables:
   - name: account
     sql: {{ load_sql('account') }}
-    description: Table containing information about account
+    description: table containing information about account
     public: true
     meta:
       export_to_board: true
@@ -328,7 +330,7 @@ measures:
     type: number
 ```
 
-### **Dynamic Segments with secure access**
+### **Dynamic segments with secure access**
 
 You can create dynamic segments with secure access using Jinja macros. This example sets up segments for different categories with user group restrictions.
 
@@ -352,7 +354,7 @@ segments:
   {% endfor %}
 ```
 
-#### **User Group Configuration**
+#### **User group Configuration**
 
 ```yaml
 user_groups:
@@ -401,7 +403,7 @@ By leveraging Jinja macros, you can create efficient, reusable, and dynamic conf
 
 # Don’t
 
-When creating semantic model, avoid the following practices to ensure functionality and maintainability:
+When creating a semantic model, avoid the following practices to ensure functionality and maintainability:
 
 ## **Avoid using curly braces `{}` in descriptions**
 
@@ -417,7 +419,7 @@ dimensions:
     description: It is the primary key of sales
 ```
 
-## **Avoid using single quotes in Measures, Dimensions, and Segments**
+## **Avoid using single quotes in measures, dimensions, and Segments**
 
 Using single quotes can throw errors. Instead, use double quotes.
 
@@ -425,7 +427,7 @@ Using single quotes can throw errors. Instead, use double quotes.
 tables:
   - name: order
     sql: {{ load_sql('order') }}
-    description: Table containing information about product
+    description: table containing information about product
     public: true
     meta:
       export_to_board: false
@@ -441,9 +443,9 @@ tables:
         type: string
 ```
 
-## **Avoid filtering Measures and Dimensions from the same Table with the OR operator**
+## **Avoid filtering measures and dimensions from the same table with the OR operator**
 
-Measures and dimensions from the same table cannot be filtered simultaneously using the 'OR' operator.
+measures and dimensions from the same table cannot be filtered simultaneously using the 'OR' operator.
 
 <Tabs>
   <Tab title="Incorrect example">
@@ -477,7 +479,7 @@ Measures and dimensions from the same table cannot be filtered simultaneously us
           ]
         }
       ],
-      "timeDimensions": [],
+      "timedimensions": [],
       "limit": 10,
       "offset": 0
     }
