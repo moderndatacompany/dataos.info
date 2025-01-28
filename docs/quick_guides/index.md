@@ -122,6 +122,8 @@ Learn to deploy your data applications—whether developed with Streamlit, Djang
 
 -   [Deploying Data Application Using Container Stack](/quick_guides/deploy_data_app_using_container_stack/)
 
+-   [Listing Your App on DataOS Home](/quick_guides/app_on_dataos_home/)
+
 -   [Securing Deployed Data Application](/quick_guides/secure_deployed_app/)
 
 </div>
