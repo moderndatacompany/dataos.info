@@ -4,19 +4,23 @@ sidebarTitle: "Do's and Dont's"
 description: "This documentation outlines essential guidelines while creating a semantic model, highlighting key best practices, such as when to create views and how to avoid common errors. It offers a comprehensive set of do’s and don’ts to help ensure optimal model design and smooth implementation."
 ---
 
-# **Do's**
+# Do's
 
 ## Naming conventions
 
-- Use only letters, numbers, and underscores (_); avoid special characters.
-- Adopt snake_case for naming tables, views, measures, and dimensions.
-- 
+* Use only letters, numbers, and underscores (\_); avoid special characters.
+
+* Adopt snake\_case for naming tables, views, measures, and dimensions.
+
 **Example naming conventions:**
 
-- Tables: `orders`, `stripe_invoices`, `base_payments`
-- Views: `opportunities`, `cloud_accounts`,
--  Measures: `count`, `avg_price`, `total_amount_shipped`
-- Dimensions: `name`, `is_shipped`, `created_at`
+* Tables: `orders`, `stripe_invoices`, `base_payments`
+
+* Views: `opportunities`, `cloud_accounts`,
+
+* Measures: `count`, `avg_price`, `total_amount_shipped`
+
+* Dimensions: `name`, `is_shipped`, `created_at`
 
 ## Case sensitivity
 
@@ -35,7 +39,7 @@ FROM
 
 To build reusable data models, it’s important to reference various members of tables and views, such as measures, dimensions, and columns. Lens uses specific syntax for handling these references:
 
-### **Direct Column Reference:** 
+### Direct Column Reference
 
 In general, for simple cases, you can use column names directly without the need for curly braces, like this: `column_name`. However, if you’re dealing with joins or complex queries, you may need to qualify the references for clarity.
 
@@ -55,8 +59,7 @@ tables:
 
 In this example, the column status from the order table is referenced directly in the sql parameter. This syntax works great for simple use cases. However, if your tables have joins and joined tables have columns with the same name, the generated SQL query might become ambiguous. See below how to work around that.
 
-
-### **Prefix with table name:** 
+### Prefix with table name
 
 When referencing a column from a specific table, prefix the column with the table name `table_name.column_name` (e.g., `order.status`). This is especially important when working with joined tables that may have columns with the same name.
 
@@ -91,7 +94,7 @@ tables:
 
 In this case, the name field is referenced from both the users and contacts tables. Using `"{users}.name"` and `"{contacts}.name"` ensures that there’s no ambiguity.
 
-### **Use the `TABLE` constant:** 
+### Use the `TABLE` constant
 
 If you need to refer to a column in the current table, use the TABLE constant `"{TABLE}.column_name"` (e.g., `"{TABLE.status}"` to avoid repeating the table's name.
 
@@ -128,7 +131,7 @@ In this example, the `{TABLE}` constant is used to refer to columns in the users
 
 ## Measure References
 
-### **Creating a measure based on another measure within the same table**
+### Creating a measure based on another measure within the same table
 
 When you need to create a new measure that depends on the value of an existing measure within the same table, you can reference the existing measure using curly braces `{}`. This allows you to reference and perform operations on already defined measures without repeating their logic.
 
@@ -152,7 +155,7 @@ When you need to create a new measure that depends on the value of an existing m
 
 In the above example, the `month_over_month_ratio` measure references the two previously defined measures and divides the `current_month_sum` by the `previous_month_sum` to get the month-over-month ratio.
 
-### **Proxy dimension: Referencing dimensions from another table**
+### Proxy dimension: Referencing dimensions from another table
 
 To reference a dimension from one  while creating a measure in another, use the curly braces `{}`. Specify the dimension using `{.column}` if it is from another table, or `{column name}` if it is within the same table.
 
@@ -168,7 +171,7 @@ measures:
     type: sum
 ```
 
-### **Calling a measure from another table**
+### Calling a measure from another table
 
 When referencing a measure from another table, set `sub_query` to `true`.
 
@@ -179,7 +182,7 @@ When referencing a measure from another table, set `sub_query` to `true`.
   type: number
 ```
 
-### **Transforming dimension and calling it in a measure**
+### Transforming dimension and calling it in a measure
 
 Use curly braces `{}` when calling a transformed dimension within measures.
 
@@ -197,7 +200,7 @@ measures:
       - sql: year({quarter}) = 1
 ```
 
-### **Working with windows function**
+### Working with windows function
 
 To correctly aggregate a measure within a window, use the rolling\_window parameter when defining the measure. This ensures that any filters applied to the measure are correctly placed in the WHERE clause, which is essential for accurate results. Without rolling\_window, filters might go into the HAVING clause, leading to incorrect calculations.
 
@@ -222,7 +225,7 @@ To correctly aggregate a measure within a window, use the rolling\_window parame
 
 * Comparative analysis (e.g., previous/next values or differences between rows).
 
-## **Views**
+## Views
 
 1. **Purpose:** Create views to provide a limited part of your data model to the consumer layer, such as any BI tool. Views are useful for defining metrics, managing governance and data access, and controlling ambiguous join paths.
 
@@ -276,7 +279,7 @@ views:
 
 Lens data models support Jinja macros, allowing you to define reusable snippets of code. This feature helps in creating dynamic data models and SQL properties efficiently.
 
-### **Dynamic data models**
+### Dynamic data models
 
 In the example below, we define a macro called `dimension()` which generates a dimension. This macro is then invoked multiple times to generate various dimensions.
 
@@ -316,7 +319,7 @@ tables:
       {{ dimension('county_name', description='County name of the customer.') }}
 ```
 
-### **SQL property**
+### SQL property
 
 Macros can also be used to generate SQL snippets for use in the `sql` property. For example, to avoid division by zero errors when creating measures, define a macro and use it in multiple measures.
 
@@ -334,7 +337,7 @@ measures:
     type: number
 ```
 
-### **Dynamic segments with secure access**
+### Dynamic segments with secure access
 
 You can create dynamic segments with secure access using Jinja macros. This example sets up segments for different categories with user group restrictions.
 
@@ -358,7 +361,7 @@ segments:
   {% endfor %}
 ```
 
-### **User group Configuration**
+### User group Configuration
 
 ```yaml
 user_groups:
@@ -405,7 +408,7 @@ user_groups:
 
 By leveraging Jinja macros, you can create efficient, reusable, and dynamic configurations in your Lens data models.
 
-## **Don’t**
+## Don’t
 
 When creating a semantic model, avoid the following practices to ensure functionality and maintainability:
 
