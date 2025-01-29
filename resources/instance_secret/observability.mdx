@@ -46,13 +46,13 @@ monitor:
 
 ### Step 2: Validate the  DataOS instance API path&#x20;
 
-Before applying the Monitor Resource file, it is recommended to check the response of the API endpoint using Postman.
+Before applying the Monitor Resource file, it is recommended to check the response of the API endpoint.
 
-![](/image.png)
+![](/Screenshotfrom2025-01-2914-41-07.png)
 
 ### Step 3: Apply the Monitor manifest file
 
-After validating the API endpoint, the next step is to apply the Monitor manifest file by executing the below code.
+After validating the API endpoint, the next step is to apply the Monitor manifest file by executing the code below.
 
 ```bash
 dataos-ctl resource apply -f ${{path-of-your-manifest-file}}
@@ -109,7 +109,7 @@ Through Monitor whenever the condition is met it will trigger an incident, we wi
 
 ### Step 1: Create a manifest file for Pager
 
-Begin by creating a manifest file that contains the configurations of Pager as shown below in template. Replace the given values with your actual values and edit the notification template as required .
+Begin by creating a manifest file that contains the configurations of Pager as shown below in template. Replace the given values with your actual values and edit the notification template as required.
 
 ```yaml
 
