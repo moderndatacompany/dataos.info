@@ -2096,7 +2096,44 @@ After creating a Lens data model, the next step is to consume it—this means in
     </Tabs>
   </Accordion>
 
-  <Accordion title="GraphQL" defaultOpen={false} />
+  <Accordion title="GraphQL" defaultOpen={false}>
+    ### Interacting with the Lens GraphQL API
+
+    You can interact with the **Lens GraphQL API** to explore semantic models built on top of the input/output of the data products. These models, once created, are accessible in **Data Product Hub (DPH)** and can be queried using GraphQL. The available interaction methods include:
+
+    <Tabs>
+      <Tab title="Data Product Hub">
+        The Data Product Hub allows users to discover and explore curated data products, including their semantic models. It provides access to GraphQL queries, enabling interaction with structured enterprise data for analytics and integration. GraphQL allows users to request only the data they need, making it useful for data analysts, business analysts, data scientists, and data app developers to extract insights, query datasets, and integrate data into applications efficiently.
+
+      </Tab>
+
+      <Tab title="Curl">
+        * **Curl** – A command-line tool for making API requests, useful for automation and scripting.
+
+        *
+      </Tab>
+
+      <Tab title="Python " />
+    </Tabs>
+
+    ## Authentication and Authorization
+
+    To securely interact with the Lens GraphQL API, you must authenticate your requests using a DataOS API key and ensure proper user group configurations. This section explains how to generate an API key and configure user groups to access the API.
+
+
+
+    <Tabs>
+      <Tab title="Using CLI">
+        To create the dataos user apikey follow the below steps:
+      </Tab>
+
+      <Tab title="Using DPH">
+
+      </Tab>
+    </Tabs>
+
+    * Note down your API key and keep it secure. You will use this key to authenticate your API requests.
+  </Accordion>
 
   <Accordion title="Python" defaultOpen={false} />
 
