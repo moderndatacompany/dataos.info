@@ -27,7 +27,7 @@ Lens  is engineered to handle complex and large-scale data models with ease. Key
 
 * **Governance and Access Control:** Lens ensures data governance through[ user group management and data policies](/resources/lens/working_with_user_groups_and_data_policies/), enabling precise control over who can access and interact with data models.
 
-* **BI integration:** Lens improves interoperability through robust integration with PowerBI, Tableau and PowerBI. This ensures that data models can be easily utilized across various BI platforms, enhancing the overall analytics experience. For more details on BI integration, visit the [BI Integration Guide](/resources/lens/bi_integration/).
+* **BI integration:** Lens improves interoperability through robust integration with PowerBI, Tableau and Superset. This ensures that data models can be easily utilized across various BI platforms, enhancing the overall analytics experience. For more details on BI integration, visit the [BI Integration Guide](/resources/lens/bi_integration/).
 
 * **Performance optimization through Flash:** Designed to work with DataOS Lakehouse and Iceberg-format depots, [Flash](/resources/stacks/flash/) improves query performance by leveraging in-memory execution. This optimization ensures that data teams can efficiently handle large-scale queries with enhanced speed and performance.
 
@@ -1889,8 +1889,16 @@ After creating a Lens data model, the next step is to consume it—this means in
   <Accordion title="BI tools" defaultOpen={false}>
     <Tabs>
       <Tab title="PowerBI">
+        To integrate Power BI with the semantic model, two options are available:
+
+        * Using Curl
+
+        * Using Data Product Hub
+
         <Tabs>
           <Tab title="Using Curl">
+            This method caters to users who prefer command-line interfaces or need to automate interactions. **cURL** is useful for advanced users, such as data engineers or system administrators, who want to programmatically query the semantic model and integrate the data into Power BI without relying on a graphical interface.
+
             ## Prerequisites
 
             * **Curl**: Ensure you have `curl` installed on your system. Windows users may need to use `curl.exe`.
@@ -2040,7 +2048,8 @@ After creating a Lens data model, the next step is to consume it—this means in
           </Tab>
 
           <Tab title="Using Data Product Hub">
-            Here, it is assumed that you are aware of the data product on which your semantic model is built.
+            1. This method is ideal for business analysts, data scientists, and non tech users who prefer a more intuitive, visual interface. Data Product Hub provides a user-friendly way to explore and interact with the semantic model, allowing users to access data and integrate it directly into Power BI through an in-browser tool, eliminating the need for coding.
+
 
             <Steps>
               <Step title="Navigate to the Data Product Hub" titleSize="h2">
