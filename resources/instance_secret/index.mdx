@@ -3847,10 +3847,40 @@ To govern an Instance Secret, please [refer to this link.](/resources/instance_s
 
 ## Observability
 
-Instance Secrets can be monitored using Monitor Resource, to know more about it, please r[efer to this link.](/resources/instance_secret/observability)
+Instance Secrets can be monitored using Monitor Resource, to know more about it, please [refer to this link.](/resources/instance_secret/observability)
 
 ## How to catalog an Instance Secret?
 
 Once an Instance Secret is successfully created, you can view its metadata in the Metis UI. Additionally, any updates made to an Instance Secret can be tracked in the activity section of Metis.
 
-![](/image.png)
+## Best Practices
+
+* As an operator, it is recommended to assign a use case to a user rather than a tag, as use cases provide greater control over user permissions and enable more secure management of specific resources.
+
+* Before deleting an Instance Secret, ensure that it is not being used by any other resources.
+
+## FAQs
+
+1. **Can I update an existing Instance Secret?**
+
+Yes, you can update an Instance Secret by modifying its manifest file and re-applying it. However, ensure that dependent resources are updated accordingly.
+
+1. **What happens if an Instance Secret is deleted?**
+
+If an Instance Secret is deleted, any resources relying on it may lose access or experience failures. It is recommended to verify dependencies before deletion.
+
+1. **How can I receive alerts if an Instance Secret is deleted?**
+
+You can configure a **Monitor Resource** in DataOS along with a **Pager Resource** to receive notifications when an Instance Secret is deleted.
+
+1. **Is there a way to restore a deleted Instance Secret?**
+
+No, deleted secrets cannot be recovered. You must create a new Instance Secret and update all associated resources.
+
+1. **Can multiple users access the same Instance Secret?**
+
+Yes, anyone assigned a use case that grants permission to read an Instance Secret can access it.
+
+1. **Can we create multiple Instance Secrets with the same name?**
+
+No, for Instance Secrets, names must be unique. If you attempt to create a secret with a name that already exists, the system will prevent duplication. You may need to use a different name or update the existing secret if modifications are required.
