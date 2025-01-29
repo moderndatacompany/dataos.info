@@ -1,6 +1,6 @@
 # Custom applications to consume Data Products
 
-This topic discusses several ways that DataOS enables users to consume data products, through  applications built using Streamlit, Appsmith, etc using REST API, GraphQL and LLM capabilities. You can develop and deploy custom applications to consume data products Whether you're building dashboards, analytical tools, or specialized business applications, DataOS makes it easy to integrate and access your applications.
+This topic discusses several ways DataOS enables users to consume data products—through applications built using Streamlit, Appsmith, etc., leveraging REST APIs, GraphQL, and LLM capabilities. You can develop and deploy custom applications to consume data products. Whether you're building dashboards, analytical tools, or specialized business applications, DataOS makes it easy to integrate and access these applications.
 
 ## Streamlit applications
 
