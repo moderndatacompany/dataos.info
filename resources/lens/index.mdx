@@ -2050,24 +2050,44 @@ After creating a Lens data model, the next step is to consume it—this means in
               </Step>
 
               <Step title="Browse and select a Data Product" titleSize="h2">
-                Browse the list of Data Products and select a specific Data Product to initiate integration with Power BI. For example, selecting 'Sales360' allows detailed exploration and integration of the Sales360 Data Product.
+                Browse the list of Data Products and select a specific Data Product to initiate integration with Power BI. For example,  'Product Affinity'.
 
-                ![](/Screenshotfrom2025-01-2818-50-01.png)
+                ![](/Screenshotfrom2025-01-2912-34-27.png)
               </Step>
 
               <Step title=" Access integration options" titleSize="h2">
-                Go to the BI Sync option under the Access Options tab. Scroll down to locate the Excel and Power BI section, and click the Download `.pbip` File button to download the ZIP folder.
+                Navigate to the 'Access Options' tab. In the **BI Sync** section (which opens by default), locate the **Excel and Power BI** subsection and click the Download `.pbip file` button to download the ZIP folder in your system.
 
+                ![](/Screenshotfrom2025-01-2912-35-15.png)
+              </Step>
 
+              <Step title="Extracting the ZIP File" titleSize="h2">
+                Access the downloaded ZIP folder in the local system and extract its contents to the desired directory. The extracted folder will contain three files. Ensure all three files remain in the same directory to maintain semantic synchronization of the Data Product.
 
+                ![](/powerbi_extracted_files.png)
+                The folder contains the main components of a Power BI project for syncing the Lens model (here `productaffinity`) including folders like the `.Report` and `.SemanticModel`. Following is the brief description of each:
 
+                * **public\_productaffinity.Report:** This folder contains `definition.pbir` file related to the report definition in Power BI. These files define the visual representation of data, such as tables and charts, without storing actual data. They connect the semantic model and data sources to create the report views.
+
+                * **public-productaffinity.SemanticModel:** This folder contains files that define the underlying data model for your Power BI project. The semantic model plays a crucial role in managing how Power BI interacts with data, setting up relationships, hierarchies, and measures.
+
+                  * **definition.bism:** This file represents the Business Intelligence Semantic Model (BISM). It defines the structure of your data, including data sources, relationships, tables, and measures for your Lens semantic model. The `.bism` file holds essential metadata that helps Power BI understand and query the data, forming the core of the data model for report creation and analysis.
+
+                  * **model.bim:** Power BI uses the `.bim` file to generate queries and manage interactions with the dataset. When you build reports or dashboards in Power BI, it references this semantic model to ensure the correct structure is applied to the data.
+
+                * **public-productaffinity.pbip:** The `.pbip` file ties together the semantic model and report definitions from the other folders, acting as the entry point for working on the project in Power BI Desktop or the Power BI service.
+              </Step>
+
+              <Step title="Enter credentials">
+                Open the **public\_productaffinity** file in Power BI. Once the file is opened, a popup will appear prompting for the **DataOS username** and **API key**. Enter the required credentials to proceed.
+
+                ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Untitled%20\(16\).png)
+              </Step>
+
+              <Step title="Establish connection">
+                &#x20;Click the connect button. A popup will appear; click OK.
               </Step>
             </Steps>
-
-
-
-
-
           </Tab>
         </Tabs>
       </Tab>
@@ -2085,18 +2105,15 @@ After creating a Lens data model, the next step is to consume it—this means in
   <Accordion title="REST APIs" defaultOpen={false} />
 </AccordionGroup>
 
-## Data modelling
+## Data modeling
 
-[Data modeling](/resources/lens/overview/) is the process of defining and structuring raw data into organized and meaningful business definitions. It involves creating logical schemas, relationships, and aggregations to represent how data is stored, processed, and accessed. Effective data modeling ensures optimal performance for queries and allows users to extract valuable insights without modifying the underlying data structure. Below are resources to guide you through essential aspects of data modeling to optimize performance and accuracy.
+[Data modeling](/resources/lens/overview/) is the process of defining and structuring raw data into organized and meaningful business definitions. It involves creating logical schemas, relationships, and aggregations to represent how data is stored, processed, and accessed. Effective data modeling ensures optimal query performance and allows users to extract valuable insights without modifying the underlying data structure. Below are resources to guide you through essential aspects of data modeling to optimize performance and accuracy.
 
 * [Data modelling concepts](/resources/lens/concepts/) and [Overview](/resources/lens/overview/):
   Understand the core principles and methodologies essential for designing effective data models.
 
-* [Best practices:](/resources/lens/best_practices/)
-  Explore recommended guidelines and techniques to create efficient and scalable data models.
-
 * [Do's and don'ts:](/resources/lens/dos_and_donts/)
-  A concise list of actions to follow and pitfalls to avoid when designing your data model.
+  Explore recommended guidelines and techniques to create efficient and scalable data models, along with a concise list of actions to follow and pitfalls to avoid.
 
 * [Error reference:](/resources/lens/errors/)
   A quick reference for understanding and resolving common errors in data modeling.
