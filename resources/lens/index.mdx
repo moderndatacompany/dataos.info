@@ -6,7 +6,7 @@ description: "Lens Resource in DataOS is a logical modeling layer for accessing 
 <Tip>
   **Lens in the Data Product Lifecycle**
 
-  Lens operates in the consumption layer of the Data Product Life Cycle within DataOS, By leveraging Lens, Data Products can be created to inform decision-making, ensuring data is well-organized and aligned with business objectives. To consume it, Lens exposes APIs such as Postgres, REST, and GraphQL.
+  Lens operates in the consumption layer of the Data Product Life Cycle within DataOS, By leveraging Lens, Data Products can be created to inform decision-making, ensuring data is well-organized and aligned with business objectives. To consume it, Lens exposes APIs such as Postgres, REST, and Graphql.
 </Tip>
 
 **Why Lens?**
@@ -23,7 +23,7 @@ Lens  is engineered to handle complex and large-scale data models with ease. Key
 
 * **Segments:** [Segments](/resources/lens/working_with_segments/) are predefined filters that enable the definition of complex filtering logic in SQL. They allow you to create specific subsets of data, such as users from a particular city, which can be reused across different queries and reports. This feature helps streamline the data exploration process by simplifying the creation of reusable filters.
 
-* **API Support:** Lens enhances interoperability by simplifying application development with support for [Postgres API](/resources/lens/exploration_of_deployed_lens_using_sql_apis/), [REST API](/resources/lens/exploration_of_deployed_lens_using_rest_apis/), and [GraphQL](/resources/lens/exploration_of_deployed_lens_using_graphql/). Additionally, learn how to [work with payloads](/resources/lens/working_with_payload/) for querying and interacting with the system in the API Documentation.
+* **API Support:** Lens enhances interoperability by simplifying application development with support for [Postgres API](/resources/lens/exploration_of_deployed_lens_using_sql_apis/), [REST API](/resources/lens/exploration_of_deployed_lens_using_rest_apis/), and [Graphql](https://dashboard.mintlify.com/dataosinfo/dataosinfo/editor/v4#graphql). Additionally, learn how to [work with payloads](/resources/lens/working_with_payload/) for querying and interacting with the system in the API Documentation.
 
 * **Governance and Access Control:** Lens ensures data governance through[ user group management and data policies](/resources/lens/working_with_user_groups_and_data_policies/), enabling precise control over who can access and interact with data models.
 
@@ -2096,43 +2096,58 @@ After creating a Lens data model, the next step is to consume it—this means in
     </Tabs>
   </Accordion>
 
-  <Accordion title="GraphQL" defaultOpen={false}>
-    ### Interacting with the Lens GraphQL API
+  <Accordion title="Graphql" defaultOpen={false}>
+    ### Interacting with the Lens Graphql API
 
-    You can interact with the **Lens GraphQL API** to explore semantic models built on top of the input/output of the data products. These models, once created, are accessible in **Data Product Hub (DPH)** and can be queried using GraphQL. The available interaction methods include:
+    You can interact with the **Lens** Graphql **API** to explore semantic models built on top of the input/output of the data products. These models, once created, are accessible in **Data Product Hub (DPH)** and can be queried using Graphql. The available interaction methods include:
 
     <Tabs>
       <Tab title="Data Product Hub">
-        The Data Product Hub allows users to discover and explore curated data products, including their semantic models. It provides access to GraphQL queries, enabling interaction with structured enterprise data for analytics and integration. GraphQL allows users to request only the data they need, making it useful for data analysts, business analysts, data scientists, and data app developers to extract insights, query datasets, and integrate data into applications efficiently.
+        The Data Product Hub allows users to discover and explore curated data products, including their semantic models. It provides access to Graphql  queries, enabling interaction with structured enterprise data for analytics and integration. GraphQL allows users to request only the data they need, making it useful for data analysts, business analysts, data scientists, and data app developers to extract insights, query datasets, and integrate data into applications efficiently.&#x20;
+
+
+
+        Follow the below steps to explore the semantic model using Graphql.
+
+        <Steps>
+          <Step>
+            Navigate to the Data Product Hub and select the desired Data Product whose semantic model you wish to explore using the Graphql API.
+          </Step>
+
+          <Step>
+            After selecting the data product, click on the 'Explore' button. This will open the Explorer Studio.
+          </Step>
+
+          <Step>
+            Inside the studio, choose the desired dimensions and measures for your analysis.As you select the dimensions and measures, the Graphql query is automatically generated for you.
+          </Step>
+
+          <Step>
+            After selecting the data product, click on the Explore button. This will open the Explorer Studio. Inside the studio, choose the desired dimensions and measures for your analysis.As you select the dimensions and measures, the Graphql query is automatically generated for you.
+
+            ![](/Screenshotfrom2025-01-2915-25-37.png)
+          </Step>
+
+          <Step>
+            Click on the `Try it Out` button to the Graphql Playground will open, allowing you to test and run your Graphql queries.
+
+            ![](/image.png)
+
+
+          </Step>
+        </Steps>
+
 
       </Tab>
 
       <Tab title="Curl">
-        * **Curl** – A command-line tool for making API requests, useful for automation and scripting.
+        * **Curl** is a command-line tool for making API requests, useful for automation and scripting.
 
-        *
+        /steps
       </Tab>
 
       <Tab title="Python " />
     </Tabs>
-
-    ## Authentication and Authorization
-
-    To securely interact with the Lens GraphQL API, you must authenticate your requests using a DataOS API key and ensure proper user group configurations. This section explains how to generate an API key and configure user groups to access the API.
-
-
-
-    <Tabs>
-      <Tab title="Using CLI">
-        To create the dataos user apikey follow the below steps:
-      </Tab>
-
-      <Tab title="Using DPH">
-
-      </Tab>
-    </Tabs>
-
-    * Note down your API key and keep it secure. You will use this key to authenticate your API requests.
   </Accordion>
 
   <Accordion title="Python" defaultOpen={false} />
