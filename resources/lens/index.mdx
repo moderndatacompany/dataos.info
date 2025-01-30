@@ -114,7 +114,7 @@ The process begins with creating a new Lens project and generating a data model.
     [lens template](/resources/lens/lens_model_folder_setup/lens-project-template.zip)
 
     <Steps>
-      <Step title="Load data from the data source" titleSize="h3">
+      <Step title="Load data from the data source" titleSize="h2">
         In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure that only the necessary columns are extracted, and the SQL dialect is specific to the data source.
 
         For example, a simple data load might look like this:
@@ -328,24 +328,11 @@ The process begins with creating a new Lens project and generating a data model.
 
     After configuring the deployment file with the necessary settings and specifications, apply the manifest using the following command:
 
-    <CodeGroup>
-      ```javascript Command
+    <Code>
+      ```yaml Command
       dataos-ctl resource apply -f ${manifest-file-path}
       ```
-
-      ```
-      dataos-ctl apply -f ${manifest-file-path}
-      ```
-
-      ```
-      dataos-ctl apply -f /lens/lens_deployment.yml -w curriculum
-      # Expected output
-      INFO[0000] 🛠 apply...                                   
-      INFO[0000] 🔧 applying(curriculum) sales360:v1alpha:lens... 
-      INFO[0001] 🔧 applying(curriculum) sales360:v1alpha:lens...created 
-      INFO[0001] 🛠 apply...complete
-      ```
-    </CodeGroup>
+    </Code>
 
     ## Docker compose manifest file
 
@@ -475,7 +462,7 @@ The process begins with creating a new Lens project and generating a data model.
     [lens template](https://dataosinfo.mintlify.app/resources/lens/lens_model_folder_setup/lens-project-template.zip)
 
     <Steps>
-      <Step title="Load data from the data source" titleSize="h3">
+      <Step title="Load data from the data source" titleSize="h2">
         In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure, only the necessary columns are extracted, and the SQL dialect is specific to the bigquery. For instance,
 
         * &#x20;format table names as: `project_id.dataset.table`.
@@ -701,21 +688,11 @@ The process begins with creating a new Lens project and generating a data model.
 
     ## Step 4: Apply the Lens deployment manifest file
 
-    After configuring the deployment file with the necessary settings and specifications, apply the manifest using the following command:
+    After configuring the deployment file with the necessary settings and specifications, apply the manifest using the following command. Replace the placeholder with the&#x20;
 
-    <CodeGroup>
-      ```yaml Command
-      dataos-ctl resource apply -f {manifest-file-path}
-      ```
-
-      ```yaml
-      dataos-ctl  apply -f {manifest-file-path}
-      ```
-
-      ```yaml
-      dataos-ctl resource apply -f lens/lens_deployemnt.yml
-      ```
-    </CodeGroup>
+    ```
+    dataos-ctl apply -f {manifest-file-path}}
+    ```
 
     ## Docker compose manifest file
 
@@ -812,7 +789,7 @@ The process begins with creating a new Lens project and generating a data model.
     [lens template](/resources/lens/lens_model_folder_setup/lens-project-template.zip)
 
     <Steps>
-      <Step title="Load data from the data source" titleSize="h3">
+      <Step title="Load data from the data source" titleSize="h2">
         In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure that only the necessary columns are extracted, and the SQL dialect is specific to the data source.
 
         For example, a simple data load might look like this:
@@ -931,24 +908,9 @@ The process begins with creating a new Lens project and generating a data model.
 
     After configuring the deployment file with the necessary settings and specifications, apply the manifest using the following command:
 
-    <CodeGroup>
-      ```yaml Command
-      dataos-ctl resource apply -f ${manifest-file-path}
-      ```
-
-      ```
-      dataos-ctl apply -f ${manifest-file-path}
-      ```
-
-      ```
-      dataos-ctl apply -f /lens/lens_deployment.yml -w curriculum
-      # Expected output
-      INFO[0000] 🛠 apply...                                   
-      INFO[0000] 🔧 applying(curriculum) sales360:v1alpha:lens... 
-      INFO[0001] 🔧 applying(curriculum) sales360:v1alpha:lens...created 
-      INFO[0001] 🛠 apply...complete
-      ```
-    </CodeGroup>
+    ```
+    dataos-ctl  apply -f ${manifest-file-path}
+    ```
 
     ## Docker compose manifest file
 
@@ -1042,7 +1004,7 @@ The process begins with creating a new Lens project and generating a data model.
     Organize the semantic model folder with the following structure to define tables, views, and user groups:
 
     <Steps>
-      <Step title="Load data from the data source" titleSize="h3">
+      <Step title="Load data from the data source" titleSize="h2">
         In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure the SQL dialect matches snowflake syntax. Format table names as `schema.table`.
 
         For example, a simple data load might look like this:
@@ -1074,7 +1036,7 @@ The process begins with creating a new Lens project and generating a data model.
         ```
       </Step>
 
-      <Step title="Define the table in the model" titleSize="h3">
+      <Step title="Define the table in the model" titleSize="h2">
         Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For example, to define a table for `sales `data:
 
         ```yaml
@@ -1122,7 +1084,7 @@ The process begins with creating a new Lens project and generating a data model.
         To know more about Segments click [here](/resources/lens/working_with_segments/).
       </Step>
 
-      <Step title="Create the views" titleSize="h3">
+      <Step title="Create the views" titleSize="h2">
         Create a **views** folder to store all logical views, with each view defined in a separate YAML file (e.g., `sample_view.yml`). Each view references dimensions, measures, and segments from multiple logical tables. For instance the following`customer_churn` view is created.
 
         ```yaml
@@ -1143,7 +1105,7 @@ The process begins with creating a new Lens project and generating a data model.
         To know more about the Views click [here](https://dataos.info/resources/lens/working_with_views/).
       </Step>
 
-      <Step title="Create user groups" titleSize="h3">
+      <Step title="Create user groups" titleSize="h2">
         This YAML manifest file is used to manage access levels for the Lens semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, there is a 'default' user group in the YAML file that includes all users.
 
         ```yaml
@@ -1240,19 +1202,9 @@ The process begins with creating a new Lens project and generating a data model.
 
     After configuring the deployment file with the necessary settings, apply the manifest using the following command:
 
-    <CodeGroup>
-      ```javascript Command
-      dataos-ctl resource apply -f ${manifest-file-path}
-      ```
-
-      ```
-      dataos-ctl apply -f ${manifest-file-path}
-      ```
-
-      ```
-      dataos-ctl apply -f lens/lens_deployment.yml
-      ```
-    </CodeGroup>
+    ```
+    dataos-ctl apply -f ${manifest-file-path}
+    ```
   </Accordion>
 </AccordionGroup>
 
