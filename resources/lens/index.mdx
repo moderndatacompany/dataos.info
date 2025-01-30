@@ -1232,7 +1232,7 @@ The process begins with creating a new Lens project and generating a data model.
     ```
 
     <Steps>
-      <Step title="Load data from the data source" titleSize="h3">
+      <Step title="Load data from the data source" titleSize="h2">
         In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure that only the necessary columns are extracted, and the SQL dialect is specific to the data source.
 
         For example, a simple data load might look like this:
@@ -1468,7 +1468,7 @@ The process begins with creating a new Lens project and generating a data model.
     To check the query statistics, please follow the steps below:
 
     <Steps>
-      <Step title="Open the Operations app">
+      <Step title="Open the Operations app" titleSize="h2">
         By default, the **User Space** tab is displayed upon accessing the Operations app. In User Space click on the 'Minerva Queries' tab to view query execution details.
 
         Set the following filters:
@@ -1482,7 +1482,7 @@ The process begins with creating a new Lens project and generating a data model.
         ![](https://mintlify.s3-us-west-1.amazonaws.com/dataosinfo/resources/lens/data_sources/minerva/Untitled1.png)
       </Step>
 
-      <Step title="Select the query id">
+      <Step title="Select the query id" titleSize="h2">
         Identify and choose the **Query ID** of interest from the **Minerva Queries** tab. Once selected, the system will display detailed execution statistics, providing insights into performance, execution time, and resource utilization.
       </Step>
     </Steps>
@@ -1509,7 +1509,7 @@ The process begins with creating a new Lens project and generating a data model.
     ```
 
     <Steps>
-      <Step title="Load data from the data source" titleSize="h3">
+      <Step title="Load data from the data source" titleSize="h2">
         In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure that only the necessary columns are extracted, and the SQL dialect is specific to the data source.
 
         For example, a simple data load might look like this:
@@ -1752,6 +1752,8 @@ After creating a Lens data model, the next step is to consume it—this means in
 
         * **CURL**: Ensure that CURL is installed on your system. Windows users may need to use `curl.exe`.
 
+        * **Version compatibility:** It is strongly recommended to download Power BI Version `2.132.908.0` or later to fully utilize `.pbip` files.&#x20;
+
         * **Lens API Endpoint**: The API endpoint provided by Lens to synchronize the semantic model, enabling integration with Power BI.
 
         * **DataOS API key**: You will need your apikey  for authentication. The API key can be obtained using the following command in your terminal:
@@ -1761,16 +1763,20 @@ After creating a Lens data model, the next step is to consume it—this means in
         Use the following CURL command to synchronize the semantic model with Power BI:
 
         <CodeGroup>
-          ```bash Command
+          ```javascript Command
           curl --location --request POST 'https://<DATAOS_FQDN>/lens2/sync/api/v1/power-bi/<workspace_name>:<lens_name>' \
             --header 'apikey: ${APIKEY}' \
             --output ${FILE_NAME}.zip
           ```
 
           ```
-          curl --location --request POST 'https://alpha-omega.dataos.app /lens2/sync/api/v1/power-bi/curriculum:sales360' \
-            --header 'apikey: abcdefgHi==' \
-            --output ${FILE_NAME}.zip  
+          curl --location --request POST 'https://</lens2/sync/api/v1/power-bi/<workspace_name>:<lens_name>' \
+            --header 'apikey: ${APIKEY}' \
+            --output ${FILE_NAME}.zip
+          ```
+
+          ```
+          console.log("Hello World");
           ```
         </CodeGroup>
 
@@ -1778,11 +1784,75 @@ After creating a Lens data model, the next step is to consume it—this means in
 
         | Parameter      | Description                                                                                                               |
         | -------------- | ------------------------------------------------------------------------------------------------------------------------- |
-        | URL            | The URL  for syncing Lens with Power BI. It includes:                                                                     |
-        | apikey         | User's API key for the current context in Lens.                                                                           |
+        | `URL`          | The URL  for syncing Lens with Power BI. It includes:                                                                     |
+        | `apikey`       | User's API key for the current context in Lens.                                                                           |
         | `filename.zip` | Here you give the name of the Power BI file with which name you wish to download it. For example, `product-analysis.zip`. |
 
-        This is a  workspace.
+        The `file.zip` includes essential components for syncing a Lens Model with Power BI, organized into folders such as `.Report` and `.SemanticModel`:
+
+        ## Steps
+
+        To begin syncing a Lens model, the following steps should be followed:
+
+        <Steps>
+          <Step title="Open the terminal" titleSize="h2">
+            Open the terminal and paste the following command:
+
+            ```
+            curl --location --request POST 'https://tcp.{context}.dataos.app/lens2/sync/api/v1/power-bi/{workspace_name}:{lens_name}' --header 'apikey: abcdefgh==' --output {file.zip}
+            ```
+
+            Replace the placeholders with your current context, workspace, lens name and the apikey.
+          </Step>
+
+          <Step title=" Extract the zip file" titleSize="h2">
+            Once the command is executed, a zip file will be downloaded to the specified directory. The downloaded file should be unzipped. Three folders will be found inside, all of which are necessary for semantic synchronization with Power BI.
+
+            ![Superset Configuration](https://dataos.info/resources/lens/bi_integration/powerbi2.png)
+
+            <Note>
+              Ensure that `.pbip` folders are fully extracted before opening them.Failure to do so may result in missing file errors, as shown below:
+              ![Superset Configuration](https://dataos.info/resources/lens/bi_integration/image.png)
+            </Note>
+          </Step>
+
+          <Step title="Open the `.pbip` file" titleSize="h2">
+            Click on the file with `.pbip` extension to open  the Power BI file in the Power BI Desktop.
+
+            ![Superset Configuration](https://dataos.info/resources/lens/bi_integration/powerbi3.png)
+          </Step>
+
+          <Step title="Enter credentials" titleSize="h2">
+            After opening the file, a popup will prompt for credentials. The DataOS username and API key should be entered.
+
+            ![Superset Configuration](https://dataos.info/resources/lens/bi_integration/powerbi4.png)
+          </Step>
+
+          <Step title=" Connect to DataOS" titleSize="h2">
+            ![Superset Configuration](https://dataos.info/resources/lens/bi_integration/powerbi6.png)
+            Click on the connect button. A popup will appear. Click Ok.
+          </Step>
+
+          <Step title="Create dashboards" titleSize="h2">
+            Upon successful connection, tables and views will be accessible, displaying dimensions and measures. Now you are ready to create dashboards.
+          </Step>
+        </Steps>
+
+        ## Important considerations
+
+        * **Measure naming convention:** In Power BI, measures typically have an 'm\_' prefix to indicate they represent a measure. For example, a measure calculating total revenue might be named m\_total\_revenue.
+
+        * **Live connection:** The connection is live, meaning any changes to the underlying data will be reflected in Power BI.
+
+        * **Schema changes:** If schema changes occur, such as the addition of new dimensions and measures, the steps outlined above will need to be repeated.
+
+        * **Row Limit:** The Lens API has a maximum return limit of 50,000 rows per request. To obtain additional data, it is necessary to set an offset. This row limit is in place to manage resources efficiently and ensure optimal performance.
+
+        * **Selection:** It is important to select fields from tables that are directly related or logically joined, as the system does not automatically identify relationships between tables through transitive joins. Selecting fields from unrelated tables may result in incorrect or incomplete results.
+
+        ## Data governance and access control
+
+        Data masking, restrictions, or permissions established by the publisher are automatically enforced for all report viewers, ensuring consistent data security and compliance. The behavior of these data policies, such as masking, may vary based on the user of the Power BI desktop.
       </Tab>
 
       <Tab title="Using DPH" />
