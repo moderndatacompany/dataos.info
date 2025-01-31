@@ -318,6 +318,9 @@ workflow:
 
 </details>
 
+
+## Soda check references
+
 Explore the available checks within each category by clicking on the respective category names below:
 
 - [Accuracy](/resources/stacks/soda/accuracy_checks/)

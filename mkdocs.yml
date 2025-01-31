@@ -123,8 +123,8 @@ markdown_extensions:
   - pymdownx.tilde
 #  - pymdownx.extra
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
       options:
         custom_icons:
           - overrides/.icons
@@ -210,7 +210,7 @@ nav:
       #   - Elements of Lens: 
       #     - interfaces/lens/elements_of_lens/index.md
       #     - Entities: interfaces/lens/elements_of_lens/entity.md
-      #     - Fields: interfaces/lens/elements_of_lens/fields.md
+      #     - Fields: interfaces/lens/elements_of_lens/fields.md      
       #     - Dimensions: interfaces/lens/elements_of_lens/dimensions.md
       #     - Measures: interfaces/lens/elements_of_lens/measures.md
       #     - Relationships: interfaces/lens/elements_of_lens/relationships.md
@@ -453,9 +453,7 @@ nav:
             - resources/stacks/steampipe/index.md
           - Talos:
             - resources/stacks/talos/index.md
-            - Setting Up Talos: 
-              - On Local: resources/stacks/talos/local_set_up.md
-              - On DataOS: resources/stacks/talos/set_up.md
+            - Setting Up Talos: resources/stacks/talos/set_up.md
             - Configurations: 
               - resources/stacks/talos/configurations/index.md
               - config.yaml: resources/stacks/talos/configurations/config.md

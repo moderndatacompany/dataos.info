@@ -19,7 +19,7 @@ Before initiating the deployment process, please ensure you have the following:
 
 Follow the steps below to deploy Lens on DataOS:
 
-### **Step 1: Push the Lens model directory to a code repository**
+### **Step 1: Push the created model directory to a code repository**
 
 **Pushing to a public code repository**
 

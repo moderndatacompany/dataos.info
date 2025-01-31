@@ -1,4 +1,4 @@
-# How to Cache a Dataset Using Flash?
+# How to cache a dataset using Flash?
 
 This section provides guidance for caching datasets using the Flash Service in DataOS.
 

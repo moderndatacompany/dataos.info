@@ -32,10 +32,6 @@ As the `crm_raw_data` dataset contains more than necessary fields, it is transfo
 
 Similarly, for the purchase and product dataset, the necessary measures and dimensions need to be selected, and the column `id` must be renamed to `customer_id`.
 
-### **Defining model**
-
-The data model is defined in collaboration with the development team. It incorporates three key metrics derived from the customer, product, and purchase tables: cross-sell opportunity score, purchase frequency, and total spending.
-
 ### **Defining quality checks**
 
 After analyzing the data using Workbench, several quality checks are established to ensure adherence to data quality standards:
@@ -45,6 +41,12 @@ After analyzing the data using Workbench, several quality checks are established
 - **Freshness:** Purchase data must be kept up to date.
 - **Uniqueness:** Each `customer_id` must be unique, with no duplicates permitted.
 - **Validity:** The `mntwines` attribute must conform to specified criteria, ensuring the data falls within a valid range of 0 to 1. Any occurrence where the invalid count (`invalid_count(mntwines)`) exceeds 0 highlights a data quality issue that requires attention.
+
+Explore the full range of Soda quality checks available for implementation [here](/resources/stacks/soda/#soda-check-references/).
+
+### **Defining model**
+
+The data model is defined in collaboration with the development team. It incorporates three key metrics derived from the customer, product, and purchase tables: cross-sell opportunity score, purchase frequency, and total spending.
 
 ### **Defining metadata of the Data Product**
 
@@ -274,6 +276,184 @@ workflow:
 ```yaml
 dataos-ctl resource apply -f  /office/dp/flare1.yaml
 ```
+
+### **Create the Soda Workflow for quality checks**
+
+After data ingestion, the next step is to create and apply quality checks on the input datasets using [Soda Stack](/resources/stacks/soda/). This requires creating a manifest file for each dataset, as shown below.
+
+<details>
+
+  <summary>Customer table manifest file</summary>
+
+```yaml title="customer.yaml"
+
+name: soda-customer-quality
+version: v1
+type: workflow
+tags:
+  - workflow
+  - soda-checks
+description: Applying quality checks for the customer data
+workspace: public
+workflow:
+  dag:
+    - name: soda-customer-quality
+      spec:
+        stack: soda+python:1.0
+        compute: runnable-default
+        resources:
+          requests:
+            cpu: 1000m
+            memory: 250Mi
+          limits:
+            cpu: 1000m
+            memory: 250Mi
+        logLevel: INFO # WARNING, ERROR, DEBUG
+        stackSpec:
+          inputs:
+            - dataset: dataos://icebase:customer_relationship_management/customer
+              options:
+                engine: minerva
+                clusterName: system
+              profile:
+                columns:
+                  - include *
+              checks:  
+                - schema:
+                    name: Data type of birth year should be integer
+                    fail:
+                      when wrong column type:
+                        birth_year: string
+                    attributes:
+                      category: Schema
+  
+                - missing_count(customer_id) = 0:
+                    name:  Customer Id should not be zero
+                    attributes:
+                      category: Completeness
+
+                - duplicate_count(customer_id) = 0:
+                    name:  Customer Id should not be duplicated
+                    attributes:
+                      category: Uniqueness
+```
+</details>
+
+    
+
+    
+
+<details>
+
+  <summary>Product table manifest file</summary>
+
+```yaml title="product.yaml"
+
+name: soda-produtc-quality
+version: v1
+type: workflow
+tags:
+  - workflow
+  - soda-checks
+description: Applying quality checks for the produtc data
+workspace: public
+workflow:
+  dag:
+    - name: soda-product-quality-job
+      spec:
+        stack: soda+python:1.0
+        compute: runnable-default
+        resources:
+          requests:
+            cpu: 1000m
+            memory: 250Mi
+          limits:
+            cpu: 1000m
+            memory: 250Mi
+        logLevel: INFO # WARNING, ERROR, DEBUG
+        stackSpec:
+          inputs:
+            - dataset: dataos://icebase:customer_relationship_management/product              
+              options:
+                engine: minerva
+                clusterName: system
+              profile:
+                columns:
+                  - include *
+              checks:  
+                - schema:
+                    name: Response should be in integer format
+                    fail:
+                      when wrong column type:
+                        response: string
+                    attributes:
+                      category: Schema
+```
+</details>
+    
+
+
+
+<details>
+
+  <summary>Purchase table manifest file</summary>
+
+```yaml title="purchase.yaml"
+
+    name: soda-purchase-quality
+    version: v1
+    type: workflow
+    tags:
+      - workflow
+      - soda-checks
+    description: Applying quality checks for the purchase data
+    workspace: public
+    workflow:
+      dag:
+        - name: soda-purchase-quality-job
+          spec:
+            stack: soda+python:1.0
+            compute: runnable-default
+            resources:
+              requests:
+                cpu: 1000m
+                memory: 250Mi
+              limits:
+                cpu: 1000m
+                memory: 250Mi
+            logLevel: INFO # WARNING, ERROR, DEBUG
+            stackSpec:
+              inputs:
+                - dataset: dataos://icebase:customer_relationship_management/purchase
+                  options:
+                    engine: minerva
+                    clusterName: system
+                  profile:
+                    columns:
+                      - include *
+                  checks:  
+                    - freshness(purchase_date) < 2d:
+                        name: If data is older than 2 days 
+                        attributes:
+                          category: Freshness
+    
+                    - schema:
+                        name: Data type of recency should be integer
+                        fail:
+                          when wrong column type:
+                            recency: string
+                        attributes:
+                          category: Schema
+```
+</details>
+    
+
+**Applying each manifest file using the following command:**
+
+```bash
+dataos-ctl apply -f home/office/resources/quality/customer.yaml
+```
+
 
 ### **Create the Lens model**
 
@@ -1065,181 +1245,6 @@ bundle:
 dataos-ctl resource apply -f home/work/product_affinity/bundle.yaml
 ```
 
-### **Create the Soda Workflow/Service for quality checks**
-
-After data modeling, the next step is to create and apply quality checks using [Soda Stack](/resources/stacks/soda/). This requires creating a manifest file for each dataset, as shown below.
-
-<details>
-
-  <summary>Customer table manifest file</summary>
-
-```yaml title="customer.yaml"
-
-name: soda-customer-quality
-version: v1
-type: workflow
-tags:
-  - workflow
-  - soda-checks
-description: Applying quality checks for the customer data
-workspace: public
-workflow:
-  dag:
-    - name: soda-customer-quality
-      spec:
-        stack: soda+python:1.0
-        compute: runnable-default
-        resources:
-          requests:
-            cpu: 1000m
-            memory: 250Mi
-          limits:
-            cpu: 1000m
-            memory: 250Mi
-        logLevel: INFO # WARNING, ERROR, DEBUG
-        stackSpec:
-          inputs:
-            - dataset: dataos://icebase:customer_relationship_management/customer
-              options:
-                engine: minerva
-                clusterName: system
-              profile:
-                columns:
-                  - include *
-              checks:  
-                - schema:
-                    name: Data type of birth year should be integer
-                    fail:
-                      when wrong column type:
-                        birth_year: string
-                    attributes:
-                      category: Schema
-  
-                - missing_count(customer_id) = 0:
-                    name:  Customer Id should not be zero
-                    attributes:
-                      category: Completeness
-
-                - duplicate_count(customer_id) = 0:
-                    name:  Customer Id should not be duplicated
-                    attributes:
-                      category: Uniqueness
-```
-</details>
-
-    
-
-    
-
-<details>
-
-  <summary>Product table manifest file</summary>
-
-```yaml title="product.yaml"
-
-name: soda-produtc-quality
-version: v1
-type: workflow
-tags:
-  - workflow
-  - soda-checks
-description: Applying quality checks for the produtc data
-workspace: public
-workflow:
-  dag:
-    - name: soda-product-quality-job
-      spec:
-        stack: soda+python:1.0
-        compute: runnable-default
-        resources:
-          requests:
-            cpu: 1000m
-            memory: 250Mi
-          limits:
-            cpu: 1000m
-            memory: 250Mi
-        logLevel: INFO # WARNING, ERROR, DEBUG
-        stackSpec:
-          inputs:
-            - dataset: dataos://icebase:customer_relationship_management/product              options:
-                engine: minerva
-                clusterName: system
-              profile:
-                columns:
-                  - include *
-              checks:  
-                - schema:
-                    name: Response should be in integer format
-                    fail:
-                      when wrong column type:
-                        response: string
-                    attributes:
-                      category: Schema
-```
-</details>
-    
-
-
-
-<details>
-
-  <summary>Purchase table manifest file</summary>
-
-```yaml title="purchase.yaml"
-
-    name: soda-purchase-quality
-    version: v1
-    type: workflow
-    tags:
-      - workflow
-      - soda-checks
-    description: Applying quality checks for the purchase data
-    workspace: public
-    workflow:
-      dag:
-        - name: soda-purchase-quality-job
-          spec:
-            stack: soda+python:1.0
-            compute: runnable-default
-            resources:
-              requests:
-                cpu: 1000m
-                memory: 250Mi
-              limits:
-                cpu: 1000m
-                memory: 250Mi
-            logLevel: INFO # WARNING, ERROR, DEBUG
-            stackSpec:
-              inputs:
-                - dataset: dataos://icebase:customer_relationship_management/purchase
-                  options:
-                    engine: minerva
-                    clusterName: system
-                  profile:
-                    columns:
-                      - include *
-                  checks:  
-                    - freshness(purchase_date) < 2d:
-                        name: If data is older than 2 days 
-                        attributes:
-                          category: Freshness
-    
-                    - schema:
-                        name: Data type of recency should be integer
-                        fail:
-                          when wrong column type:
-                            recency: string
-                        attributes:
-                          category: Schema
-```
-</details>
-    
-
-**Applying each manifest file using the following command:**
-
-```bash
-dataos-ctl apply -f home/office/resources/quality/customer.yaml
-```
 
 ### **Create a Data Product manifest file**
 
@@ -1256,7 +1261,7 @@ tags:
   - DPUsecase.Customer Segmentation
   - DPUsecase.Product Recommendation
   - DPTier.DataCOE Approved
-gdescription: Leverages product affinity analysis to identify cross-sell opportunities, enabling businesses to enhance customer recommendations and drive additional sales by understanding the relationships between products purchased together
+description: Leverages product affinity analysis to identify cross-sell opportunities, enabling businesses to enhance customer recommendations and drive additional sales by understanding the relationships between products purchased together
 refs:
 - title: 'Workspace Info'
   href: https://dataos.info/interfaces/cli/command_reference/#workspace
@@ -1269,9 +1274,9 @@ v1beta:
       trackerUrl: https://rubikai.atlassian.net/browse/DPRB-65
  
     collaborators:
-      - name: kanakgupta
+      - name: iamgroot
         description: developer
-      - name: soumadipde
+      - name: thisisthor
         description: consumer
 
     resource:
