@@ -1855,7 +1855,74 @@ After creating a Lens data model, the next step is to consume it—this means in
         Data masking, restrictions, or permissions established by the publisher are automatically enforced for all report viewers, ensuring consistent data security and compliance. The behavior of these data policies, such as masking, may vary based on the user of the Power BI desktop.
       </Tab>
 
-      <Tab title="Using DPH" />
+      <Tab title="Using DPH">
+        <Steps>
+          <Step title="Navigate to the Data Product Hub" titleSize="h2">
+            Access the Home Page of DataOS. From there, navigate to the Data Product Hub to explore the various Data Products available within the platform.
+
+            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/image%20\(1\).png)
+          </Step>
+
+          <Step title="Browse and select a Data Product" titleSize="h2">
+            Browse the list of Data Products and select a specific Data Product to initiate integration with Power BI. For example, selecting 'Sales360' allows detailed exploration and integration of the Sales360 Data Product.
+
+            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/image%20\(2\).png)
+          </Step>
+
+          <Step title="Access integration options" titleSize="h2">
+            Go to the BI Sync option under the Access Options tab. Scroll down to locate the Excel and Power BI section, and click the Download .pbip File button to download the ZIP folder.
+
+            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/powerbi/Powerbi3.png)
+          </Step>
+
+          <Step title="Download and open the ZIP file" titleSize="h2">
+            Access the downloaded ZIP file on the local system and extract its contents to the specified directory. The extracted folder will contain three files. Ensure all three files remain in the same directory to maintain semantic synchronization of the Data Product.
+
+            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Untitled%20\(15\).png)
+
+            The folder contains the main components of a Power BI project for syncing the Lens model (here `sales360`) including folders like the `.Report` and `.SemanticModel`. Following is the brief description of each:
+
+            * **public\_sales360-table.Report:** This folder contains `definition.pbir` file related to the report definition in Power BI. These files define the visual representation of data, such as tables and charts, without storing actual data. They connect the semantic model and data sources to create the report views.
+
+            * **public-sales360-table.SemanticModel:** This folder contains files that define the underlying data model for your Power BI project. The semantic model plays a crucial role in managing how Power BI interacts with data, setting up relationships, hierarchies, and measures.
+
+              * **definition.bism:** This file represents the Business Intelligence Semantic Model (BISM). It defines the structure of your data, including data sources, relationships, tables, and measures for your Lens semantic model. The `.bism` file holds essential metadata that helps Power BI understand and query the data, forming the core of the data model for report creation and analysis.
+
+              * **model.bim:** Power BI uses the `.bim` file to generate queries and manage interactions with the dataset. When you build reports or dashboards in Power BI, it references this semantic model to ensure the correct structure is applied to the data.
+
+            * **public-sales-360-table.pbip:** This file serves as a Power BI project template or configuration file. Power BI uses files like `.pbip` or `.pbix` to encapsulate reports, datasets, and visualizations. The `.pbip` file ties together the semantic model and report definitions from the other folders, acting as the entry point for working on the project in Power BI Desktop or the Power BI service.
+          </Step>
+
+          <Step title="Enter credentials" titleSize="h2">
+            Open the `public_sales360` file in Power BI, once the file is opened, a popup will appear prompting for the DataOS username and API key.
+
+            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Untitled%20\(16\).png)
+            Click the connect button. A popup will appear; click OK.
+          </Step>
+
+          <Step title="View data in Power BI" titleSize="h2">
+            After connecting, users can see tables and views containing dimensions and measures and create dashboards.
+
+            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Untitled%20\(19\).png)
+          </Step>
+        </Steps>
+
+        ## Important considerations
+
+        * **Measure naming convention:** In Power BI, measures typically have an 'm\_' prefix to indicate they represent a measure. For example, a measure calculating total revenue might be named m\_total\_revenue.
+
+        * **Live connection:** The connection is live, meaning any changes to the underlying data will be reflected in Power BI.
+
+        * **Schema changes:** If schema changes occur, such as the addition of new dimensions and measures, the steps outlined above will need to be repeated.
+
+        * **Row Limit:** The Lens API has a maximum return limit of 50,000 rows per request. To obtain additional data, it is necessary to set an offset. This row limit is in place to manage resources efficiently and ensure optimal performance.
+
+        * **Selection:** It is important to select fields from tables that are directly related or logically joined, as the system does not automatically identify relationships between tables through transitive joins. Selecting fields from unrelated tables may result in incorrect or incomplete results.
+
+        ## Data governance and access control
+
+        Data masking, restrictions, or permissions established by the publisher are automatically enforced for all report viewers, ensuring consistent data security and compliance. The behavior of these data policies, such as masking, may vary based on the user of the Power BI desktop.
+      </Tab>
     </Tabs>
   </Accordion>
 
