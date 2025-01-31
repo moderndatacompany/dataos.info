@@ -10,12 +10,13 @@ There are two methods to interact  with the Excel via PowerBI
 
 - [Using third party tool -  Analyze in Excel](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/#using-analyze-in-excel)
 
-- [Using PowerBI Service Account](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/#using-powerbi-service-account)
+<!-- - [Using PowerBI Service Account](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/#using-powerbi-service-account) -->
 
+<!-- 
 ## Prerequisites
 
 - **Power BI Desktop**: Ensure you have Power BI Desktop installed on your system.
-- **Follow the Power BI Integration steps**: Complete the necessary steps for Power BI integration as outlined in the Power BI guide.
+- **Follow the Power BI Integration steps**: Complete the necessary steps for Power BI integration as outlined in the Power BI guide. -->
 
 ## Using Analyze in Excel
 
@@ -41,12 +42,12 @@ In Excel, you can now use PivotTables, charts, and other Excel features to analy
 
 ![powerbi_excel.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_excel.png)
 
-<aside class="callout">
+<!-- <aside class="callout">
 💡 Ensure that Power BI Desktop remains open while working in Excel, as Power BI acts as the server for the data connection with Excel.
 
-</aside>
+</aside> -->
 
-## Using PowerBI Service Account
+<!-- ## Using PowerBI Service Account
 
 ### **Step 1: Publish the report to Power BI Service**
 
@@ -109,4 +110,4 @@ The *'Analyze in Excel' page should now appear, allowing you to interact with th
 
 Analyze in Excel page appears.
 
-![analyze_in_excel.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/analyze_in_excel.png)
+![analyze_in_excel.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/analyze_in_excel.png) -->
