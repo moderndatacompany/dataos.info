@@ -5,7 +5,7 @@
 This recipe exposes a REST API using a Beacon Service on top of `retail101` database.
 
 ```yaml title="beacon_rest_stack_retail_service.yml" 
---8<-- "examples/resources/stacks/beacon/beacon_rest_stack_retail_service.yml"
+--8<-- "/examples/resources/stacks/beacon/beacon_rest_stack_retail_service.yml"
 ``` 
 
 ## Code Snippet 2
