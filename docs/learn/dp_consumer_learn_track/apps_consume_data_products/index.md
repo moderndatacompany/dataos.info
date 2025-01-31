@@ -2,11 +2,35 @@
 
 This topic discusses several ways DataOS enables users to consume data products—through applications built using Streamlit, Appsmith, etc., leveraging REST APIs, GraphQL, and LLM capabilities. You can develop and deploy custom applications to consume data products. Whether you're building dashboards, analytical tools, or specialized business applications, DataOS makes it easy to integrate and access these applications.
 
+<div class= "grid cards" markdown>
+
+-   :simple-streamlit:{ .lg .middle } **Streamlit applications**
+
+    ---
+    One popular way to consume your data product is by building a Streamlit application powered by the DataOS REST API.
+
+    [:octicons-arrow-right-24: Learn more](/learn/dp_consumer_learn_track/apps_consume_data_products/#streamlit-applications)
+
+
+-   :fontawesome-solid-user-gear:{ .lg .middle } **Appsmith applications**
+
+    ---
+    You can create custom Appsmith applications that seamlessly integrate with DataOS data products, connecting through REST APIs, PostgreSQL, or GraphQL.
+
+    [:octicons-arrow-right-24:  Learn more](/learn/dp_consumer_learn_track/apps_consume_data_products/#appsmith-applications)
+
+-   :material-application-settings-outline:{ .lg .middle } **SOPHOS LLM application**
+
+    ---
+    Sophos integrates LLM capabilities, enabling natural language queries on your data product's semantic model.
+
+    [:octicons-arrow-right-24: Learn more](/learn/dp_consumer_learn_track/apps_consume_data_products/#sophos-llm-application)
+
+</div>
+
 ## Streamlit applications
 
-One popular way to consume your data product is by building a Streamlit application powered by the DataOS REST API.
-
-Here is the sample Streamlit application built which is powered by the example data product.
+Here is the sample Streamlit application built which is powered by the example data product- Product Affinity.
 
 ### **Deploying Streamlit application on DataOS**
 
