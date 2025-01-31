@@ -7,11 +7,13 @@ depot:
   description: ${{To write data to postgresql database}}
   external: ${{true}}
   secrets:
-    - name: ${{sf-instance-secret-name}}-r
-      allkeys: true
+    - name: ${{instance-secret-name}}-r
+      keys: 
+        - ${{instance-secret-name}}-r
 
-    - name: ${{sf-instance-secret-name}}-rw
-      allkeys: true
+    - name: ${{instance-secret-name}}-rw
+      keys: 
+        - ${{instance-secret-name}}-rw
   postgresql:                        
     subprotocol: "postgresql"
     host: ${{host}}
