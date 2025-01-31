@@ -11,11 +11,13 @@ depot:
   description: ${{description}} # optional
   external: ${{true}}
   secrets:
-    - name: ${{bq-instance-secret-name}}-r
-      allkeys: true
+    - name: ${{instance-secret-name}}-r
+      keys: 
+        - ${{instance-secret-name}}-r
 
-    - name: ${{bq-instance-secret-name}}-rw
-      allkeys: true
+    - name: ${{instance-secret-name}}-rw
+      keys: 
+        - ${{instance-secret-name}}-rw
   bigquery:  # optional                         
     project: ${{project-name}} # optional
     params: # optional
