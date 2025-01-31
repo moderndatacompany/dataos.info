@@ -23,7 +23,6 @@ Get a solid foundation on what Data Products are and how they can drive insights
 
 -   [Features and importance of Data Products](/learn/dp_consumer_learn_track/introduction_data_product/)
 
-
 </div>
 
 ## Module 2: Discovering Data Products
@@ -92,7 +91,7 @@ Learn how to assess data quality through key factors like accuracy, consistency,
 
 ## Module 7: Integrating Data Products with BI tools and applications
 
-Unlock the power of Data Products by connecting them to BI tools. Learn to use the data product in Jupyter Notebooks for AI/ML development, query data via Postgres or GraphQL, and easily integrate with your apps using flexible APIs.
+Unlock the power of Data Products by connecting them to BI tools. Learn to use the data product in Jupyter Notebooks for AI/ML development, query data via Postgres or GraphQL, and easily integrate with your applications using flexible APIs.
 
 <div class= "grid cards" markdown>
 
@@ -107,6 +106,7 @@ Unlock the power of Data Products by connecting them to BI tools. Learn to use t
 
 -   [Integration with Data API](/learn/dp_consumer_learn_track/integrate_api/)
 
+-   [Custom applications to consume Data Products](/learn/dp_consumer_learn_track/apps_consume_data_products/)
 
 </div>
 
