@@ -27,7 +27,7 @@ Once a Depot is created, all members of an organization gain secure access to da
   Depot provides 'access' to data, meaning that data remains within the source system and is neither moved nor duplicated. However, DataOS offers multiple Stacks such as Flare, Benthos, etc. to perform ingestion, querying, syndication, and copying if the need arises.
 </Info>
 
-## How to create a Depot?
+## **How to create a Depot?**
 
 To create a Depot in DataOS, simply compose a manifest configuration file for a Depot and apply it using the DataOS [Command Line Interface (CLI)](https://dataos.info/interfaces/cli/).
 
@@ -2252,23 +2252,23 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
 
 <AccordionGroup>
   <Accordion title="Data ingestion and transformation" defaultOpen={false}>
-    h
+    A Depot can be used further for data ingestion and transformation through Flare Stack. To learn more about the Flare Stack, please refer to this link.&#x20;
   </Accordion>
 
   <Accordion title="Building semantic models" defaultOpen={false}>
-    h
+    A semantic model can be build using Depot as a source. To learn more about this please [refer to this link](https://dashboard.mintlify.com/dataosinfo/dataosinfo/editor/v4#data-ingestion-and-transformation) on creating a semantic model using  Snowflake Depot as a source. You can build semantic model on Redshift, Bigquery, Postgres, Snowflake, and Lakehouse type of Depots. To create a semantic model on other type of Depots one must ingest data to DataOS Lakehouse using Flare Stack.
   </Accordion>
 
   <Accordion title="Query the source" defaultOpen={false}>
-    g
+    For better understanding of the data, a user can query the data directly on Workbench without moving the data by creating a Cluster Resource.
   </Accordion>
 
   <Accordion title="Accelerating queries" defaultOpen={false}>
-    g
+    For enhancing the query performance, a user can cache the data using Flash Stack.
   </Accordion>
 
   <Accordion title="Building Data APIs" defaultOpen={false}>
-    s
+    A user can create the Rest APIs using Depot as a source through Talos Stack.
   </Accordion>
 
   <Accordion title="Building Data Products" defaultOpen={false}>
@@ -2276,10 +2276,12 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
   </Accordion>
 
   <Accordion title="Depot as Lakehouse" defaultOpen={false}>
-    f
+    Whenever a user ingest the data, it get stored in the DataOS Lakehouse Depot.
   </Accordion>
 
-  <Accordion title="Applying data Policies" defaultOpen={false} />
+  <Accordion title="Applying data Policies" defaultOpen={false}>
+
+  </Accordion>
 
   <Accordion title="Scanning meta data" defaultOpen={false}>
     f
@@ -2324,41 +2326,39 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
   </Accordion>
 </AccordionGroup>
 
-## Governance
+## **Governance**
 
 To learn about the governance of s Depot, please [refer to this link.](/resources/depot/governance)
 
-## Observability
+## **Observability**
 
 Depots can be monitored using Monitor Resource, to know more about it, please [refer to this link.](/resources/depot/observability)
 
-## How to catalog a Depot?
+## **How to catalog a Depot?**
 
 Once a Depot is successfully created, you can view its metadata in the Metis UI. Additionally, any updates made to a Depot can be tracked in the activity section of Metis.
 
-## Do's&#x20;
+## **Do's**&#x20;
 
 * As an operator, always assign a use-case to a user instead of directly assigning a tag, as assigning a use-case gives only specific permissions.
 
 * Give your Depot a meaningful name that represents its purpose.
   **Example:**
-  ✅ `sales-reports-s3` instead of ❌ `s3-1`
-  ✅ `customer-db-mysql` instead of ❌ `db1`
+  \- ✅ `sales-reports-s3` instead of ❌ `s3-1`
+  \- ✅ `customer-db-mysql` instead of ❌ `db1`
   This makes it easier to manage and identify Depots.
 
-## Don'ts
+## **Don'ts**
 
 * Avoid creating a Depot with inline credentials, always create an Instance Secret.
 
 * Do not delete a Depot if it has a dependency on other Resources.
 
-
-
 ## **Data integration - Supported connectors in DataOS**
 
 The catalog of data sources accessible by one or more components within DataOS is provided on the following page: [Supported Connectors in DataOS](https://dataos.info/resources/depot/list_of_connectors/).
 
-## FAQs
+## **FAQs**
 
 1. **How do I know which data sources are supported in DataOS?**
    The complete list of supported connectors is available in the **Data Integration - Supported Connectors** section.
