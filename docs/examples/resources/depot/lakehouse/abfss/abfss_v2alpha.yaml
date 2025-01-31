@@ -12,11 +12,13 @@ depot:
   external: ${{true}}
   compute: ${{runnable-default}}
   secrets:
-    - name: ${{abfss-instance-secret-name}}-r
-      allkeys: true
+    - name: ${{instance-secret-name}}-r
+      keys: 
+        - ${{instance-secret-name}}-r
 
-    - name: ${{abfss-instance-secret-name}}-rw
-      allkeys: true
+    - name: ${{instance-secret-name}}-rw
+      keys: 
+        - ${{instance-secret-name}}-rw
   abfss:                                             
     account: ${{account-name}}
     container: ${{container-name}}
