@@ -14,7 +14,7 @@ Follow the below steps:
 </center>
 
 ## Scanner Workflow using a Depot
-You need to provide the depot name or address to establish a connection to the data source.
+You need to provide the Depot name or address to establish a connection to the data source.
 
 ### **Source Data in Snowflake**
 For illustration purposes, we will connect with the Snowflake data source.
@@ -34,10 +34,10 @@ For illustration purposes, we will connect with the Snowflake data source.
 
 2. To run the Scanner workflow, a user must have Metis admin access or a grant for the “Run as Scanner User” use case.
 
-3. Ensure the depot for Snowflake is created and you have Read access. If it does not exist, then create a Depot.
+3. Ensure the Depot for Snowflake is created and you have Read access. If it does not exist, then create a Depot.
 
 ### **Step 2: Create a Depot to Connect with Snowflake**
-We will connect with a data source by creating a Depot and then will use the depot to scan the metadata for the entities.
+We will connect with a data source by creating a Depot and then will use the Depot to scan the metadata for the entities.
  
 1. Create a Depot manifest file.
 Here is the Depot YAML containing the `warehouse`, `URL`, and `database` to connect to Snowflake. The  Depot enables access to all schemas in the configured database. 
@@ -78,7 +78,7 @@ Let us build a Scanner workflow to scan the data source. The workflow includes t
 
 1. Provide the workflow properties, such as version, name, description, tags, etc., in the YAML file.  
 
-2. Provide the depot name or address(Universal Data Link) to connect to the data source.
+2. Provide the Depot name or address(Universal Data Link) to connect to the data source.
 
 3. Specify `schemaFilterPattern` and `tableFilterPattern` to filter schemas/tables which are of interest. 
 
@@ -94,7 +94,7 @@ description: The workflow scans the schema of tables and registers their metadat
 workflow:
   dag:
     - name: scanner2-snowflake
-      description: The job scans schema from sanity snowflake depot tables and registers their metadata on metis2
+      description: The job scans schema from sanity snowflake Depot tables and registers their metadata on metis2
       spec:
         stack: scanner:2.0                            
         compute: runnable-default
@@ -115,7 +115,7 @@ workflow:
 ```
 
 <aside class="callout">
-🗣 In this case, database filters are not used because the Snowflake depot is created for the specific database. To configure the depot in our DataOS cataloging structure, you will need the Snowflake source URL and the database name. (SNOWFLAKE_SAMPLE_DATA)
+🗣 In this case, database filters are not used because the Snowflake Depot is created for the specific database. To configure the Depot in our DataOS cataloging structure, you will need the Snowflake source URL and the database name. (SNOWFLAKE_SAMPLE_DATA)
 
 </aside>
 
