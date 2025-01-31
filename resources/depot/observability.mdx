@@ -1,0 +1,195 @@
+---
+title: "How to observe a Depot?"
+description: "You can track the status of a Depot—whether it is active or deleted—using the Monitor Resource and Metis UI. Additionally, you can configure Pager Resource to receive notifications if a Depot is deleted."
+---
+
+## How to create a Monitor Resource to observe the state of a Depot?
+
+This section outlines the steps to create a Monitor Resource that triggers an incident when the state of a Depot changes from active to deleted. Make sure you have the permission to create a Monitor Resource.
+
+### Step 1: Create a manifest file for Monitor Resource
+
+Begin by creating a manifest file that contains the configurations of the Monitor as shown below in template. Replace the Depot name with your actual Depot.
+
+```yaml
+# Resource meta section
+name: runtime-monitor
+version: v1alpha
+type: monitor
+tags:
+  - dataos:type:resource
+  - dataos:layer:user
+description: Attention! instance secret is deleted
+layer: user
+monitor:
+
+# Monitor-specific section
+  schedule: '*/2 * * * *'
+  incident:
+    name: depotincident
+    severity: high
+    incidentType: depotincident
+    
+  type: report_monitor
+# Report Monitor specification
+  report:
+    source:
+      dataOsInstance:
+         path: /collated/api/v1/reports/resources/status?id=depot:v2alpha:bigquery-depot
+    conditions:
+      - valueComparison:
+          observationType: state
+          valueJqFilter: '.value'
+          operator: equals
+          value: deleted
+```
+
+### Step 2: Validate the  DataOS instance API path&#x20;
+
+Before applying the Monitor Resource file, it is recommended to check the response of the API endpoint.
+
+![](/Screenshotfrom2025-01-2914-41-07.png)
+
+### Step 3: Apply the Monitor manifest file
+
+After validating the API endpoint, the next step is to apply the Monitor manifest file by executing the code below.
+
+```bash
+dataos-ctl resource apply -f ${{path-of-your-manifest-file}}
+```
+
+### step 4: Validate the Monitor
+
+Validate or check the runtime of the Monitor by executing the below command.
+
+<CodeGroup>
+  ```bash Command
+  dataos-ctl get runtime -t monitor -w public -n runtime-monitor1 -r 
+  ```
+
+  ```bash Expected output
+  dataos-ctl get runtime -t monitor -w public -n runtime-monitor1 -r         
+  INFO[0000] 🔍 monitor...                                 
+  INFO[0000] 🔍 monitor...complete                         
+
+          NAME       | VERSION |  TYPE   | WORKSPACE |    OWNER     
+  -------------------|---------|---------|-----------|--------------
+    runtime-monitor1 | v1alpha | monitor | public    | iamgroot  
+
+          NAME       | VERSION |  TYPE   | WORKSPACE |    OWNER     
+  -------------------|---------|---------|-----------|--------------
+    runtime-monitor1 | v1alpha | monitor | public    | iamgroot  
+
+
+    STATUS |            RUNTIME              
+  ---------|---------------------------------
+    active | next:2025-01-28T18:38:00+05:30  
+
+
+       RUN ID    |          STARTED          |         FINISHED          | RUN STATUS |                                                                     RESULT                                                                      
+  ---------------|---------------------------|---------------------------|------------|-------------------------------------------------------------------------------------------------------------------------------------------------
+    ebctzh4krmro | 2025-01-28T18:30:00+05:30 | 2025-01-28T18:30:00+05:30 | completed  | 🟧 monitor condition not met for monitor: 'runtime_monitor1_public'  
+  ---------------|---------------------------|---------------------------|------------|----------------------------------------------------------------------
+    ebctt1wkmsxv | 2025-01-28T18:28:00+05:30 | 2025-01-28T18:28:00+05:30 | completed  | 🟧 monitor condition not met for monitor: 'runtime_monitor1_public'  
+  ---------------|---------------------------|---------------------------|------------|----------------------------------------------------------------------
+    ebctmmokhz42 | 2025-01-28T18:26:00+05:30 | 2025-01-28T18:26:00+05:30 | completed  | 🟧 monitor condition not met for monitor: 'runtime_monitor1_public'  
+  ---------------|---------------------------|---------------------------|------------|----------------------------------------------------------------------
+    ebcuiqs8omis | 2025-01-28T18:36:00+05:30 | 2025-01-28T18:36:00+05:30 | completed  | 🟩 monitor condition met for monitor: 'runtime_monitor1_public', 'instance-secret:v1:modern-docker-secret', created incident id 'ebcuird1u680'  
+  ---------------|---------------------------|---------------------------|------------|-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+  ```
+</CodeGroup>
+
+Now whenever the Monitor condition is met, it will trigger an incident.
+
+## How to create a Pager Resource to get notified whenever a Depot gets deleted?
+
+Through Monitor whenever the condition is met it will trigger an incident, we will use that incident to get notified on the desired platform such as Microsoft Teams, Outlook, etc. by creating a Pager Resource. This section involves the steps to create a Pager Resource.
+
+### Step 1: Create a manifest file for Pager
+
+Begin by creating a manifest file that contains the configurations of Pager as shown below in template. Replace the given values with your actual values and edit the notification template as required.
+
+```yaml
+
+name: instancesecrpager
+version: v1alpha
+type: pager
+tags:
+  - dataos:type:resource
+  - depot-failed-pager
+description: This is for sending Alerts on Microsoft Teams Channel.
+workspace: public
+pager:
+  conditions:
+    - valueJqFilter: .properties.name
+      operator: equals
+      value: depotincident
+
+  output:
+    webHook:
+      url: https://rubikdatasolutions.webhook.office.com/webhookb2/e6b48e18-bdb1-4ffc-98d5-cf4a3826lkh4@2e22bdde-3ec2-43f5-bf92-78e9f35a44fb/IncomingWebhook/d23792bec444445gg8bb7193145gg5he985/631bd149-c89d-4d3b-8979-8e364f62b419/V2ZJfUrl5d8I5xPhM80JyeE9LqKHU53gPsJQX9H8I2fOs1
+      verb: post
+      headers:
+        'content-type': 'application/json'
+      bodyTemplate: |
+          {
+            "@type": "MessageCard",
+            "summary": "Depot is deleted",
+            "themeColor": "0076D7",
+            "sections": [
+              {
+                "activityTitle": "Dear Team,",
+                "activitySubtitle": "Depot is deleted",
+                "activityImage": "https://adaptivecards.io/content/cats/3.png",
+                "facts": [
+                  {
+                    "name": "Following Depot is deleted",
+                    "value": "{{ index (splitn ":" 4 .ReportContext.ResourceId) "_2" }}"
+                  },
+                  {
+                    "name": "Failure Time:",
+                    "value": "{{ .CreateTime }}"
+                  },
+                  {
+                    "name": "Severity:",
+                    "value": "{{ .Properties.severity }}"
+                  },
+                  {
+                    "name": "Run Details:",
+                    "value": "<a href=\"https://${dataos-fqdn}/operations/user-space/resources/resource-status?name={{ index (splitn ":" 4 .ReportContext.ResourceId) "_2" }}&type=depot\">Operation</a>"
+                  },
+                  {
+                    "name": "Logs:",
+                    "value": "<a href=\"https://${dataos-fqdn}/metis/resources/depot/dataos.public.{{ index (splitn ":" 4 .ReportContext.ResourceId) "_2" }}/run_history\">Metis</a>"
+                  }
+                ]
+              },
+              {
+                "title": "Disclaimer",
+                "text": "{{ .Monitor.Description }}"
+              }
+            ]
+          }
+```
+
+### Step 2: Apply the manifest file of the Pager Resource
+
+After validating the API endpoint, the next step is to apply the Monitor manifest file by executing the code below.
+
+```bash
+dataos-ctl resource apply -f ${{path-of-your-manifest-file}}
+```
+
+### Step 3: Get Notification!
+
+###
+
+You will get a notification on the team's channel whenever the conditions of the incident are met.
+
+![](/Screenshotfrom2025-01-2913-09-50.png)
+
+<Tip>
+  You can view the pod logs for the Monitor and Pager in the Operations app. Navigate to Cloud Kernel → Pods, search for Pager, select Pager API, and then access the Pod Logs.
+</Tip>

@@ -2250,8 +2250,6 @@ The manifest configuration file for a Depot can be divided into two main section
 
 Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to access data without physically moving it. The UDLs play a crucial role in various scenarios within DataOS.
 
-
-
 <AccordionGroup>
   <Accordion title="Data ingestion and transformation" defaultOpen={false}>
     h
@@ -2281,9 +2279,7 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
     f
   </Accordion>
 
-  <Accordion title="Applying data Policies" defaultOpen={false}>
-
-  </Accordion>
+  <Accordion title="Applying data Policies" defaultOpen={false} />
 
   <Accordion title="Scanning meta data" defaultOpen={false}>
     f
@@ -2330,15 +2326,31 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
 
 ## Governance
 
+To learn about the governance of s Depot, please [refer to this link.](/resources/depot/governance)
+
 ## Observability
+
+Depots can be monitored using Monitor Resource, to know more about it, please [refer to this link.](/resources/depot/observability)
 
 ## How to catalog a Depot?
 
-## Architecture?
+Once a Depot is successfully created, you can view its metadata in the Metis UI. Additionally, any updates made to a Depot can be tracked in the activity section of Metis.
 
 ## Do's&#x20;
 
+* As an operator, always assign a use-case to a user instead of directly assigning a tag, as assigning a use-case gives only specific permissions.
+
+* Give your Depot a meaningful name that represents its purpose.
+  **Example:**
+  ✅ `sales-reports-s3` instead of ❌ `s3-1`
+  ✅ `customer-db-mysql` instead of ❌ `db1`
+  This makes it easier to manage and identify Depots.
+
 ## Don'ts
+
+* Avoid creating a Depot with inline credentials, always create an Instance Secret.
+
+* Do not delete a Depot if it has a dependency on other Resources.
 
 
 
@@ -2347,3 +2359,15 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
 The catalog of data sources accessible by one or more components within DataOS is provided on the following page: [Supported Connectors in DataOS](https://dataos.info/resources/depot/list_of_connectors/).
 
 ## FAQs
+
+1. **How do I know which data sources are supported in DataOS?**
+   The complete list of supported connectors is available in the **Data Integration - Supported Connectors** section.
+
+2. **What are Uniform Data Links (UDLs), and how do they work?**
+   UDLs allow seamless access to data stored in a Depot without physically copying it. They simplify data sharing, transformation, and querying across different components within DataOS.
+
+3. **How can I use the data in a Depot without moving it?**
+   You can use **Uniform Data Links (UDLs)** to access data stored in Depot without physically moving it. UDLs act as virtual connections, making data available for various operations within DataOS.
+
+4. **Can I restrict access to specific columns or rows in a Depot?**
+   As a developer, you can apply the data masking Policy on a specific column that will replace the actual values with your defined masked characters.
