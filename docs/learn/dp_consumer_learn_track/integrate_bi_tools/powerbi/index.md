@@ -2,7 +2,7 @@
 
 In this guide, you will learn how to integrate a Data Product with Power BI and activate it to build rich, interactive dashboards.
 
-### **Step 1: Navigate to the BI Sync Option**
+### **Step 1: Navigate to the BI sync option**
     
 To start the integration, go to the 'Access Options' tab and scroll to the 'Excel and PowerBI' option in the 'BI Sync' section. Click on the 'Download `.pbip` File' button to initiate the download of a ZIP folder.
     
@@ -41,10 +41,66 @@ Once connected, you can see tables and views containing all dimensions and measu
 ![powerbi_dashboard.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/powerbi_dashboard.png)
 
 
+<!-- ## Using PowerBI Service Account
+
+To publish the created report to the Power BI service account for sharing and collaboration follow the below steps:
+
+### **Step 1: Publish the report to Power BI Service**
+
+In the PowerBI, click 'Publish'. This action will push the report to your online Power BI service account, making it available for access in the Power BI workspace. Choose the required workspace.
+
 <aside class="callout">
-🗣️ Power BI also provides the functionality to interact with the downloaded file in Excel.
+💡 This step requires a valid Power BI service account, as the report will be published to the online service.
 
 </aside>
+
+![powerbi_publish.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_publish.png)
+
+### **Step 2: Confirm publishing in the chosen workspace**
+
+The image below shows the power BI is publishing the report in the chosen workspace.
+
+![powerbi_publishing.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_publishing.png)
+
+### **Step 3: Navigate to your workspace**
+
+Once published, go to your 'workspace' where the report has been saved. Here it is Demo Testing.
+
+![powerrbi_workspace.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerrbi_workspace.png)
+
+Click on the connected semantic model below the workspace with the name `cross-sell-affinity`.
+
+![powerbi_settings.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_settings.png)
+
+### **Step 4: Locate and access report settings**
+
+Scroll down to the 'Gateway and Cloud Connections' section. Toggle the switch to 'enable the gateway connection'. Click on the 'Add to Gateway' button to initiate the connection process.
+
+![powerbi_gateway.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_gateway.png)
+
+### **Step 5: Enable gateway connection**
+
+After clicking the 'Add to Gateway' button, you'll be prompted to enter the necessary 'connection details' for the data source. Once you’ve entered the required connection information, finalize the connection setup.
+
+![powerbi_gateway_connection.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_gateway_connection.png)
+
+### **Step 7: Confirm successful connection**
+
+After successfully connecting,you will be mapped to the semantic model as shown in the image below:
+
+![powerbi_gateway_conn1.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_gateway_conn1.png)
+
+### **Step 8: Access the semantic model**
+
+After successfully connecting, you will be able to access the dashboard. 
+
+![powerbi_chart.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_chart.png)
+ -->
+
+<!-- <aside class="callout">
+🗣️ Power BI also provides the functionality to interact with the downloaded file in Excel.
+
+</aside> -->
 
 ## Supported data types
 
@@ -107,11 +163,11 @@ For example, if a user named iamgroot, belonging to the 'Analyst' group, is rest
 
 This approach ensures that users only see the data they are authorized to view, maintaining security and compliance.
 
-
+<!-- 
 ## Excel via PowerBI
 
 Follow the below link to analyze in Excel via PowerBI.
 
 [Excel via Power BI](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/)
 
-
+ -->
