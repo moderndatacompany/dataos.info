@@ -10,12 +10,13 @@ There are two methods to interact  with the Excel via PowerBI
 
 - [Using third party tool -  Analyze in Excel](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/#using-analyze-in-excel)
 
-- [Using PowerBI Service Account](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/#using-powerbi-service-account)
+<!-- - [Using PowerBI Service Account](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/#using-powerbi-service-account) -->
 
+<!-- 
 ## Prerequisites
 
 - **Power BI Desktop**: Ensure you have Power BI Desktop installed on your system.
-- **Follow the Power BI Integration Steps**: Complete the necessary steps for Power BI integration as outlined in the Power BI guide.
+- **Follow the Power BI Integration steps**: Complete the necessary steps for Power BI integration as outlined in the Power BI guide. -->
 
 ## Using Analyze in Excel
 
@@ -23,7 +24,7 @@ There are two methods to interact  with the Excel via PowerBI
 
 Visit the [Analyze in Excel for Power BI Desktop](https://www.sqlbi.com/tools/analyze-in-excel-for-power-bi-desktop/) link and follow the instructions to download and install the necessary extension.
 
-### **Step 2: Use the Analyze in Excel Feature**
+### **Step 2: Use the Analyze in Excel feature**
 
 Once the extension is installed, a new tab labeled 'Analyze in Excel' will appear in Power BI Desktop.
 
@@ -41,14 +42,14 @@ In Excel, you can now use PivotTables, charts, and other Excel features to analy
 
 ![powerbi_excel.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_excel.png)
 
-<aside class="callout">
+<!-- <aside class="callout">
 💡 Ensure that Power BI Desktop remains open while working in Excel, as Power BI acts as the server for the data connection with Excel.
 
-</aside>
+</aside> -->
 
-## Using PowerBI Service Account
+<!-- ## Using PowerBI Service Account
 
-### **Step 1: Publish the Report to Power BI Service**
+### **Step 1: Publish the report to Power BI Service**
 
 In the PowerBI, click 'Publish'. This action will push the report to your online Power BI service account, making it available for access in the Power BI workspace. Choose the required workspace.
 
@@ -59,13 +60,13 @@ In the PowerBI, click 'Publish'. This action will push the report to your online
 
 ![powerbi_publish.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_publish.png)
 
-### **Step 2: Confirm Publishing in the Chosen Workspace**
+### **Step 2: Confirm publishing in the chosen Workspace**
 
-The image below shows the power BI is publishing the semantic model in the chosen workspace.
+The image below shows the power BI is publishing the report in the chosen workspace.
 
 ![powerbi_publishing.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_publishing.png)
 
-### **Step 3: Navigate to Your Workspace**
+### **Step 3: Navigate to your workspace**
 
 Once published, go to your 'workspace' where the report has been saved. Here it is Demo Testing.
 
@@ -75,19 +76,19 @@ Click on the connected semantic model below the workspace with the name `cross-s
 
 ![powerbi_settings.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_settings.png)
 
-### **Step 4: Locate and Access Report Settings**
+### **Step 4: Locate and access report settings**
 
 Scroll down to the 'Gateway and Cloud Connections' section. Toggle the switch to 'enable the gateway connection'. Click on the 'Add to Gateway' button to initiate the connection process.
 
 ![powerbi_gateway.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_gateway.png)
 
-### **Step 5: Enable Gateway Connection**
+### **Step 5: Enable gateway connection**
 
 After clicking the “Add to Gateway” button, you'll be prompted to enter the necessary 'connection details' for the data source. Once you’ve entered the required connection information, finalize the connection setup.
 
 ![powerbi_gateway_connection.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_gateway_connection.png)
 
-### **Step 7: Confirm Successful Connection**
+### **Step 7: Confirm successful connection**
 
 After successfully connecting,you will be mapped to the semantic model as shown in the image below:
 
@@ -109,4 +110,4 @@ The *'Analyze in Excel' page should now appear, allowing you to interact with th
 
 Analyze in Excel page appears.
 
-![analyze_in_excel.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/analyze_in_excel.png)
+![analyze_in_excel.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/analyze_in_excel.png) -->

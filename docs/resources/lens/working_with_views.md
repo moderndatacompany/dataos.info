@@ -212,10 +212,10 @@ views:
 - **Exploration**: Views can be explored using tools such as **Iris Board,** which provides automated, dynamic dashboards for visualizing and analyzing performance metrics. These tools help detect anomalies and reveal trends over time. You can also query the view in Lens Studio directly.
 - **Activation**: Metrics can be embedded into operational workflows, triggering alerts, populating Excel models for cross-tab analysis, or integrated into email automation tools for marketing or retention strategies.
 - You can explore the view via
-    - Lens Studio
-    - Iris Board
     - Data Product Hub
+    - Iris Board
 
+<!-- 
 ### **Lens Studio**
 
 To explore the views via **Lens Studio,** follow the below steps:
@@ -277,7 +277,7 @@ To explore the views via **Lens Studio,** follow the below steps:
 <div style="text-align: center;">
     <img src="/resources/lens/working_with_views/lens06.png" alt="Tables and Views" style="max-width: 80%; height: auto; border: 1px solid #000;">
     <figcaption> Views in Lens Explorer </figcaption>
-</div>
+</div> -->
 
 
 ### **Iris Board in Metis**
@@ -321,7 +321,7 @@ Follow these steps to explore views and metrics within the Data Products Hub (DP
 
 **Step 3: Explore Metrics**
 
-- The **Overview** tab will load by default.
+- The **Overview** opens by default when you access the page.
 - Click on either **Entitites** or **Metrics** tab to view all available views for the selected data product.
 - This section provides an overview of the metric-first approach and displays key metrics associated with the data product.
     
@@ -333,9 +333,9 @@ Follow these steps to explore views and metrics within the Data Products Hub (DP
 
 **Step 4: View data lineage**
 
-- You can trace the data source for each metric. For example, a metric for *Customer Churn Prediction* might be sourced from the *purchase_data* table.
-- To explore data lineage, click on the drop-down arrow. This will show the origin of the metric, including the table and dimensions used in the calculation.
-- The lineage view also helps you understand how the metric is calculated and which data sources contribute to it.
+- You can trace the data source for each metric and understand how it is calculated. For example, a metric like Customer Churn Prediction might be sourced from the `purchase_data` table.
+
+- To explore data lineage, click on the drop-down arrow. This will show the origin of the metric, including the table and dimensions used in the calculation, and provide a clear view of the data sources contributing to it.
     
 <div style="text-align: center;">
     <img src="/resources/lens/working_with_views/dph4.png" alt="Tables and Views" style="max-width: 80%; height: auto; border: 1px solid #000;">

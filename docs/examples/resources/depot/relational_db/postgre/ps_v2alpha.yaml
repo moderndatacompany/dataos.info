@@ -1,21 +1,21 @@
-name: {{postgresdb}}
+name: ${{postgresdb}}
 version: v2alpha
 type: depot
 layer: user
 depot:
   type: JDBC                  
-  description: {{To write data to postgresql database}}
-  external: {{true}}
+  description: ${{To write data to postgresql database}}
+  external: ${{true}}
   secrets:
-    - name: {{sf-instance-secret-name}}-r
+    - name: ${{sf-instance-secret-name}}-r
       allkeys: true
 
-    - name: {{sf-instance-secret-name}}-rw
+    - name: ${{sf-instance-secret-name}}-rw
       allkeys: true
   postgresql:                        
     subprotocol: "postgresql"
-    host: {{host}}
-    port: {{port}}
-    database: {{postgres}}
+    host: ${{host}}
+    port: ${{port}}
+    database: ${{postgres}}
     params: #Required 
-      sslmode: {{disable}}
+      sslmode: ${{disable}}

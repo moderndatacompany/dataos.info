@@ -365,12 +365,12 @@ You have successfully installed the CLI, now the next step is to [initialize](/i
 
 You have successfully installed the CLI, now the next step is to initialize the DataOS context.
 
-Click here to proceed to [CLI Initialization](/interfaces/cli/initialization/)
+Click here to proceed to [CLI Initialization](/interfaces/cli/initialization/).
 
 
 
 ## Linked Documents
 
-- [Read on Curl utility](/interfaces/cli/read_on_curl_utility/)
+- [Read on Curl utility](/interfaces/cli/read_on_curl_utility/).
 
-- [Setting the Path and Variables in Windows](/interfaces/cli/windows_path_setting/)
+- [Setting the Path and Variables in Windows](/interfaces/cli/windows_path_setting/).

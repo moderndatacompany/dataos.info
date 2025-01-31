@@ -1,105 +1,195 @@
 # Connecting to Bigquery Depot
 
-## Prerequisites
+## Step 1: Create the Bigquery Depot
 
-While creating a Lens on bigquery depot, the following aspects need to be considered:
+If the Depot is not active, you need to create one using the provided template.
 
-- SQL dialect should be changed to the Bigquery one.
-- The table naming should be of the following format `project_id.dataset.table`.
-- Do not use `VARCHAR` as a datatype.
-- Use `Extract` date function of the Bigquery.
-
-## Deployment manifest file
-
-The below manifest is intended for source type depot named `bigquerydepot`, created on the bigquery source.
-
-```yaml hl_lines="13-16"
-version: v1alpha
-name: "bigquery-lens"
-layer: user
-type: lens
+```yaml
+name: ${{bigquerydepot}}
+version: v2alpha
+type: depot
 tags:
-  - lens
-description: bigquery depot lens deployment on lens2
-lens:
-  compute: runnable-default
+  - ${{dropzone}}
+  - ${{bigquery}}
+owner: ${{owner-name}}
+layer: user
+depot:
+  type: BIGQUERY                 
+      description: ${{description}} # optional
+  external: ${{true}}
   secrets:
-    - name: bitbucket-cred
-      allKeys: true
-  source:
-    type: depot # source type is depot here
-    name: bigquerydepot # name of the bigquery depot
-    catalog: bigquerydepot  # catalog name/bigquery depot name
-  repo:
-    url: https://bitbucket.org/tmdc/sample
-    lensBaseDir: sample/lens/source/depot/bigquery/model 
-    # secretId: lens2_bitbucket_r
-    syncFlags:
-      - --ref=lens
+    - name: ${{bq-instance-secret-name}}-r
+      allkeys: true
 
-  api:   # optional
-    replicas: 1 # optional
-    logLevel: info  # optional
-    envs:
-      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-      LENS2_DEV_MODE: "true"
-      LENS2_CONCURRENCY: 10
-      LENS2_DB_MAX_POOL: 15
-      LENS2_DB_TIMEOUT: 1500000
-      
-    resources: # optional
+    - name: ${{bq-instance-secret-name}}-rw
+      allkeys: true
+  bigquery:  # optional                         
+    project: ${{project-name}} # optional
+    params: # optional
+      ${{"key1": "value1"}}
+      ${{"key2": "value2"}}
+```
+
+## Step 2: Prepare the Lens model folder
+
+Organize the Lens model folder with the following structure to define tables, views, and governance policies:
+
+```
+model
+├── sqls
+│   └── sample.sql  # SQL script for table dimensions
+├── tables
+│   └── sample_table.yml  # Logical table definition (joins, dimensions, measures, segments)
+├── views
+│   └── sample_view.yml  # Logical views referencing tables
+└── user_groups.yml  # User group policies for governance
+```
+
+1. **SQL Scripts (`model/sqls`)**
+
+      * Add SQL files defining table structures and transformations.
+
+      * Ensure the SQL dialect matches BigQuery syntax. Format table names as:
+        `project_id.dataset.table`
+
+      * Use `STRING` for text data types instead of `VARCHAR`.
+
+      * Replace generic functions with BigQuery's `EXTRACT` function.
+
+2. **Tables (`model/tables`):** Define logical tables in separate YAML files. Include dimensions, measures, segments, and joins.
+
+3. **Views (`model/views`):** Define views in YAML files, referencing the logical tables.
+
+4. **User Groups (`user_groups.yml`):** Define access control by creating user groups and assigning permissions.
+
+## Step 3: Deployment manifest file
+
+After setting up the Lens model folder, the next step is to configure the deployment manifest. Below is the YAML template for configuring a Lens deployment.
+
+```yaml
+# RESOURCE META SECTION
+version: v1alpha # Lens manifest version (mandatory)
+name: "bigquery-lens" # Lens Resource name (mandatory)
+layer: user # DataOS Layer (optional)
+type: lens # Type of Resource (mandatory)
+tags: # Tags (optional)
+  - lens
+description: bigquery depot lens deployment on lens2 # Lens Resource description (optional)
+
+# LENS-SPECIFIC SECTION
+lens:
+  compute: runnable-default # Compute Resource that Lens should utilize (mandatory)
+  secrets: # Referred Instance-secret configuration (**mandatory for private code repository, not required for public repository)
+    - name: bitbucket-cred # Referred Instance Secret name (mandatory)
+      allKeys: true # All keys within the secret are required or not (optional)
+
+  source: # Data Source configuration
+    type: depot # Source type is depot here
+    name: bigquerydepot # Name of the bigquery depot
+
+  repo: # Lens model code repository configuration (mandatory)
+    url: https://bitbucket.org/tmdc/sample # URL of repository containing the Lens model (mandatory)
+    lensBaseDir: sample/lens/source/depot/bigquery/model # Relative path of the Lens 'model' directory in the repository (mandatory)
+    syncFlags: # Additional flags used during synchronization, such as specific branch.
+      - --ref=lens # Repository Branch
+
+  api: # API Instances configuration (optional)
+    replicas: 1 # Number of API instance replicas (optional)
+    logLevel: info  # Logging granularity (optional)
+    resources: # CPU and memory configurations for API Instances (optional)
       requests:
         cpu: 100m
         memory: 256Mi
       limits:
         cpu: 2000m
         memory: 2048Mi
-  worker: # optional
-    replicas: 2 # optional
-    logLevel: debug  # optional
-    envs:
-      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-      LENS2_DEV_MODE: "true"
 
-
-    resources: # optional
+  worker: # Worker configuration (optional)
+    replicas: 2 # Number of Worker replicas (optional)
+    logLevel: debug # Logging level (optional)
+    resources: # CPU and memory configurations for Worker (optional)
       requests:
         cpu: 100m
         memory: 256Mi
       limits:
         cpu: 6000m
         memory: 6048Mi
-  router: # optional
-    logLevel: info  # optional
-    envs:
-      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-      LENS2_DEV_MODE: "true"
-    resources: # optional
+
+  router: # Router configuration (optional)
+    logLevel: info  # Level of log detail (optional)
+    resources: # CPU and memory resource specifications for the router (optional)
       requests:
         cpu: 100m
         memory: 256Mi
       limits:
         cpu: 6000m
         memory: 6048Mi
+
   iris:
-    logLevel: info  
-    resources: # optional
+    logLevel: info # Level of log detail (optional)
+    resources: # CPU and memory resource specifications for the iris board (optional)
       requests:
         cpu: 100m
         memory: 256Mi
       limits:
         cpu: 6000m
         memory: 6048Mi
+
+  metric:    #optional
+    logLevel: info
 ```
 
-**Required Bigquery Depot Source Attributes**
+Each section of the YAML template defines key aspects of the Lens deployment. Below is a detailed explanation of its components:
 
-```yaml 
-# Data Source
-LENS2_SOURCE_TYPE: ${depot}  #source type should be depot
-LENS2_SOURCE_NAME: ${bigquerydepot} # name of the bigquery depot (it could be anything)
-DATAOS_RUN_AS_APIKEY: ${bZTFhZWJhMQ==}
-```
+* **Defining the Source:**
+
+      * **Source type:**  The `type` attribute in the `source` section must be explicitly set to `depot`.
+
+      * **Source name:** The `name` attribute in the `source` section should specify the name of the Bigquery Depot created.
+
+* **Setting Up Compute and Secrets:**
+
+      * Define the compute settings, such as which engine (e.g., `runnable-default`) will process the data.
+
+      * Include any necessary secrets (e.g., credentials for Bitbucket or AWS) for secure access to data and repositories.
+
+* **Defining Repository:**
+
+      * **`url`** The `url` attribute in the repo section specifies the Git repository where the Lens model files are stored. For instance, if your repo name is lensTutorial then the repo `url` will be  [https://bitbucket.org/tmdc/lensTutorial](https://bitbucket.org/tmdc/lensTutorial)
+
+      * **`lensBaseDir`:**  The `lensBaseDir` attribute refers to the directory in the repository containing the Lens model. Example: `sample/lens/source/depot/bigquery/model`.
+
+      * **`secretId`:**  The `secretId` attribute is used to access private repositories (e.g., Bitbucket, GitHub) . It specifies the secret needed to securely authenticate and access the repository.
+
+      * **`syncFlags`**:  Specifies additional flags to control repository synchronization. Example: `--ref=dev` specifies that the Lens model rsides in the dev branch.
+
+* **Configuring API, Worker and Metric Settings (Optional):** Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
+
+## Step 4: Apply the Lens deployment manifest file
+
+After configuring the deployment file with the necessary settings and specifications, apply the manifest using the following command:
+
+=== "Command"
+
+    ```bash 
+    dataos-ctl resource apply -f ${manifest-file-path}
+    ```
+=== "Alternative command"
+
+    ```bash 
+    dataos-ctl apply -f ${manifest-file-path}
+    ```
+=== "Example usage"
+
+    ```bash 
+    dataos-ctl apply -f /lens/lens_deployment.yml -w curriculum
+    # Expected output
+    INFO[0000] 🛠 apply...                                   
+    INFO[0000] 🔧 applying(curriculum) sales360:v1alpha:lens... 
+    INFO[0001] 🔧 applying(curriculum) sales360:v1alpha:lens...created 
+    INFO[0001] 🛠 apply...complete
+    ```
+
 
 ## Docker compose manifest file
 

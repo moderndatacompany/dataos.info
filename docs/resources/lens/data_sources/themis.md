@@ -3,17 +3,38 @@
 
 ## Connecting to Themis using Depot/Cluster 
 
-### **Prerequisites**
+## Prerequisite
 
-The following aspects need to be considered when creating a lens on the Themis cluster source:
+Ensure you have an active and running Minerva Cluster.
 
-- The source name should be Themis.
-- The name of the cluster created on Themis source.
-- The name of the Depot.
+## Step 1: Prepare the Lens model folder
 
-### **Deployment manifest file**
+Organize the Lens model folder with the following structure to define tables, views, and governance policies:
 
-```yaml hl_lines="13-16"
+```
+model
+├── sqls
+│   └── sample.sql  # SQL script for table dimensions
+├── tables
+│   └── sample_table.yml  # Logical table definition (joins, dimensions, measures, segments)
+├── views
+│   └── sample_view.yml  # Logical views referencing tables
+└── user_groups.yml  # User group policies for governance
+```
+
+1. **SQL Scripts (`model/sqls`):** Add SQL files defining table structures and transformations.
+
+2. **Tables (`model/tables`):** Define logical tables in separate YAML files. Include dimensions, measures, segments, and joins.
+
+3. **Views (`model/views`):** Define views in YAML files, referencing the logical tables.
+
+4. **User Groups (`user_groups.yml`):** Define access control by creating user groups and assigning permissions.
+
+## Step 2: Create a deployment manifest file
+
+After preparing the Lens semantic model create a `lens_deployemnt.yml` parallel to the `model` folder.
+
+```yaml
 version: v1alpha
 name: "themis-lens"
 layer: user
@@ -39,14 +60,7 @@ lens:
 
   api:   # optional
     replicas: 1 # optional
-    logLevel: info  # optional
-    envs:
-      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-      LENS2_DEV_MODE: "true"
-      LENS2_CONCURRENCY: 10
-      LENS2_DB_MAX_POOL: 15
-      LENS2_DB_TIMEOUT: 1500000
-      
+    logLevel: info  # optional    
     resources: # optional
       requests:
         cpu: 100m
@@ -56,12 +70,6 @@ lens:
         memory: 2048Mi
   worker: # optional
     replicas: 2 # optional
-    logLevel: debug  # optional
-    envs:
-      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-      LENS2_DEV_MODE: "true"
-
-
     resources: # optional
       requests:
         cpu: 100m
@@ -70,10 +78,6 @@ lens:
         cpu: 6000m
         memory: 6048Mi
   router: # optional
-    logLevel: info  # optional
-    envs:
-      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-      LENS2_DEV_MODE: "true"
     resources: # optional
       requests:
         cpu: 100m
@@ -91,13 +95,39 @@ lens:
         cpu: 6000m
         memory: 6048Mi
 ```
+
+The YAML manifest provided is designed for a cluster named `minervacluster`, created on the `Minerva` source, with a data catalog named `icebase`. To utilize this manifest, duplicate the file and update the source details as needed.
+
+Each section of the YAML template outlines essential elements of the Lens deployment. Below is a detailed breakdown of its components:
+
+* **Defining the Source:**
+
+      * **`type`:**  The `type` attribute in the `source` section must be explicitly set to `themis`.
+
+      * **`name`:** The `name` attribute in the `source` section should specify the name of the Themis Cluster. For example, if the name of your Themis Cluster is `clthemis` the Source name would be `clthemis`.
+
+      * **`catalog`:** The `catalog` attribute must define the specific catalog name within the Themis Cluster that you intend to use. For instance, if the catalog is named `lakehouse_retail`, ensure this is accurately reflected in the catalog field.
+
+* **Defining Repository:**
+
+      * **`url`** The `url` attribute in the repo section specifies the Git repository where the Lens model files are stored. For instance, if your repo name is lensTutorial then the repo `url` will be  [https://bitbucket.org/tmdc/lensTutorial](https://bitbucket.org/tmdc/lensTutorial)
+
+      * **`lensBaseDir`:**  The `lensBaseDir` attribute refers to the directory in the repository containing the Lens model. Example: `sample/lens/source/depot/awsredshift/model`.
+
+      * **`secretId`:**  The `secretId` attribute is used to access private repositories (e.g., Bitbucket, GitHub). It specifies the secret needed to authenticate and access the repository securely.
+
+      * **`syncFlags`**:  Specifies additional flags to control repository synchronization. Example: `--ref=dev` specifies that the Lens model resides in the dev branch.
+
+* **Configure API, Worker, and Metric Settings (Optional):** Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
+
+
 The above manifest is intended for a cluster named `lenstestingthemis`, created on the themis source, with the depot or data catalog named `icebase`. To use this manifest, copy the file and update the source details accordingly.
 
 <aside class="callout">
 🗣️ Within the Themis and Minerva cluster, all depots (such as Icebase, Redshift, Snowflake, etc.) are integrated. When configuring Lens, you only need to specify one depot in the `catalog` field, as Lens can connect to and utilize depots from all sources available in the Themis cluster.
 </aside>
 
-### **Docker compose manifest file**
+## Docker compose manifest file
 
 <details>
 
@@ -150,18 +180,20 @@ services:
     volumes:
       - ./model:/etc/dataos/work/model
 ```
+
 </details>
 
-
-While deploying Lens, adjust the configuration using the environment variables below according to the load.s
+<!-- While deploying Lens, adjust the configuration using the environment variables below according to the load.
 
 
 | **Environment Variable** | **Description** | **Possible Values** | **Required** | **When should these env variables be used** |
 |--------------------------|-----------------|---------------------|--------------|---------------------------------------------|
 | `LENS2_DB_SSL`            | If `true`, enables SSL encryption for database connections from Cube. | `true`, `false` | ❌ | When SSL encryption for database connections is required to ensure security. |
 | `LENS2_CONCURRENCY`       | The number of concurrent connections each queue has to the database. Default is `4`. | A valid number | ❌ | When adjusting the number of parallel operations or queries to the database is needed to optimize performance based on workload and database capabilities. Increasing the value can enhance throughput, while decreasing it can reduce load. |
-| `LENS2_DB_MAX_POOL`       | The maximum number of concurrent database connections to pool. Default is `16`. | A valid number | ❌ | When managing the maximum number of concurrent database connections to ensure efficient resource utilization and prevent overloading the database server. Adjust according to the application’s connection needs and the database server’s capacity. |
+| `LENS2_DB_MAX_POOL`       | The maximum number of concurrent database connections to pool. Default is `16`. | A valid number | ❌ | When managing the maximum number of concurrent database connections to ensure efficient resource utilization and prevent overloading the database server. Adjust according to the application’s connection needs and the database server’s capacity. | -->
 
+
+<!-- 
 ## Connecting to Themis without Depot/Cluster 
 
 <aside class="callout">
@@ -262,7 +294,7 @@ LENS2_LOCAL_PG_USER=iamgroot
 | `LENS2_DB_PRESTO_CATALOG` | The catalog within Themis to connect to | A valid catalog name  | `icebase` | ✅ |
 | `LENS2_DB_SSL` | If `true`, enable SSL encryption for database connections from Lens2. | `true`, `false` | `true` | ❌ |
 | `LENS2_CONCURRENCY` | The number of concurrent connections each queue has to the database. Default is `2` | 3,4 | `2` |  |
-| `LENS2_DB_MAX_POOL` | The maximum number of concurrent database connections to pool. Default is `8` | 9,10 |   `8` |  |
+| `LENS2_DB_MAX_POOL` | The maximum number of concurrent database connections to pool. Default is `8` | 9,10 |   `8` |  | -->
 
 ## Check Query Stats for Themis
 

@@ -15,6 +15,8 @@ To get started with Power BI integration through Data Product Hub, refer the bel
 
 - **Curl**: Ensure you have `curl` installed on your system. Windows users may need to use `curl.exe`.
 
+- **Version compatibility:** It is strongly recommended to download Power BI Version `2.132.908.0` or later to fully utilize `.pbip` files.
+
 - **Lens API endpoint**: The API endpoint provided by Lens to sync semantic model, enabling integration with Power BI.
 
 - **Access credentials**: You will need access credentials such as username, password, and host for Power BI.
@@ -61,15 +63,25 @@ curl --location --request POST '${URL}' --header 'apikey: ${APIKEY}' --output ${
 
 The `file.zip` includes essential components for syncing a Lens Model with Power BI, organized into folders such as `.Report` and `.SemanticModel`:
 
-- **public_sales360-table.Report:** This folder contains the `definition.pbir` file, which is related to the report definition in Power BI. These files define the visual representation of data, such as tables and charts, without storing the actual data. They link the semantic model and data sources to create report views.
+- **public_sales360.Report:** This folder contains the `definition.pbir` file, which is related to the report definition in Power BI. These files define the visual representation of data, such as tables and charts, without storing the actual data. They link the semantic model and data sources to create report views.
 
-- **public-sales360-table.SemanticModel:** This folder includes files that establish the underlying data model for a Power BI project. The Semantic Model is crucial for managing data interactions, including the setup of relationships, hierarchies, and measures.
+- **public-sales360.SemanticModel:** This folder includes files that establish the underlying data model for a Power BI project. The Semantic Model is crucial for managing data interactions, including the setup of relationships, hierarchies, and measures.
 
     - **definition.bism:** This file represents the Business Intelligence Semantic Model (BISM). It defines the structure of the data, detailing data sources, relationships, tables, and measures. The `.bism` file contains essential metadata that enables Power BI to understand and query the data, forming the foundation of the data model for report creation and analysis.
 
     - **model.bim:** The `.bim` file is utilized to generate queries and manage interactions with the dataset. This semantic model is referenced to ensure the correct structure is applied to the data during report or dashboard creation in Power BI.
 
-- **public-sales-360-table.pbip:** This file serves as a Power BI project template or configuration file. Files such as `.pbip` or `.pbix` encapsulate reports, datasets, and visualizations. The `.pbip` file integrates the semantic model and report definitions from the other folders, acting as the entry point for project work in Power BI Desktop or the Power BI service.
+- **public-sales-360.pbip:** This file serves as a Power BI project template or configuration file. Files such as `.pbip` or `.pbix` encapsulate reports, datasets, and visualizations. The `.pbip` file integrates the semantic model and report definitions from the other folders, acting as the entry point for project work in Power BI Desktop or the Power BI service.
+
+<aside class="callout">
+
+Ensure that `file.zip` are fully extracted before opening them. Failure to do so may result in missing file errors, as shown below:
+
+<div style="text-align: center;">
+    <img src="/resources/lens/bi_integration/image.png" alt="Superset Configuration" style="max-width: 25%; height: auto; border: 1px solid #000;">
+</div>
+
+</aside>
 
 ## Steps
 
@@ -87,7 +99,7 @@ curl --location --request POST 'https://tcp.liberal-monkey.dataos.app/lens2/sync
     <img src="/resources/lens/bi_integration/powerbi2.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-**Step 4 Open the PowerBI file:** Open the Power BI file using Power BI Desktop.
+**Step 4 Open the Power BI file:** Open the Power BI file using Power BI Desktop.
 
 <div style="text-align: center;">
     <img src="/resources/lens/bi_integration/powerbi3.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
@@ -115,39 +127,23 @@ curl --location --request POST 'https://tcp.liberal-monkey.dataos.app/lens2/sync
 
 ## Important considerations
 
-- In Power BI, measures typically have an 'm_' prefix to indicate they represent a measure. For example, a measure calculating total revenue might be named `m_total_revenue`.
-- The connection is live, meaning any changes to the underlying data will be reflected in Power BI.
-- If schema changes occur, such as the addition of new dimensions and measures, the steps outlined above will need to be repeated.
+* **Measure naming convention:** In Power BI, measures typically have an 'm\_' prefix to indicate they represent a measure. For example, a measure calculating total revenue might be named m\_total\_revenue.
 
+* **Live connection:** The connection is live, meaning any changes to the underlying data will be reflected in Power BI.
+
+* **Schema changes:** If schema changes occur, such as the addition of new dimensions and measures, the steps outlined above will need to be repeated.
+
+* **Row Limit:** The Lens API has a maximum return limit of 50,000 rows per request. To obtain additional data, it is necessary to set an offset. This row limit is in place to manage resources efficiently and ensure optimal performance.
+
+* **Selection:** It is important to select fields from tables that are directly related or logically joined, as the system does not automatically identify relationships between tables through transitive joins. Selecting fields from unrelated tables may result in incorrect or incomplete results.
+
+<!-- 
 ## Best practices
 
-Adhering to best practices ensures that you effectively utilize the Data Product Hub and maintain compatibility with the latest features and updates. Following these guidelines will help optimize your workflow, enhance performance, and prevent potential issues.
-
-### **Version compatibility**
-
-- Power BI versions released after **June 15, 2023**, support .pbib files. It is advisable to use a version released after this date.
-
-- Beginning with Version 2.132.908.0 (August 2024), .pbip files have moved from preview to general availability. This transition allows for the use of .pbip files without the need to enable any preview settings. It is strongly recommended to download Power BI Version 2.132.908.0 or later to fully utilize .pbip files. In earlier versions, enabling a preview feature was necessary, but this is no longer required in the latest version.
-
-### **File handling**
-
-Ensure that `.pbip` folders are fully extracted before opening them. Failure to do so may result in missing file errors, as shown below:
-
-<div style="text-align: center;">
-    <img src="/resources/lens/bi_integration/image.png" alt="Superset Configuration" style="max-width: 25%; height: auto; border: 1px solid #000;">
-</div>
-
-### **Data retrieval and field selection considerations**
-
-- **Row Limit:** The Lens API has a maximum return limit of 50,000 rows per request. To obtain additional data, it is necessary to set an offset. This row limit is in place to manage resources efficiently and ensure optimal performance.
-
-- **Selection:** It is important to select fields from tables that are directly related or logically joined, as the system does not automatically identify relationships between tables through transitive joins. Selecting fields from unrelated tables may result in incorrect or incomplete results.
+Adhering to best practices ensures that you effectively utilize the Data Product Hub and maintain compatibility with the latest features and updates. Following these guidelines will help optimize your workflow, enhance performance, and prevent potential issues. -->
 
 
-### **Data policies and security**
+## Data policies and security
 
-Data masking, restrictions, or permissions established by the publisher are automatically enforced for all report viewers, ensuring consistent data security and compliance. The behavior of these data policies, such as masking, may vary based on the user of the Power BI desktop.
+The restrictions, or permissions established by the publisher in the `user_groups.yml` of the semantic model are automatically enforced for all report viewers, ensuring consistent data security and compliance. The behavior of these may vary based on the user of the Power BI desktop.
 
-### **Regular testing and validation**
-
-Regular testing and validation of reports are recommended after changes are made to the Lens definitions. This practice ensures that updates to dimensions, measures, or data models are accurately reflected in the reports and helps identify any issues early in the process.

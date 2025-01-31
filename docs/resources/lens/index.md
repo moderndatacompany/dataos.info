@@ -7,7 +7,7 @@ search:
 # :resources-lens: Lens
 
 
-Lens [Resource](/resources/) in DataOS is a logical modelling layer designed for accessing tabular data in data warehouses or lakehouses. It operates on top of physical tables, allowing the extension of these tables into logical tables by adding logical columns (measures) and relationships. It  empowers analytical engineers, the key architects of business intelligence, with a model-first approach.  To learn about the different elements of Lens click [here](/resources/lens/concepts/). 
+Lens [Resource](/resources/) in DataOS is a logical modelling layer designed for accessing tabular data in data warehouses or lakehouses. It operates on top of physical tables, allowing the extension of these tables into logical tables by adding logical columns (measures) and relationships. It  empowers analytical engineers, the key architects of business intelligence, with a model-first approach. 
 
 
 !!!tip "Lens within the Data Product Lifecycle"
@@ -55,10 +55,6 @@ The process begins with creating a new Lens project and generating a data model.
 #### **Lens model folder set-up**
 
 The initial step involves setting up the folder structure for your Lens project. [This section](/resources/lens/lens_model_folder_setup/) will guide you through organizing your project files, including the model configuration files and necessary resources, in a structured and maintainable way.
-
-#### **Develop Lens locally**
-
-Before deploying your Lens models into the DataOS environment, you can build and test your models on your local system. [This guide](/resources/lens/optimizing_lens_testing_in_local_development/) includes the steps to develop and test Lens models locally, ensuring they function as intended.
 
 #### **Develop Lens within DataOS**
 
@@ -150,6 +146,8 @@ Lens integrates with a variety of data sources to streamline data analysis and m
 - [Minerva](/resources/lens/data_sources/minerva/)
 
 - [Flash](/resources/lens/data_sources/flash/)
+
+- [Snowflake](/resources/lens/data_sources/snowflake)
 
 <!-- [Snowflake](/resources/lens/data_sources/snowflake/) -->
 

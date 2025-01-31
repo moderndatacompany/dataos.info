@@ -64,13 +64,13 @@ depot:
 
 ```
 
-replace the placeholder with the actual values and apply it using the following command on the DataOS [Command Line Interface (CLI)](https://dataos.info/interfaces/cli/).
+replace the placeholder with the actual values and apply it using the following command on the DataOS [Command Line Interface (CLI)](/interfaces/cli/).
 
 ```bash
 dataos-ctl apply -f ${{yamlfilepath}}
 ```
 
-To know more about the Depot [refer to this](https://dataos.info/resources/depot/).
+To know more about the Depot [refer to this](/resources/depot/).
 
 ### **Extract the Metadata**
 
@@ -100,13 +100,13 @@ workflow:
           depot: {{s3depot}} # depot name
 ```
 
-replace the placeholder with the actual values and apply it using the following command on the DataOS [Command Line Interface (CLI)](https://dataos.info/interfaces/cli/).
+replace the placeholder with the actual values and apply it using the following command on the DataOS [Command Line Interface (CLI)](/interfaces/cli/).
 
 ```bash
 dataos-ctl apply -f ${{yamlfilepath}}
 ```
 
-To know more about the Scanner, [refer to this](https://dataos.info/resources/stacks/scanner/).
+To know more about the Scanner, [refer to this](/resources/stacks/scanner/).
 
 ### **Explore the Data**
 
@@ -171,13 +171,13 @@ cluster:
           memory.max-data-per-node: "128MB"
 ```
 
-replace the placeholder with the actual values and apply it using the following command on the DataOS [Command Line Interface (CLI)](https://dataos.info/interfaces/cli/). You can get the Depot address from the Metis.
+replace the placeholder with the actual values and apply it using the following command on the DataOS [Command Line Interface (CLI)](/interfaces/cli/). You can get the Depot address from the Metis.
 
 ```bash
 dataos-ctl apply -f ${{yamlfilepath}}
 ```
 
-To know more about the Cluster, [refer to this](https://dataos.info/resources/cluster/#setting-up-a-cluster). 
+To know more about the Cluster, [refer to this](/resources/cluster/#setting-up-a-cluster). 
 
 Now on Workbench, select your Cluster and query the data.
 
@@ -185,7 +185,7 @@ Now on Workbench, select your Cluster and query the data.
   <img src="/products/data_product/how_to_guides/workbench.png" style="border:1px solid black; width: 60%; height: auto;">
 </div>
 
-To know more about Workbench, [refer to this](https://dataos.info/interfaces/workbench/).
+To know more about Workbench, [refer to this](/interfaces/workbench/).
 
 ## **Design Data Product solution architecture**
 
