@@ -1366,10 +1366,12 @@ You can access these templates by visiting the following tabs:
               external: true
               secrets:
                 - name: ${{instance-secret-name}}-r
-                  allkeys: true
+                  keys: 
+                    - ${{instance-secret-name}}-r
 
                 - name: ${{instance-secret-name}}-rw
-                  allkeys: true
+                  keys: 
+                    - ${{instance-secret-name}}-rw
             ```
 
 
@@ -1469,10 +1471,12 @@ You can access these templates by visiting the following tabs:
               external: ${{true}}
               secrets:
                 - name: ${{instance-secret-name}}-r
-                  allkeys: true
+                  keys: 
+                    - ${{instance-secret-name}}-r
 
                 - name: ${{instance-secret-name}}-rw
-                  allkeys: true
+                  keys: 
+                    - ${{instance-secret-name}}-rw
             ```
 
     === "Oracle"
@@ -1617,10 +1621,12 @@ You can access these templates by visiting the following tabs:
               external: true
               secrets:
                 - name: ${{instance-secret-name}}-r
-                  allkeys: true
+                  keys: 
+                    - ${{instance-secret-name}}-r
 
                 - name: ${{instance-secret-name}}-rw
-                  allkeys: true
+                  keys: 
+                    - ${{instance-secret-name}}-rw
               postgresql:                                          
                 host: ${{host}}
                 port: ${{port}}

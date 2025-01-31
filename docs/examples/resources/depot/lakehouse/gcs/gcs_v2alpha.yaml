@@ -14,8 +14,10 @@ depot:
     relativePath: ${{"/sanity"}}
   external: ${{true}}
   secrets:
-    - name: ${{gcs-instance-secret-name}}-r
-      allkeys: true
+    - name: ${{instance-secret-name}}-r
+      keys: 
+        - ${{instance-secret-name}}-r
 
-    - name: ${{gcs-instance-secret-name}}-rw
-      allkeys: true
+    - name: ${{instance-secret-name}}-rw
+      keys: 
+        - ${{instance-secret-name}}-rw

@@ -15,8 +15,10 @@ depot:
     relativePath: ${{relative-path}}
     format: ${{format}}
   secrets:
-    - name: ${{s3-instance-secret-name}}-r
-      allkeys: true
+    - name: ${{instance-secret-name}}-r
+      keys: 
+        - ${{instance-secret-name}}-r
 
-    - name: ${{s3-instance-secret-name}}-rw
-      allkeys: true
+    - name: ${{instance-secret-name}}-rw
+      keys: 
+        - ${{instance-secret-name}}-rw
