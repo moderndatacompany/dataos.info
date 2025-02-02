@@ -1,18 +1,18 @@
 ---
-title: "Working with Segments"
+title: "Working with segments"
 ---
 
 <Info>
   To get started with segments, refer to this quick guide on working with segments. This guide will help in defining and applying segments in Lens that can be used during analysis. With segments, users can save time and make complex filtering logic reusable.
 </Info>
 
-## When to use Segments?
+## When to use segments?
 
 * **Complex filtering logic**: Segments are ideal for defining complex filtering logic in SQL that can be reused across multiple queries.
 
 * **Reusability**: When you observe the reuse of common filters across various queries. Where the value of the filter doesn’t vary much.
 
-## How to define Segments?
+## How to define segments?
 
 Segments are pre-defined groups of filters. It provides the ability to define Segments (filters) as code within the Lens YAML. They can be used to define repetitively used groups of filters by the stakeholders. Segments are defined within a Lens table’s schema. Utilize the **`sql`** parameter to define how a segment filters out a subset of data, ensuring the SQL expression is valid within a **`WHERE`** statement. For example, users for one particular city can be treated as a segment
 

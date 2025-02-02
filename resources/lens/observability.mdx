@@ -1,10 +1,11 @@
 ---
 title: "How to monitor a semantic model"
-description: "Utilize different Monitors such as report monitor, equation monitor etc., to monitor the semantic model or Lens Resource.
-"
+description: "Utilize different Monitors such as report monitor, equation monitor, etc., to monitor the semantic model or Lens Resource. "
 ---
 
-This section outlines the steps to create a Monitor Resource that triggers an incident when the state of a Lens changes from 'active' to 'deleted'. Before proceeding, ensure you have the necessary permissions to create a Monitor Resource.
+## Create a Monitor Resource manifest file
+
+This section outlines the steps to create a Monitor Resource that triggers an incident when the state of a Lens changes from 'active' to 'deleted'. Before proceeding, ensure you have the necessary permissions to create a Monitor Resource.&#x20;
 
 <Steps>
   <Step title="Create an Monitor to observe the semantic model">
@@ -56,8 +57,6 @@ This section outlines the steps to create a Monitor Resource that triggers an in
     ![](/image.png)
 
     A status code of 200 indicates that you can proceed further.
-
-
   </Step>
 
   <Step title="Apply the Monitor manifest file">
@@ -109,8 +108,6 @@ This section outlines the steps to create a Monitor Resource that triggers an in
 
       ```
     </CodeGroup>
-
-
   </Step>
 </Steps>
 
@@ -119,10 +116,6 @@ This section outlines the steps to create a Monitor Resource that triggers an in
 A **Pager Resource** is used to send notifications when specific conditions are met. In this case, a **Monitor Resource** detects when an **Instance Secret** is deleted and triggers an incident. The Pager Resource then ensures that the incident notification is sent to a designated platform, such as Microsoft Teams, Outlook, or other supported output sources.
 
 This section outlines the steps to create a **Pager Resource**. While we are using **Microsoft Teams** for notifications in this guide, you can configure other supported platforms based on your requirements.
-
-
-
-
 
 <Steps>
   <Step title="Create a Pager manifest file">
@@ -190,14 +183,6 @@ This section outlines the steps to create a **Pager Resource**. While we are usi
                 ]
               }
     ```
-
-
-
-
-
-
-
-
   </Step>
 
   <Step title="Apply the manifest file ">
@@ -206,12 +191,7 @@ This section outlines the steps to create a **Pager Resource**. While we are usi
     ```
     dataos-ctl resource apply -f ${{path-of-your-manifest-file}}
     ```
-
-
   </Step>
 </Steps>
-
-
-
 
 ###
