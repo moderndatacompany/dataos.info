@@ -1,0 +1,217 @@
+---
+title: "How to monitor a semantic model"
+description: "Utilize different Monitors such as report monitor, equation monitor etc., to monitor the semantic model or Lens Resource.
+"
+---
+
+This section outlines the steps to create a Monitor Resource that triggers an incident when the state of a Lens changes from 'active' to 'deleted'. Before proceeding, ensure you have the necessary permissions to create a Monitor Resource.
+
+<Steps>
+  <Step title="Create an Monitor to observe the semantic model">
+    Begin by creating a manifest file of Monitor Resource as shown in the template below.  Copy the template and replace the Lens name with your actual Lens name.
+
+    ```
+    # Resource meta section
+    name: lens-status-monitor
+    version: v1alpha
+    type: monitor
+    tags:
+      - dataos:type:resource
+      - dataos:layer:user
+    description: Attention! Lens is deleted
+    layer: user
+    monitor:
+
+    # Monitor-specific section
+      schedule: '*/2 * * * *'
+      incident:
+        name: lens
+        severity: high
+        incidentType: lens
+        
+      type: report_monitor
+    # Report Monitor specification
+      report:
+        source:
+          dataOsInstance:
+             path: /collated/api/v1/reports/resources/status?id=lens:v1alpha:<LENS_NAME>
+        conditions:
+          - valueComparison:
+              observationType: state
+              valueJqFilter: '.value'
+              operator: equals
+              value: deleted
+    ```
+  </Step>
+
+  <Step title="Validate the  DataOS instance API path ">
+    Before applying the Monitor Resource file, it is recommended to verify the response of the API endpoint using an API testing application like Postman. Add the following URL with `GET` request to test.
+
+    ```
+    https://<DATAOS-FQDN>/collated/api/v1/reports/resources/status?id=lens:v1alpha:<LENS_NAME>:<WORKSPACE_NAME>
+    ```
+
+    Make sure to replace the `<LENS_NAME>` and `<WORKSPACE_NAME>` placeholders with the name
+
+    ![](/image.png)
+
+    A status code of 200 indicates that you can proceed further.
+
+
+  </Step>
+
+  <Step title="Apply the Monitor manifest file">
+    After validating the API endpoint, the next step is to apply the Monitor manifest file by executing the code below.
+
+    ```bash
+    dataos-ctl resource apply -f ${{path-of-your-manifest-file}}
+    ```
+  </Step>
+
+  <Step title="Validate the Monitor">
+    Validate or check the runtime of the Monitor by executing the below command.
+
+    <CodeGroup>
+      ```javascript Command
+      dataos-ctl get runtime -t monitor -w curriculum -n <MONITOR_NAME> -r 
+
+      ```
+
+      ```
+      dataos-ctl get runtime -t monitor -w curriculum -n s-monitor1 -r         
+      INFO[0000] 🔍 monitor...                                 
+      INFO[0000] 🔍 monitor...complete                         
+
+              NAME       | VERSION |  TYPE   | WORKSPACE |    OWNER     
+      -------------------|---------|---------|-----------|--------------
+        runtime-monitor1 | v1alpha | monitor | curriculum    | iamgroot  
+
+              NAME       | VERSION |  TYPE   | WORKSPACE |    OWNER     
+      -------------------|---------|---------|-----------|--------------
+        runtime-monitor1 | v1alpha | monitor | curriculum    | iamgroot  
+
+
+        STATUS |            RUNTIME              
+      ---------|---------------------------------
+        active | next:2025-01-28T18:38:00+05:30  
+
+
+           RUN ID    |          STARTED          |         FINISHED          | RUN STATUS |                                                                     RESULT                                                                      
+      ---------------|---------------------------|---------------------------|------------|-------------------------------------------------------------------------------------------------------------------------------------------------
+        ebctzh4krmro | 2025-01-28T18:30:00+05:30 | 2025-01-28T18:30:00+05:30 | completed  | 🟧 monitor condition not met for monitor: 'lens_monitor_curriculum'  
+      ---------------|---------------------------|---------------------------|------------|----------------------------------------------------------------------
+        ebctt1wkmsxv | 2025-01-28T18:28:00+05:30 | 2025-01-28T18:28:00+05:30 | completed  | 🟧 monitor condition not met for monitor: 'lens_monitor_curriculum'  
+      ---------------|---------------------------|---------------------------|------------|----------------------------------------------------------------------
+        ebctmmokhz42 | 2025-01-28T18:26:00+05:30 | 2025-01-28T18:26:00+05:30 | completed  | 🟧 monitor condition not met for monitor: 'lens_monitor_curriculum'  
+      ---------------|---------------------------|---------------------------|------------|----------------------------------------------------------------------
+        ebcuiqs8omis | 2025-01-28T18:36:00+05:30 | 2025-01-28T18:36:00+05:30 | completed  | 🟩 monitor condition met for monitor: 'lens_monitor_curriculum', 'lens:v1:productaffinity', created incident id 'abuird1u680'  
+      ---------------|---------------------------|---------------------------|------------|-------------------------------------------------------------------------------------------------------------------------------------------------
+
+      ```
+    </CodeGroup>
+
+
+  </Step>
+</Steps>
+
+## Create a Pager Resource **to get notified when a Lens is deleted**
+
+A **Pager Resource** is used to send notifications when specific conditions are met. In this case, a **Monitor Resource** detects when an **Instance Secret** is deleted and triggers an incident. The Pager Resource then ensures that the incident notification is sent to a designated platform, such as Microsoft Teams, Outlook, or other supported output sources.
+
+This section outlines the steps to create a **Pager Resource**. While we are using **Microsoft Teams** for notifications in this guide, you can configure other supported platforms based on your requirements.
+
+
+
+
+
+<Steps>
+  <Step title="Create a Pager manifest file">
+    Begin by creating a manifest file that defines the Pager configurations, as shown in the template below. Replace the provided values with your actual values and modify the notification template as needed.
+
+    ```
+
+    name: lensmonitoringpager
+    version: v1alpha
+    type: pager
+    tags:
+      - dataos:type:resource
+      - service-failed-pager
+    description: This is for sending Alerts on Microsoft Teams Channel.
+    workspace: public
+    pager:
+      conditions:
+        - valueJqFilter: .properties.name
+          operator: equals
+          value: lensmonitoring
+
+      output:
+        webHook:
+          url: https://rubikdatasolutions.webhook.office.com/webhookb2/e6b48e18-bdb1-4ffc-98d5-cf4a3890lkh4@2e22bdde-3ec2-43f5-bf92-78e9f35a44fb/IncomingWebhook/d23792bec444445gg8bb7193145dfae985/631bd149-c89d-4d3b-8979-8e364f62b419/V2ZJfUrl5d8I5xPhM80JyeE9LqKHU53gPsJQX9H8I2fOs1
+          verb: post
+          headers:
+            'content-type': 'application/json'
+          bodyTemplate: |
+              {
+                "@type": "MessageCard",
+                "summary": "Lens is active",
+                "themeColor": "0076D7",
+                "sections": [
+                  {
+                    "activityTitle": "Dear Team,",
+                    "activitySubtitle": "Lens is active",
+                    "activityImage": "https://adaptivecards.io/content/cats/3.png",
+                    "facts": [
+                      {
+                        "name": "Following Lens is active",
+                        "value": "{{ index (splitn ":" 4 .ReportContext.ResourceId) "_2" }}"
+                      },
+                      {
+                        "name": "Failure Time:",
+                        "value": "{{ .CreateTime }}"
+                      },
+                      {
+                        "name": "Severity:",
+                        "value": "{{ .Properties.severity }}"
+                      },
+                      {
+                        "name": "Run Details:",
+                        "value": "<a href=\"https://${dataos-fqdn}/operations/user-space/resources/resource-runtime?name={{ index (splitn ":" 4 .ReportContext.ResourceId) "_2" }}&type=lens&workspace=public\">Operation</a>"
+                      },
+                      {
+                        "name": "Logs:",
+                        "value": "<a href=\"https://${dataos-fqdn}/metis/resources/lens/dataos.public.{{ index (splitn ":" 4 .ReportContext.ResourceId) "_2" }}/run_history\">Metis</a>"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Disclaimer",
+                    "text": "{{ .Monitor.Description }}"
+                  }
+                ]
+              }
+    ```
+
+
+
+
+
+
+
+
+  </Step>
+
+  <Step title="Apply the manifest file ">
+    Apply the manifest file for Pager Resource using following command in your terminal:
+
+    ```
+    dataos-ctl resource apply -f ${{path-of-your-manifest-file}}
+    ```
+
+
+  </Step>
+</Steps>
+
+
+
+
+###
