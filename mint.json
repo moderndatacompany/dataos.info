@@ -89,6 +89,8 @@
       "pages": [
         "resources/depot/index",
         "resources/depot/configurations",
+        "resources/instance_secret/governance",
+        "resources/instance_secret/observability",        
         {
           "group": "Supported Storage Architecture",
           "pages": [
