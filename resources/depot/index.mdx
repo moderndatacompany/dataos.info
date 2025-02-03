@@ -8,8 +8,6 @@ description: "Depot in DataOS is a Resource used to connect different data sou
 
   In the Data Product Lifecycle, a Depot in DataOS serves as a foundational Resource for integrating, accessing, and managing data from various sources without physically moving it. It abstracts the complexities of different storage and database systems, ensuring seamless and secure data access for building and operating Data Products.
 
-
-
   Key roles of a Depot in the lifecycle include:
 
   * **Data Integration and accessibility:** A Depot enables seamless access to diverse data sources such as file systems (AWS S3, Google GCS), databases (PostgreSQL, Snowflake), and event streams (Kafka, Pulsar) through Uniform Data Links (UDLs). This allows Data Products to retrieve and utilize data efficiently without duplication.
@@ -53,7 +51,7 @@ Once a Depot is created, all members of an organization gain secure access to da
 
 ## **How to create a Depot?**
 
-To create a Depot in DataOS, simply compose a manifest configuration file for a Depot and apply it using the DataOS [Command Line Interface (CLI)](https://dataos.info/interfaces/cli/).
+To create a Depot in DataOS, simply compose a manifest configuration file for a Depot and apply it using the DataOS [Command Line Interface (CLI)](https://dataos.info/interfaces/cli/). A Data Product developer is generally responsible for creating a Depot.
 
 ### **Structure of a Depot manifest**
 
@@ -240,7 +238,7 @@ This section involves steps for creating a Depot for different data sources supp
       dataos-ctl delete -t depot -n ${{name of Depot}}
       ```
 
-      ```
+      ```bash Alternative command
       dataos-ctl delete -f ${{path of your manifest file}}
       ```
     </CodeGroup>
@@ -355,6 +353,50 @@ This section involves steps for creating a Depot for different data sources supp
       dataos-ctl apply -f ${{yamlfilepath}}
       ```
     </CodeGroup>
+
+    ### **Verify the Depot creation**
+
+    To ensure that your Depot has been successfully created, you can verify it in two ways:
+
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:&#x20;
+
+    ```bash
+    dataos-ctl get -t depot
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-15-1)
+
+    * Additionally, retrieve the list of all Depots created in your organization:
+
+    ```bash
+    dataos-ctl get -t depot -a
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-16-1)
+
+    You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
+
+    ### **Delete a Depot**
+
+    <Tip>
+      **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
+    </Tip>
+
+    If you need to delete a Depot, use the following command in the DataOS CLI:
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl delete -t depot -n ${{name of Depot}}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${{path of your manifest file}}
+      ```
+    </CodeGroup>
+
+    [](https://dataos.info/resources/depot/#__codelineno-17-1)
+
+    By executing the above command, the specified Depot will be deleted from your DataOS environment.
   </Accordion>
 
   <Accordion title="Eventhub" defaultOpen={false}>
@@ -454,6 +496,50 @@ This section involves steps for creating a Depot for different data sources supp
       dataos-ctl apply -f ${{yamlfilepath}}
       ```
     </CodeGroup>
+
+    ### **Verify the Depot creation**
+
+    To ensure that your Depot has been successfully created, you can verify it in two ways:
+
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:&#x20;
+
+    ```bash
+    dataos-ctl get -t depot
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-15-1)
+
+    * Additionally, retrieve the list of all Depots created in your organization:
+
+    ```bash
+    dataos-ctl get -t depot -a
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-16-1)
+
+    You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
+
+    ### **Delete a Depot**
+
+    <Tip>
+      **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
+    </Tip>
+
+    If you need to delete a Depot, use the following command in the DataOS CLI:
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl delete -t depot -n ${{name of Depot}}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${{path of your manifest file}}
+      ```
+    </CodeGroup>
+
+    [](https://dataos.info/resources/depot/#__codelineno-17-1)
+
+    By executing the above command, the specified Depot will be deleted from your DataOS environment.
   </Accordion>
 
   <Accordion title="GCS" defaultOpen={false}>
@@ -552,6 +638,50 @@ This section involves steps for creating a Depot for different data sources supp
       dataos-ctl apply -f ${{yamlfilepath}}
       ```
     </CodeGroup>
+
+    ### **Verify the Depot creation**
+
+    To ensure that your Depot has been successfully created, you can verify it in two ways:
+
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:&#x20;
+
+    ```bash
+    dataos-ctl get -t depot
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-15-1)
+
+    * Additionally, retrieve the list of all Depots created in your organization:
+
+    ```bash
+    dataos-ctl get -t depot -a
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-16-1)
+
+    You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
+
+    ### **Delete a Depot**
+
+    <Tip>
+      **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
+    </Tip>
+
+    If you need to delete a Depot, use the following command in the DataOS CLI:
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl delete -t depot -n ${{name of Depot}}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${{path of your manifest file}}
+      ```
+    </CodeGroup>
+
+    [](https://dataos.info/resources/depot/#__codelineno-17-1)
+
+    By executing the above command, the specified Depot will be deleted from your DataOS environment.
   </Accordion>
 
   <Accordion title="JDBC" defaultOpen={false}>
@@ -665,6 +795,50 @@ This section involves steps for creating a Depot for different data sources supp
       dataos-ctl apply -f ${{yamlfilepath}}
       ```
     </CodeGroup>
+
+    ### **Verify the Depot creation**
+
+    To ensure that your Depot has been successfully created, you can verify it in two ways:
+
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:&#x20;
+
+    ```bash
+    dataos-ctl get -t depot
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-15-1)
+
+    * Additionally, retrieve the list of all Depots created in your organization:
+
+    ```bash
+    dataos-ctl get -t depot -a
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-16-1)
+
+    You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
+
+    ### **Delete a Depot**
+
+    <Tip>
+      **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
+    </Tip>
+
+    If you need to delete a Depot, use the following command in the DataOS CLI:
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl delete -t depot -n ${{name of Depot}}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${{path of your manifest file}}
+      ```
+    </CodeGroup>
+
+    [](https://dataos.info/resources/depot/#__codelineno-17-1)
+
+    By executing the above command, the specified Depot will be deleted from your DataOS environment.
   </Accordion>
 
   <Accordion title="MongoDB" defaultOpen={false}>
@@ -1146,6 +1320,50 @@ This section involves steps for creating a Depot for different data sources supp
       dataos-ctl apply -f ${{yamlfilepath}}
       ```
     </CodeGroup>
+
+    ### **Verify the Depot creation**
+
+    To ensure that your Depot has been successfully created, you can verify it in two ways:
+
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:&#x20;
+
+    ```bash
+    dataos-ctl get -t depot
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-15-1)
+
+    * Additionally, retrieve the list of all Depots created in your organization:
+
+    ```bash
+    dataos-ctl get -t depot -a
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-16-1)
+
+    You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
+
+    ### **Delete a Depot**
+
+    <Tip>
+      **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
+    </Tip>
+
+    If you need to delete a Depot, use the following command in the DataOS CLI:
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl delete -t depot -n ${{name of Depot}}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${{path of your manifest file}}
+      ```
+    </CodeGroup>
+
+    [](https://dataos.info/resources/depot/#__codelineno-17-1)
+
+    By executing the above command, the specified Depot will be deleted from your DataOS environment.
   </Accordion>
 
   <Accordion title="MySQL" defaultOpen={false}>
@@ -1261,6 +1479,50 @@ This section involves steps for creating a Depot for different data sources supp
       dataos-ctl apply -f ${{yamlfilepath}}
       ```
     </CodeGroup>
+
+    ### **Verify the Depot creation**
+
+    To ensure that your Depot has been successfully created, you can verify it in two ways:
+
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:&#x20;
+
+    ```bash
+    dataos-ctl get -t depot
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-15-1)
+
+    * Additionally, retrieve the list of all Depots created in your organization:
+
+    ```bash
+    dataos-ctl get -t depot -a
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-16-1)
+
+    You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
+
+    ### **Delete a Depot**
+
+    <Tip>
+      **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
+    </Tip>
+
+    If you need to delete a Depot, use the following command in the DataOS CLI:
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl delete -t depot -n ${{name of Depot}}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${{path of your manifest file}}
+      ```
+    </CodeGroup>
+
+    [](https://dataos.info/resources/depot/#__codelineno-17-1)
+
+    By executing the above command, the specified Depot will be deleted from your DataOS environment.
   </Accordion>
 
   <Accordion title="Oracle" defaultOpen={false}>
@@ -1363,6 +1625,50 @@ This section involves steps for creating a Depot for different data sources supp
       dataos-ctl apply -f ${{yamlfilepath}}
       ```
     </CodeGroup>
+
+    ### **Verify the Depot creation**
+
+    To ensure that your Depot has been successfully created, you can verify it in two ways:
+
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:&#x20;
+
+    ```bash
+    dataos-ctl get -t depot
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-15-1)
+
+    * Additionally, retrieve the list of all Depots created in your organization:
+
+    ```bash
+    dataos-ctl get -t depot -a
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-16-1)
+
+    You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
+
+    ### **Delete a Depot**
+
+    <Tip>
+      **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
+    </Tip>
+
+    If you need to delete a Depot, use the following command in the DataOS CLI:
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl delete -t depot -n ${{name of Depot}}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${{path of your manifest file}}
+      ```
+    </CodeGroup>
+
+    [](https://dataos.info/resources/depot/#__codelineno-17-1)
+
+    By executing the above command, the specified Depot will be deleted from your DataOS environment.
   </Accordion>
 
   <Accordion title="PostgreSQL" defaultOpen={false}>
@@ -1533,6 +1839,50 @@ This section involves steps for creating a Depot for different data sources supp
       dataos-ctl apply -f ${{yamlfilepath}}
       ```
     </CodeGroup>
+
+    ### **Verify the Depot creation**
+
+    To ensure that your Depot has been successfully created, you can verify it in two ways:
+
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:&#x20;
+
+    ```bash
+    dataos-ctl get -t depot
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-15-1)
+
+    * Additionally, retrieve the list of all Depots created in your organization:
+
+    ```bash
+    dataos-ctl get -t depot -a
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-16-1)
+
+    You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
+
+    ### **Delete a Depot**
+
+    <Tip>
+      **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
+    </Tip>
+
+    If you need to delete a Depot, use the following command in the DataOS CLI:
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl delete -t depot -n ${{name of Depot}}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${{path of your manifest file}}
+      ```
+    </CodeGroup>
+
+    [](https://dataos.info/resources/depot/#__codelineno-17-1)
+
+    By executing the above command, the specified Depot will be deleted from your DataOS environment.
   </Accordion>
 
   <Accordion title="Amazon Redshift" defaultOpen={false}>
@@ -1643,6 +1993,50 @@ This section involves steps for creating a Depot for different data sources supp
       dataos-ctl apply -f ${{yamlfilepath}}
       ```
     </CodeGroup>
+
+    ### **Verify the Depot creation**
+
+    To ensure that your Depot has been successfully created, you can verify it in two ways:
+
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:&#x20;
+
+    ```bash
+    dataos-ctl get -t depot
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-15-1)
+
+    * Additionally, retrieve the list of all Depots created in your organization:
+
+    ```bash
+    dataos-ctl get -t depot -a
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-16-1)
+
+    You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
+
+    ### **Delete a Depot**
+
+    <Tip>
+      **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
+    </Tip>
+
+    If you need to delete a Depot, use the following command in the DataOS CLI:
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl delete -t depot -n ${{name of Depot}}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${{path of your manifest file}}
+      ```
+    </CodeGroup>
+
+    [](https://dataos.info/resources/depot/#__codelineno-17-1)
+
+    By executing the above command, the specified Depot will be deleted from your DataOS environment.
   </Accordion>
 
   <Accordion title="Amazon S3" defaultOpen={false}>
@@ -1754,6 +2148,50 @@ This section involves steps for creating a Depot for different data sources supp
       dataos-ctl apply -f ${{yamlfilepath}}
       ```
     </CodeGroup>
+
+    ### **Verify the Depot creation**
+
+    To ensure that your Depot has been successfully created, you can verify it in two ways:
+
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:&#x20;
+
+    ```bash
+    dataos-ctl get -t depot
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-15-1)
+
+    * Additionally, retrieve the list of all Depots created in your organization:
+
+    ```bash
+    dataos-ctl get -t depot -a
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-16-1)
+
+    You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
+
+    ### **Delete a Depot**
+
+    <Tip>
+      **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
+    </Tip>
+
+    If you need to delete a Depot, use the following command in the DataOS CLI:
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl delete -t depot -n ${{name of Depot}}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${{path of your manifest file}}
+      ```
+    </CodeGroup>
+
+    [](https://dataos.info/resources/depot/#__codelineno-17-1)
+
+    By executing the above command, the specified Depot will be deleted from your DataOS environment.
   </Accordion>
 
   <Accordion title="Snowflake" defaultOpen={false}>
@@ -1850,6 +2288,50 @@ This section involves steps for creating a Depot for different data sources supp
       dataos-ctl apply -f ${{yamlfilepath}}
       ```
     </CodeGroup>
+
+    ### **Verify the Depot creation**
+
+    To ensure that your Depot has been successfully created, you can verify it in two ways:
+
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:&#x20;
+
+    ```bash
+    dataos-ctl get -t depot
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-15-1)
+
+    * Additionally, retrieve the list of all Depots created in your organization:
+
+    ```bash
+    dataos-ctl get -t depot -a
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-16-1)
+
+    You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
+
+    ### **Delete a Depot**
+
+    <Tip>
+      **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
+    </Tip>
+
+    If you need to delete a Depot, use the following command in the DataOS CLI:
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl delete -t depot -n ${{name of Depot}}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${{path of your manifest file}}
+      ```
+    </CodeGroup>
+
+    [](https://dataos.info/resources/depot/#__codelineno-17-1)
+
+    By executing the above command, the specified Depot will be deleted from your DataOS environment.
   </Accordion>
 
   <Accordion title="Azure WASBS" defaultOpen={false}>
@@ -1957,6 +2439,50 @@ This section involves steps for creating a Depot for different data sources supp
       dataos-ctl apply -f ${{yamlfilepath}}
       ```
     </CodeGroup>
+
+    ### **Verify the Depot creation**
+
+    To ensure that your Depot has been successfully created, you can verify it in two ways:
+
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:&#x20;
+
+    ```bash
+    dataos-ctl get -t depot
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-15-1)
+
+    * Additionally, retrieve the list of all Depots created in your organization:
+
+    ```bash
+    dataos-ctl get -t depot -a
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-16-1)
+
+    You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
+
+    ### **Delete a Depot**
+
+    <Tip>
+      **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
+    </Tip>
+
+    If you need to delete a Depot, use the following command in the DataOS CLI:
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl delete -t depot -n ${{name of Depot}}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${{path of your manifest file}}
+      ```
+    </CodeGroup>
+
+    [](https://dataos.info/resources/depot/#__codelineno-17-1)
+
+    By executing the above command, the specified Depot will be deleted from your DataOS environment.
   </Accordion>
 
   <Accordion title="Apache Pulsar" defaultOpen={false}>
@@ -2011,6 +2537,50 @@ This section involves steps for creating a Depot for different data sources supp
       dataos-ctl apply -f ${{yamlfilepath}}
       ```
     </CodeGroup>
+
+    ### **Verify the Depot creation**
+
+    To ensure that your Depot has been successfully created, you can verify it in two ways:
+
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:&#x20;
+
+    ```bash
+    dataos-ctl get -t depot
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-15-1)
+
+    * Additionally, retrieve the list of all Depots created in your organization:
+
+    ```bash
+    dataos-ctl get -t depot -a
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-16-1)
+
+    You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
+
+    ### **Delete a Depot**
+
+    <Tip>
+      **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
+    </Tip>
+
+    If you need to delete a Depot, use the following command in the DataOS CLI:
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl delete -t depot -n ${{name of Depot}}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${{path of your manifest file}}
+      ```
+    </CodeGroup>
+
+    [](https://dataos.info/resources/depot/#__codelineno-17-1)
+
+    By executing the above command, the specified Depot will be deleted from your DataOS environment.
   </Accordion>
 
   <Accordion title="Kafka" defaultOpen={false}>
@@ -2077,6 +2647,50 @@ This section involves steps for creating a Depot for different data sources supp
       dataos-ctl apply -f ${{yamlfilepath}}
       ```
     </CodeGroup>
+
+    ### **Verify the Depot creation**
+
+    To ensure that your Depot has been successfully created, you can verify it in two ways:
+
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:&#x20;
+
+    ```bash
+    dataos-ctl get -t depot
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-15-1)
+
+    * Additionally, retrieve the list of all Depots created in your organization:
+
+    ```bash
+    dataos-ctl get -t depot -a
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-16-1)
+
+    You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
+
+    ### **Delete a Depot**
+
+    <Tip>
+      **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
+    </Tip>
+
+    If you need to delete a Depot, use the following command in the DataOS CLI:
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl delete -t depot -n ${{name of Depot}}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${{path of your manifest file}}
+      ```
+    </CodeGroup>
+
+    [](https://dataos.info/resources/depot/#__codelineno-17-1)
+
+    By executing the above command, the specified Depot will be deleted from your DataOS environment.
   </Accordion>
 
   <Accordion title="Elasticsearch" defaultOpen={false}>
@@ -2170,6 +2784,50 @@ This section involves steps for creating a Depot for different data sources supp
       dataos-ctl apply -f ${{yamlfilepath}}
       ```
     </CodeGroup>
+
+    ### **Verify the Depot creation**
+
+    To ensure that your Depot has been successfully created, you can verify it in two ways:
+
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:&#x20;
+
+    ```bash
+    dataos-ctl get -t depot
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-15-1)
+
+    * Additionally, retrieve the list of all Depots created in your organization:
+
+    ```bash
+    dataos-ctl get -t depot -a
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-16-1)
+
+    You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
+
+    ### **Delete a Depot**
+
+    <Tip>
+      **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
+    </Tip>
+
+    If you need to delete a Depot, use the following command in the DataOS CLI:
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl delete -t depot -n ${{name of Depot}}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${{path of your manifest file}}
+      ```
+    </CodeGroup>
+
+    [](https://dataos.info/resources/depot/#__codelineno-17-1)
+
+    By executing the above command, the specified Depot will be deleted from your DataOS environment.
   </Accordion>
 
   <Accordion title="Opensearch" defaultOpen={false}>
@@ -2265,6 +2923,50 @@ This section involves steps for creating a Depot for different data sources supp
       dataos-ctl apply -f ${{yamlfilepath}}
       ```
     </CodeGroup>
+
+    ### **Verify the Depot creation**
+
+    To ensure that your Depot has been successfully created, you can verify it in two ways:
+
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:&#x20;
+
+    ```bash
+    dataos-ctl get -t depot
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-15-1)
+
+    * Additionally, retrieve the list of all Depots created in your organization:
+
+    ```bash
+    dataos-ctl get -t depot -a
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-16-1)
+
+    You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
+
+    ### **Delete a Depot**
+
+    <Tip>
+      **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
+    </Tip>
+
+    If you need to delete a Depot, use the following command in the DataOS CLI:
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl delete -t depot -n ${{name of Depot}}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${{path of your manifest file}}
+      ```
+    </CodeGroup>
+
+    [](https://dataos.info/resources/depot/#__codelineno-17-1)
+
+    By executing the above command, the specified Depot will be deleted from your DataOS environment.
   </Accordion>
 </AccordionGroup>
 
@@ -2277,6 +2979,131 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
 <AccordionGroup>
   <Accordion title="Data ingestion and transformation" defaultOpen={false}>
     A Depot can be used further for data ingestion and transformation through Flare Stack. To learn more about the Flare Stack, please refer to this link.&#x20;
+    **For example:**
+
+
+
+    <AccordionGroup>
+      <Accordion title="Flare Stack manifest file" defaultOpen={false}>
+        ```
+        version: v1
+        name: wf-vendor-insights
+        type: workflow
+        tags:
+          - vendor.insights
+          - Tier.Gold
+        description: The job is to ingest vendor-insights from poss3 into Icebase.
+        workflow:
+          title: promotional
+          dag:
+            - name: dg-vendor-insights
+              description: The job is to ingest vendor-insights from poss3 into Icebase.
+              title: organization  data 
+              spec:
+                tags:
+                  - vendor.insights
+                stack: flare:6.0
+                compute: runnable-default
+                stackSpec:
+                  driver:
+                    coreLimit: 1200m
+                    cores: 1
+                    memory: 1024m
+                  executor:
+                    coreLimit: 1200m    
+                    cores: 1
+                    instances: 1
+                    memory: 1024m
+                  job:
+                    explain: true
+                    inputs:
+                      - name: promotional_data
+                        dataset: dataos://poss3:promo_effectiveness/target_count02.csv?acl=rw
+                        format: csv
+                        options: 
+                          inferSchema: true
+
+                    logLevel: INFO
+                    outputs:
+                      - name: transformed_data
+                        dataset: dataos://icebase:promo_effectiveness/vendor_subscription_insight?acl=rw
+                        format: Iceberg
+                        description: The job is to ingest vendor data from S3 into Icebase.
+                        tags:
+                          - vendor.insights
+                        options:
+                          saveMode: overwrite
+                          iceberg:
+                            properties:
+                              write.format.default: parquet
+                              write.metadata.compression-codec: gzip
+                        title: vendor data
+
+                    steps:
+                      - sequence:
+                          - name: transformed_data
+                            sql: >
+                               select 
+                                  messagekey,
+                                  id,
+                                  organization_id,
+                                  unique_entity_id,
+                                  state_of_incorporation,
+                                  business_type,
+                                  no_dbe_designations,
+                                  emergency_disaster,
+                                  emergency_health,
+                                  emergency_other,
+                                  created_at,
+                                  updated_at,
+                                  doing_business_as,
+                                  doing_business_as_keyword,
+                                  ein,
+                                  duns,
+                                  name,
+                                  organization_name_keyword,
+                                  website,
+                                  address1,
+                                  address2,
+                                  city,
+                                  country_code,
+                                  state,
+                                  zip_code,
+                                  billing_address1,
+                                  billing_address2,
+                                  billing_city,
+                                  billing_country_code,
+                                  billing_state,
+                                  billing_zip_code,
+                                  description,
+                                  phone_country,
+                                  phone,
+                                  phone_ext,
+                                  fax_phone_country,
+                                  fax_phone,
+                                  fax_phone_ext,
+                                  categories_ids,
+                                  categories_codes,
+                                  nigp_categories,
+                                  naics_categories,
+                                  unspsc_categories,
+                                  users_emails,
+                                  users_ids,
+                                  subscribed_governments_ids,
+                                  certification_ids,
+                                  self_reported_certifications,
+                                  verified_certifications,
+                                  vendor_list_ids,
+                                  private_vendor_lists,
+                                  public_vendor_lists,
+                                  ethnicities,
+                                  row_number() over (order by id) as row_num 
+                                from  promotional_data
+        ```
+      </Accordion>
+    </AccordionGroup>
+
+
   </Accordion>
 
   <Accordion title="Building semantic models" defaultOpen={false}>
