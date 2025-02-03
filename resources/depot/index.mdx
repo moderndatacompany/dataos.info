@@ -3,6 +3,29 @@ title: "Introduction"
 description: "Depot in DataOS is a Resource used to connect different data sources to DataOS by abstracting the complexities associated with the underlying source system (including protocols, credentials, and connection schemas). It enables users to establish connections and retrieve data from various data sources, such as file systems (e.g., AWS S3, Google GCS, Azure Blob Storage), data lake systems, database systems (e.g., Redshift, SnowflakeDB, Bigquery, Postgres), and event systems (e.g., Kafka, Pulsar) without moving the data."
 ---
 
+<Tip>
+  **Depot in the Data Product Lifecycle**
+  In the Data Product Lifecycle, a **Depot** in DataOS serves as a foundational resource for integrating, accessing, and managing data from various sources without physically moving it. It abstracts the complexities of different storage and database systems, ensuring seamless and secure data access for building and operating data products.
+
+  Key roles of a Depot in the lifecycle include:
+
+  * **Data Integration and accessibility:** A Depot enables seamless access to diverse data sources such as file systems (AWS S3, Google GCS), databases (PostgreSQL, Snowflake), and event streams (Kafka, Pulsar) through Uniform Data Links (UDLs). This allows Data Products to retrieve and utilize data efficiently without duplication.
+
+  * **Standardization and abstraction:** By registering data locations within DataOS, a Depot standardizes access mechanisms, eliminating inconsistencies in connection protocols, schemas, and credentials across different systems. This simplifies Data Product development and ensures interoperability.
+
+  * **Security and governance:** Depots enforce security policies, ensuring only authorized users and services can access specific datasets. Role-based access control (RBAC) and data policies (such as column masking) help maintain compliance with organizational and regulatory requirements.
+
+  * **Data transformation and querying:** Depots facilitate operations like data ingestion, transformation, and query acceleration using DataOS Stacks (Flare, Benthos, etc.). This enhances data readiness for consumption in analytical and operational use cases.
+
+  * **Metadata management and observability:** A Depot provides deep introspection into registered data sources, enabling visibility into constraints, partitions, and indexing. It also supports monitoring and tracking changes via Metis UI for enhanced observability.
+
+  * **Foundation for Data Products:** Depots are essential for creating Data Products, as they enable teams to query and transform source data.&#x20;
+
+  By leveraging Depots, organizations can build scalable, secure, and efficient data ecosystems within DataOS, ensuring Data roducts have reliable access to well-governed and high-quality data.
+
+
+</Tip>
+
 Within DataOS, the hierarchical structure of a data source is represented as follows:
 
 ![Hierarchical Structure of a Data Source within DataOS](/resources/depot/udl.png "Hierarchical Structure of a Data Source within DataOS")
@@ -2280,11 +2303,11 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
   </Accordion>
 
   <Accordion title="Applying data Policies" defaultOpen={false}>
-
+    To govern the data, a developer can create data policies using Policy Stack that restrict the access to the data for specific users.
   </Accordion>
 
   <Accordion title="Scanning meta data" defaultOpen={false}>
-    f
+    After creating the Depot , a user can run a Scanner Workflow for Depot to extract the metadata which later can be accessed on Metis UI.
   </Accordion>
 
   <Accordion title="Limit the data source's file format" defaultOpen={false}>
@@ -2328,7 +2351,7 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
 
 ## **Governance**
 
-To learn about the governance of s Depot, please [refer to this link.](/resources/depot/governance)
+To learn about the governance of Depot, please [refer to this link.](/resources/depot/governance)
 
 ## **Observability**
 
