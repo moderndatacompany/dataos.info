@@ -71,9 +71,12 @@
       "group": "Instance Secret",
       "pages": [
         "resources/instance_secret/index",
-        "resources/instance_secret/configurations",
-        "resources/instance_secret/governance",
-        "resources/instance_secret/observability",        
+        {
+          "group": "Configurations",
+          "pages": [
+            "resources/instance_secret/configurations"
+          ]
+        },
         
         {
           "group": "Recipes",
@@ -89,8 +92,6 @@
       "pages": [
         "resources/depot/index",
         "resources/depot/configurations",
-        "resources/depot/governance",
-        "resources/depot/observability",
         {
           "group": "Supported Storage Architecture",
           "pages": [
@@ -114,13 +115,7 @@
           ]
         },
         "resources/lens/concepts",
-        {
-          "group": "Configurations",
-          "pages": [
-            "resources/lens/lens_manifest_attributes"
-          
-          ]
-        },
+        "resources/lens/lens_manifest_attributes",
         {
           "group": "Supported Data Sources",
           "pages": [
@@ -135,10 +130,10 @@
         {
           "group": "APIs & Integrations",
           "pages": [
-            "resources/lens/exploration_of_deployed_lens_using_graphql",
-            "resources/lens/exploration_of_deployed_lens_using_sql_apis",
-            "resources/lens/exploration_of_deployed_lens_using_python",
-            "resources/lens/exploration_of_deployed_lens_using_rest_apis",
+            "resources/lens/explore_lens_using_graphql",
+            "resources/lens/explore_lens_using_sql_apis",
+            "resources/lens/explore_lens_using_python",
+            "resources/lens/explore_lens_using_rest_apis"
       
             {
               "group": "BI Integration",
