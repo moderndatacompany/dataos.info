@@ -3490,44 +3490,6 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
 
     After successfully executing the Scanner Workflow, a user can find the metadata on Metis UI as shown below.
   </Accordion>
-
-  <Accordion title="Limit the data source's file format" defaultOpen={false}>
-    Another important function that a Depot can play is to limit the file type that can read from and write to a particular data source. In the `spec` section of the config file, simply mention the `format` of the files you want to allow access to.
-
-    ```yaml
-    depot:
-      type: S3
-      description: $${{description}}
-      external: true
-      spec:
-        scheme: $${{s3a}}
-        bucket: $${{bucket-name}}
-        relativePath: "raw" 
-        format: $${{format}}  # mention the file format, such as JSON
-    ```
-
-    For file-based systems, if you define the format as ‘Iceberg’, you can choose the meta-store catalog between Hadoop and Hive. This is how you do it:
-
-    ```yaml
-    depot:
-      type: ABFSS
-      description: "ABFSS Iceberg Depot for sanity"
-      compute: runnable-default
-      spec:
-        account: 
-        container: 
-        relativePath:
-        format: ICEBERG
-        endpointSuffix:
-        icebergCatalogType: Hive
-    ```
-
-    If you do not mention the catalog name as Hive, it will use Hadoop as the default catalog for Iceberg format.
-
-    ![Flow when Hive is chosen as the catalog type](https://dataos.info/resources/depot/depot_catalog.png)
-
-    Hive automatically keeps the pointer updated to the latest metadata version. If you use Hadoop, you have to manually do this by running the set metadata command as described on this page: [Set Metadata](https://dataos.info/resources/depot/icebase/).
-  </Accordion>
 </AccordionGroup>
 
 ## **Governance**
@@ -3546,9 +3508,7 @@ Once a Depot is successfully created, you can view its metadata in the Metis UI.
 
 * As an operator, always assign a use-case to a user instead of directly assigning a tag, as assigning a use-case gives only specific permissions.
 
-* Give your Depot a meaningful name that represents its purpose.&#x20;
-
-  **Example:**&#x54;his makes it easier to manage and identify Depots.
+* Give your Depot a meaningful name that represents its purpose. **Example:** This makes it easier to manage and identify Depots.
 
   * ✅ `sales-reports-s3` instead of ❌ `s3-1`
 
@@ -3566,14 +3526,20 @@ The catalog of data sources accessible by one or more components within DataOS i
 
 ## **FAQs**
 
-1. **How do I know which data sources are supported in DataOS?**
-   The complete list of supported connectors is available in the **Data Integration - Supported Connectors** section.
+<AccordionGroup>
+  <Accordion title="1. How do I know which data sources are supported in DataOS?" defaultOpen={false}>
+    The complete list of supported connectors is available in the **Data Integration - Supported Connectors** section.
+  </Accordion>
 
-2. **What are Uniform Data Links (UDLs), and how do they work?**
-   UDLs allow seamless access to data stored in a Depot without physically copying it. They simplify data sharing, transformation, and querying across different components within DataOS.
+  <Accordion title="2. What are Uniform Data Links (UDLs), and how do they work?" defaultOpen={false}>
+    UDLs allow seamless access to data stored in a Depot without physically copying it. They simplify data sharing, transformation, and querying across different components within DataOS.
+  </Accordion>
 
-3. **How can I use the data in a Depot without moving it?**
-   You can use **Uniform Data Links (UDLs)** to access data stored in Depot without physically moving it. UDLs act as virtual connections, making data available for various operations within DataOS.
+  <Accordion title="3. How can I use the data in a Depot without moving it?" defaultOpen={false}>
+    You can use **Uniform Data Links (UDLs)** to access data stored in Depot without physically moving it. UDLs act as virtual connections, making data available for various operations within DataOS.
+  </Accordion>
 
-4. **Can I restrict access to specific columns or rows in a Depot?**
-   As a developer, you can apply the data masking Policy on a specific column that will replace the actual values with your defined masked characters.
+  <Accordion title="4. Can I restrict access to specific columns or rows in a Depot?" defaultOpen={false}>
+    As a developer, you can apply the data masking Policy on a specific column that will replace the actual values with your defined masked characters.
+  </Accordion>
+</AccordionGroup>

@@ -71,12 +71,9 @@
       "group": "Instance Secret",
       "pages": [
         "resources/instance_secret/index",
-        {
-          "group": "Configurations",
-          "pages": [
-            "resources/instance_secret/configurations"
-          ]
-        },
+        "resources/instance_secret/configurations",
+        "resources/instance_secret/governance",
+        "resources/instance_secret/observability",        
         
         {
           "group": "Recipes",
@@ -92,6 +89,8 @@
       "pages": [
         "resources/depot/index",
         "resources/depot/configurations",
+        "resources/depot/governance",
+        "resources/depot/observability",
         {
           "group": "Supported Storage Architecture",
           "pages": [
