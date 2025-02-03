@@ -113,7 +113,7 @@
             "resources/lens/lens_deployment"
           ]
         },
-        "resources/lens/concepts"
+        "resources/lens/concepts",
         {
           "group": "Configurations",
           "pages": [
