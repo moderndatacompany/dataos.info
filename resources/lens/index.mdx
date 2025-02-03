@@ -2323,6 +2323,18 @@ After creating a Lens data model, the next step is to consume it—this means in
                   "host": "https://superset-liberal-monkey.dataos.app"
               }
               ```
+
+              ```
+              curl --location --request POST 'https://liberal-monkey.dataos.app/lens2/sync/api/v1/superset/public:productaffinity' \
+              --header 'apikey: aueniekQa==' \
+              --header 'Content-Type: application/json' \
+              --data-raw '
+              {
+                  "username": "adder_1",
+                  "password": "adder_1",
+                  "host": "https://superset-liberal-monkey.dataos.app"
+              }
+              ```
             </CodeGroup>
 
             **Command paramters:**
