@@ -1,7 +1,7 @@
 ---
 title: "Introduction"
-description: "Lens Resource in DataOS is a logical modeling layer for accessing tabular data in data warehouses or lakehouses. It operates on top of physical tables, allowing the extension of these tables into logical tables by adding logical columns (measures) and relationships. It empowers analytical engineers, the key architects of business intelligence, with a model-first approach.
-"
+description: "Lens Resource in DataOS is a logical modeling layer for accessing tabular data in data warehouses or lakehouses. It operates on top of physical tables, allowing the extension of these tables into logical tables by adding logical columns (measures) and relationships. It empowers analytical engineers, the key architects of business intelligence, with a model-first approach. "
+mode: "wide"
 ---
 
 <Tip>
@@ -2304,19 +2304,11 @@ Lens provides a PostgreSQL-compatible interface, enabling you to interact with t
 
 ## How to do data modeling in the semantic model?
 
-Data modeling is the process of defining and structuring raw data into organized and meaningful business definitions. It involves creating logical schemas, relationships, and aggregations to represent how data is stored, processed, and accessed. Effective data modeling ensures optimal query performance and allows users to extract valuable insights without modifying the underlying data structure.
-
-Below are key resources to help you optimize your data modeling approach:
-
-* [Data modeling concepts](/resources/lens/concepts/): Understand the core principles and methodologies essential for designing effective data models.
-
-* [Do's and don'ts:](/resources/lens/dos_and_donts/) Explore recommended guidelines and techniques to create efficient and scalable data models, along with a concise list of actions to follow and pitfalls to avoid.
-
-* [Error reference:](/resources/lens/errors/) A quick reference for understanding and resolving common errors in data modeling.
+Data modeling is the process of defining and structuring raw data into organized and meaningful business definitions. It involves creating logical schemas, relationships, and aggregations to represent how data is stored, processed, and accessed. Click [here](/resources/lens/concepts/) to learn more about the Data modeling concepts.
 
 ## How to configure a semantic model?
 
-The Lens can be configured to connect to different sources using data source attributes and configurable attributes in the`lens_deployment.yml` manifest files. Here is a [comprehensive guide](https://dataosinfo.mintlify.app/resources/lens/lens_manifest_attributes/)  configuring supported properties.
+The Lens can be configured to connect to different sources using data source attributes and configurable attributes in the`lens_deployment.yml` manifest files. Here is a [comprehensive ](https://dataosinfo.mintlify.app/resources/lens/lens_manifest_attributes/) supported properties.
 
 ## How to observe and monitor a semantic model?
 
@@ -2340,8 +2332,16 @@ Data governance in DataOS is structured across three layers to protect and contr
 
 ## How to catalog a semantic model?
 
-The metadata of a semantic model (Lens Resource) is cataloged in Metis, which stores historical runtime and operations data in the Metis DB. This cataloging provides an aggregated view of metadata, enabling access to historical and operational insights about Resources. To know more about how to catalog semantic model and Lens Resource click here
+The metadata of a semantic model (Lens Resource) is cataloged in Metis, which stores historical runtime and operations data in the Metis DB. This cataloging provides an aggregated view of metadata, enabling access to historical and operational insights about Resources. To know more about how to catalog semantic models and Lens Resources click here
 
 ## How to optimize the query performance of a semantic model?
 
 The Lens semantic layer provides several optimization techniques that can significantly enhance the performance of data queries. [This page](/resources/lens/fine_tuning_a_lens_model/) explores strategies for optimizing query performance for maximum efficiency.
+
+## Best Practices
+
+Click [here](/resources/lens/dos_and_donts/) to explore recommended guidelines and techniques to create efficient and scalable data models, along with a concise list of do's and don'ts.&#x20;
+
+## Troubleshooting
+
+Click [here](/resources/lens/errors/) to understand and resolve common errors in data modeling.
