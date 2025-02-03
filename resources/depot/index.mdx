@@ -3142,8 +3142,6 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
         depots:
           - address: dataos://bqdepot
     ```
-
-
   </Accordion>
 
   <Accordion title="Accelerating queries" defaultOpen={false}>
@@ -3193,8 +3191,6 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
         #   - expression: "*/2 * * * *"
         #     sql: INSERT INTO mycustomer BY NAME (select * from customer);
     ```
-
-
   </Accordion>
 
   <Accordion title="Building Data APIs" defaultOpen={false}>
@@ -3203,12 +3199,119 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
 
   <Accordion title="Building Data Products" defaultOpen={false}>
     A Depot plays a fundamental role in Data Product development, a Data Product can be created directly from the source Depot or from the Icebase (Lakehouse) Depot.
+    
     **For example:**
+
+    The below  manifest file defines the deployment of the `vendor-data-insights` Data Product, categorized under `Vendor Management` with a `Bronze` tier. It provides insights into vendor data, including incorporation details, DBE status, and contact attributes, supporting reporting, tracking, and vendor engagement analysis. The Data Product ingests information from various sources within `operationaldb`, including organizations, categories, vendors, certifications, and user data. The processed insights are stored in `operationlake:analytics:vendor_data_insights`. Additionally, it exposes service endpoints through `Lens` and `Talos` for querying vendor insights and API access.
+
+    ```yaml
+    name: vendor-data-insights
+    version: v1beta
+    entity: product
+    type: data
+
+    # High-level description and purpose
+    purpose: To provide detailed insights into vendor data, including incorporation details, DBE status, and contact information. This enables reporting, tracking, and analysis of vendor engagement.
+
+    # Product categorization tags
+    tags:   
+     - DPDomain.VendorManagement
+     - DPTier.Bronze
+     - DPUsecase.Vendor Insights
+
+    description: Provides vendor details, including state of incorporation, DBE status, and contact attributes like email, phone, and organization information. This data product supports reporting, tracking, and vendor management workflows.
+
+    # External references and documentation
+    refs:
+     - title: 'Vendor Data Management Info'
+       href: https://proud-cobra.dataos.app/metis/assets/table/icebase.icebase.promo_effectiveness.vendor_subscription_insights
+
+    # Main product configuration
+    v1beta:
+     data:
+       # Metadata and tracking information
+       meta:
+         sourceCodeUrl: https://bitbucket.org/tmdc/vendor-data-insights/src/main/
+         title: Vendor Subscription Insights
+         trackerUrl: https://rubikai.atlassian.net/browse/DPRB-245?atlOrigin=eyJpIjoiOWMyMDg1ZGE4ZjQ2NDUwNTkzYjYyYTMxM2IwMDY5YWQiLCJwIjoiaiJ9
+
+       # Team members and roles
+       collaborators:
+         - name: soumadipde
+           description: data product owner
+         - name: kanakgupta
+           description: data product developer
+         - name: apoorvverma
+           description: consumer of vendor insights
+
+       # Resource bundle configuration
+       resource:
+         description: 'Resources associated with Vendor Data Insights Data Product'
+         purpose: 'Vendor Data Management'
+         refType: dataos  
+         ref:  bundle:v1beta:vendor-data-bundle
+
+       # Input data sources
+       inputs:
+         # Vendor database sources
+        #  - refType: dataos
+        #    ref: dataset:icebase:promo_effectiveness:vendor_subscription_insights
+
+         - refType: dataos
+           ref: dataset:operationaldb:public:organization
+
+         - refType: depot
+           ref: dataos://operationaldb:public/categories
+
+         - refType: depot
+           ref: dataos://operationaldb:public/vendor
+
+         - refType: depot
+           ref: dataos://operationaldb:public/certification
+
+         - refType: depot
+           ref: dataos://operationaldb:public/pending_user
+
+         - refType: depot
+           ref: dataos://operationaldb:public/user
+
+         - refType: depot
+           ref: dataos://operationaldb:public/vendor_categories
+
+         - refType: depot
+           ref: dataos://operationaldb:public/vendor_lists
+
+         - refType: depot
+           ref: dataos://operationaldb:public/government_subscriptions
+
+         - refType: depot
+           ref: dataos://operationaldb:public/vendor_list_users
+
+       # Output destinations
+       outputs:
+         - refType: dataos
+           ref: dataset:operationlake:analytics:vendor_data_insights
+
+       # Service endpoints
+       ports:
+          lens:
+            ref: lens:v1alpha:vendor-insights360:public
+            refType: dataos
+
+          talos:
+          - ref: service:v1:vendor-dataapi:public
+            refType: dataos
+
+
+    ```
+
 
   </Accordion>
 
   <Accordion title="Depot as Lakehouse" defaultOpen={false}>
-    Whenever a user ingest the data, it get stored in the DataOS Lakehouse Depot.
+    Whenever a user ingest the data, it get stored in the DataOS Lakehouse Depot. To know more about the Lakehouse, please refer to this link.
+    For example:
+
   </Accordion>
 
   <Accordion title="Applying data Policies" defaultOpen={false}>
