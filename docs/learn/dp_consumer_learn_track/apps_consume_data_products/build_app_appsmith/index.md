@@ -10,7 +10,7 @@ This guide walks you through creating a simple Appsmith application to consume a
     
 2. To access your data over HTTP using `curl`, refer to [this](/learn/dp_consumer_learn_track/explore_sm/#using-curl) link.
 
-## Via Curl
+## Using cURL for requests
 
 Using cURL to connect with Appsmith allows you to quickly import API requests directly from the command line. This method is useful for users who have pre-existing cURL commands and want to seamlessly integrate them into their Appsmith applications.
 
@@ -77,7 +77,7 @@ Using cURL to connect with Appsmith allows you to quickly import API requests di
     ![dashboard_published.jpeg](/learn/dp_consumer_learn_track/apps_consume_data_products/build_app_appsmith/dashboard_published.jpeg)
     
 
-## Via Postgres
+## Querying via Postgres
 
 ### **Step 1: Log in and set up your workspace**
 
@@ -97,7 +97,7 @@ Using cURL to connect with Appsmith allows you to quickly import API requests di
     ![/learn/dp_consumer_learn_track/apps_consume_data_products/build_app_appsmith/image.png](/learn/dp_consumer_learn_track/apps_consume_data_products/build_app_appsmith/image.png)
     
 
-### Step 3: Configure your source.
+### **Step 3: Configure your source**
 
 1. Navigate to the **Query** tab. Click on the **+** button to add a new data source.
     
@@ -136,7 +136,7 @@ Once you are able to fetch your data, you can create visualizations and dashboar
 
 Follow the steps 4-6 given in the [Via Curl](/learn/dp_consumer_learn_track/apps_consume_data_products/build_app_appsmith/#via-curl) section.
 
-## Via GraphQL
+## Using GraphQL for queries
 
 ### **Step 1: Log in and set up your workspace**
 
