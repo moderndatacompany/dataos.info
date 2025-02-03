@@ -2293,36 +2293,90 @@ After creating a Lens data model, the next step is to consume it—this means in
 
         ## Steps
 
-
-
         To sync the Lens model with Superset, follow these steps:
-
-
 
         <Steps>
           <Step title="Run the curl command">
             Copy the curl command syntax below and replace the placeholders with the actual values.
 
             <CodeGroup>
-              ```javascript helloWorld.js
-              console.log("Hello World");
+              ```yaml Syntax
+              curl --location --request POST 'https://<DATAOS_FQDN>/lens2/sync/api/v1/superset/<WORKSPACE_NAME>:<LENS-NAME>' \
+              --header 'apikey: <apikey>' \
+              --header 'Content-Type: application/json' \
+              --data-raw '
+              {
+                  "username": "<superset username>",
+                  "password": "<superset password>",
+                  "host": "https://superset-<DATAOS_FQDN>"
+              }
+              ```
+
+              ```
+              curl --location --request POST 'https://liberal-monkey.dataos.app/lens2/sync/api/v1/superset/public:company-intelligence' \
+              --header 'apikey: aueniekQa==' \
+              --header 'Content-Type: application/json' \
+              --data-raw '
+              {
+                  "username": "adder_1",
+                  "password": "adder_1",
+                  "host": "https://superset-liberal-monkey.dataos.app"
+              }
               ```
             </CodeGroup>
 
+            **Command paramters:**
 
+            * **`URL`**: `https://liberal-monkey.dataos.app/lens2/sync/api/v1/superset/public:quality360`. This is the endpoint for syncing with Superset.
+
+            * **`DataOS FQDN`**: Current DataOS FQDN, e.g., `liberal-monkey.dataos.app`.
+
+            * **`--header 'Content-Type: application/json'`**: Specifies the content type as JSON.
+
+            * **`Lens_Name`**: Name of the Lens, e.g., `quality360`.
+
+            * **`API_Key`**: DataOS API key. The DataOS API key for the user can be obtained by executing the command below.
+
+            ```bash
+            dataos-ctl user apikey get
+            ```
+
+            Upon initiation, a response will be received:
+
+            ```bash
+            {
+                "message": "started"
+            }
+            ...
+            {
+                "message": "Superset project creation and sync completed successfully."
+            }
+            ```
+
+            Once the command is executed in the terminal, results will be visible in the Superset app as demonstrated below:
           </Step>
 
-          <Step title="Step 2">
+          <Step title="Go to DataOS">
+            Go to DataOS and select Superset.
 
+            ![Superset Configuration](https://dataos.info/resources/lens/bi_integration/superset2.png)
+          </Step>
+
+          <Step title=" Navigate to Datasets tab">
+            Here, each entity will appear as a dataset.
+
+            ![Superset Configuration](https://dataos.info/resources/lens/bi_integration/superset3.png)
+
+            The setup is complete. Further exploration and analysis can be performed in Superset.
           </Step>
         </Steps>
 
+        ## Data policies and security
 
+        Any data masking, restrictions, or permissions defined by the publisher will automatically be enforced for all viewers of the report, ensuring consistent data security and compliance. However, the behavior of data policies (e.g., masking) depends on who is the user of the Superset.
       </Tab>
 
       <Tab title="Using Data Product Hub">
-
-
         <Steps>
           <Step title="Access Superset Integration">
             Go to the 'Access Options' tab for your Data product in Data Product Hub. Under the 'BI Sync' section, locate the 'Superset' option.
@@ -2346,8 +2400,6 @@ After creating a Lens data model, the next step is to consume it—this means in
             <Info>
               You may need to consult your DataOS Administrator for the username and password of the Superset.
             </Info>
-
-
           </Step>
 
           <Step title="Activate the Data Product">
@@ -2358,18 +2410,8 @@ After creating a Lens data model, the next step is to consume it—this means in
 
           <Step title="Access Data Product in Superset">
             After activation, go to the DataOS homepage. Scroll to the 'Apache Superset' section, click on 'Datasets', and locate your activated data product available as datasets. You’re now ready to start visualizing and building analytical dashboards.
-
-
           </Step>
         </Steps>
-
-
-
-
-
-
-
-
       </Tab>
     </Tabs>
   </Accordion>
@@ -2391,15 +2433,15 @@ Lens offers a REST API for querying data, retrieving metadata, and managing reso
 
 Lens provides a PostgreSQL-compatible interface, enabling you to interact with the semantic model using standard PostgreSQL syntax. For detailed guidance on how to set up and use SQL APIs with Lens, refer to the full [**SQL API guide**](/resources/lens/expoloration_of_lens_using_sql_api/).
 
-## How to do data modeling in the semantic model?
+## How to do data modeling in the semantic model built using Lens?
 
 Data modeling is the process of defining and structuring raw data into organized and meaningful business definitions. It involves creating logical schemas, relationships, and aggregations to represent how data is stored, processed, and accessed. Click [here](/resources/lens/concepts/) to learn more about the Data modeling concepts.
 
-## How to configure a semantic model?
+## How to configure a semantic model built using Lens?
 
 The Lens can be configured to connect to different sources using data source attributes and configurable attributes in the`lens_deployment.yml` manifest files. Here is a [comprehensive ](https://dataosinfo.mintlify.app/resources/lens/lens_manifest_attributes/) supported properties.
 
-## How to observe and monitor a semantic model?
+## How to observe and monitor a semantic model built using Lens?
 
 Monitoring in Lens operates at three levels, each focusing on different aspects of system performance and reliability.
 
@@ -2409,7 +2451,7 @@ Monitoring in Lens operates at three levels, each focusing on different aspects 
 
 3. **Infrastructure monitoring:** Infrastructure powered by Grafana, focuses on the underlying system infrastructure, tracking server health, memory usage, and overall system stability.
 
-## How to govern a semantic model?
+## How to govern a semantic model built using Lens?
 
 Data governance in DataOS is structured across three layers to protect and control sensitive information:
 
@@ -2419,7 +2461,7 @@ Data governance in DataOS is structured across three layers to protect and contr
 
 * **Activation layer (BI tool):** Governance at the activation layer focuses on enforcing data protection within the Business Intelligence (BI) tool. This ensures that sensitive data remains masked or restricted based on user roles when presented through dashboards or reports, controlling how the data is accessed and displayed in the final interface.
 
-## How to catalog a semantic model?
+## How to catalog a semantic model built using Lens?
 
 The metadata of a semantic model (Lens Resource) is cataloged in Metis, which stores historical runtime and operations data in the Metis DB. This cataloging provides an aggregated view of metadata, enabling access to historical and operational insights about Resources. To learn more about how to catalog semantic models and Lens Resources click here
 
