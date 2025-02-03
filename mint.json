@@ -133,7 +133,7 @@
             "resources/lens/explore_lens_using_graphql",
             "resources/lens/explore_lens_using_sql_apis",
             "resources/lens/explore_lens_using_python",
-            "resources/lens/explore_lens_using_rest_apis"
+            "resources/lens/explore_lens_using_rest_apis",
       
             {
               "group": "BI Integration",
