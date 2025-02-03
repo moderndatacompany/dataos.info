@@ -200,7 +200,7 @@ When working with a Postman collection to test APIs, you typically need to confi
 
 ![postman](https://dataos.info/resources/lens/exploring_deployed_lens_using_rest_apis/Untitled1.png "Postman")
 
-**Set up Authorization (bearer token):**
+**Set up authorization (bearer token):**
 
 1. Once the collection is imported, click on the specific API request you want to test.
 
@@ -212,7 +212,7 @@ When working with a Postman collection to test APIs, you typically need to confi
 
 5. This token grants you access to the meta and data scopes.
 
-**Set the Request type:** Select the API request type as `POST` from the dropdown next to the API URL.
+**Set the request type:** Select the API request type as `POST` from the dropdown next to the API URL.
 
 **Prepare the URL and Query the API:**  Prepare the URL according to what data you want to fetch.
 
@@ -231,9 +231,9 @@ https://<DATAOS_FQDN>/lens2/api/<WORKSPACE>:<NAME_OF_LENS>/v2/graphql
 
 * **Replace `<QUERY>` with the specific fields you want to query from schema.** Make sure to format the query string as valid JSON.
 
-**Set the Request Body in Postman (for POST Methods):** for `POST` requests, you must configure the Body tab for graphql. Refer to the below image for subsequent steps.
+**Set the request body in Postman (for POST method):** for `POST` requests, you must configure the Body tab for graphql. Refer to the below image for subsequent steps.
 ![graphql](https://dataos.info/resources/lens/exploring_deployed_lens_using_rest_apis/graphql.png)
-*Postman GraphQL request body tab*
+*Postman graphQL request body tab*
 
 * In the `Body` tab, select `GraphQL` from the format options.
 
@@ -268,7 +268,7 @@ https://<DATAOS_FQDN>/lens2/api/<WORKSPACE>:<NAME_OF_LENS>/v2/graphql
   ```
 </CodeGroup>
 
-## GraphQL API Reference
+## Graphql API reference
 
 ### **`table`**
 
@@ -363,7 +363,7 @@ These filters are used within the `where` clause to refine query results based o
 
 `asc` | `desc`
 
-## GraphQL Query Examples
+## Graphql query examples
 
 This section provides sample GraphQL queries that you can use directly in Explorer Studio of the Data Product Hub. You can also use these queries with the placeholder in the Curl and Python methods described earlier.
 

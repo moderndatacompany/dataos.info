@@ -2332,15 +2332,15 @@ Monitoring in Lens operates at three levels, each focusing on different aspects 
 
 Data governance in DataOS is structured across three layers to protect and control sensitive information:
 
-* **Physical Data Layer Governance:** Governance policies are applied directly at the physical data layer, where the data resides in sources such as BigQuery, Postgres, Snowflake, Lakehouse, or other data storage platforms. These policies enforce data protection at the source, controlling access and masking sensitive information before it is processed or exposed further. To know how&#x20;
+* **Physical data layer:** Governance policies are applied directly at the physical data layer, where the data resides in sources such as BigQuery, Postgres, Snowflake, Lakehouse, or other data storage platforms. These policies enforce data protection at the source, controlling access and masking sensitive information before it is processed or exposed further. To know how&#x20;
 
-* &#x20;**Model-First Data Product Layer Governance:** At this layer, governance policies are applied to the semantic model (Lens) derived from the underlying source tables. To manage access effectively [**user groups**](/resources/lens/working_with_user_groups/) are used to define different levels of exploration permissions within Lens.&#x20;
+* &#x20;**Model-first Data Product layer:** At this layer, governance policies are applied to the semantic model (Lens) derived from the underlying source tables. To manage access effectively [**user groups**](/resources/lens/working_with_user_groups/) are used to define different levels of exploration permissions within Lens.&#x20;
 
-* **Activation Layer Governance (BI Tool):** Governance at the activation layer focuses on enforcing data protection within the Business Intelligence (BI) tool. This ensures that sensitive data remains masked or restricted based on user roles when presented through dashboards or reports, controlling how the data is accessed and displayed in the final interface.
+* **Activation layer (BI tool):** Governance at the activation layer focuses on enforcing data protection within the Business Intelligence (BI) tool. This ensures that sensitive data remains masked or restricted based on user roles when presented through dashboards or reports, controlling how the data is accessed and displayed in the final interface.
 
 ## How to catalog a semantic model?
 
-The metadata of a semantic model (Lens Resource) is cataloged in Metis, which stores historical runtime and operations data in the Metis DB. This cataloging provides an aggregated view of metadata, enabling access to historical and operational insights about Resources.
+The metadata of a semantic model (Lens Resource) is cataloged in Metis, which stores historical runtime and operations data in the Metis DB. This cataloging provides an aggregated view of metadata, enabling access to historical and operational insights about Resources. To know more about how to catalog semantic model and Lens Resource click here
 
 ## How to optimize the query performance of a semantic model?
 

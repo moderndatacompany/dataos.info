@@ -124,9 +124,9 @@ When working with a Postman collection to test APIs, you typically need to confi
 
 1. Once the collection is imported, click on the specific API request you want to test.
 
-2. Go to the **Authorization** tab.
+2. Go to the Authorization tab.
 
-3. From the **Auth Type** dropdown, select **Bearer Token**.
+3. From the Auth Type dropdown, select Bearer Token.
 
 4. In the Token field, paste your Bearer token, which you have received from your authentication process.
 
@@ -256,9 +256,9 @@ When working with a Postman collection to test APIs, you typically need to confi
 
 If the request takes too long to be processed, Lens Backend responds with `{ "error": "Continue wait" }` and 200 status codes. This is how the long polling mechanism in Lens is implemented. Clients should continuously retry the same query in a loop until they get a successful result. Subsequent calls to the Lens endpoints are idempotent and don’t lead to scheduling new database queries if not required by the refresh\_key. Also, receiving Continue wait doesn’t mean the database query has been canceled, and it’s actually still being processed by the Lens. Database queries that weren’t started and are no longer waited by the client’s long polling loop will be marked as orphaned and removed from the querying queue.
 
-**Possible reasons of Continue wait:**
+**Possible reasons for continuing wait:**
 
-* The query requested is heavy, and it takes some time for the database to process it. Clients should wait for its completion, continuously sending the same REST API request. continueWaitTimeout can be adjusted in order to change the time Lens waits before returning the continue wait message.
+* The query requested is heavy, and it takes some time for the database to process it. Clients should wait for its completion, continuously sending the same REST API request. continueWaitTimeout can be adjusted to change the time Lens waits before returning the continue wait message.
 
 * There are many queries requested and Lens backend queues them to save database from overloading.
 
@@ -300,7 +300,7 @@ Lens REST API has basic errors and HTTP Error codes for all requests.
   </table>
 </div>
 
-### Using Curl
+## Using Curl
 
 Curl is a command-line tool used for transferring data with URLs, making it a convenient choice for interacting with APIs directly from the terminal. Ensure that curl is installed on your system before proceeding.
 
@@ -381,7 +381,7 @@ After replacing the placeholders with the appropriate values the CURL request wo
   Ensure you replace the placeholders with the actual values specific to your environment. Properly formatted queries and valid API keys are essential for successful API interactions.
 </Note>
 
-### **Using Python**
+## **Using Python**
 
 Python provides a flexible and powerful way to interact with the Lens REST API. It is especially useful for building automation scripts or for data analysis workflows. Ensure that Python and the `requests` library is installed on your system before proceeding.
 
