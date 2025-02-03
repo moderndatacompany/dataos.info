@@ -117,10 +117,7 @@
         {
           "group": "Data Modelling",
           "pages": [
-            "resources/lens/concepts",
-            "resources/lens/best_practices",
-            "resources/lens/dos_and_donts",
-            "resources/lens/errors"
+            "resources/lens/concepts"
           ]
         },
         {
@@ -175,7 +172,10 @@
           ]
         },
 
-        "resources/lens/fine_tuning_a_lens_model"
+        "resources/lens/fine_tuning_a_lens_model",
+        "resources/lens/best_practices",
+        "resources/lens/dos_and_donts",
+        "resources/lens/errors"
           ]
         },
     {

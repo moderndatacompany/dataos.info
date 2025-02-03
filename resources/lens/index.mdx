@@ -1,7 +1,6 @@
 ---
 title: "Introduction"
 description: "Lens Resource in DataOS is a logical modeling layer for accessing tabular data in data warehouses or lakehouses. It operates on top of physical tables, allowing the extension of these tables into logical tables by adding logical columns (measures) and relationships. It empowers analytical engineers, the key architects of business intelligence, with a model-first approach. "
-mode: "wide"
 ---
 
 <Tip>
@@ -12,7 +11,7 @@ mode: "wide"
 
 **Why Lens?**
 
-The data modeling layer serves as an interface that overlays the underlying data, consistently presenting business users with familiar and well-defined terms like `product`, `customer`, or `revenue`. This abstraction enables users to access and consume data in a way that aligns with their understanding, facilitating self-service analytics and reducing dependence on data engineers for ad-hoc data requests.
+The semantic modeling layer of the Lens serves as an interface that overlays the underlying data, consistently presenting business users with familiar and well-defined terms like `product`, `customer`, or `revenue`. This abstraction enables users to access and consume data in a way that aligns with their understanding, facilitating self-service analytics and reducing dependence on data engineers for ad-hoc data requests.
 
 As a resource within the DataOS ecosystem, Lens enhances Data Product consumption by delivering improvements in how Data Products are accessed and utilized. It streamlines the developer experience in consumption patterns, focusing specifically on refining the use and interaction with data products.
 
@@ -2286,7 +2285,7 @@ After creating a Lens data model, the next step is to consume it—this means in
   </Accordion>
 </AccordionGroup>
 
-### **Graphql**
+### Graphql
 
 The [GraphQL guide](/resources/lens/exploration_of_deployed_lens_using_graphql/) provides detailed instructions on how to interact with the Lens GraphQL API, enabling you to leverage a variety of tools.
 
@@ -2324,7 +2323,7 @@ Monitoring in Lens operates at three levels, each focusing on different aspects 
 
 Data governance in DataOS is structured across three layers to protect and control sensitive information:
 
-* **Physical data layer:** Governance policies are applied directly at the physical data layer, where the data resides in sources such as BigQuery, Postgres, Snowflake, Lakehouse, or other data storage platforms. These policies enforce data protection at the source, controlling access and masking sensitive information before it is processed or exposed further. To know how&#x20;
+* **Physical data layer:** Governance policies are applied directly at the physical data layer, where the data resides in sources such as BigQuery, Postgres, Snowflake, Lakehouse, or other data storage platforms. These policies enforce data protection at the source, controlling access and masking sensitive information before it is processed or exposed further.&#x20;
 
 * &#x20;**Model-first Data Product layer:** At this layer, governance policies are applied to the semantic model (Lens) derived from the underlying source tables. To manage access effectively [**user groups**](/resources/lens/working_with_user_groups/) are used to define different levels of exploration permissions within Lens.&#x20;
 
