@@ -144,9 +144,10 @@
             "resources/lens/exploration_of_deployed_lens_using_graphql",
             "resources/lens/exploration_of_deployed_lens_using_sql_apis",
             "resources/lens/exploration_of_deployed_lens_using_python",
-            "resources/lens/exploration_of_deployed_lens_using_rest_apis",
+            "resources/lens/exploration_of_deployed_lens_using_rest_apis"
+      
             {
-              "group": "BI Integration",
+              "group": "BI Integration"
               "pages": [
                 "resources/lens/bi_integration",
                 "resources/lens/bi_integration/superset",
