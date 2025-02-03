@@ -31,7 +31,7 @@ Lens is engineered to handle complex and large-scale data models with ease. Key 
 
 * **Performance optimization through Flash:** Designed to work with DataOS Lakehouse and Iceberg-format depots, [Flash](/resources/stacks/flash/) improves query performance by leveraging in-memory execution. This optimization ensures that data teams can efficiently handle large-scale queries with enhanced speed and performance.
 
-## How to build a Semantic model?
+## How to build a Semantic model using Lens?
 
 The process begins with creating a new Lens project and generating a data model. Once the model is prepared, it will be tested within the development environment to ensure it is error-free before deployment.
 
@@ -1844,7 +1844,7 @@ After creating a Lens data model, the next step is to consume it—this means in
         Data masking, restrictions, or permissions established by the publisher are automatically enforced for all report viewers, ensuring consistent data security and compliance. The behavior of these data policies, such as masking, may vary based on the user of the Power BI desktop.
       </Tab>
 
-      <Tab title="Using DPH">
+      <Tab title="Using Data Product Hub">
         <Steps>
           <Step title="Navigate to the Data Product Hub" titleSize="h2">
             Access the Home Page of DataOS. From there, navigate to the Data Product Hub to explore the various Data Products available within the platform.
@@ -2281,7 +2281,97 @@ After creating a Lens data model, the next step is to consume it—this means in
   </Accordion>
 
   <Accordion title="Superset" defaultOpen={false}>
-    Content for Superset goes here.
+    <Tabs>
+      <Tab title="Using curl">
+        ## Prerequisites
+
+        * **Curl**: Ensure `curl` is installed on the system. For Windows users, `curl.exe` may be required.
+
+        * **Lens API endpoint**: The API endpoint provided by Lens to sync semantic model, enabling integration with Superset.
+
+        * **Access credentials**: Superset requires the login credentials (username and password) and the host address where Superset is hosted.&#x20;
+
+        ## Steps
+
+
+
+        To sync the Lens model with Superset, follow these steps:
+
+
+
+        <Steps>
+          <Step title="Run the curl command">
+            Copy the curl command syntax below and replace the placeholders with the actual values.
+
+            <CodeGroup>
+              ```javascript helloWorld.js
+              console.log("Hello World");
+              ```
+            </CodeGroup>
+
+
+          </Step>
+
+          <Step title="Step 2">
+
+          </Step>
+        </Steps>
+
+
+      </Tab>
+
+      <Tab title="Using Data Product Hub">
+
+
+        <Steps>
+          <Step title="Access Superset Integration">
+            Go to the 'Access Options' tab for your Data product in Data Product Hub. Under the 'BI Sync' section, locate the 'Superset' option.
+
+            ![superset\_sync.png](https://dataos.info/learn/dp_consumer_learn_track/integrate_bi_tools/superset/superset_sync.png)
+          </Step>
+
+          <Step title="Initiate the Connection">
+            Click on 'Add Connection' under the Superset option. This action will open a new window where you’ll enter your credentials to link DataOS with Superset.
+
+            ![superset\_conn.png](https://dataos.info/learn/dp_consumer_learn_track/integrate_bi_tools/superset/superset_conn.png)
+          </Step>
+
+          <Step title="Enter Superset Credentials">
+            In the setup window, fill in the required credentials:
+
+            * **Username**: The Superset account username.
+
+            * **Password**: The corresponding password for this account.
+
+            <Info>
+              You may need to consult your DataOS Administrator for the username and password of the Superset.
+            </Info>
+
+
+          </Step>
+
+          <Step title="Activate the Data Product">
+            Once you’ve entered all the credentials, click 'Activate' to complete the setup. This will link the *Product Affinity* semantic model with Superset.
+
+            ![superset-connections.png](https://dataos.info/learn/dp_consumer_learn_track/integrate_bi_tools/superset/superset-connections.png)
+          </Step>
+
+          <Step title="Access Data Product in Superset">
+            After activation, go to the DataOS homepage. Scroll to the 'Apache Superset' section, click on 'Datasets', and locate your activated data product available as datasets. You’re now ready to start visualizing and building analytical dashboards.
+
+
+          </Step>
+        </Steps>
+
+
+
+
+
+
+
+
+      </Tab>
+    </Tabs>
   </Accordion>
 </AccordionGroup>
 
@@ -2331,9 +2421,9 @@ Data governance in DataOS is structured across three layers to protect and contr
 
 ## How to catalog a semantic model?
 
-The metadata of a semantic model (Lens Resource) is cataloged in Metis, which stores historical runtime and operations data in the Metis DB. This cataloging provides an aggregated view of metadata, enabling access to historical and operational insights about Resources. To know more about how to catalog semantic models and Lens Resources click here
+The metadata of a semantic model (Lens Resource) is cataloged in Metis, which stores historical runtime and operations data in the Metis DB. This cataloging provides an aggregated view of metadata, enabling access to historical and operational insights about Resources. To learn more about how to catalog semantic models and Lens Resources click here
 
-## How to optimize the query performance of a semantic model?
+## Optimize the query performance of a semantic model using Flash
 
 The Lens semantic layer provides several optimization techniques that can significantly enhance the performance of data queries. [This page](/resources/lens/fine_tuning_a_lens_model/) explores strategies for optimizing query performance for maximum efficiency.
 
