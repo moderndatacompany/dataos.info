@@ -246,28 +246,74 @@ This section involves steps for creating a Depot for different data sources supp
     [](https://dataos.info/resources/depot/#__codelineno-17-1)
 
     By executing the above command, the specified Depot will be deleted from your DataOS environment.
+
+    ### Limit the data source's file format
+
+    Another important function that a Depot can play is to limit the file type that can read from and write to a particular data source. In the `spec` section of the config file, simply mention the `format` of the files you want to allow access to.
+
+    ```yaml
+    depot:
+      type: S3
+      description: $${{description}}
+      external: true
+      spec:
+        scheme: $${{s3a}}
+        bucket: $${{bucket-name}}
+        relativePath: "raw" 
+        format: $${{format}}  # mention the file format, such as JSON
+    ```
+
+    For file-based systems, if you define the format as ‘Iceberg’, you can choose the meta-store catalog between Hadoop and Hive. This is how you do it:
+
+    ```yaml
+    depot:
+      type: ABFSS
+      description: "ABFSS Iceberg Depot for sanity"
+      compute: runnable-default
+      spec:
+        account: 
+        container: 
+        relativePath:
+        format: ICEBERG
+        endpointSuffix:
+        icebergCatalogType: Hive
+    ```
+
+    If you do not mention the catalog name as Hive, it will use Hadoop as the default catalog for Iceberg format.
+
+    ![Flow when Hive is chosen as the catalog type](https://dataos.info/resources/depot/depot_catalog.png)
+
+    Hive automatically keeps the pointer updated to the latest metadata version. If you use Hadoop, you have to manually do this by running the set metadata command as described on this page: [Set Metadata](https://dataos.info/resources/depot/icebase/).
   </Accordion>
 
-  <Accordion title="Google Bigquery" defaultOpen={false}>
-    ### Pre-requisites specific to the Bigquery Depot
+  <Accordion title="Amazon Redshift" defaultOpen={false}>
+    ### Pre-requisites specific to the Redshift Depot
 
-    To create a Bigquery Depot you must have the following details:
+    To create a Redshift Depot you must have the following details:
 
-    * **Project ID**: The unique identifier for your Google Cloud project used by BigQuery. You can find this in the Google Cloud Console under "Project Info" on your project dashboard.
+    * **Hostname**: The hostname or endpoint of the Redshift cluster, which specifies the server address to connect to. You can obtain this from the AWS Management Console under the Redshift cluster details or ask the administrator managing the cluster.
 
-    * **Email ID**: The email address associated with the Google Cloud service account used to access BigQuery. This can be found in the IAM & Admin section of the Google Cloud Console under the "Service Accounts" tab, where the email is listed for each service account.
+    * **Port**: The port number on which the Redshift cluster is listening. The default port for Redshift is `5439`, but it may differ based on your setup. Check the cluster details in the AWS Management Console or consult your database administrator.
 
-    * **Credential Properties in JSON File**: A JSON file containing the necessary credential properties for authentication. This file is generated when you create a service account in Google Cloud. You can download it from the IAM & Admin > Service Accounts section in the Google Cloud Console by selecting a service account and clicking "Add Key" > "JSON".
+    * **Database name**: The name of the specific database within the Redshift cluster you want to connect to. This can be found in the AWS Management Console or provided by the database administrator.
 
-    * **Additional Parameters**: Any extra configuration parameters required to establish the connection, such as project settings or specific access scopes. These may be provided by the administrator or defined in the BigQuery API documentation based on the integration you are working with.
+    * **Username and password**: The credentials used to authenticate and access the Redshift database. These are set up when the user account is created and must be securely obtained from the Redshift administrator.
 
-    ### Create a Bigquery Depot
+    When accessing the Redshift database in workflows or other DataOS Resources, additional details are required:
 
-    Azure Blob File System Secure (ABFSS) is an object storage system. Object stores are distributed storage systems designed to store and manage large amounts of unstructured data.
+    * **Bucket name**: The name of the S3 bucket where the data resides. You can find this in the AWS S3 Console or consult the administrator managing the data storage.
 
-    DataOS enables the creation of a Depot of type 'Bigquery' to facilitate the reading of data stored in an Azure Blob Storage account. This Depot provides access to the storage account, which can consist of multiple containers. A container serves as a grouping mechanism for multiple blobs. It is recommended to define a separate Depot for each container. To create a Depot of type ‘ABFSS‘, follow the below steps:
+    * **Relative path**: The path within the S3 bucket pointing to the data you want to access. This path is typically structured based on your data organization and can be obtained from the team managing the data or the S3 Console.
 
-    ### Step 1: Create an Instance Secret for securing Bigquery credentails
+    * **AWS access key**: The Access Key ID used to authenticate and authorize API requests to AWS. You can obtain this from the AWS IAM (Identity and Access Management) Console under your user’s security credentials or request it from your AWS administrator.
+
+    * **AWS secret key**: The Secret Access Key associated with your AWS Access Key ID. This key is also available in the AWS IAM Console under security credentials and must be securely stored. If you do not have access, request it from your AWS administrator.
+
+    ### Create a Redshift Depot
+
+    DataOS provides the capability to establish a connection with the Amazon Redshift database. We have provided the template for the manifest file to establish this connection. To create a Depot of type ‘REDSHIFT‘,  follow the below steps:
+
+    ### Step 1: Create an Instance Secret for securing Redshift credentails
 
     <Warning>
       This step can be skipped if you prefer to create a Depot without referencing an Instance Secret.
@@ -275,9 +321,446 @@ This section involves steps for creating a Depot for different data sources supp
 
     Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).&#x20;
 
-    ### Step 2: Create a Bigquery Depot manifest file
+    ### Step 2: Create a Redshift Depot manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your Bigquery Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
+    Begin by creating a manifest file to hold the configuration details for your Redshift Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
+
+    <CodeGroup>
+      ```yaml Inline credentials Depot manifest file
+      name: ${{redshift-depot-name}}
+      version: v1
+      type: depot
+      tags:
+        - ${{redshift}}
+      layer: user
+      description: ${{Redshift Sample data}}
+      depot:
+        type: REDSHIFT
+        spec:
+          host: ${{hostname}}
+          subprotocol: ${{subprotocol}}
+          port: ${{5439}}
+          database: ${{sample-database}}
+          bucket: ${{tmdc-dataos}}
+          relativePath: ${{development/redshift/data_02/}}
+        external: ${{true}}
+        connectionSecret:
+          - acl: ${{rw}}
+            type: key-value-properties
+            data:
+              username: ${{username}}
+              password: ${{password}}
+              awsaccesskeyid: ${{access key}}
+              awssecretaccesskey: ${{secret key}}
+      ```
+
+      ```yaml Instance Secret reference Depot manifest file
+      name: ${{redshift-depot-name}}
+      version: v2alpha
+      type: depot
+      tags:
+        - ${{redshift}}
+      layer: user
+      description: ${{Redshift Sample data}}
+      depot:
+        type: REDSHIFT
+        redshift:
+          host: ${{hostname}}
+          subprotocol: ${{subprotocol}}
+          port: ${{5439}}
+          database: ${{sample-database}}
+          bucket: ${{tmdc-dataos}}
+          relativePath: ${{development/redshift/data_02/}}
+        external: ${{true}}
+        secrets:
+          - name: ${{redshift-instance-secret-name}}-r
+            allkeys: true
+
+          - name: ${{redshift-instance-secret-name}}-rw
+            allkeys: true
+      ```
+    </CodeGroup>
+
+    ### Step 3: Apply the Depot manifest file
+
+    Once you have the manifest file ready in your code editor, simply copy the path of the manifest file and apply it through the DataOS CLI by pasting the path in the placeholder, using the command given below:
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource apply -f ${{yamlfilepath}}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl apply -f ${{yamlfilepath}}
+      ```
+    </CodeGroup>
+
+    ### **Verify the Depot creation**
+
+    To ensure that your Depot has been successfully created, you can verify it in two ways:
+
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:&#x20;
+
+    ```bash
+    dataos-ctl get -t depot
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-15-1)
+
+    * Additionally, retrieve the list of all Depots created in your organization:
+
+    ```bash
+    dataos-ctl get -t depot -a
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-16-1)
+
+    You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
+
+    ### **Delete a Depot**
+
+    <Tip>
+      **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
+    </Tip>
+
+    If you need to delete a Depot, use the following command in the DataOS CLI:
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl delete -t depot -n ${{name of Depot}}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${{path of your manifest file}}
+      ```
+    </CodeGroup>
+
+    [](https://dataos.info/resources/depot/#__codelineno-17-1)
+
+    By executing the above command, the specified Depot will be deleted from your DataOS environment.
+  </Accordion>
+
+  <Accordion title="Amazon S3" defaultOpen={false}>
+    ### Pre-requisites specific to the S3 Depot
+
+    To create a S3 Depot you must have the following details:
+
+    * **AWS access key ID**: The Access Key ID used to authenticate and authorize API requests to your AWS account. This can be obtained from the AWS IAM (Identity and Access Management) Console under your user’s security credentials or requested from your AWS administrator.
+
+    * **AWS bucket name**: The name of the Amazon S3 bucket where the data resides. You can find this in the AWS S3 Console under the list of buckets or request it from the administrator managing the storage.
+
+    * **Secret access key**: The Secret Access Key associated with your AWS Access Key ID, required for secure API requests. This is available in the AWS IAM Console under your user’s security credentials. Ensure that it is securely stored and shared only with authorized personnel.
+
+    * **Scheme**: The scheme specifies the protocol to be used for the connection, such as `s3` or `https`. This information depends on your system’s configuration and can be confirmed with the team managing the connection setup or workflow.
+
+    * **Relative Path**: The path within the S3 bucket that points to the specific data or folder you want to access. This path is typically structured according to how your data is organized and can be obtained from the team managing the data or the AWS S3 Console.
+
+    * **Format**: The file format of the data stored in the S3 bucket, such as `CSV`, `Parquet`, or `JSON`. This information is determined by the structure of your data and can be confirmed with the team managing the data storage.
+
+    ### Create a S3 Depot
+
+    Azure Blob File System Secure (ABFSS) is an object storage system. Object stores are distributed storage systems designed to store and manage large amounts of unstructured data.
+
+    DataOS enables the creation of a Depot of type 'Bigquery' to facilitate the reading of data stored in an Azure Blob Storage account. This Depot provides access to the storage account, which can consist of multiple containers. A container serves as a grouping mechanism for multiple blobs. It is recommended to define a separate Depot for each container. To create a Depot of type ‘ABFSS‘, follow the below steps:
+
+    ### Step 1: Create an Instance Secret for securing S3 credentails
+
+    <Warning>
+      This step can be skipped if you prefer to create a Depot without referencing an Instance Secret.
+    </Warning>
+
+    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).&#x20;
+
+    ### Step 2: Create a S3 Depot manifest file
+
+    Begin by creating a manifest file to hold the configuration details for your S3 Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
+
+    <CodeGroup>
+      ```yaml Inline credentials Depot manifest file
+      name: ${{depot-name}}
+      version: v1
+      type: depot
+      tags:
+        - ${{tag1}}
+      owner: ${{owner-name}}
+      layer: user
+      description: ${{description}}
+      depot:
+        type: S3                                          
+        external: ${{true}}
+        spec:                                            
+          scheme: ${{s3a}}
+          bucket: ${{project-name}}
+          relativePath: ${{relative-path}}
+          format: ${{format}}
+        connectionSecret:                                
+          - acl: rw
+            type: key-value-properties
+            data:
+              accesskeyid: ${{AWS_ACCESS_KEY_ID}}
+              secretkey: ${{AWS_SECRET_ACCESS_KEY}}
+              awsaccesskeyid: ${{AWS_ACCESS_KEY_ID}}
+              awssecretaccesskey: ${{AWS_SECRET_ACCESS_KEY}}
+          - acl: r
+            type: key-value-properties
+            data:
+              accesskeyid: ${{AWS_ACCESS_KEY_ID}}
+              secretkey: ${{AWS_SECRET_ACCESS_KEY}}
+              awsaccesskeyid: ${{AWS_ACCESS_KEY_ID}}
+              awssecretaccesskey: ${{AWS_SECRET_ACCESS_KEY}}
+      ```
+
+      ```yaml Instance Secret reference Depot manifest file
+      name: ${{depot-name}}
+      version: v2alpha
+      type: depot
+      tags:
+        - ${{tag1}}
+      owner: ${{owner-name}}
+      layer: user
+      description: ${{description}}
+      depot:
+        type: S3                                          
+        external: ${{true}}
+        s3:                                            
+          scheme: ${{s3a}}
+          bucket: ${{project-name}}
+          relativePath: ${{relative-path}}
+          format: ${{format}}
+        secrets:
+          - name: ${{s3-instance-secret-name}}-r
+            allkeys: true
+
+          - name: ${{s3-instance-secret-name}}-rw
+            allkeys: true
+      ```
+    </CodeGroup>
+
+    ### Step 3: Apply the Depot manifest file
+
+    Once you have the manifest file ready in your code editor, simply copy the path of the manifest file and apply it through the DataOS CLI by pasting the path in the placeholder, using the command given below:
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource apply -f ${{yamlfilepath}}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl apply -f ${{yamlfilepath}}
+      ```
+    </CodeGroup>
+
+    ### **Verify the Depot creation**
+
+    To ensure that your Depot has been successfully created, you can verify it in two ways:
+
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:&#x20;
+
+    ```bash
+    dataos-ctl get -t depot
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-15-1)
+
+    * Additionally, retrieve the list of all Depots created in your organization:
+
+    ```bash
+    dataos-ctl get -t depot -a
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-16-1)
+
+    You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
+
+    ### **Delete a Depot**
+
+    <Tip>
+      **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
+    </Tip>
+
+    If you need to delete a Depot, use the following command in the DataOS CLI:
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl delete -t depot -n ${{name of Depot}}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${{path of your manifest file}}
+      ```
+    </CodeGroup>
+
+    [](https://dataos.info/resources/depot/#__codelineno-17-1)
+
+    By executing the above command, the specified Depot will be deleted from your DataOS environment.
+
+    ### Limit the data source's file format
+
+    Another important function that a Depot can play is to limit the file type that can read from and write to a particular data source. In the `spec` section of the config file, simply mention the `format` of the files you want to allow access to.
+
+    ```yaml
+    depot:
+      type: S3
+      description: $${{description}}
+      external: true
+      spec:
+        scheme: $${{s3a}}
+        bucket: $${{bucket-name}}
+        relativePath: "raw" 
+        format: $${{format}}  # mention the file format, such as JSON
+    ```
+
+    For file-based systems, if you define the format as ‘Iceberg’, you can choose the meta-store catalog between Hadoop and Hive. This is how you do it:
+
+    ```yaml
+    depot:
+      type: ABFSS
+      description: "ABFSS Iceberg Depot for sanity"
+      compute: runnable-default
+      spec:
+        account: 
+        container: 
+        relativePath:
+        format: ICEBERG
+        endpointSuffix:
+        icebergCatalogType: Hive
+    ```
+
+    If you do not mention the catalog name as Hive, it will use Hadoop as the default catalog for Iceberg format.
+
+    ![Flow when Hive is chosen as the catalog type](https://dataos.info/resources/depot/depot_catalog.png)
+
+    Hive automatically keeps the pointer updated to the latest metadata version. If you use Hadoop, you have to manually do this by running the set metadata command as described on this page: [Set Metadata](https://dataos.info/resources/depot/icebase/).
+  </Accordion>
+
+  <Accordion title="Apache Pulsar" defaultOpen={false}>
+    ### Pre-requisites specific to the Pulsar Depot
+
+    To create a Pulsar Depot you must have the following details:
+
+    * **Admin URL**: The administrative endpoint URL of your Apache Pulsar cluster. This URL is used to perform administrative operations on the cluster. You can obtain this from the Pulsar admin or from the configuration details of the Pulsar cluster, typically provided during setup or accessible in the deployment documentation.
+
+    * **Service URL**: The service endpoint URL of your Apache Pulsar cluster. This URL is used by producers and consumers to connect to the cluster and exchange messages. You can retrieve this from the Pulsar admin or by referring to the connection details in the Pulsar cluster configuration.
+
+    ### Create a Pulsar Depot
+
+    DataOS provides the capability to create a Depot of type 'PULSAR' for reading topics and messages stored in Pulsar. This Depot facilitates the consumption of published topics and processing of incoming streams of messages. To create a Depot of type 'PULSAR', follow the below steps:
+
+    ### Step 1: Create a Pulsar Depot manifest file
+
+    Create a manifest file to hold the configuration details for your Pulsar Depot.&#x20;
+
+    <CodeGroup>
+      ```yaml Pulsar Depot manifest file
+      name: ${{depot-name}}
+      version: v1
+      type: depot
+      tags:
+        - ${{tag1}}
+        - ${{tag2}}
+      owner: ${{owner-name}}
+      layer: user
+      depot:
+        type: PULSAR       
+        description: ${{description}}
+        external: ${{true}}
+        spec:              
+          adminUrl: ${{admin-url}}
+          serviceUrl: ${{service-url}}
+          tenant: ${{system}}
+      # Ensure to obtain the correct tenant name and other specifications from your organization.
+      ```
+    </CodeGroup>
+
+    ### Step 2: Apply the Depot manifest file
+
+    Once you have the manifest file ready in your code editor, simply copy the path of the manifest file and apply it through the DataOS CLI by pasting the path in the placeholder, using the command given below:
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource apply -f ${{yamlfilepath}}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl apply -f ${{yamlfilepath}}
+      ```
+    </CodeGroup>
+
+    ### **Verify the Depot creation**
+
+    To ensure that your Depot has been successfully created, you can verify it in two ways:
+
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:&#x20;
+
+    ```bash
+    dataos-ctl get -t depot
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-15-1)
+
+    * Additionally, retrieve the list of all Depots created in your organization:
+
+    ```bash
+    dataos-ctl get -t depot -a
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-16-1)
+
+    You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
+
+    ### **Delete a Depot**
+
+    <Tip>
+      **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
+    </Tip>
+
+    If you need to delete a Depot, use the following command in the DataOS CLI:
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl delete -t depot -n ${{name of Depot}}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${{path of your manifest file}}
+      ```
+    </CodeGroup>
+
+    [](https://dataos.info/resources/depot/#__codelineno-17-1)
+
+    By executing the above command, the specified Depot will be deleted from your DataOS environment.
+  </Accordion>
+
+  <Accordion title="Azure WASBS" defaultOpen={false}>
+    ### Pre-requisites specific to the WASBS Depot
+
+    To create a WASBS Depot you must have the following details:
+
+    * **Storage Account Name**: The name of your Azure Storage account, which identifies your storage resource in Azure. You can retrieve this from the Azure portal by navigating to your Storage Account under the Storage Accounts service.
+
+    * **Storage Account Key**: The access key used to authenticate and access your Azure Storage account. This can be obtained from the Azure portal by selecting your Storage Account, navigating to the "Access Keys" section, and copying the required key. Ensure it is securely stored.
+
+    * **Container**: The name of the container within your Azure Storage account that holds the required data. You can find this in the Azure portal under your Storage Account by navigating to the "Containers" section.
+
+    * **Relative Path**: The specific path to the file or directory within the container. This is typically provided by the team managing the data or can be derived from the structure of your container in the Azure portal.
+
+    * **Format**: The data format of the files stored within the container, such as CSV, JSON, or Parquet. This information is usually known based on the type of data being stored and consumed. If unsure, consult the team responsible for the data.
+
+    ### Create a WASBS Depot
+
+    DataOS enables the creation of a Depot of type 'WASBS' to facilitate the reading of data stored in Azure Data Lake Storage. This Depot enables access to the storage account, which can contain multiple containers. A container serves as a grouping of multiple blobs. It is recommended to define a separate Depot for each container.To create a Depot of type ‘WASBS‘, follow the below steps:
+
+    ### Step 1: Create an Instance Secret for securing WASBS credentails
+
+    <Warning>
+      This step can be skipped if you prefer to create a Depot without referencing an Instance Secret.
+    </Warning>
+
+    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).&#x20;
+
+    ### Step 2: Create a WASBS Depot manifest file
+
+    Create a manifest file to hold the configuration details for your WASBS Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
 
     <CodeGroup>
       ```yaml Inline credentials Depot manifest file
@@ -290,7 +773,7 @@ This section involves steps for creating a Depot for different data sources supp
       owner: ${{owner-name}}
       layer: user
       depot:
-        type: ABFSS                                       
+        type: WASBS                                      
         description: ${{description}}
         external: ${{true}}
         compute: ${{runnable-default}}
@@ -305,7 +788,7 @@ This section involves steps for creating a Depot for different data sources supp
             data:
               azurestorageaccountname: ${{account-name}}
               azurestorageaccountkey: ${{account-key}}
-        spec:                                             
+        spec:                                          
           account: ${{account-name}}
           container: ${{container-name}}
           relativePath: ${{relative-path}}
@@ -322,21 +805,158 @@ This section involves steps for creating a Depot for different data sources supp
       owner: ${{owner-name}}
       layer: user
       depot:
-        type: ABFSS                                       
+        type: WASBS                                      
         description: ${{description}}
         external: ${{true}}
         compute: ${{runnable-default}}
         secrets:
-          - name: ${{abfss-instance-secret-name}}-r
+          - name: ${{wasbs-instance-secret-name}}-r
             allkeys: true
 
-          - name: ${{abfss-instance-secret-name}}-rw
+          - name: ${{wasbs-instance-secret-name}}-rw
             allkeys: true
-        abfss:                                             
+        wasbs:                                          
           account: ${{account-name}}
           container: ${{container-name}}
           relativePath: ${{relative-path}}
           format: ${{format}}
+      ```
+    </CodeGroup>
+
+    ### Step 3: Apply the Depot manifest file
+
+    Once you have the manifest file ready in your code editor, simply copy the path of the manifest file and apply it through the DataOS CLI by pasting the path in the placeholder, using the command given below:
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource apply -f ${{yamlfilepath}}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl apply -f ${{yamlfilepath}}
+      ```
+    </CodeGroup>
+
+    ### **Verify the Depot creation**
+
+    To ensure that your Depot has been successfully created, you can verify it in two ways:
+
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:&#x20;
+
+    ```bash
+    dataos-ctl get -t depot
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-15-1)
+
+    * Additionally, retrieve the list of all Depots created in your organization:
+
+    ```bash
+    dataos-ctl get -t depot -a
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-16-1)
+
+    You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
+
+    ### **Delete a Depot**
+
+    <Tip>
+      **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
+    </Tip>
+
+    If you need to delete a Depot, use the following command in the DataOS CLI:
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl delete -t depot -n ${{name of Depot}}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${{path of your manifest file}}
+      ```
+    </CodeGroup>
+
+    [](https://dataos.info/resources/depot/#__codelineno-17-1)
+
+    By executing the above command, the specified Depot will be deleted from your DataOS environment.
+  </Accordion>
+
+  <Accordion title="Elasticsearch" defaultOpen={false}>
+    ### Pre-requisites specific to the Elasticsearch Depot
+
+    To create a Elasticsearch Depot you must have the following details:
+
+    * **Username**: The username used to authenticate and access the Elasticsearch cluster. This is typically created and provided by the Elasticsearch admin during user setup or role assignment.
+
+    * **Password**: The password associated with the Elasticsearch username for authentication. This is set during account creation and can be obtained securely from the Elasticsearch admin if forgotten.
+
+    * **Nodes (Hostname/URL of the server and ports)**: The addresses of one or more Elasticsearch nodes, including the hostname or URL and the port (e.g., `node1.example.com:9200`). These nodes form part of the cluster and are used to establish the connection. This information can be retrieved from the Elasticsearch admin or by checking the cluster configuration details.
+
+    ### Create a Elasticsearch Depot
+
+    DataOS provides the capability to connect to Elasticsearch data using Depot. The Depot facilitates access to all documents that are visible to the specified user, allowing for text queries and analytics. To create a Depot of type ‘ELASTICSEARCH‘,  follow the below steps:
+
+    ### Step 1: Create an Instance Secret for securing Elasticsearch credentails
+
+    <Warning>
+      This step can be skipped if you prefer to create a Depot without referencing an Instance Secret.
+    </Warning>
+
+    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).&#x20;
+
+    ### Step 2: Create a Elasticsearch Depot manifest file
+
+    Begin by creating a manifest file to hold the configuration details for your Elasticsearch Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
+
+    <CodeGroup>
+      ```yaml Inline credentials Depot manifest file
+      name: ${{depot-name}}
+      version: v1
+      type: depot
+      tags:
+        - ${{tag1}}
+        - ${{tag2}}
+      owner: ${{owner-name}}
+      layer: user
+      depot:
+        type: ELASTICSEARCH              
+        description: ${{description}}
+        external: ${{true}}
+        connectionSecret:                
+          - acl: rw
+            values:
+              username: ${{username}}
+              password: ${{password}}
+          - acl: r
+            values:
+              username: ${{username}}
+              password: ${{password}}
+        spec:                           
+          nodes: ${{["localhost:9092", "localhost:9093"]}}
+      ```
+
+      ```yaml Instance Secret reference Depot manifest file
+      name: ${{depot-name}}
+      version: v2alpha
+      type: depot
+      tags:
+        - ${{tag1}}
+        - ${{tag2}}
+      owner: ${{owner-name}}
+      layer: user
+      depot:
+        type: ELASTICSEARCH              
+        description: ${{description}}
+        external: ${{true}}
+        secrets:
+          - name: ${{sf-instance-secret-name}}-r
+            allkeys: true
+
+          - name: ${{sf-instance-secret-name}}-rw
+            allkeys: true
+        elasticsearch:                           
+          nodes: ${{["localhost:9092", "localhost:9093"]}}
       ```
     </CodeGroup>
 
@@ -480,6 +1100,155 @@ This section involves steps for creating a Depot for different data sources supp
 
           - name: ${{eh-instance-secret-name}}-rw
             allkeys: true
+      ```
+    </CodeGroup>
+
+    ### Step 3: Apply the Depot manifest file
+
+    Once you have the manifest file ready in your code editor, simply copy the path of the manifest file and apply it through the DataOS CLI by pasting the path in the placeholder, using the command given below:
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource apply -f ${{yamlfilepath}}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl apply -f ${{yamlfilepath}}
+      ```
+    </CodeGroup>
+
+    ### **Verify the Depot creation**
+
+    To ensure that your Depot has been successfully created, you can verify it in two ways:
+
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:&#x20;
+
+    ```bash
+    dataos-ctl get -t depot
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-15-1)
+
+    * Additionally, retrieve the list of all Depots created in your organization:
+
+    ```bash
+    dataos-ctl get -t depot -a
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-16-1)
+
+    You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
+
+    ### **Delete a Depot**
+
+    <Tip>
+      **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
+    </Tip>
+
+    If you need to delete a Depot, use the following command in the DataOS CLI:
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl delete -t depot -n ${{name of Depot}}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${{path of your manifest file}}
+      ```
+    </CodeGroup>
+
+    [](https://dataos.info/resources/depot/#__codelineno-17-1)
+
+    By executing the above command, the specified Depot will be deleted from your DataOS environment.
+  </Accordion>
+
+  <Accordion title="Google Bigquery" defaultOpen={false}>
+    ### Pre-requisites specific to the Bigquery Depot
+
+    To create a Bigquery Depot you must have the following details:
+
+    * **Project ID**: The unique identifier for your Google Cloud project used by BigQuery. You can find this in the Google Cloud Console under "Project Info" on your project dashboard.
+
+    * **Email ID**: The email address associated with the Google Cloud service account used to access BigQuery. This can be found in the IAM & Admin section of the Google Cloud Console under the "Service Accounts" tab, where the email is listed for each service account.
+
+    * **Credential Properties in JSON File**: A JSON file containing the necessary credential properties for authentication. This file is generated when you create a service account in Google Cloud. You can download it from the IAM & Admin > Service Accounts section in the Google Cloud Console by selecting a service account and clicking "Add Key" > "JSON".
+
+    * **Additional Parameters**: Any extra configuration parameters required to establish the connection, such as project settings or specific access scopes. These may be provided by the administrator or defined in the BigQuery API documentation based on the integration you are working with.
+
+    ### Create a Bigquery Depot
+
+    DataOS enables the creation of a Depot of type 'Bigquery' to facilitate the reading of data stored in an Azure Blob Storage account. This Depot provides access to the storage account, which can consist of multiple containers. A container serves as a grouping mechanism for multiple blobs. It is recommended to define a separate Depot for each container. To create a Depot of type ‘ABFSS‘, follow the below steps:
+
+    ### Step 1: Create an Instance Secret for securing Bigquery credentails
+
+    <Warning>
+      This step can be skipped if you prefer to create a Depot without referencing an Instance Secret.
+    </Warning>
+
+    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).&#x20;
+
+    ### Step 2: Create a Bigquery Depot manifest file
+
+    Begin by creating a manifest file to hold the configuration details for your Bigquery Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
+
+    <CodeGroup>
+      ```yaml Inline credentials Depot manifest file
+      name: ${{depot-name}}
+      version: v1
+      type: depot
+      tags:
+        - ${{tag1}}
+        - ${{tag2}}
+      owner: ${{owner-name}}
+      layer: user
+      depot:
+        type: ABFSS                                       
+        description: ${{description}}
+        external: ${{true}}
+        compute: ${{runnable-default}}
+        connectionSecret:                                 
+          - acl: rw
+            type: key-value-properties
+            data:
+              azurestorageaccountname: ${{account-name}}
+              azurestorageaccountkey: ${{account-key}}
+          - acl: r
+            type: key-value-properties
+            data:
+              azurestorageaccountname: ${{account-name}}
+              azurestorageaccountkey: ${{account-key}}
+        spec:                                             
+          account: ${{account-name}}
+          container: ${{container-name}}
+          relativePath: ${{relative-path}}
+          format: ${{format}}
+      ```
+
+      ```yaml Instance Secret reference Depot manifest file
+      name: ${{depot-name}}
+      version: v2alpha
+      type: depot
+      tags:
+        - ${{tag1}}
+        - ${{tag2}}
+      owner: ${{owner-name}}
+      layer: user
+      depot:
+        type: ABFSS                                       
+        description: ${{description}}
+        external: ${{true}}
+        compute: ${{runnable-default}}
+        secrets:
+          - name: ${{abfss-instance-secret-name}}-r
+            allkeys: true
+
+          - name: ${{abfss-instance-secret-name}}-rw
+            allkeys: true
+        abfss:                                             
+          account: ${{account-name}}
+          container: ${{container-name}}
+          relativePath: ${{relative-path}}
+          format: ${{format}}
       ```
     </CodeGroup>
 
@@ -783,6 +1552,116 @@ This section involves steps for creating a Depot for different data sources supp
     </CodeGroup>
 
     ### Step 3: Apply the Depot manifest file
+
+    Once you have the manifest file ready in your code editor, simply copy the path of the manifest file and apply it through the DataOS CLI by pasting the path in the placeholder, using the command given below:
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource apply -f ${{yamlfilepath}}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl apply -f ${{yamlfilepath}}
+      ```
+    </CodeGroup>
+
+    ### **Verify the Depot creation**
+
+    To ensure that your Depot has been successfully created, you can verify it in two ways:
+
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:&#x20;
+
+    ```bash
+    dataos-ctl get -t depot
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-15-1)
+
+    * Additionally, retrieve the list of all Depots created in your organization:
+
+    ```bash
+    dataos-ctl get -t depot -a
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-16-1)
+
+    You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
+
+    ### **Delete a Depot**
+
+    <Tip>
+      **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
+    </Tip>
+
+    If you need to delete a Depot, use the following command in the DataOS CLI:
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl delete -t depot -n ${{name of Depot}}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${{path of your manifest file}}
+      ```
+    </CodeGroup>
+
+    [](https://dataos.info/resources/depot/#__codelineno-17-1)
+
+    By executing the above command, the specified Depot will be deleted from your DataOS environment.
+  </Accordion>
+
+  <Accordion title="Kafka" defaultOpen={false}>
+    ### Pre-requisites specific to the Kafka Depot
+
+    To create a Kafka Depot you must have the following details:
+
+    * **KAFKA Broker List**: A comma-separated list of broker addresses in the Kafka cluster (e.g., `broker1:9092,broker2:9092`). The broker list allows the connection to discover all topics and partitions in the cluster. This information can be obtained from the Kafka admin or the cluster configuration file, usually found in the `server.properties` file.
+
+    * **Schema Registry URL**: The URL of the Schema Registry associated with your Kafka cluster, which stores the schemas for the data being produced and consumed. This is required if your Kafka topics use Avro or other schema-based serialization formats. You can obtain this URL from the Kafka admin or the configuration details of the Schema Registry setup.
+
+    ### Create a Kafka Depot
+
+    DataOS allows you to create a Depot of type 'KAFKA' to read live topic data. This Depot enables you to access and consume real-time streaming data from Kafka. To create a Depot of type 'KAFKA', follow the below steps:
+
+    ### Step 1: Create a Kafka Depot manifest file
+
+    Begin by creating a manifest file to hold the configuration details for your Kafka Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
+
+    <CodeGroup>
+      ```yaml Inline credentials Depot manifest file
+      name: ${{depot-name}}
+      version: v1
+      type: depot
+      tags:
+        - ${{tag1}}
+        - ${{tag2}}
+      owner: ${{owner-name}}
+      layer: user
+      depot:
+        type: ABFSS                                       
+        description: ${{description}}
+        external: ${{true}}
+        compute: ${{runnable-default}}
+        connectionSecret:                                 
+          - acl: rw
+            type: key-value-properties
+            data:
+              azurestorageaccountname: ${{account-name}}
+              azurestorageaccountkey: ${{account-key}}
+          - acl: r
+            type: key-value-properties
+            data:
+              azurestorageaccountname: ${{account-name}}
+              azurestorageaccountkey: ${{account-key}}
+        spec:                                             
+          account: ${{account-name}}
+          container: ${{container-name}}
+          relativePath: ${{relative-path}}
+          format: ${{format}}
+      ```
+    </CodeGroup>
+
+    ### Step 2: Apply the Depot manifest file
 
     Once you have the manifest file ready in your code editor, simply copy the path of the manifest file and apply it through the DataOS CLI by pasting the path in the placeholder, using the command given below:
 
@@ -1399,6 +2278,164 @@ This section involves steps for creating a Depot for different data sources supp
 
     <CodeGroup>
       ```yaml Inline credentials Depot manifest file
+      name: ${{mysql01}}
+      version: v1
+      type: depot
+      tags:
+        - ${{dropzone}}
+        - ${{mysql}}
+      layer: user
+      depot:
+        type: MYSQL
+        description: ${{"MYSQL Sample Database"}}
+        spec:
+          subprotocol: "mysql"
+          host: ${{host}}
+          port: ${{port}}
+          params: # Required
+            tls: ${{skip-verify}}
+        external: ${{true}}
+        connectionSecret:
+          - acl: r
+            type: key-value-properties
+            data:
+              username: ${{username}}
+              password: ${{password}} 
+          - acl: rw
+            type: key-value-properties
+            data:
+              username: ${{username}}
+              password: ${{password}}
+      ```
+
+      ```yaml Instance Secret reference Depot manifest file
+      name: ${{mysql01}}
+      version: v2alpha
+      type: depot
+      tags:
+        - ${{dropzone}}
+        - ${{mysql}}
+      layer: user
+      depot:
+        type: MYSQL
+        description: ${{"MYSQL Sample Database"}}
+        mysql:
+          subprotocol: "mysql"
+          host: ${{host}}
+          port: ${{port}}
+          params: # Required
+            tls: ${{skip-verify}}
+        external: ${{true}}
+        secrets:
+          - name: ${{instance-secret-name}}-r
+            keys: 
+              - ${{instance-secret-name}}-r
+
+          - name: ${{instance-secret-name}}-rw
+            keys: 
+              - ${{instance-secret-name}}-rw
+      ```
+    </CodeGroup>
+
+    **Use this template, if self-signed certificate is not enabled.**
+
+    <CodeGroup>
+      ```javascript Inline credentials Depot manifest file
+      ```
+
+      ```
+      console.log("Hello World");
+      ```
+    </CodeGroup>
+
+    ### Step 3: Apply the Depot manifest file
+
+    Once you have the manifest file ready in your code editor, simply copy the path of the manifest file and apply it through the DataOS CLI by pasting the path in the placeholder, using the command given below:
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource apply -f ${{yamlfilepath}}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl apply -f ${{yamlfilepath}}
+      ```
+    </CodeGroup>
+
+    ### **Verify the Depot creation**
+
+    To ensure that your Depot has been successfully created, you can verify it in two ways:
+
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:&#x20;
+
+    ```bash
+    dataos-ctl get -t depot
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-15-1)
+
+    * Additionally, retrieve the list of all Depots created in your organization:
+
+    ```bash
+    dataos-ctl get -t depot -a
+    ```
+
+    [](https://dataos.info/resources/depot/#__codelineno-16-1)
+
+    You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
+
+    ### **Delete a Depot**
+
+    <Tip>
+      **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
+    </Tip>
+
+    If you need to delete a Depot, use the following command in the DataOS CLI:
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl delete -t depot -n ${{name of Depot}}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${{path of your manifest file}}
+      ```
+    </CodeGroup>
+
+    [](https://dataos.info/resources/depot/#__codelineno-17-1)
+
+    By executing the above command, the specified Depot will be deleted from your DataOS environment.
+  </Accordion>
+
+  <Accordion title="Opensearch" defaultOpen={false}>
+    ### Pre-requisites specific to the Opensearch Depot
+
+    To create a Opensearch Depot you must have the following details:
+
+    * **Username**: The username used to authenticate and access the OpenSearch cluster. This is typically set up by the OpenSearch admin and assigned to users with specific access permissions.
+
+    * **Password**: The password associated with the OpenSearch username for authentication. This is created during user setup and should be securely retrieved from the OpenSearch admin if not known.
+
+    * **Nodes (Hostname/URL of the server and ports)**: The addresses of one or more OpenSearch nodes, including the hostname or URL and the port (e.g., `node1.opensearch.example.com:9200`). These nodes are part of the cluster and are necessary to establish the connection. This information can be obtained from the OpenSearch admin or by referring to the cluster's configuration details.
+
+    ### Create a Opensearch Depot
+
+    DataOS provides the capability to connect to Opensearch data using Depot. The Depot facilitates access to all documents that are visible to the specified user, allowing for text queries and analytics. To create a Depot of Opensearch, in the type field you will have to specify type ‘ELASTICSEARCH‘,  follow the below steps:
+
+    ### Step 1: Create an Instance Secret for securing Opensearch credentails
+
+    <Warning>
+      This step can be skipped if you prefer to create a Depot without referencing an Instance Secret.
+    </Warning>
+
+    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).&#x20;
+
+    ### Step 2: Create a Opensearch Depot manifest file
+
+    Begin by creating a manifest file to hold the configuration details for your Opensearch Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
+
+    <CodeGroup>
+      ```yaml Inline credentials Depot manifest file
       name: ${{depot-name}}
       version: v1
       type: depot
@@ -1408,26 +2445,21 @@ This section involves steps for creating a Depot for different data sources supp
       owner: ${{owner-name}}
       layer: user
       depot:
-        type: ABFSS                                       
+        type: OPENSEARCH             
         description: ${{description}}
         external: ${{true}}
-        compute: ${{runnable-default}}
-        connectionSecret:                                 
+        connectionSecret:                
           - acl: rw
-            type: key-value-properties
-            data:
-              azurestorageaccountname: ${{account-name}}
-              azurestorageaccountkey: ${{account-key}}
+            values:
+              username: ${{username}}
+              password: ${{password}}
           - acl: r
-            type: key-value-properties
-            data:
-              azurestorageaccountname: ${{account-name}}
-              azurestorageaccountkey: ${{account-key}}
-        spec:                                             
-          account: ${{account-name}}
-          container: ${{container-name}}
-          relativePath: ${{relative-path}}
-          format: ${{format}}
+            values:
+              username: ${{opensearch-username}}
+              password: ${{opensearch-password}}
+        spec:                           
+          nodes:
+            - ${{nodes}}
       ```
 
       ```yaml Instance Secret reference Depot manifest file
@@ -1440,29 +2472,18 @@ This section involves steps for creating a Depot for different data sources supp
       owner: ${{owner-name}}
       layer: user
       depot:
-        type: ABFSS                                       
+        type: OPENSEARCH           
         description: ${{description}}
         external: ${{true}}
-        compute: ${{runnable-default}}
         secrets:
-          - name: ${{abfss-instance-secret-name}}-r
+          - name: ${{sf-instance-secret-name}}-r
             allkeys: true
 
-          - name: ${{abfss-instance-secret-name}}-rw
+          - name: ${{sf-instance-secret-name}}-rw
             allkeys: true
-        abfss:                                             
-          account: ${{account-name}}
-          container: ${{container-name}}
-          relativePath: ${{relative-path}}
-          format: ${{format}}
-      ```
-    </CodeGroup>
-
-    **Use this template, if self-signed certificate is not enabled.**
-
-    <CodeGroup>
-      ```javascript helloWorld.js
-      console.log("Hello World");
+        elasticesearch:                           
+          nodes:
+            - ${{nodes}}
       ```
     </CodeGroup>
 
@@ -1885,315 +2906,6 @@ This section involves steps for creating a Depot for different data sources supp
     By executing the above command, the specified Depot will be deleted from your DataOS environment.
   </Accordion>
 
-  <Accordion title="Amazon Redshift" defaultOpen={false}>
-    ### Pre-requisites specific to the Redshift Depot
-
-    To create a Redshift Depot you must have the following details:
-
-    * **Hostname**: The hostname or endpoint of the Redshift cluster, which specifies the server address to connect to. You can obtain this from the AWS Management Console under the Redshift cluster details or ask the administrator managing the cluster.
-
-    * **Port**: The port number on which the Redshift cluster is listening. The default port for Redshift is `5439`, but it may differ based on your setup. Check the cluster details in the AWS Management Console or consult your database administrator.
-
-    * **Database name**: The name of the specific database within the Redshift cluster you want to connect to. This can be found in the AWS Management Console or provided by the database administrator.
-
-    * **Username and password**: The credentials used to authenticate and access the Redshift database. These are set up when the user account is created and must be securely obtained from the Redshift administrator.
-
-    When accessing the Redshift database in workflows or other DataOS Resources, additional details are required:
-
-    * **Bucket name**: The name of the S3 bucket where the data resides. You can find this in the AWS S3 Console or consult the administrator managing the data storage.
-
-    * **Relative path**: The path within the S3 bucket pointing to the data you want to access. This path is typically structured based on your data organization and can be obtained from the team managing the data or the S3 Console.
-
-    * **AWS access key**: The Access Key ID used to authenticate and authorize API requests to AWS. You can obtain this from the AWS IAM (Identity and Access Management) Console under your user’s security credentials or request it from your AWS administrator.
-
-    * **AWS secret key**: The Secret Access Key associated with your AWS Access Key ID. This key is also available in the AWS IAM Console under security credentials and must be securely stored. If you do not have access, request it from your AWS administrator.
-
-    ### Create a Redshift Depot
-
-    DataOS provides the capability to establish a connection with the Amazon Redshift database. We have provided the template for the manifest file to establish this connection. To create a Depot of type ‘REDSHIFT‘,  follow the below steps:
-
-    ### Step 1: Create an Instance Secret for securing Redshift credentails
-
-    <Warning>
-      This step can be skipped if you prefer to create a Depot without referencing an Instance Secret.
-    </Warning>
-
-    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).&#x20;
-
-    ### Step 2: Create a Redshift Depot manifest file
-
-    Begin by creating a manifest file to hold the configuration details for your Redshift Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
-
-    <CodeGroup>
-      ```yaml Inline credentials Depot manifest file
-      name: ${{redshift-depot-name}}
-      version: v1
-      type: depot
-      tags:
-        - ${{redshift}}
-      layer: user
-      description: ${{Redshift Sample data}}
-      depot:
-        type: REDSHIFT
-        spec:
-          host: ${{hostname}}
-          subprotocol: ${{subprotocol}}
-          port: ${{5439}}
-          database: ${{sample-database}}
-          bucket: ${{tmdc-dataos}}
-          relativePath: ${{development/redshift/data_02/}}
-        external: ${{true}}
-        connectionSecret:
-          - acl: ${{rw}}
-            type: key-value-properties
-            data:
-              username: ${{username}}
-              password: ${{password}}
-              awsaccesskeyid: ${{access key}}
-              awssecretaccesskey: ${{secret key}}
-      ```
-
-      ```yaml Instance Secret reference Depot manifest file
-      name: ${{redshift-depot-name}}
-      version: v2alpha
-      type: depot
-      tags:
-        - ${{redshift}}
-      layer: user
-      description: ${{Redshift Sample data}}
-      depot:
-        type: REDSHIFT
-        redshift:
-          host: ${{hostname}}
-          subprotocol: ${{subprotocol}}
-          port: ${{5439}}
-          database: ${{sample-database}}
-          bucket: ${{tmdc-dataos}}
-          relativePath: ${{development/redshift/data_02/}}
-        external: ${{true}}
-        secrets:
-          - name: ${{redshift-instance-secret-name}}-r
-            allkeys: true
-
-          - name: ${{redshift-instance-secret-name}}-rw
-            allkeys: true
-      ```
-    </CodeGroup>
-
-    ### Step 3: Apply the Depot manifest file
-
-    Once you have the manifest file ready in your code editor, simply copy the path of the manifest file and apply it through the DataOS CLI by pasting the path in the placeholder, using the command given below:
-
-    <CodeGroup>
-      ```bash Command
-      dataos-ctl resource apply -f ${{yamlfilepath}}
-      ```
-
-      ```bash Alternative command
-      dataos-ctl apply -f ${{yamlfilepath}}
-      ```
-    </CodeGroup>
-
-    ### **Verify the Depot creation**
-
-    To ensure that your Depot has been successfully created, you can verify it in two ways:
-
-    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:&#x20;
-
-    ```bash
-    dataos-ctl get -t depot
-    ```
-
-    [](https://dataos.info/resources/depot/#__codelineno-15-1)
-
-    * Additionally, retrieve the list of all Depots created in your organization:
-
-    ```bash
-    dataos-ctl get -t depot -a
-    ```
-
-    [](https://dataos.info/resources/depot/#__codelineno-16-1)
-
-    You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
-
-    ### **Delete a Depot**
-
-    <Tip>
-      **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
-    </Tip>
-
-    If you need to delete a Depot, use the following command in the DataOS CLI:
-
-    <CodeGroup>
-      ```bash Command
-      dataos-ctl delete -t depot -n ${{name of Depot}}
-      ```
-
-      ```bash Alternative command
-      dataos-ctl delete -f ${{path of your manifest file}}
-      ```
-    </CodeGroup>
-
-    [](https://dataos.info/resources/depot/#__codelineno-17-1)
-
-    By executing the above command, the specified Depot will be deleted from your DataOS environment.
-  </Accordion>
-
-  <Accordion title="Amazon S3" defaultOpen={false}>
-    ### Pre-requisites specific to the S3 Depot
-
-    To create a S3 Depot you must have the following details:
-
-    * **AWS access key ID**: The Access Key ID used to authenticate and authorize API requests to your AWS account. This can be obtained from the AWS IAM (Identity and Access Management) Console under your user’s security credentials or requested from your AWS administrator.
-
-    * **AWS bucket name**: The name of the Amazon S3 bucket where the data resides. You can find this in the AWS S3 Console under the list of buckets or request it from the administrator managing the storage.
-
-    * **Secret access key**: The Secret Access Key associated with your AWS Access Key ID, required for secure API requests. This is available in the AWS IAM Console under your user’s security credentials. Ensure that it is securely stored and shared only with authorized personnel.
-
-    * **Scheme**: The scheme specifies the protocol to be used for the connection, such as `s3` or `https`. This information depends on your system’s configuration and can be confirmed with the team managing the connection setup or workflow.
-
-    * **Relative Path**: The path within the S3 bucket that points to the specific data or folder you want to access. This path is typically structured according to how your data is organized and can be obtained from the team managing the data or the AWS S3 Console.
-
-    * **Format**: The file format of the data stored in the S3 bucket, such as `CSV`, `Parquet`, or `JSON`. This information is determined by the structure of your data and can be confirmed with the team managing the data storage.
-
-    ### Create a S3 Depot
-
-    Azure Blob File System Secure (ABFSS) is an object storage system. Object stores are distributed storage systems designed to store and manage large amounts of unstructured data.
-
-    DataOS enables the creation of a Depot of type 'Bigquery' to facilitate the reading of data stored in an Azure Blob Storage account. This Depot provides access to the storage account, which can consist of multiple containers. A container serves as a grouping mechanism for multiple blobs. It is recommended to define a separate Depot for each container. To create a Depot of type ‘ABFSS‘, follow the below steps:
-
-    ### Step 1: Create an Instance Secret for securing S3 credentails
-
-    <Warning>
-      This step can be skipped if you prefer to create a Depot without referencing an Instance Secret.
-    </Warning>
-
-    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).&#x20;
-
-    ### Step 2: Create a S3 Depot manifest file
-
-    Begin by creating a manifest file to hold the configuration details for your S3 Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
-
-    <CodeGroup>
-      ```yaml Inline credentials Depot manifest file
-      name: ${{depot-name}}
-      version: v1
-      type: depot
-      tags:
-        - ${{tag1}}
-      owner: ${{owner-name}}
-      layer: user
-      description: ${{description}}
-      depot:
-        type: S3                                          
-        external: ${{true}}
-        spec:                                            
-          scheme: ${{s3a}}
-          bucket: ${{project-name}}
-          relativePath: ${{relative-path}}
-          format: ${{format}}
-        connectionSecret:                                
-          - acl: rw
-            type: key-value-properties
-            data:
-              accesskeyid: ${{AWS_ACCESS_KEY_ID}}
-              secretkey: ${{AWS_SECRET_ACCESS_KEY}}
-              awsaccesskeyid: ${{AWS_ACCESS_KEY_ID}}
-              awssecretaccesskey: ${{AWS_SECRET_ACCESS_KEY}}
-          - acl: r
-            type: key-value-properties
-            data:
-              accesskeyid: ${{AWS_ACCESS_KEY_ID}}
-              secretkey: ${{AWS_SECRET_ACCESS_KEY}}
-              awsaccesskeyid: ${{AWS_ACCESS_KEY_ID}}
-              awssecretaccesskey: ${{AWS_SECRET_ACCESS_KEY}}
-      ```
-
-      ```yaml Instance Secret reference Depot manifest file
-      name: ${{depot-name}}
-      version: v2alpha
-      type: depot
-      tags:
-        - ${{tag1}}
-      owner: ${{owner-name}}
-      layer: user
-      description: ${{description}}
-      depot:
-        type: S3                                          
-        external: ${{true}}
-        s3:                                            
-          scheme: ${{s3a}}
-          bucket: ${{project-name}}
-          relativePath: ${{relative-path}}
-          format: ${{format}}
-        secrets:
-          - name: ${{s3-instance-secret-name}}-r
-            allkeys: true
-
-          - name: ${{s3-instance-secret-name}}-rw
-            allkeys: true
-      ```
-    </CodeGroup>
-
-    ### Step 3: Apply the Depot manifest file
-
-    Once you have the manifest file ready in your code editor, simply copy the path of the manifest file and apply it through the DataOS CLI by pasting the path in the placeholder, using the command given below:
-
-    <CodeGroup>
-      ```bash Command
-      dataos-ctl resource apply -f ${{yamlfilepath}}
-      ```
-
-      ```bash Alternative command
-      dataos-ctl apply -f ${{yamlfilepath}}
-      ```
-    </CodeGroup>
-
-    ### **Verify the Depot creation**
-
-    To ensure that your Depot has been successfully created, you can verify it in two ways:
-
-    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:&#x20;
-
-    ```bash
-    dataos-ctl get -t depot
-    ```
-
-    [](https://dataos.info/resources/depot/#__codelineno-15-1)
-
-    * Additionally, retrieve the list of all Depots created in your organization:
-
-    ```bash
-    dataos-ctl get -t depot -a
-    ```
-
-    [](https://dataos.info/resources/depot/#__codelineno-16-1)
-
-    You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
-
-    ### **Delete a Depot**
-
-    <Tip>
-      **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
-    </Tip>
-
-    If you need to delete a Depot, use the following command in the DataOS CLI:
-
-    <CodeGroup>
-      ```bash Command
-      dataos-ctl delete -t depot -n ${{name of Depot}}
-      ```
-
-      ```bash Alternative command
-      dataos-ctl delete -f ${{path of your manifest file}}
-      ```
-    </CodeGroup>
-
-    [](https://dataos.info/resources/depot/#__codelineno-17-1)
-
-    By executing the above command, the specified Depot will be deleted from your DataOS environment.
-  </Accordion>
-
   <Accordion title="Snowflake" defaultOpen={false}>
     ### Pre-requisites specific to the Snowflake Depot
 
@@ -2333,641 +3045,6 @@ This section involves steps for creating a Depot for different data sources supp
 
     By executing the above command, the specified Depot will be deleted from your DataOS environment.
   </Accordion>
-
-  <Accordion title="Azure WASBS" defaultOpen={false}>
-    ### Pre-requisites specific to the WASBS Depot
-
-    To create a WASBS Depot you must have the following details:
-
-    * **Storage Account Name**: The name of your Azure Storage account, which identifies your storage resource in Azure. You can retrieve this from the Azure portal by navigating to your Storage Account under the Storage Accounts service.
-
-    * **Storage Account Key**: The access key used to authenticate and access your Azure Storage account. This can be obtained from the Azure portal by selecting your Storage Account, navigating to the "Access Keys" section, and copying the required key. Ensure it is securely stored.
-
-    * **Container**: The name of the container within your Azure Storage account that holds the required data. You can find this in the Azure portal under your Storage Account by navigating to the "Containers" section.
-
-    * **Relative Path**: The specific path to the file or directory within the container. This is typically provided by the team managing the data or can be derived from the structure of your container in the Azure portal.
-
-    * **Format**: The data format of the files stored within the container, such as CSV, JSON, or Parquet. This information is usually known based on the type of data being stored and consumed. If unsure, consult the team responsible for the data.
-
-    ### Create a WASBS Depot
-
-    DataOS enables the creation of a Depot of type 'WASBS' to facilitate the reading of data stored in Azure Data Lake Storage. This Depot enables access to the storage account, which can contain multiple containers. A container serves as a grouping of multiple blobs. It is recommended to define a separate Depot for each container.To create a Depot of type ‘WASBS‘, follow the below steps:
-
-    ### Step 1: Create an Instance Secret for securing WASBS credentails
-
-    <Warning>
-      This step can be skipped if you prefer to create a Depot without referencing an Instance Secret.
-    </Warning>
-
-    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).&#x20;
-
-    ### Step 2: Create a WASBS Depot manifest file
-
-    Create a manifest file to hold the configuration details for your WASBS Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
-
-    <CodeGroup>
-      ```yaml Inline credentials Depot manifest file
-      name: ${{depot-name}}
-      version: v1
-      type: depot
-      tags:
-        - ${{tag1}}
-        - ${{tag2}}
-      owner: ${{owner-name}}
-      layer: user
-      depot:
-        type: WASBS                                      
-        description: ${{description}}
-        external: ${{true}}
-        compute: ${{runnable-default}}
-        connectionSecret:                                 
-          - acl: rw
-            type: key-value-properties
-            data:
-              azurestorageaccountname: ${{account-name}}
-              azurestorageaccountkey: ${{account-key}}
-          - acl: r
-            type: key-value-properties
-            data:
-              azurestorageaccountname: ${{account-name}}
-              azurestorageaccountkey: ${{account-key}}
-        spec:                                          
-          account: ${{account-name}}
-          container: ${{container-name}}
-          relativePath: ${{relative-path}}
-          format: ${{format}}
-      ```
-
-      ```yaml Instance Secret reference Depot manifest file
-      name: ${{depot-name}}
-      version: v2alpha
-      type: depot
-      tags:
-        - ${{tag1}}
-        - ${{tag2}}
-      owner: ${{owner-name}}
-      layer: user
-      depot:
-        type: WASBS                                      
-        description: ${{description}}
-        external: ${{true}}
-        compute: ${{runnable-default}}
-        secrets:
-          - name: ${{wasbs-instance-secret-name}}-r
-            allkeys: true
-
-          - name: ${{wasbs-instance-secret-name}}-rw
-            allkeys: true
-        wasbs:                                          
-          account: ${{account-name}}
-          container: ${{container-name}}
-          relativePath: ${{relative-path}}
-          format: ${{format}}
-      ```
-    </CodeGroup>
-
-    ### Step 3: Apply the Depot manifest file
-
-    Once you have the manifest file ready in your code editor, simply copy the path of the manifest file and apply it through the DataOS CLI by pasting the path in the placeholder, using the command given below:
-
-    <CodeGroup>
-      ```bash Command
-      dataos-ctl resource apply -f ${{yamlfilepath}}
-      ```
-
-      ```bash Alternative command
-      dataos-ctl apply -f ${{yamlfilepath}}
-      ```
-    </CodeGroup>
-
-    ### **Verify the Depot creation**
-
-    To ensure that your Depot has been successfully created, you can verify it in two ways:
-
-    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:&#x20;
-
-    ```bash
-    dataos-ctl get -t depot
-    ```
-
-    [](https://dataos.info/resources/depot/#__codelineno-15-1)
-
-    * Additionally, retrieve the list of all Depots created in your organization:
-
-    ```bash
-    dataos-ctl get -t depot -a
-    ```
-
-    [](https://dataos.info/resources/depot/#__codelineno-16-1)
-
-    You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
-
-    ### **Delete a Depot**
-
-    <Tip>
-      **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
-    </Tip>
-
-    If you need to delete a Depot, use the following command in the DataOS CLI:
-
-    <CodeGroup>
-      ```bash Command
-      dataos-ctl delete -t depot -n ${{name of Depot}}
-      ```
-
-      ```bash Alternative command
-      dataos-ctl delete -f ${{path of your manifest file}}
-      ```
-    </CodeGroup>
-
-    [](https://dataos.info/resources/depot/#__codelineno-17-1)
-
-    By executing the above command, the specified Depot will be deleted from your DataOS environment.
-  </Accordion>
-
-  <Accordion title="Apache Pulsar" defaultOpen={false}>
-    ### Pre-requisites specific to the Pulsar Depot
-
-    To create a Pulsar Depot you must have the following details:
-
-    * **Admin URL**: The administrative endpoint URL of your Apache Pulsar cluster. This URL is used to perform administrative operations on the cluster. You can obtain this from the Pulsar admin or from the configuration details of the Pulsar cluster, typically provided during setup or accessible in the deployment documentation.
-
-    * **Service URL**: The service endpoint URL of your Apache Pulsar cluster. This URL is used by producers and consumers to connect to the cluster and exchange messages. You can retrieve this from the Pulsar admin or by referring to the connection details in the Pulsar cluster configuration.
-
-    ### Create a Pulsar Depot
-
-    DataOS provides the capability to create a Depot of type 'PULSAR' for reading topics and messages stored in Pulsar. This Depot facilitates the consumption of published topics and processing of incoming streams of messages. To create a Depot of type 'PULSAR', follow the below steps:
-
-    ### Step 1: Create a Pulsar Depot manifest file
-
-    Create a manifest file to hold the configuration details for your Pulsar Depot.&#x20;
-
-    <CodeGroup>
-      ```yaml Pulsar Depot manifest file
-      name: ${{depot-name}}
-      version: v1
-      type: depot
-      tags:
-        - ${{tag1}}
-        - ${{tag2}}
-      owner: ${{owner-name}}
-      layer: user
-      depot:
-        type: PULSAR       
-        description: ${{description}}
-        external: ${{true}}
-        spec:              
-          adminUrl: ${{admin-url}}
-          serviceUrl: ${{service-url}}
-          tenant: ${{system}}
-      # Ensure to obtain the correct tenant name and other specifications from your organization.
-      ```
-    </CodeGroup>
-
-    ### Step 2: Apply the Depot manifest file
-
-    Once you have the manifest file ready in your code editor, simply copy the path of the manifest file and apply it through the DataOS CLI by pasting the path in the placeholder, using the command given below:
-
-    <CodeGroup>
-      ```bash Command
-      dataos-ctl resource apply -f ${{yamlfilepath}}
-      ```
-
-      ```bash Alternative command
-      dataos-ctl apply -f ${{yamlfilepath}}
-      ```
-    </CodeGroup>
-
-    ### **Verify the Depot creation**
-
-    To ensure that your Depot has been successfully created, you can verify it in two ways:
-
-    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:&#x20;
-
-    ```bash
-    dataos-ctl get -t depot
-    ```
-
-    [](https://dataos.info/resources/depot/#__codelineno-15-1)
-
-    * Additionally, retrieve the list of all Depots created in your organization:
-
-    ```bash
-    dataos-ctl get -t depot -a
-    ```
-
-    [](https://dataos.info/resources/depot/#__codelineno-16-1)
-
-    You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
-
-    ### **Delete a Depot**
-
-    <Tip>
-      **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
-    </Tip>
-
-    If you need to delete a Depot, use the following command in the DataOS CLI:
-
-    <CodeGroup>
-      ```bash Command
-      dataos-ctl delete -t depot -n ${{name of Depot}}
-      ```
-
-      ```bash Alternative command
-      dataos-ctl delete -f ${{path of your manifest file}}
-      ```
-    </CodeGroup>
-
-    [](https://dataos.info/resources/depot/#__codelineno-17-1)
-
-    By executing the above command, the specified Depot will be deleted from your DataOS environment.
-  </Accordion>
-
-  <Accordion title="Kafka" defaultOpen={false}>
-    ### Pre-requisites specific to the Kafka Depot
-
-    To create a Kafka Depot you must have the following details:
-
-    * **KAFKA Broker List**: A comma-separated list of broker addresses in the Kafka cluster (e.g., `broker1:9092,broker2:9092`). The broker list allows the connection to discover all topics and partitions in the cluster. This information can be obtained from the Kafka admin or the cluster configuration file, usually found in the `server.properties` file.
-
-    * **Schema Registry URL**: The URL of the Schema Registry associated with your Kafka cluster, which stores the schemas for the data being produced and consumed. This is required if your Kafka topics use Avro or other schema-based serialization formats. You can obtain this URL from the Kafka admin or the configuration details of the Schema Registry setup.
-
-    ### Create a Kafka Depot
-
-    DataOS allows you to create a Depot of type 'KAFKA' to read live topic data. This Depot enables you to access and consume real-time streaming data from Kafka. To create a Depot of type 'KAFKA', follow the below steps:
-
-    ### Step 1: Create a Kafka Depot manifest file
-
-    Begin by creating a manifest file to hold the configuration details for your Kafka Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
-
-    <CodeGroup>
-      ```yaml Inline credentials Depot manifest file
-      name: ${{depot-name}}
-      version: v1
-      type: depot
-      tags:
-        - ${{tag1}}
-        - ${{tag2}}
-      owner: ${{owner-name}}
-      layer: user
-      depot:
-        type: ABFSS                                       
-        description: ${{description}}
-        external: ${{true}}
-        compute: ${{runnable-default}}
-        connectionSecret:                                 
-          - acl: rw
-            type: key-value-properties
-            data:
-              azurestorageaccountname: ${{account-name}}
-              azurestorageaccountkey: ${{account-key}}
-          - acl: r
-            type: key-value-properties
-            data:
-              azurestorageaccountname: ${{account-name}}
-              azurestorageaccountkey: ${{account-key}}
-        spec:                                             
-          account: ${{account-name}}
-          container: ${{container-name}}
-          relativePath: ${{relative-path}}
-          format: ${{format}}
-      ```
-    </CodeGroup>
-
-    ### Step 2: Apply the Depot manifest file
-
-    Once you have the manifest file ready in your code editor, simply copy the path of the manifest file and apply it through the DataOS CLI by pasting the path in the placeholder, using the command given below:
-
-    <CodeGroup>
-      ```bash Command
-      dataos-ctl resource apply -f ${{yamlfilepath}}
-      ```
-
-      ```bash Alternative command
-      dataos-ctl apply -f ${{yamlfilepath}}
-      ```
-    </CodeGroup>
-
-    ### **Verify the Depot creation**
-
-    To ensure that your Depot has been successfully created, you can verify it in two ways:
-
-    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:&#x20;
-
-    ```bash
-    dataos-ctl get -t depot
-    ```
-
-    [](https://dataos.info/resources/depot/#__codelineno-15-1)
-
-    * Additionally, retrieve the list of all Depots created in your organization:
-
-    ```bash
-    dataos-ctl get -t depot -a
-    ```
-
-    [](https://dataos.info/resources/depot/#__codelineno-16-1)
-
-    You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
-
-    ### **Delete a Depot**
-
-    <Tip>
-      **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
-    </Tip>
-
-    If you need to delete a Depot, use the following command in the DataOS CLI:
-
-    <CodeGroup>
-      ```bash Command
-      dataos-ctl delete -t depot -n ${{name of Depot}}
-      ```
-
-      ```bash Alternative command
-      dataos-ctl delete -f ${{path of your manifest file}}
-      ```
-    </CodeGroup>
-
-    [](https://dataos.info/resources/depot/#__codelineno-17-1)
-
-    By executing the above command, the specified Depot will be deleted from your DataOS environment.
-  </Accordion>
-
-  <Accordion title="Elasticsearch" defaultOpen={false}>
-    ### Pre-requisites specific to the Elasticsearch Depot
-
-    To create a Elasticsearch Depot you must have the following details:
-
-    * **Username**: The username used to authenticate and access the Elasticsearch cluster. This is typically created and provided by the Elasticsearch admin during user setup or role assignment.
-
-    * **Password**: The password associated with the Elasticsearch username for authentication. This is set during account creation and can be obtained securely from the Elasticsearch admin if forgotten.
-
-    * **Nodes (Hostname/URL of the server and ports)**: The addresses of one or more Elasticsearch nodes, including the hostname or URL and the port (e.g., `node1.example.com:9200`). These nodes form part of the cluster and are used to establish the connection. This information can be retrieved from the Elasticsearch admin or by checking the cluster configuration details.
-
-    ### Create a Elasticsearch Depot
-
-    DataOS provides the capability to connect to Elasticsearch data using Depot. The Depot facilitates access to all documents that are visible to the specified user, allowing for text queries and analytics. To create a Depot of type ‘ELASTICSEARCH‘,  follow the below steps:
-
-    ### Step 1: Create an Instance Secret for securing Elasticsearch credentails
-
-    <Warning>
-      This step can be skipped if you prefer to create a Depot without referencing an Instance Secret.
-    </Warning>
-
-    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).&#x20;
-
-    ### Step 2: Create a Elasticsearch Depot manifest file
-
-    Begin by creating a manifest file to hold the configuration details for your Elasticsearch Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
-
-    <CodeGroup>
-      ```yaml Inline credentials Depot manifest file
-      name: ${{depot-name}}
-      version: v1
-      type: depot
-      tags:
-        - ${{tag1}}
-        - ${{tag2}}
-      owner: ${{owner-name}}
-      layer: user
-      depot:
-        type: ELASTICSEARCH              
-        description: ${{description}}
-        external: ${{true}}
-        connectionSecret:                
-          - acl: rw
-            values:
-              username: ${{username}}
-              password: ${{password}}
-          - acl: r
-            values:
-              username: ${{username}}
-              password: ${{password}}
-        spec:                           
-          nodes: ${{["localhost:9092", "localhost:9093"]}}
-      ```
-
-      ```yaml Instance Secret reference Depot manifest file
-      name: ${{depot-name}}
-      version: v2alpha
-      type: depot
-      tags:
-        - ${{tag1}}
-        - ${{tag2}}
-      owner: ${{owner-name}}
-      layer: user
-      depot:
-        type: ELASTICSEARCH              
-        description: ${{description}}
-        external: ${{true}}
-        secrets:
-          - name: ${{sf-instance-secret-name}}-r
-            allkeys: true
-
-          - name: ${{sf-instance-secret-name}}-rw
-            allkeys: true
-        elasticsearch:                           
-          nodes: ${{["localhost:9092", "localhost:9093"]}}
-      ```
-    </CodeGroup>
-
-    ### Step 3: Apply the Depot manifest file
-
-    Once you have the manifest file ready in your code editor, simply copy the path of the manifest file and apply it through the DataOS CLI by pasting the path in the placeholder, using the command given below:
-
-    <CodeGroup>
-      ```bash Command
-      dataos-ctl resource apply -f ${{yamlfilepath}}
-      ```
-
-      ```bash Alternative command
-      dataos-ctl apply -f ${{yamlfilepath}}
-      ```
-    </CodeGroup>
-
-    ### **Verify the Depot creation**
-
-    To ensure that your Depot has been successfully created, you can verify it in two ways:
-
-    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:&#x20;
-
-    ```bash
-    dataos-ctl get -t depot
-    ```
-
-    [](https://dataos.info/resources/depot/#__codelineno-15-1)
-
-    * Additionally, retrieve the list of all Depots created in your organization:
-
-    ```bash
-    dataos-ctl get -t depot -a
-    ```
-
-    [](https://dataos.info/resources/depot/#__codelineno-16-1)
-
-    You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
-
-    ### **Delete a Depot**
-
-    <Tip>
-      **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
-    </Tip>
-
-    If you need to delete a Depot, use the following command in the DataOS CLI:
-
-    <CodeGroup>
-      ```bash Command
-      dataos-ctl delete -t depot -n ${{name of Depot}}
-      ```
-
-      ```bash Alternative command
-      dataos-ctl delete -f ${{path of your manifest file}}
-      ```
-    </CodeGroup>
-
-    [](https://dataos.info/resources/depot/#__codelineno-17-1)
-
-    By executing the above command, the specified Depot will be deleted from your DataOS environment.
-  </Accordion>
-
-  <Accordion title="Opensearch" defaultOpen={false}>
-    ### Pre-requisites specific to the Opensearch Depot
-
-    To create a Opensearch Depot you must have the following details:
-
-    * **Username**: The username used to authenticate and access the OpenSearch cluster. This is typically set up by the OpenSearch admin and assigned to users with specific access permissions.
-
-    * **Password**: The password associated with the OpenSearch username for authentication. This is created during user setup and should be securely retrieved from the OpenSearch admin if not known.
-
-    * **Nodes (Hostname/URL of the server and ports)**: The addresses of one or more OpenSearch nodes, including the hostname or URL and the port (e.g., `node1.opensearch.example.com:9200`). These nodes are part of the cluster and are necessary to establish the connection. This information can be obtained from the OpenSearch admin or by referring to the cluster's configuration details.
-
-    ### Create a Opensearch Depot
-
-    DataOS provides the capability to connect to Opensearch data using Depot. The Depot facilitates access to all documents that are visible to the specified user, allowing for text queries and analytics. To create a Depot of Opensearch, in the type field you will have to specify type ‘ELASTICSEARCH‘,  follow the below steps:
-
-    ### Step 1: Create an Instance Secret for securing Opensearch credentails
-
-    <Warning>
-      This step can be skipped if you prefer to create a Depot without referencing an Instance Secret.
-    </Warning>
-
-    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).&#x20;
-
-    ### Step 2: Create a Opensearch Depot manifest file
-
-    Begin by creating a manifest file to hold the configuration details for your Opensearch Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
-
-    <CodeGroup>
-      ```yaml Inline credentials Depot manifest file
-      name: ${{depot-name}}
-      version: v1
-      type: depot
-      tags:
-        - ${{tag1}}
-        - ${{tag2}}
-      owner: ${{owner-name}}
-      layer: user
-      depot:
-        type: OPENSEARCH             
-        description: ${{description}}
-        external: ${{true}}
-        connectionSecret:                
-          - acl: rw
-            values:
-              username: ${{username}}
-              password: ${{password}}
-          - acl: r
-            values:
-              username: ${{opensearch-username}}
-              password: ${{opensearch-password}}
-        spec:                           
-          nodes:
-            - ${{nodes}}
-      ```
-
-      ```yaml Instance Secret reference Depot manifest file
-      name: ${{depot-name}}
-      version: v2alpha
-      type: depot
-      tags:
-        - ${{tag1}}
-        - ${{tag2}}
-      owner: ${{owner-name}}
-      layer: user
-      depot:
-        type: OPENSEARCH           
-        description: ${{description}}
-        external: ${{true}}
-        secrets:
-          - name: ${{sf-instance-secret-name}}-r
-            allkeys: true
-
-          - name: ${{sf-instance-secret-name}}-rw
-            allkeys: true
-        elasticesearch:                           
-          nodes:
-            - ${{nodes}}
-      ```
-    </CodeGroup>
-
-    ### Step 3: Apply the Depot manifest file
-
-    Once you have the manifest file ready in your code editor, simply copy the path of the manifest file and apply it through the DataOS CLI by pasting the path in the placeholder, using the command given below:
-
-    <CodeGroup>
-      ```bash Command
-      dataos-ctl resource apply -f ${{yamlfilepath}}
-      ```
-
-      ```bash Alternative command
-      dataos-ctl apply -f ${{yamlfilepath}}
-      ```
-    </CodeGroup>
-
-    ### **Verify the Depot creation**
-
-    To ensure that your Depot has been successfully created, you can verify it in two ways:
-
-    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:&#x20;
-
-    ```bash
-    dataos-ctl get -t depot
-    ```
-
-    [](https://dataos.info/resources/depot/#__codelineno-15-1)
-
-    * Additionally, retrieve the list of all Depots created in your organization:
-
-    ```bash
-    dataos-ctl get -t depot -a
-    ```
-
-    [](https://dataos.info/resources/depot/#__codelineno-16-1)
-
-    You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
-
-    ### **Delete a Depot**
-
-    <Tip>
-      **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
-    </Tip>
-
-    If you need to delete a Depot, use the following command in the DataOS CLI:
-
-    <CodeGroup>
-      ```bash Command
-      dataos-ctl delete -t depot -n ${{name of Depot}}
-      ```
-
-      ```bash Alternative command
-      dataos-ctl delete -f ${{path of your manifest file}}
-      ```
-    </CodeGroup>
-
-    [](https://dataos.info/resources/depot/#__codelineno-17-1)
-
-    By executing the above command, the specified Depot will be deleted from your DataOS environment.
-  </Accordion>
 </AccordionGroup>
 
 The manifest configuration file for a Depot can be divided into two main sections: the Resource meta section and the [Resource-specific section](/resources/depot/configurations). Each section serves a distinct purpose and contains specific attributes.
@@ -2979,7 +3056,9 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
 <AccordionGroup>
   <Accordion title="Data ingestion and transformation" defaultOpen={false}>
     A Depot can be used further for data ingestion and transformation through Flare Stack. To learn more about the Flare Stack, please refer to this link.&#x20;
+
     **For example:**
+
     The below manifest file defines a Flare 6.0-based workflow, `wf-vendor-insights`, for ingesting and transforming vendor insights data from poss3 Depot into Icebase (Lakehouse) Depot. It includes a DAG node, `dg-vendor-insights`, which processes `promotional_data` from a CSV dataset in poss3 and outputs `transformed_data` as an Iceberg table in Icebase. The Workflow specifies compute resources for execution, with a driver and executor configuration limiting cores and memory. The transformation logic applies an SQL query that extracts key vendor attributes, including organization details, contact information, certifications, and category identifiers, while also generating a row number using `row_number() OVER (ORDER BY id)`. The resulting dataset is saved in Iceberg format with Parquet storage and gzip compression, ensuring optimized analytics and efficient querying.
 
     <AccordionGroup>
@@ -3109,7 +3188,9 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
 
   <Accordion title="Query the source" defaultOpen={false}>
     For better understanding of the data, a user can query the data directly on Workbench without moving the data by creating a Cluster Resource.
+
     **For example:**
+
     The below manifest file defines a Minerva-based Cluster Resource, `minervabq`, for querying data within DataOS. It specifies a `query-default` compute environment and configures Minerva-specific settings, including a single replica with resource allocations of 2 CPU cores (2000m) and 4Gi memory for both limits and requests. Debug settings define `INFO` log level for general logs and `ERROR` for Trino logs, ensuring controlled verbosity. The Cluster is linked to a Depot at `dataos://depotbq`, allowing seamless access to data stored in that location for querying and processing.
 
     ```yaml
@@ -3146,7 +3227,9 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
 
   <Accordion title="Accelerating queries" defaultOpen={false}>
     For enhancing the query performance, a user can cache the data using Flash Stack.
+
     **For example:**
+
     The below manifest file defines a DataOS service named `flashtest`, built on the `flash+python:2.0` Stack. The Service caches a dataset named `city`, stored in `dataos://icebase:retail/city`, and initializes a table `mycity` by selecting data from `retail.city`.&#x20;
 
     ```yaml
@@ -3199,7 +3282,7 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
 
   <Accordion title="Building Data Products" defaultOpen={false}>
     A Depot plays a fundamental role in Data Product development, a Data Product can be created directly from the source Depot or from the Icebase (Lakehouse) Depot.
-    
+
     **For example:**
 
     The below  manifest file defines the deployment of the `vendor-data-insights` Data Product, categorized under `Vendor Management` with a `Bronze` tier. It provides insights into vendor data, including incorporation details, DBE status, and contact attributes, supporting reporting, tracking, and vendor engagement analysis. The Data Product ingests information from various sources within `operationaldb`, including organizations, categories, vendors, certifications, and user data. The processed insights are stored in `operationlake:analytics:vendor_data_insights`. Additionally, it exposes service endpoints through `Lens` and `Talos` for querying vendor insights and API access.
@@ -3304,22 +3387,108 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
 
 
     ```
-
-
   </Accordion>
 
   <Accordion title="Depot as Lakehouse" defaultOpen={false}>
-    Whenever a user ingest the data, it get stored in the DataOS Lakehouse Depot. To know more about the Lakehouse, please refer to this link.
-    For example:
+    Whenever a user ingests the data, it gets stored in the DataOS Lakehouse Depot. To know more about the Lakehouse, please refer to this link.
 
+    **For example:**
+    The below manifest file defines the `alphaomega` Lakehouse, which operates on the `Iceberg` format and is hosted on `Azure`. The storage layer is managed through an `S3`-based Icebase Depot, utilizing the `dataos-lakehouse` bucket with a relative path of `/test`. Access control is configured via secrets for read (`alphaomega-r`) and read-write (`alphaomega-rw`) permissions. The Lakehouse employs an `Iceberg REST Catalog` as its metastore for data management and utilizes `Themis` as the query engine.
+
+    ```yaml
+    # Resource-meta section 
+    name: alphaomega
+    version: v1alpha
+    type: lakehouse
+    tags:
+      - Iceberg
+      - Azure
+    description: Icebase depot of storage-type S3
+    owner: iamgroot
+    layer: user
+
+    # Lakehouse-specific section 
+    lakehouse:
+      type: iceberg
+      compute: runnable-default
+      iceberg:
+
+        # Storage section 
+        storage:
+          depotName: alphaomega
+          type: s3
+          s3:
+            bucket: dataos-lakehouse   
+            relativePath: /test
+          secrets:
+            - name: alphaomega-r
+              keys:
+                - alphaomega-r
+              allkeys: true 
+            - name: alphaomega-rw
+              keys:
+                - alphaomega-rw
+              allkeys: true  
+
+        # Metastore section 
+        metastore:
+          type: "iceberg-rest-catalog"
+
+        # Query engine section 
+        queryEngine:
+          type: themis
+    ```
   </Accordion>
 
-  <Accordion title="Applying data Policies" defaultOpen={false}>
-    To govern the data, a developer can create data policies using Policy Stack that restrict the access to the data for specific users.
-  </Accordion>
+  <Accordion title="Scanning metadata" defaultOpen={false}>
+    After creating the Depot, a user can run a Scanner Workflow for Depot to extract the metadata which later can be accessed on Metis UI. To know more about Scanner, please refer to this.
 
-  <Accordion title="Scanning meta data" defaultOpen={false}>
-    After creating the Depot , a user can run a Scanner Workflow for Depot to extract the metadata which later can be accessed on Metis UI.
+    **For example:**
+
+    The below manifest file defines the `wf-postgres-depot` Workflow, designed to scan schema tables from a `PostgreSQL`-based Depot and register the extracted data into `Metis2`. It operates under the `scanner:2.0` Stack with Compute Resources managed by `runnable-default` and runs as the `metis` user. The Workflow is tagged as `postgres-depot` and `scanner`, indicating its role in schema discovery. The configuration includes a `depot` specification (`postgresdepot`) and placeholders for source configurations that allow filtering of databases, schemas, and tables based on inclusion and exclusion patterns.
+
+    ```yaml
+    version: v1
+    name: wf-postgres-depot
+    type: workflow
+    tags:
+      - postgres-depot
+    description: The workflow scans schema tables and register data
+    workflow:
+      dag:
+        - name: postgres-depot
+          description: The job scans schema from depot tables and register data to metis2
+          spec:
+            tags:
+              - scanner
+            stack: scanner:2.0
+            compute: runnable-default
+            runAsUser: metis
+            stackSpec:
+              depot: postgresdepot           
+              # sourceConfig:           
+              #   config:
+              #     markDeletedTables: false
+              #     includeTables: true
+              #     includeViews: true
+              #     databaseFilterPattern:
+              #       includes:
+              #         - <databasename> 
+              #       excludes:
+              #         - <databasename> 
+              #     schemaFilterPattern:
+              #       includes:
+              #         - <schemaname>
+              #       excludes:
+              #         - <schemaname>
+              #     tableFilterPattern:
+              #       includes:
+              #         - <schemaname>
+              #       excludes:
+              #         - <schemaname>
+    ```
+
+    After successfully executing the Scanner Workflow, a user can find the metadata on Metis UI as shown below.
   </Accordion>
 
   <Accordion title="Limit the data source's file format" defaultOpen={false}>
@@ -3378,10 +3547,11 @@ Once a Depot is successfully created, you can view its metadata in the Metis UI.
 * As an operator, always assign a use-case to a user instead of directly assigning a tag, as assigning a use-case gives only specific permissions.
 
 * Give your Depot a meaningful name that represents its purpose.
-  **Example:**
-  \- ✅ `sales-reports-s3` instead of ❌ `s3-1`
-  \- ✅ `customer-db-mysql` instead of ❌ `db1`
-  This makes it easier to manage and identify Depots.
+  **Example:**&#x54;his makes it easier to manage and identify Depots.
+
+  * ✅ `sales-reports-s3` instead of ❌ `s3-1`
+
+  * ✅ `customer-db-mysql` instead of ❌ `db1`
 
 ## **Don'ts**
 
