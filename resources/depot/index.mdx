@@ -3505,7 +3505,7 @@ Depots can be monitored using Monitor Resource, to know more about it, please [
 
 Once a Depot is successfully created, you can view its metadata in the Metis UI. Additionally, any updates made to a Depot can be tracked in the activity section of Metis.
 
-## **Do's**&#x20;
+## **Best Practices**&#x20;
 
 * As an operator, always assign a use-case to a user instead of directly assigning a tag, as assigning a use-case gives only specific permissions.
 
@@ -3519,7 +3519,7 @@ Once a Depot is successfully created, you can view its metadata in the Metis UI.
 
 * Avoid creating a Depot with inline credentials, always create an Instance Secret.
 
-* Do not delete a Depot if it has a dependency on other Resources.
+* Do not delete a Depot if other Resources are dependent on it.
 
 ## **Data integration - Supported connectors in DataOS**
 
@@ -3543,4 +3543,25 @@ The catalog of data sources accessible by one or more components within DataOS i
   <Accordion title="4. Can I restrict access to specific columns or rows in a Depot?" defaultOpen={false}>
     As a developer, you can apply the data masking Policy on a specific column that will replace the actual values with your defined masked characters.
   </Accordion>
+
+  <Accordion title="5. Can you get metadata directly from source data?" defaultOpen={false}>
+    Yes, metadata can be extracted directly from source data using the**** DataOS Scanner Stack. This enables developers to retrieve metadata from external systems such as Postgres, MSSQL, MYSQL, etc.
+
+    **Metadata Extraction Workflows**
+    **Depot Scan Workflow:** Uses Depots to scan datasets. Requires the Depot name or address to connect to the data source.
+
+    **Extracted Metadata Includes:**
+
+    * **Dataset/Table Information:** Names, owners, tags, schemas, column names, descriptions
+
+    * **Data Quality & Profiling:** Query usage, user information
+
+    * **Resources:** Metadata about the deployed DataOS Resources, their historical runtime and operations data.
+
+    * **Data Products:** Inputs, outputs & SLOs (Service Level Objectives)
+  </Accordion>
 </AccordionGroup>
+
+## Troubleshooting
+
+Naming Convention
