@@ -48,7 +48,7 @@ When attempting to log in using the <code>dataos-ctl</code> command-line tool, i
 iamgroot@abcs-MacBook-Pro-2 ~ % ./darwin-arm64/dataos-ctl login
 INFO[0000] 🔑 login...                                   
 ERRO[0000] no cred file, need to login                  
-WARN[0000] no cred file, logging in now, Config File ".dataos.cred.config" Not Found in "[/Users/fsnooruddin/.dataos/hawk]"
+WARN[0000] no cred file, logging in now, Config File ".dataos.cred.config" Not Found in "[/Users/iamgroot/.dataos/hawk]"
 ERRO[0000] 🔑 login...error                              
 ERRO[0000] Post "https://https//emerging-hawk.dataos.app/home//heimdall/api/v1/oidc/tickets": dial tcp: lookup https: no such host
 ```
