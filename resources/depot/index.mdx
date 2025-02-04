@@ -3509,13 +3509,13 @@ Once a Depot is successfully created, you can view its metadata in the Metis UI.
 
 * As an operator, always assign a use-case to a user instead of directly assigning a tag, as assigning a use-case gives only specific permissions.
 
-* Give your Depot a meaningful name that represents its purpose. **Example:** This makes it easier to manage and identify Depots.
+* Give your Depot a meaningful name that represents its purpose.&#x20;
+
+  **Example:** This makes it easier to manage and identify Depots.
 
   * ✅ `sales-reports-s3` instead of ❌ `s3-1`
 
   * ✅ `customer-db-mysql` instead of ❌ `db1`
-
-## **Don'ts**
 
 * Avoid creating a Depot with inline credentials, always create an Instance Secret.
 
@@ -3545,7 +3545,7 @@ The catalog of data sources accessible by one or more components within DataOS i
   </Accordion>
 
   <Accordion title="5. Can you get metadata directly from source data?" defaultOpen={false}>
-    Yes, metadata can be extracted directly from source data using the**** DataOS Scanner Stack. This enables developers to retrieve metadata from external systems such as Postgres, MSSQL, MYSQL, etc.
+    Yes, metadata can be extracted directly from source data using the DataOS Scanner Stack. This enables developers to retrieve metadata from external systems such as Postgres, MSSQL, MYSQL, etc.
 
     **Metadata Extraction Workflows**
     **Depot Scan Workflow:** Uses Depots to scan datasets. Requires the Depot name or address to connect to the data source.
@@ -3556,12 +3556,22 @@ The catalog of data sources accessible by one or more components within DataOS i
 
     * **Data Quality & Profiling:** Query usage, user information
 
-    * **Resources:** Metadata about the deployed DataOS Resources, their historical runtime and operations data.
+    * **Depot Resource:** Metadata about the deployed Depot Resource, its status and operations data.
+  </Accordion>
 
-    * **Data Products:** Inputs, outputs & SLOs (Service Level Objectives)
+  <Accordion title="6. Can users see everyone’s Depots or only their own?" defaultOpen={false}>
+    By default, users with data-dev and operator roles can create and view all Depots. However, access can be restricted by:
+
+    * Removing the “Manage All Depot” use-case.
+
+    * Creating policies to prevent access to the Depot listing endpoint.
+
+    * Exploring Depot details via the Operations App or Metis UI in DataOS.
+  </Accordion>
+
+  <Accordion title="7. Are workspaces distinctly different if multiple Depots are spun up?" defaultOpen={false}>
+    No. Depots are global entities in DataOS and are not tied to specific workspaces.
   </Accordion>
 </AccordionGroup>
 
 ## Troubleshooting
-
-Naming Convention
