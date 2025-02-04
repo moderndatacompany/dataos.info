@@ -11,7 +11,7 @@ description: "Lens Resource in DataOS is a logical modeling layer for accessing 
 
 **Why Lens?**
 
-The semantic modeling layer of the Lens serves as an interface that overlays the underlying data, consistently presenting business users with familiar and well-defined terms like `product`, `customer`, or `revenue`. This abstraction enables users to access and consume data in a way that aligns with their understanding, facilitating self-service analytics and reducing dependence on data engineers for ad-hoc data requests.
+The semantic modeling layer of the Lens serves as an interface that overlays the underlying data, consistently presenting business users with familiar and well-defined terms such as `product`, `customer`, or `revenue`. This abstraction enables users to access and consume data in a way that aligns with their understanding, facilitating self-service analytics and reducing dependence on data engineers for ad-hoc data requests.
 
 As a resource within the DataOS ecosystem, Lens enhances Data Product consumption by delivering improvements in how Data Products are accessed and utilized. It streamlines the developer experience in consumption patterns, focusing specifically on refining the use and interaction with data products.
 
@@ -72,7 +72,7 @@ The process begins with creating a new Lens project and generating a data model.
 
     ## Step 2: Prepare the sematic model folder
 
-    In the Model folder, the Lens semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each subfolder contains specific files related to the Lens model. You can download the Lens template to quickly get started.
+    In the Model folder, the semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each subfolder contains specific files related to the Lens model. You can download the Lens template to quickly get started.
 
     [lens template](https://dataosinfo.mintlify.app/resources/lens/lens_model_folder_setup/lens-project-template.zip)
 
@@ -108,7 +108,7 @@ The process begins with creating a new Lens project and generating a data model.
 
     ## Step 2: Prepare the sematic model folder
 
-    In the Model folder, the Lens semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each subfolder contains specific files related to the Lens model. You can download the Lens template to quickly get started.
+    In the Model folder, the semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each subfolder contains specific files related to the Lens model. You can download the Lens template to quickly get started.
 
     [lens template](/resources/lens/lens_model_folder_setup/lens-project-template.zip)
 
@@ -116,7 +116,7 @@ The process begins with creating a new Lens project and generating a data model.
       <Step title="Load data from the data source" titleSize="h2">
         In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure that only the necessary columns are extracted, and the SQL dialect is specific to the data source.
 
-        For example, a simple data load might look like this:
+        For example, a simple data load might look as follows:
 
         ```sql
         SELECT
@@ -157,7 +157,7 @@ The process begins with creating a new Lens project and generating a data model.
 
         ### Add dimensions and measures
 
-        After defining the base table, add the necessary dimensions and measures. For example, to create a table for sales data with measures and dimensions, the YAML definition could look like this:
+        After defining the base table, add the necessary dimensions and measures. For example, to create a table for sales data with measures and dimensions, the YAML definition could look as follows:
 
         ```yaml
         tables:
@@ -182,7 +182,7 @@ The process begins with creating a new Lens project and generating a data model.
 
         ### Add segments to filter
 
-        Segments are filters that allow for the application of specific conditions to refine the data analysis. By defining segments, you can focus on particular subsets of data, ensuring that only the relevant records are included in your analysis. For example, to filter for records where the state is either Illinois or Ohio, you can define a segment like this:
+        Segments are filters that allow for the application of specific conditions to refine the data analysis. By defining segments, you can focus on particular subsets of data, ensuring that only the relevant records are included in your analysis. For example, to filter for records where the state is either Illinois or Ohio, you can define a segment as follows:
 
         ```yaml
         segments:
@@ -215,7 +215,7 @@ The process begins with creating a new Lens project and generating a data model.
       </Step>
 
       <Step title="Create User groups" titleSize="h2">
-        This YAML manifest file is used to manage access levels for the Lens semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, there is a 'default' user group in the YAML file that includes all users.
+        This YAML manifest file is used to manage access levels for the semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, there is a 'default' user group in the YAML file that includes all users.
 
         ```yaml
         user_groups:
@@ -230,7 +230,7 @@ The process begins with creating a new Lens project and generating a data model.
 
     ## Step 3: Deployment manifest file
 
-    Once the Lens with semantic model is prepared, create a `lens_deployment.yml` file parallel to the model folder to configure the deployment using the YAML template below.
+    Once the semantic model is prepared, create a `lens_deployment.yml` file parallel to the model folder.
 
     ```yaml
     version: v1alpha
@@ -325,7 +325,7 @@ The process begins with creating a new Lens project and generating a data model.
 
     ## Step 4: Apply the Lens deployment manifest file
 
-    After configuring the deployment file with the necessary settings and specifications, apply the manifest using the following command:
+    After configuring the deployment file with the necessary settings and specifications, Deploy the Lens using the following `apply` command:
 
     <Code>
       ```yaml Command
@@ -390,31 +390,31 @@ The process begins with creating a new Lens project and generating a data model.
     </Note>
 
     <Steps>
-      <Step title="Log in to AWS Console ">
+      <Step title="Log in to AWS Console " titleSize="h2">
         Login to the AWS Console and search for ‘Redshift’ in the AWS Console search bar to access the Redshift.
 
         ![](https://mintlify.s3.us-west-1.amazonaws.com/dataosinfo/resources/lens/data_sources/awsredshift/Untitled1.png)
       </Step>
 
-      <Step title="Select Redshift Cluster">
+      <Step title="Select Redshift Cluster" titleSize="h2">
         Click on ‘Amazon Redshift’ from the search results. You will be directed to the Redshift dashboard. Select the appropriate region and choose the desired cluster name from the list.
 
         ![](https://mintlify.s3.us-west-1.amazonaws.com/dataosinfo/resources/lens/data_sources/awsredshift/Untitled2.png)
       </Step>
 
-      <Step title="Access Query Monitoring">
+      <Step title="Access Query Monitoring" titleSize="h2">
         Select the cluster you want to monitor. Navigate to the ‘Query monitoring’ tab to view query statistics.
 
         ![](https://mintlify.s3.us-west-1.amazonaws.com/dataosinfo/resources/lens/data_sources/awsredshift/Untitled3.png)
       </Step>
 
-      <Step title="View running and completed queries">
+      <Step title="View running and completed queries" titleSize="h2">
         In the ‘Query monitoring’ tab, you will see a list of running and completed queries.&#x20;
 
         ![](https://mintlify.s3.us-west-1.amazonaws.com/dataosinfo/resources/lens/data_sources/awsredshift/Untitled4.png)
       </Step>
 
-      <Step title="Monitor specific query">
+      <Step title="Monitor specific query" titleSize="h2">
         Click on the query you want to monitor and view the query statistics, as shown in the example below.
 
         ![](https://mintlify.s3.us-west-1.amazonaws.com/dataosinfo/resources/lens/data_sources/awsredshift/Untitled5.png)
@@ -456,7 +456,7 @@ The process begins with creating a new Lens project and generating a data model.
 
     ## Step 2: Prepare the Lens model folder
 
-    In the Model folder, the Lens semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each subfolder contains specific files related to the Lens model. You can download the Lens template to quickly get started.
+    In the Model folder, the semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each subfolder contains specific files related to the Lens model. You can download the Lens template to quickly get started.
 
     [lens template](/resources/lens/lens_model_folder_setup/lens-project-template.zip)
 
@@ -470,7 +470,7 @@ The process begins with creating a new Lens project and generating a data model.
 
         * Replace generic functions with BigQuery’s `EXTRACT` function.
 
-        For instance, a simple data load might look like this:
+        For instance, a simple data load might look as follows:
 
         ```sql
         SELECT
@@ -511,7 +511,7 @@ The process begins with creating a new Lens project and generating a data model.
 
         ### Add dimensions and measures
 
-        After defining the base table, add the necessary dimensions and measures. For instance, to create a table for sales data with measures and dimensions, the YAML definition could look like this:
+        After defining the base table, add the necessary dimensions and measures. For instance, to create a table for sales data with measures and dimensions, the YAML definition could look as follows:
 
         ```yaml
         tables:
@@ -536,7 +536,7 @@ The process begins with creating a new Lens project and generating a data model.
 
         ### Add segments to filter
 
-        Segments are filters that allow for the application of specific conditions to refine the data analysis. By defining segments, you can focus on particular subsets of data, ensuring that only the relevant records are included in your analysis. For example, to filter for records where the state is either Illinois or Ohio, you can define a segment like this:
+        Segments are filters that allow for the application of specific conditions to refine the data analysis. By defining segments, you can focus on particular subsets of data, ensuring that only the relevant records are included in your analysis. For example, to filter for records where the state is either Illinois or Ohio, you can define a segment as follows:
 
         ```yaml
         segments:
@@ -569,7 +569,7 @@ The process begins with creating a new Lens project and generating a data model.
       </Step>
 
       <Step title="Create User groups" titleSize="h2">
-        This YAML manifest file is used to manage access levels for the Lens semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, there is a 'default' user group in the YAML file that includes all users.
+        This YAML manifest file is used to manage access levels for the semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, there is a 'default' user group in the YAML file that includes all users.
 
         ```yaml
         user_groups:
@@ -687,7 +687,7 @@ The process begins with creating a new Lens project and generating a data model.
 
     ## Step 4: Apply the Lens deployment manifest file
 
-    After configuring the deployment file with the necessary settings and specifications, apply the manifest using the following command. Replace the placeholder with the&#x20;
+    After configuring the deployment file with the necessary settings and specifications, deploy the Lens using the following `apply` command.
 
     ```
     dataos-ctl apply -f {manifest-file-path}}
@@ -741,7 +741,6 @@ The process begins with creating a new Lens project and generating a data model.
             # - ./scripts/commons.js:/app/scripts/commons.js
             # - ./scripts/bootstrap.js:/app/scripts/bootstrap.js
             # - ./scripts/config.js:/app/scripts/config.js
-
       ```
     </Accordion>
   </Accordion>
@@ -783,7 +782,7 @@ The process begins with creating a new Lens project and generating a data model.
 
     ## Step 2: Prepare the semantic model folder
 
-    In the Model folder, the Lens semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each subfolder contains specific files related to the Lens model. You can download the Lens template to quickly get started.
+    In the Model folder, the semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each subfolder contains specific files related to the Lens model. You can download the Lens template to quickly get started.
 
     [lens template](/resources/lens/lens_model_folder_setup/lens-project-template.zip)
 
@@ -791,7 +790,7 @@ The process begins with creating a new Lens project and generating a data model.
       <Step title="Load data from the data source" titleSize="h2">
         In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure that only the necessary columns are extracted, and the SQL dialect is specific to the data source.
 
-        For example, a simple data load might look like this:
+        For example, a simple data load might look as follows:
 
         ```sql
         SELECT
@@ -816,7 +815,7 @@ The process begins with creating a new Lens project and generating a data model.
           country,
           zip_code
         FROM
-          "icebase"."sales_360".customer;
+          "icebase"."retail".customer; #catalog_name
         ```
       </Step>
 
@@ -832,7 +831,7 @@ The process begins with creating a new Lens project and generating a data model.
 
         ### Add dimensions and measures
 
-        After defining the base table, add the necessary dimensions and measures. For example, to create a table for sales data with measures and dimensions, the YAML definition could look like this:
+        After defining the base table, add the necessary dimensions and measures. For example, to create a table for sales data with measures and dimensions, the YAML definition could look as follows:
 
         ```yaml
         tables:
@@ -857,7 +856,7 @@ The process begins with creating a new Lens project and generating a data model.
 
         ### Add segments to filter
 
-        Segments are filters that allow for the application of specific conditions to refine the data analysis. By defining segments, you can focus on particular subsets of data, ensuring that only the relevant records are included in your analysis. For example, to filter for records where the state is either Illinois or Ohio, you can define a segment like this:
+        Segments are filters that allow for the application of specific conditions to refine the data analysis. By defining segments, you can focus on particular subsets of data, ensuring that only the relevant records are included in your analysis. For example, to filter for records where the state is either Illinois or Ohio, you can define a segment as follows:
 
         ```yaml
         segments:
@@ -890,7 +889,7 @@ The process begins with creating a new Lens project and generating a data model.
       </Step>
 
       <Step title="Create User groups" titleSize="h2">
-        This YAML manifest file is used to manage access levels for the Lens semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, there is a 'default' user group in the YAML file that includes all users.
+        This YAML manifest file is used to manage access levels for the semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, there is a 'default' user group in the YAML file that includes all users.
 
         ```yaml
         user_groups:
@@ -905,7 +904,7 @@ The process begins with creating a new Lens project and generating a data model.
 
     ### Step 4: Apply the Lens deployment manifest file
 
-    After configuring the deployment file with the necessary settings and specifications, apply the manifest using the following command:
+    After configuring the deployment file with the necessary settings and specifications, deploy the Lens using the following `apply` command:
 
     ```
     dataos-ctl  apply -f ${manifest-file-path}
@@ -1006,7 +1005,7 @@ The process begins with creating a new Lens project and generating a data model.
       <Step title="Load data from the data source" titleSize="h2">
         In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure the SQL dialect matches snowflake syntax. Format table names as `schema.table`.
 
-        For example, a simple data load might look like this:
+        For example, a simple data load might look as follows:
 
         ```sql
         SELECT
@@ -1047,7 +1046,7 @@ The process begins with creating a new Lens project and generating a data model.
 
         #### Add dimensions and measures
 
-        After defining the base table, add the necessary dimensions and measures. For example, to create a table for sales data with measures and dimensions, the YAML definition could look like this:
+        After defining the base table, add the necessary dimensions and measures. For example, to create a table for sales data with measures and dimensions, the YAML definition could look as follows:
 
         ```yaml
         tables:
@@ -1072,7 +1071,7 @@ The process begins with creating a new Lens project and generating a data model.
 
         #### Add segments to filter
 
-        Segments are filters that allow for the application of specific conditions to refine the data analysis. By defining segments, you can focus on particular subsets of data, ensuring that only the relevant records are included in your analysis. For example, to filter for records where the state is either Illinois or Ohio, you can define a segment like this:
+        Segments are filters that allow for the application of specific conditions to refine the data analysis. By defining segments, you can focus on particular subsets of data, ensuring that only the relevant records are included in your analysis. For example, to filter for records where the state is either Illinois or Ohio, you can define a segment as follows:
 
         ```yaml
         segments:
@@ -1105,7 +1104,7 @@ The process begins with creating a new Lens project and generating a data model.
       </Step>
 
       <Step title="Create user groups" titleSize="h2">
-        This YAML manifest file is used to manage access levels for the Lens semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, there is a 'default' user group in the YAML file that includes all users.
+        This YAML manifest file is used to manage access levels for the semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, there is a 'default' user group in the YAML file that includes all users.
 
         ```yaml
         user_groups:
@@ -1199,7 +1198,7 @@ The process begins with creating a new Lens project and generating a data model.
 
     ### Step 4: Apply the Lens deployment manifest file
 
-    After configuring the deployment file with the necessary settings, apply the manifest using the following command:
+    After configuring the deployment file with the necessary settings, deploy the Lens using the following `apply` command:
 
     ```
     dataos-ctl apply -f ${manifest-file-path}
@@ -1217,7 +1216,7 @@ The process begins with creating a new Lens project and generating a data model.
 
     ## Step 1: Prepare the sematic model folder
 
-    In the Model folder, the Lens semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each subfolder contains specific files related to the Lens model. You can download the Lens template to quickly get started.
+    In the Model folder, the semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each subfolder contains specific files related to the Lens model. You can download the Lens template to quickly get started.
 
     ```
     model
@@ -1234,7 +1233,7 @@ The process begins with creating a new Lens project and generating a data model.
       <Step title="Load data from the data source" titleSize="h2">
         In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure that only the necessary columns are extracted, and the SQL dialect is specific to the data source.
 
-        For example, a simple data load might look like this:
+        For example, a simple data load might look as follows:
 
         ```sql
         SELECT
@@ -1275,7 +1274,7 @@ The process begins with creating a new Lens project and generating a data model.
 
         ### Add dimensions and measures
 
-        After defining the base table, add the necessary dimensions and measures. For example, to create a table for sales data with measures and dimensions, the YAML definition could look like this:
+        After defining the base table, add the necessary dimensions and measures. For example, to create a table for sales data with measures and dimensions, the YAML definition could look as follows:
 
         ```yaml
         tables:
@@ -1300,7 +1299,7 @@ The process begins with creating a new Lens project and generating a data model.
 
         ### Add segments to filter
 
-        Segments are filters that allow for the application of specific conditions to refine the data analysis. By defining segments, you can focus on particular subsets of data, ensuring that only the relevant records are included in your analysis. For example, to filter for records where the state is either Illinois or Ohio, you can define a segment like this:
+        Segments are filters that allow for the application of specific conditions to refine the data analysis. By defining segments, you can focus on particular subsets of data, ensuring that only the relevant records are included in your analysis. For example, to filter for records where the state is either Illinois or Ohio, you can define a segment as follows:
 
         ```yaml
         segments:
@@ -1333,7 +1332,7 @@ The process begins with creating a new Lens project and generating a data model.
       </Step>
 
       <Step title="Create User groups" titleSize="h2">
-        This YAML manifest file is used to manage access levels for the Lens semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, there is a 'default' user group in the YAML file that includes all users.
+        This YAML manifest file is used to manage access levels for the semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, there is a 'default' user group in the YAML file that includes all users.
 
         ```yaml
         user_groups:
@@ -1348,7 +1347,7 @@ The process begins with creating a new Lens project and generating a data model.
 
     ## Step 2: Create a deployment manifest file
 
-    After preparing the Lens semantic model create a `lens_deployemnt.yml` parallel to the `model` folder.
+    After preparing the semantic model create a `lens_deployemnt.yml` parallel to the `model` folder.
 
     ```yaml
     version: v1alpha
@@ -1442,7 +1441,7 @@ The process begins with creating a new Lens project and generating a data model.
     * **Configure API, Worker, and Metric Settings (Optional):** Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
 
     <Info>
-      Within the Themis and Minerva cluster, all depots (such as Icebase, Redshift, Snowflake, etc.) are integrated. When configuring Lens, you only need to specify one depot in the \`catalog\` field, as Lens can connect to and utilize depots from all sources available in the Themis cluster.
+      Within the Themis and Minerva cluster, all depots (such as Icebase, Redshift, Snowflake, etc.) are integrated. When configuring Lens, you only need to specify one Depot in the \`catalog\` field, as Lens can connect to and utilize depots from all sources available in the Themis cluster.
     </Info>
 
     ## Docker compose manifest file
@@ -1511,7 +1510,7 @@ The process begins with creating a new Lens project and generating a data model.
       <Step title="Load data from the data source" titleSize="h2">
         In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure that only the necessary columns are extracted, and the SQL dialect is specific to the data source.
 
-        For example, a simple data load might look like this:
+        For example, a simple data load might look as follows:
 
         ```sql
         SELECT
@@ -1552,7 +1551,7 @@ The process begins with creating a new Lens project and generating a data model.
 
         ### Add dimensions and measures
 
-        After defining the base table, add the necessary dimensions and measures. For example, to create a table for sales data with measures and dimensions, the YAML definition could look like this:
+        After defining the base table, add the necessary dimensions and measures. For example, to create a table for sales data with measures and dimensions, the YAML definition could look as follows:
 
         ```yaml
         tables:
@@ -1577,7 +1576,7 @@ The process begins with creating a new Lens project and generating a data model.
 
         ### Add segments to filter
 
-        Segments are filters that allow for the application of specific conditions to refine the data analysis. By defining segments, you can focus on particular subsets of data, ensuring that only the relevant records are included in your analysis. For example, to filter for records where the state is either Illinois or Ohio, you can define a segment like this:
+        Segments are filters that allow for the application of specific conditions to refine the data analysis. By defining segments, you can focus on particular subsets of data, ensuring that only the relevant records are included in your analysis. For example, to filter for records where the state is either Illinois or Ohio, you can define a segment as follows:
 
         ```yaml
         segments:
@@ -1610,7 +1609,7 @@ The process begins with creating a new Lens project and generating a data model.
       </Step>
 
       <Step title="Create User groups" titleSize="h2">
-        This YAML manifest file is used to manage access levels for the Lens semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, there is a 'default' user group in the YAML file that includes all users.
+        This YAML manifest file is used to manage access levels for the semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, there is a 'default' user group in the YAML file that includes all users.
 
         ```yaml
         user_groups:
@@ -1625,7 +1624,7 @@ The process begins with creating a new Lens project and generating a data model.
 
     ## Step 2: Create a deployment manifest file
 
-    After preparing the Lens semantic model create a `lens_deployemnt.yml` parallel to the `model` folder.
+    After preparing the semantic model create a `lens_deployemnt.yml` parallel to the `model` folder.
 
     ```yaml
     version: v1alpha
@@ -1713,10 +1712,10 @@ The process begins with creating a new Lens project and generating a data model.
 
     * **Configure API, Worker, and Metric Settings (Optional):** Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
 
-    The above manifest is intended for a cluster named `lenstestingthemis`, created on the themis source, with the depot or data catalog named `icebase`. To use this manifest, copy the file and update the source details accordingly.
+    The above manifest is intended for a cluster named `lenstestingthemis`, created on the themis source, with the Depot or data catalog named `icebase`. To use this manifest, copy the file and update the source details accordingly.
 
     <Info>
-      Within the Themis and Minerva cluster, all depots (such as Icebase, Redshift, Snowflake, etc.) are integrated. When configuring Lens, you only need to specify one depot in the \`catalog\` field, as Lens can connect to and utilize depots from all sources available in the Themis cluster.
+      Within the Themis and Minerva cluster, all depots (such as Icebase, Redshift, Snowflake, etc.) are integrated. When configuring Lens, you only need to specify one Depot in the \`catalog\` field, as Lens can connect to and utilize depots from all sources available in the Themis cluster.
     </Info>
   </Accordion>
 </AccordionGroup>
@@ -1724,19 +1723,19 @@ The process begins with creating a new Lens project and generating a data model.
 ## Query Acceleration
 
 <Accordion title="Flash" defaultOpen={false}>
-  [Flash](/resources/stacks/flash/) is designed to optimize query performance by leveraging in-memory execution. When used with DataOS Lakehouse and Iceberg-format Depots, it enables efficient handling of large-scale queries by reducing latency and optimizing resource usage. The following explains how to configure Lens using Flash.
+  [Flash](https://dataos.info/resources/stacks/flash/) is designed to optimize query performance by leveraging in-memory execution. When used with DataOS Lakehouse and Iceberg-format Depots, it enables efficient handling of large-scale queries by reducing latency and optimizing resource usage. The following explains how to configure Lens using Flash.
 
   ### **Prerequisites**
 
-  To create a Lens using Flash, ensur the Flash service is running and has a Persistent Volume attached. A Persistent Volume allows Flash to spill data to disk, enhancing performance by preventing memory constraints from impacting query execution.
+  To create a Lens using Flash, ensure that the Flash service is running and has a Persistent Volume attached. A Persistent Volume allows Flash to spill data to disk, enhancing performance by preventing memory constraints from impacting query execution.
 
   <Info>
-    Make sure a Persistent volume is attached to the Flash. It helps Flash to spill data over disk, which helps with the performance.
+    Make sure a Persistent volume is attached with the Flash. It helps Flash to spill data over disk, which helps with the performance.
   </Info>
 
   <Steps>
-    <Step title="Create Persistent Volume manifest file">
-      To create a Persistence Volume manifest file, copy  the template below and replace placeholders with desired resource name and the appropriate volume size (e.g., `100Gi`, `20Gi`, etc.), according to your available storage capacity. For the accessMode, you can choose ReadWriteOnce (RWO) for exclusive read-write access by a single node, or ReadOnlyMany (ROX) if the volume needs to be mounted as read-only by multiple nodes.
+    <Step title="Create Persistent Volume manifest file" titleSize="h2">
+      To create a Persistence Volume manifest file copy  the template below and replace with your desired resource name and with the appropriate volume size (e.g., `100Gi`, `20Gi`, etc.), according to your available storage capacity. For the accessMode, you can choose ReadWriteOnce (RWO) for exclusive read-write access by a single node, or ReadOnlyMany (ROX) if the volume needs to be mounted as read-only by multiple nodes.
 
       ```yaml
       name: <name>  # Name of the Resource
@@ -1755,24 +1754,27 @@ The process begins with creating a new Lens project and generating a data model.
       <Note>
         The persistent volume size should be at least 2.5 times the total dataset size, rounded to the nearest multiple of 10. To check the dataset size, use the following query:
 
-        `SELECT sum(total_size) FROM "<catalog>"."<schema>"."<table>;`
+        [](https://dataos.info/resources/lens/data_sources/flash/#__codelineno-1-1)`SELECT sum(total_size) FROM "<catalog>"."<schema>"."<table>$partitions";`
 
         The resultant size will be in the bytes.
       </Note>
     </Step>
 
-    <Step title="Apply the Volume manifest file">
-      Apply the Persistent Volume manifest file, using the following command in terminal:
+    <Step title="Apply the Volume manifest file" titleSize="h2">
+      Deploy the persistent volume using the following `apply` command in terminal:
 
       ```bash
       dataos-ctl apply -f <file path of persistent volume>
+
       ```
 
-      This will deploy the Persistent Volume Resource, making it available for use by Flash Service.
+      [](https://dataos.info/resources/lens/data_sources/flash/#__codelineno-2-1)
+
+      Once deployed the Persistent Volume will be available for use by Flash Service.
     </Step>
 
-    <Step title="Create Service manifest file">
-      Ensure the name of the Persistent Volume you created is referenced correctly in the name attribute of the persistentVolume section. The name used here should match exactly with the name assigned to the Persistent Volume during its creation.
+    <Step title="Create Service manifest file" titleSize="h2">
+      Ensure the name of the Persistent Volume you created is referenced correctly in the name attribute of the persistentVolume section. The name used here should match exactly with the name you assigned to the Persistent Volume during its creation.
 
       ```yaml
       name: flash-service-lens
@@ -1801,41 +1803,41 @@ The process begins with creating a new Lens project and generating a data model.
         stack: flash+python:2.0
 
         stackSpec:
-          datasets:  #views
-            - address: dataos://icebase:sales_360/customer
-              name: f_customer  #view_name
-              
-            - address: dataos://icebase:sales_360/transactions
-              name: f_transactions
-              
-            - address: dataos://icebase:sales_360/products
-              name: f_products
+          datasets:
+            - address: dataos://icebase:sales360/f_sales    #view
+              name: sales
 
-          init:  #tables
-            - > 
-              create table if not exists customer as (select * from f_customer)   
-            - > 
-              create table if not exists transactions as (select * from f_transactions)
-            - > 
-              create table if not exists products as (select * from f_products)      
+            - address: dataos://icebase:sales360/customer_data_master
+              name: customer_data_master
 
+            - address: dataos://icebase:sales360/site_check1
+              name: site_check1
+
+            - address: dataos://icebase:sales360/product_data_master
+              name: product_data_master
+
+          init:
+            - create table if not exists f_sales as (select * from sales)  #table
+            - create table if not exists m_customers as (select * from customer_data_master)
+            - create table if not exists m_sites as (select * from site_check1)
+            - create table if not exists table m_products as (select * from product_data_master)
       ```
 
       ### **How does this process work?**
 
       The flow of Flash operates as follows:
 
-      * **Data loading:** The `datasets` attribute specifies the depot `address` of the source data to be loaded into Flash. A dataset `name` is  provided, which Flash uses to generate a view of the source data.
+      **Data loading:** The `datasets` attribute specifies the depot `address` of the source data to be loaded into Flash. A dataset `name` is  provided, which Flash uses to generate a view of the source data.
 
-      * **View creation:** Flash creates a view based on the assigned name, allowing for interaction with the source data without directly querying it.
+      **View creation:** Flash creates a view based on the assigned name, allowing for interaction with the source data without directly querying it.
 
-      * **Table creation:** The `init` attribute allows specific columns from the generated view to be selected and defined as tables. These tables are available for use in SQL queries within Lens. Tables are created only **if they don’t already exist**, using the `IF NOT EXISTS` clause. If tables are already present, the process **skips creation** and proceeds with the existing schema.
+      **Table creation:** The `init` attribute allows specific columns from the generated view to be selected and defined as tables. These tables are available for use in SQL queries within Lens. Tables are created only **if they don’t already exist**, using the `IF NOT EXISTS` clause. If tables are already present, the process **skips creation** and proceeds with the existing schema.
 
-      * **Usage in Lens model(SQL):**  For example, in the manifest referenced, the `f_sales` table is first loaded from the source, and a view named `sales` is created. A table called `f_sales` is then defined using this sales view. This table is then referenced in SQL models within Lens.
+      **Usage in Lens model(SQL):**  For example, in the manifest referenced, the `f_sales` table is first loaded from the source, and a view named `sales` is created. A table called `f_sales` is then defined using this sales view. This table is then referenced in SQL models within Lens.
     </Step>
 
-    <Step title="Apply the Flash manifest file">
-      To apply the Flash Service configuration, use the following command:
+    <Step title="Apply the Flash manifest file" titleSize="h2">
+      Deploy the Flash Service, using the following `apply` command:
 
       ```yaml
       dataos-ctl apply -f <file path of flash service>
@@ -1845,424 +1847,9 @@ The process begins with creating a new Lens project and generating a data model.
     </Step>
   </Steps>
 
-  ## Step 2  Prepare the semantic model folder
+  ##
 
-  In the model folder, the semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each sub folder contains specific files related to the semantic model. Follow the below steps to prepare the semantic model folder.
-
-  <Steps>
-    <Step title="Load data from the data source" titleSize="h2">
-      In the `sqls/` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure that only the necessary columns are extracted, and the SQL dialect is specific to the data source.&#x20;
-
-      <Note>
-        In case of Flash the name of the table in the `init` attribute will be treated as the data source name.
-      </Note>
-
-
-
-      For example, a simple data load might look like this:
-
-      ```sql
-      SELECT
-        *
-      FROM
-        customer;
-      ```
-
-      Alternatively, you can write more advanced queries that include transformations, such as:
-
-      ```sql
-      SELECT
-        cast(customer_id AS varchar) AS customer_id,
-        first_name,
-        last_name,
-        gender,
-        phone_number,
-        email_id,
-        cast( date_parse(birth_date,'%d-%m-%Y') as timestamp) as birth_date,
-        age,
-        cast(register_date as timestamp) as register_date,
-        occupation,
-        annual_income,
-        city,
-        zip_code
-      FROM
-        customer
-      ```
-    </Step>
-
-    <Step title="Define the table in the model" titleSize="h2">
-      Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For example, to define a table for `sales `data:
-
-      ```yaml
-      table:
-        - name: customers
-          sql: {{ load_sql('customers') }}
-          description: Table containing information about sales transactions.
-      ```
-
-      ### Add dimensions and measures
-
-      After defining the base table, add the necessary dimensions and measures. For example, to create a table for `customer` data with measures and dimensions, the YAML definition could look like this:
-
-      ```yaml
-      tables:
-        - name: sales
-          sql: {{ load_sql('customer') }}
-          description: Table containing sales records with order details.
-
-          dimensions:
-            - name: customer_id
-              type: string
-              description: Unique identifier for each customer.
-              sql: customer_id
-              primary_key : true
-              public : true   
-
-          measures:
-            - name: total_customers
-              sql: customer_id
-              type: count_distinct
-              description: Total number of customers
-      ```
-
-      ### Add segments to filter
-
-      Segments are filters that allow for the application of specific conditions to refine the data analysis. By defining segments, you can focus on particular subsets of data, ensuring that only the relevant records are included in your analysis. For example, to filter for records where the state is either Illinois or Ohio, you can define a segment like this:
-
-      ```yaml
-      segments:
-        - name: state_filter
-          sql: "{TABLE}.state IN ('Illinois', 'Ohio')"
-      ```
-
-      To know more about segments click [here](/resources/lens/working_with_segments/).
-    </Step>
-
-    <Step title="Create views" titleSize="h2">
-      Create a **views** folder to store all logical views, with each view defined in a separate YAML file (e.g., `sample_view.yml`). Each view references dimensions, measures, and segments from multiple logical tables. For instance the following`customer_churn` view is created.
-
-      ```yaml
-      views:
-        - name: customer_churn_prediction
-          description: Contains customer churn information.
-          tables:
-            - join_path: marketing_campaign
-              includes:
-                - engagement_score
-                - customer_id
-            - join_path: customer
-              includes:
-                - country
-                - customer_segments
-      ```
-
-      To know more about the views click [here](/resources/lens/working_with_views/).
-    </Step>
-
-    <Step title="Create user groups" titleSize="h2">
-      The `user_groups.yml` file is responsible for managing access levels within the semantic model. It defines user groups that classify users based on their access privileges.By default, a `default` user group includes all users. You can create custom user groups and assign users accordingly. Below is an example YAML structure:
-
-      ```yaml
-      user_groups:
-        - name: analyst
-          description: Data analyst
-          api_scopes:
-            - meta
-            - graphql
-            - data
-          includes:
-            - users:id:exampleuser
-      ```
-
-      To know more about the User groups click [here](/resources/lens/working_with_user_groups_and_data_policies/)
-
-      ## &#x20;Step 3 Push the model to a hosted code repository
-
-      Push  semantic model directory to a hosted code repository such as  [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/push-code-to-bitbucket/), [GitHub](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github), [AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/getting-started.html) etc.
-
-
-
-      ## Step 4 Create Instance secret manifest file
-
-      Before creating a `lens_deployment.yml`, ensure Instance secret is deployed containing the credentials of a hosted code repository . The `lens_deployment.yml` configuration relies on this repository to fetch the semantic model, making the Instance Secret a critical prerequisite for deployment.
-
-
-
-      <CodeGroup>
-        ```yaml Syntax
-        # RESOURCE META SECTION
-        name: ${bitbucket-r } # Secret Resource name (mandatory)
-        version: v1 # Secret manifest version (mandatory)
-        type: instance-secret # Type of Resource (mandatory)
-        description: Bitbucket read secrets for code repository # Secret Resource description (optional)
-        layer: user # DataOS Layer (optional)
-
-        # INSTANCE SECRET-SPECIFIC SECTION
-        instance-secret: 
-          type: key-value # Type of Instance-secret (mandatory)
-          acl: r # Access control list (mandatory)
-          data: # Data (mandatory)
-            GITSYNC_USERNAME: ${USERNAME}
-            GITSYNC_PASSWORD: ${PASSWORD}
-        ```
-
-        ```yaml Example
-        # RESOURCE META SECTION
-        name: bitbucket-r # Secret Resource name (mandatory)
-        version: v1 # Secret manifest version (mandatory)
-        type: instance-secret # Type of Resource (mandatory)
-        description: Bitbucket read secrets for code repository # Secret Resource description (optional)
-        layer: user # DataOS Layer (optional)
-
-        # INSTANCE SECRET-SPECIFIC SECTION
-        instance-secret: 
-          type: key-value # Type of Instance-secret (mandatory)
-          acl: r # Access control list (mandatory)
-          data: # Data (mandatory)
-            GITSYNC_USERNAME: iamgroot
-            GITSYNC_PASSWORD: <git_token>
-        ```
-      </CodeGroup>
-
-
-
-      **Apply the Instance Secret manifest**
-
-
-
-      Deploy the Instance Secret to DataOS using the `apply` command.
-
-      ```
-      dataos-ctl apply -f ${manifest-file-path}
-      ```
-
-      <Note>
-        Note the name of the Instance-secret created as it is required in the **`secrets`** attribute section of the Lens deployment manifest file.
-      </Note>
-
-
-
-      ## Step 5 Create a Lens deployment manifest file
-
-      Once the semantic model is prepared, create a `lens_deployment.yml` file parallel to the model folder.
-
-
-
-      ```javascript
-      version: v1alpha
-      name: "lens-flash-test-99"
-      layer: user
-      type: lens
-      tags:
-        - lens
-      description: A sample lens that contains three entities, a view and a few measures for users to test
-      lens:
-        compute: runnable-default
-        secrets: # Referred Instance-secret configuration (**mandatory for private code repository, not required for public repository)
-          - name: githubr # Referred Instance Secret name (mandatory)
-            allKeys: true # All keys within the secret are required or not (optional)
-        source:
-          type: flash # minerva, themis and depot
-          name: flash-service-lens # flash service name
-        repo:
-          url: https://github.com/tmdc/sample    # repo address
-          lensBaseDir: sample/source/flash/model     # location where lens models are kept in the repo
-          syncFlags:
-            - --ref=main
-        api:
-          replicas: 1
-          logLevel: debug
-          envs:
-            LENS2_SOURCE_WORKSPACE_NAME: curriculum
-            LENS2_SOURCE_FLASH_PORT: 5433
-          resources: # optional
-            requests:
-              cpu: 100m
-              memory: 256Mi
-            limits:
-              cpu: 2000m
-              memory: 2048Mi
-
-        worker:
-          replicas: 1
-          logLevel: debug
-          envs:
-            LENS2_SOURCE_WORKSPACE_NAME: curriculum
-            LENS2_SOURCE_FLASH_PORT: 5433
-          resources: # optional
-            requests:
-              cpu: 100m
-              memory: 256Mi
-            limits:
-              cpu: 6000m
-              memory: 6048Mi
-
-        router:
-          logLevel: info
-          envs:
-            LENS2_SOURCE_WORKSPACE_NAME: curriculum
-            LENS2_SOURCE_FLASH_PORT: 5433
-          resources: # optional
-            requests:
-              cpu: 100m
-              memory: 256Mi
-            limits:
-              cpu: 6000m
-              memory: 6048Mi
-
-        iris:
-          logLevel: info  
-          envs:
-            LENS2_SOURCE_WORKSPACE_NAME: curriculum
-            LENS2_SOURCE_FLASH_PORT: 5433
-          resources: # optional
-            requests:
-              cpu: 100m
-              memory: 256Mi
-            limits:
-              cpu: 6000m
-              memory: 6048Mi
-      ```
-
-      ## Configuring the Lens deployment manifest file
-
-      To enable Lens to interact with the Flash service, specify the following values in the attributes of the Lens deployment manifest.
-
-      ### **1. Define Flash as the data source**
-
-      Configure the Flash service as the data source in the **`source`** attribute:
-
-      **`source`**
-
-      * **`type`** The source section specifies that Flash is used as the data source (`type: flash`). This indicates that data for the Lens model will be loaded from the Flash service.
-
-      * **`name`**: The Flash service is identified by the `name` attribute, here it is 'flash-service-lens'. This name should match the deployed Flash service used for data ingestion. Below is an example configuration.
-
-      ```
-      source:
-        type: flash  # Specifies the data source type as Flash
-        name: flash-test  # Name of the Flash service
-      ```
-
-      ### 2. **Add environment variables**
-
-      To enable Lens to interact with the Flash service, specify the following environment variables in the Worker, API, and Router sections of the Lens deployment manifest.
-
-
-
-      **`envs`**
-
-      The following environment variables are defined under multiple components, including api, worker, router, and iris
-
-      * **`LENS2_SOURCE_WORKSPACE_NAME`** It refers to the workspace where the Flash service is deployed.
-
-      * **`LENS2_SOURCE_FLASH_PORT`** The port number `5433` is specified for the Flash service. This port is used by Lens to establish communication with the Flash service. It ensures that all components—API, worker, router, and iris—can access the Flash service consistently.
-
-      ```
-      envs:
-        LENS2_SOURCE_WORKSPACE_NAME: public
-        LENS2_SOURCE_FLASH_PORT: 5433
-      ```
-
-      After configuring the Lens manifest will look as follows:
-
-
-
-      ```yaml
-      version: v1alpha
-      name: "lens-flash-test-99"
-      layer: user
-      type: lens
-      tags:
-        - lens
-      description: A sample lens that contains three entities, a view and a few measures for users to test
-      lens:
-        compute: runnable-default
-        secrets: # Referred Instance-secret configuration (**mandatory for private code repository, not required for public repository)
-          - name: githubr # Referred Instance Secret name (mandatory)
-            allKeys: true # All keys within the secret are required or not (optional)
-        source:
-          type: flash # minerva, themis and depot
-          name: flash-service-lens # flash service name
-        repo:
-          url: https://github.com/tmdc/sample    # repo address
-          lensBaseDir: sample/source/flash/model     # location where lens models are kept in the repo
-          syncFlags:
-            - --ref=main
-        api:
-          replicas: 1
-          logLevel: debug
-          envs:
-            LENS2_SOURCE_WORKSPACE_NAME: curriculum
-            LENS2_SOURCE_FLASH_PORT: 5433
-          resources: # optional
-            requests:
-              cpu: 100m
-              memory: 256Mi
-            limits:
-              cpu: 2000m
-              memory: 2048Mi
-
-        worker:
-          replicas: 1
-          logLevel: debug
-          envs:
-            LENS2_SOURCE_WORKSPACE_NAME: curriculum
-            LENS2_SOURCE_FLASH_PORT: 5433
-          resources: # optional
-            requests:
-              cpu: 100m
-              memory: 256Mi
-            limits:
-              cpu: 6000m
-              memory: 6048Mi
-
-        router:
-          logLevel: info
-          envs:
-            LENS2_SOURCE_WORKSPACE_NAME: curriculum
-            LENS2_SOURCE_FLASH_PORT: 5433
-          resources: # optional
-            requests:
-              cpu: 100m
-              memory: 256Mi
-            limits:
-              cpu: 6000m
-              memory: 6048Mi
-
-        iris:
-          logLevel: info  
-          envs:
-            LENS2_SOURCE_WORKSPACE_NAME: curriculum
-            LENS2_SOURCE_FLASH_PORT: 5433
-          resources: # optional
-            requests:
-              cpu: 100m
-              memory: 256Mi
-            limits:
-              cpu: 6000m
-              memory: 6048Mi
-      ```
-
-      ## Step 6 Apply Lens manifest file
-
-      Deploy the Lens to DataOS using the `apply` command.
-
-      /
-
-      ```
-      dataos-ctl apply -f {manifest-file-path}
-      ```
-
-
-
-
-
-
-
-
-    </Step>
-  </Steps>
+  ## Step 2 Creat
 </Accordion>
 
 ##
@@ -2415,17 +2002,17 @@ After creating a Lens data model, the next step is to consume it—this means in
 
             ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Untitled%20\(15\).png)
 
-            The folder contains the main components of a Power BI project for syncing the Lens model (here `sales360`) including folders like the `.Report` and `.SemanticModel`. Following is the brief description of each:
+            The folder contains the main components of a Power BI project for syncing the Lens model (here `sales360`) including folders such as the `.Report` and `.SemanticModel`. Following is the brief description of each:
 
             * **public\_sales360-table.Report:** This folder contains `definition.pbir` file related to the report definition in Power BI. These files define the visual representation of data, such as tables and charts, without storing actual data. They connect the semantic model and data sources to create the report views.
 
             * **public-sales360-table.SemanticModel:** This folder contains files that define the underlying data model for your Power BI project. The semantic model plays a crucial role in managing how Power BI interacts with data, setting up relationships, hierarchies, and measures.
 
-              * **definition.bism:** This file represents the Business Intelligence Semantic Model (BISM). It defines the structure of your data, including data sources, relationships, tables, and measures for your Lens semantic model. The `.bism` file holds essential metadata that helps Power BI understand and query the data, forming the core of the data model for report creation and analysis.
+              * **definition.bism:** This file represents the Business Intelligence Semantic Model (BISM). It defines the structure of your data, including data sources, relationships, tables, and measures for your semantic model. The `.bism` file holds essential metadata that helps Power BI understand and query the data, forming the core of the data model for report creation and analysis.
 
               * **model.bim:** Power BI uses the `.bim` file to generate queries and manage interactions with the dataset. When you build reports or dashboards in Power BI, it references this semantic model to ensure the correct structure is applied to the data.
 
-            * **public-sales-360-table.pbip:** This file serves as a Power BI project template or configuration file. Power BI uses files like `.pbip` or `.pbix` to encapsulate reports, datasets, and visualizations. The `.pbip` file ties together the semantic model and report definitions from the other folders, acting as the entry point for working on the project in Power BI Desktop or the Power BI service.
+            * **public-sales-360-table.pbip:** This file serves as a Power BI project template or configuration file. Power BI uses files `.pbip` or `.pbix` to encapsulate reports, datasets, and visualizations. The `.pbip` file ties together the semantic model and report definitions from the other folders, acting as the entry point for working on the project in Power BI Desktop or the Power BI service.
           </Step>
 
           <Step title="Enter credentials" titleSize="h2">
@@ -2483,7 +2070,7 @@ After creating a Lens data model, the next step is to consume it—this means in
         To sync the semantic model with Tableau, follow the steps below:
 
         <Steps>
-          <Step title="Run the curl command">
+          <Step title="Run the curl command" titleSize="h2">
             Open the terminal and run the following command. Make sure to replace the placeholders with the actual credentials.
 
             <CodeGroup>
@@ -2524,7 +2111,7 @@ After creating a Lens data model, the next step is to consume it—this means in
 
             **Headers:**
 
-            1. **`apikey`:** User's API key for the current context in Lens. The DataOS API key for the user can be obtained by executing the below command.
+            1. **`apikey`:** User's API key for the current context in Lens. The DataOS API key for the user can be obtained by executing the below command:
 
             ```
             dataos-ctl user apikey get
@@ -2547,19 +2134,19 @@ After creating a Lens data model, the next step is to consume it—this means in
             As you run the command the sync process starts. To view the semantic model in the &#x20;
           </Step>
 
-          <Step title="Login to Tableau">
+          <Step title="Login to Tableau" titleSize="h2">
             Login to your Tableau account and navigate to  'Explore' tab on the left side of the Tableau homepage. The required tables and views will be visible in the project. Here you will see three sources: one for tables and two for views.
 
             ![Superset Configuration](https://dataos.info/resources/lens/bi_integration/tableau1.png)
           </Step>
 
-          <Step title="Create new workbook">
+          <Step title="Create new workbook" titleSize="h2">
              Navigate to the Home tab on the left side and click on 'New'. Under this option, select 'Workbook' as shown in the below image.
 
             ![Superset Configuration](https://dataos.info/resources/lens/bi_integration/tableau2.png)
           </Step>
 
-          <Step title="Connect to data">
+          <Step title="Connect to data" titleSize="h2">
             After selecting 'Workbook', the 'Connect to Data' page will appear. Choose the desired views or tables for exploration or consumption, then click 'Connect' to proceed.
 
             ![Superset Configuration](https://dataos.info/resources/lens/bi_integration/tableau3.png)
@@ -2599,7 +2186,7 @@ After creating a Lens data model, the next step is to consume it—this means in
             ```
           </Step>
 
-          <Step title="Create dashboards">
+          <Step title="Create dashboards" titleSize="h2">
             After entering the credentials and clicking on 'Sign In', the model will be ready for visualization purposes.
 
             ![Superset Configuration](https://dataos.info/resources/lens/bi_integration/tableau5.png)
@@ -2635,7 +2222,7 @@ After creating a Lens data model, the next step is to consume it—this means in
 
         **1. Handling Entities without Relationships:** An error will occur during synchronization if any entity in the data model lacks a defined relationship. To resolve this issue, the entity can be hidden to avoid synchronization errors.
 
-        **2. Live connection:** The connection between the Lens semantic layer and Tableau Cloud is live meaning that any changes to the underlying data will automatically be reflected in Tableau.
+        **2. Live connection:** The connection between the semantic layer and Tableau Cloud is live meaning that any changes to the underlying data will automatically be reflected in Tableau.
 
         **3. Schema changes:** If there are schema updates, such as adding new dimensions or measures, the integration steps will need to be repeated to incorporate these changes into Tableau.
 
@@ -2673,7 +2260,7 @@ After creating a Lens data model, the next step is to consume it—this means in
 
         **Scenario 1: Handling syntactical errors in measures or dimensions**
 
-        If a measure or dimension contains a syntactical error (and is also not functioning in Explore studio of DPH), the following error will appear when attempting to select it:
+        If a measure or dimension contains a syntactical error (and is also not functioning in Explore studio of Data Product Hub), the following error will appear when attempting to select it:
 
         ![Superset Configuration](https://dataos.info/resources/lens/bi_integration/image02.png)
 
@@ -2706,25 +2293,25 @@ After creating a Lens data model, the next step is to consume it—this means in
 
       <Tab title="Using Data Product Hub ">
         <Steps>
-          <Step title=" Navigate to the Data Product Hub">
+          <Step title=" Navigate to the Data Product Hub" titleSize="h2">
             Access the Home Page of DataOS. From the home page, navigate to the Data Product Hub to explore the various Data Products available.
 
             ![](/image.png)
           </Step>
 
-          <Step title="Browse and select a Data Product">
+          <Step title="Browse and select a Data Product" titleSize="h2">
             Browse through the list of available Data Products. Select a specific Data Product to integrate with Tableau. For instance, **Product 360** can be chosen to explore the Data Product on Tableau for data visualisation and getting insights.
 
             ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau0.png)
           </Step>
 
-          <Step title="Navigate to the Access Options tab">
+          <Step title="Navigate to the Access Options tab" titleSize="h2">
             After selecting a Data Product, navigate to the **BI Sync** option in the **Access Options** tab. Scroll through the BI Sync and locate the **Tableau Cloud** option. Now, Click on the **Add Connection** button
 
             ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau1.png)
           </Step>
 
-          <Step title="Enter connection details and click Activate button">
+          <Step title="Enter connection details and click Activate button" titleSize="h2">
             A connection window will open, prompting the entry of the necessary connection details. There are following two ways to pass the connection details:
 
             <Tabs>
@@ -2772,49 +2359,49 @@ After creating a Lens data model, the next step is to consume it—this means in
         Once the sync is successful, the data source is published to the Tableau cloud/server:
 
         <Steps>
-          <Step title="Log in to Tableau Cloud">
+          <Step title="Log in to Tableau Cloud" titleSize="h2">
             Users should log in to Tableau Cloud using the same credentials of Tableau. This will redirect to the Tableau Cloud home page.
 
             ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau5.png)
           </Step>
 
-          <Step title="Manage projects">
+          <Step title="Manage projects" titleSize="h2">
             Click on the Manage Projects option on the home page.
 
             ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/image%20\(13\).png)
           </Step>
 
-          <Step title="Access the project interface">
+          <Step title="Access the project interface" titleSize="h2">
             This will open an interface displaying all projects, including the newly created project titled **Product Analysis**.
 
             ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau5.1.png)
           </Step>
 
-          <Step title="Select the project">
+          <Step title="Select the project" titleSize="h2">
             Click on the project to view the available data sources for dashboard creation. This project will contains semantic model and all it's views (entities and metrics).
 
             ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau5.2.png)
           </Step>
 
-          <Step title="Create a new workbook">
+          <Step title="Create a new workbook" titleSize="h2">
             Click on the menu option in the upper right corner of the data source and select the New Workbook option.
 
             ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau6.png)
           </Step>
 
-          <Step title="Provide credentials">
+          <Step title="Provide credentials" titleSize="h2">
             To create a new workbook where dashboard creation can commence, users will be prompted to provide their DataOS username and API key as the password to access the data source. The API can be retrieved by navigating to the profile page in the bottom left corner of the Data Product Hub.
 
             ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/Tabelau7.png)
           </Step>
 
-          <Step title="Start creating the dashboard">
+          <Step title="Start creating the dashboard" titleSize="h2">
             Now, users can create dashboard and extract relevant insights.
 
             ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/tableau8.png)
           </Step>
 
-          <Step title="Publishing workbook/dashboard">
+          <Step title="Publishing workbook/dashboard" titleSize="h2">
             The publisher can embed their credentials (DataOS username and API Token) or ask users to provide credentials whenever they want to access the published Workbook/Sheet/Dashboard. If the publisher has chosen to ‘Embed password for data source’, users can access the published workbook and dashboard without providing credentials.
 
             <Note>
@@ -2842,7 +2429,7 @@ After creating a Lens data model, the next step is to consume it—this means in
         To sync the Lens model with Superset, follow these steps:
 
         <Steps>
-          <Step title="Run the curl command">
+          <Step title="Run the curl command" titleSize="h2">
             Copy the curl command syntax below and replace the placeholders with the actual values.
 
             <CodeGroup>
@@ -2894,13 +2481,13 @@ After creating a Lens data model, the next step is to consume it—this means in
             Once the command is executed in the terminal, results will be visible in the Superset app as demonstrated below:
           </Step>
 
-          <Step title="Go to DataOS">
+          <Step title="Go to DataOS" titleSize="h2">
             Go to DataOS and select Superset.
 
             ![Superset Configuration](https://dataos.info/resources/lens/bi_integration/superset2.png)
           </Step>
 
-          <Step title=" Navigate to Datasets tab">
+          <Step title=" Navigate to Datasets tab" titleSize="h2">
             Here, each entity will appear as a dataset.
 
             ![Superset Configuration](https://dataos.info/resources/lens/bi_integration/superset3.png)
@@ -2916,19 +2503,19 @@ After creating a Lens data model, the next step is to consume it—this means in
 
       <Tab title="Using Data Product Hub">
         <Steps>
-          <Step title="Access Superset Integration">
+          <Step title="Access Superset Integration" titleSize="h2">
             Go to the 'Access Options' tab for your Data product in Data Product Hub. Under the 'BI Sync' section, locate the 'Superset' option.
 
             ![superset\_sync.png](https://dataos.info/learn/dp_consumer_learn_track/integrate_bi_tools/superset/superset_sync.png)
           </Step>
 
-          <Step title="Initiate the Connection">
+          <Step title="Initiate the Connection" titleSize="h2">
             Click on 'Add Connection' under the Superset option. This action will open a new window where you’ll enter your credentials to link DataOS with Superset.
 
             ![superset\_conn.png](https://dataos.info/learn/dp_consumer_learn_track/integrate_bi_tools/superset/superset_conn.png)
           </Step>
 
-          <Step title="Enter Superset Credentials">
+          <Step title="Enter Superset Credentials" titleSize="h2">
             In the setup window, fill in the required credentials:
 
             * **Username**: The Superset account username.
@@ -2940,13 +2527,13 @@ After creating a Lens data model, the next step is to consume it—this means in
             </Info>
           </Step>
 
-          <Step title="Activate the Data Product">
+          <Step title="Activate the Data Product" titleSize="h2">
             Once you’ve entered all the credentials, click 'Activate' to complete the setup. This will link the *Product Affinity* semantic model with Superset.
 
             ![superset-connections.png](https://dataos.info/learn/dp_consumer_learn_track/integrate_bi_tools/superset/superset-connections.png)
           </Step>
 
-          <Step title="Access Data Product in Superset">
+          <Step title="Access Data Product in Superset" titleSize="h2">
             After activation, go to the DataOS homepage. Scroll to the 'Apache Superset' section, click on 'Datasets', and locate your activated data product available as datasets. You’re now ready to start visualizing and building analytical dashboards.
           </Step>
         </Steps>
@@ -2961,7 +2548,7 @@ The [GraphQL guide](/resources/lens/exploration_of_deployed_lens_using_graphql/)
 
 ### Python
 
-Lens supports interaction through Python, allowing you to use libraries like requests for making API calls and handling responses programmatically. This method is ideal for more complex queries and automation tasks. For detailed instructions on setting up and using Python with Lens, refer to the full [**Python API guide**.](/resources/lens/exploration_of_deployed_lens_using_python/)
+Lens supports interaction through Python, allowing you to use libraries such as requests for making API calls and handling responses programmatically. This method is ideal for more complex queries and automation tasks. For detailed instructions on setting up and using Python with Lens, refer to the full [**Python API guide**.](/resources/lens/exploration_of_deployed_lens_using_python/)
 
 ### REST APIs
 
@@ -2971,15 +2558,15 @@ Lens offers a REST API for querying data, retrieving metadata, and managing reso
 
 Lens provides a PostgreSQL-compatible interface, enabling you to interact with the semantic model using standard PostgreSQL syntax. For detailed guidance on how to set up and use SQL APIs with Lens, refer to the full [**SQL API guide**](/resources/lens/expoloration_of_lens_using_sql_api/).
 
-## How to do data modeling in the semantic model built using Lens?
+## Semantic modelling in Lens
 
-Data modeling is the process of defining and structuring raw data into organized and meaningful business definitions. It involves creating logical schemas, relationships, and aggregations to represent how data is stored, processed, and accessed. Click [here](/resources/lens/concepts/) to learn more about the Data modeling concepts.
+Semantic data modeling is the process of defining and structuring raw data into organized and meaningful business definitions. It involves creating logical schemas, relationships, and aggregations to represent how data is stored, processed, and accessed. Click [here](/resources/lens/concepts/) to learn more about the Data modeling concepts.
 
-## How to configure a semantic model built using Lens?
+## Configure Lens deployment manifest file
 
-The Lens can be configured to connect to different sources using data source attributes and configurable attributes in the`lens_deployment.yml` manifest files. Here is a [comprehensive ](https://dataosinfo.mintlify.app/resources/lens/lens_manifest_attributes/) supported properties.
+The Lens can be configured to connect to different sources using data source attributes and configurable attributes in the`lens_deployment.yml` manifest files. For a comprehensive list of supported properties, please [click here](/resources/lens/lens_manifest_attributes/).
 
-## How to observe and monitor a semantic model built using Lens?
+## Observability
 
 Monitoring in Lens operates at three levels, each focusing on different aspects of system performance and reliability.
 
@@ -2989,23 +2576,23 @@ Monitoring in Lens operates at three levels, each focusing on different aspects 
 
 3. **Infrastructure monitoring:** Infrastructure powered by Grafana, focuses on the underlying system infrastructure, tracking server health, memory usage, and overall system stability.
 
-## How to govern a semantic model built using Lens?
+## Governance
 
 Data governance in DataOS is structured across three layers to protect and control sensitive information:
 
-* **Physical data layer:** Governance policies are applied directly at the physical data layer, where the data resides in sources such as BigQuery, Postgres, Snowflake, Lakehouse, or other data storage platforms. These policies enforce data protection at the source, controlling access and masking sensitive information before it is processed or exposed further.&#x20;
+* **Physical data layer:** Governance policies are applied directly at the physical data layer, where the data resides in sources such as BigQuery, Postgres, Snowflake, or other data storage platforms. These policies enforce data protection at the source, controlling access and masking sensitive information before it is processed or exposed further. To know about how to govern the Lens click here.
 
 * &#x20;**Model-first Data Product layer:** At this layer, governance policies are applied to the semantic model (Lens) derived from the underlying source tables. To manage access effectively [**user groups**](/resources/lens/working_with_user_groups/) are used to define different levels of exploration permissions within Lens.&#x20;
 
-* **Activation layer (BI tool):** Governance at the activation layer focuses on enforcing data protection within the Business Intelligence (BI) tool. This ensures that sensitive data remains masked or restricted based on user roles when presented through dashboards or reports, controlling how the data is accessed and displayed in the final interface.
+* **Activation layer:** Governance at the activation layer focuses on enforcing data protection within the Business Intelligence (BI) tool. This ensures that sensitive data remains masked or restricted based on user roles when presented through dashboards or reports, controlling how the data is accessed and displayed in the final interface.
 
 ## How to catalog a semantic model built using Lens?
 
-The metadata of a semantic model (Lens Resource) is cataloged in Metis, which stores historical runtime and operations data in the Metis DB. This cataloging provides an aggregated view of metadata, enabling access to historical and operational insights about Resources. To learn more about how to catalog semantic models and Lens Resources click here
+The metadata of a semantic model or Lens Resource is cataloged in Metis, which stores historical runtime and operations data in the Metis DB. This cataloging provides an aggregated view of metadata, enabling access to historical and operational insights about Resources. To learn more about how to catalog semantic models and Lens Resources click here
 
 ## Optimize the query performance of a semantic model using Flash
 
-The Lens semantic layer provides several optimization techniques that can significantly enhance the performance of data queries. [This page](/resources/lens/fine_tuning_a_lens_model/) explores strategies for optimizing query performance for maximum efficiency.
+The semantic layer provides several optimization techniques that can significantly enhance the performance of data queries. [This page](/resources/lens/fine_tuning_a_lens_model/) explores strategies for optimizing query performance for maximum efficiency.
 
 ## Best practices
 
