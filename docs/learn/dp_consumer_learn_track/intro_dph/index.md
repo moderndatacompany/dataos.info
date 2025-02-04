@@ -52,6 +52,11 @@ Click any Perspective to be redirected to the Data Product’s Explore page. Fur
 
 ![intro_explore.png](/learn/dp_consumer_learn_track/intro_dph/intro_explore.png)
 
+## FAQs
+
+**Q1: How can you use Metrics in the Data Product Hub for data-driven decision-making?**
+The Data Product Hub serves as a centralized place where you can access and analyze all your essential business metrics. It offers a unified, data-driven view of your organization's performance, enabling you to make well-informed decisions.
+
 ## Next step
 
 To discover the Data Products of interest that can solve your use case, refer to the next module:
