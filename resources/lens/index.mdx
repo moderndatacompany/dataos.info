@@ -31,7 +31,7 @@ Lens is engineered to handle complex and large-scale data models with ease. Key 
 
 * **Performance optimization through Flash:** Designed to work with DataOS Lakehouse and Iceberg-format depots, [Flash](/resources/stacks/flash/) improves query performance by leveraging in-memory execution. This optimization ensures that data teams can efficiently handle large-scale queries with enhanced speed and performance.
 
-## How to build a Semantic model using Lens?
+## How to build a semantic model using Lens?
 
 The process begins with creating a new Lens project and generating a data model. Once the model is prepared, it will be tested within the development environment to ensure it is error-free before deployment.
 
@@ -1207,7 +1207,7 @@ The process begins with creating a new Lens project and generating a data model.
   </Accordion>
 </AccordionGroup>
 
-### Multi source
+### Multi-source
 
 <AccordionGroup>
   <Accordion title="Minerva" defaultOpen={false}>
@@ -1720,6 +1720,140 @@ The process begins with creating a new Lens project and generating a data model.
     </Info>
   </Accordion>
 </AccordionGroup>
+
+## Query Acceleration
+
+<Accordion title="Flash" defaultOpen={false}>
+  [Flash](https://dataos.info/resources/stacks/flash/) is designed to optimize query performance by leveraging in-memory execution. When used with DataOS Lakehouse and Iceberg-format Depots, it enables efficient handling of large-scale queries by reducing latency and optimizing resource usage. The following explains how to configure Lens using Flash.
+
+  ### **Prerequisites**
+
+  To create a Lens using Flash, ensure that the Flash service is running and has a Persistent Volume attached. A Persistent Volume allows Flash to spill data to disk, enhancing performance by preventing memory constraints from impacting query execution.
+
+  <Info>
+    Make sure a Persistent volume is attached with the Flash. It helps Flash to spill data over disk, which helps with the performance.
+  </Info>
+
+  <Steps>
+    <Step title="Create Persistent Volume manifest file">
+      To create a Persistence Volume manifest file copy  the template below and replace with your desired resource name and with the appropriate volume size (e.g., `100Gi`, `20Gi`, etc.), according to your available storage capacity. For the accessMode, you can choose ReadWriteOnce (RWO) for exclusive read-write access by a single node, or ReadOnlyMany (ROX) if the volume needs to be mounted as read-only by multiple nodes.
+
+      ```yaml
+      name: <name>  # Name of the Resource
+      version: v1beta  # Manifest version of the Resource
+      type: volume  # Type of Resource
+      tags:  # Tags for categorizing the Resource
+        - volume
+      description: Common attributes applicable to all DataOS Resources
+      layer: user
+      volume:
+        size: <size>  # Example: 100Gi, 50Mi, 10Ti, 500Mi, 20Gi
+        accessMode: <accessMode>  # Example: ReadWriteOnce, ReadOnlyMany
+        type: temp
+      ```
+
+      <Note>
+        The persistent volume size should be at least 2.5 times the total dataset size, rounded to the nearest multiple of 10. To check the dataset size, use the following query:
+
+        [](https://dataos.info/resources/lens/data_sources/flash/#__codelineno-1-1)`SELECT sum(total_size) FROM "<catalog>"."<schema>"."<table>$partitions";`
+
+        The resultant size will be in the bytes.
+      </Note>
+    </Step>
+
+    <Step title="Apply the Volume manifest file">
+      Apply the persistent volume manifest file, using the following command in terminal:
+
+      ```bash
+      dataos-ctl apply -f <file path of persistent volume>
+
+      ```
+
+      [](https://dataos.info/resources/lens/data_sources/flash/#__codelineno-2-1)
+
+      This will deploy the Persistent Volume Resource, making it available for use by Flash Service.
+    </Step>
+
+    <Step title="Create Service manifest file">
+      Ensure the name of the Persistent Volume you created is referenced correctly in the name attribute of the persistentVolume section. The name used here should match exactly with the name you assigned to the Persistent Volume during its creation.
+
+      ```yaml
+      name: flash-service-lens
+      version: v1
+      type: service
+      tags:
+        - service
+      description: flash service
+      workspace: curriculum
+      service:
+        servicePort: 5433
+        replicas: 1
+        logLevel: info
+
+        compute: runnable-default
+
+        resources:
+          requests:
+            cpu: 1000m
+            memory: 1024Mi
+
+        persistentVolume:
+          name: <persistent_volume_name>
+          directory: p_volume
+
+        stack: flash+python:2.0
+
+        stackSpec:
+          datasets:
+            - address: dataos://icebase:sales360/f_sales    #view
+              name: sales
+
+            - address: dataos://icebase:sales360/customer_data_master
+              name: customer_data_master
+
+            - address: dataos://icebase:sales360/site_check1
+              name: site_check1
+
+            - address: dataos://icebase:sales360/product_data_master
+              name: product_data_master
+
+          init:
+            - create table if not exists f_sales as (select * from sales)  #table
+            - create table if not exists m_customers as (select * from customer_data_master)
+            - create table if not exists m_sites as (select * from site_check1)
+            - create table if not exists table m_products as (select * from product_data_master)
+      ```
+
+      ### **How does this process work?**
+
+      The flow of Flash operates as follows:
+
+      **Data loading:** The `datasets` attribute specifies the depot `address` of the source data to be loaded into Flash. A dataset `name` is  provided, which Flash uses to generate a view of the source data.
+
+      **View creation:** Flash creates a view based on the assigned name, allowing for interaction with the source data without directly querying it.
+
+      **Table creation:** The `init` attribute allows specific columns from the generated view to be selected and defined as tables. These tables are available for use in SQL queries within Lens. Tables are created only **if they don’t already exist**, using the `IF NOT EXISTS` clause. If tables are already present, the process **skips creation** and proceeds with the existing schema.
+
+      **Usage in Lens model(SQL):**  For example, in the manifest referenced, the `f_sales` table is first loaded from the source, and a view named `sales` is created. A table called `f_sales` is then defined using this sales view. This table is then referenced in SQL models within Lens.
+    </Step>
+
+    <Step title="Apply the Flash manifest file">
+      To apply the Flash Service configuration, use the following command:
+
+      ```yaml
+      dataos-ctl apply -f <file path of flash service>
+      ```
+
+      This will deploy the  Flash Service ready to be used as source in Lens.
+    </Step>
+  </Steps>
+
+  ##
+
+  ## Step 2&#x20;
+</Accordion>
+
+##
 
 <Info>
   🗣️ If working with Lens 1.0 interface, click [here](/interfaces/lens/).
@@ -2461,7 +2595,7 @@ The metadata of a semantic model (Lens Resource) is cataloged in Metis, which st
 
 The Lens semantic layer provides several optimization techniques that can significantly enhance the performance of data queries. [This page](/resources/lens/fine_tuning_a_lens_model/) explores strategies for optimizing query performance for maximum efficiency.
 
-## Best Practices
+## Best practices
 
 Click [here](/resources/lens/dos_and_donts/) to explore recommended guidelines and techniques to create efficient and scalable data models, along with a concise list of do's and don'ts.&#x20;
 
