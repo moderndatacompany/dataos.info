@@ -1208,6 +1208,8 @@ The process begins with creating a new Lens project and generating a data model.
 
 <AccordionGroup>
   <Accordion title="Minerva" defaultOpen={false}>
+    Minerva is a federated query engine that allows users to run queries across multiple, distributed data sources as if they were a single, unified database. Instead of moving or consolidating data into one location, the federated query engine enables querying of data where it resides, across various databases, data warehouses, or even cloud platforms, without needing to replicate or centralize the data.
+
     ## Prerequisite
 
     Ensure you have an active and running Minerva Cluster.
@@ -1485,6 +1487,10 @@ The process begins with creating a new Lens project and generating a data model.
   </Accordion>
 
   <Accordion title="Themis" defaultOpen={false}>
+
+
+    Themis is a federated query engine that allows users to run queries across multiple, distributed data sources as if they were a single, unified database. Instead of moving or consolidating data into one location, the federated query engine enables querying of data where it resides, across various databases, data warehouses, or even cloud platforms, without needing to replicate or centralize the data.
+
     ## Prerequisites
 
     Ensure you have an active and running Minerva Cluster.
@@ -1849,8 +1855,6 @@ The process begins with creating a new Lens project and generating a data model.
 
   In the Model folder, the semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each subfolder contains specific files related to the Lens model. You can download the Lens template to quickly get started.
 
-
-
   [lens template](/resources/lens/lens_model_folder_setup/lens-project-template.zip)
 
   <Steps>
@@ -2158,7 +2162,7 @@ The process begins with creating a new Lens project and generating a data model.
 
 ## How to consume the semantic model?
 
-After creating a Lens data model, the next step is to consume it—this means interacting with the model by running queries. The following section explains the key concepts for querying Lens through various methods, though all queries follow the same general format. Multiple ways are available to explore or interact with the Lens model or its underlying data, allowing you to ask meaningful questions of the data and retrieve valuable insights. Exploration can be performed using the following methods:
+After creating a Lens data model, the next step is to consume it—this means interacting with the model by running queries. The following section explains the key concepts for querying Lens through various methods, though all queries follow the same general format. Multiple ways are available to explore or interact with the Lens model or its underlying data, allowing you to ask meaningful questions about the data and retrieve valuable insights. Exploration can be performed using the following methods:
 
 ### BI Tools
 
@@ -2878,7 +2882,7 @@ Monitoring in Lens operates at three levels, each focusing on different aspects 
 
 Data governance in DataOS is structured across three layers to protect and control sensitive information:
 
-* **Physical data layer:** Governance policies are applied directly at the physical data layer, where the data resides in sources such as BigQuery, Postgres, Snowflake, or other data storage platforms. These policies enforce data protection at the source, controlling access and masking sensitive information before it is processed or exposed further. To know about how to govern the Lens click here.
+* **Physical data layer:** Governance policies are applied directly at the physical data layer, where the data resides in sources such as BigQuery, Postgres, Snowflake, or other data storage platforms. These policies enforce data protection at the source, controlling access and masking sensitive information before it is processed or exposed further. To know about how to govern the Lens click [here](/resources/lens/governance/).
 
 * &#x20;**Model-first Data Product layer:** At this layer, governance policies are applied to the semantic model (Lens) derived from the underlying source tables. To manage access effectively [**user groups**](/resources/lens/working_with_user_groups/) are used to define different levels of exploration permissions within Lens.&#x20;
 
