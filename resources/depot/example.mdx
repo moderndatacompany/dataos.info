@@ -8,48 +8,48 @@ A financial services company aims to leverage its customer data for credit card 
 
 ## **Steps for Integration**
 
-1. **Create an Instance Secret**
-   &#x20;
-   To create a Depot for data connection, first create an Instance Secret Resource to securely store the credentials of MSSQL.<CodeGroup>
-     ```
-     name: ${mssql-depot-name}-r # Unique identifier for Resource, replace ${mssql-depot-name} with depot name
+1. **Create an Instance Secret**To create a Depot for data connection, first create an Instance Secret Resource to securely store the credentials of MSSQL.
+
+   <CodeGroup>
+     ```yaml Read-only instance-secret
+     name: mssqldepot-r 
      version: v1 # Manifest version
      type: instance-secret # Type of the Resource
-     description: ${description} # Purpose of the Instance-secret
+     description: an instance secret for mssql # Purpose of the Instance-secret
      layer: user # DataOS layer
      instance-secret:
        type: key-value-properties # Secret type
        acl: r # Access control: 'r' for read-only
        data:
-         username: ${username} # replace with MsSQL username
-         password: ${password} # replace with MsSQL password
+         username: db-user 
+         password: 45678 
 
      ```
 
-     ```
-     name: ${mssql-depot-name}-rw # Unique identifier for Resource, replace ${mssql-depot-name} with depot name
+     ```yaml Read-write instance secret
+     name: mssqldepot-rw 
      version: v1 # Manifest version
      type: instance-secret # Type of the Resource
-     description: ${description} # Purpose of the Instance-secret
+     description: an instance secret for mssql # Purpose of the Instance-secret
      layer: user # DataOS layer
      instance-secret:
        type: key-value-properties # Secret type
        acl: rw # Access control: 'rw' for read-write
        data:
-         username: ${username} # replace with MsSQL username
-         password: ${password} # replace with MsSQL password
+         username: db-user 
+         password: 45678 
      ```
    </CodeGroup>
 
-2. **Create a Depot manifest file**:
+3. **Create a Depot manifest file**:
 
    * Within the Data Product pipeline (`wf-customer-overview-pipeline`), the customer overview data undergoes transformation to match the structure needed by the FS Accelerator Data Product. This ensures consistency in the data's format, particularly for customer identifiers and attributes.
 
-3. **Apply the Depot manifest file**:
+4. **Apply the Depot manifest file**:
 
    * After transformation, the data is loaded into the FS Accelerator Data Product, where it is kept live and continuously updated. The new dataset is stored at `dataos://icebasetw:fs_accelerator/customer_overview_dp`, ready for use in any downstream applications.
 
-4. **Validate the Depot**:
+5. **Validate the Depot**:
 
    * The FS Accelerator Data Product now contains an updated set of customer data. This information is available for consumption by other systems, such as those involved in credit card cross-selling, or any operational systems that require a consolidated and accurate view of customers.
 
