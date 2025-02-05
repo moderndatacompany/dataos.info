@@ -12,7 +12,9 @@ A Customer Insights Data Product development requires access to a PostgreSQL dat
 ## **Steps to Implement**
 
 1. **Create an Instance Secret manifest file**
-   Create an Instance Secret to securely store the database connection credentials of PostgreSQL:<CodeGroup>
+   Create an Instance Secret to securely store the database connection credentials of PostgreSQL:
+
+   <CodeGroup>
      ```yaml Read-only instance secret
      # PostgresSQL Read Instance-secret Manifest
 
@@ -47,11 +49,15 @@ A Customer Insights Data Product development requires access to a PostgreSQL dat
      ```
    </CodeGroup>
 
-2. **Apply the Instance Secret using DataOS CLI**```bash
+3. **Apply the Instance Secret using DataOS CLI**
+
+   ```bash
    dataos apply -f db-secret.yaml
    ```
 
-3. **Refer to the Instance Secret in the Depot Manifest**```
+5. **Refer to the Instance Secret in the Depot Manifest**
+
+   ```
    name: ${{postgresdb}}
    version: v2alpha
    type: depot
