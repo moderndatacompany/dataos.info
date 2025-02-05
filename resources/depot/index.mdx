@@ -5,7 +5,7 @@ sidebarTitle: "What is a Depot?"
 ---
 
 <Tip>
-  ### **Depot in the Data Product Lifecycle**
+  ### **Depot in the Data Product lifecycle**
 
   In the Data Product Lifecycle, a Depot in DataOS serves as a foundational Resource for integrating, accessing, and managing data from various sources without physically moving it. It abstracts the complexities of different storage and database systems, ensuring seamless and secure data access for building and operating Data Products.
 
@@ -280,11 +280,7 @@ This section involves steps for creating a Depot for different data sources supp
         icebergCatalogType: Hive
     ```
 
-    If you do not mention the catalog name as Hive, it will use Hadoop as the default catalog for Iceberg format.
-
-    ![Flow when Hive is chosen as the catalog type](https://dataos.info/resources/depot/depot_catalog.png)
-
-    Hive automatically keeps the pointer updated to the latest metadata version. If you use Hadoop, you have to manually do this by running the set metadata command as described on this page: [Set Metadata](https://dataos.info/resources/depot/icebase/).
+    If you do not mention the catalog name as Hive, it will use Hadoop as the default catalog for Iceberg format. Hive automatically keeps the pointer updated to the latest metadata version. If you use Hadoop, you have to manually do this by running the set metadata command as described on this page: [Set Metadata](https://dataos.info/resources/depot/icebase/).
   </Accordion>
 
   <Accordion title="Amazon Redshift" defaultOpen={false}>
@@ -3507,6 +3503,8 @@ Once a Depot is successfully created, you can view its metadata in the Metis UI.
 
 ## **Best Practices**&#x20;
 
+This section involves do's and don'ts for managing a Depot.
+
 * As an operator, always assign a use-case to a user instead of directly assigning a tag, as assigning a use-case gives only specific permissions.
 
 * Give your Depot a meaningful name that represents its purpose.&#x20;
@@ -3574,4 +3572,4 @@ The catalog of data sources accessible by one or more components within DataOS i
   </Accordion>
 </AccordionGroup>
 
-## Troubleshooting
+##
