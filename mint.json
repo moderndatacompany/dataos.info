@@ -91,13 +91,6 @@
         "resources/depot/configurations",
         "resources/depot/governance",
         "resources/depot/observability",        
-        {
-          "group": "Supported Storage Architecture",
-          "pages": [
-            "resources/depot/icebase/index",
-            "resources/depot/fastbase/index"
-          ]
-        },
         "resources/depot/supported_connectors"
       ]
     },    
