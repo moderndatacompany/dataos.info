@@ -30,177 +30,257 @@ depot:
     params: # optional
       ${{"key1": "value1"}}
       ${{"key2": "value2"}}
+
 ```
 
 ## Step 2: Prepare the Lens model folder
 
-Organize the Lens model folder with the following structure to define tables, views, and governance policies:
+In the Model folder, the semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each subfolder contains specific files related to the Lens model. You can download the Lens template to quickly get started.
 
-```
-model
-├── sqls
-│   └── sample.sql  # SQL script for table dimensions
-├── tables
-│   └── sample_table.yml  # Logical table definition (joins, dimensions, measures, segments)
-├── views
-│   └── sample_view.yml  # Logical views referencing tables
-└── user_groups.yml  # User group policies for governance
-```
+[lens template](/resources/lens/lens_model_folder_setup/lens-project-template.zip)
 
-1. **SQL Scripts (`model/sqls`)**
+<Steps>
+  <Step title="Load data from the data source" titleSize="h2">
+    In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure, only the necessary columns are extracted, and the SQL dialect is specific to the bigquery. For instance,
 
-   * Add SQL files defining table structures and transformations.
+    * &#x20;format table names as: `project_id.dataset.table`.
 
-   * Ensure the SQL dialect matches BigQuery syntax. Format table names as:
-     `project_id.dataset.table`
+    * Use `STRING` for text data types instead of `VARCHAR`.
 
-   * Use `STRING` for text data types instead of `VARCHAR`.
+    * Replace generic functions with BigQuery’s `EXTRACT` function.
 
-   * Replace generic functions with BigQuery's `EXTRACT` function.
+    For instance, a simple data load might look as follows:
 
-2. **Tables (`model/tables`)**
+    ```sql
+    SELECT
+      *
+    FROM
+      "onelakehouse"."retail".channel;
+    ```
 
-   * Define logical tables in separate YAML files. Include dimensions, measures, segments, and joins.
+    Alternatively, you can write more advanced queries that include transformations, such as:
 
-3. **Views (`model/views`)**
+    ```sql
+    SELECT
+      CAST(customer_id AS VARCHAR) AS customer_id,
+      first_name,
+      CAST(DATE_PARSE(birth_date, '%d-%m-%Y') AS TIMESTAMP) AS birth_date,
+      age,
+      CAST(register_date AS TIMESTAMP) AS register_date,
+      occupation,
+      annual_income,
+      city,
+      state,
+      country,
+      zip_code
+    FROM
+      "onelakehouse"."retail".customer;
+    ```
+  </Step>
 
-   * Define views in YAML files, referencing the logical tables.
+  <Step title="Define the table in the Model" titleSize="h2">
+    Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For instance, to define a table for `sales `data:
 
-4. **User Groups (`user_groups.yml`)**
+    ```yaml
+    table:
+      - name: customers
+        sql: {{ load_sql('customers') }}
+        description: Table containing information about sales transactions.
+    ```
 
-   * Define access control by creating user groups and assigning permissions.
+    ### Add dimensions and measures
 
-## Step 3: Deployment manifest file
+    After defining the base table, add the necessary dimensions and measures. For instance, to create a table for sales data with measures and dimensions, the YAML definition could look as follows:
 
-After setting up the Lens model folder, the next step is to configure the deployment manifest. Below is the YAML template for configuring a Lens deployment.
+    ```yaml
+    tables:
+      - name: sales
+        sql: {{ load_sql('sales') }}
+        description: Table containing sales records with order details.
 
-```yaml
-# RESOURCE META SECTION
-version: v1alpha # Lens manifest version (mandatory)
-name: "bigquery-lens" # Lens Resource name (mandatory)
-layer: user # DataOS Layer (optional)
-type: lens # Type of Resource (mandatory)
-tags: # Tags (optional)
-  - lens
-description: bigquery depot lens deployment on lens2 # Lens Resource description (optional)
+        dimensions:
+          - name: order_id
+            type: number
+            description: Unique identifier for each order.
+            sql: order_id
+            primary_key: true
+            public: true
 
-# LENS-SPECIFIC SECTION
-lens:
-  compute: runnable-default # Compute Resource that Lens should utilize (mandatory)
-  secrets: # Referred Instance-secret configuration (**mandatory for private code repository, not required for public repository)
-    - name: bitbucket-cred # Referred Instance Secret name (mandatory)
-      allKeys: true # All keys within the secret are required or not (optional)
+        measures:
+          - name: total_orders_count
+            type: count
+            sql: id
+            description: Total number of orders.
+    ```
 
-  source: # Data Source configuration
-    type: depot # Source type is depot here
-    name: bigquerydepot # Name of the bigquery depot
+    ### Add segments to filter
 
-  repo: # Lens model code repository configuration (mandatory)
-    url: https://bitbucket.org/tmdc/sample # URL of repository containing the Lens model (mandatory)
-    lensBaseDir: sample/lens/source/depot/bigquery/model # Relative path of the Lens 'model' directory in the repository (mandatory)
-    syncFlags: # Additional flags used during synchronization, such as specific branch.
-      - --ref=lens # Repository Branch
+    Segments are filters that allow for the application of specific conditions to refine the data analysis. By defining segments, you can focus on particular subsets of data, ensuring that only the relevant records are included in your analysis. For example, to filter for records where the state is either Illinois or Ohio, you can define a segment as follows:
 
-  api: # API Instances configuration (optional)
-    replicas: 1 # Number of API instance replicas (optional)
-    logLevel: info  # Logging granularity (optional)
-    resources: # CPU and memory configurations for API Instances (optional)
-      requests:
-        cpu: 100m
-        memory: 256Mi
-      limits:
-        cpu: 2000m
-        memory: 2048Mi
+    ```yaml
+    segments:
+      - name: state_filter
+        sql: "{TABLE}.state IN ('Illinois', 'Ohio')"
+    ```
 
-  worker: # Worker configuration (optional)
-    replicas: 2 # Number of Worker replicas (optional)
-    logLevel: debug # Logging level (optional)
-    resources: # CPU and memory configurations for Worker (optional)
-      requests:
-        cpu: 100m
-        memory: 256Mi
-      limits:
-        cpu: 6000m
-        memory: 6048Mi
+    To know more about segments click [here](https://dataos.info/resources/lens/working_with_segments/).
+  </Step>
 
-  router: # Router configuration (optional)
-    logLevel: info  # Level of log detail (optional)
-    resources: # CPU and memory resource specifications for the router (optional)
-      requests:
-        cpu: 100m
-        memory: 256Mi
-      limits:
-        cpu: 6000m
-        memory: 6048Mi
+  <Step title="Create the Views" titleSize="h2">
+    Create a **views** folder to store all logical views, with each view defined in a separate YAML file (e.g., `sample_view.yml`). Each view references dimensions, measures, and segments from multiple logical tables. For instance the following`customer_churn` view is created.
 
-  iris:
-    logLevel: info # Level of log detail (optional)
-    resources: # CPU and memory resource specifications for the iris board (optional)
-      requests:
-        cpu: 100m
-        memory: 256Mi
-      limits:
-        cpu: 6000m
-        memory: 6048Mi
+    ```yaml
+    views:
+      - name: customer_churn_prediction
+        description: Contains customer churn information.
+        tables:
+          - join_path: marketing_campaign
+            includes:
+              - engagement_score
+              - customer_id
+          - join_path: customer
+            includes:
+              - country
+              - customer_segments
+    ```
 
-  metric:    #optional
-    logLevel: info
-```
+    To know more about the views click [here](https://dataos.info/resources/lens/working_with_views/).
+  </Step>
 
-Each section of the YAML template defines key aspects of the Lens deployment. Below is a detailed explanation of its components:
+  <Step title="Create User groups" titleSize="h2">
+    This YAML manifest file is used to manage access levels for the semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, there is a 'default' user group in the YAML file that includes all users.
 
-* **Defining the Source:**
+    ```yaml
+    user_groups:
+      - name: default
+        description: this is default user group
+        includes: "*"
+    ```
 
-  * **Source type:**  The `type` attribute in the `source` section must be explicitly set to `depot`.
+    To know more about the User groups click [here](/resources/lens/working_with_user_groups_and_data_policies/).
 
-  * **Source name:** The `name` attribute in the `source` section should specify the name of the Bigquery Depot created .
+    ## Step 3: Deployment manifest file
 
-* **Setting Up Compute and Secrets:**
+    After setting up the Lens model folder, the next step is to configure the deployment manifest. Below is the YAML template for configuring a Lens deployment.
 
-  * Define the compute settings, such as which engine (e.g., `runnable-default`) will process the data.
+    ```yaml
+    # RESOURCE META SECTION
+    version: v1alpha # Lens manifest version (mandatory)
+    name: "bigquery-lens" # Lens Resource name (mandatory)
+    layer: user # DataOS Layer (optional)
+    type: lens # Type of Resource (mandatory)
+    tags: # Tags (optional)
+      - lens
+    description: bigquery depot lens deployment on lens2 # Lens Resource description (optional)
 
-  * Include any necessary secrets (e.g., credentials for Bitbucket or AWS) for secure access to data and repositories.
+    # LENS-SPECIFIC SECTION
+    lens:
+      compute: runnable-default # Compute Resource that Lens should utilize (mandatory)
+      secrets: # Referred Instance-secret configuration (**mandatory for private code repository, not required for public repository)
+        - name: bitbucket-cred # Referred Instance Secret name (mandatory)
+          allKeys: true # All keys within the secret are required or not (optional)
 
-* **Defining Repository:**
+      source: # Data Source configuration
+        type: depot # Source type is depot here
+        name: bigquerydepot # Name of the bigquery depot
 
-  * **`url`** The `url` attribute in the repo section specifies the Git repository where the Lens model files are stored. For instance, if your repo name is lensTutorial then the repo `url` will be  [https://bitbucket.org/tmdc/lensTutorial](https://bitbucket.org/tmdc/lensTutorial)
+      repo: # Lens model code repository configuration (mandatory)
+        url: https://bitbucket.org/tmdc/sample # URL of repository containing the Lens model (mandatory)
+        lensBaseDir: sample/lens/source/depot/bigquery/model # Relative path of the Lens 'model' directory in the repository (mandatory)
+        syncFlags: # Additional flags used during synchronization, such as specific branch.
+          - --ref=lens # Repository Branch
 
-  * **`lensBaseDir`:**  The `lensBaseDir` attribute refers to the directory in the repository containing the Lens model. Example: `sample/lens/source/depot/bigquery/model`.
+      api: # API Instances configuration (optional)
+        replicas: 1 # Number of API instance replicas (optional)
+        logLevel: info  # Logging granularity (optional)
+        resources: # CPU and memory configurations for API Instances (optional)
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            cpu: 2000m
+            memory: 2048Mi
 
-  * **`secretId`:**  The `secretId` attribute is used to access private repositories (e.g., Bitbucket, GitHub) . It specifies the secret needed to securely authenticate and access the repository.
+      worker: # Worker configuration (optional)
+        replicas: 2 # Number of Worker replicas (optional)
+        logLevel: debug # Logging level (optional)
+        resources: # CPU and memory configurations for Worker (optional)
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            cpu: 6000m
+            memory: 6048Mi
 
-  * **`syncFlags`**:  Specifies additional flags to control repository synchronization. Example: `--ref=dev` specifies that the Lens model rsides in the dev branch.
+      router: # Router configuration (optional)
+        logLevel: info  # Level of log detail (optional)
+        resources: # CPU and memory resource specifications for the router (optional)
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            cpu: 6000m
+            memory: 6048Mi
 
-* **Configuring API, Worker and Metric Settings (Optional):** Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
+      iris:
+        logLevel: info # Level of log detail (optional)
+        resources: # CPU and memory resource specifications for the iris board (optional)
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            cpu: 6000m
+            memory: 6048Mi
+
+      metric:    #optional
+        logLevel: info
+    ```
+
+    Each section of the YAML template defines key aspects of the Lens deployment. Below is a detailed explanation of its components:
+
+    * **Defining the Source:**
+
+      * **Source type:** The `type` attribute in the `source` section must be explicitly set to `depot`.
+
+      * **Source name:** The `name` attribute in the `source` section should specify the name of the Bigquery Depot created .
+
+    * **Setting Up Compute and Secrets:**
+
+      * Define the compute settings, such as which engine (e.g., `runnable-default`) will process the data.
+
+      * Include any necessary secrets (e.g., credentials for Bitbucket or AWS) for secure access to data and repositories.
+
+    * **Defining Repository:**
+
+      * **`url`** The `url` attribute in the repo section specifies the Git repository where the Lens model files are stored. For instance, if your repo name is lensTutorial then the repo `url` will be [https://bitbucket.org/tmdc/lensTutorial](https://bitbucket.org/tmdc/lensTutorial)
+
+      * **`lensBaseDir`:** The `lensBaseDir` attribute refers to the directory in the repository containing the Lens model. Example: `sample/lens/source/depot/bigquery/model`.
+
+      * **`secretId`:** The `secretId` attribute is used to access private repositories (e.g., Bitbucket, GitHub) . It specifies the secret needed to securely authenticate and access the repository.
+
+      * **`syncFlags`**: Specifies additional flags to control repository synchronization. Example: `--ref=dev` specifies that the Lens model rsides in the dev branch.
+
+    * **Configuring API, Worker and Metric Settings (Optional):** Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
+  </Step>
+</Steps>
 
 ## Step 4: Apply the Lens deployment manifest file
 
-After configuring the deployment file with the necessary settings and specifications, apply the manifest using the following command:
+After configuring the deployment file with the necessary settings and specifications, deploy the Lens using the following `apply` command.
 
-<CodeGroup>
-  ```bash Command
-  dataos-ctl resource apply -f ${manifest-file-path}
-  ```
-
-  ```bash Alternative command
-  dataos-ctl apply -f ${manifest-file-path}
-  ```
-
-  ```bash Example usage 
-  dataos-ctl apply -f /lens/lens_deployment.yml -w curriculum
-  # Expected output
-  INFO[0000] 🛠 apply...                                   
-  INFO[0000] 🔧 applying(curriculum) sales360:v1alpha:lens... 
-  INFO[0001] 🔧 applying(curriculum) sales360:v1alpha:lens...created 
-  INFO[0001] 🛠 apply...complete
-  ```
-</CodeGroup>
+```
+dataos-ctl apply -f {manifest-file-path}}
+```
 
 ## Docker compose manifest file
 
-Ensure that highlighted attributes are in the Docker Compose Manifest file for proper configuration during the connection setup process.
+<Info>
+  This step provides additional information and is not required for working with Lens. You can skip this step unless explicitly needed.
+</Info>
 
-<Accordion title="click here to see docker compose manifest file" defaultOpen={false}>
+Ensure highlighted attributes are in the Docker Compose Manifest file for proper configuration during the connection setup process.
+
+<Accordion title="click here to see docker-compose manifest file" defaultOpen={false}>
   ```
   version: "2.2"
 
