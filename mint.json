@@ -102,8 +102,8 @@
     {
       "group": "Supported Data Sources",
       "pages": [
-        "resources/lens/index/#how-to-build-a-semantic-model-using-lens",
-        "resources/lens/index#redshift",
+        "resources/lens#how-to-build-a-semantic-model-using-lens",
+        "resources/lens#redshift",
         "resources/lens/data_sources/flash",
         "resources/lens/data_sources/minerva",
         "resources/lens/data_sources/postgres",
