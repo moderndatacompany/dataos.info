@@ -36,7 +36,13 @@ This module dives into the detailed process of designing Data Products tailored 
 
 In the previous module, we explored the essential steps for designing a Data Product. We started by defining the use case of Customer Purchase Behavior for an online retail company. This use case focuses on analyzing customer buying patterns to identify cross-sell opportunities and enhance marketing strategies.
 
-Now that we have a clear design plan, it’s time to move into the development phase. In this module, we will build the Data Product step by step, setting up the necessary components within DataOS. You should follow the different topics in the given order to ensure a smooth and systematic approach to building the Data Product.
+Now that we have a clear design plan, it’s time to move into the development phase. In this module, we will build the Data Product step by step, setting up the necessary components within DataOS. 
+
+<aside class="callout">
+🗣️ In order to create Data Products, you must first install the DataOS CLI on your machine. Open a command terminal and follow the <a href="/interfaces/cli/installation/">installation guide</a> for your operating system. Once the installation is complete, proceed with the <a href="/interfaces/cli/initialization/">initialization steps</a> to set up the DataOS context and log in.
+</aside>
+
+You should follow the different topics in the given order to ensure a smooth and systematic approach to building the Data Product.
 
 <div class= "grid cards" markdown>
 
