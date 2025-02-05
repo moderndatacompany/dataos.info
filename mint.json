@@ -119,7 +119,7 @@
         "resources/lens/working_with_user_groups"
       ]
     },
-    "resources/lens/lens_manifest_attributes",
+    "resources/lens/lens_manifest_attributes", 
     {
       "group": "APIs & Integrations",
       "pages": [
@@ -143,8 +143,8 @@
         }
       ]
     },
-    "resources/lens/cataloging", 
-    "resources/lens/governance", 
+    "resources/lens/cataloging",
+    "resources/lens/governance",
     {
       "group": "Monitoring",
       "pages": [
