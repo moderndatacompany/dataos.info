@@ -59,27 +59,27 @@ A Customer Insights Data Product development requires access to a PostgreSQL dat
 5. **Refer to the Instance Secret in the Depot Manifest**
 
    ```
-   name: ${{postgresdb}}
+   name: postgresdb
    version: v2alpha
    type: depot
    layer: user
    depot:
      type: JDBC                  
-     description: ${{To write data to postgresql database}}
-     external: ${{true}}
+     description: postgresql database connection
+     external: true
      secrets:
-       - name: ${{postgresdb}}-r
+       - name: postgresdb-r
          allkeys: true
 
-       - name: ${{postgresdb}}-rw
+       - name: postgresdb-rw
          allkeys: true
      postgresql:                        
        subprotocol: "postgresql"
-       host: ${{host}}
-       port: ${{port}}
-       database: ${{postgres}}
+       host: host
+       port: port
+       database: postgres
        params: #Required 
-         sslmode: ${{disable}}
+         sslmode: disable
 
    ```
 
