@@ -521,6 +521,7 @@ The process begins with creating a new Lens project and generating a semantic mo
     ```
     dataos-ctl resource apply -f {manifest-file-path}}
     ```
+  </Accordion>  
 
   <Accordion title="Postgres" defaultOpen={false}>
     ## Step 1: Create Postgres Depot
@@ -686,7 +687,7 @@ The process begins with creating a new Lens project and generating a semantic mo
     ```
     dataos-ctl resource apply -f ${manifest-file-path}
     ```
-
+  </Accordion>  
 
   <Accordion title="Snowflake" defaultOpen={false}>
     ## Prerequisite
@@ -1084,7 +1085,7 @@ The process begins with creating a new Lens project and generating a semantic mo
     <Info>
       Within the Themis and Minerva cluster, all Depots (such as onelakehouse, Redshift, Snowflake, etc.) are integrated. When configuring Lens, you only need to specify one Depot in the \`catalog\` field, as Lens can connect to and utilize Depots from all sources available in the Themis cluster.
     </Info>
-
+  </Accordion>
 
   <Accordion title="Themis" defaultOpen={false}>
     ## Prerequisites
@@ -1712,6 +1713,7 @@ The process begins with creating a new Lens project and generating a semantic mo
   dataos-ctl resource apply -f {manifest-file-path}
   ```
 </Accordion>
+
 
 <Info>
   🗣️ If working with Lens 1.0 interface, click [here](/interfaces/lens/).
