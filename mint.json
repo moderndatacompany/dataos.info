@@ -110,7 +110,7 @@
         "resources/lens/data_sources/minerva",
         "resources/lens/data_sources/postgres",
         "resources/lens/data_sources/themis",
-        "resources/lens/data_sources/snowflake",
+        "resources/lens/data_sources/snowflake"
       ]
     },
     {

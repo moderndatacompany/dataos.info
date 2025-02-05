@@ -269,7 +269,7 @@ Each section of the YAML template defines key aspects of the Lens deployment. Be
 
 After configuring the deployment file with the necessary settings and specifications, deploy the Lens using the following `apply` command.
 
-```
+```bash
 dataos-ctl apply -f {manifest-file-path}}
 ```
 
@@ -282,7 +282,7 @@ dataos-ctl apply -f {manifest-file-path}}
 Ensure highlighted attributes are in the Docker Compose Manifest file for proper configuration during the connection setup process.
 
 <Accordion title="click here to see docker-compose manifest file" defaultOpen={false}>
-  ```yaml
+  ```
   version: "2.2"
 
   x-lens2-environment: &lens2-environment
