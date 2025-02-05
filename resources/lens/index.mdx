@@ -33,7 +33,7 @@ Lens is engineered to handle complex and large-scale semantic models with ease. 
 
 ## How to build a semantic model using Lens?
 
-The process begins with creating a new Lens project and generating a data model. Once the model is prepared, it will be tested within the development environment to ensure it is error-free before deployment.
+The process begins with creating a new Lens project and generating a semantic model. Once the model is prepared, it will be tested within the development environment to ensure it is error-free before deployment.
 
 ### Single source
 
@@ -2121,7 +2121,7 @@ The process begins with creating a new Lens project and generating a data model.
 
 ## How to consume the semantic model?
 
-After creating a Lens data model, the next step is to consume it—this means interacting with the model by running queries. The following section explains the key concepts for querying Lens through various methods, though all queries follow the same general format. Multiple ways are available to explore or interact with the semantic model or its underlying data, allowing you to ask meaningful questions of the data and retrieve valuable insights. Exploration can be performed using the following methods:
+After creating a Lens semantic model , the next step is to consume it—this means interacting with the model by running queries. The following section explains the key concepts for querying Lens through various methods, though all queries follow the same general format. Multiple ways are available to explore or interact with the semantic model or its underlying data, allowing you to ask meaningful questions of the data and retrieve valuable insights. Exploration can be performed using the following methods:
 
 ### BI Tools
 
@@ -2265,11 +2265,11 @@ After creating a Lens data model, the next step is to consume it—this means in
 
             The folder contains the main components of a Power BI project for syncing the semantic model (here `sales360`) including folders such as the `.Report` and `.SemanticModel`. Following is the brief description of each:
 
-            * **public\_sales360-table.Report:** This folder contains `definition.pbir` file related to the report definition in Power BI. These files define the visual representation of data, such as tables and charts, without storing actual data. They connect the semantic model and data sources to create the report views.
+            * **public\_sales360.Report:** This folder contains `definition.pbir` file related to the report definition in Power BI. These files define the visual representation of data, such as tables and charts, without storing actual data. They connect the semantic model and data sources to create the report views.
 
-            * **public-sales360-table.SemanticModel:** This folder contains files that define the underlying data model for your Power BI project. The semantic model plays a crucial role in managing how Power BI interacts with data, setting up relationships, hierarchies, and measures.
+            * **public-sales360.SemanticModel:** This folder contains files that define the underlying semantic model for your Power BI project. The semantic model plays a crucial role in managing how Power BI interacts with data, setting up relationships, hierarchies, and measures.
 
-              * **definition.bism:** This file represents the Business Intelligence Semantic Model (BISM). It defines the structure of your data, including data sources, relationships, tables, and measures for your semantic model. The `.bism` file holds essential metadata that helps Power BI understand and query the data, forming the core of the data model for report creation and analysis.
+              * **definition.bism:** This file represents the Business Intelligence Semantic Model (BISM). It defines the structure of your data, including data sources, relationships, tables, and measures for your semantic model. The `.bism` file holds essential metadata that helps Power BI understand and query the data, forming the core of the semantic model for report creation and analysis.
 
               * **model.bim:** Power BI uses the `.bim` file to generate queries and manage interactions with the dataset. When you build reports or dashboards in Power BI, it references this semantic model to ensure the correct structure is applied to the data.
 
@@ -2481,13 +2481,13 @@ After creating a Lens data model, the next step is to consume it—this means in
 
         ## Important considerations for Tableau integration
 
-        **1. Handling Entities without Relationships:** An error will occur during synchronization if any entity in the data model lacks a defined relationship. To resolve this issue, the entity can be hidden to avoid synchronization errors.
+        **1. Handling Entities without Relationships:** An error will occur during synchronization if any entity in the semantic model lacks a defined relationship. To resolve this issue, the entity can be hidden to avoid synchronization errors.
 
         **2. Live connection:** The connection between the semantic layer and Tableau Cloud is live meaning that any changes to the underlying data will automatically be reflected in Tableau.
 
         **3. Schema changes:** If there are schema updates, such as adding new dimensions or measures, the integration steps will need to be repeated to incorporate these changes into Tableau.
 
-        **4. Avoiding cyclic dependencies:** Tableau does not support cyclic dependencies within data models. To prevent integration issues, it is essential to ensure that the data model is free of cyclic dependencies prior to syncing with Tableau.
+        **4. Avoiding cyclic dependencies:** Tableau does not support cyclic dependencies within data models. To prevent integration issues, it is essential to ensure that the semantic model is free of cyclic dependencies prior to syncing with Tableau.
 
         **5. Visualization with multiple data sources:** You cannot build a visualization that incorporates data from multiple data sources. For live connections, Tableau does not support data blending. Only a single data source can be used to create a visualization.
 
