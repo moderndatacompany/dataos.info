@@ -3862,14 +3862,28 @@ Once an Instance Secret is successfully created, you can view its metadata in th
 
 ## FAQs
 
-1. **Can I update an existing Instance Secret?**&#x59;es, you can update an Instance Secret by modifying its manifest file and re-applying it. However, ensure that dependent resources are updated accordingly.
+<AccordionGroup>
+  <Accordion title="Can I update an existing Instance Secret?" defaultOpen={false}>
+    Yes, you can update an Instance Secret by modifying its manifest file and re-applying it. However, ensure that dependent resources are updated accordingly.
+  </Accordion>
 
-2. **What happens if an Instance Secret is deleted?**&#x49;f an Instance Secret is deleted, any resources relying on it may lose access or experience failures. It is recommended to verify dependencies before deletion.
+  <Accordion title="What happens if an Instance Secret is deleted?" defaultOpen={false}>
+    If an Instance Secret is deleted, any resources relying on it may lose access or experience failures. It is recommended to verify dependencies before deletion.
+  </Accordion>
 
-3. **How can I receive alerts if an Instance Secret is deleted?**&#x59;ou can configure a **Monitor Resource** in DataOS along with a **Pager Resource** to receive notifications when an Instance Secret is deleted.
+  <Accordion title="How can I receive alerts if an Instance Secret is deleted?" defaultOpen={false}>
+    You can configure a **Monitor Resource** in DataOS along with a **Pager Resource** to receive notifications when an Instance Secret is deleted.
+  </Accordion>
 
-4. **Is there a way to restore a deleted Instance Secret?**&#x4E;o, deleted secrets cannot be recovered. You must create a new Instance Secret and update all associated resources.
+  <Accordion title="Is there a way to restore a deleted Instance Secret?" defaultOpen={false}>
+    No, deleted secrets cannot be recovered. You must create a new Instance Secret and update all associated resources.
+  </Accordion>
 
-5. **Can multiple users access the same Instance Secret?**&#x59;es, anyone assigned a use case that grants permission to read an Instance Secret can access it.
+  <Accordion title="Can multiple users access the same Instance Secret?" defaultOpen={false}>
+    Yes, anyone assigned a use case that grants permission to read an Instance Secret can access it.
+  </Accordion>
 
-6. **Can we create multiple Instance Secrets with the same name?**&#x4E;o, for Instance Secrets, names must be unique. If you attempt to create a secret with a name that already exists, the system will prevent duplication. You may need to use a different name or update the existing secret if modifications are required.
+  <Accordion title="Can we create multiple Instance Secrets with the same name?" defaultOpen={false}>
+    No, for Instance Secrets, names must be unique. If you attempt to create a secret with a name that already exists, the system will prevent duplication. You may need to use a different name or update the existing secret if modifications are required.
+  </Accordion>
+</AccordionGroup>
