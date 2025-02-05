@@ -29,7 +29,7 @@ Lens is engineered to handle complex and large-scale data models with ease. Key 
 
 * **BI integration:** Lens improves interoperability through robust integration with PowerBI, Tableau and Superset. This ensures that data models can be easily utilized across various BI platforms, enhancing the overall analytics experience. For more details on BI integration, visit the [BI Integration guide](/resources/lens/bi_integration/).
 
-* **Performance optimization through Flash:** Designed to work with DataOS Lakehouse and Iceberg-format depots, [Flash](/resources/stacks/flash/) improves query performance by leveraging in-memory execution. This optimization ensures that data teams can efficiently handle large-scale queries with enhanced speed and performance.
+* **Performance optimization through Flash:** Designed to work with DataOS Lakehouse and Iceberg-format Depots, [Flash](/resources/stacks/flash/) improves query performance by leveraging in-memory execution. This optimization ensures that data teams can efficiently handle large-scale queries with enhanced speed and performance.
 
 ## How to build a semantic model using Lens?
 
@@ -122,7 +122,7 @@ The process begins with creating a new Lens project and generating a data model.
         SELECT
           *
         FROM
-          "icebase"."sales_360".channel;
+          "onelakehouse"."retail".channel;
         ```
 
         Alternatively, you can write more advanced queries that include transformations, such as:
@@ -141,7 +141,7 @@ The process begins with creating a new Lens project and generating a data model.
           country,
           zip_code
         FROM
-          "icebase"."sales_360".customer;
+          "onelakehouse"."retail".customer;
         ```
       </Step>
 
@@ -476,7 +476,7 @@ The process begins with creating a new Lens project and generating a data model.
         SELECT
           *
         FROM
-          "icebase"."sales_360".channel;
+          "onelakehouse"."retail".channel;
         ```
 
         Alternatively, you can write more advanced queries that include transformations, such as:
@@ -495,7 +495,7 @@ The process begins with creating a new Lens project and generating a data model.
           country,
           zip_code
         FROM
-          "icebase"."sales_360".customer;
+          "onelakehouse"."retail".customer;
         ```
       </Step>
 
@@ -796,7 +796,7 @@ The process begins with creating a new Lens project and generating a data model.
         SELECT
           *
         FROM
-          "icebase"."sales_360".channel;
+          "onelakehouse"."retail".channel;
         ```
 
         Alternatively, you can write more advanced queries that include transformations, such as:
@@ -815,7 +815,7 @@ The process begins with creating a new Lens project and generating a data model.
           country,
           zip_code
         FROM
-          "icebase"."retail".customer; #catalog_name
+          "onelakehouse"."retail".customer; #catalog_name
         ```
       </Step>
 
@@ -1011,7 +1011,7 @@ The process begins with creating a new Lens project and generating a data model.
         SELECT
           *
         FROM
-         "sales_360".channel;
+         "retail".channel;
         ```
 
         Alternatively, you can write more advanced queries that include transformations, such as:
@@ -1030,7 +1030,7 @@ The process begins with creating a new Lens project and generating a data model.
           country,
           zip_code
         FROM
-          "sales_360".customer;
+          "retail".customer;
         ```
       </Step>
 
@@ -1237,7 +1237,7 @@ The process begins with creating a new Lens project and generating a data model.
         SELECT
           *
         FROM
-          "icebase"."sales_360".channel;
+          "onelakehouse"."retail".channel;
         ```
 
         Alternatively, you can write more advanced queries that include transformations, such as:
@@ -1256,7 +1256,7 @@ The process begins with creating a new Lens project and generating a data model.
           country,
           zip_code
         FROM
-          "icebase"."sales_360".customer;
+          "onelakehouse"."retail".customer;
         ```
       </Step>
 
@@ -1363,7 +1363,7 @@ The process begins with creating a new Lens project and generating a data model.
       source:
         type: minerva #minerva/themis/depot
         name: minervacluster  #name of minerva cluster
-        catalog: icebase
+        catalog: onelakehouse
       repo:
         url: https://bitbucket.org/tmdc/sample
         lensBaseDir: sample/lens/source/minerva/model 
@@ -1414,7 +1414,7 @@ The process begins with creating a new Lens project and generating a data model.
             memory: 6048Mi
     ```
 
-    The YAML manifest provided is designed for a cluster named `minervacluster`, created on the `Minerva` source, with a data catalog named `icebase`. To utilize this manifest, duplicate the file and update the source details as needed.
+    The YAML manifest provided is designed for a cluster named `minervacluster`, created on the `Minerva` source, with a data catalog named `onelakehouse`. To utilize this manifest, duplicate the file and update the source details as needed.
 
     Each section of the YAML template outlines essential elements of the Lens deployment. Below is a detailed breakdown of its components:
 
@@ -1424,7 +1424,7 @@ The process begins with creating a new Lens project and generating a data model.
 
       * **`name`:** The `name` attribute in the `source` section should specify the name of the Minerva Cluster. For example, if the name of your Minerva Cluster is miniature the Source name would be `miniature`.
 
-      * **`catalog`:** The `catalog` attribute must define the specific catalog name within the Minerva Cluster that you intend to use. For instance, if the catalog is named icebase, ensure this is accurately reflected in the catalog field.
+      * **`catalog`:** The `catalog` attribute must define the specific catalog name within the Minerva Cluster that you intend to use. For instance, if the catalog is named onelakehouse, ensure this is accurately reflected in the catalog field.
 
     * **Defining Repository:**
 
@@ -1439,7 +1439,7 @@ The process begins with creating a new Lens project and generating a data model.
     * **Configure API, Worker, and Metric Settings (Optional):** Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
 
     <Info>
-      Within the Themis and Minerva cluster, all depots (such as Icebase, Redshift, Snowflake, etc.) are integrated. When configuring Lens, you only need to specify one Depot in the \`catalog\` field, as Lens can connect to and utilize depots from all sources available in the Themis cluster.
+      Within the Themis and Minerva cluster, all Depots (such as onelakehouse, Redshift, Snowflake, etc.) are integrated. When configuring Lens, you only need to specify one Depot in the \`catalog\` field, as Lens can connect to and utilize Depots from all sources available in the Themis cluster.
     </Info>
 
     ## Docker compose manifest file
@@ -1514,7 +1514,7 @@ The process begins with creating a new Lens project and generating a data model.
         SELECT
           *
         FROM
-          "icebase"."sales_360".channel;
+          "onelakehouse"."retail".channel;
         ```
 
         Alternatively, you can write more advanced queries that include transformations, such as:
@@ -1533,7 +1533,7 @@ The process begins with creating a new Lens project and generating a data model.
           country,
           zip_code
         FROM
-          "icebase"."sales_360".customer;
+          "onelakehouse"."retail".customer;
         ```
       </Step>
 
@@ -1640,7 +1640,7 @@ The process begins with creating a new Lens project and generating a data model.
       source:
         type: themis #minerva/themis/depot
         name: lenstestingthemis
-        catalog: icebase
+        catalog: onelakehouse
       repo:
         url: https://bitbucket.org/tmdc/sample
         lensBaseDir: sample/lens/source/themis/model 
@@ -1686,7 +1686,7 @@ The process begins with creating a new Lens project and generating a data model.
             memory: 6048Mi
     ```
 
-    The YAML manifest provided is designed for a cluster named `minervacluster`, created on the `Minerva` source, with a data catalog named `icebase`. To utilize this manifest, duplicate the file and update the source details as needed.
+    The YAML manifest provided is designed for a cluster named `minervacluster`, created on the `Minerva` source, with a data catalog named `onelakehouse`. To utilize this manifest, duplicate the file and update the source details as needed.
 
     Each section of the YAML template outlines essential elements of the Lens deployment. Below is a detailed breakdown of its components:
 
@@ -1696,7 +1696,7 @@ The process begins with creating a new Lens project and generating a data model.
 
       * **`name`:** The `name` attribute in the `source` section should specify the name of the Themis Cluster. For example, if the name of your Themis Cluster is `clthemis` the Source name would be `clthemis`.
 
-      * **`catalog`:** The `catalog` attribute must define the specific catalog name within the Themis Cluster that you intend to use. For instance, if the catalog is named `lakehouse_retail`, ensure this is accurately reflected in the catalog field.
+      * **`catalog`:** The `catalog` attribute must define the specific catalog name within the Themis Cluster that you intend to use. For instance, if the catalog is named `onelakehouse`, ensure this is accurately reflected in the catalog field.
 
     * **Defining Repository:**
 
@@ -1710,10 +1710,10 @@ The process begins with creating a new Lens project and generating a data model.
 
     * **Configure API, Worker, and Metric Settings (Optional):** Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
 
-    The above manifest is intended for a cluster named `lenstestingthemis`, created on the themis source, with the Depot or data catalog named `icebase`. To use this manifest, copy the file and update the source details accordingly.
+    The above manifest is intended for a cluster named `lenstestingthemis`, created on the themis source, with the Depot or data catalog named `onelakehouse`. To use this manifest, copy the file and update the source details accordingly.
 
     <Info>
-      Within the Themis and Minerva cluster, all depots (such as Icebase, Redshift, Snowflake, etc.) are integrated. When configuring Lens, you only need to specify one Depot in the \`catalog\` field, as Lens can connect to and utilize depots from all sources available in the Themis cluster.
+      Within the Themis and Minerva cluster, all Depots (such as Lakehouse, Redshift, Snowflake, etc.) are integrated. When configuring Lens, you only need to specify one Depot in the \`catalog\` field, as Lens can connect to and utilize Depots from all sources available in the Themis cluster.
     </Info>
   </Accordion>
 </AccordionGroup>
@@ -1721,7 +1721,7 @@ The process begins with creating a new Lens project and generating a data model.
 ## Query Acceleration
 
 <Accordion title="Flash" defaultOpen={false}>
-  [Flash](https://dataos.info/resources/stacks/flash/) is designed to optimize query performance by leveraging in-memory execution. When used with DataOS Lakehouse and Iceberg-format Depots, it enables efficient handling of large-scale queries by reducing latency and optimizing resource usage. The following explains how to configure Lens using Flash.
+  [Flash](/resources/stacks/flash/) is designed to optimize query performance by leveraging in-memory execution. When used with DataOS Lakehouse and Iceberg-format Depots, it enables efficient handling of large-scale queries by reducing latency and optimizing resource usage. The following explains how to configure Lens using Flash.
 
   ### **Prerequisites**
 
@@ -1802,16 +1802,16 @@ The process begins with creating a new Lens project and generating a data model.
 
         stackSpec:
           datasets:
-            - address: dataos://icebase:sales360/f_sales    #view
+            - address: dataos://onelakehouse:sales360/f_sales    #view
               name: sales
 
-            - address: dataos://icebase:sales360/customer_data_master
+            - address: dataos://onelakehouse:sales360/customer_data_master
               name: customer_data_master
 
-            - address: dataos://icebase:sales360/site_check1
+            - address: dataos://onelakehouse:sales360/site_check1
               name: site_check1
 
-            - address: dataos://icebase:sales360/product_data_master
+            - address: dataos://onelakehouse:sales360/product_data_master
               name: product_data_master
 
           init:
@@ -1845,11 +1845,11 @@ The process begins with creating a new Lens project and generating a data model.
     </Step>
   </Steps>
 
-  ##
-
   ## Step 2 Prepare the semantic model folder
 
   In the Model folder, the semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each subfolder contains specific files related to the Lens model. You can download the Lens template to quickly get started.
+
+
 
   [lens template](/resources/lens/lens_model_folder_setup/lens-project-template.zip)
 
@@ -1956,7 +1956,7 @@ The process begins with creating a new Lens project and generating a data model.
     </Step>
 
     <Step title="Create user groups" titleSize="h2">
-      The `user_groups.yml` manifest file is used to manage access levels for the semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, the 'default' user group in the YAML file includes all users.
+      The `user_groups.yml` manifest file is used to manage access levels for the semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, the 'default' user group in the manifest file includes all users.
 
       ```yaml
       user_groups:
@@ -1977,7 +1977,7 @@ The process begins with creating a new Lens project and generating a data model.
      If your code repository is private, you will need to create **Instance Secrets** with your repository credentials for later use during deployment. Public code repositories do not require Step 3.
   </Note>
 
-  Define the Instance Secret Resource in a YAML file. Below is a template you can use for Bitbucket, substituting `${USERNAME}` and `${PASSWORD}` with your actual Bitbucket credentials:
+  Define the Instance Secret Resource in a  YAML manifest file. Below is a template you can use for Bitbucket, substituting `${USERNAME}` and `${PASSWORD}` with your actual Bitbucket credentials:
 
   <CodeGroup>
     ```yaml Syntax
@@ -2035,8 +2035,6 @@ The process begins with creating a new Lens project and generating a data model.
 
   Configure the Flash service as the data source in the `source` attribute of the deployment manifest file.
 
-
-
   **`source`**
 
   * **`type`** The source section specifies that Flash is used as the data source (`type: flash`). This indicates that data for the Lens model will be loaded from the Flash service.
@@ -2052,8 +2050,6 @@ The process begins with creating a new Lens project and generating a data model.
   ### **2. Add environment variables**
 
   Specify the following environment variables in the Worker, API, and Router sections of the Lens deployment manifest.
-
-
 
   **`envs`**
 
@@ -2147,24 +2143,14 @@ The process begins with creating a new Lens project and generating a data model.
           memory: 6048Mi
   ```
 
-  ###
-
   ### Apply the Lens manifest file
 
   Deploy the Lens by using the following `apply` command:
 
-
-
   ```
   dataos-ctl apply -f {manifest-file-path}
   ```
-
-
-
-
 </Accordion>
-
-##
 
 <Info>
   🗣️ If working with Lens 1.0 interface, click [here](/interfaces/lens/).
@@ -2884,7 +2870,7 @@ Monitoring in Lens operates at three levels, each focusing on different aspects 
 
 1. **Metric monitoring:** A Lens Resource can be monitored using Monitor and Pager Resources. To learn how to create and configure these monitors, click [here](https://dataosinfo.mintlify.app/resources/lens/observability).
 
-2. **Operational monitoring:** Operational monitoring can be done through the Operations App and CLI, providing visibility into the state and behavior of Lens Resources, enabling workload performance tracking, historical runtime analysis, and troubleshooting.
+2. **Operational monitoring:** Operational monitoring can be done through the Operations App and CLI, providing visibility into the state and behavior of Lens Resources, enabling workload performance tracking, historical runtime analysis, and troubleshooting. To know how to do to operational monitoring of Lens click here
 
 3. **Infrastructure monitoring:** Infrastructure powered by Grafana, focuses on the underlying system infrastructure, tracking server health, memory usage, and overall system stability.
 
