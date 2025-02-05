@@ -146,7 +146,7 @@
     "resources/lens/cataloging",
     "resources/lens/governance",
     {
-      "group": "Monitoring",
+      "group": "Observability",
       "pages": [
         "resources/lens/metric_monitoring",
         "resources/lens/operational_monitoring",
