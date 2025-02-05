@@ -8,9 +8,11 @@ A financial services company aims to leverage its customer data for credit card 
 
 ## **Steps for Integration**
 
-1. **Create an Instance Secret**To create a Depot for data connection, first create an Instance Secret Resource to securely store the credentials of MSSQL.
+1. **Create an Instance Secret**
 
-   <CodeGroup>
+   To create a Depot for data connection, first create an Instance Secret Resource to securely store the credentials of MSSQL.<Info>
+     Here, it is assumed that you are already familiar with the creation of an Instance Secret.
+   </Info><CodeGroup>
      ```yaml Read-only instance-secret
      name: mssqldepot-r 
      version: v1 # Manifest version
@@ -41,15 +43,47 @@ A financial services company aims to leverage its customer data for credit card 
      ```
    </CodeGroup>
 
-3. **Create a Depot manifest file**:
+2. **Create a Depot manifest file**
 
-   * Within the Data Product pipeline (`wf-customer-overview-pipeline`), the customer overview data undergoes transformation to match the structure needed by the FS Accelerator Data Product. This ensures consistency in the data's format, particularly for customer identifiers and attributes.
+   After creating an Instance Secret, next step is to create a manifest file for Depot.<CodeGroup>
+     ```yaml Depot manifest file
+     name: mssqldepot
+     version: v2alpha
+     type: depot
+     tags:
+       - mssql
+     layer: user
+     depot:
+       type: JDBC
+       description: MSSQL data
+       jdbc:
+         subprotocol: sqlserver
+         host: ${{host}}
+         port: ${{port}}
+         database: ${{database}}
+         params: # Required
+           encrypt: false
+       external: true
+       hiveSync: false
+       secrets:
+         - name: mssqldepot-r
+           keys: 
+             - mssqldepot-r
 
-4. **Apply the Depot manifest file**:
+         - name: mssqldepot-rw
+           keys: 
+             - mssqldepot-rw
 
-   * After transformation, the data is loaded into the FS Accelerator Data Product, where it is kept live and continuously updated. The new dataset is stored at `dataos://icebasetw:fs_accelerator/customer_overview_dp`, ready for use in any downstream applications.
+     ```
+   </CodeGroup>
 
-5. **Validate the Depot**:
+3. **Apply the Depot manifest file**
+
+   Apply the Depot manifest file by executing the below command.```bash
+   dataos-ctl apply -f /home/mssql_depot.yaml
+   ```
+
+4. **Validate the Depot**:
 
    * The FS Accelerator Data Product now contains an updated set of customer data. This information is available for consumption by other systems, such as those involved in credit card cross-selling, or any operational systems that require a consolidated and accurate view of customers.
 
