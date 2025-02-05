@@ -1,0 +1,247 @@
+---
+title: 'Snowflake'
+description: 'The following document guide you on how to build Lens on the Snowflake source.'
+---
+
+## Prerequisite
+
+CLI Version should be `dataos-cli 2.26.39-dev` or greater.
+
+## Step 1: Create the Snowflake Depot
+
+If the Depot is not active, you need to create one using the provided template.
+
+```yaml
+name: snowflake-depot
+version: v2alpha
+type: depot
+tags:
+  - Snowflake depot
+  - user data
+layer: user
+depot:
+  name: sftest
+  type: snowflake
+  description: Depot to fetch data from Snowflake datasource
+  secrets:
+    - name: sftest-r
+      keys:
+        - sftest-r
+      allKeys: true
+    - name: sftest-rw
+      keys:
+        - sftest-rw
+      allKeys: true
+  external: true
+  snowflake:
+    database: TMDC_V1
+    url: ABCD23-XYZ8932.snowflakecomputing.com
+    warehouse: COMPUTE_WH
+    account: ABCD23-XYZ8932
+  source: sftest
+```
+
+## Step 2: Prepare the semantic model folder
+
+Organize the semantic model folder with the following structure to define tables, views, and user groups:
+
+<Steps>
+  <Step title="Load data from the data source" titleSize="h2">
+    In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure the SQL dialect matches snowflake syntax. Format table names as `schema.table`.
+
+    For example, a simple data load might look as follows:
+
+    ```sql
+    SELECT
+      *
+    FROM
+     "retail".channel;
+    ```
+
+    Alternatively, you can write more advanced queries that include transformations, such as:
+
+    ```sql
+    SELECT
+      CAST(customer_id AS VARCHAR) AS customer_id,
+      first_name,
+      CAST(DATE_PARSE(birth_date, '%d-%m-%Y') AS TIMESTAMP) AS birth_date,
+      age,
+      CAST(register_date AS TIMESTAMP) AS register_date,
+      occupation,
+      annual_income,
+      city,
+      state,
+      country,
+      zip_code
+    FROM
+      "retail".customer;
+    ```
+  </Step>
+
+  <Step title="Define the table in the model" titleSize="h2">
+    Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For example, to define a table for `sales `data:
+
+    ```yaml
+    table:
+      - name: customers
+        sql: {{ load_sql('customers') }}
+        description: Table containing information about sales transactions.
+    ```
+
+    #### Add dimensions and measures
+
+    After defining the base table, add the necessary dimensions and measures. For example, to create a table for sales data with measures and dimensions, the YAML definition could look as follows:
+
+    ```yaml
+    tables:
+      - name: sales
+        sql: {{ load_sql('sales') }}
+        description: Table containing sales records with order details.
+
+        dimensions:
+          - name: order_id
+            type: number
+            description: Unique identifier for each order.
+            sql: order_id
+            primary_key: true
+            public: true
+
+        measures:
+          - name: total_orders_count
+            type: count
+            sql: id
+            description: Total number of orders.
+    ```
+
+    #### Add segments to filter
+
+    Segments are filters that allow for the application of specific conditions to refine the data analysis. By defining segments, you can focus on particular subsets of data, ensuring that only the relevant records are included in your analysis. For example, to filter for records where the state is either Illinois or Ohio, you can define a segment as follows:
+
+    ```yaml
+    segments:
+      - name: state_filter
+        sql: "{TABLE}.state IN ('Illinois', 'Ohio')"
+    ```
+
+    To know more about segments click [here](/resources/lens/working_with_segments/).
+  </Step>
+
+  <Step title="Create the views" titleSize="h2">
+    Create a **views** folder to store all logical views, with each view defined in a separate YAML file (e.g., `sample_view.yml`). Each view references dimensions, measures, and segments from multiple logical tables. For instance the following`customer_churn` view is created.
+
+    ```yaml
+    views:
+      - name: customer_churn_prediction
+        description: Contains customer churn information.
+        tables:
+          - join_path: marketing_campaign
+            includes:
+              - engagement_score
+              - customer_id
+          - join_path: customer
+            includes:
+              - country
+              - customer_segments
+    ```
+
+    To know more about the views click [here](https://dataos.info/resources/lens/working_with_views/).
+  </Step>
+
+  <Step title="Create user groups" titleSize="h2">
+    This YAML manifest file is used to manage access levels for the semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, there is a 'default' user group in the YAML file that includes all users.
+
+    ```yaml
+    user_groups:
+      - name: default
+        description: this is default user group
+        includes: "*"
+    ```
+
+    To know more about the User groups click [here](/resources/lens/working_with_user_groups_and_data_policies/)
+  </Step>
+</Steps>
+
+## Step 3: Deployment manifest file
+
+After setting up the Lens model folder, the next step is to configure the deployment manifest. Below is the YAML template for configuring a Lens deployment.
+
+```yaml
+# RESOURCE META SECTION
+version: v1alpha # Lens manifest version (mandatory)
+name: "snowflake-lens" # Lens Resource name (mandatory)
+layer: user # DataOS Layer (optional)
+type: lens # Type of Resource (mandatory)
+tags: # Tags (optional)
+  - lens
+description: snowflake depot lens deployment on lens2 # Lens Resource description (optional)
+
+# LENS-SPECIFIC SECTION
+lens:
+  compute: runnable-default # Compute Resource that Lens should utilize (mandatory)
+  secrets: # Referred Instance-secret configuration (**mandatory for private code repository, not required for public repository)
+    - name: bitbucket-cred # Referred Instance Secret name (mandatory)
+      allKeys: true # All keys within the secret are required or not (optional)
+
+  source: # Data Source configuration
+    type: depot # Source type is depot here
+    name: snowflake-depot # Name of the snowflake depot
+
+  repo: # Lens model code repository configuration (mandatory)
+    url: https://bitbucket.org/tmdc/sample # URL of repository containing the Lens model (mandatory)
+    lensBaseDir: sample/lens/source/depot/snowflake/model # Relative path of the Lens 'model' directory in the repository (mandatory)
+    syncFlags: # Additional flags used during synchronization, such as specific branch.
+      - --ref=lens # Repository Branch
+
+  api: # API Instances configuration (optional)
+    replicas: 1 # Number of API instance replicas (optional)
+    logLevel: info  # Logging granularity (optional)
+    resources: # CPU and memory configurations for API Instances (optional)
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 2000m
+        memory: 2048Mi
+
+  worker: # Worker configuration (optional)
+    replicas: 2 # Number of Worker replicas (optional)
+    logLevel: debug # Logging level (optional)
+    resources: # CPU and memory configurations for Worker (optional)
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 6000m
+        memory: 6048Mi
+
+  router: # Router configuration (optional)
+    logLevel: info  # Level of log detail (optional)
+    resources: # CPU and memory resource specifications for the router (optional)
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 6000m
+        memory: 6048Mi
+
+  iris:
+    logLevel: info # Level of log detail (optional)
+    resources: # CPU and memory resource specifications for the iris board (optional)
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 6000m
+        memory: 6048Mi
+
+  metric:    #optional
+    logLevel: info
+```
+
+### Step 4: Apply the Lens deployment manifest file
+
+After configuring the deployment file with the necessary settings, deploy the Lens using the following `apply` command:
+
+```
+dataos-ctl apply -f ${manifest-file-path}
+```
