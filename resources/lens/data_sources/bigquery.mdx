@@ -1,5 +1,6 @@
 ---
 title: "Bigquery"
+description: "The following document guides on how to build semantic model and deploy the Lens on the Bigquery source."
 ---
 
 ## Step 1: Create the Bigquery Depot
@@ -43,7 +44,7 @@ In the Model folder, the semantic model will be defined, encompassing SQL mappin
   <Step title="Load data from the data source" titleSize="h2">
     In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure, only the necessary columns are extracted, and the SQL dialect is specific to the bigquery. For instance,
 
-    * &#x20;format table names as: `project_id.dataset.table`.
+    * Format table names as: `project_id.dataset.table`.
 
     * Use `STRING` for text data types instead of `VARCHAR`.
 
@@ -158,111 +159,111 @@ In the Model folder, the semantic model will be defined, encompassing SQL mappin
     ```
 
     To know more about the User groups click [here](/resources/lens/working_with_user_groups_and_data_policies/).
-
-    ## Step 3: Deployment manifest file
-
-    After setting up the Lens model folder, the next step is to configure the deployment manifest. Below is the YAML template for configuring a Lens deployment.
-
-    ```yaml
-    # RESOURCE META SECTION
-    version: v1alpha # Lens manifest version (mandatory)
-    name: "bigquery-lens" # Lens Resource name (mandatory)
-    layer: user # DataOS Layer (optional)
-    type: lens # Type of Resource (mandatory)
-    tags: # Tags (optional)
-      - lens
-    description: bigquery depot lens deployment on lens2 # Lens Resource description (optional)
-
-    # LENS-SPECIFIC SECTION
-    lens:
-      compute: runnable-default # Compute Resource that Lens should utilize (mandatory)
-      secrets: # Referred Instance-secret configuration (**mandatory for private code repository, not required for public repository)
-        - name: bitbucket-cred # Referred Instance Secret name (mandatory)
-          allKeys: true # All keys within the secret are required or not (optional)
-
-      source: # Data Source configuration
-        type: depot # Source type is depot here
-        name: bigquerydepot # Name of the bigquery depot
-
-      repo: # Lens model code repository configuration (mandatory)
-        url: https://bitbucket.org/tmdc/sample # URL of repository containing the Lens model (mandatory)
-        lensBaseDir: sample/lens/source/depot/bigquery/model # Relative path of the Lens 'model' directory in the repository (mandatory)
-        syncFlags: # Additional flags used during synchronization, such as specific branch.
-          - --ref=lens # Repository Branch
-
-      api: # API Instances configuration (optional)
-        replicas: 1 # Number of API instance replicas (optional)
-        logLevel: info  # Logging granularity (optional)
-        resources: # CPU and memory configurations for API Instances (optional)
-          requests:
-            cpu: 100m
-            memory: 256Mi
-          limits:
-            cpu: 2000m
-            memory: 2048Mi
-
-      worker: # Worker configuration (optional)
-        replicas: 2 # Number of Worker replicas (optional)
-        logLevel: debug # Logging level (optional)
-        resources: # CPU and memory configurations for Worker (optional)
-          requests:
-            cpu: 100m
-            memory: 256Mi
-          limits:
-            cpu: 6000m
-            memory: 6048Mi
-
-      router: # Router configuration (optional)
-        logLevel: info  # Level of log detail (optional)
-        resources: # CPU and memory resource specifications for the router (optional)
-          requests:
-            cpu: 100m
-            memory: 256Mi
-          limits:
-            cpu: 6000m
-            memory: 6048Mi
-
-      iris:
-        logLevel: info # Level of log detail (optional)
-        resources: # CPU and memory resource specifications for the iris board (optional)
-          requests:
-            cpu: 100m
-            memory: 256Mi
-          limits:
-            cpu: 6000m
-            memory: 6048Mi
-
-      metric:    #optional
-        logLevel: info
-    ```
-
-    Each section of the YAML template defines key aspects of the Lens deployment. Below is a detailed explanation of its components:
-
-    * **Defining the Source:**
-
-      * **Source type:** The `type` attribute in the `source` section must be explicitly set to `depot`.
-
-      * **Source name:** The `name` attribute in the `source` section should specify the name of the Bigquery Depot created .
-
-    * **Setting Up Compute and Secrets:**
-
-      * Define the compute settings, such as which engine (e.g., `runnable-default`) will process the data.
-
-      * Include any necessary secrets (e.g., credentials for Bitbucket or AWS) for secure access to data and repositories.
-
-    * **Defining Repository:**
-
-      * **`url`** The `url` attribute in the repo section specifies the Git repository where the Lens model files are stored. For instance, if your repo name is lensTutorial then the repo `url` will be [https://bitbucket.org/tmdc/lensTutorial](https://bitbucket.org/tmdc/lensTutorial)
-
-      * **`lensBaseDir`:** The `lensBaseDir` attribute refers to the directory in the repository containing the Lens model. Example: `sample/lens/source/depot/bigquery/model`.
-
-      * **`secretId`:** The `secretId` attribute is used to access private repositories (e.g., Bitbucket, GitHub) . It specifies the secret needed to securely authenticate and access the repository.
-
-      * **`syncFlags`**: Specifies additional flags to control repository synchronization. Example: `--ref=dev` specifies that the Lens model rsides in the dev branch.
-
-    * **Configuring API, Worker and Metric Settings (Optional):** Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
   </Step>
 </Steps>
+
+## Step 3: Create Lens deployment manifest file
+
+After setting up the Lens model folder, the next step is to configure the deployment manifest. Below is the YAML template for configuring a Lens deployment.
+
+```yaml
+  # RESOURCE META SECTION
+  version: v1alpha # Lens manifest version (mandatory)
+  name: "bigquery-lens" # Lens Resource name (mandatory)
+  layer: user # DataOS Layer (optional)
+  type: lens # Type of Resource (mandatory)
+  tags: # Tags (optional)
+    - lens
+  description: bigquery depot lens deployment on lens2 # Lens Resource description (optional)
+
+  # LENS-SPECIFIC SECTION
+  lens:
+    compute: runnable-default # Compute Resource that Lens should utilize (mandatory)
+    secrets: # Referred Instance-secret configuration (**mandatory for private code repository, not required for public repository)
+      - name: bitbucket-cred # Referred Instance Secret name (mandatory)
+        allKeys: true # All keys within the secret are required or not (optional)
+
+    source: # Data Source configuration
+      type: depot # Source type is depot here
+      name: bigquerydepot # Name of the bigquery depot
+
+    repo: # Lens model code repository configuration (mandatory)
+      url: https://bitbucket.org/tmdc/sample # URL of repository containing the Lens model (mandatory)
+      lensBaseDir: sample/lens/source/depot/bigquery/model # Relative path of the Lens 'model' directory in the repository (mandatory)
+      syncFlags: # Additional flags used during synchronization, such as specific branch.
+        - --ref=lens # Repository Branch
+
+    api: # API Instances configuration (optional)
+      replicas: 1 # Number of API instance replicas (optional)
+      logLevel: info  # Logging granularity (optional)
+      resources: # CPU and memory configurations for API Instances (optional)
+        requests:
+          cpu: 100m
+          memory: 256Mi
+        limits:
+          cpu: 2000m
+          memory: 2048Mi
+
+    worker: # Worker configuration (optional)
+      replicas: 2 # Number of Worker replicas (optional)
+      logLevel: debug # Logging level (optional)
+      resources: # CPU and memory configurations for Worker (optional)
+        requests:
+          cpu: 100m
+          memory: 256Mi
+        limits:
+          cpu: 6000m
+          memory: 6048Mi
+
+    router: # Router configuration (optional)
+      logLevel: info  # Level of log detail (optional)
+      resources: # CPU and memory resource specifications for the router (optional)
+        requests:
+          cpu: 100m
+          memory: 256Mi
+        limits:
+          cpu: 6000m
+          memory: 6048Mi
+
+    iris:
+      logLevel: info # Level of log detail (optional)
+      resources: # CPU and memory resource specifications for the iris board (optional)
+        requests:
+          cpu: 100m
+          memory: 256Mi
+        limits:
+          cpu: 6000m
+          memory: 6048Mi
+
+    metric:    #optional
+      logLevel: info
+```
+
+Each section of the YAML template defines key aspects of the Lens deployment. Below is a detailed explanation of its components:
+
+* **Defining the Source:**
+
+  * **Source type:** The `type` attribute in the `source` section must be explicitly set to `depot`.
+
+  * **Source name:** The `name` attribute in the `source` section should specify the name of the Bigquery Depot created .
+
+* **Setting Up Compute and Secrets:**
+
+  * Define the compute settings, such as which engine (e.g., `runnable-default`) will process the data.
+
+  * Include any necessary secrets (e.g., credentials for Bitbucket or AWS) for secure access to data and repositories.
+
+* **Defining Repository:**
+
+  * **`url`** The `url` attribute in the repo section specifies the Git repository where the Lens model files are stored. For instance, if your repo name is lensTutorial then the repo `url` will be [https://bitbucket.org/tmdc/lensTutorial](https://bitbucket.org/tmdc/lensTutorial)
+
+  * **`lensBaseDir`:** The `lensBaseDir` attribute refers to the directory in the repository containing the Lens model. Example: `sample/lens/source/depot/bigquery/model`.
+
+  * **`secretId`:** The `secretId` attribute is used to access private repositories (e.g., Bitbucket, GitHub) . It specifies the secret needed to securely authenticate and access the repository.
+
+  * **`syncFlags`**: Specifies additional flags to control repository synchronization. Example: `--ref=dev` specifies that the Lens model rsides in the dev branch.
+
+  * **Configuring API, Worker and Metric Settings (Optional):** Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
 
 ## Step 4: Apply the Lens deployment manifest file
 
@@ -281,7 +282,7 @@ dataos-ctl apply -f {manifest-file-path}}
 Ensure highlighted attributes are in the Docker Compose Manifest file for proper configuration during the connection setup process.
 
 <Accordion title="click here to see docker-compose manifest file" defaultOpen={false}>
-  ```
+  ```yaml
   version: "2.2"
 
   x-lens2-environment: &lens2-environment
