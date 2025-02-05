@@ -91,7 +91,7 @@
         "resources/depot/configurations",
         "resources/depot/governance",
         "resources/depot/observability",
-        "resources/depot/index/#best-practices",
+        "resources/depot/index/Best Practices",
         "resources/depot/supported_connectors"
       ]
     },    
