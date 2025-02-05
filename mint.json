@@ -91,7 +91,8 @@
         "resources/depot/configurations",
         "resources/depot/governance",
         "resources/depot/observability",        
-        "resources/depot/supported_connectors"
+        "resources/depot/supported_connectors",
+        "resources/depot/example"
       ]
     },    
     
