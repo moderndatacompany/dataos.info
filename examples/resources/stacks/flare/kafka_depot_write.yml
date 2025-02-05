@@ -1,0 +1,36 @@
+version: v1
+name: write-kafka-2
+type: workflow
+tags:
+  - NY-Taxi
+description: The job ingests NY-Taxi data small files and conbined them to one file
+workflow:
+  dag:
+    - name: kafka-json-write
+      title: write in kafka from json
+      description: write to kafka json file format
+      spec:
+        tags:
+          - Connect
+        stack: flare:5.0
+        compute: runnable-default
+        envs:
+          ENABLE_TOPIC_CREATION: "true"
+        stackSpec:
+          job:
+            explain: true
+            inputs:
+              - name: sample_data
+                dataset: dataos://thirdparty01:sampledata/avro
+                format: avro
+                isStream: false
+            logLevel: INFO
+            outputs:
+              - name: output01
+                depot: dataos://kafka:default?acl=rw
+                checkpointLocation: dataos://icebase:sys01/checkpoints/ny_taxi/output01/nyt01?acl=rw
+                format: KafkaJson
+            steps:
+              - sequence: 
+                - name: sample_data
+                  sql: SELECT * FROM avro

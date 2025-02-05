@@ -1,0 +1,29 @@
+version: ${{v1}}  # depot version
+name: ${{"mongodb"}}  # name of the mongodb depot
+type: ${{depot}}  # resource type (depot)
+tags:
+  - ${{MongoDb}}  # tag for mongodb
+  - ${{Sanity}}  # tag for sanity
+layer: ${{user}}  # defines user layer
+depot:
+  type: ${{mongodb}}  # specifies mongodb as the depot type
+  description: ${{"MongoDb depot for sanity"}}  # description of the depot
+  compute: ${{query-default}}  # default compute configuration for queries
+  spec:
+    subprotocol: ${{"mongodb"}}  # protocol used (mongodb)
+    nodes: ${{["SG-demo-66793.servers.mongodirector.com:27071"]}}  # mongodb node(s) to connect
+    params:
+      tls: ${{true}}  # enable tls for secure communication
+  external: ${{true}}  # marks depot as external
+  connectionSecret:
+    - acl: ${{rw}}  # read-write access control
+      type: ${{key-value-properties}}  # type of secret storage
+      data:
+        username: ${{admin}}  # database username
+        password: ${{Kl6swyCRLPteqljkdyrf}}  # database password
+        keyStorePassword: ${{123456}}  # key store password
+        trustStorePassword: ${{123456}}  # trust store password
+      files:
+        ca_file: ${{mongodb-poc/demo-ssl-public-cert.cert}}  # ca certificate file path
+        key_store_file: ${{/Library/Java/JavaVirtualMachines/jdk-22.jdk/Contents/Home/lib/security/cacerts}}  # key store file path
+        trust_store_file: ${{/Library/Java/JavaVirtualMachines/jdk-22.jdk/Contents/Home/lib/security/cacerts}}  # trust store file path
