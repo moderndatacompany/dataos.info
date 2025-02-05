@@ -15,6 +15,8 @@ To create a Lens using Flash, ensure that the Flash service is running and has a
   Make sure a Persistent Volume is attached with the Flash. It helps Flash to spill data over disk, which helps with the performance.
 </Info>
 
+## Step 1: Create Flash Service manifest file
+
 <Steps>
   <Step title="Create Persistent Volume manifest file" titleSize="h2">
     To create a Persistence Volume manifest file copy  the template below and replace with your desired resource name and with the appropriate volume size (e.g., `100Gi`, `20Gi`, etc.), according to your available storage capacity. For the accessMode, you can choose ReadWriteOnce (RWO) for exclusive read-write access by a single node, or ReadOnlyMany (ROX) if the volume needs to be mounted as read-only by multiple nodes.
