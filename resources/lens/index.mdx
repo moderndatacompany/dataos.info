@@ -219,47 +219,6 @@ The process begins with creating a new Lens project and generating a semantic mo
         # secretId: lens2_bitbucket_r
         syncFlags:
           - --ref=lens
-
-      api:   # optional
-        replicas: 1 # optional
-        logLevel: info  # optional    
-        resources: # optional
-          requests:
-            cpu: 100m
-            memory: 256Mi
-          limits:
-            cpu: 2000m
-            memory: 2048Mi
-      worker: # optional
-        replicas: 2 # optional
-        logLevel: debug  # optional
-        resources: # optional
-          requests:
-            cpu: 100m
-            memory: 256Mi
-          limits:
-            cpu: 6000m
-            memory: 6048Mi
-      router: # optional
-        logLevel: info  # optional
-        resources: # optional
-          requests:
-            cpu: 100m
-            memory: 256Mi
-          limits:
-            cpu: 6000m
-            memory: 6048Mi
-      iris:
-        logLevel: info  
-        resources: # optional
-          requests:
-            cpu: 100m
-            memory: 256Mi
-          limits:
-            cpu: 6000m
-            memory: 6048Mi
-      metric:
-        logLevel: info  # Logging level for the metric component
     ```
 
     Each section of the YAML template defines key aspects of the Lens deployment. Below is a detailed explanation of its components:
@@ -297,56 +256,6 @@ The process begins with creating a new Lens project and generating a semantic mo
       dataos-ctl resource apply -f ${manifest-file-path}
       ```
     </Code>
-
-    ## Docker compose manifest file
-
-    <Accordion title="Click here to see the full docker compose manifest file" defaultOpen={false}>
-      ```yaml
-      version: "2.2"
-
-      x-lens2-environment: &lens2-environment
-        # DataOS
-        DATAOS_FQDN: liberal-donkey.dataos.app
-
-        # Overview
-        LENS2_NAME: ${redshiftlens}
-        LENS2_DESCRIPTION: "Ecommerce use case on sales data"
-        LENS2_TAGS: "lens2, ecom, sales and customer insights"
-        LENS2_AUTHORS: "iamgroot"
-        LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-        # Data Source
-        LENS2_SOURCE_TYPE: ${depot}  
-        LENS2_SOURCE_NAME: ${redshiftdepot}
-        LENS2_SOURCE_CATALOG_NAME: ${redshiftdepot}
-
-        # Log
-        LENS2_LOG_LEVEL: error
-        CACHE_LOG_LEVEL: "trace"
-        # Operation
-        #LENS_DB_QUERY_TIMEOUT: 15m
-        LENS2_DEV_MODE: true
-        LENS2_DEV_MODE_PLAYGROUND: false
-        LENS2_REFRESH_WORKER: true
-        LENS2_SCHEMA_PATH: model
-        LENS2_PG_SQL_PORT: 5432
-        CACHE_DATA_DIR: "/var/work/.store"
-        NODE_ENV: production
-        LENS2_ALLOW_UNGROUPED_WITHOUT_PRIMARY_KEY: "true"
-      services:
-        api:
-          restart: always
-          image: rubiklabs/lens2:0.35.41-02
-          ports:
-            - 4000:4000
-            - 25432:5432
-            - 13306:13306
-          environment:
-            <<: *lens2-environment   
-          volumes:
-            - ./model:/etc/dataos/work/model
-
-      ```
-    </Accordion>
 
     ## Check query statistics for AWSRedshift
 
@@ -575,51 +484,6 @@ The process begins with creating a new Lens project and generating a semantic mo
             lensBaseDir: sample/lens/source/depot/bigquery/model # Relative path of the Lens 'model' directory in the repository (mandatory)
             syncFlags: # Additional flags used during synchronization, such as specific branch.
               - --ref=lens # Repository Branch
-
-          api: # API Instances configuration (optional)
-            replicas: 1 # Number of API instance replicas (optional)
-            logLevel: info  # Logging granularity (optional)
-            resources: # CPU and memory configurations for API Instances (optional)
-              requests:
-                cpu: 100m
-                memory: 256Mi
-              limits:
-                cpu: 2000m
-                memory: 2048Mi
-
-          worker: # Worker configuration (optional)
-            replicas: 2 # Number of Worker replicas (optional)
-            logLevel: debug # Logging level (optional)
-            resources: # CPU and memory configurations for Worker (optional)
-              requests:
-                cpu: 100m
-                memory: 256Mi
-              limits:
-                cpu: 6000m
-                memory: 6048Mi
-
-          router: # Router configuration (optional)
-            logLevel: info  # Level of log detail (optional)
-            resources: # CPU and memory resource specifications for the router (optional)
-              requests:
-                cpu: 100m
-                memory: 256Mi
-              limits:
-                cpu: 6000m
-                memory: 6048Mi
-
-          iris:
-            logLevel: info # Level of log detail (optional)
-            resources: # CPU and memory resource specifications for the iris board (optional)
-              requests:
-                cpu: 100m
-                memory: 256Mi
-              limits:
-                cpu: 6000m
-                memory: 6048Mi
-
-          metric:    #optional
-            logLevel: info
         ```
 
         Each section of the YAML template defines key aspects of the Lens deployment. Below is a detailed explanation of its components:
@@ -657,57 +521,6 @@ The process begins with creating a new Lens project and generating a semantic mo
     ```
     dataos-ctl apply -f {manifest-file-path}}
     ```
-
-    ## Docker compose manifest file
-
-    Ensure that highlighted attributes are in the Docker Compose Manifest file for proper configuration during the connection setup process.
-
-    <Accordion title="Click here to see the full docker-compose manifest" defaultOpen={false}>
-      ```yaml
-      version: "2.2"
-
-      x-lens2-environment: &lens2-environment
-        # DataOS
-        DATAOS_FQDN: liberal-monkey.dataos.app
-        # Overview
-        LENS2_NAME: sales360
-        LENS2_DESCRIPTION: "Ecommerce use case on sales data"
-        LENS2_TAGS: "lens2, ecom, sales and customer insights"
-        LENS2_AUTHORS: "rakeshvishvakarma, iamgroot"
-        LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-        # Data Source
-        LENS2_SOURCE_TYPE: ${depot} #source name - depot
-        LENS2_SOURCE_NAME: ${bigquerydepot} #name of the bigquery depot
-        DATAOS_RUN_AS_APIKEY: ${A1ZjMDliZTFhZWJhMQ==}
-        # LogZjAtNDY4My05
-        LENS2_LOG_LEVEL: error
-        CACHE_LOG_LEVEL: "trace"
-        # Operation
-        LENS2_DEV_MODE: true
-        LENS2_DEV_MODE_PLAYGROUND: false
-        LENS2_REFRESH_WORKER: true
-        LENS2_SCHEMA_PATH: model
-        LENS2_PG_SQL_PORT: 5432
-        CACHE_DATA_DIR: "/var/work/.store"
-        NODE_ENV: production
-        LENS2_ALLOW_UNGROUPED_WITHOUT_PRIMARY_KEY: "true"
-      services:
-        api:
-          restart: always
-          image: rubiklabs/lens2:0.35.41-05
-          ports:
-            - 4000:4000
-            - 25432:5432
-            - 13306:13306
-          environment:
-            <<: *lens2-environment   
-          volumes:
-            - ./model:/etc/dataos/work/model
-            # - ./scripts/commons.js:/app/scripts/commons.js
-            # - ./scripts/bootstrap.js:/app/scripts/bootstrap.js
-            # - ./scripts/config.js:/app/scripts/config.js
-      ```
-    </Accordion>
   </Accordion>
 
   <Accordion title="Postgres" defaultOpen={false}>
@@ -874,53 +687,6 @@ The process begins with creating a new Lens project and generating a semantic mo
     ```
     dataos-ctl  apply -f ${manifest-file-path}
     ```
-
-    ## Docker compose manifest file
-
-    <Accordion title="Click here to see the full docker compose manifest file" defaultOpen={false}>
-      ```yaml
-      version: "2.2"
-
-      x-lens2-environment: &lens2-environment
-        # DataOS
-        DATAOS_FQDN: liberal-monkey.dataos.app
-        # Overview
-        LENS2_NAME: sales360
-        LENS2_DESCRIPTION: "Ecommerce use case on Adventureworks sales data"
-        LENS2_TAGS: "lens2, ecom, sales and customer insights"
-        LENS2_AUTHORS: "iamgroot, iamloki"
-        LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-        # Data Source
-        LENS2_SOURCE_TYPE: depot
-        LENS2_SOURCE_NAME: postgreslens2
-        DATAOS_RUN_AS_APIKEY: bGVuc3NzLmUzMDA1ZjMzLTZiZjAtNDY4My05ZjhhLWNhODliZTFhZWJhMQ==
-        LENS2_DB_SSL : "true"
-        # Log
-        LENS2_LOG_LEVEL: error
-        CACHE_LOG_LEVEL: "trace"
-        # Operation
-        LENS2_DEV_MODE: true
-        LENS2_DEV_MODE_PLAYGROUND: false
-        LENS2_REFRESH_WORKER: true
-        LENS2_SCHEMA_PATH: model
-        LENS2_PG_SQL_PORT: 5432
-        CACHE_DATA_DIR: "/var/work/.store"
-        NODE_ENV: production
-        LENS2_ALLOW_UNGROUPED_WITHOUT_PRIMARY_KEY: "true"
-      services:
-        api:
-          restart: always
-          image: rubiklabs/lens2:0.35.41-05
-          ports:
-            - 4000:4000
-            - 25432:5432
-            - 13306:13306
-          environment:
-            <<: *lens2-environment   
-          volumes:
-            - ./model:/etc/dataos/work/model
-      ```
-    </Accordion>
   </Accordion>
 
   <Accordion title="Snowflake" defaultOpen={false}>
@@ -1112,51 +878,6 @@ The process begins with creating a new Lens project and generating a semantic mo
         lensBaseDir: sample/lens/source/depot/snowflake/model # Relative path of the Lens 'model' directory in the repository (mandatory)
         syncFlags: # Additional flags used during synchronization, such as specific branch.
           - --ref=lens # Repository Branch
-
-      api: # API Instances configuration (optional)
-        replicas: 1 # Number of API instance replicas (optional)
-        logLevel: info  # Logging granularity (optional)
-        resources: # CPU and memory configurations for API Instances (optional)
-          requests:
-            cpu: 100m
-            memory: 256Mi
-          limits:
-            cpu: 2000m
-            memory: 2048Mi
-
-      worker: # Worker configuration (optional)
-        replicas: 2 # Number of Worker replicas (optional)
-        logLevel: debug # Logging level (optional)
-        resources: # CPU and memory configurations for Worker (optional)
-          requests:
-            cpu: 100m
-            memory: 256Mi
-          limits:
-            cpu: 6000m
-            memory: 6048Mi
-
-      router: # Router configuration (optional)
-        logLevel: info  # Level of log detail (optional)
-        resources: # CPU and memory resource specifications for the router (optional)
-          requests:
-            cpu: 100m
-            memory: 256Mi
-          limits:
-            cpu: 6000m
-            memory: 6048Mi
-
-      iris:
-        logLevel: info # Level of log detail (optional)
-        resources: # CPU and memory resource specifications for the iris board (optional)
-          requests:
-            cpu: 100m
-            memory: 256Mi
-          limits:
-            cpu: 6000m
-            memory: 6048Mi
-
-      metric:    #optional
-        logLevel: info
     ```
 
     ### Step 4: Apply the Lens deployment manifest file
@@ -1335,48 +1056,6 @@ The process begins with creating a new Lens project and generating a semantic mo
         # secretId: lens2_bitbucket_r
         syncFlags:
           - --ref=lens
-
-      api:   # optional
-        replicas: 1 # optional
-        logLevel: info  # optional 
-        resources: # optional
-          requests:
-            cpu: 100m
-            memory: 256Mi
-          limits:
-            cpu: 2000m
-            memory: 2048Mi
-
-      worker: # optional
-        replicas: 2 # optional
-        logLevel: debug  # optional
-
-        resources: # optional
-          requests:
-            cpu: 100m
-            memory: 256Mi
-          limits:
-            cpu: 6000m
-            memory: 6048Mi
-
-      router: # optional
-        logLevel: info  # optional
-        resources: # optional
-          requests:
-            cpu: 100m
-            memory: 256Mi
-          limits:
-            cpu: 6000m
-            memory: 6048Mi
-      iris:
-        logLevel: info  
-        resources: # optional
-          requests:
-            cpu: 100m
-            memory: 256Mi
-          limits:
-            cpu: 6000m
-            memory: 6048Mi
     ```
 
     The YAML manifest provided is designed for a cluster named `minervacluster`, created on the `Minerva` source, with a data catalog named `onelakehouse`. To utilize this manifest, duplicate the file and update the source details as needed.
@@ -1406,23 +1085,6 @@ The process begins with creating a new Lens project and generating a semantic mo
     <Info>
       Within the Themis and Minerva cluster, all Depots (such as onelakehouse, Redshift, Snowflake, etc.) are integrated. When configuring Lens, you only need to specify one Depot in the \`catalog\` field, as Lens can connect to and utilize Depots from all sources available in the Themis cluster.
     </Info>
-
-    ## Docker compose manifest file
-
-    <Accordion title="Click here to view the complete docker compose  manifest and it's procedure" defaultOpen={false}>
-      ```
-      Prerequisites
-      The hostname for the Trino database server.
-      The username for the DataOS User.
-      The name of the database to use with the Minerva query engine database server.
-      Docker compose configuration
-      Add the following environment variables to your Lens (.env) file
-      Environment variables attribute
-      Example
-      trino.zip
-
-      ```
-    </Accordion>
 
     ## Check Query Stats for Minerva
 
@@ -1613,42 +1275,6 @@ The process begins with creating a new Lens project and generating a semantic mo
         syncFlags:
           - --ref=main #repo-name
 
-      api:   # optional
-        replicas: 1 # optional
-        logLevel: info  # optional    
-        resources: # optional
-          requests:
-            cpu: 100m
-            memory: 256Mi
-          limits:
-            cpu: 2000m
-            memory: 2048Mi
-      worker: # optional
-        replicas: 2 # optional
-        resources: # optional
-          requests:
-            cpu: 100m
-            memory: 256Mi
-          limits:
-            cpu: 6000m
-            memory: 6048Mi
-      router: # optional
-        resources: # optional
-          requests:
-            cpu: 100m
-            memory: 256Mi
-          limits:
-            cpu: 6000m
-            memory: 6048Mi
-      iris:
-        logLevel: info  
-        resources: # optional
-          requests:
-            cpu: 100m
-            memory: 256Mi
-          limits:
-            cpu: 6000m
-            memory: 6048Mi
     ```
 
     The YAML manifest provided is designed for a cluster named `minervacluster`, created on the `Minerva` source, with a data catalog named `onelakehouse`. To utilize this manifest, duplicate the file and update the source details as needed.
