@@ -148,9 +148,9 @@
     {
       "group": "Monitoring",
       "pages": [
-        "resources/lens/monitoring/metric_monitoring",
-        "resources/lens/monitoring/operational_monitoring",
-        "resources/lens/monitoring/infrastructure_monitoring"
+        "resources/lens/metric_monitoring",
+        "resources/lens/operational_monitoring",
+        "resources/lens/infrastructure_monitoring"
       ]
     },
     {
