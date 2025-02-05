@@ -246,26 +246,4 @@ Add the following environment variables to your Lens (.env) file
 | `LENS2_CONCURRENCY`       | The number of concurrent connections each queue has to the database. Default is `2`                                                                                           | 3,4                                                                                                                                                                                                     | `2`                          |              |
 | `LENS2_DB_MAX_POOL`       | The maximum number of concurrent database connections to pool. Default is `8`                                                                                                 | 9,10                                                                                                                                                                                                    | `8`                          |              |
 
-## Check Query Stats for Themis
-
-<Info>
-  Please ensure you have the required permission to access the Operations.
-</Info>
-
-To check the query statistics, please follow the steps below:
-
-1. **Access the Themis Cluster:** Navigate to the Themis cluster. You should see a screen similar to the image below:
-
-2. **Select the Running Driver:** Choose the running driver. **This driver will always be the same, regardless of the user, as queries will be directed to the creator of the Themis cluster**. The running driver remains consistent for all users.
-
-3. **View the Spark UI:** Go to terminal and use the following command to view the spark UI:
-
-```yaml
-dataos-ctl -t cluster -w public -n themislens --node themis-themislens-iamgroot-default-a650032d-ad6b-4668-b2d2-cd372579020a-driver view sparkui
-
-dataos-ctl -t cluster -w public -n themis_cluster_name --node  driver_name view sparkui
-```
-
-You should see the following interface:
-
-![](/resources/lens/data_sources/Themis/Untitled\(9\).png)
+##
