@@ -10,9 +10,15 @@ A financial services company aims to leverage its customer data for credit card 
 
 1. **Create an Instance Secret**
 
-   To create a Depot for data connection, first create an Instance Secret Resource to securely store the credentials of MSSQL.<Info>
+   To create a Depot for data connection, first create an Instance Secret Resource to securely store the credentials of MSSQL.
+
+
+
+   <Info>
      Here, it is assumed that you are already familiar with the creation of an Instance Secret.
-   </Info><CodeGroup>
+   </Info>
+   
+   <CodeGroup>
      ```yaml Read-only instance-secret
      name: mssqldepot-r 
      version: v1 # Manifest version
@@ -43,9 +49,13 @@ A financial services company aims to leverage its customer data for credit card 
      ```
    </CodeGroup>
 
-2. **Create a Depot manifest file**
+3. **Create a Depot manifest file**
 
-   After creating an Instance Secret, next step is to create a manifest file for Depot.<CodeGroup>
+   After creating an Instance Secret, next step is to create a manifest file for Depot.
+
+
+
+   <CodeGroup>
      ```yaml Depot manifest file
      name: mssqldepot
      version: v2alpha
@@ -77,13 +87,15 @@ A financial services company aims to leverage its customer data for credit card 
      ```
    </CodeGroup>
 
-3. **Apply the Depot manifest file**
+5. **Apply the Depot manifest file**
 
-   Apply the Depot manifest file by executing the below command.```bash
+   Apply the Depot manifest file by executing the below command.
+
+   ```bash
    dataos-ctl apply -f /home/mssql_depot.yaml
    ```
 
-4. **Validate the Depot**:
+7. **Validate the Depot**:
 
    * The FS Accelerator Data Product now contains an updated set of customer data. This information is available for consumption by other systems, such as those involved in credit card cross-selling, or any operational systems that require a consolidated and accurate view of customers.
 
