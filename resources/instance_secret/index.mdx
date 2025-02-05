@@ -3,6 +3,7 @@ search: "[object Object]"
 description: "An Instance Secret is a DataOS Resource designed for securely storing sensitive information at the DataOS instance level. This includes usernames, passwords, certificates, tokens, and keys. The primary purpose of an Instance Secret is to address the inherent exposure risk associated with directly embedding such confidential data within application code or manifest files (YAML configuration files). Instance secrets establish a critical segregation between sensitive data and Resource definitions. This division minimizes inadvertent exposure during various Resource management phases, including creation, viewing, or editing. By leveraging Instance Secrets, data developers safeguard sensitive information, mitigating security vulnerabilities inherent in their data workflows."
 sidebarTitle: "What is an Instance Secret?"
 title: "Introduction"
+mode: "wide"
 ---
 
 Operators can exercise precise control over who can retrieve credentials from Secrets. If any data developer in your organization needs access to secrets, you can assign them a 'read instance secret' use case using Bifrost.
