@@ -68,6 +68,7 @@
                   "resources/depot/governance",
                   "resources/depot/observability",
                   "resources/depot/supported_connectors",
+                  "resources/depot/cataloging",
                   "resources/depot/example"
                 ]
               },
