@@ -45,7 +45,6 @@ This section includes steps for creating the Instance Secret to secure commonly 
 
     To create an Instance Secret for securing ABFSS credentials, you must have the following information:
 
-
     * **Azure Endpoint Suffix**: The endpoint suffix for the Azure Storage account. This is typically region-specific and can be found in the Azure Portal under the **Properties** section of your storage account.
 
     * **Azure Storage Account Key**: The access key for the Azure Storage account, used for authentication. You can retrieve this from the Azure Portal by navigating to your storage account, selecting **Access keys** under the **Security + networking** section, and copying the key.
@@ -55,12 +54,12 @@ This section includes steps for creating the Instance Secret to secure commonly 
     ```bash
           NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
     ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-      iamgroot │ iamgroot │ person │ iamgroot@tmdc.io │ roles:id:data-dev,              
+      iamgroot  │ iamgroot  │ person  │   iamgroot@tmdc.io       │ roles:id:data-dev,              
                    │             │        │                      │ roles:id:user,                  
                    │             │        │                      │ users:id:iamgroot 
     ```
 
-    * **Tags: If a developer wants to use an Instance Secret they must have the following tags assigned:**
+    * **Tags:** If a developer wants to use an Instance Secret they must have the following tags assigned by an operator:
 
 
     * **Use cases:**
