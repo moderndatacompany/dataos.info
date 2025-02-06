@@ -51,18 +51,34 @@ This section includes steps for creating the Instance Secret to secure commonly 
 
     * **Azure Storage Account Name**: The name of the Azure Storage account used to identify it within your subscription. This can be found in the Azure Portal under the **Overview** section of your storage account.
 
-    ```bash
-          NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-    ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-      iamgroot  │ iamgroot  │ person  │   iamgroot@tmdc.io       │ roles:id:data-dev,              
-                   │             │        │                      │ roles:id:user,                  
-                   │             │        │                      │ users:id:iamgroot 
+    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+
+    ```
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │ roles:id:operator,              
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
     ```
 
-    * **Tags:** If a developer wants to use an Instance Secret they must have the following tags assigned by an operator:
+    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
 
+    <Tabs>
+      <Tab title="use case ">
+        ![](/usecase2.png)
+      </Tab>
 
-    * **Use cases:**
+      <Tab title="tags">
+        ```bash
+              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                       │             │        │                      │  roles:id:user,                  
+                       │             │        │                      │ users:id:iamgroot  
+        ```
+      </Tab>
+    </Tabs>
 
     Ensure that you have these details ready before proceeding with the Instance Secret creation process.
 
