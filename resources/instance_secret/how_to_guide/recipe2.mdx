@@ -138,7 +138,7 @@
             --8<-- "examples/resources/instance_secret/redshift/redshift_rw.yaml"
             ```
 
-        To create an instance-secret for securely storing Amazon Redshift credentials, the details required are provided below. Ensure that you replace each placeholder (e.g., ${redshift-depot-name}, ${username}, ${access key}) with the actual values pertaining to your Redshift and AWS account configuration.
+        To create an instance-secret for securely storing Amazon Redshift credentials, the details required are provided below. Ensure that you replace each placeholder (e.g., `${redshift-depot-name}`, `${username}`, `${access key}`) with the actual values pertaining to your Redshift and AWS account configuration.
 
           - `name`: Define the name of your Instance secret `${redshift-depot-name}-${acl}`. For instance, if your `${redshift-depot-name}` is alpha and the `acl`(access control list) is `rw`, then the instance secret `name` will be `alpha-rw`.
 

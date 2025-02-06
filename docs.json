@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
+  "theme": "maple",
   "name": "DataOS Documentation",
   "colors": {
     "primary": "#1E88E5",
@@ -11,7 +11,7 @@
   "navigation": {
     "versions": [
       {
-        "version": "v1.22",
+        "version": "v4.0",
         "tabs": [
           {
             "tab": "Home",
@@ -123,25 +123,6 @@
                 "group": "Scanner",
                 "pages": [
                   "resources/scanner/index"
-                ]
-              }
-            ]
-          },
-          {
-            "tab": "APIs and SDKs",
-            "groups": [
-              {
-                "group": "API Documentation",
-                "pages": [
-                  "api-and-sdk/introduction"
-                ]
-              },
-              {
-                "group": "Endpoint Examples",
-                "pages": [
-                  "api-and-sdk/endpoint/get",
-                  "api-and-sdk/endpoint/create",
-                  "api-and-sdk/endpoint/delete"
                 ]
               }
             ]
