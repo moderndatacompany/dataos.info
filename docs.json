@@ -2,12 +2,33 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
   "name": "DataOS Documentation",
+  "description": "",
   "colors": {
     "primary": "#1E88E5",
     "light": "#BBDEFB",
     "dark": "#0D47A1"
   },
-  "favicon": "/favicon.svg",
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg",
+    "href": "https://www.themoderndatacompany.com/"
+  },
+  "favicon": {
+    "light": "/favicon.svg",
+    "dark": "/favicon.svg"
+  },
+  "styling": {
+    "eyebrows": "breadcrumbs",
+    "codeblocks": "dark"
+  },
+  "icons": {
+    "library": "fontawesome"
+  },
+  "fonts": {
+    "heading": {
+      "family": "Open Sans"
+    }
+  },
   "navigation": {
     "versions": [
       {
@@ -122,7 +143,52 @@
               {
                 "group": "Scanner",
                 "pages": [
-                  "resources/scanner/index"
+                  "resources/scanner/index",
+                  {
+                    "group": "Supported sources",
+                    "pages": [
+                      {
+                        "group": "Data Sources",
+                        "pages": [
+                          "resources/scanner/supported_sources/data_sources/azure_sql",
+                          "resources/scanner/supported_sources/data_sources/bigquery",
+                          "resources/scanner/supported_sources/data_sources/kafka",
+                          "resources/scanner/supported_sources/data_sources/maria_db",
+                          "resources/scanner/supported_sources/data_sources/mssql",
+                          "resources/scanner/supported_sources/data_sources/mysql",
+                          "resources/scanner/supported_sources/data_sources/lakehouse",
+                          "resources/scanner/supported_sources/data_sources/oracle",
+                          "resources/scanner/supported_sources/data_sources/postgresql",
+                          "resources/scanner/supported_sources/data_sources/pulsar",
+                          "resources/scanner/supported_sources/data_sources/redshift",
+                          "resources/scanner/supported_sources/data_sources/snowflake"
+                        ]
+                      },
+                      {
+                        "group": "System Sources",
+                        "pages": [
+                          "resources/scanner/supported_sources/system_metadata_sources/data_product_scanner",
+                          "resources/scanner/supported_sources/system_metadata_sources/system_metadata_sync",
+                          "resources/scanner/supported_sources/system_metadata_sources/user_information"
+                        ]
+                      },
+                      {
+                        "group": "Indexer Services",
+                        "pages": [
+                          "resources/scanner/supported_sources/indexer_services/data_profiling",
+                          "resources/scanner/supported_sources/indexer_services/data_quality",
+                          "resources/scanner/supported_sources/indexer_services/dataos_resources",
+                          "resources/scanner/supported_sources/indexer_services/query_usage"
+                        ]
+                      }
+                    ]
+                  },
+                  "resources/scanner/configurations",
+                  "resources/scanner/governance",
+                  "resources/scanner/cataloging",
+                  "resources/scanner/best_practices",
+                  "resources/scanner/observability",
+                  "resources/scanner/recipes"
                 ]
               }
             ]
@@ -144,11 +210,6 @@
         }
       ]
     }
-  },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg",
-    "href": "https://www.themoderndatacompany.com/"
   },
   "background": {
     "decoration": "gradient"
@@ -228,20 +289,5 @@
         ]
       }
     ]
-  },
-  "fonts": {
-    "heading": {
-      "family": "Open Sans"
-    }
-  },
-  "redirects": [
-    {
-      "source": "getting_started/introduction",
-      "destination": ""
-    },
-    {
-      "source": "resources/lens/index/",
-      "destination": "resources/lens/"
-    }
-  ]
+  }
 }
