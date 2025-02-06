@@ -94,6 +94,12 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     Begin by creating a manifest file to hold the configuration details for your ABFSS Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
+    <Warning>
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets on with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`&#x20;
+    </Warning>
+
+
+
     <CodeGroup>
       ```yaml Read-only instance-secret
       # Azure Blob File System Secure (ABFSS) Read Instance Secret Manifest
