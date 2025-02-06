@@ -129,41 +129,4 @@ Each section of the YAML template outlines essential elements of the Lens deploy
   Within the Themis and Minerva cluster, all depots (such as Icebase, Redshift, Snowflake, etc.) are integrated. When configuring Lens, you only need to specify one depot in the \`catalog\` field, as Lens can connect to and utilize depots from all sources available in the Themis cluster.
 </Info>
 
-## Docker compose manifest file
-
-<Accordion title="Click here to view the complete docker compose  manifest and it's procedure" defaultOpen={false}>
-  ```
-  Prerequisites
-  The hostname for the Trino database server.
-  The username for the DataOS User.
-  The name of the database to use with the Minerva query engine database server.
-  Docker compose configuration
-  Add the following environment variables to your Lens (.env) file
-  Environment variables attribute
-  Example
-  trino.zip
-
-  ```
-</Accordion>
-
-### Check Query Stats for Minerva
-
-To check the query statistics, please follow the steps below:
-
-**1. Access Minerva queries:** Navigate to the operation section and then to Minerva queries. Set the filters as follows:
-
-<Frame>
-  <img src="/resources/lens/data_sources/minerva/Untitled1.png" />
-</Frame>
-
-* Source: `lens2`
-
-* Dialect: `trino_sql`
-
-* You can also filter by cluster, username, and other criteria as per your choice.
-
-**2. Select the query ID:** Choose the query ID you are interested in. You will then be able to check the statistics, as shown in the example below:
-
-<Frame>
-  <img src="/resources/lens/data_sources/minerva/Untitled1.png" />
-</Frame>
+##
