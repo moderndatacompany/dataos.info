@@ -1,0 +1,187 @@
+---
+title: 'PowerBI'
+description: 'This document will guide on integrating the semantic model with the Power BI to create visualizations and reports. '
+---
+
+The semantic model can be integrated with PowerBI using the following Ways
+
+* [Using Data Product Hub(Recommended - GUI based)](/resources/lens/bi_integration/powerbi#using-data-product-hub): This method provides a user-friendly, graphical interface for integrating the semantic model with Power BI.  This approach is ideal for those who prefer an intuitive, no-code setup.
+
+* [Using Curl command (Command-Line based)](): By executing a simple cURL request, users can fetch and connect the semantic model directly to Power BI. This method is suitable for advanced users looking to script or automate the integration process.
+
+## Using Data Product Hub
+
+<Steps>
+  <Step title="Navigate to the Data Product Hub" titleSize="h2">
+    Access the Home Page of DataOS. From there, navigate to the Data Product Hub to explore the various Data Products available within the platform.
+
+    ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/image%20\(1\).png)
+  </Step>
+
+  <Step title="Browse and select a Data Product" titleSize="h2">
+    Browse the list of Data Products and select a specific Data Product to initiate integration with Power BI. For example, selecting 'Sales360' allows detailed exploration and integration of the Sales360 Data Product.
+
+    ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/image%20\(2\).png)
+  </Step>
+
+  <Step title="Access integration options" titleSize="h2">
+    Go to the BI Sync option under the Access Options tab. Scroll down to locate the Excel and Power BI section, and click the Download .pbip File button to download the ZIP folder.
+
+    ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/powerbi/Powerbi3.png)
+  </Step>
+
+  <Step title="Download and open the ZIP file" titleSize="h2">
+    Access the downloaded ZIP file on the local system and extract its contents to the specified directory. The extracted folder will contain three files. Ensure all three files remain in the same directory to maintain semantic synchronization of the Data Product.
+
+    ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Untitled%20\(15\).png)
+
+    The folder contains the main components of a Power BI project for syncing the semantic model (here `sales360`) including folders such as the `.Report` and `.SemanticModel`. Following is the brief description of each:
+
+    * **public\_sales360.Report:** This folder contains `definition.pbir` file related to the report definition in Power BI. These files define the visual representation of data, such as tables and charts, without storing actual data. They connect the semantic model and data sources to create the report views.
+
+    * **public-sales360.SemanticModel:** This folder contains files that define the underlying semantic model for your Power BI project. The semantic model plays a crucial role in managing how Power BI interacts with data, setting up relationships, hierarchies, and measures.
+
+      * **definition.bism:** This file represents the Business Intelligence Semantic Model (BISM). It defines the structure of your data, including data sources, relationships, tables, and measures for your semantic model. The `.bism` file holds essential metadata that helps Power BI understand and query the data, forming the core of the semantic model for report creation and analysis.
+
+      * **model.bim:** Power BI uses the `.bim` file to generate queries and manage interactions with the dataset. When you build reports or dashboards in Power BI, it references this semantic model to ensure the correct structure is applied to the data.
+
+    * **public-sales-360-table.pbip:** This file serves as a Power BI project template or configuration file. Power BI uses files `.pbip` or `.pbix` to encapsulate reports, datasets, and visualizations. The `.pbip` file ties together the semantic model and report definitions from the other folders, acting as the entry point for working on the project in Power BI Desktop or the Power BI service.
+  </Step>
+
+  <Step title="Enter credentials" titleSize="h2">
+    Open the `public_sales360` file in Power BI, once the file is opened, a popup will appear prompting for the DataOS username and API key.
+
+    ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Untitled%20\(16\).png)
+    Click the connect button. A popup will appear; click OK.
+  </Step>
+
+  <Step title="View data in Power BI" titleSize="h2">
+    After connecting, users can see tables and views containing dimensions and measures and create dashboards.
+
+    ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Untitled%20\(19\).png)
+  </Step>
+</Steps>
+
+## Important considerations
+
+* **Measure naming convention:** In Power BI, measures typically have an 'm\_' prefix to indicate they represent a measure. For example, a measure calculating total revenue might be named m\_total\_revenue.
+
+* **Live connection:** The connection is live, meaning any changes to the underlying data will be reflected in Power BI.
+
+* **Schema changes:** If schema changes occur, such as the addition of new dimensions and measures, the steps outlined above will need to be repeated.
+
+* **Row Limit:** The Lens API has a maximum return limit of 50,000 rows per request. To obtain additional data, it is necessary to set an offset. This row limit is in place to manage resources efficiently and ensure optimal performance.
+
+* **Selection:** It is important to select fields from tables that are directly related or logically joined, as the system does not automatically identify relationships between tables through transitive joins. Selecting fields from unrelated tables may result in incorrect or incomplete results.
+
+## Data governance and access control
+
+Data masking, restrictions, or permissions established by the publisher are automatically enforced for all report viewers, ensuring consistent data security and compliance. The behavior of these data policies, such as masking, may vary based on the user of the Power BI desktop.
+
+## Prerequisites
+
+Before proceeding with the integration of Lens with Power BI, ensure that you have the following prerequisites in place:
+
+* **CURL**: Ensure that CURL is installed on your system. Windows users may need to use `curl.exe`.
+
+* **Version compatibility:** It is strongly recommended to download Power BI Version `2.132.908.0` or later to fully utilize `.pbip` files.&#x20;
+
+* **Lens API Endpoint**: The API endpoint provided by Lens to synchronize the semantic model, enabling integration with Power BI.
+
+* **DataOS API key**: You will need your apikey  for authentication. The API key can be obtained using the following command in your terminal:
+
+## Curl command
+
+Use the following CURL command to synchronize the semantic model with Power BI:
+
+<CodeGroup>
+  ```shell Command
+  curl --location --request POST 'https://<DATAOS_FQDN>/lens2/sync/api/v1/power-bi/<workspace_name>:<lens_name>' \
+    --header 'apikey: ${APIKEY}' \
+    --output ${FILE_NAME}.zip
+  ```
+
+  ```
+  curl --location --request POST 'https://</lens2/sync/api/v1/power-bi/<workspace_name>:<lens_name>' \
+    --header 'apikey: ${APIKEY}' \
+    --output ${FILE_NAME}.zip
+  ```
+
+  ```
+  console.log("Hello World");
+  ```
+</CodeGroup>
+
+## Parameters
+
+| Parameter      | Description                                                                                                               |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `URL`          | The URL  for syncing Lens with Power BI. It includes:                                                                     |
+| `apikey`       | User's API key for the current context in Lens.                                                                           |
+| `filename.zip` | Here you give the name of the Power BI file with which name you wish to download it. For example, `product-analysis.zip`. |
+
+The `file.zip` includes essential components for syncing a semantic model with Power BI, organized into folders such as `.Report` and `.SemanticModel`:
+
+## Steps
+
+To begin syncing a semantic model, the following steps should be followed:
+
+<Steps>
+  <Step title="Open the terminal" titleSize="h2">
+    Open the terminal and paste the following command:
+
+    ```
+    curl --location --request POST 'https://tcp.{context}.dataos.app/lens2/sync/api/v1/power-bi/{workspace_name}:{lens_name}' --header 'apikey: abcdefgh==' --output {file.zip}
+    ```
+
+    Replace the placeholders with your current context, workspace, lens name and the apikey.
+  </Step>
+
+  <Step title=" Extract the zip file" titleSize="h2">
+    Once the command is executed, a zip file will be downloaded to the specified directory. The downloaded file should be unzipped. Three folders will be found inside, all of which are necessary for semantic synchronization with Power BI.
+
+    ![Superset Configuration](https://dataos.info/resources/lens/bi_integration/powerbi2.png)
+
+    <Note>
+      Ensure that `.pbip` folders are fully extracted before opening them.Failure to do so may result in missing file errors, as shown below:
+      ![Superset Configuration](https://dataos.info/resources/lens/bi_integration/image.png)
+    </Note>
+  </Step>
+
+  <Step title="Open the `.pbip` file" titleSize="h2">
+    Click on the file with `.pbip` extension to open  the Power BI file in the Power BI Desktop.
+
+    ![Superset Configuration](https://dataos.info/resources/lens/bi_integration/powerbi3.png)
+  </Step>
+
+  <Step title="Enter credentials" titleSize="h2">
+    After opening the file, a popup will prompt for credentials. The DataOS username and API key should be entered.
+
+    ![Superset Configuration](https://dataos.info/resources/lens/bi_integration/powerbi4.png)
+  </Step>
+
+  <Step title=" Connect to DataOS" titleSize="h2">
+    ![Superset Configuration](https://dataos.info/resources/lens/bi_integration/powerbi6.png)
+    Click on the connect button. A popup will appear. Click Ok.
+  </Step>
+
+  <Step title="Create dashboards" titleSize="h2">
+    Upon successful connection, tables and views will be accessible, displaying dimensions and measures. Now you are ready to create dashboards.
+  </Step>
+</Steps>
+
+## Important considerations
+
+* **Measure naming convention:** In Power BI, measures typically have an 'm\_' prefix to indicate they represent a measure. For example, a measure calculating total revenue might be named m\_total\_revenue.
+
+* **Live connection:** The connection is live, meaning any changes to the underlying data will be reflected in Power BI.
+
+* **Schema changes:** If schema changes occur, such as the addition of new dimensions and measures, the steps outlined above will need to be repeated.
+
+* **Row Limit:** The Lens API has a maximum return limit of 50,000 rows per request. To obtain additional data, it is necessary to set an offset. This row limit is in place to manage resources efficiently and ensure optimal performance.
+
+* **Selection:** It is important to select fields from tables that are directly related or logically joined, as the system does not automatically identify relationships between tables through transitive joins. Selecting fields from unrelated tables may result in incorrect or incomplete results.
+
+## Data governance and access control
+
+Data masking, restrictions, or permissions established by the publisher are automatically enforced for all report viewers, ensuring consistent data security and compliance. The behavior of these data policies, such as masking, may vary based on the user of the Power BI desktop.
