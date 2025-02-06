@@ -1,95 +1,132 @@
 ---
 title: "Superset"
+description: "The following document guides on integrating the semantic model with Superset."
 ---
 
-<Tip>
-  For a streamlined and user-friendly integration with Superset, use the Data Product Hub interface. This approach allows you to easily integrate your Lens model's semantic model with Superset, eliminating the need to manually work with \`curl\` commands. To get started with Superset integration through the Data Product Hub, refer to the link below: [Access the Superset integration guide](/interfaces/data_product_hub/activation/bi_sync/superset/).
-</Tip>
+## Using Data Product Hub(Recommended)
 
-## Prerequisites
+This method provides a user-friendly, graphical interface for integrating the semantic model with Superset. This approach is ideal for those who prefer an intuitive, no-code setup while ensuring seamless integration with Superset.
 
-* **Curl**: Ensure `curl` is installed on the system. For Windows users, `curl.exe` may be required.
+<Steps>
+  <Step title="Access Superset Integration" titleSize="h2">
+    Go to the 'Access Options' tab for your Data product in Data Product Hub. Under the 'BI Sync' section, locate the 'Superset' option.
 
-* **Lens API endpoint**: The API endpoint provided by Lens to sync semantic model, enabling integration with Superset.
+    ![superset\_sync.png](https://dataos.info/learn/dp_consumer_learn_track/integrate_bi_tools/superset/superset_sync.png)
+  </Step>
 
-* **Access credentials**: Access credentials such as username, password, and host are required for Superset.
+  <Step title="Initiate the Connection" titleSize="h2">
+    Click on 'Add Connection' under the Superset option. This action will open a new window where you’ll enter your credentials to link DataOS with Superset.
 
-Superset requires the login credentials (username and password) and the host address where Superset is hosted. The command establishes a database and table with a live connection to the Lens model in Superset, enabling direct interaction with and visualization of data from Lens within the Superset environment.
+    ![superset\_conn.png](https://dataos.info/learn/dp_consumer_learn_track/integrate_bi_tools/superset/superset_conn.png)
+  </Step>
 
-## Steps
+  <Step title="Enter Superset Credentials" titleSize="h2">
+    In the setup window, fill in the required credentials:
 
-To sync the Lens model with Superset, follow these steps:
+    * **Username**: The Superset account username.
 
-**Step 1: Run the curl command**
+    * **Password**: The corresponding password for this account.
 
-Copy the curl command syntax below and replace the placeholders with the actual values.
+    <Info>
+      You may need to consult your DataOS Administrator for the username and password of the Superset.
+    </Info>
+  </Step>
 
-<CodeGroup>
-  ```bash Syntax
-  curl --location --request POST 'https://<DATAOS_FQDN>/lens2/sync/api/v1/superset/<WORKSPACE_NAME>:<LENS-NAME>' \
-  --header 'apikey: <apikey>' \
-  --header 'Content-Type: application/json' \
-  --data-raw '
-  {
-      "username": "<superset username>",
-      "password": "<superset password>",
-      "host": "https://superset-<DATAOS_FQDN>"
-  }
-  ```
+  <Step title="Activate the Data Product" titleSize="h2">
+    Once you’ve entered all the credentials, click 'Activate' to complete the setup. This will link the *Product Affinity* semantic model with Superset.
 
-  ```bash Example
-  curl --location --request POST 'https://liberal-monkey.dataos.app/lens2/sync/api/v1/superset/public:company-intelligence' \
-  --header 'apikey: aueniekQa==' \
-  --header 'Content-Type: application/json' \
-  --data-raw '
-  {
-      "username": "adder_1",
-      "password": "adder_1",
-      "host": "https://superset-liberal-monkey.dataos.app"
-  }
-  ```
-</CodeGroup>
+    ![superset-connections.png](https://dataos.info/learn/dp_consumer_learn_track/integrate_bi_tools/superset/superset-connections.png)
+  </Step>
 
-**Command parameters:**
-
-* **`URL`**: [`https://liberal-monkey.dataos.app/lens2/sync/api/v1/superset/public:quality360`.](https://liberal-monkey.dataos.app/lens2/sync/api/v1/superset/public:quality360.) This is the endpoint for syncing with Superset.
-
-* **`DataOS FQDN`**: Current DataOS FQDN, e.g., `liberal-monkey.dataos.app`.
-
-* **`--header 'Content-Type: application/json'`**: Specifies the content type as JSON.
-
-* **`Lens_Name`**: Name of the Lens, e.g., `quality360`.
-
-* **`API_Key`**: DataOS API key. The DataOS API key for the user can be obtained by executing the command below.\`\`\`bash
-  dataos-ctl user apikey get```
-  ```
-
-Upon initiation, a response will be received:
-
-```bash
-{
-    "message": "started"
-}
-...
-{
-    "message": "Superset project creation and sync completed successfully."
-}
-```
-
-Once the command is executed in the terminal, results will be visible in the Superset app as demonstrated below:
-
-Please follow the steps outlined to see the result:
-
-**Step 2 Go to DataOS**: Go to DataOS and select Superset.
-
-![Superset Configuration](/resources/lens/bi_integration/superset2.png)
-
-**Step 3 Navigate to Datasets tab:** Here, each entity will appear as a dataset.
-
-![Superset Configuration](/resources/lens/bi_integration/superset3.png)
-
-The setup is complete. Further exploration and analysis can be performed in Superset.
+  <Step title="Access Data Product in Superset" titleSize="h2">
+    After activation, go to the DataOS homepage. Scroll to the 'Apache Superset' section, click on 'Datasets', and locate your activated data product available as datasets. You’re now ready to start visualizing and building analytical dashboards.
+  </Step>
+</Steps>
 
 ## Data policies and security
 
 Any data masking, restrictions, or permissions defined by the publisher will automatically be enforced for all viewers of the report, ensuring consistent data security and compliance. However, the behavior of data policies (e.g., masking) depends on who is the user of the Superset.
+
+## Using Curl command
+
+### **Prerequisites**
+
+* **Curl**: Ensure `curl` is installed on the system. For Windows users, `curl.exe` may be required.
+
+* **Lens API endpoint**: The API endpoint provided by Lens to sync semantic model, enabling integration with Superset.
+
+* **Access credentials**: Superset requires the login credentials (username and password) and the host address where Superset is hosted.&#x20;
+
+## Steps
+
+To sync the semantic model with Superset, follow these steps:
+
+<Steps>
+  <Step title="Run the curl command" titleSize="h2">
+    Copy the curl command syntax below and replace the placeholders with the actual values.
+
+    <CodeGroup>
+      ```yaml Syntax
+      curl --location --request POST 'https://<DATAOS_FQDN>/lens2/sync/api/v1/superset/<WORKSPACE_NAME>:<LENS-NAME>' \
+      --header 'apikey: <apikey>' \
+      --header 'Content-Type: application/json' \
+      --data-raw '
+      {
+          "username": "<superset username>",
+          "password": "<superset password>",
+          "host": "https://superset-<DATAOS_FQDN>"
+      }
+      ```
+
+      ```
+      console.log("Hello World");
+      ```
+    </CodeGroup>
+
+    **Command paramters:**
+
+    * **`URL`**: `https://liberal-monkey.dataos.app/lens2/sync/api/v1/superset/public:quality360`. This is the endpoint for syncing with Superset.
+
+    * **`DataOS FQDN`**: Current DataOS FQDN, e.g., `liberal-monkey.dataos.app`.
+
+    * **`--header 'Content-Type: application/json'`**: Specifies the content type as JSON.
+
+    * **`Lens_Name`**: Name of the Lens, e.g., `quality360`.
+
+    * **`API_Key`**: DataOS API key. The DataOS API key for the user can be obtained by executing the command below.
+
+    ```bash
+    dataos-ctl user apikey get
+    ```
+
+    Upon initiation, a response will be received:
+
+    ```bash
+    {
+        "message": "started"
+    }
+    ...
+    {
+        "message": "Superset project creation and sync completed successfully."
+    }
+    ```
+
+    Once the command is executed in the terminal, results will be visible in the Superset app as demonstrated below:
+  </Step>
+
+  <Step title="Go to DataOS" titleSize="h2">
+    Go to DataOS and select Superset.
+
+    ![Superset Configuration](https://dataos.info/resources/lens/bi_integration/superset2.png)
+  </Step>
+
+  <Step title=" Navigate to Datasets tab" titleSize="h2">
+    Here, each entity will appear as a dataset.
+
+    ![Superset Configuration](https://dataos.info/resources/lens/bi_integration/superset3.png)
+
+    The setup is complete. Further exploration and analysis can be performed in Superset.
+  </Step>
+</Steps>
+
+##
