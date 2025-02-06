@@ -37,7 +37,9 @@ The structure of the Instance Secret manifest file is outlined as follows:
 
 This section includes steps for creating the Instance Secret to secure commonly used data sources and repositories. A Data Product developer is generally responsible for creating an Instance Secret.
 
-#### Data Sources
+**Data Sources**
+
+If you want to store credentials for various data sources in an Instance Secret follow steps given below.
 
 <AccordionGroup>
   <Accordion title="Azure Blob File System Secure (ABFSS)" defaultOpen={false}>
@@ -4045,7 +4047,9 @@ This section includes steps for creating the Instance Secret to secure commonly 
   </Accordion>
 </AccordionGroup>
 
-#### Repositories
+**Repositories**
+
+If you want to store credentials for hosted code repositories in an Instance Secret follow steps given below.
 
 <AccordionGroup>
   <Accordion title="AWS CodeCommit" defaultOpen={false}>
@@ -4093,7 +4097,6 @@ This section includes steps for creating the Instance Secret to secure commonly 
     </Tabs>
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
-
 
     To create a AWS CodeCommit Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
 
@@ -4182,10 +4185,7 @@ This section includes steps for creating the Instance Secret to secure commonly 
 
     Bitbucket repository is a central storage location where code, documentation, and related files are managed and versioned. It allows developers to track changes over time, collaborate on code by merging contributions from multiple developers, and maintain a history of modifications.
 
-
-
     ### Pre-requisites
-
 
     To create an Instance Secret for securing AWS CodeCommit credentials, you must have the following information:
 
@@ -4307,7 +4307,6 @@ This section includes steps for creating the Instance Secret to secure commonly 
 
     ### Pre-requisites
 
-
     To create an Instance Secret for securing AWS CodeCommit credentials, you must have the following information:
 
     * **GITSYNC\_USERNAME**: This represents the Git username required for authentication.
@@ -4428,21 +4427,15 @@ This section includes steps for creating the Instance Secret to secure commonly 
 
 Instance Secret can be configured to secure the credentials information through key-value pairs. For a detailed breakdown of the configuration options and attributes, please refer to the documentation: [Attributes of Instance Secret manifest](/resources/instance_secret/configurations).
 
-## Recipes
+## How to use an Instance Secret?
+
+An Instance Secret can be used to create a Depot for data source connections, Services, Workflows, or Workers. Refer to the link below for guidance on using an Instance Secret in various DataOS resources.
 
 [How to refer to an Instance Secret in other DataOS Resources?](/resources/instance_secret/how_to_guide/recipe_1)
 
-## Governance
-
-To govern an Instance Secret, please [refer to this link.](/resources/instance_secret/governance)
-
-## Observability
-
-Instance Secrets can be monitored using Monitor Resource, to know more about it, please [refer to this link.](/resources/instance_secret/observability)
-
 ## How to catalog an Instance Secret?
 
-Once an Instance Secret is successfully created, you can view its metadata in the Metis UI. Additionally, any updates made to an Instance Secret can be tracked in the activity section of Metis.
+Once an Instance Secret is successfully created, you can view its metadata in the Metis UI. Additionally, any updates made to an Instance Secret can be tracked in the Metis's activity section.
 
 ## Best Practices
 
