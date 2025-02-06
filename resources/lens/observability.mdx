@@ -14,7 +14,7 @@ The Lens and its semantic model can be observed and monitored at the following t
 
 ## Metric monitoring
 
-Metric monitoring in Lens focuses on tracking the performance and health of the Lens Resources. It helps in measuring key indicators that define the state of the system. A Lens Resource can be monitored using Monitor and Pager Resources. There are two types of monitor that can be applied to observe the state of Lens and the matrix of the semantic model.
+Metric monitoring in Lens is done by Monitor and Pager Resource focuses on tracking the performance and health of the Lens Resources. It helps in measuring key indicators that define the state of the system. A Lens Resource can be monitored using Monitor and Pager Resources. There are two types of Monitors that can be applied to observe the state of deployed Lens and the matrix of the semantic model.
 
 * [Equation monitor](/resources/lens/observability#metric-monitor)
 
@@ -22,7 +22,7 @@ Metric monitoring in Lens focuses on tracking the performance and health of the 
 
 ### Equation Monitor
 
-Equation Monitor can observe the Lens metrics to generate the incidents when the condition meet.
+Equation Monitor observes the Lens metrics to generate the incidents when the condition meets.
 
 <Steps>
   <Step title="Create Equation Monitor">
@@ -63,12 +63,6 @@ Equation Monitor can observe the Lens metrics to generate the incidents when the
         category: equation
         severity: info
     ```
-
-
-
-
-
-
   </Step>
 
   <Step title="Deploy the Equation Monitor">
@@ -77,34 +71,34 @@ Equation Monitor can observe the Lens metrics to generate the incidents when the
     ```
     dataos-ctl resource apply {manifest-file-path}
     ```
-
-
   </Step>
 
   <Step title="Validated the created Equation Monitor">
-    Validate the creation of Equation monitor  and check status using the `get ` command:
-
-
+    Validate the creation of Equation monitor  and check status using the `get` command:
 
     <CodeGroup>
-      ```javascript Command
+      ```bash Command
       dataos-ctl get -t monitor -w <WORKSPACE_NAME>
       ```
+
+      ```bash Example
+      dataos-ctl get -t monitor -w curriculum
+      ```
     </CodeGroup>
-
-
   </Step>
 
   <Step title="Get the runtime of the Equation Monitor ">
     Get the runtime of the Equation Monitor using the `get runtime` command:
 
     <CodeGroup>
-      ```javascript helloWorld.js
-      console.log("Hello World");
+      ```javascript Command
+      dataos-ctl get runtime -t monitor -w <WORKSPACE_NAME> -N <MONITOR_NAME>
+      ```
+
+      ```
+      dataos-ctl get runtime -t monitor -w c -N <MONITOR_NAME>urriculum
       ```
     </CodeGroup>
-
-
   </Step>
 </Steps>
 
@@ -151,8 +145,6 @@ The following configuration defines a Pager Resource named `lens-equation-monito
               }
 
     ```
-
-
   </Step>
 
   <Step title="Apply the Equation Monitor Pager">
@@ -171,7 +163,7 @@ The following configuration defines a Pager Resource named `lens-equation-monito
     ```
   </Step>
 
-  <Step title="Check the MS teams for incident">
+  <Step title="Check the MS Teams for incident">
     The above pager raised the incident as shown in the below image:
 
     ![](https://mintlify.s3-us-west-1.amazonaws.com/dataosinfo/image.png)
@@ -405,8 +397,6 @@ To observe and monitor the Lens error logs using the Operations app follow the b
   </Step>
 
   <Step title="Navigate to the 'Resource Runtime' tab">
-
-
     In the productaffinity-api dialog box navigate to the 'Resource Runtime' tab. On Resource Runtime tab click on the productaffinity-api node in the Runtime Node section of the page.![](/Screenshotfrom2025-02-0616-30-56.png)
   </Step>
 
@@ -424,8 +414,6 @@ To observe and monitor the Lens error logs using the Operations app follow the b
     * Runtime Node YAML: Inspect the productaffinity-api YAML.
 
     * **Runtime Node Usage** Check how much memory and CPU is utilized by a Node.
-
-
   </Step>
 </Steps>
 
