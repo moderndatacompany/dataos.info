@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "maple",
+  "theme": "mint",
   "name": "DataOS Documentation",
   "colors": {
     "primary": "#1E88E5",
