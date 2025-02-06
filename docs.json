@@ -50,6 +50,7 @@
                   "resources/instance_secret/configurations",
                   "resources/instance_secret/governance",
                   "resources/instance_secret/observability",
+                  "resources/instance_secret/cataloging",
                   "resources/instance_secret/example",
                   {
                     "group": "Recipes",
