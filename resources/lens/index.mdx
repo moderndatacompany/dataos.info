@@ -1,6 +1,6 @@
 ---
 title: "Introduction"
-description: "Lens Resource in DataOS enables the creation of a semantic modeling layer, providing structured access to tabular data in data warehouses and lakehouses. By operating on top of physical tables, Lens allows these tables to be extended into logical models by defining measures, dimensions, and relationships without altering the underlying data. It empowers analytical engineers, the key architects of business intelligence, with a model-first approach. "
+description: "Lens Resource in DataOS enables the creation of a semantic modeling layer, providing structured access to tabular data in data warehouses and lakehouses. By operating on top of physical tables, extending it into logical models by defining measures, dimensions, and relationships without altering the underlying data. "
 ---
 
 <Tip>
@@ -13,7 +13,7 @@ description: "Lens Resource in DataOS enables the creation of a semantic modelin
 
 The semantic modeling layer of the Lens serves as an interface that overlays the underlying data, consistently presenting business users with familiar and well-defined terms such as `product`, `customer`, or `revenue`. This abstraction enables users to access and consume data in a way that aligns with their understanding, facilitating self-service analytics and reducing dependence on data engineers for ad-hoc data requests.
 
-As a Resource within the DataOS ecosystem, Lens enhances Data Product consumption by delivering improvements in how Data Products are accessed and utilized. It streamlines the developer experience in consumption patterns, focusing specifically on refining the use and interaction with Data Products.
+As a Resource within the DataOS ecosystem, Lens enhances Data Product consumption by delivering improvements in how Data Products are accessed and utilized. It streamlines the developer experience in consumption patterns, focusing specifically on refining the use and interaction with Data Products. It empowers analytical engineers, the key architects of business intelligence, with a model-first approach.&#x20;
 
 ## Key features of Lens
 
@@ -256,44 +256,6 @@ The process begins with creating a new Lens project and generating a semantic mo
       dataos-ctl resource apply -f ${manifest-file-path}
       ```
     </Code>
-
-    ## Check query statistics for AWSRedshift
-
-    <Note>
-      Ensure the user has AWS console access before proceeding.
-    </Note>
-
-    <Steps>
-      <Step title="Log in to AWS Console " titleSize="h2">
-        Login to the AWS Console and search for ‘Redshift’ in the AWS Console search bar to access the Redshift.
-
-        ![](https://mintlify.s3.us-west-1.amazonaws.com/dataosinfo/resources/lens/data_sources/awsredshift/Untitled1.png)
-      </Step>
-
-      <Step title="Select Redshift Cluster" titleSize="h2">
-        Click on ‘Amazon Redshift’ from the search results. You will be directed to the Redshift dashboard. Select the appropriate region and choose the desired cluster name from the list.
-
-        ![](https://mintlify.s3.us-west-1.amazonaws.com/dataosinfo/resources/lens/data_sources/awsredshift/Untitled2.png)
-      </Step>
-
-      <Step title="Access Query Monitoring" titleSize="h2">
-        Select the cluster you want to monitor. Navigate to the ‘Query monitoring’ tab to view query statistics.
-
-        ![](https://mintlify.s3.us-west-1.amazonaws.com/dataosinfo/resources/lens/data_sources/awsredshift/Untitled3.png)
-      </Step>
-
-      <Step title="View running and completed queries" titleSize="h2">
-        In the ‘Query monitoring’ tab, you will see a list of running and completed queries.&#x20;
-
-        ![](https://mintlify.s3.us-west-1.amazonaws.com/dataosinfo/resources/lens/data_sources/awsredshift/Untitled4.png)
-      </Step>
-
-      <Step title="Monitor specific query" titleSize="h2">
-        Click on the query you want to monitor and view the query statistics, as shown in the example below.
-
-        ![](https://mintlify.s3.us-west-1.amazonaws.com/dataosinfo/resources/lens/data_sources/awsredshift/Untitled5.png)
-      </Step>
-    </Steps>
   </Accordion>
 
   <Accordion title="BigQuery" defaultOpen={false}>
@@ -1085,30 +1047,6 @@ The process begins with creating a new Lens project and generating a semantic mo
     <Info>
       Within the Themis and Minerva cluster, all Depots (such as onelakehouse, Redshift, Snowflake, etc.) are integrated. When configuring Lens, you only need to specify one Depot in the \`catalog\` field, as Lens can connect to and utilize Depots from all sources available in the Themis cluster.
     </Info>
-
-    ## Check Query Stats for Minerva
-
-    To check the query statistics, please follow the steps below:
-
-    <Steps>
-      <Step title="Open the Operations app" titleSize="h2">
-        By default, the **User Space** tab is displayed upon accessing the Operations app. In User Space click on the 'Minerva Queries' tab to view query execution details.
-
-        Set the following filters:
-
-        * Source: `lens2`
-
-        * Dialect: `trino_sql`
-
-        Optionally, refine your results by filtering based on **Cluster**, **Username**, or other available criteria as needed.
-
-        ![](https://mintlify.s3-us-west-1.amazonaws.com/dataosinfo/resources/lens/data_sources/minerva/Untitled1.png)
-      </Step>
-
-      <Step title="Select the query id" titleSize="h2">
-        Identify and choose the **Query ID** of interest from the **Minerva Queries** tab. Once selected, the system will display detailed execution statistics, providing insights into performance, execution time, and resource utilization.
-      </Step>
-    </Steps>
   </Accordion>
 
   <Accordion title="Themis" defaultOpen={false}>
