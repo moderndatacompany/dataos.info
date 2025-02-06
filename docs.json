@@ -80,7 +80,7 @@
                     "group": "Supported Data Sources",
                     "pages": [
                       "resources/lens/data_sources/bigquery",
-                      "resources/lens/data_sources/redshift",
+                      "resources/lens/data_sources/awsredshift",
                       "resources/lens/data_sources/flash",
                       "resources/lens/data_sources/minerva",
                       "resources/lens/data_sources/postgres",
