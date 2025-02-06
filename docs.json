@@ -121,14 +121,7 @@
                   },
                   "resources/lens/cataloging",
                   "resources/lens/governance",
-                  {
-                    "group": "Observability",
-                    "pages": [
-                      "resources/lens/metric_monitoring",
-                      "resources/lens/operational_monitoring",
-                      "resources/lens/infrastructure_monitoring"
-                    ]
-                  },
+                  "resources/lens/observability",
                   {
                     "group": "Reference",
                     "pages": [

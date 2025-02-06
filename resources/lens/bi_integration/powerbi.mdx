@@ -7,9 +7,11 @@ The semantic model can be integrated with PowerBI using the following Ways
 
 * [Using Data Product Hub(Recommended - GUI based)](/resources/lens/bi_integration/powerbi#using-data-product-hub): This method provides a user-friendly, graphical interface for integrating the semantic model with Power BI.  This approach is ideal for those who prefer an intuitive, no-code setup.
 
-* [Using Curl command (Command-Line based)](): By executing a simple cURL request, users can fetch and connect the semantic model directly to Power BI. This method is suitable for advanced users looking to script or automate the integration process.
+* [Using Curl command (Command-Line based)](/resources/lens/bi_integration/powerbi#using-curl-command): By executing a simple cURL request, users can fetch and connect the semantic model directly to Power BI. This method is suitable for advanced users looking to script or automate the integration process.
 
-## Using Data Product Hub
+## Using Data Product Hub(Recommended)
+
+Follow the below steps to integrate semantic model with PowerBI using Data Product Hub:
 
 <Steps>
   <Step title="Navigate to the Data Product Hub" titleSize="h2">
@@ -78,7 +80,9 @@ The semantic model can be integrated with PowerBI using the following Ways
 
 Data masking, restrictions, or permissions established by the publisher are automatically enforced for all report viewers, ensuring consistent data security and compliance. The behavior of these data policies, such as masking, may vary based on the user of the Power BI desktop.
 
-## Prerequisites
+## Using Curl command
+
+### Prerequisites
 
 Before proceeding with the integration of Lens with Power BI, ensure that you have the following prerequisites in place:
 
@@ -90,7 +94,7 @@ Before proceeding with the integration of Lens with Power BI, ensure that you ha
 
 * **DataOS API key**: You will need your apikey  for authentication. The API key can be obtained using the following command in your terminal:
 
-## Curl command
+##
 
 Use the following CURL command to synchronize the semantic model with Power BI:
 
@@ -112,7 +116,7 @@ Use the following CURL command to synchronize the semantic model with Power BI:
   ```
 </CodeGroup>
 
-## Parameters
+### Parameters
 
 | Parameter      | Description                                                                                                               |
 | -------------- | ------------------------------------------------------------------------------------------------------------------------- |
@@ -122,7 +126,7 @@ Use the following CURL command to synchronize the semantic model with Power BI:
 
 The `file.zip` includes essential components for syncing a semantic model with Power BI, organized into folders such as `.Report` and `.SemanticModel`:
 
-## Steps
+### Steps
 
 To begin syncing a semantic model, the following steps should be followed:
 
@@ -170,18 +174,4 @@ To begin syncing a semantic model, the following steps should be followed:
   </Step>
 </Steps>
 
-## Important considerations
-
-* **Measure naming convention:** In Power BI, measures typically have an 'm\_' prefix to indicate they represent a measure. For example, a measure calculating total revenue might be named m\_total\_revenue.
-
-* **Live connection:** The connection is live, meaning any changes to the underlying data will be reflected in Power BI.
-
-* **Schema changes:** If schema changes occur, such as the addition of new dimensions and measures, the steps outlined above will need to be repeated.
-
-* **Row Limit:** The Lens API has a maximum return limit of 50,000 rows per request. To obtain additional data, it is necessary to set an offset. This row limit is in place to manage resources efficiently and ensure optimal performance.
-
-* **Selection:** It is important to select fields from tables that are directly related or logically joined, as the system does not automatically identify relationships between tables through transitive joins. Selecting fields from unrelated tables may result in incorrect or incomplete results.
-
-## Data governance and access control
-
-Data masking, restrictions, or permissions established by the publisher are automatically enforced for all report viewers, ensuring consistent data security and compliance. The behavior of these data policies, such as masking, may vary based on the user of the Power BI desktop.
+##

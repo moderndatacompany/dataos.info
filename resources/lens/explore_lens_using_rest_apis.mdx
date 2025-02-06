@@ -1,9 +1,11 @@
 ---
-title: "Exploration of Lens using REST API"
+title: "Explore semantic model using REST APIs"
 navigation.title: "using REST API"
+sidebarTitle: "REST APIs"
+description: "The following document guides on how to interact with semantic model using REST API."
 ---
 
-REST API enables Lens to deliver data over the HTTP protocol. It is enabled by default and secured using [API scopes](/resources/lens/api_endpoints_and_scopes/). It consists of a base path and API scopes:
+REST API enables Lens to deliver data over the HTTP protocol. It is enabled by default and secured using API scopes. It consists of a base path and API scopes:
 
 * **Base Path:** All REST API endpoints are prefixed with `/lens2/api`. For example, `/v2/meta` is accessed at `/lens2/api/<lens_name>/v2/meta`.
 
@@ -48,7 +50,7 @@ API key tokens can also be fetched from the DataOS GUI, for more details refer t
 
 ### **Configuring user groups**
 
-To access and query data via the RESTAPI endpoint, users must be part of a user group with the required permissions. The necessary permissions are defined using the `api_scopes` attribute within the user group configuration located in the Lens directory. To know more about user groups and data policy click [here](/resources/lens/working_with_user_groups_and_data_policies/)
+To access and query data via the RESTAPI endpoint, users must be part of a user group with the required permissions. The necessary permissions are defined using the `api_scopes` attribute within the user group configuration located in the Lens directory. To know more about user groups click [here](/resources/lens/working_with_user_groups_and_data_policies/)
 
 **Example user group configuration**
 

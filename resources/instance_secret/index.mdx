@@ -37,10 +37,10 @@ The structure of the Instance Secret manifest file is outlined as follows:
 
 This section includes steps for creating the Instance Secret to secure commonly used data sources and repositories. A Data Product developer is generally responsible for creating an Instance Secret.
 
-#### Data Sources:
+#### Data Sources
 
 <AccordionGroup>
-  <Accordion title="ABFSS" defaultOpen={false}>
+  <Accordion title="Azure Blob File System Secure (ABFSS)" defaultOpen={false}>
     ### Pre-requisites
 
     To create an Instance Secret for securing ABFSS credentials, you must have the following information:
@@ -51,18 +51,34 @@ This section includes steps for creating the Instance Secret to secure commonly 
 
     * **Azure Storage Account Name**: The name of the Azure Storage account used to identify it within your subscription. This can be found in the Azure Portal under the **Overview** section of your storage account.
 
-    ```bash
-          NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-    ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-      iamgroot  │ iamgroot  │ person  │   iamgroot@tmdc.io       │ roles:id:data-dev,              
-                   │             │        │                      │ roles:id:user,                  
-                   │             │        │                      │ users:id:iamgroot 
+    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+
+    ```
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │ roles:id:operator,              
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
     ```
 
-    * **Tags:** If a developer wants to use an Instance Secret they must have the following tags assigned by an operator:
+    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
 
+    <Tabs>
+      <Tab title="use case ">
+        ![](/usecase2.png)
+      </Tab>
 
-    * **Use cases:**
+      <Tab title="tags">
+        ```bash
+              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                       │             │        │                      │  roles:id:user,                  
+                       │             │        │                      │ users:id:iamgroot  
+        ```
+      </Tab>
+    </Tabs>
 
     Ensure that you have these details ready before proceeding with the Instance Secret creation process.
 
@@ -289,6 +305,35 @@ This section includes steps for creating the Instance Secret to secure commonly 
 
     * **JSON Key File**: The path to the JSON key file for the service account, used for authentication. To obtain this, go to **IAM & Admin > Service Accounts** in the Google Cloud Console, select the service account, click **Keys**, and download the JSON key file by selecting **Add Key > JSON**. Ensure the file is securely stored and note its path.
 
+    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+
+    ```
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │ roles:id:operator,              
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+
+    <Tabs>
+      <Tab title="use case ">
+        ![](/usecase2.png)
+      </Tab>
+
+      <Tab title="tags">
+        ```bash
+              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                       │             │        │                      │  roles:id:user,                  
+                       │             │        │                      │ users:id:iamgroot  
+        ```
+      </Tab>
+    </Tabs>
+
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
     ## Create an Instance Secret for securing Bigquery credentials
@@ -514,7 +559,36 @@ This section includes steps for creating the Instance Secret to secure commonly 
 
     * **Event Hub Shared Access Key**: The shared access key associated with the Event Hub shared access key name. You can retrieve this from the Azure Portal by navigating to your Event Hub namespace, selecting "Shared access policies," and copying the key value under the selected policy.
 
-    Ensure you have these credentials ready before proceeding with the Instance Secret creation process
+    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+
+    ```
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │ roles:id:operator,              
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+
+    <Tabs>
+      <Tab title="use case ">
+        ![](/usecase2.png)
+      </Tab>
+
+      <Tab title="tags">
+        ```bash
+              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                       │             │        │                      │  roles:id:user,                  
+                       │             │        │                      │ users:id:iamgroot  
+        ```
+      </Tab>
+    </Tabs>
+
+    Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
     ### Create an Instance Secret for securing Eventhub credentials
 
@@ -727,7 +801,7 @@ This section includes steps for creating the Instance Secret to secure commonly 
     </CodeGroup>
   </Accordion>
 
-  <Accordion title="GCS" defaultOpen={false}>
+  <Accordion title="Google Cloud Storage (GCS)" defaultOpen={false}>
     ### Pre-requisites
 
     To create an Instance Secret for securing GCS credentials, you must have the following information:
@@ -738,7 +812,36 @@ This section includes steps for creating the Instance Secret to secure commonly 
 
     * **JSON Key File for the Google Cloud Service Account**: The path to the JSON key file used to authenticate the service account. To obtain this, navigate to **IAM & Admin > Service Accounts** in the Google Cloud Console, select the relevant service account, click **Keys**, and download the JSON key file by selecting **Add Key > JSON**. Ensure the file is stored securely, and note its path.
 
-    Make sure to have these details ready before proceeding with the Instance Secret creation process.
+    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+
+    ```
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │ roles:id:operator,              
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** A developer can create an Instance Secret only if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance. Alternatively, the operator may assign the `data-dev` tag to the developer instead of the use case.
+
+    <Tabs>
+      <Tab title="use case ">
+        ![](/usecase2.png)
+      </Tab>
+
+      <Tab title="tags">
+        ```bash
+              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                       │             │        │                      │  roles:id:user,                  
+                       │             │        │                      │ users:id:iamgroot  
+        ```
+      </Tab>
+    </Tabs>
+
+    Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
     ### Create an Instance Secret for securing GCS credentials
 
@@ -951,13 +1054,42 @@ This section includes steps for creating the Instance Secret to secure commonly 
     </CodeGroup>
   </Accordion>
 
-  <Accordion title="JDBC" defaultOpen={false}>
+  <Accordion title="Java Database Connectivity (JDBC)" defaultOpen={false}>
     **Pre-requisites**
     To create an Instance Secret for securing JDBC credentials, you must have the following information:
 
     * **Username**: The JDBC username used to authenticate and access the database via JDBC. This can be obtained from the database administrator who manages user access.
 
     * **Password**: The password associated with the JDBC username for authentication. This can be obtained from the database administrator, or if the password is already set, you will need to securely retrieve it.
+
+    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+
+    ```
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │ roles:id:operator,              
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** A developer can create an Instance Secret only if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance. Alternatively, the operator may assign the `data-dev` tag to the developer instead of the use case.
+
+    <Tabs>
+      <Tab title="use case ">
+        ![](/usecase2.png)
+      </Tab>
+
+      <Tab title="tags">
+        ```bash
+              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                       │             │        │                      │  roles:id:user,                  
+                       │             │        │                      │ users:id:iamgroot  
+        ```
+      </Tab>
+    </Tabs>
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -1180,6 +1312,35 @@ This section includes steps for creating the Instance Secret to secure commonly 
 
     * **Password**: The password associated with the MongoDB username for authentication. This can be obtained from the MongoDB administrator, or if the password is already set, you will need to securely retrieve it.
 
+    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+
+    ```
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │ roles:id:operator,              
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** A developer can create an Instance Secret only if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance. Alternatively, the operator may assign the `data-dev` tag to the developer instead of the use case.
+
+    <Tabs>
+      <Tab title="use case ">
+        ![](/usecase2.png)
+      </Tab>
+
+      <Tab title="tags">
+        ```bash
+              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                       │             │        │                      │  roles:id:user,                  
+                       │             │        │                      │ users:id:iamgroot  
+        ```
+      </Tab>
+    </Tabs>
+
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
     ## Create an Instance Secret for securing MongoDB credentials
@@ -1392,13 +1553,42 @@ This section includes steps for creating the Instance Secret to secure commonly 
     </CodeGroup>
   </Accordion>
 
-  <Accordion title="MSSQL" defaultOpen={false}>
+  <Accordion title="Microsoft SQL Server (MSSQL)" defaultOpen={false}>
     **Pre-requisites**
     To create an Instance Secret for securing MsSQL credentials, you must have the following information:
 
     * **Username**: The MsSQL username used to authenticate and access your MsSQL database. You can retrieve this from the MsSQL database admin by asking them to provide the username for your account.
 
     * **Password**: The password associated with the MsSQL username for authentication. You can obtain this from the MsSQL database admin, or if the password is already set, you will need to securely retrieve it.
+
+    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+
+    ```
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │ roles:id:operator,              
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** A developer can create an Instance Secret only if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance. Alternatively, the operator may assign the `data-dev` tag to the developer instead of the use case.
+
+    <Tabs>
+      <Tab title="use case ">
+        ![](/usecase2.png)
+      </Tab>
+
+      <Tab title="tags">
+        ```bash
+              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                       │             │        │                      │  roles:id:user,                  
+                       │             │        │                      │ users:id:iamgroot  
+        ```
+      </Tab>
+    </Tabs>
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -1615,6 +1805,35 @@ This section includes steps for creating the Instance Secret to secure commonly 
     * **Username**: The MySQL username used to authenticate and access your MySQL database. This can be obtained from the database admin who manages user access.
 
     * **Password**: The password associated with the MySQL username for authentication. This is typically set when the user account is created and must be provided by the MySQL admin or securely retrieved if forgotten.
+
+    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+
+    ```
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │ roles:id:operator,              
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** A developer can create an Instance Secret only if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance. Alternatively, the operator may assign the `data-dev` tag to the developer instead of the use case.
+
+    <Tabs>
+      <Tab title="use case ">
+        ![](/usecase2.png)
+      </Tab>
+
+      <Tab title="tags">
+        ```bash
+              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                       │             │        │                      │  roles:id:user,                  
+                       │             │        │                      │ users:id:iamgroot  
+        ```
+      </Tab>
+    </Tabs>
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -1836,6 +2055,35 @@ This section includes steps for creating the Instance Secret to secure commonly 
 
     * **Password**: The password associated with the Oracle username for authentication. This can be obtained from the database administrator, or if the password is already set, you will need to securely retrieve it.
 
+    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+
+    ```
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │ roles:id:operator,              
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** A developer can create an Instance Secret only if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance. Alternatively, the operator may assign the `data-dev` tag to the developer instead of the use case.
+
+    <Tabs>
+      <Tab title="use case ">
+        ![](/usecase2.png)
+      </Tab>
+
+      <Tab title="tags">
+        ```bash
+              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                       │             │        │                      │  roles:id:user,                  
+                       │             │        │                      │ users:id:iamgroot  
+        ```
+      </Tab>
+    </Tabs>
+
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
     ## Create an Instance Secret for securing Oracle credentials
@@ -2055,6 +2303,35 @@ This section includes steps for creating the Instance Secret to secure commonly 
     * **Username**: The PostgreSQL username used to authenticate and access your PostgreSQL database. This can be obtained from the PostgreSQL administrator who manages user access.
 
     * **Password**: The password associated with the PostgreSQL username for authentication. This can be obtained from the PostgreSQL administrator, or if the password is already set, you will need to securely retrieve it.
+
+    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+
+    ```
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │ roles:id:operator,              
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** A developer can create an Instance Secret only if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance. Alternatively, the operator may assign the `data-dev` tag to the developer instead of the use case.
+
+    <Tabs>
+      <Tab title="use case ">
+        ![](/usecase2.png)
+      </Tab>
+
+      <Tab title="tags">
+        ```bash
+              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                       │             │        │                      │  roles:id:user,                  
+                       │             │        │                      │ users:id:iamgroot  
+        ```
+      </Tab>
+    </Tabs>
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -2281,6 +2558,35 @@ This section includes steps for creating the Instance Secret to secure commonly 
 
     * **AWS Secret Access Key**: The Secret Access Key associated with your AWS Access Key ID, used for secure API requests. This can also be obtained from the AWS IAM console, under your user’s security credentials section. Ensure the secret key is securely stored and kept private.
 
+    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+
+    ```
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │ roles:id:operator,              
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** A developer can create an Instance Secret only if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance. Alternatively, the operator may assign the `data-dev` tag to the developer instead of the use case.
+
+    <Tabs>
+      <Tab title="use case ">
+        ![](/usecase2.png)
+      </Tab>
+
+      <Tab title="tags">
+        ```bash
+              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                       │             │        │                      │  roles:id:user,                  
+                       │             │        │                      │ users:id:iamgroot  
+        ```
+      </Tab>
+    </Tabs>
+
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
     ## Create an Instance Secret for securing Redshift credentials
@@ -2493,7 +2799,7 @@ This section includes steps for creating the Instance Secret to secure commonly 
     </CodeGroup>
   </Accordion>
 
-  <Accordion title="S3" defaultOpen={false}>
+  <Accordion title="Simple Storage Service (Amazon S3)" defaultOpen={false}>
     ### Pre-requisites
 
     To create an Instance Secret for securing S3 credentials, you must have the following information:
@@ -2506,7 +2812,36 @@ This section includes steps for creating the Instance Secret to secure commonly 
 
     * **Secret Key**: Another key used for authentication.&#x20;
 
-    Ensure these credentials are securely stored and readily available before proceeding with the Instance Secret creation process.
+    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+
+    ```
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │ roles:id:operator,              
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** A developer can create an Instance Secret only if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance. Alternatively, the operator may assign the `data-dev` tag to the developer instead of the use case.
+
+    <Tabs>
+      <Tab title="use case ">
+        ![](/usecase2.png)
+      </Tab>
+
+      <Tab title="tags">
+        ```bash
+              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                       │             │        │                      │  roles:id:user,                  
+                       │             │        │                      │ users:id:iamgroot  
+        ```
+      </Tab>
+    </Tabs>
+
+    Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
     ### Create an Instance Secret for securing Amazon S3 credentials
 
@@ -2731,7 +3066,36 @@ This section includes steps for creating the Instance Secret to secure commonly 
 
     * **Password**: The password associated with the Snowflake username for authentication. If you do not have the password, you will need to reset it via the Snowflake web interface or contact your Snowflake administrator to obtain it.
 
-    Ensure that these credentials are securely stored and readily available before proceeding with the Instance Secret creation process.
+    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+
+    ```
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │ roles:id:operator,              
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** A developer can create an Instance Secret only if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance. Alternatively, the operator may assign the `data-dev` tag to the developer instead of the use case.
+
+    <Tabs>
+      <Tab title="use case ">
+        ![](/usecase2.png)
+      </Tab>
+
+      <Tab title="tags">
+        ```bash
+              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                       │             │        │                      │  roles:id:user,                  
+                       │             │        │                      │ users:id:iamgroot  
+        ```
+      </Tab>
+    </Tabs>
+
+    Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
     ## Create an Instance Secret for securing Snowflake credentials
 
@@ -2944,7 +3308,7 @@ This section includes steps for creating the Instance Secret to secure commonly 
     </CodeGroup>
   </Accordion>
 
-  <Accordion title="WASBS" defaultOpen={false}>
+  <Accordion title="Windows Azure Storage Blob Secure (WASBS)" defaultOpen={false}>
     To create an Instance Secret for securing WASBS credentials, you must have the following information:
 
     * **Azure Endpoint Suffix**: The endpoint suffix for the Azure Storage account. This is typically region-specific and can be found in the Azure Portal under the **Properties** section of your storage account.
@@ -2953,7 +3317,36 @@ This section includes steps for creating the Instance Secret to secure commonly 
 
     * **Azure Storage Account Name**: The name of the Azure Storage account used to identify it within your subscription. This can be found in the Azure Portal under the **Overview** section of your storage account.
 
-    Ensure that you have these details ready before proceeding with the Instance Secret creation process.
+    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+
+    ```
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │ roles:id:operator,              
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** A developer can create an Instance Secret only if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance. Alternatively, the operator may assign the `data-dev` tag to the developer instead of the use case.
+
+    <Tabs>
+      <Tab title="use case ">
+        ![](/usecase2.png)
+      </Tab>
+
+      <Tab title="tags">
+        ```bash
+              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                       │             │        │                      │  roles:id:user,                  
+                       │             │        │                      │ users:id:iamgroot  
+        ```
+      </Tab>
+    </Tabs>
+
+    Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
     ### Create an instance secret for securing WASBS credentials
 
@@ -3170,7 +3563,36 @@ This section includes steps for creating the Instance Secret to secure commonly 
 
     * **Password:** The OpenSearch password corresponding to the username for authentication. You can retrieve it from your OpenSearch configuration or admin settings, depending on how the instance credentials are managed in your organization.
 
-    Ensure that you have these details ready before proceeding with the Instance Secret creation process.
+    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+
+    ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │ roles:id:operator,              
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** A developer can create an Instance Secret only if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance. Alternatively, the operator may assign the `data-dev` tag to the developer instead of the use case.
+
+    <Tabs>
+      <Tab title="use case ">
+        ![](/usecase2.png)
+      </Tab>
+
+      <Tab title="tags">
+        ```bash
+              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                       │             │        │                      │  roles:id:user,                  
+                       │             │        │                      │ users:id:iamgroot  
+        ```
+      </Tab>
+    </Tabs>
+
+    Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
     ### Create an instance secret for securing OpenSearch credentials
 
@@ -3385,7 +3807,36 @@ This section includes steps for creating the Instance Secret to secure commonly 
 
     * **Password:** The Elasticsearch password corresponding to the username for authentication. This password ensures secure access to the Elasticsearch instance and can be obtained from your Elasticsearch configuration or admin settings, depending on how credentials are managed within your organization.
 
-    Ensure that you have these details ready before proceeding with the Instance Secret creation process.
+    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+
+    ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │ roles:id:operator,              
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** A developer can create an Instance Secret only if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance. Alternatively, the operator may assign the `data-dev` tag to the developer instead of the use case.
+
+    <Tabs>
+      <Tab title="use case ">
+        ![](/usecase2.png)
+      </Tab>
+
+      <Tab title="tags">
+        ```bash
+              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                       │             │        │                      │  roles:id:user,                  
+                       │             │        │                      │ users:id:iamgroot  
+        ```
+      </Tab>
+    </Tabs>
+
+    Ensure you have these credentials ready before proceeding with the Instance Secret creation process..
 
     ### Create an instance secret for securing Elasticsearch credentials
 
@@ -3594,13 +4045,55 @@ This section includes steps for creating the Instance Secret to secure commonly 
   </Accordion>
 </AccordionGroup>
 
-#### Repositories:
+#### Repositories
 
 <AccordionGroup>
   <Accordion title="AWS CodeCommit" defaultOpen={false}>
     ## Create an Instance Secret for securing AWS CodeCommit credentials
 
     AWS CodeCommit is a central storage location where code, documentation, and related files are managed and versioned. It allows developers to track changes over time, collaborate on code by merging contributions from multiple developers, and maintain a history of modifications.
+
+    ### &#xA;Pre-requisites
+
+    To create an Instance Secret for securing AWS CodeCommit credentials, you must have the following information:
+
+    * **Project ID**: The project ID used to identify your Google Cloud project. You can retrieve this from the Google Cloud Console by navigating to the project dashboard and locating the **Project ID** under project information.
+
+    * **Email ID**: The email address associated with the service account used to access repository. This can be found in the **IAM & Admin > Service Accounts** section of the Google Cloud Console by selecting the relevant service account and viewing its details.
+
+    * **JSON Key File**: The path to the JSON key file for the service account, used for authentication. To obtain this, go to **IAM & Admin > Service Accounts** in the Google Cloud Console, select the service account, click **Keys**, and download the JSON key file by selecting **Add Key > JSON**. Ensure the file is securely stored and note its path.
+
+    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+
+    ```
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │ roles:id:operator,              
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+
+    <Tabs>
+      <Tab title="use case ">
+        ![](/usecase2.png)
+      </Tab>
+
+      <Tab title="tags">
+        ```bash
+              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                       │             │        │                      │  roles:id:user,                  
+                       │             │        │                      │ users:id:iamgroot  
+        ```
+      </Tab>
+    </Tabs>
+
+    Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
+
 
     To create a AWS CodeCommit Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
 
@@ -3689,7 +4182,48 @@ This section includes steps for creating the Instance Secret to secure commonly 
 
     Bitbucket repository is a central storage location where code, documentation, and related files are managed and versioned. It allows developers to track changes over time, collaborate on code by merging contributions from multiple developers, and maintain a history of modifications.
 
-    To create a Bitbucket repository Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
+
+
+    ### Pre-requisites
+
+
+    To create an Instance Secret for securing AWS CodeCommit credentials, you must have the following information:
+
+    * **GITSYNC\_USERNAME**: This represents the Bitbucket username required for authentication.
+
+    * **GITSYNC\_PASSWORD**: This is the corresponding password or an app password used for authentication.
+      These credentials can be obtained from the Bitbucket account settings or provided by an administrator.
+
+    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+
+    ```
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │ roles:id:operator,              
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+
+    <Tabs>
+      <Tab title="use case ">
+        ![](/usecase2.png)
+      </Tab>
+
+      <Tab title="tags">
+        ```bash
+              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                       │             │        │                      │  roles:id:user,                  
+                       │             │        │                      │ users:id:iamgroot  
+        ```
+      </Tab>
+    </Tabs>
+
+    Ensure you have these credentials ready before proceeding with the Instance Secret creation process. Follow the steps below to complete the creation process efficiently and securely.
 
     ### Step 1: Create a manifest file
 
@@ -3771,7 +4305,46 @@ This section includes steps for creating the Instance Secret to secure commonly 
 
     Git repository is a central storage location where code, documentation, and related files are managed and versioned. It allows developers to track changes over time, collaborate on code by merging contributions from multiple developers, and maintain a history of modifications.
 
-    To create a Git repository Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
+    ### Pre-requisites
+
+
+    To create an Instance Secret for securing AWS CodeCommit credentials, you must have the following information:
+
+    * **GITSYNC\_USERNAME**: This represents the Git username required for authentication.
+
+    * **GITSYNC\_PASSWORD**: This is the corresponding password used for authentication.
+      These credentials can be obtained from the Bitbucket account settings or provided by an administrator.
+
+    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+
+    ```
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │ roles:id:operator,              
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+
+    <Tabs>
+      <Tab title="use case ">
+        ![](/usecase2.png)
+      </Tab>
+
+      <Tab title="tags">
+        ```bash
+              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                       │             │        │                      │  roles:id:user,                  
+                       │             │        │                      │ users:id:iamgroot  
+        ```
+      </Tab>
+    </Tabs>
+
+    Ensure you have these credentials ready before proceeding with the Instance Secret creation process. Follow the steps below to complete the creation process efficiently and securely.
 
     ### Step 1: Create a manifest file
 
@@ -3853,7 +4426,7 @@ This section includes steps for creating the Instance Secret to secure commonly 
 
 ## Configurations
 
-Instance-secret can be configured to secure the credentials information through key-value pairs. For a detailed breakdown of the configuration options and attributes, please refer to the documentation: [Attributes of Instance Secret manifest](/resources/instance_secret/configurations).
+Instance Secret can be configured to secure the credentials information through key-value pairs. For a detailed breakdown of the configuration options and attributes, please refer to the documentation: [Attributes of Instance Secret manifest](/resources/instance_secret/configurations).
 
 ## Recipes
 
