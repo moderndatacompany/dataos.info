@@ -1,0 +1,266 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "DataOS Documentation",
+  "colors": {
+    "primary": "#1E88E5",
+    "light": "#BBDEFB",
+    "dark": "#0D47A1"
+  },
+  "favicon": "/favicon.svg",
+  "navigation": {
+    "versions": [
+      {
+        "version": "v1.22",
+        "tabs": [
+          {
+            "tab": "Home",
+            "groups": [
+              {
+                "group": "Getting Started",
+                "pages": [
+                  "getting_started/introduction"
+                ]
+              },
+              {
+                "group": "Instance Secret",
+                "pages": [
+                  "resources/instance_secret/index",
+                  "resources/instance_secret/configurations",
+                  "resources/instance_secret/governance",
+                  "resources/instance_secret/observability",
+                  "resources/instance_secret/example",
+                  {
+                    "group": "Recipes",
+                    "pages": [
+                      "resources/instance_secret/how_to_guide/recipe_1"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Depot",
+                "pages": [
+                  "resources/depot/index",
+                  "resources/depot/configurations",
+                  "resources/depot/governance",
+                  "resources/depot/observability",
+                  "resources/depot/supported_connectors",
+                  "resources/depot/example"
+                ]
+              },
+              {
+                "group": "Lens",
+                "pages": [
+                  "resources/lens/index",
+                  {
+                    "group": "Supported Data Sources",
+                    "pages": [
+                      "resources/lens/data_sources/bigquery",
+                      "resources/lens/data_sources/redshift",
+                      "resources/lens/data_sources/flash",
+                      "resources/lens/data_sources/minerva",
+                      "resources/lens/data_sources/postgres",
+                      "resources/lens/data_sources/themis",
+                      "resources/lens/data_sources/snowflake"
+                    ]
+                  },
+                  {
+                    "group": "Concepts",
+                    "pages": [
+                      "resources/lens/semantic_modeling_concepts",
+                      "resources/lens/working_with_segments",
+                      "resources/lens/working_with_views",
+                      "resources/lens/working_with_user_groups"
+                    ]
+                  },
+                  "resources/lens/lens_manifest_attributes",
+                  {
+                    "group": "APIs & Integrations",
+                    "pages": [
+                      {
+                        "group": "GraphQL API",
+                        "pages": [
+                          "resources/lens/query_format",
+                          "resources/lens/explore_lens_using_graphql"
+                        ]
+                      },
+                      "resources/lens/explore_lens_using_sql_apis",
+                      "resources/lens/explore_lens_using_python",
+                      "resources/lens/explore_lens_using_rest_apis",
+                      {
+                        "group": "BI Integration",
+                        "pages": [
+                          "resources/lens/bi_integration/powerbi",
+                          "resources/lens/bi_integration/superset",
+                          "resources/lens/bi_integration/tableau"
+                        ]
+                      }
+                    ]
+                  },
+                  "resources/lens/cataloging",
+                  "resources/lens/governance",
+                  {
+                    "group": "Observability",
+                    "pages": [
+                      "resources/lens/metric_monitoring",
+                      "resources/lens/operational_monitoring",
+                      "resources/lens/infrastructure_monitoring"
+                    ]
+                  },
+                  {
+                    "group": "Reference",
+                    "pages": [
+                      "resources/lens/best_practices",
+                      "resources/lens/dos_and_donts",
+                      "resources/lens/troubleshooting",
+                      "resources/lens/fine_tuning_a_lens_model"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Scanner",
+                "pages": [
+                  "resources/scanner/index"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "APIs and SDKs",
+            "groups": [
+              {
+                "group": "API Documentation",
+                "pages": [
+                  "api-and-sdk/introduction"
+                ]
+              },
+              {
+                "group": "Endpoint Examples",
+                "pages": [
+                  "api-and-sdk/endpoint/get",
+                  "api-and-sdk/endpoint/create",
+                  "api-and-sdk/endpoint/delete"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Community",
+          "href": "https://moderndata101.com/",
+          "icon": "slack"
+        },
+        {
+          "anchor": "Blog",
+          "href": "https://moderndata101.substack.com/",
+          "icon": "newspaper"
+        }
+      ]
+    }
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg",
+    "href": "https://www.themoderndatacompany.com/"
+  },
+  "background": {
+    "decoration": "gradient"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Support",
+        "href": "mailto:content@tmdc.io"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Schedule a Demo",
+      "href": "https://www.themoderndatacompany.com/schedule-a-demo"
+    }
+  },
+  "search": {
+    "prompt": "Search or Ask your queries..."
+  },
+  "footer": {
+    "socials": {
+      "x": "https://x.com/TheModernDataCo",
+      "facebook": "https://www.facebook.com/themoderndatacompany",
+      "linkedin": "https://www.linkedin.com/company/themoderndatacompany/"
+    },
+    "links": [
+      {
+        "header": "Resources",
+        "items": [
+          {
+            "label": "Resource Hub",
+            "href": "https://www.themoderndatacompany.com/resources"
+          },
+          {
+            "label": "Blog",
+            "href": "https://www.themoderndatacompany.com/blog"
+          },
+          {
+            "label": "Documentation",
+            "href": "https://dataos.info/"
+          }
+        ]
+      },
+      {
+        "header": "Company",
+        "items": [
+          {
+            "label": "About Us",
+            "href": "https://www.themoderndatacompany.com/company"
+          },
+          {
+            "label": "Newsroom",
+            "href": "https://www.themoderndatacompany.com/newsroom"
+          },
+          {
+            "label": "Careers",
+            "href": "https://www.themoderndatacompany.com/careers"
+          },
+          {
+            "label": "Blog",
+            "href": "https://www.themoderndatacompany.com/blog"
+          }
+        ]
+      },
+      {
+        "header": "Legal",
+        "items": [
+          {
+            "label": "Privacy Policy",
+            "href": "https://www.themoderndatacompany.com/privacy-policy"
+          },
+          {
+            "label": "Terms of Use",
+            "href": "https://www.themoderndatacompany.com/terms-of-use"
+          }
+        ]
+      }
+    ]
+  },
+  "fonts": {
+    "heading": {
+      "family": "Open Sans"
+    }
+  },
+  "redirects": [
+    {
+      "source": "getting_started/introduction",
+      "destination": ""
+    },
+    {
+      "source": "resources/lens/index/",
+      "destination": "resources/lens/"
+    }
+  ]
+}
