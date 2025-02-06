@@ -1,6 +1,7 @@
 ---
-title: "How to monitor a semantic model"
-description: "Utilize different Monitors such as report monitor, equation monitor, etc., to monitor the semantic model or Lens Resource. "
+title: "How to observe and monitor a semantic model?"
+description: "Utilize different Monitors such as Report Monitor, Equation Monitor, etc., to observe and monitor the semantic model or Lens Resource. "
+sidebarTitle: "Metric monitoring"
 ---
 
 ## Create a Monitor Resource manifest file
@@ -8,7 +9,7 @@ description: "Utilize different Monitors such as report monitor, equation monito
 This section outlines the steps to create a Monitor Resource that triggers an incident when the state of a Lens changes from 'active' to 'deleted'. Before proceeding, ensure you have the necessary permissions to create a Monitor Resource.&#x20;
 
 <Steps>
-  <Step title="Create an Monitor to observe the semantic model">
+  <Step title="Create a Monitor to observe the semantic model">
     Begin by creating a manifest file of Monitor Resource as shown in the template below.  Copy the template and replace the Lens name with your actual Lens name.
 
     ```
@@ -111,11 +112,11 @@ This section outlines the steps to create a Monitor Resource that triggers an in
   </Step>
 </Steps>
 
-## Create a Pager Resource **to get notified when a Lens is deleted**
+## Create a Pager Resource to get notified when a Lens is deleted
 
-A **Pager Resource** is used to send notifications when specific conditions are met. In this case, a **Monitor Resource** detects when an **Instance Secret** is deleted and triggers an incident. The Pager Resource then ensures that the incident notification is sent to a designated platform, such as Microsoft Teams, Outlook, or other supported output sources.
+A Pager Resource is used to send notifications when specific conditions are met. In this case, a Monitor Resource detects when an Instance Secret is deleted and triggers an incident. The Pager Resource then ensures that the incident notification is sent to a designated platform, such as Microsoft Teams, Outlook, or other supported output sources.
 
-This section outlines the steps to create a **Pager Resource**. While we are using **Microsoft Teams** for notifications in this guide, you can configure other supported platforms based on your requirements.
+This section outlines the steps to create a Pager Resource. While we are using Microsoft Teams for notifications in this guide, you can configure other supported platforms based on your requirements.
 
 <Steps>
   <Step title="Create a Pager manifest file">
