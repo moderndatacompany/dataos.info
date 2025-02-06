@@ -1,10 +1,9 @@
 ---
 title: "Working with user groups"
+description: " The Lens enables data security within logical tables by defining data policies on dimensions and segments through user groups. User groups allow the creation of multiple groups with different levels of API scope access. Each group can be tailored to include or exclude specific users based on their access requirements. By defining precise access controls, different levels of data and functionality access can be granted, ensuring that only authorized users interact with relevant resources. "
 ---
 
-Lens allows you to secure data in logical tables by defining data policies on their dimensions and segments. User groups are used to manage both data access and API scopes, which control access to specific functionalities and endpoints. This forms part of the access policy, ensuring users interact only with the data and features they are authorized to use.
 
-Additionally, this governance extends to the Lens Studio Interface, where access to specific tabs and functionalities can be controlled. This setup helps in enforcing granular access controls and permissions, supporting compliance with organizational and regulatory standards.
 
 ## **Procedure**
 
@@ -87,7 +86,7 @@ In this example:
 
 * Since the `analyst` group is listed before the `engineer` group, `exampleuser` will have the permissions of the `analyst` group.
 
-## Data policies
+## Data Policies
 
 Data policies can be applied to dimensions and segments of tables to control data access and masking.
 
@@ -101,50 +100,53 @@ You can mask data on a table's dimension using the `secure` property in the meta
 
 #### **Step 1 Define the data masking function**
 
-* Include the masking function in the `meta` section of your dimension definition. Here we have masked the gender column for the  specific group `dataconsumer` but the same column is not redacted for the users in the default group. That means everybody can see the row values of gender column except for the users in `dataconsumer` group.```yaml
-  - name: gender
-    description: Flag indicating whether the consumer is male or female
-    sql: gender
-    type: string
-    meta:
-      secure:
-        func: redact
-        user_groups:
-          includes:
-            - dataconsumer
-          excludes:
-            - default
-  ```
+* Include the masking function in the `meta` section of your dimension definition. Here we have masked the gender column for the  specific group `dataconsumer` but the same column is not redacted for the users in the default group. That means everybody can see the row values of gender column except for the users in `dataconsumer` group.
+
+```yaml
+- name: gender
+  description: Flag indicating whether the consumer is male or female
+  sql: gender
+  type: string
+  meta:
+    secure:
+      func: redact
+      user_groups:
+        includes:
+          - dataconsumer
+        excludes:
+          - default
+```
 
 #### **Step 2: Configure user group policies**
 
-* You can configure user group policies to control access:```yaml
-  # 1. Secure for everyone
-  meta:
-    secure:
-      func: redact | md5
-      user_groups: "*"
+You can configure user group policies to control access:
 
-  # 2. Secure for everyone, except for specific user_group (default)
-  meta:
-    secure:
-      func: redact | md5
-      user_groups:
-        includes: "*"
-        excludes:
-          - default
+```yaml
+# 1. Secure for everyone
+meta:
+  secure:
+    func: redact | md5
+    user_groups: "*"
 
-  # 3. Secure for specific user_group (reader) and exclude some (default)
-  meta:
-    secure:
-      func: redact | md5
-      user_groups:
-        includes:
-          - reader
-        excludes:
-          - default
+# 2. Secure for everyone, except for specific user_group (default)
+meta:
+  secure:
+    func: redact | md5
+    user_groups:
+      includes: "*"
+      excludes:
+        - default
 
-  ```
+# 3. Secure for specific user_group (reader) and exclude some (default)
+meta:
+  secure:
+    func: redact | md5
+    user_groups:
+      includes:
+        - reader
+      excludes:
+        - default
+```
 
 ### **Defining row filter policy on a Table’s Segment**
 
