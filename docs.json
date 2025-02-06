@@ -126,7 +126,6 @@
                   {
                     "group": "Reference",
                     "pages": [
-                      "resources/lens/best_practices",
                       "resources/lens/dos_and_donts",
                       "resources/lens/troubleshooting",
                       "resources/lens/fine_tuning_a_lens_model"
