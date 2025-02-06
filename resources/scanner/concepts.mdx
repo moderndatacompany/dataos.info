@@ -1,0 +1,68 @@
+---
+title: "Core concepts"
+---
+
+# Core concepts of the Scanner
+
+The Scanner Workflow facilitates metadata extraction by utilizing Depots to connect to the metadata source.  The core concepts of the Scanner Stack include:
+
+* **Metadata Extraction**: The Scanner Stack extracts metadata from external source systems, DataOS Resources, and components.
+
+* **Workflows**: Scanner Workflows are used to extract metadata from various sources and store it in a metadata store.
+
+* **Source**: A Scanner Workflow typically includes a source (metadata source).
+
+* **Metadata Store**: The extracted metadata is stored in a metadata store, such as a centralized database (Postgres).
+
+* **Scheduled and Batch Jobs**: Scanner Workflows can be scheduled to run automatically at a specified frequency or run in batch mode.
+
+* **DataOS Components Integration**: The Scanner Stack integrates with various DataOS components, such as Heimdall (security engine), Metis (metadata store), and Soda (data profiling).
+
+* **Metadata Types**: The Scanner Stack extracts various types of metadata, including:
+
+  * General information about datasets/tables (e.g., names, owners, tags)
+
+  * Detailed metadata (e.g., table schemas, column names, descriptions)
+
+  * Metadata related to data quality and profiling
+
+  * User and Owner information
+
+  * Data Product metadata (e.g., inputs, outputs, SLOs, policies, lineage)
+
+# How it works?
+
+In DataOS, metadata extraction is treated as a job, which is orchestrated using a DataOS Resource called Workflow. The Scanner Workflow provides the ability to extract metadata from various sources and store it in a metadata store (MetisDB). It typically consists of a source, transformations, and a sink. The source system is defined in the Depot, which establishes the connection to the data source. Transformations and the sink are executed in the backend of DataOS, ensuring seamless metadata extraction and processing.
+
+Similar to an ETL (Extract, Transform, Load) job, the Scanner Workflow connects to the metadata source, extracts the metadata, and applies transformations to convert it into a standardized format. The transformed metadata is then pushed to Metis REST API server, which is backed by a centralized metadata database such as Postgres. This process can be performed in either a batch or scheduled manner, depending on the requirements.
+
+The stored metadata is used by various DataOS components for discoverability, governance, and observability. External apps running on top of DataOS can also fetch this metadata via Metis server APIs.
+
+<Note>
+  The default metadata store in DataOS is MetisDB which is a Postgres database.
+  In DataOS, all the metadata entities are defined and consumed in JSON format.
+</Note>
+
+<Frame caption="DataOS Scanner Stack for metadata extraction">
+  ![Description of the image](/scanner_framework.png)
+</Frame>
+
+Apart from the external applications, the Scanner Stack can also extract metadata from various applications & services of DataOS. The Scanner job reads related metadata and pushes it to the metadata store through the Metis REST API server, which can be explored by the Metis UI.
+
+The Scanner job connects with the following DataOS components and stores the extracted metadata to Metis DB:
+
+* **Collation Service**: To scan and publish metadata related to data pipelines, including Workflow information, execution history, and execution states. It also collects metadata for historical data such as pods and logs, as well as data processing Stacks like <Tooltip tip="Flare stack is used for building end-to-end data pipelines within DataOS. It uses a YAML-based declarative programming paradigm built as an abstraction over Apache Spark. It offers an all-in-one solution for performing diverse data ingestion, transformation, enrichment, and syndication processes on batch and streaming data.">Flare</Tooltip> and<Tooltip tip="Benthos is a robust and efficient stream processing stack within DataOS. It offers a user-friendly declarative YAML programming approach, enabling seamless execution of essential data engineering tasks like data transformation, mapping, schema validation, filtering, and enrichment."> Benthos</Tooltip>, capturing job information and source-destination relationships.
+
+* **Gateway Service**: To retrieve information from data profiles (descriptive statistics for datasets) and data quality tables (quality checks for your data along with their pass/fail status). It also scans data related to query usage, enabling insights into heavy datasets, popular datasets, and associations between datasets.
+
+* <Tooltip tip="Heimdall is the authentication, authorization, and governance engine in DataOS, responsible for implementing a robust security strategy. It ensures that only authorized users have access to DataOS resources.">**Heimdall**</Tooltip>: To scan and retrieve information about users in the DataOS environment, including their descriptions and profile images. This user information is accessible through the Metis UI.
+
+* **Pulsar** **Service**: To keep listening to the messages being published on it by various other services and Stacks within the system.
+
+# How to create a Scanner Workflows ?
+
+The Scanner enables the scanning of all datasets associated with a specific Depot created for the Data Product. By creating custom Scanner Workflows, it become efficient to connect to diverse data sources, extract relevant metadata, and store it in the Metis DB for discoverability, governance, and observability.
+
+Scanner Workflows can be defined using sequential YAML configurations to enable pull-based metadata extraction within the DataOS platform. These Workflows support integration with a wide range of data sources in the data Stack. The following image illustrates the various components of a Scanner YAML file:
+
+![](/scanner_yaml_component.jpeg)
