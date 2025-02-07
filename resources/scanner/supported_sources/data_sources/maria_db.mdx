@@ -1,0 +1,111 @@
+---
+title: "Scanner for MariaDB"
+---
+
+With Scanner Workflows, it is possible scan metadata details such as schemas, tables, view details etc. from MariaDB. Following are the requirements and manifest configurations to connect to MariaDB for extracting entity metadata.
+
+## **Requirements**
+
+* Credentials to connect to MariaDB database.
+
+* To extract metadata, the MariaDB user needs to have access to the `INFORMATION_SCHEMA`. By default a user can see only the rows in the `INFORMATION_SCHEMA` that correspond to objects for which the user has the proper access privileges.
+
+* **Access Permission to Run a Scanner Workflow**
+  Verify that the use case or role tag for executing a Scanner Workflow is approved, which are as follows:
+
+* Ensure an JDBC-type Depot is created by in Metis UI or in CLI as shown below:```bash
+  dataos-ctl get -t depot -a
+
+  #expected output
+
+  INFO[0000] 🔍 get...                                     
+  INFO[0000] 🔍 get...complete                             
+
+                    NAME            | VERSION | TYPE  | WORKSPACE | STATUS |   RUNTIME   |         OWNER          
+          --------------------------|---------|-------|-----------|--------|-------------|------------------------
+          mongodepot                | v2alpha | depot |           | active |             | Jhon Doe
+          snowflakedepot            | v2alpha | depot |           | active |             | JOJO
+          redshiftdepot             | v2alpha | depot |           | active |             | Kira
+          mysqldepot                | v2alpha | depot |           | active |             | Ryuk
+          oracle01                  | v2alpha | depot |           | active |             | drdoom
+          **mariadb01                 | v2alpha | depot |           | active |             | tonystark**
+          demopreppostgres          | v2alpha | depot |           | active |             | slimshaddy
+          demoprepbq                | v2alpha | depot |           | active |             | pengvin
+          mssql01                   | v2alpha | depot |           | active |             | hulk
+          kafka01                   | v2alpha | depot |           | active |             | peeter
+          icebase                   | v2alpha | depot |           | active |             | blackpink
+          azuresql                  | v2alpha | depot |           | active |             | arnold
+          fastbase                  | v2alpha | depot |           | active |             | ddevil
+  ```if not, create it using the following sample manifest code:```yaml
+  name: ${{depot-name}} #examples: mariadb01, mariadepot etc.
+  version: v2alpha
+  type: depot
+  tags:
+    - ${{tag1}}
+  owner: ${{owner-name}}
+  layer: user
+  depot:
+    type: JDBC                                      
+    description: ${{description}}
+    external: ${{true}}
+    secrets:
+      - name: ${{sf-instance-secret-name}}-r
+        allkeys: true
+
+      - name: ${{sf-instance-secret-name}}-rw
+        allkeys: true
+    jdbc:                                           
+      subprotocol: ${{subprotocol}}
+      host: ${{host}}
+      port: ${{port}}
+      database: ${{database-name}}
+      params:
+        ${{"key1": "value1"}}
+        ${{"key2": "value2"}}
+  ```
+
+## Scanner Workflow
+
+DataOS helps to connect to a database with JDBC driver to read data from tables using Depot. The Depot enables access to all schemas visible to the specified user in the configured database, MariaDB.
+
+<Info>
+  Ensure that the depot is created for your MariaDB database and you have \`Read\` access for the Depot.
+</Info>
+
+```yaml
+version: v1
+name: mariadb-scanner2
+type: workflow
+tags:
+  - mariadb-scanner2.0
+description: The job scans schema tables and register metadata
+workflow:
+  dag:
+    - name: scanner2-mariadb
+      description: The job scans schema from mariadb depot tables and register metadata to metis2
+      spec:
+        stack: scanner:2.0
+        compute: runnable-default
+        runAsUser: metis
+        stackSpec:
+          depot: mariadb01
+          # sourceConfig:
+          #   config:
+          #     schemaFilterPattern:
+          #       includes:
+          #         - mariadb     
+```
+
+The above sample manifest file is deployed using the following command:
+
+```
+dataos-ctl resource apply -f {path to the Scanner YAML}
+```
+
+<Note>
+  If the Depot or Scanner configurations are updated, the Scanner must be redeployed after deleting the previous instance. Use the following command to delete the existing Scanner:
+
+  ```
+  dataos-ctl resource delete -f {path to the MariaDB Scanner YAML file}
+  ```
+</Note>
