@@ -1,57 +1,76 @@
 ---
-title: "How to govern Lens and control access in the semantic model?"
+title: "How to Govern Lens and Control Semantic Model Access?"
 sidebarTitle: "Governance"
-description: "The Lens and semantic model access control can be managed through Bifrost. An operator or administrator of an organization can control access to Lens by assigning either roles or use-cases. "
+description: "Lens and semantic model access control can be managed through Bifrost. An operator or administrator can regulate access by assigning either roles or use cases."
 ---
 
-The following access permissions are required to create a Lens:
+## Controlling Access to Lens and Its Semantic Model  
 
-<Note>
-  Keep in mind that the name and permission level of each role and use-cases can vary across organizations, depending on how they choose to manage them.
-</Note>
+Permissions for reading, creating, updating, or deleting Lens and accessing its semantic model can be granted either by assigning a role or a use case.  
 
-If granting access through use-case, the following use-case is required:
+### Access via Use Cases  
 
-1. `Create Update and Delete Lens in user layer specified workspace`
+The following use cases are required:  
 
-2. `read Lens2 backend`
+1. `Create, Update, and Delete Lens in a specified workspace within the user layer`.
+2. `Read Lens2 backend`.  
 
-If access is granted using Role, the role that contains the Lens-related use-case needs to be granted. For example, the Data-dev Role contains the use cases to create and manage the role.
+### Access via Roles  
 
-The role Data-dev is identified as `roles:id:data-dev` tag.
+If access is granted through a role, it must include the necessary Lens-related use cases. For example, the **`Data-dev`** role contains permissions for creating and managing a Lens.  
 
-## How to grant a use-case to a user?
+The **`Data-dev`** role is identified by the tag `roles:id:data-dev`.  
 
-<Steps>
-  <Step title="Navigate to DataOS">
-    Log in to DataOS and select the Bifrost. The Bifrost interface will then launch.
+<Note>  
+The name and permission levels of roles and use cases may vary across organizations, depending on how they are managed.  
+</Note>  
 
-    ![](/resources/lens/image.png)
-  </Step>
+---
 
-  <Step title="Search the user" titleSize="h2">
-    Navigate to the **Users** tab and use the search box to locate the user to whom you want to assign the use case.&#x20;
+## Granting a Use Case to a User  
 
-    ![](/Screenshotfrom2025-02-0415-37-06.png)
-  </Step>
+<Steps>  
 
-  <Step title="Click on the User" titleSize="h2">
-    After selecting the user, their detailed information will be displayed. Proceed to the **Grants** section to view and manage the permissions and use cases assigned to that user.![](/Screenshotfrom2025-02-0415-51-34.png)&#x20;
+  <Step title="Navigate to DataOS">  
+    Log in to DataOS and open Bifrost. The Bifrost interface will launch.  
 
-    In Grants section, click on the 'Grant Use-Case' button.&#x20;
-  </Step>
+    ![](/resources/scanner/governance/bifrost.png)  
+  </Step>  
 
-  <Step title="Search the desired use-case" titleSize="h2">
-    As you click on the 'Grant Use-Case' button, a search dialog box appears. Here, search the use-case.![](/grant_lens_use_case)
-  </Step>
+  <Step title="Search for the User" titleSize="h2">  
+    Navigate to the 'Users' tab and use the search box to locate the user.  
 
-  <Step title="Provide the name of the workspace" titleSize="h2">
-    As you click on the `Create Update and Delete Lens in user layer specified workspace - Manage lens in the user layer specified workspace` a dialog box will appear prompting you to enter the name of the workspace.  Provide the workspace name to which you want to grant user access for managing the Lens.  &#x20;
+    ![](/resources/scanner/governance/bifrost_user_iamgroot.png)  
+  </Step>  
 
-    <Note>
-      Please note that you must specify the workspace name for each action (Read, Create, Update, and Delete) to ensure precise permission assignment.
-    </Note>
+  <Step title="Select the User" titleSize="h2">  
+    After selecting the user, detailed information will be displayed. Go to the 'Grants' section to manage assigned permissions and use cases.  
 
-    For example, in the below image, the user has been granted permission to read Lens in all workspace but can create update and delete only in the curriculum workspace. ![](/lens_use_case_dialog_box_01)After filling the dialog box form, click Grant. In this way the user's grant permissions will be updated and now he will be able to read Lens in all workspaces but can manage the Lens in the curriculum workspace only.
-  </Step>
-</Steps>
+    ![](/resources/scanner/governance/iamgroot_grants_tab.png)  
+
+    Click on the 'Grant Use-Case' button.  
+  </Step>  
+
+  <Step title="Search for the Required Use Case" titleSize="h2">  
+    A search dialog box will appear after clicking the 'Grant Use-Case' button. Search for the required use case:  
+
+    **`Create, Update, and Delete Lens in user layer specified workspace – Manage Lens in the specified workspace`**  
+
+    ![](/resources/lens/governance/search_use_case.png)  
+  </Step>  
+
+  <Step title="Specify the Workspace" titleSize="h2">  
+    After selecting the use case, a dialog box will prompt for the workspace name. Enter the workspace name where access should be granted.  
+
+    <Note>  
+      A workspace name must be specified for each action (Read, Create, Update, and Delete) to ensure precise permission assignment.  
+    </Note>  
+
+    In the example below, the user has been granted permission to read Lens in all workspaces but can create, update, and delete only in the `curriculum` workspace.  
+
+    ![](/resources/lens/governance/use_case_dialog_box.png)  
+
+    After completing the form, click `Grant`. The permissions will be updated, allowing the user to read Lens in all workspaces while managing Lens only in the `curriculum` workspace.  
+  </Step>  
+
+</Steps>  
