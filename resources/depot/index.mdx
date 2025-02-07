@@ -71,10 +71,10 @@ This section involves steps for creating a Depot for different data sources supp
     To create an ABFSS Depot you must have the following details:
 
 
+
     **Pre-requisites specific to Depot creation**
 
-
-    * **Tags:** A developer must possess the following tags, which can be obtained from an DataOS operator.
+    * **Tags:** A developer must possess the following tags, which can be obtained from a DataOS operator.
 
     ```bash
             NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
@@ -84,16 +84,7 @@ This section involves steps for creating a Depot for different data sources supp
                      │             │        │                      │ users:id:iamgroot  
     ```
 
-    * **Use cases:** Alternatively, instead of assigning tags, a developer can create a Depot if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance.
-
-    <Tabs>
-      <Tab title="use case ">
-        ![](/usecase2.png)
-      </Tab>
-    </Tabs>
-
-
-
+    * **Use cases:** Alternatively, instead of assigning tags, a developer can create a Depot if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance.![](/usecase2.png)
 
     **Pre-requisites specific to the source system**
 
@@ -283,6 +274,24 @@ This section involves steps for creating a Depot for different data sources supp
     ### Pre-requisites specific to the Redshift Depot
 
     To create a Redshift Depot you must have the following details:
+
+
+
+    **Pre-requisites specific to Depot creation**
+
+    * **Tags:** A developer must possess the following tags, which can be obtained from a DataOS operator.
+
+    ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,                            
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** Alternatively, instead of assigning tags, a developer can create a Depot if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance.![](/usecase2.png)
+
+    **Pre-requisites specific to the source system**
 
     * **Hostname**: The hostname or endpoint of the Redshift cluster, which specifies the server address to connect to. You can obtain this from the AWS Management Console under the Redshift cluster details or ask the administrator managing the cluster.
 
@@ -631,6 +640,24 @@ This section involves steps for creating a Depot for different data sources supp
 
     To create a Pulsar Depot you must have the following details:
 
+
+
+    **Pre-requisites specific to Depot creation**
+
+    * **Tags:** A developer must possess the following tags, which can be obtained from a DataOS operator.
+
+    ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,                            
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** Alternatively, instead of assigning tags, a developer can create a Depot if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance.![](/usecase2.png)
+
+    **Pre-requisites specific to the source system**
+
     * **Admin URL**: The administrative endpoint URL of your Apache Pulsar cluster. This URL is used to perform administrative operations on the cluster. You can obtain this from the Pulsar admin or from the configuration details of the Pulsar cluster, typically provided during setup or accessible in the deployment documentation.
 
     * **Service URL**: The service endpoint URL of your Apache Pulsar cluster. This URL is used by producers and consumers to connect to the cluster and exchange messages. You can retrieve this from the Pulsar admin or by referring to the connection details in the Pulsar cluster configuration.
@@ -728,6 +755,24 @@ This section involves steps for creating a Depot for different data sources supp
     ### Pre-requisites specific to the WASBS Depot
 
     To create a WASBS Depot you must have the following details:
+
+
+
+    **Pre-requisites specific to Depot creation**
+
+    * **Tags:** A developer must possess the following tags, which can be obtained from a DataOS operator.
+
+    ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,                            
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** Alternatively, instead of assigning tags, a developer can create a Depot if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance.![](/usecase2.png)
+
+    **Pre-requisites specific to the source system**
 
     * **Storage Account Name**: The name of your Azure Storage account, which identifies your storage resource in Azure. You can retrieve this from the Azure portal by navigating to your Storage Account under the Storage Accounts service.
 
@@ -880,6 +925,24 @@ This section involves steps for creating a Depot for different data sources supp
 
     To create a Elasticsearch Depot you must have the following details:
 
+
+
+    **Pre-requisites specific to Depot creation**
+
+    * **Tags:** A developer must possess the following tags, which can be obtained from a DataOS operator.
+
+    ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,                            
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** Alternatively, instead of assigning tags, a developer can create a Depot if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance.![](/usecase2.png)
+
+    **Pre-requisites specific to the source system**
+
     * **Username**: The username used to authenticate and access the Elasticsearch cluster. This is typically created and provided by the Elasticsearch admin during user setup or role assignment.
 
     * **Password**: The password associated with the Elasticsearch username for authentication. This is set during account creation and can be obtained securely from the Elasticsearch admin if forgotten.
@@ -1016,6 +1079,24 @@ This section involves steps for creating a Depot for different data sources supp
     ### Pre-requisites specific to the Eventhub Depot
 
     To create a Eventhub Depot you must have the following details:
+
+
+
+    **Pre-requisites specific to Depot creation**
+
+    * **Tags:** A developer must possess the following tags, which can be obtained from a DataOS operator.
+
+    ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,                            
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** Alternatively, instead of assigning tags, a developer can create a Depot if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance.![](/usecase2.png)
+
+    **Pre-requisites specific to the source system**
 
     * **Endpoint**: The URL endpoint used to connect to your EventHub instance. This can be found in the Azure portal under your EventHub namespace settings. It is typically in the format `your-namespace-name.servicebus.windows.net`.
 
@@ -1159,6 +1240,24 @@ This section involves steps for creating a Depot for different data sources supp
     ### Pre-requisites specific to the Bigquery Depot
 
     To create a Bigquery Depot you must have the following details:
+
+
+
+    **Pre-requisites specific to Depot creation**
+
+    * **Tags:** A developer must possess the following tags, which can be obtained from a DataOS operator.
+
+    ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,                            
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** Alternatively, instead of assigning tags, a developer can create a Depot if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance.![](/usecase2.png)
+
+    **Pre-requisites specific to the source system**
 
     * **Project ID**: The unique identifier for your Google Cloud project used by BigQuery. You can find this in the Google Cloud Console under "Project Info" on your project dashboard.
 
@@ -1309,6 +1408,24 @@ This section involves steps for creating a Depot for different data sources supp
 
     To create a GCS Depot you must have the following details:
 
+
+
+    **Pre-requisites specific to Depot creation**
+
+    * **Tags:** A developer must possess the following tags, which can be obtained from a DataOS operator.
+
+    ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,                            
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** Alternatively, instead of assigning tags, a developer can create a Depot if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance.![](/usecase2.png)
+
+    **Pre-requisites specific to the source system**
+
     * **GCS Bucket**: The name of the Google Cloud Storage bucket you want to access. You can find the bucket name in the Google Cloud Console under the "Storage" section, where all your buckets are listed.
 
     * **Relative Path**: The path to the specific file or directory within the GCS bucket. This path can be obtained by navigating to the file or directory in the Google Cloud Console and copying the relative path from the bucket.
@@ -1450,6 +1567,24 @@ This section involves steps for creating a Depot for different data sources supp
     ### Pre-requisites specific to the JDBC Depot
 
     To create a JDBC Depot you must have the following details:
+
+
+
+    **Pre-requisites specific to Depot creation**
+
+    * **Tags:** A developer must possess the following tags, which can be obtained from a DataOS operator.
+
+    ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,                            
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** Alternatively, instead of assigning tags, a developer can create a Depot if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance.![](/usecase2.png)
+
+    **Pre-requisites specific to the source system**
 
     * **Database Name**: The name of the database you want to connect to. This can be provided by the database administrator or found in the database management interface, where your desired database is listed.
 
@@ -1608,6 +1743,24 @@ This section involves steps for creating a Depot for different data sources supp
 
     To create a Kafka Depot you must have the following details:
 
+
+
+    **Pre-requisites specific to Depot creation**
+
+    * **Tags:** A developer must possess the following tags, which can be obtained from a DataOS operator.
+
+    ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,                            
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** Alternatively, instead of assigning tags, a developer can create a Depot if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance.![](/usecase2.png)
+
+    **Pre-requisites specific to the source system**
+
     * **KAFKA Broker List**: A comma-separated list of broker addresses in the Kafka cluster (e.g., `broker1:9092,broker2:9092`). The broker list allows the connection to discover all topics and partitions in the cluster. This information can be obtained from the Kafka admin or the cluster configuration file, usually found in the `server.properties` file.
 
     * **Schema Registry URL**: The URL of the Schema Registry associated with your Kafka cluster, which stores the schemas for the data being produced and consumed. This is required if your Kafka topics use Avro or other schema-based serialization formats. You can obtain this URL from the Kafka admin or the configuration details of the Schema Registry setup.
@@ -1719,6 +1872,26 @@ This section involves steps for creating a Depot for different data sources supp
     ### **Prerequisites**
 
     The following are the prerequisites for creating a MongoDB Depot.
+
+
+
+    **Pre-requisites specific to Depot creation**
+
+    * **Tags:** A developer must possess the following tags, which can be obtained from a DataOS operator.
+
+    ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,                            
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** Alternatively, instead of assigning tags, a developer can create a Depot if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance.![](/usecase2.png)
+
+    **Pre-requisites specific to the source system**
+
+
 
     **For username and password authentication:**
 
@@ -2025,6 +2198,24 @@ This section involves steps for creating a Depot for different data sources supp
 
     To create a MSSQL Depot you must have the following details:
 
+
+
+    **Pre-requisites specific to Depot creation**
+
+    * **Tags:** A developer must possess the following tags, which can be obtained from a DataOS operator.
+
+    ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,                            
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** Alternatively, instead of assigning tags, a developer can create a Depot if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance.![](/usecase2.png)
+
+    **Pre-requisites specific to the source system**
+
     * **Host URL and Parameters**: The URL or hostname of the SQL Server where the database is hosted. This is typically provided by the database administrator. Additional connection parameters (such as encryption settings or timeout values) might be needed depending on the specific requirements of the SQL Server and the connection method.
 
     * **Database Schema**: The schema in the Microsoft SQL Server where your tables and other database objects are located. This can be provided by the database administrator, and it helps define the structure and organization of the data within the database.
@@ -2243,6 +2434,24 @@ This section involves steps for creating a Depot for different data sources supp
 
     To create a MySQL Depot you must have the following details:
 
+
+
+    **Pre-requisites specific to Depot creation**
+
+    * **Tags:** A developer must possess the following tags, which can be obtained from a DataOS operator.
+
+    ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,                            
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** Alternatively, instead of assigning tags, a developer can create a Depot if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance.![](/usecase2.png)
+
+    **Pre-requisites specific to the source system**
+
     * **Host URL and Parameters**: The URL or hostname of the MySQL server where the database is hosted. This is typically provided by the database administrator. Additional parameters (such as character set or connection timeout) may be needed based on the specific configuration of the MySQL server.
 
     * **Port**: The port number used to connect to the MySQL server. By default, MySQL uses port `3306`, but this could vary if a custom port is configured. This information should be provided by the database administrator.
@@ -2405,6 +2614,24 @@ This section involves steps for creating a Depot for different data sources supp
 
     To create a Opensearch Depot you must have the following details:
 
+
+
+    **Pre-requisites specific to Depot creation**
+
+    * **Tags:** A developer must possess the following tags, which can be obtained from a DataOS operator.
+
+    ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,                            
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** Alternatively, instead of assigning tags, a developer can create a Depot if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance.![](/usecase2.png)
+
+    **Pre-requisites specific to the source system**
+
     * **Username**: The username used to authenticate and access the OpenSearch cluster. This is typically set up by the OpenSearch admin and assigned to users with specific access permissions.
 
     * **Password**: The password associated with the OpenSearch username for authentication. This is created during user setup and should be securely retrieved from the OpenSearch admin if not known.
@@ -2543,6 +2770,24 @@ This section involves steps for creating a Depot for different data sources supp
     ### Pre-requisites specific to the Oracle Depot
 
     To create a Oracle Depot you must have the following details:
+
+
+
+    **Pre-requisites specific to Depot creation**
+
+    * **Tags:** A developer must possess the following tags, which can be obtained from a DataOS operator.
+
+    ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,                            
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** Alternatively, instead of assigning tags, a developer can create a Depot if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance.![](/usecase2.png)
+
+    **Pre-requisites specific to the source system**
 
     * **URL of your Oracle account**: The URL or hostname of the Oracle database server where the database is hosted. This is typically provided by the database administrator and may include additional connection parameters.
 
@@ -2689,6 +2934,24 @@ This section involves steps for creating a Depot for different data sources supp
     ### Pre-requisites specific to the Postgres Depot
 
     To create a Postgres Depot you must have the following details:
+
+
+
+    **Pre-requisites specific to Depot creation**
+
+    * **Tags:** A developer must possess the following tags, which can be obtained from a DataOS operator.
+
+    ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,                            
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** Alternatively, instead of assigning tags, a developer can create a Depot if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance.![](/usecase2.png)
+
+    **Pre-requisites specific to the source system**
 
     * **Database name**: The name of the specific PostgreSQL database you want to connect to. This can be provided by the database administrator or found in the database management system where the database was created.
 
@@ -2903,6 +3166,24 @@ This section involves steps for creating a Depot for different data sources supp
     ### Pre-requisites specific to the Snowflake Depot
 
     To create a Snowflake Depot you must have the following details:
+
+
+
+    **Pre-requisites specific to Depot creation**
+
+    * **Tags:** A developer must possess the following tags, which can be obtained from a DataOS operator.
+
+    ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,                            
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** Alternatively, instead of assigning tags, a developer can create a Depot if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance.![](/usecase2.png)
+
+    **Pre-requisites specific to the source system**
 
     * **Snowflake Account URL**: The unique URL used to access your Snowflake account, typically in the format `https://<account_name>.snowflakecomputing.com`. You can retrieve this from your Snowflake admin or find it in your Snowflake login credentials email.
 
