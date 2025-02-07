@@ -4587,6 +4587,8 @@ This section involves do's and don'ts for managing an Instance Secret.
 
   <Accordion title="What happens if an Instance Secret is deleted?" defaultOpen={false}>
     If an Instance Secret is deleted, any resources relying on it may lose access or experience failures. It is recommended to verify dependencies before deletion.
+
+
   </Accordion>
 
   <Accordion title="How can I receive alerts if an Instance Secret is deleted?" defaultOpen={false}>
@@ -4603,5 +4605,9 @@ This section involves do's and don'ts for managing an Instance Secret.
 
   <Accordion title="Can we create multiple Instance Secrets with the same name?" defaultOpen={false}>
     No, for Instance Secrets, names must be unique. If you attempt to create a secret with a name that already exists, the system will prevent duplication. You may need to use a different name or update the existing secret if modifications are required.
+  </Accordion>
+
+  <Accordion title="Is there any way to know which Resources are using a Depot?" defaultOpen={false}>
+
   </Accordion>
 </AccordionGroup>
