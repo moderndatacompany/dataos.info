@@ -1220,35 +1220,9 @@ This section involves steps for creating a Depot for different data sources supp
 
     ### Step 2: Create a GCS Depot manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your GCS Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
+    Begin by creating a manifest file to hold the configuration details for your GCS Depot.
 
     <CodeGroup>
-      ```yaml Inline credentials Depot manifest file
-      name: ${{"sanitygcs01"}}
-      version: v1
-      type: depot
-      tags:
-        - ${{GCS}}
-        - ${{Sanity}}
-      layer: user
-      depot:
-        type: GCS
-        description: ${{"GCS depot for sanity"}}
-        compute: ${{runnable-default}}
-        spec:
-          bucket: ${{"airbyte-minio-testing"}}
-          relativePath: ${{"/sanity"}}
-        external: ${{true}}
-        connectionSecret:
-          - acl: ${{rw}}
-            type: key-value-properties
-            data:
-              projectid: ${{$GCS_PROJECT_ID}}
-              email: ${{$GCS_ACCOUNT_EMAIL}}
-            files:
-              gcskey_json: ${{$GCS_KEY_JSON}}
-      ```
-
       ```yaml Instance Secret reference Depot manifest file
       name: ${{"sanitygcs01"}}
       version: v2alpha
@@ -1382,42 +1356,9 @@ This section involves steps for creating a Depot for different data sources supp
 
     ### Step 2: Create a JDBC Depot manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your JDBC Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
+    Begin by creating a manifest file to hold the configuration details for your JDBC Depot.&#x20;
 
     <CodeGroup>
-      ```yaml Inline credentials Depot manifest file
-      name: ${{depot-name}}
-      version: v1
-      type: depot
-      tags:
-        - ${{tag1}}
-      owner: ${{owner-name}}
-      layer: user
-      depot:
-        type: JDBC                                      
-        description: ${{description}}
-        external: ${{true}}
-        connectionSecret:                              
-          - acl: rw
-            type: key-value-properties
-            data:
-              username: ${{jdbc-username}}
-              password: ${{jdbc-password}}
-          - acl: r
-            type: key-value-properties
-            data:
-              username: ${{jdbc-username}}
-              password: ${{jdbc-password}}
-        spec:                                           
-          subprotocol: ${{subprotocol}}
-          host: ${{host}}
-          port: ${{port}}
-          database: ${{database-name}}
-          params:
-            ${{"key1": "value1"}}
-            ${{"key2": "value2"}}
-      ```
-
       ```yaml Instance Secret reference Depot manifest file
       name: ${{depot-name}}
       version: v2alpha
@@ -1654,6 +1595,7 @@ This section involves steps for creating a Depot for different data sources supp
     * **Use cases:** Alternatively, instead of assigning tags, a developer can create a Depot if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance.![](/usecase2.png)
 
     **Pre-requisites specific to the source system**
+
 
     **For username and password authentication:**
 
@@ -2000,43 +1942,13 @@ This section involves steps for creating a Depot for different data sources supp
 
     ### Step 2: Create a MSSQL Depot manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your MSSQL Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
+    Begin by creating a manifest file to hold the configuration details for your MSSQL Depot.&#x20;
+
+
 
     **Use the below template, if self-signed certificate is enabled.**
 
     <CodeGroup>
-      ```yaml Inline credentials Depot manifest file
-      name: ${{depot-name}}
-      version: v1
-      type: depot
-      tags:
-        - ${{tag1}}
-        - ${{tag2}}
-      owner: ${{owner-name}}
-      layer: user
-      depot:
-        type: ABFSS                                       
-        description: ${{description}}
-        external: ${{true}}
-        compute: ${{runnable-default}}
-        connectionSecret:                                 
-          - acl: rw
-            type: key-value-properties
-            data:
-              azurestorageaccountname: ${{account-name}}
-              azurestorageaccountkey: ${{account-key}}
-          - acl: r
-            type: key-value-properties
-            data:
-              azurestorageaccountname: ${{account-name}}
-              azurestorageaccountkey: ${{account-key}}
-        spec:                                             
-          account: ${{account-name}}
-          container: ${{container-name}}
-          relativePath: ${{relative-path}}
-          format: ${{format}}
-      ```
-
       ```yaml Instance Secret reference Depot manifest file
       name: ${{depot-name}}
       version: v2alpha
@@ -2232,42 +2144,13 @@ This section involves steps for creating a Depot for different data sources supp
 
     ### Step 2: Create a MySQL Depot manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your MySQL Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
+    Begin by creating a manifest file to hold the configuration details for your MySQL Depot.&#x20;
+
+
 
     **Use this template, if self-signed certificate is enabled.**
 
     <CodeGroup>
-      ```yaml Inline credentials Depot manifest file
-      name: ${{mysql01}}
-      version: v1
-      type: depot
-      tags:
-        - ${{dropzone}}
-        - ${{mysql}}
-      layer: user
-      depot:
-        type: MYSQL
-        description: ${{"MYSQL Sample Database"}}
-        spec:
-          subprotocol: "mysql"
-          host: ${{host}}
-          port: ${{port}}
-          params: # Required
-            tls: ${{skip-verify}}
-        external: ${{true}}
-        connectionSecret:
-          - acl: r
-            type: key-value-properties
-            data:
-              username: ${{username}}
-              password: ${{password}} 
-          - acl: rw
-            type: key-value-properties
-            data:
-              username: ${{username}}
-              password: ${{password}}
-      ```
-
       ```yaml Instance Secret reference Depot manifest file
       name: ${{mysql01}}
       version: v2alpha
