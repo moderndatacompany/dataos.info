@@ -51,11 +51,11 @@ Apart from the external applications, the Scanner Stack can also extract metadat
 
 The Scanner job connects with the following DataOS components and stores the extracted metadata to Metis DB:
 
-* **Collation Service**: To scan and publish metadata related to data pipelines, including Workflow information, execution history, and execution states. It also collects metadata for historical data such as pods and logs, as well as data processing Stacks like <Tooltip tip="Flare stack is used for building end-to-end data pipelines within DataOS. It uses a YAML-based declarative programming paradigm built as an abstraction over Apache Spark. It offers an all-in-one solution for performing diverse data ingestion, transformation, enrichment, and syndication processes on batch and streaming data.">Flare</Tooltip> and<Tooltip tip="Benthos is a robust and efficient stream processing stack within DataOS. It offers a user-friendly declarative YAML programming approach, enabling seamless execution of essential data engineering tasks like data transformation, mapping, schema validation, filtering, and enrichment."> Benthos</Tooltip>, capturing job information and source-destination relationships.
+* **Collation Service**: To scan and publish metadata related to data pipelines, including Workflow information, execution history, and execution states. It also collects metadata for historical data such as pods and logs, as well as data processing Stacks like <Tooltip tip="Flare stack is used for building end-to-end data pipelines within DataOS.">Flare</Tooltip> and<Tooltip tip="Benthos is a robust and efficient stream processing stack within DataOS."> Benthos</Tooltip>, capturing job information and source-destination relationships.
 
 * **Gateway Service**: To retrieve information from data profiles (descriptive statistics for datasets) and data quality tables (quality checks for your data along with their pass/fail status). It also scans data related to query usage, enabling insights into heavy datasets, popular datasets, and associations between datasets.
 
-* <Tooltip tip="Heimdall is the authentication, authorization, and governance engine in DataOS, responsible for implementing a robust security strategy. It ensures that only authorized users have access to DataOS resources.">**Heimdall**</Tooltip>: To scan and retrieve information about users in the DataOS environment, including their descriptions and profile images. This user information is accessible through the Metis UI.
+* <Tooltip tip="Heimdall is the authentication, authorization, and governance engine in DataOS">**Heimdall**</Tooltip>: To scan and retrieve information about users in the DataOS environment, including their descriptions and profile images. This user information is accessible through the Metis UI.
 
 * **Pulsar** **Service**: To keep listening to the messages being published on it by various other services and Stacks within the system.
 
@@ -65,4 +65,11 @@ The Scanner enables the scanning of all datasets associated with a specific Depo
 
 Scanner Workflows can be defined using sequential YAML configurations to enable pull-based metadata extraction within the DataOS platform. These Workflows support integration with a wide range of data sources in the data Stack. The following image illustrates the various components of a Scanner YAML file:
 
-![](/scanner_yaml_component.jpeg)
+![](/scanner_yaml_component.jpeg "Scanner YAML Components")
+The templates of different sources of Scanner Workflows are as follows:
+
+* [Data Sources](https://dataosinfo.mintlify.app/resources/scanner/supported_sources/data_sources/)
+
+* [System Sources](https://dataosinfo.mintlify.app/resources/scanner/supported_sources/system_metadata_sources/)
+
+* [Indexer Services](https://dataosinfo.mintlify.app/resources/scanner/supported_sources/indexer_services/)

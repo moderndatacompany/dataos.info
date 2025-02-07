@@ -1,0 +1,84 @@
+---
+title: "Scanner for AzureSQL"
+---
+
+The requirements and manifest configuration to create Scanner for AzureSQL in order to extract entity metadata are as follows:
+
+## Requirements
+
+To scan metadata from AzureSQL:
+
+* Ensure that the user have added the current IP address on Azure SQL firewall rules. Checkout [**THIS**](https://learn.microsoft.com/en-us/azure/azure-sql/database/firewall-configure?view=azuresql#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) document on how to whitelist user’s IP using azure portal.
+
+* AzureSQL database user must grant `SELECT` privilege to fetch the metadata of tables and views.
+
+* **Access Permission to Run a Scanner Workflow**
+  Verify that the use case or role tag for executing a Scanner Workflow is approved, which are as follows:
+
+| Access using Role Tag | Access using Use cases         |
+| --------------------- | ------------------------------ |
+| roles:id:data-dev     | Read Workspace                 |
+| roles:id:system-dev   | Run as Scanner User            |
+| roles:id:user         | Manage All Depot               |
+|                       | Read All Dataset               |
+|                       | Read all secrets from Heimdall |
+
+* Pre-created AzureSQL Depot
+  Ensure that a AzureSQL Depot is already created with valid read access and the necessary permissions to extract metadata. To check the Depot go to the MetisUI of the DataOS or use the following command:
+
+```bash
+
+dataos-ctl get -t depot -a
+
+#expected output
+
+INFO\[0000] 🔍 get...
+INFO\[0000] 🔍 get...complete
+
+| NAME             | VERSION | TYPE  | WORKSPACE | STATUS | RUNTIME | OWNER      |
+| ---------------- | ------- | ----- | --------- | ------ | ------- | ---------- |
+| mongodepot       | v2alpha | depot |           | active |         | Jhon Doe   |
+| snowflakedepot   | v2alpha | depot |           | active |         | JOJO       |
+| redshiftdepot    | v2alpha | depot |           | active |         | Kira       |
+| mysqldepot       | v2alpha | depot |           | active |         | Ryuk       |
+| oracle01         | v2alpha | depot |           | active |         | drdoom     |
+| mariadb01        | v2alpha | depot |           | active |         | tonystark  |
+| demopreppostgres | v2alpha | depot |           | active |         | slimshaddy |
+| demoprepbq       | v2alpha | depot |           | active |         | pengvin    |
+| mssql01          | v2alpha | depot |           | active |         | hulk       |
+| kafka01          | v2alpha | depot |           | active |         | peeter     |
+| icebase          | v2alpha | depot |           | active |         | blackpink  |
+| azuresql         | v2alpha | depot |           | active |         | arnold     |
+| fastbase         | v2alpha | depot |           | active |         | ddevil     |
+
+```
+
+If the AzureSQL Depot is not created, create a Depot using the template given below:
+
+```yaml
+name: ${{depot-name}}
+version: v2alpha
+type: depot
+tags:
+  - ${{tag1}}
+owner: ${{owner-name}}
+layer: user
+depot:
+  type: JDBC                                      
+  description: ${{description}}
+  external: ${{true}}
+  secrets:
+    - name: ${{sf-instance-secret-name}}-r
+      allkeys: true
+
+    - name: ${{sf-instance-secret-name}}-rw
+      allkeys: true
+  jdbc:                                           
+    subprotocol: ${{subprotocol}}
+    host: ${{host}}
+    port: ${{port}}
+    database: ${{database-name}}
+    params:
+      ${{"key1": "value1"}}
+      ${{"key2": "value2"}}
+```
