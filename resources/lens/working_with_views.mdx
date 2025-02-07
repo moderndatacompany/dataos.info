@@ -8,19 +8,19 @@ sidebarTitle: "Views"
 
 Views act as an abstraction layer over the data graph of tables, allowing consumers to interact with a simplified version of the data model. They provide a streamlined interface for defining metrics, enabling end-users to focus on key metrics rather than the entire data model. Views reference dimensions, measures, and segments from multiple logical tables but do not contain their own measures, dimensions, or segments.
 
-## How to create views?
+## Why views?
 
 * **Defining Metrics**: Views allow you to define metrics by including measures and dimensions from different tables. This enables you to create denormalized tables that comprehensively address a specific use case. For instance, you can have a view that gives you all the dimensions and measures to understand ‘Weekly Spirits Sales in Florida’.
 
 * **Providing a simplified interface**: By exposing only the relevant measures and dimensions, views make it easier for users to understand and query the data, reducing the complexity of the underlying data model.
 
-## Types of Views
+## Types of views
 
 * **Entity-first:** An Entity-first view is structured around an real-world entity in your data model or object of interest, such as a `customer`, `product`, or `transaction`. In this type of view, the focus is on describing all the attributes and relationships of a single entity. The goal is to allow users to explore and analyze the characteristics and behaviors of these entities without necessarily being focused on metrics or aggregated measures. For example, an Entity-first view could include detailed customer profiles, product details, or individual transaction records.
 
-* **Metric-first:** A Metric is a type of logical view that, by default, provides a logical view of a logical table, containing only one measure and a time dimension. This means that a Metric represents a specific data point or calculation over time, focusing on one key measure, such as average spent per category, retention rate, or churn rate, and linking it to a time period for analysis.
+* **Metric-first:** A Metric is a type of logical view that, by default, provides a logical view of a logical table, containing only one measure and a time dimension. This means that a Metric represents a specific data point or calculation over time, focusing on one key measure, such as average spent per category, retention rate, or churn rate, and linking it to a period for analysis.
 
-## How to define Views?
+## How to define views?
 
 When designing how your semantic layer will be exposed and consumed by end users, you can follow either an **entity-first approach** or a **metrics-first approach.** In both cases, views will be used to build the semantic layer interface.
 
@@ -63,10 +63,6 @@ views:
            - purchases
 
 ```
-
-<aside class="callout">
-  To populate an Entity view on Iris, one must use the `export_to_iris` attribute. However, same is not the case in the Metric view.
-</aside>
 
 <Tip>
   To populate an Entity view on Iris, one must use the `export_to_iris` attribute. However, same is not the case in the Metric view.
@@ -225,31 +221,12 @@ views:
 
 ## **Exploration and activation**
 
-* **Exploration**: Views can be explored using tools such as Iris Board, which provides automated, dynamic dashboards for visualizing and analyzing performance metrics. These tools help detect anomalies and reveal trends over time. You can also query the view in Lens Studio directly.
+* **Exploration**: Views can be explored through the Data Product Hub, where the metrics view of the semantic model is populated in the Metrics section of the Data Product Hub powers automated, dynamic dashboards for visualizing and analyzing performance metrics. These dashboards help identify anomalies, uncover trends over time, and provide actionable insights. Additionally, views can be queried directly within the Data Product Hub Studio for deeper analysis.&#x20;
+
 
 * **Activation**: Metrics can be embedded into operational workflows, triggering alerts, populating Excel models for cross-tab analysis, or integrated into email automation tools for marketing or retention strategies.
 
-* You can explore the view via
-
-  * Iris Board
-
-  * Data Product Hub
-
-### **Iris Board in Metis**
-
-To explore the view via Iris Board, follow the same steps as above to navigate to the Lens Studio page.
-
-<Frame caption="Iris button on Metis">
-  <img src="/resources/lens/working_with_views/iris01.png" />
-</Frame>
-
-Once on the Lens Studio page, click the Iris button located beside the Explore button to explore the view via the Iris Board. An Iris board exploration page will be displayed, listing all the views.
-
-<Frame caption="View in Iris">
-  <img src="/resources/lens/working_with_views/iris02.png" />
-</Frame>
-
-### **Exploring Views on Data Products Hub**
+**Exploring Views on Data Products Hub**
 
 Follow these steps to explore views and metrics within the Data Products Hub (DPH).
 
