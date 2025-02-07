@@ -1,0 +1,116 @@
+---
+title: "Scanner for Kafka"
+---
+
+DataOS allows users to create a Depot of type 'KAFKA' to read live topic data. The created Depot enables the user to read live streaming data. User can scan metadata from an KAFKA-type depot with Scanner Workflows.
+
+## **Requirements**
+
+To scan the KAFKA depot, ensure the following prerequisites need the following:
+
+* Ensure that the depot is created and user have `read` access for the depot. Check the depot using Metis UI or use the following commands:
+
+```bash
+dataos-ctl get -t depot -a
+
+#expected output
+
+INFO[0000] 🔍 get...                                     
+INFO[0000] 🔍 get...complete                             
+
+            NAME            | VERSION | TYPE  | WORKSPACE | STATUS |   RUNTIME   |         OWNER          
+----------------------------|---------|-------|-----------|--------|-------------|------------------------
+  mongodepot                | v2alpha | depot |           | active |             | Jhon Doe
+  snowflakedepot            | v2alpha | depot |           | active |             | JOJO
+  redshiftdepot             | v2alpha | depot |           | active |             | Kira
+  mysqldepot                | v2alpha | depot |           | active |             | Ryuk
+  oracle01                  | v2alpha | depot |           | active |             | drdoom
+  mariadb01                 | v2alpha | depot |           | active |             | tonystark
+  demopreppostgres          | v2alpha | depot |           | active |             | slimshaddy
+	demoprepbq                | v2alpha | depot |           | active |             | pengvin
+  mssql01                   | v2alpha | depot |           | active |             | hulk
+  **kafka01                   | v2alpha | depot |           | active |             | peeter**
+  icebase                   | v2alpha | depot |           | active |             | blackpink
+  azuresql                  | v2alpha | depot |           | active |             | arnold
+  fastbase                  | v2alpha | depot |           | active |             | ddevil
+
+```
+
+If the KAFKA Depot is not created, create it using the below manifest sample:
+
+
+```yaml
+name: ${{depot-name}}
+version: v1
+type: depot
+tags:
+  - ${{tag1}}
+owner: ${{owner-name}}
+layer: user
+depot:
+  type: KAFKA                     
+  description: ${{description}}
+  external: ${{true}}
+  spec:                           
+    brokers:
+      - ${{broker1}}
+      - ${{broker2}}
+    schemaRegistryUrl: ${{http://20.9.63.231:8081/}}
+```
+
+* To connect to Kafka, user needs a KAFKA broker list. Once the user provides the broker list, the Depot enables fetching all the topics in the KAFKA cluster.
+
+* **Access Permission to Run a Scanner Workflow**&#x20;
+  Verify that the use case or role tag for executing a Scanner Workflow is approved, which are as follows:
+  
+  | Access using Role Tag | Access using Use cases         |
+  | --------------------- | ------------------------------ |
+  | `roles:id:data-dev`   | Read Workspace                 |
+  | `roles:id:system-dev` | Run as Scanner User            |
+  | `roles:id:user`       | Manage All Depot               |
+  |                       | Read All Dataset               |
+  |                       | Read all secrets from Heimdall |
+
+## **Scanner Workflow**
+
+Here is an example of manifest configuration to connect to the source and reach the Metis server to save the metadata in Metis DB
+
+```yaml
+version: v1
+name: kafka-scanner2
+type: workflow
+tags:
+  - kafka-scanner2.0
+description: The job scans schema tables and register metadata
+workflow:
+  dag:
+    - name: scanner2-kafka
+      description: The job scans schema from kafka depot tables and register metadata to metis2
+      spec:
+        stack: scanner:2.0
+        compute: runnable-default
+                runAsUser: metis
+        stackSpec:
+          depot: kafka01
+          # sourceConfig:
+          #   config:
+          #     topicFilterPattern:
+          #       includes:
+          #         - Sanity
+          #         - sampel_Json_Kafka
+          #         - consumer_offsets
+```
+
+The above sample manifest file is deployed using the following command:
+
+```
+dataos-ctl resource apply -f {path to the Scanner YAML}
+```
+
+<Note>
+  If the Depot or Scanner configurations are updated, the Scanner must be redeployed after deleting the previous instance. Use the following command to delete the existing Scanner:
+
+  ```
+  dataos-ctl resource delete -f {path to the Scanner YAML file}
+  ```
+</Note>
