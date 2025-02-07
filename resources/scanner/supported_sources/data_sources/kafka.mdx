@@ -38,7 +38,6 @@ INFO[0000] 🔍 get...complete
 
 If the KAFKA Depot is not created, create it using the below manifest sample:
 
-
 ```yaml
 name: ${{depot-name}}
 version: v1
@@ -61,9 +60,7 @@ depot:
 * To connect to Kafka, user needs a KAFKA broker list. Once the user provides the broker list, the Depot enables fetching all the topics in the KAFKA cluster.
 
 * **Access Permission to Run a Scanner Workflow**&#x20;
-  Verify that the use case or role tag for executing a Scanner Workflow is approved, which are as follows:
-  
-  | Access using Role Tag | Access using Use cases         |
+  Verify that the use case or role tag for executing a Scanner Workflow is approved, which are as follows:| Access using Role Tag | Access using Use cases         |
   | --------------------- | ------------------------------ |
   | `roles:id:data-dev`   | Read Workspace                 |
   | `roles:id:system-dev` | Run as Scanner User            |
