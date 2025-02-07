@@ -1,0 +1,154 @@
+---
+title: "Creating a Semantic Model - End-to-End Use Case"
+description: "Step-by-step guide on defining business objectives, KPIs, and designing a semantic model using Lens."
+---
+
+## Step 1: Defining Business Objectives and KPIs
+
+Before designing a Lens, it is essential to establish the business objectives and key performance indicators (KPIs) the model will support. This ensures that the semantic model remains relevant and actionable.
+
+### Scenario
+
+The sales and marketing department has identified a need to leverage data insights to enhance customer engagement and increase sales. They require a data model to track performance, optimize sales strategies, and drive revenue growth.
+
+### Business Objectives
+
+The model must align with the following strategic goals:
+
+- Identify products commonly purchased together to enhance cross-selling opportunities. Understanding these relationships enables recommending additional products at the point of purchase, increasing transaction value and boosting sales.
+  
+- Analyze customer purchase history to identify upselling opportunities. By recommending higher-value or complementary products based on past behavior, the goal is to increase customer spending per transaction.
+  
+- Improve customer experience with personalized product recommendations. By leveraging customer affinity patterns (associating frequently purchased products), the goal is to provide relevant product suggestions, enhancing satisfaction and loyalty.
+
+### Key Performance Indicators
+
+To measure the success of these objectives, the following KPIs are defined:
+
+- **Cross-Sell Opportunity Score**: Assesses the likelihood of recommending additional products based on past purchase behavior. It helps determine how often customers buy related items together.
+  
+- **Product Purchase Frequency**: Tracks how frequently customers purchase specific products within a defined period. This metric informs inventory management and promotional strategies by identifying product demand trends.
+  
+- **Customer Spending by Product Category**: Analyzes total customer spend within different product categories. Identifying high-value product categories enables targeted marketing and sales strategies to drive higher revenue.
+
+
+## Step 2: Designing the Conceptual Model
+
+In this section, we outline the process of designing a conceptual semantic model that translates business requirements into a structured data model. A well-designed conceptual model defines core entities, their relationships, and key measures to support analytical insights.
+
+### Identifying Core Entities
+
+The first step in designing a semantic model is identifying the primary business entities. These entities represent key objects in the data and serve as the foundation for further analysis.
+
+Typical core entities include:
+
+- **Customer**: Represents individuals or organizations interacting with the system.
+- **Product**: Represents items or services available for purchase.
+- **Transaction**: Captures details of purchases or interactions.
+
+### Defining Relationships Between Entities
+
+Once entities are identified, the next step is to establish their relationships. Common relationships include:
+
+- **One-to-Many (1:M)**: A single entity instance is related to multiple instances of another entity. Example: A customer can have multiple transactions, but each transaction is linked to one customer.
+- **Many-to-Many (M:M)**: Multiple instances of one entity relate to multiple instances of another. Example: A product can appear in multiple transactions, and each transaction can include multiple products.
+
+These relationships enable insightful analysis, such as:
+
+- Understanding customer purchase behaviors across different product categories.
+- Identifying frequently bought-together products.
+- Analyzing the impact of product offerings on purchasing trends.
+
+### Conceptual Model Structure
+
+A conceptual model helps visualize how entities and their relationships are structured:
+
+```
++------------------+                +------------------+                +------------------+
+|     Customer     |  One-to-Many   |   Transaction    |  Many-to-Many  |     Product      |
++------------------+  -------------> +------------------+ -------------> +------------------+
+```
+
+This structure provides a high-level view of the data relationships, forming the foundation for further model refinement.
+
+### Defining Measures and Dimensions
+
+To make the semantic model actionable, define **measures** (quantitative values) and **dimensions** (categorical attributes) for each entity.
+
+| Entity      | Related To  | Relationship | Dimensions | Measures |
+|------------|------------|-------------|------------|----------|
+| Customer   | Transaction | One-to-Many | `customer_id`, `age`, `region`, `segment` | `total_customers` |
+| Product    | Transaction | Many-to-One | `product_id`, `category`, `price` | `total_products` |
+| Transaction | Customer   | Many-to-One | `transaction_id`, `date`, `payment_method` | `total_spend`, `average_spend`, `purchase_frequency` |
+
+These attributes allow efficient querying and facilitate business insights.
+
+### Logical Model
+
+The logical model refines the conceptual model into structured relationships for implementation.
+
+```
++------------------+
+|     Customer     |
++------------------+
+| customer_id      | (PK)
+| age             |
+| region          |
+| segment         |
++------------------+
+        |
+        |  One-to-Many
+        v
++------------------+
+|   Transaction    |
++------------------+
+| transaction_id   | (PK)
+| customer_id      | (FK) -----> references Customer(customer_id)
+| date            |
+| payment_method  |
+| total_spend     |
+| purchase_frequency |
++------------------+
+        |
+        |  Many-to-One
+        v
++------------------+
+|     Product      |
++------------------+
+| product_id       | (PK)
+| category        |
+| price          |
++------------------+
+```
+
+## Creating semantic model
+
+To design a semantic model follow the below steps:
+
+### Folder structure
+
+The following structure organizes the semantic model:
+
+```plaintext
+semantic_model/model
+├── sqls
+│   ├── customer.sql
+│   ├── product.sql
+│   └── purchase.sql
+├── tables
+│   ├── customer.yml
+│   ├── product.yml
+│   └── purchase.yml
+└── views
+│   ├── total_spend.yml
+│   ├── purchase_frequency.yml
+│   └── cross_sell_opportunities.yml   
+└── user_groups.yml
+```
+
+<Info>
+The data used to demonstrate the process of creating a semantic model includes the physical tables customer_data and Product_data, stored in the Lakehouse, and purchase data, sourced from PostgreSQL.
+</Info>
+
+
+
