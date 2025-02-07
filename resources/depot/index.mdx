@@ -1,5 +1,5 @@
 ---
-title: "Introduction"
+title: "Overview"
 description: "Depot in DataOS is a Resource used to connect different data sources to DataOS by abstracting the complexities associated with the underlying source system (including protocols, credentials, and connection schemas). It enables users to establish connections and retrieve data from various data sources, such as file systems (e.g., AWS S3, Google GCS, Azure Blob Storage), data lake systems, database systems (e.g., Redshift, SnowflakeDB, Bigquery, Postgres), and event systems (e.g., Kafka, Pulsar) without moving the data."
 sidebarTitle: "Overview"
 ---
@@ -112,42 +112,12 @@ This section involves steps for creating a Depot for different data sources supp
 
     ### Step 2: Create a ABFSS Depot manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your ABFSS Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
+    Begin by creating a manifest file to hold the configuration details for your ABFSS Depot and reference to the Instance Secrets
+
+    .&#x20;
 
     <CodeGroup>
-      ```yaml Inline credentials Depot manifest file
-      name: ${{depot-name}}
-      version: v1
-      type: depot
-      tags:
-        - ${{tag1}}
-        - ${{tag2}}
-      owner: ${{owner-name}}
-      layer: user
-      depot:
-        type: ABFSS                                       
-        description: ${{description}}
-        external: ${{true}}
-        compute: ${{runnable-default}}
-        connectionSecret:                                 
-          - acl: rw
-            type: key-value-properties
-            data:
-              azurestorageaccountname: ${{account-name}}
-              azurestorageaccountkey: ${{account-key}}
-          - acl: r
-            type: key-value-properties
-            data:
-              azurestorageaccountname: ${{account-name}}
-              azurestorageaccountkey: ${{account-key}}
-        spec:                                             
-          account: ${{account-name}}
-          container: ${{container-name}}
-          relativePath: ${{relative-path}}
-          format: ${{format}}
-      ```
-
-      ```yaml Instance Secret reference Depot manifest file
+      ```yaml Depot manifest file
       name: ${{depot-name}}
       version: v2alpha
       type: depot
@@ -321,37 +291,9 @@ This section involves steps for creating a Depot for different data sources supp
 
     ### Step 2: Create a Redshift Depot manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your Redshift Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
+    Begin by creating a manifest file to hold the configuration details for your Redshift Depot.
 
     <CodeGroup>
-      ```yaml Inline credentials Depot manifest file
-      name: ${{redshift-depot-name}}
-      version: v1
-      type: depot
-      tags:
-        - ${{redshift}}
-      layer: user
-      description: ${{Redshift Sample data}}
-      depot:
-        type: REDSHIFT
-        spec:
-          host: ${{hostname}}
-          subprotocol: ${{subprotocol}}
-          port: ${{5439}}
-          database: ${{sample-database}}
-          bucket: ${{tmdc-dataos}}
-          relativePath: ${{development/redshift/data_02/}}
-        external: ${{true}}
-        connectionSecret:
-          - acl: ${{rw}}
-            type: key-value-properties
-            data:
-              username: ${{username}}
-              password: ${{password}}
-              awsaccesskeyid: ${{access key}}
-              awssecretaccesskey: ${{secret key}}
-      ```
-
       ```yaml Instance Secret reference Depot manifest file
       name: ${{redshift-depot-name}}
       version: v2alpha
@@ -471,43 +413,9 @@ This section involves steps for creating a Depot for different data sources supp
 
     ### Step 2: Create a S3 Depot manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your S3 Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
+    Begin by creating a manifest file to hold the configuration details for your S3 Depot.&#x20;
 
     <CodeGroup>
-      ```yaml Inline credentials Depot manifest file
-      name: ${{depot-name}}
-      version: v1
-      type: depot
-      tags:
-        - ${{tag1}}
-      owner: ${{owner-name}}
-      layer: user
-      description: ${{description}}
-      depot:
-        type: S3                                          
-        external: ${{true}}
-        spec:                                            
-          scheme: ${{s3a}}
-          bucket: ${{project-name}}
-          relativePath: ${{relative-path}}
-          format: ${{format}}
-        connectionSecret:                                
-          - acl: rw
-            type: key-value-properties
-            data:
-              accesskeyid: ${{AWS_ACCESS_KEY_ID}}
-              secretkey: ${{AWS_SECRET_ACCESS_KEY}}
-              awsaccesskeyid: ${{AWS_ACCESS_KEY_ID}}
-              awssecretaccesskey: ${{AWS_SECRET_ACCESS_KEY}}
-          - acl: r
-            type: key-value-properties
-            data:
-              accesskeyid: ${{AWS_ACCESS_KEY_ID}}
-              secretkey: ${{AWS_SECRET_ACCESS_KEY}}
-              awsaccesskeyid: ${{AWS_ACCESS_KEY_ID}}
-              awssecretaccesskey: ${{AWS_SECRET_ACCESS_KEY}}
-      ```
-
       ```yaml Instance Secret reference Depot manifest file
       name: ${{depot-name}}
       version: v2alpha
@@ -623,12 +531,6 @@ This section involves steps for creating a Depot for different data sources supp
         endpointSuffix:
         icebergCatalogType: Hive
     ```
-
-    If you do not mention the catalog name as Hive, it will use Hadoop as the default catalog for Iceberg format.
-
-    ![Flow when Hive is chosen as the catalog type](https://dataos.info/resources/depot/depot_catalog.png)
-
-    Hive automatically keeps the pointer updated to the latest metadata version. If you use Hadoop, you have to manually do this by running the set metadata command as described on this page: [Set Metadata](https://dataos.info/resources/depot/icebase/).
   </Accordion>
 
   <Accordion title="Apache Pulsar" defaultOpen={false}>
@@ -790,41 +692,9 @@ This section involves steps for creating a Depot for different data sources supp
 
     ### Step 2: Create a WASBS Depot manifest file
 
-    Create a manifest file to hold the configuration details for your WASBS Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
+    Create a manifest file to hold the configuration details for your WASBS Depot.&#x20;
 
     <CodeGroup>
-      ```yaml Inline credentials Depot manifest file
-      name: ${{depot-name}}
-      version: v1
-      type: depot
-      tags:
-        - ${{tag1}}
-        - ${{tag2}}
-      owner: ${{owner-name}}
-      layer: user
-      depot:
-        type: WASBS                                      
-        description: ${{description}}
-        external: ${{true}}
-        compute: ${{runnable-default}}
-        connectionSecret:                                 
-          - acl: rw
-            type: key-value-properties
-            data:
-              azurestorageaccountname: ${{account-name}}
-              azurestorageaccountkey: ${{account-key}}
-          - acl: r
-            type: key-value-properties
-            data:
-              azurestorageaccountname: ${{account-name}}
-              azurestorageaccountkey: ${{account-key}}
-        spec:                                          
-          account: ${{account-name}}
-          container: ${{container-name}}
-          relativePath: ${{relative-path}}
-          format: ${{format}}
-      ```
-
       ```yaml Instance Secret reference Depot manifest file
       name: ${{depot-name}}
       version: v2alpha
@@ -953,36 +823,10 @@ This section involves steps for creating a Depot for different data sources supp
 
     ### Step 2: Create a Elasticsearch Depot manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your Elasticsearch Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
+    Begin by creating a manifest file to hold the configuration details for your Elasticsearch Depot.
 
     <CodeGroup>
-      ```yaml Inline credentials Depot manifest file
-      name: ${{depot-name}}
-      version: v1
-      type: depot
-      tags:
-        - ${{tag1}}
-        - ${{tag2}}
-      owner: ${{owner-name}}
-      layer: user
-      depot:
-        type: ELASTICSEARCH              
-        description: ${{description}}
-        external: ${{true}}
-        connectionSecret:                
-          - acl: rw
-            values:
-              username: ${{username}}
-              password: ${{password}}
-          - acl: r
-            values:
-              username: ${{username}}
-              password: ${{password}}
-        spec:                           
-          nodes: ${{["localhost:9092", "localhost:9093"]}}
-      ```
-
-      ```yaml Instance Secret reference Depot manifest file
+      ```yaml Depot manifest file
       name: ${{depot-name}}
       version: v2alpha
       type: depot
@@ -1112,36 +956,9 @@ This section involves steps for creating a Depot for different data sources supp
 
     ### Step 2: Create a Eventhub Depot manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your Eventhub Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
+    Begin by creating a manifest file to hold the configuration details for your Eventhub Depot.&#x20;
 
     <CodeGroup>
-      ```yaml Inline credentials Depot manifest file
-      name: ${{"sanityeventhub01"}}
-      version: v1
-      type: depot
-      tags:
-        - ${{Eventhub}}
-        - ${{Sanity}}
-      layer: user
-      depot:
-        type: "EVENTHUB"
-        compute: ${{runnable-default}}
-        spec:
-          endpoint: ${{"sb://event-hubns.servicebus.windows.net/"}}
-        external: ${{true}}
-        connectionSecret:
-          - acl: r
-            type: key-value-properties
-            data:
-              eh_shared_access_key_name: ${{$EH_SHARED_ACCESS_KEY_NAME}}
-              eh_shared_access_key: ${{$EH_SHARED_ACCESS_KEY}}
-          - acl: rw
-            type: key-value-properties
-            data:
-              eh_shared_access_key_name: ${{$EH_SHARED_ACCESS_KEY_NAME}}
-              eh_shared_access_key: ${{$EH_SHARED_ACCESS_KEY}}
-      ```
-
       ```yaml Instance Secret reference Depot manifest file
       name: ${{"sanityeventhub01"}}
       version: v2alpha
@@ -1267,66 +1084,35 @@ This section involves steps for creating a Depot for different data sources supp
 
     ### Step 2: Create a Bigquery Depot manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your Bigquery Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.&#x20;
+    Begin by creating a manifest file to hold the configuration details for your Bigquery Depot.&#x20;
 
     <CodeGroup>
-      ```yaml Inline credentials Depot manifest file
-      name: ${{depot-name}}
-      version: v1
-      type: depot
-      tags:
-        - ${{tag1}}
-        - ${{tag2}}
-      owner: ${{owner-name}}
-      layer: user
-      depot:
-        type: ABFSS                                       
-        description: ${{description}}
-        external: ${{true}}
-        compute: ${{runnable-default}}
-        connectionSecret:                                 
-          - acl: rw
-            type: key-value-properties
-            data:
-              azurestorageaccountname: ${{account-name}}
-              azurestorageaccountkey: ${{account-key}}
-          - acl: r
-            type: key-value-properties
-            data:
-              azurestorageaccountname: ${{account-name}}
-              azurestorageaccountkey: ${{account-key}}
-        spec:                                             
-          account: ${{account-name}}
-          container: ${{container-name}}
-          relativePath: ${{relative-path}}
-          format: ${{format}}
-      ```
-
       ```yaml Instance Secret reference Depot manifest file
       name: ${{depot-name}}
       version: v2alpha
       type: depot
       tags:
-        - ${{tag1}}
-        - ${{tag2}}
+        - ${{dropzone}}
+        - ${{bigquery}}
       owner: ${{owner-name}}
       layer: user
       depot:
-        type: ABFSS                                       
-        description: ${{description}}
+        type: BIGQUERY                 
+        description: ${{description}} # optional
         external: ${{true}}
-        compute: ${{runnable-default}}
         secrets:
-          - name: ${{abfss-instance-secret-name}}-r
-            allkeys: true
+          - name: ${{instance-secret-name}}-r
+            keys: 
+              - ${{instance-secret-name}}-r
 
-          - name: ${{abfss-instance-secret-name}}-rw
-            allkeys: true
-        abfss:                                             
-          account: ${{account-name}}
-          container: ${{container-name}}
-          relativePath: ${{relative-path}}
-          format: ${{format}}
+          - name: ${{instance-secret-name}}-rw
+            keys: 
+              - ${{instance-secret-name}}-rw
+        bigquery:  # optional                         
+          project: ${{project-name}} # optional
+          params: # optional
+            ${{"key1": "value1"}}
+            ${{"key2": "value2"}}
       ```
     </CodeGroup>
 
