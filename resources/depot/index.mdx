@@ -60,37 +60,6 @@ To create a Depot in DataOS, simply compose a manifest configuration file for a 
 
 To know more about the attributes of Depot manifest Configuration, refer to the link: [Attributes of Depot manifest](https://dataos.info/resources/depot/configurations/).
 
-### **Prerequisites**
-
-Before proceeding with Depot creation, it is essential to ensure that you possess the required authorization. To confirm your eligibility, execute the following commands in the CLI:
-
-```bash
-dataos-ctl user get
-# Expected Output
-INFO[0000] 😃 user get...                                
-INFO[0000] 😃 user get...complete                        
-
-      NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS    
-───────────────┼─────────────┼────────┼──────────────────────┼────────────────────
-  IamGroot     │ iamgroot    │ person │ iamgroot@tmdc.io     │ roles:id:data-dev,  
-               │             │        │                      │ roles:id:operator,  
-               │             │        │                      │ roles:id:system-dev, 
-               │             │        │                      │ roles:id:user,    
-               │             │        │                      │ users:id:iamgroot
-```
-
-To create Depots, ensure that you possess the following tags.
-
-* `roles:id:user`
-
-* `roles:id:data-dev`
-
-* `roles:id:system-dev`
-
-<Warning>
-  &#x20;If you do not possess these tags, contact the DataOS Operator or Administrator within your organization to assign you the necessary tag or the use case for the creation of the Depot.
-</Warning>
-
 ### **Steps to create a Depot**
 
 This section involves steps for creating a Depot for different data sources supported by DataOS.
@@ -100,6 +69,33 @@ This section involves steps for creating a Depot for different data sources supp
     ### Pre-requisites specific to the ABFSS Depot
 
     To create an ABFSS Depot you must have the following details:
+
+
+    **Pre-requisites specific to Depot creation**
+
+
+    * **Tags:** A developer must possess the following tags, which can be obtained from an DataOS operator.
+
+    ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,                            
+                     │             │        │                      │ roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+    ```
+
+    * **Use cases:** Alternatively, instead of assigning tags, a developer can create a Depot if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance.
+
+    <Tabs>
+      <Tab title="use case ">
+        ![](/usecase2.png)
+      </Tab>
+    </Tabs>
+
+
+
+
+    **Pre-requisites specific to the source system**
 
     * **Storage Account Name**: The name of the Azure storage account used to store your data. This can be obtained from the Azure portal under your storage account settings or from the administrator managing your Azure resources.
 
