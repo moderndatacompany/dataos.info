@@ -3,7 +3,6 @@ search: "[object Object]"
 description: "An Instance Secret is a DataOS Resource designed for securely storing sensitive information at the DataOS instance level. "
 sidebarTitle: "Overview"
 title: "Overview"
-mode: "wide"
 ---
 
 The primary purpose of an Instance Secret is to address the inherent exposure risk associated with directly embedding such confidential data within application code or manifest files (YAML configuration files). This includes usernames, passwords, certificates, tokens, and keys. Instance Secrets establish a critical segregation between sensitive data and Resource definitions. This division minimizes inadvertent exposure during various Resource management phases, including creation, viewing, or editing.&#x20;
@@ -47,10 +46,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     To create an Instance Secret for securing ABFSS credentials, you must have the following information:
 
-
-
     **Pre-requisites specific to an Instance Secret creation**
-
 
     * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
 
@@ -81,9 +77,6 @@ If you want to store credentials for various data sources in an Instance Secret 
       </Tab>
     </Tabs>
 
-
-
-
     **Pre-requisites specific to the source system**
 
     * **Azure Endpoint Suffix**: The endpoint suffix for the Azure Storage account. This is typically region-specific and can be found in the Azure Portal under the **Properties** section of your storage account.
@@ -91,7 +84,6 @@ If you want to store credentials for various data sources in an Instance Secret 
     * **Azure Storage Account Key**: The access key for the Azure Storage account, used for authentication. You can retrieve this from the Azure Portal by navigating to your storage account, selecting **Access keys** under the **Security + networking** section, and copying the key.
 
     * **Azure Storage Account Name**: The name of the Azure Storage account used to identify it within your subscription. This can be found in the Azure Portal under the **Overview** section of your storage account.
-
 
     Ensure that you have these details ready before proceeding with the Instance Secret creation process.
 
@@ -316,10 +308,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     To create an Instance Secret for securing BigQuery credentials, you must have the following information:
 
-
-
     **Pre-requisites specific to an Instance Secret creation**
-
 
     * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
 
@@ -1134,7 +1123,6 @@ If you want to store credentials for various data sources in an Instance Secret 
     </Tabs>
 
     **Pre-requisites specific to the source system**
-
 
     * **Username**: The JDBC username used to authenticate and access the database via JDBC. This can be obtained from the database administrator who manages user access.
 
