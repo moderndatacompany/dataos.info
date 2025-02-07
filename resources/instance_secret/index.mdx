@@ -4572,6 +4572,17 @@ This section involves do's and don'ts for managing an Instance Secret.
 <AccordionGroup>
   <Accordion title="Can I update an existing Instance Secret?" defaultOpen={false}>
     Yes, you can update an Instance Secret by modifying its manifest file and re-applying it. However, ensure that dependent resources are updated accordingly.
+    To update an Instance Secret after making changes in the manifest file, execute the following commands.
+
+    <CodeGroup>
+      ```bash apply command
+      dataos-ctl resource apply -f {path-to-manifest-file} 
+      ```
+
+      ```bash update command (alternative)
+      dataos-ctl resource update -f {path-to-manifest-file}
+      ```
+    </CodeGroup>
   </Accordion>
 
   <Accordion title="What happens if an Instance Secret is deleted?" defaultOpen={false}>
