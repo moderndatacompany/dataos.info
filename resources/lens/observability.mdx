@@ -1,6 +1,6 @@
 ---
 title: "Observe and monitor a semantic model or Lens"
-description: "The Operations app in DataOS helps administrators monitor and observe deployed Lens instances, providing real-time insights into performance, user activities, and resource utilization for efficient troubleshooting and analysis."
+description: "DataOS provides a comprehensive set of observability solutions, including the Operations app, Monitor, and Pager, to track and analyze deployed Lens instances and their semantic models. The Operations app offers real-time insights into performance and resource utilization, while Monitor enables observation, and Pager raises incidents when predefined conditions are met, ensuring effective monitoring and troubleshooting."
 sidebarTitle: "Observability"
 ---
 
@@ -14,7 +14,7 @@ The Lens and its semantic model can be observed and monitored at the following t
 
 ## Metric monitoring
 
-Metric monitoring in Lens is done by Monitor and Pager Resource focuses on tracking the performance and health of the Lens Resources. It helps in measuring key indicators that define the state of the system. A Lens Resource can be monitored using Monitor and Pager Resources. There are two types of Monitors that can be applied to observe the state of deployed Lens and the matrix of the semantic model.
+Metric monitoring in Lens is done by Monitor and Pager Resource focuses on tracking the performance and health of the Lens Resources. It helps in measuring key indicators that define the state of the system. A Lens Resource can be monitored using Monitor and Pager Resources. Two types of Monitors can be applied to observe the state of the deployed Lens and the matrix of the semantic model.
 
 * [Equation monitor](/resources/lens/observability#metric-monitor)
 
@@ -22,7 +22,7 @@ Metric monitoring in Lens is done by Monitor and Pager Resource focuses on track
 
 ### Equation Monitor
 
-Equation Monitor observes the Lens metrics to generate the incidents when the condition meets.
+Equation Monitor observes the Lens and it's semantic model's smetrics to generate the incidents when the condition meets.
 
 <Steps>
   <Step title="Create Equation Monitor">
@@ -102,7 +102,7 @@ Equation Monitor observes the Lens metrics to generate the incidents when the co
   </Step>
 </Steps>
 
-## Equation Monitor Pager
+### Equation Monitor Pager
 
 The following configuration defines a Pager Resource named `lens-equation-monitoring-pager` used for sending alerts to a Microsoft Teams channel when specific conditions related to a Lens Resource are met. The conditions are defined in the above Equation Monitor manifest file. The pager monitors the `lens-customer-analysis` incident, and when it is triggered, the configured alert is sent.
 
@@ -172,7 +172,7 @@ The following configuration defines a Pager Resource named `lens-equation-monito
 
 ### Report Monitor
 
-The **Report Monitor** is designed to monitor and match string values, such as the status or runtime of a DataOS resource. It leverages the DataOS API to retrieve real-time data, providing visibility into the operational state and performance of resources. This tool is particularly useful for tracking the ongoing status of resources and ensuring that they operate as expected within the system.
+The Report Monitor is designed to monitor and match string values, such as the status or runtime of a DataOS resource. It leverages the DataOS API to retrieve real-time data, providing visibility into the operational state and performance of resources. This tool is handy for tracking the ongoing status of resources and ensuring they operate as expected within the system.
 
 The following section outlines the steps to create a Report Monitor Resource that triggers an incident when the state of a Lens changes from 'active' to 'deleted'. Before proceeding, ensure you have the necessary permissions to create a Monitor Resource.&#x20;
 
@@ -280,7 +280,7 @@ The following section outlines the steps to create a Report Monitor Resource tha
   </Step>
 </Steps>
 
-## Report Page Resource&#x20;
+### Report Pager Resource&#x20;
 
 Create a Report Page Resource  to get notified when the status of Lens changes from active to delete
 
@@ -367,7 +367,7 @@ This section outlines the steps to create a Pager Resource. While we are using M
 
 Operational monitoring of the Lens and its semantic model can be done through the Operations App and CLI, providing visibility into the state and behavior of Lens Resources, enabling workload performance tracking, historical runtime analysis, and troubleshooting.&#x20;
 
-When Lens Resource is in pending state, it’s essential to check the services running behind it, such as the API or worker services. These services typically show as successful when the resource is in a `running:1` state. However, if the resource is stuck in a **pending state**, you can easily troubleshoot by clicking on the specific service to view its **error logs**. This enables quick identification of any issues preventing the resource from transitioning into a running state.&#x20;
+When Lens Resource status is pending, it’s essential to check the services running behind it, such as the API or worker services. These services typically show as successful when the resource is in a `running:1` state. However, if the resource is stuck in a pending state, you can easily troubleshoot by clicking on the specific service to view its error logs. This enables quick identification of any issues preventing the resource from transitioning into a running state.&#x20;
 
 To observe and monitor the Lens error logs using the Operations app follow the below steps:
 
@@ -417,7 +417,9 @@ To observe and monitor the Lens error logs using the Operations app follow the b
   </Step>
 </Steps>
 
-## Observe and Monitor Query Statistics of the Clusters
+## Observe and Monitor Query Statistics across data sources
+
+ To observe and monitor the source query statistics and to find out which tables in the database are most heavily used, i.e. the number of users queried the table, the number of times it was queried, etc., Navigate to the respective query monitoring tools for each source. These tools provide insights into query execution, performance metrics, and resource utilization, enabling efficient analysis and optimization. For Minerva and Themis Clusters, this can be managed directly within the Operations App.
 
 ### Check Query Stats for Minerva
 
@@ -493,7 +495,7 @@ To check the query statistics, please follow the steps below:
 
 2. **Select the Running Driver:** Choose the running driver. **This driver will always be the same, regardless of the user, as queries will be directed to the creator of the Themis cluster**. The running driver remains consistent for all users.
 
-3. **View the Spark UI:** Go to terminal and use the following command to view the spark UI:
+3. **View the Spark UI:** Go to the terminal and use the following command to view the Spark UI:
 
 ```yaml
 dataos-ctl -t cluster -w public -n themislens --node themis-themislens-iamgroot-default-a650032d-ad6b-4668-b2d2-cd372579020a-driver view sparkui
