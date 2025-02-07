@@ -1,0 +1,131 @@
+---
+title: "Best Practices for Scanner Stack"
+description: "Comprehensive guide to configuring and optimizing Scanner Stack."
+---
+
+
+
+## Best Practices for Scanner Stack
+
+### 1. Permission and Access Control
+
+A user must have either **Operator level access** (`roles:id:operator` tag) or be granted permission for the "Run as Scanner User" use case.
+
+#### YAML Configuration
+
+```yaml
+spec:
+  runAsUser: metis
+```
+
+### 2. Scanner YAML Configuration
+
+Define resource properties such as **name, version, type, owner, etc.** These properties are essential for all resources.
+
+Refer to [Configuring the Resource Section](https://dataosinfo.mintlify.app/resources/scanner/configurations#scanner-configuration-attributes-details) for more details.
+
+### 3. Scheduling Workflows
+
+To schedule a workflow, add the `schedule` property with a `cron` expression.
+
+```yaml
+spec:
+  schedule:
+    cron: 0 0 * * *
+```
+
+### 4. Scanner Job Properties
+
+Define the **Scanner job properties** in the `dag` section, such as job name and description.
+
+```yaml
+dag:
+  jobName: Scanner Job
+  description: Scanner Job Description
+  specification:
+    stack:
+      # Specify stack configuration
+    compute:
+      # Specify compute configuration
+```
+
+### 5. Depot Scan
+
+**Depot Configuration:**
+
+- `depot`: Specify the name or address of the depot.
+- The Scanner job will scan all datasets referred by a depot.
+- Depot maintains connection details and secrets, so they do not need to be explicitly provided in Scanner YAML.
+
+```yaml
+depot:
+  depot: dataos://depot-name #UDL
+```
+
+### 6. Customizing and Controlling Metadata Scanning
+
+Specify a set of configurations under `sourceConfig` to customize and control metadata scanning. These properties depend on the underlying metadata source.
+
+## Optimizing Scanner Stack
+
+### 1. Use Specific Filter Patterns
+
+Avoid scanning unnecessary data by using precise filter patterns.
+
+```yaml
+databaseFilterPattern:
+  includes: ^SNOWFLAKE.*
+```
+
+### 2. Avoid Using Wildcards at the End of Patterns
+
+Using wildcards at the end of patterns can lead to unexpected results.
+
+```yaml
+databaseFilterPattern:
+  includes: ^SNOWFLAKE$
+```
+
+### 3. Use Regular Expressions to Filter Schemas and Tables
+
+```yaml
+schemaFilterPattern:
+  includes: ^TPCH.*
+```
+
+### 4. Exclude Specific Schemas and Tables
+
+```yaml
+schemaFilterPattern:
+  excludes: ^TPCH_SF100$
+```
+
+### 5. Use Include and Exclude Properties with Caution
+
+Use either `includes` **or** `excludes`, but not both together, as they are in an **OR** condition.
+
+```yaml
+# Incorrect
+includes: ^SNOWFLAKE.*
+excludes: ^SNOWFLAKE_SAMPLE_DATA$
+
+# Correct
+includes: ^SNOWFLAKE.*
+# or
+excludes: ^SNOWFLAKE_SAMPLE_DATA*
+```
+
+### 6. Test Filter Patterns Thoroughly
+
+Ensure filter patterns produce the expected results before deploying.
+
+```bash
+# Test database filter pattern
+scanner test --filter-pattern databaseFilterPattern --includes ^SNOWFLAKE.*
+
+# Test schema filter pattern
+scanner test --filter-pattern schemaFilterPattern --includes ^TPCH.*
+```
+
+By following these best practices, user can optimize the Scanner Stack for efficiency, security, and accuracy.
+
