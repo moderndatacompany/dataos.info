@@ -15,7 +15,9 @@ To scan the metadata from BigQuery, User need the following:
 * User should have enough access to fetch the required metadata. The following list describes the minimum required permissions.
 
 * **Access Permission to Run a Scanner Workflow**&#x20;
-  Verify that the use case or role tag for executing a Scanner Workflow is approved, which are as follows:| Access using Role Tag | Access using Use cases         |
+  Verify that the use case or role tag for executing a Scanner Workflow is approved, which are as follows:
+
+  | Access using Role Tag | Access using Use cases         |
   | --------------------- | ------------------------------ |
   | `roles:id:data-dev`   | Read Workspace                 |
   | `roles:id:system-dev` | Run as Scanner User            |
@@ -25,7 +27,6 @@ To scan the metadata from BigQuery, User need the following:
 
 * Pre-created AzureSQL Depot
   Ensure that a AzureSQL Depot is already created with valid read access and the necessary permissions to extract metadata. To check the Depot go to the Metis UI of the DataOS or use the following command:
-
 
 ```bash
 dataos-ctl get -t depot -a
@@ -87,8 +88,6 @@ DataOS enables the creation of a Depot of type 'BIGQUERY' for accessing data sto
 <Info>
   Ensure that the Depot is created and you have `read` access for the depot.
 </Info>
-
-
 
 ```yaml
 
