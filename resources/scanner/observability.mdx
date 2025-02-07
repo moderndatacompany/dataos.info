@@ -1,0 +1,55 @@
+---
+title: "Observability "
+---
+
+The Monitor Resource is an integral part of DataOS’ Observability system,. It is designed to trigger incidents based on specific events or metrics. By leveraging the Monitor Resource alongside the Pager Resource for sending alerts, users can achieve comprehensive observability and proactive incident management over Scanner which ensure high Scanner reliability and performance.&#x20;
+
+User can easily track the status or runtime of a Scanner whether it is active, running, failed or deleted using the Monitor Resource and Metis UI. Additionally, Pager Resource is also configure to receive notifications if a Scanner is failed, deleted or succeed. Following are the steps to create the Monitor and Pager for the Scanner:&#x20;
+
+
+<Steps>
+  <Step title="Step 1">
+    User can create a Monitor with the help of sample manifest file that contains the different configurations as shown below:&#x20;
+
+    ```yaml
+    # Resource meta section
+    name: ${{runtime-monitor}}
+    version: ${{v1alpha}}
+    type: monitor
+    tags:
+      - ${{dataos:type:resource}}
+      - ${{dataos:layer:user}}
+    description: ${{Attention! workflow run is succeeded.}}
+    layer: ${{user}}
+    monitor:
+
+    # Monitor-specific section
+      schedule: ${{'*/3 * * * *'}}
+      incident:
+        name: ${{workflowrunning}}
+        severity: ${{high}}
+        incidentType: ${{workflowruntime}}
+
+      type: {{report_monitor}}
+    # Report Monitor specification
+      report:
+        source:
+          dataOsInstance:
+            path: ${{/collated/api/v1/reports/resources/runtime?id=workflow:v1:scan-data-product-test:public}}
+        conditions:
+          - valueComparison:
+              observationType: ${{runtime}}
+              valueJqFilter: ${{'.value'}
+              operator: ${{equals}}
+              value: ${{succeeded}}}
+    ```
+
+    Before applying the Monitor Resource file, it is r recommended to check the response of the API endpoint and configure the attributes of the manifest file.&#x20;
+
+
+  </Step>
+
+  <Step title="Step 2">
+
+  </Step>
+</Steps>
