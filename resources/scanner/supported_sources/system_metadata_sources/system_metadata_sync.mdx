@@ -1,0 +1,93 @@
+---
+title: "Scanner for System Metadata"
+---
+
+This Scanner periodically scans the icebase and Fastbase and stores metadata related to tables and topics in Metis DB. It collects information from Icebase and Fastbase for the newly added data assets.
+
+```yaml
+name: system-metadata-sync
+version: v1
+type: workflow
+tags:
+  - icebase
+  - fastbase
+  - profile
+  - scanner
+description: Icebase, fastbase metadata scanner workflow
+owner: metis
+workspace: system
+workflow:
+  title: Icebase and Fastbase Depot Scanner
+  # Schedule the workflow to run every 30 minutes
+  schedule:
+    cron: '*/30 * * * *'
+    timezone: UTC
+    # Prevent concurrent runs of the workflow
+    concurrencyPolicy: Forbid
+  dag:
+    - name: icebase-scanner
+      description: The job scans and publishes all datasets from icebase to metis.
+      spec:
+        # Use the scanner:2.0 stack for this job
+        stack: scanner:2.0
+        # Set the log level to INFO
+        logLevel: INFO
+        # Use the runnable-default compute resource
+        compute: runnable-default
+        # Assigning the resource and request 250m CPU and 512Mi memory
+        resources:
+          requests:
+            cpu: 250m
+            memory: 512Mi
+          limits: {}
+        # Run the job as the metis user
+        runAsUser: metis
+        # Specify the depot to scan
+        stackSpec:
+          depot: icebase
+          # Configure the source to mark deleted tables as true
+          sourceConfig:
+            config:
+              markDeletedTables: true
+              # This configuration is for icebase depot
+              # markDeletedTables is set to true for icebase to flag tables as soft-deleted if they are not present anymore in the source system.
+    - name: fastbase-scanner
+      description: The job scans and publishes all datasets from fastbase to metis.
+      spec:
+        # Use the scanner:2.0 stack for this job
+        stack: scanner:2.0
+        # Set the log level to INFO
+        logLevel: INFO
+        # Use the runnable-default compute resource
+        compute: runnable-default
+        # Assigning the resource and request 250m CPU and 512Mi memory
+        resources:
+          requests:
+            cpu: 250m
+            memory: 512Mi
+          # Set limits to 1100m CPU and 2048Mi memory
+          limits:
+            cpu: 1100m
+            memory: 2048Mi
+        # Run the job as the metis user
+        runAsUser: metis
+        # Specify the depot to scan
+        stackSpec:
+          depot: fastbase
+          # Configure the source to mark deleted tables as true
+          sourceConfig:
+            config:
+              markDeletedTables: true
+              # This configuration is for fastbase depot
+              # markDeletedTables is set to true for fastbase to flag tables as soft-deleted if they are not present anymore in the source system.
+stamp: '-bkcu'
+generation: 33
+uid: a105c747-410c-4edc-9953-bda462e94efd
+status: {}
+```
+
+<Info>
+
+ On a successful run, the scanned metadata can be viewed on Metis UI under the "Assets" for tables and topics.
+
+</Info>
