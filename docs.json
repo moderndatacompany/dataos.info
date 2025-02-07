@@ -138,6 +138,7 @@
                 "group": "Scanner",
                 "pages": [
                   "resources/scanner/index",
+                  "resources/scanner/concepts",
                   {
                     "group": "Supported sources",
                     "pages": [
