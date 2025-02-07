@@ -114,8 +114,6 @@ This section involves steps for creating a Depot for different data sources supp
 
     Begin by creating a manifest file to hold the configuration details for your ABFSS Depot and reference to the Instance Secrets
 
-    .&#x20;
-
     <CodeGroup>
       ```yaml Depot manifest file
       name: ${{depot-name}}
@@ -2115,7 +2113,9 @@ This section involves steps for creating a Depot for different data sources supp
                      │             │        │                      │ users:id:iamgroot  
     ```
 
-    * **Use cases:** Alternatively, instead of assigning tags, a developer can create a Depot if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance.![](/usecase2.png)
+    * **Use cases:** Alternatively, instead of assigning tags, a developer can create a Depot if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance.
+    
+    ![](/usecase2.png)
 
     **Pre-requisites specific to the source system**
 
@@ -2131,7 +2131,7 @@ This section involves steps for creating a Depot for different data sources supp
 
     DataOS allows you to connect to a MySQL database and read data from tables using Depots. A Depot provides access to all tables within the specified schema of the configured database. You can create multiple Depots to connect to different MySQL servers or databases. To create a Depot of type ‘MYSQL‘, follow the below steps:
 
-    ### Step 1: Create an Instance Secret for securing MySQL credentails
+    ### Step 1: Create an Instance Secret for securing MySQL credentials
 
     <Warning>
       This step can be skipped if you prefer to create a Depot without referencing an Instance Secret.
@@ -2143,7 +2143,7 @@ This section involves steps for creating a Depot for different data sources supp
 
     Begin by creating a manifest file to hold the configuration details for your MySQL Depot.&#x20;
 
-    **Use this template, if self-signed certificate is enabled.**
+    **Use this template, if a self-signed certificate is enabled.**
 
     <CodeGroup>
       ```yaml Instance Secret reference Depot manifest file
@@ -2175,17 +2175,34 @@ This section involves steps for creating a Depot for different data sources supp
       ```
     </CodeGroup>
 
-
-
     **Use this template, if self-signed certificate is not enabled.**
 
-
-
-
-
     <CodeGroup>
-      ```javascript helloWorld.js
-      console.log("Hello World");
+      ```yaml Depot manifest
+
+      name: ${{"mysql01"}}
+      version: v2alpha
+      type: Depot
+      tags:
+        - ${{dropzone}}
+        - ${{mysql}}
+      layer: user
+      Depot:
+        type: MYSQL
+        description: ${{"MYSQL Sample data"}}
+        mysql:
+          host: ${{host}}
+          port: ${{port}}
+        external: true
+        secrets:
+          - name: ${{instance-secret-name}}-r
+            keys: 
+              - ${{instance-secret-name}}-r
+      
+          - name: ${{instance-secret-name}}-rw
+            keys: 
+              - ${{instance-secret-name}}-rw
+      
       ```
     </CodeGroup>
 
