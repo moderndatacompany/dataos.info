@@ -56,7 +56,7 @@ To create a Depot in DataOS, simply compose a manifest configuration file for a 
 
 ### **Structure of a Depot manifest**
 
-![](/resources/depot/depot_yaml.png)
+![](/depot.jpg)
 
 To know more about the attributes of Depot manifest Configuration, refer to the link: [Attributes of Depot manifest](https://dataos.info/resources/depot/configurations/).
 
@@ -112,7 +112,7 @@ This section involves steps for creating a Depot for different data sources supp
 
     ### Step 2: Create a ABFSS Depot manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your ABFSS Depot and reference to the Instance Secrets
+    Begin by creating a manifest file to hold the configuration details for your ABFSS Depot and reference to the Instance Secrets.
 
     <CodeGroup>
       ```yaml Depot manifest file
@@ -2114,7 +2114,7 @@ This section involves steps for creating a Depot for different data sources supp
     ```
 
     * **Use cases:** Alternatively, instead of assigning tags, a developer can create a Depot if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance.
-    
+
     ![](/usecase2.png)
 
     **Pre-requisites specific to the source system**
@@ -2198,11 +2198,11 @@ This section involves steps for creating a Depot for different data sources supp
           - name: ${{instance-secret-name}}-r
             keys: 
               - ${{instance-secret-name}}-r
-      
+
           - name: ${{instance-secret-name}}-rw
             keys: 
               - ${{instance-secret-name}}-rw
-      
+
       ```
     </CodeGroup>
 
