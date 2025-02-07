@@ -1,0 +1,138 @@
+---
+title: "Scanner for MySQL"
+---
+MySQL metadata such as schemas, tables, and views, can be scanned using Scanner Workflows. Following are the essential prerequisites and manifest for the Scanner Workflow:
+
+## **Requirements**
+
+- Credentials to connect to the MySQL database.
+- To extract metadata, the MySQL user needs to have access to the `INFORMATION_SCHEMA`.
+- Metadata Scan is supported for MySQL (version 8.0.0 or greater)
+- MySQL user must grant `SELECT` privilege to fetch the metadata of tables and views.
+- Pre-created MySQL Depot. To check the Depot go to the Metis UI of the DataOS or use the following command:
+    
+    ```bash
+    dataos-ctl get -t depot -a
+    
+    #expected output
+    
+    INFO[0000] 🔍 get...                                     
+    INFO[0000] 🔍 get...complete                             
+    
+                NAME            | VERSION | TYPE  | WORKSPACE | STATUS |   RUNTIME   |         OWNER          
+    ----------------------------|---------|-------|-----------|--------|-------------|------------------------
+      mongodepot                | v2alpha | depot |           | active |             | Jhon Doe
+      snowflakedepot            | v2alpha | depot |           | active |             | JOJO
+      redshiftdepot             | v2alpha | depot |           | active |             | Kira
+      **mysqldepot                | v2alpha | depot |           | active |             | Ryuk**
+      oracle01                  | v2alpha | depot |           | active |             | drdoom
+      mariadb01                 | v2alpha | depot |           | active |             | tonystark
+      demopreppostgres          | v2alpha | depot |           | active |             | slimshaddy
+    	demoprepbq                | v2alpha | depot |           | active |             | pengvin
+      mssql01                   | v2alpha | depot |           | active |             | hulk
+      kafka01                   | v2alpha | depot |           | active |             | peeter
+      icebase                   | v2alpha | depot |           | active |             | blackpink
+      azuresql                  | v2alpha | depot |           | active |             | arnold
+      fastbase                  | v2alpha | depot |           | active |             | ddevil
+    ```
+    
+    If the MySQL Depot is not created, create it using the following Template: 
+    
+    ```yaml
+    name: ${{mysqldepot}}
+    version: v2alpha
+    type: depot
+    tags:
+      - ${{dropzone}}
+      - ${{mysql}}
+    layer: user
+    depot:
+      type: MYSQL
+      description: ${{"MYSQL Sample Database"}}
+      mysql:
+        subprotocol: "mysql"
+        host: ${{host}}
+        port: ${{port}}
+        params: # Required
+          tls: ${{skip-verify}}
+      external: ${{true}}
+      secrets:
+        - name: ${{sf-instance-secret-name}}-r
+          allkeys: true
+    
+        - name: ${{sf-instance-secret-name}}-rw
+          allkeys: true
+    ```
+    
+- **Access Permission to Run a Scanner Workflow**
+    Verify that the use case or role tag for executing a Scanner Workflow is approved, which are as follows:
+    
+    | **Access using Role Tag** | **Access using Use cases** |
+    | --- | --- |
+    | `roles:id:data-dev`  | Read Workspace  |
+    | `roles:id:system-dev`  | Run as Scanner User  |
+    | `roles:id:user`  | Manage All Depot  |
+    |   | Read All Dataset  |
+    |   | Read all secrets from Heimdall  |
+
+## **Scanner Workflow**
+
+With the use of the following sample manifest file, DataOS allows to  scan metadata from a MySQL-type Depot with the Scanner Workflows.
+
+<Info>
+
+Ensure that the depot is created for your MySQL database and that you have `read` access to the depot.
+
+</Info>
+
+```yaml
+version: v1
+name: mysql-scanner
+type: workflow
+tags:
+  - mysql-scanner
+description: The workflow scans schema tables and registers metadata
+workflow:
+  dag:
+    - name: mysql-scanner
+      description: The job scans schema from MySQL depot tables and registers metadata to metis2
+      spec:
+        tags:
+          - scanner
+        stack: scanner:2.0
+        compute: runnable-default
+                runAsUser: metis
+        stackSpec:
+          depot: mysqldepot
+          sourceConfig:
+            config:
+              markDeletedTables: false
+              includeTables: true
+              includeViews: true
+              databaseFilterPattern:
+                  includes:
+                      - database1
+                      - database2
+                  schemaFilterPattern:
+                    includes:
+                      - schema1
+                      - schema2
+                  tableFilterPattern:
+                    includes:
+                      - table1
+                      - table2
+```
+
+The above sample manifest file is deployed using the following command:
+
+```
+dataos-ctl resource apply -f {path to the Scanner YAML}
+```
+
+<Note>
+  If the Depot or Scanner configurations are updated, the Scanner must be redeployed after deleting the previous instance. Use the following command to delete the existing Scanner:
+
+  ```
+  dataos-ctl resource delete -f {path to the Scanner YAML file}
+  ```
+</Note>
