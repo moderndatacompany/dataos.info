@@ -95,10 +95,8 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your ABFSS Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets on with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`&#x20;
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`&#x20;
     </Warning>
-
-
 
     <CodeGroup>
       ```yaml Read-only instance-secret
@@ -354,6 +352,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     Begin by creating a manifest file to hold the configuration details for your Bigquery Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
+    <Warning>
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`&#x20;
+    </Warning>
+    
+
     <CodeGroup>
       ```yaml Read-only instance-secret
       # Google Bigquery Read Instance-secret Manifest
@@ -608,6 +611,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     Begin by creating a manifest file to hold the configuration details for your Eventhub Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
+    <Warning>
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`&#x20;
+    </Warning>
+    
+
     <CodeGroup>
       ```yaml Read-only instance-secret
       # Eventhub Read Instance-secret Manifest
@@ -861,6 +869,10 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     Begin by creating a manifest file to hold the configuration details for your GCS Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
+    <Warning>
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`&#x20;
+    </Warning>
+
     <CodeGroup>
       ```yaml Read-only instance-secret
       name: ${gcs-depot-name}-r  # Name of the instance-secret, indicating it's for read-only access.
@@ -1111,6 +1123,10 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     Begin by creating a manifest file to hold the configuration details for your JDBC Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
+    <Warning>
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`&#x20;
+    </Warning>
+
     <CodeGroup>
       ```yaml Read-only instance-secret
       # JDBC Read Instance-secret Manifest
@@ -1360,6 +1376,11 @@ If you want to store credentials for various data sources in an Instance Secret 
     ### Step 1: Create a manifest file
 
     Begin by creating a manifest file to hold the configuration details for your MongoDB Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+
+    <Warning>
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`&#x20;
+    </Warning>
+    
 
     <CodeGroup>
       ```yaml Read-only instance-secret
