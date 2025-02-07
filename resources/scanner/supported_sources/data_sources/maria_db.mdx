@@ -24,9 +24,11 @@ With Scanner Workflows, it is possible scan metadata details such as schemas, ta
 
 * Ensure an JDBC-type Depot is created by in Metis UI or in CLI as shown below:
 
-  ```bash
+```bash
   dataos-ctl get -t depot -a
+```
 
+```bash
 #expected output
 
 INFO[0000] 🔍 get...                                     
@@ -47,9 +49,7 @@ INFO[0000] 🔍 get...complete
   icebase                   | v2alpha | depot |           | active |             | blackpink
   azuresql                  | v2alpha | depot |           | active |             | arnold
   fastbase                  | v2alpha | depot |           | active |             | ddevil
-
-
-  ```
+```
 
   If not, create it using the following sample manifest code:
 
