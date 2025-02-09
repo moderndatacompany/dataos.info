@@ -1,9 +1,7 @@
 ---
-title: "Best Practices for Scanner Stack"
+title: "Best Practices"
 description: "Comprehensive guide to configuring and optimizing Scanner Stack."
 ---
-
-
 
 ## Best Practices for Scanner Stack
 
@@ -53,9 +51,13 @@ dag:
 
 **Depot Configuration:**
 
-- `depot`: Specify the name or address of the depot.
-- The Scanner job will scan all datasets referred by a depot.
-- Depot maintains connection details and secrets, so they do not need to be explicitly provided in Scanner YAML.
+* `depot`
+
+  : Specify the name or address of the depot.
+
+* The Scanner job will scan all datasets referred by a depot.
+
+* Depot maintains connection details and secrets, so they do not need to be explicitly provided in Scanner YAML.
 
 ```yaml
 depot:
@@ -112,20 +114,7 @@ excludes: ^SNOWFLAKE_SAMPLE_DATA$
 # Correct
 includes: ^SNOWFLAKE.*
 # or
-excludes: ^SNOWFLAKE_SAMPLE_DATA*
-```
-
-### 6. Test Filter Patterns Thoroughly
-
-Ensure filter patterns produce the expected results before deploying.
-
-```bash
-# Test database filter pattern
-scanner test --filter-pattern databaseFilterPattern --includes ^SNOWFLAKE.*
-
-# Test schema filter pattern
-scanner test --filter-pattern schemaFilterPattern --includes ^TPCH.*
+excludes: ^SNOWFLAKE_SAMPLE_DATA$
 ```
 
 By following these best practices, user can optimize the Scanner Stack for efficiency, security, and accuracy.
-
