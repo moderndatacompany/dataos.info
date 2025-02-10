@@ -21,7 +21,7 @@ In DataOS, credentials such as API tokens, database passwords, and certificates 
 
 2. **Secrets**
 
-   : A Workspace-level DataOS Resource storing credentials with access restricted to specific Workspace Resources for targeted security. These are ideal when you want to reference secrets in Workspace-level Resources such as Workflows, Worker, Services, etc.
+   : A Workspace-level DataOS Resource storing credentials with access restricted to specific Workspace Resources for targeted security. These are ideal when you want to reference secrets in Workspace-level Resources such as Workflows, Workers, Services, etc.
 
 They help you to:
 
@@ -37,11 +37,11 @@ Suppose, you want to secure credentials for a new Postgres Depot and store them 
 
 1. **Identify the sensitive data**
 
-   : Gather the credentials needed for the Postgres Depot, including
+   : Gather the credentials needed for the Postgres Depot, including 
 
    `$POSTGRES_USERNAME`
 
-   and
+    and 
 
    `$POSTGRES_PASSWORD`
 
@@ -85,50 +85,27 @@ Suppose, you want to secure credentials for a new Postgres Depot and store them 
 
    ```
 
-   * `name`
-
-     : Combine the name of the Depot and access control (e.g.,
-
-     `postgresdepot-r`
-
-     for read access).
-
-   * `description`
-
-     : Provide proper description.
-
-   * `acl`
-
-     : Specify access control (
-
-     `r`
-
-     for read,
-
-     `rw`
-
-     for read-write).
-
 3. **Replace placeholders**
 
-   : Replace
+   : Replace 
 
    `$POSTGRES_USERNAME`
 
-   and
+    and 
 
    `$POSTGRES_PASSWORD`
 
-   with the actual credentials. Alternatively, use environment variables to keep your manifest secure.
+    with the actual credentials. Alternatively, use environment variables to keep your manifest secure.
+
+
 
    **Best practice:**
 
-   Use environment variables to set credentials via the command line. This prevents accidental exposure in the manifest file.
+    Use environment variables to set credentials via the command line. This prevents accidental exposure in the manifest file.
 
    ```bash
    export POSTGRES_USERNAME=yourusername
    export POSTGRES_PASSWORD=yourpassword
-
    ```
 
 ### **Step 2: Applying  manifest file**
