@@ -171,7 +171,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### **Resource meta section**
 
-    The ABFSS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    The ABFSS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section]().
 
     ### Instance-secret specific section
 
@@ -189,7 +189,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
       : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
-    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    For more information, refer to the [Attributes of Instance-secret specific section]().
 
     ### Step 2: Apply the manifest
 
@@ -1927,6 +1927,20 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     Begin by creating a manifest file to hold the configuration details for your MSSQL Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
+    <Warning>
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
+    </Warning>
+
     <CodeGroup>
       ```yaml Read-only instance-secret
       name: ${mssql-depot-name}-r # Unique identifier for Resource, replace ${mssql-depot-name} with depot name
@@ -1965,17 +1979,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     This section focuses on attributes specific to MSSQL Instance Secrets. It includes details like:
 
-    * `type`
+    * `type`: Specifies the Instance Secret type (key-value-properties).
 
-      : Specifies the Instance Secret type (key-value-properties).
+    * `acl`: Access control level (read-only or read-write).
 
-    * `acl`
-
-      : Access control level (read-only or read-write).
-
-    * `data`
-
-      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
     For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
@@ -2200,6 +2208,20 @@ If you want to store credentials for various data sources in an Instance Secret 
     ### Step 1: Create a manifest file
 
     Begin by creating a manifest file to hold the configuration details for your MySQL Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+
+    <Warning>
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
+    </Warning>
 
     <CodeGroup>
       ```yaml Read-only instance-secret
@@ -2479,6 +2501,20 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     Begin by creating a manifest file to hold the configuration details for your Oracle Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
+    <Warning>
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
+    </Warning>
+
     <CodeGroup>
       ```yaml Read-only instance-secret
       # Oracle Read Instance-secret Manifest
@@ -2757,6 +2793,20 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     Begin by creating a manifest file to hold the configuration details for your Postgres Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
+    <Warning>
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
+    </Warning>
+
     <CodeGroup>
       ```yaml Read-only instance-secret
       # PostgresSQL Read Instance-secret Manifest
@@ -2800,23 +2850,17 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     This section focuses on attributes specific to Postgres Instance Secrets. It includes details like:
 
-    * `type`
+    * `type` : Specifies the Instance Secret type (key-value-properties).
 
-      : Specifies the Instance Secret type (key-value-properties).
+    * `acl`: Access control level (read-only or read-write).
 
-    * `acl`
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
-      : Access control level (read-only or read-write).
-
-    * `data`
-
-      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
-
-    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    For more information, refer to the [Attributes of Instance-secret specific section]().
 
     ### Step 2: Apply the manifest
 
-    To create the Postgres Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the Postgres Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest.
 
     <CodeGroup>
       ```bash Command
@@ -3043,6 +3087,20 @@ If you want to store credentials for various data sources in an Instance Secret 
     ### Step 1: Create a manifest file
 
     Begin by creating a manifest file to hold the configuration details for your Redshift Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding manifest template provided below.
+
+    <Warning>
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
+    </Warning>
 
     <CodeGroup>
       ```yaml Read-only instance-secret
@@ -3308,6 +3366,20 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     Begin by creating a manifest file to hold the configuration details for your S3 Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
+    <Warning>
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
+    </Warning>
+
     <CodeGroup>
       ```yaml Read-only instance-secret
       # Amazon S3 Read Instance-secret Manifest
@@ -3348,7 +3420,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### **Resource meta section**
 
-    The S3 manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    The S3 manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section]().
 
     ### Instance-secret specific section
 
@@ -3360,11 +3432,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
-    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    For more information, refer to the [Attributes of Instance-secret specific section]().
 
     ### Step 2: Apply the manifest
 
-    To create the S3 Instance Secret within DataOS, use the `apply` command. Since S3 Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the S3 Instance Secret within DataOS, use the `apply` command. Since S3 Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest.
 
     <CodeGroup>
       ```bash Command
@@ -3565,13 +3637,9 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Source System Configuration**
 
-    * **Username**
+    * **Username**: The Snowflake username used to authenticate to the Snowflake account. This can be obtained from your Snowflake administrator or found in your Snowflake account settings.
 
-      : The Snowflake username used to authenticate to the Snowflake account. This can be obtained from your Snowflake administrator or found in your Snowflake account settings.
-
-    * **Password**
-
-      : The password associated with the Snowflake username for authentication. If you do not have the password, you will need to reset it via the Snowflake web interface or contact your Snowflake administrator to obtain it.
+    * **Password**: The password associated with the Snowflake username for authentication. If you do not have the password, you will need to reset it via the Snowflake web interface or contact your Snowflake administrator to obtain it.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -3584,6 +3652,20 @@ If you want to store credentials for various data sources in an Instance Secret 
     ### Step 1: Create a manifest file
 
     Begin by creating a manifest file to hold the configuration details for your Snowflake Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+
+    <Warning>
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
+    </Warning>
 
     <CodeGroup>
       ```yaml Read-only instance-secret
@@ -3622,25 +3704,19 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### **Resource meta section**
 
-    The Instance Secret manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    The Instance Secret manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section]().
 
     ### Instance-secret specific section
 
     This section focuses on attributes specific to Snowflake Instance Secrets. It includes details like:
 
-    * `type`
+    * `type`: Specifies the Instance Secret type (key-value-properties).
 
-      : Specifies the Instance Secret type (key-value-properties).
+    * `acl`: Access control level (read-only or read-write).
 
-    * `acl`
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
-      : Access control level (read-only or read-write).
-
-    * `data`
-
-      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
-
-    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    For more information, refer to the [Attributes of Instance-secret specific section]().
 
     ### Step 2: Apply the manifest
 
@@ -3882,6 +3958,20 @@ If you want to store credentials for various data sources in an Instance Secret 
     ### Step 1: Create a manifest file
 
     Begin by creating a manifest file to hold the configuration details for your WASBS Instance Secret. Below are the templates for the read-only and read-write manifests:
+
+    <Warning>
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
+    </Warning>
 
     <CodeGroup>
       ```yaml Read-only instance-secret
@@ -4138,13 +4228,9 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Source System Configuration**
 
-    * **Username:**
+    * **Username:** The OpenSearch username used to authenticate access to the OpenSearch instance. This is typically a user-specific or role-based identifier.
 
-      The OpenSearch username used to authenticate access to the OpenSearch instance. This is typically a user-specific or role-based identifier.
-
-    * **Password:**
-
-      The OpenSearch password corresponding to the username for authentication. You can retrieve it from your OpenSearch configuration or admin settings, depending on how the instance credentials are managed in your organization.
+    * **Password:** The OpenSearch password corresponding to the username for authentication. You can retrieve it from your OpenSearch configuration or admin settings, depending on how the instance credentials are managed in your organization.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -4157,6 +4243,20 @@ If you want to store credentials for various data sources in an Instance Secret 
     ### Step 1: Create a manifest file
 
     Begin by creating a manifest file to hold the configuration details for your OpenSearch Instance Secret. Below are the templates for the read-only and read-write manifests:
+
+    <Warning>
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
+    </Warning>
 
     <CodeGroup>
       ```yaml Read-only instance-secret
@@ -4190,25 +4290,19 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Resource meta section
 
-    The Opensearch manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    The Opensearch manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section]().
 
     ### Instance-secret specific section
 
     This section focuses on attributes specific to OpenSearch Instance Secrets. It includes details like:
 
-    * `type`
+    * `type`: Specifies the Instance Secret type (key-value-properties).
 
-      : Specifies the Instance Secret type (key-value-properties).
+    * `acl`: Access control level (read-only or read-write).
 
-    * `acl`
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
-      : Access control level (read-only or read-write).
-
-    * `data`
-
-      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
-
-    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    For more information, refer to the [Attributes of Instance-secret specific section]().
 
     ### Step 2: Apply the manifest
 
@@ -4431,6 +4525,20 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     Begin by creating a manifest file to hold the configuration details for your Elasticsearch Instance Secret. Below are the templates for the read-only and read-write manifests:
 
+    <Warning>
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
+    </Warning>
+
     <CodeGroup>
       ```yaml Read-only instance-secret
       name: ${elasticsearch-depot-name}-r # Name of the instance-secret, indicating it's for read-only access.
@@ -4469,17 +4577,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     This section focuses on attributes specific to Elasticsearch Instance Secrets. It includes details like:
 
-    * `type`
+    * `type`: Specifies the Instance Secret type (key-value-properties).
 
-      : Specifies the Instance Secret type (key-value-properties).
+    * `acl`: Access control level (read-only or read-write).
 
-    * `acl`
-
-      : Access control level (read-only or read-write).
-
-    * `data`
-
-      : Contains sensitive information such as Elasticsearch username and password.
+    * `data`: Contains sensitive information such as Elasticsearch username and password.
 
     For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
@@ -4734,6 +4836,20 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     Begin by creating a manifest file to hold the configuration details for your AWS CodeCommit Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
+    <Warning>
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
+    </Warning>
+
     <CodeGroup>
       ```yaml Read-only instance-secret
       name: ${gcs-depot-name}-r  # Name of the instance-secret, indicating it's for read-only access.
@@ -4887,6 +5003,20 @@ If you want to store credentials for hosted code repositories in an Instance Sec
     ### Step 1: Create a manifest file
 
     Begin by creating a manifest file to hold the configuration details for your Bitbucket repository Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+
+    <Warning>
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
+    </Warning>
 
     <CodeGroup>
       ```yaml Read-only instance-secret
