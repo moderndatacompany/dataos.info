@@ -25,13 +25,9 @@ Lens is engineered to handle complex and large-scale semantic models with ease. 
 
 * **Code modularity:** Lens supports modular code structures, simplifying the maintenance of extensive models, particularly when dealing with real-world entities (represented as tables), dimensions, and measures. This modularity enables efficient development and management, allowing teams to navigate large codebases with reduced complexity.
 
-* **Segments:** [Segments](/resources/lens/working_with_segments/) are predefined filters that enable the definition of complex filtering logic in SQL. It allows to create specific subsets of data, such as users from a particular city, which can be reused across different queries and reports. This feature helps streamline the data exploration process by simplifying the creation of reusable filters.
-
 * **API support:** Lens enhances interoperability by simplifying application development with support for [Postgres API](/resources/lens/explore_lens_using_sql_apis/), [REST API](/resources/lens/explore_lens_using_rest_apis/), and [GraphQL API](/resources/lens/explore_lens_using_graphql/). 
 
-* **Governance and access control:** Lens ensures data governance through[ user group management and data policies](/resources/lens/working_with_user_groups_and_data_policies/), enabling precise control over who can access and interact with the semantic model.
-
-* **BI integration:** Lens improves interoperability through robust integration with PowerBI, Tableau, and Superset. This ensures that semantic models can be easily utilized across various BI platforms, enhancing the overall analytics experience. For more details on BI integration, visit the [BI Integration guide](/resources/lens/bi_integration/).
+* Segments: [Segments](/resources/lens/working_with_segments/) are predefined filters that enable the definition of complex filtering logic in SQL. It allows to create specific subsets of data, such as users from a particular city, which can be reused across different queries and reports. This feature helps streamline the data exploration process by simplifying the creation of reusable filters.
 
 * **Performance optimization through Flash:** [Flash](/resources/stacks/flash/) is a Stack in DataOS that utlizes an in-memory query processing layer to cache data for fast access, reducing query response times and speeding up data retrieval.
 
@@ -94,6 +90,10 @@ To build a semantic model with Lens establish a connection to your data source, 
     <Steps>
       <Step title="Load data from the data source" titleSize="h2">
         In the `sqls/` folder, create `.sql` files for each table, where each file is responsible for loading or selecting the relevant data from the source. Ensure only the necessary columns are extracted, and the SQL dialect is specific to the data source.
+
+        <Tip>
+          SQL dialect should be specific to the Redshift.
+        </Tip>
 
         For example, a simple data load might look as follows:
 
@@ -301,27 +301,91 @@ To build a semantic model with Lens establish a connection to your data source, 
 
     * **Defining the Source:**
 
-      * **`type`:**  The `type` attribute in the `source` section must be explicitly set to `depot`.
+      * **`type`:**
 
-      * **`name`:** The `name` attribute in the `source` section should specify the name of the AWS Redshift Depot created.
+        The
+
+        `type`
+
+        attribute in the
+
+        `source`
+
+        section must be explicitly set to
+
+        `depot`
+
+        .
+
+      * **`name`:**
+
+        The
+
+        `name`
+
+        attribute in the
+
+        `source`
+
+        section should specify the name of the AWS Redshift Depot created.
 
     * **Setting Up Compute and Secrets:**
 
-      * Define the compute settings, such as which engine (e.g., `runnable-default`) will process the data.
+      * Define the compute settings, such as which engine (e.g.,
+
+        `runnable-default`
+
+        ) will process the data.
 
       * Include any necessary secrets (e.g., credentials for Bitbucket or AWS) for secure access to data and repositories.
 
     * **Defining Repository:**
 
-      * **`url`** The `url` attribute in the repo section specifies the Git repository where the semantic model files are stored. For instance, if your repo name is lensTutorial then the repo `url` will be  [https://bitbucket.org/tmdc/lensTutorial](https://bitbucket.org/tmdc/lensTutorial)
+      * **`url`**
 
-      * **`lensBaseDir`:**  The `lensBaseDir` attribute refers to the directory in the repository containing the semantic model. Example: `sample/lens/source/depot/awsredshift/model`.
+        The
 
-      * **`secretId`:**  The `secretId` attribute is used to access private repositories (e.g., Bitbucket, GitHub). It specifies the secret needed to authenticate and access the repository securely.
+        `url`
 
-      * **`syncFlags`**:  Specifies additional flags to control repository synchronization. Example: `--ref=dev` specifies that the semantic model resides in the dev branch.
+        attribute in the repo section specifies the Git repository where the semantic model files are stored. For instance, if your repo name is lensTutorial then the repo
 
-    * **Configure API, Worker, and Metric Settings (Optional):** Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
+        `url`
+
+        will be
+
+        [https://bitbucket.org/tmdc/lensTutorial](https://bitbucket.org/tmdc/lensTutorial)
+
+      * **`lensBaseDir`:**
+
+        The
+
+        `lensBaseDir`
+
+        attribute refers to the directory in the repository containing the semantic model. Example:
+
+        `sample/lens/source/depot/awsredshift/model`
+
+        .
+
+      * **`secretId`:**
+
+        The
+
+        `secretId`
+
+        attribute is used to access private repositories (e.g., Bitbucket, GitHub). It specifies the secret needed to authenticate and access the repository securely.
+
+      * **`syncFlags`**
+
+        :  Specifies additional flags to control repository synchronization. Example:
+
+        `--ref=dev`
+
+        specifies that the semantic model resides in the dev branch.
+
+    * **Configure API, Worker, and Metric Settings (Optional):**
+
+      Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
 
     ## Step 5: Apply Lens deployment manifest file
 

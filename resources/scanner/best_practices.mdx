@@ -1,0 +1,55 @@
+---
+title: "Best Practices"
+description: "Comprehensive guide to configuring and optimizing Scanner Stack."
+---
+
+## Best Practices for Scanner Stack
+
+### 1. Use Specific Filter Patterns
+
+Avoid scanning unnecessary data by using precise filter patterns.
+
+```yaml
+databaseFilterPattern:
+  includes: ^SNOWFLAKE.*
+```
+
+### 2. Avoid Using Wildcards at the End of Patterns
+
+Using wildcards at the end of patterns can lead to unexpected results.
+
+```yaml
+databaseFilterPattern:
+  includes: ^SNOWFLAKE$
+```
+
+### 3. Use Regular Expressions to Filter Schemas and Tables
+
+```yaml
+schemaFilterPattern:
+  includes: ^TPCH.*
+```
+
+### 4. Exclude Specific Schemas and Tables
+
+```yaml
+schemaFilterPattern:
+  excludes: ^TPCH_SF100$
+```
+
+### 5. Use Include and Exclude Properties with Caution
+
+Use either `includes` **or** `excludes`, but not both together, as they are in an **OR** condition.
+
+```yaml
+# Incorrect
+includes: ^SNOWFLAKE.*
+excludes: ^SNOWFLAKE_SAMPLE_DATA$
+
+# Correct
+includes: ^SNOWFLAKE.*
+# or
+excludes: ^SNOWFLAKE_SAMPLE_DATA$
+```
+
+By following these best practices, user can optimize the Scanner Stack for efficiency, security, and accuracy.

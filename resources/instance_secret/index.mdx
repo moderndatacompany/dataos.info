@@ -1,12 +1,13 @@
 ---
 search: "[object Object]"
-description: "An Instance Secret is a DataOS Resource designed for securely storing sensitive information at the DataOS instance level. "
+description: "An Instance Secret is a DataOS Resource designed for securely storing sensitive information at the DataOS Instance-level. "
 sidebarTitle: "Overview"
 title: "Overview"
 ---
 
-The primary purpose of an Instance Secret is to address the inherent exposure risk associated with directly embedding such confidential data within application code or manifest files (YAML configuration files). This includes usernames, passwords, certificates, tokens, and keys. Instance Secrets establish a critical segregation between sensitive data and Resource definitions. This division minimizes inadvertent exposure during various Resource management phases, including creation, viewing, or editing.&#x20;
-Operators can exercise precise control over who can retrieve credentials from Secrets. If any data developer in your organization needs access to secrets, you can assign them a 'read instance secret' use case using Bifrost.
+The primary purpose of an Instance Secret is to address the inherent exposure risk associated with directly embedding such confidential data within application code or manifest files (YAML configuration files). This includes usernames, passwords, certificates, tokens, and keys. Instance Secrets establish a critical segregation between sensitive data and Resource definitions. This division minimizes inadvertent exposure during various Resource management phases, including creation, viewing, or editing.
+
+DataOS Operators are generally responsible for creating and managing Instance Secrets for various sources within an organization. They exercise precise control over who can retrieve credentials. If any Data Product developer in the organization needs access to Instance Secrets, they can assign them relevant permission using the Bifrost application.
 
 <Tip>
   **Instance Secret in the Data Product Lifecycle**
@@ -23,18 +24,16 @@ Operators can exercise precise control over who can retrieve credentials from Se
 </Tip>
 
 <Info>
-  In the DataOS ecosystem, there are two specialized Resources designed to protect sensitive information: Instance Secret and [Secret](https://dataos.info/resources/secret/). The Instance Secret offers a wider scope, extending across the entirety of the [DataOS Instance](https://dataos.info/resources/types_of_dataos_resources/#instance-level-resources). Resources within any Workspace can utilize Instance Secrets for securely retrieving sensitive data. In contrast, Secrets are limited to the [Workspace level](https://dataos.info/resources/types_of_dataos_resources/#workspace-level-resources), accessible exclusively within a specific Workspace and only by Resources associated with that Workspace.
+  In the DataOS ecosystem, there are two specialized Resources designed to protect sensitive information: Instance Secret and [Secret](https://dataos.info/resources/secret/). The Instance Secret offers a wider scope, extending across the entirety of the [DataOS Instance](https://dataos.info/resources/types_of_dataos_resources/#Instance-level-resources). Resources within any Workspace can utilize Instance Secrets for securely retrieving sensitive data. In contrast, Secrets are limited to the [Workspace level](https://dataos.info/resources/types_of_dataos_resources/#workspace-level-resources), accessible exclusively within a specific Workspace and only by Resources associated with that Workspace.
 </Info>
 
 ## Structure of an Instance Secret manifest
 
-The structure of the Instance Secret manifest file is outlined as follows:
-
-![](/resources/instance_secret/instance_secret_manifest_structure.jpg)
+The structure of the Instance Secret manifest file is outlined as follows:![](/is_struc.jpg)
 
 ## How to create an Instance Secret?
 
-This section includes steps for creating the Instance Secret to secure commonly used data sources and repositories. A Data Product developer is generally responsible for creating an Instance Secret.
+ This section includes steps for creating the Instance Secret to secure credentials of commonly used data sources and hosted code repositories using DataOS CLI. 
 
 **Data Sources**
 
@@ -42,24 +41,41 @@ If you want to store credentials for various data sources in an Instance Secret 
 
 <AccordionGroup>
   <Accordion title="Azure Blob File System Secure (ABFSS)" defaultOpen={false}>
-    ### Pre-requisites
+    An Instance Secret for Azure Blob File System Secure (ABFSS) in DataOS is typically created to build Lakehouse Resource. However, it can also be used to create Depot Resource that require secure access to ABFSS storage. The following sections outline the necessary permissions, configurations, and steps required to set up an Instance Secret efficiently.
+
+    ### Pre-requisites 
 
     To create an Instance Secret for securing ABFSS credentials, you must have the following information:
 
-    **Pre-requisites specific to an Instance Secret creation**
+    **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
 
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
+
+    ```bash
+    dataos-ctl user get
     ```
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
-    ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section.
 
     <Tabs>
       <Tab title="use case ">
@@ -77,13 +93,25 @@ If you want to store credentials for various data sources in an Instance Secret 
       </Tab>
     </Tabs>
 
-    **Pre-requisites specific to the source system**
+    **Source System Configuration**
 
-    * **Azure Endpoint Suffix**: The endpoint suffix for the Azure Storage account. This is typically region-specific and can be found in the Azure Portal under the **Properties** section of your storage account.
+    * **Azure Endpoint Suffix:**
 
-    * **Azure Storage Account Key**: The access key for the Azure Storage account, used for authentication. You can retrieve this from the Azure Portal by navigating to your storage account, selecting **Access keys** under the **Security + networking** section, and copying the key.
+       
 
-    * **Azure Storage Account Name**: The name of the Azure Storage account used to identify it within your subscription. This can be found in the Azure Portal under the **Overview** section of your storage account.
+      The endpoint suffix for the Azure Storage account. This is typically region-specific and can be found in the Azure Portal under the Properties section of your storage account.
+
+    * **Azure Storage Account Key:**
+
+       
+
+      The access key for the Azure Storage account, used for authentication. You can retrieve this from the Azure Portal by navigating to your storage account, selecting Access keys under the Security + networking section, and copying the key.
+
+    * **Azure Storage Account Name:**
+
+       
+
+      The name of the Azure Storage account used to identify it within your subscription. This can be found in the Azure Portal under the Overview section of your storage account.
 
     Ensure that you have these details ready before proceeding with the Instance Secret creation process.
 
@@ -98,7 +126,17 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your ABFSS Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`&#x20;
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
     </Warning>
 
     <CodeGroup>
@@ -139,7 +177,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### **Resource meta section**
 
-    The ABFSS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    The ABFSS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Instance-secret specific section
 
@@ -151,11 +189,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
-    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    For more information, refer to the [Attributes of Instance-secret specific section]().
 
     ### Step 2: Apply the manifest
 
-    To create the ABFSS Instance Secret within DataOS, use the `apply` command. Since ABFSS Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the ABFSS Instance Secret within DataOS, use the `apply` command. Since ABFSS Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest. 
 
     <CodeGroup>
       ```bash Command
@@ -308,20 +346,35 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     To create an Instance Secret for securing BigQuery credentials, you must have the following information:
 
-    **Pre-requisites specific to an Instance Secret creation**
+    **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
 
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
+
+    ```bash
+    dataos-ctl user get
     ```
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
-    ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -339,9 +392,9 @@ If you want to store credentials for various data sources in an Instance Secret 
       </Tab>
     </Tabs>
 
-    **Pre-requisites specific to the source system**
+    **Source System Configuration**
 
-    * **Project ID**: The BigQuery project ID used to identify your Google Cloud project. You can retrieve this from the Google Cloud Console by navigating to the project dashboard and locating the **Project ID** under project information.
+    * **Project ID**: The BigQuery project ID used to identify your Google Cloud project. You can retrieve this from the Google Cloud Console by navigating to the project dashboard and locating the Project ID under project information.
 
     * **Email ID**: The email address associated with the service account used to access BigQuery. This can be found in the **IAM & Admin > Service Accounts** section of the Google Cloud Console by selecting the relevant service account and viewing its details.
 
@@ -360,7 +413,17 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your Bigquery Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`&#x20;
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
     </Warning>
 
     <CodeGroup>
@@ -404,7 +467,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### **Resource meta section**
 
-    The Bigquery Instance Secret manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    The Bigquery Instance Secret manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Instance-secret specific section
 
@@ -416,11 +479,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
-    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    For more information, refer to the [Attributes of Instance-secret specific section]().
 
     ### Step 2: Apply the manifest
 
-    To create the Bigquery Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the Bigquery Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest. 
 
     <CodeGroup>
       ```bash Command
@@ -572,20 +635,35 @@ If you want to store credentials for various data sources in an Instance Secret 
     **Pre-requisites**
     To create an Instance Secret for securing Azure Event Hub credentials, you must have the following information:
 
-    **Pre-requisites specific to an Instance Secret creation**
+    **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
 
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
+
+    ```bash
+    dataos-ctl user get
     ```
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
-    ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -603,7 +681,7 @@ If you want to store credentials for various data sources in an Instance Secret 
       </Tab>
     </Tabs>
 
-    **Pre-requisites specific to the source system**
+    **Source System Configuration**
 
     * **Event Hub Shared Access Key Name**: The name of the shared access key for the Azure Event Hub. You can retrieve this from the Azure Portal by navigating to your Event Hub namespace, selecting "Shared access policies," and locating the key name under the policy details.
 
@@ -622,7 +700,17 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your Eventhub Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`&#x20;
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
     </Warning>
 
     <CodeGroup>
@@ -662,7 +750,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### **Resource meta section**
 
-    The GCS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    The GCS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Instance-secret specific section
 
@@ -674,11 +762,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
-    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    For more information, refer to the [Attributes of Instance-secret specific section]().
 
     ### Step 2: Apply the manifest
 
-    To create the Eventhub Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the Eventhub Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest. 
 
     <CodeGroup>
       ```bash Command
@@ -831,20 +919,35 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     To create an Instance Secret for securing GCS credentials, you must have the following information:
 
-    **Pre-requisites specific to an Instance Secret creation**
+    **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
 
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
+
+    ```bash
+    dataos-ctl user get
     ```
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
-    ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -862,7 +965,7 @@ If you want to store credentials for various data sources in an Instance Secret 
       </Tab>
     </Tabs>
 
-    **Pre-requisites specific to the source system**
+    **Source System Configuration**
 
     * **Project ID for the Google Cloud Project**: The unique identifier of the Google Cloud project where your GCS bucket resides. You can retrieve this from the Google Cloud Console by navigating to your project dashboard and locating the **Project ID** under project information.
 
@@ -883,7 +986,17 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your GCS Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`&#x20;
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
     </Warning>
 
     <CodeGroup>
@@ -923,7 +1036,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### **Resource meta section**
 
-    The GCS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    The GCS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Instance-secret specific section
 
@@ -935,11 +1048,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
-    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    For more information, refer to the [Attributes of Instance-secret specific section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Step 2: Apply the manifest
 
-    To create the GCS Instance Secret within DataOS, use the `apply` command. Since GCS Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the GCS Instance Secret within DataOS, use the `apply` command. Since GCS Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest. 
 
     <CodeGroup>
       ```bash Command
@@ -1091,20 +1204,35 @@ If you want to store credentials for various data sources in an Instance Secret 
     **Pre-requisites**
     To create an Instance Secret for securing JDBC credentials, you must have the following information:
 
-    **Pre-requisites specific to an Instance Secret creation**
+    **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
+
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
 
     ```bash
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
+    dataos-ctl user get
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -1122,7 +1250,7 @@ If you want to store credentials for various data sources in an Instance Secret 
       </Tab>
     </Tabs>
 
-    **Pre-requisites specific to the source system**
+    **Source System Configuration**
 
     * **Username**: The JDBC username used to authenticate and access the database via JDBC. This can be obtained from the database administrator who manages user access.
 
@@ -1141,7 +1269,17 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your JDBC Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`&#x20;
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
     </Warning>
 
     <CodeGroup>
@@ -1181,7 +1319,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### **Resource meta section**
 
-    The GCS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    The GCS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Instance-secret specific section
 
@@ -1193,11 +1331,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
-    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    For more information, refer to the [Attributes of Instance-secret specific section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Step 2: Apply the manifest
 
-    To create the JDBC Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the JDBC Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest. 
 
     <CodeGroup>
       ```bash Command
@@ -1349,20 +1487,35 @@ If you want to store credentials for various data sources in an Instance Secret 
     **Pre-requisites**
     To create an Instance Secret for securing MongoDB credentials, you must have the following information:
 
-    **Pre-requisites specific to an Instance Secret creation**
+    **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
 
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
+
+    ```bash
+    dataos-ctl user get
     ```
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
-    ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -1380,40 +1533,12 @@ If you want to store credentials for various data sources in an Instance Secret 
       </Tab>
     </Tabs>
 
-    **Pre-requisites specific to the source system**
+    **Source System Configuration**
 
     * **Username**: The MongoDB username used to authenticate and access your MongoDB database. This can be obtained from the MongoDB administrator who manages user access.
 
     * **Password**: The password associated with the MongoDB username for authentication. This can be obtained from the MongoDB administrator, or if the password is already set, you will need to securely retrieve it.
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
-
-    ```
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
-    ```
-
-    * **Use cases:** A developer can create an Instance Secret only if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance. Alternatively, the operator may assign the `data-dev` tag to the developer instead of the use case.
-
-    <Tabs>
-      <Tab title="use case ">
-        ![](/usecase2.png)
-      </Tab>
-
-      <Tab title="tags">
-        ```bash
-              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                       │             │        │                      │  roles:id:user,                  
-                       │             │        │                      │ users:id:iamgroot  
-        ```
-      </Tab>
-    </Tabs>
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -1428,7 +1553,17 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your MongoDB Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`&#x20;
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
     </Warning>
 
     <CodeGroup>
@@ -1467,7 +1602,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### **Resource meta section**
 
-    The MongoDB Instance Secret manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    The MongoDB Instance Secret manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Instance-secret specific section
 
@@ -1479,11 +1614,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
-    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    For more information, refer to the [Attributes of Instance-secret specific section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Step 2: Apply the manifest
 
-    To create the MongoDB Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the MongoDB Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest. 
 
     <CodeGroup>
       ```bash Command
@@ -1635,20 +1770,35 @@ If you want to store credentials for various data sources in an Instance Secret 
     **Pre-requisites**
     To create an Instance Secret for securing MsSQL credentials, you must have the following information:
 
-    **Pre-requisites specific to an Instance Secret creation**
+    **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
 
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
+
+    ```bash
+    dataos-ctl user get
     ```
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
-    ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -1666,7 +1816,7 @@ If you want to store credentials for various data sources in an Instance Secret 
       </Tab>
     </Tabs>
 
-    **Pre-requisites specific to the source system**
+    **Source System Configuration**
 
     * **Username**: The MsSQL username used to authenticate and access your MsSQL database. You can retrieve this from the MsSQL database admin by asking them to provide the username for your account.
 
@@ -1683,6 +1833,23 @@ If you want to store credentials for various data sources in an Instance Secret 
     ### Step 1: Create a manifest file
 
     Begin by creating a manifest file to hold the configuration details for your MSSQL Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+
+
+
+    <Warning>
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
+    </Warning>
+    
 
     <CodeGroup>
       ```yaml Read-only instance-secret
@@ -1716,7 +1883,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### **Resource meta section**
 
-    The Instance Secret manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    The Instance Secret manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Instance-secret specific section
 
@@ -1728,11 +1895,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
-    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    For more information, refer to the [Attributes of Instance-secret specific section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Step 2: Apply the manifest
 
-    To create the MSSQL Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the MSSQL Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest. 
 
     <CodeGroup>
       ```bash Command
@@ -1884,20 +2051,35 @@ If you want to store credentials for various data sources in an Instance Secret 
     **Pre-requisites**
     To create an Instance Secret for securing MySQL credentials, you must have the following information:
 
-    **Pre-requisites specific to an Instance Secret creation**
+    **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
 
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
+
+    ```bash
+    dataos-ctl user get
     ```
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
-    ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -1915,7 +2097,7 @@ If you want to store credentials for various data sources in an Instance Secret 
       </Tab>
     </Tabs>
 
-    **Pre-requisites specific to the source system**
+    **Source System Configuration**
 
     * **Username**: The MySQL username used to authenticate and access your MySQL database. This can be obtained from the database admin who manages user access.
 
@@ -1932,6 +2114,23 @@ If you want to store credentials for various data sources in an Instance Secret 
     ### Step 1: Create a manifest file
 
     Begin by creating a manifest file to hold the configuration details for your MySQL Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+
+
+    <Warning>
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
+    </Warning>
+
+    
 
     <CodeGroup>
       ```yaml Read-only instance-secret
@@ -1969,7 +2168,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### **Resource meta section**
 
-    The Instance Secret manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    The Instance Secret manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Instance-secret specific section
 
@@ -1981,11 +2180,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
-    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    For more information, refer to the [Attributes of Instance-secret specific section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Step 2: Apply the manifest
 
-    To create the MySQL Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the MySQL Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest. 
 
     <CodeGroup>
       ```bash Command
@@ -2137,20 +2336,35 @@ If you want to store credentials for various data sources in an Instance Secret 
     **Pre-requisites**
     To create an Instance Secret for securing Oracle credentials, you must have the following information:
 
-    **Pre-requisites specific to an Instance Secret creation**
+    **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
 
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
+
+    ```bash
+    dataos-ctl user get
     ```
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
-    ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -2168,7 +2382,7 @@ If you want to store credentials for various data sources in an Instance Secret 
       </Tab>
     </Tabs>
 
-    **Pre-requisites specific to the source system**
+    **Source System Configuration**
 
     * **Username**: The Oracle username used to authenticate and access your Oracle database. This can be obtained from the database administrator who manages user access.
 
@@ -2185,6 +2399,22 @@ If you want to store credentials for various data sources in an Instance Secret 
     ### Step 1: Create a manifest file
 
     Begin by creating a manifest file to hold the configuration details for your Oracle Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+
+    <Warning>
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
+    </Warning>
+
+    
 
     <CodeGroup>
       ```yaml Read-only instance-secret
@@ -2222,7 +2452,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### **Resource meta section**
 
-    The GCS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    The GCS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Instance-secret specific section
 
@@ -2234,11 +2464,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
-    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    For more information, refer to the [Attributes of Instance-secret specific section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Step 2: Apply the manifest
 
-    To create an Oracle Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create an Oracle Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest. 
 
     <CodeGroup>
       ```bash Command
@@ -2390,20 +2620,35 @@ If you want to store credentials for various data sources in an Instance Secret 
     **Pre-requisites**
     To create an Instance Secret for securing PostgreSQL credentials, you must have the following information:
 
-    **Pre-requisites specific to an Instance Secret creation**
+    **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
+
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
 
     ```bash
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
+    dataos-ctl user get
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -2421,7 +2666,7 @@ If you want to store credentials for various data sources in an Instance Secret 
       </Tab>
     </Tabs>
 
-    **Pre-requisites specific to the source system**
+    **Source System Configuration**
 
     * **Username**: The PostgreSQL username used to authenticate and access your PostgreSQL database. This can be obtained from the PostgreSQL administrator who manages user access.
 
@@ -2431,13 +2676,29 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ## Create an Instance Secret for securing Postgres credentials
 
-    &#x20;Postgres is a SQL database. SQL databases are typically centralized systems designed for structured data, organized into tables with a predefined schema.
+     Postgres is an SQL database. SQL databases are typically centralized systems designed for structured data, organized into tables with a predefined schema.
 
     To create a Postgres Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
 
     ### Step 1: Create a manifest file
 
     Begin by creating a manifest file to hold the configuration details for your Postgres Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+
+    <Warning>
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
+    </Warning>
+
+    
 
     <CodeGroup>
       ```yaml Read-only instance-secret
@@ -2476,7 +2737,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### **Resource meta section**
 
-    The Instance Secret manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    The Instance Secret manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Instance-secret specific section
 
@@ -2488,11 +2749,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
-    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    For more information, refer to the [Attributes of Instance-secret specific section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Step 2: Apply the manifest
 
-    To create the Postgres Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the Postgres Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest. 
 
     <CodeGroup>
       ```bash Command
@@ -2644,20 +2905,35 @@ If you want to store credentials for various data sources in an Instance Secret 
     **Pre-requisites**
     To create an Instance Secret for securing Redshift credentials, you must have the following information:
 
-    **Pre-requisites specific to an Instance Secret creation**
+    **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
+
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
 
     ```bash
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
+    dataos-ctl user get
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -2675,7 +2951,7 @@ If you want to store credentials for various data sources in an Instance Secret 
       </Tab>
     </Tabs>
 
-    **Pre-requisites specific to the source system**
+    **Source System Configuration**
 
     * **Username**: The Redshift username used to authenticate and access your Redshift cluster. This can be obtained from the Redshift admin who manages user access.
 
@@ -2696,6 +2972,22 @@ If you want to store credentials for various data sources in an Instance Secret 
     ### Step 1: Create a manifest file
 
     Begin by creating a manifest file to hold the configuration details for your Redshift Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding manifest template provided below.
+
+    <Warning>
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
+    </Warning>
+
+    
 
     <CodeGroup>
       ```yaml Read-only instance-secret
@@ -2733,7 +3025,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### **Resource meta section**
 
-    The Instance Secret manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    The Instance Secret manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Instance-secret specific section
 
@@ -2745,11 +3037,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
-    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    For more information, refer to the [Attributes of Instance-secret specific section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Step 2: Apply the manifest
 
-    To create the Redshift Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the Redshift Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest. 
 
     <CodeGroup>
       ```bash Command
@@ -2902,20 +3194,35 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     To create an Instance Secret for securing S3 credentials, you must have the following information:
 
-    **Pre-requisites specific to an Instance Secret creation**
+    **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
+
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
 
     ```bash
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
+    dataos-ctl user get
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section.
 
     <Tabs>
       <Tab title="use case ">
@@ -2933,15 +3240,47 @@ If you want to store credentials for various data sources in an Instance Secret 
       </Tab>
     </Tabs>
 
-    **Pre-requisites specific to the source system**
+    **Source System Configuration**
 
-    * **Access Key ID**: The access key ID used to authenticate AWS requests. You can retrieve this from the AWS Management Console by navigating to **IAM > Users**, selecting the relevant user, and viewing their **Security Credentials**.
+    * **Access Key ID**
 
-    * **AWS Access Key ID**: The AWS-specific access key ID, which can also be retrieved from the **IAM > Users** section in the AWS Management Console under **Security Credentials**.
+      : The access key ID used to authenticate AWS requests. You can retrieve this from the AWS Management Console by navigating to
 
-    * **AWS Secret Access Key**: The secret access key associated with the AWS access key ID. This is displayed only once when the key is generated. If lost, you will need to create a new access key in the **IAM > Users** section under **Security Credentials**.
+      **IAM > Users**
 
-    * **Secret Key**: Another key used for authentication.&#x20;
+      , selecting the relevant user, and viewing their
+
+      **Security Credentials**
+
+      .
+
+    * **AWS Access Key ID**
+
+      : The AWS-specific access key ID, which can also be retrieved from the
+
+      **IAM > Users**
+
+      section in the AWS Management Console under
+
+      **Security Credentials**
+
+      .
+
+    * **AWS Secret Access Key**
+
+      : The secret access key associated with the AWS access key ID. This is displayed only once when the key is generated. If lost, you will need to create a new access key in the
+
+      **IAM > Users**
+
+      section under
+
+      **Security Credentials**
+
+      .
+
+    * **Secret Key**
+
+      : Another key used for authentication.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -2995,23 +3334,29 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### **Resource meta section**
 
-    The S3 manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    The S3 manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Instance-secret specific section
 
     This section focuses on attributes specific to S3 Instance Secrets. It includes details like:
 
-    * `type`: Specifies the Instance Secret type (key-value-properties).
+    * `type`
 
-    * `acl`: Access control level (read-only or read-write).
+      : Specifies the Instance Secret type (key-value-properties).
 
-    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `acl`
 
-    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+      : Access control level (read-only or read-write).
+
+    * `data`
+
+      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+
+    For more information, refer to the [Attributes of Instance-secret specific section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Step 2: Apply the manifest
 
-    To create the S3 Instance Secret within DataOS, use the `apply` command. Since S3 Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the S3 Instance Secret within DataOS, use the `apply` command. Since S3 Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest. 
 
     <CodeGroup>
       ```bash Command
@@ -3164,20 +3509,35 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     To create an Instance Secret for securing Snowflake credentials, you must have the following information:
 
-    **Pre-requisites specific to an Instance Secret creation**
+    **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
+
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
 
     ```bash
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
+    dataos-ctl user get
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -3195,11 +3555,15 @@ If you want to store credentials for various data sources in an Instance Secret 
       </Tab>
     </Tabs>
 
-    **Pre-requisites specific to the source system**
+    **Source System Configuration**
 
-    * **Username**: The Snowflake username used to authenticate to the Snowflake account. This can be obtained from your Snowflake administrator or found in your Snowflake account settings.
+    * **Username**
 
-    * **Password**: The password associated with the Snowflake username for authentication. If you do not have the password, you will need to reset it via the Snowflake web interface or contact your Snowflake administrator to obtain it.
+      : The Snowflake username used to authenticate to the Snowflake account. This can be obtained from your Snowflake administrator or found in your Snowflake account settings.
+
+    * **Password**
+
+      : The password associated with the Snowflake username for authentication. If you do not have the password, you will need to reset it via the Snowflake web interface or contact your Snowflake administrator to obtain it.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -3250,23 +3614,29 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### **Resource meta section**
 
-    The Instance Secret manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    The Instance Secret manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Instance-secret specific section
 
     This section focuses on attributes specific to Snowflake Instance Secrets. It includes details like:
 
-    * `type`: Specifies the Instance Secret type (key-value-properties).
+    * `type`
 
-    * `acl`: Access control level (read-only or read-write).
+      : Specifies the Instance Secret type (key-value-properties).
 
-    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `acl`
 
-    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+      : Access control level (read-only or read-write).
+
+    * `data`
+
+      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+
+    For more information, refer to the [Attributes of Instance-secret specific section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Step 2: Apply the manifest
 
-    To create the Snowflake Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the Snowflake Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest. 
 
     <CodeGroup>
       ```bash Command
@@ -3417,20 +3787,35 @@ If you want to store credentials for various data sources in an Instance Secret 
   <Accordion title="Windows Azure Storage Blob Secure (WASBS)" defaultOpen={false}>
     To create an Instance Secret for securing WASBS credentials, you must have the following information:
 
-    **Pre-requisites specific to an Instance Secret creation**
+    **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
+
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
 
     ```bash
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
+    dataos-ctl user get
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -3448,13 +3833,35 @@ If you want to store credentials for various data sources in an Instance Secret 
       </Tab>
     </Tabs>
 
-    **Pre-requisites specific to the source system**
+    **Source System Configuration**
 
-    * **Azure Endpoint Suffix**: The endpoint suffix for the Azure Storage account. This is typically region-specific and can be found in the Azure Portal under the **Properties** section of your storage account.
+    * **Azure Endpoint Suffix**
 
-    * **Azure Storage Account Key**: The access key for the Azure Storage account, used for authentication. You can retrieve this from the Azure Portal by navigating to your storage account, selecting **Access keys** under the **Security + networking** section, and copying the key.
+      : The endpoint suffix for the Azure Storage account. This is typically region-specific and can be found in the Azure Portal under the
 
-    * **Azure Storage Account Name**: The name of the Azure Storage account used to identify it within your subscription. This can be found in the Azure Portal under the **Overview** section of your storage account.
+      **Properties**
+
+      section of your storage account.
+
+    * **Azure Storage Account Key**
+
+      : The access key for the Azure Storage account, used for authentication. You can retrieve this from the Azure Portal by navigating to your storage account, selecting
+
+      **Access keys**
+
+      under the
+
+      **Security + networking**
+
+      section, and copying the key.
+
+    * **Azure Storage Account Name**
+
+      : The name of the Azure Storage account used to identify it within your subscription. This can be found in the Azure Portal under the
+
+      **Overview**
+
+      section of your storage account.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -3502,23 +3909,29 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Resource meta section
 
-    The WASBS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    The WASBS manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Instance-secret specific section
 
     This section focuses on attributes specific to WASBS Instance Secrets. It includes details like:
 
-    * `type`: Specifies the Instance Secret type (key-value-properties).
+    * `type`
 
-    * `acl`: Access control level (read-only or read-write).
+      : Specifies the Instance Secret type (key-value-properties).
 
-    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `acl`
 
-    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+      : Access control level (read-only or read-write).
+
+    * `data`
+
+      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+
+    For more information, refer to the [Attributes of Instance-secret specific section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Step 2: Apply the manifest
 
-    To create the WASBS Instance Secret within DataOS, use the `apply` command. Since these Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.
+    To create the WASBS Instance Secret within DataOS, use the `apply` command. Since these Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest.
 
     <CodeGroup>
       ```bash Command
@@ -3669,20 +4082,35 @@ If you want to store credentials for various data sources in an Instance Secret 
   <Accordion title="Opensearch" defaultOpen={false}>
     To create an Instance Secret for securing OpenSearch credentials, you must have the following information:
 
-    **Pre-requisites specific to an Instance Secret creation**
+    **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
+
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
 
     ```bash
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
+    dataos-ctl user get
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -3700,11 +4128,15 @@ If you want to store credentials for various data sources in an Instance Secret 
       </Tab>
     </Tabs>
 
-    **Pre-requisites specific to the source system**
+    **Source System Configuration**
 
-    * **Username:** The OpenSearch username used to authenticate access to the OpenSearch instance. This is typically a user-specific or role-based identifier.&#x20;
+    * **Username:**
 
-    * **Password:** The OpenSearch password corresponding to the username for authentication. You can retrieve it from your OpenSearch configuration or admin settings, depending on how the instance credentials are managed in your organization.
+      The OpenSearch username used to authenticate access to the OpenSearch instance. This is typically a user-specific or role-based identifier.
+
+    * **Password:**
+
+      The OpenSearch password corresponding to the username for authentication. You can retrieve it from your OpenSearch configuration or admin settings, depending on how the instance credentials are managed in your organization.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -3750,23 +4182,29 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Resource meta section
 
-    The Opensearch manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    The Opensearch manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Instance-secret specific section
 
     This section focuses on attributes specific to OpenSearch Instance Secrets. It includes details like:
 
-    * `type`: Specifies the Instance Secret type (key-value-properties).
+    * `type`
 
-    * `acl`: Access control level (read-only or read-write).
+      : Specifies the Instance Secret type (key-value-properties).
 
-    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `acl`
 
-    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+      : Access control level (read-only or read-write).
+
+    * `data`
+
+      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+
+    For more information, refer to the [Attributes of Instance-secret specific section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Step 2: Apply the manifest
 
-    To create the OpenSearch Instance Secret within DataOS, use the `apply` command. Since these Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.
+    To create the OpenSearch Instance Secret within DataOS, use the `apply` command. Since these Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest.
 
     <CodeGroup>
       ```bash Command
@@ -3917,20 +4355,35 @@ If you want to store credentials for various data sources in an Instance Secret 
   <Accordion title="Elasticsearch" defaultOpen={false}>
     To create an Instance Secret for securing Elasticsearch credentials, you must have the following information:
 
-    **Pre-requisites specific to an Instance Secret creation**
+    **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
+
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
 
     ```bash
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
+    dataos-ctl user get
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -3948,11 +4401,15 @@ If you want to store credentials for various data sources in an Instance Secret 
       </Tab>
     </Tabs>
 
-    **Pre-requisites specific to the source system**
+    **Source System Configuration**
 
-    * **Username:** The Elasticsearch username used to authenticate access to the Elasticsearch instance. This is typically a user-specific or role-based identifier that grants the necessary permissions for accessing resources.
+    * **Username:**
 
-    * **Password:** The Elasticsearch password corresponding to the username for authentication. This password ensures secure access to the Elasticsearch instance and can be obtained from your Elasticsearch configuration or admin settings, depending on how credentials are managed within your organization.
+      The Elasticsearch username used to authenticate access to the Elasticsearch instance. This is typically a user-specific or role-based identifier that grants the necessary permissions for accessing resources.
+
+    * **Password:**
+
+      The Elasticsearch password corresponding to the username for authentication. This password ensures secure access to the Elasticsearch instance and can be obtained from your Elasticsearch configuration or admin settings, depending on how credentials are managed within your organization.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -3998,23 +4455,29 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Resource meta section
 
-    The Elasticsearch manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    The Elasticsearch manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Instance-secret specific section
 
     This section focuses on attributes specific to Elasticsearch Instance Secrets. It includes details like:
 
-    * `type`: Specifies the Instance Secret type (key-value-properties).
+    * `type`
 
-    * `acl`: Access control level (read-only or read-write).
+      : Specifies the Instance Secret type (key-value-properties).
 
-    * `data`: Contains sensitive information such as Elasticsearch username and password.
+    * `acl`
 
-    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+      : Access control level (read-only or read-write).
+
+    * `data`
+
+      : Contains sensitive information such as Elasticsearch username and password.
+
+    For more information, refer to the [Attributes of Instance-secret specific section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Step 2: Apply the manifest
 
-    To create the Elasticsearch Instance Secret within DataOS, use the `apply` command. Since these Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.
+    To create the Elasticsearch Instance Secret within DataOS, use the `apply` command. Since these Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest.
 
     <CodeGroup>
       ```bash Command
@@ -4177,20 +4640,35 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     To create an Instance Secret for securing AWS CodeCommit credentials, you must have the following information:
 
-    **Pre-requisites specific to an Instance Secret creation**
+    **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
+
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
 
     ```bash
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
+    dataos-ctl user get
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -4208,13 +4686,39 @@ If you want to store credentials for hosted code repositories in an Instance Sec
       </Tab>
     </Tabs>
 
-    **Pre-requisites specific to the source system**
+    **Source System Configuration**
 
-    * **Project ID**: The project ID used to identify your Google Cloud project. You can retrieve this from the Google Cloud Console by navigating to the project dashboard and locating the **Project ID** under project information.
+    * **Project ID**
 
-    * **Email ID**: The email address associated with the service account used to access repository. This can be found in the **IAM & Admin > Service Accounts** section of the Google Cloud Console by selecting the relevant service account and viewing its details.
+      : The project ID used to identify your Google Cloud project. You can retrieve this from the Google Cloud Console by navigating to the project dashboard and locating the
 
-    * **JSON Key File**: The path to the JSON key file for the service account, used for authentication. To obtain this, go to **IAM & Admin > Service Accounts** in the Google Cloud Console, select the service account, click **Keys**, and download the JSON key file by selecting **Add Key > JSON**. Ensure the file is securely stored and note its path.
+      **Project ID**
+
+      under project information.
+
+    * **Email ID**
+
+      : The email address associated with the service account used to access repository. This can be found in the
+
+      **IAM & Admin > Service Accounts**
+
+      section of the Google Cloud Console by selecting the relevant service account and viewing its details.
+
+    * **JSON Key File**
+
+      : The path to the JSON key file for the service account, used for authentication. To obtain this, go to
+
+      **IAM & Admin > Service Accounts**
+
+      in the Google Cloud Console, select the service account, click
+
+      **Keys**
+
+      , and download the JSON key file by selecting
+
+      **Add Key > JSON**
+
+      . Ensure the file is securely stored and note its path.
 
     To create a AWS CodeCommit Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
 
@@ -4259,23 +4763,25 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     ### **Resource meta section**
 
-    The manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    The manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Instance-secret specific section
 
     This section focuses on attributes specific to AWS CodeCommit Instance Secrets. It includes details like:
 
-    * `type`: Specifies the Instance Secret type (key-value-properties).
+    * `type`
+
+      : Specifies the Instance Secret type (key-value-properties).
 
     * `acl`: Access control level (read-only or read-write).
 
     * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
-    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    For more information, refer to the [Attributes of Instance-secret specific section]().
 
     ### Step 2: Apply the manifest
 
-    To create the AWS CodeCommit Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the AWS CodeCommit Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest. 
 
     <CodeGroup>
       ```bash Command
@@ -4307,20 +4813,35 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     To create an Instance Secret for securing AWS CodeCommit credentials, you must have the following information:
 
-    **Pre-requisites specific to an Instance Secret creation**
+    **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
+
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
 
     ```bash
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
+    dataos-ctl user get
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -4338,7 +4859,7 @@ If you want to store credentials for hosted code repositories in an Instance Sec
       </Tab>
     </Tabs>
 
-    **Pre-requisites specific to the source system**
+    **Source System Configuration**
 
     * **GITSYNC\_USERNAME**: This represents the Bitbucket username required for authentication.
 
@@ -4383,7 +4904,7 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     ### **Resource meta section**
 
-    The manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    The manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section]().
 
     ### Instance-secret specific section
 
@@ -4395,11 +4916,11 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
-    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    For more information, refer to the [Attributes of Instance-secret specific section]().
 
     ### Step 2: Apply the manifest
 
-    To create the Bitbucket repository Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the Bitbucket repository Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest. 
 
     <CodeGroup>
       ```bash Command
@@ -4431,20 +4952,35 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     To create an Instance Secret for securing AWS CodeCommit credentials, you must have the following information:
 
-    **Pre-requisites specific to an Instance Secret creation**
+    **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
+
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
 
     ```bash
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
+    dataos-ctl user get
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -4462,7 +4998,7 @@ If you want to store credentials for hosted code repositories in an Instance Sec
       </Tab>
     </Tabs>
 
-    **Pre-requisites specific to the source system**
+    **Source System Configuration**
 
     * **GITSYNC\_USERNAME**: This represents the Git username required for authentication.
 
@@ -4501,13 +5037,13 @@ If you want to store credentials for hosted code repositories in an Instance Sec
         acl: ${{rw}}
         data:
           GITSYNC_USERNAME: ${{"iamgroot"}}
-          GITSYNC_PASSWORD: ${{"56F4japOhkkQDS3trUnZsetFB2J3lnclDPgHThHLto="}}
+          GITSYNC_PASSWORD: ${{"56F4japOhkkQDS3trUnZsetFBKL3lnclDPgHThHLto="}}
       ```
     </CodeGroup>
 
     ### **Resource meta section**
 
-    The Instance Secret manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    The Instance Secret manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section]().
 
     ### Instance-secret specific section
 
@@ -4519,11 +5055,11 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
-    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    For more information, refer to the [Attributes of Instance-secret specific section]().
 
     ### Step 2: Apply the manifest
 
-    To create the Git repository Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the Git repository Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest. 
 
     <CodeGroup>
       ```bash Command
