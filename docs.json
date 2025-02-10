@@ -47,6 +47,7 @@
                 "group": "Instance Secret",
                 "pages": [
                   "resources/instance_secret/index",
+                  "resources/instance_secret/quick_start_guide",
                   "resources/instance_secret/configurations",
                   "resources/instance_secret/governance",
                   "resources/instance_secret/observability",
