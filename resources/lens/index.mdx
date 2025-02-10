@@ -1,39 +1,44 @@
 ---
-title: "Introduction"
-description: "Lens Resource in DataOS enables the creation of a semantic modeling layer, providing structured access to tabular data in data warehouses and lakehouses. By operating on top of physical tables, extending it into logical models by defining measures, dimensions, and relationships without altering the underlying data. "
+title: "Overview"
+sidebarTitle: "Overview" 
+description: "Lens Resource in DataOS enables the creation of a semantic modeling layer, providing structured access to tabular data in data warehouses and lakehouses. It works on top of physical tables, extending them into logical models by defining measures, dimensions, and relationships, all without altering the underlying data."
 ---
 
 <Tip>
   **Lens in the Data Product Lifecycle**
 
-  Lens operates in the consumption layer of the Data Product Life Cycle within DataOS, By leveraging Lens, semantic model can be created to inform decision-making, ensuring data is well-organized and aligned with business objectives. To consume it, Lens exposes APIs such as Postgres, REST, and Graphql.
+  Lens operates in the consumption layer of the Data Product Life Cycle within DataOS.By lekeb-ag Lens, semantic model can be created to inform decision-making, ensuring data is well-organized and aligned with business objectives. To consume it, Lens exposes APIs such as Postgres, REST, and Graphql.
 </Tip>
+
+
+![Lens diagram](/resources/lens/lens_diagram.jpg)
 
 **Why Lens?**
 
 The semantic modeling layer of the Lens serves as an interface that overlays the underlying data, consistently presenting business users with familiar and well-defined terms such as `product`, `customer`, or `revenue`. This abstraction enables users to access and consume data in a way that aligns with their understanding, facilitating self-service analytics and reducing dependence on data engineers for ad-hoc data requests.
 
-As a Resource within the DataOS ecosystem, Lens enhances Data Product consumption by delivering improvements in how Data Products are accessed and utilized. It streamlines the developer experience in consumption patterns, focusing specifically on refining the use and interaction with Data Products. It empowers analytical engineers, the key architects of business intelligence, with a model-first approach.&#x20;
+As a Resource within the DataOS ecosystem, Lens enhances Data Product consumption by delivering improvements in how Data Products are accessed and utilized. It streamlines the developer experience in consumption patterns, focusing specifically on refining the use and interaction with Data Products. It empowers analytical engineers, the key architects of business intelligence, with a model-first approach.
 
 ## Key features of Lens
 
-Lens is engineered to handle complex and large-scale semantic models with ease. Key features include:
+Lens is engineered to handle complex and large-scale semantic models with ease. Key features include: 
 
 * **Code modularity:** Lens supports modular code structures, simplifying the maintenance of extensive models, particularly when dealing with real-world entities (represented as tables), dimensions, and measures. This modularity enables efficient development and management, allowing teams to navigate large codebases with reduced complexity.
 
 * **Segments:** [Segments](/resources/lens/working_with_segments/) are predefined filters that enable the definition of complex filtering logic in SQL. It allows to create specific subsets of data, such as users from a particular city, which can be reused across different queries and reports. This feature helps streamline the data exploration process by simplifying the creation of reusable filters.
 
-* **API support:** Lens enhances interoperability by simplifying application development with support for [Postgres API](/resources/lens/explore_lens_using_sql_apis/), [REST API](/resources/lens/explore_lens_using_rest_apis/), and [GraphQL API](/resources/lens/explore_lens_using_graphql/). &#x20;
+* **API support:** Lens enhances interoperability by simplifying application development with support for [Postgres API](/resources/lens/explore_lens_using_sql_apis/), [REST API](/resources/lens/explore_lens_using_rest_apis/), and [GraphQL API](/resources/lens/explore_lens_using_graphql/). 
 
 * **Governance and access control:** Lens ensures data governance through[ user group management and data policies](/resources/lens/working_with_user_groups_and_data_policies/), enabling precise control over who can access and interact with the semantic model.
 
 * **BI integration:** Lens improves interoperability through robust integration with PowerBI, Tableau, and Superset. This ensures that semantic models can be easily utilized across various BI platforms, enhancing the overall analytics experience. For more details on BI integration, visit the [BI Integration guide](/resources/lens/bi_integration/).
 
-* **Performance optimization through Flash:** Designed to work with DataOS Lakehouse and Iceberg-format Depots, [Flash](/resources/stacks/flash/) improves query performance by leveraging in-memory execution. This optimization ensures that data teams can efficiently handle large-scale queries with enhanced speed and performance.
+* **Performance optimization through Flash:** [Flash](/resources/stacks/flash/) is a Stack in DataOS that utlizes an in-memory query processing layer to cache data for fast access, reducing query response times and speeding up data retrieval.
 
 ## How to build a semantic model using Lens?
 
-The process begins with creating a new Lens project and generating a semantic model. Once the model is prepared, it will be tested within the development environment to ensure it is error-free before deployment.
+To build a semantic model with Lens establish a connection to your data source, load relevant data, set up user access, and deploy the model with configuration settings. The following steps outline how to build the semantic model and deploy it using Lens for each type of source.
+
 
 ### Single source
 
@@ -41,7 +46,7 @@ The process begins with creating a new Lens project and generating a semantic mo
   <Accordion title="Redshift" defaultOpen={false}>
     The following document guides on building a semantic model on Redshift as source.
 
-    ## Step 1: Create the AWS Redshift Depot
+    ## Step 1: Create AWS Redshift Depot
 
     If the Depot is inactive, create one using the provided template.
 
@@ -73,10 +78,19 @@ The process begins with creating a new Lens project and generating a semantic mo
 
     ## Step 2: Prepare the sematic model folder
 
-    In the model folder, the semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each sub folder contains specific files related to the semantic model. Download the Lens template to quickly get started.
+    In the model folder, the semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each subfolder contains specific files related to the semantic model. Download the [Lens template](/resources/lens/lens_model_folder_setup/lens-project-template.zip) to quickly get started or organize the semantic model folder with the following structure:
 
-    [lens template](/resources/lens/lens_model_folder_setup/lens-project-template.zip)
-
+    ```
+    model
+    ├── sqls
+    │   └── sample.sql  # SQL script for table dimensions
+    ├── tables
+    │   └── sample_table.yml  # Logical table definition (joins, dimensions, measures, segments)
+    ├── views
+    │   └── sample_view.yml  # Logical views referencing tables
+    └── user_groups.yml  # User group policies for governance
+    ```
+    
     <Steps>
       <Step title="Load data from the data source" titleSize="h2">
         In the `sqls/` folder, create `.sql` files for each table, where each file is responsible for loading or selecting the relevant data from the source. Ensure only the necessary columns are extracted, and the SQL dialect is specific to the data source.
@@ -192,8 +206,70 @@ The process begins with creating a new Lens project and generating a semantic mo
         To know more about the user groups click [here](https://dataos.info/resources/lens/working_with_user_groups_and_data_policies/)
       </Step>
     </Steps>
+    
+    <Tip>
+    Now, push Lens model directory to a hosted code repository. This can be done on hosted code repository such as Bitbucket, GitHub, AWS CodeCommit etc.
+    </Tip>
 
-    ## Step 3: Deployment manifest file
+    ## Step 3 Create Instance-secret
+
+    Before creating the `lens_deployment.yml` file, ensure an **Instance-secret** is deployed with the credentials required to access a hosted code repository, such as [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/push-code-to-bitbucket/), [GitHub](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github), [AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/getting-started.html) etc. The `lens_deployment.yml` configuration relies on this repository to fetch the semantic model, making the Instance-secret a critical prerequisite for deployment. 
+
+    <Note>
+       If code repository is private, create  an [Instance-secrets](/resources/instance_secret/) on top of repository credentials for later use during deployment. Public code repositories do not require Step 3.
+    </Note>
+
+    Define the Instance-secret Resource in a YAML manifest file. Below is a template you can use for Bitbucket, substituting `${USERNAME}` and `${PASSWORD}` with actual code repository credentials:
+
+    <CodeGroup>
+      ```yaml Syntax
+      # RESOURCE META SECTION
+      name: ${bitbucket-r } # Secret Resource name (mandatory)
+      version: v1 # Secret manifest version (mandatory)
+      type: instance-secret # Type of Resource (mandatory)
+      description: Bitbucket read secrets for code repository # Secret Resource description (optional)
+      layer: user # DataOS Layer (optional)
+
+      # INSTANCE SECRET-SPECIFIC SECTION
+      instance-secret: 
+        type: key-value # Type of Instance-secret (mandatory)
+        acl: r # Access control list (mandatory)
+        data: # Data (mandatory)
+          GITSYNC_USERNAME: ${USERNAME}
+          GITSYNC_PASSWORD: ${PASSWORD}
+      ```
+
+      ```yaml Example
+      # RESOURCE META SECTION
+      name: bitbucket-r # Secret Resource name (mandatory)
+      version: v1 # Secret manifest version (mandatory)
+      type: instance-secret # Type of Resource (mandatory)
+      description: Bitbucket read secrets for code repository # Secret Resource description (optional)
+      layer: user # DataOS Layer (optional)
+
+      # INSTANCE SECRET-SPECIFIC SECTION
+      instance-secret: 
+        type: key-value # Type of Instance-secret (mandatory)
+        acl: r # Access control list (mandatory)
+        data: # Data (mandatory)
+          GITSYNC_USERNAME: iamgroot
+          GITSYNC_PASSWORD: <git_token>
+      ```
+    </CodeGroup>
+
+    ### Apply the Instance-secret manifest
+
+    Deploy the Instance-secret to DataOS using the `apply` command.
+
+    ```
+    dataos-ctl apply -f {manifest-file-path}
+    ```
+
+    <Warning>
+       When applying the manifest file for Instance-secret from CLI, do not specify Workspace as Instance-secrets are [Instance-level Resource](/resources/types/#instance-level-resources).
+    </Warning>
+
+    ## Step 4: Create Lens deployment manifest file
 
     Once the semantic model is prepared, create a `lens_deployment.yml` file parallel to the model folder.
 
@@ -247,19 +323,17 @@ The process begins with creating a new Lens project and generating a semantic mo
 
     * **Configure API, Worker, and Metric Settings (Optional):** Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
 
-    ## Step 4: Apply the Lens deployment manifest file
+    ## Step 5: Apply Lens deployment manifest file
 
     After configuring the deployment file with the necessary settings and specifications, Deploy the Lens using the following `apply` command:
 
-    <Code>
-      ```yaml Command
-      dataos-ctl resource apply -f ${manifest-file-path}
-      ```
-    </Code>
+    ```yaml
+    dataos-ctl resource apply -f ${manifest-file-path}
+    ```
   </Accordion>
 
   <Accordion title="BigQuery" defaultOpen={false}>
-    ## Step 1: Create the Bigquery Depot
+    ## Step 1: Create BigQuery Depot
 
     If the Depot is not active, create one using the provided template.
 
@@ -292,19 +366,33 @@ The process begins with creating a new Lens project and generating a semantic mo
 
     ## Step 2: Prepare the semantic model folder
 
-    In the model folder, the semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each subfolder contains specific files related to the semantic model. Download the Lens template to quickly get started.
+    In the model folder, the semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each subfolder contains specific files related to the semantic model. Download the [Lens template](/resources/lens/lens_model_folder_setup/lens-project-template.zip) to quickly get started or organize the semantic model folder with the following structure:
 
-    [lens template](/resources/lens/lens_model_folder_setup/lens-project-template.zip)
+    ```
+    model
+    ├── sqls
+    │   └── sample.sql  # SQL script for table dimensions
+    ├── tables
+    │   └── sample_table.yml  # Logical table definition (joins, dimensions, measures, segments)
+    ├── views
+    │   └── sample_view.yml  # Logical views referencing tables
+    └── user_groups.yml  # User group policies for governance
+    ```
 
     <Steps>
       <Step title="Load data from the data source" titleSize="h2">
-        In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure, only the necessary columns are extracted, and the SQL dialect is specific to the bigquery. For instance,
+        In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure, only the necessary columns are extracted, and the 
+        
+        
+        <Tip>
+        The SQL dialect is specific to the BigQuery. For instance,
 
-        * &#x20;format table names as: `project_id.dataset.table`.
+        * Format table names as: `project_id.dataset.table`.
 
         * Use `STRING` for text data types instead of `VARCHAR`.
 
         * Replace generic functions with BigQuery’s `EXTRACT` function.
+        </Tip>
 
         For instance, a simple data load might look as follows:
 
@@ -416,74 +504,139 @@ The process begins with creating a new Lens project and generating a semantic mo
 
         To know more about the user groups click [here](/resources/lens/working_with_user_groups_and_data_policies/).
 
-        ## Step 3:  Create Lens deployment manifest file
-
-        After setting up the semantic model folder, the next step is to configure the deployment manifest. Below is the YAML template for configuring a Lens deployment.
-
-        ```yaml
-        # RESOURCE META SECTION
-        version: v1alpha # Lens manifest version (mandatory)
-        name: "bigquery-lens" # Lens Resource name (mandatory)
-        layer: user # DataOS Layer (optional)
-        type: lens # Type of Resource (mandatory)
-        tags: # Tags (optional)
-          - lens
-        description: bigquery depot lens deployment on lens2 # Lens Resource description (optional)
-
-        # LENS-SPECIFIC SECTION
-        lens:
-          compute: runnable-default # Compute Resource that Lens should utilize (mandatory)
-          secrets: # Referred Instance-secret configuration (**mandatory for private code repository, not required for public repository)
-            - name: bitbucket-cred # Referred Instance Secret name (mandatory)
-              allKeys: true # All keys within the secret are required or not (optional)
-
-          source: # Data Source configuration
-            type: depot # Source type is depot here
-            name: bigquerydepot # Name of the bigquery depot
-
-          repo: # semantic model code repository configuration (mandatory)
-            url: https://bitbucket.org/tmdc/sample # URL of repository containing the semantic model (mandatory)
-            lensBaseDir: sample/lens/source/depot/bigquery/model # Relative path of the Lens 'model' directory in the repository (mandatory)
-            syncFlags: # Additional flags used during synchronization, such as specific branch.
-              - --ref=lens # Repository Branch
-        ```
-
-        Each section of the YAML template defines key aspects of the Lens deployment. Below is a detailed explanation of its components:
-
-        * **Defining the Source:**
-
-          * **Source type:** The `type` attribute in the `source` section must be explicitly set to `depot`.
-
-          * **Source name:** The `name` attribute in the `source` section should specify the name of the Bigquery Depot created .
-
-        * **Setting Up Compute and Secrets:**
-
-          * Define the compute settings, such as which engine (e.g., `runnable-default`) will process the data.
-
-          * Include any necessary secrets (e.g., credentials for Bitbucket or AWS) for secure access to data and repositories.
-
-        * **Defining Repository:**
-
-          * **`url`** The `url` attribute in the repo section specifies the Git repository where the semantic model files are stored. For instance, if your repo name is lensTutorial then the repo `url` will be [https://bitbucket.org/tmdc/lensTutorial](https://bitbucket.org/tmdc/lensTutorial)
-
-          * **`lensBaseDir`:** The `lensBaseDir` attribute refers to the directory in the repository containing the Lens model. Example: `sample/lens/source/depot/bigquery/model`.
-
-          * **`secretId`:** The `secretId` attribute is used to access private repositories (e.g., Bitbucket, GitHub) . It specifies the secret needed to securely authenticate and access the repository.
-
-          * **`syncFlags`**: Specifies additional flags to control repository synchronization. Example: `--ref=dev` specifies that the semantic model rsides in the dev branch.
-
-        * **Configuring API, Worker and Metric Settings (Optional):** Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
       </Step>
     </Steps>
 
-    ## Step 4: Apply the Lens deployment manifest file
+    <Tip>
+    Now, push Lens model directory to a hosted code repository. This can be done on hosted code repository such as Bitbucket, GitHub, AWS CodeCommit etc.
+    </Tip>
+
+    ## Step 3 Create Instance-secret
+
+    Before creating the `lens_deployment.yml` file, ensure an **Instance-secret** is deployed with the credentials required to access a hosted code repository, such as [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/push-code-to-bitbucket/), [GitHub](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github), [AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/getting-started.html) etc. The `lens_deployment.yml` configuration relies on this repository to fetch the semantic model, making the Instance-secret a critical prerequisite for deployment. 
+
+    <Note>
+       If code repository is private, create  an [Instance-secrets](/resources/instance_secret/) on top of repository credentials for later use during deployment. Public code repositories do not require Step 3.
+    </Note>
+
+    Define the Instance-secret Resource in a YAML manifest file. Below is a template you can use for Bitbucket, substituting `${USERNAME}` and `${PASSWORD}` with actual code repository credentials:
+
+    <CodeGroup>
+      ```yaml Syntax
+      # RESOURCE META SECTION
+      name: ${bitbucket-r } # Secret Resource name (mandatory)
+      version: v1 # Secret manifest version (mandatory)
+      type: instance-secret # Type of Resource (mandatory)
+      description: Bitbucket read secrets for code repository # Secret Resource description (optional)
+      layer: user # DataOS Layer (optional)
+
+      # INSTANCE SECRET-SPECIFIC SECTION
+      instance-secret: 
+        type: key-value # Type of Instance-secret (mandatory)
+        acl: r # Access control list (mandatory)
+        data: # Data (mandatory)
+          GITSYNC_USERNAME: ${USERNAME}
+          GITSYNC_PASSWORD: ${PASSWORD}
+      ```
+
+      ```yaml Example
+      # RESOURCE META SECTION
+      name: bitbucket-r # Secret Resource name (mandatory)
+      version: v1 # Secret manifest version (mandatory)
+      type: instance-secret # Type of Resource (mandatory)
+      description: Bitbucket read secrets for code repository # Secret Resource description (optional)
+      layer: user # DataOS Layer (optional)
+
+      # INSTANCE SECRET-SPECIFIC SECTION
+      instance-secret: 
+        type: key-value # Type of Instance-secret (mandatory)
+        acl: r # Access control list (mandatory)
+        data: # Data (mandatory)
+          GITSYNC_USERNAME: iamgroot
+          GITSYNC_PASSWORD: <git_token>
+      ```
+    </CodeGroup>
+
+    ### Apply the Instance-secret manifest
+
+    Deploy the Instance-secrets to DataOS using the `apply` command.
+
+    ```
+    dataos-ctl apply -f {manifest-file-path}
+    ```
+
+    <Warning>
+    When applying the manifest file for Instance-secret from CLI, do not specify Workspace as Instance-secrets are [Instance-level Resource](/resources/types/#instance-level-resources).
+    </Warning>
+
+    ## Step 4:  Create Lens deployment manifest file
+
+    Once the semantic model is prepared and pushed to code repository, create a `lens_deployment.yml` file parallel to the model folder.After setting up the semantic model folder, the next step is to configure the deployment manifest. Below is the YAML template for configuring a Lens deployment.
+
+    ```yaml
+    # RESOURCE META SECTION
+    version: v1alpha # Lens manifest version (mandatory)
+    name: "bigquery-lens" # Lens Resource name (mandatory)
+    layer: user # DataOS Layer (optional)
+    type: lens # Type of Resource (mandatory)
+    tags: # Tags (optional)
+      - lens
+    description: bigquery depot lens deployment on lens2 # Lens Resource description (optional)
+
+    # LENS-SPECIFIC SECTION
+    lens:
+      compute: runnable-default # Compute Resource that Lens should utilize (mandatory)
+      secrets: # Referred Instance-secret configuration (**mandatory for private code repository, not required for public repository)
+        - name: bitbucket-cred # Referred Instance-secret name (mandatory)
+          allKeys: true # All keys within the secret are required or not (optional)
+
+      source: # Data Source configuration
+        type: depot # Source type is depot here
+        name: bigquerydepot # Name of the bigquery depot
+
+      repo: # semantic model code repository configuration (mandatory)
+        url: https://bitbucket.org/tmdc/sample # URL of repository containing the semantic model (mandatory)
+        lensBaseDir: sample/lens/source/depot/bigquery/model # Relative path of the Lens 'model' directory in the repository (mandatory)
+        syncFlags: # Additional flags used during synchronization, such as specific branch.
+          - --ref=lens # Repository Branch
+    ```
+
+    Each section of the YAML template defines key aspects of the Lens deployment. Below is a detailed explanation of its components:
+
+    * **Defining the Source:**
+
+      * **Source type:** The `type` attribute in the `source` section must be explicitly set to `depot`.
+
+      * **Source name:** The `name` attribute in the `source` section should specify the name of the BigQuery Depot created .
+
+    * **Setting Up Compute and Secrets:**
+
+      * Define the compute settings, such as which engine (e.g., `runnable-default`) will process the data.
+
+      * Include any necessary secrets (e.g., credentials for Bitbucket or AWS) for secure access to data and repositories.
+
+    * **Defining Repository:**
+
+      * **`url`** The `url` attribute in the repo section specifies the Git repository where the semantic model files are stored. For instance, if your repo name is lensTutorial then the repo `url` will be [https://bitbucket.org/tmdc/lensTutorial](https://bitbucket.org/tmdc/lensTutorial)
+
+      * **`lensBaseDir`:** The `lensBaseDir` attribute refers to the directory in the repository containing the Lens model. Example: `sample/lens/source/depot/bigquery/model`.
+
+      * **`secretId`:** The `secretId` attribute is used to access private repositories (e.g., Bitbucket, GitHub) . It specifies the secret needed to securely authenticate and access the repository.
+
+      * **`syncFlags`**: Specifies additional flags to control repository synchronization. Example: `--ref=dev` specifies that the semantic model rsides in the dev branch.
+
+    * **Configuring API, Worker and Metric Settings (Optional):** Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
+
+
+    ## Step 5: Apply Lens deployment manifest file
 
     After configuring the deployment file with the necessary settings and specifications, deploy the Lens using the following `apply` command.
 
     ```
     dataos-ctl apply -f {manifest-file-path}}
     ```
-  </Accordion>
+
+    </Accordion>
 
   <Accordion title="Postgres" defaultOpen={false}>
     ## Step 1: Create Postgres Depot
@@ -522,13 +675,26 @@ The process begins with creating a new Lens project and generating a semantic mo
 
     ## Step 2: Prepare the semantic model folder
 
-    In the model folder, the semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each subfolder contains specific files related to the Lens model. You can download the Lens template to quickly get started.
+    In the model folder, the semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each subfolder contains specific files related to the semantic model. Download the [Lens template](/resources/lens/lens_model_folder_setup/lens-project-template.zip) to quickly get started or organize the semantic model folder with the following structure:
 
-    [lens template](/resources/lens/lens_model_folder_setup/lens-project-template.zip)
+    ```
+    model
+    ├── sqls
+    │   └── sample.sql  # SQL script for table dimensions
+    ├── tables
+    │   └── sample_table.yml  # Logical table definition (joins, dimensions, measures, segments)
+    ├── views
+    │   └── sample_view.yml  # Logical views referencing tables
+    └── user_groups.yml  # User group policies for governance
+    ```
 
     <Steps>
       <Step title="Load data from the data source" titleSize="h2">
-        In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure that only the necessary columns are extracted, and the SQL dialect is specific to the data source.
+        In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure only the necessary columns are extracted. 
+
+        <Tip>
+        The SQL dialect should be specific to the Postgres.
+        </Tip>
 
         For example, a simple data load might look as follows:
 
@@ -642,7 +808,128 @@ The process begins with creating a new Lens project and generating a semantic mo
       </Step>
     </Steps>
 
-    ### Step 4: Apply the Lens deployment manifest file
+    <Tip>
+    Now, push Lens model directory to a hosted code repository. This can be done on hosted code repository such as Bitbucket, GitHub, AWS CodeCommit etc.
+    </Tip>
+
+    ## Step 3: Create an Instance-secret
+
+    Before creating the `lens_deployment.yml` file, ensure an **Instance-secret** is deployed with the credentials required to access a hosted code repository, such as [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/push-code-to-bitbucket/), [GitHub](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github), [AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/getting-started.html) etc. The `lens_deployment.yml` configuration relies on this repository to fetch the semantic model, making the Instance-secret a critical prerequisite for deployment. 
+
+    <Note>
+       If code repository is private, create  an [Instance-secrets](/resources/instance_secret/) on top of repository credentials for later use during deployment. Public code repositories do not require Step 3.
+    </Note>
+
+    Define the Instance-secret Resource in a YAML manifest file. Below is a template you can use for Bitbucket, substituting `${USERNAME}` and `${PASSWORD}` with actual code repository credentials:
+
+    <CodeGroup>
+      ```yaml Syntax
+      # RESOURCE META SECTION
+      name: ${bitbucket-r } # Secret Resource name (mandatory)
+      version: v1 # Secret manifest version (mandatory)
+      type: instance-secret # Type of Resource (mandatory)
+      description: Bitbucket read secrets for code repository # Secret Resource description (optional)
+      layer: user # DataOS Layer (optional)
+
+      # INSTANCE SECRET-SPECIFIC SECTION
+      instance-secret: 
+        type: key-value # Type of Instance-secret (mandatory)
+        acl: r # Access control list (mandatory)
+        data: # Data (mandatory)
+          GITSYNC_USERNAME: ${USERNAME}
+          GITSYNC_PASSWORD: ${PASSWORD}
+      ```
+
+      ```yaml Example
+      # RESOURCE META SECTION
+      name: bitbucket-r # Secret Resource name (mandatory)
+      version: v1 # Secret manifest version (mandatory)
+      type: instance-secret # Type of Resource (mandatory)
+      description: Bitbucket read secrets for code repository # Secret Resource description (optional)
+      layer: user # DataOS Layer (optional)
+
+      # INSTANCE SECRET-SPECIFIC SECTION
+      instance-secret: 
+        type: key-value # Type of Instance-secret (mandatory)
+        acl: r # Access control list (mandatory)
+        data: # Data (mandatory)
+          GITSYNC_USERNAME: iamgroot
+          GITSYNC_PASSWORD: <git_token>
+      ```
+    </CodeGroup>
+
+    ### Apply the Instance-secret manifest file
+
+    Deploy the Instance-secrets to DataOS using the `apply` command.
+
+    ```
+    dataos-ctl apply -f {manifest-file-path}
+    ```
+
+    <Warning>
+    When applying the manifest file for Instance-secret from CLI, do not specify Workspace as Instance-secrets are [Instance-level Resource](/resources/types/#instance-level-resources).
+    </Warning>
+
+    ## Step 4: Create Lens deployment manifest file
+
+    Once the semantic model is prepared and pushed to code repository, create a `lens_deployment.yml` file parallel to the model folder.After setting up the semantic model folder, the next step is to configure the deployment manifest. Below is the YAML template for configuring a Lens deployment.
+
+    ```yaml
+    # RESOURCE META SECTION
+    version: v1alpha # Lens manifest version (mandatory)
+    name: "bigquery-lens" # Lens Resource name (mandatory)
+    layer: user # DataOS Layer (optional)
+    type: lens # Type of Resource (mandatory)
+    tags: # Tags (optional)
+      - lens
+    description: postgres depot lens deployment on lens2 # Lens Resource description (optional)
+
+    # LENS-SPECIFIC SECTION
+    lens:
+      compute: runnable-default # Compute Resource that Lens should utilize (mandatory)
+      secrets: # Referred Instance-secret configuration (**mandatory for private code repository, not required for public repository)
+        - name: bitbucket-cred # Referred Instance-secret name (mandatory)
+          allKeys: true # All keys within the secret are required or not (optional)
+
+      source: # Data Source configuration
+        type: depot # Source type is depot here
+        name: bigquerydepot # Name of the bigquery depot
+
+      repo: # semantic model code repository configuration (mandatory)
+        url: https://bitbucket.org/tmdc/sample # URL of repository containing the semantic model (mandatory)
+        lensBaseDir: sample/lens/source/depot/postgres/model # Relative path of the Lens 'model' directory in the repository (mandatory)
+        syncFlags: # Additional flags used during synchronization, such as specific branch.
+          - --ref=lens # Repository Branch
+    ```
+
+    Each section of the YAML template defines key aspects of the Lens deployment. Below is a detailed explanation of its components:
+
+    * **Defining the Source:**
+
+      * **Source type:** The `type` attribute in the `source` section must be explicitly set to `depot`.
+
+      * **Source name:** The `name` attribute in the `source` section should specify the name of the Postgres Depot created .
+
+    * **Setting Up Compute and Secrets:**
+
+      * Define the compute settings, such as which engine (e.g., `runnable-default`) will process the data.
+
+      * Include any necessary secrets (e.g., credentials for Bitbucket or AWS) for secure access to data and repositories.
+
+    * **Defining Repository:**
+
+      * **`url`** The `url` attribute in the repo section specifies the Git repository where the semantic model files are stored. For instance, if your repo name is lensTutorial then the repo `url` will be [https://bitbucket.org/tmdc/lensTutorial](https://bitbucket.org/tmdc/lensTutorial)
+
+      * **`lensBaseDir`:** The `lensBaseDir` attribute refers to the directory in the repository containing the Lens model. Example: `sample/lens/source/depot/bigquery/model`.
+
+      * **`secretId`:** The `secretId` attribute is used to access private repositories (e.g., Bitbucket, GitHub) . It specifies the secret needed to securely authenticate and access the repository.
+
+      * **`syncFlags`**: Specifies additional flags to control repository synchronization. Example: `--ref=dev` specifies that the semantic model rsides in the dev branch.
+
+    * **Configuring API, Worker and Metric Settings (Optional):** Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
+
+    
+    ## Step 5: Apply Lens deployment manifest file
 
     After configuring the deployment file with the necessary settings and specifications, deploy the Lens using the following `apply` command:
 
@@ -652,11 +939,12 @@ The process begins with creating a new Lens project and generating a semantic mo
   </Accordion>
 
   <Accordion title="Snowflake" defaultOpen={false}>
+    
     ## Prerequisite
 
     CLI Version should be `dataos-cli 2.26.39-dev` or greater.
 
-    ## Step 1: Create the Snowflake Depot
+    ## Step 1: Create a Snowflake Depot
 
     If the Depot is not active, you need to create one using the provided template.
 
@@ -692,11 +980,26 @@ The process begins with creating a new Lens project and generating a semantic mo
 
     ## Step 2: Prepare the semantic model folder
 
-    Organize the semantic model folder with the following structure to define tables, views, and user groups:
+    In the model folder, the semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each subfolder contains specific files related to the semantic model. Download the [Lens template](/resources/lens/lens_model_folder_setup/lens-project-template.zip) to quickly get started or organize the semantic model folder with the following structure:
+
+    ```
+    model
+    ├── sqls
+    │   └── sample.sql  # SQL script for table dimensions
+    ├── tables
+    │   └── sample_table.yml  # Logical table definition (joins, dimensions, measures, segments)
+    ├── views
+    │   └── sample_view.yml  # Logical views referencing tables
+    └── user_groups.yml  # User group policies for governance
+    ```
 
     <Steps>
       <Step title="Load data from the data source" titleSize="h2">
-        In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure the SQL dialect matches snowflake syntax. Format table names as `schema.table`.
+        In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source.  Format table names as `schema.table`.
+
+        <Tip>
+        Ensure the SQL dialect matches Snowflake.
+        </Tip>
 
         For example, a simple data load might look as follows:
 
@@ -810,7 +1113,71 @@ The process begins with creating a new Lens project and generating a semantic mo
       </Step>
     </Steps>
 
-    ## Step 3: Deployment manifest file
+    
+    <Tip>
+    Now, push Lens model directory to a hosted code repository. This can be done on hosted code repository such as Bitbucket, GitHub, AWS CodeCommit etc.
+    </Tip>
+    
+    
+    ## Step 3: Create an Instance-secret
+
+    Before creating the `lens_deployment.yml` file, ensure an **Instance-secret** is deployed with the credentials required to access a hosted code repository, such as [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/push-code-to-bitbucket/), [GitHub](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github), [AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/getting-started.html) etc. The `lens_deployment.yml` configuration relies on this repository to fetch the semantic model, making the Instance-secret a critical prerequisite for deployment. 
+
+    <Note>
+    If code repository is private, create  an [Instance-secrets](/resources/instance_secret/) on top of repository credentials for later use during deployment. Public code repositories do not require Step 3.
+    </Note>
+
+    Define the Instance-secret Resource in a YAML manifest file. Below is a template you can use for Bitbucket, substituting `${USERNAME}` and `${PASSWORD}` with actual code repository credentials:
+
+    <CodeGroup>
+      ```yaml Syntax
+      # RESOURCE META SECTION
+      name: ${bitbucket-r } # Secret Resource name (mandatory)
+      version: v1 # Secret manifest version (mandatory)
+      type: instance-secret # Type of Resource (mandatory)
+      description: Bitbucket read secrets for code repository # Secret Resource description (optional)
+      layer: user # DataOS Layer (optional)
+
+      # INSTANCE SECRET-SPECIFIC SECTION
+      instance-secret: 
+        type: key-value # Type of Instance-secret (mandatory)
+        acl: r # Access control list (mandatory)
+        data: # Data (mandatory)
+          GITSYNC_USERNAME: ${USERNAME}
+          GITSYNC_PASSWORD: ${PASSWORD}
+      ```
+
+      ```yaml Example
+      # RESOURCE META SECTION
+      name: bitbucket-r # Secret Resource name (mandatory)
+      version: v1 # Secret manifest version (mandatory)
+      type: instance-secret # Type of Resource (mandatory)
+      description: Bitbucket read secrets for code repository # Secret Resource description (optional)
+      layer: user # DataOS Layer (optional)
+
+      # INSTANCE SECRET-SPECIFIC SECTION
+      instance-secret: 
+        type: key-value # Type of Instance-secret (mandatory)
+        acl: r # Access control list (mandatory)
+        data: # Data (mandatory)
+          GITSYNC_USERNAME: iamgroot
+          GITSYNC_PASSWORD: <git_token>
+      ```
+    </CodeGroup>
+
+    ### Apply the Instance-secret manifest file
+
+    Deploy the Instance-secrets to DataOS using the `apply` command.
+
+    ```
+    dataos-ctl apply -f {manifest-file-path}
+    ```
+
+    <Warning>
+    When applying the manifest file for Instance-secret from CLI, do not specify Workspace as Instance-secrets are [Instance-level Resource](/resources/types/#instance-level-resources).
+    </Warning>
+
+    ## Step 4: Create Lens deployment manifest file
 
     After setting up the semantic model folder, the next step is to configure the deployment manifest. Below is the YAML template for configuring a Lens deployment.
 
@@ -828,7 +1195,7 @@ The process begins with creating a new Lens project and generating a semantic mo
     lens:
       compute: runnable-default # Compute Resource that Lens should utilize (mandatory)
       secrets: # Referred Instance-secret configuration (**mandatory for private code repository, not required for public repository)
-        - name: bitbucket-cred # Referred Instance Secret name (mandatory)
+        - name: bitbucket-cred # Referred Instance-secret name (mandatory)
           allKeys: true # All keys within the secret are required or not (optional)
 
       source: # Data Source configuration
@@ -842,7 +1209,7 @@ The process begins with creating a new Lens project and generating a semantic mo
           - --ref=lens # Repository Branch
     ```
 
-    ### Step 4: Apply the Lens deployment manifest file
+    ## Step 5: Apply Lens deployment manifest file
 
     After configuring the deployment file with the necessary settings, deploy the Lens using the following `apply` command:
 
@@ -856,13 +1223,15 @@ The process begins with creating a new Lens project and generating a semantic mo
 
 <AccordionGroup>
   <Accordion title="Minerva" defaultOpen={false}>
+   
+   
     ## Prerequisite
 
     Ensure you have an active and running Minerva Cluster.
 
     ## Step 1: Prepare the sematic model folder
 
-    In the model folder, the semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each subfolder contains specific files related to the Lens model. You can download the Lens template to quickly get started.
+    In the model folder, the semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each subfolder contains specific files related to the Lens model. You can download the [Lens template](/resources/lens/lens_model_folder_setup/lens-project-template.zip) to quickly get started.
 
     ```
     model
@@ -877,7 +1246,7 @@ The process begins with creating a new Lens project and generating a semantic mo
 
     <Steps>
       <Step title="Load data from the data source" titleSize="h2">
-        In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure that only the necessary columns are extracted, and the SQL dialect is specific to the data source.
+        In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure only the necessary columns are extracted, and the SQL dialect is specific to the data source.
 
         For example, a simple data load might look as follows:
 
@@ -991,7 +1360,69 @@ The process begins with creating a new Lens project and generating a semantic mo
       </Step>
     </Steps>
 
-    ## Step 2: Create a deployment manifest file
+  <Tip>
+  Now, push Lens model directory to a hosted code repository. This can be done on hosted code repository such as Bitbucket, GitHub, AWS CodeCommit etc.
+  </Tip>
+      
+    ## Step 2: Create an Instance-secret
+
+    Before creating the `lens_deployment.yml` file, ensure an **Instance-secret** is deployed with the credentials required to access a hosted code repository, such as [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/push-code-to-bitbucket/), [GitHub](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github), [AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/getting-started.html) etc. The `lens_deployment.yml` configuration relies on this repository to fetch the semantic model, making the Instance-secret a critical prerequisite for deployment. 
+
+    <Note>
+    If code repository is private, create  an [Instance-secrets](/resources/instance_secret/) on top of repository credentials for later use during deployment. Public code repositories do not require Step 3.
+    </Note>
+
+    Define the Instance-secret Resource in a YAML manifest file. Below is a template you can use for Bitbucket, substituting `${USERNAME}` and `${PASSWORD}` with actual code repository credentials:
+
+    <CodeGroup>
+      ```yaml Syntax
+      # RESOURCE META SECTION
+      name: ${bitbucket-r } # Secret Resource name (mandatory)
+      version: v1 # Secret manifest version (mandatory)
+      type: instance-secret # Type of Resource (mandatory)
+      description: Bitbucket read secrets for code repository # Secret Resource description (optional)
+      layer: user # DataOS Layer (optional)
+
+      # INSTANCE SECRET-SPECIFIC SECTION
+      instance-secret: 
+        type: key-value # Type of Instance-secret (mandatory)
+        acl: r # Access control list (mandatory)
+        data: # Data (mandatory)
+          GITSYNC_USERNAME: ${USERNAME}
+          GITSYNC_PASSWORD: ${PASSWORD}
+      ```
+
+      ```yaml Example
+      # RESOURCE META SECTION
+      name: bitbucket-r # Secret Resource name (mandatory)
+      version: v1 # Secret manifest version (mandatory)
+      type: instance-secret # Type of Resource (mandatory)
+      description: Bitbucket read secrets for code repository # Secret Resource description (optional)
+      layer: user # DataOS Layer (optional)
+
+      # INSTANCE SECRET-SPECIFIC SECTION
+      instance-secret: 
+        type: key-value # Type of Instance-secret (mandatory)
+        acl: r # Access control list (mandatory)
+        data: # Data (mandatory)
+          GITSYNC_USERNAME: iamgroot
+          GITSYNC_PASSWORD: <git_token>
+      ```
+    </CodeGroup>
+
+    ### Apply the Instance-secret manifest file
+
+    Deploy the Instance-secrets to DataOS using the `apply` command.
+
+    ```
+    dataos-ctl apply -f {manifest-file-path}
+    ```
+
+    <Warning>
+    When applying the manifest file for Instance-secret from CLI, do not specify Workspace as Instance-secrets are [Instance-level Resource](/resources/types/#instance-level-resources).
+    </Warning>
+
+    ## Step 3: Create Lens deployment manifest file
 
     After preparing the semantic model create a `lens_deployemnt.yml` parallel to the `model` folder.
 
@@ -1047,12 +1478,24 @@ The process begins with creating a new Lens project and generating a semantic mo
     <Info>
       Within the Themis and Minerva cluster, all Depots (such as onelakehouse, Redshift, Snowflake, etc.) are integrated. When configuring Lens, you only need to specify one Depot in the \`catalog\` field, as Lens can connect to and utilize Depots from all sources available in the Themis cluster.
     </Info>
+
+    ## Step 4: Apply Lens deployment manifest file
+
+    After configuring the deployment file with the necessary settings, deploy the Lens using the following `apply` command:
+
+    ```
+    dataos-ctl apply -f ${manifest-file-path}
+    ```
+
   </Accordion>
 
+
+
   <Accordion title="Themis" defaultOpen={false}>
+    
     ## Prerequisites
 
-    Ensure you have an active and running Minerva Cluster.
+    Ensure you have an active and running Themis Cluster.
 
     ## Step 1: Prepare the semantic model folder
 
@@ -1071,7 +1514,7 @@ The process begins with creating a new Lens project and generating a semantic mo
 
     <Steps>
       <Step title="Load data from the data source" titleSize="h2">
-        In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure that only the necessary columns are extracted, and the SQL dialect is specific to the data source.
+        In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure only the necessary columns are extracted, and the SQL dialect is specific to the data source.
 
         For example, a simple data load might look as follows:
 
@@ -1151,7 +1594,7 @@ The process begins with creating a new Lens project and generating a semantic mo
       </Step>
 
       <Step title="Create the views" titleSize="h2">
-        Create a **views** folder to store all logical views, with each view defined in a separate YAML file (e.g., `sample_view.yml`). Each view references dimensions, measures, and segments from multiple logical tables. For instance the following`customer_churn` view is created.
+        Create a **view** folder to store all logical views, with each view defined in a separate YAML file (e.g., `sample_view.yml`). Each view references dimensions, measures, and segments from multiple logical tables. For instance the following`customer_churn` view is created.
 
         ```yaml
         views:
@@ -1185,7 +1628,70 @@ The process begins with creating a new Lens project and generating a semantic mo
       </Step>
     </Steps>
 
-    ## Step 2: Create a deployment manifest file
+
+
+   
+    ## Step 2: Create Instance-secret
+
+  Before creating the `lens_deployment.yml` file, ensure an **Instance-secret** is deployed with the credentials required to access a hosted code repository, such as [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/push-code-to-bitbucket/), [GitHub](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github), [AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/getting-started.html) etc. The `lens_deployment.yml` configuration relies on this repository to fetch the **semantic model**, making the Instance-secret a critical prerequisite for deployment. 
+
+  <Note>
+     If your code repository is private, you will need to create **Instance-secrets** with your repository credentials for later use during deployment. Public code repositories do not require Step 3.
+  </Note>
+
+  Define the Instance-secrets Resource in a  YAML manifest file. Below is a template you can use for Bitbucket, substituting `${USERNAME}` and `${PASSWORD}` with your actual Bitbucket credentials:
+
+  <CodeGroup>
+    ```yaml Syntax
+    # RESOURCE META SECTION
+    name: ${bitbucket-r } # Secret Resource name (mandatory)
+    version: v1 # Secret manifest version (mandatory)
+    type: instance-secret # Type of Resource (mandatory)
+    description: Bitbucket read secrets for code repository # Secret Resource description (optional)
+    layer: user # DataOS Layer (optional)
+
+    # INSTANCE SECRET-SPECIFIC SECTION
+    instance-secret: 
+      type: key-value # Type of Instance-secret (mandatory)
+      acl: r # Access control list (mandatory)
+      data: # Data (mandatory)
+        GITSYNC_USERNAME: ${USERNAME}
+        GITSYNC_PASSWORD: ${PASSWORD}
+    ```
+
+    ```yaml Example
+    # RESOURCE META SECTION
+    name: bitbucket-r # Secret Resource name (mandatory)
+    version: v1 # Secret manifest version (mandatory)
+    type: instance-secret # Type of Resource (mandatory)
+    description: Bitbucket read secrets for code repository # Secret Resource description (optional)
+    layer: user # DataOS Layer (optional)
+
+    # INSTANCE SECRET-SPECIFIC SECTION
+    instance-secret: 
+      type: key-value # Type of Instance-secret (mandatory)
+      acl: r # Access control list (mandatory)
+      data: # Data (mandatory)
+        GITSYNC_USERNAME: iamgroot
+        GITSYNC_PASSWORD: <git_token>
+    ```
+  </CodeGroup>
+
+  ### Apply the Instance-secret manifest
+
+  Deploy the Instance-secrets to DataOS using the `apply` command.
+
+  ```
+  dataos-ctl apply -f {manifest-file-path}
+  ```
+
+  <Warning>
+     When applying the manifest file for Instance-secret from CLI, make sure you don't specify Workspace as Instance-secrets are [Instance-level Resource](/resources/types/#instance-level-resources).
+  </Warning>    
+   
+
+   
+    ## Step 3: Create Lens deployment manifest file
 
     After preparing the semantic model create a `lens_deployemnt.yml` parallel to the `model` folder.
 
@@ -1244,17 +1750,29 @@ The process begins with creating a new Lens project and generating a semantic mo
     <Info>
       Within the Themis and Minerva cluster, all Depots (such as Lakehouse, Redshift, Snowflake, etc.) are integrated. When configuring Lens, you only need to specify one Depot in the \`catalog\` field, as Lens can connect to and utilize Depots from all sources available in the Themis cluster.
     </Info>
+
+    ## Step 4: Apply Lens deployment manifest file
+
+    After configuring the deployment file with the necessary settings, deploy the Lens using the following `apply` command:
+
+    ```
+    dataos-ctl apply -f ${manifest-file-path}
+    ```
+
   </Accordion>
 </AccordionGroup>
 
-## Query Acceleration
+
+
+### Query Acceleration
+
 
 <Accordion title="Flash" defaultOpen={false}>
   [Flash](/resources/stacks/flash/) is designed to optimize query performance by leveraging in-memory execution. When used with DataOS Lakehouse and Iceberg-format Depots, it enables efficient handling of large-scale queries by reducing latency and optimizing resource usage. The following explains how to configure Lens using Flash.
 
-  ### **Prerequisites**
+  ### Prerequisites
 
-  To create a Lens using Flash, ensure that the Flash service is running and has a Persistent Volume attached. A Persistent Volume allows Flash to spill data to disk, enhancing performance by preventing memory constraints from impacting query execution.
+  To create a Lens using Flash, ensure the Flash service is running and has a Persistent Volume attached. A Persistent Volume allows Flash to spill data to disk, enhancing performance by preventing memory constraints from impacting query execution.
 
   <Info>
     Make sure a Persistent Volume is attached with the Flash. It helps Flash to spill data over disk, which helps with the performance.
@@ -1292,7 +1810,6 @@ The process begins with creating a new Lens project and generating a semantic mo
 
       ```bash
       dataos-ctl apply -f <file path of persistent volume>
-
       ```
 
       [](https://dataos.info/resources/lens/data_sources/flash/#__codelineno-2-1)
@@ -1350,7 +1867,7 @@ The process begins with creating a new Lens project and generating a semantic mo
             - create table if not exists table m_products as (select * from product_data_master)
       ```
 
-      ### **How does this process work?**
+      ### How does this process work?
 
       The flow of Flash operates as follows:
 
@@ -1374,191 +1891,12 @@ The process begins with creating a new Lens project and generating a semantic mo
     </Step>
   </Steps>
 
-  ## Step 2 Prepare the semantic model folder
 
-  In the model folder, the semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each subfolder contains specific files related to the Lens model. You can download the Lens template to quickly get started.
-
-  [lens template](/resources/lens/lens_model_folder_setup/lens-project-template.zip)
-
-  <Steps>
-    <Step title="Load data from the data source" titleSize="h2">
-      In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure that only the necessary columns are extracted, and the SQL dialect is specific to the data source. For Flash, the table name given in the  `init` will be the source table name.
-
-      For example, a simple data load might look as follows:
-
-      ```sql
-      SELECT
-        *
-      FROM
-        channel; # flash source table name
-      ```
-
-      Alternatively, you can write more advanced queries that include transformations, such as:
-
-      ```sql
-      SELECT
-        CAST(customer_id AS VARCHAR) AS customer_id,
-        first_name,
-        CAST(DATE_PARSE(birth_date, '%d-%m-%Y') AS TIMESTAMP) AS birth_date,
-        age,
-        CAST(register_date AS TIMESTAMP) AS register_date,
-        occupation,
-        annual_income,
-        city,
-        state,
-        country,
-        zip_code
-      FROM
-        customer;
-      ```
-    </Step>
-
-    <Step title="Define the table in the model" titleSize="h2">
-      Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For example, to define a table for `sales `data:
-
-      ```yaml
-      table:
-        - name: customers
-          sql: {{ load_sql('customers') }}
-          description: Table containing information about sales transactions.
-      ```
-
-      ### Add dimensions and measures
-
-      After defining the base table, add the necessary dimensions and measures. For example, to create a table for sales data with measures and dimensions, the YAML definition could look as follows:
-
-      ```yaml
-      tables:
-        - name: sales
-          sql: {{ load_sql('sales') }}
-          description: Table containing sales records with order details.
-
-          dimensions:
-            - name: order_id
-              type: number
-              description: Unique identifier for each order.
-              sql: order_id
-              primary_key: true
-              public: true
-
-          measures:
-            - name: total_orders_count
-              type: count
-              sql: id
-              description: Total number of orders.
-      ```
-
-      ### Add segments to filter
-
-      Segments are filters that allow for the application of specific conditions to refine the data analysis. By defining segments, you can focus on particular subsets of data, ensuring that only the relevant records are included in your analysis. For example, to filter for records where the state is either Illinois or Ohio, you can define a segment as follows:
-
-      ```yaml
-      segments:
-        - name: state_filter
-          sql: "{TABLE}.state IN ('Illinois', 'Ohio')"
-      ```
-
-      To know more about segments click [here](https://dataos.info/resources/lens/working_with_segments/).
-    </Step>
-
-    <Step title="Create the views" titleSize="h2">
-      Create a **views** folder to store all logical views, with each view defined in a separate YAML file (e.g., `sample_view.yml`). Each view references dimensions, measures, and segments from multiple logical tables. For instance the following`customer_churn` view is created.
-
-      ```yaml
-      views:
-        - name: customer_churn_prediction
-          description: Contains customer churn information.
-          tables:
-            - join_path: marketing_campaign
-              includes:
-                - engagement_score
-                - customer_id
-            - join_path: customer
-              includes:
-                - country
-                - customer_segments
-      ```
-
-      To know more about the views click [here](https://dataos.info/resources/lens/working_with_views/).
-    </Step>
-
-    <Step title="Create user groups" titleSize="h2">
-      The `user_groups.yml` manifest file is used to manage access levels for the semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, the 'default' user group in the manifest file includes all users.
-
-      ```yaml
-      user_groups:
-        - name: default
-          description: this is a default user group
-          includes: "*"
-      ```
-
-      You can create multiple user groups in `user_groups.yml` . To know more about the user groups click [here](https://dataos.info/resources/lens/working_with_user_groups_and_data_policies/).
-    </Step>
-  </Steps>
-
-  ## Step 3 Create Instance-secret&#x20;
-
-  Before creating the `lens_deployment.yml` file, ensure that an **Instance Secret** is deployed with the credentials required to access a hosted code repository, such as [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/push-code-to-bitbucket/), [GitHub](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github), [AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/getting-started.html) etc. The `lens_deployment.yml` configuration relies on this repository to fetch the **semantic model**, making the Instance Secret a critical prerequisite for deployment. 
-
-  <Note>
-     If your code repository is private, you will need to create **Instance Secrets** with your repository credentials for later use during deployment. Public code repositories do not require Step 3.
-  </Note>
-
-  Define the Instance Secret Resource in a  YAML manifest file. Below is a template you can use for Bitbucket, substituting `${USERNAME}` and `${PASSWORD}` with your actual Bitbucket credentials:
-
-  <CodeGroup>
-    ```yaml Syntax
-    # RESOURCE META SECTION
-    name: ${bitbucket-r } # Secret Resource name (mandatory)
-    version: v1 # Secret manifest version (mandatory)
-    type: instance-secret # Type of Resource (mandatory)
-    description: Bitbucket read secrets for code repository # Secret Resource description (optional)
-    layer: user # DataOS Layer (optional)
-
-    # INSTANCE SECRET-SPECIFIC SECTION
-    instance-secret: 
-      type: key-value # Type of Instance-secret (mandatory)
-      acl: r # Access control list (mandatory)
-      data: # Data (mandatory)
-        GITSYNC_USERNAME: ${USERNAME}
-        GITSYNC_PASSWORD: ${PASSWORD}
-    ```
-
-    ```yaml Example
-    # RESOURCE META SECTION
-    name: bitbucket-r # Secret Resource name (mandatory)
-    version: v1 # Secret manifest version (mandatory)
-    type: instance-secret # Type of Resource (mandatory)
-    description: Bitbucket read secrets for code repository # Secret Resource description (optional)
-    layer: user # DataOS Layer (optional)
-
-    # INSTANCE SECRET-SPECIFIC SECTION
-    instance-secret: 
-      type: key-value # Type of Instance-secret (mandatory)
-      acl: r # Access control list (mandatory)
-      data: # Data (mandatory)
-        GITSYNC_USERNAME: iamgroot
-        GITSYNC_PASSWORD: <git_token>
-    ```
-  </CodeGroup>
-
-  ### **Apply the Instance Secret manifest**
-
-  Deploy the Instance Secret to DataOS using the `apply` command.
-
-  ```
-  dataos-ctl apply -f {manifest-file-path}
-  ```
-
-  <Warning>
-     When applying the manifest file for Instance-secret from CLI, make sure you don't specify Workspace as Instance Secrets are [Instance-level Resource](/resources/types/#instance-level-resources).
-  </Warning>
-
-  ## Step 4 Create Lens Resource
+  ## Step 4 Create Lens manifest file
 
   To enable Lens to interact with the Flash service, configure the following attributes in the Lens deployment manifest file:
 
-  ### **1. Define Flash as the data source**
+  ### 1. Define Flash as the data source
 
   Configure the Flash service as the data source in the `source` attribute of the deployment manifest file.
 
@@ -1574,7 +1912,7 @@ The process begins with creating a new Lens project and generating a semantic mo
     name: flash-test  # Name of the Flash service
   ```
 
-  ### **2. Add environment variables**
+  ### 2. Add environment variables
 
   Specify the following environment variables in the Worker, API, and Router sections of the Lens deployment manifest.
 
@@ -1605,7 +1943,7 @@ The process begins with creating a new Lens project and generating a semantic mo
   lens:
     compute: runnable-default
     secrets: # Referred Instance-secret configuration (**mandatory for private code repository, not required for public repository)
-      - name: githubr # Referred Instance Secret name (mandatory)
+      - name: githubr # Referred Instance-secret name (mandatory)
         allKeys: true # All keys within the secret are required or not (optional)
     source:
       type: flash # minerva, themis and depot
@@ -1695,15 +2033,15 @@ After creating a Lens semantic model , the next step is to consume it—this mea
       <Tab title="Using CLI">
         ## Prerequisites
 
-        Before proceeding with the integration of Lens with Power BI, ensure that you have the following prerequisites in place:
+        Before proceeding with the integration of Lens with Power BI, ensure the following prerequisites are in place:
 
-        * **CURL**: Ensure that CURL is installed on your system. Windows users may need to use `curl.exe`.
+        * **CURL**: Ensure, CURL is installed on system. Windows users may need to use `curl.exe`.
 
-        * **Version compatibility:** It is strongly recommended to download Power BI Version `2.132.908.0` or later to fully utilize `.pbip` files.&#x20;
+        * **Version compatibility:** It is strongly recommended to download Power BI Version `2.132.908.0` or later to fully utilize `.pbip` files.
 
         * **Lens API Endpoint**: The API endpoint provided by Lens to synchronize the semantic model, enabling integration with Power BI.
 
-        * **DataOS API key**: You will need your apikey  for authentication. The API key can be obtained using the following command in your terminal:
+        * **DataOS API key**: API key will be needed for authentication. The API key can be obtained using the following command in terminal:
 
         ### Curl command
 
@@ -1733,7 +2071,7 @@ After creating a Lens semantic model , the next step is to consume it—this mea
         | -------------- | ------------------------------------------------------------------------------------------------------------------------- |
         | `URL`          | The URL  for syncing Lens with Power BI. It includes:                                                                     |
         | `apikey`       | User's API key for the current context in Lens.                                                                           |
-        | `filename.zip` | Here you give the name of the Power BI file with which name you wish to download it. For example, `product-analysis.zip`. |
+        | `filename.zip` | Here, specify the name of the file you wish to download, such as `product-analysis.zip`.                                  |
 
         The `file.zip` includes essential components for syncing a semantic model with Power BI, organized into folders such as `.Report` and `.SemanticModel`:
 
@@ -1749,7 +2087,7 @@ After creating a Lens semantic model , the next step is to consume it—this mea
             curl --location --request POST 'https://tcp.{context}.dataos.app/lens2/sync/api/v1/power-bi/{workspace_name}:{lens_name}' --header 'apikey: abcdefgh==' --output {file.zip}
             ```
 
-            Replace the placeholders with your current context, workspace, lens name and the apikey.
+            Replace the placeholders with current context or environment, workspace, lens name and the apikey.
           </Step>
 
           <Step title=" Extract the zip file" titleSize="h2">
@@ -1758,7 +2096,7 @@ After creating a Lens semantic model , the next step is to consume it—this mea
             ![Superset Configuration](https://dataos.info/resources/lens/bi_integration/powerbi2.png)
 
             <Note>
-              Ensure that `.pbip` folders are fully extracted before opening them.Failure to do so may result in missing file errors, as shown below:
+              Ensure `.pbip` folders are fully extracted before opening them.Failure to do so may result in missing file errors, as shown below:
               ![Superset Configuration](https://dataos.info/resources/lens/bi_integration/image.png)
             </Note>
           </Step>
@@ -1781,7 +2119,7 @@ After creating a Lens semantic model , the next step is to consume it—this mea
           </Step>
 
           <Step title="Create dashboards" titleSize="h2">
-            Upon successful connection, tables and views will be accessible, displaying dimensions and measures. Now you are ready to create dashboards.
+            Upon successful connection, tables and views will be accessible, displaying dimensions and measures to create dashboards.
           </Step>
         </Steps>
 
@@ -1831,11 +2169,11 @@ After creating a Lens semantic model , the next step is to consume it—this mea
 
             * **public\_sales360.Report:** This folder contains `definition.pbir` file related to the report definition in Power BI. These files define the visual representation of data, such as tables and charts, without storing actual data. They connect the semantic model and data sources to create the report views.
 
-            * **public-sales360.SemanticModel:** This folder contains files that define the underlying semantic model for your Power BI project. The semantic model plays a crucial role in managing how Power BI interacts with data, setting up relationships, hierarchies, and measures.
+            * **public-sales360.SemanticModel:** This folder contains files that define the underlying semantic model for Power BI project. The semantic model plays a crucial role in managing how Power BI interacts with data, setting up relationships, hierarchies, and measures.
 
-              * **definition.bism:** This file represents the Business Intelligence Semantic Model (BISM). It defines the structure of your data, including data sources, relationships, tables, and measures for your semantic model. The `.bism` file holds essential metadata that helps Power BI understand and query the data, forming the core of the semantic model for report creation and analysis.
+              * **definition.bism:** This file represents the Business Intelligence Semantic Model (BISM). It defines the structure of data, including data sources, relationships, tables, and measures for semantic model. The `.bism` file holds essential metadata that helps Power BI understand and query the data, forming the core of the semantic model for report creation and analysis.
 
-              * **model.bim:** Power BI uses the `.bim` file to generate queries and manage interactions with the dataset. When you build reports or dashboards in Power BI, it references this semantic model to ensure the correct structure is applied to the data.
+              * **model.bim:** Power BI uses the `.bim` file to generate queries and manage interactions with the dataset. It references this semantic model to ensure the correct structure is applied to the data.
 
             * **public-sales-360-table.pbip:** This file serves as a Power BI project template or configuration file. Power BI uses files `.pbip` or `.pbix` to encapsulate reports, datasets, and visualizations. The `.pbip` file ties together the semantic model and report definitions from the other folders, acting as the entry point for working on the project in Power BI Desktop or the Power BI service.
           </Step>
@@ -1876,9 +2214,9 @@ After creating a Lens semantic model , the next step is to consume it—this mea
   <Accordion title="Tableau" defaultOpen={false}>
     <Tabs>
       <Tab title="Using CLI">
-        ### **Prerequisites**
+        ### Prerequisites
 
-        * **Curl**: Ensure that `curl` is installed on the system. For Windows systems, `curl.exe` may be necessary.
+        * **Curl**: Ensure `curl` is installed on the system. For Windows systems, `curl.exe` may be necessary.
 
         * **Lens API endpoint**: The API endpoint provided by Lens to sync semantic model, enabling integration with Tableau.
 
@@ -1956,7 +2294,7 @@ After creating a Lens semantic model , the next step is to consume it—this mea
 
             5. **server\_address:** The URL of the Tableau server. Replace with the correct server address (e.g., https://prod-apnortheast-a.online.tableau.com). This information can be obtained upon logging in to Tableau. The URL will appear as follows:> https://prod-apnortheast-a.online.tableau.com/#/site/iamgroot1086a891fef336/homeHere: **iamgroot1086a891fef336** is the **site\_id**.
 
-            As you run the command the sync process starts. To view the semantic model in the &#x20;
+            As you run the command the sync process starts. To view the semantic model in the 
           </Step>
 
           <Step title="Login to Tableau" titleSize="h2">
@@ -2051,13 +2389,13 @@ After creating a Lens semantic model , the next step is to consume it—this mea
 
         **3. Schema changes:** If there are schema updates, such as adding new dimensions or measures, the integration steps will need to be repeated to incorporate these changes into Tableau.
 
-        **4. Avoiding cyclic dependencies:** Tableau does not support cyclic dependencies within data models. To prevent integration issues, it is essential to ensure that the semantic model is free of cyclic dependencies prior to syncing with Tableau.
+        **4. Avoiding cyclic dependencies:** Tableau does not support cyclic dependencies within data models. To prevent integration issues, it is essential to ensure the semantic model is free of cyclic dependencies prior to syncing with Tableau.
 
         **5. Visualization with multiple data sources:** You cannot build a visualization that incorporates data from multiple data sources. For live connections, Tableau does not support data blending. Only a single data source can be used to create a visualization.
 
         **6. Centralized management:** All data sources should be managed and published by the admin on the server, with everyone else using this source.
 
-        **7. Single authority for Desktop publications:** If data sources are published via Tableau Desktop, ensure that all sources are published by a single authority to avoid multiple data source conflicts on the server.
+        **7. Single authority for Desktop publications:** If data sources are published via Tableau Desktop, ensure all sources are published by a single authority to avoid multiple data source conflicts on the server.
 
         **8. Row limit:** The Lens API has a maximum return limit of 50,000 rows per request. To obtain additional data, it is necessary to set an offset. This row limit is in place to manage resources efficiently and ensure optimal performance.
 
@@ -2145,11 +2483,11 @@ After creating a Lens semantic model , the next step is to consume it—this mea
               </Tab>
 
               <Tab title="Using Personal Access Token">
-                In addition to using standard Tableau credentials, users can also opt to use Personal Access Tokens (PAT) for authentication.&#x20;
+                In addition to using standard Tableau credentials, users can also opt to use Personal Access Tokens (PAT) for authentication.
 
                 ## Prerequisites
 
-                **Tableau Personal Access Token (PAT):** Before integrating the semantic model with Tableau using a PAT, ensure that you generate a PAT in Tableau by following the instructions provided in [this guide](https://help.tableau.com/current/online/en-us/security_personal_access_tokens.htm).
+                **Tableau Personal Access Token (PAT):** Before integrating the semantic model with Tableau using a PAT, ensure you generate a PAT in Tableau by following the instructions provided in [this guide](https://help.tableau.com/current/online/en-us/security_personal_access_tokens.htm).
               </Tab>
             </Tabs>
 
@@ -2179,7 +2517,7 @@ After creating a Lens semantic model , the next step is to consume it—this mea
           </Step>
         </Steps>
 
-        ## Exploring the semantic model on Tableau&#x20;
+        ## Exploring the semantic model on Tableau
 
         Once the sync is successful, the data source is published to the Tableau cloud/server:
 
@@ -2247,7 +2585,7 @@ After creating a Lens semantic model , the next step is to consume it—this mea
 
         * **Lens API endpoint**: The API endpoint provided by Lens to sync semantic model, enabling integration with Superset.
 
-        * **Access credentials**: Superset requires the login credentials (username and password) and the host address where Superset is hosted.&#x20;
+        * **Access credentials**: Superset requires the login credentials (username and password) and the host address where Superset is hosted.
 
         ## Steps
 
@@ -2387,7 +2725,7 @@ Lens provides a PostgreSQL-compatible interface, enabling users to interact with
 
 Semantic data modeling is the process of defining and structuring raw data into organized and meaningful business definitions. It involves creating logical schemas, relationships, and aggregations to represent how data is stored, processed, and accessed. Click [here](/resources/lens/concepts/) to learn more about the semantic modeling concepts.
 
-## Configure Lens&#x20;
+## Configure Lens
 
 The Lens can be configured to connect to different sources using data source attributes and configurable attributes in the`lens_deployment.yml` manifest files. For a comprehensive list of supported properties, please [click here](/resources/lens/lens_manifest_attributes/).
 
@@ -2407,18 +2745,18 @@ Data governance in DataOS is structured across three layers to protect and contr
 
 * **Physical data layer:** Governance policies are applied directly at the physical data layer, where the data resides in sources such as BigQuery, Postgres, Snowflake, or other data storage platforms. These policies enforce data protection at the source, controlling access and masking sensitive information before it is processed or exposed further. To know about how to govern the Lens click here.
 
-* &#x20;**Model-first Data Product layer:** At this layer, governance policies are applied to the semantic model (Lens) derived from the underlying source tables. To manage access effectively [user groups](/resources/lens/working_with_user_groups/) define different levels of exploration permissions within Lens.&#x20;
+* **Model-first Data Product layer:** At this layer, governance policies are applied to the semantic model (Lens) derived from the underlying source tables. To manage access effectively [user groups](/resources/lens/working_with_user_groups/) define different levels of exploration permissions within Lens.
 
 * **Activation layer:** Governance at the activation layer focuses on enforcing data protection within the Business Intelligence (BI) tool. This ensures that sensitive data remains masked or restricted based on user roles when presented through dashboards or reports, controlling how the data is accessed and displayed in the final interface.
 
-## How to catalog a semantic model built using Lens?
+## Cataloging
 
-The metadata of a semantic model or Lens Resource is cataloged in Metis, which stores historical runtime and operations data in the Metis DB. This cataloging provides an aggregated view of metadata, enabling access to historical and operational insights about Resources. To learn more about cataloging semantic models and Lens Resource click here.
+The metadata of a semantic model or Lens Resource is cataloged in Metis, which stores historical runtime and operations data in the Metis DB. This cataloging provides an aggregated view of metadata, enabling access to historical and operational insights about Resources. To learn more about cataloging semantic models and Lens Resource click [here](/resources/lens/cataloging.mdx).
 
 ## Best practices
 
-Click [here](/resources/lens/dos_and_donts/) to explore recommended guidelines and techniques to create efficient and scalable semantic models, along with a concise list of do's and don'ts.&#x20;
+Click [here](/resources/lens/dos_and_donts/) to explore recommended guidelines and techniques to create efficient and scalable semantic models, along with a concise list of do's and don'ts.
 
 ## Troubleshooting
 
-Click [here](/resources/lens/errors/) to understand and resolve common errors while creating semantic model and deploying Lens.
+Click [here](/resources/lens/troubleshooting/) to understand and resolve common errors while creating semantic model and deploying Lens.

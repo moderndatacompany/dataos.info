@@ -83,7 +83,7 @@
                     ]
                   },
                   {
-                    "group": "Concepts",
+                    "group": "Semantic modeling",
                     "pages": [
                       "resources/lens/semantic_modeling_concepts",
                       "resources/lens/working_with_segments",
