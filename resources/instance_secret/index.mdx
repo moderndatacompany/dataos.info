@@ -69,13 +69,13 @@ If you want to store credentials for various data sources in an Instance Secret 
     dataos-ctl user get
     ```
 
-    If any required roles are missing, contact a **DataOS Operator** or submit a **Grant Request** for role assignment.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
 
-    Alternatively, if access is managed through **use cases**, ensure the following use case is assigned:
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
 
     * **Manage All Instance-level Resources of DataOS in User Layer**
 
-    To validate assigned **use cases**, refer to the **Bifrost Application Use Cases** section.
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section.
 
     <Tabs>
       <Tab title="use case ">
@@ -338,26 +338,35 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Access Permissions in DataOS**
 
-    * **Tags:**
 
-      An operator must possess the following tags, which can be obtained from a DataOS administrator.
 
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
+
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
+
+    ```bash
+    dataos-ctl user get
     ```
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
-    ```
 
-    * **Use cases:**
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
 
-      A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
 
-      `data-dev`
+    * **Manage All Instance-level Resources of DataOS in User Layer**
 
-      tag to a developer instead of assigning a use case.
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -642,18 +651,35 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
 
-    ```
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
+
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
+
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
+
+    ```bash
+    dataos-ctl user get
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -673,9 +699,13 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Source System Configuration**
 
-    * **Event Hub Shared Access Key Name**: The name of the shared access key for the Azure Event Hub. You can retrieve this from the Azure Portal by navigating to your Event Hub namespace, selecting "Shared access policies," and locating the key name under the policy details.
+    * **Event Hub Shared Access Key Name**
 
-    * **Event Hub Shared Access Key**: The shared access key associated with the Event Hub shared access key name. You can retrieve this from the Azure Portal by navigating to your Event Hub namespace, selecting "Shared access policies," and copying the key value under the selected policy.
+      : The name of the shared access key for the Azure Event Hub. You can retrieve this from the Azure Portal by navigating to your Event Hub namespace, selecting "Shared access policies," and locating the key name under the policy details.
+
+    * **Event Hub Shared Access Key**
+
+      : The shared access key associated with the Event Hub shared access key name. You can retrieve this from the Azure Portal by navigating to your Event Hub namespace, selecting "Shared access policies," and copying the key value under the selected policy.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -736,11 +766,17 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     This section focuses on attributes specific to Eventhub Instance Secrets. It includes details like:
 
-    * `type`: Specifies the Instance Secret type (key-value-properties).
+    * `type`
 
-    * `acl`: Access control level (read-only or read-write).
+      : Specifies the Instance Secret type (key-value-properties).
 
-    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `acl`
+
+      : Access control level (read-only or read-write).
+
+    * `data`
+
+      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
     For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
@@ -901,18 +937,35 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
 
-    ```
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
+
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
+
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
+
+    ```bash
+    dataos-ctl user get
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -932,11 +985,37 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Source System Configuration**
 
-    * **Project ID for the Google Cloud Project**: The unique identifier of the Google Cloud project where your GCS bucket resides. You can retrieve this from the Google Cloud Console by navigating to your project dashboard and locating the **Project ID** under project information.
+    * **Project ID for the Google Cloud Project**
 
-    * **Email Address Associated with the Google Cloud Service Account**: The email address of the service account used to authenticate and access your GCS bucket. This can be found in the **IAM & Admin > Service Accounts** section of the Google Cloud Console by selecting the service account and viewing its details.
+      : The unique identifier of the Google Cloud project where your GCS bucket resides. You can retrieve this from the Google Cloud Console by navigating to your project dashboard and locating the 
 
-    * **JSON Key File for the Google Cloud Service Account**: The path to the JSON key file used to authenticate the service account. To obtain this, navigate to **IAM & Admin > Service Accounts** in the Google Cloud Console, select the relevant service account, click **Keys**, and download the JSON key file by selecting **Add Key > JSON**. Ensure the file is stored securely, and note its path.
+      **Project ID**
+
+       under project information.
+
+    * **Email Address Associated with the Google Cloud Service Account**
+
+      : The email address of the service account used to authenticate and access your GCS bucket. This can be found in the 
+
+      **IAM & Admin > Service Accounts**
+
+       section of the Google Cloud Console by selecting the service account and viewing its details.
+
+    * **JSON Key File for the Google Cloud Service Account**
+
+      : The path to the JSON key file used to authenticate the service account. To obtain this, navigate to 
+
+      **IAM & Admin > Service Accounts**
+
+       in the Google Cloud Console, select the relevant service account, click 
+
+      **Keys**
+
+      , and download the JSON key file by selecting 
+
+      **Add Key > JSON**
+
+      . Ensure the file is stored securely, and note its path.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -997,11 +1076,17 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     This section focuses on attributes specific to GCS Instance Secrets. It includes details like:
 
-    * `type`: Specifies the Instance Secret type (key-value-properties).
+    * `type`
 
-    * `acl`: Access control level (read-only or read-write).
+      : Specifies the Instance Secret type (key-value-properties).
 
-    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `acl`
+
+      : Access control level (read-only or read-write).
+
+    * `data`
+
+      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
     For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
@@ -1161,18 +1246,35 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+
+
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
+
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
 
     ```bash
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
+    dataos-ctl user get
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -1192,9 +1294,13 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Source System Configuration**
 
-    * **Username**: The JDBC username used to authenticate and access the database via JDBC. This can be obtained from the database administrator who manages user access.
+    * **Username**
 
-    * **Password**: The password associated with the JDBC username for authentication. This can be obtained from the database administrator, or if the password is already set, you will need to securely retrieve it.
+      : The JDBC username used to authenticate and access the database via JDBC. This can be obtained from the database administrator who manages user access.
+
+    * **Password**
+
+      : The password associated with the JDBC username for authentication. This can be obtained from the database administrator, or if the password is already set, you will need to securely retrieve it.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -1255,11 +1361,17 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     This section focuses on attributes specific to JDBC Instance Secrets. It includes details like:
 
-    * `type`: Specifies the Instance Secret type (key-value-properties).
+    * `type`
 
-    * `acl`: Access control level (read-only or read-write).
+      : Specifies the Instance Secret type (key-value-properties).
 
-    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `acl`
+
+      : Access control level (read-only or read-write).
+
+    * `data`
+
+      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
     For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
@@ -1419,18 +1531,35 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
 
-    ```
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
+
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
+
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
+
+    ```bash
+    dataos-ctl user get
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -1450,11 +1579,17 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Source System Configuration**
 
-    * **Username**: The MongoDB username used to authenticate and access your MongoDB database. This can be obtained from the MongoDB administrator who manages user access.
+    * **Username**
 
-    * **Password**: The password associated with the MongoDB username for authentication. This can be obtained from the MongoDB administrator, or if the password is already set, you will need to securely retrieve it.
+      : The MongoDB username used to authenticate and access your MongoDB database. This can be obtained from the MongoDB administrator who manages user access.
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+    * **Password**
+
+      : The password associated with the MongoDB username for authentication. This can be obtained from the MongoDB administrator, or if the password is already set, you will need to securely retrieve it.
+
+    * **Tags:**
+
+       An operator must possess the following tags, which can be obtained from a DataOS administrator.
 
     ```
             NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
@@ -1465,7 +1600,13 @@ If you want to store credentials for various data sources in an Instance Secret 
                      │             │        │                      │ users:id:iamgroot  
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance. Alternatively, the operator may assign the `data-dev` tag to the developer instead of the use case.
+    * **Use cases:**
+
+       A developer can create an Instance Secret only if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance. Alternatively, the operator may assign the 
+
+      `data-dev`
+
+       tag to the developer instead of the use case.
 
     <Tabs>
       <Tab title="use case ">
@@ -1541,11 +1682,17 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     This section focuses on attributes specific to MongoDB Instance Secrets. It includes details like:
 
-    * `type`: Specifies the Instance Secret type (key-value-properties).
+    * `type`
 
-    * `acl`: Access control level (read-only or read-write).
+      : Specifies the Instance Secret type (key-value-properties).
 
-    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `acl`
+
+      : Access control level (read-only or read-write).
+
+    * `data`
+
+      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
     For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
@@ -1705,18 +1852,35 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
 
-    ```
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
+
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
+
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
+
+    ```bash
+    dataos-ctl user get
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -1736,9 +1900,13 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Source System Configuration**
 
-    * **Username**: The MsSQL username used to authenticate and access your MsSQL database. You can retrieve this from the MsSQL database admin by asking them to provide the username for your account.
+    * **Username**
 
-    * **Password**: The password associated with the MsSQL username for authentication. You can obtain this from the MsSQL database admin, or if the password is already set, you will need to securely retrieve it.
+      : The MsSQL username used to authenticate and access your MsSQL database. You can retrieve this from the MsSQL database admin by asking them to provide the username for your account.
+
+    * **Password**
+
+      : The password associated with the MsSQL username for authentication. You can obtain this from the MsSQL database admin, or if the password is already set, you will need to securely retrieve it.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -1790,11 +1958,17 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     This section focuses on attributes specific to MSSQL Instance Secrets. It includes details like:
 
-    * `type`: Specifies the Instance Secret type (key-value-properties).
+    * `type`
 
-    * `acl`: Access control level (read-only or read-write).
+      : Specifies the Instance Secret type (key-value-properties).
 
-    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `acl`
+
+      : Access control level (read-only or read-write).
+
+    * `data`
+
+      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
     For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
@@ -1954,18 +2128,35 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
 
-    ```
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
+
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
+
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
+
+    ```bash
+    dataos-ctl user get
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -1985,9 +2176,13 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Source System Configuration**
 
-    * **Username**: The MySQL username used to authenticate and access your MySQL database. This can be obtained from the database admin who manages user access.
+    * **Username**
 
-    * **Password**: The password associated with the MySQL username for authentication. This is typically set when the user account is created and must be provided by the MySQL admin or securely retrieved if forgotten.
+      : The MySQL username used to authenticate and access your MySQL database. This can be obtained from the database admin who manages user access.
+
+    * **Password**
+
+      : The password associated with the MySQL username for authentication. This is typically set when the user account is created and must be provided by the MySQL admin or securely retrieved if forgotten.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -2043,11 +2238,17 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     This section focuses on attributes specific to MySQL Instance Secrets. It includes details like:
 
-    * `type`: Specifies the Instance Secret type (key-value-properties).
+    * `type`
 
-    * `acl`: Access control level (read-only or read-write).
+      : Specifies the Instance Secret type (key-value-properties).
 
-    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `acl`
+
+      : Access control level (read-only or read-write).
+
+    * `data`
+
+      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
     For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
@@ -2207,18 +2408,35 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
 
-    ```
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
+
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
+
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
+
+    ```bash
+    dataos-ctl user get
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -2238,9 +2456,13 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Source System Configuration**
 
-    * **Username**: The Oracle username used to authenticate and access your Oracle database. This can be obtained from the database administrator who manages user access.
+    * **Username**
 
-    * **Password**: The password associated with the Oracle username for authentication. This can be obtained from the database administrator, or if the password is already set, you will need to securely retrieve it.
+      : The Oracle username used to authenticate and access your Oracle database. This can be obtained from the database administrator who manages user access.
+
+    * **Password**
+
+      : The password associated with the Oracle username for authentication. This can be obtained from the database administrator, or if the password is already set, you will need to securely retrieve it.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -2296,11 +2518,17 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     This section focuses on attributes specific to GCS Instance Secrets. It includes details like:
 
-    * `type`: Specifies the Instance Secret type (key-value-properties).
+    * `type`
 
-    * `acl`: Access control level (read-only or read-write).
+      : Specifies the Instance Secret type (key-value-properties).
 
-    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `acl`
+
+      : Access control level (read-only or read-write).
+
+    * `data`
+
+      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
     For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
@@ -2460,18 +2688,35 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+
+
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
+
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
 
     ```bash
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
+    dataos-ctl user get
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -2491,9 +2736,13 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Source System Configuration**
 
-    * **Username**: The PostgreSQL username used to authenticate and access your PostgreSQL database. This can be obtained from the PostgreSQL administrator who manages user access.
+    * **Username**
 
-    * **Password**: The password associated with the PostgreSQL username for authentication. This can be obtained from the PostgreSQL administrator, or if the password is already set, you will need to securely retrieve it.
+      : The PostgreSQL username used to authenticate and access your PostgreSQL database. This can be obtained from the PostgreSQL administrator who manages user access.
+
+    * **Password**
+
+      : The password associated with the PostgreSQL username for authentication. This can be obtained from the PostgreSQL administrator, or if the password is already set, you will need to securely retrieve it.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -2550,11 +2799,17 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     This section focuses on attributes specific to Postgres Instance Secrets. It includes details like:
 
-    * `type`: Specifies the Instance Secret type (key-value-properties).
+    * `type`
 
-    * `acl`: Access control level (read-only or read-write).
+      : Specifies the Instance Secret type (key-value-properties).
 
-    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `acl`
+
+      : Access control level (read-only or read-write).
+
+    * `data`
+
+      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
     For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
@@ -2714,18 +2969,35 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+
+
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
+
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
 
     ```bash
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
+    dataos-ctl user get
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -2745,13 +3017,21 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Source System Configuration**
 
-    * **Username**: The Redshift username used to authenticate and access your Redshift cluster. This can be obtained from the Redshift admin who manages user access.
+    * **Username**
 
-    * **Password**: The password associated with the Redshift username for authentication. This is typically set when the user account is created and must be provided by the Redshift admin or securely retrieved if forgotten.
+      : The Redshift username used to authenticate and access your Redshift cluster. This can be obtained from the Redshift admin who manages user access.
 
-    * **AWS Access Key ID**: The Access Key ID for your AWS account, which is used to authenticate API requests. You can obtain this from the AWS IAM (Identity and Access Management) console under your user’s security credentials section.
+    * **Password**
 
-    * **AWS Secret Access Key**: The Secret Access Key associated with your AWS Access Key ID, used for secure API requests. This can also be obtained from the AWS IAM console, under your user’s security credentials section. Ensure the secret key is securely stored and kept private.
+      : The password associated with the Redshift username for authentication. This is typically set when the user account is created and must be provided by the Redshift admin or securely retrieved if forgotten.
+
+    * **AWS Access Key ID**
+
+      : The Access Key ID for your AWS account, which is used to authenticate API requests. You can obtain this from the AWS IAM (Identity and Access Management) console under your user’s security credentials section.
+
+    * **AWS Secret Access Key**
+
+      : The Secret Access Key associated with your AWS Access Key ID, used for secure API requests. This can also be obtained from the AWS IAM console, under your user’s security credentials section. Ensure the secret key is securely stored and kept private.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -2807,11 +3087,17 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     This section focuses on attributes specific to Redshift Instance Secrets. It includes details like:
 
-    * `type`: Specifies the Instance Secret type (key-value-properties).
+    * `type`
 
-    * `acl`: Access control level (read-only or read-write).
+      : Specifies the Instance Secret type (key-value-properties).
 
-    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `acl`
+
+      : Access control level (read-only or read-write).
+
+    * `data`
+
+      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
     For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
@@ -3234,18 +3520,35 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+
+
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
+
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
 
     ```bash
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
+    dataos-ctl user get
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -3265,9 +3568,13 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Source System Configuration**
 
-    * **Username**: The Snowflake username used to authenticate to the Snowflake account. This can be obtained from your Snowflake administrator or found in your Snowflake account settings.
+    * **Username**
 
-    * **Password**: The password associated with the Snowflake username for authentication. If you do not have the password, you will need to reset it via the Snowflake web interface or contact your Snowflake administrator to obtain it.
+      : The Snowflake username used to authenticate to the Snowflake account. This can be obtained from your Snowflake administrator or found in your Snowflake account settings.
+
+    * **Password**
+
+      : The password associated with the Snowflake username for authentication. If you do not have the password, you will need to reset it via the Snowflake web interface or contact your Snowflake administrator to obtain it.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -3324,11 +3631,17 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     This section focuses on attributes specific to Snowflake Instance Secrets. It includes details like:
 
-    * `type`: Specifies the Instance Secret type (key-value-properties).
+    * `type`
 
-    * `acl`: Access control level (read-only or read-write).
+      : Specifies the Instance Secret type (key-value-properties).
 
-    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `acl`
+
+      : Access control level (read-only or read-write).
+
+    * `data`
+
+      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
     For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
@@ -3487,18 +3800,35 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+
+
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
+
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
 
     ```bash
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
+    dataos-ctl user get
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -3518,11 +3848,33 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Source System Configuration**
 
-    * **Azure Endpoint Suffix**: The endpoint suffix for the Azure Storage account. This is typically region-specific and can be found in the Azure Portal under the **Properties** section of your storage account.
+    * **Azure Endpoint Suffix**
 
-    * **Azure Storage Account Key**: The access key for the Azure Storage account, used for authentication. You can retrieve this from the Azure Portal by navigating to your storage account, selecting **Access keys** under the **Security + networking** section, and copying the key.
+      : The endpoint suffix for the Azure Storage account. This is typically region-specific and can be found in the Azure Portal under the 
 
-    * **Azure Storage Account Name**: The name of the Azure Storage account used to identify it within your subscription. This can be found in the Azure Portal under the **Overview** section of your storage account.
+      **Properties**
+
+       section of your storage account.
+
+    * **Azure Storage Account Key**
+
+      : The access key for the Azure Storage account, used for authentication. You can retrieve this from the Azure Portal by navigating to your storage account, selecting 
+
+      **Access keys**
+
+       under the 
+
+      **Security + networking**
+
+       section, and copying the key.
+
+    * **Azure Storage Account Name**
+
+      : The name of the Azure Storage account used to identify it within your subscription. This can be found in the Azure Portal under the 
+
+      **Overview**
+
+       section of your storage account.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -3576,11 +3928,17 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     This section focuses on attributes specific to WASBS Instance Secrets. It includes details like:
 
-    * `type`: Specifies the Instance Secret type (key-value-properties).
+    * `type`
 
-    * `acl`: Access control level (read-only or read-write).
+      : Specifies the Instance Secret type (key-value-properties).
 
-    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `acl`
+
+      : Access control level (read-only or read-write).
+
+    * `data`
+
+      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
     For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
@@ -3739,18 +4097,35 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+
+
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
+
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
 
     ```bash
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
+    dataos-ctl user get
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -3770,9 +4145,13 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Source System Configuration**
 
-    * **Username:** The OpenSearch username used to authenticate access to the OpenSearch instance. This is typically a user-specific or role-based identifier.&#x20;
+    * **Username:**
 
-    * **Password:** The OpenSearch password corresponding to the username for authentication. You can retrieve it from your OpenSearch configuration or admin settings, depending on how the instance credentials are managed in your organization.
+       The OpenSearch username used to authenticate access to the OpenSearch instance. This is typically a user-specific or role-based identifier. 
+
+    * **Password:**
+
+       The OpenSearch password corresponding to the username for authentication. You can retrieve it from your OpenSearch configuration or admin settings, depending on how the instance credentials are managed in your organization.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -3824,11 +4203,17 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     This section focuses on attributes specific to OpenSearch Instance Secrets. It includes details like:
 
-    * `type`: Specifies the Instance Secret type (key-value-properties).
+    * `type`
 
-    * `acl`: Access control level (read-only or read-write).
+      : Specifies the Instance Secret type (key-value-properties).
 
-    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `acl`
+
+      : Access control level (read-only or read-write).
+
+    * `data`
+
+      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
     For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
@@ -3987,18 +4372,35 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+
+
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
+
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
 
     ```bash
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
+    dataos-ctl user get
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -4018,9 +4420,13 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Source System Configuration**
 
-    * **Username:** The Elasticsearch username used to authenticate access to the Elasticsearch instance. This is typically a user-specific or role-based identifier that grants the necessary permissions for accessing resources.
+    * **Username:**
 
-    * **Password:** The Elasticsearch password corresponding to the username for authentication. This password ensures secure access to the Elasticsearch instance and can be obtained from your Elasticsearch configuration or admin settings, depending on how credentials are managed within your organization.
+       The Elasticsearch username used to authenticate access to the Elasticsearch instance. This is typically a user-specific or role-based identifier that grants the necessary permissions for accessing resources.
+
+    * **Password:**
+
+       The Elasticsearch password corresponding to the username for authentication. This password ensures secure access to the Elasticsearch instance and can be obtained from your Elasticsearch configuration or admin settings, depending on how credentials are managed within your organization.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -4072,11 +4478,17 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     This section focuses on attributes specific to Elasticsearch Instance Secrets. It includes details like:
 
-    * `type`: Specifies the Instance Secret type (key-value-properties).
+    * `type`
 
-    * `acl`: Access control level (read-only or read-write).
+      : Specifies the Instance Secret type (key-value-properties).
 
-    * `data`: Contains sensitive information such as Elasticsearch username and password.
+    * `acl`
+
+      : Access control level (read-only or read-write).
+
+    * `data`
+
+      : Contains sensitive information such as Elasticsearch username and password.
 
     For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
@@ -4247,18 +4659,35 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+
+
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
+
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
 
     ```bash
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
+    dataos-ctl user get
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -4278,11 +4707,37 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     **Source System Configuration**
 
-    * **Project ID**: The project ID used to identify your Google Cloud project. You can retrieve this from the Google Cloud Console by navigating to the project dashboard and locating the **Project ID** under project information.
+    * **Project ID**
 
-    * **Email ID**: The email address associated with the service account used to access repository. This can be found in the **IAM & Admin > Service Accounts** section of the Google Cloud Console by selecting the relevant service account and viewing its details.
+      : The project ID used to identify your Google Cloud project. You can retrieve this from the Google Cloud Console by navigating to the project dashboard and locating the 
 
-    * **JSON Key File**: The path to the JSON key file for the service account, used for authentication. To obtain this, go to **IAM & Admin > Service Accounts** in the Google Cloud Console, select the service account, click **Keys**, and download the JSON key file by selecting **Add Key > JSON**. Ensure the file is securely stored and note its path.
+      **Project ID**
+
+       under project information.
+
+    * **Email ID**
+
+      : The email address associated with the service account used to access repository. This can be found in the 
+
+      **IAM & Admin > Service Accounts**
+
+       section of the Google Cloud Console by selecting the relevant service account and viewing its details.
+
+    * **JSON Key File**
+
+      : The path to the JSON key file for the service account, used for authentication. To obtain this, go to 
+
+      **IAM & Admin > Service Accounts**
+
+       in the Google Cloud Console, select the service account, click 
+
+      **Keys**
+
+      , and download the JSON key file by selecting 
+
+      **Add Key > JSON**
+
+      . Ensure the file is securely stored and note its path.
 
     To create a AWS CodeCommit Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
 
@@ -4333,11 +4788,17 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     This section focuses on attributes specific to AWS CodeCommit Instance Secrets. It includes details like:
 
-    * `type`: Specifies the Instance Secret type (key-value-properties).
+    * `type`
 
-    * `acl`: Access control level (read-only or read-write).
+      : Specifies the Instance Secret type (key-value-properties).
 
-    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `acl`
+
+      : Access control level (read-only or read-write).
+
+    * `data`
+
+      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
     For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
@@ -4377,18 +4838,35 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+
+
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
+
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
 
     ```bash
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
+    dataos-ctl user get
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -4408,9 +4886,13 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     **Source System Configuration**
 
-    * **GITSYNC\_USERNAME**: This represents the Bitbucket username required for authentication.
+    * **GITSYNC_USERNAME**
 
-    * **GITSYNC\_PASSWORD**: This is the corresponding password or an app password used for authentication.
+      : This represents the Bitbucket username required for authentication.
+
+    * **GITSYNC_PASSWORD**
+
+      : This is the corresponding password or an app password used for authentication.
       These credentials can be obtained from the Bitbucket account settings or provided by an administrator.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process. Follow the steps below to complete the creation process efficiently and securely.
@@ -4457,11 +4939,17 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     This section focuses on attributes specific to Bitbucket repository Instance Secrets. It includes details like:
 
-    * `type`: Specifies the Instance Secret type (key-value-properties).
+    * `type`
 
-    * `acl`: Access control level (read-only or read-write).
+      : Specifies the Instance Secret type (key-value-properties).
 
-    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `acl`
+
+      : Access control level (read-only or read-write).
+
+    * `data`
+
+      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
     For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
@@ -4501,18 +4989,35 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     **Access Permissions in DataOS**
 
-    * **Tags:** An operator must possess the following tags, which can be obtained from a DataOS administrator.
+
+
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
+
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
 
     ```bash
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
+    dataos-ctl user get
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
     <Tabs>
       <Tab title="use case ">
@@ -4532,9 +5037,13 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     **Source System Configuration**
 
-    * **GITSYNC\_USERNAME**: This represents the Git username required for authentication.
+    * **GITSYNC_USERNAME**
 
-    * **GITSYNC\_PASSWORD**: This is the corresponding password used for authentication.
+      : This represents the Git username required for authentication.
+
+    * **GITSYNC_PASSWORD**
+
+      : This is the corresponding password used for authentication.
       These credentials can be obtained from the Bitbucket account settings or provided by an administrator.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process. Follow the steps below to complete the creation process efficiently and securely.
@@ -4581,11 +5090,17 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     This section focuses on attributes specific to Git repository Instance Secret. It includes details like:
 
-    * `type`: Specifies the Instance Secret type (key-value-properties).
+    * `type`
 
-    * `acl`: Access control level (read-only or read-write).
+      : Specifies the Instance Secret type (key-value-properties).
 
-    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `acl`
+
+      : Access control level (read-only or read-write).
+
+    * `data`
+
+      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
     For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
