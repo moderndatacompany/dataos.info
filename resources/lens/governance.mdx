@@ -4,11 +4,21 @@ sidebarTitle: "Governance"
 description: "An operator or administrator of an organization can govern or control access to who can create, read, update, or delete the Lens by assigning roles or use cases via Bifrost."
 ---
 
-## Controlling Access to Lens and Its Semantic Model  
+## Controlling Access to Lens and its Semantic Model  
+
+
+Data governance in DataOS is structured across three layers to protect and control sensitive information:
+
+* **Physical data layer:** Governance policies are applied directly at the physical data layer, where the data resides in sources such as BigQuery, Postgres, Snowflake, or other data storage platforms. These policies enforce data protection at the source, controlling access and masking sensitive information before it is processed or exposed further. To know about how to govern the Lens click [here](/resources/lens/governance/).
+
+* **Model-first Data Product layer:** At this layer, governance policies are applied to the semantic model (Lens) derived from the underlying source tables. To manage access effectively [user groups](/resources/lens/working_with_user_groups/) define different levels of exploration permissions within Lens.
+
+* **Activation layer:** Governance at the activation layer focuses on enforcing data protection within the Business Intelligence (BI) tool. This ensures that sensitive data remains masked or restricted based on user roles when presented through dashboards or reports, controlling how the data is accessed and displayed in the final interface.
+
 
 Permissions for reading, creating, updating, or deleting Lens and accessing its semantic model can be granted either by assigning a role or a use case.  
 
-### Access via Use Cases  
+### Access via use-cases  
 
 The following use cases are required:  
 
@@ -26,7 +36,7 @@ The name and permission levels of roles and use cases may vary across organizati
 </Note>  
 
 
-## Granting a Use Case to a User  
+## Granting a use-case to a user  
 
 <Steps>  
 

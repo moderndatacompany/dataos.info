@@ -2731,27 +2731,15 @@ The Lens can be configured to connect to different sources using data source att
 
 ## Observability
 
-Monitoring in Lens operates at three levels, each focusing on different aspects of system performance and reliability.
-
-1. **Metric monitoring:** A Lens Resource can be monitored using Monitor and Pager Resources. To create a Monitor and Pager on Lens, click [here](https://dataosinfo.mintlify.app/resources/lens/observability).
-
-2. **Operational monitoring:** Operational monitoring can be done through the Operations App and CLI, providing visibility into the state and behavior of Lens Resources, enabling workload performance tracking, historical runtime analysis, and troubleshooting. To know how to do operational monitoring of Lens click here
-
-3. **Infrastructure monitoring:** Infrastructure powered by Grafana, focuses on the underlying system infrastructure, tracking server health, memory usage, and overall system stability.
+Click [here](/resources/lens/observability/) to learn how to observe and monitor Lens.
 
 ## Governance
 
-Data governance in DataOS is structured across three layers to protect and control sensitive information:
-
-* **Physical data layer:** Governance policies are applied directly at the physical data layer, where the data resides in sources such as BigQuery, Postgres, Snowflake, or other data storage platforms. These policies enforce data protection at the source, controlling access and masking sensitive information before it is processed or exposed further. To know about how to govern the Lens click here.
-
-* **Model-first Data Product layer:** At this layer, governance policies are applied to the semantic model (Lens) derived from the underlying source tables. To manage access effectively [user groups](/resources/lens/working_with_user_groups/) define different levels of exploration permissions within Lens.
-
-* **Activation layer:** Governance at the activation layer focuses on enforcing data protection within the Business Intelligence (BI) tool. This ensures that sensitive data remains masked or restricted based on user roles when presented through dashboards or reports, controlling how the data is accessed and displayed in the final interface.
+Click [here](/resources/lens/governance/) to learn how data governance in DataOS is structured across three layers
 
 ## Cataloging
 
-The metadata of a semantic model or Lens Resource is cataloged in Metis, which stores historical runtime and operations data in the Metis DB. This cataloging provides an aggregated view of metadata, enabling access to historical and operational insights about Resources. To learn more about cataloging semantic models and Lens Resource click [here](/resources/lens/cataloging.mdx).
+Click [here](/resources/lens/cataloging/) to learn about how the metadata of a semantic model or Lens Resource is cataloged.
 
 ## Best practices
 
