@@ -15,13 +15,9 @@ To prevent such incidents, this guide introduces you to the tools in DataOS for 
 
 In DataOS, credentials such as API tokens, database passwords, and certificates are protected using two key DataOS Resources:
 
-1. **Instance Secrets**
+1. **Instance Secrets**: A DataOS Resource accessible instance-wide. These secrets are ideal for credentials accessed by Resources in multiple Workspaces like code repository credentials or Instance-level Resources such as Depots.
 
-   : A DataOS Resource accessible instance-wide. These secrets are ideal for credentials accessed by Resources in multiple Workspaces like code repository credentials or Instance-level Resources such as Depots.
-
-2. **Secrets**
-
-   : A Workspace-level DataOS Resource storing credentials with access restricted to specific Workspace Resources for targeted security. These are ideal when you want to reference secrets in Workspace-level Resources such as Workflows, Workers, Services, etc.
+2. **Secrets**: A Workspace-level DataOS Resource storing credentials with access restricted to specific Workspace Resources for targeted security. These are ideal when you want to reference secrets in Workspace-level Resources such as Workflows, Workers, Services, etc.
 
 They help you to:
 
@@ -37,15 +33,7 @@ Suppose, you want to secure credentials for a new Postgres Depot and store them 
 
 1. **Identify the sensitive data**
 
-   : Gather the credentials needed for the Postgres Depot, including 
-
-   `$POSTGRES_USERNAME`
-
-    and 
-
-   `$POSTGRES_PASSWORD`
-
-   .
+   : Gather the credentials needed for the Postgres Depot, including `$POSTGRES_USERNAME` and `$POSTGRES_PASSWORD`.
 
 2. **Draft the manifest structure**
 
