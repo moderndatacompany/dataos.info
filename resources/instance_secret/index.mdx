@@ -5,9 +5,9 @@ sidebarTitle: "Overview"
 title: "Overview"
 ---
 
-The primary purpose of an Instance Secret is to address the inherent exposure risk associated with directly embedding such confidential data within application code or manifest files (YAML configuration files). This includes usernames, passwords, certificates, tokens, and keys. Instance Secrets establish a critical segregation between sensitive data and Resource definitions. This division minimizes inadvertent exposure during various Resource management phases, including creation, viewing, or editing.&#x20;
+The primary purpose of an Instance Secret is to address the inherent exposure risk associated with directly embedding such confidential data within application code or manifest files (YAML configuration files). This includes usernames, passwords, certificates, tokens, and keys. Instance Secrets establish a critical segregation between sensitive data and Resource definitions. This division minimizes inadvertent exposure during various Resource management phases, including creation, viewing, or editing.
 
-DataOS Operators are generally responsible for creating and managing Instance Secrets for various sources within an organization. They exercise precise control over who can retrieve credentials. If any Data Product developer in the organization needs access to Instance Secrets, they can assign them relevant permission using the Bifrost application.&#x20;
+DataOS Operators are generally responsible for creating and managing Instance Secrets for various sources within an organization. They exercise precise control over who can retrieve credentials. If any Data Product developer in the organization needs access to Instance Secrets, they can assign them relevant permission using the Bifrost application.
 
 <Tip>
   **Instance Secret in the Data Product Lifecycle**
@@ -24,7 +24,7 @@ DataOS Operators are generally responsible for creating and managing Instance Se
 </Tip>
 
 <Info>
-  In the DataOS ecosystem, there are two specialized Resources designed to protect sensitive information: Instance Secret and [Secret](https://dataos.info/resources/secret/). The Instance Secret offers a wider scope, extending across the entirety of the [DataOS Instance](https://dataos.info/resources/types_of_dataos_resources/#instance-level-resources). Resources within any Workspace can utilize Instance Secrets for securely retrieving sensitive data. In contrast, Secrets are limited to the [Workspace level](https://dataos.info/resources/types_of_dataos_resources/#workspace-level-resources), accessible exclusively within a specific Workspace and only by Resources associated with that Workspace.
+  In the DataOS ecosystem, there are two specialized Resources designed to protect sensitive information: Instance Secret and [Secret](https://dataos.info/resources/secret/). The Instance Secret offers a wider scope, extending across the entirety of the \[DataOS Instance]\(https://dataos.info/resources/types\_of\_dataos\_resources/#Instance level-resources). Resources within any Workspace can utilize Instance Secrets for securely retrieving sensitive data. In contrast, Secrets are limited to the [Workspace level](https://dataos.info/resources/types_of_dataos_resources/#workspace-level-resources), accessible exclusively within a specific Workspace and only by Resources associated with that Workspace.
 </Info>
 
 ## Structure of an Instance Secret manifest
@@ -71,7 +71,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     Alternatively, if access is managed through **use cases**, ensure the following use case is assigned:
 
-    * **Manage All Instance-Level Resources of DataOS in User Layer**
+    * **Manage All Instance level Resources of DataOS in User Layer**
 
     To validate assigned **use cases**, refer to the **Bifrost Application Use Cases** section.
 
@@ -93,33 +93,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Source System Configuration**
 
-    * **Azure Endpoint Suffix:**
+    * **Azure Endpoint Suffix:** The endpoint suffix for the Azure Storage account. This is typically region-specific and can be found in the Azure Portal under the Properties section of your storage account.
 
-        The endpoint suffix for the Azure Storage account. This is typically region-specific and can be found in the Azure Portal under the 
+    * **Azure Storage Account Key:** The access key for the Azure Storage account, used for authentication. You can retrieve this from the Azure Portal by navigating to your storage account, selecting Access keys under the Security + networking section, and copying the key.
 
-      **Properties**
-
-       
-
-      section of your storage account.
-
-    * **Azure Storage Account Key:**
-
-        
-
-      The access key for the Azure Storage account, used for authentication. You can retrieve this from the Azure Portal by navigating to your storage account, selecting Access keys under the Security + networking section, and copying the key.
-
-    * **Azure Storage Account Name:**
-
-        
-
-      The name of the Azure Storage account used to identify it within your subscription. This can be found in the Azure Portal under the Overview
-
-      ****
-
-       
-
-      section of your storage account.
+    * **Azure Storage Account Name:** The name of the Azure Storage account used to identify it within your subscription. This can be found in the Azure Portal under the Overview section of your storage account.
 
     Ensure that you have these details ready before proceeding with the Instance Secret creation process.
 
@@ -197,7 +175,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Step 2: Apply the manifest
 
-    To create the ABFSS Instance Secret within DataOS, use the `apply` command. Since ABFSS Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the ABFSS Instance Secret within DataOS, use the `apply` command. Since ABFSS Instance Secrets are Instance level resources, do not specify a workspace while applying the manifest.&#x20;
 
     <CodeGroup>
       ```bash Command
@@ -367,7 +345,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * **Use cases:**
 
-      A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the
+      A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the
 
       `data-dev`
 
@@ -502,7 +480,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Step 2: Apply the manifest
 
-    To create the Bigquery Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the Bigquery Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance level resources, do not specify a workspace while applying the manifest.&#x20;
 
     <CodeGroup>
       ```bash Command
@@ -667,7 +645,7 @@ If you want to store credentials for various data sources in an Instance Secret 
                      │             │        │                      │ users:id:iamgroot  
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
 
     <Tabs>
       <Tab title="use case ">
@@ -760,7 +738,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Step 2: Apply the manifest
 
-    To create the Eventhub Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the Eventhub Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance level resources, do not specify a workspace while applying the manifest.&#x20;
 
     <CodeGroup>
       ```bash Command
@@ -926,7 +904,7 @@ If you want to store credentials for various data sources in an Instance Secret 
                      │             │        │                      │ users:id:iamgroot  
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
 
     <Tabs>
       <Tab title="use case ">
@@ -1021,7 +999,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Step 2: Apply the manifest
 
-    To create the GCS Instance Secret within DataOS, use the `apply` command. Since GCS Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the GCS Instance Secret within DataOS, use the `apply` command. Since GCS Instance Secrets are Instance level resources, do not specify a workspace while applying the manifest.&#x20;
 
     <CodeGroup>
       ```bash Command
@@ -1186,7 +1164,7 @@ If you want to store credentials for various data sources in an Instance Secret 
                      │             │        │                      │ users:id:iamgroot  
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
 
     <Tabs>
       <Tab title="use case ">
@@ -1279,7 +1257,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Step 2: Apply the manifest
 
-    To create the JDBC Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the JDBC Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance level resources, do not specify a workspace while applying the manifest.&#x20;
 
     <CodeGroup>
       ```bash Command
@@ -1444,7 +1422,7 @@ If you want to store credentials for various data sources in an Instance Secret 
                      │             │        │                      │ users:id:iamgroot  
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
 
     <Tabs>
       <Tab title="use case ">
@@ -1479,7 +1457,7 @@ If you want to store credentials for various data sources in an Instance Secret 
                      │             │        │                      │ users:id:iamgroot  
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance. Alternatively, the operator may assign the `data-dev` tag to the developer instead of the use case.
+    * **Use cases:** A developer can create an Instance Secret only if an operator grants them the "Manage All Instance level Resources of DataOS in the user layer" use case through Bifrost Governance. Alternatively, the operator may assign the `data-dev` tag to the developer instead of the use case.
 
     <Tabs>
       <Tab title="use case ">
@@ -1565,7 +1543,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Step 2: Apply the manifest
 
-    To create the MongoDB Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the MongoDB Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance level resources, do not specify a workspace while applying the manifest.&#x20;
 
     <CodeGroup>
       ```bash Command
@@ -1730,7 +1708,7 @@ If you want to store credentials for various data sources in an Instance Secret 
                      │             │        │                      │ users:id:iamgroot  
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
 
     <Tabs>
       <Tab title="use case ">
@@ -1814,7 +1792,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Step 2: Apply the manifest
 
-    To create the MSSQL Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the MSSQL Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance level resources, do not specify a workspace while applying the manifest.&#x20;
 
     <CodeGroup>
       ```bash Command
@@ -1979,7 +1957,7 @@ If you want to store credentials for various data sources in an Instance Secret 
                      │             │        │                      │ users:id:iamgroot  
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
 
     <Tabs>
       <Tab title="use case ">
@@ -2067,7 +2045,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Step 2: Apply the manifest
 
-    To create the MySQL Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the MySQL Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance level resources, do not specify a workspace while applying the manifest.&#x20;
 
     <CodeGroup>
       ```bash Command
@@ -2232,7 +2210,7 @@ If you want to store credentials for various data sources in an Instance Secret 
                      │             │        │                      │ users:id:iamgroot  
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
 
     <Tabs>
       <Tab title="use case ">
@@ -2320,7 +2298,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Step 2: Apply the manifest
 
-    To create an Oracle Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create an Oracle Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance level resources, do not specify a workspace while applying the manifest.&#x20;
 
     <CodeGroup>
       ```bash Command
@@ -2485,7 +2463,7 @@ If you want to store credentials for various data sources in an Instance Secret 
                      │             │        │                      │ users:id:iamgroot  
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
 
     <Tabs>
       <Tab title="use case ">
@@ -2574,7 +2552,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Step 2: Apply the manifest
 
-    To create the Postgres Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the Postgres Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance level resources, do not specify a workspace while applying the manifest.&#x20;
 
     <CodeGroup>
       ```bash Command
@@ -2739,7 +2717,7 @@ If you want to store credentials for various data sources in an Instance Secret 
                      │             │        │                      │ users:id:iamgroot  
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
 
     <Tabs>
       <Tab title="use case ">
@@ -2831,7 +2809,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Step 2: Apply the manifest
 
-    To create the Redshift Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the Redshift Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance level resources, do not specify a workspace while applying the manifest.&#x20;
 
     <CodeGroup>
       ```bash Command
@@ -2997,7 +2975,7 @@ If you want to store credentials for various data sources in an Instance Secret 
                      │             │        │                      │ users:id:iamgroot  
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
 
     <Tabs>
       <Tab title="use case ">
@@ -3093,7 +3071,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Step 2: Apply the manifest
 
-    To create the S3 Instance Secret within DataOS, use the `apply` command. Since S3 Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the S3 Instance Secret within DataOS, use the `apply` command. Since S3 Instance Secrets are Instance level resources, do not specify a workspace while applying the manifest.&#x20;
 
     <CodeGroup>
       ```bash Command
@@ -3259,7 +3237,7 @@ If you want to store credentials for various data sources in an Instance Secret 
                      │             │        │                      │ users:id:iamgroot  
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
 
     <Tabs>
       <Tab title="use case ">
@@ -3348,7 +3326,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Step 2: Apply the manifest
 
-    To create the Snowflake Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the Snowflake Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance level resources, do not specify a workspace while applying the manifest.&#x20;
 
     <CodeGroup>
       ```bash Command
@@ -3512,7 +3490,7 @@ If you want to store credentials for various data sources in an Instance Secret 
                      │             │        │                      │ users:id:iamgroot  
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
 
     <Tabs>
       <Tab title="use case ">
@@ -3600,7 +3578,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Step 2: Apply the manifest
 
-    To create the WASBS Instance Secret within DataOS, use the `apply` command. Since these Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.
+    To create the WASBS Instance Secret within DataOS, use the `apply` command. Since these Instance Secrets are Instance level resources, do not specify a workspace while applying the manifest.
 
     <CodeGroup>
       ```bash Command
@@ -3764,7 +3742,7 @@ If you want to store credentials for various data sources in an Instance Secret 
                      │             │        │                      │ users:id:iamgroot  
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
 
     <Tabs>
       <Tab title="use case ">
@@ -3848,7 +3826,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Step 2: Apply the manifest
 
-    To create the OpenSearch Instance Secret within DataOS, use the `apply` command. Since these Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.
+    To create the OpenSearch Instance Secret within DataOS, use the `apply` command. Since these Instance Secrets are Instance level resources, do not specify a workspace while applying the manifest.
 
     <CodeGroup>
       ```bash Command
@@ -4012,7 +3990,7 @@ If you want to store credentials for various data sources in an Instance Secret 
                      │             │        │                      │ users:id:iamgroot  
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
 
     <Tabs>
       <Tab title="use case ">
@@ -4096,7 +4074,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Step 2: Apply the manifest
 
-    To create the Elasticsearch Instance Secret within DataOS, use the `apply` command. Since these Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.
+    To create the Elasticsearch Instance Secret within DataOS, use the `apply` command. Since these Instance Secrets are Instance level resources, do not specify a workspace while applying the manifest.
 
     <CodeGroup>
       ```bash Command
@@ -4272,7 +4250,7 @@ If you want to store credentials for hosted code repositories in an Instance Sec
                      │             │        │                      │ users:id:iamgroot  
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
 
     <Tabs>
       <Tab title="use case ">
@@ -4357,7 +4335,7 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     ### Step 2: Apply the manifest
 
-    To create the AWS CodeCommit Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the AWS CodeCommit Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance level resources, do not specify a workspace while applying the manifest.&#x20;
 
     <CodeGroup>
       ```bash Command
@@ -4402,7 +4380,7 @@ If you want to store credentials for hosted code repositories in an Instance Sec
                      │             │        │                      │ users:id:iamgroot  
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
 
     <Tabs>
       <Tab title="use case ">
@@ -4481,7 +4459,7 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     ### Step 2: Apply the manifest
 
-    To create the Bitbucket repository Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the Bitbucket repository Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance level resources, do not specify a workspace while applying the manifest.&#x20;
 
     <CodeGroup>
       ```bash Command
@@ -4526,7 +4504,7 @@ If you want to store credentials for hosted code repositories in an Instance Sec
                      │             │        │                      │ users:id:iamgroot  
     ```
 
-    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance-level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
+    * **Use cases:** A developer can create an Instance Secret only if an operator assigns them the "Manage All Instance level Resources of DataOS in the user layer" use case using Bifrost Governance. Alternatively an operator can assign the `data-dev` tag to a developer instead of assigning a use case.
 
     <Tabs>
       <Tab title="use case ">
@@ -4605,7 +4583,7 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     ### Step 2: Apply the manifest
 
-    To create the Git repository Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are instance-level resources, do not specify a workspace while applying the manifest.&#x20;
+    To create the Git repository Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance level resources, do not specify a workspace while applying the manifest.&#x20;
 
     <CodeGroup>
       ```bash Command
