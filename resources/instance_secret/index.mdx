@@ -97,13 +97,19 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * **Azure Endpoint Suffix:**
 
+       
+
       The endpoint suffix for the Azure Storage account. This is typically region-specific and can be found in the Azure Portal under the Properties section of your storage account.
 
     * **Azure Storage Account Key:**
 
+       
+
       The access key for the Azure Storage account, used for authentication. You can retrieve this from the Azure Portal by navigating to your storage account, selecting Access keys under the Security + networking section, and copying the key.
 
     * **Azure Storage Account Name:**
+
+       
 
       The name of the Azure Storage account used to identify it within your subscription. This can be found in the Azure Portal under the Overview section of your storage account.
 
@@ -394,37 +400,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Source System Configuration**
 
-    * **Project ID**
+    * **Project ID**: The BigQuery project ID used to identify your Google Cloud project. You can retrieve this from the Google Cloud Console by navigating to the project dashboard and locating the Project ID under project information.
 
-      : The BigQuery project ID used to identify your Google Cloud project. You can retrieve this from the Google Cloud Console by navigating to the project dashboard and locating the
+    * **Email ID**: The email address associated with the service account used to access BigQuery. This can be found in the **IAM & Admin > Service Accounts** section of the Google Cloud Console by selecting the relevant service account and viewing its details.
 
-      **Project ID**
-
-      under project information.
-
-    * **Email ID**
-
-      : The email address associated with the service account used to access BigQuery. This can be found in the
-
-      **IAM & Admin > Service Accounts**
-
-      section of the Google Cloud Console by selecting the relevant service account and viewing its details.
-
-    * **JSON Key File**
-
-      : The path to the JSON key file for the service account, used for authentication. To obtain this, go to
-
-      **IAM & Admin > Service Accounts**
-
-      in the Google Cloud Console, select the service account, click
-
-      **Keys**
-
-      , and download the JSON key file by selecting
-
-      **Add Key > JSON**
-
-      . Ensure the file is securely stored and note its path.
+    * **JSON Key File**: The path to the JSON key file for the service account, used for authentication. To obtain this, go to **IAM & Admin > Service Accounts** in the Google Cloud Console, select the service account, click **Keys**, and download the JSON key file by selecting **Add Key > JSON**. Ensure the file is securely stored and note its path.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -439,7 +419,17 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your Bigquery Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`&#x20;
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
     </Warning>
 
     <CodeGroup>
@@ -489,19 +479,13 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     This section focuses on attributes specific to Bigquery Instance Secrets. It includes details like:
 
-    * `type`
+    * `type`: Specifies the Instance Secret type (key-value-properties).
 
-      : Specifies the Instance Secret type (key-value-properties).
+    * `acl`: Access control level (read-only or read-write).
 
-    * `acl`
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
-      : Access control level (read-only or read-write).
-
-    * `data`
-
-      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
-
-    For more information, refer to the [Attributes of Instance-secret specific section](https://chatgpt.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+    For more information, refer to the [Attributes of Instance-secret specific section]().
 
     ### Step 2: Apply the manifest
 
@@ -726,7 +710,17 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your Eventhub Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`&#x20;
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
     </Warning>
 
     <CodeGroup>
@@ -3248,8 +3242,6 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Access Permissions in DataOS**
 
-
-
     <Warning>
       Note that tags and use cases may have varying access permissions depending on the organization.
     </Warning>
@@ -3298,11 +3290,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * **Access Key ID**
 
-      : The access key ID used to authenticate AWS requests. You can retrieve this from the AWS Management Console by navigating to 
+      : The access key ID used to authenticate AWS requests. You can retrieve this from the AWS Management Console by navigating to
 
       **IAM > Users**
 
-      , selecting the relevant user, and viewing their 
+      , selecting the relevant user, and viewing their
 
       **Security Credentials**
 
@@ -3310,11 +3302,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * **AWS Access Key ID**
 
-      : The AWS-specific access key ID, which can also be retrieved from the 
+      : The AWS-specific access key ID, which can also be retrieved from the
 
       **IAM > Users**
 
-       section in the AWS Management Console under 
+      section in the AWS Management Console under
 
       **Security Credentials**
 
@@ -3322,11 +3314,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * **AWS Secret Access Key**
 
-      : The secret access key associated with the AWS access key ID. This is displayed only once when the key is generated. If lost, you will need to create a new access key in the 
+      : The secret access key associated with the AWS access key ID. This is displayed only once when the key is generated. If lost, you will need to create a new access key in the
 
       **IAM > Users**
 
-       section under 
+      section under
 
       **Security Credentials**
 
@@ -3334,7 +3326,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * **Secret Key**
 
-      : Another key used for authentication. 
+      : Another key used for authentication.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
