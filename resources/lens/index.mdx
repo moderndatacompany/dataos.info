@@ -19,17 +19,55 @@ As a Resource within the DataOS ecosystem, Lens enhances Data Product consumptio
 
 Lens is engineered to handle complex and large-scale semantic models with ease. Key features include:
 
-* **Code modularity:** Lens supports modular code structures, simplifying the maintenance of extensive models, particularly when dealing with real-world entities (represented as tables), dimensions, and measures. This modularity enables efficient development and management, allowing teams to navigate large codebases with reduced complexity.
+* **Code modularity:**
 
-* **Segments:** [Segments](/resources/lens/working_with_segments/) are predefined filters that enable the definition of complex filtering logic in SQL. It allows to create specific subsets of data, such as users from a particular city, which can be reused across different queries and reports. This feature helps streamline the data exploration process by simplifying the creation of reusable filters.
+  Lens supports modular code structures, simplifying the maintenance of extensive models, particularly when dealing with real-world entities (represented as tables), dimensions, and measures. This modularity enables efficient development and management, allowing teams to navigate large codebases with reduced complexity.
 
-* **API support:** Lens enhances interoperability by simplifying application development with support for [Postgres API](/resources/lens/explore_lens_using_sql_apis/), [REST API](/resources/lens/explore_lens_using_rest_apis/), and [GraphQL API](/resources/lens/explore_lens_using_graphql/). &#x20;
+* **Segments:**
 
-* **Governance and access control:** Lens ensures data governance through[ user group management and data policies](/resources/lens/working_with_user_groups_and_data_policies/), enabling precise control over who can access and interact with the semantic model.
+  [Segments](/resources/lens/working_with_segments/)
 
-* **BI integration:** Lens improves interoperability through robust integration with PowerBI, Tableau, and Superset. This ensures that semantic models can be easily utilized across various BI platforms, enhancing the overall analytics experience. For more details on BI integration, visit the [BI Integration guide](/resources/lens/bi_integration/).
+  are predefined filters that enable the definition of complex filtering logic in SQL. It allows to create specific subsets of data, such as users from a particular city, which can be reused across different queries and reports. This feature helps streamline the data exploration process by simplifying the creation of reusable filters.
 
-* **Performance optimization through Flash:** Designed to work with DataOS Lakehouse and Iceberg-format Depots, [Flash](/resources/stacks/flash/) improves query performance by leveraging in-memory execution. This optimization ensures that data teams can efficiently handle large-scale queries with enhanced speed and performance.
+* **API support:**
+
+  Lens enhances interoperability by simplifying application development with support for
+
+  [Postgres API](/resources/lens/explore_lens_using_sql_apis/)
+
+  ,
+
+  [REST API](/resources/lens/explore_lens_using_rest_apis/)
+
+  , and
+
+  [GraphQL API](/resources/lens/explore_lens_using_graphql/)
+
+  .
+
+* **Governance and access control:**
+
+  Lens ensures data governance through
+
+  [ user group management and data policies](/resources/lens/working_with_user_groups_and_data_policies/)
+
+  , enabling precise control over who can access and interact with the semantic model.
+
+* **BI integration:**
+
+  Lens improves interoperability through robust integration with PowerBI, Tableau, and Superset. This ensures that semantic models can be easily utilized across various BI platforms, enhancing the overall analytics experience. For more details on BI integration, visit the
+
+  [BI Integration guide](/resources/lens/bi_integration/)
+
+  .
+
+* **Performance optimization through Flash:**
+
+  Designed to work with DataOS Lakehouse and Iceberg-format Depots,
+
+  [Flash](/resources/stacks/flash/)
+
+  improves query performance by leveraging in-memory execution. This optimization ensures that data teams can efficiently handle large-scale queries with enhanced speed and performance.
 
 ## How to build a semantic model using Lens?
 
@@ -225,37 +263,99 @@ The process begins with creating a new Lens project and generating a semantic mo
 
     * **Defining the Source:**
 
-      * **`type`:**  The `type` attribute in the `source` section must be explicitly set to `depot`.
+      * **`type`:**
 
-      * **`name`:** The `name` attribute in the `source` section should specify the name of the AWS Redshift Depot created.
+        The
+
+        `type`
+
+        attribute in the
+
+        `source`
+
+        section must be explicitly set to
+
+        `depot`
+
+        .
+
+      * **`name`:**
+
+        The
+
+        `name`
+
+        attribute in the
+
+        `source`
+
+        section should specify the name of the AWS Redshift Depot created.
 
     * **Setting Up Compute and Secrets:**
 
-      * Define the compute settings, such as which engine (e.g., `runnable-default`) will process the data.
+      * Define the compute settings, such as which engine (e.g.,
+
+        `runnable-default`
+
+        ) will process the data.
 
       * Include any necessary secrets (e.g., credentials for Bitbucket or AWS) for secure access to data and repositories.
 
     * **Defining Repository:**
 
-      * **`url`** The `url` attribute in the repo section specifies the Git repository where the semantic model files are stored. For instance, if your repo name is lensTutorial then the repo `url` will be  [https://bitbucket.org/tmdc/lensTutorial](https://bitbucket.org/tmdc/lensTutorial)
+      * **`url`**
 
-      * **`lensBaseDir`:**  The `lensBaseDir` attribute refers to the directory in the repository containing the semantic model. Example: `sample/lens/source/depot/awsredshift/model`.
+        The
 
-      * **`secretId`:**  The `secretId` attribute is used to access private repositories (e.g., Bitbucket, GitHub). It specifies the secret needed to authenticate and access the repository securely.
+        `url`
 
-      * **`syncFlags`**:  Specifies additional flags to control repository synchronization. Example: `--ref=dev` specifies that the semantic model resides in the dev branch.
+        attribute in the repo section specifies the Git repository where the semantic model files are stored. For instance, if your repo name is lensTutorial then the repo
 
-    * **Configure API, Worker, and Metric Settings (Optional):** Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
+        `url`
+
+        will be
+
+        [https://bitbucket.org/tmdc/lensTutorial](https://bitbucket.org/tmdc/lensTutorial)
+
+      * **`lensBaseDir`:**
+
+        The
+
+        `lensBaseDir`
+
+        attribute refers to the directory in the repository containing the semantic model. Example:
+
+        `sample/lens/source/depot/awsredshift/model`
+
+        .
+
+      * **`secretId`:**
+
+        The
+
+        `secretId`
+
+        attribute is used to access private repositories (e.g., Bitbucket, GitHub). It specifies the secret needed to authenticate and access the repository securely.
+
+      * **`syncFlags`**
+
+        :  Specifies additional flags to control repository synchronization. Example:
+
+        `--ref=dev`
+
+        specifies that the semantic model resides in the dev branch.
+
+    * **Configure API, Worker, and Metric Settings (Optional):**
+
+      Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
 
     ## Step 4: Apply the Lens deployment manifest file
 
     After configuring the deployment file with the necessary settings and specifications, Deploy the Lens using the following `apply` command:
 
-    <Code>
-      ```yaml Command
-      dataos-ctl resource apply -f ${manifest-file-path}
-      ```
-    </Code>
+    ```yaml
+    dataos-ctl apply -f {manifest-file-path}
+    ```
   </Accordion>
 
   <Accordion title="BigQuery" defaultOpen={false}>
@@ -2395,21 +2495,43 @@ The Lens can be configured to connect to different sources using data source att
 
 Monitoring in Lens operates at three levels, each focusing on different aspects of system performance and reliability.
 
-1. **Metric monitoring:** A Lens Resource can be monitored using Monitor and Pager Resources. To create a Monitor and Pager on Lens, click [here](https://dataosinfo.mintlify.app/resources/lens/observability).
+1. **Metric monitoring:**
 
-2. **Operational monitoring:** Operational monitoring can be done through the Operations App and CLI, providing visibility into the state and behavior of Lens Resources, enabling workload performance tracking, historical runtime analysis, and troubleshooting. To know how to do operational monitoring of Lens click here
+   A Lens Resource can be monitored using Monitor and Pager Resources. To create a Monitor and Pager on Lens, click 
 
-3. **Infrastructure monitoring:** Infrastructure powered by Grafana, focuses on the underlying system infrastructure, tracking server health, memory usage, and overall system stability.
+   [here](https://dataosinfo.mintlify.app/resources/lens/observability)
+
+   .
+
+2. **Operational monitoring:**
+
+   Operational monitoring can be done through the Operations App and CLI, providing visibility into the state and behavior of Lens Resources, enabling workload performance tracking, historical runtime analysis, and troubleshooting. To know how to do operational monitoring of Lens click here
+
+3. **Infrastructure monitoring:**
+
+   Infrastructure powered by Grafana, focuses on the underlying system infrastructure, tracking server health, memory usage, and overall system stability.
 
 ## Governance
 
 Data governance in DataOS is structured across three layers to protect and control sensitive information:
 
-* **Physical data layer:** Governance policies are applied directly at the physical data layer, where the data resides in sources such as BigQuery, Postgres, Snowflake, or other data storage platforms. These policies enforce data protection at the source, controlling access and masking sensitive information before it is processed or exposed further. To know about how to govern the Lens click here.
+* **Physical data layer:**
 
-* &#x20;**Model-first Data Product layer:** At this layer, governance policies are applied to the semantic model (Lens) derived from the underlying source tables. To manage access effectively [user groups](/resources/lens/working_with_user_groups/) define different levels of exploration permissions within Lens.&#x20;
+  Governance policies are applied directly at the physical data layer, where the data resides in sources such as BigQuery, Postgres, Snowflake, or other data storage platforms. These policies enforce data protection at the source, controlling access and masking sensitive information before it is processed or exposed further. To know about how to govern the Lens click here.
 
-* **Activation layer:** Governance at the activation layer focuses on enforcing data protection within the Business Intelligence (BI) tool. This ensures that sensitive data remains masked or restricted based on user roles when presented through dashboards or reports, controlling how the data is accessed and displayed in the final interface.
+*
+
+**Model-first Data Product layer:**
+
+At this layer, governance policies are applied to the semantic model (Lens) derived from the underlying source tables. To manage access effectively
+
+[user groups](/resources/lens/working_with_user_groups/)
+
+define different levels of exploration permissions within Lens.
+
+* **Activation layer:**
+
+  Governance at the activation layer focuses on enforcing data protection within the Business Intelligence (BI) tool. This ensures that sensitive data remains masked or restricted based on user roles when presented through dashboards or reports, controlling how the data is accessed and displayed in the final interface.
 
 ## How to catalog a semantic model built using Lens?
 
