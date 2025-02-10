@@ -120,7 +120,17 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your ABFSS Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`&#x20;
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
     </Warning>
 
     <CodeGroup>
@@ -429,7 +439,17 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your Bigquery Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`&#x20;
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
     </Warning>
 
     <CodeGroup>
@@ -716,7 +736,17 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your Eventhub Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`&#x20;
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`.  If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
     </Warning>
 
     <CodeGroup>
@@ -1024,7 +1054,17 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your GCS Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`&#x20;
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
     </Warning>
 
     <CodeGroup>
@@ -1307,7 +1347,17 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your JDBC Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`&#x20;
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
     </Warning>
 
     <CodeGroup>
@@ -1569,50 +1619,9 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Source System Configuration**
 
-    * **Username**
+    * **Username**: The MongoDB username used to authenticate and access your MongoDB database. This can be obtained from the MongoDB administrator who manages user access.
 
-      : The MongoDB username used to authenticate and access your MongoDB database. This can be obtained from the MongoDB administrator who manages user access.
-
-    * **Password**
-
-      : The password associated with the MongoDB username for authentication. This can be obtained from the MongoDB administrator, or if the password is already set, you will need to securely retrieve it.
-
-    * **Tags:**
-
-      An operator must possess the following tags, which can be obtained from a DataOS administrator.
-
-    ```
-            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                     │             │        │                      │ roles:id:operator,              
-                     │             │        │                      │ roles:id:user,                  
-                     │             │        │                      │ users:id:iamgroot  
-    ```
-
-    * **Use cases:**
-
-      A developer can create an Instance Secret only if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance. Alternatively, the operator may assign the
-
-      `data-dev`
-
-      tag to the developer instead of the use case.
-
-    <Tabs>
-      <Tab title="use case ">
-        ![](/usecase2.png)
-      </Tab>
-
-      <Tab title="tags">
-        ```bash
-              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                       │             │        │                      │  roles:id:user,                  
-                       │             │        │                      │ users:id:iamgroot  
-        ```
-      </Tab>
-    </Tabs>
+    * **Password**: The password associated with the MongoDB username for authentication. This can be obtained from the MongoDB administrator, or if the password is already set, you will need to securely retrieve it.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -1627,7 +1636,17 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your MongoDB Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`&#x20;
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
     </Warning>
 
     <CodeGroup>
