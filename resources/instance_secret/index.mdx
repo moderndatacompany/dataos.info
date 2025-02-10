@@ -33,7 +33,7 @@ The structure of the Instance Secret manifest file is outlined as follows:![](/i
 
 ## How to create an Instance Secret?
 
-&#x20;This section includes steps for creating the Instance Secret to secure credentials of commonly used data sources and hosted code repositories. A DataOS Operator is generally responsible for creating an Instance Secret.
+&#x20;This section includes steps for creating the Instance Secret to secure credentials of commonly used data sources and hosted code repositories using DataOS CLI.&#x20;
 
 **Data Sources**
 
@@ -337,8 +337,6 @@ If you want to store credentials for various data sources in an Instance Secret 
     To create an Instance Secret for securing BigQuery credentials, you must have the following information:
 
     **Access Permissions in DataOS**
-
-
 
     <Warning>
       Note that tags and use cases may have varying access permissions depending on the organization.
@@ -651,8 +649,6 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Access Permissions in DataOS**
 
-
-
     <Warning>
       Note that tags and use cases may have varying access permissions depending on the organization.
     </Warning>
@@ -937,8 +933,6 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Access Permissions in DataOS**
 
-
-
     <Warning>
       Note that tags and use cases may have varying access permissions depending on the organization.
     </Warning>
@@ -987,31 +981,31 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * **Project ID for the Google Cloud Project**
 
-      : The unique identifier of the Google Cloud project where your GCS bucket resides. You can retrieve this from the Google Cloud Console by navigating to your project dashboard and locating the 
+      : The unique identifier of the Google Cloud project where your GCS bucket resides. You can retrieve this from the Google Cloud Console by navigating to your project dashboard and locating the
 
       **Project ID**
 
-       under project information.
+      under project information.
 
     * **Email Address Associated with the Google Cloud Service Account**
 
-      : The email address of the service account used to authenticate and access your GCS bucket. This can be found in the 
+      : The email address of the service account used to authenticate and access your GCS bucket. This can be found in the
 
       **IAM & Admin > Service Accounts**
 
-       section of the Google Cloud Console by selecting the service account and viewing its details.
+      section of the Google Cloud Console by selecting the service account and viewing its details.
 
     * **JSON Key File for the Google Cloud Service Account**
 
-      : The path to the JSON key file used to authenticate the service account. To obtain this, navigate to 
+      : The path to the JSON key file used to authenticate the service account. To obtain this, navigate to
 
       **IAM & Admin > Service Accounts**
 
-       in the Google Cloud Console, select the relevant service account, click 
+      in the Google Cloud Console, select the relevant service account, click
 
       **Keys**
 
-      , and download the JSON key file by selecting 
+      , and download the JSON key file by selecting
 
       **Add Key > JSON**
 
@@ -1245,8 +1239,6 @@ If you want to store credentials for various data sources in an Instance Secret 
     To create an Instance Secret for securing JDBC credentials, you must have the following information:
 
     **Access Permissions in DataOS**
-
-
 
     <Warning>
       Note that tags and use cases may have varying access permissions depending on the organization.
@@ -1531,8 +1523,6 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Access Permissions in DataOS**
 
-
-
     <Warning>
       Note that tags and use cases may have varying access permissions depending on the organization.
     </Warning>
@@ -1589,7 +1579,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * **Tags:**
 
-       An operator must possess the following tags, which can be obtained from a DataOS administrator.
+      An operator must possess the following tags, which can be obtained from a DataOS administrator.
 
     ```
             NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
@@ -1602,11 +1592,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * **Use cases:**
 
-       A developer can create an Instance Secret only if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance. Alternatively, the operator may assign the 
+      A developer can create an Instance Secret only if an operator grants them the "Manage All Instance-level Resources of DataOS in the user layer" use case through Bifrost Governance. Alternatively, the operator may assign the
 
       `data-dev`
 
-       tag to the developer instead of the use case.
+      tag to the developer instead of the use case.
 
     <Tabs>
       <Tab title="use case ">
@@ -1851,8 +1841,6 @@ If you want to store credentials for various data sources in an Instance Secret 
     To create an Instance Secret for securing MsSQL credentials, you must have the following information:
 
     **Access Permissions in DataOS**
-
-
 
     <Warning>
       Note that tags and use cases may have varying access permissions depending on the organization.
@@ -2127,8 +2115,6 @@ If you want to store credentials for various data sources in an Instance Secret 
     To create an Instance Secret for securing MySQL credentials, you must have the following information:
 
     **Access Permissions in DataOS**
-
-
 
     <Warning>
       Note that tags and use cases may have varying access permissions depending on the organization.
@@ -2408,8 +2394,6 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Access Permissions in DataOS**
 
-
-
     <Warning>
       Note that tags and use cases may have varying access permissions depending on the organization.
     </Warning>
@@ -2687,8 +2671,6 @@ If you want to store credentials for various data sources in an Instance Secret 
     To create an Instance Secret for securing PostgreSQL credentials, you must have the following information:
 
     **Access Permissions in DataOS**
-
-
 
     <Warning>
       Note that tags and use cases may have varying access permissions depending on the organization.
@@ -2968,8 +2950,6 @@ If you want to store credentials for various data sources in an Instance Secret 
     To create an Instance Secret for securing Redshift credentials, you must have the following information:
 
     **Access Permissions in DataOS**
-
-
 
     <Warning>
       Note that tags and use cases may have varying access permissions depending on the organization.
@@ -3520,8 +3500,6 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Access Permissions in DataOS**
 
-
-
     <Warning>
       Note that tags and use cases may have varying access permissions depending on the organization.
     </Warning>
@@ -3800,8 +3778,6 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Access Permissions in DataOS**
 
-
-
     <Warning>
       Note that tags and use cases may have varying access permissions depending on the organization.
     </Warning>
@@ -3850,31 +3826,31 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * **Azure Endpoint Suffix**
 
-      : The endpoint suffix for the Azure Storage account. This is typically region-specific and can be found in the Azure Portal under the 
+      : The endpoint suffix for the Azure Storage account. This is typically region-specific and can be found in the Azure Portal under the
 
       **Properties**
 
-       section of your storage account.
+      section of your storage account.
 
     * **Azure Storage Account Key**
 
-      : The access key for the Azure Storage account, used for authentication. You can retrieve this from the Azure Portal by navigating to your storage account, selecting 
+      : The access key for the Azure Storage account, used for authentication. You can retrieve this from the Azure Portal by navigating to your storage account, selecting
 
       **Access keys**
 
-       under the 
+      under the
 
       **Security + networking**
 
-       section, and copying the key.
+      section, and copying the key.
 
     * **Azure Storage Account Name**
 
-      : The name of the Azure Storage account used to identify it within your subscription. This can be found in the Azure Portal under the 
+      : The name of the Azure Storage account used to identify it within your subscription. This can be found in the Azure Portal under the
 
       **Overview**
 
-       section of your storage account.
+      section of your storage account.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -4097,8 +4073,6 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Access Permissions in DataOS**
 
-
-
     <Warning>
       Note that tags and use cases may have varying access permissions depending on the organization.
     </Warning>
@@ -4147,11 +4121,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * **Username:**
 
-       The OpenSearch username used to authenticate access to the OpenSearch instance. This is typically a user-specific or role-based identifier. 
+      The OpenSearch username used to authenticate access to the OpenSearch instance. This is typically a user-specific or role-based identifier.
 
     * **Password:**
 
-       The OpenSearch password corresponding to the username for authentication. You can retrieve it from your OpenSearch configuration or admin settings, depending on how the instance credentials are managed in your organization.
+      The OpenSearch password corresponding to the username for authentication. You can retrieve it from your OpenSearch configuration or admin settings, depending on how the instance credentials are managed in your organization.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -4372,8 +4346,6 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Access Permissions in DataOS**
 
-
-
     <Warning>
       Note that tags and use cases may have varying access permissions depending on the organization.
     </Warning>
@@ -4422,11 +4394,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * **Username:**
 
-       The Elasticsearch username used to authenticate access to the Elasticsearch instance. This is typically a user-specific or role-based identifier that grants the necessary permissions for accessing resources.
+      The Elasticsearch username used to authenticate access to the Elasticsearch instance. This is typically a user-specific or role-based identifier that grants the necessary permissions for accessing resources.
 
     * **Password:**
 
-       The Elasticsearch password corresponding to the username for authentication. This password ensures secure access to the Elasticsearch instance and can be obtained from your Elasticsearch configuration or admin settings, depending on how credentials are managed within your organization.
+      The Elasticsearch password corresponding to the username for authentication. This password ensures secure access to the Elasticsearch instance and can be obtained from your Elasticsearch configuration or admin settings, depending on how credentials are managed within your organization.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -4659,8 +4631,6 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     **Access Permissions in DataOS**
 
-
-
     <Warning>
       Note that tags and use cases may have varying access permissions depending on the organization.
     </Warning>
@@ -4709,31 +4679,31 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     * **Project ID**
 
-      : The project ID used to identify your Google Cloud project. You can retrieve this from the Google Cloud Console by navigating to the project dashboard and locating the 
+      : The project ID used to identify your Google Cloud project. You can retrieve this from the Google Cloud Console by navigating to the project dashboard and locating the
 
       **Project ID**
 
-       under project information.
+      under project information.
 
     * **Email ID**
 
-      : The email address associated with the service account used to access repository. This can be found in the 
+      : The email address associated with the service account used to access repository. This can be found in the
 
       **IAM & Admin > Service Accounts**
 
-       section of the Google Cloud Console by selecting the relevant service account and viewing its details.
+      section of the Google Cloud Console by selecting the relevant service account and viewing its details.
 
     * **JSON Key File**
 
-      : The path to the JSON key file for the service account, used for authentication. To obtain this, go to 
+      : The path to the JSON key file for the service account, used for authentication. To obtain this, go to
 
       **IAM & Admin > Service Accounts**
 
-       in the Google Cloud Console, select the service account, click 
+      in the Google Cloud Console, select the service account, click
 
       **Keys**
 
-      , and download the JSON key file by selecting 
+      , and download the JSON key file by selecting
 
       **Add Key > JSON**
 
@@ -4838,8 +4808,6 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     **Access Permissions in DataOS**
 
-
-
     <Warning>
       Note that tags and use cases may have varying access permissions depending on the organization.
     </Warning>
@@ -4886,11 +4854,11 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     **Source System Configuration**
 
-    * **GITSYNC_USERNAME**
+    * **GITSYNC\_USERNAME**
 
       : This represents the Bitbucket username required for authentication.
 
-    * **GITSYNC_PASSWORD**
+    * **GITSYNC\_PASSWORD**
 
       : This is the corresponding password or an app password used for authentication.
       These credentials can be obtained from the Bitbucket account settings or provided by an administrator.
@@ -4989,8 +4957,6 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     **Access Permissions in DataOS**
 
-
-
     <Warning>
       Note that tags and use cases may have varying access permissions depending on the organization.
     </Warning>
@@ -5037,11 +5003,11 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     **Source System Configuration**
 
-    * **GITSYNC_USERNAME**
+    * **GITSYNC\_USERNAME**
 
       : This represents the Git username required for authentication.
 
-    * **GITSYNC_PASSWORD**
+    * **GITSYNC\_PASSWORD**
 
       : This is the corresponding password used for authentication.
       These credentials can be obtained from the Bitbucket account settings or provided by an administrator.
