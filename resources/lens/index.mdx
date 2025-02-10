@@ -119,6 +119,10 @@ The process begins with creating a new Lens project and generating a semantic mo
       <Step title="Load data from the data source" titleSize="h2">
         In the `sqls/` folder, create `.sql` files for each table, where each file is responsible for loading or selecting the relevant data from the source. Ensure only the necessary columns are extracted, and the SQL dialect is specific to the data source.
 
+        <Tip>
+          SQL dialect should be specific to the Redshift.
+        </Tip>
+
         For example, a simple data load might look as follows:
 
         ```sql
