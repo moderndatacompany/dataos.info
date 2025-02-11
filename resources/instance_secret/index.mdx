@@ -1254,13 +1254,9 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Source System Configuration**
 
-    * **Username**
+    * **Username**: The JDBC username used to authenticate and access the database via JDBC. This can be obtained from the database administrator who manages user access.
 
-      : The JDBC username used to authenticate and access the database via JDBC. This can be obtained from the database administrator who manages user access.
-
-    * **Password**
-
-      : The password associated with the JDBC username for authentication. This can be obtained from the database administrator, or if the password is already set, you will need to securely retrieve it.
+    * **Password**: The password associated with the JDBC username for authentication. This can be obtained from the database administrator, or if the password is already set, you will need to securely retrieve it.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -1331,17 +1327,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     This section focuses on attributes specific to JDBC Instance Secrets. It includes details like:
 
-    * `type`
+    * `type`: Specifies the Instance Secret type (key-value-properties).
 
-      : Specifies the Instance Secret type (key-value-properties).
+    * `acl`: Access control level (read-only or read-write).
 
-    * `acl`
-
-      : Access control level (read-only or read-write).
-
-    * `data`
-
-      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
     For more information, refer to the [Attributes of Instance-secret specific section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
@@ -1549,13 +1539,9 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Source System Configuration**
 
-    * **Username**
+    * **Username**: The MongoDB username used to authenticate and access your MongoDB database. This can be obtained from the MongoDB administrator who manages user access.
 
-      : The MongoDB username used to authenticate and access your MongoDB database. This can be obtained from the MongoDB administrator who manages user access.
-
-    * **Password**
-
-      : The password associated with the MongoDB username for authentication. This can be obtained from the MongoDB administrator, or if the password is already set, you will need to securely retrieve it.
+    * **Password**: The password associated with the MongoDB username for authentication. This can be obtained from the MongoDB administrator, or if the password is already set, you will need to securely retrieve it.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -1625,17 +1611,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     This section focuses on attributes specific to MongoDB Instance Secrets. It includes details like:
 
-    * `type`
+    * `type`: Specifies the Instance Secret type (key-value-properties).
 
-      : Specifies the Instance Secret type (key-value-properties).
+    * `acl`: Access control level (read-only or read-write).
 
-    * `acl`
-
-      : Access control level (read-only or read-write).
-
-    * `data`
-
-      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
     For more information, refer to the [Attributes of Instance-secret specific section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
@@ -1843,13 +1823,9 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Source System Configuration**
 
-    * **Username**
+    * **Username**: The MSSQL username used to authenticate and access your MSSQL database. You can retrieve this from the MsSQL database admin by asking them to provide the username for your account.
 
-      : The MSSQL username used to authenticate and access your MSSQL database. You can retrieve this from the MsSQL database admin by asking them to provide the username for your account.
-
-    * **Password**
-
-      : The password associated with the MSSQL username for authentication. You can obtain this from the MSSQL database admin, or if the password is already set, you will need to securely retrieve it.
+    * **Password**: The password associated with the MSSQL username for authentication. You can obtain this from the MSSQL database admin, or if the password is already set, you will need to securely retrieve it.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -1915,17 +1891,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     This section focuses on attributes specific to MSSQL or Azure SQL Instance Secrets. It includes details like:
 
-    * `type`
+    * `type`: Specifies the Instance Secret type (key-value-properties).
 
-      : Specifies the Instance Secret type (key-value-properties).
+    * `acl`: Access control level (read-only or read-write).
 
-    * `acl`
-
-      : Access control level (read-only or read-write).
-
-    * `data`
-
-      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
     For more information, refer to the [Attributes of Instance-secret specific section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
@@ -2209,17 +2179,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     This section focuses on attributes specific to MySQL Instance Secrets. It includes details like:
 
-    * `type`
+    * `type`: Specifies the Instance Secret type (key-value-properties).
 
-      : Specifies the Instance Secret type (key-value-properties).
+    * `acl`: Access control level (read-only or read-write).
 
-    * `acl`
-
-      : Access control level (read-only or read-write).
-
-    * `data`
-
-      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
     For more information, refer to the [Attributes of Instance-secret specific section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
@@ -2427,13 +2391,9 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Source System Configuration**
 
-    * **Username**
+    * **Username**: The Oracle username used to authenticate and access your Oracle database. This can be obtained from the database administrator who manages user access.
 
-      : The Oracle username used to authenticate and access your Oracle database. This can be obtained from the database administrator who manages user access.
-
-    * **Password**
-
-      : The password associated with the Oracle username for authentication. This can be obtained from the database administrator, or if the password is already set, you will need to securely retrieve it.
+    * **Password**: The password associated with the Oracle username for authentication. This can be obtained from the database administrator, or if the password is already set, you will need to securely retrieve it.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -2503,17 +2463,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     This section focuses on attributes specific to GCS Instance Secrets. It includes details like:
 
-    * `type`
+    * `type`: Specifies the Instance Secret type (key-value-properties).
 
-      : Specifies the Instance Secret type (key-value-properties).
+    * `acl`: Access control level (read-only or read-write).
 
-    * `acl`
-
-      : Access control level (read-only or read-write).
-
-    * `data`
-
-      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
     For more information, refer to the [Attributes of Instance-secret specific section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
@@ -2721,13 +2675,9 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Source System Configuration**
 
-    * **Username**
+    * **Username**: The PostgreSQL username used to authenticate and access your PostgreSQL database. This can be obtained from the PostgreSQL administrator who manages user access.
 
-      : The PostgreSQL username used to authenticate and access your PostgreSQL database. This can be obtained from the PostgreSQL administrator who manages user access.
-
-    * **Password**
-
-      : The password associated with the PostgreSQL username for authentication. This can be obtained from the PostgreSQL administrator, or if the password is already set, you will need to securely retrieve it.
+    * **Password**: The password associated with the PostgreSQL username for authentication. This can be obtained from the PostgreSQL administrator, or if the password is already set, you will need to securely retrieve it.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -2798,17 +2748,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     This section focuses on attributes specific to Postgres Instance Secrets. It includes details like:
 
-    * `type`
+    * `type`: Specifies the Instance Secret type (key-value-properties).
 
-      : Specifies the Instance Secret type (key-value-properties).
+    * `acl`: Access control level (read-only or read-write).
 
-    * `acl`
-
-      : Access control level (read-only or read-write).
-
-    * `data`
-
-      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
     For more information, refer to the [Attributes of Instance-secret specific section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
@@ -3016,21 +2960,13 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Source System Configuration**
 
-    * **Username**
+    * **Username**: The Redshift username used to authenticate and access your Redshift cluster. This can be obtained from the Redshift admin who manages user access.
 
-      : The Redshift username used to authenticate and access your Redshift cluster. This can be obtained from the Redshift admin who manages user access.
+    * **Password**: The password associated with the Redshift username for authentication. This is typically set when the user account is created and must be provided by the Redshift admin or securely retrieved if forgotten.
 
-    * **Password**
+    * **AWS Access Key ID**: The Access Key ID for your AWS account, which is used to authenticate API requests. You can obtain this from the AWS IAM (Identity and Access Management) console under your user’s security credentials section.
 
-      : The password associated with the Redshift username for authentication. This is typically set when the user account is created and must be provided by the Redshift admin or securely retrieved if forgotten.
-
-    * **AWS Access Key ID**
-
-      : The Access Key ID for your AWS account, which is used to authenticate API requests. You can obtain this from the AWS IAM (Identity and Access Management) console under your user’s security credentials section.
-
-    * **AWS Secret Access Key**
-
-      : The Secret Access Key associated with your AWS Access Key ID, used for secure API requests. This can also be obtained from the AWS IAM console, under your user’s security credentials section. Ensure the secret key is securely stored and kept private.
+    * **AWS Secret Access Key**: The Secret Access Key associated with your AWS Access Key ID, used for secure API requests. This can also be obtained from the AWS IAM console, under your user’s security credentials section. Ensure the secret key is securely stored and kept private.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -3100,17 +3036,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     This section focuses on attributes specific to Redshift Instance Secrets. It includes details like:
 
-    * `type`
+    * `type`: Specifies the Instance Secret type (key-value-properties).
 
-      : Specifies the Instance Secret type (key-value-properties).
+    * `acl`: Access control level (read-only or read-write).
 
-    * `acl`
-
-      : Access control level (read-only or read-write).
-
-    * `data`
-
-      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
     For more information, refer to the [Attributes of Instance-secret specific section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
@@ -3319,47 +3249,16 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Source System Configuration**
 
-    * **Access Key ID**
+    * **Access Key ID**: The access key ID used to authenticate AWS requests. You can retrieve this from the AWS Management Console by navigating to **IAM > Users**, selecting the relevant user, and viewing their **Security Credentials**.
 
-      : The access key ID used to authenticate AWS requests. You can retrieve this from the AWS Management Console by navigating to 
+    * **AWS Access Key ID**: The AWS-specific access key ID, which can also be retrieved from the  **IAM > Users** section in the AWS Management Console under  **Security Credentials**.
 
-      **IAM > Users**
+    * **AWS Secret Access Key**: The secret access key associated with the AWS access key ID. This is displayed only once when the key is generated. If lost, you will need to create a new access key in the **IAM > Users** section under  **Security Credentials**.
 
-      , selecting the relevant user, and viewing their 
+    * **Secret Key**: Another key used for authentication.
 
-      **Security Credentials**
-
-      .
-
-    * **AWS Access Key ID**
-
-      : The AWS-specific access key ID, which can also be retrieved from the 
-
-      **IAM > Users**
-
-       section in the AWS Management Console under 
-
-      **Security Credentials**
-
-      .
-
-    * **AWS Secret Access Key**
-
-      : The secret access key associated with the AWS access key ID. This is displayed only once when the key is generated. If lost, you will need to create a new access key in the 
-
-      **IAM > Users**
-
-       section under 
-
-      **Security Credentials**
-
-      .
-
-    * **Secret Key**
-
-      : Another key used for authentication.
-
-    Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
+    
+Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
     ### Create an Instance Secret for securing Amazon S3 credentials
 
@@ -3431,17 +3330,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     This section focuses on attributes specific to S3 Instance Secrets. It includes details like:
 
-    * `type`
+    * `type`: Specifies the Instance Secret type (key-value-properties).
 
-      : Specifies the Instance Secret type (key-value-properties).
+    * `acl`: Access control level (read-only or read-write).
 
-    * `acl`
-
-      : Access control level (read-only or read-write).
-
-    * `data`
-
-      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
     For more information, refer to the [Attributes of Instance-secret specific section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
@@ -3648,13 +3541,9 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Source System Configuration**
 
-    * **Username**
+    * **Username**: The Snowflake username used to authenticate to the Snowflake account. This can be obtained from your Snowflake administrator or found in your Snowflake account settings.
 
-      : The Snowflake username used to authenticate to the Snowflake account. This can be obtained from your Snowflake administrator or found in your Snowflake account settings.
-
-    * **Password**
-
-      : The password associated with the Snowflake username for authentication. If you do not have the password, you will need to reset it via the Snowflake web interface or contact your Snowflake administrator to obtain it.
+    * **Password**: The password associated with the Snowflake username for authentication. If you do not have the password, you will need to reset it via the Snowflake web interface or contact your Snowflake administrator to obtain it.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -3725,17 +3614,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     This section focuses on attributes specific to Snowflake Instance Secrets. It includes details like:
 
-    * `type`
+    * `type`: Specifies the Instance Secret type (key-value-properties).
 
-      : Specifies the Instance Secret type (key-value-properties).
+    * `acl`: Access control level (read-only or read-write).
 
-    * `acl`
-
-       : Access control level (read-only or read-write).
-
-    * `data`
-
-      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
     For more information, refer to the [Attributes of Instance-secret specific section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
@@ -3943,33 +3826,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Source System Configuration**
 
-    * **Azure Endpoint Suffix**
+    * **Azure Endpoint Suffix**: The endpoint suffix for the Azure Storage account. This is typically region-specific and can be found in the Azure Portal under the **Properties** section of your storage account.
 
-      : The endpoint suffix for the Azure Storage account. This is typically region-specific and can be found in the Azure Portal under the 
+    * **Azure Storage Account Key** : The access key for the Azure Storage account, used for authentication. You can retrieve this from the Azure Portal by navigating to your storage account, selecting  **Access keys** under the **Security + networking** section, and copying the key.
 
-      **Properties**
-
-       section of your storage account.
-
-    * **Azure Storage Account Key**
-
-      : The access key for the Azure Storage account, used for authentication. You can retrieve this from the Azure Portal by navigating to your storage account, selecting 
-
-      **Access keys**
-
-       under the 
-
-      **Security + networking**
-
-       section, and copying the key.
-
-    * **Azure Storage Account Name**
-
-      : The name of the Azure Storage account used to identify it within your subscription. This can be found in the Azure Portal under the 
-
-      **Overview**
-
-       section of your storage account.
+    * **Azure Storage Account Name**: The name of the Azure Storage account used to identify it within your subscription. This can be found in the Azure Portal under the **Overview** section of your storage account.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -4037,17 +3898,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     This section focuses on attributes specific to WASBS Instance Secrets. It includes details like:
 
-    * `type`
+    * `type`: Specifies the Instance Secret type (key-value-properties).
 
-      : Specifies the Instance Secret type (key-value-properties).
+    * `acl`: Access control level (read-only or read-write).
 
-    * `acl`
-
-      : Access control level (read-only or read-write).
-
-    * `data`
-
-      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
     For more information, refer to the [Attributes of Instance-secret specific section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
@@ -4256,13 +4111,9 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Source System Configuration**
 
-    * **Username:**
+    * **Username:** The OpenSearch username used to authenticate access to the OpenSearch instance. This is typically a user-specific or role-based identifier.
 
-      The OpenSearch username used to authenticate access to the OpenSearch instance. This is typically a user-specific or role-based identifier.
-
-    * **Password:**
-
-      The OpenSearch password corresponding to the username for authentication. You can retrieve it from your OpenSearch configuration or admin settings, depending on how the instance credentials are managed in your organization.
+    * **Password:** The OpenSearch password corresponding to the username for authentication. You can retrieve it from your OpenSearch configuration or admin settings, depending on how the instance credentials are managed in your organization.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -4328,17 +4179,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     This section focuses on attributes specific to OpenSearch Instance Secrets. It includes details like:
 
-    * `type`
+    * `type`: Specifies the Instance Secret type (key-value-properties).
 
-      : Specifies the Instance Secret type (key-value-properties).
+    * `acl`: Access control level (read-only or read-write).
 
-    * `acl`
-
-      : Access control level (read-only or read-write).
-
-    * `data`
-
-      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
     For more information, refer to the [Attributes of Instance-secret specific section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
@@ -4548,13 +4393,9 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Source System Configuration**
 
-    * **Username:**
+    * **Username:** The Elasticsearch username used to authenticate access to the Elasticsearch instance. This is typically a user-specific or role-based identifier that grants the necessary permissions for accessing resources.
 
-       The Elasticsearch username used to authenticate access to the Elasticsearch instance. This is typically a user-specific or role-based identifier that grants the necessary permissions for accessing resources.
-
-    * **Password:**
-
-       The Elasticsearch password corresponding to the username for authentication. This password ensures secure access to the Elasticsearch instance and can be obtained from your Elasticsearch configuration or admin settings, depending on how credentials are managed within your organization.
+    * **Password:** The Elasticsearch password corresponding to the username for authentication. This password ensures secure access to the Elasticsearch instance and can be obtained from your Elasticsearch configuration or admin settings, depending on how credentials are managed within your organization.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -4620,17 +4461,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     This section focuses on attributes specific to Elasticsearch Instance Secrets. It includes details like:
 
-    * `type`
+    * `type`: Specifies the Instance Secret type (key-value-properties).
 
-      : Specifies the Instance Secret type (key-value-properties).
+    * `acl`: Access control level (read-only or read-write).
 
-    * `acl`
-
-      : Access control level (read-only or read-write).
-
-    * `data`
-
-      : Contains sensitive information such as Elasticsearch username and password.
+    * `data`: Contains sensitive information such as Elasticsearch username and password.
 
     For more information, refer to the [Attributes of Instance-secret specific section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
@@ -4847,13 +4682,9 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     **Source System Configuration**
 
-    * **GITSYNC_USERNAME**
+    * **GITSYNC_USERNAME**: This represents the AWS CodeCommit username required for authentication.
 
-      : This represents the AWS CodeCommit username required for authentication.
-
-    * **GITSYNC_PASSWORD**
-
-      : This is the corresponding password or an app password used for authentication.
+    * **GITSYNC_PASSWORD**: This is the corresponding password or an app password used for authentication.
       These credentials can be obtained from the  AWS CodeCommit settings or provided by an administrator.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process. Follow the steps below to complete the creation process efficiently and securely.
@@ -4921,17 +4752,11 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     This section focuses on attributes specific to AWS CodeCommit Instance Secrets. It includes details like:
 
-    * `type`
+    * `type`: Specifies the Instance Secret type (key-value-properties).
 
-      : Specifies the Instance Secret type (key-value-properties).
+    * `acl`: Access control level (read-only or read-write).
 
-    * `acl`
-
-      : Access control level (read-only or read-write).
-
-    * `data`
-
-      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
     For more information, refer to the [Attributes of Instance-secret specific section]().
 
@@ -5017,13 +4842,9 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     **Source System Configuration**
 
-    * **GITSYNC_USERNAME**
+    * **GITSYNC_USERNAME**: This represents the Bitbucket username required for authentication.
 
-      : This represents the Bitbucket username required for authentication.
-
-    * **GITSYNC_PASSWORD**
-
-      : This is the corresponding password or an app password used for authentication.
+    * **GITSYNC_PASSWORD**: This is the corresponding password or an app password used for authentication.
       These credentials can be obtained from the Bitbucket account settings or provided by an administrator.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process. Follow the steps below to complete the creation process efficiently and securely.
@@ -5084,17 +4905,11 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     This section focuses on attributes specific to Bitbucket repository Instance Secrets. It includes details like:
 
-    * `type`
+    * `type`: Specifies the Instance Secret type (key-value-properties).
 
-      : Specifies the Instance Secret type (key-value-properties).
+    * `acl`: Access control level (read-only or read-write).
 
-    * `acl`
-
-      : Access control level (read-only or read-write).
-
-    * `data`
-
-      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
     For more information, refer to the [Attributes of Instance-secret specific section]().
 
