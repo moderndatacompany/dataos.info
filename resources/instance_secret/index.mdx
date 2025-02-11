@@ -619,9 +619,287 @@ If you want to store credentials for various data sources in an Instance Secret 
     </CodeGroup>
   </Accordion>
 
+  <Accordion title="Elasticsearch" defaultOpen={false}>
+    ### Pre-requisites
+
+    To create an Instance Secret for securing Elasticsearch credentials, you must have the following information:
+
+    **Access Permissions in DataOS**
+
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
+
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
+
+    ```bash
+    dataos-ctl user get
+    ```
+
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
+
+    <Tabs>
+      <Tab title="use case ">
+        ![](/usecase2.png)
+      </Tab>
+
+      <Tab title="tags">
+        ```bash
+              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                       │             │        │                      │  roles:id:user,                  
+                       │             │        │                      │ users:id:iamgroot  
+        ```
+      </Tab>
+    </Tabs>
+
+    **Source System Configuration**
+
+    * **Username:** The Elasticsearch username used to authenticate access to the Elasticsearch instance. This is typically a user-specific or role-based identifier that grants the necessary permissions for accessing resources.
+
+    * **Password:** The Elasticsearch password corresponding to the username for authentication. This password ensures secure access to the Elasticsearch instance and can be obtained from your Elasticsearch configuration or admin settings, depending on how credentials are managed within your organization.
+
+    Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
+
+    ### Create an instance secret for securing Elasticsearch credentials
+
+    Elasticsearch is a distributed search and analytics engine designed to handle large volumes of structured and unstructured data. It is widely used for log analytics, real-time search, and monitoring applications, enabling fast and scalable data indexing and querying.
+
+    To create an Elasticsearch Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the necessary permissions. Follow the steps below to securely and efficiently complete the Instance Secret creation process.
+
+    ### Step 1: Create a manifest file
+
+    Begin by creating a manifest file to hold the configuration details for your Elasticsearch Instance Secret. Below are the templates for the read-only and read-write manifests:
+
+    <Warning>
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
+    </Warning>
+
+    <CodeGroup>
+      ```yaml Read-only instance-secret
+      name: ${elasticsearch-depot-name}-r # Name of the instance-secret, indicating it's for read-only access.
+      version: v1 # Manifest Version           
+      type: instance-secret # Resource-type
+      description: ${description}   # Optional: Brief description of the instance-secret's purpose.
+      layer: user # DataOS Layer                 
+      instance-secret:
+        type: key-value-properties  # Type of Instance-secret
+        acl: r                     # Access control level, set to 'r' for read-only access.
+        data:
+          username: ${{elasticsearch username}}
+          password: ${{elasticsearch password}}
+      ```
+
+      ```yaml Read-write instance-secret
+      name: ${elasticsearch-depot-name}-rw # Name of the instance-secret, indicating it's for read-write access.
+      version: v1 # Manifest Version           
+      type: instance-secret # Resource-type
+      description: ${description}   # Optional: Brief description of the instance-secret's purpose.
+      layer: user # DataOS Layer                 
+      instance-secret:
+        type: key-value-properties  # Type of Instance-secret
+        acl: rw                     # Access control level, set to 'r' for read-write access.
+        data:
+          username: ${{elasticsearch username}}
+          password: ${{elasticsearch password}}
+      ```
+    </CodeGroup>
+
+    ### Resource meta section
+
+    The Elasticsearch manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Instance-secret specific section
+
+    This section focuses on attributes specific to Elasticsearch Instance Secrets. It includes details like:
+
+    * `type`: Specifies the Instance Secret type (key-value-properties).
+
+    * `acl`: Access control level (read-only or read-write).
+
+    * `data`: Contains sensitive information such as Elasticsearch username and password.
+
+    For more information, refer to the [Attributes of Instance-secret specific section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Step 2: Apply the manifest
+
+    To create the Elasticsearch Instance Secret within DataOS, use the `apply` command. Since these Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource apply -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl apply -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage 
+      dataos-ctl resource apply -f depot_secret.yaml
+      Example usage:
+      $ dataos-ctl apply -f depot_secret.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
+      INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
+      INFO[0004] 🛠 apply...complete
+      ```
+    </CodeGroup>
+
+    ### Step 3: Validate the Instance Secret
+
+    To validate the proper creation of the Instance Secret in DataOS, use the `get` command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret
+      ```
+
+      ```bash Expected output
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+              NAME     | VERSION |      TYPE       | WORKSPACE | STATUS |  RUNTIME  |  OWNER             
+      -----------------|---------|-----------------|-----------|--------|-----------|------------------------------
+           depotsecret | v1      | instance-secret |           | active |           | iamgroot
+      ```
+    </CodeGroup>
+
+    To get the list of all the Instance Secret within the Dataos environment execute the following command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret -a
+      ```
+
+      ```bash Expected output
+      dataos-ctl resource get -t instance-secret -a
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+                   NAME            | VERSION |      TYPE       | WORKSPACE | STATUS | RUNTIME |         OWNER          
+      -----------------------------|---------|-----------------|-----------|--------|---------|------------------------
+        abfssv2alpha-r             | v1      | instance-secret |           | active |         | iamgroot       
+        abfssv2alpha-rw            | v1      | instance-secret |           | active |         | iamgroot       
+        abfsswithoutmetastore-r    | v1      | instance-secret |           | active |         | thisisthor              
+        abfsswithoutmetastore-rw   | v1      | instance-secret |           | active |         | thisisthor              
+
+      ```
+    </CodeGroup>
+
+    Alternatively, you can also check on Metis UI by searching the Instance Secret by name.
+
+    ![](/Screenshotfrom2025-01-2716-25-53.png)
+
+    ### Delete the Instance Secret
+
+    <Warning>
+      Before you can delete an Instance Secret, you need to make sure there are no other Resources dependent on it. For example, if a Depot has a dependency on an Instance Secret, trying to delete that Instance Secret will cause an error. So, you'll need to remove the Depot first, and then you can delete the Instance Secret. This rule applies to not just Depot, but all dependent Resources, such as Workflow, Service, Worker, etc. The following error will be thrown if any Resource has a dependency on Instance Secret as shown below. Example usage:
+
+      ```bash
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:v1:instance-secret... 
+      INFO[0001] 🗑 deleting sampleinstsecret:v1:instance-secret...error 
+      WARN[0001] 🗑 delete...error                             
+      ERRO[0001] Invalid Parameter - failure deleting instance resource : cannot delete resource, it is a dependency of 'depot:v2alpha:sampleinstdepot'
+      ```
+    </Warning>
+
+    [](https://dataos.info/resources/instance_secret/first_steps/#__codelineno-15-1)
+
+    To delete an Instance Secret, use one of the following methods:
+
+    **Method 1:**  Specify the Resource type and Instance Secret name in the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -t instance-secret -n sampleinstsecret
+      Expected output:
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 2:**  Copy the Instance Secret name, version, and Resource-type from the output of the [`get`](https://dataos.info/interfaces/cli/command_reference/#get) command separated by '|' enclosed within quotes and use it as a string in the delete command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -i sampleinstsecret:v1:instance-secret
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 3:** Specify the path of the manifest file and use the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage
+      dataos-ctl delete -f /home/desktop/connect-city/instance_secret.yaml
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+  </Accordion>
+
   <Accordion title="Eventhub" defaultOpen={false}>
     ### **Pre-requisites**
-
 
     To create an Instance Secret for securing Azure Event Hub credentials, you must have the following information:
 
@@ -1203,7 +1481,6 @@ If you want to store credentials for various data sources in an Instance Secret 
   <Accordion title="Java Database Connectivity (JDBC)" defaultOpen={false}>
     ### **Pre-requisites**
 
-
     To create an Instance Secret for securing JDBC credentials, you must have the following information:
 
     **Access Permissions in DataOS**
@@ -1488,7 +1765,6 @@ If you want to store credentials for various data sources in an Instance Secret 
   <Accordion title="MongoDB" defaultOpen={false}>
     ### **Pre-requisites**
 
-
     To create an Instance Secret for securing MongoDB credentials, you must have the following information:
 
     **Access Permissions in DataOS**
@@ -1772,7 +2048,6 @@ If you want to store credentials for various data sources in an Instance Secret 
   <Accordion title="Microsoft SQL Server (MSSQL) or Azure SQL" defaultOpen={false}>
     ### **Pre-requisites**
 
-
     To create an Instance Secret for securing MSSQL or Azure SQL credentials, you must have the following information:
 
     **Access Permissions in DataOS**
@@ -2051,7 +2326,6 @@ If you want to store credentials for various data sources in an Instance Secret 
 
   <Accordion title="MySQL" defaultOpen={false}>
     ### **Pre-requisites**
-
 
     To create an Instance Secret for securing MySQL credentials, you must have the following information:
 
@@ -2337,9 +2611,287 @@ If you want to store credentials for various data sources in an Instance Secret 
     </CodeGroup>
   </Accordion>
 
+  <Accordion title="Opensearch" defaultOpen={false}>
+    ### Pre-requisites
+
+    To create an Instance Secret for securing OpenSearch credentials, you must have the following information:
+
+    **Access Permissions in DataOS**
+
+    <Warning>
+      Note that tags and use cases may have varying access permissions depending on the organization.
+    </Warning>
+
+    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
+
+    * `roles:id:data-dev`
+
+    * `roles:id:system-dev`
+
+    * `roles:id:user`
+
+    **Checking Assigned Roles**
+
+    Use the following command to verify assigned roles:
+
+    ```bash
+    dataos-ctl user get
+    ```
+
+    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
+
+    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
+
+    * **Manage All Instance-level Resources of DataOS in User Layer**
+
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section
+
+    <Tabs>
+      <Tab title="use case ">
+        ![](/usecase2.png)
+      </Tab>
+
+      <Tab title="tags">
+        ```bash
+              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                       │             │        │                      │  roles:id:user,                  
+                       │             │        │                      │ users:id:iamgroot  
+        ```
+      </Tab>
+    </Tabs>
+
+    **Source System Configuration**
+
+    * **Username:** The OpenSearch username used to authenticate access to the OpenSearch instance. This is typically a user-specific or role-based identifier.
+
+    * **Password:** The OpenSearch password corresponding to the username for authentication. You can retrieve it from your OpenSearch configuration or admin settings, depending on how the instance credentials are managed in your organization.
+
+    Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
+
+    ### Create an instance secret for securing OpenSearch credentials
+
+    OpenSearch is a distributed search and analytics engine designed to handle large volumes of structured and unstructured data. It is commonly used for log analytics, full-text search, and real-time monitoring applications.
+
+    To create an OpenSearch Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the necessary permissions. Follow the steps below to complete the creation process efficiently and securely.
+
+    ### Step 1: Create a manifest file
+
+    Begin by creating a manifest file to hold the configuration details for your OpenSearch Instance Secret. Below are the templates for the read-only and read-write manifests:
+
+    <Warning>
+      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+
+      ```bash
+      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
+      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
+      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
+      WARN[0000] 🛠 apply...error                              
+      ERRO[0000] failure applying resources
+      ```
+    </Warning>
+
+    <CodeGroup>
+      ```yaml Read-only instance-secret
+      name: ${opensearch-depot-name}-r # Name of the instance-secret, indicating it's for read-only access.
+      version: v1 # Manifest Version           
+      type: instance-secret # Resource-type
+      description: ${description}   # Optional: Brief description of the instance-secret's purpose.
+      layer: user # DataOS Layer                 
+      instance-secret:
+        type: key-value-properties  # Type of Instance-secret
+        acl: r                     # Access control level, set to 'r' for read-only access.
+        data:
+          username: ${{Opensearch username}}
+          password: ${{Opensearch password}}
+      ```
+
+      ```yaml Read-write instance-secret
+      name: ${opensearch-depot-name}-rw # Name of the instance-secret, indicating it's for read-write access.
+      version: v1 # Manifest Version           
+      type: instance-secret # Resource-type
+      description: ${description}   # Optional: Brief description of the instance-secret's purpose.
+      layer: user # DataOS Layer                 
+      instance-secret:
+        type: key-value-properties  # Type of Instance-secret
+        acl: rw                     # Access control level, set to 'rw' for read-write access.
+        data:
+          username: ${{username}}
+          password: ${{password}}
+      ```
+    </CodeGroup>
+
+    ### Resource meta section
+
+    The Opensearch manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Instance-secret specific section
+
+    This section focuses on attributes specific to OpenSearch Instance Secrets. It includes details like:
+
+    * `type`: Specifies the Instance Secret type (key-value-properties).
+
+    * `acl`: Access control level (read-only or read-write).
+
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+
+    For more information, refer to the [Attributes of Instance-secret specific section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
+
+    ### Step 2: Apply the manifest
+
+    To create the OpenSearch Instance Secret within DataOS, use the `apply` command. Since the Instance Secrets are Instance-level resources, do not specify any workspace while applying the manifest.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource apply -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl apply -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage 
+      dataos-ctl resource apply -f depot_secret.yaml
+      Example usage:
+      $ dataos-ctl apply -f depot_secret.yaml
+      INFO[0000] 🛠 apply...                                   
+      INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
+      INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
+      INFO[0004] 🛠 apply...complete
+      ```
+    </CodeGroup>
+
+    ### Step 3: Validate the Instance Secret
+
+    To validate the proper creation of the Instance Secret in DataOS, use the `get` command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret
+      ```
+
+      ```bash Expected output
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+              NAME     | VERSION |      TYPE       | WORKSPACE | STATUS |  RUNTIME  |  OWNER             
+      -----------------|---------|-----------------|-----------|--------|-----------|------------------------------
+           depotsecret | v1      | instance-secret |           | active |           | iamgroot
+      ```
+    </CodeGroup>
+
+    To get the list of all the Instance Secret within the Dataos environment execute the following command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource get -t instance-secret -a
+      ```
+
+      ```bash Expected output
+      dataos-ctl resource get -t instance-secret -a
+      INFO[0000] 🔍 get...                                     
+      INFO[0000] 🔍 get...complete                             
+
+                   NAME            | VERSION |      TYPE       | WORKSPACE | STATUS | RUNTIME |         OWNER          
+      -----------------------------|---------|-----------------|-----------|--------|---------|------------------------
+        abfssv2alpha-r             | v1      | instance-secret |           | active |         | iamgroot       
+        abfssv2alpha-rw            | v1      | instance-secret |           | active |         | iamgroot       
+        abfsswithoutmetastore-r    | v1      | instance-secret |           | active |         | thisisthor              
+        abfsswithoutmetastore-rw   | v1      | instance-secret |           | active |         | thisisthor              
+
+      ```
+    </CodeGroup>
+
+    Alternatively, you can also check on Metis UI by searching the Instance Secret by name.
+
+    ![](/Screenshotfrom2025-01-2716-25-53.png)
+
+    ### Delete the Instance Secret
+
+    <Warning>
+      Before you can delete an Instance Secret, you need to make sure there are no other Resources dependent on it. For example, if a Depot has a dependency on an Instance Secret, trying to delete that Instance Secret will cause an error. So, you'll need to remove the Depot first, and then you can delete the Instance Secret. This rule applies to not just Depot, but all dependent Resources, such as Workflow, Service, Worker, etc. The following error will be thrown if any Resource has a dependency on Instance Secret as shown below. Example usage:
+
+      ```bash
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:v1:instance-secret... 
+      INFO[0001] 🗑 deleting sampleinstsecret:v1:instance-secret...error 
+      WARN[0001] 🗑 delete...error                             
+      ERRO[0001] Invalid Parameter - failure deleting instance resource : cannot delete resource, it is a dependency of 'depot:v2alpha:sampleinstdepot'
+      ```
+    </Warning>
+
+    [](https://dataos.info/resources/instance_secret/first_steps/#__codelineno-15-1)
+
+    To delete an Instance Secret, use one of the following methods:
+
+    **Method 1:**  Specify the Resource type and Instance Secret name in the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -t ${resource-type} -n ${resource-name}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -t instance-secret -n sampleinstsecret
+      Expected output:
+      dataos-ctl delete -t instance-secret -n sampleinstsecret
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 2:**  Copy the Instance Secret name, version, and Resource-type from the output of the [`get`](https://dataos.info/interfaces/cli/command_reference/#get) command separated by '|' enclosed within quotes and use it as a string in the delete command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -i ${resource-name:version:resource-type}
+      ```
+
+      ```bash Example usage
+      dataos-ctl resource delete -i sampleinstsecret:v1:instance-secret
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+
+    **Method 3:** Specify the path of the manifest file and use the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
+
+    <CodeGroup>
+      ```bash Command
+      dataos-ctl resource delete -f ${manifest-file-path}
+      ```
+
+      ```bash Alternative command
+      dataos-ctl delete -f ${manifest-file-path}
+      ```
+
+      ```bash Example usage
+      dataos-ctl delete -f /home/desktop/connect-city/instance_secret.yaml
+      Expected output:
+      INFO[0000] 🗑 delete...                                  
+      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
+      INFO[0000] 🗑 delete...complete
+      ```
+    </CodeGroup>
+  </Accordion>
+
   <Accordion title="Oracle" defaultOpen={false}>
     ### **Pre-requisites**
-
 
     To create an Instance Secret for securing Oracle credentials, you must have the following information:
 
@@ -2624,7 +3176,6 @@ If you want to store credentials for various data sources in an Instance Secret 
   <Accordion title="Postgres" defaultOpen={false}>
     ### **Pre-requisites**
 
-
     To create an Instance Secret for securing PostgreSQL credentials, you must have the following information:
 
     **Access Permissions in DataOS**
@@ -2908,7 +3459,6 @@ If you want to store credentials for various data sources in an Instance Secret 
 
   <Accordion title="Redshift" defaultOpen={false}>
     ### **Pre-requisites**
-
 
     To create an Instance Secret for securing Redshift credentials, you must have the following information:
 
@@ -3197,8 +3747,6 @@ If you want to store credentials for various data sources in an Instance Secret 
   <Accordion title="Simple Storage Service (Amazon S3)" defaultOpen={false}>
     ### Pre-requisites
 
-
-
     To create an Instance Secret for securing S3 credentials, you must have the following information:
 
     **Access Permissions in DataOS**
@@ -3257,8 +3805,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * **Secret Key**: Another key used for authentication.
 
-    
-Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
+    Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
     ### Create an Instance Secret for securing Amazon S3 credentials
 
@@ -3775,7 +4322,6 @@ Ensure you have these credentials ready before proceeding with the Instance Secr
   <Accordion title="Windows Azure Storage Blob Secure (WASBS)" defaultOpen={false}>
     ### Pre-requisites
 
-
     To create an Instance Secret for securing WASBS credentials, you must have the following information:
 
     **Access Permissions in DataOS**
@@ -4055,569 +4601,6 @@ Ensure you have these credentials ready before proceeding with the Instance Secr
       ```
     </CodeGroup>
   </Accordion>
-
-  <Accordion title="Opensearch" defaultOpen={false}>
-    ### Pre-requisites
-
-
-
-    To create an Instance Secret for securing OpenSearch credentials, you must have the following information:
-
-    **Access Permissions in DataOS**
-
-    <Warning>
-      Note that tags and use cases may have varying access permissions depending on the organization.
-    </Warning>
-
-    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
-
-    * `roles:id:data-dev`
-
-    * `roles:id:system-dev`
-
-    * `roles:id:user`
-
-    **Checking Assigned Roles**
-
-    Use the following command to verify assigned roles:
-
-    ```bash
-    dataos-ctl user get
-    ```
-
-    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
-
-    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
-
-    * **Manage All Instance-level Resources of DataOS in User Layer**
-
-    To validate assigned use cases, refer to the Bifrost Application Use Cases section
-
-    <Tabs>
-      <Tab title="use case ">
-        ![](/usecase2.png)
-      </Tab>
-
-      <Tab title="tags">
-        ```bash
-              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                       │             │        │                      │  roles:id:user,                  
-                       │             │        │                      │ users:id:iamgroot  
-        ```
-      </Tab>
-    </Tabs>
-
-    **Source System Configuration**
-
-    * **Username:** The OpenSearch username used to authenticate access to the OpenSearch instance. This is typically a user-specific or role-based identifier.
-
-    * **Password:** The OpenSearch password corresponding to the username for authentication. You can retrieve it from your OpenSearch configuration or admin settings, depending on how the instance credentials are managed in your organization.
-
-    Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
-
-    ### Create an instance secret for securing OpenSearch credentials
-
-    OpenSearch is a distributed search and analytics engine designed to handle large volumes of structured and unstructured data. It is commonly used for log analytics, full-text search, and real-time monitoring applications.
-
-    To create an OpenSearch Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the necessary permissions. Follow the steps below to complete the creation process efficiently and securely.
-
-    ### Step 1: Create a manifest file
-
-    Begin by creating a manifest file to hold the configuration details for your OpenSearch Instance Secret. Below are the templates for the read-only and read-write manifests:
-
-    <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
-
-      ```bash
-      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
-      INFO[0000] 🛠 apply...                                   
-      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
-      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
-      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
-      WARN[0000] 🛠 apply...error                              
-      ERRO[0000] failure applying resources
-      ```
-    </Warning>
-
-    <CodeGroup>
-      ```yaml Read-only instance-secret
-      name: ${opensearch-depot-name}-r # Name of the instance-secret, indicating it's for read-only access.
-      version: v1 # Manifest Version           
-      type: instance-secret # Resource-type
-      description: ${description}   # Optional: Brief description of the instance-secret's purpose.
-      layer: user # DataOS Layer                 
-      instance-secret:
-        type: key-value-properties  # Type of Instance-secret
-        acl: r                     # Access control level, set to 'r' for read-only access.
-        data:
-          username: ${{Opensearch username}}
-          password: ${{Opensearch password}}
-      ```
-
-      ```yaml Read-write instance-secret
-      name: ${opensearch-depot-name}-rw # Name of the instance-secret, indicating it's for read-write access.
-      version: v1 # Manifest Version           
-      type: instance-secret # Resource-type
-      description: ${description}   # Optional: Brief description of the instance-secret's purpose.
-      layer: user # DataOS Layer                 
-      instance-secret:
-        type: key-value-properties  # Type of Instance-secret
-        acl: rw                     # Access control level, set to 'rw' for read-write access.
-        data:
-          username: ${{username}}
-          password: ${{password}}
-      ```
-    </CodeGroup>
-
-    ### Resource meta section
-
-    The Opensearch manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
-
-    ### Instance-secret specific section
-
-    This section focuses on attributes specific to OpenSearch Instance Secrets. It includes details like:
-
-    * `type`: Specifies the Instance Secret type (key-value-properties).
-
-    * `acl`: Access control level (read-only or read-write).
-
-    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
-
-    For more information, refer to the [Attributes of Instance-secret specific section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
-
-    ### Step 2: Apply the manifest
-
-    To create the OpenSearch Instance Secret within DataOS, use the `apply` command. Since the Instance Secrets are Instance-level resources, do not specify any workspace while applying the manifest.
-
-    <CodeGroup>
-      ```bash Command
-      dataos-ctl resource apply -f ${manifest-file-path}
-      ```
-
-      ```bash Alternative command
-      dataos-ctl apply -f ${manifest-file-path}
-      ```
-
-      ```bash Example usage 
-      dataos-ctl resource apply -f depot_secret.yaml
-      Example usage:
-      $ dataos-ctl apply -f depot_secret.yaml
-      INFO[0000] 🛠 apply...                                   
-      INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
-      INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
-      INFO[0004] 🛠 apply...complete
-      ```
-    </CodeGroup>
-
-    ### Step 3: Validate the Instance Secret
-
-    To validate the proper creation of the Instance Secret in DataOS, use the `get` command.
-
-    <CodeGroup>
-      ```bash Command
-      dataos-ctl resource get -t instance-secret
-      ```
-
-      ```bash Expected output
-      INFO[0000] 🔍 get...                                     
-      INFO[0000] 🔍 get...complete                             
-
-              NAME     | VERSION |      TYPE       | WORKSPACE | STATUS |  RUNTIME  |  OWNER             
-      -----------------|---------|-----------------|-----------|--------|-----------|------------------------------
-           depotsecret | v1      | instance-secret |           | active |           | iamgroot
-      ```
-    </CodeGroup>
-
-    To get the list of all the Instance Secret within the Dataos environment execute the following command.
-
-    <CodeGroup>
-      ```bash Command
-      dataos-ctl resource get -t instance-secret -a
-      ```
-
-      ```bash Expected output
-      dataos-ctl resource get -t instance-secret -a
-      INFO[0000] 🔍 get...                                     
-      INFO[0000] 🔍 get...complete                             
-
-                   NAME            | VERSION |      TYPE       | WORKSPACE | STATUS | RUNTIME |         OWNER          
-      -----------------------------|---------|-----------------|-----------|--------|---------|------------------------
-        abfssv2alpha-r             | v1      | instance-secret |           | active |         | iamgroot       
-        abfssv2alpha-rw            | v1      | instance-secret |           | active |         | iamgroot       
-        abfsswithoutmetastore-r    | v1      | instance-secret |           | active |         | thisisthor              
-        abfsswithoutmetastore-rw   | v1      | instance-secret |           | active |         | thisisthor              
-
-      ```
-    </CodeGroup>
-
-    Alternatively, you can also check on Metis UI by searching the Instance Secret by name.
-
-    ![](/Screenshotfrom2025-01-2716-25-53.png)
-
-    ### Delete the Instance Secret
-
-    <Warning>
-      Before you can delete an Instance Secret, you need to make sure there are no other Resources dependent on it. For example, if a Depot has a dependency on an Instance Secret, trying to delete that Instance Secret will cause an error. So, you'll need to remove the Depot first, and then you can delete the Instance Secret. This rule applies to not just Depot, but all dependent Resources, such as Workflow, Service, Worker, etc. The following error will be thrown if any Resource has a dependency on Instance Secret as shown below. Example usage:
-
-      ```bash
-      dataos-ctl delete -t instance-secret -n sampleinstsecret
-      INFO[0000] 🗑 delete...                                  
-      INFO[0000] 🗑 deleting sampleinstsecret:v1:instance-secret... 
-      INFO[0001] 🗑 deleting sampleinstsecret:v1:instance-secret...error 
-      WARN[0001] 🗑 delete...error                             
-      ERRO[0001] Invalid Parameter - failure deleting instance resource : cannot delete resource, it is a dependency of 'depot:v2alpha:sampleinstdepot'
-      ```
-    </Warning>
-
-    [](https://dataos.info/resources/instance_secret/first_steps/#__codelineno-15-1)
-
-    To delete an Instance Secret, use one of the following methods:
-
-    **Method 1:**  Specify the Resource type and Instance Secret name in the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
-
-    <CodeGroup>
-      ```bash Command
-      dataos-ctl resource delete -t ${resource-type} -n ${resource-name}
-      ```
-
-      ```bash Alternative command
-      dataos-ctl delete -t ${resource-type} -n ${resource-name}
-      ```
-
-      ```bash Example usage
-      dataos-ctl resource delete -t instance-secret -n sampleinstsecret
-      Expected output:
-      dataos-ctl delete -t instance-secret -n sampleinstsecret
-      INFO[0000] 🗑 delete...                                  
-      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
-      INFO[0000] 🗑 delete...complete
-      ```
-    </CodeGroup>
-
-    **Method 2:**  Copy the Instance Secret name, version, and Resource-type from the output of the [`get`](https://dataos.info/interfaces/cli/command_reference/#get) command separated by '|' enclosed within quotes and use it as a string in the delete command.
-
-    <CodeGroup>
-      ```bash Command
-      dataos-ctl resource delete -i ${resource-name:version:resource-type}
-      ```
-
-      ```bash Alternative command
-      dataos-ctl delete -i ${resource-name:version:resource-type}
-      ```
-
-      ```bash Example usage
-      dataos-ctl resource delete -i sampleinstsecret:v1:instance-secret
-      Expected output:
-      INFO[0000] 🗑 delete...                                  
-      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
-      INFO[0000] 🗑 delete...complete
-      ```
-    </CodeGroup>
-
-    **Method 3:** Specify the path of the manifest file and use the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
-
-    <CodeGroup>
-      ```bash Command
-      dataos-ctl resource delete -f ${manifest-file-path}
-      ```
-
-      ```bash Alternative command
-      dataos-ctl delete -f ${manifest-file-path}
-      ```
-
-      ```bash Example usage
-      dataos-ctl delete -f /home/desktop/connect-city/instance_secret.yaml
-      Expected output:
-      INFO[0000] 🗑 delete...                                  
-      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
-      INFO[0000] 🗑 delete...complete
-      ```
-    </CodeGroup>
-  </Accordion>
-
-  <Accordion title="Elasticsearch" defaultOpen={false}>
-    ### Pre-requisites
-
-
-
-
-    To create an Instance Secret for securing Elasticsearch credentials, you must have the following information:
-
-    **Access Permissions in DataOS**
-
-    <Warning>
-      Note that tags and use cases may have varying access permissions depending on the organization.
-    </Warning>
-
-    To create an Instance Secret in DataOS, at least one of the following role tags must be assigned:
-
-    * `roles:id:data-dev`
-
-    * `roles:id:system-dev`
-
-    * `roles:id:user`
-
-    **Checking Assigned Roles**
-
-    Use the following command to verify assigned roles:
-
-    ```bash
-    dataos-ctl user get
-    ```
-
-    If any required roles are missing, contact a DataOS Operator or submit a Grant Request for role assignment.
-
-    Alternatively, if access is managed through use cases, ensure the following use case is assigned:
-
-    * **Manage All Instance-level Resources of DataOS in User Layer**
-
-    To validate assigned use cases, refer to the Bifrost Application Use Cases section
-
-    <Tabs>
-      <Tab title="use case ">
-        ![](/usecase2.png)
-      </Tab>
-
-      <Tab title="tags">
-        ```bash
-              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                       │             │        │                      │  roles:id:user,                  
-                       │             │        │                      │ users:id:iamgroot  
-        ```
-      </Tab>
-    </Tabs>
-
-    **Source System Configuration**
-
-    * **Username:** The Elasticsearch username used to authenticate access to the Elasticsearch instance. This is typically a user-specific or role-based identifier that grants the necessary permissions for accessing resources.
-
-    * **Password:** The Elasticsearch password corresponding to the username for authentication. This password ensures secure access to the Elasticsearch instance and can be obtained from your Elasticsearch configuration or admin settings, depending on how credentials are managed within your organization.
-
-    Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
-
-    ### Create an instance secret for securing Elasticsearch credentials
-
-    Elasticsearch is a distributed search and analytics engine designed to handle large volumes of structured and unstructured data. It is widely used for log analytics, real-time search, and monitoring applications, enabling fast and scalable data indexing and querying.
-
-    To create an Elasticsearch Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the necessary permissions. Follow the steps below to securely and efficiently complete the Instance Secret creation process.
-
-    ### Step 1: Create a manifest file
-
-    Begin by creating a manifest file to hold the configuration details for your Elasticsearch Instance Secret. Below are the templates for the read-only and read-write manifests:
-
-    <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
-
-      ```bash
-      dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
-      INFO[0000] 🛠 apply...                                   
-      INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
-      WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
-      ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
-      WARN[0000] 🛠 apply...error                              
-      ERRO[0000] failure applying resources
-      ```
-    </Warning>
-
-    <CodeGroup>
-      ```yaml Read-only instance-secret
-      name: ${elasticsearch-depot-name}-r # Name of the instance-secret, indicating it's for read-only access.
-      version: v1 # Manifest Version           
-      type: instance-secret # Resource-type
-      description: ${description}   # Optional: Brief description of the instance-secret's purpose.
-      layer: user # DataOS Layer                 
-      instance-secret:
-        type: key-value-properties  # Type of Instance-secret
-        acl: r                     # Access control level, set to 'r' for read-only access.
-        data:
-          username: ${{elasticsearch username}}
-          password: ${{elasticsearch password}}
-      ```
-
-      ```yaml Read-write instance-secret
-      name: ${elasticsearch-depot-name}-rw # Name of the instance-secret, indicating it's for read-write access.
-      version: v1 # Manifest Version           
-      type: instance-secret # Resource-type
-      description: ${description}   # Optional: Brief description of the instance-secret's purpose.
-      layer: user # DataOS Layer                 
-      instance-secret:
-        type: key-value-properties  # Type of Instance-secret
-        acl: rw                     # Access control level, set to 'r' for read-write access.
-        data:
-          username: ${{elasticsearch username}}
-          password: ${{elasticsearch password}}
-      ```
-    </CodeGroup>
-
-    ### Resource meta section
-
-    The Elasticsearch manifest includes a Resource meta section with essential metadata attributes common to all resource types. Some attributes in this section are optional, while others are mandatory. For more details, refer to the [Attributes of Resource Meta Section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
-
-    ### Instance-secret specific section
-
-    This section focuses on attributes specific to Elasticsearch Instance Secrets. It includes details like:
-
-    * `type`: Specifies the Instance Secret type (key-value-properties).
-
-    * `acl`: Access control level (read-only or read-write).
-
-    * `data`: Contains sensitive information such as Elasticsearch username and password.
-
-    For more information, refer to the [Attributes of Instance-secret specific section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
-
-    ### Step 2: Apply the manifest
-
-    To create the Elasticsearch Instance Secret within DataOS, use the `apply` command. Since these Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest.
-
-    <CodeGroup>
-      ```bash Command
-      dataos-ctl resource apply -f ${manifest-file-path}
-      ```
-
-      ```bash Alternative command
-      dataos-ctl apply -f ${manifest-file-path}
-      ```
-
-      ```bash Example usage 
-      dataos-ctl resource apply -f depot_secret.yaml
-      Example usage:
-      $ dataos-ctl apply -f depot_secret.yaml
-      INFO[0000] 🛠 apply...                                   
-      INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
-      INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
-      INFO[0004] 🛠 apply...complete
-      ```
-    </CodeGroup>
-
-    ### Step 3: Validate the Instance Secret
-
-    To validate the proper creation of the Instance Secret in DataOS, use the `get` command.
-
-    <CodeGroup>
-      ```bash Command
-      dataos-ctl resource get -t instance-secret
-      ```
-
-      ```bash Expected output
-      INFO[0000] 🔍 get...                                     
-      INFO[0000] 🔍 get...complete                             
-
-              NAME     | VERSION |      TYPE       | WORKSPACE | STATUS |  RUNTIME  |  OWNER             
-      -----------------|---------|-----------------|-----------|--------|-----------|------------------------------
-           depotsecret | v1      | instance-secret |           | active |           | iamgroot
-      ```
-    </CodeGroup>
-
-    To get the list of all the Instance Secret within the Dataos environment execute the following command.
-
-    <CodeGroup>
-      ```bash Command
-      dataos-ctl resource get -t instance-secret -a
-      ```
-
-      ```bash Expected output
-      dataos-ctl resource get -t instance-secret -a
-      INFO[0000] 🔍 get...                                     
-      INFO[0000] 🔍 get...complete                             
-
-                   NAME            | VERSION |      TYPE       | WORKSPACE | STATUS | RUNTIME |         OWNER          
-      -----------------------------|---------|-----------------|-----------|--------|---------|------------------------
-        abfssv2alpha-r             | v1      | instance-secret |           | active |         | iamgroot       
-        abfssv2alpha-rw            | v1      | instance-secret |           | active |         | iamgroot       
-        abfsswithoutmetastore-r    | v1      | instance-secret |           | active |         | thisisthor              
-        abfsswithoutmetastore-rw   | v1      | instance-secret |           | active |         | thisisthor              
-
-      ```
-    </CodeGroup>
-
-    Alternatively, you can also check on Metis UI by searching the Instance Secret by name.
-
-    ![](/Screenshotfrom2025-01-2716-25-53.png)
-
-    ### Delete the Instance Secret
-
-    <Warning>
-      Before you can delete an Instance Secret, you need to make sure there are no other Resources dependent on it. For example, if a Depot has a dependency on an Instance Secret, trying to delete that Instance Secret will cause an error. So, you'll need to remove the Depot first, and then you can delete the Instance Secret. This rule applies to not just Depot, but all dependent Resources, such as Workflow, Service, Worker, etc. The following error will be thrown if any Resource has a dependency on Instance Secret as shown below. Example usage:
-
-      ```bash
-      dataos-ctl delete -t instance-secret -n sampleinstsecret
-      INFO[0000] 🗑 delete...                                  
-      INFO[0000] 🗑 deleting sampleinstsecret:v1:instance-secret... 
-      INFO[0001] 🗑 deleting sampleinstsecret:v1:instance-secret...error 
-      WARN[0001] 🗑 delete...error                             
-      ERRO[0001] Invalid Parameter - failure deleting instance resource : cannot delete resource, it is a dependency of 'depot:v2alpha:sampleinstdepot'
-      ```
-    </Warning>
-
-    [](https://dataos.info/resources/instance_secret/first_steps/#__codelineno-15-1)
-
-    To delete an Instance Secret, use one of the following methods:
-
-    **Method 1:**  Specify the Resource type and Instance Secret name in the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
-
-    <CodeGroup>
-      ```bash Command
-      dataos-ctl resource delete -t ${resource-type} -n ${resource-name}
-      ```
-
-      ```bash Alternative command
-      dataos-ctl delete -t ${resource-type} -n ${resource-name}
-      ```
-
-      ```bash Example usage
-      dataos-ctl resource delete -t instance-secret -n sampleinstsecret
-      Expected output:
-      dataos-ctl delete -t instance-secret -n sampleinstsecret
-      INFO[0000] 🗑 delete...                                  
-      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
-      INFO[0000] 🗑 delete...complete
-      ```
-    </CodeGroup>
-
-    **Method 2:**  Copy the Instance Secret name, version, and Resource-type from the output of the [`get`](https://dataos.info/interfaces/cli/command_reference/#get) command separated by '|' enclosed within quotes and use it as a string in the delete command.
-
-    <CodeGroup>
-      ```bash Command
-      dataos-ctl resource delete -i ${resource-name:version:resource-type}
-      ```
-
-      ```bash Alternative command
-      dataos-ctl delete -i ${resource-name:version:resource-type}
-      ```
-
-      ```bash Example usage
-      dataos-ctl resource delete -i sampleinstsecret:v1:instance-secret
-      Expected output:
-      INFO[0000] 🗑 delete...                                  
-      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
-      INFO[0000] 🗑 delete...complete
-      ```
-    </CodeGroup>
-
-    **Method 3:** Specify the path of the manifest file and use the [`delete`](https://dataos.info/interfaces/cli/command_reference/#delete) command.
-
-    <CodeGroup>
-      ```bash Command
-      dataos-ctl resource delete -f ${manifest-file-path}
-      ```
-
-      ```bash Alternative command
-      dataos-ctl delete -f ${manifest-file-path}
-      ```
-
-      ```bash Example usage
-      dataos-ctl delete -f /home/desktop/connect-city/instance_secret.yaml
-      Expected output:
-      INFO[0000] 🗑 delete...                                  
-      INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
-      INFO[0000] 🗑 delete...complete
-      ```
-    </CodeGroup>
-  </Accordion>
 </AccordionGroup>
 
 **Repositories**
@@ -4630,7 +4613,7 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     AWS CodeCommit is a central storage location where code, documentation, and related files are managed and versioned. It allows developers to track changes over time, collaborate on code by merging contributions from multiple developers, and maintain a history of modifications.
 
-    ### &#xA;Pre-requisites
+    ### Pre-requisites
 
     To create an Instance Secret for securing AWS CodeCommit credentials, you must have the following information:
 
@@ -4682,9 +4665,9 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     **Source System Configuration**
 
-    * **GITSYNC_USERNAME**: This represents the AWS CodeCommit username required for authentication.
+    * **GITSYNC\_USERNAME**: This represents the AWS CodeCommit username required for authentication.
 
-    * **GITSYNC_PASSWORD**: This is the corresponding password or an app password used for authentication.
+    * **GITSYNC\_PASSWORD**: This is the corresponding password or an app password used for authentication.
       These credentials can be obtained from the  AWS CodeCommit settings or provided by an administrator.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process. Follow the steps below to complete the creation process efficiently and securely.
@@ -4842,9 +4825,9 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     **Source System Configuration**
 
-    * **GITSYNC_USERNAME**: This represents the Bitbucket username required for authentication.
+    * **GITSYNC\_USERNAME**: This represents the Bitbucket username required for authentication.
 
-    * **GITSYNC_PASSWORD**: This is the corresponding password or an app password used for authentication.
+    * **GITSYNC\_PASSWORD**: This is the corresponding password or an app password used for authentication.
       These credentials can be obtained from the Bitbucket account settings or provided by an administrator.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process. Follow the steps below to complete the creation process efficiently and securely.
