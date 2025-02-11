@@ -70,7 +70,8 @@
                   "resources/depot/supported_connectors",
                   "resources/depot/cataloging",
                   "resources/depot/example"
-                ]
+                ],
+                "expandable": true                
               },
               {
                 "group": "Lens",
