@@ -173,10 +173,10 @@
                           {
                             "group": "Indexer Services",
                             "pages": [
-                                            "resources/scanner/supported_sources/indexer_services/data_profiling",
-                                              "resources/scanner/supported_sources/indexer_services/data_quality",
-                                                "resources/scanner/supported_sources/indexer_services/dataos_resources",
-                                            "resources/scanner/supported_sources/indexer_services/query_usage"
+                              "resources/scanner/supported_sources/indexer_services/data_profiling",
+                              "resources/scanner/supported_sources/indexer_services/data_quality",
+                              "resources/scanner/supported_sources/indexer_services/dataos_resources",
+                              "resources/scanner/supported_sources/indexer_services/query_usage"
                             ]
                           }
                         ]
