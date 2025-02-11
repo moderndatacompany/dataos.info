@@ -1,18 +1,30 @@
 ---
 title: "How to refer to Instance Secret in other DataOS Resources?"
+sidebarTitle: "Instance Secret reference"
+description: "To access the stored secret data in DataOS, you can reference them in your code using the dataosSecrets attribute. This identifier ensures secure referencing of Instance Secrets for various resources, enhancing system security and operational integrity."
 ---
-
-To access the stored secret data in DataOS, you can reference them in your code using the `dataosSecrets` attribute. This identifier ensures secure referencing of Instance Secrets for various resources, enhancing system security and operational integrity.
 
 ## **Referring to Instance Secret in Depot**
 
 To refer to an Instance Secret in Depots, follow these steps:
 
-1. **Ensure Creation of Instance-Secret:** First, make sure you have created the respective instance-secrets.
+1. **Ensure Creation of Instance-Secret:**
 
-2. **Use `dataosSecrets` Identifier:** In the Depot manifest, use the `dataosSecrets` identifier to refer to the instance-secret.
+    
 
-For read-only access to a Depot, create read-only secrets. For read-write access, create both read and read-write instance-secrets. This is necessary because when providing someone else access to the Depot, you can grant either read or read-write access using either CLI or Bifrost UI. For either type of access, the person will have access to the respective instance-secret.
+   First, make sure you have created the respective Instance Secrets.
+
+2. **Use `secrets` Identifier:**
+
+    
+
+   In the Depot manifest, use the
+
+   `secrets`
+
+   identifier to refer to the Instance Secret.
+
+For read-only access to a Depot, create a read-only Instance Secret. For read-write access, create both read and read-write Instance Secret. This is necessary because when providing someone else access to the Depot, you can grant either read or read-write access using either CLI or Bifrost UI. For either type of access, the person will have access to the respective Instance Secret.
 
 <CodeGroup>
   ```yaml Read-only Instance Secret
@@ -63,7 +75,7 @@ For read-only access to a Depot, create read-only secrets. For read-write access
     url: avengers.central-india.azure.snowflakecomputing.com
     database: mydatabase
     external: true
-    dataosSecrets:
+    secrets:
       - name: depotsecret-r
         keys:
           - depotsecret-r
@@ -74,21 +86,33 @@ For read-only access to a Depot, create read-only secrets. For read-write access
   ```
 </CodeGroup>
 
-Now while creating the manifest file for your Depot, ensure to include a reference to the Instance Secret using the `dataosSecrets` identifier, instead of directly specifying the secret using the `connectionSecrets` attribute.
+Now while creating the manifest file for your Depot, ensure to include a reference to the Instance Secret using the `secrets` identifier, instead of directly specifying the secret using the `connectionSecrets` attribute.
 
 <Warning>
    To ensure controlled access for read-write, it is essential to create two Instance Secrets: one with acl:r for read-only access and another with acl:rw for both read and write access and refer to both Instance-Secrets in a Depot as shown above. This enables precise management of permissions for different levels of access.
 </Warning>
 
-## **Referring Instance Secret in Service**
+## **Referring to Instance Secret in Service**
 
-To refer to an Instance Secret in Service Resource, follow these steps:
+To refer to an Instance Secret in a Service Resource, follow these steps:
 
-1. **Ensure Creation of Instance-Secret:** First, make sure you have created the respective instance-secrets for your Service.
+1. **Ensure Creation of Instance-Secret:**
 
-2. **Use `dataosSecrets` Identifier:** In the Service manifest, use the `dataosSecrets` identifier to refer to the instance-secret.
+    
 
-For read-only access to a Service, create read-only instance secrets. For read-write access, create both read and read-write instance-secrets. This is necessary because when providing someone else access to the Service, you can grant either read or read-write access using either CLI or Bifrost UI. For either type of access, the person will have access to the respective instance-secret.
+   First, make sure you have created the respective Instance Secrets for your Service.
+
+2. **Use `secrets` Identifier:**
+
+    
+
+   In the Service manifest, use the
+
+   `secrets`
+
+   identifier to refer to the instance-secret.
+
+For read-only access to a Service, create a read-only  Instance Secret. For read-write access, create both read and read-write  Instance Secrets. This is necessary because when providing someone else access to the Service, you can grant either read or read-write access using either CLI or Bifrost UI. For either type of access, the person will have access to the respective  Instance Secrets.
 
 <CodeGroup>
   ```yaml Read-only Instance Secret
@@ -168,10 +192,10 @@ For read-only access to a Service, create read-only instance secrets. For read-w
   ```
 </CodeGroup>
 
-Now while creating the manifest file for your Service, ensure to include a reference to the Instance Secret using the `dataosSecrets` identifier, instead of directly specifying the secret using the `connectionSecrets` attribute.
+Now while creating the manifest file for your Service, ensure to include a reference to the Instance Secret using the `secrets` identifier, instead of directly specifying the secret using the `connectionSecrets` attribute.
 
 <Warning>
   To ensure controlled access for read-write, it is essential to create two Instance Secrets: one with acl:r for read-only access and another with acl:rw for both read and write access and refer to both Instance-Secrets in a Service as shown above. This enables precise management of permissions for different levels of access.
 </Warning>
 
-Similarly, you can create and refer Instance Secrets to a [Workflow](/resources/workflow/).
+Similarly, you can create and refer Instance Secrets to a [Workflow](/resources/workflow/) or a Worker.
