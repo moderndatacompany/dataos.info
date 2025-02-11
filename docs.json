@@ -57,25 +57,6 @@
                 ]
               },
 
-              {
-                "sidebar": [
-                  {
-                    "section": "Instance Secret",
-                    "pages": [
-                      "resources/instance_secret/index",
-                      "resources/instance_secret/how_to_guide/recipe_1",
-                      "resources/instance_secret/quick_start_guide",
-                      "resources/instance_secret/configurations",
-                      "resources/instance_secret/governance",
-                      "resources/instance_secret/observability",
-                      "resources/instance_secret/cataloging",
-                      "resources/instance_secret/example"
-                    ]
-                  }
-                ]
-              },
-
-
               
               {
                 "group": "Depot",
