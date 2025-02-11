@@ -135,68 +135,66 @@
                         ]
                       }
                     ]
-                  }
-                ] 
-              },
-
-              
-              {
-                "group": "Scanner",
-                "pages": [
-                  "resources/scanner/index",
-                  "resources/scanner/concepts",
-                  {
-                    "group": "Supported sources",
-                    "pages": [
-                      {
-                        "group": "Data Sources",
-                        "pages": [
-                          "resources/scanner/supported_sources/data_sources/azure_sql",
-                          "resources/scanner/supported_sources/data_sources/bigquery",
-                          "resources/scanner/supported_sources/data_sources/kafka",
-                          "resources/scanner/supported_sources/data_sources/maria_db",
-                          "resources/scanner/supported_sources/data_sources/mssql",
-                          "resources/scanner/supported_sources/data_sources/mysql",
-                          "resources/scanner/supported_sources/data_sources/lakehouse",
-                          "resources/scanner/supported_sources/data_sources/oracle",
-                          "resources/scanner/supported_sources/data_sources/postgresql",
-                          "resources/scanner/supported_sources/data_sources/pulsar",
-                          "resources/scanner/supported_sources/data_sources/redshift",
-                          "resources/scanner/supported_sources/data_sources/snowflake"
-                        ]
-                      },
-                      {
-                        "group": "System Sources",
-                        "pages": [
-                          "resources/scanner/supported_sources/system_metadata_sources/data_product_scanner",
-                          "resources/scanner/supported_sources/system_metadata_sources/system_metadata_sync",
-                          "resources/scanner/supported_sources/system_metadata_sources/user_information"
-                        ]
-                      },
-                      {
-                        "group": "Indexer Services",
-                        "pages": [
-                          "resources/scanner/supported_sources/indexer_services/data_profiling",
-                          "resources/scanner/supported_sources/indexer_services/data_quality",
-                          "resources/scanner/supported_sources/indexer_services/dataos_resources",
-                          "resources/scanner/supported_sources/indexer_services/query_usage"
-                        ]
-                      }
-                    ]
                   },
-                  "resources/scanner/configurations",
-                  "resources/scanner/governance",
-                  "resources/scanner/cataloging",
-                  "resources/scanner/best_practices",
-                  "resources/scanner/observability",
-                  "resources/scanner/recipes"
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ],
+
+                  {
+                    "group": "Scanner",
+                    "pages": [
+                      "resources/scanner/index",
+                      "resources/scanner/concepts",
+                      {
+                        "group": "Supported sources",
+                        "pages": [
+                          {
+                            "group": "Data Sources",
+                            "pages": [
+                              "resources/scanner/supported_sources/data_sources/azure_sql",
+                              "resources/scanner/supported_sources/data_sources/bigquery",
+                              "resources/scanner/supported_sources/data_sources/kafka",
+                              "resources/scanner/supported_sources/data_sources/maria_db",
+                              "resources/scanner/supported_sources/data_sources/mssql",
+                              "resources/scanner/supported_sources/data_sources/mysql",
+                              "resources/scanner/supported_sources/data_sources/lakehouse",
+                              "resources/scanner/supported_sources/data_sources/oracle",
+                              "resources/scanner/supported_sources/data_sources/postgresql",
+                              "resources/scanner/supported_sources/data_sources/pulsar",
+                              "resources/scanner/supported_sources/data_sources/redshift",
+                              "resources/scanner/supported_sources/data_sources/snowflake"
+                            ]
+                          },
+                          {
+                            "group": "System Sources",
+                            "pages": [
+                              "resources/scanner/supported_sources/system_metadata_sources/data_product_scanner",
+                              "resources/scanner/supported_sources/system_metadata_sources/system_metadata_sync",
+                              "resources/scanner/supported_sources/system_metadata_sources/user_information"
+                            ]
+                          },
+                          {
+                            "group": "Indexer Services",
+                            "pages": [
+                                            "resources/scanner/supported_sources/indexer_services/data_profiling",
+                                              "resources/scanner/supported_sources/indexer_services/data_quality",
+                                                "resources/scanner/supported_sources/indexer_services/dataos_resources",
+                                            "resources/scanner/supported_sources/indexer_services/query_usage"
+                            ]
+                          }
+                        ]
+                      },
+                      "resources/scanner/configurations",
+                      "resources/scanner/governance",
+                      "resources/scanner/cataloging",
+                      "resources/scanner/best_practices",
+                      "resources/scanner/observability",
+                      "resources/scanner/recipes"
+                    ]
+                  }
+              ]
+            }
+          ]
+        }
+      ],
+                  
     "global": {
       "anchors": [
         {
