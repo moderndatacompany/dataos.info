@@ -1,5 +1,6 @@
 ---
 title: "How to refer to Instance Secret in other DataOS Resources?"
+sidebarTitle: "Instance Secret reference"
 ---
 
 To access the stored secret data in DataOS, you can reference them in your code using the `dataosSecrets` attribute. This identifier ensures secure referencing of Instance Secrets for various resources, enhancing system security and operational integrity.
@@ -8,9 +9,17 @@ To access the stored secret data in DataOS, you can reference them in your code 
 
 To refer to an Instance Secret in Depots, follow these steps:
 
-1. **Ensure Creation of Instance-Secret:** First, make sure you have created the respective instance-secrets.
+1. **Ensure Creation of Instance-Secret:**
 
-2. **Use `dataosSecrets` Identifier:** In the Depot manifest, use the `dataosSecrets` identifier to refer to the instance-secret.
+    First, make sure you have created the respective instance-secrets.
+
+2. **Use `dataosSecrets` Identifier:**
+
+    In the Depot manifest, use the 
+
+   `dataosSecrets`
+
+    identifier to refer to the instance-secret.
 
 For read-only access to a Depot, create read-only secrets. For read-write access, create both read and read-write instance-secrets. This is necessary because when providing someone else access to the Depot, you can grant either read or read-write access using either CLI or Bifrost UI. For either type of access, the person will have access to the respective instance-secret.
 
@@ -84,9 +93,17 @@ Now while creating the manifest file for your Depot, ensure to include a referen
 
 To refer to an Instance Secret in Service Resource, follow these steps:
 
-1. **Ensure Creation of Instance-Secret:** First, make sure you have created the respective instance-secrets for your Service.
+1. **Ensure Creation of Instance-Secret:**
 
-2. **Use `dataosSecrets` Identifier:** In the Service manifest, use the `dataosSecrets` identifier to refer to the instance-secret.
+    First, make sure you have created the respective instance-secrets for your Service.
+
+2. **Use `dataosSecrets` Identifier:**
+
+    In the Service manifest, use the 
+
+   `dataosSecrets`
+
+    identifier to refer to the instance-secret.
 
 For read-only access to a Service, create read-only instance secrets. For read-write access, create both read and read-write instance-secrets. This is necessary because when providing someone else access to the Service, you can grant either read or read-write access using either CLI or Bifrost UI. For either type of access, the person will have access to the respective instance-secret.
 
