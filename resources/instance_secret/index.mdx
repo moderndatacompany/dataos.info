@@ -5132,4 +5132,8 @@ This section involves do's and don'ts for managing an Instance Secret.
   <Accordion title="Can we create multiple Instance Secrets with the same name?" defaultOpen={false}>
     No, for Instance Secrets, names must be unique. If you attempt to create a secret with a name that already exists, the system will prevent duplication. You may need to use a different name or update the existing secret if modifications are required.
   </Accordion>
+
+  <Accordion title="Where does the secrets get stored within DataOS?" defaultOpen={false}>
+    Within DataOS secrets gets stored securly within the Heimdall (Heimdall001 DB). Heimdall is the governance engine for access control within DataOS, acting as the Policy Decision Point (PDP) for all authorization requests. It enforces security policies across datasets, API paths, and various applications and services, ensuring only authorized users and systems gain access. Heimdall supports both Role-Based Access Control (RBAC) and Attribute-Based Access Control (ABAC), enabling flexible and fine-grained permissions. It logs every access request and decision for auditing and compliance, providing a transparent and secure framework for managing data and system interactions within DataOS.
+  </Accordion>
 </AccordionGroup>
