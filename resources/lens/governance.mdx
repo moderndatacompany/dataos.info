@@ -4,39 +4,77 @@ sidebarTitle: "Governance"
 description: "An operator or administrator of an organization can govern or control access to who can create, read, update, or delete the Lens by assigning roles or use cases via Bifrost."
 ---
 
-## Controlling Access to Lens and its Semantic Model  
-
-
 Data governance in DataOS is structured across three layers to protect and control sensitive information:
 
-* **Physical data layer:** Governance policies are applied directly at the physical data layer, where the data resides in sources such as BigQuery, Postgres, Snowflake, or other data storage platforms. These policies enforce data protection at the source, controlling access and masking sensitive information before it is processed or exposed further. To know about how to govern the Lens click [here](/resources/lens/governance/).
+* [**Physical data layer**](/resources/lens/governance#physical-data-layer)
 
-* **Model-first Data Product layer:** At this layer, governance policies are applied to the semantic model (Lens) derived from the underlying source tables. To manage access effectively [user groups](/resources/lens/working_with_user_groups/) define different levels of exploration permissions within Lens.
+* [**Model layer**](/resources/lens/governance#model-layer)
 
-* **Activation layer:** Governance at the activation layer focuses on enforcing data protection within the Business Intelligence (BI) tool. This ensures that sensitive data remains masked or restricted based on user roles when presented through dashboards or reports, controlling how the data is accessed and displayed in the final interface.
-
-
-Permissions for reading, creating, updating, or deleting Lens and accessing its semantic model can be granted either by assigning a role or a use case.  
-
-### Access via use-cases  
-
-The following use cases are required:  
-
-1. `Create, Update, and Delete Lens in a specified workspace within the user layer`.
-2. `Read Lens2 backend`.  
-
-### Access via Roles  
-
-If access is granted through a role, it must include the necessary Lens-related use cases. For example, the **`Data-dev`** role contains permissions for creating and managing a Lens.  
-
-The **`Data-dev`** role is identified by the tag `roles:id:data-dev`.  
-
-<Note>  
-The name and permission levels of roles and use cases may vary across organizations, depending on how they are managed.  
-</Note>  
+* [**Activation layer**](/resources/lens/governance#activation-layer) 
 
 
-## Granting a use-case to a user  
+## 1. Physical data layer
+
+The Physical Data Layer consists of raw data residing in data storage platforms such as Snowflake, Minerva, or other cloud data warehouses. At this stage, governance policies are implemented to secure the source data before any processing or consumption. Key governance features include:
+
+* **Access control:** restricts access to source data(tables, schemas, databases) based on user roles and attributes.
+
+* **Data masking and redaction:** Sensitive information, like personally identifiable information (PII), is masked or redacted at the source level.
+
+* **Data filtering:** Access restricted at the row level based on roles or criteria. For example, an employee in one department may only have access to data relevant to their department.
+
+{/* For instance, In a Snowflake data warehouse, administrators can set up governance policies such as row-level security and data masking to ensure that sensitive data is appropriately protected before it is made available for modeling.
+
+For multi-source governance, Minerva integrates multiple data sources, extending governance policies across heterogeneous data platforms. Minerva allows for the application of governance at both the metadata and data levels, ensuring uniform security policies are applied to all integrated sources, such as Snowflake, BigQuery, PostgreSQL, or Lakehouses. The governance in Minerva is controlled and managed via Bifrost. */}
+
+For example, if a user wants to create a semantic model on top of certain data in DataOS, they must first ensure that they have access to the data. Additionally, they need to confirm they have the necessary permissions to create, update, and delete the Lens Resource.
+
+## 2. Model layer
+
+After the source data is governed and secured, the next layer is the Model layer, where the Lens (semantic model) is created. This is where the raw source data is transformed into a model that provides a unified view of the data. Governance at this layer focuses on controlling access to the model and ensuring that only authorized users can create, update, or explore the data.
+
+### Access Control to manage Lens
+
+Only authorized users with appropriate permissions are allowed to create or modify the semantic model (Lens). To control this, Bifrost is used to manage access by assigning roles or specific use cases to users. For example, a role such as 'Data Dev' may grant a user permission to create and modify the Lens, while other roles may have read-only access. To know how to manage access via Bifrost click [here](/resources/lens/governance#how-to-manage-access-permissions-to-create-lens?)
+
+### Access control for exploration of the Lens
+
+After the Lens (semantic model) is created, access to it for exploration or analysis needs to be governed. This is done by defining user groups that specify who can access specific parts of the model. The [user groups](/resources/lens/working_with_user_groups/) are configured in a `user_groups.yml` file, which is placed alongside the model folder. The user groups define different levels of access to the model, determining which users or groups can explore or interact with specific parts of the model based on their user group name and permission defined in those user groups.
+
+## 3. Activation layer
+
+The Activation Layer refers to the stage where the semantic model (Lens) is consumed by end-users through BI tools like Power BI, Tableau, or Superset. At this stage, governance focuses on ensuring that data remains secure and sensitive information is appropriately protected when presented in dashboards, reports, or analytical interfaces.
+
+**Data masking in BI tools:** Even when data is accessed via BI tools, sensitive data is still masked or restricted based on the user’s role. For example, in Power BI, certain fields in a financial dashboard may be hidden or masked for users with lower privileges.
+
+**Role-based data access:** In the activation layer, users can be granted different levels of access to the data, such as viewing aggregated metrics or drilling down to raw data. For example, an analyst might have full access to all data points, while a manager may only have access to summary reports.
+
+**Audit and monitoring:** User interactions with data in BI tools can be tracked, allowing organizations to monitor how sensitive data is being used and ensure compliance with governance policies.
+
+For instance, in Power BI, an organization can configure row-level security (RLS) to ensure that users can only see the data they are permitted to access. For example, if an employee from the HR department accesses a report in Power BI, they may see only employee-related data, while someone in Finance would have access to broader financial data.
+
+## How to manage access permissions to create Lens?
+
+Bifrost plays a central role in managing and controlling user access to manage Lens. Administrators use Bifrost to assign permissions for reading, creating, updating, or deleting Lens to users either via granting role or via granting use-case. This may include:
+
+Permissions and accessing its semantic model can be granted either by assigning a role or a use case.  
+
+### Access via use-cases 
+
+Granting permissions via use-cases allows operators to exercise precise control over user access, ensuring that only the necessary permissions are granted. This method is ideal for limiting users' actions to specific tasks, reducing the potential for unintended access to sensitive or unrelated data.
+
+The following are the use-cases to manage Lens permissions:
+
+1. `Read Lens`: Allows users to read or explore the Lens without making any changes. This permission is ideal for users who need to access the data but don’t need to modify or create new models.
+
+2. `Create, Update, and Delete Lens in a specified workspace within the user layer`: Allows users to create, update, and delete the Lens (semantic model) only within a specific workspace such as `public`, `sandbox`, `curriculum`. An operator can also use a wildcard (`**`) to grant access across all workspaces, instead of specifying individual ones.
+
+3. `Create Update and Delete Lens in user layer workspaces`: Grants users the ability to create, update, and delete the Lens across all workspaces. This is broader and suitable for admins managing models across different workspaces such as `public`, `sandbox`, `curriculum`.
+
+
+### Granting a use-case to a user to manage the Lens
+
+Imagine you are an operator, and you need to grant a user permission to read Lens in all workspace but create and manage the Lens (semantic model) in a specific workspace let's say `curriculum`. To ensure proper access control, you will use Bifrost to assign the appropriate permissions, so the user can modify the Lens only within the curriculum workspace, while still having read access to all workspaces. Follow the steps below to implement these permissions effectively:
 
 <Steps>  
 
@@ -53,7 +91,7 @@ The name and permission levels of roles and use cases may vary across organizati
   </Step>  
 
   <Step title="Select the User" titleSize="h2">  
-    After selecting the user, detailed information will be displayed. Go to the 'Grants' section to manage assigned permissions and use cases.  
+    After selecting the user, detailed users information will be displayed. Go to the 'Grants' section to manage assigned permissions and use cases.  
 
     ![](/resources/scanner/governance/iamgroot_grants_tab.png)  
 
@@ -71,15 +109,68 @@ The name and permission levels of roles and use cases may vary across organizati
   <Step title="Specify the Workspace" titleSize="h2">  
     After selecting the use case, a dialog box will prompt for the workspace name. Enter the workspace name where access should be granted.  
 
-    <Note>  
-      A workspace name must be specified for each action (Read, Create, Update, and Delete) to ensure precise permission assignment.  
+    <Note>
+    Each action (Read, Create, Update, and Delete) requires a specific workspace name to ensure accurate permission assignment.  
     </Note>  
 
-    In the example below, the user has been granted permission to read Lens in all workspaces but can create, update, and delete only in the `curriculum` workspace.  
+    In the example below, the user has been granted permission to read Lens in all workspaces but can create, update, and delete Lens only in the `curriculum` workspace.  
 
     ![](/resources/lens/governance/use_case_dialog_box.png)  
 
-    After completing the form, click `Grant`. The permissions will be updated, allowing the user to read Lens in all workspaces while managing Lens only in the `curriculum` workspace.  
+    Once the form is completed, click the Grant button to apply the changes. The permissions will be updated, allowing the user to read Lens in all workspaces while managing Lens only in the `curriculum` workspace.  
   </Step>  
 
 </Steps>  
+
+
+### Access via roles  
+
+While use-cases allow precise control, roles encompass a broader scope of permissions. Assigning roles grants users a wider range of capabilities, often beyond just managing the Lens. Roles may include permissions for a variety of tasks across the system, not limited to the creation or management of the Lens itself.
+
+If access is granted through a role, it must include the necessary Lens-related use cases. For example, the **`Data Dev`** role contains permissions for creating and managing a Lens.  
+
+The **`Data Dev`** role is identified by the tag `roles:id:data-dev`.  
+
+<Note>  
+The specific names, use-case permission levels, and roles may vary between organizations, depending on how access is structured and managed within the system.
+</Note>  
+
+### Assigning a role to a User to manage the Lens
+
+Imagine you are an operator, and you need to assign a role to a user that will grant them permissions to manage the Lens (semantic model) across all workspaces along with other responsibilities such as managing ETL pipelines. In such case assigning a role like `Data Dev` would be more appropriate. To implement this effectively, you will use Bifrost to assign the Data Dev role to the user. When granting access through roles, it's essential that the role includes the necessary Lens-related use cases. The Data Dev role, for instance, comes pre-configured with permissions for creating, updating, and managing the Lens.
+
+Follow the steps below to assign the `Data Dev` role:
+
+<Steps>
+
+  <Step title="Log in to DataOS and Access Bifrost">  
+    Log in to DataOS and navigate to Bifrost. The Bifrost interface will launch, providing the necessary tools to manage user roles and permissions.
+        ![](/resources/scanner/governance/bifrost.png)    
+  </Step>
+
+  <Step title="Locate the User" titleSize="h2">  
+    Navigate to the 'Users' tab in the Bifrost interface. Utilize the search function to locate the specific user you need to assign a role to, and select the user from the list. 
+        ![](/resources/scanner/governance/bifrost_user_iamgroot.png)   
+  </Step>
+
+  <Step title="Select the User and Access the 'Tags' Section" titleSize="h2">  
+    After selecting the user, detailed information about the user will appear. Scroll down to the 'Tags' section, which allows you to manage roles and permissions for the selected user. 
+    ![](/resources/lens/governance/tags_section.png) 
+  </Step>
+
+  <Step title="Assign the 'Data Dev' Role" titleSize="h2">  
+    In the 'Tags' section, click the 'Add Role' button to search for the `Data Dev` role. Once located, click on the role to select it.
+    ![](/resources/lens/governance/search_roles.png) 
+  </Step>
+
+  <Step title="Confirm the Role Assignment" titleSize="h2">  
+    Click the 'Add' button to confirm the assignment of the `Data Dev` role to the user. A success message will be displayed, confirming that the role has been successfully assigned to the user.  
+    ![](/resources/lens/governance/add_role.png)
+
+    Through the `Data Dev` role a user will be able to read, create, update and delete Lens in all workspace along with other permissions unrelated to managing the Lens.
+  </Step>
+
+</Steps>
+
+
+
