@@ -33,7 +33,7 @@ The structure of the Instance Secret manifest file is outlined as follows:![imag
 
 ## How to create an Instance Secret?
 
- This section includes steps for creating the Instance Secret to secure credentials of commonly used data sources and hosted code repositories using DataOS CLI. 
+This section includes steps for creating the Instance Secret to secure credentials of commonly used data sources and hosted code repositories using DataOS CLI.
 
 **Data Sources**
 
@@ -43,7 +43,7 @@ If you want to store credentials for various data sources in an Instance Secret 
   <Accordion title="Azure Blob File System Secure (ABFSS)" defaultOpen={false}>
     An Instance Secret for Azure Blob File System Secure (ABFSS) in DataOS is typically created to build Lakehouse Resource. However, it can also be used to create Depot Resource that require secure access to ABFSS storage. The following sections outline the necessary permissions, configurations, and steps required to set up an Instance Secret efficiently.
 
-    ### Pre-requisites 
+    ### Pre-requisites
 
     To create an Instance Secret for securing ABFSS credentials, you must have the following information:
 
@@ -99,7 +99,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * **Azure Storage Account Key:** The access key for the Azure Storage account, used for authentication. You can retrieve this from the Azure Portal by navigating to your storage account, selecting Access keys under the Security + networking section, and copying the key.
 
-    * **Azure Storage Account Name:**The name of the Azure Storage account used to identify it within your subscription. This can be found in the Azure Portal under the Overview section of your storage account.
+    * \*\*Azure Storage Account Name:\*\*The name of the Azure Storage account used to identify it within your subscription. This can be found in the Azure Portal under the Overview section of your storage account.
 
     Ensure that you have these details ready before proceeding with the Instance Secret creation process.
 
@@ -181,7 +181,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Step 2: Apply the manifest
 
-    To create the ABFSS Instance Secret within DataOS, use the `apply` command. Since ABFSS Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest. 
+    To create the ABFSS Instance Secret within DataOS, use the `apply` command. Since ABFSS Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest.
 
     <CodeGroup>
       ```bash Command
@@ -471,7 +471,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Step 2: Apply the manifest
 
-    To create the Bigquery Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest. 
+    To create the Bigquery Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest.
 
     <CodeGroup>
       ```bash Command
@@ -754,7 +754,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Step 2: Apply the manifest
 
-    To create the Eventhub Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest. 
+    To create the Eventhub Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest.
 
     <CodeGroup>
       ```bash Command
@@ -1040,7 +1040,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Step 2: Apply the manifest
 
-    To create the GCS Instance Secret within DataOS, use the `apply` command. Since GCS Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest. 
+    To create the GCS Instance Secret within DataOS, use the `apply` command. Since GCS Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest.
 
     <CodeGroup>
       ```bash Command
@@ -1323,7 +1323,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Step 2: Apply the manifest
 
-    To create the JDBC Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest. 
+    To create the JDBC Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest.
 
     <CodeGroup>
       ```bash Command
@@ -1527,7 +1527,6 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * **Password**: The password associated with the MongoDB username for authentication. This can be obtained from the MongoDB administrator, or if the password is already set, you will need to securely retrieve it.
 
-
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
     ## Create an Instance Secret for securing MongoDB credentials
@@ -1606,7 +1605,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Step 2: Apply the manifest
 
-    To create the MongoDB Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest. 
+    To create the MongoDB Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest.
 
     <CodeGroup>
       ```bash Command
@@ -1754,9 +1753,9 @@ If you want to store credentials for various data sources in an Instance Secret 
     </CodeGroup>
   </Accordion>
 
-  <Accordion title="Microsoft SQL Server (MSSQL)" defaultOpen={false}>
+  <Accordion title="Microsoft SQL Server (MSSQL) or Azure SQL" defaultOpen={false}>
     **Pre-requisites**
-    To create an Instance Secret for securing MsSQL credentials, you must have the following information:
+    To create an Instance Secret for securing MSSQL or Azure SQL credentials, you must have the following information:
 
     **Access Permissions in DataOS**
 
@@ -1806,23 +1805,25 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     **Source System Configuration**
 
-    * **Username**: The MsSQL username used to authenticate and access your MsSQL database. You can retrieve this from the MsSQL database admin by asking them to provide the username for your account.
+    * **Username**
 
-    * **Password**: The password associated with the MsSQL username for authentication. You can obtain this from the MsSQL database admin, or if the password is already set, you will need to securely retrieve it.
+      : The MSSQL username used to authenticate and access your MSSQL database. You can retrieve this from the MsSQL database admin by asking them to provide the username for your account.
+
+    * **Password**
+
+      : The password associated with the MSSQL username for authentication. You can obtain this from the MSSQL database admin, or if the password is already set, you will need to securely retrieve it.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
-    ## Create an Instance Secret for securing MSSQL credentials
+    ## Create an Instance Secret for securing MSSQL or Azure SQL credentials
 
-    Microsoft SQL Server (MSSQL) is a SQL database. SQL databases are typically centralized systems designed for structured data, organized into tables with a predefined schema.
+    Microsoft SQL Server (MSSQL) is a SQL database. Azure SQL, the cloud-based managed version of MSSQL, offers similar functionality but is optimized for cloud scalability, automated maintenance, and high availability. While MSSQL requires manual setup and management, Azure SQL provides a fully managed service, reducing administrative overhead.
 
-    To create a MSSQL Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
+    To create an MSSQL or Azure SQL Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
 
     ### Step 1: Create a manifest file
 
     Begin by creating a manifest file to hold the configuration details for your MSSQL Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
-
-
 
     <Warning>
       Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
@@ -1837,7 +1838,6 @@ If you want to store credentials for various data sources in an Instance Secret 
       ERRO[0000] failure applying resources
       ```
     </Warning>
-    
 
     <CodeGroup>
       ```yaml Read-only instance-secret
@@ -1850,8 +1850,8 @@ If you want to store credentials for various data sources in an Instance Secret 
         type: key-value-properties # Secret type
         acl: r # Access control: 'r' for read-only
         data:
-          username: ${username} # replace with MsSQL username
-          password: ${password} # replace with MsSQL password
+          username: ${username} # replace with MSSQL or Azure SQL username
+          password: ${password} # replace with MSSQL or Azure SQL password
       ```
 
       ```yaml Read-write instance-secret
@@ -1864,8 +1864,8 @@ If you want to store credentials for various data sources in an Instance Secret 
         type: key-value-properties # Secret type
         acl: rw # Access control: 'rw' for read-write
         data:
-          username: ${username} # replace with MsSQL username
-          password: ${password} # replace with MsSQL password
+          username: ${username} # replace with MSSQL or Azure SQL username
+          password: ${password} # replace with MSSQL or Azure SQL password
       ```
     </CodeGroup>
 
@@ -1875,19 +1875,25 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Instance-secret specific section
 
-    This section focuses on attributes specific to MSSQL Instance Secrets. It includes details like:
+    This section focuses on attributes specific to MSSQL or Azure SQL Instance Secrets. It includes details like:
 
-    * `type`: Specifies the Instance Secret type (key-value-properties).
+    * `type`
 
-    * `acl`: Access control level (read-only or read-write).
+      : Specifies the Instance Secret type (key-value-properties).
 
-    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `acl`
+
+      : Access control level (read-only or read-write).
+
+    * `data`
+
+      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
     For more information, refer to the [Attributes of Instance-secret specific section](https://example.com/c/678f3bec-7128-8002-ab9b-3a112795db86#).
 
     ### Step 2: Apply the manifest
 
-    To create the MSSQL Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest. 
+    To create the MSSQL Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest.
 
     <CodeGroup>
       ```bash Command
@@ -2103,7 +2109,6 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     Begin by creating a manifest file to hold the configuration details for your MySQL Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
-
     <Warning>
       Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
@@ -2117,8 +2122,6 @@ If you want to store credentials for various data sources in an Instance Secret 
       ERRO[0000] failure applying resources
       ```
     </Warning>
-
-    
 
     <CodeGroup>
       ```yaml Read-only instance-secret
@@ -2172,7 +2175,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Step 2: Apply the manifest
 
-    To create the MySQL Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest. 
+    To create the MySQL Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest.
 
     <CodeGroup>
       ```bash Command
@@ -2402,8 +2405,6 @@ If you want to store credentials for various data sources in an Instance Secret 
       ```
     </Warning>
 
-    
-
     <CodeGroup>
       ```yaml Read-only instance-secret
       # Oracle Read Instance-secret Manifest
@@ -2456,7 +2457,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Step 2: Apply the manifest
 
-    To create an Oracle Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest. 
+    To create an Oracle Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest.
 
     <CodeGroup>
       ```bash Command
@@ -2664,7 +2665,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ## Create an Instance Secret for securing Postgres credentials
 
-     Postgres is an SQL database. SQL databases are typically centralized systems designed for structured data, organized into tables with a predefined schema.
+    Postgres is an SQL database. SQL databases are typically centralized systems designed for structured data, organized into tables with a predefined schema.
 
     To create a Postgres Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
 
@@ -2685,8 +2686,6 @@ If you want to store credentials for various data sources in an Instance Secret 
       ERRO[0000] failure applying resources
       ```
     </Warning>
-
-    
 
     <CodeGroup>
       ```yaml Read-only instance-secret
@@ -2741,7 +2740,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Step 2: Apply the manifest
 
-    To create the Postgres Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest. 
+    To create the Postgres Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest.
 
     <CodeGroup>
       ```bash Command
@@ -2975,8 +2974,6 @@ If you want to store credentials for various data sources in an Instance Secret 
       ```
     </Warning>
 
-    
-
     <CodeGroup>
       ```yaml Read-only instance-secret
       name: ${redshift-depot-name}-r # Unique identifier for Resource, replace ${re-depot-name} with depot name
@@ -3029,7 +3026,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Step 2: Apply the manifest
 
-    To create the Redshift Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest. 
+    To create the Redshift Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest.
 
     <CodeGroup>
       ```bash Command
@@ -3250,7 +3247,6 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     Begin by creating a manifest file to hold the configuration details for your S3 Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
-
     <Warning>
       Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
@@ -3264,7 +3260,6 @@ If you want to store credentials for various data sources in an Instance Secret 
       ERRO[0000] failure applying resources
       ```
     </Warning>
-    
 
     <CodeGroup>
       ```yaml Read-only instance-secret
@@ -3322,7 +3317,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Step 2: Apply the manifest
 
-    To create the S3 Instance Secret within DataOS, use the `apply` command. Since S3 Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest. 
+    To create the S3 Instance Secret within DataOS, use the `apply` command. Since S3 Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest.
 
     <CodeGroup>
       ```bash Command
@@ -3539,7 +3534,6 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     Begin by creating a manifest file to hold the configuration details for your Snowflake Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below
 
-
     <Warning>
       Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
@@ -3553,8 +3547,6 @@ If you want to store credentials for various data sources in an Instance Secret 
       ERRO[0000] failure applying resources
       ```
     </Warning>
-
-    
 
     <CodeGroup>
       ```yaml Read-only instance-secret
@@ -3609,7 +3601,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     ### Step 2: Apply the manifest
 
-    To create the Snowflake Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest. 
+    To create the Snowflake Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest.
 
     <CodeGroup>
       ```bash Command
@@ -3826,7 +3818,6 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     Begin by creating a manifest file to hold the configuration details for your WASBS Instance Secret. Below are the templates for the read-only and read-write manifests:
 
-
     <Warning>
       Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
@@ -3840,8 +3831,6 @@ If you want to store credentials for various data sources in an Instance Secret 
       ERRO[0000] failure applying resources
       ```
     </Warning>
-
-    
 
     <CodeGroup>
       ```yaml Read-only instance-secret
@@ -4112,7 +4101,6 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     Begin by creating a manifest file to hold the configuration details for your OpenSearch Instance Secret. Below are the templates for the read-only and read-write manifests:
 
-
     <Warning>
       Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
@@ -4126,8 +4114,6 @@ If you want to store credentials for various data sources in an Instance Secret 
       ERRO[0000] failure applying resources
       ```
     </Warning>
-
-    
 
     <CodeGroup>
       ```yaml Read-only instance-secret
@@ -4406,8 +4392,6 @@ If you want to store credentials for various data sources in an Instance Secret 
       ```
     </Warning>
 
-    
-
     <CodeGroup>
       ```yaml Read-only instance-secret
       name: ${elasticsearch-depot-name}-r # Name of the instance-secret, indicating it's for read-only access.
@@ -4609,6 +4593,10 @@ If you want to store credentials for various data sources in an Instance Secret 
       ```
     </CodeGroup>
   </Accordion>
+
+  <Accordion title="AzureSQL" defaultOpen={false}>
+
+  </Accordion>
 </AccordionGroup>
 
 **Repositories**
@@ -4685,7 +4673,6 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     Begin by creating a manifest file to hold the configuration details for your AWS CodeCommit Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
-
     <Warning>
       Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
@@ -4699,7 +4686,6 @@ If you want to store credentials for hosted code repositories in an Instance Sec
       ERRO[0000] failure applying resources
       ```
     </Warning>
-    
 
     <CodeGroup>
       ```yaml Read-only instance-secret
@@ -4754,7 +4740,7 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     ### Step 2: Apply the manifest
 
-    To create the AWS CodeCommit Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest. 
+    To create the AWS CodeCommit Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest.
 
     <CodeGroup>
       ```bash Command
@@ -4845,7 +4831,6 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     Begin by creating a manifest file to hold the configuration details for your Bitbucket repository Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
-
     <Warning>
       Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
@@ -4859,8 +4844,6 @@ If you want to store credentials for hosted code repositories in an Instance Sec
       ERRO[0000] failure applying resources
       ```
     </Warning>
-
-    
 
     <CodeGroup>
       ```yaml Read-only instance-secret
@@ -4910,7 +4893,7 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     ### Step 2: Apply the manifest
 
-    To create the Bitbucket repository Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest. 
+    To create the Bitbucket repository Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest.
 
     <CodeGroup>
       ```bash Command
@@ -5015,8 +4998,6 @@ If you want to store credentials for hosted code repositories in an Instance Sec
       ```
     </Warning>
 
-    
-
     <CodeGroup>
       ```yaml Read-only instance-secret
       name: ${{gitcred-r}}
@@ -5065,7 +5046,7 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     ### Step 2: Apply the manifest
 
-    To create the Git repository Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest. 
+    To create the Git repository Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest.
 
     <CodeGroup>
       ```bash Command
