@@ -8,7 +8,7 @@ description: "Comprehensive guide on best practices to configuring and optimizin
 
 Filter patterns help limit the scope of scanned data. By using specific patterns, user can avoid scanning unnecessary databases, schemas, or tables, improving performance and security.
 
-### **✅ Correct Approach**&#x20;
+### **✅ Correct Approach**
 
 ```yaml
 databaseFilterPattern: 
@@ -16,17 +16,8 @@ databaseFilterPattern:
     - ^SNOWFLAKE.*
 ```
 
-* This pattern ensures that only databases starting with
-
-  **"SNOWFLAKE"**
-
-  are scanned.
-
-* Using anchored regex (
-
-  `^SNOWFLAKE.*`
-
-  ) prevents unintentional matches.
+* This pattern ensures that only databases starting with **"SNOWFLAKE"** are scanned.
+* Using anchored regex ( `^SNOWFLAKE.*` ) prevents unintentional matches.
 
 🚫 **Avoid:**
 Overly broad patterns that match unintended databases.
@@ -35,7 +26,7 @@ Overly broad patterns that match unintended databases.
 
 Wildcards (`.*`) at the end of filter patterns may match more than expected, leading to performance issues and unexpected results.
 
-### **✅ Correct Approach**&#x20;
+### **✅ Correct Approach**
 
 ```yaml
 databaseFilterPattern: 
@@ -47,27 +38,14 @@ This ensures that **only** the database **SNOWFLAKE** is included, preventing un
 
 🚫 **Avoid:**
 
-* Avoid specifying the exact names of databases, schemas, or tables without using regex. Any provided name will automatically be converted into a regex pattern with a wildcard appended, meaning that "SNOWFLAKE" will be interpreted as
-
-  `^SNOWFLAKE.*.`
-
-* `^SNOWFLAKE.*`
-
-  could match
-
-  `SNOWFLAKE_TEST`
-
-  ,
-
-  `SNOWFLAKE_OLD`
-
-  , etc., leading to unintended scans.
+* Avoid specifying the exact names of databases, schemas, or tables without using regex. Any provided name will automatically be converted into a regex pattern with a wildcard appended, meaning that "SNOWFLAKE" will be interpreted as `^SNOWFLAKE.*.`
+* `^SNOWFLAKE.*` could match `SNOWFLAKE_TEST`, `SNOWFLAKE_OLD`, etc., leading to unintended scans.
 
 ## 3. Exclude Specific Schemas and Tables
 
 To prevent unnecessary scanning of known irrelevant schemas or tables, use **excludes** to filter them out.
 
-### **✅ Correct Approach**&#x20;
+### **✅ Correct Approach**
 
 ```yaml
 schemaFilterPattern: 
