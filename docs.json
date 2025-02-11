@@ -43,6 +43,103 @@
                   "getting_started/introduction"
                 ]
               },
+
+
+              {
+                "group": "Resources",
+                "pages": [
+                  {
+                    "group": "Instance Secret",
+                    "pages": [
+                      "resources/instance_secret/index",
+                      "resources/instance_secret/how_to_guide/recipe_1",
+                      "resources/instance_secret/quick_start_guide",
+                      "resources/instance_secret/configurations",
+                      "resources/instance_secret/governance",
+                      "resources/instance_secret/observability",
+                      "resources/instance_secret/cataloging",
+                      "resources/instance_secret/example"
+                    ]
+                  },                  
+                  {
+                    "group": "Depot",
+                    "pages": [
+                      "resources/depot/index",
+                      "resources/depot/configurations",
+                      "resources/depot/governance",
+                      "resources/depot/observability",
+                      "resources/depot/supported_connectors",
+                      "resources/depot/cataloging",
+                      "resources/depot/example"
+                    ]                
+                  },
+                  {
+                    "group": "Lens",
+                    "pages": [
+                      "resources/lens/index",
+                      {
+                        "group": "Supported Data Sources",
+                        "pages": [
+                          "resources/lens/data_sources/bigquery",
+                          "resources/lens/data_sources/awsredshift",
+                          "resources/lens/data_sources/flash",
+                          "resources/lens/data_sources/minerva",
+                          "resources/lens/data_sources/postgres",
+                          "resources/lens/data_sources/themis",
+                          "resources/lens/data_sources/snowflake"
+                        ]
+                      },
+                      {
+                        "group": "Semantic modeling",
+                        "pages": [
+                          "resources/lens/semantic_modeling_concepts",
+                          "resources/lens/working_with_segments",
+                          "resources/lens/working_with_views",
+                          "resources/lens/working_with_user_groups"
+                        ]
+                      },
+                      "resources/lens/lens_manifest_attributes",
+                      {
+                        "group": "APIs & Integrations",
+                        "pages": [
+                          {
+                            "group": "GraphQL API",
+                            "pages": [
+                              "resources/lens/query_format",
+                              "resources/lens/explore_lens_using_graphql"
+                            ]
+                          },
+                          "resources/lens/explore_lens_using_sql_apis",
+                          "resources/lens/explore_lens_using_python",
+                          "resources/lens/explore_lens_using_rest_apis",
+                          {
+                            "group": "BI Integration",
+                            "pages": [
+                              "resources/lens/bi_integration/powerbi",
+                              "resources/lens/bi_integration/superset",
+                              "resources/lens/bi_integration/tableau"
+                            ]
+                          }
+                        ]
+                      },
+                      "resources/lens/cataloging",
+                      "resources/lens/governance",
+                      "resources/lens/observability",
+                      {
+                        "group": "Reference",
+                        "pages": [
+                          "resources/lens/dos_and_donts",
+                          "resources/lens/troubleshooting",
+                          "resources/lens/fine_tuning_a_lens_model",
+                          "resources/lens/best_practices_for_solution_designing"
+                        ]
+                      }
+                    ]
+                  }
+                ] 
+              },
+
+              
               {
                 "group": "Instance Secret",
                 "pages": [
