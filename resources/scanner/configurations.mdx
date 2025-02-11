@@ -8,13 +8,43 @@ sidebarTitle: "Configurations"
 
 The manifest file within a Scanner stack includes attributes designed to facilitate metadata extraction. These attributes specify source configurations, apply filtering criteria, and manage metadata control. Key functionalities include:
 
-* **Source configuration**: Defines the connection details and parameters for the data source.
+* **Source configuration**
 
-* **Filtering**: Enables metadata extraction to be limited to specific databases, schemas, tables, or topics.
+  : Defines the connection details and parameters for the data source.
 
-* **Metadata Control**: Manages the extraction process by identifying and flagging deleted tables and topics.
+* **Filtering**
 
-## **Scanner Configuration Attributes details**
+  : Enables metadata extraction to be limited to specific databases, schemas, tables, or topics.
+
+* **Metadata Control**
+
+  : Manages the extraction process by identifying and flagging deleted tables and topics.
+
+**Syntax for Manifest configuration file:**
+
+```
+stack: scanner:2.0               
+compute: runnable-default        
+runAsUser: metis                 
+stackSpec: 
+  depot: ${{depot name/adddress}}             
+  sourceConfig: 
+  config: 
+      type: DatabaseMetadata         
+      databaseFilterPattern: 
+        includes/excludes: 
+          - ${{regex}}
+      schemaFilterPattern: 
+        includes/excludes: 
+          - ${{regex}}
+      tableFilterPattern: 
+        includes/excludes: 
+          - ${{regex}}
+      markDeletedTables: true/false
+      includeViews: true/false
+```
+
+## Scanner Configuration Attributes details
 
 The Scanner Workflow attributes given below provide further details on their roles in metadata extraction:
 
@@ -88,7 +118,7 @@ compute: runnable-default
 **Example Usage**:
 
 ```yaml
-stackSpec:   
+stackSpec:    
   depot: dataos://icebase
 ```
 
@@ -103,7 +133,7 @@ stackSpec:
 **Example Usage**:
 
 ```yaml
-stackSpec:
+stackSpec:  
   type: snowflake
 ```
 
@@ -126,8 +156,8 @@ stackSpec:
 **Example Usage**:
 
 ```yaml
-sourceConnection:
-  config:
+sourceConnection: 
+  config: 
     type: Snowflake
 ```
 
@@ -152,8 +182,8 @@ sourceConnection:
 **Example Usage**:
 
 ```yaml
-sourceConfig:
-  config:
+sourceConfig: 
+  config: 
     type: DatabaseMetadata
 ```
 
@@ -167,11 +197,15 @@ sourceConfig:
 
 **Additional information**: Applicable in case of databases/warehouses
 
-### **`includes OR excludes`**
+#### **`includes OR excludes`**
 
-* `includes:` Add an array of regular expressions to this property in the YAML. The Scanner Workflow will include any databases whose names match one or more of the provided regular expressions. All other databases will be excluded.
+* `includes:`
 
-* `excludes`: Add an array of regular expressions to this property in the YAML. The Scanner Workflow will exclude any databases whose names match one or more of the provided regular expressions. All other databases will be included.
+   Add an array of regular expressions to this property in the YAML. The Scanner Workflow will include any databases whose names match one or more of the provided regular expressions. All other databases will be excluded.
+
+* `excludes`
+
+  : Add an array of regular expressions to this property in the YAML. The Scanner Workflow will exclude any databases whose names match one or more of the provided regular expressions. All other databases will be included.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Values**                                                      |
 | ------------- | --------------- | ----------------- | ------------------------------------------------------------------------ |
@@ -180,11 +214,11 @@ sourceConfig:
 **Example Usage**:
 
 ```yaml
-sourceConfig:
-  config:
+sourceConfig:  
+  config:  
     type: DatabaseMetadata
     databaseFilterPattern:
-      includes:
+      includes: 
         - TMDCSNOWFLAKEDB
 ```
 
@@ -198,11 +232,15 @@ sourceConfig:
 
 **Additional information**: Applicable in case of databases/warehouses
 
-### **`includes OR excludes`**
+#### **`includes OR excludes`**
 
-* `includes:` Add an array of regular expressions to this property in the YAML. The Scanner Workflow will include any schemas whose names match one or more of the provided regular expressions. All other schemas will be excluded.
+* `includes:`
 
-* `excludes`: Add an array of regular expressions to this property in the YAML. The Scanner Workflow will exclude any schemas whose names match one or more of the provided regular expressions. All other schemas will be included.
+   Add an array of regular expressions to this property in the YAML. The Scanner Workflow will include any schemas whose names match one or more of the provided regular expressions. All other schemas will be excluded.
+
+* `excludes`
+
+  : Add an array of regular expressions to this property in the YAML. The Scanner Workflow will exclude any schemas whose names match one or more of the provided regular expressions. All other schemas will be included.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Values**                                                      |
 | ------------- | --------------- | ----------------- | ------------------------------------------------------------------------ |
@@ -211,10 +249,10 @@ sourceConfig:
 **Example Usage**:
 
 ```yaml
-sourceConfig:
-  config:
-    schemaFilterPattern:
-      excludes:
+sourceConfig: 
+  config: 
+    schemaFilterPattern: 
+      excludes: 
         - mysql.*
         - information_schema.*
         - ^sys.*
@@ -232,11 +270,15 @@ sourceConfig:
 
 **Additional information**: Applicable in case of databases/warehouses
 
-### **`includes OR excludes`**
+#### **`includes OR excludes`**
 
-* `includes:` Add an array of regular expressions to this property in the YAML to include any tables whose names match one or more of the provided regular expressions. All other tables will be excluded.
+* `includes:`
 
-* `excludes`: Add an array of regular expressions to this property in the YAML. The Scanner Workflow will exclude any tables whose names match one or more of the provided regular expressions. All other tables will be included.
+   Add an array of regular expressions to this property in the YAML to include any tables whose names match one or more of the provided regular expressions. All other tables will be excluded.
+
+* `excludes`
+
+  : Add an array of regular expressions to this property in the YAML. The Scanner Workflow will exclude any tables whose names match one or more of the provided regular expressions. All other tables will be included.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Values**                                                      |
 | ------------- | --------------- | ----------------- | ------------------------------------------------------------------------ |
@@ -245,10 +287,10 @@ sourceConfig:
 **Example Usage**:
 
 ```yaml
-sourceConfig:
-  config:
-    tableFilterPattern:
-      includes:
+sourceConfig: 
+  config: 
+    tableFilterPattern: 
+      includes: 
         - ^cust.*
 ```
 
@@ -264,11 +306,15 @@ sourceConfig:
 
 **Additional information**: Applicable in case of stream data.
 
-### **`includes OR excludes`**
+#### **`includes OR excludes`**
 
-* `includes:` Add an array of regular expressions to this property in the YAML to include any topics whose names match one or more of the provided regular expressions. All other topics will be excluded.
+* `includes:`
 
-* `excludes`: Add an array of regular expressions to this property in the YAML to exclude any topics whose names match one or more of the provided regular expressions. All other topics will be included.
+   Add an array of regular expressions to this property in the YAML to include any topics whose names match one or more of the provided regular expressions. All other topics will be excluded.
+
+* `excludes`
+
+  : Add an array of regular expressions to this property in the YAML to exclude any topics whose names match one or more of the provided regular expressions. All other topics will be included.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Values**                                                      |
 | ------------- | --------------- | ----------------- | ------------------------------------------------------------------------ |
@@ -277,15 +323,14 @@ sourceConfig:
 **Example Usage**:
 
 ```yaml
-sourceConfig:
-  config:
-    topicFilterPattern:
-      includes:
+sourceConfig: 
+  config: 
+    topicFilterPattern: 
+      includes: 
         - ^topic00.*
 ```
 
 <Info>
-
   Filter patterns support Regex in includes and excludes expressions.
 </Info>
 
@@ -302,8 +347,8 @@ sourceConfig:
 **Example Usage**:
 
 ```yaml
-sourceConfig:
-  config:
+sourceConfig: 
+  config: 
     markDeletedTables: false
 ```
 
@@ -320,8 +365,8 @@ sourceConfig:
 **Example Usage**:
 
 ```yaml
-sourceConfig:
-  config:
+sourceConfig: 
+  config: 
     markDeletedTablesfromFilterOnly: false
 ```
 
@@ -338,8 +383,8 @@ sourceConfig:
 **Example Usage**:
 
 ```yaml
-sourceConfig:
-  config:
+sourceConfig: 
+  config: 
     ingestSampleData: false
 ```
 
@@ -356,8 +401,8 @@ sourceConfig:
 **Example Usage**:
 
 ```yaml
-sourceConfig:
-  config:
+sourceConfig: 
+  config: 
     markDeletedTables: false
 ```
 
@@ -374,8 +419,8 @@ sourceConfig:
 **Example Usage**:
 
 ```yaml
-sourceConfig:
-  config:
+sourceConfig: 
+  config: 
     includeViews: true
 ```
 
@@ -390,24 +435,7 @@ sourceConfig:
 **Example Usage**:
 
 ```yaml
-sourceConfig:
-  config:
+sourceConfig: 
+  config: 
     enableDebugLog: true
 ```
-
-## Manifest file attribute configuration for Monitor Resource
-Certain attributes need to be configured within the monitor manifest file, which are as follows: 
-
-
-| **Attribute** | **Description** |
-| --- | --- |
-| **name** | Provide an appropriate name for the Monitor Resource. |
-| **tags** | Optional tags for the Monitor Resource. You can provide as many as you want as these help in searchability and indexing. |
-| **description** | This is the Monitor Resource’s description. You can use the provided value (or, if you want to be really creative, come up with your own description). |
-| **schedule** | It represents the frequency or cadence at which the Monitor checks the condition. |
-| **leftExpression / rightExpression** | These represent the left-hand side and the right-hand side of the equation. You can consider an expression of the format QUERY_COEFFICIENT*QUERY+QUERY_CONSTANT. |
-| **query_coefficient** | This is the multiplier of the query result. |
-| **query_constant** | This is a constant value that is added to the product of Query Coefficient and Query. |
-| **operator** | The Operator compares the result of the left-hand side and the right-hand side of the equation. |
-| **incident** | Key-value pairs to be included in the message generated by the monitor. |
-
