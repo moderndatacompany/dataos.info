@@ -8,21 +8,9 @@ description: "To access the stored secret data in DataOS, you can reference them
 
 To refer to an Instance Secret in Depots, follow these steps:
 
-1. **Ensure Creation of Instance-Secret:**
+1. **Ensure Creation of Instance-Secret:** First, make sure you have created the respective Instance Secrets.
 
-    
-
-   First, make sure you have created the respective Instance Secrets.
-
-2. **Use `secrets` Identifier:**
-
-    
-
-   In the Depot manifest, use the
-
-   `secrets`
-
-   identifier to refer to the Instance Secret.
+2. **Use `secrets` Identifier:** In the Depot manifest, use the `secrets` identifier to refer to the Instance Secret.
 
 For read-only access to a Depot, create a read-only Instance Secret. For read-write access, create both read and read-write Instance Secret. This is necessary because when providing someone else access to the Depot, you can grant either read or read-write access using either CLI or Bifrost UI. For either type of access, the person will have access to the respective Instance Secret.
 
@@ -96,21 +84,9 @@ Now while creating the manifest file for your Depot, ensure to include a referen
 
 To refer to an Instance Secret in a Service Resource, follow these steps:
 
-1. **Ensure Creation of Instance-Secret:**
+1. **Ensure Creation of Instance-Secret:** First, make sure you have created the respective Instance Secrets for your Service.
 
-    
-
-   First, make sure you have created the respective Instance Secrets for your Service.
-
-2. **Use `secrets` Identifier:**
-
-    
-
-   In the Service manifest, use the
-
-   `secrets`
-
-   identifier to refer to the instance-secret.
+2. **Use `secrets` Identifier:** In the Service manifest, use the `secrets` identifier to refer to the instance-secret.
 
 For read-only access to a Service, create a read-only  Instance Secret. For read-write access, create both read and read-write  Instance Secrets. This is necessary because when providing someone else access to the Service, you can grant either read or read-write access using either CLI or Bifrost UI. For either type of access, the person will have access to the respective  Instance Secrets.
 
