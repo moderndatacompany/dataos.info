@@ -2971,8 +2971,6 @@ This section involves steps for creating a Depot for different data sources supp
   </Accordion>
 </AccordionGroup>
 
-The manifest configuration file for a Depot can be divided into two main sections: the Resource meta section and the [Resource-specific section](/resources/depot/configurations). Each section serves a distinct purpose and contains specific attributes.
-
 ## **How to utilize Depots?**
 
 Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to access data without physically moving it. The UDLs play a crucial role in various scenarios within DataOS.
@@ -3422,27 +3420,15 @@ This section involves do's and don'ts for managing a Depot.
 
 * As an operator, always assign a use-case to a user instead of directly assigning a tag, as assigning a use-case gives only specific permissions.
 
-* Give your Depot a meaningful name that represents its purpose. 
+* Give your Depot a meaningful name that represents its purpose.
 
   **Example:**
 
-   This makes it easier to manage and identify Depots.
+  This makes it easier to manage and identify Depots.
 
-  * ✅ 
+  * ✅`sales-reports-s3` instead of ❌ `s3-1`
 
-    `sales-reports-s3`
-
-     instead of ❌ 
-
-    `s3-1`
-
-  * ✅ 
-
-    `customer-db-mysql`
-
-     instead of ❌ 
-
-    `db1`
+  * ✅ `customer-db-mysql` instead of ❌ `db1`
 
 * Avoid creating a Depot with inline credentials, always create an Instance Secret.
 
