@@ -1,40 +1,68 @@
 ---
-title: "Introduction"
-description: "The Scanner Stack in DataOS is a Python-based framework designed to extract metadata from external source systems (e.g., relational databases, data warehouses, messaging services, and dashboards) and components within the DataOS environment."
+title: "Overview"
+description: "⁠The Scanner Stack in DataOS is a metadata extraction framework that ingests metadata from external source systems connected via Depot (RDBMS, cloud-based warehouses, etc.), and other DataOS components and Services."
 ---
-
-## **How does metadata scanning work in DataOS?**
-
-In DataOS, metadata scanning is performed using Scanner Workflows, which extract metadata from targeted data sources and systems. It is a flexible and extensible framework which can easily integrated with different sources. Users can access and query the metadata in the Metis DB to gain insights into their data assets.
 
 ## Scanner Stack
 
 The Scanner enables the extraction of both high-level metadata such as dataset or table names, ownership details, and tags and detailed information, including table schemas, column names, and descriptions (if available in the data). Additionally, it facilitates the retrieval of metadata related to data quality, profiling, query usage, and user information associated with data assets. The Scanner Stack  also integrates with dashboard and messaging services to collect relevant metadata. For dashboards, it retrieves information about dashboards, their elements, and associated data sources.
 
-Within the DataOS ecosystem, the Scanner Stack collects metadata from data products and DataOS Resources, which provides comprehensive insights into inputs, outputs, service-level objectives (SLOs), data access permissions, and infrastructure resources used in the creation of Data Products. It also gathers metadata from various DataOS Resources, including Workflows, Services, Clusters, and Depots, encompassing both historical runtime data and operational metrics.
+Within the DataOS ecosystem, the Scanner Stack collects metadata from Data Products and DataOS Resources, which provides comprehensive insights into inputs, outputs, service-level objectives (SLOs), data access permissions, and infrastructure resources used in the creation of Data Products. It also gathers metadata from various DataOS Resources, including Workflows, Services, Clusters, and [Depots](https://dataosinfo.mintlify.app/resources/depot/index), encompassing both historical runtime data and operational metrics.
 
-The Scanner Stack is designed for **Data Engineers** and **Analytics Engineers** who are responsible for designing, building, and maintaining data products within the DataOS platform. These professionals use the Scanner Stack to extract metadata from various data sources, create data products, and ensure data quality and governance.
+⁠Designed for **Data Product Developers** (Data Engineers, Analytics Engineers), it enables flexible metadata scanning from target sources. Extracted metadata is stored in the **Metis Database** and can be explored using the **Metis UI**.
 
 <Tip>
   **Scanner Stack in Data Product Lifecycle**
 
-  Scanner is an essential Stack in the designing and developing of a Data Product. It plays a crucial role in the Data Product lifecycle, particularly in the **Design** and **Build** phases.
+  The Scanner Stack’s support for ontology and semantics. The stored metadata in MetisDB is used by various DataOS components for discoverbaility, governance and observabliity. External apps running on top of DataOS can also fetch this metadata via Metis server APIs help enhance discoverability of data that plays a crucial role in the Data Product Lifecycle, particularly in the Design and Build phases:
 
-  * **Design**: Extracts metadata from external source systems to inform design decisions.
+  * **Design**
 
-  * **Build**: Extracts metadata of related Data Products such as inputs, outputs, SLOs, policies, lineage and associated DataOS Resources to understand its functionality, performance, and reliability.
+    : Enables metadata ingestion from external source systems, helping identify and understand data products and assets, enhancing overall discoverability.
+
+  * **Build**
+
+    : The Scanner Stack supports ontology and semantics, ensuring that stored metadata in MetisDB enhances discoverability, governance, and observability across DataOS. External applications running on DataOS can access this metadata via Metis Server APIs. Heterogeneous datasets and data products can be easily explored in the Data Product Hub and Metis UI to streamline development.
 </Tip>
 
-## Significance of Scanner in Data Products
+## Capabilities of the Scanner Stack
 
-The Scanner Stack plays a crucial role in the DataOS ecosystem by providing a comprehensive metadata extraction framework. It provides comprehensive insights into data products, data assets, and DataOS Resources. The metadata collected by the Scanner Stack serves three key purposes:
+* **Metadata Extraction from Data Assets:**
 
-* **Discoverability**: The Scanner Stack helps in identifying and understanding Data Products and Resources by extracting metadata from various sources and storing it in a centralized metadata store. This metadata includes detailed information about datasets, tables, column names, descriptions, data quality, query usage, and user information associated with data assets. It also connects with Dashboard and Messaging services to extract related metadata, providing a comprehensive view of all available data assets.
+  Essential metadata is captured from datasets and tables stored in external source systems, including names, owners, tags, schemas, column details, and descriptions. Additionally, metadata such as data quality metrics, profiling insights, query usage, and user interactions is captured from internal sources, including data products, user information, and quality checks.
 
-* **Governance**: The Scanner Stack aids in governance by tracking data access permissions and infrastructure resources used for creating Data Products. It collects metadata about DataOS Resources such as Workflows, Services, Clusters, Depots, and more, including their historical runtime and operations data. This information helps in managing and auditing data access and resource utilization, ensuring compliance with organizational policies and regulations.
+* **Integration with Dashboards and Messaging Services:**
 
-* **Observability**: The Scanner Stack enhances observability by providing metadata related to data quality and profiling. It helps monitor data quality by reactively scanning datasets and ingesting quality checks and metrics data along with their pass/fail status whenever a Flare data quality scan is initiated. The acquired metadata related to data quality is then published to the Metis DB, contributing to a comprehensive understanding of data quality.
+  Extracts metadata from dashboards, including dashboard elements and associated data sources, along with relevant metadata from messaging services.
 
-The Scanner Stack's support for ontology and semantics can help enhance discoverability, governance, and observability by providing a clear and accurate representation of the knowledge domain, the relationships between different data assets, and the meaning of the data being managed.
+* **Comprehensive Data Product and DataOS Resource Metadata:**
+
+  Retrieves metadata from DataOS products and resources, providing insights into inputs, outputs, service level objectives (SLOs), data access permissions, infrastructure resources, workflows, services, clusters, depots, and historical runtime and operational data.
+
+
+
+
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="What types of metadata can be extracted?" defaultOpen={false}>
+    The Scanner Stack can extract general information about datasets/tables, such as names, owners, and tags, as well as detailed metadata like table schemas, column names, and descriptions.
+  </Accordion>
+
+  <Accordion title="What is the purpose of the Scanner job?" defaultOpen={false}>
+    The Scanner job reads related metadata and pushes it to the metadata store through the Metis REST API server.
+  </Accordion>
+
+  <Accordion title="Dose Scanner Stack support Data Warehouses?" defaultOpen={false}>
+    Yes, Scanner does support Data Warehouses such as Snowflake, Redshift, BigQuery and AzureSQL. &#x20;
+  </Accordion>
+
+  <Accordion title="Can I scan description of the data from the data sources? " defaultOpen={false}>
+    Yes, the Scanner can extract table and schema descriptions only if they preexist in the data source.
+
+
+  </Accordion>
+</AccordionGroup>
 
 ##

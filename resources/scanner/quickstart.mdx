@@ -32,7 +32,7 @@ For illustration purposes, the Snowflake data source will be connected.
 
     * To run the Scanner workflow, a user must have Metis admin access or a grant for the “Run as Scanner User” use case.
 
-    * Ensure the Depot for Snowflake is created and have Read access. If it does not exist, then
+    * Ensure the Depot for Snowflake is created and have Read access. If it does not exist, then 
 
       [create a Depot](https://dataosinfo.mintlify.app/resources/depot/index#steps-to-create-a-depot)
 
@@ -187,8 +187,6 @@ For illustration purposes, the Snowflake data source will be connected.
     <Info>
        In this case, database filters are not used because the Snowflake Depot is created for the specific database. To configure the Depot in our DataOS cataloging structure, User will need the Snowflake source URL and the database name. (SNOWFLAKE\_SAMPLE\_DATA)
     </Info>
-
-
   </Step>
 
   <Step title="Step 4:  Check Metadata Source Created on Metis">
@@ -211,10 +209,19 @@ For illustration purposes, the Snowflake data source will be connected.
     ![](/quickstart-scan-07.png)
 
     To know more about how to specify filters in different scenarios, refer to [Filter Pattern Examples](https://dataosinfo.mintlify.app/resources/scanner/recipes#example-scenarios).
-
-
-
-
-
   </Step>
 </Steps>
+
+The templates of different sources of Scanner Workflows are as follows:
+
+* [Data Sources](https://dataosinfo.mintlify.app/resources/scanner/supported_sources/data_sources/)
+
+   : The Scanner Stack in DataOS provides a extensible framework for extracting metadata from multiple data sources. By creating custom Scanner Workflows, it become efficient to connect to diverse data sources, extract relevant metadata, and store it in the Metis DB for discoverability, governance, and observability. 
+
+* [System Sources](https://dataosinfo.mintlify.app/resources/scanner/supported_sources/system_metadata_sources/)
+
+   : System Scanner Workflows are pre-defined Workflows that run periodically to scan related metadata and save it to Metis DB. These Workflows are scheduled to run at set intervals and are used to reflect the updated metadata state.
+
+* [Indexer Services](https://dataosinfo.mintlify.app/resources/scanner/supported_sources/indexer_services/)
+
+   : Indexer service is a continuous running service within the DataOS environment keeps track of newly created or updated entities such as Data products, Data  Assets (datasets/topics/dashboards, etc.) and DataOS Resources (Workflows, Services, Workers, Monitors, Depots etc.). With this information about the changed entity, it creates a reconciliation Scanner manifest with filters to include only the affected entity. This Scanner Workflow will extract the metadata about the entity and update the target metastore.
