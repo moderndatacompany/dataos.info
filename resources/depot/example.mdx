@@ -1,54 +1,61 @@
 ---
-title: "Integrating Customer Data to FS Accelerator via Depot in DataOS"
+title: "Integrating Customer Data to a Data Product in DataOS"
 sidebarTitle: "Use case"
+description: "This section involves a real-world scenario where a Depot is utilized for developing a Data Product."
 ---
 
 ## **Scenario**
 
-A financial services company aims to leverage its customer data for credit card cross-selling. The company has a customer overview dataset stored in its finance service system (MSSQL), and it needs to integrate this data into the FS Accelerator Data Product within the DataOS ecosystem. A Data Product developer is responsible for setting up the data connection.
+A financial services company aims to leverage its customer data for credit card cross-selling. The company has a customer overview dataset stored in its finance service system (MSSQL), and it needs to integrate this data into the `FS Accelerator` Data Product within the DataOS ecosystem. A Data Product developer is responsible for setting up the data connection.
 
 ## **Steps for Integration**
 
-1. **Create an Instance Secret**To create a Depot for data connection, first create an Instance Secret Resource to securely store the credentials of MSSQL.
-  
+1. **Create an Instance Secret**
+
+
+
+   To create a Depot for data connection, first create an Instance Secret Resource to securely store the credentials of MSSQL.
+
    <Info>
      Here, it is assumed that you are already familiar with the creation of an Instance Secret.
    </Info>
 
-<CodeGroup>
-  ```yaml Read-only instance-secret
-  name: mssqldepot-r 
-  version: v1 # Manifest version
-  type: instance-secret # Type of the Resource
-  description: an instance secret for mssql # Purpose of the Instance-secret
-  layer: user # DataOS layer
-  instance-secret:
-    type: key-value-properties # Secret type
-    acl: r # Access control: 'r' for read-only
-    data:
-      username: db-user 
-      password: 45678 
+   <CodeGroup>
+     ```yaml Read-only instance-secret
+     name: mssqldepot-r 
+     version: v1 # Manifest version
+     type: instance-secret # Type of the Resource
+     description: an instance secret for mssql # Purpose of the Instance-secret
+     layer: user # DataOS layer
+     instance-secret:
+       type: key-value-properties # Secret type
+       acl: r # Access control: 'r' for read-only
+       data:
+         username: db-user 
+         password: 45678 
 
-  ```
+     ```
 
-  ```yaml Read-write instance secret
-  name: mssqldepot-rw 
-  version: v1 # Manifest version
-  type: instance-secret # Type of the Resource
-  description: an instance secret for mssql # Purpose of the Instance-secret
-  layer: user # DataOS layer
-  instance-secret:
-    type: key-value-properties # Secret type
-    acl: rw # Access control: 'rw' for read-write
-    data:
-      username: db-user 
-      password: 45678 
-  ```
-</CodeGroup>
+     ```yaml Read-write instance secret
+     name: mssqldepot-rw 
+     version: v1 # Manifest version
+     type: instance-secret # Type of the Resource
+     description: an instance secret for mssql # Purpose of the Instance-secret
+     layer: user # DataOS layer
+     instance-secret:
+       type: key-value-properties # Secret type
+       acl: rw # Access control: 'rw' for read-write
+       data:
+         username: db-user 
+         password: 45678 
+     ```
+   </CodeGroup>
 
-1. **Create a Depot manifest file**After creating an Instance Secret, next step is to create a manifest file for Depot.
+2. **Create a Depot manifest file**
 
-  
+
+
+   After creating an Instance Secret, next step is to create a manifest file for Depot.
 
    <CodeGroup>
      ```yaml Depot manifest file
@@ -82,20 +89,22 @@ A financial services company aims to leverage its customer data for credit card 
      ```
    </CodeGroup>
 
-4. **Apply the Depot manifest file**
+3. **Apply the Depot manifest file**
 
-  
+
 
    Apply the Depot manifest file by executing the below command.
 
-    ```bash
-    dataos-ctl apply -f /home/mssql\_depot.yaml
-    ```
+   ```bash
+   dataos-ctl apply -f /home/mssql\_depot.yaml
+   ```
 
-8. **Validate the Depot**:
+4. **Validate the Depot**
 
-   * The FS Accelerator Data Product now contains an updated set of customer data. This information is available for consumption by other systems, such as those involved in credit card cross-selling, or any operational systems that require a consolidated and accurate view of customers.
 
-#### **Outcome**
 
-* The FS Accelerator Data Product now holds a unified, up-to-date set of customer identifiers and attributes. This enables the financial services company to integrate customer data from various silos seamlessly. It provides the company with the necessary data to enhance cross-selling initiatives and improve overall customer engagement and business outcomes.
+   Apply the below command to validate the Depot:
+
+   ```bash
+   dataos-ctl resource get -t depot -n mssqldepot
+   ```
