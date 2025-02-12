@@ -2,6 +2,7 @@
 og:image: "Configurations"
 title: "How to configure a Scanner ?"
 sidebarTitle: "Configurations"
+description: "This page explains how to configure the Scanner Workflow and describes the attributes related to the Scanner manifest file."
 ---
 
 ## Manifest file attributes in Scanner Workflows
@@ -22,7 +23,7 @@ The manifest file within a Scanner stack includes attributes designed to facilit
 
 **Syntax for Manifest configuration file:**
 
-```
+```yaml
 stack: scanner:2.0               
 compute: runnable-default        
 runAsUser: metis                 
@@ -42,6 +43,8 @@ stackSpec:
           - ${{regex}}
       markDeletedTables: true/false
       includeViews: true/false
+      markDeletedTablesfromFilterOnly: false/true
+
 ```
 
 ## Scanner Configuration Attributes details
