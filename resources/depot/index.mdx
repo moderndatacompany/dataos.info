@@ -4,7 +4,7 @@ description: "Depot in DataOS is a Resource used to connect different data sou
 sidebarTitle: "Overview"
 ---
 
-It enables users to establish connections and retrieve data from various data sources, such as file systems (e.g., AWS S3, Google GCS, Azure Blob Storage), data lake systems, database systems (e.g., Redshift, SnowflakeDB, Bigquery, Postgres), and event systems (e.g., Kafka, Pulsar) without moving the data.
+It enables users to establish connections and retrieve data from various data sources, such as data lake systems (e.g., AWS S3, Google GCS, Azure Blob Storage), database systems (e.g., Redshift, SnowflakeDB, Bigquery, Postgres), and event systems (e.g., Kafka, Pulsar) without moving the data.
 
 <Tip>
   ### **Depot in the Data Product lifecycle**
@@ -3422,11 +3422,27 @@ This section involves do's and don'ts for managing a Depot.
 
 * As an operator, always assign a use-case to a user instead of directly assigning a tag, as assigning a use-case gives only specific permissions.
 
-* Give your Depot a meaningful name that represents its purpose. **Example:** This makes it easier to manage and identify Depots.
+* Give your Depot a meaningful name that represents its purpose. 
 
-  * ✅ `sales-reports-s3` instead of ❌ `s3-1`
+  **Example:**
 
-  * ✅ `customer-db-mysql` instead of ❌ `db1`
+   This makes it easier to manage and identify Depots.
+
+  * ✅ 
+
+    `sales-reports-s3`
+
+     instead of ❌ 
+
+    `s3-1`
+
+  * ✅ 
+
+    `customer-db-mysql`
+
+     instead of ❌ 
+
+    `db1`
 
 * Avoid creating a Depot with inline credentials, always create an Instance Secret.
 
@@ -3484,9 +3500,7 @@ The catalog of data sources accessible by one or more components within DataOS i
     No. Depots are global entities in DataOS and are not tied to specific workspaces.
   </Accordion>
 
-  <Accordion title="8. Is there any way to know which Resources are using a Depot?" defaultOpen={false}>
-
-  </Accordion>
+  <Accordion title="8. Is there any way to know which Resources are using a Depot?" defaultOpen={false} />
 </AccordionGroup>
 
 ##
