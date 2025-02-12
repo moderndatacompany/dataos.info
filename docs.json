@@ -138,6 +138,7 @@
                     "group": "Scanner",
                     "pages": [
                       "resources/scanner/index",
+                      "resources/scanner/quickstart",
                       "resources/scanner/concepts",
                       {
                         "group": "Supported sources",
@@ -163,7 +164,6 @@
                             "group": "System Sources",
                             "pages": [
                               "resources/scanner/supported_sources/system_metadata_sources/data_product_scanner",
-                              "resources/scanner/supported_sources/system_metadata_sources/system_metadata_sync",
                               "resources/scanner/supported_sources/system_metadata_sources/user_information"
                             ]
                           },
