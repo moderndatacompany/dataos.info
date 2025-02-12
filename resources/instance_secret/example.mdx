@@ -15,18 +15,11 @@ A Customer Insights Data Product development requires access to a PostgreSQL dat
 
 
 
-
-
-   ****
-
-    
-
    Create an Instance Secret to store the database connection credentials of PostgreSQL securely:
 
    <CodeGroup>
      ```yaml Read-only instance secret
      # PostgresSQL Read Instance-secret Manifest
-
      name: postgresdb-r # Unique identifier for Resource, replace ${postgres-depot-name} with depot name
      version: v1 # Manifest version
      type: instance-secret # Type of the Resource
@@ -42,7 +35,6 @@ A Customer Insights Data Product development requires access to a PostgreSQL dat
 
      ```yaml Read-write instance-secret
      # PostgresSQL Read Write Instance-secret Manifest
-
      name: postgresdb-rw 
      version: v1 # Manifest version
      type: instance-secret # Type of the Resource
@@ -54,7 +46,6 @@ A Customer Insights Data Product development requires access to a PostgreSQL dat
        data:
          username: db_user
          password: 45678
-      
      ```
    </CodeGroup>
 
@@ -70,7 +61,7 @@ A Customer Insights Data Product development requires access to a PostgreSQL dat
 
    Now that the secret is stored securely, reference it in the Depot Manifest. The Depot Manifest defines the PostgreSQL connection for the Data Product development.
 
-   ```
+   ```yaml
    name: postgresdb
    version: v2alpha
    type: depot
@@ -92,19 +83,4 @@ A Customer Insights Data Product development requires access to a PostgreSQL dat
        database: postgres
        params: #Required 
          sslmode: disable
-
    ```
-
-## **Benefits of Using Instance Secret in Data Product**
-
-1. **Enhanced Security**
-
-    – Credentials are stored securely instead of being exposed in YAML files of other Resources.
-
-2. **Centralized Management**
-
-    – Changes to credentials are made in one place without modifying multiple manifests.
-
-3. **Access Control**
-
-    – Only authorized users and services can retrieve secrets.
