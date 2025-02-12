@@ -51,6 +51,28 @@ stackSpec:
 
 The Scanner Workflow attributes given below provide further details on their roles in metadata extraction:
 
+### **`schedule:`**&#x20;
+
+**Description**: Scanner workflows are either single-time run or scheduled to run at a specific cadence.&#x20;
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | --------------- | ----------------- | ------------------ |
+| string        | optional        | None              | None               |
+
+**Example Usage:**
+
+```
+workflow:
+  title: scheduled Scanner Workflow
+  schedule: 
+    cron: '*/2 * * * *'  #every 2 minute  [Minute, Hour, day of the month ,month, dayoftheweek]
+    concurrencyPolicy: Allow #forbid/replace
+    endOn: 2024-11-01T23:40:45Z
+    timezone: Asia/Kolkata
+```
+
+To schedule a workflow, user must add the schedule property defining a cron in `workflow` section.
+
 ### **`spec`**
 
 **Description**: Specs of the Scanner Workflow
