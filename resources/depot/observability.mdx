@@ -1,18 +1,51 @@
 ---
 title: "How to observe a Depot?"
-description: "DataOS provides a comprehensive set of observability solutions, including the Operations app, Monitor, and Pager, to track the Depot. The Operations app offers real-time insights into performance and resource utilization, while the Monitor enables observation, and the Pager notifies whenever the incident condition is met by the Monitor."
+description: "DataOS provides a comprehensive set of observability solutions, including the Operations app, Metis UI, Monitor, and Pager, to track the Depot. The Operations app offers real-time insights into performance and resource utilization, while the Monitor enables observation, and the Pager notifies whenever the incident condition is met by the Monitor."
 sidebarTitle: "Observability"
 ---
 
-You can track the status of a Depot—whether it is active or deleted—using the Monitor Resource and Metis UI. Additionally, you can configure Pager Resource to receive notifications if a Depot is deleted.
+You can track the status of a Depot—whether it is active or deleted—using the Monitor Resource, DataOS CLI, and Metis UI. Additionally, you can configure Pager Resource to receive notifications if a Depot is deleted.
+
+## Metric Monitoring
+
+### How to monitor the status and runtime of a Depot using Metis UI?
+
+Users can track the status of a Depot, whether active or deleted, along with the total count of active and deleted Depot through the Metis UI.&#x20;
+
+* Simply navigate to 
+
+  `Resources → Depots `
+
+   to check the status of any Depot within the environment. Additionally, users can quickly find a specific Depot by searching for its name in the Metis UI search bar.
+
+  ![](/Screenshotfrom2025-02-1215-58-43.png)
+
+* When a user clicks on a specific Depot, they can also track the aggregated status along with the runtime, which applies only to certain types of Depots.
 
 
-How to create a Monitor Resource to observe the state of a Depot?
------------------------------------------------------------------
+  ![](/Screenshotfrom2025-02-1216-04-38.png)
+
+### How to monitor the status and runtime of a Depot using DataOS CLI?
+
+Users can check whether a  Depot is active or deleted by running the command `dataos-ctl resource get -t depot -n ${{depotname}}` in the DataOS CLI. The output will appear as follows:
+
+```bash
+dataos-ctl get -t depot -n systemstreams              
+INFO[0000] 🔍 get...                                     
+INFO[0000] 🔍 get...complete                             
+
+      NAME      | VERSION | TYPE  | WORKSPACE | STATUS | RUNTIME |     OWNER       
+----------------|---------|-------|-----------|--------|---------|-----------------
+  systemstreams | v1      | depot |           | active |         | dataos-manager  
+```
+
+### How to get notified whenever the status of an Instance Secret changes?
+
+Users can configure a Monitor Resource to define the conditions for triggering an alert. They can then set up a Pager Resource to specify the alert path and the text schema format in which the alert will be delivered. The alert path can be a webhook URL, email ID, or any other designated endpoint.
 
 This section outlines the steps to create a Monitor Resource that triggers an incident when the state of a Depot changes from active to deleted. Make sure you have the permission to create a Monitor Resource.
 
-### Step 1: Create a manifest file for Monitor Resource
+**Step 1: Create a manifest file for Monitor Resource**
 
 Begin by creating a manifest file that contains the configurations of the Monitor as shown below in template. Replace the Depot name with your actual Depot.
 
@@ -49,13 +82,13 @@ monitor:
           value: deleted
 ```
 
-### Step 2: Validate the  DataOS instance API path&#x20;
+**Step 2: Validate the  DataOS instance API path**&#x20;
 
 Before applying the Monitor Resource file, it is recommended to check the response of the API endpoint.
 
 ![](/Screenshotfrom2025-01-2914-41-07.png)
 
-### Step 3: Apply the Monitor manifest file
+**Step 3: Apply the Monitor manifest file**
 
 After validating the API endpoint, the next step is to apply the Monitor manifest file by executing the code below.
 
@@ -63,7 +96,7 @@ After validating the API endpoint, the next step is to apply the Monitor manifes
 dataos-ctl resource apply -f ${{path-of-your-manifest-file}}
 ```
 
-### step 4: Validate the Monitor
+**step 4: Validate the Monitor**
 
 Validate or check the runtime of the Monitor by executing the below command.
 
@@ -108,11 +141,11 @@ Validate or check the runtime of the Monitor by executing the below command.
 
 Now whenever the Monitor condition is met, it will trigger an incident.
 
-## How to create a Pager Resource to get notified whenever a Depot gets deleted?
+**How to create a Pager Resource to get notified whenever a Depot gets deleted?**
 
 Through Monitor whenever the condition is met it will trigger an incident, we will use that incident to get notified on the desired platform such as Microsoft Teams, Outlook, etc. by creating a Pager Resource. This section involves the steps to create a Pager Resource.
 
-### Step 1: Create a manifest file for Pager
+**Step 1: Create a manifest file for Pager**
 
 Begin by creating a manifest file that contains the configurations of Pager as shown below in template. Replace the given values with your actual values and edit the notification template as required.
 
@@ -179,7 +212,7 @@ pager:
           }
 ```
 
-### Step 2: Apply the manifest file of the Pager Resource
+**Step 2: Apply the manifest file of the Pager Resource**
 
 After validating the API endpoint, the next step is to apply the Monitor manifest file by executing the code below.
 
@@ -187,14 +220,142 @@ After validating the API endpoint, the next step is to apply the Monitor manifes
 dataos-ctl resource apply -f ${{path-of-your-manifest-file}}
 ```
 
-### Step 3: Get Notification!
-
-###
+**Step 3: Get Notification!**
 
 You will get a notification on the team's channel whenever the conditions of the incident are met.
 
-![](/Screenshotfrom2025-01-2913-09-50.png)
+![](/Screenshotfrom2025-01-2913-09-50.png)![](/Screenshotfrom2025-02-1215-47-50.png)
 
-<Tip>
-  You can view the pod logs for the Monitor and Pager in the Operations app. Navigate to Cloud Kernel → Pods, search for Pager, select Pager API, and then access the Pod Logs.
-</Tip>
+## Operational monitoring
+
+Using the Operations App, users can monitor the operational logs of a Depot. In addition to tracking its status, they can also view details such as the builder stage, Cloud Kernel Resource Count, WebService Resource Count, and, if applicable, the Operator Runtime Resource Count.
+
+Follow the below steps to monitor a Depot on the Operations app:
+
+1. Open the **Operations** app.
+
+
+   ![](/Screenshotfrom2025-02-1216-23-42.png)
+
+2. Navigate to the User Space tab and go to the Resources section.
+
+3. Select Depot as the Resource type to filter all Depots in the environment.
+
+
+   ![](/Screenshotfrom2025-02-1216-24-33.png)
+
+4. Search for or select the target Depot.
+
+5. Monitor its status, including Cloud Kernel Resource Count, WebService Resource Count, Operator Runtime Resource Count, Builder Stage, and Runtime Status.
+
+
+   ![](/Screenshotfrom2025-02-1216-25-30.png)
+
+
+
+### How to observe the Depot pod logs using the Operations app?
+
+Follow the below steps to observe the pod logs of the Depot Service.
+
+1. Go to the  **Core Kernel** section in the **Operations** app.
+
+
+   ![](/Screenshotfrom2025-02-1216-46-19.png)
+
+2. In the Pods tab, search for Depot to view all related pods.
+
+
+   ![](/Screenshotfrom2025-02-1216-47-33.png)
+
+3. Select a pod from the list.
+
+4. Clicking on the pod will open a right-side panel with four sections: Pod Details, Pod Logs, Pod YAML, and Pod Usage.
+
+
+   ![](/Screenshotfrom2025-02-1216-48-45.png)
+
+5. Pod details include:
+
+* **Pod Details**
+
+  * **Name:** `depotservice-api-795976b667-c7djp`
+
+  * **Namespace:** `depot`
+
+  * **Data Plane:** `hub`
+
+  * **Phase:** `Running` (indicating the pod is active and functioning)
+
+* **Containers**
+
+  * **Container Name:** `depotservice-api`
+
+  * **Container Image:** `docker.io/rubiklabs/depot-service:0.8.54`
+
+  * **Container Image Pull Policy:** `IfNotPresent`(ensures the image is only pulled if not already available locally)
+
+* **Conditions** (Pod’s readiness and initialization status)
+
+  * `PodReadyToStartContainers`:  **True**
+
+  * `Initialized`:  **True**
+
+  * `Ready`: **True**
+
+  * `ContainersReady`: **True**
+
+  * `PodScheduled`:  **True** (All conditions being `True` indicates the pod is successfully running and fully operational.)
+
+* **Container Status**
+
+  * **Container Name:** `depotservice-api`
+
+  * **Container State:** `Running`
+
+  * **Started At:** `2025-02-10T16:46:00Z`
+
+  * **Events** (No events are currently displayed, but this section would normally show logs related to the pod's lifecycle, errors, or warnings.)
+
+1. Pod YAML contains the manifest file of the Pod.
+
+
+   ![](/Screenshotfrom2025-02-1216-50-02.png)
+
+2. Pod Logs contains the logs related to the Pod.
+
+
+   ![](/Screenshotfrom2025-02-1216-50-34.png)
+
+3. The Pod Usage panel in DataOS Operations provides insights into the resource consumption of running pods within a namespace. It helps monitor CPU and memory utilization over time, ensuring optimal performance and resource allocation.
+
+
+   ![](/Screenshotfrom2025-02-1216-51-09.png)
+
+
+
+
+
+   **CPU Usage**
+
+
+   CPU metrics indicate the pod’s processing power consumption. The panel displays real-time and historical CPU usage, comparing it against requested and maximum allowed limits. This helps assess whether a pod is underutilized or nearing resource constraints.
+
+
+
+   **Memory Usage**
+
+
+
+   Memory metrics show how much RAM a pod consumes relative to its allocated quota. The data highlights trends in memory utilization, ensuring that pods have sufficient resources while avoiding unnecessary over-provisioning.
+
+
+
+   **Performance Insights**
+
+        * **Efficient Resource Management**: The panel ensures that pods are operating within assigned CPU and memory limits.
+        
+        * **Trend Analysis**: Time series graphs visualize usage patterns, helping identify spikes, bottlenecks, or inefficiencies.
+        
+        * **Optimization & Scaling**: Monitoring usage trends enables better resource allocation and scaling decisions.
+        
+        This dashboard helps maintain system stability and efficiency by providing clear visibility into resource consumption trends.

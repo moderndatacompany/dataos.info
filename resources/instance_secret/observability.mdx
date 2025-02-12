@@ -9,7 +9,9 @@ sidebarTitle: "Observability"
 ### How to monitor the status using Metis UI?
 
 Users can track the status of an Instance Secret, whether active or deleted, along with the total count of active and deleted Instance Secrets through the Metis UI. Simply navigate to `Resources → Instance Secret `to check the status of any Instance Secret within the environment. Additionally, users can quickly find a specific Instance Secret by searching for its name in the Metis UI search bar.
-![](/image.png)
+
+![](/Screenshotfrom2025-02-1215-55-16.png)
+
 
 ### How to monitor the status using DataOS CLI?
 
@@ -25,7 +27,7 @@ INFO[0000] 🔍 get...complete
   metalh-r | v1      | instance-secret |           | active |         | dataos-manager 
 ```
 
-### &#xA;&#xA;How to get notified whenever the status of an Instance Secret changes?
+### How to get notified whenever the status of an Instance Secret changes?
 
 Users can configure a Monitor Resource to define the conditions for triggering an alert. They can then set up a Pager Resource to specify the alert path and the text schema format in which the alert will be delivered. The alert path can be a webhook URL, email ID, or any other designated endpoint.
 
@@ -71,8 +73,6 @@ monitor:
 **Step 2: Validate the  DataOS instance API path**&#x20;
 
 Before applying the Monitor Resource file, it is recommended to check the response of the API endpoint.
-
-![](/resources/instance_secret/images/postman.png)
 
 **Step 3: Apply the Monitor manifest file**
 
