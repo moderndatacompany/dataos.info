@@ -1,39 +1,172 @@
 ---
-title: "Instance Secret Attributes"
+title: "Instance Secret attributes details"
 sidebarTitle: "Configurations"
+description: "This section provides detailed information about each attribute in the manifest file of an Instance Secret."
 ---
-
-some attributes are optional within this section.
 
 ## Structure of Instance Secret manifest
 
+<CodeGroup>
+  ```yaml Read-only Instance Secret
+  # Resource meta section
+  name: depotsecret-r # Resource name (mandatory)
+  version: v1 # Manifest version (mandatory)
+  type: instance-secret # Resource-type (mandatory)
+  tags: # Tags (optional)
+    - data connection
+    - snowflake depot
+  description: instance secret configuration for snowflake data source # Description of Resource (optional)
+  owner: iamgroot
+  layer: user
+  # Instance Secret-specific section
+  instance-secret: # Instance Secret mapping (mandatory)
+      type: key-value-properties # Type of Instance-secret (mandatory)
+      acl: r # Access control list (mandatory)
+      data: # Data section mapping (mandatory)
+        username: iamgroot
+        password: yourpassword
+  ```
+
+  ```yaml Read-write Instance Secret
+  # Resource meta section
+  name: depotsecret-rw # Resource name (mandatory)
+  version: v1 # Manifest version (mandatory)
+  type: instance-secret # Resource-type (mandatory)
+  tags: # Tags (optional)
+    - data connection
+    - snowflake depot
+  description: instance secret configuration for snowflake data source # Description of Resource (optional)
+  owner: iamgroot
+  layer: user
+  # Instance Secret-specific section
+  instance-secret: # Instance Secret mapping (mandatory)
+      type: key-value-properties # Type of Instance-secret (mandatory)
+      acl: rw # Access control list (mandatory)
+      data: # Data section mapping (mandatory)
+        username: iamgroot
+        password: yourpassword
+  ```
+</CodeGroup>
+
+## Configuration Attributes
+
+### **`name`**
+
+**Description:** Declare a name for the Instance Secret.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value**                                                                                                                                                                                                                                                                                                                   |
+| ------------- | --------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| string        | mandatory       | none              | alpha numeric values with the RegEx  `[a-z0-9]([-a-z0-9]*[a-z0-9])`; a hyphen/dash is allowed as a special character      total length of the string should be less than or equal to 48 characters      names of cluster & depot have a different RegEx  `[a-z]([a-z0-9]*)`; a hyphen/dash is **not** allowed as a special character |
+
+**Additional information:** two resources in the same workspace cannot have the same name.
+**Example usage:**
+
 ```yaml
-# Resource meta section
-name: depotsecret-r # Resource name (mandatory)
-version: v1 # Manifest version (mandatory)
-type: instance-secret # Resource-type (mandatory)
-tags: # Tags (optional)
-- just for practice
-description: instance secret configuration # Description of Resource (optional)
-layer: user
-# Instance Secret-specific section
-instance-secret: # Instance Secret mapping (mandatory)
-    type: key-value-properties # Type of Instance-secret (mandatory)
-    acl: r # Access control list (mandatory)
-    data: # Data section mapping (mandatory)
-    username: iamgroot
-    password: yourpassword
+name: resourcename
 ```
 
-## Configuration
+### **`version`**
 
-### **Resource meta section**
+**Description:** The version of the Resource
 
-The Instance Secret manifest comprises a Resource meta section that outlines essential metadata attributes applicable to all Resource types. Note that some attributes are optional within this section, while others are mandatory. For more information about the various attributes in the Resource meta section, refer to the [Attributes of Resource meta section](https://dataos.info/resources/manifest_attributes/).
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value**           |
+| ------------- | --------------- | ----------------- | ---------------------------- |
+| string        | mandatory       | none              | v1, v1beta, v1alpha, v2alpha |
+
+**Example usage:**
+
+```bash
+version: v1
+```
+
+### **`type`**
+
+**Description:** Provide the value for the Resource type.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value**                                                   |
+| ------------- | --------------- | ----------------- | -------------------------------------------------------------------- |
+| string        | mandatory       | none              | cluster, compute, depot, policy,  secret, service, stack or workflow |
+
+**Example usage:**
+
+```yaml
+type: instance-secret
+```
+
+### **`tags`**
+
+**Description:** Assign tags to the Resource-instance
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value**                         |
+| ------------- | --------------- | ----------------- | ------------------------------------------ |
+| mapping       | mandatory       | none              | any string; special characters are allowed |
+
+**Example usage:**
+
+```javascript
+tags: 
+  - data connection
+  - snowflake depot
+```
+
+### **`description`**
+
+**Description:** Assign description to Resource
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | --------------- | ----------------- | ------------------ |
+| string        | optional        | none              | any string         |
+
+**Additional information:** the description can be within quotes or without.
+
+<Warning>
+  YAML supports *scalars* such as strings, numbers, booleans, and null. A scalar value can be unquoted, within single quotes (') or double quotes ("). When the scalar contains a special character, the value must be declared within quotes.
+</Warning>
+
+
+
+**Example usage:**
+
+```yaml
+description: "This is a sample description of a Resource"  
+```
+
+### **`owner`**
+
+**Description:** Identification of the user
+
+| **Data Type** | **Requirement** | **Default Value**                    | **Possible Value**       |
+| ------------- | --------------- | ------------------------------------ | ------------------------ |
+| string        | optional        | id of the user applying the Resource | any valid dataos user id |
+
+**Additional information:** when no id is provided, or an incorrect id is provided, the system automatically corrects it to the id of the user who applied the Resource on DataOS CLI
+
+
+**Example usage:**
+
+```yaml
+owner: iamgroot
+```
+
+### **`layer`**
+
+**Description:** Declare the name of the layer in which the Resource is going to be deployed
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | --------------- | ----------------- | ------------------ |
+| string        | optional        | user              | user/system        |
+
+**Additional information:**
+From a user's perspective, the operating system can be envisaged as working at two levels - user layer & system layer. This is only a logical separation to understand the workings of the system.
+**Example usage:**
+
+```yaml
+layer: user
+```
 
 ### **Instance Secret Specific Section**
 
-**Description:**  The Instance Secret section comprises the attribute of Instance Secret Resources.
+**Description:**  The Instance Secret section comprises the attribute of Instance Secret Resources.
 
 | Data Type | Requirement | Default Value | Possible Value                   |
 | --------- | ----------- | ------------- | -------------------------------- |
@@ -50,9 +183,9 @@ instance-secret: # Instance Secret mapping (mandatory)
     password: yourpassword
 ```
 
-### [](https://dataos.info/resources/instance_secret/configurations/#__codelineno-1-1)**`type`**
+### **`type`**
 
-**Description:** the type of Instance Secret
+**Description:** the type of Instance Secret
 
 | Data Type | Requirement | Default Value | Possible Value                                |
 | --------- | ----------- | ------------- | --------------------------------------------- |
@@ -60,12 +193,10 @@ instance-secret: # Instance Secret mapping (mandatory)
 
 **Example Usage:**
 
-```
+```yaml
 instance-secret:
   type: key-value # Type of Secret
 ```
-
-[](https://dataos.info/resources/instance_secret/configurations/#__codelineno-2-1)
 
 Let's see each type of Instance Secrets one by one:
 
@@ -95,8 +226,8 @@ For a more detailed analysis of each type and to explore the syntax, please navi
       type: key-value
       acl: r
       data:
-        ${key1:value1}
-        ${key2:value2}
+        ${key1}: ${value1}
+        ${key2}: ${value2}
     ```
 
     When you store an Instance Secret as a key-value type, the system passes the instance secret in the format they are stated, without any alterations.
@@ -107,7 +238,7 @@ For a more detailed analysis of each type and to explore the syntax, please navi
 
     **Syntax:**
 
-    ```
+    ```yaml
     name: ${testing}
     version: v1
     type: instance-secret
@@ -115,17 +246,17 @@ For a more detailed analysis of each type and to explore the syntax, please navi
       type: key-value-properties
       acl: r
       data:
-        ${key1:value1}
-        ${key2:value2}
+        ${key1}: ${value1}
+        ${key2}: ${value2}
     ```
   </Tab>
 
   <Tab title="certificates">
-    This type is used to store TLS certificates and keys. The most common usage scenario is Ingress resource termination, but this type is also sometimes used with other resources.
+    This type is used to store TLS certificates and keys. The most common usage scenario is Ingress resource termination, but this type is also sometimes used with other resources.
 
     **Syntax:**
 
-    ```
+    ```yaml
     name: ${secret-name}
     version: v1
     type: instance-secret
@@ -141,13 +272,13 @@ For a more detailed analysis of each type and to explore the syntax, please navi
 
 ### **`acl`**
 
-**Description:** access control list
+**Description:** access control list
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --------- | ----------- | ------------- | -------------- |
 | string    | mandatory   | none          | r, rw          |
 
-**Additional Notes:** the r value stands for Read while rw stands for Read-Write
+**Additional Notes:** the r value stands for Read while rw stands for Read-Write
 
 **Example Usage:**
 
@@ -164,7 +295,8 @@ instance-secret:
 | --------- | ----------- | ------------- | -------------- |
 | mapping   | mandatory   | none          | none           |
 
-**Additional Details:** The keys of `data` section must consist of alphanumeric characters, `-`, `_`, or `.`.
+**Additional Details:** The keys of `data` section must consist of alphanumeric characters, `-`, `_`, or `.`.
+
 **Example Usage:**
 
 ```yaml
@@ -176,7 +308,7 @@ instance-secret:
 
 ### **`files`**
 
-**Description:** The file section comprises the path of the file that contains the confidential data that needs to be stored. They are defined in the form of key-value pairs, which vary from secret type to type, and interpolated within the `data` field once the manifest file has been applied.
+**Description:** The file section comprises the path of the file that contains the confidential data that needs to be stored. They are defined in the form of key-value pairs, which vary from secret type to type, and interpolated within the `data` field once the manifest file has been applied.
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --------- | ----------- | ------------- | -------------- |
@@ -189,5 +321,3 @@ instance-secret:
   files: 
     key_json: value1.json
 ```
-
-[](https://dataos.info/resources/instance_secret/configurations/#__codelineno-9-1)
