@@ -1,9 +1,12 @@
 ---
 title: "Scanner for Snowflake"
+sidebarTitle: "Snowflake"
+description: "This section provides a guide and reference for using the Snowflake metadata Scanner Workflow. It includes configuration steps, and required access permissions for execution."
 ---
-Scanner for Snowflake can scan metadata details such as schemas, tables, view details, etc., from SNOWFLAKE. All the essential requirements and sample menifest configurations to connect to SNOWFLAKE for extracting entity metadata are given below.
 
-## **Requirements**
+Snowflake metadata Scanner Workflow can be configured and scheduled through the DataOS CLI. Ensure that all prerequisites are met before initiating the workflow.
+
+## Prerequisites
 
 1. To ingest basic metadata, snowflake user must have at least `USAGE` privileges on required schemas.
 2. While running the usage Workflow, Metis fetches the query logs by querying `snowflake.account_usage.query_history` table. For this the snowflake user should be granted the `ACCOUNTADMIN` role (or a role granted IMPORTED PRIVILEGES on the database).
@@ -15,28 +18,27 @@ Scanner for Snowflake can scan metadata details such as schemas, tables, view de
     dataos-ctl get -t depot -a
     ```
 
-    **#expected output**
-
     ```bash
-
-    INFO[0000] 🔍 get...                                     
-    INFO[0000] 🔍 get...complete                             
+    #expected output
     
-                NAME            | VERSION | TYPE  | WORKSPACE | STATUS |   RUNTIME   |         OWNER          
-    ----------------------------|---------|-------|-----------|--------|-------------|------------------------
-      mongodepot                | v2alpha | depot |           | active |             | Jhon Doe
-      **snowflakedepot            | v2alpha | depot |           | active |             | JOJO**
-      redshiftdepot             | v2alpha | depot |           | active |             | Kira
-      mysqldepot                | v2alpha | depot |           | active |             | Ryuk
-      oracle01                  | v2alpha | depot |           | active |             | drdoom
-      mariadb01                 | v2alpha | depot |           | active |             | tonystark
-      demopreppostgres          | v2alpha | depot |           | active |             | slimshaddy
-    	demoprepbq                | v2alpha | depot |           | active |             | pengvin
-      mssql01                   | v2alpha | depot |           | active |             | hulk
-      kafka01                   | v2alpha | depot |           | active |             | peeter
-      icebase                   | v2alpha | depot |           | active |             | blackpink
-      azuresql                  | v2alpha | depot |           | active |             | arnold
-      fastbase                  | v2alpha | depot |           | active |             | ddevil
+    INFO[0000] 🔍 get...
+    INFO[0000] 🔍 get...complete
+    
+    | NAME             | VERSION | TYPE  | WORKSPACE | STATUS | RUNTIME | OWNER      |
+    | ---------------- | ------- | ----- | --------- | ------ | ------- | ---------- |
+    | mongodepot       | v2alpha | depot |           | active |         | usertest   |
+    | snowflakedepot   | v2alpha | depot |           | active |         | gojo       |
+    | redshiftdepot    | v2alpha | depot |           | active |         | kira       |
+    | mysqldepot       | v2alpha | depot |           | active |         | ryuk       |
+    | oracle01         | v2alpha | depot |           | active |         | drdoom     |
+    | mariadb01        | v2alpha | depot |           | active |         | tonystark  |
+    | demopreppostgres | v2alpha | depot |           | active |         | slimshaddy |
+    | demoprepbq       | v2alpha | depot |           | active |         | pengvin    |
+    | mssql01          | v2alpha | depot |           | active |         | hulk       |
+    | kafka01          | v2alpha | depot |           | active |         | peeter     |
+    | icebase          | v2alpha | depot |           | active |         | blackpink  |
+    | azuresql         | v2alpha | depot |           | active |         | arnold     |
+    | fastbase         | v2alpha | depot |           | active |         | ddevil     |
     ```
     
     If the Snowflake Depot is not created, create a Depot using the Snowflake Depot Template give below: 
@@ -65,19 +67,38 @@ Scanner for Snowflake can scan metadata details such as schemas, tables, view de
           allkeys: true
     ```
     
-6. **Access Permission to Run a Scanner Workflow**
-    Verify that the use case or role tag for executing a Scanner Workflow is approved, which are as follows:
+6. **Access Permissions in DataOS**: 
+    To execute a Scanner Workflow in DataOS, verify that at least one of the following role tags is assigned:
     
-    | **Access using Role Tag** | **Access using Use cases** |
-    | --- | --- |
-    | `roles:id:data-dev`  | Read Workspace  |
-    | `roles:id:system-dev`  | Run as Scanner User  |
-    | `roles:id:user`  | Manage All Depot  |
-    |   | Read All Dataset  |
-    |   | Read all secrets from Heimdall  |
+    * `roles:id:data-dev`
+    
+    * `roles:id:system-dev`
+    
+    * `roles:id:user`
+    
+    Use the following command to check assigned roles:
+    
+    ```bash
+    dataos-ctl user get
+    ```
+    
+    If any required tags are missing, contact a **DataOS Operator** or submit a **Grant Request** for role assignment.
+    
+    Alternatively, if access is managed through **use cases**, ensure the following use cases are assigned:
+    
+    * **Read Workspace**
+    
+    * **Run as Scanner User**
+    
+    * **Manage All Depot**
+    
+    * **Read All Dataset**
+    
+    * **Read All Secrets from Heimdall**
+    
+    To validate assigned use cases, refer to the **Bifrost Application Use Cases** section.
 
-
-## Scanner Workflow
+## Scanner Workflow for Snowflake
 
 Sample manifest configuration file for the Snowflake are as follows: 
 
@@ -115,16 +136,23 @@ workflow:
 Once the credentials of the sample file is given by the user and save with the .yam/.yml extension it can be deployed to extract the meta data by using the following command:
 
 ```bash
-dataos-ctl resource apply -f {full path to}/{filename}.yml
+dataos-ctl resource apply -f ${{path to the Scanner YAML}}
 ```
 
+**Updating the Scanner Workflow**:
 
-After the successful workflow run, user can check the metadata of scanned Tables on Metis UI for all schemas present in the database.
+If the Depot or Scanner configurations are updated, the Scanner must be redeployed after deleting the previous instance. Use the following command to delete the existing Scanner:
+
+<CodeGroup>
+  ```bash Command
+  dataos-ctl delete -f ${{path-to-Scanner-YAML}}
+  ```
+
+  ```bash Alternative Command
+  dataos-ctl delete -t workflow -n ${{name of Scanner}} -w ${{name of workspace}}
+  ```
+</CodeGroup>
 
 <Note>
-  If the Depot or Scanner configurations are updated, the Scanner must be redeployed after deleting the previous instance. Use the following command to delete the existing Scanner:
-
-  ```bash
-  dataos-ctl resource delete -f {full path to}/{filename}.yml
-  ```
+  **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs
 </Note>

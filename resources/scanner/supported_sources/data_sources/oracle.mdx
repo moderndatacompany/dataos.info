@@ -37,37 +37,37 @@ Oracle metadata Scanner Workflow can be configured and scheduled through the Dat
   | azuresql         | v2alpha | depot |           | active |         | arnold     |
   | fastbase         | v2alpha | depot |           | active |         | ddevil     |
   ```
-
-If the Depot is not created, create a Depot using the template given below: 
-
-```yaml
-name: ${{depot-name}}
-version: v1
-type: depot
-tags:
-  - ${{dropzone}}
-  - ${{oracle}}
-layer: user
-depot:
-  type: ORACLE                                    
-  description: ${{"Oracle Sample data"}}
-  spec:
-    subprotocol: ${{subprotocol}} # for example "oracle:thin"                                     
-    host: ${{host}}
-    port: ${{port}}
-    service: ${{service}}
-  external: ${{true}}
-    - acl: r
-      type: key-value-properties
-      data:
-        username: ${{username}}
-        password: ${{password}}  
-    - acl: rw
-      type: key-value-properties
-      data:
-        username: ${{username}}
-        password: ${{password}}
-```
+  
+  If the Depot is not created, create a Depot using the template given below: 
+  
+  ```yaml
+  name: ${{depot-name}}
+  version: v1
+  type: depot
+  tags:
+    - ${{dropzone}}
+    - ${{oracle}}
+  layer: user
+  depot:
+    type: ORACLE                                    
+    description: ${{"Oracle Sample data"}}
+    spec:
+      subprotocol: ${{subprotocol}} # for example "oracle:thin"                                     
+      host: ${{host}}
+      port: ${{port}}
+      service: ${{service}}
+    external: ${{true}}
+      - acl: r
+        type: key-value-properties
+        data:
+          username: ${{username}}
+          password: ${{password}}  
+      - acl: rw
+        type: key-value-properties
+        data:
+          username: ${{username}}
+          password: ${{password}}
+  ```
 
 - **Access Permissions in DataOS**: 
   To execute a Scanner Workflow in DataOS, verify that at least one of the following role tags is assigned:

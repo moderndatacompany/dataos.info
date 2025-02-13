@@ -1,9 +1,11 @@
 ---
 title: "Scaanner for PostgreSQL"
+sidebarTitle: "PostgreSQL"
+description: "This section provides a guide and reference for using the PostgreSQL metadata Scanner Workflow. It includes configuration steps, and required access permissions for execution."
 ---
+PostgreSQL metadata Scanner Workflow can be configured and scheduled through the DataOS CLI. Ensure that all prerequisites are met before initiating the workflow.
 
-To scan the PostgreSQL database, following requirements are needed:
-
+## Prerequisites
 - The user should have both `CONNECT` and `SELECT` privileges on the database.
 - Check weather PostgreSQL Depot is already created. To check the Depot go to the Metis UI of the DataOS or use the following command:
     
@@ -12,30 +14,29 @@ To scan the PostgreSQL database, following requirements are needed:
     ```
 
     ```bash
-    
     #expected output
     
-    INFO[0000] 🔍 get...                                     
-    INFO[0000] 🔍 get...complete                             
+    INFO[0000] 🔍 get...
+    INFO[0000] 🔍 get...complete
     
-                NAME            | VERSION | TYPE  | WORKSPACE | STATUS |   RUNTIME   |         OWNER          
-    ----------------------------|---------|-------|-----------|--------|-------------|------------------------
-      mongodepot                | v2alpha | depot |           | active |             | Jhon Doe
-      snowflakedepot            | v2alpha | depot |           | active |             | JOJO
-      redshiftdepot             | v2alpha | depot |           | active |             | Kira
-      mysqldepot                | v2alpha | depot |           | active |             | Ryuk
-      oracle01                  | v2alpha | depot |           | active |             | drdoom
-      mariadb01                 | v2alpha | depot |           | active |             | tonystark
-      **demopreppostgres          | v2alpha | depot |           | active |             | slimshaddy**
-      demoprepbq                | v2alpha | depot |           | active |             | pengvin
-      mssql01                   | v2alpha | depot |           | active |             | hulk
-      kafka01                   | v2alpha | depot |           | active |             | peeter
-      icebase                   | v2alpha | depot |           | active |             | blackpink
-      azuresql                  | v2alpha | depot |           | active |             | arnold
-      fastbase                  | v2alpha | depot |           | active |             | ddevil
+    | NAME             | VERSION | TYPE  | WORKSPACE | STATUS | RUNTIME | OWNER      |
+    | ---------------- | ------- | ----- | --------- | ------ | ------- | ---------- |
+    | mongodepot       | v2alpha | depot |           | active |         | usertest   |
+    | snowflakedepot   | v2alpha | depot |           | active |         | gojo       |
+    | redshiftdepot    | v2alpha | depot |           | active |         | kira       |
+    | mysqldepot       | v2alpha | depot |           | active |         | ryuk       |
+    | oracle01         | v2alpha | depot |           | active |         | drdoom     |
+    | mariadb01        | v2alpha | depot |           | active |         | tonystark  |
+    | demopreppostgres | v2alpha | depot |           | active |         | slimshaddy |
+    | demoprepbq       | v2alpha | depot |           | active |         | pengvin    |
+    | mssql01          | v2alpha | depot |           | active |         | hulk       |
+    | kafka01          | v2alpha | depot |           | active |         | peeter     |
+    | icebase          | v2alpha | depot |           | active |         | blackpink  |
+    | azuresql         | v2alpha | depot |           | active |         | arnold     |
+    | fastbase         | v2alpha | depot |           | active |         | ddevil     |
     ```
     
-    If the MongoDB Depot is not created, create a Depot using the MongoDB Depot Template give below: 
+    If the PostgreSQL Depot is not created, create a Depot using the PostgreSQL Depot Template give below: 
     
     ```yaml
     name: ${{postgresdb}}
@@ -61,24 +62,43 @@ To scan the PostgreSQL database, following requirements are needed:
           sslmode: ${{disable}}
     ```
     
-- **Access Permission to Run a Scanner Workflow**
-    Verify that the use case or role tag for executing a Scanner Workflow is approved, which are as follows:
+- **Access Permissions in DataOS**: 
+    To execute a Scanner Workflow in DataOS, verify that at least one of the following role tags is assigned:
     
-    | **Access using Role Tag** | **Access using Use cases** |
-    | --- | --- |
-    | `roles:id:data-dev`  | Read Workspace  |
-    | `roles:id:system-dev`  | Run as Scanner User  |
-    | `roles:id:user`  | Manage All Depot  |
-    |   | Read All Dataset  |
-    |   | Read all secrets from Heimdall  |
+    * `roles:id:data-dev`
+    
+    * `roles:id:system-dev`
+    
+    * `roles:id:user`
+    
+    Use the following command to check assigned roles:
+    
+    ```bash
+    dataos-ctl user get
+    ```
+    
+    If any required tags are missing, contact a **DataOS Operator** or submit a **Grant Request** for role assignment.
+    
+    Alternatively, if access is managed through **use cases**, ensure the following use cases are assigned:
+    
+    * **Read Workspace**
+    
+    * **Run as Scanner User**
+    
+    * **Manage All Depot**
+    
+    * **Read All Dataset**
+    
+    * **Read All Secrets from Heimdall**
+    
+    To validate assigned use cases, refer to the **Bifrost Application Use Cases** section.
 
 
-## **Scanner Workflow**
+## Scanner Workflow for PostgreSQL
 
 DataOS facilitates database connections via a JDBC driver for reading data from tables using Depot. Additionally, metadata can be scanned from a POSTGRES-type depot through Scanner Workflows. The Depot provides access to all schemas that are visible to the specified user within the configured PostGRES database.
 
 <Info>
-
 
 Ensure that the depot is created for your PostgreSQL database and you have `read` access for the depot.
 
@@ -100,7 +120,7 @@ workflow:
         compute: runnable-default
         runAsUser: metis
         stackSpec:
-          depot: demopreppostgres          # Postgres depot name
+          depot: dataos://demopreppostgres          # Postgres depot name or UDL
           # sourceConfig:
           #   config:
           #     schemaFilterPattern:
@@ -114,15 +134,24 @@ workflow:
 
 The above sample manifest file is deployed using the following command:
 
+```bash
+dataos-ctl resource apply -f ${{path to the Scanner YAML}}
 ```
-dataos-ctl resource apply -f {path to the Scanner YAML}
-```
-After the successful workflow run, user can check the metadata of scanned Tables on Metis UI for all schemas present in the database.
+
+**Updating the Scanner Workflow**:
+
+If the Depot or Scanner configurations are updated, the Scanner must be redeployed after deleting the previous instance. Use the following command to delete the existing Scanner:
+
+<CodeGroup>
+  ```bash Command
+  dataos-ctl delete -f ${{path-to-Scanner-YAML}}
+  ```
+
+  ```bash Alternative Command
+  dataos-ctl delete -t workflow -n ${{name of Scanner}} -w ${{name of workspace}}
+  ```
+</CodeGroup>
 
 <Note>
-  If the Depot or Scanner configurations are updated, the Scanner must be redeployed after deleting the previous instance. Use the following command to delete the existing Scanner:
-
-  ```
-  dataos-ctl resource delete -f {path to the Scanner YAML file}
-  ```
+  **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs
 </Note>
