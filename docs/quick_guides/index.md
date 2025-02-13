@@ -18,8 +18,6 @@ Learn how to connect DataOS to various data sources, ensuring seamless integrati
 
 <div class= "grid cards" markdown>
 
--   [Depot Creation with DataOS GUI](/quick_guides/depot_creation_gui/)
-
 -   [Depot Creation with DataOS CLI](/quick_guides/depot_creation_cli/)
 
 </div>

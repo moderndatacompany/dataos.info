@@ -13,7 +13,7 @@ This document outlines the steps required to integrate Power BI with DataOS, ens
 Before proceeding with the data gateway configuration, ensure the following components are installed:
 
 - [Power BI Desktop](https://powerbi.microsoft.com/desktop) installed on the local system(version released after June 15, 2023).
-- A Power BI service account
+- A Power BI service account.
 - Npgsql version `v4.0.10` (or earlier, up to `v4.0.16`) installed on the local machine. Use the `.msi` installer only.
 - [On-premises data gateway](https://www.microsoft.com/en-us/power-platform/products/power-bi/gateway) installed on the same system as PostgreSQL.
 - Ensure that necessary ports (such as `6432`) and services are whitelisted.
@@ -23,7 +23,7 @@ Before proceeding with the data gateway configuration, ensure the following comp
 💡 Organizations are responsible for managing the Power BI gateway and Npgsql installation within the VPC. Collaboration with technical teams may be required to ensure a successful setup.
 </aside>
 
-### **Installing the on-prem data gateway**
+## Installing the on-prem data gateway
 
 1. Download the gateway installer from [Microsoft](https://www.microsoft.com/en-us/power-platform/products/power-bi/gateway).
 
@@ -56,7 +56,7 @@ Before proceeding with the data gateway configuration, ensure the following comp
 
 Now that you've installed a gateway, install a `npgsql`.
 
-### **Installing Npgsql for PostgreSQL connectivity**
+## Installing Npgsql for PostgreSQL connectivity
 
 1. Download the `Npgsql.msi` installer from [GitHub](https://github.com/npgsql/npgsql/releases/tag/v4.0.10) Make sure to download the `v4.0.10` or earlier version.
 
@@ -134,8 +134,6 @@ When the Success message appears, select Open `productaffinity.pbip` in Power BI
 ## Configuring a Data Gateway for PostgreSQL Server
 
 In Power BI Desktop, you connected directly to your on-premises PostgreSQL Server database. In the Power BI service, you need a data gateway to act as a bridge between the cloud and your on-premises network. Follow these steps to add your on-premises PostgreSQL Server database as a data source to a gateway and connect your semantic model to this data source.
-
-To connect Power BI to the on-premises PostgreSQL database via the data gateway, follow these steps:
 
 ### **Add a Gateway connection**
 
