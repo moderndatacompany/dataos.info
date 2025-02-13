@@ -10,11 +10,7 @@ Kafka metadata Scanner Workflow can be configured and scheduled through the Data
 
 To scan the KAFKA depot, ensure the following prerequisites need the following:
 
-* Ensure that the depot is created and user have 
-
-  `read`
-
-   access for the depot. Check the depot using Metis UI or use the following commands:
+* Ensure that the depot is created and user have `read` access for the depot. Check the depot using Metis UI or use the following commands:
 
 ```bash
 dataos-ctl get -t depot -a
@@ -67,48 +63,37 @@ depot:
 
 * To connect to Kafka, user needs a KAFKA broker list. Once the user provides the broker list, the Depot enables fetching all the topics in the KAFKA cluster.
 
-* **Access Permission in DataOS to Run a Scanner Workflow**
+* **Access Permissions in DataOS**:
+    To execute a Scanner Workflow in DataOS, verify that at least one of the following role tags is assigned:
+    
+    * `roles:id:data-dev`
+    
+    * `roles:id:system-dev`
+    
+    * `roles:id:user`
+    
+    Use the following command to check assigned roles:
+    
+    ```bash
+    dataos-ctl user get
+    ```
+    
+    If any required tags are missing, contact a **DataOS Operator** or submit a **Grant Request** for role assignment.
+    
+    Alternatively, if access is managed through **use cases**, ensure the following use cases are assigned:
+    
+    * **Read Workspace**
+    
+    * **Run as Scanner User**
+    
+    * **Manage All Depot**
+    
+    * **Read All Dataset**
+    
+    * **Read All Secrets from Heimdall**
+    
+    To validate assigned use cases, refer to the **Bifrost Application Use Cases** section.
 
-  :
-  To execute a Scanner Workflow in DataOS, verify that at least one of the following role tags is assigned:Use the following command to check assigned roles:
-
-  ```bash
-  dataos-ctl user get
-  ```
-
-  If any required tags are missing, contact a 
-
-  **DataOS Operator**
-
-   or submit a 
-
-  **Grant Request**
-
-   for role assignment.Alternatively, if access is managed through 
-
-  **use cases**
-
-  , ensure the following use cases are assigned:To validate assigned use cases, refer to the 
-
-  **Bifrost Application Use Cases**
-
-   section.
-
-  * **Read Workspace**
-
-  * **Run as Scanner User**
-
-  * **Manage All Depot**
-
-  * **Read All Dataset**
-
-  * **Read All Secrets from Heimdall**
-
-  - `roles:id:data-dev`
-
-  - `roles:id:system-dev`
-
-  - `roles:id:user`
 
 ## **Scanner Workflow for Kafka**
 
