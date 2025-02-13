@@ -99,7 +99,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * **Azure Storage Account Key:** The access key for the Azure Storage account, is used for authentication. You can retrieve this from the Azure Portal by navigating to your storage account, selecting Access keys under the Security + networking section, and copying the key.
 
-    * **Azure Storage Account Name:\*\*The name of the Azure Storage account used to identify it within your subscription. This can be found in the Azure Portal under the Overview section of your storage account.
+    * **Azure Storage Account Name:**The name of the Azure Storage account used to identify it within your subscription. This can be found in the Azure Portal under the Overview section of your storage account.
 
     Ensure that you have these details ready before proceeding with the Instance Secret creation process.
 
@@ -114,7 +114,7 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your ABFSS Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -401,7 +401,7 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your Bigquery Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -689,7 +689,7 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your Elasticsearch Instance Secret. Below are the templates for the read-only and read-write manifests:
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -972,7 +972,7 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your Eventhub Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -1264,7 +1264,7 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your GCS Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -1548,7 +1548,7 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your JDBC Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -1832,7 +1832,7 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your MongoDB Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -2115,7 +2115,7 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your MSSQL Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -2398,7 +2398,7 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your MySQL Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -2681,7 +2681,7 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your OpenSearch Instance Secret. Below are the templates for the read-only and read-write manifests:
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -2960,7 +2960,7 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your Oracle Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -3243,7 +3243,7 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your Postgres Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -3350,7 +3350,7 @@ If you want to store credentials for various data sources in an Instance Secret 
       ```
     </CodeGroup>
 
-    To get the list of all the Instance Secret within the Dataos environment execute the following command.
+    To get the list of all the Instance Secrets within the Dataos environment execute the following command.
 
     <CodeGroup>
       ```bash Command
@@ -3531,7 +3531,7 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your Redshift Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding manifest template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -3818,7 +3818,7 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your S3 Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read-write access of an  Instance Secret, the user has to create two Instance Secrets one with `acl:r` and the other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -3928,7 +3928,7 @@ If you want to store credentials for various data sources in an Instance Secret 
       ```
     </CodeGroup>
 
-    To get the list of all the Instance Secret within the Dataos environment execute the following command.
+    To get the list of all the Instance Secrets within the Dataos environment execute the following command.
 
     <CodeGroup>
       ```bash Command
@@ -3965,7 +3965,7 @@ If you want to store credentials for various data sources in an Instance Secret 
       INFO[0000] 🗑 deleting sampleinstsecret:v1:instance-secret... 
       INFO[0001] 🗑 deleting sampleinstsecret:v1:instance-secret...error 
       WARN[0001] 🗑 delete...error                             
-      ERRO[0001] Invalid Parameter - failure deleting instance resource : cannot delete resource, it is a dependency of 'depot:v2alpha:sampleinstdepot'
+      ERRO[0001] Invalid Parameter - failure deleting instance resource: cannot delete resource, it is a dependency of 'depot:v2alpha:sampleinstdepot'
       ```
     </Warning>
 
@@ -4066,7 +4066,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     Alternatively, if access is managed through use cases, ensure the following use case is assigned:
 
-    * **Manage All Instance-level Resources of DataOS in User Layer**
+    * **Manage All Instance-level Resources of DataOS in the User Layer**
 
     To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
@@ -4105,7 +4105,7 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your Snowflake Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read-write access of an  Instance Secret, the user has to create two Instance Secrets one with `acl:r` and the other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -4212,7 +4212,7 @@ If you want to store credentials for various data sources in an Instance Secret 
       ```
     </CodeGroup>
 
-    To get the list of all the Instance Secret within the Dataos environment execute the following command.
+    To get the list of all the Instance Secrets within the Dataos environment execute the following command.
 
     <CodeGroup>
       ```bash Command
@@ -4350,7 +4350,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     Alternatively, if access is managed through use cases, ensure the following use case is assigned:
 
-    * **Manage All Instance-level Resources of DataOS in User Layer**
+    * **Manage All Instance-level Resources of DataOS in the User Layer**
 
     To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
@@ -4374,7 +4374,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * **Azure Endpoint Suffix**: The endpoint suffix for the Azure Storage account. This is typically region-specific and can be found in the Azure Portal under the **Properties** section of your storage account.
 
-    * **Azure Storage Account Key** : The access key for the Azure Storage account, used for authentication. You can retrieve this from the Azure Portal by navigating to your storage account, selecting  **Access keys** under the **Security + networking** section, and copying the key.
+    * **Azure Storage Account Key**: The access key for the Azure Storage account, used for authentication. You can retrieve this from the Azure Portal by navigating to your storage account, selecting  **Access keys** under the **Security + networking** section, and copying the key.
 
     * **Azure Storage Account Name**: The name of the Azure Storage account used to identify it within your subscription. This can be found in the Azure Portal under the **Overview** section of your storage account.
 
@@ -4391,7 +4391,7 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your WASBS Instance Secret. Below are the templates for the read-only and read-write manifests:
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -4605,7 +4605,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 
 **Repositories**
 
-If you want to store credentials for hosted code repositories in an Instance Secret follow steps given below.
+If you want to store credentials for hosted code repositories in an Instance Secret follow the steps given below.
 
 <AccordionGroup>
   <Accordion title="AWS CodeCommit" defaultOpen={false}>
@@ -4643,7 +4643,7 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     Alternatively, if access is managed through use cases, ensure the following use case is assigned:
 
-    * **Manage All Instance-level Resources of DataOS in User Layer**
+    * **Manage All Instance-level Resources of DataOS in the User Layer**
 
     To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
@@ -4665,9 +4665,9 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     **Source System Configuration**
 
-    * **GITSYNC\_USERNAME**: This represents the AWS CodeCommit username required for authentication.
+    * **GITSYNC_USERNAME**: This represents the AWS CodeCommit username required for authentication.
 
-    * **GITSYNC\_PASSWORD**: This is the corresponding password or an app password used for authentication.
+    * **GITSYNC_PASSWORD**: This is the corresponding password or an app password used for authentication.
       These credentials can be obtained from the  AWS CodeCommit settings or provided by an administrator.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process. Follow the steps below to complete the creation process efficiently and securely.
@@ -4679,7 +4679,7 @@ If you want to store credentials for hosted code repositories in an Instance Sec
     Begin by creating a manifest file to hold the configuration details for your AWS CodeCommit Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -4803,7 +4803,7 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     Alternatively, if access is managed through use cases, ensure the following use case is assigned:
 
-    * **Manage All Instance-level Resources of DataOS in User Layer**
+    * **Manage All Instance-level Resources of DataOS in the User Layer**
 
     To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
@@ -4825,9 +4825,9 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     **Source System Configuration**
 
-    * **GITSYNC\_USERNAME**: This represents the Bitbucket username required for authentication.
+    * **GITSYNC_USERNAME**: This represents the Bitbucket username required for authentication.
 
-    * **GITSYNC\_PASSWORD**: This is the corresponding password or an app password used for authentication.
+    * **GITSYNC_PASSWORD**: This is the corresponding password or an app password used for authentication.
       These credentials can be obtained from the Bitbucket account settings or provided by an administrator.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process. Follow the steps below to complete the creation process efficiently and securely.
@@ -4837,7 +4837,7 @@ If you want to store credentials for hosted code repositories in an Instance Sec
     Begin by creating a manifest file to hold the configuration details for your Bitbucket repository Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read-write access of an  Instance Secret, the user has to create two Instance Secrets one with `acl:r` and the other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -4924,7 +4924,7 @@ If you want to store credentials for hosted code repositories in an Instance Sec
   <Accordion title="Git" defaultOpen={false}>
     ### Create an Instance Secret for securing Git repository credentials
 
-    Git repository is a central storage location where code, documentation, and related files are managed and versioned. It allows developers to track changes over time, collaborate on code by merging contributions from multiple developers, and maintain a history of modifications.
+    A Git repository is a central storage location where code, documentation, and related files are managed and versioned. It allows developers to track changes over time, collaborate on code by merging contributions from multiple developers, and maintain a history of modifications.
 
     ### Pre-requisites
 
@@ -4956,7 +4956,7 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     Alternatively, if access is managed through use cases, ensure the following use case is assigned:
 
-    * **Manage All Instance-level Resources of DataOS in User Layer**
+    * **Manage All Instance-level Resources of DataOS in the User Layer**
 
     To validate assigned use cases, refer to the Bifrost Application Use Cases section
 
@@ -4978,9 +4978,9 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     **Source System Configuration**
 
-    * **GITSYNC\_USERNAME**: This represents the Git username required for authentication.
+    * **GITSYNC_USERNAME**: This represents the Git username required for authentication.
 
-    * **GITSYNC\_PASSWORD**: This is the corresponding password used for authentication.
+    * **GITSYNC_PASSWORD**: This is the corresponding password used for authentication.
       These credentials can be obtained from the Bitbucket account settings or provided by an administrator.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process. Follow the steps below to complete the creation process efficiently and securely.
@@ -4990,7 +4990,7 @@ If you want to store credentials for hosted code repositories in an Instance Sec
     Begin by creating a manifest file to hold the configuration details for your Git repository Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user have to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -5098,7 +5098,7 @@ This section involves do's and don'ts for managing an Instance Secret.
 ## FAQs
 
 <AccordionGroup>
-  <Accordion title="Can I update an existing Instance Secret?" defaultOpen={false}>
+  <Accordion title=" Can I update an existing Instance Secret?" defaultOpen={false}>
     Yes, you can update an Instance Secret by modifying its manifest file and re-applying it. However, ensure that dependent resources are updated accordingly.
     To update an Instance Secret after making changes in the manifest file, execute the following commands.
 
@@ -5134,6 +5134,6 @@ This section involves do's and don'ts for managing an Instance Secret.
   </Accordion>
 
   <Accordion title="Where does the secrets get stored within DataOS?" defaultOpen={false}>
-    Within DataOS secrets gets stored securly within the Heimdall (Heimdall001 DB). Heimdall is the governance engine for access control within DataOS, acting as the Policy Decision Point (PDP) for all authorization requests. It enforces security policies across datasets, API paths, and various applications and services, ensuring only authorized users and systems gain access. Heimdall supports both Role-Based Access Control (RBAC) and Attribute-Based Access Control (ABAC), enabling flexible and fine-grained permissions. It logs every access request and decision for auditing and compliance, providing a transparent and secure framework for managing data and system interactions within DataOS.
+    Within DataOS secrets get stored securely within the Heimdall (Heimdall001 DB). Heimdall is the governance engine for access control within DataOS, acting as the Policy Decision Point (PDP) for all authorization requests. It enforces security policies across datasets, API paths, and various applications and services, ensuring only authorized users and systems gain access. Heimdall supports both Role-Based Access Control (RBAC) and Attribute-Based Access Control (ABAC), enabling flexible and fine-grained permissions. It logs every access request and decision for auditing and compliance, providing a transparent and secure framework for managing data and system interactions within DataOS.
   </Accordion>
 </AccordionGroup>
