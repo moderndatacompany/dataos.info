@@ -8,7 +8,7 @@ This document outlines the steps required to integrate Power BI with DataOS, ens
 🗣️ <b>Important: Firewall and VPN Configuration Required</b>
 
 - If DataOS is installed in a Virtual Private Cloud (VPC), port `6432` must be whitelisted to allow communication between the Power BI data gateway and the DataOS. Ensure that firewall rules permit inbound and outbound traffic on port `6432`.
-- If the customer connects to the VPC via VPN, additional firewall rules may be required to allow communication between the VPN network and Power BI Service. Ensure that Power BI can access the PostgreSQL database over the VPN connection.
+- If the customer connects to the VPC via VPN, additional firewall rules may be required to allow communication between the VPN network and Power BI Service. 
 </aside>
 Before proceeding with the data gateway configuration, ensure the following components are installed:
 
@@ -135,13 +135,13 @@ When the Success message appears, select Open `productaffinity.pbip` in Power BI
 
 <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/pb_publish_06.png" alt="DPH" style="width:40rem; height:auto; border: 1px solid black;" />
     
-## Configuring a Data Gateway for PostgreSQL Server
+## Configuring a data gateway for PostgreSQL interface
 
-In Power BI Desktop, you connected directly to your on-premises PostgreSQL Server database. In the Power BI service, you need a data gateway to act as a bridge between the cloud and your on-premises network. Follow these steps to add your on-premises PostgreSQL Server database as a data source to a gateway and connect your semantic model to this data source.
+In Power BI Desktop, you connected directly to your on-premises PostgreSQL interface. In the Power BI service, you need a data gateway to act as a bridge between the cloud and your on-premises network. Follow these steps to add your on-premises PostgreSQL interface as a data source to a gateway and connect your semantic model to this data source.
 
 ### **Add a Gateway connection**
 
-To connect Power BI to the on-premises PostgreSQL database via the data gateway, follow these steps:
+To connect Power BI to the on-premises PostgreSQL interface via the data gateway, follow these steps:
 
 1. In Power BI Service, navigate to the workspace where the semantic model has been published.
 
@@ -171,8 +171,8 @@ To connect Power BI to the on-premises PostgreSQL database via the data gateway,
 
     - **Gateway Cluster Name**: Enter or verify the configured gateway name.
     - **Connection Name**: Provide a descriptive name (e.g., `productaffinity-testing`).
-    - **Connection Type**: Ensure PostgreSQL is selected.
-    - **Server**: Enter the PostgreSQL instance (e.g., `tcp.dataos-training-dataos.app:6432`).
+    - **Connection Type**: Ensure PostgreSQL interface is selected.
+    - **Server**: Enter the PostgreSQL interface instance (e.g., `tcp.dataos-training-dataos.app:6432`).
     - **Database**: Specify the database name (e.g., `lens:public:productaffinity`).
     - **Authentication**: Select Basic authentication and enter the UserID and API Key (retrievable from the DataOS profile page).
     - **General encryption**: The encrypted connection should be set to 'Not encrypted'.
