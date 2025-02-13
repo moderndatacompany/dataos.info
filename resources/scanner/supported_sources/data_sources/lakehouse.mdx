@@ -8,11 +8,7 @@ Lakehouse (ABFSS, WASBS, GCS, S3) metadata Scanner Workflow can be configured an
 
 ## Prerequisites
 
-* To scan the ⁠Lakehouse (ABFSS, WASBS, GCS, S3) Depot, ensure that the depot is created and  have 
-
-  `read`
-
-   access for the depot. To check the Depot go to the Metis UI of the DataOS or use the following command:
+* To scan the ⁠Lakehouse (ABFSS, WASBS, GCS, S3) Depot, ensure that the depot is created and  have `read` access for the depot. To check the Depot go to the Metis UI of the DataOS or use the following command:
 
 ```bash
 dataos-ctl get -t depot -a
@@ -70,39 +66,36 @@ depot:
       allkeys: true
 ```
 
-* **Access Permissions in DataOS for Lakehouse Scanner Workflow**
-
-  :
-
-To execute a Scanner Workflow in DataOS, verify that at least one of the following role tags is assigned:
-
-* `roles:id:data-dev`
-
-* `roles:id:system-dev`
-
-* `roles:id:user`
-
-Use the following command to check assigned roles:
-
-```bash
-dataos-ctl user get
-```
-
-If any required tags are missing, contact a **DataOS Operator** or submit a **Grant Request** for role assignment.
-
-Alternatively, if access is managed through **use cases**, ensure the following use cases are assigned:
-
-* **Read Workspace**
-
-* **Run as Scanner User**
-
-* **Manage All Depot**
-
-* **Read All Dataset**
-
-* **Read All Secrets from Heimdall**
-
-To validate assigned use cases, refer to the **Bifrost Application Use Cases** section.
+* **Access Permissions in DataOS**:
+    To execute a Scanner Workflow in DataOS, verify that at least one of the following role tags is assigned:
+    
+    * `roles:id:data-dev`
+    
+    * `roles:id:system-dev`
+    
+    * `roles:id:user`
+    
+    Use the following command to check assigned roles:
+    
+    ```bash
+    dataos-ctl user get
+    ```
+    
+    If any required tags are missing, contact a **DataOS Operator** or submit a **Grant Request** for role assignment.
+    
+    Alternatively, if access is managed through **use cases**, ensure the following use cases are assigned:
+    
+    * **Read Workspace**
+    
+    * **Run as Scanner User**
+    
+    * **Manage All Depot**
+    
+    * **Read All Dataset**
+    
+    * **Read All Secrets from Heimdall**
+    
+    To validate assigned use cases, refer to the **Bifrost Application Use Cases** section.
 
 ## **Scanner Workflow for Lakehouse (ABFSS, WASBS, GCS, S3)**
 
