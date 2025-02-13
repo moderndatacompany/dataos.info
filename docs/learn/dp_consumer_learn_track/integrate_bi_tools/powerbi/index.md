@@ -41,7 +41,7 @@ Once connected, you can see tables and views containing all dimensions and measu
 ![powerbi_dashboard.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/powerbi_dashboard.png)
 
 
-<!-- ## Using PowerBI Service Account
+## Using PowerBI Service Account
 
 To publish the created report to the Power BI service account for sharing and collaboration follow the below steps:
 
@@ -95,12 +95,12 @@ After successfully connecting,you will be mapped to the semantic model as shown 
 After successfully connecting, you will be able to access the dashboard. 
 
 ![powerbi_chart.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_chart.png)
- -->
 
-<!-- <aside class="callout">
+
+<aside class="callout">
 🗣️ Power BI also provides the functionality to interact with the downloaded file in Excel.
 
-</aside> -->
+</aside> 
 
 ## Supported data types
 
