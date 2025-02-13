@@ -30,7 +30,9 @@ It enables users to establish connections and retrieve data from various data so
 
 Within DataOS, the hierarchical structure of a data source is represented as follows:
 
-![Hierarchical Structure of a Data Source within DataOS](/resources/depot/udl.png "Hierarchical Structure of a Data Source within DataOS")
+<Frame caption="Hierarchical Structure of a Data Source within DataOS">
+  ![Hierarchical Structure of a Data Source within DataOS](/resources/depot/udl.png "Hierarchical Structure of a Data Source within DataOS")
+</Frame>
 
 The Depot serves as the registration of data locations to be made accessible to DataOS. Through the Depot Service, each source system is assigned a unique address, referred to as a **Uniform Data Link (UDL)**. The UDL grants convenient access and manipulation of data within the source system, eliminating the need for repetitive credential entry. The UDL follows this format:
 
@@ -58,7 +60,9 @@ To create a Depot in DataOS, simply compose a manifest configuration file for a 
 
 ### **Structure of a Depot manifest**
 
-![](/depot_structure.jpg)
+<Frame caption="Depot manifest structure">
+  ![](/depot_structure.jpg)
+</Frame>
 
 To know more about the attributes of Depot manifest Configuration, refer to the link: [Attributes of Depot manifest](https://dataos.info/resources/depot/configurations/).
 
@@ -3426,9 +3430,21 @@ This section involves do's and don'ts for managing a Depot.
 
   This makes it easier to manage and identify Depots.
 
-  * ✅ `s3depot`instead of ❌ `s3-1`
+  * ✅
 
-  * ✅ `dbmysql` instead of ❌ `db1`
+    `s3depot`
+
+    instead of ❌
+
+    `s3-1`
+
+  * ✅
+
+    `dbmysql`
+
+    instead of ❌
+
+    `db1`
 
 * Avoid creating a Depot with inline credentials, always create an Instance Secret.
 
