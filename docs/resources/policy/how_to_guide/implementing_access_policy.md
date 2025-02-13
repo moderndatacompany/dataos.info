@@ -15,7 +15,7 @@ Suppose a new user wants to query the database on Workbench but initially does n
 
 In a policy, we define:
 
-- **Subject:** The person who needs access, identified by a tag. For example, the tag for the user iamgroot is users:id:iamgroot.
+- **Subject:** The person who needs access, identified by a tag. For example, the tag for the user iamgroot is `users:id:iamgroot`.
 - **Predicate:** The actions the user wants to perform, such as `read` and `select`.
 - **Object:** The entities on which the actions will be performed. This can be defined using object tags or object paths (API paths).
 
