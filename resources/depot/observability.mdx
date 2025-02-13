@@ -10,30 +10,22 @@ You can track the status of a Depot—whether it is active or deleted—using th
 
 ### How to monitor the status and runtime of a Depot using Metis UI?
 
-Users can track the status of a Depot, whether active or deleted, along with the total count of active and deleted Depot through the Metis UI.&#x20;
+Users can track the status of a Depot, whether active or deleted, along with the total count of active and deleted Depot through the Metis UI.
 
-* Simply navigate to 
+* Simply navigate to `Resources → Depots` to check the status of any Depot within the environment. Additionally, users can quickly find a specific Depot by searching for its name in the Metis UI search bar.
 
-  `Resources → Depots`
-
-   to check the status of any Depot within the environment. Additionally, users can quickly find a specific Depot by searching for its name in the Metis UI search bar.
-
-<Frame caption="Metis UI">
-  ![](/resources/depot/depot_list_metis.png)
-</Frame>
-
-* ![](/Screenshotfrom2025-02-1215-58-43.png)
-
-  When a user clicks on a specific Depot, they can also track the aggregated status along with the runtime, which applies only to certain types of Depots.
-
-  ![](/Screenshotfrom2025-02-1216-04-38.png)
+    <Frame caption="Metis UI">
+      ![](/resources/depot/depot_list_metis.png)
+    </Frame>
 
 
 
+* When a user clicks on a specific Depot, they can also track the aggregated status along with the runtime, which applies only to certain types of Depots.
 
-<Frame as="div">
-  ![](/resources/depot/depot_metis.png)
-</Frame>
+
+    <Frame as="div">
+      ![](/resources/depot/depot_metis.png)
+    </Frame>
 
 ### How to monitor the status and runtime of a Depot using DataOS CLI?
 
@@ -232,9 +224,10 @@ dataos-ctl resource apply -f ${{path-of-your-manifest-file}}
 
 You will get a notification on the team's channel whenever the conditions of the incident are met.
 
-j
+    <Frame as="div">
+      ![](/resources/instance_secret/images/teams_alert.png)
+    </Frame>
 
-![](/Screenshotfrom2025-01-2913-09-50.png)![](/Screenshotfrom2025-02-1215-47-50.png)
 
 ## Operational monitoring
 
@@ -244,25 +237,25 @@ Follow the below steps to monitor a Depot on the Operations app:
 
 1. Open the **Operations** app.
 
-   j
+    <Frame caption="DataOS Interface">
+      ![](/resources/instance_secret/images/operations_home.png)
+    </Frame>
 
-   ![](/Screenshotfrom2025-02-1216-23-42.png)
+1. Navigate to the User Space tab and go to the Resources section.
 
-3. Navigate to the User Space tab and go to the Resources section.
+2. Select Depot as the Resource type to filter all Depots in the environment.
 
-4. Select Depot as the Resource type to filter all Depots in the environment.
+    <Frame as="div">
+      ![](/resources/depot/userspace_depot.png)
+    </Frame>
 
-   j
+3. Search for or select the target Depot.
 
-   ![](/Screenshotfrom2025-02-1216-24-33.png)
+4. Monitor its status, including Cloud Kernel Resource Count, WebService Resource Count, Operator Runtime Resource Count, Builder Stage, and Runtime Status.
 
-5. Search for or select the target Depot.
-
-6. Monitor its status, including Cloud Kernel Resource Count, WebService Resource Count, Operator Runtime Resource Count, Builder Stage, and Runtime Status.
-
-   j
-
-   ![](/Screenshotfrom2025-02-1216-25-30.png)
+    <Frame as="div">
+      ![](/resources/depot/oprations_depot.png)
+    </Frame>
 
 ### How to observe the pods of a Depot Service using the Operations app?
 
@@ -270,25 +263,25 @@ Follow the below steps to observe the pod logs of the Depot Service.
 
 1. Go to the **Core Kernel** section in the **Operations** app.
 
-   j
-
-   ![](/Screenshotfrom2025-02-1216-46-19.png)
+    <Frame as="div">
+      ![](/resources/depot/core_kernel.png)
+    </Frame>
 
 2. In the Pods tab, search for Depot to view all related pods.
 
-     j
+    <Frame as="div">
+      ![](/resources/depot/corekernel_depot.png)
+    </Frame>
 
-   ![](/Screenshotfrom2025-02-1216-47-33.png)
+3. Select a pod from the list.
 
-4. Select a pod from the list.
+4. Clicking on the pod will open a right-side panel with four sections: Pod Details, Pod Logs, Pod YAML, and Pod Usage.
 
-5. Clicking on the pod will open a right-side panel with four sections: Pod Details, Pod Logs, Pod YAML, and Pod Usage.
+    <Frame as="div">
+      ![](/resources/depot/pod_details.png)
+    </Frame>
 
-   j
-
-   ![](/Screenshotfrom2025-02-1216-48-45.png)
-
-6. Pod details include:
+5. Pod details include:
 
    * **Pod Details**
 
@@ -330,86 +323,59 @@ Follow the below steps to observe the pod logs of the Depot Service.
 
      (Pod’s readiness and initialization status)
 
-     * `PodReadyToStartContainers`
+     * `PodReadyToStartContainers`:**True**
 
-       :
+     * `Initialized`: **True**
 
-       **True**
+     * `Ready`: **True**
 
-     * `Initialized`
+     * `ContainersReady`: **True**
 
-       :
-
-       **True**
-
-     * `Ready`
-
-       :
-
-       **True**
-
-     * `ContainersReady`
-
-       :
-
-       **True**
-
-     * `PodScheduled`
-
-       :
-
-       **True**
-
-       (All conditions being
-
-       `True`
-
-       indicates the pod is successfully running and fully operational.)
+     * `PodScheduled`: **True** (All conditions being `True` indicates the pod is successfully running and fully operational.)
 
    * **Container Status**
 
-     * **Container Name:**
+     * **Container Name:** `depotservice-api`
 
-       `depotservice-api`
+     * **Container State:** `Running`
 
-     * **Container State:**
+     * **Started At:** `2025-02-10T16:46:00Z`
 
-       `Running`
+     * **Events** (This section would normally show logs related to the pod's lifecycle, errors, or warnings.)
 
-     * **Started At:**
+6. Pod YAML contains the manifest file of the Pod.
 
-       `2025-02-10T16:46:00Z`
+    <Frame as="div">
+      ![](/resources/depot/pod_yaml.png)
+    </Frame>
 
-     * **Events**
+7. Pod Logs contains the logs related to the Pod.
 
-       (No events are currently displayed, but this section would normally show logs related to the pod's lifecycle, errors, or warnings.)
+    <Frame as="div">
+      ![](/resources/depot/pod_logs.png)
+    </Frame>
 
-7. Pod YAML contains the manifest file of the Pod.j
+8. The Pod Usage panel in DataOS Operations provides insights into the resource consumption of running pods within a namespace. It helps monitor CPU and memory utilization over time, ensuring optimal performance and resource allocation.
 
-   ![](/Screenshotfrom2025-02-1216-50-02.png)
+    <Frame as="div">
+      ![](/resources/depot/pod_usage.png)
+    </Frame>
 
-8. Pod Logs contains the logs related to the Pod.j
 
-   ![](/Screenshotfrom2025-02-1216-50-34.png)
+**CPU Usage**
 
-9. The Pod Usage panel in DataOS Operations provides insights into the resource consumption of running pods within a namespace. It helps monitor CPU and memory utilization over time, ensuring optimal performance and resource allocation.j
+CPU metrics indicate the pod’s processing power consumption. The panel displays real-time and historical CPU usage, comparing it against requested and maximum allowed limits. This helps assess whether a pod is underutilized or nearing resource constraints.
 
-   ![](/Screenshotfrom2025-02-1216-51-09.png)
+**Memory Usage**
 
-   **CPU Usage**
+Memory metrics show how much RAM a pod consumes relative to its allocated quota. The data highlights trends in memory utilization, ensuring that pods have sufficient resources while avoiding unnecessary over-provisioning.
 
-   CPU metrics indicate the pod’s processing power consumption. The panel displays real-time and historical CPU usage, comparing it against requested and maximum allowed limits. This helps assess whether a pod is underutilized or nearing resource constraints.
+**Performance Insights**
 
-   **Memory Usage**
+This dashboard helps maintain system stability and efficiency by providing clear visibility into resource consumption trends.
 
-   Memory metrics show how much RAM a pod consumes relative to its allocated quota. The data highlights trends in memory utilization, ensuring that pods have sufficient resources while avoiding unnecessary over-provisioning.
+1. **Efficient Resource Management**: The panel ensures that pods are operating within assigned CPU and memory limits.
 
-   **Performance Insights**
+2. **Trend Analysis**: Time series graphs visualize usage patterns, helping identify spikes, bottlenecks, or inefficiencies.
 
-   This dashboard helps maintain system stability and efficiency by providing clear visibility into resource consumption trends.
-
-   * **Efficient Resource Management**: The panel ensures that pods are operating within assigned CPU and memory limits.
-
-   * **Trend Analysis**: Time series graphs visualize usage patterns, helping identify spikes, bottlenecks, or inefficiencies.
-
-   * **Optimization & Scaling**: Monitoring usage trends enables better resource allocation and scaling decisions.
+3. **Optimization & Scaling**: Monitoring usage trends enables better resource allocation and scaling decisions.
