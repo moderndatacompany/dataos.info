@@ -13,14 +13,18 @@ This document outlines the steps required to integrate Power BI with DataOS, ens
 Before proceeding with the data gateway configuration, ensure the following components are installed:
 
 - [Power BI Desktop](https://powerbi.microsoft.com/desktop) installed on the local system(version released after June 15, 2023).
+
 - A Power BI service account.
-- Npgsql version `v4.0.10` (or earlier, up to `v4.0.16`) installed on the local machine. Use the `.msi` installer only.
-- [On-premises data gateway](https://www.microsoft.com/en-us/power-platform/products/power-bi/gateway) installed on the same system as PostgreSQL.
+
+- [Npgsql](#installing-npgsql-for-postgresql-connectivity) version `v4.0.10` (or earlier, up to `v4.0.16`).
+
+- [On-premises data gateway](#installing-the-on-prem-data-gateway).
+
 - Ensure that necessary ports (such as `6432`) and services are whitelisted.
 
 
 <aside class="callout">
-💡 Organizations are responsible for managing the Power BI gateway and Npgsql installation within the VPC. Collaboration with technical teams may be required to ensure a successful setup.
+💡 Organizations are responsible for managing the installation and configuration of both the Power BI gateway and Npgsql within the VPC. We are happy to collaborate with your technical teams to ensure a smooth setup.
 </aside>
 
 ## Installing the on-prem data gateway
@@ -29,7 +33,7 @@ Before proceeding with the data gateway configuration, ensure the following comp
 
 2. Run the installer, keep the default installation path, accept the terms, and select Install.
 
-    <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/pb_on_prem_07.png" alt="DPH" style="width:40rem; height:auto; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/pb_on_prem_07.png" alt="DPH" style="width:40rem; height:20% border: 1px solid black;" />
     
 3. Enter the email address for your Office 365 organization account, then select Sign in.
 
@@ -84,7 +88,7 @@ Follow the below steps to sync the integrate the `productaffinity` semantic mode
 
 ### **Step 1: Navigate to the BI sync option**
 
-In Data Product Hub, choose a Data Product let's say `product-affinity` Navigate to the Access Options tab on the Data Product Hub application on DataOS. Within a specific data product, and under the BI Sync options, select 'Excel and Power BI'. Click on the download icon to download the `.pbip` file.
+In Data Product Hub, choose a Data Product let's say `product-affinity` Navigate to the Access Options tab on the Data Product Hub application on DataOS. Within a specific Data Product, and under the BI Sync options, select 'Excel and Power BI'. Click on the download icon to download the `.pbip` file.
     
 <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/pb_service_access_option_01.png" alt="DPH" style="width:40rem; height:auto; border: 1px solid black;" />
 
@@ -158,9 +162,11 @@ To connect Power BI to the on-premises PostgreSQL database via the data gateway,
     
 5. On the New Connection screen with On-premises selected, complete or verify the following fields. Most fields are already filled in.
     
-    <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/config_gateway_05.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
-       
-    
+    <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/config_gateway_05.png" 
+        alt="DPH" 
+        style="width:40rem; height:20rem; border: 1px solid black;" />
+
+        
 6. In the New Connection screen, ensure On-premises is selected and complete the following fields(some fields are pre-configured):
 
     - **Gateway Cluster Name**: Enter or verify the configured gateway name.
@@ -201,7 +207,8 @@ After filling out the required fields, click Add to create the connection.
 
 - In Power BI, measures typically have an 'm_' prefix to indicate they represent a measure. For example, a measure calculating total revenue might be named `m_total_revenue`.
 - The connection is live, meaning any changes to the underlying data will be reflected in Power BI.
-- If schema changes occur, such as CRUD operations (Create, Read, Update, Delete) on dimensions, measures, or other elements of the semantic model, a re-sync is required. To avoid the need for re-syncing and recreating the report in Power BI, it is recommended to replace the `.pbip` file in the downloaded folder.
+- When schema changes occur, such as CRUD operations (Create, Read, Update, Delete) on dimensions, measures, or other elements of the semantic model, a re-sync is required. To prevent losing previously created reports after the re-sync, replace the `.pbip` file in the existing folder with the `.pbip` file from the newly downloaded folder.
+- Power BI fails to handle special characters (e.g.,) when generating queries through the synced semantic model, causing errors in visualizations. Thus, it is best practice to address or remove special characters directly in the data itself.
 - Power BI's Direct Query mode does not support creating custom dimensions and measures or querying the rolling window measure due to the lack of date hierarchy.
 
 ### **Best practices**
@@ -220,7 +227,7 @@ It is important to select fields from tables that are directly related or logica
 
 <!-- - Power BI’s DAX and Import functions are not supported.
 - Special characters cannot be handled through DAX function hence it’s best practice to remove the special character from dataset if any. -->
-
+<!-- 
 ## Governance of model on Power BI
 
 Data masking, restrictions, and permissions established by the publisher are automatically enforced for all report viewers, ensuring consistent data security and compliance. The behavior of these data policies, such as masking, may vary based on the use of Power BI Desktop or other interfaces.
@@ -229,4 +236,4 @@ When the Lens semantic model is activated via BI Sync on Power BI, authenticatio
 
 For example, if a user named `iamgroot`, belonging to the 'Analyst' group, is restricted from viewing the 'Annual Salary' column, this column will not appear in either the Data Product exploration page or in Power BI after synchronization. Power BI requires the DataOS user ID and API key for authentication, ensuring that users can access the full model except for columns restricted by their data policies.
 
-This approach ensures that users only see the data they are authorized to view, maintaining security and compliance.
+This approach ensures that users only see the data they are authorized to view, maintaining security and compliance. -->
