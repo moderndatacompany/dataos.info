@@ -40,9 +40,7 @@ This versatility allows a user to integrate structured, semi-structured, and uns
 
 Before diving into configuring data source connections, make sure everything is ready:
 
-1. **Check required Permissions**
-
-   : Some tasks require specific permissions typically assigned to DataOS Operators. Ensure a user has access to one of the following permission sets either via use-case or via tags:
+1. **Check required Permissions**: Some tasks require specific permissions typically assigned to DataOS Operators. Ensure a user has access to one of the following permission sets either via use-case or via tags:
 
    | **Access Permission (via use-cases)** | **Access Permissions (via tags)** |
    | ------------------------------------- | --------------------------------- |
@@ -51,23 +49,13 @@ Before diving into configuring data source connections, make sure everything is 
    | Read All Dataset                      | `roles:id:user`                   |
    | Read all secrets from Heimdall        |                                   |
 
-2. **Check CLI installation and initialization**
+2. **Check CLI installation and initialization**: a user needs this text-based interface that allows a user to interact with the DataOS context via command prompts. Click [here](/interfaces/cli/) to learn more.
 
-   : a user needs this text-based interface that allows a user to interact with the DataOS context via command prompts. Click 
-
-   [here](/interfaces/cli/)
-
-    to learn more.
-
-3. **Manage Credentials Securely**
-
-   : Use Instance Secrets for storing a user data source credentials, ensuring sensitive information remains protected.
+3. **Manage Credentials Securely**: Use Instance Secrets for storing a user data source credentials, ensuring sensitive information remains protected.
 
    > **Important**: To prevent credential exposure, contact DataOS administrator and understand the best practices for handling sensitive data.
 
-4. **Organize a user Code Repository**
-
-   : Place Depot manifests in a private, permission-controlled repository to maintain security and compliance.
+4. **Organize a user Code Repository**: Place Depot manifests in a private, permission-controlled repository to maintain security and compliance.
 
 ## Data source connection - PostgreSQL
 
