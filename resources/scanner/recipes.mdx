@@ -127,7 +127,6 @@ Let just consider a scenario where user aim to ingest metadata from a Snowflake 
 Use `databaseFilterPattern` to determine which databases to include/exclude during metadata ingestion.
 
 **Example 1:**
-
 In this particular example, the objective is to ingest metadata of all databases that include the term "SNOWFLAKE" in their names. To achieve this, the filter pattern **`.*SNOWFLAKE.*`** would apply in the `includes` property. Consequently, this filter pattern will ensure the ingestion of databases such as  `SNOWFLAKE`, `SNOWFLAKE_SAMPLE_DATA` and `TEST_SNOWFLAKE_DB`.
 
 ```yaml
@@ -158,7 +157,6 @@ workflow:
 ```
 
 **Example 2:**
-
 If user want to scan only databases that do not start with `SNOWFLAKE`  then the filter pattern regex applied would be `^SNOWFLAKE.*` and they will exclude `SNOWFLAKE`, `SNOWFLAKE_SAMPLE_DATA`.
 
 ```yaml
@@ -189,7 +187,6 @@ workflow:
 ```
 
 **Example 3:**
-
 In order to exclusively scan the only database with name `RETAIL_DB`, the filter pattern would be `^RETAIL_DB$`.
 
 ```yaml
@@ -220,7 +217,6 @@ workflow:
 ```
 
 **Example 4:**
-
 When a user want to ingest metadata of all databases for which the name starts with `TEST` OR ends with `DB` , then the filter pattern applied would be `^TEST` & `DB$` in the includes property. The scanning process will include databases such as  `TEST_SNOWFLAKEDB ` `TEST_HEALTHCARE` `TEST_SPORTS_RETAIL` `TEST_DUMMY_DB` & `DUMMY_DB`.
 
 ```yaml
@@ -281,7 +277,6 @@ Schema filter patterns determine which schemas to include/exclude during metadat
 ```
 
 **Example 1:**
-
 Let's consider a scenario where user want to scan the metadata from the "public" schema present in all databases. The filter pattern would be `public`. This will include the schema `public` present in databases `SNOWFLAKE`  `SNOWFLAKE_SAMPLE_DATA`.
 
 ```yaml
@@ -316,7 +311,6 @@ workflow:
 </Info>
 
 **Example 2:**
-
 When user wish to exclude the schema `TPCH_SF100` from metadata scanning. As this schema is present only in one database,  `excludes` property can be used with the pattern `^TPCH_SF100$` .
 
 ```yaml
@@ -347,7 +341,6 @@ workflow:
 ```
 
 **Example 3:**
-
 Suppose user  intend to include all schemas that begin with the prefix "TPCH" in all databases. In this case, the appropriate regular expression (regex) to achieve this would be **`^TPCH.*`**. This regex pattern will result in the metadata scan of schemas such as `TPCH_SF1` and `TPCH_SF2` from the `SNOWFLAKE` database, as well as schemas like `TPCH_SF1`, `TPCH_SF10`, and `TPCH_SF100` from the `SNOWFLAKE_SAMPLE_DATA` database.
 
 ```yaml
@@ -378,7 +371,6 @@ workflow:
 ```
 
 **Example 4:**
-
 Now if a user want to include only the schema TPCH\_SF1 present in all the databases but not TPCH\_SF100 or TPCH\_SF1000.
 
 ```yaml
@@ -446,7 +438,6 @@ Use `tableFilterPattern` to determine which tables to include/exclude during m
 ```
 
 **Example 1:**
-
 In this example, the objective is to scan only the table with the name `CUSTOMER` from all the schemas of `TEST_SPORTS_RETAIL` database. To achieve this, the filter pattern **`^CUSTOMER$ `** can be used. By applying this pattern during the metadata scanning process, only the tables named `CUSTOMER` from the `TEST_SPORTS_RETAIL.PUBLIC` and `TEST_SPORTS_RETAIL.INFORMATION` schemas will be included.
 
 ```yaml
@@ -480,7 +471,6 @@ workflow:
 ```
 
 **Example 2:**
-
 In this example scenario, user want to scan all the tables having CUSTOMER in their name, filter pattern *` .*CUSTOMER.*`* will be used. This will result in scanning of all the tables such as `CUSTOMER`, `CUSTOMER_ONLINE`, `CUSTOMER_OFFLINE`, `LOYAL_CUSTOMER`, etc. from the entier databse.
 
 ```yaml

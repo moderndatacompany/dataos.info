@@ -24,36 +24,56 @@ The manifest file within a Scanner stack includes attributes designed to facilit
 **Syntax for Manifest configuration file:**
 
 ```yaml
-stack: scanner:2.0               
-compute: runnable-default        
-runAsUser: metis                 
-stackSpec: 
-  depot: ${{depot name/adddress}}             
-  sourceConfig: 
-  config: 
-      type: DatabaseMetadata         
-      databaseFilterPattern: 
-        includes/excludes: 
-          - ${{regex}}
-      schemaFilterPattern: 
-        includes/excludes: 
-          - ${{regex}}
-      tableFilterPattern: 
-        includes/excludes: 
-          - ${{regex}}
-      markDeletedTables: true/false
-      includeViews: true/false
-      markDeletedTablesfromFilterOnly: false/true
 
+name: ${{scanner2-snowflake-depot}}
+version: v1
+type: workflow
+tags: 
+  - ${{tag1}}
+  - ${{tag}}
+description: ${{The description of the scanner}}
+workflow: 
+  dag: 
+    - name: ${{scanner2-snowflake-job}}
+      description: ${{The job description}}
+      tags: 
+          - ${{tag}}
+      spec: 
+        stack: scanner:2.0               
+        compute: runnable-default        
+        runAsUser: metis                 
+        stackSpec: 
+          depot: dataos://${{path of the depot}}  #UDL(Uniform Data Link)             
+          sourceConfig: 
+            config: 
+              type: DatabaseMetadata         
+              databaseFilterPattern: 
+                includes: 
+                  - ${{regex}}
+                excludes: 
+                  - ${{regex}}
+              schemaFilterPattern: 
+                includes: 
+                  - ${{regex}}
+                excludes: 
+                  - ${{regex}}
+              tableFilterPattern: 
+                includes: 
+                  - ${{regex}}
+                excludes: 
+                  - ${{regex}}
+                markDeletedTables: false   
+                includeTags: true
+                includeViews: true
 ```
 
 ## Scanner Configuration Attributes details
 
 The Scanner Workflow attributes given below provide further details on their roles in metadata extraction:
 
-### **`schedule:`**&#x20;
+### **`schedule`**
 
-**Description**: Scanner workflows are either single-time run or scheduled to run at a specific cadence.&#x20;
+**Description**: Scanner workflows are either single-time run or scheduled to run at a specific cadence.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | --------------- | ----------------- | ------------------ |
@@ -61,10 +81,10 @@ The Scanner Workflow attributes given below provide further details on their rol
 
 **Example Usage:**
 
-```
-workflow:
+```yaml
+workflow: 
   title: scheduled Scanner Workflow
-  schedule: 
+  schedule:  
     cron: '*/2 * * * *'  #every 2 minute  [Minute, Hour, day of the month ,month, dayoftheweek]
     concurrencyPolicy: Allow #forbid/replace
     endOn: 2024-11-01T23:40:45Z
@@ -222,15 +242,11 @@ sourceConfig:
 
 **Additional information**: Applicable in case of databases/warehouses
 
-#### **`includes OR excludes`**
+**`includes OR excludes`**
 
-* `includes:`
+* `includes:` Add an array of regular expressions to this property in the YAML. The Scanner Workflow will include any databases whose names match one or more of the provided regular expressions. All other databases will be excluded.
 
-   Add an array of regular expressions to this property in the YAML. The Scanner Workflow will include any databases whose names match one or more of the provided regular expressions. All other databases will be excluded.
-
-* `excludes`
-
-  : Add an array of regular expressions to this property in the YAML. The Scanner Workflow will exclude any databases whose names match one or more of the provided regular expressions. All other databases will be included.
+* `excludes:` Add an array of regular expressions to this property in the YAML. The Scanner Workflow will exclude any databases whose names match one or more of the provided regular expressions. All other databases will be included.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Values**                                                      |
 | ------------- | --------------- | ----------------- | ------------------------------------------------------------------------ |
@@ -257,15 +273,11 @@ sourceConfig:
 
 **Additional information**: Applicable in case of databases/warehouses
 
-#### **`includes OR excludes`**
+**`includes OR excludes`**
 
-* `includes:`
+* `includes:` Add an array of regular expressions to this property in the YAML. The Scanner Workflow will include any schemas whose names match one or more of the provided regular expressions. All other schemas will be excluded.
 
-   Add an array of regular expressions to this property in the YAML. The Scanner Workflow will include any schemas whose names match one or more of the provided regular expressions. All other schemas will be excluded.
-
-* `excludes`
-
-  : Add an array of regular expressions to this property in the YAML. The Scanner Workflow will exclude any schemas whose names match one or more of the provided regular expressions. All other schemas will be included.
+* `excludes:` Add an array of regular expressions to this property in the YAML. The Scanner Workflow will exclude any schemas whose names match one or more of the provided regular expressions. All other schemas will be included.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Values**                                                      |
 | ------------- | --------------- | ----------------- | ------------------------------------------------------------------------ |
@@ -295,15 +307,11 @@ sourceConfig:
 
 **Additional information**: Applicable in case of databases/warehouses
 
-#### **`includes OR excludes`**
+**`includes OR excludes`**
 
-* `includes:`
+* `includes:` Add an array of regular expressions to this property in the YAML to include any tables whose names match one or more of the provided regular expressions. All other tables will be excluded.
 
-   Add an array of regular expressions to this property in the YAML to include any tables whose names match one or more of the provided regular expressions. All other tables will be excluded.
-
-* `excludes`
-
-  : Add an array of regular expressions to this property in the YAML. The Scanner Workflow will exclude any tables whose names match one or more of the provided regular expressions. All other tables will be included.
+* `excludes:` Add an array of regular expressions to this property in the YAML. The Scanner Workflow will exclude any tables whose names match one or more of the provided regular expressions. All other tables will be included.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Values**                                                      |
 | ------------- | --------------- | ----------------- | ------------------------------------------------------------------------ |
@@ -331,15 +339,11 @@ sourceConfig:
 
 **Additional information**: Applicable in case of stream data.
 
-#### **`includes OR excludes`**
+**`includes OR excludes`**
 
-* `includes:`
+* `includes:` Add an array of regular expressions to this property in the YAML to include any topics whose names match one or more of the provided regular expressions. All other topics will be excluded.
 
-   Add an array of regular expressions to this property in the YAML to include any topics whose names match one or more of the provided regular expressions. All other topics will be excluded.
-
-* `excludes`
-
-  : Add an array of regular expressions to this property in the YAML to exclude any topics whose names match one or more of the provided regular expressions. All other topics will be included.
+* `excludes:` Add an array of regular expressions to this property in the YAML to exclude any topics whose names match one or more of the provided regular expressions. All other topics will be included.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Values**                                                      |
 | ------------- | --------------- | ----------------- | ------------------------------------------------------------------------ |
