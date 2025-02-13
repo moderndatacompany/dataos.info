@@ -123,8 +123,12 @@ markdown_extensions:
   - pymdownx.tilde
 #  - pymdownx.extra
   - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji # before pushing to dev branch replace materialx.emoji.twemoji with material.extensions.emoji.twemoji
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg  # before pushing to dev branch replace materialx.emoji.to_svg with material.extensions.emoji.to_svg
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
+      # emoji_index: !!python/name:materialx.emoji.twemoji # before pushing to dev branch replace materialx.emoji.twemoji with material.extensions.emoji.twemoji
+      # emoji_generator: !!python/name:materialx.emoji.to_svg  # before pushing to dev branch replace materialx.emoji.to_svg with material.extensions.emoji.to_svg
+
       options:
         custom_icons:
           - overrides/.icons
@@ -186,7 +190,9 @@ nav:
         - Data Product Activation:
           - BI Sync: 
             - Tableau Cloud: interfaces/data_product_hub/activation/bi_sync/tableau_cloud.md
-            - Power BI: interfaces/data_product_hub/activation/bi_sync/powerbi.md
+            - Power BI: 
+                - Power BI Desktop: interfaces/data_product_hub/activation/bi_sync/powerbi.md
+                - Power BI Service: interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service.md
             - Tableau Desktop: interfaces/data_product_hub/activation/bi_sync/tableau_desk.md
             - Microsoft Excel: interfaces/data_product_hub/activation/bi_sync/excel.md
             - Apache Superset: interfaces/data_product_hub/activation/bi_sync/superset.md
