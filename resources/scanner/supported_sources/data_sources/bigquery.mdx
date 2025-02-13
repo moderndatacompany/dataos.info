@@ -1,54 +1,114 @@
 ---
 title: "Scanner for BigQuery"
+sidebarTitle: "BigQuery"
+description: "This section provides a guide and reference for using the Bigquery metadata Scanner Workflow. It includes configuration steps, and required access permissions for execution."
 ---
 
-For the BigQuery data Warehouse the prerequisites and manifest configurations for extracting entity metadata are:
+Bigquery metadata Scanner Workflow can be configured and scheduled through the DataOS CLI. Ensure that all prerequisites are met before initiating the workflow.
 
-## **Requirements**
+## Prerequisites
 
 To scan the metadata from BigQuery, User need the following:
 
-* Ensure that the BigQuery project is created.
+1) Ensure that the BigQuery project is created.
 
-* BigQuery user must have`viewer` privilege on the warehouse.
+2) **Access Permissions in GCP**: 
+  To successfully execute the Metadata Extraction Scanner Workflow in GCP, the user or service account needs specific permissions to access and retrieve the required data. Here's a summary of the minimum required permissions:
+  
+  Ingestion Permissions:
+  
+  * bigquery.datasets.get – To retrieve metadata about datasets.
+  
+  * bigquery.tables.get – To access table metadata.
+  
+  * bigquery.tables.getData – To get metadata about table data.
+  
+  * bigquery.tables.list – To list metadata for tables.
+  
+  * resourcemanager.projects.get – To get metadata about the project.
+  
+  * bigquery.jobs.create – To create jobs related to metadata extraction.
+  
+  * bigquery.jobs.listAll – To list all jobs for monitoring and management.
+  
+  Stored Procedure Permissions:
+  
+  * bigquery.routines.get – To access stored procedure metadata.
+  
+  * bigquery.routines.list – To list stored procedures.
+  
+  Fetch Policy Tags Permissions:
+  
+  * datacatalog.taxonomies.get – To get metadata about policy tags.
+  
+  * datacatalog.taxonomies.list – To list policy tags.
+  
+  BigQuery Usage & Lineage Workflow Permissions:
+  
+  * bigquery.readsessions.create – To create read sessions for usage and lineage analysis.
+  
+  * bigquery.readsessions.getData – To access data from read sessions for usage and lineage tracking.
+  
+  If the user has External Tables, please attach relevant permissions needed for external tables, alongwith the above list of permissions.
 
-* User should have enough access to fetch the required metadata. The following list describes the minimum required permissions.
+3) **Access Permissions in DataOS**:
+  To execute a Scanner Workflow in DataOS, verify that at least one of the following role tags is assigned:
+  
+  * `roles:id:data-dev`
+  
+  * `roles:id:system-dev`
+  
+  * `roles:id:user`
+  
+  Use the following command to check assigned roles:
+  
+  ```bash
+  dataos-ctl user get
+  ```
+  
+  If any required tags are missing, contact a **DataOS Operator** or submit a **Grant Request** for role assignment.
+  
+  Alternatively, if access is managed through **use cases**, ensure the following use cases are assigned:
+  
+  * **Read Workspace**
+  
+  * **Run as Scanner User**
+  
+  * **Manage All Depot**
+  
+  * **Read All Dataset**
+  
+  * **Read All Secrets from Heimdall**
+  
+  To validate assigned use cases, refer to the **Bifrost Application Use Cases** section.
 
-* **Access Permission to Run a Scanner Workflow**&#x20;
-  Verify that the use case or role tag for executing a Scanner Workflow is approved, which are as follows:| Access using Role Tag | Access using Use cases         |
-  | --------------------- | ------------------------------ |
-  | `roles:id:data-dev`   | Read Workspace                 |
-  | `roles:id:system-dev` | Run as Scanner User            |
-  | `roles:id:user`       | Manage All Depot               |
-  |                       | Read All Dataset               |
-  |                       | Read all secrets from Heimdall |
-
-* Pre-created AzureSQL Depot
-  Ensure that a AzureSQL Depot is already created with valid read access and the necessary permissions to extract metadata. To check the Depot go to the Metis UI of the DataOS or use the following command:
+4) Pre-created Bigquery Depot
+  Ensure that a Bigquery Depot is already created with valid read access and the necessary permissions to extract metadata. To check the Depot go to the Metis UI of the DataOS or use the following command:
 
 ```bash
 dataos-ctl get -t depot -a
 
 #expected output
 
-INFO[0000] 🔍 get...                                     
-INFO[0000] 🔍 get...complete                             
+INFO[0000] 🔍 get...
+INFO[0000] 🔍 get...complete
 
-            NAME            | VERSION | TYPE  | WORKSPACE | STATUS |   RUNTIME   |         OWNER          
-----------------------------|---------|-------|-----------|--------|-------------|------------------------
-  mongodepot                | v2alpha | depot |           | active |             | Jhon Doe
-  snowflakedepot            | v2alpha | depot |           | active |             | JOJO
-  redshiftdepot             | v2alpha | depot |           | active |             | Kira
-  mysqldepot                | v2alpha | depot |           | active |             | Ryuk
-  oracle01                  | v2alpha | depot |           | active |             | drdoom
-  mariadb01                 | v2alpha | depot |           | active |             | tonystark
-  demopreppostgres          | v2alpha | depot |           | active |             | slimshaddy
-	demoprepbq                | v2alpha | depot |           | active |             | pengvin
-  mssql01                   | v2alpha | depot |           | active |             | hulk
-  kafka01                   | v2alpha | depot |           | active |             | peeter
-  icebase                   | v2alpha | depot |           | active |             | blackpink
-  azuresql                  | v2alpha | depot |           | active |             | arnold
-  fastbase                  | v2alpha | depot |           | active |             | ddevil
+| NAME             | VERSION | TYPE  | WORKSPACE | STATUS | RUNTIME | OWNER      |
+| ---------------- | ------- | ----- | --------- | ------ | ------- | ---------- |
+| mongodepot       | v2alpha | depot |           | active |         | usertest   |
+| snowflakedepot   | v2alpha | depot |           | active |         | gojo       |
+| redshiftdepot    | v2alpha | depot |           | active |         | kira       |
+| mysqldepot       | v2alpha | depot |           | active |         | ryuk       |
+| oracle01         | v2alpha | depot |           | active |         | drdoom     |
+| mariadb01        | v2alpha | depot |           | active |         | tonystark  |
+| demopreppostgres | v2alpha | depot |           | active |         | slimshaddy |
+| demoprepbq       | v2alpha | depot |           | active |         | pengvin    |
+| mssql01          | v2alpha | depot |           | active |         | hulk       |
+| kafka01          | v2alpha | depot |           | active |         | peeter     |
+| icebase          | v2alpha | depot |           | active |         | blackpink  |
+| azuresql         | v2alpha | depot |           | active |         | arnold     |
+| fastbase         | v2alpha | depot |           | active |         | ddevil     |
+
 ```
 
 Template for creating BIGQUERY Depot is shown below:
@@ -79,7 +139,7 @@ depot:
       ${{"key2": "value2"}}
 ```
 
-## **Scanner Workflow**
+## Scanner Workflow for BigQuery
 
 DataOS enables the creation of a Depot of type 'BIGQUERY' for accessing data stored in BigQuery projects. Multiple Depots can be established, each directed towards a different project. The following manifest scans metadata from a BigQuery-type Depot.
 
@@ -106,13 +166,13 @@ workflow:
         compute: runnable-default
         runAsUser: metis
         stackSpec:
-          depot: demoprepbq           
+          depot: dataos://demoprepbq           
           sourceConfig:           
             config:
               markDeletedTables: false
               includeTables: true
               includeViews: true
-              databaseFilterPattern:
+              databaseFilterPattern:       # provide required regex/name for the filters
                 includes:
                   - <databasename> 
                 excludes:
@@ -132,14 +192,24 @@ workflow:
 
 The above sample manifest file is deployed using the following command:
 
+```bash
+dataos-ctl resource apply -f ${{path to the Scanner YAML}}
 ```
-dataos-ctl resource apply -f {path to the Scanner YAML}
-```
+
+**Updating the Scanner Workflow**:
+
+If the Depot or Scanner configurations are updated, the Scanner must be redeployed after deleting the previous instance. Use the following command to delete the existing Scanner:
+
+<CodeGroup>
+  ```bash Command
+  dataos-ctl delete -f ${{path-to-Scanner-YAML}}
+  ```
+
+  ```bash Alternative Command
+  dataos-ctl delete -t workflow -n ${{name of Scanner}} -w ${{name of workspace}}
+  ```
+</CodeGroup>
 
 <Note>
-  If the Depot or Scanner configurations are updated, the Scanner must be redeployed after deleting the previous instance. Use the following command to delete the existing Scanner:
-
-  ```
-  dataos-ctl resource delete -f {path to the Scanner YAML file}
-  ```
+  **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs
 </Note>

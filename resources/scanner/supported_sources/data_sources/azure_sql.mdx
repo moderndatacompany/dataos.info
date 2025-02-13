@@ -8,7 +8,7 @@ AzureSQL metadata Scanner Workflow can be configured and scheduled through the D
 
 ## Prerequisites
 
-1. **Whitelist IP address** : Ensure that the IP is whitelisted in AzureSQL firewall rules. Refer to the [Azure Portal documentation ](https://learn.microsoft.com/en-us/azure/azure-sql/database/firewall-configure) for instructions on how to whitelist IP addresses.
+1. **Whitelist IP address**: Ensure that the IP is whitelisted in AzureSQL firewall rules. Refer to the [Azure Portal documentation ](https://learn.microsoft.com/en-us/azure/azure-sql/database/firewall-configure) for instructions on how to whitelist IP addresses.
 
 2. **Grant SELECT Privilege**: The AzureSQL database user must be granted SELECT privileges to retrieve metadata from tables and views. Execute the following SQL commands to create a user and assign the required permissions:
 
@@ -125,42 +125,42 @@ DataOS enables connections to AzureSQL databases through Depot. The Depot provid
 version: v1
 name: azuresql-scanner2
 type: workflow
-tags:
+tags: 
   - azuresql-scanner2.0
 description: Scanner workflow to scan schema tables and register metadata in Metis DB
-workflow:
-  dag:
+workflow: 
+  dag: 
     - name: scanner2-azuresql
       description: The job scans schema from azuresql depot tables and register metadata to metis2
-      spec:
+      spec: 
         stack: scanner:2.0
         compute: runnable-default
         runAsUser: metis
-        stackSpec:
-          depot: azuresql
-          sourceConfig:                 # Apply filter as per requirement
-            config:
-              databaseFilterPattern:
-                includes:
+        stackSpec: 
+          depot: dataos://azuresql        #UDL
+          sourceConfig:                  # Apply filter as per requirement
+            config: 
+              databaseFilterPattern: 
+                includes: 
+                  - <databasename>      # Provide proper databse and table name
+                excludes: 
                   - <databasename> 
-                excludes:
-                  - <databasename> 
-              schemaFilterPattern:
-                includes:
+              schemaFilterPattern: 
+                includes: 
                   - <schemaname>
-                excludes:
+                excludes: 
                   - <schemaname>
-              tableFilterPattern:
-                includes:
+              tableFilterPattern: 
+                includes: 
                   - <tablename>
-                excludes:
+                excludes: 
                   - <tablename>
 ```
 
 The above sample manifest file is deployed using the following command:
 
 ```bash
-dataos-ctl resource apply -f {{path to the Scanner YAML}}
+dataos-ctl resource apply -f ${{path to the Scanner YAML}}
 ```
 
 **Updating the Scanner Workflow**:
@@ -168,8 +168,8 @@ dataos-ctl resource apply -f {{path to the Scanner YAML}}
 If the Depot or Scanner configurations are updated, the Scanner must be redeployed after deleting the previous instance. Use the following command to delete the existing Scanner:
 
 <CodeGroup>
-  ```javascript Command
-  dataos-ctl delete -f {{path-to-Scanner-YAML}}
+  ```bash Command
+  dataos-ctl delete -f ${{path-to-Scanner-YAML}}
   ```
 
   ```bash Alternative Command
