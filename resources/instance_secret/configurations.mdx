@@ -25,6 +25,8 @@ description: "This section provides detailed information about each attribute in
       data: # Data section mapping (mandatory)
         username: iamgroot
         password: yourpassword
+      files: 
+        key_json: value1.json
   ```
 
   ```yaml Read-write Instance Secret
@@ -45,6 +47,8 @@ description: "This section provides detailed information about each attribute in
       data: # Data section mapping (mandatory)
         username: iamgroot
         password: yourpassword
+      files: 
+        key_json: value1.json      
   ```
 </CodeGroup>
 
@@ -137,7 +141,7 @@ description: "This is a sample description of a Resource"
 | ------------- | --------------- | ------------------------------------ | ------------------------ |
 | string        | optional        | id of the user applying the Resource | any valid dataos user id |
 
-**Additional information:** when no id is provided, or an incorrect id is provided, the system automatically corrects it to the id of the user who applied the Resource on DataOS CLI
+**Additional information:** when no ID**** is provided, or an incorrect ID is provided, the system automatically corrects it to the ID of the user who applied the Resource on DataOS CLI
 
 **Example usage:**
 
@@ -161,7 +165,7 @@ From a user's perspective, the operating system can be envisaged as working at t
 layer: user
 ```
 
-### **Instance Secret Specific Section**
+### **instance-secret**
 
 **Description:**  The Instance Secret section comprises the attribute of Instance Secret Resources.
 
