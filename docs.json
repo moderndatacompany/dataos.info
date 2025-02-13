@@ -185,7 +185,14 @@
                       "resources/scanner/observability",
                       "resources/scanner/recipes"
                     ]
-                  }
+                  },
+                  {
+                    "group": "Talos",
+                    "pages": [
+                      "resources/talos/index"
+                    ]
+                  } 
+                  
 
 
 
