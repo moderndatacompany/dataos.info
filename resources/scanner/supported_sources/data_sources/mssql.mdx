@@ -1,10 +1,12 @@
 ---
 title: "Scanner for MSSQL"
+sidebarTitle: "MSSQL"
+description: "This section provides a guide and reference for using the MSSQL metadata Scanner Workflow. It includes configuration steps, and required access permissions for execution."
 ---
 
-Metadata can be extracted from MSSQL using below given requirements and sample manifest configurations.
+MSSQL metadata Scanner Workflow can be configured and scheduled through the DataOS CLI. Ensure that all prerequisites are met before initiating the workflow.
 
-## **Requirements**
+## Prerequisites
 
 * Credentials to connect to MSSQL database.
 
@@ -12,20 +14,62 @@ Metadata can be extracted from MSSQL using below given requirements and sample m
 
 * MSSQL User must grant `SELECT` privilege to fetch the metadata of tables and views.
 
-* **Access Permission to Run a Scanner Workflow**
-  Verify that the use case or role tag for executing a Scanner Workflow is approved, which are as follows:
+* **Access Permissions in DataOS**:
+    To execute a Scanner Workflow in DataOS, verify that at least one of the following role tags is assigned:
+    
+    * `roles:id:data-dev`
+    
+    * `roles:id:system-dev`
+    
+    * `roles:id:user`
+    
+    Use the following command to check assigned roles:
+    
+    ```bash
+    dataos-ctl user get
+    ```
+    
+    If any required tags are missing, contact a **DataOS Operator** or submit a **Grant Request** for role assignment.
+    
+    Alternatively, if access is managed through **use cases**, ensure the following use cases are assigned:
+    
+    * **Read Workspace**
+    
+    * **Run as Scanner User**
+    
+    * **Manage All Depot**
+    
+    * **Read All Dataset**
+    
+    * **Read All Secrets from Heimdall**
+    
+    To validate assigned use cases, refer to the **Bifrost Application Use Cases** section.
 
-| **Access using Role Tag** | **Access using Use cases**     |
-| ------------------------- | ------------------------------ |
-| `roles:id:data-dev`       | Read Workspace                 |
-| `roles:id:system-dev`     | Run as Scanner User            |
-| `roles:id:user`           | Manage All Depot               |
-|                           | Read All Dataset               |
-|                           | Read all secrets from Heimdall |
-
-* Ensure an JDBC-type Depot is created by in Metis UI or in CLI as shown below:
+* Ensure an JDBC-type Depot is created by Resources in Metis UI or in CLI as shown below:
   ```bash
   dataos-ctl get -t depot -a
+  ```
+  ```bash
+  #expected output
+  
+  INFO[0000] 🔍 get...
+  INFO[0000] 🔍 get...complete
+  
+  | NAME             | VERSION | TYPE  | WORKSPACE | STATUS | RUNTIME | OWNER      |
+  | ---------------- | ------- | ----- | --------- | ------ | ------- | ---------- |
+  | mongodepot       | v2alpha | depot |           | active |         | usertest   |
+  | snowflakedepot   | v2alpha | depot |           | active |         | gojo       |
+  | redshiftdepot    | v2alpha | depot |           | active |         | kira       |
+  | mysqldepot       | v2alpha | depot |           | active |         | ryuk       |
+  | oracle01         | v2alpha | depot |           | active |         | drdoom     |
+  | mariadb01        | v2alpha | depot |           | active |         | tonystark  |
+  | demopreppostgres | v2alpha | depot |           | active |         | slimshaddy |
+  | demoprepbq       | v2alpha | depot |           | active |         | pengvin    |
+  | mssql01          | v2alpha | depot |           | active |         | hulk       |
+  | kafka01          | v2alpha | depot |           | active |         | peeter     |
+  | icebase          | v2alpha | depot |           | active |         | blackpink  |
+  | azuresql         | v2alpha | depot |           | active |         | arnold     |
+  | fastbase         | v2alpha | depot |           | active |         | ddevil     |
   ```
   If not, create it using the following sample manifest code:
 
@@ -57,7 +101,7 @@ Metadata can be extracted from MSSQL using below given requirements and sample m
         ${{"key2": "value2"}}
   ```
 
-## **Scanner Workflow**
+## **Scanner Workflow for MSSQL**
 
 DataOS allows to connect and scan metadata from an MSSQL-type Depot with Scanner workflows. The Depot enables access to all schemas visible to the specified user in the configured database, MSSQL.
 
@@ -81,13 +125,13 @@ workflow:
         compute: runnable-default
         runAsUser: metis
         stackSpec:
-          depot: mssql01
+          depot: dataos://mssql01
           sourceConfig:
             config:
               markDeletedTables: false
               includeTables: true
               includeViews: true
-              databaseFilterPattern:
+              databaseFilterPattern:         #use valid name and regex to filter the data
                   includes:
                       - database1
                       - database2
@@ -112,14 +156,24 @@ workflow:
 
 After the successful Workflow run, user can check the metadata of scanned Tables on Metis UI for all schemas present in the database. The above sample manifest file is deployed using the following command:
 
+```bash
+dataos-ctl resource apply -f ${{path to the Scanner YAML}}
 ```
-dataos-ctl resource apply -f {path to the Scanner YAML}
-```
+
+**Updating the Scanner Workflow**:
+
+If the Depot or Scanner configurations are updated, the Scanner must be redeployed after deleting the previous instance. Use the following command to delete the existing Scanner:
+
+<CodeGroup>
+  ```bash Command
+  dataos-ctl delete -f ${{path-to-Scanner-YAML}}
+  ```
+
+  ```bash Alternative Command
+  dataos-ctl delete -t workflow -n ${{name of Scanner}} -w ${{name of workspace}}
+  ```
+</CodeGroup>
 
 <Note>
-  If the Depot or Scanner configurations are updated, the Scanner must be redeployed after deleting the previous instance. Use the following command to delete the existing Scanner:
-
-  ```
-  dataos-ctl resource delete -f {path to the Scanner YAML file}
-  ```
+  **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs
 </Note>
