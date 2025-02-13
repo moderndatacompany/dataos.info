@@ -1,0 +1,78 @@
+---
+title: "Data source connectivity"
+sidebarTitle: "Quickstart"
+description: "This module focuses on Data Source Connectivity, a critical responsibility of a DataOS operator or a data developer that involves configuring Depots, establishing secure access to diverse data sources, and maintaining operational efficiency. By the end, the users will have the tools to ensure workflows remain efficient, data remains protected, and a userr team can access data sources securely."
+---
+
+## Scenario
+
+A key project in an organization requires real-time data from multiple systems. Every configuration a user manages will directly impact the team's ability to work with the data efficiently and securely. As a user step into this challenge, the user faced multiple objectives:
+
+* Establishing secure connections to relational databases, cloud object stores, and other critical data sources.
+
+* Configuring Depots to streamline these integrations.
+
+* Ensuring all credentials are encrypted and security best practices are followed.
+
+Follow the steps given below to integrate a growing number of data sources into DataOS for your team. These connections are essential for powering Data Products that fuel decision-making across the organization.
+
+## Quick concepts
+
+The Depot Resource in DataOS provides a standardized way to connect to a variety of enterprise data sources, such as:
+
+* Cloud-based object stores
+
+* Databases
+
+* Data warehouses
+
+* NoSQL data stores
+
+This versatility allows a user to integrate structured, semi-structured, and unstructured data seamlessly. Using Depots, a user can set up data sources to:
+
+* Create high-quality data pipelines for building robust data products.
+
+* Utilize query clusters for efficient data querying.
+
+* Develop comprehensive semantic models.
+
+## Prerequisites
+
+Before diving into configuring data source connections, make sure everything is ready:
+
+1. **Check required Permissions**
+
+   : Some tasks require specific permissions typically assigned to DataOS Operators. Ensure a user has access to one of the following permission sets either via use-case or via tags:
+
+   | **Access Permission (via use-cases)** | **Access Permissions (via tags)** |
+   | ------------------------------------- | --------------------------------- |
+   | Read Workspace                        | `roles:id:data-dev `              |
+   | Manage All Depot                      | `roles:id:system-dev`             |
+   | Read All Dataset                      | `roles:id:user`                   |
+   | Read all secrets from Heimdall        |                                   |
+
+2. **Check CLI installation and initialization**
+
+   : a user needs this text-based interface that allows a user to interact with the DataOS context via command prompts. Click 
+
+   [here](/interfaces/cli/)
+
+    to learn more.
+
+3. **Manage Credentials Securely**
+
+   : Use Instance Secrets for storing a user data source credentials, ensuring sensitive information remains protected.
+
+   > **Important**: To prevent credential exposure, contact DataOS administrator and understand the best practices for handling sensitive data.
+
+4. **Organize a user Code Repository**
+
+   : Place Depot manifests in a private, permission-controlled repository to maintain security and compliance.
+
+## Data source connection - PostgreSQL
+
+For demonstration purposes, we'll use a PostgreSQL database in this example. However, the same process applies to any database that supports the JDBC protocol, such as MySQL, MariaDB, and MSSQL-Server.
+
+With permissions set up, the next step is to establish a connection from DataOS to a user-hosted PostgreSQL database. This connection is vital for seamless data retrieval, enabling a user to access and work with PostgreSQL datasets directly in DataOS. It lays the foundation for building data pipelines, executing queries, and developing valuable data products using a user PostgreSQL data source.
+
+Refer to the next topic: [Data Source Connection - PostgreSQL](/learn/dp_developer_learn_track/data_source_connectivity/postgres/)

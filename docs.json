@@ -50,6 +50,7 @@
                     "group": "Depot",
                     "pages": [
                       "resources/depot/index",
+                      "resources/depot/quickstart",
                       "resources/depot/configurations",
                       "resources/depot/governance",
                       "resources/depot/observability",
