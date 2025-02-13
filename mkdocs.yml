@@ -639,10 +639,7 @@ nav:
         
     - Quick Start Guides: 
       - quick_guides/index.md
-      - Connecting with data sources:
-        - Using GUI: 
-          - quick_guides/depot_creation_gui/index.md
-        - Using CLI: 
+      - Connecting with data sources: 
           - quick_guides/depot_creation_cli/index.md
       - Performing exloratory data analysis:
         - Running your first data query: 
