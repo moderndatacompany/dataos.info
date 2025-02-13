@@ -1,5 +1,6 @@
 ---
 title: "Recipes"
+description: "This section provides various recipes for executing the Scanner in different scenarios, offering detailed guidance on how to adapt the Scanner's functionality to specific use cases."
 ---
 
 ## Context and Problem Statement
@@ -124,7 +125,8 @@ Let just consider a scenario where user aim to ingest metadata from a Snowflake 
 ### **Database Filters**
 
 Use `databaseFilterPattern` to determine which databases to include/exclude during metadata ingestion.
-**Example 1**
+**Example 1:**
+
 In this particular example, the objective is to ingest metadata of all databases that include the term "SNOWFLAKE" in their names. To achieve this, the filter pattern **`.*SNOWFLAKE.*`** would apply in the `includes` property. Consequently, this filter pattern will ensure the ingestion of databases such as  `SNOWFLAKE`, `SNOWFLAKE_SAMPLE_DATA` and `TEST_SNOWFLAKE_DB`.
 
 ```yaml
@@ -154,7 +156,8 @@ workflow:
                   - .*SNOWFLAKE.*
 ```
 
-**Example 2**
+**Example 2:**
+
 If user want to scan only databases that do not start with `SNOWFLAKE`  then the filter pattern regex applied would be `^SNOWFLAKE.*` and they will exclude `SNOWFLAKE`, `SNOWFLAKE_SAMPLE_DATA`.
 
 ```yaml
@@ -184,7 +187,8 @@ workflow:
                   - ^SNOWFLAKE.*
 ```
 
-**Example 3**
+**Example 3:**
+
 In order to exclusively scan the only database with name `RETAIL_DB`, the filter pattern would be `^RETAIL_DB$`.
 
 ```yaml
@@ -214,7 +218,8 @@ workflow:
                   - ^RETAIL_DB$
 ```
 
-**Example 4**
+**Example 4:**
+
 When a user want to ingest metadata of all databases for which the name starts with `TEST` OR ends with `DB` , then the filter pattern applied would be `^TEST` & `DB$` in the includes property. The scanning process will include databases such as  `TEST_SNOWFLAKEDB ` `TEST_HEALTHCARE` `TEST_SPORTS_RETAIL` `TEST_DUMMY_DB` & `DUMMY_DB`.
 
 ```yaml
@@ -274,7 +279,8 @@ Schema filter patterns determine which schemas to include/exclude during metadat
   │   └─── TPCH_SF100 # Schema Name
 ```
 
-**Example 1**
+**Example 1:**
+
 Let's consider a scenario where user want to scan the metadata from the "public" schema present in all databases. The filter pattern would be `public`. This will include the schema `public` present in databases `SNOWFLAKE`  `SNOWFLAKE_SAMPLE_DATA`.
 
 ```yaml
@@ -308,7 +314,8 @@ workflow:
   When user mention name in the filter pattern, Scanner Workflow will automatically convert the name to the filter pattern considering it as a prefix so the created regex will be `^public.*`
 </Info>
 
-**Example 2**
+**Example 2:**
+
 When user wish to exclude the schema `TPCH_SF100` from metadata scanning. As this schema is present only in one database,  `excludes` property can be used with the pattern `^TPCH_SF100$` .
 
 ```yaml
@@ -338,7 +345,8 @@ workflow:
                   - ^TPCH_SF100$
 ```
 
-**Example 3**
+**Example 3:**
+
 Suppose user  intend to include all schemas that begin with the prefix "TPCH" in all databases. In this case, the appropriate regular expression (regex) to achieve this would be **`^TPCH.*`**. This regex pattern will result in the metadata scan of schemas such as `TPCH_SF1` and `TPCH_SF2` from the `SNOWFLAKE` database, as well as schemas like `TPCH_SF1`, `TPCH_SF10`, and `TPCH_SF100` from the `SNOWFLAKE_SAMPLE_DATA` database.
 
 ```yaml
@@ -368,7 +376,8 @@ workflow:
                   - ^TPCH*
 ```
 
-**Example 4**
+**Example 4:**
+
 Now if a user want to include only the schema TPCH\_SF1 present in all the databases but not TPCH\_SF100 or TPCH\_SF1000.
 
 ```yaml
@@ -435,7 +444,8 @@ Use `tableFilterPattern` to determine which tables to include/exclude during m
         └─── LOYAL_CUSTOMER # Table Name
 ```
 
-**Example 1**
+**Example 1:**
+
 In this example, the objective is to scan only the table with the name `CUSTOMER` from all the schemas of `TEST_SPORTS_RETAIL` database. To achieve this, the filter pattern **`^CUSTOMER$ `** can be used. By applying this pattern during the metadata scanning process, only the tables named `CUSTOMER` from the `TEST_SPORTS_RETAIL.PUBLIC` and `TEST_SPORTS_RETAIL.INFORMATION` schemas will be included.
 
 ```yaml
@@ -468,8 +478,9 @@ workflow:
                   - ^CUSTOMER$    # With this filter pattern only the CUSTOMER tables present in the differnt schemas of the TEST_SPORTS_RETAIL are ingested
 ```
 
-**Example 2**
-In this example scenario, user want to scan all the tables having CUSTOMER in their name, filter patter&#x6E;*` .*CUSTOMER.*`*&#x77;ill be used. This will result in scanning of all the tables such as `CUSTOMER`, `CUSTOMER_ONLINE`, `CUSTOMER_OFFLINE`, `LOYAL_CUSTOMER`, etc. from the entier databse.
+**Example 2:**
+
+In this example scenario, user want to scan all the tables having CUSTOMER in their name, filter pattern *` .*CUSTOMER.*`* will be used. This will result in scanning of all the tables such as `CUSTOMER`, `CUSTOMER_ONLINE`, `CUSTOMER_OFFLINE`, `LOYAL_CUSTOMER`, etc. from the entier databse.
 
 ```yaml
 name: scanner2-snowflake-depot
