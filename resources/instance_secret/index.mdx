@@ -29,7 +29,11 @@ DataOS Operators are generally responsible for creating and managing Instance Se
 
 ## Structure of an Instance Secret manifest
 
-The structure of the Instance Secret manifest file is outlined as follows:![image](/is_struc.jpg)
+The structure of the Instance Secret manifest file is outlined as follows:
+
+<Frame as="div">
+  ![](/is_structure.jpg)
+</Frame>
 
 ## How to create an Instance Secret?
 
@@ -37,11 +41,11 @@ This section includes steps for creating the Instance Secret to secure credentia
 
 **Data Sources**
 
-If you want to store credentials for various data sources in an Instance Secret follow steps given below.
+If you want to store credentials for various data sources in an Instance Secret follow the steps given below.
 
 <AccordionGroup>
   <Accordion title="Azure Blob File System Secure (ABFSS)" defaultOpen={false}>
-    An Instance Secret for Azure Blob File System Secure (ABFSS) in DataOS is typically created to build Lakehouse Resource. However, it can also be used to create Depot Resource that require secure access to ABFSS storage. The following sections outline the necessary permissions, configurations, and steps required to set up an Instance Secret efficiently.
+    An Instance Secret for Azure Blob File System Secure (ABFSS) in DataOS is typically created to build Lakehouse Resource. However, it can also be used to create a Depot Resource that requires secure access to ABFSS storage. The following sections outline the necessary permissions, configurations, and steps required to set up an Instance Secret efficiently.
 
     ### Pre-requisites
 
@@ -61,6 +65,14 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * `roles:id:user`
 
+      ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │  roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+      ```
+
     **Checking Assigned Roles**
 
     Use the following command to verify assigned roles:
@@ -77,29 +89,23 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     To validate assigned use cases, refer to the Bifrost Application Use Cases section.
 
-    <Tabs>
-      <Tab title="use case ">
-        ![](/usecase2.png)
-      </Tab>
-
-      <Tab title="tags">
-        ```bash
-              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                       │             │        │                      │  roles:id:user,                  
-                       │             │        │                      │ users:id:iamgroot  
-        ```
-      </Tab>
-    </Tabs>
+    <Frame as="div">
+      ![](/resources/instance_secret/images/usecase2.png)
+    </Frame>
 
     **Source System Configuration**
 
-    * **Azure Endpoint Suffix:** The endpoint suffix for the Azure Storage account. This is typically region-specific and can be found in the Azure Portal under the Properties section of your storage account.
+    * **Azure Endpoint Suffix:**
 
-    * **Azure Storage Account Key:** The access key for the Azure Storage account, is used for authentication. You can retrieve this from the Azure Portal by navigating to your storage account, selecting Access keys under the Security + networking section, and copying the key.
+      The endpoint suffix for the Azure Storage account. This is typically region-specific and can be found in the Azure Portal under the Properties section of your storage account.
 
-    * **Azure Storage Account Name:**The name of the Azure Storage account used to identify it within your subscription. This can be found in the Azure Portal under the Overview section of your storage account.
+    * **Azure Storage Account Key:**
+
+      The access key for the Azure Storage account is used for authentication. You can retrieve this from the Azure Portal by navigating to your storage account, selecting Access keys under the Security + networking section, and copying the key.
+
+    * **Azure Storage Account Name:**
+
+      The name of the Azure Storage account used to identify it within your subscription. This can be found in the Azure Portal under the Overview section of your storage account.
 
     Ensure that you have these details ready before proceeding with the Instance Secret creation process.
 
@@ -114,7 +120,7 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your ABFSS Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read-write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `abfssdepot-r `and` abfssdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -146,7 +152,7 @@ If you want to store credentials for various data sources in an Instance Secret 
       ```
 
       ```yaml Read-write instance-secret
-      # Azure Blob File System Secure (ABFSS) Read Write Instance Secret Manifest
+      # Azure Blob File System Secure (ABFSS) read-write Instance Secret Manifest
 
       name: ${abfss-depot-name}-rw  # Name of the instance-secret, indicating it's for read-write access.
       version: v1 # Manifest Version           
@@ -171,11 +177,17 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     This section focuses on attributes specific to ABFSS Instance Secrets. It includes details like:
 
-    * `type`: Specifies the Instance Secret type (key-value-properties).
+    * `type`
 
-    * `acl`: Access control level (read-only or read-write).
+      : Specifies the Instance Secret type (key-value-properties).
 
-    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `acl`
+
+      : Access control level (read-only or read-write).
+
+    * `data`
+
+      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
     For more information, refer to the [Attributes of Instance-secret specific section]().
 
@@ -348,6 +360,14 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * `roles:id:user`
 
+      ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │  roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+      ```
+
     **Checking Assigned Roles**
 
     Use the following command to verify assigned roles:
@@ -362,23 +382,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * **Manage All Instance-level Resources of DataOS in User Layer**
 
-    To validate assigned use cases, refer to the Bifrost Application Use Cases section
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section.
 
-    <Tabs>
-      <Tab title="use case ">
-        ![](/usecase2.png)
-      </Tab>
-
-      <Tab title="tags">
-        ```bash
-              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                       │             │        │                      │  roles:id:user,                  
-                       │             │        │                      │ users:id:iamgroot  
-        ```
-      </Tab>
-    </Tabs>
+    <Frame as="div">
+      ![](/resources/instance_secret/images/usecase2.png)
+    </Frame>
 
     **Source System Configuration**
 
@@ -401,7 +409,7 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your Bigquery Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read-write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -638,6 +646,14 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * `roles:id:user`
 
+      ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │  roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+      ```
+
     **Checking Assigned Roles**
 
     Use the following command to verify assigned roles:
@@ -652,23 +668,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * **Manage All Instance-level Resources of DataOS in User Layer**
 
-    To validate assigned use cases, refer to the Bifrost Application Use Cases section
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section.
 
-    <Tabs>
-      <Tab title="use case ">
-        ![](/usecase2.png)
-      </Tab>
-
-      <Tab title="tags">
-        ```bash
-              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                       │             │        │                      │  roles:id:user,                  
-                       │             │        │                      │ users:id:iamgroot  
-        ```
-      </Tab>
-    </Tabs>
+    <Frame as="div">
+      ![](/resources/instance_secret/images/usecase2.png)
+    </Frame>
 
     **Source System Configuration**
 
@@ -689,7 +693,7 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your Elasticsearch Instance Secret. Below are the templates for the read-only and read-write manifests:
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read-write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -917,6 +921,14 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * `roles:id:user`
 
+      ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │  roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+      ```
+
     **Checking Assigned Roles**
 
     Use the following command to verify assigned roles:
@@ -931,33 +943,17 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * **Manage All Instance-level Resources of DataOS in User Layer**
 
-    To validate assigned use cases, refer to the Bifrost Application Use Cases section
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section.
 
-    <Tabs>
-      <Tab title="use case ">
-        ![](/usecase2.png)
-      </Tab>
-
-      <Tab title="tags">
-        ```bash
-              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                       │             │        │                      │  roles:id:user,                  
-                       │             │        │                      │ users:id:iamgroot  
-        ```
-      </Tab>
-    </Tabs>
+    <Frame as="div">
+      ![](/resources/instance_secret/images/usecase2.png)
+    </Frame>
 
     **Source System Configuration**
 
-    * **Event Hub Shared Access Key Name**
+    * **Event Hub Shared Access Key Name**: The name of the shared access key for the Azure Event Hub. You can retrieve this from the Azure Portal by navigating to your Event Hub namespace, selecting "Shared access policies," and locating the key name under the policy details.
 
-      : The name of the shared access key for the Azure Event Hub. You can retrieve this from the Azure Portal by navigating to your Event Hub namespace, selecting "Shared access policies," and locating the key name under the policy details.
-
-    * **Event Hub Shared Access Key**
-
-      : The shared access key associated with the Event Hub shared access key name. You can retrieve this from the Azure Portal by navigating to your Event Hub namespace, selecting "Shared access policies," and copying the key value under the selected policy.
+    * **Event Hub Shared Access Key**: The shared access key associated with the Event Hub shared access key name. You can retrieve this from the Azure Portal by navigating to your Event Hub namespace, selecting "Shared access policies," and copying the key value under the selected policy.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -972,7 +968,7 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your Eventhub Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read-write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -1004,7 +1000,7 @@ If you want to store credentials for various data sources in an Instance Secret 
       ```
 
       ```yaml Read-write instance-secret
-      # Eventhub Read Write Instance-secret Manifest
+      # Eventhub read-write Instance-secret Manifest
 
       name: ${eventhub-depot-name}-rw # Unique identifier for Resource, replace ${eventhub-depot-name} with depot name
       version: v1 # Manifest version
@@ -1028,17 +1024,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     This section focuses on attributes specific to Eventhub Instance Secrets. It includes details like:
 
-    * `type`
+    * `type`: Specifies the Instance Secret type (key-value-properties).
 
-      : Specifies the Instance Secret type (key-value-properties).
+    * `acl`: Access control level (read-only or read-write).
 
-    * `acl`
-
-      : Access control level (read-only or read-write).
-
-    * `data`
-
-      : Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+    * `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
 
     For more information, refer to the [Attributes of Instance-secret specific section]().
 
@@ -1211,6 +1201,14 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * `roles:id:user`
 
+      ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │  roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+      ```
+
     **Checking Assigned Roles**
 
     Use the following command to verify assigned roles:
@@ -1225,23 +1223,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * **Manage All Instance-level Resources of DataOS in User Layer**
 
-    To validate assigned use cases, refer to the Bifrost Application Use Cases section
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section.
 
-    <Tabs>
-      <Tab title="use case ">
-        ![](/usecase2.png)
-      </Tab>
-
-      <Tab title="tags">
-        ```bash
-              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                       │             │        │                      │  roles:id:user,                  
-                       │             │        │                      │ users:id:iamgroot  
-        ```
-      </Tab>
-    </Tabs>
+    <Frame as="div">
+      ![](/resources/instance_secret/images/usecase2.png)
+    </Frame>
 
     **Source System Configuration**
 
@@ -1264,7 +1250,7 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your GCS Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read-write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -1497,6 +1483,14 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * `roles:id:user`
 
+      ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │  roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+      ```
+
     **Checking Assigned Roles**
 
     Use the following command to verify assigned roles:
@@ -1511,23 +1505,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * **Manage All Instance-level Resources of DataOS in User Layer**
 
-    To validate assigned use cases, refer to the Bifrost Application Use Cases section
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section.
 
-    <Tabs>
-      <Tab title="use case ">
-        ![](/usecase2.png)
-      </Tab>
-
-      <Tab title="tags">
-        ```bash
-              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                       │             │        │                      │  roles:id:user,                  
-                       │             │        │                      │ users:id:iamgroot  
-        ```
-      </Tab>
-    </Tabs>
+    <Frame as="div">
+      ![](/resources/instance_secret/images/usecase2.png)
+    </Frame>
 
     **Source System Configuration**
 
@@ -1548,7 +1530,7 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your JDBC Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read-write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -1580,7 +1562,7 @@ If you want to store credentials for various data sources in an Instance Secret 
       ```
 
       ```yaml Read-write instance-secret
-      # JDBC Read Write Instance-secret Manifest
+      # JDBC read-write Instance-secret Manifest
 
       name: ${jdbc-depot-name}-rw # Unique identifier for Resource, replace ${jdbc-depot-name} with depot name
       version: v1 # Manifest version
@@ -1781,6 +1763,14 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * `roles:id:user`
 
+      ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │  roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+      ```
+
     **Checking Assigned Roles**
 
     Use the following command to verify assigned roles:
@@ -1795,23 +1785,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * **Manage All Instance-level Resources of DataOS in User Layer**
 
-    To validate assigned use cases, refer to the Bifrost Application Use Cases section
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section.
 
-    <Tabs>
-      <Tab title="use case ">
-        ![](/usecase2.png)
-      </Tab>
-
-      <Tab title="tags">
-        ```bash
-              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                       │             │        │                      │  roles:id:user,                  
-                       │             │        │                      │ users:id:iamgroot  
-        ```
-      </Tab>
-    </Tabs>
+    <Frame as="div">
+      ![](/resources/instance_secret/images/usecase2.png)
+    </Frame>
 
     **Source System Configuration**
 
@@ -1832,7 +1810,7 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your MongoDB Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read-write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -1863,7 +1841,7 @@ If you want to store credentials for various data sources in an Instance Secret 
       ```
 
       ```yaml Read-write instance-secret
-      # MongoDB Read Write Instance-secret Manifest
+      # MongoDB read-write Instance-secret Manifest
 
       name: ${mongodb-depot-name}-r # Unique identifier for Resource, replace ${snowflake-depot-name} with depot name
       version: v1 # Manifest version
@@ -2115,7 +2093,7 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your MSSQL Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read-write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -2343,6 +2321,14 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * `roles:id:user`
 
+      ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │  roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+      ```
+
     **Checking Assigned Roles**
 
     Use the following command to verify assigned roles:
@@ -2357,33 +2343,17 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * **Manage All Instance-level Resources of DataOS in User Layer**
 
-    To validate assigned use cases, refer to the Bifrost Application Use Cases section
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section.
 
-    <Tabs>
-      <Tab title="use case ">
-        ![](/usecase2.png)
-      </Tab>
-
-      <Tab title="tags">
-        ```bash
-              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                       │             │        │                      │  roles:id:user,                  
-                       │             │        │                      │ users:id:iamgroot  
-        ```
-      </Tab>
-    </Tabs>
+    <Frame as="div">
+      ![](/resources/instance_secret/images/usecase2.png)
+    </Frame>
 
     **Source System Configuration**
 
-    * **Username**
+    * **Username**: The MySQL username used to authenticate and access your MySQL database. This can be obtained from the database admin who manages user access.
 
-      : The MySQL username used to authenticate and access your MySQL database. This can be obtained from the database admin who manages user access.
-
-    * **Password**
-
-      : The password associated with the MySQL username for authentication. This is typically set when the user account is created and must be provided by the MySQL admin or securely retrieved if forgotten.
+    * **Password**: The password associated with the MySQL username for authentication. This is typically set when the user account is created and must be provided by the MySQL admin or securely retrieved if forgotten.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
 
@@ -2398,7 +2368,7 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your MySQL Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read-write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -2429,7 +2399,7 @@ If you want to store credentials for various data sources in an Instance Secret 
       ```
 
       ```yaml Read-write instance-secret
-      # MySQL Read Write Instance-secret Manifest
+      # MySQL read-write Instance-secret Manifest
 
       name: ${mysql-depot-name}-rw # Unique identifier for Resource, replace ${mysql-depot-name} with depot name
       version: v1 # Manifest version
@@ -2630,6 +2600,14 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * `roles:id:user`
 
+      ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │  roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+      ```
+
     **Checking Assigned Roles**
 
     Use the following command to verify assigned roles:
@@ -2644,23 +2622,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * **Manage All Instance-level Resources of DataOS in User Layer**
 
-    To validate assigned use cases, refer to the Bifrost Application Use Cases section
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section.
 
-    <Tabs>
-      <Tab title="use case ">
-        ![](/usecase2.png)
-      </Tab>
-
-      <Tab title="tags">
-        ```bash
-              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                       │             │        │                      │  roles:id:user,                  
-                       │             │        │                      │ users:id:iamgroot  
-        ```
-      </Tab>
-    </Tabs>
+    <Frame as="div">
+      ![](/resources/instance_secret/images/usecase2.png)
+    </Frame>
 
     **Source System Configuration**
 
@@ -2681,7 +2647,7 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your OpenSearch Instance Secret. Below are the templates for the read-only and read-write manifests:
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read-write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -2909,6 +2875,14 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * `roles:id:user`
 
+      ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │  roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+      ```
+
     **Checking Assigned Roles**
 
     Use the following command to verify assigned roles:
@@ -2923,23 +2897,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * **Manage All Instance-level Resources of DataOS in User Layer**
 
-    To validate assigned use cases, refer to the Bifrost Application Use Cases section
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section.
 
-    <Tabs>
-      <Tab title="use case ">
-        ![](/usecase2.png)
-      </Tab>
-
-      <Tab title="tags">
-        ```bash
-              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                       │             │        │                      │  roles:id:user,                  
-                       │             │        │                      │ users:id:iamgroot  
-        ```
-      </Tab>
-    </Tabs>
+    <Frame as="div">
+      ![](/resources/instance_secret/images/usecase2.png)
+    </Frame>
 
     **Source System Configuration**
 
@@ -2960,7 +2922,7 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your Oracle Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read-write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -2991,7 +2953,7 @@ If you want to store credentials for various data sources in an Instance Secret 
       ```
 
       ```yaml Read-write instance-secret
-      # Oracle Read Write Instance-secret Manifest
+      # Oracle read-write Instance-secret Manifest
 
       name: ${oracle-depot-name}-r # Unique identifier for Resource, replace ${oracle-depot-name} with depot name
       version: v1 # Manifest version
@@ -3192,6 +3154,14 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * `roles:id:user`
 
+      ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │  roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+      ```
+
     **Checking Assigned Roles**
 
     Use the following command to verify assigned roles:
@@ -3206,23 +3176,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * **Manage All Instance-level Resources of DataOS in User Layer**
 
-    To validate assigned use cases, refer to the Bifrost Application Use Cases section
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section.
 
-    <Tabs>
-      <Tab title="use case ">
-        ![](/usecase2.png)
-      </Tab>
-
-      <Tab title="tags">
-        ```bash
-              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                       │             │        │                      │  roles:id:user,                  
-                       │             │        │                      │ users:id:iamgroot  
-        ```
-      </Tab>
-    </Tabs>
+    <Frame as="div">
+      ![](/resources/instance_secret/images/usecase2.png)
+    </Frame>
 
     **Source System Configuration**
 
@@ -3243,7 +3201,7 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your Postgres Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read-write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -3275,7 +3233,7 @@ If you want to store credentials for various data sources in an Instance Secret 
       ```
 
       ```yaml Read-write instance-secret
-      # PostgresSQL Read Write Instance-secret Manifest
+      # PostgresSQL read-write Instance-secret Manifest
 
       name: ${postgres-depot-name}-rw # Unique identifier for Resource, replace ${postgres-depot-name} with depot name
       version: v1 # Manifest version
@@ -3476,6 +3434,14 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * `roles:id:user`
 
+      ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │  roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+      ```
+
     **Checking Assigned Roles**
 
     Use the following command to verify assigned roles:
@@ -3490,23 +3456,11 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * **Manage All Instance-level Resources of DataOS in User Layer**
 
-    To validate assigned use cases, refer to the Bifrost Application Use Cases section
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section.
 
-    <Tabs>
-      <Tab title="use case ">
-        ![](/usecase2.png)
-      </Tab>
-
-      <Tab title="tags">
-        ```bash
-              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                       │             │        │                      │  roles:id:user,                  
-                       │             │        │                      │ users:id:iamgroot  
-        ```
-      </Tab>
-    </Tabs>
+    <Frame as="div">
+      ![](/resources/instance_secret/images/usecase2.png)
+    </Frame>
 
     **Source System Configuration**
 
@@ -3531,7 +3485,7 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your Redshift Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding manifest template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read-write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -3763,6 +3717,14 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * `roles:id:user`
 
+      ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │  roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+      ```
+
     **Checking Assigned Roles**
 
     Use the following command to verify assigned roles:
@@ -3779,21 +3741,9 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     To validate assigned use cases, refer to the Bifrost Application Use Cases section.
 
-    <Tabs>
-      <Tab title="use case ">
-        ![](/usecase2.png)
-      </Tab>
-
-      <Tab title="tags">
-        ```bash
-              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                       │             │        │                      │  roles:id:user,                  
-                       │             │        │                      │ users:id:iamgroot  
-        ```
-      </Tab>
-    </Tabs>
+    <Frame as="div">
+      ![](/resources/instance_secret/images/usecase2.png)
+    </Frame>
 
     **Source System Configuration**
 
@@ -3851,7 +3801,7 @@ If you want to store credentials for various data sources in an Instance Secret 
       ```
 
       ```yaml Read-write instance-secret
-      # Amazon S3 Read Write Instance-secret Manifest
+      # Amazon S3 read-write Instance-secret Manifest
 
       name: ${s3-depot-name}-rw # Unique identifier for Resource, replace ${s3-depot-name} with depot name
       version: v1 # Manifest version
@@ -4054,6 +4004,14 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * `roles:id:user`
 
+      ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │  roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+      ```
+
     **Checking Assigned Roles**
 
     Use the following command to verify assigned roles:
@@ -4066,25 +4024,13 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     Alternatively, if access is managed through use cases, ensure the following use case is assigned:
 
-    * **Manage All Instance-level Resources of DataOS in the User Layer**
+    * **Manage All Instance-level Resources of DataOS in User Layer**
 
-    To validate assigned use cases, refer to the Bifrost Application Use Cases section
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section.
 
-    <Tabs>
-      <Tab title="use case ">
-        ![](/usecase2.png)
-      </Tab>
-
-      <Tab title="tags">
-        ```bash
-              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                       │             │        │                      │  roles:id:user,                  
-                       │             │        │                      │ users:id:iamgroot  
-        ```
-      </Tab>
-    </Tabs>
+    <Frame as="div">
+      ![](/resources/instance_secret/images/usecase2.png)
+    </Frame>
 
     **Source System Configuration**
 
@@ -4137,7 +4083,7 @@ If you want to store credentials for various data sources in an Instance Secret 
       ```
 
       ```yaml Read-write instance-secret
-      # Snowflake Read Write Instance-secret Manifest
+      # Snowflake read-write Instance-secret Manifest
 
       name: ${snowflake-depot-name}-rw # Unique identifier for Resource, replace ${snowflake-depot-name} with depot name
       version: v1 # Manifest version
@@ -4338,6 +4284,14 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     * `roles:id:user`
 
+      ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │  roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+      ```
+
     **Checking Assigned Roles**
 
     Use the following command to verify assigned roles:
@@ -4350,25 +4304,13 @@ If you want to store credentials for various data sources in an Instance Secret 
 
     Alternatively, if access is managed through use cases, ensure the following use case is assigned:
 
-    * **Manage All Instance-level Resources of DataOS in the User Layer**
+    * **Manage All Instance-level Resources of DataOS in User Layer**
 
-    To validate assigned use cases, refer to the Bifrost Application Use Cases section
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section.
 
-    <Tabs>
-      <Tab title="use case ">
-        ![](/usecase2.png)
-      </Tab>
-
-      <Tab title="tags">
-        ```bash
-              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                       │             │        │                      │  roles:id:user,                  
-                       │             │        │                      │ users:id:iamgroot  
-        ```
-      </Tab>
-    </Tabs>
+    <Frame as="div">
+      ![](/resources/instance_secret/images/usecase2.png)
+    </Frame>
 
     **Source System Configuration**
 
@@ -4391,7 +4333,7 @@ If you want to store credentials for various data sources in an Instance Secret 
     Begin by creating a manifest file to hold the configuration details for your WASBS Instance Secret. Below are the templates for the read-only and read-write manifests:
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read-write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -4631,6 +4573,14 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     * `roles:id:user`
 
+      ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │  roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+      ```
+
     **Checking Assigned Roles**
 
     Use the following command to verify assigned roles:
@@ -4643,31 +4593,19 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     Alternatively, if access is managed through use cases, ensure the following use case is assigned:
 
-    * **Manage All Instance-level Resources of DataOS in the User Layer**
+    * **Manage All Instance-level Resources of DataOS in User Layer**
 
-    To validate assigned use cases, refer to the Bifrost Application Use Cases section
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section.
 
-    <Tabs>
-      <Tab title="use case ">
-        ![](/usecase2.png)
-      </Tab>
-
-      <Tab title="tags">
-        ```bash
-              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                       │             │        │                      │  roles:id:user,                  
-                       │             │        │                      │ users:id:iamgroot  
-        ```
-      </Tab>
-    </Tabs>
+    <Frame as="div">
+      ![](/resources/instance_secret/images/usecase2.png)
+    </Frame>
 
     **Source System Configuration**
 
-    * **GITSYNC_USERNAME**: This represents the AWS CodeCommit username required for authentication.
+    * **GITSYNC\_USERNAME**: This represents the AWS CodeCommit username required for authentication.
 
-    * **GITSYNC_PASSWORD**: This is the corresponding password or an app password used for authentication.
+    * **GITSYNC\_PASSWORD**: This is the corresponding password or an app password used for authentication.
       These credentials can be obtained from the  AWS CodeCommit settings or provided by an administrator.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process. Follow the steps below to complete the creation process efficiently and securely.
@@ -4679,7 +4617,7 @@ If you want to store credentials for hosted code repositories in an Instance Sec
     Begin by creating a manifest file to hold the configuration details for your AWS CodeCommit Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read-write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
@@ -4791,6 +4729,14 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     * `roles:id:user`
 
+      ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │  roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+      ```
+
     **Checking Assigned Roles**
 
     Use the following command to verify assigned roles:
@@ -4803,31 +4749,19 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     Alternatively, if access is managed through use cases, ensure the following use case is assigned:
 
-    * **Manage All Instance-level Resources of DataOS in the User Layer**
+    * **Manage All Instance-level Resources of DataOS in User Layer**
 
-    To validate assigned use cases, refer to the Bifrost Application Use Cases section
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section.
 
-    <Tabs>
-      <Tab title="use case ">
-        ![](/usecase2.png)
-      </Tab>
-
-      <Tab title="tags">
-        ```bash
-              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                       │             │        │                      │  roles:id:user,                  
-                       │             │        │                      │ users:id:iamgroot  
-        ```
-      </Tab>
-    </Tabs>
+    <Frame as="div">
+      ![](/resources/instance_secret/images/usecase2.png)
+    </Frame>
 
     **Source System Configuration**
 
-    * **GITSYNC_USERNAME**: This represents the Bitbucket username required for authentication.
+    * **GITSYNC\_USERNAME**: This represents the Bitbucket username required for authentication.
 
-    * **GITSYNC_PASSWORD**: This is the corresponding password or an app password used for authentication.
+    * **GITSYNC\_PASSWORD**: This is the corresponding password or an app password used for authentication.
       These credentials can be obtained from the Bitbucket account settings or provided by an administrator.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process. Follow the steps below to complete the creation process efficiently and securely.
@@ -4944,6 +4878,14 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     * `roles:id:user`
 
+      ```bash
+            NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+      ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+                     │             │        │                      │  roles:id:user,                  
+                     │             │        │                      │ users:id:iamgroot  
+      ```
+
     **Checking Assigned Roles**
 
     Use the following command to verify assigned roles:
@@ -4956,31 +4898,19 @@ If you want to store credentials for hosted code repositories in an Instance Sec
 
     Alternatively, if access is managed through use cases, ensure the following use case is assigned:
 
-    * **Manage All Instance-level Resources of DataOS in the User Layer**
+    * **Manage All Instance-level Resources of DataOS in User Layer**
 
-    To validate assigned use cases, refer to the Bifrost Application Use Cases section
+    To validate assigned use cases, refer to the Bifrost Application Use Cases section.
 
-    <Tabs>
-      <Tab title="use case ">
-        ![](/usecase2.png)
-      </Tab>
-
-      <Tab title="tags">
-        ```bash
-              NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-        ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-          Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                       │             │        │                      │  roles:id:user,                  
-                       │             │        │                      │ users:id:iamgroot  
-        ```
-      </Tab>
-    </Tabs>
+    <Frame as="div">
+      ![](/resources/instance_secret/images/usecase2.png)
+    </Frame>
 
     **Source System Configuration**
 
-    * **GITSYNC_USERNAME**: This represents the Git username required for authentication.
+    * **GITSYNC\_USERNAME**: This represents the Git username required for authentication.
 
-    * **GITSYNC_PASSWORD**: This is the corresponding password used for authentication.
+    * **GITSYNC\_PASSWORD**: This is the corresponding password used for authentication.
       These credentials can be obtained from the Bitbucket account settings or provided by an administrator.
 
     Ensure you have these credentials ready before proceeding with the Instance Secret creation process. Follow the steps below to complete the creation process efficiently and securely.
@@ -4990,7 +4920,7 @@ If you want to store credentials for hosted code repositories in an Instance Sec
     Begin by creating a manifest file to hold the configuration details for your Git repository Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
     <Warning>
-      Note that for read write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
+      Note that for read-write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
       ```bash
       dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
