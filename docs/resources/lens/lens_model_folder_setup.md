@@ -3,11 +3,11 @@
 !!! abstract "Quick Guide"
     To quickly get started with creating a Lens model in DataOS, follow the [quick guide on creating a Lens model](/quick_guides/create_data_model/). This guide provides step-by-step instructions to help you transform your conceptual design into a functional semantic model, ensuring effective data structuring and organization to meet your analytical and business needs.
 
-### **Prerequisites**
+<!-- ### **Prerequisites**
 
-Before setting up Lens, make sure all required dependencies are installed. Follow the [Prerequisites for Lens](/resources/lens/installing_prerequisites/) guide for detailed instructions and resources to ensure a seamless installation and configuration process.
+Before setting up Lens, make sure all required dependencies are installed. Follow the [Prerequisites for Lens](/resources/lens/installing_prerequisites/) guide for detailed instructions and resources to ensure a seamless installation and configuration process. -->
 
-### **Lens Project folder structure**
+### **Lens project folder structure**
 
 In the Model folder, the Lens semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each folder contains specific files related to the Lens model or you can download the following template to quickly get started.
 
@@ -40,7 +40,7 @@ model
 
 ## Next steps
 
-[Optimizing Lens testing in local development](/resources/lens/optimizing_lens_testing_in_local_development/)
+<!-- [Optimizing Lens testing in local development](/resources/lens/optimizing_lens_testing_in_local_development/) -->
 
 [Deploying Lens model on DataOS](/resources/lens/lens_deployment/)
 
