@@ -1,28 +1,30 @@
 ---
-title: "Data quality"
+title: "Scanner for Quality Checks"
+sidebarTitle: "Quality Checks"
+description:"This section provides a guide and reference for using the Scanner for quality checks and metrics matadata."
 ---
 
-Service Level objectives(SLOs) are business-specific validation rules applied to test and evaluate the quality of specific datasets if they are appropriate for the intended purpose. DataOS allows you to define your own assertions with a combination of tests to check the rules.
+## Scanner for Data quality
 
-This worker is a continuous running service, designed to reactively scan datasets and ingest quality checks and metrics data along with their pass/fail status whenever a Flare data quality scan is initiated. The acquired metadata related to data quality is then published to the Metis DB, contributing to a comprehensive understanding of data quality.
+Scanner for Data quality is a Worker(continuous running service), designed to reactively scan datasets and ingest quality checks and metrics data along with their pass/fail status whenever a Flare data quality scan is initiated. The acquired metadata related to data quality is then published to the Metis DB, contributing to a comprehensive understanding of data quality. The sample manifest file to extract the matadata of the quality checks are as follows:
 
 ```yaml
 name: dataset-quality-checks-indexer
 version: v1beta
 type: worker
-tags:
+tags: 
   - Scanner
-description: >-
+description: 
   The purpose of this worker is to reactively scan workflows and ingest
   quality checks and metrics data whenever a lifecycle event is triggered.
 owner: metis
 workspace: system
-worker:
+worker: 
   title: Dataset Quality Checks Indexer
-  tags:
+  tags: 
     - Scanner
   replicas: 1
-  autoScaling:
+  autoScaling: 
     enabled: true
     minReplicas: 1
     maxReplicas: 2
@@ -32,26 +34,20 @@ worker:
   runAsUser: metis
   compute: runnable-default
   stack: scanner:2.0
-  stackSpec:
+  stackSpec: 
     type: worker
     worker: data_quality_indexer
-  resources:
-    requests:
-      cpu: 500m
-      memory: 1024Mi
-    limits: {}
-  runAsApiKey: '****************************************************************************'
+
 ```
+<Note>
+  User can view the list of SLOs created for the dataset to monitor the data quality and trend charts for each run. The trend charts also show whether the checks are passed or failed.
+</Note>
 
-<Warning>
-  Callout Content
-</Warning>
+## Scanner for SODA quality checks
 
-## SODA quality checks
+DataOS now also extends support to other quality check platforms, such as SQL-powered SODA. It enables user to use the Soda Checks Language (SodaCL) to turn user-defined inputs into aggregated SQL queries. With Soda, user get a far more expressive language to test the quality of your datasets. It allows for complex user-defined checks with granular control over fail and warn states.
 
-DataOS now also extends support to other quality check platforms, such as SQL-powered SODA. It enables you to use the Soda Checks Language (SodaCL) to turn user-defined inputs into aggregated SQL queries. With Soda, you get a far more expressive language to test the quality of your datasets. It allows for complex user-defined checks with granular control over fail and warn states.
-
-The primary objective of this continuous running service (worker) is to reactively scan datasets, for collecting quality checks and metrics data along with their pass/fail status whenever a SODA quality scan is triggered. The collected data is saved to the Metis DB, facilitating thorough analysis and monitoring.
+The primary objective of Scanner for SODA quality checks (a Worker which is a continuous running service) is to reactively scan datasets, for collecting quality checks and metrics data along with their pass/fail status whenever a SODA quality scan is triggered. The collected data is saved to the Metis DB, facilitating thorough analysis and monitoring. The sample manifest file to extract the matadata of the quality checks are as follows:
 
 ```yaml
 name: soda-quality-checks-indexer
@@ -59,7 +55,7 @@ version: v1beta
 type: worker
 tags:
   - Scanner
-description: >-
+description: 
   The purpose of this worker is to reactively scan datasets and ingest quality
   checks and metrics data whenever a soda scan is triggered.
 owner: metis
@@ -87,9 +83,40 @@ worker:
       cpu: 500m
       memory: 1024Mi
     limits: {}
-  runAsApiKey: '****************************************************************************'
 ```
 
-<Warning>
+<Note>
   On Metis UI, you can view the list of SLOs created for the dataset to monitor the data quality and trend charts for each run. The trend charts also show whether the checks are passed or failed.
-</Warning>
+</Note>
+
+The above sample manifest files can be deployed using the following command:
+
+```bash
+dataos-ctl resource apply -f ${{path to the Scanner YAML}}
+```
+
+**Updating the Scanner Workflow**:
+
+If the Depot or Scanner configurations are updated, the Scanner must be redeployed after deleting the previous instance. Use the following command to delete the existing Scanner:
+
+<CodeGroup>
+  ```bash Command
+  dataos-ctl delete -f ${{path-to-Scanner-YAML}}
+  ```
+
+  ```bash Alternative Command
+  dataos-ctl delete -t workflow -n ${{name of Scanner}} -w ${{name of workspace}}
+  ```
+</CodeGroup>
+
+
+### Data Quality vs Soda Quality
+
+Data quality and Soda quality are related but distinct concepts in the context of data validation and quality checks.
+
+- **Data Quality**: Refers to the overall quality of a dataset, including its accuracy, completeness, consistency, and reliability. DataOS allows you to define your own assertions with a combination of tests to check the rules for data quality.
+- **Soda Quality**: Specifically refers to the quality checks performed using the Soda Checks Language (SodaCL) and the SODA quality check platform. SodaCL enables you to turn user-defined inputs into aggregated SQL queries, allowing for complex user-defined checks with granular control over fail and warn states.
+
+In other words, data quality is a broader concept that encompasses various aspects of data quality, while Soda quality is a specific implementation of data quality checks using the Soda platform.
+
+

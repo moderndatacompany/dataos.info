@@ -1,5 +1,7 @@
 ---
 title: "Scanner for Data Product"
+sidebarTitle: "Data Product"
+description:"This page explains the purpose and functionality of the Data Product Scanner workflow, which collects metadata related to Data products and stores it in Metis DB for user reference and data access permissions."
 ---
 
 Data product Scanner workflows is for collecting metadata related to Data products such as inputs, outputs, SLOs, policies, lineage and associated DataOS Resources.
@@ -58,8 +60,32 @@ workflow:
                   - ^customer-360-all$  # Include data products with the specified pattern
 ```
 
-<Info>
+<Note>
 
 On a successful run, user can view the Data Product information on Metis UI.
 
-</Info>
+</Note>
+
+The above sample manifest file is deployed using the following command:
+
+```bash
+dataos-ctl resource apply -f ${{path to the Scanner YAML}}
+```
+
+**Updating the Scanner Workflow**:
+
+If the Depot or Scanner configurations are updated, the Scanner must be redeployed after deleting the previous instance. Use the following command to delete the existing Scanner:
+
+<CodeGroup>
+  ```bash Command
+  dataos-ctl delete -f ${{path-to-Scanner-YAML}}
+  ```
+
+  ```bash Alternative Command
+  dataos-ctl delete -t workflow -n ${{name of Scanner}} -w ${{name of workspace}}
+  ```
+</CodeGroup>
+
+<Note>
+  **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs
+</Note>
