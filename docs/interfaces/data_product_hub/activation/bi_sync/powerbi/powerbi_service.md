@@ -33,11 +33,11 @@ Before proceeding with the data gateway configuration, ensure the following comp
 
 2. Run the installer, keep the default installation path, accept the terms, and select Install.
 
-    <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/pb_on_prem_07.png" alt="DPH" style="width:30rem; height:20% border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/pb_on_prem_07.png" alt="DPH" style="width:25rem; height:15% border: 1px solid black;" />
     
 3. Enter the email address for your Office 365 organization account, then select Sign in.
 
-    <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/pn_on_prem_mail_08.png" alt="DPH" style="width:30rem; height:auto; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/pn_on_prem_mail_08.png" alt="DPH" style="width:25rem; height:15%; border: 1px solid black;" />
 
     <aside class="callout">
     💡 The account used must be an organization account.
@@ -47,16 +47,16 @@ Before proceeding with the data gateway configuration, ensure the following comp
 
 4. Select Register a new gateway on this computer > Next.
     
-    <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/p_serv_on_prem_09.png" alt="DPH" style="width:30rem; height:auto; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/p_serv_on_prem_09.png" alt="DPH" style="width:25rem; height:15%; border: 1px solid black;" />
     
 
 5. Enter a name for the gateway. The name must be unique across the tenant. Also, enter a recovery key. You'll need this key if you ever want to recover or move your gateway. Select Configure.
     
-    <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/pb_service_on_prem_10.png.png" alt="DPH" style="width:40rem; height:auto; border: 1px solid black;" />  
+    <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/pb_service_on_prem_10.png.png" alt="DPH" style="width:25rem; height:15%; border: 1px solid black;" />  
 
 6. Review the information in the final window. Select Close.
     
-    <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/pb_on_prem_serv_11.png" alt="DPH" style="width:40rem; height:auto; border: 1px solid black;" />   
+    <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/pb_on_prem_serv_11.png" alt="DPH" style="width:25rem; height:15%; border: 1px solid black;" />   
 
 Now that you've installed a gateway, install a `npgsql`.
 
@@ -66,19 +66,19 @@ Now that you've installed a gateway, install a `npgsql`.
 
 2. Open the installer and click Next to begin the setup.
     
-    <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/npgsql_01.png" alt="DPH" style="width:30rem; height:auto; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/npgsql_01.png" alt="DPH" style="width:25rem; height:15%; border: 1px solid black;" />
 
 3. Accept the terms and conditions of use and click Next.
 
-    <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/npgsql_02.png" alt="DPH" style="width:30rem; height:auto; border: 1px solid black;" />  
+    <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/npgsql_02.png" alt="DPH" style="width:25rem; height:15%; border: 1px solid black;" />  
 
 4. Ensure 'Npgsql GAC Installation' is selected. Verify that both the default-checked and unchecked files are selected before proceeding.
     
-    <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/npgsql_03.png" alt="DPH" style="width:30rem; height:auto;border: 1px solid black;" /> 
+    <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/npgsql_03.png" alt="DPH" style="width:25rem; height:15% ;border: 1px solid black;" /> 
 
-5. Click Install to begin the installation.
+5. Click 'Install' to begin the installation.
     
-    <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/npgsql_04.png" alt="DPH" style="width:30rem; height:auto; border: 1px solid black;" />   
+    <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/npgsql_04.png" alt="DPH" style="width:25rem; height:15%; border: 1px solid black;" />   
 
 6. Once completed, click Finish to exit the setup wizard.
 
@@ -160,14 +160,14 @@ To connect Power BI to the on-premises PostgreSQL interface via the data gateway
     <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/config_gateway_04.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
     
     
-5. On the New Connection screen with On-premises selected, complete or verify the following fields. Most fields are already filled in.
+5. A New Connection screen will appear, here ensure On-premises is selected and complete the following fields(some fields are pre-configured):
     
     <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/config_gateway_05.png" 
         alt="DPH" 
-        style="width:40rem; height:auto; border: 1px solid black;" />
+        style="width:25rem; height:15%; border: 1px solid black;" />
 
         
-6. In the New Connection screen, ensure On-premises is selected and complete the following fields(some fields are pre-configured):
+6. Complete the following fields(some fields are pre-configured):
 
     - **Gateway Cluster Name**: Enter or verify the configured gateway name.
     - **Connection Name**: Provide a descriptive name (e.g., `productaffinity-testing`).
@@ -180,7 +180,8 @@ To connect Power BI to the on-premises PostgreSQL interface via the data gateway
 <aside class="callout">
 💡 To retrieve your API Key and Username, click your profile icon in the Data Product Hub interface and select 'Profile'. Then, navigate to the Tokens section. Click the eye icon to reveal and copy your API Key. Your Username is your User ID.
 
-<img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/apikey.png" alt="API Key" />
+<img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/apikey.png" alt="API Key" width="800" height="400" />
+
 
 </aside>
 
@@ -194,7 +195,7 @@ After filling out the required fields, click Add to create the connection.
     
     <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/config_gateway_08.png" alt="DPH" style="width:40rem; border: 1px solid black;" />   
     
-### **Supported data types**
+## Supported data types
 
 | **Category** | **Data Types** | **Support Status** |
 | --- | --- | --- |
@@ -203,7 +204,7 @@ After filling out the required fields, click Add to create the connection.
 | **Measure** | `count_distinct_approx` | Not Supported |
 | **Rolling Window** | - | Not Supported (Power BI doesn’t support) |
 
-### **Important considerations**
+## Important considerations
 
 - In Power BI, measures typically have an 'm_' prefix to indicate they represent a measure. For example, a measure calculating total revenue might be named `m_total_revenue`.
 - The connection is live, meaning any changes to the underlying data will be reflected in Power BI.
@@ -211,17 +212,17 @@ After filling out the required fields, click Add to create the connection.
 - Power BI fails to handle special characters (e.g.,) when generating queries through the synced semantic model, causing errors in visualizations. Thus, it is best practice to address or remove special characters directly in the data itself.
 - Power BI's Direct Query mode does not support creating custom dimensions and measures or querying the rolling window measure due to the lack of date hierarchy.
 
-### **Best practices**
+## Best practices
 
 Adhering to best practices ensures that you effectively utilize the Data Product Hub and maintain compatibility with the latest features and updates. Following these guidelines will help optimize workflow, enhance performance, and prevent potential issues.
 
-#### **File handling**
+### **File handling**
 
 Ensure that `.pbip` folders are fully extracted before opening them. Failure to do so may result in missing file errors, as shown below:
 
 <img src="/resources/lens/bi_integration/image.png" alt="DPH" style="width:15rem; border: 1px solid black;" />
 
-#### **Data retrieval and field selection considerations**
+### **Data retrieval and field selection considerations**
 
 It is important to select fields from tables that are directly related or logically joined, as the system does not automatically identify relationships between tables through transitive joins. Selecting fields from unrelated tables may result in incorrect or incomplete results.
 

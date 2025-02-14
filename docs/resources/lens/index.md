@@ -36,7 +36,7 @@ Lens  is engineered to handle complex and large-scale data models with ease. Key
 
 - **Structured YAML templates:** Lens provides standardized, easy-to-customize YAML templates. These templates streamline the creation of Lens YAML files, ensuring consistency across models and reducing manual effort. They offer an efficient way to define tables, views, dimensions, measures, joins, and segments, allowing you to quickly set up and modify your data models with minimal hassle.
 
-- **Local Development environment for model inspection and validation:** Lens features a [local development environment](/resources/lens/optimizing_lens_testing_in_local_development/) that supports real-time inspection and validation of models. This minimizes delays caused by SQL syntax errors, and the inclusion of a web app for model inspection allows issues to be identified and resolved before deployment.
+<!-- - **Local Development environment for model inspection and validation:** Lens features a [local development environment](/resources/lens/optimizing_lens_testing_in_local_development/) that supports real-time inspection and validation of models. This minimizes delays caused by SQL syntax errors, and the inclusion of a web app for model inspection allows issues to be identified and resolved before deployment. -->
 
 - **Segments:** [Segments](/resources/lens/working_with_segments/) are predefined filters that enable the definition of complex filtering logic in SQL. They allow you to create specific subsets of data, such as users from a particular city, which can be reused across different queries and reports. This feature helps streamline the data exploration process by simplifying the creation of reusable filters.
 
@@ -50,15 +50,15 @@ Lens  is engineered to handle complex and large-scale data models with ease. Key
 
 ## How to build Lens?
 
-The process begins with creating a new Lens project and generating a data model. Once the model is prepared, it will be tested within the development environment to ensure it is error-free before deployment. 
+The process begins with creating a new Lens project and generating a semantic model.
 
-#### **Lens model folder set-up**
+### **Lens model folder set-up**
 
 The initial step involves setting up the folder structure for your Lens project. [This section](/resources/lens/lens_model_folder_setup/) will guide you through organizing your project files, including the model configuration files and necessary resources, in a structured and maintainable way.
 
-#### **Develop Lens within DataOS**
+### **Develop Lens within DataOS**
 
-[This section](/resources/lens/lens_deployment/) involves the step-by-step guide on building and deploying Lens models within the DataOS environment. You will learn how to use Lens to generate and deploy data models, making sure they integrate seamlessly with the broader DataOS ecosystem.
+[This section](/resources/lens/lens_deployment/) involves the step-by-step guide on building and deploying Lens models within the DataOS environment. You will learn how to use Lens to generate and deploy semantic models, making sure they integrate seamlessly with the broader DataOS ecosystem.
 
 ## Configurations
 
@@ -67,8 +67,8 @@ Lens can be configured to connect to different sources using data source attribu
 - [Configuration Fields of the Deployment Manifest File (YAML) for Lens Resource](/resources/lens/lens_manifest_attributes/)
     Understand the various configuration fields available in the deployment manifest file for Lens resources.
 
-- [Configuration Fields of the Docker Compose File](/resources/lens/docker_compose_manifest_attributes/)
-    Review the configuration fields and settings in the Docker Compose file for orchestrating multi-container applications.
+<!-- - [Configuration Fields of the Docker Compose File](/resources/lens/docker_compose_manifest_attributes/)
+    Review the configuration fields and settings in the Docker Compose file for orchestrating multi-container applications. -->
 
 
 <aside class="callout">
