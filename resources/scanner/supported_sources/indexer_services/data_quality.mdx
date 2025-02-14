@@ -1,7 +1,7 @@
 ---
 title: "Scanner for Quality Checks"
 sidebarTitle: "Quality Checks"
-description:"This section provides a guide and reference for using the Scanner for quality checks and metrics matadata."
+description: "This section provides a guide and reference for using the Scanner for quality checks and metrics matadata."
 ---
 
 ## Scanner for Data quality
@@ -39,6 +39,7 @@ worker:
     worker: data_quality_indexer
 
 ```
+
 <Note>
   User can view the list of SLOs created for the dataset to monitor the data quality and trend charts for each run. The trend charts also show whether the checks are passed or failed.
 </Note>
@@ -109,12 +110,12 @@ If the Depot or Scanner configurations are updated, the Scanner must be redeploy
   ```
 </CodeGroup>
 
-
 ### Data Quality vs Soda Quality
 
 Data quality and Soda quality are related but distinct concepts in the context of data validation and quality checks.
 
-- **Data Quality**: Refers to the overall quality of a dataset, including its accuracy, completeness, consistency, and reliability. DataOS allows you to define your own assertions with a combination of tests to check the rules for data quality.
-- **Soda Quality**: Specifically refers to the quality checks performed using the Soda Checks Language (SodaCL) and the SODA quality check platform. SodaCL enables you to turn user-defined inputs into aggregated SQL queries, allowing for complex user-defined checks with granular control over fail and warn states.
+* **Data Quality**: Refers to the overall quality of a dataset, including its accuracy, completeness, consistency, and reliability. DataOS allows you to define your own assertions with a combination of tests to check the rules for data quality.
+
+* **Soda Quality**: Specifically refers to the quality checks performed using the Soda Checks Language (SodaCL) and the SODA quality check platform. SodaCL enables you to turn user-defined inputs into aggregated SQL queries, allowing for complex user-defined checks with granular control over fail and warn states.
 
 In other words, data quality is a broader concept that encompasses various aspects of data quality, while Soda quality is a specific implementation of data quality checks using the Soda platform.
