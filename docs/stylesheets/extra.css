@@ -3664,7 +3664,7 @@ html .md-footer-meta.md-typeset a:hover {
     position: -webkit-sticky;
     position: sticky;
     top: 2.4rem;
-    width: 12.1rem
+    width: 20rem
 }
 
 @media print {
