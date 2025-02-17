@@ -44,42 +44,47 @@ Ensure that appropriate access permissions are available to execute this command
 If the Flash Stack is listed, proceed to the [next step](/resources/stacks/flash/flash_service/#create-a-flash-service-manifest-file). If not, deploy a new Stack using the following manifest and the DataOS CLI:
 
 ```yaml
-name: "flash-v1"
+name: "flash-v2"
 version: v1alpha
 type: stack
 layer: user
-description: "flash stack version 1"
+description: "flash stack version 2"
 stack:
   name: flash
-  version: "1.0"
+  version: "2.0"
   flavor: "python"
   reconciler: "stackManager"
   dataOsAddressJqFilters:
-    - .datasets[].address
+    - .datasets[] | select(type == "object") | [.address, .depot] | map(select(. != null)) | .[]
   secretProjection:
     type: "propFile"
   image:
     registry: docker.io
     repository: rubiklabs
     image: flash
-    tag: 0.0.36
+    tag: 0.0.41
     auth:
       imagePullSecret: dataos-container-registry
   environmentVars:
+    DUCKDB_EXTENSIONS_PATH: /src/extensions
     CONFIG_FILE_PATH: /etc/dataos/config/serviceconfig.yaml
-    INIT_SQLS: "set azure_transport_option_type = 'curl'"
-    OFFICIAL_DUCKDB_EXTENSIONS: httpfs,aws,azure,iceberg
+    # This can be set from Service Yaml, no need to define here.
+    # FLASH_CONFIG_INIT_SQL: "set azure_transport_option_type = 'curl'"
+    # OFFICIAL_DUCKDB_EXTENSIONS: httpfs,aws,azure,iceberg
     PG_HOST: 0.0.0.0
     PG_PORT: 5433
     FLASH_DB_FILE_PATH: /var/dataos/temp_data/duckdb/main.duckdb
+    FLASH_AUTH_MODE: token
+    PROMETHEUS_URL: http://thanos-query-frontend.sentinel.svc.cluster.local:9090
+    DEV_MODE: 'true'
   command:
     - python
   arguments:
     - -m
-    - buenavista.examples.duckdb_postgres
+    - flash.main.duckdb_postgres # change examples to MAIN
   stackSpecValueSchema:
     jsonSchema: |
-      { "$schema": "http://json-schema.org/draft-04/schema#", "type": "object", "properties": { "datasets": { "type": "array", "items": { "type": "object", "properties": { "address": { "type": "string" }, "name": { "type": "string" } }, "required": [ "address", "name" ] } }, "init": { "type": "array", "items": { "type": "string" } }, "schedule": { "type": "array", "items": { "type": "object", "properties": { "expression": { "type": "string" }, "sql": { "type": "string" } }, "required": [ "sql", "expression" ] } } }, "required": [ "datasets" ] }
+      { "$schema": "http://json-schema.org/draft-04/schema#", "type": "object", "properties": { "datasets": { "type": "array", "items": { "type": "object", "properties": { "name": { "type": "string" }, "address": { "type": "string" }, "depot": { "type": "string" }, "meta": { "type": "object", "additionalProperties": true }, "sql": { "type": "string" }, "refresh": { "type": "object", "properties": { "expression": { "type": "string" }, "sql": { "type": "string" }, "where": { "type": "string" } }, "required": [ "expression" ] } }, "required": [ "name" ] } }, "init": { "type": "array", "items": { "type": "string" } }, "schedule": { "type": "array", "items": { "type": "object", "properties": { "expression": { "type": "string" }, "sql": { "type": "string" } }, "required": [ "expression", "sql" ] } } }}
   serviceConfig:
     configFileTemplate: |
       serviceconfig.yaml: |
