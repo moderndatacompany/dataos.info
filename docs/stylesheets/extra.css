@@ -2038,7 +2038,7 @@ html .md-footer-meta.md-typeset a:hover {
 
 .md-nav__list {
     list-style: none;
-    margin: auto;
+    margin: 0;
     padding: 0
 }
 
@@ -2129,7 +2129,7 @@ html .md-footer-meta.md-typeset a:hover {
     height: 100%;
     -webkit-mask-image: var(--md-toc-icon);
     mask-image: var(--md-toc-icon);
-    width: auto
+    width: 100%
 }
 
 .md-nav--primary .md-nav__link[for=__toc]~.md-nav {
@@ -2545,7 +2545,7 @@ html .md-footer-meta.md-typeset a:hover {
     }
 
     .md-nav--lifted>.md-nav__list>.md-nav__item--active {
-        display: inline-block;
+        display: block;
         padding: 0
     }
 
@@ -3657,16 +3657,14 @@ html .md-footer-meta.md-typeset a:hover {
     background-color: var(--md-default-fg-color--lightest)
 }
 
-/* changed default width from 12.1 to 14 rem */
 .md-sidebar {
-    align-self: auto;
-    flex-grow: 1;
+    align-self: flex-start;
     flex-shrink: 0;
     padding: 1.2rem 0;
     position: -webkit-sticky;
-    position: relative;
+    position: sticky;
     top: 2.4rem;
-    width: fit-content; /* Increase width */
+    width: 12.1rem
 }
 
 @media print {
