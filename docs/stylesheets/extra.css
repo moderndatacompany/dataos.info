@@ -3657,14 +3657,16 @@ html .md-footer-meta.md-typeset a:hover {
     background-color: var(--md-default-fg-color--lightest)
 }
 
+/* changed default width from 12.1 to 14 rem */
 .md-sidebar {
     align-self: flex-start;
-    flex-shrink: 0;
+    flex-grow: 1;
+    /* flex-shrink: 0; */
     padding: 1.2rem 0;
     position: -webkit-sticky;
     position: sticky;
     top: 2.4rem;
-    width: 12.1rem
+    width: auto
 }
 
 @media print {
