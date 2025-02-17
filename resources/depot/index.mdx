@@ -3080,8 +3080,7 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
     For better understanding of the data, a user can query the data directly on Workbench without moving the data by creating a Cluster Resource.
 
     **For example:**
-
-    The below manifest file defines a Minerva-based Cluster Resource, `minervabq`, for querying data within DataOS. It specifies a `query-default` compute environment and configures Minerva-specific settings, including a single replica with resource allocations of 2 CPU cores (2000m) and 4Gi memory for both limits and requests. Debug settings define `INFO` log level for general logs and `ERROR` for Trino logs, ensuring controlled verbosity. The Cluster is linked to a Depot at `dataos://depotbq`, allowing seamless access to data stored in that location for querying and processing.
+    A user wants to query data from the `bqdepot` Depot on Workbench, so they create a Cluster named `minervabq` targeting `bqdepot.`The below manifest file defines a Minerva-based Cluster Resource, `minervabq`, for querying data within DataOS. It specifies a `query-default` compute environment and configures Minerva-specific settings, including a single replica with resource allocations of 2 CPU cores (2000m) and 4Gi memory for both limits and requests. Debug settings define `INFO` log level for general logs and `ERROR` for Trino logs, ensuring controlled verbosity. The Cluster is linked to a Depot at `dataos://depotbq`, allowing seamless access to data stored in that location for querying and processing.
 
     ```yaml
     # Resource meta section
@@ -3119,8 +3118,7 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
     For enhancing the query performance, a user can cache the data using Flash Stack.
 
     **For example:**
-
-    The below manifest file defines a DataOS service named `flashtest`, built on the `flash+python:2.0` Stack. The Service caches a dataset named `city`, stored in `dataos://lakehouse:retail/city`, and initializes a table `mycity` by selecting data from `retail.city`.
+    A user wants to reduce the time it takes to get query results, so they cache the dataset in the lakehouse Depot using Flash Service. This ensures faster query results whenever the dataset is queried. The below manifest file defines a Service named `flashtest`. The Service caches a dataset named `city`, stored in `dataos://lakehouse:retail/city`, and initializes a table `mycity` by selecting data from `retail.city`.
 
     ```yaml
     name: flashtest
@@ -3174,8 +3172,10 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
     A Depot plays a fundamental role in Data Product development, a Data Product can be created directly from the source Depot or from the lakehouse (Lakehouse) Depot.
 
     **For example:**
+    A large enterprise’s procurement team uses the Vendor Data Insights Data Product to streamline compliance audits and vendor management. By leveraging insights on incorporation details, DBE status, and engagement metrics, they can quickly identify high-risk vendors with missing or outdated registration documents. The Data Product enables automated compliance reports, reducing manual effort, and helps procurement teams filter DBE-certified vendors to meet regulatory requirements. Additionally, vendor insights are exposed via APIs, allowing integration with risk assessment dashboards for real-time monitoring. This ensures better decision-making, improved vendor tracking, and seamless regulatory compliance.
 
-    The below  manifest file defines the deployment of the `vendor-data-insights` Data Product, categorized under `Vendor Management` with a `Bronze` tier. It provides insights into vendor data, including incorporation details, DBE status, and contact attributes, supporting reporting, tracking, and vendor engagement analysis. The Data Product ingests information from various sources within `operationaldb`, including organizations, categories, vendors, certifications, and user data. The processed insights are stored in `operationlake:analytics:vendor_data_insights`. Additionally, it exposes service endpoints through `Lens` and `Talos` for querying vendor insights and API access.
+
+    The below  manifest file defines the deployment of the `vendor-data-insights` Data Product, categorized under `Vendor Management` with a `Bronze` tier. The Data Product ingests information from various sources within `operationaldb`, including organizations, categories, vendors, certifications, and user data. The processed insights are stored in `operationlake:analytics:vendor_data_insights`. Additionally, it exposes service endpoints through `Lens` and `Talos` for querying vendor insights and API access.
 
     ```yaml
     name: vendor-data-insights
@@ -3280,9 +3280,13 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
   </Accordion>
 
   <Accordion title="Depot as Lakehouse" defaultOpen={false}>
-    Whenever a user ingests the data, it gets stored in the DataOS Lakehouse Depot. To know more about the Lakehouse, please refer to this link.
+    Whenever a user ingests the data, it gets stored in the DataOS Lakehouse. To know more about the Lakehouse, please refer to this link.
 
     **For example:**
+
+    A company in the e-commerce sector looking to analyze user behavior data across multiple platforms. The company collects large volumes of raw, unstructured user interaction data (clicks, browsing history, and purchase patterns) in a data lake. However, the marketing team requires structured, real-time insights for personalized advertising and targeting. To meet this need, the company implements the DataOS Lakehouse. They store the raw data in a cloud-based object storage system like AWS S3, but instead of working directly with the unstructured data, the team uses Apache Iceberg as a unified data format that allows both structured and unstructured data to be queried efficiently. The data is structured through a metastore, which ensures consistency and fast access for analysis. The team can now run complex queries and data processing pipelines for machine learning models to predict future customer behavior, while still being able to handle large-scale data storage and data processing in a scalable, efficient manner. This setup allows the business to have real-time analytics and long-term insights from the same data store.
+
+
     The below manifest file defines the `alphaomega` Lakehouse, which operates on the `Iceberg` format and is hosted on `Azure`. The storage layer is managed through an `S3`-based lakehouse Depot, utilizing the `dataos-lakehouse` bucket with a relative path of `/test`. Access control is configured via secrets for read (`alphaomega-r`) and read-write (`alphaomega-rw`) permissions. The Lakehouse employs an `Iceberg REST Catalog` as its metastore for data management and utilizes `Themis` as the query engine.
 
     ```yaml
@@ -3334,6 +3338,7 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
     After creating the Depot, a user can run a Scanner Workflow for Depot to extract the metadata which later can be accessed on Metis UI. To know more about Scanner, please refer to this.
 
     **For example:**
+    A user have created a Depot now he wants to add the meta data related to the data present in that Depot to Metis UI so that anyone can understand what the data have what kind of use cases we can solve with that, for which he created a Scanner workflow targetting the Depot which extracts all the meta data and register it to the Metis UI.
 
     The below manifest file defines the `wf-postgres-depot` Workflow, designed to scan schema tables from a `PostgreSQL`-based Depot and register the extracted data into `Metis2`. It operates under the `scanner:2.0` Stack with Compute Resources managed by `runnable-default` and runs as the `metis` user. The Workflow is tagged as `postgres-depot` and `scanner`, indicating its role in schema discovery. The configuration includes a `depot` specification (`postgresdepot`) and placeholders for source configurations that allow filtering of databases, schemas, and tables based on inclusion and exclusion patterns.
 
@@ -3388,7 +3393,13 @@ This section involves do's and don'ts for managing a Depot.
 
 * As an operator, always assign a use-case to a user instead of directly assigning a tag, as assigning a use-case gives only specific permissions.
 
-* Give your Depot a meaningful name that represents its purpose.**Example:**&#x54;his makes it easier to manage and identify Depots.
+* Give your Depot a meaningful name that represents its purpose.
+
+
+
+
+
+  **Example:** This makes it easier to manage and identify Depots.
 
   * ✅ `s3depot` instead of ❌ `s3-1`
 
