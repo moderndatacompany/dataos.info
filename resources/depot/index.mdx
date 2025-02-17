@@ -3174,7 +3174,6 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
     **For example:**
     A large enterprise’s procurement team uses the Vendor Data Insights Data Product to streamline compliance audits and vendor management. By leveraging insights on incorporation details, DBE status, and engagement metrics, they can quickly identify high-risk vendors with missing or outdated registration documents. The Data Product enables automated compliance reports, reducing manual effort, and helps procurement teams filter DBE-certified vendors to meet regulatory requirements. Additionally, vendor insights are exposed via APIs, allowing integration with risk assessment dashboards for real-time monitoring. This ensures better decision-making, improved vendor tracking, and seamless regulatory compliance.
 
-
     The below  manifest file defines the deployment of the `vendor-data-insights` Data Product, categorized under `Vendor Management` with a `Bronze` tier. The Data Product ingests information from various sources within `operationaldb`, including organizations, categories, vendors, certifications, and user data. The processed insights are stored in `operationlake:analytics:vendor_data_insights`. Additionally, it exposes service endpoints through `Lens` and `Talos` for querying vendor insights and API access.
 
     ```yaml
@@ -3286,7 +3285,6 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
 
     A company in the e-commerce sector looking to analyze user behavior data across multiple platforms. The company collects large volumes of raw, unstructured user interaction data (clicks, browsing history, and purchase patterns) in a data lake. However, the marketing team requires structured, real-time insights for personalized advertising and targeting. To meet this need, the company implements the DataOS Lakehouse. They store the raw data in a cloud-based object storage system like AWS S3, but instead of working directly with the unstructured data, the team uses Apache Iceberg as a unified data format that allows both structured and unstructured data to be queried efficiently. The data is structured through a metastore, which ensures consistency and fast access for analysis. The team can now run complex queries and data processing pipelines for machine learning models to predict future customer behavior, while still being able to handle large-scale data storage and data processing in a scalable, efficient manner. This setup allows the business to have real-time analytics and long-term insights from the same data store.
 
-
     The below manifest file defines the `alphaomega` Lakehouse, which operates on the `Iceberg` format and is hosted on `Azure`. The storage layer is managed through an `S3`-based lakehouse Depot, utilizing the `dataos-lakehouse` bucket with a relative path of `/test`. Access control is configured via secrets for read (`alphaomega-r`) and read-write (`alphaomega-rw`) permissions. The Lakehouse employs an `Iceberg REST Catalog` as its metastore for data management and utilizes `Themis` as the query engine.
 
     ```yaml
@@ -3391,7 +3389,7 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
 
 This section involves do's and don'ts for managing a Depot.
 
-* As an operator, always assign a use-case to a user instead of directly assigning a tag, as assigning a use-case gives only specific permissions.
+* As an operator, always assign a use-case to a user instead of directly assigning a tag, as assigning a use-case gives only specific permissions. You can find more information on assigning a user a use case [here](/resources/depot/governance/).
 
 * Give your Depot a meaningful name that represents its purpose.
 
