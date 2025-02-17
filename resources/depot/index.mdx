@@ -239,7 +239,7 @@ This section involves steps for creating a Depot for different data sources supp
         icebergCatalogType: Hive
     ```
 
-    If you do not mention the catalog name as Hive, it will use Hadoop as the default catalog for Iceberg format. Hive automatically keeps the pointer updated to the latest metadata version. If you use Hadoop, you have to manually do this by running the set metadata command as described on this page: [Set Metadata](https://dataos.info/resources/depot/icebase/).
+    If you do not mention the catalog name as Hive, it will use Hadoop as the default catalog for Iceberg format. Hive automatically keeps the pointer updated to the latest metadata version. If you use Hadoop, you have to manually do this by running the set metadata command as described on this page: [Set Metadata](https://dataos.info/resources/depot/lakehouse/).
   </Accordion>
 
   <Accordion title="Amazon Redshift" defaultOpen={false}>
@@ -2994,9 +2994,9 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
                     logLevel: INFO
                     outputs:
                       - name: transformed_data
-                        dataset: dataos://icebase:promo_effectiveness/vendor_subscription_insight?acl=rw
+                        dataset: dataos://lakehouse:promo_effectiveness/vendor_subscription_insight?acl=rw
                         format: Iceberg
-                        description: The job is to ingest vendor data from S3 into Icebase.
+                        description: The job is to ingest vendor data from S3 into lakehouse.
                         tags:
                           - vendor.insights
                         options:
@@ -3120,7 +3120,7 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
 
     **For example:**
 
-    The below manifest file defines a DataOS service named `flashtest`, built on the `flash+python:2.0` Stack. The Service caches a dataset named `city`, stored in `dataos://icebase:retail/city`, and initializes a table `mycity` by selecting data from `retail.city`.
+    The below manifest file defines a DataOS service named `flashtest`, built on the `flash+python:2.0` Stack. The Service caches a dataset named `city`, stored in `dataos://lakehouse:retail/city`, and initializes a table `mycity` by selecting data from `retail.city`.
 
     ```yaml
     name: flashtest
@@ -3155,7 +3155,7 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
     # Datasets
         datasets:
           - name: city
-            address: dataos://icebase:retail/city
+            address: dataos://lakehouse:retail/city
 
         init:
           - create table mycity as (select * from retail.city)
@@ -3171,7 +3171,7 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
   </Accordion>
 
   <Accordion title="Building Data Products" defaultOpen={false}>
-    A Depot plays a fundamental role in Data Product development, a Data Product can be created directly from the source Depot or from the Icebase (Lakehouse) Depot.
+    A Depot plays a fundamental role in Data Product development, a Data Product can be created directly from the source Depot or from the lakehouse (Lakehouse) Depot.
 
     **For example:**
 
@@ -3197,7 +3197,7 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
     # External references and documentation
     refs:
      - title: 'Vendor Data Management Info'
-       href: https://proud-cobra.dataos.app/metis/assets/table/icebase.icebase.promo_effectiveness.vendor_subscription_insights
+       href: https://proud-cobra.dataos.app/metis/assets/table/lakehouse.lakehouse.promo_effectiveness.vendor_subscription_insights
 
     # Main product configuration
     v1beta:
@@ -3228,7 +3228,7 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
        inputs:
          # Vendor database sources
         #  - refType: dataos
-        #    ref: dataset:icebase:promo_effectiveness:vendor_subscription_insights
+        #    ref: dataset:lakehouse:promo_effectiveness:vendor_subscription_insights
 
          - refType: dataos
            ref: dataset:operationaldb:public:organization
@@ -3283,7 +3283,7 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
     Whenever a user ingests the data, it gets stored in the DataOS Lakehouse Depot. To know more about the Lakehouse, please refer to this link.
 
     **For example:**
-    The below manifest file defines the `alphaomega` Lakehouse, which operates on the `Iceberg` format and is hosted on `Azure`. The storage layer is managed through an `S3`-based Icebase Depot, utilizing the `dataos-lakehouse` bucket with a relative path of `/test`. Access control is configured via secrets for read (`alphaomega-r`) and read-write (`alphaomega-rw`) permissions. The Lakehouse employs an `Iceberg REST Catalog` as its metastore for data management and utilizes `Themis` as the query engine.
+    The below manifest file defines the `alphaomega` Lakehouse, which operates on the `Iceberg` format and is hosted on `Azure`. The storage layer is managed through an `S3`-based lakehouse Depot, utilizing the `dataos-lakehouse` bucket with a relative path of `/test`. Access control is configured via secrets for read (`alphaomega-r`) and read-write (`alphaomega-rw`) permissions. The Lakehouse employs an `Iceberg REST Catalog` as its metastore for data management and utilizes `Themis` as the query engine.
 
     ```yaml
     # Resource-meta section 
@@ -3293,7 +3293,7 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
     tags:
       - Iceberg
       - Azure
-    description: Icebase depot of storage-type S3
+    description: lakehouse depot of storage-type S3
     owner: iamgroot
     layer: user
 
