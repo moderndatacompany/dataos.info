@@ -2038,8 +2038,8 @@ html .md-footer-meta.md-typeset a:hover {
 
 .md-nav__list {
     list-style: none;
-    margin: 0;
-    padding: 0
+    margin: auto;
+    padding: auto
 }
 
 .md-nav__item {
