@@ -3389,7 +3389,7 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
 
 This section involves do's and don'ts for managing a Depot.
 
-* As an operator, always assign a use-case to a user instead of directly assigning a tag, as assigning a use-case gives only specific permissions. You can find more information on assigning a user a use case [here](/resources/depot/governance/).
+* As an operator, always assign a use-case to a user instead of directly assigning a tag, as assigning a use-case gives only specific permissions. You can find more information on assigning a user a use-case [here](/resources/depot/governance/).
 
 * Give your Depot a meaningful name that represents its purpose.
 
@@ -3399,9 +3399,9 @@ This section involves do's and don'ts for managing a Depot.
 
   **Example:** This makes it easier to manage and identify Depots.
 
-  * ✅ `s3depot` instead of ❌ `s3-1`
+  * ✅ `s3depot` instead of ❌ `s3-1`, as by `s3depot` it is easily interpretable that this depot is establishing the connection with Amazon S3 source.
 
-  * ✅ `dbmysql` instead of ❌ `db1`
+  * ✅ `dbmysql` instead of ❌ `db1`, by `dbmysql` it is clear that the depot is establishing the connection with MySQL database making it clear.
 
 * Avoid creating a Depot with inline credentials, always create an Instance Secret.
 
@@ -3460,6 +3460,6 @@ The catalog of data sources accessible by one or more components within DataOS i
   </Accordion>
 
   <Accordion title="8. Is there any way to know which Resources are using a Depot?" defaultOpen={false}>
-    Currently, there no direct way to know that.
+    Currently, there is no direct way to know that.
   </Accordion>
 </AccordionGroup>
