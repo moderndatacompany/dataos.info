@@ -3659,14 +3659,14 @@ html .md-footer-meta.md-typeset a:hover {
 
 /* changed default width from 12.1 to 14 rem */
 .md-sidebar {
-    align-self: flex-start;
+    align-self: auto;
     flex-grow: 1;
-    /* flex-shrink: 0; */
+    flex-shrink: 0;
     padding: 1.2rem 0;
     position: -webkit-sticky;
-    position: sticky;
+    position: relative;
     top: 2.4rem;
-    width: auto
+    width: fit-content; /* Increase width */
 }
 
 @media print {
