@@ -21,8 +21,9 @@
 === "Example"
 
     ```yaml title="add_column.yaml" hl_lines="51-55"
-     --8<-- "examples/resources/stacks/flare/functions/add_column.yaml"
+    --8<--  "examples/resources/stacks/flare/functions/add_column.yaml"
     ```
+
     Output
 
     ```shell
@@ -58,9 +59,10 @@
     ```
 === "Example"
 
-    ```yaml
-      --8<-- "examples/resources/stacks/flare/functions/any_date.yaml"               
+    ```yaml title="any_date.yaml" hl_lines="51-56"
+      --8<--  "examples/resources/stacks/flare/functions/any_date.yaml"
     ```
+
     Output
 
     ```shell
@@ -181,7 +183,7 @@
 === "Example"
 
     ```yaml title="change_column_case.yaml" hl_lines="51-53"
-      --8<-- "examples/resources/stacks/flare/functions/change_column_case.yaml"
+      --8<--  "examples/resources/stacks/flare/functions/change_column_case.yaml"
     ```
 
     Output
@@ -213,7 +215,7 @@
 === "Example"
 
     ```yaml title="cleanse_column_names" hl_lines="51-54"
-      --8<-- "examples/resources/stacks/flare/functions/cleanse_column_names.yaml"
+    --8<--  "examples/resources/stacks/flare/functions/cleanse_column_names.yaml"
     ```
 
     Before
@@ -257,7 +259,7 @@
 === "Example"
 
     ```yaml title="columns_replace.yaml" hl_lines="52-54"
-      --8<-- "examples/resources/stacks/flare/functions/columns_replace.yaml"
+    --8<--  "examples/resources/stacks/flare/functions/columns_replace.yaml"
     ```
     Before
 
@@ -300,7 +302,7 @@
 === "Example"
 
     ```yaml title="copy.yaml" hl_lines="51-54"
-      --8<-- "examples/resources/stacks/flare/functions/copy.yaml"
+    --8<--  "examples/resources/stacks/flare/functions/copy.yaml"
     ```
     Before
 
@@ -345,9 +347,10 @@
     ```
 === "Example"
 
-    ```yaml
-     --8<-- "examples/resources/stacks/flare/functions/cut_character.yaml"                         
+    ```yaml title="cut_character.yaml" hl_lines="51-56"
+      --8<--  "examples/resources/stacks/flare/functions/cut_character.yaml"
     ```
+
     Output
 
     ```shell
@@ -380,7 +383,7 @@
 === "Example"
 
     ```yaml title="decode.yaml" hl_lines="51-55"
-      --8<-- "examples/resources/stacks/flare/functions/decode.yaml"
+    --8<--  "examples/resources/stacks/flare/functions/decode.yaml"
     ```
     Before
 
@@ -424,7 +427,7 @@
 ===  "Example"
 
     ```yaml title="diff_date.yaml" hl_lines="51-55"
-      --8<-- "examples/resources/stacks/flare/functions/diff_date.yaml"
+    --8<-- "examples/resources/stacks/flare/functions/diff_date.yaml"
     ```
     Output
 
@@ -458,7 +461,7 @@
 === "Example"
 
     ```yaml title="drop.yaml" hl_lines="51-55"
-      --8<-- "examples/resources/stacks/flare/functions/drop.yaml"
+    --8<-- "examples/resources/stacks/flare/functions/drop.yaml"
     ```
     Before
 
@@ -502,7 +505,7 @@
 === "Exmaple"
 
     ```yaml title="drop_duplicates.yaml" hl_lines="51-55"
-      --8<-- "examples/resources/stacks/flare/functions/drop_duplicates.yaml"
+    --8<-- "examples/resources/stacks/flare/functions/drop_duplicates.yaml"
     ```
     Before
 
@@ -561,7 +564,7 @@
 === "Example"
 
     ```yaml title="encode.yaml" hl_lines="51-55"
-      --8<-- "examples/resources/stacks/flare/functions/encode.yaml"
+    --8<-- "examples/resources/stacks/flare/functions/encode.yaml"
     ``` 
     Before
 
@@ -604,7 +607,7 @@
 === "Example"
 
     ```yaml
-      --8<-- "examples/resources/stacks/flare/functions/epoch_to_timestamp.yaml"
+    --8<-- "examples/resources/stacks/flare/functions/epoch_to_timestamp.yaml"
     ```
     Output
 
@@ -638,7 +641,7 @@
 === "Example"
 
     ```yaml title="fill_null_or_empty.yaml" hl_lines="51-55"
-      --8<-- "examples/resources/stacks/flare/functions/fill_null_or_empty.yaml"
+    --8<-- "examples/resources/stacks/flare/functions/fill_null_or_empty.yaml"
     ```
 
     Before
@@ -683,7 +686,7 @@
 ===  "Example" 
 
     ```yaml title="find_and_replace.yaml" hl_lines="51-54"
-      --8<-- "examples/resources/stacks/flare/functions/find_and_replace.yaml"
+    --8<-- "examples/resources/stacks/flare/functions/find_and_replace.yaml"
     ```
     Before
 
@@ -731,7 +734,7 @@
 === "Example"
 
     ```yaml title="flatten.yaml" hl_lines="51-54"
-      --8<-- "examples/resources/stacks/flare/functions/flatten.yaml"
+    --8<-- "examples/resources/stacks/flare/functions/flatten.yaml"
     ```
     Output
 
@@ -770,7 +773,7 @@
 === "Example"
 
     ```yaml title="format_date.yaml" hl_lines="51-54"
-      --8<-- "examples/resources/stacks/flare/functions/format_date.yaml"
+    --8<-- "examples/resources/stacks/flare/functions/format_date.yaml"
     ```
 
     Before
@@ -814,7 +817,7 @@
 === "Example"
 
     ```yaml title="format_unix_date.yaml" hl_lines="51-54"
-      --8<-- "examples/resources/stacks/flare/functions/format_unix_date.yaml"
+    --8<--  "examples/resources/stacks/flare/functions/format_unix_date.yaml"
     ```
     Before:
 
@@ -856,7 +859,7 @@
 === "Example"  
 
     ```yaml title="generate_uuid.yaml" hl_lines="51-53"
-      --8<-- "examples/resources/stacks/flare/functions/generate_uuid.yaml"
+    --8<--  "examples/resources/stacks/flare/functions/generate_uuid.yaml"
     ```
     Output
 
@@ -889,7 +892,7 @@
 === "Example"
 
     ```yaml title="hash.yaml" hl_lines="51-54"
-      --8<-- "examples/resources/stacks/flare/functions/hash.yaml"
+    --8<--  "examples/resources/stacks/flare/functions/hash.yaml"
     ```
     Before:
 
@@ -949,7 +952,7 @@
 === "Example"
 
     ```yaml title="mask_number.yaml" hl_lines="51-54"
-      --8<-- "examples/resources/stacks/flare/functions/mask_number.yaml"
+    --8<--  "examples/resources/stacks/flare/functions/mask_number.yaml"
     ```
     Before:
 
@@ -995,7 +998,7 @@
 === "Example"
 
     ```yaml title="merge.yaml" hl_lines="51-57"
-      --8<-- "examples/resources/stacks/flare/functions/merge.yaml"
+    --8<--  "examples/resources/stacks/flare/functions/merge.yaml"
     ```
 
     ```shell
@@ -1073,7 +1076,7 @@
 === "Example"
 
     ```yaml title="pivot.yaml" hl_lines="51-62"
-      --8<-- "examples/resources/stacks/flare/functions/pivot.yaml"
+    --8<--  "examples/resources/stacks/flare/functions/pivot.yaml"
     ```
     Output
 
@@ -1140,7 +1143,7 @@
 === "Example"
 
     ```yaml title="rename_all.yaml" hl_lines="51-55"
-      --8<-- "examples/resources/stacks/flare/functions/rename_all.yaml"
+    --8<--  "examples/resources/stacks/flare/functions/rename_all.yaml"
     ```
     Before
 
@@ -1188,7 +1191,7 @@
 === "Example"
 
       ```yaml title="select.yaml" hl_lines="51-55"
-        --8<-- "examples/resources/stacks/flare/functions/select.yaml"
+      --8<--  "examples/resources/stacks/flare/functions/select.yaml"
       ```
       Output
 
@@ -1221,7 +1224,7 @@
 === "Example" 
 
     ```yaml title="set_column.yaml" hl_lines="51-54"
-      --8<-- "examples/resources/stacks/flare/functions/set_column.yaml"
+    --8<--  "examples/resources/stacks/flare/functions/set_column.yaml"
     ```
 </div>
 
@@ -1245,7 +1248,7 @@
 === "Example"
 
     ```yaml title="set_type.yaml" hl_lines="51-55"
-      --8<-- "examples/resources/stacks/flare/functions/set_type.yaml"
+    --8<--  "examples/resources/stacks/flare/functions/set_type.yaml"
     ```
     Before
 
@@ -1280,7 +1283,7 @@
 === "Example"
 
     ```yaml title="set_variable.yaml" hl_lines="51-54"
-      --8<-- "examples/resources/stacks/flare/functions/set_variable.yaml"
+    --8<--  "examples/resources/stacks/flare/functions/set_variable.yaml"
     ```
     Output
 
@@ -1311,7 +1314,7 @@
 === "Example"
 
     ```yaml title="snake_case.yaml" hl_lines="51-52"
-      --8<-- "examples/resources/stacks/flare/functions/snake_case.yaml"
+    --8<--  "examples/resources/stacks/flare/functions/snake_case.yaml"
     ```
     
     Before
@@ -1353,7 +1356,7 @@
 === "Example"
 
     ```yaml title="split_email.yaml" hl_lines="51-53"
-      --8<-- "examples/resources/stacks/flare/functions/split_email.yaml"
+    --8<--  "examples/resources/stacks/flare/functions/split_email.yaml"
     ```
 
     ```shell
@@ -1384,7 +1387,7 @@
 === "Example"
 
     ```yaml title="split_url.yaml" hl_lines="51-53"
-      --8<-- "examples/resources/stacks/flare/functions/split_url.yaml"
+    --8<--  "examples/resources/stacks/flare/functions/split_url.yaml"
     ```
 
     ```shell
@@ -1416,7 +1419,7 @@
 === "Example"
 
     ```yaml title="swap.yaml" hl_lines="51-54"
-      --8<-- "examples/resources/stacks/flare/functions/swap.yaml"
+    --8<--  "examples/resources/stacks/flare/functions/swap.yaml"
     ```
     Before
 
@@ -1486,9 +1489,10 @@
 
 === "Example"
 
-    ```yaml title="unfurl.yaml" hl_lines="51-55"
-      --8<-- "examples/resources/stacks/flare/functions/unfurl.yaml" 
+    ```yaml title="unfurl.yaml" hl_lines="51-54"
+    --8<--  "examples/resources/stacks/flare/functions/unfurl.yaml"
     ```
+
     Before
 
     ```shell
@@ -1540,7 +1544,7 @@
 === "Example"
 
     ```yaml title="unpivot.yaml" hl_lines="51-59"
-      --8<-- "examples/resources/stacks/flare/functions/unpivot.yaml"
+    --8<--  "examples/resources/stacks/flare/functions/unpivot.yaml"
     ```
     pivoted_column
 
