@@ -101,8 +101,6 @@ The table declaration involves the following attributes:
 
 The `joins` attribute is used to define relationships between multiple tables(entities), enabling users to access and compare fields from two or more entity tables at the same time.
 
-####
-
 Key characteristics of Joins:
 
 * **Join Type**: All joins are generated as `LEFT JOIN`. The entity that defines the join serves as the main table, while any entity referenced within the `joins` property is incorporated in the `LEFT JOIN` clause.
@@ -116,6 +114,18 @@ Key characteristics of Joins:
   * **FULL OUTER JOIN**: For simplicity in join modeling, full outer joins cannot be directly declared. However, they can be constructed using the SQL parameter within a Lens. These are often used for data blending or similar use cases. In such scenarios, creating a dedicated Lens specifically for the operation is recommended.
 
 There are three types of join relationships (one\_to\_one, one\_to\_many, and many\_to\_one) and a few other concepts.
+
+* **`one_to_one`**:
+
+  * This relationship means that each row in the declaring table corresponds to exactly one row in the joined table.
+
+* **`one_to_many`**:
+
+  * This indicates that one row in the declaring table can be linked to multiple rows in the joined table.
+
+* **`many_to_one`**:
+
+  * This is the reverse of a `one_to_many` relationship. In this case, multiple rows in the declaring table can match a single row in the joined table.
 
 **Attributes**
 
