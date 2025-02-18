@@ -8,7 +8,7 @@ description: "Comprehensive guide on best practices to configuring and optimizin
 
 Filter patterns help limit the scope of scanned data. By using specific patterns, user can avoid scanning unnecessary databases, schemas, or tables, improving performance and security.
 
-### ** Correct Approach**
+### **Correct Approach**
 
 ```yaml
 databaseFilterPattern: 
@@ -27,7 +27,7 @@ Overly broad patterns that match unintended databases.
 
 Wildcards (`.*`) at the end of filter patterns may match more than expected, leading to performance issues and unexpected results.
 
-### ** Correct Approach**
+### **Correct Approach**
 
 ```yaml
 databaseFilterPattern: 
@@ -47,7 +47,7 @@ This ensures that **only** the database **SNOWFLAKE** is included, preventing un
 
 To prevent unnecessary scanning of known irrelevant schemas or tables, use **excludes** to filter them out.
 
-### ** Correct Approach**
+### **Correct Approach**
 
 ```yaml
 schemaFilterPattern: 
@@ -77,7 +77,7 @@ tableFilterPattern:
 
 This configuration includes **all tables starting with "CUSTOMER"**, but exclusions of CUSTOMER\_JAN and CUSTOMER\_JAN table do not override inclusions, leading to unintended behavior.
 
-### ** Correct Approach 1: Use only `includes`**
+### **Correct Approach 1: Use only `includes`**
 
 ```yaml
 tableFilterPattern: 
@@ -85,7 +85,7 @@ tableFilterPattern:
     - ^CUSTOMER.*
 ```
 
-### ** Correct Approach 2: Use only `excludes`**
+### **Correct Approach 2: Use only `excludes`**
 
 ```yaml
 tableFilterPattern: 
