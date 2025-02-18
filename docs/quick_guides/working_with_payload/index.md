@@ -76,7 +76,7 @@ Before diving into working with payloads, it’s essential to know where you can
     
     ![payload_option_lensui.png](/quick_guides/working_with_payload/payload_option_lensui.png)
     
-5. **Working with Payloads**:This is where you can edit the JSON payload to customize it.
+5. **Working with Payloads**:This is where you can edit the filters to customize payload.
     
     ![json_payload_lensui.png](/quick_guides/working_with_payload/json_payload_lensui.png)
     
