@@ -4,9 +4,6 @@ sidebarTitle: "Concepts"
 description: "This document guides on how to create a semantic model using elements such as tables, views, segments, dimensions, and measures. "
 ---
 
-
-
-
 The data model in Lens transforms raw data into meaningful business definitions, optimizing it for analytical purposes. This model is exposed through a robust set of APIs, enabling end-users to run diverse analytical queries without modifying the underlying data model. Let’s take a sales table as an example, containing the following columns:
 
 `sales` Table
@@ -102,7 +99,21 @@ The table declaration involves the following attributes:
 
 ## Joins
 
-The join parameter can be used to define the relationship between two tables. The lens employs left join for all joins it generates. It's important to note that the table (referred to as the base table) in which the join is specified will always be positioned on the left side of the join.
+The `joins` attribute is used to define relationships between multiple tables(entities), enabling users to access and compare fields from two or more entity tables at the same time.
+
+####
+
+Key characteristics of Joins:
+
+* **Join Type**: All joins are generated as `LEFT JOIN`. The entity that defines the join serves as the main table, while any entity referenced within the `joins` property is incorporated in the `LEFT JOIN` clause.
+
+* **INNER JOIN Semantics:** INNER JOIN behavior can be achieved by applying additional filters, such as checking if a column value is NOT NULL. For instance, using a filter not null ensures this requirement is met.
+
+* **Unsupported Join Types**:
+
+  * **RIGHT OUTER JOIN**: To achieve RIGHT OUTER JOIN semantics, define the join from the other side of the relationship.
+
+  * **FULL OUTER JOIN**: For simplicity in join modeling, full outer joins cannot be directly declared. However, they can be constructed using the SQL parameter within a Lens. These are often used for data blending or similar use cases. In such scenarios, creating a dedicated Lens specifically for the operation is recommended.
 
 There are three types of join relationships (one\_to\_one, one\_to\_many, and many\_to\_one) and a few other concepts.
 
