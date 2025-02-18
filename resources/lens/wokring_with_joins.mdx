@@ -1,0 +1,101 @@
+---
+title: "Joins"
+description: "This page explains how to implement Transitive Joins and Many-to-Many Joins in data modeling, particularly in Lenses. It covers how to manage indirect relationships between entities, use bridge tables, and address issues like chasm and fan traps through primary key definitions."
+---
+
+## Transitive Joins
+
+Let’s say we have three entities: **Transaction**, **Product**, and **Customer**. Suppose you want to query a measure from the **Product** entity and slice and dice it with a dimension from the **Customer** entity. In that case, you will need to have either a direct or an associative relationship between both entities. Currently, there is no direct relationship between the **Customer** and **Product** entities.
+
+However, both **Customer** and **Product** entities have direct relationships with the **Transaction** entity. One way to establish a relationship between the **Customer** and **Product** entities is to define a **many-to-one relationship** within the **Transaction** entity with both the **Product** and **Customer** entities.
+
+**Pitfall**: Transitive joins can lead to errors or confusion if not correctly defined because the join path may not be direct and may require careful management of relationships.
+
+###
+
+## Many-to-many Joins
+
+There are two common scenarios where you would need to implement many-to-many joins:
+
+1. **Direct Many-to-Many Relationship**: When two tables have a many-to-many relationship, one row in one table can be related to multiple rows in another table, and vice versa. This can happen when columns in the tables contain non-unique values or the data inherently has multiple relationships.
+
+2. **No Direct Relationship with a Bridge Table**: When there is no direct common column between two tables, but you still want to establish a many-to-many relationship. In such cases, a **bridge table** (also called a junction table) is used to connect the two tables. This table holds shared columns that represent the many-to-many relationship.
+
+**Practical use-cases**:&#x20;
+
+* **Product Affinity**: Identifying which products are frequently bought together.
+
+* **Students and Classes**: Mapping which students are enrolled in which classes.
+
+* **Employees and Departments**: Connecting employees to the departments they work in.
+
+* **Patients and Prescriptions**: Mapping patients to their prescribed medications.
+
+A many-to-many relationship occurs when multiple records in a table are associated with multiple records in another table.
+
+For example, let's say we have two tables, `topics` and `posts`, pointing to the `topics` and `posts` tables respectively. A `post` can have more than one `topic`, and a `topic` may have more than one `post`.
+
+In such a case, you would most likely have an associative table (also known as a junction table or cross-reference table). In our example, this table name might be `post_topics`.
+
+Let’s understand how you can achieve a many-to-many relationship within Lenses
+
+We have three entities `Sales`, `Product Category,` and `Product`. Our goal is to see all products purchased within an order. As there is no direct relationship between `Sales` and `Product`, we cannot answer this question.
+
+But, we can answer,
+
+* How many categories were sold and,
+
+* All the products that belong to that category
+
+There is a relationship between the Sales and Product Category entity, as well as the Product Category and Product entity.
+
+So, how do we answer 'All products purchased within an order?'
+
+To answer it, we would need a junction table that can pave the path of the join for these two tables. For us, the `Product Category` table is the junction table that has a direct relationship with both tables. We cannot directly apply a cross-join in Lenses. But, we may do it indirectly by constructing an entity(Bridge table) that is Lens directly related to both of the other entities and then applying many to one transitive join between them.&#x20;
+
+<Tip>
+  The direction of the join will always be the transitive join.
+</Tip>
+
+## Setting a primary key
+
+For a join to work, it is necessary to define a `primary_key` as specified below. It is a requirement when a join is defined so that Lens can handle row multiplication issues such as chasm and fan traps.
+
+<Tip>
+  The example uses Postgres string concatenation; note that SQL may be different depending on your database.
+</Tip>
+
+```
+tables:
+  - name: customer
+    #...
+        
+    dimensions:   
+      - name: customer_id
+        type: number
+        column: customer_id
+        description: "The unique identifier for each customer."
+        primary_key: true
+        public: true
+
+```
+
+If you don't have a single column in the table that can act as a primary key, you can create a composite primary key as shown below.
+
+<Warning>
+  Setting `primary_key` to `true` will change the default value of the `public` parameter to `false`. If you still want `public` to be `true` — set it manually.
+</Warning>
+
+```
+table:
+  - name: users
+    #...
+    
+    
+    dimensions:
+      - name: id
+        sql: "CONCAT({CUBE}.customer_id, {CUBE}.order_id)"
+        type: number
+        primary_key: true
+      
+```
