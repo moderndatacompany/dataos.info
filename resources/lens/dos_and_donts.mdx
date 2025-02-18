@@ -1,7 +1,7 @@
 ---
 title: "Best practices of semantic model built using Lens"
 sidebarTitle: "Do's and Dont's"
-description: "This documentation outlines essential guidelines while creating a semantic model, highlighting key best practices, such as when to create views and how to avoid common errors. It offers a comprehensive set of do’s and don’ts to help ensure optimal model design and smooth implementation."
+description: "This documentation outlines essential guidelines while creating a semantic model, highlighting key best practices, such as when to create views and how to avoid common errors. and do's and don't's."
 ---
 
 ## Do's
@@ -55,7 +55,7 @@ tables:
         type: string
 ```
 
-In this example, the column status from the order table is referenced directly in the sql parameter. This syntax works great for simple use cases. However, if your tables have joins and joined tables have columns with the same name, the generated SQL query might become ambiguous. See below how to work around that.
+In this example, the column status from the order table is referenced directly in the `sql` attribute. This syntax works great for simple use cases. However, if your tables have joins and joined tables have columns with the same name, the generated SQL query might become ambiguous. See below how to work around that.
 
 ### Prefix with table name
 
@@ -125,7 +125,7 @@ tables:
         type: string
 ```
 
-In this example, the `{TABLE}` constant is used to refer to columns in the users table, reducing repetition and making the code more efficient.
+In this example, the `{TABLE}` constant is used to refer to columns in the `users` table, reducing repetition and making the code more efficient.
 
 ## Measure References
 
@@ -227,7 +227,7 @@ To correctly aggregate a measure within a window, use the rolling\_window parame
 
 1. **Purpose:** Create views to provide a limited part of your data model to the consumer layer, such as any BI tool. Views are useful for defining metrics, managing governance and data access, and controlling ambiguous join paths.
 
-2. **Members:** Views do not have their own members. Instead, use the `table` or `includes` parameters to incorporate measures and dimensions from other tables into the view.
+2. **Members:** Views do not have their members. Instead, use the `table` or `includes` parameters to incorporate measures and dimensions from other tables into the view.
 
 3. **Refresh key:** Use a refresh key if the underlying data is refreshed on a regular cadence.
 
@@ -406,6 +406,22 @@ user_groups:
 
 By leveraging Jinja macros, you can create efficient, reusable, and dynamic configurations in your Lens data models.
 
+### **Materialized views for historical data**
+
+When working with large volumes of historical data, create materialized views in the transformation layer (e.g., Flare) to improve performance and reduce runtime during querying.
+
+### **Roll down data**
+
+Always aim to roll down data as much as possible to minimize the amount of data processed in subsequent stages, enhancing query efficiency.
+
+### **Avoid references and sub-queries with large data**
+
+&#x20;Avoid using references and sub-queries when dealing with large datasets. These operations tend to create multiple joins behind the scenes, which can severely degrade performance. However, for queries with many joins, using references might still be necessary for clarity and efficiency.
+
+### **Materialize repeated tables**
+
+&#x20;Common tables used in multiple Data Products should be materialized to enhance performance, avoid redundant computations, and maintain consistency.
+
 ## Don’ts
 
 When creating a semantic model, avoid the following practices to ensure functionality and maintainability:
@@ -426,7 +442,7 @@ dimensions:
 
 ## Avoid using single quotes in measures, dimensions, and segments
 
-Using single quotes can throw errors. Instead, use double quotes.
+Using single quotes can cause errors. Instead, use double quotes.
 
 ```yaml
 tables:
