@@ -39,6 +39,7 @@ When you download the Lens Project Template, it includes `docker-compose.yml` an
 This template is pre-configured with most of the necessary settings, so you only need to update a few fields to suit your specific needs.
 
 <details><summary>Click here to see the docker-compose.yml file</summary>
+
 ```yaml
 version: "2.2"
 
@@ -81,19 +82,20 @@ CACHE_DATA_DIR: "/var/work/.store"
 NODE_ENV: production
 
 services:
-api:
-restart: always
-image: rubiklabs/lens2:0.35.18-50
-ports:
-- 4000:4000
-- 25432:5432
-- 13306:13306
-environment:
-<<: *lens2-environment
+  api:
+    restart: always
+    image: rubiklabs/lens2:0.35.18-50
+    ports:
+      - 4000:4000
+      - 25432:5432
+      - 13306:13306
+    environment:
+      <<: *lens2-environment
 
-volumes:
-- ./model:/etc/dataos/work/model
+    volumes:
+      - ./model:/etc/dataos/work/model
 ```
+
 </details>
 
 Modify the `docker-compose.yml` file to include your environment's URL, Lens metadata, and source details, ensuring the setup is tailored to your specific needs.
@@ -148,7 +150,6 @@ After completing the Lens setup and defining the Lens model, start Lens locally:
 
 <aside class="callout">
 🗣 Ensure your working directory is the Lens project directory.
-
 </aside>
 
 You can start Lens locally by running the following command in your terminal.
