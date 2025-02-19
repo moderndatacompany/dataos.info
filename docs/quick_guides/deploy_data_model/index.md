@@ -204,65 +204,65 @@ description: retail360 lens2 deployment on DataOS
 
 # LENS-SPECIFIC SECTION
 lens:
-    compute: runnable-default  # Compute Resource for Lens (mandatory)
-    secrets:                   # Instance-secret configuration (mandatory for private code repository, not required for public repository)
+  compute: runnable-default  # Compute Resource for Lens (mandatory)
+  secrets:                   # Instance-secret configuration (mandatory for private code repository, not required for public repository)
     - name: githubnp         # Referred Instance Secret name (mandatory)
-        allKeys: true          
-    source:                    # Data Source configuration
+      allKeys: true          
+  source:                    # Data Source configuration
     type: minerva            # Source type 
     name: system             # Source name
     catalog: icebase         #in case of minerva or themis
-    repo:                      # Lens2 model code repository config (mandatory)
+  repo:                      # Lens2 model code repository config (mandatory)
     url: ${repo_url}         # URL of repository for the Lens model (mandatory)
     lensBaseDir: lens_testing/model # Relative path of the Lens model directory in repository (mandatory)
     syncFlags:               # Additional flags used during synchronization, such as specific branch.
-        - --ref=master # Repository Branch 
-    API:                       # API Instances configuration (optional)
+    - --ref=master # Repository Branch 
+  api:                       # API Instances configuration (optional)
     replicas: 1              # Number of API instance replicas (optional)
     logLevel: info           # Logging granularity (optional)
     envs:
-        LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-        LENS2_SOURCE_WORKSPACE_NAME: public
+      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
+      LENS2_SOURCE_WORKSPACE_NAME: public
     resources:               # CPU and emory configurations for API Instances (optional)
-        requests:
+      requests:
         cpu: 100m
         memory: 256Mi
-        limits:
+      limits:
         cpu: 2000m
         memory: 2048Mi
-    worker:                    # Worker configuration (optional)
+  worker:                    # Worker configuration (optional)
     replicas: 2              # Number of Worker replicas (optional)
     logLevel: info           # Logging level (optional)
     envs:
-        LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-        LENS2_SOURCE_WORKSPACE_NAME: public
+      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
+      LENS2_SOURCE_WORKSPACE_NAME: public
     resources:               # CPU and memory configurations for Worker (optional)
-        requests:
+      requests:
         cpu: 100m
         memory: 256Mi
-        limits:
+      limits:
         cpu: 6000m
         memory: 6048Mi
-    router:                    # Router configuration (optional)
+  router:                    # Router configuration (optional)
     logLevel: info  # Level of log detail (optional)
     envs:
-        LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-        LENS2_SOURCE_WORKSPACE_NAME: public
+      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
+      LENS2_SOURCE_WORKSPACE_NAME: public
     resources:               # CPU and memory resource specifications for the router (optional)
-        requests:
+      requests:
         cpu: 100m
         memory: 256Mi
-        limits:
+      limits:
         cpu: 6000m
         memory: 6048Mi
-    iris:
+  iris:
     logLevel: info
     replicas: 1
     resources:
-        requests:
+      requests:
         cpu: 100m
         memory: 256Mi
-        limits:
+      limits:
         cpu: 4000m
         memory: 5240Mi
 ```
