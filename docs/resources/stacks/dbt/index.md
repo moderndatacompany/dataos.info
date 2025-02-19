@@ -6,7 +6,7 @@ search:
 
 # DBT Stack
 
-dbt (data build tool) is a declarative [Stack](/resources/stacks/) within DataOS, acting as the transformative force in ELT (Extract, Load, Transform), dbt focuses on optimizing and refining data already loaded into the database. It facilitates the centralization and modularization of analytics code, adopting a structured approach akin to software engineering practices. It enables collaborative work on data models, and versioning, before their deployment to production.  It establishes a connection with the data platform and executes SQL code within the warehouse to perform data transformations, fostering collaboration among you and your team by establishing a single source of truth for metrics, insights, and business terminology.
+The core capabilities of dbt (data build tool) can be leveraged by provisioning it as a stack within DataOS, enhancing the Transformation part of the ELT (Extract, Load, Transform) process. dbt, as a well-known external tool, focuses on optimizing and refining data already loaded into the database. It supports the centralization and modularization of analytics code, following a structured approach similar to software engineering practices. dbt enables collaboration on data models, versioning, and deployment to production. By connecting with the data platform, it executes SQL code within the warehouse to perform data transformations, ensuring a single source of truth for metrics, insights, and business terminology while promoting collaboration across teams.
 
 <aside class="callout">
 🗣️ It's crucial to understand that although dbt is highly proficient in transformation tasks, it does not manage the Extract and Load processes.
@@ -14,9 +14,9 @@ dbt (data build tool) is a declarative [Stack](/resources/stacks/) within DataOS
 
 **Prerequisites**
 
-   -  **Basic to intermediate SQL:** proficiency in utilizing the WHERE and GROUP BY clauses is essential.
+   -  **Basic to intermediate SQL:** Proficiency in utilizing the `WHERE` and `GROUP BY` clauses is essential.
 
-   -  **Basics of data warehouses:** a foundational understanding of data engineering is highly beneficial. It doesn't need to be extensive, but grasping key concepts is important.
+   -  **Basics of data warehouses:** A foundational understanding of data engineering is highly beneficial. It doesn't need to be extensive, but grasping key concepts is important.
 
 # How to create and use dbt workflow?
 
