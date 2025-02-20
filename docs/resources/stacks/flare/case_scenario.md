@@ -76,7 +76,6 @@ The following code snippet illustrates a Workflow involving a Flare Stream Job t
 **Code Snippet**
 
 ```yaml
-
 version: v1
 name: write-eventhub-b-02
 type: workflow
@@ -105,7 +104,7 @@ workflow:
                 dataset: dataos://thirdparty01:none/city
                 format: csv
                 schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc
-                isStream: true #true in case of streaming data #mandatory(for streamin data)
+                isStream: true  #Set to True if the data is being streamed. This is mandatory when working with streaming data.
 
             logLevel: INFO
             outputs:
@@ -118,6 +117,8 @@ workflow:
                 - name: finalDf
                   sql: SELECT * FROM input
 ```
+
+</details> 
 
 <!-- In the context of output depots, the automatic surfacing of metadata in the Metis is applicable to all depots except those supporting Iceberg file formats with Hadoop Catalog type. For such depots, manual updating of the metadata version is required using the Toolbox Stack. If there is a need to obtain the metadata at the end of transformation, when the entire data has been completely written to the output depot, you can execute the Toolbox Stack once at the conclusion of the transformation process. Alternatively, if metadata is required at a specific cadence, scheduling the job upon the Toolbox Stack can fulfill this requirement. 
 
