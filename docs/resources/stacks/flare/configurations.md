@@ -31,7 +31,7 @@ stackSpec: # Flare Stack-specific section or mapping (mandatory)
         dataset: dataos://gcdexport:none/gcdcore_account # Dataset address (mandatory)
         query: select * from icebase.retail.city limit 100 # SQL query for data load (mandatory)
         format: csv # Data format of the dataset (optional, default: iceberg)
-        isStream: true # Flag for streaming dataset (optional, default: false)
+        isStream: true # Flag mandatory for streaming dataset (optional, default: false)
         schemaType: "avro" # Schema type (optional, default: avro)
         schemaPath: "dataos://thirdparty:none/somedir/someschema.avsc" # DataOS address to schema (optional)
         schemaString: "{avsc_schema_file_content}" # Spark struct or Avro schema JSON (optional)
@@ -517,7 +517,7 @@ stackSpec:
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| boolean | optional | If not supplied, the default value will be determined based on the depot type. For depot-types based on streaming data source like Kafka, Pulsar and EventHub, the default value is `true`, while for non streaming data source depot-types like GCS and ABFSS, the default value is `false`. | true/false |
+| boolean | optional | If not supplied, the default value will be determined based on the Depot type. For Depot-types based on streaming data source like Kafka, Pulsar and EventHub, the value should be set to `true`, while for non streaming data source Depot-types like GCS and ABFSS, the value will be `false`. | true/false |
 
 **Example Usage:**
 
