@@ -105,6 +105,7 @@ workflow:
                 dataset: dataos://thirdparty01:none/city
                 format: csv
                 schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc
+                isStream: true #true in case of streaming data #mandatory(for streamin data)
 
             logLevel: INFO
             outputs:
@@ -118,7 +119,7 @@ workflow:
                   sql: SELECT * FROM input
 ```
 
-In the context of output depots, the automatic surfacing of metadata in the Metis is applicable to all depots except those supporting Iceberg file formats with Hadoop Catalog type. For such depots, manual updating of the metadata version is required using the Toolbox Stack. If there is a need to obtain the metadata at the end of transformation, when the entire data has been completely written to the output depot, you can execute the Toolbox Stack once at the conclusion of the transformation process. Alternatively, if metadata is required at a specific cadence, scheduling the job upon the Toolbox Stack can fulfill this requirement. 
+<!-- In the context of output depots, the automatic surfacing of metadata in the Metis is applicable to all depots except those supporting Iceberg file formats with Hadoop Catalog type. For such depots, manual updating of the metadata version is required using the Toolbox Stack. If there is a need to obtain the metadata at the end of transformation, when the entire data has been completely written to the output depot, you can execute the Toolbox Stack once at the conclusion of the transformation process. Alternatively, if metadata is required at a specific cadence, scheduling the job upon the Toolbox Stack can fulfill this requirement. 
 
 The code snippet below illustrates a sample schedule workflow for updating the metadata pointer using the Toolbox Stack in output depots with Iceberg file format with Hadoop Catalog type.
 
@@ -143,14 +144,11 @@ workflow:
 
 Once the metadata is updated, it becomes discoverable and accessible through the Metis UI.
 
-</details>
+</details> -->
 
 ## Incremental Jobs
 
 Computes only the changed rows or files of data since the last build, reducing overall computation and latency. Incremental Jobs only compute the rows or files of data that have changed since the last build. They are suitable for processing event data and datasets with frequent changes. Incremental jobs reduce overall computation and significantly decrease end-to-end latency compared to batch jobs. Moreover, compute costs for incremental jobs can be lower than batch jobs when dealing with high-scale datasets, as the amount of actual computation is minimized. By processing only new data, incremental jobs eliminate the need to redo analysis on large datasets where most information remains unchanged. For case scenarios on Incremental Jobs, refer to [here](/resources/stacks/flare/case_scenario/incremental_jobs/).
-
-
-
 
 [Incremental Job](/resources/stacks/flare/case_scenario/incremental_jobs/)
 
@@ -209,9 +207,9 @@ Computes only the changed rows or files of data since the last build, reducing o
 
 The `remove_orphans` [action](/resources/stacks/flare/configurations/#remove_orphans) cleans up orphans files older than a specified time period. This action may take a long time to finish if you have lots of files in data and metadata directories. It is recommended to execute this periodically, but you may not need to execute this often. 
 
-<aside>
+<aside class="callout">
 
-🗣️ **Note:** It is dangerous to remove orphan files with a retention interval shorter than the time expected for any write to complete because it might corrupt the table if in-progress files are considered orphaned and are deleted. The default interval is 3 days.
+🗣️ <b>Note:</b> It is dangerous to remove orphan files with a retention interval shorter than the time expected for any write to complete because it might corrupt the table if in-progress files are considered orphaned and are deleted. The default interval is 3 days.
 
 </aside>
 
