@@ -10,7 +10,8 @@ depot:
   description: testing instance secrets using snowflake depot
   snowflake:
     warehouse: mywarehouse
-    url: avengers.central-india.azure.snowflakecomputing.com
+    url: hj36908.central-india.azure.snowflakecomputing.com
+    account:  NUJAFGS.RH91066
     database: mydatabase
     external: true
   secrets:
