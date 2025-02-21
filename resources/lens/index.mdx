@@ -27,7 +27,7 @@ Lens is engineered to handle complex and large-scale semantic models with ease. 
 
 * **API support:** Lens enhances interoperability by simplifying application development with support for [Postgres API](/resources/lens/explore_lens_using_sql_apis/), [REST API](/resources/lens/explore_lens_using_rest_apis/), and [GraphQL API](/resources/lens/explore_lens_using_graphql/). 
 
-* Segments: [Segments](/resources/lens/working_with_segments/) are predefined filters that enable the definition of complex filtering logic in SQL. It allows to create specific subsets of data, such as users from a particular city, which can be reused across different queries and reports. This feature helps streamline the data exploration process by simplifying the creation of reusable filters.
+* **Segments:** [Segments](/resources/lens/working_with_segments/) are predefined filters that enable the definition of complex filtering logic in SQL. It allows to create specific subsets of data, such as users from a particular city, which can be reused across different queries and reports. This feature helps streamline the data exploration process by simplifying the creation of reusable filters.
 
 * **Performance optimization through Flash:** [Flash](/resources/stacks/flash/) is a Stack in DataOS that utlizes an in-memory query processing layer to cache data for fast access, reducing query response times and speeding up data retrieval.
 
@@ -125,7 +125,7 @@ To build a semantic model with Lens establish a connection to your data source, 
       </Step>
 
       <Step title="Define the table in the model" titleSize="h2">
-        Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For example, to define a table for `sales `data:
+        Create a `tables/` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For example, to define a table for `sales `data:
 
         ```yaml
         table:
@@ -213,7 +213,7 @@ To build a semantic model with Lens establish a connection to your data source, 
 
     ## Step 3 Create Instance-secret
 
-    Before creating the `lens_deployment.yml` file, ensure an **Instance-secret** is deployed with the credentials required to access a hosted code repository, such as [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/push-code-to-bitbucket/), [GitHub](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github), [AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/getting-started.html) etc. The `lens_deployment.yml` configuration relies on this repository to fetch the semantic model, making the Instance-secret a critical prerequisite for deployment. 
+    Before creating the `lens_deployment.yml` file, ensure an **Instance-secret** is deployed with the credentials required to access a hosted code repository, such as [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/push-code-to-bitbucket/), [GitHub](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github), [AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/getting-started.html) etc. The `lens_deployment.yml` configuration relies on this repository to fetch the semantic model, making theza critical prerequisite for deployment. 
 
     <Note>
        If code repository is private, create  an [Instance-secrets](/resources/instance_secret/) on top of repository credentials for later use during deployment. Public code repositories do not require Step 3.
@@ -299,93 +299,29 @@ To build a semantic model with Lens establish a connection to your data source, 
 
     Each section of the YAML template defines key aspects of the Lens deployment. Below is a detailed explanation of its components:
 
-    * **Defining the Source:**
+    * **Defining the source:**
 
-      * **`type`:**
+      * **`type`:** The `type` attribute in the `source` section must be explicitly set to `depot`.
 
-        The
-
-        `type`
-
-        attribute in the
-
-        `source`
-
-        section must be explicitly set to
-
-        `depot`
-
-        .
-
-      * **`name`:**
-
-        The
-
-        `name`
-
-        attribute in the
-
-        `source`
-
-        section should specify the name of the AWS Redshift Depot created.
+      * **`name`:** The `name` attribute in the `source` section should specify the name of the AWS Redshift Depot created.
 
     * **Setting Up Compute and Secrets:**
 
-      * Define the compute settings, such as which engine (e.g.,
-
-        `runnable-default`
-
-        ) will process the data.
+      * Define the compute settings, such as which engine (e.g., `runnable-default`) will process the data.
 
       * Include any necessary secrets (e.g., credentials for Bitbucket or AWS) for secure access to data and repositories.
 
-    * **Defining Repository:**
+    * **Defining repository:**
 
-      * **`url`**
+      * **`url`:** The `url` attribute in the repo section specifies the Git repository where the semantic model files are stored. For instance, if your repo name is lensTutorial then the repo `url` will be [https://bitbucket.org/tmdc/lensTutorial](https://bitbucket.org/tmdc/lensTutorial)
 
-        The
+      * **`lensBaseDir`:** The `lensBaseDir` attribute refers to the directory in the repository containing the semantic model. Example: `sample/lens/source/depot/awsredshift/model`.
 
-        `url`
+      * **`secretId`:** The `secretId` attribute is used to access private repositories (e.g., Bitbucket, GitHub). It specifies the secret needed to authenticate and access the repository securely.
 
-        attribute in the repo section specifies the Git repository where the semantic model files are stored. For instance, if your repo name is lensTutorial then the repo
+      * **`syncFlags`:** Specifies additional flags to control repository synchronization. Example: `--ref=dev` specifies that the semantic model resides in the dev branch.
 
-        `url`
-
-        will be
-
-        [https://bitbucket.org/tmdc/lensTutorial](https://bitbucket.org/tmdc/lensTutorial)
-
-      * **`lensBaseDir`:**
-
-        The
-
-        `lensBaseDir`
-
-        attribute refers to the directory in the repository containing the semantic model. Example:
-
-        `sample/lens/source/depot/awsredshift/model`
-
-        .
-
-      * **`secretId`:**
-
-        The
-
-        `secretId`
-
-        attribute is used to access private repositories (e.g., Bitbucket, GitHub). It specifies the secret needed to authenticate and access the repository securely.
-
-      * **`syncFlags`**
-
-        :  Specifies additional flags to control repository synchronization. Example:
-
-        `--ref=dev`
-
-        specifies that the semantic model resides in the dev branch.
-
-    * **Configure API, Worker, and Metric Settings (Optional):**
-
-      Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
+    * **Configure API, Worker, and Metric Settings (Optional):** Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
 
     ## Step 5: Apply Lens deployment manifest file
 
@@ -2094,6 +2030,75 @@ After creating a Lens semantic model , the next step is to consume it—this mea
 <AccordionGroup>
   <Accordion title="Power BI" defaultOpen={false}>
     <Tabs>
+      <Tab title="Using Data Product Hub">
+        <Steps>
+          <Step title="Navigate to the Data Product Hub" titleSize="h2">
+            Access the Home Page of DataOS. From there, navigate to the Data Product Hub to explore the various Data Products available within the platform.
+
+            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/image%20\(1\).png)
+          </Step>
+
+          <Step title="Browse and select a Data Product" titleSize="h2">
+            Browse the list of Data Products and select a specific Data Product to initiate integration with Power BI. For example, selecting 'Sales360' allows detailed exploration and integration of the Sales360 Data Product.
+
+            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/image%20\(2\).png)
+          </Step>
+
+          <Step title="Access integration options" titleSize="h2">
+            Go to the BI Sync option under the Access Options tab. Scroll down to locate the Excel and Power BI section, and click the Download .pbip File button to download the ZIP folder.
+
+            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/powerbi/Powerbi3.png)
+          </Step>
+
+          <Step title="Download and open the ZIP file" titleSize="h2">
+            Access the downloaded ZIP file on the local system and extract its contents to the specified directory. The extracted folder will contain three files. Ensure all three files remain in the same directory to maintain semantic synchronization of the Data Product.
+
+            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Untitled%20\(15\).png)
+
+            The folder contains the main components of a Power BI project for syncing the semantic model (here `sales360`) including folders such as the `.Report` and `.SemanticModel`. Following is the brief description of each:
+
+            * **public\_sales360.Report:** This folder contains `definition.pbir` file related to the report definition in Power BI. These files define the visual representation of data, such as tables and charts, without storing actual data. They connect the semantic model and data sources to create the report views.
+
+            * **public-sales360.SemanticModel:** This folder contains files that define the underlying semantic model for Power BI project. The semantic model plays a crucial role in managing how Power BI interacts with data, setting up relationships, hierarchies, and measures.
+
+              * **definition.bism:** This file represents the Business Intelligence Semantic Model (BISM). It defines the structure of data, including data sources, relationships, tables, and measures for semantic model. The `.bism` file holds essential metadata that helps Power BI understand and query the data, forming the core of the semantic model for report creation and analysis.
+
+              * **model.bim:** Power BI uses the `.bim` file to generate queries and manage interactions with the dataset. It references this semantic model to ensure the correct structure is applied to the data.
+
+            * **public-sales-360-table.pbip:** This file serves as a Power BI project template or configuration file. Power BI uses files `.pbip` or `.pbix` to encapsulate reports, datasets, and visualizations. The `.pbip` file ties together the semantic model and report definitions from the other folders, acting as the entry point for working on the project in Power BI Desktop or the Power BI service.
+          </Step>
+
+          <Step title="Enter credentials" titleSize="h2">
+            Open the `public_sales360` file in Power BI, once the file is opened, a popup will appear prompting for the DataOS username and API key.
+
+            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Untitled%20\(16\).png)
+            Click the connect button. A popup will appear; click OK.
+          </Step>
+
+          <Step title="View data in Power BI" titleSize="h2">
+            After connecting, users can see tables and views containing dimensions and measures and create dashboards.
+
+            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Untitled%20\(19\).png)
+          </Step>
+        </Steps>
+
+        ## Important considerations
+
+        * **Measure naming convention:** In Power BI, measures typically have an 'm\_' prefix to indicate they represent a measure. For example, a measure calculating total revenue might be named m\_total\_revenue.
+
+        * **Live connection:** The connection is live, meaning any changes to the underlying data will be reflected in Power BI.
+
+        * **Schema changes:** If schema changes occur, such as the addition of new dimensions and measures, the steps outlined above will need to be repeated.
+
+        * **Row Limit:** The Lens API has a maximum return limit of 50,000 rows per request. To obtain additional data, it is necessary to set an offset. This row limit is in place to manage resources efficiently and ensure optimal performance.
+
+        * **Selection:** It is important to select fields from tables that are directly related or logically joined, as the system does not automatically identify relationships between tables through transitive joins. Selecting fields from unrelated tables may result in incorrect or incomplete results.
+
+        ## Data governance and access control
+
+        Data masking, restrictions, or permissions established by the publisher are automatically enforced for all report viewers, ensuring consistent data security and compliance. The behavior of these data policies, such as masking, may vary based on the user of the Power BI desktop.
+      </Tab>
+
       <Tab title="Using CLI">
         ## Prerequisites
 
@@ -2195,88 +2200,139 @@ After creating a Lens semantic model , the next step is to consume it—this mea
 
         * **Schema changes:** If schema changes occur, such as the addition of new dimensions and measures, the steps outlined above will need to be repeated.
 
-        * **Row Limit:** The Lens API has a maximum return limit of 50,000 rows per request. To obtain additional data, it is necessary to set an offset. This row limit is in place to manage resources efficiently and ensure optimal performance.
+        * **Row limit:** The Lens API has a maximum return limit of 50,000 rows per request. To obtain additional data, it is necessary to set an offset. This row limit is in place to manage resources efficiently and ensure optimal performance.
 
         * **Selection:** It is important to select fields from tables that are directly related or logically joined, as the system does not automatically identify relationships between tables through transitive joins. Selecting fields from unrelated tables may result in incorrect or incomplete results.
 
         ## Data governance and access control
 
         Data masking, restrictions, or permissions established by the publisher are automatically enforced for all report viewers, ensuring consistent data security and compliance. The behavior of these data policies, such as masking, may vary based on the user of the Power BI desktop.
-      </Tab>
-
-      <Tab title="Using Data Product Hub">
-        <Steps>
-          <Step title="Navigate to the Data Product Hub" titleSize="h2">
-            Access the Home Page of DataOS. From there, navigate to the Data Product Hub to explore the various Data Products available within the platform.
-
-            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/image%20\(1\).png)
-          </Step>
-
-          <Step title="Browse and select a Data Product" titleSize="h2">
-            Browse the list of Data Products and select a specific Data Product to initiate integration with Power BI. For example, selecting 'Sales360' allows detailed exploration and integration of the Sales360 Data Product.
-
-            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/image%20\(2\).png)
-          </Step>
-
-          <Step title="Access integration options" titleSize="h2">
-            Go to the BI Sync option under the Access Options tab. Scroll down to locate the Excel and Power BI section, and click the Download .pbip File button to download the ZIP folder.
-
-            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/powerbi/Powerbi3.png)
-          </Step>
-
-          <Step title="Download and open the ZIP file" titleSize="h2">
-            Access the downloaded ZIP file on the local system and extract its contents to the specified directory. The extracted folder will contain three files. Ensure all three files remain in the same directory to maintain semantic synchronization of the Data Product.
-
-            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Untitled%20\(15\).png)
-
-            The folder contains the main components of a Power BI project for syncing the semantic model (here `sales360`) including folders such as the `.Report` and `.SemanticModel`. Following is the brief description of each:
-
-            * **public\_sales360.Report:** This folder contains `definition.pbir` file related to the report definition in Power BI. These files define the visual representation of data, such as tables and charts, without storing actual data. They connect the semantic model and data sources to create the report views.
-
-            * **public-sales360.SemanticModel:** This folder contains files that define the underlying semantic model for Power BI project. The semantic model plays a crucial role in managing how Power BI interacts with data, setting up relationships, hierarchies, and measures.
-
-              * **definition.bism:** This file represents the Business Intelligence Semantic Model (BISM). It defines the structure of data, including data sources, relationships, tables, and measures for semantic model. The `.bism` file holds essential metadata that helps Power BI understand and query the data, forming the core of the semantic model for report creation and analysis.
-
-              * **model.bim:** Power BI uses the `.bim` file to generate queries and manage interactions with the dataset. It references this semantic model to ensure the correct structure is applied to the data.
-
-            * **public-sales-360-table.pbip:** This file serves as a Power BI project template or configuration file. Power BI uses files `.pbip` or `.pbix` to encapsulate reports, datasets, and visualizations. The `.pbip` file ties together the semantic model and report definitions from the other folders, acting as the entry point for working on the project in Power BI Desktop or the Power BI service.
-          </Step>
-
-          <Step title="Enter credentials" titleSize="h2">
-            Open the `public_sales360` file in Power BI, once the file is opened, a popup will appear prompting for the DataOS username and API key.
-
-            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Untitled%20\(16\).png)
-            Click the connect button. A popup will appear; click OK.
-          </Step>
-
-          <Step title="View data in Power BI" titleSize="h2">
-            After connecting, users can see tables and views containing dimensions and measures and create dashboards.
-
-            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Untitled%20\(19\).png)
-          </Step>
-        </Steps>
-
-        ## Important considerations
-
-        * **Measure naming convention:** In Power BI, measures typically have an 'm\_' prefix to indicate they represent a measure. For example, a measure calculating total revenue might be named m\_total\_revenue.
-
-        * **Live connection:** The connection is live, meaning any changes to the underlying data will be reflected in Power BI.
-
-        * **Schema changes:** If schema changes occur, such as the addition of new dimensions and measures, the steps outlined above will need to be repeated.
-
-        * **Row Limit:** The Lens API has a maximum return limit of 50,000 rows per request. To obtain additional data, it is necessary to set an offset. This row limit is in place to manage resources efficiently and ensure optimal performance.
-
-        * **Selection:** It is important to select fields from tables that are directly related or logically joined, as the system does not automatically identify relationships between tables through transitive joins. Selecting fields from unrelated tables may result in incorrect or incomplete results.
-
-        ## Data governance and access control
-
-        Data masking, restrictions, or permissions established by the publisher are automatically enforced for all report viewers, ensuring consistent data security and compliance. The behavior of these data policies, such as masking, may vary based on the user of the Power BI desktop.
-      </Tab>
+       </Tab>
     </Tabs>
   </Accordion>
 
   <Accordion title="Tableau" defaultOpen={false}>
     <Tabs>
+      <Tab title="Using Data Product Hub ">
+        <Steps>
+          <Step title=" Navigate to the Data Product Hub" titleSize="h2">
+            Access the Home Page of DataOS. From the home page, navigate to the Data Product Hub to explore the various Data Products available.
+
+            ![](/image.png)
+          </Step>
+
+          <Step title="Browse and select a Data Product" titleSize="h2">
+            Browse through the list of available Data Products. Select a specific Data Product to integrate with Tableau. For instance, **Product 360** can be chosen to explore the Data Product on Tableau for data visualisation and getting insights.
+
+            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau0.png)
+          </Step>
+
+          <Step title="Navigate to the Access Options tab" titleSize="h2">
+            After selecting a Data Product, navigate to the **BI Sync** option in the **Access Options** tab. Scroll through the BI Sync and locate the **Tableau Cloud** option. Now, Click on the **Add Connection** button
+
+            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau1.png)
+          </Step>
+
+          <Step title="Enter connection details and click Activate button" titleSize="h2">
+            A connection window will open, prompting the entry of the necessary connection details. There are following two ways to pass the connection details:
+
+            <Tabs>
+              <Tab title="Using  username and password">
+                Following are the connection details of the Tableau username and password:
+              </Tab>
+
+              <Tab title="Using Personal Access Token">
+                In addition to using standard Tableau credentials, users can also opt to use Personal Access Tokens (PAT) for authentication.
+
+                ## Prerequisites
+
+                **Tableau Personal Access Token (PAT):** Before integrating the semantic model with Tableau using a PAT, ensure you generate a PAT in Tableau by following the instructions provided in [this guide](https://help.tableau.com/current/online/en-us/security_personal_access_tokens.htm).
+              </Tab>
+            </Tabs>
+
+            * **Project Name**: Enter the Tableau project name. If a project with that name does not already exist, it will be created automatically. If you do not specify a name, the project will default to the name of the Data Product, which will register all associated data sources under that project.
+
+            For optimal organization within Tableau, we recommend providing a custom project name it facilitates easier navigation of your data sources.
+
+            * **Server Name**: The address of the Tableau server (e.g., `https://prod-apnortheast-a.online.tableau.com`).
+
+            * **Site ID**: The site ID (e.g., `tableausuer@123`).
+
+            * **Username**: The Tableau username.(e.g., `labs@tmdc.io`)
+
+            * **Password**: The password associated with the Tableau account.
+
+            These details can be obtained upon logging into Tableau. The URL format will appear as follows:
+
+            [`https://prod-apnortheast-a.online.tableau.com/#/site/site_id`](https://prod-apnortheast-a.online.tableau.com/#/site/tableauuser@123)
+
+            **Sample URL**:
+
+            [`https://prod-apnortheast-a.online.tableau.com/#/site/tableauuser@123/home`](https://prod-apnortheast-a.online.tableau.com/#/site/tableauuser@123/home)
+
+            In this example, `tableuuser@123` represents the **site\_id**.
+
+            After entering the required credentials, click the Activate button to establish the connection. A confirmation message will appear upon successful connection.
+          </Step>
+        </Steps>
+
+        ## Exploring the semantic model on Tableau
+
+        Once the sync is successful, the data source is published to the Tableau cloud/server:
+
+        <Steps>
+          <Step title="Log in to Tableau Cloud" titleSize="h2">
+            Users should log in to Tableau Cloud using the same credentials of Tableau. This will redirect to the Tableau Cloud home page.
+
+            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau5.png)
+          </Step>
+
+          <Step title="Manage projects" titleSize="h2">
+            Click on the Manage Projects option on the home page.
+
+            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/image%20\(13\).png)
+          </Step>
+
+          <Step title="Access the project interface" titleSize="h2">
+            This will open an interface displaying all projects, including the newly created project titled **Product Analysis**.
+
+            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau5.1.png)
+          </Step>
+
+          <Step title="Select the project" titleSize="h2">
+            Click on the project to view the available data sources for dashboard creation. This project will contains semantic model and all it's views (entities and metrics).
+
+            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau5.2.png)
+          </Step>
+
+          <Step title="Create a new workbook" titleSize="h2">
+            Click on the menu option in the upper right corner of the data source and select the New Workbook option.
+
+            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau6.png)
+          </Step>
+
+          <Step title="Provide credentials" titleSize="h2">
+            To create a new workbook where dashboard creation can commence, users will be prompted to provide their DataOS username and API key as the password to access the data source. The API can be retrieved by navigating to the profile page in the bottom left corner of the Data Product Hub.
+
+            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/Tabelau7.png)
+          </Step>
+
+          <Step title="Start creating the dashboard" titleSize="h2">
+            Now, users can create dashboard and extract relevant insights.
+
+            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/tableau8.png)
+          </Step>
+
+          <Step title="Publishing workbook/dashboard" titleSize="h2">
+            The publisher can embed their credentials (DataOS username and API Token) or ask users to provide credentials whenever they want to access the published Workbook/Sheet/Dashboard. If the publisher has chosen to ‘Embed password for data source’, users can access the published workbook and dashboard without providing credentials.
+
+            <Note>
+              Callout Content
+            </Note>
+          </Step>
+        </Steps>
+      </Tab>
+
       <Tab title="Using CLI">
         ### Prerequisites
 
@@ -2518,130 +2574,50 @@ After creating a Lens semantic model , the next step is to consume it—this mea
         This approach maintains security and guarantees that users only see the data they are authorized to view.
       </Tab>
 
-      <Tab title="Using Data Product Hub ">
-        <Steps>
-          <Step title=" Navigate to the Data Product Hub" titleSize="h2">
-            Access the Home Page of DataOS. From the home page, navigate to the Data Product Hub to explore the various Data Products available.
-
-            ![](/image.png)
-          </Step>
-
-          <Step title="Browse and select a Data Product" titleSize="h2">
-            Browse through the list of available Data Products. Select a specific Data Product to integrate with Tableau. For instance, **Product 360** can be chosen to explore the Data Product on Tableau for data visualisation and getting insights.
-
-            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau0.png)
-          </Step>
-
-          <Step title="Navigate to the Access Options tab" titleSize="h2">
-            After selecting a Data Product, navigate to the **BI Sync** option in the **Access Options** tab. Scroll through the BI Sync and locate the **Tableau Cloud** option. Now, Click on the **Add Connection** button
-
-            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau1.png)
-          </Step>
-
-          <Step title="Enter connection details and click Activate button" titleSize="h2">
-            A connection window will open, prompting the entry of the necessary connection details. There are following two ways to pass the connection details:
-
-            <Tabs>
-              <Tab title="Using  username and password">
-                Following are the connection details of the Tableau username and password:
-              </Tab>
-
-              <Tab title="Using Personal Access Token">
-                In addition to using standard Tableau credentials, users can also opt to use Personal Access Tokens (PAT) for authentication.
-
-                ## Prerequisites
-
-                **Tableau Personal Access Token (PAT):** Before integrating the semantic model with Tableau using a PAT, ensure you generate a PAT in Tableau by following the instructions provided in [this guide](https://help.tableau.com/current/online/en-us/security_personal_access_tokens.htm).
-              </Tab>
-            </Tabs>
-
-            * **Project Name**: Enter the Tableau project name. If a project with that name does not already exist, it will be created automatically. If you do not specify a name, the project will default to the name of the Data Product, which will register all associated data sources under that project.
-
-            For optimal organization within Tableau, we recommend providing a custom project name it facilitates easier navigation of your data sources.
-
-            * **Server Name**: The address of the Tableau server (e.g., `https://prod-apnortheast-a.online.tableau.com`).
-
-            * **Site ID**: The site ID (e.g., `tableausuer@123`).
-
-            * **Username**: The Tableau username.(e.g., `labs@tmdc.io`)
-
-            * **Password**: The password associated with the Tableau account.
-
-            These details can be obtained upon logging into Tableau. The URL format will appear as follows:
-
-            [`https://prod-apnortheast-a.online.tableau.com/#/site/site_id`](https://prod-apnortheast-a.online.tableau.com/#/site/tableauuser@123)
-
-            **Sample URL**:
-
-            [`https://prod-apnortheast-a.online.tableau.com/#/site/tableauuser@123/home`](https://prod-apnortheast-a.online.tableau.com/#/site/tableauuser@123/home)
-
-            In this example, `tableuuser@123` represents the **site\_id**.
-
-            After entering the required credentials, click the Activate button to establish the connection. A confirmation message will appear upon successful connection.
-          </Step>
-        </Steps>
-
-        ## Exploring the semantic model on Tableau
-
-        Once the sync is successful, the data source is published to the Tableau cloud/server:
-
-        <Steps>
-          <Step title="Log in to Tableau Cloud" titleSize="h2">
-            Users should log in to Tableau Cloud using the same credentials of Tableau. This will redirect to the Tableau Cloud home page.
-
-            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau5.png)
-          </Step>
-
-          <Step title="Manage projects" titleSize="h2">
-            Click on the Manage Projects option on the home page.
-
-            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/image%20\(13\).png)
-          </Step>
-
-          <Step title="Access the project interface" titleSize="h2">
-            This will open an interface displaying all projects, including the newly created project titled **Product Analysis**.
-
-            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau5.1.png)
-          </Step>
-
-          <Step title="Select the project" titleSize="h2">
-            Click on the project to view the available data sources for dashboard creation. This project will contains semantic model and all it's views (entities and metrics).
-
-            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau5.2.png)
-          </Step>
-
-          <Step title="Create a new workbook" titleSize="h2">
-            Click on the menu option in the upper right corner of the data source and select the New Workbook option.
-
-            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau6.png)
-          </Step>
-
-          <Step title="Provide credentials" titleSize="h2">
-            To create a new workbook where dashboard creation can commence, users will be prompted to provide their DataOS username and API key as the password to access the data source. The API can be retrieved by navigating to the profile page in the bottom left corner of the Data Product Hub.
-
-            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/Tabelau7.png)
-          </Step>
-
-          <Step title="Start creating the dashboard" titleSize="h2">
-            Now, users can create dashboard and extract relevant insights.
-
-            ![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/tableau8.png)
-          </Step>
-
-          <Step title="Publishing workbook/dashboard" titleSize="h2">
-            The publisher can embed their credentials (DataOS username and API Token) or ask users to provide credentials whenever they want to access the published Workbook/Sheet/Dashboard. If the publisher has chosen to ‘Embed password for data source’, users can access the published workbook and dashboard without providing credentials.
-
-            <Note>
-              Callout Content
-            </Note>
-          </Step>
-        </Steps>
-      </Tab>
     </Tabs>
   </Accordion>
 
   <Accordion title="Superset" defaultOpen={false}>
     <Tabs>
+
+      <Tab title="Using Data Product Hub">
+        <Steps>
+          <Step title="Access Superset Integration" titleSize="h2">
+            Go to the 'Access Options' tab for your Data product in Data Product Hub. Under the 'BI Sync' section, locate the 'Superset' option.
+
+            ![superset\_sync.png](https://dataos.info/learn/dp_consumer_learn_track/integrate_bi_tools/superset/superset_sync.png)
+          </Step>
+
+          <Step title="Initiate the Connection" titleSize="h2">
+            Click on 'Add Connection' under the Superset option. This action will open a new window where you’ll enter your credentials to link DataOS with Superset.
+
+            ![superset\_conn.png](https://dataos.info/learn/dp_consumer_learn_track/integrate_bi_tools/superset/superset_conn.png)
+          </Step>
+
+          <Step title="Enter Superset Credentials" titleSize="h2">
+            In the setup window, fill in the required credentials:
+
+            * **Username**: The Superset account username.
+
+            * **Password**: The corresponding password for this account.
+
+            <Info>
+              You may need to consult your DataOS Administrator for the username and password of the Superset.
+            </Info>
+          </Step>
+
+          <Step title="Activate the Data Product" titleSize="h2">
+            Once you’ve entered all the credentials, click 'Activate' to complete the setup. This will link the *Product Affinity* semantic model with Superset.
+
+            ![superset-connections.png](https://dataos.info/learn/dp_consumer_learn_track/integrate_bi_tools/superset/superset-connections.png)
+          </Step>
+
+          <Step title="Access Data Product in Superset" titleSize="h2">
+            After activation, go to the DataOS homepage. Scroll to the 'Apache Superset' section, click on 'Datasets', and locate your activated data product available as datasets. You’re now ready to start visualizing and building analytical dashboards.
+          </Step>
+        </Steps>
+      </Tab>
+
       <Tab title="Using curl">
         ## Prerequisites
 
@@ -2726,44 +2702,6 @@ After creating a Lens semantic model , the next step is to consume it—this mea
         ## Data policies and security
 
         Any data masking, restrictions, or permissions defined by the publisher will automatically be enforced for all viewers of the report, ensuring consistent data security and compliance. However, the behavior of data policies (e.g., masking) depends on who is the user of the Superset.
-      </Tab>
-
-      <Tab title="Using Data Product Hub">
-        <Steps>
-          <Step title="Access Superset Integration" titleSize="h2">
-            Go to the 'Access Options' tab for your Data product in Data Product Hub. Under the 'BI Sync' section, locate the 'Superset' option.
-
-            ![superset\_sync.png](https://dataos.info/learn/dp_consumer_learn_track/integrate_bi_tools/superset/superset_sync.png)
-          </Step>
-
-          <Step title="Initiate the Connection" titleSize="h2">
-            Click on 'Add Connection' under the Superset option. This action will open a new window where you’ll enter your credentials to link DataOS with Superset.
-
-            ![superset\_conn.png](https://dataos.info/learn/dp_consumer_learn_track/integrate_bi_tools/superset/superset_conn.png)
-          </Step>
-
-          <Step title="Enter Superset Credentials" titleSize="h2">
-            In the setup window, fill in the required credentials:
-
-            * **Username**: The Superset account username.
-
-            * **Password**: The corresponding password for this account.
-
-            <Info>
-              You may need to consult your DataOS Administrator for the username and password of the Superset.
-            </Info>
-          </Step>
-
-          <Step title="Activate the Data Product" titleSize="h2">
-            Once you’ve entered all the credentials, click 'Activate' to complete the setup. This will link the *Product Affinity* semantic model with Superset.
-
-            ![superset-connections.png](https://dataos.info/learn/dp_consumer_learn_track/integrate_bi_tools/superset/superset-connections.png)
-          </Step>
-
-          <Step title="Access Data Product in Superset" titleSize="h2">
-            After activation, go to the DataOS homepage. Scroll to the 'Apache Superset' section, click on 'Datasets', and locate your activated data product available as datasets. You’re now ready to start visualizing and building analytical dashboards.
-          </Step>
-        </Steps>
       </Tab>
     </Tabs>
   </Accordion>

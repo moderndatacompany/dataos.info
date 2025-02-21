@@ -12,7 +12,7 @@ The Lens and its semantic model can be observed and monitored at the following t
 
 3. [Infrastructure monitoring](/resources/lens/observability#infrastructure-monitoring)
 
-## Metric monitoring
+## Metric monitoring of the Lens
 
 Metric monitoring in Lens is done by Monitor and Pager Resource focuses on tracking the performance and health of the Lens Resources. It helps in measuring key indicators that define the state of the system. A Lens Resource can be monitored using Monitor and Pager Resources. Two types of Monitors can be applied to observe the state of the deployed Lens and the matrix of the semantic model.
 
@@ -363,7 +363,7 @@ This section outlines the steps to create a Pager Resource. While we are using M
   </Step>
 </Steps>
 
-## Operational monitoring
+## Operational monitoring of the Lens
 
 Operational monitoring of the Lens and its semantic model can be done through the Operations App and CLI, providing visibility into the state and behavior of Lens Resources, enabling workload performance tracking, historical runtime analysis, and troubleshooting.&#x20;
 
@@ -506,3 +506,51 @@ dataos-ctl -t cluster -w public -n themis_cluster_name --node  driver_name view 
 You should see the following interface:
 
 ![](/resources/lens/data_sources/Themis/Untitled\(9\).png)
+
+
+## Infrastructure monitoring of the Lens Services using Grafana
+
+Grafana offers robust capabilities to monitor and visualize critical Lens service performance metrics such as CPU usage, memory consumption, network traffic, and more. These monitoring capabilities are especially useful for services that require constant oversight to ensure optimal performance, such as Lens services and Flash service deployments.
+
+In a Lens deployment, three core services are typically running: API, Worker, and Router. If Flash is used as a data source, a fourth service is included. This gives a total of four services to monitor, each of which can be tracked for performance metrics like CPU usage and memory consumption.
+
+For instance, suppose the Flash Service is scheduled to run at 12:00 PM every day. Using Grafana, a dashboard can be configured to monitor its CPU usage and memory consumption over time, providing detailed insights into resource utilization and allowing for effective monitoring.
+
+### Step-by-step process for monitoring the Flash Service of the Lens
+
+**Defining Resource requests and limits**
+
+When deploying the Flash service, resource requests and limits are defined in the YAML configuration file. These settings control the amount of CPU and memory allocated to the service, ensuring it operates within specified boundaries.
+
+Here’s a simplified example of the YAML configuration:
+
+```yaml
+resources:
+    requests:  #Requests define the minimum resources required to run the service.
+        CPU: 1000m
+        memory: 2Gi
+
+    limits: #Limits specify the maximum resources that the service can consume, ensuring it does not exceed resource thresholds.
+        CPU: 48000m
+        memory: 450Gi
+```
+
+### Create dashboard and monitor usage
+
+After the Flash service is deployed, a Grafana dashboard should be created to monitor key metrics such as CPU usage and memory consumption. This dashboard will provide real-time data about how resources are being utilized over time. 
+
+After monitoring the Flash Service for a period of time, the actual resource usage can be observed on the Grafana dashboard. For example:
+
+* **CPU usage:** The dashboard might show a peak of 380m CPU usage, well below the maximum limit of 48000m.
+* **Memory usage:** The memory usage might peak between 254GB to 500GB, which is lower than the maximum limit of 450Gi.
+
+Based on this observed data, resource requests and limits can be adjusted to optimize usage:
+
+* **CPU adjustment:** If actual CPU usage peaks at `380m`, you can reduce the requested CPU from 1000m to something more appropriate, such as `500m`.
+* **Memory adjustment:** If memory usage does not exceed `350Gi` regularly, you can reduce the limit from `450Gi` to `350Gi`.
+* **Set up alerts for usage limit exceedance** Grafana allows you to set up alerts that notify you when the service exceeds predefined resource thresholds. For example:
+
+  * **CPU Alert:** Set an alert to trigger if CPU usage exceeds 90% for 5 minutes.
+  * **Memory Alert:** Set an alert to notify when memory usage exceeds 90% of the requested limit.
+
+These alerts can be sent via various channels like email, MS Teams, or other messaging systems to ensure immediate action can be taken if resource usage crosses critical limits.

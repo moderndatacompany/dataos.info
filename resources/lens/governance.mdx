@@ -4,64 +4,87 @@ sidebarTitle: "Governance"
 description: "An operator or administrator of an organization can govern or control access to who can create, read, update, or delete the Lens by assigning roles or use cases via Bifrost."
 ---
 
-Data governance in DataOS is structured across three layers to protect and control sensitive information:
+Data governance in DataOS is structured across four layers to protect and control sensitive information:
 
-* [**Physical data layer**](/resources/lens/governance#physical-data-layer)
+* [**Data source layer**](/resources/lens/governance#data-source-layer)
+
+* [**Query engine layer**](/resources/lens/governance#query-engine-layer)
 
 * [**Model layer**](/resources/lens/governance#model-layer)
 
 * [**Activation layer**](/resources/lens/governance#activation-layer) 
 
 
-## 1. Physical data layer
+## Data source layer
 
-The Physical Data Layer consists of raw data residing in data storage platforms such as Snowflake, Minerva, or other cloud data warehouses. At this stage, governance policies are implemented to secure the source data before any processing or consumption. Key governance features include:
+In the Data Source Layer, security measures are implemented at the database, schema, or table level within data storage platforms such as Snowflake, BigQuery, or AWS Redshift. These measures are typically controlled via management consoles or SQL commands provided by the respective platforms. Key security controls include:
 
-* **Access control:** restricts access to source data(tables, schemas, databases) based on user roles and attributes.
+**Access control:** Role-Based Access Control (RBAC) is managed through the platform's administration console, such as Snowflake's RBAC settings or similar tools in other data warehouses. The administrator assigns roles (e.g., read, write, admin) at different levels of the data storage system (database, schema, table).
 
-* **Data masking and redaction:** Sensitive information, like personally identifiable information (PII), is masked or redacted at the source level.
+**Data masking:** This can be configured through the data source's console or via SQL functions (e.g., MASKING_POLICY in Snowflake) to mask sensitive information like personally identifiable information (PII) or financial data.
 
-* **Data filtering:** Access restricted at the row level based on roles or criteria. For example, an employee in one department may only have access to data relevant to their department.
+**Row-Level Security (RLS):** Security at the row level is typically configured through SQL-based policies or via the database platform's UI or console. For example, in Snowflake, administrators can set up RLS using SQL scripts or through Snowflake's user interface.
 
-{/* For instance, In a Snowflake data warehouse, administrators can set up governance policies such as row-level security and data masking to ensure that sensitive data is appropriately protected before it is made available for modeling.
+**Audit logging:** Platforms like Snowflake and BigQuery provide auditing capabilities through their management consoles, allowing administrators to track and log access to sensitive data.
 
-For multi-source governance, Minerva integrates multiple data sources, extending governance policies across heterogeneous data platforms. Minerva allows for the application of governance at both the metadata and data levels, ensuring uniform security policies are applied to all integrated sources, such as Snowflake, BigQuery, PostgreSQL, or Lakehouses. The governance in Minerva is controlled and managed via Bifrost. */}
+Governance here ensures sensitive data is protected before it moves upstream for further processing, minimizing unauthorized access at later stages.
 
-For example, if a user wants to create a semantic model on top of certain data in DataOS, they must first ensure that they have access to the data. Additionally, they need to confirm they have the necessary permissions to create, update, and delete the Lens Resource.       
+## Query engine layer
 
-## 2. Model layer
+In addition to data source-level security, governance can also be enforced at the federated query engine level. Federated query engines such as Minerva or Themis supports heterogeneous data sources, enabling integration with multiple systems such as Snowflake, PostgreSQL, BigQuery, and Lakehouse. It provides governance at both the metadata and data levels, ensuring secure and consistent access across various sources. It allows to define access control on who can query what catalog, schema or table or interact with specific datasets. However, the access rules only apply when queries are run through the engine. If someone accesses the data with a different engine or source engine, the engine-level permissions don't apply. 
 
-After the source data is governed and secured, the next layer is the Model layer, where the Lens (semantic model) is created. This is where the raw source data is transformed into a model that provides a unified view of the data. Governance at this layer focuses on controlling access to the model and ensuring that only authorized users can create, update, or explore the data.
+Governance at the federated query engine level can be applied in the following ways:
 
-### Access Control to manage Lens
+* **Access control:** It enables administrators to define role-based access to restrict or grant data access. This ensures that only authorized users can query or modify data according to their assigned roles. In DataOS, access control is managed through Policy Resource and it's interface Bifrost, which provides an intutive and easy to use GUI to manage access permissions.
 
-Only authorized users with appropriate permissions are allowed to create or modify the semantic model (Lens). To control this, Bifrost is used to manage access by assigning roles or specific use cases to users. For example, a role such as 'Data Dev' may grant a user permission to create and modify the Lens, while other roles may have read-only access. To know how to manage access via Bifrost click [here](/resources/lens/governance#how-to-manage-access-permissions-to-create-lens?)
+* **Data masking:** Data Masking in federated query engines is applied through Data policies of Policy Resource to protect sensitive information. Administrators define masking rules to obfuscate sensitive data, like Personally Identifiable Information (PII), ensuring that only authorized users can view the full data.
 
-### Access control for exploration of the Lens
+**Data filtering:** Similarly, row-level filtering based on user roles can be applied through data filter policy in Policy Resource. This feature ensures that users only access the data that they are permitted to see. 
 
-After the Lens (semantic model) is created, access to it for exploration or analysis needs to be governed. This is done by defining user groups that specify who can access specific parts of the model. The [user groups](/resources/lens/working_with_user_groups/) are configured in a `user_groups.yml` file, which is placed alongside the model folder. The user groups define different levels of access to the model, determining which users or groups can explore or interact with specific parts of the model based on their user group name and permission defined in those user groups.
+This ensures governance is applied throughout downstream layers when the semantic model is created on the Minerva/Themis engine.
 
-## 3. Activation layer
+## Model layer
 
-The Activation Layer refers to the stage where the semantic model (Lens) is consumed by end-users through BI tools like Power BI, Tableau, or Superset. At this stage, governance focuses on ensuring that data remains secure and sensitive information is appropriately protected when presented in dashboards, reports, or analytical interfaces.
+After the source data is governed and secured, the next layer is the Model Layer, where the Lens (semantic model) is created. In this layer, raw source data is transformed into a model that provides a unified view of the data. Governance at this layer focuses on two key aspects:
 
-**Data masking in BI tools:** Even when data is accessed via BI tools, sensitive data is still masked or restricted based on the user’s role. For example, in Power BI, certain fields in a financial dashboard may be hidden or masked for users with lower privileges.
+* Who can create, update, delete, or read the Lens?
+* Who can explore the semantic model after it is created through the Lens?
 
-**Role-based data access:** In the activation layer, users can be granted different levels of access to the data, such as viewing aggregated metrics or drilling down to raw data. For example, an analyst might have full access to all data points, while a manager may only have access to summary reports.
+The governance ensures that only authorized users have access to create, update, or explore the data, providing tight control over who can interact with the semantic model.
 
-**Audit and monitoring:** User interactions with data in BI tools can be tracked, allowing organizations to monitor how sensitive data is being used and ensure compliance with governance policies.
+​The following key governance measures are enforced at the Model Layer:
 
-For instance, in Power BI, an organization can configure row-level security (RLS) to ensure that users can only see the data they are permitted to access. For example, if an employee from the HR department accesses a report in Power BI, they may see only employee-related data, while someone in Finance would have access to broader financial data.
+1. **Access to Read, Create, Update or Delete the Lens:** The access to read, create, update, delete the Lens is granted based on user roles. For example, a user with Data Analyst role may only have read access to a specific Lens, while users with Data Engineer role may be granted permissions to create, update, or delete it. This can be managed via Bifrost.
+
+
+2. **Access to  explore the Lens semantic model and it's elements:** TAccess to explore the semantic model is managed by creating a `user_groups.yml` file, which is placed alongside the model folder. This file defines which users belong to which groups, their API scopes, and tags. This ensures that users can only access the data and features they are authorized to interact with. Additionally, Data policies are applied based on user groups to control access at a more detailed level. These policies can mask sensitive data or filter rows based on dimensions and segments. For instance, users in one group might see only certain rows or have some data masked, while others have full access to the data. By using user groups and data policies together, you can ensure that only authorized users can access and interact with the data.
+
+The governance defined at the Model layer, will be effective and can be seen in any downstream layers such as the Activation layer.
+
+## Activation layer
+
+The Activation Layer is the stage where the governed semantic model (Lens) is consumed by end-users through Business Intelligence (BI) tools like Power BI, Tableau, and Superset. At this point, users access data through visualizations, reports, or dashboards that provide insights and facilitate decision-making. The key focus in the Activation Layer is to maintain the governance policies and security measures established in previous layers (such as Data Source, Query Engine, and Model layers) while ensuring that sensitive information is protected and displayed correctly. Additionally, BI tools like Power BI and Tableau allow administrators to define user roles and permissions at the report/dashboard level, row-level etc. For instance, a user might have permission to view a dashboard but not to interact with or modify underlying data.
+
+* Power BI integrates row-level security through roles and filters that govern what data is visible to specific users.
+* Tableau allows row-level security and user-specific filtering via the use of calculated fields and filters that limit the visible data based on the user’s identity or group.
+* Superset uses SQL-based filtering and user-specific access controls to ensure that users only see data that complies with governance policies.
 
 ## How to manage access permissions to create Lens?
 
 Bifrost plays a central role in managing and controlling user access to manage Lens. Administrators use Bifrost to assign permissions for reading, creating, updating, or deleting Lens to users either via granting role or via granting use-case. This may include:
 
-Permissions and accessing its semantic model can be granted either by assigning a role or a use case.  
+Permissions and accessing its semantic model can be granted either by 
 
-### Access via use-cases 
+* [Assigning a role](/resources/lens/governance#managing-lens-access-permissions-via-assigning-a-role)
+* [Assigning a use-case](/resources/lens/governance#managing-lens-access-permissions-via-granting-use-cases)
+
+### Managing Lens access permissions via granting use-cases
 
 Granting permissions via use-cases allows operators to exercise precise control over user access, ensuring that only the necessary permissions are granted. This method is ideal for limiting users' actions to specific tasks, reducing the potential for unintended access to sensitive or unrelated data.
+
+**Example use-case**
+
+Imagine you are an operator who needs to grant a user permission to read the Lens in all workspaces, while allowing them to create and manage the Lens only in the curriculum workspace. In such cases where you need to provide granular access, granting permissions via use-cases is the ideal solution. By using Bifrost, you can assign the appropriate use-cases to the user, ensuring they have read-only access to the Lens across all workspaces while allowing full management permissions within the curriculum workspace. 
 
 The following are the use-cases to manage Lens permissions:
 
@@ -71,10 +94,7 @@ The following are the use-cases to manage Lens permissions:
 
 3. `Create Update and Delete Lens in user layer workspaces`: Grants users the ability to create, update, and delete the Lens across all workspaces. This is broader and suitable for admins managing models across different workspaces such as `public`, `sandbox`, `curriculum`.
 
-
-### Granting a use-case to a user to manage the Lens
-
-Imagine you are an operator, and you need to grant a user permission to read Lens in all workspace but create and manage the Lens (semantic model) in a specific workspace let's say `curriculum`. To ensure proper access control, you will use Bifrost to assign the appropriate permissions, so the user can modify the Lens only within the curriculum workspace, while still having read access to all workspaces. Follow the steps below to implement these permissions effectively:
+Follow these steps to assign the permissions effectively:
 
 <Steps>  
 
@@ -123,7 +143,7 @@ Imagine you are an operator, and you need to grant a user permission to read Len
 </Steps>  
 
 
-### Access via roles  
+### Managing Lens access permissions via assigning a role
 
 While use-cases allow precise control, roles encompass a broader scope of permissions. Assigning roles grants users a wider range of capabilities, often beyond just managing the Lens. Roles may include permissions for a variety of tasks across the system, not limited to the creation or management of the Lens itself.
 
@@ -135,9 +155,9 @@ The **`Data Dev`** role is identified by the tag `roles:id:data-dev`.
 The specific names, use-case permission levels, and roles may vary between organizations, depending on how access is structured and managed within the system.
 </Note>  
 
-### Assigning a role to a User to manage the Lens
+**Example use-case**
 
-Imagine you are an operator, and you need to assign a role to a user that will grant them permissions to manage the Lens (semantic model) across all workspaces along with other responsibilities such as managing ETL pipelines. In such case assigning a role like `Data Dev` would be more appropriate. To implement this effectively, you will use Bifrost to assign the Data Dev role to the user. When granting access through roles, it's essential that the role includes the necessary Lens-related use cases. The Data Dev role, for instance, comes pre-configured with permissions for creating, updating, and managing the Lens.
+Imagine you are an operator and need to assign a user the permissions to manage the Lens (semantic model) across all workspaces, along with other responsibilities like managing ETL pipelines. To achieve this, you can assign the user a role that encompasses all required permissions. For example, assigning the role Data Dev would be ideal, as it provides access to manage the Lens across workspaces, as well as other relevant tasks.
 
 Follow the steps below to assign the `Data Dev` role:
 
