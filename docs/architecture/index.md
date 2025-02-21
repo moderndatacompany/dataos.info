@@ -65,7 +65,7 @@ Let us look at DataOS from the perspective of a data infrastructure.
 ## Data Infrastructure
 <center>
 ![Design showcasing data-flow patterns in the *User Space* of DataOS](/architecture/dataos_architecture.jpg){: style="width:31rem;" }
-<figcaption><i>Design showcasing data-flow patterns in the *User Space* of DataOS</i></figcaption></center>
+<figcaption><i>Design showcasing data-flow patterns in the User Space of DataOS</i></figcaption></center>
 <br/>
 
 The [User Space](/architecture/#user-space) is the layer of DataOS where data developers work. A data developer, or a *data product developer*, interacts with the system through [interfaces](/interfaces/) in the *user layer*.
