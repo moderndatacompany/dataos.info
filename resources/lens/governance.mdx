@@ -68,18 +68,12 @@ The Activation Layer is the stage where the governed semantic model (Lens) is co
 
 Bifrost plays a central role in managing and controlling user access to manage Lens. Administrators use Bifrost to assign permissions for reading, creating, updating, or deleting Lens to users either via granting role or via granting use-case. This may include:
 
-<<<<<<< HEAD
 Permissions and accessing its semantic model can be granted either by 
 
 * [Assigning a role](/resources/lens/governance#managing-lens-access-permissions-via-assigning-a-role)
 * [Assigning a use-case](/resources/lens/governance#managing-lens-access-permissions-via-granting-use-cases)
 
 ### Managing Lens access permissions via granting use-cases
-=======
-Permissions and accessing its semantic model can be granted either by assigning a role or a use case.
-
-### Access via use-cases
->>>>>>> 547b7aed70949ac0045d835d673f683fe01af4a6
 
 Granting permissions via use-cases allows operators to exercise precise control over user access, ensuring that only the necessary permissions are granted. This method is ideal for limiting users' actions to specific tasks, reducing the potential for unintended access to sensitive or unrelated data.
 
@@ -95,13 +89,7 @@ The following are the use-cases to manage Lens permissions:
 
 3. `Create Update and Delete Lens in user layer workspaces`: Grants users the ability to create, update, and delete the Lens across all workspaces. This is broader and suitable for admins managing models across different workspaces such as `public`, `sandbox`, `curriculum`.
 
-<<<<<<< HEAD
 Follow these steps to assign the permissions effectively:
-=======
-### Granting a use-case to a user to manage the Lens
-
-Imagine you are an operator, and you need to grant a user permission to read Lens in all workspace but create and manage the Lens (semantic model) in a specific workspace let's say `curriculum`. To ensure proper access control, you will use Bifrost to assign the appropriate permissions, so the user can modify the Lens only within the curriculum workspace, while still having read access to all workspaces. Follow the steps below to implement these permissions effectively:
->>>>>>> 547b7aed70949ac0045d835d673f683fe01af4a6
 
 <Steps>
   <Step title="Navigate to DataOS">
@@ -147,14 +135,7 @@ Imagine you are an operator, and you need to grant a user permission to read Len
   </Step>
 </Steps>
 
-<<<<<<< HEAD
-</Steps>  
-
-
-### Managing Lens access permissions via assigning a role
-=======
 ### Access via roles
->>>>>>> 547b7aed70949ac0045d835d673f683fe01af4a6
 
 While use-cases allow precise control, roles encompass a broader scope of permissions. Assigning roles grants users a wider range of capabilities, often beyond just managing the Lens. Roles may include permissions for a variety of tasks across the system, not limited to the creation or management of the Lens itself.
 
