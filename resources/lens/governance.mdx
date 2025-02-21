@@ -12,8 +12,7 @@ Data governance in DataOS is structured across four layers to protect and contro
 
 * [**Model layer**](/resources/lens/governance#model-layer)
 
-* [**Activation layer**](/resources/lens/governance#activation-layer) 
-
+* [**Activation layer**](/resources/lens/governance#activation-layer)
 
 ## Data source layer
 
@@ -25,11 +24,7 @@ In the Data Source Layer, security measures are implemented at the database, sch
 
 **Row-Level Security (RLS):** Security at the row level is typically configured through SQL-based policies or via the database platform's UI or console. For example, in Snowflake, administrators can set up RLS using SQL scripts or through Snowflake's user interface.
 
-**Audit logging:** Platforms like Snowflake and BigQuery provide auditing capabilities through their management consoles, allowing administrators to track and log access to sensitive data.
-
-Governance here ensures sensitive data is protected before it moves upstream for further processing, minimizing unauthorized access at later stages.
-
-## Query engine layer
+For example, if a user wants to create a semantic model on top of certain data in DataOS, they must first ensure that they have access to the data. Additionally, they need to confirm they have the necessary permissions to create, update, and delete the Lens Resource.
 
 In addition to data source-level security, governance can also be enforced at the federated query engine level. Federated query engines such as Minerva or Themis supports heterogeneous data sources, enabling integration with multiple systems such as Snowflake, PostgreSQL, BigQuery, and Lakehouse. It provides governance at both the metadata and data levels, ensuring secure and consistent access across various sources. It allows to define access control on who can query what catalog, schema or table or interact with specific datasets. However, the access rules only apply when queries are run through the engine. If someone accesses the data with a different engine or source engine, the engine-level permissions don't apply. 
 
@@ -73,12 +68,18 @@ The Activation Layer is the stage where the governed semantic model (Lens) is co
 
 Bifrost plays a central role in managing and controlling user access to manage Lens. Administrators use Bifrost to assign permissions for reading, creating, updating, or deleting Lens to users either via granting role or via granting use-case. This may include:
 
+<<<<<<< HEAD
 Permissions and accessing its semantic model can be granted either by 
 
 * [Assigning a role](/resources/lens/governance#managing-lens-access-permissions-via-assigning-a-role)
 * [Assigning a use-case](/resources/lens/governance#managing-lens-access-permissions-via-granting-use-cases)
 
 ### Managing Lens access permissions via granting use-cases
+=======
+Permissions and accessing its semantic model can be granted either by assigning a role or a use case.
+
+### Access via use-cases
+>>>>>>> 547b7aed70949ac0045d835d673f683fe01af4a6
 
 Granting permissions via use-cases allows operators to exercise precise control over user access, ensuring that only the necessary permissions are granted. This method is ideal for limiting users' actions to specific tasks, reducing the potential for unintended access to sensitive or unrelated data.
 
@@ -94,66 +95,76 @@ The following are the use-cases to manage Lens permissions:
 
 3. `Create Update and Delete Lens in user layer workspaces`: Grants users the ability to create, update, and delete the Lens across all workspaces. This is broader and suitable for admins managing models across different workspaces such as `public`, `sandbox`, `curriculum`.
 
+<<<<<<< HEAD
 Follow these steps to assign the permissions effectively:
+=======
+### Granting a use-case to a user to manage the Lens
 
-<Steps>  
+Imagine you are an operator, and you need to grant a user permission to read Lens in all workspace but create and manage the Lens (semantic model) in a specific workspace let's say `curriculum`. To ensure proper access control, you will use Bifrost to assign the appropriate permissions, so the user can modify the Lens only within the curriculum workspace, while still having read access to all workspaces. Follow the steps below to implement these permissions effectively:
+>>>>>>> 547b7aed70949ac0045d835d673f683fe01af4a6
 
-  <Step title="Navigate to DataOS">  
-    Log in to DataOS and open Bifrost. The Bifrost interface will launch.  
+<Steps>
+  <Step title="Navigate to DataOS">
+    Log in to DataOS and open Bifrost. The Bifrost interface will launch.
 
-    ![](/resources/scanner/governance/bifrost.png)  
-  </Step>  
+    ![](/resources/scanner/governance/bifrost.png)
+  </Step>
 
-  <Step title="Search for the User" titleSize="h2">  
-    Navigate to the 'Users' tab and use the search box to locate the user.  
+  <Step title="Search for the User" titleSize="h2">
+    Navigate to the 'Users' tab and use the search box to locate the user.
 
-    ![](/resources/scanner/governance/bifrost_user_iamgroot.png)  
-  </Step>  
+    ![](/resources/scanner/governance/bifrost_user_iamgroot.png)
+  </Step>
 
-  <Step title="Select the User" titleSize="h2">  
-    After selecting the user, detailed users information will be displayed. Go to the 'Grants' section to manage assigned permissions and use cases.  
+  <Step title="Select the User" titleSize="h2">
+    After selecting the user, detailed users information will be displayed. Go to the 'Grants' section to manage assigned permissions and use cases.
 
-    ![](/resources/scanner/governance/iamgroot_grants_tab.png)  
+    ![](/resources/scanner/governance/iamgroot_grants_tab.png)
 
-    Click on the 'Grant Use-Case' button.  
-  </Step>  
+    Click on the 'Grant Use-Case' button.
+  </Step>
 
-  <Step title="Search for the Required Use Case" titleSize="h2">  
-    A search dialog box will appear after clicking the 'Grant Use-Case' button. Search for the required use case:  
+  <Step title="Search for the Required Use Case" titleSize="h2">
+    A search dialog box will appear after clicking the 'Grant Use-Case' button. Search for the required use case:
 
-    **`Create, Update, and Delete Lens in user layer specified workspace – Manage Lens in the specified workspace`**  
+    **`Create, Update, and Delete Lens in user layer specified workspace – Manage Lens in the specified workspace`**
 
-    ![](/resources/lens/governance/search_use_case.png)  
-  </Step>  
+    ![](/resources/lens/governance/search_use_case.png)
+  </Step>
 
-  <Step title="Specify the Workspace" titleSize="h2">  
-    After selecting the use case, a dialog box will prompt for the workspace name. Enter the workspace name where access should be granted.  
+  <Step title="Specify the Workspace" titleSize="h2">
+    After selecting the use case, a dialog box will prompt for the workspace name. Enter the workspace name where access should be granted.
 
     <Note>
-    Each action (Read, Create, Update, and Delete) requires a specific workspace name to ensure accurate permission assignment.  
-    </Note>  
+      Each action (Read, Create, Update, and Delete) requires a specific workspace name to ensure accurate permission assignment.
+    </Note>
 
-    In the example below, the user has been granted permission to read Lens in all workspaces but can create, update, and delete Lens only in the `curriculum` workspace.  
+    In the example below, the user has been granted permission to read Lens in all workspaces but can create, update, and delete Lens only in the `curriculum` workspace.
 
-    ![](/resources/lens/governance/use_case_dialog_box.png)  
+    ![](/resources/lens/governance/use_case_dialog_box.png)
 
-    Once the form is completed, click the Grant button to apply the changes. The permissions will be updated, allowing the user to read Lens in all workspaces while managing Lens only in the `curriculum` workspace.  
-  </Step>  
+    Once the form is completed, click the Grant button to apply the changes. The permissions will be updated, allowing the user to read Lens in all workspaces while managing Lens only in the `curriculum` workspace.
+  </Step>
+</Steps>
 
+<<<<<<< HEAD
 </Steps>  
 
 
 ### Managing Lens access permissions via assigning a role
+=======
+### Access via roles
+>>>>>>> 547b7aed70949ac0045d835d673f683fe01af4a6
 
 While use-cases allow precise control, roles encompass a broader scope of permissions. Assigning roles grants users a wider range of capabilities, often beyond just managing the Lens. Roles may include permissions for a variety of tasks across the system, not limited to the creation or management of the Lens itself.
 
-If access is granted through a role, it must include the necessary Lens-related use cases. For example, the **`Data Dev`** role contains permissions for creating and managing a Lens.  
+If access is granted through a role, it must include the necessary Lens-related use cases. For example, the **`Data Dev`** role contains permissions for creating and managing a Lens.
 
-The **`Data Dev`** role is identified by the tag `roles:id:data-dev`.  
+The **`Data Dev`** role is identified by the tag `roles:id:data-dev`.
 
-<Note>  
-The specific names, use-case permission levels, and roles may vary between organizations, depending on how access is structured and managed within the system.
-</Note>  
+<Note>
+  The specific names, use-case permission levels, and roles may vary between organizations, depending on how access is structured and managed within the system.
+</Note>
 
 **Example use-case**
 
@@ -162,35 +173,30 @@ Imagine you are an operator and need to assign a user the permissions to manage 
 Follow the steps below to assign the `Data Dev` role:
 
 <Steps>
-
-  <Step title="Log in to DataOS and Access Bifrost">  
+  <Step title="Log in to DataOS and Access Bifrost">
     Log in to DataOS and navigate to Bifrost. The Bifrost interface will launch, providing the necessary tools to manage user roles and permissions.
-        ![](/resources/scanner/governance/bifrost.png)    
+    ![](/resources/scanner/governance/bifrost.png)
   </Step>
 
-  <Step title="Locate the User" titleSize="h2">  
-    Navigate to the 'Users' tab in the Bifrost interface. Utilize the search function to locate the specific user you need to assign a role to, and select the user from the list. 
-        ![](/resources/scanner/governance/bifrost_user_iamgroot.png)   
+  <Step title="Locate the User" titleSize="h2">
+    Navigate to the 'Users' tab in the Bifrost interface. Utilize the search function to locate the specific user you need to assign a role to, and select the user from the list.
+    ![](/resources/scanner/governance/bifrost_user_iamgroot.png)
   </Step>
 
-  <Step title="Select the User and Access the 'Tags' Section" titleSize="h2">  
-    After selecting the user, detailed information about the user will appear. Scroll down to the 'Tags' section, which allows you to manage roles and permissions for the selected user. 
-    ![](/resources/lens/governance/tags_section.png) 
+  <Step title="Select the User and Access the 'Tags' Section" titleSize="h2">
+    After selecting the user, detailed information about the user will appear. Scroll down to the 'Tags' section, which allows you to manage roles and permissions for the selected user.
+    ![](/resources/lens/governance/tags_section.png)
   </Step>
 
-  <Step title="Assign the 'Data Dev' Role" titleSize="h2">  
+  <Step title="Assign the 'Data Dev' Role" titleSize="h2">
     In the 'Tags' section, click the 'Add Role' button to search for the `Data Dev` role. Once located, click on the role to select it.
-    ![](/resources/lens/governance/search_roles.png) 
+    ![](/resources/lens/governance/search_roles.png)
   </Step>
 
-  <Step title="Confirm the Role Assignment" titleSize="h2">  
-    Click the 'Add' button to confirm the assignment of the `Data Dev` role to the user. A success message will be displayed, confirming that the role has been successfully assigned to the user.  
+  <Step title="Confirm the Role Assignment" titleSize="h2">
+    Click the 'Add' button to confirm the assignment of the `Data Dev` role to the user. A success message will be displayed, confirming that the role has been successfully assigned to the user.\
     ![](/resources/lens/governance/add_role.png)
 
     Through the `Data Dev` role a user will be able to read, create, update and delete Lens in all workspace along with other permissions unrelated to managing the Lens.
   </Step>
-
 </Steps>
-
-
-

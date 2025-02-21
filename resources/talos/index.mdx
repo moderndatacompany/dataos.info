@@ -1,5 +1,48 @@
 ---
-title: "New file"
+title: "Overview"
 description: "Description of your new file."
 sidebarTitle: "Overview"
 ---
+
+Talos is a Stack within DataOS designed to facilitate the development of robust and scalable data APIs (RESTful APIs) using SQL templates. It enables the integration of logic and transformation within SQL templates, streamlining the creation and management of APIs. This approach enhances the efficiency of API development and integration into various applications and AI agents.
+
+Talos provides functionality for filtering data from the data warehouse, validating API parameters, and handling errors. It ensures data accuracy and integrity while delivering advanced analytics capabilities to users.
+
+By converting SQL into APIs efficiently, Talos accelerates the deployment of data-driven solutions.
+
+
+<Tip>
+  **Talos within the Data Product Life Cycle**
+  Talos operates within the consumption layer of the Data Product Life Cycle in DataOS, specifically managing tabular data stored in data lakehouses. It optimizes data access and usability for various consumers, including external systems, applications, and end-users.
+
+  Talos API endpoints provide a standardized and flexible interface for querying and consuming Data Products through APIs. This capability is particularly useful when working with tabular data, as it allows users to execute SQL queries across one or multiple Data Products and expose the results as REST APIs. This approach enables seamless integration and data retrieval outside the DataOS environment.
+</Tip>
+
+## Why Talos?
+
+The rapid growth of data presents challenges for data professionals in efficiently sharing data with stakeholders for operational business use cases. Traditional methods for creating APIs require complex and manual processes which complicates the integration of databases and data warehouses with AI agents and applications.
+
+### Conventional Methods and Challenges
+
+**Custom API Development**
+Developing APIs traditionally involves extensive manual coding, which is resource-intensive, particularly for complex systems or when integrating multiple data sources. Manual development increases the risk of bugs and errors, potentially affecting API reliability and efficiency.
+
+**Integration Complexity**
+Integrating data from diverse sources with varying formats and protocols requires significant expertise. The lack of standardized conventions leads to inconsistencies in API interactions, complicating integration with AI systems.
+
+**Security and Compliance**
+Ensuring API security and compliance with regulations such as GDPR or HIPAA necessitates robust authentication, authorization, and encryption. As security and compliance requirements evolve, APIs must be continuously updated and maintained to remain compliant.
+
+**Scalability and Performance**
+Custom APIs are often not designed with scalability in mind, leading to performance issues as data volumes or user demand increases. Achieving optimal scalability and performance requires considerable development resources and infrastructure.
+
+**Documentation and Usability**
+Comprehensive documentation is essential for making APIs understandable and usable by developers and AI systems. However, inadequate documentation can hinder effective integration and usage, increasing the complexity of implementation.
+
+### Features of Talos
+
+Talos utilizes Heimdall for authentication and employs SQL templates for streamlined query execution, ensuring secure, efficient, and reliable API services. Its RESTful architecture facilitates seamless integration, while automated documentation generation and observability features enhance development efficiency and maintainability.
+
+<Frame caption="Talos Stack">
+  ![](/talos-01-flowchart.jpg)
+</Frame>

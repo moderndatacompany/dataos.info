@@ -44,7 +44,30 @@ workflow:
 	        ${{"API-KEY"}}
 ```
 
-<Info>
-On a successful run, user can view the users information on Metis UI.
+<Note>
+  On a successful run, user can view the users information on Metis UI.
+</Note>
 
-</Info>
+The above sample manifest file is deployed using the following command:
+
+```bash
+dataos-ctl resource apply -f ${{path to the Scanner YAML}}
+```
+
+**Updating the Scanner Workflow**:
+
+If the Depot or Scanner configurations are updated, the Scanner must be redeployed after deleting the previous instance. Use the following command to delete the existing Scanner:
+
+<CodeGroup>
+  ```bash Command
+  dataos-ctl delete -f ${{path-to-Scanner-YAML}}
+  ```
+
+  ```bash Alternative Command
+  dataos-ctl delete -t workflow -n ${{name of Scanner}} -w ${{name of workspace}}
+  ```
+</CodeGroup>
+
+<Note>
+  **Best Practice:** As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs
+</Note>

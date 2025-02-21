@@ -3,7 +3,6 @@ title: "Error reference"
 description: "This document lists common Lens and semantic model errors found in logs and API responses, along with guidance on resolving them."
 ---
 
-
 ## Can't find join path
 
 This error occurs when a query includes members from Lens that cannot be joined to form a valid query to the upstream data source.
@@ -16,6 +15,22 @@ For those building custom data applications, utilizing the meta endpoint of the 
 
 This error indicates that the data source was unable to interpret the value of a time dimension as a valid timestamp. Reviewing the format of the time dimension and ensuring it matches the expected timestamp format can resolve this issue.
 
-## Primary key is required when join is defined
+## The primary key is required when join is defined
 
 This error suggests that a Lens with joins has been defined without specifying a primary key. To resolve this, ensure that a primary key is set for any Lens that includes joins.
+
+When generating SQL queries, Lens uses primary keys to avoid fanouts. A fanout happens when two tables are joined and a single value gets duplicated in the result, meaning that some values can be double-counted.
+
+Please define a primary key dimension in this cube to make the joins work correctly.
+
+If your data doesn't have a natural primary key, e.g., `id`, you can define a composite primary key by concatenating most or all of the columns in the table, e.g.:
+
+```
+table:
+  - name: composite_key
+    sql: CONCAT(column_a, '-', column_b, '-', column_c)
+    type: string
+    primary_key: true
+    public:true
+  
+```

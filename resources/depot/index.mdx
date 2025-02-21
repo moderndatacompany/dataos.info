@@ -23,7 +23,7 @@ It enables users to establish connections and retrieve data from various data so
 
   * **Metadata management and observability:** A Depot provides deep introspection into registered data sources, enabling visibility into constraints, partitions, and indexing. It also supports monitoring and tracking changes via Metis UI for enhanced observability.
 
-  * **Foundation for Data Products:** Depots are essential for creating Data Products, as they enable teams to query and transform source data. 
+  * **Foundation for Data Products:** Depots are essential for creating Data Products, as they enable teams to query and transform source data.
 
   By leveraging Depots, organizations can build scalable, secure, and efficient data ecosystems within DataOS, ensuring Data Products have reliable access to well-governed and high-quality data.
 </Tip>
@@ -239,7 +239,7 @@ This section involves steps for creating a Depot for different data sources supp
         icebergCatalogType: Hive
     ```
 
-    If you do not mention the catalog name as Hive, it will use Hadoop as the default catalog for Iceberg format. Hive automatically keeps the pointer updated to the latest metadata version. If you use Hadoop, you have to manually do this by running the set metadata command as described on this page: [Set Metadata](https://dataos.info/resources/depot/icebase/).
+    If you do not mention the catalog name as Hive, it will use Hadoop as the default catalog for Iceberg format. Hive automatically keeps the pointer updated to the latest metadata version. If you use Hadoop, you have to manually do this by running the set metadata command as described on this page: [Set Metadata](https://dataos.info/resources/depot/lakehouse/).
   </Accordion>
 
   <Accordion title="Amazon Redshift" defaultOpen={false}>
@@ -291,7 +291,7 @@ This section involves steps for creating a Depot for different data sources supp
       This step can be skipped if you prefer to create a Depot without referencing an Instance Secret.
     </Warning>
 
-    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss). 
+    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).
 
     ### Step 2: Create a Redshift Depot manifest file
 
@@ -343,7 +343,7 @@ This section involves steps for creating a Depot for different data sources supp
 
     To ensure that your Depot has been successfully created, you can verify it in two ways:
 
-    * Check the name of the newly created Depot in the list of Depots where you are named as the owner: 
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:
 
     ```bash
     dataos-ctl get -t depot
@@ -413,11 +413,11 @@ This section involves steps for creating a Depot for different data sources supp
       This step can be skipped if you prefer to create a Depot without referencing an Instance Secret.
     </Warning>
 
-    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss). 
+    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).
 
     ### Step 2: Create a S3 Depot manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your S3 Depot. 
+    Begin by creating a manifest file to hold the configuration details for your S3 Depot.
 
     <CodeGroup>
       ```yaml Instance Secret reference Depot manifest file
@@ -464,7 +464,7 @@ This section involves steps for creating a Depot for different data sources supp
 
     To ensure that your Depot has been successfully created, you can verify it in two ways:
 
-    * Check the name of the newly created Depot in the list of Depots where you are named as the owner: 
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:
 
     ```bash
     dataos-ctl get -t depot
@@ -568,7 +568,7 @@ This section involves steps for creating a Depot for different data sources supp
 
     ### Step 1: Create a Pulsar Depot manifest file
 
-    Create a manifest file to hold the configuration details for your Pulsar Depot. 
+    Create a manifest file to hold the configuration details for your Pulsar Depot.
 
     <CodeGroup>
       ```yaml Pulsar Depot manifest file
@@ -610,7 +610,7 @@ This section involves steps for creating a Depot for different data sources supp
 
     To ensure that your Depot has been successfully created, you can verify it in two ways:
 
-    * Check the name of the newly created Depot in the list of Depots where you are named as the owner: 
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:
 
     ```bash
     dataos-ctl get -t depot
@@ -692,11 +692,11 @@ This section involves steps for creating a Depot for different data sources supp
       This step can be skipped if you prefer to create a Depot without referencing an Instance Secret.
     </Warning>
 
-    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss). 
+    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).
 
     ### Step 2: Create a WASBS Depot manifest file
 
-    Create a manifest file to hold the configuration details for your WASBS Depot. 
+    Create a manifest file to hold the configuration details for your WASBS Depot.
 
     <CodeGroup>
       ```yaml Instance Secret reference Depot manifest file
@@ -745,7 +745,7 @@ This section involves steps for creating a Depot for different data sources supp
 
     To ensure that your Depot has been successfully created, you can verify it in two ways:
 
-    * Check the name of the newly created Depot in the list of Depots where you are named as the owner: 
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:
 
     ```bash
     dataos-ctl get -t depot
@@ -823,7 +823,7 @@ This section involves steps for creating a Depot for different data sources supp
       This step can be skipped if you prefer to create a Depot without referencing an Instance Secret.
     </Warning>
 
-    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss). 
+    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).
 
     ### Step 2: Create an Elasticsearch Depot manifest file
 
@@ -872,7 +872,7 @@ This section involves steps for creating a Depot for different data sources supp
 
     To ensure that your Depot has been successfully created, you can verify it in two ways:
 
-    * Check the name of the newly created Depot in the list of Depots where you are named as the owner: 
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:
 
     ```bash
     dataos-ctl get -t depot
@@ -956,11 +956,11 @@ This section involves steps for creating a Depot for different data sources supp
       This step can be skipped if you prefer to create a Depot without referencing an Instance Secret.
     </Warning>
 
-    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss). 
+    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).
 
     ### Step 2: Create an Eventhub Depot manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your Eventhub Depot. 
+    Begin by creating a manifest file to hold the configuration details for your Eventhub Depot.
 
     <CodeGroup>
       ```yaml Instance Secret reference Depot manifest file
@@ -1004,7 +1004,7 @@ This section involves steps for creating a Depot for different data sources supp
 
     To ensure that your Depot has been successfully created, you can verify it in two ways:
 
-    * Check the name of the newly created Depot in the list of Depots where you are named as the owner: 
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:
 
     ```bash
     dataos-ctl get -t depot
@@ -1084,11 +1084,11 @@ This section involves steps for creating a Depot for different data sources supp
       This step can be skipped if you prefer to create a Depot without referencing an Instance Secret.
     </Warning>
 
-    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss). 
+    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).
 
     ### Step 2: Create a Bigquery Depot manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your Bigquery Depot. 
+    Begin by creating a manifest file to hold the configuration details for your Bigquery Depot.
 
     <CodeGroup>
       ```yaml Instance Secret reference Depot manifest file
@@ -1138,7 +1138,7 @@ This section involves steps for creating a Depot for different data sources supp
 
     To ensure that your Depot has been successfully created, you can verify it in two ways:
 
-    * Check the name of the newly created Depot in the list of Depots where you are named as the owner: 
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:
 
     ```bash
     dataos-ctl get -t depot
@@ -1220,7 +1220,7 @@ This section involves steps for creating a Depot for different data sources supp
       This step can be skipped if you prefer to create a Depot without referencing an Instance Secret.
     </Warning>
 
-    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss). 
+    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).
 
     ### Step 2: Create a GCS Depot manifest file
 
@@ -1270,7 +1270,7 @@ This section involves steps for creating a Depot for different data sources supp
 
     To ensure that your Depot has been successfully created, you can verify it in two ways:
 
-    * Check the name of the newly created Depot in the list of Depots where you are named as the owner: 
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:
 
     ```bash
     dataos-ctl get -t depot
@@ -1356,11 +1356,11 @@ This section involves steps for creating a Depot for different data sources supp
       This step can be skipped if you prefer to create a Depot without referencing an Instance Secret.
     </Warning>
 
-    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss). 
+    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).
 
     ### Step 2: Create a JDBC Depot manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your JDBC Depot. 
+    Begin by creating a manifest file to hold the configuration details for your JDBC Depot.
 
     <CodeGroup>
       ```yaml Instance Secret reference Depot manifest file
@@ -1410,7 +1410,7 @@ This section involves steps for creating a Depot for different data sources supp
 
     To ensure that your Depot has been successfully created, you can verify it in two ways:
 
-    * Check the name of the newly created Depot in the list of Depots where you are named as the owner: 
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:
 
     ```bash
     dataos-ctl get -t depot
@@ -1482,7 +1482,7 @@ This section involves steps for creating a Depot for different data sources supp
 
     ### Step 1: Create a Kafka Depot manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your Kafka Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file. 
+    Begin by creating a manifest file to hold the configuration details for your Kafka Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.
 
     <CodeGroup>
       ```yaml Inline credentials Depot manifest file
@@ -1536,7 +1536,7 @@ This section involves steps for creating a Depot for different data sources supp
 
     To ensure that your Depot has been successfully created, you can verify it in two ways:
 
-    * Check the name of the newly created Depot in the list of Depots where you are named as the owner: 
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:
 
     ```bash
     dataos-ctl get -t depot
@@ -1618,23 +1618,23 @@ This section involves steps for creating a Depot for different data sources supp
 
     5. Create a Keystore and Truststore file from a `.crt` file. Follow the below steps to create the keystore and trust store files from the `.crt` file.
 
-    *  Initialize the Keystore, remember the password you create while initializing the Keystore.
+    * Initialize the Keystore, remember the password you create while initializing the Keystore.
 
-    *  Run the following command, to import a certificate (`demo-ssl-public-cert.cert`) into the Java KeyStore with the alias (`moderncert03`). It will create a keystore and trust store files in the JAVA folder.
+    * Run the following command, to import a certificate (`demo-ssl-public-cert.cert`) into the Java KeyStore with the alias (`moderncert03`). It will create a keystore and trust store files in the JAVA folder.
 
     ```bash
     sudo  keytool -importcert -alias moderncert03 -keystore $JAVA_HOME/lib/security/cacerts -storepass 123456 -file /Users/iamgroot/office/poc-squad/mongodb-poc/demo-ssl-public-cert.cert
     ```
 
-    *  `keystore`: Points to the KeyStore file to update.
+    * `keystore`: Points to the KeyStore file to update.
 
     * `importcert`: Specifies the operation of importing a certificate.
 
-    *  `alias moderncert03`: Assigns the alias `moderncert03` to the imported certificate.
+    * `alias moderncert03`: Assigns the alias `moderncert03` to the imported certificate.
 
-    *  `storepass 123456`: Provide the password for the keystone you created while initializing the keystore.
+    * `storepass 123456`: Provide the password for the keystone you created while initializing the keystore.
 
-    *  `file`: Specifies the path to the certificate file to import.
+    * `file`: Specifies the path to the certificate file to import.
 
     ### **Steps to create MongoDB Depot through username and password authentication**
 
@@ -1668,11 +1668,7 @@ This section involves steps for creating a Depot for different data sources supp
             password: ${{f5ce9b0d972fd9555560}}
     ```
 
-        
-
     2. Apply the Depot manifest file by executing the below command.
-
-        
 
     ```bash
     dataos-ctl apply -f /home/office/depots/mongo_depot.yaml
@@ -1680,17 +1676,11 @@ This section involves steps for creating a Depot for different data sources supp
 
     3. Verify the Depot creation by executing the below command.
 
-        
-
     ```bash
     dataos-ctl get -t depot -n mongodb03 -w public
     ```
 
-        
-
     4. Scan the metadata. By creating and applying the Scanner Workflow by referring to the MongoDB Depot name, you can extract the metadata that can be accessed on the Metis App.
-
-        
 
     ```yaml
     version: v1
@@ -1711,21 +1701,17 @@ This section involves steps for creating a Depot for different data sources supp
               depot: dataos://mongodb03         # MongoDB depot name
     ```
 
-        
-
     5. Apply the Scanner Workflow by executing the below command.
 
     ```yaml
     dataos-ctl apply -f /home/office/workflow/depot_scanner.yaml
     ```
 
-    ###  **Steps to create MongoDB Depot through certificate authentication**
+    ### **Steps to create MongoDB Depot through certificate authentication**
 
     This section involves the alternative steps to create a MongoDB  Depot without an Instance Secret.
 
     1. Create a manifest file for Depot containing the following code and update the details.
-
-        
 
     ```yaml
     version: ${{v1}} # depot version
@@ -1759,31 +1745,19 @@ This section involves steps for creating a Depot for different data sources supp
             trust_store_file: ${{/Library/Java/JavaVirtualMachines/jdk-22.jdk/Contents/Home/lib/security/cacerts}}
     ```
 
-        
-
     2. Apply the Depot manifest file by executing the below command.
-
-        
 
     ```bash
     dataos-ctl apply -f /home/office/depots/mongo_depot.yaml
     ```
 
-        
-
     3. Verify the Depot creation by executing the below command.
-
-        
 
     ```bash
     dataos-ctl get -t depot -n mongodb03 -w public
     ```
 
-     
-
     4. Scan the metadata. By creating and applying the Scanner Workflow by referring to the MongoDB Depot name, you can extract the metadata that can be accessed on the Metis App.
-
-        
 
     ```yaml
     version: v1
@@ -1804,15 +1778,13 @@ This section involves steps for creating a Depot for different data sources supp
               depot: dataos://mongodb         # MongoDB depot name
     ```
 
-        
-
     5. Apply the Scanner Workflow by executing the below command.
 
     ```bash
     dataos-ctl apply -f /home/office/workflow/udscoremongodb.yaml
     ```
 
-    ###  **Steps to create MongoDB Depot through VPCE**
+    ### **Steps to create MongoDB Depot through VPCE**
 
     This section involves the alternative steps to create a MongoDB  Depot without an Instance Secret. VPCE-based Depot is similar to certificate authentication Depot just additional parameters have been added that allow connection with VPCs.
 
@@ -1854,17 +1826,11 @@ This section involves steps for creating a Depot for different data sources supp
 
     2. Apply the Depot manifest file by executing the below command.
 
-        
-
     ```bash
     dataos-ctl apply -f /home/office/depots/mongo_depot.yaml
     ```
 
-        
-
     3. Verify the Depot creation by executing the below command.
-
-        
 
     ```bash
     dataos-ctl get -t depot -n mongodb03 -w public
@@ -1892,8 +1858,6 @@ This section involves steps for creating a Depot for different data sources supp
     ```
 
     5. Apply the Scanner Workflow by executing the below command.
-
-        
 
     ```bash
     dataos-ctl apply -f /home/office/workflow/udscoremongodb.yaml
@@ -1941,11 +1905,11 @@ This section involves steps for creating a Depot for different data sources supp
       This step can be skipped if you prefer to create a Depot without referencing an Instance Secret.
     </Warning>
 
-    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss). 
+    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).
 
     ### Step 2: Create a MSSQL Depot manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your MSSQL Depot. 
+    Begin by creating a manifest file to hold the configuration details for your MSSQL Depot.
 
     **Use the below template, if the self-signed certificate is enabled.**
 
@@ -2061,7 +2025,7 @@ This section involves steps for creating a Depot for different data sources supp
 
     To ensure that your Depot has been successfully created, you can verify it in two ways:
 
-    * Check the name of the newly created Depot in the list of Depots where you are named as the owner: 
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:
 
     ```bash
     dataos-ctl get -t depot
@@ -2143,11 +2107,11 @@ This section involves steps for creating a Depot for different data sources supp
       This step can be skipped if you prefer to create a Depot without referencing an Instance Secret.
     </Warning>
 
-    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss). 
+    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).
 
     ### Step 2: Create a MySQL Depot manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your MySQL Depot. 
+    Begin by creating a manifest file to hold the configuration details for your MySQL Depot.
 
     **Use this template, if a self-signed certificate is enabled.**
 
@@ -2230,7 +2194,7 @@ This section involves steps for creating a Depot for different data sources supp
 
     To ensure that your Depot has been successfully created, you can verify it in two ways:
 
-    * Check the name of the newly created Depot in the list of Depots where you are named as the owner: 
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:
 
     ```bash
     dataos-ctl get -t depot
@@ -2308,11 +2272,11 @@ This section involves steps for creating a Depot for different data sources supp
       This step can be skipped if you prefer to create a Depot without referencing an Instance Secret.
     </Warning>
 
-    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss). 
+    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).
 
     ### Step 2: Create an Opensearch Depot manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your Opensearch Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file. 
+    Begin by creating a manifest file to hold the configuration details for your Opensearch Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.
 
     <CodeGroup>
       ```yaml Inline credentials Depot manifest file
@@ -2385,7 +2349,7 @@ This section involves steps for creating a Depot for different data sources supp
 
     To ensure that your Depot has been successfully created, you can verify it in two ways:
 
-    * Check the name of the newly created Depot in the list of Depots where you are named as the owner: 
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:
 
     ```bash
     dataos-ctl get -t depot
@@ -2467,11 +2431,11 @@ This section involves steps for creating a Depot for different data sources supp
       This step can be skipped if you prefer to create a Depot without referencing an Instance Secret.
     </Warning>
 
-    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss). 
+    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).
 
     ### Step 2: Create a Oracle Depot manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your Oracle Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file. 
+    Begin by creating a manifest file to hold the configuration details for your Oracle Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.
 
     <CodeGroup>
       ```yaml Inline credentials Depot manifest file
@@ -2547,7 +2511,7 @@ This section involves steps for creating a Depot for different data sources supp
 
     To ensure that your Depot has been successfully created, you can verify it in two ways:
 
-    * Check the name of the newly created Depot in the list of Depots where you are named as the owner: 
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:
 
     ```bash
     dataos-ctl get -t depot
@@ -2629,11 +2593,11 @@ This section involves steps for creating a Depot for different data sources supp
       This step can be skipped if you prefer to create a Depot without referencing an Instance Secret.
     </Warning>
 
-    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss). 
+    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).
 
     ### Step 2: Create a Postgres Depot manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your Postgres Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file. 
+    Begin by creating a manifest file to hold the configuration details for your Postgres Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.
 
     <Warning>
       Use the below templates, if the self-signed certificate is enabled.
@@ -2777,7 +2741,7 @@ This section involves steps for creating a Depot for different data sources supp
 
     To ensure that your Depot has been successfully created, you can verify it in two ways:
 
-    * Check the name of the newly created Depot in the list of Depots where you are named as the owner: 
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:
 
     ```bash
     dataos-ctl get -t depot
@@ -2859,11 +2823,11 @@ This section involves steps for creating a Depot for different data sources supp
       This step can be skipped if you prefer to create a Depot without referencing an Instance Secret.
     </Warning>
 
-    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss). 
+    Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).
 
     ### Step 2: Create a Snowflake Depot manifest file
 
-    Begin by creating a manifest file to hold the configuration details for your Snowflake Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file. 
+    Begin by creating a manifest file to hold the configuration details for your Snowflake Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.
 
     <CodeGroup>
       ```yaml Inline credentials Depot manifest file
@@ -2933,7 +2897,7 @@ This section involves steps for creating a Depot for different data sources supp
 
     To ensure that your Depot has been successfully created, you can verify it in two ways:
 
-    * Check the name of the newly created Depot in the list of Depots where you are named as the owner: 
+    * Check the name of the newly created Depot in the list of Depots where you are named as the owner:
 
     ```bash
     dataos-ctl get -t depot
@@ -2981,27 +2945,27 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
 
 <AccordionGroup>
   <Accordion title="Data ingestion and transformation" defaultOpen={false}>
-    A Depot can be used further for data ingestion and transformation through Flare Stack. To learn more about the Flare Stack, please refer to this link. 
+    A Depot can be used further for data ingestion and transformation through Flare Stack. To learn more about the Flare Stack, please refer to this link.
 
     **For example:**
 
-    The below manifest file defines a Flare 6.0-based workflow, `wf-vendor-insights`, for ingesting and transforming vendor insights data from poss3 Depot into Icebase (Lakehouse) Depot. It includes a DAG node, `dg-vendor-insights`, which processes `promotional_data` from a CSV dataset in poss3 and outputs `transformed_data` as an Iceberg table in Icebase. The Workflow specifies compute resources for execution, with a driver and executor configuration limiting cores and memory. The transformation logic applies an SQL query that extracts key vendor attributes, including organization details, contact information, certifications, and category identifiers, while also generating a row number using `row_number() OVER (ORDER BY id)`. The resulting dataset is saved in Iceberg format with Parquet storage and gzip compression, ensuring optimized analytics and efficient querying.
+    The below manifest file defines a Flare job, `wf-vendor-insights`, for ingesting and transforming vendor insights data from poss3 Depot into the Lakehouse Depot. It includes a DAG node, `dg-vendor-insights`, which processes `promotional_data` from a CSV dataset in poss3 and outputs `transformed_data` as an Iceberg table in Lakehouse. The Workflow specifies compute resources for execution, with a driver and executor configuration limiting cores and memory. The transformation logic applies an SQL query that extracts key vendor attributes, including organization details, contact information, certifications, and category identifiers, while also generating a row number using `row_number() OVER (ORDER BY id)`. The resulting dataset is saved in Iceberg format with Parquet storage and gzip compression, ensuring optimized analytics and efficient querying.
 
     <AccordionGroup>
       <Accordion title="Flare Stack manifest file" defaultOpen={false}>
-        ```
+        ```yaml
         version: v1
         name: wf-vendor-insights
         type: workflow
         tags:
           - vendor.insights
           - Tier.Gold
-        description: The job is to ingest vendor-insights from poss3 into Icebase.
+        description: The job is to ingest vendor-insights from poss3 into Lakehouse.
         workflow:
           title: promotional
           dag:
             - name: dg-vendor-insights
-              description: The job is to ingest vendor-insights from poss3 into Icebase.
+              description: The job is to ingest vendor-insights from poss3 into Lakehouse.
               title: organization  data 
               spec:
                 tags:
@@ -3030,9 +2994,9 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
                     logLevel: INFO
                     outputs:
                       - name: transformed_data
-                        dataset: dataos://icebase:promo_effectiveness/vendor_subscription_insight?acl=rw
+                        dataset: dataos://lakehouse:promo_effectiveness/vendor_subscription_insight?acl=rw
                         format: Iceberg
-                        description: The job is to ingest vendor data from S3 into Icebase.
+                        description: The job is to ingest vendor data from S3 into lakehouse.
                         tags:
                           - vendor.insights
                         options:
@@ -3116,8 +3080,7 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
     For better understanding of the data, a user can query the data directly on Workbench without moving the data by creating a Cluster Resource.
 
     **For example:**
-
-    The below manifest file defines a Minerva-based Cluster Resource, `minervabq`, for querying data within DataOS. It specifies a `query-default` compute environment and configures Minerva-specific settings, including a single replica with resource allocations of 2 CPU cores (2000m) and 4Gi memory for both limits and requests. Debug settings define `INFO` log level for general logs and `ERROR` for Trino logs, ensuring controlled verbosity. The Cluster is linked to a Depot at `dataos://depotbq`, allowing seamless access to data stored in that location for querying and processing.
+    A user wants to query data from the `bqdepot` Depot on Workbench, so they create a Cluster named `minervabq` targeting `bqdepot.`The below manifest file defines a Minerva-based Cluster Resource, `minervabq`, for querying data within DataOS. It specifies a `query-default` compute environment and configures Minerva-specific settings, including a single replica with resource allocations of 2 CPU cores (2000m) and 4Gi memory for both limits and requests. Debug settings define `INFO` log level for general logs and `ERROR` for Trino logs, ensuring controlled verbosity. The Cluster is linked to a Depot at `dataos://depotbq`, allowing seamless access to data stored in that location for querying and processing.
 
     ```yaml
     # Resource meta section
@@ -3155,8 +3118,7 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
     For enhancing the query performance, a user can cache the data using Flash Stack.
 
     **For example:**
-
-    The below manifest file defines a DataOS service named `flashtest`, built on the `flash+python:2.0` Stack. The Service caches a dataset named `city`, stored in `dataos://icebase:retail/city`, and initializes a table `mycity` by selecting data from `retail.city`. 
+    A user wants to reduce the time it takes to get query results, so they cache the dataset in the lakehouse Depot using Flash Service. This ensures faster query results whenever the dataset is queried. The below manifest file defines a Service named `flashtest`. The Service caches a dataset named `city`, stored in `dataos://lakehouse:retail/city`, and initializes a table `mycity` by selecting data from `retail.city`.
 
     ```yaml
     name: flashtest
@@ -3191,7 +3153,7 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
     # Datasets
         datasets:
           - name: city
-            address: dataos://icebase:retail/city
+            address: dataos://lakehouse:retail/city
 
         init:
           - create table mycity as (select * from retail.city)
@@ -3207,11 +3169,12 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
   </Accordion>
 
   <Accordion title="Building Data Products" defaultOpen={false}>
-    A Depot plays a fundamental role in Data Product development, a Data Product can be created directly from the source Depot or from the Icebase (Lakehouse) Depot.
+    A Depot plays a fundamental role in Data Product development, a Data Product can be created directly from the source Depot or from the lakehouse (Lakehouse) Depot.
 
     **For example:**
+    A large enterprise’s procurement team uses the Vendor Data Insights Data Product to streamline compliance audits and vendor management. By leveraging insights on incorporation details, DBE status, and engagement metrics, they can quickly identify high-risk vendors with missing or outdated registration documents. The Data Product enables automated compliance reports, reducing manual effort, and helps procurement teams filter DBE-certified vendors to meet regulatory requirements. Additionally, vendor insights are exposed via APIs, allowing integration with risk assessment dashboards for real-time monitoring. This ensures better decision-making, improved vendor tracking, and seamless regulatory compliance.
 
-    The below  manifest file defines the deployment of the `vendor-data-insights` Data Product, categorized under `Vendor Management` with a `Bronze` tier. It provides insights into vendor data, including incorporation details, DBE status, and contact attributes, supporting reporting, tracking, and vendor engagement analysis. The Data Product ingests information from various sources within `operationaldb`, including organizations, categories, vendors, certifications, and user data. The processed insights are stored in `operationlake:analytics:vendor_data_insights`. Additionally, it exposes service endpoints through `Lens` and `Talos` for querying vendor insights and API access.
+    The below  manifest file defines the deployment of the `vendor-data-insights` Data Product, categorized under `Vendor Management` with a `Bronze` tier. The Data Product ingests information from various sources within `operationaldb`, including organizations, categories, vendors, certifications, and user data. The processed insights are stored in `operationlake:analytics:vendor_data_insights`. Additionally, it exposes service endpoints through `Lens` and `Talos` for querying vendor insights and API access.
 
     ```yaml
     name: vendor-data-insights
@@ -3233,7 +3196,7 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
     # External references and documentation
     refs:
      - title: 'Vendor Data Management Info'
-       href: https://proud-cobra.dataos.app/metis/assets/table/icebase.icebase.promo_effectiveness.vendor_subscription_insights
+       href: https://proud-cobra.dataos.app/metis/assets/table/lakehouse.lakehouse.promo_effectiveness.vendor_subscription_insights
 
     # Main product configuration
     v1beta:
@@ -3264,7 +3227,7 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
        inputs:
          # Vendor database sources
         #  - refType: dataos
-        #    ref: dataset:icebase:promo_effectiveness:vendor_subscription_insights
+        #    ref: dataset:lakehouse:promo_effectiveness:vendor_subscription_insights
 
          - refType: dataos
            ref: dataset:operationaldb:public:organization
@@ -3316,10 +3279,13 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
   </Accordion>
 
   <Accordion title="Depot as Lakehouse" defaultOpen={false}>
-    Whenever a user ingests the data, it gets stored in the DataOS Lakehouse Depot. To know more about the Lakehouse, please refer to this link.
+    Whenever a user ingests the data, it gets stored in the DataOS Lakehouse. To know more about the Lakehouse, please refer to this link.
 
     **For example:**
-    The below manifest file defines the `alphaomega` Lakehouse, which operates on the `Iceberg` format and is hosted on `Azure`. The storage layer is managed through an `S3`-based Icebase Depot, utilizing the `dataos-lakehouse` bucket with a relative path of `/test`. Access control is configured via secrets for read (`alphaomega-r`) and read-write (`alphaomega-rw`) permissions. The Lakehouse employs an `Iceberg REST Catalog` as its metastore for data management and utilizes `Themis` as the query engine.
+
+    A company in the e-commerce sector looking to analyze user behavior data across multiple platforms. The company collects large volumes of raw, unstructured user interaction data (clicks, browsing history, and purchase patterns) in a data lake. However, the marketing team requires structured, real-time insights for personalized advertising and targeting. To meet this need, the company implements the DataOS Lakehouse. They store the raw data in a cloud-based object storage system like AWS S3, but instead of working directly with the unstructured data, the team uses Apache Iceberg as a unified data format that allows both structured and unstructured data to be queried efficiently. The data is structured through a metastore, which ensures consistency and fast access for analysis. The team can now run complex queries and data processing pipelines for machine learning models to predict future customer behavior, while still being able to handle large-scale data storage and data processing in a scalable, efficient manner. This setup allows the business to have real-time analytics and long-term insights from the same data store.
+
+    The below manifest file defines the `alphaomega` Lakehouse, which operates on the `Iceberg` format and is hosted on `Azure`. The storage layer is managed through an `S3`-based lakehouse Depot, utilizing the `dataos-lakehouse` bucket with a relative path of `/test`. Access control is configured via secrets for read (`alphaomega-r`) and read-write (`alphaomega-rw`) permissions. The Lakehouse employs an `Iceberg REST Catalog` as its metastore for data management and utilizes `Themis` as the query engine.
 
     ```yaml
     # Resource-meta section 
@@ -3329,7 +3295,7 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
     tags:
       - Iceberg
       - Azure
-    description: Icebase depot of storage-type S3
+    description: lakehouse depot of storage-type S3
     owner: iamgroot
     layer: user
 
@@ -3370,6 +3336,7 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
     After creating the Depot, a user can run a Scanner Workflow for Depot to extract the metadata which later can be accessed on Metis UI. To know more about Scanner, please refer to this.
 
     **For example:**
+    A user have created a Depot now he wants to add the meta data related to the data present in that Depot to Metis UI so that anyone can understand what the data have what kind of use cases we can solve with that, for which he created a Scanner workflow targetting the Depot which extracts all the meta data and register it to the Metis UI.
 
     The below manifest file defines the `wf-postgres-depot` Workflow, designed to scan schema tables from a `PostgreSQL`-based Depot and register the extracted data into `Metis2`. It operates under the `scanner:2.0` Stack with Compute Resources managed by `runnable-default` and runs as the `metis` user. The Workflow is tagged as `postgres-depot` and `scanner`, indicating its role in schema discovery. The configuration includes a `depot` specification (`postgresdepot`) and placeholders for source configurations that allow filtering of databases, schemas, and tables based on inclusion and exclusion patterns.
 
@@ -3418,21 +3385,23 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
   </Accordion>
 </AccordionGroup>
 
-## **Best Practices** 
+## **Best Practices**
 
 This section involves do's and don'ts for managing a Depot.
 
-* As an operator, always assign a use-case to a user instead of directly assigning a tag, as assigning a use-case gives only specific permissions.
+* As an operator, always assign a use-case to a user instead of directly assigning a tag, as assigning a use-case gives only specific permissions. You can find more information on assigning a user a use-case [here](/resources/depot/governance/).
 
 * Give your Depot a meaningful name that represents its purpose.
 
-  **Example:**
 
-  This makes it easier to manage and identify Depots.
 
-  * ✅ `s3depot` instead of ❌ `s3-1`
 
-  * ✅ `dbmysql` instead of ❌ `db1`
+
+  **Example:** This makes it easier to manage and identify Depots.
+
+  * ✅ `s3depot` instead of ❌ `s3-1`, as by `s3depot` it is easily interpretable that this depot is establishing the connection with Amazon S3 source.
+
+  * ✅ `dbmysql` instead of ❌ `db1`, by `dbmysql` it is clear that the depot is establishing the connection with MySQL database making it clear.
 
 * Avoid creating a Depot with inline credentials, always create an Instance Secret.
 
@@ -3491,7 +3460,6 @@ The catalog of data sources accessible by one or more components within DataOS i
   </Accordion>
 
   <Accordion title="8. Is there any way to know which Resources are using a Depot?" defaultOpen={false}>
-    Currently, there no direct way to know that.
+    Currently, there is no direct way to know that.
   </Accordion>
 </AccordionGroup>
-
