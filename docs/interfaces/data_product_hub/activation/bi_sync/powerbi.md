@@ -102,9 +102,6 @@ Adhering to best practices ensures that you effectively utilize the Data Product
 
 - Beginning with Version 2.132.908.0 (August 2024), `.pbip` files have moved from preview to general availability. This transition allows for the use of `.pbip` files without the need to enable any preview settings. It is strongly recommended to download Power BI Version 2.132.908.0 or later to fully utilize `.pbip` files. 
 
-<!-- 
-In earlier versions, enabling a preview feature was necessary, but this is no longer required in the latest version. -->
-
 ### **File handling**
 
 Ensure that `.pbip` folders are fully extracted before opening them. Failure to do so may result in missing file errors, as shown below:
