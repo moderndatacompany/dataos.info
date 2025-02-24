@@ -3,7 +3,7 @@
 The following document outlines the process for integrating Power BI Desktop with DataOS.
 
 <aside class="callout">
-To integrate Power BI Service to publish the Power BI Reports, please refer to [this link](/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/).
+  To integrate Power BI Service to publish the Power BI Reports, please refer to <a href="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service">this link</a>.
 </aside>
 
 ## Prerequisites

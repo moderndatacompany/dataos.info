@@ -1,7 +1,9 @@
 # BI Integrations 
 
 
-[PowerBI](/resources/lens/bi_integration/powerbi/)
+[PowerBI Desktop](/resources/lens/bi_integration/powerbi/)
+
+[PowerBI Service](/resources/lens/bi_integration/powerbi_service/)
 
 <!-- [Excel](/resources/lens/bi_integration/excel/) -->
 
