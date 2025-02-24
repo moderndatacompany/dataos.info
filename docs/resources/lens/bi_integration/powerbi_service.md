@@ -1,4 +1,4 @@
-# Power BI Service Integration
+# Power BI Service
 
 This document outlines the steps required to integrate Power BI with DataOS, ensuring a seamless connection to the Data Product Hub.
 

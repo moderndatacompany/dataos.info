@@ -1,4 +1,4 @@
-# Power BI Service Integration
+# Power BI Service
 
 In this guide, you will learn how to integrate Power BI Service with DataOS to publish reports, ensuring a smooth connection to the Data Product Hub for efficient data management.
 
