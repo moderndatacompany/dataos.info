@@ -1,6 +1,6 @@
 # Power BI Service Integration
 
-This document outlines the steps required to integrate Power BI with DataOS, ensuring a seamless connection to the Data Product Hub.
+In this guide, you will learn how to integrate Power BI Service with DataOS to publish reports, ensuring a smooth connection to the Data Product Hub for efficient data management.
 
 ## Prerequisites
 
@@ -211,7 +211,7 @@ After filling out the required fields, click Add to create the connection.
 
 - In Power BI, measures typically have an 'm_' prefix to indicate they represent a measure. For example, a measure calculating total revenue might be named `m_total_revenue`.
 - The connection is live, meaning any changes to the underlying data will be reflected in Power BI.
-- When schema changes occur, such as CRUD operations (Create, Read, Update, Delete) on dimensions, measures, or other elements of the semantic model, a re-sync is required. To prevent losing previously created reports after the re-sync, replace the `.SemanticModel` folder in the existing folder with the `.SemanticModel` folder from the newly downloaded folder.
+- When schema changes occur, such as CRUD operations (Create, Read, Update, Delete) on dimensions, measures, or other elements of the semantic model, a re-sync is required. To prevent losing previously created reports after the re-sync, replace the `.pbip` file in the existing folder with the `.pbip` file from the newly downloaded folder.
 
 ## Best practices
 
@@ -238,16 +238,13 @@ If you encounter a "connection reset" error during Power BI sync:
 
 This should resolve the error and restore the sync.
 
+
 ## Limitations
 
-- Power BI fails to handle special characters (e.g.,) when generating queries through the synced semantic model, causing errors in visualizations. Thus, it is best practice to address or remove special characters directly in the data itself.
+- Power BI fails to handle special characters (e.g., &, %, #) when generating queries through the synced semantic model, causing errors in visualizations. Thus, it is best practice to address or remove special characters directly in the data itself.
 - Power BI's Direct Query mode does not support creating custom dimensions and measures or querying the rolling window measure due to the lack of date hierarchy.
 - DAX functions and Import query mode are not supported.
 
-
-<!-- - Power BI’s DAX and Import functions are not supported.
-- Special characters cannot be handled through DAX function hence it’s best practice to remove the special character from dataset if any. -->
-
-## Governance of model on Power BI
+## Governance 
 
 Data masking policies are enforced based on the user who creates and registers the gateway connection for the semantic model in PowerBI Service.
