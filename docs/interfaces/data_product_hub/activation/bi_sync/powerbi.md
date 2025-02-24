@@ -90,6 +90,7 @@ After connecting, users can see tables and views containing dimensions and measu
 - The connection is live, meaning any changes to the underlying data will be reflected in Power BI.
 - If schema changes occur, such as the addition of new dimensions and measures, the steps outlined above will need to be repeated.
 - Custom measures or dimensions created in Power BI may be lost during re-sync operations. It is recommended to implement custom logic directly within the Lens when possible to ensure persistence of customizations.
+- DAX functions and Import query mode are not supported.
 
 ## Best practices
 
