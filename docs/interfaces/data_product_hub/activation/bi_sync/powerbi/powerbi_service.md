@@ -229,7 +229,7 @@ It is important to select fields from tables that are directly related or logica
 
 ### **Connection reset**
 
-If you encounter a "connection reset" error during Power BI sync:
+If you encounter a 'connection reset' error during Power BI sync:
 
 - Go to the Home tab in Power BI Desktop.
 - Click the Refresh button in the Queries section.
