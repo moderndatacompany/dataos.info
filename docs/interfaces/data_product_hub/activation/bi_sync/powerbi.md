@@ -1,6 +1,14 @@
 # Power BI Integration
 
-The following document outlines the process for integrating Power BI with DataOS.
+The following document outlines the process for integrating Power BI Desktop with DataOS.
+
+<aside class="callout">
+To integrate Power BI Service to publish the Power BI Reports, please refer to [this link](/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/).
+</aside>
+
+## Prerequisites
+
+- [Power BI Desktop](https://powerbi.microsoft.com/desktop) installed on the system(version released after June 15, 2023).
 
 ## Steps
 
@@ -86,45 +94,30 @@ After connecting, users can see tables and views containing dimensions and measu
 
 ## Important considerations
 
-- In Power BI, measures typically have an 'm_' prefix to indicate they represent a measure. For example, a measure calculating total revenue might be named `m_total_revenue`.
+- In Power BI, measures typically have an 'm_' prefix to indicate they represent a measure. For example, a measure calculating total revenue might be named `m_total_revenue`.
 - The connection is live, meaning any changes to the underlying data will be reflected in Power BI.
-- If schema changes occur, such as the addition of new dimensions and measures, the steps outlined above will need to be repeated.
-- Custom measures or dimensions created in Power BI may be lost during re-sync operations. It is recommended to implement custom logic directly within the Lens when possible to ensure persistence of customizations.
+- When schema changes occur, such as CRUD operations (Create, Read, Update, Delete) on dimensions, measures, or other elements of the semantic model, a re-sync is required. To prevent losing previously created reports after the re-sync, replace the `.pbip` file in the existing folder with the `.pbip` file from the newly downloaded folder.
 
 ## Best practices
 
 Adhering to best practices ensures that you effectively utilize the Data Product Hub and maintain compatibility with the latest features and updates. Following these guidelines will help optimize workflow, enhance performance, and prevent potential issues.
 
-### **Version compatibility**
-
-- Power BI versions released after June 15, 2023, support `.pbib` files. It is advisable to use a version released after this date.
-
-- Beginning with Version 2.132.908.0 (August 2024), `.pbip` files have moved from preview to general availability. This transition allows for the use of `.pbip` files without the need to enable any preview settings. It is strongly recommended to download Power BI Version 2.132.908.0 or later to fully utilize `.pbip` files. 
-
-<!-- 
-In earlier versions, enabling a preview feature was necessary, but this is no longer required in the latest version. -->
-
 ### **File handling**
 
-Ensure that `.pbip` folders are fully extracted before opening them. Failure to do so may result in missing file errors, as shown below:
+Ensure that `.pbip` folders are fully extracted before opening them. Failure to do so may result in missing file errors, as shown below:
 
-<div style="text-align: center;">
-    <img src="/resources/lens/bi_integration/image.png" alt="Superset Configuration" style="max-width: 25%; height: auto; border: 1px solid #000;">
-</div>
+<img src="/resources/lens/bi_integration/image.png" alt="DPH" style="width:15rem; border: 1px solid black;" />
 
 ### **Data retrieval and field selection considerations**
 
-- **Row Limit:** The Lens API has a maximum return limit of 50,000 rows per request. To obtain additional data, it is necessary to set an offset. This row limit is in place to manage resources efficiently and ensure optimal performance.
-
-- **Selection:** It is important to select fields from tables that are directly related or logically joined, as the system does not automatically identify relationships between tables through transitive joins. Selecting fields from unrelated tables may result in incorrect or incomplete results.
-
-### **Regular testing and validation**
-
-Regular testing and validation of reports are recommended after changes are made to the Lens definitions. This practice ensures that updates to dimensions, measures, or data models are accurately reflected in the reports and helps identify any issues early in the process.
+It is important to select fields from tables that are directly related or logically joined, as the system does not automatically identify relationships between tables through transitive joins. Selecting fields from unrelated tables may result in incorrect or incomplete results.
 
 ## Limitations
 
-Power BI’s ‘Direct Query’ mode does not support querying the rolling window measure. The lack of support for date hierarchy in 'Direct Query' prevents the application of granularity for the rolling window measure type.
+- Power BI fails to handle special characters (e.g.,) when generating queries through the synced semantic model, causing errors in visualizations. Thus, it is best practice to address or remove special characters directly in the data itself.
+- Power BI's Direct Query mode does not support creating custom dimensions and measures or querying the rolling window measure due to the lack of date hierarchy.
+- DAX functions and Import query mode are not supported.
+
 
 ## Governance of model on Power BI
 

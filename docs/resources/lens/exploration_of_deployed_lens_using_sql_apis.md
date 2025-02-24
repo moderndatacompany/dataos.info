@@ -2,6 +2,10 @@
 
 Lens exposes a PostgreSQL-compatible interface, enabling interaction with the semantic model(Lens) using PostgreSQL syntax. The PostgreSQL client tool `psql` is required to query the database and manage Lens data.
 
+<aside class="callout">
+A PostgreSQL-compatible interface means that the Lens supports SQL queries that follow the syntax and conventions used by PostgreSQL, but it doesn't necessarily have to use PostgreSQL as the underlying database. Essentially, it behaves like PostgreSQL for the purpose of querying data, but behind the scenes, it could be using a different data engine or model.
+</aside>
+
 ## Prerequisites
 
 - **Active Lens:** To interact with the Lens, it must be active. If the Lens is deployed on DataOS, ensure it is properly set up. If the Lens is running locally (i.e., not deployed on DataOS), verify that the docker-compose is running in the background to ensure the Lens is active. 
