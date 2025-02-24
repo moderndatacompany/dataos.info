@@ -10,9 +10,10 @@ This document outlines the steps required to integrate Power BI with DataOS, ens
 - If DataOS is installed in a Virtual Private Cloud (VPC), port `6432` must be whitelisted to allow communication between the Power BI data gateway and the DataOS. Ensure that firewall rules permit inbound and outbound traffic on port `6432`.
 - If the customer connects to the VPC via VPN, additional firewall rules may be required to allow communication between the VPN network and Power BI Service. 
 </aside>
+
 Before proceeding with the data gateway configuration, ensure the following components are installed:
 
-- [Power BI Desktop](https://powerbi.microsoft.com/desktop) installed on the local system(version released after June 15, 2023).
+- [Power BI Desktop](https://powerbi.microsoft.com/desktop) installed on the system(version released after June 15, 2023).
 
 - A Power BI service account.
 
@@ -209,8 +210,6 @@ After filling out the required fields, click Add to create the connection.
 - In Power BI, measures typically have an 'm_' prefix to indicate they represent a measure. For example, a measure calculating total revenue might be named `m_total_revenue`.
 - The connection is live, meaning any changes to the underlying data will be reflected in Power BI.
 - When schema changes occur, such as CRUD operations (Create, Read, Update, Delete) on dimensions, measures, or other elements of the semantic model, a re-sync is required. To prevent losing previously created reports after the re-sync, replace the `.pbip` file in the existing folder with the `.pbip` file from the newly downloaded folder.
-- Power BI fails to handle special characters (e.g.,) when generating queries through the synced semantic model, causing errors in visualizations. Thus, it is best practice to address or remove special characters directly in the data itself.
-- Power BI's Direct Query mode does not support creating custom dimensions and measures or querying the rolling window measure due to the lack of date hierarchy.
 
 ## Best practices
 
@@ -225,6 +224,13 @@ Ensure that `.pbip` folders are fully extracted before opening them. Failure t
 ### **Data retrieval and field selection considerations**
 
 It is important to select fields from tables that are directly related or logically joined, as the system does not automatically identify relationships between tables through transitive joins. Selecting fields from unrelated tables may result in incorrect or incomplete results.
+
+## Limitations
+
+- Power BI fails to handle special characters (e.g.,) when generating queries through the synced semantic model, causing errors in visualizations. Thus, it is best practice to address or remove special characters directly in the data itself.
+- Power BI's Direct Query mode does not support creating custom dimensions and measures or querying the rolling window measure due to the lack of date hierarchy.
+- DAX functions and Import query mode are not supported.
+
 
 <!-- - Power BI’s DAX and Import functions are not supported.
 - Special characters cannot be handled through DAX function hence it’s best practice to remove the special character from dataset if any. -->
