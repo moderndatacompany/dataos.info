@@ -108,6 +108,17 @@ Ensure that `.pbip` folders are fully extracted before opening them. Failure t
 
 It is important to select fields from tables that are directly related or logically joined, as the system does not automatically identify relationships between tables through transitive joins. Selecting fields from unrelated tables may result in incorrect or incomplete results.
 
+### **Connection reset**
+
+If you encounter a 'connection reset' error during Power BI sync:
+
+- Go to the Home tab in Power BI Desktop.
+- Click the Refresh button in the Queries section.
+
+<img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/refresh_key.png" alt="DPH" style="width:25rem; border: 1px solid black;" />
+
+This should resolve the error and restore the sync.
+
 ## Limitations
 
 - Power BI fails to handle special characters (e.g.,) when generating queries through the synced semantic model, causing errors in visualizations. Thus, it is best practice to address or remove special characters directly in the data itself.
