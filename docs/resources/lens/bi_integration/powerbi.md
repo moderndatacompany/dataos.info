@@ -127,23 +127,34 @@ curl --location --request POST 'https://tcp.liberal-monkey.dataos.app/lens2/sync
 
 ## Important considerations
 
-* **Measure naming convention:** In Power BI, measures typically have an 'm\_' prefix to indicate they represent a measure. For example, a measure calculating total revenue might be named m\_total\_revenue.
+- In Power BI, measures typically have an 'm_' prefix to indicate they represent a measure. For example, a measure calculating total revenue might be named `m_total_revenue`.
+- The connection is live, meaning any changes to the underlying data will be reflected in Power BI.
+- When schema changes occur, such as CRUD operations (Create, Read, Update, Delete) on dimensions, measures, or other elements of the semantic model, a re-sync is required. To prevent losing previously created reports after the re-sync, replace the `.pbip` file in the existing folder with the `.pbip` file from the newly downloaded folder.
 
-* **Live connection:** The connection is live, meaning any changes to the underlying data will be reflected in Power BI.
-
-* **Schema changes:** If schema changes occur, such as the addition of new dimensions and measures, the steps outlined above will need to be repeated.
-
-* **Row Limit:** The Lens API has a maximum return limit of 50,000 rows per request. To obtain additional data, it is necessary to set an offset. This row limit is in place to manage resources efficiently and ensure optimal performance.
-
-* **Selection:** It is important to select fields from tables that are directly related or logically joined, as the system does not automatically identify relationships between tables through transitive joins. Selecting fields from unrelated tables may result in incorrect or incomplete results.
-
-<!-- 
 ## Best practices
 
-Adhering to best practices ensures that you effectively utilize the Data Product Hub and maintain compatibility with the latest features and updates. Following these guidelines will help optimize your workflow, enhance performance, and prevent potential issues. -->
+Adhering to best practices ensures that you effectively utilize the Data Product Hub and maintain compatibility with the latest features and updates. Following these guidelines will help optimize workflow, enhance performance, and prevent potential issues.
+
+### **File handling**
+
+Ensure that `.pbip` folders are fully extracted before opening them. Failure to do so may result in missing file errors, as shown below:
+
+<img src="/resources/lens/bi_integration/image.png" alt="DPH" style="width:15rem; border: 1px solid black;" />
+
+### **Data retrieval and field selection considerations**
+
+It is important to select fields from tables that are directly related or logically joined, as the system does not automatically identify relationships between tables through transitive joins. Selecting fields from unrelated tables may result in incorrect or incomplete results.
+
+## Limitations
+
+- Power BI fails to handle special characters (e.g.,) when generating queries through the synced semantic model, causing errors in visualizations. Thus, it is best practice to address or remove special characters directly in the data itself.
+- Power BI's Direct Query mode does not support creating custom dimensions and measures or querying the rolling window measure due to the lack of date hierarchy.
+- DAX functions and Import query mode are not supported.
+
 
 
 ## Data policies and security
 
 The restrictions, or permissions established by the publisher in the `user_groups.yml` of the semantic model are automatically enforced for all report viewers, ensuring consistent data security and compliance. The behavior of these may vary based on the user of the Power BI desktop.
+
 
