@@ -25,8 +25,12 @@ Click [here](/learn/dp_consumer_learn_track/integrate_bi_tools/tab_desktop/) to 
 
 Refer [here](/learn/dp_consumer_learn_track/integrate_bi_tools/superset/) to integrate with this open-source tool to quickly explore and create lightweight dashboards using 'Product Affinity' Data Product.
 
-## Power BI
+## Power BI Desktop
 
-Click [here](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/) to sync with Microsoft's interactive reporting tool to visualize and analyze 'Product Affinity' data in real-time.
+Click [here](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/) to sync with interactive reporting tool to visualize and analyze 'Product Affinity' data in real-time.
+
+## PowerBI Service
+
+Click [here](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/powerbi_service/) to sync with interactive reporting tool to visualize and analyze 'Product Affinity' data in real-time.
 
 Depending on the BI tool your organization prefers, you’ll follow specific steps to seamlessly integrate and set up your dashboard for optimal data exploration.
