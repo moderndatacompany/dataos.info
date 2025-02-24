@@ -6,7 +6,6 @@ In this guide, you will learn how to integrate a Data Product with Power BI and 
 
 [Power BI Desktop](https://powerbi.microsoft.com/desktop) installed on the system(version released after June 15, 2023).
 
-
 ### **Step 1: Navigate to the BI sync option**
     
 To start the integration, go to the 'Access Options' tab and scroll to the 'Excel and PowerBI' option in the 'BI Sync' section. Click on the 'Download `.pbip` File' button to initiate the download of a ZIP folder.
