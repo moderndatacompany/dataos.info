@@ -1,0 +1,35 @@
+version: v1
+name: wf-product-affinity-quality-pipeline
+type: workflow
+tags:
+  - Tier.Gold
+  - company.company
+description: A data pipeline focusing on quality assurance, cleaning, and transformation of company data.
+
+workflow:
+  schedule:
+    cron: '*/5 * * * *'
+    concurrencyPolicy: Forbid
+  title: Company Detail Quality Pipeline
+  dag:
+    - name: customer-data-quality
+      file: build/quality/customer.yml
+      retry:
+        count: 2
+        strategy: "OnFailure"
+
+    - name: marketing-data-quality
+      file: build/quality/marketing.yml
+      retry:
+        count: 2
+        strategy: "OnFailure"
+      dependencies:
+        - customer-data-quality
+
+    - name: purchase-data-quality
+      file: build/quality/purchase.yml
+      retry:
+        count: 2
+        strategy: "OnFailure"
+      dependencies:
+        - marketing-data-quality
