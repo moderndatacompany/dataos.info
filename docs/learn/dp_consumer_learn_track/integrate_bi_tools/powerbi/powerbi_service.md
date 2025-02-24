@@ -245,6 +245,6 @@ This should resolve the error and restore the sync.
 - Power BI's Direct Query mode does not support creating custom dimensions and measures or querying the rolling window measure due to the lack of date hierarchy.
 - DAX functions and Import query mode are not supported.
 
-## Governance 
+## Governance of model on PowerBI Service
 
 Data masking policies are enforced based on the user who creates and registers the gateway connection for the semantic model in PowerBI Service.
