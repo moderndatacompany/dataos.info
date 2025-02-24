@@ -90,6 +90,7 @@ After connecting, users can see tables and views containing dimensions and measu
 - The connection is live, meaning any changes to the underlying data will be reflected in Power BI.
 - If schema changes occur, such as the addition of new dimensions and measures, the steps outlined above will need to be repeated.
 - Custom measures or dimensions created in Power BI may be lost during re-sync operations. It is recommended to implement custom logic directly within the Lens when possible to ensure persistence of customizations.
+- DAX functions and Import query mode are not supported.
 
 ## Best practices
 
@@ -100,9 +101,6 @@ Adhering to best practices ensures that you effectively utilize the Data Product
 - Power BI versions released after June 15, 2023, support `.pbib` files. It is advisable to use a version released after this date.
 
 - Beginning with Version 2.132.908.0 (August 2024), `.pbip` files have moved from preview to general availability. This transition allows for the use of `.pbip` files without the need to enable any preview settings. It is strongly recommended to download Power BI Version 2.132.908.0 or later to fully utilize `.pbip` files. 
-
-<!-- 
-In earlier versions, enabling a preview feature was necessary, but this is no longer required in the latest version. -->
 
 ### **File handling**
 
