@@ -9,8 +9,6 @@ To get started with Power BI integration through Data Product Hub, refer the bel
 
 </aside>
 
-
-
 ## Prerequisites
 
 - **Curl**: Ensure you have `curl` installed on your system. Windows users may need to use `curl.exe`.
@@ -147,11 +145,9 @@ It is important to select fields from tables that are directly related or logica
 
 ## Limitations
 
-- Power BI fails to handle special characters (e.g.,) when generating queries through the synced semantic model, causing errors in visualizations. Thus, it is best practice to address or remove special characters directly in the data itself.
+- Power BI fails to handle special characters (e.g., &, %, #) when generating queries through the synced semantic model, causing errors in visualizations. Thus, it is best practice to address or remove special characters directly in the data itself.
 - Power BI's Direct Query mode does not support creating custom dimensions and measures or querying the rolling window measure due to the lack of date hierarchy.
 - DAX functions and Import query mode are not supported.
-
-
 
 ## Data policies and security
 
