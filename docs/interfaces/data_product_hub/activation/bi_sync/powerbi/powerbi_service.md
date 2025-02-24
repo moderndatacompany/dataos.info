@@ -248,6 +248,6 @@ This should resolve the error and restore the sync.
 <!-- - Power BI’s DAX and Import functions are not supported.
 - Special characters cannot be handled through DAX function hence it’s best practice to remove the special character from dataset if any. -->
 
-## Governance of model on Power BI
+## Governance of model on Power BI Service
 
 Data masking policies are enforced based on the user who creates and registers the gateway connection for the semantic model in PowerBI Service.
