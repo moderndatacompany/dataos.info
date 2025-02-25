@@ -362,11 +362,12 @@ from loading_resources import *
 from support_function import get_svg_data_uri
 import json
 from heimdall.heimdall_client import HeimdallClientBuilder
-from heimdall.models.authorization_request import AuthorizationRequest
+from heimdall.models.heimdall_models import AuthorizationRequest
 
 # Set environment variable
-with open("/etc/dataos/config/secret.conf") as file:
+with open("/etc/dataos/config/cal_secret.conf") as file:
     secret_json = json.load(file)
+
 dataos_env = secret_json['DATAOS_ENV']
 heimdall_url = secret_json['API_ENDPOINT']
 
@@ -384,13 +385,20 @@ if 'page' not in st.session_state:
 if 'authorized' not in st.session_state:
     st.session_state.authorized = False
 
-def authorize_user(heimdall_base_url, permissions, tab=""):
+def authorize_user(heimdall_base_url, permissions):
     '''Authorize the user using Heimdall'''
+    
+    token = st.session_state.get('bearer_token', None)
+    
+    if not token:
+        st.error("Authorization token is missing. Please log in again.")
+        return False
+
     auth_request = AuthorizationRequest(
-        token=st.session_state.get('bearer_token', ''),
+        token=token,
         permissions=permissions,
         context={
-            "predicate": permissions[0],  # "get" , "put" or "post"
+            "predicate": permissions[0],  # "get", "put", or "post"
             "object": {
                 "paths": ["/streamlit/**"]
             }
@@ -402,12 +410,14 @@ def authorize_user(heimdall_base_url, permissions, tab=""):
         # Send the authorization request to Heimdall
         auth_response = h_client.authorize_api.authorize(auth_request)
 
-        # Check authorization results
-        return auth_response.allow
-    except Exception:
-        st.write("Access Forbidden")
+        if auth_response.allow:
+            return True
+        else:
+            st.error(f"Access Denied: {auth_response.error.message}")
+            return False
+    except Exception as e:
+        st.error(f"Access Forbidden: {str(e)}")
         return False
-
 def addition_tab():
     '''This function handles addition operation'''
     with st.form("addition_form"):
@@ -508,6 +518,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 ```
 </details>
