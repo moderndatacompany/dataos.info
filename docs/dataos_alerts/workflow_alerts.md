@@ -236,7 +236,7 @@ workflow:
       tags:
       - Connect
       - City
-      stack: flare:3.0 
+      stack: flare:6.0 
       compute: runnable-default 
       flare:
         job:
@@ -280,18 +280,6 @@ workflow:
                       now() AS ts_city
                     FROM
                       city_connect 
-# Job 2
-  - name: datatool-1 # Job 2 name
-    spec:
-      stack: toolbox 
-      compute: runnable-default
-      stackSpec:
-        dataset: dataos://icebase:retail/city01
-        action:
-          name: set_version
-          value: latest
-# Dependent on Job 1 for the start of execution
-    dependencies: wf-job1
 ```
 
 ### **Step 5: Apply the monitored Workflow**
