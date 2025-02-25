@@ -26,11 +26,9 @@ workflow:
 
             inputs: # Read from Bigquery
               - name: transactions_connect
-                inputType: bigquery
-                bigquery:
-                  table: transactions_standalone_09_nov
-                  projected: <project-id>
-                  dataset: <dataset-name>
+                dataset: dataos://sanitybigquery:dev/bigquery_write_csv_12
+                format: bigquery
+
 
             outputs: # Write to Local System
               - name: finalDf
