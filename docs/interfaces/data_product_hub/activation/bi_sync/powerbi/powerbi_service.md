@@ -227,9 +227,13 @@ Ensure that `.pbip` folders are fully extracted before opening them. Failure t
 
 It is important to select fields from tables that are directly related or logically joined, as the system does not automatically identify relationships between tables through transitive joins. Selecting fields from unrelated tables may result in incorrect or incomplete results.
 
+## Troubleshooting
+
 ### **Connection reset**
 
-If you encounter a 'connection reset' error during Power BI sync:
+If you encounter a 'connection reset' error during Power BI sync as shown below:
+
+<img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/connection_reset.png" alt="DPH" style="width:25rem; border: 1px solid black;" />
 
 - Go to the Home tab in Power BI Desktop.
 - Click the Refresh button in the Queries section.
@@ -237,6 +241,12 @@ If you encounter a 'connection reset' error during Power BI sync:
 <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/refresh_key.png" alt="DPH" style="width:25rem; border: 1px solid black;" />
 
 This should resolve the error and restore the sync.
+
+### **Unknown cluster**
+
+Whenever you encounter the error 'unknown cluster: <cluster_name>' as shown below, please check if the cluster has been deleted. If it has, redeploy the cluster. After redeploying the cluster, go to Power BI Desktop and click the 'Refresh' button to update the connection.
+
+<img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/cluster_error.png" alt="DPH" style="width:25rem; border: 1px solid black;" />
 
 ## Limitations
 
