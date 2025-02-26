@@ -75,6 +75,7 @@
                     "group": "Lens",
                     "pages": [
                       "resources/lens/index",
+                      "resources/lens/quick_start_guide",
                       {
                         "group": "Supported Data Sources",
                         "pages": [
