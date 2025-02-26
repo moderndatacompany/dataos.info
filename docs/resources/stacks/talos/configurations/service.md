@@ -160,9 +160,9 @@ servicePort: 3000
 
 **Description:** Ingress settings for routing traffic to the Service. 
  
-
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
+| object | mandatory | none | Must contain `enabled`, `stripPath`, `path`, and `noAuthentication` attributes. |
 
 ### **`enabled`**
 
@@ -270,6 +270,7 @@ compute: runnable-default
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
+| object | mandatory | none | Must contain key-value pairs defining environment variables. |
 
 ### **`TALOS_SCHEMA_PATH`**
 
@@ -305,6 +306,7 @@ TALOS_BASE_PATH: /talos/public:talos-test
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
+| object | mandatory | none | Must contain `requests` and `limits` attributes. |
 
 ### **`requests`**
 
@@ -312,6 +314,7 @@ TALOS_BASE_PATH: /talos/public:talos-test
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
+| object | mandatory | none | Must contain `cpu` and `memory` attributes. |
 
 ### **`cpu`**
 
@@ -428,10 +431,8 @@ allKeys: true
 
 ### **`stackSpec`**
 
-**Description:** Specification for the stack configuration.
+**Description:** Specification for the Stack configuration.
 
-| Data Type | Requirement | Default Value | Possible Values |
-| --- | --- | --- | --- |
 
 ### **`repo`**
 
