@@ -137,10 +137,11 @@ workspace: public
 
 ### **`service`**
 
-**Description:** Configuration specific to the Talos service.
+**Description:** Configuration specific to the Talos Service.
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
+| object | mandatory | none | Must contain attributes like `servicePort`, `ingress`, `replicas`, `logLevel`, `compute`, `envs`, `resources`, `stack`, `dataosSecrets`, and `stackSpec`. |
 
 ### **`servicePort`**
 
