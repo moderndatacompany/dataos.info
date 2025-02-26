@@ -1,7 +1,7 @@
 ---
-title: "How to catalog Lens Resource?"
+title: "Exploring metadata of the semantic model "
 sidebarTitle: "Cataloging"
-description: "The following guide explains how both Metis UI and Data Product Hub (DPH) allow data users to discover Lens Resources and it's semantic model."
+description: "The following guide explains how both Metis UI and Data Product Hub allow data users to discover Lens Resources and it's semantic model."
 ---
 
 {/* 
@@ -167,7 +167,7 @@ To explore the input tables of the semantic model click on 'Explore Assets' butt
 
 ## Exploring the semantic model and Lens Resource metadata via Data Product Hub
 
-The Data Product Hub (DPH) plays a key role in cataloging the semantic model of each Data Product. It captures detailed metadata, including the model's source, description, quality metrics, and relevant business context. 
+The Data Product Hub plays a key role in cataloging the semantic model of each Data Product. It captures detailed metadata, including the model's source, description, quality metrics, and relevant business context. 
 
 1. The Data Product Hub provides a comprehensive view of data lineage in its ‘Overview’ tab. It tracks input datasets, the semantic model, output tables, and derived metrics, showing how tables contribute to specific metrics with visual connections.
 
@@ -189,12 +189,12 @@ The Data Product Hub (DPH) plays a key role in cataloging the semantic model of 
       <img src="/resources/lens/cataloging/dph_metric_lineage.png" />
     </Frame>
 
-4. The Quality tab in the Data Product Hub catalogs the quality checks applied to both input and output datasets of the semantic model. These checks ensure data integrity by validating that the data meets predefined standards and accurately represents real-world values.
+4. The 'Quality' tab in the Data Product Hub catalogs the quality checks applied to both input and output datasets of the semantic model. These checks ensure data integrity by validating that the data meets predefined standards and accurately represents real-world values.
 
    For example, an accuracy check on the `product_affinity_matrix` dataset ensures the average length of Category 1 exceeds a threshold of 4. As shown in the image below, the check passed with a 100% Service Level Objective (SLO), confirming data accuracy.
 
    <Frame caption="Data Product Hub Metric tab showing the lineage of the purchase frequency metric">
-     <img src="/resources/lens/cataloging/dph_metric_lineage.png" />
+     <img src="/resources/lens/cataloging/dph_quality_tab.png" />
    </Frame>
 
    The Quality tab also tracks other checks such as Completeness Freshness etc., providing transparency into the data’s reliability for users.
