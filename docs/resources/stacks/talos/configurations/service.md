@@ -63,7 +63,7 @@ name: talos-test
 
 ### **`version`**
 
-**Description:** The version of the Talos service.
+**Description:** The version of the Talos service, which helps in tracking different releases.
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
@@ -77,7 +77,7 @@ version: v1
 
 ### **`type`**
 
-**Description:** The type of resource this configuration represents.
+**Description:** Defines the type of Resource. In this case, it is a Service.
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
@@ -91,7 +91,7 @@ type: service
 
 ### **`tags`**
 
-**Description:** Tags associated with the Talos service.
+**Description:** A list of metadata labels associated with the Service, making it easier to categorize and search for Resources.
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
@@ -123,7 +123,7 @@ description: Talos Service
 
 ### **`workspace`**
 
-**Description:** The workspace environment where the Talos service is deployed.
+**Description:** Defines the workspace under which the service operates. 
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
@@ -144,7 +144,7 @@ workspace: public
 
 ### **`servicePort`**
 
-**Description:** Port on which the service will run.
+**Description:** Defines the port on which the service runs. Here, it listens on port 3000.
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
@@ -158,14 +158,15 @@ servicePort: 3000
 
 ### **`ingress`**
 
-**Description:** Ingress settings for routing traffic to the service.
+**Description:** Ingress settings for routing traffic to the Service. 
+ 
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
 
 ### **`enabled`**
 
-**Description:** Whether ingress is enabled.
+**Description:** Whether ingress is enabled. If true, it means that the Service is accessible via an ingress controller. 
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
@@ -179,7 +180,7 @@ enabled: true
 
 ### **`stripPath`**
 
-**Description:** Whether to strip the path from the incoming requests.
+**Description:** Whether to strip the path from the incoming requests. If true, it removes the base path from the request URL before forwarding it to the Service. `stripPath: true` means that when a request comes in as `https://example.com/talos/public:talos-test/api`, the system will forward only /api to the Service (removing /talos/public:talos-test).
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
@@ -193,11 +194,13 @@ stripPath: true
 
 ### **`path`**
 
-**Description:** Path pattern for ingress routing.
+**Description:** Path pattern for ingress routing. The Ingress path defines how external users access the Service. In this case, the Service is reachable at: 
+`https://${{dataos-fdqn}}/talos/${{workspace}}:${{service-name}}`
+.
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
-| string | mandatory | none | Path pattern including variables (e.g., /talos/${{workspace}}:${{talos-test}}). |
+| string | mandatory | none | Path pattern including variables (e.g., /talos/${{workspace}}:${{service-name}}). |
 
 **Example Usage:**
 
@@ -207,7 +210,7 @@ path: /talos/${{workspace}}:${{service-name}}
 
 ### **`noAuthentication`**
 
-**Description:** Whether authentication is required.
+**Description:** Whether authentication is required. If true, the Service does not require authentication for access.
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
@@ -221,7 +224,7 @@ noAuthentication: true
 
 ### **`replicas`**
 
-**Description:** Number of replicas for the service.
+**Description:**  The number of instances of the Service running for scalability and high availability. 
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
@@ -235,7 +238,7 @@ replicas: 1
 
 ### **`logLevel`**
 
-**Description:** Logging level for the service.
+**Description:** Sets the logging verbosity. `DEBUG` means detailed logs are collected for troubleshooting.
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
@@ -270,7 +273,7 @@ compute: runnable-default
 
 ### **`TALOS_SCHEMA_PATH`**
 
-**Description:** Path to the Talos schema.
+**Description:** Specifies the path inside the Talos repository where the `config.yaml` is stored.
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
@@ -288,12 +291,12 @@ TALOS_SCHEMA_PATH: ${{talos/setup}}
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
-| string | mandatory | none | Base path for the service (e.g., /talos/public:${{talos-test}}). |
+| string | mandatory | none | Base path for the service (e.g., /talos/${{workspace}}:${{service-name}}). |
 
 **Example Usage:**
 
 ```yaml
-TALOS_BASE_PATH: /talos/public:${{talos-test}}
+TALOS_BASE_PATH: /talos/public:talos-test
 ```
 
 ### **`resources`**
@@ -344,6 +347,7 @@ memory: ${{128Mi}}
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
+| object | mandatory | none | Must contain `cpu` and `memory` attributes. |
 
 ### **`cpu`**
 
@@ -431,14 +435,17 @@ allKeys: true
 
 ### **`repo`**
 
-**Description:** Repository configuration for the stack.
+**Description:** Repository configuration for the stack. This section defines where the service fetches its code and configuration from.
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
+| object | mandatory | none | Must contain `url`, `projectDirectory`, and optionally `syncFlags`. |
+
+
 
 ### **`url`**
 
-**Description:** URL of the repository.
+**Description:** Specifies the Git/Bitbucket repository URL where the Talos Service code and configurations are stored.
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
@@ -452,7 +459,7 @@ url: ${{https://bitbucket.org/mywork15/talos/}
 
 ### **`projectDirectory`**
 
-**Description:** Directory within the repository.
+**Description:** Defines the specific directory path inside the repository that contains the `config.yaml` file.
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
@@ -466,7 +473,8 @@ projectDirectory: ${{talos/setup}}
 
 ### **`syncFlags`**
 
-**Description:** Flags for repository synchronization.
+**Description:** Specifies additional Git sync options when pulling updates from the repository. For example, the flag `--ref=main` ensures that the Service always pulls updates from the main branch of the repository.
+Helps in controlled versioning and prevents unwanted branch deployments.
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
