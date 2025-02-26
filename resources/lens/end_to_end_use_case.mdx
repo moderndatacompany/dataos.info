@@ -3,13 +3,30 @@ title: "Creating a Semantic Model - End-to-End Use Case"
 description: "Step-by-step guide on defining business objectives, KPIs, and designing a semantic model using Lens."
 ---
 
-## Step 1: Defining Business Objectives and KPIs
-
-Before designing a Lens, it is essential to establish the business objectives and key performance indicators (KPIs) the model will support. This ensures that the semantic model remains relevant and actionable.
-
-### Scenario
+## Scenario
 
 The sales and marketing department has identified a need to leverage data insights to enhance customer engagement and increase sales. They require a data model to track performance, optimize sales strategies, and drive revenue growth.
+
+## Quick  Concepts
+
+The semantic model in Lens acts as an interface that overlays the underlying data, presenting business users with familiar terms that aligns with their business understanding, enabling more insightful analysis.
+
+**Tables:** Tables are basic building block of the semantic model representing entities like `Customer` or `Product`. They define the structure of your data, including attributes (dimensions), numerical values (measures), and relationships between different entities (joins).
+
+**Joins:** Joins link tables together, defining how different entities (like 'Customer' and 'Product') are related. They help combine data from multiple tables to form a complete view.
+
+**Dimensions:** These are descriptive attributes, like 'Owner Name' or 'City', that help categorize and add context to your data, making it easier to analyze and filter.
+
+**Measures:** These are numerical values, such as 'Total Revenue' or 'Number of Sales', used for calculations and aggregations, providing key insights for decision-making.
+
+**Segments:** Segments are used to filter or group data into meaningful categories, like 'Active Users' or 'High-Value Customers', to focus on specific data subsets.
+
+**Views:** Views simplify complex semantic models, offering an easy-to-use interface for users. They consolidate data into key metrics, making it easier to understand and analyze.
+
+
+## Step 1: Defining Business Objectives and KPIs
+
+Before designing a semantic model, it is essential to establish the business objectives and key performance indicators (KPIs) the model will support. This ensures that the semantic model remains relevant and actionable.
 
 ### Business Objectives
 
@@ -77,9 +94,9 @@ To make the semantic model actionable, define **measures** (quantitative values)
 
 | Entity      | Related To  | Relationship | Dimensions | Measures |
 |------------|------------|-------------|------------|----------|
-| Customer   | Transaction | One-to-Many | `customer_id`, `age`, `region`, `segment` | `total_customers` |
-| Product    | Transaction | Many-to-One | `product_id`, `category`, `price` | `total_products` |
-| Transaction | Customer   | Many-to-One | `transaction_id`, `date`, `payment_method` | `total_spend`, `average_spend`, `purchase_frequency` |
+| `Customer`   | Transaction | One-to-Many | `customer_id`, `age`, `region`, `segment` | `total_customers` |
+| `Product`    | Transaction | Many-to-One | `product_id`, `category`, `price` | `total_products` |
+| `Transaction` | Customer   | Many-to-One | `transaction_id`, `date`, `payment_method` | `total_spend`, `average_spend`, `purchase_frequency` |
 
 These attributes allow efficient querying and facilitate business insights.
 
@@ -123,11 +140,11 @@ The logical model refines the conceptual model into structured relationships for
 
 ## Creating semantic model
 
-To design a semantic model follow the below steps:
+To design a semantic model, follow these steps: 
 
 ### Folder structure
 
-The following structure organizes the semantic model:
+Open your code editor, preferably Visual Studio. And create a model folder Inside your project, create a folder named semantic_model. This will house all the components of your semantic model.
 
 ```plaintext
 semantic_model/model
@@ -150,5 +167,752 @@ semantic_model/model
 The data used to demonstrate the process of creating a semantic model includes the physical tables customer_data and Product_data, stored in the Lakehouse, and purchase data, sourced from PostgreSQL.
 </Info>
 
+### SQLs
+
+In the `model` folder, create a `sqls` subfolder. Then, extract the relevant columns for data modeling from the source for each table.
+
+<Tip>
+Ensure the SQL scripts align with the source database dialect to prevent syntax errors and compatibility issues.
+</Tip>
+
+For example for `model/sqls/customer.yml` file:
+
+```sql customer.sql 
+SELECT 
+    customer_id, 
+    birth_year, 
+    education, 
+    marital_status, 
+    income, 
+    country 
+FROM 
+    lakehouse.customer_relationship_management.customer_data
+```
+similarly for other two tables
+
+```sql product.sql
+select 
+    customer_id as product_customer_id,
+    product_id,
+    product_category,
+    product_name,
+    price
+FROM
+    lakehouse.customer_relationship_management.product_data
+```
+
+```sql purchase.sql
+SELECT
+    customer_id as p_customer_id,
+    cast(purchase_date as timestamp) as purchase_date,
+    recency as recency_in_days,
+    mntwines,
+    mntmeatproducts,
+    mntfishproducts,
+    mntsweetproducts,
+    mntgoldprods,
+    mntfruits,
+    numdealspurchases,
+    numwebpurchases,
+    numcatalogpurchases,
+    numstorepurchases,
+    numwebvisitsmonth,
+    numwebpurchases + numcatalogpurchases + numstorepurchases + numstorepurchases as purchases,
+    (mntwines+mntmeatproducts+mntfishproducts+mntsweetproducts+mntgoldprods+mntfruits) as spend
+FROM
+    postgres.public.purchase_data
+```
+
+### Tables
+
+Next, create a tables subfolder to load the SQL tables and columns, define a table manifest to categorize them into dimensions and measures, and create new measures.
+
+<Tip>
+
+It's recommended to place each table or view in a separate file, in `model/tables` and `model/views` folders, respectively.
+
+</Tip>
+
+
+**1. Table definition section**
+
+Define the base table for the `customer` table in the `model/tables/customer.yml` file:
+
+- **name:** Specifies the table name as `customer`.
+- **sql:** Points to the SQL defined in the /sql folder (e.g., customer.sql).
+- **description:** Provides context about the table.
+- **public:** Indicates whether the table is publicly accessible.
+
+```customer.sql
+tables:
+  - name: customer
+    sql: {{ load_sql('customer') }}
+    description: "This table stores key details about the customers, including their personal information, income, and classification into different risk segments. It serves as the central reference point for customer-related insights."
+    public: true
+```
+
+**2. Joins section**
+
+Further joins defines relationships between tables. The relationship could be `one-to-one`, `one-to-many`.
+
+* **name:** The name of the table being joined.
+* **relationship:** Specifies the relationship type (e.g., one-to-many).
+* **sql:** Defines the join condition in SQL syntax.
+
+The following YAML snippet defines a join between the customer table and the purchase table. It indicates that each customer can have many purchases, which is a `one-to-many` relationship. The `sql` line specifies the condition for the join: the `customer_id` from the `customer` table must match the `p_customer_id` from the `purchase` table, establishing the link between the two tables.
+
+```customer.yml
+joins:
+  - name: purchase
+    relationship: one_to_many
+    sql: "{TABLE.customer_id}= {purchase.p_customer_id}"
+```
+
+**3. Dimensions section**
+
+A dimension is an attribute related to a measure. Any dimension should have the following parameters:
+
+* **name:** Specifies the name of the dimension (e.g., `country`, `age`, `occupation`). It must be unique among all dimensions, measures, and segments within a table and follow the [naming convention](/resources/lens/dos_and_donts#naming-conventions).
+* **sql:** Defines the SQL logic to fetch the dimension data from the database.
+* **type:** Specifies the data type of the dimension (e.g., `number`, `string`). Please refer to the [Dimensions](/resources/lens/semantic_modeling_concepts#dimensions) section for more details.
+
+Example:
+
+```yaml
+dimensions:
+  - name: country
+    sql: ${country}
+    type: string
+```
+
+
+**4. Measures section**
+
+Use `measure` attribute to define measure in table. Each measure is an aggregation over a certain column in your database table.Add the following measure definition to your `model/tables/customer.yml` file.
+
+* **name:** Specifies the measure name.
+* **sql:** Contains the aggregation logic.
+* **type:** Indicates the data type of the measure (e.g., number, string). Please refer to the [Measures](/resources/lens/semantic_modeling_concepts#measures) section for more information.
+
+```
+measures:
+  - name: total_customers
+    sql: "COUNT( Distinct {customer_id})"
+    type: number
+    description: "The total number of customers in the dataset, used as a basic measure of customer volume."
+```
+
+**5. Segments section**
+
+The Segments section defines filters or conditions that segment data based on specific criteria, enabling the creation of subsets of the dataset for more granular analysis. Segments are often used to focus on specific groups of data that meet certain conditions, like customers from a particular region or products from a certain category.
+
+In the YAML manifest, each segment is defined by:
+
+* **name:** Specify the name of the dimension.  
+* **public:** Controls visibility of the dimension, i.e., whether the dimension is visible to all users or hidden (True, False).  
+* **sql:** Add filter criteria: `table.{dimension} = “dimension_values”`.  
+* **meta:** Custom metadata. This is also used to define the secure sub-property.
+
+
+In the provided YAML example, the condition is country = 'India', which means only rows where the state column equals "India" will be included in this segment.
+
+```
+segments:
+  - name: country_india
+    sql: country = 'India'
+    description: This segment filters customers by a specific country India.
+    meta:
+      secure:
+        user_groups:
+          includes:
+            - india
+          excludes: 
+            - default
+```
+
+Below you can see what your updated customer tab should look like. Feel free to copy this code and paste it into your model/tables/customer.yml file.
+
+<AccordionGroup>
+  <Accordion title="customer.yml">
+  <code>
+  ```yaml
+  tables:
+    - name: customer
+      sql: {{ load_sql('customer') }}
+      description: "This table stores key details about the customers, including their personal information, income, and classification into different risk segments. It serves as the central reference point for customer-related insights."
+      public: true
+
+      joins:
+        - name: purchase
+          relationship: one_to_many
+          sql: "{TABLE.customer_id}= {purchase.p_customer_id}"
+          
+      dimensions:   
+        - name: customer_id
+          type: number
+          column: customer_id
+          description: "The unique identifier for each customer."
+          primary_key: true
+          public: true
+
+
+        - name: birth_year
+          type: number
+          column: birth_year
+          description: "The birth year of the customer, used for demographic analysis and customer segmentation."
+
+        - name: education
+          type: string
+          column: education
+          description: "The educational level of the customer, which could be used for profiling and targeted campaigns."
+
+        - name: marital_status
+          type: string
+          column: marital_status
+          description: "The marital status of the customer, which may provide insights into purchasing behavior and lifestyle preferences."
+
+        - name: income
+          type: number
+          column: income
+          description: "The annual income of the customer in the local currency, which is often a key factor in market segmentation and purchasing power analysis."
+
+        - name: country
+          type: string
+          column: country
+          description: "The country where the customer resides, providing geographic segmentation and analysis opportunities."
+
+        - name: customer_segments
+          type: string
+          sql: >
+            CASE 
+                WHEN random() < 0.33 THEN 'High Risk'
+                WHEN random() < 0.66 THEN 'Moderate Risk'
+                ELSE 'Low Risk'
+            END AS 
+          description: "Risk-based customer segments derived from the customer_id, used to categorize customers into high, moderate, and low risk groups for targeted campaigns or analysis."
+
+      measures:
+        - name: total_customers
+          sql: "COUNT( Distinct {customer_id})"
+          type: number
+          description: "The total number of customers in the dataset, used as a basic measure of customer volume."
+
+      segments:
+        - name: country_india
+          sql: country = 'India'
+          description: This segment filters customers by a specific country India.
+          meta:
+            secure:
+              user_groups:
+                includes:
+                  - india
+                excludes: 
+                  - default
+
+        - name: country_usa
+          sql: country = 'USA'
+          description: This segment filters customers by a specific country USA.
+          meta:
+            secure:
+              user_groups:
+                includes:
+                  - usa
+                excludes: 
+                  - default
+  ```
+  </code>
+  </Accordion>
+
+  <Accordion title="product.yml">
+  <code>
+  ```yaml
+  tables:
+    - name: product
+      sql: {{ load_sql('product') }}
+      description: "This table stores the product information."
+      public: true
+      dimensions:   
+        - name: product_customer_id
+          type: string
+          column: product_customer_id
+          description: "The unique identifier representing the combination of a customer and a product."
+          public: true
+
+        - name: product_id
+          type: string
+          column: product_id
+          description: "The unique identifier for the product associated with a customer."
+          primary_key: true
+
+        - name: product_category
+          type: string
+          column: product_category
+          description: "The category of the product, such as Wines, Meats, Fish, etc."
+
+        - name: product_name
+          type: string
+          column: product_name
+          description: "The name of the product associated with the customer."
+
+        - name: price
+          type: number
+          column: price
+          description: "The price of the product assigned to the customer, in monetary units."
+          meta:
+            secure:
+              func: redact
+              user_groups:
+                includes: "*"
+                excludes:
+                  - default
+
+        - name: product_affinity_score
+          sql: ROUND(50 + random() * 50, 2) 
+          type: number
+          description: "Customer who purchases one product category will also purchase another category."
+
+        - name: purchase_channel
+          type: string
+          sql: >
+            CASE 
+              WHEN random() < 0.33 THEN 'Web'
+              WHEN random() < 0.66 THEN 'Store'
+              ELSE 'Catalog'
+            END
+          description: "Describes how the purchase was made (e.g., Web, Store, Catalog)."
+
+      measures:
+        - name: total_products
+          sql: product_id
+          type: count
+          description: "The number of products."
+  ```
+  </code>
+  </Accordion>
+
+  <Accordion title="purchase.yml">
+  <code>
+  ```yaml
+  tables:
+    - name: purchase_data
+      sql: {{ load_sql('purchase') }}
+      description: "This table captures detailed purchase behavior of customers, including their transaction frequency, product category spends, and web interaction history. It serves as the foundation for customer segmentation, recency analysis, and churn prediction."
+      public: true
+
+      joins:
+        - name: product
+          relationship: many_to_one
+          sql: "{TABLE.p_customer_id} = {product.product_customer_id}"
+
+      dimensions:
+        - name: p_customer_id
+          type: number
+          column: p_customer_id
+          description: "The unique identifier for a customer."
+          primary_key: true
+          public: false
+
+        - name: purchase_date
+          type: time
+          column: purchase_date
+          description: "The date when the customer made their last purchase."
+
+        - name: recency_in_days
+          type: number
+          column: recency_in_days
+          description: "The number of days since the customer’s last purchase."
+          public: false
+
+        - name: mntwines
+          type: number
+          column: mntwines
+          description: "The total amount spent by the customer on wine products."
+          public: false
+
+        - name: mntmeatproducts
+          type: number
+          column: mntmeatproducts
+          description: "The total amount spent by the customer on meat products."
+          public: false
+
+        - name: mntfishproducts
+          type: number
+          column: mntfishproducts
+          description: "The total amount spent by the customer on fish products."
+          public: false
+
+        - name: mntsweetproducts
+          type: number
+          column: mntsweetproducts
+          description: "The total amount spent by the customer on sweet products."
+          public: false
+
+        - name: mntgoldprods
+          type: number
+          column: mntgoldprods
+          description: "The total amount spent by the customer on gold products."
+          public: false
+
+        - name: mntfruits
+          type: number
+          column: mntfruits
+          description: "The total amount spent by the customer on fruit products."
+          public: false
+
+        - name: numdealspurchases
+          type: number
+          column: numdealspurchases
+          description: "The number of purchases made by the customer using deals or discounts."
+          public: false
+
+        - name: numwebpurchases
+          type: number
+          column: numwebpurchases
+          description: "The number of purchases made by the customer through the web."
+          public: false
+
+        - name: numcatalogpurchases
+          type: number
+          column: numcatalogpurchases
+          description: "The number of purchases made by the customer through catalogs."
+          public: false
+
+        - name: numstorepurchases
+          type: number
+          column: numstorepurchases
+          description: "The number of purchases made by the customer in physical stores."
+          public: false
+
+        - name: numwebvisitsmont
+          type: number
+          column: numwebvisitsmont
+          description: "The number of times the customer visited the website in the last month."
+          public: false
+
+        - name: purchases
+          type: number
+          column: purchases
+          public: false
+
+        - name: spend
+          type: number
+          column: spend
+          public: false
+
+        - name: country_name
+          type: string
+          sql: "{customer.country}"
+          description: "The name of the country where the customer is located."
+
+      measures:
+        - name: recency
+          sql: datediff(current_date,date(purchase_date))
+          type: min 
+          description: Number of days since the customers last purchase.
+  ```
+  </code>
+  </Accordion>
+</AccordionGroup>
+
+### Views
+
+Views come in two types: Entity View and Metric View. They are denormalized entities where you select multiple measures and dimensions from various tables to describe a business entity or support a specific use case. To know more about views refer to [this link](/resources/lens/working_with_views/). 
+
+
+
+**1. Meta section**
+
+* **Title:** A descriptive name for the metric, providing clarity on what the metric measures (e.g., Cross-Sell Opportunity Score).
+* **Tags:** A set of keywords or labels that help categorize the metric into specific domains, use cases, and approval tiers, making it easier to search and filter across Data Product Hub.
+
+The following tags are typically used in the Meta section:
+  * **DPDomain:** Denotes the domain or business area the metric pertains to, such as Sales, Marketing, Finance, etc. It is important to categorize the metric within a specific domain, as this helps stakeholders understand the business context and relevance of the metric.
+  * **DPUsecase:** Specifies the intended use case or application of the metric, such as Customer Segmentation, Product Recommendation, etc.
+  * **DPTier:** Specifies the approval level or validation status of the metric, e.g., DataCOE Approved, Experimental, etc.
+
+This tags will be used to populated the View as Metrics within the Data Product Hub. By clearly providing the value to these tags, users can easily navigate through the available metrics, making the Data Product Hub an organized and easily accessible repository for Data Products.
+
+However, this will only be applied when the Lens is referenced in a Bundle, and the Bundle is used to create the Data Product Hub.
+
+```yaml
+views:
+  - name: cross_sell_opportunity_score
+    description: This metric calculate the potential for cross-selling a secondary product to customers based on past purchases. 
+    public: true
+    meta:
+      title: Cross-Sell Opportunity Score
+      tags:   
+        - DPDomain.Marketing
+        - DPUsecase.Customer Segmentation
+        - DPUsecase.Product Recommendation
+        - DPTier.Consumer Aligned
+```
+
+For example, if the semantic model above is applied through a bundle and the bundle is referenced in a Data Product manifest file, the Cross-Sell Opportunity Score metric will appear in the Data Product Hub. Tagged with both Customer Segmentation and Product Recommendation use-cases, the metric will be visible under both categories in the Data Product Hub interface, as shown in the image below.
+
+![](/resources/lens/quick_guide/metric_view_in_dph.png)
+
+These tags will help users exploring the Data Product Hub easily discover the metrics, improving navigation and making it simpler to find relevant Metrics of the Data Product.
+
+**2. Metric section**
+
+The Metric section defines the actual measure being tracked and the rules for how it is calculated. This includes the expression, time window, and any exclusions.
+
+* **Expression:** The SQL expression or formula that defines how the metric is calculated (e.g., aggregation of values over a period of time).
+* **Timezone:** Specifies the timezone for the metric calculation (e.g., UTC).
+* **Window:** Defines the time period over which the metric is measured (e.g., daily, weekly, monthly). This is crucial for time-based metrics.
+* **Excludes:** Defines any data to be excluded from the calculation of the metric (e.g., certain product categories or purchase channels).
+
+```yaml 
+metric:
+  expression: "*/45  * * * *"
+  timezone: "UTC"
+  window: "day"
+  excludes: 
+    - mntwines
+    - mntmeatproducts
+    - mntfishproducts
+    - mntsweetproducts
+    - mntgoldprods
+    - mntfruits
+    - numwebpurchases
+    - numcatalogpurchases
+    - numstorepurchases
+```
+
+**3. Tables Section**
+
+The Tables section defines the data sources and the structure for the metric. It specifies the join paths, the relationships between different tables, and which columns should be included in the metric calculation.
+
+* **Join Path:** Defines the data tables to be joined to create a comprehensive view of the metric. In this case, the `purchase` table is joined to bring in relevant purchase-related data for the metric.
+* **Prefix:** Indicates whether the data from this table should be prefixed in the resulting output, helping avoid column name conflicts when combining data from multiple sources. In this example, the `purchase` table data will be prefixed with `purchase.`.
+* **Includes:** Specifies the fields or columns that should be included from each table to calculate the metric. In this case, columns like `cross_sell_opportunity_score`, `mntwines`, `mntmeatproducts`, `mntfishproducts`, `numwebpurchases`, and `customer_id` are included, providing essential data for calculating the metric.
+
+```yaml
+tables:
+  - join_path: purchase
+    prefix: true
+    includes:
+      - cross_sell_opportunity_score
+      - mntwines
+      - mntmeatproducts
+      - mntfishproducts
+      - mntsweetproducts
+      - mntgoldprods
+      - mntfruits
+      - numwebpurchases
+      - numcatalogpurchases
+      - numstorepurchases
+      - customer_id
+      - purchase_date
+```
+Below is the complete manifest file for views for your reference:
+
+<AccordionGroup>
+  <Accordion title="cross_sell_oppurtunity.yml">
+    <code>
+    ```yaml
+    views:
+      - name: cross_sell_opportunity_score
+        description: This metric calculate the potential for cross-selling a secondary product to customers based on past purchases. 
+        public: true
+        meta:
+          title: Cross-Sell Opportunity Score
+          tags:   
+            - DPDomain.Marketing
+            - DPUsecase.Customer Segmentation
+            - DPUsecase.Product Recommendation
+            - DPTier.Consumer Aligned
+          metric:
+            expression: "*/45  * * * *"
+            timezone: "UTC"
+            window: "day"
+            excludes: 
+              - mntwines
+              - mntmeatproducts
+              - mntfishproducts
+              - mntsweetproducts
+              - mntgoldprods
+              - mntfruits
+              - numwebpurchases
+              - numcatalogpurchases
+              - numstorepurchases
+        tables:
+          - join_path: purchase
+            prefix: true
+            includes:
+              - cross_sell_opportunity_score
+              - mntwines
+              - mntmeatproducts
+              - mntfishproducts
+              - mntsweetproducts
+              - mntgoldprods
+              - mntfruits
+              - numwebpurchases
+              - numcatalogpurchases
+              - numstorepurchases
+              - customer_id
+              - purchase_date
+
+          - join_path: product
+            prefix: true
+          includes:
+            - product_category
+              - product_name
+    ```
+    </code>
+
+  </Accordion>
+
+  <Accordion title="purchase_freq.yaml">
+    <code>
+    ```yaml
+    views:
+      - name: purchase_frequency
+        description: "This metric calculates the average number of times a product is purchased by customers within a given time period."
+        public: true
+        meta:
+          title: Product Purchase Frequency
+          tags:   
+            - DPDomain.Sales
+            - DPDomain.Marketing
+            - DPUsecase.Customer Segmentation
+            - DPUsecase.Product Recommendation
+            - DPTier.DataCOE Approved
+        metric:
+          expression: "*/45  * * * *"
+          timezone: "UTC"
+          window: "day"
+          excludes: 
+            - purchases
+        tables:
+          - join_path: purchase_data
+            prefix: true
+            includes:
+              - purchase_date
+              - customer_id
+              - purchase_frequency
+              - purchases
+          - join_path: product
+            prefix: true
+            includes:
+              - product_category
+              - product_name
+    ```
+    </code>
+
+  </Accordion>
+
+  <Accordion title="total_spend.yml">
+    <Code>
+    ```yaml 
+    views:
+      - name: total_spending
+        description: This metric measures how many marketing campaigns a customer has engaged with. 
+        public: true
+        meta:
+          title: Customer Spending by Product Category
+          tags:   
+            - DPDomain.Marketing
+            - DPUsecase.Customer Segmentation
+            - DPUsecase.Product Recommendation
+            - DPTier.Consumer Aligned
+          metric:
+            expression: "*/45  * * * *"
+            timezone: "UTC"
+            window: "day"
+            excludes: 
+            - spend
+        tables:
+          - join_path: purchase
+            prefix: true
+            includes:
+              - purchase_date
+              - customer_id
+              - total_spend
+              - spend
+
+          - join_path: product
+            prefix: true
+            includes:
+              - product_category
+              - product_name
+    ```
+    </Code>
+  </Accordion>
+
+</AccordionGroup>
+
+### User groups
+
+After defining the Views, you define user groups to manage access to data effectively. You categorize users based on their roles and responsibilities within the organization, ensuring each group has appropriate access to relevant data while maintaining security.
+* **name:** The name of the user group. It should be unique and descriptive to identify the group's purpose or role, such as data analyst or developer. Maintain consistent naming conventions across all groups, using underscores or hyphens consistently (e.g., data_analyst or data-analyst). Avoid unclear abbreviations or acronyms.
+  
+* **description:** A brief description explaining the user group’s purpose and the type of users it contains. For example: "This group contains data analysts who are responsible for reporting and data visualization tasks."
+  
+* **api_scopes:** A list of API scopes that the user group members are allowed to access. Follow the principle of least privilege by granting users the minimum level of access required. Supported scopes include:
+    - **meta:** Access to metadata-related endpoints.
+    - **data:** Access to data endpoints for retrieval and analysis.
+    - **graphql:** Access to GraphQL endpoints.
+
+* **includes:** A list of users to include in the group, which can be specific user IDs or patterns like "*" to include all users. If the number of users is small, prefer explicit identifiers (e.g., users:id:johndoe).
+  
+* **excludes:** A list of users to exclude from the group, which can be specific user IDs or patterns.
+
+For instance, in the following example, you create a group dataconsumer for data analsysts, business users who require access to detailed data for analysis and reporting. This group can view comprehensive datasets, including sensitive information, which aids in generating insights and making data-driven decisions. Next, you create a default group that includes everyone.
+
+```yaml user_groups.yml
+user_groups:
+  - name: dataconsumer
+    api_scopes:
+      - meta
+      - data
+      - graphql
+      - jobs
+      - source
+    includes: users:id:iamgroot
+
+  - name: default
+    api_scopes:
+      - meta
+      - data
+      - graphql
+      - jobs
+      - source
+    includes: "*"
+```
+
+## Step 3: Sign in to a code repository
+
+Go to any code repo 
+
+### Prerequisite
+
+- **Check required permissions:** Some tasks require specific permissions typically assigned to DataOS Operators. Ensure you have access to one of the following permission sets either via use-cases or via tags:
+
+| **Access Permission (via use-cases)**                                            | **Access Permissions (via tags)**      |
+|----------------------------------------------------------------------------------|----------------------------------------|
+| `Read Workspace`                                                              | `roles:id:data-dev`                   |
+| `Create, Update, and Delete Lens in user-layer specified workspace`            | `roles:id:system-dev`                 |
+| `Read all secrets from Heimdall`                                              | -                                      |
+
+- **Check CLI installation and initialization:** You need this text-based interface that allows you to interact with the DataOS context via command prompts.
+ {/* Click here to learn more. */}
+
+- **Instance-secret:** Use Instance Secrets for storing your code repository credentials.
+
+<Tip>
+To prevent credential exposure, contact DataOS administrator and understand the best practices for handling sensitive data.
+</Tip>
+
+- **Organize code repository:** Place Lens manifests in a private, permission-controlled code repository (such as AWS Code Commit, Bitbucket, Github) to maintain security and compliance.
+
+Create a deployment file parallel to the `semantic_model` folder and not in it.
+
+```
+build/                          # build folder in data product
+├── semantic_model/             # Folder for semantic models
+├── deployment.yml              # Configuration file for deployment
+```
 
 
