@@ -882,9 +882,161 @@ user_groups:
     includes: "*"
 ```
 
-## Step 3: Sign in to a code repository
+## Step 3: Push the semantic model folder to a code repository
 
-Go to any code repo 
+Go to any code repository for the sake of demonstration, we are using Github
+
+### Prerequisite
+
+Before starting, make sure you have the following tools installed on your local machine:
+
+* **Git:** Git must be installed to track and push changes to GitHub.
+
+* **GitHub Account:** You should have a GitHub account.
+
+### 1. Create a GitHub Repository
+
+- Go to GitHub and log in (or sign up if you don’t have an account).
+
+- Once logged in, click the "+" icon in the upper right corner of the screen and select "New repository".
+
+- Fill in the repository details:
+
+  **Repository name:** Choose a name for your repository.
+
+  **Description:** Optional. Add a brief description of what the repository is for.
+
+  **Public/Private:** Choose whether the repository should be public or private. Always use the private code reposiotry to secure APIs.
+
+  **Initialize repository:** Leave this unchecked (we will be adding the files later).
+
+- Click Create repository.
+
+### 2. Set up the repository locally
+
+- Open your terminal (or command prompt) on your local machine.
+
+- Navigate to the directory where you want to store your project locally.
+
+Example:
+
+```bash
+cd /path/to/your/project
+```
+
+- Initialize a local Git repository:
+
+```bash
+git init
+```
+
+- Link your local repository to the GitHub repository you just created:
+
+```
+git remote add origin https://github.com/your-username/your-repo-name.git
+```
+
+- Replace your-username and your-repo-name with your GitHub username and the name of the repository.
+
+### 3. Add the model folder to the local repository
+
+Copy your model folder into your local repository directory. For example, if your model folder is located elsewhere, move or copy it into your local repo folder.
+
+After adding the model folder, check the status of your repo:
+
+
+```bash
+git status
+```
+### 4. Stage and commit the changes
+
+Stage the model folder for commit:
+
+```
+git add .
+```
+
+Commit the changes:
+
+```
+git commit -m "Added model folder"
+```
+
+### 5. Push to GitHub Repository
+
+Finally, push the local changes to the remote repository on GitHub:
+
+```
+git push -u origin master
+```
+
+This will upload the model folder to your GitHub repository.
+
+### Additional Tips
+
+**Branching (Optional):** If you want to work on a separate branch, you can create one using:
+
+```
+git checkout -b new-branch-name
+```
+
+Pulling Updates (Optional): If your repository already has files and you want to sync with the remote repository before making changes, use:
+
+```
+git pull origin master
+```
+
+**Push Updates (Optional):** After making changes locally, you can commit and push again using the same steps.
+
+## Step 4: Create the Instance Secrets for code repo credentials
+
+To secure your code repository credentials, you need to create and configure an Instance Secret. This secret is necessary because the Lens deployment file contains Git/Bitbucket credentials and repo address to fetch all Lens artifacts. To create and configure an Instance Secret follow the below steps:
+
+**a. Create an Instance Secret manifest file**
+
+Define the Instance Secret Resource in a YAML file. Below is a template you can use for Bitbucket and Github, substituting ${USERNAME} and ${PASSWORD} with your actual credentials of Bitbucket or Github:
+
+```yaml
+# RESOURCE META SECTION
+name: github-r # Secret Resource name (mandatory)
+version: v1 # Secret manifest version (mandatory)
+type: instance-secret # Type of Resource (mandatory)
+description: github read secrets for code repository # Secret Resource description (optional)
+layer: user # DataOS Layer (optional)
+
+# INSTANCE SECRET-SPECIFIC SECTION
+instance-secret: 
+  type: key-value # Type of Instance-secret (mandatory)
+  acl: r # Access control list (mandatory)
+  data: # Data (mandatory)
+    GITSYNC_USERNAME: iamgroot
+    GITSYNC_PASSWORD: <GIT_TOKEN>
+```
+
+**b. Apply the Instance Secret manifest**
+
+Deploy the Instance Secret to DataOS using the `apply` command.
+
+<Tip>
+When applying the manifest file for Instance-secret from CLI, ensure you don't specify Workspace as Instance Secret is a Instance-level Resource.
+</Tip>
+
+You apply the manifest file as follows:
+
+```yaml
+dataos-ctl apply -f ./lens/instance_secret.yml
+# Expected output
+INFO[0000] 🛠 apply...                                   
+INFO[0000] 🔧 applying github-r:v1:instance-secret... 
+INFO[0001] 🔧 applying github-r:v1:instance-secret...created 
+INFO[0001] 🛠 apply...complete
+```
+
+<Tip>
+Make a note of the name of the created `Instance Secret`, as it will be required in the secrets attribute section of the Lens manifest file. This name is essential for ensuring proper configuration and access within your Lens.
+</Tip>
+
+## Step 5: Deploy the Lens in DataOS
 
 ### Prerequisite
 
@@ -915,4 +1067,71 @@ build/                          # build folder in data product
 ├── deployment.yml              # Configuration file for deployment
 ```
 
+### Create a Lens manifest file
+
+You begin by creating a manifest file that holds the configuration details for your Lens. The structure of the Lens manifest file is provided below.
+
+The manifest file of Lens can be broken down into two sections:
+
+- Resource meta section
+- Lens-specific section
+
+<Tip>
+In DataOS, Lens is categorized as a Resource type. The YAML configuration file for Lens includes a Resource meta section, which contains attributes shared among all Resource types.
+</Tip>
+
+The following YAML excerpt illustrates the attributes specified within this section:
+
+To configure Lens, replace name, layer, tags, description, and owner values with appropriate values. For additional configuration information about the attributes of the Resource meta section, refer to the link: [Attributes of Resource meta section](/resources/manifest_attributes/).
+
+```yaml lens_deployemnt.yml
+# RESOURCE META SECTION
+name: cross-sell-affinity # Lens Resource name (mandatory)
+version: v1alpha # Lens manifest version (mandatory)
+layer: user # DataOS Layer (optional)
+type: lens # Type of Resource (mandatory)
+tags: # Tags (optional)
+  - lens
+description: This data model provides comprehensive insights for cross-sell and product affinity analysis. # Lens Resource description (optional)
+
+# LENS-SPECIFIC SECTION
+lens:
+  compute: runnable-default # Compute Resource that Lens should utilize (mandatory)
+  secrets: # Referred Instance-secret configuration (**mandatory for private code repository, not required for public repository)
+    - name: github-r # Referred Instance Secret name (mandatory)
+      allKeys: true # All keys within the secret are required or not (optional)
+
+# Data Source configuration      
+  source: 
+    type: depot # Source type (could be themis, minerva flash as well)
+    name: lakehouse # Source name (name of the depot)
+    catalog: lakehouse # Catalog name for the depot
+  repo: # Lens model code repository configuration (mandatory)
+    url: https://github.com/tmdc/productaffinity # URL of repository containing the Lens model (mandatory)
+    lensBaseDir: productaffinity/build/semantic_model/model # Relative path of the Lens 'model' directory in repository (mandatory)
+    syncFlags: # Additional flags used during synchronization (optional)
+      - --ref=main # Repository Branch (optional)
+```
+
+A typical deployment of Lens includes the following components:
+
+| Section | Description |
+|---------|-------------|
+| **Source** | Specifies the source configuration from which the Lens will be mapped. The Lens supports the depot, Themis, Minerva, and Flash as sources. |
+| **Repo** | Outlines the configuration of the code repository where the semantic model used by Lens resides. |
+| **API** | Configures an API service that processes incoming requests, connecting to the database for raw data. A single instance is provisioned by default, but the system can auto-scale to add more instances based on workload demands, with a recommendation of one instance for every 5-10 requests per second. |
+| **Worker** | Workers receive and execute subqueries sent by the Router. They interact directly with the underlying distributed storage to handle tasks like insertions and data selection. Workers do not communicate with one another directly; instead, they depend on the Router to distribute queries and manage any related metadata. |
+| **Router** | Configures a Router Service responsible for receiving queries from Lens, managing metadata, and handling query planning and distribution to the workers. Lens communicates only with the Router, not directly with the workers. |
+| **Metrics** | Populates the metrics in the metric section of the Data Product Hub. |
+
+For more information on how to configure Lens manifest file, refer to the link:[Configuration Fields of the Deployment Manifest File for Lens](/resources/lens/lens_manifest_attributes/)
+
+
+**Apply the Lens manifest file**
+
+Apply the Lens manifest file using the `apply` command as shown below copy the relative path or full path.
+
+```
+dataos-ctl apply -f <path-of-your-lens-manifest-file>
+```
 

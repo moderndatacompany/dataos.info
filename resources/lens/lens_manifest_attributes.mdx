@@ -126,7 +126,7 @@ lens:
 
 ### **`compute`**
 
-**Description:** Defines the [Compute Resource](/resources/compute/) to be used by the Lens. The value should match a pre-defined Compute Resource within DataOS that suits the workload requirements of the Lens model.
+**Description:** Defines the [Compute](/resources/compute/) Resource to be used by the Lens. The value should match a pre-defined Compute Resource within DataOS that suits the workload requirements of the Lens model.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value**                                                      |
 | ------------- | --------------- | ----------------- | ----------------------------------------------------------------------- |
@@ -319,7 +319,8 @@ lens:
 lens:
  source:
   type: themis
-  name: minithemis
+  name: minithemis  #name of the cluster in the themis federated query engine
+  catalog: lakehouse   #name of the catalog in the minithemis cluster
 ```
 
 ***
@@ -340,7 +341,7 @@ lens:
 
 | Data Type | Requirement | Default Value | Possible Values                                                      |
 | --------- | ----------- | ------------- | -------------------------------------------------------------------- |
-| string    | mandatory   | none          | URL of the repository (e.g., https://bitbucket.org/mywork15/talos/). |
+| string    | mandatory   | none          | URL of the repository (e.g., https:///mywork15/talos/). |
 
 **Example usage:**
 
