@@ -110,7 +110,7 @@ service:
 **Example Usage:**<br>
 ```yaml
 service:
-  title: benthos service
+  title: bento service
 ```
 
 ---
@@ -366,10 +366,10 @@ service:
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |
-| string        | mandatory      | none                  | benthos/<br>alpha/beacon+rest
+| string        | mandatory      | none                  | bento/<br>alpha/beacon+rest
 
 <b>Additional Details:</b> <br>
-- <i>benthos:</i> for Stream Analytics/Event Stream Processing <br>
+- <i>bento:</i> for Stream Analytics/Event Stream Processing <br>
 - <i>beacon:</i> for Web and other applications gain access to PostgreSQL database within DataOS<br>
 - <i>alpha:</i> for connecting to Web-Server based application images developed on top of DataOS
  <br>
@@ -377,7 +377,7 @@ service:
 **Example Usage:**<br>
 ```yaml
 service:
-  stack: benthos
+  stack: bento
 ```
 
 ---

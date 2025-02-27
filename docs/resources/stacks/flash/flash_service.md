@@ -21,7 +21,7 @@ Ensure that appropriate access permissions are available to execute this command
 ──────────────────┼─────────┼─────────┼───────────────────────────────────────────────────┼────────────────────────────
   beacon          │ graphql │ 1.0     │ docker.io/rubiklabs/beacon:postgraphile-4.10.0.d1 │ dataos-container-registry  
   beacon          │ rest    │ 1.0     │ docker.io/postgrest/postgrest:v7.0.1              │ dataos-container-registry  
-  benthos         │         │ 3.0     │ docker.io/rubiklabs/benthos-ds:0.8.28             │ dataos-container-registry  
+  bento         │         │ 3.0     │ docker.io/rubiklabs/bento-ds:0.8.28             │ dataos-container-registry  
   container       │         │ 1.0     │                                                   │                            
   dataos-ctl      │         │ 1.0     │ docker.io/rubiklabs/dataos-ctl:2.26.18            │ dataos-container-registry  
   dataos-resource │ apply   │ 1.0     │ docker.io/rubiklabs/dataos-ctl:2.26.18            │ dataos-container-registry  

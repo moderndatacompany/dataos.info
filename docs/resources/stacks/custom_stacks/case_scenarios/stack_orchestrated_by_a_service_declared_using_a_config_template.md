@@ -3,13 +3,13 @@
 The following YAML manifest declares the Benthos Stack and orchestrates it via a Service as a containerized resource:
 
 ```yaml
-name: "benthos-v4"
+name: "bento-v4"
 version: v1alpha
 type: stack
 layer: user
-description: "benthos stack version 4"
+description: "bento stack version 4"
 stack:
-  name: benthos
+  name: bento
   version: "4.0"
   reconciler: "stackManager"
   secretProjection:
@@ -22,7 +22,7 @@ stack:
     auth:
       imagePullSecret: dataos-container-registry
   command:
-    - /opt/dataos/benthos-ds
+    - /opt/dataos/bento-ds
   arguments:
     - run
     - -c
@@ -42,7 +42,7 @@ stack:
            '@service': {{.Name}}
         http:
          address: 0.0.0.0:{{.MetricPort}}
-         root_path: /dataos-benthos
+         root_path: /dataos-bento
          debug_endpoints: false
         metrics:
          prometheus:
@@ -66,7 +66,7 @@ stack:
            '@service': {{.Name}}
         http:
          address: 0.0.0.0:{{.MetricPort}}
-         root_path: /dataos-benthos
+         root_path: /dataos-bento
          debug_endpoints: false
         metrics:
          prometheus:
