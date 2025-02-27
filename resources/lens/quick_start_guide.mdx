@@ -1,7 +1,7 @@
 ---
 title: "Create semantic model"
 description: "Step-by-step guide on defining business objectives, KPIs, and designing a semantic model using Lens."
-sidebarTitle: "Quickstart Guide"
+sidebarTitle: "Quickstart"
 ---
 
 ## Scenario
@@ -911,9 +911,8 @@ Go to any code repository for the sake of demonstration, we are using Github
 
 Before starting, make sure you have the following tools installed on your local machine:
 
-* **Git:** Git must be installed to track and push changes to GitHub.
-
-* **GitHub Account:** You should have a GitHub account.
+- **Git:** To track and push changes to GitHub.
+- **GitHub Account:** To store the model in a repository.
 
 ### 1. Create a GitHub Repository
 
@@ -1125,14 +1124,26 @@ lens:
 
 # Data Source configuration      
   source: 
-    type: depot # Source type (could be themis, minerva flash as well)
-    name: lakehouse # Source name (name of the depot)
+    type: minerva # Source type (could be themis, minerva flash as well)
+    name: miniature # Source name (name of the depot)
     catalog: lakehouse # Catalog name for the depot
   repo: # Lens model code repository configuration (mandatory)
     url: https://github.com/tmdc/productaffinity # URL of repository containing the Lens model (mandatory)
     lensBaseDir: productaffinity/build/semantic_model/model # Relative path of the Lens 'model' directory in repository (mandatory)
     syncFlags: # Additional flags used during synchronization (optional)
       - --ref=main # Repository Branch (optional)
+  api:   # optional
+    replicas: 1 # optional
+
+  worker: # optional
+    replicas: 1 # optional
+    logLevel: debug  # optional
+
+  router: # optional
+    logLevel: info  # optional
+
+  metric:
+    logLevel: info
 ```
 
 A typical deployment of Lens includes the following components:
