@@ -63,8 +63,6 @@ There are many reasons why an input source might have spikes or inconsistent thr
 
 In situations like these, it is sometimes a better use of your hardware and resources to level out the flow of data rather than try and match the peak throughput. This would depend on the frequency and duration of the spikes as well as your latency requirements and is, therefore, a matter of judgment.
 
-Leveling out the flow of data can be done within Bento using a [buffer](../components/buffers.md). Buffers allow an input source to store a bounded amount of data temporarily, which a consumer can work through at its own pace. Buffers always have a fixed capacity, which, when full, will proceed to block the input just like a busy output would.
-
 Therefore, it's still important to have an output that can keep up with the flow of data, the difference that a buffer makes is that the output only needs to keep up with the *average* flow of data versus the instantaneous flow of data.
 
 For example, if your input usually produces 10 msgs/s but occasionally spikes to 100 msgs/s, and your output can handle up to 50 msgs/s, it might be possible to configure a buffer large enough to store spikes in their entirety. As long as the average flow of messages from the input remains below 50 msgs/s, then your service should be able to continue indefinitely without ever blocking the input source.

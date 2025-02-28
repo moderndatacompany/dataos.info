@@ -13,7 +13,7 @@ service:
 	# ...
 	# ...
 	# ... 
-  stack: bento   # Stack (Here it's Bento)
+  stack: bento:1.0   # Stack (Here it's Bento)
   stackSpec:
 
 # Bento Stack-specific Section
@@ -21,9 +21,6 @@ service:
 # Main Components
 	# Input Component 
     input:
-				{} 
-	# Buffer Component
-		buffer:
 				{} 
 	# Pipeline Component 
     pipeline:
@@ -42,17 +39,6 @@ service:
 	# Metrics Component
 		metrics:
 			  {}
-	# Tracer Component
-		tracer:
-				{}
-
-# Resource Components
-	# Rate Limit Resource Component
-		rate_limit_resources:
-				{}
-  # Cache Resource Component
-		cache_resources: 
-				{}
 ```
 
 ## Service Resource Section
@@ -75,9 +61,6 @@ input:
     addresses: [ TODO ]
     topics: [ foo, bar ]
     consumer_group: foogroup
-
-buffer:
-  type: none
 
 pipeline:
   processors:
@@ -111,10 +94,6 @@ metrics:
   statsd:
     address: localhost:8125
     flush_period: 100ms
-
-tracer:
-  jaeger:
-    agent_address: localhost:6831
 ```
 
 ### **Resource Components**
@@ -135,17 +114,6 @@ pipeline:
         key: '${! json("id") }'
         value: "x"
     - mapping: root = if errored() { deleted() }
-
-rate_limit_resources:
-  - label: foo_ratelimit
-    local:
-      count: 500
-      interval: 1s
-
-cache_resources:
-  - label: baz_cache
-    memcached:
-      addresses: [ localhost:11211 ]
 ```
 
 It's also possible to configure inputs, outputs, and processors as resources which allows them to be reused throughout a configuration with the [`resource` input](/resources/stacks/bento/components/inputs/),  [`resource` output](/resources/stacks/bento/components/output/),  and [`resource` processor](/resources/stacks/bento/components/processors/), respectively.
@@ -160,14 +128,8 @@ For a thorough and comprehensive understanding of these magnificent components, 
 
 [Output](/resources/stacks/bento/components/output/)
 
-[Caches](/resources/stacks/bento/components/caches/)
-
-[Rate Limit](/resources/stacks/bento/components/rate_limit/)
-
 [Buffers](/resources/stacks/bento/components/buffers/)
 
 [Metrics](/resources/stacks/bento/components/metrics/)
-
-[Tracers](/resources/stacks/bento/components/tracers/)
 
 [Logger](/resources/stacks/bento/components/logger/)

@@ -6,7 +6,17 @@ search:
 
 # Bento Stack
 
-Bento is a stream processing [Stack](/resources/stacks/) within DataOS that provides a declarative YAML programming paradigm for performing common data engineering tasks such as transformation, mapping, schema validation, filtering, hydrating, multiplexing, and enrichment with simple, chained, stateless processing steps. It allows users to quickly adapt their stream data pipelines as requirements change by interacting with other services and then can write to one or more sinks with the spectrum of connectors available out-of-the-box with it.
+Bento is a stream processing [Stack](/resources/stacks/) within DataOS that enables the definition of data transformations using a declarative YAML-based approach. It streamlines common data engineering tasks, including transformation, mapping, schema validation, filtering, hydrating, multiplexing, etc.
+
+Bento employs stateless, chained processing steps, allowing stream data pipelines to adapt efficiently as requirements evolve. It integrates seamlessly with other services and provides built-in connectors for writing to various destinations.  
+
+!!!tip "Bento Stack in the Data Product Lifecycle"
+
+    Bento operates as a Stack and can be orchestrated using either a [Worker](/resources/worker/) or a [Service](/resources/service/) Resource, depending on the use case.  Bento-powered Workers and Services support the build phase of the Data Product Lifecycle by enabling:  
+
+    - **Stream data transformation** – Continuous real-time processing, such as ingesting IoT sensor data into a messaging queue like Kafka and Pulsar.  
+    - **Independent processing** – Long-running data transformations that do not require external network communication, such as standalone data processing streams.  
+
 
 <center>
 
@@ -17,37 +27,6 @@ Bento is a stream processing [Stack](/resources/stacks/) within DataOS that prov
 </center>
 
 
-Bento is designed to be reliable, with an in-process transaction model and no need for a disk-persisted state, and it’s easy to deploy and scale.  Additionally, with supports for a wide range of processors and a “lit mapping language,” Bloblang, built-in. It also offers a visual web application called Bento Studio that allows users to create, edit, and test configs.
-
-## Why use Bento
-
-Bento offers a wide range of features that make it an ideal solution for stream processing, including:
-
-- **No Runtime Dependencies:** Bento utilizes static binaries with no runtime library dependencies, simplifying deployment.
-
-- **Resilient:** Built with an in-process transaction model, Bento ensures at-least-once delivery without persisting messages during transit. It gracefully handles back pressure by temporarily stopping consumption when output targets block traffic.
-
-- **Scalability:** Bento is designed for horizontal scalability, allowing seamless scaling as data volume increases.
-
-- **Declarative Configuration:** Bento employs a declarative approach, eliminating the need for code compilation or building.
-
-- **Observability:** Integration with Prometheus enables the collection of logs and metrics for better observability.
-
-- **Cloud Native:** Bento is compatible with integration frameworks, log aggregators, and ETL workflow engines, making it a cloud-native solution that can complement traditional data engineering tools or serve as a simpler alternative.
-
-- **Extensible:** Bento supports extension through Go plugins or subprocesses.
-
-- **Stateless and Fast:** Bento is designed to be stateless and horizontally scalable. However, it can interact with other services to perform stateful operations.
-
-- **Flexibility:** Bento allows connectivity with various sources and sinks using different brokering patterns. It facilitates single message transformation, mapping, schema validation, filtering, hydrating, and enrichment through interactions with other services, such as caching.
-
-- **Bloblang:** Bento includes a built-in lit mapping language, Bloblang, which enables deep exploration of nested structures for extracting required information.
-
-- **Payload Agnostic:** Bento supports structured data in JSON, Avro, or even binary formats, providing flexibility in data processing.
-
-- **Real-time Data Processing:** Bento is designed for real-time data processing, making it suitable for scenarios requiring immediate ingestion and processing of generated data.
-
-- **High Configurability:** Bento offers high configurability, allowing the construction of complex data processing pipelines that transform and enrich data during ingestion.
 
 Now, let's dive into the details and explore Bento further.
 
@@ -93,4 +72,12 @@ Tired of cumbersome data wrangling? Bloblang, the native mapping language of Ben
 
 Bento, with its modular architecture and extensive range of processors, inputs/outputs, is perfect for creating real-time data processing recipes. Our collection of use cases and case scenarios demonstrates how Bento can solve common data processing challenges. Explore the possibilities with Bento:
 
-[Recipes](/resources/stacks/bento/recipes/)
+- [Processing JSON data](/resources/stacks/bento/recipes/processing_json_data/)
+- [Processing nested JSON data](/resources/stacks/bento/recipes/processing_nested_json_data/)
+- [Processing JSON array of objects](/resources/stacks/bento/recipes/processing_json_array_of_objects/)
+- [Fetching Data from Instagram API](/resources/stacks/bento/recipes/fetching_data_from_instagram_api/)
+- [Twitter API Data Processing](/resources/stacks/bento/recipes/twitter_api_data_processing/)
+- [Discord Bot](/resources/stacks/bento/recipes/discord_bot/)
+- [Stock Data API to Icebase](/resources/stacks/bento/recipes/fetching_data_from_stock_data_api_using_bento/)
+- [Perform Rate Limit](/resources/stacks/bento/recipes/how_to_perform_rate_limit/)
+- [Performing Pagination](/resources/stacks/bento/recipes/pagination/)
