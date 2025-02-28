@@ -315,7 +315,7 @@ command:
 
 # Example 2
 command:
-  - /opt/dataos/benthos-ds
+  - /opt/dataos/bento-ds
 ```
 
 ---
@@ -584,7 +584,7 @@ configFileTemplate: |
         '@service': {{.Name}}
     http:
       address: 0.0.0.0:{{.MetricPort}}
-      root_path: /dataos-benthos
+      root_path: /dataos-bento
       debug_endpoints: false
     metrics:
       prometheus:
@@ -604,7 +604,7 @@ configFileTemplate: |
        '@service': {{.Name}}
     http:
      address: 0.0.0.0:{{.MetricPort}}
-     root_path: /dataos-benthos
+     root_path: /dataos-bento
      debug_endpoints: false
     metrics:
      prometheus:
@@ -628,7 +628,7 @@ configFileTemplate: |
        '@service': {{.Name}}
     http:
      address: 0.0.0.0:{{.MetricPort}}
-     root_path: /dataos-benthos
+     root_path: /dataos-bento
      debug_endpoints: false
     metrics:
      prometheus:
@@ -652,7 +652,7 @@ configFileTemplate: |
        '@service': {{.Name}}
     http:
      address: 0.0.0.0:{{.MetricPort}}
-     root_path: /dataos-benthos
+     root_path: /dataos-bento
      debug_endpoints: false
     metrics:
      prometheus:
