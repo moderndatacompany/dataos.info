@@ -1,0 +1,96 @@
+name: bento-v1
+version: v1alpha
+type: stack
+tags:
+  - dataos:type:resource
+  - dataos:type:cluster-resource
+  - dataos:resource:stack
+  - dataos:layer:user
+description: benthos stack version 3
+layer: user
+stack:
+  name: bento
+  version: "1.0"
+  reconciler: stackManager
+  image:
+    registry: 933570616564.dkr.ecr.us-west-2.amazonaws.com
+    repository: released-images
+    image: benthos-ds
+    tag: 0.8.28
+    auth:
+      imagePullSecret: dataos-container-registry
+  command:
+    - /opt/dataos/benthos-ds
+  arguments:
+    - run
+    - -c
+    - /etc/dataos/config/jobconfig.yaml
+  stackSpecValueSchema:
+    jsonSchema: |
+      {
+        "$schema": "http://json-schema.org/draft-04/schema",
+        "type": "object",
+        "properties": {
+          "input": {
+            "type": "object"
+          },
+          "metrics": {
+            "type": "object"
+          },
+          "logger": {
+            "type": "object"
+          },
+          "http": {
+            "type": "object"
+          },
+          "pipeline": {
+            "type": "object"
+          },
+          "output": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "input"
+        ]
+      }
+  serviceConfig:
+    configFileTemplate: |
+      jobconfig.yaml: |
+      {{ toYaml .ApplicationSpec.StackSpec | indent 2 }}
+        logger:
+          level: {{.ApplicationSpec.LogLevel}}
+          add_timestamp: true
+          format: json
+          static_fields:
+            '@service': {{.Name}}
+        http:
+          address: 0.0.0.0:{{.MetricPort}}
+          root_path: /dataos-benthos
+          debug_endpoints: false
+        metrics:
+          prometheus:
+            push_url: "http://prometheus-pushgateway.sentinel.svc.cluster.local:9091"
+            push_interval: "5s"
+            push_job_name: "{{ .Name }}-{{ .Type }}{{ .Stamp }}"
+  workerConfig:
+    configFileTemplate: |
+      jobconfig.yaml: |
+      {{ toYaml .ApplicationSpec.StackSpec | indent 2 }}
+        logger:
+          level: {{.ApplicationSpec.LogLevel}}
+          add_timestamp: true
+          format: json
+          static_fields:
+            '@service': {{.Name}}
+        http:
+          address: 0.0.0.0:{{.MetricPort}}
+          root_path: /dataos-benthos
+          debug_endpoints: false
+        metrics:
+          prometheus:
+            push_url: "http://prometheus-pushgateway.sentinel.svc.cluster.local:9091"
+            push_interval: "5s"
+            push_job_name: "{{ .Name }}-{{ .Type }}{{ .Stamp }}"
+  secretProjection:
+    type: propFile

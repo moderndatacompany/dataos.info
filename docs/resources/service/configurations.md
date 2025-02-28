@@ -1,90 +1,140 @@
-# Attributes of Service YAML Manifest
+# Attributes of Service Resource Manifest
 
 This document provide a comprehensive overview of the configuration attributes available for the Service Resource.
 
-## Structure of Service-specifc Section
+## Structure of Service Resource manifest
 
-The manifest below demonstrates the structure of the Service-specific section YAML configuration:
+The manifest below demonstrates the structure of the Service Resource:
 
 ```yaml
-service:
-  title: ${{title of service}}
-  tags:
-    - ${{tag1}}
-    - ${{tag2}}
-  servicePort: ${{service port number}}
-  ingress: 
-    enabled: ${{enables ingress}}
-    path: ${{/alpha}}
-    stripPath: ${{true}}
-    noAuthentication: ${{false}}
-    appDetailSpec: ${{}}
-    apiDetailSpec: ${{}}
-  replicas: ${{2}}
-  autoScaling: 
-    enabled: ${{true/false}}
-    minReplicas: ${{3}}
-    maxReplicas: ${{5}}
-    targetMemoryUtilizationPercentage: ${{50}}
-    targetCPUUtilizationPercentage: ${{80}}
-  stack: ${{stack name and version}} # mandatory
-  logLevel: ${{log level}}
-  configs: 
-    ${{alpha: beta}}
-  envs: 
-    ${{random: delta}}
-  secrets: 
-    - ${{mysecret}}
-  dataosSecrets:
-    - name: ${{mysecret}}
-      workspace: ${{curriculum}}
-      key: ${{newone}}
-      keys:
-        - ${{newone}}
-        - ${{oldone}}
-      allKeys: ${{true}}
-      consumptionType: ${{envVars}}
-  dataosVolumes: 
-    - name: ${{myVolume}}
-      directory: ${{/file}}
-      readOnly: ${{true}}
-      subPath: ${{/random}}
-  tempVolume: ${{abcd}}
-  persistentVolume:
-    name: ${{myVolume}}
-    directory: ${{/file}}
-    readOnly: ${{true}}
-    subPath: ${{/random}}
-  compute: ${{compute resource name}} # mandatory
-  resources:
+# ==========================
+# RESOURCE META SECTION
+# Common attributes for all DataOS Resources
+# ==========================
+
+name: ${{service_resource_name}}  # (Required) Name of the Service Resource (e.g., my-first-service). Must conform to regex [a-z0-9]([-a-z0-9]*[a-z0-9]). Total length of the string should be less than or equal to 48 characters.
+version: v1  # (Required) Manifest version of the Service Resource. Must be `v1`.
+type: service  # (Required) Resource type. Must be `service` for a Service Resource.
+tags:  # (Optional) Tags for categorization. Must be a list of strings.
+  - ${{tag_example_1}}  # Example: dataos:service
+  - ${{tag_example_2}}  # Example: dataos:workspace:curriculum
+description: ${{resource_description}}  # (Optional) Description of the Service Resource (e.g., Customer data syndication service).
+owner: ${{resource_owner}}  # (Optional) Owner of the Service Resource. Defaults to the user applying the manifest.
+layer: ${{resource_layer}}  # (Optional) DataOS layer. Defaults to `user`. Possible values: `user` or `system`.
+
+# ==========================
+# SERVICE-SPECIFIC SECTION
+# Attributes specific to the Service resource type
+# ==========================
+
+service:  
+  title: ${{service_title}}  # (Optional) Title of the service (e.g., Flash Service).
+  tags:  # (Optional) List of service-specific tags.
+    - ${{service_tag1}}  
+    - ${{service_tag2}}  
+  servicePort: ${{service_port_number}}  # (Optional) Service port declaration for a single port. Must be an integer.
+  servicePorts:  # (Optional) List of multiple port declarations.
+    - name: ${{service_port1_name}}  # (Required) Port name. Must be a string.
+      servicePort: ${{service_port_1_number}}  # (Required) Port number. Must be an integer.
+    - name: ${{service_port_2_name}}  
+      servicePort: ${{service_port_2_number}}  
+  ingress:  # (Optional) Ingress configuration.
+    enabled: ${{enable_ingress}}  # (Required) Boolean to enable or disable ingress.
+    path: ${{service_path}}  # (Required) String representing the service path (e.g., `/randomapi`).
+    stripPath: ${{strip_path_flag}}  # (Optional) Boolean to enable or disable path stripping.
+    noAuthentication: ${{no_auth_flag}}  # (Optional) Boolean to enable or disable authentication.
+    appDetailSpec: ${{app_details}}  # (Optional) String for custom application details.
+    apiDetailSpec: ${{api_details}}  # (Optional) String for custom API details.
+  replicas: ${{service_replicas}}  # (Optional) Number of service replicas. Must be an integer greater than or equal to 1. Defaults to 0.
+  autoScaling:  # (Optional) Autoscaling configuration.
+    enabled: ${{autoscaling_enabled}}  # (Required) Boolean to enable or disable autoscaling.
+    minReplicas: ${{min_replicas}}  # (Required) Minimum number of replicas. Must be an integer.
+    maxReplicas: ${{max_replicas}}  # (Required) Maximum number of replicas. Must be an integer.
+    targetMemoryUtilizationPercentage: ${{memory_utilization}}  # (Optional) Target memory utilization percentage. Must be an integer.
+    targetCPUUtilizationPercentage: ${{cpu_utilization}}  # (Optional) Target CPU utilization percentage. Must be an integer.
+  stack: ${{stack_to_be_orchestrated}}  # (Required) Stack to be orchestrated (e.g., `bento:1.0`, `flash`, `lakesearch`). Must be a string.
+  logLevel: ${{log_level}}  # (Optional) Logging level. Must be a string.
+
+  configs:  # (Optional) Key-value mapping for configuration settings.
+    ${{config_key1}}: ${{config_value1}}  
+    ${{config_key2}}: ${{config_value2}}  
+
+  envs:  # (Optional) Key-value mapping for environment variables.
+    ${{env_key1}}: ${{env_value1}}  
+    ${{env_key2}}: ${{env_value2}}  
+
+  secrets:  
+    - ${{secret_name}}  # (Optional) List of secret names. Must be a list of strings.
+
+  dataosSecrets:  # (Optional) List of DataOS secret configurations.
+    - name: ${{secret_name}}  # (Required) Secret name. Must be a string.
+      workspace: ${{secret_workspace}}  # (Required) Workspace where the secret is stored.
+      key: ${{secret_key}}  # (Optional) Single secret key.
+      keys:  # (Optional) Array of multiple secret keys.
+        - ${{secret_key1}}  
+        - ${{secret_key2}}  
+      allKeys: ${{all_keys_flag}}  # (Optional) Boolean to include all keys.
+      consumptionType: ${{consumption_type}}  # (Optional) Type of consumption.
+
+  dataosVolumes:  # (Optional) List of DataOS volume configurations.
+    - name: ${{volume_name}}  # (Required) Volume name.
+      directory: ${{volume_directory}}  # (Required) Directory path.
+      readOnly: ${{read_only_flag}}  # (Optional) Boolean flag for read-only access.
+      subPath: ${{volume_subpath}}  # (Optional) Sub-directory path.
+
+  tempVolume: ${{temp_volume_name}}  # (Optional) Temporary volume. Must be a string.
+
+  persistentVolume:  # (Optional) Persistent volume configuration.
+    name: ${{persistent_volume_name}}  # (Required) Volume name.
+    directory: ${{persistent_volume_directory}}  # (Required) Directory path.
+    readOnly: ${{persistent_volume_read_only}}  # (Optional) Boolean flag for read-only access.
+    subPath: ${{persistent_volume_subpath}}  # (Optional) Sub-directory path.
+
+  compute: ${{compute_resource_name}}  # (Required) Compute resource (e.g., `runnable-default`). Must be a string.
+
+  resources:  # (Optional) Resource requests and limits.
     requests:
-      cpu: ${{100Mi}}
-      memory: ${{100Gi}}
+      cpu: ${{cpu_request}}  # (Optional) CPU request (e.g., `1000m`). Must be a string.
+      memory: ${{memory_request}}  # (Optional) Memory request (e.g., `100Mi`). Must be a string.
     limits:
-      cpu: ${{100Mi}}
-      memory: ${{100Gi}}
-  dryRun: ${{true}}
-  runAsApiKey: ${{abcdefghijklmnopqrstuvwxyz}}
-  runAsUser: ${{iamgroot}}
-  topology:
-    name: ${{abcd}} # mandatory
-    type: ${{efgh}} # mandatory
-    doc: ${{abcd efgh}}
-    properties: 
-      ${{alpha: random}}
-    dependencies: 
-      - ${{abc}}
+      cpu: ${{cpu_limit}}  
+      memory: ${{memory_limit}}  
+
+  dryRun: ${{dry_run_flag}}  # (Optional) Boolean to enable or disable dry-run mode.
+
+  runAsApiKey: ${{api_key}}  # (Optional) API key for running the service.
+  runAsUser: ${{run_as_user}}  # (Optional) User to run the service as.
+
+  topology:  # (Optional) List of topology configurations.
+    - name: ${{topology_name}}  # (Required) Topology name.
+      type: ${{topology_type}}  # (Required) Topology type.
+      doc: ${{topology_doc}}  # (Optional) Documentation reference.
+      properties:  # (Optional) Key-value mapping for topology properties.
+        ${{property_key}}: ${{property_value}}  
+      dependencies:  # (Optional) List of topology dependencies.
+        - ${{dependency1}}  
+        - ${{dependency2}}  
+
+# ==========================
+# STACK-SPECIFIC SECTION
+# Attributes specific to the chosen Stack
+# ==========================
+
+  stackSpec:  # (Optional) Additional stack-specific attributes.
+    ${{stack_specific_attributes}}  
 ```
 
 ## Configuration Attributes
 
-## **`service`**
+This document describes all configurable attributes within the Service Resource manifest. Each attribute includes a description, data type, requirement status, default values, possible values, and example usage.
 
-**Description:** configuration for the service.
+### **`service`**
+
+**Description:** Defines the configuration for the Service.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |
-| mapping        | mandatory      | none                   | none
+| mapping        | mandatory      | none                 | none |
 
 **Example Usage:**<br>
 ```yaml
@@ -93,7 +143,7 @@ service:
   tags:
     - tag1
     - tag2
-  servicePort: 4
+  servicePort: 4000
   # ... (other service configuration attributes)
 ```
 
@@ -101,16 +151,16 @@ service:
 
 ### **`title`**
 
-**Description:** the title of the service.
+**Description:** Specifies the title of the Service.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |
-| string        | optional       | none                  | any string
+| string        | optional       | none                  | any string |
 
 **Example Usage:**<br>
 ```yaml
 service:
-  title: bento service
+  title: Flash Service
 ```
 
 ---
@@ -118,11 +168,11 @@ service:
 
 ### **`tags`**
 
-**Description:** tags associated with the service.
+**Description:** Defines tags associated with the Service.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |
-| list of strings | optional   | none                 | valid [tag](/resources/policy/configurations/#tags)
+| list of strings | optional   | none                 | valid [tag](/resources/policy/configurations/#tags) |
 
 **Example Usage:**<br>
 ```yaml
@@ -136,11 +186,11 @@ service:
 
 ### **`servicePort`**
 
-**Description:** the port on which the service is exposed. this specification creates a new Service object, which targets the TCP port number whose number is given. Ensure that any other service is not using this port else it would replace it.
+**Description:** Specifies the port on which the service is exposed. This creates a new Service Resource targeting the specified TCP port. Ensure that no other service is using the same port, else it would get replaced. 
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |
-| integer       | optional       | none                   | valid port number
+| integer       | optional       | none                   | valid port number |
 
 **Example Usage:**<br>
 ```yaml
@@ -148,15 +198,34 @@ service:
   servicePort: 8080
 ```
 
+### **`servicePorts`**
+
+**Description:** Specifies multiple ports on which the service can listen.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| mapping       | optional       | none                   | valid port mappings |
+
+**Example Usage:**
+
+```yaml
+service:
+  servicePorts:
+    - name: http
+      servicePort: 8080
+    - name: metrics
+      servicePort: 9090
+```
+
 ---
 
 ### **`ingress`**
 
-**Description:** configuration for the service's ingress. Ingress exposes HTTP and HTTPS routes from outside DataOS to services within DataOS. Configure the incoming port for the service to allow access to DataOS resources from external links.
+**Description:** Configures the ingress for the service, which exposes HTTP and HTTPS routes from outside DataOS to services within DataOS.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |
-| mapping        | optional       | none                  | none
+| mapping        | optional       | none                  | none |
 
 **Example Usage:**<br>
 ```yaml
@@ -169,13 +238,13 @@ service:
 ```
 ---
 
-#### **`enabled`**
+### **`enabled`**
 
-**Description:** indicates whether ingress is enabled for the service.
+**Description:** Determines whether ingress is enabled for the service.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |
-| boolean       | optional       | false                | true/false
+| boolean       | optional       | false                | true or false |
 
 **Example Usage:**<br>
 ```yaml
@@ -186,13 +255,13 @@ service:
 
 ---
 
-#### **`path`**
+### **`path`**
 
-**Description:** the path for the Service's ingress configuration. If a Service by the same path already exists, it would get replaced.
+**Description:** Specifies the path for the ingress configuration. If a service with the same path already exists, it will be replaced.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |
-| string        | optional       | none              | any valid path
+| string        | optional       | none              | any valid path |
 
 **Example Usage:**<br>
 ```yaml
@@ -203,13 +272,13 @@ service:
 
 ---
 
-#### **`stripPath`**
+### **`stripPath`**
 
-**Description:** indicates whether to strip the path from incoming requests in the ingress configuration.
+**Description:** Determines whether to remove the path prefix from incoming requests.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |
-| boolean       | optional       | false                | true/false
+| boolean       | optional       | false                | true or false |
 
 **Example Usage:**<br>
 ```yaml
@@ -220,13 +289,13 @@ service:
 
 ---
 
-#### **`noAuthentication`**
+### **`noAuthentication`**
 
-**Description:** indicates whether authentication is disabled for the ingress configuration.
+**Description:** Determines whether authentication is disabled for the ingress configuration.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |
-| boolean       | optional       | true               | true or false.
+| boolean       | optional       | true               | true or false |
 
 **Example Usage:**<br>
 ```yaml
@@ -239,11 +308,11 @@ service:
 
 ### **`replicas`**
 
-**Description:** the number of replicas for the service
+**Description:** Specifies the number of replicas for the service.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |
-| integer       | optional       | 1                   | any positive integer
+| integer       | optional       | 1                   | any positive integer |
 
 **Example Usage:**<br>
 ```yaml
@@ -255,11 +324,11 @@ service:
 
 ### **`autoScaling`**
 
-**Description:** configuration for auto-scaling of the service. Manage autoscaling to match changing application workload levels.
+**Description:** Configures auto-scaling for the service to adjust workload dynamically.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |
-| mapping        | optional       | none                 | none
+| mapping        | optional       | none                 | none |
 
 **Example Usage:**<br>
 ```yaml
@@ -274,13 +343,13 @@ service:
 
 ---
 
-#### **`enabled`**
+### **`enabled`**
 
 **Description:** indicates whether autoscaling is enabled for the service.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |
-| boolean       | optional       | true                | true or false.
+| boolean       | optional       | true                | true or false |
 
 **Example Usage:**<br>
 ```yaml
@@ -291,13 +360,13 @@ service:
 
 ---
 
-#### **`minReplicas`**
+### **`minReplicas`**
 
 **Description:** the minimum number of replicas for autoscaling.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |
-| integer       | optional       | 1                   | any positive integer.
+| integer       | optional       | 1                   | any positive integer |
 
 **Example Usage:**<br>
 ```yaml
@@ -308,13 +377,13 @@ service:
 
 ---
 
-#### **`maxReplicas`**
+### **`maxReplicas`**
 
 **Description:** the maximum number of replicas for autoscaling.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |
-| integer       | optional       | none                  | any positive integer
+| integer       | optional       | none                  | any positive integer |
 
 **Example Usage:**<br>
 ```yaml
@@ -325,13 +394,13 @@ service:
 
 ---
 
-#### **`targetMemoryUtilizationPercentage`**
+### **`targetMemoryUtilizationPercentage`**
 
 **Description:** the target memory utilization percentage for autoscaling is the average memory usage of all pods in a deployment across the last minute divided by the requested CPU of this deployment. If the mean of the pods' CPU utilization is higher than the target you defined, then your replicas will be adjusted.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |
-| integer       | optional       | none                  | any integer between 0 and 100.
+| integer       | optional       | none                  | any integer between 0 and 100 |
 
 **Example Usage:**<br>
 ```yaml
@@ -342,7 +411,7 @@ service:
 
 ---
 
-#### **`targetCPUUtilizationPercentage`**
+### **`targetCPUUtilizationPercentage`**
 
 **Description:** the target CPU utilization percentage for autoscaling is the average CPU usage of all pods in a deployment across the last minute divided by the requested CPU of this deployment. If the mean of the pods' memory utilization is higher than the target you defined, then your replicas will be adjusted.
 |
@@ -445,7 +514,7 @@ service:
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |
-| list of strings | optional   | none                   | none
+| list of strings | optional   | none                   | none |
 
 **Example Usage:**<br>
 ```yaml
@@ -552,51 +621,83 @@ service:
 
 ---
 
-### **`resources`**
+### **`resources`**  
 
-**Description:** Resource requests and limits for the Service. This includes CPU and memory specifications.
+**Description:** The `resources` attribute defines **CPU and memory allocations** for a Service, specifying both requests and limits. This ensures that the Service gets the necessary computing resources while preventing excessive consumption that could affect performance of the system. This attribute is useful when:  
 
-| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
-| ------------- | -------------- | ------------------- | ------------------- |
-| mapping        | optional       | none                 | none
+- **Controlling resource allocation** – Ensuring a service gets the required CPU and memory.  
+- **Preventing resource overuse** – Setting upper limits to avoid service crashes or disruptions.  
+- **Optimizing performance** – Balancing workload execution across Compute node pools.  
 
-**Example Usage:**<br>
+| **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
+|--------------|--------------|------------------|------------------|
+| mapping     | Optional     | None             | None            |
+
+**Sub-Attributes:**  
+
+- **Requests (`requests.cpu`, `requests.memory`)** - Guarantees a minimum level of CPU/memory allocation for the service. If a node cannot provide the requested resources, the pod will not be scheduled.  
+
+- **Limits (`limits.cpu`, `limits.memory`)** - Specifies the **maximum** amount of CPU/memory a service can consume. If exceeded, the service may be throttled (CPU) or evicted (memory).  
+
+| **Key**   | **Description**                                    | **Data Type** | **Requirement** | **Example Values** |
+|-----------|------------------------------------------------|-------------|--------------|-----------------|
+| `requests.cpu` | Minimum CPU required for the service       | string      | Optional     | `"500m"`, `"1"` |
+| `requests.memory` | Minimum memory required for the service | string      | Optional     | `"256Mi"`, `"1Gi"` |
+| `limits.cpu` | Maximum CPU allocated to the service       | string      | Optional     | `"1000m"`, `"2"` |
+| `limits.memory` | Maximum memory allocated to the service | string      | Optional     | `"512Mi"`, `"2Gi"` |
+
+**Example usage**  
+
 ```yaml
 service:
   resources:
     requests:
-      cpu: 100Mi
-      memory: 100Gi
+      cpu: "500m"
+      memory: "256Mi"
     limits:
-      cpu: 100Mi
-      memory: 100Gi
-```
+      cpu: "1000m"
+      memory: "512Mi"
+```  
+
+**Best practices for using `resources`**  
+
+- **Right-Size Your Resources** – Avoid setting high limits unless required to prevent unnecessary resource consumption.  
+- **Monitor Usage** – Use monitoring tools (e.g., **DataOS Operations app**, **Grafana**) to track resource utilization and adjust requests/limits accordingly.  
+- **Consider Autoscaling** – If workloads vary, enable **autoscaling** instead of over-provisioning resources.  
 
 ---
 
-### **`dryRun`**
+### **`dryRun`**  
 
-**Description:** indicates whether the service is in dry run mode. When enabled, the dryRun property deploys the service to the cluster without submitting it.
+**Description:**  The `dryRun` attribute determines whether a Service deployment is executed in **dry-run mode**. When enabled (`true`), the service configuration is validated, and the deployment process is simulated **without actually submitting it** to the DataOS. This allows users to verify configurations before making actual changes. This attribute is useful when:  
 
-| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
-| ------------- | -------------- | ------------------- | ------------------- |
-| boolean       | optional       | true                | true or false.
+- Testing service configurations before applying them in a production environment.  
+- Verifying YAML manifest syntax and resource constraints. 
+- Ensuring that changes do not unintentionally override existing deployments.  
 
-**Example Usage:**<br>
+| **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
+|--------------|--------------|------------------|------------------|
+| boolean     | Optional     | `true`           | `true` or `false` |
+
+**Example Usage**  
+
 ```yaml
 service:
   dryRun: true
-```
+```  
 
 ---
 
-### **`runAsApiKey`**
+### **`runAsApiKey`**  
 
-**Description:** the runAsApiKey attribute allows a user to assume the identity of another user through the provision of the latter's API key.
+**Description:** The `runAsApiKey` attribute allows a Service to assume the identity of another user by using their API key. This enables programmatic access to DataOS services under a specific user's authorization, ensuring that actions performed by the Service are executed with the appropriate permissions. This attribute is useful when:  
 
-| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
-| ------------- | -------------- | ------------------- | ------------------- |
-| string        | mandatory      | none               | any valid API key.
+- Automating service deployments on behalf of a specific application user.
+- Running workloads that require user-specific permissions for authentication and authorization.  
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
+|--------------|--------------|------------------|------------------|
+| string      | Mandatory    | None             | Any valid API key |
 
 **Additional Details:** The apikey can be obtained by executing the following command from the CLI:
 
@@ -610,7 +711,8 @@ In case no apikey is available, the below command can be run to create a new api
 dataos-ctl user apikey create -n ${{name of the apikey}} -d ${{duration for the apikey to live}}
 ```
 
-**Example Usage:**<br>
+**Example Usage**  
+
 ```yaml
 service:
   runAsApiKey: abcdefghijklmnopqrstuvwxyz
@@ -618,16 +720,21 @@ service:
 
 ---
 
-### **`runAsUser`**
+### **`runAsUser`**  
 
-**Description:** when the `runAsUser` attribute is configured with the UserID of the use-case assignee, it grants the authority to perform operations on behalf of that user.
+**Description:**  When configured, the `runAsUser` attribute allows  a Service to run with the permissions of the specified **UserID** of the use-case assignee, enabling access control and execution privileges. This attribute is particularly useful when:  
 
-| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
-| ------------- | -------------- | ------------------- | ------------------- |
-| string        | mandatory      | user-id of the user                   | user-id of the use-case assignee
+- Running services that require user/role-specific permissions.  
+- Enforcing security policies where certain actions should be restricted to a designated user.  
+- Managing workloads that need to impersonate a user for auditing or operational control.
 
-**Example Usage:**<br>
+| **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
+|--------------|--------------|------------------|------------------|
+| string      | Mandatory    | User ID of the user applying the manifest | Any valid User ID of the use-case assignee |
+
+**Example Usage**  
+
 ```yaml
 service:
   runAsUser: iamgroot
-```
+```  

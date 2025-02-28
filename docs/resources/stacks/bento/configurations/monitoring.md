@@ -12,7 +12,3 @@ Bento serves two HTTP endpoints for health checks:
 Bento [exposes lots of metrics](../components/metrics.md) either to Statsd, Prometheus, Cloudwatch, or for debugging purposes, an HTTP endpoint that returns a JSON-formatted object.
 
 The target destination of Bento metrics is configurable from the [metrics section](../components/metrics.md), where it's also possible to rename and restrict the metrics that are emitted with mappings.
-
-## Tracing
-
-Bento also [emits opentracing events](../components/tracers.md) to a tracer of your choice, which can be used to visualize the processors within a pipeline.

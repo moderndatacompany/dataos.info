@@ -32,10 +32,6 @@ dataos-ctl user get
 
 ```
 
-<aside>
-🗣️ In the case where you don’t have the `pulsar-admin` tag contact the system administrator.
-
-</aside>
 
 ## Let’s Begin!
 
