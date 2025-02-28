@@ -387,7 +387,7 @@ To observe and monitor the Lens error logs using the Operations app follow the b
   </Step>
 
   <Step title="Click on the Lens services such as API, Worker, Router etc.">
-    Click on any of the Service with 'pending' state to troubleshoot it. For instance, here we click on the 'productaffinity-api' Service to troubleshoot it. As clicked on the productaffinity-api Service a dialog box appears as shown below
+    Click on any of the Service with 'pending' state to troubleshoot it. For instance, here we click on the 'productaffinity-api' Service to troubleshoot it. As clicked on the `productaffinity-api` Service a dialog box appears as shown below
 
     ![](/image.png)
 
@@ -397,11 +397,11 @@ To observe and monitor the Lens error logs using the Operations app follow the b
   </Step>
 
   <Step title="Navigate to the 'Resource Runtime' tab">
-    In the productaffinity-api dialog box navigate to the 'Resource Runtime' tab. On Resource Runtime tab click on the productaffinity-api node in the Runtime Node section of the page.![](/Screenshotfrom2025-02-0616-30-56.png)
+    In the `productaffinity-api` dialog box navigate to the 'Resource Runtime' tab. On Resource Runtime tab click on the `productaffinity-api` node in the Runtime Node section of the page.![](/Screenshotfrom2025-02-0616-30-56.png)
   </Step>
 
   <Step title="Navigate to  the Runtime Node Logs tab">
-    As you navigate to the productaffinity-api runtime node the runtime node dialog box opens. It gives the details on the following:
+    As you navigate to the `productaffinity-api` runtime node the runtime node dialog box opens. It gives the details on the following:
 
     * **Runtime Node Details**: Under Runtime Nodes, click on a node to get the runtime YAML, Logs, and Runtime Node Usage. Here you will get the container details, their state, and pod lifecycle conditions(Ready, PodScheduled…) with a status (True, False or Unknown) that make up the ‘computed state’ of a pod at any time.
 
@@ -411,7 +411,7 @@ To observe and monitor the Lens error logs using the Operations app follow the b
       These Logs are not guaranteed to persist for any length of time and may be cleared as needed.
     </Warning>
 
-    * Runtime Node YAML: Inspect the productaffinity-api YAML.
+    * Runtime Node YAML: Inspect the `productaffinity-api` YAML.
 
     * **Runtime Node Usage** Check how much memory and CPU is utilized by a Node.
   </Step>
@@ -554,3 +554,38 @@ Based on this observed data, resource requests and limits can be adjusted to opt
   * **Memory Alert:** Set an alert to notify when memory usage exceeds 90% of the requested limit.
 
 These alerts can be sent via various channels like email, MS Teams, or other messaging systems to ensure immediate action can be taken if resource usage crosses critical limits.
+
+To create dashboard using Grafana follow the below steps:
+
+Navigate to the DataOS Home Page > Grafana.
+
+![](/resources/lens/observability/grafana_1.png)
+
+On Grafana Home page click on the 'Dashboards' button in the side panel tab.
+
+![](/resources/lens/observability/grafana_2.png)
+
+
+In the 'Dashboards' page click on the 'Filter by tag' and click on the 'Kubernetes' tag.
+
+![](/resources/lens/observability/grafana_3.png)
+
+
+A list of Kubernetes dashboards will appear. To view the pod service of the Lens, check the 'Kubernetes/Views/Pods' checkbox.
+
+![](/resources/lens/observability/grafana_4.png)
+
+After checking the Pods checkbox, the dashboard page will load. Configure the Kubernetes source and namespace settings to monitor the desired pod. The configuration should be as follows:
+
+- **Datasource**: thanos
+- **Cluster**: None
+- **Namespace**: Enter the name of the workspace where the Lens is deployed (e.g., `public`, `curriculum`, `sandbox`).
+- **Pod**: Search for the name of the Lens pod. Pod names start with the Lens name itself. For example, if the Lens name is `productaffinity`, the pod name will also begin with productaffinity. The Lens deployment includes services such as api, router, and worker. For example, to monitor the api service of the Lens `productaffinity`, select `productaffinity-api` from the pod name search box.
+
+With the above configuration, the setup will look like this:
+
+![](/resources/lens/observability/grafana_5.png)
+
+After completing the configuration, the monitoring dashboard will appear as follows:
+
+![](/resources/lens/observability/grafana_6.png)
