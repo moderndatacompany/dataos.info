@@ -44,7 +44,7 @@ INFO[0000] 🔍 get...complete
     alpha-v1                  | v1alpha | stack |           | active |         | dataos-manager     
     beacon-graphql-v1         | v1alpha | stack |           | active |         | dataos-manager     
     beacon-rest-v1            | v1alpha | stack |           | active |         | dataos-manager     
-    benthos-v3                | v1alpha | stack |           | active |         | dataos-manager     
+    bento-v3                | v1alpha | stack |           | active |         | dataos-manager     
     dataos-ctl-v1             | v1alpha | stack |           | active |         | dataos-manager     
     dataos-resource-apply-v1  | v1alpha | stack |           | active |         | dataos-manager     
     dataos-resource-delete-v1 | v1alpha | stack |           | active |         | dataos-manager     

@@ -194,7 +194,7 @@ These DataOS Resources are designed for stream data processing, handling real-ti
 
     ---
 
-    Key Stacks in this category are [Flare](/resources/stacks/flare/) and [Benthos](/resources/stacks/benthos/).
+    Key Stacks in this category are [Flare](/resources/stacks/flare/) and [Benthos](/resources/stacks/bento/).
 
 </div>
 
