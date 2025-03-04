@@ -6,7 +6,7 @@ search:
 
 # dbt
 
-The core capabilities of dbt (data build tool) can be leveraged by provisioning it as a stack within DataOS, enhancing the Transformation part of the ELT (Extract, Load, Transform) process. dbt, as a well-known external tool, focuses on optimizing and refining data already loaded into the database. It supports the centralization and modularization of analytics code, following a structured approach similar to software engineering practices. dbt enables collaboration on data models, versioning, and deployment to production. By connecting with the data platform, it executes SQL code within the warehouse to perform data transformations, ensuring a single source of truth for metrics, insights, and business terminology while promoting collaboration across teams.
+The core capabilities of dbt (data build tool) can be leveraged by provisioning it as a stack within DataOS, enhancing the transformation part of the ELT (Extract, Load, Transform) process. It supports the centralization and modularization of analytics code, following a structured approach similar to software engineering practices. dbt enables collaboration on data models, versioning, and deployment to production. By connecting with the data platform, it executes SQL code within the warehouse to perform data transformations, ensuring a single source of truth for metrics, insights, and business terminology while promoting collaboration across teams.
 
 <aside class="callout">
 🗣️ It's crucial to understand that although dbt is highly proficient in transformation tasks, it does not manage the Extract and Load processes.
@@ -24,13 +24,13 @@ The core capabilities of dbt (data build tool) can be leveraged by provisioning 
 
 dbt operates as a Stack that can be orchestrated through a [Workflow](/resources/workflow/) Resource. A Workflow is a DataOS Resource that represents a Directed Acyclic Graph (DAG) of jobs, where each job is executed using a Stack. It acts as an orchestrator for a Stack. 
 
-**A DBT workflow is composed of the following sections:** 
+**A dbt workflow is composed of the following sections:** 
 
 - [Workflow-specific section](#configure-the-dbt-workflow-specific-section)
 - [Stack-specific section]()
 
 
-### **Configure the DBT Workflow-specific section**
+### **Configure the dbt Workflow-specific section**
 
 The Workflow-specific section contains configurations specific to the Workflow Resource. 
 

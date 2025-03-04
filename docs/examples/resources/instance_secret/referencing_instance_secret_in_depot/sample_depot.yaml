@@ -8,12 +8,13 @@ layer: user
 depot:
   type: SNOWFLAKE
   description: testing instance secrets using snowflake depot
-snowflake:
-  warehouse: mywarehouse
-  url: avengers.central-india.azure.snowflakecomputing.com
-  database: mydatabase
-  external: true
-  dataosSecrets:
+  snowflake:
+    warehouse: mywarehouse
+    url: hj36908.central-india.azure.snowflakecomputing.com
+    account:  NUJAFGS.RH91066
+    database: mydatabase
+    external: true
+  secrets:
     - name: depotsecret-r
       keys:
         - depotsecret-r
@@ -21,3 +22,5 @@ snowflake:
     - name: depotsecret-rw
       keys:
         - depotsecret-rw
+
+
