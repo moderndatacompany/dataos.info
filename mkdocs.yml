@@ -1,6 +1,6 @@
 #### DO NOT CHANGE ####
 site_name: All things DataOS
-copyright: Copyright ⓒ 2024 The Modern Data Company
+copyright: Copyright ⓒ 2025 The Modern Data Company
 theme:
     name: material
     custom_dir: overrides
@@ -345,7 +345,7 @@ nav:
           - resources/lens/index.md
           - Lens Setup: 
               - Lens Model Folder Setup: resources/lens/lens_model_folder_setup.md
-              - Develop Lens Locally: resources/lens/optimizing_lens_testing_in_local_development.md
+              # - Develop Lens Locally: resources/lens/optimizing_lens_testing_in_local_development.md
               - Develop Lens in DataOS: resources/lens/lens_deployment.md
             # - Optimizing Lens testing in local development: resources/lens/optimizing_lens_testing_in_local_development.md
             # - Lens Deployment: resources/lens/lens_deployment.md
@@ -358,7 +358,7 @@ nav:
             - Errors: resources/lens/errors.md
           - Configurations: 
             - Lens Manifest: resources/lens/lens_manifest_attributes.md
-            - Docker Compose Manifest: resources/lens/docker_compose_manifest_attributes.md
+            # - Docker Compose Manifest: resources/lens/docker_compose_manifest_attributes.md
           - Supported Data Sources: 
             # resources/lens/data_sources.md
               - Bigquery: resources/lens/data_sources/bigquery.md
@@ -426,8 +426,8 @@ nav:
           - resources/stacks/index.md
           - Beacon: 
             - resources/stacks/beacon/index.md
-          - Benthos: 
-            - resources/stacks/benthos/index.md
+          - Bento: 
+            - resources/stacks/bento/index.md
           - CLI Stack: 
             - resources/stacks/cli_stack/index.md
           - Container: 
@@ -451,6 +451,13 @@ nav:
             - Recipes: 
               - Use cached datasets in Lens models: resources/stacks/flash/recipes/lens.md
               - Use cached datsets in Talos APIs: resources/stacks/flash/recipes/talos.md
+          - Lakesearch:
+            - resources/stacks/lakesearch/index.md
+            - Configurations: resources/stacks/lakesearch/configurations.md
+            - Observability: resources/stacks/lakesearch/obervability.md
+            - Governance: resources/stacks/lakesearch/governance.md
+            - Troubleshooting: resources/stacks/lakesearch/troubleshooting.md
+
           - Scanner: 
             - resources/stacks/scanner/index.md
           - Soda: 

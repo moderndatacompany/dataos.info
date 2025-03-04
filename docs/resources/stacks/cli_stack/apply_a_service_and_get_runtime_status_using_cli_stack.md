@@ -48,7 +48,7 @@ workflow:
               annotations:
                 konghq.com/strip-path: "false"
                 kubernetes.io/ingress.class: kong
-            stack: benthos:3.0
+            stack: bento:3.0
             logLevel: DEBUG
             tags:
               - service

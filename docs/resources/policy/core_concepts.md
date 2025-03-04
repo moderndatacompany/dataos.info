@@ -2,7 +2,7 @@
 
 ## Attribute Based Access Control (ABAC)
 
-DataOS leverages Attribute-Based Access Control (ABAC) to facilitate fine-grained access control and authorization. ABAC policies in DataOS are guided by the evaluation of attributes, also known as "tags," associated with the user making the request, the requested resource, and the intended action.
+DataOS leverages Attribute-Based Access Control (ABAC) to facilitate fine-grained access control and authorization. ABAC policies in DataOS are guided by the evaluation of attributes, also known as 'tags', associated with the user making the request, the requested resource, and the intended action.
 
 To achieve this, DataOS relies on the subject-predicate-object triad:
 
@@ -40,4 +40,4 @@ In this context, [Heimdall](/architecture/#heimdall) serves as the PDP for acces
 
 ## Policy Implementation Mechanism
 
-In the DataOS ecosystem, the [Heimdall](/architecture/#heimdall) governance engine operates as the [Policy Decision Point (PDP)](/resources/policy/core_concepts/#policy-decision-point-pdp) for [Access Policies](#access-policy), while the [Minerva Gateway](/architecture/#gateway) serves as the PDP for [Data Policies](#data-policy). Both these elements jointly supervise the enforcement of policies across a range of Policy Enforcement Points (PEP), distributed throughout the DataOS ecosystem. Learn more about Policy implementation in DataOS, [here](/resources/policy/how_to_guide/implementing_access_policy/).
+In the DataOS ecosystem, the [Heimdall](/architecture/#heimdall) governance engine operates as the Policy Decision Point (PDP) for Access Policies, while the [Minerva Gateway](/architecture/#gateway) serves as the PDP for Data Policies. Both these elements jointly supervise the enforcement of policies across a range of Policy Enforcement Points (PEP), distributed throughout the DataOS ecosystem. Learn more about Policy implementation in DataOS, [here](/resources/policy/how_to_guide/implementing_access_policy/).

@@ -16,7 +16,7 @@ workflow:
           - standalone
           - readJob
           - bigquery
-        stack: flare:3.0
+        stack: flare:6.0
         compute: runnable-default
         tier: connect
         flare:

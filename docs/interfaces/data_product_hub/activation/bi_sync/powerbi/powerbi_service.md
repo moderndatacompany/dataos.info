@@ -1,4 +1,4 @@
-# Power BI Service Integration
+# Power BI Service
 
 This document outlines the steps required to integrate Power BI with DataOS, ensuring a seamless connection to the Data Product Hub.
 
@@ -7,12 +7,15 @@ This document outlines the steps required to integrate Power BI with DataOS, ens
 <aside class="callout">
 🗣️ <b>Important: Firewall and VPN Configuration Required</b>
 
-- If DataOS is installed in a Virtual Private Cloud (VPC), port `6432` must be whitelisted to allow communication between the Power BI data gateway and the DataOS. Ensure that firewall rules permit inbound and outbound traffic on port `6432`.
-- If the customer connects to the VPC via VPN, additional firewall rules may be required to allow communication between the VPN network and Power BI Service. 
+  <ul>
+    <li>If DataOS is installed in a Virtual Private Cloud (VPC), port <code>6432</code> must be whitelisted to allow communication between the Power BI data gateway and the DataOS. Ensure that firewall rules permit inbound and outbound traffic on port <code>6432</code>.</li>
+    <li>If the customer connects to the VPC via VPN, additional firewall rules may be required to allow communication between the VPN network and Power BI Service.</li>
+  </ul>
 </aside>
+
 Before proceeding with the data gateway configuration, ensure the following components are installed:
 
-- [Power BI Desktop](https://powerbi.microsoft.com/desktop) installed on the local system(version released after June 15, 2023).
+- [Power BI Desktop](https://powerbi.microsoft.com/desktop) installed on the system(version released after June 15, 2023).
 
 - A Power BI service account.
 
@@ -208,9 +211,7 @@ After filling out the required fields, click Add to create the connection.
 
 - In Power BI, measures typically have an 'm_' prefix to indicate they represent a measure. For example, a measure calculating total revenue might be named `m_total_revenue`.
 - The connection is live, meaning any changes to the underlying data will be reflected in Power BI.
-- When schema changes occur, such as CRUD operations (Create, Read, Update, Delete) on dimensions, measures, or other elements of the semantic model, a re-sync is required. To prevent losing previously created reports after the re-sync, replace the `.pbip` file in the existing folder with the `.pbip` file from the newly downloaded folder.
-- Power BI fails to handle special characters (e.g.,) when generating queries through the synced semantic model, causing errors in visualizations. Thus, it is best practice to address or remove special characters directly in the data itself.
-- Power BI's Direct Query mode does not support creating custom dimensions and measures or querying the rolling window measure due to the lack of date hierarchy.
+- When schema changes occur, such as CRUD operations (Create, Read, Update, Delete) on dimensions, measures, or other elements of the semantic model, a re-sync is required. To prevent losing previously created reports after the re-sync, download the model folder from the Data Product Hub, extract the contents, and replace the existing folder with the new one.
 
 ## Best practices
 
@@ -226,15 +227,37 @@ Ensure that `.pbip` folders are fully extracted before opening them. Failure t
 
 It is important to select fields from tables that are directly related or logically joined, as the system does not automatically identify relationships between tables through transitive joins. Selecting fields from unrelated tables may result in incorrect or incomplete results.
 
+## Troubleshooting
+
+### **Connection reset**
+
+If you encounter a 'connection reset' error during Power BI sync as shown below:
+
+<img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/connection_reset.png" alt="DPH" style="width:25rem; border: 1px solid black;" />
+
+- Go to the Home tab in Power BI Desktop.
+- Click the Refresh button in the Queries section.
+
+<img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/refresh_key.png" alt="DPH" style="width:25rem; border: 1px solid black;" />
+
+This should resolve the error and restore the sync.
+
+### **Unknown cluster**
+
+Whenever you encounter the error 'unknown cluster: <cluster_name>' as shown below, please check if the cluster has been deleted. If it has, redeploy the cluster. After redeploying the cluster, go to Power BI Desktop and click the 'Refresh' button to update the connection.
+
+<img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/cluster_error.png" alt="DPH" style="width:25rem; border: 1px solid black;" />
+
+## Limitations
+
+- Power BI fails to handle special characters (e.g.,) when generating queries through the synced semantic model, causing errors in visualizations. Thus, it is best practice to address or remove special characters directly in the data itself.
+- Power BI's Direct Query mode does not support creating custom dimensions and measures or querying the rolling window measure due to the lack of date hierarchy.
+- DAX functions and Import query mode are not supported.
+
+
 <!-- - Power BI’s DAX and Import functions are not supported.
 - Special characters cannot be handled through DAX function hence it’s best practice to remove the special character from dataset if any. -->
-<!-- 
-## Governance of model on Power BI
 
-Data masking, restrictions, and permissions established by the publisher are automatically enforced for all report viewers, ensuring consistent data security and compliance. The behavior of these data policies, such as masking, may vary based on the use of Power BI Desktop or other interfaces.
+## Governance of model on Power BI Service
 
-When the Lens semantic model is activated via BI Sync on Power BI, authentication and authorization are handled using the DataOS user ID and API key. This ensures that columns redacted by Lens data policies are restricted based on the user's group permissions.
-
-For example, if a user named `iamgroot`, belonging to the 'Analyst' group, is restricted from viewing the 'Annual Salary' column, this column will not appear in either the Data Product exploration page or in Power BI after synchronization. Power BI requires the DataOS user ID and API key for authentication, ensuring that users can access the full model except for columns restricted by their data policies.
-
-This approach ensures that users only see the data they are authorized to view, maintaining security and compliance. -->
+Data masking policies are enforced based on the user who creates and registers the gateway connection for the semantic model in PowerBI Service.
