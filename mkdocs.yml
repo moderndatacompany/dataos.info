@@ -451,6 +451,13 @@ nav:
             - Recipes: 
               - Use cached datasets in Lens models: resources/stacks/flash/recipes/lens.md
               - Use cached datsets in Talos APIs: resources/stacks/flash/recipes/talos.md
+          - Lakesearch:
+            - resources/stacks/lakesearch/index.md
+            - Configurations: resources/stacks/lakesearch/configurations.md
+            - Observability: resources/stacks/lakesearch/obervability.md
+            - Governance: resources/stacks/lakesearch/governance.md
+            - Troubleshooting: resources/stacks/lakesearch/troubleshooting.md
+
           - Scanner: 
             - resources/stacks/scanner/index.md
           - Soda: 
