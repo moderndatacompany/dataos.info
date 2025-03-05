@@ -71,7 +71,7 @@ For demonstration, we will choose the Workflow Resource to run scheduled data qu
 Create a Workflow manifest to configure Soda Stack for batch quality checks. Ensure that the metadata and Stack properties are properly defined. You can schedule this workflow to run quality checks automatically at regular intervals.
 
 ```yaml
-ame: soda-customer-quality
+name: soda-customer-quality
 version: v1
 type: workflow
 tags:

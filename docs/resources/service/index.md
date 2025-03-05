@@ -99,7 +99,7 @@ service:
 
 The Stack-specific Section allows you to specify the desired stack for executing your service. Depending on your requirements, you can choose from the following supported stacks:
 
-- [Benthos Stack](/resources/stacks/benthos/): The Benthos stack provides advanced capabilities for stream data processing and analysis.
+- [Benthos Stack](/resources/stacks/bento/): The Benthos stack provides advanced capabilities for stream data processing and analysis.
 
 - [Container Stack](/resources/stacks/container/): The Container stack offers a powerful environment for hosting web-appliation, and custom Docker images atop DataOS.
 
@@ -142,12 +142,12 @@ service:
         stripPath: false
         path: /hit-collector
         noAuthentication: true
-    stack: benthos 
+    stack: bento 
     logLevel: INFO
     compute: runnable-default
     dryRun: true
     servicePort: 8099
-    benthos:
+    stackSpec:
         # Input (From Google Tag Manager API)
         input:
             http_server:
@@ -276,7 +276,7 @@ The table below presents an exhaustive list of key-value properties and their de
 | [`maxReplicas`](/resources/service/configurations/#maxreplicas) | integer | 1 | any positive integer | optional  |
 | [`targetMemoryUtilizationPercentage`](/resources/service/configurations/#targetmemoryutilizationpercentage) | integer | none | any positive integer | optional  |
 | [`targetCPUUtilizationPercentage`](/resources/service/configurations/#targetcpuutilizationpercentage) | integer | None | any positive integer | optional  |
-| [`stack`](/resources/service/configurations/#stack) | string | None | benthos/container/beacon | mandatory |
+| [`stack`](/resources/service/configurations/#stack) | string | None | bento/container/beacon | mandatory |
 | [`logLevel`](/resources/service/configurations/#loglevel) | string | INFO | INFO/WARN/DEBUG/ERROR | optional |
 | [`configs`](/resources/service/configurations/#configs) | mapping | none | key-value pairs of configurations | optional |
 | [`envs`](/resources/service/configurations/#envs) | mapping | none | key-value pairs of environment variables | optional |

@@ -91,7 +91,7 @@ The Worker-specific section of a manifest file encompasses attributes specific t
 
         ```yaml
         worker:
-          stack: benthos # Stack used (mandatory) 
+          stack: bento # Stack used (mandatory) 
           compute: runnable-default # Compute configuration (mandatory)
           stackSpec: # Stack-specific section (mandatory)
             # Attributes specific to the choosen stack are declared here

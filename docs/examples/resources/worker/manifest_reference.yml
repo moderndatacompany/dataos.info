@@ -13,10 +13,10 @@ layer: ${{resource_layer}} # DataOS Layer (e.g., user, system)
 # WORKER-SPECIFIC SECTION
 # Attributes specific to Worker resource-type
 worker: # Worker-specific configuration
-  title: ${{worker_title}} # Title of the worker (e.g., benthos worker)
+  title: ${{worker_title}} # Title of the worker (e.g., bento worker)
   tags:
     - ${{worker_tag1}} # Tags for the worker (e.g., dataos:worker)
-    - ${{worker_tag2}} # Additional tags (e.g., benthos-worker)
+    - ${{worker_tag2}} # Additional tags (e.g., bento-worker)
   replicas: ${{worker_replicas}} # Number of replicas (e.g., 1)
   autoscaling: # Autoscaling configuration
     enabled: ${{autoscaling_enabled}} # Enable or disable autoscaling (e.g., true)
@@ -24,7 +24,7 @@ worker: # Worker-specific configuration
     maxReplicas: ${{max_replicas}} # Maximum number of replicas (e.g., 3)
     targetMemoryUtilizationPercentage: ${{memory_utilization}} # Target memory utilization percentage (e.g., 60)
     targetCPUUtilizationPercentage: ${{cpu_utilization}} # Target CPU utilization percentage (e.g., 70)
-  stack: ${{worker_stack}} # Stack used (mandatory) (e.g., benthos)
+  stack: ${{worker_stack}} # Stack used (mandatory) (e.g., bento)
   logLevel: ${{log_level}} # Logging level (e.g., INFO)
   configs: # Configuration settings
     ${{config_key1}}: ${{config_value1}} # Example configuration (e.g., alpha: beta)

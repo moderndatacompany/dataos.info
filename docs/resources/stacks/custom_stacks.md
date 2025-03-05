@@ -91,14 +91,14 @@ stack:
   image:
     registry: docker.io
     repository: rubiklabs
-    image: benthos-ds
+    image: bento-ds
     tag: 0.8.15-dev
     auth:
       imagePullSecret: dataos-container-registry
 
 # Command and Argument section
   command:
-    - /opt/dataos/benthos-ds
+    - /opt/dataos/bento-ds
   arguments:
     - run
     - -c
@@ -122,7 +122,7 @@ stack:
            '@service': {{.Name}}
         http:
          address: 0.0.0.0:{{.MetricPort}}
-         root_path: /dataos-benthos
+         root_path: /dataos-bento
          debug_endpoints: false
         metrics:
          prometheus:
