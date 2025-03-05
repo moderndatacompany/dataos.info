@@ -43,7 +43,7 @@ The SQL API allows aggregate functions on measures as long as they match measure
 
 <aside class="callout">
 
-🗣️ When querying dimension and measure together add `GROUP BY` clause
+🗣️ When querying dimension and measure together add `GROUP BY` clause:
 
 ```sql
 SELECT country, MEASURE(total_customers) FROM customer GROUP BY 1;
