@@ -344,7 +344,7 @@ Defines whether authentication is required to access the exposed service.
 
 <aside class="callout">
 
-To remove the `noAuthentication: true` key from the ingress section, we need to create a usecase in Bifrost and grant the use case to a user tag. 
+To remove the `noAuthentication: true` key from the ingress section, a DataOS operator needs to create a usecase in Bifrost and grant the use case to a user tag. 
 </aside>
 
 | Data Type | Requirement | Default Value | Possible Values |
@@ -791,7 +791,7 @@ properties:
 
 **Description:** Specifies the schema of the indexed data, including column names, types, and metadata. Users can choose to include all columns from the dataset or exclude specific columns from indexing based on their requirements..
 
-<aside>
+<aside class="callout">
 
 Note that while adding the columns while indexing a table it is required to add an additional column named `id` of type `bigint` as shown below:
 
@@ -850,9 +850,10 @@ This will be mapped with the primary key column in the indexer base SQL as `id`.
 
 </aside>
 
-| Data Type | Requirement | Default Value | Possible Value |
-| --- | --- | --- | --- |
-| list | mandatory | none | List of column definitions |
+| Data Type | Requirement | Default Value | Possible Value              |
+|-----------|------------|---------------|-----------------------------|
+| list      | mandatory  | none          | List of column definitions  |
+
 
 ---
 
@@ -890,7 +891,7 @@ type: keyword
 
 ```
 
-<aside>
+<aside class="callout">
 
 The data types defined in the `source.index_table` is different from standard SQL data types. For instance, a column with a `VARCHAR` data type in SQL should be defined as `TEXT` in the index_table. Similarly, an `INTEGER` column should be specified as `BIGINT`. If keyword-based searching is required for a column, its data type should be set to `KEYWORD`. Additionally, the `index_table` in the indexer must include an extra column named `ID` to designate the primary key.
 
