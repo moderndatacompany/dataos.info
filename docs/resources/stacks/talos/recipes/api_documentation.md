@@ -1,140 +1,141 @@
-# How to generate the comprehensive API documentation?
+# **Generating Comprehensive API Documentation**
 
-Talos automatically generates and serves the API documentation for you. To automate API documentation generation, add the following attributes to your `table.yaml` corresponding to your `table.sql` file.
+Talos automatically generates and serves API documentation. To enable automated API documentation generation, configure the `table.yaml` file corresponding to the `table.sql` file by adding the following attributes:
 
 ```yaml
-urlPath: /artist/:productname
-request:
-  - fieldName: productname
-    fieldIn: path
-    description: constituent product name
+urlPath: /artist/:productname  # Defines the API endpoint with a dynamic path parameter
+request:  # Specifies the request parameters
+  - fieldName: productname  # Defines the name of the field in the request
+    fieldIn: path  # Specifies where the field appears in the request (e.g., path, query)
+    description: Constituent product name  # Provides a brief description of the field
     validators:
-      - required 
-sample: # Optional 
-  parameters:
+      - required  # Specifies validation rules (e.g., mandatory field)
+sample:  # Defines a sample response (optional)
+  parameters:  # Specifies example values for API request parameters
     productname: 'Samsung Convoy 3'
     sales: 1
     quantity: 1
     profit: 1
-  profile: snowflake
+  profile: snowflake  # Indicates the data source profile
 sources:
-  - snowflake       
+  - snowflake  # Specifies the data source used for querying records
+
 ```
 
-## **`request` parameter**
-In the example provided, `productname` represents a placeholder for accessing a specific product record. Here, `productname` refers to the column name used to identify the record. Similarly, as per your requirements, you can customize the request section.
-For detailed information about each attribute, please refer to the below table.
+## **Request Parameter**
 
-| Attribute      | Data Type | Default Value | Possible Value      | Requirement |
-|----------------|-----------|---------------|---------------------|-------------|
-| `fieldName`    | string    | none          | 'productname'       | mandatory if request parameter applied     |
-| `fieldIn    `  | string    | none          | 'path'              | mandatory if request parameter applied     |
-| `description`  | string    | none          |  any description    | optional     |
-| `validators`   | object    | none          | `required'          | optional     |
+The `request` parameter specifies input fields required for API requests. In the example above, `productname` acts as a placeholder for identifying a product record. This parameter should be customized based on API requirements.
 
+### **Attributes of `request` Parameter**
 
+| Attribute | Data Type | Default Value | Possible Values | Requirement |
+| --- | --- | --- | --- | --- |
+| `fieldName` | string | none | e.g., `productname` | Mandatory if the request parameter is applied |
+| `fieldIn` | string | none | `path` | Mandatory if the request parameter is applied |
+| `description` | string | none | Any description | Optional |
+| `validators` | object | none | `required` | Optional |
 
-## **`sample` parameter**
-Sample parameter is useful when you want to provide the sample of your data in the API doc.
+## **Sample Parameter**
 
-<aside class=callout>
-🗣 Note that, if caching is enabled in the API endpoint, the sampling functionality is disabled.
+The `sample` parameter provides an example representation of the data available through the API.
+
+<aside>🗣 If caching is enabled on the API endpoint, the sampling functionality is disabled.
+
 </aside>
 
-For detailed information about each attribute, please refer to the below table.
+### **Attributes of `sample` Parameter**
 
-| Attribute      | Data Type | Default Value | Possible Value      | Requirement |
-|----------------|-----------|---------------|---------------------|-------------|
-| `fieldName`    | string    | none          | 'productname'       | mandatory if request parameter applied     |
-| `fieldIn    `  | string    | none          | 'path'              | mandatory if request parameter applied     |
-| `description`  | string    | none          |  any description    | optional     |
-| `validators`   | object    | none          | `required'          | optional     |
+| Attribute | Data Type | Default Value | Possible Values | Requirement |
+| --- | --- | --- | --- | --- |
+| `fieldName` | string | none | e.g., `productname` | Mandatory if the request parameter is applied |
+| `fieldIn` | string | none | `path` | Mandatory if the request parameter is applied |
+| `description` | string | none | Any description | Optional |
+| `validators` | object | none | `required` | Optional |
 
-## Additional Parameters
-
-Below are some additional parameters you can add in the `api.yaml` manifest file to enhance the API documentation.
+## **Additional Parameters in `api.yaml`**
 
 ### **Filters**
 
-Added detailed descriptions for filters to explain how different user groups will access content. This enhances the documentation, providing clear guidance for users interacting with the API.
+Filters define access restrictions based on user groups. They ensure that different users receive appropriate content.
 
 ```yaml
 filters:
-  - description: Allow only 'US' content
+  - description: Allow only 'US' content  # Describes the filtering rule
     userGroups:
-      - reader
-      - default
-  - description: Indian Content Only
+      - reader  # User group with access
+      - default  # Default user group with access
+
+  - description: Indian Content Only  # Describes a filter for Indian content
     userGroups:
-      - asian
-      - indian
+      - asian  # User group with access
+      - indian  # User group with access
+
 ```
 
-For detailed information about each attribute, please refer to the below table.
+### **Attributes of `filters` Parameter**
 
-| Attribute    | Data Type | Default Value | Possible Value  | Requirement                           |
-|--------------|-----------|---------------|-----------------|---------------------------------------|
-| `description`| string    | none          | any description | optional                              |
-| `userGroups` | array     | none          | defined user groups | mandatory (at least one value must be specified) |
-
-
+| Attribute | Data Type | Default Value | Possible Values | Requirement |
+| --- | --- | --- | --- | --- |
+| `description` | string | none | Any description | Optional |
+| `userGroups` | array | none | Defined user groups | Mandatory (at least one value must be specified) |
 
 ### **Dependencies**
 
-Included descriptions of external dependencies, such as tables and columns, that the API relies on. This adds context to the API documentation, ensuring users understand the data sources involved.
+Dependencies specify external tables and columns required for API functionality. This ensures that users understand the data sources involved.
 
 ```yaml
-
 depends:
-  - table: dataos://icebase:default/country
+  - table: dataos://icebase:default/country  # Defines the external table dependency
     columns:
-      - Country
-      - Country_code
-      - WHO_region
+      - Country  # Specifies required column
+      - Country_code  # Specifies required column
+      - WHO_region  # Specifies required column
 
 ```
-For detailed information about each attribute, please refer to the below table.
 
-| Attribute  | Data Type | Default Value | Possible Value                                | Requirement                           |
-|------------|-----------|---------------|-----------------------------------------------|---------------------------------------|
-| `table`    | string    | none          | table name           | mandatory                             |
-| `columns`  | array     | none          | column name      | mandatory (at least one column must be specified) |
+### **Attributes of `depends` Parameter**
 
-
+| Attribute | Data Type | Default Value | Possible Values | Requirement |
+| --- | --- | --- | --- | --- |
+| `table` | string | none | Table name | Mandatory |
+| `columns` | array | none | Column names | Mandatory (at least one column must be specified) |
 
 ### **Headers**
 
-Added detailed context about the headers used in the API, including their purpose and value. This helps developers understand how headers should be managed in requests and responses.
+Headers define key-value pairs required for API requests and responses.
 
 ```yaml
 headers:
-  - key: my-personal-key
-    value: super-hot-value
-  - key: Cache-Control
-    value: max-age=604800
+  - key: my-personal-key  # Defines a custom API key
+    value: super-hot-value  # Corresponding value for the key
+
+  - key: Cache-Control  # Standard HTTP header to manage caching
+    value: max-age=604800  # Defines the maximum cache age in seconds (7 days)
+
 ```
 
-For detailed information about each attribute, please refer to the below table.
+### **Attributes of `headers` Parameter**
 
-| Attribute | Data Type | Default Value | Possible Value                | Requirement                           |
-|-----------|-----------|---------------|-------------------------------|---------------------------------------|
-| `key`     | string    | none          | any key | mandatory                             |
-| `value`   | string    | none          | value corresponding to the key | mandatory                             |
+| Attribute | Data Type | Default Value | Possible Values | Requirement |
+| --- | --- | --- | --- | --- |
+| `key` | string | none | Any key | Mandatory |
+| `value` | string | none | Corresponding value | Mandatory |
 
+## **Accessing API Documentation**
 
-## Access the API documentation
+API documentation can be accessed via a web browser using the following URL:
 
-To access this API documentation, on your browser, open this link `http://localhost:3000/doc?apikey=xxx` by providing your DataOS API token which you have used to configure Talos. You can also download OpenAPI specification in the JSON format by clicking on the Download button as shown below.
+```
+http://localhost:3000/doc?apikey=xxx
 
-<center>
-  <img src="/resources/stacks/talos/img1.png" alt="Talos" style="width:50rem; border: 1px solid black;" />
-  <figcaption><i>Talos API Documentation</i></figcaption>
-</center>
+```
 
-You can also include a sample section to illustrate the metadata of the dataset. For example, by providing sample parameters, data developers can gain a clearer understanding of the data exposed by the API, as shown below.
+Replace `xxx` with the DataOS API token configured for Talos. Additionally, the OpenAPI specification can be downloaded in JSON format by clicking the **Download** button.
 
-<center>
-  <img src="/resources/stacks/talos/img2.png" alt="Talos" style="width:50rem; border: 1px solid black;" />
-  <figcaption><i>Talos API Documentation</i></figcaption>
-</center>
+<center> <img src="/resources/stacks/talos/img1.png" alt="Talos API Documentation" style="width:50rem; border: 1px solid black;" /> <figcaption><i>Talos API Documentation</i></figcaption> </center>
 
+## **Sample Section for Dataset Metadata**
+
+A sample section can be included to illustrate dataset metadata. This helps developers understand the data exposed by the API.
+
+<center> <img src="/resources/stacks/talos/img2.png" alt="Talos Sample Metadata" style="width:50rem; border: 1px solid black;" /> <figcaption><i>Talos API Documentation</i></figcaption> </center>
