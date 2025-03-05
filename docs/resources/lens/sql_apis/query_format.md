@@ -8,7 +8,7 @@ In the SQL API, each table or view from the semantic model is represented as a t
 
 ## Tables and views
 
-Given a table or view named 'customers', it can be queried just like a regular table.
+Given a table or view named `customers`, it can be queried just like a regular table.
 
 ```sql
 SELECT * FROM customer;
