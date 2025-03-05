@@ -123,7 +123,7 @@ For this query, the SQL API would transform SELECT query fragments into a regula
 }
 ```
 
-Because of this transformation, not all functions and expressions are supported in query fragments performing `SELECT` from semantic model tables. Please refer to the [SQL API reference](/resources/lens/) to see whether a specific expression or function is supported and whether it can be used in selection (e.g., WHERE) or projection(opens in a new tab) (e.g., SELECT) parts of SQL queries.
+Because of this transformation, not all functions and expressions are supported in query fragments performing `SELECT` from semantic model tables. Please refer to the [SQL API reference](/resources/lens/) to see whether a specific expression or function is supported and whether it can be used in selection (e.g., WHERE) or projection (e.g., SELECT) parts of SQL queries.
 
 For example, the following query won't work because the SQL API can't push down the `CASE` expression to Lens for processing. It is not possible to translate `CASE` expressions in measures.
 
@@ -303,7 +303,7 @@ lens:public:productaffinity=> show all;
 #### **Comaprison operators**
 
 <aside class="callout">
-  Learn more in the <a href="https://www.postgresql.org/docs/current/functions-comparison.html#FUNCTIONS-COMPARISON-OP-TABLE" target="_blank">relevant section</a> (opens in a new tab) of the PostgreSQL documentation.
+  Learn more in the <a href="https://www.postgresql.org/docs/current/functions-comparison.html#FUNCTIONS-COMPARISON-OP-TABLE" target="_blank">relevant section</a>  of the PostgreSQL documentation.
 </aside>
 
 
@@ -320,7 +320,7 @@ lens:public:productaffinity=> show all;
 #### **Comparison predicates**
 
 <aside class="callout">
-  Learn more in the <a href="https://www.postgresql.org/docs/current/functions-comparison.html#FUNCTIONS-COMPARISON-PRED-TABLE" target="_blank">relevant section</a> (opens in a new tab) of the PostgreSQL documentation.
+  Learn more in the <a href="https://www.postgresql.org/docs/current/functions-comparison.html#FUNCTIONS-COMPARISON-PRED-TABLE" target="_blank">relevant section</a> of the PostgreSQL documentation.
 </aside>
 
 | Function        | Description                                    | Outer | Selections (`WHERE` Clause) | Projection (`SELECT` Clause) |
@@ -333,7 +333,7 @@ lens:public:productaffinity=> show all;
 #### **Mathematical functions**
 
 <aside class="callout">
-  Learn more in the <a href="https://www.postgresql.org/docs/current/functions-math.html#FUNCTIONS-MATH-FUNC-TABLE" target="_blank">relevant section</a> (opens in a new tab) of the PostgreSQL documentation.
+  Learn more in the <a href="https://www.postgresql.org/docs/current/functions-math.html#FUNCTIONS-MATH-FUNC-TABLE" target="_blank">relevant section</a>  of the PostgreSQL documentation.
 </aside>
 
 
@@ -359,7 +359,7 @@ lens:public:productaffinity=> show all;
 #### **Trigonometric functions**
 
 <aside class="callout">
-  Learn more in the <a href="https://www.postgresql.org/docs/current/functions-math.html#FUNCTIONS-MATH-TRIG-TABLE" target="_blank">relevant section</a> (opens in a new tab) of the PostgreSQL documentation.
+  Learn more in the <a href="https://www.postgresql.org/docs/current/functions-math.html#FUNCTIONS-MATH-TRIG-TABLE" target="_blank">relevant section</a>  of the PostgreSQL documentation.
 </aside>
 
 | Function        | Description                                    | Outer | Selections (`WHERE` Clause) | Projection (`SELECT` Clause) |
@@ -377,7 +377,7 @@ lens:public:productaffinity=> show all;
 #### **String functions and operators**
 
 <aside class="callout">
-  Learn more in the <a href="https://www.postgresql.org/docs/current/functions-string.html#FUNCTIONS-STRING-SQL" target="_blank">relevant section</a> (opens in a new tab) of the PostgreSQL documentation.
+  Learn more in the <a href="https://www.postgresql.org/docs/current/functions-string.html#FUNCTIONS-STRING-SQL" target="_blank">relevant section</a>  of the PostgreSQL documentation.
 </aside>
 
 | Function            | Description                                                                  | Outer | Selections (`WHERE` Clause) | Projection (`SELECT` Clause) |
@@ -399,7 +399,7 @@ lens:public:productaffinity=> show all;
 #### **Other string functions**
 
 <aside class="callout">
-  Learn more in the <a href="https://www.postgresql.org/docs/current/functions-comparison.html#FUNCTIONS-COMPARISON-OP-TABLE" target="_blank">relevant section</a> (opens in a new tab) of the PostgreSQL documentation.
+  Learn more in the <a href="https://www.postgresql.org/docs/current/functions-comparison.html#FUNCTIONS-COMPARISON-OP-TABLE" target="_blank">relevant section</a>  of the PostgreSQL documentation.
 </aside>
 
 | Function        | Description                                                                  | Outer | Selections (`WHERE` Clause) | Projection (`SELECT` Clause) |
@@ -416,7 +416,7 @@ lens:public:productaffinity=> show all;
 #### **Pattern matching**
 
 <aside class="callout">
-  Learn more in the <a href="https://www.postgresql.org/docs/current/functions-string.html#FUNCTIONS-STRING-OTHER" target="_blank">relevant section</a> (opens in a new tab) of the PostgreSQL documentation.
+  Learn more in the <a href="https://www.postgresql.org/docs/current/functions-string.html#FUNCTIONS-STRING-OTHER" target="_blank">relevant section</a>  of the PostgreSQL documentation.
 </aside>
 
 | Function        | Description                                                   | Outer | Selections (`WHERE` Clause) | Projection (`SELECT` Clause) |
@@ -428,7 +428,7 @@ lens:public:productaffinity=> show all;
 #### **Data type formatting functions**
 
 <aside class="callout">
-  Learn more in the <a href="https://www.postgresql.org/docs/current/functions-formatting.html" target="_blank">relevant section</a> (opens in a new tab) of the PostgreSQL documentation.
+  Learn more in the <a href="https://www.postgresql.org/docs/current/functions-formatting.html" target="_blank">relevant section</a>  of the PostgreSQL documentation.
 </aside>
 
 | Function    | Description                                                   | Outer | Selections (`WHERE` Clause) | Projection (`SELECT` Clause) |
@@ -439,7 +439,7 @@ lens:public:productaffinity=> show all;
 #### **Date/time functions**
 
 <aside class="callout">
-  Learn more in the <a href="https://www.postgresql.org/docs/current/functions-datetime.html#FUNCTIONS-DATETIME-TABLE" target="_blank">relevant section</a> (opens in a new tab) of the PostgreSQL documentation.
+  Learn more in the <a href="https://www.postgresql.org/docs/current/functions-datetime.html#FUNCTIONS-DATETIME-TABLE" target="_blank">relevant section</a>  of the PostgreSQL documentation.
 </aside>
 
 | Function        | Description                                                                  | Outer | Selections (`WHERE` Clause) | Projection (`SELECT` Clause) |
@@ -455,7 +455,7 @@ lens:public:productaffinity=> show all;
 #### **Conditional expressions**
 
 <aside class="callout">
-  Learn more in the <a href="https://www.postgresql.org/docs/current/functions-conditional.html" target="_blank">relevant section</a> (opens in a new tab) of the PostgreSQL documentation.
+  Learn more in the <a href="https://www.postgresql.org/docs/current/functions-conditional.html" target="_blank">relevant section</a>  of the PostgreSQL documentation.
 </aside>
 
 | Expression      | Description                                                   | Outer | Selections (`WHERE` Clause) | Projection (`SELECT` Clause) |
@@ -469,7 +469,7 @@ lens:public:productaffinity=> show all;
 #### **General-purpose aggregate functions**
 
 <aside class="callout">
-  Learn more in the <a href="https://www.postgresql.org/docs/current/functions-aggregate.html#FUNCTIONS-AGGREGATE-TABLE" target="_blank">relevant section</a> (opens in a new tab) of the PostgreSQL documentation.
+  Learn more in the <a href="https://www.postgresql.org/docs/current/functions-aggregate.html#FUNCTIONS-AGGREGATE-TABLE" target="_blank">relevant section</a>  of the PostgreSQL documentation.
 </aside>
 
 | Function           | Description                                                   | Outer | Selections (`WHERE` Clause) | Projection (`SELECT` Clause) |
@@ -486,12 +486,12 @@ lens:public:productaffinity=> show all;
 In projections in inner parts of post-processing queries:
 
 - AVG, COUNT, MAX, MIN, and SUM can only be used with measures of compatible types.
-- If COUNT(*) is specified, Cube will query the first measure of type count of the relevant cube.
+<!-- - If COUNT(*) is specified, Lens will query the first measure of type count of the relevant table. -->
 
 #### **Aggregate functions for statistics**
 
 <aside class="callout">
-  Learn more in the <a href="https://www.postgresql.org/docs/current/functions-aggregate.html#FUNCTIONS-AGGREGATE-STATISTICS-TABLE" target="_blank">relevant section</a> (opens in a new tab) of the PostgreSQL documentation.
+  Learn more in the <a href="https://www.postgresql.org/docs/current/functions-aggregate.html#FUNCTIONS-AGGREGATE-STATISTICS-TABLE" target="_blank">relevant section</a>  of the PostgreSQL documentation.
 </aside>
 
 | Function        | Description                                                        | Outer | Selections (`WHERE` Clause) | Projection (`SELECT` Clause) |
@@ -507,7 +507,7 @@ In projections in inner parts of post-processing queries:
 #### **Row and array comparisons**
 
 <aside class="callout">
-  Learn more in the <a href="https://www.postgresql.org/docs/current/functions-comparisons.html" target="_blank">relevant section</a> (opens in a new tab) of the PostgreSQL documentation.
+  Learn more in the <a href="https://www.postgresql.org/docs/current/functions-comparisons.html" target="_blank">relevant section</a>  of the PostgreSQL documentation.
 </aside>
 
 | Function    | Description                                                      | Outer | Selections (`WHERE` Clause) | Projection (`SELECT` Clause) |
