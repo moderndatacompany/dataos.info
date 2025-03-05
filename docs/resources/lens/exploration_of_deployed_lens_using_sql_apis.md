@@ -52,53 +52,51 @@ The `psql` command-line tool is required to interact with Lens through PostgreSQ
 
 Before using SQL APIs to explore a Lens, the Lens needs to be retrieved from the workspace. This can be done in different ways depending on whether the Lens is running locally or is deployed on DataOS.
 
-- **Deployed Lens**
+If a user has created a Lens, verify its name in the `deployment.yml` file or retrieve it by running the following command:
 
-    If a user has created a Lens, he can verify its name in the `deployment.yml` file or retrieve it by running the following command:
+=== "Command"
 
-    === "Command"
+    ```bash
+    dataos-ctl resource get -t lens -w ${workspace} 
+    ```
+=== "Example"
 
-        ```bash
-        dataos-ctl resource get -t lens -w ${workspace} 
-        ```
-    === "Example"
+    ```bash
+    # For a workspace named "curriculum", the command and its expected output are as follows:
+    dataos-ctl resource get -t lens -w curriculum
+    # Expected Output
+    INFO[0000] 🔍 get...                                     
+    INFO[0000] 🔍 get...complete                             
 
-        ```bash
-        # For a workspace named "curriculum", the command and its expected output are as follows:
-        dataos-ctl resource get -t lens -w curriculum
-        # Expected Output
-        INFO[0000] 🔍 get...                                     
-        INFO[0000] 🔍 get...complete                             
+                NAME             | VERSION |  TYPE   | WORKSPACE  | STATUS |   RUNTIME   |     OWNER        
+    -------------------------------|---------|---------|------------|--------|-------------|-------------------
+            productaffinity              | v1      | cluster | curriculum | active | running:1   |     ironman  
+    ```
 
-                    NAME             | VERSION |  TYPE   | WORKSPACE  | STATUS |   RUNTIME   |     OWNER        
-        -------------------------------|---------|---------|------------|--------|-------------|-------------------
-                productaffinity              | v1      | cluster | curriculum | active | running:1   |     ironman  
-        ```
+To explore the Lens created by someone else in a particular worksapce use the following command:
 
-    To explore the Lens created by someone else in a particular worksapce use the following command:
+=== "Command"
 
-    === "Command"
+    This command requires specifying the workspace name to filter the Lens accordingly.
 
-        This command requires specifying the workspace name to filter the Lens accordingly.
+    ```bash
+    dataos-ctl resource get -t lens -w ${workspace} -a
+    ```
 
-        ```bash
-        dataos-ctl resource get -t lens -w ${workspace} -a
-        ```
+=== "Example"
 
-    === "Example"
+    ```bash
+    # For a workspace named "curriculum", the command and its expected output are as follows:
+    dataos-ctl resource get -t lens -w curriculum -a
+    # Expected Output
+    INFO[0000] 🔍 get...                                     
+    INFO[0000] 🔍 get...complete                             
 
-        ```bash
-        # For a workspace named "curriculum", the command and its expected output are as follows:
-        dataos-ctl resource get -t lens -w curriculum -a
-        # Expected Output
-        INFO[0000] 🔍 get...                                     
-        INFO[0000] 🔍 get...complete                             
-
-                    NAME             | VERSION |  TYPE   | WORKSPACE  | STATUS |   RUNTIME   |     OWNER        
-        -------------------------------|---------|---------|------------|--------|-------------|-------------------
-                sales-analysis               | v1      | cluster | curriculum | active | running:1   |     ironman  
-                productaffinity             | v1      | cluster | curriculum | active | running:2   |     thanos  
-        ```
+                NAME             | VERSION |  TYPE   | WORKSPACE  | STATUS |   RUNTIME   |     OWNER        
+    -------------------------------|---------|---------|------------|--------|-------------|-------------------
+            sales-analysis               | v1      | cluster | curriculum | active | running:1   |     ironman  
+            productaffinity             | v1      | cluster | curriculum | active | running:2   |     thanos  
+    ```
 
 
 ### **Connect to Lens using `psql`**
