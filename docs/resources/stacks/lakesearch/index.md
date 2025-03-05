@@ -1,6 +1,12 @@
+---
+title: Lakesearch
+search:
+  boost: 2
+---
+
 # Lakesearch
 
-Lakesearch is a Stack within DataOS that provides the scalable full-text search solution for the DataOS Lakehouse. It allows app developers to enable full-text search on top of DataOS Lakehouse tables with an ability to scale the indexing and searching capabilities to meet business requirements. For a better understanding of Lakesearch architecture please refer to [this link.](/resources/stacks/lakesearch/architecture) 
+Lakesearch is a [Stack](/resources/stacks/) within DataOS that provides the scalable full-text search solution for the DataOS Lakehouse. It allows app developers to enable full-text search on top of [DataOS Lakehouse](/resources/lakehouse/) tables with an ability to scale the indexing and searching capabilities to meet business requirements. For a better understanding of Lakesearch architecture please refer to [this link.](/resources/stacks/lakesearch/architecture) 
 
 <div style="text-align: center;">
   <img src="/resources/stacks/lakesearch/images/arch.jpg" alt="Lakesearch" style="border:1px solid black; width: 70%; height: auto;">
@@ -99,8 +105,12 @@ The examples below illustrate the search functionality of Lakesearch where a use
 ## Structure of Lakesearch Service manifest file
 
 <div style="text-align: center;">
-  <img src="/resources/stacks/lakesearch/images/structure.png" alt="Lakesearch Service structure" style="border:1px solid black; width: 60%; height: auto;">
+  <figure>
+    <img src="/resources/stacks/lakesearch/images/ls.jpg" alt="Lakesearch Service structure" style="border:1px solid black; width: 100%; height: auto;">
+    <figcaption style="margin-top: 8px; font-style: italic;">Lakesearch Service Structure</figcaption>
+  </figure>
 </div>
+
 
 ## How to deploy Lakesearch Stack within DataOS?
 
@@ -153,11 +163,13 @@ dataos-ctl develop stack versions
 
 If you do not find the Lakesearch in the result, it is time to deploy the Stack. Remember that only the user with an ‘operator’ tag can execute the above command. 
 
+### **Pre-requisites**
+
 ### **Steps**
 
 Follow the below steps to deploy the Lakesearch Stack within DataOS.
 
-1. Create a manifest file for Lakesearch Stack.
+1. Create a manifest file for Lakesearch Stack, paste the below code, and replace `${{dataos-fdqn}}` with an actual dataos-fdqn such as `unique-haddock.dataos.app`.
 
     <details>
       <summary>lakesearch_stack.yaml</summary>
@@ -182,8 +194,8 @@ Follow the below steps to deploy the Lakesearch Stack within DataOS.
             imagePullSecret: dataos-container-registry
         environmentVars:
             GIN_MODE: release
-            HEIMDALL_URL: "https://unique-haddock.dataos.app/heimdall/"
-            DEPOT_SERVICE_URL: "https://unique-haddock.dataos.app/ds"
+            HEIMDALL_URL: "https://${{dataos-fdqn}}/heimdall/"
+            DEPOT_SERVICE_URL: "https://${{dataos-fdqn}}/ds"
             LAKESEARCH_CONFIG_PATH: /etc/dataos/config/lakesearch.yaml
             SEARCHD_URL: http://localhost:9308
             SEARCHD_TEMPLATE_PATH: /etc/searchd/searchd.conf.tmpl
@@ -479,7 +491,7 @@ Follow the below steps to deploy the Lakesearch Stack within DataOS.
     
     <aside class="callout">
     
-    Ensure that you have mentioned the latest version and the image tag of the Stack, to know about it get in touch with your DataOS admin.
+    🗣️ Make sure to include the latest version and image tag of the Stack. To obtain this information, contact your DataOS administrator.
     
     </aside>
     
@@ -491,7 +503,7 @@ Follow the below steps to deploy the Lakesearch Stack within DataOS.
     
     <aside class="callout">
     
-    When DataOS processes a manifest file, it automatically replaces placeholders such as `${{variable}}` or `{{value}}` with values from the environment or other sources. Using the `--disable-interpolation` flag ensures that these placeholders remain unchanged in the applied resource, preventing any automatic substitution or evaluation.
+    🗣️ When DataOS processes a manifest file, it automatically replaces placeholders such as `${{variable}}` or `{{value}}` with values from the environment or other sources. Using the `--disable-interpolation` flag ensures that these placeholders remain unchanged in the applied resource, preventing any automatic substitution or evaluation.
     
     </aside>
     
@@ -542,10 +554,14 @@ A user must have the following requirements met before setting up a Lakesearch S
     ```
     
 - If the above tags are not available, a user can contact a DataOS operator to assign the user with one of the following use cases using the Bifrost Governance. A DataOS operator can create new usecases as per the requirement.
-    
+
     <div style="text-align: center;">
-      <img src="/resources/stacks/lakesearch/images/usecase.png" alt="Lakesearch" style="border:1px solid black; width: 60%; height: auto;">
+    <figure>
+    <img src="/resources/stacks/lakesearch/images/usecase.png" alt="usecases" style="border:1px solid black; width: 100%; height: auto;">
+    <figcaption style="margin-top: 8px; font-style: italic;">Bifrost Governance</figcaption>
+    </figure>
     </div>
+
     
 - Ensure the Lakesearch Stack is available in the DataOS Environment.
 
@@ -572,7 +588,7 @@ A user can access the endpoint either by curl command or using any API platform.
     
     ```bash
     curl -X GET "https://unique-haddock.dataos.app/lakesearch/public:testingls/api/v2/index" \                           
-    -H "Authorization: Bearer dG9rZW5fZGlzdhlkg3RseV9tYWlubHlfdXBfcmF5LjU1ZmE1ZWQyLWUwNDgtNGI3Yi1hNGQ2LWNlNjA1YTAzZTE4YQ=="
+    -H "Authorization: Bearer dG9rZW5fZGlzdhlkg3RseV9tYWlubHlfdXBlkmF5LjU1ZmE1ZWQyLWUwNDgtNGI3Yi1hNGQ2LWNlNjA1YTAzZTE4YQ=="
     ```
     
     Expected output:
@@ -588,7 +604,7 @@ A user can access the endpoint either by curl command or using any API platform.
     
     ```bash
     curl -X GET "https://unique-haddock.dataos.app/lakesearch/public:testingls/api/v2/index/city/search" \
-    -H "Authorization: Bearer dG9rZW5fZGlzdGluY3Rhklf9tYWlubHlfdXBfcmF5LjU1ZmE1ZWQyLWUwNDgtNGI3Yi1hNGQ2LWNlNjA1YTAzZTE4YQ=="
+    -H "Authorization: Bearer dG9rZW5fZGlzdGluY3Rhklf9tYWlubHlfdXBfklF5LjU1ZmE1ZWQyLWUwNDgtNGI3Yi1hNGQ2LWNlNjA1YTAzZTE4YQ=="
     ```
     
     Expected output:
@@ -628,7 +644,7 @@ To search by the exact keyword execute the following curl command.
 
 ```bash
 curl -X GET "https://unique-haddock.dataos.app/lakesearch/public:testingls/api/v2/index/city/keywords?word=alabama" \ 
--H "Authorization: Bearer dG9rZW5fZGlzdGluY3RseV9tYWlubHlfdXBfcmFU1ZmE1ZWQyLWUwNDgtNGI3Yi1hNGQ2LWNlNjA1YTAzZTE4YQ=="
+-H "Authorization: Bearer dG9rZW5fZGlzdGluY3RseV9tYWlubHlfdXBfcmFU1Zlo1ZWQyLWUwNDgtNGI3Yi1hNGQ2LWNlNjA1YTAzZTE4YQ=="
 ```
 
 Expected output:
@@ -651,7 +667,7 @@ To search by the similar word execute the following curl command.
 
 ```bash
 curl -X GET "https://unique-haddock.dataos.app/lakesearch/public:testingls/api/v2/index/city/suggestions?word=alaba&limit=2" \
--H "Authorization: Bearer dG9rZW5fZGlzluY3RseV9tYWlubHlfcmF5LjU1ZmE1ZWQyLWUwNDgtNGI3Yi1hNGQ2LWNlNjA1YTAzZTE4YQ=="
+-H "Authorization: Bearer dG9rZW5fZGlzluY3RseV9tYWlubHlfcmF5LjU1ZmE1ZWQyLWplNDgtNGI3Yi1hNGQ2LWNlNjA1YTAzZTE4YQ=="
 
 ```
 
