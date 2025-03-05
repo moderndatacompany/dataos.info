@@ -511,6 +511,8 @@ This indicates that user-specific configuration files are located in `/etc/datao
 | --- | --- | --- | --- |
 | object | mandatory | none | Defines storage location with `<workspace>/<servie_name>/<folder_name>` nomenclature and volume name |
 
+If a Volume is not already configured in the environment, create a new one by referring to [this link](/resources/volume/).
+
 **Example usage:**
 
 ```yaml
@@ -549,7 +551,7 @@ resources:
 
 ### **stack**
 
-**Description:** Indicates the version of the Lakesearch stack for the Service to run.
+**Description:** Indicates the version of the Lakesearch Stack for the Service to run.
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
