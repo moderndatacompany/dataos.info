@@ -17,7 +17,7 @@ worker:
     tags: # Worker-specific tags
       - worker 
     replicas: 1 # Specifies the number of worker replicas to run
-    stack: benthos-worker:3.0 # Specifies the stack name and version for the worker
+    stack: bento-worker:3.0 # Specifies the stack name and version for the worker
     logLevel: DEBUG # Sets the logging level to DEBUG
     compute: runnable-default # Defines the Compute Resource to be used
     resources:
