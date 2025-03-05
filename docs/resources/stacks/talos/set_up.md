@@ -75,7 +75,7 @@ Open the repository in the preferred code editor. Navigate to the `setup` folder
 
 ```yaml
 name: ${{superstore}}
-description: ${{A talos-depot-postgres app}} # description
+description: ${{A talos-depot-snowflake app}} # description
 version: "0.1.26-test" # The version of the Talos(string)
 auth:
   userGroups:
@@ -219,7 +219,7 @@ For more information about Instance Secret, please refer to the [Instance Secret
             - '--ref=main'
     ```
     
-    To know more information about each attribute, please refer to the Configuration Page.
+    To know more information about each attribute, please refer to the [Configuration Page](/resources/stacks/talos/configurations/).
     
 - Apply the Service manifest by executing the below command:
     
