@@ -93,7 +93,7 @@ A metric in the metrics-first approach typically includes:
 Views are named after the specific metric they represent, making them easy to identify and work within various systems. 
 
 === "Syntax"
-
+    
     ```yaml
     views:
       - name: {metric_name}

@@ -1,16 +1,13 @@
 # Exploration of Lens using SQL APIs
 
-Lens exposes a PostgreSQL-compatible interface, enabling interaction with the semantic model(Lens) using PostgreSQL syntax. The PostgreSQL client tool `psql` is required to query the database and manage Lens data.
+Lens exposes a PostgreSQL-compatible interface, enabling interaction with the semantic model(Lens) using SQL API. The PostgreSQL client tool `psql` is required to query the database and manage Lens data.
 
-<aside class="callout">
-A PostgreSQL-compatible interface means that the Lens supports SQL queries that follow the syntax and conventions used by PostgreSQL, but it doesn't necessarily have to use PostgreSQL as the underlying database. Essentially, it behaves like PostgreSQL for the purpose of querying data, but behind the scenes, it could be using a different data engine or model.
-</aside>
 
 ## Prerequisites
 
-- **Active Lens:** To interact with the Lens, it must be active. If the Lens is deployed on DataOS, ensure it is properly set up. If the Lens is running locally (i.e., not deployed on DataOS), verify that the docker-compose is running in the background to ensure the Lens is active. 
+- **Active Lens:** Ensure the Lens is active and properly set up if deployed on DataOS to interact with it.
 
-- **DataOS API Key:**  When prompted for a password, use the DataOS API Key as the password. To retrieve the API Key, run the following command in the terminal:
+- **DataOS API Key:** When prompted for a password, use the DataOS API Key as the password. To retrieve the API Key, run the following command in the terminal:
 
     ```bash
     dataos-ctl user apikey get
@@ -42,44 +39,19 @@ A PostgreSQL-compatible interface means that the Lens supports SQL queries that 
     dGVzdF9hcGlfa2V5LjZjYmE2Nzg0LTIyNDktNDBjMy1hZmNhLTc1MmZlNjM3OWExZA== │ apikey │ 2024-11-29T12:30:00+05:30 │ test_api_key  
     ```
 
-To interact with Lens through PostgreSQL, the following options are available:
+To interact with Lens, the following options are available:
 
 - **Postgreql client (psql):** The `psql` command-line tool enables direct interaction with a PostgreSQL database. It is used to run queries, manage the database, and perform various administrative tasks. Ensure that postgresql-client-16 is installed. If it is not already installed, download and install postgresql-client-16 for your operating system using [this link](https://www.postgresql.org/download/).
 
-
 - **VS Code extension:** Use the PostgreSQL Client extension for Visual Studio Code. This extension enables SQL query execution and database management within VS Code.
-
 
 ## Postgresql client (psql)
 
 The `psql` command-line tool is required to interact with Lens through PostgreSQL. Specifically, `postgresql-client-16` must be installed, as this version includes the necessary tools to connect and query the database. 
 
-<!-- 
-Go to the DataOS Home Page click on the Data Product Hub. From here you will be redirected to the Data Product Hub home page. -->
-
-<!-- <center>
-  <img src="/interfaces/data_product_hub/dataos.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
-  <figcaption><i>Data Product Hub on DataOS Home Page</i></figcaption>
-</center>
-
-Here choose the desired Data Product to explore using SQL APIs.For this example we have used Customer360 Now as you click on the Customer360 Data Product
-
-<center>
-  <img src="/interfaces/data_product_hub/dataos.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
-  <figcaption><i>Data Product Hub on DataOS Home Page</i></figcaption>
-</center> -->
-
 ### **Retrieve Lens**
 
 Before using SQL APIs to explore a Lens, the Lens needs to be retrieved from the workspace. This can be done in different ways depending on whether the Lens is running locally or is deployed on DataOS.
-
-- **Locally running Lens**
-
-    If the Lens is running locally and has not yet been deployed on DataOS, verify the name of the Lens in the `docker-compose.yml` file. Additionally, ensure that the docker-compose is running in the background, as failing to do so may result in the following error:
-
-    ```bash
-    psql: error: connection to server at "localhost" (127.0.0.1), port 25432 failed: Connection refused
-    ```
 
 - **Deployed Lens**
 
@@ -101,7 +73,7 @@ Before using SQL APIs to explore a Lens, the Lens needs to be retrieved from the
 
                     NAME             | VERSION |  TYPE   | WORKSPACE  | STATUS |   RUNTIME   |     OWNER        
         -------------------------------|---------|---------|------------|--------|-------------|-------------------
-                sales360              | v1      | cluster | curriculum | active | running:1   |     ironman  
+                productaffinity              | v1      | cluster | curriculum | active | running:1   |     ironman  
         ```
 
     To explore the Lens created by someone else in a particular worksapce use the following command:
@@ -125,9 +97,8 @@ Before using SQL APIs to explore a Lens, the Lens needs to be retrieved from the
 
                     NAME             | VERSION |  TYPE   | WORKSPACE  | STATUS |   RUNTIME   |     OWNER        
         -------------------------------|---------|---------|------------|--------|-------------|-------------------
-                c360-financial-service | v1      | cluster | curriculum | active | running:1   |     thor       
-                sales360               | v1      | cluster | curriculum | active | running:1   |     ironman  
-                Product360             | v1      | cluster | curriculum | active | running:2   |     thanos  
+                sales-analysis               | v1      | cluster | curriculum | active | running:1   |     ironman  
+                productaffinity             | v1      | cluster | curriculum | active | running:2   |     thanos  
         ```
 
 
@@ -142,12 +113,6 @@ After retrieving the name of the Lens, the following steps describe how to conne
     
     ```bash
     psql -h ${host_name} -p 6432 -U ${user-name} -d ${lens:<workspace-name>:<lens-name>} 
-    ```
-
-    For local environment, set the host to localhost. 
-    
-    ```bash
-    psql localhost -p 6432 -U iamgroot -d lens:curriculum:product360
     ```
     
     For deployed environment, use the following connection string:
@@ -231,6 +196,8 @@ postgres=> \dt #listing all the tables in the connected database.
 
 ## Commands
 
+One can also introspect the semantic model in a Postgres-native way by querying tables in information_schema or using backslash commands(opens in a new tab):
+
 Here are some more commands for reference.
 
 | Command Description                              | Command Example                 |
@@ -241,3 +208,28 @@ Here are some more commands for reference.
 | List all schemas in the database                 | `\dn`                           |
 | List all views in the connected database         | `\dv`                           |
 | Exit the PostgreSQL prompt                       | `\q`                            |
+
+After connecting, one can run queries in the Postgres dialect, just like the following one:
+
+```sql
+SELECT 
+	 customer.country,
+	 purchase.purchase_date,
+	 MEASURE(purchase.total_spend)
+ FROM
+	 customer
+	 CROSS JOIN purchase
+ WHERE
+	 (purchase.purchase_date BETWEEN '2024-01-01T15:37:55' AND '2024-12-31T15:38:02' AND (customer.country = 'Australia'))
+ GROUP BY 1,2
+ LIMIT 
+	 10
+ OFFSET 
+	 0
+```
+
+## Query format
+
+Please refer to the  [SQL API reference](/resources/lens/sql_apis/query_format/) to explore the query format and
+see whether a specific expression or function is supported and whether it can be used in selection (e.g., `WHERE`) or projection (e.g., `SELECT`) parts of SQL queries. 
+
