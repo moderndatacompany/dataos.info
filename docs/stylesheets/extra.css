@@ -3666,6 +3666,7 @@ html .md-footer-meta.md-typeset a:hover {
     top: 2.4rem;
     min-width: 12.1rem;
     width: unset;
+    max-width: 20rem;
 }
 
 @media print {
@@ -3784,7 +3785,7 @@ html .md-footer-meta.md-typeset a:hover {
 }
 
 .md-sidebar__inner {
-    padding-right: 0;
+    padding-right: 0 !important;
 }
 @supports selector(::-webkit-scrollbar) {
     .md-sidebar__scrollwrap {
