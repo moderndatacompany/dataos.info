@@ -261,11 +261,15 @@ Users can observe the runtime and status of a Lakesearch Service either by DataO
     ```
     
 - To check the runtime and status through Metis UI, simply navigate to `Metis UI -> Resources -> Service -> Lakesearch -> service-name` or simply search Lakesearch Service by name on the search bar and click on the Service that needs to be observed.
-    
-    ![image.png](attachment:6bd9e51d-56d0-4236-aeb5-563708e7fdd8:image.png)
-    
-    ![image.png](attachment:f8d367ac-02f2-4d16-8517-cca66bc8251f:image.png)
-    
+
+  <div style="text-align: center;">
+    <img src="/resources/stacks/lakesearch/images/runtime.png" alt="Lakesearch" style="border:1px solid black; width: 70%; height: auto;">
+  </div>
+
+  <div style="text-align: center;">
+    <img src="/resources/stacks/lakesearch/images/status.png" alt="Lakesearch" style="border:1px solid black; width: 70%; height: auto;">
+  </div>
+
 
 ### Get alerts!
 
