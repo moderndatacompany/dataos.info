@@ -2,7 +2,6 @@
 
 Lens exposes a PostgreSQL-compatible interface, enabling interaction with the semantic model(Lens) using SQL API. The PostgreSQL client tool `psql` is required to query the database and manage Lens data.
 
-
 ## Prerequisites
 
 - **Active Lens:** Ensure the Lens is active and properly set up if deployed on DataOS to interact with it.
@@ -196,7 +195,7 @@ postgres=> \dt #listing all the tables in the connected database.
 
 ## Commands
 
-One can also introspect the semantic model in a Postgres-native way by querying tables in information_schema or using backslash commands(opens in a new tab):
+One can also introspect the semantic model in a Postgres-native way by querying tables or using backslash commands.
 
 Here are some more commands for reference.
 
