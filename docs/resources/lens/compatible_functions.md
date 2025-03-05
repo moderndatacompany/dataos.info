@@ -1,4 +1,4 @@
-# Postgre
+<!-- # Postgres
 
 The following is a list of PostgreSQL functions that have been verified to work when connecting through the Postern service:
 
@@ -47,3 +47,4 @@ The following is a list of PostgreSQL functions that are not working as expected
 | `sum`                             |                                        | (Not specified in error description)                                                                   |
 | `count`                           |                                        | (Not specified in error description)                                                                   |
 | `avg`                             |                                        | (Not specified in error description)                                                                   |
+  -->
