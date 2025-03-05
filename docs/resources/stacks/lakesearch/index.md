@@ -1,23 +1,24 @@
 # Lakesearch
 
-## Overview
-
 Lakesearch is a Stack within DataOS that provides the scalable full-text search solution for the DataOS Lakehouse. It allows app developers to enable full-text search on top of DataOS Lakehouse tables with an ability to scale the indexing and searching capabilities to meet business requirements. For a better understanding of Lakesearch architecture please refer to [this link.](/resources/stacks/lakesearch/architecture) 
 
 <div style="text-align: center;">
-  <img src="/resources/stacks/lakesearch/images/arch.jpg" alt="Lakesearch" style="border:1px solid black; width: 60%; height: auto;">
+  <img src="/resources/stacks/lakesearch/images/arch.jpg" alt="Lakesearch" style="border:1px solid black; width: 70%; height: auto;">
 </div>
 
 
 The examples below illustrate the search functionality of Lakesearch where a user can access the API endpoint.
 
-- **Search by keywords**
+<details>
+    <summary>Search by keywords</summary>
 
     Endpoint: `https://unique-haddock.dataos.app/lakesearch/public:testingls/api/v2/index/:index_name/keywords?word=alabama&limit=3`
+
 
     Result:
 
         ```json
+        # Result
         {
         "keywords": [
             {
@@ -28,15 +29,16 @@ The examples below illustrate the search functionality of Lakesearch where a use
         ]
         }
         ```
-
+</details>
     
-- **Search by table name (index name)**
+<details>
+    <summary>Search by table name (index name)</summary>
     
     Endpoint: `https://unique-haddock.dataos.app/lakesearch/public:testingls/api/v2/index/city/search`
 
-    Result:
-    
+
         ```json
+        # Result        
         {
             "took": 0,
             "timed_out": false,
@@ -62,15 +64,17 @@ The examples below illustrate the search functionality of Lakesearch where a use
                 ]
             }
         }
-    ```
-    
-- **Search by similar word**
+        ```
+        
+</details>
+
+<details>
+    <summary>SSearch by similar word</summary>
 
     Endpoint: `https://unique-haddock.dataos.app/lakesearch/public:testingls/api/v2/index/:index_name/suggestions?word=auta`
-    
-    Result:
-    
+
         ```json
+        # Result
         {
             "suggestions": [
                 {
@@ -92,7 +96,7 @@ The examples below illustrate the search functionality of Lakesearch where a use
         }
         ```
     
-
+</details>
     
 
 ## Structure of Lakesearch Service manifest file
