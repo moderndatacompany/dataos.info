@@ -3664,7 +3664,8 @@ html .md-footer-meta.md-typeset a:hover {
     position: -webkit-sticky;
     position: sticky;
     top: 2.4rem;
-    width: 12.1rem
+    min-width: 12.1rem;
+    width: unset;
 }
 
 @media print {
@@ -3782,6 +3783,9 @@ html .md-footer-meta.md-typeset a:hover {
     background-color: var(--md-accent-fg-color)
 }
 
+.md-sidebar__inner {
+    padding-right: 0;
+}
 @supports selector(::-webkit-scrollbar) {
     .md-sidebar__scrollwrap {
         scrollbar-gutter: auto
