@@ -2,27 +2,27 @@
 
 Talos configurations consist of various manifest files, let’s see each one in detail to help you configure Talos efficiently.
 
-## `config.yaml`
+## [`config.yaml`](/resources/stacks/talos/configurations/config/)
 
-The `config.yaml` file is the main configuration file for a Talos project. It defines the essential settings and parameters to configure your Talos application. To understand each attribute in detail please refer to [this section](/resources/stacks/talos/configurations/config/).
+The config.yaml file serves as the primary configuration file for a Talos project. It specifies essential settings and parameters required to configure the Talos application. For a detailed explanation of each attribute, refer to [this section](/resources/stacks/talos/configurations/config/).
 
-## `docker-compose.yaml`
+## [`apis`](/resources/stacks/talos/configurations/apis/)
 
-Docker compose manifest file is used to configure the docker image of Talos. To understand each attribute of the docker-compose manifest file, please refer to [this section](/resources/stacks/talos/configurations/docker_compose/).
+The `apis` directory contains:
 
-## `apis`
+- **SQL Files:** Define the queries used by the API.
+- **Manifest Files:** Contain the API endpoint path, description, data source, and access control settings for user groups.
 
-While configuring Talos, the `apis` folder contains an SQL file and a manifest file, an SQL file is where you write your queries, and the manifest file contains the endpoint path, description, source, and allowed user groups. To know more in detail please refer to [this section](/resources/stacks/talos/configurations/apis/).
+For more details, refer to [this section](/resources/stacks/talos/configurations/apis/).
 
-## `service.yaml`
+## [`service.yaml`](/resources/stacks/talos/configurations/service/)
 
-`service.yaml` is a Service manifest file configured when setting up Talos within DataOS. To understand each attribute of this manifest file, please refer to [this section](/resources/stacks/talos/configurations/service/).
+The service.yaml file is a service manifest used for configuring Talos within DataOS. It includes service definitions, dependencies, and environment configurations. For a complete attribute reference, refer to [this section](/resources/stacks/talos/configurations/service/).
 
-<aside class="callout">
-🗣 Note that you do not need to configure the `service.yaml` file while setting up Talos Locally.
+## Additional Linke
 
-</aside>
-
-## `Makefile`
-
-The `Makefile` simplifies and automates the process of managing Docker Compose services, making it easier to start and stop services with predefined commands.
+- [Talos for Lens](/resources/stacks/talos/recipes/lens_setup/)
+- [Talos for Flash](/resources/stacks/talos/recipes/flash_setup/)
+- [Talos for Redshift](/resources/stacks/talos/recipes/redshift/)
+- [Talos for Postgres](/resources/stacks/talos/recipes/postgres/)
+- [Talos for Mysql](/resources/stacks/talos/recipes/mysql/)
