@@ -1,92 +1,88 @@
 # Caching Dataset
 
-The caching layer feature in Talos allows you to leverage caching to improve the performance and efficiency of your API queries. With the `{% cache %}` tag, you can query results directly from the cache layer storage, reducing the need for repeated queries to the data source. Let's explore how to use this feature effectively.
+## **Caching Datasets in Talos**
 
-## Caching with in-memory database
+Talos provides a caching layer to enhance API query performance and efficiency. By using the `{% cache %}` tag, query results can be retrieved directly from cache storage, minimizing repeated queries to the data source. This section outlines how to configure and utilize caching effectively in Talos.
 
-To provide efficient caching functionality, Talos utilizes in-memory databse as the underlying storage engine. This ensures high-performance caching and improves the overall query execution speed.
+### **1. Caching with an In-Memory Database**
 
-First, you need to add the following configuration to  `config.yaml`
+Talos uses an in-memory database as the caching engine, ensuring high-performance query execution. To enable caching, the following configuration must be added to `config.yaml`:
 
 ```yaml
-cachePath: mycachepath # by default talos use /tmp as a path but you can provide your own path
+cachePath: tmp # by default talos use /tmp as a path but user can provide its own path
 sources:
-  - name: pg # source name
-    type: pg # source type
+	- name: mysqldepot # source name
+	  type: depot # source type
+	  options:
+	    ssl:               #for mysql depots
+	      rejectUnauthorized: true
 ```
 
-In the configuration, `tmp` means there will be a new folder called `tmp` in the root directory of the project you created.
+In this configuration, a folder named `tmp` will be created in the root directory of the project to store cached data.
 
-## Caching query results
+### **2. Caching Query Results**
 
-To utilise the caching layer, you can enclose your SQL query inside the `{% cache %}` and `{% endcache %}` tags. For example:
+To leverage caching, SQL queries should be enclosed within `{% cache %}` and `{% endcache %}` tags.
 
-`product.sql`
+**Example: Using Caching in SQL Queries (`product.sql`)**
 
 ```sql
 {% cache %}
-SELECT
-  product_name, item_no
-FROM
-  product_cache
+
+SELECT DISTINCT prod_id FROM mysql_cache WHERE prod_id = {{ context.params.prod_id}}
+
 {% endcache %}
 ```
 
-This tag enables the query to fetch the result from the cache layer storage. You can define which queries are preloaded into the cache layer by specifying cache settings in the configuration file. Here's an example configuration:
+This ensures that results are fetched from the cache layer instead of querying the database repeatedly.
 
-`product.yaml`
+### **3. Configuring Cache Preloading**
+
+Queries can be preloaded into the cache layer by defining cache settings in the configuration file.
+
+**Example: Preloading a Cached Table (`product.yaml`)**
 
 ```yaml
-urlPath: /lens/sales/product
+urlPath: /mysql/sales/product
 description: product from sales
-source: pg
+description: validating the functionalities
+source: mysqldepot
+request:
+  - fieldName: prod_id
+    fieldIn: query
 cache:
-  - cacheTableName: 'product_cache'
-    options: # this is only for Postgres source
-      offset: 0
-      limit: 50
+  - cacheTableName: 'mysql_cache'   #table name from which cache data will be selected
+    sql: select distinct prod_id from mysqldb.mysql_dataset limit 10
+    source: mysqldepot
+
 ```
 
-`product_cache.sql` 
+This configuration ensures that the `mysql_cache` table is available for cached queries.
 
-```sql
-SELECT * FROM product LIMIT ${LIMIT} OFFSET ${OFFSET};
-```
+### **4. Configuring Cache Refresh Interval**
 
-In this configuration, the `product_cache` table will be utilised within the `{% cache %}` tag.
+To refresh cached data periodically, the `refreshTime` or `refreshExpression` setting must be specified in the manifest file.
 
-Also, you can add the refresh interval configuration in the manifest file in the cache section using the `refreshTime` keyword.
+**Example: Cache Refresh Interval Configuration using `refreshTime`.**
 
 ```yaml
 cache:
-  - cacheTableName: 'cache_departments' # The name of the table in the cache layer storage
-    ...
-    refreshTime: 
-		    every: '5m' # this is mandotry
+  - cacheTableName: 'mysql_cache' # The name of the table in the cache layer storage
+    ...   # remaining attributes like query, source etc
+    refreshTime:     # if refreshTime is added then
+            every: '5m' # this is mandotry
 ```
+
+**Example: Cache Refresh Interval Configuration using `refreshExpression`.**
 
 ```yaml
 cache:
-  - cacheTableName: 'cache_departments' # The name of the table in the cache layer storage
-    ...
+  - cacheTableName: 'mysql_cache'    #The name of the table in the cache layer storage
+    ...   # remaining attributes like query, source etc
     refreshExpression: 
-		    expression: '* * * * *' #this should be a valid cron expression and should be a string
-		    timezone: Asia/Kolkata #Optional 
-		    runImmediately : true # boolean value  
+            expression: '* * * * *'  #this should be a valid cron expression and should be a string
+            timezone: Asia/Kolkata   #Optional 
+            runImmediately : true    # boolean value
 ```
 
-## Reusing cached results
-
-Talos provides the ability to keep the query result from the cache layer in a variable, which can be reused in subsequent queries. For example:
-
-```sql
--- The cached result is stored in the variable named "employee"
-{% cache employee %}
-SELECT * FROM cache_employees WHERE "id" = {{ context.params.id }};
-{% endcache %}
-
--- The cached result can be reused in subsequent queries by referencing the variable name "employee"
-SELECT * FROM departments WHERE "employee_id" = {{ employee.value()[0].id }};
-```
-
-By assigning the result of the `{% cache %}` tag to the `employee` variable, you can access its value in subsequent queries. This allows you to build complex queries by utilizing the cached results. Note that when the `{% cache %}` tag does not have a variable assigned, it retrieves the result directly from the cache builder.
+By implementing caching in Talos, query execution times are reduced, and API performance is optimized.

@@ -107,6 +107,7 @@ This section provides step-by-step guides to assist you in effectively configuri
 
 - [How to set up Talos for Lens?](/resources/stacks/talos/recipes/lens_setup/)
 - [How to set up Talos for Flash?](/resources/stacks/talos/recipes/flash_setup/)
+- [How to set up Talos for MySQL?](/resources/stacks/talos/recipes/mysql/)
 - [How to set up Talos for Redshift?](/resources/stacks/talos/recipes/redshift/)
 - [How to set up Talos for Snowflake?](/resources/stacks/talos/recipes/snowflake/)
 - [How to set up Talos for Postgres?](/resources/stacks/talos/recipes/postgres/)
