@@ -123,7 +123,7 @@ markdown_extensions:
   - pymdownx.tilde
 #  - pymdownx.extra
   - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.twemoji
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
       # emoji_index: !!python/name:materialx.emoji.twemoji # before pushing to dev branch replace materialx.emoji.twemoji with material.extensions.emoji.twemoji
