@@ -4,7 +4,7 @@ A user can observe the health status, operational metrics, runtime, and status o
 
 ## Operational metrics
 
-To get the details of operational metrics of a Lakesearch Service execute the below curl command using DataOS CLI. A user can create a bearer token in the profile section of the DataOS home page.
+To get the details of operational metrics of a Lakesearch Service execute the below curl command using [DataOS CLI](/interfaces/cli/). A user can create a bearer token in the profile section of the DataOS home page.
 
 === "Syntax"
     ```bash
@@ -212,7 +212,7 @@ To get the details of operational metrics of a Lakesearch Service execute the be
 
     
 
-Users can access relevant data points at the `/metrics` endpoint to calculate all the metrics listed below.
+Users can access relevant data points at the `/metrics` endpoint to calculate all the metrics listed below. These metrics are also available in Grafana.
 
 | **Metric** | **What?** | **Persona** | **Why?** |
 | --- | --- | --- | --- |
@@ -222,7 +222,7 @@ Users can access relevant data points at the `/metrics` endpoint to calculate al
 | **Storage Usage** | Total storage used per index, tracked over time, with breakdowns by individual indices and alerts for thresholds nearing capacity limits. | Developer, Operator | Ensures adequate storage for indexed data, helps plan capacity and resource scaling, and prevents disruptions due to storage exhaustion. |
 | **Resource Utilization (CPU, Memory, Disk I/O)** | CPU, memory, and disk I/O usage for both Indexer and Searcher, with alerts for thresholds approaching critical levels. | Developer, Operator | Ensures optimal resource usage to maintain service performance, helping to avoid slow indexing or query processing times due to resource overutilization. |
 
-### Health status
+## Health status
 
 Users can observe the health status of a Lakesearch Service by executing the below curl command using the `/healthz` endpoint.
 
@@ -231,7 +231,7 @@ curl -X GET "https://unique-haddock.dataos.app/lakesearch/public:testingls/healt
 -H "Authorization: Bearer dG9rZW5fZGlzdG3RseV9tYWlubHlfdXBfcmF5LjU1ZmE1ZWQyLWUwNDgtNGI3Yi1hNGQ2LWNlNjA1YTAzZTE4YQ=="
 ```
 
-Expected output:
+**Expected output:**
 
 ```json
 {
@@ -239,7 +239,9 @@ Expected output:
 }
 ```
 
-### Runtime and status
+If the Service is healthy, the response returns { "status": "ok" }, indicating that the system is functioning as expected.
+
+## **Runtime and status**
 
 Users can observe the runtime and status of a Lakesearch Service either by DataOS CLI or by Metis UI.
 
@@ -249,7 +251,7 @@ Users can observe the runtime and status of a Lakesearch Service either by DataO
     dataos-ctl get -t service -n testingls -w public
     ```
     
-    Expected output:
+    **Expected output:**
     
     ```bash
     INFO[0000] 🔍 get...                                     
@@ -271,11 +273,11 @@ Users can observe the runtime and status of a Lakesearch Service either by DataO
   </div>
 
 
-### Get alerts!
+## **Get alerts!**
 
-The Monitor Resource allows users to define conditions for receiving alerts, such as when a service runtime enters a pending or failed state, or when a service is deleted without the creator's prior knowledge. The Pager Resource enables users to configure alert destinations, such as a Teams channel webhook URL or email, and define the structure of the alert message that will be sent.
+The [Monitor Resource](/resources/monitor/) allows users to define conditions for receiving alerts, such as when a Service runtime enters a pending or failed state, or when a Service is deleted without the creator's prior knowledge. The [Pager Resource](/resources/pager/) enables users to configure alert destinations, such as a Teams channel webhook URL or email, and define the structure of the alert message that will be sent.
 
-**Get alerts when runtime enters the pending state**
+### **Get alerts when runtime enters the pending state**
 
 Follow the below steps to create a Monitor Resource.
 
@@ -312,6 +314,7 @@ Follow the below steps to create a Monitor Resource.
               operator: equals
               value: pending:0/1
     ```
+    To get to know more about the Monitor Resource, please refer to [this link](/resources/monitor/).
     
 2. Apply the Monitor Resource manifest file by executing the below command.
     
@@ -393,7 +396,7 @@ Follow the below steps to create a Monitor Resource.
     ---------------|---------------------------|---------------------------|------------|---------------------------------------------------------------
     ```
     
-5. Create a manifest file for Pager Resource.
+5. Create a manifest file for [Pager Resource](/resources/pager/).
     
     ```yaml
     
@@ -413,19 +416,19 @@ Follow the below steps to create a Monitor Resource.
     
       output:
         webHook:
-          url: https://rubikdatasolutions.webhook.office.com/webhookb2/c61e1080-682a-42c7-a101-d6beffddf3a0@2e22bdde-3ec2-43f5-bf92-78e9f35a44fb/IncomingWebhook/51c946a746194eb4bc6fbf2a3b8c596f/631bd149-c89d-4d3b-8979-8e364f62b419/V2xdnn_SUVifx59MMXbx8IIIwTtiaq8HdBE3Szv-Zjyuw1
+          url: https://rubikdatasolutions.webhook.office.com/webhookb2/c61e1080-682a-42c7-a101-d6beffddf3a0@2e22bdde-3ec2-43f5-bf92-78e9f35a44fb/IncomingWebhook/51c946a746194eb4bc6fbf2a3b8c596f/631bd149-c89d-4d3b-8979-8e364f62b419/V2xdnn_SUVifx59MMXbx8IIIwTtial5HdBE3Szv-Zjyuw1
           verb: post
           headers:
             'content-type': 'application/json'
           bodyTemplate: |
               {
                 "@type": "MessageCard",
-                "summary": "Lakesearch Service is deleted",
+                "summary": "Lakesearch Service is pending",
                 "themeColor": "0076D7",
                 "sections": [
                   {
                     "activityTitle": "Dear Team,",
-                    "activitySubtitle": "Our system detected that your Service is deleted, if it is not you then take the action.",
+                    "activitySubtitle": "Our system detected that your Service's runtime changed to pending state.",
                     "facts": [
                       {
                         "name": "The following Lakesearch Service is deleted:",
@@ -492,7 +495,7 @@ Follow the below steps to create a Monitor Resource.
     </div>
     
 
-**Get alerts when Service status enters the deleted state**
+### **Get alerts when Service status enters the deleted state**
 
 Follow the below steps to create a Monitor Resource.
 
