@@ -15,9 +15,30 @@ service:
 
 An API endpoint can be accessed via an URL shown below by replacing the place holders.
 
-`{{base_url}}: <dataos_context_url>/lakesearch/<workspace>:<service_name>`
+<div class="grid" markdown>
 
-**Example:** `https://proud-cobra.dataos.app/lakesearch/public:ls-dummy`
+=== "Base URL"
+
+    `{{base_url}}: ${{dataos_context_url}}/lakesearch/${{workspace}}:${{service_name}}`
+
+=== "Curl command"
+
+    ```bash
+    curl -X GET "${{dataos_context_url}}/lakesearch/${{workspace}}:${{service_name}}/api/v2/index" \                           
+    -H "Authorization: ${{dataos-user-token}}"
+    ```
+=== "Example"
+
+    ```bash
+    curl -X GET "https://unique-haddock.dataos.app/lakesearch/public:testingls/api/v2/index" \                           
+    -H "Authorization: Bearer dG9rZW5fZGlzdhlkg3RseV9tYWlubHlfdXBlkmF5LjU1ZmE1ZWQyLWUwNDgtNGI3Yi1hNGQ2LWNlNjA1YTAzZTE4YQ=="
+    ```
+</div>
+
+<aside class="callout">
+🗣️ A user can get DataOS profile token from the profile section of DataOS Interface
+
+</aside>
 
 The following table containd the different endpoints for different purposes.
 
@@ -36,3 +57,4 @@ The following table containd the different endpoints for different purposes.
 | `{{base_url}}/api/v2/_bulk` | POST | Elasticsearch `_bulk` endpoint. [More Details](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html) |
 
 
+To get more information on index searching, please refer to [this link](resources/stacks/lakesearch/index_searching/).

@@ -1,7 +1,7 @@
 ---
 title: Lakesearch
 search:
-  boost: 2
+  boost: 2/4
 ---
 
 # Lakesearch
