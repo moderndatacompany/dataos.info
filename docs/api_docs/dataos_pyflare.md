@@ -126,17 +126,17 @@ The `dataos-pyflare` library can be installed from the Python Package Index (PyP
 python3 -m pip install dataos-pyflare
 # For specific version
 python3 -m pip install dataos-pyflare=={{version specifier}}
-# e.g. python3 -m pip install dataos-pylare==0.0.6
+# e.g. python3 -m pip install dataos-pyflare==0.0.6
 ```
 
 **For Windows**
 
 ```bash
 # For latest version
-py -m pip install dataos-pylare
+py -m pip install dataos-pyflare
 # For specific version
-py -m pip install dataos-pylare=={{version specifier}}
-# e.g. py -m pip install dataos-pylare==0.0.6
+py -m pip install dataos-pyflare=={{version specifier}}
+# e.g. py -m pip install dataos-pyflare==0.0.6
 ```
 
 ><b>Note:</b> If you’re using an enhanced shell like IPython or Jupyter notebook, you must restart the runtime in order to use the newly installed package.
