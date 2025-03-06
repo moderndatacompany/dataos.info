@@ -163,8 +163,6 @@ dataos-ctl develop stack versions
 
 If you do not find the Lakesearch in the result, it is time to deploy the Stack. Remember that only the user with an ‘operator’ tag can execute the above command. 
 
-### **Pre-requisites**
-
 ### **Steps**
 
 Follow the below steps to deploy the Lakesearch Stack within DataOS.
