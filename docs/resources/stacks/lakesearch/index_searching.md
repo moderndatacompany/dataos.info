@@ -1,12 +1,22 @@
 # Searching for an index
 
-This section contains the deatils of an index and how it can be accessed.
+LakeSearch allows a user to search for an index using various filters and search parameters. This section explains how to perform searches efficiently.
 
-## Searching an Index
+<!-- ## Search Types
 
-## 1. Basic Search Request
+You can search for an index in different ways:
 
-A basic search request involves querying an index based on specific criteria to retrieve documents. Here is an outline of the key parameters:
+- **By Index Name**: A user can search for an index by its name.
+
+- **By Keyword**: Use partial names or relevant terms to find the index.
+
+- **By Metadata Filters**: Filter results based on metadata like creation date, size, owner, etc.
+
+- **By Custom Queries**: Use advanced query options to refine search results. -->
+
+## Basic search request
+
+A basic search request is a structured query used to retrieve documents from an index based on specific criteria. Below is a breakdown of the key parameters involved in a basic search request.
 
 1. `query`: Specifies the search conditions for fetching documents from the index. For example, it might filter for documents with a particular job (e.g., *UX Designer*) and those where the address field includes the word *Sigrid*. This is a **mandatory** parameter.
 
@@ -20,52 +30,47 @@ A basic search request involves querying an index based on specific criteria to 
 
 4. `sort`: An array of fields to define the sorting order of the results, similar to the `order by` clause in SQL. This is an **optional** parameter.
 
-- **Example**
+### **How to perform a basic search request?**
+
+A search request is made using an HTTP `POST` request because it contains a body with search parameters. The query must be included in the request body in JSON format.
+
+**Example**
+  
+A search request can be designed to return documents where the address field contains the word "Sigrid" and the job field matches "UX Designer".
     
-    ```json
-    {
-        "query": {
-            "bool": {
-                "must": [
-                    {
-                        "match": {
-                            "address": "Sigrid"
-                        }
-                    },
-                    {
-                        "equals": {
-                            "job": "UX Designer"
-                        }
-                    }
-                ]
-            }
-        },
-        "limit": 10,
-        "_source": {
-            "excludes": [
-                "phone_number",
-                "customer_name"
+```bash
+curl -X POST "https://unique-haddock.dataos.app/lakesearch/public:testingls/api/v2/index/_search" \
+-H "Authorization: Bearer dG9rZW5fZGlzdhlkg3RseV9tYWlubHl2jXBlkmF5LjU1ZmE1ZWQyLWUwNDgtNGI3Yi1hNGQ2LWNlNjA1YTAzZTE4YQ==" \
+-H "Content-Type: application/json" \
+-d '{
+    "query": {
+        "bool": {
+            "must": [
+                { "match": { "address": "Sigrid" } },
+                { "term": { "job": "UX Designer" } }
             ]
-        },
-        "sort": [
-            {
-                "@timestamp": "desc"
-            },
-            {
-                "birthdate": "asc"
-            }
-        ]
-    }
-    ```
+        }
+    },
+    "size": 10,
+    "_source": {
+        "excludes": ["phone_number", "customer_name"]
+    },
+    "sort": [
+        { "@timestamp": "desc" },
+        { "birthdate": "asc" }
+    ]
+}'
+
+```
     
 
-## 2. Search Types
+## Search Types
 
-### Match
+When searching through large sets of data, different types of queries help retrieve relevant results efficiently. Each type of search works differently depending on how precise the results need to be.
 
-- `match` is a simple query that matches the specified keywords in the specified fields.
-- Performs a full-text search by matching the input text with the field's analyzed content.
-- This is useful for standard text searches where you want to find documents that contain words matching the search term.
+### **Match**
+
+Match search looks for documents that contain the specified keywords in a particular field. It performs a full-text search, meaning it breaks down the input text and matches it with the indexed content.
 
 **Syntax**
 
@@ -79,77 +84,76 @@ A basic search request involves querying an index based on specific criteria to 
 }
 ```
 
-- **Examples**
-    - Searching a specific column
-        
-        This searches for all the documents that have the word Sigrid in the address column.
-        
-        ```json
-        {
-            "query": {
-                "match": {
-                    "address": "Sigrid"
+**Examples**
+
+- **Searching a specific column**: If someone searches for "Sigrid" in the "address" field, it will return all documents where "Sigrid" appears in the address.
+    
+    ```json
+    {
+        "query": {
+            "match": {
+                "address": "Sigrid"
+            }
+        }
+    }
+    ```
+    
+- **Searching all the columns**
+    
+    ```json
+    {
+        "query": {
+            "match": {
+                "*": "Sigrid"
+            }
+        }
+    }
+    ------------ OR ------------
+    {
+        "query": {
+            "match": {
+                "_all": "Sigrid"
+            }
+        }
+    }
+    ```
+    
+- **Searching all the columns except one**
+    
+    ```json
+    {
+        "query": {
+            "match": {
+                "!address": "Sigrid"
+            }
+        }
+    }
+    ```
+    
+- **Searching only a few columns**
+    - By default, keywords are combined using the OR operator.
+    - However, you can change that behavior using the "operator" clause.
+    - `operator` can be set to "or" or "and".
+    
+    ```json
+    {
+        "query": {
+            "match": {
+                "address,email": {
+                    "query": "Sigrid .net",
+                    "operator": "and"
                 }
             }
         }
-        ```
-        
-    - Searching all the columns
-        
-        ```json
-        {
-            "query": {
-                "match": {
-                    "*": "Sigrid"
-                }
-            }
-        }
-        ------------ OR ------------
-        {
-            "query": {
-                "match": {
-                    "_all": "Sigrid"
-                }
-            }
-        }
-        ```
-        
-    - Searching all the columns except one
-        
-        ```json
-        {
-            "query": {
-                "match": {
-                    "!address": "Sigrid"
-                }
-            }
-        }
-        ```
-        
-    - Searching only a few columns
-        - By default, keywords are combined using the OR operator.
-        - However, you can change that behavior using the "operator" clause.
-        - `operator` can be set to "or" or "and".
-        
-        ```json
-        {
-            "query": {
-                "match": {
-                    "address,email": {
-                        "query": "Sigrid .net",
-                        "operator": "and"
-                    }
-                }
-            }
-        }
-        ```
+    }
+    ```
+
+
         
 
-### Match Phrase
+### **Match Phrase**
 
-- `match_phrase` is a query that matches the entire phrase.
-- Used to find exact phrases in the indexed text. It ensures that all words in the query appear in the same order and are contiguous in the document.
-- E.g., searching for `"gaming laptop"` only returns documents where "gaming laptop" appears as a phrase, not where "gaming" and "laptop" are separate or in a different order.
+This search finds an exact phrase instead of separate words. All words must appear together, in the same order, without gaps. E.g., searching for `"gaming laptop"` only returns documents where "gaming laptop" appears as a phrase, not where "gaming" and "laptop" are separate or in a different order. Best for finding names, addresses, or specific phrases in text-heavy documents. Useful when looking for a fixed combination of words.
 
 **Syntax**
 
@@ -163,159 +167,56 @@ A basic search request involves querying an index based on specific criteria to 
 }
 ```
 
-- **Examples**
-    - Searching a specific column
-        
-        This will only fetch the document(s) where the exact phrase is matched in the *address* column.
-        
-        ```json
-        {
-            "query": {
-                "match_phrase": {
-                    "address": "Sigrid Curve, MS 6413"
-                }
+**Examples**
+
+- **Searching a specific column**: This will only fetch the document(s) where the exact phrase is matched in the *address* column.
+    
+    ```json
+    {
+        "query": {
+            "match_phrase": {
+                "address": "Sigrid Curve, MS 6413"
             }
         }
-        ```
-        
-    - Searching all the columns
-        
-        ```json
-        {
-            "query": {
-                "match_phrase": {
-                    "_all": "Sigrid Curve, MS 6413"
-                }
+    }
+    ```
+    
+- **Searching all the columns**
+    
+    ```json
+    {
+        "query": {
+            "match_phrase": {
+                "_all": "Sigrid Curve, MS 6413"
             }
         }
-        ------------ OR ------------
-        {
-            "query": {
-                "match_phrase": {
-                    "*": "Sigrid Curve, MS 6413"
-                }
+    }
+    ------------ OR ------------
+    {
+        "query": {
+            "match_phrase": {
+                "*": "Sigrid Curve, MS 6413"
             }
         }
-        ```
-        
-    - Searching all the columns except one
-        
-        ```json
-        {
-            "query": {
-                "match_phrase": {
-                    "!address": "Sigrid Curve, MS 6413"
-                }
+    }
+    ```
+    
+- **Searching all the columns except one**
+    
+    ```json
+    {
+        "query": {
+            "match_phrase": {
+                "!address": "Sigrid Curve, MS 6413"
             }
         }
-        ```
+    }
+    ```
         
 
-### Query String
+### **Query String**
 
-- `query_string` accepts an input string as a full-text query.
-- This allows for **complex queries** using boolean operators, wildcards, field-specific searches, and more. It provides a flexible query syntax.
-- Operators:
-    - Field Start and End Identifiers
-        
-        ```json
-        //This will fetch all documents where any column value starts with *Sigrid*.
-        {
-            "query": {
-                "query_string": "^Sigrid"
-            }
-        }
-        //This will fetch all documents where any column value ends with com.
-        {
-            "query": {
-                "query_string": "com$"
-            }
-        }
-        ```
-        
-    - AND
-        
-        An implicit logical AND operator is always present, so *Sanders Inc* implies that both "*Sanders*" and "*Inc*" must be found in the matching document.
-        
-        ```json
-        {
-            "query": {
-                "query_string": "Sanders Inc"
-            }
-        }
-        ```
-        
-    - OR
-        
-        The logical OR operator **`|`** has a higher precedence than AND.
-        
-        Eg. `Sanders Inc | Org | Gov` means `Sanders (Inc | Org | Gov)` and not `(Sanders Inc) | Org | Gov`.
-        
-        ```json
-        {
-            "query": {
-                "query_string": "Sanders | Inc"
-            }
-        }
-        ```
-        
-    - NEAR
-        
-        ```json
-        //This will fetch all documents where any column value has FALL word in 
-        //promimity of defined distance(here 2, max 6) with SIGRID word.
-        {
-            "query": {
-                "query_string": "Sigrid NEAR/2 Fall"
-            }
-        }
-        ```
-        
-    - NOTNEAR
-        
-        ```json
-        // This will fetch all documents where any column value **does not** have FALL word in promimity of defined distance(here 2, max 6) with SIGRID word.
-        {
-            "query": {
-                "query_string": "Sigrid NOTNEAR/2 Fall"
-            }
-        }
-        ```
-        
-    - Wildcard
-        
-        The search will attempt to find all expansions of the wildcarded tokens, and each expansion is recorded as a matched hit
-        
-        `*` - cam match n number of characters after or before the defined search term
-        
-        `?` - can match any single character: `t?st` will match `test`, but not `teast`
-        
-        `%` - can match zero or one character: `tes%` will match `tes` or `test`, but not `testing`
-        
-        ```json
-        {
-            "query": {
-                "match": "Sigird*"
-            }
-        }
-        
-        -------------
-        
-        {
-            "query": {
-                "query_string": "@device_name mentio%"
-            }
-        }
-        
-        -------------
-        
-        {
-            "query": {
-                "query_string": "@device_name mentio?"
-            }
-        }
-        ```
-        
+`query_string` accepts an input string as a full-text query. This allows for complex queries using boolean operators, wildcards, field-specific searches, and more. It provides a flexible query syntax.
 
 **Syntax**
 
@@ -327,17 +228,123 @@ A basic search request involves querying an index based on specific criteria to 
 }
 ```
 
-### KNN Vector Search
+**Operators:**
+
+- Field Start and End Identifiers
+    
+    ```json
+    //This will fetch all documents where any column value starts with *Sigrid*.
+    {
+        "query": {
+            "query_string": "^Sigrid"
+        }
+    }
+    //This will fetch all documents where any column value ends with com.
+    {
+        "query": {
+            "query_string": "com$"
+        }
+    }
+    ```
+    
+- AND
+    
+    An implicit logical AND operator is always present, so *Sanders Inc* implies that both "*Sanders*" and "*Inc*" must be found in the matching document.
+    
+    ```json
+    {
+        "query": {
+            "query_string": "Sanders Inc"
+        }
+    }
+    ```
+    
+- OR
+    
+    The logical OR operator **`|`** has a higher precedence than AND.
+    
+    Eg. `Sanders Inc | Org | Gov` means `Sanders (Inc | Org | Gov)` and not `(Sanders Inc) | Org | Gov`.
+    
+    ```json
+    {
+        "query": {
+            "query_string": "Sanders | Inc"
+        }
+    }
+    ```
+    
+- NEAR
+    
+    ```json
+    //This will fetch all documents where any column value has FALL word in 
+    //promimity of defined distance(here 2, max 6) with SIGRID word.
+    {
+        "query": {
+            "query_string": "Sigrid NEAR/2 Fall"
+        }
+    }
+    ```
+    
+- NOTNEAR
+    
+    ```json
+    // This will fetch all documents where any column value **does not** have FALL word in promimity of defined distance(here 2, max 6) with SIGRID word.
+    {
+        "query": {
+            "query_string": "Sigrid NOTNEAR/2 Fall"
+        }
+    }
+    ```
+    
+- Wildcard
+    
+    The search will attempt to find all expansions of the wildcarded tokens, and each expansion is recorded as a matched hit
+    
+    `*` - cam match n number of characters after or before the defined search term
+    
+    `?` - can match any single character: `t?st` will match `test`, but not `teast`
+    
+    `%` - can match zero or one character: `tes%` will match `tes` or `test`, but not `testing`
+    
+    ```json
+    {
+        "query": {
+            "match": "Sigird*"
+        }
+    }
+    
+    -------------
+    
+    {
+        "query": {
+            "query_string": "@device_name mentio%"
+        }
+    }
+    
+    -------------
+    
+    {
+        "query": {
+            "query_string": "@device_name mentio?"
+        }
+    }
+    ```
+        
+
+
+### **KNN Vector Search**
+
+This is an AI-powered search that finds results based on meaning rather than exact words. It works with vector embeddings (numerical representations of text) to locate similar content.
 
 - `knn` is a vector query that allows searching for vectors in indexed documents.
 - It accepts regular values and uses the same vector embedding model (that was used to create vector embedding while indexing) to generate dynamic vectors and search the indexed documents against it.
-- Parameters:
+- **Parameters:**
     1. `field`: This is the name of the float vector attribute containing vector data.
     2. `k`: This represents the number of documents to return and is a key parameter for Hierarchical Navigable Small World (HNSW) indexes. It specifies the quantity of documents that a single HNSW index should return. However, the actual number of documents included in the final results may vary.
     3. `query`: This is the search term.
     4. `ef`: Optional size of the dynamic list used during the search. A higher **`ef`** leads to more accurate but slower search.
 
-Syntax
+**Syntax:**
 
 ```json
 {
@@ -348,19 +355,19 @@ Syntax
 }
 ```
 
-- Example
+**Example:**
     
-    ```json
-    {
-        "knn": {
-            "field": "platform_vec",
-            "k": 10,
-            "query": "Android"
-    }
-    ```
+```json
+{
+    "knn": {
+        "field": "platform_vec",
+        "k": 10,
+        "query": "Android"
+}
+```
     
 
-## 3. Filter
+## Filter
 
 Filters are added to a search query via the `bool` object. The `bool` query matches documents based on boolean combinations of other queries and/or filters. Queries and filters must be specified in `must`, `should`, or `must_not` sections and can be nested.
 
@@ -382,101 +389,72 @@ Filters are added to a search query via the `bool` object. The `bool` query ma
 }
 ```
 
-- **Examples**
+**Examples**
 
-    - MATCH + Filter
-        
-        ```json
-        // This fetches all documents where address has a word SIGRID and 
-        // JOB = UX Designer.
-        {
-            "query": {
-                "bool": {
-                    "must": [
-                        {
-                            "match": {
-                                "address": "Sigrid"
-                            }
-                        },
-                        {
-                            "equals": {
-                                "job": "UX Designer"
-                            }
+- MATCH + Filter
+    
+    ```json
+    // This fetches all documents where address has a word SIGRID and 
+    // JOB = UX Designer.
+    {
+        "query": {
+            "bool": {
+                "must": [
+                    {
+                        "match": {
+                            "address": "Sigrid"
                         }
-                    ]
-                }
+                    },
+                    {
+                        "equals": {
+                            "job": "UX Designer"
+                        }
+                    }
+                ]
             }
         }
-        ```
-        
-    - MATCH_PHRASE + Filter
-        
-        ```json
-        {
-            "query": {
-                "match_phrase": "example.net",
-                "bool": {
-                    "must": {
-                        "equals": {
-                            "job": "Sales Executive"
-                        }
+    }
+    ```
+    
+- MATCH_PHRASE + Filter
+    
+    ```json
+    {
+        "query": {
+            "match_phrase": "example.net",
+            "bool": {
+                "must": {
+                    "equals": {
+                        "job": "Sales Executive"
                     }
                 }
             }
         }
-        ```
-        
-    - QUERY_STRING + Filter - IN
-        
-        ```json
-        {
-            "query": {
-                "bool": {
-                    "must": [
-                        {
-                            "query_string": "Wyman"
-                        },
-                        {
-                            "in": {
-                                "country": ["Djibouti","Gabon"]
-                            }
+    }
+    ```
+    
+- QUERY_STRING + Filter - IN
+    
+    ```json
+    {
+        "query": {
+            "bool": {
+                "must": [
+                    {
+                        "query_string": "Wyman"
+                    },
+                    {
+                        "in": {
+                            "country": ["Djibouti","Gabon"]
                         }
-                    ]
-                }
+                    }
+                ]
             }
         }
-        ```
-        
-    - MATCH + Filter - IN
-        
-        ```json
-        {
-            "query": {
-                "bool": {
-                    "must": [
-                        {
-                            "match": {
-                                "address": "Sigrid"
-                            }
-                        },
-                        {
-                            "in": {
-                                "age": [47,50]
-                            }
-                        }
-                    ]
-                }
-            }
-        }
-        ```
-        
-
-### Must
-
-- Queries and filters specified in the `must` section are required to match the documents.
-- If multiple full-text queries or filters are specified, all of them must match.
-- This is the equivalent of `AND` queries in SQL.
-- **Example**
+    }
+    ```
+    
+- MATCH + Filter - IN
     
     ```json
     {
@@ -489,8 +467,8 @@ Filters are added to a search query via the `bool` object. The `bool` query ma
                         }
                     },
                     {
-                        "equals": {
-                            "job": "Software Engineer"
+                        "in": {
+                            "age": [47,50]
                         }
                     }
                 ]
@@ -498,107 +476,135 @@ Filters are added to a search query via the `bool` object. The `bool` query ma
         }
     }
     ```
+        
+
+### **Must**
+
+Documents must match all conditions within the must section (like AND in SQL). If multiple full-text queries or filters are specified, all of them must match.
+
+**Example**
+    
+```json
+{
+    "query": {
+        "bool": {
+            "must": [
+                {
+                    "match": {
+                        "address": "Sigrid"
+                    }
+                },
+                {
+                    "equals": {
+                        "job": "Software Engineer"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
     
 
-### Must Not
+### **Must Not**
 
 Queries and filters specified in the `must_not` section must not match the documents. If several queries are specified under `must_not`, the fetched documents are the ones where none of them are matched.
 
 **Example**
     
-    ```json
-    {
-        "query": {
-            "bool": {
-                "must_not": [
-                    {
-                        "equals": {
-                            "job": "Software Engineer"
-                        }
-                    },
-                    {
-                        "equals": {
-                            "job": "Product Manager"
-                        }
+```json
+{
+    "query": {
+        "bool": {
+            "must_not": [
+                {
+                    "equals": {
+                        "job": "Software Engineer"
                     }
-                ]
-            }
+                },
+                {
+                    "equals": {
+                        "job": "Product Manager"
+                    }
+                }
+            ]
         }
     }
-    ```
+}
+```
     
 
-### Should
+### **Should**
 
 Queries and filters specified in the `should` section should match the documents. If some queries are specified in `must` or `must_not`, then `should` queries are ignored.On the other hand, if there are no queries other than `should`, then at least one of these queries must match a document for it to match the bool query. This is the equivalent of `OR` queries.
 
-- **Example**
+**Example**
     
-    ```json
-    {
-        "query": {
-            "bool": {
-                "should": [
-                    {
-                        "equals": {
-                            "job": "Software Engineer"
-                        }
-                    },
-                    {
-                        "equals": {
-                            "job": "Product Manager"
-                        }
+```json
+{
+    "query": {
+        "bool": {
+            "should": [
+                {
+                    "equals": {
+                        "job": "Software Engineer"
                     }
-                ]
-            }
+                },
+                {
+                    "equals": {
+                        "job": "Product Manager"
+                    }
+                }
+            ]
         }
     }
-    ```
+}
+```
     
 
-### Nested Bool
+### **Nested Bool**
 
-- A bool query can be nested inside another bool so you can make more complex queries.
-- To make a nested boolean query just use another `bool` instead of `must`, `should` or `must_not`.
-- **Example**
+A bool query can be nested inside another bool so you can make more complex queries. To make a nested boolean query just use another `bool` instead of `must`, `should` or `must_not`.
+
+**Example**
     
-    ```json
-    // Fetch all documents where address column have the Sigrid word and job is 
-    // either Product Manager OR UX Designer
-    // a = 2 and (b = 1 or b = 2)
-    {
-        "query": {
-            "bool": {
-                "must": [
-                    {
-                        "match": {
-                            "address": "Sigrid"
-                        }
-                    },
-                    {
-                        "bool": {
-                            "should": [
-                                {
-                                    "equals": {
-                                        "job": "Product Manager"
-                                    }
-                                },
-                                {
-                                    "equals": {
-                                        "job": "UX Designer"
-                                    }
+```json
+// Fetch all documents where address column have the Sigrid word and job is 
+// either Product Manager OR UX Designer
+// a = 2 and (b = 1 or b = 2)
+{
+    "query": {
+        "bool": {
+            "must": [
+                {
+                    "match": {
+                        "address": "Sigrid"
+                    }
+                },
+                {
+                    "bool": {
+                        "should": [
+                            {
+                                "equals": {
+                                    "job": "Product Manager"
                                 }
-                            ]
-                        }
+                            },
+                            {
+                                "equals": {
+                                    "job": "UX Designer"
+                                }
+                            }
+                        ]
                     }
-                ]
-            }
+                }
+            ]
         }
     }
-    ```
+}
+```
     
 
-### Range
+### **Range**
 
 - Range filters match documents that have attribute values within a specified range.
 - Range filters support the following properties:
@@ -607,7 +613,7 @@ Queries and filters specified in the `should` section should match the documen
     3. `lte`: less than or equal to
     4. `lt`: less than
 
-Syntax
+**Syntax**
 
 ```json
 {
@@ -622,46 +628,47 @@ Syntax
 }
 ```
 
-- **Examples**
-    - Range Filter
-        
-        ```json
-        {
-            "query": {
-                "range": {
-                    "age": {
-                        "gte": 30,
-                        "lte": 50
-                    }
+**Examples**
+
+- Range Filter
+    
+    ```json
+    {
+        "query": {
+            "range": {
+                "age": {
+                    "gte": 30,
+                    "lte": 50
                 }
             }
         }
-        ```
-        
-    - MATCH + Range Filter
-        
-        ```json
-        {
-            "query": {
-                "match_phrase": {
-                    "address": "Sigrid Curve, "
-                },
-                "range": {
-                    "age": {
-                        "gte": 30,
-                        "lte": 50
-                    }
+    }
+    ```
+    
+- MATCH + Range Filter
+    
+    ```json
+    {
+        "query": {
+            "match_phrase": {
+                "address": "Sigrid Curve, "
+            },
+            "range": {
+                "age": {
+                    "gte": 30,
+                    "lte": 50
                 }
             }
         }
-        ```
+    }
+    ```
         
 
-### KNN Vector Search Filter
+### **KNN Vector Search Filter**
 
-- Filtering of documents returned by a KNN search. either by full-text matching, attribute filters, or both.
+Filtering of documents returned by a KNN search. either by full-text matching, attribute filters, or both.
 
-Syntax
+**Syntax**
 
 ```json
 {
@@ -684,43 +691,47 @@ Syntax
 }
 ```
 
-- Example
+**Example**
     
-    ```json
-    {
-        "knn": {
-            "field": "platform_vec",
-            "k": 10,
-            "query": "Android",
-            "filter": {
-                "bool": {
-                    "must": [
-                        {
-                            "match": {
-                                "family": "someone"
-                            }
-                        },
-                        {
-                            "equals": {
-                                "row_num": 1896
-                            }
+```json
+{
+    "knn": {
+        "field": "platform_vec",
+        "k": 10,
+        "query": "Android",
+        "filter": {
+            "bool": {
+                "must": [
+                    {
+                        "match": {
+                            "family": "someone"
                         }
-                    ]
-                }
+                    },
+                    {
+                        "equals": {
+                            "row_num": 1896
+                        }
+                    }
+                ]
             }
         }
     }
-    ```
+}
+```
     
 
-## 4. Aggregations
+## Aggregations
+
+Aggregations in LakeSearch allow you to group and analyze data based on specific attributes. The aggregation results can be customized using sorting, aliasing, and different calculation methods.
+
+**Key points**
 
 - The facet values can originate from an attribute.
 - Facet values can also be aliased, but the **alias must be unique** across all result sets (main query result set and other facets result sets).
 - **CALLOUT**: The sort definition defined in the `aggs` object does not sort the documents fetched. It only sorts the `aggs` object in the response payload. To sort all the fetched documents please define the `sort` object outside `query`.
 - **CALLOUT**: To fetch only calculated aggregations, please keep `size=0` outside the `aggs` object. You must specify a maximum `size` inside the attribute object to include all the docs in the aggregate calculations. Refer examples.
 
-Syntax
+**Syntax**
 
 ```json
 {
@@ -743,47 +754,47 @@ Syntax
 }
 ```
 
-- **Examples**
-    - Total Count
-        
-        ```json
-        {
-            "size": 0,
-            "aggs": {
-                "group_by_job": {
-                    "terms": {
-                        "field": "job",
-                        "size": 1000
-                    }
+**Examples**
+
+- Total Count
+    
+    ```json
+    {
+        "size": 0,
+        "aggs": {
+            "group_by_job": {
+                "terms": {
+                    "field": "job",
+                    "size": 1000
                 }
             }
         }
-        ```
-        
-    - Min/Max/Avg/Rate/Sum
-        
-        ```json
-        // Replace max by min/avg/rate/sum
-        {
-            "size": 0,
-            "aggs": {
-                "group_by_age": {
-                    "max": {
-                        "field": "age",
-                        "size": 1000
-                    }
+    }
+    ```
+    
+- Min/Max/Avg/Rate/Sum
+    
+    ```json
+    // Replace max by min/avg/rate/sum
+    {
+        "size": 0,
+        "aggs": {
+            "group_by_age": {
+                "max": {
+                    "field": "age",
+                    "size": 1000
                 }
             }
         }
-        ```
+    }
+    ```
         
 
-### Buckets
+### **Buckets**
 
-- Lakesearch can aggregate over a set of ranges.
-- The values are checked against the bucket range, where each bucket includes the `from` ****value and excludes the `to` ****value from the range.
+Bucket aggregations allow you to group data into predefined ranges. The values are checked against the bucket range, where each bucket includes the `from` value and excludes the `to` value from the range.
 
-Syntax
+**Syntax**
 
 ```json
 {
@@ -808,43 +819,43 @@ Syntax
 }
 ```
 
-- **Example**
+**Example**
     
-    ```json
-    {
-        "size": 0,
-        "aggs": {
-            "age_range": {
-                "range": {
-                    "field": "age",
-                    "ranges": [
-                        {
-                            "to": 10
-                        },
-                        {
-                            "from": 10,
-                            "to": 30
-                        },
-                        {
-                            "from": 30,
-                            "to": 50
-                        },
-                        {
-                            "from": 50,
-                            "to": 80
-                        },
-                        {
-                            "from": 50
-                        }
-                    ]
-                }
+```json
+{
+    "size": 0,
+    "aggs": {
+        "age_range": {
+            "range": {
+                "field": "age",
+                "ranges": [
+                    {
+                        "to": 10
+                    },
+                    {
+                        "from": 10,
+                        "to": 30
+                    },
+                    {
+                        "from": 30,
+                        "to": 50
+                    },
+                    {
+                        "from": 50,
+                        "to": 80
+                    },
+                    {
+                        "from": 50
+                    }
+                ]
             }
         }
     }
-    ```
+}
+```
     
 
-## 5. Highlight
+## Highlight
 
 - Highlighting enables you to obtain highlighted text fragments (snippets) from documents containing matching keywords.
 - Highlighting can only be enabled on text-type columns.
@@ -854,7 +865,7 @@ Syntax
     2. `highlight_query`: This option allows you to highlight against a query other than your search query. The syntax is the same as in the main `query`. This is optional.
     3. `pre_tags` and `post_tags`: These options set the opening and closing tags for highlighted text snippets. These are optional.
 
-Syntax
+**Syntax**
 
 ```json
 {
@@ -928,13 +939,13 @@ Syntax
         ```
         
 
-## 6. Expressions
+## Expressions
 
 - Expressions are used to create dynamic columns via search queries.
 - These columns hold the custom logic defined by the user in the query.
 - These columns can be used to filter data.
 
-Syntax
+**Syntax**
 
 ```json
 {
@@ -947,7 +958,7 @@ Syntax
 }
 ```
 
-### Arithmetic Operators
+### **Arithmetic Operators**
 
 `+`, `-`, `*`, `/`, `%`, `DIV`, `MOD`
 
@@ -1070,11 +1081,9 @@ Syntax
     ```
     
 
-### Comparison Operators
+### **Comparison Operators**
 
-`<`, `>`, `<=`, `>=`, `=`, `<>`
-
-The comparison operators return `1` when the condition is true and `0` otherwise.
+The comparison operators `<`, `>`, `<=`, `>=`, `=`, and `<>` return `1` when the condition is true and `0` otherwise.
 
 - Less than
     
@@ -1209,14 +1218,10 @@ The comparison operators return `1` when the condition is true and `0` otherwise
     ```
     
 
-### Boolean Operators
+### **Boolean Operators**
 
-`AND`, `OR`, `NOT`
+Boolean operators (`AND`, `OR`, `NOT`) behave as expected. They are left-associative and have the lowest priority compared to other operators. `NOT` has higher priority than `AND` and `OR` but still less than any other operator. `AND` and `OR` share the same priority, so using parentheses is recommended to avoid confusion in complex expressions.
 
-- Boolean operators (AND, OR, NOT) behave as expected.
-- They are left-associative and have the lowest priority compared to other operators.
-- NOT has higher priority than AND and OR but still less than any other operator.
-- AND and OR share the same priority, so using parentheses is recommended to avoid confusion in complex expressions.
 - AND
     
     ```json
@@ -1260,9 +1265,9 @@ The comparison operators return `1` when the condition is true and `0` otherwise
     ```
     
 
-### Mathematical Functions
+### **Mathematical Functions**
 
-Syntax
+**Syntax**
 
 ```json
 // Example of SQRT() function
@@ -1290,9 +1295,9 @@ Syntax
     Returns the square root of the argument.
     
 
-### Type Casting Functions
+### **Type Casting Functions**
 
-Syntax
+**Syntax**
 
 ```json
 // Example of SINT() function
@@ -1337,7 +1342,7 @@ Syntax
     - Function forcefully reinterprets its 32-bit unsigned integer argument as signed and extends it to a 64-bit type (since the 32-bit type is unsigned).
     - For instance, 1-2 ordinarily evaluates to 4294967295, but `SINT(1-2)` evaluates to `-1`.
 
-### Condition Functions
+### **Condition Functions**
 
 1. `IF()`
     - It takes 3 arguments, checks whether the 1st argument is equal to 0.0, returns the 2nd argument if it is not zero, or the 3rd one when it is.
@@ -1607,9 +1612,9 @@ Syntax
         ```
         
 
-### Date Functions
+### **Date Functions**
 
-Syntax
+**Syntax**
 
 ```json
 // Example of MONTHNAME()
