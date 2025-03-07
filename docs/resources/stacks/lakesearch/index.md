@@ -362,7 +362,11 @@ By implementing this process, Lakesearch ensures data consistency while allowing
 This section involves recommends dos and don’ts while configuring a Lakesearch Service.
 
 - For large datasets, always use the partition indexer when configuring the LakeSearch Service. It divides the indexes into two parts, significantly reducing the time required to index all tables.
-    
+
+## Trobleshooting
+
+In case of any issues while using LakeSearch, refer to the [troubleshooting section](/resources/stacks/lakesearch/troubleshooting/) for common errors, solutions, and debugging steps. This section covers potential failures related to indexing, query processing, and node synchronization, along with recommended fixes to ensure smooth operation.
+
 
 ## FAQs
 
