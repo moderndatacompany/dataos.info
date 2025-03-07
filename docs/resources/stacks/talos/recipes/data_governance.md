@@ -1,10 +1,10 @@
-## Data Governance by UI
+# How to Govern Talos ?
 
 An **Operator** or **Administrator** can control who can create, read, update, or delete Talos Services by assigning roles or use cases through **Bifrost**.
 
-### **Access Permissions for Talos**
+## **Access Permissions for Talos**
 
-> To create and manage Talos, specific permissions must be assigned. The exact role names and permission levels may vary across organizations based on their governance policies.
+To create and manage Talos, specific permissions must be assigned. The exact role names and permission levels may vary across organizations based on their governance policies.
  
 
 If granting access through a **use case**, the following use case is required:
@@ -56,13 +56,10 @@ After completing, click **"Grant"** to apply the changes. The user’s permissio
 
 This governance model ensures that Talos are securely managed while providing controlled access to authorized users.
 
-## Data Governance by `config.yml`
-
-Data access can be governed based on individual users or user groups, allowing control over data visibility and interaction based on each group's role. The following sections outline the process of creating user groups in Talos.
 
 ## **Adding User Groups**
 
-User groups can be defined in `config.yaml` to control API access.
+Data access in Talos can be governed based on individual users or user groups, allowing control over data visibility and interaction based on each group's role. User groups can be defined in `config.yaml` to control API access.
 
 ```yaml
 auth:
@@ -90,5 +87,22 @@ auth:
 
 <aside class="callout">
 🗣 Defining user groups in the `config.yaml` file allows access permissions to be customized, including or excluding specific users or roles as needed.
-
 </aside>
+
+### Case Scenarios
+
+Conside a scenario in which, two users, `user01data` and `user02engg`, have different role assignments. `user01data` holds the `data-dev` role, while `user02engg` has `new-role`, `system-dev`, and `data-dev` roles. Various access control cases are tested based on explicit user inclusion, role-based access, and exclusion rules. 
+The table below outlines various authentication test cases with these users:
+
+| **Test Case** | **Included Users** | **Included Roles** | **Excluded Users** | **Excluded Roles** | **Expected Behavior** |
+| --- | --- | --- | --- | --- | --- |
+| **1. No User or Role Included** | *None* | *None* | *None* | *None* | No access for any user. Error: `[Error [ValidationError]: "auth.userGroups[0].excludes" must be an array]`. |
+| **2. User Included Explicitly** | `users:id:user02engg` in `abc` | *None* | *None* | *None* | Only `user02engg` can access `abc`; role-based access is not considered. |
+| **3. Both Users Included in Different Groups** | `users:id:user02engg` in `abc` and `users:id:user01data` in `pqr` | *None* | *None* | *None* | Both `user02engg` and `user01data` can access `abc`, as each is explicitly included. |
+| **4. Role Included Explicitly** | *None* | `data-dev` in `abc` | *None* | *None* | All users with the `data-dev` role, including `user02engg` and `user01data`, can access `abc`. |
+| **5. Both Users and Roles Included** | `users:id:user01data` in `pqr` | `system-dev` in `pqr` | *None* | *None* | `user01data` can access `pqr` due to explicit inclusion, while `user02engg` gains access via the `system-dev` role. |
+| **6. User Excluded but Role Included** | *None* | `data-dev` in `abc` | `users:id:user02engg` in `abc` | *None* | `user01data` retains access to `abc` through the `data-dev` role, but `user02engg` is explicitly excluded and cannot access. |
+| **7. Role Excluded but User Included** | `users:id:user02engg` in `abc` | `data-dev` in `abc` | *None* | `new-role` in `abc` | `user02engg` has both `new-role` and `data-dev` roles. However, since `new-role` is excluded, only `user01data` can access `abc` via `data-dev`. |
+| **8. User in Both Includes and Excludes (Conflict Case)** | `users:id:user01data` in `pqr` | *None* | `users:id:user01data` in `pqr` | *None* | `user01data` is denied access because exclusion overrides inclusion. |
+| **9. Role in Both Includes and Excludes (Conflict Case)** | *None* | `data-dev` in `pqr` | *None* | `data-dev` in `pqr` | No user with the `data-dev` role can access `pqr`, as exclusion takes precedence over inclusion. |
+
