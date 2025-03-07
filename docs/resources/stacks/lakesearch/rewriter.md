@@ -1,10 +1,10 @@
-# Lakesearch Query Rewriter
+# Lakesearch query rewriter
 
 LakeSearch includes a Query Rewriter feature that dynamically modifies incoming queries before execution. This ensures that searches return more relevant results by applying contextual modifications, such as filtering or restructuring queries based on data partitions or predefined business rules.
 
 In this implementation, the Query Rewriter adds a platform-based filter to every query, ensuring that only results matching "Windows" as the platform are retrieved.
 
-## Query Rewriter Implementation
+## Query rewriter implementation
 
 The following implementation defines a custom query rewriter that:
 
@@ -12,7 +12,78 @@ The following implementation defines a custom query rewriter that:
 - Adds a filter to ensure results are scoped accordingly.
 - Maintains the original search intent while enforcing the additional filter.
 
-### Steps
+## Pre-requisites
+
+A user must have the following requirements met before setting up a Lakesearch Service.
+
+- A user is required to have knowledge of Python.
+
+- Ensure that DataOS CLI is installed and initialized in the system. If not the user can install it by referring to [this section.](https://dataos.info/interfaces/cli/installation/)
+- A user must have the following tags assigned.
+    
+    ```bash
+    dataos-ctl user get                
+    INFO[0000] 😃 user get...                                
+    INFO[0001] 😃 user get...complete                        
+    
+          NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+    ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot   │   iamgroot  │ person │  iamgroot@tmdc.io    │ roles:id:data-dev,                            
+                   │             │        │                      │ roles:id:user,                  
+                   │             │        │                      │ users:id:iamgroot
+    ```
+    
+- If the above tags are not available, a user can contact a DataOS operator to assign the user with one of the following use cases using the Bifrost Governance. A DataOS operator can create new usecases as per the requirement.
+
+    <div style="text-align: center;">
+    <figure>
+    <img src="/resources/stacks/lakesearch/images/usecase.png" alt="usecases" style="border:1px solid black; width: 100%; height: auto;">
+    <figcaption style="margin-top: 8px; font-style: italic;">Bifrost Governance</figcaption>
+    </figure>
+    </div>
+
+    
+- Ensure the Lakesearch Stack is available in the DataOS Environment.
+
+- Configure Volume Resource for storage allocation. Follow the below steps to configure a Volume Resource.
+
+    1. Copy the template below and replace <name> with your desired Resource name and <size> with the appropriate volume size (e.g., 100Gi, 20Gi, etc.), according to your available storage capacity. Make sure the configuration is aligned with both your storage and performance requirements. For the accessMode, you can choose ReadWriteOnce (RWO) for exclusive read-write access by a single node, or ReadOnlyMany (ROX) if the volume needs to be mounted as read-only by multiple nodes.
+
+        ```yaml
+        name: <name>  # Name of the Resource
+        version: v1beta  # Manifest version of the Resource
+        type: volume  # Type of Resource
+        tags:  # Tags for categorizing the Resource
+          - volume
+        description: Common attributes applicable to all DataOS Resources
+        layer: user
+        volume:
+          size: <size>  # Example: 100Gi, 50Mi, 10Ti, 500Mi, 20Gi
+          accessMode: <accessMode>  # Example: ReadWriteOnce, ReadOnlyMany
+          type: temp
+        ```
+
+        <aside class="callout">
+        💡The persistent volume size should be at least 2.5 times the total dataset size, rounded to the nearest multiple of 10.
+
+        To check the dataset size, use the following query:
+
+        ```sql
+        SELECT sum(total_size) FROM "<catalog>"."<schema>"."<table>$partitions";
+        ```
+        The resultant size will be in the bytes.
+        </aside>
+
+    2. Apply the Volume manifest file
+
+        Apply the persistent volume manifest file, using the following command in terminal:
+
+        ```
+        dataos-ctl apply -f <file path of persistent volume>
+        ```
+        This will deploy the Persistent Volume Resource, making it available for use by Lakesearch Service.
+
+## Steps
 
 1. Create a Python file containing the below code.
 
@@ -288,7 +359,7 @@ The following implementation defines a custom query rewriter that:
     
     <aside class="callout">
     
-    After applying the Service, its runtime status will initially appear as `pending`. If everything is configured correctly, it will transition to `running` after some time, so don’t panic!
+    🗣️ After applying the Service, its runtime status will initially appear as `pending`. If everything is configured correctly, it will transition to `running` after some time, so don’t panic!
     
     </aside>
     

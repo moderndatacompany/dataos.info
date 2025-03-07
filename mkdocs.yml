@@ -123,8 +123,8 @@ markdown_extensions:
   - pymdownx.tilde
 #  - pymdownx.extra
   - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
 
       # emoji_index: !!python/name:materialx.emoji.twemoji # before pushing to dev branch replace materialx.emoji.twemoji with material.extensions.emoji.twemoji
       # emoji_generator: !!python/name:materialx.emoji.to_svg  # before pushing to dev branch replace materialx.emoji.to_svg with material.extensions.emoji.to_svg
@@ -459,7 +459,6 @@ nav:
               # - Vector Embedding: resources/stacks/lakesearch/vector_embedding.md
             - Configurations: resources/stacks/lakesearch/configurations.md
             - Governance: resources/stacks/lakesearch/governance.md
-            - API Endpoints: resources/stacks/lakesearch/endpoints.md
             - Index Searching: resources/stacks/lakesearch/index_searching.md
             - Observability: resources/stacks/lakesearch/observability.md
             - Troubleshooting: resources/stacks/lakesearch/troubleshooting.md
