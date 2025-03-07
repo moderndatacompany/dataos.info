@@ -72,24 +72,31 @@ Talos utilizes Heimdall for authentication and employs SQL templates for streaml
 - **Observability and monitoring:** 
     Observability involves analyzing detailed metrics to understand your APIs' internal state, while monitoring ensures optimal performance by providing real-time updates on API metrics through the [“/metrics”](/resources/stacks/talos/recipes/monitoring/) endpoint. This real-time data helps maintain accuracy, validate data, and handle errors, facilitating rapid development and integration into applications and AI agents.
 
+## **Building APIs with Talos**
+
+Talos provides the tools and capabilities required to streamline API development and deployment within DataOS. This ensures efficient, scalable processes for building and managing APIs. The "[Setting Up Talos](/resources/stacks/talos/set_up/)" sections outline the steps for setting and building API with Talos within the DataOS environment.
+
 ## Data sources supported by Talos
 
-Talos offers extensive compatibility with a range of popular data sources, ensuring flexibility and seamless integration. The supported sources include [Lens](/resources/lens/), [Flash](/resources/stacks/flash/), along with [Depot](/resources/depot/) of MySQL, Snowflake, Postgres, Redshift and others.
+Talos offers extensive compatibility with a range of popular data sources, ensuring flexibility and seamless integration. The supported sources include [Lens](/resources/lens/), [Flash](/resources/stacks/flash/), along with [Depot](/resources/depot/) of MySQL, Snowflake, Postgres, Redshift and others as discussed below:
 
 <center>
   <img src="/resources/stacks/talos/flowchart.jpg" alt="Talos" style="width:40rem; border: 1px solid black; padding: 5px;" />
   <figcaption><i>Talos Stack</i></figcaption>
 </center>
 
+- [Building data API on Flash using Talos.](/resources/stacks/talos/recipes/flash_setup/)
+- [Building data API on Lens using Talos.](/resources/stacks/talos/recipes/lens_setup/)
+- [Building data API on MySQL using Talos.](/resources/stacks/talos/recipes/mysql/)
+- [Building data API on Redshift using Talos.](/resources/stacks/talos/recipes/redshift/)
+- [Building data API on Postgres using Talos.](/resources/stacks/talos/recipes/postgres/)
+- [Building data API on Snowflake using Talos.](/resources/stacks/talos/recipes/snowflake/)
+
 <aside class="callout">
 🗣 Talos does not directly support Icebase Depots. However, <span title="Flash is a Stack designed to manage and control query costs and performance within DataOS. It achieves this by caching datasets using an in-memory query processing layer."> <a href="/resources/stacks/flash/">Flash</a> 
 </span> can be used as a data source to build APIs for data stored in Icebase.
 </aside>
 
-
-## **Building APIs with Talos**
-
-Talos provides the tools and capabilities required to streamline API development and deployment within DataOS. This ensures efficient, scalable processes for building and managing APIs. The following sections outline the steps for setting up Talos both within DataOS and in a local environment.
 
 ### **Developing APIs**
 
@@ -105,12 +112,6 @@ Effective configuration of Talos requires an understanding of the attributes wit
 
 This section provides step-by-step guides to assist you in effectively configuring Talos to solve common challenges. Below are some recipes to help you configure Talos effectively:
 
-- [How to set up Talos for Lens?](/resources/stacks/talos/recipes/lens_setup/)
-- [How to set up Talos for Flash?](/resources/stacks/talos/recipes/flash_setup/)
-- [How to set up Talos for MySQL?](/resources/stacks/talos/recipes/mysql/)
-- [How to set up Talos for Redshift?](/resources/stacks/talos/recipes/redshift/)
-- [How to set up Talos for Snowflake?](/resources/stacks/talos/recipes/snowflake/)
-- [How to set up Talos for Postgres?](/resources/stacks/talos/recipes/postgres/)
 - [How to apply data masking while exposing data through an API?](/resources/stacks/talos/recipes/data_masking/)
 - [How to use external API as a data source?](/resources/stacks/talos/recipes/external_api/)
 - [How to fetch data exposed by Talos from the third-party tools?](/resources/stacks/talos/recipes/external_tools/)
