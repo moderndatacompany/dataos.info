@@ -1,4 +1,44 @@
+---
+title: Lakesearch
+search:
+  boost: 1
+---
+
+
 # Steps to create a Lakesearch Service
+
+## Pre-requisites
+
+A user must have the following requirements met before setting up a Lakesearch Service.
+
+- A user is required to have knowledge of Python.
+
+- Ensure that DataOS CLI is installed and initialized in the system. If not the user can install it by referring to [this section.](https://dataos.info/interfaces/cli/installation/)
+- A user must have the following tags assigned.
+    
+    ```bash
+    dataos-ctl user get                
+    INFO[0000] 😃 user get...                                
+    INFO[0001] 😃 user get...complete                        
+    
+          NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+    ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot   │   iamgroot  │ person │  iamgroot@tmdc.io    │ roles:id:data-dev,                            
+                   │             │        │                      │ roles:id:user,                  
+                   │             │        │                      │ users:id:iamgroot
+    ```
+    
+- If the above tags are not available, a user can contact a DataOS operator to assign the user with one of the following use cases using the Bifrost Governance. A DataOS operator can create new usecases as per the requirement.
+
+    <div style="text-align: center;">
+    <figure>
+    <img src="/resources/stacks/lakesearch/images/usecase.png" alt="usecases" style="border:1px solid black; width: 100%; height: auto;">
+    <figcaption style="margin-top: 8px; font-style: italic;">Bifrost Governance</figcaption>
+    </figure>
+    </div>
+
+    
+- Ensure the Lakesearch Stack is available in the DataOS Environment.
 
 <aside class="callout">
 
@@ -6,10 +46,12 @@ This section utilizes the city table stored in the DataOS Lakehouse as an exampl
 
 </aside>
 
+## Steps
+
 1. Create a manifest file for Lakesearch Service. The below given manifest file of Lakesearch Service creates a simple indexer for city table.
 
     <details>
-      <summary>lakesearch_srevice.yaml</summary>
+      <summary>lakesearch_service.yaml</summary>
       ```yaml
       name: testingls
       version: v1
@@ -126,7 +168,7 @@ This section utilizes the city table stored in the DataOS Lakehouse as an exampl
     </aside>
     
     <details>
-      <summary>lakesearch_srevice_partitioned.yaml</summary>
+      <summary>lakesearch_service_partitioned.yaml</summary>
       
       ```yaml
       name: ls-test-plain-part

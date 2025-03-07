@@ -456,7 +456,7 @@ nav:
             - Set up: 
               - Normal Lakesearch Service: resources/stacks/lakesearch/service.md
               - Query Rewriter: resources/stacks/lakesearch/rewriter.md
-              - Vector Embedding: resources/stacks/lakesearch/vector_embedding.md
+              # - Vector Embedding: resources/stacks/lakesearch/vector_embedding.md
             - Configurations: resources/stacks/lakesearch/configurations.md
             - Governance: resources/stacks/lakesearch/governance.md
             - API Endpoints: resources/stacks/lakesearch/endpoints.md
