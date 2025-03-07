@@ -110,9 +110,7 @@ The following implementation defines a custom query rewriter that:
       envs:
         LAKESEARCH_SERVER_NAME: "public:ls-test-query-rewrite"
         DATA_DIR: public/ls-test-query-rewrite/data02
-        REQUIREMENTS_FILE: /etc/dataos/config/requirements.txt
         USER_MODULES_DIR: /etc/dataos/config
-        INSTALL_LOCATION: public/ls-test-query-rewrite/dependencies
       persistentVolume:
         name: ls-v2-test-vol
         directory: public/ls-test-query-rewrite/data02
@@ -122,8 +120,7 @@ The following implementation defines a custom query rewriter that:
           memory: 1536Mi
       stack: lakesearch:4.0
       configs:
-        ex_impl_query_rewriter.py: /Users/darpan/Documents/Work/lakesearchv2/vector-query-rewriter/user_modules/ex_impl_query_rewriter.py
-        requirements.txt: /Users/darpan/Documents/Work/lakesearchv2/vector-query-rewriter/user_modules/requirements.txt
+        ex_impl_query_rewriter.py: /Users/darpan/Documents/Work/lakesearchv2/query-rewriter/user_modules/ex_impl_query_rewriter.py
       stackSpec:
         lakesearch:
           source:
@@ -448,48 +445,10 @@ This section describes the logic behind the query rewriter workings.
 - Once registered, whenever a query needs to be rewritten (for example, to apply custom filters or adjustments), the system will invoke the `rewrite_query` method defined in `ImplementQueryRewriter`.
 
         
-## Working with extra Python dependencies/modules
-
-The `requirements.txt` files allow the user to import/download additional Python dependencies/modules that can be leveraged in the query rewrite logic.Following are the steps to work with the `requirements.txt` file:
-
-1. Environment variables in the service YAML:
-    
-    ```yaml
-    envs:
-        REQUIREMENTS_FILE: /etc/dataos/config/requirements.txt
-        INSTALL_LOCATION: public/ls-test-vector-embed/dependencies
-    ```
-    
-2. Mounting files from the local machine:
-    
-    ```yaml
-    configs:
-        ex_impl_query_rewriter.py: /Users/iamgroot/Documents/Work/lakesearch/vector-query-rewriter/user_modules/ex_impl_query_rewriter.py
-        requirements.txt: /Users/iamgroot/Documents/Work/lakesearch/vector-query-rewriter/user_modules/requirements.txt
-    ```
-            
-    - `requirements.txt`
-        
-        ```
-        torch>=2.5.1
-        torchvision>=0.20.1
-        sentence-transformers>=3.3.1
-        numpy>=2.2.1
-        scipy>=1.14.1
-        mpmath>=1.3.0
-        sympy>=1.13.1
-        tqdm>=4.67.1
-        scikit-learn>=1.6.0
-        tokenizers>=0.21.0
-        safetensors>=0.4.5
-        transformers>=4.47.1
-        huggingface-hub>=0.27.0
-        ```
-        
 
 ## Examples
 
-### Simple Filter
+### **Simple Filter**
 
 The code modifies the query to only fetch documents where devices are running on Windows platform. 
     
@@ -537,7 +496,7 @@ The code modifies the query to only fetch documents where devices are running on
 </details>
 
 
-### User-specific filters
+### **User-specific filters**
 
 The code checks whether the user has the "operator" tag.
 
@@ -613,5 +572,8 @@ The code checks whether the user has the "operator" tag.
     Registrar.setQueryRewriter(ImplementQueryRewriter())
     ```
   </details>
+
+
+
 
 
