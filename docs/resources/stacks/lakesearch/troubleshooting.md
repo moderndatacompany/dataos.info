@@ -1,12 +1,12 @@
-# Lakesearch Troubleshooting
+# Lakesearch troubleshooting
 
-After deploying the LakeSearch Service, if its runtime state remains unchanged for an extended period, it may have encountered an issue. Users can check the Service logs to identify potential errors and resolve them.
+After deploying the Lakesearch Service, if its runtime state remains unchanged for an extended period, it may have encountered an issue. Users can check the Service logs to identify potential errors and resolve them.
 
 Below are some common errors and their respective solutions.
 
 ## `id` is not present in the index_table
 
-If you forget to add the additional column `id` while configuring the LakeSearch Service, the runtime status will remain pending, and the logs will display the following message:
+If you forget to add the additional column `id` while configuring the Lakesearch Service, the runtime status will remain pending, and the logs will display the following message:
 
 ```bash
 dataos-ctl log -t service -n testingls -w public -r
@@ -151,4 +151,7 @@ INFO[0001] 📃 log(public)...complete
 10:52AM DBG pkg/source/duckdb.go:52 > parquet
 10:52AM FTL pkg/source/duckdb.go:94 > depot type=gcs not supported
 ```
+
+
+
 
