@@ -1,4 +1,4 @@
-# Architecture of Lakesearch
+# Key concepts of Lakesearch
 
 LakeSearch is a scalable search solution built on top of a Lakehouse (Object Store), providing efficient indexing and retrieval of structured and semi-structured data. The architecture consists of multiple Indexers, which process user-defined indices to enable fast search capabilities. Each indexer interacts with a Search API, which serves as the interface for querying the indexed data.
 
@@ -34,7 +34,7 @@ The query processing in LakeSearch follows a structured workflow, ensuring optim
 
 6. Response Handling: If an error occurs (e.g., authentication, syntax, timeout), an error response is returned. Otherwise, relevant documents are fetched and returned to the user. This structured approach ensures that search operations are optimized for speed and relevance.
 
-## LakeSearch Index Creation Flow
+### LakeSearch Index Creation Flow
 
 Index creation in LakeSearch follows a batch-processing model, where indexing occurs in a loop until all batches are processed.
 
