@@ -58,3 +58,38 @@ The following table containd the different endpoints for different purposes.
 
 
 To get more information on index searching, please refer to [this link](resources/stacks/lakesearch/index_searching/).
+
+<!-- ### **KNN Vector Search**
+
+This is an AI-powered search that finds results based on meaning rather than exact words. It works with vector embeddings (numerical representations of text) to locate similar content.
+
+- `knn` is a vector query that allows searching for vectors in indexed documents.
+- It accepts regular values and uses the same vector embedding model (that was used to create vector embedding while indexing) to generate dynamic vectors and search the indexed documents against it.
+- **Parameters:**
+    1. `field`: This is the name of the float vector attribute containing vector data.
+    2. `k`: This represents the number of documents to return and is a key parameter for Hierarchical Navigable Small World (HNSW) indexes. It specifies the quantity of documents that a single HNSW index should return. However, the actual number of documents included in the final results may vary.
+    3. `query`: This is the search term.
+    4. `ef`: Optional size of the dynamic list used during the search. A higher **`ef`** leads to more accurate but slower search.
+
+**Syntax:**
+
+```json
+{
+    "knn": {
+        "field": "<name of the vectorized field>",
+        "k": <positive integer>,
+        "query": "<search_term>"
+}
+```
+
+**Example:**
+    
+```json
+{
+    "knn": {
+        "field": "platform_vec",
+        "k": 10,
+        "query": "Android"
+}
+```
+     -->
