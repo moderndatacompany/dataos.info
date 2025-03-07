@@ -1,0 +1,37 @@
+version: v1
+name: write-eventhub-b-03
+type: workflow
+tags:
+  - eventhub
+  - write
+description: this jobs reads data from thirdparty and writes to eventhub
+workflow:
+  dag:
+    - name: eventhub-write-b-03
+      title: write data to eventhub
+      description: write data to eventhub
+      spec:
+        tags:
+          - Connect
+        stack: flare:5.0
+        compute: runnable-default
+        stackSpec:
+          job:
+            explain: true
+            streaming:
+              checkpointLocation: /tmp/checkpoints/devd01
+              forEachBatchMode: "true"
+            inputs:
+              - name: input
+                dataset: dataos://thirdparty01:none/city
+                format: csv
+                schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc
+            logLevel: INFO
+            outputs:
+              - name: finalDf
+                dataset: dataos://eventhub01:default/eventhub01?acl=rw
+                format: EventHub
+            steps:
+              - sequence:
+                - name: finalDf
+                  sql: SELECT * FROM input

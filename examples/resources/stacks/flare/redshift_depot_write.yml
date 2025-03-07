@@ -1,0 +1,35 @@
+version: v1
+name: connect-snowflake-read-write-02
+type: workflow
+tags:
+  - Connect
+  - read
+  - write
+description: Jobs writes data to snowflake and reads from it
+workflow:
+  title: Connect Snowflake
+  dag:
+    - name: write-snowflake-02
+      title: Reading data and writing to snowflake
+      description: This job writes data to wnowflake
+      spec:
+        tags:
+          - Connect
+          - write
+        stack: flare:5.0
+        compute: runnable-default
+        stackSpec:
+          job:
+            explain: true
+            logLevel: INFO
+            inputs:
+              - name: city_connect
+                dataset: dataos://thirdparty01:none/city
+                format: csv
+                schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc
+            outputs:
+              - name: cities
+                dataset: dataos://redshift:public/sanity_redshift_write?acl=rw
+                format: redshift
+                options:
+                  saveMode: append
