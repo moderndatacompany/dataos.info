@@ -36,7 +36,7 @@ DataOS Lakehouse integrates Apache Iceberg table format with cloud object storag
 
 ### **Lens**
 
-Lens Resource is a logical modelling layer within DataOS desgined for accessing tabular data in data warehouses or lakehouses. To learn more about Lens, refer to the following link: [Lens](/resources/lens/).
+Lens Resource is a logical modeling layer within DataOS desgined for accessing tabular data in data warehouses or lakehouses. To learn more about Lens, refer to the following link: [Lens](/resources/lens/).
 
 ### **Monitor**
 

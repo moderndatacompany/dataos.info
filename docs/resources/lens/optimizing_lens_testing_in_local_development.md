@@ -178,7 +178,7 @@ Enter the host name as `localhost`, port as given in the service of the `docker-
     ```bash
     psql -h localhost -p 25432 -U iamgroot -d lens:public:sales_analysis 
     ```
-For more details, click [here](/resources/lens/exploration_of_deployed_lens_using_sql_apis/)
+For more details, click [here](/resources/lens/exploration_of_lens_using_sql_apis/)
 
 **Using VS Code Extension:**
 
@@ -295,7 +295,7 @@ Now, to make a basic `GET` request using Postman, follow these steps:
 
 *You can now successfully test your Lens in  development environment using postman via REST APIS.*
 
-To interact with the deployed Lens using REST APIs read the detailed doc [here](/resources/lens/exploration_of_deployed_lens_using_rest_apis/)
+To interact with the deployed Lens using REST APIs read the detailed doc [here](/resources/lens/exploration_of_lens_using_rest_apis/)
 
 
 ## Next step

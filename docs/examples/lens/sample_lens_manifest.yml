@@ -52,12 +52,3 @@ router: # Router configuration (optional)
     limits:
       cpu: 6000m
       memory: 6048Mi
-# iris:
-#   logLevel: info
-#   resources: # CPU and memory resource specifications for the iris board (optional)
-#     requests:
-#       cpu: 100m
-#       memory: 256Mi
-#     limits:
-#       cpu: 6000m
-#       memory: 6048Mi
