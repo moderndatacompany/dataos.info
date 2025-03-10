@@ -4,7 +4,7 @@ This section outlines essential Do's and Don'ts for using Lens functionalities. 
 
 ## Do's
 
-### **Data modelling**
+### **Data modeling**
 
 #### **Referencing One Measure to Create Another Measure Within the Same Table**
 
