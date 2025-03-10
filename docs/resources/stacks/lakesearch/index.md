@@ -1,105 +1,149 @@
 ---
 title: Lakesearch
 search:
-  boost: 2
+  boost: 4
 ---
 
-# Lakesearch
+# Lakesearch Stack
 
-Lakesearch is a [Stack](/resources/stacks/) within DataOS that provides the scalable full-text search solution for the DataOS Lakehouse. It allows app developers to enable full-text search on top of [DataOS Lakehouse](/resources/lakehouse/) tables with an ability to scale the indexing and searching capabilities to meet business requirements. For a better understanding of Lakesearch architecture please refer to [this link.](/resources/stacks/lakesearch/architecture) 
+Lakesearch is a [Stack](/resources/stacks/) within DataOS that provides the scalable full-text search solution for the DataOS Lakehouse. It allows app developers to enable full-text search on top of [DataOS Lakehouse](/resources/lakehouse/) tables with an ability to scale the indexing and searching capabilities to meet business requirements. For a better understanding of Lakesearch key concepts please refer to [this link.](/resources/stacks/lakesearch/architecture) 
 
 <div style="text-align: center;">
-  <img src="/resources/stacks/lakesearch/images/arch.jpg" alt="Lakesearch" style="border:1px solid black; width: 70%; height: auto;">
+  <figure>
+    <img src="/resources/stacks/lakesearch/images/lsarch.jpg" 
+         alt="Lakesearch architecture" 
+         style="border: 1px solid black; width: 60%; height: auto; display: block; margin: auto;">
+    <figcaption style="margin-top: 8px; font-style: italic;">Lakesearch Service Structure</figcaption>
+  </figure>
 </div>
 
 
 The examples below illustrate the search functionality of Lakesearch where a user can access the API endpoint.
 
-<details>
-    <summary>Search by keywords</summary>
+**Scenario:**
 
-    Endpoint: `https://unique-haddock.dataos.app/lakesearch/public:testingls/api/v2/index/:index_name/keywords?word=alabama&limit=3`
+A travel application integrates LakeSearch to enhance its location-based services. Users can search for cities, states, or ZIP codes to find relevant information, such as weather, attractions, or available accommodations. Below is how Lakesearch works in this scenario.
 
-        ```json
-        # Result
+- Users can search for cities, states, or ZIP codes. When a user starts typing "Alab" in the search bar, the system suggests "Alabama" as a keyword, improving the search experience through autocomplete functionality.
+
+    <details>
+    <summary>Search with auto-suggest</summary>
+    Endpoint: `https://unique-haddock.dataos.app/lakesearch/public:testingls/api/v2/index/:index_name/keywords?word=alab*&limit=3`
+
+    ```json
+    # Result
+    {
+    "keywords": [
         {
-        "keywords": [
-            {
-            "docs": "767",
-            "hits": "767",
-            "keyword": "alabama"
-            }
-        ]
+        "docs": "767",
+        "hits": "767",
+        "keyword": "alabama"
         }
-        ```
-</details>
-    
-<details>
-    <summary>Search by table name (index name)</summary>
-    
-    Endpoint: `https://unique-haddock.dataos.app/lakesearch/public:testingls/api/v2/index/city/search`
+    ]
+    }
+    ```
+    </details>
 
+- In cases where a user mistypes a search term, LakeSearch suggests similar words to help refine the query. For example, if the user types "auta" instead of "Autauga," the system provides suggestions like "Utah," "South," and "Dakota," ensuring accurate search results even with minor spelling errors.
 
-        ```json
-        # Result        
-        {
-            "took": 0,
-            "timed_out": false,
-            "hits": {
-                "total": 1,
-                "total_relation": "gte",
-                "hits": [
-                    {
-                        "_id": 36003,
-                        "_score": 1,
-                        "_source": {
-                            "state_name": "Alabama",
-                            "version": "202501090702",
-                            "@timestamp": 1739964871,
-                            "city_id": "CITY6",
-                            "zip_code": 36003,
-                            "city_name": "Autaugaville",
-                            "county_name": "Autauga County",
-                            "state_code": "AL",
-                            "ts_city": 1736406148
-                        }
-                    }
-                ]
-            }
-        }
-        ```
-        
-</details>
-
-<details>
+    <details>
     <summary>Search by similar word</summary>
 
     Endpoint: `https://unique-haddock.dataos.app/lakesearch/public:testingls/api/v2/index/:index_name/suggestions?word=auta`
 
-        ```json
-        # Result
-        {
-            "suggestions": [
-                {
-                    "distance": 2,
-                    "docs": 339,
-                    "suggestion": "utah"
-                },
-                {
-                    "distance": 3,
-                    "docs": 1806,
-                    "suggestion": "south"
-                },
-                {
-                    "distance": 3,
-                    "docs": 1566,
-                    "suggestion": "dakota"
-                }
-            ]
-        }
-        ```
-    
-</details>
+    ```json
+    # Result
+    {
+        "suggestions": [
+            {
+                "distance": 2,
+                "docs": 339,
+                "suggestion": "utah"
+            },
+            {
+                "distance": 3,
+                "docs": 1806,
+                "suggestion": "south"
+            },
+            {
+                "distance": 3,
+                "docs": 1566,
+                "suggestion": "dakota"
+            }
+        ]
+    }
+    ```
+        
+    </details>
+
+## Key concepts
+
+This section covers key concepts of LakeSearch that provide a better understanding of its functionality.
+
+### **Search APIs**
+The Search APIs provide a standardized interface for querying indexed data, allowing users to perform high-speed searches on structured information. By leveraging pre-built indexes, these APIs minimize query latency and optimize data retrieval. This enables seamless access to critical business insights while maintaining system efficiency.
+
+
+### **Indexer**
+
+The Indexer is responsible for reading data from the source table and loading it into an object storage location, such as an S3 bucket. This process involves an initial data load followed by ongoing synchronization based on a user-defined schedule. The Indexer monitors changes in the source table and ensures that these changes are replicated in the object storage. Each Indexer is dedicated to a single source table and can be vertically scaled to improve performance as needed.
+
+## Lakesearch architecture
+
+LakeSearch follows a Master-Slave architecture, a design pattern commonly used for scalability, load balancing, and high availability.
+
+### **Master node**
+
+The Master node is responsible for indexing data, processing queries, and managing search operations. It extracts and processes raw data from the DataOS Lakehouse, converting it into an indexed format for efficient searching. When a search request is received, the Master node processes it and distributes the workload to Slave nodes if needed. Additionally, it manages the overall cluster by synchronizing indexed data across Slave nodes, ensuring consistency. The Master node also plays a key role in storage, saving indexed documents in an object store (S3) for quick and reliable retrieval.
+
+### **Slave node**
+
+The Slave node supports the Master node by handling search queries, ensuring smooth performance through load balancing. It maintains a replicated copy of the indexed data, preventing data loss and improving search efficiency. In case of a failure in the Master node, the Slave node can take over search operations, acting as a failover mechanism to maintain system availability. By distributing query loads and ensuring data redundancy, the Slave node enhances the overall reliability and scalability of the system.
+
+### **Object store**
+
+Indexed Document Storage (Object store - S3) stores indexed data, ensuring quick and efficient retrieval. It provides persistence, meaning the data remains intact even if nodes restart or fail. By leveraging S3 as an object store, the system guarantees durability and scalability, enabling seamless access to indexed documents whenever needed.
+
+
+## Lakesearch query processing flow
+
+The query processing in LakeSearch follows a structured workflow, ensuring optimal query execution based on query type and available resources.
+
+<!-- <div style="text-align: center;">
+  <img src="/resources/stacks/lakesearch/images/qp.jpg" alt="Lakesearch flow" style="border:1px solid black; width: 80%; height: auto;">
+</div> -->
+
+### **Query execution steps**
+
+2. **User submits a query:** A search query is sent to the LakesearchAPI (/search).
+
+3. **Query rewriter check:** If a query rewriter is available, the query is rewritten and optimized.Otherwise, the original query is used.
+
+5. **Document retrieval:** The query is executed against the indexed data in the Lakehouse.
+
+6. **Response handling:** If an error occurs (e.g., authentication, syntax, timeout), an error response is returned. Otherwise, relevant documents are fetched and returned to the user. This structured approach ensures that search operations are optimized for speed and relevance.
+
+## Lakesearch index creation flow
+
+Index creation in LakeSearch follows a batch-processing model, where indexing occurs in a loop until all batches are processed.
+
+<!-- <div style="text-align: center;">
+  <img src="/resources/stacks/lakesearch/images/ip.jpg" alt="Lakesearch flow" style="border:1px solid black; width: 70%; height: auto;">
+</div> -->
+
+### **Indexing process**
+
+1. **Defining index configuration:** Users define index mappings in a YAML file, specifying indexing logic. The mapping is deployed via CLI.
+
+2. **Batch processing:** The LakeSearch Service allocates resources and starts indexing. The indexer retrieves batches of documents for processing.
+
+4. **Document storage & updates:** Indexed documents are stored in the Lakehouse.Start and end values are updated until indexing is complete.
+
+5. **Completion:** Once no new documents are found, the indexing process is finalized. This indexing workflow ensures that LakeSearch efficiently processes large datasets while handling structured and unstructured search requirements.
+
+
+
+This architecture provides a scalable and cost-effective alternative to traditional full-text search implementations, making it well-suited for enterprise data lake environments.
     
 
 ## Structure of Lakesearch Service manifest file
@@ -161,418 +205,16 @@ dataos-ctl develop stack versions
 
 </details>
 
-If you do not find the Lakesearch in the result, it is time to deploy the Stack. Remember that only the user with an ‘operator’ tag can execute the above command. 
+Remember that only the user with an ‘operator’ tag can execute the above command. If you do not find the Lakesearch in the result, it is time to deploy the Stack. Follow [this link](/resources/stacks/lakesearch/deployment/) for steps to deploy the Stack. 
 
-### **Pre-requisites**
-
-### **Steps**
-
-Follow the below steps to deploy the Lakesearch Stack within DataOS.
-
-1. Create a manifest file for Lakesearch Stack, paste the below code, and replace `${{dataos-fdqn}}` with an actual dataos-fdqn such as `unique-haddock.dataos.app`.
-
-    <details>
-      <summary>lakesearch_stack.yaml</summary>
-        ```yaml
-        name: "lakesearch-v1"
-        version: v1alpha
-        type: stack
-        layer: user
-        description: "dataos lakesearch stack v1alpha Latest Public Image 0.3.4"
-        stack:
-        name: lakesearch
-        version: "1.0"
-        reconciler: stackManager
-        secretProjection:
-            type: "propFile"
-        image:
-            registry: docker.io
-            repository: rubiklabs
-            image: lakesearch
-            tag: 0.3.4
-            auth:
-            imagePullSecret: dataos-container-registry
-        environmentVars:
-            GIN_MODE: release
-            HEIMDALL_URL: "https://${{dataos-fdqn}}/heimdall/"
-            DEPOT_SERVICE_URL: "https://${{dataos-fdqn}}/ds"
-            LAKESEARCH_CONFIG_PATH: /etc/dataos/config/lakesearch.yaml
-            SEARCHD_URL: http://localhost:9308
-            SEARCHD_TEMPLATE_PATH: /etc/searchd/searchd.conf.tmpl
-            ENABLE_SET_ULIMITS: true
-            PROJECT_ROOT_PATH: /go/src/bitbucket.org/rubik_/lakesearch
-            LAKESEARCH_GRPC_SERVER_PORT: 4090
-            PUSHGATEWAY_URL: http://thanos-query-frontend.sentinel.svc.cluster.local:9090
-        stackSpecValueSchema:
-            jsonSchema: |
-            {
-                "$schema": "http://json-schema.org/draft-07/schema#",
-                "type": "object",
-                "properties": {
-                "lakesearch": {
-                    "type": "object",
-                    "properties": {
-                    "index_tables": {
-                        "items": {
-                        "properties": {
-                            "name": {
-                            "type": "string"
-                            },
-                            "description": {
-                            "type": "string"
-                            },
-                            "tags": {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                            },
-                            "properties": {
-                            "type": "object"
-                            },
-                            "columns": {
-                            "items":{
-                                "properties": {
-                                "name": {
-                                    "type": "string"
-                                },
-                                "description": {
-                                    "type": "string"
-                                },
-                                "tags": {
-                                    "type": "array",
-                                    "items": {
-                                    "type": "string"
-                                    }
-                                },
-                                "type": {
-                                    "type": "string"
-                                },
-                                "knn": {
-                                    "type": "object",
-                                    "properties": {
-                                    "knn_type": {
-                                        "type": "string"
-                                    },
-                                    "knn_dims": {
-                                        "type": ["integer", "number"]
-                                    },
-                                    "hnsw_similarity": {
-                                        "type": "string"
-                                    },
-                                    "hnsw_m": {
-                                        "type": ["integer", "number"]
-                                    },
-                                    "hnsw_ef_construction": {
-                                        "type":["integer", "number"]
-                                    }
-                                    },
-                                    "required": ["knn_dims", "hnsw_similarity"]
-                                }
-                                },
-                                "required": ["name", "type"]
-                            },
-                            "type": "array"
-                            }
-                        },
-                        "required": ["name", "columns"]
-                        },
-                        "type": "array"
-                    },
-                    "source": {
-                        "type": "object",
-                        "properties": {
-                        "datasets": {
-                            "type": "array",
-                            "items": {
-                            "properties": {
-                                "name": {
-                                "type": "string"
-                                },
-                                "dataset": {
-                                "type": "string"
-                                },
-                                "options": {
-                                "type": "object",
-                                "properties": {
-                                    "region": {
-                                    "type": "string"
-                                    },
-                                    "endpoint": {
-                                    "type": "string"
-                                    }
-                                }
-                                }
-                            },
-                            "required": ["name", "dataset"]
-                            }
-                        },
-                        "postgres": {
-                            "type": "string"
-                        },
-                        "flash": {
-                            "type": "string"
-                        },
-                        "depot": {
-                            "type": "string"
-                        },
-                        "options": {
-                            "type": "object"
-                        }
-                        },
-                        "oneOf": [
-                        { "required": ["datasets"] },
-                        { "required": ["postgres"] },
-                        { "required": ["flash"] },
-                        { "required": ["depot"] }
-                        ]
-                    },
-                    "indexers": {
-                        "items": {
-                        "properties": {
-                            "index_table": {
-                            "type": "string"
-                            },
-                            "base_sql": {
-                            "type": "string"
-                            },
-                            "options": {
-                            "type": "object",
-                            "properties": {
-                                "start": {
-                                "type": ["integer", "number"]
-                                },
-                                "step": {
-                                "type": ["integer", "number"]
-                                },
-                                "batch_sql": {
-                                "type": "string"
-                                },
-                                "throttle": {
-                                "type": "object",
-                                "properties": {
-                                    "min": {
-                                    "type": "integer"
-                                    },
-                                    "max": {
-                                    "type": "integer"
-                                    },
-                                    "factor": {
-                                    "type": "number"
-                                    },
-                                    "jitter": {
-                                    "type": "boolean"
-                                    }
-                                },
-                                "required": ["min", "max", "factor"]
-                                }
-                            },
-                            "required": ["step", "batch_sql"]
-                            },
-                            "disable": {
-                            "type": "boolean"
-                            }
-                        },
-                        "required": ["index_table", "base_sql", "options"]
-                        },
-                        "type": "array"
-                    }
-                    }
-                }
-                }
-            }
-
-        serviceConfig:
-            configFileTemplate: |
-            lakesearch.yaml: |
-            {{ toYaml .ApplicationSpec.StackSpec | indent 2 }}
-            containerResourceTemplate: |
-            container:
-                name: "{{.Name}}{{.Stamp}}-indexer"
-                image: "{{.Image}}"
-                imagePullPolicy: IfNotPresent
-                command:
-                - "/usr/bin/lakesearch"
-                ports:
-                - containerPort: 4080
-                volumeMounts:
-                {{ if .HasConfigConfs }}
-                - name: dataos-config-mount
-                    mountPath: "{{.DataOsConfigMountPath}}"
-                    readOnly: true
-                {{- end }}
-                {{ if .ApplicationSpec.TempVolume -}}
-                - name: {{.Name}}-{{.Type}}{{.Stamp}}-tdm
-                    mountPath: "{{.DataTempMountPath}}"
-                    subPath: {{.Name}}{{.Stamp}}
-                {{- end }}
-                {{ if .ApplicationSpec.PersistentVolume -}}
-                - name: {{.Name}}-{{.Type}}{{.Stamp}}-pdm
-                    mountPath: "{{.DataPersistentMountPath}}/{{.ApplicationSpec.PersistentVolume.Directory}}"
-                    subPath: "{{.ApplicationSpec.PersistentVolume.Directory}}"
-                {{- end }}
-                {{ if .Volumes }}
-                {{- range $volume := .Volumes }}
-                - name: {{$volume.Name}}
-                    mountPath: "{{$volume.MountPath}}"
-                    readOnly: {{$volume.ReadOnly}}
-                    {{ if $volume.SubPath }}
-                    subPath: "{{$volume.SubPath}}"
-                    {{- end }}
-                {{- end }}
-                {{- end }}
-                {{ if .ApplicationSpec.Resources -}}
-                resources:
-                {{toYaml .ApplicationSpec.Resources | indent 4}}
-                {{- end }}
-                envFrom:
-                - secretRef:
-                    name: "{{.Name}}-{{.Type}}{{.Stamp}}-env"
-                {{ if .EnvironmentVarsFromSecret }}
-                {{- range $secName := .EnvironmentVarsFromSecret }}
-                - secretRef:
-                name: "{{$secName}}"
-                {{- end }}
-                {{- end }}
-            sidecars:
-                - name: "{{.Name}}{{.Stamp}}-searcher"
-                image: "{{.Image}}"
-                imagePullPolicy: IfNotPresent
-                command:
-                - /usr/bin/lakesearch
-                ports:
-                    - containerPort: 9306
-                    - containerPort: 9308
-                    - containerPort: 9312
-                securityContext:
-                    privileged: true
-                volumeMounts:
-                    {{ if .HasConfigConfs }}
-                    - name: dataos-config-mount
-                    mountPath: "{{.DataOsConfigMountPath}}"
-                    readOnly: true
-                    {{- end }}
-                    {{ if .ApplicationSpec.TempVolume -}}
-                    - name: {{.Name}}-{{.Type}}{{.Stamp}}-tdm
-                    mountPath: "{{.DataTempMountPath}}"
-                    subPath: {{.Name}}{{.Stamp}}
-                    {{- end }}
-                    {{ if .ApplicationSpec.PersistentVolume -}}
-                    - name: {{.Name}}-{{.Type}}{{.Stamp}}-pdm
-                    mountPath: "{{.DataPersistentMountPath}}/{{.ApplicationSpec.PersistentVolume.Directory}}"
-                    subPath: "{{.ApplicationSpec.PersistentVolume.Directory}}"
-                    {{- end }}
-                    {{ if .Volumes }}
-                    {{- range $volume := .Volumes }}
-                    - name: {{$volume.Name}}
-                    mountPath: "{{$volume.MountPath}}"
-                    readOnly: {{$volume.ReadOnly}}
-                    {{ if $volume.SubPath }}
-                        subPath: "{{$volume.SubPath}}"
-                    {{- end }}
-                    {{- end }}
-                    {{- end }}
-                envFrom:
-                - secretRef:
-                    name: "{{.Name}}-{{.Type}}{{.Stamp}}-env"
-                {{ if .EnvironmentVarsFromSecret }}
-                {{- range $secName := .EnvironmentVarsFromSecret }}
-                - secretRef:
-                    name: "{{$secName}}"
-                {{- end }}
-                {{- end }}
-                env:
-                    - name: MODE
-                    value: searchd
-        ```
-
-    </details>
-        
-    
-    <aside class="callout">
-    
-    🗣️ Make sure to include the latest version and image tag of the Stack. To obtain this information, contact your DataOS administrator.
-    
-    </aside>
-    
-3. Apply the manifest file by executing the below command:
-    
-    ```bash
-    dataos-ctl resource apply -f ${{path-to-the-yaml-file}} --disable-interpolation
-    ```
-    
-    <aside class="callout">
-    
-    🗣️ When DataOS processes a manifest file, it automatically replaces placeholders such as `${{variable}}` or `{{value}}` with values from the environment or other sources. Using the `--disable-interpolation` flag ensures that these placeholders remain unchanged in the applied resource, preventing any automatic substitution or evaluation.
-    
-    </aside>
-    
-4. Validate the deployment by executing the below command.
-    
-    ```bash
-    dataos-ctl resource get -t stack
-    ```
-    
-    Expected output:
-    
-    ```bash
-    INFO[0000] 🔍 get...                                     
-    INFO[0000] 🔍 get...complete                             
-    
-                NAME            | VERSION | TYPE  | WORKSPACE | STATUS | RUNTIME |       OWNER        
-    ----------------------------|---------|-------|-----------|--------|---------|--------------------          
-      lakesearch-v4             | v1alpha | stack |           | active |         | iamgroot       
-    
-    ```
-    
-
-After deploying the Stack successfully, next step is to run a Lakesearch Service.
 
 ## How to set up a Lakesearch Service?
 
 Once the Lakesearch Stack is available, follow the steps given in the links below to create a Lakesearch Service . The Lakesearch Service retrieves data from the source and indexes each column from one or multiple tables, making it searchable.
 
-### **Pre-requisites**
-
-A user must have the following requirements met before setting up a Lakesearch Service.
-
-- A user is required to have knowledge of Python.
-
-- Ensure that DataOS CLI is installed and initialized in the system. If not the user can install it by referring to [this section.](https://dataos.info/interfaces/cli/installation/)
-- A user must have the following tags assigned.
-    
-    ```bash
-    dataos-ctl user get                
-    INFO[0000] 😃 user get...                                
-    INFO[0001] 😃 user get...complete                        
-    
-          NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
-    ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-        Iamgroot   │   iamgroot  │ person │  iamgroot@tmdc.io    │ roles:id:data-dev,                            
-                   │             │        │                      │ roles:id:user,                  
-                   │             │        │                      │ users:id:iamgroot
-    ```
-    
-- If the above tags are not available, a user can contact a DataOS operator to assign the user with one of the following use cases using the Bifrost Governance. A DataOS operator can create new usecases as per the requirement.
-
-    <div style="text-align: center;">
-    <figure>
-    <img src="/resources/stacks/lakesearch/images/usecase.png" alt="usecases" style="border:1px solid black; width: 100%; height: auto;">
-    <figcaption style="margin-top: 8px; font-style: italic;">Bifrost Governance</figcaption>
-    </figure>
-    </div>
-
-    
-- Ensure the Lakesearch Stack is available in the DataOS Environment.
-
-
-### **Create a Lakesearch Service**
-
-Follow the below links to create a Lakesearch Service with different functionalities:
-
-- [Normal Lakesearch Service](/resources/stacks/lakesearch/service/)
+- [Lakesearch Service](/resources/stacks/lakesearch/service/)
 - [Lakesearch Service with query rewriter](/resources/stacks/lakesearch/rewriter/)
-- [Lakesearch Service with vector embedding](/resources/stacks/lakesearch/vector_embedding/)
+<!-- - [Lakesearch Service with vector embedding](/resources/stacks/lakesearch/vector_embedding/) -->
 
 For a detailed breakdown of the configuration options and attributes of a Lakesearch Service, please refer to the documentation: [Attributes of Lakesearch Service manifest](/resources/stacks/lakesearch/configurations/).
 
@@ -720,7 +362,11 @@ By implementing this process, Lakesearch ensures data consistency while allowing
 This section involves recommends dos and don’ts while configuring a Lakesearch Service.
 
 - For large datasets, always use the partition indexer when configuring the LakeSearch Service. It divides the indexes into two parts, significantly reducing the time required to index all tables.
-    
+
+## Trobleshooting
+
+In case of any issues while using LakeSearch, refer to the [troubleshooting section](/resources/stacks/lakesearch/troubleshooting/) for common errors, solutions, and debugging steps. This section covers potential failures related to indexing, query processing, and node synchronization, along with recommended fixes to ensure smooth operation.
+
 
 ## FAQs
 

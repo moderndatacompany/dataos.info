@@ -1,12 +1,6 @@
+# Lakesearch Service workflow
+
 LakeSearch is designed to provide scalable, high-performance full-text search capabilities for Lakehouse tables.
-
-The idea is to decouple storage and compute resources (in upcoming releases), LakeSearch would offer flexibility in scaling based on the specific demands of the workload. This approach enables businesses to optimize both performance and cost efficiency, making it ideal for environments where high-performance search is critical but current solutions are too costly and rigid.
-
-Presently, LakeSearch is deployed as a Stack, similar to Flash. In the later stages, it will evolve into a fully scalable cluster architecture, allowing for fine-tuned control over Indexer and Searcher scaling. This flexibility will cater to both, small and large deployments, offering high availability and cost-efficiency at scale.
-
-![LakeSearch Architecture](attachment:cb7ba211-c06f-4e36-bbd9-7b7da3fcefca:image.png)
-
-LakeSearch Architecture
 
 ## Indexing a Table
 
@@ -34,7 +28,7 @@ The **columns** section defines how the documents and their fields are indexed a
     | `bool` | Declares a boolean attribute. It's equivalent to an integer attribute with bit count of 1. | attribute |
     | `timestamp` | The timestamp type represents Unix timestamps, which are stored as 32-bit integers. The system expects a date/timestamp type object from the base_sql. | attribute |
     | `float` | Real numbers are stored as 32-bit IEEE 754 single precision floats. | attribute |
-    | `vector` | Vector embedding generated as per the defined vector embedder logic. | full-text field |
+
 - Example
     
     ```yaml
