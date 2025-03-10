@@ -101,20 +101,6 @@ lens:
       limits:
         cpu: 6000m
         memory: 6048Mi
-
-  iris:
-    logLevel: info  
-    envs:
-      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-      LENS2_SOURCE_WORKSPACE_NAME: public
-      LENS2_SOURCE_FLASH_PORT: 5433
-    resources:
-      requests:
-        cpu: 100m
-        memory: 256Mi
-      limits:
-        cpu: 6000m
-        memory: 6048Mi
 ```
 
 ### **3. Create and deploy the Lens model**
