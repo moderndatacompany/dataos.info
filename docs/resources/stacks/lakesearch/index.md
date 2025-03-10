@@ -363,6 +363,13 @@ This section involves recommends dos and don’ts while configuring a Lakesearch
 
 - For large datasets, always use the partition indexer when configuring the LakeSearch Service. It divides the indexes into two parts, significantly reducing the time required to index all tables.
 
+- The persistent volume size should be at least 2.5 times the total dataset size, rounded to the nearest multiple of 10. To check the dataset size, use the following query:
+
+    ```sql
+    SELECT sum(total_size) FROM "<catalog>"."<schema>"."<table>$partitions";
+    ```
+    The resultant size will be in the bytes.
+
 ## Trobleshooting
 
 In case of any issues while using LakeSearch, refer to the [troubleshooting section](/resources/stacks/lakesearch/troubleshooting/) for common errors, solutions, and debugging steps. This section covers potential failures related to indexing, query processing, and node synchronization, along with recommended fixes to ensure smooth operation.
