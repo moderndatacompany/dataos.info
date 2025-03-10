@@ -364,7 +364,7 @@ By following these steps, you can continuously improve your Data Product to bett
 
 ## Data Products Consumption
 
-All the Data Visulaisationa tools such as Superset, PowerBI and Data Modelling tools such as Lens serve as a tool to consume the data products to derive the required actionable insights for which the data product was built.
+All the Data Visulaisationa tools such as Superset, PowerBI and Data Modeling tools such as Lens serve as a tool to consume the data products to derive the required actionable insights for which the data product was built.
 
 ### **Building Data Model**
  

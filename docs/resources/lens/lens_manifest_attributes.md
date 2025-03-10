@@ -85,19 +85,6 @@ lens:
 		limits:
 			cpu: 16Gi
 			memory: 2000m		
- iris:
-	logLevel: INFO
-  envs:
-    LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-    LENS2_SOURCE_WORKSPACE_NAME: public
-    LENS2_DB_TIMEOUT: 1500000
-	resources:
-		requests:
-			cpu: 4Gi
-			memory: 1000m
-		limits:
-			cpu: 16Gi
-			memory: 2000m
 ```
 
 ## Resource meta section
@@ -775,64 +762,6 @@ lens:
   logLevel: info 
   envs:
     LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-  resources: # optional
-    requests:
-      cpu: 100m
-      memory: 256Mi
-    limits:
-      cpu: 6000m
-      memory: 6048Mi
-```
-
----
-
-### **`iris`**
-
-**Description:** Manages interaction with Iris dashboards.
-
-| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
-| --- | --- | --- | --- |
-| mapping | mandatory | none | valid iris configuration |
-
-### **`logLevel`**
-
-**Description:** Defines the level of logs for Iris.
-
-| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
-| --- | --- | --- | --- |
-| string | optional | INFO | `INFO`, `WARN`, `DEBUG`, `ERROR` |
-
-
-### **`replicas`**
-
-**Description:** Defines the number of replicas for the Iris instance.
-
-| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
-| --- | --- | --- | --- |
-| integer | optional | 1 | Any positive integer |
-
-### **`resources`**
-
-**Description:** Specifies the CPU and memory resource requirements for Iris.
-
-| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
-| --- | --- | --- | --- |
-| mapping (CPU/memory) | optional | CPU: 100m, Memory: 100Mi (request) / CPU: 400m, Memory: 400Mi (limit) | CPU: declared in milliCPU (m) or core / Memory: Mebibytes (Mi) or Gibibytes (Gi) |
-
-### **`envs`**
-
-**Description:** List of environment variables for the Iris instance.
-
-| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
-| --- | --- | --- | --- |
-| mapping | optional | none | List of environment variables for the iris |                     |
-
-**Example usage:**
-
-```yaml
-lens:
- iris: 
-  logLevel: info 
   resources: # optional
     requests:
       cpu: 100m

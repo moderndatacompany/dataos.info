@@ -150,11 +150,8 @@ Curl is a command-line tool used for transferring data with URLs, making it a co
     ```
 
     - **Replace `<URL>` with the appropriate endpoint based on your environment:**
-        - For local development, use:
-            ```html
-            http://localhost:4000/lens2/api/<NAME_OF_LENS>/v2/graphql
-            ```
-        - For a deployed Lens model, use:
+        For a deployed Lens model, use:
+        
             ```html
             https://<DATAOS_FQDN>/lens2/api/<WORKSPACE>:<NAME_OF_LENS>/v2/graphql
             ```
@@ -194,7 +191,7 @@ Python provides a flexible and powerful way to interact with the Lens GraphQL AP
     pip install requests
     ```
 
-2. **Prepare the Python Script:**
+2. **Prepare the Python script:**
 
     Use the following template to create a Python script for querying the Lens GraphQL API:
 
@@ -223,11 +220,8 @@ Python provides a flexible and powerful way to interact with the Lens GraphQL AP
     ```
 
     - **Replace `<URL>` with the appropriate endpoint based on your environment:**
-      - For local development, use:
-        ```plaintext
-        http://localhost:4000/lens2/api/<NAME_OF_LENS>/v2/graphql
-        ```
-      - For a deployed Lens model, use:
+        For a deployed Lens model, use:
+
         ```plaintext
         https://<DATAOS_FQDN>/lens2/api/<WORKSPACE>:<NAME_OF_LENS>/v2/graphql
         ```
@@ -242,7 +236,7 @@ Python provides a flexible and powerful way to interact with the Lens GraphQL AP
 
     - **Replace `<GRAPHQL_QUERY>` with the specific fields you want to query from your GraphQL schema.** Make sure to format the query string as valid JSON.
 
-    **Sample Script:**
+    **Sample script:**
 
     ```python
     import requests
@@ -282,7 +276,7 @@ Python provides a flexible and powerful way to interact with the Lens GraphQL AP
     - `<NAME_OF_LENS>` is `lakehouse-insights01`
     - The query fetches `lakehouse_insights_total_data_size_in_gb` and `lakehouse_insights_table_name` fields from the `total_operations` table.
 
-3. **Run the Script:**
+3. **Run the script:**
 
     Save the script as a `.py` file and execute it using the following command in your terminal:
 
@@ -304,7 +298,7 @@ When working with a Postman collection to test APIs, you typically need to confi
     - Import the Postman Collection file you’ve been given. For example, if you import the Lens API collection from the provided link, you will see a collection of API requests neatly organized into folders. Refer to the below image for subsequent steps.
 
         <div style="text-align: center;">
-        <img src="/resources/lens/exploring_deployed_lens_using_rest_apis/Untitled1.png" alt="postman" style="max-width: 80%; height: auto; border: 1px solid #000;">
+        <img src="/resources/lens/exploring_deployed_lens_using_rest_apis/Untitled1.png" alt="postman" style="max-width: 40rem; height: auto; border: 1px solid #000;">
         </div>
         <figcaption><i><center>Postman</center></i></figcaption>
 
@@ -328,12 +322,8 @@ When working with a Postman collection to test APIs, you typically need to confi
     http://<URL>/lens2/api/<WORKSPACE_NAME>:<LENS_NAME>/v2/<ENDPOINT>
     ```
 
-     - **Replace `<URL>` with the appropriate endpoint based on your environment:**
-        - For local development, use:
-          ```plaintext
-          http://localhost:4000/lens2/api/<NAME_OF_LENS>/v2/graphl
-          ```
-        - For a deployed Lens model, use:
+     - **Replace `<URL>` with the appropriate environment Lens is deployed in:**
+
           ```plaintext
           https://<DATAOS_FQDN>/lens2/api/<WORKSPACE>:<NAME_OF_LENS>/v2/graphql
           ```
@@ -417,6 +407,10 @@ When working with a Postman collection to test APIs, you typically need to confi
 ## GraphQL Query Examples
 
 This section provides sample GraphQL queries that you can use directly in Explorer Studio of the Data Product Hub. You can also use these queries with the <GRAPHQL_QUERY> placeholder in the Curl and Python methods described earlier.
+
+<aside class="callout">
+Compared to the <a href="/resources/lens/exploration_of_lens_using_rest_apis/">REST API</a>, GraphQL API currently has no support for referencing <a href="/resources/lens/segments/">segments</a> in queries.
+</aside>
 
 ### **Querying a dimension**
 
@@ -745,3 +739,9 @@ Using the same `account` table as before, let’s try and get the revenue for ea
       }
     }
     ```
+
+
+
+<aside class="callout">
+To explore more examples click <a href="/resources/lens/graphql_api/graphql_query_format/">here</a>.
+</aside>

@@ -334,7 +334,7 @@ stackSpec:
 
 **Additional Information**
 
-It is necessary to add the category of the checks, as this allows the category to be populated in the [Data Product Hub (DPH)](/interfaces/data_product_hub/). By specifying a category, checks are better organized and easily searchable, ensuring that users can quickly understand the type of validation being applied. There are total six types of categories of check:
+It is necessary to add the category of the checks, as this allows the category to be populated in the [Data Product Hub](/interfaces/data_product_hub/). By specifying a category, checks are better organized and easily searchable, ensuring that users can quickly understand the type of validation being applied. There are total six types of categories of check:
 
   - Freshness
   - Schema

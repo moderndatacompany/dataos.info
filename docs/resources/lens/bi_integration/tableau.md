@@ -1,15 +1,156 @@
 # Tableau
 
-<aside class="callout">
-💡 For a streamlined and user-friendly integration with Tableau, use the Data Product Hub interface. This approach eliminates the need for manually working with `curl` commands, providing an easy way to connect to your Lens semantic model.
+The semantic model can be integrated with Tableau using the following Ways
 
-To get started with Tableau integration through Data Product Hub, refer to the link below:
+* [Using Data Product Hub(Recommended - GUI based)](/resources/lens/bi_integration/Tableau#using-data-product-hub): This method provides a user-friendly, graphical interface for integrating the semantic model with Tableau.  This approach is ideal for those who prefer an intuitive, no-code setup.
 
-<a href="/interfaces/data_product_hub/activation/bi_sync/tableau_cloud/">Access the Tableau integration guide</a>.
-</aside>
+* [Using cURL command (Command-Line based)](/resources/lens/bi_integration/Tableau#using-curl-command): By executing a simple cURL request, users can fetch and connect the semantic model directly to Tableau. This method is suitable for advanced users looking to script or automate the integration process.
 
-<!-- ## Tableau desktop
-## Tableau cloud  -->
+## Using Data Product Hub
+
+### **Navigate to the Data Product Hub**
+
+Access the Home Page of DataOS. From the home page, navigate to the Data Product Hub to explore the various Data Products available.
+
+![](/image.png)
+
+
+### **Browse and select a Data Product**
+
+Browse through the list of available Data Products. Select a specific Data Product to integrate with Tableau. For instance, `Product360` can be chosen to explore the Data Product on Tableau for data visualisation and getting insights.
+
+![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau0.png)
+
+Browse through the list of available Data Products. Select a specific Data Product to integrate with Tableau. For instance, **Product 360** can be chosen to explore the Data Product on Tableau for data visualisation and getting insights.
+
+![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau0.png)
+
+### **Navigate to the Access Options tab**
+
+After selecting a Data Product, navigate to the **BI Sync** option in the **Access Options** tab. Scroll through the BI Sync and locate the **Tableau Cloud** option. Now, Click on the **Add Connection** button
+
+![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau1.png)
+
+
+### **Enter connection details and click Activate button**
+
+A connection window will open, prompting the entry of the necessary connection details. There are following two ways to pass the connection details:
+
+=== "Using  username and password"
+
+    Following are the connection details of the Tableau username and password:
+
+    - **Project Name**: Enter the Tableau project name. If a project with that name does not already exist, it will be created automatically. If you do not specify a name, the project will default to the name of the Data Product, which will register all associated data sources under that project.
+    For optimal organization within Tableau, we recommend providing a custom project name it facilitates easier navigation of your data sources.
+
+    - **Server Name**: The address of the Tableau server (e.g., https://prod-apnortheast-a.online.tableau.com).
+
+    - **Site ID**: The site ID (e.g., tableausuer@123).
+
+    - **Username**: The Tableau username.(e.g., labs@tmdc.io)
+
+    - **Password**: The password associated with the Tableau account.
+
+    These details can be obtained upon logging into Tableau. The URL format will appear as follows:
+
+    [`https://prod-apnortheast-a.online.tableau.com/#/site/site_id`](https://prod-apnortheast-a.online.tableau.com/#/site/tableauuser@123)
+
+    **Sample URL**:
+
+    [`https://prod-apnortheast-a.online.tableau.com/#/site/tableauuser@123/home`](https://prod-apnortheast-a.online.tableau.com/#/site/tableauuser@123/home)
+
+    In this example, `tableuuser@123` represents the site_id.
+
+    After entering the required credentials, click the Activate button to establish the connection. A confirmation message will appear upon successful connection.
+
+=== "Using Personal Access Token"
+
+    In addition to using standard Tableau credentials, users can also opt to use Personal Access Tokens (PAT) for authentication.
+
+    #### **Prerequisites**
+
+    **Tableau Personal Access Token (PAT):** Before integrating the semantic model with Tableau using a PAT, ensure that you generate a PAT in Tableau by following the instructions provided in [this guide](https://help.tableau.com/current/online/en-us/security_personal_access_tokens.htm).
+
+    * **Project Name**: Enter the Tableau project name. If a project with that name does not already exist, it will be created automatically. If you do not specify a name, the project will default to the name of the Data Product, which will register all associated data sources under that project. For optimal organization within Tableau, we recommend providing a custom project name it facilitates easier navigation of your data sources.
+
+    * **Server Name**: The address of the Tableau server (e.g., `https://prod-apnortheast-a.online.tableau.com`).
+
+    * **Site ID**: The site ID (e.g., `tableausuer@123`).
+
+    * **Username**: The Tableau username.(e.g., `labs@tmdc.io`)
+
+    * **Password**: The password associated with the Tableau account.
+
+    These details can be obtained upon logging into Tableau. The URL format will appear as follows:
+
+    [`https://prod-apnortheast-a.online.tableau.com/#/site/site_id`](https://prod-apnortheast-a.online.tableau.com/#/site/tableauuser@123)
+
+    **Sample URL**:
+
+    [`https://prod-apnortheast-a.online.tableau.com/#/site/tableauuser@123/home`](https://prod-apnortheast-a.online.tableau.com/#/site/tableauuser@123/home)
+
+    In this example, `tableuuser@123` represents the **site\_id**.
+
+    After entering the required credentials, click the Activate button to establish the connection. A confirmation message will appear upon successful connection.
+
+## Exploring the semantic model on Tableau
+
+Once the sync is successful, the data source is published to the Tableau cloud/server:
+
+### **Log in to Tableau Cloud**
+
+Users should log in to Tableau Cloud using the same credentials of Tableau. This will redirect to the Tableau Cloud home page.
+
+![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau5.png)
+
+
+### **Manage projects**
+
+Click on the Manage Projects option on the home page.
+
+![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/image%20\(13\).png)
+
+
+### **Access the project interface**
+
+This will open an interface displaying all projects, including the newly created project titled **Product Analysis**.
+
+![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau5.1.png)
+
+
+### **Select the project**
+
+Click on the project to view the available data sources for dashboard creation. This project will contains semantic model and all it's views (entities and metrics).
+
+![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau5.2.png)
+
+
+### **Create a new workbook**
+
+Click on the menu option in the upper right corner of the data source and select the New Workbook option.
+
+![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau6.png)
+
+
+### **Provide credentials**
+
+To create a new workbook where dashboard creation can commence, users will be prompted to provide their DataOS username and API key as the password to access the data source. The API can be retrieved by navigating to the profile page in the bottom left corner of the Data Product Hub.
+
+![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/Tabelau7.png)
+
+
+### **Start creating the dashboard**
+
+Now, users can create dashboard and extract relevant insights.
+
+![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/tableau8.png)
+
+
+### **Publishing workbook/dashboard**
+
+The publisher can embed their credentials (DataOS username and API Token) or ask users to provide credentials whenever they want to access the published Workbook/Sheet/Dashboard. If the publisher has chosen to ‘Embed password for data source’, users can access the published workbook and dashboard without providing credentials.s
+
+## Using cURL Command
 
 ### **Prerequisites**
 
@@ -79,32 +220,32 @@ curl --location --request POST 'http://tcp.<DATAOS_FQDN>/lens2/sync/api/v1/table
 **Step 2: Go to Tableau:** Access the Explore tab on the left side. The required tables and views will be visible in the project. In the screenshot below, there are three sources: one for tables and two for views.
 
 <div style="text-align: center;">
-    <img src="/resources/lens/bi_integration/tableau1.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/bi_integration/tableau1.png" alt="Tableau Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
 **Step 3: Explore and create visualizations** Navigate to the Home tab on the left side and click on 'New'. Under this option, select 'Workbook'.
 
 <div style="text-align: center;">
-    <img src="/resources/lens/bi_integration/tableau2.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/bi_integration/tableau2.png" alt="Tableau Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
 **Step 4: Connect to data** After clicking on 'Workbook', the 'Connect to Data' page will be displayed. Select either views or tables and click on 'Connect'.
 
 <div style="text-align: center;">
-    <img src="/resources/lens/bi_integration/tableau3.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/bi_integration/tableau3.png" alt="Tableau Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
 Upon clicking 'Connect', a prompt will request the username and password. Enter the DataOS username and API key.
 
 
 <div style="text-align: center;">
-    <img src="/resources/lens/bi_integration/tableau4.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/bi_integration/tableau4.png" alt="Tableau Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
 **Step 5: Start using the semantic model** After entering the credentials and clicking on 'Sign In', the model will be ready for visualization purposes.
 
 <div style="text-align: center;">
-    <img src="/resources/lens/bi_integration/tableau5.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/bi_integration/tableau5.png" alt="Tableau Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
 
@@ -181,17 +322,17 @@ Once the credentials are embedded, they cannot be accessed. You need to overwrit
 
 **Scenario 1: Handling syntactical errors in measures or dimensions** 
 
-If a measure or dimension contains a syntactical error (and is also not functioning in Explore studio of DPH), the following error will appear when attempting to select it:
+If a measure or dimension contains a syntactical error (and is also not functioning in Explore studio of Data Product Hub), the following error will appear when attempting to select it:
 
 <div style="text-align: center;">
-    <img src="/resources/lens/bi_integration/image02.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/bi_integration/image02.png" alt="Tableau Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
 After correcting the syntactical error in the measure or dimension within Lens, the error will no longer appear. To reflect the changes in Tableau, refreshing the data source and re-selecting the measure or dimension will be necessary to display it in the chart.
 
 
 <div style="text-align: center;">
-    <img src="/resources/lens/bi_integration/image03.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/bi_integration/image03.png" alt="Tableau Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
 **Scenario 2: Handling inactive Lens in the environment** 
@@ -204,7 +345,7 @@ If the Lens is not active in the environment while working on an existing workbo
 If the Account table is set to `public = false`, a data source error will occur in Tableau. The error message will indicate that the 'Account table not found,' which will prevent querying or using data from that table.
 
 <div style="text-align: center;">
-    <img src="/resources/lens/bi_integration/image06.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/bi_integration/image06.png" alt="Tableau Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
 To resolve this issue, ensure the Account table is accessible (set to `public = true` or assign appropriate permissions) and then resync the Lens in Tableau to regain access.

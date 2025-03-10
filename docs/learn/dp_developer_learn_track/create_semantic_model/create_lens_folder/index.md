@@ -844,10 +844,10 @@ tables:
         type: string
 ```
 
-To know more about the best practices and do's and dont's of modelling click [here](/learn/dp_developer_learn_track/create_semantic_model/create_lens_folder/dos_and_donts_of_modelling/).
+To know more about the best practices and do's and dont's of modeling click [here](/resources/lens/dos_and_donts/).
 
-## Next Step
+<!-- ## Next Step
 
 After successfully creating semantic model folder structure and preparing all the necessary manifests for your semantic model, it's time to test it.
 
-[Testing Lens locally](/learn/dp_developer_learn_track/create_semantic_model/testing_lens/).
+[Testing Lens locally](/learn/dp_developer_learn_track/create_semantic_model/testing_lens/). -->
