@@ -123,7 +123,7 @@ segments:
     sql: "{TABLE}.state IN ('Illinois', 'Ohio')"
 ```
 
-To know more about segments click [here](https://dataos.info/resources/lens/working_with_segments/).
+To know more about segments click [here](https://dataos.info/resources/lens/segments/).
 
 ### **Create the views**
 
@@ -144,7 +144,7 @@ views:
           - customer_segments
 ```
 
-To know more about the views click [here](https://dataos.info/resources/lens/working_with_views/).
+To know more about the views click [here](https://dataos.info/resources/lens/views/).
 
 ### **Create user groups**
 
@@ -157,7 +157,7 @@ user_groups:
     includes: "*"
 ```
 
-To know more about the User groups click [here](https://dataos.info/resources/lens/working_with_user_groups_and_data_policies/)
+To know more about the User groups click [here](https://dataos.info/resources/lens/user_groups_and_data_policies/)
 
 
 ## Step 3: Deployment manifest file
