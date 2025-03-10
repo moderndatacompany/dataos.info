@@ -1,10 +1,16 @@
 #  Talos API configurations
 
-While configuring Talos, the `apis` folder contains an SQL file and a manifest file, an SQL file is where you write your queries, and the manifest file contains the URL path, description, source, and allowed user groups.
+While configuring Talos, the `apis` folder contains an SQL file and a manifest file. The SQL file defines the queries, while the manifest file specifies the URL path, description, source, and allowed user groups.
+
+## Sample manifest files:
+
+### example.sql:
 
 ```sql
 SELECT * FROM myschema.mytable LIMIT 10;
 ```
+
+### example.yaml:
 
 ```yaml
 urlPath: /table # output path
@@ -17,9 +23,9 @@ allow:  # allowed user groups
 
 ### **`urlPath`**
 
-**Description:** API endpoint path.
+**Description:** The API endpoint path is specified in the manifest file under the url field. This path determines where the API can be accessed.
 
-| Data Type | Requirement | Default Value | Possible Values |
+| **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
 | --- | --- | --- | --- |
 | string | mandatory | none | Any valid URL path format |
 
@@ -31,9 +37,9 @@ urlPath: /table
 
 ### **`description`**
 
-**Description:** Brief description about the data.
+**Description:** Brief description about the data which can be accessed by the API.
 
-| Data Type | Requirement | Default Value | Possible Values |
+| **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
 | --- | --- | --- | --- |
 | string | mandatory | none | Any descriptive text |
 
@@ -45,9 +51,9 @@ description: product list
 
 ### **`source`**
 
-**Description:** The source name from which data is sourced.
+**Description:** The source name from which data is sourced.
 
-| Data Type | Requirement | Default Value | Possible Values |
+| **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
 | --- | --- | --- | --- |
 | string | mandatory | none | Any valid source reference |
 
@@ -59,9 +65,9 @@ source: ${{snowflakedepot}}
 
 ### **`allow`**
 
-**Description:** List of allowed user groups.
+**Description:** List of allowed user groups.
 
-| Data Type | Requirement | Default Value | Possible Values |
+| **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
 | --- | --- | --- | --- |
 | list of strings | optional | none | List of valid user groups |
 
