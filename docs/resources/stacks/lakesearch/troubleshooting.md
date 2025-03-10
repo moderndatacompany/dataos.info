@@ -153,5 +153,79 @@ INFO[0001] 📃 log(public)...complete
 ```
 
 
+## Unspported Column
+
+If the column used for filtering is mistakenly assigned a text data type, an error will occur when accessing the endpoint. 
+
+<div style="text-align: center;">
+  <figure>
+    <img src="/resources/stacks/lakesearch/images/error.png" 
+         alt="API endpoint" 
+         style="border: 1px solid black; width: 80%; height: auto; display: block; margin: auto;">
+    <figcaption style="margin-top: 8px; font-style: italic;">API endpoint</figcaption>
+  </figure>
+</div>
+
+**Steps to resolve**
+
+1. To fix this, delete that Service by excuting the below command.
+
+    ```bash
+    dataos-ctl delete -f /home/iamgroot/work/lakesearch/service.yaml
+    ```
+
+2. Update the data type.
+
+    ```yaml
+              columns:
+                - name: customer_id
+                  type: bigint
+                - name: birth_year
+                  type: bigint  
+                - name: id
+                  description: "mapped to customer_id"
+                  tags:
+                    - identifier
+                  type: bigint
+                - name: education
+                  type: text
+                - name: country  # column by which data will be filtered
+                  type: keyword   #updated data type
+                - name: created_at
+                  type: timestamp
+    ```
+
+3. Replace the `data_dir` and `directory` paths with new ones.
+
+    ```yaml
+      envs:
+        LAKESEARCH_SERVER_NAME: "public:ls-test-query-rewrite"
+        DATA_DIR: public/ls-test-query-rewrite/data01
+        USER_MODULES_DIR: /etc/dataos/config
+      persistentVolume:
+        name: ls-test-vol
+        directory: public/ls-test-query-rewrite/data01
+    ```
+4. And re-apply the Service by executing the below command.
+
+    ```bash
+    dataos-ctl apply -f /home/iamgroot/work/lakesearch/service.yaml
+    ```
+
+Now data can be filtered by "country":"India", as shown below.
+
+<div style="text-align: center;">
+  <figure>
+    <img src="/resources/stacks/lakesearch/images/post.png" 
+         alt="API endpoint" 
+         style="border: 1px solid black; width: 80%; height: auto; display: block; margin: auto;">
+    <figcaption style="margin-top: 8px; font-style: italic;">API endpoint</figcaption>
+  </figure>
+</div>
+
+
+
+
+
 
 
