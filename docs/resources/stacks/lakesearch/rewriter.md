@@ -1,10 +1,10 @@
-# Lakesearch Query Rewriter
+# Lakesearch query rewriter
 
 LakeSearch includes a Query Rewriter feature that dynamically modifies incoming queries before execution. This ensures that searches return more relevant results by applying contextual modifications, such as filtering or restructuring queries based on data partitions or predefined business rules.
 
 In this implementation, the Query Rewriter adds a platform-based filter to every query, ensuring that only results matching "Windows" as the platform are retrieved.
 
-## Query Rewriter Implementation
+## Query rewriter implementation
 
 The following implementation defines a custom query rewriter that:
 
@@ -12,7 +12,78 @@ The following implementation defines a custom query rewriter that:
 - Adds a filter to ensure results are scoped accordingly.
 - Maintains the original search intent while enforcing the additional filter.
 
-### Steps
+## Pre-requisites
+
+A user must have the following requirements met before setting up a Lakesearch Service.
+
+- A user is required to have knowledge of Python.
+
+- Ensure that DataOS CLI is installed and initialized in the system. If not the user can install it by referring to [this section.](https://dataos.info/interfaces/cli/installation/)
+- A user must have the following tags assigned.
+    
+    ```bash
+    dataos-ctl user get                
+    INFO[0000] 😃 user get...                                
+    INFO[0001] 😃 user get...complete                        
+    
+          NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+    ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        Iamgroot   │   iamgroot  │ person │  iamgroot@tmdc.io    │ roles:id:data-dev,                            
+                   │             │        │                      │ roles:id:user,                  
+                   │             │        │                      │ users:id:iamgroot
+    ```
+    
+- If the above tags are not available, a user can contact a DataOS operator to assign the user with one of the following use cases using the Bifrost Governance. A DataOS operator can create new usecases as per the requirement.
+
+    <div style="text-align: center;">
+    <figure>
+    <img src="/resources/stacks/lakesearch/images/usecase.png" alt="usecases" style="border:1px solid black; width: 100%; height: auto;">
+    <figcaption style="margin-top: 8px; font-style: italic;">Bifrost Governance</figcaption>
+    </figure>
+    </div>
+
+    
+- Ensure the Lakesearch Stack is available in the DataOS Environment.
+
+- Configure Volume Resource for storage allocation. Follow the below steps to configure a Volume Resource.
+
+    1. Copy the template below and replace <name> with your desired Resource name and <size> with the appropriate volume size (e.g., 100Gi, 20Gi, etc.), according to your available storage capacity. Make sure the configuration is aligned with both your storage and performance requirements. For the accessMode, you can choose ReadWriteOnce (RWO) for exclusive read-write access by a single node, or ReadOnlyMany (ROX) if the volume needs to be mounted as read-only by multiple nodes.
+
+        ```yaml
+        name: <name>  # Name of the Resource
+        version: v1beta  # Manifest version of the Resource
+        type: volume  # Type of Resource
+        tags:  # Tags for categorizing the Resource
+          - volume
+        description: Common attributes applicable to all DataOS Resources
+        layer: user
+        volume:
+          size: <size>  # Example: 100Gi, 50Mi, 10Ti, 500Mi, 20Gi
+          accessMode: <accessMode>  # Example: ReadWriteOnce, ReadOnlyMany
+          type: temp
+        ```
+
+        <aside class="callout">
+        💡The persistent volume size should be at least 2.5 times the total dataset size, rounded to the nearest multiple of 10.
+
+        To check the dataset size, use the following query:
+
+        ```sql
+        SELECT sum(total_size) FROM "<catalog>"."<schema>"."<table>$partitions";
+        ```
+        The resultant size will be in the bytes.
+        </aside>
+
+    2. Apply the Volume manifest file
+
+        Apply the persistent volume manifest file, using the following command in terminal:
+
+        ```
+        dataos-ctl apply -f <file path of persistent volume>
+        ```
+        This will deploy the Persistent Volume Resource, making it available for use by Lakesearch Service.
+
+## Steps
 
 1. Create a Python file containing the below code.
 
@@ -71,7 +142,7 @@ The following implementation defines a custom query rewriter that:
     | `from py.lakesearch.query_rewriter_config import QueryRewriterConfig` | This line imports a base class (or configuration interface) named `QueryRewriterConfig` from the `py.lakesearch.query_rewriter_config` module. This base class defines the structure and required methods for the query rewriter that you want to implement. | YES |
     | `from py.lakesearch.registrar import Registrar` | This import brings in the `Registrar` class from the `py.lakesearch.registrar` module. The purpose of this class is to register your custom query rewriter so that the system knows to use it when processing queries. | YES |
 
-2. Create a requiremnt file with `.txt` extention.
+2. Create a requirement file with `.txt` extention.
 
     ```python
     torch>=2.5.1  
@@ -87,53 +158,176 @@ The following implementation defines a custom query rewriter that:
 3. Create a Lakesearch Service manifest file with the following YAML configuration by referring the Python and requirement file in the `config` section of the Lakesearch Service:
 
     ```yaml
-    name: ls-test-query-rewrite  
-    version: v1  
-    type: service  
-    tags:  
-      - service  
-      - dataos:type:resource  
-      - dataos:resource:service  
-      - dataos:layer:user  
-    description: Lakesearch Service v4  
-    workspace: public  
+    name: ls-test-query-rewrite
+    version: v1
+    type: service
+    tags:
+      - service
+      - dataos:type:resource
+      - dataos:resource:service
+      - dataos:layer:user
+    description: Lakesearch Service v4
+    workspace: public
+    service:
+      servicePort: 4080
+      ingress:
+        enabled: true
+        stripPath: false
+        path: /lakesearch/public:ls-test-query-rewrite
+        noAuthentication: true
+      replicas: 1
+      logLevel: 'DEBUG'
+      compute: runnable-default
+      envs:
+        LAKESEARCH_SERVER_NAME: "public:ls-test-query-rewrite"
+        DATA_DIR: public/ls-test-query-rewrite/data02
+        USER_MODULES_DIR: /etc/dataos/config
+      persistentVolume:
+        name: ls-v2-test-vol
+        directory: public/ls-test-query-rewrite/data02
+      resources:
+        requests:
+          cpu: 1000m
+          memory: 1536Mi
+      stack: lakesearch:4.0
+      configs:
+        ex_impl_query_rewriter.py: /Users/darpan/Documents/Work/lakesearchv2/query-rewriter/user_modules/ex_impl_query_rewriter.py
+      stackSpec:
+        lakesearch:
+          source:
+            datasets:
+              - name: devices
+                dataset: dataos://icebase:lenovo_ls_data/devices_with_d
+          index_tables:
+            - name: devices
+              description: "index for devices"
+              tags:
+                - devices
+              properties:
+                morphology: stem_en
+              partitions:
+                - devices_before_110125
+                - devices_after_110125
+              columns:
+                - name: row_num
+                  type: bigint
+                - name: id
+                  description: "mapped to row_num"
+                  tags:
+                    - identifier
+                  type: bigint
+                - name: device_id
+                  type: text
+                - name: org_id
+                  type: keyword
+                - name: device_name
+                  type: text
+                - name: serial_number
+                  type: bigint
+                - name: model_type
+                  type: text
+                - name: family
+                  type: text
+                - name: category
+                  type: keyword
+                - name: model_name
+                  type: text
+                - name: platform
+                  type: keyword
+                - name: manufacturer
+                  type: text
+                - name: subscription_id
+                  type: text
+                - name: created_at
+                  type: timestamp
+                - name: updated_at
+                  type: timestamp
+                - name: is_active
+                  type: bool
+                - name: _delete
+                  type: bool
+          indexers:
+            - index_table: devices_before_110125
+              base_sql: |
+                SELECT 
+                  row_num,
+                  row_num as id,
+                  device_id,
+                  org_id,
+                  device_name,
+                  serial_number,
+                  model_type,
+                  family,
+                  category,
+                  model_name,
+                  platform,
+                  platform as platform_vec,
+                  manufacturer,
+                  subscription_id,
+                  cast(created_at as timestamp) as created_at,
+                  cast(updated_at as timestamp) as updated_at,
+                  is_active,
+                  _delete
+                FROM 
+                  devices
+              options:
+                start: 1608681600
+                step: 86400
+                batch_sql: |
+                  WITH base AS (
+                      {base_sql}
+                  ) SELECT 
+                    * 
+                  FROM 
+                    base 
+                  WHERE 
+                    epoch(updated_at) >= {start} AND epoch(updated_at) < {end}
+                throttle:
+                  min: 10000
+                  max: 60000
+                  factor: 1.2
+                  jitter: true
 
-    service:  
-      servicePort: 4080  
-      ingress:  
-        enabled: true  
-        stripPath: false  
-        path: /lakesearch/public:ls-test-query-rewrite  
-      noAuthentication: true  
-
-    replicas: 1  
-    logLevel: 'DEBUG'  
-
-    compute:  
-      runnable-default  
-
-    envs:  
-      LAKESEARCH_SERVER_NAME: "public:ls-test-query-rewrite"  
-      DATA_DIR: public/ls-test-query-rewrite/data02  
-      REQUIREMENTS_FILE: /etc/dataos/config/requirements.txt  
-      USER_MODULES_DIR: /etc/dataos/config  
-      INSTALL_LOCATION: public/ls-test-query-rewrite/dependencies  
-
-    persistentVolume:  
-      name: ls-v2-test-vol  
-      directory: public/ls-test-query-rewrite/data02  
-
-    resources:  
-      requests:  
-        cpu: 1000m  
-        memory: 1536Mi  
-
-    stack:  
-      lakesearch:4.0  
-
-    configs:  
-      ex_impl_query_rewriter.py: /Users/darpan/Documents/Work/lakesearchv2/vector-query-rewriter/user_modules/ex_impl_query_rewriter.py  
-      requirements.txt: /Users/darpan/Documents/Work/lakesearchv2/vector-query-rewriter/user_modules/requirements.txt  
+            - index_table: devices_after_110125
+              base_sql: |
+                SELECT 
+                  row_num,
+                  row_num as id,
+                  device_id,
+                  org_id,
+                  device_name,
+                  serial_number,
+                  model_type,
+                  family,
+                  category,
+                  model_name,
+                  platform,
+                  platform as platform_vec,
+                  manufacturer,
+                  subscription_id,
+                  cast(created_at as timestamp) as created_at,
+                  cast(updated_at as timestamp) as updated_at,
+                  is_active,
+                  _delete
+                FROM 
+                  devices
+              options:
+                start: 1736640000
+                step: 86400
+                batch_sql: |
+                  WITH base AS (
+                    {base_sql}
+                  ) SELECT 
+                    * 
+                  FROM 
+                    base 
+                  WHERE 
+                    epoch(updated_at) >= {start} AND epoch(updated_at) < {end}
+                throttle:
+                  min: 10000
+                  max: 60000
+                  factor: 1.2
+                  jitter: true
     ```
 
     To know more about each attribute in detail, please refer to [this link.](/resources/stacks/lakesearch/configurations/)  
@@ -165,7 +359,7 @@ The following implementation defines a custom query rewriter that:
     
     <aside class="callout">
     
-    After applying the Service, its runtime status will initially appear as `pending`. If everything is configured correctly, it will transition to `running` after some time, so don’t panic!
+    🗣️ After applying the Service, its runtime status will initially appear as `pending`. If everything is configured correctly, it will transition to `running` after some time, so don’t panic!
     
     </aside>
     
@@ -322,48 +516,10 @@ This section describes the logic behind the query rewriter workings.
 - Once registered, whenever a query needs to be rewritten (for example, to apply custom filters or adjustments), the system will invoke the `rewrite_query` method defined in `ImplementQueryRewriter`.
 
         
-## Working with extra Python dependencies/modules
-
-The `requirements.txt` files allow the user to import/download additional Python dependencies/modules that can be leveraged in the query rewrite logic.Following are the steps to work with the `requirements.txt` file:
-
-1. Environment variables in the service YAML:
-    
-    ```yaml
-    envs:
-        REQUIREMENTS_FILE: /etc/dataos/config/requirements.txt
-        INSTALL_LOCATION: public/ls-test-vector-embed/dependencies
-    ```
-    
-2. Mounting files from the local machine:
-    
-    ```yaml
-    configs:
-        ex_impl_query_rewriter.py: /Users/iamgroot/Documents/Work/lakesearch/vector-query-rewriter/user_modules/ex_impl_query_rewriter.py
-        requirements.txt: /Users/iamgroot/Documents/Work/lakesearch/vector-query-rewriter/user_modules/requirements.txt
-    ```
-            
-    - `requirements.txt`
-        
-        ```
-        torch>=2.5.1
-        torchvision>=0.20.1
-        sentence-transformers>=3.3.1
-        numpy>=2.2.1
-        scipy>=1.14.1
-        mpmath>=1.3.0
-        sympy>=1.13.1
-        tqdm>=4.67.1
-        scikit-learn>=1.6.0
-        tokenizers>=0.21.0
-        safetensors>=0.4.5
-        transformers>=4.47.1
-        huggingface-hub>=0.27.0
-        ```
-        
 
 ## Examples
 
-### Simple Filter
+### **Simple Filter**
 
 The code modifies the query to only fetch documents where devices are running on Windows platform. 
     
@@ -411,7 +567,7 @@ The code modifies the query to only fetch documents where devices are running on
 </details>
 
 
-### User-specific filters
+### **User-specific filters**
 
 The code checks whether the user has the "operator" tag.
 
@@ -487,5 +643,8 @@ The code checks whether the user has the "operator" tag.
     Registrar.setQueryRewriter(ImplementQueryRewriter())
     ```
   </details>
+
+
+
 
 

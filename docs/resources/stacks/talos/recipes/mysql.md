@@ -1,12 +1,49 @@
-# Talos for Bigquery
-This section provides the configuration guide to set up Talos Service for Bigquery.  
+# Talos for MySQL
+This section provides the configuration guide to set up Talos service for MySQL.  
 
 ## **Prerequisites**
 
-To access the data using API from BigQuery, User need the following:
+To access the data using API from MySQL, User need the following:
 
-1. **Access Permissions in DataOS**: To execute a Talos Service in DataOS, verify that following role tags are assigned to the respective user:
+- **Pre-created MySQL Depot:** 
+    To check the Depot go to the Metis UI of the DataOS or use the following command:
+    ```bash
+    dataos-ctl get -t depot -a
 
+    #expected output
+    
+    INFO[0000] 🔍 get...
+    INFO[0000] 🔍 get...complete
+
+    | NAME             | VERSION | TYPE  | WORKSPACE | STATUS | RUNTIME | OWNER      |
+    | ---------------- | ------- | ----- | --------- | ------ | ------- | ---------- |
+    | mysqldepot       | v2alpha | depot |           | active |         | usertest   |
+    ```
+
+    Template for creating MySQL Depot is shown below:
+
+    ```yaml
+    name: ${{depot-name}}
+    version: v2alpha
+    type: depot
+    tags:
+    - ${{dropzone}}
+    - ${{mysql}}
+    owner: ${{owner-name}}
+    layer: user
+    depot:
+    type: mysql                 
+    description: ${{description}} # optional
+    external: ${{true}}
+    secrets:
+        - name: ${{instance-secret-name}}-r
+        allkeys: true
+
+        - name: ${{instance-secret-name}}-rw
+        allkeys: true
+    ```
+
+- **Access Permissions in DataOS**: To execute a Talos Service in DataOS, verify that following role tags are assigned to the respective user:
     - **`roles:id:data-dev`**
     - **`roles:id:system-dev`**
     - **`roles:id:user`**
@@ -24,50 +61,8 @@ To access the data using API from BigQuery, User need the following:
     - **Manage Talos**
     - **Read Talos**
 
-    To validate assigned use cases, refer to the Bifrost Application's **Use Cases** section.
+    To validate assigned use cases, refer to the **Bifrost Application Use Cases** section.
 
-2. **Pre-created Bigquery Depot**: Ensure that a Bigquery Depot is already created with valid read access. To check the Depot go to the Metis UI of the DataOS or use the following command:
-
-    ```bash
-    dataos-ctl get -t depot -a
-
-    #expected output
-    
-    INFO[0000] 🔍 get...
-    INFO[0000] 🔍 get...complete
-
-    | NAME             | VERSION | TYPE  | WORKSPACE | STATUS | RUNTIME | OWNER      |
-    | ---------------- | ------- | ----- | --------- | ------ | ------- | ---------- |
-    | bigquerydepot    | v2alpha | depot |           | active |         | usertest   |
-    ```
-
-    Template for creating BIGQUERY Depot is shown below:
-
-    ```yaml
-    name: ${{depot-name}}
-    version: v2alpha
-    type: depot
-    tags:
-    - ${{dropzone}}
-    - ${{bigquery}}
-    owner: ${{owner-name}}
-    layer: user
-    depot:
-    type: BIGQUERY                 
-    description: ${{description}} # optional
-    external: ${{true}}
-    secrets:
-        - name: ${{bq-instance-secret-name}}-r
-        allkeys: true
-
-        - name: ${{bq-instance-secret-name}}-rw
-        allkeys: true
-    bigquery:  # optional                         
-        project: ${{project-name}} # optional
-        params: # optional
-        ${{"key1": "value1"}}
-        ${{"key2": "value2"}}
-    ```
 
 ## **Steps**
 
@@ -77,7 +72,7 @@ Open the repository in the preferred code editor. Navigate to the `setup` folder
 
 ```yaml
 name: ${{superstore}}
-description: ${{A talos-depot-bigquery app}} # description
+description: ${{A talos-depot-mysql app}} # description
 version: "0.1.26-test" # The version of the Talos(string)
 auth:
   userGroups:
@@ -91,17 +86,26 @@ auth:
     includes: "*"
 logLevel: ${{'DEBUG'}}
 sources: # source details
-  - name: ${{bigquerydepot}} # source name
+  - name: ${{mysqldepot}} # source name
     type: ${{depot}} # source type
+    options:    # required
+      ssl:
+        rejectUnauthorized: true
 ```
 
-Update the following attributes within the file to align with the required [configurations](/resources/stacks/talos/configurations/config/):
+Update the following attributes within the file to align with the required configurations:
 
 - **name**: Set the Talos app name.
 - **description**: Provide a description of the Talos application.
 - **version**: Specify the application version.
 - **source name**: Update the source system name.
 - **source type**: Define the type of source system being used.
+
+<aside class="callout">
+🗣 Verify that the source type, if specified as 'Depot,' is active.
+</aside>
+
+To know more information about each attribute, please refer to the [Configuration Page](/resources/stacks/talos/configurations/config/).
 
 ### **Writing SQL templates**
 
@@ -110,7 +114,7 @@ Open the `apis` folder within the `setup` directory and access the `table.s
 ```yaml
 urlPath: /table # output path
 description: product list # description
-source: ${{bigquerydepot}} # source name
+source: ${{mysqldepot}} # source name
 ```
 
 Ensure that both the queries and the **YAML** configuration are properly aligned with the API requirements.
@@ -121,7 +125,9 @@ Additionally, multiple **SQL** files and their corresponding manifest files can 
 SELECT * FROM myschema.mytable LIMIT 10;
 ```
 To know more information about each attribute, please refer to the [Configuration Page](/resources/stacks/talos/configurations/apis/).
-
+<aside class="callout">
+🗣 A refresh time and refresh expression can be added to the query to improve the caching mechanism. The refresh time specifies the interval at which the data should be refreshed, while the refresh expression defines the conditions under which the refresh should occur.
+</aside>
 
 ### **Push the changes**
 
@@ -178,7 +184,7 @@ Push the changes to the working source control service (here ‘bitbucket’) re
             - '--ref=main'
     ```
     
-    To know more information about each attribute, please refer to the Talos [Configuration](/resources/stacks/talos/configurations/service/) Service.
+    To know more information about each attribute, please refer to the Configuration Page.
     
 - Apply the Service manifest by executing the below command:
     
@@ -189,11 +195,11 @@ Push the changes to the working source control service (here ‘bitbucket’) re
 - To check if the service is running successfully, execute the following command.
     
     ```bash
-    dataos-ctl resource log -t service -n ${{service-name}} -w ${{workspace}}
+    dataos-ctl log -t service -n ${{service-name}} -w ${{workspace}}
     ```
-
-    Expected Output for service logs:
-
+    
+    Successful execution will look like the following:
+    
     ```bash
     INFO[0000] 📃 log(public)...                             
     INFO[0001] 📃 log(public)...complete                     
@@ -226,8 +232,8 @@ Push the changes to the working source control service (here ‘bitbucket’) re
     2025-03-07 04:08:49.636  DEBUG [CORE] Initializing profile: lens using pg driver 
     2025-03-07 04:08:49.789  DEBUG [CORE] Profile lens initialized 
     2025-03-07 04:08:49.789  DEBUG [SERVE] Data source pg initialized 
-    2025-03-07 04:08:49.789  DEBUG [SERVE] Initializing data source: redshift 
-    2025-03-07 04:08:49.789  DEBUG [SERVE] Data source redshift initialized 
+    2025-03-07 04:08:49.789  DEBUG [SERVE] Initializing data source: mysql 
+    2025-03-07 04:08:49.789  DEBUG [SERVE] Data source mysql initialized 
     2025-03-07 04:08:49.790  DEBUG [SERVE] Initializing data source: snowflake 
     2025-03-07 04:08:49.790  DEBUG [SERVE] Data source snowflake initialized 
     2025-03-07 04:08:49.791  INFO  [SERVE] Start to load and schedule prefetched data results from data sources to cache layer... 
@@ -247,15 +253,14 @@ Push the changes to the working source control service (here ‘bitbucket’) re
     } 
     2025-03-07 04:08:49.810  INFO  [CLI] 🚀 Server is listening at port 3000. 
 
-    ```
-    
+    ```    
 - The data can now be accessed through the API endpoint on platforms such as Postman, Swagger (OpenAPI Specification), and Google APIs Platform, as shown below (in Postman):
     
     <center>
       <img src="/resources/stacks/talos/image2.png" alt="Talos" style="width:40rem; border: 1px solid black; padding: 0px;" />
     </center>
 
-  The endpoint can also be hit as **/doc/postman?apikey='xxxxxxxxx'** in order to download the postman collection and import the .json collection into postman.
+  The endpoint can also be hit as “**/doc/postman?apikey='xxxxxxxxx”** in order to download the postman collection and import the .json collection into postman.
 
   - Authenticate the API endpoints by passing the API Key on DataOS CLI, as query param as shown below.
 
