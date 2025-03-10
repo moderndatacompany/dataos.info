@@ -72,6 +72,9 @@ In Talos, data masking for an API endpoint is implemented by defining user group
     ```
     
 3. **Update Configuration to Activate User Groups**
+
+    Provide detailed descriptions for filters to clarify how different user groups interact with the API. This documentation ensures that users understand access rules and masked content behavior.
+
     
     Modify `department.yaml` to enable user groups and apply the corresponding masking policies:
     
@@ -105,10 +108,11 @@ In Talos, data masking for an API endpoint is implemented by defining user group
 
 4. **Enhance API Documentation with Filter Descriptions**
 
-  Provide detailed descriptions for filters to clarify how different user groups interact with the API. This documentation ensures that users understand access rules and masked content behavior.
-
+    Provide detailed descriptions for filters to clarify how different user groups interact with the API. This documentation ensures that users understand access rules and masked content behavior.
+  
 5. **Include External Dependencies for Context**
   
-  Document external dependencies, such as tables and columns, to enhance the clarity of the API. This improves usability by providing insights into the underlying data sources.
+    Document external dependencies, such as tables and columns, to enhance the clarity of the API. This improves usability by providing insights into the underlying data sources. 
+
 
 Once these configurations are applied, the data can be securely exposed via the API while enforcing appropriate data masking.
