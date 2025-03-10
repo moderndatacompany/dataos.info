@@ -160,6 +160,10 @@ Create a Workspace for your team or your personal work. Always run the jobs/serv
 
 Configuration files for all Resources are written in YAML form. It’s necessary for the user to get acquainted with the features and capabilities of YAML to effectively work with the operating system. For example, you can use environment variable references in the config file to set values that need to be configurable during deployment.
 
+<aside class="callout">
+For an introduction to the YAML file format, refer to the <a href="https://yaml.org/spec/1.2.0/">YAML 1.2 Specification.</a>
+</aside>
+
 To parse environment variables in the configuration file of a Resource, follow these steps:
 
 1. Create the config file by using the following syntax for values in the config file - ${VARIABLE1} or $VARIABLE1
