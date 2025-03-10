@@ -910,7 +910,7 @@ The data types defined in the `source.index_table` is different from standard SQ
 | `bool` | Declares a boolean attribute. It's equivalent to an integer attribute with bit count of 1. | attribute |
 | `timestamp` | The timestamp type represents Unix timestamps, which are stored as 32-bit integers. The system expects a date/timestamp type object from the base_sql. | attribute |
 | `float` | Real numbers are stored as 32-bit IEEE 754 single precision floats. | attribute |
-| `vector` | Vector embeddings generated |  |
+
 
 ---
 

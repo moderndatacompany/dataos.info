@@ -15,9 +15,30 @@ service:
 
 An API endpoint can be accessed via an URL shown below by replacing the place holders.
 
-`{{base_url}}: <dataos_context_url>/lakesearch/<workspace>:<service_name>`
+<div class="grid" markdown>
 
-**Example:** `https://proud-cobra.dataos.app/lakesearch/public:ls-dummy`
+=== "Base URL"
+
+    `{{base_url}}: ${{dataos_context_url}}/lakesearch/${{workspace}}:${{service_name}}`
+
+=== "Curl command"
+
+    ```bash
+    curl -X GET "${{dataos_context_url}}/lakesearch/${{workspace}}:${{service_name}}/api/v2/index" \                           
+    -H "Authorization: ${{dataos-user-token}}"
+    ```
+=== "Example"
+
+    ```bash
+    curl -X GET "https://unique-haddock.dataos.app/lakesearch/public:testingls/api/v2/index" \                           
+    -H "Authorization: Bearer dG9rZW5fZGlzdhlkg3RseV9tYWlubHlfdXBlkmF5LjU1ZmE1ZWQyLWUwNDgtNGI3Yi1hNGQ2LWNlNjA1YTAzZTE4YQ=="
+    ```
+</div>
+
+<aside class="callout">
+🗣️ A user can get DataOS profile token from the profile section of DataOS Interface
+
+</aside>
 
 The following table containd the different endpoints for different purposes.
 
@@ -36,3 +57,39 @@ The following table containd the different endpoints for different purposes.
 | `{{base_url}}/api/v2/_bulk` | POST | Elasticsearch `_bulk` endpoint. [More Details](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html) |
 
 
+To get more information on index searching, please refer to [this link](resources/stacks/lakesearch/index_searching/).
+
+<!-- ### **KNN Vector Search**
+
+This is an AI-powered search that finds results based on meaning rather than exact words. It works with vector embeddings (numerical representations of text) to locate similar content.
+
+- `knn` is a vector query that allows searching for vectors in indexed documents.
+- It accepts regular values and uses the same vector embedding model (that was used to create vector embedding while indexing) to generate dynamic vectors and search the indexed documents against it.
+- **Parameters:**
+    1. `field`: This is the name of the float vector attribute containing vector data.
+    2. `k`: This represents the number of documents to return and is a key parameter for Hierarchical Navigable Small World (HNSW) indexes. It specifies the quantity of documents that a single HNSW index should return. However, the actual number of documents included in the final results may vary.
+    3. `query`: This is the search term.
+    4. `ef`: Optional size of the dynamic list used during the search. A higher **`ef`** leads to more accurate but slower search.
+
+**Syntax:**
+
+```json
+{
+    "knn": {
+        "field": "<name of the vectorized field>",
+        "k": <positive integer>,
+        "query": "<search_term>"
+}
+```
+
+**Example:**
+    
+```json
+{
+    "knn": {
+        "field": "platform_vec",
+        "k": 10,
+        "query": "Android"
+}
+```
+     -->

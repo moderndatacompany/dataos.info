@@ -123,8 +123,13 @@ markdown_extensions:
   - pymdownx.tilde
 #  - pymdownx.extra
   - pymdownx.emoji:
-      # emoji_index: !!python/name:material.extensions.emoji.twemoji          # while pushin to dev
-      # emoji_generator: !!python/name:material.extensions.emoji.to_svg       # while pushin to dev
+<<<<<<< HEAD
+      emoji_index: !!python/name:material.extensions.emoji.twemoji          # while pushin to dev
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg       # while pushin to dev
+=======
+      # emoji_index: !!python/name:materialx.emoji.twemoji
+      # emoji_generator: !!python/name:materialx.emoji.to_svg
+>>>>>>> 0fdf2b0f4fb4e98d5ee2dcc3a2de3e086c4b11a9
 
       emoji_index: !!python/name:materialx.emoji.twemoji                      # while hosting locally  
       emoji_generator: !!python/name:materialx.emoji.to_svg                   # while hosting locally 
@@ -456,9 +461,14 @@ nav:
               - Use cached datsets in Talos APIs: resources/stacks/flash/recipes/talos.md
           - Lakesearch:
             - resources/stacks/lakesearch/index.md
+            - Set up: 
+              - Normal Lakesearch Service: resources/stacks/lakesearch/service.md
+              - Query Rewriter: resources/stacks/lakesearch/rewriter.md
+              # - Vector Embedding: resources/stacks/lakesearch/vector_embedding.md
             - Configurations: resources/stacks/lakesearch/configurations.md
-            - Observability: resources/stacks/lakesearch/obervability.md
             - Governance: resources/stacks/lakesearch/governance.md
+            - Index Searching: resources/stacks/lakesearch/index_searching.md
+            - Observability: resources/stacks/lakesearch/observability.md
             - Troubleshooting: resources/stacks/lakesearch/troubleshooting.md
 
           - Scanner: 
