@@ -43,7 +43,7 @@ API key tokens can also be fetched from the DataOS GUI, for more details refer t
 
 ### **Configuring User Groups**
 
-To access and query data via the RESTAPI endpoint, users must be part of a user group with the required permissions. The necessary permissions are defined using the `api_scopes` attribute within the user group configuration located in the Lens directory. To know more about user groups and data policy click [here](/resources/lens/working_with_user_groups_and_data_policies/)
+To access and query data via the RESTAPI endpoint, users must be part of a user group with the required permissions. The necessary permissions are defined using the `api_scopes` attribute within the user group configuration located in the Lens directory. To know more about user groups and data policy click [here](/resources/lens/user_groups_and_data_policies/)
 
 **Example User Group Configuration**
 
