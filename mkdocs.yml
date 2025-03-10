@@ -343,22 +343,19 @@ nav:
             - Maintenance (Snapshots and Metadata listing): resources/lakehouse/command_reference/case_scenario_maintenance.md
         - Lens:
           - resources/lens/index.md
-          - Lens Setup: 
-              - Lens Model Folder Setup: resources/lens/lens_model_folder_setup.md
-              # - Develop Lens Locally: resources/lens/optimizing_lens_testing_in_local_development.md
-              - Develop Lens in DataOS: resources/lens/lens_deployment.md
-            # - Optimizing Lens testing in local development: resources/lens/optimizing_lens_testing_in_local_development.md
-            # - Lens Deployment: resources/lens/lens_deployment.md
-    
-          - Data Modelling: 
-            - Overview: resources/lens/overview.md
-            - Concepts: resources/lens/concepts.md
-            - Best Practices: resources/lens/best_practices.md
-            - Do's and Dont's: resources/lens/dos_and_donts.md
-            - Errors: resources/lens/errors.md
-          - Configurations: 
-            - Lens Manifest: resources/lens/lens_manifest_attributes.md
-            # - Docker Compose Manifest: resources/lens/docker_compose_manifest_attributes.md
+          - Semantic Modeling:
+            - Key concepts: resources/lens/concepts.md
+            # - Working with Payload: resources/lens/working_with_payload.md
+            - Segments: resources/lens/segments.md
+            - Views: resources/lens/views.md
+            - User Groups: resources/lens/working_with_user_groups_and_data_policies.md
+
+          # - Lens Setup: 
+          #     - Lens Model Folder Setup: resources/lens/lens_model_folder_setup.md
+          #     # - Develop Lens Locally: resources/lens/optimizing_lens_testing_in_local_development.md
+          #     - Develop Lens in DataOS: resources/lens/lens_deployment.md
+          #   # - Optimizing Lens testing in local development: resources/lens/optimizing_lens_testing_in_local_development.md
+          #   # - Lens Deployment: resources/lens/lens_deployment.md
           - Supported Data Sources: 
             # resources/lens/data_sources.md
               - Bigquery: resources/lens/data_sources/bigquery.md
@@ -367,22 +364,37 @@ nav:
               - Postgres: resources/lens/data_sources/postgres.md
               - Redshift: resources/lens/data_sources/awsredshift.md
               - Themis: resources/lens/data_sources/themis.md
-          - APIs & Integrations:
-            - API Endpoints and Scopes: resources/lens/api_endpoints_and_scopes.md
-            - BI Integration: resources/lens/bi_integration.md
-            # - Supported Data Quality Checks: resources/lens/supported_data_quality_checks.md
-          - Reference: 
-            - Working with Payload: resources/lens/working_with_payload.md
-            - Working with Segments: resources/lens/working_with_segments.md
-            - Working with Views: resources/lens/working_with_views.md
-            - Working with User Groups: resources/lens/working_with_user_groups_and_data_policies.md
           - Exploration:
-            - Using GraphQL: resources/lens/exploration_of_deployed_lens_using_graphql.md
-            - Using SQL APIs: resources/lens/exploration_of_deployed_lens_using_sql_apis.md
-            - Using Python: resources/lens/exploration_of_deployed_lens_using_python.md
-            - Using REST APIs: resources/lens/exploration_of_deployed_lens_using_rest_apis.md
-            - Using Iris dashboard: resources/lens/exploration_of_deployed_lens_using_iris_dashboard.md
-          - Optimizing Lens Model: resources/lens/fine_tuning_a_lens_model.md
+            - Using GraphQL: 
+                Overview: resources/lens/exploration_of_lens_using_graphql.md
+                Examples: resources/lens/graphql_api/graphql_query_example.md
+
+            - Using Python: resources/lens/exploration_of_lens_using_python.md
+            - Using SQL APIs: 
+                - Overview: resources/lens/exploration_of_lens_using_sql_apis.md
+                - Supported functions and operators: resources/lens/sql_apis/supported_functions_and_operators.md
+            - Using REST APIs: resources/lens/exploration_of_lens_using_rest_apis.md            
+            # - Using Data Product Hub: resources/lens/exploration_of_lens_using_data_product_hub.md
+
+            # - Using Iris dashboard: resources/lens/exploration_of_lens_using_iris_dashboard.md
+          - BI Integrations:
+          #  - API Endpoints and Scopes: resources/lens/api_endpoints_and_scopes.md
+            - Power BI: resources/lens/bi_integration/powerbi.md
+            - Superset: resources/lens/bi_integration/superset.md
+            - Tableau: resources/lens/bi_integration/tableau.md                
+            # - Supported Data Quality Checks: resources/lens/supported_data_quality_checks.md
+          - References: 
+            - Best Practices: resources/lens/best_practices.md
+            - Errors: resources/lens/errors.md
+            - Optimizing Semantic Model: resources/lens/fine_tuning_a_lens_model.md
+            - Aggregation Strategies: resources/lens/best_practices_for_solution_designing.md
+          - Configurations: resources/lens/lens_manifest_attributes.md
+            # - Docker Compose Manifest: resources/lens/docker_compose_manifest_attributes.md
+          - Cataloging: resources/lens/cataloging.md
+          - Governance: resources/lens/governance.md
+          - Observability: resources/lens/observability.md
+
+
         
         - Monitor: 
           - resources/monitor/index.md
