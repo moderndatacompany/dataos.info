@@ -2,11 +2,11 @@
 
 Talos configurations consist of various manifest files, let’s see each one in detail to help you configure Talos efficiently.
 
-## [`config.yaml`](/resources/stacks/talos/configurations/config/)
+## `config.yaml`
 
 The config.yaml file serves as the primary configuration file for a Talos project. It specifies essential settings and parameters required to configure the Talos application. For a detailed explanation of each attribute, refer to [this section](/resources/stacks/talos/configurations/config/).
 
-## [`apis`](/resources/stacks/talos/configurations/apis/)
+## `apis`
 
 The `apis` directory contains:
 
@@ -15,11 +15,11 @@ The `apis` directory contains:
 
 For more details, refer to [this section](/resources/stacks/talos/configurations/apis/).
 
-## [`service.yaml`](/resources/stacks/talos/configurations/service/)
+## `service.yaml`
 
 The service.yaml file is a service manifest used for configuring Talos within DataOS. It includes service definitions, dependencies, and environment configurations. For a complete attribute reference, refer to [this section](/resources/stacks/talos/configurations/service/).
 
-## Additional Linke
+## Additional Links
 
 - [Talos for Lens](/resources/stacks/talos/recipes/lens_setup/)
 - [Talos for Flash](/resources/stacks/talos/recipes/flash_setup/)
