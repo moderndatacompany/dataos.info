@@ -27,7 +27,7 @@ The Flare Workflow provided below in the code snippet reads data incrementally b
 
 ```yaml
 version: v1
-name: incremental-ingestion-08
+name: incremental-ingestion-001
 type: workflow
 tags:
 - Connect
@@ -35,18 +35,18 @@ tags:
 workflow:
   title: Connect Order Incremental Data
   dag:
-  - name: order-incremental-08
+  - name: order-incremental-001
     title: Order Incremental Data
     spec:
       tags:
       - Connect
       - Incremental
-      stack: flare:3.0
+      stack: flare:6.0
       compute: runnable-default
-      envs:
-        FLARE_AUDIT_MODE: LOG
-        STORE_URL: https://<full-domain>/stores/api/v1
-      flare:
+      # envs:  ## need to ask from yogesh about the attribute which was causing error
+      #   FLARE_AUDIT_MODE: LOG
+      #   STORE_URL: https://<full-domain>/stores/api/v1
+      stackSpec:
         job:
           explain: true
           inputs:
@@ -55,14 +55,15 @@ workflow:
              format: iceberg
 # Incremental Read Properties
              incremental:
-               context: incremental_order_8
-               sql: select * from incremental_order_8 where order_date > '$|start|' AND order_date <= '$|end|'
+               context: incremental_order_001
+               sql: select * from incremental_order_001 where order_date > '$|start|' AND order_date <= '$|end|'
                keys:
                 - name: start # this will alway be stored in string
-                  sql: select to_timestamp('2020-01-01 00:00:00')
+                  sql: select '2020-01-01 00:00:00'
 
                 - name: end # this will alway be stored in string
-                  sql: select to_timestamp('$|start|') + INTERVAL '1' MONTH
+                  sql: select '2020-12-01 00:00:00'          
+                  # sql: select to_timestamp('$|start|') + INTERVAL '1' MONTH
 
                state:
                   - key: start

@@ -118,7 +118,7 @@ segments:
   - name: country_india
     sql: country = 'India'
 ```
-To know more about segments click [here](o/resources/lens/working_with_segments/).
+To know more about segments click [here](o/resources/lens/segments/).
 
 ### **Create the views**
 
@@ -158,7 +158,7 @@ views:
           - product_name
 ```
 
-To know more about the views click [here](/resources/lens/working_with_views/).
+To know more about the views click [here](/resources/lens/views/).
 
 ### **Create user groups**
 
@@ -171,7 +171,7 @@ user_groups:
     includes: "*"
 ```
 
-Multiple user groups can be created in the `user_groups.yml` . To know more about the user groups click [here](/resources/lens/working_with_user_groups_and_data_policies/).
+Multiple user groups can be created in the `user_groups.yml` . To know more about the user groups click [here](/resources/lens/user_groups_and_data_policies/).
 
 <aside class="callout">
 🗣️ Push the semantic model folder and all other artifacts in a code repository. Secure the code repository by putting the code repository credentials into an Instance Secret. 

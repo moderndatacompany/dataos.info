@@ -342,7 +342,7 @@ segments:
  #....
 ```
 
-A more thorough introduction can be found in [Working with Segments](/resources/lens/working_with_segments/).
+A more thorough introduction can be found in [Working with Segments](/resources/lens/segments/).
 
 ## Views
 
@@ -388,4 +388,4 @@ views:
           - contact_owner_id
 ```
 
-A more thorough introduction can be found in [Working with views](/resources/lens/working_with_views/).
+A more thorough introduction can be found in [Working with views](/resources/lens/views/).
