@@ -1,263 +1,284 @@
-# Setting up Talos for Redshift
-
-This section will guide you in setting up the Redshift Database and exposing the data through APIs.
-
-## Setting up tickit database on AWS Redshift
-
-The `Tickit`, an online ticket sales company wants to generate comprehensive reports on event sales, user preferences, and venue performance to enhance business strategies and customer experiences.
-
-### Prerequisites
-
-- AWS Account
-- AWS CLI installed and configured
-- SQL client tool (e.g., SQL Workbench/J)
-
-### Step-by-step guide
-
-1. **Create a Redshift cluster:**
-    - Sign in to the [AWS Management Console](https://aws.amazon.com/console/).
-    - Navigate to **Amazon Redshift**.
-    - Click **Create cluster** and configure the cluster settings:
-        - **Cluster identifier:** `tickit-cluster`
-        - **Node type:** `dc2.large` (or your choice)
-        - **Number of nodes:** 2 (or your choice)
-        - **Database name:** `tickit`
-        - **Master username:** `your-username`
-        - **Master user password:** `your-password`
-    - Click **Create cluster** and wait for the cluster to become available.
-2. **Configure security group:**
-    - Navigate to **VPC** > **Security groups**.
-    - Select the security group associated with your Redshift cluster.
-    - Add an inbound rule to allow traffic on port `5439` (default Redshift port) from your IP address.
-3. **Connect to the Redshift cluster:**
-    - Use a SQL client tool to connect to the Redshift cluster:
-        - **Host:** `<your-cluster-endpoint>`
-        - **Port:** `5439`
-        - **Database:** `tickit`
-        - **Username:** `your-username`
-        - **Password:** `your-password`
-4. **Create tickit schema and tables:**
-    - Download the Tickit dataset from the AWS documentation [Tickit Database Script](https://docs.aws.amazon.com/redshift/latest/dg/c_sampledb.html).
-    - Execute the downloaded SQL script to create the schema and tables in your Redshift database.
-5. **Load sample data:**
-    - Ensure your data files (e.g., `allevents_pipe.txt`) are stored in an S3 bucket.
-    - Use the `COPY` command to load data into the tables:
-        
-        ```sql
-        COPY public.event FROM 's3://your-bucket-name/allevents_pipe.txt'
-        CREDENTIALS 'aws_access_key_id=YOUR_ACCESS_KEY;aws_secret_access_key=YOUR_SECRET_KEY'
-        DELIMITER '|'
-        TIMEFORMAT 'auto'
-        REGION 'your-region';
-        
-        ```
-        
-6. **Verify data loading:**
-    - Run SQL queries to verify the data has been loaded correctly:
-        
-        ```sql
-        SELECT * FROM public.event LIMIT 10;
-        
-        ```
-        
-
-Following these steps, you will have the Tickit database set up on AWS Redshift, ready for querying and reporting through the Talos API framework.
-
-## Setting up Talos
-
-In this section, we’ll set up Talos to expose category popularity data through the API. 
+# Talos for Redshift
 
 ### Pre-requisites
+To access the data using API from redshift, User need the following:
 
-- Redshift Database set up
-- Docker initialization
+1. **Access Permissions in DataOS**: To execute a Talos Service in DataOS, verify that following role tags are assigned to the respective user:
 
-### Step-by-step guide
+    - **`roles:id:data-dev`**
+    - **`roles:id:system-dev`**
+    - **`roles:id:user`**
 
-1. Create a working repository for Talos, inside this repository, create a `config.yaml` file with the following code to define the base configuration for Talos by updating the name, description, version, DataOS context, and connection details :
+    Use the following command to check assigned roles:
+
+    ```bash
+    dataos-ctl user get
+    ```
+
+    If any required tags are missing, contact a **DataOS Operator** or submit a **Grant Request** for role assignment.
+
+    Alternatively, if access is managed through **use cases**, ensure the following use cases are assigned:
+
+    - **Manage Talos**
+    - **Read Talos**
+
+    To validate assigned use cases, refer to the Bifrost Application's **Use Cases** section.
+
+2. **Pre-created Redshift Depot**: Ensure that a Redshift Depot is already created with valid read access. To check the Depot go to the Metis UI of the DataOS or use the following command:
+
+    ```bash
+    dataos-ctl get -t depot -a
+
+    #expected output
     
+    INFO[0000] 🔍 get...
+    INFO[0000] 🔍 get...complete
+
+    | NAME             | VERSION | TYPE  | WORKSPACE | STATUS | RUNTIME | OWNER      |
+    | ---------------- | ------- | ----- | --------- | ------ | ------- | ---------- |
+    | redshiftdepot    | v2alpha | depot |           | active |         | usertest   |
+    ```
+
+    Template for creating redshift Depot is shown below:
+
     ```yaml
-    name: tickit
-    description: A talos-redshift app
-    version: 0.1.6
+    name: ${{depot-name}}
+    version: v2alpha
+    type: depot
+    tags:
+    - ${{dropzone}}
+    - ${{redshift}}
+    owner: ${{owner-name}}
+    layer: user
+    depot:
+    type: redshift                 
+    description: ${{description}} # optional
+    external: ${{true}}
+    secrets:
+        - name: ${{instance-secret-name}}-r
+        allkeys: true
+
+        - name: ${{instance-secret-name}}-rw
+        allkeys: true
+    ```
+
+## **Steps**
+
+### **Connect to the data source**
+
+Create a repository, open the repository with a code editor (VS Code), and create a `config.yaml` manifest file and copy the below code. Update the name, description, version, dataos context, Depot name, and Depot type.
+    
+  ```yaml
+    name: adventureworks
+    description: A talos app
+    version: 0.1.26
+    logLevel: DEBUG
     auth:
-      heimdallUrl: https://liberal-donkey.dataos.app/heimdall
-    logLevel: 'DEBUG'
-    cache: tmp
+        userGroups:
+        - name: reader
+          description: This is a reader's group
+          includes:
+            - roles:id:data-dev
+            - roles:id:data-guru
+          excludes:
+            - users:id:iamgroot
+        - name: default
+          description: Default group to accept everyone
+          includes: "*"
+    metrics:
+      type: summary
+      percentiles: [ 0.5, 0.75, 0.95, 0.98, 0.99, 0.999 ]
+    rateLimit:
+      enabled: true
+      options:
+        interval:
+          min: 1
+        max: 100
+        delayAfter: 4
+    cors:
+      enabled: true
+      options:
+        origin: 'https://google.com'
+        allowMethods: 'GET'  
+    cachePath: tmp       
     sources:
-      - name: redshift # profile name
-        type: redshift
-        connection:
-          host: "host"
-          port: 5439
-          user: "user"
-          password: "password"
-          database: "database"
-          cache:
-            s3BucketPath: "s3://bucket/path"
-            accessKeyId: "keyid"
-            secretAccessKey: "secretAccessKey"
-            region: "region"
+        - name: redshiftdepot
+          type: depot   
+  ```
     
-    ```
-    
+  Similarly, for other types of Depot, the config.yaml file remains unchanged. The source name should be updated to reflect the actual Depot name. For this guide, the [Tickit database](https://docs.aws.amazon.com/redshift/latest/dg/c_sampledb.html) set up on an AWS Redshift Depot is used as a reference.
 
-1.  Create a folder named `apis` inside the same repository, then create `categorypopularity.sql` and `categorypopularity.yaml` files as shown below:
     
-    SQL Query (`categorypopularity.sql`)
-    
-    ```sql
-    SELECT category.catname, SUM(qtysold) AS total_tickets
-    FROM category
-    JOIN event ON category.catid = event.catid
-    JOIN sales ON event.eventid = sales.eventid
-    GROUP BY category.catname;
-    ```
-    
-    manifest file Configuration (`categorypopularity.yaml`)
-    
-    ```yaml
-    urlPath: /categories/popularity
-    description: Retrieve popularity metrics for event categories including total tickets sold per category.
-    source: redshift
-    ```
-    
+### **Writing SQL templates**
 
-1. In the same repository, create `docker-compose.yaml` manifest file, copy the below-provided code, and update the `volumes` path `/home/Desktop/talos/depot-postgres` with the actual path of your repository, add your dataos username and dataos API key in `DATAOS_RUN_AS_USER` and `DATAOS_RUN_AS_APIKEY` respectively.
+Create a folder named `apis` inside the same repository, then create `categorypopularity.sql` and `categorypopularity.yaml` files as shown below:
     
-    ```yaml
-    version: "2.2"
-    services:
-      talos:
-        image: rubiklabs/talos:0.1.6
-        ports:
-          - "3000:3000"
-        volumes:
-          - /home/iamgroot/Desktop/talos-examples/redshift/:/etc/dataos/work
-        environment:
-          DATAOS_RUN_AS_USER: iamgroot
-          DATAOS_RUN_AS_APIKEY: dG9rZW5fYWRtaXR8ujkk98erdtR1cmFsbHlfZW5hYmxpbmdfb3J5eC5lODg2MjIyZC05NDMwLTQ4MWEtYjU3MC01YTJiZWY5MjI5OGE=
-          DATAOS_FQDN: liberal-donkey.dataos.app
-        tty: true
-    ```
+  **SQL Query (`categorypopularity.sql`)**
     
-2. Create a new file `Makefile` in the same repository, and copy the below code.
+```sql
+SELECT category.catname, SUM(qtysold) AS total_tickets
+FROM category
+JOIN event ON category.catid = event.catid
+JOIN sales ON event.eventid = sales.eventid
+GROUP BY category.catname;
+```
     
-    ```makefile
-    start:
-    	docker-compose -f docker-compose.yaml up -d
+  **Manifest file Configuration (`categorypopularity.yaml`)**
+      
+```yaml 
+urlPath: /categories/popularity
+description: Retrieve popularity metrics for event categories including total tickets sold per category.
+source: redshiftdepot
+```
     
-    stop:
-    	docker-compose -f docker-compose.yaml down -v
-    ```
-    
-3. Run `docker-compose up` on the terminal. The output should look similar to the following:
-    - output
-        
-        ```bash
-        docker-compose up
-        [+] Running 1/0
-         ✔ Container depot-postgres-talos-1  Created                                                                                                                                                                  0.0s 
-        Attaching to depot-postgres-talos-1
-        depot-postgres-talos-1  | 👉 /etc/dataos/work/config.yaml => {
-        depot-postgres-talos-1  |   "name": "postgres_domain",
-        depot-postgres-talos-1  |   "description": "A talos-depot-postgres app",
-        depot-postgres-talos-1  |   "version": "0.1.6",
-        depot-postgres-talos-1  |   "auth": {
-        depot-postgres-talos-1  |     "heimdallUrl": "https://liberal-donkey.dataos.app/heimdall"
-        depot-postgres-talos-1  |   },
-        depot-postgres-talos-1  |   "logLevel": "DEBUG",
-        depot-postgres-talos-1  |   "sources": [
-        depot-postgres-talos-1  |     {
-        depot-postgres-talos-1  |       "name": "postgre01",
-        depot-postgres-talos-1  |       "type": "depot"
-        depot-postgres-talos-1  |     }
-        depot-postgres-talos-1  |   ],
-        depot-postgres-talos-1  |   "schemaPath": "",
-        depot-postgres-talos-1  |   "cachePath": "tmp"
-        depot-postgres-talos-1  | }
-        depot-postgres-talos-1  | Get Depot Service Depot Fetch URL:  https://liberal-donkey.dataos.app/ds/api/v2/depots/postgre01
-        depot-postgres-talos-1  | Get Depot Service Secrets Fetch URL:  https://liberal-donkey.dataos.app/ds/api/v2/secrets/postgre01_r
-        depot-postgres-talos-1  | 🧑‍🤝‍🧑 sources => [
-        depot-postgres-talos-1  |   {
-        depot-postgres-talos-1  |     "name": "postgre01",
-        depot-postgres-talos-1  |     "type": "pg",
-        depot-postgres-talos-1  |     "connection": {
-        depot-postgres-talos-1  |       "host": "usr-db-dataos-ck-vgji-liberaldo-dev.postgres.database.azure.com",
-        depot-postgres-talos-1  |       "port": 5432,
-        depot-postgres-talos-1  |       "database": "postgres",
-        depot-postgres-talos-1  |       "user": "--REDACTED--",
-        depot-postgres-talos-1  |       "password": "--REDACTED--"
-        depot-postgres-talos-1  |     }
-        depot-postgres-talos-1  |   }
-        depot-postgres-talos-1  | ]
-        depot-postgres-talos-1  | - Building project...
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.626  
-        depot-postgres-talos-1  | DEBUG [BUILD]
-        depot-postgres-talos-1  | Initializing data source: mock
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.627  
-        depot-postgres-talos-1  | DEBUG [BUILD] Data source mock initialized
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.628  
-        depot-postgres-talos-1  | DEBUG [BUILD] Initializing data source: bq
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.628  
-        depot-postgres-talos-1  | DEBUG [BUILD] Data source bq initialized
-        depot-postgres-talos-1  | 
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.629  DEBUG
-        depot-postgres-talos-1  | [BUILD] Initializing data source: clickhouse
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.629  
-        depot-postgres-talos-1  | DEBUG [BUILD] Data source clickhouse initialized
-        depot-postgres-talos-1  | 
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.630  DEBUG [BUILD] Initializing data source: duckdb
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.636  DEBUG
-        depot-postgres-talos-1  | [CORE] Create connection for talos.cache
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.637  
-        depot-postgres-talos-1  | DEBUG [CORE] Open database in automatic mode
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.650  
-        depot-postgres-talos-1  | DEBUG
-        depot-postgres-talos-1  | [CORE] Installed httpfs extension
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.653  
-        depot-postgres-talos-1  | DEBUG [CORE] Duckdb config: access_mode = automatic
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.653  
-        depot-postgres-talos-1  | DEBUG [CORE] Duckdb config: allow_persistent_secrets = true
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.654  
-        depot-postgres-talos-1  | DEBUG [CORE] Duckdb config: checkpoint_threshold = 16.0 MiB
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.654  
-        depot-postgres-talos-1  | DEBUG [CORE] Duckdb config: debug_checkpoint_abort = none
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.654  
-        depot-postgres-talos-1  | DEBUG [CORE] Duckdb config: storage_compatibility_version = v0.10.2
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.654  
-        depot-postgres-talos-1  | DEBUG [CORE] Duckdb config: debug_force_external = false
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.655  
-        depot-postgres-talos-1  | DEBUG [CORE] Duckdb config: debug_force_no_cross_product = false
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.655  
-        depot-postgres-talos-1  | DEBUG [CORE] Duckdb config: debug_asof_iejoin = false
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.655  
-        depot-postgres-talos-1  | DEBUG [CORE] Duckdb config: prefer_range_joins = false
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.655  
-        depot-postgres-talos-1  | DEBUG [CORE] Duckdb config: debug_window_mode = NULL
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.656  
-        depot-postgres-talos-1  | DEBUG [CORE] Duckdb config: default_collation =
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.656  
-        depot-postgres-talos-1  | DEBUG [CORE] Duckdb config: default_order = asc
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.656  
-        depot-postgres-talos-1  | DEBUG [CORE] Duckdb config: default_null_order = nulls_last
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.656  
-        depot-postgres-talos-1  | DEBUG [CORE] Duckdb config: disabled_filesystems =
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.656  
-        depot-postgres-talos-1  | DEBUG [CORE] Duckdb config: disabled_optimizers =  
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.657  DEBUG [CORE] Duckdb config: enable_external_access = true
-        depot-postgres-talos-1  | 
-        
-        ```
-        
-4. Now you are ready to fetch your data using your DataOS API key on Postman or your browser copy the below link by updating the API key with your actual DataOS API key:
-    
-    ```
-    http://localhost:3000/api/customer?apikey=dG9rZW5fYWRt9uYXR1cmFsbHlfZgfhgu567rgdffC5lODg2MjIyZC05NDMwLTQ4MWEtYjU3MC01YTJiZWY5MjI5OGE=
-    ```
-    
+To know more information about each attribute, please refer to the [Configuration Page](/resources/stacks/talos/configurations/apis/).
 
-Similarly, for different queries, you just need to make changes in `apis` folder.
+### **Push the changes**
+
+Push the changes to the working source control service (here ‘bitbucket’) repository as shown below:
+
+<center>
+  <img src="/resources/stacks/talos/image1.png" alt="Talos" style="width:20rem; border: 1px solid black; padding: 5px;" />
+</center>
+
+### **Create a Talos Service manifest file**
+
+- Now create a manifest file for the Service as shown below.
+    
+  ```yaml
+
+  name: ${{talos-test}} # service name
+  version: ${{v1}} # version
+  type: service # resource type
+  tags: # tags
+    - ${{service}}
+    - ${{dataos:type:resource}}
+    - ${{dataos:resource:service}}
+    - ${{dataos:layer:user}}
+  description: ${{Talos Service}}
+  workspace: ${{public}}
+  service: # service specific section
+    servicePort: 3000
+    ingress:
+      enabled: true
+      stripPath: true
+      path: /talos/${{workspace}}:${{talos-test}} # service name
+      noAuthentication: true
+    replicas: ${{1}}
+    logLevel: ${{DEBUG}}
+    compute: runnable-default
+    envs:
+      TALOS_SCHEMA_PATH: ${{talos/setup}}
+      TALOS_BASE_PATH: /talos/public:${{talos-test}}
+    resources:
+      requests:
+        cpu: ${{100m}}
+        memory: ${{128Mi}}
+      limits:
+        cpu: ${{500m}}
+        memory: ${{512Mi}}
+    stack: talos:2.0
+    dataosSecrets:
+      - name: ${{bitrepo-r}}
+        allKeys: true
+    stackSpec:
+      repo:
+        url: ${{https://bitbucket.org/mywork15/talos/}}
+        projectDirectory: ${{talos/setup}}
+        syncFlags:
+          - '--ref=main'
+  ```
+    
+  To know more information about each attribute, please refer to the Talos [Configuration](/resources/stacks/talos/configurations/service/) Service.
+    
+- Apply the Service manifest by executing the below command:
+    
+    ```bash
+    dataos-ctl resource apply -f ${{path to the service YAML file }}
+    ```
+    
+- To check if the service is running successfully, execute the following command.
+    
+    ```bash
+    dataos-ctl resource log -t service -n ${{service-name}} -w ${{workspace}}
+    ```
+
+    Expected Output for service logs:
+
+    ```bash
+
+    INFO[0000] 📃 log(public)...                             
+    INFO[0001] 📃 log(public)...complete                     
+
+                    NODE NAME                 │       CONTAINER NAME       │ ERROR  
+    ───────────────────────────────────────────┼────────────────────────────┼────────
+      aaditest-service-zvs7-d-5dc48797c6-gs9fb │ aaditest-service-zvs7-main │        
+
+    -------------------LOGS-------------------
+    2025-03-07 04:08:49.536  DEBUG [CORE] Duckdb config: temp_directory = /etc/dataos/work/.worktrees/a76bec81137783ce29782bb6aa6de0856a076401/aadi-test/talos_cache.db.tmp 
+    2025-03-07 04:08:49.536  DEBUG [CORE] Duckdb config: threads = 1 
+    2025-03-07 04:08:49.537  DEBUG [CORE] Duckdb config: username = NULL 
+    2025-03-07 04:08:49.537  DEBUG [CORE] Duckdb config: arrow_large_buffer_size = false 
+    2025-03-07 04:08:49.537  DEBUG [CORE] Duckdb config: user = NULL 
+    2025-03-07 04:08:49.537  DEBUG [CORE] Duckdb config: wal_autocheckpoint = 16.0 MiB 
+    2025-03-07 04:08:49.537  DEBUG [CORE] Duckdb config: worker_threads = 1 
+    2025-03-07 04:08:49.537  DEBUG [CORE] Duckdb config: allocator_flush_threshold = 128.0 MiB 
+    2025-03-07 04:08:49.537  DEBUG [CORE] Duckdb config: duckdb_api = nodejs 
+    2025-03-07 04:08:49.538  DEBUG [CORE] Duckdb config: custom_user_agent =  
+    2025-03-07 04:08:49.538  DEBUG [CORE] Duckdb config: partitioned_write_flush_threshold = 524288 
+    2025-03-07 04:08:49.538  DEBUG [CORE] Duckdb config: enable_http_logging = false 
+    2025-03-07 04:08:49.538  DEBUG [CORE] Duckdb config: http_logging_output =  
+    2025-03-07 04:08:49.538  DEBUG [CORE] Duckdb config: binary_as_string =  
+    2025-03-07 04:08:49.538  DEBUG [CORE] Duckdb config: Calendar = gregorian 
+    2025-03-07 04:08:49.539  DEBUG [CORE] Duckdb config: TimeZone = UTC 
+    2025-03-07 04:08:49.539  DEBUG [SERVE] Data source duckdb initialized 
+    2025-03-07 04:08:49.539  DEBUG [SERVE] Initializing data source: pg 
+    2025-03-07 04:08:49.539  DEBUG [CORE] Initializing profile: sivapostgresdepot using pg driver 
+    2025-03-07 04:08:49.636  DEBUG [CORE] Profile sivapostgresdepot initialized 
+    2025-03-07 04:08:49.636  DEBUG [CORE] Initializing profile: lens using pg driver 
+    2025-03-07 04:08:49.789  DEBUG [CORE] Profile lens initialized 
+    2025-03-07 04:08:49.789  DEBUG [SERVE] Data source pg initialized 
+    2025-03-07 04:08:49.789  DEBUG [SERVE] Initializing data source: redshift 
+    2025-03-07 04:08:49.789  DEBUG [SERVE] Data source redshift initialized 
+    2025-03-07 04:08:49.790  DEBUG [SERVE] Initializing data source: snowflake 
+    2025-03-07 04:08:49.790  DEBUG [SERVE] Data source snowflake initialized 
+    2025-03-07 04:08:49.791  INFO  [SERVE] Start to load and schedule prefetched data results from data sources to cache layer... 
+    2025-03-07 04:08:49.796  DEBUG [SERVE] profile: sivapostgresdepot, allow: * 
+    2025-03-07 04:08:49.796  DEBUG [SERVE] profile: lens, allow: * 
+    2025-03-07 04:08:49.797  DEBUG [SERVE] profile: talos.cache, allow: * 
+    2025-03-07 04:08:49.805  DEBUG [CORE] Authenticator: {
+      "heimdallUrl": "https://dataos-training.dataos.app/heimdall",
+      "ttl": 120,
+      "userGroups": [
+        {
+          "name": "default",
+          "description": "auto-generated default group to include everyone",
+          "includes": "*"
+        }
+      ]
+    } 
+    2025-03-07 04:08:49.810  INFO  [CLI] 🚀 Server is listening at port 3000. 
+
+    ```
+    
+- The data can now be accessed through the API endpoint on platforms such as Postman, Swagger (OpenAPI Specification), and Google APIs Platform, as shown below (in Postman):
+    
+    <center>
+      <img src="/resources/stacks/talos/image2.png" alt="Talos" style="width:40rem; border: 1px solid black; padding: 0px;" />
+    </center>
+
+  The endpoint can also be hit as **/doc/postman?apikey='xxxxxxxxx'** in order to download the postman collection and import the .json collection into postman.
+
+  - Authenticate the API endpoints by passing the API Key on DataOS CLI, as query param as shown below.
+
+  ```bash
+  curl -X GET 'https://dataos-training.dataos.app/talos/pubic:talos-test/api/table?apikey=xxxx'
+  ```    
+
+
+### Example for Redshif sample data(Tickit database)
+
+The following examples illustrate different queries that can be generated by modifying the configurations in the `apis` folder:
 
 - **Event details API**
     

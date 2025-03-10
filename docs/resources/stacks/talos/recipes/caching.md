@@ -4,6 +4,10 @@
 
 Talos provides a caching layer to enhance API query performance and efficiency. By using the `{% cache %}` tag, query results can be retrieved directly from cache storage, minimizing repeated queries to the data source. This section outlines how to configure and utilize caching effectively in Talos.
 
+!!!info
+    When using Talos, avoid caching in flash storage, as flash memory inherently performs its own caching.
+    
+
 ### **1. Caching with an In-Memory Database**
 
 Talos uses an in-memory database as the caching engine, ensuring high-performance query execution. To enable caching, the following configuration must be added to `config.yaml`:

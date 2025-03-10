@@ -3,40 +3,16 @@ This section provides the configuration guide to set up Talos service for MySQL.
 
 ## **Prerequisites**
 
-- To access the data using API from MySQL, User need the following:
-    - Credentials to connect to the MySQL database.
-    - To extract metadata, the MySQL user needs to have access to the INFORMATION_SCHEMA.
-    - Metadata Scan is supported for MySQL (version 8.0.0 or greater)
-    - MySQL user must grant SELECT privilege to fetch the metadata of tables and views.
-    - Pre-created MySQL Depot. 
-To check the Depot go to the Metis UI of the DataOS or use the following command:
+To access the data using API from MySQL, User need the following:
 
-- **Access Permissions in DataOS**: To execute a Scanner Workflow in DataOS, verify that at least one of the following role tags is assigned:
-    - **`roles:id:data-dev`**
-    - **`roles:id:system-dev`**
-    - **`roles:id:user`**
-
-    Use the following command to check assigned roles:
-
-    ```bash
-    dataos-ctl user get
-    ```
-
-    If any required tags are missing, contact a **DataOS Operator** or submit a **Grant Request** for role assignment.
-
-    Alternatively, if access is managed through **use cases**, ensure the following use cases are assigned:
-
-    - **Manage Talos**
-    - **Read Talos**
-
-    To validate assigned use cases, refer to the **Bifrost Application Use Cases** section.
-
-- **Pre-created MySQL Depot**: Ensure that a MySQL Depot is already created with valid read access and the necessary permissions to extract metadata. To check the Depot go to the Metis UI of the DataOS or use the following command:
-
+- **Pre-created MySQL Depot:** 
+    To check the Depot go to the Metis UI of the DataOS or use the following command:
     ```bash
     dataos-ctl get -t depot -a
 
-    #expected outputINFO[0000] 🔍 get...
+    #expected output
+    
+    INFO[0000] 🔍 get...
     INFO[0000] 🔍 get...complete
 
     | NAME             | VERSION | TYPE  | WORKSPACE | STATUS | RUNTIME | OWNER      |
@@ -66,6 +42,27 @@ To check the Depot go to the Metis UI of the DataOS or use the following command
         - name: ${{instance-secret-name}}-rw
         allkeys: true
     ```
+
+- **Access Permissions in DataOS**: To execute a Talos Service in DataOS, verify that following role tags are assigned to the respective user:
+    - **`roles:id:data-dev`**
+    - **`roles:id:system-dev`**
+    - **`roles:id:user`**
+
+    Use the following command to check assigned roles:
+
+    ```bash
+    dataos-ctl user get
+    ```
+
+    If any required tags are missing, contact a **DataOS Operator** or submit a **Grant Request** for role assignment.
+
+    Alternatively, if access is managed through **use cases**, ensure the following use cases are assigned:
+
+    - **Manage Talos**
+    - **Read Talos**
+
+    To validate assigned use cases, refer to the **Bifrost Application Use Cases** section.
+
 
 ## **Steps**
 
@@ -204,33 +201,48 @@ Push the changes to the working source control service (here ‘bitbucket’) re
     Successful execution will look like the following:
     
     ```bash
-    DEBUG [CORE]   config: TimeZone = Etc/UTC
-    2025-01-31 08:51:12.566  
-    DEBUG [SERVE] Data source   initialized
-    2025-01-31 08:51:12.567  DEBUG
-    [SERVE] Initializing data source: pg
-    2025-01-31 08:51:12.567  DEBUG
-    [SERVE] Data source pg initialized
-    2025-01-31 08:51:12.567  DEBUG
-    [SERVE] Initializing data source: redshift
-    2025-01-31 08:51:12.567  DEBUG
-    [SERVE] Data source redshift initialized
-    2025-01-31 08:51:12.568  
-    DEBUG [SERVE] Initializing data source: mysql
-    2025-01-31 08:51:12.568  DEBUG
-    [CORE] Initializing profile: mysql using mysql driver
-    2025-01-31 08:51:12.681  DEBUG
-    [CORE] Profile mysql initialized
-    2025-01-31 08:51:12.681  DEBUG [SERVE] Data source mysql initialized
-    2025-01-31 08:51:12.682  
-    INFO  [SERVE] Start to load and schedule prefetched data results from data sources to cache layer...
-    2025-01-31 08:51:12.689  DEBUG
-    [SERVE] profile: mysql, allow: *
-    2025-01-31 08:51:12.690  
-    DEBUG [SERVE] profile: talos.cache, allow: *
-    2025-01-31 08:51:12.696  DEBUG
-    [CORE] Authenticator: {
-      "heimdallUrl": "https://liberal-donkey.dataos.app/heimdall",
+    INFO[0000] 📃 log(public)...                             
+    INFO[0001] 📃 log(public)...complete                     
+
+                    NODE NAME                 │       CONTAINER NAME       │ ERROR  
+    ───────────────────────────────────────────┼────────────────────────────┼────────
+      aaditest-service-zvs7-d-5dc48797c6-gs9fb │ aaditest-service-zvs7-main │        
+
+    -------------------LOGS-------------------
+    2025-03-07 04:08:49.536  DEBUG [CORE] Duckdb config: temp_directory = /etc/dataos/work/.worktrees/a76bec81137783ce29782bb6aa6de0856a076401/aadi-test/talos_cache.db.tmp 
+    2025-03-07 04:08:49.536  DEBUG [CORE] Duckdb config: threads = 1 
+    2025-03-07 04:08:49.537  DEBUG [CORE] Duckdb config: username = NULL 
+    2025-03-07 04:08:49.537  DEBUG [CORE] Duckdb config: arrow_large_buffer_size = false 
+    2025-03-07 04:08:49.537  DEBUG [CORE] Duckdb config: user = NULL 
+    2025-03-07 04:08:49.537  DEBUG [CORE] Duckdb config: wal_autocheckpoint = 16.0 MiB 
+    2025-03-07 04:08:49.537  DEBUG [CORE] Duckdb config: worker_threads = 1 
+    2025-03-07 04:08:49.537  DEBUG [CORE] Duckdb config: allocator_flush_threshold = 128.0 MiB 
+    2025-03-07 04:08:49.537  DEBUG [CORE] Duckdb config: duckdb_api = nodejs 
+    2025-03-07 04:08:49.538  DEBUG [CORE] Duckdb config: custom_user_agent =  
+    2025-03-07 04:08:49.538  DEBUG [CORE] Duckdb config: partitioned_write_flush_threshold = 524288 
+    2025-03-07 04:08:49.538  DEBUG [CORE] Duckdb config: enable_http_logging = false 
+    2025-03-07 04:08:49.538  DEBUG [CORE] Duckdb config: http_logging_output =  
+    2025-03-07 04:08:49.538  DEBUG [CORE] Duckdb config: binary_as_string =  
+    2025-03-07 04:08:49.538  DEBUG [CORE] Duckdb config: Calendar = gregorian 
+    2025-03-07 04:08:49.539  DEBUG [CORE] Duckdb config: TimeZone = UTC 
+    2025-03-07 04:08:49.539  DEBUG [SERVE] Data source duckdb initialized 
+    2025-03-07 04:08:49.539  DEBUG [SERVE] Initializing data source: pg 
+    2025-03-07 04:08:49.539  DEBUG [CORE] Initializing profile: sivapostgresdepot using pg driver 
+    2025-03-07 04:08:49.636  DEBUG [CORE] Profile sivapostgresdepot initialized 
+    2025-03-07 04:08:49.636  DEBUG [CORE] Initializing profile: lens using pg driver 
+    2025-03-07 04:08:49.789  DEBUG [CORE] Profile lens initialized 
+    2025-03-07 04:08:49.789  DEBUG [SERVE] Data source pg initialized 
+    2025-03-07 04:08:49.789  DEBUG [SERVE] Initializing data source: mysql 
+    2025-03-07 04:08:49.789  DEBUG [SERVE] Data source mysql initialized 
+    2025-03-07 04:08:49.790  DEBUG [SERVE] Initializing data source: snowflake 
+    2025-03-07 04:08:49.790  DEBUG [SERVE] Data source snowflake initialized 
+    2025-03-07 04:08:49.791  INFO  [SERVE] Start to load and schedule prefetched data results from data sources to cache layer... 
+    2025-03-07 04:08:49.796  DEBUG [SERVE] profile: sivapostgresdepot, allow: * 
+    2025-03-07 04:08:49.796  DEBUG [SERVE] profile: lens, allow: * 
+    2025-03-07 04:08:49.797  DEBUG [SERVE] profile: talos.cache, allow: * 
+    2025-03-07 04:08:49.805  DEBUG [CORE] Authenticator: {
+      "heimdallUrl": "https://dataos-training.dataos.app/heimdall",
+      "ttl": 120,
       "userGroups": [
         {
           "name": "default",
@@ -238,11 +250,10 @@ Push the changes to the working source control service (here ‘bitbucket’) re
           "includes": "*"
         }
       ]
-    }
-    2025-01-31 08:51:12.702  
-    INFO  [CLI] 🚀 Server is listening at port 3000.
-    ```
-    
+    } 
+    2025-03-07 04:08:49.810  INFO  [CLI] 🚀 Server is listening at port 3000. 
+
+    ```    
 - The data can now be accessed through the API endpoint on platforms such as Postman, Swagger (OpenAPI Specification), and Google APIs Platform, as shown below (in Postman):
     
     <center>
@@ -254,5 +265,5 @@ Push the changes to the working source control service (here ‘bitbucket’) re
   - Authenticate the API endpoints by passing the API Key on DataOS CLI, as query param as shown below.
 
   ```bash
-  curl -X GET 'https://liberal-donkey.dataos.app/talos/pubic:talos-test/api/table?apikey=xxxx'
+  curl -X GET 'https://dataos-training.dataos.app/talos/pubic:talos-test/api/table?apikey=xxxx'
   ```    

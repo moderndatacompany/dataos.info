@@ -1,20 +1,12 @@
 # Talos for Bigquery
-This section provides the configuration guide to set up Talos service for Bigquery.  
+This section provides the configuration guide to set up Talos Service for Bigquery.  
 
 ## **Prerequisites**
 
 To access the data using API from BigQuery, User need the following:
 
-1. Ensure that the BigQuery project is created.
-2. **Access Permissions in GCP**: To successfully execute Talos Service in GCP, the user or service account needs specific permissions to access and retrieve the required data. Here’s a summary of the minimum required permissions:
-    - Ingestion Permissions
-    - Stored Procedure Permissions
-    - Fetch Policy Tags Permissions
-    - BigQuery Usage & Lineage Workflow Permissions
-    
-    If the user has External Tables, please attach relevant permissions needed for external tables, along with the above list of permissions.
+1. **Access Permissions in DataOS**: To execute a Talos Service in DataOS, verify that following role tags are assigned to the respective user:
 
-3. **Access Permissions in DataOS**: To execute a Scanner Workflow in DataOS, verify that at least one of the following role tags is assigned:
     - **`roles:id:data-dev`**
     - **`roles:id:system-dev`**
     - **`roles:id:user`**
@@ -32,14 +24,16 @@ To access the data using API from BigQuery, User need the following:
     - **Manage Talos**
     - **Read Talos**
 
-To validate assigned use cases, refer to the **Bifrost Application Use Cases** section.
+    To validate assigned use cases, refer to the Bifrost Application's **Use Cases** section.
 
-4. **Pre-created Bigquery Depot**: Ensure that a Bigquery Depot is already created with valid read access and the necessary permissions to extract metadata. To check the Depot go to the Metis UI of the DataOS or use the following command:
+2. **Pre-created Bigquery Depot**: Ensure that a Bigquery Depot is already created with valid read access. To check the Depot go to the Metis UI of the DataOS or use the following command:
 
     ```bash
     dataos-ctl get -t depot -a
 
-    #expected outputINFO[0000] 🔍 get...
+    #expected output
+    
+    INFO[0000] 🔍 get...
     INFO[0000] 🔍 get...complete
 
     | NAME             | VERSION | TYPE  | WORKSPACE | STATUS | RUNTIME | OWNER      |
@@ -101,19 +95,13 @@ sources: # source details
     type: ${{depot}} # source type
 ```
 
-Update the following attributes within the file to align with the required configurations:
+Update the following attributes within the file to align with the required [configurations](/resources/stacks/talos/configurations/config/):
 
 - **name**: Set the Talos app name.
 - **description**: Provide a description of the Talos application.
 - **version**: Specify the application version.
 - **source name**: Update the source system name.
 - **source type**: Define the type of source system being used.
-
-<aside class="callout">
-🗣 Verify that the source type, if specified as 'Depot,' is active.
-</aside>
-
-To know more information about each attribute, please refer to the [Configuration Page](/resources/stacks/talos/configurations/config/).
 
 ### **Writing SQL templates**
 
@@ -133,9 +121,7 @@ Additionally, multiple **SQL** files and their corresponding manifest files can 
 SELECT * FROM myschema.mytable LIMIT 10;
 ```
 To know more information about each attribute, please refer to the [Configuration Page](/resources/stacks/talos/configurations/apis/).
-<aside class="callout">
-🗣 A refresh time and refresh expression can be added to the query to improve the caching mechanism. The refresh time specifies the interval at which the data should be refreshed, while the refresh expression defines the conditions under which the refresh should occur.
-</aside>
+
 
 ### **Push the changes**
 
@@ -192,7 +178,7 @@ Push the changes to the working source control service (here ‘bitbucket’) re
             - '--ref=main'
     ```
     
-    To know more information about each attribute, please refer to the Configuration Page.
+    To know more information about each attribute, please refer to the Talos [Configuration](/resources/stacks/talos/configurations/service/) Service.
     
 - Apply the Service manifest by executing the below command:
     
@@ -203,39 +189,54 @@ Push the changes to the working source control service (here ‘bitbucket’) re
 - To check if the service is running successfully, execute the following command.
     
     ```bash
-    dataos-ctl log -t service -n ${{service-name}} -w ${{workspace}}
+    dataos-ctl resource log -t service -n ${{service-name}} -w ${{workspace}}
     ```
-    
-    Successful execution will look like the following:
-    
+
+    Expected Output for service logs:
+
     ```bash
-    DEBUG [CORE]   config: TimeZone = Etc/UTC
-    2025-01-31 08:51:12.566  
-    DEBUG [SERVE] Data source   initialized
-    2025-01-31 08:51:12.567  DEBUG
-    [SERVE] Initializing data source: pg
-    2025-01-31 08:51:12.567  DEBUG
-    [SERVE] Data source pg initialized
-    2025-01-31 08:51:12.567  DEBUG
-    [SERVE] Initializing data source: redshift
-    2025-01-31 08:51:12.567  DEBUG
-    [SERVE] Data source redshift initialized
-    2025-01-31 08:51:12.568  
-    DEBUG [SERVE] Initializing data source: bigquery
-    2025-01-31 08:51:12.568  DEBUG
-    [CORE] Initializing profile: bigquery using bigquery driver
-    2025-01-31 08:51:12.681  DEBUG
-    [CORE] Profile bigquery initialized
-    2025-01-31 08:51:12.681  DEBUG [SERVE] Data source bigquery initialized
-    2025-01-31 08:51:12.682  
-    INFO  [SERVE] Start to load and schedule prefetched data results from data sources to cache layer...
-    2025-01-31 08:51:12.689  DEBUG
-    [SERVE] profile: bigquery, allow: *
-    2025-01-31 08:51:12.690  
-    DEBUG [SERVE] profile: talos.cache, allow: *
-    2025-01-31 08:51:12.696  DEBUG
-    [CORE] Authenticator: {
-      "heimdallUrl": "https://liberal-donkey.dataos.app/heimdall",
+    INFO[0000] 📃 log(public)...                             
+    INFO[0001] 📃 log(public)...complete                     
+
+                    NODE NAME                 │       CONTAINER NAME       │ ERROR  
+    ───────────────────────────────────────────┼────────────────────────────┼────────
+      aaditest-service-zvs7-d-5dc48797c6-gs9fb │ aaditest-service-zvs7-main │        
+
+    -------------------LOGS-------------------
+    2025-03-07 04:08:49.536  DEBUG [CORE] Duckdb config: temp_directory = /etc/dataos/work/.worktrees/a76bec81137783ce29782bb6aa6de0856a076401/aadi-test/talos_cache.db.tmp 
+    2025-03-07 04:08:49.536  DEBUG [CORE] Duckdb config: threads = 1 
+    2025-03-07 04:08:49.537  DEBUG [CORE] Duckdb config: username = NULL 
+    2025-03-07 04:08:49.537  DEBUG [CORE] Duckdb config: arrow_large_buffer_size = false 
+    2025-03-07 04:08:49.537  DEBUG [CORE] Duckdb config: user = NULL 
+    2025-03-07 04:08:49.537  DEBUG [CORE] Duckdb config: wal_autocheckpoint = 16.0 MiB 
+    2025-03-07 04:08:49.537  DEBUG [CORE] Duckdb config: worker_threads = 1 
+    2025-03-07 04:08:49.537  DEBUG [CORE] Duckdb config: allocator_flush_threshold = 128.0 MiB 
+    2025-03-07 04:08:49.537  DEBUG [CORE] Duckdb config: duckdb_api = nodejs 
+    2025-03-07 04:08:49.538  DEBUG [CORE] Duckdb config: custom_user_agent =  
+    2025-03-07 04:08:49.538  DEBUG [CORE] Duckdb config: partitioned_write_flush_threshold = 524288 
+    2025-03-07 04:08:49.538  DEBUG [CORE] Duckdb config: enable_http_logging = false 
+    2025-03-07 04:08:49.538  DEBUG [CORE] Duckdb config: http_logging_output =  
+    2025-03-07 04:08:49.538  DEBUG [CORE] Duckdb config: binary_as_string =  
+    2025-03-07 04:08:49.538  DEBUG [CORE] Duckdb config: Calendar = gregorian 
+    2025-03-07 04:08:49.539  DEBUG [CORE] Duckdb config: TimeZone = UTC 
+    2025-03-07 04:08:49.539  DEBUG [SERVE] Data source duckdb initialized 
+    2025-03-07 04:08:49.539  DEBUG [SERVE] Initializing data source: pg 
+    2025-03-07 04:08:49.539  DEBUG [CORE] Initializing profile: sivapostgresdepot using pg driver 
+    2025-03-07 04:08:49.636  DEBUG [CORE] Profile sivapostgresdepot initialized 
+    2025-03-07 04:08:49.636  DEBUG [CORE] Initializing profile: lens using pg driver 
+    2025-03-07 04:08:49.789  DEBUG [CORE] Profile lens initialized 
+    2025-03-07 04:08:49.789  DEBUG [SERVE] Data source pg initialized 
+    2025-03-07 04:08:49.789  DEBUG [SERVE] Initializing data source: redshift 
+    2025-03-07 04:08:49.789  DEBUG [SERVE] Data source redshift initialized 
+    2025-03-07 04:08:49.790  DEBUG [SERVE] Initializing data source: snowflake 
+    2025-03-07 04:08:49.790  DEBUG [SERVE] Data source snowflake initialized 
+    2025-03-07 04:08:49.791  INFO  [SERVE] Start to load and schedule prefetched data results from data sources to cache layer... 
+    2025-03-07 04:08:49.796  DEBUG [SERVE] profile: sivapostgresdepot, allow: * 
+    2025-03-07 04:08:49.796  DEBUG [SERVE] profile: lens, allow: * 
+    2025-03-07 04:08:49.797  DEBUG [SERVE] profile: talos.cache, allow: * 
+    2025-03-07 04:08:49.805  DEBUG [CORE] Authenticator: {
+      "heimdallUrl": "https://dataos-training.dataos.app/heimdall",
+      "ttl": 120,
       "userGroups": [
         {
           "name": "default",
@@ -243,9 +244,9 @@ Push the changes to the working source control service (here ‘bitbucket’) re
           "includes": "*"
         }
       ]
-    }
-    2025-01-31 08:51:12.702  
-    INFO  [CLI] 🚀 Server is listening at port 3000.
+    } 
+    2025-03-07 04:08:49.810  INFO  [CLI] 🚀 Server is listening at port 3000. 
+
     ```
     
 - The data can now be accessed through the API endpoint on platforms such as Postman, Swagger (OpenAPI Specification), and Google APIs Platform, as shown below (in Postman):
@@ -254,10 +255,10 @@ Push the changes to the working source control service (here ‘bitbucket’) re
       <img src="/resources/stacks/talos/image2.png" alt="Talos" style="width:40rem; border: 1px solid black; padding: 0px;" />
     </center>
 
-  The endpoint can also be hit as “**/doc/postman?apikey='xxxxxxxxx”** in order to download the postman collection and import the .json collection into postman.
+  The endpoint can also be hit as **/doc/postman?apikey='xxxxxxxxx'** in order to download the postman collection and import the .json collection into postman.
 
   - Authenticate the API endpoints by passing the API Key on DataOS CLI, as query param as shown below.
 
   ```bash
-  curl -X GET 'https://liberal-donkey.dataos.app/talos/pubic:talos-test/api/table?apikey=xxxx'
+  curl -X GET 'https://dataos-training.dataos.app/talos/pubic:talos-test/api/table?apikey=xxxx'
   ```    
