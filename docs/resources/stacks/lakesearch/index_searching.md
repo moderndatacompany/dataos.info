@@ -55,7 +55,6 @@ The following table containd the different endpoints for different purposes.
 | `{{base_url}}/api/v2/index/:index_name/suggestions` | GET | Uses a path variable `index_name` and a query parameter `word`. The API returns suggested keywords, Levenshtein distance between the suggested and original keywords, and document statistics of the suggested keyword. |
 | `{{base_url}}/api/v2/index/:index_name/keywords` | GET | Uses a path variable `index_name` and two query parameters: <br> - `word`: Partial word with `*` suffix <br> - `limit`: Assists with autocomplete use cases. |
 | `{{base_url}}/api/v2/index/:index_name/search` | POST | Uses a path variable `index_name`; accepts search queries as JSON payloads and returns results. |
-| `{{base_url}}/api/v2/embedding` | POST | Accepts KNN search queries. |
 | `{{base_url}}/api/v2/_bulk` | POST | Elasticsearch `_bulk` endpoint. [More Details](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html) |
 
 
