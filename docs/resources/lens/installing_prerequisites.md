@@ -2,11 +2,9 @@ Before setting up Lens on your local system, ensure you meet the following requi
 
 | **Dependency** | **Purpose** |
 | --- | --- |
-| **Docker** | Runs Lens in an isolated environment on your local system. |
-| **Docker Compose** | Configures and manages multi-container Docker applications for Lens. |
 | **Postman App/Postman VSCode Extension** | Queries and tests Lens to ensure your setup functions correctly. |
 | **VS Code** | Builds and manages Lens Model YAMLs as a code editor. |
-
+<!-- 
 ### **Docker**
 
 Docker is required to run Lens in an isolated environment on a local system. This guide provides instructions for installing Docker if it is not already installed. If Docker is already installed, you can jump to the [next step](/resources/lens/installing_prerequisites/#visual-studio-code) in the setup process.
@@ -119,7 +117,7 @@ Visual Studio Code (VS Code) must be installed on the local system to create a L
 - **Windows**: To install VS Code on a Windows machine, refer to the [Install VS Code on Windows guide](https://code.visualstudio.com/docs/setup/windows).
 
 - **MacOS**: For MacOS users, installation instructions can be found in the [Install VS Code on macOS guide](https://code.visualstudio.com/docs/setup/mac).
-
+ -->
 
 <!-- ### **Lens2 VS Code Extension**
 
