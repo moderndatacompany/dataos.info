@@ -123,11 +123,14 @@ markdown_extensions:
   - pymdownx.tilde
 #  - pymdownx.extra
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji          # while pushin to dev
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg       # while pushin to dev
 
-      # emoji_index: !!python/name:materialx.emoji.twemoji # before pushing to dev branch replace materialx.emoji.twemoji with material.extensions.emoji.twemoji
-      # emoji_generator: !!python/name:materialx.emoji.to_svg  # before pushing to dev branch replace materialx.emoji.to_svg with material.extensions.emoji.to_svg
+      # emoji_index: !!python/name:materialx.emoji.twemoji                      # while hosting locally  
+      # emoji_generator: !!python/name:materialx.emoji.to_svg                   # while hosting locally 
+      
+      # before pushing to dev branch replace materialx.emoji.to_svg with material.extensions.emoji.to_svg
+      # before pushing to dev branch replace materialx.emoji.twemoji with material.extensions.emoji.twemoji
 
       options:
         custom_icons:
@@ -463,12 +466,17 @@ nav:
             - Recipes: 
               - Use cached datasets in Lens models: resources/stacks/flash/recipes/lens.md
               - Use cached datsets in Talos APIs: resources/stacks/flash/recipes/talos.md
-          # - Lakesearch:
-          #   - resources/stacks/lakesearch/index.md
-          #   - Configurations: resources/stacks/lakesearch/configurations.md
-          #   - Observability: resources/stacks/lakesearch/obervability.md
-          #   - Governance: resources/stacks/lakesearch/governance.md
-          #   - Troubleshooting: resources/stacks/lakesearch/troubleshooting.md
+          - Lakesearch:
+            - resources/stacks/lakesearch/index.md
+            - Set up: 
+              - Normal Lakesearch Service: resources/stacks/lakesearch/service.md
+              - Query Rewriter: resources/stacks/lakesearch/rewriter.md
+              # - Vector Embedding: resources/stacks/lakesearch/vector_embedding.md
+            - Configurations: resources/stacks/lakesearch/configurations.md
+            - Governance: resources/stacks/lakesearch/governance.md
+            - Index Searching: resources/stacks/lakesearch/index_searching.md
+            - Observability: resources/stacks/lakesearch/observability.md
+            - Troubleshooting: resources/stacks/lakesearch/troubleshooting.md
 
           - Scanner: 
             - resources/stacks/scanner/index.md
@@ -479,18 +487,29 @@ nav:
           - Talos:
             - resources/stacks/talos/index.md
             - Setting Up Talos: resources/stacks/talos/set_up.md
+            - Supported Sources: 
+              - Bigquery: resources/stacks/talos/recipes/bigquery.md
+              - Flash: resources/stacks/talos/recipes/flash_setup.md
+              - Lens: resources/stacks/talos/recipes/lens_setup.md
+              - MySQL: resources/stacks/talos/recipes/mysql.md
+              - Postgres: resources/stacks/talos/recipes/postgres.md
+              - Redshift: resources/stacks/talos/recipes/redshift.md
+              - Snowflake: resources/stacks/talos/recipes/snowflake.md
             - Configurations: 
               - resources/stacks/talos/configurations/index.md
               - config.yaml: resources/stacks/talos/configurations/config.md
-              - docker-compose.yaml: resources/stacks/talos/configurations/docker_compose.md
+              # - docker-compose.yaml: resources/stacks/talos/configurations/docker_compose.md
               - apis: resources/stacks/talos/configurations/apis.md
               - service.yaml: resources/stacks/talos/configurations/service.md
+            - Governance: resources/stacks/talos/recipes/data_governance.md
             - Recipes: 
               - Apply data masking: resources/stacks/talos/recipes/data_masking.md
               - Fetch data from third party tools: resources/stacks/talos/recipes/external_tools.md
               - Caching datasets: resources/stacks/talos/recipes/caching.md
               - Generate API documentation: resources/stacks/talos/recipes/api_documentation.md
               - External API as data source: resources/stacks/talos/recipes/external_api.md
+              - Validating Parameters: resources/stacks/talos/recipes/validating_parameters.md
+              - Error Handeling: resources/stacks/talos/recipes/error_handling.md
             - Example: resources/stacks/talos/example.md
             - Best Practices:
               - API: resources/stacks/talos/best_practices/api.md

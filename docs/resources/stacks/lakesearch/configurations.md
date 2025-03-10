@@ -344,7 +344,7 @@ Defines whether authentication is required to access the exposed service.
 
 <aside class="callout">
 
-To remove the `noAuthentication: true` key from the ingress section, we need to create a usecase in Bifrost and grant the use case to a user tag. 
+To remove the `noAuthentication: true` key from the ingress section, a DataOS operator needs to create a usecase in Bifrost and grant the use case to a user tag. 
 </aside>
 
 | Data Type | Requirement | Default Value | Possible Values |
@@ -511,6 +511,8 @@ This indicates that user-specific configuration files are located in `/etc/datao
 | --- | --- | --- | --- |
 | object | mandatory | none | Defines storage location with `<workspace>/<servie_name>/<folder_name>` nomenclature and volume name |
 
+If a Volume is not already configured in the environment, create a new one by referring to [this link](/resources/volume/).
+
 **Example usage:**
 
 ```yaml
@@ -549,7 +551,7 @@ resources:
 
 ### **stack**
 
-**Description:** Indicates the version of the Lakesearch stack for the Service to run.
+**Description:** Indicates the version of the Lakesearch Stack for the Service to run.
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
@@ -791,7 +793,7 @@ properties:
 
 **Description:** Specifies the schema of the indexed data, including column names, types, and metadata. Users can choose to include all columns from the dataset or exclude specific columns from indexing based on their requirements..
 
-<aside>
+<aside class="callout">
 
 Note that while adding the columns while indexing a table it is required to add an additional column named `id` of type `bigint` as shown below:
 
@@ -850,9 +852,10 @@ This will be mapped with the primary key column in the indexer base SQL as `id`.
 
 </aside>
 
-| Data Type | Requirement | Default Value | Possible Value |
-| --- | --- | --- | --- |
-| list | mandatory | none | List of column definitions |
+| Data Type | Requirement | Default Value | Possible Value              |
+|-----------|------------|---------------|-----------------------------|
+| list      | mandatory  | none          | List of column definitions  |
+
 
 ---
 
@@ -890,7 +893,7 @@ type: keyword
 
 ```
 
-<aside>
+<aside class="callout">
 
 The data types defined in the `source.index_table` is different from standard SQL data types. For instance, a column with a `VARCHAR` data type in SQL should be defined as `TEXT` in the index_table. Similarly, an `INTEGER` column should be specified as `BIGINT`. If keyword-based searching is required for a column, its data type should be set to `KEYWORD`. Additionally, the `index_table` in the indexer must include an extra column named `ID` to designate the primary key.
 
@@ -907,7 +910,7 @@ The data types defined in the `source.index_table` is different from standard SQ
 | `bool` | Declares a boolean attribute. It's equivalent to an integer attribute with bit count of 1. | attribute |
 | `timestamp` | The timestamp type represents Unix timestamps, which are stored as 32-bit integers. The system expects a date/timestamp type object from the base_sql. | attribute |
 | `float` | Real numbers are stored as 32-bit IEEE 754 single precision floats. | attribute |
-| `vector` | Vector embeddings generated |  |
+
 
 ---
 
