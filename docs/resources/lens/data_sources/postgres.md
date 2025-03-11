@@ -128,7 +128,7 @@ segments:
     sql: "{TABLE}.state IN ('Illinois', 'Ohio')"
 ```
 
-To know more about segments click [here](https://dataos.info/resources/lens/working_with_segments/).
+To know more about segments click [here](https://dataos.info/resources/lens/segments/).
 
 
 ### **Create views**
@@ -150,7 +150,7 @@ views:
           - customer_segments
 ```
 
-To know more about the views click [here](https://dataos.info/resources/lens/working_with_views/).
+To know more about the views click [here](https://dataos.info/resources/lens/views/).
 
 
 ### **Create User groups**
@@ -164,7 +164,7 @@ user_groups:
     includes: "*"
 ```
 
-To know more about the User groups click [here](https://dataos.info/resources/lens/working_with_user_groups_and_data_policies/)
+To know more about the User groups click [here](https://dataos.info/resources/lens/user_groups_and_data_policies/)
 
 <aside class="callout">
 Push the semantic model folder into the code repository. Before pushing secure the repo credentials by using the Instance Secret and referencing it in the Lens manifest file for secure access.

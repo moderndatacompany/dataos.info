@@ -351,7 +351,7 @@ nav:
             # - Working with Payload: resources/lens/working_with_payload.md
             - Segments: resources/lens/segments.md
             - Views: resources/lens/views.md
-            - User Groups: resources/lens/working_with_user_groups_and_data_policies.md
+            - User Groups: resources/lens/user_groups_and_data_policies.md
 
           # - Lens Setup: 
           #     - Lens Model Folder Setup: resources/lens/lens_model_folder_setup.md
