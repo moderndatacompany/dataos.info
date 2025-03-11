@@ -13,7 +13,7 @@ Lakesearch is a [Stack](/resources/stacks/) within DataOS that provides the scal
     <img src="/resources/stacks/lakesearch/images/lsarch.jpg" 
          alt="Lakesearch architecture" 
          style="border: 1px solid black; width: 60%; height: auto; display: block; margin: auto;">
-    <figcaption style="margin-top: 8px; font-style: italic;">Lakesearch Service Structure</figcaption>
+    <figcaption style="margin-top: 8px; font-style: italic;">Lakesearch architecture</figcaption>
   </figure>
 </div>
 
