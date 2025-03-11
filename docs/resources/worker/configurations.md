@@ -293,7 +293,7 @@ tempVolume: hola
 ```yaml
 persistentVolume:
   name: devta
-  directory: manish
+  directory: iamgroot
   readOnly: true/false
   subPath: dev/hola
 ```
