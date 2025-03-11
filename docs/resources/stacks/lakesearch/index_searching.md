@@ -27,20 +27,21 @@ An API endpoint can be accessed via an URL shown below by replacing the place ho
 
     ```bash
     curl -X GET "${{dataos_context_url}}/lakesearch/${{workspace}}:${{service_name}}/api/v2/index" \                           
-    -H "Authorization: ${{dataos-user-token}}"
+    -H "Authorization: ${{dataos-token}}
     ```
 === "Example"
 
     ```bash
     curl -X GET "https://unique-haddock.dataos.app/lakesearch/public:testingls/api/v2/index" \                           
-    -H "Authorization: Bearer dG9rZW5fZGlzdhlkg3RseV9tYWlubHlfdXBlkmF5LjU1ZmE1ZWQyLWUwNDgtNGI3Yi1hNGQ2LWNlNjA1YTAzZTE4YQ=="
+    -H "Authorization: Bearer dG9rZW5fZGlzdhlkg3RseV9tYWlubHlfdXBlkmF5LjU1ZmE1WQyLWUwNDgtNGI3Yi1hNGQ2LWNlNjA1YTAzZTE4YQ=="
     ```
 </div>
 
 <aside class="callout">
-🗣️ A user can get DataOS profile token from the profile section of DataOS Interface
-
+🗣️ A user can get DataOS profile token from the profile section of DataOS Interface. An application token can be used instead of a profile token to allow an application to access the endpoint.
 </aside>
+
+To create an application token please refer [to this link](/resources/stacks/lakesearch/app_token/).
 
 The following table containd the different endpoints for different purposes.
 

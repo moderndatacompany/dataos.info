@@ -645,6 +645,6 @@ The code checks whether the user has the "operator" tag.
     ```
   </details>
 
-To get to know more about search types, filters, aggregations, and expressions, please refer [to this link](/resources/search/index_searching/).
+To get to know more about search types, filters, aggregations, and expressions, please refer [to this link](/resources/stacks/lakesearch/index_searching/).
 
 
