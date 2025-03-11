@@ -49,7 +49,7 @@ INFO[0002] 🔍 workflow...complete
 
             NAME            | VERSION |   TYPE   | WORKSPACE |     TITLE      |        OWNER         
 ----------------------------|---------|----------|-----------|----------------|----------------------
-  quality-checks-test-cases | v1beta1 | workflow | public    | Quality-Checks | rakeshvishvakarma21  
+  quality-checks-test-cases | v1beta1 | workflow | public    | Quality-Checks | iamgroot  
 
            JOB NAME          |   STACK    |        JOB TITLE        |    JOB DEPENDENCIES     
 -----------------------------|------------|-------------------------|-------------------------

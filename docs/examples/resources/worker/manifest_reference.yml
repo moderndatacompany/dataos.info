@@ -45,7 +45,7 @@ worker: # Worker-specific configuration
       consumptionType: ${{consumption_type}} # Type of consumption (e.g., hola)
   dataosVolumes: # DataOS volumes configuration
     - name: ${{volume_name}} # Name of the volume (e.g., devta)
-      directory: ${{volume_directory}} # Directory (e.g., manish)
+      directory: ${{volume_directory}} # Directory (e.g., groot)
       readOnly: ${{read_only_flag}} # Read-only flag (e.g., true/false)
       subPath: ${{volume_subpath}} # Sub-path (e.g., dev/hola)
   tempVolume: ${{temp_volume_name}} # Temporary volume (e.g., hola)
@@ -64,7 +64,7 @@ worker: # Worker-specific configuration
       memory: ${{memory_limit}} # Memory limit (e.g., 100Mi)
   dryRun: ${{dry_run_flag}} # Dry run flag (e.g., true/false)
   runAsApiKey: ${{api_key}} # API key for running the worker (e.g., abcdefghijklmnopqrstuvwxyz)
-  runAsUser: ${{run_as_user}} # User to run the worker as (e.g., manishagrawal)
+  runAsUser: ${{run_as_user}} # User to run the worker as (e.g., iamgroot)
   topology: # Topology configuration
     - name: ${{topology_name}} # Name of the topology (mandatory) (e.g., random)
       type: ${{topology_type}} # Type of the topology (mandatory) (e.g., alpha)
