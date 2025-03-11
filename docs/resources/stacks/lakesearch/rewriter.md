@@ -19,7 +19,7 @@ For example, in a scenario where users should only see data from their own count
   <figure>
     <img src="/resources/stacks/lakesearch/images/post.png" 
          alt="API endpoint" 
-         style="border: 1px solid black; width: 60%; height: auto; display: block; margin: auto;">
+         style="border: 1px solid black; width: 80%; height: auto; display: block; margin: auto;">
     <figcaption style="margin-top: 8px; font-style: italic;">API endpoint</figcaption>
   </figure>
 </div>
@@ -192,13 +192,13 @@ A user must have the following requirements met before setting up a Lakesearch S
           memory: 1536Mi
       stack: lakesearch:4.0
       configs:
-        ex_impl_query_rewriter.py: /Users/darpan/Documents/Work/lakesearchv2/query-rewriter/user_modules/ex_impl_query_rewriter.py
+        ex_impl_query_rewriter.py: /Users/iamgroot/Documents/Work/lakesearchv2/query-rewriter/user_modules/ex_impl_query_rewriter.py
       stackSpec:
         lakesearch:
           source:
             datasets:
               - name: devices
-                dataset: dataos://icebase:lenovo_ls_data/devices_with_d
+                dataset: dataos://icebase:ls_data/devices_with_d
           index_tables:
             - name: devices
               description: "index for devices"
