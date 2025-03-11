@@ -73,7 +73,7 @@ You can write Scanner workflows in the form of a sequential YAML for a pull-base
 
 Learn about the source connection and configuration options to create depot scan/non-depot scan workflow DAGs to scan entity metadata.
 
-[Creating Scanner Workflows](/resources/stacks/scanner/creating_scanner_workflows)
+[Creating Scanner Workflows](/resources/stacks/scanner/creating_scanner_workflows/)
 
 ## Attributes of Scanner Workflow
 docs/resources/stacks/scanner/field_ref.md

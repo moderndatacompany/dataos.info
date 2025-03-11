@@ -282,7 +282,7 @@ This option takes effect after the `shutdown_delay` duration has passed if tha
 
 Learn more about these configurations in the pages given below:
 
-[Resources](/resources/stacks/bento//configurations/resources/)
+[Resources](/resources/stacks/bento/configurations/resources/)
 
 [Message Batching](/resources/stacks/bento/configurations/message_batching/)
 
