@@ -206,6 +206,7 @@ If the column used for filtering is mistakenly assigned a text data type, an err
         name: ls-test-vol
         directory: public/ls-test-query-rewrite/data01
     ```
+    
 4. And re-apply the Service by executing the below command.
 
     ```bash
