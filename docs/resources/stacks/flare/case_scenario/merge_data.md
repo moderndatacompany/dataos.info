@@ -15,7 +15,7 @@ tags:
 - City
 - Merge
 description: The job merges new city data from dropzone into existing city data
-#owner: itsakshayjain
+owner: iamgroot
 workflow:
   title: Connect City Merge
   dag:
@@ -27,9 +27,9 @@ workflow:
       - Connect
       - City
       - Merge
-      stack: flare:3.0
+      stack: flare:6.0
       compute: runnable-default
-      flare:
+      stackSpec:
         job:
           explain: true
           inputs:
@@ -40,17 +40,13 @@ workflow:
 
           logLevel: INFO
           outputs:
-            - name: output01
-              depot: dataos://icebase:retail?acl=rw
-          steps:
-          - sink:
-              - sequenceName: merge_data
-                datasetName: city_merge_01
-                outputName: output01
-                outputType: Iceberg
-                description: City data ingested from external csv and merged into existing data
-                outputOptions:
-                  saveMode: overwrite
+            - name: merge_data
+              dataset: dataos://icebase:retail/city_merge_01?acl=rw
+              description: City data ingested from external csv and merged into existing data
+              options:
+                file:
+                  saveMode: Overwrite
+                  outputType: CSV
                   iceberg:
                     properties:
                       write.format.default: parquet
@@ -58,25 +54,16 @@ workflow:
                     merge:
                       onClause: "old.city_id = new.city_id"
                       whenClause: "MATCHED THEN UPDATE SET old.state_name = new.state_name"
-                    
                 tags:
                   - Connect
                   - City
                   - Merge
                 title: City Source Data
 
-            sequence:
-              - name: merge_data
-                doc: Pick all columns from cities and add version as yyyyMMddHHmm formatted
-                  timestamp.
-                sql: SELECT * FROM city_connect_merge
-  - name: dataos-tool-city-merge-01
-    spec:
-      stack: toolbox
-    compute: runnable-default
-      stackSpec:
-        dataset: dataos://icebase:retail/city_merge_01?acl=rw
-        action:
-          name: set_version
-          value: latest
+          steps:
+            - sequence:
+                - name: merge_data
+                  doc: Pick all columns from cities and add version as yyyyMMddHHmm formatted
+                    timestamp.
+                  sql: SELECT * FROM city_connect_merge
 ```
