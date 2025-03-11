@@ -69,7 +69,7 @@ The above Equation Monitor will generate the following incident:
             },
             {
               "name": "user",
-              "value": "rakeshvishvakarma"
+              "value": "iamgroot"
             }
           ]
         },
