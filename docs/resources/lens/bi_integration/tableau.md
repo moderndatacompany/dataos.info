@@ -2,9 +2,9 @@
 
 The semantic model can be integrated with Tableau using the following Ways
 
-* [Using Data Product Hub(Recommended - GUI based)](/resources/lens/bi_integration/Tableau#using-data-product-hub): This method provides a user-friendly, graphical interface for integrating the semantic model with Tableau.  This approach is ideal for those who prefer an intuitive, no-code setup.
+* [Using Data Product Hub(Recommended - GUI based)](/resources/lens/bi_integration/tableau#using-data-product-hub): This method provides a user-friendly, graphical interface for integrating the semantic model with Tableau.  This approach is ideal for those who prefer an intuitive, no-code setup.
 
-* [Using cURL command (Command-Line based)](/resources/lens/bi_integration/Tableau#using-curl-command): By executing a simple cURL request, users can fetch and connect the semantic model directly to Tableau. This method is suitable for advanced users looking to script or automate the integration process.
+* [Using cURL command (Command-Line based)](/resources/lens/bi_integration/tableau#using-curl-command): By executing a simple cURL request, users can fetch and connect the semantic model directly to Tableau. This method is suitable for advanced users looking to script or automate the integration process.
 
 ## Using Data Product Hub
 
@@ -19,7 +19,7 @@ Access the Home Page of DataOS. From the home page, navigate to the Data Prod
 
 Browse through the list of available Data Products. Select a specific Data Product to integrate with Tableau. For instance, `Product360` can be chosen to explore the Data Product on Tableau for data visualisation and getting insights.
 
-![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau0.png)
+![DPH](/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau0.png)
 
 Browse through the list of available Data Products. Select a specific Data Product to integrate with Tableau. For instance, **Product 360** can be chosen to explore the Data Product on Tableau for data visualisation and getting insights.
 

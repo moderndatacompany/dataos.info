@@ -2,7 +2,7 @@
 
 Each REST API endpoint belongs to an API scope, e.g., the `/v2/load` endpoint belongs to the `data` scope. API scopes provide a way to secure access to API endpoints, allowing you to limit accessibility to specific users or roles, or disallow access entirely. By default, API endpoints in all scopes are accessible to everyone, allowing broad access unless specifically restricted. 
 
-You can manage API access using the [user_groups](/resources/lens/working_with_user_groups_and_data_policies/). The default user group ensures that API endpoints in all scopes are accessible to everyone. You can create custom user groups by defining roles and associating specific users with these roles in the user_group.yml file. To know more about user groups click [here](/resources/lens/working_with_user_groups_and_data_policies/).
+You can manage API access using the [user_groups](/resources/lens/user_groups_and_data_policies/). The default user group ensures that API endpoints in all scopes are accessible to everyone. You can create custom user groups by defining roles and associating specific users with these roles in the user_group.yml file. To know more about user groups click [here](/resources/lens/user_groups_and_data_policies/).
 
 
 The following `api_scopes` are currently supported:

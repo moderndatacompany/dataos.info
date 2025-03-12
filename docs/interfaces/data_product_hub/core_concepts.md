@@ -6,7 +6,7 @@ The 'Customer Churn Prediction' Data Product will be used to explain each termin
 
 ## Metrics
 
-A [Metric](/interfaces/data_product_hub/discovery/#metrics) is an entity that, by default, provides a [logical view](/resources/lens/concepts/#views) of a [logical table](/resources/lens/concepts/#table), containing only one measure and a time dimension. This means that a Metric represents a specific data point or calculation over time, focusing on one key measure, such as average spent per category, retention rate, or churn rate, and linking it to a time period for analysis. In the Data Product Hub, Metrics are populated by the data model ([Lens model](/resources/lens/)). For information on how these Metrics are populated in the Data Product Hub, please refer to [this section](/resources/lens/working_with_views/).
+A [Metric](/interfaces/data_product_hub/discovery/#metrics) is an entity that, by default, provides a [logical view](/resources/lens/concepts/#views) of a [logical table](/resources/lens/concepts/#table), containing only one measure and a time dimension. This means that a Metric represents a specific data point or calculation over time, focusing on one key measure, such as average spent per category, retention rate, or churn rate, and linking it to a time period for analysis. In the Data Product Hub, Metrics are populated by the data model ([Lens model](/resources/lens/)). For information on how these Metrics are populated in the Data Product Hub, please refer to [this section](/resources/lens/views/).
 
 <center>
 <img src="/interfaces/data_product_hub/metrics.png" alt="DPH" style="width:40rem; border: 1px solid black;" />

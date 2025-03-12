@@ -36,11 +36,11 @@ Lens  is engineered to handle complex and large-scale data models with ease. Key
 
 - **Structured YAML templates:** Lens provides standardized, easy-to-customize YAML templates. These templates streamline the creation of Lens YAML files, ensuring consistency across models and reducing manual effort. They offer an efficient way to define tables, views, dimensions, measures, joins, and segments, allowing you to quickly set up and modify your data models with minimal hassle.
 
-- **Segments:** [Segments](/resources/lens/working_with_segments/) are predefined filters that enable the definition of complex filtering logic in SQL. They allow you to create specific subsets of data, such as users from a particular city, which can be reused across different queries and reports. This feature helps streamline the data exploration process by simplifying the creation of reusable filters.
+- **Segments:** [Segments](/resources/lens/segments/) are predefined filters that enable the definition of complex filtering logic in SQL. They allow you to create specific subsets of data, such as users from a particular city, which can be reused across different queries and reports. This feature helps streamline the data exploration process by simplifying the creation of reusable filters.
 
-- **API support:** Lens enhances interoperability by simplifying application development with support for [Postgres API](/resources/lens/exploration_of_lens_using_sql_apis/), [REST API](/resources/lens/exploration_of_lens_using_rest_apis/), and [GraphQL](/resources/lens/exploration_of_lens_using_graphql/). Additionally, learn how to [work with payloads](/resources/lens/working_with_payload/) for querying and interacting with the system in the API Documentation.
+- **API support:** Lens enhances interoperability by simplifying application development with support for [Postgres API](/resources/lens/exploration_of_lens_using_sql_apis/), [REST API](/resources/lens/exploration_of_lens_using_rest_apis/), and [GraphQL](/resources/lens/graphql_api/graphql_query_example/). Additionally, learn how to [work with payloads](/resources/lens/working_with_payload/) for querying and interacting with the system in the API Documentation.
 
-- **Governance and access control:** Lens ensures data governance through[ user group management and data policies](/resources/lens/working_with_user_groups_and_data_policies/), enabling precise control over who can access and interact with data models. 
+- **Governance and access control:** Lens ensures data governance through[ user group management and data policies](/resources/lens/user_groups_and_data_policies/), enabling precise control over who can access and interact with data models. 
 
 - **BI Integration:** Lens improves interoperability through robust integration with Superset, Tableau and PowerBI. This ensures that data models can be easily utilized across various BI platforms, enhancing the overall analytics experience. For more details on BI integration, visit the [BI Integration Guide](/resources/lens/bi_integration/).
 
@@ -102,6 +102,13 @@ GraphQL API enables Lens to deliver data over the HTTP protocol to GraphQL enabl
 ### **Python**
 
 Lens supports interaction through Python, allowing one to use libraries such as requests for making API calls and handling responses programmatically. This method is ideal for more complex queries and automation tasks. For detailed instructions on setting up and using Python with Lens click [here](/resources/lens/exploration_of_lens_using_python/).
+
+### **SQL APIs**
+
+Lens provides a PostgreSQL-compatible interface, enabling users to interact with the semantic model over SQL. The following resources offer detailed instructions on how to set up and use the SQL APIs with Lens:
+
+- To explore how to interact with Lens using SQL APIs, click [here](/resources/lens/sql_apis/supported_functions_and_operators/).
+- To learn about the supported functions and operators within the SQL API, click [here](/resources/lens/sql_apis/supported_functions_and_operators/).
 
 ### **REST APIs**
 

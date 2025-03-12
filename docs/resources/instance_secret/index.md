@@ -26,7 +26,7 @@ Operators can exercise precise control over who can retrieve credentials from Se
 
 <aside class="callout">
 
-🗣️ In the DataOS ecosystem, there are two specialized Resources designed to protect sensitive information: Instance Secret and <a href="/resources/secret/">Secret</a>. The Instance Secret offers a wider scope, extending across the entirety of the <a href="/resources/types_of_dataos_resources/#instance-level-resources">DataOS Instance</a>. Resources within any Workspace can utilize Instance Secrets for securely retrieving sensitive data. In contrast, Secrets are limited to the <a href="/resources/types_of_dataos_resources/#workspace-level-resources">Workspace level</a>, accessible exclusively within a specific Workspace and only by Resources associated with that Workspace.
+🗣️ In the DataOS ecosystem, there are two specialized Resources designed to protect sensitive information: Instance Secret and <a href="/resources/secret/">Secret</a>. The Instance Secret offers a wider scope, extending across the entirety of the <a href="/resources/types/#instance-level-resources">DataOS Instance</a>. Resources within any Workspace can utilize Instance Secrets for securely retrieving sensitive data. In contrast, Secrets are limited to the <a href="/resources/types/#workspace-level-resources">Workspace level</a>, accessible exclusively within a specific Workspace and only by Resources associated with that Workspace.
 </aside>
 
 ## **Structure of an Instance Secret manifest**
