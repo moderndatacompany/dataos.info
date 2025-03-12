@@ -180,7 +180,7 @@ As a particular table is expanded, the list of all its dimensions and measures i
 <figcaption><i>Entities</i></figcaption>
 </center>
 
-**Metrics:** are presented as a drop-down list option, allowing users to select from predefined key performance indicators (KPIs). These [Metrics](/interfaces/data_product_hub/core_concepts/#metrics) provide quantifiable measures crucial for assessing the performance of specific data points within the Data Product. For example, selecting the metric `aggregated_qtr_revenue_metric.sales_sales_aggregate_qtr_revenue_2024` would allow users to analyze quarterly revenue for different product brands. To know more about how to create the matrics, refer [this link](/resources/lens/working_with_views/#metrics-first-approach)
+**Metrics:** are presented as a drop-down list option, allowing users to select from predefined key performance indicators (KPIs). These [Metrics](/interfaces/data_product_hub/core_concepts/#metrics) provide quantifiable measures crucial for assessing the performance of specific data points within the Data Product. For example, selecting the metric `aggregated_qtr_revenue_metric.sales_sales_aggregate_qtr_revenue_2024` would allow users to analyze quarterly revenue for different product brands. To know more about how to create the matrics, refer [this link](/resources/lens/views/#metrics-first-approach)
 
 **How to explore Metrics in the Explorer**:
 

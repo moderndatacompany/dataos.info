@@ -121,7 +121,7 @@ segments:
     sql: "{TABLE}.state IN ('Illinois', 'Ohio')"
 ```
 
-To know more about segments click [here](https://dataos.info/resources/lens/working_with_segments/).
+To know more about segments click [here](https://dataos.info/resources/lens/segments/).
 
 
 ### **Create views**
@@ -143,7 +143,7 @@ views:
           - customer_segments
 ```
 
-To know more about the views click [here](https://dataos.info/resources/lens/working_with_views/).
+To know more about the views click [here](https://dataos.info/resources/lens/views/).
 
 
 ### **Create User groups**
@@ -157,7 +157,7 @@ user_groups:
     includes: "*"
 ```
 
-To know more about the User groups click [here](/resources/lens/working_with_user_groups_and_data_policies/).
+To know more about the User groups click [here](/resources/lens/user_groups_and_data_policies/).
 
 
 ## Step 3: Deployment manifest file
@@ -257,7 +257,7 @@ x-lens2-environment: &lens2-environment
   LENS2_NAME: sales360
   LENS2_DESCRIPTION: "Ecommerce use case on Adventureworks sales data"
   LENS2_TAGS: "lens2, ecom, sales and customer insights"
-  LENS2_AUTHORS: "rakeshvishvakarma, shubhanshu"
+  LENS2_AUTHORS: "iamgroot, ironman"
   LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
   # Data Source
   LENS2_SOURCE_TYPE: ${depot} #source name - depot

@@ -4,13 +4,26 @@ LakeSearch includes a Query Rewriter feature that dynamically modifies incoming 
 
 In this implementation, the Query Rewriter adds a platform-based filter to every query, ensuring that only results matching "Windows" as the platform are retrieved.
 
-## Query rewriter implementation
+## How does query rewriter works?
+
 
 The following implementation defines a custom query rewriter that:
 
 - Extracts the original match clause from the incoming query.
 - Adds a filter to ensure results are scoped accordingly.
 - Maintains the original search intent while enforcing the additional filter.
+
+For example, in a scenario where users should only see data from their own country, a Python script can be created to automatically append a filter, such as "country" = "India", to every query, as shown below. Once this script is deployed in a Lakesearch Service, any request to the endpoint will return only the data where the country is India, ensuring restricted access based on predefined rules. 
+
+<div style="text-align: center;">
+  <figure>
+    <img src="/resources/stacks/lakesearch/images/post.png" 
+         alt="API endpoint" 
+         style="border: 1px solid black; width: 60%; height: auto; display: block; margin: auto;">
+    <figcaption style="margin-top: 8px; font-style: italic;">API endpoint</figcaption>
+  </figure>
+</div>
+
 
 ## Pre-requisites
 
@@ -85,7 +98,7 @@ A user must have the following requirements met before setting up a Lakesearch S
 
 ## Steps
 
-1. Create a Python file containing the below code.
+1. Create a Python file containing the below code by replacing `"platform": "Windows"` with the key:value by which the data will be filtered. Also ensure while indexing the column by which the data will be filtered should be one of these types: `keyword`, `int`, `bigint`, `bool`, `timestamp`, or `float`in a Lakesearch Service.
 
     ```python
     from py.lakesearch.query_rewriter_config import QueryRewriterConfig  
@@ -142,18 +155,6 @@ A user must have the following requirements met before setting up a Lakesearch S
     | `from py.lakesearch.query_rewriter_config import QueryRewriterConfig` | This line imports a base class (or configuration interface) named `QueryRewriterConfig` from the `py.lakesearch.query_rewriter_config` module. This base class defines the structure and required methods for the query rewriter that you want to implement. | YES |
     | `from py.lakesearch.registrar import Registrar` | This import brings in the `Registrar` class from the `py.lakesearch.registrar` module. The purpose of this class is to register your custom query rewriter so that the system knows to use it when processing queries. | YES |
 
-2. Create a requirement file with `.txt` extention.
-
-    ```python
-    torch>=2.5.1  
-    torchvision>=0.20.1  
-    sentence-transformers>=3.3.1  
-    numpy>=2.2.1  
-    scipy>=1.14.1  
-    scikit-learn>=1.6.0  
-    transformers>=4.47.1  
-    huggingface-hub>=0.27.0  
-    ```
 
 3. Create a Lakesearch Service manifest file with the following YAML configuration by referring the Python and requirement file in the `config` section of the Lakesearch Service:
 
@@ -644,7 +645,6 @@ The code checks whether the user has the "operator" tag.
     ```
   </details>
 
-
-
+To get to know more about search types, filters, aggregations, and expressions, please refer [to this link](/resources/stacks/lakesearch/index_searching/).
 
 

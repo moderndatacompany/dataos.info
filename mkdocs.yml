@@ -123,8 +123,8 @@ markdown_extensions:
   - pymdownx.tilde
 #  - pymdownx.extra
   - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji          # while pushin to dev
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg       # while pushin to dev
+      emoji_index: !!python/name:materialx.emoji.twemoji          # while pushin to dev
+      emoji_generator: !!python/name:materialx.emoji.to_svg       # while pushin to dev
 
       # emoji_index: !!python/name:materialx.emoji.twemoji                      # while hosting locally  
       # emoji_generator: !!python/name:materialx.emoji.to_svg                   # while hosting locally 
@@ -351,7 +351,7 @@ nav:
             # - Working with Payload: resources/lens/working_with_payload.md
             - Segments: resources/lens/segments.md
             - Views: resources/lens/views.md
-            - User Groups: resources/lens/working_with_user_groups_and_data_policies.md
+            - User Groups: resources/lens/user_groups_and_data_policies.md
 
           # - Lens Setup: 
           #     - Lens Model Folder Setup: resources/lens/lens_model_folder_setup.md
@@ -469,7 +469,7 @@ nav:
           - Lakesearch:
             - resources/stacks/lakesearch/index.md
             - Set up: 
-              - Normal Lakesearch Service: resources/stacks/lakesearch/service.md
+              - Lakesearch Service: resources/stacks/lakesearch/service.md
               - Query Rewriter: resources/stacks/lakesearch/rewriter.md
               # - Vector Embedding: resources/stacks/lakesearch/vector_embedding.md
             - Configurations: resources/stacks/lakesearch/configurations.md
