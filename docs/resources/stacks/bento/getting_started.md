@@ -1,10 +1,10 @@
 # Bento: First Steps
 
-Welcome to the world of Bento, a resilient stream processing stack that enables you to handle your data flows with ease!
+Bento is a resilient stream processing stack designed to simplify data flow management.
 
-If you're new to the game, fret not! We've got you covered with this step-by-step guide to getting you started. The first step is to become familiar with Bento on your local system, which is considered part of the best practices to thoroughly test your data pipelines before unleashing them into the wilds of production. 
+For new users, setting up Bento in a local environment is recommended as part of best practices. This approach allows for comprehensive testing of data pipelines before deploying them to a production environment.
 
-From there, we'll guide you through the transition to DataOS and beyond. Follow along with our expert guidance and before you know it, you'll be a Bento whiz.
+Once the local setup is complete, guidance is available for transitioning to DataOS and expanding pipeline capabilities. Refer to the step-by-step guide for detailed instructions on each stage of the process.
 
 ## Install
 
@@ -20,9 +20,8 @@ If you have docker installed, you can pull the latest official Bento image with:
 
 ```bash
 docker pull ghcr.io/warpstreamlabs/bento
-docker run --rm -v /path/to/your/config.yaml:/bento.yaml ghcr.io/warpstreamlabs/bento
 ```
-
+In case you don't have docker installed, installed it using ["Install Docker Engin"](https://docs.docker.com/engine/install/). 
 Once you have successfully installed the stack, you're ready to dive in and start processing data.
 
 ## Building a stream pipeline
@@ -118,7 +117,7 @@ pipeline:
         }
 ```
 
-Don’t worry if you don’t understand even a single word of Bloblang. We will teach you like a kid, and you will be a hero from zero in no time.
+Don’t worry, no prior knowledge of Bloblang is required. Comprehensive guidance is provided to help users understand Bloblang concepts from the basics, ensuring a clear learning path from beginner to advanced proficiency. Visit [Bloblang Walkthrough](/resources/stacks/bento/bloblang/walkthrough/)
 
 ### **Output**
 
@@ -201,4 +200,4 @@ root = {
 
 This transformation takes the incoming data and creates a new object with a single key-value pair. The key is "joke", and the value is the joke itself. We're essentially just extracting the joke from the API response and storing it in a more structured format.
 
-That’s it! With just a few lines of code, we've set up a Bento pipeline to retrieve Chuck Norris jokes from an API, transform the data using Bloblang, and store the result locally on our machine. Now go forth and use your newfound powers for good (or for laughter)!
+That’s it! With just a few lines of code, we've set up a Bento pipeline to retrieve Chuck Norris jokes from an API, transform the data using Bloblang, and store the result locally on our machine.
