@@ -66,7 +66,9 @@ Effective configuration is crucial for utilizing the Bento stack efficiently. Wi
 
 Tired of cumbersome data wrangling? Bloblang, the native mapping language of Bento, provides a streamlined solution for data transformation. With its expressive and powerful syntax, Bloblang simplifies the process of transforming data without the need for complex scripts or convoluted pipelines. Discover the capabilities of Bloblang in our tutorial:
 
-[Bloblang ](/resources/stacks/bento/bloblang/)
+[Bloblang](/resources/stacks/bento/bloblang/walkthrough/)
+
+<!-- (/resources/stacks/bento/bloblang/) it going to (/resources/stacks/bento/bloblang/bloblang_core_features/)-->
 
 ## Recipes
 
