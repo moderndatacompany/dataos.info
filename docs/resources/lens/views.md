@@ -32,8 +32,6 @@ views:
    - name: customer_churn_prediction
      description: It is containing the customer churn information.
      public: true
-     meta:
-       export_to_iris: true
      tables:
        - join_path: marketing_campaign
          prefix: true
@@ -61,11 +59,11 @@ views:
 
 ```
 
-<aside class="callout">
+<!-- <aside class="callout">
 
 To populate an Entity view on Iris, one must use the `export_to_iris` attribute. However, same is not the case in the Metric view.
 
-</aside>
+</aside> -->
 
 
 
@@ -209,12 +207,8 @@ views:
 
 ## **Exploration and activation**
 
-- **Exploration**: Views can be explored using tools such as **Iris Board,** which provides automated, dynamic dashboards for visualizing and analyzing performance metrics. These tools help detect anomalies and reveal trends over time. You can also query the view in Lens Studio directly.
+- **Exploration**: Views can be explored using tools such as [Data Product Hub](/interfaces/data_product_hub/) which provides automated, dynamic dashboards for visualizing and analyzing performance metrics. These tools help detect anomalies and reveal trends over time. You can also query the view in Lens Studio directly.
 - **Activation**: Metrics can be embedded into operational workflows, triggering alerts, populating Excel models for cross-tab analysis, or integrated into email automation tools for marketing or retention strategies.
-- You can explore the view via
-    - Data Product Hub
-    - Iris Board
-
 <!-- 
 ### **Lens Studio**
 
@@ -279,7 +273,7 @@ To explore the views via **Lens Studio,** follow the below steps:
     <figcaption> Views in Lens Explorer </figcaption>
 </div> -->
 
-
+<!-- 
 ### **Iris Board in Metis**
 
 To explore the view via Iris Board, follow the same steps as above to navigate to the Lens Studio page.
@@ -294,11 +288,11 @@ Once on the Lens Studio page, click the Iris button located beside the Explore b
 <div style="text-align: center;">
     <img src="/resources/lens/working_with_views/iris02.png" alt="Tables and Views" style="max-width: 80%; height: auto; border: 1px solid #000;">
     <figcaption> View in Iris </figcaption>
-</div>
+</div> -->
 
 ### **Exploring Views on Data Products Hub**
 
-Follow these steps to explore views and metrics within the Data Products Hub (DPH).
+Follow these steps to explore views and metrics within the Data Products Hub.
 
 **Step 1: Access DataOS Home Page**
 
@@ -312,7 +306,7 @@ Follow these steps to explore views and metrics within the Data Products Hub (DP
 
 **Step 2: Search for a Data Product**
 
-- Use the search bar in **Data Products Hub 2.0** to find the desired data product. For example, search for *Customer Churn Prediction*. 
+- Use the search bar in **Data Products Hub 2.0** to find the desired Data Product. For example, search for *Customer Churn Prediction*. 
 
 <div style="text-align: center;">
     <img src="/resources/lens/working_with_views/dph2.png" alt="Tables and Views" style="max-width: 80%; height: auto; border: 1px solid #000;">
@@ -322,15 +316,14 @@ Follow these steps to explore views and metrics within the Data Products Hub (DP
 **Step 3: Explore Metrics**
 
 - The **Overview** opens by default when you access the page.
-- Click on either **Entitites** or **Metrics** tab to view all available views for the selected data product.
-- This section provides an overview of the metric-first approach and displays key metrics associated with the data product.
+- Click on either **Entitites** or **Metrics** tab to view all available views for the selected Data Product.
+- This section provides an overview of the metric-first approach and displays key metrics associated with the Data Product.
     
 <div style="text-align: center;">
     <img src="/resources/lens/working_with_views/dph3.png" alt="Tables and Views" style="max-width: 80%; height: auto; border: 1px solid #000;">
     <figcaption>  </figcaption>
 </div>
     
-
 **Step 4: View data lineage**
 
 - You can trace the data source for each metric and understand how it is calculated. For example, a metric like Customer Churn Prediction might be sourced from the `purchase_data` table.
@@ -343,15 +336,15 @@ Follow these steps to explore views and metrics within the Data Products Hub (DP
 </div>
     
 
-**Step 5: Access the Iris board for Metric analysis**
+<!-- **Step 5: Access the Iris board for Metric analysis**
 
-- Click on the Quick Insights link at the **References** section's top-r**ight** corner.
-- This will take you directly to the **Iris Board**, where you can observe and analyze the metric view in more detail.
+- Click on the Quick Insights link at the **References** section's top-right corner.
+- This will take you directly to the **Iris Board**, where you can observe and analyze the metric view in more detail. -->
 
-**Step 6: Navigate to the DPH Studio**
+**Step 5: Navigate to the Data Product Hub Studio**
 
 - Next to the **Quick Insights** button, click the **Explore** button.
-- This will open the **DPH Exploration Page**, with the default tab set to **Studio**. Query your metrics here.
+- This will open the **Data Product Hub Exploration Page**, with the default tab set to **Studio**. Query metrics here.
     
 <div style="text-align: center;">
     <img src="/resources/lens/working_with_views/dph5.png" alt="Tables and Views" style="max-width: 80%; height: auto; border: 1px solid #000;">

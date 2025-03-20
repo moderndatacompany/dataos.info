@@ -99,7 +99,7 @@ The UDL should conform to the format `dataos://[depot]:[collection]/[dataset]`
 ### **Invalid file format**
 
 ```yaml
-2022-11-18 07:57:27,726 ERROR [main] i.d.f.Flare$: =>Flare: Job finished with error build version: 6.0.91-dev; workspace name: public; workflow name: test-03-dataset; workflow run id: 3bdc1dcb-5130-49a5-97e9-e332e238396a; run as user: piyushjoshi; job name: sample-123; job run id: 3b0c3db5-ea06-4727-96ff-8f493ff80257; 
+2022-11-18 07:57:27,726 ERROR [main] i.d.f.Flare$: =>Flare: Job finished with error build version: 6.0.91-dev; workspace name: public; workflow name: test-03-dataset; workflow run id: 3bdc1dcb-5130-49a5-97e9-e332e238396a; run as user: iamgroot; job name: sample-123; job run id: 3b0c3db5-ea06-4727-96ff-8f493ff80257; 
 java.lang.ClassNotFoundException: 
 Failed to find data source: csvbb. 
 ```

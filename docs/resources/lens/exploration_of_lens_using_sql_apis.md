@@ -1,6 +1,6 @@
 # Exploration of Lens using SQL APIs
 
-Lens exposes a PostgreSQL-compatible interface, enabling interaction with the semantic model(Lens) using SQL API. The PostgreSQL client tool `psql` is required to query the database and manage Lens data.
+Lens exposes a PostgreSQL-compatible interface, enabling interaction with the semantic model(Lens) using SQL API. The PostgreSQL client tool `psql` is required to query the semantic model.
 
 ## Prerequisites
 
@@ -46,7 +46,7 @@ To interact with Lens, the following options are available:
 
 ## Postgresql client (psql)
 
-The `psql` command-line tool is required to interact with Lens through PostgreSQL. Specifically, `postgresql-client-16` must be installed, as this version includes the necessary tools to connect and query the database. 
+The `psql` command-line tool is required to interact with Lens through PostgreSQL. Specifically, `postgresql-client-16` must be installed, as this version includes the necessary tools to connect and query the semantic model. 
 
 ### **Retrieve Lens**
 
@@ -199,7 +199,6 @@ Here are some more commands for reference.
 
 | Command Description                              | Command Example                 |
 |--------------------------------------------------|---------------------------------|
-| Show the schema and details of a specific table  | `\d [table_name]` E.g.,`\d customers`|
 | List all databases in the PostgreSQL server      | `\l`                            |
 | List all roles and users                         | `\du`                           |
 | List all schemas in the database                 | `\dn`                           |
@@ -225,8 +224,215 @@ SELECT
 	 0
 ```
 
-## Query format
+## Query format in the SQL API
 
-Please refer to the  [SQL API reference](/resources/lens/sql_apis/query_format/) to explore the query format and
-see whether a specific expression or function is supported and whether it can be used in selection (e.g., `WHERE`) or projection (e.g., `SELECT`) parts of SQL queries. 
+The SQL API uses the Postgres dialect to run queries that can reference tables and columns in the semantic model.
 
+**Semantic model mapping**
+
+In this model, each table or view is represented as a table in the database, and the measures, dimensions, and segments of the semantic model are represented as columns within these tables. This allows for seamless querying of the semantic model as if working with a regular relational database, where you can directly access the semantic model through SQL queries.
+
+### **Tables and views**
+
+<aside class="callout">
+
+Given a table or view named `customers`, it can be queried just like a regular table.
+
+</aside>
+
+```sql
+SELECT * FROM customer;
+```
+
+### **Dimensions**
+
+To query a table or view with a dimension called country, it can be referenced as a column in the `SELECT` clause.
+ <!-- Additionally, it must be included in the GROUP BY clause to ensure correct aggregation. -->
+
+```
+SELECT country
+FROM customer;
+```
+
+<!-- ```
+SELECT country
+FROM customer
+GROUP BY 1;
+``` -->
+
+### **Measures**
+
+When a table or view has a measure (e.g., count), it needs to be referenced using an aggregation function like `MEASURE` to ensure that the measure is properly calculated over the relevant data.
+
+```
+SELECT MEASURE(total_customers)
+FROM customer;
+```
+The SQL API allows aggregate functions on measures as long as they match measure types.
+
+
+<aside class="callout">
+
+🗣️ When querying dimension and measure together add `GROUP BY` clause:
+
+```sql
+SELECT country, MEASURE(total_customers) FROM customer GROUP BY 1;
+```
+</aside>
+
+
+### **Aggregate functions**
+
+The special `MEASURE` function works with measures of any type. Measure columns can also be aggregated with the following aggregate functions that correspond to measure types:
+
+| Measure Type            | Aggregate Function in an Aggregated Query   |
+|-------------------------|---------------------------------------------|
+| `avg`                   | MEASURE or AVG                             |
+| `boolean`               | MEASURE                                    |
+| `count`                 | MEASURE or COUNT                           |
+| `count_distinct`        | MEASURE or COUNT(DISTINCT ...)             |
+| `count_distinct_approx` | MEASURE or COUNT(DISTINCT ...)             |
+| `max`                   | MEASURE or MAX                             |
+| `min`                   | MEASURE or MIN                             |
+| `number`                | MEASURE or any other function from this table |
+| `string`                | MEASURE or STRING_AGG                      |
+| `sum`                   | MEASURE or SUM                             |
+| `time`                  | MEASURE or MAX or MIN                      |
+
+
+<aside class="callout">
+
+🗣️ If an aggregate function doesn't match the measure type, the following error will be thrown: Measure aggregation type doesn't match.
+
+
+</aside>
+
+### **Segments**
+
+Segments are exposed as columns of the `boolean` type. For instance a table has a segment called `country_india`, then reference it as a column in the `WHERE` clause:
+
+```sql
+SELECT *
+FROM customer
+WHERE country_india IS TRUE;
+```
+
+The SQL API allows aggregate functions on measures as long as they match measure types.
+
+### **Joins**
+
+Please refer to this page for details on joins.
+
+```sql
+SELECT country, 
+education, 
+MEASURE(total_customers) FROM customer 
+WHERE education='Basic' 
+GROUP BY 1,2 limit 10;
+```
+For this query, the SQL API would transform SELECT query fragments into a regular query. It can be represented as follows in the REST API query format:
+
+```rest
+{
+  "dimensions": [
+    "customer.country"
+  ],
+  "measures": [
+    "customer.amount"
+  ],
+  "filters": [
+    {
+      "member": "orders.status",
+      "operator": "equals",
+      "values": [
+        "shipped"
+      ]
+    }
+  ]
+}
+```
+
+
+Because of this transformation, not all functions and expressions are supported in query fragments performing `SELECT` from semantic model tables. Please refer to the [SQL API reference](/resources/lens/sql_apis/supported_functions_and_operators#sql-api-references) to see whether a specific expression or function is supported and whether it can be used in selection (e.g., WHERE) or projection (e.g., SELECT) parts of SQL queries.
+
+For example, the following query won't work because the SQL API can't push down the `CASE` expression to Lens for processing. It is not possible to translate `CASE` expressions in measures.
+
+```sql
+SELECT
+  city,
+  MAX(CASE
+    WHEN status = 'shipped'
+    THEN '2-done'
+    ELSE '1-in-progress'
+  END) AS real_status,
+  SUM(number)
+FROM orders
+CROSS JOIN users
+GROUP BY 1;
+```
+Nested queries allow for advanced querying by wrapping one `SELECT` statement (inner query) within another `SELECT` statement (outer query). This structure enables the use of additional SQL functions, operators, and expressions, such as CASE, which may not be directly applicable in the inner query.
+
+To achieve this, the original `SELECT` statement can be rewritten with an outer query that performs further calculations or transformations.
+
+Rewrite the above query as follows, making sure to wrap the original `SELECT` statement:
+
+## Querying views via SQL API
+
+The recommended approach for querying joins using the SQL API is through views. This method is preferred as it gives control over the join process.
+
+ <!-- especially in complex scenarios. Although BI tools treat the view as a table, no materialization occurs until the semantic model is actually queried. When a semantic model view is queried via the SQL API, semantic model optimizes member pushdown, ensuring that only the necessary parts of the view are materialized at query time. Additionally, semantic model handles fan and chasm traps based on the dimensions specified in the query. As long as the measure aggregation types are correctly configured, the results in BI tools will be accurate, even though semantic models and views are essentially viewed as tables. -->
+
+
+```yaml
+views:
+  - name: purchase_frequency
+    description: This metric calculates the average number of times a product is purchased by customers within a given time period
+    #...
+
+    tables:
+      - join_path: purchase
+        prefix: true
+        includes:
+          - purchase_date
+          - customer_id
+          - purchase_frequency
+          - purchases
+
+      - join_path: product
+        prefix: true
+        includes:
+          - product_category
+          - product_name
+```
+
+Now, it is possible to get purchase_frequency of each product with the following query.
+
+When a view is created by joining multiple tables, the columns in the view are prefixed with the respective table names from which they originate. This practice ensures that there is no ambiguity, even when multiple tables contain columns with similar or identical names.
+
+For instance, in a view that aggregates data from the purchase and product tables:
+
+- The `purchase_frequency` column originates from the `purchase` table, so it is prefixed with `purchase_` in the view, becoming `purchase_purchase_frequency` column in the view.
+- Similarly, the `product_name` column originates from the `product` table, and in the view, it is prefixed with `product_`, becoming `product_product_name` in the view.
+
+<aside class="callout">
+🗣️ Failure to prefix table names in column names when querying a view with multiple tables can lead to errors.
+</aside>
+
+
+**Example:**
+
+```shell
+lens:public:productaffinity=> SELECT purchase_purchase_frequency, product_product_name FROM purchase_frequency;
+ purchase_purchase_frequency | product_product_name 
+-----------------------------+----------------------
+                       12802 | Steak Meat
+                       12091 | Salmon Fish
+                        8154 | Red Wine
+                        6388 | Chocolate
+                        1618 | Apple
+```
+
+
+<aside class="callout">
+See <a href="/resources/lens/sql_apis/supported_functions_and_operators/">SQL API reference</a> for the list of supported SQL commands, functions, and operators.
+</aside>

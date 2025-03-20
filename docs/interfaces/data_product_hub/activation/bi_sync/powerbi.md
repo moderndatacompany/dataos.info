@@ -12,7 +12,7 @@ Follow the below steps:
 
 ### **Step 1: Navigate to the Data Product Hub**
 
-Access the Home Page of DataOS. From there, navigate to the Data Product Hub to explore the various Data Products available within the platform.
+Access the Home Page of DataOS. Click on Data Product Hub.
 
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
