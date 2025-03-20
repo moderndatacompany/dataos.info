@@ -1,10 +1,10 @@
 # Bento on DataOS
 
-When dealing with never-ending streams of data within DataOS - for e.g. IoT, real-time stock trades, server logs, and event data - the Service resource is the answer to your prayers. But let's face it, stream data can be a tough nut to crack, and that's where Bento comes in as your trusty sidekick. It's the perfect stack to help you process your stream data quickly and efficiently without breaking a sweat.
+When managing continuous data streams in DataOS — such as IoT data, real-time stock trades, server logs, and event data — the Service resource provides a scalable solution for building robust pipelines.
 
-With Bento Service, you can enjoy the best of both worlds: the inherent benefits of the Service resource, which effortlessly enables you to create scalable and robust pipelines enriched with features such as built-in orchestration, cataloging, and governance capabilities, while the Bento stack takes care of all the heavy lifting when it comes to your stream data. 
+The Bento stack enhances this by simplifying stream data processing with efficient and reliable handling. By combining Bento with the Service resource, users gain access to features such as built-in orchestration, cataloging, and governance capabilities. This integration enables the creation of scalable pipelines that manage complex data flows effectively.
 
-And the best part? You can do it all with ease thanks to YAML declarative programming, which lets you focus on what really matters - processing your data and getting those precious insights - rather than worrying about the nitty-gritty details of how to fit the pieces of the puzzle together.
+Bento utilizes YAML declarative programming, allowing users to define pipeline logic clearly and concisely. This approach streamlines configuration, enabling users to focus on data processing and insights rather than implementation complexities.
 
 ## Prerequisites
 
@@ -25,13 +25,14 @@ dataos-ctl user get
 # Output
 			NAME     |     ID      |  TYPE  |        EMAIL         |              TAGS               
 ---------------|-------------|--------|----------------------|---------------------------------
-	  IamGroot   |   iamgroot  | person |  iamgroot@tmdc.io    | users:id:iamgroot,                                         
+	IamGroot   |   iamgroot  | person |  iamgroot@tmdc.io    | users:id:iamgroot,                                         
                |             |        |                      | roles:id:data-dev,              
-               |             |        |                      | roles:id:system-dev,            
+               |             |        |                      | roles:id:system-dev,        
+               |             |        |                      | roles:id:pulsar,            
                |             |        |                      | roles:id:user             
 
 ```
-
+If the required role is not available, contact the DataOS operator or submit a grant request for the respective role.
 
 ## Let’s Begin!
 
