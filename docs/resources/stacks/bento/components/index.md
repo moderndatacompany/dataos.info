@@ -43,9 +43,7 @@ service:
 
 ## Service Resource Section
 
-At the core of any Bento Service lies the Service section, which is responsible for defining a Service resource through a set of YAML fields and configurations. A Service is a persistent process that either receives or delivers API requests. The Bento stack is then invoked within the Service to effectuate the requisite transformations. For a deeper understanding of Service and its associated YAML configurations, please refer to the following page:
-
-[Service](/resources/service/)
+At the core of any Bento Service lies the Service section, which is responsible for defining a Service resource through a set of YAML fields and configurations. A Service is a persistent process that either receives or delivers API requests. The Bento stack is then invoked within the Service to effectuate the requisite transformations. For a deeper understanding of Service and its associated YAML configurations, please refer to the [Service Resource](/resources/service/) page.
 
 ## Bento Stack Section
 
@@ -127,8 +125,6 @@ For a thorough and comprehensive understanding of these magnificent components, 
 [Processors](/resources/stacks/bento/components/processors/)
 
 [Output](/resources/stacks/bento/components/output/)
-
-[Buffers](/resources/stacks/bento/components/buffers/)
 
 [Metrics](/resources/stacks/bento/components/metrics/)
 
