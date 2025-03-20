@@ -2,7 +2,7 @@
 
 ## Step 1: Create Postgres Depot
 
-If the Depot is not active, you need to create one using the provided template.
+If the Depot is not active, create one using the provided template.
 
 ```yaml
 name: ${{postgresdb}}
@@ -49,17 +49,130 @@ model
 └── user_groups.yml  # User group policies for governance
 ```
 
-1. **SQL Scripts (`model/sqls`):** Add SQL files defining table structures and transformations. Ensure the SQL dialect is compatible to the Postgres.
 
-2. **Tables (`model/tables`):** Define logical tables in separate YAML files. Include dimensions, measures, segments, and joins.
+### **Load data from the data source**
 
-3. **Views (`model/views`):** Define views in YAML files, referencing the logical tables.
+In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure that only the necessary columns are extracted, and the SQL dialect is specific to the data source.
 
-4. **User Groups (`user_groups.yml`):** Define access control by creating user groups and assigning permissions.
+For example, a simple data load might look as follows:
 
-## Step 3: Create the Lens deployment manifest file
+```sql
+SELECT
+  *
+FROM
+  "onelakehouse"."retail".channel;
+```
 
-After setting up the Lens model folder, the next step is to configure the deployment manifest. Below is the YAML template for configuring a Lens deployment. The below manifest is intended for source-type depot named `postgresdepot`, created on the Postgres source.
+Alternatively, you can write more advanced queries that include transformations, such as:
+
+```sql
+SELECT
+  CAST(customer_id AS VARCHAR) AS customer_id,
+  first_name,
+  CAST(DATE_PARSE(birth_date, '%d-%m-%Y') AS TIMESTAMP) AS birth_date,
+  age,
+  CAST(register_date AS TIMESTAMP) AS register_date,
+  occupation,
+  annual_income,
+  city,
+  state,
+  country,
+  zip_code
+FROM
+  "onelakehouse"."retail".customer; #catalog_name
+```
+
+### **Define the table in the Model**
+
+Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For example, to define a table for `sales `data:
+
+```yaml
+table:
+  - name: customers
+    sql: {{ load_sql('customers') }}
+    description: Table containing information about sales transactions.
+```
+
+#### **Add dimensions and measures**
+
+After defining the base table, add the necessary dimensions and measures. For example, to create a table for sales data with measures and dimensions, the YAML definition could look as follows:
+
+```yaml
+tables:
+  - name: sales
+    sql: {{ load_sql('sales') }}
+    description: Table containing sales records with order details.
+
+    dimensions:
+      - name: order_id
+        type: number
+        description: Unique identifier for each order.
+        sql: order_id
+        primary_key: true
+        public: true
+
+    measures:
+      - name: total_orders_count
+        type: count
+        sql: id
+        description: Total number of orders.
+```
+
+#### **Add segments to filter**
+
+Segments are filters that allow for the application of specific conditions to refine the data analysis. By defining segments, you can focus on particular subsets of data, ensuring that only the relevant records are included in your analysis. For example, to filter for records where the state is either Illinois or Ohio, you can define a segment as follows:
+
+```yaml
+segments:
+  - name: state_filter
+    sql: "{TABLE}.state IN ('Illinois', 'Ohio')"
+```
+
+To know more about segments click [here](https://dataos.info/resources/lens/segments/).
+
+
+### **Create views**
+
+Create a `views` folder to store all logical views, with each view defined in a separate YAML file (e.g., `sample_view.yml`). Each view references dimensions, measures, and segments from multiple logical tables. For instance the following`customer_churn` view is created.
+
+```yaml
+views:
+  - name: customer_churn_prediction
+    description: Contains customer churn information.
+    tables:
+      - join_path: marketing_campaign
+        includes:
+          - engagement_score
+          - customer_id
+      - join_path: customer
+        includes:
+          - country
+          - customer_segments
+```
+
+To know more about the views click [here](https://dataos.info/resources/lens/views/).
+
+
+### **Create User groups**
+
+This YAML manifest file is used to manage access levels for the semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, there is a 'default' user group in the YAML file that includes all users.
+
+```yaml
+user_groups:
+  - name: default
+    description: this is default user group
+    includes: "*"
+```
+
+To know more about the User groups click [here](https://dataos.info/resources/lens/user_groups_and_data_policies/)
+
+<aside class="callout">
+Push the semantic model folder into the code repository. Before pushing secure the repo credentials by using the Instance Secret and referencing it in the Lens manifest file for secure access.
+</aside>
+
+## Step 3: Create the Lens manifest file
+
+After setting up the Lens model folder, the next step is to configure the deployment manifest. Below is the YAML template for configuring a Lens deployment. The below manifest is intended for source-type Depot named `postgresdepot`, created on the Postgres source.
 
 ```yaml
 version: v1alpha
@@ -83,47 +196,6 @@ lens:
     # secretId: lens2_bitbucket_r
     syncFlags:
       - --ref=dev #repo-name
-
-  api:   # optional
-    replicas: 1 # optional
-    logLevel: info  # optional
-      
-    resources: # optional
-      requests:
-        cpu: 100m
-        memory: 256Mi
-      limits:
-        cpu: 2000m
-        memory: 2048Mi
-  worker: # optional
-    replicas: 2 # optional
-    logLevel: debug  # optional
-
-    resources: # optional
-      requests:
-        cpu: 100m
-        memory: 256Mi
-      limits:
-        cpu: 6000m
-        memory: 6048Mi
-  router: # optional
-    logLevel: info  # optional
-    resources: # optional
-      requests:
-        cpu: 100m
-        memory: 256Mi
-      limits:
-        cpu: 6000m
-        memory: 6048Mi
-  iris:
-    logLevel: info  
-    resources: # optional
-      requests:
-        cpu: 100m
-        memory: 256Mi
-      limits:
-        cpu: 6000m
-        memory: 6048Mi
 ```
 
 Each section of the YAML template defines key aspects of the Lens deployment. Below is a detailed explanation of its components:
@@ -148,12 +220,12 @@ Each section of the YAML template defines key aspects of the Lens deployment. Be
 
       * **`secretId`:**  The `secretId` attribute is used to access private repositories (e.g., Bitbucket, GitHub) . It specifies the secret needed to securely authenticate and access the repository.
 
-      * **`syncFlags`**:  Specifies additional flags to control repository synchronization. Example: `--ref=dev` specifies that the Lens model rsides in the dev branch.
+      * **`syncFlags`**:  Specifies additional flags to control repository synchronization. Example: `--ref=dev` specifies that the Lens model resides in the `dev` branch.
 
 * **Configuring API, Worker and Metric Settings (Optional):** Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
 
 
-## Step 4: Apply the Lens deployment manifest file
+## Step 4: Apply the Lens manifest file
 
 After configuring the deployment file with the necessary settings and specifications, apply the manifest using the following command:
 
@@ -162,15 +234,10 @@ After configuring the deployment file with the necessary settings and specificat
     ```bash 
     dataos-ctl resource apply -f ${manifest-file-path}
     ```
-=== "Alternative command"
-
-    ```bash 
-    dataos-ctl apply -f ${manifest-file-path}
-    ```
 === "Example usage"
 
     ```bash 
-    dataos-ctl apply -f /lens/lens_deployment.yml -w curriculum
+    dataos-ctl resource apply -f /lens/lens_deployment.yml -w curriculum
     # Expected output
     INFO[0000] 🛠 apply...                                   
     INFO[0000] 🔧 applying(curriculum) sales360:v1alpha:lens... 
@@ -179,8 +246,7 @@ After configuring the deployment file with the necessary settings and specificat
     ```
 
 
-
-## Docker compose manifest file
+<!-- ## Docker compose manifest file
 
 <details>
 
@@ -229,7 +295,7 @@ services:
       - ./model:/etc/dataos/work/model
 ```
 
-</details>
+</details> -->
 
 
 <!-- Follow these steps to create the `docker-compose.yml`:

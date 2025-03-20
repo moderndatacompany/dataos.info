@@ -136,7 +136,7 @@ There are separate tabs each for Overview, Inputs, Outputs, Model, Metrics, Data
 
 #### **Overview tab**
 
-The Overview Tab will display the visual snapshot of your Data Product's work: from input to output, including the [semantic model](/resources/lens/overview/), [Metrics](/interfaces/data_product_hub/core_concepts/#metrics) , and [access options](/interfaces/data_product_hub/#data-product-activation).
+The Overview Tab will display the visual snapshot of your Data Product's work: from input to output, including the [semantic model](/resources/lens/), [Metrics](/interfaces/data_product_hub/core_concepts/#metrics) , and [access options](/interfaces/data_product_hub/#data-product-activation).
 
 <center>
   <img src="/interfaces/data_product_hub/discovery/annotely_image%20(5)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />

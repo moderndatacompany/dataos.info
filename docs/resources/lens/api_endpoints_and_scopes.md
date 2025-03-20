@@ -2,7 +2,7 @@
 
 Each REST API endpoint belongs to an API scope, e.g., the `/v2/load` endpoint belongs to the `data` scope. API scopes provide a way to secure access to API endpoints, allowing you to limit accessibility to specific users or roles, or disallow access entirely. By default, API endpoints in all scopes are accessible to everyone, allowing broad access unless specifically restricted. 
 
-You can manage API access using the [user_groups](/resources/lens/working_with_user_groups_and_data_policies/). The default user group ensures that API endpoints in all scopes are accessible to everyone. You can create custom user groups by defining roles and associating specific users with these roles in the user_group.yml file. To know more about user groups click [here](/resources/lens/working_with_user_groups_and_data_policies/).
+You can manage API access using the [user_groups](/resources/lens/user_groups_and_data_policies/). The default user group ensures that API endpoints in all scopes are accessible to everyone. You can create custom user groups by defining roles and associating specific users with these roles in the user_group.yml file. To know more about user groups click [here](/resources/lens/user_groups_and_data_policies/).
 
 
 The following `api_scopes` are currently supported:
@@ -218,7 +218,7 @@ configure the body with the JSON Query Format similar to `/load`.
 
 ## graphql
 
-Grants access to GraphQL endpoints. GraphQL is a query language for APIs that allows clients to request only the data they need. This scope enables users to perform GraphQL queries and mutations. To know more about How to use GraphQL click [here](/resources/lens/exploration_of_deployed_lens_using_graphql/)
+Grants access to GraphQL endpoints. GraphQL is a query language for APIs that allows clients to request only the data they need. This scope enables users to perform GraphQL queries and mutations. To know more about How to use GraphQL click [here](/resources/lens/exploration_of_lens_using_graphql/)
 
 ## Possible Responses
 

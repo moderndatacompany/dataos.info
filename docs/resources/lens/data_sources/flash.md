@@ -5,14 +5,17 @@
 
 ### **Prerequisites**
 
-To create a Lens using Flash, ensure that the Flash is running as given in the below manifest. Ensure to replace the placeholders and modify the configurations as needed. Make sure a Persistent volume is attached with the Flash. It helps Flash to spill data over disk, which helps with the performance.
+To create a Lens using Flash ensure following:
+
+- **Persistence Volume attached with Flash Service:** Ensure Flash service is running and has a Persistent Volume attached. A Persistent Volume allows Flash to spill data to disk, enhancing performance by preventing memory constraints from impacting query execution.
+Ensure to replace the placeholders and modify the configurations as needed wherever required.
 
 ## Create Persistent Volume manifest file
 
-Copy the template below and replace <name> with your desired resource name and <size> with the appropriate volume size (e.g., 100Gi, 20Gi, etc.), according to your available storage capacity. Make sure the configuration is aligned with both your storage and performance requirements. For the accessMode, you can choose ReadWriteOnce (RWO) for exclusive read-write access by a single node, or ReadOnlyMany (ROX) if the volume needs to be mounted as read-only by multiple nodes.
+Copy the template below and replace <name> with your desired resource name and <size> with the appropriate volume size (e.g., `100Gi`, `20Gi`, etc.), according to your available storage capacity. Make sure the configuration is aligned with both your storage and performance requirements. For the accessMode, you can choose ReadWriteOnce (RWO) for exclusive read-write access by a single node, or ReadOnlyMany (ROX) if the volume needs to be mounted as read-only by multiple nodes.
 
 ```yaml
-name: <name>  # Name of the Resource
+name: <name>  # Name of the volume
 version: v1beta  # Manifest version of the Resource
 type: volume  # Type of Resource
 tags:  # Tags for categorizing the Resource
@@ -40,8 +43,8 @@ The resultant size will be in the bytes.
 
 Apply the persistent volume manifest file, using the following command in terminal:
 
-```
-dataos-ctl apply -f <file path of persistent volume>
+```shell
+dataos-ctl resource apply -f <file path of persistent volume>
 ```
 This will deploy the Persistent Volume Resource, making it available for use by Flash Service.
 
@@ -51,7 +54,7 @@ This will deploy the Persistent Volume Resource, making it available for use by 
 Ensure that the name of the Persistent Volume you created is referenced correctly in the name attribute of the persistentVolume section. The name used here should match exactly with the name you assigned to the Persistent Volume during its creation.
 
 ```yaml
-name: flash-service-lens
+name: flash-service-training
 version: v1
 type: service
 tags:
@@ -69,7 +72,7 @@ service:
     requests:
       cpu: 1000m
       memory: 1024Mi
-
+# replace the name of the persistence volume from the pv created
   persistentVolume:
     name: <persistent_volume_name>
     directory: p_volume
@@ -77,54 +80,51 @@ service:
   stack: flash+python:2.0
 
   stackSpec:
+# dataset section
     datasets:
-      - address: dataos://icebase:sales360/f_sales    #view
-        name: sales
-    
-      - address: dataos://icebase:sales360/customer_data_master
-        name: customer_data_master
-    
-      - address: dataos://icebase:sales360/site_check1
-        name: site_check1
-    
-      - address: dataos://icebase:sales360/product_data_master
-        name: product_data_master
-    
+      - address: dataos://lakehouse:sales_analysis/channel  #view
+        name: f_customer
+      - address: dataos://lakehouse:sales_analysis/transactions
+        name: f_transactions
+      - address: dataos://lakehouse:sales_analysis/products
+        name: f_products
+      - address: dataos://lakehouse:sales_analysis/customer
+        name: f_channel
+# init section 
     init:
-      - create table if not exists f_sales as (select * from sales)  #table
-      - create table if not exists m_customers as (select * from customer_data_master)
-      - create table if not exists m_sites as (select * from site_check1)
-      - create table if not exists table m_products as (select * from product_data_master)
+      - create table if not exists channel as (select * from f_channel)  #table
+      - create table if not exists transactions as (select * from f_transactions)
+      - create table if not exists products as (select * from f_products)
+      - create table if not exists table customer as (select * from f_customer)
 ```
 
-
-### **How does this process work?**
+### How does this process work?
 
 The flow of Flash operates as follows:
 
-**Data loading:** The `datasets` attribute specifies the depot `address` of the source data to be loaded into Flash. A dataset `name` is also provided, which Flash uses to generate a view of the source data.
+**Data loading:** The `datasets` attribute specifies the Depot `address` of the source data to be loaded into Flash. A dataset `name` is also provided, which Flash uses to generate a view of the source data.
 
 **View creation:** Flash creates a view based on the assigned name, allowing for interaction with the source data without directly querying it.
 
 **Table creation:** Specific columns from the generated view can be selected to define tables for further operations using `init` attribute. The `if not exists` clause ensures that the tables are created only if they don't already exist. If they are already present, the process skips creation.
 
-**Usage in Lens model(SQL):** The tables created through the `init` attribute are used in SQL queries within Lens.
+**Usage in semantic model(SQL):** The tables created through the `init` attribute are used in SQL queries within Lens semantic model.
 
-For example, in the manifest referenced, the `f_sales` table is first loaded from the source, and a view named `sales` is created. A table called `f_sales` is then defined using this sales view. This table is then referenced in SQL models within Lens.
-
-> <b>Note</b> Flash directly uses the deployment.yml manifest file to create a Lens.
+For example, in the manifest referenced, the `channel` table is first loaded from the source, and a view named `f_channel` is created. A table called `channel` is then defined on `channel` view. This table is then referenced in SQL models within Lens.
 
 ## Apply the Flash manifest file
 
 To apply the Flash Service configuration, use the following command:
 
 ```bash
-dataos-ctl apply -f <file path of flash service>
+dataos-ctl resource apply -f <file path of flash service>
 ```
 
 ## Create an Instance-secrets manifest file
 
-After successfully deploying the Persistent Volume and Flash Service, the next step is to deploy Secrets for securely managing your credentials. These credentials are essential for performing actions like pulling and pushing commits to your repository. They will be used to authenticate your identity and grant the necessary access permissions to deploy Lens-2.
+<aside class="callout">
+Before pushing the model to a code repository (e.g., Bitbucket or GitHub), create an Instance-secret to store the repository credentials.
+</aside>
 
 
 ```yaml
@@ -149,8 +149,133 @@ instance-secret:
 To apply the Instance-secret configuration, use the following command:
 
 ```bash
-dataos-ctl apply -f <file path of the instance-secret>
+dataos-ctl resource apply -f <file path of the instance-secret>
 ```
+
+<aside class="callout">
+Push the semantic model folder into the code repository.
+</aside>
+
+## Prepare the semantic model folder
+
+In the Model folder, the semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each subfolder contains specific files related to the Lens model. Download the Lens template to quickly get started.
+
+[lens template](/resources/lens/lens_model_folder_setup/lens-project-template.zip)
+
+### **Load data from the data source**
+
+In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure that only the necessary columns are extracted, and the SQL dialect is specific to the data source. For Flash, the table name given in the  `init` will be the source table name.
+
+For example, a simple data load might look as follows:
+
+```sql
+SELECT
+  *
+FROM
+  channel; --flash source table name
+```
+
+Alternatively, you can write more advanced queries that include transformations, such as:
+
+```sql
+SELECT
+  CAST(customer_id AS VARCHAR) AS customer_id,
+  first_name,
+  CAST(DATE_PARSE(birth_date, '%d-%m-%Y') AS TIMESTAMP) AS birth_date,
+  age,
+  CAST(register_date AS TIMESTAMP) AS register_date,
+  occupation,
+  annual_income,
+  city,
+  state,
+  country,
+  zip_code
+FROM
+  customer;  -- flash source table name
+```
+### **Define the table in the Model**
+
+Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For example, to define a table for `channel `data:
+
+```yaml
+tables:
+  - name: channel  
+    sql: {{ load_sql('channel') }}
+    description: Table containing information about channel records.
+```
+
+#### **Add dimensions and measures**
+
+After defining the base table, add the necessary dimensions and measures. For example, to create a table for `channel` data with measures and dimensions, the YAML definition could look as follows:
+
+```yaml
+tables:
+  - name: channel
+    sql: {{ load_sql('channel') }}  #sql table name
+    description: Table containing information about channel records.
+
+    
+    dimensions:       
+      - name: store_id
+        type: string
+        description: Unique identifier for each store.
+        sql: store_id
+        primary_key : true
+        public : true         
+      
+      - name: store_name
+        type: string
+        description: The name of the store.
+        sql: store_name
+```
+
+#### **Add segments to filter**
+
+Segments are filters that allow for the application of specific conditions to refine the data analysis. By defining segments, you can focus on particular subsets of data, ensuring that only the relevant records are included in your analysis. For example, to filter for records where the state is either Illinois or Ohio, you can define a segment as follows:
+
+```yaml
+segments:
+  - name: state_filter
+    sql: "{TABLE}.state IN ('Illinois', 'Ohio')"
+```
+
+To know more about segments click [here](https://dataos.info/resources/lens/segments/).
+
+
+### **Create views**
+
+Create a **views** folder to store all logical views, with each view defined in a separate YAML file (e.g., `sample_view.yml`). Each view references dimensions, measures, and segments from multiple logical tables. For instance the following`customer_churn` view is created.
+
+```yaml
+views:
+  - name: customer_churn_prediction
+    description: Contains customer churn information.
+    tables:
+      - join_path: marketing_campaign
+        includes:
+          - engagement_score
+          - customer_id
+      - join_path: customer
+        includes:
+          - country
+          - customer_segments
+```
+
+To know more about the views click [here](https://dataos.info/resources/lens/views/).
+    
+### **Create user groups**
+
+The `user_groups.yml` manifest file is used to manage access levels for the semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, the 'default' user group in the manifest file includes all users.
+
+```yaml
+user_groups:
+  - name: default
+    description: this is a default user group
+    includes: "*"
+```
+
+You can create multiple user groups in `user_groups.yml` . To know more about the User groups click [here](https://dataos.info/resources/lens/user_groups_and_data_policies/).
+
 
 ## Create Lens manifest file
 
@@ -160,14 +285,14 @@ Configure the Flash service as the data source in the Lens deployment manifest f
 
 **`Source`**
 
-- **`type`** The source section specifies that Flash is used as the data source (`type: flash`). This indicates that data for the Lens model will be loaded from the Flash service.
+- **`type`** The source section specifies that Flash is used as the data source (`type: flash`). This indicates that data for the semantic model will be loaded from the Flash service.
 
 - **`name`**: The Flash service is identified by the `name` attribute, here it is flash-service-lens. This name should match the deployed Flash service used for data ingestion. Below is an example configuration.
 
 ```bash
 source:
   type: flash  # Specifies the data source type as Flash
-  name: flash-test  # Name of the Flash service
+  name: flash-training  # Name of the Flash service
 ```
 
 ### **2. Add environment variables**
@@ -176,11 +301,11 @@ To enable Lens to interact with the Flash service, specify the following environ
 
 **`envs`**
 
-The following environment variables are defined under multiple components, including api, worker, router, and iris
+The following environment variables are defined under multiple components, including api, worker, router.
 
 - **`LENS2_SOURCE_WORKSPACE_NAME`**  It refers to the workspace where the Flash service is deployed. 
 
-- **`LENS2_SOURCE_FLASH_PORT`** The port number `5433` is specified for the Flash service. This port is used by Lens to establish communication with the Flash service. It ensures that all components—API, worker, router, and iris—can access the Flash service consistently.
+- **`LENS2_SOURCE_FLASH_PORT`** The port number `5433` is specified for the Flash service. This port is used by Lens to establish communication with the Flash service. It ensures that all components—API, worker, router — can access the Flash service consistently.
 
 ```bash
 envs:
@@ -191,7 +316,7 @@ Following is the Lens manifest file:
 
 ```yaml title="lens_deployment.yml" hl_lines="13-15 25-26"
 version: v1alpha
-name: "lens-flash-test-99"
+name: "lens-flash-training"
 layer: user
 type: lens
 tags:
@@ -204,65 +329,12 @@ lens:
       allKeys: true # All keys within the secret are required or not (optional)
   source:
     type: flash # minerva, themis and depot
-    name: flash-service-lens # flash service name
+    name: flash-service-training # flash service name
   repo:
     url: https://github.com/tmdc/sample    # repo address
     lensBaseDir: sample/source/flash/model     # location where lens models are kept in the repo
     syncFlags:
       - --ref=main
-  api:
-    replicas: 1
-    logLevel: debug
-    envs:
-      LENS2_SOURCE_WORKSPACE_NAME: curriculum
-      LENS2_SOURCE_FLASH_PORT: 5433
-    resources: # optional
-      requests:
-        cpu: 100m
-        memory: 256Mi
-      limits:
-        cpu: 2000m
-        memory: 2048Mi
-
-  worker:
-    replicas: 1
-    logLevel: debug
-    envs:
-      LENS2_SOURCE_WORKSPACE_NAME: curriculum
-      LENS2_SOURCE_FLASH_PORT: 5433
-    resources: # optional
-      requests:
-        cpu: 100m
-        memory: 256Mi
-      limits:
-        cpu: 6000m
-        memory: 6048Mi
-
-  router:
-    logLevel: info
-    envs:
-      LENS2_SOURCE_WORKSPACE_NAME: curriculum
-      LENS2_SOURCE_FLASH_PORT: 5433
-    resources: # optional
-      requests:
-        cpu: 100m
-        memory: 256Mi
-      limits:
-        cpu: 6000m
-        memory: 6048Mi
-
-  iris:
-    logLevel: info  
-    envs:
-      LENS2_SOURCE_WORKSPACE_NAME: curriculum
-      LENS2_SOURCE_FLASH_PORT: 5433
-    resources: # optional
-      requests:
-        cpu: 100m
-        memory: 256Mi
-      limits:
-        cpu: 6000m
-        memory: 6048Mi
 ```
 
 ## Apply Lens manifest file
@@ -270,5 +342,5 @@ lens:
 Apply the Lens manifest file by using the following command in terminal:
 
 ```bash
-dataos-ctl apply -f <lens-file-path>
+dataos-ctl resource apply -f <lens-file-path>
 ```

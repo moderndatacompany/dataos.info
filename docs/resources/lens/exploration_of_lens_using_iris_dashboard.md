@@ -1,4 +1,4 @@
-# Exploration of Lens using Iris Board
+<!-- # Exploration of Lens using Iris Board
 
 Iris serves as an operational dashboard, providing a swift overview of your key performance metrics (measures) over time. It enables you to delve deeper into these metric  (measures) across various dimensions, aiding in the understanding of anomalies or observed differences. You can expose your Lens View to Iris boards, allowing you to observe measures across various dimensions defined within it.
 
@@ -52,4 +52,4 @@ Once accessed, the created metric-type Views can now be explored and analyzed wi
 
 
 
- 
+  -->

@@ -13,7 +13,7 @@ Lakesearch is a [Stack](/resources/stacks/) within DataOS that provides the scal
     <img src="/resources/stacks/lakesearch/images/lsarch.jpg" 
          alt="Lakesearch architecture" 
          style="border: 1px solid black; width: 60%; height: auto; display: block; margin: auto;">
-    <figcaption style="margin-top: 8px; font-style: italic;">Lakesearch Service Structure</figcaption>
+    <figcaption style="margin-top: 8px; font-style: italic;">Lakesearch architecture</figcaption>
   </figure>
 </div>
 
@@ -362,6 +362,13 @@ By implementing this process, Lakesearch ensures data consistency while allowing
 This section involves recommends dos and don’ts while configuring a Lakesearch Service.
 
 - For large datasets, always use the partition indexer when configuring the LakeSearch Service. It divides the indexes into two parts, significantly reducing the time required to index all tables.
+
+- The persistent volume size should be at least 2.5 times the total dataset size, rounded to the nearest multiple of 10. To check the dataset size, use the following query:
+
+    ```sql
+    SELECT sum(total_size) FROM "<catalog>"."<schema>"."<table>$partitions";
+    ```
+    The resultant size will be in the bytes.
 
 ## Trobleshooting
 

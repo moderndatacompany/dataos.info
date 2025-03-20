@@ -172,15 +172,6 @@ Begin by creating a manifest file that will hold the configuration details for y
         limits:
           cpu: 6000m
           memory: 6048Mi
-    iris:
-      logLevel: info
-      resources: # CPU and memory resource specifications for the iris board (optional)
-        requests:
-          cpu: 100m
-          memory: 256Mi
-        limits:
-          cpu: 6000m
-          memory: 6048Mi
     ```
 
 The manifest file of a Lens can be broken down into two sections:
@@ -328,7 +319,7 @@ To validate the proper creation of the Lens Resource within the DataOS environme
 
 Developers can further explore the Lens semantic model in the following ways:
 
-- [Exploration of deployed Lens using SQL APIs](/resources/lens/exploration_of_deployed_lens_using_sql_apis/)
-- [Exploration of deployed Lens using Python](/resources/lens/exploration_of_deployed_lens_using_python/)
-- [Exploration of deployed Lens using REST APIs](/resources/lens/exploration_of_deployed_lens_using_rest_apis/)
-- [Exploration of deployed Lens using GraphQL](/resources/lens/exploration_of_deployed_lens_using_graphql/)
+- [Exploration of deployed Lens using SQL APIs](/resources/lens/exploration_of_lens_using_sql_apis/)
+- [Exploration of deployed Lens using Python](/resources/lens/exploration_of_lens_using_python/)
+- [Exploration of deployed Lens using REST APIs](/resources/lens/exploration_of_lens_using_rest_apis/)
+- [Exploration of deployed Lens using GraphQL](/resources/lens/exploration_of_lens_using_graphql/)

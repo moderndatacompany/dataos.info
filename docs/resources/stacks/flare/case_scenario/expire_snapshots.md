@@ -8,13 +8,12 @@ The `expire_snapshots` [action](/resources/stacks/flare/configurations/#expire_s
 
 ## Code Snippet
 
-The below code snippet depicts a case scenario that expires old snapshots using the `expire_snapshots` action. The `expire_snapshots` action is supported in both Flare Stack Versions `flare:3.0` and `flare:4.0`, though the end result is the same in both cases, the action definition slightly differs in the two versions which are given separately in the YAMLs below.
-
+The below code snippet depicts a case scenario that expires old snapshots using the `expire_snapshots` action. 
 ### **Syntax for Flare Version `flare:4.0`**
 
 ```yaml
 version: v1 # Version
-name: expire # Name of the Workflow
+name: wf-expire-snapshots # Name of the Workflow
 type: workflow # Type of Resource (Here its workflow)
 tags: # Tags
   - expire
@@ -26,51 +25,20 @@ workflow: # Workflow Section
       spec: # Specs
         tags: # Tags
           - Expire
-        stack: flare:4.0 # Stack is Flare (so its a Flare Job)
+        stack: flare:6.0 # Stack is Flare (so its a Flare Job)
         compute: runnable-default # Compute
-        flare: # Flare Stack specific Section
+        stackSpec: # Flare Stack specific Section
           job: # Job Section
             explain: true # Explain
             logLevel: INFO # Loglevel
             inputs: # Inputs Section
               - name: inputDf # Input Dataset Name
-                dataset: dataos://icebase:actions/random_users_data?acl=rw # Input UDL
+                dataset: dataos://icebase:retail/pos_store_product_cust?acl=rw # Input UDL
                 format: Iceberg # Format
             actions: # Action Section
               - name: expire_snapshots # Name of Flare Action
                 input: inputDf # Input Dataset Name
                 options: # Options
-                  expireOlderThan: "1674201289720" # Timestamp in Unix Format (All snapshots older than the timestamp are expired)
-```
+                  expireOlderThan: "1741987433222" # Timestamp in Unix Format (All snapshots older than the timestamp are expired)
 
-### **Syntax for Flare Version `flare:3.0`**
-
-```yaml
-version: v1 # Version
-name: expire # Name of the Workflow
-type: workflow # Type of Resource (Here its workflow)
-tags: # Tags
-  - expire
-workflow: # Workflow Section
-  title: expire snapshots # Title of the DAG
-  dag: # Directed Acyclic Graph (DAG)
-    - name: expire # Name of the Job
-      title: expire snapshots # Title of the Job
-      spec: # Specs
-        tags: # Tags
-          - Expire
-        stack: flare:3.0 # Stack is Flare (so its a Flare Job)
-        compute: runnable-default # Compute
-        flare: # Flare Stack specific Section
-          job: # Job Section
-            explain: true # Explain
-            logLevel: INFO # Loglevel
-            inputs: # Inputs Section
-              - name: inputDf # Input Dataset Name
-                dataset: dataos://icebase:actions/random_users_data?acl=rw # Input UDL
-                format: Iceberg # Format
-            actions: # Action Section
-              - name: expire_snapshots # Name of Flare Action
-                options: # Options
-                  expireOlderThan: "1674201289720" # Timestamp in Unix Format (All snapshots older than the timestamp are expired)
 ```
