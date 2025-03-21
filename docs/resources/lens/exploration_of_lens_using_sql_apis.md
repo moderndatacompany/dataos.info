@@ -352,7 +352,8 @@ For this query, the SQL API would transform SELECT query fragments into a regula
 }
 ```
 
-Because of this transformation, not all functions and expressions are supported in query fragments performing `SELECT` from semantic model tables. Please refer to the [SQL API reference](/resources/lens/sql_apis/query_format#sql-api-references) to see whether a specific expression or function is supported and whether it can be used in selection (e.g., WHERE) or projection (e.g., SELECT) parts of SQL queries.
+
+Because of this transformation, not all functions and expressions are supported in query fragments performing `SELECT` from semantic model tables. Please refer to the [SQL API reference](/resources/lens/sql_apis/supported_functions_and_operators#sql-api-references) to see whether a specific expression or function is supported and whether it can be used in selection (e.g., WHERE) or projection (e.g., SELECT) parts of SQL queries.
 
 For example, the following query won't work because the SQL API can't push down the `CASE` expression to Lens for processing. It is not possible to translate `CASE` expressions in measures.
 

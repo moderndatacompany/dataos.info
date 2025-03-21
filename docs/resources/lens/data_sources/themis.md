@@ -118,7 +118,7 @@ segments:
   - name: country_india
     sql: country = 'India'
 ```
-To know more about segments click [here](o/resources/lens/segments/).
+To know more about segments click [here](/resources/lens/segments/).
 
 ### **Create the views**
 

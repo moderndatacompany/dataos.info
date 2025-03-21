@@ -21,7 +21,7 @@ tags:
   - Domain.Operations
 description: Smarthomes have embedded smart IoT devices that captures various data points such as temperature, carbon dioxide, light and smoke levels, so that over tiime 
 purpose: The purpose of the data product is to monitor the air quality index and environmental conditions continuously and monitor temperature and humiditiy.
-owner: piyushjoshi
+owner: ironman
 collaborators:
   - iamgroot
 refs:
