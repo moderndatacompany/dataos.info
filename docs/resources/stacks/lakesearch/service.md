@@ -246,7 +246,7 @@ Create a manifest file for Lakesearch Service. The below given manifest file of 
         source:
           datasets:
             - name: devices
-              dataset: dataos://icebase:lenovo_ls_data/devices_with_d
+              dataset: dataos://icebase:_ls_data/devices_with_d
               options:
                 region: ap-south-1
         index_tables:
