@@ -14,6 +14,7 @@ In this case scenario, we syndicate the data from the DataOS internal managed de
 
 ```yaml
 version: v1
+version: v1
 name: syndct-fusd-of-tx
 type: workflow
 tags:
@@ -29,9 +30,9 @@ workflow:
       tags:
       - Offline
       - Syndicate
-      stack: flare:3.0
+      stack: flare:6.0
       compute: runnable-default
-      flare:
+      stackSpec:
         configs: {}
         driver:
           coreLimit: 2400m
@@ -47,11 +48,11 @@ workflow:
           inputs:
             - name: processed_transactions
               format: iceberg
-              dataset: dataos://icebase:set01/pos_store_product_cust_01
+              dataset: dataos://icebase:retail/pos_store_product_cust
           logLevel: INFO
           outputs:
             - name: syndicatePos
-              dataset: dataos://syndicationgcs:syndicate/fused_offline_01_csv?acl=rw
+              dataset: dataos://icebase:syndicate/fused_offline_01_csv?acl=rw
               description: Fused offline transactions into csv
               options:
                 file:
@@ -64,12 +65,12 @@ workflow:
               title: Fused Offline Transactions
           steps:
           - sequence:
-              - name: transactions
+              - name: customer_01
                 sql: SELECT customer_index, transaction_header.store_id, explode(transaction_line_item)
                   as line_item, store FROM processed_transactions
               - name: syndicatePos
                 sql: SELECT customer_index, store_id, line_item.*, store.store_name, store.store_city,
-                  store.store_state FROM transactions
+                  store.store_state FROM customer_01
           variables:
             keepSystemColumns: "false"
 ```

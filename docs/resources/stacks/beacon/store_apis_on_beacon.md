@@ -48,7 +48,7 @@ version: v1beta1
 name: storesdb
 type: database
 description: Stores DB
-owner: rakeshvishvakarma
+owner: iamgroot
 tags:
   - database
 database:
