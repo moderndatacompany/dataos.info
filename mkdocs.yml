@@ -492,7 +492,7 @@ nav:
               - Fetching Data from Instagram API: resources/stacks/bento/recipes/fetching_data_from_instagram_api.md
               - Twitter API Data Processing: resources/stacks/bento/recipes/twitter_api_data_processing.md
               - Discord Bot: resources/stacks/bento/recipes/discord_bot.md
-              - Stock Data API to Icebase: resources/stacks/bento/recipes/fetching_data_from_stock_data_api_using_benthos.md
+              - Stock Data API to Icebase: resources/stacks/bento/recipes/fetching_data_from_stock_data_api_using_bento.md
               - Performing Rate Limit: resources/stacks/bento/recipes/how_to_perform_rate_limit.md
               - Performing Pagination: resources/stacks/bento/recipes/pagination.md
           - CLI Stack: 

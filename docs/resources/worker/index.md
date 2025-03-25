@@ -23,8 +23,8 @@ A Worker [Resource](/resources/) in DataOS is a long-running process responsible
 
 ## Structure of Worker manifest
 
-=== "Syntax"
-    ![Worker manifest](/resources/worker/worker_annotated.png)
+<!-- === "Syntax"
+    ![Worker manifest](/resources/worker/worker_annotated.png) -->
 
 === "Code"
     ```yaml title="worker_manifest_structure.yml"
