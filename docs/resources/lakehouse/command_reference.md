@@ -199,15 +199,15 @@ dataos-ctl resource delete -t lakehouse -w ${workspace_name} -n ${lakehouse_name
     - **Example:** ${bent}
 - **`-n`** or `--name`: Specifies the name of the lakehouse to delete.
     - **Placeholder**: ${lakehouse_name}
-    - **Example:** ${benthos3-lakehouse}
+    - **Example:** ${bento3-lakehouse}
 
 **Example**
 
 ```shell
-dataos-ctl resource delete -t lakehouse -w curriculum -n benthos3-lakehouse
+dataos-ctl resource delete -t lakehouse -w curriculum -n bento3-lakehouse
 ```
 
-This command will delete the lakehouse named `benthos3-lakehouse` located in the `curriculum` workspace.
+This command will delete the lakehouse named `bento3-lakehouse` located in the `curriculum` workspace.
 
 ## Dataset Management Commands
 

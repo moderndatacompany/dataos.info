@@ -169,7 +169,7 @@ Clicking on the processor will display the following details in the side pane:
 | Name | Name of the underlying selected entity |
 | Type | Type of selected entity such as input, processor, output etc. |
 | Doc | Details provided in the configuration  |
-| bloblang | Refer to the Benthos processors, functions that will be applied to each message passing through a pipeline. |
+| bloblang | Refer to the Bento processors, functions that will be applied to each message passing through a pipeline. |
 | Depends | States dependency if any. In this case, log |
 
 Clicking on the output will display the following details in the side pane:
