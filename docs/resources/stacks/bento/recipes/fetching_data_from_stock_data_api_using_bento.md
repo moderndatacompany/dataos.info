@@ -28,9 +28,6 @@ Here's a more detailed step-by-step guide to fetching data from the Stock data A
         enabled: true
         path: /stockdatapple
         noAuthentication: false
-        annotations:
-          konghq.com/strip-path: "false"
-          kubernetes.io/ingress.class: kong
       tags:
         - wbi
         - trigger
