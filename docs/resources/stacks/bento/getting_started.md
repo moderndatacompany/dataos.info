@@ -197,7 +197,7 @@ This step ensures a clear understanding of the data flow and the applied transfo
 
 **Before Processing**
 
-```bash
+```json
 {
   "categories": [],
   "created_at": "2020-01-05 13:42:26.766831",
@@ -211,13 +211,13 @@ This step ensures a clear understanding of the data flow and the applied transfo
 
 **After Processing**
 
-```bash
+```json
 {"joke":"Jesus Walked on water. Chuck Norris Swam on land"}
 ```
 
 Now, let's break down the Bloblang transformation a bit further. Here's what the code is doing:
 
-```yaml
+```go
 bloblang
 root = {
   "joke": this.value

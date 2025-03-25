@@ -27,7 +27,7 @@ Bento employs stateless, chained processing steps, allowing stream data pipeline
 </center>
 
 
-## Key features of Benthos
+## Key features of Bento
 
 Bento offers a wide range of features that make it an ideal solution for stream processing, including:
 
@@ -91,7 +91,7 @@ Effective configuration is essential for maximizing the efficiency of the Bento 
 
 ## Bloblang Guide
 
-Tired of cumbersome data wrangling? Bloblang, the native mapping language of Bento, provides a streamlined solution for data transformation. With its expressive and powerful syntax, Bloblang simplifies the process of transforming data without the need for complex scripts or convoluted pipelines. Discover the capabilities of Bloblang in the fodllowing tutorial: 
+Tired of cumbersome data wrangling? Bloblang, the native mapping language of Bento, provides a streamlined solution for data transformation. With its expressive and powerful syntax, Bloblang simplifies the process of transforming data without the need for complex scripts or convoluted pipelines. Discover the capabilities of Bloblang in the following tutorial: 
 [Bloblang](/resources/stacks/bento/bloblang/walkthrough/)
 
 <!-- (/resources/stacks/bento/bloblang/) it going to (/resources/stacks/bento/bloblang/bloblang_core_features/)-->
