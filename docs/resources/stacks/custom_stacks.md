@@ -74,7 +74,7 @@ The Stack-specific section delineates attributes exclusive to the Stack Resource
 ```yaml
 stack:
 # Stack meta section
-  name: benthosnew
+  name: bentonew
   version: "3.0"
   reconciler: "stackManager"
 

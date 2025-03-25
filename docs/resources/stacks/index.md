@@ -8,7 +8,7 @@ search:
 
 Stack is a [DataOS Resource](/resources/) that acts as an execution engine and an extension point for integrating new programming paradigms within the platform. Stacks are composable and can be orchestrated using DataOS Resources such as a [Worker](/resources/worker/), [Service](/resources/service/), or within a designated job in a [Workflow](/resources/workflow/) Resource.
 
-While certain pre-configured Stacks such as [Flare](/resources/stacks/flare/), [Benthos](/resources/stacks/bento/), and [Scanner](/resources/stacks/scanner/) are natively available within DataOS, users retain the autonomy to define and deploy their own tailor-made Stacks.
+While certain pre-configured Stacks such as [Flare](/resources/stacks/flare/), [Bento](/resources/stacks/bento/), and [Scanner](/resources/stacks/scanner/) are natively available within DataOS, users retain the autonomy to define and deploy their own tailor-made Stacks.
 
 <aside class="callout">
 
@@ -72,9 +72,9 @@ DataOS has two distinct resources that supports its interoperability and extensi
 [Beacon](/resources/stacks/beacon/) Stack is a standalone HTTP server that exposes API endpoints on top of a Postgres database. It offers a single flavor `beacon+rest` that enables exposure of REST APIs on Postgres database.
 
 
-### **Benthos**
+### **Bento**
 
-[Benthos](/resources/stacks/bento/) is a high-performance, resilient, and declarative stream processing Stack.
+[Bento](/resources/stacks/bento/) is a high-performance, resilient, and declarative stream processing Stack.
 
 ### **CLI**
 

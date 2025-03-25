@@ -172,19 +172,19 @@ The Worker-specific section of a manifest file encompasses attributes specific t
 
 The Stack-specific section of a manifest file includes attributes unique to the Stack orchestrated by the Worker. A Stack Resource within DataOS allows data developers to integrate custom programming paradigms into the platform while utilizing all the native guarantees provided by DataOS.
 
-While users have the flexibility to bring any Stack that supports long-running orchestration, Stacks such as Benthos and Fast Fun, which come out-of-the-box with DataOS, are compatible with Workers.
+While users have the flexibility to bring any Stack that supports long-running orchestration, Stacks such as Bento and Fast Fun, which come out-of-the-box with DataOS, are compatible with Workers.
 
 | Stack | Purpose of Worker orchestrated by the Stack |
 | --- | --- |
-| Benthos | Benthos Stack enables stream data processing. When orchestrated using a Worker Resource, Benthos Stack facilitates long-running processes that continuously process stream data and write to a sink of choice. |
-| Fast Fun | Fast Fun is a declarative Stack that enables data sinking from Pulsar-type depots such as Fastbase and systemstream to DataOS Lakehouse storage (or depots supporting the Iceberg file format). While Benthos Workers support processing, Fast Fun sinks data as-is without transformation. |
+| Bento | Bento Stack enables stream data processing. When orchestrated using a Worker Resource, Bento Stack facilitates long-running processes that continuously process stream data and write to a sink of choice. |
+| Fast Fun | Fast Fun is a declarative Stack that enables data sinking from Pulsar-type depots such as Fastbase and systemstream to DataOS Lakehouse storage (or depots supporting the Iceberg file format). While Bento Workers support processing, Fast Fun sinks data as-is without transformation. |
 
 The attributes within the `stackSpec` section vary between Stacks and are determined by the `workerConfig` attribute within the definition of that specific Stack. Below are sample stackSpec sections for the respective Stacks.
 
 
-=== "Benthos Stack"
+=== "Bento Stack"
 
-    Below is a sample stack specification for a Benthos Worker, where an end user wants to read data from a specific URL and provide a standard output:
+    Below is a sample stack specification for a Bento Worker, where an end user wants to read data from a specific URL and provide a standard output:
 
     ```yaml 
     stackSpec:
@@ -198,7 +198,7 @@ The attributes within the `stackSpec` section vary between Stacks and are determ
         stdout:
           codec: ${{codec}}
     ```
-    To get templates for Benthos Workers, click on this link. For details about the information of the Benthos Stack, refer to the link: Benthos
+    To get templates for Bento Workers, click on this link. For details about the information of the Bento Stack, refer to the link: Bento
 
 === "Fast Fun Stack"
 
