@@ -45,9 +45,6 @@ workflow:
               enabled: true
               path: /random-user
               noAuthentication: true
-              annotations:
-                konghq.com/strip-path: "false"
-                kubernetes.io/ingress.class: kong
             stack: bento:3.0
             logLevel: DEBUG
             tags:
