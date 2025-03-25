@@ -100,12 +100,11 @@ Tired of cumbersome data wrangling? Bloblang, the native mapping language of Ben
 
 Bento, with its modular architecture and extensive range of processors, inputs/outputs, is perfect for creating real-time data processing recipes. Following collection of use cases and case scenarios demonstrates how Bento can solve common data processing challenges:
 
-
+- [How can rate limiting be performed in Bento pipelines?](/resources/stacks/bento/recipes/how_to_perform_rate_limit/)
+- [What is the process for fetching stock data from an API to Icebase with Bento?](/resources/stacks/bento/recipes/fetching_data_from_stock_data_api_using_bento/)
+- [What steps are involved in processing Twitter API data with Bento?](/resources/stacks/bento/recipes/twitter_api_data_processing/)
 - [How can JSON data be processed using Bento?](/resources/stacks/bento/recipes/processing_json_data/)
 - [What is the best approach for processing nested JSON data?](/resources/stacks/bento/recipes/processing_nested_json_data/)
 - [How can data be fetched from the Instagram API using Bento?](/resources/stacks/bento/recipes/fetching_data_from_instagram_api/)
-- [What steps are involved in processing Twitter API data with Bento?](/resources/stacks/bento/recipes/twitter_api_data_processing/)
 - [How can a Discord bot be integrated using Bento?](/resources/stacks/bento/recipes/discord_bot/)
-- [What is the process for fetching stock data from an API to Icebase with Bento?](/resources/stacks/bento/recipes/fetching_data_from_stock_data_api_using_bento/)
-- [How can rate limiting be performed in Bento pipelines?](/resources/stacks/bento/recipes/how_to_perform_rate_limit/)
 - [What techniques enable effective pagination in Bento workflows?](/resources/stacks/bento/recipes/pagination/)
