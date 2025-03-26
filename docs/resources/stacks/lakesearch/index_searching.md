@@ -1,5 +1,31 @@
 # Lakesearch API endpoint and index searching
 
+## Search API
+
+A search consists of one or more queries that are combined and sent to Lakesearch. The system processes these queries and returns matching documents as hits or search results in the response. Additionally, a search may include parameters to refine query processing. For instance, it can be restricted to a specific index or configured to return a limited number of results. The search API enables users to query and aggregate data stored within Lakesearch indices, providing efficient access to relevant information.
+
+## Run a search
+
+The following request searches the number of times the keyword "master" appeared in the customer index. 
+
+`GET https://dataos-training.dataos.app/lakesearch/public:ls-test/api/v2/index/customer/keywords?word=master`
+
+```json
+{
+    "keywords": [
+        {
+            "docs": "370",
+            "hits": "370",
+            "keyword": "master"
+        }
+    ]
+}
+```
+
+## GET and POST requests
+
+GET APIs is generally used to retrive the information without the body. All LakeSearch GET APIs that require a body can be submitted as POST requests.
+
 ## Endpoint details
 
 API endpoints are exposed on the `path` defined under the `ingress` section of a Lakesearch Service as shown below.

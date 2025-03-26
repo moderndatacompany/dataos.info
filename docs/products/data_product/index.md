@@ -35,7 +35,7 @@ sharing, data monetization, analytics and application integration.
 
     Learn how to develop and manage a Data Product within DataOS.
 
-    [:octicons-arrow-right-24: Data Product Development Lifecycle](/products/data_product/#data-product-development-life-cycle)
+    [:octicons-arrow-right-24: Data Product Development Lifecycle](/products/data_product/how_to_guides/) 
 
 -   :material-list-box-outline:{ .lg .middle } **Learn more about the Data Product**
 
@@ -91,7 +91,7 @@ Once use cases have been defined, the next step is to explore the existing Data 
 
 ## Data Product development lifecycle
 
-The Data Product Development lifecycle consists of four key phases: Design, Develop, Deploy, and Iterate. It starts with Design, where business goals are translated into a solution architecture. The Develop phase involves building and testing the Data Product based on this design. Deploy focuses on releasing the product to users and ensuring it operates effectively in a production environment. Finally, Iterate emphasizes continuous improvement through feedback and performance analysis to adapt to evolving needs and enhance the product over time. To know about Data Product Development lifecycle in detail, please [refer to this](/products/data_product/how_to_guides/).
+The Data Product development lifecycle consists of four key phases: Design, Develop, Deploy, and Iterate. It starts with Design, where business goals are translated into a solution architecture. The Develop phase involves building and testing the Data Product based on this design. Deploy focuses on releasing the product to users and ensuring it operates effectively in a production environment. Finally, Iterate emphasizes continuous improvement through feedback and performance analysis to adapt to evolving needs and enhance the product over time. To know about Data Product Development lifecycle in detail, please [refer to this](/products/data_product/how_to_guides/).
 
 ## Structure of Data Product manifest
 
@@ -175,7 +175,7 @@ Data Product can be configured to make the efficient business decisions based on
 
 This section provides step-by-step guides to assist you in effectively configuring the Data Product to solve common challenges. Below are some recipes to help you configure Data Product effectively:
 
-- [How to Deploy Data Product using CI/CD pipeline?](/products/data_product/recipes/ci_cd/)
+- [How to deploy Data Product using CI/CD pipeline?](/products/data_product/recipes/ci_cd/)
 
 ## Examples
 
