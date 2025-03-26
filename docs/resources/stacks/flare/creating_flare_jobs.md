@@ -18,8 +18,7 @@ Flare is a declarative stack that processes large-scale data workflows using seq
 
 ## Deep Diving into a Flare Job
 
-A Job is a generalized way of defining a transformation task based on the scenario and use case; it requires the assistance of stacks to achieve the desired outcome. Any job is fully reliant on the completion of the job before it. E.g., a Flare Job represents a data processing workload such as ingestion, transformation, profiling, or syndication, running on the Flare stack. When storing the output dataset in the Icebase depot, the Toolbox stack is also required. If you would like to learn more about the Toolbox stack, click [here](/resources/stacks/data_toolbox/).
-
+A Job is a generalized way of defining a transformation task based on the scenario and use case; it requires the assistance of stacks to achieve the desired outcome. Any job is fully reliant on the completion of the job before it. E.g., a Flare Job represents a data processing workload such as ingestion, transformation, profiling, or syndication, running on the Flare stack. 
 In terms of YAML structure, a Flare Job declared within the DAG comprises three sections: Input (data source), Output (data destination), and Steps (data transformation).
 
 ![Build.svg](/resources/stacks/flare/basic_concepts/build.svg)
@@ -126,9 +125,7 @@ In case you don’t have the required depot in the list, you can create a YAML c
 
 ### **Check the type of workload you want run**
 
-A workload can either be a **Batch** or **Streaming** workload. For a batch workload, you can submit one workflow with you have two options either submit a workflow that contains a job on both Flare and Toolbox Stack respectively both the Flare and Toolbox jobs one after the other in a DAG or submit two separate workflows one containing the DAG of Flare jobs and another containing the DAG of the Toolbox job. 
-
-For a streaming workload, create two separate workflows: one for a DAG of Flare Jobs and another for a DAG of Toolbox Jobs. In the below use case, we will take a batch workload.
+A workload can either be a **Batch** or **Streaming** workload.
 
 ### **Check the size of the data**
 
@@ -727,44 +724,6 @@ INFO[0002] 🔍 workflow...complete
 ```
 </details>
     
-
-### **Metadata Registration**
-
-> Only for Depots with Hadoop Catalog
-> 
-
-#### **Run Data Toolbox Workflow**
-
-Data Toolbox plays the role of registering the metadata of ingested data within Icebase with the DataOS Metis. You need to run the following Data tool YAML for your workflow to record the metadata. Use the `apply` command to run the workflow and check its runtime status. The stack here is `toolbox`
-
-**Sample YAML**
-
-```yaml
-version: v1
-name: dataos-tool-city-test
-type: workflow
-workflow:
-  dag:
-	  - name: data-tool-job-001 # Job 2
-	    spec:
-	      stack: toolbox # Stack is Toolbox, so its a Toolbox Job
-	      compute: runnable-default
-	      stackSpec:
-	        dataset: dataos://icebase:retailsample/city?acl=rw
-	        action:
-	          name: set_version
-	          value: latest
-```
-
-**Alternative Method**
-
-You can also use the `set-metadata` Icebase command for Metadata Registration and configuring the metadata version 
-
-```shell
-dataos-ctl dataset -a dataos://icebase:retailsample/city set-metadata -v <latest|v2.gz.metadata.json>
-```
-
-To know more about the Icebase approach click the [link](/resources/depot/icebase/#set-metadata).
 
 #### **Check Registered Dataset with Metis**
 

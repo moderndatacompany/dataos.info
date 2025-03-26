@@ -75,19 +75,6 @@ workflow:
                     properties:
                       write.format.default: parquet
                       write.metadata.compression-codec: gzip
-
-    
-    - name: dataos-tool-uber-data-test-passenger
-      spec:        
-        stack: toolbox
-        compute: runnable-default
-        stackSpec:          
-          dataset: dataos://icebase:sports/sample_passenger_assertion?acl=rw
-          action:            
-            name: set_version
-            value: latest
-      dependencies:        
-        - wf-assertion-job
 ```
 </details>   
 
@@ -116,7 +103,6 @@ In this process, it initially evaluates the assertion, and only if all the check
     
                     JOB NAME               |   STACK    |           JOB TITLE            | JOB DEPENDENCIES  
     ---------------------------------------|------------|--------------------------------|-------------------
-      dataos-tool-uber-data-test-passenger | toolbox    |                                | wf-assertion-job  
       system                               | dataos_cli | System Runnable Steps          |                   
       wf-assertion-job                     | flare:5.0  | sample data ingestion          |                   
                                            |            | assertion job                  |                   
@@ -127,7 +113,6 @@ In this process, it initially evaluates the assertion, and only if all the check
     
                        NODE NAME                   |               JOB NAME               |                                  POD NAME                                   | DATA PLANE |     TYPE     |       CONTAINERS        |   PHASE    
     -----------------------------------------------|--------------------------------------|-----------------------------------------------------------------------------|------------|--------------|-------------------------|------------
-      dataos-tool-uber-data-test-passenger-execute | dataos-tool-uber-data-test-passenger | assertion-job-wf-uyqm-plr-dataos-tool-uber-data-test-passenger-t-3179012171 | hub        | pod-workflow | wait,main               | succeeded  
       wf-assertion-job-execute                     | wf-assertion-job                     | assertion-job-wf-uyqm-plr-wf-assertion-job-t-403567081                      | hub        | pod-workflow | main                    | succeeded  
       wf-assertion-job-uyqm-1101092714-driver      | wf-assertion-job                     | wf-assertion-job-uyqm-1101092714-driver                                     | hub        | pod-flare    | spark-kubernetes-driver | completed
     ```
@@ -210,19 +195,6 @@ workflow:
                     properties:
                       write.format.default: parquet
                       write.metadata.compression-codec: gzip
-
-    
-    - name: dataos-tool-uber-data-test-passenger
-      spec:        
-        stack: toolbox
-        compute: runnable-default
-        stackSpec:          
-          dataset: dataos://icebase:sports/sample_passenger_assertion?acl=rw
-          action:            
-            name: set_version
-            value: latest
-      dependencies:        
-        - wf-assertion-job
 ```
 </details>
  
@@ -239,7 +211,6 @@ workflow:
     
                     JOB NAME               |   STACK    |           JOB TITLE            | JOB DEPENDENCIES  
     ---------------------------------------|------------|--------------------------------|-------------------
-      dataos-tool-uber-data-test-passenger | toolbox    |                                | wf-assertion-job  
       system                               | dataos_cli | System Runnable Steps          |                   
       wf-assertion-job                     | flare:5.0  | sample data ingestion          |                   
                                            |            | assertion job                  |                   

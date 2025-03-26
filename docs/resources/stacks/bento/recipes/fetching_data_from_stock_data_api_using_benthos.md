@@ -146,16 +146,4 @@ Here's a more detailed step-by-step guide to fetching data from the Stock data A
                         tags:
                           - Connect
                         title: Apple Stock Data 
-    
-    # here we run the data tool to bring data into icebase, since its a file system , inorder to ingest it we run the data tool
-        - name: dataos-tool-pulsar
-          spec:
-            stack: toolbox
-            stackSpec:
-              dataset: dataos://icebase:sample/stock_pulsar?acl=rw
-              action:
-                name: set_version
-                value: latest
-          dependencies:
-            - pulsar-appledata
     ```

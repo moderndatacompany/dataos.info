@@ -3,7 +3,14 @@
 
 Bucketing is an optimization technique that helps to prevent the shuffling and sorting of data during compute-heavy operations such as joins. Based on the bucketing columns we specify, data is collected in a number of bins.
 
-![diagram 01.jpg](/resources/stacks/flare/case_scenario/bucketing/diagram_01.jpg)
+<center>
+<div style="width: 50%; text-align: center;">
+  <img src="/resources/stacks/flare/case_scenario/bucketing/diagram_01.jpg" alt="Diagram" width:"40rem">
+</div>
+</center>
+
+
+<!-- ![diagram 01.jpg](/resources/stacks/flare/case_scenario/bucketing/diagram_01.jpg) -->
 
 ## Bucketing vs Partitioning
 
@@ -34,8 +41,9 @@ partitionSpec:
 
 ```yaml
 version: v1
-name: wf-sample
+name: wf-sample-01
 type: workflow
+workspace: curriculum
 workflow:
   dag:
     - name: sample
@@ -55,12 +63,12 @@ workflow:
           job:
             inputs:
               - name: input 
-                dataset: dataos://thirdparty01:analytics/survey_unpivot/unpivot_data.csv
+                dataset: dataos://thirdparty01:onboarding/customer.csv
                 format: csv
             logLevel: INFO
             outputs:
-              - name: clustered_records
-                dataset: dataos://icebase:sample/unpivot_data_02?acl=rw
+              - name: select_all_columns
+                dataset: dataos://lakehouse:sample/customer_bucket_data?acl=rw
                 format: Iceberg
                 description: unpivotdata
                 options:
@@ -68,57 +76,56 @@ workflow:
                   sort:
                     mode: global
                     columns:
-                      - name: week_year_column
+                      - name: customer_id
                         order: desc
                   iceberg:
                     properties:
                       write.format.default: parquet
                       write.metadata.compression-codec: gzip
-										# Bucketing
+                                        # Bucketing
                     partitionSpec:
                       - type: bucket # bucket
-                        column: week_year_column # bucketing column
-                        numBuckets: 2 # number of buckets
+                        column: country # bucketing column
+                        numBuckets: 4 # number of buckets
                 title: unpivot data
             steps:
                 - sequence:
-                    - name: select_all_column
+                    - name: select_all_columns
                       sql: Select * from input 
-                      functions: 
-                        - name: cleanse_column_names
-                        - name: unpivot 
-                          columns: 
-                            - "*" 
-                          pivotColumns:
-                            - week_year
-                          keyColumnName: week_year_column 
-                          valueColumnName: values_columns
-                    - name: clustered_records
-                      sql: SELECT * FROM select_all_column CLUSTER BY week_year_column
           sparkConf:
             - spark.sql.extensions: org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions
 ```
 
-**Toolbox Workflow**
+To verify the changes run the following query in the workbench this will give you the number of buckets, check with input and output data so the input data will only have 1 partition with:
 
-This additional workflow is only required if your current icebase depot is based on Hadoop catalogue and Hive metastore. However, in the case where the catalog is based on Hadoop and REST Metastore, the additional metadata setting operation is not required.
-
-```yaml
-version: v1
-name: datatool-wf-sample
-type: workflow
-workflow:
-  dag:
-  - name: dataos-tool-simple-bucket
-    spec:
-      stack: toolbox
-      compute: runnable-default
-      stackSpec:
-        dataset: dataos://icebase:sample/unpivot_data_02
-        action:
-          name: set_version
-          value: latest
+```sql
+select * from "lakehouse"."retail"."customer$files" limit 10;
 ```
+
+**Expected Output**
+
+```bash
+| content                                                                                                             | integer | ⋮  | file_path                                                                                                       | varchar | ⋮  | file_format | varchar | ⋮  | spec_id | integer | ⋮  | record_count | bigint | ⋮  | file_size_in_bytes | bigint | ⋮  | column_sizes                                                                                                                                                                                                                                                                                 |
+|---------------------------------------------------------------------------------------------------------------------|---------|-----|-----------------------------------------------------------------------------------------------------------------|---------|-----|-------------|---------|-----|---------|---------|-----|-----------------|--------|-----|--------------------|--------|-----|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| gs://lake001-apparentm-dev/icebase/retail/customer/data/00000-0-68ccd2f4-efa2-445a-96aa-960bf8ff7861-0-00001.parquet | 0       | ⋮   | PARQUET                                                                                                        | 0       | ⋮   | 100         | 21563   | ⋮   | { "2": 206, "3": 2040, "4": 265, "5": 613, "6": 627, "7": 123, "8": 862, "9": 1267, "10": 346, "11": 219, "12": 201, "13": 193, "14": 133, "15": 959, "16": 200, "17": 209, "18": 288, "19": 98, "20": 143, "21": 154, "22": 124, "23": 183, "24": 160, "25": 168, "26": 395, "27
+```
+
+```sql
+select * from "lakehouse01"."sample"."customer_bucket_data$files" limit 10;
+```
+
+
+**Expected output**
+
+You will see the output has the 2 partition [0, 1] as following:
+
+```bash
+| **content** | **file_path**                                                                                                                        | **file_format** | **spec_id** | **partition** | **record_count** | **file_size_in_bytes** |
+|-------------|----------------------------------------------------------------------------------------------------------------------------------------|-----------------|-------------|---------------|------------------|------------------------|
+| 0           | gs://lake001-apparentm-dev/lakehouse01/sample/customer_bucket_data/data/customer_id_bucket=0/00000-4-3ae81b47-62aa-45c8-8acc-2447ba767eb8-0-00002.parquet | PARQUET         | 0           | [0]           | 1186             | 12076                  |
+| 0           | gs://lake001-apparentm-dev/lakehouse01/sample/customer_bucket_data/data/customer_id_bucket=1/00000-4-3ae81b47-62aa-45c8-8acc-2447ba767eb8-0-00001.parquet | PARQUET         | 0           | [1]           | 1186             | 12076                  |
+```
+
 
 ### **Big Data-Nested Bucket**
 
@@ -147,12 +154,12 @@ workflow:
           job:
             inputs:
               - name: input 
-                dataset: dataos://icebase:retail/city
+                dataset: dataos://lakehouse:retail/city
                 format: iceberg
             logLevel: INFO
             outputs:
               - name: random_data
-                dataset: dataos://icebase:sample/bucket_large_data_02?acl=rw
+                dataset: dataos://lakehouse:sample/bucket_large_data_02?acl=rw
                 format: Iceberg
                 options:
                   saveMode: overwrite
@@ -200,11 +207,11 @@ workflow:
             - spark.sql.extensions: org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions
 ```
 
-If one attempts to  set metadata on the icebase depot based on REST metastore the following error will encounter:
+<!-- If one attempts to  set metadata on the lakehouse depot based on REST metastore the following error will encounter:
 
 ```bash
-➜  ~ dataos-ctl dataset set-metadata -a dataos://icebase:retail/city -v latest
+➜  ~ dataos-ctl dataset set-metadata -a dataos://lakehouse:retail/city -v latest
 INFO[0000] 📂 set metadata...                            
 ERRO[0001] 📂 set metadata...error                       
-ERRO[0001] set metadata operation is restricted to Hadoop Catalog and HIVE Metastore based depot, for given depot: icebase, icebergCatalogType: HADOOP and metastoreType: REST
-```
+ERRO[0001] set metadata operation is restricted to Hadoop Catalog and HIVE Metastore based depot, for given depot: lakehouse, icebergCatalogType: HADOOP and metastoreType: REST
+``` -->

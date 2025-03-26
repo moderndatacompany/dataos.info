@@ -200,7 +200,6 @@ dataos-ctl develop stack versions
     ststack         │ python  │ 1.0     │ docker.io/library/python:3.10.12-slim             │                            
     talos           │         │ 1.0     │ docker.io/rubiklabs/talos:0.1.26                  │ dataos-container-registry  
     talos           │         │ 2.0     │ docker.io/rubiklabs/talos:0.1.25                  │ dataos-container-registry  
-    toolbox         │         │ 1.0     │ docker.io/rubiklabs/dataos-tool:0.3.9             │ dataos-container-registry  
     ```
 
 </details>

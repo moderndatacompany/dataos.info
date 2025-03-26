@@ -1,7 +1,8 @@
 # Partition Evolution
 
 
-This article describes a use case of partition evolution for Iceberg and shows how seamless it is to query the data stored with multiple partition layouts.
+The following document explains about a feature in Iceberg called partition evolution and explains how it allows you to change the way your data is organized (partitioned) without causing issues when you run queries on that data.
+
 
 You can update the Iceberg table partitioning in an existing table because queries do not refer to partition values directly.
 
@@ -52,25 +53,23 @@ workflow:
       tags:
       - Connect
       - NY-Taxi
-      stack: flare:1.0
+      stack: flare:6.0
       flare:
         job:
           explain: true
           inputs:
-           - name: ny_taxi
-             dataset: dataos://thirdparty01:none/ny-taxi-data/010100.json?acl=r
-             format: json
+           - name: customer
+             dataset: dataos://icebase:none/ny-taxi-data/customer?acl=r
+             format: iceberg
              isStream: false
           logLevel: INFO
           outputs:
             - name: output01
-              depot: dataos://icebase:raw01?acl=rw
+              depot: dataos://icebase:sample/customer_partition_evolution?acl=rw
           steps:
           - sink:
-             - sequenceName: ny_taxi_ts
-               datasetName: ny_taxi_partition_01
-               outputName:  output01
-               outputType: Iceberg
+             - sequence:
+                 name: output01
                outputOptions:
                  saveMode: overwrite
                  iceberg:
@@ -93,52 +92,6 @@ workflow:
                     columns:
                       pickup_datetime: timestamp
                       dropoff_datetime: timestamp
-```
-
-### **Update metadata with data tool**
-
-Run the following datatool job to update the metadata in DataOS.
-
-```yaml
-version: v1beta1
-name: dataos-tool-ny-taxi-connect
-type: workflow
-workflow:
-  dag:
-  - name: dataos-tool-partition
-    spec:
-      stack: toolbox
-      stackSpec:
-        dataset: dataos://icebase:raw01/ny_taxi_partition_01
-        action:
-          name: set_version
-          value: latest
-```
-
-### **Update partition for new data**
-
-Run the following datatool job to update the partition spec for the new data to be ingested.
-
-```yaml
-version: v1beta1
-name: dataos-tool-update-partition
-type: workflow
-workflow:
-  dag:
-  - name: dataos-tool-partition-update
-    spec:
-      stack: alpha
-      envs:
-        LOG_LEVEL: debug
-      alpha:
-        image: rubiklabs/dataos-tool:0.2.3
-        arguments:
-          - dataset
-          - update-partition
-          - --address
-          - dataos://icebase:raw01/ny_taxi_partition_01
-          - --spec
-          - day:pickup_datetime
 ```
 
 ### **Append data with new partition spec**

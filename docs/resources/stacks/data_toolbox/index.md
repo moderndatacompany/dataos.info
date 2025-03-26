@@ -1,7 +1,6 @@
 ---
 title: Toolbox Stack
-search:
-  boost: 4
+search: false
 ---
 
 <aside class="callout">

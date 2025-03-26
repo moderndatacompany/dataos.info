@@ -54,7 +54,6 @@ INFO[0000] 🔍 get...complete
     scanner-v2                | v1alpha | stack |           | active |         | dataos-manager     
     soda                      | v1alpha | stack |           | active |         | dataos-manager     
     steampipe-v1              | v1alpha | stack |           | active |         | iamgroot
-    toolbox-v1                | v1alpha | stack |           | active |         | dataos-manager
 ```
 </details>
 

@@ -743,5 +743,5 @@ Using the same `account` table as before, let’s try and get the revenue for ea
 
 
 <aside class="callout">
-To explore more examples click <a href="/resources/lens/graphql_api/graphql_query_format/">here</a>.
+To explore more examples click <a href="/resources/lens/graphql_api/graphql_query_example/">here</a>.
 </aside>
