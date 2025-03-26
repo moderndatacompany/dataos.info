@@ -140,28 +140,3 @@ workflow:
                 sql: SELECT *, date_format(now(), 'yyyyMMddHHmm') as version, now() as
                   ts_ny_taxi FROM ny_taxi_changed_dateformat
 ```
-
-<!-- ### **DataOS Tool Yaml**
-
-```yaml
-version: v1beta1
-name: dataos-tool-ny-taxi-parallel-write
-type: workflow
-workflow:
-  dag:
-  - name: dataos-tool
-    spec:
-      stack: alpha
-      envs:
-        LOG_LEVEL: debug
-      stackSpec:
-        image: rubiklabs/dataos-tool:0.0.26
-
-        arguments:
-          - dataset
-          - set-metadata
-          - --address
-          - dataos://icebase:raw01/ny_taxi_04
-          - --version
-          - latest
-``` -->

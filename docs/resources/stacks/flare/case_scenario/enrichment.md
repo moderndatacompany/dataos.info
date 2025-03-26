@@ -385,53 +385,6 @@ For customers using Flare 3.0, the following YAML configuration is valid.
                         - enriched
                       title: Enriched Countries With States and Cities Information
   ```
-  
-  ```yaml title="toolbox_workflow.yml"
-  version: v1
-  name: dataos-tool-connect-all
-  type: workflow
-  workflow:
-    dag:
-    - name: dataos-tool-cities-01
-      spec:
-        stack: toolbox
-        compute: runnable-default
-        stackSpec:
-          dataset: dataos://icebase:countries_states_cities/cities?acl=rw
-          action:
-            name: set_version
-            value: latest
-
-    - name: dataos-tool-states-01
-      spec:
-        stack: toolbox
-        compute: runnable-default
-        stackSpec:
-          dataset: dataos://icebase:countries_states_cities/states?acl=rw
-          action:
-            name: set_version
-            value: latest
-
-    - name: dataos-tool-countries-01
-      spec:
-        stack: toolbox
-        compute: runnable-default
-        stackSpec:
-          dataset: dataos://icebase:countries_states_cities/countries?acl=rw
-          action:
-            name: set_version
-            value: latest
-
-    - name: dataos-tool-enriched-01
-      spec:
-        stack: toolbox
-        compute: runnable-default
-        stackSpec:
-          dataset: dataos://icebase:countries_states_cities/enriched_cities_states_countries?acl=rw
-          action:
-            name: set_version
-            value: latest 
-  ```
   </div>
 </details>
 

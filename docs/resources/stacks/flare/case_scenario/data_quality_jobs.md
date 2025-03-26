@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Data quality jobs (assertions)
 
 Data quality jobs are designed to ensure that data meets specified quality standards by applying various assertions. Assertions are checks that validate data against predefined rules, such as value ranges, missing values, uniqueness, and other conditions. These jobs are essential for monitoring and maintaining data integrity throughout your workflows.
@@ -12,7 +17,7 @@ Assertions can be classified into two categories, namely, sinked or standalone a
 
 ### **Standalone assertions**
 
-In Flare Workflow, assertions on pre-existing datasets can be specified by declaring  `assertions` section distinct from the `inputs` section in the YAML definition. The following YAML of the Flare Workflow. It should be noted that, since check and metric information is stored in separate locations, the corresponding metadata must be updated individually. As a result, two separate Toolbox Workflow runs must be executed, one for metrics and the other for checks.
+In Flare Workflow, assertions on pre-existing datasets can be specified by declaring  `assertions` section distinct from the `inputs` section in the YAML definition. The following YAML of the Flare Workflow.
 
 #### **Code snippets**
 
@@ -99,50 +104,7 @@ workflow:
             - spark.memory.fraction: "0.1"
             - spark.shuffle.memoryFraction: "0.2"
 ```
-<!-- 
-**Toolbox Workflow (for checks)**
 
-```yaml
-version: v1
-name: dataos-tool-checks
-type: workflow
-tags:
-  - Metrics
-  - Checks
-description: This workflow is for data tool of customer demo quality
-workflow:
-  dag:
-    - name: checks-tool
-      spec:
-        stack: toolbox
-        stackSpec:
-          dataset: dataos://icebase:sys01/quality_checks?acl=rw
-          action:
-            name: set_version
-            value: latest
-```
-
-**Toolbox Workflow (for metrics)**
-
-```yaml
-version: v1
-name:  dataos-tool-metrics
-type: workflow
-tags:
-  - Metrics
-  - Checks
-description: This workflow for data tool
-workflow:
-  dag:
-    - name: tool-metrics
-      spec:
-        stack: toolbox
-        stackSpec:
-          dataset: dataos://icebase:sys01/quality_metrics?acl=rw
-          action:
-            name: set_version
-            value: latest
-``` -->
 
 ### **Pre-Sink Assertions**
 

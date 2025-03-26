@@ -27,7 +27,7 @@ Lens exposes a PostgreSQL-compatible interface, enabling interaction with the se
     For example, if the user name is iamgroot:
 
     ```bash
-    dataos-ctl user apikey create -n test_api_key -i aayushisolanki -d 24h
+    dataos-ctl user apikey create -n test_api_key -i iamgroot -d 24h
 
     #Expected_Output
     INFO[0000] 🔑 user apikey...                             
@@ -138,13 +138,13 @@ After retrieving the name of the Lens, the following steps describe how to conne
                     List of relations
      Schema |          Name           | Type  |     Owner      
      --------+-------------------------+-------+----------------
-     public | customer                | table | aayushisolanki
-     public | customer_lifetime_Value | table | aayushisolanki
-     public | product                 | table | aayushisolanki
-     public | repeat_purchase_rate    | table | aayushisolanki
-     public | sales                   | table | aayushisolanki
-     public | stock_status            | table | aayushisolanki
-     public | warehouse_inventory     | table | aayushisolanki
+     public | customer                | table | iamgroot
+     public | customer_lifetime_Value | table | iamgroot
+     public | product                 | table | iamgroot
+     public | repeat_purchase_rate    | table | iamgroot
+     public | sales                   | table | iamgroot
+     public | stock_status            | table | iamgroot
+     public | warehouse_inventory     | table | iamgroot
      (7 rows)
     ```
     
@@ -330,7 +330,7 @@ MEASURE(total_customers) FROM customer
 WHERE education='Basic' 
 GROUP BY 1,2 limit 10;
 ```
-For this query, the SQL API would transform SELECT query fragments into a regular query. It can be represented as follows in the REST API query format:
+For this query, the SQL API would transform `SELECT` query fragments into a regular query. It can be represented as follows in the REST API query format:
 
 ```rest
 {
@@ -353,7 +353,7 @@ For this query, the SQL API would transform SELECT query fragments into a regula
 ```
 
 
-Because of this transformation, not all functions and expressions are supported in query fragments performing `SELECT` from semantic model tables. Please refer to the [SQL API reference](/resources/lens/sql_apis/supported_functions_and_operators#sql-api-references) to see whether a specific expression or function is supported and whether it can be used in selection (e.g., WHERE) or projection (e.g., SELECT) parts of SQL queries.
+Because of this transformation, not all functions and expressions are supported in query fragments performing `SELECT` from semantic model tables. Please refer to the [SQL API reference](/resources/lens/sql_apis/supported_functions_and_operators#sql-api-references) to see whether a specific expression or function is supported and whether it can be used in selection (e.g., `WHERE`) or projection (e.g., `SELECT`) parts of SQL queries.
 
 For example, the following query won't work because the SQL API can't push down the `CASE` expression to Lens for processing. It is not possible to translate `CASE` expressions in measures.
 

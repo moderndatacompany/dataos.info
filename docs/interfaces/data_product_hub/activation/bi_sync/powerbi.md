@@ -132,9 +132,6 @@ Whenever you encounter the error 'unknown cluster: <cluster_name>' as shown belo
 <!-- ### **Catalog not found** -->
 
 
-
-
-
 ## Limitations
 
 - Power BI fails to handle special characters (e.g.,) when generating queries through the synced semantic model, causing errors in visualizations. Thus, it is best practice to address or remove special characters directly in the data itself.
@@ -154,6 +151,6 @@ This approach ensures that users only see the data they are authorized to view, 
 
 
 <aside class="callout">
-  To publish the Power BI Reports to the Power BI Service, please refer to <a href="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service">this link</a>.
+  To publish the Power BI Reports to the Power BI Service, please refer to <a href="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/">this link</a>.
 </aside>
 
