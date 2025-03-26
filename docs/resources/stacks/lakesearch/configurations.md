@@ -912,6 +912,13 @@ The data types defined in the `source.index_table` is different from standard SQ
 | `float` | Real numbers are stored as 32-bit IEEE 754 single precision floats. | attribute |
 
 
+
+<aside class="callout">
+
+It’s often useful to index the same field in different ways for different purposes. For example, you might want to index a string field as both a text field for full-text search and as a keyword field for sorting or aggregating your data. Or, you might choose to use more than one language analyzer to process the contents of a string field that contains user input.
+
+</aside>
+
 ---
 
 ### **index_tables.columns.description**
