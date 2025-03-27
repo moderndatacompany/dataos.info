@@ -447,7 +447,7 @@ nav:
               - Bento on Local Host: resources/stacks/bento/getting_started.md
               - Bento on DataOS: resources/stacks/bento/bento_on_dataos.md
             - Bloblang: 
-              - Walkthrough: resources/stacks/bento/bloblang/walkthrough.md
+              - Overview: resources/stacks/bento/bloblang/walkthrough.md
               - Core Features: resources/stacks/bento/bloblang/bloblang_core_features.md
               - Functions: resources/stacks/bento/bloblang/functions.md
               - Methods: resources/stacks/bento/bloblang/methods.md
@@ -487,8 +487,8 @@ nav:
               - Processors: resources/stacks/bento/components/processors.md
               - Rate Limit: resources/stacks/bento/components/rate_limit.md
             - Recipes: 
-              - Processing JSON data: resources/stacks/bento/recipes/processing_json_data.md
-              - Processing nested JSON data: resources/stacks/bento/recipes/processing_nested_json_data.md
+              # - Processing JSON data: resources/stacks/bento/recipes/processing_json_data.md          # To cross check
+              # - Processing nested JSON data: resources/stacks/bento/recipes/processing_nested_json_data.md
               - Fetching Data from Instagram API: resources/stacks/bento/recipes/fetching_data_from_instagram_api.md
               - Twitter API Data Processing: resources/stacks/bento/recipes/twitter_api_data_processing.md
               - Discord Bot: resources/stacks/bento/recipes/discord_bot.md
@@ -517,7 +517,7 @@ nav:
               - Handling Empty Tables: resources/stacks/flash/handling_empty_tables.md
             - Recipes: 
               - Use cached datasets in Lens models: resources/stacks/flash/recipes/lens.md
-              - Use cached datsets in Talos APIs: resources/stacks/flash/recipes/talos.md
+              - Use cached datasets in Talos APIs: resources/stacks/flash/recipes/talos.md
           - Lakesearch:
             - resources/stacks/lakesearch/index.md
             - Key concepts: resources/stacks/lakesearch/key_concepts.md
@@ -562,7 +562,7 @@ nav:
               - Generate API documentation: resources/stacks/talos/recipes/api_documentation.md
               - External API as data source: resources/stacks/talos/recipes/external_api.md
               - Validating Parameters: resources/stacks/talos/recipes/validating_parameters.md
-              - Error Handeling: resources/stacks/talos/recipes/error_handling.md
+              - Error Handling: resources/stacks/talos/recipes/error_handling.md
             - Example: resources/stacks/talos/example.md
             - Best Practices:
               - API: resources/stacks/talos/best_practices/api.md
@@ -669,7 +669,7 @@ nav:
             - learn/dp_developer_learn_track/build_pipeline/index.md
             - Creating your first data pipelines:
               - learn/dp_developer_learn_track/build_pipeline/first_pipeline/index.md
-            - Sheduling Workflows:
+            - Scheduling Workflows:
               - learn/dp_developer_learn_track/build_pipeline/scheduling_workflows/index.md
             - Data quality checks:
               - learn/dp_developer_learn_track/build_pipeline/dq_check/index.md
@@ -732,7 +732,7 @@ nav:
       - quick_guides/index.md
       - Connecting with data sources: 
           - quick_guides/depot_creation_cli/index.md
-      - Performing exloratory data analysis:
+      - Performing exploratory data analysis:
         - Running your first data query: 
           - quick_guides/first_query/index.md
         - Arranging and transforming data with Pivot: 
@@ -757,7 +757,7 @@ nav:
         - Working with Payloads:
           - quick_guides/working_with_payload/index.md
           - Example scenarios: quick_guides/working_with_payload/filter_operator_example_scenarios/index.md
-        - Pre-defined filtering using Segemnts:
+        - Pre-defined filtering using Segments:
           - quick_guides/working_with_segments/index.md
         - Defining Data Policies:
           - quick_guides/apply_data_policy_lens/index.md 
