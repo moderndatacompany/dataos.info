@@ -29,7 +29,7 @@ This section comprises attributes specific to the Worker Resource. The attribute
 **Example Usage:**
 
 ```yaml
-name: benthos3-worker-sample
+name: bento3-worker-sample
 version: v1beta
 type: worker
 tags:

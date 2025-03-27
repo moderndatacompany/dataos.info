@@ -1,6 +1,6 @@
 # Logger
 
-Benthos logging prints to stdout (or stderr if your output is stdout) and is formatted as [logfmt](https://brandur.org/logfmt) by default. Use these configuration options to change both the logging formats as well as the destination of logs.
+Bento logging prints to stdout (or stderr if your output is stdout) and is formatted as [logfmt](https://brandur.org/logfmt) by default. Use these configuration options to change both the logging formats as well as the destination of logs.
 
 ## YAML Configurations
 

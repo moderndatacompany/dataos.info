@@ -56,9 +56,6 @@ service:
     enabled: true
     path: /test13   # URL for DataOS (topic name)
     noAuthentication: true
-    annotations:
-      konghq.com/strip-path: "false"
-      kubernetes.io/ingress.class: kong
   stack: bento
   logLevel: DEBUG
   tags:

@@ -1,11 +1,38 @@
 # Fetching Data from Stock Data API using Bento
 
-Here's a more detailed step-by-step guide to fetching data from the Stock data API using Bento:
+## Step-by-Step Guide to Fetching Stock Market Data Using Bento  
 
-1. Create an account and obtain an API key from the Polygon API documentation from [this link](https://polygon.io/docs/stocks/getting-started).
-2. Ingest the data into DataOS from the stock market API using Pulsar.
-3. Use Bento to fetch the data from the stock market API and write it to Pulsar.
-4. Create a YAML file to specify the input, pipeline, and output sections of the Bento stack.
+This guide outlines the process of fetching stock market data from the Polygon API and integrating it into DataOS using Bento and Pulsar.  
+
+### **1. Create an Account and Obtain an API Key**  
+To access stock market data, an API key is required. Follow these steps to obtain one:  
+
+- Visit the [Polygon API documentation](https://polygon.io/docs/stocks/getting-started).  
+- Sign up for an account or log in if an account already exists.  
+- Navigate to the API key section and generate a new key.  
+- Store the API key securely, as it is required for authentication in subsequent steps.  
+
+### **2. Ingest Data into DataOS Using Pulsar**  
+Apache Pulsar serves as the messaging system for streaming data into DataOS. To ingest stock market data:  
+
+- Set up a Pulsar topic dedicated to stock market data ingestion.  
+- Configure DataOS to subscribe to this topic for real-time data processing.  
+- Ensure the necessary access credentials and permissions are granted for seamless data ingestion.  
+
+### **3. Fetch Data Using Bento and Write to Pulsar**  
+Bento facilitates the retrieval of stock market data and its integration with Pulsar. The process involves:  
+
+- Writing a Bento script that interacts with the Polygon API.  
+- Using the obtained API key to authenticate requests.  
+- Defining the data schema and transformation logic, if needed.  
+- Publishing the fetched data to the designated Pulsar topic for further processing in DataOS.  
+
+### **4. Define a YAML Configuration File for Bento**  
+A YAML configuration file is required to define the Bento stack, specifying input sources, processing logic, and output destinations. The key sections include:  
+
+- **Input Section**: Configures the API request, specifying parameters such as stock symbols, time intervals, and authentication details.  
+- **Pipeline Section**: Defines any necessary data transformations, filtering, or enrichment processes before storage.  
+- **Output Section**: Specifies the Pulsar topic where the processed stock market data will be published.  
     
     ```yaml
     version: v1beta1
@@ -28,9 +55,6 @@ Here's a more detailed step-by-step guide to fetching data from the Stock data A
         enabled: true
         path: /stockdatapple
         noAuthentication: false
-        annotations:
-          konghq.com/strip-path: "false"
-          kubernetes.io/ingress.class: kong
       tags:
         - wbi
         - trigger
