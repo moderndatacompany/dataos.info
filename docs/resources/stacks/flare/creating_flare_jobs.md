@@ -752,7 +752,6 @@ INFO[0001] 🔍 get...complete
           NAME          | VERSION |   TYPE   | WORKSPACE | STATUS |  RUNTIME  |  OWNER     
 ------------------------|---------|----------|-----------|--------|-----------|-----------
   cnt-city-demo-999     | v1      | workflow | public    | active | succeeded |  tmdc  
-  dataos-tool-city-test | v1      | workflow | public    | active | succeeded |  tmdc
 ```
 
 And then delete using the below command
