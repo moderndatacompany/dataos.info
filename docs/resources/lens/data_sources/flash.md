@@ -1,4 +1,4 @@
-# Flash
+# Creating a semantic model on Flash as source for fast data retrieval 
 
 [Flash](/resources/stacks/flash/) is designed to optimize query performance by leveraging in-memory execution. When used with DataOS Lakehouse and Iceberg-format depots, it enables efficient handling of large-scale queries by reducing latency and optimizing resource usage. The following explains how to configure Lens using Flash.
 
@@ -239,7 +239,7 @@ segments:
     sql: "{TABLE}.state IN ('Illinois', 'Ohio')"
 ```
 
-To know more about segments click [here](https://dataos.info/resources/lens/segments/).
+To know more about segments click [here](/resources/lens/segments/).
 
 
 ### **Create views**
@@ -261,7 +261,7 @@ views:
           - customer_segments
 ```
 
-To know more about the views click [here](https://dataos.info/resources/lens/views/).
+To know more about the views click [here](/resources/lens/views/).
     
 ### **Create user groups**
 
@@ -274,7 +274,7 @@ user_groups:
     includes: "*"
 ```
 
-You can create multiple user groups in `user_groups.yml` . To know more about the User groups click [here](https://dataos.info/resources/lens/user_groups_and_data_policies/).
+You can create multiple user groups in `user_groups.yml` . To know more about the User groups click [here](/resources/lens/user_groups_and_data_policies/).
 
 
 ## Create Lens manifest file
@@ -341,6 +341,40 @@ lens:
 
 Apply the Lens manifest file by using the following command in terminal:
 
+
+=== "Command"
+
+    ```bash 
+    dataos-ctl resource apply -f ${manifest-file-path}
+    ```
+=== "Example usage"
+
+    ```bash 
+    dataos-ctl resource apply -f /lens/lens_deployment.yml -w curriculum
+    # Expected output
+    INFO[0000] 🛠 apply...                                   
+    INFO[0000] 🔧 applying(curriculum) sales360:v1alpha:lens... 
+    INFO[0001] 🔧 applying(curriculum) sales360:v1alpha:lens...created 
+    INFO[0001] 🛠 apply...complete
+    ```
+
+<aside class="callout">
+
+Once the Lens Resource is applied and all configurations are correctly set up, the Lens model will be deployed. Upon deployment, a Lens Service is created in the backend, which may take some time to initialize.
+
+To verify whether the Lens Service is running, execute the following command. The Service name follows the pattern: **`<lens-name>-api`**
+
+Ensure Service is active and running before proceeding to the next steps.
+
 ```bash
-dataos-ctl resource apply -f <lens-file-path>
+dataos-ctl get -t service -n sales-insights-lens-api -w public
+# Expected output:
+INFO[0000] 🔍 get...                                     
+INFO[0002] 🔍 get...complete                             
+
+           NAME           | VERSION |  TYPE   | WORKSPACE | STATUS |  RUNTIME  |    OWNER     
+--------------------------|---------|---------|-----------|--------|-----------|--------------
+  sales360-lens-api | v1      | service | public    | active | running:1 | iamgroot
 ```
+
+</aside>

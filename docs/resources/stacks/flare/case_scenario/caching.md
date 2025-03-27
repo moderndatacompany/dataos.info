@@ -1,6 +1,5 @@
 # Caching
 
-
 Caching puts a copy of intermediately transformed dataset into memory, allowing us to repeatedly access it at a much lower cost than running the entire pipeline again.
 
 ## Code Snippet
@@ -1002,36 +1001,24 @@ workflow:
                       LEFT JOIN organization_new lh_org_emp
                       ON lh.office_id_employee = lh_org_emp.office_id
 
-                sink:
-                  - sequenceName: df_pr1
-                    datasetName: labor_history
-                    outputName: enriched
-                    outputType: Iceberg
-                    description: Labor History Enriched data from GCD ingested datasets
-                    outputOptions:
-                      saveMode: overwrite
+            outputs:
+              - name: enriched
+                dataset: dataos://icebase:report/labor_history?acl=rw
+                options:
+                  saveMode: overwrite
+                  iceberg:
+                    properties:
+                      write.format.default: parquet
+                      write.metadata.compression-codec: gzip
 
-                      iceberg:
-                        properties:
-                          write.format.default: parquet
-                          write.metadata.compression-codec: gzip
+                tags:
+                  - Report-Table
+                title: Labor History Enriched
 
-                    tags:
-                      - Report-Table
-                    title: Labor History Enriched
+
           sparkConf:
             - spark.sql.autoBroadcastJoinThreshold: 300m
             - spark.sql.shuffle.partitions: 600
             - spark.default.parallelism: 400
-    - name: dt-labor-history-l-n
-      spec:
-        stack: toolbox
-        stackSpec:
-          dataset: dataos://icebase:report/labor_history?acl=rw
-          action:
-            name: set_version
-            value: latest
-      dependencies:
-        - connect-labor-history-load-new
 ```
 

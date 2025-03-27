@@ -8,7 +8,6 @@ The Lens and its semantic model can be observed and monitored at the following t
 
 3. [Infrastructure monitoring](/resources/lens/observability#infrastructure-monitoring-of-the-lens-service-using-grafana)
 
-
 ## Metric monitoring of the Lens
 
 Metric monitoring in Lens is done by Monitor and Pager Resource focuses on tracking the performance and health of the Lens Resources. It helps in measuring key indicators that define the state of the system. A Lens Resource can be monitored using Monitor and Pager Resources. Two types of Monitors can be applied to observe the state of the deployed Lens and the matrix of the semantic model.
@@ -526,7 +525,7 @@ The following interface will be displayed:
      style="width: 55%; height: auto;">
 
 
-## Infrastructure monitoring of the Lens Services using Grafana
+## Infrastructure monitoring of the Lens Service using Grafana
 
 Grafana offers robust capabilities to monitor and visualize critical Lens service performance metrics such as CPU usage, memory consumption, network traffic, and more. These monitoring capabilities are especially useful for services that require constant oversight to ensure optimal performance, such as Lens services and Flash service deployments.
 

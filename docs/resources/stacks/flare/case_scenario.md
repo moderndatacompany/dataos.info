@@ -34,7 +34,7 @@ workflow:
         tags:
           - Connect
           - City
-        stack: flare:5.0
+        stack: flare:6.0
         compute: runnable-default
         stackSpec:
           job:
@@ -59,9 +59,9 @@ workflow:
                     sql: SELECT * FROM city_connect LIMIT 10
 ```
 
-In the context of depots, with the exception of those supporting Iceberg file formats with Hadoop Catalog type, the metadata of the datasets is automatically surfaced in the Metis. However, for depots utilizing the Iceberg file format with Hadoop Catalog type, the metadata version needs to be updated manually using the Toolbox Stack or using the <code>set-metadata</code> command on the DataOS CLI. Once the metadata is updated, it becomes discoverable and accessible through the Metis UI.
 
 </details>
+
 
 ## Stream Jobs
 
@@ -91,7 +91,7 @@ workflow:
       spec:
         tags:
           - Connect
-        stack: flare:5.0
+        stack: flare:6.0
         compute: runnable-default
         stackSpec:
           job:
@@ -120,32 +120,6 @@ workflow:
 
 </details> 
 
-<!-- In the context of output depots, the automatic surfacing of metadata in the Metis is applicable to all depots except those supporting Iceberg file formats with Hadoop Catalog type. For such depots, manual updating of the metadata version is required using the Toolbox Stack. If there is a need to obtain the metadata at the end of transformation, when the entire data has been completely written to the output depot, you can execute the Toolbox Stack once at the conclusion of the transformation process. Alternatively, if metadata is required at a specific cadence, scheduling the job upon the Toolbox Stack can fulfill this requirement. 
-
-The code snippet below illustrates a sample schedule workflow for updating the metadata pointer using the Toolbox Stack in output depots with Iceberg file format with Hadoop Catalog type.
-
-```yaml
-version: v1
-name: dataos-tool-random-user
-type: workflow
-workflow:
-  schedule:
-    cron: '*/5 * * * *'
-  dag:
-    - name: dataos-tool-job
-      spec:
-        stack: toolbox
-        compute: runnable-default
-        stackSpec:
-          dataset: dataos://icebase:kafka/random_users_icebase01?acl=rw
-          action:
-            name: set_version
-            value: latest
-```
-
-Once the metadata is updated, it becomes discoverable and accessible through the Metis UI.
-
-</details> -->
 
 ## Incremental Jobs
 
@@ -159,7 +133,7 @@ Computes only the changed rows or files of data since the last build, reducing o
 
 [Data Profiling Jobs](/resources/stacks/flare/case_scenario/data_profiling_jobs/)
 
-[Data Quality Jobs (Assertions)](/resources/stacks/flare/case_scenario/data_quality_jobs/)
+<!-- [Data Quality Jobs (Assertions)](/resources/stacks/flare/case_scenario/data_quality_jobs/) -->
 
 [Compression](/resources/stacks/flare/case_scenario/compression/)
 
@@ -238,7 +212,7 @@ workflow:
       spec: 
         tags: 
           - orphans
-        stack: flare:5.0 
+        stack: flare:6.0 
         compute: runnable-default 
         stackSpec: 
           job: 
@@ -280,7 +254,7 @@ workflow:
       spec: 
         tags: 
           - Rewrite
-        stack: flare:5.0 
+        stack: flare:6.0 
         compute: runnable-default 
         stackSpec: 
           job: 

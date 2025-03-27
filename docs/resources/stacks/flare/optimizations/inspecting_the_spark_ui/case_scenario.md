@@ -161,17 +161,6 @@ workflow:
             - spark.serializer: org.apache.spark.serializer.KryoSerializer
             - spark.default.parallelism: 45
             - spark.sql.broadcastTimeout: 15
-
-    - name: dt-orders-last-8
-      spec:
-        stack: toolbox
-        stackSpec:
-          dataset: dataos://icebase:sample/customer_trans_latest_five_03?acl=rw
-          action:
-            name: set_version
-            value: latest
-      dependencies:
-        - orders-enriched-job-08
 ```
 
 ## Method: 1

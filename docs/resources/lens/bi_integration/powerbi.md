@@ -2,9 +2,9 @@
 
 The semantic model can be integrated with Power BI using the following Ways
 
-* [Using Data Product Hub(Recommended - GUI based)](/resources/lens/bi_integration/powerbi#using-data-product-hub): This method provides a user-friendly, graphical interface for integrating the semantic model with Power BI.  This approach is ideal for those who prefer an intuitive, no-code setup.
+* [Using Data Product Hub(Recommended - GUI based)](/resources/lens/bi_integration/iamgroot#using-data-product-hub): This method provides a user-friendly, graphical interface for integrating the semantic model with Power BI.  This approach is ideal for those who prefer an intuitive, no-code setup.
 
-* [Using cURL command (Command-Line based)](/resources/lens/bi_integration/powerbi#using-curl-command): By executing a simple cURL request, users can fetch and connect the semantic model directly to Power BI. This method is suitable for advanced users looking to script or automate the integration process.
+* [Using cURL command (Command-Line based)](/resources/lens/bi_integration/iamgroot#using-curl-command): By executing a simple cURL request, users can fetch and connect the semantic model directly to Power BI. This method is suitable for advanced users looking to script or automate the integration process.
 
 ## Using Data Product Hub
 
@@ -18,7 +18,7 @@ The semantic model can be integrated with Power BI using the following Ways
 
 - **DataOS API key**: Ensure you have your DataOS API key. The API key can be obtained by executing the command below.
 
-Follow the below steps to integrate semantic model with PowerBI using Data Product Hub:
+Follow the below steps to integrate semantic model with iamgroot using Data Product Hub:
 
 ### **Step 1: Navigate to the Data Product Hub**
 
@@ -62,13 +62,13 @@ The folder contains the main components of a Power BI project for syncing the se
 
 Open the `public_productaffinity` file in Power BI, and enter the DataOS username and API key when prompted. Click the connect button. A popup will appear; click OK.
 
-![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Untitled%20\(16\).png)
+![DPH](/interfaces/data_product_hub/activation/bi_sync/Untitled%20(16).png)
 
 ### **Step 6: View data in Power BI**
 
 After connecting, users can see tables and views containing dimensions and measures and create dashboards.
 
-![DPH](https://dataos.info/interfaces/data_product_hub/activation/bi_sync/Untitled%20\(19\).png)
+![DPH](/interfaces/data_product_hub/activation/bi_sync/Untitled%20(19).png)
 
 ## Using cURL command
 
@@ -96,7 +96,7 @@ curl --location --request POST '${URL}' --header 'apikey: ${APIKEY}' --output ${
 
 **Parameters:**
 
-1. **URL:**  This is the API endpoint for syncing lens with PowerBI. It contains DATAOS_FQDN, name and workspace of lens. 
+1. **URL:**  This is the API endpoint for syncing lens with iamgroot. It contains DATAOS_FQDN, name and workspace of lens. 
 
     ```bash
     https://<DATAOS_FQDN>/lens2/sync/api/v1/power-bi/<workspace_name>:<lens_name> 
@@ -106,7 +106,7 @@ curl --location --request POST '${URL}' --header 'apikey: ${APIKEY}' --output ${
 
     - **WORKSPACE_NAME:** Replace <workspace_name> with the actual workspace where Lens has been deployed. for e.g., `public`, `sandbox`, `curriculum`.
 
-    - **LENS_NAME:** The name of the semantic model or Lens to be synced with Powerbi. For example `productaffinity`.
+    - **LENS_NAME:** The name of the semantic model or Lens to be synced with iamgroot. For example `productaffinity`.
 
 
 2. **Headers:**
@@ -139,7 +139,7 @@ The `file.zip` includes essential components for syncing a Lens Model with Power
 Ensure that `file.zip` are fully extracted before opening them. Failure to do so may result in missing file errors, as shown below:
 
 <div style="text-align: center;">
-    <img src="/resources/lens/bi_integration/image.png" alt="Superset Configuration" style="max-width: 25%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/bi_integration/image.png" alt="Power BI Configuration" style="max-width: 25%; height: auto; border: 1px solid #000;">
 </div>
 
 </aside>
@@ -156,30 +156,30 @@ curl --location --request POST 'https://tcp.liberal-monkey.dataos.app/lens2/sync
 
 **Step 2 Download the zip file:**  Once the command is executed, a zip file will be downloaded to the specified directory. The downloaded file should be unzipped. Three folders will be found inside, all of which are necessary for semantic synchronization with Power BI.
 
-<img src="/resources/lens/bi_integration/powerbi2.png" alt="Superset Configuration" style="max-width: 40rem; height: auto; border: 1px solid #000;">
+<img src="/resources/lens/bi_integration/powerbi2.png" alt="Power BI Configuration" style="max-width: 40rem; height: auto; border: 1px solid #000;">
 
 **Step 4 Open the Power BI file:** Open the Power BI file using Power BI Desktop.
 
-<img src="/resources/lens/bi_integration/powerbi3.png" alt="Superset Configuration" style="max-width: 40rem; height: auto; border: 1px solid #000;">
+<img src="/resources/lens/bi_integration/powerbi2.png" alt="Power BI Configuration" style="max-width: 40rem; height: auto; border: 1px solid #000;">
 
 **Step 5 Enter credentials:**  After opening the file, a popup will prompt for credentials. The DataOS username and API key should be entered.
 
 
-<img src="/resources/lens/bi_integration/powerbi4.png" alt="Superset Configuration" style="max-width: 40rem; height: auto; border: 1px solid #000;">
+<img src="/resources/lens/bi_integration/powerbi4.png" alt="Power BI Configuration" style="max-width: 40rem; height: auto; border: 1px solid #000;">
 
 
 **Step 6 Connect to DataOS:** Click on the connect button. A popup will appear. Click Ok.
 
 
 
-<img src="/resources/lens/bi_integration/powerbi6.png" alt="Superset Configuration" style="max-width: 40rem; height: auto; border: 1px solid #000;">
+<img src="/resources/lens/bi_integration/powerbi6.png" alt="Power BI Configuration" style="max-width: 40rem; height: auto; border: 1px solid #000;">
 
 
 **Step 7 Access tables with dimensions and measures:** Upon successful connection, tables and views will be accessible, displaying dimensions and measures.
 
 
 
-<img src="/resources/lens/bi_integration/powerbi7.png" alt="Superset Configuration" style="max-width: 40rem; height: auto; border: 1px solid #000;">
+<img src="/resources/lens/bi_integration/powerbi7.png" alt="Power BI Configuration" style="max-width: 40rem; height: auto; border: 1px solid #000;">
 
 
 ## Important considerations
