@@ -99,7 +99,7 @@ service:
 
 The Stack-specific Section allows you to specify the desired stack for executing your service. Depending on your requirements, you can choose from the following supported stacks:
 
-- [Benthos Stack](/resources/stacks/bento/): The Benthos stack provides advanced capabilities for stream data processing and analysis.
+- [Bento Stack](/resources/stacks/bento/): The Bento stack provides advanced capabilities for stream data processing and analysis.
 
 - [Container Stack](/resources/stacks/container/): The Container stack offers a powerful environment for hosting web-appliation, and custom Docker images atop DataOS.
 

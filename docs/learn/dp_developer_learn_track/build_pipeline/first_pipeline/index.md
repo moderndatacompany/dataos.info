@@ -50,7 +50,7 @@ DataOS provides several pre-defined stacks to handle various processing needs. B
 | --- | --- |
 | **Scanner** | Extracting metadata from source system |
 | **Flare** | Batch data processing. ETL. |
-| **Benthos** | Stream processing. |
+| **Bento** | Stream processing. |
 | **Soda** | Data quality checks. |
 | **CLI Stack** | For automated CLI command execution |
 |  |  |

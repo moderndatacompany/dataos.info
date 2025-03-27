@@ -42,7 +42,7 @@ Apart from the external applications, the Scanner stack can also extract metadat
 
 The Scanner job connects with the following DataOS components and stores the extracted metadata to Metis DB:
 
-- **Collation Service**: To scan and publish metadata related to data pipelines, including workflow information, execution history, and execution states. It also collects metadata for historical data such as pods and logs, as well as data processing stacks like Flare and Benthos, capturing job information and source-destination relationships.
+- **Collation Service**: To scan and publish metadata related to data pipelines, including workflow information, execution history, and execution states. It also collects metadata for historical data such as pods and logs, as well as data processing stacks like Flare and Bento, capturing job information and source-destination relationships.
 - **Gateway Service**: To retrieve information from data profiles (descriptive statistics for datasets) and data quality tables (quality checks for your data along with their pass/fail status). It also scans data related to query usage, enabling insights into heavy datasets, popular datasets, and associations between datasets.
 - **Heimdall**: To scan and retrieve information about users in the DataOS environment, including their descriptions and profile images. This user information is accessible through the Metis UI.
 - **Pulsar** **Service**: To keep listening to the messages being published on it by various other services and stacks within the system.

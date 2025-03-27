@@ -1,34 +1,57 @@
-# Bloblang Walkthrough
+# Bloblang Overview
 
-[Bloblang](../components/processors/bloblang.md) is the most advanced mapping language that you'll learn from this walkthrough (probably). It is designed for readability, the power to shape even the most outrageous input documents, and to easily make erratic schemas bend to your will. Bloblang is the native mapping language of Bento, but it has been designed as a general purpose technology ready to be adopted by other tools.
+[Bloblang](../components/processors/bloblang.md) is an advanced mapping language designed for readability and flexibility in transforming complex input documents. It enables schema modifications and data restructuring within Bento and is intended for adoption by other tools as a general-purpose mapping language.
 
-In this walkthrough you'll learn how to make new friends by mapping their documents, and lose old friends as they grow jealous and bitter of your mapping abilities. There are a few ways to execute Bloblang but the way we'll do it in this guide is to pull a Bento docker image and run the command bento blobl server, which opens up an interactive Bloblang editor:
+In this guide, Bloblang is executed using a Bento Docker image. First pull the Bento's latest image using the following command:
 
-```shell
+```bash
 docker pull ghcr.io/warpstreamlabs/bento:latest
-docker run -p 4195:4195 --rm ghcr.io/warpstreamlabs/bento blobl server --no-open --host 0.0.0.0
+
+# Expected Output
+latest: Pulling from warpstreamlabs/bento
+Digest: sha256:2c5a0b3f88ab5e929c17423d967d6d3fab41b11f5464b8aedfd8f36f761e7bf3
+Status: Image is up to date for ghcr.io/warpstreamlabs/bento:latest
+ghcr.io/warpstreamlabs/bento:latest
 ```
+Now use the following command to runs the interactive Bloblang editor:
+```bash
 
-<aside style="padding:15px; border-radius:5px;">
+docker run -p 4195:4195 --rm ghcr.io/warpstreamlabs/bento blobl server --no-open --host 0.0.0.0
 
-**ALTERNATIVES**
+# Expected Output 
+2025/03/25 13:00:40 Serving at: http://0.0.0.0:4195
 
-For alternative Bento installation options check out the getting started guide.
-</aside>
+```
+Next, open a browser and navigate to `http://localhost:4195`.  
 
-Next, open your browser at http://localhost:4195 and you should see an app with three panels, the top-left is where you paste an input document, the bottom is your Bloblang mapping and on the top-right is the output.
+<center>
+
+<img src="/resources/stacks/bento/bloblang/bloblang_editor.png" style="width:50rem; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);" />
+
+<i>Placement of Bento stack within DataOS</i>
+
+</center>
+
+The interface consists of three panels: 
+
+- **Top-left**: Paste the input document.  
+- **Bottom**: Define the Bloblang mapping.  
+- **Top-right**: View the transformed output.
+
 
 ## Your first assignment
 
-The primary goal of a Bloblang mapping is to construct a brand new document by using an input document as a reference, which we achieve through a series of assignments. Bloblang is traditionally used to map JSON documents and that's mostly what we'll be doing in this walkthrough. The first mapping you'll see when you open the editor is a single assignment:
+The primary function of a Bloblang mapping is to generate a new document using an input document as a reference. This is achieved through a series of assignments. Bloblang is primarily used for mapping JSON documents, which will be the focus of this walkthrough.
 
-```yaml
+Upon opening the editor, the initial mapping displayed consists of a single assignment:
+
+```go
 root = this
 ```
 
-On the left-hand side of the assignment is our assignment target, where root is a keyword referring to the root of the new document being constructed. On the right-hand side is a query which determines the value to be assigned, where this is a keyword that refers to the context of the mapping which begins as the root of the input document.
+In a Bloblang assignment, the left-hand side represents the assignment target, where root is a keyword referring to the root of the newly constructed document. The right-hand side contains a query that determines the assigned value, with this acting as a reference to the current context, which initially corresponds to the root of the input document.
 
-As you can see the input document in the editor begins as a JSON object {"message":"hello world"}, and the output panel should show the result as:
+Given an input JSON document:
 
 ```json
 {
@@ -36,14 +59,16 @@ As you can see the input document in the editor begins as a JSON object {"messag
 }
 ```
 
-Which is a (neatly formatted) replica of the input document. This is the result of our mapping because we assigned the entire input document to the root of our new thing. However, you won't get far in life by trapping yourself in the past, let's create a brand new document by assigning a fresh object to the root:
+This output is a formatted replica of the input document because the entire input was assigned to the `root` of the new document. To create a completely new document, a fresh object must be assigned to `root`:  
 
-```yaml
+```go
 root = {}
 root.foo = this.message
 ```
 
-Bloblang supports a bunch of literal types, and the first line of this mapping assigns [an empty object literal](../bloblang.md) to the root. The second line then creates a new field foo on that object by assigning it the value of message from the input document. You should see that our output has changed to:
+Bloblang supports multiple literal types. In this mapping, the first line assigns an empty object literal to root. The second line creates a new field, foo, by assigning it the value of message from the input document.
+
+The resulting output should appear as:
 
 ```json
 {
@@ -51,9 +76,9 @@ Bloblang supports a bunch of literal types, and the first line of this mapping a
 }
 ```
 
-In Bloblang, when the path that we assign to contains fields that are themselves unset then they are created as empty objects. This rule also applies to root itself, which means the mapping:
+In Bloblang, if the assigned path contains fields that are unset, they are automatically created as empty objects. This rule applies to `root` as well, meaning the following mapping:  
 
-```yaml
+```go
 root.foo.bar = this.message
 root.foo."buz me".baz = "I like mapping"
 ```
@@ -71,19 +96,20 @@ Will automatically create the objects required to produce the output document:
 }
 ```
 
-
-Also note that we can use quotes in order to express path segments that contain symbols or whitespace. Great, let's move on quick before our self-satisfaction gets in the way of progress.
+Quotes can be used to define path segments that contain symbols or whitespace. This ensures accurate field referencing within mappings.
 
 ## Basic Methods and Functions
 
-Nothing is ever good enough for you, why should the input document be any different? Usually in our mappings it's necessary to mutate values whilst we map them over, this is almost always done with [methods](../bloblang/methods.md), of which there are many. To demonstrate we're going to change our mapping to uppercase the field message from our input document:
+In Bloblang mappings, values often need to be modified during transformation. This is typically achieved using methods. The following example demonstrates how to apply a method to convert the `message` field from the input document to uppercase:  
 
-```yaml
+```go
 root.foo.bar = this.message.uppercase()
 root.foo."buz me".baz = "I like mapping"
 ```
 
-As you can see the syntax for a method is similar to many languages, simply add a dot on the target value followed by the method name and arguments within brackets. With this method added our output document should look like this:
+The syntax for applying a method follows a common pattern found in many programming languages: a dot (`.`) is added to the target value, followed by the method name and any required arguments within parentheses.  
+
+With this method applied, the output document looks like:  
 
 ```json
 {
@@ -96,35 +122,48 @@ As you can see the syntax for a method is similar to many languages, simply add 
 }
 ```
 
-Since the result of any Bloblang query is a value you can use methods on anything, including other methods. For example, we could expand our mapping of message to also replace WORLD with EARTH using the replace_all method:
+Since a Bloblang query always returns a value, methods can be applied to any query result, including the output of other methods. For example, the mapping can be extended to replace `"WORLD"` with `"EARTH"` in the `message` field using the `replace_all` method:  
 
-```yaml
+```go
 root.foo.bar = this.message.uppercase().replace_all("WORLD", "EARTH")
 root.foo."buz me".baz = "I like mapping"
 ```
+With this method applied, the output document looks like:  
 
-As you can see this method required some arguments. Methods support both nameless (like above) and named arguments, which are often literal values but can also be queries themselves. For example try out the following mapping using both named style and a dynamic argument:
+```json
+{
+  "foo": {
+    "bar": "HELLO EARTH",
+    "buz me": {
+      "baz": "I like mapping"
+    }
+  }
+}
+```
 
-```yaml
+Some methods require arguments, which can be provided in nameless or named styles. Arguments are often literal values but can also be dynamic queries. The following mapping demonstrates the use of both named arguments and a dynamic argument:  
+
+
+```go
 root.foo.bar = this.message.uppercase().replace_all(old: "WORLD", new: this.message.capitalize())
 root.foo."buz me".baz = "I like mapping"
 ```
 
-Woah, I think that's the plot to Inception, let's move onto [functions](../bloblang/functions.md). Functions are just boring methods that don't have a target, and there are plenty of them as well. Functions are often used to extract information unrelated to the input document, such as environment variables, or to generate data such as timestamps or UUIDs.
+[Functions](../bloblang/functions.md) in Bloblang operate similarly to methods but do not require a target value. They are commonly used to extract external information, such as environment variables, or generate new data, such as timestamps or UUIDs.  
 
-Since we're completionists let's add one to our mapping:
+The following example demonstrates the addition of a function to the mapping:  
 
-```yaml
+```go
 root.foo.bar = this.message.uppercase().replace_all("WORLD", "EARTH")
 root.foo."buz me".baz = "I like mapping"
 root.foo.id = uuid_v4()
 ```
 
-Now I can't tell you what the output looks like since it will be different each time it's mapped, how fun!
+The output will vary with each execution since the function generates dynamic values.
 
 ### **Deletions**
 
-Everything in Bloblang is an expression to be assigned, including deletions, which is a function deleted(). To illustrate let's create a field we want to delete by changing our input to the following:
+In Bloblang, everything is an expression that can be assigned, including deletions. The `deleted()` function is used to remove fields from the output document. To demonstrate, the input document is modified as follows:  
 
 ```json
 {
@@ -134,9 +173,9 @@ Everything in Bloblang is an expression to be assigned, including deletions, whi
 }
 ```
 
-If we wanted a full copy of this document without the field name then we can assign deleted() to it:
+To create a full copy of the document while removing the `name` field, assign `deleted()` to it:  
 
-```yaml
+```go
 root = this
 root.name = deleted()
 ```
@@ -154,13 +193,19 @@ And it won't be included in the output:
 }
 ```
 
-An alternative way to delete fields is the method without, our above example could be rewritten as a single assignment root = this.without("name"). However, deleted() is generally more powerful and will come into play more later on.
+Another way to remove fields is by using the `without` method. The previous example can be rewritten as a single assignment:  
+
+```go
+root = this.without("name")
+```  
+
+However, `deleted()` offers greater flexibility and will be useful in more advanced cases.
 
 ## Variables
 
-Sometimes it's necessary to capture a value for later, but we might not want it to be added to the resulting document. In Bloblang we can achieve this with variables which are created using the let keyword, and can be referenced within subsequent queries with a dollar sign prefix:
+In Bloblang, variables allow values to be captured for later use without adding them to the resulting document. Variables are defined using the `let` keyword and referenced in subsequent queries with a `$` prefix:  
 
-```yaml
+```go
 let id = uuid_v4()
 root.id_sha1 = $id.hash("sha1").encode("hex")
 root.id_md5 = $id.hash("md5").encode("hex")
@@ -170,21 +215,26 @@ Variables can be assigned any value type, including objects and arrays.
 
 ## Unstructured and Binary Data
 
-So far in all of our examples both the input document and our newly mapped document are structured, but this does not need to be so. Try assigning some literal value types directly to the root, such as a string `root = "hello world"`, or a number `root = 5`.
+Bloblang allows assigning literal value types directly to `root`, such as:  
 
-You should notice that when a value type is assigned to the root the output is the raw value, and therefore strings are not quoted. This is what makes it possible to output data of any format, including encrypted, encoded or otherwise binary data.
+```go
+root = "hello world"
+root = 5
+```  
 
-Unstructured mapping is not limited to the output. Rather than referencing the input document with this, where it must be structured, it is possible to reference it as a binary string with the [function `content`](../bloblang/functions.md), try changing your mapping to:
+When assigning a value type to `root`, the output is returned as a raw value, meaning strings are not quoted. This enables Bloblang to generate outputs in various formats, including encrypted, encoded, or binary data.  
 
-```yaml
+Unstructured mapping also applies to input handling. Instead of referencing the structured input document with `this`, the entire input can be treated as a binary string using the [`content` function](../bloblang/functions.md). Modify the mapping as follows:  
+
+```go
 root = content().uppercase()
 ```
 
-And then put any old gibberish in the input panel, the output panel should be the same gibberish but all uppercase.
+After updating the mapping, enter any arbitrary text in the input panel. The output panel should display the same text but converted to uppercase.
 
 ## Conditionals
 
-In order to play around with conditionals let's set our input to something structured:
+To experiment with conditionals, update the input document to a structured format.
 
 ```json
 {
@@ -197,26 +247,26 @@ In order to play around with conditionals let's set our input to something struc
 }
 ```
 
-In Bloblang all conditionals are expressions, this is a core principal of Bloblang and will be important later on when we're mapping deeply nested structures.
+In Bloblang, all conditionals are expressions. This fundamental principle allows for flexible transformations, especially when working with deeply nested structures.
 
 ### **If Expression**
 
-The simplest conditional is the if expression, where the boolean condition does not need to be in parentheses. Let's create a map that modifies the number of treats our pet receives based on a field:
+The simplest conditional in Bloblang is the `if` expression, where the boolean condition does not require parentheses. The following mapping modifies the number of treats a pet receives based on a field:  
 
-```yaml
+```go
 root = this
 root.pet.treats = if this.pet.is_cute {
   this.pet.treats + 10
 }
 ```
 
-Try that mapping out and you should see the number of treats in the output increased to 15. Now try changing the input field pet.is_cute to false and the output treats count should go back to the original 5.
+Testing the mapping with `pet.is_cute` set to `true` should increase the `treats` count to 15. Changing `pet.is_cute` to `false` will revert `treats` to its original value of 5.  
 
-When a conditional expression doesn't have a branch to execute then the assignment is skipped entirely, which means when the pet is not cute the value of pet.treats is unchanged (and remains the value set in the root = this assignment).
+If a conditional expression lacks an `else` branch, the assignment is skipped, preserving the existing value from `root = this`.  
 
-We can add an else block to our if expression to remove treats entirely when the pet is not cute:
+To remove treats entirely when `pet.is_cute` is `false`, an `else` block can be added:  
 
-```yaml
+```go
 root = this
 root.pet.treats = if this.pet.is_cute {
   this.pet.treats + 10
@@ -229,9 +279,9 @@ This is possible because field deletions are expressed as assigned values create
 
 ### **Match Expression**
 
-Another conditional expression is match which allows you to list many branches consisting of a condition and a query to execute separated with =>, where the first condition to pass is the one that is executed:
+Another conditional expression in Bloblang is `match`, which enables multiple branches. Each branch consists of a condition followed by `=>` and the corresponding query to execute. The first matching condition determines the executed branch.
 
-```yaml
+```go
 root = this
 root.pet.toys = match {
   this.pet.treats > 5 => this.pet.treats - 5,
@@ -242,9 +292,11 @@ root.pet.toys = match {
 }
 ```
 
-Try executing that mapping with different values for pet.type and pet.treats. Match expressions can also specify a new context for the keyword this which can help reduce some of the boilerplate in your boolean conditions. The following mapping is equivalent to the previous:
+Execute the mapping with different values for `pet.type` and `pet.treats` to observe how the `match` expression selects the appropriate branch.  
 
-```yaml
+`match` expressions can also redefine the context for `this`, reducing redundant references in boolean conditions. The following mapping achieves the same logic as the previous one but with a more concise structure:  
+
+```go
 root = this
 root.pet.toys = match this.pet {
   this.treats > 5 => this.treats - 5,
@@ -255,9 +307,9 @@ root.pet.toys = match this.pet {
 }
 ```
 
-Your boolean conditions can also be expressed as value types, in which case the context being matched will be compared to the value:
+Boolean conditions in a `match` expression can also be expressed as value types. In this case, the matched context is directly compared to the specified value.
 
-```yaml
+```go
 root = this
 root.pet.toys = match this.pet.type {
   "cat" => 3,
@@ -270,9 +322,9 @@ root.pet.toys = match this.pet.type {
 
 ## Error Handling
 
-Are you feeling relaxed? Well don't, because in the world of mapping anything can happen, at ANY TIME, and there are plenty of ways that a mapping can fail due to variations in the input data. Are you feeling stressed? Well don't, because Bloblang makes handling errors easy.
+Errors in Bloblang can occur due to variations in input data. When errors are not handled, unexpected failures may disrupt the mapping process.  
 
-First, let's take a look at what happens when errors aren't handled, change your input to the following:
+To observe this behavior, update the input document as follows:  
 
 ```json
 {
@@ -281,19 +333,21 @@ First, let's take a look at what happens when errors aren't handled, change your
 }
 ```
 
-And change your mapping to something simple like a number comparison:
+Update the mapping to a simple number comparison to observe how unhandled errors behave:  
 
-```yaml
+```go
 root.in_trouble = this.angry_peasants > this.palace_guards
 ```
 
-Uh oh! It looks like our canvasser was too lazy and our angry_peasants count was incorrectly set for this document. You should see an error in the output window that mentions something like cannot compare types string (from field this.angry_peasants) and number (from field this.palace_guards), which means the mapping was abandoned.
+When an error occurs due to a type mismatch, Bloblang abandons the mapping and returns an error message, such as:  
 
-So what if we want to try and map something, but don't care if it fails? In this case if we are unable to compare our angry peasants with palace guards then I would still consider us in trouble just to be safe.
+```bash
+failed assignment (line 1): cannot compare types string (from field `this.angry_peasants`) and number (from field `this.palace_guards`)
+```  
 
-For that we have a special [method `catch`](../bloblang/methods.md), which if we add to any query allows us to specify an argument to be returned when an error occurs. Since methods can be added to any query we can surround our arithmetic with brackets and catch the whole thing:
+To proceed safely despite errors, the [`catch` method](../bloblang/methods.md) can be used. This method allows a fallback value to be specified if an error occurs. Since methods can be applied to any query, the arithmetic operation can be enclosed in brackets and `catch` applied to the entire expression:  
 
-```yaml
+```go
 root.in_trouble = (this.angry_peasants > this.palace_guards).catch(true)
 ```
 
@@ -301,7 +355,7 @@ Now instead of an error we should see an output with in_trouble set to true. Try
 
 One of the powerful features of catch is that when it is added at the end of a series of expressions and methods it will capture errors at any part of the series, allowing you to capture errors at any granularity. For example, the mapping:
 
-```yaml
+```go
 root.abort_mission = if this.mission.type == "impossible" {
   !this.user.motives.contains("must clear name")
 } else {
@@ -331,7 +385,7 @@ But will always return false if any of those errors occur. Try it out with this 
 
 Now try out this mapping:
 
-```yaml
+```go
 root.abort_mission = if (this.mission.type == "impossible").catch(true) {
   !this.user.motives.contains("must clear name").catch(false)
 } else {
@@ -343,13 +397,11 @@ This version is more granular and will capture each of the errors individually, 
 
 ## Validation
 
-I'm worried that I've turned you into some sort of error hating thug, hell-bent on eliminating all errors from existence. However, sometimes errors are what we want. Failing a mapping with an error allows us to handle the bad document in other ways, such as routing it to a dead-letter queue or filtering it entirely.
+Errors can be useful in scenarios where invalid data should be handled separately, such as routing to a dead-letter queue or filtering out bad records. Common Bento error-handling patterns for such cases are covered in the error handling guide.  
 
-You can read about common Bento error handling patterns for bad data in the error handling guide, but the first step is to create the error. Luckily, Bloblang has a range of ways of creating errors under certain circumstances, which can be used in order to validate the data being mapped.
+Bloblang provides multiple ways to create errors for data validation. Several [helper methods](../bloblang/methods.md) simplify field validation and type coercion. Try the following mapping to see them in action:  
 
-There are [a few helper methods](../bloblang/methods.md) that make validating and coercing fields nice and easy, try this mapping out:
-
-```yaml
+```go
 root.foo = this.foo.number()
 root.bar = this.bar.not_null()
 root.baz = this.baz.not_empty()
@@ -363,11 +415,11 @@ With some of these sample inputs:
 {"foo":10,"bar":"hello world","baz":[]}
 ```
 
-However, these methods don't cover all use cases. The general purpose error throwing technique is the [`throw` function](../bloblang/functions.md), which takes an argument string that describes the error. When it's called it will throw a mapping error that abandons the mapping (unless it's caught, psych!)
+However, these methods don't cover all use cases. The general purpose error throwing technique is the [`throw` function](../bloblang/functions.md), which takes an argument string that describes the error. When it's called it will throw a mapping error that abandons the mapping.
 
-For example, we can check the type of a field with the [method `type`](../bloblang/methods.md), and then throw an error if it's not the type we expected:
+The [`type` method](../bloblang/methods.md) can be used to check a field’s data type. If the type does not match the expected value, an error can be triggered. This approach ensures data integrity by validating input before processing.  
 
-```yaml
+```go
 root.foos = if this.user.foos.type() == "array" {
   this.user.foos
 } else {
@@ -384,23 +436,23 @@ Try this mapping out with a few sample inputs:
 
 ## Context
 
-In Bloblang, when we refer to the context we're talking about the value returned with the keyword this. At the beginning of a mapping the context starts off as a reference to the root of a structured input document, which is why the mapping root = this will result in the same document coming out as you put in.
+In Bloblang, the context refers to the value returned by the `this` keyword. Initially, `this` references the root of the input document, which is why `root = this` produces an identical output to the input.  
 
-However, in Bloblang there are mechanisms whereby the context might change, we've already seen how this can happen within a match expression. Another useful way to change the context is by adding a bracketed query expression as a method to a query, which looks like this:
+However, the "context" can change depending on the mapping structure. This has already been demonstrated within a `match` expression. Another way to modify the context is by applying a "bracketed query expression" as a method to a query, which follows this structure:  
 
-```yaml
+```go
 root = this.foo.bar.(this.baz + this.buz)
 ```
 
 Within the bracketed query expression the context becomes the result of the query that it's a method of, so within the brackets in the above mapping the value of this points to the result of this.foo.bar, and the mapping is therefore equivalent to:
 
-```yaml
+```go
 root = this.foo.bar.baz + this.foo.bar.buz
 ```
 
 With this handy trick the throw mapping from the validation section above could be rewritten as:
 
-```yaml
+```go
 root.foos = this.user.foos.(if this.type() == "array" { this } else {
   throw("foos must be an array, but it ain't, what gives?")
 })
@@ -408,19 +460,25 @@ root.foos = this.user.foos.(if this.type() == "array" { this } else {
 
 ### **Naming the Context**
 
-Shadowing the keyword this with new contexts can look confusing in your mappings, and it also limits you to only being able to reference one context at any given time. As an alternative, Bloblang supports context capture expressions that look similar to lambda functions from other languages, where you can name the new context with the syntax <context name> -> <query>, which looks like this:
+Shadowing the `this` keyword with new contexts can make mappings harder to read and limits access to only one context at a time. As an alternative, Bloblang supports **context capture expressions**, which function similarly to lambda expressions in other languages. These expressions allow assigning a name to the new context using the syntax:  
 
-```yaml
+```go
+<context name> -> <query>
+```  
+
+This approach improves readability and flexibility in complex mappings.
+
+```go
 root = this.foo.bar.(thing -> thing.baz + thing.buz)
 ```
 
-Within the brackets we now have a new field thing, which returns the context that would have otherwise been captured as this. This also means the value returned from this hasn't changed and will continue to return the root of the input document.
+Within the brackets, the newly defined field `thing` captures the context that would have otherwise been assigned to `this`. As a result, `this` continues to reference the root of the input document, maintaining access to the original context while allowing more explicit naming within the scoped expression.
 
 ## Coalescing
 
-Being able to open up bracketed query expressions on fields leads us onto another cool trick in Bloblang referred to as coalescing. It's very common in the world of document mapping that due to structural deviations a value that we wish to obtain could come from one of multiple possible paths.
+Opening bracketed query expressions on fields enables **coalescing**, a technique in Bloblang used to handle structural deviations in input data. This is useful when a value may exist in multiple possible paths.  
 
-To illustrate this problem change the input document to the following:
+To try this, update the input document as follows:  
 
 ```json
 {
@@ -433,48 +491,46 @@ To illustrate this problem change the input document to the following:
 }
 ```
 
-Let's say we wish to flatten this structure with the following mapping:
+To flatten the structure, apply the following mapping:  
 
-```yaml
+```go
 root.contents = this.thing.article.contents
 ```
 
-But articles are only one of many document types we expect to receive, where the field contents remains the same but the field article could instead be comment or share. In this case we could expand our map of contents to use a match expression where we check for the existence of article, comment, etc in the input document.
+In cases where the `contents` field exists under different parent fields (`article`, `comment`, or `share`), a `match` expression could be used to check for their existence. However, a more concise approach is to use the "pipe operator (`|`)".  
 
-However, a much cleaner way of approaching this is with the pipe operator (|), which in Bloblang can be used to join multiple queries, where the first to yield a non-null result is selected. Change your mapping to the following:
+In Bloblang, the pipe operator joins multiple queries, selecting the first one that returns a non-null result. Update the mapping as follows:  
 
-```yaml
+```go
 root.contents = this.thing.article.contents | this.thing.comment.contents
 ```
 
-And now try changing the field article in your input document to comment. You should see that the value of contents remains as Some people did some stuff in the output document.
+Modify the input document by changing the `article` field to `comment`. The `contents` value should remain `"Some people did some stuff"` in the output document, demonstrating how the pipe operator selects the first available field.  
 
-Now, rather than write out the full path prefix this.thing each time we can use a bracketed query expression to change the context, giving us more space for adding other fields:
+To simplify the mapping and avoid repeating `this.thing`, a "bracketed query expression" can be used to change the context, allowing for a cleaner structure and easier expansion with additional fields:  
 
-```yaml
+```go
 root.contents = this.thing.(this.article | this.comment | this.share).contents
 ```
 
-And by the way, the keyword this within queries can be omitted and made implicit, which allows us to reduce this even further:
+Also, the keyword this within queries can be omitted and made implicit, which allows to reduce this even further:
 
-```yaml
+```go
 root.contents = this.thing.(article | comment | share).contents
 ```
 
-Finally, we can also add a pipe operator at the end to fallback to a literal value when none of our candidates exists:
+A pipe operator can also be added at the end of the expression to provide a fallback literal value if none of the specified candidates exist. This ensures that `contents` always has a defined value, even when `article`, `comment`, or `share` are missing.
 
 
-```yaml
+```go
 root.contents = this.thing.(article | comment | share).contents | "nothing"
 ```
 
-Neat.
-
 ## Advanced Methods
 
-Congratulations for making it this far, but if you take your current level of knowledge to a map-off you'll be laughed off the stage. What happens when you need to map all of the elements of an array? Or filter the keys of an object by their values? What if the fellowship just used the eagles to fly to mount doom?
+Bloblang provides [advanced methods for manipulating](../bloblang/methods.md) structured data types, enabling operations such as mapping array elements and filtering object keys based on their values. These methods allow for efficient data transformation and handling complex mappings.  
 
-Bloblang offers a bunch of [advanced methods for manipulating](../bloblang/methods.md) structured data types, let's take a quick tour of some of the cooler ones. Set your input document to this list of things:
+To explore these features, update the input document to the following list:
 
 ```json
 {
@@ -504,19 +560,19 @@ Bloblang offers a bunch of [advanced methods for manipulating](../bloblang/metho
 }
 ```
 
-Let's say we wanted to reduce the things in our input document to only those that are cool and where we have enough of them to share with our friends. We can do this with a filter method:
+To filter the input document and retain only the items that are "cool" and available in sufficient quantity, the "`filter` method" can be used. This method evaluates each element based on a specified condition and includes only those that meet the criteria.  
 
-```yaml
+```go
 root = this.things.filter(thing -> thing.is_cool && thing.quantity > this.num_friends)
 ```
 
-Try running that mapping and you'll see that the output is reduced. What is happening here is that the filter method takes an argument that is a query, and that query will be mapped for each individual element of the array (where the context is changed to the element itself). We have captured the context into a field thing which allows us to continue referencing the root of the input with this.
+When the mapping is executed, the output is reduced because the `filter` method applies a query to each element of the array. The context shifts to the current array element during evaluation. By capturing the context into a field (e.g., `thing`), the root of the input remains accessible via `this`, allowing for more flexible referencing within the query.
 
 The [`filter` method](../bloblang/methods.md) requires the query parameter to resolve to a boolean true or false, and if it resolves to true the element will be present in the resulting array, otherwise it is removed.
 
-Being able to express a query argument to be applied to a range in this way is one of the more powerful features of Bloblang, and when mapping complex structured data these advanced methods will likely be a common tool that you'll reach for.
+The ability to apply a query argument across a range is a powerful feature of Bloblang. When working with complex structured data, advanced methods like `filter` and `map_each` become essential.  
 
-Another such method is [`map_each`](../bloblang/methods.md), which allows you to mutate each element of an array, or each value of an object. Change your input document to the following:
+The [`map_each` method](../bloblang/methods.md) enables modification of each element in an array or each value in an object. Update the input document as follows:
 
 ```json
 {
@@ -529,9 +585,9 @@ Another such method is [`map_each`](../bloblang/methods.md), which allows you to
 }
 ```
 
-Here we have an array of talking heads, where each element is a string containing an identifer, a colon, and a comma separated list of their opinions. We wish to map each string into a structured object, which we can do with the following mapping:
+The input consists of an array of strings, where each element contains an identifier, a colon separator, and a comma-separated list of opinions. To transform each string into a structured object, the [`map_each` method](../bloblang/methods.md) can be applied with a mapping that extracts and organizes the components. Use the following mapping:
 
-```yaml
+```go
 root = this.talking_heads.map_each(raw -> {
   "id": raw.split(":").index(0),
   "opinions": raw.split(":").index(1).split(",")
@@ -539,31 +595,28 @@ root = this.talking_heads.map_each(raw -> {
 ```
 
 
-The argument to map_each is a query where the context is the element, which we capture into the field raw. The result of the query argument will become the value of the element in the resulting array, and in this case we return an object literal.
+In the previous mapping, the `map_each` method applies a query where the context is the array element, captured into the field `raw`. The query result defines the transformed structure of each element in the output array.  
 
-In order to separate the identifier from opinions we perform a split by colon on the raw string element and get the first substring with the index method. We then do the split again and extract the remainder, and split that by comma in order to extract all of the opinions to an array field.
+To extract the identifier and opinions, the `split` method is used twice:  
+1. The first part (`index(0)`) retrieves the identifier.  
+2. The second part (`index(1)`) contains the opinions, which are further split by commas to create an array.  
 
-However, one problem with this mapping is that the split by colon is written out twice and executed twice. A more efficient way of performing the same thing is with the bracketed query expressions we've played with before:
+Since the colon-based split operation is performed twice, a more efficient approach uses "bracketed query expressions" to avoid redundancy and improve performance. Update the mapping as follows:
 
-```yaml
+```go
 root = this.talking_heads.map_each(raw -> raw.split(":").(split_string -> {
   "id": split_string.index(0),
   "opinions": split_string.index(1).split(",")
 }))
 ```
-<aside style="padding:15px; border-radius:5px;">
 
-**CHALLENGE!**
-
-Try updating that map so that only opinions that mention Pokemon are kept
-</aside>
-
-Cool. To find more methods for manipulating structured data types check out the [methods page](../bloblang/methods.md).
 
 ## Reusable Mappings
-Bloblang has cool methods, sure, but there's nothing cooler than methods you've made yourself. When the going gets tough in the mapping world the best solution is often to create a named mapping, which you can do with the keyword map:
+Named mappings in Bloblang allow for reusable and modular transformations, improving readability and efficiency. These mappings are defined using the map keyword and can be invoked within other mappings.
 
-```yaml
+Define a named mapping as follows:
+
+```go
 map parse_talking_head {
   let split_string = this.split(":")
 
@@ -574,15 +627,15 @@ map parse_talking_head {
 root = this.talking_heads.map_each(raw -> raw.apply("parse_talking_head"))
 ```
 
-The body of a named map, encapsulated with squiggly brackets, is a totally isolated mapping where root now refers to a new value being created for each invocation of the map, and this refers to the root of the context provided to the map.
+The body of a named map, enclosed in curly brackets, functions as an isolated mapping. Within this scope, root refers to a newly created value for each invocation of the map, while this refers to the root of the provided context.
 
-Named maps are executed with the [method `apply`](../bloblang/methods.md), which has a string parameter identifying the map to execute, this means it's possible to dynamically select the target map.
+Named maps are executed using the apply method, which accepts a string parameter identifying the map to invoke. This allows for dynamic selection of the target map.
 
-As you can see in the above example we were able to use a custom map in order to create our talking head objects without the object literal. Within a named map we can also create variables that exist only within the scope of the map.
+In the provided example, a custom map was used to generate structured objects without relying on object literals. Additionally, named maps support the creation of scoped variables that exist only within the map's execution context.
 
-A cool feature of named mappings is that they can invoke themselves recursively, allowing you to define mappings that walk deeply nested structures. The following mapping will scrub all values from a document that contain the word "Voldemort" (case insensitive):
+A key feature of named mappings is their ability to invoke themselves recursively, enabling transformations on deeply nested structures. The following example demonstrates a mapping that removes all values from a document if they contain the word "Voldemort" (case insensitive):
 
-```yaml
+```go
 map remove_naughty_man {
   root = match {
     this.type() == "object" => this.map_each(item -> item.value.apply("remove_naughty_man")),
@@ -622,15 +675,15 @@ Try running that mapping with the following input document:
 }
 ```
 
-Charlie will be upset but at least we'll be safe.
+Charlie will be upset but at least it's safe.
 
 ## Unit Testing
 
-You are truly a champion of mappings, and you're probably feeling pretty confident right now. Maybe you even have a mapping that you're particularly proud of. Well, I'm sorry to inform you that your mapping is DOOMED, as a mapping without unit tests is like a Twitter session, with the progression of time it will inevitably descend into madness.
+Mappings should be validated with unit tests to ensure their reliability. Without proper testing, mappings can become unmanageable over time.  
 
-However, if you act now there is still time to spare your mapping from this fate, as Bento has it's own [unit testing capabilities](../configurations/unit_testing.md) that you can also use for your mappings. To start with save a mapping into a file called something like naughty_man.blobl, we can use the example above from the reusable mappings section:
+Bento provides [unit testing capabilities](../configurations/unit_testing.md) that can be applied to mappings. To begin, save a mapping in a file, such as `naughty_man.blobl`. The example from the reusable mappings section can be used as a reference:
 
-```yaml
+```go
 map remove_naughty_man {
   root = match {
     this.type() == "object" => this.map_each(item -> item.value.apply("remove_naughty_man")),
@@ -644,7 +697,7 @@ map remove_naughty_man {
 root = this.apply("remove_naughty_man")
 ```
 
-Next, we can define our unit tests in an accompanying YAML file in the same directory, let's call this naughty_man_test.yaml:
+Next, define the unit tests in an accompanying YAML file within the same directory. Name this file `naughty_man_test.yaml`:
 
 ```yaml
 tests:
@@ -680,11 +733,23 @@ tests:
           }
 ```
 
-As you can see we've defined a single test, where we point to our mapping file which will be executed in our test. We then specify an input message which is a reduced version of the document we tried out before, and finally we specify output predicates, which is a JSON comparison against the output document.
+A single test has been defined, referencing the mapping file to be executed. The test includes an input message, which is a simplified version of the previously used document, and output predicates that perform a JSON comparison against the expected output.  
 
-We can execute these tests with bento test ./naughty_man_test.yaml, Bento will also automatically find our tests if you simply run Bento test ./.... You should see an output something like:
+Execute the tests using:  
 
-```yaml
+```bash
+bento test ./naughty_man_test.yaml
+```  
+
+Alternatively, Bento will automatically discover and run all tests with:  
+
+```bash
+bento test ./
+```  
+
+The output should resemble the following:
+
+```bash
 Test 'naughty_man_test.yaml' failed
 
 Failures:
@@ -706,13 +771,10 @@ batch 0 message 0: json_equals: JSON content mismatch
 }
 ```
 
-Because in actual fact our expected output is wrong, I'll leave it to you to spot the error. Once the test is fixed you should see:
+The expected output in the test contains an error. Once corrected, executing the test should produce the following output:
 
-```yaml
+```bash
 Test 'naughty_man_test.yaml' succeeded
 ```
 
-And now our mapping, should we need to expand it in the future, is better protected against regressions. You can read more about the Bento unit test specification, including alternative output predicates, in this document.
-
-Final Words
-That's it for this walkthrough, if you're hungry for more then I suggest you re-evaluate your priorities in life. If you have feedback then please get in touch, despite being terrible people the Bento community are very welcoming.
+With the test in place, any future modifications to the mapping are better protected against regressions. More details on the Bento unit test specification, including alternative output predicates, can be found in the relevant documentation.  

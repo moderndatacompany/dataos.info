@@ -24,7 +24,7 @@ service:
     enabled: true
     path: /test42   # URL for DataOS (topic name)
     noAuthentication: true
-  stack: benthos
+  stack: "bento:3.0"
   logLevel: DEBUG
   tags:
     - service

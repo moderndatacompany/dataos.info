@@ -1,6 +1,6 @@
 # RESOURCE META SECTION
 # Attributes commmon across all DataOS Resources
-name: benthos3-worker-sample # Name of the Worker Resource (mandatory)
+name: bento3-worker-sample # Name of the Worker Resource (mandatory)
 version: v1beta # Version of the Worker Resource (mandatory)
 type: worker # Type of the resource, in this case, it is a worker (optional)
 tags:

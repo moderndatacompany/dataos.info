@@ -1,8 +1,8 @@
 # Output
 
-An output is a sink where we wish to send our consumed data after applying an optional array of processors. Only one output is configured at the root of a Benthos config. However, the output can be a broker which combines multiple outputs under a chosen brokering pattern or a switch that is used to multiplex against different outputs. 
+An output is a sink where we wish to send our consumed data after applying an optional array of processors. Only one output is configured at the root of a Bento config. However, the output can be a broker which combines multiple outputs under a chosen brokering pattern or a switch that is used to multiplex against different outputs. 
 
-Benthos outputs apply back pressure to components upstream. This means if your output target starts blocking traffic Benthos will gracefully stop consuming until the issue is resolved.
+Bento outputs apply back pressure to components upstream. This means if your output target starts blocking traffic Bento will gracefully stop consuming until the issue is resolved.
 
 An output config section looks like this:
 
@@ -28,6 +28,6 @@ Outputs have an optional field `label` that can uniquely identify them in obse
 |Name|Category|
 |---|---|
 |[Fastbase Depot](/resources/stacks/bento/components/output/fastbase_depot/)|Depot, Pulsar|
-|[kafka](/resources/stacks/bento/components/output/kafka_depot/)|Depot, Kafka|
+|[kafka Depot](/resources/stacks/bento/components/output/kafka_depot/)|Depot, Kafka|
 |[Kafka](/resources/stacks/bento/components/output/kafka/)|Kafka|
 |[Pulsar](/resources/stacks/bento/components/output/pulsar/)|Pulsar|

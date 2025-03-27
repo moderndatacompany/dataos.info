@@ -1,6 +1,6 @@
 # Stack orchestrated by a Service declared using a Config Template
 
-The following YAML manifest declares the Benthos Stack and orchestrates it via a Service as a containerized resource:
+The following YAML manifest declares the Bento Stack and orchestrates it via a Service as a containerized resource:
 
 ```yaml
 name: "bento-v4"
@@ -17,7 +17,7 @@ stack:
   image:
     registry: docker.io
     repository: rubiklabs
-    image: benthos4
+    image: bento4
     tag: 0.0.20
     auth:
       imagePullSecret: dataos-container-registry
