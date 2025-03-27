@@ -239,7 +239,7 @@ Type: `object`
 
 ### `sasl.mechanism`
 
-The SASL authentication mechanism, if left empty SASL authentication is not used. Warning: SCRAM based methods within Benthos have not received a security audit.
+The SASL authentication mechanism, if left empty SASL authentication is not used. Warning: SCRAM based methods within Bento have not received a security audit.
 
 Type: `string`Default: `"none"`
 
