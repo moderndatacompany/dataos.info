@@ -1,6 +1,6 @@
 # Core Concepts
 
-## Key features of Benthos
+## Key features of Bento
 
 Bento offers a wide range of features that make it an ideal solution for stream processing, including:
 
