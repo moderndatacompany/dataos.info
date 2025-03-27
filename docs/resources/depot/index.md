@@ -78,7 +78,7 @@ For a simple file storage system, "Collection" can be analogous to "Folder," and
 Once a Depot is created, all members of an organization gain secure access to datasets within the associated source system. The Depot not only facilitates data access but also assigns **default** [Access Policies](/resources/policy/) to ensure data security. Moreover, users have the flexibility to define and utilize custom [Access Policies](/resources/policy/) for the Depot and [Data Policies](/resources/policy/) for specific datasets within the Depot.
 
 <aside class="callout">
- 🗣️ Depot provides 'access' to data, meaning that data remains within the source system and is neither moved nor duplicated. However, DataOS offers multiple Stacks such as Flare, Benthos, etc. to perform ingestion, querying, syndication, and copying if the need arises.
+ 🗣️ Depot provides 'access' to data, meaning that data remains within the source system and is neither moved nor duplicated. However, DataOS offers multiple Stacks such as Flare, Bento, etc. to perform ingestion, querying, syndication, and copying if the need arises.
 
 </aside>
 
@@ -516,9 +516,9 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
 
 ### **Work with Stacks**
 
-Depots are compatible with different Stacks in DataOS. [Stacks](/resources/stacks/) provide distinct approaches to interact with the system and enable various programming paradigms in DataOS. Several Stacks are available that can be utilized with Depots, including [Scanner](/resources/stacks/scanner/) for introspecting Depots, [Flare](/resources/stacks/flare/) for data ingestion, transformation, syndication, etc., [Benthos](/resources/stacks/bento/) for stream processing and [Data Toolbox](/resources/stacks/data_toolbox/) for managing [Icebase](/resources/depot/icebase/) DDL and DML. 
+Depots are compatible with different Stacks in DataOS. [Stacks](/resources/stacks/) provide distinct approaches to interact with the system and enable various programming paradigms in DataOS. Several Stacks are available that can be utilized with Depots, including [Scanner](/resources/stacks/scanner/) for introspecting Depots, [Flare](/resources/stacks/flare/) for data ingestion, transformation, syndication, etc., [Bento](/resources/stacks/bento/) for stream processing and [Data Toolbox](/resources/stacks/data_toolbox/) for managing [Icebase](/resources/depot/icebase/) DDL and DML. 
 
-[Flare](/resources/stacks/flare/) and [Scanner](/resources/stacks/scanner/) Stacks are supported by all Depots, while [Benthos](/resources/stacks/bento/), the stream-processing Stack, is compatible with read/write operations from streaming Depots like [Fastbase](/resources/depot/fastbase/) and Kafka Depots.
+[Flare](/resources/stacks/flare/) and [Scanner](/resources/stacks/scanner/) Stacks are supported by all Depots, while [Bento](/resources/stacks/bento/), the stream-processing Stack, is compatible with read/write operations from streaming Depots like [Fastbase](/resources/depot/fastbase/) and Kafka Depots.
 
 The UDL references are used as addresses for your input and output datasets within the manifest configuration file.
 
