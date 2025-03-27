@@ -632,7 +632,7 @@ INFO[0002] 🔍 workflow...complete
 
             NAME            | VERSION |   TYPE   | WORKSPACE |   STATUS   |  RUNTIME  |       OWNER         
 ----------------------------|---------|----------|-----------|------------|-----------|----------------------
-  quality-checks-test-cases | v1beta1 | workflow |  public   |   active   | succeeded | rakeshvishvakarma21  
+  quality-checks-test-cases | v1beta1 | workflow |  public   |   active   | succeeded | iamgroot  
 ```
 
 ### **Get Runtime**
@@ -678,11 +678,10 @@ INFO[0002] 🔍 workflow...complete
 
             NAME            | VERSION |   TYPE   | WORKSPACE |     TITLE      |        OWNER         
 ----------------------------|---------|----------|-----------|----------------|----------------------
-  quality-checks-test-cases | v1beta1 | workflow | public    | Quality-Checks | rakeshvishvakarma21  
+  quality-checks-test-cases | v1beta1 | workflow | public    | Quality-Checks | iamgroot  
 
            JOB NAME          |   STACK    |        JOB TITLE        |    JOB DEPENDENCIES     
 -----------------------------|------------|-------------------------|-------------------------
-  dataos-tool-quality-checks | toolbox    |                         | quality-checks-summary  
   quality-checks-summary     | flare:1.0  | quality-checks datasets |                         
   system                     | dataos_cli | System Runnable Steps   |                         
 

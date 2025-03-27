@@ -51,7 +51,7 @@ workflow:
         tags:
           - Connect
           - NY-Taxi
-        stack: flare:5.0
+        stack: flare:6.0
         compute: runnable-default
         stackSpec:
           job:
@@ -63,8 +63,8 @@ workflow:
                 isStream: false
             logLevel: INFO
             outputs:
-              - name: output01
-                depot: dataos://icebase:raw01?acl=rw
+              - name: ny_taxi_ts
+                dataset: dataos://icebase:raw01?acl=rw
                 format: iceberg
                 options:
                   saveMode: overwrite

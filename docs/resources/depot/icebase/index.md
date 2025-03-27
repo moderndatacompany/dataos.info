@@ -17,7 +17,7 @@ Data developers can create multiple Icebase depots to store and manage data, ena
 
 A mechanism is required to effectively manage and inspect datasets stored in Icebase or any other depot utilizing the Iceberg format. The management APIs serve this purpose by providing support for various Data Definition Language (schema) related tasks.
 
-A set of APIs have been implemented to facilitate these operations, allowing for adding and removing columns, managing dataset metadata, listing snapshots, and more. The `dataset` command comes into the picture here as it enables apply data toolbox commands.
+A set of APIs have been implemented to facilitate these operations, allowing for adding and removing columns, managing dataset metadata, listing snapshots, and more. The `dataset` command comes into the picture.
 
 **Observing changes on the Workbench**
 

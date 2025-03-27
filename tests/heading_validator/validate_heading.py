@@ -38,7 +38,7 @@ def validate_headings(file_path, exceptions=[]):
 
 # Example usage
 exceptions = ["Cluster", "Lakehouse", "Monitor", "Pager", "Monitor", "Secret", "Service", "Worker", "Workflow", "Bundle", "Compute", "Depot", "Instance Secret", "Operator", "Policy", "Stack"]  # Add your exceptions here
-directory = '/home/piyushjoshi/modern_office/docX/reference_doc/development/dataos.info/docs'  # Update this path
+directory = '/home/iamgroot/modern_office/docX/reference_doc/development/dataos.info/docs'  # Update this path
 
 for root, dirs, files in os.walk(directory):
     for file in files:
