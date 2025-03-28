@@ -1,37 +1,37 @@
 version: v1
-name: read-elasticsearch-01
+name: elasticsearch-read
 type: workflow
 tags:
-  - elasticsearch
+  - eventhub
   - read
-description: this jobs reads data from elasticsearch and writes to icebase
+description: this jobs reads data from elasticsearch and writes to lakehouse
 workflow:
   dag:
-    - name: elasticsearch-read-b-01
+    - name: elasticsearch-read
       title: read data from elasticsearch
       description: read data from elasticsearch
       spec:
         tags:
           - Connect
-        stack: flare:5.0
+        stack: flare:6.0
         compute: runnable-default
-        stackSpec:
+        flare:
           job:
             explain: true
             inputs:
               - name: input
-                dataset:  dataos://elasticsearch:default/elastic_write
+                dataset: dataos://sanityelasticsearch:default/elasticsearch_write_csv_13
                 format: elasticsearch
                 options:
                   es.nodes.wan.only: 'true'
             logLevel: INFO
             outputs:
               - name: output02
-                dataset: dataos://icebase:sample/read_elasticsearch?acl=rw
+                dataset: dataos://lakehouse:smoketest/elasticsearch_read_csv_13?acl=rw
                 format: iceberg
                 options:
                   saveMode: append
             steps:
               - sequence:
                   - name: output02
-                    sql: SELECT * FROM input
+                    sql: SELECT * FROM input limit 10

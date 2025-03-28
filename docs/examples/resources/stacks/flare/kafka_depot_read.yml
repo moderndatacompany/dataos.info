@@ -8,29 +8,24 @@ workflow:
   dag:
     - name: sample-read-kafka-01
       title: read kafka sample data
-      description: This job ingest cloudevent data
+      #description: This job ingest cloudevent data into
       spec:
-        stack: flare:5.0
+        stack: flare:6.0
         compute: runnable-default
-        stackSpec:
+        flare:
           job:
             explain: true
-            logLevel: INFO
-              #triggerDuration: "20 seconds"
+            #triggerDuration: "20 seconds"
             inputs:
               - name: sample_data
-                dataset: dataos://kafka1:default/random_users_ktok03
-                format: KafkaAvro
+                dataset: dataos://sanitykafka:default/write_kafka_12
+                format: kafkajson
                 isStream: false
-                options:
-                  startingOffsets: earliest
-                  kafka.sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="admin" password="0b9c4dd98ca9cc944160";
-                  kafka.sasl.mechanism: PLAIN
-                  kafka.security.protocol: SASL_PLAINTEXT
+            logLevel: INFO
             outputs:
               - name: finalDf
-                dataset: dataos://icebase:sample_datasets/sample_dataset_kafkaavro?acl=rw
-                format: Iceberg
+                dataset: dataos://lakehouse:smoketest/read_kafka_json_12?acl=rw
+                format: iceberg
                 options:
                   saveMode: overwrite
                   iceberg:
@@ -39,15 +34,5 @@ workflow:
                       history.expire.max-snapshot-age-ms: "7200000"
             steps:
               - sequence:
-                - name: finalDf
-                  sql: SELECT * FROM sample_data
-
-    - name: dataos-tool-read-sample-dataset
-      spec:
-        stack: toolbox
-        compute: runnable-default
-        stackSpec:
-          dataset: dataos://icebase:sample_datasets/sample_dataset?acl=rw
-          action:
-            name: set_version
-            value: latest
+                  - name: finalDf
+                    sql: SELECT * FROM sample_data limit 10
