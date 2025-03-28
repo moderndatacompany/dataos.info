@@ -1,56 +1,61 @@
 version: v1
-name: standalone-read-bigquery
+name: wf-flare-functions-change-case-04
 type: workflow
 tags:
-  - standalone
-  - readJob
-  - bigquery
-description: Sample job
+  - dataos:resources:workflow
+description:  The workflow transforms and cleans data from  source, ensuring it aligns with Lakehouse schema standards. After transformations, the data is ingested into Lakehouse, enabling reliable access for analytics and downstream applications.
 workflow:
+  title: Policy Details Data Ingestion 
   dag:
-    - name: city-bigquery-read-01
-      title: Sample Transaction Data Ingester
-      description: The job ingests customer data from Bigquery to file source
+    - name: wf-policy-details-ingestion
+      title: Policy Details Data Ingestion Process
+      description: The DAG for Data Transformation and Ingestion automates the process of transforming and cleaning data before loading it into the target system, ensuring it is ready for analysis and reporting.
       spec:
         tags:
-          - standalone
-          - readJob
-          - bigquery
-        stack: flare:3.0
+          # - Domain.Sales
+        stack: flare:6.0
         compute: runnable-default
-        tier: connect
-        flare:
+        stackSpec:
+          driver:
+            coreLimit: 1050m
+            cores: 1
+            memory: 1200m
+          executor:
+            coreLimit: 1400m
+            cores: 1
+            instances: 1
+            memory: 1600m 
           job:
-            explain: true
+            explain: true  
+            inputs:
+              - name: input_data
+                dataset: dataos://lakehouse:retail/customer?acl=rw
+                format: Iceberg
+
             logLevel: INFO
-
-            inputs: # Read from Bigquery
-              - name: transactions_connect
-                inputType: bigquery
-                bigquery:
-                  table: transactions_standalone_09_nov
-                  projected: <project-id>
-                  dataset: <dataset-name>
-
-            outputs: # Write to Local System
+            outputs:
               - name: finalDf
-                outputType: file
-                file:
-                  schemaName: retail
-                  tableName: transactions_standalone_readbq02
-                  format: Iceberg
-                  warehousePath: /data/examples/dataout/bigquerydata
-                  options:
-                    saveMode: append
-
+                dataset: dataos://lakehouse:sample/flare_function_testing?acl=rw
+                format: Iceberg
+                options:
+                  saveMode: overwrite
+                  iceberg:                              
+                    properties:
+                      write.format.default: parquet
+                      write.metadata.compression-codec: snappy
+                title: Policy Details Data Transformations
+               
             steps:
               - sequence:
                   - name: finalDf
-                    sql: SELECT * FROM patients 
+                    sql: 
+                      SELECT 
+                          *
+                      from input_data
 
                     functions:
+
                       - name: change_case 
                         case: lower
-                        column: patients
+                        column: mailing_street
 
-       
