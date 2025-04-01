@@ -1,5 +1,6 @@
+# pulsar admin tag required
 version: v1
-name: read-write-pulsar
+name: write-pulsar-01
 type: workflow
 tags:
   - pulsar
@@ -13,21 +14,25 @@ workflow:
       spec:
         tags:
           - Connect
-        stack: flare:5.0
+        stack: flare:6.0
         compute: runnable-default
-        stackSpec:
+        flare:
           job:
             explain: true
-            logLevel: INFO
             inputs:
               - name: input
                 dataset: dataos://thirdparty01:none/city
                 format: csv
-                isStream: false
+                schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc
+            logLevel: INFO
             outputs:
-              - name: input
-                dataset: dataos://sanitypulsaralok01:default/city_pulsar_01?acl=rw
+              - name: output
+                dataset: dataos://sanitypulsar:default/write_pulsar_12?acl=rw
                 format: pulsar
                 tags:
                   - Connect
                 title: City Data Pulsar
+            steps: 
+              - sequence: 
+                - name: output
+                  sql: SELECT *, date_format (now(), 'yyyyMMddHHmm') AS version, now() AS ts_city FROM input

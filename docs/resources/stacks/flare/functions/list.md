@@ -134,7 +134,8 @@
 
 | Function | Description |
 | --- | --- |
-| `change_case` | The *change_case* function alters the columns case to Lowercase, Uppercase, or Titlecase depending upon the applied lower/upper/title case changes the column values . |
+| `change_case` | The change_case function alters the values in the column to a specified case (Lowercase, Uppercase, or Titlecase), depending on the applied transformation. It does not affect the column name but modifies the data within the column. For example, if the value is 'John Doe' and the function is applied with Uppercase, the value will change to 'JOHN DOE'.
+ |
 
 <div class="grid" markdown>
 
@@ -143,7 +144,7 @@
     ```yaml
       functions:
         - name: change_case 
-          case: {{lower}} 
+          case: {{lower/upper/title}} 
           column: {{asin}} 
     ```
 === "Example"

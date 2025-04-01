@@ -697,7 +697,7 @@ Add multiple images in a single slide! Just copy and edit the below code to add 
 ### enable
 
 ---
-title: Toolbox Stack
+title: <title>
 search:
   boost: 4
 ---
@@ -706,6 +706,6 @@ search:
 ### disable
 
 ---
-title: Toolbox Stack
+title: <title>
 search: false
 ---
