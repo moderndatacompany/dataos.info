@@ -51,7 +51,6 @@ After activation, go to the DataOS homepage. Scroll to the 'Apache Superset' sec
 
 ## Using cURL Command
 
-
 ### **Prerequisites**
 
 - **Curl**: Ensure `curl` is installed on the system. For Windows users, `curl.exe` may be required.
@@ -146,4 +145,4 @@ The setup is complete. Further exploration and analysis can be performed in Supe
 
 ## Governance of model on Superset
 
-The behavior of data policies (e.g., masking) depends on the user who has synced the Superset. The policies applied to the user syncing the Superset will be enforced on all users consuming the datasets from that Superset
+The behavior of data policies (e.g., masking) depends on the user who has synced the Superset. The policies applied to the user syncing the Superset will be enforced on all users consuming the datasets from that Superset.
