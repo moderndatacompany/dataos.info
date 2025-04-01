@@ -5,7 +5,7 @@ tags:
   - Connect
   - read
   - write
-description: Jobs writes data to redshift and reads from it
+description: Jobs reads from redshift
 workflow:
   title: Read redshift
   dag:
@@ -16,23 +16,23 @@ workflow:
         tags:
           - Connect
           - read
-        stack: flare:5.0
+        stack: flare:6.0
         compute: runnable-default
-        stackSpec:
+        flare:
           job:
             explain: true
             inputs:
               - name: cities
-                dataset: dataos://redshift:public/city_01
-                format: Redshift
+                dataset: dataos://sanityredshift:public/redshift_write_12
+                format: redshift
             logLevel: INFO
             outputs:
               - name: output01
-                dataset: dataos://icebase:sample/city_read_redshift?acl=rw
+                dataset: dataos://lakehouse:smoketest/redshift_read_12?acl=rw
                 format: iceberg
                 options:
                   saveMode: append
             steps:
               - sequence:
                 - name: output01
-                  sql: SELECT * FROM cities
+                  sql: SELECT * FROM cities limit 10

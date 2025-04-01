@@ -1,34 +1,34 @@
 version: v1
-name: cnt-city-demo-mysql-01
+name: read-mysql-01
 type: workflow
 tags:
   - Connect
   - read
-description: Jobs writes data to mssql and reads from it
+description: Jobs writes data to mysql and reads from it
 workflow:
-  title: Read MSSQL
+  title: Read mysql
   dag:
-    - name: city-mysql-read
+    - name: mysql-read
       title: Reading data and writing to dataos
       description: This job writes data to dataos
       spec:
         tags:
           - Connect
           - read
-        stack: flare:5.0
+        stack: flare:6.0
         compute: runnable-default
-        stackSpec:
+        flare:
           job:
             explain: true
             inputs:
               - name: city_connect
-                dataset: dataos://sanitymysqlalok01:dataosmysql/city01
+                dataset: dataos://stmysql:mysqldb/mysql_write_csv_12
                 options:
                   driver: com.mysql.cj.jdbc.Driver
             logLevel: INFO
             outputs:
               - name: cities
-                dataset: dataos://icebase:sample/city_from_mysql?acl=rw
+                dataset: dataos://lakehouse:smoketest/mysql_read_csv_12?acl=rw
                 format: Iceberg
                 options:
                   saveMode: overwrite
@@ -42,4 +42,4 @@ workflow:
             steps:
               - sequence:
                 - name: cities
-                  sql: SELECT * FROM city_connect
+                  sql: SELECT * FROM city_connect limit 10

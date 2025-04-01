@@ -1,6 +1,6 @@
 # Superset
 
-The semantic model can be integrated with Superset using the following Ways
+The semantic model can be integrated with Superset using the following ways:
 
 * [Using Data Product Hub(Recommended - GUI based)](/resources/lens/bi_integration/superset#using-data-product-hub): This method provides a user-friendly, graphical interface for integrating the semantic model with Superset.  This approach is ideal for those who prefer an intuitive, no-code setup.
 
@@ -33,9 +33,9 @@ In the setup window, fill in the required credentials:
 
 * **Password**: The corresponding password for this account.
 
-<Info>
+<aside class="callout">
 You may need to consult your DataOS Administrator for the username and password of the Superset.
-</Info>
+</aside>
   
 
 ### **Activate the Data Product**
@@ -148,4 +148,4 @@ The setup is complete. Further exploration and analysis can be performed in Supe
 
 ## Data policies and security
 
-Any data masking, restrictions, or permissions defined by the publisher will automatically be enforced for all viewers of the report, ensuring consistent data security and compliance. However, the behavior of data policies (e.g., masking) depends on who is the user of the Superset.
+The behavior of data policies (e.g., masking) depends on the user who has synced the Superset. The policies applied to the user syncing the Superset will be enforced on all users consuming the datasets from that Superset.

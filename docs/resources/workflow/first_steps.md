@@ -150,8 +150,6 @@ The Stack-specific Section allows you to specify the desired [Stack](/resources/
 
 - [Container Stack](/resources/stacks/container/): The Container stack offers a powerful environment for hosting web-application, and custom Docker images atop DataOS.
 
-<!-- - [Data Toolbox Stack](/resources/stacks/data_toolbox/): The Data Toolbox stack provides a set of utilities for Depots storing Iceberg datasets, for e.g. Icebase. -->
-
 - [Scanner Stack](/resources/stacks/scanner/): The Scanner Stack provides metadata ingestion capabilities from a source.
 
 For more detailed instructions on setting up and customizing the Stack-specific Section attributes according to your needs, refer to the respective documentation of [Flare](/resources/stacks/flare/configurations/), [Container](/resources/stacks/container/#container-stack-section), [Scanner](/resources/stacks/scanner/field_ref/) Stack. Each Stack has its unique attributes that can enhance the functionality of your job.
