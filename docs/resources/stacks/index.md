@@ -80,11 +80,6 @@ DataOS has two distinct resources that supports its interoperability and extensi
 
 The DataOS Command-Line Interface (CLI), known as `dataos-ctl`, also serves as a Stack within the DataOS ecosystem. It enables users to programmatically execute CLI commands through a YAML manifest. To learn more about CLI Stack, refer to the link: [CLI](/resources/stacks/cli_stack/).
 
-
-### **Data Toolbox**
-
-The [Data Toolbox](/resources/stacks/data_toolbox/) Stack provides functionality to update Iceberg metadata versions to the latest available or to any specific version.
-
 ### **Flare**
 
 [Flare](/resources/stacks/flare/) is a powerful declarative Stack designed specifically for large-scale data processing tasks.

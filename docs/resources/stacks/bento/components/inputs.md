@@ -80,7 +80,7 @@ To access specific YAML configurations for each input source, users can refer to
 |[beanstalkd](/resources/stacks/bento/components/inputs/beanstalkd/)|Services|
 |[broker](/resources/stacks/bento/components/inputs/broker/)|Utility|
 |[cassandra](/resources/stacks/bento/components/inputs/cassandra/)|Services|
-|[csv](/resources/stacks/bentoomponents/inputs/csv/)|Local|
+|[csv](/resources/stacks/bento/components/inputs/csv/)|Local|
 |[discord](/resources/stacks/bento/components/inputs/discord/)|Services, Social|
 |[dynamic](/resources/stacks/bento/components/inputs/dynamic/)|Utility|
 |[file](/resources/stacks/bento/components/inputs/file/)|Local|

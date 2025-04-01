@@ -97,7 +97,7 @@ After creating a semantic model, the next step is to explore it by running queri
 GraphQL API enables Lens to deliver data over the HTTP protocol to GraphQL enabled data applications, e.g., most commonly, front-end applications. The following resources provide detailed instructions on how to interact with the Lens GraphQL API:
 
 - To explore the Lens using the GraphQL API click [here](/resources/lens/exploration_of_lens_using_graphql/).
-- To learn about the query format for GraphQL and explore more examples click [here](/resources/lens/graphql_api/graphql_query_format/).
+- To learn about the query format for GraphQL and explore more examples click [here](/resources/lens/graphql_api/graphql_query_example/).
 
 ### **Python**
 

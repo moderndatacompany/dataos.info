@@ -213,15 +213,4 @@ workflow:
           # sparkConf:
           #   - spark.dynamicAllocation.enabled: true 
           #   - spark.shuffle.service.enabled: true
-
-    - name: dt-test13
-      spec:
-        stack: toolbox
-        stackSpec:
-          dataset: dataos://icebase:sample/test13?acl=rw
-          action:
-            name: set_version
-            value: latest
-      dependencies:
-        - test13
 ```

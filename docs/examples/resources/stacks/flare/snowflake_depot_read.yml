@@ -1,11 +1,11 @@
 version: v1
-name: connect-snowflake-read-write-02
+name: snowflake-read-05
 type: workflow
 tags:
   - Connect
   - read
   - write
-description: Jobs writes data to snowflake and reads from it
+description: Jobs reads from snowflake
 workflow:
   title: Connect Snowflake
   dag:
@@ -16,42 +16,29 @@ workflow:
         tags:
           - Connect
           - write
-        stack: flare:5.0
+        stack: flare:6.0
         compute: runnable-default
-        stackSpec:
+        flare:
           job:
             explain: true
             inputs:
-             - name: city_connect
-               dataset: dataos://snowflake01:public/CITY01
-               format: snowflake
-               options:
-                sfWarehouse: WAREHOUSE
+            - name: city_connect
+              dataset: dataos://sanitysnowflake:public/snowflake_write_12
+              format: snowflake
+              options:
+                sfWarehouse: "TMDCWH"
             logLevel: INFO
             outputs:
               - name: cities
-                dataset: dataos://icebase:sample/city_from_snowflake_01?acl=rw
-                format: Iceberg
+                dataset: dataos://lakehouse:smoketest/snowflake_read_12?acl=rw
+                format: iceberg
                 description: City data ingested from bigquery
                 options:
-                  saveMode: overwrite
-                  iceberg:
-                    properties:
-                      write.format.default: parquet
-                      write.metadata.compression-codec: gzip
+                  saveMode: append
                 tags:
                   - Connect
                 title: City Source Data
             steps:
               - sequence:
                 - name: cities
-                  sql: SELECT * FROM city_connect
-    - name: tool-city-snrksh
-      spec:
-      stack: toolbox
-      compute: runnable-default
-      stackSpec:
-        dataset: dataos://icebase:sample/city_snowflake?acl=rw
-        action:
-          name: set_version
-          value: latest
+                  sql: SELECT * FROM city_connect limit 10

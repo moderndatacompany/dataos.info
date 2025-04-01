@@ -9,7 +9,25 @@ The `remove_orphans` [action](/resources/stacks/flare/configurations/#remove_orp
 
 </aside>
 
-### **Syntax for Flare Version `flare:4.0`**
+**Get the list of snapshots by writing the following command**
+
+```bash
+dataos-ctl dataset snapshots -a dataos://icebase:retail/cit
+```
+
+**Expected output**
+
+
+```bash
+
+      SNAPSHOTID      │   TIMESTAMP   │    DATE AND TIME (GMT)     
+──────────────────────┼───────────────┼────────────────────────────
+  7002479430618666161 │ 1740643647492 │ 2025-02-27T08:07:27+00:00  
+  2926095925031493170 │ 1740737372219 │ 2025-02-28T10:09:32+00:00  
+
+```
+
+### **Syntax for Flare Version `flare:6.0`**
 
 ```yaml
 version: v1 
@@ -25,19 +43,19 @@ workflow:
       spec: 
         tags: 
           - orphans
-        stack: flare:4.0 
+        stack: flare:6.0 
         compute: runnable-default 
-        flare: 
+        stackSpec: 
           job: 
             explain: true 
             logLevel: INFO 
             inputs: 
               - name: inputDf 
-                dataset: dataos://icebase:actions/random_users_data 
+                dataset: dataos://icebase:retail/city 
                 format: Iceberg 
             actions: # Flare Action
               - name: remove_orphans # Action Name
                 input: inputDf # Input Dataset Name
                 options: # Options
-                  olderThan: "1674201289720" # Timestamp in Unix Format
+                  olderThan: "1739734172" # Timestamp in Unix Format
 ```

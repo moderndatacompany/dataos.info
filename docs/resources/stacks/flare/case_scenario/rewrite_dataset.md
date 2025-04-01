@@ -5,6 +5,7 @@ DataOS managed depot, Icebase built on top of Iceberg format can compact data fi
 ## Code Snippet
 
 The below code snippet depicts a case scenario where using the `rewrite_dataset` action, we have compacted the dataset to the target file size.
+
 ### **Syntax for Flare Version `flare:6.0`**
 
 ```yaml

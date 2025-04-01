@@ -170,17 +170,4 @@ A YAML configuration file is required to define the Bento stack, specifying inpu
                         tags:
                           - Connect
                         title: Apple Stock Data 
-    
-    # here we run the data tool to bring data into icebase, since its a file system , inorder to ingest it we run the data tool
-        - name: dataos-tool-pulsar
-          spec:
-            stack: toolbox
-            stackSpec:
-              dataset: dataos://icebase:sample/stock_pulsar?acl=rw
-              action:
-                name: set_version
-                value: latest
-          dependencies:
-            - pulsar-appledata
     ```
-With this setup, stock market data is continuously fetched, processed, and made available within DataOS for further analysis and use.

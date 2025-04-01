@@ -19,17 +19,6 @@ DataOS CLI should be installed on your system. If it's not installed, please loo
 
 Docker should be installed and running on the system. If Docker is installed on your system, move to the next step. In case it's not installed, visit the official Docker installation page for the same by clicking the [link](https://docs.docker.com/get-docker/)
 
-### **Get the toolbox-user tag**
-
-The user must have the `dataos:u:toolbox-user` tag. To check whether you have a tag, please go ahead and execute the below command and check in the `TAGS` section. In case you don’t have the tag, contact the system administrator
-
-```bash
-dataos-ctl user get
-```
-
-> **Note:** Ensure you are logged into DataOS before executing the above command. In case you haven’t logged in, run `dataos-ctl login` in the terminal.
-> 
-
 <aside class="callout">
 🗣️ Some basic knowledge of Scala Programming Language is also needed
 </aside>
@@ -136,10 +125,6 @@ Example
 ```bash
 dataos-ctl develop start -s flare:3.0 -f sampledata/flareconfig/config.yaml -d sampledata
 ```
-
-> **Note**: The above command will automatically download the Flare standalone image; for that, you must have the `dataos:u:toolbox-user` tag to have proper permissions. Also, the path could be either an absolute or a relative path.
-> 
-
 Anatomy of the command:
 
 | dataos-ctl | develop | start | -s | flare:3.0 | -f | sampledata/flareconfig/config.yaml | -d | sampledata |

@@ -22,7 +22,7 @@ Once the initial data classification is complete, categorical columns undergo fu
 
 DataOS provides both built-in and customizable classifications seamlessly integrated into data protection policies. You can utilize these classifications directly in your data policies to ensure that sensitive data remains secure and inaccessible to unauthorized users. Once data items are tagged as PHI or PII, associated data policies are automatically applied.
 
-<aside class="callout">On the Metis UI, you can access and manage classifications organized into tag groups.</aside>
+<aside class="callout"> On the Metis UI, you can access and manage classifications organized into tag groups.</aside>
 
 ## Classification of data
 DataOS performs classification and attribute tagging with text patterns using pre-defined categories and regular expressions.
