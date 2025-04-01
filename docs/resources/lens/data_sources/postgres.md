@@ -1,10 +1,53 @@
-# Postgres
+# Creating a semantic model on Postgres source
 
-## Step 1: Create Postgres Depot
+<aside class="callout">
 
-If the Depot is not active, create one using the provided template.
+When setting up a semantic model, it is crucial to understand that the semantic model is part of the Data Product. Therefore, you do not need to create a separate Git repository. Instead, semantic model will be in the <code>/build</code> folder of the the Data Product's existing repository. 
+</aside>
 
-```yaml
+
+## Step 1: Set up a connection with source
+
+To set up a connection with the source, create Depot if the Depot has already been created and activated during the Design phase of the Data Product, skip this step. The Lens model will utilize the existing Depot and the associated Instance Secrets set up. Ensure that the Depot is properly connected to the correct data source and that you have the necessary access credentials (Instance Secrets) available for the Lens deployment.
+
+Before establishing a connection to the data source, an [Instance Secret](/resources/instance_secret/) must be created. This secret securely stores the credentials required for `read` (`r`) and `read write` (`rw`) access to the data source.
+
+```yaml title="instance-secret-r.yml"
+# RESOURCE META SECTION
+name: <secret-name> # Secret Resource name (mandatory)
+version: v1 # Secret manifest version (mandatory)
+type: instance-secret # Type of Resource (mandatory)
+description: demo-secret read secrets for code repository # Secret Resource description (optional)
+layer: user # DataOS Layer (optional)
+
+# INSTANCE SECRET-SPECIFIC SECTION
+instance-secret:
+  type: key-value # Type of Instance-secret (mandatory)
+  acl: r # Access control list (mandatory)
+  data: # Data (mandatory)
+    GITSYNC_USERNAME: <code_repository_username>
+    GITSYNC_PASSWORD: <code_repository_password>
+```
+
+```yaml title="instance-secret-rw.yml"
+# RESOURCE META SECTION
+name: <secret-name> # Secret Resource name (mandatory)
+version: v1 # Secret manifest version (mandatory)
+type: instance-secret # Type of Resource (mandatory)
+description: demo-secret read secrets for code repository # Secret Resource description (optional)
+layer: user # DataOS Layer (optional)
+
+# INSTANCE SECRET-SPECIFIC SECTION
+instance-secret:
+  type: key-value # Type of Instance-secret (mandatory)
+  acl: rw # Access control list (mandatory)
+  data: # Data (mandatory)
+    GITSYNC_USERNAME: <code_repository_username>
+    GITSYNC_PASSWORD: <code_repository_password>
+```
+
+
+```yaml title="postgres-depot.yml"
 name: ${{postgresdb}}
 version: v2alpha
 type: depot
@@ -128,7 +171,7 @@ segments:
     sql: "{TABLE}.state IN ('Illinois', 'Ohio')"
 ```
 
-To know more about segments click [here](https://dataos.info/resources/lens/segments/).
+To know more about segments click [here](/resources/lens/segments/).
 
 
 ### **Create views**
@@ -150,7 +193,7 @@ views:
           - customer_segments
 ```
 
-To know more about the views click [here](https://dataos.info/resources/lens/views/).
+To know more about the views click [here](/resources/lens/views/).
 
 
 ### **Create User groups**
@@ -164,7 +207,7 @@ user_groups:
     includes: "*"
 ```
 
-To know more about the User groups click [here](https://dataos.info/resources/lens/user_groups_and_data_policies/)
+To know more about the User groups click [here](/resources/lens/user_groups_and_data_policies/)
 
 <aside class="callout">
 Push the semantic model folder into the code repository. Before pushing secure the repo credentials by using the Instance Secret and referencing it in the Lens manifest file for secure access.
@@ -244,6 +287,28 @@ After configuring the deployment file with the necessary settings and specificat
     INFO[0001] 🔧 applying(curriculum) sales360:v1alpha:lens...created 
     INFO[0001] 🛠 apply...complete
     ```
+
+
+<aside class="callout">
+
+Once the Lens Resource is applied and all configurations are correctly set up, the Lens model will be deployed. Upon deployment, a Lens Service is created in the backend, which may take some time to initialize.
+
+To verify whether the Lens Service is running, execute the following command. The Service name follows the pattern: **`<lens-name>-api`**
+
+Ensure Service is active and running before proceeding to the next steps.
+
+```bash
+dataos-ctl get -t service -n sales-insights-lens-api -w public
+# Expected output:
+INFO[0000] 🔍 get...                                     
+INFO[0002] 🔍 get...complete                             
+
+           NAME           | VERSION |  TYPE   | WORKSPACE | STATUS |  RUNTIME  |    OWNER     
+--------------------------|---------|---------|-----------|--------|-----------|--------------
+  sales360-lens-api | v1      | service | public    | active | running:1 | iamgroot
+```
+
+</aside>
 
 
 <!-- ## Docker compose manifest file

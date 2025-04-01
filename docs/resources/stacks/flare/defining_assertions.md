@@ -253,55 +253,7 @@ workflow:
                 - spark.shuffle.memoryFraction: "0.2"
     ```
 </details>
-<aside class="callout">
-🗣 It should be noted that, since check and metric information is stored in separate locations, the corresponding metadata must be updated individually. As a result, two separate Toolbox Workflow runs must be executed, one for metrics and the other for checks.
-</aside>
-    
-<details>
-    <summary>Toolbox Workflow (for checks)</summary>        
-    ```yaml
-    version: v1
-    name: dataos-tool-checks
-    type: workflow
-    tags:
-      - Metrics
-      - Checks
-    description: This workflow is for data tool of customer demo quality
-    workflow:
-      dag:
-        - name: checks-tool
-        spec:
-        stack: toolbox
-        stackSpec:
-          dataset: dataos://icebase:sys01/quality_checks?acl=rw
-          action:
-            name: set_version
-            value: latest
-    ```
-</details> 
 
-<details>
-<summary>Toolbox Workflow (for metrics)</summary>
-    ```yaml
-    version: v1
-    name:  dataos-tool-metrics
-    type: workflow
-    tags:
-      - Metrics
-      - Checks
-    description: This workflow for data tool
-    workflow:
-      dag:
-        - name: tool-metrics
-        spec:
-        stack: toolbox
-        stackSpec:
-          dataset: dataos://icebase:sys01/quality_metrics?acl=rw
-          action:
-            name: set_version
-            value: latest
-    ```
-</details>
 
 
 ### **Pre-Sink Assertions**
@@ -480,4 +432,4 @@ When assertions fail, it results in the failure of the entire workflow, preventi
 
 ### **Case Scenario**
 
-To understand how assertions are used in different scenarios, refer to [Enhancing Data Integrity with Assertion Jobs](assertions_case_scenario/).
+To understand how assertions are used in different scenarios, refer to [Enhancing Data Integrity with Assertion Jobs](/resources/stacks/flare/assertions_case_scenario/).

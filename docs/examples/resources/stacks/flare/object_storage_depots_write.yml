@@ -1,36 +1,62 @@
 version: v1
-name: abfss-write-avro
+name: azure-write-01-hive
 type: workflow
 tags:
-  - Connect
-  - City
-description: The job ingests city data from dropzone into raw zone
-workflow:
-  title: Connect City avro
-  dag:
-    - name: city-abfss-write-avro
-      title: City Dimension Ingester
-      description: The job ingests city data from dropzone into raw zone
-      spec:
-        tags:
-          - Connect
-          - City
-        stack: flare:5.0
-        compute: runnable-default
-        stackSpec:
-          job:
-            explain: true
-            inputs:
-              - name: city_connect
-                dataset: dataos://icebase:retail/city
-                format: iceberg
+- Sanity
+- Azure
+title: Sanity write to azure 
+description: |
+  The purpose of this job is to verify if we are able to write different  
+  file formats into azure  or wasbs or not.
 
-            logLevel: INFO
-            outputs:
-              - name: output01 #output dataset name
-                dataset: dataos://thirdparty01:sampledata?acl=rw #output dataset address
-                format: avro # file format
-            steps:
-              - sequence:
-                  - name: output01
-                    sql: SELECT * FROM city_connect
+workflow:
+  dag:
+  - name: azure-write-01-hive
+    title: Sanity write files to azure 
+    description: |
+      The purpose of this job is to verify if we are able to write different  
+      file formats into azure  or wasbs or not.
+    spec:
+      tags:
+      - Sanity
+      - Azure
+      stack: flare:6.0
+      compute: runnable-default
+      flare:
+        job:
+          explain: true
+          logLevel: INFO
+          showPreviewLines: 2
+          inputs:
+            - name: sanity_city_input
+              dataset: dataos://thirdparty01:none/city?acl=rw
+              format: csv
+              schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc
+
+          steps:
+            - sequence:
+                - name: cities
+                  doc: Pick all columns from cities and add version as yyyyMMddHHmm formatted
+                    timestamp.
+                  sql: |
+                    SELECT
+                      *,
+                      date_format (now(), 'yyyyMMddHHmm') AS version,
+                      now() AS ts_city
+                    FROM
+                      sanity_city_input limit 10
+
+          outputs:
+            - name: cities
+              dataset: dataos://azurehiveiceberg:hivetest/azure_hive_iceberg_write_12?acl=rw
+              format: iceberg
+              options:
+                saveMode: overwrite
+                partitionBy:
+                  - version
+              tags:
+                - Sanity
+                - Azure
+                - CSV
+              title: Azure csv sanity
+              description: Azure csv sanity

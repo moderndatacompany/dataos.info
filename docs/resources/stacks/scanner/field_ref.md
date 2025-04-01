@@ -76,7 +76,7 @@ spec:
 
 | **Data Type**     | **Requirement** | **Default Value** | **Possible Value**                |
 | ----------------- | --------------- | ----------------- | --------------------------------- |
-| string            | Mandatory       | None              | flare/toolbox/scanner/alpha      |
+| string            | Mandatory       | None              | flare/scanner/alpha      |
 
 
 <b>Additional Details:</b> You also need to specify specific versions of the stack. If no version is explicitly specified, the system will automatically select the latest version as the default option <br>

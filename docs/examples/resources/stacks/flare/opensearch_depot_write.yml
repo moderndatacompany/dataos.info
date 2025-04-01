@@ -1,5 +1,5 @@
-name: write-opensearch-01
 version: v1
+name: write-opensearch-01
 type: workflow
 tags:
   - opensearch
@@ -7,15 +7,15 @@ tags:
 description: this jobs reads data from thirdparty and writes to opensearch
 workflow:
   dag:
-    - name: opensearch-write
+    - name: opensearch-write-01
       title: write data to opensearch
       description: write data to opensearch
       spec:
         tags:
           - Connect
-        stack: flare:5.0
+        stack: flare:6.0
         compute: runnable-default
-        stackSpec:
+        flare:
           job:
             explain: true
             inputs:
@@ -23,11 +23,11 @@ workflow:
                 dataset: dataos://thirdparty01:none/city
                 format: csv
                 schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc
-                isStream: false
+                # isStream: false
             logLevel: INFO
             outputs:
               - name: finalDf
-                dataset: dataos://sanityopensearchalok01:default/opensearch_write?acl=rw
+                dataset: dataos://sanityopensearch:default/opensearch_write_12?acl=rw
                 format: opensearch
                 options:
                   extraOptions:
@@ -35,4 +35,4 @@ workflow:
             steps:
               - sequence:
                 - name: finalDf
-                  sql: SELECT * FROM input
+                  sql: SELECT * FROM input limit 10

@@ -54,7 +54,7 @@ workflow: # Workflow Section
 
 ### 3.2 Placeholders and Comments
 ```yaml
-stack: ${flare:5.0} # Stack Name and Version
+stack: ${flare:6.0} # Stack Name and Version
 ```
 ### 3.3 Directory Organization
 To maintain consistency, each markdown page that contains nested pages should store its files using the parent page's name, written in Proper Case with hyphens.
@@ -253,6 +253,7 @@ https://moderndatacompany.github.io/dataos.info/
      </div>
 <br>
 
+### Toggle
 
 <details>     
 <summary>This is how you create a toggle</summary>
@@ -691,3 +692,20 @@ Add multiple images in a single slide! Just copy and edit the below code to add 
 </html>
 
 
+## Search feature in markdown
+
+### enable
+
+---
+title: <title>
+search:
+  boost: 4
+---
+
+
+### disable
+
+---
+title: <title>
+search: false
+---

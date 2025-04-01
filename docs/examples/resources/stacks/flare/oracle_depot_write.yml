@@ -15,9 +15,10 @@ workflow:
         tags:
           - Connect
           - City
-        stack: flare:5.0
+        stack: flare:6.0
         compute: runnable-default
-        stackSpec:
+
+        flare:
           job:
             explain: true
             inputs:
@@ -25,10 +26,12 @@ workflow:
                 dataset: dataos://thirdparty01:none/city
                 format: csv
                 schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc
+
             logLevel: INFO
+
             outputs:
               - name: cities
-                dataset: dataos://sanityoraclealok01:dev/oracle_write?acl=rw
+                dataset: dataos://sanityoracle:dev/oracle_write_12?acl=rw
                 driver: oracle.jdbc.driver.OracleDriver
                 format: jdbc
                 description: City data ingested from external csv
@@ -44,4 +47,4 @@ workflow:
                   - name: cities
                     doc: Pick all columns from cities and add version as yyyyMMddHHmm formatted
                       timestamp.
-                    sql: SELECT * FROM city_connect
+                    sql: SELECT * FROM city_connect limit 10

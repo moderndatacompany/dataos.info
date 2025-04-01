@@ -369,7 +369,7 @@ INFO[0002] 🔍 workflow...complete
 
             NAME            | VERSION |   TYPE   | WORKSPACE |   STATUS   |  RUNTIME  |       OWNER         
 ----------------------------|---------|----------|-----------|------------|-----------|----------------------
-  quality-checks-test-cases | v1beta1 | workflow |  public   |   active   | succeeded | rakeshvishvakarma21  
+  quality-checks-test-cases | v1beta1 | workflow |  public   |   active   | succeeded | iamgroot  
 ```
 
 To learn more, refer to [Get Command Group](/interfaces/cli/get/details/).

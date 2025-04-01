@@ -100,7 +100,7 @@ workflow:
         tags:
           - Connect
           - City
-        stack: flare:5.0
+        stack: flare:6.0
         compute: runnable-default
         stackSpec:
           job:

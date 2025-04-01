@@ -68,8 +68,8 @@ Bifrost plays a central role in managing and controlling user access to manage L
 
 Permissions and accessing its semantic model can be granted either by 
 
-* [Assigning a role](/resources/lens/governance#managing-lens-access-permissions-via-assigning-a-role)
 * [Assigning a use-case](/resources/lens/governance#managing-lens-access-permissions-via-granting-use-cases)
+* [Assigning a role](/resources/lens/governance#managing-lens-access-permissions-via-assigning-a-role)
 
 ### **Managing Lens access permissions via granting use-cases**
 
@@ -94,21 +94,21 @@ Follow these steps to assign the permissions effectively:
 
 Log in to DataOS and open Bifrost. The Bifrost interface will launch.
 
-<img src="/resources/scanner/governance/bifrost.png" alt="Untitled(5)" style="max-width: 40rem; height: auto; border: 1px solid #000;">
+<img src="/resources/lens/governance/bifrost.png" alt="Untitled(5)" style="max-width: 40rem; height: auto; border: 1px solid #000;">
 
 
 #### **Search for the User**
 
 Navigate to the 'Users' tab and use the search box to locate the user.
 
-<img src="/resources/scanner/governance/bifrost_user_iamgroot.png" alt="Untitled(5)" style="max-width: 40rem; height: auto; border: 1px solid #000;">
+<img src="/resources/lens/governance/search_user.png" alt="Untitled(5)" style="max-width: 40rem; height: auto; border: 1px solid #000;">
 
 
 #### **Select the User**
 
 After selecting the user, detailed users information will be displayed. Go to the 'Grants' section to manage assigned permissions and use cases.
 
-<img src="/resources/scanner/governance/iamgroot_grants_tab.png" alt="Untitled(5)" style="max-width: 40rem; height: auto; border: 1px solid #000;">
+<img src="/resources/lens/governance/iamgroot_grants_tab.png" alt="Untitled(5)" style="max-width: 40rem; height: auto; border: 1px solid #000;">
 
 Click on the 'Grant Use-Case' button.
 
@@ -137,7 +137,7 @@ In the example below, the user has been granted permission to read Lens in all w
 Once the form is completed, click the Grant button to apply the changes. The permissions will be updated, allowing the user to read Lens in all workspaces while managing Lens only in the `curriculum` workspace.
 
 
-### **Access via roles**
+### **Managing Lens access permissions via assigning a Role**
 
 While use-cases allow precise control, roles encompass a broader scope of permissions. Assigning roles grants users a wider range of capabilities, often beyond just managing the Lens. Roles may include permissions for a variety of tasks across the system, not limited to the creation or management of the Lens itself.
 
@@ -165,9 +165,9 @@ Log in to DataOS and navigate to Bifrost. The Bifrost interface will launch, pro
 
 #### **Locate the user**
 
-Navigate to the 'Users' tab in the Bifrost interface. Utilize the search function to locate the specific user you need to assign a role to, and select the user from the list.
+Navigate to the 'Users' tab in the Bifrost interface. Utilize the search function to locate and select the specific user you need to assign a role to
 
-<img src="/resources/lens/governance/bifrost_user_iamgroot.png" alt="Untitled(5)" style="max-width: 40rem; height: auto; border: 1px solid #000;">
+<img src="/resources/lens/governance/search_user.png" alt="Untitled(5)" style="max-width: 40rem; height: auto; border: 1px solid #000;">
 
 
 #### **Select the user and access the 'Tags' section**
