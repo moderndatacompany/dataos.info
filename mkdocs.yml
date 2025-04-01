@@ -123,11 +123,11 @@ markdown_extensions:
   - pymdownx.tilde
 #  - pymdownx.extra
   - pymdownx.emoji:
-      # emoji_index: !!python/name:material.extensions.emoji.twemoji          # while pushin to dev
-      # emoji_generator: !!python/name:material.extensions.emoji.to_svg       # while pushin to dev
+      emoji_index: !!python/name:material.extensions.emoji.twemoji          # while pushin to dev
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg       # while pushin to dev
 
-      emoji_index: !!python/name:materialx.emoji.twemoji                      # while hosting locally  
-      emoji_generator: !!python/name:materialx.emoji.to_svg                   # while hosting locally 
+      # emoji_index: !!python/name:materialx.emoji.twemoji                      # while hosting locally  
+      # emoji_generator: !!python/name:materialx.emoji.to_svg                   # while hosting locally 
       
       # before pushing to dev branch replace materialx.emoji.to_svg with material.extensions.emoji.to_svg
       # before pushing to dev branch replace materialx.emoji.twemoji with material.extensions.emoji.twemoji
@@ -366,7 +366,6 @@ nav:
               - Minerva: resources/lens/data_sources/minerva.md
               - Postgres: resources/lens/data_sources/postgres.md
               - Redshift: resources/lens/data_sources/awsredshift.md
-              - Snowflake: resources/lens/data_sources/snowflake.md
               - Themis: resources/lens/data_sources/themis.md
           - Exploration:
             - Using GraphQL: 
@@ -444,10 +443,64 @@ nav:
             - resources/stacks/beacon/index.md
           - Bento: 
             - resources/stacks/bento/index.md
+            - Setting Up Bento: 
+              - Bento on Local Host: resources/stacks/bento/getting_started.md
+              - Bento on DataOS: resources/stacks/bento/bento_on_dataos.md
+            - Bloblang: 
+              - Overview: resources/stacks/bento/bloblang/walkthrough.md
+              - Core Features: resources/stacks/bento/bloblang/bloblang_core_features.md
+              - Functions: resources/stacks/bento/bloblang/functions.md
+              - Methods: resources/stacks/bento/bloblang/methods.md
+              - Arithmetic: resources/stacks/bento/bloblang/arithmetic.md
+              - Advanced Bloblang: resources/stacks/bento/bloblang/advanced_bloblang.md
+            - Configurations: 
+              - resources/stacks/bento/configurations/index.md
+              - Cloud Credentials: resources/stacks/bento/configurations/cloud_credentials.md
+              - Dynamic Inputs and Outputs: resources/stacks/bento/configurations/dynamic_inputs_and_outputs.md
+              - Error Handling: resources/stacks/bento/configurations/error_handling.md
+              - Fields Paths: resources/stacks/bento/configurations/fields_paths.md
+              - Interpolation: resources/stacks/bento/configurations/interpolation.md
+              - Message Batching: resources/stacks/bento/configurations/message_batching.md
+              - Metadata: resources/stacks/bento/configurations/metadata.md
+              - Monitoring: resources/stacks/bento/configurations/monitoring.md
+              - Performance Tuning: resources/stacks/bento/configurations/performance_tuning.md
+              - Processing Pipelines: resources/stacks/bento/configurations/processing_pipelines.md
+              - Resources: resources/stacks/bento/configurations/resources.md
+              - Secrets: resources/stacks/bento/configurations/secrets.md
+              - Streams Mode: 
+                  - resources/stacks/bento/configurations/streams_mode/index.md
+                  - Streams API: resources/stacks/bento/configurations/streams_mode/streams_api.md
+                  - Streams Via Config Files: resources/stacks/bento/configurations/streams_mode/streams_via_config_files.md
+                  - Streams Via REST API: resources/stacks/bento/configurations/streams_mode/streams_via_rest_api.md
+              - Synchronous Responses: resources/stacks/bento/configurations/synchronous_responses.md
+              - Templating: resources/stacks/bento/configurations/templating.md
+              - Unit Testing: resources/stacks/bento/configurations/unit_testing.md
+              - Using CUE: resources/stacks/bento/configurations/using_cue.md
+              - Window Processing: resources/stacks/bento/configurations/window_processing.md
+            - Components:
+              - resources/stacks/bento/components/index.md
+              - HTTP: resources/stacks/bento/components/http.md
+              - Inputs: resources/stacks/bento/components/inputs.md
+              - Logger: resources/stacks/bento/components/logger.md
+              - Metrics: resources/stacks/bento/components/metrics.md
+              - Output: resources/stacks/bento/components/output.md
+              - Processors: resources/stacks/bento/components/processors.md
+              - Rate Limit: resources/stacks/bento/components/rate_limit.md
+            - Recipes: 
+              # - Processing JSON data: resources/stacks/bento/recipes/processing_json_data.md          # To cross check
+              # - Processing nested JSON data: resources/stacks/bento/recipes/processing_nested_json_data.md
+              - Fetching Data from Instagram API: resources/stacks/bento/recipes/fetching_data_from_instagram_api.md
+              - Twitter API Data Processing: resources/stacks/bento/recipes/twitter_api_data_processing.md
+              - Discord Bot: resources/stacks/bento/recipes/discord_bot.md
+              - Stock Data API to Icebase: resources/stacks/bento/recipes/fetching_data_from_stock_data_api_using_bento.md
+              - Performing Rate Limit: resources/stacks/bento/recipes/how_to_perform_rate_limit.md
+              - Performing Pagination: resources/stacks/bento/recipes/pagination.md
           - CLI Stack: 
             - resources/stacks/cli_stack/index.md
           - Container: 
             - resources/stacks/container/index.md
+          - Data Toolbox: 
+            - resources/stacks/data_toolbox/index.md
           - DBT: 
             - resources/stacks/dbt/index.md
           - Flare: 
@@ -464,7 +517,7 @@ nav:
               - Handling Empty Tables: resources/stacks/flash/handling_empty_tables.md
             - Recipes: 
               - Use cached datasets in Lens models: resources/stacks/flash/recipes/lens.md
-              - Use cached datsets in Talos APIs: resources/stacks/flash/recipes/talos.md
+              - Use cached datasets in Talos APIs: resources/stacks/flash/recipes/talos.md
           - Lakesearch:
             - resources/stacks/lakesearch/index.md
             - Key concepts: resources/stacks/lakesearch/key_concepts.md
@@ -509,7 +562,7 @@ nav:
               - Generate API documentation: resources/stacks/talos/recipes/api_documentation.md
               - External API as data source: resources/stacks/talos/recipes/external_api.md
               - Validating Parameters: resources/stacks/talos/recipes/validating_parameters.md
-              - Error Handeling: resources/stacks/talos/recipes/error_handling.md
+              - Error Handling: resources/stacks/talos/recipes/error_handling.md
             - Example: resources/stacks/talos/example.md
             - Best Practices:
               - API: resources/stacks/talos/best_practices/api.md
@@ -616,7 +669,7 @@ nav:
             - learn/dp_developer_learn_track/build_pipeline/index.md
             - Creating your first data pipelines:
               - learn/dp_developer_learn_track/build_pipeline/first_pipeline/index.md
-            - Sheduling Workflows:
+            - Scheduling Workflows:
               - learn/dp_developer_learn_track/build_pipeline/scheduling_workflows/index.md
             - Data quality checks:
               - learn/dp_developer_learn_track/build_pipeline/dq_check/index.md
@@ -679,7 +732,7 @@ nav:
       - quick_guides/index.md
       - Connecting with data sources: 
           - quick_guides/depot_creation_cli/index.md
-      - Performing exloratory data analysis:
+      - Performing exploratory data analysis:
         - Running your first data query: 
           - quick_guides/first_query/index.md
         - Arranging and transforming data with Pivot: 
@@ -704,7 +757,7 @@ nav:
         - Working with Payloads:
           - quick_guides/working_with_payload/index.md
           - Example scenarios: quick_guides/working_with_payload/filter_operator_example_scenarios/index.md
-        - Pre-defined filtering using Segemnts:
+        - Pre-defined filtering using Segments:
           - quick_guides/working_with_segments/index.md
         - Defining Data Policies:
           - quick_guides/apply_data_policy_lens/index.md 
