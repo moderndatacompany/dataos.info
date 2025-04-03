@@ -4,7 +4,7 @@ The following document outlines the process for integrating Power BI Desktop wit
 
 ## Prerequisites
 
-- **Power BI Desktop version:** Use [Power BI Desktop](https://powerbi.microsoft.com/desktop) version `2.132.908.0` or later(version released after June 15, 2023).
+- **Power BI Desktop version:** Use [Power BI Desktop](https://powerbi.microsoft.com/desktop) version `2.132.908.0` or later (version released after June 15, 2023).
 
 - **DataOS API Key:** Obtain your key from DPH Page > Profile Icon (bottom-left) > Name/Email > Tokens Tab.
 
