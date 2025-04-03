@@ -1,24 +1,31 @@
-# Power BI
+---
+title: Semantic model sync with Power BI
+search:
+  exclude: true
+---
 
-The semantic model can be integrated with Power BI using the following Ways
+# Semantic model sync with Power BI
 
-* [Using Data Product Hub(Recommended - GUI based)](/resources/lens/bi_integration/iamgroot#using-data-product-hub): This method provides a user-friendly, graphical interface for integrating the semantic model with Power BI.  This approach is ideal for those who prefer an intuitive, no-code setup.
+The semantic model can be integrated with Power BI using the following ways:
 
-* [Using cURL command (Command-Line based)](/resources/lens/bi_integration/iamgroot#using-curl-command): By executing a simple cURL request, users can fetch and connect the semantic model directly to Power BI. This method is suitable for advanced users looking to script or automate the integration process.
+- [Using Data Product Hub(Recommended - GUI based)](/resources/lens/bi_integration/#using-data-product-hub): Download `.pbip` file through an intuitive graphical interface.
+
+- [Using cURL command (Command-Line based)](/resources/lens/bi_integration/#using-curl-command): Download `.pbip` Power BI connection via cURL command.
+
 
 ## Using Data Product Hub
 
 ### Prerequisite
 
-- **Version compatibility:** It is strongly recommended to download Power BI Version `2.132.908.0` or later to fully utilize `.pbip` files.
+- **Power BI Desktop version:** Use `2.132.908.0` or later.
 
-- **Lens API endpoint**: The API endpoint provided by Lens to sync semantic model, enabling integration with Power BI.
+- **DataOS API Key:** Obtain your key from DPH Page > Profile Icon (bottom-left) > Name/Email > Tokens Tab.
 
-- **Access credentials**: You will need access credentials such as username, password, and host for Power BI.
+    - If no API key is listed, click **`+Add API Key`**, provide a name for the token, and set an expiration duration (e.g., 24h or a specific date).
 
-- **DataOS API key**: Ensure you have your DataOS API key. The API key can be obtained by executing the command below.
+    - Once the key appears, click the eye icon to reveal it, then click the API key to copy.
 
-Follow the below steps to integrate semantic model with iamgroot using Data Product Hub:
+Follow the below steps to integrate semantic model with Power BI using Data Product Hub:
 
 ### **Step 1: Navigate to the Data Product Hub**
 
@@ -43,9 +50,11 @@ Navigate to the Access options > BI Sync > Excel and Power BI. Click the Downloa
 
 Access the downloaded ZIP file on the local system and extract its contents to the specified directory. The extracted folder will contain three files. Ensure all three files remain in the same directory to maintain semantic synchronization of the Data Product.
 
-<img src="/resources/lens/bi_integration/powerbi(4).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+<img src="/resources/lens/bi_integration/extracted_files.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 
-The folder contains the main components of a Power BI project for syncing the semantic model (here `productaffinity`) including folders such as the `.Report` and `.SemanticModel`. Following is the brief description of each:
+The folder contains the main components of a Power BI project for syncing the semantic model (here `productaffinity`) including folders such as the `.Report` and `.SemanticModel`. 
+
+Following is the brief description of each:
 
 * **public_productaffinity.Report:** This folder contains `definition.pbir` file related to the report definition in Power BI. These files define the visual representation of data, such as tables and charts, without storing actual data. They connect the semantic model and data sources to create the report views.
 
@@ -66,7 +75,7 @@ Open the `public_productaffinity` file in Power BI, and enter the DataOS usernam
 
 ### **Step 6: View data in Power BI**
 
-After connecting, users can see tables and views containing dimensions and measures and create dashboards.
+Once connected, users can explore tables and views containing dimensions and measures to build and customize dashboards.
 
 ![DPH](/interfaces/data_product_hub/activation/bi_sync/Untitled%20(19).png)
 
@@ -76,19 +85,31 @@ After connecting, users can see tables and views containing dimensions and measu
 
 - **cURL**: Ensure you have `curl` installed on your system. Windows users may need to use `curl.exe`.
 
-- **Version compatibility:** It is strongly recommended to download Power BI Version `2.132.908.0` or later to fully utilize `.pbip` files.
+- **Power BI version:** Use `2.132.908.0` or later for full `.pbip` file support.
 
 - **Lens API endpoint**: The API endpoint provided by Lens to sync semantic model, enabling integration with Power BI.
 
-- **Access credentials**: You will need access credentials such as username, password, and host for Power BI.
+- **Power BI Desktop**: Ensure you have the Power BI Desktop app installed.
 
 - **DataOS API key**: Ensure you have your DataOS API key. The API key can be obtained by executing the command below.
 
-```bash
-dataos-ctl user apikey get
-```
+    ```bash
+    dataos-ctl user apikey get
+    ```
 
-**cURL command**
+    If apikey is not listed already execute the below command to create one:
+
+    ```bash
+    dataos-ctl user apikey create #it will generate a apikey with default expiration time of 24h
+
+    #or
+
+    dataos-ctl user apikey create -n apikey_for_powerbi -d 48 h
+    ```
+
+### **cURL command**
+
+Prepare the cURL command:
 
 ```bash
 curl --location --request POST '${URL}' --header 'apikey: ${APIKEY}' --output ${FILE_NAME}.zip
@@ -96,23 +117,22 @@ curl --location --request POST '${URL}' --header 'apikey: ${APIKEY}' --output ${
 
 **Parameters:**
 
-1. **URL:**  This is the API endpoint for syncing lens with iamgroot. It contains DATAOS_FQDN, name and workspace of lens. 
+1. **URL:**  This is the API endpoint for syncing semantic model with Power BI. It contains DATAOS FQDN, name and workspace of Lens (semantic model). 
 
     ```bash
     https://<DATAOS_FQDN>/lens2/sync/api/v1/power-bi/<workspace_name>:<lens_name> 
     ```
 
-    - **DATAOS_FQDN:** Replace <DATAOS_FQDN> with the current Fully Qualified Domain Name (FQDN) where the Lens is deployed. For example, liberal-monkey.dataos.app,. is the FQDN and `liberal monkey` is the context name.
+    - **DATAOS_FQDN:** Replace <DATAOS_FQDN> with the current Fully Qualified Domain Name (FQDN) where the Lens is deployed. For example, `liberal-donkey.dataos.app`,. is the FQDN and `liberal donkey` is the context name.
 
     - **WORKSPACE_NAME:** Replace <workspace_name> with the actual workspace where Lens has been deployed. for e.g., `public`, `sandbox`, `curriculum`.
 
-    - **LENS_NAME:** The name of the semantic model or Lens to be synced with iamgroot. For example `productaffinity`.
+    - **LENS_NAME:** The name of the semantic model. For example `productaffinity`.
 
 
 2. **Headers:**
 
     - **apikey:** User's API key for the current context in Lens.
-
 
     The DataOS API key for the user can be obtained by executing the command below.
 
@@ -120,9 +140,10 @@ curl --location --request POST '${URL}' --header 'apikey: ${APIKEY}' --output ${
     dataos-ctl user apikey get
     ```
 
-3. **Output:** A `file.zip` archive is downloaded, containing the main components of a Power BI project. The name of the zip file can be specified during the curl command execution, and it will be saved accordingly. 
 
-The `file.zip` includes essential components for syncing a Lens Model with Power BI, organized into folders such as `.Report` and `.SemanticModel`:
+3. **Output:** Replace `${File_name}` placeholder with the file name to save the file for example `file`. A `file.zip` archive is downloaded, containing the main components of a Power BI project. The name of the zip file can be specified during the curl command execution, and it will be saved accordingly. 
+
+The `file.zip` includes essential components for syncing a semantic model with Power BI, organized into folders such as `.Report` and `.SemanticModel`.
 
 - **public_productaffinity.Report:** This folder contains the `definition.pbir` file, which is related to the report definition in Power BI. These files define the visual representation of data, such as tables and charts, without storing the actual data. They link the semantic model and data sources to create report views.
 
@@ -136,7 +157,7 @@ The `file.zip` includes essential components for syncing a Lens Model with Power
 
 <aside class="callout">
 
-Ensure that `file.zip` are fully extracted before opening them. Failure to do so may result in missing file errors, as shown below:
+Ensure `file.zip` is fully extracted before opening. Failure to do so may result in missing file errors, as shown below:
 
 <div style="text-align: center;">
     <img src="/resources/lens/bi_integration/image.png" alt="Power BI Configuration" style="max-width: 25%; height: auto; border: 1px solid #000;">
@@ -148,10 +169,10 @@ Ensure that `file.zip` are fully extracted before opening them. Failure to do so
 
 To begin syncing the semantic model, the following steps should be followed:
 
-**Step 1: Run the curl command:** For example, if the lens named `productaffinity` is located in the `public` workspace deployed on the `liberal-monkey` context, the curl command would be:
+**Step 1: Run the curl command:** For example, if the Lens named `productaffinity` is located in the `public` workspace deployed on the `liberal-donkey` context, the curl command would be:
 
 ```bash
-curl --location --request POST 'https://tcp.liberal-monkey.dataos.app/lens2/sync/api/v1/power-bi/public:productaffinity' --header 'apikey: abcdefgh==' --output file.zip 
+curl --location --request POST 'https://tcp.liberal-donkey.dataos.app/lens2/sync/api/v1/power-bi/public:productaffinity' --header 'apikey: abcdefgh==' --output file.zip 
 ```
 
 **Step 2 Download the zip file:**  Once the command is executed, a zip file will be downloaded to the specified directory. The downloaded file should be unzipped. Three folders will be found inside, all of which are necessary for semantic synchronization with Power BI.
@@ -163,7 +184,6 @@ curl --location --request POST 'https://tcp.liberal-monkey.dataos.app/lens2/sync
 <img src="/resources/lens/bi_integration/powerbi2.png" alt="Power BI Configuration" style="max-width: 40rem; height: auto; border: 1px solid #000;">
 
 **Step 5 Enter credentials:**  After opening the file, a popup will prompt for credentials. The DataOS username and API key should be entered.
-
 
 <img src="/resources/lens/bi_integration/powerbi4.png" alt="Power BI Configuration" style="max-width: 40rem; height: auto; border: 1px solid #000;">
 
@@ -182,11 +202,20 @@ curl --location --request POST 'https://tcp.liberal-monkey.dataos.app/lens2/sync
 <img src="/resources/lens/bi_integration/powerbi7.png" alt="Power BI Configuration" style="max-width: 40rem; height: auto; border: 1px solid #000;">
 
 
+## Supported data types
+
+| **Category** | **Data Types** | **Support Status** |
+| --- | --- | --- |
+| **Dimension** | `time`, `string`, `number`, `boolean` | Supported |
+| **Measure** | `max`, `min`, `number`, `sum`, `count`, `boolean`, `string`, `time`, `avg`, `count_distinct` | Supported |
+| **Measure** | `count_distinct_approx` | Not Supported |
+| **Rolling Window** | - | Not Supported (Power BI doesn’t support) |
+
 ## Important considerations
 
 - In Power BI, measures typically have an 'm_' prefix to indicate they represent a measure. For example, a measure calculating total revenue might be named `m_total_revenue`.
 - The connection is live, meaning any changes to the underlying data will be reflected in Power BI.
-- When schema changes occur, such as CRUD operations (Create, Read, Update, Delete) on dimensions, measures, or other elements of the semantic model, a re-sync is required. To prevent losing previously created reports after the re-sync, download the model folder from the Data Product Hub, extract the contents, and replace the existing folder with the new one.
+- When schema changes occur, such as CRUD operations (Create, Read, Update, Delete) on dimensions, measures, or other elements of the semantic model, a re-sync is required. To prevent losing previously created reports after the re-sync, download the new `.pbip` zip file from the Data Product Hub, extract the zip file, and replace the existing folder with the new one.
 
 ## Best practices
 
@@ -225,8 +254,12 @@ Whenever you encounter the error 'unknown cluster: <cluster_name>' as shown belo
 - Power BI's Direct Query mode does not support creating custom dimensions and measures or querying the rolling window measure due to the lack of date hierarchy.
 - DAX functions and Import query mode are not supported.
 
-## Data policies and security
+## Governance of Semantic Model in Power BI integration
 
-The restrictions, or permissions established by the publisher in the `user_groups.yml` of the semantic model are automatically enforced for all report viewers, ensuring consistent data security and compliance. The behavior of these may vary based on the user of the Power BI desktop.
+Data masking, restrictions, and permissions established by the publisher are automatically enforced for all report viewers, ensuring consistent data security and compliance. The behavior of these data policies, such as masking, may vary based on the user of Power BI Desktop.
 
+When the Lens semantic model is activated via BI Sync on Power BI, authentication and authorization are handled using the DataOS user ID and API key. This ensures that columns redacted by Lens data policies are restricted based on the user's group permissions.
 
+For example, if a user named iamgroot, belonging to the 'Analyst' group, is restricted from viewing the 'Annual Salary' column, this column will not appear in either the Data Product exploration page or in Power BI after synchronization. Power BI requires the DataOS user ID and API key for authentication, ensuring that users can access the full model except for columns restricted by their data policies.
+
+This approach ensures that users only see the data they are authorized to view, maintaining security and compliance.

@@ -1,3 +1,9 @@
+---
+title: Power BI Service
+search:
+  exclude: true
+---
+
 # Power BI Service
 
 This document outlines the steps required to integrate Power BI with DataOS, ensuring a seamless connection to the Data Product Hub.
@@ -211,8 +217,7 @@ After filling out the required fields, click Add to create the connection.
 
 - In Power BI, measures typically have an 'm_' prefix to indicate they represent a measure. For example, a measure calculating total revenue might be named `m_total_revenue`.
 - The connection is live, meaning any changes to the underlying data will be reflected in Power BI.
-- When schema changes occur, such as CRUD operations (Create, Read, Update, Delete) on dimensions, measures, or other elements of the semantic model, a re-sync is required. To prevent losing previously created reports after the re-sync, download the model folder from the Data Product Hub, extract the contents, and replace the existing folder with the new one.
-
+- When schema changes occur, such as CRUD operations (Create, Read, Update, Delete) on dimensions, measures, or other elements of the semantic model, a re-sync is required. To prevent losing previously created reports after the re-sync, download the new `.pbip` folder from the Data Product Hub, extract the zip file, and replace the existing folder with the new one.
 
 ## Best practices
 
