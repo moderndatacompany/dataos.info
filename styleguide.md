@@ -694,7 +694,7 @@ Add multiple images in a single slide! Just copy and edit the below code to add 
 
 ## Search feature in markdown
 
-### enable
+### to enable search
 
 ---
 title: <title>
@@ -703,9 +703,10 @@ search:
 ---
 
 
-### disable
+### to disable search
 
 ---
-title: <title>
-search: false
+title: Lens
+search:
+  exclude: true
 ---
