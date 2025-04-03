@@ -15,7 +15,7 @@ This document outlines the steps required to integrate Power BI with DataOS, ens
 
 Before proceeding with the data gateway configuration, ensure the following components are installed:
 
-- [Power BI Desktop](https://powerbi.microsoft.com/desktop) installed on the system(version released after June 15, 2023).
+- [Power BI Desktop](https://powerbi.microsoft.com/desktop) version 2.132.908.0 or later (version released after June 15, 2023).
 
 - A Power BI service account.
 
