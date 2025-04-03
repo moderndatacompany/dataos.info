@@ -1,4 +1,10 @@
-# Superset
+---
+title: Integration of semantic model with Superset
+search:
+  exclude: true
+---
+
+# Integration of semantic model with Superset
 
 The semantic model can be integrated with Superset using the following ways:
 

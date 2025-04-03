@@ -1,8 +1,8 @@
 ---
 title: Attributes of Toolbox Stack manifest
-search: false
+search:
+  exclude: true
 ---
-
 
 # Attributes of Toolbox Stack manifest
 
