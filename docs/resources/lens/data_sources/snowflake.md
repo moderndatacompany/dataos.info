@@ -7,12 +7,27 @@ When setting up a semantic model, it is crucial to understand that the semantic 
 
 ## Prerequisite
 
-CLI Version should be `dataos-cli 2.26.39` or greater. 
-Check current CLI version using the below command:
+CLI Version should be `dataos-cli 2.26.39` or greater. Check current CLI version using the below command:
 
 ```bash
 dataos-ctl version
+
+# Expected_output
+  _____            _              ____     _____  
+ |  __ \          | |            / __ \   / ____| 
+ | |  | |   __ _  | |_    __ _  | |  | | | (___   
+ | |  | |  / _` | | __|  / _` | | |  | |  \___ \  
+ | |__| | | (_| | | |_  | (_| | | |__| |  ____) | 
+ |_____/   \__,_|  \__|  \__,_|  \____/  |_____/  
+                                                  
+ctl-version     : dataos-cli 2.26.39 62d502dd7d957e7ed13ae5e750d4fa4fa5fca8d1
+product-version : DataOS® draco-1.22.12
+hub-fqdn        : dataos-training.dataos.app
+hub-tcp-fqdn    : tcp.dataos-training.dataos.app
+cloud-provider  : azure
 ```
+
+Please reach out to your Modern executive for assistance in updating the CLI.
 
 ## Step 1: Set up a connection with source
 
