@@ -123,8 +123,8 @@ markdown_extensions:
   - pymdownx.tilde
 #  - pymdownx.extra
   - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji          # while pushin to dev
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg       # while pushin to dev
+      emoji_index: !!python/name:materialx.emoji.twemoji          # while pushin to dev
+      emoji_generator: !!python/name:materialx.emoji.to_svg       # while pushin to dev
 
       # emoji_index: !!python/name:materialx.emoji.twemoji                      # while hosting locally  
       # emoji_generator: !!python/name:materialx.emoji.to_svg                   # while hosting locally 
@@ -553,6 +553,7 @@ nav:
     - Operator: getting_started/operator/index.md
   - Data Product: 
     - products/data_product/index.md
+    - Core Concepts: products/data_product/core_concepts.md
     - Data Product Lifecycle:
       - products/data_product/how_to_guides/index.md
       - Design Phase: products/data_product/how_to_guides/design.md
@@ -562,10 +563,10 @@ nav:
     - Data Product Examples:
       - Building from Scratch with Snowflake: products/data_product/examples/firstdp.md
       - Using DataOS Lakehouse as a Source: products/data_product/templates/product_affinity.md
+    - Configurations: products/data_product/configurations.md 
     - Recipes: 
       - Deploy Data Product using CI/CD pipeline: products/data_product/recipes/ci_cd.md
-    - Configurations: products/data_product/configurations.md   
-    - Core Concepts: products/data_product/core_concepts.md
+
   - Glossary: glossary/index.md
   - Learn:
     - learn/index.md
