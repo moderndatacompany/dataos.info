@@ -702,6 +702,30 @@ search:
   boost: 4
 ---
 
+---
+title: Data Product Hub
+search:
+  boost: 4
+tags:
+  - Data Product Hub
+  - DPH
+  - Data Product Catalog
+hide:
+  - tags
+---
+
+---
+title: Glossary
+search:
+  boost: 4
+hide:
+  - navigation
+  - toc
+---
+
+  [a](#a) &nbsp;&nbsp;   [b](#b) &nbsp;&nbsp;    [c](#c)  &nbsp;&nbsp;     [d](#d) &nbsp;&nbsp;    [e](#e) &nbsp;&nbsp;   [f](#f) &nbsp;&nbsp;    [g](#g)  &nbsp;&nbsp;   [h](#h) &nbsp;&nbsp;    [i](#i) &nbsp;&nbsp;     [j](#j) &nbsp;&nbsp;    [k](#k) &nbsp;&nbsp;     [l](#l) &nbsp;&nbsp;     [m](#m) &nbsp;&nbsp;     [n](#n) &nbsp;&nbsp;    [o](#o) &nbsp;&nbsp;    [p](#p) &nbsp;&nbsp;     [q](#q) &nbsp;&nbsp;     [r](#r) &nbsp;&nbsp;     [s](#s) &nbsp;&nbsp;    [t](#t) &nbsp;&nbsp;     [u](#u) &nbsp;&nbsp; v &nbsp;&nbsp;   [w](#w) &nbsp;&nbsp; x &nbsp;&nbsp;   y &nbsp;&nbsp; z &nbsp;&nbsp;   
+
+--- 
 
 ### to disable search
 
