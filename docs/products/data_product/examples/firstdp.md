@@ -34,7 +34,7 @@ Ensure you meet the following requirements specific to DataOS:
 
 3. [DataOS CLI](/interfaces/cli/) Version should be `dataos-cli 2.26.39` or greater.
 
-4. It is recommended that the Data Product artifacts (configuration files) be stored in a Bitbucket repository for better collaboration, as shown below, while building the data product. To initialize the Bitbucket repository, follow steps 1 and 2 mentioned [in this document](/products/data_product/recipes/ci_cd/#1-create-a-bit-bucket-repository).
+4. It is recommended that the Data Product artifacts (configuration files) be stored in a Bitbucket repository for better collaboration, as shown below, while building the Data Product. To initialize the Bitbucket repository, follow steps 1 and 2 mentioned [in this document](/products/data_product/recipes/ci_cd/#1-create-a-bit-bucket-repository).
     
     ```sql
     data-product-deployment
@@ -71,6 +71,12 @@ Ensure you meet the following requirements specific to DataOS:
 Ensure you meet the following requirements specific to Snowflake:
 
 1. Sufficient computing and storage permissions are needed to run queries. Learn more about access control in Snowflake by referring [to this link](https://docs.snowflake.com/en/user-guide/security-access-control-privileges).
+
+<aside class="callout">
+
+🗣 In this example we have used free trial account of Snowflake which comes with the admin permission by default for which we do not require any access permission.
+
+</aside>
 
 ## Designing the Data Product
 
@@ -378,7 +384,7 @@ To establish a connection between DataOS and Snowflake, a Depot Resource must be
     layer: user
     depot:
       type: snowflake
-      description: This depot is for data product purpose.
+      description: This depot is for Data Product purpose.
       snowflake:
         warehouse: mywarehouse
         url: FLJXHCC-GN43023.snowflakecomputing.com
@@ -837,7 +843,7 @@ To add the Data Product to the Data Product Hub, you have to run the Data Produc
     tags:
       - scanner
       - data-product
-    description: The job scans data product from poros
+    description: The job scans Data Product from poros
     workflow:
       dag:
         - name: scan-data-product-job
