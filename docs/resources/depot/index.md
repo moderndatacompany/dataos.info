@@ -709,19 +709,6 @@ You can access these templates by visiting the following tabs:
         </aside>
 
         Please make sure your DataOS CLI is updated to the latest version.
-
-        === "Inline Credentials"
-
-            ```yaml title="snowflake_v2alpha.yaml" 
-            --8<-- "examples/resources/depot/data_warehouse/snowflake/snowflake_v1.yaml"
-            ```   
-            Follow these steps to create the Depot: 
-
-            - **Step 1**: Create a manifest file. 
-            - **Step 2**: Copy the template from above and paste it in a code.
-            - **Step 3**: Fill the values for the atttributes/fields declared in the YAML-based manifest file. 
-            - **Step 4**: Apply the file through DataOS CLI.
-
         === "Instance Secret Reference"
 
             ```yaml title="snowflake_v2alpha.yaml" 
@@ -733,6 +720,19 @@ You can access these templates by visiting the following tabs:
             - **Step 2**: Copy the template from above and paste it in a code.
             - **Step 3**: Fill the values for the atttributes/fields declared in the YAML-based manifest file. 
             - **Step 4**: Apply the file through DataOS CLI.
+
+        === "Inline Credentials"
+
+            ```yaml title="snowflake_v1.yaml" 
+            --8<-- "examples/resources/depot/data_warehouse/snowflake/snowflake_v1.yaml"
+            ```   
+            Follow these steps to create the Depot: 
+
+            - **Step 1**: Create a manifest file. 
+            - **Step 2**: Copy the template from above and paste it in a code.
+            - **Step 3**: Fill the values for the atttributes/fields declared in the YAML-based manifest file. 
+            - **Step 4**: Apply the file through DataOS CLI.
+
 
         **Requirements**
 
