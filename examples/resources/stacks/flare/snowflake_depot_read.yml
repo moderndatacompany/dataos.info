@@ -1,0 +1,44 @@
+version: v1
+name: snowflake-read-05
+type: workflow
+tags:
+  - Connect
+  - read
+  - write
+description: Jobs reads from snowflake
+workflow:
+  title: Connect Snowflake
+  dag:
+    - name: read-snowflake-01
+      title: Reading data and writing to snowflake
+      description: This job writes data to wnowflake
+      spec:
+        tags:
+          - Connect
+          - write
+        stack: flare:6.0
+        compute: runnable-default
+        flare:
+          job:
+            explain: true
+            inputs:
+            - name: city_connect
+              dataset: dataos://sanitysnowflake:public/snowflake_write_12
+              format: snowflake
+              options:
+                sfWarehouse: "TMDCWH"
+            logLevel: INFO
+            outputs:
+              - name: cities
+                dataset: dataos://lakehouse:smoketest/snowflake_read_12?acl=rw
+                format: iceberg
+                description: City data ingested from bigquery
+                options:
+                  saveMode: append
+                tags:
+                  - Connect
+                title: City Source Data
+            steps:
+              - sequence:
+                - name: cities
+                  sql: SELECT * FROM city_connect limit 10

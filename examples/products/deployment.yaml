@@ -1,0 +1,59 @@
+name: ${{product-360}}
+version: ${{v1beta}}
+entity: ${{product}}
+type: ${{data}}
+tags:   
+  - ${{DPDomain.Sales}}
+  - ${{DPDomain.Marketing}}
+  - ${{DPUsecase.Customer Segmentation}}
+  - ${{DPUsecase.Product Recommendation}}
+  - ${{DPTier.DataCOE Approved}}
+description: ${{Leverages product affinity analysis to identify cross-sell opportunities, enabling businesses to enhance customer recommendations and drive additional sales by understanding the relationships between products purchased together}}
+refs:
+- title: ${{'Workspace Info'}}
+  href: ${{https://dataos.info/interfaces/cli/command_reference/#workspace}}
+
+v1beta:
+  data:
+    meta:
+      title: ${{Product 360}}
+      sourceCodeUrl: ${{https://bitbucket.org/mywork/talos/src/main/}}
+      trackerUrl: ${{https://rubikai.atlassian.net/browse/DPRB-65}}
+ 
+    collaborators:
+      - name: ${{iamgroot}}
+        description: ${{developer}}
+      - name: ${{iamthor}}
+        description: ${{consumer}}
+
+    resource:
+      refType: ${{dataos}}
+      ref: ${{bundle:v1beta:product-360-bundle}}
+
+    inputs:
+      - refType: ${{dataos}}
+        ref: ${{dataset:icebase:customer_relationship_management:customer}}
+
+      - refType: ${{dataos}}
+        ref: ${{dataset:icebase:customer_relationship_management:purchase}}
+
+      - refType: ${{dataos}}
+        ref: ${{dataset:icebase:customer_relationship_management:product}}
+
+    outputs:
+      - refType: ${{dataos}}
+        ref: ${{dataset:icebase:customer_relationship_management:product_affinity_matrix}}
+
+      - refType: ${{dataos}}
+        ref: ${{dataset:icebase:customer_relationship_management:cross_sell_recommendations}}
+
+    ports:
+      lens:
+        ref: ${{lens:v1alpha:cross-sell-affinity:public}}
+        refType: ${{dataos}}
+
+      talos:
+        - ref: ${{service:v1:cross-sell-api:public}}
+          refType: ${{dataos}}
+
+         
