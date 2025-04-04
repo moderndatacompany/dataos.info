@@ -7,7 +7,12 @@ When setting up a semantic model, it is crucial to understand that the semantic 
 
 ## Prerequisite
 
-CLI Version should be `dataos-cli 2.26.39-dev` or greater.
+CLI Version should be `dataos-cli 2.26.39` or greater. 
+Check current CLI version using the below command:
+
+```bash
+dataos-ctl version
+```
 
 ## Step 1: Set up a connection with source
 
