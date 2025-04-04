@@ -109,17 +109,6 @@ workflow:
             - spark.dynamicAllocation.minExecutors: 2
             - spark.dynamicAllocation.maxExecutors: 5
             - spark.dynamicAllocation.shuffleTracking.enabled: true
-    - name: dt-ga-sessions-daily-raw
-      spec:
-        stack: toolbox
-        compute: runnable-default
-        stackSpec:
-          dataset: dataos://icebase:google_analytics/ga_sessions_daily_data_raw?acl=rw
-          action:
-            name: set_version
-            value: latest
-      dependencies:
-        - dg-ga-sessions-daily-raw
 ```
 
 Note that the above provided manifest file is just an example of how you can create a Flare job. To know more about the Flare, [refer to this](/resources/stacks/flare/). 
@@ -217,7 +206,7 @@ type: bundle
 layer: user 
 tags: 
   - dataos:type:resource
-description: this bundle resource is for a data product
+description: this bundle resource is for a Data Product
 
 # Bundle-specific section
 bundle:
