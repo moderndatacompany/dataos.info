@@ -52,19 +52,17 @@ Access the downloaded ZIP file on the local system and extract its contents to t
 
 <img src="/resources/lens/bi_integration/extracted_files.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 
-The folder contains the main components of a Power BI project for syncing the semantic model (here `productaffinity`) including folders such as the `.Report` and `.SemanticModel`. 
+The folder contains the main components of a Power BI project for syncing the semantic model (here `productaffinity`). Here is the brief description of each:
 
-Following is the brief description of each:
+- **public_productaffinity.Report:** This folder contains `definition.pbir` file related to the report definition in Power BI. It stores the report metadata such as the version and dataset reference in JSON format.
 
-* **public_productaffinity.Report:** This folder contains `definition.pbir` file related to the report definition in Power BI. These files define the visual representation of data, such as tables and charts, without storing actual data. They connect the semantic model and data sources to create the report views.
+- **public_productaffinity.SemanticModel:** This folder contains files that define the underlying data model for Power BI project. The semantic model plays a crucial role in managing how Power BI interacts with data, setting up relationships, hierarchies, and measures.
 
-* **public_productaffinity.SemanticModel:** This folder contains files that define the underlying semantic model for your Power BI project. The semantic model plays a crucial role in managing how Power BI interacts with data, setting up relationships, hierarchies, and measures.
+    - **definition.bism:** Contains the overall definition of a semantic model and core settings. This file also specifies the supported semantic model definition formats through the 'version' property.
 
-    * **definition.bism:** This file represents the Business Intelligence Semantic Model (BISM). It defines the structure of your data, including data sources, relationships, tables, and measures for your semantic model. The `.bism` file holds essential metadata that helps Power BI understand and query the data, forming the core of the semantic model for report creation and analysis.
+    - **model.bim:** The model.bim file is a JSON file that contains the Tabular Model Scripting Language (TMSL) definition of a Power BI semantic model. It's used to create a database from scratch by defining objects such as measures, tables, and connection sources.
 
-    * **model.bim:** Power BI uses the `.bim` file to generate queries and manage interactions with the dataset. When you build reports or dashboards in Power BI, it references this semantic model to ensure the correct structure is applied to the data.
-
-* **public_productaffinity** This file serves as a Power BI project template or configuration file. Power BI uses files `.pbip` or `.pbix` to encapsulate reports, datasets, and visualizations. The `.pbip` file ties together the semantic model and report definitions from the other folders, acting as the entry point for working on the project in Power BI Desktop or the Power BI service.
+- **public_productaffinity.pbip:** The `.pbip` file contains a pointer to a report folder, opening a `.pbip` opens the targeted report and model.
 
 
 ###  **Step 5: Enter credentials**
@@ -145,15 +143,16 @@ curl --location --request POST '${URL}' --header 'apikey: ${APIKEY}' --output ${
 
 The `file.zip` includes essential components for syncing a semantic model with Power BI, organized into folders such as `.Report` and `.SemanticModel`.
 
-- **public_productaffinity.Report:** This folder contains the `definition.pbir` file, which is related to the report definition in Power BI. These files define the visual representation of data, such as tables and charts, without storing the actual data. They link the semantic model and data sources to create report views.
+- **public_productaffinity.Report:** This folder contains `definition.pbir` file related to the report definition in Power BI. It stores the report metadata such as the version and dataset reference in JSON format.
 
-- **public-productaffinity.SemanticModel:** This folder includes files that establish the underlying data model for a Power BI project. The Semantic Model is crucial for managing data interactions, including the setup of relationships, hierarchies, and measures.
+- **public_productaffinity.SemanticModel:** This folder contains files that define the underlying data model for Power BI project. The semantic model plays a crucial role in managing how Power BI interacts with data, setting up relationships, hierarchies, and measures.
 
-    - **definition.bism:** This file represents the Business Intelligence Semantic Model (BISM). It defines the structure of the data, detailing data sources, relationships, tables, and measures. The `.bism` file contains essential metadata that enables Power BI to understand and query the data, forming the foundation of the data model for report creation and analysis.
+    - **definition.bism:** Contains the overall definition of a semantic model and core settings. This file also specifies the supported semantic model definition formats through the 'version' property.
 
-    - **model.bim:** The `.bim` file is utilized to generate queries and manage interactions with the dataset. This semantic model is referenced to ensure the correct structure is applied to the data during report or dashboard creation in Power BI.
+    - **model.bim:** The model.bim file is a JSON file that contains the Tabular Model Scripting Language (TMSL) definition of a Power BI semantic model. It's used to create a database from scratch by defining objects such as measures, tables, and connection sources.
 
-- **public_productaffinity** This file serves as a Power BI project template or configuration file. Files such as `.pbip` or `.pbix` encapsulate reports, datasets, and visualizations. The `.pbip` file integrates the semantic model and report definitions from the other folders, acting as the entry point for project work in Power BI Desktop or the Power BI service.
+- **public_productaffinity.pbip:** The `.pbip` file contains a pointer to a report folder, opening a `.pbip` opens the targeted report and model.
+
 
 <aside class="callout">
 
@@ -189,7 +188,6 @@ curl --location --request POST 'https://tcp.liberal-donkey.dataos.app/lens2/sync
 
 
 **Step 6 Connect to DataOS:** Click on the connect button. A popup will appear. Click Ok.
-
 
 
 <img src="/resources/lens/bi_integration/powerbi6.png" alt="Power BI Configuration" style="max-width: 40rem; height: auto; border: 1px solid #000;">
