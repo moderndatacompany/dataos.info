@@ -84,9 +84,9 @@ After creating a semantic model, the next step is to explore it by running queri
 
 ### **BI Integration**
 
-- [Power BI Desktop](/resources/lens/bi_integration/powerbi/)
+- [PowerBI Desktop](/interfaces/data_product_hub/activation/bi_sync/powerbi/)
 
-- [Power BI Service](/resources/lens/bi_integration/powerbi_service/)
+- [PowerBI Service](/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/)
 
 - [Superset](/resources/lens/bi_integration/superset/)
 

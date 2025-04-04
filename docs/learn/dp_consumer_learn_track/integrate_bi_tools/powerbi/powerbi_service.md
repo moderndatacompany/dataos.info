@@ -1,6 +1,12 @@
-# Power BI Service
+---
+title: Publish Power BI Reports to the Power BI Service
+search:
+  exclude: true
+---
 
-In this guide, you will learn how to integrate Power BI Service with DataOS to publish reports, ensuring a smooth connection to the Data Product Hub for efficient data management.
+# Publish Power BI Reports to the Power BI Service
+
+In this guide, you will learn how to integrate Power BI Desktop with the semantic model to create the report and Power BI Service to publish reports.
 
 ## Prerequisites
 
@@ -19,7 +25,7 @@ Before proceeding with the data gateway configuration, ensure the following comp
 
 - A Power BI service account.
 
-- [Npgsql](#installing-npgsql-for-postgresql-connectivity) version `v4.0.10` (or earlier, up to `v4.0.16`).
+- [Npgsql](#installing-npgsql-for-postgresql-connectivity) (`v4.0.16` version or before).
 
 - [On-premises data gateway](#installing-the-on-prem-data-gateway).
 
@@ -103,15 +109,16 @@ Once downloaded, locate the ZIP file in your file manager and extract it to your
   
 The folder stores the main components of a Power BI project for syncing the Lens Model (here Product Affinity), including folders like the.Report and .SemanticModel.
 
-- **public_sales360-table.Report:** This folder contains `definition.pbir` file related to the report definition in Power BI. These files define the visual representation of data, such as tables and charts, without storing actual data. They connect the semantic model and data sources to create the report views.
+- **public_productaffinity.Report:** This folder contains `definition.pbir` file related to the report definition in Power BI. It stores the report metadata such as the version and dataset reference in JSON format.
 
-- **public-sales360-table.SemanticModel:** This folder contains files that define the underlying data model for your Power BI project. The semantic model plays a crucial role in managing how Power BI interacts with data, setting up relationships, hierarchies, and measures.
+- **public_productaffinity.SemanticModel:** This folder contains files that define the underlying data model for Power BI project. The semantic model plays a crucial role in managing how Power BI interacts with data, setting up relationships, and measures.
 
-    - **definition.bism:** This file represents the Business Intelligence Semantic Model (BISM). It defines the structure of your data, including data sources, relationships, tables, and measures for your Lens semantic model. The `.bism` file holds essential metadata that helps Power BI understand and query the data, forming the core of the data model for report creation and analysis.
+    - **definition.bism:** Contains the overall definition of a semantic model and core settings. This file also specifies the supported semantic model definition formats through the 'version' property.
 
-    - **model.bim:** Power BI uses the `.bim` file to generate queries and manage interactions with the dataset. When you build reports or dashboards in Power BI, it references this semantic model to ensure the correct structure is applied to the data.
+    - **model.bim:** The model.bim file is a JSON file that contains the Tabular Model Scripting Language (TMSL) definition of a Power BI semantic model. It's used to create a database from scratch by defining objects such as measures, tables, and connection sources.
 
-- **public-sales-360-table.pbip:** This file serves as a Power BI project template or configuration file. Power BI uses files like `.pbip` or `.pbix` to encapsulate reports, datasets, and visualizations. The `.pbip` file ties together the semantic model and report definitions from the other folders, acting as the entry point for working on the project in Power BI Desktop or the Power BI service.
+- **public_productaffinity.pbip:** The `.pbip` file contains a pointer to a report folder, opening a `.pbip` opens the targeted report and model.
+
 
 
 ### **Step 4: Open the file in Power BI and connect**
@@ -211,7 +218,7 @@ After filling out the required fields, click Add to create the connection.
 
 - In Power BI, measures typically have an 'm_' prefix to indicate they represent a measure. For example, a measure calculating total revenue might be named `m_total_revenue`.
 - The connection is live, meaning any changes to the underlying data will be reflected in Power BI.
-- When schema changes occur, such as CRUD operations (Create, Read, Update, Delete) on dimensions, measures, or other elements of the semantic model, a re-sync is required. To prevent losing previously created reports after the re-sync, download the model folder from the Data Product Hub, extract the contents, and replace the existing folder with the new one.
+- When schema changes occur, such as CRUD operations (Create, Read, Update, Delete) on dimensions, measures, or other elements of the semantic model, a re-sync is required. To prevent losing previously created reports after the re-sync, download the `.pbip` folder from the Data Product Hub, extract the contents, and replace the existing `.SemanticModel` folder with the new `.SemanticModel`.
 
 ## Best practices
 
@@ -250,6 +257,6 @@ Whenever you encounter the error `unknown cluster:<cluster_name>` as shown below
 - Power BI's Direct Query mode does not support creating custom dimensions and measures or querying the rolling window measure due to the lack of date hierarchy.
 - DAX functions and Import query mode are not supported.
 
-## Governance of model on PowerBI Service
+## Governance of semantic model on Power BI Service
 
 Data masking policies are enforced based on the user who creates and registers the gateway connection for the semantic model in PowerBI Service.
