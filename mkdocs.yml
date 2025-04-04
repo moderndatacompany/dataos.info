@@ -384,8 +384,8 @@ nav:
           - BI Integrations:
           #  - API Endpoints and Scopes: resources/lens/api_endpoints_and_scopes.md
             - Power BI:
-                - Power BI Desktop: resources/lens/bi_integration/powerbi.md
-                - Power BI Service: resources/lens/bi_integration/powerbi_service.md
+                - Power BI Desktop: interfaces/data_product_hub/activation/bi_sync/powerbi.md
+                - Power BI Service: interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service.md
             - Superset: resources/lens/bi_integration/superset.md
             - Tableau: resources/lens/bi_integration/tableau.md                
             # - Supported Data Quality Checks: resources/lens/supported_data_quality_checks.md
