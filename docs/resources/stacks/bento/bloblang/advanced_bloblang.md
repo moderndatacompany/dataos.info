@@ -2,7 +2,7 @@
 
 ## Map Parameters
 
-A [map](../components/processors/mapping.md) definition only has one input parameter, which is the context that it is called upon:
+A [map](/resources/stacks/bento/components/processors/mapping) definition only has one input parameter, which is the context that it is called upon:
 
 ```yaml
 map formatting {
@@ -16,7 +16,7 @@ root.b = this.b.apply("formatting")
 # Out: {"a":"(foo)","b":"(bar)"}
 ```
 
-However, we can use object literals in order to provide multiple [map](../components/processors/mapping.md) parameters. Imagine if we wanted a [map](../components/processors/mapping.md) that is the exact same as above, except the pattern is `[%v]` instead, with the potential for even more patterns in the future. To do that, we can pass an object with a field `value` with our target to [map](../components/processors/mapping.md) and a field `pattern` that allows us to specify the pattern to apply:
+However, we can use object literals in order to provide multiple map parameters. Imagine if we wanted a map that is the exact same as above, except the pattern is `[%v]` instead, with the potential for even more patterns in the future. To do that, we can pass an object with a field `value` with our target to map and a field `pattern` that allows us to specify the pattern to apply:
 
 ```yaml
 map formatting {
@@ -39,7 +39,7 @@ root.b = {
 
 ## Walking the Tree
 
-Sometimes it's necessary to perform a [mapping](../components/processors/mapping.md) on all values within an unknown tree structure. You can do that easily with recursive [mapping](../components/processors/mapping.md):
+Sometimes it's necessary to perform a mapping on all values within an unknown tree structure. You can do that easily with recursive mapping:
 
 ```yaml
 map unescape_values {
@@ -59,7 +59,7 @@ root = this.apply("unescape_values")
 
 ## Message Expansion
 
-Expanding a single message into multiple messages can be done by [mapping](../components/processors/mapping.md) messages into an array and following it up with an `unarchive` processor. For example, given documents of this format:
+Expanding a single message into multiple messages can be done by mapping messages into an array and following it up with an `unarchive` processor. For example, given documents of this format:
 
 ```json
 {
@@ -72,7 +72,7 @@ Expanding a single message into multiple messages can be done by [mapping](../co
 }
 ```
 
-We can pull `items` out to the root with `root = items` with a [`mapping`](../components/processors/mapping.md) processor and follow it with an `unarchive` processor to expand each element into its own independent message:
+We can pull `items` out to the root with `root = items` with a `mapping` processor and follow it with an `unarchive` processor to expand each element into its own independent message:
 
 ```yaml
 pipeline:
@@ -82,7 +82,7 @@ pipeline:
         format: json_array
 ```
 
-However, most of the time, we also need to [map](../components/processors/mapping.md) the elements before expanding them, and often that includes copying fields outside of our target array. We can do that with methods such as `map_each` and `merge`:
+However, most of the time, we also need to map the elements before expanding them, and often that includes copying fields outside of our target array. We can do that with methods such as `map_each` and `merge`:
 
 ```yaml
 root = this.items.map_each(ele -> this.without("items").merge(ele))
@@ -91,7 +91,7 @@ root = this.items.map_each(ele -> this.without("items").merge(ele))
 # Out: [{"content":"foo","id":"foobar"},{"content":"bar","id":"foobar"},{"content":"baz","id":"foobar"}]
 ```
 
-However, the above [mapping](../components/processors/mapping.md) is slightly inefficient as we would create a copy of our source object for each element with the `this.without("items")` part. A more efficient way to do this would be to capture that query within a variable:
+However, the above mapping is slightly inefficient as we would create a copy of our source object for each element with the `this.without("items")` part. A more efficient way to do this would be to capture that query within a variable:
 
 ```yaml
 let doc_root = this.without("items")
@@ -115,9 +115,9 @@ pipeline:
 
 ## Creating CSV
 
-Bento has a few different ways of outputting a stream of CSV data. However, the best way to do it is by converting the documents into CSV rows with [Bloblang](../components/processors/bloblang.md) as this gives you full control over exactly how the schema is generated, erroneous data is handled, and escaping of column data is performed.
+Bento has a few different ways of outputting a stream of CSV data. However, the best way to do it is by converting the documents into CSV rows with Bloblang as this gives you full control over exactly how the schema is generated, erroneous data is handled, and escaping of column data is performed.
 
-A common and simple use case is to simply flatten documents and write out the column values in alphabetical order. The first row we generate should also be prefixed with a row containing those column names. Here's a [mapping](../components/processors/mapping.md) that achieves this by using a `count` function to detect the very first invocation of the [mapping](../components/processors/mapping.md) in a stream pipeline:
+A common and simple use case is to simply flatten documents and write out the column values in alphabetical order. The first row we generate should also be prefixed with a row containing those column names. Here's a mapping that achieves this by using a `count` function to detect the very first invocation of the mapping in a stream pipeline:
 
 ```yaml
 map escape_csv {
@@ -139,7 +139,7 @@ let header = if count("rows_in_file") == 1 {
 root = $header + $kvs.map_each(kv -> kv.value.string().apply("escape_csv")).join(",")
 ```
 
-And with this [mapping](../components/processors/mapping.md) we can write the data to a newly created CSV file using an output with a simple `lines` codec:
+And with this mapping we can write the data to a newly created CSV file using an output with a simple `lines` codec:
 
 ```yaml
 output:
@@ -148,4 +148,4 @@ output:
     codec: lines
 ```
 
-Perhaps the first expansion of this [mapping](../components/processors/mapping.md) that would be worthwhile is to add an explicit list of column names, or at least confirm that the number of values in a row matches an expected count.
+Perhaps the first expansion of this mapping that would be worthwhile is to add an explicit list of column names, or at least confirm that the number of values in a row matches an expected count.

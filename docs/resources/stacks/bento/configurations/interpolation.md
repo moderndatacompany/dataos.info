@@ -1,4 +1,4 @@
-# Interpolation
+# Interpolation in Bento
 
 Bento allows you to dynamically set config fields with environment variables anywhere within a config file using the syntax `${<variable-name>}` (or `${<variable-name>:<default-value>}` in order to specify a default value). This is useful for setting environment-specific fields such as addresses:
 
@@ -18,7 +18,7 @@ If a literal string is required that matches this pattern (`${foo}`) you can esc
 
 ## Bloblang Queries
 
-Some Bento fields also support [Bloblang](../bloblang.md) function interpolations, which are much more powerful expressions that allow you to query the contents of messages and perform arithmetic. The syntax of a function interpolation is `${!<bloblang expression>}`, where the contents are a bloblang query (the right-hand-side of a bloblang map) including a range of [functions](../bloblang.md). For example, with the following config:
+Some Bento fields also support Bloblang function interpolations, which are much more powerful expressions that allow you to query the contents of messages and perform arithmetic. The syntax of a function interpolation is `${!<bloblang expression>}`, where the contents are a bloblang query (the right-hand-side of a bloblang map) including a range of [functions](/resources/stacks/bento/bloblang/functions). For example, with the following config:
 
 ```yaml
 output:
@@ -31,13 +31,13 @@ A message with the contents `{"topic":"foo","message":"hello world"}` would be
 
 If a literal string is required that matches this pattern (`${!foo}`), then, similar to environment variables, you can escape it with double brackets. For example, the string `${{!foo}}` would be read as the literal `${!foo}`.
 
-Bloblang supports arithmetic, boolean operators, coalesce, and mapping expressions. For more in-depth details about the language, [check out the docs](../bloblang.md).
+Bloblang supports arithmetic, boolean operators, coalesce, and mapping expressions. For more in-depth details about the language, [check out the docs](/resources/stacks/bento/bloblang/advanced_bloblang).
 
 ## Examples
 
 ### Reference Metadata
 
-A common usecase for interpolated functions is dynamic routing at the output level using metadata:
+A common use-case for interpolated functions is dynamic routing at the output level using metadata:
 
 ```yaml
 output:
