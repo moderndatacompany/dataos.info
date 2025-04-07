@@ -1,6 +1,6 @@
-# Message Batching
+# Message Batching in Bento
 
-Bento is able to join sources and sinks with sometimes conflicting batching behaviors without sacrificing its strong delivery guarantees. It's also able to perform powerful [processing functions](./window_processing.md) across batches of messages, such as grouping, archiving, and reduction. Therefore, batching within Bento is a mechanism that serves multiple purposes:
+Bento is able to join sources and sinks with sometimes conflicting batching behaviors without sacrificing its strong delivery guarantees. It's also able to perform powerful [processing functions](/resources/stacks/bento/configurations/window_processing) across batches of messages, such as grouping, archiving, and reduction. Therefore, batching within Bento is a mechanism that serves multiple purposes:
 
 1. [Performance (throughput)](#performance)
 2. [Grouped message processing](#grouped-message-processing)
@@ -42,7 +42,7 @@ output:
 
 Inputs that behave this way are documented as such and have a `batching` configuration block.
 
-Sometimes you may prefer to create your batches before processing in order to benefit from [batch wide processing](#grouped-message-processing), in which case, if your input doesn't already support [a batch policy](#batch-policy), you can instead use a [`broker`](../components/inputs/broker.md), which also allows you to combine inputs with a single batch policy:
+Sometimes you may prefer to create your batches before processing in order to benefit from [batch wide processing](#grouped-message-processing), in which case, if your input doesn't already support [a batch policy](#batch-policy), you can instead use a [`broker`](dataos.info/docs/resources/stacks/bento/components/inputs/broker), which also allows you to combine inputs with a single batch policy:
 
 ```yaml
 input:
@@ -92,7 +92,7 @@ output:
     path: docs/${! meta("kafka_partition") }/${! count("files") }-${! timestamp_unix_nano() }.tar.gz
 ```
 
-For more examples of batched (or windowed) processing, check out [this document](./window_processing.md).
+For more examples of batched (or windowed) processing, check out [this document](/resources/stacks/bento/configurations/window_processing).
 
 ## Compatibility
 
@@ -143,7 +143,7 @@ When an input or output component has a config field `batching`, that means it
 
 - The `byte_size` field is non-zero, and the total size of the batch in bytes matches or exceeds it (disregarding metadata.)
 - The `count` field is non-zero and the total number of messages in the batch matches or exceeds it.
-- A message added to the batch causes the [`check`](../bloblang.md) to return to `true`.
+- A message added to the batch causes the `check` to return to `true`.
 - The `period` field is non-empty, and the time since the last batch exceeds its value.
 
 This allows you to combine conditions:

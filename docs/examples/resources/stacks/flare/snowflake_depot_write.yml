@@ -11,7 +11,7 @@ workflow:
   dag:
     - name: write-snowflake-01
       title: Reading data and writing to snowflake
-      description: This job writes data to wnowflake
+      description: This job writes data to snowflake
       spec:
         tags:
           - Connect
@@ -22,11 +22,12 @@ workflow:
           job:
             explain: true
             inputs:
-            - name: city_connect
-              dataset: dataos://thirdparty01:none/city
-              format: csv
-              schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc
+              - name: city_connect
+                dataset: dataos://thirdparty01:none/city
+                format: csv
+                schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc
             logLevel: INFO
+            
             outputs:
               - name: finalDf
                 dataset: dataos://sanitysnowflake:public/snowflake_write_12?acl=rw

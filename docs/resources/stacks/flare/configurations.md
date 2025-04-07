@@ -6,139 +6,143 @@ The `stackSpec` configuration within a Flare Job provides a flexible way to defi
 ## Structure of Flare `stackSpec` section
 
 ```yaml
-stackSpec: # Flare Stack-specific section or mapping (mandatory)
+stackSpec:                                              # Flare Stack-specific section or mapping (mandatory)
 
-# Driver and Executor resources configuration
-  driver: # Driver configuration (optional)
-    coreLimit: 1000m # Core limit for the driver (optional)
-    cores: 1 # Number of cores for the driver (optional)
-    memory: 1024m # Memory allocation for the driver (optional)
-  executor: # Executor configuration (optional)
-    coreLimit: 1000m # Core limit for each executor (optional)
-    cores: 1 # Number of cores for each executor (optional)
-    instances: 1 # Number of executor instances (optional)
-    memory: 1024m # Memory allocation for each executor (optional)
 
-# Flare Job configuration
+  driver:                                               # Driver configuration (optional)
+    coreLimit: 1000m                                    # Core limit for the driver (optional)
+    cores: 1                                            # Number of cores for the driver (optional)
+    memory: 1024m                                       # Memory allocation for the driver (optional)
 
-  job: # Job configuration (mandatory)
-    logLevel: INFO # Application log level (optional)
-    explain: true # Flag to print Spark logical/physical plans (optional)
 
-# Input Dataset configurations (mandatory)
+  executor:                                             # Executor configuration (optional)
+    coreLimit: 1000m                                    # Core limit for each executor (optional)
+    cores: 1                                            # Number of cores for each executor (optional)
+    instances: 1                                        # Number of executor instances (optional)
+    memory: 1024m                                       # Memory allocation for each executor (optional)
+
+
+  job:                                                  # Job configuration (mandatory)
+    logLevel: INFO                                      # Application log level (optional)
+    explain: true                                       # Flag to print Spark logical/physical plans (optional)
+
+
     inputs:
-      - name: account_connect # Reference name for input dataset (mandatory)
-        dataset: dataos://gcdexport:none/gcdcore_account # Dataset address (mandatory)
-        query: select * from icebase.retail.city limit 100 # SQL query for data load (mandatory)
-        format: csv # Data format of the dataset (optional, default: iceberg)
-        isStream: true # Flag mandatory for streaming dataset (optional, default: false)
-        schemaType: "avro" # Schema type (optional, default: avro)
+      - name: account_connect                                         # Reference name for input dataset (mandatory)
+        dataset: dataos://gcdexport:none/gcdcore_account              # Dataset address (mandatory)
+        query: select * from icebase.retail.city limit 100            # SQL query for data load (mandatory)
+        format: csv                                                   # Data format of the dataset (optional, default: iceberg)
+        isStream: true                                                # Flag mandatory for streaming dataset (optional, default: false)
+        schemaType: "avro"                                            # Schema type (optional, default: avro)
         schemaPath: "dataos://thirdparty:none/somedir/someschema.avsc" # DataOS address to schema (optional)
-        schemaString: "{avsc_schema_file_content}" # Spark struct or Avro schema JSON (optional)
-        schemaSubject: custom-topic-value-schema-name # Subject name for schema registry (optional)
-        schemaId: 2 # Schema ID in schema registry (optional)
-        options: # Additional data load options (optional)
+        schemaString: "{avsc_schema_file_content}"                    # Spark struct or Avro schema JSON (optional)
+        schemaSubject: custom-topic-value-schema-name                 # Subject name for schema registry (optional)
+        schemaId: 2                                                   # Schema ID in schema registry (optional)
+        options:                                                      # Additional data load options (optional)
           branch: b1
           key1: value1
           key2: value2
-        incremental: # Incremental load configuration (optional)
-          context: incrinput
-          sql: select ws_sold_date_sk, ws_sold_time_sk, ws_item_sk, ws_bill_customer_sk, ws_web_page_sk, ws_ship_mode_sk, ws_order_number, ws_quantity, ws_list_price,ws_sales_price, ws_wholesale_cost, ws_net_profit from incrinput where ws_sold_date_sk between '$|start_date|' AND '$|end_date|'
-          keys:
-            - name: start_date # Incremental load start date (mandatory)
-              sql: select 2452641 # SQL to obtain start date (mandatory)
-            - name: end_date # Incremental load end date (mandatory)
-              sql: select 2452642 # SQL to obtain end date (mandatory)
-          state:
-            - key: start_date # State key for incremental load (mandatory)
-              value: end_date # State value for incremental load (mandatory)
 
-# Transformation Steps configurations (optional)
-    steps:
+
+        incremental:                                        # Incremental load configuration (optional)
+          context: incrinput
+          sql: select ws_sold_date_sk, ws_sold_time_sk, ws_item_sk, ws_bill_customer_sk, ws_web_page_sk, ws_ship_mode_sk, ws_order_number, ws_quantity, ws_list_price, ws_sales_price, ws_wholesale_cost, ws_net_profit from incrinput where ws_sold_date_sk between '$|start_date|' AND '$|end_date|'
+
+          
+          keys:
+            - name: start_date                              # Incremental load start date (mandatory)
+              sql: select 2452641                           # SQL to obtain start date (mandatory)
+            - name: end_date                                # Incremental load end date (mandatory)
+              sql: select 2452642                           # SQL to obtain end date (mandatory)
+          state:
+            - key: start_date                               # State key for incremental load (mandatory)
+              value: end_date                               # State value for incremental load (mandatory)
+
+
+    steps:                                                  # Transformation Steps configurations (optional)
       - sequence:
-          - name: top_100_accounts # Sequence name (mandatory)
-            doc: this step is to document # Step documentation (optional)
-            sql: select * from account_connect limit 100 # SQL for data transformation (mandatory)
-            classpath: io.dataos.custom.step.Step.class # Custom logic classpath (optional)
-            functions: # Data transformation functions (optional)
+          - name: top_100_accounts                          # Sequence name (mandatory)
+            doc: this step is to document                   # Step documentation (optional)
+            sql: select * from account_connect limit 100    # SQL for data transformation (mandatory)
+            classpath: io.dataos.custom.step.Step.class     # Custom logic classpath (optional)
+            functions:                                      # Data transformation functions (optional)
               - name: set_type
                 columns:
                   account_id: string
-            commands: # Commands to execute (optional)
+            commands:                                       # Commands to execute (optional)
               - name: persist
                 sequenceName: account_connect
                 mode: MEMORY_AND_DISK
 
-# Output Dataset configurations (optional)
-    outputs:
-      - name: top_100_accounts # Output dataset name (mandatory)
-        dataset: dataos://icebase:bronze/topaccounts?acl=rw # Dataset URI for output (mandatory)
-        format: iceberg # Output dataset format (optional, default: based on depot type)
-        driver: org.apache.jdbc.psql.Driver # JDBC driver class (optional)
-        title: Account # Output dataset title (optional)
-        description: Account data from GCD export # Dataset description (optional)
-        tags: # Dataset tags (optional)
+
+    outputs:                                                # Output Dataset configurations (optional)
+      - name: top_100_accounts                              # Output dataset name (mandatory)
+        dataset: dataos://icebase:bronze/topaccounts?acl=rw           # Dataset URI for output (mandatory)
+        format: iceberg                                     # Output dataset format (optional, default: based on depot type)
+        driver: org.apache.jdbc.psql.Driver                 # JDBC driver class (optional)
+        title: Account                                      # Output dataset title (optional)
+        description: Account data from GCD export           # Dataset description (optional)
+        tags:                                               # Dataset tags (optional)
           - Lookup-Tables
           - Accounts
-        options: # Output options (optional)
-          saveMode: overwrite # Data save mode (optional, default: overwrite)
+        options:                                            # Output options (optional)
+          saveMode: overwrite                               # Data save mode (optional, default: overwrite)
           extraOptions:
             branch: b2
             key1: value1
-          compressionType: gzip # Compression type (optional)
+          compressionType: gzip                             # Compression type (optional)
           sort:
-            mode: partition # Sort mode (optional)
+            mode: partition                                 # Sort mode (optional)
             columns:
               - name: version
                 order: desc
-          iceberg: # Iceberg specific options (optional)
+          iceberg:                                          # Iceberg specific options (optional)
             merge:
               onClause: old.id = new.id
               whenClause: matched then update set * when not matched then insert *
             properties:
               write.format.default: parquet
               write.metadata.compression-codec: gzip
-            partitionSpec: # Partition specification (optional)
+            partitionSpec:                                  # Partition specification (optional)
               - type: identity
                 column: version
               - type: day
                 column: timestamp
                 asColumn: day_partitioned
 
-# Streaming configuration (optional)
-    streaming:
-      triggerMode: ProcessingTime # Streaming trigger mode (mandatory)
-      triggerDuration: 10 seconds # Trigger duration (optional)
-      outputMode: append # Output mode for streaming (mandatory)
-      checkpointLocation: /tmp/checkpoint # Checkpoint location (mandatory)
-      forEachBatchMode: true # Flag for forEachBatchMode (optional)
-      extraOptions: # Additional streaming options (optional)
+
+    streaming:                                              # Streaming configuration (optional)
+      triggerMode: ProcessingTime                           # Streaming trigger mode (mandatory)
+      triggerDuration: 10 seconds                           # Trigger duration (optional)
+      outputMode: append                                    # Output mode for streaming (mandatory)
+      checkpointLocation: /tmp/checkpoint                   # Checkpoint location (mandatory)
+      forEachBatchMode: true                                # Flag for forEachBatchMode (optional)
+      extraOptions:                                         # Additional streaming options (optional)
         opt: val
 
-# Assertion configuration (optional)
-    assertions:
-      - column: order_amount # Target column for assertions (mandatory)
-        filter: brand_name == 'Urbane' # Filter condition for assertion (optional)
-        validFormat: 
-          regex: Awkward # Regular expression for validating format (optional)
-        tests: # List of tests to apply (mandatory)
-          - avg > 1000.00 # Test for average value (mandatory)
-          - max < 1000 # Test for maximum value (mandatory)
-          - max > 1000 # Additional test for maximum value (mandatory)
-      - sql: | # Custom SQL query for assertions (mandatory)
+
+    assertions:                                             # Assertion configuration (optional)
+      - column: order_amount                                # Target column for assertions (mandatory)
+        filter: brand_name == 'Urbane'                      # Filter condition for assertion (optional)
+        validFormat:
+          regex: Awkward                                    # Regular expression for validating format (optional)
+        tests:                                              # List of tests to apply (mandatory)
+          - avg > 1000.00                                   # Test for average value (mandatory)
+          - max < 1000                                      # Test for maximum value (mandatory)
+          - max > 1000                                      # Additional test for maximum value (mandatory)
+      - sql: |                                              # Custom SQL query for assertions (mandatory)
           SELECT
             AVG(order_amount) AS avg_order_amount,
             MAX(order_amount) AS max_order_amount
           FROM source
           WHERE brand_name = 'Awkward Styles'
-        tests: # List of tests to apply on SQL query results (mandatory)
-          - avg_order_amount > 1000 # Test for average order amount (mandatory)
-          - max_order_amount < 1000 # Test for maximum order amount (mandatory)
+        tests:                                              # List of tests to apply on SQL query results (mandatory)
+          - avg_order_amount > 1000                         # Test for average order amount (mandatory)
+          - max_order_amount < 1000                         # Test for maximum order amount (mandatory)
 
 
-# Actions configuraiton
-    actions:
-      {} # depends on action to be performed
+    actions:                                                # Actions configuration
+      {}                                                    # Depends on action to be performed
 
 ```
 
@@ -588,7 +592,7 @@ stackSpec:
 
 #### **`schemaType`**
 
-**Description:** The `schemaType` attribute specifies the type of schema provied in the `schemaPath` or `schemaString` attribute. It defines the structure of the input dataset. 
+**Description:** The `schemaType` attribute specifies the type of schema provide in the `schemaPath` or `schemaString` attribute. It defines the structure of the input dataset. 
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
@@ -878,7 +882,7 @@ stackSpec:
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| list of mappings | mandatory (for incremental processing) | none | valid state management configuraiton |
+| list of mappings | mandatory (for incremental processing) | none | valid state management configuration |
 
 **Example Usage:**
 
@@ -948,7 +952,7 @@ stackSpec:
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| mapping | opitional | none | input dataset configuration settings |
+| mapping | optional | none | input dataset configuration settings |
 
 **Example Usage:**
 
@@ -965,7 +969,7 @@ stackSpec:
 
 #### **`name`**
 
-**Description:** The `name` attribute specifies the unique identifier for the output dataset you want to sink as an output dataset. If only inputs are provided and no steps are defined, the output `name` should coincide with the input `name`. However, if steps are included in the configuration, the name of the output should be the same as the step `name` to be sinked. 
+**Description:** The `name` attribute specifies the unique identifier for the output dataset you want to sink as an output dataset. If only inputs are provided and no steps are defined, the output `name` should coincide with the input `name`. However, if steps are included in the configuration, the name of the output should be the same as the step `name` to be written to. 
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
@@ -1763,7 +1767,7 @@ stackSpec:
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| string | mandatory | none | persist / unpersist |
+| string | mandatory | none | persist / unpersisted |
 
 **Example Usage:**
 
