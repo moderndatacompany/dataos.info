@@ -1,22 +1,22 @@
-# mapping
+### Mapping Processor
 
-Executes a [Bloblang](../../bloblang.md) mapping on messages, creating a new document that replaces (or filters) the original message.
+Executes a [Bloblang](/resources/stacks/bento/bloblang/walkthrough/) mapping on each message, generating a new document that replaces or filters the original message.
 
 ```yaml
-# Config fields, showing default values
+# Config fields with default values
 label: ""
 mapping: ""
 ```
 
-Bloblang is a powerful language that enables a wide range of mapping, transformation, and filtering tasks. For more information, check out the docs.
+Bloblang is a domain-specific language designed for performing transformations, mappings, and filtering on structured message data. It enables the creation of complex document transformations in a concise and declarative manner.
 
-If your mapping is large and you'd prefer for it to live in a separate file, then you can execute a mapping directly from a file with the expression `from "<path>"`, where the path must be absolute or relative from the location that Bento is executed from.
+Larger mappings can be placed in external files and referenced using the expression `from "<path>"`, where the path must be absolute or relative to the directory from which Bento is executed.
 
-Note: This processor is equivalent to the [bloblang](./bloblang.md) one. The latter will be deprecated in a future release.
+This processor is equivalent to the legacy `bloblang` processor. The `bloblang` identifier remains valid but is planned for deprecation in a future release.
 
-## Input Document Immutability
+### Input Document Immutability
 
-Mapping operates by creating an entirely new object during assignments, this has the advantage of treating the original referenced document as immutable and, therefore, queryable at any stage of your mapping. For example, with the following mapping:
+The mapping processor generates a new document during assignment operations. This approach treats the original input document as immutable and allows it to be queried throughout the mapping. For example:
 
 ```go
 root.id = this.id
@@ -24,46 +24,26 @@ root.invitees = this.invitees.filter(i -> i.mood >= 0.5)
 root.rejected = this.invitees.filter(i -> i.mood < 0.5)
 ```
 
-Notice that we mutate the value of `invitees` in the resulting document by filtering out objects with a lower mood. However, even after doing so, we're still able to reference the unchanged original contents of this value from the input document in order to populate a second field. Within this mapping, we also have the flexibility to reference the mutable mapped document by using the keyword `root` (i.e. `root.invitees`) on the right-hand side instead.
+In the above example, although the `invitees` field is modified in the output document, the original value remains available for subsequent operations. This design is especially useful when constructing output documents with a structure significantly different from the input. In contrast, for minor changes where most of the document remains unaltered, the `mutation` processor may provide a more efficient alternative.
 
-Mapping documents is advantageous in situations where the result is a document with a dramatically different shape to the input document since we are effectively rebuilding the document in its entirety and might as well keep a reference to the unchanged input document throughout. However, in situations where we are only performing minor alterations to the input document, the rest of which is unchanged, it might be more efficient to use the `mutation` processor instead.
+### Example: Filtering Array Elements
 
-## Error Handling
-
-Bloblang mappings can fail, in which case the message remains unchanged, errors are logged, and the message is flagged as having failed, allowing you to use [standard processor error handling patterns](../../configurations/error_handling.md).
-
-However, Bloblang itself also provides powerful ways of ensuring your mappings do not fail by specifying desired fallback behavior, which you can read about in [this section](../../configurations/error_handling.md).
-
-## Mapping
-
-Given JSON documents containing an array of fans:
+Given the following JSON input:
 
 ```json
 {
-  "id":"foo",
-  "description":"a show about foo",
-  "fans":[
-    {"name":"bev","obsession":0.57},
-    {"name":"grace","obsession":0.21},
-    {"name":"ali","obsession":0.89},
-    {"name":"vic","obsession":0.43}
+  "id": "foo",
+  "description": "a show about foo",
+  "fans": [
+    {"name": "bev", "obsession": 0.57},
+    {"name": "grace", "obsession": 0.21},
+    {"name": "ali", "obsession": 0.89},
+    {"name": "vic", "obsession": 0.43}
   ]
 }
 ```
 
-We can reduce the documents down to just the ID and only those fans with an obsession score above 0.5, giving us:
-
-```json
-{
-  "id":"foo",
-  "fans":[
-    {"name":"bev","obsession":0.57},
-    {"name":"ali","obsession":0.89}
-  ]
-}
-```
-
-With the following config:
+To produce a document containing only the `id` and fans with an obsession score greater than 0.5:
 
 ```yaml
 pipeline:
@@ -72,3 +52,54 @@ pipeline:
         root.id = this.id
         root.fans = this.fans.filter(fan -> fan.obsession > 0.5)
 ```
+
+Resulting output:
+
+```json
+{
+  "id": "foo",
+  "fans": [
+    {"name": "bev", "obsession": 0.57},
+    {"name": "ali", "obsession": 0.89}
+  ]
+}
+```
+
+### Example: Aggregating Field Values
+
+Given the following input:
+
+```json
+{
+  "locations": [
+    {"name": "Seattle", "state": "WA"},
+    {"name": "New York", "state": "NY"},
+    {"name": "Bellevue", "state": "WA"},
+    {"name": "Olympia", "state": "WA"}
+  ]
+}
+```
+
+To extract the city names from Washington and combine them into a single string field:
+
+```yaml
+pipeline:
+  processors:
+    - mapping: |
+        root.Cities = this.locations.
+                        filter(loc -> loc.state == "WA").
+                        map_each(loc -> loc.name).
+                        sort().
+                        join(", ")
+```
+
+Resulting output:
+
+```json
+{"Cities": "Bellevue, Olympia, Seattle"}
+```
+
+### Error Handling
+
+Bloblang also supports explicit fallback behavior within mappings to minimize failure risk. Refer to the error handling section in the documentation for usage examples.
+If a Bloblang mapping fails, the original message remains unchanged, the error is logged, and the message is marked as failed. Standard [error handling mechanisms](/resources/stacks/bento/configurations/error_handling) can be applied to manage such failures.

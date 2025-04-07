@@ -1,4 +1,4 @@
-# Snowflake Depots
+# Snowflake Flare Configuration Templates
 
 To read/write data on the Snowflake data source, you first need to create a depot on top of it. In case you haven’t created a Snowflake Depot navigate to the below link: [Snowflake Depot](/resources/depot/depot_config_templates/snowflake/).
 
