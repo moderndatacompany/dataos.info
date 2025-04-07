@@ -21,13 +21,23 @@ Flare is a declarative [Stack](/resources/stacks/) for large-scale data processi
 
 ## How to create jobs using Flare Stack
 
-Whether you need to process data in batches or in a streaming fashion, Flare provides different job types to cater to your needs. You can explore the detailed documentation on creating Flare Jobs on the link below.
+Flare supports both batch and streaming data processing through distinct job types designed to meet varying operational requirements. Detailed instructions for creating Flare Jobs are available in the "[Create Flare Jobs](/resources/stacks/flare/creating_flare_jobs/)" documentation.
 
-[Create Flare Jobs](/resources/stacks/flare/creating_flare_jobs/)
 
 ## Types of Flare Jobs
 
 Flare Stack offers varied configuration to execute different types of [Jobs](/resources/workflow/#configure-the-job-specific-section). The details of each job are provided in the table below:
+
+
+| **Job Type**       | **Description**                                                                                                                                     | **Best Use Case**                                                                 | **Latency**         | **Cost**               |
+|--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|----------------------|------------------------|
+| **Batch Job**      | Processes all data every run, ensuring consistent performance. High latency due to full reprocessing.                                               | Small datasets or full reprocessing needed.                                        | High                 | High (for large data)   |
+| **Data Quality Job** | Validates data using user-defined assertions to ensure accuracy and fitness for purpose.                                                          | Business validation, compliance checks.                                            | Medium               | Medium                  |
+| **Incremental Job**| Processes only new or changed data since the last run, reducing computation.                                                                       | Large, frequently changing datasets.                                               | Low                  | Low (scales efficiently) |
+| **Stream Job**     | Continuously processes real-time data with very low latency requirements.                                                                          | Real-time use cases requiring <1-minute latency.                                   | Very Low             | Very High               |
+| **Action Job**     | Executes maintenance actions on depots using Iceberg format (e.g., compaction, cleanup).                                                           | Data maintenance tasks in Icebase or similar depots.                              | Depends on action     | Depends on action type  |
+
+
 
 ### **Batch Job**
 
@@ -75,7 +85,7 @@ The DataOS platform provides comprehensive support for executing maintenance act
 | [Data Quality Job](/resources/stacks/flare/job_types#data-quality-job) | Evaluates data quality based on business-specific validation rules (assertions).                                                      |
 | [Incremental Job](/resources/stacks/flare/job_types#incremental-job) | Computes only the changed rows or files of data since the last build, reducing overall computation and latency.        |
 | [Stream Job](/resources/stacks/flare/job_types#stream-job)      | Processes new data continuously with low latency, but incurs high computing costs and requires constant resource availability. |
-| [Action Job](/resources/stacks/flare/job_types#action-job)      | Performs maintenance actions on data stored in Iceberg format in any depot (including Icebase) | -->
+| [Action Job](/resources/stacks/flare/job_types#action-job)      | Performs maintenance actions on data stored in Iceberg format in any depot (including Icebase) |  -->
 
 <!-- Further information regarding Flare Jobs can be accessed [here](/resources/stacks/flare/job_types) -->
 

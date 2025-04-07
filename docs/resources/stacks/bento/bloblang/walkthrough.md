@@ -1,6 +1,6 @@
 # Bloblang Overview
 
-[Bloblang](../components/processors/bloblang.md) is an advanced mapping language designed for readability and flexibility in transforming complex input documents. It enables schema modifications and data restructuring within Bento and is intended for adoption by other tools as a general-purpose mapping language.
+Bloblang is an advanced mapping language designed for readability and flexibility in transforming complex input documents. It enables schema modifications and data restructuring within Bento and is intended for adoption by other tools as a general-purpose mapping language.
 
 In this guide, Bloblang is executed using a Bento Docker image. First pull the Bento's latest image using the following command:
 
@@ -149,7 +149,7 @@ root.foo.bar = this.message.uppercase().replace_all(old: "WORLD", new: this.mess
 root.foo."buz me".baz = "I like mapping"
 ```
 
-[Functions](../bloblang/functions.md) in Bloblang operate similarly to methods but do not require a target value. They are commonly used to extract external information, such as environment variables, or generate new data, such as timestamps or UUIDs.  
+[Functions](/resources/stacks/bento/bloblang/functions) in Bloblang operate similarly to methods but do not require a target value. They are commonly used to extract external information, such as environment variables, or generate new data, such as timestamps or UUIDs.  
 
 The following example demonstrates the addition of a function to the mapping:  
 
@@ -224,7 +224,7 @@ root = 5
 
 When assigning a value type to `root`, the output is returned as a raw value, meaning strings are not quoted. This enables Bloblang to generate outputs in various formats, including encrypted, encoded, or binary data.  
 
-Unstructured mapping also applies to input handling. Instead of referencing the structured input document with `this`, the entire input can be treated as a binary string using the [`content` function](../bloblang/functions.md). Modify the mapping as follows:  
+Unstructured mapping also applies to input handling. Instead of referencing the structured input document with `this`, the entire input can be treated as a binary string using the [`content` function](/resources/stacks/bento/bloblang/functions). Modify the mapping as follows:  
 
 ```go
 root = content().uppercase()
@@ -275,7 +275,7 @@ root.pet.treats = if this.pet.is_cute {
 }
 ```
 
-This is possible because field deletions are expressed as assigned values created with the [`deleted()` function](../bloblang/functions.md). This is cool but also in poor taste, treats should be allocated based on need, not cuteness!
+This is possible because field deletions are expressed as assigned values created with the [`deleted()` function](/resources/stacks/bento/bloblang/functions). This is cool but also in poor taste, treats should be allocated based on need, not cuteness!
 
 ### **Match Expression**
 
@@ -345,7 +345,7 @@ When an error occurs due to a type mismatch, Bloblang abandons the mapping and r
 failed assignment (line 1): cannot compare types string (from field `this.angry_peasants`) and number (from field `this.palace_guards`)
 ```  
 
-To proceed safely despite errors, the [`catch` method](../bloblang/methods.md) can be used. This method allows a fallback value to be specified if an error occurs. Since methods can be applied to any query, the arithmetic operation can be enclosed in brackets and `catch` applied to the entire expression:  
+To proceed safely despite errors, the [`catch` method](/resources/stacks/bento/bloblang/methods) can be used. This method allows a fallback value to be specified if an error occurs. Since methods can be applied to any query, the arithmetic operation can be enclosed in brackets and `catch` applied to the entire expression:  
 
 ```go
 root.in_trouble = (this.angry_peasants > this.palace_guards).catch(true)
@@ -399,7 +399,7 @@ This version is more granular and will capture each of the errors individually, 
 
 Errors can be useful in scenarios where invalid data should be handled separately, such as routing to a dead-letter queue or filtering out bad records. Common Bento error-handling patterns for such cases are covered in the error handling guide.  
 
-Bloblang provides multiple ways to create errors for data validation. Several [helper methods](../bloblang/methods.md) simplify field validation and type coercion. Try the following mapping to see them in action:  
+Bloblang provides multiple ways to create errors for data validation. Several [helper methods](/resources/stacks/bento/bloblang/methods) simplify field validation and type coercion. Try the following mapping to see them in action:  
 
 ```go
 root.foo = this.foo.number()
@@ -415,9 +415,9 @@ With some of these sample inputs:
 {"foo":10,"bar":"hello world","baz":[]}
 ```
 
-However, these methods don't cover all use cases. The general purpose error throwing technique is the [`throw` function](../bloblang/functions.md), which takes an argument string that describes the error. When it's called it will throw a mapping error that abandons the mapping.
+However, these methods don't cover all use cases. The general purpose error throwing technique is the [`throw` function](/resources/stacks/bento/bloblang/functions), which takes an argument string that describes the error. When it's called it will throw a mapping error that abandons the mapping.
 
-The [`type` method](../bloblang/methods.md) can be used to check a field’s data type. If the type does not match the expected value, an error can be triggered. This approach ensures data integrity by validating input before processing.  
+The [`type` method](/resources/stacks/bento/bloblang/methods) can be used to check a field’s data type. If the type does not match the expected value, an error can be triggered. This approach ensures data integrity by validating input before processing.  
 
 ```go
 root.foos = if this.user.foos.type() == "array" {
@@ -528,7 +528,7 @@ root.contents = this.thing.(article | comment | share).contents | "nothing"
 
 ## Advanced Methods
 
-Bloblang provides [advanced methods for manipulating](../bloblang/methods.md) structured data types, enabling operations such as mapping array elements and filtering object keys based on their values. These methods allow for efficient data transformation and handling complex mappings.  
+Bloblang provides [advanced methods for manipulating](/resources/stacks/bento/bloblang/methods) structured data types, enabling operations such as mapping array elements and filtering object keys based on their values. These methods allow for efficient data transformation and handling complex mappings.  
 
 To explore these features, update the input document to the following list:
 
@@ -568,11 +568,11 @@ root = this.things.filter(thing -> thing.is_cool && thing.quantity > this.num_fr
 
 When the mapping is executed, the output is reduced because the `filter` method applies a query to each element of the array. The context shifts to the current array element during evaluation. By capturing the context into a field (e.g., `thing`), the root of the input remains accessible via `this`, allowing for more flexible referencing within the query.
 
-The [`filter` method](../bloblang/methods.md) requires the query parameter to resolve to a boolean true or false, and if it resolves to true the element will be present in the resulting array, otherwise it is removed.
+The [`filter` method](/resources/stacks/bento/bloblang/methods) requires the query parameter to resolve to a boolean true or false, and if it resolves to true the element will be present in the resulting array, otherwise it is removed.
 
 The ability to apply a query argument across a range is a powerful feature of Bloblang. When working with complex structured data, advanced methods like `filter` and `map_each` become essential.  
 
-The [`map_each` method](../bloblang/methods.md) enables modification of each element in an array or each value in an object. Update the input document as follows:
+The [`map_each` method](/resources/stacks/bento/bloblang/methods) enables modification of each element in an array or each value in an object. Update the input document as follows:
 
 ```json
 {
@@ -585,7 +585,7 @@ The [`map_each` method](../bloblang/methods.md) enables modification of each ele
 }
 ```
 
-The input consists of an array of strings, where each element contains an identifier, a colon separator, and a comma-separated list of opinions. To transform each string into a structured object, the [`map_each` method](../bloblang/methods.md) can be applied with a mapping that extracts and organizes the components. Use the following mapping:
+The input consists of an array of strings, where each element contains an identifier, a colon separator, and a comma-separated list of opinions. To transform each string into a structured object, the [`map_each` method](/resources/stacks/bento/bloblang/methods) can be applied with a mapping that extracts and organizes the components. Use the following mapping:
 
 ```go
 root = this.talking_heads.map_each(raw -> {
@@ -681,7 +681,7 @@ Charlie will be upset but at least it's safe.
 
 Mappings should be validated with unit tests to ensure their reliability. Without proper testing, mappings can become unmanageable over time.  
 
-Bento provides [unit testing capabilities](../configurations/unit_testing.md) that can be applied to mappings. To begin, save a mapping in a file, such as `naughty_man.blobl`. The example from the reusable mappings section can be used as a reference:
+Bento provides [unit testing capabilities](../configurations/unit_testing) that can be applied to mappings. To begin, save a mapping in a file, such as `naughty_man.blobl`. The example from the reusable mappings section can be used as a reference:
 
 ```go
 map remove_naughty_man {
