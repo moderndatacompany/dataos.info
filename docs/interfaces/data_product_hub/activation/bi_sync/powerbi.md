@@ -1,4 +1,16 @@
-# Integrate semantic model with Power BI
+---
+title: Integrate semantic model with Power BI Desktop
+search:
+  boost: 4
+tags:
+  - PowerBI Desktop
+  - Power BI Sync
+  - PowerBI
+hide:
+  - tags
+---
+
+# Integrate semantic model with Power BI Desktop
 
 The following document outlines the process for integrating semantic model with Power BI Desktop.
 
@@ -30,7 +42,7 @@ Access the Home Page of DataOS. Click on Data Product Hub to explore the various
 
 ### **Step 2: Browse and select a Data Product**
 
-Browse the list of Data Products and select a specific Data Product to initiate integration with Power BI. For instance 'Productaffinity'.
+Browse the list of Data Products and select a specific Data Product to initiate integration with Power BI. For instance 'Product Affinity'.
 
 <img src="/resources/lens/bi_integration/powerbi(2).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 
@@ -155,7 +167,7 @@ The `file.zip` includes essential components for syncing a semantic model with P
 
 <aside class="callout">
 
-Ensure `file.zip` is fully extracted before opening. Failure to do so may result in missing file errors, as shown below:
+Ensure <code>file.zip</code> is fully extracted before opening. Failure to do so may result in missing file errors, as shown below:
 
 <div style="text-align: center;">
     <img src="/resources/lens/bi_integration/image.png" alt="Power BI Configuration" style="max-width: 25%; height: auto; border: 1px solid #000;">
@@ -176,23 +188,19 @@ curl --location --request POST 'https://tcp.liberal-donkey.dataos.app/lens2/sync
 
 **Step 2 Download the zip file:**  Once the command is executed, a zip file will be downloaded to the specified directory. The downloaded file should be unzipped. Three folders will be found inside, all of which are necessary for semantic synchronization with Power BI.
 
-<img src="/resources/lens/bi_integration/powerbi2.png" alt="Power BI Configuration" style="max-width: 40rem; height: auto; border: 1px solid #000;">
+<img src="/resources/lens/bi_integration/extracted_files.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 
-**Step 4 Open the Power BI file:** Open the Power BI file using Power BI Desktop.
+**Step 3 Open the Power BI file:** Open the Power BI file public_productaffinity using Power BI Desktop. Once opened, a prompt will appear asking for your credentials. Enter your DataOS username and API key to proceed.
 
-<img src="/resources/lens/bi_integration/powerbi2.png" alt="Power BI Configuration" style="max-width: 40rem; height: auto; border: 1px solid #000;">
-
-**Step 5 Enter credentials:**  After opening the file, a popup will prompt for credentials. The DataOS username and API key should be entered.
-
-<img src="/resources/lens/bi_integration/powerbi4.png" alt="Power BI Configuration" style="max-width: 40rem; height: auto; border: 1px solid #000;">
+<img src="/resources/lens/bi_integration/powerbi4.png" alt="Power BI Configuration" style="width:40rem; border: 1px solid black;">
 
 
-**Step 6 Connect to DataOS:** Click on the connect button. A popup will appear. Click Ok.
+**Step 4 Connect to DataOS:** Click on the connect button. A popup will appear. Click Ok.
 
 <img src="/resources/lens/bi_integration/powerbi6.png" alt="Power BI Configuration" style="max-width: 40rem; height: auto; border: 1px solid #000;">
 
 
-**Step 7 Access tables with dimensions and measures:** Upon successful connection, tables and views will be accessible, displaying dimensions and measures.
+**Step 5 Access tables with dimensions and measures:** Upon successful connection, tables and views will be accessible, displaying dimensions and measures.
 
 
 <img src="/resources/lens/bi_integration/powerbi7.png" alt="Power BI Configuration" style="max-width: 40rem; height: auto; border: 1px solid #000;">
