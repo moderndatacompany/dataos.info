@@ -182,7 +182,7 @@ To parse environment variables in the configuration file of a Resource, follow t
       dag:
         - name: 
           spec: 
-            stack: flare:5.0 
+            stack: flare:6.0 
             compute: 
             stackSpec:
               job:
@@ -216,7 +216,7 @@ To parse environment variables in the configuration file of a Resource, follow t
       dag:
         - name: 
           spec: 
-            stack: flare:5.0 
+            stack: flare:6.0 
             compute: 
             stackSpec:
               job:

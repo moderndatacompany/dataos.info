@@ -1,39 +1,50 @@
 version: v1
-name: connect-snowflake-read-write-02
+name: snowflake-write-01
 type: workflow
 tags:
   - Connect
   - read
   - write
-description: Jobs writes data to snowflake and reads from it
+description: Jobs writes data to snowflake and reads from thirdparty
 workflow:
   title: Connect Snowflake
   dag:
-    - name: write-snowflake-02
+    - name: write-snowflake-01
       title: Reading data and writing to snowflake
       description: This job writes data to snowflake
       spec:
         tags:
           - Connect
           - write
-        stack: flare:5.0
+        stack: flare:6.0
         compute: runnable-default
-        stackSpec:
+        flare:
           job:
             explain: true
             inputs:
+<<<<<<< HEAD
               - name: city_connect
                 dataset: dataos://thirdparty01:none/city
                 format: csv
                 schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc
+=======
+            - name: city_connect
+              dataset: dataos://thirdparty01:none/city
+              format: csv
+              schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc
+>>>>>>> d8af1f06408c2bff84884029d6619f6e5b35244f
             logLevel: INFO
             
             outputs:
-              - name: city_connect
-                dataset: dataos://snowflake01:public/city02?acl=rw
-                format: Snowflake
-                options:
-                  extraOptions:
-                    sfWarehouse: WAREHOUSE
+              - name: finalDf
+                dataset: dataos://sanitysnowflake:public/snowflake_write_12?acl=rw
+                format: snowflake
                 description: City data ingested from external csv
                 title: City Source Data
+                options:
+                  extraOptions:
+                    sfWarehouse: "TMDCWH"
+            steps:
+              - sequence:
+                  - name: finalDf
+                    sql: SELECT * FROM city_connect limit 10

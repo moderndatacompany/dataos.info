@@ -1,3 +1,9 @@
+---
+title: Integration with BI tools
+search:
+  exclude: true
+---
+
 # Integration with BI tools
 
 This module explores how a data analyst activates 'Product Affinity' data product within their organization’s data ecosystem. It enables you to connect the semantic model with various Business Intelligence (BI) tools. This synchronization facilitates real-time access to critical insights, empowering organizational stakeholders to make informed, data-driven decisions.

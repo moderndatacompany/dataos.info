@@ -14,7 +14,6 @@ In this case scenario, we syndicate the data from the DataOS internal managed de
 
 ```yaml
 version: v1
-version: v1
 name: syndct-fusd-of-tx
 type: workflow
 tags:
@@ -64,13 +63,13 @@ workflow:
                 - Syndicate
               title: Fused Offline Transactions
           steps:
-          - sequence:
-              - name: customer_01
-                sql: SELECT customer_index, transaction_header.store_id, explode(transaction_line_item)
-                  as line_item, store FROM processed_transactions
-              - name: syndicatePos
-                sql: SELECT customer_index, store_id, line_item.*, store.store_name, store.store_city,
-                  store.store_state FROM customer_01
+            - sequence:
+                - name: customer_01
+                  sql: SELECT customer_index, transaction_header.store_id, explode(transaction_line_item)
+                    as line_item, store FROM processed_transactions
+                - name: syndicatePos
+                  sql: SELECT customer_index, store_id, line_item.*, store.store_name, store.store_city,
+                    store.store_state FROM customer_01
           variables:
             keepSystemColumns: "false"
 ```

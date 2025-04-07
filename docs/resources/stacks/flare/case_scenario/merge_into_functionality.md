@@ -165,14 +165,4 @@ workflow:
                             write.metadata.compression-codec: gzip             
             sparkConf:  # spark configuration 
               - spark.sql.extensions: org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions  # mandatory for merge into function to work 
-      - name: dt-city  # datatool to update table metadata for Trino Query Engine 
-        spec: 
-          stack: toolbox 
-          stackSpec: 
-              dataset: dataos://icebase:test/"icebase"."test".city_merge_alok_111?acl=rw 
-              action: 
-                name: set_version 
-                value: latest   
-        dependencies:  
-          - city-merge
 ```

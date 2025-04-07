@@ -1,3 +1,9 @@
+---
+title: Power BI Service
+search:
+  exclude: true
+---
+
 # Power BI Service
 
 This document outlines the steps required to integrate Power BI with DataOS, ensuring a seamless connection to the Data Product Hub.
@@ -97,34 +103,36 @@ In Data Product Hub, choose a Data Product let's say `product-affinity` Navigate
 
 ### **Step 2: Extract the files**
 
-Once downloaded, locate the ZIP file in your file manager and extract it to your desired destination. The necessary files will then be available.
+After downloading, locate the ZIP file in file manager and extract it to the preferred destination.
 
 <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/pb_serv_02.png" alt="DPH" style="width:40rem; height:auto; border: 1px solid black;" />
   
-The folder stores the main components of a Power BI project for syncing the Lens Model (here Product Affinity), including folders like the.Report and .SemanticModel.
+The folder stores the main components of a Power BI project for syncing the Lens Model (here Product Affinity). Here is the brief description of each:
 
-- **public_productaffinity.Report:** This folder contains `definition.pbir` file related to the report definition in Power BI. These files define the visual representation of data, such as tables and charts, without storing actual data. They connect the semantic model and data sources to create the report views.
+This folder contains files that define the report's structure and visual elements.
 
-- **public_productaffinity.SemanticModel:** This folder contains files that define the underlying data model for your Power BI project. The semantic model plays a crucial role in managing how Power BI interacts with data, setting up relationships, hierarchies, and measures.
+- **public_productaffinity.Report:** This folder contains `definition.pbir` file related to the report definition in Power BI. It stores the report metadata such as the version and dataset reference in JSON format.
 
-    - **definition.bism:** This file represents the Business Intelligence Semantic Model (BISM). It defines the structure of your data, including data sources, relationships, tables, and measures for your Lens semantic model. The `.bism` file holds essential metadata that helps Power BI understand and query the data, forming the core of the data model for report creation and analysis.
+- **public_productaffinity.SemanticModel:** This folder contains files that define the underlying data model for Power BI project. The semantic model plays a crucial role in managing how Power BI interacts with data, setting up relationships, and measures.
 
-    - **model.bim:** Power BI uses the `.bim` file to generate queries and manage interactions with the dataset. When you build reports or dashboards in Power BI, it references this semantic model to ensure the correct structure is applied to the data.
+    - **definition.bism:** Contains the overall definition of a semantic model and core settings. This file also specifies the supported semantic model definition formats through the 'version' property.
 
-- **public_productaffinity.pbip:** This file serves as a Power BI project template or configuration file. Power BI uses files like `.pbip` or `.pbix` to encapsulate reports, datasets, and visualizations. The `.pbip` file ties together the semantic model and report definitions from the other folders, acting as the entry point for working on the project in Power BI Desktop or the Power BI service.
+    - **model.bim:** The model.bim file is a JSON file that contains the Tabular Model Scripting Language (TMSL) definition of a Power BI semantic model. It's used to create a database from scratch by defining objects such as measures, tables, and connection sources.
+
+- **public_productaffinity.pbip:** The `.pbip` file contains a pointer to a report folder, opening a `.pbip` opens the targeted report and model.
 
 
 ### **Step 4: Open the file in Power BI and connect**
 
-Open the `public_productaffinity` file in Power BI Desktop. A popup will appear prompting you to enter your 'DataOS username' and 'API key'.
+Open the `public_productaffinity` file in Power BI Desktop. A popup will appear prompting to enter 'DataOS username' and 'API key'.
 
 <!-- ![image.png](attachment:e0514197-9d8c-4961-80a6-634f3a94a543:image.png) -->
 
-After entering your credentials, click 'Connect'. A confirmation popup will appear; click 'OK' to proceed.
+After entering credentials, click 'Connect'. A confirmation popup will appear; click 'OK' to proceed.
 
 <!-- ![image.png](attachment:9512f7de-1358-4d44-938a-7416cea52ff2:image.png) -->
 
-Customize and create your report as required.
+Customize and create report as required.
 
 <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/pb_report_05.png" alt="DPH" style="width:40rem; height:auto; border: 1px solid black;" />
         
@@ -134,7 +142,7 @@ On the Home tab, select Publish.
 
 On the Publish to Power BI screen, choose My Workspace, and then select Select. Sign in to the Power BI service if necessary.
 
-When the Success message appears, select Open `productaffinity.pbip` in Power BI. If prompted, sign in to your Power BI service account to complete the process.
+When the Success message appears, select Open `productaffinity.pbip` in Power BI. If prompted, sign in to Power BI service account to complete the process.
 
 <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/pb_publish_06.png" alt="DPH" style="width:40rem; height:auto; border: 1px solid black;" />
     
@@ -181,14 +189,14 @@ To connect Power BI to the on-premises PostgreSQL interface via the data gateway
     - **General encryption**: The encrypted connection should be set to 'Not encrypted'.
 
 <aside class="callout">
-💡 To retrieve your API Key and Username, click your profile icon in the Data Product Hub interface and select 'Profile'. Then, navigate to the Tokens section. Click the eye icon to reveal and copy your API Key. Your Username is your User ID.
+💡 To retrieve the API Key and Username, click on the profile icon in the Data Product Hub interface and select 'Profile'. Then, navigate to the Tokens section. Click the eye icon to reveal and copy API Key. The Username of DataOS is User ID.
 
 <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/apikey.png" alt="API Key" width="800" height="400" />
 
 
 </aside>
 
-After filling out the required fields, click Add to create the connection.
+After filling out the required fields, click 'Add' to create the connection.
 
 1. In the Settings screen, verify that the data gateway is running under the configured name (e.g., `productaffinity-testing`). Click Apply.
     
@@ -211,12 +219,11 @@ After filling out the required fields, click Add to create the connection.
 
 - In Power BI, measures typically have an 'm_' prefix to indicate they represent a measure. For example, a measure calculating total revenue might be named `m_total_revenue`.
 - The connection is live, meaning any changes to the underlying data will be reflected in Power BI.
-- When schema changes occur, such as CRUD operations (Create, Read, Update, Delete) on dimensions, measures, or other elements of the semantic model, a re-sync is required. To prevent losing previously created reports after the re-sync, download the model folder from the Data Product Hub, extract the contents, and replace the existing folder with the new one.
-
+- When schema changes occur, such as CRUD operations (Create, Read, Update, Delete) on dimensions, measures, or other elements of the semantic model, a re-sync is required. To prevent losing previously created reports after the re-sync, download the new `.pbip` folder from the Data Product Hub, extract the zip file, and replace the existing folder with the new one.
 
 ## Best practices
 
-Adhering to best practices ensures that you effectively utilize the Data Product Hub and maintain compatibility with the latest features and updates. Following these guidelines will help optimize workflow, enhance performance, and prevent potential issues.
+Adhering to best practices ensures the effective utilization of the Data Product Hub and maintains compatibility with the latest features and updates. Following these guidelines will help optimize workflow, enhance performance, and prevent potential issues.
 
 ### **File handling**
 
@@ -230,9 +237,9 @@ It is important to select fields from tables that are directly related or logica
 
 ### **Connection reset**
 
-If you encounter a 'connection reset' error during Power BI sync:
+Upon encountering a 'connection reset' error during Power BI sync:
 
-- Go to the Home tab in Power BI Desktop.
+- Navigate to the Home tab in Power BI Desktop.
 - Click the Refresh button in the Queries section.
 
 <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/refresh_key.png" alt="DPH" style="width:25rem; border: 1px solid black;" />
@@ -241,7 +248,7 @@ This should resolve the error and restore the sync.
 
 ### **Unknown cluster**
 
-Whenever you encounter the error 'unknown cluster: <cluster_name>' as shown below, please check if the cluster has been deleted. If it has, redeploy the cluster. After redeploying the cluster, go to Power BI Desktop and click the 'Refresh' button to update the connection.
+Upon encountering the error 'unknown cluster: <cluster_name>' as shown below, check if the cluster has been deleted. If deleted, redeploy the cluster. After redeploying the cluster, navigate to Power BI Desktop and click the 'Refresh' button to update the connection.
 
 <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/cluster_error.png" alt="DPH" style="width:25rem; border: 1px solid black;" />
 
