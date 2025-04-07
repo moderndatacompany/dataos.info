@@ -5,72 +5,148 @@
 When setting up a semantic model, it is crucial to understand that the semantic model is part of the Data Product. Therefore, no need to create a separate Git repository. Instead, semantic model will be in the <code>/build</code> folder of the the Data Product's existing repository. 
 </aside>
 
-## Prerequisite
+## Pre-requisites for creating a semantic model
 
-CLI Version should be `dataos-cli 2.26.39` or greater. Check current CLI version using the below command:
+### **DataOS requirements**
 
-```bash
-dataos-ctl version
+Ensure you meet the following requirements specific to DataOS:
 
-# Expected_output
-  _____            _              ____     _____  
- |  __ \          | |            / __ \   / ____| 
- | |  | |   __ _  | |_    __ _  | |  | | | (___   
- | |  | |  / _` | | __|  / _` | | |  | |  \___ \  
- | |__| | | (_| | | |_  | (_| | | |__| |  ____) | 
- |_____/   \__,_|  \__|  \__,_|  \____/  |_____/  
-                                                  
-ctl-version     : dataos-cli 2.26.39 62d502dd7d957e7ed13ae5e750d4fa4fa5fca8d1
-product-version : DataOS® draco-1.22.12
-hub-fqdn        : dataos-training.dataos.app
-hub-tcp-fqdn    : tcp.dataos-training.dataos.app
-cloud-provider  : azure
-```
+1. To create and access all DataOS resources and the Data Product, a user must possess the `roles:id:data-dev` tag, or any tag designated by the organization for such access. To obtain this tag, please contact your DataOS Administrator. You can view the available tags by executing the following command in the DataOS CLI terminal. For more information on tags, please refer to the following link.
 
-Please reach out to your Modern executive for assistance in updating the CLI.
+    ```bash
+    dataos-ctl user get
+    ```
+
+    Expected output:
+
+    ```bash
+    INFO[0000] 😃 user get...                                
+    INFO[0001] 😃 user get...complete                        
+
+          NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+    ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+        iam groot  │  iamgroot   │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,                          
+                   │             │        │                      │ roles:id:user,                  
+                   │             │        │                      │ users:id:iamgroot 
+    ```
+
+2. Alternatively, instead of assigning the tag, a user can be assigned the particular use cases built for the specific purpose for Lens creation. Following are the use-cases for reading and creating Lens in DataOS. 
+
+      - `Read Lens`
+      - `Manage Lens`
+      - `View Lens2 App`
+      - `Manage Lens2 Backend`
+      - `Read Lens2 Backend`
+
+    Learn more about use cases by referring to this [link](/interfaces/bifrost/use_cases/).
+
+3. DataOS CLI Version should be `dataos-cli 2.26.39` or greater. Check current CLI version using the below command:
+
+    ```bash
+    dataos-ctl version
+    ```
+
+    Expected output:
+
+    ```bash
+      _____            _              ____     _____  
+    |  __ \          | |            / __ \   / ____| 
+    | |  | |   __ _  | |_    __ _  | |  | | | (___   
+    | |  | |  / _` | | __|  / _` | | |  | |  \___ \  
+    | |__| | | (_| | | |_  | (_| | | |__| |  ____) | 
+    |_____/   \__,_|  \__|  \__,_|  \____/  |_____/  
+                                                      
+    ctl-version     : dataos-cli 2.26.39 62d502dd7d957e7ed13ae5e750d4fa4fa5fca8d1
+    product-version : DataOS® draco-1.22.12
+    hub-fqdn        : dataos-training.dataos.app
+    hub-tcp-fqdn    : tcp.dataos-training.dataos.app
+    cloud-provider  : azure
+    ```
+
+    Please reach out to your Modern executive for assistance in updating the CLI.
+
+4. It is recommended that the configuration files of the semantic model or Lens be stored in a Bitbucket/Github repository for better collaboration, as shown below, while building the Data Product. 
+
+    ```
+    data-product-deployment
+    └──── data_product
+            ├── depot
+            │   └──depot.yaml
+            ├── scanner
+            │   ├── depot_scanner.yaml
+            │   └── dp_scanner.yaml
+            ├── semantic_model
+            │   ├── model
+            │   │   ├── sqls
+            │   │   │   └── sales.sql  # SQL script for table dimensions
+            │   │   ├── tables
+            │   │   │   └── table1.yml  # Logical table definition (dimensions, measures)
+            │   │   ├── views
+            │   │   │   └── view1.yml  # Logical views referencing tables
+            │   │   └── user_groups.yml  # User group policies for governance
+            │   └── lens_deployment.yaml
+            ├── bundle
+            │   └── bundle.yaml   
+            └── dp_deployment.yaml
+    ```
+
+    Notice that the semantic model directory, which is part of the Data Product, contains the Semantic Model (Lens) configuration. This includes SQL scripts for defining tables, logical views, user group policies, and Lens deployment manifest file needed for successful integration into the Data Product consumption layer. By storing these files in a version-controlled repository, teams can better manage, collaborate, and track changes to the Data Product’s components throughout its lifecycle.
+
+### **Snowflake requirement**
+
+Since Lens is created on Snowflake as the source, the data remains in the source, and queries are executed within the Snowflake system itself. Only the metadata is ingested into Data OS for the creation of the Data Product. This means Lens utilizes Snowflake’s native query engine to run queries directly on the Snowflake source.
+
+To ensure smooth query execution, sufficient computing and storage permissions are required. Learn more about access control in Snowflake by referring to this link.
+Sufficient computing and storage permissions are needed to run queries. Learn more about access control in Snowflake by referring to this [link](https://docs.snowflake.com/en/user-guide/security-access-control-privileges).
+
 
 ## Step 1: Set up a connection with source
 
-To set up a connection with the source, create Depot if the Depot has already been created and activated during the Design phase of the Data Product, skip this step. The Lens model will utilize the existing Depot and the associated Instance Secrets set up. Ensure that the Depot is properly connected to the correct data source and that you have the necessary access credentials (Instance Secrets) available for the Lens deployment.
+To set up a connection with the source, create Depot if the Depot has already been created and activated during the Design phase of the Data Product, skip this step. The semantic model will utilize the existing Depot and the associated Instance Secrets set up. Ensure that the Depot is properly connected to the correct data source and that you have the necessary access credentials (Instance Secrets) available for the Lens deployment.
 
 Before establishing a connection to the data source, an [Instance Secret](/resources/instance_secret/) must be created. This secret securely stores the credentials required for `read` (`r`) and `read write` (`rw`) access to the data source.
 
 ```yaml title="instance-secret-r.yml"
-# RESOURCE META SECTION
-name: <secret-name> # Secret Resource name (mandatory)
-version: v1 # Secret manifest version (mandatory)
-type: instance-secret # Type of Resource (mandatory)
-description: demo-secret read secrets for code repository # Secret Resource description (optional)
-layer: user # DataOS Layer (optional)
-
-# INSTANCE SECRET-SPECIFIC SECTION
+name: snowflake-r
+version: v1
+type: instance-secret
+description: "The purpose of secret to mount the snowflake"
+layer: user
 instance-secret:
-  type: key-value # Type of Instance-secret (mandatory)
-  acl: r # Access control list (mandatory)
-  data: # Data (mandatory)
-    GITSYNC_USERNAME: <code_repository_username>
-    GITSYNC_PASSWORD: <code_repository_password>
+  type: key-value-properties
+  acl: r
+  data:
+    username: "<username>" # username of the snowflake account
+    password: "<password>" # password of the snowflake account
 ```
 
 ```yaml title="instance-secret-rw.yml"
-# RESOURCE META SECTION
-name: <secret-name> # Secret Resource name (mandatory)
-version: v1 # Secret manifest version (mandatory)
-type: instance-secret # Type of Resource (mandatory)
-description: demo-secret read secrets for code repository # Secret Resource description (optional)
-layer: user # DataOS Layer (optional)
-
-# INSTANCE SECRET-SPECIFIC SECTION
+name: snowflake-rw
+version: v1
+type: instance-secret
+description: "The purpose of secret to mount the snowflake"
+layer: user
 instance-secret:
-  type: key-value # Type of Instance-secret (mandatory)
-  acl: rw # Access control list (mandatory)
-  data: # Data (mandatory)
-    GITSYNC_USERNAME: <code_repository_username>
-    GITSYNC_PASSWORD: <code_repository_password>
+  type: key-value-properties
+  acl: rw
+  data:
+    username: "<username>" # username of the snowflake account
+    password: "<password>" # password of the snowflake account
 ```
 
+The following information is required to connect the Snowflake with DataOS using Depot Resource:
 
-```yaml title="snowflake-depot.yml"
+| Field     | Description                                                                                      |
+|-----------|--------------------------------------------------------------------------------------------------|
+| username  | The username used to log in to the Snowflake account.                                            |
+| password  | The password associated with the username for authentication.                                    |
+| warehouse | The Snowflake warehouse that will be accessed.                                                   |
+| URL       | The URL to connect to the Snowflake instance, usually formatted as `https://<orgname>-<account_name>.snowflakecomputing.com`. |
+| database  | The specific Snowflake database to be used.                                                      |
+
+After configuring Depot with the above configurations the Depot manifest file look as follows:
+
+```yaml title="snowflake-depot.yml" hl_lines="22-27"
 name: snowflake-depot
 version: v2alpha
 type: depot
@@ -100,7 +176,7 @@ depot:
   source: sftest
 ```
 
-## Step 2: Prepare the Lens model folder
+## Step 2: Prepare the semantic model folder
 
 After successfully setting up the connection with source, organize the semantic model folder with the following structure to define tables, views, and governance policies:
 
@@ -114,9 +190,10 @@ model
 │   └── sample_view.yml  # Logical views referencing tables
 └── user_groups.yml  # User group policies for governance
 ```
+
 ### **Load data from the data source**
 
-In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure the SQL dialect matches snowflake syntax. Format table names as `schema.table`.
+In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure the SQL dialect matches Snowflake syntax. Format table names as `schema.table`.
 
 For example, a simple data load might look as follows:
 
@@ -220,7 +297,7 @@ To know more about the views click [here](/resources/lens/views/).
 
 ### **Create user groups**
 
-This YAML manifest file is used to manage access levels for the semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, there is a 'default' user group in the YAML file that includes all users.
+This YAML manifest file is used to manage access levels for the semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model. By default, there is a 'default' user group in the YAML file that includes all users.
 
 ```yaml
 user_groups:
@@ -233,7 +310,7 @@ To know more about the User groups click [here](/resources/lens/user_groups_and_
 
 ## Step 3: Deployment manifest file
 
-After setting up the Lens model folder, the next step is to configure the deployment manifest. Below is the YAML template for configuring a Lens deployment.
+After setting up the semantic model folder, the next step is to configure the deployment manifest. Below is the YAML template for configuring a Lens deployment.
 
 ```yaml
 # RESOURCE META SECTION
@@ -269,7 +346,13 @@ Each section of the YAML template defines key aspects of the Lens deployment. Be
 
       * **Source type:**  The `type` attribute in the `source` section must be explicitly set to `depot`.
 
-      * **Source name:** The `name` attribute in the `source` section should specify the name of the snowflake Depot created.
+      * **Source name:** The `name` attribute in the `source` section should specify the name of the Snowflake Depot created.
+
+<aside class="callout">
+
+When creating a semantic model (Lens) on a Snowflake Depot, the data remains in the source, and the query is executed within the Snowflake system itself. Only the metadata is ingested into the DataOS Metis. This means that Lens utilizes Snowflake’s native query engine for executing queries directly on the Snowflake source.
+
+</aside>
 
 * **Setting Up Compute and Secrets:**
 
@@ -279,13 +362,13 @@ Each section of the YAML template defines key aspects of the Lens deployment. Be
 
 * **Defining Repository:**
 
-      * **`url`** The `url` attribute in the repo section specifies the Git repository where the Lens model files are stored. For instance, if your repo name is lensTutorial then the repo `url` will be  [https://bitbucket.org/tmdc/lensTutorial](https://bitbucket.org/tmdc/lensTutorial)
+      * **`url`** The `url` attribute in the repo section specifies the Git repository where the semantic model files are stored. For instance, if your repo name is lensTutorial then the repo `url` will be  [https://bitbucket.org/tmdc/lensTutorial](https://bitbucket.org/tmdc/lensTutorial)
 
-      * **`lensBaseDir`:**  The `lensBaseDir` attribute refers to the directory in the repository containing the Lens model. Example: `sample/lens/source/depot/snowflake/model`.
+      * **`lensBaseDir`:**  The `lensBaseDir` attribute refers to the directory in the repository containing the semantic model. Example: `sample/lens/source/depot/snowflake/model`.
 
       * **`secretId`:**  The `secretId` attribute is used to access private repositories (e.g., Bitbucket, GitHub) . It specifies the secret needed to securely authenticate and access the repository.
 
-      * **`syncFlags`**:  Specifies additional flags to control repository synchronization. Example: `--ref=dev` specifies that the Lens model resides in the `dev` branch.
+      * **`syncFlags`**:  Specifies additional flags to control repository synchronization. Example: `--ref=dev` specifies that the semantic model resides in the `dev` branch.
 
 * **Configuring API, Worker and Metric Settings (Optional):** Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
 
@@ -312,9 +395,10 @@ After configuring the deployment file with the necessary settings and specificat
 
 <aside class="callout">
 
-Once the Lens Resource is applied and all configurations are correctly set up, the Lens model will be deployed. Upon deployment, a Lens Service is created in the backend, which may take some time to initialize.
+Once the Lens Resource is applied and all configurations are correctly set up, the semantic model will be deployed. Upon deployment, a Lens Service is created in the backend, which may take some time to initialize.
 
-To verify whether the Lens Service is running, execute the following command. The Service name follows the pattern: **`<lens-name>-api`**
+To verify whether the Lens Service is running, execute the following command. The Service name follows the pattern: <strong><code>&lt;lens-name&gt;-api</code></strong>
+
 
 Ensure Service is active and running before proceeding to the next steps.
 
@@ -330,3 +414,4 @@ INFO[0002] 🔍 get...complete
 ```
 
 </aside>
+
