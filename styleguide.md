@@ -734,3 +734,7 @@ title: Lens
 search:
   exclude: true
 ---
+
+# bakcticks inside HTML callout block
+
+- Use <code> this </code> tags.
