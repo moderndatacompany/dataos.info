@@ -1,54 +1,76 @@
 version: v1
-name: standalone-read-bigquery
+name: wf-policy-details-data-ingestion
 type: workflow
 tags:
-  - standalone
-  - readJob
-  - bigquery
-description: Sample job
+  - Tier.Gold
+  - Domain.Sales
+description:  The workflow transforms and cleans data from  source, ensuring it aligns with Lakehouse schema standards. After transformations, the data is ingested into Lakehouse, enabling reliable access for analytics and downstream applications.
 workflow:
+  title: Policy Details Data Ingestion 
   dag:
-    - name: city-bigquery-read-01
-      title: Sample Transaction Data Ingester
-      description: The job ingests customer data from Bigquery to file source
+    - name: wf-policy-details-ingestion
+      title: Policy Details Data Ingestion Process
+      description: The DAG for Data Transformation and Ingestion automates the process of transforming and cleaning data before loading it into the target system, ensuring it is ready for analysis and reporting.
       spec:
         tags:
-          - standalone
-          - readJob
-          - bigquery
-        stack: flare:3.0
+          - Domain.Sales
+        stack: flare:6.0
         compute: runnable-default
-        tier: connect
-        flare:
+        stackSpec:
+          driver:
+            coreLimit: 1050m
+            cores: 1
+            memory: 1200m
+          executor:
+            coreLimit: 1400m
+            cores: 1
+            instances: 1
+            memory: 1600m 
           job:
-            explain: true
-            logLevel: INFO
-
-            inputs: # Read from Bigquery
-              - name: transactions_connect
-                dataset: dataos://sanitybigquery:dev/bigquery_write_csv_12
+            explain: true  
+            inputs:
+              - name: input_data
+                dataset: dataos://lakehouse:retail/customers?acl=rw
                 format: bigquery
 
-
-            outputs: # Write to Local System
+            logLevel: INFO
+            outputs:
               - name: finalDf
-                outputType: file
-                file:
-                  schemaName: retail
-                  tableName: transactions_standalone_readbq02
-                  format: Iceberg
-                  warehousePath: /data/examples/dataout/bigquerydata
-                  options:
-                    saveMode: append
+                dataset: dataos://lakehouse:sample/customers?acl=rw
+                format: Iceberg
 
+                options:
+                  saveMode: overwrite
+                  iceberg:                              
+                    properties:
+                      write.format.default: parquet
+                      write.metadata.compression-codec: snappy
+                title: Policy Details Data Transformations
+               
             steps:
               - sequence:
                   - name: finalDf
-                    sql: SELECT * FROM transactions_connect LIMIT 1
+                    sql: 
+                      SELECT 
+                          *
+                      from input_data
 
-                functions:
-                  - name: any_date 
-                    column: {{date_string_column_name}} 
-                    asColumn: {{column_name}} 
-                    rule: 
-                      - "【(?<year>\\d{4})\\W{1}(?<month>\\d{1,2})\\W{1}(?<day>\\d{1,2})[^\\d]? \\W*(?:at )?(?<hour>\\d{1,2}):(?<minute>\\d{1,2})(?::(?<second>\\d{1,2}))?(?:[.,](?<ns>\\d{1,9}))?(?<zero>z)?】"
+                    functions:
+                      - name: cleanse_column_names  #check for 
+                      - name: change_column_case 
+                        case: lower
+
+                      - name: set_type
+                        columns:
+                          policy_holder_id  : int
+                          annual_mileage_estimate: int
+
+                      - name: any_timestamp
+                        column: ts_customer
+                        asColumn: ts_customer
+                        timezone: Asia/Kolkata        
+
+                      - name: change_case
+                        case: uppercase
+                        column: version
+

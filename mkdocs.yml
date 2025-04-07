@@ -366,6 +366,7 @@ nav:
               - Minerva: resources/lens/data_sources/minerva.md
               - Postgres: resources/lens/data_sources/postgres.md
               - Redshift: resources/lens/data_sources/awsredshift.md
+              - Snowflake: resources/lens/data_sources/snowflake.md
               - Themis: resources/lens/data_sources/themis.md
           - Exploration:
             - Using GraphQL: 
@@ -382,7 +383,9 @@ nav:
             # - Using Iris dashboard: resources/lens/exploration_of_lens_using_iris_dashboard.md
           - BI Integrations:
           #  - API Endpoints and Scopes: resources/lens/api_endpoints_and_scopes.md
-            - Power BI: resources/lens/bi_integration/powerbi.md
+            - Power BI:
+                - Power BI Desktop: interfaces/data_product_hub/activation/bi_sync/powerbi.md
+                - Power BI Service: interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service.md
             - Superset: resources/lens/bi_integration/superset.md
             - Tableau: resources/lens/bi_integration/tableau.md                
             # - Supported Data Quality Checks: resources/lens/supported_data_quality_checks.md
@@ -499,8 +502,8 @@ nav:
             - resources/stacks/cli_stack/index.md
           - Container: 
             - resources/stacks/container/index.md
-          # - Data Toolbox: 
-          #   - resources/stacks/data_toolbox/index.md
+          - Data Toolbox: 
+            - resources/stacks/data_toolbox/index.md
           - DBT: 
             - resources/stacks/dbt/index.md
           - Flare: 
@@ -606,18 +609,20 @@ nav:
     - Operator: getting_started/operator/index.md
   - Data Product: 
     - products/data_product/index.md
+    - Core Concepts: products/data_product/core_concepts.md
     - Data Product Lifecycle:
       - products/data_product/how_to_guides/index.md
-      - Design: products/data_product/how_to_guides/design.md
-      - Build: products/data_product/how_to_guides/build.md
-      - Deploy: products/data_product/how_to_guides/deploy.md
-      - Iterate: products/data_product/how_to_guides/iterate.md
+      - Design Phase: products/data_product/how_to_guides/design.md
+      - Build Phase: products/data_product/how_to_guides/build.md
+      - Deploy Phase: products/data_product/how_to_guides/deploy.md
+      - Iteration & Optimization: products/data_product/how_to_guides/iterate.md
+    - Data Product Examples:
+      - Building from Scratch with Snowflake: products/data_product/examples/firstdp.md
+      - Using DataOS Lakehouse as a Source: products/data_product/templates/product_affinity.md
+    - Configurations: products/data_product/configurations.md 
     - Recipes: 
       - Deploy Data Product using CI/CD pipeline: products/data_product/recipes/ci_cd.md
-    - Examples:
-      - Product affinity Data Product: products/data_product/templates/product_affinity.md
-    - Configurations: products/data_product/configurations.md   
-    - Core Concepts: products/data_product/core_concepts.md
+
   - Glossary: glossary/index.md
   - Learn:
     - learn/index.md

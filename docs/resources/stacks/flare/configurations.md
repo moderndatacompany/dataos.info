@@ -405,8 +405,63 @@ stackSpec:
   job:
     logLevel: INFO
 ```
+---
+
+### **`showPreviewLines`**
+
+
+**Description:** The `showPreviewLines` attribute print the number of records in table format in the driver logs.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| mapping | mandatory | none | input dataset configuration settings |
+
+**Example Usage:**
+
+
+```yaml
+stackSpec:
+  job:
+    logLevel: INFO
+    showPreviewLines: 10
+    inputs: 
+      - name: account_connect
+        dataset: dataos://icebase:retail/city
+        format: iceberg
+        # ...other input configurations
+```
+
+**Output**
+
+```bash
+2025-03-27 15:09:17,965 INFO  [main] org.apache.spark.scheduler.DAGScheduler: Job 1 finished: show at Sql.scala:56, took 0.044816 s
+2025-03-27 15:09:17,972 INFO  [dispatcher-BlockManagerMaster] org.apache.spark.storage.BlockManagerInfo: Removed broadcast_0_piece0 on 192.168.1.10:56660 in memory (size: 34.4 KiB, free: 2.2 GiB)
+2025-03-27 15:09:17,973 INFO  [main] org.apache.spark.sql.catalyst.expressions.codegen.CodeGenerator: Code generated in 5.623167 ms
+2025-03-27 15:09:17,975 INFO  [dispatcher-BlockManagerMaster] org.apache.spark.storage.BlockManagerInfo: Removed broadcast_2_piece0 on 192.168.1.10:56660 in memory (size: 34.4 KiB, free: 2.2 GiB)
++-------+--------+-------------+--------------+----------+----------+------------+
+|city_id|zip_code|city_name    |county_name   |state_code|state_name|version     |
++-------+--------+-------------+--------------+----------+----------+------------+
+|CITY1  |36091   |Verbena      |Autauga County|AL        |Alabama   |202503271509|
+|CITY2  |36758   |Plantersville|Autauga County|AL        |Alabama   |202503271509|
+|CITY3  |36006   |Billingsley  |Autauga County|AL        |Alabama   |202503271509|
+|CITY4  |36067   |Prattville   |Autauga County|AL        |Alabama   |202503271509|
+|CITY5  |36701   |Selma        |Autauga County|AL        |Alabama   |202503271509|
+|CITY6  |36003   |Autaugaville |Autauga County|AL        |Alabama   |202503271509|
+|CITY7  |36008   |Booth        |Autauga County|AL        |Alabama   |202503271509|
+|CITY8  |36068   |Prattville   |Autauga County|AL        |Alabama   |202503271509|
+|CITY9  |36022   |Deatsville   |Autauga County|AL        |Alabama   |202503271509|
+|CITY10 |36703   |Selma        |Autauga County|AL        |Alabama   |202503271509|
++-------+--------+-------------+--------------+----------+----------+------------+
+only showing top 10 rows
+ 
+2025-03-27 15:09:17,975 INFO  [main] io.dataos.flare.step.Step: calculating sequence cities_1
+2025-03-27 15:09:17,976 INFO  [dispatcher-BlockManagerMaster] org.apache.spark.storage.BlockManagerInfo: Removed broadcast_1_piece0 on 192.168.1.10:56660 in memory (size: 6.4 KiB, free: 2.2 GiB)
+2025-03-27 15:09:17,982 INFO  [main] io.dataos.flare.step.actions.Sql: previewing step: cities_1
+```
+
 
 ---
+
 
 ### **`inputs`**
 

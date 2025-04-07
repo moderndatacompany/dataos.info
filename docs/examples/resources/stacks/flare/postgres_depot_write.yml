@@ -1,5 +1,6 @@
+# creds depends upon the env refer to default schema public
 version: v1
-name: postgres-read-write
+name: postgres-write-01
 type: workflow
 tags:
   - bq
@@ -8,26 +9,27 @@ description: This job read and write data from to postgres
 title: Read Write Postgres
 workflow:
   dag:
-    - name: write-postgres
+    - name: write-postgres-01
       title: Write Postgres
-      description: This job write data from postgres
+      description: This job write data to postgres
       spec:
         tags:
           - Connect
-        stack: flare:5.0
+        stack: flare:6.0
         compute: runnable-default
-        stackSpec:
+
+        flare:
           job:
             explain: true
             inputs:
-              - name: input
+              - name: city_connect
                 dataset: dataos://thirdparty01:none/city
                 format: csv
                 schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc
             logLevel: INFO
             outputs:
               - name: input
-                dataset: dataos://sanitypostgresalok02:public/postgres_write?acl=rw
+                dataset: dataos://sanitypostgres:public/postgres_write_12?acl=rw
                 driver: org.postgresql.Driver
                 format: jdbc
                 options:
@@ -36,3 +38,9 @@ workflow:
                 tags:
                   - Connect
                 title: Postgres Dataset
+            steps:
+              - sequence:
+                  - name: input
+                    doc: Pick all columns from cities and add version as yyyyMMddHHmm formatted
+                      timestamp.
+                    sql: SELECT * FROM city_connect limit 10             

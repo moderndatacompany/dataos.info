@@ -1,15 +1,76 @@
-# Connecting to snowflake Depot
+# Creating a semantic model on Snowflake Depot
+
+<aside class="callout">
+
+When setting up a semantic model, it is crucial to understand that the semantic model is part of the Data Product. Therefore, no need to create a separate Git repository. Instead, semantic model will be in the <code>/build</code> folder of the the Data Product's existing repository. 
+</aside>
 
 ## Prerequisite
 
-CLI Version should be `dataos-cli 2.26.39-dev` or greater.
+CLI Version should be `dataos-cli 2.26.39` or greater. Check current CLI version using the below command:
+
+```bash
+dataos-ctl version
+
+# Expected_output
+  _____            _              ____     _____  
+ |  __ \          | |            / __ \   / ____| 
+ | |  | |   __ _  | |_    __ _  | |  | | | (___   
+ | |  | |  / _` | | __|  / _` | | |  | |  \___ \  
+ | |__| | | (_| | | |_  | (_| | | |__| |  ____) | 
+ |_____/   \__,_|  \__|  \__,_|  \____/  |_____/  
+                                                  
+ctl-version     : dataos-cli 2.26.39 62d502dd7d957e7ed13ae5e750d4fa4fa5fca8d1
+product-version : DataOS® draco-1.22.12
+hub-fqdn        : dataos-training.dataos.app
+hub-tcp-fqdn    : tcp.dataos-training.dataos.app
+cloud-provider  : azure
+```
+
+Please reach out to your Modern executive for assistance in updating the CLI.
+
+## Step 1: Set up a connection with source
+
+To set up a connection with the source, create Depot if the Depot has already been created and activated during the Design phase of the Data Product, skip this step. The Lens model will utilize the existing Depot and the associated Instance Secrets set up. Ensure that the Depot is properly connected to the correct data source and that you have the necessary access credentials (Instance Secrets) available for the Lens deployment.
+
+Before establishing a connection to the data source, an [Instance Secret](/resources/instance_secret/) must be created. This secret securely stores the credentials required for `read` (`r`) and `read write` (`rw`) access to the data source.
+
+```yaml title="instance-secret-r.yml"
+# RESOURCE META SECTION
+name: <secret-name> # Secret Resource name (mandatory)
+version: v1 # Secret manifest version (mandatory)
+type: instance-secret # Type of Resource (mandatory)
+description: demo-secret read secrets for code repository # Secret Resource description (optional)
+layer: user # DataOS Layer (optional)
+
+# INSTANCE SECRET-SPECIFIC SECTION
+instance-secret:
+  type: key-value # Type of Instance-secret (mandatory)
+  acl: r # Access control list (mandatory)
+  data: # Data (mandatory)
+    GITSYNC_USERNAME: <code_repository_username>
+    GITSYNC_PASSWORD: <code_repository_password>
+```
+
+```yaml title="instance-secret-rw.yml"
+# RESOURCE META SECTION
+name: <secret-name> # Secret Resource name (mandatory)
+version: v1 # Secret manifest version (mandatory)
+type: instance-secret # Type of Resource (mandatory)
+description: demo-secret read secrets for code repository # Secret Resource description (optional)
+layer: user # DataOS Layer (optional)
+
+# INSTANCE SECRET-SPECIFIC SECTION
+instance-secret:
+  type: key-value # Type of Instance-secret (mandatory)
+  acl: rw # Access control list (mandatory)
+  data: # Data (mandatory)
+    GITSYNC_USERNAME: <code_repository_username>
+    GITSYNC_PASSWORD: <code_repository_password>
+```
 
 
-## Step 1: Create the snowflake Depot
-
-If the Depot is not active, you need to create one using the provided template.
-
-```yaml
+```yaml title="snowflake-depot.yml"
 name: snowflake-depot
 version: v2alpha
 type: depot
@@ -41,7 +102,7 @@ depot:
 
 ## Step 2: Prepare the Lens model folder
 
-Organize the Lens model folder with the following structure to define tables, views, and governance policies:
+After successfully setting up the connection with source, organize the semantic model folder with the following structure to define tables, views, and governance policies:
 
 ```
 model
@@ -121,6 +182,7 @@ tables:
         sql: id
         description: Total number of orders.
 ```
+Know more about [dimensions](/resources/lens/concepts/#dimensions) and [measures](/resources/lens/concepts/#measures).
 
 #### **Add segments to filter**
 
@@ -154,9 +216,10 @@ views:
           - customer_segments
 ```
 
-To know more about the views click [here](https://dataos.info/resources/lens/views/).
+To know more about the views click [here](/resources/lens/views/).
 
 ### **Create user groups**
+
 This YAML manifest file is used to manage access levels for the semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, there is a 'default' user group in the YAML file that includes all users.
 
 ```yaml
@@ -246,3 +309,24 @@ After configuring the deployment file with the necessary settings and specificat
     INFO[0001] 🔧 applying(curriculum) sales360:v1alpha:lens...created 
     INFO[0001] 🛠 apply...complete
     ```
+
+<aside class="callout">
+
+Once the Lens Resource is applied and all configurations are correctly set up, the Lens model will be deployed. Upon deployment, a Lens Service is created in the backend, which may take some time to initialize.
+
+To verify whether the Lens Service is running, execute the following command. The Service name follows the pattern: **`<lens-name>-api`**
+
+Ensure Service is active and running before proceeding to the next steps.
+
+```bash
+dataos-ctl get -t service -n sales-insights-lens-api -w public
+# Expected output:
+INFO[0000] 🔍 get...                                     
+INFO[0002] 🔍 get...complete                             
+
+           NAME           | VERSION |  TYPE   | WORKSPACE | STATUS |  RUNTIME  |    OWNER     
+--------------------------|---------|---------|-----------|--------|-----------|--------------
+  sales360-lens-api | v1      | service | public    | active | running:1 | iamgroot
+```
+
+</aside>

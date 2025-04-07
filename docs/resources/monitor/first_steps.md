@@ -186,7 +186,7 @@ INFO[0001] 🔍 monitor...complete
 
          NAME        | VERSION |  TYPE   | WORKSPACE |    OWNER     
 ---------------------|---------|---------|-----------|--------------
-  monitorthemisnew01 | v1alpha | monitor | public    | piyushjoshi  
+  monitorthemisnew01 | v1alpha | monitor | public    | iamgroot  
 
   STATUS |            RUNTIME              
 ---------|---------------------------------

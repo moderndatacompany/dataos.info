@@ -12,7 +12,7 @@ workflow:
   dag:
     - name: write-data
       spec:
-        stack: flare:5.0
+        stack: flare:6.0
         compute: runnable-default
         stackSpec:
           job:
@@ -49,7 +49,7 @@ workflow:
   dag:
     - name: write-data
       spec:
-        stack: flare:5.0
+        stack: flare:6.0
         compute: runnable-default
         stackSpec:
           job:

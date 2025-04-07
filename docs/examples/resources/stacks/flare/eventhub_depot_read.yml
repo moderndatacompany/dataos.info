@@ -1,44 +1,42 @@
 version: v1
-name: read-eventhub-03
+name: read-eventhub-01
 type: workflow
 tags:
   - eventhub
   - read
-description: this jobs reads data from eventhub and writes to icebase
+description: this jobs reads data from eventhub and writes to lakehouse
 workflow:
   dag:
-    - name: eventhub-read-b-03
+    - name: eventhub-read-01
       title: read data from eventhub
       description: read data from eventhub
       spec:
         tags:
           - Connect
-        stack: flare:5.0
+        stack: flare:6.0
         compute: runnable-default
-        stackSpec:
+        flare:
           job:
             explain: true
             inputs:
               - name: input
-                dataset: dataos://eventhub01:default/eventhub01
+                dataset: dataos://sanityeventhub:default/eventhub01
                 options:
-                  "eventhubs.endingposition": "{\"offset\":\"@latest\",\"seqNo\":-1,\"enqueuedTime\":null,\"isInclusive\":false}"
-                  "eventhubs.startingposition": "{\"offset\":\"-1\",\"seqNo\":-1,\"enqueuedTime\":null,\"isInclusive\":true}"
-                  "eventhubs.consumergroup": "dataos"
+                  # "eventhubs.endingposition": "{\"offset\":\"@latest\",\"seqNo\":-1,\"enqueuedTime\":null,\"isInclusive\":false}"
+                  "eventhubs.startingposition": "{\"offset\":\"-1\",\"seqNo\":-1,\"enqueuedTime\":null,\"isInclusive\":false}" 
+                  # "eventhubs.startingposition": "{\"offset\":\"@latest\",\"seqNo\":-1,\"enqueuedTime\":null,\"isInclusive\":false}"                  
+                  # "eventhubs.startingposition": "earliest"
+                  # "eventhubs.startingposition": "{\"offset\":\"-1\",\"seqNo\":30067,\"enqueuedTime\":null,\"isInclusive\":true}"
+                  # "eventhubs.consumergroup": "tmdc"
                 isStream: false
             logLevel: INFO
             outputs:
-              - name: input
-                dataset: dataos://icebase:sample/read_event_hub?acl=rw
-                format: Iceberg
+              - name: finalDf
+                dataset: dataos://lakehouse:smoketest/read_eventhub_17?acl=rw
+                format: iceberg
                 options:
                   saveMode: append
-    - name: dataos-tool-eventhub
-      spec:
-        stack: toolbox
-        compute: runnable-default
-        stackSpec:
-          dataset: dataos://icebase:sample/read_event_hub?acl=rw
-          action:
-            name: set_version
-            value: latest
+            steps:
+              - sequence:
+                  - name: finalDf
+                    sql: SELECT * FROM input

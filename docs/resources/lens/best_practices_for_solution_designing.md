@@ -1,8 +1,11 @@
 
 
+
+The following document helps determine the appropriate aggregation approach based on the situation, guiding whether to use a Lakehouse or Warehouse-centric strategy. It also highlights approaches to avoid.
+
 ## Recommended practices
 
-### 1. Pre-Aggregating physical tables before modeling (Lakehouse-centric Approach)
+### 1. **Pre-Aggregating physical tables before modeling (Lakehouse-centric Approach)**
 
 If the user chooses to create aggregated physical tables before modeling data in the Lakehouse the following points needs to be conisdered:
 
@@ -14,7 +17,7 @@ This approach optimizes query performance by minimizing redundant computations.
 ![Valid Scene 1](/resources/lens/best_practices_for_solution_designing/valid_scene_1.png)
 
 
-### 2. Pre-Aggregating physical tables before modeling (Warehouse-centric Approach)
+### 2. **Pre-Aggregating physical tables before modeling (Warehouse-centric Approach)**
 
 If the user chooses to perform aggregation at the data warehouse level, the following points need to be considered:
 
@@ -25,7 +28,7 @@ This approach is well-suited for structured data processing and analytical workl
 
 ![Valid Scene 2](/resources/lens/best_practices_for_solution_designing/valid_scene_2.png)
 
-### 3. Using federation enginess Selectively (Exploration-Only Scenarios)
+### 3. **Using federation enginess Selectively (Exploration-Only Scenarios)**
 
 When working with data across multiple sources, federation engines can be helpful, but the following points should be considered:
 
@@ -39,7 +42,7 @@ In such cases, directly querying the source system or using Flash for in-memory 
 
 ## Practices to avoid
 
-### 1. Using a federation engines on top of a warehouse query engines
+### 1. **Using a federation engines on top of a warehouse query engines**
 
 Avoid layering federation engines on top of BigQuery, Snowflake, or Redshift. While technically viable, this approach diverges from best practices for the following reasons:
 
@@ -48,14 +51,14 @@ Avoid layering federation engines on top of BigQuery, Snowflake, or Redshift. Wh
 
 ![Invalid scene 1](/resources/lens/best_practices_for_solution_designing/invalid_scene_1.png)
 
-### 2. Using federation engines for single-source queries
+### 2. **Using federation engines for single-source queries**
 
 Avoid utilizing a federation engine when querying data from a single source, as this design, while functional, is suboptimal. Flash is better suited to efficiently handle such use cases compared to federated engines like Minerva or Themis.
 
 ![Invalid scene 1](/resources/lens/best_practices_for_solution_designing/invalid_scene_2.png)
 
 
-### 3. Using Flash when the source system’s query engine suffices
+### 3. **Using Flash when the source system’s query engine suffices**
 
 Avoid using Flash when the native query engine of the source system can be leveraged. While technically viable, employing both warehouse and Flash in such scenarios introduces redundancy, particularly when caching or data duplication is not required. This principle applies to all data warehouses such as Snowflake, Redshift, and BigQuery.
 

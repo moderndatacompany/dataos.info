@@ -1,30 +1,32 @@
 version: v1
-name: mongodb-read-02
+name: mongodb-read-01
 type: workflow
 workflow:
   dag:
-    - name: mongodb-read-02
+    - name: mongodb-read-01
       spec:
-        stack: flare:5.0
+        stack: flare:6.0
         compute: runnable-default
-        stackSpec:
+        flare:
           job:
             explain: true
             logLevel: INFO
             inputs:
               - name: input
-                dataset: dataos://mongodb02:tmdc/city_01
+                dataset: dataos://sanitymongodb:tmdc/write_mongodb_12
                 format: mongodb
                 connectionProps:
                   ssl: "true"
                   retryReads: "true"
+
             steps:
               - sequence:
                   - name: finalDf
-                    sql: SELECT * FROM input
+                    sql: SELECT * FROM input limit 10
+
             outputs:
               - name: finalDf
-                dataset: dataos://icebase:mongodb/city_02?acl=rw
+                dataset: dataos://icebase:smoketest/read_mongodb_12?acl=rw
                 format: Iceberg
                 options:
                   saveMode: append

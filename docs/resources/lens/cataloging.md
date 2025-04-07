@@ -8,9 +8,9 @@ description: "The following guide explains how both Metis UI and Data Product Hu
 
 The Lens can be discovered through the following platforms:
 
-- [Metis](/resources/lens/cataloging/#exploring-the-semantic-model-and-Lens-metadata-via-metis)
+- [Metis](/resources/lens/cataloging/#exploring-the-semantic-model-and-lens-metadata-via-metis)
 
-- [Data Product Hub](/resources/lens/cataloging/#exploring-the semantic-model-and-lens-metadata-via-data-product-hub)
+- [Data Product Hub](/resources/lens/cataloging/#exploring-the-semantic-model-and-lens-metadata-via-data-product-hub)
 
 These tools enable effective discovery and cataloging, ensuring seamless access to data products across the organization.
 
@@ -43,7 +43,7 @@ Metis allows users to search and find Lens and related across the organization q
 
 **Search:** Use the search bar to search for specific Lens resources by name, such as `Productaffinity`.
 
-<img src="/resources/lens/cataloging/image.png" alt="Untitled(5)" style="max-width: 40rem; height: auto; border: 1px solid #000;">
+<img src="/resources/lens/cataloging/metis_search.png" alt="Untitled(5)" style="max-width: 40rem; height: auto; border: 1px solid #000;">
 
 #### **Filter pane**
 

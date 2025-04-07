@@ -1,3 +1,9 @@
+---
+title: Attributes of Toolbox Stack manifest
+search:
+  exclude: true
+---
+
 # Attributes of Toolbox Stack manifest
 
 ## Structure of Toolbox-specific section
