@@ -22,19 +22,11 @@ workflow:
           job:
             explain: true
             inputs:
-<<<<<<< HEAD
               - name: city_connect
                 dataset: dataos://snowflake01:public/CITY01
                 format: snowflake
                 options:
                 sfWarehouse: WAREHOUSE
-=======
-            - name: city_connect
-              dataset: dataos://sanitysnowflake:public/snowflake_write_12
-              format: snowflake
-              options:
-                sfWarehouse: "TMDCWH"
->>>>>>> d8af1f06408c2bff84884029d6619f6e5b35244f
             logLevel: INFO
             
             outputs:
