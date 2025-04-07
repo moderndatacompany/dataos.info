@@ -22,17 +22,10 @@ workflow:
           job:
             explain: true
             inputs:
-<<<<<<< HEAD
               - name: city_connect
                 dataset: dataos://thirdparty01:none/city
                 format: csv
                 schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc
-=======
-            - name: city_connect
-              dataset: dataos://thirdparty01:none/city
-              format: csv
-              schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc
->>>>>>> d8af1f06408c2bff84884029d6619f6e5b35244f
             logLevel: INFO
             
             outputs:
