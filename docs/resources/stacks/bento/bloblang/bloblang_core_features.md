@@ -1,17 +1,15 @@
-# Bloblang
+# Bloblang Core Features
 
-[Bloblang](/resources/stacks/bento/components/processors/bloblang/), or blobl for short, is a language designed for mapping data of a wide variety of forms. It's a safe, fast, and powerful way to perform document mapping within Bento. It also has a Go API for writing your own functions and methods as plugins.
+[Bloblang](/resources/stacks/bento/bloblang/walkthrough), or blobl for short, is a language designed for mapping data across a wide range of formats. It enables safe, high-performance document mapping within Bento. A Go API is available for developing custom functions and methods as plugins.
 
-Bloblang is available as a processor and it's also possible to use blobl queries in function interpolations.
+Bloblang is implemented as a processor and supports usage within function interpolations through blobl queries.
 
-You can also execute Bloblang mappings on the command-line with the blobl subcommand:
-
+Mappings can also be executed from the command line using the `blobl` subcommand.
 
 ```shell
 $ cat data.jsonl | bento blobl 'foo.(bar | baz).buz'
 ```
-
-This document outlines the core features of the Bloblang language, but if you're totally new to Bloblang then it's worth following the walkthrough first.
+The document describes the core features of the Bloblang language. For users unfamiliar with Bloblang, it is recommended to visit [Bloblang Overview](/resources/stacks/bento/bloblang/walkthrough) prior to proceeding.
 
 ## Assignment
 
@@ -67,7 +65,7 @@ root = content().decode("base64").parse_json()
 # Out: {"foo":"bar"}
 ```
 
-And your newly mapped document can also be unstructured, simply assign a value type to the root of your document:
+The newly mapped document can be unstructured by assigning a value type to the root of the document.
 
 ```yaml
 root = this.foo
@@ -76,7 +74,7 @@ root = this.foo
 # Out: hello world
 ```
 
-And the resulting message payload will be the raw value you've assigned.
+The resulting message payload will consist of the raw value that has been assigned.
 
 ### **Deleting**
 
@@ -103,7 +101,7 @@ root.new_doc.type = $foo
 
 ### **Metadata**
 
-Bento messages contain metadata that is separate from the main payload, in Bloblang you can modify the metadata of the resulting message with the meta assignment keyword. Metadata values of the resulting message are referenced within queries with @:
+Bento messages contain metadata that is separate from the main payload. In Bloblang, the metadata of the resulting message can be modified using the `meta` assignment keyword. Metadata values are referenced within queries using the `@` prefix.
 
 ```yaml
 # Reference a metadata value
@@ -124,7 +122,7 @@ root.meta_obj = @
 
 ## Coalesce
 
-The pipe operator (|) used within brackets allows you to coalesce multiple candidates for a path segment. The first field that exists and has a non-null value will be selected:
+The pipe operator (`|`), when used within brackets, enables coalescing of multiple candidates for a path segment. The first field that exists and contains a non-null value is selected.
 
 ```yaml
 root.new_doc.type = this.thing.(article | comment | this).type
@@ -163,7 +161,7 @@ The values within literal arrays and objects can be dynamic query expressions, a
 
 ## Comments
 
-You might've already spotted, comments are started with a hash (#) and end with a line break:
+Comments are started with a hash (#) and end with a line break:
 
 ```yaml
 root = this.some.value # And now this is a comment
@@ -201,7 +199,7 @@ root.sorted_foo = if this.foo.type() == "array" { this.foo.sort() }
 # Out: {"foo":["foo","bar"],"sorted_foo":["bar","foo"]}
 ```
 
-And add as many if else queries as you like, followed by an optional final fallback else:
+Multiple `if`–`else` queries can be added as needed, followed by an optional final fallback `else`.
 
 ```yaml
 root.sound = if this.type == "cat" {
@@ -224,7 +222,7 @@ root.sound = if this.type == "cat" {
 
 ## Pattern Matching
 
-A match expression allows you to perform conditional mappings on a value, each case should be either a boolean expression, a literal value to compare against the target value, or an underscore (_) which captures values that have not matched a prior case:
+A `match` expression enables conditional mappings on a value. Each case must be either a boolean expression, a literal value for comparison against the target value, or an underscore (`_`) to capture any value not matched by a previous case.
 
 ```yaml
 root.new_doc = match this.doc {
@@ -271,7 +269,7 @@ If no case matches then the mapping is skipped entirely, hence we would end up w
 
 ## Functions
 
-Functions can be placed anywhere and allow you to extract information from your environment, generate values, or access data from the underlying message being mapped:
+Functions can be used in any position within a mapping to extract information from the environment, generate values, or access data from the underlying message.
 
 ```yaml
 root.doc.id = uuid_v4()
@@ -285,11 +283,11 @@ root.values_one = range(start: 0, stop: this.max, step: 2)
 root.values_two = range(0, this.max, 2)
 ```
 
-You can find a full list of functions and their parameters in the functions page.
+A complete list of functions and their parameters is available on the functions page.
 
 ## Methods
 
-Methods are similar to functions but enact upon a target value, these provide most of the power in Bloblang as they allow you to augment query values and can be added to any expression (including other methods):
+Methods operate similarly to functions but are applied to a target value. They provide most of the expressive capability in Bloblang by enabling augmentation of query values. Methods can be appended to any expression, including other methods.
 
 ```yaml
 root.doc.id = this.thing.id.string().catch(uuid_v4())
@@ -308,11 +306,11 @@ root.foo_one = this.(bar | baz).trim().replace_all(old: "dog", new: "cat")
 root.foo_two = this.(bar | baz).trim().replace_all("dog", "cat")
 ```
 
-You can find a full list of methods and their parameters in the methods page.
+A complete list of methods and their parameters is available on the methods page.
 
 ## Maps
 
-Defining named maps allows you to reuse common mappings on values with the apply method:
+Named maps can be defined to enable reuse of common mappings on values using the `apply` method.
 
 ```yaml
 map things {
@@ -327,7 +325,7 @@ root.bar = this.value_two.apply("things")
 # Out: {"foo":{"first":"hey","second":"yo"},"bar":{"first":"sup","second":"waddup"}}
 ```
 
-Within a map the keyword root refers to a newly created document that will replace the target of the map, and this refers to the original value of the target. The argument of apply is a string, which allows you to dynamically resolve the mapping to apply.
+Within a map, the keyword `root` refers to a newly created document that will replace the target of the map, while `this` refers to the original value of the target. The argument of `apply` is a string, allowing dynamic resolution of the mapping to apply.
 
 ## Import Maps
 
@@ -344,7 +342,7 @@ Imports from a Bloblang mapping within a Bento config are relative to the proces
 
 ## Filtering
 
-By assigning the root of a mapped document to the deleted() function you can delete a message entirely:
+Assigning the root of a mapped document to the `deleted()` function deletes the message entirely.
 
 ```yaml
 # Filter all messages that have fewer than 10 URLs.
@@ -390,15 +388,15 @@ root.foo = this.bar.index(5).or("default")
 
 ## Unit Testing
 
-It's possible to execute unit tests for your Bloblang mappings using the standard Bento unit test capabilities outlined in this document.
+Bloblang mappings can be tested using the standard Bento unit test capabilities described in this document.
 
 ## Trouble Shooting
 
-I'm seeing unable to reference message as structured (with 'this') when I try to run mappings with bento blobl.
+**Error:** *unable to reference message as structured (with 'this')* when running mappings with `bento blobl`.
 
-That particular error message means the mapping is failing to parse what's being fed in as a JSON document. Make sure that the data you are feeding in is valid JSON, and also that the documents do not contain line breaks as bento blobl will parse each line individually.
+This error indicates that the mapping is unable to parse the input as a valid JSON document. It is necessary to ensure that the input data is correctly formatted as JSON and that the documents do not contain line breaks. The `bento blobl` command parses each line as an individual document.
 
-Why? That's a good question. Bloblang supports non-JSON formats too, so it can't delimit documents with a streaming JSON parser like tools such as jq, so instead it uses line breaks to determine the boundaries of each message.
+Bloblang supports non-JSON formats; therefore, it does not use a streaming JSON parser to delimit documents. Instead, line breaks are used to determine the boundaries of each message.
 
 [Walkthrough](/resources/stacks/bento/bloblang/walkthrough/)
 
