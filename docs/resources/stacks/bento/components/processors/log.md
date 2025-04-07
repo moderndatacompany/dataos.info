@@ -1,6 +1,6 @@
-# log
+# logs in Bento
 
-Prints a log event for each message. Messages always remain unchanged. The log message can be set using function interpolations described in the documentation which allows you to log the contents and metadata of messages.
+Prints a log event for each message. Messages always remain unchanged. The log message can be set using function interpolations described in the documentation which allows to log the contents and metadata of messages.
 
 ```yaml
 # Config fields, showing default values
@@ -46,7 +46,7 @@ Options: `FATAL`, `ERROR`, `WARN`, `INFO`, `DEBUG`, `TRACE`, `ALL`.
 
 ### `fields_mapping`
 
-An optional [Bloblang mapping](../../bloblang.md) that can be used to specify extra fields to add to the log. If log fields are also added with the `fields` field then those values will override matching keys from this mapping.
+An optional [Bloblang mapping](/resources/stacks/bento/components/processors/mapping) that can be used to specify extra fields to add to the log. If log fields are also added with the `fields` field then those values will override matching keys from this mapping.
 
 Type: `string`
 
@@ -66,7 +66,7 @@ fields_mapping: |-
 
 ### `message`
 
-The message to print. This field supports [interpolation functions](../../configurations/interpolation.md).
+The message to print. This field supports [interpolation functions](/resources/stacks/bento/configurations/interpolation).
 
 Type: `string`
 

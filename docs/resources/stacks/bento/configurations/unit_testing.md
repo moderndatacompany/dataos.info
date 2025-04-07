@@ -69,7 +69,7 @@ Sometimes it's more convenient to define your tests within the config being test
 
 ### Bloblang Tests
 
-Sometimes when working with large [Bloblang mappings](../bloblang.md), it's preferred to have the full mapping in a separate file to your Bento configuration. In this case, it's possible to write unit tests that target and execute the mapping directly with the field `target_mapping`, which, when specified, is interpreted as either an absolute path or a path relative to the test definition file that points to a file containing only a Bloblang mapping.
+Sometimes when working with large [Bloblang mappings](/resources/stacks/bento/components/processors/mapping/), it's preferred to have the full mapping in a separate file to your Bento configuration. In this case, it's possible to write unit tests that target and execute the mapping directly with the field `target_mapping`, which, when specified, is interpreted as either an absolute path or a path relative to the test definition file that points to a file containing only a Bloblang mapping.
 
 For example, if we were to have a file `cities.blobl` containing a mapping:
 
@@ -168,7 +168,7 @@ A map of key/value pairs that sets the metadata values of the message.
 bloblang: 'this.age > 10 && @foo.length() > 0'
 ```
 
-Executes a [Bloblang expression](../bloblang.md) on a message, if the result is anything other than a boolean equalling `true` the test fails.
+Executes a Bloblang expression on a message, if the result is anything other than a boolean equalling `true` the test fails.
 
 ---
 
@@ -254,7 +254,7 @@ Executing tests for a specific config can be done by pointing the subcommand `t
 
 The `test` subcommand also supports wildcard patterns e.g., `bento test ./foo/*.yaml` will execute all tests within matching files. In order to walk a directory tree and execute all tests found, you can use the shortcut `./...`, e.g., `bento test ./...` will execute all tests found in the current directory, any child directories, and so on.
 
-If you want to allow components to write logs at a provided level to stdout when running the tests, you can use `bento test --log <level>`. Please consult the [logger docs](../components/logger.md) for further details.
+If you want to allow components to write logs at a provided level to stdout when running the tests, you can use `bento test --log <level>`. Please consult the [logger docs](/resources/stacks/bento/components/logger/) for further details.
 
 ## Mocking Processors
 
@@ -273,7 +273,7 @@ pipeline:
     - mapping: 'root = content().uppercase()'
 ```
 
-Rather than create a fake service for the `http` processor to interact with, we can define a mock in our test definition that replaces it with a [`mapping` processor](../components/processors/mapping.md). Mocks are configured as a map of labels that identify a processor to replace and the config to replace it with:
+Rather than create a fake service for the `http` processor to interact with, we can define a mock in our test definition that replaces it with a [`mapping` processor](/resources/stacks/bento/components/processors/mapping). Mocks are configured as a map of labels that identify a processor to replace and the config to replace it with:
 
 ```yaml
 tests:
@@ -288,7 +288,7 @@ tests:
       - - content_equals: "SIMON SAYS: HELLO WORLD THIS IS SOME MOCK CONTENT"
 ```
 
-With the above test definition the `http` processor will be swapped out for `mapping: 'root = content().string() + " this is some mock content"'`. For the purposes of mocking it is recommended that you use a [`mapping` processor](../components/processors/mapping.md) that simply mutates the message in a way that you would expect the mocked processor to.
+With the above test definition the `http` processor will be swapped out for `mapping: 'root = content().string() + " this is some mock content"'`. For the purposes of mocking it is recommended that you use a [`mapping` processor](/resources/stacks/bento/components/processors/mapping) that simply mutates the message in a way that you would expect the mocked processor to.
 
 > Note: It's not currently possible to mock components that are imported as separate resource files (using --resource/-r). It is recommended that you mock these by maintaining separate definitions for test purposes (-r "./test/*.yaml").
 > 
@@ -374,7 +374,7 @@ Default: `""`
 
 ### `tests[].mocks`
 
-An optional map of processors to mock. Keys should contain either a label or a JSON pointer of a processor that should be mocked. Values should contain a processor definition, which will replace the mocked processor. Most of the time, you'll want to use a [`mapping` processor](../components/processors/mapping.md) here and use it to create a result that emulates the target processor.
+An optional map of processors to mock. Keys should contain either a label or a JSON pointer of a processor that should be mocked. Values should contain a processor definition, which will replace the mocked processor. Most of the time, you'll want to use a [`mapping` processor](/resources/stacks/bento/components/processors/mapping) here and use it to create a result that emulates the target processor.
 
 Type: map of `unknown`
 
