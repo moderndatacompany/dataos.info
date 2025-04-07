@@ -242,67 +242,72 @@ dataos-ctl apply -f /home/tmdc/Desktop/city_flare -l
     
 ```shell
 INFO[0000] 🛠 apply...                                   
-INFO[0000] 🔧 applying(public) cnt-city-demo-001:v1beta1:workflow... 
+INFO[0000] 🔧 applying(public) cnt-city-demo-001:v1:workflow... 
 
 ---
-# cnt-city-demo-001:v1beta1:workflow
+# cnt-city-demo-001:v1:workflow
 name: cnt-city-demo-001
 version: v1
 type: workflow
 tags:
-- Connect
-- City
-description: The job ingests city data from Third party into DataOS
+  - Connect 2342
+  - CONNECT
+description: The job ingests city data from dropzone into raw zone
+owner: aadityasoni
+workspace: public
 workflow:
   title: Connect City
   dag:
-  - name: city-001
-    description: The job ingests city data from Third party into DataOS
-    title: City Dimension Ingester
-    spec:
-      tags:
-      - Connect
-      - City
-      stack: flare:6.0
-      stackSpec:
-        job:
-          explain: true
-          inputs:
-          - dataset: dataos://thirdparty01:none/city
-            format: csv
-            name: city_connect
-            schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc
-          logLevel: INFO
-          outputs:
-          - depot: dataos://icebase:retailsample?acl=rw
-            name: output01
-          steps:
-          - sequence:
-            - name: cities
-              sql: select * from city_connect
-            sink:
-            - datasetName: city
-              description: City data ingested from external csv
-              outputName: output01
-              outputOptions:
-                iceberg:
-                  partitionSpec:
-                  - column: state_name
-                    type: identity
-                  properties:
-                    write.format.default: parquet
-                    write.metadata.compression-codec: gzip
-                saveMode: overwrite
-              outputType: Iceberg
-              sequenceName: cities
-              tags:
-              - Connect
-              - City
-              title: City Source Data
+    - name: wf-sample-job-001
+      description: The job ingests city data from dropzone into raw zone
+      title: City Dimension Ingester
+      spec:
+        stack: flare:6.0
+        compute: runnable-default
+        stackSpec:
+          job:
+            explain: true
+            inputs:
+              - dataset: dataos://thirdparty01:none/city
+                format: csv
+                name: city_connect
+                schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc
+            logLevel: INFO
+            outputs:
+              - dataset: dataos://icebase:retailsample/city?acl=rw
+                description: City data ingested from external csv
+                format: Iceberg
+                name: cities
+                options:
+                  iceberg:
+                    partitionSpec:
+                      - column: version
+                        type: identity
+                    properties:
+                      write.format.default: parquet
+                      write.metadata.compression-codec: gzip
+                  saveMode: append
+                  sort:
+                    columns:
+                      - name: version
+                        order: desc
+                    mode: partition
+            steps:
+              - sequence:
+                  - doc: Pick all columns from cities and add version as yyyyMMddHHmm formatted timestamp.
+                    name: cities
+                    sql: |
+                      SELECT
+                        *,
+                        date_format (now(), 'yyyyMMddHHmm') AS version,
+                        now() AS ts_city
+                      FROM
+                        city_connect
 
-INFO[0001] 🔧 applying cnt-city-demo-001:v1beta1:workflow...valid 
-INFO[0001] 🛠 apply(public)...lint                       
-INFO[0001] 🛠 apply...nothing
+
+INFO[0003] 🔧 applying cnt-city-demo-001:v1:workflow...valid 
+INFO[0003] 🛠 apply(public)...lint                       
+INFO[0003] 🛠 apply...nothing   
 ```
 
 </details>

@@ -1,4 +1,4 @@
-# Monitoring
+# Bento Monitoring
 
 ## Health Checks
 
@@ -9,6 +9,6 @@ Bento serves two HTTP endpoints for health checks:
 
 ## Metrics
 
-Bento [exposes lots of metrics](../components/metrics.md) either to Statsd, Prometheus, Cloudwatch, or for debugging purposes, an HTTP endpoint that returns a JSON-formatted object.
+Bento [exposes lots of metrics](../../components/metrics) either to Statsd, Prometheus, Cloudwatch, or for debugging purposes, an HTTP endpoint that returns a JSON-formatted object.
 
-The target destination of Bento metrics is configurable from the [metrics section](../components/metrics.md), where it's also possible to rename and restrict the metrics that are emitted with mappings.
+The target destination of Bento metrics is configurable from the [metrics section](../../components/metrics), where it's also possible to rename and restrict the metrics that are emitted with mappings.
