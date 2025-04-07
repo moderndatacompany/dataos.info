@@ -1,3 +1,13 @@
+---
+title: Integrate semantic model with Power BI Desktop and Publish report to the Power BI Service
+search:
+  boost: 2
+tags:
+  - PowerBI Service
+hide:
+  - tags
+---
+
 # Integrate semantic model with Power BI Desktop and Publish report to the Power BI Service
 
 This document outlines the steps required to integrate Power BI with the semantic model, ensuring a seamless connection to the data product consumption layer.
