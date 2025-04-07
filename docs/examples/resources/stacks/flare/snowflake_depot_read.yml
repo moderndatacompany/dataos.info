@@ -22,12 +22,13 @@ workflow:
           job:
             explain: true
             inputs:
-             - name: city_connect
-               dataset: dataos://snowflake01:public/CITY01
-               format: snowflake
-               options:
+              - name: city_connect
+                dataset: dataos://snowflake01:public/CITY01
+                format: snowflake
+                options:
                 sfWarehouse: WAREHOUSE
             logLevel: INFO
+            
             outputs:
               - name: cities
                 dataset: dataos://icebase:sample/city_from_snowflake_01?acl=rw

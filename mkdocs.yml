@@ -505,6 +505,7 @@ nav:
             - resources/stacks/dbt/index.md
           - Flare: 
             - resources/stacks/flare/index.md
+            - Quick Guide: resources/stacks/flare/creating_flare_jobs.md
           - Flash:
             - resources/stacks/flash/index.md
             - Create a Flash Service: resources/stacks/flash/flash_service.md
