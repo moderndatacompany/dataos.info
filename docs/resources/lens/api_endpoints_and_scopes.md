@@ -45,15 +45,15 @@ To securely interact with the Lens APIs, you must authenticate your requests usi
 
 1. Open your terminal and run the following command to create a new API key:
 
-  ```bash
-  dataos-ctl user apikey create
-  ```
+    ```bash
+    dataos-ctl user apikey create
+    ```
 
 2. To view existing API keys, use:
 
-  ```bash
-  dataos-ctl user apikey get
-  ```
+    ```bash
+    dataos-ctl user apikey get
+    ```
 
 3. Note down your API key and keep it secure. You will use this key to authenticate your API requests.
 
@@ -216,9 +216,9 @@ http://liberal-monkey.dataos.app/lens2/api/sales_analysis/v2/sql
 
 configure the body with the JSON Query Format similar to `/load`.
 
-## graphql
+## graphql scope
 
-Grants access to GraphQL endpoints. GraphQL is a query language for APIs that allows clients to request only the data they need. This scope enables users to perform GraphQL queries and mutations. To know more about How to use GraphQL click [here](/resources/lens/exploration_of_lens_using_graphql/)
+GraphQL scope grants access to `/graphql` endpoint. GraphQL is a query language for APIs that allows clients to request only the data they need. This scope enables users to perform GraphQL queries and mutations. To know more about How to use GraphQL click [here](/resources/lens/exploration_of_lens_using_graphql/)
 
 ## Possible Responses
 
