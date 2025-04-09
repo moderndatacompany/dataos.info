@@ -123,8 +123,8 @@ markdown_extensions:
   - pymdownx.tilde
 #  - pymdownx.extra
   - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji          # while pushin to dev
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg       # while pushin to dev
+      emoji_index: !!python/name:materialx.emoji.twemoji          # while pushin to dev
+      emoji_generator: !!python/name:materialx.emoji.to_svg       # while pushin to dev
 
       # emoji_index: !!python/name:materialx.emoji.twemoji                      # while hosting locally  
       # emoji_generator: !!python/name:materialx.emoji.to_svg                   # while hosting locally 
@@ -308,18 +308,33 @@ nav:
             - Building Streamlit applications backed by Database: resources/database/how_to_guide/how_to_create_a_streamlit_application_of_database_on_dataos.md
         - Depot: 
           - resources/depot/index.md
-          - Supported Sources: resources/depot/#templates-of-depot-for-different-source-systems
+          - Overview: resources/depot/index.md
+          - Quickstart: resources/depot/quickstart.md
+          - Supported Sources: 
+            - ABFSS: resources/depot/create_depot/abfss.md
+            - Amazon Redshift: resources/depot/create_depot/redshift.md
+            - Amazon S3: resources/depot/create_depot/s3.md
+            - Apache Pulsar: resources/depot/create_depot/pulsar.md
+            - Azure WASBS: resources/depot/create_depot/wasbs.md
+            - Elasticsearch: resources/depot/create_depot/elasticsearch.md
+            - Eventhub: resources/depot/create_depot/elasticsearch.md
+            - Google BigQuery: resources/depot/create_depot/bigquery.md
+            - GCS: resources/depot/create_depot/gcs.md
+            - JDBC: resources/depot/create_depot/jdbc.md 
+            - Kafka: resources/depot/create_depot/kafka.md
+            - MongoDB: resources/depot/create_depot/mongo.md
+            - Microsoft SQL Server: resources/depot/create_depot/mssql.md
+            - MySQL: resources/depot/create_depot/mysql.md
+            - Opensearch: resources/depot/create_depot/opensearch.md
+            - Oracle: resources/depot/create_depot/oracle.md
+            - PostgreSQL: resources/depot/create_depot/postgre.md
+            - Snowflake: resources/depot/create_depot/snowflake.md
           - Configurations: resources/depot/configurations.md
-          - Supported Storage Architecture: 
-            - Icebase: 
-              - resources/depot/icebase/index.md
-              - Create, Get, and Drop Dataset: resources/depot/icebase/case_scenario_create_fetch_and_drop_dataset.md
-              - Table Properties: resources/depot/icebase/case_scenario_table_properties.md
-              - Schema Evolution: resources/depot/icebase/case_scenario_schema_evolution.md
-              - Partitioning: resources/depot/icebase/case_scenario_partitioning.md
-              - Maintenance (Snapshots and Metadata listing): resources/depot/icebase/case_scenario_maintenance.md
-            - Fastbase: resources/depot/fastbase.md
+          - Governance: resources/depot/governance.md
+          - Observability: resources/depot/observability.md
+          - Cataloging: resources/depot/cataloging.md
           - Supported Connectors: resources/depot/list_of_connectors.md
+          - Usecase: resources/depot/usecase.md
         - Grant:
           - resources/grant/index.md
           - Configuration: resources/grant/configurations.md
