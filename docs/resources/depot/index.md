@@ -62,12 +62,7 @@ Once a Depot is created, all members of an organization gain secure access to da
 
 </aside>
 
-
-
-## How to create a Depot?
-To create a Depot in DataOS, simply compose a manifest configuration file for a Depot and apply it using the DataOS [Command Line Interface (CLI)](/interfaces/cli/).
-
-### **Structure of a Depot manifest**
+## Structure of a Depot manifest
 
 
 <center>
@@ -77,28 +72,29 @@ To create a Depot in DataOS, simply compose a manifest configuration file for a 
 
 To know more about the attributes of Depot manifest Configuration, refer to the link: [Attributes of Depot manifest](/resources/depot/configurations/).
 
-### **Steps to create a Depot**
+
+## How to create a Depot?
 
 This section involves steps for creating a Depot for different data sources supported by DataOS.
 
-- [ABFSS](https://www.notion.so/resources/depot/create_depot/abfss/)
-- [Amazon Redshift](https://www.notion.so/resources/depot/create_depot/redshift/)
-- [Amazon S3](https://www.notion.so/resources/depot/create_depot/s3/)
-- [Apache Pulsar](https://www.notion.so/resources/depot/create_depot/pulsar/)
-- [Azure WASBS](https://www.notion.so/resources/depot/create_depot/wasbs/)
-- [Elasticsearch](https://www.notion.so/resources/depot/create_depot/elasticsearch/)
-- [EventHub](https://www.notion.so/resources/depot/create_depot/eventhub/)
-- [Google Bigquery](https://www.notion.so/resources/depot/create_depot/bigquery/)
-- [GCS](https://www.notion.so/resources/depot/create_depot/gcs/)
-- [JDBC](https://www.notion.so/resources/depot/create_depot/jdbc/)
-- [Kafka](https://www.notion.so/resources/depot/create_depot/kafka/)
-- [MongoDB](https://www.notion.so/resources/depot/create_depot/mongo/)
-- [Microsoft SQL Server](https://www.notion.so/resources/depot/create_depot/mssql/)
-- [MYSQL](https://www.notion.so/resources/depot/create_depot/mysql/)
-- [Opensearch](https://www.notion.so/resources/depot/create_depot/opensearch/)
-- [Oracle](https://www.notion.so/resources/depot/create_depot/oracle/)
-- [PostgreSQL](https://www.notion.so/resources/depot/create_depot/postgre/)
-- [Snowflake](https://www.notion.so/resources/depot/create_depot/snowflake/)
+- ### [ABFSS](https://www.notion.so/resources/depot/create_depot/abfss/)
+- ### [Amazon Redshift](https://www.notion.so/resources/depot/create_depot/redshift/)
+- ### [Amazon S3](https://www.notion.so/resources/depot/create_depot/s3/)
+- ### [Apache Pulsar](https://www.notion.so/resources/depot/create_depot/pulsar/)
+- ### [Azure WASBS](https://www.notion.so/resources/depot/create_depot/wasbs/)
+- ### [Elasticsearch](https://www.notion.so/resources/depot/create_depot/elasticsearch/)
+- ### [EventHub](https://www.notion.so/resources/depot/create_depot/eventhub/)
+- ### [Google Bigquery](https://www.notion.so/resources/depot/create_depot/bigquery/)
+- ### [GCS](https://www.notion.so/resources/depot/create_depot/gcs/)
+- ### [JDBC](https://www.notion.so/resources/depot/create_depot/jdbc/)
+- ### [Kafka](https://www.notion.so/resources/depot/create_depot/kafka/)
+- ### [MongoDB](https://www.notion.so/resources/depot/create_depot/mongo/)
+- ### [Microsoft SQL Server](https://www.notion.so/resources/depot/create_depot/mssql/)
+- ### [MYSQL](https://www.notion.so/resources/depot/create_depot/mysql/)
+- ### [Opensearch](https://www.notion.so/resources/depot/create_depot/opensearch/)
+- ### [Oracle](https://www.notion.so/resources/depot/create_depot/oracle/)
+- ### [PostgreSQL](https://www.notion.so/resources/depot/create_depot/postgre/)
+- ### [Snowflake](https://www.notion.so/resources/depot/create_depot/snowflake/)
 
 
 ## How to utilize Depots?

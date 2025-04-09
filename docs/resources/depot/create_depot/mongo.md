@@ -60,7 +60,7 @@ The following are the prerequisites for creating a MongoDB Depot.
 
       - `file`: Specifies the path to the certificate file to import.
 
-### **Steps to create MongoDB Depot through username and password authentication**
+## Steps to create MongoDB Depot through username and password authentication
 
 This section involves the alternative steps to create a MongoDB  Depot without an Instance Secret.
 
@@ -133,7 +133,7 @@ This section involves the alternative steps to create a MongoDB  Depot without a
     dataos-ctl apply -f /home/office/workflow/depot_scanner.yaml
     ```
 
-### **Steps to create MongoDB Depot through certificate authentication**
+## Steps to create MongoDB Depot through certificate authentication
 
 This section involves the alternative steps to create a MongoDB  Depot without an Instance Secret.
 
@@ -212,7 +212,7 @@ This section involves the alternative steps to create a MongoDB  Depot without a
     dataos-ctl apply -f /home/office/workflow/udscoremongodb.yaml
     ```
 
-### **Steps to create MongoDB Depot through VPCE**
+## Steps to create MongoDB Depot through VPCE
 
 This section involves the alternative steps to create a MongoDB  Depot without an Instance Secret. VPCE-based Depot is similar to certificate authentication Depot just additional parameters have been added that allow connection with VPCs.
 

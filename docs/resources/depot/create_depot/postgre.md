@@ -47,7 +47,7 @@ Begin by creating a manifest file to hold the configuration details for your Pos
 
 <aside class="callout">
 🗣️ Use the below templates, if the self-signed certificate is enabled.
-<aside>
+</aside>
 
 
 ```yaml 
@@ -77,7 +77,7 @@ depot:
 
 <aside class="callout">
 🗣️ Use the below templates, if the self-signed certificate is not enabled.
-<aside>
+</aside>
 
 
 ```yaml 
