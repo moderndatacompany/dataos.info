@@ -44,7 +44,7 @@ Begin by creating an Instance Secret Resource by following the [Instance Secret 
 
 ### **Step 2: Create a Snowflake Depot manifest file**
 
-Begin by creating a manifest file to hold the configuration details for your Snowflake Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.
+Begin by creating a manifest file to hold the configuration details for your Snowflake Depot. A Depot is created by referencing the Instance Secret by name in the Depot manifest file as shown  below template.
 
 
 ```yaml 
