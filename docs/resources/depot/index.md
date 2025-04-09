@@ -77,45 +77,45 @@ To know more about the attributes of Depot manifest Configuration, refer to the 
 
 This section involves steps for creating a Depot for different data sources supported by DataOS.
 
-- ### [ABFSS](https://www.notion.so/resources/depot/create_depot/abfss/)
-- ### [Amazon Redshift](https://www.notion.so/resources/depot/create_depot/redshift/)
-- ### [Amazon S3](https://www.notion.so/resources/depot/create_depot/s3/)
-- ### [Apache Pulsar](https://www.notion.so/resources/depot/create_depot/pulsar/)
-- ### [Azure WASBS](https://www.notion.so/resources/depot/create_depot/wasbs/)
-- ### [Elasticsearch](https://www.notion.so/resources/depot/create_depot/elasticsearch/)
-- ### [EventHub](https://www.notion.so/resources/depot/create_depot/eventhub/)
-- ### [Google Bigquery](https://www.notion.so/resources/depot/create_depot/bigquery/)
-- ### [GCS](https://www.notion.so/resources/depot/create_depot/gcs/)
-- ### [JDBC](https://www.notion.so/resources/depot/create_depot/jdbc/)
-- ### [Kafka](https://www.notion.so/resources/depot/create_depot/kafka/)
-- ### [MongoDB](https://www.notion.so/resources/depot/create_depot/mongo/)
-- ### [Microsoft SQL Server](https://www.notion.so/resources/depot/create_depot/mssql/)
-- ### [MYSQL](https://www.notion.so/resources/depot/create_depot/mysql/)
-- ### [Opensearch](https://www.notion.so/resources/depot/create_depot/opensearch/)
-- ### [Oracle](https://www.notion.so/resources/depot/create_depot/oracle/)
-- ### [PostgreSQL](https://www.notion.so/resources/depot/create_depot/postgre/)
-- ### [Snowflake](https://www.notion.so/resources/depot/create_depot/snowflake/)
+- [ABFSS](https://www.notion.so/resources/depot/create_depot/abfss/)
+- [Amazon Redshift](https://www.notion.so/resources/depot/create_depot/redshift/)
+- [Amazon S3](https://www.notion.so/resources/depot/create_depot/s3/)
+- [Apache Pulsar](https://www.notion.so/resources/depot/create_depot/pulsar/)
+- [Azure WASBS](https://www.notion.so/resources/depot/create_depot/wasbs/)
+- [Elasticsearch](https://www.notion.so/resources/depot/create_depot/elasticsearch/)
+- [EventHub](https://www.notion.so/resources/depot/create_depot/eventhub/)
+- [Google Bigquery](https://www.notion.so/resources/depot/create_depot/bigquery/)
+- [GCS](https://www.notion.so/resources/depot/create_depot/gcs/)
+- [JDBC](https://www.notion.so/resources/depot/create_depot/jdbc/)
+- [Kafka](https://www.notion.so/resources/depot/create_depot/kafka/)
+- [MongoDB](https://www.notion.so/resources/depot/create_depot/mongo/)
+- [Microsoft SQL Server](https://www.notion.so/resources/depot/create_depot/mssql/)
+- [MYSQL](https://www.notion.so/resources/depot/create_depot/mysql/)
+- [Opensearch](https://www.notion.so/resources/depot/create_depot/opensearch/)
+- [Oracle](https://www.notion.so/resources/depot/create_depot/oracle/)
+- [PostgreSQL](https://www.notion.so/resources/depot/create_depot/postgre/)
+- [Snowflake](https://www.notion.so/resources/depot/create_depot/snowflake/)
 
 
 ## How to utilize Depots?
 
 Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to access data without physically moving it. The UDLs play a crucial role in various scenarios within DataOS.
 
-- ### [Data ingestion and transformation](/resources/depot/utilize/ingestion/)
+- [Data ingestion and transformation](/resources/depot/utilize/ingestion/)
 
-- ### [Building semantic models](/resources/depot/utilize/lens/)
+- [Building semantic models](/resources/depot/utilize/lens/)
 
-- ### [Query the source](/resources/depot/utilize/cluster/)
+- [Query the source](/resources/depot/utilize/cluster/)
 
-- ### [Accelerating queries](/resources/depot/utilize/flash/)
+- [Accelerating queries](/resources/depot/utilize/flash/)
 
-- ### [Building Data APIs](/resources/depot/utilize/apis/)
+- [Building Data APIs](/resources/depot/utilize/apis/)
 
-- ### [Building Data Products](/resources/depot/utilize/dp/)
+- [Building Data Products](/resources/depot/utilize/dp/)
 
-- ### [Depot as Lakehouse](/resources/depot/utilize/lakehouse/)
+- [Depot as Lakehouse](/resources/depot/utilize/lakehouse/)
 
-- ### [Scanning metadata](/resources/depot/utilize/scanner/)
+- [Scanning metadata](/resources/depot/utilize/scanner/)
 
 
 
