@@ -1,7 +1,7 @@
 ---
 title: Cluster
 search:
-  boost: 2
+  boost: 4
 ---
 
 # :resources-cluster: Cluster
