@@ -66,19 +66,19 @@ APIkey tokens can also be fetched from the DataOS GUI, for more details refer to
 Provides access to metadata-related endpoints. This scope allows users to view metadata, which typically includes information about sources, authors, timezones, security context, user groups, etc.
 
 ### **/v2/meta**
-
-Get meta-information for Lens and views defined in the data model. Information about Lens with **public: false** will not be returned.
-
+ 
+Get meta-information such as entitites,measures,dimensions for Lens and views defined in the data model. Information about Lens with `public: false` will not be returned.
+ 
 === "Syntax"
 
     ```bash
-    http://<DATAOS_FQDN>/lens2/api/<data_model_name>/v2/meta
+    http://<DATAOS_FQDN>/lens2/api/<workspace_name>:<data_model_name>/v2/meta
     ```
 
 === "Example"
 
     ```bash
-    http://liberal-monkey.dataos.app/lens2/api/sales_analysis/v2/meta
+    http://liberal-monkey.dataos.app/lens2/api/public:sales_analysis/v2/meta
     ```
   
 **Example response:**
@@ -129,7 +129,7 @@ You can use either of the following methods:
     === "Syntax"   
 
         ```bash
-        http://<DATAOS_FQDN>/lens2/api/<data_model_name>/v2/load?query=<query_parameters>
+        http://<DATAOS_FQDN>/lens2/api/<workspace_name>:<data_model_name>/v2/load?query=<query_parameters>
         ```
     === "Example"
 
@@ -141,13 +141,13 @@ You can use either of the following methods:
     === "Syntax"  
 
         ```bash
-        http://<DATAOS_FQDN>/lens2/api/<data_model_name>/v2/load
+        http://<DATAOS_FQDN>/lens2/api/<workspace_name>:<data_model_name>/v2/load
         ```  
 
     === "Example"
                                                                                     
         ```bash
-        http://liberal-monkey.dataos.app/lens2/api/sales_analysis/v2/load?query={"dimensions":["customer.customer_id","customer.annual_income"],"measures":["customer.total_customers", "customer.average_age"]}
+        http://liberal-monkey.dataos.app/lens2/api/public:sales_analysis/v2/load?query={"dimensions":["customer.customer_id","customer.annual_income"],"measures":["customer.total_customers", "customer.average_age"]}
         ```                                                         
 
     In the `POST` request body, include the query parameters in the JSON Query Format:
@@ -211,7 +211,7 @@ You can use either of the following methods:
 Alternatively, you can use `/sql` endpoint.
 
 ```bash
-http://liberal-monkey.dataos.app/lens2/api/sales_analysis/v2/sql
+http://liberal-monkey.dataos.app/lens2/api/public:sales_analysis/v2/sql
 ```
 
 configure the body with the JSON Query Format similar to `/load`.
