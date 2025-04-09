@@ -102,69 +102,79 @@ Sufficient computing and storage permissions are needed to run queries. Learn mo
 
 ## Step 1: Create Instance Secret to securely store Snowflake credentials
 
-Before connecting to the data source, create an [Instance Secret](/resources/instance_secret/) to securely store the Snowflake credentials. In the instance secret manifest, specify the Snowflake username and password under the data field, which will be used for read (r) and read-write (rw) access during deployment.
+To securely store Snowflake credentials, two Instance Secrets must be created for read-write access:
 
-```yaml title="instance-secret-r.yml"
-name: snowflake-r
-version: v1
-type: instance-secret
-description: "The purpose of secret to mount the snowflake"
-layer: user
-instance-secret:
-  type: key-value-properties
-  acl: r
-  data:
-    username: "<username>" # username of the snowflake account
-    password: "<password>" # password of the snowflake account
-```
+- Read-only Instance Secret
 
-```yaml title="instance-secret-rw.yml"
-name: snowflake-rw
-version: v1
-type: instance-secret
-description: "The purpose of secret to mount the snowflake"
-layer: user
-instance-secret:
-  type: key-value-properties
-  acl: rw
-  data:
-    username: "<username>" # username of the snowflake account
-    password: "<password>" # password of the snowflake account
-```
-Apply the read-only Instance Secret manifest file by executing the command below.
+- Read-write Instance Secret
 
-```bash
-dataos-ctl apply -f <manifest-file-path>
-```
+<aside class="callout">
+Make sure to keep these Instance Secret manifest files stored locally and avoid pushing them to the code repository.
+</aside>
 
-Expected output:
+1. The following manifest files are provided as templates. Simply update them with your credentials and use them to create the corresponding instance secrets.
 
-```bash
-INFO[0000] 🛠 apply...                                   
-INFO[0000] 🔧 applying snowflake-r:v1:instance-secret... 
-INFO[0002] 🔧 applying snowflake-r:v1:instance-secret...created
-INFO[0002] 🛠 apply...complete
-```
+  ```yaml title="instance-secret-r.yml"
+  name: snowflake-r
+  version: v1
+  type: instance-secret
+  description: "The purpose of secret to mount the snowflake"
+  layer: user
+  instance-secret:
+    type: key-value-properties
+    acl: r
+    data:
+      username: "<username>" # username of the snowflake account
+      password: "<password>" # password of the snowflake account
+  ```
 
-Similarly apply the read write Instance Secret manifest file for access.
+  ```yaml title="instance-secret-rw.yml"
+  name: snowflake-rw
+  version: v1
+  type: instance-secret
+  description: "The purpose of secret to mount the snowflake"
+  layer: user
+  instance-secret:
+    type: key-value-properties
+    acl: rw
+    data:
+      username: "<username>" # username of the snowflake account
+      password: "<password>" # password of the snowflake account
+  ```
 
-```bash
-dataos-ctl apply -f <manifest-file-path>
-```
+2. Apply the read-only Instance Secret manifest file by executing the command below.
 
-Expected output:
+  ```bash
+  dataos-ctl apply -f <manifest-file-path>
+  ```
 
-```bash
-INFO[0000] 🛠 apply...                                   
-INFO[0000] 🔧 applying snowflake-rw:v1:instance-secret... 
-INFO[0002] 🔧 applying snowflake-rw:v1:instance-secret...created
-INFO[0002] 🛠 apply...complete
-```
+  Expected output:
+
+  ```bash
+  INFO[0000] 🛠 apply...                                   
+  INFO[0000] 🔧 applying snowflake-r:v1:instance-secret... 
+  INFO[0002] 🔧 applying snowflake-r:v1:instance-secret...created
+  INFO[0002] 🛠 apply...complete
+  ```
+
+  Similarly apply the read write Instance Secret manifest file for access.
+
+  ```bash
+  dataos-ctl apply -f <manifest-file-path>
+  ```
+
+  Expected output:
+
+  ```bash
+  INFO[0000] 🛠 apply...                                   
+  INFO[0000] 🔧 applying snowflake-rw:v1:instance-secret... 
+  INFO[0002] 🔧 applying snowflake-rw:v1:instance-secret...created
+  INFO[0002] 🛠 apply...complete
+  ```
 
 ## Step 2: Set up a connection with source
 
 To set up a connection with the source, create Depot if the Depot has already been created and activated during the Design phase of the Data Product, skip this step. The semantic model will utilize the existing Depot and the associated Instance Secrets set up. Ensure the Depot is properly connected to the correct data source and that you have the necessary access credentials (Instance Secrets) configured for the Lens deployment.
-
 
 The following information is required to connect the Snowflake with DataOS using Depot Resource:
 
@@ -209,7 +219,7 @@ depot:
 
 ## Step 3: Extract the metadata 
 
-To access the metadata of the snowflake data on Metis UI within DataOS, the user must create a Scanner Workflow that scans the metadata from the source (Depot) and stores it within DataOS.
+To access the metadata of the snowflake data on Metis UI, the user must create a Scanner Workflow that scans the metadata from the source (Depot) and stores it in Metis DB.
 
 ```yaml
 version: v1
@@ -259,7 +269,7 @@ semantic_model
 
 ### **Load data from the data source**
 
-In the sqls folder, create a .sql file for each logical table. Each file should be responsible for loading or selecting the relevant data from the source, using Snowflake-compatible SQL synta such as table names are formatted as schema.table.
+In the sqls folder, create a `.sql` file for each logical table. Each file should be responsible for loading or selecting the relevant data from the source, using Snowflake-compatible SQL synta such as table names are formatted as schema.table.
 
 For example, a simple data load might look as follows:
 
