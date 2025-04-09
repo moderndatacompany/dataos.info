@@ -83,15 +83,15 @@ Once you have the manifest file ready in your code editor, simply copy the path 
 
 === "Command"
 
-  ```bash 
-  dataos-ctl resource apply -f ${{yamlfilepath}}
-  ```
+    ```bash 
+    dataos-ctl resource apply -f ${{yamlfilepath}}
+    ```
 
 === "Alternative Command"
 
-  ```bash 
-  dataos-ctl apply -f ${{yamlfilepath}}
-  ```
+    ```bash 
+    dataos-ctl apply -f ${{yamlfilepath}}
+    ```
 
 
 

@@ -3,13 +3,14 @@
 After a Depot is created, a developer can control and manage access to it. This section involves governance aspect of a Depot.
 
 
-<aside class="callout">
-🗣️ Keep in mind that the name and permission level of each tag and use case can vary across organizations, depending on how they choose to manage them.
-</aside>
 
 To access a Depot a user must have the following tags assigned:
 
 - `roles:id:data-dev`
+
+<aside class="callout">
+🗣️ Keep in mind that the name and permission level of each tag and use case can vary across organizations, depending on how they choose to manage them.
+</aside>
 
 Alternatively,  a user must have the following use case assigned:
 
