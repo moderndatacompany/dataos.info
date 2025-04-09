@@ -100,11 +100,9 @@ To ensure smooth query execution, sufficient computing and storage permissions a
 Sufficient computing and storage permissions are needed to run queries. Learn more about access control in Snowflake by referring to this [link](https://docs.snowflake.com/en/user-guide/security-access-control-privileges).
 
 
-## Step 1: Set up a connection with source
+## Step 1: Create Instance Secret to securely store Snowflake credentials
 
-To set up a connection with the source, create Depot if the Depot has already been created and activated during the Design phase of the Data Product, skip this step. The semantic model will utilize the existing Depot and the associated Instance Secrets set up. Ensure that the Depot is properly connected to the correct data source and that you have the necessary access credentials (Instance Secrets) available for the Lens deployment.
-
-Before establishing a connection to the data source, an [Instance Secret](/resources/instance_secret/) must be created. This secret securely stores the credentials required for `read` (`r`) and `read write` (`rw`) access to the data source.
+Before connecting to the data source, create an [Instance Secret](/resources/instance_secret/) to securely store the Snowflake credentials. In the instance secret manifest, specify the Snowflake username and password under the data field, which will be used for read (r) and read-write (rw) access during deployment.
 
 ```yaml title="instance-secret-r.yml"
 name: snowflake-r
@@ -133,21 +131,54 @@ instance-secret:
     username: "<username>" # username of the snowflake account
     password: "<password>" # password of the snowflake account
 ```
+Apply the read-only Instance Secret manifest file by executing the command below.
+
+```bash
+dataos-ctl apply -f <manifest-file-path>
+```
+
+Expected output:
+
+```bash
+INFO[0000] 🛠 apply...                                   
+INFO[0000] 🔧 applying snowflake-r:v1:instance-secret... 
+INFO[0002] 🔧 applying snowflake-r:v1:instance-secret...created
+INFO[0002] 🛠 apply...complete
+```
+
+Similarly apply the read write Instance Secret manifest file for access.
+
+```bash
+dataos-ctl apply -f <manifest-file-path>
+```
+
+Expected output:
+
+```bash
+INFO[0000] 🛠 apply...                                   
+INFO[0000] 🔧 applying snowflake-rw:v1:instance-secret... 
+INFO[0002] 🔧 applying snowflake-rw:v1:instance-secret...created
+INFO[0002] 🛠 apply...complete
+```
+
+## Step 2: Set up a connection with source
+
+To set up a connection with the source, create Depot if the Depot has already been created and activated during the Design phase of the Data Product, skip this step. The semantic model will utilize the existing Depot and the associated Instance Secrets set up. Ensure the Depot is properly connected to the correct data source and that you have the necessary access credentials (Instance Secrets) configured for the Lens deployment.
+
 
 The following information is required to connect the Snowflake with DataOS using Depot Resource:
 
-| Field     | Description                                                                                      |
-|-----------|--------------------------------------------------------------------------------------------------|
-| username  | The username used to log in to the Snowflake account.                                            |
-| password  | The password associated with the username for authentication.                                    |
-| warehouse | The Snowflake warehouse that will be accessed.                                                   |
-| URL       | The URL to connect to the Snowflake instance, usually formatted as `https://<orgname>-<account_name>.snowflakecomputing.com`. |
-| database  | The specific Snowflake database to be used.                                                      |
+| **Field**    | **Description**                                                                                                                                                  |
+|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **warehouse**| The Snowflake warehouse that will be accessed.                                                                                                                  |
+| **url**      | The URL to connect to the Snowflake instance, typically formatted as `https://<orgname>-<account_name>.snowflakecomputing.com`.                                  |
+| **database** | The specific Snowflake database to be used.                                                                                                                     |
+| **account**  | The Snowflake account identifier, which is related to the URL (e.g., the part of the URL before `snowflakecomputing.com`).                                      |
 
 After configuring Depot with the above configurations the Depot manifest file look as follows:
 
 ```yaml title="snowflake-depot.yml" hl_lines="22-27"
-name: snowflake-depot
+name: snowflake
 version: v2alpha
 type: depot
 tags:
@@ -155,34 +186,69 @@ tags:
   - user data
 layer: user
 depot:
-  name: sftest
+  name: snowflake
   type: snowflake
   description: Depot to fetch data from Snowflake datasource
   secrets:
-    - name: sftest-r
+    - name: snowflake-r
       keys:
-        - sftest-r
+        - snowflake-r
       allKeys: true
-    - name: sftest-rw
+    - name: snowflake-rw
       keys:
-        - sftest-rw
+        - snowflake-rw
       allKeys: true
   external: true
   snowflake:
     database: TMDC_V1
-    url: ABCD23-XYZ8932.snowflakecomputing.com
+    url: ABCD23-XYZ8932.snowflakecomputing.com  # dont use https:// 
     warehouse: COMPUTE_WH
     account: ABCD23-XYZ8932
-  source: sftest
+  source: snowflake
 ```
 
-## Step 2: Prepare the semantic model folder
+## Step 3: Extract the metadata 
 
-After successfully setting up the connection with source, organize the semantic model folder with the following structure to define tables, views, and governance policies:
+To access the metadata of the snowflake data on Metis UI within DataOS, the user must create a Scanner Workflow that scans the metadata from the source (Depot) and stores it within DataOS.
+
+```yaml
+version: v1
+name: snowflake-depot-scanner
+type: workflow
+tags:
+  - Scanner
+title: Scan snowflake-depot
+description: |
+  The purpose of this workflow is to scan snowflake and see if scanner works fine with a snowflake of depot.
+workflow:
+  dag:
+    - name: scan-snowflake-db
+      title: Scan snowflake db
+      description: |
+        The purpose of this job is to scan gateway db and see if scanner works fine with a snowflake type of depot.
+      tags:
+        - Scanner
+      spec:
+        stack: scanner:2.0
+        compute: runnable-default
+        stackSpec:
+          depot: snowflake # snowflake depot name
+```
+
+Apply the Scanner Workflow by executing the command below.
+
+```bash
+dataos-ctl resource apply -f /home/data_product/depot/scanner.yaml -w public
+```
+
+
+## Step 3: Prepare the semantic model folder inside the cloned Data Product repository
+
+Organize the semantic model folder with the following structure to define tables, views, and governance policies:
 
 ```
-model
-├── sqls
+semantic_model
+└── model
 │   └── sample.sql  # SQL script for table dimensions
 ├── tables
 │   └── sample_table.yml  # Logical table definition (joins, dimensions, measures, segments)
@@ -193,7 +259,7 @@ model
 
 ### **Load data from the data source**
 
-In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure the SQL dialect matches Snowflake syntax. Format table names as `schema.table`.
+In the sqls folder, create a .sql file for each logical table. Each file should be responsible for loading or selecting the relevant data from the source, using Snowflake-compatible SQL synta such as table names are formatted as schema.table.
 
 For example, a simple data load might look as follows:
 
@@ -223,7 +289,6 @@ FROM
   "retail".customer;
 ```
 
-
 ### **Define the table in the model**
 
 Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For example, to define a table for `sales `data:
@@ -242,21 +307,21 @@ After defining the base table, add the necessary dimensions and measures. For ex
 ```yaml
 tables:
   - name: sales
-    sql: {{ load_sql('sales') }}
+    sql: {{ load_sql('customer') }}
     description: Table containing sales records with order details.
 
     dimensions:
       - name: order_id
-        type: number
+        type: number   #data type of dimension possible values - string, number, time, boolean
         description: Unique identifier for each order.
-        sql: order_id
-        primary_key: true
-        public: true
+        column: order_id       # References the column defined in the table’s SQL.
+        primary_key: true   #set the given dimension as primary key
+        public: true # to control the visibility of the dimension. By default it is true.
 
     measures:
-      - name: total_orders_count
-        type: count
-        sql: id
+      - name: total_orders_count  
+        type: count   # type of measure column : time, string, number, boolean, count, sum, count_distinct, count_distinct_approx, avg, min, max
+        sql: id      #references the column used to calculate the measure
         description: Total number of orders.
 ```
 Know more about [dimensions](/resources/lens/concepts/#dimensions) and [measures](/resources/lens/concepts/#measures).
@@ -268,7 +333,7 @@ Segments are filters that allow for the application of specific conditions to re
 ```yaml
 segments:
   - name: state_filter
-    sql: "{TABLE}.state IN ('Illinois', 'Ohio')"
+    sql: "{TABLE}.state IN ('Illinois', 'Ohio')"  #Here {TABLE} refers to the current table (jinja templating)
 ```
 
 To know more about segments click [here](/resources/lens/segments/).
@@ -303,7 +368,7 @@ This YAML manifest file is used to manage access levels for the semantic model. 
 user_groups:
   - name: default
     description: this is default user group
-    includes: "*"
+    includes: "*"  # refers all users. you can always give the list of users in the form of tag example users:id:iamgroot
 ```
 
 To know more about the User groups click [here](/resources/lens/user_groups_and_data_policies/)
@@ -348,11 +413,6 @@ Each section of the YAML template defines key aspects of the Lens deployment. Be
 
       * **Source name:** The `name` attribute in the `source` section should specify the name of the Snowflake Depot created.
 
-<aside class="callout">
-
-When creating a semantic model (Lens) on a Snowflake Depot, the data remains in the source, and the query is executed within the Snowflake system itself. Only the metadata is ingested into the DataOS Metis. This means that Lens utilizes Snowflake’s native query engine for executing queries directly on the Snowflake source.
-
-</aside>
 
 * **Setting Up Compute and Secrets:**
 
