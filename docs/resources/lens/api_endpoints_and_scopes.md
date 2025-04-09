@@ -58,7 +58,7 @@ To securely interact with the Lens APIs, you must authenticate your requests usi
 3. Note down your API key and keep it secure. You will use this key to authenticate your API requests.
 
 
-APIkey tokens can also be fetched from the DataOS GUI, for more details refer to the [documentation here](/interfaces/#create-tokens).
+API key tokens can also be fetched from the DataOS GUI, for more details refer to the [documentation here](/interfaces/#create-tokens).
 
 
 ## meta scope
@@ -134,7 +134,7 @@ You can use either of the following methods:
     === "Example"
 
         ```bash
-        http://<liberal-monkey.dataos.app>/lens2/api/sales_analysis/v2/load?query={"dimensions":["customer.customer_id","customer.annual_income"],"measures":["customer.total_customers", "customer.average_age"]}
+        http://liberal-monkey.dataos.app/lens2/api/public:sales_analysis/v2/load?query={"dimensions":["customer.customer_id","customer.annual_income"],"measures":["customer.total_customers", "customer.average_age"]}
         ```
 === "Method 2"
 
