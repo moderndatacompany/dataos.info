@@ -377,7 +377,10 @@ nav:
             - Using SQL APIs: 
                 - Overview: resources/lens/exploration_of_lens_using_sql_apis.md
                 - Supported functions and operators: resources/lens/sql_apis/supported_functions_and_operators.md
-            - Using REST APIs: resources/lens/exploration_of_lens_using_rest_apis.md            
+            - Using REST APIs: 
+                - resources/lens/exploration_of_lens_using_rest_apis.md          
+                - API Endpoints and Scopes: resources/lens/api_endpoints_and_scopes.md
+
             # - Using Data Product Hub: resources/lens/exploration_of_lens_using_data_product_hub.md
 
             # - Using Iris dashboard: resources/lens/exploration_of_lens_using_iris_dashboard.md
