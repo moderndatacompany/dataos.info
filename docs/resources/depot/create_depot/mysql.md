@@ -38,7 +38,7 @@ DataOS allows you to connect to a MySQL database and read data from tables using
 ### **Step 1: Create an Instance Secret for securing MySQL credentials**
 
 
-Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/).
+Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/data_sources/mysql/).
 
 ### **Step 2: Create a MySQL Depot manifest file**
 
