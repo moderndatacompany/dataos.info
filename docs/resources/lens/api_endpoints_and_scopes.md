@@ -45,20 +45,20 @@ To securely interact with the Lens APIs, you must authenticate your requests usi
 
 1. Open your terminal and run the following command to create a new API key:
 
-  ```bash
-  dataos-ctl user apikey create
-  ```
+    ```bash
+    dataos-ctl user apikey create
+    ```
 
 2. To view existing API keys, use:
 
-  ```bash
-  dataos-ctl user apikey get
-  ```
+    ```bash
+    dataos-ctl user apikey get
+    ```
 
 3. Note down your API key and keep it secure. You will use this key to authenticate your API requests.
 
 
-APIkey tokens can also be fetched from the DataOS GUI, for more details refer to the [documentation here](/interfaces/#create-tokens).
+API key tokens can also be fetched from the DataOS GUI, for more details refer to the [documentation here](/interfaces/#create-tokens).
 
 
 ## meta scope
@@ -66,19 +66,19 @@ APIkey tokens can also be fetched from the DataOS GUI, for more details refer to
 Provides access to metadata-related endpoints. This scope allows users to view metadata, which typically includes information about sources, authors, timezones, security context, user groups, etc.
 
 ### **/v2/meta**
-
-Get meta-information for Lens and views defined in the data model. Information about Lens with **public: false** will not be returned.
-
+ 
+Get meta-information such as entitites,measures,dimensions for Lens and views defined in the data model. Information about Lens with `public: false` will not be returned.
+ 
 === "Syntax"
 
     ```bash
-    http://<DATAOS_FQDN>/lens2/api/<data_model_name>/v2/meta
+    http://<DATAOS_FQDN>/lens2/api/<workspace_name>:<data_model_name>/v2/meta
     ```
 
 === "Example"
 
     ```bash
-    http://liberal-monkey.dataos.app/lens2/api/sales_analysis/v2/meta
+    http://liberal-monkey.dataos.app/lens2/api/public:sales_analysis/v2/meta
     ```
   
 **Example response:**
@@ -129,25 +129,25 @@ You can use either of the following methods:
     === "Syntax"   
 
         ```bash
-        http://<DATAOS_FQDN>/lens2/api/<data_model_name>/v2/load?query=<query_parameters>
+        http://<DATAOS_FQDN>/lens2/api/<workspace_name>:<data_model_name>/v2/load?query=<query_parameters>
         ```
     === "Example"
 
         ```bash
-        http://<liberal-monkey.dataos.app>/lens2/api/sales_analysis/v2/load?query={"dimensions":["customer.customer_id","customer.annual_income"],"measures":["customer.total_customers", "customer.average_age"]}
+        http://liberal-monkey.dataos.app/lens2/api/public:sales_analysis/v2/load?query={"dimensions":["customer.customer_id","customer.annual_income"],"measures":["customer.total_customers", "customer.average_age"]}
         ```
 === "Method 2"
 
     === "Syntax"  
 
         ```bash
-        http://<DATAOS_FQDN>/lens2/api/<data_model_name>/v2/load
+        http://<DATAOS_FQDN>/lens2/api/<workspace_name>:<data_model_name>/v2/load
         ```  
 
     === "Example"
                                                                                     
         ```bash
-        http://liberal-monkey.dataos.app/lens2/api/sales_analysis/v2/load?query={"dimensions":["customer.customer_id","customer.annual_income"],"measures":["customer.total_customers", "customer.average_age"]}
+        http://liberal-monkey.dataos.app/lens2/api/public:sales_analysis/v2/load?query={"dimensions":["customer.customer_id","customer.annual_income"],"measures":["customer.total_customers", "customer.average_age"]}
         ```                                                         
 
     In the `POST` request body, include the query parameters in the JSON Query Format:
@@ -211,14 +211,14 @@ You can use either of the following methods:
 Alternatively, you can use `/sql` endpoint.
 
 ```bash
-http://liberal-monkey.dataos.app/lens2/api/sales_analysis/v2/sql
+http://liberal-monkey.dataos.app/lens2/api/public:sales_analysis/v2/sql
 ```
 
 configure the body with the JSON Query Format similar to `/load`.
 
-## graphql
+## graphql scope
 
-Grants access to GraphQL endpoints. GraphQL is a query language for APIs that allows clients to request only the data they need. This scope enables users to perform GraphQL queries and mutations. To know more about How to use GraphQL click [here](/resources/lens/exploration_of_lens_using_graphql/)
+GraphQL scope grants access to `/graphql` endpoint. GraphQL is a query language for APIs that allows clients to request only the data they need. This scope enables users to perform GraphQL queries and mutations. To know more about How to use GraphQL click [here](/resources/lens/exploration_of_lens_using_graphql/)
 
 ## Possible Responses
 
