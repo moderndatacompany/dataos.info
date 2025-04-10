@@ -50,7 +50,7 @@ DataOS provides the capability to establish a connection with the Amazon Redshif
 ### **Step 1: Create an Instance Secret for securing Redshift credentials**
 
 
-Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).
+Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/).
 
 ### **Step 2: Create a Redshift Depot manifest file**
 
