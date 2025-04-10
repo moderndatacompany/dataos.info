@@ -32,7 +32,7 @@ DataOS allows you to create a Depot of type 'KAFKA' to read live topic data. Thi
 
 ### **Step 1: Create a Kafka Depot manifest file**
 
-Begin by creating a manifest file to hold the configuration details for your Kafka Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.
+Begin by creating a manifest file to hold the configuration details for your Kafka Depot.
 
 
 ```yaml 

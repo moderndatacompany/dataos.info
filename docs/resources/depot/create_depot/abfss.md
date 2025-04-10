@@ -40,7 +40,7 @@ DataOS enables the creation of a Depot of type 'ABFSS' to facilitate the reading
 
 ### **Step 1: Create an Instance Secret for securing ABFSS credentials**
 
-Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).
+Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/).
 
 ### **Step 2: Create an ABFSS Depot manifest file**
 
