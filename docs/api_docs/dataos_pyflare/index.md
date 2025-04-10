@@ -1,18 +1,18 @@
 ---
-title: Pyflare
+title: DataOS PyFlare
 search:
   boost: 2
 tags:
-    - Pyflare
+    - PyFlare
     - SDK
     - Python
-    - DataOS Pyflare
+    - DataOS PyFlare
 ---
 
 
-# DataOS Pyflare
+# DataOS PyFlare
 
-The DataOS Pyflare is a Python library that streamlines data operations and faciltate seamless interactions with Apache Spark within DataOS. Its a wrapper around [Flare](/resources/stacks/flare/), to enable Python support with DataOS capabilities. The library abstracts complexities inherent in data flow, allowing users to direct their focus toward data transformations and the formulation of business logic by simplifying the loading, transformation, and storage of data. It facilitates the integration of existing Spark Job code bases with DataOS, requiring minimal modifications.
+The DataOS PyFlare is a Python library that streamlines data operations and facilitate seamless interactions with Apache Spark within DataOS. Its a wrapper around [Flare](/resources/stacks/flare/), to enable Python support with DataOS capabilities. The library abstracts complexities inherent in data flow, allowing users to direct their focus toward data transformations and the formulation of business logic by simplifying the loading, transformation, and storage of data. It facilitates the integration of existing Spark Job code bases with DataOS, requiring minimal modifications.
 
 <aside class="callout">
 🗣 Delve into the comprehensive <a href="/api_docs/dataos_pyflare/docs/pyflare.html">Pyflare Library Reference</a> for detailed insights into the diverse modules and classes encompassed by the Flare package. To know more about Flare's key features and initiation procedures, refer to the following sections.
@@ -99,44 +99,28 @@ py -m pip --version
 
 If you installed Python from source, with an installer from [python.org](https://www.python.org/), or via [Homebrew](https://brew.sh/) you should already have pip. If you’re on Linux and installed using your OS package manager, you may have to install pip separately, see [Installing pip/setuptools/wheel with Linux Package Managers](https://packaging.python.org/en/latest/guides/installing-using-linux-tools/).
 
-**Spark Environment Configuration**
-
-To ensure the proper functioning of the system, a Spark environment must be configured with the necessary settings tailored to the specific use case.
-
-**Inclusion of common JARs**
-
-JAR files are crucial for the specific use case and should be integrated into your project as needed. But there are a set of common JARs which are always needed to support governance. The obligatory JAR files encompass:
-
-- `io.dataos.sdk.commons`
-- `io.dataos.sdk.heimdall`
-- `io.dataos.sdk.spark-authz`
-- A single consolidated JAR file named `io.dataos.sdk.flare_2.12`
-
-> <b>Note:</b> It's important to note that DataOS-native Jupyter and Python environments do not demand the utilization of the previously mentioned JAR files. This is because most of the essential JAR files are already included within the environment.
 
 
 ### **Installing from PyPI**
 
 The `dataos-pyflare` library can be installed from the Python Package Index (PyPI) using the following command:
 
+<aside class="best-practice" style="border-left: 4px solid #28a745; background-color: #e6f4ea; color: #1e4620; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;">
+<b>Recommendation:</b> Install the <code>dataos-pyflare==0.1.13</code> version of Pyflare, as it is the designated stable release.
+</aside>
+
 **For Linux/macOS**
 
 ```bash
-# For latest version
-python3 -m pip install dataos-pyflare
-# For specific version
-python3 -m pip install dataos-pyflare=={{version specifier}}
-# e.g. python3 -m pip install dataos-pyflare==0.0.6
+python3 -m pip install dataos-pyflare==0.1.13
+
 ```
 
 **For Windows**
 
 ```bash
-# For latest version
-py -m pip install dataos-pyflare
-# For specific version
-py -m pip install dataos-pyflare=={{version specifier}}
-# e.g. py -m pip install dataos-pyflare==0.0.6
+
+py -m pip install dataos-pyflare==0.1.13
 ```
 
 ><b>Note:</b> If you’re using an enhanced shell like IPython or Jupyter notebook, you must restart the runtime in order to use the newly installed package.
@@ -148,21 +132,6 @@ pip can install from either [Source Distributions (sdist)](https://files.pytho
 
 If `pip` does not find a wheel to install, it will locally build a wheel and cache it for future installs, instead of rebuilding the source distribution in the future.
 
-### **Upgrading from PyPI**
-
-Upgrade `dataos-pyflare` to the latest from PyPI.
-
-**For Unix/macOS** 
-
-```bash
-python3 -m pip install --upgrade dataos-pyflare
-```
-
-**For Windows**
-
-```bash
-py -m pip install --upgrade dataos-pyflare
-```
 
 ## Getting Started
 
@@ -172,38 +141,17 @@ The following code snippet exemplifies the configuration of a Flare session for 
 
 ```python
 from pyspark.sql import Row
-import random
-from datetime import datetime, timedelta
 from pyspark.sql.functions import col
 from pyflare.sdk import load, save, session_builder
 ```
 
-### **Data Generation**
+### **Data loading**
 
 ```python
-# Generate a random date of birth
-def generate_random_date_of_birth():
-    start_date = datetime(1998, 1, 1)
-    end_date = datetime(1998, 12, 31)
-    random_days = random.randint(0, (end_date - start_date).days)
-    return (start_date + timedelta(days=random_days)).strftime("%Y-%m-%d")
+# Load Iceberg data from Lakehouse
+df = load(name="dataos://lakehouse:test_crm/product_data", format="iceberg")
+df.show(10)
 
-# Generate random data records
-def GenerateData():
-    num_rows = random.randint(1000, 10000)
-    first_names = ["Alice", "Bob", "Charlie", "David", "Emily", "Frank", "Grace", "Henry", "Ivy", "Jack", "Karen", "Leo",
-                   "Mia", "Noah", "Olivia", "Peter", "Quinn", "Rachel", "Sam", "Tom", "Uma", "Victor", "Wendy", "Xander",
-                   "Yvonne", "Zane"
-                   ]
-
-    data = []
-    for _ in range(num_rows):
-        name = random.choice(first_names)
-        date_of_birth_str = generate_random_date_of_birth()
-        date_of_birth_ts = datetime.strptime(date_of_birth_str, "%Y-%m-%d")
-        age = random.randint(20, 99)
-        data.append(Row(name=name, date_of_birth=date_of_birth_ts, age=age))
-    return data
 ```
 
 ### **DataOS Configuration**
@@ -219,7 +167,19 @@ The apikey `token` can be obtained by executing the following command on the CLI
 
 ```bash
 dataos-ctl user apikey get
-# If there are no apikey's present, create a new one by using the `create` command
+
+# Expected Output
+INFO[0000] 🔑 user apikey get...                         
+INFO[0000] 🔑 user apikey get...complete                 
+
+                                                   TOKEN                                                   │  TYPE  │        EXPIRATION         │                   NAME                     
+───────────────────────────────────────────────────────────────────────────────────────────────────────────┼────────┼───────────────────────────┼────────────────────────────────────────────
+  dG9rZW5faG9wZWZ1bGx5X2xvdWRsedHJpa2luZ19uZXd0LmFiMzAyMTdjLTExYzAtNDg2Yi1iZjEyLWJkMjY1ZWM2YzgwOA==     │ apikey │ 2025-04-13T05:30:00+05:30 │ token_hopefully_loudly_striking_newt       
+  dG9rZW5fdGlnaHRseV9uZWVkbGVzcX2xpYmVyYWxfcGFuZ29saW4uNTY0ZDc4ZTQtNWNhMy00YjI1LWFkNWMtYmFlMTcwYTM5MWU1 │ apikey │ 2025-04-11T05:30:00+05:30 │ token_tightly_needlessly_liberal_pangolin  
+```
+If there are no apikey's present, create a new one by using the `create` command as shown below:
+
+```bash
 dataos-ctl user apikey create
 ```
 
@@ -235,37 +195,36 @@ sparkConf = [
 ]
 
 # Build the session
-spark = session_builder.SparkSessionBuilder(log_level="INFO") \\
-    .with_spark_conf(sparkConf) \\
-    .with_user_apikey(token) \\
-    .with_dataos_fqdn(DATAOS_FQDN) \\
-    .with_depot(depot_name="icebase", acl="rw") \\
+spark = session_builder.SparkSessionBuilder(log_level="INFO") \
+    .with_spark_conf(sparkConf) \
+    .with_user_apikey(token) \
+    .with_dataos_fqdn(DATAOS_FQDN) \
+    .with_depot(depot_name="${{lakehouse}}", acl="rw") \
     .build_session()
 
-# Create a DataFrame with generated data and repartition it
-df = spark.createDataFrame(GenerateData()).repartition(1)
-df.show(10)
 ```
 
 ### **Data Storage**
 
-The `save` method is used to store the transformed DataFrame in the designated destination (`dataos://icebase:pyflare/test_write_01`) in Iceberg format.
+The `save` method is used to store the transformed DataFrame in the designated destination (`dataos://${{depot_name}}:${{Schema}}/${{table_name}}`) in respective format. For example:
 
 ```python
 # Save the DataFrame to DataOS with specified path
-save(name="dataos://icebase:pyflare/test_write_01", dataframe=df, format="iceberg", mode="overwrite")
+save(name="dataos://lakehouse:sandbox3/test_pyflare2", dataframe=df, format="iceberg", mode="overwrite")
+
 ```
 
 ### **Data Retrieval**
 
-The `load` method is employed to retrieve data from a specified source (`dataos://icebase:pyflare/test_write_01`) in Iceberg format. The result is a governed DataFrame.
+The `load` method is employed to retrieve data from a specified source (`dataos://${{depot_name}}:${{Schema}}/${{table_name}}`) in respective format. The result is a governed DataFrame. For example:
+
 
 ```python
 # Read data from DataOS using Iceberg format and display the first 10 records
-load(name="dataos://icebase:pyflare/test_write_01", format="iceberg").show(10)
+load(name="dataos://lakehouse:sandbox3/test_pyflare2", format="iceberg").show(10)
 
 # Count the total number of records in the stored dataset
-load(name="dataos://icebase:pyflare/test_write_01", format="iceberg").count()
+load(name="dataos://lakehouse:sandbox3/test_pyflare2", format="iceberg").count()
 ```
 
 ### **Session Termination**
