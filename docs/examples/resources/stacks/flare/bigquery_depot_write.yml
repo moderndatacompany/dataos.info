@@ -1,5 +1,5 @@
 version: v1
-name: bq-read-write-02
+name: bq-write-0310-03
 type: workflow
 tags:
   - bq
@@ -7,14 +7,14 @@ tags:
 title: Write bq
 workflow:
   dag:
-    - name: city-write-bq-02
+    - name: bq-write-0310-03
       title: City write bq
-      description: This job read data from azure and writes to Sbq
+      description: This job read data from bigquery and writes to Sbq
       spec:
         tags:
           - Connect
           - City
-        stack: flare:5.0
+        stack: flare:6.0
         compute: runnable-default
         stackSpec:
           job:
@@ -27,13 +27,16 @@ workflow:
             logLevel: INFO
             outputs:
               - name: finalDf
-                dataset: dataos://yakdevbq:dev/city_bq?acl=rw
-                format: Bigquery
+                dataset: dataos://sanitybq:dev/bigquery_write_0310_03?acl=rw
+                format: bigquery
                 options:
-                  saveMode: append
+                  saveMode: overwrite
                   bigquery:
                     temporaryBucket: tmdc-development-new
+                  extraOptions:
+                    intermediateFormat: avro
+
             steps:
               - sequence:
                   - name: finalDf
-                    sql: SELECT * FROM city_connect
+                    sql: SELECT * FROM city_connect limit 10

@@ -1055,18 +1055,6 @@ workflow:
                           ce.dataos_run_id, ce.job_name, ce.scan_start_timestamp as timestamp, ce.user_name, ce.depot, ce.collection, ce.dataset, ce.column, ce.name as check_definition, me.metric_name, me.value as metric_value, ce.outcome as check_outcome
                           from checks_extracted ce
                           left join metrics_extracted me on ce.dataos_run_id = me.dataos_run_id and ce.metrics_ = me.identity
-
-    - name: soda-check-data
-      spec:
-        stack: toolbox
-        compute: runnable-default
-        stackSpec:
-          dataset: dataos://icebase:soda/soda_check_metrics_01?acl=rw
-          action:
-            name: set_version
-            value: latest
-      dependencies:
-        - soda-cm-data
 ```
 </details>
 
@@ -1226,18 +1214,6 @@ workflow:
                           - column_name
                         keyColumnName: analyzer_name
                         valueColumnName: result
-
-    - name: soda-prf-tool
-      spec:
-        stack: toolbox
-        compute: runnable-default
-        stackSpec:
-          dataset: dataos://icebase:soda/soda_profiles_01?acl=rw
-          action:
-            name: set_version
-            value: latest
-      dependencies:
-        - soda-prf-data
 ```
 </details>
 

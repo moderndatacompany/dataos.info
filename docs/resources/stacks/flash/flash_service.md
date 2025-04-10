@@ -38,7 +38,6 @@ Ensure that appropriate access permissions are available to execute this command
   soda            │ python  │ 1.0     │ docker.io/rubiklabs/dataos-soda:0.0.19.3          │ dataos-container-registry  
   stream-monitor  │         │ 1.0     │ docker.io/rubiklabs/monitor-api:0.13.13           │ dataos-container-registry  
   talos           │         │ 2.0     │ docker.io/rubiklabs/talos:0.1.22                  │ dataos-container-registry  
-  toolbox         │         │ 1.0     │ docker.io/rubiklabs/dataos-tool:0.3.9             │ dataos-container-registry  
 ```
 
 If the Flash Stack is listed, proceed to the [next step](/resources/stacks/flash/flash_service/#create-a-flash-service-manifest-file). If not, deploy a new Stack using the following manifest and the DataOS CLI:

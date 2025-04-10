@@ -238,7 +238,7 @@ workflow:
       - City
       stack: flare:6.0 
       compute: runnable-default 
-      flare:
+      stackSpec:
         job:
           explain: true
           logLevel: INFO
