@@ -39,7 +39,7 @@ DataOS allows you to connect to a PostgreSQL database and read data from tables 
 
 ### **Step 1: Create an Instance Secret for securing Postgres credentials**
 
-Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/).
+Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/data_sources/postgres/).
 
 ### **Step 2: Create a Postgres Depot manifest file**
 

@@ -35,7 +35,7 @@ DataOS provides the capability to connect to Opensearch data using Depot. The De
 
 ### **Step 1: Create an Instance Secret for securing Opensearch credentials**
 
-Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/).
+Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/data_sources/opensearch/).
 
 ### **Step 2: Create an Opensearch Depot manifest file**
 
