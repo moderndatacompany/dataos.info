@@ -41,7 +41,7 @@ DataOS provides the capability to connect to Google Cloud Storage data using Dep
 ### **Step 1: Create an Instance Secret for securing GCS credentials**
 
 
-Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).
+Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/).
 
 ### **Step 2: Create a GCS Depot manifest file**
 
