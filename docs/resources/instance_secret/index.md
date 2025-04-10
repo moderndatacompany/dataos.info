@@ -26,12 +26,11 @@ DataOS Operators are generally responsible for creating and managing Instance Se
 <aside class="callout">
 🗣️ In the DataOS ecosystem, there are two specialized Resources designed to protect sensitive information: Instance Secret and 
   <a href="/resources/secret/">Secret</a>. The Instance Secret offers a wider scope, extending across the entirety of the 
-  <a href="/resources/types_of_dataos_resources/#Instance-level-resources">DataOS Instance</a>. Resources within any Workspace can 
+  <a href="/resources/types/#instance-level-resources">DataOS Instance</a>. Resources within any Workspace can 
   utilize Instance Secrets for securely retrieving sensitive data. In contrast, Secrets are limited to the 
-  <a href="/resources/types_of_dataos_resources/#workspace-level-resources">Workspace level</a>, accessible exclusively within a 
+  <a href="/resources/types/#workspace-level-resources">Workspace level</a>, accessible exclusively within a 
   specific Workspace and only by Resources associated with that Workspace.
 </aside>
-
 
 ## Structure of an Instance Secret manifest
 
@@ -50,30 +49,30 @@ This section includes steps for creating the Instance Secret to secure credentia
 
 If you want to store credentials for various data sources in an Instance Secret follow the steps given in the links below.
 
-- [Azure Blob File System Secure (ABFSS)](/resources/depot/create_depot/abfss/)
-- [Bigquery](/resources/depot/create_depot/bigquery/)
-- [Elasticsearch](/resources/depot/create_depot/elasticsearch/)
-- [Eventhub](/resources/depot/create_depot/eventhub/)
-- [Google Cloud Storage (GCS)](/resources/depot/create_depot/gcs/)
-- [Java Database Connectivity (JDBC)](/resources/depot/create_depot/jdbc/)
-- [MongoDB](/resources/depot/create_depot/mongo/)
-- [Microsoft SQL Server (MSSQL) or Azure SQL](/resources/depot/create_depot/mssql/)
-- [MySQL](/resources/depot/create_depot/myssql/)
-- [Opensearch](/resources/depot/create_depot/opensearch/)
-- [Oracle](/resources/depot/create_depot/oracle/)
-- [Postgres](/resources/depot/create_depot/postgres/)
-- [Redshift](/resources/depot/create_depot/redshift/)
-- [Simple Storage Service (Amazon S3)](/resources/depot/create_depot/s3/)
-- [Snowflake](/resources/depot/create_depot/snowflake/)
-- [Windows Azure Storage Blob Secure (WASBS)](/resources/depot/create_depot/wasbs/)
+- [Azure Blob File System Secure (ABFSS)](/resources/instance_secret/data_sources/abfss/) 
+- [Bigquery](/resources/instance_secret/data_sources/bigquery/)
+- [Elasticsearch](/resources/instance_secret/data_sources/elasticsearch/)
+- [Eventhub](/resources/instance_secret/data_sources/eventhub/)
+- [Google Cloud Storage (GCS)](/resources/instance_secret/data_sources/gcs/)
+- [Java Database Connectivity (JDBC)](/resources/instance_secret/data_sources/jdbc/)
+- [MongoDB](/resources/instance_secret/data_sources/mongo/)
+- [Microsoft SQL Server (MSSQL) or Azure SQL](/resources/instance_secret/data_sources/mssql/)
+- [MySQL](/resources/instance_secret/data_sources/myssql/)
+- [Opensearch](/resources/instance_secret/data_sources/opensearch/)
+- [Oracle](/resources/instance_secret/data_sources/oracle/)
+- [Postgres](/resources/instance_secret/data_sources/postgres/)
+- [Redshift](/resources/instance_secret/data_sources/redshift/)
+- [Simple Storage Service (Amazon S3)](/resources/instance_secret/data_sources/s3/)
+- [Snowflake](/resources/instance_secret/data_sources/snowflake/)
+- [Windows Azure Storage Blob Secure (WASBS)](/resources/instance_secret/data_sources/wasbs/)
 
 ### **Repositories**
 
 If you want to store credentials for hosted code repositories in an Instance Secret follow the steps given below.
 
-- [AWS CodeCommit](/resources/depot/repositories/codecommit/)
-- [Bitbucket](/resources/depot/repositories/bitbucket/)
-- [Git](/resources/depot/repositories/git/)
+- [AWS CodeCommit](/resources/instance_secret/repositories/codecommit/)
+- [Bitbucket](/resources/instance_secret/repositories/bitbucket/)
+- [Git](/resources/instance_secret/repositories/git/)
 
 
 ## Configurations
