@@ -29,7 +29,7 @@ This section comprises attributes specific to the Worker Resource. The attribute
 **Example Usage:**
 
 ```yaml
-name: benthos3-worker-sample
+name: bento3-worker-sample
 version: v1beta
 type: worker
 tags:
@@ -412,7 +412,7 @@ topology:
 
 #### **`stackSpec`**
 
-> Attributes named `flare`/`bento`/`toolbox`/`beacon`/`scanner`/`alpha` has been deprecated and will be removed in future releases, please replace with the generic `stackSpec`
+> Attributes named `flare`/`bento`/`beacon`/`scanner`/`alpha` has been deprecated and will be removed in future releases, please replace with the generic `stackSpec`
 > 
 
 **Description:** This attribute allows for specifying stack-specific attributes. These attributes are specific to the stack configuration used by the Worker.
@@ -424,6 +424,6 @@ topology:
 **Example Usage:**
 
 ```yaml
-stackSpec/flare/bento/toolbox/beacon/scanner/alpha:
+stackSpec/flare/bento/beacon/scanner/alpha:
   ${{Stack-specific Attributes}}
 ```

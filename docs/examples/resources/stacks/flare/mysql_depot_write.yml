@@ -1,33 +1,35 @@
 version: v1
-name: cnt-city-demo-mysql-01
+name: write-mysql-01
 type: workflow
 tags:
   - Connect
   - City
 description: The job ingests city data from dropzone into raw zone
+
 workflow:
   title: Connect City
   dag:
-    - name: city-mysql-01
+    - name: write-mysql-01
       title: City Dimension Ingester
       description: The job ingests city data from dropzone into raw zone
       spec:
         tags:
           - Connect
           - City
-        stack: flare:5.0
+        stack: flare:6.0
         compute: runnable-default
-        stackSpec:
+        flare:
           job:
             explain: true
             inputs:
               - name: city_connect
-                dataset: dataos://icebase:retail/city
-                format: iceberg
+                dataset: dataos://thirdparty01:none/city
+                format: csv
+                schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc
             logLevel: INFO
             outputs:
               - name: cities
-                dataset: dataos://mysql01:dataosmysql/city01?acl=rw
+                dataset: dataos://sanitymysql:tmdc/mysql_write_csv_12?acl=rw
                 driver: com.mysql.cj.jdbc.Driver
                 format: jdbc
                 description: City data ingested from external csv
@@ -45,4 +47,5 @@ workflow:
                   - name: cities
                     doc: Pick all columns from cities and add version as yyyyMMddHHmm formatted
                       timestamp.
-                    sql: SELECT * FROM city_connect LIMIT 1000
+                    sql: SELECT * FROM city_connect LIMIT 10
+

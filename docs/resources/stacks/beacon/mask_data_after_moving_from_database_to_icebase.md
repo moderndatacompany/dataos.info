@@ -136,7 +136,7 @@ workflow:
         tags:
             - Connect_jobs
             - transactions_connect
-        stack: flare:5.0
+        stack: flare:6.0
         envs:
           HERA_URL: "https://enough-kingfish.dataos.app/hera/api"
           DEPOT_SERVICE_URL: "https://enough-kingfish.dataos.app/ds/api/v2"
@@ -228,7 +228,7 @@ INFO[0001] 🔍 workflow...complete
 
   JOB NAME |   STACK    |           JOB TITLE            | JOB DEPENDENCIES  
 -----------|------------|--------------------------------|-------------------
-  sales    | flare:5.0  | connect sales transactions     |                   
+  sales    | flare:6.0  | connect sales transactions     |                   
            |            | data                           |                   
   system   | dataos_cli | System Runnable Steps          |                   
 

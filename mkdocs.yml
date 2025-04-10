@@ -123,8 +123,8 @@ markdown_extensions:
   - pymdownx.tilde
 #  - pymdownx.extra
   - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji          # while pushin to dev
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg       # while pushin to dev
+      emoji_index: !!python/name:materialx.emoji.twemoji          # while pushin to dev
+      emoji_generator: !!python/name:materialx.emoji.to_svg       # while pushin to dev
 
       # emoji_index: !!python/name:materialx.emoji.twemoji                      # while hosting locally  
       # emoji_generator: !!python/name:materialx.emoji.to_svg                   # while hosting locally 
@@ -308,18 +308,33 @@ nav:
             - Building Streamlit applications backed by Database: resources/database/how_to_guide/how_to_create_a_streamlit_application_of_database_on_dataos.md
         - Depot: 
           - resources/depot/index.md
-          - Supported Sources: resources/depot/#templates-of-depot-for-different-source-systems
+          - Overview: resources/depot/index.md
+          - Quickstart: resources/depot/quickstart.md
+          - Supported Sources: 
+            - ABFSS: resources/depot/create_depot/abfss.md
+            - Amazon Redshift: resources/depot/create_depot/redshift.md
+            - Amazon S3: resources/depot/create_depot/s3.md
+            - Apache Pulsar: resources/depot/create_depot/pulsar.md
+            - Azure WASBS: resources/depot/create_depot/wasbs.md
+            - Elasticsearch: resources/depot/create_depot/elasticsearch.md
+            - Eventhub: resources/depot/create_depot/elasticsearch.md
+            - Google BigQuery: resources/depot/create_depot/bigquery.md
+            - GCS: resources/depot/create_depot/gcs.md
+            - JDBC: resources/depot/create_depot/jdbc.md 
+            - Kafka: resources/depot/create_depot/kafka.md
+            - MongoDB: resources/depot/create_depot/mongo.md
+            - Microsoft SQL Server: resources/depot/create_depot/mssql.md
+            - MySQL: resources/depot/create_depot/mysql.md
+            - Opensearch: resources/depot/create_depot/opensearch.md
+            - Oracle: resources/depot/create_depot/oracle.md
+            - PostgreSQL: resources/depot/create_depot/postgre.md
+            - Snowflake: resources/depot/create_depot/snowflake.md
           - Configurations: resources/depot/configurations.md
-          - Supported Storage Architecture: 
-            - Icebase: 
-              - resources/depot/icebase/index.md
-              - Create, Get, and Drop Dataset: resources/depot/icebase/case_scenario_create_fetch_and_drop_dataset.md
-              - Table Properties: resources/depot/icebase/case_scenario_table_properties.md
-              - Schema Evolution: resources/depot/icebase/case_scenario_schema_evolution.md
-              - Partitioning: resources/depot/icebase/case_scenario_partitioning.md
-              - Maintenance (Snapshots and Metadata listing): resources/depot/icebase/case_scenario_maintenance.md
-            - Fastbase: resources/depot/fastbase.md
+          - Governance: resources/depot/governance.md
+          - Observability: resources/depot/observability.md
+          - Cataloging: resources/depot/cataloging.md
           - Supported Connectors: resources/depot/list_of_connectors.md
+          - Usecase: resources/depot/usecase.md
         - Grant:
           - resources/grant/index.md
           - Configuration: resources/grant/configurations.md
@@ -366,6 +381,7 @@ nav:
               - Minerva: resources/lens/data_sources/minerva.md
               - Postgres: resources/lens/data_sources/postgres.md
               - Redshift: resources/lens/data_sources/awsredshift.md
+              - Snowflake: resources/lens/data_sources/snowflake.md
               - Themis: resources/lens/data_sources/themis.md
           - Exploration:
             - Using GraphQL: 
@@ -376,13 +392,18 @@ nav:
             - Using SQL APIs: 
                 - Overview: resources/lens/exploration_of_lens_using_sql_apis.md
                 - Supported functions and operators: resources/lens/sql_apis/supported_functions_and_operators.md
-            - Using REST APIs: resources/lens/exploration_of_lens_using_rest_apis.md            
+            - Using REST APIs:       
+                - API Endpoints and Scopes: resources/lens/api_endpoints_and_scopes.md
+                - Exploration: resources/lens/exploration_of_lens_using_rest_apis.md    
+
             # - Using Data Product Hub: resources/lens/exploration_of_lens_using_data_product_hub.md
 
             # - Using Iris dashboard: resources/lens/exploration_of_lens_using_iris_dashboard.md
           - BI Integrations:
           #  - API Endpoints and Scopes: resources/lens/api_endpoints_and_scopes.md
-            - Power BI: resources/lens/bi_integration/powerbi.md
+            - Power BI:
+                - Power BI Desktop: interfaces/data_product_hub/activation/bi_sync/powerbi.md
+                - Power BI Service: interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service.md
             - Superset: resources/lens/bi_integration/superset.md
             - Tableau: resources/lens/bi_integration/tableau.md                
             # - Supported Data Quality Checks: resources/lens/supported_data_quality_checks.md
@@ -443,16 +464,69 @@ nav:
             - resources/stacks/beacon/index.md
           - Bento: 
             - resources/stacks/bento/index.md
+            - Setting Up Bento: 
+              - Bento on Local Host: resources/stacks/bento/getting_started.md
+              - Bento on DataOS: resources/stacks/bento/bento_on_dataos.md
+            - Bloblang: 
+              - Overview: resources/stacks/bento/bloblang/walkthrough.md
+              - Core Features: resources/stacks/bento/bloblang/bloblang_core_features.md
+              - Functions: resources/stacks/bento/bloblang/functions.md
+              - Methods: resources/stacks/bento/bloblang/methods.md
+              - Arithmetic: resources/stacks/bento/bloblang/arithmetic.md
+              - Advanced Bloblang: resources/stacks/bento/bloblang/advanced_bloblang.md
+            - Configurations: 
+              - resources/stacks/bento/configurations/index.md
+              - Cloud Credentials: resources/stacks/bento/configurations/cloud_credentials.md
+              - Dynamic Inputs and Outputs: resources/stacks/bento/configurations/dynamic_inputs_and_outputs.md
+              - Error Handling: resources/stacks/bento/configurations/error_handling.md
+              - Fields Paths: resources/stacks/bento/configurations/fields_paths.md
+              - Interpolation: resources/stacks/bento/configurations/interpolation.md
+              - Message Batching: resources/stacks/bento/configurations/message_batching.md
+              - Metadata: resources/stacks/bento/configurations/metadata.md
+              - Monitoring: resources/stacks/bento/configurations/monitoring.md
+              - Performance Tuning: resources/stacks/bento/configurations/performance_tuning.md
+              - Processing Pipelines: resources/stacks/bento/configurations/processing_pipelines.md
+              - Resources: resources/stacks/bento/configurations/resources.md
+              - Secrets: resources/stacks/bento/configurations/secrets.md
+              - Streams Mode: 
+                  - resources/stacks/bento/configurations/streams_mode/index.md
+                  - Streams API: resources/stacks/bento/configurations/streams_mode/streams_api.md
+                  - Streams Via Config Files: resources/stacks/bento/configurations/streams_mode/streams_via_config_files.md
+                  - Streams Via REST API: resources/stacks/bento/configurations/streams_mode/streams_via_rest_api.md
+              - Synchronous Responses: resources/stacks/bento/configurations/synchronous_responses.md
+              - Templating: resources/stacks/bento/configurations/templating.md
+              - Unit Testing: resources/stacks/bento/configurations/unit_testing.md
+              - Using CUE: resources/stacks/bento/configurations/using_cue.md
+              - Window Processing: resources/stacks/bento/configurations/window_processing.md
+            - Components:
+              - resources/stacks/bento/components/index.md
+              - HTTP: resources/stacks/bento/components/http.md
+              - Inputs: resources/stacks/bento/components/inputs.md
+              - Logger: resources/stacks/bento/components/logger.md
+              - Metrics: resources/stacks/bento/components/metrics.md
+              - Output: resources/stacks/bento/components/output.md
+              - Processors: resources/stacks/bento/components/processors.md
+              - Rate Limit: resources/stacks/bento/components/rate_limit.md
+            - Recipes: 
+              # - Processing JSON data: resources/stacks/bento/recipes/processing_json_data.md          # To cross check
+              # - Processing nested JSON data: resources/stacks/bento/recipes/processing_nested_json_data.md
+              - Fetching Data from Instagram API: resources/stacks/bento/recipes/fetching_data_from_instagram_api.md
+              - Twitter API Data Processing: resources/stacks/bento/recipes/twitter_api_data_processing.md
+              - Discord Bot: resources/stacks/bento/recipes/discord_bot.md
+              - Stock Data API to Icebase: resources/stacks/bento/recipes/fetching_data_from_stock_data_api_using_bento.md
+              - Performing Rate Limit: resources/stacks/bento/recipes/how_to_perform_rate_limit.md
+              - Performing Pagination: resources/stacks/bento/recipes/pagination.md
           - CLI Stack: 
             - resources/stacks/cli_stack/index.md
           - Container: 
             - resources/stacks/container/index.md
-          # - Data Toolbox: 
-          #   - resources/stacks/data_toolbox/index.md
+          - Data Toolbox: 
+            - resources/stacks/data_toolbox/index.md
           - DBT: 
             - resources/stacks/dbt/index.md
           - Flare: 
             - resources/stacks/flare/index.md
+            - Quick Guide: resources/stacks/flare/creating_flare_jobs.md
           - Flash:
             - resources/stacks/flash/index.md
             - Create a Flash Service: resources/stacks/flash/flash_service.md
@@ -465,7 +539,7 @@ nav:
               - Handling Empty Tables: resources/stacks/flash/handling_empty_tables.md
             - Recipes: 
               - Use cached datasets in Lens models: resources/stacks/flash/recipes/lens.md
-              - Use cached datsets in Talos APIs: resources/stacks/flash/recipes/talos.md
+              - Use cached datasets in Talos APIs: resources/stacks/flash/recipes/talos.md
           - Lakesearch:
             - resources/stacks/lakesearch/index.md
             - Key concepts: resources/stacks/lakesearch/key_concepts.md
@@ -510,7 +584,7 @@ nav:
               - Generate API documentation: resources/stacks/talos/recipes/api_documentation.md
               - External API as data source: resources/stacks/talos/recipes/external_api.md
               - Validating Parameters: resources/stacks/talos/recipes/validating_parameters.md
-              - Error Handeling: resources/stacks/talos/recipes/error_handling.md
+              - Error Handling: resources/stacks/talos/recipes/error_handling.md
             - Example: resources/stacks/talos/example.md
             - Best Practices:
               - API: resources/stacks/talos/best_practices/api.md
@@ -553,18 +627,20 @@ nav:
     - Operator: getting_started/operator/index.md
   - Data Product: 
     - products/data_product/index.md
+    - Core Concepts: products/data_product/core_concepts.md
     - Data Product Lifecycle:
       - products/data_product/how_to_guides/index.md
-      - Design: products/data_product/how_to_guides/design.md
-      - Build: products/data_product/how_to_guides/build.md
-      - Deploy: products/data_product/how_to_guides/deploy.md
-      - Iterate: products/data_product/how_to_guides/iterate.md
+      - Design Phase: products/data_product/how_to_guides/design.md
+      - Build Phase: products/data_product/how_to_guides/build.md
+      - Deploy Phase: products/data_product/how_to_guides/deploy.md
+      - Iteration & Optimization: products/data_product/how_to_guides/iterate.md
+    - Data Product Examples:
+      - Building from Scratch with Snowflake: products/data_product/examples/firstdp.md
+      - Using DataOS Lakehouse as a Source: products/data_product/templates/product_affinity.md
+    - Configurations: products/data_product/configurations.md 
     - Recipes: 
       - Deploy Data Product using CI/CD pipeline: products/data_product/recipes/ci_cd.md
-    - Examples:
-      - Product affinity Data Product: products/data_product/templates/product_affinity.md
-    - Configurations: products/data_product/configurations.md   
-    - Core Concepts: products/data_product/core_concepts.md
+
   - Glossary: glossary/index.md
   - Learn:
     - learn/index.md
@@ -617,7 +693,7 @@ nav:
             - learn/dp_developer_learn_track/build_pipeline/index.md
             - Creating your first data pipelines:
               - learn/dp_developer_learn_track/build_pipeline/first_pipeline/index.md
-            - Sheduling Workflows:
+            - Scheduling Workflows:
               - learn/dp_developer_learn_track/build_pipeline/scheduling_workflows/index.md
             - Data quality checks:
               - learn/dp_developer_learn_track/build_pipeline/dq_check/index.md
@@ -680,7 +756,7 @@ nav:
       - quick_guides/index.md
       - Connecting with data sources: 
           - quick_guides/depot_creation_cli/index.md
-      - Performing exloratory data analysis:
+      - Performing exploratory data analysis:
         - Running your first data query: 
           - quick_guides/first_query/index.md
         - Arranging and transforming data with Pivot: 
@@ -705,7 +781,7 @@ nav:
         - Working with Payloads:
           - quick_guides/working_with_payload/index.md
           - Example scenarios: quick_guides/working_with_payload/filter_operator_example_scenarios/index.md
-        - Pre-defined filtering using Segemnts:
+        - Pre-defined filtering using Segments:
           - quick_guides/working_with_segments/index.md
         - Defining Data Policies:
           - quick_guides/apply_data_policy_lens/index.md 

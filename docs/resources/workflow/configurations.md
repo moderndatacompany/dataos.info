@@ -285,7 +285,7 @@ spec:
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| string | mandatory | none | flare/toolBox/scanner/dataos-ctl/soda+python/steampipestack |
+| string | mandatory | none | flare/scanner/dataos-ctl/soda+python/steampipestack |
 
 **Additional Details:**
 To know more about each stack, go to [Stack](/resources/stacks/).

@@ -53,7 +53,6 @@ INFO[0002] 🔍 workflow...complete
 
            JOB NAME          |   STACK    |        JOB TITLE        |    JOB DEPENDENCIES     
 -----------------------------|------------|-------------------------|-------------------------
-  dataos-tool-quality-checks | toolbox    |                         | quality-checks-summary  
   quality-checks-summary     | flare:1.0  | quality-checks datasets |                         
   system                     | dataos_cli | System Runnable Steps   |                         
 

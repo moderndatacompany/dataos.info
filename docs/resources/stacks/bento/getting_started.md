@@ -1,10 +1,10 @@
 # Bento: First Steps
 
-Welcome to the world of Bento, a resilient stream processing stack that enables you to handle your data flows with ease!
+Bento is a resilient stream processing stack designed to simplify data flow management.
 
-If you're new to the game, fret not! We've got you covered with this step-by-step guide to getting you started. The first step is to become familiar with Bento on your local system, which is considered part of the best practices to thoroughly test your data pipelines before unleashing them into the wilds of production. 
+For new users, setting up Bento in a local environment is recommended as part of best practices. This approach allows for comprehensive testing of data pipelines before deploying them to a production environment.
 
-From there, we'll guide you through the transition to DataOS and beyond. Follow along with our expert guidance and before you know it, you'll be a Bento whiz.
+Once the local setup is complete, guidance is available for transitioning to DataOS and expanding pipeline capabilities. Refer to the step-by-step guide for detailed instructions on each stage of the process.
 
 ## Install
 
@@ -14,20 +14,22 @@ Firstly, let's get started by installing the Bento stack. The installation proce
 curl -Lsf https://warpstreamlabs.github.io/bento/sh/install | bash # Downloads the latest stable version
 ```
 
-### Use Docker
+### **Use Docker**
 
-If you have docker installed, you can pull the latest official Bento image with:
+Ensure that the Docker is installed in the system. If Docker is not installed, refer to the ["Install Docker Engine"](https://docs.docker.com/engine/install/) guide for installation instructions.
+Once Docker is successfully installed, the environment is ready for data processing.
+
+Now pull the latest official Bento image using Docker, run the following command:
 
 ```bash
 docker pull ghcr.io/warpstreamlabs/bento
-docker run --rm -v /path/to/your/config.yaml:/bento.yaml ghcr.io/warpstreamlabs/bento
 ```
-
-Once you have successfully installed the stack, you're ready to dive in and start processing data.
 
 ## Building a stream pipeline
 
-Once you have Bento installed, you can start experimenting with the different components that Bento provides. A Bento stream pipeline is configured with a single YAML config file. Let's start by creating a simple pipeline that reads data from a file and writes it to the console. Here's the code:
+After installing Bento, users can begin experimenting with its available components. A Bento stream pipeline is configured using a single YAML configuration file.
+
+The following example demonstrates how to create a simple pipeline that reads data from a file and writes it to the console:
 
 ```yaml
 input:
@@ -43,36 +45,43 @@ output:
 
 This YAML configuration instructs Bento to read data from the specified file and write it to the console as a stream of lines. The `codec: lines` setting ensures that each line of data is separated by a new line character.
 
-Once you have your pipeline configuration ready, save it to a file (let's call it `pipeline.yaml`) and run the following command to start Bento:
+After preparing the pipeline configuration, save it.(example: `pipeline.yaml`). To start Bento, run the following command:
 
 ```bash
-bento -c <path-of-the-config-file>
+bento -c ${path-of-the-config-file}
 ```
 
-**Example**
+**Example input and Expected Output**
 
 ```bash
 bento -c /home/Desktop/pipeline.yaml # Path of the file
 
 # Expected Output
-INFO Running main config from specified file       @service=bento path=pipeline.yaml
-INFO Launching a bento instance, use CTRL+C to close  @service=bento
+INFO Running main config from specified file       @service=bento bento_version=1.5.2 path=/home/Desktop/pipeline.yaml
 INFO Listening for HTTP requests at: http://0.0.0.0:4195  @service=bento
-{"categories":[],"created_at":"2020-01-05 13:42:28.420821","icon_url":"https://assets.chucknorris.host/img/avatar/chuck-norris.png","id":"J2-jeEq5QwKh4LiuwKpCvw","updated_at":"2020-01-05 13:42:28.420821","url":"https://api.chucknorris.io/jokes/J2-jeEq5QwKh4LiuwKpCvw","value":"Chuck Norris shaves with a hunting knife. \"Shaving\" consists of cutting a new mouth-hole every morning. That's how tough his beard is."}
-{"categories":[],"created_at":"2020-01-05 13:42:27.496799","icon_url":"https://assets.chucknorris.host/img/avatar/chuck-norris.png","id":"2itjvbXZTcScUiuAMoOPLA","updated_at":"2020-01-05 13:42:27.496799","url":"https://api.chucknorris.io/jokes/2itjvbXZTcScUiuAMoOPLA","value":"Chuck Norris can slit your throat with his pinkie toenail."}
+INFO Launching a Bento instance, use CTRL+C to close  @service=bento
+INFO Output type stdout is now active              @service=bento label="" path=root.output
+INFO Input type http_client is now active          @service=bento label="" path=root.input
+{"categories":[],"created_at":"2020-01-05 13:42:20.262289","icon_url":"https://api.chucknorris.io/img/avatar/chuck-norris.png","id":"nNSiXMgCSqKuioZGWqhW3g","updated_at":"2020-01-05 13:42:20.262289","url":"https://api.chucknorris.io/jokes/nNSiXMgCSqKuioZGWqhW3g","value":"What happened to the crew of the Mary Celeste? Chuck Norris."}
+{"categories":[],"created_at":"2020-01-05 13:42:29.296379","icon_url":"https://api.chucknorris.io/img/avatar/chuck-norris.png","id":"J6EKCG24SxyUfG9XBC4GcQ","updated_at":"2020-01-05 13:42:29.296379","url":"https://api.chucknorris.io/jokes/J6EKCG24SxyUfG9XBC4GcQ","value":"Chuck Norris never 'visits' a foreign land... he invades it"}
+{"categories":[],"created_at":"2020-01-05 13:42:25.352697","icon_url":"https://api.chucknorris.io/img/avatar/chuck-norris.png","id":"EhRxaBmuRZe5luWPpRN9uA","updated_at":"2020-01-05 13:42:25.352697","url":"https://api.chucknorris.io/jokes/EhRxaBmuRZe5luWPpRN9uA","value":"Gloria Gaynor: I Will Survive Chuck Norris's Version: They Won't Survive"}
+{"categories":[],"created_at":"2020-01-05 13:42:25.628594","icon_url":"https://api.chucknorris.io/img/avatar/chuck-norris.png","id":"oKXJfzLRT0KNV47A9VbCvQ","updated_at":"2020-01-05 13:42:25.628594","url":"https://api.chucknorris.io/jokes/oKXJfzLRT0KNV47A9VbCvQ","value":"At exactly April 8 of 2008, at 11:45 and 20 seconds, Chuck Norris stomped his foot. At exactly April 8 of 2001, at 11:45 and 21 seconds, in the closest city to the area exactly 6734 kilometers east away from where Chuck Norris stomped his foot the second earlier, there was a major earthquake."}
+^CINFO Received SIGINT, the service is closing       @service=bento
 ```
 
-Voila! You should now see the contents from the API streaming in real time on your console. You've just created your first Bento pipeline. 
+The console should now display the streamed contents from the API in real time, indicating that the Bento pipeline is active.
 
-Before you take a deep dive into the realm of Bento, stop the current stream by pressing `Ctrl + C` or `Command + C`, or else it would keep going on for eternity.
+To stop the current stream, press `Ctrl + C` (on Windows/Linux) or `Command + C` (on macOS). This action is necessary to terminate the stream; otherwise, it will continue running indefinitely.
 
-## Let’s Dive Deeper
+## Deep Dive
 
-That was just the trailer. Now it's time to experiment and explore the many other features that Bento has to offer. Trust us, you'll love it! 
+The following outlines the primary sections of a Bento YAML configuration file:
 
-But before that, let’s understand the structure of Bento YAML config in more detail.
+- `input`: Defines the data sources or inputs for the pipeline.
+- `pipeline`: Specifies the processing logic, including nodes and their configurations.
+- `output`: Describes where the processed data should be delivered.
 
-The main sections that make up a config are [`input`](/resources/stacks/bento/components/inputs/), `pipeline` and [`output`](/resources/stacks/bento/components/output/). Kind of like this:
+Here’s an example structure:
 
 ```yaml
 input:
@@ -84,12 +93,13 @@ pipeline:
 output:
   stdout: {}
 ```
+This structure forms the foundation for building Bento pipelines.
 
 ### **Input**
 
-[Inputs](/resources/stacks/bento/components/inputs/) are the sources of data that Bento will use to process. They can be anything from APIs, file systems, or even Kafka streams. The configurations of the input sources are specified in the `input` section.
+The [Inputs](/resources/stacks/bento/components/inputs/) section defines the data sources that Bento will use for processing. These sources can include APIs, file systems, or Kafka streams.
 
-For example, you can use an HTTP input to fetch data from an API like below
+For example, to configure an HTTP input for fetching data from an API, use the following syntax:
 
 ```yaml
 input:
@@ -100,11 +110,13 @@ input:
       Content-Type: application/JSON
 ```
 
-There are many-many supported sources that you will get tired of getting to know of.
+This configuration directs Bento to fetch data from the specified API endpoint using an HTTP GET request.
 
 ### **Pipeline**
 
-Next up, we have the `pipeline` section. Within the pipeline, we define processors to transform the data we have fetched from the API. Bloblang is a powerful and flexible language that Bento uses to perform transformations. In this example, we will be applying some basic Bloblang transformations to the data. The [`processors`](/resources/stacks/bento/components/processors/) are defined as a sub-section with the `pipeline` section as elucidated below:
+The `pipeline` section defines processors that transform the incoming data. Bento uses Blob[Bloblang](/resources/stacks/bento/bloblang/walkthrough/)lang, a flexible language designed for data transformation.
+
+The [`processors`](/resources/stacks/bento/components/processors/) are specified as a subsection within the `pipeline` section. The following example demonstrates basic Bloblang transformations:
 
 ```yaml
 pipeline:
@@ -118,26 +130,33 @@ pipeline:
         }
 ```
 
-Don’t worry if you don’t understand even a single word of Bloblang. We will teach you like a kid, and you will be a hero from zero in no time.
+No prior knowledge of Bloblang is required to get started. Comprehensive guidance is available to help users understand Bloblang concepts, from basic principles to advanced techniques. For detailed instructions, visit the [Bloblang Guide](/resources/stacks/bento/bloblang/walkthrough/).
 
 ### **Output**
 
-Finally, we will use outputs to store the transformed data. Outputs can be anything from file systems, message queues, DataOS depots, or even HTTP endpoints. In this example, we will be using a file output to store the transformed data in a local file.
+The `output` section defines where the transformed data will be stored. Outputs can include file systems, message queues, DataOS depots, or HTTP endpoints.  
+
+In the following example, a file output is configured to store transformed data in a local file:  
 
 ```yaml
 output:
   file:
-    path: /home/Desktop/new.text 
-    codec: lines 
+    path: /home/Desktop/new.txt
+    codec: lines
 ```
 
-And that’s it! You have survived the theory part, now go back to your code editor.
+In this example:  
+- The `file` field specifies the output type as a file system.  
+- The `path` defines the location where the output file will be saved.  
+- The `codec` is set to `lines`, ensuring each record is written as a separate line.  
 
-### **Back to Code**
+This configuration stores transformed data efficiently in a local text file.
 
-Now let's choose a random API to work with. For the purposes of this guide, we'll use the Chuck Norris Jokes API. Not only is it a great source of entertainment, but it's also a simple and straightforward API to work with.
+### **Example Code**
 
-To get started, we'll need to create a Bento configuration file. In this file, we'll define our inputs, outputs, and any necessary Bloblang transformations. Here's a configuration file to get us started:
+For the purposes of this guide, the Chuck Norris Jokes API will be used as an example. This API is selected due to its simplicity and ease of integration.
+
+To begin, a Bento configuration file must be created. This file defines the inputs, outputs, and any required Bloblang transformations. The following example provides a starting point for this configuration file:
 
 ```yaml
 input:
@@ -160,19 +179,25 @@ pipeline:
       }
 ```
 
-In this configuration file, we've defined an HTTP input to retrieve a random Chuck Norris joke from the API. We've also defined a file output to store the joke locally on our machine. Finally, we've added a Bloblang processor to transform the data before writing it to the file.
+In this configuration file, an HTTP input is defined to retrieve a random Chuck Norris joke from the API. Additionally, a file output is specified to store the joke locally. A Bloblang processor is included to transform the data before it is written to the file.
 
-Now let’s put it all together, save it in a YAML file, and execute it using the command given below
+To execute this configuration, save it as a `.yaml` (example: `pipeline.yaml`) file and run the following command:
 
 ```bash
 bento -c /home/Desktop/pipeline.yaml
 ```
 
-And there you have it! But before you go dancing in the park, check out both the input (by copying the URL in any browser) and the processed output (inside the output file). This would help you understand what the Bloblang processor is doing.
+<aside class="callout">
+🗣️ Remember to stop the current stream by pressing0 Ctrl + C (on Windows/Linux) or Command + C (on macOS). This action is necessary to terminate the stream; otherwise, it will continue running indefinitely.</a>.
+</aside>
+
+Before proceeding, it is recommended to review both the input and the processed output. To inspect the input, copy the specified URL into a web browser to observe the raw data. Next, review the content inside the output file to understand how the Bloblang processor has transformed the data.
+
+This step ensures a clear understanding of the data flow and the applied transformations.
 
 **Before Processing**
 
-```bash
+```json
 {
   "categories": [],
   "created_at": "2020-01-05 13:42:26.766831",
@@ -186,19 +211,19 @@ And there you have it! But before you go dancing in the park, check out both the
 
 **After Processing**
 
-```bash
+```json
 {"joke":"Jesus Walked on water. Chuck Norris Swam on land"}
 ```
 
 Now, let's break down the Bloblang transformation a bit further. Here's what the code is doing:
 
-```yaml
+```go
 bloblang
 root = {
   "joke": this.value
 }
 ```
 
-This transformation takes the incoming data and creates a new object with a single key-value pair. The key is "joke", and the value is the joke itself. We're essentially just extracting the joke from the API response and storing it in a more structured format.
+This transformation takes the incoming data and creates a new object with a single key-value pair. The key is "joke", and the value is the joke itself. the code essentially just extracting the joke from the API response and storing it in a more structured format.
 
-That’s it! With just a few lines of code, we've set up a Bento pipeline to retrieve Chuck Norris jokes from an API, transform the data using Bloblang, and store the result locally on our machine. Now go forth and use your newfound powers for good (or for laughter)!
+In summary, this configuration demonstrates how to set up a Bento pipeline with minimal code. The pipeline retrieves Chuck Norris jokes from an API, processes the data using a Bloblang transformation, and stores the result locally.

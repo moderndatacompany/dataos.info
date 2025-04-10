@@ -59,9 +59,6 @@ service:
     enabled: true
     path: /random-user2
     noAuthentication: true
-    annotations:
-      konghq.com/strip-path: "false"
-      kubernetes.io/ingress.class: kong
   stack: bento
   logLevel: DEBUG
   compute: runnable-default

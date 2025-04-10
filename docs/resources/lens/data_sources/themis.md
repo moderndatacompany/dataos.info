@@ -5,7 +5,7 @@
 
 ## Prerequisite
 
-Ensure you have an active and running Minerva Cluster.
+Ensure you have an active and running Themis Cluster.
 
 ## Step 1: Prepare the Lens model folder
 
@@ -235,6 +235,51 @@ The above manifest is intended for a cluster named `lenstestingthemis`, created 
 
 <aside class="callout">
 🗣️ Within the Themis and Minerva cluster, all depots (such as Icebase, Redshift, Snowflake, etc.) are integrated. When configuring Lens, you only need to specify one Depot in the `catalog` field, as Lens can connect to and utilize depots from all sources available in the Themis cluster.
+</aside>
+
+
+## Step 4: Apply the Lens manifest file
+
+After configuring the deployment file with the necessary settings and specifications, apply the manifest using the following command:
+
+
+=== "Command"
+
+    ```bash 
+    dataos-ctl resource apply -f ${manifest-file-path}
+    ```
+
+=== "Example usage"
+
+    ```bash 
+    dataos-ctl resource apply -f /lens/lens_deployment.yml -w curriculum
+    # Expected output
+    INFO[0000] 🛠 apply...                                   
+    INFO[0000] 🔧 applying(curriculum) sales360:v1alpha:lens... 
+    INFO[0001] 🔧 applying(curriculum) sales360:v1alpha:lens...created 
+    INFO[0001] 🛠 apply...complete
+    ```
+
+
+<aside class="callout">
+
+Once the Lens Resource is applied and all configurations are correctly set up, the Lens model will be deployed. Upon deployment, a Lens Service is created in the backend, which may take some time to initialize.
+
+To verify whether the Lens Service is running, execute the following command. The Service name follows the pattern: **`<lens-name>-api`**
+
+Ensure Service is active and running before proceeding to the next steps.
+
+```bash
+dataos-ctl get -t service -n sales-insights-lens-api -w public
+# Expected output:
+INFO[0000] 🔍 get...                                     
+INFO[0002] 🔍 get...complete                             
+
+           NAME           | VERSION |  TYPE   | WORKSPACE | STATUS |  RUNTIME  |    OWNER     
+--------------------------|---------|---------|-----------|--------|-----------|--------------
+  sales360-lens-api | v1      | service | public    | active | running:1 | iamgroot
+```
+
 </aside>
 
 
