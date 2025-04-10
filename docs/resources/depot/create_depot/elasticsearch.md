@@ -35,7 +35,7 @@ DataOS provides the capability to connect to Elasticsearch data using Depot. The
 
 ### **Step 1: Create an Instance Secret for securing Elasticsearch credentials**
 
-Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).
+Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/).
 
 ### **Step 2: Create an Elasticsearch Depot manifest file**
 

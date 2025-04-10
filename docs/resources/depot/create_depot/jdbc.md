@@ -44,7 +44,7 @@ DataOS provides the capability to establish a connection to a database using the
 ### **Step 1: Create an Instance Secret for securing JDBC credentials**
 
 
-Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).
+Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/).
 
 ### **Step 2: Create a JDBC Depot manifest file**
 

@@ -21,7 +21,7 @@ To create a Postgres Depot you must have the following details:
     <figcaption><i>Bifrost Governance</i></figcaption>
     </center>
 
-**Pre-requisites specific to the source system**
+## Pre-requisites specific to the source system
 
 - **Database name**: The name of the specific PostgreSQL database you want to connect to. This can be provided by the database administrator or found in the database management system where the database was created.
 
@@ -39,11 +39,11 @@ DataOS allows you to connect to a PostgreSQL database and read data from tables 
 
 ### **Step 1: Create an Instance Secret for securing Postgres credentials**
 
-Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).
+Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/).
 
 ### **Step 2: Create a Postgres Depot manifest file**
 
-Begin by creating a manifest file to hold the configuration details for your Postgres Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.
+Begin by creating a manifest file to hold the configuration details for your Postgres Depot. 
 
 <aside class="callout">
 🗣️ Use the below templates, if the self-signed certificate is enabled.
