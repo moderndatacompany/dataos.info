@@ -32,7 +32,7 @@ Depot in DataOS is a [Resource](/resources/) used to connect different data sou
 Within DataOS, the hierarchical structure of a data source is represented as follows:
 
 <div style="text-align: center;">
-  <img src="/resources/depot/udl.png" alt="Hierarchical Structure of a Data Source within DataOS" style="border:1px solid black; width: 60%; height: auto;">
+  <img src="/resources/depot/udl.png" alt="Hierarchical Structure of a Data Source within DataOS" style="border:1px solid black; width: 100%; height: auto;">
   <figcaption><i>Hierarchical Structure of a Data Source within DataOS</i></figcaption>
 </div>
 

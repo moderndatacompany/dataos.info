@@ -40,11 +40,11 @@ DataOS provides integration with Snowflake, allowing you to seamlessly read data
 ### **Step 1: Create an Instance Secret for securing Snowflake credentials**
 
 
-Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).
+Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/).
 
 ### **Step 2: Create a Snowflake Depot manifest file**
 
-Begin by creating a manifest file to hold the configuration details for your Snowflake Depot. A Depot is created by referencing the Instance Secret by name in the Depot manifest file as shown  below template.
+Begin by creating a manifest file to hold the configuration details for your Snowflake Depot. A Depot is created by referencing the Instance Secret by name in the Depot manifest file as shown in below template.
 
 
 ```yaml 

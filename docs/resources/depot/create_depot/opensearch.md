@@ -35,11 +35,11 @@ DataOS provides the capability to connect to Opensearch data using Depot. The De
 
 ### **Step 1: Create an Instance Secret for securing Opensearch credentials**
 
-Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/index#abfss).
+Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/).
 
 ### **Step 2: Create an Opensearch Depot manifest file**
 
-Begin by creating a manifest file to hold the configuration details for your Opensearch Depot. A Depot can be created in two ways: either by directly specifying the credentials inline within the same manifest file or by creating an Instance Secret containing those credentials and referencing the Instance Secret by name in the Depot manifest file.
+Begin by creating a manifest file to hold the configuration details for your Opensearch Depot. 
 
 
 
