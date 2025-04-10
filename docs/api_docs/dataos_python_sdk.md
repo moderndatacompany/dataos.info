@@ -56,7 +56,7 @@ Python 3.7.3
 
 **Ensure you have `pip` installed**
 
-Additionally, you’ll need to make sure you have `pip` available. You can check this by running:
+Ensure that `pip` is available by running the following command:
 
 *For Linux/macOS*
 
@@ -70,49 +70,32 @@ python3 -m pip --version
 py -m pip --version
 ```
 
-If you installed Python from source, with an installer from [python.org](https://www.python.org/), or via [Homebrew](https://brew.sh/) you should already have pip. If you’re on Linux and installed using your OS package manager, you may have to install pip separately, see [Installing pip/setuptools/wheel with Linux Package Managers](https://packaging.python.org/en/latest/guides/installing-using-linux-tools/).
+If Python was installed from source, via an installer from [python.org](https://www.python.org/), or using [Homebrew](https://brew.sh/), `pip` is typically included by default. On Linux systems where Python was installed using the operating system’s package manager, `pip` may need to be installed separately. Refer to the [Installing pip/setuptools/wheel with Linux Package Managers](https://packaging.python.org/en/latest/guides/installing-using-linux-tools/) guide for instructions.
 
 ### **Installing `dataos-sdk-py` from PyPI**
 
 The DataOS SDK for Python can be installed from the Python Package Index (PyPI) using the following command:
 
+<aside class="callout" style="border-left: 4px solid #28a745; background-color: #e6f4ea; color: #1e4620; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;">
+  <b>💡 Recommendation:</b> Install the <code>dataos-sdk-py==0.0.1</code> version of DataOS SDK for Python, as it is the designated stable release.
+</aside>
+
+
 *For Linux/macOS*
 
 ```shell
-# For latest version
-python3 -m pip install dataos-sdk-py
-# For specific version
-python3 -m pip install dataos-sdk-py=={{version specifier}}
-# e.g. python3 -m pip install dataos-sdk-py==0.0.1
+python3 -m pip install dataos-sdk-py==0.0.1
 ```
 
 *For Windows*
 
 ```shell
-# For latest version
-py -m pip install dataos-sdk-py
-# For specific version
-py -m pip install dataos-sdk-py=={{version specifier}}
-# e.g. py -m pip install dataos-sdk-py==0.0.1
+py -m pip install dataos-sdk-py==0.0.1
 ```
 
 > <b>Note:</b> If you’re using an enhanced shell like IPython or Jupyter notebook, you must restart the runtime in order to use the newly installed package.
 
-### **Upgrading from PyPI**
 
-Upgrade DataOS SDK for Python to the latest from PyPI.
-
-*For Linux/macOS*
-
-```shell
-python3 -m pip install --upgrade dataos-sdk-py
-```
-
-*For Windows*
-
-```shell
-py -m pip install --upgrade dataos-sdk-py
-```
 
 ## Getting Started
 
