@@ -123,8 +123,8 @@ markdown_extensions:
   - pymdownx.tilde
 #  - pymdownx.extra
   - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji          # while pushin to dev
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg       # while pushin to dev
+      emoji_index: !!python/name:materialx.emoji.twemoji          # while pushin to dev
+      emoji_generator: !!python/name:materialx.emoji.to_svg       # while pushin to dev
 
       # emoji_index: !!python/name:materialx.emoji.twemoji                      # while hosting locally  
       # emoji_generator: !!python/name:materialx.emoji.to_svg                   # while hosting locally 
@@ -648,16 +648,9 @@ nav:
     - SDK: 
       - api_docs/index.md
       - DataOS Python SDK: api_docs/dataos_python_sdk.md
-      - DataOS PyFlare SDK: 
-        - api_docs/dataos_pyflare/index.md
-        - Supported Sources:
-          - Bigquery: api_docs/dataos_pyflare/code_samples/bigquery_pyflare.md
-          - Lakehouse: api_docs/dataos_pyflare/code_samples/lakehouse_pyflare.md
-          - Postgres: api_docs/dataos_pyflare/code_samples/postgres_pyflare.md
-          - Snowflake: api_docs/dataos_pyflare/code_samples/snowflake_pyflare.md
-
-      # - DataOS Flare SDK: api_docs/dataos_scala_sdk/index.html
-      # - DataOS Kotlin SDK: api_docs/dataos_kotlin_sdk/index.html
+      - DataOS PyFlare SDK: api_docs/dataos_pyflare.md
+      - DataOS Flare SDK: api_docs/dataos_scala_sdk/index.html
+      - DataOS Kotlin SDK: api_docs/dataos_kotlin_sdk/index.html
   - Getting Started: 
     - getting_started/index.md
     - Data Product Consumer: getting_started/data_product_consumer/index.md
