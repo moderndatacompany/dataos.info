@@ -40,7 +40,7 @@ DataOS enables the creation of a Depot of type 'ABFSS' to facilitate the reading
 
 ### **Step 1: Create an Instance Secret for securing ABFSS credentials**
 
-Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/).
+Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/data_sources/abfss/).
 
 ### **Step 2: Create an ABFSS Depot manifest file**
 
@@ -116,8 +116,6 @@ You can also access the details of any created Depot through the DataOS GUI in t
 
 ## Delete a Depot
 
-
-
 <aside class="callout">
 🗣️ As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
 </aside>
@@ -172,4 +170,4 @@ depot:
     icebergCatalogType: Hive
 ```
 
-If you do not mention the catalog name as Hive, it will use Hadoop as the default catalog for Iceberg format. Hive automatically keeps the pointer updated to the latest metadata version. If you use Hadoop, you have to manually do this by running the set metadata command as described on this page: [Set Metadata](https://dataos.info/resources/depot/lakehouse/).
+If you do not mention the catalog name as Hive, it will use Hadoop as the default catalog for Iceberg format. Hive automatically keeps the pointer updated to the latest metadata version. If you use Hadoop, you have to manually do this by running the set metadata command as described on this page: [Set Metadata](/resources/lakehouse/).
