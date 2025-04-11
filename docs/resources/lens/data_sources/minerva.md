@@ -347,7 +347,7 @@ lens:
   source:
     type: minerva #minerva/themis/depot
     name: minervacluster  #name of minerva cluster
-    catalog: lakehouse
+    catalog: minervacluster  # name of minerva cluster
   repo:
     url: https://bitbucket.org/tmdc/sample
     lensBaseDir: sample/lens/source/minerva/model 
