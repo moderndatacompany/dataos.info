@@ -33,11 +33,10 @@ Follow the steps enumerated below to install the Command Line Interface. Check t
 
 ## Installation on MacOS
 
-1. Export the environment variable PRIME_APIKEY to pass it to the subsequent commands(replace **`prime_apikey`**  with the DataOS® API key to connect with the prime context).
+1. Export the environment variable PRIME_APIKEY to pass it to the subsequent commands(replace **`{{prime_apikey}}`**  with the DataOS® API key to connect with the prime context).
 
     ```sh
-    export PRIME_APIKEY="{{prime_apikey}}"
-
+    export PRIME_APIKEY="{{prime_apikey}}" #replace whole placeholder
     ```
 
 2. Determine processor architecture with the following command.
