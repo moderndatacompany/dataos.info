@@ -1,0 +1,389 @@
+{
+	"info": {
+		"_postman_id": "a89d19ff-a55a-4981-aad9-29ed1c2d2b0a",
+		"name": "Lens2-APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34725650"
+	},
+	"item": [
+		{
+			"name": "pre-aggregations",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/lens2/api/sales360/v2/operate/pre-aggregations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"lens2",
+								"api",
+								"sales360",
+								"v2",
+								"operate",
+								"pre-aggregations"
+							]
+						},
+						"description": "Gets list of all defined `pre-aggregations` for this Lens"
+					},
+					"response": []
+				},
+				{
+					"name": "Timezones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/lens2/api/sales360/v2/operate/pre-aggregations/timezones",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"lens2",
+								"api",
+								"sales360",
+								"v2",
+								"operate",
+								"pre-aggregations",
+								"timezones"
+							]
+						},
+						"description": "Gets list of all defined `pre-aggregations` for this Lens"
+					},
+					"response": []
+				},
+				{
+					"name": "SecurityContexts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/lens2/api/sales360/v2/operate/pre-aggregations/security-contexts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"lens2",
+								"api",
+								"sales360",
+								"v2",
+								"operate",
+								"pre-aggregations",
+								"security-contexts"
+							]
+						},
+						"description": "Gets list of all defined `pre-aggregations` for this Lens"
+					},
+					"response": []
+				},
+				{
+					"name": "List Partitions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"preAggregations\": [\n            {\n                \"id\": \"sales.advance\"\n            }\n        ],\n        \"timezones\": [\n            \"UTC\",\n            \"America/Vancouver\"\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/lens2/api/sales360/v2/operate/pre-aggregations/partitions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"lens2",
+								"api",
+								"sales360",
+								"v2",
+								"operate",
+								"pre-aggregations",
+								"partitions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Trigger build jobs",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"action\": \"post\",\n    \"selector\": {\n        \"contexts\": [\n            {\n                \"securityContext\": {\n                    \"user_group\": \"xyx\"\n                }\n            }\n        ],\n        \"timezones\": [\n            \"UTC\",\n            \"America/Vancouver\",\n            \"America/Toronto\"\n        ],\n        \"preAggregations\": [\n            \"sales.simple\",\n            \"sales.advance\"\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/lens2/api/sales360/v2/operate/pre-aggregations/jobs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"lens2",
+								"api",
+								"sales360",
+								"v2",
+								"operate",
+								"pre-aggregations",
+								"jobs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Job statuses",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"action\": \"get\",\n    \"tokens\": [\n        \"98f8ca095f2d359d466f2f9c0597d76f\",\n        \"659f62e5c111a1c7353cf0cbccc4faa6\",\n        \"5c48cfd415cc219d20bc78f9e7c2ec36\",\n        \"e388fc931901b1972d743e3e00442191\",\n        \"1a951ebc38f0c0d993718a8e95a3c8bb\",\n        \"e8e08c9ccba48dbd52200de3d19ff583\",\n        \"dc6d48447ad01a6f882587827bb212dd\",\n        \"0acd670b2b86478e12c7bf47cc148ea1\",\n        \"9cfc4a76ee8cf82b388bb2e541aad014\",\n        \"55123b4f77b6674b76c61ef7c8e2a3b5\",\n        \"b144dbeb275fe16522cb2a39a6b9f413\",\n        \"4b09bd29242d46e51f17a1e96ed1ab9b\",\n        \"dc9a432042eae6e518300dc1e59c2b91\",\n        \"16fb9c8f6326ea1242071c01c59e1c92\",\n        \"1c011556c15382c40e08852a7daa902c\",\n        \"4d58d34c7968ea45c4ce9cdc6a5fa02a\",\n        \"0c35df4506954b5d09ef34b394184de1\",\n        \"9ade832ec3b069cb4921b30a64b53d1a\",\n        \"b213b0376ab46c1a0d8bb4527fa309e1\",\n        \"f65d2bcfde38b674b21e13336d3f137f\",\n        \"064bbeef49bab2afdce728292ce81476\",\n        \"1b9bd903e242974cc0b7231490a438c0\",\n        \"97b1f7c067af433f9f990ce43381e2d6\",\n        \"e0b2dcb7279031c4fc91919ae28c0ed0\",\n        \"e9bc39470a55d16a666b809b79793737\",\n        \"80f272e986e2de3e36d11781a175505b\",\n        \"d602824ea11bd7a75af3a4b5ad920e13\",\n        \"f6f85d24ae95c643fc87e6f8b6cc5936\",\n        \"7fc583d9f873ba997885f5ef128a587b\",\n        \"235d8a42d15c4d1301dd26a95ac87b27\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/lens2/api/sales360/v2/operate/pre-aggregations/jobs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"lens2",
+								"api",
+								"sales360",
+								"v2",
+								"operate",
+								"pre-aggregations",
+								"jobs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Preview",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"preAggregationId\": \"sales.advance\",\n        \"timezone\": \"America/Vancouver\",\n        \"versionEntry\": {\n            \"table_name\": \"lens2_default.sales_advance20220401\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/lens2/api/sales360/v2/operate/pre-aggregations/preview",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"lens2",
+								"api",
+								"sales360",
+								"v2",
+								"operate",
+								"pre-aggregations",
+								"preview"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "data",
+			"item": [
+				{
+					"name": "load data",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-request-id",
+								"value": "8daa27ad-08bb-46cf-af49-7adecb2a8a50",
+								"type": "text",
+								"uuid": "1ce862f3-270d-4cdd-8b54-3a8d42c7d239",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"measures\": [\n            \"sales.proof_revenue\"\n        ],\n        \"dimensions\": [\n            \"sales.entry_origin\",\n            \"sales.source\"\n        ],\n        \"segments\": [],\n        \"timeDimensions\": [\n            {\n                \"dimension\": \"sales.invoice_date\",\n                \"granularity\": \"day\"\n            }\n        ],\n        \"limit\": 10,\n        \"responseFormat\": \"compact\" \n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/lens2/api/sales360/v2/load",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"lens2",
+								"api",
+								"sales360",
+								"v2",
+								"load"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "load sql",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-request-id",
+								"value": "8daa27ad-08bb-46cf-af49-7adecb2a8a50",
+								"type": "text",
+								"uuid": "7d496d2c-b1b3-49ab-9f53-0f41e8fc3525",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"measures\": [\n            \"sales.proof_revenue\"\n        ],\n        \"dimensions\": [\n            \"sales.entry_origin\",\n            \"sales.source\"\n        ],\n        \"segments\": [],\n        \"timeDimensions\": [\n            {\n                \"dimension\": \"sales.invoice_date\",\n                \"granularity\": \"day\"\n            }\n        ],\n        \"limit\": 10,\n        \"responseFormat\": \"compact\" \n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/lens2/api/sales360/v2/sql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"lens2",
+								"api",
+								"sales360",
+								"v2",
+								"sql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "meta",
+			"item": [
+				{
+					"name": "meta",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/lens2/api/sales360demo/v2/meta",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"lens2",
+								"api",
+								"sales360demo",
+								"v2",
+								"meta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/lens2/api/sales360demo/v2/info",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"lens2",
+								"api",
+								"sales360demo",
+								"v2",
+								"info"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

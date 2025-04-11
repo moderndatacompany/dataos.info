@@ -1,0 +1,11 @@
+name: ${{codecommit-rw}}
+version: ${{v1}}
+type: instance-secret
+description: ${{"aws codecommit credentials"}}
+layer: ${{user}}
+instance-secret:
+  type: ${{key-value}}
+  acl: ${{rw}}
+  data:
+    GITSYNC_USERNAME: ${{"iamgroot"}}
+    GITSYNC_PASSWORD: ${{"56F4japOhkkQDS3trUnZsetFB2J3lnclDPgHThHLto="}}
