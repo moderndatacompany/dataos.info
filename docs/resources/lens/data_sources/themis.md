@@ -197,7 +197,7 @@ lens:
   source:
     type: themis #minerva/themis/depot
     name: lenstestingthemis
-    catalog: icebase
+    catalog: lenstestingthemis
   repo:
     url: https://bitbucket.org/tmdc/sample
     lensBaseDir: sample/lens/source/themis/model 
