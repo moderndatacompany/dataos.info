@@ -130,29 +130,38 @@ Follow the steps enumerated below to install the Command Line Interface. Check t
     ```
     <br>
 
-    > 🗣️  To access DataOS, you have to run this command every time you restart your computer’s terminal or open a new tab in the terminal. To avoid this, you should add the above path to your .zshrc file.
-    > 
-    > - To add the path to your .zshrc file, you can follow the steps given in this toggle list. Click the toggle icon.
-    >     
-    >     ```bash
-    >     # make sure you are in your home directory "~/ (home/<user>)"
-    >     # create a .zshrc file using the command below
+    > 🗣️  To ensure persistent access to the dataos-ctl command, add the export statement to your shell's initialization file (e.g., `.zshrc` for Zsh or `.bash_profile` for Bash). This prevents the need to re-run the command each time you open a new terminal session.
+    >
+    > Here's a more detailed explanation:
+    >
+    > 1. Identify Your Shell and Initialization File:
+    >        - Check your shell: Open Terminal and type echo `$SHELL`. If it outputs `/bin/zsh`, you're using Zsh (the default shell in newer macOS versions). 
+    >    If the output is `/bin/bash`, you're using Bash.
+    >        - Determine the correct  and Open the file using the command below:
+    >            - `Zsh`: Edit the `~/.zshrc` file.
+    >            - `Bash`: Edit the `~/.bash_profile` file. 
+    >
+    > 2. Open the Initialization File: 
+    >       - Open Terminal.
+    >       - Use a text editor to open the appropriate file. For example:
+    >            - `Zsh`: nano ~/.zshrc 
+    >            - `Bash`: nano ~/.bash_profile 
+    >
+    >
+    > 3. Add the Export Path to Your Shell Configuration File.
+    >   ```bash
+    >   export PATH=$PATH:$HOME/.dataos/bin
+    >   ```
+    >
+    >
+    > 4. Save the changes to the file (e.g., press Ctrl+X, then Y, then Enter in nano). 
+    >  
+    >
+    > 5. Load the file in Shell using:      
+    >   ```bash
+    >   source ~/.zshrc
+    >   ```
 
-    >     touch .zshrc
-    >     
-    >     # open the file using the command below
-
-    >     ~/.zshrc
-    >     
-    >     # Copy & paste the path to your .zshrc file
-
-    >     export PATH=$PATH:$HOME/.dataos/bin
-    >     
-    >     # close the .zshrc file window and load the file in the shell using
-
-    >     source ~/.zshrc
-    >     ```
-    >     
 
 You have successfully installed the CLI, now the next step is to [initialize](/interfaces/cli/initialization/) the DataOS context. 
 
@@ -269,29 +278,37 @@ You have successfully installed the CLI, now the next step is to [initialize](/i
     export PATH=$PATH:$HOME/linux-amd64
     ```
 
-    > 🗣️  To access DataOS, you have to run this command every time you restart your computer’s terminal or open a new tab in the terminal. To avoid this, you should add the above path to your .bashrc file.
-    > 
-    > - To add the path to your .bashrc file, follow the below steps. 
-    >     
-    >     ```bash
-    >     # make sure you are in your home directory "~/ (home/<user>)"
-    >     # create a .bashrc file using the command below
-
-    >     touch .bashrc
-    >     
-    >     # open the file using the command below
-
-    >     xdg-open ~/.bashrc
-    >     
-    >     # copy & paste the path at the end of your .bashrc file
-
-    >     export PATH=$PATH:$HOME/.dataos/bin
-    >     
-    >     # save and close the .bashrc file window and load the file in the shell using the command
-
-    >     source ~/.bashrc
-    >     ```
-    >     
+    > 🗣️  To ensure persistent access to the dataos-ctl command, add the export statement to your shell's initialization file (e.g., `.zshrc` for Zsh or `.bash_profile` for Bash). This prevents the need to re-run the command each time you open a new terminal session.
+    >
+    > Here's a more detailed explanation:
+    >
+    > 1. Identify Your Shell and Initialization File:
+    >        - Check your shell: Open Terminal and type echo `$SHELL`. If it outputs `/bin/zsh`, you're using Zsh (the default shell in newer macOS versions). 
+    >    If the output is `/bin/bash`, you're using Bash.
+    >        - Determine the correct  and Open the file using the command below:
+    >            - `Zsh`: Edit the `~/.zshrc` file.
+    >            - `Bash`: Edit the `~/.bash_profile` file. 
+    >
+    > 2. Open the Initialization File: 
+    >       - Open Terminal.
+    >       - Use a text editor to open the appropriate file. For example:
+    >            - `Zsh`: nano ~/.zshrc 
+    >            - `Bash`: nano ~/.bash_profile 
+    >
+    >
+    > 3. Add the Export Path to Your Shell Configuration File.
+    >   ```bash
+    >   export PATH=$PATH:$HOME/.dataos/bin
+    >   ```
+    >
+    >
+    > 4. Save the changes to the file (e.g., press Ctrl+X, then Y, then Enter in nano). 
+    >  
+    >
+    > 5. Load the file in Shell using:      
+    >   ```bash
+    >   source ~/.zshrc
+    >   ```
 
 You have successfully installed the CLI, now the next step is to [initialize](/interfaces/cli/initialization/) the DataOS context. 
 
