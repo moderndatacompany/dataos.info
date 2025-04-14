@@ -196,8 +196,10 @@ lens:
       allKeys: true
   source:
     type: themis #minerva/themis/depot
-    name: lenstestingthemis
-    catalog: lenstestingthemis
+    name: lenstestingthemis #name of the themis cluster
+    catalog:                 #optional
+      - postgres
+      - lakehouse
   repo:
     url: https://bitbucket.org/tmdc/sample
     lensBaseDir: sample/lens/source/themis/model 
@@ -255,8 +257,8 @@ After configuring the deployment file with the necessary settings and specificat
     dataos-ctl resource apply -f /lens/lens_deployment.yml -w curriculum
     # Expected output
     INFO[0000] 🛠 apply...                                   
-    INFO[0000] 🔧 applying(curriculum) sales360:v1alpha:lens... 
-    INFO[0001] 🔧 applying(curriculum) sales360:v1alpha:lens...created 
+    INFO[0000] 🔧 applying(curriculum) themis-lens:v1alpha:lens... 
+    INFO[0001] 🔧 applying(curriculum) themis-lens:v1alpha:lens...created 
     INFO[0001] 🛠 apply...complete
     ```
 
@@ -270,14 +272,14 @@ To verify whether the Lens Service is running, execute the following command. Th
 Ensure Service is active and running before proceeding to the next steps.
 
 ```bash
-dataos-ctl get -t service -n sales-insights-lens-api -w public
+dataos-ctl get -t service -n themis-lens-lens-api -w public
 # Expected output:
 INFO[0000] 🔍 get...                                     
 INFO[0002] 🔍 get...complete                             
 
            NAME           | VERSION |  TYPE   | WORKSPACE | STATUS |  RUNTIME  |    OWNER     
 --------------------------|---------|---------|-----------|--------|-----------|--------------
-  sales360-lens-api | v1      | service | public    | active | running:1 | iamgroot
+  themis-lens-lens-api | v1      | service | public    | active | running:1 | iamgroot
 ```
 
 </aside>
