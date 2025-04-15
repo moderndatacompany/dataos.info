@@ -2,7 +2,7 @@
 
 To access the stored secret data in DataOS, you can reference them in your code using the `dataosSecrets` attribute. This identifier ensures secure referencing of Instance Secrets for various resources, enhancing system security and operational integrity.
 
-## **Referring Instance Secret in Depot**
+## Referring Instance Secret in Depot
 
 To refer to an Instance Secret in Depots, follow these steps:
 
@@ -38,7 +38,7 @@ For read-only access to a Depot, create read-only secrets. For read-write access
 
 </aside>
 
-## **Referring Instance Secret in Service**
+## Referring Instance Secret in Service
 
 To refer to an Instance Secret in Service Resource, follow these steps:
 
