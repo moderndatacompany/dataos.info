@@ -555,36 +555,36 @@ nav:
 
           - Scanner: 
             - resources/stacks/scanner/index.md
-            - Quickstart: resources/stacks/scanner01/quickstart.md 
-            - Core Concepts: resources/stacks/scanner01/core_concepts.md 
+            - Quickstart: resources/stacks/scanner/quickstart.md 
+            - Core Concepts: resources/stacks/scanner/core_concepts.md 
             - Supported Sources: 
               - Data Sources:
-                - AzureSQL: resources/stacks/scanner01/supported_sources/data_sources/azure_sql.md
-                - BigQuery: resources/stacks/scanner01/supported_sources/data_sources/bigquery.md
-                - Kafka: resources/stacks/scanner01/supported_sources/data_sources/kafka.md
-                - Lakehouse: resources/stacks/scanner01/supported_sources/data_sources/lakehouse.md
-                - MariaDB: resources/stacks/scanner01/supported_sources/data_sources/maria_db.md
-                - MSSQL: resources/stacks/scanner01/supported_sources/data_sources/mssql.md
-                - MySQL: resources/stacks/scanner01/supported_sources/data_sources/mysql.md
-                - Oracle: resources/stacks/scanner01/supported_sources/data_sources/oracle.md
-                - PostgreSQL: resources/stacks/scanner01/supported_sources/data_sources/postgresql.md 
-                - Pulsar: resources/stacks/scanner01/supported_sources/data_sources/pulsar.md
-                - Redshift: resources/stacks/scanner01/supported_sources/data_sources/redshift.md
-                - Snowflake: resources/stacks/scanner01/supported_sources/data_sources/snowflake.md
+                - AzureSQL: resources/stacks/scanner/supported_sources/data_sources/azure_sql.md
+                - BigQuery: resources/stacks/scanner/supported_sources/data_sources/bigquery.md
+                - Kafka: resources/stacks/scanner/supported_sources/data_sources/kafka.md
+                - Lakehouse: resources/stacks/scanner/supported_sources/data_sources/lakehouse.md
+                - MariaDB: resources/stacks/scanner/supported_sources/data_sources/maria_db.md
+                - MSSQL: resources/stacks/scanner/supported_sources/data_sources/mssql.md
+                - MySQL: resources/stacks/scanner/supported_sources/data_sources/mysql.md
+                - Oracle: resources/stacks/scanner/supported_sources/data_sources/oracle.md
+                - PostgreSQL: resources/stacks/scanner/supported_sources/data_sources/postgresql.md 
+                - Pulsar: resources/stacks/scanner/supported_sources/data_sources/pulsar.md
+                - Redshift: resources/stacks/scanner/supported_sources/data_sources/redshift.md
+                - Snowflake: resources/stacks/scanner/supported_sources/data_sources/snowflake.md
               - System Sources: 
-                - Data Products: resources/stacks/scanner01/supported_sources/system_metadata_sources/data_product_scanner.md
-                - User Information: resources/stacks/scanner01/supported_sources/system_metadata_sources/user_information.md
+                - Data Products: resources/stacks/scanner/supported_sources/system_metadata_sources/data_product_scanner.md
+                - User Information: resources/stacks/scanner/supported_sources/system_metadata_sources/user_information.md
               - Indexer Services:
-                - Data Profiling: resources/stacks/scanner01/supported_sources/indexer_services/data_profiling.md
-                - Quality Checks: resources/stacks/scanner01/supported_sources/indexer_services/data_quality.md
-                - Resources Scanner: resources/stacks/scanner01/supported_sources/indexer_services/dataos_resources.md
-                - Query Usage: resources/stacks/scanner01/supported_sources/indexer_services/query_usage.md
-            - Configurations: resources/stacks/scanner01/configurations.md
-            - Governance: resources/stacks/scanner01/governance.md 
-            - Cataloging: resources/stacks/scanner01/cataloging.md
-            - Best Practices: resources/stacks/scanner01/best_practices.md
-            - Observability: resources/stacks/scanner01/observability.md
-            - Recipes: resources/stacks/scanner01/recipes.md
+                - Data Profiling: resources/stacks/scanner/supported_sources/indexer_services/data_profiling.md
+                - Quality Checks: resources/stacks/scanner/supported_sources/indexer_services/data_quality.md
+                - Resources Scanner: resources/stacks/scanner/supported_sources/indexer_services/dataos_resources.md
+                - Query Usage: resources/stacks/scanner/supported_sources/indexer_services/query_usage.md
+            - Configurations: resources/stacks/scanner/configurations.md
+            - Governance: resources/stacks/scanner/governance.md 
+            - Cataloging: resources/stacks/scanner/cataloging.md
+            - Best Practices: resources/stacks/scanner/best_practices.md
+            - Observability: resources/stacks/scanner/observability.md
+            - Recipes: resources/stacks/scanner/recipes.md
           - Soda: 
             - resources/stacks/soda/index.md
           - Steampipe: 

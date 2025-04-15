@@ -177,7 +177,8 @@ spark.stop()
 ```
 
 !!! success "Note"
-Placeholder values such as depot names, schema names, FQDN, and token will be updated to representative examples, and every script will explicitly include `spark.stop()` at the end to terminate the Spark session.
+        
+        Placeholder values such as depot names, schema names, FQDN, and token will be updated to representative examples, and every script will explicitly include `spark.stop()` at the end to terminate the Spark session.
 
         **Important Placeholder Changes Required:**
 
