@@ -48,7 +48,7 @@ After executing the above command successfully you’ll be able to search for yo
 
 After successfully deploying the Data Product, it’s time to observe the results if the Data Product incorporates with your use-case or not, If the Data Product does not match the goal then you can iterate the process until your goal is achieved. 
 
-### **Validate the Data Product**
+## Validate the Data Product
 
 To check if you have created a Data Product run the following command. It will list all the data products created by you.
 
@@ -73,7 +73,7 @@ product get...complete
 ## Deprecate the Data Product
 If a Data Product is no longer in use we can delete the Data Product. To delete a Data Product please follow the below steps.
 
-### **Delete the Data Product**
+## Delete the Data Product
 
 To delete the Data Product execute the following command.
 
@@ -129,7 +129,7 @@ INFO[0000] 🗑 product delete...complete
     ```
     
 
-### **Delete the metadata of the Data Product from Metis:**
+## Delete the metadata of the Data Product from Metis:
 
 When clicking on your Data Product on Metis, clicking on the menu of the right-corner you will have the option to delete the metadata from Metis as you can see below:
 

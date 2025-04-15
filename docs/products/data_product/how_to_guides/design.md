@@ -206,7 +206,7 @@ Performance targets refer to predefined goals or benchmarks related to the data 
 
 Once the Data Product design is finalized, it undergoes review sessions with key stakeholders and team members to ensure it meets all defined requirements and goals. Feedback from these sessions is carefully documented. If needed, the design is refined based on this feedback to improve its alignment with requirements. All changes made during this process are noted to ensure continuous improvement of the design phase.
 
-## **Create the Data Product manifest file**
+### **Create the Data Product manifest file**
 
 After successfully executing the above steps, you’ll create a manifest file for the Data Product. 
 
@@ -288,7 +288,7 @@ The manifest file of a Data Product can be broken down into two sections:
 1. Product Meta section
 2. Data Product-specific section 
 
-### **Product meta section**
+**Product meta section**
 
 The Data Product manifest comprises a product meta section outlining essential metadata attributes applicable to all product types. Note that some attributes are optional within this section, while others are mandatory.
 
@@ -312,7 +312,7 @@ refs:  # optional
 
 For more information about the various attributes in the Product meta section, refer to the [Attributes of Product meta section](/products/data_product/configurations/).
 
-### **Data Product-specific section**
+**Data Product-specific section**
 
 This section focuses on Data Product-specific attributes, outlining resources, inputs, outputs, and use cases.
 
@@ -359,7 +359,7 @@ v1beta: # mandatory
 ```
 For more information about the various attributes in the Data Product-specific section, refer to the [Attributes of Data Product-Specific section](/products/data_product/configurations/).
 
-## **Apply the Data Product manifest file**
+### **Apply the Data Product manifest file**
 
 To create a Data Product within the DataOS, use the `apply` command. When applying the manifest file from the DataOS CLI, `apply` command is as follows:
 
