@@ -11,7 +11,7 @@ The Scanner stack in DataOS is designed for developers to extract metadata from 
 
 Follow the below steps:
 
-<img src="/resources/stacks/scanner01/scanner_img/quickstart-scan-01.png"  class="center" style="width:30rem; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3); display: block; margin: 0 auto;" />
+<img src="/resources/stacks/scanner/scanner_img/quickstart-scan-01.png"  class="center" style="width:30rem; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3); display: block; margin: 0 auto;" />
 
 
 [Depots](/resources/depot/index) are used to connect to metadata sources to extract entities' metadata. Users must provide the Depot name or address to establish a connection and scan all datasets from the data source referenced by the Depot.
@@ -20,7 +20,7 @@ Follow the below steps:
 
 For illustration purposes, the Snowflake data source will be connected.
 
-<img src="/resources/stacks/scanner01/scanner_img/quickstart-scan-02.png"  class="center" style="width:45rem; display: block; margin: 0 auto; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);" />
+<img src="/resources/stacks/scanner/scanner_img/quickstart-scan-02.png"  class="center" style="width:45rem; display: block; margin: 0 auto; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);" />
 
 
 ### **Step 1: Check Required Permissions**
@@ -28,7 +28,7 @@ For illustration purposes, the Snowflake data source will be connected.
 
 * To scan metadata from the Snowflake source system, the Snowflake user must have USAGE privileges on required schemas.
 
-    <img src="/resources/stacks/scanner01/scanner_img/quickstart-scan-03.png"  class="center" style="width:45rem; display: block; margin: 0 auto; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);" />
+    <img src="/resources/stacks/scanner/scanner_img/quickstart-scan-03.png"  class="center" style="width:45rem; display: block; margin: 0 auto; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);" />
 
 * To run the Scanner workflow, a user must have Metis admin access or a grant for the “Run as Scanner User” use case.
 
@@ -142,21 +142,21 @@ Now build a Scanner workflow to scan the data source. The workflow includes the�
     
 - On Metis UI, go to Settings > Databases to access it.
 
-<img src="/resources/stacks/scanner01/scanner_img/quickstart-scan-04.png"  class="center" style="width:45rem; display: block; margin: 0 auto; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);" />
+<img src="/resources/stacks/scanner/scanner_img/quickstart-scan-04.png"  class="center" style="width:45rem; display: block; margin: 0 auto; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);" />
 
 **Scanned Database**
 
 - Click on the database.
 
-<img src="/resources/stacks/scanner01/scanner_img/quickstart-scan-05.png"  class="center" style="width:45rem; display: block; margin: 0 auto; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);" />
+<img src="/resources/stacks/scanner/scanner_img/quickstart-scan-05.png"  class="center" style="width:45rem; display: block; margin: 0 auto; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);" />
 
 - Scanned Tables on Metis using includes Filter Pattern:
 
-<img src="/resources/stacks/scanner01/scanner_img/quickstart-scan-06.png"  class="center" style="width:45rem; display: block; margin: 0 auto; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);" />
+<img src="/resources/stacks/scanner/scanner_img/quickstart-scan-06.png"  class="center" style="width:45rem; display: block; margin: 0 auto; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);" />
 
 - Schema of the Scanned Customer Table (validate with the source)
 
-<img src="/resources/stacks/scanner01/scanner_img/quickstart-scan-07.png"  class="center" style="width:45rem; display: block; margin: 0 auto; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);" />
+<img src="/resources/stacks/scanner/scanner_img/quickstart-scan-07.png"  class="center" style="width:45rem; display: block; margin: 0 auto; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);" />
 
 To know more about how to specify filters in different scenarios, refer to [Filter Pattern Examples](/resources/scanner/recipes).
 

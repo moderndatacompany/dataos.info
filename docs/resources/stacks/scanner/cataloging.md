@@ -4,7 +4,7 @@ Metis has integrated "Workflows" as a "Resource Type" to store metadata related 
 
 When selecting a workflow, the following information is displayed on the screen:
 
-<img src="/resources/stacks/scanner01/scanner_img//01-catalogin-scanner.png"  class="center" style="width:45rem; display: block; margin: 0 auto; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);" />
+<img src="/resources/stacks/scanner/scanner_img//01-catalogin-scanner.png"  class="center" style="width:45rem; display: block; margin: 0 auto; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);" />
 
 ## Filter pane
 
@@ -45,7 +45,7 @@ Each Workflow in the list will feature a card view that displays the following i
 
 In the card view, click anywhere except the resource name to get the overview.
 
-<img src="/resources/stacks/scanner01/scanner_img//02-catalogin-scanner.png"  class="center" style="width:45rem; display: block; margin: 0 auto; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);" />
+<img src="/resources/stacks/scanner/scanner_img//02-catalogin-scanner.png"  class="center" style="width:45rem; display: block; margin: 0 auto; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);" />
 
 For instance, the Overview pane gives the details of `system-metadata-sync` Scanner Workflow which are as follows:
 
@@ -64,11 +64,11 @@ For instance, the Overview pane gives the details of `system-metadata-sync` Scan
 
 When the user click on the name of the workflow, the page redirects to the detailed page of that particular Workflow as shown below:
 
-<img src="/resources/stacks/scanner01/scanner_img//03-catalogin-scanner.png"  class="center" style="width:45rem; display: block; margin: 0 auto; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);" />
+<img src="/resources/stacks/scanner/scanner_img//03-catalogin-scanner.png"  class="center" style="width:45rem; display: block; margin: 0 auto; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);" />
 
 This page includes comprehensive details about the Workflow as shown in the above image.
 
-### Workflow Information
+### **Workflow Information**
 
 In addition to basic Scanner information, the following details and options are provided.
 
@@ -94,7 +94,7 @@ In addition to basic Scanner information, the following details and options are 
 
 The subsequent tabs will provide users with more detailed information, as explained in the following sections.
 
-### Details
+### **Details**
 
 | Attribute        | Description                                                               |
 | ---------------- | ------------------------------------------------------------------------- |
@@ -106,14 +106,14 @@ The subsequent tabs will provide users with more detailed information, as explai
 | Builder state    | Weather Workflow is running or pending                                    |
 | Run As User      | Authority granted to perform operations on behalf of the assigned user ID |
 
-### Activity Feeds & Tasks
+### **Activity Feeds & Tasks**
 
 This space lists all activities, including tasks and conversations around the specific Workflow.
 
-### Manifest
+### **Manifest**
 
 This section offers comprehensive information regarding the Workflow's manifest. A manifest file, in this context, takes the form of a YAML configuration file. This file serves as the blueprint that defines the configuration settings for various DataOS Resources.
 
-### Runtime/ Run History
+### **Runtime/ Run History**
 
 This section provides an overview of the Workflow's execution history. It offers a concise summary of past runs, allowing users to quickly access information about the Workflow's previous operations and performance.

@@ -60,7 +60,7 @@ The Scanner Stack follows an **ETL-like process** (Extract, Transform, Load):
     
     
 <figure style="text-align: center;">
-  <img src="/resources/stacks/scanner01/scanner_img/scanner_framework.png" class="center" style="width:45rem; display: block; margin: 0 auto; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);" />
+  <img src="/resources/stacks/scanner/scanner_img/scanner_framework.png" class="center" style="width:45rem; display: block; margin: 0 auto; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);" />
   <figcaption style="margin-top: 0.5rem; font-size: 0.95rem; color: #555;">
     DataOS Scanner Stack for metadata extraction
   </figcaption>
