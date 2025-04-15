@@ -1,4 +1,4 @@
-# Lakehouse Operations with DataOS PyFlare
+# Lakehouse Transformation with DataOS PyFlare
 
 This document provides code samples and usage instructions for performing common Lakehouse operations using the DataOS PyFlare SDK. The operations include reading and writing data, merging records into Iceberg tables, and configuring partitioning strategies.
 
@@ -176,16 +176,16 @@ load(name="dataos://lakehouse:sandbox3/test_pyflare2", format="iceberg").show()
 spark.stop()
 ```
 
-<aside class="best-practice" style="border-left: 4px solid #28a745; background-color: #e6f4ea; color: #1e4620; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;">
-<b>Note:</b> Placeholder values such as depot names, schema names, FQDN, and token will be updated to representative examples, and every script will explicitly include `spark.stop()` at the end to terminate the Spark session.
-</aside>
+!!! success "Note"
+        
+        Placeholder values such as depot names, schema names, FQDN, and token will be updated to representative examples, and every script will explicitly include `spark.stop()` at the end to terminate the Spark session.
 
-**Important Placeholder Changes Required:**
+        **Important Placeholder Changes Required:**
 
-- **`DATAOS_FQDN`**: Replace `"example-dataos.dataos.app"` with the actual FQDN of the target DataOS instance.
-- **`token`**: Replace with a valid DataOS API key.
-- **`depot_name` in `.with_depot(...)`**: Confirm that the depots (e.g., `"lakehouse"`) exist and have proper permissions.
-- **`load(...)` and `save(...)` URIs**: Replace the table and path values to match the desired source and target datasets.
+        - **`DATAOS_FQDN`**: Replace `"example-dataos.dataos.app"` with the actual FQDN of the target DataOS instance.
+        - **`token`**: Replace with a valid DataOS API key.
+        - **`depot_name` in `.with_depot(...)`**: Confirm that the depots (e.g., `"lakehouse"`) exist and have proper permissions.
+        - **`load(...)` and `save(...)` URIs**: Replace the table and path values to match the desired source and target datasets.
 
 ## Command Line Interface (CLI) References
 
@@ -207,3 +207,10 @@ To delete the entry from the metastore and remove the associated files, use the 
 ```bash
 dataos-ctl dataset drop -a dataos://icebase:retail/city --purge true
 ```
+
+## Additional links
+
+- [How can the "FQDN Resolution Failure" error be resolved in DataOS PyFlare SDK?](/api_docs/dataos_pyflare/troubleshoot/#fqdn-resolution-failure)
+- [What causes the "Unauthorized Access to Depot Metadata" error in DataOS PyFlare SDK and how can it be fixed?](/api_docs/dataos_pyflare/troubleshoot/#unauthorized-access-to-depot-metadata)
+- [How can the "Depot Not Loaded or Invalid Dataset" error be troubleshot in DataOS PyFlare SDK?](/api_docs/dataos_pyflare/troubleshoot/#depot-not-loaded-or-invalid-dataset)
+- [What should be done if an "Incorrect Dataset Format" error is encountered in DataOS PyFlare SDK?](/api_docs/dataos_pyflare/troubleshoot/#incorrect-dataset-format)
