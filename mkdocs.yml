@@ -167,10 +167,10 @@ nav:
       #       - Using ODBC Driver: interfaces/atlas/bi_tools/powerbi/using_odbc_driver.md
       #     - Tableau: interfaces/atlas/bi_tools/tableau/index.md
       #     - IBM SPSS: interfaces/atlas/bi_tools/spss/index.md
-      - Audiences: 
-        - interfaces/audiences/index.md
-        - Audiences UI: interfaces/audiences/audiences_ui/index.md
-        - Getting Started: interfaces/audiences/getting_started/index.md
+      # - Audiences: 
+      #   - interfaces/audiences/index.md
+      #   - Audiences UI: interfaces/audiences/audiences_ui/index.md
+      #   - Getting Started: interfaces/audiences/getting_started/index.md
       - Bifrost: 
         - interfaces/bifrost/index.md
         - ABAC Implementation: interfaces/bifrost/abac_implementation_in_dataos.md
@@ -198,9 +198,10 @@ nav:
                 - Power BI Service: interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service.md
             - Tableau Desktop: interfaces/data_product_hub/activation/bi_sync/tableau_desk.md
             - Microsoft Excel: interfaces/data_product_hub/activation/bi_sync/excel.md
-            - Apache Superset: interfaces/data_product_hub/activation/bi_sync/superset.md
+          #   - Apache Superset: interfaces/data_product_hub/activation/bi_sync/superset.md
           - AI/ML: interfaces/data_product_hub/activation/jupyter.md
-          - App Development: interfaces/data_product_hub/activation/app_development.md
+          - Postgres: interfaces/data_product_hub/activation/postgres.md
+          - Graphql: interfaces/data_product_hub/activation/graphql.md
           - Data APIs: interfaces/data_product_hub/activation/data_api.md
         - Best Practices: interfaces/data_product_hub/bestpractices.md 
         - Examples: interfaces/data_product_hub/recipe.md
@@ -256,8 +257,8 @@ nav:
           - Stacks: interfaces/metis/metis_ui_resources/metis_resources_stacks.md
           - Workers: interfaces/metis/metis_ui_resources/metis_resources_workers.md
           - Workflows: interfaces/metis/metis_ui_resources/metis_resources_workflows.md
-      - Notebook: 
-        - interfaces/notebook/index.md
+      # - Notebook: 
+      #   - interfaces/notebook/index.md
       - Operations: 
         - interfaces/operations/index.md
       # - Superset: 
@@ -552,8 +553,8 @@ nav:
             - resources/stacks/cli_stack/index.md
           - Container: 
             - resources/stacks/container/index.md
-          - Data Toolbox: 
-            - resources/stacks/data_toolbox/index.md
+          # - Data Toolbox: 
+          #   - resources/stacks/data_toolbox/index.md
           - DBT: 
             - resources/stacks/dbt/index.md
           - Flare: 
