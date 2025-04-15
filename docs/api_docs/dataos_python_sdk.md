@@ -14,7 +14,7 @@ tags:
 The DataOS SDK for Python includes functionality to accelerate development with Python for the DataOS platform. It provides a cohesive set of APIs, each accessible through its respective services, enabling seamless interaction with the platform. By utilizing the SDK, data developers unlock the potential to construct innovative solutions and integrate them seamlessly into their existing resources.
 
 <aside class="callout">
-🗣 Delve into the <a href="/api_docs/dataos_python_sdk/reference_index.html">Python SDK Library Reference</a> for detailed insights into the diverse subpackages, modules and classes encompassed by the Python SDK package. To know more about the installation procedures, refer to the following section.
+🗣 Delve into the <a href="/api_docs/dataos_python_sdk/reference_index.html">Python SDK Library Reference</a> for detailed insights into the diverse subpackage, modules and classes encompassed by the Python SDK package. To know more about the installation procedures, refer to the following section.
 </aside>
 
 ## Installation
@@ -76,9 +76,10 @@ If Python was installed from source, via an installer from [python.org](https://
 
 The DataOS SDK for Python can be installed from the Python Package Index (PyPI) using the following command:
 
-<aside class="callout" style="border-left: 4px solid #28a745; background-color: #e6f4ea; color: #1e4620; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;">
-  <b>💡 Recommendation:</b> Install the <code>dataos-sdk-py==0.0.1</code> version of DataOS SDK for Python, as it is the designated stable release.
-</aside>
+
+!!! tip "Recommendation" 
+    Install the `dataos-sdk-py==0.0.1` version of DataOS SDK for Python, as it is the designated stable release.
+
 
 
 *For Linux/macOS*
