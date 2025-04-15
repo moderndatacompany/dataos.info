@@ -40,7 +40,7 @@ DataOS allows you to connect to a Microsoft SQL Server database and read data fr
 
 ### **Step 1: Create an Instance Secret for securing MSSQL credentials**
 
-Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/).
+Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/data_sources/mssql/).
 
 ### **Step 2: Create a MSSQL Depot manifest file**
 

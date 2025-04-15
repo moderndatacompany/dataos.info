@@ -37,7 +37,7 @@ DataOS enables the creation of a Depot of type 'Bigquery' to facilitate the read
 
 ### **Step 1: Create an Instance Secret for securing Bigquery credentials**
 
-Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/).
+Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/data_sources/bigquery/)
 
 ### **Step 2: Create a Bigquery Depot manifest file**
 
