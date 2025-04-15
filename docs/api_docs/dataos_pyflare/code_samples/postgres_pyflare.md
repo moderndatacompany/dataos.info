@@ -1,4 +1,4 @@
-# Postgres Operations with DataOS PyFlare
+# Postgres Transformation with DataOS PyFlare
 
 This example provides a complete process for reading data from a PostgreSQL table and writing it to a DataOS Iceberg table using PyFlare. The procedure includes Spark session setup, data retrieval from PostgreSQL, and persistence to DataOS storage.
 
@@ -58,13 +58,20 @@ save(name="dataos://lakehouse:sandbox3/test_pyflare2", dataframe=df_pg, format="
 spark.stop()
 ```
 
-<aside class="best-practice" style="border-left: 4px solid #28a745; background-color: #e6f4ea; color: #1e4620; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;">
-<b>Note:</b> Replace all placeholder values such as the authentication token, `DATAOS_FQDN`, and depot names according to the target environment.
-</aside>
+!!! success "Note"
+
+        Replace all placeholder values such as the authentication token, `DATAOS_FQDN`, and depot names according to the target environment.
+
+        **Important Placeholder Changes Required:**
+
+        - **`DATAOS_FQDN`**: Replace `"example-dataos.dataos.app"` with the actual FQDN of the target DataOS instance.
+        - **`token`**: Replace with a valid DataOS API key.
+        - **`depot_name` in `.with_depot(...)`**: Ensure the depots (e.g., `"postgres"`, `"lakehouse"`) exist and are accessible.
+        - **`load(...)` and `save(...)` URIs**: Update the schema, table name, and output path to match the intended source and destination datasets.
 
 
-**Important Placeholder Changes Required:**
-    - **`DATAOS_FQDN`**: Replace `"example-dataos.dataos.app"` with the actual FQDN of the target DataOS instance.
-    - **`token`**: Replace with a valid DataOS API key.
-    - **`depot_name` in `.with_depot(...)`**: Ensure the depots (e.g., `"postgres"`, `"lakehouse"`) exist and are accessible.
-    - **`load(...)` and `save(...)` URIs**: Update the schema, table name, and output path to match the intended source and destination datasets.
+# Additional link
+
+- [How can the "Depot Not Loaded or Invalid Dataset" error be troubleshot in DataOS PyFlare SDK?](/api_docs/dataos_pyflare/troubleshoot/#depot-not-loaded-or-invalid-dataset)
+- [What should be done if an "Incorrect Dataset Format" error is encountered in DataOS PyFlare SDK?](/api_docs/dataos_pyflare/troubleshoot/#incorrect-dataset-format)
+- [How to perform Merge into transformation in pyflare ?](/api_docs/dataos_pyflare/code_samples/lakehouse_pyflare/#merge-into-iceberg-table)
