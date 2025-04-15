@@ -123,11 +123,11 @@ markdown_extensions:
   - pymdownx.tilde
 #  - pymdownx.extra
   - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji          # while pushin to dev
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg       # while pushin to dev
+      # emoji_index: !!python/name:material.extensions.emoji.twemoji          # while pushin to dev
+      # emoji_generator: !!python/name:material.extensions.emoji.to_svg       # while pushin to dev
 
-      # emoji_index: !!python/name:materialx.emoji.twemoji                      # while hosting locally  
-      # emoji_generator: !!python/name:materialx.emoji.to_svg                   # while hosting locally 
+      emoji_index: !!python/name:materialx.emoji.twemoji                      # while hosting locally  
+      emoji_generator: !!python/name:materialx.emoji.to_svg                   # while hosting locally 
       
       # before pushing to dev branch replace materialx.emoji.to_svg with material.extensions.emoji.to_svg
       # before pushing to dev branch replace materialx.emoji.twemoji with material.extensions.emoji.twemoji
@@ -555,6 +555,36 @@ nav:
 
           - Scanner: 
             - resources/stacks/scanner/index.md
+            - Quickstart: resources/stacks/scanner01/quickstart.md 
+            - Core Concepts: resources/stacks/scanner01/core_concepts.md 
+            - Supported Sources: 
+              - Data Sources:
+                - AzureSQL: resources/stacks/scanner01/supported_sources/data_sources/azure_sql.md
+                - BigQuery: resources/stacks/scanner01/supported_sources/data_sources/bigquery.md
+                - Kafka: resources/stacks/scanner01/supported_sources/data_sources/kafka.md
+                - Lakehouse: resources/stacks/scanner01/supported_sources/data_sources/lakehouse.md
+                - MariaDB: resources/stacks/scanner01/supported_sources/data_sources/maria_db.md
+                - MSSQL: resources/stacks/scanner01/supported_sources/data_sources/mssql.md
+                - MySQL: resources/stacks/scanner01/supported_sources/data_sources/mysql.md
+                - Oracle: resources/stacks/scanner01/supported_sources/data_sources/oracle.md
+                - PostgreSQL: resources/stacks/scanner01/supported_sources/data_sources/postgresql.md 
+                - Pulsar: resources/stacks/scanner01/supported_sources/data_sources/pulsar.md
+                - Redshift: resources/stacks/scanner01/supported_sources/data_sources/redshift.md
+                - Snowflake: resources/stacks/scanner01/supported_sources/data_sources/snowflake.md
+              - System Sources: 
+                - Data Products: resources/stacks/scanner01/supported_sources/system_metadata_sources/data_product_scanner.md
+                - User Information: resources/stacks/scanner01/supported_sources/system_metadata_sources/user_information.md
+              - Indexer Services:
+                - Data Profiling: resources/stacks/scanner01/supported_sources/indexer_services/data_profiling.md
+                - Quality Checks: resources/stacks/scanner01/supported_sources/indexer_services/data_quality.md
+                - Resources Scanner: resources/stacks/scanner01/supported_sources/indexer_services/dataos_resources.md
+                - Query Usage: resources/stacks/scanner01/supported_sources/indexer_services/query_usage.md
+            - Configurations: resources/stacks/scanner01/configurations.md
+            - Governance: resources/stacks/scanner01/governance.md 
+            - Cataloging: resources/stacks/scanner01/cataloging.md
+            - Best Practices: resources/stacks/scanner01/best_practices.md
+            - Observability: resources/stacks/scanner01/observability.md
+            - Recipes: resources/stacks/scanner01/recipes.md
           - Soda: 
             - resources/stacks/soda/index.md
           - Steampipe: 
@@ -623,7 +653,7 @@ nav:
           - Lakehouse: api_docs/dataos_pyflare/code_samples/lakehouse_pyflare.md
           - Postgres: api_docs/dataos_pyflare/code_samples/postgres_pyflare.md
           - Snowflake: api_docs/dataos_pyflare/code_samples/snowflake_pyflare.md
-
+        - Troubleshooting: api_docs/dataos_pyflare/troubleshoot.md
       # - DataOS Flare SDK: api_docs/dataos_scala_sdk/index.html
       # - DataOS Kotlin SDK: api_docs/dataos_kotlin_sdk/index.html
   - Getting Started: 
