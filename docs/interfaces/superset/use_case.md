@@ -1,6 +1,6 @@
 # Sales Performance Dashboard
 
-## **Dashboard Overview**
+## Dashboard Overview
 
 Welcome to the Superstore Sales Performance Dashboard, a comprehensive tool designed to provide valuable insights into the superstore sales data. This dashboard is crafted to empower decision-makers by offering a clear and interactive view of sales performance utilizing multiple tabs grouped by category, city, region, and customers.
 
@@ -26,7 +26,7 @@ Welcome to the Superstore Sales Performance Dashboard, a comprehensive tool desi
 
 
 
-## **Data Source Information**
+## Data Source Information
 
 **Google BigQuery Connection:**
 

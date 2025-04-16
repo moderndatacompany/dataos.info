@@ -1,4 +1,4 @@
-## **Fetching Data Exposed by Talos from Third-Party Tools**
+## Fetching Data Exposed by Talos from Third-Party Tools
 
 Talos APIs can be accessed by external tools in the same way as any other REST APIs. These APIs can be used to integrate data into third-party applications, including dashboards and business intelligence tools.
 

@@ -80,7 +80,7 @@ It's possible to configure Bento to create the DynamoDB table required for coord
 
 Use the `batching` fields to configure an optional batching policy. Each stream shard will be batched separately in order to ensure that acknowledgments aren't contaminated.
 
-## **Fields**
+## Fields
 
 ### `streams`
 

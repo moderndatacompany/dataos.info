@@ -362,7 +362,7 @@ There are 3 ways to delete Database(or any Resource):
         dataos-ctl delete -f home/iamgroot/database/database_product.yml
         ```
 
-## **Create a Beacon Service**
+## Create a Beacon Service
 
 Create a [Beacon](/resources/stacks/beacon/) Service to expose the PostgreSQL database on API. The syntax for the Beacon Service manifest file is provided below:
 
