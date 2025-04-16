@@ -66,7 +66,7 @@ Or Download the following [“Template”](/resources/stacks/talos/talos.zip) an
     
     If any required tags or use cases are missing, contact a DataOS Operator.
 
-## **Steps**
+## Steps
 
 ### **Connect to the data source**
 

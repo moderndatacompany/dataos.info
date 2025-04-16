@@ -4,7 +4,7 @@ Within Superset, you can delve deeper into chart data and obtain further insight
 
 The Drill to Detail functionality is supported across all charts in Superset, provided that the chart organizes data based on dimension values.
 
-## **Drill to Detail from Drop Down**
+## Drill to Detail from Drop Down
 
 To showcase all the data comprising a chart, you can utilize the Drill to Detail feature from the chart's drop-down menu.
 
@@ -17,7 +17,7 @@ To showcase all the data comprising a chart, you can utilize the Drill to Detail
 
 
 
-## **Drill to Detail on a Chart**
+## Drill to Detail on a Chart
 
 You can also directly interact with the chart to display all relevant data.
 
@@ -29,7 +29,7 @@ You can also directly interact with the chart to display all relevant data.
 </div>
 
 
-## **Drill to Detail By on a Chart**
+## Drill to Detail By on a Chart
 
 To delve into the underlying data corresponding to specific values or a set of values on the chart — essentially, all columns in the dataset for rows filtered to the selected values — you can employ the Drill to Detail By feature.
 
@@ -43,7 +43,7 @@ Drill to Detail By offers an interactive approach to transition from a high-leve
 </div>
 
 
-## **Tips**
+## Tips
 
 - As you filter the dashboard, Drill to Detail will reflect the applied filters while displaying the underlying data in a tabular format.
 - You can scroll down to 50 rows per page on a Drill to Detail table.

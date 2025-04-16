@@ -73,7 +73,7 @@ Let's save this chart and add it to our dashboard.
 
  Repeat the process for the rest of the LQL for the analysis. 
 
-## **Customizing the Dashboard**
+## Customizing the Dashboard
 
 1. Change the default color scheme to the "Airbnb color scheme" for a visually appealing theme.
 

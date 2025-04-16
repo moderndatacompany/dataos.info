@@ -1,6 +1,6 @@
 # Attributes of Database manifest
 
-## **Structure of Database manifest**
+## Structure of Database manifest
 
 ```yaml
 #Attribtues for Resource
