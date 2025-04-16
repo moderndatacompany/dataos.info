@@ -76,7 +76,7 @@ Learn about the source connection and configuration options to create depot scan
 [Creating Scanner Workflows](/resources/stacks/scanner/creating_scanner_workflows/)
 
 ## Attributes of Scanner Workflow
-docs/resources/stacks/scanner/field_ref.md
+
 The below table summarizes various properties within a Scanner workflow YAML.
 
 | Attribute                           | Data Type  | Default Value | Possible Value                                   | Requirement |
@@ -113,7 +113,7 @@ To learn more about these fields, their possible values, example usage, refer to
 ## Supported Data Sources
 
 Here you can find templates for the depot/non-depot Scanner workflows for the supported data sources.
-<center>
+
 
 | Type             | Data Source      | Scanner|
 |------------------|------------------|------|
@@ -133,7 +133,6 @@ Here you can find templates for the depot/non-depot Scanner workflows for the su
 | Dashboard Service| Redash           |[Link](/resources/stacks/scanner/dashboards/redash_scan/)      |
 | Dashboard Service| Superset         |[Link](/resources/stacks/scanner/dashboards/superset_scan/)      |
 
-</center>
 
 <!-- 
 [Databases and Warehouses](scanner/databases_and_warehouses)

@@ -7,7 +7,7 @@
 
 To illustrate the process, we'll create a simple Streamlit application. Streamlit is a powerful Python library that facilitates the quick development of interactive web applications.
 
-## **Step 1: Create a Data Application**
+## Step 1: Create a Data Application
 
 1. **Write Your Application Code**
     
