@@ -1,6 +1,6 @@
 # Setting Up CLI Client
 
-## **Connecting to Minerva**
+## Connecting to Minerva
 
 To set up the Minerva Client or minerva-cli and run queries on Minerva via the terminal, there are two approaches:
 
@@ -131,7 +131,7 @@ minerva --server https://tcp.{{dataos instance fqdn}}:7432 \
     ```
 
 
-## **Query**
+## Query
 
 The following commands can be used to perform various operations:
 
@@ -249,7 +249,7 @@ The following commands can be used to perform various operations:
     ➜ Minerva:icebase.surveys# quit
     ```
 
-## **Export results as CSV**
+## Export results as CSV
 
 To export query results as a CSV file, you can use the `output-format` option. The example below demonstrates how to execute a query and save the results to a CSV file named `result.csv`:
 

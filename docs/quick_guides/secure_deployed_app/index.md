@@ -256,7 +256,7 @@ To create PEP:
     ```
     </details>
 
-## **4. Assigning Permissions to Specific Users**
+## 4. Assigning Permissions to Specific Users
 
 Grant these **use-cases** to different user roles to allow or restrict access.
 

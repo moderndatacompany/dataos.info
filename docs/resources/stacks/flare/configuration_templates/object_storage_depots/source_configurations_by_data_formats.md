@@ -2,7 +2,7 @@
 
 Within this page, you will find comprehensive instructions on implementing advanced configurations for your data reading and writing processes. Whether you are working with structured data formats such as AVRO, Parquet, or ORC or handling text files, XML, XLSX, or Iceberg files, we have got you covered.
 
-## **AVRO**
+## AVRO
 
 The AVRO format is a highly efficient and flexible storage format designed for Hadoop. It serves as a serialization platform, enabling seamless data exchange between programs written in different languages. AVRO is particularly well-suited for handling big data and offers robust support for evolving schemas.
 
@@ -23,7 +23,7 @@ inputs:
 > **Note**: For a more comprehensive understanding of AVRO options and their usage, please refer to the refer to [Avro options](https://spark.apache.org/docs/latest/sql-data-sources-avro.html#data-source-option).
 > 
 
-## **CSV**
+## CSV
 
 Flare supports reading/writing files or directories of files in CSV format. You have the flexibility to customize the behavior of the CSV reader by providing various options. These options allow you to control aspects such as header handling, delimiter character, character set, schema inference, and more.
 
@@ -75,7 +75,7 @@ outputs:
 > **Note:** For more information on the available options when working with Iceberg files, refer to the [Apache Iceberg](https://iceberg.apache.org/docs/latest/spark-configuration/) documentation.
 > 
 
-## **JSON**
+## JSON
 
 Flare supports automatic schema inference for JSON files, allowing you to load them as DataOS datasets. Each line in the JSON file should contain a separate, self-contained valid JSON object. In the case of a multi-line JSON file, you can enable the `multiLine` option to handle it appropriately.
 
@@ -99,7 +99,7 @@ inputs:
 > **Note**: For a comprehensive understanding of the available options for JSON files, please refer to the [JSON options](https://spark.apache.org/docs/latest/sql-data-sources-json.html#data-source-option) documentation.
 > 
 
-## **ORC**
+## ORC
 
 Flare supports reading/writing ORC (Optimized Row Columnar) files, which is a column-oriented data storage format within the Apache Hadoop ecosystem. ORC is designed to optimize performance and compression for big data processing workloads. With Flare, you can seamlessly read data from ORC files into your data workflows.
 
@@ -215,5 +215,5 @@ inputs:
       dateFormat: ISO_DATE
 ```
 
-> **Note**: For a detailed understanding of the available options when working with XML files, refer to the [Spark XML options](https://github.com/databricks/spark-xml) documentation. ****
+> **Note**: For a detailed understanding of the available options when working with XML files, refer to the [Spark XML options](https://github.com/databricks/spark-xml) documentation. 
 >

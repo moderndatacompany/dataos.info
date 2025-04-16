@@ -1,7 +1,7 @@
 # Performing Business Validation Checks
 DataOS allows you to define your own assertions with a combination of tests to check the rules. These tests are boolean expressions containing metric functions for aggregated data, such as the average sales price does not exceed some limit. DataOS automatically creates the metrics as per the function used while defining the assertions. You can also define assertions using SQL and regular expressions for more advanced use cases.
 
-## **Defining Assertions**
+## Defining Assertions
 
 The quality job YAML contains an assertions section to define tests for data quality validation. Each assertion specifies a set of criteria and tests to evaluate specific data attributes. 
 
