@@ -39,9 +39,11 @@ Pyflare is finely tuned for the DataOS platform, rendering it an ideal choice fo
 
 ## Installation
 
-The Pyflare module is compatible with DataOS-native [Jupyter Notebooks](/interfaces/notebook/) and can also be utilized in various Python programs across different environments, provided that the necessary JAR files are incorporated.
+By default, the DataOS environment does not include support for the DataOS-native Jupyter Notebook. However, it can be integrated into the environment on a requirement basis. The Pyflare module is compatible with Jupyter Notebooks and can also be utilized in various Python programs across different environments. 
 
-><b>Note:</b> If you are using DataOS-native Jupyter Notebooks or Python environment, you can skip the installation part and directly navigate to the <a href="#getting-started">Getting Started</a> section as the JAR files and modules are included automatically as part of the environment setup.
+<!-- provided that the necessary JAR files are incorporated.
+
+><b>Note:</b> If you are using DataOS-native Jupyter Notebooks or Python environment, you can skip the installation part and directly navigate to the <a href="#getting-started">Getting Started</a> section as the JAR files and modules are included automatically as part of the environment setup. -->
 
 ### **Prerequisites**
 
@@ -105,9 +107,8 @@ If you installed Python from source, with an installer from [python.org](https:
 
 The `dataos-pyflare` library can be installed from the Python Package Index (PyPI) using the following command:
 
-<aside class="best-practice" style="border-left: 4px solid #28a745; background-color: #e6f4ea; color: #1e4620; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;">
-<b>Recommendation:</b> Install the <code>dataos-pyflare==0.1.13</code> version of Pyflare, as it is the designated stable release.
-</aside>
+!!! tip "Recommendation" 
+    Install the `dataos-pyflare==0.1.13` version of Pyflare, as it is the designated stable release.
 
 **For Linux/macOS**
 
@@ -132,7 +133,7 @@ pip can install from either [Source Distributions (sdist)](https://files.pytho
 
 If `pip` does not find a wheel to install, it will locally build a wheel and cache it for future installs, instead of rebuilding the source distribution in the future.
 
-
+<!-- 
 ## Getting Started
 
 The following code snippet exemplifies the configuration of a Flare session for generating fictitious data, applying transformations, and saving the results to Icebase depot.
@@ -242,8 +243,16 @@ spark.stop()
 
 - [How to overwrite dynamic Iceberg partitions using Pyflare?](/api_docs/dataos_pyflare/code_samples/overwrite_dynamic_iceberg_partitions/)
 
-- [How to write data in Avro format from Iceberg using Pyflare?](/api_docs/dataos_pyflare/code_samples/write_avro_read_iceberg/)
+- [How to write data in Avro format from Iceberg using Pyflare?](/api_docs/dataos_pyflare/code_samples/write_avro_read_iceberg/) -->
 
+
+## Additional Links
+
+- [ How to read and write partitioned data using Pyflare?](/api_docs/dataos_pyflare/code_samples/lakehouse_pyflare/#partitioning-in-iceberg)
+
+- [How to troubleshoot the error in pyflare ?](/api_docs/dataos_pyflare/troubleshoot/)
+
+- [How to perform Merge into transformation in pyflare ?](/api_docs/dataos_pyflare/code_samples/lakehouse_pyflare/#merge-into-iceberg-table)
 
 ## Pyflare Library Reference
 
