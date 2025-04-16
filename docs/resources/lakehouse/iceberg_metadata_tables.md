@@ -6,7 +6,7 @@ Keep in mind that the metadata tables built into a DataOS Lakehouse storage are 
 
 The history table records the table’s evolution. Each of the four columns in this table provides unique insights into the table’s history.
 
-<center>
+
 
 | Field Name | Description | Data Type | Example Value |
 | --- | --- | --- | --- |
@@ -17,7 +17,7 @@ The history table records the table’s evolution. Each of the four columns in t
 
 *Schema of the history metadata table*
 
-</center>
+
 
 You can use the history metadata table for data recovery and version control as well as to identify table rollbacks.
 With a snapshot ID, you can restore your data and minimize potential data loss. In
@@ -60,7 +60,7 @@ The `metadata_log_entries` metadata table keeps track of the evolution of the ta
 by logging the metadata files generated during table updates. Each field within this
 table holds significant information about the state of the table at a given point in time.
 
-<center>
+
 
 | Field Name | Description | Data Type | Example Value |
 | --- | --- | --- | --- |
@@ -72,7 +72,7 @@ table holds significant information about the state of the table at a given poin
 
 *Schema of the metadata-log-entries metadata table*
 
-</center>
+
 
 You can use the `metadata_log_entries` metadata table to find the latest snapshot with a previous schema. For example, maybe you made a change to the schema and now you want to go back to the previous schema. You’ll want to find the latest snapshot using that schema, which can be determined with a query that will rank the snapshots for each `schema_id` and then return only the top-ranked snapshot for each:
 
@@ -117,7 +117,7 @@ SELECT * FROM icebase.retail."city$metadata_log_entries"
 
 The snapshots metadata table is essential for tracking dataset versions and histories. It maintains metadata about every snapshot for a given table, representing a consistent view of the dataset at a specific time. The details about each snapshot serve as a historical record of changes and portray the state of the dataset at the snapshot’s creation. The table includes several fields, each with a unique role.
 
-<center>
+
 
 | Field Name | Description | Data Type | Example Value |
 | --- | --- | --- | --- |
@@ -130,7 +130,7 @@ The snapshots metadata table is essential for tracking dataset versions and hist
 
 *Schema of the snapshots metadata table*
 
-</center>
+
 
 There are many possible ways to use the snapshots metadata table. One use case is to understand the pattern of data additions to the table. This could be useful in capacity planning or understanding data growth over time. Here is an SQL query that shows the total records added at each snapshot:
 
@@ -179,7 +179,7 @@ The `files` metadata table showcases the current datafiles within a table and fu
 detailed information about each of them, from their location and format to their
 content and partitioning specifics.
 
-<center>
+
 
 | Field Name | Description | Data Type | Example Value |
 | --- | --- | --- | --- |
@@ -203,7 +203,7 @@ content and partitioning specifics.
 
 *Schema of the files metadata table*
 
-</center>
+
 
 There are many possible use cases for the files metadata table, including determining whether a partition should be rewritten, identifying partitions that need data repair, finding the total size of a snapshot, and getting a list of files from a previous snapshot.
 

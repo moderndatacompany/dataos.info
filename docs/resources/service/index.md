@@ -286,6 +286,5 @@ The table below presents an exhaustive list of key-value properties and their de
 | [`runAsUser`](/resources/service/configurations/#runasuser) | string | user's User-id | userID of Use-Case Assignee | optional  |
 | [`dryRun`](/resources/service/configurations/#dryrun) | boolean | false | true/false | optional |
 
-<!-- </center> -->
 
 For a detailed explanation of each attribute, consult the [Attributes of Service YAML](/resources/service/configurations/).
