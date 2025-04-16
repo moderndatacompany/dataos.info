@@ -2,7 +2,7 @@
 
 We'll now explore how to utilize the **Sort filter values** configuration option to organize data either in ascending or descending order, as well as how to sort by a chosen metric.
 
-## **Filter Configuration Options**
+## Filter Configuration Options
 
 The following configuration options are available for these filter types:
 
@@ -15,7 +15,7 @@ The following configuration options are available for these filter types:
 
 ---
 
-## **Sort Filter Values**
+## Sort Filter Values
 
 The **Sort filter values** option is accessible for various Filter Types: Value, Time Range, Time Column, and Time Grain.
 

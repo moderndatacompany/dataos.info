@@ -111,7 +111,7 @@ cluster:
 
 ## Configuration Attributes
 
-## **`cluster`**
+## `cluster`
 
 **Description:** the `cluster` mapping/section defines configurations for the Cluster Resource.
 

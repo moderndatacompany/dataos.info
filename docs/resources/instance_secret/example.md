@@ -1,11 +1,11 @@
 # Using an Instance Secret for secure database connection in a Data Product
 This section involves a real-life use case of an Instance Secret.
 
-## **Scenario**
+## Scenario
 
 A Customer Insights Data Product development requires access to a PostgreSQL database that stores customer transaction data. An Instance Secret is used to securely store and retrieve the credentials of PostgreSQL to set up the connection.
 
-## **Steps to implement**
+## Steps to implement
 
 1. **Create an Instance Secret manifest file:**
 

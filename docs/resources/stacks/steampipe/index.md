@@ -392,7 +392,6 @@ This architectural choice streamlines the extension of Steampipe, as the Postgre
 
 The Steampipe Stack in the DataOS relies on a predefined set of plugins installed within the Steampipe Stack image. The default plugins are summarized in the table below.
 
-<center>
 
 | Plugin Name | Description |
 | --- | --- |
@@ -404,8 +403,6 @@ The Steampipe Stack in the DataOS relies on a predefined set of plugins installe
 | `francois2metz/airtable` | https://airtable.com/ integration, providing the ability to query data from this user-friendly database platform. |
 | `finance` | Financial data retrieval from multiple sources, including https://finance.yahoo.com/ and https://www.sec.gov/edgar.shtml service. |
 | `exec` | Execution of commands locally or on remote Linux and Windows hosts through SSH or WinRM. |
-
-</center>
 
 ### **Installing additional plugins from Steampipe Hub**
 

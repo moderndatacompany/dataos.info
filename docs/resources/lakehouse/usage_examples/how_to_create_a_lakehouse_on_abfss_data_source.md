@@ -2,7 +2,7 @@
 
 This guide outlines the steps to create a Lakehouse Resource on Azure Blob File System Secure (ABFSS) data source.
 
-## **Procedure**
+## Procedure
 
 ### **Step 1: Create Instance Secret manifests**
 

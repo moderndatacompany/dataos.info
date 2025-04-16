@@ -1,7 +1,7 @@
 # Talos for Bigquery
 This section provides the configuration guide to set up Talos Service for Bigquery.  
 
-## **Prerequisites**
+## Prerequisites
 
 To access the data using API from BigQuery, User need the following:
 
@@ -69,7 +69,7 @@ To access the data using API from BigQuery, User need the following:
         ${{"key2": "value2"}}
     ```
 
-## **Steps**
+## Steps
 
 ### **Connect to the data source**
 
