@@ -59,7 +59,7 @@ A central layer for generating APIs, connecting to BI/analytics tools, and AI an
   <figcaption><i>Seamless Integrations</i></figcaption>
 </center>
 
-## **Data Product discovery**
+## Data Product discovery
 
 The right Data Products can be discovered to make timely business decisions. In this section, the Data Product Hub interface is explained in detail to discover potential Data Products for a specific use case. To get started with the Data Product Hub, click on Data Product Hub 2.0, and you will be redirected to the Data Product Hub home page.
 For more information, check out the [Data Product discovery](/interfaces/data_product_hub/discovery/).

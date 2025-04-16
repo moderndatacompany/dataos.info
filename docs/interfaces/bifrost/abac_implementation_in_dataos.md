@@ -2,9 +2,7 @@
 
 An access policy in DataOS defines permissions based on the ABAC authorization strategy. In ABAC (Attribute-based Access Control), the subject and objects of the policy are identified by their attributes. An attribute in Attribute-Based Access Control (ABAC) refers to any characteristic or property utilized to regulate access, with tags being a common attribute employed to identify subjects and objects. The attributes of both the subject and the object are defined and declared separately. 
 
-## **Elements of Access Control in DataOS**
-
-
+## Elements of Access Control in DataOS
 
 | Term           | Description                                                          | Example                                                                               |
 |----------------|----------------------------------------------------------------------|---------------------------------------------------------------------------------------|
@@ -13,7 +11,6 @@ An access policy in DataOS defines permissions based on the ABAC authorization s
 | [Subject](/interfaces/bifrost/abac_implementation_in_dataos/#subject)         | The user (application or person) who/which wants to perform an action identified by a tag. | - `users:id:metis` (tag identifying Metis application as the user). <br> - `users:id:iamgroot` (tag identifying person with the name Iamgroot as the user). |
 | [Object](/interfaces/bifrost/abac_implementation_in_dataos/#object)          | The entity on which the action is to be performed also identified by a tag.               | - `dataos:resource:secret` (the Secret resource-type as the object of the policy). <br> - `/metis/**` (an API path as the object). |
 | [Predicate](/interfaces/bifrost/abac_implementation_in_dataos/#predicate)    | The action to be performed.                                         | get, put, post (other HTTP & CRUD operations). |
-
 
 
 ## Tag-Namespace
@@ -58,7 +55,6 @@ For instance, the following tables suggest possible actions in the `predicate` s
 **DataOS User:**
 
 
-
 | Action | Description |
 | --- | --- |
 | create | Creates a new resource (for example dataset on a given path) |
@@ -67,9 +63,7 @@ For instance, the following tables suggest possible actions in the `predicate` s
 | delete | Delete the data  |
 
 
-
 **DataOS Applications can perform API operations on resources:**
-
 
 
 | Action | Description |
@@ -79,5 +73,3 @@ For instance, the following tables suggest possible actions in the `predicate` s
 | put | Updates resources by replacing the resource information/content/data |
 | patch | Modifies resource content |
 | delete | Removes resource entirely |
-
-

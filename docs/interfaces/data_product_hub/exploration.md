@@ -22,7 +22,7 @@ Below is the list of components of the Explore Page:
 9. [Result display and visualization panel](#result-display-and-visualization-panels)
 
 
-## **Data Product overview**
+## Data Product overview
 
 The top of the page displays key information about the Data Product being explored, providing context and clarity for users.
 
@@ -30,12 +30,12 @@ The top of the page displays key information about the Data Product being explor
 - **Description**: Below the title, a description gives an overview of the Data Product's purpose. In this case, it’s described as a "customer 360 view of the world."
 - **Tier | Use-case |Team information**: The header contains essential information, including the Data Product's tier (e.g., Aggregated, Source aligned), its primary use case (e.g., Demand Forecast, Performance monitoring), and the list of contributors or collaborators involved in creating and maintaining the product (e.g., Aakansha Jain, Darpan Vyas). It provides users with a clear understanding of the product's purpose and the key stakeholders behind it, ensuring transparency and context.
 
-## **Favorite button and BI sync**
+## Favorite button and BI sync
 
 The Star like button (⭐) allows users to mark the Data Product as favorite. The BI Sync option opens the BI Sync functionality, enabling synchronization of the Data Product with tools such as PowerBI, Tableau Cloud, Tableau Desktop, and Apache Superset.
 
 
-## **Source details**
+## Source details
 
 Clicking on the Source section displays details of the source on which the Lens model is built, along with an option to check the source's health. Upon selection, the following information is shown, as illustrated in the image.
 
@@ -69,7 +69,7 @@ Clicking the Watch button allows users to return to the source and view the sour
 </center>
 
 
-## **Data Exploration tabs**
+## Data Exploration tabs
 
 Further, the data exploration tab contains three tabs for exploring the Data Product in detail. 
 

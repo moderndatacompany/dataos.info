@@ -2,7 +2,7 @@
 
 we will learn how to limit the availability of specified values within a filter using the **Pre-filter available values** configuration option.
 
-## **Filter Configuration Options**
+## Filter Configuration Options
 
 The following configuration options are available for these filter types:
 
@@ -13,7 +13,7 @@ The following configuration options are available for these filter types:
 | Sort filter values | ✔ |  | ✔ | ✔ | ✔ |
 | Single value |  | ✔ |  |  |  |
 
-## **Pre-filter Data**
+## Pre-filter Data
 
 In the [Parent-child Filter,](/interfaces/superset/dashboard_filtering/parent_child_filter/) we utilized the "Values are dependent on other filters" option to establish a parent-child relationship between the **Select Item Type** and **Select Item** value filters, respectively.
 

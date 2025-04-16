@@ -62,7 +62,9 @@ Studying the implementation of the micro-services design of DataOS helps compreh
 ---
 
 Let us look at DataOS from the perspective of a data infrastructure.
+
 ## Data Infrastructure
+
 <center>
 ![Design showcasing data-flow patterns in the *User Space* of DataOS](/architecture/dataos_architecture.jpg){: style="width:31rem;" }
 <figcaption><i>Design showcasing data-flow patterns in the User Space of DataOS</i></figcaption></center>
@@ -95,7 +97,9 @@ DataOS specs resemble the principles of a Data Developer Platform, such as decla
 Let us delve into how such a vast system with complexities underneath can be classified as an Operating System.
 
 ## Design of the Operating System
+
 The architecture of DataOS can be segregated into three logically separated layers - User Space, Core Kernel & Cloud Kernel. 
+
 <center>
 ![Layered Architecture of DataOS](/architecture/layered_arch.png){: style="width:41rem;" }
 <figcaption><i>Layered Architecture of DataOS</i></figcaption></center>

@@ -24,4 +24,3 @@ Flare Configuration Templates offer comprehensive settings for facilitating data
 | Oracle           | Relational Database| [Read/Write](/resources/stacks/flare/configuration_templates/oracle/)              |
 | Pulsar           | Streaming Source  | [Read/Write](/resources/stacks/flare/configuration_templates/pulsar/)              |
 | Snowflake        | Data Warehouse    | [Read/Write](/resources/stacks/flare/configuration_templates/snowflake/)           |
-

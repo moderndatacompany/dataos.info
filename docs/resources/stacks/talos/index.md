@@ -22,7 +22,7 @@ By converting SQL into APIs efficiently, Talos accelerates the deployment of dat
 
 
 
-## **Why Talos?**
+## Why Talos?
 
 The rapid growth of data presents challenges for data professionals in efficiently sharing data with stakeholders for operational business use cases. Traditional methods for creating APIs require complex and manual processes which complicates the integration of databases and data warehouses with AI agents and applications.
 
