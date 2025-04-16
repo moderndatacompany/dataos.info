@@ -1,7 +1,7 @@
 # Talos for MySQL
 This section provides the configuration guide to set up Talos service for MySQL.  
 
-## **Prerequisites**
+## Prerequisites
 
 To access the data using API from MySQL, User need the following:
 
@@ -64,7 +64,7 @@ To access the data using API from MySQL, User need the following:
     To validate assigned use cases, refer to the **Bifrost Application Use Cases** section.
 
 
-## **Steps**
+## Steps
 
 ### **Connect to the data source**
 

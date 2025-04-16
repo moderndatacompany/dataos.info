@@ -18,10 +18,10 @@ Flare Standalone is a helper stack to write Flare Jobs interactively on your loc
 
 The execution of a Flare Job involves submission to Poros, the resource manager of DataOS, which in coordination with Kubernetes allocates resources to the various running jobs. While Flare Standalone, behind the scenes, follows the master and worker architecture to execute jobs, but, here both the master and worker nodes work on the local machine, unlike in clusters where they are present on separate machines.
 
-<center>
 
 ![Flare Standalone: A testing interface for production-ready jobs](/resources/stacks/flare/standalone/standalone_new.svg)
 
+<center>
 <i>Flare Standalone: A testing interface for production-ready jobs</i>
 </center>
 

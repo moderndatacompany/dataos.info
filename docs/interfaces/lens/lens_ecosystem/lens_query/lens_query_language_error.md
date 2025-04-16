@@ -168,7 +168,7 @@ FROM
   )
 ```
 
-## **Error while using Range Function**
+## Error while using Range Function
 
 The problem seems to be arising due to there being no space between the "(" symbol and the word "RANGE". The presence of this space is likely causing a syntax error, resulting in an ambiguous error message. By simply adding the space, you should be able to rectify the error and make the LQL query functional again. 
 

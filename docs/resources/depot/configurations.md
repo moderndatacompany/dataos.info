@@ -21,7 +21,7 @@ depot:
 
 ## Attributes Configuration
 
-## **`depot`**
+## `depot`
 <b>Description:</b> specifies the configuration for the Depot section <br>
 
 | **Data Type**    | **Requirement** | **Default Value** | **Possible Value** |

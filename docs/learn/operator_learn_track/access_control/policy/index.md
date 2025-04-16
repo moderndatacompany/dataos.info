@@ -69,7 +69,7 @@ Policy:
 
 This Policy grants `data-dev` roles, which means all the data engineers have access to manage the Depots located at `dataos://crmbq` and `dataos://poss3`.
 
-## **Step 3: Apply Policy manifest file**
+## Step 3: Apply Policy manifest file
 
 Use the following command to apply the Policy Resource.
 
