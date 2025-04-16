@@ -64,13 +64,13 @@ spark.stop()
 
         **Important Placeholder Changes Required:**
 
-        - **`DATAOS_FQDN`**: Replace `"example-dataos.dataos.app"` with the actual FQDN of the target DataOS instance.
+        - **`DATAOS_FQDN`**: Replace `example-dataos.dataos.app` with the actual FQDN of the target DataOS instance.
         - **`token`**: Replace with a valid DataOS API key.
-        - **`depot_name` in `.with_depot(...)`**: Ensure the depots (e.g., `"postgres"`, `"lakehouse"`) exist and are accessible.
+        - **`depot_name` in `.with_depot(...)`**: Ensure the depots (e.g., `postgres`, `lakehouse`) exist and are accessible.
         - **`load(...)` and `save(...)` URIs**: Update the schema, table name, and output path to match the intended source and destination datasets.
 
 
-# Additional link
+# Additional links
 
 - [How can the "Depot Not Loaded or Invalid Dataset" error be troubleshot in DataOS PyFlare SDK?](/api_docs/dataos_pyflare/troubleshoot/#depot-not-loaded-or-invalid-dataset)
 - [What should be done if an "Incorrect Dataset Format" error is encountered in DataOS PyFlare SDK?](/api_docs/dataos_pyflare/troubleshoot/#incorrect-dataset-format)

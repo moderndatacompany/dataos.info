@@ -154,7 +154,7 @@ workflow:
 
 The table below summarizes how the values for `version`, `type` & `layer` are declared for different types of Resources.
 
-<center>
+
 
 | Resource | version | type | layer | <resource-type\> |
 | --- | --- | --- | --- | --- |
@@ -167,4 +167,4 @@ The table below summarizes how the values for `version`, `type` & `layer` are de
 | Stack | NA | NA | NA | stack |
 | Workflow | v1 | workflow | not required | workflow |
 
-</center>
+

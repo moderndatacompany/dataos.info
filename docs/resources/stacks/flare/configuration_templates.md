@@ -4,7 +4,7 @@ Flare Configuration Templates offer comprehensive settings for facilitating data
 
 ## Supported Data Sources
 
-<center>
+
 
 | Name             | Category         | Flare Configuration                                                                 |
 |------------------|------------------|------------------------------------------------------------------------------------|
@@ -25,4 +25,3 @@ Flare Configuration Templates offer comprehensive settings for facilitating data
 | Pulsar           | Streaming Source  | [Read/Write](/resources/stacks/flare/configuration_templates/pulsar/)              |
 | Snowflake        | Data Warehouse    | [Read/Write](/resources/stacks/flare/configuration_templates/snowflake/)           |
 
-</center>

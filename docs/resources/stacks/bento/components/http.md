@@ -104,7 +104,7 @@ Whether to enable to HTTP server.
 
 **Default:** `true`
 
----
+
 
 ### `address`
 
@@ -114,7 +114,7 @@ The address to bind to.
 
 **Default:** `"0.0.0.0:4195"`
 
----
+
 
 ### `root_path`
 
@@ -124,7 +124,7 @@ Specifies a general prefix for all endpoints, this can help isolate the service 
 
 **Default:** `"/bento"`
 
----
+
 
 ### `debug_endpoints`
 
@@ -134,7 +134,7 @@ Whether to register a few extra endpoints that can be useful for debugging perfo
 
 **Default:** `false`
 
----
+
 
 ### `cert_file`
 
@@ -144,7 +144,7 @@ An optional certificate file for enabling TLS.
 
 **Default:** `""`
 
----
+
 
 ### `key_file`
 
@@ -154,7 +154,7 @@ An optional key file for enabling TLS.
 
 **Default:** `""`
 
----
+
 
 ### `cors`
 
@@ -162,7 +162,7 @@ Adds Cross-Origin Resource Sharing headers.
 
 **Type:** `object`
 
----
+
 
 ### `cors.enabled`
 
@@ -172,7 +172,7 @@ Whether to allow CORS requests.
 
 **Default:** `false`
 
----
+
 
 ### `cors.allowed_origins`
 
@@ -182,7 +182,7 @@ An explicit list of origins that are allowed for CORS requests.
 
 **Default:** `[]`
 
----
+
 
 ### `basic_auth`
 
@@ -190,7 +190,7 @@ Allows you to enforce and customize basic authentication for requests to the HTT
 
 **Type:** `object`
 
----
+
 
 ### `basic_auth.enabled`
 
@@ -200,7 +200,7 @@ Enable basic authentication
 
 **Default:** `false`
 
----
+
 
 ### `basic_auth.realm`
 
@@ -210,7 +210,7 @@ Custom realm name
 
 **Default:** `"restricted"`
 
----
+
 
 ### `basic_auth.username`
 
@@ -220,7 +220,7 @@ Username required to authenticate.
 
 **Default:** `""`
 
----
+
 
 ### `basic_auth.password_hash`
 
@@ -230,7 +230,7 @@ Hashed password required to authenticate. (base64 encoded)
 
 **Default:** `""`
 
----
+
 
 ### `basic_auth.algorithm`
 
@@ -252,7 +252,7 @@ algorithm: bcrypt
 algorithm: scrypt
 ```
 
----
+
 
 ### `basic_auth.salt`
 

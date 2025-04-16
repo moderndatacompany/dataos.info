@@ -64,12 +64,12 @@ spark.stop()
 
     **Important Placeholder Changes Required:**
 
-    - **`DATAOS_FQDN`**: Replace `"example-dataos.dataos.app"` with the actual FQDN of the target DataOS instance.
+    - **`DATAOS_FQDN`**: Replace `example-dataos.dataos.app` with the actual FQDN of the target DataOS instance.
     - **`token`**: Replace with a valid DataOS API key.
-    - **`depot_name` in `.with_depot(...)`**: Confirm that the depots (e.g., `"sfdepot01"`, `"lakehouse"`) exist and have proper permissions.
+    - **`depot_name` in `.with_depot(...)`**: Confirm that the depots (e.g., `sfdepot01`, `lakehouse`) exist and have proper permissions.
     - **`load(...)` and `save(...)` URIs**: Replace the schema, table, and output path values to match the required source and target datasets.
 
-# Additional Link
+# Additional Links
 
 - [How can it be ensured that the required depot is included in the Spark session and the dataset exists when using DataOS PyFlare SDK?](/api_docs/dataos_pyflare/troubleshoot/#depot-not-loaded-or-invalid-dataset)
 - [How can the "FQDN Resolution Failure" error be resolved in DataOS PyFlare SDK?](/api_docs/dataos_pyflare/troubleshoot/#fqdn-resolution-failure)
