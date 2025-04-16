@@ -61,13 +61,13 @@ spark.stop()
 
     **Important Placeholder Changes Required:**
 
-    - **`DATAOS_FQDN`**: Replace `"example-dataos.dataos.app"` with the actual FQDN of the target DataOS instance.
+    - **`DATAOS_FQDN`**: Replace `example-dataos.dataos.app` with the actual FQDN of the target DataOS instance.
     - **`token`**: Replace with a valid DataOS API key.
-    - **`depot_name` in `.with_depot(...)`**: Confirm that the depots (e.g., `"bigquerydepot"`, `"lakehouse"`) exist and have proper permissions.
+    - **`depot_name` in `.with_depot(...)`**: Confirm that the depots (e.g., `bigquerydepot`, `lakehouse`) exist and have proper permissions.
     - **`load(...)` and `save(...)` URIs**: Replace the table and path values to match the desired source and target datasets.
 
 
-# Additional link 
+# Additional links 
 
 - [How to perform Merge into transformation in pyflare ?](/api_docs/dataos_pyflare/code_samples/lakehouse_pyflare/#merge-into-iceberg-table)
 - [How can the "FQDN Resolution Failure" error be resolved in DataOS PyFlare SDK?](/api_docs/dataos_pyflare/troubleshoot/#fqdn-resolution-failure)

@@ -4,12 +4,12 @@ This section outlines common errors encountered while using the DataOS PyFlare S
 ## FQDN Resolution Failure
 
 **Error Message:**
-```plaintext
+```bash
 ConnectionError: HTTPSConnectionPool(host='example-training.dataos.app', port=443): Max retries exceeded with url...
 ```
 
 **Cause:**  
-This error indicates that the fully qualified domain name (FQDN) is incorrect or cannot be resolved by the system.
+This error indicates that the 'Fully Qualified Domain Name (FQDN)' is incorrect or cannot be resolved by the system.
 
 **Solution:**  
 Ensure the `DATAOS_FQDN` is set to the correct domain.
@@ -23,7 +23,7 @@ Confirm that the hostname is valid and resolvable from your network.
 ## Unauthorized Access to Depot Metadata
 
 **Error Message:**
-```plaintext
+```bash
 HTTPError: Something went wrong in depot metadata API for depot: lakehouse with status code: 401
 ```
 
@@ -55,7 +55,7 @@ dataos-ctl user apikey create
 ## Depot Not Loaded or Invalid Dataset
 
 **Error Message:**
-```plaintext
+```bash
 PyflareReadException: Check if dataset dataos://lakehouse:sandbox3/test_pyflare2 exists and you have read access...
 InvalidInputException: Depot not loaded in current session
 ```
@@ -98,7 +98,7 @@ load(name="dataos://lakehouse:sandbox3/test_pyflare2", format="snowflake").show(
 ```
 
 **Error Message:**
-```plaintext
+```bash
 IllegalArgumentException: A snowflake URL must be provided with 'sfurl' parameter...
 ```
 
