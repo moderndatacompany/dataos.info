@@ -41,7 +41,7 @@ envs:
 # Replace the ${{dataos-context}} and ${{database-path}} with your DataOS Full Context Name and Postgres Datbase path respectively
 ```
 
-## **Beacon Stack-specific Section**
+## Beacon Stack-specific Section
 
 ### **`source`**
 

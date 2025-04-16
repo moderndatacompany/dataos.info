@@ -64,7 +64,6 @@ The section labeled as **`inputs`** consist of settings that enable the retrieva
 To access specific YAML configurations for each input source, users can refer to the accompanying database that lists the categories for each source. By clicking on the corresponding ‘OPEN’ button within the name section of the input source, a new popup window will appear displaying the relevant YAML configurations and description of each field.
 
 
-<center>
 
 |Name|Category|
 |---|---|
@@ -104,5 +103,3 @@ To access specific YAML configurations for each input source, users can refer to
 |[stdin](/resources/stacks/bento/components/inputs/stdin/)|Local|
 |[twitter_search](/resources/stacks/bento/components/inputs/twitter_search/)|Services, Social|
 |[mqtt](/resources/stacks/bento/components/inputs/mqtt/)|Services|
-
-</center>

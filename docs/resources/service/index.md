@@ -256,7 +256,7 @@ To learn more about `apply` command, refer to the [CLI](/interfaces/cli/command_
 
 The table below presents an exhaustive list of key-value properties and their descriptions within a Service YAML file:
 
-
+<!-- <center> -->
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
@@ -285,7 +285,6 @@ The table below presents an exhaustive list of key-value properties and their de
 | [`runAsApiKey`](/resources/service/configurations/#runasapikey) | string | user's API Key | any valid DataOS API Key | Optional  |
 | [`runAsUser`](/resources/service/configurations/#runasuser) | string | user's User-id | userID of Use-Case Assignee | optional  |
 | [`dryRun`](/resources/service/configurations/#dryrun) | boolean | false | true/false | optional |
-
 
 
 For a detailed explanation of each attribute, consult the [Attributes of Service YAML](/resources/service/configurations/).

@@ -23,7 +23,7 @@ compute:
 
 ## Configuration Attributes
 
-## **`compute`**
+## `compute
 
 <b>Description:</b> compute-specific attributes are declared within the Compute section specifed by the <code>compute</code> key<br>
 

@@ -170,7 +170,6 @@ metrics:
 
 ## Metric Targets
 
-
 |Name|Category|
 |---|---|
 |[aws_cloudwatch](/resources/stacks/bento/components/metrics/aws_cloudwatch/)|AWS|

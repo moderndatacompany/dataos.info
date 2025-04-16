@@ -59,15 +59,12 @@ The way this works is that if your processor with the side effect (`redis` in t
 
 ## Categories
 
-
-
 |Processors|Category|
 |---|---|
 |[bloblang](/resources/stacks/bento/components/processors/bloblang/)|Processor|
 |[mapping](/resources/stacks/bento/components/processors/mapping/)|Processor|
 |[log](/resources/stacks/bento/components/processors/log/)|Processor|
 |[rate_limit](/resources/stacks/bento/components/processors/rate_limit/)|Processor|
-
 
 
 
