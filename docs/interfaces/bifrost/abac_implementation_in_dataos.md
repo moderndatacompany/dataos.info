@@ -4,7 +4,7 @@ An access policy in DataOS defines permissions based on the ABAC authorization s
 
 ## **Elements of Access Control in DataOS**
 
-<center>
+
 
 | Term           | Description                                                          | Example                                                                               |
 |----------------|----------------------------------------------------------------------|---------------------------------------------------------------------------------------|
@@ -14,7 +14,7 @@ An access policy in DataOS defines permissions based on the ABAC authorization s
 | [Object](/interfaces/bifrost/abac_implementation_in_dataos/#object)          | The entity on which the action is to be performed also identified by a tag.               | - `dataos:resource:secret` (the Secret resource-type as the object of the policy). <br> - `/metis/**` (an API path as the object). |
 | [Predicate](/interfaces/bifrost/abac_implementation_in_dataos/#predicate)    | The action to be performed.                                         | get, put, post (other HTTP & CRUD operations). |
 
-</center>
+
 
 ## Tag-Namespace
 
@@ -57,7 +57,7 @@ For instance, the following tables suggest possible actions in the `predicate` s
 
 **DataOS User:**
 
-<center>
+
 
 | Action | Description |
 | --- | --- |
@@ -66,11 +66,11 @@ For instance, the following tables suggest possible actions in the `predicate` s
 | update | Update the data |
 | delete | Delete the data  |
 
-</center>
+
 
 **DataOS Applications can perform API operations on resources:**
 
-<center>
+
 
 | Action | Description |
 | --- | --- |
@@ -80,4 +80,4 @@ For instance, the following tables suggest possible actions in the `predicate` s
 | patch | Modifies resource content |
 | delete | Removes resource entirely |
 
-</center>
+

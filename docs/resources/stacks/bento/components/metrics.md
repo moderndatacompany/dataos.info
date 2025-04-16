@@ -170,7 +170,6 @@ metrics:
 
 ## Metric Targets
 
-<center>
 
 |Name|Category|
 |---|---|

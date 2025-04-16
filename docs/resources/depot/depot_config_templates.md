@@ -10,7 +10,7 @@ To make the process of creating a Depot configuration easier, we provide a set o
 
 The available Depot configuration Templates are provided in the table below:
 
-<center>
+
 
 | **Data Source Template**                                              | **Category**           |
 | --------------------------------------------------------- | ------------------ |
@@ -34,7 +34,7 @@ The available Depot configuration Templates are provided in the table below:
 | [Oracle](/resources/depot/depot_config_templates/oracle/)                     | Relational Database |
 | [PostgreSQL](/resources/depot/depot_config_templates/postgresql/)             | Relational Database |
 
-</center>
+
 
 Apart from the above sources, any source that supports a JDBC connection, can be connected to DataOS. This includes MariaDB, IBM Db2, etc.
 
