@@ -10,7 +10,7 @@ search:
 
 The Scanner enables the extraction of both high-level metadata such as dataset or table names, ownership details, and tags and detailed information, including table schemas, column names, and descriptions (if available in the data). Additionally, it facilitates the retrieval of metadata related to data quality, profiling, query usage, and user information associated with data assets. The Scanner Stack  also integrates with dashboard and messaging services to collect relevant metadata. For dashboards, it retrieves information about dashboards, their elements, and associated data sources.
 
-Within the DataOS ecosystem, the Scanner Stack collects metadata from Data Products and DataOS Resources, which provides comprehensive insights into inputs, outputs, service-level objectives (SLOs), data access permissions, and infrastructure resources used in the creation of Data Products. It also gathers metadata from various DataOS Resources, including Workflows, Services, Clusters, and [Depots](https://dataosinfo.mintlify.app/resources/depot/index), encompassing both historical runtime data and operational metrics.
+Within the DataOS ecosystem, the Scanner Stack collects metadata from Data Products and DataOS Resources, which provides comprehensive insights into inputs, outputs, service-level objectives (SLOs), data access permissions, and Infrastructure Resources used in the creation of Data Products. It also gathers metadata from various DataOS Resources, including [Workflows](/resources/workflow/), [Services](/resources/service/), [Clusters](/resources/cluster/), and [Depots](/resources/depot/), encompassing both historical runtime data and operational metrics.
 
 ⁠Designed for **Data Product Developers** (Data Engineers, Analytics Engineers), it enables flexible metadata scanning from target sources. Extracted metadata is stored in the **Metis Database** and can be explored using the **Metis UI**.
 
@@ -26,22 +26,22 @@ Within the DataOS ecosystem, the Scanner Stack collects metadata from Data Produ
 
 * **Integration with Dashboards and Messaging Services:** Extracts metadata from dashboards, including dashboard elements and associated data sources, along with relevant metadata from messaging services.
 
-* **Comprehensive Data Product and DataOS Resource Metadata:** Retrieves metadata from DataOS products and resources, providing insights into inputs, outputs, service level objectives (SLOs), data access permissions, infrastructure resources, workflows, services, clusters, depots, and historical runtime and operational data.
+* **Comprehensive Data Product and DataOS Resource Metadata:** Retrieves metadata from DataOS Products and Resources, providing insights into inputs, outputs, Service Level Objectives (SLOs), Data Access Permissions, Infrastructure Resources, Workflows, Services, Clusters, Depots, and historical runtime and Operational data.
 
 
-## Additional Links 
+## Additional links 
 
-**Quick Start:** A guide that explains the steps to create a Scanner Workflow to connect to the metadata source and extract the metadata of various entities. Visit [Quick Guide for Scanner](resources/stacks/scanner/quickstart/) for more info.
+**Quick Start:** A guide that explains the steps to create a Scanner Workflow to connect to the metadata source and extract the metadata of various entities. Visit [Quick Guide for Scanner](/resources/stacks/scanner/quickstart/) for more info.
 
-**Supported Sources:** The Scanner Stack in DataOS supports three types of metadata extraction workflows:
+**Supported Sources:** The Scanner Stack in DataOS supports three types of metadata extraction Workflows:
 
-- Data Sources: Custom Scanner Workflows used to extract metadata from various external data sources(Snowflake, PostgreSQL, MySQL etc.) for discoverability and governance. Explore more about Data Source Scanners [here](resources/scanner/supported_sources/data_sources/).  
+- Data Sources: Custom Scanner Workflows used to extract metadata from various external data sources(Snowflake, PostgreSQL, MySQL etc.) for discoverability and governance. Explore more about Data Source Scanners [here](/resources/stacks/scanner/supported_sources/data_sources/).  
 
-- System Sources: Predefined, scheduled workflows that scan internal system metadata at regular intervals. Explore more about system Scanner [here](resources/scanner/supported_sources/system_metadata_sources/). 
+- System Sources: Predefined, scheduled Workflows that scan internal system metadata at regular intervals. Explore more about system Scanner [here](/resources/stacks/scanner/supported_sources/system_metadata_sources/). 
 
-- Indexer Services: Always-on service that detects changes in DataOS entities and triggers targeted metadata extraction for those specific changes. Explore more about Indexer Services Scanner [here](resources/scanner/supported_sources/indexer_services/).
+- Indexer Services: Always-on service that detects changes in DataOS entities and triggers targeted metadata extraction for those specific changes. Explore more about Indexer Services Scanner [here](/resources/stacks/scanner/supported_sources/indexer_services/).
 
-**Configuring the Scanner:** To learn how to configure the Scanner Workflow and describes the attributes related to the Scanner manifest file, visit [Configuration Page.](resources/stacks/scanner/configurations/)
+**Configuring the Scanner:** To learn how to configure the Scanner Workflow and describes the attributes related to the Scanner manifest file, visit [Configuration Page.](/resources/stacks/scanner/configurations/)
 
 ## FAQ
 
