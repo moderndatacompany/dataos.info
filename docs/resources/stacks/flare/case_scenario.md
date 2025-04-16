@@ -131,9 +131,9 @@ Computes only the changed rows or files of data since the last build, reducing o
 
 [Read and write from Iceberg branch](/resources/stacks/flare/case_scenario/iceberg_branch_read_write/)
 
-[Data Profiling Jobs](/resources/stacks/flare/case_scenario/data_profiling_jobs/)
+<!-- [Data Profiling Jobs](/resources/stacks/flare/case_scenario/data_profiling_jobs/)
 
-<!-- [Data Quality Jobs (Assertions)](/resources/stacks/flare/case_scenario/data_quality_jobs/) -->
+[Data Quality Jobs (Assertions)](/resources/stacks/flare/case_scenario/data_quality_jobs/) -->
 
 [Compression](/resources/stacks/flare/case_scenario/compression/)
 
