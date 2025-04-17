@@ -552,8 +552,8 @@ nav:
             - resources/stacks/cli_stack/index.md
           - Container: 
             - resources/stacks/container/index.md
-          - Data Toolbox: 
-            - resources/stacks/data_toolbox/index.md
+          # - Data Toolbox: 
+          #   - resources/stacks/data_toolbox/index.md
           - DBT: 
             - resources/stacks/dbt/index.md
           - Flare: 

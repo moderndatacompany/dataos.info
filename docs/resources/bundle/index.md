@@ -150,7 +150,7 @@ bundle:
   manageAsUser: ${{iamgroot}} # Manage As User (optional)
 ```
 
-<center>
+
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
@@ -161,7 +161,7 @@ bundle:
 | [`properties`](/resources/bundle/configurations/#properties) | mapping | none | none | optional |
 | [`manageAsUser`](/resources/bundle/configurations/#manageasuser) | string | UserID of Owner | UserID of use case assignee | optional |
 
-</center>
+
 
 **Bundle Schedule section**
 
@@ -180,7 +180,7 @@ bundle: # Bundle-specific section (mandatory)
 
 Refer to the table below for a summary of the attributes within the Bundle Workspaces section. For detailed information about each attribute, please refer to the respective links provided in the attribute column.
 
-<center>
+
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
@@ -190,7 +190,7 @@ Refer to the table below for a summary of the attributes within the Bundle Works
 | [`cron`](/resources/bundle/configurations/#cron) | string | none | valid cron expression | mandatory |
 | [`delete`](/resources/bundle/configurations/#delete) | list of mappings | none | none | optional |
 
-</center>
+
 
 **Bundle Workspaces section**
 
@@ -221,7 +221,7 @@ bundle: # Bundle-specific section (mandatory)
 
 Refer to the table below for a summary of the attributes within the Bundle Workspaces section. For detailed information about each attribute, please refer to the respective links provided in the attribute column.
 
-<center>
+
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
@@ -231,7 +231,7 @@ Refer to the table below for a summary of the attributes within the Bundle Works
 | [`labels`](/resources/bundle/configurations/#labels) | mapping | none | valid key-value pairs | optional |
 | [`layer`](/resources/bundle/configurations/#layer) | string | none | user/system | mandatory |
 
-</center>
+
 
 **Bundle Resources section**
 
@@ -263,7 +263,7 @@ bundle: # Bundle-specific section (mandatory)
 
 Refer to the table below for a summary of the attributes within the Bundle Workspaces section. For detailed information about each attribute, please refer to the respective links provided in the attribute column.
 
-<center>
+
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
@@ -279,7 +279,7 @@ Refer to the table below for a summary of the attributes within the Bundle Works
 | [`contains`](/resources/bundle/configurations/#contains) | list of strings | none | none | optional |
 | [`runtime`](/resources/bundle/configurations/#runtime) | mapping | none | none | optional |
 
-</center>
+
 
 **Additional Properties section**
 
@@ -294,13 +294,13 @@ bundle: # Bundle-specific section (mandatory)
 
 Refer to the table below for a summary of the attributes within the additional properties section. For detailed information about each attribute, please refer to the respective links provided in the attribute column.
 
-<center>
+
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
 | [`properties`](/resources/bundle/configurations/#properties) | mapping | none | properties in the form of key-value pairs | optional |
 
-</center>
+
 
 Data developers can alter the customize the behaviour of Bundle Resources by configuring the sections and attributes as needed. For a detailed insights into the description and constraints of the attributes within the Bundle-specific section, please consult the 'Attributes of Bundle-specific Section' documentation page.
 
