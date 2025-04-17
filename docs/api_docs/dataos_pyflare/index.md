@@ -12,14 +12,14 @@ tags:
 
 # DataOS PyFlare
 
-The DataOS PyFlare is a Python library that streamlines data operations and facilitate seamless interactions with Apache Spark within DataOS. Its a wrapper around [Flare](/resources/stacks/flare/), to enable Python support with DataOS capabilities. The library abstracts complexities inherent in data flow, allowing users to direct their focus toward data transformations and the formulation of business logic by simplifying the loading, transformation, and storage of data. It facilitates the integration of existing Spark Job code bases with DataOS, requiring minimal modifications.
+The DataOS PyFlare is a Python library that streamlines data operations and facilitate seamless interactions with Apache Spark within DataOS. It's a wrapper around [Flare](/resources/stacks/flare/ "Flare stack is used for building end-to-end data pipelines within DataOS. It uses a YAML-based declarative programming paradigm built as an abstraction over Apache Spark. It offers an all-in-one solution for performing diverse data ingestion, transformation, enrichment, and syndication processes on batch and streaming data."), to enable Python support with DataOS capabilities. The library abstracts complexities inherent in data flow, allowing users to direct their focus toward data transformations and the formulation of business logic by simplifying the loading, transformation, and storage of data. It facilitates the integration of existing Spark Job code bases with DataOS, requiring minimal modifications.
 
 <aside class="callout">
 🗣 Delve into the comprehensive <a href="/api_docs/dataos_pyflare/docs/pyflare.html">Pyflare Library Reference</a> for detailed insights into the diverse modules and classes encompassed by the Flare package. To know more about Flare's key features and initiation procedures, refer to the following sections.
 </aside>
 
 
-## Key Features
+## Key features
 
 ### **Streamlined Data Operations**
 
@@ -39,9 +39,11 @@ Pyflare is finely tuned for the DataOS platform, rendering it an ideal choice fo
 
 ## Installation
 
-The Pyflare module is compatible with DataOS-native [Jupyter Notebooks](/interfaces/notebook/) and can also be utilized in various Python programs across different environments, provided that the necessary JAR files are incorporated.
+By default, the DataOS environment does not include support for the DataOS-native Jupyter Notebook. However, it can be integrated into the environment on a requirement basis. The Pyflare module is compatible with Jupyter Notebooks and can also be utilized in various Python programs across different environments. 
 
-><b>Note:</b> If you are using DataOS-native Jupyter Notebooks or Python environment, you can skip the installation part and directly navigate to the <a href="#getting-started">Getting Started</a> section as the JAR files and modules are included automatically as part of the environment setup.
+<!-- provided that the necessary JAR files are incorporated.
+
+><b>Note:</b> If you are using DataOS-native Jupyter Notebooks or Python environment, you can skip the installation part and directly navigate to the <a href="#getting-started">Getting Started</a> section as the JAR files and modules are included automatically as part of the environment setup. -->
 
 ### **Prerequisites**
 
@@ -105,9 +107,8 @@ If you installed Python from source, with an installer from [python.org](https:
 
 The `dataos-pyflare` library can be installed from the Python Package Index (PyPI) using the following command:
 
-<aside class="best-practice" style="border-left: 4px solid #28a745; background-color: #e6f4ea; color: #1e4620; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;">
-<b>Recommendation:</b> Install the <code>dataos-pyflare==0.1.13</code> version of Pyflare, as it is the designated stable release.
-</aside>
+!!! tip "Recommendation" 
+    Install the `dataos-pyflare==0.1.13` version of Pyflare, as it is the designated stable release.
 
 **For Linux/macOS**
 
@@ -128,11 +129,11 @@ py -m pip install dataos-pyflare==0.1.13
 
 ### **Install from Source Distribution**
 
-pip can install from either [Source Distributions (sdist)](https://files.pythonhosted.org/packages/b8/f7/aab336433a50d0ebd8eee9cce96bfaadc37c456dad47bbd3836d637fd916/dataos-pyflare-0.1.6.tar.gz) or [Wheels](https://files.pythonhosted.org/packages/78/6b/c350ee12542572e8cb3faf311c5c96772d326655d59c2ba771dafcf70343/dataos_pyflare-0.1.6-py3-none-any.whl), but if both are present on PyPI, pip will prefer a compatible wheel. You can override pip`s default behavior by e.g. using its [–no-binary](https://pip.pypa.io/en/latest/cli/pip_install/#install-no-binary) option.
+pip can install from either [Source Distributions (sdist)](https://files.pythonhosted.org/packages/cd/be/6f59db5e4e4e8a32e93db56de7530f2ef8ffb5a83889da844a4a496ce946/dataos_pyflare-0.1.13.tar.gz) or [Wheels](https://files.pythonhosted.org/packages/a0/6a/6035020beadeae3f8ccaea31185deaa364235cb0ce62072e1637ce18d8d6/dataos_pyflare-0.1.13-py3-none-any.whl), but if both are present on PyPI, pip will prefer a compatible wheel. 
 
 If `pip` does not find a wheel to install, it will locally build a wheel and cache it for future installs, instead of rebuilding the source distribution in the future.
 
-
+<!-- 
 ## Getting Started
 
 The following code snippet exemplifies the configuration of a Flare session for generating fictitious data, applying transformations, and saving the results to Icebase depot.
@@ -242,10 +243,28 @@ spark.stop()
 
 - [How to overwrite dynamic Iceberg partitions using Pyflare?](/api_docs/dataos_pyflare/code_samples/overwrite_dynamic_iceberg_partitions/)
 
-- [How to write data in Avro format from Iceberg using Pyflare?](/api_docs/dataos_pyflare/code_samples/write_avro_read_iceberg/)
+- [How to write data in Avro format from Iceberg using Pyflare?](/api_docs/dataos_pyflare/code_samples/write_avro_read_iceberg/) -->
+
+## Supported sources
+
+- [**BigQuery**](/api_docs/dataos_pyflare/code_samples/bigquery_pyflare/)
+
+- [**Lakehouse**](/api_docs/dataos_pyflare/code_samples/lakehouse_pyflare/)
+
+- [**PostgreSQL**](/api_docs/dataos_pyflare/code_samples/postgres_pyflare/)
+
+- [**Snowflake**](/api_docs/dataos_pyflare/code_samples/snowflake_pyflare/)
 
 
-## Pyflare Library Reference
+## Additional links
+
+- [**Data Partitioning**](/api_docs/dataos_pyflare/code_samples/lakehouse_pyflare/#partitioning-in-iceberg)
+
+- [**Troubleshooting the errors**](/api_docs/dataos_pyflare/troubleshoot/)
+
+- [**Merge into transformation**](/api_docs/dataos_pyflare/code_samples/lakehouse_pyflare/#merge-into-iceberg-table)
+
+## Pyflare library reference
 
 For a comprehensive reference guide to Pyflare, including detailed information on its modules and classes, please consult the [Pyflare Library Reference.](/api_docs/dataos_pyflare/docs/pyflare.html)
 

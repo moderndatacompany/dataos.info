@@ -241,7 +241,7 @@ curl -X GET "https://unique-haddock.dataos.app/lakesearch/public:testingls/healt
 
 If the Service is healthy, the response returns { "status": "ok" }, indicating that the system is functioning as expected.
 
-## **Runtime and status**
+## Runtime and status
 
 Users can observe the runtime and status of a Lakesearch Service either by DataOS CLI or by Metis UI.
 
@@ -273,7 +273,7 @@ Users can observe the runtime and status of a Lakesearch Service either by DataO
   </div>
 
 
-## **Get alerts!**
+## Get alerts!
 
 The [Monitor Resource](/resources/monitor/) allows users to define conditions for receiving alerts, such as when a Service runtime enters a pending or failed state, or when a Service is deleted without the creator's prior knowledge. The [Pager Resource](/resources/pager/) enables users to configure alert destinations, such as a Teams channel webhook URL or email, and define the structure of the alert message that will be sent.
 

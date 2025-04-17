@@ -2,7 +2,7 @@
 
 We'll delve into learning how to utilize the **Description** setting to craft a filter tooltip. This setting proves highly beneficial in elucidating the purpose of specific filters.
 
-## **Filter Settings**
+## Filter Settings
 
 The following settings options are available for these filter types:
 
@@ -18,9 +18,9 @@ The following settings options are available for these filter types:
 
 ---
 
-## **Filter Tooltip (Description)**
+## Filter Tooltip (Description)**
 
-**Option is available for these Filter Types: All**
+**Option  available for these Filter Types: All**
 
 The Description option is used to create a tooltip icon that reveals descriptive text on cursor hover.
 

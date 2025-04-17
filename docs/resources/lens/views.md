@@ -205,7 +205,7 @@ views:
           - customer_name
 ```
 
-## **Exploration and activation**
+## Exploration and activation
 
 - **Exploration**: Views can be explored using tools such as [Data Product Hub](/interfaces/data_product_hub/) which provides automated, dynamic dashboards for visualizing and analyzing performance metrics. These tools help detect anomalies and reveal trends over time. You can also query the view in Lens Studio directly.
 - **Activation**: Metrics can be embedded into operational workflows, triggering alerts, populating Excel models for cross-tab analysis, or integrated into email automation tools for marketing or retention strategies.

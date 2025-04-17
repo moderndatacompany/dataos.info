@@ -187,7 +187,7 @@ Now on Workbench, select your Cluster and query the data.
 
 To know more about Workbench, [refer to this](/interfaces/workbench/).
 
-## **Design Data Product solution architecture**
+## Design Data Product solution architectures
 
 Once you've explored the data, the next step is to plan the architectural design. This involves mapping out how different components, data pipelines, and workflows will integrate. The architecture design should be well-documented with diagrams and clear explanations of how each component interacts and the workflows they support. For data transformation tasks, tools like Flare jobs, SLOs (Service Level Objectives), and UI (User Interface) elements can be utilized to ensure efficient processing and visualization of data insights.
 
@@ -206,7 +206,11 @@ Performance targets refer to predefined goals or benchmarks related to the data 
 
 Once the Data Product design is finalized, it undergoes review sessions with key stakeholders and team members to ensure it meets all defined requirements and goals. Feedback from these sessions is carefully documented. If needed, the design is refined based on this feedback to improve its alignment with requirements. All changes made during this process are noted to ensure continuous improvement of the design phase.
 
+<<<<<<< HEAD
 ### **Create the Data Product manifest file**
+=======
+## Create the Data Product manifest file
+>>>>>>> 4b79989467990efa0e8d75d62e02b9cd2913d942
 
 After successfully executing the above steps, you’ll create a manifest file for the Data Product. 
 
