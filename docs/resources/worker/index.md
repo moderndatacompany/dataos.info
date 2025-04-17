@@ -16,10 +16,11 @@ A Worker [Resource](/resources/) in DataOS is a long-running process responsible
     - **Child/ Processes**: Creating child processes for a main process, allowing for modular and scalable task execution. Employing a Worker to handle background jobs in a web application.
     - **Independent Processing**: Performing long-running transformations without requiring external network communication. Example, employing a Worker to continuously monitor independent data streams.
 
-<center>
+<div style="text-align: center;" markdown="1">
 ![Worker overview](/resources/worker/worker.png)
 <figcaption><i>Worker Resource in DataOS</i></figcaption>
-</center>
+</div>
+
 
 ## Structure of Worker manifest
 
