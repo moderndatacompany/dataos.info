@@ -40,7 +40,6 @@ A foundation for trust and governance is provided, ensuring data is reliable, se
 </center>
 
 
-
 ### **Embedded context**
 
 Each Data Product is provided with lineage, quality metrics, usage patterns, governance details, semantic definitions, and documentation.
