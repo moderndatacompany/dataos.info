@@ -61,12 +61,13 @@ Check your Tableau version and follow the steps given below:
 
 ## Generate DataOS API token
 
-1. Sign in to your DataOS instance with your username and password. On the DataOS home page, click on 'Profile'.
+
+1. Sign in to your DataOS instance with your username and password. On the DataOS home page, click on Profile.
 
     <center>
       <div style="text-align: center;">
-        <img src="/resources/cluster/bi_tools/tableau/integration-dataos-homepage.png" alt="DataOS home page" style="width: 40rem; border: 1px solid black;">
-        <figcaption></figcaption>
+        <img src="/resources/cluster/home.png" alt="DataOS Homepage" style="width: 40rem; border: 1px solid black;">
+        <figcaption>DataOS Homepage</figcaption>
       </div>
     </center>
 
@@ -74,25 +75,26 @@ Check your Tableau version and follow the steps given below:
 
     <center>
       <div style="text-align: center;">
-        <img src="/resources/cluster/bi_tools/tableau/integration-dataos-profile.png" alt="Profile" style="width: 40rem; border: 1px solid black;">
+        <img src="/resources/cluster/bi_tools/powerbi/using_odbc_driver/integration-dataos-profile.png" alt="Profile" style="width: 40rem; border: 1px solid black;">
         <figcaption>Profile</figcaption>
       </div>
     </center>
 
-3. Click on the Add API Key link on the Tokens tab:
 
+3. Click on the Add API Key link on the Tokens tab.
+    
     <center>
       <div style="text-align: center;">
-        <img src="/resources/cluster/bi_tools/tableau/integration-dataos-token-apikey.png" alt="API key" style="width: 40rem; border: 1px solid black;">
-        <figcaption>API key</figcaption>
+        <img src="/resources/cluster/bi_tools/powerbi/using_odbc_driver/integration-dataos-token-apikey.png" alt="DataOS Token" style="width: 40rem; border: 1px solid black;">
+        <figcaption>DataOS Token</figcaption>
       </div>
     </center>
 
-4. Type in the name for this token and also set the validity period of your token based on the security requirements as per your business needs. Click Save to create one for you.
+4. Type in a name for this token and also set the validity period of your token based on the security requirements as per your business needs. Click Save to create one for you.
 
     <center>
       <div style="text-align: center;">
-        <img src="/resources/cluster/bi_tools/tableau/integration-add-key.png" alt="Add key" style="width: 40rem; border: 1px solid black;">
+        <img src="/resources/cluster/bi_tools/powerbi/using_odbc_driver/integration-add-key.png" alt="Add key" style="width: 40rem; border: 1px solid black;">
         <figcaption>Add key</figcaption>
       </div>
     </center>
@@ -101,7 +103,7 @@ Check your Tableau version and follow the steps given below:
 
     <center>
       <div style="text-align: center;">
-        <img src="/resources/cluster/bi_tools/tableau/integration-key-created.png" alt="Key created" style="width: 40rem; border: 1px solid black;">
+        <img src="/resources/cluster/bi_tools/powerbi/using_odbc_driver/integration-key-created.png" alt="Key created" style="width: 40rem; border: 1px solid black;">
         <figcaption>Key created</figcaption>
       </div>
     </center>
