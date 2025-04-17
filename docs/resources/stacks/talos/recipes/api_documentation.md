@@ -39,7 +39,7 @@ The `request` parameter specifies input fields required for API requests. In the
 
 The `sample` parameter provides an example representation of the data available through the API.
 
-<aside>🗣 If caching is enabled on the API endpoint, the sampling functionality is disabled.
+<aside class="callout">🗣 If caching is enabled on the API endpoint, the sampling functionality is disabled.
 
 </aside>
 

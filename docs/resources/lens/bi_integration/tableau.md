@@ -4,7 +4,7 @@ The semantic model can be integrated with Tableau using the following Ways
 
 * [Using Data Product Hub(Recommended - GUI based)](/resources/lens/bi_integration/tableau#using-data-product-hub): This method provides a user-friendly, graphical interface for integrating the semantic model with Tableau.  This approach is ideal for those who prefer an intuitive, no-code setup.
 
-* [Using cURL command (Command-Line based)](/resources/lens/bi_integration/tableau#using-curl-command): By executing a simple cURL request, users can fetch and connect the semantic model directly to Tableau. This method is suitable for advanced users looking to script or automate the integration process.
+* [Using cURL command (Command-Line based)](/resources/lens/bi_integration/tableau#using-curl-command): By executing a simple cURL request. This method is suitable for advanced users looking to script or automate the integration process.
 
 ## Using Data Product Hub
 
