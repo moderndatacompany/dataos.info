@@ -9,7 +9,10 @@ search:
 Flare is a declarative [Stack](/resources/stacks/) for large-scale data processing within DataOS. It leverages a YAML-based declarative programming paradigm, built as an abstraction over Apache Spark, to provide a comprehensive solution for data ingestion, transformation, enrichment, profiling, quality assessment and syndication on both batch and streaming data.
 
 
-![flare.jpg](/resources/stacks/flare/flare_overview.png)
+<figure>
+  <img src="/resources/stacks/flare/flare_overview.png" alt="Flare Overview" style="width:31rem;" />
+  <figcaption><i>Flare Overview</i></figcaption>
+</figure>
 
 <center><i>Placement of Flare Stack within DataOS</i>
 </center>
@@ -21,7 +24,7 @@ Flare is a declarative [Stack](/resources/stacks/) for large-scale data processi
 
 ## How to create jobs using Flare Stack
 
-Flare supports both batch and streaming data processing through distinct job types designed to meet varying operational requirements. Detailed instructions for creating Flare Jobs are available in the "[Create Flare Jobs](/resources/stacks/flare/creating_flare_jobs/)" documentation.
+Flare supports both batch and streaming data processing through distinct job types designed to meet varying operational requirements. Detailed instructions for creating Flare Jobs are available in the [Create Flare Jobs](/resources/stacks/flare/creating_flare_jobs/) documentation.
 
 
 ## Types of Flare Jobs

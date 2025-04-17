@@ -16,12 +16,17 @@ DataOS Resources are atomic & logical units with their own life cycle. They can 
 DataOS Resources are categorized into two categories - [Workspace-level Resources](/resources/types/#workspace-level-resources) & [Instance-level Resources](/resources/types/#instance-level-resources).
 
 
-![Workspace-level DataOS Resources](/resources/workspace_dataos_resources.png){: style="width:31rem;" }
-<figcaption><i>Workspace-level DataOS Resources</i></figcaption>
+<figure>
+  <img src="/resources/workspace_dataos_resources.png" alt="Workspace-level DataOS Resources" style="width:31rem;" />
+  <figcaption><i>Workspace-level DataOS Resources</i></figcaption>
+</figure>
 
 
-![Instance-level DataOS Resources](/resources/instance_dataos_resources.png){: style="width:31rem;" }
-<figcaption><i>Instance-level DataOS Resources</i></figcaption>
+<figure>
+  <img src="/resources/instance_dataos_resources.png" alt="Instance-level DataOS Resources" style="width:31rem;" />
+  <figcaption><i>Instance-level DataOS Resources</i></figcaption>
+</figure>
+
 
 ## Types of DataOS Resources
 
@@ -48,8 +53,7 @@ The image represents the configuration file of DataOS Resources.
 
 The configuration files are *strongly-typed*, and the system flags an error when Resource files are applied with incorrect syntax. The table below gives an overview of how these attributes/fields are filled.
 
-
-
+<div style="text-align: center;" markdown="1">
 
 | Attribute | Data Type | Default Value | Requirement |
 | --- | --- | --- | --- |
@@ -62,7 +66,7 @@ The configuration files are *strongly-typed*, and the system flags an error when
 | [`layer`](/resources/manifest_attributes/#layer) | string | user | optional |
 | [`<resource-type>`](/resources/manifest_attributes/#resource-type) | mapping | none | mandatory |
 
-
+</div>
 
 Each Resource-type has a different evolutionary journey and usage. Hence, the values for fields, like `version` and `type`, are dependent on the Resource-type. The [Attributes of Resource Meta section](/resources/manifest_attributes/) elucidates all fields and possible values which can be assigned for each of the key-value pair.
 
