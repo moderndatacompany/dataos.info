@@ -170,6 +170,9 @@ metrics:
 
 ## Metric Targets
 
+<div style="text-align: center;" markdown="1">
+
+
 |Name|Category|
 |---|---|
 |[aws_cloudwatch](/resources/stacks/bento/components/metrics/aws_cloudwatch/)|AWS|
@@ -179,3 +182,5 @@ metrics:
 |[none](/resources/stacks/bento/components/metrics/none/)|None|
 |[prometheus](/resources/stacks/bento/components/metrics/prometheus/)|Prometheus|
 |[statsd](/resources/stacks/bento/components/metrics/statsd/)|StatsD|
+
+</div>

@@ -4,6 +4,8 @@ An access policy in DataOS defines permissions based on the ABAC authorization s
 
 ## Elements of Access Control in DataOS
 
+
+
 | Term           | Description                                                          | Example                                                                               |
 |----------------|----------------------------------------------------------------------|---------------------------------------------------------------------------------------|
 | [Tag-Namespace](/interfaces/bifrost/abac_implementation_in_dataos/#tag-namespace)  | A grouping or container for tags following the same glob pattern.     | `roles:**` or <br> `dataos:system:**`                                                     |

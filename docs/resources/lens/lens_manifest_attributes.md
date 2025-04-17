@@ -17,7 +17,7 @@ layer: user # DataOS Layer (optional)
 # LENS-SPECIFIC SECTION
 lens:
  compute: runnable-default # Compute Resource name (mandatory)
- runAsApiKey: abcdefghijklmnopqrstuvwxyz # DataOS APIkey (optional)
+ runAsApiKey: abcdefghijklmnopqrstuvwxyz # DataOS API key (optional)
  runAsUser: iamgroot # DataOS UserID (optional)
  secrets: # Referred Instance-secret configuration (mandatory for private repository)
 	- name: bitbucket-r # Instance-secret name (mandatory)

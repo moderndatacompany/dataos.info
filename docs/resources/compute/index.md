@@ -118,7 +118,7 @@ compute:
 
 The table below presents an overview of attributes within a the Compute-specfic Section of YAML.
 
-
+<div style="text-align: center;" markdown="1">
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
@@ -133,7 +133,7 @@ The table below presents an overview of attributes within a the Compute-specfic 
 | [`value`](/resources/compute/configurations/#value) | string | none | query/runnable/gpu | mandatory |
 | [`effect`](/resources/compute/configurations/#effect) | string | none | NoSchedule/PreferNoSchedule/<br>NoExecute | mandatory |
 
-
+</div>
 
 For more details about various attributes, refer to the [Attributes of Compute-specific section](/resources/compute/configurations/).
 
