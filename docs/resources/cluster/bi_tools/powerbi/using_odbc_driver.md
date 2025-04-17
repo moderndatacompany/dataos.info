@@ -49,7 +49,7 @@ This article will help you to set up the connection between DataOS and Power BI.
 
     <center>
       <div style="text-align: center;">
-        <img src="/resources/cluster/bi_tools/powerbi/powerbi_custom_connector/integration-presto-setup-finish.png" style="width: 40rem; border: 1px solid black;">
+        <img src="/resources/cluster/bi_tools/powerbi/using_odbc_driver/integration-presto-setup-finish.png" style="width: 40rem; border: 1px solid black;">
         <figcaption>Presto setup done</figcaption>
       </div>
     </center>
@@ -67,7 +67,6 @@ This article will help you to set up the connection between DataOS and Power BI.
     
 
 > 📌 Note: Contact your network administrator in case you encounter an error due to not having required admin privileges.
-> 
 
 ## Generate DataOS API Token
 
@@ -75,7 +74,7 @@ This article will help you to set up the connection between DataOS and Power BI.
 
     <center>
       <div style="text-align: center;">
-        <img src="/resources/cluster/bi_tools/powerbi/using_odbc_driver/integration-dataos-homepage.png" alt="DataOS Homepage" style="width: 40rem; border: 1px solid black;">
+        <img src="/resources/cluster/home.png" alt="DataOS Homepage" style="width: 40rem; border: 1px solid black;">
         <figcaption>DataOS Homepage</figcaption>
       </div>
     </center>
@@ -152,7 +151,7 @@ To use the Simba Presto ODBC Driver in Power BI application, you need to configu
 
     <center>
       <div style="text-align: center;">
-        <img src="/resources/cluster/bi_tools/powerbi/using_odbc_driver/new_image.png" alt="Inputs for DSN setup" style="width: 40rem; border: 1px solid black;">
+        <img src="/resources/cluster/bi_tools/powerbi/using_odbc_driver/new_image.png" alt="Inputs for DSN setup" style="width: 30rem; border: 1px solid black;">
         <figcaption>Inputs for DSN setup</figcaption>
       </div>
     </center>
@@ -162,7 +161,7 @@ To use the Simba Presto ODBC Driver in Power BI application, you need to configu
 
     <center>
       <div style="text-align: center;">
-        <img src="/resources/cluster/bi_tools/powerbi/using_odbc_driver/enable_ssn.png" alt="Enable SSN" style="width: 40rem; border: 1px solid black;">
+        <img src="/resources/cluster/bi_tools/powerbi/using_odbc_driver/enable_ssn.png" alt="Enable SSN" style="width: 30rem; border: 1px solid black;">
         <figcaption>Enable SSN</figcaption>
       </div>
     </center>
@@ -171,7 +170,7 @@ To use the Simba Presto ODBC Driver in Power BI application, you need to configu
 
     <center>
       <div style="text-align: center;">
-        <img src="/resources/cluster/bi_tools/powerbi/using_odbc_driver/integration-prestodsn-testsuccess.png" alt="Test success" style="width: 40rem; border: 1px solid black;">
+        <img src="/resources/cluster/bi_tools/powerbi/using_odbc_driver/integration-prestodsn-testsuccess.png" alt="Test success" style="width: 30rem; border: 1px solid black;">
         <figcaption>Test success</figcaption>
       </div>
     </center>
@@ -179,7 +178,6 @@ To use the Simba Presto ODBC Driver in Power BI application, you need to configu
 7.Click OK to save your DSN.
 
 > 📌 Note: If you encounter any error in setting up the connection, please check DataOS url, validity of API key and try again or contact your administrator.
-> 
 
 ## Access DataOS on Power BI
 
