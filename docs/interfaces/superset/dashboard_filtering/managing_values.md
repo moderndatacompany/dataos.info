@@ -2,7 +2,7 @@
 
 we will introduce filter settings that enable you to manage values within filters.
 
-## **Filter Settings**
+## Filter Settings
 
 The following settings options are available for these filter types:
 
@@ -18,7 +18,7 @@ The following settings options are available for these filter types:
 
 ---
 
-## **Default and Multiple Values**
+## Default and Multiple Values
 
 **Options available for these Filter Types: All (default values) | Value (multiple values)**
 
@@ -52,7 +52,7 @@ and the filter, "Item Type" would feature the two pre-selected default values:
 
 ---
 
-## **Filter Value is Required**
+## Filter Value is Required
 
 **Option available for these Filter Types: All**
 
@@ -60,7 +60,7 @@ When **Filter value is required** is activated, a filter option must be specifie
 
 ---
 
-## **Select First Filter Value by Default**
+## Select First Filter Value by Default
 
 **Option available for this Filter Type: Value**
 
@@ -86,7 +86,7 @@ The first data point in the item_type column is "1800 Taquila”, after saving, 
 </div>
 
 
-## **Dynamically Search All Filter Values**
+## Dynamically Search All Filter Values
 
 **Option available for this Filter Type: Value**
 
@@ -103,7 +103,7 @@ This advanced setting is particularly advantageous when dealing with extensive d
 
 Exercise caution when using this option, as it may exert additional strain on your database.
 
-## **Inverse Selection**
+## Inverse Selection
 
 **Option available for this Filter Type: Value**
 
