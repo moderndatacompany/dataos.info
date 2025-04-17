@@ -285,6 +285,8 @@ SELECT country, MEASURE(total_customers) FROM customer GROUP BY 1;
 
 The special `MEASURE` function works with measures of any type. Measure columns can also be aggregated with the following aggregate functions that correspond to measure types:
 
+<div style="text-align: center;" markdown="1">
+
 | Measure Type            | Aggregate Function in an Aggregated Query   |
 |-------------------------|---------------------------------------------|
 | `avg`                   | MEASURE or AVG                             |
@@ -299,6 +301,7 @@ The special `MEASURE` function works with measures of any type. Measure columns 
 | `sum`                   | MEASURE or SUM                             |
 | `time`                  | MEASURE or MAX or MIN                      |
 
+</div>
 
 <aside class="callout">
 
