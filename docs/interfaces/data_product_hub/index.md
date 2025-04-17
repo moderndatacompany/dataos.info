@@ -164,19 +164,35 @@ The Data Products curated in the DPH can be consumed in data science notebooks s
 </div>
 
 
-### **App development**
+### **Postgres**
 
-Data applications can be developed on top of the Data Product through PostgreSQL or GraphQL API endpoints.
+Data applications can be developed on top of the Data Product through PostgreSQL endpoint.
 
 <div class="grid cards" markdown>
 
--   :material-clock-fast:{ .lg .middle } **App Development**
+-   :material-clock-fast:{ .lg .middle } **Postgres**
 
     ---
 
-    Develop data applications using PostgreSQL and GraphQL API endpoint. Refer to the link for more details:
+    Develop data applications using PostgreSQL endpoint. Refer to the link for more details:
 
-    [:octicons-arrow-right-24: Postgres and GraphQL integration](/interfaces/data_product_hub/activation/app_development/)
+    [:octicons-arrow-right-24: Postgres integration](/interfaces/data_product_hub/activation/postgres/)
+
+</div>
+
+### **Graphql**
+
+Data applications can be developed on top of the Data Product through GraphQL API endpoint.
+
+<div class="grid cards" markdown>
+
+-   :material-clock-fast:{ .lg .middle } **Graphql**
+
+    ---
+
+    Develop data applications using GraphQL API endpoint. Refer to the link for more details:
+
+    [:octicons-arrow-right-24: GraphQL integration](/interfaces/data_product_hub/activation/graphql/)
 
 </div>
 
