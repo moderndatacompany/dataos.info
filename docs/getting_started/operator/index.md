@@ -8,7 +8,7 @@ A DataOS Operator is typically responsible for the following activities to ensur
 Bifrost ensures flexible and secure access management tailored to diverse use cases. Operators can harness Bifrost's graphical interface to create and manage policies for fine-grained access control across applications, users, services, and stacks.
 
 1. Login to DataOS and open the **Bifrost** app.
-   ![Bifrost](/getting_started/operator/home_bifrost.png)
+   ![Bifrost](/getting_started/dataos_home.png)
 
 2. Recognize the different roles or job functions that need access to various resources. These roles include administrators, managers, analysts, or other custom roles based on the organization's needs.
 
@@ -92,13 +92,13 @@ snowflake:
 
 Click [here](/resources/depot/), to access the comprehensive Resource specific documentaion on dataos.info.
 
-## Cluster Management
+<!-- ## Cluster Management
 
 Gain valuable insights through cluster analysis, enabling operators to understand Cluster usage and optimize available clusters effectively. 
 
 1. Login to DataOS and click on **Superset**. DataOS allows you to integrate external tools seamlessly. 
    
-    ![Cluster management](/getting_started/operator/home_superset.png)
+    ![Cluster management](/getting_started/dataos_home.png)
    
 2. Find Usage Analytics dashboard.
 
@@ -106,7 +106,7 @@ Gain valuable insights through cluster analysis, enabling operators to understan
 
 3. View the query load distribution along with failed queries for each cluster up and running within DataOS instance.
 
-    ![Cluster management](/getting_started/operator/qu.png)
+    ![Cluster management](/getting_started/operator/qu.png) -->
 
 ## Monitoring DataOS Resources
 
@@ -114,7 +114,7 @@ Track user, core, and cloud kernel resources, monitoring their utilization and a
 
 1. Login to DataOS and click on the **Operations** app. 
    
-    ![app](/getting_started/operator/home_operations.png)
+    ![app](/getting_started/dataos_home.png)
 
 2. You can monitor Core Kernel, and Cloud Kernel resources along with resources created by DataOS users,
 
@@ -134,7 +134,7 @@ Grafana allows you to observe Kubernetes resource (compute & storage) utilizatio
 
 1. Login to DataOS and click on the **Operations** app. 
    
-    ![app](/getting_started/operator/home_grafana.png)
+    ![app](/getting_started/dataos_home.png)
 
 2. On Grafana, you can find a list of various dashboards designed to monitor resources. 
 

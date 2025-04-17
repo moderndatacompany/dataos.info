@@ -29,18 +29,11 @@ To achieve robust scalability, the Service Resource introduces the concept of re
 
 The Service Resource is configured using a YAML file, consisting of several rooted sections. The structure for a Service YAML is given below:
 
-<center>
+<div style="text-align: center;">
+  <img src="/resources/service/service_yaml.png" alt="Access allowed" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Service Resource YAML configuration structure</ficaption>
+</div>
 
-![Service Resource YAML configuration structure](/resources/service/service_yaml.png)
-
-</center>
-
-
-<center>
-
-<i>Service Resource YAML configuration structure</i>
-
-</center>
 
 ## How to create a Service?
 
@@ -54,6 +47,7 @@ To create a Service Resource, you need to configure the YAML file with the appro
 #### **Configure the Resource Meta Section**
 
 A Service is a [Resource-type](/resources/types/) in DataOS. Below is the YAML configuration for the Resource Meta Section:
+
 ```yaml
 name: ${my-service}
 version: v1 
