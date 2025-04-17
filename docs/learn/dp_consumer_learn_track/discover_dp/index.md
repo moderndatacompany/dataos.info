@@ -30,7 +30,7 @@ Follow the below steps to discover the Data Product of interest.
 
 1. **Access the Data Product Hub:** From the DataOS home page, navigate to the Data Product Hub to begin exploring relevant Data Products.
     
-    ![disc_dataos.png](/learn/dp_consumer_learn_track/discover_dp/disc_dataos.png)
+    ![disc_dataos.png](/getting_started/dataos_home.png)
     
 2. **Categorize Data Product recommendations based on domain:** On the Data Product Hub landing page, Data Products are recommended by default based on use cases. Switch to the “Domain” view to see recommendations based on data domains.
     

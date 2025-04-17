@@ -8,7 +8,7 @@ A data product consumer is typically responsible for the following activities.
 
 1. Log in to DataOS and click on **Data Product Hub.**
 
-    ![dataos_home_dph.png](/getting_started/data_product_consumer/dataos__home.png)
+    ![dataos_home_dph.png](/getting_started/dataos__home.png)
 
 2. You can see the available data products on the screen. 
     ![dph.png](/getting_started/data_product_consumer/dph2.png)
