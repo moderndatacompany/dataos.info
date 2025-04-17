@@ -1,0 +1,41 @@
+name: fastfun-worker
+version: v1beta
+type: worker
+tags:
+  - worker
+  - fastfun
+description: This is a worker for sinking gateway events from pulsar to icebase
+workspace: sandbox
+worker:
+  replicas: 1
+  tags:
+    - workflow  
+    - metadata
+  stack: fastfun+alpha:1.0
+  logLevel: INFO
+  compute: runnable-default
+  resources:
+    requests:
+      cpu: 1000m
+      memory: 100Mi
+    limits:
+      cpu: 400m
+      memory: 
+  stackSpec:
+    input:
+      datasets:
+        - dataos://depot:collection/dataset
+      options:
+        cleanupSubscription: true
+        processingGuarantees: ATLEAST_ONCE
+        subscriptionPosition: LATEST   # OR LATEST
+    output:
+      datasets:
+        - dataos://icebase:sys01/workflowmetadata2?acl=rw
+      options:
+        commitInterval: "30"
+        iceberg:
+          properties:
+            write.format.default: parquet
+            write.metadata.compression-codec: gzip
+        recordsPerCommit: "100000"
