@@ -573,68 +573,6 @@ To create a Cluster Resource within DataOS, you have two options:
 
     You can also access the details of any created Cluster through the DataOS GUI in the Resource tab of the  [Operations App.](/interfaces/operations/)
 
-=== "Using Operations App"
-
-    The Operations App UI provides a convenient way to create a Cluster in DataOS. 
-
-    > This functionality is available in versions above DataOS® centaurus-1.8.72.
-
-    To create a cluster using the Operations App UI, follow these steps:
-
-    **Open the Operations app**
-
-    Open the Operations App by either accessing the DataOS graphical user interface (GUI) or using the command-line interface (CLI) with the following command:
-
-    ```shell
-    dataos-ctl view -a operations
-    ```
-
-    <center>
-      <div style="text-align: center;">
-        <img src="/resources/cluster/creating_cluster_using_operations_app_ui/cluster_0.png" alt="Creating a Cluster Using Operations App UI" style="width:80%; border:1px solid black;">
-        <figcaption align="center"><i>Creating a Cluster Using Operations App UI</i></figcaption>
-      </div>
-    </center>
-
-    <center><i>Operations App UI</i></center>
-
-    <center>
-      <div style="text-align: center;">
-        <img src="/resources/cluster/cluster.png" alt="Diagrammatic representation of a Cluster Resource" style="width:80%; border:1px solid black;">
-        <figcaption align="center"><i>Diagrammatic representation of a Cluster Resource</i></figcaption>
-      </div>
-    </center>
-
-
-    **Navigate to the ‘Create Resource’ section**
-
-    In the Operations App, click the '+ Create Resource' button. This action will open a window with various fields, as shown below:
-
-    <div style="text-align: center;">
-      <img src="/resources/cluster/creating_cluster_using_operations_app_ui/cluster_1.png" alt="Create Resource Section" style="border:1px solid black; width: 80%; height: auto;">
-      <figcaption><i>Create Resource Section</i></figcaption>
-    </div>
-
-
-    **Fill in the Required Fields**
-
-    Provide the necessary details in the required properties fields and click 'Create Cluster'. For more information on these properties, refer to the documentation [here.](/resources/cluster/configurations/)
-
-    <div style="text-align: center;">
-      <img src="/resources/cluster/creating_cluster_using_operations_app_ui/cluster_4.png" alt="Fill in the required fields" style="border:1px solid black; width: 80%; height: auto;">
-      <figcaption><i>Fill in the required fields</i></figcaption>
-    </div>
-
-
-    **View the Created Cluster in the Operations App**
-
-    After clicking 'Create Cluster', a Cluster Resource will be created. You can observe the created cluster in the User Kernel section of the DataOS Operations App.
-
-    <div style="text-align: center;">
-      <img src="/resources/cluster/creating_cluster_using_operations_app_ui/cluster_5.png" alt="Created Cluster in Operations App" style="border:1px solid black; width: 80%; height: auto;">
-      <figcaption><i>Created Cluster in Operations App</i></figcaption>
-    </div>
-
 
 ## Interacting with Clusters
 
@@ -651,10 +589,10 @@ To interact with Clusters using the Workbench, execute the following steps:
 
 - **Accessing the Cluster:** Upon launching the Workbench application, the user is required to select the desired Cluster. In this instance, the cluster identified as `themisog` is chosen.
 
-<div style="text-align: center;">
-  <img src="/resources/cluster/cluster_selection.png" alt="Selecting a Cluster from Workbench" style="border:1px solid black; width: 80%; height: auto;">
-  <figcaption><i>Selecting a Cluster from Workbench</i></figcaption>
-</div>
+    <div style="text-align: center;">
+      <img src="/resources/cluster/cluster_selection.png" alt="Selecting a Cluster from Workbench" style="border:1px solid black; width: 80%; height: auto;">
+      <figcaption><i>Selecting a Cluster from Workbench</i></figcaption>
+    </div>
 
 
 - **Execution of Queries**:
@@ -662,10 +600,10 @@ To interact with Clusters using the Workbench, execute the following steps:
     - **Query Execution**: After formulating the query, the user executes it by clicking the 'Run' button.
     - **Result Retrieval**: The outcomes of the executed query are displayed in the pane situated below the query input area.
 
-<div style="text-align: center;">
-  <img src="/resources/cluster/executed_query.png" alt="Query result set" style="border:1px solid black; width: 80%; height: auto;">
-  <figcaption><i>Query result set</i></figcaption>
-</div>
+    <div style="text-align: center;">
+      <img src="/resources/cluster/executed_query.png" alt="Query result set" style="border:1px solid black; width: 80%; height: auto;">
+      <figcaption><i>Query result set</i></figcaption>
+    </div>
 
 
 For comprehensive details on the features and capabilities of Workbench, refer to the dedicated [Workbench](/interfaces/workbench/) documentation.

@@ -6,7 +6,7 @@ On selecting **Topics,** the following information will appear on the screen:
 
 <center>
   <div style="text-align: center;">
-    <img src="/metis_assets_topic/topics_overview.png" alt="List of Topics" style="border:1px solid black;">
+    <img src="/interfaces/metis/metis_ui_assets/metis_assets_topic/topics_overview.png" alt="List of Topics" style="border:1px solid black;">
     <figcaption align="center">List of Topics</figcaption>
   </div>
 </center>
@@ -56,7 +56,7 @@ In the card view, click anywhere except the **topic** name to get the overview.
 
 <center>
   <div style="text-align: center;">
-    <img src="/metis_assets_topic/topics.png" alt="Quick information for a topic" style="border:1px solid black;">
+    <img src="/interfaces/metis/metis_ui_assets/metis_assets_topic/topics.png" alt="Quick information for a topic" style="border:1px solid black;">
     <figcaption align="center">Quick information for a topic</figcaption>
   </div>
 </center>
@@ -80,7 +80,7 @@ In the Result or Overview pane, click on the name of the topic to open the Asset
 
 <center>
   <div style="text-align: center;">
-    <img src="/metis_assets_topic/Screenshot_2023-12-01_at_5.06.15_PM.png" alt="Comprehensive details about a topic" style="border:1px solid black;">
+    <img src="/interfaces/metis/metis_ui_assets/metis_assets_topic/fastbase.png" alt="Comprehensive details about a topic" style="border:1px solid black;">
     <figcaption align="center">Comprehensive details about a topic</figcaption>
   </div>
 </center>
@@ -119,7 +119,7 @@ The schema defines the **structure of message data**. It defines allowed data t
 
 This section compiles all activities, including tasks and conversations about the underlying topic, providing users with a comprehensive overview.
 
-### **Config**
+<!-- ### **Config** -->
 
 ### **Lineage**
 

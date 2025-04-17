@@ -145,7 +145,7 @@ To create PEP:
 
 1. Log in to DataOS and navigate to Bifrost application.
     
-    ![dataos_bifrost.png](/quick_guides/secure_deployed_app/dataos_bifrost.png)
+    ![dataos_bifrost.png](/getting_started/dataos_home.png)
     
 2. Click on Heimdall primitives > Providers.
     

@@ -47,9 +47,11 @@ Each instance of a Resource is defined by a collection of attributes declared in
 
 The image represents the configuration file of DataOS Resources.
 
+<div style="text-align: center;">
+  <img src="/resources/sample_yaml.png" alt="Attributes used to define an instance of a Resource" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Attributes used to define an instance of a Resource</ficaption>
+</div>
 
-![Attributes used to define an instance of a Resource](/resources/sample_yaml.png){: style="width:46rem;" }
-<figcaption><i>Attributes used to define an instance of a Resource</i></figcaption>
 
 The configuration files are *strongly-typed*, and the system flags an error when Resource files are applied with incorrect syntax. The table below gives an overview of how these attributes/fields are filled.
 
