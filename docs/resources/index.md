@@ -15,13 +15,17 @@ DataOS Resources are atomic & logical units with their own life cycle. They can 
 
 DataOS Resources are categorized into two categories - [Workspace-level Resources](/resources/types/#workspace-level-resources) & [Instance-level Resources](/resources/types/#instance-level-resources).
 
+<div style="text-align: center;">
+  <img src="/resources/workspace_dataos_resources.png" alt="Workspace-level DataOS Resources" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Workspace-level DataOS Resources</ficaption>
+</div>
 
-![Workspace-level DataOS Resources](/resources/workspace_dataos_resources.png){: style="width:31rem;" }
-<figcaption><i>Workspace-level DataOS Resources</i></figcaption>
 
+<div style="text-align: center;">
+  <img src="/resources/instance_dataos_resources.png" alt="Workspace-level DataOS Resources" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Instance-level DataOS Resources</ficaption>
+</div>
 
-![Instance-level DataOS Resources](/resources/instance_dataos_resources.png){: style="width:31rem;" }
-<figcaption><i>Instance-level DataOS Resources</i></figcaption>
 
 ## Types of DataOS Resources
 
@@ -42,9 +46,11 @@ Each instance of a Resource is defined by a collection of attributes declared in
 
 The image represents the configuration file of DataOS Resources.
 
+<div style="text-align: center;">
+  <img src="/resources/sample_yaml.png" alt="Attributes used to define an instance of a Resource" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Attributes used to define an instance of a Resource</ficaption>
+</div>
 
-![Attributes used to define an instance of a Resource](/resources/sample_yaml.png){: style="width:46rem;" }
-<figcaption><i>Attributes used to define an instance of a Resource</i></figcaption>
 
 The configuration files are *strongly-typed*, and the system flags an error when Resource files are applied with incorrect syntax. The table below gives an overview of how these attributes/fields are filled.
 
