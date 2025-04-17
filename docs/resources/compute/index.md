@@ -9,14 +9,14 @@ search:
 Compute is a [DataOS Resource](/resources/), designed to streamline the allocation of processing power for data-centric tasks such as data procesing, querying and machine learning workloads. It acts as an abstraction on top of **node pools**, which represent a group of virtual machines (VMs) characterized by congruent configurations. These configurations encompass CPU specifications, RAM capacity, network protocol, and storage drive types. These homogenous groupings are seamlessly accessible through a unique, identifiable name within DataOS and available to DataOS as a Compute Resource. This abstraction eliminates the necessity for developers to individually specify and provision VMs, thus optimizing resource allocation and streamlining the computational workflow.
 
 
-<center>
+
 
 ![Illustration depicting Compute Resource in DataOS](/resources/compute/compute.png)
 
-</center>
 
-<center>
-<i>Illustration depicting hierarchy of Compute Resource</i></center>
+
+
+
 
 During the initial setup of DataOS, Compute is one of the primary Resource created as it provides computational power for the functioning of various other components and Resources within the system. A Compute Resource encompasses node pools procured from diverse cloud providers, including Amazon EC2, Azure VM, and Google Cloud Engine. Distinct instances of Compute Resources are tailored to specific purposes and are subsequently referenced by other Resources to fulfill their computational requirements.
 
@@ -33,7 +33,7 @@ The Compute Resource is defined using a YAML configuration file. The following e
 
 ![Compute Resource YAML configuration syntax](/resources/compute/compute_yaml.png)
 
-<center><i>Structure of a Compute Resource manifest</i></center>
+
 
 ## Types of Compute
 
@@ -57,11 +57,11 @@ The diagram presented below illustrates the underlying mechanism for provisionin
 
 ![Provisioning diverse workloads on top of Compute Resource](/resources/compute/compute_underlying_mechanism.png)
 
-<center>
+
 
 <i>Provisioning diverse workloads on top of Compute Resource</i>
 
-</center>
+
 
 ## How to create a Compute Resource?
 
@@ -92,7 +92,7 @@ tags:
 description: ${{This is a sample workflow YAML configuration}}
 owner: ${{iamgroot}}
 ```
-<center><i>Resource section configuration</i></center>
+
 
 For detailed customization options and additional attributes within the Resource Section, refer to the [Attributes of Resource section.](/resources/manifest_attributes/).
 
@@ -113,12 +113,12 @@ compute:
         value: ${{"runnable"}}
         effect: ${{"NoSchedule"}}
 ```
-<center><i>Compute-specific section configuration</i></center>
+
 
 
 The table below presents an overview of attributes within a the Compute-specfic Section of YAML.
 
-<center>
+
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
@@ -133,7 +133,7 @@ The table below presents an overview of attributes within a the Compute-specfic 
 | [`value`](/resources/compute/configurations/#value) | string | none | query/runnable/gpu | mandatory |
 | [`effect`](/resources/compute/configurations/#effect) | string | none | NoSchedule/PreferNoSchedule/<br>NoExecute | mandatory |
 
-</center>
+
 
 For more details about various attributes, refer to the [Attributes of Compute-specific section](/resources/compute/configurations/).
 
