@@ -1,4 +1,4 @@
-# Snowflake Operations with DataOS PyFlare
+# Snowflake Transformation with DataOS PyFlare
 
 This example outlines the process of reading data from a Snowflake table and writing it to a DataOS Iceberg table using PyFlare. The workflow includes Spark session initialization, data loading from Snowflake, and writing to a DataOS-compatible storage format.
 
@@ -58,13 +58,19 @@ save(name="dataos://lakehouse:sandbox3/test_pyflare2", dataframe=df_sf, format="
 spark.stop()
 ```
 
-<aside class="best-practice" style="border-left: 4px solid #28a745; background-color: #e6f4ea; color: #1e4620; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;">
-<b>Note:</b> Replace all placeholder values such as the authentication token, `DATAOS_FQDN`, and depot names according to the target environment.
-</aside>
+!!! success Note
 
-**Important Placeholder Changes Required:**
+    Replace all placeholder values such as the authentication token, `DATAOS_FQDN`, and depot names according to the target environment.
 
-- **`DATAOS_FQDN`**: Replace `"example-dataos.dataos.app"` with the actual FQDN of the target DataOS instance.
-- **`token`**: Replace with a valid DataOS API key.
-- **`depot_name` in `.with_depot(...)`**: Confirm that the depots (e.g., `"sfdepot01"`, `"lakehouse"`) exist and have proper permissions.
-- **`load(...)` and `save(...)` URIs**: Replace the schema, table, and output path values to match the required source and target datasets.
+    **Important Placeholder Changes Required:**
+
+    - **`DATAOS_FQDN`**: Replace `example-dataos.dataos.app` with the actual FQDN of the target DataOS instance.
+    - **`token`**: Replace with a valid DataOS API key.
+    - **`depot_name` in `.with_depot(...)`**: Confirm that the depots (e.g., `sfdepot01`, `lakehouse`) exist and have proper permissions.
+    - **`load(...)` and `save(...)` URIs**: Replace the schema, table, and output path values to match the required source and target datasets.
+
+# Additional Links
+
+- [How can it be ensured that the required depot is included in the Spark session and the dataset exists when using DataOS PyFlare SDK?](/api_docs/dataos_pyflare/troubleshoot/#depot-not-loaded-or-invalid-dataset)
+- [How can the "FQDN Resolution Failure" error be resolved in DataOS PyFlare SDK?](/api_docs/dataos_pyflare/troubleshoot/#fqdn-resolution-failure)
+- [ How to read and write partitioned data using Pyflare?](/api_docs/dataos_pyflare/code_samples/lakehouse_pyflare/#partitioning-in-iceberg)

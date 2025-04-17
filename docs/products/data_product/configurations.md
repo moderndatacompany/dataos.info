@@ -247,7 +247,7 @@ refs:
 </center>
 
 
-## **Data Product-specific section**
+## Data Product-specific section
 
 Data Product-specific section is different for different versions. This section comprises attributes specific to the Data Product for each version. The attributes within the section are listed below:
 

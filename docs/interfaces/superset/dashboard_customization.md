@@ -62,7 +62,7 @@ Divider is useful to isolate the parts of your dashboard.
   <img src="/interfaces/superset/dashboard_customization/7.png" alt="Untitled image" style="border:1px solid black; width: 80%; height: auto;">
 </div>
 
-## **Adding Tables to Dashboards**
+## Adding Tables to Dashboards
 
 Adding tables to your dashboards, using HTML with the **Text** element, is also possible. For example:
 

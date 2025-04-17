@@ -15,13 +15,13 @@ DataOS Resources are atomic & logical units with their own life cycle. They can 
 
 DataOS Resources are categorized into two categories - [Workspace-level Resources](/resources/types/#workspace-level-resources) & [Instance-level Resources](/resources/types/#instance-level-resources).
 
-<center>
-![Workspace-level DataOS Resources](/resources/workspace_dataos_resources.png){: style="width:31rem;" }
-<figcaption><i>Workspace-level DataOS Resources</i></figcaption></center>
 
-<center>
+![Workspace-level DataOS Resources](/resources/workspace_dataos_resources.png){: style="width:31rem;" }
+<figcaption><i>Workspace-level DataOS Resources</i></figcaption>
+
+
 ![Instance-level DataOS Resources](/resources/instance_dataos_resources.png){: style="width:31rem;" }
-<figcaption><i>Instance-level DataOS Resources</i></figcaption></center>
+<figcaption><i>Instance-level DataOS Resources</i></figcaption>
 
 ## Types of DataOS Resources
 
@@ -42,14 +42,14 @@ Each instance of a Resource is defined by a collection of attributes declared in
 
 The image represents the configuration file of DataOS Resources.
 
-<center>
+
 ![Attributes used to define an instance of a Resource](/resources/sample_yaml.png){: style="width:46rem;" }
-<figcaption><i>Attributes used to define an instance of a Resource</i></figcaption></center>
+<figcaption><i>Attributes used to define an instance of a Resource</i></figcaption>
 
 The configuration files are *strongly-typed*, and the system flags an error when Resource files are applied with incorrect syntax. The table below gives an overview of how these attributes/fields are filled.
 
 
-<center>
+
 
 | Attribute | Data Type | Default Value | Requirement |
 | --- | --- | --- | --- |
@@ -62,7 +62,7 @@ The configuration files are *strongly-typed*, and the system flags an error when
 | [`layer`](/resources/manifest_attributes/#layer) | string | user | optional |
 | [`<resource-type>`](/resources/manifest_attributes/#resource-type) | mapping | none | mandatory |
 
-</center>
+
 
 Each Resource-type has a different evolutionary journey and usage. Hence, the values for fields, like `version` and `type`, are dependent on the Resource-type. The [Attributes of Resource Meta section](/resources/manifest_attributes/) elucidates all fields and possible values which can be assigned for each of the key-value pair.
 
@@ -148,7 +148,7 @@ dataos-ctl get -t {{type of Resource}} -w {{workspace name}} -n {{name of the Re
 dataos-ctl get -i "{{name:version:type:workspace}}"
 ```
 
-If no flag is mentioned at the time of applying the Resource, it is deployed in the *public* workspace, which is the common tenant for your entire organisation to work in.
+If no flag is mentioned at the time of applying the Resource, it is deployed in the *public* workspace, which is the common tenant for your entire organization to work in.
 
 <aside class="best-practice">
 📖 Best Practice:<br>

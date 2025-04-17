@@ -1,4 +1,4 @@
-# BigQuery Operations with DataOS PyFlare
+# BigQuery Transformation with DataOS PyFlare
 
 This example demonstrates how to read data from a BigQuery table and write it to a DataOS Iceberg table using PyFlare. The steps include session setup, data loading, and data persistence. The entire process is conducted within a PySpark environment configured for use with the DataOS platform.
 
@@ -55,14 +55,20 @@ save(name="dataos://lakehouse:sandbox3/test_pyflare2", dataframe=df_bq, format="
 # Stop the Spark session to release resources
 spark.stop()
 ```
-<aside class="best-practice" style="border-left: 4px solid #28a745; background-color: #e6f4ea; color: #1e4620; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;">
-<b>Note:</b> Replace all placeholder values such as the authentication token, `DATAOS_FQDN`, and depot names according to the target environment.
-</aside>
+!!! success "Note"
+    
+    Replace all placeholder values such as the authentication token, `DATAOS_FQDN`, and depot names according to the target environment.
 
-**Important Placeholder Changes Required:**
+    **Important Placeholder Changes Required:**
 
-- **`DATAOS_FQDN`**: Replace `"example-dataos.dataos.app"` with the actual FQDN of the target DataOS instance.
-- **`token`**: Replace with a valid DataOS API key.
-- **`depot_name` in `.with_depot(...)`**: Confirm that the depots (e.g., `"bigquerydepot"`, `"lakehouse"`) exist and have proper permissions.
-- **`load(...)` and `save(...)` URIs**: Replace the table and path values to match the desired source and target datasets.
+    - **`DATAOS_FQDN`**: Replace `example-dataos.dataos.app` with the actual FQDN of the target DataOS instance.
+    - **`token`**: Replace with a valid DataOS API key.
+    - **`depot_name` in `.with_depot(...)`**: Confirm that the depots (e.g., `bigquerydepot`, `lakehouse`) exist and have proper permissions.
+    - **`load(...)` and `save(...)` URIs**: Replace the table and path values to match the desired source and target datasets.
 
+
+# Additional links 
+
+- [How to perform Merge into transformation in pyflare ?](/api_docs/dataos_pyflare/code_samples/lakehouse_pyflare/#merge-into-iceberg-table)
+- [How can the "FQDN Resolution Failure" error be resolved in DataOS PyFlare SDK?](/api_docs/dataos_pyflare/troubleshoot/#fqdn-resolution-failure)
+- [What causes the "Unauthorized Access to Depot Metadata" error in DataOS PyFlare SDK and how can it be fixed?](/api_docs/dataos_pyflare/troubleshoot/#unauthorized-access-to-depot-metadata)

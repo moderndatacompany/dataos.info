@@ -5,11 +5,11 @@ search:
 
 # Tutorial: Step-by-Step Lens Creation
 
-## **Scenario: Sports Retail Data Analysis**
+## Scenario: Sports Retail Data Analysis
 
 The Sports Retail Store, specializing in sports apparel, equipment, and gear, is interested in gaining deeper insights into its sales and customer data. They aim to optimize their product offerings and marketing strategies by answering the following data questions during the analysis:
 
-## **Analytical Objectives and Questions**
+## Analytical Objectives and Questions
 
 - To understand customers, find the average annual income of the customers and customers who are homeowners.
 - Sales analysis: total_revenue,by country, average  order value, average purchase frequency, revenues for the given month, profit from each product
