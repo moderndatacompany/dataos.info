@@ -318,6 +318,8 @@ Following the Resource meta section, the Lakehouse-specific section contains con
           # query engine section attributes
     ```
 
+<div style="text-align: center;" markdown="1">
+
 | Attribute&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
 | [`lakehouse`](/resources/lakehouse/configurations/#lakehouse) | mapping | none | none | mandatory |
@@ -330,6 +332,7 @@ Following the Resource meta section, the Lakehouse-specific section contains con
 | [`metaStore`](/resources/lakehouse/configurations/#metastore) | mapping | none | valid metastore configuration | optional |
 | [`queryEngine`](/resources/lakehouse/configurations/#queryengine) | mapping | none | valid query engine configuration | optional |
 
+</div>
 
 This section is divided into three separate sections, each critical to the Lakehouse’s functionality: 
 

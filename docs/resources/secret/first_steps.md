@@ -62,6 +62,8 @@ The Secret-specific Section of the manifest configuration file includes key-valu
 #### **Secret manifest Fields**
 The table below provides a summary of the various attributes of the Secret-specific section:
 
+<div style="text-align: center;" markdown="1">
+
 | Field | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
 | [`secret`](/resources/secret/configurations/#secret) | object | none | none | mandatory |
@@ -70,6 +72,7 @@ The table below provides a summary of the various attributes of the Secret-speci
 | [`data`](/resources/secret/configurations/#data) | mapping | none | none | mandatory |
 | [`files`](/resources/secret/configurations/#file) | string | none | file-path | optional |
 
+</div>
 
 For more information about the various attributes in Secret specific section, refer to the Attributes of [Secret specific section](/resources/secret/configurations/).
 

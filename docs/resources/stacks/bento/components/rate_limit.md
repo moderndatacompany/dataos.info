@@ -36,7 +36,11 @@ input:
 
 You can find out more about resources in this [document](/resources/stacks/bento/configurations/resources/).
 
+<div style="text-align: center;" markdown="1">
+
 |Name|Tags|
 |---|---|
 |[local](/resources/stacks/bento/components/rate_limit/local/)|Local|
 |[redis](/resources/stacks/bento/components/rate_limit/redis/)|Redis |
+
+</div>

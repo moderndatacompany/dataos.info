@@ -11,6 +11,8 @@ The data model in Lens transforms raw data into meaningful business definitions,
 
 `sales` Table
 
+<div style="text-align: center;" markdown="1">
+
 | order_id | product | amount | city          | customer_name |
 | --------- | ------- | ------ | ------------- | -------------- |
 | 1         | Shoes   | 150    | New York      | John Doe       |
@@ -18,6 +20,8 @@ The data model in Lens transforms raw data into meaningful business definitions,
 | 3         | Hat     | 50     | Los Angeles   | Michael Brown  |
 | 4         | Shoes   | 120    | New York      | Emily Davis    |
 | 5         | Jacket  | 220    | Chicago       | Sarah Wilson   |
+
+</div>
 
 To analyze sales data effectively, it is essential to address key business questions, such as:
 
@@ -41,6 +45,8 @@ We'll use a sample database with two tables, `owner` and `contacts` to illustrat
 
 `owner` Table
 
+<div style="text-align: center;" markdown="1">
+
 | owner_id | owner_name    | owner_email        | city          |
 | --------- | -------------- | ------------------- | ------------- |
 | 1         | Alice Johnson  | alice@example.com   | New York      |
@@ -49,7 +55,11 @@ We'll use a sample database with two tables, `owner` and `contacts` to illustrat
 | 4         | David Williams | david@example.com   | Chicago       |
 | 5         | Emma Davis     | emma@example.com    | Miami         |
 
+</div>
+
 `contacts` Table
+
+<div style="text-align: center;" markdown="1">
 
 | contact_id | owner_id | contact_name | contact_email         | phone_number |
 | ----------- | --------- | ------------- | ---------------------- | ------------- |
@@ -58,6 +68,8 @@ We'll use a sample database with two tables, `owner` and `contacts` to illustrat
 | 3           | 3         | Michael Brown | michael.b@example.com  | 555-123-4567  |
 | 4           | 4         | Sarah Johnson | sarah.j@example.com    | 444-222-3333  |
 | 5           | 5         | Robert Wilson | robert.w@example.com   | 777-888-9999  |
+
+</div>
 
 **Example**
 
@@ -140,7 +152,7 @@ There are three types of join relationships (one_to_one, one_to_many, and many_t
 
 **Example:**
 
-In this example, we define the base table and outline its relationship with another table. Specifically, multiple transactions can reference the same product, establishing a `many-to-one` relationship between the transactions table and the products table. In this context, the placeholder {TABLE} refers to the base table, which is the transactions table.&#x20;
+In this example, we define the base table and outline its relationship with another table. Specifically, multiple transactions can reference the same product, establishing a `many-to-one` relationship between the transactions table and the products table. In this context, the placeholder {TABLE} refers to the base table, which is the transactions table.
 
 ```yaml title="owner.yml"
 tables:
