@@ -46,14 +46,14 @@ Once your conceptual model is finalized, the next step is to implement it within
 [Creating semantic model](/learn/dp_developer_learn_track/create_semantic_model/create_lens_folder/) 
 
 
-## Step 5: Testing the model
+<!-- ## Step 5: Testing the model
 
 After implementing the model, you must test it to ensure the data flows correctly and the relationships work as expected. Testing ensures that the model provides accurate and reliable metrics for decision-making. This is an optional step. However, we recommend testing the Lens in the local or development environment before deploying it on DataOS. 
 
-[Test Lens locally](/learn/dp_developer_learn_track/create_semantic_model/testing_lens/) 
+[Test Lens locally](/learn/dp_developer_learn_track/create_semantic_model/testing_lens/)  -->
 
 
-## Step 6: Deploying the model
+## Step 5: Deploying the model
 
 Once tested, you can deploy the model to production. This phase involves optimizing the model for performance, ensuring it integrates with existing business systems, and making it accessible to users.
 
