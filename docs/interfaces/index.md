@@ -56,7 +56,7 @@ Following native apps are available on DataOS Graphical User Interface:
 
     [:octicons-arrow-right-24: See more](/interfaces/audiences/) -->
 
--   :material-security-network:{ .lg .middle } **Bifrost**
+-   :material-security-network:{ .lg .middle } **Bifrost Governance**
 
     ---
 
@@ -73,13 +73,12 @@ Following native apps are available on DataOS Graphical User Interface:
 
     [:octicons-arrow-right-24:  Learn more](/interfaces/data_product_hub/)
 
--   :interfaces-lens:{ .lg .middle } **Lens**
+-   :interfaces-lens:{ .lg .middle } **Grafana**
 
     ---
 
-    Model data, define measures, and create KPIs for data-informed decisions.
-
-    [:octicons-arrow-right-24:  Learn more](/interfaces/lens/)
+    Monitor your system with Grafana dashboards for issues like traffic spikes, high CPU usage, and alerts to ensure optimal performance.
+    [:octicons-arrow-right-24:  Learn more](/learn/operator_learn_track/alerts_grafana/)
 
 -   :interfaces-metis:{ .lg .middle } **Metis**
 
@@ -119,6 +118,9 @@ Following native apps are available on DataOS Graphical User Interface:
 
 Superset is a business intelligence solution seamlessly integrated into DataOS. It simplifies the creation of customized reports and dashboards, making it easy to visualize complex data. With a wide range of visualization options, Superset enables clear interpretation, aiding informed decision-making. to learn more, click [here](/interfaces/superset/). -->
 
+<aside class="callout">
+🗣️ The DataOS Home page may vary for different customers. In some cases, it includes customer-specific or custom-built applications that are specially developed and integrated into the Home interface. This approach ensures that every customer’s DataOS Home is aligned with their unique business requirements. 
+</aside>
 ### **Manage Profile**
 
 DataOS Home app also enables you to manage your profile.
