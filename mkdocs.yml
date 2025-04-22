@@ -840,8 +840,8 @@ nav:
           - quick_guides/define_data_model/index.md
         - Creating a data model:
           - quick_guides/create_data_model/index.md
-        - Testing a data model:
-          - quick_guides/test_data_model/index.md
+        # - Testing a data model:
+        #   - quick_guides/test_data_model/index.md
         - Deploying a data model:
           - quick_guides/deploy_data_model/index.md
         - Exploring Lens on Catalog:
