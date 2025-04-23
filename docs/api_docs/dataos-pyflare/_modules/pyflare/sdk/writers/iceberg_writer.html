@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pyflare.sdk.writers.iceberg_writer &mdash; dataos-pyflare 0.1.7 documentation</title>
+  <title>pyflare.sdk.writers.iceberg_writer &mdash; Dataos Pyflare 0.1.13 documentation</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -30,7 +30,7 @@
           
           
           <a href="../../../../index.html" class="icon icon-home">
-            dataos-pyflare
+            Dataos Pyflare
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
@@ -42,7 +42,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../docs/modules.html">pyflare</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pyflare.sdk.html">pyflare.sdk package</a></li>
 </ul>
 
         </div>
@@ -51,7 +51,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../../index.html">dataos-pyflare</a>
+          <a href="../../../../index.html">Dataos Pyflare</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -70,11 +70,19 @@
            <div itemprop="articleBody">
              
   <h1>Source code for pyflare.sdk.writers.iceberg_writer</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">ast</span>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
+
+<span class="kn">import</span> <span class="nn">traceback</span>
+
+<span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="kn">import</span> <span class="nn">ast</span>
 <span class="kn">import</span> <span class="nn">base64</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">import</span> <span class="nn">pyspark.sql.functions</span> <span class="k">as</span> <span class="nn">F</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">DataFrame</span>
+
 <span class="kn">from</span> <span class="nn">pyflare.sdk.config</span> <span class="kn">import</span> <span class="n">constants</span>
 <span class="kn">from</span> <span class="nn">pyflare.sdk.config.constants</span> <span class="kn">import</span> <span class="n">S3_ICEBERG_FILE_IO</span>
 <span class="kn">from</span> <span class="nn">pyflare.sdk.config.write_config</span> <span class="kn">import</span> <span class="n">WriteConfig</span>
@@ -85,74 +93,130 @@
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;.*version-hint.text.*&quot;</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="IcebergOutputWriter"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.writers.html#pyflare.sdk.writers.iceberg_writer.IcebergOutputWriter">[docs]</a><span class="k">class</span> <span class="nc">IcebergOutputWriter</span><span class="p">(</span><span class="n">FileOutputWriter</span><span class="p">):</span>
-    <span class="n">ICEBERG_CONF</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;[</span>
-<span class="s1">            (&quot;spark.sql.catalog.</span><span class="si">{catalog_name}</span><span class="s1">&quot;, &quot;org.apache.iceberg.spark.SparkCatalog&quot;),</span>
-<span class="s1">            (&quot;spark.sql.catalog.</span><span class="si">{catalog_name}</span><span class="s1">.type&quot;, &quot;hadoop&quot;),</span>
-<span class="s1">            (&quot;spark.sql.catalog.</span><span class="si">{catalog_name}</span><span class="s1">.warehouse&quot;, &quot;</span><span class="si">{depot_base_path}</span><span class="s1">&quot;)</span>
-<span class="s1">        ]&#39;&#39;&#39;</span>
+<span class="k">def</span> <span class="nf">_generate_iceberg_catalog_conf</span><span class="p">(</span><span class="n">catalog_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">depot_base_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generates a list of key-value pairs for the Iceberg configuration.</span>
+
+<span class="sd">    :param catalog_name: The catalog name for the configuration.</span>
+<span class="sd">    :param depot_base_path: The base path for the warehouse.</span>
+<span class="sd">    :return: List of tuples with configuration keys and values.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;spark.sql.catalog.</span><span class="si">{</span><span class="n">catalog_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;org.apache.iceberg.spark.SparkCatalog&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;spark.sql.catalog.</span><span class="si">{</span><span class="n">catalog_name</span><span class="si">}</span><span class="s2">.type&quot;</span><span class="p">,</span> <span class="s2">&quot;hadoop&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;spark.sql.catalog.</span><span class="si">{</span><span class="n">catalog_name</span><span class="si">}</span><span class="s2">.warehouse&quot;</span><span class="p">,</span> <span class="n">depot_base_path</span><span class="p">)</span>
+    <span class="p">]</span>
+
+
+<div class="viewcode-block" id="IcebergOutputWriter"><a class="viewcode-back" href="../../../../pyflare.sdk.writers.html#pyflare.sdk.writers.iceberg_writer.IcebergOutputWriter">[docs]</a><span class="k">class</span> <span class="nc">IcebergOutputWriter</span><span class="p">(</span><span class="n">FileOutputWriter</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        A class for writing data to the iceberg format using PySpark.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">write_config</span><span class="p">:</span> <span class="n">WriteConfig</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">write_config</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">log</span> <span class="o">=</span> <span class="n">pyflare_logger</span><span class="o">.</span><span class="n">get_pyflare_logger</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="vm">__name__</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">depot_suffix</span> <span class="o">=</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1e6</span><span class="p">))</span>
 
-<div class="viewcode-block" id="IcebergOutputWriter.write"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.writers.html#pyflare.sdk.writers.iceberg_writer.IcebergOutputWriter.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
-        <span class="k">if</span> <span class="s2">&quot;merge&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">extra_options</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-            <span class="n">depot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">depot_details</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;depot&quot;</span><span class="p">)</span>
-            <span class="n">collection</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">depot_details</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;collection&quot;</span><span class="p">)</span>
-            <span class="n">dataset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">depot_details</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dataset&quot;</span><span class="p">)</span>
-            <span class="n">view_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">depot</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">collection</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">dataset</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1e9</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+<div class="viewcode-block" id="IcebergOutputWriter.write"><a class="viewcode-back" href="../../../../pyflare.sdk.writers.html#pyflare.sdk.writers.iceberg_writer.IcebergOutputWriter.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="n">DataFrame</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Writes the given DataFrame to the iceberg format. If the &quot;merge&quot; option is specified in the</span>
+<span class="sd">        write_config&#39;s extra_options, the DataFrame is merged into an existing table using a temporary view.</span>
+<span class="sd">        Otherwise, the DataFrame is written to the iceberg format with the given options.</span>
 
-            <span class="n">df</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="n">view_name</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__merge_into_query</span><span class="p">(</span><span class="n">view_name</span><span class="p">,</span> <span class="n">depot</span><span class="p">,</span> <span class="n">collection</span><span class="p">,</span> <span class="n">dataset</span><span class="p">))</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">spark_options</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">spark_options</span>
-            <span class="n">table_properties</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">extra_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;table_properties&quot;</span><span class="p">,</span> <span class="p">{})</span>
-            <span class="n">io_format</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">io_format</span>
-            <span class="n">dataset_path</span> <span class="o">=</span> <span class="n">generic_utils</span><span class="o">.</span><span class="n">get_dataset_path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="p">)</span>
-            <span class="c1"># df = self.spark.sql(f&quot;select * from {self.view_name}&quot;)</span>
-            <span class="n">df_writer</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">writeTo</span><span class="p">(</span><span class="n">dataset_path</span><span class="p">)</span><span class="o">.</span><span class="n">using</span><span class="p">(</span><span class="n">io_format</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">spark_options</span><span class="p">:</span>
-                <span class="n">df_writer</span> <span class="o">=</span> <span class="n">df_writer</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="o">**</span><span class="n">spark_options</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;spark options: </span><span class="si">{</span><span class="n">spark_options</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">table_properties</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;table_properties: </span><span class="si">{</span><span class="n">table_properties</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-                <span class="n">df_writer</span> <span class="o">=</span> <span class="n">df_writer</span><span class="o">.</span><span class="n">tableProperty</span><span class="p">(</span><span class="o">**</span><span class="n">table_properties</span><span class="p">)</span>
-            <span class="n">df_writer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__process_partition_conf</span><span class="p">(</span><span class="n">df_writer</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__write_mode</span><span class="p">(</span><span class="n">df_writer</span><span class="p">)</span></div>
+<span class="sd">        Parameters:</span>
+<span class="sd">            df (DataFrame): The DataFrame to write.</span>
 
-<div class="viewcode-block" id="IcebergOutputWriter.write_stream"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.writers.html#pyflare.sdk.writers.iceberg_writer.IcebergOutputWriter.write_stream">[docs]</a>    <span class="k">def</span> <span class="nf">write_stream</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">temp_spark_conf</span><span class="p">()</span>
+            <span class="k">if</span> <span class="s2">&quot;merge&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">extra_options</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="c1"># we add _temp to use catalog properties temporarily and later remove it from spark conf</span>
+                <span class="n">depot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">depot_details</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;depot&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">depot_suffix</span>
+                <span class="n">collection</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">depot_details</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;collection&quot;</span><span class="p">)</span>
+                <span class="n">dataset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">depot_details</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dataset&quot;</span><span class="p">)</span>
+                <span class="n">view_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">depot</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">collection</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">dataset</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1e9</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="n">df</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="n">view_name</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__merge_into_query</span><span class="p">(</span><span class="n">view_name</span><span class="p">,</span> <span class="n">depot</span><span class="p">,</span> <span class="n">collection</span><span class="p">,</span> <span class="n">dataset</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">spark_options</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">spark_options</span>
+                <span class="n">table_properties</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">extra_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;table_properties&quot;</span><span class="p">,</span> <span class="p">{})</span>
+                <span class="n">io_format</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">io_format</span>
+                <span class="n">dataset_path</span> <span class="o">=</span> <span class="n">generic_utils</span><span class="o">.</span><span class="n">get_dataset_path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">depot_suffix</span><span class="p">)</span>
+                <span class="n">df_writer</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">writeTo</span><span class="p">(</span><span class="n">dataset_path</span><span class="p">)</span><span class="o">.</span><span class="n">using</span><span class="p">(</span><span class="n">io_format</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">spark_options</span><span class="p">:</span>
+                    <span class="n">df_writer</span> <span class="o">=</span> <span class="n">df_writer</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="o">**</span><span class="n">spark_options</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">table_properties</span><span class="p">:</span>
+                    <span class="n">df_writer</span> <span class="o">=</span> <span class="n">df_writer</span><span class="o">.</span><span class="n">tableProperty</span><span class="p">(</span><span class="o">**</span><span class="n">table_properties</span><span class="p">)</span>
+                <span class="n">df_writer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__process_partition_conf</span><span class="p">(</span><span class="n">df_writer</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__write_mode</span><span class="p">(</span><span class="n">df_writer</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Error writing dataframe to iceberg table: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">())</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cleanup_temp_spark_conf</span><span class="p">()</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;iceberg catalog conf cleanup successful&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IcebergOutputWriter.write_stream"><a class="viewcode-back" href="../../../../pyflare.sdk.writers.html#pyflare.sdk.writers.iceberg_writer.IcebergOutputWriter.write_stream">[docs]</a>    <span class="k">def</span> <span class="nf">write_stream</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Writes the given DataFrame to the iceberg format in streaming mode.</span>
+
+<span class="sd">            :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">pass</span></div>
 
-<div class="viewcode-block" id="IcebergOutputWriter.get_conf"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.writers.html#pyflare.sdk.writers.iceberg_writer.IcebergOutputWriter.get_conf">[docs]</a>    <span class="k">def</span> <span class="nf">get_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="IcebergOutputWriter.get_conf"><a class="viewcode-back" href="../../../../pyflare.sdk.writers.html#pyflare.sdk.writers.iceberg_writer.IcebergOutputWriter.get_conf">[docs]</a>    <span class="k">def</span> <span class="nf">get_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Returns spark configuration required for iceberg as per underlying filesystem.</span>
+
+<span class="sd">            :return: Spark configuration required for iceberg as per underlying filesystem.</span>
+<span class="sd">            :rtype: list of tuples</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">depot_type</span><span class="p">()</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">io_format</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)()</span></div>
 
     <span class="k">def</span> <span class="nf">_abfss_iceberg</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">dataset_absolute_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">dataset_absolute_path</span><span class="p">()</span>
-        <span class="c1"># depot_base_path = dataset_absolute_path.split(self.write_config.collection())[0]</span>
-        <span class="n">iceberg_conf</span> <span class="o">=</span> <span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ICEBERG_CONF</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">catalog_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">depot_name</span><span class="p">(),</span>
-                                                                 <span class="n">depot_base_path</span><span class="o">=</span><span class="n">dataset_absolute_path</span><span class="p">))</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Returns spark configuration required for iceberg on Azure Blob Storage.</span>
+
+<span class="sd">            :return: Spark configuration required for iceberg on Azure Blob Storage.</span>
+<span class="sd">            :rtype: list of tuples</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">iceberg_conf</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">iceberg_conf</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">generic_utils</span><span class="o">.</span><span class="n">get_abfss_spark_conf</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">iceberg_conf</span>
 
     <span class="k">def</span> <span class="nf">_s3_iceberg</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">dataset_absolute_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">dataset_absolute_path</span><span class="p">()</span>
-        <span class="c1"># depot_base_path = dataset_absolute_path.split(self.write_config.collection())[0]</span>
-        <span class="n">iceberg_conf</span> <span class="o">=</span> <span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ICEBERG_CONF</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">catalog_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">depot_name</span><span class="p">(),</span>
-                                                                 <span class="n">depot_base_path</span><span class="o">=</span><span class="n">dataset_absolute_path</span><span class="p">))</span>
-        <span class="n">iceberg_conf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">S3_ICEBERG_FILE_IO</span><span class="p">)</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Returns spark configuration required for iceberg on AWS S3.</span>
+
+<span class="sd">            :return: Spark configuration required for iceberg on AWS S3.</span>
+<span class="sd">            :rtype: list of tuples</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">iceberg_conf</span> <span class="o">=</span> <span class="p">[</span><span class="n">S3_ICEBERG_FILE_IO</span><span class="p">]</span>
         <span class="n">iceberg_conf</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">generic_utils</span><span class="o">.</span><span class="n">get_s3_spark_conf</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">iceberg_conf</span>
 
     <span class="k">def</span> <span class="nf">_gcs_iceberg</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">dataset_absolute_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">dataset_absolute_path</span><span class="p">()</span>
-        <span class="c1"># depot_base_path = dataset_absolute_path.split(self.write_config.collection())[0]</span>
-        <span class="n">iceberg_conf</span> <span class="o">=</span> <span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ICEBERG_CONF</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">catalog_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">depot_name</span><span class="p">(),</span>
-                                                                 <span class="n">depot_base_path</span><span class="o">=</span><span class="n">dataset_absolute_path</span><span class="p">))</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Returns spark configuration required for iceberg on Google Cloud Storage.</span>
+
+<span class="sd">            :return: Spark configuration required for iceberg on Google Cloud Storage.</span>
+<span class="sd">            :rtype: list of tuples</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">iceberg_conf</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">iceberg_conf</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">generic_utils</span><span class="o">.</span><span class="n">get_gcs_spark_conf</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">iceberg_conf</span>
 
     <span class="k">def</span> <span class="nf">__process_partition_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df_writer</span><span class="p">:</span> <span class="n">DataFrameWriterV2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataFrameWriterV2</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Processes the partition configuration for the given DataFrameWriterV2 instance.</span>
+
+<span class="sd">            :param df_writer: The DataFrameWriterV2 instance to process.</span>
+<span class="sd">            :type df_writer: DataFrameWriterV2</span>
+<span class="sd">            :return: The processed DataFrameWriterV2 instance.</span>
+<span class="sd">            :rtype: DataFrameWriterV2</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">partition_column_list</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">temp_dict</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">extra_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;partition&quot;</span><span class="p">,</span> <span class="p">[]):</span>
             <span class="n">partition_scheme</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">temp_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
@@ -177,6 +241,12 @@
         <span class="k">return</span> <span class="n">df_writer</span>
 
     <span class="k">def</span> <span class="nf">__write_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="n">DataFrameWriterV2</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Sets the write mode for the given DataFrameWriterV2 instance based on the write_config&#39;s mode.</span>
+
+<span class="sd">            :param df: The DataFrameWriterV2 instance to set the write mode for.</span>
+<span class="sd">            :type df: DataFrameWriterV2</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">mode</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;create&quot;</span><span class="p">,</span> <span class="s2">&quot;overwrite&quot;</span><span class="p">,</span> <span class="s2">&quot;write&quot;</span><span class="p">]:</span>
             <span class="n">df</span><span class="o">.</span><span class="n">createOrReplace</span><span class="p">()</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">mode</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;overwriteByPartition&#39;</span><span class="p">]:</span>
@@ -185,13 +255,53 @@
             <span class="n">df</span><span class="o">.</span><span class="n">append</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">__merge_into_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source_view</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">depot</span><span class="p">,</span> <span class="n">collection</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Generates a merge query for merging the given source view into the specified dataset.</span>
+
+<span class="sd">        :param source_view: The name of the source view to merge.</span>
+<span class="sd">        :type source_view: str</span>
+<span class="sd">        :param depot: The name of the depot.</span>
+<span class="sd">        :type depot: str</span>
+<span class="sd">        :param collection: The name of the collection.</span>
+<span class="sd">        :type collection: str</span>
+<span class="sd">        :param dataset: The name of the dataset.</span>
+<span class="sd">        :type dataset: str</span>
+<span class="sd">        :return: The merge query.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">merge_clauses</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">extra_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;merge&quot;</span><span class="p">,</span> <span class="p">{})</span>
 
         <span class="n">query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;MERGE INTO </span><span class="si">{</span><span class="n">depot</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">collection</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">dataset</span><span class="si">}</span><span class="s2"> as target </span><span class="se">\n</span><span class="s2">&quot;</span>
         <span class="n">query</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;USING (select * from </span><span class="si">{</span><span class="n">source_view</span><span class="si">}</span><span class="s2">) as source </span><span class="se">\n</span><span class="s2">&quot;</span>
         <span class="n">query</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;ON </span><span class="si">{</span><span class="n">merge_clauses</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;onClause&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&quot;</span>
         <span class="n">query</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">merge_clauses</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;whenClause&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&quot;</span>
-        <span class="k">return</span> <span class="n">query</span></div>
+        <span class="k">return</span> <span class="n">query</span>
+
+<div class="viewcode-block" id="IcebergOutputWriter.temp_spark_conf"><a class="viewcode-back" href="../../../../pyflare.sdk.writers.html#pyflare.sdk.writers.iceberg_writer.IcebergOutputWriter.temp_spark_conf">[docs]</a>    <span class="k">def</span> <span class="nf">temp_spark_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Generates a temporary Spark configuration for iceberg.</span>
+
+<span class="sd">        :return: The temporary Spark configuration.</span>
+<span class="sd">        :rtype: list of tuples</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dataset_absolute_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">depot_absolute_path</span><span class="p">()</span>
+        <span class="n">iceberg_conf</span> <span class="o">=</span> <span class="n">_generate_iceberg_catalog_conf</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">depot_name</span><span class="p">()</span> <span class="o">+</span>
+                                                      <span class="bp">self</span><span class="o">.</span><span class="n">depot_suffix</span><span class="p">,</span> <span class="n">dataset_absolute_path</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">iceberg_conf</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">iceberg_conf</span></div>
+
+<div class="viewcode-block" id="IcebergOutputWriter.cleanup_temp_spark_conf"><a class="viewcode-back" href="../../../../pyflare.sdk.writers.html#pyflare.sdk.writers.iceberg_writer.IcebergOutputWriter.cleanup_temp_spark_conf">[docs]</a>    <span class="k">def</span> <span class="nf">cleanup_temp_spark_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Cleans up the temporary Spark configuration for iceberg.</span>
+
+<span class="sd">            :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dataset_absolute_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">depot_absolute_path</span><span class="p">()</span>
+        <span class="n">iceberg_conf</span> <span class="o">=</span> <span class="n">_generate_iceberg_catalog_conf</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">depot_name</span><span class="p">()</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">depot_suffix</span><span class="p">,</span>
+                                                      <span class="n">dataset_absolute_path</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">iceberg_conf</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">unset</span><span class="p">(</span><span class="n">key</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>
@@ -201,7 +311,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, Modern Labs.</p>
+    <p>&#169; Copyright 2025, TMDC.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

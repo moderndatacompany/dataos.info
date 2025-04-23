@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pyflare.sdk.readers package &mdash; Dataos Pyflare 0.1.13 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pyflare.sdk.utils package" href="pyflare.sdk.utils.html" />
+    <link rel="prev" title="pyflare.sdk.depots package" href="pyflare.sdk.depots.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Dataos Pyflare
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pyflare</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="pyflare.html">pyflare package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="pyflare.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="pyflare.sdk.html">pyflare.sdk package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyflare.html#module-pyflare">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Dataos Pyflare</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">pyflare</a></li>
+          <li class="breadcrumb-item"><a href="pyflare.html">pyflare package</a></li>
+          <li class="breadcrumb-item"><a href="pyflare.sdk.html">pyflare.sdk package</a></li>
+      <li class="breadcrumb-item active">pyflare.sdk.readers package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/pyflare.sdk.readers.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pyflare-sdk-readers-package">
+<h1>pyflare.sdk.readers package<a class="headerlink" href="#pyflare-sdk-readers-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-pyflare.sdk.readers.bigquery_reader">
+<span id="pyflare-sdk-readers-bigquery-reader-module"></span><h2>pyflare.sdk.readers.bigquery_reader module<a class="headerlink" href="#module-pyflare.sdk.readers.bigquery_reader" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.bigquery_reader.BigqueryInputReader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyflare.sdk.readers.bigquery_reader.</span></span><span class="sig-name descname"><span class="pre">BigqueryInputReader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">read_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyflare.sdk.config.html#pyflare.sdk.config.read_config.ReadConfig" title="pyflare.sdk.config.read_config.ReadConfig"><span class="pre">ReadConfig</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/bigquery_reader.html#BigqueryInputReader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.bigquery_reader.BigqueryInputReader" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyflare.sdk.readers.reader.Reader" title="pyflare.sdk.readers.reader.Reader"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reader</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.bigquery_reader.BigqueryInputReader.get_conf">
+<span class="sig-name descname"><span class="pre">get_conf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/bigquery_reader.html#BigqueryInputReader.get_conf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.bigquery_reader.BigqueryInputReader.get_conf" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.bigquery_reader.BigqueryInputReader.read">
+<span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/bigquery_reader.html#BigqueryInputReader.read"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.bigquery_reader.BigqueryInputReader.read" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.bigquery_reader.BigqueryInputReader.read_stream">
+<span class="sig-name descname"><span class="pre">read_stream</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/bigquery_reader.html#BigqueryInputReader.read_stream"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.bigquery_reader.BigqueryInputReader.read_stream" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pyflare.sdk.readers.delta_reader">
+<span id="pyflare-sdk-readers-delta-reader-module"></span><h2>pyflare.sdk.readers.delta_reader module<a class="headerlink" href="#module-pyflare.sdk.readers.delta_reader" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.delta_reader.DeltaInputReader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyflare.sdk.readers.delta_reader.</span></span><span class="sig-name descname"><span class="pre">DeltaInputReader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">read_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyflare.sdk.config.html#pyflare.sdk.config.read_config.ReadConfig" title="pyflare.sdk.config.read_config.ReadConfig"><span class="pre">ReadConfig</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/delta_reader.html#DeltaInputReader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.delta_reader.DeltaInputReader" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyflare.sdk.readers.file_reader.FileInputReader" title="pyflare.sdk.readers.file_reader.FileInputReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">FileInputReader</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.delta_reader.DeltaInputReader.DELTA_CONF">
+<span class="sig-name descname"><span class="pre">DELTA_CONF</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'[\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(&quot;spark.sql.catalog.spark_catalog&quot;,&quot;org.apache.spark.sql.delta.catalog.DeltaCatalog&quot;),\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(&quot;spark.sql.extensions&quot;,</span> <span class="pre">&quot;io.delta.sql.DeltaSparkSessionExtension&quot;)\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">]'</span></em><a class="headerlink" href="#pyflare.sdk.readers.delta_reader.DeltaInputReader.DELTA_CONF" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.delta_reader.DeltaInputReader.get_conf">
+<span class="sig-name descname"><span class="pre">get_conf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/delta_reader.html#DeltaInputReader.get_conf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.delta_reader.DeltaInputReader.get_conf" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.delta_reader.DeltaInputReader.read">
+<span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/delta_reader.html#DeltaInputReader.read"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.delta_reader.DeltaInputReader.read" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.delta_reader.DeltaInputReader.read_stream">
+<span class="sig-name descname"><span class="pre">read_stream</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/delta_reader.html#DeltaInputReader.read_stream"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.delta_reader.DeltaInputReader.read_stream" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pyflare.sdk.readers.elasticsearch_reader">
+<span id="pyflare-sdk-readers-elasticsearch-reader-module"></span><h2>pyflare.sdk.readers.elasticsearch_reader module<a class="headerlink" href="#module-pyflare.sdk.readers.elasticsearch_reader" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.elasticsearch_reader.ElasticSearchInputReader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyflare.sdk.readers.elasticsearch_reader.</span></span><span class="sig-name descname"><span class="pre">ElasticSearchInputReader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">read_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyflare.sdk.config.html#pyflare.sdk.config.read_config.ReadConfig" title="pyflare.sdk.config.read_config.ReadConfig"><span class="pre">ReadConfig</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/elasticsearch_reader.html#ElasticSearchInputReader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.elasticsearch_reader.ElasticSearchInputReader" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyflare.sdk.readers.reader.Reader" title="pyflare.sdk.readers.reader.Reader"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reader</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.elasticsearch_reader.ElasticSearchInputReader.get_conf">
+<span class="sig-name descname"><span class="pre">get_conf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/elasticsearch_reader.html#ElasticSearchInputReader.get_conf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.elasticsearch_reader.ElasticSearchInputReader.get_conf" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.elasticsearch_reader.ElasticSearchInputReader.read">
+<span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/elasticsearch_reader.html#ElasticSearchInputReader.read"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.elasticsearch_reader.ElasticSearchInputReader.read" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.elasticsearch_reader.ElasticSearchInputReader.read_stream">
+<span class="sig-name descname"><span class="pre">read_stream</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/elasticsearch_reader.html#ElasticSearchInputReader.read_stream"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.elasticsearch_reader.ElasticSearchInputReader.read_stream" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pyflare.sdk.readers.fastbase_reader">
+<span id="pyflare-sdk-readers-fastbase-reader-module"></span><h2>pyflare.sdk.readers.fastbase_reader module<a class="headerlink" href="#module-pyflare.sdk.readers.fastbase_reader" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.fastbase_reader.FastBaseInputReader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyflare.sdk.readers.fastbase_reader.</span></span><span class="sig-name descname"><span class="pre">FastBaseInputReader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">read_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyflare.sdk.config.html#pyflare.sdk.config.read_config.ReadConfig" title="pyflare.sdk.config.read_config.ReadConfig"><span class="pre">ReadConfig</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/fastbase_reader.html#FastBaseInputReader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.fastbase_reader.FastBaseInputReader" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyflare.sdk.readers.reader.Reader" title="pyflare.sdk.readers.reader.Reader"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reader</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.fastbase_reader.FastBaseInputReader.PULSAR_Options">
+<span class="sig-name descname"><span class="pre">PULSAR_Options</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'[\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(&quot;service.url&quot;,</span> <span class="pre">&quot;{serviceUrl}&quot;),\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(&quot;admin.url&quot;,</span> <span class="pre">&quot;{adminUrl}&quot;),\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(&quot;pulsar.admin.authPluginClassName&quot;,</span> <span class="pre">&quot;org.apache.pulsar.client.impl.auth.AuthenticationToken&quot;),\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(&quot;pulsar.admin.authParams&quot;,&quot;token:{Apikey}&quot;),\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(&quot;pulsar.client.authPluginClassName&quot;,&quot;org.apache.pulsar.client.impl.auth.AuthenticationToken&quot;),\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(&quot;pulsar.client.authParams&quot;,&quot;token:{Apikey}&quot;),\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">(&quot;topic&quot;,&quot;persistent://public/default/{dataset}&quot;)\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">]'</span></em><a class="headerlink" href="#pyflare.sdk.readers.fastbase_reader.FastBaseInputReader.PULSAR_Options" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.fastbase_reader.FastBaseInputReader.get_conf">
+<span class="sig-name descname"><span class="pre">get_conf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/fastbase_reader.html#FastBaseInputReader.get_conf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.fastbase_reader.FastBaseInputReader.get_conf" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.fastbase_reader.FastBaseInputReader.read">
+<span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/fastbase_reader.html#FastBaseInputReader.read"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.fastbase_reader.FastBaseInputReader.read" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.fastbase_reader.FastBaseInputReader.read_stream">
+<span class="sig-name descname"><span class="pre">read_stream</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/fastbase_reader.html#FastBaseInputReader.read_stream"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.fastbase_reader.FastBaseInputReader.read_stream" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pyflare.sdk.readers.file_reader">
+<span id="pyflare-sdk-readers-file-reader-module"></span><h2>pyflare.sdk.readers.file_reader module<a class="headerlink" href="#module-pyflare.sdk.readers.file_reader" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.file_reader.FileInputReader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyflare.sdk.readers.file_reader.</span></span><span class="sig-name descname"><span class="pre">FileInputReader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">read_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyflare.sdk.config.html#pyflare.sdk.config.read_config.ReadConfig" title="pyflare.sdk.config.read_config.ReadConfig"><span class="pre">ReadConfig</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/file_reader.html#FileInputReader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.file_reader.FileInputReader" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyflare.sdk.readers.reader.Reader" title="pyflare.sdk.readers.reader.Reader"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reader</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.file_reader.FileInputReader.get_conf">
+<span class="sig-name descname"><span class="pre">get_conf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/file_reader.html#FileInputReader.get_conf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.file_reader.FileInputReader.get_conf" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.file_reader.FileInputReader.read">
+<span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/file_reader.html#FileInputReader.read"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.file_reader.FileInputReader.read" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.file_reader.FileInputReader.read_stream">
+<span class="sig-name descname"><span class="pre">read_stream</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/file_reader.html#FileInputReader.read_stream"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.file_reader.FileInputReader.read_stream" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pyflare.sdk.readers.iceberg_reader">
+<span id="pyflare-sdk-readers-iceberg-reader-module"></span><h2>pyflare.sdk.readers.iceberg_reader module<a class="headerlink" href="#module-pyflare.sdk.readers.iceberg_reader" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.iceberg_reader.IcebergInputReader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyflare.sdk.readers.iceberg_reader.</span></span><span class="sig-name descname"><span class="pre">IcebergInputReader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">read_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyflare.sdk.config.html#pyflare.sdk.config.read_config.ReadConfig" title="pyflare.sdk.config.read_config.ReadConfig"><span class="pre">ReadConfig</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/iceberg_reader.html#IcebergInputReader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.iceberg_reader.IcebergInputReader" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyflare.sdk.readers.file_reader.FileInputReader" title="pyflare.sdk.readers.file_reader.FileInputReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">FileInputReader</span></code></a></p>
+<p><cite>IcebergInputReader</cite> is a Python class designed to facilitate data retrieval from an Iceberg source
+within the SDK, offering comprehensive functionality for both batch and streaming data reading.</p>
+<p>Extends : FileInputReader class</p>
+<section id="methods">
+<h3>Methods:<a class="headerlink" href="#methods" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><cite>read()</cite>: Reads data from the Iceberg source in batch mode.</p></li>
+<li><p><cite>read_stream()</cite>: Reads data from the Iceberg source in streaming mode.</p></li>
+<li><p><cite>get_conf()</cite>: Returns spark configuration required for iceberg as per underlying filesystem.</p></li>
+<li><p>Other methods inherited from FileInputReader.</p></li>
+</ul>
+</section>
+<section id="notes">
+<h3>Notes:<a class="headerlink" href="#notes" title="Permalink to this heading"></a></h3>
+<p>Ensure that the necessary dependencies and configurations for Iceberg and the SDK are set up before using this class.
+For more information about Iceberg, refer to the Iceberg documentation: <a class="reference external" href="https://iceberg.apache.org/">https://iceberg.apache.org/</a>
+For more information about the SDK, refer to the SDK documentation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.iceberg_reader.IcebergInputReader.get_conf">
+<span class="sig-name descname"><span class="pre">get_conf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/iceberg_reader.html#IcebergInputReader.get_conf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.iceberg_reader.IcebergInputReader.get_conf" title="Permalink to this definition"></a></dt>
+<dd><p>Returns spark configuration required for iceberg as per underlying filesystem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Spark configuration required for iceberg as per underlying filesystem.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of tuples</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.iceberg_reader.IcebergInputReader.read">
+<span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/iceberg_reader.html#IcebergInputReader.read"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.iceberg_reader.IcebergInputReader.read" title="Permalink to this definition"></a></dt>
+<dd><p>Read data from the Iceberg source in batch mode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Batch data read from the Iceberg source.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pyspark.sql.dataframe.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.iceberg_reader.IcebergInputReader.read_stream">
+<span class="sig-name descname"><span class="pre">read_stream</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/iceberg_reader.html#IcebergInputReader.read_stream"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.iceberg_reader.IcebergInputReader.read_stream" title="Permalink to this definition"></a></dt>
+<dd><p>Read data from the Iceberg source in streaming mode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Streaming data read from the Iceberg source.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Generator or other streaming data structure</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-pyflare.sdk.readers.jdbc_reader">
+<span id="pyflare-sdk-readers-jdbc-reader-module"></span><h2>pyflare.sdk.readers.jdbc_reader module<a class="headerlink" href="#module-pyflare.sdk.readers.jdbc_reader" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.jdbc_reader.JDBCInputReader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyflare.sdk.readers.jdbc_reader.</span></span><span class="sig-name descname"><span class="pre">JDBCInputReader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">read_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyflare.sdk.config.html#pyflare.sdk.config.read_config.ReadConfig" title="pyflare.sdk.config.read_config.ReadConfig"><span class="pre">ReadConfig</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/jdbc_reader.html#JDBCInputReader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.jdbc_reader.JDBCInputReader" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyflare.sdk.readers.reader.Reader" title="pyflare.sdk.readers.reader.Reader"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reader</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.jdbc_reader.JDBCInputReader.get_conf">
+<span class="sig-name descname"><span class="pre">get_conf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/jdbc_reader.html#JDBCInputReader.get_conf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.jdbc_reader.JDBCInputReader.get_conf" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.jdbc_reader.JDBCInputReader.read">
+<span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/jdbc_reader.html#JDBCInputReader.read"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.jdbc_reader.JDBCInputReader.read" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.jdbc_reader.JDBCInputReader.read_stream">
+<span class="sig-name descname"><span class="pre">read_stream</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/jdbc_reader.html#JDBCInputReader.read_stream"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.jdbc_reader.JDBCInputReader.read_stream" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pyflare.sdk.readers.minerva_reader">
+<span id="pyflare-sdk-readers-minerva-reader-module"></span><h2>pyflare.sdk.readers.minerva_reader module<a class="headerlink" href="#module-pyflare.sdk.readers.minerva_reader" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.minerva_reader.MinervaInputReader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyflare.sdk.readers.minerva_reader.</span></span><span class="sig-name descname"><span class="pre">MinervaInputReader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">read_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyflare.sdk.config.html#pyflare.sdk.config.read_config.ReadConfig" title="pyflare.sdk.config.read_config.ReadConfig"><span class="pre">ReadConfig</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/minerva_reader.html#MinervaInputReader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.minerva_reader.MinervaInputReader" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyflare.sdk.readers.reader.Reader" title="pyflare.sdk.readers.reader.Reader"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reader</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.minerva_reader.MinervaInputReader.get_conf">
+<span class="sig-name descname"><span class="pre">get_conf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/minerva_reader.html#MinervaInputReader.get_conf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.minerva_reader.MinervaInputReader.get_conf" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.minerva_reader.MinervaInputReader.get_minevra_options">
+<span class="sig-name descname"><span class="pre">get_minevra_options</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/minerva_reader.html#MinervaInputReader.get_minevra_options"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.minerva_reader.MinervaInputReader.get_minevra_options" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.minerva_reader.MinervaInputReader.read">
+<span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/minerva_reader.html#MinervaInputReader.read"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.minerva_reader.MinervaInputReader.read" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.minerva_reader.MinervaInputReader.read_stream">
+<span class="sig-name descname"><span class="pre">read_stream</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/minerva_reader.html#MinervaInputReader.read_stream"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.minerva_reader.MinervaInputReader.read_stream" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pyflare.sdk.readers.reader">
+<span id="pyflare-sdk-readers-reader-module"></span><h2>pyflare.sdk.readers.reader module<a class="headerlink" href="#module-pyflare.sdk.readers.reader" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.reader.Reader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyflare.sdk.readers.reader.</span></span><span class="sig-name descname"><span class="pre">Reader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">read_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyflare.sdk.config.html#pyflare.sdk.config.read_config.ReadConfig" title="pyflare.sdk.config.read_config.ReadConfig"><span class="pre">ReadConfig</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/reader.html#Reader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.reader.Reader" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.reader.Reader.get_conf">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_conf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/reader.html#Reader.get_conf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.reader.Reader.get_conf" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.reader.Reader.read">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/reader.html#Reader.read"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.reader.Reader.read" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.reader.Reader.read_config">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="pyflare.sdk.config.html#pyflare.sdk.config.read_config.ReadConfig" title="pyflare.sdk.config.read_config.ReadConfig"><span class="pre">ReadConfig</span></a></em><a class="headerlink" href="#pyflare.sdk.readers.reader.Reader.read_config" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.reader.Reader.read_stream">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read_stream</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/reader.html#Reader.read_stream"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.reader.Reader.read_stream" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.reader.Reader.spark">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">spark</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">SparkSession</span></em><a class="headerlink" href="#pyflare.sdk.readers.reader.Reader.spark" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.reader.Reader.view_name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">view_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#pyflare.sdk.readers.reader.Reader.view_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pyflare.sdk.readers.snowflake_reader">
+<span id="pyflare-sdk-readers-snowflake-reader-module"></span><h2>pyflare.sdk.readers.snowflake_reader module<a class="headerlink" href="#module-pyflare.sdk.readers.snowflake_reader" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.snowflake_reader.SnowflakeInputReader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyflare.sdk.readers.snowflake_reader.</span></span><span class="sig-name descname"><span class="pre">SnowflakeInputReader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">read_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyflare.sdk.config.html#pyflare.sdk.config.read_config.ReadConfig" title="pyflare.sdk.config.read_config.ReadConfig"><span class="pre">ReadConfig</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/snowflake_reader.html#SnowflakeInputReader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.snowflake_reader.SnowflakeInputReader" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyflare.sdk.readers.reader.Reader" title="pyflare.sdk.readers.reader.Reader"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reader</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.snowflake_reader.SnowflakeInputReader.SNOWFLAKE_READ_OPTIONS">
+<span class="sig-name descname"><span class="pre">SNOWFLAKE_READ_OPTIONS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'{{\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">&quot;sfURL&quot;:</span> <span class="pre">&quot;{connection_url}&quot;,\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">&quot;sfUser&quot;:</span> <span class="pre">&quot;{connection_user}&quot;,\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">&quot;sfPassword&quot;:</span> <span class="pre">&quot;{connection_password}&quot;,\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">&quot;sfDatabase&quot;:</span> <span class="pre">&quot;{connection_database}&quot;,\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">&quot;sfSchema&quot;:</span> <span class="pre">&quot;{collection}&quot;,\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">&quot;sfWarehouse&quot;:</span> <span class="pre">&quot;{connection_warehouse}&quot;,\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">&quot;dbtable&quot;:</span> <span class="pre">&quot;{dataset}&quot;\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">}}'</span></em><a class="headerlink" href="#pyflare.sdk.readers.snowflake_reader.SnowflakeInputReader.SNOWFLAKE_READ_OPTIONS" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.snowflake_reader.SnowflakeInputReader.get_conf">
+<span class="sig-name descname"><span class="pre">get_conf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/snowflake_reader.html#SnowflakeInputReader.get_conf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.snowflake_reader.SnowflakeInputReader.get_conf" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.snowflake_reader.SnowflakeInputReader.read">
+<span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/snowflake_reader.html#SnowflakeInputReader.read"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.snowflake_reader.SnowflakeInputReader.read" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.snowflake_reader.SnowflakeInputReader.read_stream">
+<span class="sig-name descname"><span class="pre">read_stream</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/snowflake_reader.html#SnowflakeInputReader.read_stream"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.snowflake_reader.SnowflakeInputReader.read_stream" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.readers.snowflake_reader.SnowflakeInputReader.spark_options_conf">
+<span class="sig-name descname"><span class="pre">spark_options_conf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyflare/sdk/readers/snowflake_reader.html#SnowflakeInputReader.spark_options_conf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.readers.snowflake_reader.SnowflakeInputReader.spark_options_conf" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pyflare.sdk.readers">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pyflare.sdk.readers" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pyflare.sdk.depots.html" class="btn btn-neutral float-left" title="pyflare.sdk.depots package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pyflare.sdk.utils.html" class="btn btn-neutral float-right" title="pyflare.sdk.utils package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, TMDC.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

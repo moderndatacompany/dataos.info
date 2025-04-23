@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pyflare.sdk.core.session_builder &mdash; dataos-pyflare 0.1.7 documentation</title>
+  <title>pyflare.sdk.core.session_builder &mdash; Dataos Pyflare 0.1.13 documentation</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -30,7 +30,7 @@
           
           
           <a href="../../../../index.html" class="icon icon-home">
-            dataos-pyflare
+            Dataos Pyflare
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
@@ -42,7 +42,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../docs/modules.html">pyflare</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pyflare.sdk.html">pyflare.sdk package</a></li>
 </ul>
 
         </div>
@@ -51,7 +51,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../../index.html">dataos-pyflare</a>
+          <a href="../../../../index.html">Dataos Pyflare</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -127,7 +127,7 @@
 <span class="n">g_dataos_token</span><span class="p">:</span> <span class="nb">str</span>
 
 
-<div class="viewcode-block" id="SparkSessionBuilder"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.core.html#pyflare.SparkSessionBuilder">[docs]</a><span class="k">class</span> <span class="nc">SparkSessionBuilder</span><span class="p">:</span>
+<div class="viewcode-block" id="SparkSessionBuilder"><a class="viewcode-back" href="../../../../pyflare.sdk.core.html#pyflare.SparkSessionBuilder">[docs]</a><span class="k">class</span> <span class="nc">SparkSessionBuilder</span><span class="p">:</span>
     <span class="n">spark</span><span class="p">:</span> <span class="n">SparkSession</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">spark_conf</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
     <span class="n">parsed_inputs</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
@@ -142,7 +142,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">pyflare_logger</span><span class="o">.</span><span class="n">setup_pyflare_logger</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">log_level</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="vm">__name__</span><span class="p">)</span>
         <span class="n">create_log4j_on_disk</span><span class="p">(</span><span class="n">log_level</span><span class="p">)</span>
 
-<div class="viewcode-block" id="SparkSessionBuilder.build_session"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.core.html#pyflare.SparkSessionBuilder.build_session">[docs]</a>    <span class="k">def</span> <span class="nf">build_session</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SparkSession</span><span class="p">:</span>
+<div class="viewcode-block" id="SparkSessionBuilder.build_session"><a class="viewcode-back" href="../../../../pyflare.sdk.core.html#pyflare.SparkSessionBuilder.build_session">[docs]</a>    <span class="k">def</span> <span class="nf">build_session</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SparkSession</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">spark</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">load_default_spark_conf</span><span class="p">()</span>
             <span class="n">conf_obj</span> <span class="o">=</span> <span class="n">SparkConf</span><span class="p">()</span><span class="o">.</span><span class="n">setAll</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">spark_conf</span><span class="p">))</span>
@@ -151,7 +151,7 @@
         <span class="n">refresh_global_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">spark</span></div>
 
-<div class="viewcode-block" id="SparkSessionBuilder.load_default_spark_conf"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.core.html#pyflare.SparkSessionBuilder.load_default_spark_conf">[docs]</a>    <span class="k">def</span> <span class="nf">load_default_spark_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SparkSessionBuilder</span><span class="p">:</span>
+<div class="viewcode-block" id="SparkSessionBuilder.load_default_spark_conf"><a class="viewcode-back" href="../../../../pyflare.sdk.core.html#pyflare.SparkSessionBuilder.load_default_spark_conf">[docs]</a>    <span class="k">def</span> <span class="nf">load_default_spark_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SparkSessionBuilder</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">spark_conf</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>
                                <span class="p">(</span><span class="s2">&quot;spark.app.name&quot;</span><span class="p">,</span> <span class="n">get_spark_app_name</span><span class="p">()))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">spark_conf</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;spark.redaction.regex&quot;</span><span class="p">,</span> <span class="s2">&quot;(?i)secret|password|key|abfss|dfs|apikey&quot;</span><span class="p">))</span>
@@ -167,19 +167,20 @@
             <span class="s2">&quot;spark.executor.extraJavaOptions&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;-Dlog4j.configuration=file:</span><span class="si">{</span><span class="n">get_log4j_properties_path</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
         <span class="k">return</span> <span class="bp">self</span></div>
 
-<div class="viewcode-block" id="SparkSessionBuilder.with_spark_conf"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.core.html#pyflare.SparkSessionBuilder.with_spark_conf">[docs]</a>    <span class="k">def</span> <span class="nf">with_spark_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conf</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SparkSessionBuilder</span><span class="p">:</span>
+<div class="viewcode-block" id="SparkSessionBuilder.with_spark_conf"><a class="viewcode-back" href="../../../../pyflare.sdk.core.html#pyflare.SparkSessionBuilder.with_spark_conf">[docs]</a>    <span class="k">def</span> <span class="nf">with_spark_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conf</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SparkSessionBuilder</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">spark_conf</span> <span class="o">+=</span> <span class="n">conf</span>
-        <span class="n">app_name</span> <span class="o">=</span> <span class="p">[</span><span class="n">value</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">spark_conf</span> <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s2">&quot;spark.app.name&quot;</span><span class="p">]</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="n">SPARK_APP_NAME</span><span class="p">]</span> <span class="o">=</span> <span class="n">app_name</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">app_name</span> <span class="k">else</span> <span class="n">constants</span><span class="o">.</span><span class="n">SPARK_APP_NAME_PREFIX</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">spark_conf</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s2">&quot;spark.app.name&quot;</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="n">SPARK_APP_NAME</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span> <span class="k">if</span> <span class="n">value</span> <span class="k">else</span> <span class="n">constants</span><span class="o">.</span><span class="n">SPARK_APP_NAME_PREFIX</span>
         <span class="k">return</span> <span class="bp">self</span></div>
 
-<div class="viewcode-block" id="SparkSessionBuilder.with_readers"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.core.html#pyflare.SparkSessionBuilder.with_readers">[docs]</a>    <span class="k">def</span> <span class="nf">with_readers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reader_address_list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SparkSessionBuilder</span><span class="p">:</span>
+<div class="viewcode-block" id="SparkSessionBuilder.with_readers"><a class="viewcode-back" href="../../../../pyflare.sdk.core.html#pyflare.SparkSessionBuilder.with_readers">[docs]</a>    <span class="k">def</span> <span class="nf">with_readers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reader_address_list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SparkSessionBuilder</span><span class="p">:</span>
         <span class="k">pass</span></div>
 
-<div class="viewcode-block" id="SparkSessionBuilder.with_writers"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.core.html#pyflare.SparkSessionBuilder.with_writers">[docs]</a>    <span class="k">def</span> <span class="nf">with_writers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">writer_address_list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SparkSessionBuilder</span><span class="p">:</span>
+<div class="viewcode-block" id="SparkSessionBuilder.with_writers"><a class="viewcode-back" href="../../../../pyflare.sdk.core.html#pyflare.SparkSessionBuilder.with_writers">[docs]</a>    <span class="k">def</span> <span class="nf">with_writers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">writer_address_list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SparkSessionBuilder</span><span class="p">:</span>
         <span class="k">pass</span></div>
 
-<div class="viewcode-block" id="SparkSessionBuilder.with_depot"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.core.html#pyflare.SparkSessionBuilder.with_depot">[docs]</a>    <span class="k">def</span> <span class="nf">with_depot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">acl</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SparkSessionBuilder</span><span class="p">:</span>
+<div class="viewcode-block" id="SparkSessionBuilder.with_depot"><a class="viewcode-back" href="../../../../pyflare.sdk.core.html#pyflare.SparkSessionBuilder.with_depot">[docs]</a>    <span class="k">def</span> <span class="nf">with_depot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">acl</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SparkSessionBuilder</span><span class="p">:</span>
         <span class="c1">###</span>
         <span class="c1"># This code will be used if we support multi format read from same depot.</span>
         <span class="c1"># This has footprint in other classes, just blocking the entry point.</span>
@@ -198,7 +199,7 @@
             <span class="k">raise</span> <span class="n">InvalidInputException</span><span class="p">(</span><span class="s2">&quot;invalid value of acl, please assign an acceptable value [&#39;r&#39;, &#39;rw&#39;]&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span></div>
 
-<div class="viewcode-block" id="SparkSessionBuilder.add_writer_instance"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.core.html#pyflare.SparkSessionBuilder.add_writer_instance">[docs]</a>    <span class="k">def</span> <span class="nf">add_writer_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot_name</span><span class="p">,</span> <span class="n">format_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
+<div class="viewcode-block" id="SparkSessionBuilder.add_writer_instance"><a class="viewcode-back" href="../../../../pyflare.sdk.core.html#pyflare.SparkSessionBuilder.add_writer_instance">[docs]</a>    <span class="k">def</span> <span class="nf">add_writer_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot_name</span><span class="p">,</span> <span class="n">format_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">curr_format</span> <span class="ow">in</span> <span class="n">format_list</span><span class="p">:</span>
             <span class="n">writer_instance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_write_instance</span><span class="p">(</span><span class="n">depot_name</span><span class="o">=</span><span class="n">depot_name</span><span class="p">,</span> <span class="n">write_format</span><span class="o">=</span><span class="n">curr_format</span><span class="p">)</span>
             <span class="n">curr_format</span> <span class="o">=</span> <span class="n">writer_instance</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">io_format</span>
@@ -207,7 +208,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">parsed_outputs</span><span class="p">[</span><span class="n">writer_instance</span><span class="o">.</span><span class="n">_view_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;writer_instance&quot;</span><span class="p">:</span> <span class="n">writer_instance</span><span class="p">}</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">spark_conf</span> <span class="o">+=</span> <span class="n">writer_instance</span><span class="o">.</span><span class="n">get_conf</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="SparkSessionBuilder.add_reader_instance"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.core.html#pyflare.SparkSessionBuilder.add_reader_instance">[docs]</a>    <span class="k">def</span> <span class="nf">add_reader_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot_name</span><span class="p">,</span> <span class="n">format_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
+<div class="viewcode-block" id="SparkSessionBuilder.add_reader_instance"><a class="viewcode-back" href="../../../../pyflare.sdk.core.html#pyflare.SparkSessionBuilder.add_reader_instance">[docs]</a>    <span class="k">def</span> <span class="nf">add_reader_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot_name</span><span class="p">,</span> <span class="n">format_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">curr_format</span> <span class="ow">in</span> <span class="n">format_list</span><span class="p">:</span>
             <span class="n">reader_instance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_read_instance</span><span class="p">(</span><span class="n">depot_name</span><span class="o">=</span><span class="n">depot_name</span><span class="p">,</span> <span class="n">read_format</span><span class="o">=</span><span class="n">curr_format</span><span class="p">)</span>
             <span class="n">curr_format</span> <span class="o">=</span> <span class="n">reader_instance</span><span class="o">.</span><span class="n">read_config</span><span class="o">.</span><span class="n">io_format</span>
@@ -216,11 +217,11 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">parsed_inputs</span><span class="p">[</span><span class="n">reader_instance</span><span class="o">.</span><span class="n">_view_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;reader_instance&quot;</span><span class="p">:</span> <span class="n">reader_instance</span><span class="p">}</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">spark_conf</span> <span class="o">+=</span> <span class="n">reader_instance</span><span class="o">.</span><span class="n">get_conf</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="SparkSessionBuilder.with_user_apikey"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.core.html#pyflare.SparkSessionBuilder.with_user_apikey">[docs]</a>    <span class="k">def</span> <span class="nf">with_user_apikey</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">apikey</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<div class="viewcode-block" id="SparkSessionBuilder.with_user_apikey"><a class="viewcode-back" href="../../../../pyflare.sdk.core.html#pyflare.SparkSessionBuilder.with_user_apikey">[docs]</a>    <span class="k">def</span> <span class="nf">with_user_apikey</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">apikey</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">api_token</span> <span class="o">=</span> <span class="n">apikey</span>
         <span class="k">return</span> <span class="bp">self</span></div>
 
-<div class="viewcode-block" id="SparkSessionBuilder.with_dataos_fqdn"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.core.html#pyflare.SparkSessionBuilder.with_dataos_fqdn">[docs]</a>    <span class="k">def</span> <span class="nf">with_dataos_fqdn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataos_fqdn</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<div class="viewcode-block" id="SparkSessionBuilder.with_dataos_fqdn"><a class="viewcode-back" href="../../../../pyflare.sdk.core.html#pyflare.SparkSessionBuilder.with_dataos_fqdn">[docs]</a>    <span class="k">def</span> <span class="nf">with_dataos_fqdn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataos_fqdn</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dataos_fqdn</span> <span class="o">=</span> <span class="n">dataos_fqdn</span>
         <span class="n">constants</span><span class="o">.</span><span class="n">DATAOS_BASE_URL</span> <span class="o">=</span> <span class="n">dataos_fqdn</span>
         <span class="k">return</span> <span class="bp">self</span></div>
@@ -290,7 +291,7 @@
         <span class="k">return</span> <span class="kc">False</span></div>
 
 
-<div class="viewcode-block" id="refresh_global_data"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.core.html#pyflare.refresh_global_data">[docs]</a><span class="k">def</span> <span class="nf">refresh_global_data</span><span class="p">(</span><span class="n">spark_session_builder</span><span class="p">:</span> <span class="n">SparkSessionBuilder</span><span class="p">):</span>
+<div class="viewcode-block" id="refresh_global_data"><a class="viewcode-back" href="../../../../pyflare.sdk.core.html#pyflare.refresh_global_data">[docs]</a><span class="k">def</span> <span class="nf">refresh_global_data</span><span class="p">(</span><span class="n">spark_session_builder</span><span class="p">:</span> <span class="n">SparkSessionBuilder</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">g_inputs</span><span class="p">,</span> <span class="n">g_outputs</span><span class="p">,</span> <span class="n">spark</span><span class="p">,</span> <span class="n">g_dataos_token</span>
     <span class="n">g_inputs</span> <span class="o">=</span> <span class="n">spark_session_builder</span><span class="o">.</span><span class="n">parsed_inputs</span>
     <span class="n">g_outputs</span> <span class="o">=</span> <span class="n">spark_session_builder</span><span class="o">.</span><span class="n">parsed_outputs</span>
@@ -300,7 +301,60 @@
     <span class="c1"># pyflare_logger.update_spark_log_level(spark, spark_session_builder.log_level)</span>
 
 
-<div class="viewcode-block" id="load"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.core.html#pyflare.load">[docs]</a><span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">format</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="load"><a class="viewcode-back" href="../../../../pyflare.sdk.core.html#pyflare.load">[docs]</a><span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">format</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Read a dataset from the source.</span>
+
+<span class="sd">    :param name: Depot address of the source.</span>
+<span class="sd">    :type name: str</span>
+<span class="sd">    :param format: Read format.</span>
+<span class="sd">    :type format: str</span>
+<span class="sd">    :param driver: Driver needed to read from the source (optional).</span>
+<span class="sd">    :type driver: str</span>
+<span class="sd">    :param query: Query to execute (optional).</span>
+<span class="sd">    :type query: str</span>
+<span class="sd">    :param options: Additional Spark and source properties (optional).</span>
+<span class="sd">    :type options: dict</span>
+
+<span class="sd">    :return: A Spark DataFrame with governed data.</span>
+<span class="sd">    :rtype: pyspark.sql.DataFrame</span>
+
+<span class="sd">    :raises PyflareReadException: If the dataset does not exist or read access fails.</span>
+
+<span class="sd">    **Examples**</span>
+
+<span class="sd">    Iceberg:</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">        read_options = {</span>
+<span class="sd">            &#39;compression&#39;: &#39;gzip&#39;,</span>
+<span class="sd">            &#39;iceberg&#39;: {</span>
+<span class="sd">                &#39;table_properties&#39;: {</span>
+<span class="sd">                    &#39;read.split.target-size&#39;: 134217728,</span>
+<span class="sd">                    &#39;read.split.metadata-target-size&#39;: 33554432</span>
+<span class="sd">                }</span>
+<span class="sd">            }</span>
+<span class="sd">        }</span>
+
+<span class="sd">        load(name=&quot;dataos://icebase:retail/city&quot;, format=&quot;iceberg&quot;, options=read_options)</span>
+
+<span class="sd">    JDBC:</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">        read_options = {</span>
+<span class="sd">            &#39;compression&#39;: &#39;gzip&#39;,</span>
+<span class="sd">            &#39;partitionColumn&#39;: &#39;last_update&#39;,</span>
+<span class="sd">            &#39;lowerBound&#39;: datetime.datetime(2008, 1, 1),</span>
+<span class="sd">            &#39;upperBound&#39;: datetime.datetime(2009, 1, 1),</span>
+<span class="sd">            &#39;numPartitions&#39;: 6</span>
+<span class="sd">        }</span>
+
+<span class="sd">        load(name=&quot;dataos://sanitypostgres:public/city&quot;, format=&quot;postgresql&quot;,</span>
+<span class="sd">             driver=&quot;com.mysql.cj.jdbc.Driver&quot;, options=read_options)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">try</span><span class="p">:</span>
         <span class="k">global</span> <span class="n">g_inputs</span><span class="p">,</span> <span class="n">spark</span><span class="p">,</span> <span class="n">g_dataos_token</span>
         <span class="n">java_import</span><span class="p">(</span><span class="n">spark</span><span class="o">.</span><span class="n">_jvm</span><span class="p">,</span> <span class="s2">&quot;io.dataos.spark.authz.util.DataGovernor&quot;</span><span class="p">)</span>
@@ -328,17 +382,77 @@
         <span class="k">raise</span> <span class="n">PyflareReadException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Check if dataset </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> exists and you have read access. Msg: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="minerva_input"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.core.html#pyflare.minerva_input">[docs]</a><span class="k">def</span> <span class="nf">minerva_input</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="s2">&quot;io.trino.jdbc.TrinoDriver&quot;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="k">global</span> <span class="n">g_inputs</span><span class="p">,</span> <span class="n">spark</span>
-    <span class="n">minerva_in</span> <span class="o">=</span> <span class="n">MinervaInput</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">parsed_inputs</span><span class="o">=</span><span class="n">g_inputs</span><span class="p">,</span> <span class="n">spark</span><span class="o">=</span><span class="n">spark</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="n">driver</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span>
-                              <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
-    <span class="n">minerva_df</span> <span class="o">=</span> <span class="n">minerva_in</span><span class="o">.</span><span class="n">process_inputs</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">minerva_df</span></div>
+<div class="viewcode-block" id="minerva_input"><a class="viewcode-back" href="../../../../pyflare.sdk.core.html#pyflare.minerva_input">[docs]</a><span class="k">def</span> <span class="nf">minerva_input</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">cluster_name</span><span class="o">=</span><span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="s2">&quot;io.trino.jdbc.TrinoDriver&quot;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">global</span> <span class="n">g_inputs</span><span class="p">,</span> <span class="n">spark</span><span class="p">,</span> <span class="n">g_dataos_token</span>
+        <span class="n">java_import</span><span class="p">(</span><span class="n">spark</span><span class="o">.</span><span class="n">_jvm</span><span class="p">,</span> <span class="s2">&quot;io.dataos.spark.authz.util.DataGovernor&quot;</span><span class="p">)</span>
+        <span class="n">java_import</span><span class="p">(</span><span class="n">spark</span><span class="o">.</span><span class="n">_jvm</span><span class="p">,</span> <span class="s2">&quot;io.dataos.heimdall.client.HeimdallClient&quot;</span><span class="p">)</span>
+        <span class="n">minerva_in</span> <span class="o">=</span> <span class="n">MinervaInput</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">parsed_inputs</span><span class="o">=</span><span class="n">g_inputs</span><span class="p">,</span> <span class="n">spark</span><span class="o">=</span><span class="n">spark</span><span class="p">,</span> <span class="n">apikey</span><span class="o">=</span><span class="n">g_dataos_token</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="n">driver</span><span class="p">,</span>
+                                  <span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">cluster_name</span><span class="o">=</span><span class="n">cluster_name</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
+        <span class="n">source_df</span><span class="p">,</span> <span class="n">depot_name</span> <span class="o">=</span> <span class="n">minerva_in</span><span class="o">.</span><span class="n">process_inputs</span><span class="p">()</span>
+        <span class="n">depot_details</span> <span class="o">=</span> <span class="n">minerva_in</span><span class="o">.</span><span class="n">parsed_inputs</span><span class="p">[</span><span class="n">depot_name</span><span class="p">][</span><span class="s1">&#39;reader_instance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">read_config</span><span class="o">.</span><span class="n">depot_details</span>
+        <span class="n">dataset_address</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">depot_details</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;depot&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span> <span class="n">depot_details</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;collection&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
+                                    <span class="n">depot_details</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dataset&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)])</span>
+        <span class="n">heimdall_client</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">HeimdallClient</span><span class="o">.</span><span class="n">Builder</span><span class="p">()</span><span class="o">.</span><span class="n">url</span><span class="p">(</span><span class="n">get_env_variable</span><span class="p">(</span><span class="n">constants</span><span class="o">.</span><span class="n">HEIMDALL_BASE_URL</span><span class="p">))</span><span class="o">.</span><span class="n">apikey</span><span class="p">(</span>
+            <span class="n">g_dataos_token</span><span class="p">)</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+        <span class="n">data_govern_jvm</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">DataGovernor</span><span class="o">.</span><span class="n">getInstance</span><span class="p">(</span><span class="n">heimdall_client</span><span class="p">)</span>
+        <span class="c1"># user = generic_utils.authorize_user(spark, heimdall_client, g_dataos_token)</span>
+        <span class="n">governed_data</span> <span class="o">=</span> <span class="n">data_govern_jvm</span><span class="o">.</span><span class="n">govern</span><span class="p">(</span><span class="n">source_df</span><span class="o">.</span><span class="n">_jdf</span><span class="p">,</span> <span class="n">dataset_address</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">governed_df</span> <span class="o">=</span> <span class="n">source_df</span>
+        <span class="k">if</span> <span class="n">governed_data</span><span class="o">.</span><span class="n">_1</span><span class="p">()</span><span class="o">.</span><span class="n">isDefined</span><span class="p">():</span>
+            <span class="c1"># here we are extracting first element of tuple we got from govern() response and converting java datafrme to</span>
+            <span class="c1"># python df</span>
+            <span class="n">governed_df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">governed_data</span><span class="o">.</span><span class="n">_1</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span> <span class="n">spark</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">governed_df</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">PyflareReadException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Check if dataset </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> exists and you have read access. Msg: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="save"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.core.html#pyflare.save">[docs]</a><span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dataframe</span><span class="p">,</span> <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;append&quot;</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="save"><a class="viewcode-back" href="../../../../pyflare.sdk.core.html#pyflare.save">[docs]</a><span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dataframe</span><span class="p">,</span> <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;append&quot;</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Write the transformed dataset to the output sink.</span>
+
+<span class="sd">    :param name: Output key to write.</span>
+<span class="sd">    :type name: str</span>
+<span class="sd">    :param dataframe: The DataFrame to write.</span>
+<span class="sd">    :type dataframe: pyspark.sql.DataFrame</span>
+<span class="sd">    :param format: Output format (e.g., iceberg, parquet).</span>
+<span class="sd">    :type format: str</span>
+<span class="sd">    :param mode: Write mode (default is \&quot;append\&quot;).</span>
+<span class="sd">    :type mode: str</span>
+<span class="sd">    :param driver: Driver to use for the sink (optional).</span>
+<span class="sd">    :type driver: str</span>
+<span class="sd">    :param options: Additional write configuration (optional).</span>
+<span class="sd">    :type options: dict</span>
+
+<span class="sd">    :raises PyflareWriteException: If dataset does not exist or write access fails.</span>
+
+<span class="sd">    **Example**</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">        write_options = {</span>
+<span class="sd">            &quot;compression&quot;: &quot;gzip&quot;,</span>
+<span class="sd">            &quot;iceberg&quot;: {</span>
+<span class="sd">                &quot;table_properties&quot;: {</span>
+<span class="sd">                    &quot;write.format.default&quot;: &quot;parquet&quot;,</span>
+<span class="sd">                    &quot;write.parquet.compression-codec&quot;: &quot;gzip&quot;,</span>
+<span class="sd">                    &quot;write.metadata.previous-versions-max&quot;: 3,</span>
+<span class="sd">                    &quot;parquet.page.write-checksum.enabled&quot;: &quot;false&quot;</span>
+<span class="sd">                },</span>
+<span class="sd">                &quot;partition&quot;: [</span>
+<span class="sd">                    {&quot;type&quot;: &quot;months&quot;, &quot;column&quot;: &quot;ts_city&quot;},</span>
+<span class="sd">                    {&quot;type&quot;: &quot;bucket&quot;, &quot;column&quot;: &quot;city_id&quot;, &quot;bucket_count&quot;: 8},</span>
+<span class="sd">                    {&quot;type&quot;: &quot;identity&quot;, &quot;column&quot;: &quot;city_name&quot;}</span>
+<span class="sd">                ]</span>
+<span class="sd">            }</span>
+<span class="sd">        }</span>
+
+<span class="sd">        save(name=&quot;dataos://icebase:sdk/city&quot;, format=&quot;iceberg&quot;,</span>
+<span class="sd">             mode=&quot;append&quot;, options=write_options)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">global</span> <span class="n">g_outputs</span><span class="p">,</span> <span class="n">spark</span><span class="p">,</span> <span class="n">g_dataos_token</span>
-    <span class="c1"># to-do parse depot name form  depot address</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">DataOSOutput</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">dataframe</span><span class="o">=</span><span class="n">dataframe</span><span class="p">,</span> <span class="n">parsed_outputs</span><span class="o">=</span><span class="n">g_outputs</span><span class="p">,</span> <span class="n">apikey</span><span class="o">=</span><span class="n">g_dataos_token</span><span class="p">,</span> <span class="n">spark</span><span class="o">=</span><span class="n">spark</span><span class="p">,</span>
                      <span class="n">sink_format</span><span class="o">=</span><span class="nb">format</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="n">driver</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
@@ -354,7 +468,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, Modern Labs.</p>
+    <p>&#169; Copyright 2025, TMDC.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pyflare.sdk.readers.iceberg_reader &mdash; dataos-pyflare 0.1.7 documentation</title>
+  <title>pyflare.sdk.readers.iceberg_reader &mdash; Dataos Pyflare 0.1.13 documentation</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -30,7 +30,7 @@
           
           
           <a href="../../../../index.html" class="icon icon-home">
-            dataos-pyflare
+            Dataos Pyflare
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
@@ -42,7 +42,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../docs/modules.html">pyflare</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pyflare.sdk.html">pyflare.sdk package</a></li>
 </ul>
 
         </div>
@@ -51,7 +51,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../../index.html">dataos-pyflare</a>
+          <a href="../../../../index.html">Dataos Pyflare</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -78,56 +78,79 @@
 <span class="kn">from</span> <span class="nn">pyflare.sdk.utils</span> <span class="kn">import</span> <span class="n">pyflare_logger</span><span class="p">,</span> <span class="n">generic_utils</span>
 
 
-<div class="viewcode-block" id="IcebergInputReader"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.readers.html#pyflare.sdk.readers.iceberg_reader.IcebergInputReader">[docs]</a><span class="k">class</span> <span class="nc">IcebergInputReader</span><span class="p">(</span><span class="n">FileInputReader</span><span class="p">):</span>
-    <span class="n">ICEBERG_CONF</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;[</span>
-<span class="s1">            (&quot;spark.sql.catalog.</span><span class="si">{catalog_name}</span><span class="s1">&quot;, &quot;org.apache.iceberg.spark.SparkCatalog&quot;),</span>
-<span class="s1">            (&quot;spark.sql.catalog.</span><span class="si">{catalog_name}</span><span class="s1">.type&quot;, &quot;hadoop&quot;),</span>
-<span class="s1">            (&quot;spark.sql.catalog.</span><span class="si">{catalog_name}</span><span class="s1">.warehouse&quot;, &quot;</span><span class="si">{depot_base_path}</span><span class="s1">&quot;)</span>
-<span class="s1">        ]&#39;&#39;&#39;</span>
-    
+<div class="viewcode-block" id="IcebergInputReader"><a class="viewcode-back" href="../../../../pyflare.sdk.readers.html#pyflare.sdk.readers.iceberg_reader.IcebergInputReader">[docs]</a><span class="k">class</span> <span class="nc">IcebergInputReader</span><span class="p">(</span><span class="n">FileInputReader</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        `IcebergInputReader` is a Python class designed to facilitate data retrieval from an Iceberg source</span>
+<span class="sd">        within the SDK, offering comprehensive functionality for both batch and streaming data reading.</span>
+
+<span class="sd">        Extends : FileInputReader class</span>
+
+<span class="sd">        Methods:</span>
+<span class="sd">        ---------</span>
+<span class="sd">        - `read()`: Reads data from the Iceberg source in batch mode.</span>
+<span class="sd">        - `read_stream()`: Reads data from the Iceberg source in streaming mode.</span>
+<span class="sd">        - `get_conf()`: Returns spark configuration required for iceberg as per underlying filesystem.</span>
+<span class="sd">        - Other methods inherited from FileInputReader.</span>
+
+<span class="sd">        Notes:</span>
+<span class="sd">        -------</span>
+<span class="sd">        Ensure that the necessary dependencies and configurations for Iceberg and the SDK are set up before using this class.</span>
+<span class="sd">        For more information about Iceberg, refer to the Iceberg documentation: https://iceberg.apache.org/</span>
+<span class="sd">        For more information about the SDK, refer to the SDK documentation.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">read_config</span><span class="p">:</span> <span class="n">ReadConfig</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">read_config</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">log</span> <span class="o">=</span> <span class="n">pyflare_logger</span><span class="o">.</span><span class="n">get_pyflare_logger</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="vm">__name__</span><span class="p">)</span>
-    
-<div class="viewcode-block" id="IcebergInputReader.read"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.readers.html#pyflare.sdk.readers.iceberg_reader.IcebergInputReader.read">[docs]</a>    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<div class="viewcode-block" id="IcebergInputReader.read"><a class="viewcode-back" href="../../../../pyflare.sdk.readers.html#pyflare.sdk.readers.iceberg_reader.IcebergInputReader.read">[docs]</a>    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Read data from the Iceberg source in batch mode.</span>
+
+<span class="sd">            :return: Batch data read from the Iceberg source.</span>
+<span class="sd">            :rtype: pyspark.sql.dataframe.DataFrame</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">spark_options</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_config</span><span class="o">.</span><span class="n">spark_options</span>
         <span class="n">io_format</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_config</span><span class="o">.</span><span class="n">io_format</span>
-        <span class="n">dataset_path</span> <span class="o">=</span> <span class="n">generic_utils</span><span class="o">.</span><span class="n">get_dataset_path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">read_config</span><span class="p">)</span>
+        <span class="n">dataset_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_config</span><span class="o">.</span><span class="n">dataset_absolute_path</span><span class="p">()</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">read</span>
         <span class="k">if</span> <span class="n">spark_options</span><span class="p">:</span>
-            <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="o">**</span><span class="n">spark_options</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">io_format</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">dataset_path</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">io_format</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">dataset_path</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">df</span></div>
-    
-<div class="viewcode-block" id="IcebergInputReader.read_stream"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.readers.html#pyflare.sdk.readers.iceberg_reader.IcebergInputReader.read_stream">[docs]</a>    <span class="k">def</span> <span class="nf">read_stream</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="o">**</span><span class="n">spark_options</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">io_format</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">dataset_path</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IcebergInputReader.read_stream"><a class="viewcode-back" href="../../../../pyflare.sdk.readers.html#pyflare.sdk.readers.iceberg_reader.IcebergInputReader.read_stream">[docs]</a>    <span class="k">def</span> <span class="nf">read_stream</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Read data from the Iceberg source in streaming mode.</span>
+
+<span class="sd">            :return: Streaming data read from the Iceberg source.</span>
+<span class="sd">            :rtype: Generator or other streaming data structure</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">pass</span></div>
-    
-<div class="viewcode-block" id="IcebergInputReader.get_conf"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.readers.html#pyflare.sdk.readers.iceberg_reader.IcebergInputReader.get_conf">[docs]</a>    <span class="k">def</span> <span class="nf">get_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<div class="viewcode-block" id="IcebergInputReader.get_conf"><a class="viewcode-back" href="../../../../pyflare.sdk.readers.html#pyflare.sdk.readers.iceberg_reader.IcebergInputReader.get_conf">[docs]</a>    <span class="k">def</span> <span class="nf">get_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Returns spark configuration required for iceberg as per underlying filesystem.</span>
+
+<span class="sd">            :return:  Spark configuration required for iceberg as per underlying filesystem.</span>
+<span class="sd">            :rtype: list of tuples</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;calling : _</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">read_config</span><span class="o">.</span><span class="n">depot_type</span><span class="p">()</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">read_config</span><span class="o">.</span><span class="n">io_format</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">read_config</span><span class="o">.</span><span class="n">depot_type</span><span class="p">()</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">read_config</span><span class="o">.</span><span class="n">io_format</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)()</span></div>
-    
+
     <span class="k">def</span> <span class="nf">_abfss_iceberg</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">dataset_absolute_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_config</span><span class="o">.</span><span class="n">dataset_absolute_path</span><span class="p">()</span>
-        <span class="c1"># depot_base_path = dataset_absolute_path.split(self.read_config.collection())[0] if self.read_config.collection() else dataset_absolute_path</span>
-        <span class="n">iceberg_conf</span> <span class="o">=</span> <span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ICEBERG_CONF</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">catalog_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">read_config</span><span class="o">.</span><span class="n">depot_name</span><span class="p">(),</span>
-                                                                 <span class="n">depot_base_path</span><span class="o">=</span><span class="n">dataset_absolute_path</span><span class="p">))</span>
+        <span class="n">iceberg_conf</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">iceberg_conf</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">generic_utils</span><span class="o">.</span><span class="n">get_abfss_spark_conf</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">read_config</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">iceberg_conf</span>
 
     <span class="k">def</span> <span class="nf">_s3_iceberg</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">dataset_absolute_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_config</span><span class="o">.</span><span class="n">dataset_absolute_path</span><span class="p">()</span>
-        <span class="c1"># depot_base_path = dataset_absolute_path.split(self.read_config.collection())[0]</span>
-        <span class="n">iceberg_conf</span> <span class="o">=</span> <span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ICEBERG_CONF</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">catalog_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">read_config</span><span class="o">.</span><span class="n">depot_name</span><span class="p">(),</span>
-                                                                 <span class="n">depot_base_path</span><span class="o">=</span><span class="n">dataset_absolute_path</span><span class="p">))</span>
+        <span class="n">iceberg_conf</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">iceberg_conf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">S3_ICEBERG_FILE_IO</span><span class="p">)</span>
         <span class="n">iceberg_conf</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">generic_utils</span><span class="o">.</span><span class="n">get_s3_spark_conf</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">read_config</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">iceberg_conf</span>
 
     <span class="k">def</span> <span class="nf">_gcs_iceberg</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">dataset_absolute_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_config</span><span class="o">.</span><span class="n">dataset_absolute_path</span><span class="p">()</span>
-        <span class="c1"># depot_base_path = dataset_absolute_path.split(self.read_config.collection())[0]</span>
-        <span class="n">iceberg_conf</span> <span class="o">=</span> <span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ICEBERG_CONF</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">catalog_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">read_config</span><span class="o">.</span><span class="n">depot_name</span><span class="p">(),</span>
-                                                                 <span class="n">depot_base_path</span><span class="o">=</span><span class="n">dataset_absolute_path</span><span class="p">))</span>
+        <span class="n">iceberg_conf</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">iceberg_conf</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">generic_utils</span><span class="o">.</span><span class="n">get_gcs_spark_conf</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">read_config</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">iceberg_conf</span></div>
 </pre></div>
@@ -139,7 +162,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, Modern Labs.</p>
+    <p>&#169; Copyright 2025, TMDC.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
