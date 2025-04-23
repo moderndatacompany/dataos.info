@@ -14,7 +14,7 @@ To access the **Scoping** tab, navigate to the Filter Bar on your dashboard and 
 
 To change the scoping of a **Cross Filter,** please see [Cross-filtering](/interfaces/superset/dashboard_filtering/cross_filtering/).
 
-## **Scoping a Filter**
+## Scoping a Filter
 
 Scoping offers detailed control over which charts are affected by an applied filter. To access scoping options, follow the steps outlined above to select the **Scoping** tab.
 

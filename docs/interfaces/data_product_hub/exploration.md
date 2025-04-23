@@ -5,7 +5,7 @@ The **Explorer** page in Data Product Hub allows users to explore the data model
 Clicking the **Explore** button opens the Explore Page, with the Studio tab displayed by default. Other available tabs include Model and GraphQL.
  
 <center>
-<img src="/interfaces/data_product_hub/exploration/annotely_image%20(2)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/annotely_image%20(2)%20(1).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
 <figcaption><i>Data Product Hub Interface</i></figcaption>
 </center>
 
@@ -22,7 +22,7 @@ Below is the list of components of the Explore Page:
 9. [Result display and visualization panel](#result-display-and-visualization-panels)
 
 
-## **Data Product overview**
+## Data Product overview
 
 The top of the page displays key information about the Data Product being explored, providing context and clarity for users.
 
@@ -30,12 +30,12 @@ The top of the page displays key information about the Data Product being explor
 - **Description**: Below the title, a description gives an overview of the Data Product's purpose. In this case, it’s described as a "customer 360 view of the world."
 - **Tier | Use-case |Team information**: The header contains essential information, including the Data Product's tier (e.g., Aggregated, Source aligned), its primary use case (e.g., Demand Forecast, Performance monitoring), and the list of contributors or collaborators involved in creating and maintaining the product (e.g., Aakansha Jain, Darpan Vyas). It provides users with a clear understanding of the product's purpose and the key stakeholders behind it, ensuring transparency and context.
 
-## **Favorite button and BI sync**
+## Favorite button and BI sync
 
 The Star like button (⭐) allows users to mark the Data Product as favorite. The BI Sync option opens the BI Sync functionality, enabling synchronization of the Data Product with tools such as PowerBI, Tableau Cloud, Tableau Desktop, and Apache Superset.
 
 
-## **Source details**
+## Source details
 
 Clicking on the Source section displays details of the source on which the Lens model is built, along with an option to check the source's health. Upon selection, the following information is shown, as illustrated in the image.
 
@@ -69,7 +69,7 @@ Clicking the Watch button allows users to return to the source and view the sour
 </center>
 
 
-## **Data Exploration tabs**
+## Data Exploration tabs
 
 Further, the data exploration tab contains three tabs for exploring the Data Product in detail. 
 
@@ -106,7 +106,7 @@ Here are the key components in the sidebar navigation
 
  For instance, a query might have been executed 32 minutes ago, using the **city dimension** and **total accounts measure** to analyze the total accounts across various cities. 
 
-- **Perspective:s** In the **Data Product Exploration** interface, a user's query can be saved as a Perspective. A Perspective captures the current state of the query, including all selected dimensions, measures, metrics, filters, and any applied settings (e.g., time zones or limits). Once saved, Perspectives can be accessed at any time from the **Perspective** tab, allowing users to revisit or share their specific analyses without recreating the queries. By saving a Perspective, users can efficiently store and retrieve their specific analyses for continuous use or collaboration with team members.
+- **Perspective:** In the **Data Product Exploration** interface, a user's query can be saved as a Perspective. A Perspective captures the current state of the query, including all selected dimensions, measures, metrics, filters, and any applied settings (e.g., time zones or limits). Once saved, Perspectives can be accessed at any time from the **Perspective** tab, allowing users to revisit or share their specific analyses without recreating the queries. By saving a Perspective, users can efficiently store and retrieve their specific analyses for continuous use or collaboration with team members.
 
 <center>
 <img src="/interfaces/data_product_hub/exploration/image%20(27).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
@@ -119,7 +119,7 @@ Here are the key components in the sidebar navigation
 
 
     <center>
-    <img src="/interfaces/data_product_hub/exploration/image%20(28).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/exploration/image%20(28).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
     <figcaption><i>Run query</i></figcaption>
     </center>
 
@@ -127,7 +127,7 @@ Here are the key components in the sidebar navigation
 - **Saving a Perspective**: Once the query is complete, click the **Save Perspective** button (typically near the "Run Query" button).
 
     <center>
-    <img src="/interfaces/data_product_hub/exploration/image%20(29).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/exploration/image%20(29).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
     <figcaption><i>Save Persepectives</i></figcaption>
     </center>
 
@@ -223,7 +223,7 @@ Selecting the dimensions `account`, `city,` and the measure account `total_accou
     **Example**: Hiding the visibility of total_accounts using the "eye" icon will display only the city names in the query results, while the total accounts count will be hidden. This feature is useful for focusing on specific data points without removing the measure entirely from the query.
 
     <center>
-    <img src="/interfaces/data_product_hub/exploration/Screenshot%20from%202024-09-24%2012-04-00.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/exploration/Screenshot%20from%202024-09-24%2012-04-00.png" alt="DPH" style="width:50rem; border: 1px solid black;" />
     </center>
 
 - **Filtering Option**: A "filter" icon allows users to apply filters to the selected dimension or measure directly from the **Members Tab**.
@@ -231,7 +231,7 @@ Selecting the dimensions `account`, `city,` and the measure account `total_accou
     **Example:** Clicking the filter icon on the `city` dimension and applying the filter "city is not equal to Sacramento" will display data for all cities except Sacramento. After applying the filter, click **Run Query** to view the filtered results.
     
     <center>
-    <img src="/interfaces/data_product_hub/exploration/image%20(36).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/exploration/image%20(36).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
     </center>
 
 
@@ -255,7 +255,7 @@ The following are the options for displaying the results:
 The table tab displays the query results in a tabular format. It’s ideal for users who prefer to see data in rows and columns for easy comparison and detailed analysis.
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/image%20(37).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/image%20(37).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
 <figcaption><i>Table View</i></figcaption>
 </center>
 
@@ -265,7 +265,7 @@ The table tab displays the query results in a tabular format. It’s ideal for u
 The Chart tab allows users to visualize the query results in a graphical format. Various charts (e.g., bar, line, pie) can be used to display trends, comparisons, and distributions visually.
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/Screenshot%20from%202024-09-24%2012-49-14.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/Screenshot%20from%202024-09-24%2012-49-14.png" alt="DPH" style="width:50rem; border: 1px solid black;" />
 <figcaption><i>Chart View</i></figcaption>
 </center>
 
@@ -274,7 +274,7 @@ The Chart tab allows users to visualize the query results in a graphical format.
 The Pivot tab allows for interactive analysis. Users can group, summarize, and manipulate the data to create custom views and insights. Pivot tables are useful for dynamic data exploration.
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/Screenshot%20from%202024-09-24 13-03-45.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/Screenshot%20from%202024-09-24 13-03-45.png" alt="DPH" style="width:50rem; border: 1px solid black;" />
 <figcaption><i>Pivot View</i></figcaption>
 </center>
 
@@ -292,7 +292,7 @@ The data model can be integrated through the following methods:
 - Source SQL
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/image%20(38).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/image%20(38).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
 </center>
 
 **CURL**
@@ -331,7 +331,7 @@ curl --location 'https://lucky-eagle.dataos.app/lens2/api/public:purchasebehavio
 - The provided curl command retrieves data about the total accounts per city in json format. The response will appear as follows:
 
 ```json
-{"query":{"measures":["account.total_accounts"],"dimensions":["account.city"],"segments":[],"filters":[],"timeDimensions":[],"limit":15,"offset":0,"timezone":"UTC","meta":{"secured":{"segments":[],"dimensions":[]}},"rowLimit":15},"data":[{"account.city":"Los Angeles","account.total_accounts":59},{"account.city":"Chicago","account.total_accounts":12},{"account.city":"Kansas City","account.total_accounts":11},{"account.city":"San Francisco","account.total_accounts":8},{"account.city":"New York","account.total_accounts":6},{"account.city":"Greenville","account.total_accounts":5},{"account.city":"Miami","account.total_accounts":5},{"account.city":"Philadelphia","account.total_accounts":5},{"account.city":"Houston","account.total_accounts":5},{"account.city":"Sacramento","account.total_accounts":4},{"account.city":"Omaha","account.total_accounts":4},{"account.city":"Cincinnati","account.total_accounts":3},{"account.city":"Jacksonville","account.total_accounts":2},{"account.city":"San Jose","account.total_accounts":2},{"account.city":"Spokane","account.total_accounts":2}],"lastRefreshTime":"2024-10-09T07:32:55.554Z","refreshKeyValues":[[{"refresh_key":"14403825"}]] 
+{"query":{"measures":["account.total_accounts"],"dimensions":["account.city"],"segments":[],"filters":[],"timeDimensions":[],"limit":15,"offset":0,"timezone":"UTC","meta":{"secured":{"segments":[],"dimensions":[]}},"rowLimit":15},"data":[{"account.city":"Los Angeles","account.total_accounts":59},{"account.city":"Chicago","account.total_accounts":12},{"account.city":"Kansas City","account.total_accounts":11},{"account.city":"San Francisco","account.total_accounts":8},{"account.city":"New York","account.total_accounts":6},{"account.city":"Greenville","account.total_accounts":5},{"account.city":"Miami","account.total_accounts":5},{"account.city":"Philadelphia","account.total_accounts":5},{"account.city":"Houston","account.total_accounts":5},{"account.city":"Sacramento","account.total_accounts":4},{"account.city":"Omaha","account.total_accounts":4},{"account.city":"Cincinnati","account.total_accounts":3},{"account.city":"Jacksonville","account.total_accounts":2},{"account.city":"San Jose","account.total_accounts":2},{"account.city":"Spokane","account.total_accounts":2}],"lastRefreshTime":"2024-10-09T07:32:55.554Z","refreshKeyValues":[[{"refresh_key":"14503825"}]] 
 ```
 
 - Check to ensure the output is correct and contains the expected data.
@@ -415,7 +415,7 @@ curl --location 'https://lucky-eagle.dataos.app/lens2/api/public:purchasebehavio
 - **Run Query Button**: Once dimensions and measures are selected, this button executes the query and updates the results in the selected view format (table, chart, pivot).
 - **Save Perspective**: After running a query, users can save the configuration as a **Perspective** to quickly return to the same query setup in the future.
 
-### **Model tab**
+### **Semantic Model tab**
 
 The Model tab provides insights into the underlying structure of the Data Product by allowing users to view and understand the data model. It offers a comprehensive view of relationships between datasets, data lineage, and dependencies. This is particularly useful for data architects or advanced users who need to know how different tables and fields are connected.
 
@@ -429,7 +429,7 @@ The default view shows a visual lineage of how different tables and entities are
 - For instance, the below image is the model tab of the `sales360` data product, which has three main entities or logical tables: `Account,` `Sales,` and `Product,` and two metrics, `conversion_rate` and `qtd_revenue,` represented by a wave-like icon. Metrics are derived from one or more logical tables to track performance or monitor trends. The **Graph tab** visually displays how these logical tables and metrics are interconnected, providing an interactive way to explore data relationships and schema details.
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/image%20(39).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/image%20(39).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
 </center>
 
 Here's how it works in more detail:
@@ -439,11 +439,11 @@ When any logical table or metric is selected, a detailed tab opens on the side, 
 For instance, Clicking on the `Sales` table opens a detailed tab on the side, displaying all the defined segments, measures, and dimensions within the table. Each attribute is listed with its corresponding data type (e.g., numeric, string, date) to provide a clear understanding of the table's schema.
 
 <!-- <center>
-<img src="/interfaces/data_product_hub/exploration/dph_explorer_optimized_01.gif" alt="DPH" style="width:40rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/dph_explorer_optimized_01.gif" alt="DPH" style="width:50rem; border: 1px solid black;" />
 </center> -->
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/dph_explorer(1).gif" alt="DPH" style="width:40rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/dph_explorer(1).gif" alt="DPH" style="width:50rem; border: 1px solid black;" />
 </center>
 
 **Schema Breakdown**
@@ -462,7 +462,7 @@ Metrics are a type of [View](/resources/lens/concepts/#views) in the data model.
 When a metric references a measure or dimension from a logical table, it adopts the naming convention **(table_name)_(field_name)**. This approach ensures that users can quickly identify the origin of each measure or dimension used in a metric, promoting transparency and data lineage. For instance, the measure `frequency` from the `Sales` Table is renamed `sales_frequency*` when used in the `Conversion Rate` Metric to indicate its origin.
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/Screenshot%20from%202024-10-01 18-32-47.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/Screenshot%20from%202024-10-01 18-32-47.png" alt="DPH" style="width:50rem; border: 1px solid black;" />
 </center>
 
 *Dashed blue lines visually indicate the relationships between the **Sales Table** and the `conversion_rate` metric. The lines highlight which dimensions and measures from the `Sales` Table are used to calculate the `conversion_rate` metric.*
@@ -473,7 +473,7 @@ Similarly,  `QTD Revenue` Metrics leverage fields from multiple logical tables�
 
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/Screenshot%20from%202024-10-01 18-39-56.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/Screenshot%20from%202024-10-01 18-39-56.png" alt="DPH" style="width:50rem; border: 1px solid black;" />
 </center>
 
 
@@ -483,13 +483,14 @@ The schema section contains detailed information about the structure of the tabl
 
 The Overview section gives the details of the Data Model used in the data product, such as the name of the Lens model, the user groups, which detail the access permissions applied to each user group, and the user's name included in it, and the API scopes that are granted. The **Security** section displays the redacted column name.
 
-In this example, there are two user groups: **nonproof_analyst** and **default**. Both groups can access all API scopes, including `meta`, `data`, `graphql`, and `source`.
+In this example, there are three user groups: **usa**, **india** and **default**. Both groups can access all API scopes, including `meta`, `data`, `graphql`, and `source`.
 
-- The **nonproof_analyst** group includes a user identified by the tag `users:id:kanakgupta`.
+- The **usa** group includes a user identified by the tag `users:id:manishagrawal`.
+- The **india** group includes a user identified by the tag `users:id:nandapage`.
 - The **default** group includes all members, providing universal access to anyone not explicitly excluded from the model.
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/image%20(40).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/schema.png" alt="DPH" style="width:50rem; border: 1px solid black;" />
 </center>
 
 Below overview is the list of logical tables and metrics, giving a detailed record when selected. For instance, the following sections are displayed when the account table is selected.
@@ -511,20 +512,20 @@ Below overview is the list of logical tables and metrics, giving a detailed reco
     - **Aliases**: Provides alternate names for fields if defined.
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/image%20(41).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/image%20(41).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
 <figcaption><i>Account Table Schema</i></figcaption>
 </center>
 
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/image%20(42).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/image%20(42).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
 <figcaption><i>The secure column header indicates that the Email column is redacted</i></figcaption>
 </center>
 
 The details of each table can be explored individually. For instance, by selecting the Account table, one can view specific information such as the total number of measures and dimensions and whether the table is public or private. Additionally, it reveals the underlying data type, aggregation method, and the corresponding SQL queries.
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/image%20(43).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/image%20(43).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
 </center>
 
 #### **Files**
@@ -535,7 +536,7 @@ The image above shows the YAML implementation files for the Lens model of the Da
 
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/image%20(44).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/image%20(44).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
 </center>
 
 ### **GraphQL tab**
@@ -545,7 +546,7 @@ The GraphQL tab provides an interface for advanced users and developers to progr
 The GraphQL tab redirects to the following interface:
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/graphql.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/graphql.png" alt="DPH" style="width:50rem; border: 1px solid black;" />
 </center>
 
 

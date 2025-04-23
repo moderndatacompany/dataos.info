@@ -50,7 +50,7 @@ DataOS provides the capability to establish a connection with the Amazon Redshif
 ### **Step 1: Create an Instance Secret for securing Redshift credentials**
 
 
-Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/).
+Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/data_sources/redshift/).
 
 ### **Step 2: Create a Redshift Depot manifest file**
 
@@ -122,7 +122,7 @@ To ensure that the Depot has been successfully created, you can verify it in two
     dataos-ctl get -t depot -a
     ```
 
-You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
+You can also access the details of any created Depot through the DataOS GUI in the [Operations App](/interfaces/operations/) and [Metis UI](/interfaces/metis/).
 
 ## Delete a Depot
 

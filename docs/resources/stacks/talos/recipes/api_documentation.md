@@ -22,7 +22,7 @@ sources:
 
 ```
 
-## **Request Parameter**
+## Request Parameter
 
 The `request` parameter specifies input fields required for API requests. In the example above, `productname` acts as a placeholder for identifying a product record. This parameter should be customized based on API requirements.
 
@@ -39,7 +39,7 @@ The `request` parameter specifies input fields required for API requests. In the
 
 The `sample` parameter provides an example representation of the data available through the API.
 
-<aside>🗣 If caching is enabled on the API endpoint, the sampling functionality is disabled.
+<aside class="callout">🗣 If caching is enabled on the API endpoint, the sampling functionality is disabled.
 
 </aside>
 
@@ -121,7 +121,7 @@ headers:
 | `key` | string | none | Any key | Mandatory |
 | `value` | string | none | Corresponding value | Mandatory |
 
-## **Accessing API Documentation**
+## Accessing API Documentation
 
 API documentation can be accessed via a web browser using the following URL:
 
@@ -134,7 +134,7 @@ Replace `xxx` with the DataOS API token configured for Talos. Additionally, the 
 
 <center> <img src="/resources/stacks/talos/img1.png" alt="Talos API Documentation" style="width:50rem; border: 1px solid black;" /> <figcaption><i>Talos API Documentation</i></figcaption> </center>
 
-## **Sample Section for Dataset Metadata**
+## Sample Section for Dataset Metadata
 
 A sample section can be included to illustrate dataset metadata. This helps developers understand the data exposed by the API.
 

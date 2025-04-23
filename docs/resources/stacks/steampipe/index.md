@@ -12,13 +12,18 @@ Steampipe is a declarative [Stack](/resources/stacks/) integrated within the Dat
 
 The below points outline the high-level steps involved in establishing a connection to a CSV data source and commencing query operations using the Steampipe Stack. 
 
-- [Prerequisites](#prerequisites)
-    - [Steampipe Stack within the DataOS instance](#ensure-the-presence-of-a-steampipe-stack-within-the-dataos-instance)
-- [Steps](#steps)
-    - [Create a Service orchestrating the Steampipe Stack](#create-a-service-that-orchestrates-the-steampipe-stack)
-    - [Establish a Depot atop the Database Service](#create-a-depot-on-the-hosted-database-service)
-    - [Validate the Depot using port-forward and USQL](#validate-the-depot-using-port-forward-and-usql)
-    - [Target a Cluster on the Depot](#cluster-manifest-creation-and-depot-targeting)
+- [Steampipe Stack](#steampipe-stack)
+  - [How to start using Steampipe Stack: Connecting to CSV](#how-to-start-using-steampipe-stack-connecting-to-csv)
+    - [**Prerequisites**](#prerequisites)
+      - [**Ensure the presence of a Steampipe Stack within the DataOS instance**](#ensure-the-presence-of-a-steampipe-stack-within-the-dataos-instance)
+    - [**Steps**](#steps)
+      - [**Create a Service that orchestrates the Steampipe Stack**](#create-a-service-that-orchestrates-the-steampipe-stack)
+      - [**Create a Depot on the hosted Database Service**](#create-a-depot-on-the-hosted-database-service)
+      - [**Validate the Depot using port-forward and USQL**](#validate-the-depot-using-port-forward-and-usql)
+      - [**Cluster manifest Creation and Depot Targeting**](#cluster-manifest-creation-and-depot-targeting)
+  - [Steampipe Plugins](#steampipe-plugins)
+    - [**Default Plugins**](#default-plugins)
+    - [**Installing additional plugins from Steampipe Hub**](#installing-additional-plugins-from-steampipe-hub)
 
 ### **Prerequisites**
 
@@ -392,7 +397,6 @@ This architectural choice streamlines the extension of Steampipe, as the Postgre
 
 The Steampipe Stack in the DataOS relies on a predefined set of plugins installed within the Steampipe Stack image. The default plugins are summarized in the table below.
 
-<center>
 
 | Plugin Name | Description |
 | --- | --- |
@@ -404,8 +408,6 @@ The Steampipe Stack in the DataOS relies on a predefined set of plugins installe
 | `francois2metz/airtable` | https://airtable.com/ integration, providing the ability to query data from this user-friendly database platform. |
 | `finance` | Financial data retrieval from multiple sources, including https://finance.yahoo.com/ and https://www.sec.gov/edgar.shtml service. |
 | `exec` | Execution of commands locally or on remote Linux and Windows hosts through SSH or WinRM. |
-
-</center>
 
 ### **Installing additional plugins from Steampipe Hub**
 

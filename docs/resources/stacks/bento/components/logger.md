@@ -43,7 +43,7 @@ Specify fields for optionally writing logs to a file.
 
 **Type:** `object`
 
----
+
 
 ### `file.path`
 
@@ -53,7 +53,7 @@ The file path to write logs to, if the file does not exist it will be created. L
 
 **Default:** `""`
 
----
+
 
 ### `file.rotate`
 
@@ -63,7 +63,7 @@ Whether to rotate log files automatically.
 
 **Default:** `false`
 
----
+
 
 ### `file.rotate_max_age_days`
 

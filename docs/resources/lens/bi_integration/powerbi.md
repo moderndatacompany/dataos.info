@@ -8,10 +8,9 @@ search:
 
 The semantic model can be integrated with Power BI using the following ways:
 
-- [Using Data Product Hub(Recommended - GUI based)](/resources/lens/bi_integration/#using-data-product-hub): Download `.pbip` file through an intuitive graphical interface.
+- [Using Data Product Hub(Recommended - GUI based)](/interfaces/data_product_hub/activation/bi_sync/powerbi/#using-data-product-hub): Download `.pbip` file through an intuitive graphical interface.
 
-- [Using cURL command (Command-Line based)](/resources/lens/bi_integration/#using-curl-command): Download `.pbip` Power BI connection via cURL command.
-
+- [Using cURL command (Command-Line based)](/interfaces/data_product_hub/activation/bi_sync/powerbi/#using-curl-command): Download `.pbip` Power BI connection via cURL command.
 
 ## Using Data Product Hub
 

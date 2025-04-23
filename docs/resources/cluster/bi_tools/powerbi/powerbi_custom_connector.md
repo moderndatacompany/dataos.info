@@ -53,7 +53,7 @@ Before you start using the DataOS Power BI Connector, configure it as a custom c
 
     
 
-## **Access data from DataOS on Power BI**
+## Access data from DataOS on Power BI
 
 Once DataOS appears as a data source in Power BI Desktop, data from DataOS can be accessed. There are two methods to retrieve datasets from DataOS:
 

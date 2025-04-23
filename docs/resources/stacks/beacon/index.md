@@ -96,6 +96,8 @@ stackSpec:
 
 The table below summarizes the various attributes within the Beacon Stack-specific Section.
 
+<div style="text-align: center;" markdown="1">
+
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
 | [`source`](/resources/stacks/beacon/configurations/#source) | mapping | none | none | mandatory |
@@ -107,6 +109,8 @@ The table below summarizes the various attributes within the Beacon Stack-specif
 | [`type`](/resources/stacks/beacon/configurations/#type-1) | string | none | input/output | mandatory |
 | [`doc`](/resources/stacks/beacon/configurations/#doc) | string | none | any string | optional |
 | [`dependencies`](/resources/stacks/beacon/configurations/#dependencies) | list of strings | none | any valid dependent topology name | mandatory |
+
+</div>
 
 Each of the attributes in this section has been elaborated in detail on the [Attribute of Beacon Stack](/resources/stacks/beacon/configurations/) page.
 

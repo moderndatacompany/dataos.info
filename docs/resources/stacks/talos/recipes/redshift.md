@@ -62,7 +62,7 @@ To access the data using API from redshift, User need the following:
         allkeys: true
     ```
 
-## **Steps**
+## Steps
 
 ### **Connect to the data source**
 

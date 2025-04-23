@@ -455,7 +455,7 @@ INFO[0003] close consumer, exit reconnect                consumerID=1 name=fa251
 INFO[0003] 🔍 read...complete   
 ```
 
-## **Configuring Pulsar**
+## Configuring Pulsar
 
 Configuring Pulsar is crucial to managing message queues efficiently. Here’s how you can adjust key settings:
 
