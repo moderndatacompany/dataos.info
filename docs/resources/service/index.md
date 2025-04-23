@@ -29,18 +29,11 @@ To achieve robust scalability, the Service Resource introduces the concept of re
 
 The Service Resource is configured using a YAML file, consisting of several rooted sections. The structure for a Service YAML is given below:
 
-<center>
+<div style="text-align: center;">
+  <img src="/resources/service/service_yaml.png" alt="Access allowed" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Service Resource YAML configuration structure</ficaption>
+</div>
 
-![Service Resource YAML configuration structure](/resources/service/service_yaml.png)
-
-</center>
-
-
-<center>
-
-<i>Service Resource YAML configuration structure</i>
-
-</center>
 
 ## How to create a Service?
 
@@ -54,6 +47,7 @@ To create a Service Resource, you need to configure the YAML file with the appro
 #### **Configure the Resource Meta Section**
 
 A Service is a [Resource-type](/resources/types/) in DataOS. Below is the YAML configuration for the Resource Meta Section:
+
 ```yaml
 name: ${my-service}
 version: v1 
@@ -256,7 +250,7 @@ To learn more about `apply` command, refer to the [CLI](/interfaces/cli/command_
 
 The table below presents an exhaustive list of key-value properties and their descriptions within a Service YAML file:
 
-<!-- <center> -->
+<div style="text-align: center;" markdown="1">
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
@@ -286,5 +280,6 @@ The table below presents an exhaustive list of key-value properties and their de
 | [`runAsUser`](/resources/service/configurations/#runasuser) | string | user's User-id | userID of Use-Case Assignee | optional  |
 | [`dryRun`](/resources/service/configurations/#dryrun) | boolean | false | true/false | optional |
 
+</div>
 
 For a detailed explanation of each attribute, consult the [Attributes of Service YAML](/resources/service/configurations/).

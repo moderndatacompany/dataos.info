@@ -25,7 +25,7 @@ The key features of the Data Product Hub are covered in this section.
 The Data Product Hub is used by business users to discover, explore, and leverage Data Products that are designed for their needs. 
 
 <center>
-  <img src="/interfaces/data_product_hub/image%20(25).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+  <img src="/interfaces/data_product_hub/image%20(25).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
   <figcaption><i>Self-service Data Consumption</i></figcaption>
 </center>
 
@@ -35,10 +35,9 @@ The Data Product Hub is used by business users to discover, explore, and leverag
 A foundation for trust and governance is provided, ensuring data is reliable, secure, and compliant with organizational policies.
 
 <center>
-  <img src="/interfaces/data_product_hub/image%20(26).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+  <img src="/interfaces/data_product_hub/image%20(26).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
   <figcaption><i>Trust and Governance</i></figcaption>
 </center>
-
 
 
 ### **Embedded context**
@@ -46,7 +45,7 @@ A foundation for trust and governance is provided, ensuring data is reliable, se
 Each Data Product is provided with lineage, quality metrics, usage patterns, governance details, semantic definitions, and documentation.
 
 <center>
-  <img src="/interfaces/data_product_hub/image%20(27).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+  <img src="/interfaces/data_product_hub/image%20(27).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
   <figcaption><i>Embedded Context</i></figcaption>
 </center>
 
@@ -55,7 +54,7 @@ Each Data Product is provided with lineage, quality metrics, usage patterns, gov
 A central layer for generating APIs, connecting to BI/analytics tools, and AI and ML tools is provided by the Data Product Hub, ensuring seamless integration and smooth access to metrics and insights.
 
 <center>
-  <img src="/interfaces/data_product_hub/image%20(28).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+  <img src="/interfaces/data_product_hub/image%20(28).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
   <figcaption><i>Seamless Integrations</i></figcaption>
 </center>
 
@@ -65,7 +64,7 @@ The right Data Products can be discovered to make timely business decisions. In 
 For more information, check out the [Data Product discovery](/interfaces/data_product_hub/discovery/).
 
 <center>
-  <img src="/interfaces/data_product_hub/dataos.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+  <img src="/interfaces/data_product_hub/dph2.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
   <figcaption><i>Data Product Hub on DataOS Home Page</i></figcaption>
 </center>
 
@@ -146,10 +145,6 @@ The BI Sync feature in the Data Product Hub allows for seamless integration with
 </div>
 
 
-
-
-
-
 ### **AI/ML**
 
 The Data Products curated in the DPH can be consumed in data science notebooks such as Jupyter Notebook to power AI/ML use cases.
@@ -168,19 +163,35 @@ The Data Products curated in the DPH can be consumed in data science notebooks s
 </div>
 
 
-### **App development**
+### **Postgres**
 
-Data applications can be developed on top of the Data Product through PostgreSQL or GraphQL API endpoints.
+Data applications can be developed on top of the Data Product through PostgreSQL endpoint.
 
 <div class="grid cards" markdown>
 
--   :material-clock-fast:{ .lg .middle } **App Development**
+-   :material-clock-fast:{ .lg .middle } **Postgres**
 
     ---
 
-    Develop data applications using PostgreSQL and GraphQL API endpoint. Refer to the link for more details:
+    Develop data applications using PostgreSQL endpoint. Refer to the link for more details:
 
-    [:octicons-arrow-right-24: Postgres and GraphQL integration](/interfaces/data_product_hub/activation/app_development/)
+    [:octicons-arrow-right-24: Postgres integration](/interfaces/data_product_hub/activation/postgres/)
+
+</div>
+
+### **Graphql**
+
+Data applications can be developed on top of the Data Product through GraphQL API endpoint.
+
+<div class="grid cards" markdown>
+
+-   :material-clock-fast:{ .lg .middle } **Graphql**
+
+    ---
+
+    Develop data applications using GraphQL API endpoint. Refer to the link for more details:
+
+    [:octicons-arrow-right-24: GraphQL integration](/interfaces/data_product_hub/activation/graphql/)
 
 </div>
 

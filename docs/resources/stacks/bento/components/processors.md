@@ -59,6 +59,9 @@ The way this works is that if your processor with the side effect (`redis` in t
 
 ## Categories
 
+<div style="text-align: center;" markdown="1">
+
+
 |Processors|Category|
 |---|---|
 |[bloblang](/resources/stacks/bento/components/processors/bloblang/)|Processor|
@@ -66,7 +69,7 @@ The way this works is that if your processor with the side effect (`redis` in t
 |[log](/resources/stacks/bento/components/processors/log/)|Processor|
 |[rate_limit](/resources/stacks/bento/components/processors/rate_limit/)|Processor|
 
-
+</div>
 
 ## Batching and Multiple Part Messages
 

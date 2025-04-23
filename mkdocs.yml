@@ -167,10 +167,10 @@ nav:
       #       - Using ODBC Driver: interfaces/atlas/bi_tools/powerbi/using_odbc_driver.md
       #     - Tableau: interfaces/atlas/bi_tools/tableau/index.md
       #     - IBM SPSS: interfaces/atlas/bi_tools/spss/index.md
-      - Audiences: 
-        - interfaces/audiences/index.md
-        - Audiences UI: interfaces/audiences/audiences_ui/index.md
-        - Getting Started: interfaces/audiences/getting_started/index.md
+      # - Audiences: 
+      #   - interfaces/audiences/index.md
+      #   - Audiences UI: interfaces/audiences/audiences_ui/index.md
+      #   - Getting Started: interfaces/audiences/getting_started/index.md
       - Bifrost: 
         - interfaces/bifrost/index.md
         - ABAC Implementation: interfaces/bifrost/abac_implementation_in_dataos.md
@@ -198,9 +198,10 @@ nav:
                 - Power BI Service: interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service.md
             - Tableau Desktop: interfaces/data_product_hub/activation/bi_sync/tableau_desk.md
             - Microsoft Excel: interfaces/data_product_hub/activation/bi_sync/excel.md
-            - Apache Superset: interfaces/data_product_hub/activation/bi_sync/superset.md
+          #   - Apache Superset: interfaces/data_product_hub/activation/bi_sync/superset.md
           - AI/ML: interfaces/data_product_hub/activation/jupyter.md
-          - App Development: interfaces/data_product_hub/activation/app_development.md
+          - Postgres: interfaces/data_product_hub/activation/postgres.md
+          - Graphql: interfaces/data_product_hub/activation/graphql.md
           - Data APIs: interfaces/data_product_hub/activation/data_api.md
         - Best Practices: interfaces/data_product_hub/bestpractices.md 
         - Examples: interfaces/data_product_hub/recipe.md
@@ -256,8 +257,8 @@ nav:
           - Stacks: interfaces/metis/metis_ui_resources/metis_resources_stacks.md
           - Workers: interfaces/metis/metis_ui_resources/metis_resources_workers.md
           - Workflows: interfaces/metis/metis_ui_resources/metis_resources_workflows.md
-      - Notebook: 
-        - interfaces/notebook/index.md
+      # - Notebook: 
+      #   - interfaces/notebook/index.md
       - Operations: 
         - interfaces/operations/index.md
       # - Superset: 
@@ -726,7 +727,7 @@ nav:
             - learn/dp_consumer_learn_track/discover_dp/index.md
         - Viewing Data Product info:
           - learn/dp_consumer_learn_track/view_dp_info/index.md
-        - Exploring Input and Output DataOS:
+        - Exploring input & output datasets:
           - learn/dp_consumer_learn_track/eval_io_datasets/index.md
         - Navigating semantic models:
           - learn/dp_consumer_learn_track/explore_sm/index.md
@@ -760,7 +761,7 @@ nav:
               - learn/dp_developer_learn_track/data_source_connectivity/postgres/index.md
           - Building and maintaining data pipelines: 
             - learn/dp_developer_learn_track/build_pipeline/index.md
-            - Creating your first data pipelines:
+            - Creating your first data pipeline:
               - learn/dp_developer_learn_track/build_pipeline/first_pipeline/index.md
             - Scheduling Workflows:
               - learn/dp_developer_learn_track/build_pipeline/scheduling_workflows/index.md
@@ -780,8 +781,8 @@ nav:
               - learn/dp_developer_learn_track/create_semantic_model/key_concepts_of_lens/index.md
             - Creating semantic model:
               - learn/dp_developer_learn_track/create_semantic_model/create_lens_folder/index.md
-            - Test Lens Locally:
-              - learn/dp_developer_learn_track/create_semantic_model/testing_lens/index.md
+            # - Test Lens Locally:
+            #   - learn/dp_developer_learn_track/create_semantic_model/testing_lens/index.md
             - Deploy Lens in DataOS:
               - learn/dp_developer_learn_track/create_semantic_model/deploy_lens_on_dataos/index.md
           - Defining data policies for semantic model:
@@ -789,9 +790,9 @@ nav:
           - Creating data APIs:
             - learn/dp_developer_learn_track/data_api/index.md
         - Deploying Data Products:
-          - Creating a deployable Bundles:
+          - Creating a deployable Bundle:
             - learn/dp_developer_learn_track/create_bundle/index.md
-          - Creating a Data Product Spec Fields:
+          - Creating Data Product Spec Fields:
             - learn/dp_developer_learn_track/create_dp_spec/index.md
           - Deploying Data Products:
             - learn/dp_developer_learn_track/deploy_dp_cli/index.md
@@ -839,8 +840,8 @@ nav:
           - quick_guides/define_data_model/index.md
         - Creating a data model:
           - quick_guides/create_data_model/index.md
-        - Testing a data model:
-          - quick_guides/test_data_model/index.md
+        # - Testing a data model:
+        #   - quick_guides/test_data_model/index.md
         - Deploying a data model:
           - quick_guides/deploy_data_model/index.md
         - Exploring Lens on Catalog:
