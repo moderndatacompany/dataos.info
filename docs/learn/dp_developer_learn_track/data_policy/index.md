@@ -17,8 +17,8 @@ You begin to add the masking function to the `dimension` definition in your tabl
 
 You use the `secure` property in the `meta` section. Specify which user groups the data masking applies to.
 
-- `includes`: Groups that will be able to surpass the masked data.
-- `excludes`: Groups that will not be surpass the masked data.
+- `includes`: Groups that will see masked data.
+- `excludes`: Groups that will not see masked data.
 
 **Example:** The following configuration shows how the masking policy is applied to the `marital_status` dimension of the `customer` table in the **Product360** data model:
 
@@ -41,7 +41,7 @@ You use the `secure` property in the `meta` section. Specify which user groups t
 
 ### **Viewing data: dataconsumer group vs. other users**
 
-1. Users in the `dataconsumer` group will see the `marital_status` data as masked, as this group is listed in the `excludes` property. Other users will be able to see the actual data in the `marital_status` column.
+1. Users in the `dataconsumer` group will see the `marital_status` data as masked, as this group is listed in the `includes` property. Other users will be able to see the actual data in the `marital_status` column.
     
 Remember you have created a user group  in the create Lens folder topic of the create semantic model module. Let's again check it out to see which users belong to the which group
     

@@ -12,7 +12,7 @@ This step identifies data assets that adhere to the expectations
 
 1. Login to DataOS and go to Metis app.
     
-    ![dataoshome_metis.png](/getting_started/dataoshome_metis.png)
+    ![dataoshome_metis.png](/getting_started/dataos_home.png)
     
 2. Go to **Assets** tab. 
     

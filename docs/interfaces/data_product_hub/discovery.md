@@ -5,7 +5,7 @@ Discovering data among thousands of datasets is difficult without rich metadata 
 A user-friendly interface is provided for Data Product discovery. Data Products can be discovered through a variety of strategies, including keyword searches and filters.
 
 <center>
-  <img src="/interfaces/data_product_hub/discovery/image%20(29).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+  <img src="/interfaces/data_product_hub/discovery/image%20(29).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
   <figcaption><i>Data Product Hub Interface</i></figcaption>
 </center>
 
@@ -21,7 +21,7 @@ Search is available in the top right menu bar across the Data Products page with
 A simple yet powerful way to find Data Products is provided by typing the name, description, or owner in the search interface. By default, matching Data Products are displayed, grouped by use cases. The Data Product’s name may be human-readable or a unique identifier.
 
 <center>
-  <img src="/interfaces/data_product_hub/discovery/annotely_image%20(1)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+  <img src="/interfaces/data_product_hub/discovery/annotely_image%20(1)%20(1).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
   <figcaption><i>Keyword Search</i></figcaption>
 </center>
 
@@ -38,7 +38,7 @@ Multiple filter options further help narrow the search using parameters such as 
 
 
     <center>
-    <img src="/interfaces/data_product_hub/discovery/annotely_image%20(2)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/discovery/annotely_image%20(2)%20(1).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
     <figcaption><i>Filters</i></figcaption>
     </center>
     
@@ -48,7 +48,7 @@ Multiple filter options further help narrow the search using parameters such as 
 By default, the search results are categorized by use cases, and they can also be categorized by domains.
 
 <center>
-  <img src="/interfaces/data_product_hub/discovery/annotely_image%20(3)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+  <img src="/interfaces/data_product_hub/discovery/annotely_image%20(3)%20(1).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
   <figcaption><i>Categorize by Domain</i></figcaption>
 </center>
 
@@ -58,7 +58,7 @@ By default, the search results are categorized by use cases, and they can also b
 Recently searched Data Products can be found in the 'Recent' tab, as illustrated below. Note that clearing the cache will remove all recently searched Data Products from the 'Recent' tab.
 
 <center>
-  <img src="/interfaces/data_product_hub/discovery/annotely_image%20(31)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+  <img src="/interfaces/data_product_hub/discovery/annotely_image%20(31)%20(1).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
   <figcaption><i>Recently searched Data Products</i></figcaption>
 </center>
 
@@ -68,7 +68,7 @@ Recently searched Data Products can be found in the 'Recent' tab, as illustrated
 All starred Data Products can be found in the 'Favorites' tab.
 
 <center>
-  <img src="/interfaces/data_product_hub/discovery/annotely_image%20(32)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+  <img src="/interfaces/data_product_hub/discovery/annotely_image%20(32)%20(1).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
   <figcaption><i>Favorites</i></figcaption>
 </center>
 
@@ -96,7 +96,7 @@ The top panel of the Data Product details page displays the [domain](/interfaces
 Additionally, a button showcasing conformance with defined Accuracy, Completeness, Freshness, Schema, Uniqueness, and Validity [quality checks](/resources/stacks/soda/#defining-soda-checks) is displayed.
 
 <center>
-  <img src="/interfaces/data_product_hub/discovery/annotely_image%20(4)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+  <img src="/interfaces/data_product_hub/discovery/annotely_image%20(4)%20(1).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
   <figcaption><i>Data Product Details Page</i></figcaption>
 </center>
 
@@ -139,7 +139,7 @@ There are separate tabs each for Overview, Inputs, Outputs, Model, Metrics, Data
 The Overview Tab will display the visual snapshot of your Data Product's work: from input to output, including the [semantic model](/resources/lens/), [Metrics](/interfaces/data_product_hub/core_concepts/#metrics) , and [access options](/interfaces/data_product_hub/#data-product-activation).
 
 <center>
-  <img src="/interfaces/data_product_hub/discovery/annotely_image%20(5)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+  <img src="/interfaces/data_product_hub/discovery/annotely_image%20(5)%20(1).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
   <figcaption><i>Overview Tab</i></figcaption>
 </center>
 
@@ -154,7 +154,7 @@ Below that, a search bar is provided to enable searching for various columns wit
 Additionally, a specific table can be opened within [Metis](/interfaces/metis/), the DataOS catalog, to get comprehensive metadata of that table, or in the Workbench App for exploratory analysis using SQL.
 
 <center>
-  <img src="/interfaces/data_product_hub/annotely_image%20(6)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+  <img src="/interfaces/data_product_hub/annotely_image%20(6)%20(1).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
   <figcaption><i>Inputs Tab</i></figcaption>
 </center>
 
@@ -163,7 +163,7 @@ Additionally, a specific table can be opened within [Metis](/interfaces/metis/),
 To learn more about access permissions, click 'Restricted Access', which will open a right panel as shown below.
 
 <center>
-  <img src="/interfaces/data_product_hub/discovery/image%20(31).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+  <img src="/interfaces/data_product_hub/discovery/image%20(31).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
   <figcaption><i>Restricted Access</i></figcaption>
 </center>
 
@@ -179,7 +179,7 @@ Below that, a search bar is provided to enable searching for various columns wit
 Additionally, a specific table can be opened within Metis, the DataOS Catalog, to get comprehensive metadata of that table, or in the Workbench App for exploratory analysis using SQL.
 
 <center>
-  <img src="/interfaces/data_product_hub/discovery/annotely_image%20(7)%20(2).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+  <img src="/interfaces/data_product_hub/discovery/annotely_image%20(7)%20(2).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
   <figcaption><i>Outputs Tab</i></figcaption>
 </center>
 
@@ -188,7 +188,7 @@ Additionally, a specific table can be opened within Metis, the DataOS Catalog, t
 A data model, representing the Lens model built on top of the Data Product, is displayed in the Model tab, shaping the data into meaningful insights for easier analysis and understanding.
 
 <center>
-  <img src="/interfaces/data_product_hub/discovery/annotely_image%20(8)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+  <img src="/interfaces/data_product_hub/discovery/annotely_image%20(8)%20(1).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
   <figcaption><i>Model Tab</i></figcaption>
 </center>
 
@@ -207,7 +207,7 @@ Key business [Metrics](/interfaces/data_product_hub/core_concepts/#metrics) deri
 - In the image below, a metric 'Cloud Service Cost' is shown along with its description and the number of measures, dimensions, and segments used to derive the Metric. By clicking on the quick insights or explore link, the Metrics can be further explored.
 
     <center>
-    <img src="/interfaces/data_product_hub/discovery/annotely_image%20(10)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/discovery/annotely_image%20(10)%20(1).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
     <figcaption><i>Quick Insights and Explore</i></figcaption>
     </center>
 
@@ -216,7 +216,7 @@ Key business [Metrics](/interfaces/data_product_hub/core_concepts/#metrics) deri
 - Below, the references section is shown, which displays the lineage, including the flow and the dataset from which the Metric is derived.
 
     <center>
-    <img src="/interfaces/data_product_hub/discovery/annotely_image%20(11)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/discovery/annotely_image%20(11)%20(1).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
     <figcaption><i>References</i></figcaption>
     </center>
 
@@ -224,7 +224,7 @@ Key business [Metrics](/interfaces/data_product_hub/core_concepts/#metrics) deri
 - The [measures](/resources/lens/concepts/#measures) and [dimensions](/resources/lens/concepts/#dimensions) sections provide details of each dimension and measure used to derive the Metric, including the name, data type, description, and alias.
 
     <center>
-    <img src="/interfaces/data_product_hub/discovery/annotely_image%20(12)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/discovery/annotely_image%20(12)%20(1).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
     <figcaption><i>Measures and Dimensions</i></figcaption>
     </center>
 
@@ -244,7 +244,7 @@ API endpoints for developing data applications can be explored in the [Data APIs
 - On the Data APIs tab, all API endpoint collections are listed. By clicking on a particular endpoint, a short description of the API collection is displayed, as shown below.
     
     <center>
-    <img src="/interfaces/data_product_hub/discovery/annotely_image%20(13)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/discovery/annotely_image%20(13)%20(1).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
     <figcaption><i>API Endpoint Collections</i></figcaption>
     </center>
 
@@ -252,7 +252,7 @@ API endpoints for developing data applications can be explored in the [Data APIs
 - The OpenAPI specifications and Postman collection for each endpoint can be downloaded by clicking on **Download OpenAPI Spec** and **Download Postman Collection**, respectively.
 
     <center>
-    <img src="/interfaces/data_product_hub/discovery/annotely_image%20(15)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/discovery/annotely_image%20(15)%20(1).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
     <figcaption><i>Download OpenAPI spec and Postman collection</i></figcaption>
     </center>
 
@@ -260,7 +260,7 @@ API endpoints for developing data applications can be explored in the [Data APIs
 - After downloading the OpenAPI spec and Postman collection, open the Postman application to proceed further.
 
     <center>
-    <img src="/interfaces/data_product_hub/discovery/image%20(32).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/discovery/image%20(32).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
     <figcaption><i>Postman Application</i></figcaption>
     </center>
 
@@ -269,7 +269,7 @@ API endpoints for developing data applications can be explored in the [Data APIs
 - Navigate to collections in Postman, click on import, and select the files option to choose the downloaded JSON file.
 
     <center>
-    <img src="/interfaces/data_product_hub/discovery/annotely_image%20(17)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/discovery/annotely_image%20(17)%20(1).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
     <figcaption><i>Import collection</i></figcaption>
     </center>
 
@@ -277,7 +277,7 @@ API endpoints for developing data applications can be explored in the [Data APIs
 - The **View complete documentation** link will open the [OpenAPI documentation](/resources/stacks/talos/recipes/api_documentation/), as shown below.
     
     <center>
-    <img src="/interfaces/data_product_hub/discovery/annotely_image%20(18)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/discovery/annotely_image%20(18)%20(1).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
     <figcaption><i>View Complete Documentation</i></figcaption>
     </center>
 
@@ -286,7 +286,7 @@ API endpoints for developing data applications can be explored in the [Data APIs
 - To hit the API endpoint in Postman, click on the 'Open request' link, as shown in the above image, which will open the interface below.
     
     <center>
-    <img src="/interfaces/data_product_hub/discovery/image%20(33).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/discovery/image%20(33).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
     <figcaption><i>Open Request</i></figcaption>
     </center>
 
@@ -302,7 +302,7 @@ API endpoints for developing data applications can be explored in the [Data APIs
 - Paste the copied URL in place of {{baseUrl}}, provide the DataOS API key as a bearer token, and click on send to access the data, as shown below. This API endpoint, along with the bearer token, can be used to build your data application.
     
     <center>
-    <img src="/interfaces/data_product_hub/discovery/annotely_image%20(19)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/discovery/annotely_image%20(19)%20(1).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
     <figcaption><i>Paste the copied URL</i></figcaption>
     </center>
 
@@ -310,7 +310,7 @@ API endpoints for developing data applications can be explored in the [Data APIs
 - On the Data APIs tab, clicking on a particular API endpoint will display information about who has access to the endpoint, the endpoint's description, authorization details, response details, and response samples.
     
     <center>
-    <img src="/interfaces/data_product_hub/discovery/annotely_image%20(20)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/discovery/annotely_image%20(20)%20(1).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
     <figcaption><i>API Endpoint Access</i></figcaption>
     </center>
 
@@ -400,7 +400,7 @@ Quality is categorized into six types: Schema, Freshness, Validity, Completeness
     
 
     <center>
-    <img src="/interfaces/data_product_hub/discovery/annotely_image%20(21)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/discovery/annotely_image%20(21)%20(1).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
     <figcaption><i>Quality Tab</i></figcaption>
     </center>
 
@@ -413,7 +413,7 @@ Quality is categorized into six types: Schema, Freshness, Validity, Completeness
 
     
     <center>
-    <img src="/interfaces/data_product_hub/discovery/image%20(38).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/discovery/image%20(38).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
     <figcaption><i>Trend chart</i></figcaption>
     </center>
 
@@ -422,7 +422,7 @@ Quality is categorized into six types: Schema, Freshness, Validity, Completeness
 
 
     <center>
-    <img src="/interfaces/data_product_hub/discovery/image%20(39).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/discovery/image%20(39).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
     <figcaption><i>Applied Checks and their status</i></figcaption>
     </center>
 
@@ -434,7 +434,7 @@ The **Access options** tab allows users to connect their Data Products to variou
 
 
 <center>
-<img src="/interfaces/data_product_hub/discovery/annotely_image%20(22)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/discovery/annotely_image%20(22)%20(1).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
 <figcaption><i>Access Options Tab</i></figcaption>
 </center>
 
@@ -447,7 +447,7 @@ In the [Perspective](/interfaces/data_product_hub/core_concepts/#perspectives) t
 
 
 <center>
-<img src="/interfaces/data_product_hub/discovery/image%20(40).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/discovery/image%20(50).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
 <figcaption><i>Perspectives Tab</i></figcaption>
 </center>
 
@@ -462,7 +462,7 @@ Follow the steps below to save your Data Product exploration as a Perspective, a
  
     
     <center>
-    <img src="/interfaces/data_product_hub/discovery/annotely_image%20(23)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/discovery/annotely_image%20(23)%20(1).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
     <figcaption><i>Choose and Navigate</i></figcaption>
     </center>
 
@@ -471,7 +471,7 @@ Follow the steps below to save your Data Product exploration as a Perspective, a
 2. Click the **Explore** tab to begin exploring the Data Product.
 
     <center>
-    <img src="/interfaces/data_product_hub/discovery/image%20(41).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/discovery/image%20(41).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
     <figcaption><i>Navigate to Explore Tab</i></figcaption>
     </center>
 
@@ -511,7 +511,7 @@ After saving the exploration as a perspective, follow the steps below to access 
 
     
     <center>
-    <img src="/interfaces/data_product_hub/discovery/image%20(45).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/discovery/image%20(45).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
     <figcaption><i>Navigate to Perspectives Tab</i></figcaption>
     </center>
 
@@ -556,7 +556,7 @@ After saving the exploration as a perspective, follow the steps below to access 
 
     
     <center>
-    <img src="/interfaces/data_product_hub/discovery/annotely_image%20(26)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/discovery/annotely_image%20(26)%20(1).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
     <figcaption><i>List Perspectives</i></figcaption>
     </center>
 
@@ -566,7 +566,7 @@ After saving the exploration as a perspective, follow the steps below to access 
 
 
     <center>
-    <img src="/interfaces/data_product_hub/discovery/image%20(48).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/discovery/image%20(48).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
     <figcaption><i>Explore</i></figcaption>
     </center>
     
@@ -584,7 +584,7 @@ In the [Metrics](/interfaces/data_product_hub/core_concepts/#metrics) tab, key i
 
 
 <center>
-<img src="/interfaces/data_product_hub/discovery/image%20(50).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/discovery/image%20(50).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
 <figcaption><i>Metrics Listing Page</i></figcaption>
 </center>
 
