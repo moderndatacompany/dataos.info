@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pyflare.sdk.config.constants &mdash; dataos-pyflare 0.1.7 documentation</title>
+  <title>pyflare.sdk.config.constants &mdash; Dataos Pyflare 0.1.13 documentation</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -30,7 +30,7 @@
           
           
           <a href="../../../../index.html" class="icon icon-home">
-            dataos-pyflare
+            Dataos Pyflare
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
@@ -42,7 +42,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../docs/modules.html">pyflare</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pyflare.sdk.html">pyflare.sdk package</a></li>
 </ul>
 
         </div>
@@ -51,7 +51,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../../index.html">dataos-pyflare</a>
+          <a href="../../../../index.html">Dataos Pyflare</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -108,7 +108,7 @@
 <span class="n">RELATIVE_PATH</span> <span class="o">=</span> <span class="s2">&quot;relativePath&quot;</span>
 <span class="n">PASSWORD</span> <span class="o">=</span> <span class="s2">&quot;password&quot;</span>
 <span class="n">USERNAME</span> <span class="o">=</span> <span class="s2">&quot;username&quot;</span>
-<span class="n">MINEVRA_URL</span> <span class="o">=</span> <span class="s2">&quot;jdbc:trino://tcp.</span><span class="si">{}</span><span class="s2">:7432&quot;</span>
+<span class="n">MINEVRA_URL</span> <span class="o">=</span> <span class="s2">&quot;jdbc:trino://tcp.</span><span class="si">{}</span><span class="s2">:7432/</span><span class="si">{}</span><span class="s2">&quot;</span>
 <span class="n">OUTPUT_STRING</span> <span class="o">=</span> <span class="s2">&quot;Output&quot;</span>
 <span class="n">INPUT_STRING</span> <span class="o">=</span> <span class="s2">&quot;Input&quot;</span>
 <span class="n">DEPOT_NAME_JSON_FILE_REGEX</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;^</span><span class="si">{depot_name}</span><span class="s1">_.*\.json$&#39;</span>
@@ -134,6 +134,7 @@
 <span class="n">GCS_ACCOUNT_EMAIL</span> <span class="o">=</span> <span class="s2">&quot;spark.hadoop.fs.gs.auth.service.account.email&quot;</span>
 <span class="n">GCS_PROJECT_ID</span> <span class="o">=</span> <span class="s2">&quot;spark.hadoop.fs.gs.project.id&quot;</span>
 <span class="n">GCS_AUTH_ACCOUNT_ENABLED</span> <span class="o">=</span> <span class="s2">&quot;spark.hadoop.google.cloud.auth.service.account.enable&quot;</span>
+<span class="n">GCS_TEMP_BUCKET</span> <span class="o">=</span> <span class="s2">&quot;tmdc-development-new&quot;</span>
 <span class="n">LOG4J_PROPERTIES_DEFAULT_PATH</span> <span class="o">=</span> <span class="s2">&quot;/opt/spark/conf/log4j.properties&quot;</span>
 <span class="n">LOG4J_PROPERTIES</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;log4j.rootLogger=</span><span class="si">{root_logger_level}</span><span class="s2">, console</span>
 <span class="s2">log4j.logger.org.apache.spark=</span><span class="si">{root_logger_level}</span>
@@ -150,11 +151,11 @@
 
 <span class="n">HEIMDALL_BASE_URL</span> <span class="o">=</span> <span class="s2">&quot;HEIMDALL_BASE_URL&quot;</span>
 
-<div class="viewcode-block" id="get_log4j_properties_path"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.config.html#pyflare.sdk.config.constants.get_log4j_properties_path">[docs]</a><span class="k">def</span> <span class="nf">get_log4j_properties_path</span><span class="p">():</span>
+<div class="viewcode-block" id="get_log4j_properties_path"><a class="viewcode-back" href="../../../../pyflare.sdk.config.html#pyflare.sdk.config.constants.get_log4j_properties_path">[docs]</a><span class="k">def</span> <span class="nf">get_log4j_properties_path</span><span class="p">():</span>
     <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;LOG4J_PROPERTIES_PATH&quot;</span><span class="p">,</span> <span class="n">LOG4J_PROPERTIES_DEFAULT_PATH</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="get_spark_app_name"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.config.html#pyflare.sdk.config.constants.get_spark_app_name">[docs]</a><span class="k">def</span> <span class="nf">get_spark_app_name</span><span class="p">():</span>
+<div class="viewcode-block" id="get_spark_app_name"><a class="viewcode-back" href="../../../../pyflare.sdk.config.html#pyflare.sdk.config.constants.get_spark_app_name">[docs]</a><span class="k">def</span> <span class="nf">get_spark_app_name</span><span class="p">():</span>
     <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">SPARK_APP_NAME</span><span class="p">,</span> <span class="n">SPARK_APP_NAME_PREFIX</span><span class="p">)</span></div>
 </pre></div>
 
@@ -165,7 +166,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, Modern Labs.</p>
+    <p>&#169; Copyright 2025, TMDC.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
