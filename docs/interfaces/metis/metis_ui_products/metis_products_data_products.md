@@ -51,7 +51,7 @@ In the Card view, click anywhere except the data product name to get the overvie
 
 <center>
   <div style="text-align: center;">
-    <img src="interfaces/metis/metis_ui_products/metis_products_data_products/dp_overview.png" alt="Quick information on the side pane" style="border:1px solid black; width: 80%; height: auto"">
+    <img src="/interfaces/metis/metis_ui_products/metis_products_data_products/dp_overview.png" alt="Quick information on the side pane" style="border:1px solid black; width: 80%; height: auto"">
     <figcaption>Quick information on the side pane</figcaption>
   </div>
 </center>

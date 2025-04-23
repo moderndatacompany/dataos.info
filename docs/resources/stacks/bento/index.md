@@ -18,14 +18,10 @@ Bento employs stateless, chained processing steps, allowing stream data pipeline
     - **Independent processing** – Long-running data transformations that do not require external network communication, such as standalone data processing streams.  
 
 
-<center>
-
-<img src="/resources/stacks/bento/bento_architecture.jpg" style="width:31rem; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);" />
-
-<i>Placement of Bento stack within DataOS</i>
-
-</center>
-
+<div style="text-align: center;">
+  <img src="/resources/stacks/bento/bento_architecture.jpg"  style="width:31rem; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);" />
+  <div><i>Placement of Bento stack within DataOS</i></div>
+</div>
 
 
 ## Key features of Bento
@@ -53,14 +49,11 @@ Now, let's dive into the details and explore Bento further.
 
 ## Syntax of Bento Manifest Configuration
 
-<center>
+<div style="text-align: center;">
+  <img src="/resources/stacks/bento/bento_syntax.jpg" style="width:50rem; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);" />
+  <div><i>Syntax of Bento stack Manifest in DataOS</i></div>
+</div>
 
-<img src="/resources/stacks/bento/bento_syntax.jpg" style="width:50rem; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);" />
-
-<i>Placement of Bento stack within DataOS</i>
-
-</center>
-s
 ## Getting Started with Bento
 
 ### **Setting Up Bento Locally**

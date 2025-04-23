@@ -6,7 +6,7 @@ Minerva allows implicit conversion of numeric and character values to the correc
 
 Explicit casting to a particular type can be done when necessary.
 
-## **Conversion functions**
+## Conversion functions
 
 | Function                | Description                                              | Return Type |
 |-------------------------|----------------------------------------------------------|-------------|

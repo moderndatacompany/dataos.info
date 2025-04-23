@@ -120,7 +120,7 @@ The Runtime Stats option appears while the query is still running. It will not b
 Clicking on the `Runtime stats` tab will take you to a new tab in the web browser that will hold vital information about the query you ran.
 
 <div style="text-align: center;">
-  <img src="/interfaces/workbench/query_analysis.png" alt="Available options" style="border:1px solid black; width: 80%; height: auto;">
+  <img src="/interfaces/workbench/runtime.png" alt="Available options" style="border:1px solid black; width: 80%; height: auto;">
   <figcaption>Available options</figcaption>
 </div>
 

@@ -18,7 +18,7 @@ Data developers need to identify and evaluate the data sources to be integrated 
 
 1. Login to DataOS and go to Metis app.
     
-    ![dataoshome_metis.png](/getting_started/dataoshome_metis.png)
+    ![dataoshome_metis.png](/getting_started/dataos_home.png)
     
 2. Go to **Assets** tab. Enter a search string to find your data asset quickly.
     

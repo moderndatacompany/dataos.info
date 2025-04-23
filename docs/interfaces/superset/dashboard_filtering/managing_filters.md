@@ -2,7 +2,7 @@
 
 Let's explore a few filter management features provided by Superset.
 
-## **How to Add a Filter and Divider**
+## How to Add a Filter and Divider
 
 Within the "Add and edit filters" window, click on "+ Add filters and dividers," then in the submenu, choose "Filter." This action generates a new filter in the Filters panel with the placeholder text "[untitled].”
 
@@ -12,7 +12,7 @@ Within the "Add and edit filters" window, click on "+ Add filters and dividers,"
 
 A divider serves as a header text field, accompanied by an optional description, which can be utilized to introduce sets of filters or simply divide filters.
 
-## **How to Delete a Filter**
+## How to Delete a Filter
 
 To delete a filter, in the Filters panel, select the trash bin icon for a filter.
 
@@ -31,7 +31,7 @@ Once you click on the bin icon, Superset will prompt you to confirm if you wish 
 </div>
 
 
-## **How to View Applied Filters (via chart icon)**
+## How to View Applied Filters (via chart icon)
 
 To view the filters applied to a specific chart, you can click on the filter icon located at the top right corner of the chart. The number displayed alongside the icon indicates the total count of filters applied to that chart.
 
@@ -42,7 +42,7 @@ To view the filters applied to a specific chart, you can click on the filter ico
 
 Clicking on this icon triggers a tooltip to appear, showcasing the applied filters. The provided image illustrates the application of two defined filters.
 
-## **How to Clear All Filters**
+## How to Clear All Filters
 
 Clearing all filters removes your filter selections, but it does not remove the filters themselves.
 
@@ -64,7 +64,7 @@ After doing so, all selections made within the filters are removed.
 
 </aside>
 
-## **Active Filter Highlight**
+## Active Filter Highlight
 
 To easily associate filters with charts and tabs, Superset automatically applies a blue border glow to charts and tabs that include data from a selected filter.
 
@@ -74,7 +74,7 @@ To easily associate filters with charts and tabs, Superset automatically applies
 
 .and after we place the cursor over the filter, you will notice that charts and tabs are highlighted with a glowing blue border.
 
-## **Filter Out of Scope**
+## Filter Out of Scope
 
 If you've created a filter on a tab and subsequently switched to another tab utilizing a distinct dataset, the filters originally set on the first tab will be labeled as "Filters out of scope”.
 

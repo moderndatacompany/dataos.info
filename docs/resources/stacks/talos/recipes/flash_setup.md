@@ -1,7 +1,7 @@
 # Talos for Flash 
 This section provides the configuration guide to set up Talos Service for Talos.  
 
-## **Prerequisites**
+## Prerequisites
 
 To access the data using API from Flash, following prerequisites are essential:
 
@@ -69,7 +69,7 @@ To access the data using API from Flash, following prerequisites are essential:
         ${{"key2": "value2"}}
     ```
 
-## **Steps**
+## Steps
 
 ### **Connect to the data source**
 

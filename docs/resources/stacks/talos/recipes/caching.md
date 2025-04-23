@@ -1,6 +1,6 @@
 # Caching Dataset
 
-## **Caching Datasets in Talos**
+## Caching Datasets in Talos
 
 Talos provides a caching layer to enhance API query performance and efficiency. By using the `{% cache %}` tag, query results can be retrieved directly from cache storage, minimizing repeated queries to the data source. This section outlines how to configure and utilize caching effectively in Talos.
 

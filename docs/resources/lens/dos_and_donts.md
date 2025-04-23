@@ -427,7 +427,7 @@ Avoid using references and sub-queries when dealing with large datasets. These o
 
 Common tables used in multiple Data Products should be materialized to enhance performance, avoid redundant computations, and maintain consistency.
 
-## **Don’ts**
+## Don’ts
 
 When creating a semantic model, avoid the following practices to ensure functionality and maintainability:
 

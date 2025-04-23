@@ -80,7 +80,7 @@ The table below summarizes the supported features for each source system type:
 
 ## Popular Sources Matrix
 
-<center>
+
 
 | Source System Type | Name | Metadata Management |
 | --- | --- | --- |
@@ -112,4 +112,3 @@ The table below summarizes the supported features for each source system type:
 | Event | Azure EventHub | NO |
 | Event | Amazon Kinesis | YES |
 
-</center>

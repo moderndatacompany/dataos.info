@@ -68,7 +68,7 @@ dataOsAddressJqFilters:
 
 ## Configuration Attributes
 
-## **`stack`**
+## `stack`
 
 **Description:** Mapping for the attributes of Stack Resource
 

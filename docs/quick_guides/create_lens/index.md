@@ -223,7 +223,7 @@ Follow the steps given below to deploy Lens.
     
 3. Execute the file, and your Lens will be successfully deployed.
 
-## **Accessing Lens**
+## Accessing Lens
 
 Lens is created in DataOS environment, you can use it to gain insights from your data, run queries, generate visualizations, and perform various analyses. Access the deployed lens and explore data using the Lens Explorer UI and LQL.
 

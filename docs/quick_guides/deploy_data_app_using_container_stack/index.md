@@ -7,7 +7,7 @@
 
 To illustrate the process, we'll create a simple Streamlit application. Streamlit is a powerful Python library that facilitates the quick development of interactive web applications.
 
-## **Step 1: Create a Data Application**
+## Step 1: Create a Data Application
 
 1. **Write Your Application Code**
     
@@ -144,7 +144,7 @@ Now we'll package our application into a Docker image. Docker simplifies deployi
     ![Image](/quick_guides/deploy_data_app_using_container_stack/build_image.png)
     
 
-## **Step 3: Push the Docker Image to Container Registry**
+## Step 3: Push the Docker Image to Container Registry**
 
 We'll upload our Docker image to a container registry for storage and deployment. We'll use Docker Hub for this example, but you can use any preferred container registry.
 

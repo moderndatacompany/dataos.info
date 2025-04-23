@@ -69,6 +69,15 @@ This option empowers you to define complex search criteria, allowing you to find
 
 ### **Data Products Details**
 
+Users get a list of Data Products build on the DataOS environment. 
+
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_features/assets_info.png" alt="Quick Information" style="border:1px solid black; width: 80%; height: auto"">
+    <figcaption align="center"><i>Quick information</i></figcaption>
+  </div>
+</center>
+
 ### **Data Asset Details**
 
 Users can get a quick preview of asset information on the side panel. 

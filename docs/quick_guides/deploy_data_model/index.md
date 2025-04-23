@@ -13,7 +13,7 @@ Follow the below steps to deploy your data model in production.
 
 <!-- ![5_deploy_lens.png](/quick_guides/deploy_data_model/5_deploy_lens.png) -->
 
-## **Pre-requisites**
+## Pre-requisites
 
 Before you begin, ensure you have the following:
 
@@ -86,7 +86,7 @@ Now that you've got your model ready, it's time to bring it all together by sett
 
 Here's what it includes:
 
-### **1. Resource Meta Section**
+### 1.  Meta Section**
 
 This section is where you give your Lens its identity. You'll provide essential details like:
 
@@ -271,7 +271,7 @@ lens:
 
 <!-- For more detailed configurations, check out the [Lens Resource Manifest File Documentation](https://www.notion.so/Configuration-Fields-of-the-Deployment-Manifest-File-YAML-for-Lens-Resource-a224df19eefd43eb9843f1fd7a619614?pvs=21). -->
 
-## **Step 4: Apply the Lens Manifest File**
+## Step 4: Apply the Lens Manifest File
 
 Deploy the Lens model to DataOS using the `apply` command. Make sure to replace `${manifest-file-path}` with the path of your Lens manifest file path and `${workspace}` with your Workspace name.
 
@@ -287,7 +287,7 @@ INFO[0004] 🔧 applying(public) retail360testnp:v1alpha:lens...created
 INFO[0004] 🛠 apply...complete
 ```
 
-## **Step 5: Validate Lens Resource Creation**
+## Step 5: Validate Lens Resource Creation
 
 To confirm successful deployment, use the `get` command:
 

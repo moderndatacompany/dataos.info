@@ -107,7 +107,7 @@ The subsequent **tabs** will provide you with more detailed information, as expl
 
 This section compiles all activities, including tasks and conversations about the underlying dashboard, providing users with a comprehensive overview.
 
-### **Config**
+<!-- ### **Config** -->
 
 ### **Lineage**
 

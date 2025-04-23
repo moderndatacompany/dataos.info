@@ -10,13 +10,16 @@ REST API enables Lens to deliver data over the HTTP protocol. It is enabled by d
 
 When accessing different API endpoints, the request method and the format of the request body vary. Below is a breakdown of how to interact with each endpoint.
 
-| **Endpoint** | **Method** | **Request Body Type**        | **Body Format Example**                                                                                                                                                                                                                      |
+<div style="text-align: center;" markdown="1">
+
+| **Endpoint** | **Method** | **Request Body Type**        | **Body Format Example** |
 |--------------|------------|------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `meta`       | GET        | N/A                          | N/A                                                                                                                                                                                                                                         |
+| `meta`       | GET        | N/A                          | N/ A                                                                                                                                                                                                                                         |
 | `graphql`    | POST       | GraphQL query                 | **graphql format** <br><br>query LensQuery {<br> table(limit: 10, offset: 0) {<br> products {<br> productcategory<br> average_price<br> average_margin<br> }}<br>}                                                                              |
 | `load`       | POST       | Raw or JSON                   | **json format** <br><br>{<br> "query": {<br> "dimensions": ["products.productcategory"],<br> "measures": ["products.average_price", "products.average_margin"]}<br> }                                                                          |
 | `sql`        | POST       | Raw or JSON                   | **json format**<br><br>{<br> "query": {<br> "dimensions": ["products.productcategory"],<br> "measures": ["products.average_price", "products.average_margin"] } <br> }                                                                   |
 
+</div>
 
 ## Authentication and Authorization
 

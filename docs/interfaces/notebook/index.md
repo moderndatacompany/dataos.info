@@ -6,6 +6,10 @@ search:
 
 # :interfaces-notebook: Notebook
 
+<aside class="callout">
+🗣 The Notebook application has been deprecated from the default DataOS® UI experience. However, it can be made available on demand for customers who require its capabilities. Please contact your DataOS® administrator to enable access to the Notebook app in your environment.
+</aside>
+
 DataOS Notebook interface is based on Jupyter Notebook which is a popular open-source web-based application that allows users to create and share documents that contain live code, equations, visualisations, and narrative text. It provides a user-friendly interface for interactive computing, data analysis, and data visualisation in several programming languages, including Python, and Scala.
 
 In a Notebook, you can write and execute code in cells, which are units of code that can be run independently or in a specific order. You can also include text, images, videos, and equations in markdown cells to explain your code and provide context. 

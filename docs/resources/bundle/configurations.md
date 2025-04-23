@@ -58,7 +58,7 @@ bundle:
 
 ## Attribute configuration
 
-## **`bundle`**
+## `bundle`
 
 **Description:** Bundle-specific section or the mapping containing attributes of Bundle Resource.
 

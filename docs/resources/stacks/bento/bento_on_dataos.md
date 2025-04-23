@@ -131,7 +131,7 @@ It can be seen that Bento Service is successfully deployed and in the running st
 
 
 
-## **Deep dive in Bento Service**
+## Deep dive in Bento Service
 
 ### **Configure the Service Resource Section**
 

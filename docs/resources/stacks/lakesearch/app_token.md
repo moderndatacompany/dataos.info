@@ -4,7 +4,7 @@
 
 Ensure that the user performing these steps has been assigned the `roles:id:operator` tag. This role is required to create and manage users.
 
-## **Steps for an app-user creation and management via CLI**
+## Steps for an app-user creation and management via CLI
 
 This section details the steps to create an app-user, assign roles, generate API keys, and optionally delete the app-user in DataOS using the command-line interface (CLI).
 

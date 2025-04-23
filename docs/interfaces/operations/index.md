@@ -71,7 +71,8 @@ Under Runtime Nodes, click on a node to get the runtime YAML, Logs, and Runtime 
 Runtime Node Logs provide a near real-time view. These logs provide insights into the current health of the node environment and can be helpful for debugging issues.
 
 <aside class="callout">
-🗣 Logs are not guaranteed to persist for any length of time and may be cleared as needed.</aside>
+🗣 Logs are not guaranteed to persist for any length of time and may be cleared as needed.
+</aside>
 
 
 **Runtime Node Usage**
@@ -106,17 +107,18 @@ Select `Cluster` resource for User Space resources. Cluster analysis option appe
   <figcaption>Query load distribution </figcaption>
 </div>
 
-### **Create Resources**
+<!-- ### **Create Resources**
 Operations App provides users with the ability to easily create resources directly from the user interface. This functionality eliminates the need to rely on writing YAML for the resource and using CLI for resource creation, thus helps streamlining the resource management process within the DataOS platform.
 
 <div style="text-align: center;">
   <img src="/interfaces/operations/create_resource1.png" alt="Create Minerva cluster" style="border:1px solid black; width: 80%; height: auto;">
   <figcaption>Create Minerva cluster</figcaption>
-</div>
+</div> -->
 
 
 <aside class="callout">
-🗣 You need ‘Operator’ level permissions to view the Core kernel and Cloud Kernel resources.</aside>
+🗣 You need ‘Operator’ level permissions to view the Core kernel and Cloud Kernel resources.
+</aside>
 
 ## Core Kernel
 Here you will get the resource details responsible for running the core components. These resources are isolated in groups as namespaces within a single cluster. These namespaces help different projects, teams, or customers to share a Kubernetes cluster. Names of resources need to be unique within a namespace but not across namespaces. Namespace-based scoping is applicable only for name-spaced objects *(e.g. Pods(Deployments), Services, workloads, Ingresses etc).* 
@@ -221,7 +223,8 @@ Clicking on the compute node will display the detailed information about the nod
 You can see the deployed DataOS products and their release information here. Click on the Product name to view the release details of all the installed DataOS components. 
  
 <aside class="callout">
-🗣 You need ‘Operator-level permissions' to view the installed DataOS components.</aside>
+🗣 You need ‘Operator-level permissions' to view the installed DataOS components.
+</aside>
 
 ## Use Cases
 

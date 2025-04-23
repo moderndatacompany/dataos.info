@@ -20,9 +20,11 @@ Metric monitoring in Lens is done by Monitor and Pager Resource focuses on track
 
 Equation Monitor observes the Lens and it's semantic model's smetrics to generate the incidents when the condition meets.
 
-### **Create Equation Monitor**
+**1. Create Equation Monitor**
 
-The following configuration sets up a monitor that runs every 2 minutes to evaluate whether the total number of customers of the `productaffinity` semantic model is less than `50`. It retrieves this value from the `total_customers` column in the `customer` table and checks if it meets the condition defined by the equation monitor. If the condition is met, an informational-level incident (`lens-customer-analysis`) is triggered.
+Copy and make the necessary changes in the following equation monitor manifest file.
+
+Runs every 2 mins to check if `total_customers` in the customer table (from the `productaffinity` semantic model) drops below 50. If true, it triggers an info-level incident: lens-customer-analysis
 
 ```yaml
 name: monitor-lens-metric-testing
@@ -60,16 +62,16 @@ monitor:
     severity: info
 ```
 
-#### **Deploy the Equation Monitor**
+**2. Deploy the Equation Monitor**
 
 Deploy the Equation Monitor using the following `apply` command.
 
 ```shell
 dataos-ctl resource apply {manifest-file-path}
 ```
-#### **Validate the created Equation Monitor**
+**3. Validate the created Equation Monitor**
 
-Validate the creation of Equation monitor  and check status using the `get` command:
+Validate the creation of Equation monitor and check status using the `get` command:
 
 === "Command"
 
@@ -83,7 +85,7 @@ Validate the creation of Equation monitor  and check status using the `get` comm
     ```
   
 
-#### **Get the runtime of the Equation Monitor** 
+**4. Get the runtime of the Equation Monitor** 
 
 Get the runtime of the Equation Monitor using the `get runtime` command:
 
@@ -105,9 +107,8 @@ Get the runtime of the Equation Monitor using the `get runtime` command:
 
 The following configuration defines a Pager Resource named `lens-equation-monitoring-pager` used for sending alerts to a Microsoft Teams channel when specific conditions related to a Lens Resource are met. The conditions are defined in the above Equation Monitor manifest file. The pager monitors the `lens-customer-analysis` incident, and when it is triggered, the configured alert is sent.
 
-#### **Create the Equation Monitor Pager**
+**1. Create the Equation Monitor Pager manifest file**
 
-Configure the Pager for the above Monitor manifest file:
 
 ```yaml
 name: lens-equation-monitoring-pager
@@ -144,26 +145,25 @@ pager:
           }
 ```
 
-#### **Apply the Equation Monitor Pager**
+**2. Apply the Equation Monitor Pager**
 
 Deploy the Pager using the following `apply` command:
 
 ```shell
 dataos-ctl resource apply -f {manifest-file-path}
 ```
-
-#### **Validate the creation of Equation Monitor Pager**
+**3. Validate the creation of Equation Monitor Pager**
 
 ```shell
 dataos-ctl get -t pager -w <WORKSPACE_NAME>
 ```
-#### **Check the MS Teams for incident**
+**4. Check the MS Teams for incident**
 
 The above pager raised the incident as shown in the below image:
 
 <img src="/resources/lens/observability/metric_pager_teams_notification.png" 
      alt="Image Description" 
-     style="width: 55%; height: auto;">
+     style="width: 60%; height: auto; border: 1px solid black; border-radius: 4px;">
 
 ### **Report Monitor**
 
@@ -171,9 +171,9 @@ The Report Monitor is designed to monitor and match string values, such as the s
 
 The following section outlines the steps to create a Report Monitor Resource that triggers an incident when the state of a Lens changes from 'active' to 'deleted'. Before proceeding, ensure you have the necessary permissions to create a Monitor Resource.
 
-#### **Create a Report Monitor to observe the semantic model**
+**1. Create a Report Monitor to observe the semantic model**
 
-Begin by creating a manifest file of Monitor Resource as shown in the template below. Copy the template and replace the Lens name with the actual Lens name.
+Copy the template and replace the Lens name with the actual Lens name.
 
 ```yaml
 # Resource meta section
@@ -207,7 +207,7 @@ monitor:
           operator: equals
           value: deleted
 ```
-#### **Validate the  DataOS instance API path**
+**2. Validate the DataOS instance API path**
 
 Before applying the Monitor Resource file, it is recommended to verify the response of the API endpoint using an API testing application like Postman. Add the following URL with `GET` request to test.
 
@@ -219,11 +219,12 @@ Make sure to replace the `<LENS_NAME>` and `<WORKSPACE_NAME>` placeholders with 
 
 <img src="/resources/lens/observability/postman.png" 
      alt="Image Description" 
-     style="width: 55%; height: auto;">
+     style="width: 70%; height: auto; border: 1px solid black; border-radius: 4px;">
+
 
 A status code of 200 indicates that you can proceed further.
 
-#### **Apply the Monitor manifest file**
+**3. Apply the Monitor manifest file**
 
 After validating the API endpoint, the next step is to apply the Monitor manifest file by executing the code below.
 
@@ -231,7 +232,7 @@ After validating the API endpoint, the next step is to apply the Monitor manifes
 dataos-ctl resource apply -f ${{path-of-your-manifest-file}}
 ```
 
-#### **Validate the Monitor**
+**4. Validate the Monitor**
 
 Validate or check the runtime of the Monitor by executing the below command.
 
@@ -272,13 +273,13 @@ INFO[0000] 🔍 monitor...complete
 
 ### **Report Pager Resource**
 
-Create a Report Page Resource  to get notified when the status of Lens changes from active to delete
+Create a Report Page Resource to get notified when the status of Lens changes from active to delete.
 
 This section outlines the steps to create a Pager Resource. While we are using Microsoft Teams for notifications in this guide, you can configure other supported platforms based on your requirements.
 
-#### **Create a Pager manifest file**
+**1. Create a Pager manifest file**
 
-Begin by creating a manifest file that defines the Pager configurations, as shown in the template below. Replace the provided values with your actual values and modify the notification template as needed.
+Replace the provided values with your actual values and modify the notification template as needed.
 
 ```yaml
 name: lensmonitoringpager
@@ -342,7 +343,7 @@ pager:
           }
 ```
 
-#### **Apply the manifest file**
+**2. Apply the manifest file**
 
 Apply the manifest file for Pager Resource using following command in your terminal:
 
@@ -350,7 +351,7 @@ Apply the manifest file for Pager Resource using following command in your termi
 dataos-ctl resource apply -f ${{path-of-your-manifest-file}}
 ```
 
-## **Operational monitoring of the Lens**
+## Operational monitoring of the Lens
 
 Operational monitoring of the Lens and its semantic model can be done through the Operations App and CLI, providing visibility into the state and behavior of Lens Resources, enabling workload performance tracking, historical runtime analysis, and troubleshooting.
 
@@ -359,49 +360,43 @@ When Lens Resource status is pending, it’s essential to check the services run
 To observe and monitor the Lens error logs using the Operations app follow the below steps:
 
 
-#### **Navigate to DataOS**
+#### **Step 1: Navigate to DataOS**
 
-Navigate to the DataOS home page.  Click on the 'Operations' app.
+Go to **DataOS Home Page > 'Operations**.
 
 <img src="/resources/lens/observability/operations_app.png" 
      alt="Image Description" 
-     style="width: 55%; height: auto;">
-  
+     style="width: 70%; height: auto; border: 1px solid black; border-radius: 4px;"> 
 
-#### **Search Lens**
+#### **Step 2: Search Lens**
 
-When you click on the Operations app, it launches with the User Space displayed by default.  The Resources tab in the User Space contains the log level information of the resources that DataOS users can create and manage within the platform.
+When you click on the Operations app, it launches with the User Space displayed by default. The Resources tab in the User Space contains the log level information of the resources that DataOS users can create and manage within the platform.
 
 Here, search the name of your Lens the search result will have Lens Resource and it's behind the scenes running services. For instance, the name.
-  
+    
 
-<img src="/resources/lens/observability/search_operatiions_app_in_lens.png" 
-     alt="Image Description" 
-     style="width: 55%; height: auto;">
-  
-
-#### **Click on the Lens services such as API, Worker, Router etc.**
+#### **Step 3: Click on the Lens services such as API, Worker, Router etc.**
 
 Click on any of the Service with 'pending' state to troubleshoot it. For instance, here we click on the 'productaffinity-api' Service to troubleshoot it. As clicked on the `productaffinity-api` Service a dialog box appears as shown below
 
-
-<img src="/resources/lens/observability/operation_lens_details.png" 
+<img src="/resources/lens/observability/search_operatiions_app_in_lens.png" 
      alt="Image Description" 
-     style="width: 55%; height: auto;">
-  
+     style="width: 70%; height: auto; border: 1px solid black; border-radius: 4px;">
 
 
-Here one can observe the status,  runtime status, building stage etc. From here click on the Resource Runtime tab.
 
-#### **Navigate to the 'Resource Runtime' tab**
+Here one can observe the status, runtime status, building stage etc. From here click on the Resource Runtime tab.
+
+#### **Step 4: Navigate to the 'Resource Runtime' tab**
 
 In the `productaffinity-api` dialog box navigate to the 'Resource Runtime' tab. On Resource Runtime tab click on the `productaffinity-api` node in the Runtime Node section of the page.
 
 <img src="/resources/lens/observability/resource_runtime_tab.png" 
      alt="Image Description" 
-     style="width: 55%; height: auto;">
+     style="width: 70%; height: auto; border: 1px solid black; border-radius: 4px;">
+
   
-#### **Navigate to  the Runtime Node Logs tab**
+#### **Step 5: Navigate to the Runtime Node Logs tab**
 
 As you navigate to the `productaffinity-api` runtime node the runtime node dialog box opens. It gives the details on the following:
 
@@ -418,17 +413,15 @@ These Logs are not guaranteed to persist for any length of time and may be clear
 * **Runtime Node Usage** Check how much memory and CPU is utilized by a Node.
 
 
-### **Observe and Monitor Query Statistics across data sources**
+## Observe and Monitor Query Statistics across data sources
 
  To observe and monitor the source query statistics and to find out which tables in the database are most heavily used, i.e. the number of users queried the table, the number of times it was queried, etc., Navigate to the respective query monitoring tools for each source. These tools provide insights into query execution, performance metrics, and resource utilization, enabling efficient analysis and optimization. For Minerva and Themis Clusters, this can be managed directly within the Operations App.
 
-#### **Check Query Stats for Minerva**
+### **Check Query Stats for Minerva**
 
 To check the query statistics, please follow the steps below:
 
-#### **Open the Operations app**
-
-By default, the User Space tab is displayed upon accessing the Operations app. In User Space click on the 'Minerva Queries' tab to view query execution details.
+**Step 1: Go to Operations app → 'Minerva Queries' tab**  
 
 Set the following filters:
 
@@ -440,60 +433,66 @@ Optionally, refine your results by filtering based on **Cluster**, **Username**,
 
 <img src="/resources/lens/data_sources/minerva/Untitled1.png" 
      alt="Image Description" 
-     style="width: 55%; height: auto;">
+     style="width: 70%; height: auto; border: 1px solid black; border-radius: 4px;">
 
-#### **Select the query id**
 
-Identify and choose the Query ID of interest from the Minerva Queries tab. Once selected, the system will display detailed execution statistics, providing insights into performance, execution time, and resource utilization.
+**Step 2: Select a Query ID** 
 
-#### **Check query statistics for AWSRedshift**
+Pick a Query ID to view stats like performance, execution time, and resource usage.
+
+
+### **Check query statistics for AWSRedshift**
 
 <aside class="callout">
 Ensure the user has AWS console access before proceeding.
 </aside>
 
-#### **Log in to AWS Console** 
+**Step 1:Log in to AWS Console** 
 
 Login to the AWS Console and search for ‘Redshift’ in the AWS Console search bar to access the Redshift.
 
 <img src="/resources/lens/data_sources/awsredshift/Untitled1.png" 
      alt="Image Description" 
-     style="width: 55%; height: auto;">
+     style="width: 70%; height: auto; border: 1px solid black; border-radius: 4px;">
 
 
-#### **Select Redshift Cluster**
+**Step 2: Select Redshift Cluster**
 
 Navigate to the Amazon Redshift service from the search results. The Redshift dashboard will be displayed. Select the appropriate region and choose the desired cluster from the available list.s
 
 <img src="/resources/lens/data_sources/awsredshift/Untitled2.png" 
      alt="Image Description" 
-     style="width: 55%; height: auto;">
+     style="width: 70%; height: auto; border: 1px solid black; border-radius: 4px;">
 
-#### **Access Query Monitoring**
+
+**Step 3: Access Query Monitoring**
 
 Select the desired cluster to monitor. Navigate to the 'Query monitoring' tab to view query statistics.
 
 <img src="/resources/lens/data_sources/awsredshift/Untitled3.png" 
      alt="Image Description" 
-     style="width: 55%; height: auto;">
+     style="width: 70%; height: auto; border: 1px solid black; border-radius: 4px;">
 
-#### **View running and completed queries**
+
+**Step 4: View running and completed queries**
 
 Under the 'Query monitoring' tab, a list of running and completed queries will be displayed. 
 
 <img src="/resources/lens/data_sources/awsredshift/Untitled4.png" 
      alt="Image Description" 
-     style="width: 55%; height: auto;">
+     style="width: 70%; height: auto; border: 1px solid black; border-radius: 4px;">
 
-#### **Monitor specific query**
+
+**Step 5: Monitor specific query**
 
 Select the query of interest to monitor. The query statistics will be displayed, as shown in the example below.
 
 <img src="/resources/lens/data_sources/awsredshift/Untitled5.png" 
      alt="Image Description" 
-     style="width: 55%; height: auto;">
+     style="width: 70%; height: auto; border: 1px solid black; border-radius: 4px;">
 
-#### **Check Query Stats for Themis**
+
+### **Check Query Stats for Themis**
 
 <aside class="callout">
   Please ensure you have the required permission to access the Operations.
@@ -501,28 +500,32 @@ Select the query of interest to monitor. The query statistics will be displayed,
 
 To check the query statistics, please follow the steps below:
 
-1. **Access the Themis Cluster:** Navigate to the Themis cluster. You should see a screen similar to the image below:
+**Step 1: Access the Themis Cluster:** 
+
+Navigate to the Themis cluster. You should see a screen similar to the image below:
 
 <img src="/resources/lens/data_sources/Themis/Untitled(7).png" 
      alt="Image Description" 
-     style="width: 55%; height: auto;">
+     style="width: 70%; height: auto; border: 1px solid black; border-radius: 4px;">
 
 
-2. **Select the Running Driver:** Choose the running driver. **This driver will always be the same, regardless of the user, as queries will be directed to the creator of the Themis cluster**. The running driver remains consistent for all users.
 
-3. **View the Spark UI:** Go to the terminal and use the following command to view the Spark UI:
+**Step 2: Select the Running Driver:** Choose the running driver. This driver will always be the same, regardless of the user, as queries will be directed to the creator of the Themis cluster.
+
+**Step 3: View the Spark UI:** Go to the terminal and use the following command to view the Spark UI:
 
 ```yaml
 dataos-ctl -t cluster -w public -n themislens --node themis-themislens-iamgroot-default-a650032d-ad6b-4668-b2d2-cd372579020a-driver view sparkui
 
-dataos-ctl -t cluster -w public -n themis_cluster_name --node  driver_name view sparkui
+dataos-ctl -t cluster -w public -n themis_cluster_name --node driver_name view sparkui
 ```
 
 The following interface will be displayed:
 
 <img src="/resources/lens/data_sources/Themis/Untitled(9).png" 
      alt="Image Description" 
-     style="width: 55%; height: auto;">
+     style="width: 70%; height: auto; border: 1px solid black; border-radius: 4px;">
+
 
 
 ## Infrastructure monitoring of the Lens Service using Grafana
@@ -533,9 +536,7 @@ In a Lens deployment, three core services are typically running: API, Worker, an
 
 For instance, suppose the Flash Service is scheduled to run at 12:00 PM every day. Using Grafana, a dashboard can be configured to monitor its CPU usage and memory consumption over time, providing detailed insights into resource utilization and allowing for effective monitoring.
 
-### **Step-by-step process for monitoring the Flash Service of the Lens**
-
-**Defining Resource requests and limits**
+**1. Defining Resource requests and limits**
 
 When deploying the Flash service, resource requests and limits are defined in the YAML configuration file. These settings control the amount of CPU and memory allocated to the service, ensuring it operates within specified boundaries.
 
@@ -552,7 +553,7 @@ resources:
         memory: 450Gi
 ```
 
-### **Create dashboard and monitor usage**
+**2. Create dashboard and monitor usage**
 
 After the Flash service is deployed, a Grafana dashboard should be created to monitor key metrics such as CPU usage and memory consumption. This dashboard will provide real-time data about how resources are being utilized over time. 
 
@@ -574,29 +575,33 @@ These alerts can be sent via various channels like email, MS Teams, or other mes
 
 To create dashboard using Grafana follow the below steps:
 
-Navigate to the DataOS Home Page > Grafana.
+Navigate to the **DataOS Home Page > Grafana**.
 
 <img src="/resources/lens/observability/grafana_1.png" 
      alt="Image Description" 
-     style="width: 55%; height: auto;">
+     style="width: 70%; height: auto; border: 1px solid black; border-radius: 4px;">
+
 
 On Grafana Home page click on the 'Dashboards' button in the side panel tab.
 
 <img src="/resources/lens/observability/grafana_2.png" 
      alt="Image Description" 
-     style="width: 55%; height: auto;">
+     style="width: 70%; height: auto; border: 1px solid black; border-radius: 4px;">
+
 
 In the 'Dashboards' page click on the 'Filter by tag' and click on the 'Kubernetes' tag.
 
 <img src="/resources/lens/observability/grafana_3.png" 
      alt="Image Description" 
-     style="width: 55%; height: auto;">
+     style="width: 70%; height: auto; border: 1px solid black; border-radius: 4px;">
+
 
 A list of Kubernetes dashboards will appear. To view the pod service of the Lens, check the 'Kubernetes/Views/Pods' checkbox.
 
 <img src="/resources/lens/observability/grafana_4.png" 
      alt="Image Description" 
-     style="width: 55%; height: auto;">
+     style="width: 70%; height: auto; border: 1px solid black; border-radius: 4px;">
+
 
 
 After checking the Pods checkbox, the dashboard page will load. Configure the Kubernetes source and namespace settings to monitor the desired pod. The configuration should be as follows:
@@ -610,10 +615,11 @@ With the above configuration, the setup will look like this:
 
 <img src="/resources/lens/observability/grafana_5.png" 
      alt="Image Description" 
-     style="width: 55%; height: auto;">
+     style="width: 70%; height: auto; border: 1px solid black; border-radius: 4px;">
+
 
 After completing the configuration, the monitoring dashboard will appear as follows:
 
 <img src="/resources/lens/observability/grafana_6.png" 
      alt="Image Description" 
-     style="width: 55%; height: auto;">
+     style="width: 70%; height: auto; border: 1px solid black; border-radius: 4px;">

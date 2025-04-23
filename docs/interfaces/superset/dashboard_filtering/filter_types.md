@@ -7,7 +7,7 @@ To create and manage the filters, on the left corner of the dashboard click on t
 </div>
 
 
-## **Filter Types**
+## Filter Types
 
 In the window labeled **Add and edit filters** below, you'll see two tabs: **Settings** and **Scoping**. Our immediate attention will be on the  **Settings** tab, which is the default selection.
 
@@ -21,7 +21,7 @@ In the window labeled **Add and edit filters** below, you'll see two tabs: **Set
 - **Filter Name**: Provide a brief descriptive title for the new filter. Usually, this corresponds to the selection in the subsequent **Column** field.
 - **Column**: Pick a column to which the filter should be applied. This field is displayed when either the **Value** or **Numerical Range** filter types are chosen.
 
-## **Value Filter Type**
+## Value Filter Type
 
 This filter type generates a dropdown menu filled with all the available values linked to the chosen column (**Column** field).
 
@@ -43,7 +43,7 @@ In the above example, we opted to filter by the year 2022.
 
 To apply the filter, choose a value and then select **Apply Filters**. The charts within the dashboard will refresh and display the filtered data.
 
-## **Numerical Range Filter Type**
+## Numerical Range Filter Type
 
 This filter type generates a range slider allowing you to define a starting and ending point based on numerical values extracted from the chosen column.
 
@@ -81,7 +81,7 @@ To implement the filter, specify a numerical range and then click on **Apply Fil
 
 
 
-## **Time Range Filter Type**
+## Time Range Filter Type
 
 This filter type implements a button filter that, when chosen, activates the Superset's Edit Time Range functionality. This corresponds to the Time Range field utilized during the creation of a new chart.
 
@@ -103,7 +103,7 @@ This configuration will look like:
 
 To apply the filter, select and configure a time range, then select **Apply Filters**. The charts within the dashboard will refresh and display the filtered data.
 
-## **Time Column Filter Type**
+## Time Column Filter Type
 
 This filter type generates a dropdown menu, allowing you to choose a new dashboard-level time column, which will supersede any existing time columns defined at the chart level.
 
@@ -126,7 +126,7 @@ and the drop-down filter, titled "Select Time Column" from the **Filter Name**�
 
 To apply the dashboard-level time column, select a time column option and then select **Apply Filters**. The charts within the dashboard will refresh and display the filtered data.
 
-## **Time Grain Filter Type**
+## Time Grain Filter Type
 
 This filter type generates a drop-down menu that allows you to select a time granularity. Upon application, all timestamps are categorized according to the chosen time grain.
 

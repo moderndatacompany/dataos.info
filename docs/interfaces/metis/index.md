@@ -8,7 +8,7 @@ search:
 
 Metis serves as a centralized hub for all types of metadata, offering a 360° view into every data product, covering a spectrum of data assets (ranging from tables to dashboards), and DataOS Resources such as Workflows, Services, Clusters, Policies, etc.
 
-## **Unified Metadata Infrastructure**
+## Unified Metadata Infrastructure
 
 Metis facilitates the cataloging and documentation of metadata for entities of your data ecosystem such as Products, Data Assets and DataOS Resources into a unified repository, aiming to offer a consolidated view. It also keeps updated information about the state of all the entities and their relationships.
 

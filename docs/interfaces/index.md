@@ -29,7 +29,7 @@ The Application Programming Interface (API) in DataOS provides a way to interact
 From the DataOS Home app, you can access the unique capabilities of the components and apps.
 
 <center>
-  <img src="/interfaces/dataos_homepage.png" style="width:31rem;" alt="DataOS Home App">
+  <img src="/interfaces/interfaces.png" style="width:50rem; border:1px solid black;" alt="DataOS Home App">
   <figcaption><i>DataOS Home App</i></figcaption>
 </center>
 
@@ -48,15 +48,15 @@ Following native apps are available on DataOS Graphical User Interface:
     [:octicons-arrow-right-24: Read more](/interfaces/atlas/) -->
 
 
--   :interfaces-audiences:{ .lg .middle } **Audience**
+<!-- -   :interfaces-audiences:{ .lg .middle } **Audience**
 
     ---
 
     Leverage semantic models for customer segmentation and data-driven decisions.
 
-    [:octicons-arrow-right-24: See more](/interfaces/audiences/)
+    [:octicons-arrow-right-24: See more](/interfaces/audiences/) -->
 
--   :material-security-network:{ .lg .middle } **Bifrost**
+-   :material-security-network:{ .lg .middle } **Bifrost Governance**
 
     ---
 
@@ -73,13 +73,12 @@ Following native apps are available on DataOS Graphical User Interface:
 
     [:octicons-arrow-right-24:  Learn more](/interfaces/data_product_hub/)
 
--   :interfaces-lens:{ .lg .middle } **Lens**
+-   :interfaces-lens:{ .lg .middle } **Grafana**
 
     ---
 
-    Model data, define measures, and create KPIs for data-informed decisions.
-
-    [:octicons-arrow-right-24:  Learn more](/interfaces/lens/)
+    Monitor your system with Grafana dashboards for issues like traffic spikes, high CPU usage, and alerts to ensure optimal performance.
+    [:octicons-arrow-right-24:  Learn more](/learn/operator_learn_track/alerts_grafana/)
 
 -   :interfaces-metis:{ .lg .middle } **Metis**
 
@@ -89,13 +88,13 @@ Following native apps are available on DataOS Graphical User Interface:
 
     [:octicons-arrow-right-24:  Learn more](/interfaces/metis/)
 
--   :interfaces-notebook:{ .lg .middle } **Notebook**
+<!-- -   :interfaces-notebook:{ .lg .middle } **Notebook**
 
     ---
 
     Use Jupyter Notebook on DataOS for data science projects and analysis.
 
-    [:octicons-arrow-right-24:  Learn more](/interfaces/notebook/)
+    [:octicons-arrow-right-24:  Learn more](/interfaces/notebook/) -->
 
 
 -   :interfaces-operations:{ .lg .middle } **Operations**
@@ -119,13 +118,16 @@ Following native apps are available on DataOS Graphical User Interface:
 
 Superset is a business intelligence solution seamlessly integrated into DataOS. It simplifies the creation of customized reports and dashboards, making it easy to visualize complex data. With a wide range of visualization options, Superset enables clear interpretation, aiding informed decision-making. to learn more, click [here](/interfaces/superset/). -->
 
+<aside class="callout">
+🗣️ The DataOS Home page may vary for different customers. In some cases, it includes customer-specific or custom-built applications that are specially developed and integrated into the Home interface. This approach ensures that every customer’s DataOS Home is aligned with their unique business requirements. 
+</aside>
 ### **Manage Profile**
 
 DataOS Home app also enables you to manage your profile.
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/profileinfo.png" alt="Profile Information" style="width:26rem; border:1px solid black;">
+    <img src="/interfaces/profile.png" alt="Profile Information" style="width:30rem; border:1px solid black;">
     <figcaption align="center"><i>Profile Information</i></figcaption>
   </div>
 </center>
@@ -141,32 +143,32 @@ API keys/tokens are used to authenticate requests to  DataOS resources. For exam
 
 2. Click on the **Add API Key** link.
 
-<center>
-  <div style="text-align: center;">
-    <img src="/interfaces/token_apikey.png" alt="Adding API key" style="width:41rem; border:1px solid black;">
-    <figcaption align="center"><i>Adding API key</i></figcaption>
-  </div>
-</center>
+    <center>
+      <div style="text-align: center;">
+        <img src="/interfaces/token_apikey.png" alt="Adding API key" style="width:60rem; border:1px solid black;">
+        <figcaption align="center"><i>Adding API key</i></figcaption>
+      </div>
+    </center>
 
 
 3. Type in the name for this token and also set the validity period of your token based on the security requirements as per your business needs. Click **Save** to create one for you.
 
-<center>
-  <div style="text-align: center;">
-    <img src="/interfaces/add_key.png" alt="Providing name for the token" style="width:41rem; border:1px solid black;">
-    <figcaption align="center"><i>Providing name for the token</i></figcaption>
-  </div>
-</center>
+    <center>
+      <div style="text-align: center;">
+        <img src="/interfaces/add_key.png" alt="Providing name for the token" style="width:60rem; border:1px solid black;">
+        <figcaption align="center"><i>Providing name for the token</i></figcaption>
+      </div>
+    </center>
 
 
 4. The API key is listed below. Clicking on the “eye icon” will make the full API key visible. Click on the API key to copy it.
 
-<center>
-  <div style="text-align: center;">
-    <img src="/interfaces/key_created.png" alt="API key created" style="width:41rem; border:1px solid black;">
-    <figcaption align="center"><i>API key created</i></figcaption>
-  </div>
-</center>
+    <center>
+      <div style="text-align: center;">
+        <img src="/interfaces/key_created.png" alt="API key created" style="width:60rem; border:1px solid black;">
+        <figcaption align="center"><i>API key created</i></figcaption>
+      </div>
+    </center>
 
  
 
@@ -202,13 +204,4 @@ INFO[0000] 🔑 user apikey...complete
   aH9sAY5fcXVpY2tseV9ldmVubHlfY29ycmVjdF9raXQuM2ZiOTI4ZTYaH9sAY5fcXTUzLTgaH9sAY5fcXaH9sAY5fcX0 | apikey | 2022-06-22T12:00:00Z | token_bc6hggaa435v8b5f3
 ```
 
-### **View Depots**
-You can see a complete list of depots created in your DataOS context for accessing data sources.
-
-<center>
-  <div style="text-align: center;">
-    <img src="/interfaces/depots.png" alt="Depots" style="width:41rem; border:1px solid black;">
-    <figcaption align="center"><i>Depots</i></figcaption>
-  </div>
-</center>
 

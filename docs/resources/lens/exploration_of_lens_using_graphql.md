@@ -32,7 +32,7 @@ To authenticate API requests, you need a DataOS API key. This key validates your
     ```
 3. Note down your API key and keep it secure. You will use this key to authenticate your API requests.
 
-APIkey tokens can also be fetched from the DataOS GUI, for more details refer to the [documentation here](/interfaces/#create-tokens).
+API key tokens can also be fetched from the DataOS GUI, for more details refer to the [documentation here](/interfaces/#create-tokens).
 
 ### **Configuring User Groups**
 

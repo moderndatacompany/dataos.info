@@ -2,7 +2,7 @@
 
 We will now introduce the **Single value** configuration option, which is exclusive to the Numerical Range filter. This option is utilized to set up a single value type for minimum, maximum, and exact values.
 
-## **Filter Configuration Options**
+## Filter Configuration Options
 
 The following configuration options are available for these filter types:
 
@@ -15,7 +15,7 @@ The following configuration options are available for these filter types:
 
 ---
 
-## **Single Value Range**
+## Single Value Range
 
 **Option available for this Filter Type: Numerical Range**
 

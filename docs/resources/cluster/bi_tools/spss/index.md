@@ -76,12 +76,13 @@ DataOS and SPSS Statistics integration works to take advantage of powerful stati
 
 ## Generate DataOS API token
 
+
 1. Sign in to your DataOS instance with your username and password. On the DataOS home page, click on Profile.
 
     <center>
       <div style="text-align: center;">
-        <img src="/resources/cluster/bi_tools/spss/integration-dataos-homepage.png" alt="DataOS homepage" style="width: 40rem; border: 1px solid black;">
-        <figcaption>DataOS homepage</figcaption>
+        <img src="/resources/cluster/home.png" alt="DataOS Homepage" style="width: 40rem; border: 1px solid black;">
+        <figcaption>DataOS Homepage</figcaption>
       </div>
     </center>
 
@@ -89,17 +90,18 @@ DataOS and SPSS Statistics integration works to take advantage of powerful stati
 
     <center>
       <div style="text-align: center;">
-        <img src="/resources/cluster/bi_tools/spss/integration-dataos-profile.png" alt="Profile" style="width: 40rem; border: 1px solid black;">
+        <img src="/resources/cluster/bi_tools/powerbi/using_odbc_driver/integration-dataos-profile.png" alt="Profile" style="width: 40rem; border: 1px solid black;">
         <figcaption>Profile</figcaption>
       </div>
     </center>
 
-3. Click on the Add API Key link on the Tokens tab:
 
+3. Click on the Add API Key link on the Tokens tab.
+    
     <center>
       <div style="text-align: center;">
-        <img src="/resources/cluster/bi_tools/spss/integration-dataos-token-apikey.png" alt="API key" style="width: 40rem; border: 1px solid black;">
-        <figcaption>API key</figcaption>
+        <img src="/resources/cluster/bi_tools/powerbi/using_odbc_driver/integration-dataos-token-apikey.png" alt="DataOS Token" style="width: 40rem; border: 1px solid black;">
+        <figcaption>DataOS Token</figcaption>
       </div>
     </center>
 
@@ -107,7 +109,7 @@ DataOS and SPSS Statistics integration works to take advantage of powerful stati
 
     <center>
       <div style="text-align: center;">
-        <img src="/resources/cluster/bi_tools/spss/integration-add-key.png" alt="Add key" style="width: 40rem; border: 1px solid black;">
+        <img src="/resources/cluster/bi_tools/powerbi/using_odbc_driver/integration-add-key.png" alt="Add key" style="width: 40rem; border: 1px solid black;">
         <figcaption>Add key</figcaption>
       </div>
     </center>
@@ -116,7 +118,7 @@ DataOS and SPSS Statistics integration works to take advantage of powerful stati
 
     <center>
       <div style="text-align: center;">
-        <img src="/resources/cluster/bi_tools/spss/integration-key-created.png" alt="Key created" style="width: 40rem; border: 1px solid black;">
+        <img src="/resources/cluster/bi_tools/powerbi/using_odbc_driver/integration-key-created.png" alt="Key created" style="width: 40rem; border: 1px solid black;">
         <figcaption>Key created</figcaption>
       </div>
     </center>
@@ -202,7 +204,7 @@ To use the Simba Presto ODBC Driver in the SPSS Statistics application, you need
 8. Click OK to save your DSN.
 
 > 📌 Note: If you encounter any error in setting up the connection, please check the DataOS URL, and validity of the API key and try again or contact your administrator.
-> 
+
 
 ## Access DataOS on SPSS Statistics
 

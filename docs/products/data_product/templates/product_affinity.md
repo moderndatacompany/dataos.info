@@ -1316,7 +1316,7 @@ dataos-ctl product apply -f /home/work/product_affinity/dp.yaml
 
 The Data Product is created successfully!
 
-## **Deploy the Data Product**
+## Deploy the Data Product
 
 To deploy the Data Product on the Data Product Hub to make it discoverable and consumable, the Scanner Workflow is created, as given below.
 

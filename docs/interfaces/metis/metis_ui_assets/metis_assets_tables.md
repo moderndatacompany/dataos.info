@@ -190,7 +190,7 @@ The lineage graph illustrates the relationships between workflows and derived da
 
 You can explore more by clicking on the dataset/workflow nodes of the lineage graph.
 
-***Dataset***
+**Dataset**
 
 It opens up the side pane to display additional information. It gives you links for Source, Database, Schema to further explore them. Users also get the option to switch to the Workbench app to run queries and explore the dataset.
 
@@ -202,7 +202,7 @@ It opens up the side pane to display additional information. It gives you links 
 </center>
 
 
-***Job***
+**Job**
 
 Users will get the Workflow information on the side pane and link to Workflow Resource to know more about.
 

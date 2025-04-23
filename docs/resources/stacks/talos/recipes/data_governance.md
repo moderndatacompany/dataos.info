@@ -2,7 +2,7 @@
 
 An **Operator** or **Administrator** can control who can create, read, update, or delete Talos Services by assigning roles or use cases through **Bifrost**.
 
-## **Access Permissions for Talos**
+## Access Permissions for Talos
 
 To create and manage Talos, specific permissions must be assigned. The exact role names and permission levels may vary across organizations based on their governance policies.
  
@@ -14,7 +14,7 @@ If granting access through a **use case**, the following use case is required:
 
 If access is granted using a **role**, the role containing the Talos-related use case must be assigned. For example, the `system-dev` role includes permissions to manage Talos and `data-dev role` includes the premission to read Talos Services.
 
-## **How to Grant a Use Case to a User?**
+## How to Grant a Use Case to a User?
 
 ### **1. Navigate to DataOS**
 
@@ -57,7 +57,7 @@ After completing, click **"Grant"** to apply the changes. The user’s permissio
 This governance model ensures that Talos are securely managed while providing controlled access to authorized users.
 
 
-## **Adding User Groups**
+## Adding User Groups
 
 Data access in Talos can be governed based on individual users or user groups, allowing control over data visibility and interaction based on each group's role. User groups can be defined in `config.yaml` to control API access.
 

@@ -237,7 +237,7 @@ Conditions are defined using the information received on the incident payload ag
 
 The table below describes the various attributes used for defining conditions:
 
-<center>
+<div style="text-align: center;" markdown="1">
 
 | Attribute&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- | 
@@ -246,7 +246,7 @@ The table below describes the various attributes used for defining conditions:
 | [`operator`](/resources/pager/configurations/#operator) | string | none | equals | mandatory |
 | [`value`](/resources/pager/configurations/#value) | string | none | valid value | mandatory |
 
-</center>
+</div>
 
 For more information about the below attributes, refer to the link: [Attributes of Pager manifest](/resources/pager/configurations/#conditions).
 
@@ -350,7 +350,7 @@ An output is the destination where the notification is delivered once the alert 
         ```
 The table below describes the various attributes used for defining conditions:
 
-<center>
+<div style="text-align: center;" markdown="1">
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- | 
@@ -361,7 +361,7 @@ The table below describes the various attributes used for defining conditions:
 | [`headers`](/resources/pager/configurations/#headers) | string | none | valid api headers | mandatory |
 | [`authorization`](/resources/pager/configurations/#authorization) | string | none | valid api headers | mandatory |
 
-</center>
+</div>
 
 For more information about the below attributes, refer to the link below: [Attributes of Pager](/resources/pager/configurations/#output)
 

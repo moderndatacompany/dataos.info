@@ -25,7 +25,7 @@ appDetailSpec: {
 
 The `appDetailSpec` value is a JSON string containing the subsequent attributes:
 
-<center>
+<div style="text-align: center;">
 
 | Attribute       | Data Type | Requirement | Default Value | Possible Value                  |
 | --------------- | --------- | ----------- | ------------- | -------------------------------- |
@@ -41,7 +41,7 @@ The `appDetailSpec` value is a JSON string containing the subsequent attributes:
 | [`disabled`](#disabled)        | boolean   | optional           | false             | true/false                |
 | [`navigation`](#navigation)      | mapping | optional         | none             | custom navigation settings |
 
-</center>
+</div>
 
 ## Procedure for creating the application shortcut
 

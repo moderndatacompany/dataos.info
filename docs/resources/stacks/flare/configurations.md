@@ -150,7 +150,7 @@ stackSpec:                                              # Flare Stack-specific s
 Below is the documentation for each attribute in the provided Flare `stackSpec` YAML manifest:
 
 
-## **`driver`**
+## `driver`
 
 **Description:** The `driver` section configures the driver pod in Flare, specifying resource limits such as CPU cores and memory.
 

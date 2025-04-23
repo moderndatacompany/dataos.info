@@ -1,7 +1,7 @@
 # Talos for Snowflake
 
 
-## **Prerequisites**
+## Prerequisites
 
 To access the data using API from snowflake, User need the following:
 
@@ -67,7 +67,7 @@ To access the data using API from snowflake, User need the following:
 
 
 
-## **Steps**
+## Steps
 
 ### **Connect to the data source**
 

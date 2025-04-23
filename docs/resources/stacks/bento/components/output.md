@@ -25,9 +25,14 @@ Outputs have an optional field `label` that can uniquely identify them in obse
 
 ## Various Output Sources and Their YAML Configurations
 
+<div style="text-align: center;" markdown="1">
+
 |Name|Category|
 |---|---|
 |[Fastbase Depot](/resources/stacks/bento/components/output/fastbase_depot/)|Depot, Pulsar|
 |[kafka Depot](/resources/stacks/bento/components/output/kafka_depot/)|Depot, Kafka|
 |[Kafka](/resources/stacks/bento/components/output/kafka/)|Kafka|
 |[Pulsar](/resources/stacks/bento/components/output/pulsar/)|Pulsar|
+
+
+</div>

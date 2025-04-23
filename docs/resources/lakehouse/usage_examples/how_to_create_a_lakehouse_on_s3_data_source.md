@@ -2,7 +2,7 @@
 
 This guide outlines the steps to create a Lakehouse resource on Amazon Simple Storage Service (S3) data source.
 
-## **Procedure**
+## Procedure
 
 ### **Step 1: Create Instance Secret manifest**
 

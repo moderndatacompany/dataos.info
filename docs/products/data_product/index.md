@@ -20,9 +20,10 @@ sharing, data monetization, analytics and application integration.
 
 >  **-** Gartner<sup>&reg;</sup><span class="circle"></span>
 
+
 <center>
-![Data Product Development lifecycle](/products/data_product/diagram.jpg){: style="width:36rem;" }
-<figcaption><i>Data Product Development lifecycle</i></figcaption>
+  <img src="/products/data_product/diagram.jpg" alt="Data Product Development lifecycle" style="width:40rem; padding: 5px;" />
+  <figcaption><i>Data Product Development lifecycle</i></figcaption>
 </center>
 
 
@@ -58,9 +59,10 @@ sharing, data monetization, analytics and application integration.
 ## Data Product Architecture
 The architecture of a Data Product within DataOS involves several components designed to facilitate the data consumption and deliver business value. This section outlines the primary consumption ports of a Data Product and introduces the additional Experience Ports offered by DataOS.
 
+
 <center>
-![Data Product](/products/data_product/ach.jpg){: style="width:31rem;" }
-<figcaption><i>Data Product Architecture</i></figcaption>
+  <img src="/products/data_product/ach.jpg" alt="Data Product Architecture" style="width:30rem; padding: 5px;" />
+  <figcaption><i>Data Product Architecture</i></figcaption>
 </center>
 
 

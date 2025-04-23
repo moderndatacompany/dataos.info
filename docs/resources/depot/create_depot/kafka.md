@@ -102,7 +102,7 @@ To ensure that your Depot has been successfully created, you can verify it in tw
     dataos-ctl get -t depot -a
     ```
 
-You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
+You can also access the details of any created Depot through the DataOS GUI in the [Operations App](/interfaces/operations/) and [Metis UI](/interfaces/metis/).
 
 ## Delete a Depot
 

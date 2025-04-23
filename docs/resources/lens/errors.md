@@ -13,9 +13,12 @@ For those building custom data applications, utilizing the meta endpoint of the 
 ## Can't parse timestamp
 
 
-This error indicates that the data source was unable to interpret the value of a time dimension as a valid timestamp. Reviewing the format of the time dimension and ensuring it matches the expected timestamp format can resolve this issue.
-
+This error indicates that the data source was unable to interpret the value of a time dimension as a valid timestamp. Reviewing the format of the time dimension and ensuring it matches the expected timestamp format can resolve this issue
 
 ## Primary key is required when join is defined
 
 This error suggests that a Lens with joins has been defined without specifying a primary key. To resolve this, ensure that a primary key is set for any Lens that includes joins.
+
+## Credential url cannot be parsed
+
+Make sure you give the correct path of the base URL in the Lens `deployment.yml` manifest file.

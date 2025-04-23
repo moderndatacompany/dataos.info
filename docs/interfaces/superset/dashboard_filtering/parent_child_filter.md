@@ -52,7 +52,7 @@ When done, select **Save**.
 Now, let's have a closer look at how each configuration option works.
 
 
-## **Create a Parent-Child Filter Relationship**
+## Create a Parent-Child Filter Relationship
 
 **Option available for this Filter Type: Value**
 

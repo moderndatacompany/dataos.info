@@ -144,7 +144,7 @@ To verify the successful execution of the query, navigate to the Workbench, then
 - **Query Execution**: After formulating the query, the user executes it by clicking the 'Run' button.
 - **Result Retrieval**: The outcomes of the executed query are displayed in the pane situated below the query input area.
 
-<center> ![ Query Workbench](/resources/database/query_workbench.png) </center>
+ ![ Query Workbench](/resources/database/query_workbench.png) 
 
 <center> Quering the customers database through Workbench</center>
 

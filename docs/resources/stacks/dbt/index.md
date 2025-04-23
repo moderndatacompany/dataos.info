@@ -18,7 +18,7 @@ The core capabilities of dbt (data build tool) can be leveraged by provisioning 
 
    -  **Basics of data warehouses:** A foundational understanding of data engineering is highly beneficial. It doesn't need to be extensive, but grasping key concepts is important.
 
-# How to create and use dbt workflow?
+## How to create and use dbt workflow?
 
 ### **Create a Workflow manifest**
 
@@ -170,7 +170,7 @@ The manifest below shows a sample structure of the DBT `stackSpec` Section:
           - git: "https://github.com/dataos/dbt101.git"
     ```
 
-### Stack spec section
+### **Stack spec section**
 
 The DBT `stackSpec` section comprises of following key attributes:
 
@@ -473,7 +473,7 @@ group by 1
 
 ```
     
-### Marts/Core Folder
+### **Marts/Core Folder**
     
 1. **Customer Dimension Creation:**
     - Create a dimensional view of customers, incorporating information from the staged customer data.
@@ -563,7 +563,7 @@ left join customer_range_per_paid_amount as crp
 on tac.global_paid_amount >= crp.min_range
 and tac.global_paid_amount <= crp.max_range
 ```
-### Seeds Folder
+### **Seeds Folder**
     
 **Objective:**
 Create non-volatile datasets for mapping and enriching data.
@@ -588,7 +588,7 @@ min_range,max_range,classification
 ```
 Run command to materialize CSV file into a table in data platform.
     
-### Analyses Folder
+### **Analyses Folder**
     
 **Objective:**
 Perform detailed analytics and generate insights for reporting.

@@ -2,7 +2,7 @@
 
 We will now introduce cross-filtering. Cross-filtering allows you to select a data element from a chart (such as a table row or a slice from a pie chart) and apply it as a filter across all eligible charts within the dashboard.
 
-## **Eligible Charts**
+## Eligible Charts
 
 To use cross-filtering, you need to use an eligible chart:
 
@@ -19,7 +19,7 @@ To use cross-filtering, you need to use an eligible chart:
 - Table Chart
 - World Maps
 
-## **Applying Cross-Filters**
+## Applying Cross-Filters
 
 Cross-filters can be used in any dashboard with eligible charts.
 
@@ -73,7 +73,7 @@ You can check which cross-filters are active in the dashboard filter bar.
 
 If you wish to apply a filter for multiple values, use the dashboard filter bar.
 
-## **Disabling Cross-Filters**
+## Disabling Cross-Filters
 
 In some situations, you may want to prevent dashboard consumers from using cross-filtering.
 

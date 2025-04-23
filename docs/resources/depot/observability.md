@@ -81,7 +81,7 @@ monitor:
           value: deleted
 ```
 
-### **Step 2: Validate the  DataOS instance API path**&#x20;
+### **Step 2: Validate the  DataOS instance API path**
 
 Before applying the Monitor Resource file, it is recommended to check the response of the API endpoint.
 

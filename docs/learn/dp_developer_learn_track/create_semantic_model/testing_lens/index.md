@@ -199,7 +199,7 @@ Add the environment variables to connect to the data source via Depot.
 🗣️ The Lens image may change over time; contact the DataOS Administrator for the latest tag.
 </aside>
 
-## **Testing Lens in development environment**
+## Testing Lens in development environment
 
 After successfully installing all the dependencies for your local environment, you navigate to your Lens project directory. There, you execute the `docker-compose up` command in your terminal to run the `docker-compose.yml` manifest file. Additionally, you ensure that the API key is correctly configured to facilitate a smooth setup.
 

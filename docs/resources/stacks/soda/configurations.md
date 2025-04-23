@@ -153,7 +153,7 @@ stackSpec:
 
 ## Configuration Attributes
 
-## **`stackSpec`**
+## `stackSpec`
 
 **Description:** Specification for the Soda Stack, including inputs for various datasets and associated checks.
 

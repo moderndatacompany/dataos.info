@@ -170,7 +170,8 @@ metrics:
 
 ## Metric Targets
 
-<center>
+<div style="text-align: center;" markdown="1">
+
 
 |Name|Category|
 |---|---|
@@ -181,3 +182,5 @@ metrics:
 |[none](/resources/stacks/bento/components/metrics/none/)|None|
 |[prometheus](/resources/stacks/bento/components/metrics/prometheus/)|Prometheus|
 |[statsd](/resources/stacks/bento/components/metrics/statsd/)|StatsD|
+
+</div>

@@ -83,7 +83,7 @@ v1beta: # mandatory
 
 
 
-## **Product meta section**
+## Product meta section
 
 This section serves as the header of the manifest file, defining the overall characteristics of the Data Product you wish to create. It includes attributes common to all types of Products in DataOS. 
 
@@ -247,7 +247,7 @@ refs:
 </center>
 
 
-## **Data Product-specific section**
+## Data Product-specific section
 
 Data Product-specific section is different for different versions. This section comprises attributes specific to the Data Product for each version. The attributes within the section are listed below:
 

@@ -39,7 +39,7 @@ DataOS allows you to connect to an Oracle database and access data from tables u
 
 ### **Step 1: Create an Instance Secret for securing Oracle credentials**
 
-Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/).
+Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/data_sources/oracle/).
 
 ### **Step 2: Create a Oracle Depot manifest file**
 

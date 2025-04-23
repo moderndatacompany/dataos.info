@@ -49,6 +49,8 @@ Based on the minimum number of non-null values, unique values and distribution o
 ### **Attributes**
 Refer to the following table, which is used for classification and attribute tagging during the fingerprinting process in DataOS.
 
+<div style="text-align: center;">
+
 | Category | Attributes|
 | --- | --- | 
 | Personal Information | • ID, UUID, API Key<br> • Login ID, password<br> • Name - First and Last<br> • Gender<br> • Organization Name<br> • Bank Issued Card Number<br> • IP Address<br> • URL/Domain<br> • Salary<br> • Blood Group |
@@ -60,4 +62,4 @@ Refer to the following table, which is used for classification and attribute tag
 | Driving License Information | • US Driving License<br>• Indian Driving License | 
 | Demographic Information | • Religion<br>• Sex/Gender<br>• Race |
 
-
+</div>

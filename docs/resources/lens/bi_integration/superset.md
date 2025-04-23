@@ -137,7 +137,7 @@ Once the command is executed in the terminal, results will be visible in the Sup
 
 Please follow the steps outlined to see the result:
 
-**Step 2 Go to DataOS**: Go to DataOS and select Superset.
+**Step 2 Navigate to DataOS**: DataOS home page > Superset.
 
   <div style="text-align: center;">
       <img src="/resources/lens/bi_integration/superset2.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">

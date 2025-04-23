@@ -4,7 +4,7 @@ Lens allows you to secure data in logical tables by defining data policies on th
 
 Additionally, this governance extends to the Lens Studio Interface, where access to specific tabs and functionalities can be controlled. This setup helps in enforcing granular access controls and permissions, supporting compliance with organizational and regulatory standards.
 
-## **Procedure**
+## Procedure
 
 Follow these steps to create and manage user groups:
 

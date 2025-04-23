@@ -14,6 +14,10 @@ This section involves the one-by-one steps to ingest CSV files to dropzone01 Dep
 
 ### **Step 1: Open Notebook**
 
+<aside class="callout">
+🗣 The Notebook application has been deprecated from the default DataOS® UI experience. However, it can be made available on demand for customers who require its capabilities. Please contact your DataOS® administrator to enable access to the Notebook app in your environment.
+</aside>
+
 **a.** In the DataOS interface, open the Notebook app.
 
 <center>

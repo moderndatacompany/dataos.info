@@ -9,7 +9,10 @@ search:
 Flare is a declarative [Stack](/resources/stacks/) for large-scale data processing within DataOS. It leverages a YAML-based declarative programming paradigm, built as an abstraction over Apache Spark, to provide a comprehensive solution for data ingestion, transformation, enrichment, profiling, quality assessment and syndication on both batch and streaming data.
 
 
-![flare.jpg](/resources/stacks/flare/flare_overview.png)
+<figure>
+  <img src="/resources/stacks/flare/flare_overview.png" alt="Flare Overview" style="width:31rem;" />
+  <figcaption><i>Flare Overview</i></figcaption>
+</figure>
 
 <center><i>Placement of Flare Stack within DataOS</i>
 </center>
@@ -21,7 +24,7 @@ Flare is a declarative [Stack](/resources/stacks/) for large-scale data processi
 
 ## How to create jobs using Flare Stack
 
-Flare supports both batch and streaming data processing through distinct job types designed to meet varying operational requirements. Detailed instructions for creating Flare Jobs are available in the "[Create Flare Jobs](/resources/stacks/flare/creating_flare_jobs/)" documentation.
+Flare supports both batch and streaming data processing through distinct job types designed to meet varying operational requirements. Detailed instructions for creating Flare Jobs are available in the [Create Flare Jobs](/resources/stacks/flare/creating_flare_jobs/) documentation.
 
 
 ## Types of Flare Jobs
@@ -43,22 +46,22 @@ Flare Stack offers varied configuration to execute different types of [Jobs](/re
 
 Batch Jobs involve recomputing all changed datasets during each run, ensuring consistent end-to-end performance over time. However, they suffer from high latency as all data must be processed, even if it hasn't changed since the last synchronization. When a large volume of new data is introduced, batch jobs can become excessively costly and time-consuming. For smaller data sizes, running batch jobs for various transformation tasks is recommended. However, as data size grows and changes, [incremental jobs](#incremental-job) are a better option. Simple batch jobs typically involve reading data from one depot (depot A), performing transformations, and writing the data to another depot (depot B). To explore case scenario for a Batch Job, refer to the link: [Case Scenarios: Batch Jobs](/resources/stacks/flare/case_scenario/#batch-jobs).
 
-Apart from regular batch jobs, there are three specialized types of batch jobs designed for specific scenarios: [Data Profiling Jobs](#data-profiling-job), [Data Quality Jobs](#data-quality-job), and [Incremental Jobs](#incremental-job).
+<!-- Apart from regular batch jobs, there are three specialized types of batch jobs designed for specific scenarios: [Data Profiling Jobs](#data-profiling-job), [Data Quality Jobs](#data-quality-job), and [Incremental Jobs](#incremental-job).
 
 #### **Data Profiling Job**
 
 Data Profiling Jobs assess the validity and structure of datasets. These jobs examine source data to determine accuracy, completeness, and validity, providing summaries and insights about the data. Accurate and complete data is essential for making informed decisions based on the available data. Data Profiling Jobs enable you to analyze the structure, content, and relationships within the data, uncovering inconsistencies, and anomalies to achieve higher data quality.
-To learn more about creating Data Profiling Jobs, refer to the link: [Case Scenarios: Data Profiling Jobs](/resources/stacks/flare/case_scenario/#data-profiling-job).
+To learn more about creating Data Profiling Jobs, refer to the link: [Case Scenarios: Data Profiling Jobs](/resources/stacks/flare/case_scenario/#data-profiling-job). -->
 
 **Fingerprinting**
 
-When you initiate a data profiling job for your dataset, it automatically triggers the fingerprinting process.
+Initiating a data profiling job for a dataset automatically triggers the fingerprinting process.
 
 Fingerprinting primarily addresses the data classification challenge, aiming to categorize the columns of a table into a predefined categories. Fingerprinting analyzes data columns to detect distinctive patterns or signatures within the data. By examining the data values in a column, it can identify what type of data is there and determine what business terms or labels can be attached to this data. These labels or tags are valuable for enhancing discoverability and enabling effective governance.
 
 To learn more about classification process, refer to [Fingerprinting in DataOS](/resources/stacks/flare/case_scenario/fingerprinting/).
 
-DataOS conducts fingerprinting and stores the classification information for your dataset in Metis DB, which can be accessed through the Metis UI. To learn more, refer to [Fingerprinting Information on Metis UI](/interfaces/metis/navigating_metis_ui_how_to_guide/#how-to-get-fingerprinting-information).
+DataOS conducts fingerprinting and stores the classification information for the dataset in Metis DB, which can be accessed through the Metis UI. To learn more, refer to [Fingerprinting Information on Metis UI](/interfaces/metis/navigating_metis_ui_how_to_guide/#how-to-get-fingerprinting-information).
 
 #### **Data Quality Job**
 
@@ -107,7 +110,7 @@ Before deploying your logic into production, thorough testing is crucial. Flare 
 
 ## How to optimize jobs in Flare
 
-To achieve peak performance tailored to your specific requirements, each job executed upon Flare stack requires fine-tuning and optimization. The link below provides comprehensive information on various optimization techniques.
+To achieve peak performance based on specific requirements, each job executed on the Flare stack requires fine-tuning and optimization. Detailed information on available optimization techniques is provided in the following link.
 
 [Flare Optimizations](/resources/stacks/flare/optimizations/)
 

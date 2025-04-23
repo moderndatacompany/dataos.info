@@ -6,7 +6,7 @@ This topic covers the process of defining business objectives and key performanc
 
 Imagine that the sales and marketing department has approached you to leverage data insights to improve customer engagement and sales. They’ve identified key priorities and need a data model to track performance, improve sales strategies, and ultimately increase revenue.
 
-## **Business Objectives**
+## Business Objectives
 
 They emphasize that the model should be aligned with the following strategic goals:
 
@@ -16,7 +16,7 @@ They emphasize that the model should be aligned with the following strategic goa
     
 3. **Customer Recommendation Enhancement:** Lastly, the stakeholder mentions that personalized recommendations could significantly enhance the customer experience. By leveraging customer affinity patterns (indicating which products are likely to be bought together), they hope to deliver more relevant product suggestions to customers, increasing satisfaction and loyalty.
     
-## **Key Performance Indicators**
+## Key Performance Indicators
 
 After hearing their objectives, you, as the Data Engineer, translate these goals into measurable outcomes. Clear, actionable KPIs are essential for tracking progress and ensuring the model provides value. The stakeholder emphasizes the following key metrics to track the success of their initiatives:
 
