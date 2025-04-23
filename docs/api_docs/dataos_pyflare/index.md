@@ -15,7 +15,7 @@ tags:
 The DataOS PyFlare is a Python library that streamlines data operations and facilitate seamless interactions with Apache Spark within DataOS. It's a wrapper around [Flare](/resources/stacks/flare/ "Flare stack is used for building end-to-end data pipelines within DataOS. It uses a YAML-based declarative programming paradigm built as an abstraction over Apache Spark. It offers an all-in-one solution for performing diverse data ingestion, transformation, enrichment, and syndication processes on batch and streaming data."), to enable Python support with DataOS capabilities. The library abstracts complexities inherent in data flow, allowing users to direct their focus toward data transformations and the formulation of business logic by simplifying the loading, transformation, and storage of data. It facilitates the integration of existing Spark Job code bases with DataOS, requiring minimal modifications.
 
 <aside class="callout">
-🗣 Delve into the comprehensive <a href="/api_docs/dataos_pyflare/docs/pyflare.html">PyFlare Library Reference</a> for detailed insights into the diverse modules and classes encompassed by the Flare package. To know more about Flare's key features and initiation procedures, refer to the following sections.
+🗣 Delve into the comprehensive <a href="/api_docs/dataos_pyflare/pyflare.html">PyFlare Library Reference</a> for detailed insights into the diverse modules and classes encompassed by the Flare package. To know more about Flare's key features and initiation procedures, refer to the following sections.
 </aside>
 
 
@@ -266,7 +266,7 @@ spark.stop()
 
 ## PyFlare library reference
 
-For a comprehensive reference guide to PyFlare, including detailed information on its modules and classes, please consult the [PyFlare Library Reference.](/api_docs/dataos_pyflare/docs/pyflare.html)
+For a comprehensive reference guide to PyFlare, including detailed information on its modules and classes, please consult the [PyFlare Library Reference.](/api_docs/dataos_pyflare/pyflare.html)
 
 
 
