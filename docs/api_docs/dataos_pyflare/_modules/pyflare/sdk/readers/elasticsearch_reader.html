@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pyflare.sdk.readers.elasticsearch_reader &mdash; dataos-pyflare 0.1.7 documentation</title>
+  <title>pyflare.sdk.readers.elasticsearch_reader &mdash; Dataos Pyflare 0.1.13 documentation</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -30,7 +30,7 @@
           
           
           <a href="../../../../index.html" class="icon icon-home">
-            dataos-pyflare
+            Dataos Pyflare
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
@@ -42,7 +42,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../docs/modules.html">pyflare</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pyflare.sdk.html">pyflare.sdk package</a></li>
 </ul>
 
         </div>
@@ -51,7 +51,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../../index.html">dataos-pyflare</a>
+          <a href="../../../../index.html">Dataos Pyflare</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -76,13 +76,13 @@
 <span class="kn">from</span> <span class="nn">pyflare.sdk.utils</span> <span class="kn">import</span> <span class="n">pyflare_logger</span><span class="p">,</span> <span class="n">generic_utils</span>
 
 
-<div class="viewcode-block" id="ElasticSearchInputReader"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.readers.html#pyflare.sdk.readers.elasticsearch_reader.ElasticSearchInputReader">[docs]</a><span class="k">class</span> <span class="nc">ElasticSearchInputReader</span><span class="p">(</span><span class="n">Reader</span><span class="p">):</span>
+<div class="viewcode-block" id="ElasticSearchInputReader"><a class="viewcode-back" href="../../../../pyflare.sdk.readers.html#pyflare.sdk.readers.elasticsearch_reader.ElasticSearchInputReader">[docs]</a><span class="k">class</span> <span class="nc">ElasticSearchInputReader</span><span class="p">(</span><span class="n">Reader</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">read_config</span><span class="p">:</span> <span class="n">ReadConfig</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">read_config</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">log</span> <span class="o">=</span> <span class="n">pyflare_logger</span><span class="o">.</span><span class="n">get_pyflare_logger</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="vm">__name__</span><span class="p">)</span>
 
-<div class="viewcode-block" id="ElasticSearchInputReader.read"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.readers.html#pyflare.sdk.readers.elasticsearch_reader.ElasticSearchInputReader.read">[docs]</a>    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ElasticSearchInputReader.read"><a class="viewcode-back" href="../../../../pyflare.sdk.readers.html#pyflare.sdk.readers.elasticsearch_reader.ElasticSearchInputReader.read">[docs]</a>    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">spark_options</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_config</span><span class="o">.</span><span class="n">spark_options</span>
         <span class="n">io_format</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_config</span><span class="o">.</span><span class="n">io_format</span>
         <span class="n">dataset_path</span> <span class="o">=</span> <span class="n">generic_utils</span><span class="o">.</span><span class="n">get_dataset_path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">read_config</span><span class="p">)</span>
@@ -92,10 +92,10 @@
             <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ELASTIC_SEARCH_IO_FORMAT</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">dataset_path</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">df</span></div>
 
-<div class="viewcode-block" id="ElasticSearchInputReader.read_stream"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.readers.html#pyflare.sdk.readers.elasticsearch_reader.ElasticSearchInputReader.read_stream">[docs]</a>    <span class="k">def</span> <span class="nf">read_stream</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ElasticSearchInputReader.read_stream"><a class="viewcode-back" href="../../../../pyflare.sdk.readers.html#pyflare.sdk.readers.elasticsearch_reader.ElasticSearchInputReader.read_stream">[docs]</a>    <span class="k">def</span> <span class="nf">read_stream</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">pass</span></div>
 
-<div class="viewcode-block" id="ElasticSearchInputReader.get_conf"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.readers.html#pyflare.sdk.readers.elasticsearch_reader.ElasticSearchInputReader.get_conf">[docs]</a>    <span class="k">def</span> <span class="nf">get_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ElasticSearchInputReader.get_conf"><a class="viewcode-back" href="../../../../pyflare.sdk.readers.html#pyflare.sdk.readers.elasticsearch_reader.ElasticSearchInputReader.get_conf">[docs]</a>    <span class="k">def</span> <span class="nf">get_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">es_spark_options</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;es.nodes&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_config</span><span class="o">.</span><span class="n">depot_details</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;connection&#39;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;nodes&#39;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
             <span class="s2">&quot;es.resource&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_config</span><span class="o">.</span><span class="n">dataset_name</span><span class="p">(),</span>
@@ -115,7 +115,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, Modern Labs.</p>
+    <p>&#169; Copyright 2025, TMDC.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

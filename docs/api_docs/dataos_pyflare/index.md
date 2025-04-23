@@ -15,7 +15,7 @@ tags:
 The DataOS PyFlare is a Python library that streamlines data operations and facilitate seamless interactions with Apache Spark within DataOS. It's a wrapper around [Flare](/resources/stacks/flare/ "Flare stack is used for building end-to-end data pipelines within DataOS. It uses a YAML-based declarative programming paradigm built as an abstraction over Apache Spark. It offers an all-in-one solution for performing diverse data ingestion, transformation, enrichment, and syndication processes on batch and streaming data."), to enable Python support with DataOS capabilities. The library abstracts complexities inherent in data flow, allowing users to direct their focus toward data transformations and the formulation of business logic by simplifying the loading, transformation, and storage of data. It facilitates the integration of existing Spark Job code bases with DataOS, requiring minimal modifications.
 
 <aside class="callout">
-🗣 Delve into the comprehensive <a href="/api_docs/dataos_pyflare/docs/pyflare.html">Pyflare Library Reference</a> for detailed insights into the diverse modules and classes encompassed by the Flare package. To know more about Flare's key features and initiation procedures, refer to the following sections.
+🗣 Delve into the comprehensive <a href="/api_docs/dataos_pyflare/docs/pyflare.html">PyFlare Library Reference</a> for detailed insights into the diverse modules and classes encompassed by the Flare package. To know more about Flare's key features and initiation procedures, refer to the following sections.
 </aside>
 
 
@@ -23,7 +23,7 @@ The DataOS PyFlare is a Python library that streamlines data operations and faci
 
 ### **Streamlined Data Operations**
 
-Pyflare offers a unified interface for data loading, transformation, and storage, thereby significantly reducing development intricacies and accelerating the project timeline.
+PyFlare offers a unified interface for data loading, transformation, and storage, thereby significantly reducing development intricacies and accelerating the project timeline.
 
 ### **Data Connector Integration**
 
@@ -31,15 +31,15 @@ It seamlessly integrates with various data connectors, including depot and non-d
 
 ### **Customizability and Extensibility**
 
-Pyflare empowers users with the flexibility to tailor it to their specific project requirements. It seamlessly integrates with existing Python libraries and frameworks designed for data manipulation.
+PyFlare empowers users with the flexibility to tailor it to their specific project requirements. It seamlessly integrates with existing Python libraries and frameworks designed for data manipulation.
 
 ### **Optimized for DataOS**
 
-Pyflare is finely tuned for the DataOS platform, rendering it an ideal choice for the management and processing of data within DataOS environments.
+PyFlare is finely tuned for the DataOS platform, rendering it an ideal choice for the management and processing of data within DataOS environments.
 
 ## Installation
 
-By default, the DataOS environment does not include support for the DataOS-native Jupyter Notebook. However, it can be integrated into the environment on a requirement basis. The Pyflare module is compatible with Jupyter Notebooks and can also be utilized in various Python programs across different environments. 
+By default, the DataOS environment does not include support for the DataOS-native Jupyter Notebook. However, it can be integrated into the environment on a requirement basis. The PyFlare module is compatible with Jupyter Notebooks and can also be utilized in various Python programs across different environments. 
 
 <!-- provided that the necessary JAR files are incorporated.
 
@@ -47,7 +47,7 @@ By default, the DataOS environment does not include support for the DataOS-nativ
 
 ### **Prerequisites**
 
-This section describes the steps to follow before installing Pyflare.
+This section describes the steps to follow before installing PyFlare.
 
 **Ensure you have Python ≥ 3.7 Installed**
 
@@ -108,7 +108,7 @@ If you installed Python from source, with an installer from [python.org](https:
 The `dataos-pyflare` library can be installed from the Python Package Index (PyPI) using the following command:
 
 !!! tip "Recommendation" 
-    Install the `dataos-pyflare==0.1.13` version of Pyflare, as it is the designated stable release.
+    Install the `dataos-pyflare==0.1.13` version of PyFlare, as it is the designated stable release.
 
 **For Linux/macOS**
 
@@ -191,7 +191,7 @@ A Flare session can be created using the configuration settings using the `Spark
 ```python
 # Spark configuration settings
 sparkConf = [
-    ("spark.app.name", "Pyflare App"),
+    ("spark.app.name", "PyFlare App"),
     ("spark.master", "local[*]"),
 ]
 
@@ -239,11 +239,11 @@ spark.stop()
 
 ## Code Samples
 
-- [ How to read and write partitioned data within Icebase Depot using Pyflare?](/api_docs/dataos_pyflare/code_samples/read_write_partitioned_data/)
+- [ How to read and write partitioned data within Icebase Depot using PyFlare?](/api_docs/dataos_pyflare/code_samples/read_write_partitioned_data/)
 
-- [How to overwrite dynamic Iceberg partitions using Pyflare?](/api_docs/dataos_pyflare/code_samples/overwrite_dynamic_iceberg_partitions/)
+- [How to overwrite dynamic Iceberg partitions using PyFlare?](/api_docs/dataos_pyflare/code_samples/overwrite_dynamic_iceberg_partitions/)
 
-- [How to write data in Avro format from Iceberg using Pyflare?](/api_docs/dataos_pyflare/code_samples/write_avro_read_iceberg/) -->
+- [How to write data in Avro format from Iceberg using PyFlare?](/api_docs/dataos_pyflare/code_samples/write_avro_read_iceberg/) -->
 
 ## Supported sources
 
@@ -264,9 +264,9 @@ spark.stop()
 
 - [**Merge into transformation**](/api_docs/dataos_pyflare/code_samples/lakehouse_pyflare/#merge-into-iceberg-table)
 
-## Pyflare library reference
+## PyFlare library reference
 
-For a comprehensive reference guide to Pyflare, including detailed information on its modules and classes, please consult the [Pyflare Library Reference.](/api_docs/dataos_pyflare/docs/pyflare.html)
+For a comprehensive reference guide to PyFlare, including detailed information on its modules and classes, please consult the [PyFlare Library Reference.](/api_docs/dataos_pyflare/docs/pyflare.html)
 
 
 

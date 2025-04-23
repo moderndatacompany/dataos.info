@@ -114,3 +114,10 @@ def crawl_and_check(url):
 if __name__ == "__main__":
     start_url = "http://localhost:8000/"  # The initial URL to begin crawling from.
     crawl_and_check(start_url)
+
+
+    # process to execute
+# change the diretory 
+# - activate the virtual environment - source myenv/bin/activate
+# - install the requirements if not downloaded already:  pip install -r requirements.txt
+# - python3 link_checker.py

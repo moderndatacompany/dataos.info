@@ -33,6 +33,10 @@ DataOS provides the following software development kits (SDKs) that allow you to
 
 
     [:octicons-arrow-right-24: DataOS PyFlare](/api_docs/dataos_pyflare/)
+
+
+</div>
+
 <!-- 
 -   :simple-scala:{ .lg .middle } **DataOS Flare SDK**
 
@@ -50,5 +54,3 @@ DataOS provides the following software development kits (SDKs) that allow you to
 
     [:octicons-arrow-right-24: DataOS Kotlin SDK](/api_docs/dataos_kotlin_sdk/index.html)
  -->
-
-</div>
