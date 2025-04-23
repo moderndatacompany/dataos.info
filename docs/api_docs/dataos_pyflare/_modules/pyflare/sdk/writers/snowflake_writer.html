@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pyflare.sdk.writers.snowflake_writer &mdash; dataos-pyflare 0.1.7 documentation</title>
+  <title>pyflare.sdk.writers.snowflake_writer &mdash; Dataos Pyflare 0.1.13 documentation</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -30,7 +30,7 @@
           
           
           <a href="../../../../index.html" class="icon icon-home">
-            dataos-pyflare
+            Dataos Pyflare
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
@@ -42,7 +42,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../docs/modules.html">pyflare</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pyflare.sdk.html">pyflare.sdk package</a></li>
 </ul>
 
         </div>
@@ -51,7 +51,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../../index.html">dataos-pyflare</a>
+          <a href="../../../../index.html">Dataos Pyflare</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -77,7 +77,7 @@
 <span class="kn">from</span> <span class="nn">pyflare.sdk.writers.writer</span> <span class="kn">import</span> <span class="n">Writer</span>
 
 
-<div class="viewcode-block" id="SnowflakeOutputWriter"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.writers.html#pyflare.sdk.writers.snowflake_writer.SnowflakeOutputWriter">[docs]</a><span class="k">class</span> <span class="nc">SnowflakeOutputWriter</span><span class="p">(</span><span class="n">Writer</span><span class="p">):</span>
+<div class="viewcode-block" id="SnowflakeOutputWriter"><a class="viewcode-back" href="../../../../pyflare.sdk.writers.html#pyflare.sdk.writers.snowflake_writer.SnowflakeOutputWriter">[docs]</a><span class="k">class</span> <span class="nc">SnowflakeOutputWriter</span><span class="p">(</span><span class="n">Writer</span><span class="p">):</span>
 
     <span class="n">SNOWFLAKE_WRITE_OPTIONS</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;{{</span>
 <span class="s1">                &quot;sfURL&quot;: &quot;</span><span class="si">{connection_url}</span><span class="s1">&quot;,</span>
@@ -93,7 +93,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">write_config</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">log</span> <span class="o">=</span> <span class="n">pyflare_logger</span><span class="o">.</span><span class="n">get_pyflare_logger</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="vm">__name__</span><span class="p">)</span>
 
-<div class="viewcode-block" id="SnowflakeOutputWriter.write"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.writers.html#pyflare.sdk.writers.snowflake_writer.SnowflakeOutputWriter.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
+<div class="viewcode-block" id="SnowflakeOutputWriter.write"><a class="viewcode-back" href="../../../../pyflare.sdk.writers.html#pyflare.sdk.writers.snowflake_writer.SnowflakeOutputWriter.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
         <span class="c1"># self.resolve_write_format()</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">is_stream</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_stream</span><span class="p">()</span>
@@ -102,10 +102,10 @@
         <span class="c1"># df = self.spark.sql(f&quot;select * from {self.view_name}&quot;)</span>
         <span class="n">df</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="o">**</span><span class="n">spark_options</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;snowflake&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="SnowflakeOutputWriter.write_stream"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.writers.html#pyflare.sdk.writers.snowflake_writer.SnowflakeOutputWriter.write_stream">[docs]</a>    <span class="k">def</span> <span class="nf">write_stream</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="SnowflakeOutputWriter.write_stream"><a class="viewcode-back" href="../../../../pyflare.sdk.writers.html#pyflare.sdk.writers.snowflake_writer.SnowflakeOutputWriter.write_stream">[docs]</a>    <span class="k">def</span> <span class="nf">write_stream</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">pass</span></div>
 
-<div class="viewcode-block" id="SnowflakeOutputWriter.spark_options_conf"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.writers.html#pyflare.sdk.writers.snowflake_writer.SnowflakeOutputWriter.spark_options_conf">[docs]</a>    <span class="k">def</span> <span class="nf">spark_options_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="SnowflakeOutputWriter.spark_options_conf"><a class="viewcode-back" href="../../../../pyflare.sdk.writers.html#pyflare.sdk.writers.snowflake_writer.SnowflakeOutputWriter.spark_options_conf">[docs]</a>    <span class="k">def</span> <span class="nf">spark_options_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">snowflake_spark_option</span> <span class="o">=</span> <span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">SNOWFLAKE_WRITE_OPTIONS</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="n">connection_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">depot_details</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;connection&#39;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
             <span class="n">connection_database</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">depot_details</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;connection&#39;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;database&#39;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
@@ -117,7 +117,7 @@
         <span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">write_config</span><span class="o">.</span><span class="n">spark_options</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">snowflake_spark_option</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="SnowflakeOutputWriter.get_conf"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.writers.html#pyflare.sdk.writers.snowflake_writer.SnowflakeOutputWriter.get_conf">[docs]</a>    <span class="k">def</span> <span class="nf">get_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="SnowflakeOutputWriter.get_conf"><a class="viewcode-back" href="../../../../pyflare.sdk.writers.html#pyflare.sdk.writers.snowflake_writer.SnowflakeOutputWriter.get_conf">[docs]</a>    <span class="k">def</span> <span class="nf">get_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">list</span><span class="p">()</span></div></div>
 </pre></div>
 
@@ -128,7 +128,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, Modern Labs.</p>
+    <p>&#169; Copyright 2025, TMDC.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
