@@ -29,19 +29,44 @@ Within the DataOS ecosystem, the Scanner Stack collects metadata from Data Produ
 * **Comprehensive Data Product and DataOS Resource Metadata:** Retrieves metadata from DataOS Products and Resources, providing insights into inputs, outputs, Service Level Objectives (SLOs), Data Access Permissions, Infrastructure Resources, Workflows, Services, Clusters, Depots, and historical runtime and Operational data.
 
 
-## Additional links 
+## Creating Scanner Workflow
 
-**Quick Start:** A guide that explains the steps to create a Scanner Workflow to connect to the metadata source and extract the metadata of various entities. Visit [Quick Guide for Scanner](/resources/stacks/scanner/quickstart/) for more info.
+A guide that explains the steps to create a Scanner Workflow to connect to the metadata source and extract the metadata of various entities. Visit [Quick Guide for Scanner](/resources/stacks/scanner/quickstart/) for more info.
 
-**Supported Sources:** The Scanner Stack in DataOS supports three types of metadata extraction Workflows:
+## Supported Sources 
 
-- Data Sources: Custom Scanner Workflows used to extract metadata from various external data sources(Snowflake, PostgreSQL, MySQL etc.) for discoverability and governance. Explore more about Data Source Scanners [here](/resources/stacks/scanner/supported_sources/data_sources/).  
+The Scanner Stack in DataOS supports three types of metadata extraction Workflows:
 
-- System Sources: Predefined, scheduled Workflows that scan internal system metadata at regular intervals. Explore more about system Scanner [here](/resources/stacks/scanner/supported_sources/system_metadata_sources/). 
+- **Data Sources:** Custom Scanner Workflows used to extract metadata from various external data sources(Snowflake, PostgreSQL, MySQL etc.) for discoverability and governance. Explore more about Data Source Scanners [here](/resources/stacks/scanner/supported_sources/data_sources/).  
 
-- Indexer Services: Always-on service that detects changes in DataOS entities and triggers targeted metadata extraction for those specific changes. Explore more about Indexer Services Scanner [here](/resources/stacks/scanner/supported_sources/indexer_services/).
+- **System Sources:** Predefined, scheduled Workflows that scan internal system metadata at regular intervals. Explore more about system Scanner [here](/resources/stacks/scanner/supported_sources/system_metadata_sources/). 
 
-**Configuring the Scanner:** To learn how to configure the Scanner Workflow and describes the attributes related to the Scanner manifest file, visit [Configuration Page.](/resources/stacks/scanner/configurations/)
+- **Indexer Services:** Always-on service that detects changes in DataOS entities and triggers targeted metadata extraction for those specific changes. Explore more about Indexer Services Scanner [here](/resources/stacks/scanner/supported_sources/indexer_services/).
+
+## Configuring the Scanner
+
+For configuration of the Scanner Workflow and details on attributes in the Scanner manifest file, refer to the [Configuration Page](/resources/stacks/scanner/configurations/).
+
+## Governing a Scanner
+
+Access control for the Scanner Workflow is managed through Bifrost. Administrators may assign roles or define use cases to regulate permissions, including read, create, update, or delete, within specific workspaces. For additional information, refer to [Governance in Scanner](/resources/stacks/scanner/governance/).
+
+## Cataloging
+
+For guidance on metadata exploration and management for the Scanner Stack within the Metis UI, refer to the [Cataloging Page](/resources/stacks/scanner/cataloging/).
+
+## Observability
+
+Monitoring of the Scanner is supported through Monitor and Pager Resources. Step-by-step instructions are available [here](/resources/stacks/scanner/observability).
+
+## Best Practices
+
+A comprehensive guide on best practices for configuring and optimizing the Scanner Stack is available [here](/resources/stacks/scanner/best_practices).
+
+## Recipes
+
+To explore various Scanner execution scenarios and adapt its functionality to specific use cases, consult the [Recipes Page](/resources/stacks/scanner/recipes/).
+
 
 ## FAQ
 

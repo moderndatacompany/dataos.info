@@ -1,6 +1,6 @@
 # How to govern Scanner? 
 
-An Operator or Administrator of an organization can control who can create, read, update, or delete the Scanner workflow by assigning roles or use cases via Bifrost. The following access permissions are required to create a Scanner:
+An Operator or Administrator of an organization can control who can create, read, update, or delete the Scanner Workflow by assigning roles or use cases via [Bifrost](/interfaces/bifrost/ "Bifrost is a Graphical User Interface (GUI) that empowers users to effortlessly create and manage access policies for applications, services, people, and datasets. Bifrost leverages the governance engine of DataOS, Heimdall, to ensure secure and compliant data access through ABAC policies, giving users fine-grained control over the data and Resources."). The following access permissions are required to create a Scanner:
 
 !!! info
 
