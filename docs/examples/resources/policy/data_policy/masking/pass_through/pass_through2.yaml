@@ -1,0 +1,31 @@
+name: {{test-phi-reader-doctor}}
+version: v1
+type: policy
+tags:
+  - {{dataos:type:resource}}
+  - {{dataos:type:cluster-resource}}
+  - {{dataos:resource:policy}}
+  - {{dataos:layer:user}}
+description: {{policy to allow doctors with a PHI-doctor tag to view patient's data}}
+owner: {{iamgroot}}
+layer: user
+policy:
+  data:
+    dataset: {{patients}}
+    collection: {{test_healthcare}}
+    depot: {{icebase}}
+    priority: {{30}}
+    type: mask
+    mask:
+      operator: pass_through
+    selector:
+      column:
+        tags:
+          - {{PHI.id}}
+          - {{PHI.name}}
+          - {{PHI.confidential}}
+      user:
+        match: {{all}}
+        tags:
+          - {{roles:id:doctor}}
+          - {{roles:id:healthcaredatauser}}
