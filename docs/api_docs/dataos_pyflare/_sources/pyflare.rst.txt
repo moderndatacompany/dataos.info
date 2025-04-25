@@ -7,9 +7,7 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
-   pyflare.jars
    pyflare.sdk
-   pyflare.secrets
 
 Module contents
 ---------------

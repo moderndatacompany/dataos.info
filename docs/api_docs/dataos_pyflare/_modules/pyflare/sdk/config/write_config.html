@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pyflare.sdk.config.write_config &mdash; dataos-pyflare 0.1.7 documentation</title>
+  <title>pyflare.sdk.config.write_config &mdash; Dataos Pyflare 0.1.13 documentation</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -30,7 +30,7 @@
           
           
           <a href="../../../../index.html" class="icon icon-home">
-            dataos-pyflare
+            Dataos Pyflare
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
@@ -42,7 +42,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../docs/modules.html">pyflare</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pyflare.sdk.html">pyflare.sdk package</a></li>
 </ul>
 
         </div>
@@ -51,7 +51,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../../index.html">dataos-pyflare</a>
+          <a href="../../../../index.html">Dataos Pyflare</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -70,7 +70,7 @@
            <div itemprop="articleBody">
              
   <h1>Source code for pyflare.sdk.config.write_config</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="WriteConfig"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.config.html#pyflare.sdk.config.write_config.WriteConfig">[docs]</a><span></span><span class="k">class</span> <span class="nc">WriteConfig</span><span class="p">:</span>
+<div class="viewcode-block" id="WriteConfig"><a class="viewcode-back" href="../../../../pyflare.sdk.config.html#pyflare.sdk.config.write_config.WriteConfig">[docs]</a><span></span><span class="k">class</span> <span class="nc">WriteConfig</span><span class="p">:</span>
     
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot_details</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_depot_details</span> <span class="o">=</span> <span class="n">depot_details</span>
@@ -81,37 +81,43 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_spark_options</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_extra_options</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
     
-<div class="viewcode-block" id="WriteConfig.depot_name"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.config.html#pyflare.sdk.config.write_config.WriteConfig.depot_name">[docs]</a>    <span class="k">def</span> <span class="nf">depot_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="WriteConfig.depot_name"><a class="viewcode-back" href="../../../../pyflare.sdk.config.html#pyflare.sdk.config.write_config.WriteConfig.depot_name">[docs]</a>    <span class="k">def</span> <span class="nf">depot_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns depot name</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_depot_details</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;depot&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span></div>
     
-<div class="viewcode-block" id="WriteConfig.depot_type"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.config.html#pyflare.sdk.config.write_config.WriteConfig.depot_type">[docs]</a>    <span class="k">def</span> <span class="nf">depot_type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="WriteConfig.depot_type"><a class="viewcode-back" href="../../../../pyflare.sdk.config.html#pyflare.sdk.config.write_config.WriteConfig.depot_type">[docs]</a>    <span class="k">def</span> <span class="nf">depot_type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns depot type</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_depot_details</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span></div>
     
-<div class="viewcode-block" id="WriteConfig.collection"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.config.html#pyflare.sdk.config.write_config.WriteConfig.collection">[docs]</a>    <span class="k">def</span> <span class="nf">collection</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="WriteConfig.collection"><a class="viewcode-back" href="../../../../pyflare.sdk.config.html#pyflare.sdk.config.write_config.WriteConfig.collection">[docs]</a>    <span class="k">def</span> <span class="nf">collection</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns depot collection name</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_depot_details</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;collection&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span></div>
     
-<div class="viewcode-block" id="WriteConfig.dataset_name"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.config.html#pyflare.sdk.config.write_config.WriteConfig.dataset_name">[docs]</a>    <span class="k">def</span> <span class="nf">dataset_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="WriteConfig.dataset_name"><a class="viewcode-back" href="../../../../pyflare.sdk.config.html#pyflare.sdk.config.write_config.WriteConfig.dataset_name">[docs]</a>    <span class="k">def</span> <span class="nf">dataset_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns depot dataset name</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_depot_details</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dataset&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="WriteConfig.dataset_absolute_path"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.config.html#pyflare.sdk.config.write_config.WriteConfig.dataset_absolute_path">[docs]</a>    <span class="k">def</span> <span class="nf">dataset_absolute_path</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="WriteConfig.dataset_absolute_path"><a class="viewcode-back" href="../../../../pyflare.sdk.config.html#pyflare.sdk.config.write_config.WriteConfig.dataset_absolute_path">[docs]</a>    <span class="k">def</span> <span class="nf">dataset_absolute_path</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns an absolute path of dataset</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_depot_details</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;connection&quot;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">depot_type</span><span class="p">()</span><span class="si">}</span><span class="s2">Url&quot;</span><span class="p">,</span> <span class="p">)</span></div>
 
-<div class="viewcode-block" id="WriteConfig.connection"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.config.html#pyflare.sdk.config.write_config.WriteConfig.connection">[docs]</a>    <span class="k">def</span> <span class="nf">connection</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<div class="viewcode-block" id="WriteConfig.depot_absolute_path"><a class="viewcode-back" href="../../../../pyflare.sdk.config.html#pyflare.sdk.config.write_config.WriteConfig.depot_absolute_path">[docs]</a>    <span class="k">def</span> <span class="nf">depot_absolute_path</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns an absolute path of depot</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_depot_details</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;warehouse_path&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="WriteConfig.connection"><a class="viewcode-back" href="../../../../pyflare.sdk.config.html#pyflare.sdk.config.write_config.WriteConfig.connection">[docs]</a>    <span class="k">def</span> <span class="nf">connection</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns connection dict</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -173,7 +179,7 @@
     <span class="k">def</span> <span class="nf">extra_options</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_extra_options</span> <span class="o">=</span> <span class="n">value</span>
 
-<div class="viewcode-block" id="WriteConfig.format_resolver"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.config.html#pyflare.sdk.config.write_config.WriteConfig.format_resolver">[docs]</a>    <span class="k">def</span> <span class="nf">format_resolver</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="WriteConfig.format_resolver"><a class="viewcode-back" href="../../../../pyflare.sdk.config.html#pyflare.sdk.config.write_config.WriteConfig.format_resolver">[docs]</a>    <span class="k">def</span> <span class="nf">format_resolver</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">io_format</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">depot_details</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;format&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
         <span class="n">sub_protocol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;subprotocol&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">io_format</span><span class="p">:</span>
@@ -190,7 +196,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, Modern Labs.</p>
+    <p>&#169; Copyright 2025, TMDC.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

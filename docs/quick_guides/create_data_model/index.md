@@ -1005,6 +1005,5 @@ This is how folder structure looks like for our data model.
 
 ## Next Steps
 
-[Test Your Data Model](/quick_guides/test_data_model/)
-
+<!-- [Test Your Data Model](/quick_guides/test_data_model/) -->
 [Deploy Your Data Model](/quick_guides/deploy_data_model/)
