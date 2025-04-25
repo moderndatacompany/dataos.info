@@ -210,11 +210,10 @@ service:
 
 ```yaml
 service:
+  servicePort: 8080
   servicePorts:
-    - name: http
-      servicePort: 8080
-    - name: metrics
-      servicePort: 9090
+  - name: backup
+    servicePort: 5433
 ```
 
 ---
