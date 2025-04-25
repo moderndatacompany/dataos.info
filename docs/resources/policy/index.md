@@ -121,6 +121,10 @@ Policy Resource in DataOS can be created by applying the manifest file using the
 
 Policy can be configured depending on the use case. For a detailed breakdown of the configuration options and attributes, please refer to the documentation: [Attributes of Policy manifest](/resources/policy/configurations/).
 
+## Configuration Templates
+
+Explore configuration templates of different policies [here](/resources/policy/policy_configuration_templates/)
+
 
 ## Recipes
 
@@ -129,3 +133,8 @@ Policy can be configured depending on the use case. For a detailed breakdown of 
 - [A end to end use-case on how to implement Filter Data Policy](/resources/policy/how_to_guide/implementing_filter_data_policy/)
 
 - [A end to end use-case on how to implement Masking Data Policy](/resources/policy/how_to_guide/implementing_masking_data_policy/)
+
+
+## References
+
+- [Rules for AND OR relationship](/resources/policy/rules_for_and_or_relationship/)
