@@ -54,8 +54,7 @@ Learn how to define and create a data model, turning your conceptual design into
 
 -   [Creating a Data Model](/quick_guides/create_data_model/)
 
--   [Testing a Data Model locally](/quick_guides/test_data_model/)
-
+<!-- -   [Testing a Data Model locally](/quick_guides/test_data_model/) -->
 -   [Deploying Data model to DataOS](/quick_guides/deploy_data_model/)
      
 </div>

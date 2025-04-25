@@ -32,7 +32,7 @@ An invalid or missing API key or token is being used.
 
 **Solution:**  
 Verify and provide the correct API key or token with appropriate permissions. 
-The apikey `token` can be obtained by executing the following command on the CLI:
+The Api key `token` can be obtained by executing the following command on the CLI:
 
 ```bash
 dataos-ctl user apikey get
