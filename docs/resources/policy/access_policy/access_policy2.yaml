@@ -1,0 +1,19 @@
+name: {{test-access-healthcaredata}}
+version: v1
+type: policy
+tags:
+  - {{dataos:type:resource}}
+  - {{dataos:type:cluster-resource}}
+description: {{policy allowing users to read healthcare data.}}
+layer: user 
+policy:
+  access:
+    subjects:
+      tags:
+        - - {{roles:id:healthcaredatauser}}
+    predicates:
+      - {{read}}
+    objects:
+      paths:
+        - {{dataos://icebase:test_healthcare/patients}}
+    allow: {{true}}

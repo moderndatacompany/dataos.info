@@ -108,7 +108,7 @@ After creating the tag, the next step is to define the policy associated with it
     description: "data policy to filter zip data"
     policy:
     data:
-        priority: 1
+        priority: 1 #lower number superesede the higher number during policy evalution
         type: mask
         depot: icebase
         collection: retail
@@ -140,6 +140,10 @@ After creating the tag, the next step is to define the policy associated with it
         individual’s age falls under a defined bucket, it is replaced with the
         lowest value of the bucket.
     ```
+
+!!! info
+
+        To override an existing default policy, a custom policy must be assigned a priority between 1 and 98. Lower priority numbers take precedence during policy evaluation.     
 
 ### **Assign tag to the appropriate column of the dataset**
 

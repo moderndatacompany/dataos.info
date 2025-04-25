@@ -76,7 +76,7 @@ To maximize performance, organizations can establish Minerva query engine cluste
 
 **Querying Diverse Data Sources**
 
-Minerva supports an extensive range of data sources, encompassing both traditional relational databases such as Oracle, PostgreSQL, MySQL, and Redshift, non-relational sources like Kafka and Cassandra, as well as object storages like Amazon S3, and Google Cloud Storage. This broad compatibility ensures seamless access to various data sources, enabling comprehensive and integrated analyses. To know more about the various data sources supported by Minerva, click on the following link: [Connectors Configuration](/resources/cluster/connectors_configuration/).
+Minerva supports an extensive range of data sources, encompassing both traditional relational databases such as Oracle, PostgreSQL, MySQL, and Redshift, as well as Lakehouses built on object storages like Amazon S3, and Google Cloud Storage. This broad compatibility ensures seamless access to various data sources, enabling comprehensive and integrated analyses. To know more about the various data sources supported by Minerva, click on the following link: [Connectors Configuration](/resources/cluster/connectors_configuration/).
 
 **Query Execution Process**
 
