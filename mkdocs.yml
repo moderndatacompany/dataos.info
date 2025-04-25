@@ -479,6 +479,7 @@ nav:
           - Core Concepts: resources/policy/core_concepts.md
           - First Steps: resources/policy/first_steps.md
           - Configurations: resources/policy/configurations.md
+          - Templates: resources/policy/policy_configuration_templates.md
           - References:
             - Rule for and or relationship: resources/policy/rules_for_and_or_relationship.md
           - Recipes: 
