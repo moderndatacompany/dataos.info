@@ -138,7 +138,7 @@ This document provides a comprehensive FAQs for various aspects of DataOS, ensur
 **A:** **Metis** is the **metadata manager** in DataOS. It:
 
 - Collects **operational, technical, and business metadata**.
-- Works with **Odin (Knowledge Graph Service)** to create a **semantic web** for data.
+<!-- - Works with **Odin (Knowledge Graph Service)** to create a **semantic web** for data. -->
 
 ---
 
