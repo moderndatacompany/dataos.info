@@ -46,7 +46,7 @@ These are some of the services of DataOS acting as a cohesive whole to form the 
 ### **Heimdall**
 Heimdall is the governance engine for all access control within DataOS. Whether it is access to a dataset, an API path or other applications & services of the operating system, Heimdall acts as the Policy Decision Point (PDP) for ingress and authorizations.
 ### **Metis**
-[Metis](/interfaces/metis/) is the metadata manager of DataOS. It collates & curates operational metadata, technical & business metadata from various data sources, as well as DataOS Resources. Metis serves this metadata via a graphical user interface for consumption by data developers. Combined with Odin (service for Knowledge Graphs), it forms a semantic web to generate ontologies and creates a digital twin of an organization's data infrastructure. 
+[Metis](/interfaces/metis/) is the metadata manager of DataOS. It collates & curates operational metadata, technical & business metadata from various data sources, as well as DataOS Resources. Metis serves this metadata via a graphical user interface for consumption by data developers. 
 ### **Gateway**
 A service which runs on top of the query engine, Minerva, and is responsible for managing Minerva clusters, user authentication (via calls to Heimdall), as well as data policy decisions. It acts as the PDP for data filtering and masking so that the data is not masked/filtered at the source directly, but at the time of query parsing.
 ### **Caretaker**

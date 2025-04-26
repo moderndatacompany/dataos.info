@@ -12,7 +12,7 @@ The provided template defines an access policy for REST APIs within DataOS. The 
 
 #### **Dataset Access**
 
-The provided template defines an access policy for a [Depot](../depot.md) within DataOS. The sample given below authorizes users with the `roles:id:healthcaredatauser` tag to `READ` predicate on the dataset stored at the UDL address, `dataos://icebase:test/customer_test`. Please remember to customize the template by replacing the placeholder values with the necessary details based on your specific requirements.
+The provided template defines an access policy for a [Depot](/resources/depot/) within DataOS. The sample given below authorizes users with the `roles:id:healthcaredatauser` tag to `READ` predicate on the dataset stored at the UDL address, `dataos://icebase:test/customer_test`. Please remember to customize the template by replacing the placeholder values with the necessary details based on your specific requirements.
 
 ```yaml
 --8<-- "examples/resources/policy/access_policy/access_policy2.yaml"
