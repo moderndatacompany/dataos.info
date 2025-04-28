@@ -1,3 +1,10 @@
+
+---
+search:
+  exclude: true
+---
+
+
 # Writing Data Profiling Jobs using Flare
 Data Profiling Jobs evaluate dataset validity, structure, accuracy, and completeness. They offer insights into your data, highlighting patterns, inconsistencies, anomalies, and redundancies. These jobs use basic statistics to validate data and provide comprehensive overviews, including data distribution, types, missing values, and outliers.
 

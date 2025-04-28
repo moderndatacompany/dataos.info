@@ -1,4 +1,12 @@
+
+---
+search:
+  exclude: true
+---
+
+
 # Performing Business Validation Checks
+
 DataOS allows you to define your own assertions with a combination of tests to check the rules. These tests are boolean expressions containing metric functions for aggregated data, such as the average sales price does not exceed some limit. DataOS automatically creates the metrics as per the function used while defining the assertions. You can also define assertions using SQL and regular expressions for more advanced use cases.
 
 ## Defining Assertions
@@ -259,12 +267,12 @@ workflow:
 </details>
 
 
-
 ### **Pre-Sink Assertions**
 
 Starting from Flare version 4.0, users can integrate assertions directly into their data transformation processes within the `outputs` section. Flare offers the capability to perform pre-sink checks or assertions on datasets enabling users to perform row-level checks before writing them to the destination. In this process, it initially verifies the assertion, and only if all the checks pass successfully, the data will be ingested.
 
 This empowers users to validate their data to avoid writing erroneous data to the target and also eliminates the requirement for standalone data quality jobs.<br> <br>
+
 **Syntax for Pre-sink Assertions**
 
 ```yaml

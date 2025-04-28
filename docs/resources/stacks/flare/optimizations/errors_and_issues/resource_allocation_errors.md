@@ -1,7 +1,7 @@
 # Resource Allocation Errors
 
 
-## Error: Insufficient Resource
+##  Insufficient Resource
 
 ```verilog
 check your cluster UI to ensure that workers are registered and have sufficient resources
@@ -15,7 +15,7 @@ The allocated memory with Driver and Executor is less
 
 Increase the memory to rectify the error
 
-## Error: OOM (Out of Memory) Killed Error
+##  OOM (Out of Memory) Killed Error
 
 **What went wrong?**
 
@@ -40,7 +40,7 @@ Sometimes, you will get an OutOfMemoryError (Link) not because your RDDs don’t
 
 The simplest fix here is to increase the level of parallelism so that each task’s input set is smaller.
 
-## Error: Driver maxresultsize error
+##  Driver maxresultsize error
 
 **What went wrong?**
 
@@ -53,13 +53,13 @@ It is caused by actions like RDD's `collect()` that send a big chunk of data to 
 - If broadcast joins are the culprit, you can reduce `spark.sql.autoBroadcastJoinThreshold` to limit the size of broadcast join data
 - Reduce the number of partitions.
 
-## Error: Missing output location for shuffle partitions
+##  Missing output location for shuffle partitions
 
 **Solution**
 
 The solution was to either add swap or configure the worker/executor to use less memory in addition to using MEMORY_AND_DISK storage level for several persists.
 
-## Error: **Executor Lost Failure**
+##  **Executor Lost Failure**
 
 **Solution**
 

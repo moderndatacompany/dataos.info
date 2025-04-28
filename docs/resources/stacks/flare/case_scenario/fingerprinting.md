@@ -1,4 +1,14 @@
+
+
+---
+search:
+  exclude: true
+---
+
+
+
 # Fingerprinting in DataOS
+
 Fingerprinting in DataOS analyzes data columns to detect distinctive patterns or signatures. 
 
 This analysis serves several purposes:
