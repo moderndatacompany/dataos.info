@@ -33,7 +33,7 @@ cluster:
         cpu: 4000m
         memory: 16Gi
     depots:
-        - address: dataos://icebase:default
+        - address: dataos://lakehouse:default
         properties:
             hive.config.resources: '************************************'
             iceberg.compression-codec: '****'
@@ -252,7 +252,7 @@ You can manage the spilling by adding the below-given properties.
 
 ### **`spiller-spill-path`**
 
-**Description:** This property specifies the directory where spilled content is written. It can be a comma-separated list to spill simultaneously to multiple directories, leveraging multiple drives installed in the system. It is not recommended to spill to system drives. Importantly, avoid spilling to the drive where JVM logs are written to prevent disk overutilization, which may cause queries to fail.
+**Description:** This property specifies the directory where spilled content is written. It can be a comma-separated list to spill simultaneously to multiple directories, leveraging multiple drives installed in the system. It is not recommended to spill to system drives. Importantly, avoid spilling to the drive where JVM logs are written to prevent disk over utilization, which may cause queries to fail.
 
 **Type:** String
 
@@ -541,7 +541,7 @@ Manage the tasks by adding the below properties in the Cluster manifest file.
 
 ---
 
-### **`task.min-drivers`[¶](https://dataos.info/resources/cluster/performance_tuning/#taskmin-drivers)**
+### **`task.min-drivers`
 
 **Description:** This property represents the target number of running leaf splits on a worker. It acts as a minimum value because each leaf task is guaranteed to have at least 3 running splits. Non-leaf tasks are also ensured to run to prevent deadlocks. Adjusting this value can impact responsiveness for new tasks and resource utilization.
 
@@ -553,7 +553,7 @@ Manage the tasks by adding the below properties in the Cluster manifest file.
 
 ---
 
-### **`task.min-drivers-per-task`[¶](https://dataos.info/resources/cluster/performance_tuning/#taskmin-drivers-per-task)**
+### **`task.min-drivers-per-task`**
 
 **Description:** This property sets the minimum number of drivers guaranteed to run concurrently for a single task, assuming the task has remaining splits to process.
 
@@ -567,7 +567,7 @@ Manage the tasks by adding the below properties in the Cluster manifest file.
 
 ---
 
-### **`task.writer-count`[¶](https://dataos.info/resources/cluster/performance_tuning/#taskwriter-count)**
+### **`task.writer-count`**
 
 **Description:** This property determines the number of concurrent writer threads per worker per query. Increasing this value can enhance write speed, particularly when a query is not I/O bound, and can take advantage of additional CPU for parallel writes. However, some connectors may experience CPU bottlenecks during writing due to compression or other factors. Setting this value too high may overload the cluster with excessive resource utilization. The `task_writer_count` session property allows specifying this value on a per-query basis.
 

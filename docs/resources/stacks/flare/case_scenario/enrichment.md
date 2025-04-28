@@ -56,7 +56,7 @@ workflow:
             
             outputs:
               - name: cities_uppdated  # cities
-                dataset: dataos://icebase:countries_states_cities/cities?acl=rw #sink attribute is deperecated in the flare 6.0 which was used to define the different output dataset it's format and it's properties and in place of the depot in the output attribute  the dataset attribute defines the schema dataset it's format and it's properties along with the depot.
+                dataset: dataos://lakehouse:countries_states_cities/cities?acl=rw #sink attribute is deperecated in the flare 6.0 which was used to define the different output dataset it's format and it's properties and in place of the depot in the output attribute  the dataset attribute defines the schema dataset it's format and it's properties along with the depot.
                 format: Iceberg
                 options:
                   saveMode: overwrite
@@ -69,7 +69,7 @@ workflow:
                         column: country_name
 
               - name: states_uppdated  # states
-                dataset: dataos://icebase:countries_states_cities/states?acl=rw
+                dataset: dataos://lakehouse:countries_states_cities/states?acl=rw
                 format: Iceberg
                 options:
                   saveMode: overwrite
@@ -80,7 +80,7 @@ workflow:
 
 
               - name: countries_uppdated  # countries  #countreis_upddated sequence
-                dataset: dataos://icebase:countries_states_cities/countries?acl=rw
+                dataset: dataos://lakehouse:countries_states_cities/countries?acl=rw
                 format: Iceberg
                 options:
                   saveMode: overwrite
@@ -90,7 +90,7 @@ workflow:
                       write.metadata.compression-codec: gzip
 
               - name: joined_states_cities_countries  # joined-data
-                dataset: dataos://icebase:countries_states_cities/joined_data?acl=rw
+                dataset: dataos://lakehouse:countries_states_cities/joined_data?acl=rw
                 format: Iceberg
                 options:
                   saveMode: overwrite
@@ -229,16 +229,16 @@ For customers using Flare 3.0, the following YAML configuration is valid.
               
               outputs:
                 - name: output01  # cities
-                  depot: dataos://icebase:countries_states_cities?acl=rw #depot address along with schema
+                  depot: dataos://lakehouse:countries_states_cities?acl=rw #depot address along with schema
 
                 - name: output02  # states
-                  depot: dataos://icebase:countries_states_cities?acl=rw
+                  depot: dataos://lakehouse:countries_states_cities?acl=rw
 
                 - name: output03  # countries
-                  depot: dataos://icebase:countries_states_cities?acl=rw
+                  depot: dataos://lakehouse:countries_states_cities?acl=rw
 
                 - name: output04  # joined-data
-                  depot: dataos://icebase:countries_states_cities?acl=rw
+                  depot: dataos://lakehouse:countries_states_cities?acl=rw
 
               steps:
                 - sequence:
