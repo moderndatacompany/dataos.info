@@ -1,4 +1,13 @@
+
+---
+search:
+  exclude: true
+---
+
+
 # Enhancing Data Integrity with Assertion Jobs
+
+
 DataOS allows you to proactively ensure data quality by conducting comprehensive quality checks through assertions during ingestion of the data. These checks span various conditions, ranging from data completeness to business-specific rules. If the data doesn't meet these critera, Assertion Jobs halt the ingestion process, preventing potentially problematic data from entering the system.
 
 ## Data Validation Workflow Configuration

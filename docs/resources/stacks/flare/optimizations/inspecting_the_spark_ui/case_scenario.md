@@ -2,7 +2,6 @@
 
 
 ```yaml
----
 version: v1beta1
 name: wf-orders-enriched-01
 type: workflow
@@ -20,11 +19,8 @@ workflow:
         tags:
           - customers
           - orders
-        stack: flare:3.0
+        stack: flare:6.0
         compute: runnable-default
-        envs:
-          HERA_SSL: "false"
-          HERA_BASE_URL: "https://fit-garfish.dataos.app/hera"
         tier: connect
         flare:
           driver:
@@ -82,30 +78,28 @@ workflow:
             logLevel: INFO
             outputs:
               - name: region_output
-                depot: dataos://icebase:sample?acl=rw
+                dataset: dataos://icebase:sample?acl=rw
+                options:
+                    saveMode: overwrite
+                    sort:
+                      mode: partition
+                      columns:
+                        - name: O_ORDERDATE
+                          order: desc
+                    iceberg:
+                      properties:
+                        write.format.default: parquet
+                        write.metadata.compression-codec: gzip
+                    partitionSpec:
+                      - type: month
+                        column: O_ORDERDATE
+                        name: month
+                      - type: identity
+                        column: user_agent
+
+
             steps:
-              - sink:
-                  - sequenceName: last_5_tans_each_cust
-                    datasetName: customer_trans_latest_five_03
-                    outputName: region_output
-                    outputType: Iceberg
-                    outputOptions:
-                      saveMode: overwrite
-                      sort:
-                        mode: partition
-                        columns:
-                          - name: O_ORDERDATE
-                            order: desc
-                      iceberg:
-                        properties:
-                          write.format.default: parquet
-                          write.metadata.compression-codec: gzip
-                      partitionSpec:
-                        - type: month
-                          column: O_ORDERDATE
-                          name: month
-                        - type: identity
-                          column: user_agent
+              - sequence:
 
                 sequence:
                   - name: nation_region
