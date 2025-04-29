@@ -1,7 +1,7 @@
 # Transformation Errors
 
 
-## Error: Caused By Already closed files for partition: month
+##  Caused By Already closed files for partition: month
 
 **Message**
 
@@ -38,7 +38,7 @@ iceberg:
       name: day
 ```
 
-## Error: Caused by Cannot write incompatible data to table
+##  Caused by Cannot write incompatible data to table
 
 **Message**
 
@@ -63,7 +63,7 @@ Cast the `date/time` column as `timestamp`
 
 Convert `date/time` column to `timestamp`
 
-## Error: Job finished with error = java.lang.string Cannot be cast to java.lang.boolean
+<!-- ##  Job finished with error = java.lang.string Cannot be cast to java.lang.boolean
 
 **Message**
 
@@ -89,4 +89,4 @@ Caused by: java.lang.ClassCastException: **java.lang.String cannot be cast to ja
 
 **What went wrong?**
 
-The spelling of `false` was wrong in the batch mode.
+The spelling of `false` was wrong in the batch mode. -->

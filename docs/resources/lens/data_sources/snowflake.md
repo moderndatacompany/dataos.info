@@ -11,8 +11,7 @@ When setting up a semantic model, it is crucial to understand that the semantic 
 
 Ensure you meet the following requirements specific to DataOS:
 
-1. To create and access all DataOS resources and the Data Product, a user must possess the `roles:id:data-dev` tag, or any tag designated by the organization for such access. To obtain this tag, please contact your DataOS Administrator. You can view the available tags by executing the following command in the DataOS CLI terminal. For more information on tags, please refer to the following link.
-
+1. To create and access all DataOS Resources and the Data Product, a user must possess the `roles:id:data-dev` tag, or any tag designated by the organization for such access. You can view the available tags using the following command in the DataOS CLI terminal. 
     ```bash
     dataos-ctl user get
     ```
@@ -29,6 +28,9 @@ Ensure you meet the following requirements specific to DataOS:
                    │             │        │                      │ roles:id:user,                  
                    │             │        │                      │ users:id:iamgroot 
     ```
+
+    To obtain this tag, please contact your DataOS Administrator. 
+
 
 2. Alternatively, instead of assigning the tag, a user can be assigned the particular use cases built for the specific purpose for Lens creation. Following are the use-cases for reading and creating Lens in DataOS. 
 
@@ -63,42 +65,35 @@ Ensure you meet the following requirements specific to DataOS:
     cloud-provider  : azure
     ```
 
-    Please reach out to your Modern executive for assistance in updating the CLI.
+    Please reach out to your Modern representative for assistance in updating the CLI.
 
-4. It is recommended that the configuration files of the semantic model or Lens be stored in a Bitbucket/Github repository for better collaboration, as shown below, while building the Data Product. 
+4. A private github or bitbucket repository. Create the Instance Secrets to store your Bitbucket credentials securely. Copy the name of the Instance Secret to refer them in Lens deployment manifest file later in the doc.
 
-    ```
-    data-product-deployment
-    └──── data_product
-            ├── depot
-            │   └──depot.yaml
-            ├── scanner
-            │   ├── depot_scanner.yaml
-            │   └── dp_scanner.yaml
-            ├── semantic_model
-            │   ├── model
-            │   │   ├── sqls
-            │   │   │   └── sales.sql  # SQL script for table dimensions
-            │   │   ├── tables
-            │   │   │   └── table1.yml  # Logical table definition (dimensions, measures)
-            │   │   ├── views
-            │   │   │   └── view1.yml  # Logical views referencing tables
-            │   │   └── user_groups.yml  # User group policies for governance
-            │   └── lens_deployment.yaml
-            ├── bundle
-            │   └── bundle.yaml   
-            └── dp_deployment.yaml
+    ```yaml
+    name: bitbucket-cred
+    version: v1
+    type: instance-secret
+    tags: 
+      - just for practice
+    description: bitbucket secrets
+    layer: user 
+    instance-secret:
+      type: key-value-properties
+      acl: rw
+      data:
+        GITSYNC_USERNAME: iamgroot
+        GITSYNC_PASSWORD: abcdefghijklMnop
     ```
 
-    Notice that the semantic model directory, which is part of the Data Product, contains the Semantic Model (Lens) configuration. This includes SQL scripts for defining tables, logical views, user group policies, and Lens deployment manifest file needed for successful integration into the Data Product consumption layer. By storing these files in a version-controlled repository, teams can better manage, collaborate, and track changes to the Data Product’s components throughout its lifecycle.
+!!! tip
 
-### **Snowflake requirement**
+    Ensure the Instance Secrets manifest files that store sensitive credentials, such as username and password, are not pushed to the Bitbucket repository for security. Keep the Instance Secret’s manifest files in a local directory only.
+
+### **Snowflake requirements**
 
 Since Lens is created on Snowflake as the source, the data remains in the source, and queries are executed within the Snowflake system itself. Only the metadata is ingested into Data OS for the creation of the Data Product. This means Lens utilizes Snowflake’s native query engine to run queries directly on the Snowflake source.
 
-To ensure smooth query execution, sufficient computing and storage permissions are required. Learn more about access control in Snowflake by referring to this link.
-Sufficient computing and storage permissions are needed to run queries. Learn more about access control in Snowflake by referring to this [link](https://docs.snowflake.com/en/user-guide/security-access-control-privileges).
-
+To ensure smooth query execution, sufficient computing and storage permissions are required. Learn more about access control in Snowflake by referring to this [link](https://docs.snowflake.com/en/user-guide/security-access-control-privileges).
 
 ## Step 1: Create Instance Secret to securely store Snowflake credentials
 
@@ -114,63 +109,63 @@ Make sure to keep these Instance Secret manifest files stored locally and avoid 
 
 1. The following manifest files are provided as templates. Simply update them with your credentials and use them to create the corresponding instance secrets.
 
-  ```yaml title="instance-secret-r.yml"
-  name: snowflake-r
-  version: v1
-  type: instance-secret
-  description: "The purpose of secret to mount the snowflake"
-  layer: user
-  instance-secret:
-    type: key-value-properties
-    acl: r
-    data:
-      username: "<username>" # username of the snowflake account
-      password: "<password>" # password of the snowflake account
-  ```
+    ```yaml title="instance-secret-r.yml"
+    name: snowflake-r
+    version: v1
+    type: instance-secret
+    description: "The purpose of secret to mount the snowflake"
+    layer: user
+    instance-secret:
+      type: key-value-properties
+      acl: r
+      data:
+        username: "<username>" # username of the snowflake account
+        password: "<password>" # password of the snowflake account
+    ```
 
-  ```yaml title="instance-secret-rw.yml"
-  name: snowflake-rw
-  version: v1
-  type: instance-secret
-  description: "The purpose of secret to mount the snowflake"
-  layer: user
-  instance-secret:
-    type: key-value-properties
-    acl: rw
-    data:
-      username: "<username>" # username of the snowflake account
-      password: "<password>" # password of the snowflake account
-  ```
+    ```yaml title="instance-secret-rw.yml"
+    name: snowflake-rw
+    version: v1
+    type: instance-secret
+    description: "The purpose of secret to mount the snowflake"
+    layer: user
+    instance-secret:
+      type: key-value-properties
+      acl: rw
+      data:
+        username: "<username>" # username of the snowflake account
+        password: "<password>" # password of the snowflake account
+    ```
 
 2. Apply the read-only Instance Secret manifest file by executing the command below.
 
-  ```bash
-  dataos-ctl apply -f <manifest-file-path>
-  ```
+    ```bash
+    dataos-ctl apply -f <manifest-file-path>
+    ```
 
-  Expected output:
+    Expected output:
 
-  ```bash
-  INFO[0000] 🛠 apply...                                   
-  INFO[0000] 🔧 applying snowflake-r:v1:instance-secret... 
-  INFO[0002] 🔧 applying snowflake-r:v1:instance-secret...created
-  INFO[0002] 🛠 apply...complete
-  ```
+    ```bash
+    INFO[0000] 🛠 apply...                                   
+    INFO[0000] 🔧 applying snowflake-r:v1:instance-secret... 
+    INFO[0002] 🔧 applying snowflake-r:v1:instance-secret...created
+    INFO[0002] 🛠 apply...complete
+    ```
 
-  Similarly apply the read write Instance Secret manifest file for access.
+    Similarly apply the read write Instance Secret manifest file for access.
 
-  ```bash
-  dataos-ctl apply -f <manifest-file-path>
-  ```
+    ```bash
+    dataos-ctl apply -f <manifest-file-path>
+    ```
 
-  Expected output:
+    Expected output:
 
-  ```bash
-  INFO[0000] 🛠 apply...                                   
-  INFO[0000] 🔧 applying snowflake-rw:v1:instance-secret... 
-  INFO[0002] 🔧 applying snowflake-rw:v1:instance-secret...created
-  INFO[0002] 🛠 apply...complete
-  ```
+    ```bash
+    INFO[0000] 🛠 apply...                                   
+    INFO[0000] 🔧 applying snowflake-rw:v1:instance-secret... 
+    INFO[0002] 🔧 applying snowflake-rw:v1:instance-secret...created
+    INFO[0002] 🛠 apply...complete
+    ```
 
 ## Step 2: Set up a connection with source
 
@@ -252,7 +247,7 @@ dataos-ctl resource apply -f /home/data_product/depot/scanner.yaml -w public
 ```
 
 
-## Step 3: Prepare the semantic model folder inside the cloned Data Product repository
+## Step 4: Prepare the semantic model folder inside the cloned Data Product repository
 
 Organize the semantic model folder with the following structure to define tables, views, and governance policies:
 
@@ -269,7 +264,7 @@ semantic_model
 
 ### **Load data from the data source**
 
-In the sqls folder, create a `.sql` file for each logical table. Each file should be responsible for loading or selecting the relevant data from the source, using Snowflake-compatible SQL synta such as table names are formatted as schema.table.
+In the `sqls/` folder, create a `.sql` file for each logical table. Each file should be responsible for loading or selecting the relevant data from the source, using Snowflake-compatible SQL syntax such as table names are formatted as schema.table.
 
 For example, a simple data load might look as follows:
 

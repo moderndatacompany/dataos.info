@@ -1,7 +1,7 @@
 # Ingestion Errors
 
 
-## Error: Job finished with error=Could not alter output datasets for workspace
+##  Job finished with error=Could not alter output datasets for workspace
 
 **Message**
 
@@ -26,7 +26,7 @@ The reason is same workflow name already exists because the same workflow is alr
 
 Change the job/workflow name
 
-## Error: Too old resource version
+##  Too old resource version
 
 **Message**
 
@@ -42,13 +42,13 @@ Caused by: io.fabric8.kubernetes.client.KubernetesClientException: **too old res
 
 It's the standard behaviour of Kubernetes to give 410 after some time during watch. It's usually the client's responsibility to handle it. In the context of a watch, it will return `HTTP_GONE` when you ask to see changes for a `resourceVersion` that is too old - i.e. when it can no longer tell you what has changed since that version since too many things have changed. In that case, you'll need to start again and upgrade to the `latest version`
 
-## Error: Too Many Data Columns
+##  Too Many Data Columns
 
 **What went wrong?**
 
 This happens because the column has been `incremented` at the time of ingestion.
 
-## Error: Apply Error
+##  Apply Error
 
 ![Untitled](/resources/stacks/flare/ingestion_errors/untitled.png)
 
@@ -62,7 +62,7 @@ ERRO[0000] 🛠 **apply...error**
 ERRO[0000] failure applying a resource
 ```
 
-## Error: Same workflow name already exists
+##  Same workflow name already exists
 
 ```verilog
 There is an existing job with same workspace: public and name: camp-connect-city writing into below datasets
@@ -76,7 +76,7 @@ You can change the workflow name.
 
 **What went wrong?**
 
-## Error: Path Not Found Error
+##  Path Not Found Error
 
 **Message**
 
@@ -92,7 +92,7 @@ If your input path does not match from cloud source then the path is not found w
 1. Check input path
 2. Validate the path from resources.
 
-## Error: label-names and the value length <= 47
+##  label-names and the value length <= 47
 
 ```verilog
 spark.kubernetes.executor.podNamePrefix is invalid. must conform https://kubernetes.io/docs/concepts/overview/working-with-objects/names/
@@ -103,7 +103,7 @@ spark.kubernetes.executor.podNamePrefix is invalid. must conform https://kuberne
 
 The reason behind the error is workflow and dag name are less than equal to 47. if the length is more than 47 then the job will be failed. To resolve this you can reduce the length of workflow & dag name.
 
-## Error: Hera bases not provided
+<!-- ##  Hera bases not provided
 
 **Message**
 
@@ -123,4 +123,4 @@ Hera Bases need to be provided in the following format -
 envs:
   HERA_SSL: "false"
   HERA_BASE_URL: "https://eager-skylark.dataos.app/hera"
-```
+``` -->

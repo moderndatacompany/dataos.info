@@ -20,11 +20,11 @@ There are different ways in which you can investigate a running/completed Flare 
 
 When a Flare Workflow is deployed on the Kubernetes Cluster, the real-time information regarding the run-time status like Pods, Logs, etc. can be viewed on the Operations App. 
 
-### **DataOS Hera App**
+<!-- ### **DataOS Hera App**
 
 Hera App captures the historical and lineage information related to Flare Workflow deployments, topology etc.  It stores all this information within Blob storage. To know more, navigate to the below page
 
-[Observability of Workflow ](/resources/stacks/flare/optimizations/observability_of_workflow/)
+[Observability of Workflow ](/resources/stacks/flare/optimizations/observability_of_workflow/) -->
 
 ## Spark Web UI
 

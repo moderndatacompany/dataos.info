@@ -147,7 +147,7 @@ Flags:
   -h, --help   help for versions
 ```
 
-## `start`
+<!-- ## `start`
 
 ```shell
 
@@ -164,4 +164,4 @@ Flags:
 ```shell
 
 ```
-
+ -->

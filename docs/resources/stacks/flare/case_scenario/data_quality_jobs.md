@@ -60,7 +60,7 @@ workflow:
             #validate single input
             inputs:
               - name: source
-                dataset: dataos://icebase:retail/orders_enriched
+                dataset: dataos://lakehouse:retail/orders_enriched
                 format: iceberg
             #override outputs, steps with specific template
             assertions:

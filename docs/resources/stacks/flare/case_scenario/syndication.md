@@ -3,12 +3,7 @@
 
 ## Case Scenario
 
-In this case scenario, we syndicate the data from the DataOS internal managed depot icebase to an external depot. This involves reading the data from Icebase, doing certain transformations, and writing it to the external depot.
-
-## Implementation Flow
-
-1. Save the YAML and adjust the depots accordingly.
-2. Apply the YAML using DataOS CLI.
+In this case scenario, we syndicate the data from the DataOS internal managed Depot Lakehouse to an external Depot. This involves reading the data from Lakehouse, doing certain transformations, and writing it to the external Depot.
 
 ## Code Snippet
 
@@ -47,11 +42,11 @@ workflow:
           inputs:
             - name: processed_transactions
               format: iceberg
-              dataset: dataos://icebase:retail/pos_store_product_cust
+              dataset: dataos://lakehouse:retail/pos_store_product_cust
           logLevel: INFO
           outputs:
             - name: syndicatePos
-              dataset: dataos://icebase:syndicate/fused_offline_01_csv?acl=rw
+              dataset: dataos://lakehouse:syndicate/fused_offline_01_csv?acl=rw
               description: Fused offline transactions into csv
               options:
                 file:
