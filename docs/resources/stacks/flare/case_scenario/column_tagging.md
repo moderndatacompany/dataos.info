@@ -98,7 +98,7 @@ workflow: # Workflow Section
               schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc # Schema Path
           outputs: # Outputs Section
             - name: finalDf # Output Dataset Name
-              dataset: dataos://icebase:publiccollection/customer_406?acl=rw # Output Dataset UDL
+              dataset: dataos://lakehouse:publiccollection/customer_406?acl=rw # Output Dataset UDL
               options: # Options
                 iceberg: # Iceberg Specific Properties Section
                   partitionSpec:

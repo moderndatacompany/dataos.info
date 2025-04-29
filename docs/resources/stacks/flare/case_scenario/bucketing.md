@@ -139,7 +139,7 @@ workflow:
   dag:
     - name: sample
       spec:
-        stack: flare:5.0
+        stack: flare:6.0
         compute: runnable-default
         stackSpec:
           driver:    
