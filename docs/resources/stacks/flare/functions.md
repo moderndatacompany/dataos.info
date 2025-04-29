@@ -27,7 +27,7 @@ workflow:
   dag:
     - name: sample
       spec:
-        stack: flare:5.0
+        stack: flare:6.0
         stackSpec:
           driver:    
             coreLimit: 12000m
@@ -127,7 +127,7 @@ workflow:
       tags:
       - Connect
       - City
-      stack: flare:5.0
+      stack: flare:6.0
       compute: runnable-default
       stackSpec:
         job:

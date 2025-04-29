@@ -146,7 +146,7 @@ To define a workflow for the Flare job you want to run, you must provide various
     - `format` - `CSV`
 - Output: `dataos://icebase:retailsample`
 
-This example requires two depots (`thirdparty01` and `icebase`) to connect with the source and sink to perform the reading and writing of data.
+This example requires two depots (`thirdparty01` and `lakehouse`) to connect with the source and sink to perform the reading and writing of data.
 
 ```yaml
 version: v1

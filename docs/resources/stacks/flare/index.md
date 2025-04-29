@@ -11,11 +11,9 @@ Flare is a declarative [Stack](/resources/stacks/) for large-scale data processi
 
 <figure>
   <img src="/resources/stacks/flare/flare_overview.png" alt="Flare Overview" style="width:31rem;" />
-  <figcaption><i>Flare Overview</i></figcaption>
+  <figcaption><i>Placement of Flare Stack within DataOS</i></figcaption>
 </figure>
 
-<center><i>Placement of Flare Stack within DataOS</i>
-</center>
 
 ## Syntax of Flare YAML configuration
 
@@ -52,7 +50,7 @@ Batch Jobs involve recomputing all changed datasets during each run, ensuring co
 
 Data Profiling Jobs assess the validity and structure of datasets. These jobs examine source data to determine accuracy, completeness, and validity, providing summaries and insights about the data. Accurate and complete data is essential for making informed decisions based on the available data. Data Profiling Jobs enable you to analyze the structure, content, and relationships within the data, uncovering inconsistencies, and anomalies to achieve higher data quality.
 To learn more about creating Data Profiling Jobs, refer to the link: [Case Scenarios: Data Profiling Jobs](/resources/stacks/flare/case_scenario/#data-profiling-job). -->
-
+<!-- 
 **Fingerprinting**
 
 Initiating a data profiling job for a dataset automatically triggers the fingerprinting process.
@@ -67,7 +65,7 @@ DataOS conducts fingerprinting and stores the classification information for the
 
 DataOS allows users to define their data quality expectations and discover data shortcomings for the success of data-driven operations. It uses the Flare stack that provides a set of tools and functions for data quality analysis and validation. Flare provides assertions, which are business-specific validation rules, to test and evaluate the quality of specific datasets if they are appropriate for the intended purpose.
 
-Data Quality Jobs measure and ensure data quality based on these assertions. For more information on defining assertions and their properties, refer to [Performing Business Validation Checks with Assertions](/resources/stacks/flare/assertions_case_scenario/).
+Data Quality Jobs measure and ensure data quality based on these assertions. For more information on defining assertions and their properties, refer to [Performing Business Validation Checks with Assertions](/resources/stacks/flare/assertions_case_scenario/). -->
 
 #### **Incremental Job**
 
@@ -100,7 +98,9 @@ The Flare Stack YAML consists of multitude of configuration settings tailored fo
 
 [Flare Stack YAML Configurations](/resources/stacks/flare/configurations/)
 
-[Flare Functions](/resources/stacks/flare/functions/list/)
+## Flare functions
+
+- [Flare functions](/resources/stacks/flare/functions/list/)
 
 <!-- ## How to test Flare Jobs
 

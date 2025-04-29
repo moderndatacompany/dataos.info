@@ -30,7 +30,7 @@ stackSpec:                                              # Flare Stack-specific s
     inputs:
       - name: account_connect                                         # Reference name for input dataset (mandatory)
         dataset: dataos://gcdexport:none/gcdcore_account              # Dataset address (mandatory)
-        query: select * from icebase.retail.city limit 100            # SQL query for data load (mandatory)
+        query: select * from lakehouse.retail.city limit 100            # SQL query for data load (mandatory)
         format: csv                                                   # Data format of the dataset (optional, default: iceberg)
         isStream: true                                                # Flag mandatory for streaming dataset (optional, default: false)
         schemaType: "avro"                                            # Schema type (optional, default: avro)
@@ -77,7 +77,7 @@ stackSpec:                                              # Flare Stack-specific s
 
     outputs:                                                # Output Dataset configurations (optional)
       - name: top_100_accounts                              # Output dataset name (mandatory)
-        dataset: dataos://icebase:bronze/topaccounts?acl=rw           # Dataset URI for output (mandatory)
+        dataset: dataos://lakehouse:bronze/topaccounts?acl=rw           # Dataset URI for output (mandatory)
         format: iceberg                                     # Output dataset format (optional, default: based on depot type)
         driver: org.apache.jdbc.psql.Driver                 # JDBC driver class (optional)
         title: Account                                      # Output dataset title (optional)
@@ -426,7 +426,7 @@ stackSpec:
     showPreviewLines: 10
     inputs: 
       - name: account_connect
-        dataset: dataos://icebase:retail/city
+        dataset: dataos://lakehouse:retail/city
         format: iceberg
         # ...other input configurations
 ```
@@ -465,7 +465,7 @@ only showing top 10 rows
 
 ### **`inputs`**
 
-**Description:** The `inputs` attribute comprises of input dataset configurations for reading data from various depots and data sources. 
+**Description:** The `inputs` attribute comprises of input dataset configurations for reading data from various Depot and data sources. 
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
@@ -478,7 +478,7 @@ stackSpec:
   job:
     inputs: 
       - name: account_connect
-        dataset: dataos://icebase:retail/city
+        dataset: dataos://lakehouse:retail/city
         format: iceberg
         # ...other input configurations
 ```
@@ -515,7 +515,7 @@ stackSpec:
 | --- | --- | --- | --- |
 | string | mandatory | none | any valid dataset UDL, in the following format `dataos://[depot]:[collection]/[dataset]`|
 
-**Additional Details**: For depots created atop, object storages or file storages, you can also load a specific file within the dataset in the following manner, `dataos://gcdexport:none/gcdcore_account/account_x.csv`. 
+**Additional Details**: For Depot created atop, object storages or file storages, you can also load a specific file within the dataset in the following manner, `dataos://gcdexport:none/gcdcore_account/account_x.csv`. 
 
 **Example Usage:**
 
@@ -543,7 +543,7 @@ stackSpec:
 stackSpec:
   job:
     inputs: 
-      - query: SELECT * FROM icebase.retail.city LIMIT 100
+      - query: SELECT * FROM lakehouse.retail.city LIMIT 100
         # ...other input configurations
 ```
 
@@ -727,7 +727,7 @@ For input datasets:
 ```yaml
 inputs:
   - name: sanity_city_input
-    dataset: dataos://icebase:retail/city
+    dataset: dataos://lakehouse:retail/city
     format: Iceberg
     options:
       branch: b1
@@ -948,7 +948,7 @@ stackSpec:
 ### **`outputs`**
 
 
-**Description:** The `outputs` attribute comprises of output dataset configurations for writing data from various depots and data sources. 
+**Description:** The `outputs` attribute comprises of output dataset configurations for writing data from various Depot and data sources. 
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
@@ -961,7 +961,7 @@ stackSpec:
   job:
     inputs: 
       - name: account_connect
-        dataset: dataos://icebase:retail/city
+        dataset: dataos://lakehouse:retail/city
         format: iceberg
         # ...other input configurations
 ```
@@ -1000,7 +1000,7 @@ stackSpec:
 stackSpec:
   job:
     outputs:
-      - dataset: dataos://icebase:bronze/topaccounts?acl=rw
+      - dataset: dataos://lakehouse:bronze/topaccounts?acl=rw
 ```
 
 ---
@@ -1180,7 +1180,7 @@ For output datasets:
 ```yaml
 outputs:
   - name: cities
-    dataset: dataos://icebase:retail/city_01
+    dataset: dataos://lakehouse:retail/city_01
     format: ICEBERG
     options:
       extraOptions:
@@ -2149,13 +2149,17 @@ stackSpec:
 
 ### **`actions`**
 
-**Description:** Maintenance of any Iceberg table is challenging; therefore, DataOS internal depot Icebase gives users in-built capabilities to manage and maintain metadata files and data. In DataOS, these operations can be performed using Flare stack. This service in Flare is offered through `actions` attribute. 
+**Description:** Maintenance of any Iceberg table is challenging; therefore, DataOS internal depot Lakehouse gives users in-built capabilities to manage and maintain metadata files and data. In DataOS, these operations can be performed using Flare stack. This service in Flare is offered through `actions` attribute. 
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
 | list of mappings | optional | none | action configuration settings |
 
-**Additional details:** The Data Maintenance Actions are only supported in depots with Iceberg datasets. For e.g. Icebase. Following are the different actions that can be accomplished using Flare in DataOS:
+!!! tip
+
+    It is recommended to use the Flare 5.0 with updated image tag `7.3.21`.
+
+**Additional details:** The Data Maintenance Actions are only supported in Depot with Iceberg datasets. For e.g. Lakehouse. Following are the different actions that can be accomplished using Flare in DataOS:
 
 - [`rewrite_dataset`](#rewrite_dataset)
 - [`rewrite_manifest`](#rewrite_manifest)
@@ -2172,17 +2176,14 @@ stackSpec:
       # ... attribute specific to Flare Action
 ```
 
-
 The configurations for the different actions and their definitions are provided in the below section:
 
 #### **`rewrite_dataset`**
 
-> Supported in Flare Stack Version `flare:4.0`.
-> 
 
-Iceberg format within Icebase depots tracks each data file in a table. More data files lead to more metadata stored in manifest files, and small data files cause an unnecessary amount of metadata and less efficient queries from file open costs. 
+Iceberg format within Lakehouse Depot tracks each data file in a table. More data files lead to more metadata stored in manifest files, and small data files cause an unnecessary amount of metadata and less efficient queries from file open costs. 
 
-The data files can be compacted in parallel within Icebase depots using Flare’s `rewrite_dataset` action. This will combine small files into larger files to reduce metadata overhead and runtime file open costs. The `rewrite_dataset` action definition for `flare:4.0` is given below:
+The data files can be compacted in parallel within Lakehouse Depot using Flare’s `rewrite_dataset` action. This will combine small files into larger files to reduce metadata overhead and runtime file open costs. The `rewrite_dataset` action definition is given below:
 
 ```yaml
 actions:
@@ -2199,10 +2200,8 @@ The `rewrite_dataset` action is beneficial in the case of streaming, where small
 
 #### **`rewrite_manifest`**
 
-> Supported in Flare Stack Version `flare:4.0`.
-> 
 
-DataOS internal depot, Icebase uses metadata in its manifest list and manifest files to speed up query planning and to prune unnecessary data files. Some tables can benefit from rewriting manifest files to make locating data for queries much faster. The metadata tree functions as an index over a table’s data. Manifests in the metadata tree are automatically compacted in the order they are added, which makes queries faster when the write pattern aligns with read filters. For example, writing hourly-partitioned data as it arrives is aligned with time-range query filters. The `rewrite_manifest` action definition for `flare:4.0` is given below:
+DataOS internal depot, Lakehouse uses metadata in its manifest list and manifest files to speed up query planning and to prune unnecessary data files. Some tables can benefit from rewriting manifest files to make locating data for queries much faster. The metadata tree functions as an index over a table’s data. Manifests in the metadata tree are automatically compacted in the order they are added, which makes queries faster when the write pattern aligns with read filters. For example, writing hourly-partitioned data as it arrives is aligned with time-range query filters. The `rewrite_manifest` action definition is given below:
 
 ```yaml
 actions:
@@ -2216,17 +2215,14 @@ A case scenario illustrating the implementation of the `rewrite_manifest` action
 
 #### **`expire_snapshots`**
 
-> Supported in Flare Stack Version `flare:4.0`
-> 
-
-Each write to an Iceberg table within Icebase depots creates a new snapshot, or version, of a table. Snapshots can be used for time-travel queries, or the table can be rolled back to any valid snapshot. Snapshots accumulate until they are expired by Flare’s `expire_snapshots` action. The `expire_snapshots` action definition for `flare:4.0` is as follows:
+Each write to an Iceberg table within Lakehouse Depot creates a new snapshot, or version, of a table. Snapshots can be used for time-travel queries, or the table can be rolled back to any valid snapshot. Snapshots accumulate until they are expired by Flare’s `expire_snapshots` action. The `expire_snapshots` action definition is as follows:
 
 ```yaml
 actions:
   - name: expire_snapshots # Name of the Action
     input: <input-dataset-name> # Input Dataset Name
     options: # Options
-      expireOlderThan: "<date-in-unix-format-as-a-string>" # Timestamp in Unix Format (All Snapshots older than timestamp are expired)
+      olderThanMillis: "<date-in-unix-format-as-a-string>" # Timestamp in Unix Format (All Snapshots older than timestamp are expired)
 ```
 
 Regularly expiring snapshots is recommended to delete data files that are no longer needed, and to keep the size of table metadata small. To view a case scenario for `expire_snapshots` action, click [here.](/resources/stacks/flare/case_scenario/expire_snapshots/)
@@ -2235,12 +2231,10 @@ Regularly expiring snapshots is recommended to delete data files that are no lon
 
 #### **`remove_orphans`**
 
-> Supported in Flare Stack Version `flare:4.0`.
-> 
 
-While executing Flare Jobs upon Icebase depots, job failures can leave files that are not referenced by table metadata, and in some cases, normal snapshot expiration may not be able to determine if a file is no longer needed and delete it.
+While executing Flare Jobs upon Lakehouse Depot, job failures can leave files that are not referenced by table metadata, and in some cases, normal snapshot expiration may not be able to determine if a file is no longer needed and delete it.
 
-To clean up these ‘orphan’ files under a table location older than a specified timestamp, we can use Flare’s `remove_orphans` action. The below code block shows the definition for `remove_orphans` action for `flare:4.0`:
+To clean up these ‘orphan’ files under a table location older than a specified timestamp, we can use Flare’s `remove_orphans` action. The below code block shows the definition for `remove_orphans` action:
 
 ```yaml
 actions:
@@ -2256,10 +2250,8 @@ Click [here](/resources/stacks/flare/case_scenario/remove_orphans/) to view a ca
 
 #### **`delete_from_dataset`**
 
-> Supported in Flare Stack Version `flare:4.0`only.
-> 
 
-The `delete_from_dataset` action removes data from tables. The action accepts a filter provided in the `deleteWhere` property to match rows to delete. If the delete filter matches entire partitions of the table, Iceberg format within the Icebase depot will perform a metadata-only delete. If the filter matches individual rows of a table, then only the affected data files will be rewritten. The syntax of the `delete_from_dataset` action is provided below:
+The `delete_from_dataset` action removes data from tables. The action accepts a filter provided in the `deleteWhere` property to match rows to delete. If the delete filter matches entire partitions of the table, Iceberg format within the Lakehouse depot will perform a metadata-only delete. If the filter matches individual rows of a table, then only the affected data files will be rewritten. The syntax of the `delete_from_dataset` action is provided below:
 
 ```yaml
 actions:
@@ -2272,12 +2264,12 @@ The `delete_from_dataset` can be used in multiple configurations, which have bee
 
 <aside class="callout">
 
-🗣️ When using a GCS-based environment, use the dataset address with the <code>acl=rw</code> query parameter (e.g. <code>dataos://icebase:actions/random_users_data?acl=rw</code>). This is because GCS generates two credentials with different permissions: one with only read access and one with both read and write access. Flare actions need write access to create files, so if you don't specify <code>acl=rw</code>, Flare will default to read-only access and prevent you from updating or creating files.
+🗣️ When using a GCS-based environment, use the dataset address with the <code>acl=rw</code> query parameter (e.g. <code>dataos://lakehouse:actions/random_users_data?acl=rw</code>). This is because GCS generates two credentials with different permissions: one with only read access and one with both read and write access. Flare actions need write access to create files, so if you don't specify <code>acl=rw</code>, Flare will default to read-only access and prevent you from updating or creating files.
 
 ```yaml
 inputs:
   - name: inputDf
-    dataset: dataos://icebase:actions/random_users_data?acl=rw
+    dataset: dataos://lakehouse:actions/random_users_data?acl=rw
     format: Iceberg
 ```
 
