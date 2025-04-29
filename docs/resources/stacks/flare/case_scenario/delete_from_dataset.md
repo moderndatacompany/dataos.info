@@ -5,6 +5,11 @@
 
 The `delete_from_dataset` [action](/resources/stacks/flare/configurations/#delete_from_dataset) removes data from tables upon a specified filter. There could be myriad such filter condition, two such scenarios are provided below.
 
+!!! info  
+
+    `deletefromdataset` only remove data files,metadata files (like snapshots, manifests, etc.) are retained for audit and rollback purposes until they are explicitly cleaned up.
+ 
+
 ## Code snippet
 
 ### **Delete from single dataset**
@@ -33,7 +38,7 @@ workflow: # Workflow Specific Section
             logLevel: INFO # Loglevel
             inputs: # Inputs Section
               - name: inputDf # Name of Input Dataset
-                dataset: dataos://icebase:actions/random_users_data?acl=rw # Dataset UDL
+                dataset: dataos://lakehouse:actions/random_users_data?acl=rw # Dataset UDL
                 format: Iceberg # Dataset Format
             actions: # Action Section
               - name: delete_from_dataset # Name of the Action
@@ -43,7 +48,9 @@ workflow: # Workflow Specific Section
 
 ### **Delete from multiple dataset**
 
-The below case scenario also depicts data deletion based on a filter. However, here there are two input datasets `customer` and `city` on which an inner join is performed. The filter condition for the same is provided in the `deleteWhere` property. The YAML for the same is provided below:
+The below case scenario also depicts data deletion based on a filter.
+
+Here, two input datasets `customer` and `city` are given on which an inner join is performed. The filter condition for the same is provided in the `deleteWhere` property. The YAML for the same is provided below:
 
 ```yaml
 version: v1 # Version
@@ -59,10 +66,10 @@ workflow: # Workflow Section
           job: # Job Section
             inputs: # Inputs Section
               - name: customer # Name of First Input Dataset
-                dataset: dataos://icebase:test/customer # Input Dataset UDL
+                dataset: dataos://lakehouse:test/customer # Input Dataset UDL
                 format: Iceberg # Format
               - name: city # Name of Second Input Dataset
-                dataset: dataos://icebase:test/city # Input Dataset UDL
+                dataset: dataos://lakehouse:test/city # Input Dataset UDL
                 format: Iceberg # Format
             steps: # Steps Section
               - sequence: # Sequence
@@ -73,3 +80,8 @@ workflow: # Workflow Section
                 input: customer # Input Dataset Name
                 deleteWhere: "exists (SELECT city_id FROM finalDf WHERE target.city_id = city_id)" # Deletes from the specified condition
 ```
+
+
+!!! tip
+
+    To verify you can use Workbench and count the record before and after running the `delete_from_dataset` action job.

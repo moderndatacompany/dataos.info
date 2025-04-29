@@ -35,63 +35,80 @@ The following steps demonstrate the partition evolution use case.
 Run the following Flare job that ingests data into DataOS with the partition on year.
 
 ```yaml
----
-version: v1beta1
-name: workflow-ny-taxi
+version: v1
+name: wf-storage-event-context
 type: workflow
 tags:
-- Connect
-- NY-Taxi
-description: The job ingests NY-Taxi data and write with partitioning on year
+  - NY-Taxi
+  - Connect
+  - Tier.Gold
+description: The job ingests NY-Taxi data and writes it with partitioning on year, using an updated workflow spec.
 workflow:
-  title: Connect NY Taxi
+  title: NY Taxi Data Ingestion
   dag:
-  - name: nytaxi-ingest-partition-update
-    title: NY-taxi data ingester
-    description: The job ingests NY-Taxi data from dropzone into raw zone
-    spec:
-      tags:
-      - Connect
-      - NY-Taxi
-      stack: flare:6.0
-      flare:
-        job:
-          explain: true
-          inputs:
-           - name: customer
-             dataset: dataos://icebase:none/ny-taxi-data/customer?acl=r
-             format: iceberg
-             isStream: false
-          logLevel: INFO
-          outputs:
-            - name: output01
-              depot: dataos://icebase:sample/customer_partition_evolution?acl=rw
-          steps:
-          - sink:
-             - sequence:
-                 name: output01
-               outputOptions:
-                 saveMode: overwrite
-                 iceberg:
-                   properties:
-                     write.format.default: parquet
-                     write.metadata.compression-codec: gzip
-                   partitionSpec:
-                     - type: year
-                       column: pickup_datetime
-                       name: year
-               tags:
+    - name: storage-event-context
+      description: The job ingests NY-Taxi data from dropzone into Icebase with enhanced metadata configuration.
+      title: NY Taxi Ingestion
+      spec:
+        tags:
+          - NY-Taxi
+        stack: flare:6.0
+        compute: runnable-default
+        stackSpec:
+          driver:
+            coreLimit: 2500m
+            cores: 2
+            memory: 3048m
+          executor:
+            coreLimit: 3500m
+            cores: 2
+            instances: 2
+            memory: 4000m
+          job:
+            explain: true
+            inputs:
+              - name: ny_taxi_dataset
+                dataset: dataos://lakehouse:none/ny-taxi-data/customer?acl=r
+                format: Iceberg
+            logLevel: INFO
+            outputs:
+              - name: final
+                dataset: dataos://lakehouse:sample/customer_partition_evolution?acl=rw
+                format: Iceberg
+                description: Partitioned NY-Taxi dataset output
+                tags:
                   - NY-Taxi
-                  - Connect
-               title: NY-Taxi Data
-            sequence:
-              - name: ny_taxi_ts
-                sql: SELECT *, date_format(now(), 'yyyyMMddHHmm') as version, now() as ts_ny_taxi FROM ny_taxi
-                functions:
-                  - name: set_type
+                options:
+                  saveMode: overwrite
+                  sort:
+                    mode: partition
                     columns:
-                      pickup_datetime: timestamp
-                      dropoff_datetime: timestamp
+                      - name: pickup_datetime
+                        order: desc
+                  iceberg:
+                    partitionSpec:
+                      - type: year
+                        column: pickup_datetime
+                        name: year
+                    properties:
+                      write.format.default: parquet
+                      write.metadata.compression-codec: gzip
+                title: NY-Taxi Dataset Partitioned Output
+            steps:
+              - sequence:
+                  - name: final
+                    sql: |
+                      SELECT
+                        *,
+                        date_format(now(), 'yyyyMMddHHmm') as version,
+                        now() as ts_ny_taxi
+                      FROM
+                        ny_taxi_dataset
+                    functions:
+                      - name: set_type
+                        columns:
+                          pickup_datetime: timestamp
+                          dropoff_datetime: timestamp
 ```
 
 ### **Append data with new partition spec**
@@ -99,63 +116,83 @@ workflow:
 Run the following Flare job that appends data into DataOS with the updated partition on ‘day’.
 
 ```yaml
----
-version: v1beta1
-name: workflow-ny-taxi-updatepartition
+version: v1
+name: wf-ny-taxi-updatepartition
 type: workflow
 tags:
-- Connect
-- NY-Taxi
-description: The job ingests NY-Taxi data and write with updated partitioning on Day
+  - NY-Taxi
+  - Connect
+  - Tier.Gold
+description: The job ingests NY-Taxi data and writes it with updated partitioning on day, using an updated workflow spec.
 workflow:
-  title: Connect NY Taxi
+  title: NY Taxi Data Ingestion
   dag:
-  - name: nytaxi-ingest-partition-update
-    title: NY-taxi data ingester
-    description: The job ingests NY-Taxi data from dropzone into raw zone
-    spec:
-      tags:
-      - Connect
-      - NY-Taxi
-      stack: flare:1.0
-      flare:
-        job:
-          explain: true
-          inputs:
-           - name: ny_taxi
-             dataset: dataos://thirdparty01:none/ny-taxi-data/010100.json?acl=r
-             format: json
-             isStream: false
-          logLevel: INFO
-          outputs:
-            - name: output01
-              depot: dataos://icebase:raw01?acl=rw
-          steps:
-          - sink:
-             - sequenceName: ny_taxi_ts
-               datasetName: ny_taxi_01
-               outputName:  output01
-               outputType: Iceberg
-               outputOptions:
-                 saveMode: append
-                 iceberg:
-                   properties:
-                     write.format.default: parquet
-                     write.metadata.compression-codec: gzip
-                   partitionSpec:
-                     - type: day
-                       column: pickup_datetime
-                       name: day
-               tags:
+    - name: storage-event-context
+      description: The job ingests NY-Taxi data from dropzone into Icebase with enhanced metadata configuration.
+      title: NY Taxi Ingestion
+      spec:
+        tags:
+          - NY-Taxi
+          - Connect
+        stack: flare:6.0
+        compute: runnable-default
+        stackSpec:
+          driver:
+            coreLimit: 2500m
+            cores: 2
+            memory: 3048m
+          executor:
+            coreLimit: 3500m
+            cores: 2
+            instances: 2
+            memory: 4000m
+          job:
+            explain: true
+            inputs:
+              - name: ny_taxi
+                dataset: dataos://thirdparty01:none/ny-taxi-data/010100.json?acl=r
+                format: JSON
+                options:
+                  multiLine: true
+            logLevel: INFO
+            outputs:
+              - name: final
+                dataset: dataos://lakehouse:raw01/ny-taxi-partitioned?acl=rw
+                format: Iceberg
+                description: NY-Taxi data written with daily partitioning.
+                tags:
                   - NY-Taxi
                   - Connect
-               title: NY-Taxi Data
-            sequence:
-              - name: ny_taxi_ts
-                sql: SELECT *, date_format(now(), 'yyyyMMddHHmm') as version, now() as ts_ny_taxi FROM ny_taxi
-                functions:
-                  - name: set_type
+                options:
+                  saveMode: append
+                  sort:
+                    mode: partition
                     columns:
-                      pickup_datetime: timestamp
-                      dropoff_datetime: timestamp
+                      - name: pickup_datetime
+                        order: desc
+                  iceberg:
+                    partitionSpec:
+                      - type: day
+                        column: pickup_datetime
+                        name: day
+                    properties:
+                      write.format.default: parquet
+                      write.metadata.compression-codec: gzip
+                title: NY-Taxi Partitioned Dataset
+            steps:
+              - sequence:
+                  - name: final
+                    sql: |
+                      SELECT
+                        *,
+                        date_format(now(), 'yyyyMMddHHmm') as version,
+                        now() as ts_ny_taxi
+                      FROM
+                        ny_taxi
+                    functions:
+                      - name: set_type
+                        columns:
+                          pickup_datetime: timestamp
+                          dropoff_datetime: timestamp
+
 ```

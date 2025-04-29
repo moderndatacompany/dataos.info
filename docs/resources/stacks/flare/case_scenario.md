@@ -6,14 +6,14 @@ Batch jobs are utilized in situations where there is a need to recompute all cha
 
 Simple Batch Jobs follow a straightforward process that involves:
 
-1. Reading data from a specified set of depots.
+1. Reading data from a specified set of Depots.
 2. Applying transformations to the data.
-3. Writing the transformed data to another set of depots.
+3. Writing the transformed data to another set of Depots.
 
 <details>
 <summary>Case Scenario</summary>
 
-The code snippet below demonstrates a Workflow involving a single Flare batch job that reads the input dataset from <code>thirdparty01</code> depot, perform transformation using Flare Stack, and stores the output dataset in the <code>bqdepot</code> depot. 
+The code snippet below demonstrates a Workflow involving a single Flare batch job that reads the input dataset from <code>thirdparty01</code> Depot, perform transformation using Flare Stack, and stores the output dataset in the <code>bqdepot</code> Depot. 
 
 **Code Snippet**
 
@@ -71,7 +71,7 @@ In scenarios where there is a continuous requirement to process incoming data in
 <summary>Case Scenario</summary>
 
 
-The following code snippet illustrates a Workflow involving a Flare Stream Job that reads data from the <code>thirdparty01</code> depot in a streaming format and subsequently written to the <code>eventhub</code> depot. During this process, all intermediate streams of data batches are stored at the location specified in the <code>checkpointLocation</code> attribute.
+The following code snippet illustrates a Workflow involving a Flare Stream Job that reads data from the <code>thirdparty01</code> Depot in a streaming format and subsequently written to the <code>eventhub</code> Depot. During this process, all intermediate streams of data batches are stored at the location specified in the <code>checkpointLocation</code> attribute.
 
 **Code Snippet**
 
@@ -129,149 +129,76 @@ Computes only the changed rows or files of data since the last build, reducing o
 
 ## Data Transformation
 
-[Read and write from Iceberg branch](/resources/stacks/flare/case_scenario/iceberg_branch_read_write/)
+- [Read and write from Iceberg branch](/resources/stacks/flare/case_scenario/iceberg_branch_read_write/)
 
-<!-- [Data Profiling Jobs](/resources/stacks/flare/case_scenario/data_profiling_jobs/)
+- [Data Replay](/resources/stacks/flare/case_scenario/data_replay/)
 
-[Data Quality Jobs (Assertions)](/resources/stacks/flare/case_scenario/data_quality_jobs/) -->
+- [Concurrent Writes](/resources/stacks/flare/case_scenario/concurrent_writes/)
 
-[Compression](/resources/stacks/flare/case_scenario/compression/)
+- [Query Dataset for Job in Progress](/resources/stacks/flare/case_scenario/query_dataset_for_job_in_progress/)
 
-[Merge Data](/resources/stacks/flare/case_scenario/merge_data/)
-
-[Enrichment](/resources/stacks/flare/case_scenario/enrichment/)
-
-[Merge Into Functionality](/resources/stacks/flare/case_scenario/merge_into_functionality/)
-
-[Partitioning](/resources/stacks/flare/case_scenario/partitioning/)
-
-[Partition Evolution](/resources/stacks/flare/case_scenario/partition_evolution/)
-
-[Data Replay](/resources/stacks/flare/case_scenario/data_replay/)
-
-[Concurrent Writes](/resources/stacks/flare/case_scenario/concurrent_writes/)
-
-[Query Dataset for Job in Progress](/resources/stacks/flare/case_scenario/query_dataset_for_job_in_progress/)
-
-[Bucketing](/resources/stacks/flare/case_scenario/bucketing/)
-
-[Caching](/resources/stacks/flare/case_scenario/caching/)
-
-[Job Optimization by Tuning](/resources/stacks/flare/case_scenario/job_optimization_by_tuning/)
-
-[Column Tagging](/resources/stacks/flare/case_scenario/column_tagging/)
-
-## Data Syndication
-
-[Syndication](/resources/stacks/flare/case_scenario/syndication/)
-
-## Flare Actions
-
-> The below functionality is only supported in the DataOS managed depot, Icebase
-> 
-
-[Delete from Dataset](/resources/stacks/flare/case_scenario/delete_from_dataset/)
-
-[Expire Snapshots](/resources/stacks/flare/case_scenario/expire_snapshots/)
-
-[Remove Orphans](/resources/stacks/flare/case_scenario/remove_orphans/)
-
-[Rewrite Manifest Files](/resources/stacks/flare/case_scenario/rewrite_manifest_files/)
-
-### **Rewrite Orphans**
-
-The `remove_orphans` [action](/resources/stacks/flare/configurations/#remove_orphans) cleans up orphans files older than a specified time period. This action may take a long time to finish if you have lots of files in data and metadata directories. It is recommended to execute this periodically, but you may not need to execute this often. 
-
-<aside class="callout">
-
-🗣️ <b>Note:</b> It is dangerous to remove orphan files with a retention interval shorter than the time expected for any write to complete because it might corrupt the table if in-progress files are considered orphaned and are deleted. The default interval is 3 days.
-
-</aside>
-
-<details><summary>Case Scenario</summary>
-
-The following code snippet demonstrates removing orphan files older than the time specified in the `olderThan` in Unix epoch format.
+- [Merge Into Functionality](/resources/stacks/flare/case_scenario/merge_into_functionality/)
 
 
-The following code snippet aims to remove orphan files within Iceberg tables in DataOS Depot using the ``remove_orphans`` action.
+## Job performance and optimization
 
-The task relies on the remove_orphans action, which requires the inputDf dataset as an input. This dataset is defined as dataos://icebase:actions/random_users_data and is in Iceberg format. Additionally, the action provides options, such as the olderThan parameter, which specifies the timestamp (in Unix format) for identifying orphan files.
-
-
-```yaml
-version: v1 
-name: orphans 
-type: workflow 
-tags: 
-  - orphans
-workflow: 
-  title: Remove orphan files 
-  dag: 
-    - name: orphans 
-      title: Remove orphan files 
-      spec: 
-        tags: 
-          - orphans
-        stack: flare:6.0 
-        compute: runnable-default 
-        stackSpec: 
-          job: 
-            explain: true 
-            logLevel: INFO 
-            inputs: 
-              - name: inputDf 
-                dataset: dataos://icebase:actions/random_users_data 
-                format: Iceberg 
-            actions: # Flare Action
-              - name: remove_orphans # Action Name
-                input: inputDf # Input Dataset Name
-                options: # Options
-                  olderThan: "1674201289720" # Timestamp in Unix Format
-```
-</details>
+- [Job Optimization by Tuning](/resources/stacks/flare/case_scenario/job_optimization_by_tuning/)
 
 
+## Metadata and data management
 
-### **Rewrite Dataset**
+- [Column Tagging](/resources/stacks/flare/case_scenario/column_tagging/)
 
-The [`rewrite_dataset`](/resources/stacks/flare/configurations/#rewrite_dataset) action provided by DataOS allows for the parallel compaction of data files in Iceberg tables using Flare. This action efficiently reduces the size of data files to meet the specified target file size in bytes, as defined in the YAML configuration.
-
-<details><summary>Case Scenario</summary>
-
-The following code snippet demonstrates the compression of Iceberg data files for a given input dataset, `inputDf`, stored in a DataOS Depot. The compression process aims to reduce the file size to a specified target size in bytes, denoted by the variable `target-file-size-bytes`.
-
-```yaml
-version: v1 
-name: rewrite 
-type: workflow 
-tags: 
-  - Rewrite
-workflow: 
-  title: Compress iceberg data files 
-  dag: 
-    - name: rewrite 
-      title: Compress iceberg data files 
-      spec: 
-        tags: 
-          - Rewrite
-        stack: flare:6.0 
-        compute: runnable-default 
-        stackSpec: 
-          job: 
-            explain: true 
-            logLevel: INFO 
-            inputs: 
-              - name: inputDf 
-                dataset: dataos://icebase:actions/random_users_data?acl=rw
-                format: Iceberg 
-            actions: # Flare Action
-              - name: rewrite_dataset # Name of the action
-                input: inputDf # Input Dataset Name 
-                options: # Options
-                  properties: # Properties
-                    "target-file-size-bytes": "2048" # Target File Size in Bytes
-```
-</details>
+- [Data Syndication](/resources/stacks/flare/case_scenario/syndication/)
 
 
+## Optimizing the performance of Iceberg tables 
+
+Managing the datafiles and metadata files in your Lakehouse is of paramount importance as data grows over time. In Iceberg, metadata files are core to so many critical operations, such as time travel and query optimization. However, with the increase in the number of datafiles, the number of metadata files also increases. Additionally, streaming-based ingestion jobs can lead to a lot of small files being generated as data is written in smaller chunks as and when they arrive. 
+
+Performance of such tables can be optimized by reducing the number of data files, applying effective partitioning, sorting, and managing updates efficiently. Below are  Below are the key strategies for achieving these optimizations:
+
+### **Compaction**
+
+When querying Iceberg tables, every file operation—opening, scanning, closing—adds to compute time and cost. As the number of files involved in a query increases as  each file needs to be opened, scanned, and closed, performance can degrade due to the overhead of handling many small files (in batch or stream job both). 
+
+To optimize query performance and reduce overhead, two types of compaction can be applied:
+
+- [Data File Compaction](/resources/stacks/flare/case_scenario/rewrite_dataset/): Compact small data files into larger files at regular intervals. This reduces the number of files to scan during queries.
+
+- [Manifest Rewrite](/resources/stacks/flare/case_scenario/rewrite_manifest_files/): Rewrite manifests if their count becomes disproportionately large compared to data files. Rewriting manifests helps reduce metadata overhead, which in turn speeds up data scan.
+
+### **Partitioning**
+
+Optimize query performance by organizing data into folders based on key columns. Learn when and how to apply partitioning to reduce scan time and improve efficiency.
+
+- [Partitioning](/resources/stacks/flare/case_scenario/partitioning/)
+
+- [Partition Evolution](/resources/stacks/flare/case_scenario/partition_evolution/)
+
+Apart from compaction and partitioning below methods are also used to make the query result faster.
+
+## Bucketing
+
+- [Bucketing](/resources/stacks/flare/case_scenario/bucketing/)
+
+## Caching
+
+- [Caching](/resources/stacks/flare/case_scenario/caching/)
+
+
+## Data Lifecycle and Maintenance
+
+It is important to have a strategy as part of your organization’s regular maintenance process to remove unnecessary metadata files or to compact smaller files into larger ones for better read performance. Flare provides actions for easy maintenance of Iceberg tables:
+
+!!! note  
+  
+    The below functionality is only supported in the DataOS managed Depot, Lakehouse.
+ 
+
+| **Action Name**                           | **Description**                                                                                                                                                                                                                       |
+|------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Delete from Dataset](/resources/stacks/flare/case_scenario/delete_from_dataset/) | Deletes data from a dataset in an Iceberg table. This operation typically creates a new snapshot to reflect the state after deletion.                                                         |
+| [Expire Snapshots](/resources/stacks/flare/case_scenario/expire_snapshots/)       | Removes outdated snapshots from Iceberg tables. Cleans up associated manifest lists, manifests, data files, and delete files, provided they’re no longer used by any active snapshots.         |
+| [Remove Orphans](/resources/stacks/flare/case_scenario/remove_orphans/)           | Deletes orphaned data files in Iceberg tables—those that are no longer referenced in metadata. Helps save space and prevents inconsistencies.                                                  ||                                  |
 
