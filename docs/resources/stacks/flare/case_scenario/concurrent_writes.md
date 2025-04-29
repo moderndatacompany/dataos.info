@@ -3,9 +3,9 @@
 
 This case scenario tests the situation where multiple jobs are being concurrently written at the same location.
 
-## Solution approach
+!!! info
 
-This scenario works only for Iceberg as it supports multiple concurrent writes. A workflow with two jobs is defined to write at the same data location.
+    This scenario works only for Iceberg as it supports multiple concurrent writes. 
 
 ## Implementation details
 
@@ -44,7 +44,7 @@ workflow:
       tags:
       - Connect
       - NY-Taxi
-      stack: flare:5.0
+      stack: flare:6.0
       stackSpec:
         job:
           explain: true
@@ -56,15 +56,10 @@ workflow:
 
           logLevel: INFO
           outputs:
-            - name: output01
-              depot: dataos://icebase:raw01?acl=rw
-          steps:
-          - sink:
-             - sequenceName: ny_taxi_ts
-               datasetName: ny_taxi_04
-               outputName:  output01
-               outputType: Iceberg
-               outputOptions:
+            - name: ny_taxi_ts
+              dataset: dataos://lakehouse:raw01/ny_taxi_ts?acl=rw
+              type: iceberg
+              options:
                  saveMode: append
                  iceberg:
                   properties:
@@ -75,19 +70,22 @@ workflow:
                     - type: month # identity partitioning was used at vendor_id level
                       column: date_col # col name = vendor_id
                       name: month
+                  tags:
+                      - Connect
+                      - NY-Taxi
+                  title: NY-Taxi Data Partitioned
 
-               tags:
-                  - Connect
-                  - NY-Taxi
-               title: NY-Taxi Data Partitioned
 
-            sequence:
-              - name: ny_taxi_changed_dateformat
-                sql: select *, to_timestamp(pickup_datetime/1000) as date_col from ny_taxi where vendor_id = 1
+          steps:
+             - sequence:
 
-              - name: ny_taxi_ts
-                sql: SELECT *, date_format(now(), 'yyyyMMddHHmm') as version, now() as
-                  ts_ny_taxi FROM ny_taxi_changed_dateformat
+                  - name: ny_taxi_changed_dateformat
+                    sql: select *, to_timestamp(pickup_datetime/1000) as date_col from ny_taxi where vendor_id = 1
+
+                  - name: ny_taxi_ts
+                    sql: SELECT *, date_format(now(), 'yyyyMMddHHmm') as version, now() as
+                      ts_ny_taxi FROM ny_taxi_changed_dateformat
+
 
   - name: nytaxi-vendor-two
     title: NY-taxi data ingester-parallel
@@ -96,7 +94,7 @@ workflow:
       tags:
       - Connect
       - NY-Taxi
-      stack: flare:5.0
+      stack: flare:6.0
       stackSpec:
         job:
           explain: true
@@ -109,14 +107,8 @@ workflow:
           logLevel: INFO
           outputs:
             - name: output02
-              depot: dataos://icebase:raw01?acl=rw
-          steps:
-          - sink:
-             - sequenceName: ny_taxi_ts
-               datasetName: ny_taxi_04
-               outputName:  output02
-               outputType: Iceberg
-               outputOptions:
+              dataset: dataos://lakehouse:raw01/ny_taxi_ts?acl=rw
+              options:
                  saveMode: append
                  iceberg:
                   properties:
@@ -126,17 +118,17 @@ workflow:
                     - type: month
                       column: date_col
                       name: month
-
                tags:
                   - Connect
                   - NY-Taxi
                title: NY-Taxi Data Partitioned
+          steps:
+             - sequence: ny_taxi_ts
 
-            sequence:
-              - name: ny_taxi_changed_dateformat
-                sql: select *, to_timestamp(pickup_datetime/1000) as date_col from ny_taxi where vendor_id = 2
+                  - name: ny_taxi_changed_dateformat
+                    sql: select *, to_timestamp(pickup_datetime/1000) as date_col from ny_taxi where vendor_id = 2
 
-              - name: ny_taxi_ts
-                sql: SELECT *, date_format(now(), 'yyyyMMddHHmm') as version, now() as
-                  ts_ny_taxi FROM ny_taxi_changed_dateformat
+                  - name: ny_taxi_ts
+                    sql: SELECT *, date_format(now(), 'yyyyMMddHHmm') as version, now() as
+                      ts_ny_taxi FROM ny_taxi_changed_dateformat
 ```

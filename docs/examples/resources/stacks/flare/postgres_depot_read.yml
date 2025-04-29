@@ -5,7 +5,7 @@ type: workflow
 tags:
   - bq
   - dataset
-description: This job read and write data from to postgres
+description: This job read and write data from postgres
 title: Read Write Postgres
 workflow:
   dag:
@@ -23,9 +23,11 @@ workflow:
             explain: true
             inputs:
               - name: city_connect
-                dataset: dataos://thirdparty01:none/city
-                format: csv
-                schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc
+                dataset: dataos://postgres:none/city
+                options:
+                    driver: org.postgresql.Driver # remember driver would be inside  options attribute in input but outside option attribute in output 
+
+
             logLevel: INFO
             outputs:
               - name: input

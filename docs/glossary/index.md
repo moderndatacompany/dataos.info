@@ -132,10 +132,10 @@ hide:
 
 
 ## o 
+<!-- | Odin | DataOS Odin is a comprehensive knowledge graph that incorporates a semantic network of entities and their relationships within a system. It offers a queryable interface supporting SQL and Cypher query languages, allowing users discover data and surface underlying connections between data points. | -->
 
 | Term | Description |
 | --- | --- |
-| Odin | DataOS Odin is a comprehensive knowledge graph that incorporates a semantic network of entities and their relationships within a system. It offers a queryable interface supporting SQL and Cypher query languages, allowing users discover data and surface underlying connections between data points. |
 | OpenID | OpenID Connect is an identity layer built on top of the OAuth protocol, providing a streamlined mechanism for Clients to verify the identity of End-Users. It utilizes an Authorization Server to authenticate the user and retrieve basic profile information through exposed REST APIs. In DataOS, Heimdall leverages OpenID Connect for authentication and authorization when processing sign-in requests from users. |
 | [Operations](/interfaces/operations/) | Operations app provides administrators a centralized way to understand and govern activity on the DataOS platform and monitor how users optimally utilize available resources. |
 
