@@ -1,8 +1,8 @@
 # Cataloging of Scanner Stack
 
-Metis has integrated "Workflows" as a "Resource Type" to store metadata related to various workflows designed for different purposes. This includes workflows such as metadata scanning for multiple resources, quality checks, data pipeline, flare jobs etc.
+Metis has integrated "Workflows" as a "Resource Type" to store metadata related to various Workflows designed for different purposes. This includes Workflows such as metadata scanning for multiple Resources, quality checks, data pipeline, Flare jobs etc.
 
-When selecting a workflow, the following information is displayed on the screen:
+When selecting a Workflow, the following information is displayed on the screen:
 
 <img src="/resources/stacks/scanner/scanner_img//01-catalogin-scanner.png"  class="center" style="width:45rem; display: block; margin: 0 auto; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);" />
 
@@ -62,7 +62,7 @@ For instance, the Overview pane gives the details of `system-metadata-sync` Scan
 
 ## Detailed Page
 
-When the user click on the name of the workflow, the page redirects to the detailed page of that particular Workflow as shown below:
+When the user click on the name of the Workflow, the page redirects to the detailed page of that particular Workflow as shown below:
 
 <img src="/resources/stacks/scanner/scanner_img//03-catalogin-scanner.png"  class="center" style="width:45rem; display: block; margin: 0 auto; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);" />
 
