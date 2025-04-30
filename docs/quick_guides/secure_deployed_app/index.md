@@ -172,19 +172,19 @@ To create PEP:
     name: Streamlit
     description: Streamlit application Managment
     authorization_atoms:
-      - id: **access-streamlit-ui**
+      - id: access-streamlit-ui
         description: access the ui of streamlit
-        predicate: **get**
+        predicate: get
         paths:
         - /streamlit/**
-      - id: **streamlit-view-multiplication**
+      - id: streamlit-view-multiplication
         description: gives persmission to view different tabs accordingly
-        predicate: **view_multiplication**
+        predicate: view_multiplication
         paths:
         - /streamlit/**
-      - id: **streamlit-view-division**
+      - id: streamlit-view-division
         description: gives persmission to view different tabs accordingly
-        predicate: **view_division**
+        predicate: view_division
         paths:
         - /streamlit/**
     ```
@@ -202,14 +202,14 @@ To create PEP:
     ```yaml
     # Enter the Yaml Use-Case Artifact
     
-    id: **streamlit-user-accesses**
+    id: streamlit-user-accesses
     name: 'Streamlit App User Access'
     description: Streamlit App Different Path Access
     category: streamlit-user-accesses
     authorization_atoms:
     - access-streamlit-ui
     values:
-    - authorization_atom_id: **access-streamlit-ui**
+    - authorization_atom_id: access-streamlit-ui
       variable_values:
       - path: /streamlit/**
        
@@ -226,14 +226,14 @@ To create PEP:
     ```yaml
     # Enter the Yaml Use-Case Artifact
     # Allow multiplication operations
-    id: **streamlit-user-access-multiplication**
+    id: streamlit-user-access-multiplication
     name: 'Streamlit App multiplication Access'
     description: Streamlit App Multiplication Operation Access
     category: streamlit-user-access-multiplication
     authorization_atoms:
     - streamlit-view-multiplication
     values:
-    - authorization_atom_id: **streamlit-view-multiplication**
+    - authorization_atom_id: streamlit-view-multiplication
       variable_values:
       - path: /streamlit/**
     ```
@@ -243,14 +243,14 @@ To create PEP:
     ```yaml
     # Enter the Yaml Use-Case Artifact
     # Allow division operations
-    id: **streamlit-user-access-division**
+    id: streamlit-user-access-division
     name: 'Streamlit App multiplication Access'
     description: Streamlit App Division Operation Access
     category: streamlit-user-access-division
     authorization_atoms:
     - streamlit-view-division
     values:
-    - authorization_atom_id: **streamlit-view-division**
+    - authorization_atom_id: streamlit-view-division
       variable_values:
       - path: /streamlit/**
     ```
