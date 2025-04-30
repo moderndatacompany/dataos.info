@@ -24,15 +24,14 @@ volume:
 ```
 
 
-## Configuration
+## Resource meta section configuration
 
-### **Resource meta section configuration**
+Click [here](/resources/manifest_attributes/) to learn about the Resource meta section configuration.
+
+## Volume-specific section configuration
 
 
-### **Volume-specific section configuration**
-
-
-#### **`volume`**
+### **`volume`**
 
 **Description:** The `volume` attribute defines a mapping that contains attributes specific to the Volume resource-type. 
 
@@ -62,7 +61,7 @@ volume:
    type: temp
 ```
 
-#### **`size`**
+### **`size`**
 
 **Description:** size of storage requested by user. 
 
@@ -77,20 +76,22 @@ volume:
   size: 10Gi
 ```
 
-
-#### **`accessMode`**
-
-**ReadOnlyMany:** In this mode multiple pods running on different Nodes could connect to the storage and carry out read operation.
-
-**ReadWriteMany:** In this mode multiple pods running on different Nodes could connect to the storage and carry out read and write operation.
-
-**ReadWriteOnce:** the volume can be mounted as read-write by a single node. ReadWriteOnce access mode still can allow multiple pods to access the volume when the pods are running on the same node. For single pod access, please see ReadWriteOncePod.
+### **`accessMode`**
 
 **Description:** A Volume can be mounted on a host in any way each Volumes access modes are set to the specific modes.
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
 | string | mandatory | none | ReadWriteOnce, ReadOnlyMany, ReadWriteMany |
+
+Following is the list of supported accessMode:
+
+- **ReadOnlyMany:** In this mode multiple pods running on different Nodes could connect to the storage and carry out read operation.
+
+- **ReadWriteMany:** The volume can be mounted by multiple pods concurrently.
+
+- **ReadWriteOnce:** The volume can be mounted by only one pod at a time.
+
 
 **Example Usage:**
 
@@ -106,6 +107,47 @@ volume:
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
 | string | mandatory | none | temp |
+
+Following is the list of all supported types:
+
+**1. Managed by DataOS**
+
+The Volume here can be attached with multiple workloads.
+
+- **`temp`** 
+- **`persistent`**  
+
+
+**2. Managed by Cloud** 
+
+The Volume can only be attached to a single workload.
+
+- **`CloudTemp`**
+- **`CloudPersistent`**
+
+!!! info
+
+    The volume which are managed by cloud i.e. `CloudTemp` and `CloudPersistent` are compatible only with CLI version `2.27.2` or higher.
+
+    You can only use `ReadWriteOnce` accessMode since here the volume can only be attached with single workload . 
+
+
+**Difference**
+
+| Feature       | Managed by Cloud                                        | Managed by DataOS                                                    |
+|---------------|---------------------------------------------|---------------------------------------------------------------|
+| Performance   | High (SSD-backed, high IOPS)                | Moderate          |
+| Cost          | Higher                                      | Lower                                                        |
+| Expandability | Disk size can be increased, but requires a restart.   | Disk size can be increased while the workflow is running, without interruption.                     |
+| Reliability   | SLA 99.99%                                  | Best-effort reliability                                      |
+| Use Case      | Single workload requiring high-speed, durable storage | Suitable for shared state, coordination, or services running in parallel.    |
+
+**When to use which??**
+
+- Managed by Cloud: Choose for critical, latency-sensitive operations (e.g., ETL jobs with heavy IO).
+- Managed by DataOS: Choose for cost-efficient, scalable data.
+
+
 
 **Example Usage:**
 
