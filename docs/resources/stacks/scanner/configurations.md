@@ -62,7 +62,7 @@ The Scanner Workflow attributes given below provide further details on their rol
 
 ### **`schedule`**
 
-**Description**: Scanner workflows are either single-time run or scheduled to run at a specific cadence.
+**Description**: Scanner Workflows are either single-time run or scheduled to run at a specific cadence.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | --------------- | ----------------- | ------------------ |
@@ -80,7 +80,7 @@ workflow:
     timezone: Asia/Kolkata
 ```
 
-To schedule a workflow, user must add the schedule property defining a cron in `workflow` section.
+To schedule a Workflow, user must add the schedule property defining a cron in `workflow` section.
 
 ### **`spec`**
 
