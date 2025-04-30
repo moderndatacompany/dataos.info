@@ -277,7 +277,7 @@ highAvailabilityConfig:
 
 ### **`ingress`**
 
-**Description:** Configures the ingress for the service, which exposes HTTP and HTTPS routes from outside DataOS to services within DataOS.
+**Description:** Configures the ingress for the service, which exposes HTTP and HTTPS routes from outside DataOS to services within DataOS. 
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |
