@@ -12,15 +12,15 @@ The manifest below demonstrates the structure of the Service Resource:
 # Common attributes for all DataOS Resources
 # ==========================
 
-name: ${{service_resource_name}}  # (Required) Name of the Service Resource (e.g., my-first-service). Must conform to regex [a-z0-9]([-a-z0-9]*[a-z0-9]). Total length of the string should be less than or equal to 48 characters.
-version: v1  # (Required) Manifest version of the Service Resource. Must be `v1`.
-type: service  # (Required) Resource type. Must be `service` for a Service Resource.
-tags:  # (Optional) Tags for categorization. Must be a list of strings.
-  - ${{tag_example_1}}  # Example: dataos:service
-  - ${{tag_example_2}}  # Example: dataos:workspace:curriculum
-description: ${{resource_description}}  # (Optional) Description of the Service Resource (e.g., Customer data syndication service).
-owner: ${{resource_owner}}  # (Optional) Owner of the Service Resource. Defaults to the user applying the manifest.
-layer: ${{resource_layer}}  # (Optional) DataOS layer. Defaults to `user`. Possible values: `user` or `system`.
+name: ${{service_resource_name}}                         # (Required) Name of the Service Resource (e.g., my-first-service). Must conform to regex [a-z0-9]([-a-z0-9]*[a-z0-9]). Total length of the string should be less than or equal to 48 characters.
+version: v1                                              # (Required) Manifest version of the Service Resource. Must be `v1`.
+type: service                                            # (Required) Resource type. Must be `service` for a Service Resource.
+tags:                                                    # (Optional) Tags for categorization. Must be a list of strings.
+  - ${{tag_example_1}}                                   # Example: dataos:service
+  - ${{tag_example_2}}                                   # Example: dataos:workspace:curriculum
+description: ${{resource_description}}                   # (Optional) Description of the Service Resource (e.g., Customer data syndication service).
+owner: ${{resource_owner}}                               # (Optional) Owner of the Service Resource. Defaults to the user applying the manifest.
+layer: ${{resource_layer}}                               # (Optional) DataOS layer. Defaults to `user`. Possible values: `user` or `system`.
 
 # ==========================
 # SERVICE-SPECIFIC SECTION
@@ -28,90 +28,93 @@ layer: ${{resource_layer}}  # (Optional) DataOS layer. Defaults to `user`. Possi
 # ==========================
 
 service:  
-  title: ${{service_title}}  # (Optional) Title of the service (e.g., Flash Service).
-  tags:  # (Optional) List of service-specific tags.
+  title: ${{service_title}}                              # (Optional) Title of the service (e.g., Flash Service).
+  tags:                                                  # (Optional) List of service-specific tags.
     - ${{service_tag1}}  
     - ${{service_tag2}}  
-  servicePort: ${{service_port_number}}  # (Optional) Service port declaration for a single port. Must be an integer.
-  servicePorts:  # (Optional) List of multiple port declarations.
-    - name: ${{service_port1_name}}  # (Required) Port name. Must be a string.
-      servicePort: ${{service_port_1_number}}  # (Required) Port number. Must be an integer.
+  servicePort: ${{service_port_number}}                  # (Optional) Service port declaration for a single port. Must be an integer.
+  servicePorts:                                          # (Optional) List of multiple port declarations.
+    - name: ${{service_port1_name}}                      # (Required) Port name. Must be a string.
+      servicePort: ${{service_port_1_number}}            # (Required) Port number. Must be an integer.
     - name: ${{service_port_2_name}}  
       servicePort: ${{service_port_2_number}}  
-  ingress:  # (Optional) Ingress configuration.
-    enabled: ${{enable_ingress}}  # (Required) Boolean to enable or disable ingress.
-    path: ${{service_path}}  # (Required) String representing the service path (e.g., `/randomapi`).
-    stripPath: ${{strip_path_flag}}  # (Optional) Boolean to enable or disable path stripping.
-    noAuthentication: ${{no_auth_flag}}  # (Optional) Boolean to enable or disable authentication.
-    appDetailSpec: ${{app_details}}  # (Optional) String for custom application details.
-    apiDetailSpec: ${{api_details}}  # (Optional) String for custom API details.
-  replicas: ${{service_replicas}}  # (Optional) Number of service replicas. Must be an integer greater than or equal to 1. Defaults to 0.
-  autoScaling:  # (Optional) Autoscaling configuration.
-    enabled: ${{autoscaling_enabled}}  # (Required) Boolean to enable or disable autoscaling.
-    minReplicas: ${{min_replicas}}  # (Required) Minimum number of replicas. Must be an integer.
-    maxReplicas: ${{max_replicas}}  # (Required) Maximum number of replicas. Must be an integer.
+  highAvailabilityConfig:                                # (Optional) Ensures workload reliability and increases fault tolerance
+    level: ${{hostname}}                                 # (Optional) Possible values: hostname | zone | region
+    mode: ${{preferred}}                                 # (Optional) Possible values: preferred | required
+  ingress:                                               # (Optional) Ingress configuration.
+    enabled: ${{enable_ingress}}                         # (Required) Boolean to enable or disable ingress.
+    path: ${{service_path}}                              # (Required) String representing the service path (e.g., `/randomapi`).
+    stripPath: ${{strip_path_flag}}                      # (Optional) Boolean to enable or disable path stripping.
+    noAuthentication: ${{no_auth_flag}}                  # (Optional) Boolean to enable or disable authentication.
+    appDetailSpec: ${{app_details}}                      # (Optional) String for custom application details.
+    apiDetailSpec: ${{api_details}}                      # (Optional) String for custom API details.
+  replicas: ${{service_replicas}}                        # (Optional) Number of service replicas. Must be an integer greater than or equal to 1. Defaults to 0.
+  autoScaling:                                           # (Optional) Autoscaling configuration.
+    enabled: ${{autoscaling_enabled}}                    # (Required) Boolean to enable or disable autoscaling.
+    minReplicas: ${{min_replicas}}                       # (Required) Minimum number of replicas. Must be an integer.
+    maxReplicas: ${{max_replicas}}                       # (Required) Maximum number of replicas. Must be an integer.
     targetMemoryUtilizationPercentage: ${{memory_utilization}}  # (Optional) Target memory utilization percentage. Must be an integer.
-    targetCPUUtilizationPercentage: ${{cpu_utilization}}  # (Optional) Target CPU utilization percentage. Must be an integer.
-  stack: ${{stack_to_be_orchestrated}}  # (Required) Stack to be orchestrated (e.g., `bento:1.0`, `flash`, `lakesearch`). Must be a string.
-  logLevel: ${{log_level}}  # (Optional) Logging level. Must be a string.
+    targetCPUUtilizationPercentage: ${{cpu_utilization}}        # (Optional) Target CPU utilization percentage. Must be an integer.
+  stack: ${{stack_to_be_orchestrated}}                          # (Required) Stack to be orchestrated (e.g., `bento:1.0`, `flash`, `lakesearch`). Must be a string.
+  logLevel: ${{log_level}}                                      # (Optional) Logging level. Must be a string.
 
-  configs:  # (Optional) Key-value mapping for configuration settings.
+  configs:                                              # (Optional) Key-value mapping for configuration settings.
     ${{config_key1}}: ${{config_value1}}  
     ${{config_key2}}: ${{config_value2}}  
 
-  envs:  # (Optional) Key-value mapping for environment variables.
+  envs:                                                 # (Optional) Key-value mapping for environment variables.
     ${{env_key1}}: ${{env_value1}}  
     ${{env_key2}}: ${{env_value2}}  
 
   secrets:  
-    - ${{secret_name}}  # (Optional) List of secret names. Must be a list of strings.
+    - ${{secret_name}}                                  # (Optional) List of secret names. Must be a list of strings.
 
-  dataosSecrets:  # (Optional) List of DataOS secret configurations.
-    - name: ${{secret_name}}  # (Required) Secret name. Must be a string.
-      workspace: ${{secret_workspace}}  # (Required) Workspace where the secret is stored.
-      key: ${{secret_key}}  # (Optional) Single secret key.
-      keys:  # (Optional) Array of multiple secret keys.
+  dataosSecrets:                                        # (Optional) List of DataOS secret configurations.
+    - name: ${{secret_name}}                            # (Required) Secret name. Must be a string.
+      workspace: ${{secret_workspace}}                  # (Required) Workspace where the secret is stored.
+      key: ${{secret_key}}                              # (Optional) Single secret key.
+      keys:                                             # (Optional) Array of multiple secret keys.
         - ${{secret_key1}}  
         - ${{secret_key2}}  
-      allKeys: ${{all_keys_flag}}  # (Optional) Boolean to include all keys.
-      consumptionType: ${{consumption_type}}  # (Optional) Type of consumption.
+      allKeys: ${{all_keys_flag}}                       # (Optional) Boolean to include all keys.
+      consumptionType: ${{consumption_type}}            # (Optional) Type of consumption.
 
-  dataosVolumes:  # (Optional) List of DataOS volume configurations.
-    - name: ${{volume_name}}  # (Required) Volume name.
-      directory: ${{volume_directory}}  # (Required) Directory path.
-      readOnly: ${{read_only_flag}}  # (Optional) Boolean flag for read-only access.
-      subPath: ${{volume_subpath}}  # (Optional) Sub-directory path.
+  dataosVolumes:                                        # (Optional) List of DataOS volume configurations.
+    - name: ${{volume_name}}                            # (Required) Volume name.
+      directory: ${{volume_directory}}                  # (Required) Directory path.
+      readOnly: ${{read_only_flag}}                     # (Optional) Boolean flag for read-only access.
+      subPath: ${{volume_subpath}}                      # (Optional) Sub-directory path.
 
-  tempVolume: ${{temp_volume_name}}  # (Optional) Temporary volume. Must be a string.
+  tempVolume: ${{temp_volume_name}}                     # (Optional) Temporary volume. Must be a string.
 
-  persistentVolume:  # (Optional) Persistent volume configuration.
-    name: ${{persistent_volume_name}}  # (Required) Volume name.
-    directory: ${{persistent_volume_directory}}  # (Required) Directory path.
-    readOnly: ${{persistent_volume_read_only}}  # (Optional) Boolean flag for read-only access.
-    subPath: ${{persistent_volume_subpath}}  # (Optional) Sub-directory path.
+  persistentVolume:                                     # (Optional) Persistent volume configuration.
+    name: ${{persistent_volume_name}}                   # (Required) Volume name.
+    directory: ${{persistent_volume_directory}}         # (Required) Directory path.
+    readOnly: ${{persistent_volume_read_only}}          # (Optional) Boolean flag for read-only access.
+    subPath: ${{persistent_volume_subpath}}             # (Optional) Sub-directory path.
 
-  compute: ${{compute_resource_name}}  # (Required) Compute resource (e.g., `runnable-default`). Must be a string.
+  compute: ${{compute_resource_name}}                   # (Required) Compute resource (e.g., `runnable-default`). Must be a string.
 
-  resources:  # (Optional) Resource requests and limits.
+  resources:                                            # (Optional) Resource requests and limits.
     requests:
-      cpu: ${{cpu_request}}  # (Optional) CPU request (e.g., `1000m`). Must be a string.
-      memory: ${{memory_request}}  # (Optional) Memory request (e.g., `100Mi`). Must be a string.
+      cpu: ${{cpu_request}}                             # (Optional) CPU request (e.g., `1000m`). Must be a string.
+      memory: ${{memory_request}}                       # (Optional) Memory request (e.g., `100Mi`). Must be a string.
     limits:
       cpu: ${{cpu_limit}}  
       memory: ${{memory_limit}}  
 
-  dryRun: ${{dry_run_flag}}  # (Optional) Boolean to enable or disable dry-run mode.
+  dryRun: ${{dry_run_flag}}                             # (Optional) Boolean to enable or disable dry-run mode.
 
-  runAsApiKey: ${{api_key}}  # (Optional) API key for running the service.
-  runAsUser: ${{run_as_user}}  # (Optional) User to run the service as.
+  runAsApiKey: ${{api_key}}                             # (Optional) API key for running the service.
+  runAsUser: ${{run_as_user}}                           # (Optional) User to run the service as.
 
-  topology:  # (Optional) List of topology configurations.
-    - name: ${{topology_name}}  # (Required) Topology name.
-      type: ${{topology_type}}  # (Required) Topology type.
-      doc: ${{topology_doc}}  # (Optional) Documentation reference.
-      properties:  # (Optional) Key-value mapping for topology properties.
+  topology:                                             # (Optional) List of topology configurations.
+    - name: ${{topology_name}}                          # (Required) Topology name.
+      type: ${{topology_type}}                          # (Required) Topology type.
+      doc: ${{topology_doc}}                            # (Optional) Documentation reference.
+      properties:                                       # (Optional) Key-value mapping for topology properties.
         ${{property_key}}: ${{property_value}}  
-      dependencies:  # (Optional) List of topology dependencies.
+      dependencies:                                     # (Optional) List of topology dependencies.
         - ${{dependency1}}  
         - ${{dependency2}}  
 
@@ -120,7 +123,7 @@ service:
 # Attributes specific to the chosen Stack
 # ==========================
 
-  stackSpec:  # (Optional) Additional stack-specific attributes.
+  stackSpec:                                            # (Optional) Additional stack-specific attributes.
     ${{stack_specific_attributes}}  
 ```
 
@@ -218,9 +221,63 @@ service:
 
 ---
 
+### **`highAvailabilityConfig`**
+
+**Description:** It ensures that workloads, including Workers and Services, can operate reliably across distributed environments. High Availability configurations increase fault tolerance, making workloads resilient against failures of individual nodes, zones, or entire regions.
+
+**Example Usage**
+
+```yaml
+highAvailabilityConfig:
+  level: hostname         # Options: hostname | zone | region
+  mode: preferred         # Options: preferred | required
+
+```
+#### **`level`**
+
+**Description:** Specifies the level across which replicas should be distributed. This determines the intended placement separation — at the host, zone, or region level.
+
+| Data Type | Requirement | Default Value | Possible Values |
+|-----------|-------------|----------------|------------------|
+| string    | optional    |     none       | `hostname`, `zone`, `region` |
+
+**Example Usage**
+
+```yaml
+highAvailabilityConfig:
+  level: hostname         # Options: hostname | zone | region
+  mode: preferred         # Options: preferred | required
+
+```
+
+#### **`mode`**
+
+**Description:** Specifies how strictly the system should apply the separation defined by the level field.
+
+- If set to `required`, constraints are strictly enforced. Deployments will wait until all conditions can be satisfied.
+
+- If set to `preferred`, it attempts ideal placement initially, but falls back if the preferred distribution isn't immediately available. Over time, Kubernetes tries to redistribute replicas to meet the preferred criteria.
+
+
+| Data Type | Requirement | Default Value | Possible Values |
+|-----------|-------------|---------------|------------------|
+| string    |  optional   |    none       | `preferred`, `required` |
+
+**Example Usage**
+
+```yaml
+highAvailabilityConfig:
+  level: hostname         # Options: hostname | zone | region
+  mode: preferred         # Options: preferred | required
+
+```
+
+---
+
+
 ### **`ingress`**
 
-**Description:** Configures the ingress for the service, which exposes HTTP and HTTPS routes from outside DataOS to services within DataOS.
+**Description:** Configures the ingress for the service, which exposes HTTP and HTTPS routes from outside DataOS to services within DataOS. 
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |
