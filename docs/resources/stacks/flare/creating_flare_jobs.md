@@ -2,7 +2,7 @@
 
 ## Flare Workflow
 
-DataOS uses Flare workflows to carry out large-scale data transformation, ingestion, profiling, syndication, and even a combination of these tasks.
+DataOS uses Flare workflows to carry out large-scale data transformation, ingestion, syndication, and even a combination of these tasks.
 
 <div style="text-align: center;">
   <img src="/resources/stacks/flare/basic_concepts/diagram_03.jpg" alt="diagram 03.jpg" style="border:1px solid black; width: 80%; height: auto;">
