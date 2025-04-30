@@ -106,7 +106,10 @@ The Worker-specific section of a manifest file encompasses attributes specific t
           title: ${{worker_title}} # Title of the worker 
           tags:
             - ${{worker_tag1}} # Tags for the worker 
-            - ${{worker_tag2}} # Additional tags (
+            - ${{worker_tag2}} # Additional tags 
+          highAvailabilityConfig:
+            level: hostname #hostname/region/zone
+            mode: preferred #preferred/required
           replicas: ${{worker_replicas}} # Number of replicas 
           autoscaling: # Autoscaling configuration
             enabled: ${{autoscaling_enabled}} # Enable or disable autoscaling 
