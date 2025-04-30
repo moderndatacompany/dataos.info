@@ -1,7 +1,4 @@
-# Themis
-
-
-## Connecting to Themis using Depot/Cluster 
+# Creating semantic model on Themis cluster as source
 
 ## Prerequisite
 
@@ -197,9 +194,7 @@ lens:
   source:
     type: themis #minerva/themis/depot
     name: lenstestingthemis #name of the themis cluster
-    catalog:                 #optional
-      - postgres
-      - lakehouse
+    catalog: lakehouse                 # optional: you can provide any of the sources used and it will take care of others by default 
   repo:
     url: https://bitbucket.org/tmdc/sample
     lensBaseDir: sample/lens/source/themis/model 
@@ -208,7 +203,7 @@ lens:
       - --ref=main #repo-name
 ```
 
-The YAML manifest provided is designed for a cluster named `themiscluster`, created on the `Themis` source, with a data catalog named `icebase`. To utilize this manifest, duplicate the file and update the source details as needed.
+The YAML manifest provided is designed for a cluster named `themiscluster`, created on the `Themis` source, with a data catalog named `lakehouse`. To utilize this manifest, duplicate the file and update the source details as needed.
 
 Each section of the YAML template outlines essential elements of the Lens deployment. Below is a detailed breakdown of its components:
 
@@ -218,8 +213,7 @@ Each section of the YAML template outlines essential elements of the Lens deploy
 
       * **`name`:** The `name` attribute in the `source` section should specify the name of the Themis Cluster. For example, if the name of your Themis Cluster is `clthemis` the Source name would be `clthemis`.
 
-      * **`catalog`:** The `catalog` attribute must define the specific catalog name within the Themis Cluster that you intend to use. For instance, if the catalog is named `lakehouse_retail`, ensure this is accurately reflected in the catalog field.
-
+      * **`catalog`:** The `catalog` attribute define the specific catalog name within the Themis Cluster that you intend to use. For instance, if the catalog is named `lakehouse_retail`, ensure this is accurately reflected in the catalog field. However, You don’t need to provide all catalogs from different sources used in the semantic model — specifying any one is sufficient, as the rest will be auto-detected. For instance, if your semantic model includes both `Lakehouse` and `Postgres` sources, you only need to provide any one catalog name.
 * **Defining Repository:**
 
       * **`url`** The `url` attribute in the repo section specifies the Git repository where the Lens model files are stored. For instance, if your repo name is lensTutorial then the repo `url` will be  [https://bitbucket.org/tmdc/lensTutorial](https://bitbucket.org/tmdc/lensTutorial)
@@ -233,10 +227,10 @@ Each section of the YAML template outlines essential elements of the Lens deploy
 * **Configure API, Worker, and Metric Settings (Optional):** Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
 
 
-The above manifest is intended for a cluster named `lenstestingthemis`, created on the themis source, with the Depot or data catalog named `icebase`. To use this manifest, copy the file and update the source details accordingly.
+The above manifest is intended for a cluster named `lenstestingthemis`, created on the themis source, with the Depot or data catalog named `lakehouse`. To use this manifest, copy the file and update the source details accordingly.
 
 <aside class="callout">
-🗣️ Within the Themis and Minerva cluster, all depots (such as Icebase, Redshift, Snowflake, etc.) are integrated. When configuring Lens, you only need to specify one Depot in the `catalog` field, as Lens can connect to and utilize depots from all sources available in the Themis cluster.
+🗣️ Within the Themis and Minerva cluster, all depots (such as lakehouse, Redshift, Snowflake, etc.) are integrated. When configuring Lens, you only need to specify one Depot in the `catalog` field, as Lens can connect to and utilize depots from all sources available in the Themis cluster.
 </aside>
 
 

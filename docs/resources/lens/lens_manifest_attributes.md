@@ -30,7 +30,7 @@ lens:
  source: # mandatory
 	type: themis # mandatory
 	name: minithemis # mandatory
-	catalog: icebase
+	catalog: lakehouse
  repo: # Code repository configuration (mandatory)
 	url: https://www.bitbucket.org/abcd/lens2 # Code Repository URL (mandatory)
 	lensBaseDir: lens2/sales/model # mandatory
@@ -74,6 +74,9 @@ lens:
  worker:
 	logLevel: INFO
 	replicas: 2
+  highAvailabilityConfig:
+    level: hostname #hostname/region/zone
+    mode: preferred #preferred/required
   envs:
     LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
     LENS2_SOURCE_WORKSPACE_NAME: public
@@ -89,7 +92,7 @@ lens:
 
 ## Resource meta section
 
-Click [here](/resources/manifest_attributes/)  to learn about the Resource meta section configuration.
+Click [here](/resources/manifest_attributes/) to learn about the Resource meta section configuration.
 
 ## Lens-specific section
 
@@ -664,6 +667,52 @@ lens:
 |-----------|-------------|---------------|-----------------------|
 | integer   | optional    | 1             | Any positive integer  |
 
+
+###  **highAvailabilityConfig**
+
+**Description:** The High Availability (HA) configuration feature ensures your workloads (workers and services) stay available and reliable across distributed environments. By enabling high availability, your deployments become resilient to failures—whether at the node, zone, or region level—minimizing downtime and maintaining performance during outages.
+
+| Data Type | Requirement | Default Value | Possible Values |
+|-----------|-------------|---------------|-----------------|
+| mapping   | optional    | None          | N/A             |
+
+ 
+### **level**
+
+**Description:** Specifies how replicas are distributed across `host`, `zone`, or `region` levels. Here is the description for each:
+
+- **Hostname:** Each replica is placed on a separate physical node.
+    - *Example:* Ideal for applications needing strict separation at the machine level.
+
+- **Zone:** Replicas are distributed across multiple availability zones within the same region.
+    - *Example:* Recommended for regional redundancy without cross-region latency.
+    
+- **Region:** Replicas are distributed across multiple geographical regions.
+    - *Example:* Suitable for global availability and maximum fault tolerance against regional outages.
+
+### **mode**
+
+The behavior of level is controlled by mode:
+
+**`required`:** → strict distribution; deployment waits until separation rules are met. Use for critical services needing strict redundancy.
+
+**`preferred`:** flexible distribution; starts quickly and gradually aligns to desired spread. Ideal for general workloads prioritizing speed over strict placement.
+
+If sufficient distinct units aren’t available:
+
+- With **preferred**, replicas may temporarily share the same unit.
+
+- With **required**, deployment will fail.
+
+
+
+**Example usage**
+
+```yaml
+highAvailabilityConfig:     #optional
+  level: hostname #options: hostname | region | zone |
+  mode: preferred #options: preferred | required
+```
 
 ### **`resources`**
 
