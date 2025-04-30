@@ -16,7 +16,10 @@ description: Random User Console # Description of the Worker Resource (optional)
 worker: 
     tags: # Worker-specific tags
       - worker 
-    replicas: 1 # Specifies the number of worker replicas to run
+    highAvailabilityConfig:
+        level: hostname #hostname/region/zone
+        mode: preferred #preferred/required
+    replicas: 2 # Specifies the number of worker replicas to run
     stack: bento-worker:3.0 # Specifies the stack name and version for the worker
     logLevel: DEBUG # Sets the logging level to DEBUG
     compute: runnable-default # Defines the Compute Resource to be used
