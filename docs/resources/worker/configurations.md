@@ -40,26 +40,26 @@ tags:
     - dataos:workspace:public
 description: Random User Console
 worker:
-    tags:
-    - worker
-    highAvailabilityConfig:
-      level: hostname #hostname/region/zone
-      mode: preferred #preferred/required
-    replicas: 2
-    stack: bento-worker:3.0
-    logLevel: DEBUG
-    compute: runnable-default
-    stackSpec:
-    input:
-        http_client:
-        headers:
-            Content-Type: application/octet-stream
-        url: https://randomuser.me/api/
-        verb: GET
-    output:
-        stdout:
-        codec: |
-            delim:
+  tags:
+  - worker
+  highAvailabilityConfig:
+    level: hostname #hostname/region/zone
+    mode: preferred #preferred/required
+  replicas: 2
+  stack: bento-worker:3.0
+  logLevel: DEBUG
+  compute: runnable-default
+  stackSpec:
+  input:
+      http_client:
+      headers:
+          Content-Type: application/octet-stream
+      url: https://randomuser.me/api/
+      verb: GET
+  output:
+      stdout:
+      codec: |
+          delim:
             -----------GOOD------------
 ```
 
