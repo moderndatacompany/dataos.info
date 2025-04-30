@@ -1,4 +1,4 @@
-# Minerva
+# Creating semantic model on Minerva as source
 
 To create a semantic model across multiple data sources using the Minerva Cluster, several prerequisite steps must be completed. These steps ensure proper setup and secure connections between the data sources and the Minerva Cluster.
 
@@ -347,9 +347,7 @@ lens:
   source:
     type: minerva #minerva/themis/depot
     name: minervacluster  # name of minerva cluster
-    catalog:              # optional
-      - postgres
-      - snowflake   # list of depots
+    catalog: lakehouse              # optional   # list of depots
   repo:
     url: https://bitbucket.org/tmdc/sample
     lensBaseDir: sample/lens/source/minerva/model 
@@ -368,7 +366,7 @@ Each section of the YAML template outlines essential elements of the Lens deploy
 
       * **`name`:** The `name` attribute in the `source` section should specify the name of the Minerva Cluster. For example, if the name of your Minerva Cluster is `minervacluster` the Source name would be `minervacluster`.
 
-      * **`catalog`:** The `catalog` attribute must define the specific catalog name within the Minerva Cluster that you intend to use. For instance, if the catalog is named `lakehouse`, ensure this is accurately reflected in the catalog field.
+      * **`catalog`:** The `catalog` attribute must define the specific catalog name within the Minerva Cluster that you intend to use. For instance, if the catalog is named `lakehouse`, ensure this is accurately reflected in the catalog field. However, You don’t need to provide all catalogs from different sources used in the semantic model — specifying any one is sufficient, as the rest will be auto-detected. For instance, if your semantic model includes both `Lakehouse` and `Postgres` sources, you only need to provide any one catalog name.
 
 * **Defining repository:**
 

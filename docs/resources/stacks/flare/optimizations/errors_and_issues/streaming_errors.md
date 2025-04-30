@@ -1,7 +1,7 @@
 # Streaming Errors
 
 
-## Error: Job finished with error = CheckPoint Location must be specified either through option ("checkpointlocation")
+##  Job finished with error = CheckPoint Location must be specified either through option ("checkpointlocation")
 
 **Message**
 
@@ -20,7 +20,7 @@ Checkpoint location won't work if `isstream` is `false`
 
 Check `isstream` mode (true or false).
 
-## Error: Job finished with error =  Non-time based windows  are not  supported  on streaming  Dataframes/Datasets
+##  Job finished with error =  Non-time based windows  are not  supported  on streaming  Dataframes/Datasets
 
 **Message**
 
