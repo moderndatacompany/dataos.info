@@ -88,9 +88,9 @@ Following is the list of supported accessMode:
 
 - **ReadOnlyMany:** In this mode multiple pods running on different Nodes could connect to the storage and carry out read operation.
 
-- **ReadWriteMany:** The volume can be mounted by multiple pods concurrently.
+- **ReadWriteMany:** The Volume can be mounted by multiple pods concurrently.
 
-- **ReadWriteOnce:** The volume can be mounted by only one pod at a time.
+- **ReadWriteOnce:** The Volume can be mounted by only one pod at a time.
 
 
 **Example Usage:**
@@ -127,9 +127,9 @@ The Volume can only be attached to a single workload.
 
 !!! info
 
-    The volume which are managed by cloud i.e. `CloudTemp` and `CloudPersistent` are compatible only with CLI version `2.27.2` or higher.
+    The Volume which are managed by cloud i.e. `CloudTemp` and `CloudPersistent` are compatible only with CLI version `2.27.2` or higher.
 
-    You can only use `ReadWriteOnce` accessMode since here the volume can only be attached with single workload . 
+    You can only use `ReadWriteOnce` accessMode since here the Volume can only be attached with single workload . 
 
 
 **Difference**
