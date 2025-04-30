@@ -90,7 +90,7 @@ The Volume-specific section of a manifest file encompasses attributes specific t
           volume:
             size: 1Gi  #100Gi, 50Mi, 10Ti, 500Mi
             accessMode: ReadWriteMany  #ReadWriteOnce, ReadOnlyMany.
-            type: temp
+            type: temp  #options: persistent | CloudPersistent | CloudTemp
           ```
 
 
@@ -109,13 +109,13 @@ dataos-ctl resource apply -f /home/Desktop/my-volume.yaml -w curriculum
 
 To ensure that your Volume has been successfully created, you can verify it in two ways:
 
-Check the name of the newly created Volume in the list of volumes created by you in a specific Workspace:
+Check the name of the newly created Volume in the list of Volumes created by you in a specific Workspace:
 
 ```shell
 dataos-ctl get -t volume -w ${{workspace}}
 ```
 
-Alternatively, retrieve the list of all volumes created in your organization:
+Alternatively, retrieve the list of all Volumes created in your organization:
 
 ```shell
 dataos-ctl get -t volume -w ${{workspace}} -a
