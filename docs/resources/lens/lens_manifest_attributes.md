@@ -668,7 +668,7 @@ lens:
 | integer   | optional    | 1             | Any positive integer  |
 
 
-###  **highAvailabilityConfig**
+###  **`highAvailabilityConfig`**
 
 **Description:** The High Availability (HA) configuration feature ensures your workloads (workers and services) stay available and reliable across distributed environments. By enabling high availability, your deployments become resilient to failures—whether at the node, zone, or region level—minimizing downtime and maintaining performance during outages.
 
@@ -677,34 +677,45 @@ lens:
 | mapping   | optional    | None          | N/A             |
 
  
-### **level**
+### **`level`**
 
 **Description:** Specifies how replicas are distributed across `host`, `zone`, or `region` levels. Here is the description for each:
 
-- **Hostname:** Each replica is placed on a separate physical node.
+
+| Data Type | Requirement | Default Value | Possible Values |
+|-----------|-------------|----------------|------------------|
+| string    | optional    |     none       | `hostname`, `zone`, `region` |
+
+Here is the description of possible value of each:
+
+- **`hostname`:** Each replica is placed on a separate physical node.
     - *Example:* Ideal for applications needing strict separation at the machine level.
 
-- **Zone:** Replicas are distributed across multiple availability zones within the same region.
+- **`zone`:** Replicas are distributed across multiple availability zones within the same region.
     - *Example:* Recommended for regional redundancy without cross-region latency.
     
-- **Region:** Replicas are distributed across multiple geographical regions.
+- **`region`:** Replicas are distributed across multiple geographical regions.
     - *Example:* Suitable for global availability and maximum fault tolerance against regional outages.
 
-### **mode**
+### **`mode`**
 
-The behavior of level is controlled by mode:
+**Description:** The behavior of level is controlled by mode.
 
-**`required`:** → strict distribution; deployment waits until separation rules are met. Use for critical services needing strict redundancy.
 
-**`preferred`:** flexible distribution; starts quickly and gradually aligns to desired spread. Ideal for general workloads prioritizing speed over strict placement.
+| Data Type | Requirement | Default Value | Possible Values |
+|-----------|-------------|---------------|------------------|
+| string    |  optional   |    none       | `preferred`, `required` |
+
+
+**`required`:** Strict distribution; deployment waits until separation rules are met. Use for critical services needing strict redundancy.
+
+**`preferred`:** Flexible distribution; starts quickly and gradually aligns to desired spread. Ideal for general workloads prioritizing speed over strict placement.
 
 If sufficient distinct units aren’t available:
 
 - With **preferred**, replicas may temporarily share the same unit.
 
 - With **required**, deployment will fail.
-
-
 
 **Example usage**
 
