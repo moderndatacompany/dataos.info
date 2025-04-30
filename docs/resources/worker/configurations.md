@@ -40,12 +40,12 @@ tags:
     - dataos:workspace:public
 description: Random User Console
 worker:
-  highAvailabilityConfig:
-    level: hostname #hostname/region/zone
-    mode: preferred #preferred/required
     tags:
     - worker
-    replicas: 1
+    highAvailabilityConfig:
+      level: hostname #hostname/region/zone
+      mode: preferred #preferred/required
+    replicas: 2
     stack: bento-worker:3.0
     logLevel: DEBUG
     compute: runnable-default
