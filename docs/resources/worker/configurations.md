@@ -40,6 +40,9 @@ tags:
     - dataos:workspace:public
 description: Random User Console
 worker:
+  highAvailabilityConfig:
+    level: hostname #hostname/region/zone
+    mode: preferred #preferred/required
     tags:
     - worker
     replicas: 1
@@ -96,6 +99,63 @@ tags:
 
 ---
 
+#### **`highAvailabilityConfig`**
+
+**Description:** The highAvailabilityConfig section defines how multiple replicas of the worker are distributed across infrastructure boundaries such as hostnames, zones, or regions. This ensures that if one replica becomes unavailable due to an issue in a specific part of the infrastructure, other replicas continue to operate independently.
+
+**Example Usage**
+
+```yaml
+highAvailabilityConfig:
+  level: hostname         # Options: hostname | zone | region
+  mode: preferred         # Options: preferred | required
+  tags:
+    - worker
+  replicas: 3
+```
+#### **`level`**
+
+**Description:** Specifies the level across which replicas should be distributed. This determines the intended placement separation — at the host, zone, or region level. The actual distribution is dependent on the mode. If the required number of distinct units is not available and mode is preferred, replicas may be placed on the same unit. If mode is required and separation cannot be satisfied, the worker will fail.
+
+| Data Type | Requirement | Default Value | Possible Values |
+|-----------|-------------|----------------|------------------|
+| string    | optional    |     none       | `hostname`, `zone`, `region` |
+
+**Example Usage**
+
+```yaml
+highAvailabilityConfig:
+  level: hostname         # Options: hostname | zone | region
+  mode: preferred         # Options: preferred | required
+  tags:
+    - worker
+  replicas: 3
+```
+
+#### **`mode`**
+
+**Description:** Specifies how strictly the system should apply the separation defined by the level field.
+
+- If set to `preferred`, the system will try to place each replica on a different hostname (machine), zone, or region as specified by level. If not enough distinct options are available, it will still proceed and place replicas together if needed.
+
+- If set to `required`, the system will place replicas only if it can exactly meet the separation defined by level. If not enough hostnames (machines), zones, or regions are available, the worker will fail.
+
+
+| Data Type | Requirement | Default Value | Possible Values |
+|-----------|-------------|---------------|------------------|
+| string    |  optional   |    none       | `preferred`, `required` |
+
+**Example Usage**
+
+```yaml
+highAvailabilityConfig:
+  level: hostname         # Options: hostname | zone | region
+  mode: preferred         # Options: preferred | required
+  tags:
+    - worker
+  replicas: 3
+```
+
 #### **`replicas`**
 
 **Description:** The `replicas` attribute specifies the number of replicas for the Worker. Replicas are multiple instances of the Worker that run concurrently.
@@ -107,7 +167,7 @@ tags:
 **Example Usage:**
 
 ```yaml
-replicas: 1
+replicas: 3
 ```
 
 ---
