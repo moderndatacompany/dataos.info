@@ -18,6 +18,10 @@ The Volume Resource solves these problems by providing persistent and shared sto
 1. **Persistence:** Ensures that data remains available even if the container restarts or is rescheduled.
 2. **Shared Storage**: Allows multiple containers in a Pod to access a shared filesystem easily.
 
+<!-- ## Types of Volume -->
+
+
+
 ## Getting started: Volume
 
 Volume Resource in DataOS can be created by applying the manifest file using the DataOS CLI. To learn more about this process, navigate to the link: [Volume: Get started](/resources/volume/getting_started/)
