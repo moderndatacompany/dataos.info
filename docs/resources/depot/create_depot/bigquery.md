@@ -45,7 +45,7 @@ Begin by creating a manifest file to hold the configuration details for your Big
 
 
 
-```yaml Instance Secret reference Depot manifest file
+```yaml 
 name: ${{depot-name}}
 version: v2alpha
 type: depot
@@ -67,8 +67,8 @@ depot:
         keys: 
         - ${{instance-secret-name}}-rw
     bigquery:  # optional                         
-    project: ${{project-name}} # optional
-    params: # optional
+      project: ${{project-name}} # optional
+      params: # optional
         ${{"key1": "value1"}}
         ${{"key2": "value2"}}
 ```
