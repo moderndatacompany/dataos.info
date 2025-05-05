@@ -14,34 +14,32 @@ description: Random User Console # Description of the Worker Resource (optional)
 # WORKER-SPECIFIC SECTION
 # Attributes specific to Worker resource-type
 worker: 
-    tags: # Worker-specific tags
-      - worker 
-    highAvailabilityConfig:
-        level: hostname #hostname/region/zone
-        mode: preferred #preferred/required
-    replicas: 2 # Specifies the number of worker replicas to run
-    stack: bento-worker:3.0 # Specifies the stack name and version for the worker
-    logLevel: DEBUG # Sets the logging level to DEBUG
-    compute: runnable-default # Defines the Compute Resource to be used
-    resources:
-        requests:
-            cpu: 100m # Requests 100 millicores of CPU
-            memory: 128Mi # Requests 128 MiB of memory
-        limits:
-            cpu: 1000m # Limits the worker to 1000 millicores of CPU
-            memory: 1024Mi # Limits the worker to 1024 MiB of memory
+  tags: # Worker-specific tags
+    - worker 
+  highAvailabilityConfig:
+    level: hostname #hostname/region/zone
+    mode: preferred #preferred/required
+  replicas: 2 # Specifies the number of worker replicas to run
+  stack: bento-worker:3.0 # Specifies the stack name and version for the worker
+  logLevel: DEBUG # Sets the logging level to DEBUG
+  compute: runnable-default # Defines the Compute Resource to be used
+  resources:
+    requests:
+        cpu: 100m # Requests 100 millicores of CPU
+        memory: 128Mi # Requests 128 MiB of memory
+    limits:
+        cpu: 1000m # Limits the worker to 1000 millicores of CPU
+        memory: 1024Mi # Limits the worker to 1024 MiB of memory
 
 # STACK-SPECIFIC SECTION
 # Attributes specific to the choosen Stack
-    stackSpec:
-        input:
-            http_client:
-            headers:
-                Content-Type: application/octet-stream # Sets the content type header
-            url: https://randomuser.me/api/ # URL to fetch data from
-            verb: GET # HTTP method to use (GET)
-        output:
-            stdout:
-            codec: |
-                delim:
-                -----------GOOD------------ # Example delimiter
+  stackSpec:
+    input:
+      http_client:
+        headers:
+          Content-Type: application/octet-stream # Sets the content type header
+        url: https://randomuser.me/api/ # URL to fetch data from
+        verb: GET # HTTP method to use (GET)
+    output:
+      stdout:
+        codec: "delim:\n-----------GOOD------------\n"
