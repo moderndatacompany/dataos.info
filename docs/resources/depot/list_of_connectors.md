@@ -54,30 +54,40 @@ The connector support table lists various data sources and their compatibility w
 | **Snowflake**                                        | Data Warehouse & Data Lake       | :white_check_mark:   | :white_large_square:  | :white_large_square:                       | :white_check_mark:   | :white_check_mark:                    | :white_check_mark:            |
 | **JDBC Sources**        | Miscellaneous                    | :white_check_mark:   | :white_check_mark:    | :white_large_square:                       | :white_large_square: | :white_check_mark:                    | :white_check_mark:            |
 | **OpenSearch**                                       | Miscellaneous                    | :white_check_mark:   | :white_large_square:  | :white_large_square:                       | :white_large_square: | :white_check_mark:                    | :white_large_square:          |
-| **Accumulo**                                         | Database                         | :white_large_square: | :white_check_mark:    | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_large_square:          |
-| **Cassandra**                                        | Database                         | :white_large_square: | :white_check_mark:    | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_large_square:          |
-| **ClickHouse**                                       | Database                         | :white_large_square: | :white_check_mark:    | :white_check_mark:                         | :white_large_square: | :white_large_square:                 | :white_check_mark:            |
-| **IBM Db2**                                          | Database                         | :white_large_square: | :white_large_square:  | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_check_mark:            |
-| **DOMO Database**                                    | Database                         | :white_large_square: | :white_large_square:  | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_check_mark:            |
-| **Apache Ignite**                                    | Database (In-Memory Computing)   | :white_large_square: | :white_check_mark:    | :white_check_mark:                         | :white_large_square: | :white_large_square:                 | :white_large_square:          |
-| **Apache Kudu**                                      | Database                         | :white_large_square: | :white_check_mark:    | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_large_square:          |
-| **Apache Phoenix**                                   | Database                         | :white_large_square: | :white_check_mark:    | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_large_square:          |
-| **Apache Pinot**                                     | Database                         | :white_large_square: | :white_check_mark:    | :white_check_mark:                         | :white_large_square: | :white_large_square:                 | :white_large_square:          |
-| **Prometheus**                                       | Time-Series Database             | :white_large_square: | :white_check_mark:    | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_large_square:          |
-| **SingleStore**                                      | Database                         | :white_large_square: | :white_check_mark:    | :white_check_mark:                         | :white_large_square: | :white_large_square:                 | :white_check_mark:            |
-| **Azure Databricks**                                 | Data Warehouse & Data Lake       | :white_large_square: | :white_large_square:  | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_check_mark:            |
-| **Apache Hive**                                      | Data Warehouse & Data Lake       | :white_large_square: | :white_check_mark:    | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_check_mark:            |
-| **Apache Hudi**                                      | Data Lake                        | :white_large_square: | :white_check_mark:    | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_large_square:          |
-| **MariaDB**                                          | Database                         | :white_large_square: | :white_check_mark:    | :white_check_mark:                         | :white_large_square: | :white_large_square:                 | :white_check_mark:            |
-| **Delta Lake**                                       | Data Lakehouse                   | :white_large_square: | :white_check_mark:    | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_large_square:          |
-| **Atop**                                             | Performance Analysis Tool        | :white_large_square: | :white_check_mark:    | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_large_square:          |
-| **AWS Glue**                                         | Data Integration Service         | :white_large_square: | :white_large_square:  | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_check_mark:            |
-| **AWS Athena**                                       | Interactive Analytics Service    | :white_large_square: | :white_large_square:  | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_check_mark:            |
-| **Apache Druid**                                     | Real-time Analytics Database     | :white_large_square: | :white_check_mark:    | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_check_mark:            |
-| **Google Sheets**                                    | Spreadsheet                      | :white_large_square: | :white_check_mark:    | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_large_square:          |
-| **JMX**                                              | Monitoring Tool                  | :white_large_square: | :white_check_mark:    | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_large_square:          |
-| **Amazon Kinesis**                                   | Streaming Platform               | :white_large_square: | :white_check_mark:    | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_large_square:          |
-| **Redis**                                            | In-Memory Data Store             | :white_large_square: | :white_check_mark:    | :white_check_mark:                         | :white_large_square: | :white_large_square:                 | :white_large_square:          |
+
+
+
+The following table lists other commonly used data sources and platforms across the data ecosystem. These systems are widely adopted in the industry and have been encountered frequently in customer environments.
+
+While these data sources are **not supported by default (out-of-the-box) in DataOS**, but our Product Engineering team can extend support on request—please reach out to explore what’s possible.
+
+| S.No | Data Source      | Type                           |
+| ---- | ---------------- | ------------------------------ |
+| 1    | Accumulo         | Database                       |
+| 2    | Cassandra        | Database                       |
+| 3    | ClickHouse       | Database                       |
+| 4    | IBM Db2          | Database                       |
+| 5    | DOMO Database    | Database                       |
+| 6    | Apache Ignite    | Database (In-Memory Computing) |
+| 7    | Apache Kudu      | Database                       |
+| 8    | Apache Phoenix   | Database                       |
+| 9    | Apache Pinot     | Database                       |
+| 10   | Prometheus       | Time-Series Database           |
+| 11   | SingleStore      | Database                       |
+| 12   | Azure Databricks | Data Warehouse & Data Lake     |
+| 13   | Apache Hive      | Data Warehouse & Data Lake     |
+| 14   | Apache Hudi      | Data Lake                      |
+| 15   | MariaDB          | Database                       |
+| 16   | Delta Lake       | Data Lakehouse                 |
+| 17   | Atop             | Performance Analysis Tool      |
+| 18   | AWS Glue         | Data Integration Service       |
+| 19   | AWS Athena       | Interactive Analytics Service  |
+| 20   | Apache Druid     | Real-time Analytics Database   |
+| 21   | Google Sheets    | Spreadsheet                    |
+| 22   | JMX              | Monitoring Tool                |
+| 23   | Amazon Kinesis   | Streaming Platform             |
+| 24   | Redis            | In-Memory Data Store           |
+
 
 
 ## Integration with Third-Party Tools
