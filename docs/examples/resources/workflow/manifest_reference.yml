@@ -26,6 +26,7 @@ workflow:
       spec: 
         stack: ${flare:5.0}
         logLevel: ${INFO}
+        compute: ${compute resource name}
         configs: 
           ${alpha: beta}
         envs: 
@@ -52,7 +53,7 @@ workflow:
           directory: ${/file}
           readOnly: ${true}
           subPath: ${/random}
-        compute: ${compute resource name}
+        resource:
           requests:
             cpu: ${100Mi}
             memory: ${100Gi}
