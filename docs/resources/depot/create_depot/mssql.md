@@ -63,11 +63,11 @@ depot:
   description: ${{description}}
   external: ${{true}}
   compute: ${{runnable-default}}
-  jdbc:                                             
-    account: ${{account-name}}
-    container: ${{container-name}}
-    relativePath: ${{relative-path}}
-    format: ${{format}}
+  jdbc:
+    subprotocol: ${{sqlserver}}                                             
+    host: ${{host}}
+    port: ${{port}}
+    database: ${{database}}
   secrets:
     - name: ${{instance-secret-name}}-r
       allkeys: true
