@@ -63,17 +63,17 @@ depot:
   description: ${{description}}
   external: ${{true}}
   compute: ${{runnable-default}}
+  jdbc:                                             
+    account: ${{account-name}}
+    container: ${{container-name}}
+    relativePath: ${{relative-path}}
+    format: ${{format}}
   secrets:
     - name: ${{abfss-instance-secret-name}}-r
       allkeys: true
 
     - name: ${{abfss-instance-secret-name}}-rw
       allkeys: true
-  jdbc:                                             
-    account: ${{account-name}}
-    container: ${{container-name}}
-    relativePath: ${{relative-path}}
-    format: ${{format}}
 ```
 
 
