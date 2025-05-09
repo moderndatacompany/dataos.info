@@ -69,10 +69,10 @@ depot:
     relativePath: ${{relative-path}}
     format: ${{format}}
   secrets:
-    - name: ${{abfss-instance-secret-name}}-r
+    - name: ${{instance-secret-name}}-r
       allkeys: true
 
-    - name: ${{abfss-instance-secret-name}}-rw
+    - name: ${{instance-secret-name}}-rw
       allkeys: true
 ```
 
@@ -102,10 +102,10 @@ depot:
   external: ${{true}}
   hiveSync: ${{false}}
   secrets:
-    - name: ${{sf-instance-secret-name}}-r
+    - name: ${{instance-secret-name}}-r
       allkeys: true
 
-    - name: ${{sf-instance-secret-name}}-rw
+    - name: ${{instance-secret-name}}-rw
       allkeys: true
 ```
 
