@@ -1,0 +1,53 @@
+name: products-sales-dp
+version: v1alpha
+type: data
+tags:
+  - dataos:type:sales_analytics
+  - Readiness.Ready to use
+  - Type.Internal Data Product
+  - Tier.Gold
+  - aeo-pov
+  - "Domain.Sales"
+description: The products dataset is essential for managing and analyzing a wide range of organizational products efficiently. It acts as a centralized hub, providing comprehensive details crucial for operations, logistics, and customer interactions. This structured repository supports informed decision-making by offering insights into product performance, inventory management, and customer preferences. Businesses can utilize this data to streamline operations, optimize supply chains, and enhance customer satisfaction through targeted strategies. By leveraging these insights, organizations can effectively align their product offerings with market demands, driving growth and maintaining competitive advantage in the marketplace.
+purpose: The products data product is a structured dataset that contains comprehensive information about various products within the organization. It serves as a central repository for products data, facilitating efficient management, analysis, and decision-making processes related to products operations, logistics, and customer engagement.
+owner: sarangnanavati
+collaborators:
+  - iamgroot
+  - loki
+refs:
+  - title: sales_intelligence_lens
+    href: https://cheerful-maggot.dataos.app/lens/app/schema/sales_intelligence
+
+  - title: sales_intelligence_dashboard
+    href: https://cheerful-maggot-superset.dataos.app/superset/dashboard/204
+
+  - title: sales_intelligence_app
+    href: https://cheerful-maggot.dataos.app/sales-analysis/
+
+  - title: iris_dashboard
+    href: https://cheerful-maggot.dataos.app/lens2/iris/public:sales-intelligence/dashboard/transaction_analysis
+entity: product
+v1alpha:
+  data:
+    useCases:
+      - Sales Intelligence
+    resources:
+      - description: products Dataset Ingestion Piplines
+        purpose: build the data product's data set
+        type: workflow
+        version: v1
+        refType: dataos
+        name: wf-products-ingestion
+        workspace: public
+    inputs:
+      - description: A data product for products that optimizes products management using real-time data and advanced analytics for accurate demand forecasting.
+        purpose: source
+        refType: dataos
+        ref: dataos://snowflake:public/product
+
+
+    outputs:
+      - description: A data product for products that optimizes products management using real-time data and advanced analytics for accurate demand forecasting.
+        purpose: source
+        refType: dataos
+        ref: dataos://icebase:sales_analytics/products

@@ -1,0 +1,27 @@
+name: cross-sell-bundle
+version: v1beta
+type: bundle
+tags:
+  - dataproduct
+description: This bundle resource is for DP insights, including semantic modeling and real-time analytics.
+layer: "user"
+bundle:
+  workspaces:
+    - name: curriculum
+      description: "This workspace runs bundle resources"
+      tags:
+        - dataproduct
+        - bundleResource
+      labels:
+        name: "dataproductBundleResources"
+      layer: "user"
+  resources:
+    - id: semantic_model
+      file: build/semantic_model/model/deployment.yaml
+      workspace: public
+
+    - id: api
+      file: activation/data_apis/service.yml
+      workspace: public
+      dependencies:
+        - semantic_model

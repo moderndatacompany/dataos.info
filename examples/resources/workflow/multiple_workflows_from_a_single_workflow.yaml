@@ -1,0 +1,25 @@
+version: v1
+name: wf-city
+type: workflow
+owner: aayushisolanki
+tags:
+  - Tier.Gold
+  - mpulse.altamed
+description: The "wf-city" is a data pipeline focused on ingesting city data from icebase to icebase AltaMed healthcare provider. It involves stages such as data ingestion, tranformation and profiling.
+workflow:
+  title: City Data Pipeline
+  dag: 
+   - name: city-data-ingestion
+     file: /home/iamgroot/resources/workflow/workflow.yml
+     retry:
+       count: 2
+       strategy: "OnFailure"
+
+   - name: icebase-city-profiling
+     file: /home/iamgroot/resources/workflow/profile.yml
+     retry:
+       count: 2
+       strategy: "OnFailure"
+     dependencies:
+       - city-data-ingestion
+  
