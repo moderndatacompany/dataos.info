@@ -63,17 +63,17 @@ depot:
   description: ${{description}}
   external: ${{true}}
   compute: ${{runnable-default}}
-  secrets:
-    - name: ${{abfss-instance-secret-name}}-r
-      allkeys: true
-
-    - name: ${{abfss-instance-secret-name}}-rw
-      allkeys: true
   jdbc:                                             
     account: ${{account-name}}
     container: ${{container-name}}
     relativePath: ${{relative-path}}
     format: ${{format}}
+  secrets:
+    - name: ${{instance-secret-name}}-r
+      allkeys: true
+
+    - name: ${{instance-secret-name}}-rw
+      allkeys: true
 ```
 
 
@@ -102,10 +102,10 @@ depot:
   external: ${{true}}
   hiveSync: ${{false}}
   secrets:
-    - name: ${{sf-instance-secret-name}}-r
+    - name: ${{instance-secret-name}}-r
       allkeys: true
 
-    - name: ${{sf-instance-secret-name}}-rw
+    - name: ${{instance-secret-name}}-rw
       allkeys: true
 ```
 
