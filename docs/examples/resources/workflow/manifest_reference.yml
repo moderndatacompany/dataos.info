@@ -1,6 +1,6 @@
 name: ${resource_name} # Name of the Resource (mandatory)
 version: v1beta # Manifest version of the Resource (mandatory)
-type: worker # Type of Resource (mandatory)
+type: workflow # Type of Resource (mandatory)
 tags: # Tags for categorizing the Resource (optional)
   - ${tag_example_1} 
   - ${tag_example_2} 
