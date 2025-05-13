@@ -130,7 +130,7 @@ The query processing in LakeSearch follows a structured workflow, ensuring optim
 
 3. **Query rewriter check:** If a query rewriter is available, the query is rewritten and optimized. Otherwise, the original query is used.
 
-5. **[Document](/resources/stacks/key_concepts/#documents) retrieval:** The query is executed against the indexed data in the Lakehouse.
+5. **[Document](/resources/stacks/lakesearch/key_concepts/#documents) retrieval:** The query is executed against the indexed data in the Lakehouse.
 
 6. **Response handling:** If an error occurs (e.g., authentication, syntax, timeout), an error response is returned. Otherwise, relevant documents are fetched and returned to the user. This structured approach ensures that search operations are optimized for speed and relevance.
 
