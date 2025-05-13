@@ -2,7 +2,7 @@
 
 ## Structure of a Workflow manifest
 
-```yaml title="worker_manifest_reference.yml"
+```yaml title="workflow_manifest_reference.yml"
 --8<-- "examples/resources/workflow/manifest_reference.yml"
 ```
 
@@ -12,7 +12,7 @@
 
 ### **Resource meta section**
 
-This section serves as the header of the manifest file, defining the overall characteristics of the Worker Resource you wish to create. It includes attributes common to all types of Resources in DataOS. These attributes help DataOS in identifying, categorizing, and managing the Resource within its ecosystem. To learn about the Resources of this section, refer to the following link: [Attributes of Resource meta section]().
+This section serves as the header of the manifest file, defining the overall characteristics of the Workflow Resource you wish to create. It includes attributes common to all types of Resources in DataOS. These attributes help DataOS in identifying, categorizing, and managing the Resource within its ecosystem. To learn about the Resources of this section, refer to the following link: [Attributes of Resource meta section]().
 
 ### **Workflow-specific Section**
 
