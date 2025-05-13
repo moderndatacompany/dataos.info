@@ -5,11 +5,11 @@
 ```yaml 
 ## RESOURCE META SECTION
 # Attributes commmon across all DataOS Resources
-name: ${{resource_name}} # Name of the Resource (e.g., my-first-worker)
+name: ${{resource_name}} # Name of the Resource (e.g., my-first-volume)
 version: v1beta # Manifest version of the Resource
-type: worker # Type of Resource
+type: volume # Type of Resource
 tags: # Tags for categorizing the Resource
-  - ${{tag_example_1}} # Tags (e.g., dataos:worker)
+  - ${{tag_example_1}} # Tags (e.g., dataos:volume)
   - ${{tag_example_2}} # Additional tags (e.g., dataos:workspace:curriculum)
 description: ${{resource_description}} # Description of the resource (e.g., Common attributes applicable to all DataOS Resources)
 owner: ${{resource_owner}} # Owner of the Resource (e.g., iamgroot)
