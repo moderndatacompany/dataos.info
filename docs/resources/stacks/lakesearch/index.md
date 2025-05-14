@@ -33,6 +33,12 @@ A travel application integrates LakeSearch to enhance its location-based service
     ]
     }
     ```
+    <aside class="callout">
+    🗣️ The endpoint above is for demonstration purposes only. It worked in a specific test environment using a mock dataset. It will not work in your current setup. Please replace the values below with your actual configuration.<br><br>
+    <strong>Use this template to construct your own API call once the Lakesearch Service is configured:</strong>
+    <pre><code>https://&lt;your-env&gt;.dataos.app/lakesearch/&lt;your-service&gt;/api/v2/index/&lt;your-index&gt;/words?word=&lt;searchTerm&gt;*&amp;limit=&lt;number&gt;</code></pre>
+
+    </aside>
     </details>
 
 - In cases where a user mistypes a search term, LakeSearch suggests similar words to help refine the query. For example, if the user types "auta" instead of "Autauga," the system provides suggestions like "Utah," "South," and "Dakota," ensuring accurate search results even with minor spelling errors.
@@ -64,7 +70,12 @@ A travel application integrates LakeSearch to enhance its location-based service
         ]
     }
     ```
-        
+    <aside class="callout">
+    🗣️ The endpoint above is for demonstration purposes only. It worked in a specific test environment using a mock dataset. It will not work in your current setup. Please replace the values below with your actual configuration.<br><br>
+    <strong>Use this template to construct your own API call once the Lakesearch Service is configured:</strong>
+    <pre><code>https://&lt;your-env&gt;.dataos.app/lakesearch/&lt;your-service&gt;/api/v2/index/&lt;your-index&gt;/suggestions?word=&lt;searchTerm&gt;</code></pre>
+
+    </aside>
     </details>
 
 ## Features of LakeSearch
@@ -119,7 +130,7 @@ The query processing in LakeSearch follows a structured workflow, ensuring optim
 
 3. **Query rewriter check:** If a query rewriter is available, the query is rewritten and optimized. Otherwise, the original query is used.
 
-5. **[Document](/resources/stacks/key_concepts/#documents) retrieval:** The query is executed against the indexed data in the Lakehouse.
+5. **[Document](/resources/stacks/lakesearch/key_concepts/#documents) retrieval:** The query is executed against the indexed data in the Lakehouse.
 
 6. **Response handling:** If an error occurs (e.g., authentication, syntax, timeout), an error response is returned. Otherwise, relevant documents are fetched and returned to the user. This structured approach ensures that search operations are optimized for speed and relevance.
 
@@ -226,115 +237,151 @@ A user can start searching for the index, keywords, or similar words by accessin
 A user can access the endpoint either by curl command or using any API platform.
 
 - To get the list of all the indices, a user can execute the following curl command in the terminal.
+
+    === "Command"
+
+        ```bash
+        curl -X GET "https://${{your-env}}.dataos.app/lakesearch/${{your-service}}/api/v2/index" \ -H "Authorization: Bearer ${{dataos-token}}"
+        ```
     
-    ```bash
-    curl -X GET "https://unique-haddock.dataos.app/lakesearch/public:testingls/api/v2/index" \                           
-    -H "Authorization: Bearer dG9rZW5fZGlzdhlkg3RseV9tYWlubHlfdXBlkmF5LjU1ZmE1ZWQyLWUwNDgtNGI3Yi1hNGQ2LWNlNjA1YTAzZTE4YQ=="
-    ```
-    
-    Expected output:
-    
-    ```json
-    [
-        "__indexer_state",
-        "city"
-    ]
-    ```
+
+    === "Example Usage"
+
+        ```bash
+        curl -X GET "https://unique-haddock.dataos.app/lakesearch/public:testingls/api/v2/index" \ -H "Authorization: Bearer dG9rZW5fZGlzdhlkg3RseV9tYWlubHlfdXBlkmF5LjU1ZmE1ZWQyLWUwNDgtNGI3Yi1hNGQ2LWNlNjA1YTAzZTE4YQ=="
+        ```
+        
+        Expected output:
+        
+        ```json
+        [
+            "__indexer_state",
+            "city"
+        ]
+        ```
+    ---
+
     
 - To get the details of an individual index by name execute the below curl command.
+
+    === "Command"
+
+        ```bash
+        curl -X GET "https://${{your-env}}.dataos.app/lakesearch/${{your-service}}/api/v2/index/${{your-index}}/search" \ -H "Authorization: Bearer ${{your-access-token}}"
+
+        ```
     
-    ```bash
-    curl -X GET "https://unique-haddock.dataos.app/lakesearch/public:testingls/api/v2/index/city/search" \
-    -H "Authorization: Bearer dG9rZW5fZGlzdGluY3Rhklf9tYWlubHlfdXBfklF5LjU1ZmE1ZWQyLWUwNDgtNGI3Yi1hNGQ2LWNlNjA1YTAzZTE4YQ=="
-    ```
-    
-    Expected output:
-    
-    ```bash
-    {
-        "took": 0,
-        "timed_out": false,
-        "hits": {
-            "total": 1,
-            "total_relation": "gte",
-            "hits": [
-                {
-                    "_id": 36003,
-                    "_score": 1,
-                    "_source": {
-                        "state_name": "Alabama",
-                        "version": "202501090702",
-                        "@timestamp": 1739964871,
-                        "city_id": "CITY6",
-                        "zip_code": 36003,
-                        "city_name": "Autaugaville",
-                        "county_name": "Autauga County",
-                        "state_code": "AL",
-                        "ts_city": 1736406148
+    === "Example Usage"
+
+        ```bash
+        curl -X GET "https://unique-haddock.dataos.app/lakesearch/public:testingls/api/v2/index/city/search" \
+        -H "Authorization: Bearer dG9rZW5fZGlzdGluY3Rhklf9tYWlubHlfdXBfklF5LjU1ZmE1ZWQyLWUwNDgtNGI3Yi1hNGQ2LWNlNjA1YTAzZTE4YQ=="
+        ```
+        
+        Expected output:
+        
+        ```bash
+        {
+            "took": 0,
+            "timed_out": false,
+            "hits": {
+                "total": 1,
+                "total_relation": "gte",
+                "hits": [
+                    {
+                        "_id": 36003,
+                        "_score": 1,
+                        "_source": {
+                            "state_name": "Alabama",
+                            "version": "202501090702",
+                            "@timestamp": 1739964871,
+                            "city_id": "CITY6",
+                            "zip_code": 36003,
+                            "city_name": "Autaugaville",
+                            "county_name": "Autauga County",
+                            "state_code": "AL",
+                            "ts_city": 1736406148
+                        }
                     }
-                }
-            ]
+                ]
+            }
         }
-    }
-    ```
-    
+        ```
+    ---
 
 ### **Searching for a keyword**
 
 To search by the exact keyword execute the following curl command.
 
-```bash
-curl -X GET "https://unique-haddock.dataos.app/lakesearch/public:testingls/api/v2/index/city/keywords?word=alabama" \ 
--H "Authorization: Bearer dG9rZW5fZGlzdGluY3RseV9tYWlubHlfdXBfcmFU1Zlo1ZWQyLWUwNDgtNGI3Yi1hNGQ2LWNlNjA1YTAzZTE4YQ=="
-```
+=== "Command"
 
-Expected output:
+    ```bash
+    curl -X GET "https://${{your-env}}.dataos.app/lakesearch/${{your-service}}/api/v2/index/${{your-index}}/city/keywords?word=${{your-keyword}}" \ -H "Authorization: Bearer ${{your-access-token}}"
+    ```
 
-```bash
-{
-    "keywords": [
-        {
-            "docs": "767",
-            "hits": "767",
-            "keyword": "alabama"
-        }
-    ]
-}
-```
+=== "Example Usage"
+
+    ```bash
+    curl -X GET "https://unique-haddock.dataos.app/lakesearch/public:testingls/api/v2/index/city/keywords?word=alabama" \ -H "Authorization: Bearer dG9rZW5fZGlzdGluY3RseV9tYWlubHlfdXBfcmFUZlo1ZWQyLWUwNDgtNGI3Yi1hNGQ2LWNlNjA1YTAzZTE4YQ=="
+    ```
+
+    Expected output:
+
+    ```bash
+    {
+        "keywords": [
+            {
+                "docs": "767",
+                "hits": "767",
+                "keyword": "alabama"
+            }
+        ]
+    }
+    ```
+---
 
 ### **Searching for a similar word**
 
 To search by the similar word execute the following curl command.
 
-```bash
-curl -X GET "https://unique-haddock.dataos.app/lakesearch/public:testingls/api/v2/index/city/suggestions?word=alaba&limit=2" \
--H "Authorization: Bearer dG9rZW5fZGlzluY3RseV9tYWlubHlfcmF5LjU1ZmE1ZWQyLWplNDgtNGI3Yi1hNGQ2LWNlNjA1YTAzZTE4YQ=="
+=== "Command"
 
-```
+    ```bash
+    curl -X GET "https://${{your-env}}.dataos.app/lakesearch/${{your-service}}/api/v2/index/${{your-index}}/suggestions?word=${{your-partial-word}}&limit=${{your-limit}}" \ -H "Authorization: Bearer ${{your-access-token}}"
 
-Expected output:
+    ```
 
-```json
-{
-    "suggestions": [
-        {
-            "distance": 2,
-            "docs": 767,
-            "suggestion": "alabama"
-        },
-        {
-            "distance": 4,
-            "docs": 90,
-            "suggestion": "island"
-        }
-    ]
-}
-```
+=== "Example Usage"
+
+    ```bash
+    curl -X GET "https://unique-haddock.dataos.app/lakesearch/public:testingls/api/v2/index/city/suggestions?word=alaba&limit=2" \
+    -H "Authorization: Bearer dG9rZW5fZGlzluY3RseV9tYlubllfcmF5LjU1ZmE1ZWQyLWplNDgtNGI3Yi1hNGQ2LWNlNjA1YTAzZTE4YQ=="
+
+    ```
+
+    Expected output:
+
+    ```json
+    {
+        "suggestions": [
+            {
+                "distance": 2,
+                "docs": 767,
+                "suggestion": "alabama"
+            },
+            {
+                "distance": 4,
+                "docs": 90,
+                "suggestion": "island"
+            }
+        ]
+    }
+    ```
 
 
 ## Managing deleted records in Lakesearch
 
-When records that have already been indexed in LakeSearch are deleted from the source table, they remain accessible through the search API unless explicitly handled. To manage this, LakeSearch supports **soft deletes**, ensuring that deleted records are appropriately excluded from search results.
+When records that have already been indexed in LakeSearch are deleted from the source table, they remain accessible through the search API unless explicitly handled. To manage this, LakeSearch supports soft deletes, ensuring that deleted records are appropriately excluded from search results.
 
 ### **Soft delete mechanism**
 

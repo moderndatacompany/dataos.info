@@ -56,22 +56,22 @@ tags:
     - ${{mysql}}
 layer: user
 depot:
-    type: MYSQL
-    description: ${{"MYSQL Sample Database"}}
-    mysql:
+  type: MYSQL
+  description: ${{"MYSQL Sample Database"}}
+  mysql:
     subprotocol: "mysql"
     host: ${{host}}
     port: ${{port}}
     params: # Required
         tls: ${{skip-verify}}
-    external: ${{true}}
-    secrets:
+  external: ${{true}}
+  secrets:
     - name: ${{instance-secret-name}}-r
-        keys: 
+      keys: 
         - ${{instance-secret-name}}-r
 
     - name: ${{instance-secret-name}}-rw
-        keys: 
+      keys: 
         - ${{instance-secret-name}}-rw
 ```
 
@@ -89,20 +89,20 @@ tags:
     - ${{mysql}}
 layer: user
 Depot:
-    type: MYSQL
-    description: ${{"MYSQL Sample data"}}
-    mysql:
+  type: MYSQL
+  description: ${{"MYSQL Sample data"}}
+  mysql:
     host: ${{host}}
     port: ${{port}}
-    external: true
-    secrets:
+  external: true
+  secrets:
     - name: ${{instance-secret-name}}-r
-        keys: 
-        - ${{instance-secret-name}}-r
+      keys: 
+      - ${{instance-secret-name}}-r
 
-    - name: ${{instance-secret-name}}-rw
-        keys: 
-        - ${{instance-secret-name}}-rw
+   - name: ${{instance-secret-name}}-rw
+      keys: 
+      - ${{instance-secret-name}}-rw
 
 ```
 
