@@ -69,7 +69,7 @@ For testing purpose, a Volume named `testvolume` of type `CloudPersistent` was c
 Click on the "Delete" button and select "OK".
 
 <div style="text-align: center;">
-  <img src="/resources/volume/pv0git 03.png" alt="Microsoft Azure" style="border:1px solid black; width: 100%; height: auto;">
+  <img src="/resources/volume/pv003.png" alt="Microsoft Azure" style="border:1px solid black; width: 100%; height: auto;">
   <figcaption><i>Microsoft Azure</i></figcaption>
 </div>
 
