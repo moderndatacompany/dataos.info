@@ -25,7 +25,7 @@ To create a Workflow Resource, data developers can define a set of attributes in
 
 ???tip "Sample Workflow manifest"
 
-    ```yaml title="sample_worker.yml"
+    ```yaml title="sample_workflow.yml"
     --8<-- "examples/resources/workflow/workflow.yml"
     ```
 

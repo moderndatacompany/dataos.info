@@ -32,5 +32,4 @@ Volume can be configured to different size, accessMode and type. The specific co
 
 ## Recipe
 
-
 [How to integrate Volume with Flash?](/resources/volume/recipe/how_to_integrate_volume_with_flash/)
