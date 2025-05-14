@@ -59,21 +59,21 @@ tags:
 owner: ${{owner-name}}
 layer: user
 depot:
-    type: ABFSS                                       
-    description: ${{description}}
-    external: ${{true}}
-    compute: ${{runnable-default}}
-    secrets:
-    - name: ${{abfss-instance-secret-name}}-r
-        allkeys: true
+  type: JDBC                                       
+  description: ${{description}}
+  external: ${{true}}
+  compute: ${{runnable-default}}
+  jdbc:
+    subprotocol: ${{sqlserver}}                                             
+    host: ${{host}}
+    port: ${{port}}
+    database: ${{database}}
+  secrets:
+    - name: ${{instance-secret-name}}-r
+      allkeys: true
 
-    - name: ${{abfss-instance-secret-name}}-rw
-        allkeys: true
-    abfss:                                             
-    account: ${{account-name}}
-    container: ${{container-name}}
-    relativePath: ${{relative-path}}
-    format: ${{format}}
+    - name: ${{instance-secret-name}}-rw
+      allkeys: true
 ```
 
 
@@ -90,23 +90,23 @@ tags:
     - ${{mssql}}
 layer: user
 depot:
-    type: JDBC
-    description: ${{MSSQL Sample data}}
-    jdbc:
+  type: JDBC
+  description: ${{MSSQL Sample data}}
+  jdbc:
     subprotocol: ${{sqlserver}}
     host: ${{host}}
     port: ${{port}}
     database: ${{database}}
     params: # Required
-        encrypt: ${{false}}
-    external: ${{true}}
-    hiveSync: ${{false}}
-    secrets:
-    - name: ${{sf-instance-secret-name}}-r
-        allkeys: true
+      encrypt: ${{false}}
+  external: ${{true}}
+  hiveSync: ${{false}}
+  secrets:
+    - name: ${{instance-secret-name}}-r
+      allkeys: true
 
-    - name: ${{sf-instance-secret-name}}-rw
-        allkeys: true
+    - name: ${{instance-secret-name}}-rw
+      allkeys: true
 ```
 
 To get the details of each attribute, please refer [to this link](/resources/depot/configurations).
