@@ -65,61 +65,7 @@ workflow:
 
 ## Stream Jobs
 
-In scenarios where there is a continuous requirement to process incoming data in real-time, Flare Stream Jobs offer an effective solution. However, it is advisable to exercise caution when creating Stream Jobs, as they should be reserved for cases where strict latency requirements exist, typically demanding a processing time of less than a minute, considering that they may incur higher computing costs.
-
-<details>
-<summary>Case Scenario</summary>
-
-
-The following code snippet illustrates a Workflow involving a Flare Stream Job that reads data from the <code>thirdparty01</code> Depot in a streaming format and subsequently written to the <code>eventhub</code> Depot. During this process, all intermediate streams of data batches are stored at the location specified in the <code>checkpointLocation</code> attribute.
-
-**Code Snippet**
-
-```yaml
-version: v1
-name: write-eventhub-b-02
-type: workflow
-tags:
-  - eventhub
-  - write
-description: this jobs reads data from thirdparty and writes to eventhub
-workflow:
-  dag:
-    - name: eventhub-write-b-02
-      title: write data to eventhub
-      description: write data to eventhub
-      spec:
-        tags:
-          - Connect
-        stack: flare:6.0
-        compute: runnable-default
-        stackSpec:
-          job:
-            explain: true
-            streaming:
-              checkpointLocation: /tmp/checkpoints/devd01
-              forEachBatchMode: "true"
-            inputs:
-              - name: input
-                dataset: dataos://thirdparty01:none/city
-                format: csv
-                schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc
-                isStream: true  #Set to True if the data is being streamed. This is mandatory when working with streaming data.
-
-            logLevel: INFO
-            outputs:
-              - name: finalDf
-                dataset: dataos://eventhub:default/eventhub01?acl=rw
-                format: Eventhub
-
-            steps:
-              - sequence:
-                - name: finalDf
-                  sql: SELECT * FROM input
-```
-
-</details> 
-
+Flare Streaming job enables real-time data processing. It processes continuous streams of data by breaking them down into small batches, allowing for low-latency analytics and near real-time processing. Streaming job is particularly well-suited for applications where timely insights are crucial, such as monitoring network traffic, tracking online orders, or analyzing sensor data. To know more about Streaming job click [here](/resources/stacks/flare/case_scenario/streaming_jobs/). 
 
 ## Incremental Jobs
 
@@ -178,11 +124,11 @@ Optimize query performance by organizing data into folders based on key columns.
 
 Apart from compaction and partitioning below methods are also used to make the query result faster.
 
-## Bucketing
+### **Bucketing**
 
 - [Bucketing](/resources/stacks/flare/case_scenario/bucketing/)
 
-## Caching
+### **Caching**
 
 - [Caching](/resources/stacks/flare/case_scenario/caching/)
 
