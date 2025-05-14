@@ -53,12 +53,12 @@ For testing purpose, a Volume named `testvolume` of type `CloudPersistent` was c
 - Go to the "Disks" section, and search the `pvc-5d4c5939-3702-4b77-8d87-37117b78bb1c` created with `testvolume`. 
 
     <div style="text-align: center;">
-      <img src="/resources/volume/pv01.png" alt="Microsoft Azure" style="border:1px solid black; width: 100%; height: auto;">
+      <img src="/resources/volume/pv001.png" alt="Microsoft Azure" style="border:1px solid black; width: 100%; height: auto;">
       <figcaption><i>Microsoft Azure</i></figcaption>
     </div>
 
     <div style="text-align: center;">
-      <img src="/resources/volume/pv02.png" alt="Microsoft Azure" style="border:1px solid black; width: 100%; height: auto;">
+      <img src="/resources/volume/pv002.png" alt="Microsoft Azure" style="border:1px solid black; width: 100%; height: auto;">
       <figcaption><i>Microsoft Azure</i></figcaption>
     </div>
 
@@ -69,7 +69,7 @@ For testing purpose, a Volume named `testvolume` of type `CloudPersistent` was c
 Click on the "Delete" button and select "OK".
 
 <div style="text-align: center;">
-  <img src="/resources/volume/pv03.png" alt="Microsoft Azure" style="border:1px solid black; width: 100%; height: auto;">
+  <img src="/resources/volume/pv0git 03.png" alt="Microsoft Azure" style="border:1px solid black; width: 100%; height: auto;">
   <figcaption><i>Microsoft Azure</i></figcaption>
 </div>
 
