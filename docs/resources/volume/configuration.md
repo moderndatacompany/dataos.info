@@ -5,13 +5,14 @@
 ```yaml 
 ## RESOURCE META SECTION
 # Attributes commmon across all DataOS Resources
-name: ${{resource_name}} # Name of the Resource (e.g., my-first-worker)
+name: ${{resource_name}} # Name of the Resource (e.g., my-first-volume)
 version: v1beta # Manifest version of the Resource
-type: worker # Type of Resource
+type: volume # Type of Resource
 tags: # Tags for categorizing the Resource
-  - ${{tag_example_1}} # Tags (e.g., dataos:worker)
+  - ${{tag_example_1}} # Tags (e.g., dataos:volume)
   - ${{tag_example_2}} # Additional tags (e.g., dataos:workspace:curriculum)
 description: ${{resource_description}} # Description of the resource (e.g., Common attributes applicable to all DataOS Resources)
+workspace
 owner: ${{resource_owner}} # Owner of the Resource (e.g., iamgroot)
 layer: ${{resource_layer}} # DataOS Layer (e.g., user, system)
 
@@ -19,8 +20,8 @@ layer: ${{resource_layer}} # DataOS Layer (e.g., user, system)
 # Attributes specific to Volume resource-type
 volume:
    size: ${{1Gi} } #100Gi, 50Mi, 10Ti, 500Mi
-   accessMode: ${{accessMode}} #Mode Eg: ReadWriteMany ReadWriteOnce, ReadOnlyMany 
-   type: ${{typeofvolume}} #Volume type (e.g. temps)
+   accessMode: ${{accessMode}} #Mode options ReadWriteMany | ReadWriteOnce | ReadOnlyMany 
+   type: ${{typeofvolume}} #Volume type options persistent | temp | CloudTemp | CloudPersistent
 ```
 
 
@@ -100,7 +101,7 @@ volume:
   accessMode: ReadWriteMany
 ```
 
-#### **`type`**
+### **`type`**
 
 **Description:** A temp Volume in Kubernetes is ephemeral storage allocated for a Pod's containers, created upon Pod assignment to a node, allowing read-write access but data is deleted permanently when the Pod is removed from the node.
 
