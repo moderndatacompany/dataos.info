@@ -753,7 +753,7 @@ search:
 
 ## abstract
 
-!!! note "Phasellus posuere in sem ut cursus"
+!!! abstract "Phasellus posuere in sem ut cursus"
 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
@@ -761,7 +761,7 @@ search:
 
 ## Info
 
-!!! note "Phasellus posuere in sem ut cursus"
+!!! info "Phasellus posuere in sem ut cursus"
 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
@@ -770,7 +770,7 @@ search:
 
 ## Tip 
 
-!!! note "Phasellus posuere in sem ut cursus"
+!!! tip "Phasellus posuere in sem ut cursus"
 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
@@ -779,7 +779,7 @@ search:
 
 ## Success
 
-!!! note "Phasellus posuere in sem ut cursus"
+!!! success "Phasellus posuere in sem ut cursus"
 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
@@ -788,7 +788,7 @@ search:
 
 ## Warning
 
-!!! note "Phasellus posuere in sem ut cursus"
+!!! warning "Phasellus posuere in sem ut cursus"
 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
