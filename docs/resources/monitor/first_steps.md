@@ -215,75 +215,75 @@ INFO[0001] 🔍 monitor...complete
 
 - To check the incident messages use the following command:
 
-```shell
-dataos-ctl develop observability incident -i ${runID}
+  ```shell
+  dataos-ctl develop observability incident -i ${runID}
 
-dataos-ctl develop observability incident -i dkzlw8l3nksg
-INFO[0000] 🔮 develop observability...                   
-INFO[0000] 🔮 develop observability...monitor tcp-stream...starting 
-INFO[0001] 🔮 develop observability...monitor tcp-stream...running 
-INFO[0002] 🔮 develop observability...monitor tcp-stream...stopping 
-INFO[0002] 🔮 context cancelled, monitor tcp-stream is closing. 
-INFO[0003] 🔮 develop observability...complete           
+  dataos-ctl develop observability incident -i dkzlw8l3nksg
+  INFO[0000] 🔮 develop observability...                   
+  INFO[0000] 🔮 develop observability...monitor tcp-stream...starting 
+  INFO[0001] 🔮 develop observability...monitor tcp-stream...running 
+  INFO[0002] 🔮 develop observability...monitor tcp-stream...stopping 
+  INFO[0002] 🔮 context cancelled, monitor tcp-stream is closing. 
+  INFO[0003] 🔮 develop observability...complete           
 
-{
-  "id": "dkzlw8l3nksg",
-  "createTime": "2024-05-07T12:28:00.931693759Z",
-  "properties": {
-    "category": "test",
-    "incidentType": "resource_consumption",
-    "name": "monitor-incident",
-    "severity": "high",
-    "stuff": "stuff",
-    "summary": "some summary",
-    "type": "pulsar"
-  },
-  "equationContext": {
-    "queryExpressions": [
-      {
-        "leftExpressionValue": "53375.00",
-        "rightExpressionValue": "100000.00",
-        "leftRow": {
-          "comparisonColumn": {
-            "name": "_col0",
-            "value": "53375.00"
+  {
+    "id": "dkzlw8l3nksg",
+    "createTime": "2024-05-07T12:28:00.931693759Z",
+    "properties": {
+      "category": "test",
+      "incidentType": "resource_consumption",
+      "name": "monitor-incident",
+      "severity": "high",
+      "stuff": "stuff",
+      "summary": "some summary",
+      "type": "pulsar"
+    },
+    "equationContext": {
+      "queryExpressions": [
+        {
+          "leftExpressionValue": "53375.00",
+          "rightExpressionValue": "100000.00",
+          "leftRow": {
+            "comparisonColumn": {
+              "name": "_col0",
+              "value": "53375.00"
+            }
+          },
+          "rightRow": {
+            "comparisonColumn": {
+              "name": "constant",
+              "value": "1.00"
+            }
+          }
+        }
+      ]
+    },
+    "monitor": {
+      "id": "monitorthemisnew01_public",
+      "name": "monitorthemisnew01",
+      "description": "table row count threshold",
+      "schedule": "*/2 * * * *",
+      "timezone": "UTC",
+      "type": "equation_monitor",
+      "equationMonitor": {
+        "leftExpression": {
+          "queryCoefficient": 1,
+          "queryConstant": 0,
+          "query": {
+            "type": "trino",
+            "cluster": "system",
+            "ql": "select count(*) from \"icebase\".\"retail\".city"
           }
         },
-        "rightRow": {
-          "comparisonColumn": {
-            "name": "constant",
-            "value": "1.00"
-          }
-        }
+        "rightExpression": {
+          "queryCoefficient": 0,
+          "queryConstant": 100000
+        },
+        "operator": "less_than"
       }
-    ]
-  },
-  "monitor": {
-    "id": "monitorthemisnew01_public",
-    "name": "monitorthemisnew01",
-    "description": "table row count threshold",
-    "schedule": "*/2 * * * *",
-    "timezone": "UTC",
-    "type": "equation_monitor",
-    "equationMonitor": {
-      "leftExpression": {
-        "queryCoefficient": 1,
-        "queryConstant": 0,
-        "query": {
-          "type": "trino",
-          "cluster": "system",
-          "ql": "select count(*) from \"icebase\".\"retail\".city"
-        }
-      },
-      "rightExpression": {
-        "queryCoefficient": 0,
-        "queryConstant": 100000
-      },
-      "operator": "less_than"
     }
   }
-}
-```
+  ```
 
 ## Next steps
 
