@@ -173,6 +173,8 @@ A Data Product manifest outlines essential metadata and configuration details ab
 
 Data Product can be configured to make the efficient business decisions based on reliable data. This section provides the detailed breakdown of each attribute, please refer to the documentation: [Attributes of Data Product manifest](/products/data_product/configurations/)
 
+
+
 ## Recipes
 
 This section provides step-by-step guides to assist you in effectively configuring the Data Product to solve common challenges. Below are some recipes to help you configure Data Product effectively:

@@ -23,7 +23,7 @@ service:
   logLevel: 'DEBUG'
   compute: runnable-default
   envs:
-    LAKESEARCH_SERVER_NAME: "public:testingls"
+    LAKESEARCH_SERVER_NAME: "/lakesearch/public:testingls"
     DATA_DIR: public/testingls/sample
     USER_MODULES_DIR: /etc/dataos/config
   persistentVolume:
@@ -33,7 +33,7 @@ service:
     requests:
       cpu: 1000m
       memory: 1536Mi
-  stack: lakesearch:6.0
+  stack: lakesearch:1.0
   stackSpec:
     lakesearch:
 # index specific section    
@@ -344,7 +344,7 @@ Defines whether authentication is required to access the exposed service.
 
 <aside class="callout">
 
-To remove the `noAuthentication: true` key from the ingress section, a DataOS operator needs to create a usecase in Bifrost and grant the use case to a user tag. 
+🗣️ To remove the `noAuthentication: true` key from the ingress section, a DataOS operator needs to create a usecase in Bifrost and grant the use case to a user tag. 
 </aside>
 
 | Data Type | Requirement | Default Value | Possible Values |
@@ -795,7 +795,7 @@ properties:
 
 <aside class="callout">
 
-Note that while adding the columns while indexing a table it is required to add an additional column named `id` of type `bigint` as shown below:
+🗣️ Note that while adding the columns while indexing a table it is required to add an additional column named `id` of type `bigint` as shown below:
 
 ```yaml
       index_tables:
@@ -811,7 +811,7 @@ Note that while adding the columns while indexing a table it is required to add 
             - name: zip_code
               type: bigint  
             - name: id              # additional column (mandatory)
-              description: "mapped to row_num"
+              description: "mapped to zip_code"
               tags:
                 - identifier
               type: bigint
@@ -915,7 +915,7 @@ The data types defined in the `source.index_table` is different from standard SQ
 
 <aside class="callout">
 
-It’s often useful to index the same field in different ways for different purposes. For example, you might want to index a string field as both a text field for full-text search and as a keyword field for sorting or aggregating your data. Or, you might choose to use more than one language analyzer to process the contents of a string field that contains user input.
+🗣️ It’s often useful to index the same field in different ways for different purposes. For example, you might want to index a string field as both a text field for full-text search and as a keyword field for sorting or aggregating your data. Or, you might choose to use more than one language analyzer to process the contents of a string field that contains user input.
 
 </aside>
 
@@ -933,7 +933,7 @@ It’s often useful to index the same field in different ways for different purp
 
 ```yaml
 
-description: "mapped to row_num"
+description: "mapped to zip_code"
 
 ```
 
@@ -1129,6 +1129,11 @@ batch_sql: |
     epoch(ts_city) >= {start} AND epoch(ts_city) < {end}
 
 ```
+
+<aside class="callout">
+🗣️ If the dataset does not contain a column of type `timestamp`, any numeric column with unique values can be used, without applying the `epoch` function.
+</aside>
+
 
 ---
 

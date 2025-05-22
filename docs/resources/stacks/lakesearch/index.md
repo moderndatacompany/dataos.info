@@ -161,7 +161,7 @@ This architecture provides a scalable and cost-effective alternative to traditio
 
 <div style="text-align: center;">
   <figure>
-    <img src="/resources/stacks/lakesearch/images/ls.jpg" alt="LakeSearch Service structure" style="border:1px solid black; width: 100%; height: auto;">
+    <img src="/resources/stacks/lakesearch/images/slide3.png" alt="LakeSearch Service structure" style="border:1px solid black; width: auto; height: auto;">
     <figcaption style="margin-top: 8px; font-style: italic;">LakeSearch Service Structure</figcaption>
   </figure>
 </div>
