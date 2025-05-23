@@ -20,19 +20,19 @@ In the Data Source Layer, security measures are implemented at the database, sch
 
 **Row-Level Security (RLS):** Security at the row level is typically configured through SQL-based policies or via the database platform's UI or console. For example, in Snowflake, administrators can set up RLS using SQL scripts or through Snowflake's user interface.
 
-For example, if a user wants to create a semantic model on top of certain data in DataOS, they must first ensure that they have access to the data. Additionally, they need to confirm they have the necessary permissions to create, update, and delete the Lens Resource.
+For example, if a user wants to create a semantic model on certain data in DataOS, they must first ensure that they have access to the data. Additionally, they need to confirm they have the necessary permissions to create, update, and delete the Lens Resource.
 
 ## Query engine layer
 
 In addition to data source-level security, governance can also be enforced at the federated query engine level. Federated query engines such as Minerva or Themis supports heterogeneous data sources, enabling integration with multiple systems such as Snowflake, PostgreSQL, BigQuery, and Lakehouse. It provides governance at both the metadata and data levels, ensuring secure and consistent access across various sources. It allows to define access control on who can query what catalog, schema or table or interact with specific datasets. However, the access rules only apply when queries are run through the engine. If someone accesses the data with a different engine or source engine, the engine-level permissions don't apply. 
 
-Governance at the federated query engine level can be applied in the following ways:
+Governance at the federated query engine levManage Worker in System Workspacesel can be applied in the following ways:
 
 * **Access control:** It enables administrators to define role-based access to restrict or grant data access. This ensures that only authorized users can query or modify data according to their assigned roles. In DataOS, access control is managed through Policy Resource and it's interface Bifrost, which provides an intutive and easy to use GUI to manage access permissions.
 
 * **Data masking:** Data Masking in federated query engines is applied through Data policies of Policy Resource to protect sensitive information. Administrators define masking rules to obfuscate sensitive data, like Personally Identifiable Information (PII), ensuring that only authorized users can view the full data.
 
-**Data filtering:** Similarly, row-level filtering based on user roles can be applied through data filter policy in Policy Resource. This feature ensures that users only access the data that they are permitted to see. 
+* **Data filtering:** Similarly, row-level filtering based on user roles can be applied through data filter policy in Policy Resource. This feature ensures that users only access the data that they are permitted to see. 
 
 This ensures governance is applied throughout downstream layers when the semantic model is created on the Minerva/Themis engine.
 
@@ -50,7 +50,7 @@ The governance ensures that only authorized users have access to create, update,
 1. **Access to Read, Create, Update or Delete the Lens:** The access to read, create, update, delete the Lens is granted based on user roles. For example, a user with Data Analyst role may only have read access to a specific Lens, while users with Data Engineer role may be granted permissions to create, update, or delete it. This can be managed via Bifrost.
 
 
-2. **Access to  explore the Lens semantic model and it's elements:** TAccess to explore the semantic model is managed by creating a `user_groups.yml` file, which is placed alongside the model folder. This file defines which users belong to which groups, their API scopes, and tags. This ensures that users can only access the data and features they are authorized to interact with. Additionally, Data policies are applied based on user groups to control access at a more detailed level. These policies can mask sensitive data or filter rows based on dimensions and segments. For instance, users in one group might see only certain rows or have some data masked, while others have full access to the data. By using user groups and data policies together, you can ensure that only authorized users can access and interact with the data.
+2. **Access to  explore the Lens semantic model and it's elements:** Access to explore the semantic model is managed by creating a `user_groups.yml` file, which is placed alongside the model folder. This file defines which users belong to which groups, their API scopes, and tags. This ensures that users can only access the data and features they are authorized to interact with. Additionally, Data policies are applied based on user groups to control access at a more detailed level. These policies can mask sensitive data or filter rows based on dimensions and segments. For instance, users in one group might see only certain rows or have some data masked, while others have full access to the data. By using user groups and data policies together, you can ensure that only authorized users can access and interact with the data.
 
 The governance defined at the Model layer, will be effective and can be seen in any downstream layers such as the Activation layer.
 
