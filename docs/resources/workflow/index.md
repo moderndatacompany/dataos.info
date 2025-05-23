@@ -12,7 +12,7 @@ The Workflow in DataOS serves as a [Resource](/resources/) for orchestrating dat
 
     Workflows are integral to the **transformation phase** in the [Data Product Lifecycle](/products/data_product/). They are particularly useful when your transformation involves:
 
-    - **Definite Execution**:sequences of tasks, jobs, or processes batch data, terminating upon successful completion or failure. For example, A workflow moving data from point A to point B.
+    - **Definite Execution**: Sequences of tasks, jobs, or processes batch data, terminating upon successful completion or failure. For example, A workflow moving data from point A to point B.
 
     - **Execution Processes**: To process data in discrete chunks, in parallel or in a given ordered sequence of jobs in DAGs.
 
@@ -23,7 +23,6 @@ The Workflow in DataOS serves as a [Resource](/resources/) for orchestrating dat
 ```yaml title="worker_manifest_structure.yml"
 --8<-- "examples/resources/workflow/workflow.yml"
 ```
-
 
 ## First Steps
 
@@ -46,4 +45,4 @@ Workflows orchestrate Stacks to accomplish myriad tasks. Below are some recipes 
 
 - [How to retry a job in the Workflow?](/resources/workflow/how_to_guide/retry_jobs/)
 
-- [How to apply a workflow and get runitme status CLI Stack](/resources/workflow/how_to_guide/apply_a_workflow_and_get_runtime_status_using_cli_stack/)
+- [How to apply a Workflow and get runtime status using CLI Stack](/resources/workflow/how_to_guide/apply_a_workflow_and_get_runtime_status_using_cli_stack/)
