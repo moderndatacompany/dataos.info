@@ -158,16 +158,16 @@ Now build a Scanner workflow to scan the data source. The workflow includes the�
 
 <img src="/resources/stacks/scanner/scanner_img/quickstart-scan-07.png"  class="center" style="width:45rem; display: block; margin: 0 auto; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);" />
 
-To know more about how to specify filters in different scenarios, refer to [Filter Pattern Examples](/resources/scanner/recipes).
+To know more about how to specify filters in different scenarios, refer to [Filter Pattern Examples](/resources/stacks/scanner/recipes/).
 
 ## Additional links 
 
 The templates of different sources of Scanner Workflows are as follows:
 
-* **Data Sources:** The Scanner Stack in DataOS provides a extensible framework for extracting metadata from multiple data sources. By creating custom Scanner Workflows, it become efficient to connect to diverse data sources, extract relevant metadata, and store it in the Metis DB for discoverability, governance, and observability. For more info, visit [Data Sources](resources/scanner/supported_sources/data_sources/).
+* **Data Sources:** The Scanner Stack in DataOS provides a extensible framework for extracting metadata from multiple data sources. By creating custom Scanner Workflows, it become efficient to connect to diverse data sources, extract relevant metadata, and store it in the Metis DB for discoverability, governance, and observability. For more info, visit [Data Sources](/resources/stacks/scanner/supported_sources/data_sources/azure_sql/).
 
 
-* **System Sources:** System Scanner Workflows are pre-defined Workflows that run periodically to scan related metadata and save it to Metis DB. These Workflows are scheduled to run at set intervals and are used to reflect the updated metadata state. For more info, visit [System Sources](resources/scanner/supported_sources/system_metadata_sources/).
+* **System Sources:** System Scanner Workflows are pre-defined Workflows that run periodically to scan related metadata and save it to Metis DB. These Workflows are scheduled to run at set intervals and are used to reflect the updated metadata state. For more info, visit [System Sources](/resources/stacks/scanner/supported_sources/system_metadata_sources/data_product_scanner/).
 
 
-* **Indexer Services:** Indexer service is a continuous running service within the DataOS environment keeps track of newly created or updated entities such as Data products, Data  Assets (datasets/topics/dashboards, etc.) and DataOS Resources (Workflows, Services, Workers, Monitors, Depots etc.). With this information about the changed entity, it creates a reconciliation Scanner manifest with filters to include only the affected entity. This Scanner Workflow will extract the metadata about the entity and update the target metastore. For more info, visit [Indexer Services](resources/scanner/supported_sources/indexer_services/).
+* **Indexer Services:** Indexer service is a continuous running service within the DataOS environment keeps track of newly created or updated entities such as Data products, Data  Assets (datasets/topics/dashboards, etc.) and DataOS Resources (Workflows, Services, Workers, Monitors, Depots etc.). With this information about the changed entity, it creates a reconciliation Scanner manifest with filters to include only the affected entity. This Scanner Workflow will extract the metadata about the entity and update the target metastore. For more info, visit [Indexer Services](/resources/stacks/scanner/supported_sources/indexer_services/data_profiling/).

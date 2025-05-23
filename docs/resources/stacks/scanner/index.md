@@ -37,11 +37,11 @@ A guide that explains the steps to create a Scanner Workflow to connect to the m
 
 The Scanner Stack in DataOS supports three types of metadata extraction Workflows:
 
-- **Data Sources:** Custom Scanner Workflows used to extract metadata from various external data sources(Snowflake, PostgreSQL, MySQL etc.) for discoverability and governance. Explore more about Data Source Scanners [here](/resources/stacks/scanner/supported_sources/data_sources/).  
+- **Data Sources:** Custom Scanner Workflows used to extract metadata from various external data sources(AzureSQL, Snowflake, PostgreSQL, MySQL etc.) for discoverability and governance. Explore more about Data Source Scanners [here](/resources/stacks/scanner/supported_sources/data_sources/azure_sql/).  
 
-- **System Sources:** Predefined, scheduled Workflows that scan internal system metadata at regular intervals. Explore more about system Scanner [here](/resources/stacks/scanner/supported_sources/system_metadata_sources/). 
+- **System Sources:** Predefined, scheduled Workflows that scan internal system metadata at regular intervals. Explore more about system Scanner [here](/resources/stacks/scanner/supported_sources/system_metadata_sources/data_product_scanner/). 
 
-- **Indexer Services:** Always-on service that detects changes in DataOS entities and triggers targeted metadata extraction for those specific changes. Explore more about Indexer Services Scanner [here](/resources/stacks/scanner/supported_sources/indexer_services/).
+- **Indexer Services:** Always-on service that detects changes in DataOS entities and triggers targeted metadata extraction for those specific changes. Explore more about Indexer Services Scanner [here](/resources/stacks/scanner/supported_sources/indexer_services/data_profiling/).
 
 ## Configuring the Scanner
 
