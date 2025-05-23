@@ -146,3 +146,7 @@ The diagram below summarizes how you can provide access through Bifrost.
   </div>
 </center>
 
+### **Roles and Use-cases**
+
+Click [here](/interfaces/bifrost/roles_and_use_cases/) to view the comprehensive list of use cases associated with each role, outlining the corresponding permission levels associated with each role.
+

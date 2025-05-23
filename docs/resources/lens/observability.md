@@ -24,9 +24,11 @@ Equation Monitor observes the Lens and it's semantic model's smetrics to generat
 
 Copy and make the necessary changes in the following equation monitor manifest file.
 
-Runs every 2 mins to check if `total_customers` in the customer table (from the `productaffinity` semantic model) drops below 50. If true, it triggers an info-level incident: lens-customer-analysis
+Runs every 2 mins to check if `total_customers` in the customer table (from the `productaffinity` semantic model) drops below 50 i.e. `total_customers < 50`. If true, it triggers an info-level incident: `lens-customer-analysis`. 
 
 ```yaml
+# metrics monitor
+
 name: monitor-lens-metric-testing
 version: v1alpha
 type: monitor
@@ -45,7 +47,7 @@ monitor:
             name: productaffinity
             workspace: public
             sslmode: 'disable'
-        ql: SELECT total_customers FROM customer where total_customers is not null and total_customers != 0
+        ql: SELECT total_customers FROM customer 
         comparisonColumn: {
             name: total_customers,
             dataType: int64
@@ -53,13 +55,13 @@ monitor:
     rightExpression:
       queryCoefficient: 0
       queryConstant: 50
-      query:
-    operator: not_equals
+    operator: less_than
   incident:
     type: business-metric
     name: lens-customer-analysis
     category: equation
     severity: info
+
 ```
 
 **2. Deploy the Equation Monitor**
@@ -103,11 +105,11 @@ Get the runtime of the Equation Monitor using the `get runtime` command:
 
 
 
-### **Equation Monitor Pager**
+### **Equation Pager**
 
 The following configuration defines a Pager Resource named `lens-equation-monitoring-pager` used for sending alerts to a Microsoft Teams channel when specific conditions related to a Lens Resource are met. The conditions are defined in the above Equation Monitor manifest file. The pager monitors the `lens-customer-analysis` incident, and when it is triggered, the configured alert is sent.
 
-**1. Create the Equation Monitor Pager manifest file**
+**1. Create the Pager manifest file**
 
 
 ```yaml
@@ -145,14 +147,14 @@ pager:
           }
 ```
 
-**2. Apply the Equation Monitor Pager**
+**2. Apply the Equation Pager**
 
 Deploy the Pager using the following `apply` command:
 
 ```shell
 dataos-ctl resource apply -f {manifest-file-path}
 ```
-**3. Validate the creation of Equation Monitor Pager**
+**3. Validate the creation of Equation Pager**
 
 ```shell
 dataos-ctl get -t pager -w <WORKSPACE_NAME>
