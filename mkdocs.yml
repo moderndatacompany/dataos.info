@@ -711,6 +711,7 @@ nav:
       - Building from Scratch with Snowflake: products/data_product/examples/firstdp.md
       - Using DataOS Lakehouse as a Source: products/data_product/templates/product_affinity.md
     - Configurations: products/data_product/configurations.md 
+    - Observability: resources/monitor/usecases/lens_metrics.md
     - Recipes: 
       - Deploy Data Product using CI/CD pipeline: products/data_product/recipes/ci_cd.md
 
