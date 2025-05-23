@@ -180,6 +180,7 @@ nav:
         - Role: interfaces/bifrost/roles.md
         - Grant Requests: interfaces/bifrost/grant_requests.md
         - Heimdall Primitives: interfaces/bifrost/heimdall_primitives.md
+        - Roles and Use cases: interfaces/bifrost/roles_and_use_cases.md
       - CLI: 
         - interfaces/cli/index.md
         - Installation: interfaces/cli/installation.md
