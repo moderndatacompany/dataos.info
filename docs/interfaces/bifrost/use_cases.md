@@ -101,6 +101,7 @@ dataos://icebase:******
 Alternatively, you can apply the following sample access policy manifest 
 
 ???tip "Sample access policy manifest"
+
     ```yaml
     name: access-policy-workspace
     version: v1
@@ -157,6 +158,10 @@ To delete a Use-Case:
 
 Here is the list of use-cases we currently support:
 
+!!! info
+
+     This document may not cover every new use-case that gets added over time. For the most up-to-date and extended list of use-cases, please visit Use-Case tab of the Bifrost of your organization.
+
 | **Name** | **Category** | **Description** |
 | --- | --- | --- |
 | View Audience App | audience | View & browse through audience application. |
@@ -202,11 +207,9 @@ Here is the list of use-cases we currently support:
 | Save Lens Data | lens | Save lens data. |
 | Get Products Details From Poros | product-management | Get Products |
 | Manage Products in Poros | product-management | Get Products |
-| Manage Fastbase | data | Manage fastbase |
 | Manage All Dataset | data | Manage All Dataset |
 | Manage Specific Dataset | data | Manage Specific Dataset |
 | Read All Dataset | data | Read All Dataset |
-| Read Icebase | data | Read icebase |
 | Read Specific Dataset | data | Read Specific Dataset |
 | View dph app | data | View dph application. |
 | View Lens2 App | data | View & browse through lens2 application. |
