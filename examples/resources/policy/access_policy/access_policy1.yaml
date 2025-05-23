@@ -1,0 +1,21 @@
+name: {{access-policy-api-path}}
+version: v1
+type: policy
+tags:
+  - {{dataos:type:resource}}
+description: {{allow user to access rest apis}}
+layer: system 
+policy:
+  access:
+    subjects:
+      tags:
+        - - {{dataos:u:user}}
+    predicates:
+      - {{get}}
+      - {{post}}
+      - {{put}}
+      - {{options}}
+    objects:
+      paths:
+        - {{/city/api/v1}}
+    allow: {{true}}
