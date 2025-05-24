@@ -99,10 +99,6 @@ GraphQL API enables Lens to deliver data over the HTTP protocol to GraphQL enabl
 - To explore the Lens using the GraphQL API click [here](/resources/lens/exploration_of_lens_using_graphql/).
 - To learn about the query format for GraphQL and explore more examples click [here](/resources/lens/graphql_api/graphql_query_example/).
 
-### **Python**
-
-Lens supports interaction through Python, allowing one to use libraries such as requests for making API calls and handling responses programmatically. This method is ideal for more complex queries and automation tasks. For detailed instructions on setting up and using Python with Lens click [here](/resources/lens/exploration_of_lens_using_python/).
-
 ### **SQL APIs**
 
 Lens provides a PostgreSQL-compatible interface, enabling users to interact with the semantic model over SQL. The following resources offer detailed instructions on how to set up and use the SQL APIs with Lens:
