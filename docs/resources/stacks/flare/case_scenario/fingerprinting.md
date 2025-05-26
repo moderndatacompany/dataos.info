@@ -51,14 +51,14 @@ Based on the minimum number of non-null values, unique values and distribution o
 Refer to the following table, which is used for classification and attribute tagging during the fingerprinting process in DataOS.
 
 
+| Category                 | Attributes                                                                                                                                          |
+|--------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
+| Personal Information     | - ID, UUID, API Key <br> - Login ID, password <br> - Name - First and Last <br> - Gender <br> - Organization Name <br> - Bank Issued Card Number <br> - IP Address <br> - URL/Domain <br> - Salary <br> - Blood Group |
+| Banking Information      | - Bank Issued Card No. <br> - Indian Bank IFSC Code <br> - Bank Account number <br> - IBAN Code                                                    |
+| Location Information     | - Country name <br> - Country code <br> - State code <br> - Street                                                                                  |
+| Educational Information  | - College Degree/Education                                                                                                                         |
+| Contact Information      | - Email <br> - Contact Number                                                                                                                       |
+| Government-issued IDs    | - US EIN Number <br> - US SSN Number <br> - Indian Aadhar Number <br> - Indian UPI Id <br> - Indian PAN Number                                      |
+| Driving License Info     | - US Driving License <br> - Indian Driving License                                                                                                  |
+| Demographic Information  | - Religion <br> - Sex/Gender <br> - Race                                                                                                            |
 
-| Category | Attributes|
-| --- | --- | 
-| Personal Information | • ID, UUID, API Key<br> • Login ID, password<br> • Name - First and Last<br> • Gender<br> • Organization Name<br> • Bank Issued Card Number<br> • IP Address<br> • URL/Domain<br> • Salary<br> • Blood Group |
-| Banking Information | • Bank Issued Card No.<br> • Indian Bank IFSC Code<br> • Bank Account number<br> • IBAN Code |
-| Location Information | • country name<br>• country code<br>• state code<br>• Street | 
-| Educational Information | • College Degree/Education |
-| Contact Information | • email<br>• Contact Number | 
-|Government-issued IDs | • US EIN Number<br>• US SSN Number<br>• Indian Aadhar Number<br>• Indian UPI Id<br>• Indian PAN Number |
-| Driving License Information | • US Driving License<br>• Indian Driving License | 
-| Demographic Information | • Religion<br>• Sex/Gender<br>• Race |
