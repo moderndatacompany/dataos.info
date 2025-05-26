@@ -50,7 +50,7 @@ Based on the minimum number of non-null values, unique values and distribution o
 ### **Attributes**
 Refer to the following table, which is used for classification and attribute tagging during the fingerprinting process in DataOS.
 
-<div style="text-align: center;">
+
 
 | Category | Attributes|
 | --- | --- | 
@@ -62,5 +62,3 @@ Refer to the following table, which is used for classification and attribute tag
 |Government-issued IDs | • US EIN Number<br>• US SSN Number<br>• Indian Aadhar Number<br>• Indian UPI Id<br>• Indian PAN Number |
 | Driving License Information | • US Driving License<br>• Indian Driving License | 
 | Demographic Information | • Religion<br>• Sex/Gender<br>• Race |
-
-</div>
