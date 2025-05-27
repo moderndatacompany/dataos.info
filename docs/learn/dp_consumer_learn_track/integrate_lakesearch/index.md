@@ -1,4 +1,4 @@
-# Lakesearch API consumption
+# Lakesearch API 
 
 LakeSearch is a powerful DataOS Stack that makes it easy to add fast, scalable search across Lakehouse tables. It allows app developers to add powerful search functionality, with indexing and query performance that can scale to meet business needs.
 
