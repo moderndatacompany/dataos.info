@@ -104,6 +104,8 @@ Unlock the power of Data Products by connecting them to BI tools. Learn to use t
 
 -   [Integration with GraphQL](/learn/dp_consumer_learn_track/integrate_graphql/)
 
+-   [Integration with LakeSearch API](/learn/dp_consumer_learn_track/integrate_lakesearch/)
+
 -   [Integration with Data API](/learn/dp_consumer_learn_track/integrate_api/)
 
 -   [Custom applications to consume Data Products](/learn/dp_consumer_learn_track/apps_consume_data_products/)
