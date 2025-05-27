@@ -749,7 +749,7 @@ nav:
             - learn/dp_consumer_learn_track/integrate_graphql/index.md
           - Integration with LakeSearch:
             - learn/dp_consumer_learn_track/integrate_lakesearch/index.md
-          - Integration with data APIs:
+          - Integration with Data APIs:
             - learn/dp_consumer_learn_track/integrate_api/index.md
           - Custom apps to consume Data Products:
             - learn/dp_consumer_learn_track/apps_consume_data_products/index.md
