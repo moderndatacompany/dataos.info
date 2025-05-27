@@ -747,6 +747,8 @@ nav:
             - learn/dp_consumer_learn_track/integrate_postgres/index.md
           - Integration with GraphQL:
             - learn/dp_consumer_learn_track/integrate_graphql/index.md
+          - Integration with LakeSearch:
+            - learn/dp_consumer_learn_track/integrate_lakesearch/index.md
           - Integration with data APIs:
             - learn/dp_consumer_learn_track/integrate_api/index.md
           - Custom apps to consume Data Products:
