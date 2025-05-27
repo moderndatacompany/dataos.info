@@ -1,4 +1,4 @@
-# Integration with data API
+# Integration with Data API
 
 In this topic, you will learn how to use the Data Product via REST API. This guide offers step-by-step instructions for accessing and integrating the Data Product through REST API.
 
