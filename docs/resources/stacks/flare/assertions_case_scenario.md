@@ -1,9 +1,7 @@
-
 ---
 search:
   exclude: true
 ---
-
 
 # Enhancing Data Integrity with Assertion Jobs
 

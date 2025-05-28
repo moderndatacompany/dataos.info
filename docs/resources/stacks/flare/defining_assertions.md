@@ -1,4 +1,3 @@
-
 ---
 search:
   exclude: true
@@ -124,7 +123,7 @@ assertions:
 
 The below table summarizes various properties within an assertions section in Quality job YAML.
 
-<div style="text-align: center;">
+<div style="text-align: center;" markdown="1">
 
 | Attribute | Data Type | Requirement |
 | --- | --- | --- |
