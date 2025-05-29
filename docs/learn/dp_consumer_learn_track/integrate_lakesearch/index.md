@@ -238,7 +238,7 @@ This table provides a quick reference to the various query types available in La
 
 ## Example Scenarios
 
-Explore how the LakeSearch API on **DataOS** empowers users to perform powerful and intuitive searches across large datasets. Each scenario below demonstrates a practical use case, showcasing how different query types can be executed via the API endpoint.
+Explore how the LakeSearch API on DataOS empowers users to perform powerful and intuitive searches across large datasets. Each scenario below demonstrates a practical use case, showcasing how different query types can be executed via the API endpoint.
 
 ### **1. Retrieve all records**
 
@@ -322,7 +322,7 @@ A marketing analyst needs to identify all customers located in **Spain** to asse
     
 ![highlight_pretag.png](/learn/dp_consumer_learn_track/integrate_lakesearch/highlight_pretag.png)
     
-### **5. Apply range filter on birth year**
+### **5. Apply range filter**
     
 A marketing analyst wants to analyze customer preferences for those born between **a specific range**, assuming that demographic may behave differently in terms of affinity.
     
@@ -399,9 +399,9 @@ Query:
 ![condition_expr_sort.png](/learn/dp_consumer_learn_track/integrate_lakesearch/condition_expr_sort.png)
     
 
-### **8. Multi-Condition Filtering: Segment + Recommendation**
+### **8. Multi-Condition Filtering**
     
-Get customers who are “Moderate Risk” and have a recommendation involving "Fish".
+Segment + Recommendation: Get customers who are “Moderate Risk” and have a recommendation involving "Fish".
     
 **Query:**
     
@@ -438,9 +438,9 @@ Minimize API response by returning only essential fields. Only return `customer_
 
 ![match_all.png](/learn/dp_consumer_learn_track/integrate_lakesearch/match_all%201.png)
 
-### **10. Aggregation: Count per Segment**
+### **10. Perform aggregation**
 
-Get a breakdown of how many customers exist in each customer segment.
+Get the count per segment: breakdown of how many customers exist in each customer segment.
 
 **Query:**
 
@@ -459,7 +459,7 @@ Get a breakdown of how many customers exist in each customer segment.
 ```
 ![image](/learn/dp_consumer_learn_track/integrate_lakesearch/agg.png)
 
-### **11. Sort Low Risk Customers by ID**
+### **11. Arrange data for analysis**
     
 List all Low Risk customers sorted by `customer_id`.
     
