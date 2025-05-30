@@ -30,11 +30,12 @@ Volume Resource in DataOS can be created by applying the manifest file using the
 
 Volume can be configured to different size, accessMode and type. The specific configurations may vary depending on the use case. For a detailed breakdown of the configuration options and attributes, please refer to the documentation: [Attributes of Volume manifest](/resources/volume/configuration/).
 
-## Managing the Volume
+## Manage the Volume
 
 When a Volume Resource of type `CloudPersistent` is deleted, its associated data continues to persist in the underlying cloud storage (such as Azure, GCS, or AWS). To permanently delete the Volume from the cloud storage, please refer to the links below.
 
 - [Delete Volume from Azure](/resources/volume/delete_azure/)
+- [Delete Volume from AWS](/resources/volume/delete_aws_pvc/)
 
 ## Recipe
 
