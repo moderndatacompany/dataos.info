@@ -1,0 +1,29 @@
+heimdall.auth package
+=====================
+
+Submodules
+----------
+
+heimdall.auth.authorizer module
+-------------------------------
+
+.. automodule:: heimdall.auth.authorizer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+heimdall.auth.policy\_enforcement\_provider module
+--------------------------------------------------
+
+.. automodule:: heimdall.auth.policy_enforcement_provider
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: heimdall.auth
+   :members:
+   :undoc-members:
+   :show-inheritance:

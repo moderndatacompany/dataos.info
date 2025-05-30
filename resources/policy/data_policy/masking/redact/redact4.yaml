@@ -1,0 +1,28 @@
+name: {{test-phi-redact}}
+version: v1
+type: policy
+tags:
+  - {{dataos:type:resource}}
+description: {{data policy to redact PHI columns by tags}}
+owner: {{iamgroot}}
+layer: user
+policy:
+  data:
+    dataset: {{patients}}
+    collection: {{test_healthcare}}
+    depot: {{icebase}}
+    priority: {{40}}
+    type: mask
+    mask:
+      hash:
+        algo: {{sha256}}
+      operator: redact
+    selector:
+      column:
+        tags:
+          - {{PHI.int_sensitive}}
+          - {{PHI.confidential}}
+      user:
+        match: {{any}}
+        tags:
+          - {{roles:id:healthcaredatauser}}
