@@ -80,7 +80,6 @@ tables:
   - name: owner
     sql: {{ load_sql('owner') }}
     description: Table containing information about the owners.
-    data_source: icebase
     public: true   
 ```
 
@@ -180,7 +179,7 @@ tables:
     
     dimensions:
       - name: owner_id
-        type: string
+        type: string 
         description: Unique identifier for each owner.
         sql: owner_id
         primary_key: true
@@ -202,7 +201,7 @@ The dimension declaration involves the following properties:
 | `column`      | References the column defined in the table’s SQL. While custom SQL can be defined in a table’s dimension, best practice suggests that it should be defined in the table’s SQL. |                               |                                                                                                    |
 | `public`      | Controls visibility of dimension, i.e. whether the dimension is visible to all users or hidden. If not mentioned explicitly, by default this property is true                  | True, False                   | Set to **`True`** for key dimensions that should be visible by default                             |
 | `primary_key` | The key on which the join relationship will be defined                                                                                                                         | Column name                   | Ensure each dimension has a unique primary key to maintain data integrity                          |
-| `type`        | The data type of the dimension                                                                                                                                                 | string, number, time, boolean | Choose the appropriate data type to ensure proper sorting and filtering​                           |
+| `type`        | The data type of the dimension                                                                                                                                                 | `string`, `number`, `time`, `boolean` | Choose the appropriate data type to ensure proper sorting and filtering​                           |
 | `meta`        |  Ensures sensitive data is masked for specified user groups.                                                                                                                   | Key-value pairs               | Use metadata to provide additional context about the dimension, such as tags, or custom attributes |
 | `sub_query`   | Sub-query for the dimension. Set the flag to reference a measure of one table in dimension of another                                                                          |                               | Use to define complex dimensions using sub-queries                                                 |
 
@@ -243,49 +242,6 @@ GROUP BY 2;
 
 You can include multiple dimensions in your query to perform grouping as needed.
 
-### **Calculated Measures**
-
-To answer the question “What is the average sales amount per order?”, you’ll need to calculate the average amount for all orders. This can be done by defining a measure that calculates the average of the amount field. Here’s how you can define this in YAML for your sales table:
-
-```yaml
-measures:
- - name: total_sales_amount
-   sql: SUM(amount)
-   type: number
-   description: Total sales amount across all orders.
-
- - name: total_order_count
-   sql: COUNT(order_id)
-   type: count
-   description: Total number of orders.
-
- - name: average_sales_amount_per_order
-   sql: "{total_sales_amount} / NULLIF({total_order_count}, 0)"
-   type: number
-   format: currency
-   description: The average sales amount per order.
-
-# .....
-```
-
-Here we defined a calculated measure `average_sales_amount_per_order`, which divides the total sales amount by the total number of orders. The NULLIF function prevents division by zero in case there are no orders.
-
-This example shows how you can reference measures inside other measure definitions. When you request the `average_sales_amount_per_order` measure via an API, the following SQL will be generated:
-
-```sql
-SELECT
-  SUM(amount) / NULLIF(COUNT(order_id), 0) AS average_sales_amount_per_order
-FROM
-  sales
-```
-
-As with other measures, average_sales_amount_per_order can be used with dimensions.
-
-### **Measure Additivity**
-
-Additivity is a property of measures that tells us if we can break down or combine measure values across different categories. In simpler terms, it means that if we have a measure for a group of dimensions (like sales for different regions), we can add or combine these values to get a measure for a smaller subset of those dimensions (like sales for a specific region).
-
-The additivity of a measure depends on its type. Only measures with the following types are considered additive: `count`, `count_distinct_approx`, `min`, `max`, and `sum`. Measures with all other types are considered non-additive.
 
 The measure declaration involves the following properties:
 
@@ -312,6 +268,50 @@ tables:
         type: count_distinct
         description: Total number of owners.
 ```
+
+### **Calculated Measures**
+
+To answer the question 'What is the average sales amount per order?', you’ll need to calculate the average amount for all orders. This can be done by defining a measure that calculates the average of the amount field. Here’s how you can define this in YAML for your sales table:
+
+```yaml
+measures:
+ - name: total_sales_amount
+   sql: SUM(amount)
+   type: number
+   description: Total sales amount across all orders.
+
+ - name: total_order_count
+   sql: COUNT(order_id)
+   type: count
+   description: Total number of orders.
+
+ - name: average_sales_amount_per_order
+   sql: "{total_sales_amount} / NULLIF({total_order_count}, 0)"
+   type: number
+   description: The average sales amount per order.
+
+# .....
+```
+
+Here we defined a calculated measure `average_sales_amount_per_order`, which divides the total sales amount by the total number of orders. The NULLIF function prevents division by zero in case there are no orders.
+
+This example shows how you can reference measures inside other measure definitions. When you request the `average_sales_amount_per_order` measure via an API, the following SQL will be generated:
+
+```sql
+SELECT
+  SUM(amount) / NULLIF(COUNT(order_id), 0) AS average_sales_amount_per_order
+FROM
+  sales
+```
+
+As with other measures, `average_sales_amount_per_order` can be used with dimensions.
+
+### **Measure Additivity**
+
+Additivity is a property of measures that tells us if we can break down or combine measure values across different categories. In simpler terms, it means that if we have a measure for a group of dimensions (like sales for different regions), we can add or combine these values to get a measure for a smaller subset of those dimensions (like sales for a specific region).
+
+The additivity of a measure depends on its type. Only measures with the following types are considered additive: `count`, `count_distinct_approx`, `min`, `max`, and `sum`. Measures with all other types are considered non-additive.
+
 
 ## Segments
 
