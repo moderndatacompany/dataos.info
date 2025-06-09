@@ -7,7 +7,7 @@ search:
 # :resources-lens: Lens
 
 
-Lens [Resource](/resources/) in DataOS is a logical modeling layer designed for accessing tabular data in data warehouses or lakehouses. It operates on top of physical tables, allowing the extension of these tables into logical tables by adding logical columns (measures) and relationships. It  empowers analytical engineers, the key architects of business intelligence, with a model-first approach. 
+Lens [Resource](/resources/) in DataOS is a logical modeling layer designed for accessing tabular data in data warehouses or lakehouses. It operates on top of physical tables, allowing the extension of these tables into logical tables by adding logical columns (measures) and relationships. It empowers analytical engineers, the key architects of business intelligence, with a model-first approach. 
 
 
 !!!tip "Lens within the Data Product Lifecycle"
@@ -30,27 +30,29 @@ As a Resource within the DataOS ecosystem, Lens enhances Data Product consumptio
 
 ## Key features of Lens 
 
-Lens  is engineered to handle complex and large-scale data models with ease. Key features include:
+Lens is engineered to handle complex and large-scale data models with ease. Key features include:
 
 - **Code modularity:** Lens supports modular code structures, simplifying the maintenance of extensive models, particularly when dealing with entities, dimensions, and measures. This modularity enables efficient development and management, allowing teams to navigate large codebases with reduced complexity.
 
-- **Structured YAML templates:** Lens provides standardized, easy-to-customize YAML templates. These templates streamline the creation of Lens YAML files, ensuring consistency across models and reducing manual effort. They offer an efficient way to define tables, views, dimensions, measures, joins, and segments, allowing you to quickly set up and modify your data models with minimal hassle.
-
 - **Segments:** [Segments](/resources/lens/segments/) are predefined filters that enable the definition of complex filtering logic in SQL. They allow you to create specific subsets of data, such as users from a particular city, which can be reused across different queries and reports. This feature helps streamline the data exploration process by simplifying the creation of reusable filters.
 
-- **API support:** Lens enhances interoperability by simplifying application development with support for [Postgres API](/resources/lens/exploration_of_lens_using_sql_apis/), [REST API](/resources/lens/exploration_of_lens_using_rest_apis/), and [GraphQL](/resources/lens/graphql_api/graphql_query_example/). Additionally, learn how to [work with payloads](/resources/lens/working_with_payload/) for querying and interacting with the system in the API Documentation.
+- **API support:** Lens enhances interoperability by simplifying application development with support for [Postgres API](/resources/lens/exploration_of_lens_using_sql_apis/), [REST API](/resources/lens/exploration_of_lens_using_rest_apis/), and [GraphQL](/resources/lens/exploration_of_lens_using_graphql/). 
 
 - **Governance and access control:** Lens ensures data governance through[ user group management and data policies](/resources/lens/user_groups_and_data_policies/), enabling precise control over who can access and interact with data models. 
 
-- **BI Integration:** Lens improves interoperability through robust integration with Superset, Tableau and PowerBI. This ensures that data models can be easily utilized across various BI platforms, enhancing the overall analytics experience. For more details on BI integration, visit the [BI Integration Guide](/resources/lens/bi_integration/).
+- **BI integration:** Lens improves interoperability through robust integration with Superset, Tableau,  and PowerBI. This ensures that data models can be easily utilized across various BI platforms, enhancing the overall analytics experience. For more details on BI integration, visit the [BI Integration Guide](/resources/lens/bi_integration/).
 
-- **Performance optimization through Flash:** Designed to work with DataOS Lakehouse and Iceberg-format depots, [Flash](/resources/stacks/flash/) improves query performance by leveraging in-memory execution. This optimization ensures that data teams can efficiently handle large-scale queries with enhanced speed and performance.
+- **Performance optimization through Flash:** Designed to work with DataOS Lakehouse and Iceberg-format Depots, [Flash](/resources/stacks/flash/) improves query performance by leveraging in-memory execution. This optimization ensures that data teams can efficiently handle large-scale queries with enhanced speed and performance.
 
-## How to build Lens?
+## How to build semantic model?
 
-To build a semantic model with Lens establish a connection to your data source, load relevant data, set up user access, and deploy the model with configuration settings. The following steps outline how to build the semantic model and deploy it using Lens for each type of source.
+<!-- To build a semantic model with Lens establish a connection to your data source, load relevant data, set up user access, and deploy the model with configuration settings. The following steps outline how to build the semantic model and deploy it using Lens for each type of source. -->
+
+To build a semantic model with Lens, there are three primary options depending on your data environment: using a single source, combining data from multiple sources, or enabling query acceleration for performance optimization. The following sections outline how to build and deploy semantic model based on each scenario.
 
 ### **Single source**
+
+When data resides in a single source such as AWS Redshift, BigQuery, PostgreSQL, or Snowflake, the semantic model is built directly on top of the source.
 
 - [AWS Redshift](/resources/lens/data_sources/awsredshift/)
 
@@ -62,11 +64,15 @@ To build a semantic model with Lens establish a connection to your data source, 
 
 ### **Multiple source**
 
+When working with distributed data systems, a unified semantic model is constructed using Minerva or Themis clusters. These clusters facilitate seamless integration across heterogeneous data sources.
+
 - [Minerva](/resources/lens/data_sources/minerva/)
 
 - [Themis](/resources/lens/data_sources/themis/)
 
-### **Query accelaration**
+### **Query acceleration**
+
+For high-performance analytical workloads, Flash provides an in-memory query acceleration layer that significantly improves query execution speed.
 
 - [Flash](/resources/lens/data_sources/flash/)
 

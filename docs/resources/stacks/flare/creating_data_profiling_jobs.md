@@ -1,4 +1,3 @@
-
 ---
 search:
   exclude: true
