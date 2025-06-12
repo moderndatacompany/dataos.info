@@ -105,7 +105,7 @@ workflow:
       spec:
         stack: scanner:2.0
         compute: runnable-default
-                runAsUser: metis
+        runAsUser: metis
         stackSpec: 
           depot: kafka01
           # sourceConfig:
