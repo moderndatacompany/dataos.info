@@ -435,13 +435,11 @@ No. All measures and dimensions must be defined in Lens. Power BI does not suppo
 
 - **On-Premises Gateway Dependency:**
 
-  - Required to connect PostgreSQL-based semantic models.
+    - Required to connect PostgreSQL-based semantic models.
 
-  - Must configure gateway with Npgsql driver.
+    - Must configure gateway with Npgsql driver.
 
-- **Special Characters:**
-
-  Limited support in Power BI. Such characters must be handled in raw data or during semantic modeling.
+- **Special Characters:** Limited support in Power BI. Such characters must be handled in raw data or during semantic modeling.
 
 **13. How can percentage formatting be enforced in Power BI visuals?**
 
