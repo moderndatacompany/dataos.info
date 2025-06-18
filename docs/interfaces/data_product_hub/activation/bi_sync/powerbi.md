@@ -416,13 +416,13 @@ Computation occurs in two layers:
 
 All data sources compatible with Lens can be synced to Power BI. The full list is available [here](/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/#data-sources-supported-for-model-first-data-products).
 
-For direct connection:
+<!-- For direct connection:
 
 **Integrating DataOS Lakehouse with Power BI Via DataOS REST API Connector**
 
 - Install the custom connector and visualize catalog tables in Power BI. Data is retrieved via the Minerva cluster. Installation guide [here](/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/#integrating-dataos-lakehouse-with-power-bi-via-dataos-rest-api-connector).
 
-- Via Presto ODBC Driver (requires paid license)
+- Via Presto ODBC Driver (requires paid license) -->
 
 
 **11. Is custom measure and dimension creation supported for model-first data products in Power BI?**
