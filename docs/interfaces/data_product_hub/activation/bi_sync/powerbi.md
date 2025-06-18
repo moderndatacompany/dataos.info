@@ -414,7 +414,7 @@ Computation occurs in two layers:
 
 **10. What data sources are supported to sync model-first data products to Power BI?**
 
-All data sources compatible with Lens can be synced to Power BI. The full list is available [here](/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/#data-sources-supported-for-model-first-data-products).
+All data sources compatible with Lens can be synced to Power BI.
 
 <!-- For direct connection:
 
