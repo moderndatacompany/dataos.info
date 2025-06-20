@@ -1,0 +1,74 @@
+# Data Product Foundations Track
+
+Your starting point for building smart, reliable Data Products in DataOS.
+
+This track is designed for anyone new to DataOS or just getting started with the concept of data product development. It introduces the foundational concepts, tools, and workflows you’ll use to build and manage Data Products with confidence.
+
+
+## Who Should Take This Track?
+
+The Data Product Foundations course is ideal for the following learner personas:
+
+| Persona & Description                                                                 | Why It Matters                                                                                      | Level        |
+|----------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|--------------|
+| **New Data Engineers / Developers**  
+Beginners in building data products or DataOS                                           | Learn the core building blocks without being overwhelmed by deep technical details.                 | Must-have    |
+| **Aspiring Data Product Developers & Owners**  
+Business/tech users moving into product roles                                           | Get foundational knowledge to progress into specialized tracks.                    | Must-have    |
+| **Cross-functional Team Members**  
+Analysts, QA, support involved in data workflows                                        | Understand how Data Products work and fit into end-to-end data operations.                          | Recommended  |
+| **Technical Decision Makers / Architects**  
+Architects, Admins, team leads evaluating DataOS                                                | Gain a high-level overview of key DataOS primitives and workflows for better strategic planning.    | Recommended  |
+
+
+## Core modules
+The Foundations Track is split into two structured courses—each designed to walk you through the lifecycle of a Data Product. Each module within these courses covers key topics through step-by-step guidance, hands-on examples, and best practices—ensuring a clear and practical learning experience. This Foundations track keeps the content streamlined, emphasizing core concepts and guiding learners through one complete end-to-end example.
+
+<aside class="callout">
+🗣 This track includes hands-on modules that use both the DataOS CLI and GUI. You’ll work with CLI in the training environment to apply YAMLs, run workflows, and navigate DataOS GUI (Workbench, Metis, DPH).
+</aside>
+
+### **Course 1: Creating a Source-Aligned Data Product**
+
+Build your first Data Product using raw source system data. Learn how to connect, ingest, transform, and monitor datasets using DataOS primitives.
+
+<div style="text-align: left; padding-left: 1em;">
+<img src="/learn_new/about_dp_foundations_track/foundations1_track1.png" alt="infographics">
+</div>
+
+| No. | Module                                | Objective/Description                                                                                                                                                                  | Key Topics                                                                                                                                         |
+|-----|----------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1   | **Understanding Source-Aligned Data Product** | Understand what are source-aligned data products | - Features & Importance |
+| 2   | **Connect with Source Systems**       | Learn how to connect existing external data sources to DataOS without moving the data, and inspect the structure using Workbench.                                                       | - DataOS Primitives: Instance Secrets, Depots, Stacks<br>- Configuring and applying Secrets & Depots                                               |
+| 3   | **Scan Metadata and Explore Data**     | Use a Scanner workflow to fetch metadata from structured source systems and preview data in Metis and Workbench—without ingesting.                                                     | - Creating Scanner Workflows<br>- Viewing scanned metadata in Metis<br>- Exploring external data via Workbench                                    |
+| 4   | **Build Workflows for Data Transformation & Ingestion** | Understand when and how to bring source data into DataOS and apply transformations using Flare workflows.                                          | - DataOS Primitives: Workflows, Services<br>- Writing Flare Workflows<br>- Ingesting and verifying data                                            |
+| 5   | **Add Quality Checks**               | Add basic profiling and validation checks to ensure data trustworthiness.                                                                                                              | - Defining SLOs (Service Level Objectives)<br>- Using Soda Stack for quality checks<br>- Running profiling                                         |
+| 6   | **Set Up Monitors & Pagers**         | Set up monitoring and alerting to track failures and ensure visibility into data issues.                                                                                               | - Creating Monitors for workflow and Soda failures<br>- Setting up Pagers with email/webhook alerts<br>- Validating alerts                        |
+| 7   | **Build and Deploy Your First Source-aligned Data Product** | Package and deploy your Data Product by bundling all resources, defining the spec, and registering it in the Data Product Hub and Metis.                 | - Creating a bundle.yaml<br>- Writing the Data Product specification<br>- Deploying and registering the Data Product                              |
+
+## ✅ Start Learning 
+
+:rocket: [Start this course here](/learn_new/dp_foundations1_learn_track/) 
+
+### **Course 2: Creating a Consumer-Aligned Data Product**
+
+Take it further by designing a product tailored for business consumption—featuring semantic modeling, governed access, and metric delivery.
+
+<div style="text-align: left; padding-left: 1em;">
+<img src="/learn_new/about_dp_foundations_track/foundations2_track1.png" alt="infographics">
+</div>
+
+| No. | Module                               | Objective/Description                                                                                                                                  | Key Topics                                                                                                                                               |
+|-----|--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1   | **Define Business Requirements**     | Clearly define the business problem or opportunity the data product will address, aligning with measurable success criteria.                           | - Define objectives and KPIs<br>- Collaborate with business teams<br>- Identify metrics tied to outcomes                                                 |
+| 2   | **Design Semantic Model**            | Design a logical schema to represent key business entities, relationships, and metrics. Identify data security needs for governed access.             | - Identify business objects<br>- Define dimensions and measures<br>- Model relationships<br>- Create business views<br>- Address data security           |
+| 3   | **Create a Repo for Versioning**     | Set up a version-controlled repository to manage changes and enable collaboration across teams.                                                        | - Initialize a code repository<br>- Set up clear folder structure                                                                                         |
+| 4   | **Connect with Source Systems**      | Configure depots to connect with both source and destination systems for reading and writing data.                                                     | - Create and apply Instance Secrets<br>- Configure Depots for read/write access                                                                          |
+| 5   | **Transform & Ingest**               | Apply complex data transformations to create refined output datasets that meet business use case requirements.                                         | - Design transformation logic<br>- Create and deploy Flare workflows<br>- Ingest and validate output data                                                |
+| 6   | **Create Semantic Model**            | Organize key metrics and relationships into a semantic layer for business users to easily explore via tools like Lens.                                 | - Set up semantic model folders<br>- Define SQL scripts & manifest files<br>- Configure business views and access control<br>- Create Lens manifest     |
+| 7   | **Deploy and Register Data Product** | Package and register the complete data product so it’s discoverable in Data Product Hub and Metis.                                                     | - Create bundle.yaml<br>- Write the product spec<br>- Deploy and register the Data Product                                                               |
+
+
+## ✅ Start Learning 
+
+:rocket: [Start this course here](/learn_new/dp_foundations2_learn_track/)
