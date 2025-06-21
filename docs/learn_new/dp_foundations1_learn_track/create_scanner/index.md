@@ -70,11 +70,16 @@ Check the Operations app for the status of your workflow. If it fails, review th
 
 1. Go to the Metis app.
 
-2. Search for the schema or table name scanned or you can navigate to the Assets > Datasets section.
+2. On Metis UI, go to Settings > Databases to access it.
 
-3. Verify metadata fields like column names, data types, sample values, etc.
+  ![dimage](/learn_new/dp_foundations1_learn_track/create_scanner/scanned_database.png)
 
-[screenshot]
+3. Select the database (same as Depot name).
+
+  ![dimage](/learn_new/dp_foundations1_learn_track/create_scanner/scanned_data.png)
+
+4. Verify metadata fields like column names, data types, sample values, etc.
+
 
 ---
 

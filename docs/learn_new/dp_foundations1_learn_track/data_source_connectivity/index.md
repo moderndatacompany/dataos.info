@@ -11,7 +11,7 @@ Your team is expanding its use of DataOS and needs to integrate multiple data so
 
 ---
 
-## Quick Concepts: What Are Depots?
+## Quick Concepts 
 
 The **Depot Resource** in DataOS provides a standardized way to connect to a variety of enterprise data sources, such as:
 
@@ -32,74 +32,87 @@ Depots allow you to:
 
 Before diving into configuring data source connections, make sure you have everything ready:
 
-1. **Check required Permissions**: Some tasks require specific permissions typically assigned to DataOS Operators. Ensure you have access to one of the following permission sets either via use-case or via tags:
+1. **Check required permissions**  
+   Some tasks require specific permissions typically assigned to DataOS Operators. Ensure you have access to one of the following permission sets either via use-case or via tags:
 
-    | **Access Permission (via use-cases)**       | **Access Permissions (via tags)**      |
-    |--------------------------------------------|---------------------------------------|
-    | Read Workspace                             | `roles:id:data-dev `                  |
-    | Manage All Depot                           | `roles:id:system-dev`                   |
-    | Read All Dataset                           | `roles:id:user`                      |
-    | Read all secrets from Heimdall             |                                |
+   | **Access Permission (via use-cases)** | **Access Permissions (via tags)** |
+   |--------------------------------------|-----------------------------------|
+   | Read Workspace                       | `roles:id:data-dev`               |
+   | Manage All Depot                     | `roles:id:system-dev`             |
+   | Read All Dataset                     | `roles:id:user`                   |
+   | Read all secrets from Heimdall       | *(Not specified)*                 |
 
-2. **Check CLI installation**: You need this text-based interface that allows you to interact with the DataOS context via command prompts. Open a command terminal and follow the <a href="/interfaces/cli/installation/">installation guide</a> for your operating system. Once the installation is complete, proceed with the initialization.
+2. **Check CLI installation**  
+   You need this text-based interface that allows you to interact with the DataOS context via command prompts.  
+   Open a command terminal and follow the [installation guide](/interfaces/cli/installation/) for your operating system. Once the installation is complete, proceed with the initialization.
 
-3. **DataOS context initialization & login**:After successful installation of dataos-ctl,  lets initialize and log in to the DataOS context using CLI.
+3. **DataOS context initialization & login**  
+   After successful installation of `dataos-ctl`, let's initialize and log in to the DataOS context using CLI.
 
-  a. Open Terminal 
-  b. Type `dataos-ctl init`
-  c. Follow the prompts and provide inputs depending on your user role:
+     **a. Open terminal**
 
-    ```bash
-    dataos-ctl init
+     **b. Type:**
+     ```bash
+     dataos-ctl init
+     ```
 
-    INFO[0000] The DataOS® is already initialized, do you want to add a new context? (Y,n)  
-    ->Y   # input the answer: Y or n
-    INFO[0255] 🚀 initialization...
+     **c. Follow the prompts and provide inputs depending on your user role:**
+     ```bash
+     INFO[0000] The DataOS® is already initialized, do you want to add a new context? (Y,n)  
+     -> Y   # input the answer: Y or n
 
-    INFO[0255] The DataOS® is not initialized, do you want to proceed with initialization? (Y,n)  
-    ->Y
+     INFO[0255] 🚀 initialization...
 
-    INFO[0269] Please enter a name for the current DataOS® Context?  
-    ->{{name of the DataOS context}}
-    # Example: marmot (or any name you prefer).
-    # Your enterprise may offer multiple contexts — pick one to start.
-    # You can switch context anytime using a CLI command after login. 
+     INFO[0255] The DataOS® is not initialized, do you want to proceed with initialization? (Y,n)  
+     -> Y
 
-    INFO[0383] Please enter the fully qualified domain name of the DataOS® instance?  
-    ->{{domain name}} 
-    # Example: apparent-marmot.dataos.app
-    INFO[0408] entered DataOS®: marmot : apparent-marmot.dataos.app 
-    INFO[0429] Are you operating the DataOS®? (Y,n)         
-    ->n  
-    # If you are the operator(admin) for your enterprise, type Y
-    # If you type Y, the installation steps will change.
-    INFO[0452] 🚀 initialization...complete
-    ```
+     INFO[0269] Please enter a name for the current DataOS® Context?  
+     -> {{name of the DataOS context}}
+     # Example: marmot (or any name you prefer).
+     # Your enterprise may offer multiple contexts — pick one to start.
+     # You can switch context anytime using a CLI command after login.
 
-  d. Now, log in with the following command.
-    
-    ```bash
-    modern@ask ~ % dataos-ctl login
-    INFO[0000] 🔑 login...                                   
-    INFO[0000] 🔑 refresh...                                 
-    INFO[0003] authorize...                                 
-    INFO[0004] authorize...complete                         
-    INFO[0004] 🔑 refresh...complete                         
-    INFO[0004] 🔑 login...complete 
-    ```
-  e. Enter the following commands to verify the CLI installation.
+     INFO[0383] Please enter the fully qualified domain name of the DataOS® instance?  
+     -> {{domain name}} 
+     # Example: apparent-marmot.dataos.app
 
-    ```bash
-    dataos-ctl version
-    dataos-ctl health
-    ```    
-4. **Install any IDE, such as Visual Studio Code**: This is necessary for creating YAML files for your data product. Installation links for various operating systems are provided.
+     INFO[0408] Entered DataOS®: marmot : apparent-marmot.dataos.app 
 
-  **Installation links by Operating System**
+     INFO[0429] Are you operating the DataOS®? (Y,n)         
+     -> n  
+     # If you are the operator (admin) for your enterprise, type Y.
+     # If you type Y, the installation steps will change.
 
-  - **Linux**: Follow the detailed steps to install VS Code on your Linux system by accessing the [Install VS Code on Linux guide](https://code.visualstudio.com/docs/setup/linux).
-  - **Windows**: To install VS Code on a Windows machine, refer to the [Install VS Code on Windows guide](https://code.visualstudio.com/docs/setup/windows).
-  - **MacOS**: For MacOS users, installation instructions can be found in the [Install VS Code on macOS guide](https://code.visualstudio.com/docs/setup/mac).
+     INFO[0452] 🚀 initialization...complete
+     ```
+
+     **d. Now, log in:**
+     ```bash
+     dataos-ctl login
+     ```
+
+     Output:
+     ```bash
+     INFO[0000] 🔑 login...                                   
+     INFO[0000] 🔑 refresh...                                 
+     INFO[0003] authorize...                                 
+     INFO[0004] authorize...complete                         
+     INFO[0004] 🔑 refresh...complete                         
+     INFO[0004] 🔑 login...complete 
+     ```
+
+     **e. Verify the CLI installation:**
+     ```bash
+     dataos-ctl version
+     dataos-ctl health
+     ```
+
+4. **Install any IDE, such as Visual Studio Code**  
+   This is necessary for creating YAML files for your data product. Installation links for various operating systems are provided below:
+
+   - **Linux**: [Install VS Code on Linux](https://code.visualstudio.com/docs/setup/linux)  
+   - **Windows**: [Install VS Code on Windows](https://code.visualstudio.com/docs/setup/windows)  
+   - **macOS**: [Install VS Code on macOS](https://code.visualstudio.com/docs/setup/mac)
 
 ## **Checklist:**
 

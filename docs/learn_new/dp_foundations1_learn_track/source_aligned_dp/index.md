@@ -1,5 +1,4 @@
-# Source-Aligned Data Product: Retail Use Case
-
+# Source-Aligned Data Product
 Raw data is often where every data journey begins—but in its untouched state, it’s rarely fit for immediate use. While it holds valuable insights, raw data often comes with inconsistencies, missing values, and formatting issues that make it hard to trust, interpret, or act on.
 
 Our **Retail Source-Aligned Data Product** unlocks the true value of customer, product, and sales data by cleaning, transforming, and governing it—then making it accessible through an intuitive, self-service experience. The result? Trusted, high-quality data that’s ready for exploration, analysis, and downstream consumption.

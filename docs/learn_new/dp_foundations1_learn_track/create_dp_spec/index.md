@@ -6,7 +6,7 @@ After setting up your Bundle manifest, the next step is to define your Data Prod
 
 You're building a source-aligned retail data product that curates customer, product, and sales data to power downstream use of this data. To make this product easy to deploy, discover, and reuse, you’ll define a Data Product Spec—a blueprint that links metadata, input/output datasets, collaborators, and a production-ready Bundle containing ingestion workflows, quality checks, monitors, and pagers.
 
-## Step 1: Define general information
+## Step 1: Define General Information
 
 Start with the high-level metadata about your data product:
 

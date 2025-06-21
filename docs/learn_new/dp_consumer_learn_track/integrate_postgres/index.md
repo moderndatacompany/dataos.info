@@ -24,17 +24,17 @@ Follow the below steps to consume the Data Product via Postgres.
 
 Navigate to the Access Options tab of your Data Product (Product Affinity) and select the 'Postgres' section.
 
-![pg_tab.png](/learn/dp_consumer_learn_track/integrate_postgres/pg_tab.png)
+![pg_tab.png](/learn_new/dp_consumer_learn_track/integrate_postgres/pg_tab.png)
 
 In the connection details section, you’ll be provided with the host address, port name, database details, username, and the password. Your DataOS API key is the password, you can create the DataOS API key in the token section of the DataOS profile.
 
-![pg_apikey.png](/learn/dp_consumer_learn_track/integrate_postgres/pg_apikey.png)
+![pg_apikey.png](/learn_new/dp_consumer_learn_track/integrate_postgres/pg_apikey.png)
 
 ### 2. Copy the connection string
 
 Copy the provided connection string.
 
-![pg_connection.png](/learn/dp_consumer_learn_track/integrate_postgres/pg_connection.png)
+![pg_connection.png](/learn_new/dp_consumer_learn_track/integrate_postgres/pg_connection.png)
 
 ### 3. Test the connection
 
@@ -66,4 +66,4 @@ lens:public:cross-sell-affinity=> select * from cross_sell_opportunity_score lim
 
 If you want to consume the Data Product via GraphQL, refer to the next topic.
 
-[Integration with GraphQL](/learn/dp_consumer_learn_track/integrate_graphql/)
+[Integration with GraphQL](/learn_new/dp_consumer_learn_track/integrate_graphql/)

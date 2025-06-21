@@ -34,15 +34,15 @@ Follow the below steps to discover the Data Product of interest.
     
 2. **Categorize Data Product recommendations based on domain:** On the Data Product Hub landing page, Data Products are recommended by default based on use cases. Switch to the “Domain” view to see recommendations based on data domains.
     
-    ![disc_home.png](/learn/dp_consumer_learn_track/discover_dp/disc_home.png)
+    ![disc_home.png](/learn_new/dp_consumer_learn_track/discover_dp/disc_home.png)
     
 3. **Use the search function:** Enter relevant keywords like “product” to quickly locate Data Products containing that term in their title.
     
-    ![disc_search.png](/learn/dp_consumer_learn_track/discover_dp/disc_search.png)
+    ![disc_search.png](/learn_new/dp_consumer_learn_track/discover_dp/disc_search.png)
     
 4. **Filter your results:** Narrow down results by applying filters, such as “Product Recommendation” under use cases. You can also filter by tier, domain, or owner. Similarly, you can find Data Products by domains such as related to Marketing, Sales, DataOps.
     
-    ![disc_filter.png](/learn/dp_consumer_learn_track/discover_dp/disc_filter.png)
+    ![disc_filter.png](/learn_new/dp_consumer_learn_track/discover_dp/disc_filter.png)
     
     <aside class="callout">
     🗣 Use multiple filters to quickly pinpoint the most relevant Data Products.
@@ -52,7 +52,7 @@ Follow the below steps to discover the Data Product of interest.
     
 6. **Analyze the Details:** Review the metadata, including Data Product’s description, tier, owners and collaborators. You will also get details on quality checks, inputs, outputs, semantic model, metrics, quality, and access options.
     
-    ![disc_analyze.png](/learn/dp_consumer_learn_track/discover_dp/disc_analyze.png)
+    ![disc_analyze.png](/learn_new/dp_consumer_learn_track/discover_dp/disc_analyze.png)
     
 
 ## Best practices
@@ -63,11 +63,11 @@ Follow the below steps to discover the Data Product of interest.
 
 - **Add to Favorites**: For quick access, add frequently used Data Products (e.g., “Product Affinity”) to your favorites.
     
-    ![disc_favorites.png](/learn/dp_consumer_learn_track/discover_dp/disc_favorites.png)
+    ![disc_favorites.png](/learn_new/dp_consumer_learn_track/discover_dp/disc_favorites.png)
     
 
 ## Next step
 
 To explore more about analyzing a Data Product, proceed to the next module:
 
-[Viewing Data Product details](/learn/dp_consumer_learn_track/view_dp_info/)
+[Viewing Data Product details](/learn_new/dp_consumer_learn_track/view_dp_info/)
