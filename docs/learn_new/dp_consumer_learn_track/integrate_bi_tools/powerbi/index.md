@@ -16,7 +16,7 @@ In this guide, you will learn how to integrate a Data Product with Power BI and 
     
 To start the integration, go to the 'Access Options' tab and scroll to the 'Excel and PowerBI' option in the 'BI Sync' section. Click on the 'Download `.pbip` File' button to initiate the download of a ZIP folder.
     
-![powerbi_conn_details.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/powerbi_conn_details.png)
+![powerbi_conn_details.png](/learn_new/dp_consumer_learn_track/integrate_bi_tools/powerbi/powerbi_conn_details.png)
     
 ### **Step 2: Extract the files**
     
@@ -24,7 +24,7 @@ After downloading the ZIP file, extract it to a directory on your local machine.
     
 The folder stores the main components of a Power BI project for syncing the Lens Model (here `Product Affinity`), including folders like the`.Report` and `.SemanticModel`. 
     
-![folder_structure.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/folder_structure.png)
+![folder_structure.png](/learn_new/dp_consumer_learn_track/integrate_bi_tools/powerbi/folder_structure.png)
     
 Following is a brief description of each:
     
@@ -43,17 +43,17 @@ Following is a brief description of each:
 
 Open the `public_productaffinity.pbip` file in Power BI. A popup will appear prompting you to enter your 'DataOS username' and 'API key'.
 
-![powerbi_ui.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/powerbi_ui.png)
+![powerbi_ui.png](/learn_new/dp_consumer_learn_track/integrate_bi_tools/powerbi/powerbi_ui.png)
 
 After entering your credentials, click 'Connect'. A confirmation popup will appear; click 'OK' to proceed.
 
-![powerbi_pop_up.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/powerbi_pop_up.png)
+![powerbi_pop_up.png](/learn_new/dp_consumer_learn_track/integrate_bi_tools/powerbi/powerbi_pop_up.png)
 
 ### **Step 4: Access data tables and start building dashboards**
 
 Once connected, you can see tables and views containing all dimensions and measures from the Data Product. You can now start building your dashboard by selecting the relevant fields for analysis.
 
-![powerbi_dashboard.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/powerbi_dashboard.png)
+![powerbi_dashboard.png](/learn_new/dp_consumer_learn_track/integrate_bi_tools/powerbi/powerbi_dashboard.png)
 
 
 ## Using PowerBI Service Account
@@ -69,47 +69,47 @@ In the PowerBI, click 'Publish'. This action will push the report to your online
 
 </aside>
 
-![powerbi_publish.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_publish.png)
+![powerbi_publish.png](/learn_new/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_publish.png)
 
 ### **Step 2: Confirm publishing in the chosen workspace**
 
 The image below shows the power BI is publishing the report in the chosen workspace.
 
-![powerbi_publishing.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_publishing.png)
+![powerbi_publishing.png](/learn_new/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_publishing.png)
 
 ### **Step 3: Navigate to your workspace**
 
 Once published, go to your 'workspace' where the report has been saved. Here it is Demo Testing.
 
-![powerrbi_workspace.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerrbi_workspace.png)
+![powerrbi_workspace.png](/learn_new/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerrbi_workspace.png)
 
 Click on the connected semantic model below the workspace with the name `cross-sell-affinity`.
 
-![powerbi_settings.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_settings.png)
+![powerbi_settings.png](/learn_new/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_settings.png)
 
 ### **Step 4: Locate and access report settings**
 
 Scroll down to the 'Gateway and Cloud Connections' section. Toggle the switch to 'enable the gateway connection'. Click on the 'Add to Gateway' button to initiate the connection process.
 
-![powerbi_gateway.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_gateway.png)
+![powerbi_gateway.png](/learn_new/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_gateway.png)
 
 ### **Step 5: Enable gateway connection**
 
 After clicking the 'Add to Gateway' button, you'll be prompted to enter the necessary 'connection details' for the data source. Once you’ve entered the required connection information, finalize the connection setup.
 
-![powerbi_gateway_connection.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_gateway_connection.png)
+![powerbi_gateway_connection.png](/learn_new/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_gateway_connection.png)
 
 ### **Step 7: Confirm successful connection**
 
 After successfully connecting,you will be mapped to the semantic model as shown in the image below:
 
-![powerbi_gateway_conn1.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_gateway_conn1.png)
+![powerbi_gateway_conn1.png](/learn_new/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_gateway_conn1.png)
 
 ### **Step 8: Access the semantic model**
 
 After successfully connecting, you will be able to access the dashboard. 
 
-![powerbi_chart.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_chart.png)
+![powerbi_chart.png](/learn_new/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_chart.png)
 
 
 <aside class="callout">
@@ -185,6 +185,6 @@ This approach ensures that users only see the data they are authorized to view, 
 
 Follow the below link to analyze in Excel via PowerBI.
 
-[Excel via Power BI](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/)
+[Excel via Power BI](/learn_new/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/)
 
  -->

@@ -255,7 +255,7 @@ Query:
 
 ```
 
-![match_all.png](/learn/dp_consumer_learn_track/integrate_lakesearch/match_all.png)
+![match_all.png](/learn_new/dp_consumer_learn_track/integrate_lakesearch/match_all.png)
 
 ### **2. Filter by Specific Value**
 
@@ -273,7 +273,7 @@ Query:
 }
 ```
 
-![high_risk.png](/learn/dp_consumer_learn_track/integrate_lakesearch/high_risk.png)
+![high_risk.png](/learn_new/dp_consumer_learn_track/integrate_lakesearch/high_risk.png)
 
 ### **3. Exact Phrase Match**
     
@@ -294,7 +294,7 @@ CopyEdit
 
 ```
     
-![match_phrase.png](/learn/dp_consumer_learn_track/integrate_lakesearch/match_phrase.png)
+![match_phrase.png](/learn_new/dp_consumer_learn_track/integrate_lakesearch/match_phrase.png)
     
 
 ### **4. Highlight Matched Text (e.g., "Spain")**
@@ -320,7 +320,7 @@ A marketing analyst needs to identify all customers located in **Spain** to asse
 }
 ```
     
-![highlight_pretag.png](/learn/dp_consumer_learn_track/integrate_lakesearch/highlight_pretag.png)
+![highlight_pretag.png](/learn_new/dp_consumer_learn_track/integrate_lakesearch/highlight_pretag.png)
     
 ### **5. Apply range filter**
     
@@ -341,7 +341,7 @@ A marketing analyst wants to analyze customer preferences for those born between
 }
 ```
     
-![range.png](/learn/dp_consumer_learn_track/integrate_lakesearch/range.png)
+![range.png](/learn_new/dp_consumer_learn_track/integrate_lakesearch/range.png)
     
 ### **6. Add new derived field using expression**
     
@@ -364,7 +364,7 @@ The product team wants to estimate the **projected income** by applying a busine
 }
 ```
     
-![add_income.png](/learn/dp_consumer_learn_track/integrate_lakesearch/add_income.png)
+![add_income.png](/learn_new/dp_consumer_learn_track/integrate_lakesearch/add_income.png)
     
 ### **7. Combine filters, derived field and sorting**
     
@@ -396,7 +396,7 @@ Query:
 
 ```
     
-![condition_expr_sort.png](/learn/dp_consumer_learn_track/integrate_lakesearch/condition_expr_sort.png)
+![condition_expr_sort.png](/learn_new/dp_consumer_learn_track/integrate_lakesearch/condition_expr_sort.png)
     
 
 ### **8. Multi-Condition Filtering**
@@ -419,7 +419,7 @@ Segment + Recommendation: Get customers who are “Moderate Risk” and have a r
 
 ```
     
-![moderate_risk_fish.png](/learn/dp_consumer_learn_track/integrate_lakesearch/moderate_risk_fish.png)
+![moderate_risk_fish.png](/learn_new/dp_consumer_learn_track/integrate_lakesearch/moderate_risk_fish.png)
     
 ### **9. Show Only Specific Fields: ID and Recommendation**
     
@@ -436,7 +436,7 @@ Minimize API response by returning only essential fields. Only return `customer_
 }
 ```
 
-![match_all.png](/learn/dp_consumer_learn_track/integrate_lakesearch/match_all%201.png)
+![match_all.png](/learn_new/dp_consumer_learn_track/integrate_lakesearch/match_all%201.png)
 
 ### **10. Perform aggregation**
 
@@ -457,7 +457,7 @@ Get the count per segment: breakdown of how many customers exist in each custome
     }
 }
 ```
-![image](/learn/dp_consumer_learn_track/integrate_lakesearch/agg.png)
+![image](/learn_new/dp_consumer_learn_track/integrate_lakesearch/agg.png)
 
 ### **11. Arrange data for analysis**
     
@@ -482,6 +482,6 @@ List all Low Risk customers sorted by `customer_id`.
 }
 ```
 
-![image](/learn/dp_consumer_learn_track/integrate_lakesearch/sort.png)
+![image](/learn_new/dp_consumer_learn_track/integrate_lakesearch/sort.png)
     
 

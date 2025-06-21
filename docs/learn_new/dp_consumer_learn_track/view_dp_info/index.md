@@ -40,17 +40,17 @@ After discovering the 'Product Affinity' Data Product, follow these steps to exp
 
 1. **Access the Data Product details page:** From the Data Product Hub, select the 'Product Affinity' Data Product. This action will redirect you to the Data Product details page.
     
-    ![view_access.png](/learn/dp_consumer_learn_track/view_dp_info/view_access.png)
+    ![view_access.png](/learn_new/dp_consumer_learn_track/view_dp_info/view_access.png)
     
 2. **Review the details:** On the Data Product details page, you get the description, Git link, Jira link, tier, use cases, collaborators, quality checks applied on the Data Product, and an overview tab that shows the data flow.
 
 3. **Get the details on inputs and outputs:** On navigating to the inputs tab you get the details on the input datasets that are fed into the Data Product. The details include the customer, product, and purchase table, in the customer table you get the details of the columns, their type, and the Data Product reference that has the same dataset used for its development.
     
-    ![view_input.png](/learn/dp_consumer_learn_track/view_dp_info/view_input.png)
+    ![view_input.png](/learn_new/dp_consumer_learn_track/view_dp_info/view_input.png)
     
     - Similarly, you get the details of output datasets by navigating to the outputs tab.
     
-    ![view_output.png](/learn/dp_consumer_learn_track/view_dp_info/view_output.png)
+    ![view_output.png](/learn_new/dp_consumer_learn_track/view_dp_info/view_output.png)
     
 4. **Understanding the semantic model and Metrics:**
     - On the 'Semantic Model' tab, you get to understand the data model built on top of the Data Product that is populating the key metrics of the Data Product. Here, you can view the relations between logical tables and derived metrics and views.
@@ -61,16 +61,16 @@ After discovering the 'Product Affinity' Data Product, follow these steps to exp
         - **Purchase Frequency**
         - **Total Spending**
         
-        ![view_model.png](/learn/dp_consumer_learn_track/view_dp_info/view_model.png)
+        ![view_model.png](/learn_new/dp_consumer_learn_track/view_dp_info/view_model.png)
         
     - **Metrics Details**: On the Metrics tab, you’ll see how each metric is calculated from the input datasets. For example, the “Cross Sell Opportunity Score” metric is derived from the product and purchase datasets.
         
-        ![view_metrics.png](/learn/dp_consumer_learn_track/view_dp_info/view_metrics.png)
+        ![view_metrics.png](/learn_new/dp_consumer_learn_track/view_dp_info/view_metrics.png)
         
 5. **Review quality checks and access options:** 
     - On navigating to the quality tab, you get the details on the quality of the Data Product categorized by accuracy, completeness, freshness, schema, uniqueness, and validity.
         
-        ![view_quality.png](/learn/dp_consumer_learn_track/view_dp_info/view_quality.png)
+        ![view_quality.png](/learn_new/dp_consumer_learn_track/view_dp_info/view_quality.png)
         
 6. **Access options:**
     You can explored the semantic model associated with your data Product using tools like Studio or integrated with various BI tools, AI/ML platforms, or applications using DataOS APIs. If a Data Product includes a Semantic Model, then the following consumption ports are available on  the access options tab:
@@ -114,4 +114,4 @@ If a Data Product lacks a Semantic Model, its outputs are typically limited to p
 
 You can further examine input and output datasets for their metadata, schema, and quality related details.
 
-[Exploring Input and Output Data](/learn/dp_consumer_learn_track/eval_io_datasets/)
+[Exploring Input and Output Data](/learn_new/dp_consumer_learn_track/eval_io_datasets/)

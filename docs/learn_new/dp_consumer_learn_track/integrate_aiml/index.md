@@ -22,13 +22,13 @@ Follow these steps to start training your machine learning model using the Data 
     
     Go to the **Access Options** tab in your Data Product details, and in the 'AI and ML' section, click 'Download'. This will download a `.ipynb` file pre-configured with templates to consume the Data Product via REST APIs, PostgreSQL, GraphQL, and SQL interfaces.
     
-    ![ml_tab.png](/learn/dp_consumer_learn_track/integrate_aiml/ml_tab.png)
+    ![ml_tab.png](/learn_new/dp_consumer_learn_track/integrate_aiml/ml_tab.png)
     
 2. **Open the Notebook in Your Editor**
     
     You can open the downloaded `.ipynb` file in an editor like VS Code or export it to DataOS’s Notebook environment. This notebook template contains examples and placeholders for integrating with various data access options.
     
-    ![ml_vscode.png](/learn/dp_consumer_learn_track/integrate_aiml/ml_vscode.png)
+    ![ml_vscode.png](/learn_new/dp_consumer_learn_track/integrate_aiml/ml_vscode.png)
     
 3. **Set Up the REST API for Data Retrieval**
     
@@ -106,4 +106,4 @@ Follow these steps to start training your machine learning model using the Data 
 ## Next step
 
 You may want to consume the Data Product via Postgres, then follow the next module:
-[Integration with Postgres](/learn/dp_consumer_learn_track/integrate_postgres/)
+[Integration with Postgres](/learn_new/dp_consumer_learn_track/integrate_postgres/)

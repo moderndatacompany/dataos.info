@@ -8,7 +8,7 @@ Imagine you are a DataOS Operator or Data Product Developer and you need to inte
 
 By setting up Depots, you can securely connect to these systems and enable data access for exploration, workflows, and data product creation—right within DataOS.
 
-  > We'll walk through a PostgreSQL example, but the process applies to any JDBC-compatible system like MySQL, MariaDB, or MSSQL Server.
+  > We'll walk through a PostgreSQL Depot creation example, but the process applies to any JDBC-compatible system like MySQL, MariaDB, or MSSQL Server.
 
 ## Steps to create a Depot for PostgreSQL
 

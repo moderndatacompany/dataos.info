@@ -32,7 +32,7 @@ The Data Product Hub is a user-friendly interface within DataOS where you can di
 
 The hub displays a list of Data Products, each designed to provide relevant data for analytics, AI/ML, and data-driven applications. Each Data Product is tailored to specific use cases that support key business objectives, such as brand affinity or customer engagement.
 
-![intro_home.png](/learn/dp_consumer_learn_track/intro_dph/intro_home.png)
+![intro_home.png](/learn_new/dp_consumer_learn_track/intro_dph/intro_home.png)
 
 ## What is a Metric?
 
@@ -40,17 +40,17 @@ A Metric is an entity that, by default, provides a logical view of a logica
 
 On Data Product Hub, you can access and analyze key business metrics in one place for a unified view of organizational performance and decision-making. Further details of the Metrics are provided in the later modules.
 
-![intro_metrics.png](/learn/dp_consumer_learn_track/intro_dph/intro_metrics.png)
+![intro_metrics.png](/learn_new/dp_consumer_learn_track/intro_dph/intro_metrics.png)
 
 ## What is a Perspective?
 
 A Perspective is a saved exploration of a Data Product. A Perspective can be created for any Data Product that has an exposed semantic model. After exploring the Data Product on the Data Product Hub, the exploration can be saved as a Perspective, which can then be accessed in the Perspective tab. 
 
-![intro_perspective.png](/learn/dp_consumer_learn_track/intro_dph/intro_perspective.png)
+![intro_perspective.png](/learn_new/dp_consumer_learn_track/intro_dph/intro_perspective.png)
 
 Click any Perspective to be redirected to the Data Product’s Explore page. Further details of the  Perspectives are provided in the later modules.
 
-![intro_explore.png](/learn/dp_consumer_learn_track/intro_dph/intro_explore.png)
+![intro_explore.png](/learn_new/dp_consumer_learn_track/intro_dph/intro_explore.png)
 
 ## FAQs
 
@@ -61,5 +61,5 @@ The Data Product Hub serves as a centralized place where you can access and anal
 
 To discover the Data Products of interest that can solve your use case, refer to the next module:
 
-[Discover Data Product](/learn/dp_consumer_learn_track/discover_dp/)
+[Discover Data Product](/learn_new/dp_consumer_learn_track/discover_dp/)
 

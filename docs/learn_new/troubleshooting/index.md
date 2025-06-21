@@ -1,7 +1,7 @@
 # Troubleshooting Guide
-# Troubleshooting Guide 1.0
 
-<aside>
+
+<aside class="callout">
 🗣
 
 **Note:** These are some common errors you may encounter when starting with DataOS to create Data Products. This guide aims to help users troubleshoot typical issues. It is not an exhaustive list but covers key scenarios to assist users. For more in-depth information, please refer to the detailed documentation at [dataos.info](https://dataos.info/).
@@ -30,7 +30,7 @@
 
 ---
 
-## **Workbench Related Errors**
+## Workbench Related Errors
 
 **Problem:** Not able to query on Workbench.
 
@@ -38,7 +38,7 @@
 
 ---
 
-## **Flare Ingestion Errors**
+## Flare Ingestion Errors
 
 1. **Problem:** Job finished with error: "Could not alter output datasets for workspace."
     
@@ -231,7 +231,7 @@ b. Ensure the depot exists in the system before use.
 
 ---
 
-## **Flare Transformation Errors**
+## Flare Transformation Error
 
 **Problem:** "Cannot write incompatible data to table."
 
@@ -244,7 +244,7 @@ b. Ensure the depot exists in the system before use.
 
 ---
 
-## **Resource Allocation Errors**
+## Resource Allocation Errors
 
 **Problem:** Insufficient resources leading to memory allocation errors.
 
@@ -254,7 +254,7 @@ b. Ensure the depot exists in the system before use.
 
 ---
 
-## **Streaming Errors**
+## Streaming Errors
 
 **Problem:** Job finished with error: "Checkpoint Location must be specified either through option ('checkpointlocation')."
 
@@ -264,7 +264,7 @@ b. Ensure the depot exists in the system before use.
 
 ---
 
-## **Resource Naming Errors**
+## Resource Naming Errors
 
 **Problem:** Invalid Parameter - failure validating resource.
 
@@ -284,7 +284,7 @@ For **Cluster & Depot names**, only lowercase letters (a-z) and digits (0-9) are
 
 ---
 
-## **Scanner Errors**
+## Scanner Errors
 
 1. **Problem:** ERROR 403 while running a job.
     
@@ -315,7 +315,7 @@ For **Cluster & Depot names**, only lowercase letters (a-z) and digits (0-9) are
 
 ---
 
-## **DP Access Errors**
+## DP Access Errors
 
 **Problem:** Missing ODBC drivers error while downloading the `.pbip` file to connect with Power BI.
 
@@ -323,7 +323,7 @@ For **Cluster & Depot names**, only lowercase letters (a-z) and digits (0-9) are
 
 ---
 
-## **Semantic Layer Related Errors**
+## Semantic Layer Related Errors
 
 1. **Problem:** "Can't Find Join Path."
     

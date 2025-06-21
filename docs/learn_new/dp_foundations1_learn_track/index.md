@@ -1,6 +1,6 @@
-#  # Data Product Foundations · Course I 
+# Data Product Foundations · Course I 
 
-Welcome to the first module of the Data Product Foundations Track, where you'll learn how to build a **source-aligned data product** from the ground up. By following each step and completing the checklists, you’ll learn how to connect, ingest, and shape source data into a product-ready asset on DataOS.
+In this course, you'll learn how to build a **source-aligned data product** from the ground up. By following each step and completing the checklists, you’ll learn how to connect, ingest, and shape source data into a product-ready asset on DataOS.
 
 ---
 
@@ -116,6 +116,20 @@ You’re part of a retail company’s data team. You’ve been asked to build a 
 </div>
 
 ---
+
+## How to Use These Modules
+
+Each module in this track is designed for self-paced, hands-on learning.
+
+To follow along:
+
+1. Copy the YAML snippets provided in each step.
+
+2. Customize them for your use case (e.g., names, paths, credentials).
+
+3. Login to your DataOS training instance via the CLI.
+
+4. Use the dataos-ctl apply command to deploy and test your changes.
 
 ## Checklist for Success
 
