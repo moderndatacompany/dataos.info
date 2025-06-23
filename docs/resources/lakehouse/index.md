@@ -515,6 +515,8 @@ This section of the Lakehouse manifest file specifies the connection to the unde
             bucket: ${s3-bucket} # mandatory
             format: ${format} # mandatory
             icebergCatalogType: ${iceberg-catalog-type} # optional
+            region: ${us-gov-east-1} # optional but recommended
+            endpoint: ${s3.us-gov-east-1.amazonaws.com} # optional but recommended
             metastoreType: ${metastore-type} # optional
             metastoreUrl: ${metastore-url} # optional
             relativePath: ${relative-path} # optional
@@ -538,7 +540,9 @@ This section of the Lakehouse manifest file specifies the connection to the unde
           type: "s3"
           s3:
             bucket: lake001-dev        # "tmdc-dataos-testing"
-            relativePath: /sanitys3       
+            relativePath: /sanitys3  
+            region: us-gov-east-1
+            endpoint: s3.us-gov-east-1.amazonaws.com             
           secrets:
             - name: s3test-rw
               keys:
@@ -562,6 +566,8 @@ This section of the Lakehouse manifest file specifies the connection to the unde
     | [`bucket`](/resources/lakehouse/configurations/#s3) | string | none | valid S3 bucket name | optional |
     | [`format`](/resources/lakehouse/configurations/#s3) | string | Iceberg | Iceberg | optional |
     | [`icebergCatalogType`](/resources/lakehouse/configurations/#s3) | string | none | hadoop, hive | optional |
+    | [`region`](/resources/lakehouse/configurations/#s3) | string | none | valid AWS region (e.g., us-east-1) | optional |
+    | [`endpoint`](/resources/lakehouse/configurations/#s3) | string | none | valid S3 endpoint URL | optional |
     | [`metastoreType`](/resources/lakehouse/configurations/#s3) | string | iceberg-rest-catalog | iceberg-rest-catalog | optional |
     | [`metastoreUrl`](/resources/lakehouse/configurations/#s3) | string | none | valid URL | optional |
     | [`relativePath`](/resources/lakehouse/configurations/#s3) | string | none | valid relative path | optional |
