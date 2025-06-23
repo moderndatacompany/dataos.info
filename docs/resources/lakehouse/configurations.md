@@ -45,6 +45,8 @@ lakehouse:
 				bucket: ${s3-bucket}
 				format: ${format}
 				icebergCatalogType: ${iceberg-catalog-type}
+        region: ${us-gov-east-1}
+        endpoint: ${s3.us-gov-east-1.amazonaws.com}
 				metastoreType: ${metastore-type}
 				metastoreUrl: ${metastore-url}
 				relativePath: ${relative-path}
@@ -422,6 +424,8 @@ s3: # mandatory
   bucket: ${s3-bucket} # mandatory
   format: ${format} # mandatory
   icebergCatalogType: ${iceberg-catalog-type} # optional
+  region: ${us-gov-east-1}
+  endpoint: ${s3.us-gov-east-1.amazonaws.com}
   metastoreType: ${metastore-type} # optional
   metastoreUrl: ${metastore-url} # optional
   relativePath: ${relative-path} # optional
@@ -430,9 +434,11 @@ s3: # mandatory
 
 **Attribute Definitions:**
 
-- **bucket:** The name of the wasbs storage account.
+- **bucket:** The name of the S3 bucket.
 - **format:** Specifies the data format for storage. Common formats include PARQUET, AVRO, ORC, and ICEBERG.
 - **icebergCatalogType:** Defines the catalog type when using Apache Iceberg. Examples include HIVE or HADOOP.
+- **region:** The AWS region where the S3 bucket is located (e.g., us-east-1).
+- **endpoint:** The endpoint URL for the S3 service (e.g., s3.us-gov-east-1.amazonaws.com).
 - **metastoreType:** Indicates the metastore's type. For example, hive or hadoop.
 - **metastoreUrl:** Provides the URL to the metastore. 
 - **relativePath:** Specifies a folder path within the bucket where data is stored or accessed, allowing for structured data organization within a single bucket.
@@ -449,6 +455,8 @@ lakehouse:
       s3:
         bucket: lake001-dev    
         relativePath: /sanitys3 
+        region: us-gov-east-1
+        endpoint: s3.us-gov-east-1.amazonaws.com        
       # Additional attributes for the Storage section
 ```
 
