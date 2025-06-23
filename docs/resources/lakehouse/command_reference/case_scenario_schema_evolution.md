@@ -41,6 +41,10 @@ Only the following column data types are supported
 | fixed(L) | Fixed-length byte array of length L |  |
 | binary | Arbitrary-length byte array |  |
 
+<aside class=callout>
+🗣 The `time` data type is not supported in the Themis cluster.
+</aside>
+
 
 Initial Schema observed in Workbench
 
@@ -100,7 +104,7 @@ dataos-ctl dataset -a dataos://icebase:retail/city drop-field \
 
 <!-- ![Schema Evolution 3](./case_scenario_schema_evolution/2.png) -->
 
-Let’s remove column `new1` from the city dataset. Execute the following code in the terminal
+Let's remove column `new1` from the city dataset. Execute the following code in the terminal
 
 ```shell
 dataos-ctl dataset -a dataos://icebase:retail/city drop-field \
