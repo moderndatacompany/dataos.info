@@ -1454,14 +1454,18 @@ stackSpec:
 ```yaml
 stackSpec:
   job:
-    outputs:
-      - iceberg:
-          partitionSpec:
-            - type: identity
-              column: version
-            - type: day
-              column: timestamp
-              asColumn: day_partitioned
+    outputs:                                                # Output Dataset configurations (optional)
+      - name: top_100_accounts                              # Output dataset name (mandatory)
+        dataset: dataos://lakehouse:bronze/topaccounts?acl=rw           # Dataset URI for output (mandatory)
+        format: iceberg                                     # Output dataset format (optional, default: based on depot type)
+        options:                                            # Output options (optional)
+          iceberg:                                          # Iceberg specific options (optional)
+            partitionSpec:                                  # Partition specification (optional)
+              - type: identity
+                column: version
+              - type: day
+                column: timestamp
+                asColumn: day_partitioned
 ```
 
 ###### **`type`**
