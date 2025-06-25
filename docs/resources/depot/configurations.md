@@ -63,7 +63,6 @@
 | ------------- | --------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | string        | mandatory       | none              | alpha numeric values with the RegEx  `[a-z0-9]([-a-z0-9]*[a-z0-9])`; a hyphen/dash is allowed as a special character      total length of the string should be less than or equal to 48 characters      names of cluster & depot have a different RegEx  `[a-z]([a-z0-9]*)`; a hyphen/dash is **not** allowed as a special character |
 
-**Additional information:** Two resources in the same workspace cannot have the same name.
 
 **Example usage:**
 
@@ -77,12 +76,12 @@ name: resourcename
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value**           |
 | ------------- | --------------- | ----------------- | ---------------------------- |
-| string        | mandatory       | none              | v1, v1beta, v1alpha, v2alpha |
+| string        | mandatory       | none              | v1, v2alpha                  |
 
 **Example usage:**
 
 ```bash
-version: v1
+version: v2alpha
 ```
 
 ### **`type`**
@@ -96,7 +95,7 @@ version: v1
 **Example usage:**
 
 ```yaml
-type: instance-secret
+type: depot
 ```
 
 ### **`tags`**
