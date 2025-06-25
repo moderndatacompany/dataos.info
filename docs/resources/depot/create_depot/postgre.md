@@ -56,16 +56,16 @@ version: v2alpha
 type: depot
 layer: user
 depot:
-    type: JDBC                  
-    description: ${{To write data to postgresql database}}
-    external: ${{true}}
-    secrets:
+  type: JDBC                  
+  description: ${{To write data to postgresql database}}
+  external: ${{true}}
+  secrets:
     - name: ${{sf-instance-secret-name}}-r
         allkeys: true
 
     - name: ${{sf-instance-secret-name}}-rw
         allkeys: true
-    postgresql:                        
+  postgresql:                        
     subprotocol: "postgresql"
     host: ${{host}}
     port: ${{port}}
@@ -89,16 +89,16 @@ tags:
 owner: ${{owner-name}}
 layer: user
 Depot:
-    type: POSTGRESQL
-    description: ${{description}}
-    external: true
-    secrets:
+  type: POSTGRESQL
+  description: ${{description}}
+  external: true
+  secrets:
     - name: ${{instance-secret-name}}-r
         allkeys: true
 
     - name: ${{instance-secret-name}}-rw
         allkeys: true
-    postgresql:                                          
+  postgresql:                                          
     host: ${{host}}
     port: ${{port}}
     database: ${{database-name}}
