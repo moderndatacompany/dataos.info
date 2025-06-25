@@ -24,7 +24,7 @@ The semantic model can be integrated with Power BI using the following ways:
 
 ### **Prerequisites**
 
-- **Power BI Desktop version:** Use [Power BI Desktop](https://powerbi.microsoft.com/desktop) version `2.132.908.0` or later (version released after June 15, 2023).
+- **Power BI Desktop version:** Use [Power BI Desktop](https://powerbi.microsoft.com/desktop) version `2.132.908.0` or later (version released after August 2024).
 
 - **DataOS username:** Go to the DPH page > Click the Profile icon (bottom-left) > Select your Name/Email > On the Profile page, copy the ‘Id’—this will be used as your DataOS username.
 
@@ -283,4 +283,182 @@ This approach ensures that users only see the data they are authorized to view, 
 <aside class="callout">
   To publish the Power BI Reports to the Power BI Service, please refer to <a href="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/">this link</a>.
 </aside>
+
+## FAQs
+
+**1. What are the version compatibility requirements for Power BI Desktop integration?**
+
+Power BI Desktop version 2.132.908.0 (released in August 2024) or later must be used for .pbip support without requiring preview settings. Additionally, Microsoft Power BI is primarily designed to run on Windows operating systems.
+
+**2. How do you get started with the Power BI Desktop?**
+
+To begin using Power BI Desktop:
+
+- Download the Power BI ZIP folder from Data Product Hub (DPH) and extract it.
+
+- Open the .pbip file from the extracted folder using the Power BI Desktop application.
+
+- When prompted, provide your DataOS username and API token to connect to the data source.
+
+- After successful authentication, you can start querying the semantic model and building reports.
+
+**3. How does governance work in Power BI Desktop?**
+
+**Access Management (User Permissions)**
+
+Power BI Desktop users must provide their DataOS credentials (username and API token) when connecting to data sources. Upon successful authentication, they can begin developing reports within the Desktop environment.
+
+**Data Governance (Row-Level, Column-Level Policies)**
+Data policies such as redaction and access control are enforced based on the identity of the user who registered the data source. These policies govern access at both the row and column levels.
+
+**4. What different data types are supported?**
+
+**Supported Data Types**
+
+| Category | Data Type | Support Status | Workaround |
+|----------|-----------|----------------|------------|
+| Dimension | Time, String, Number, Boolean | Supported | N/A |
+| Measure | Max, Min, Number, Sum, Count, Boolean, String, Time, Avg, Count_distinct | Supported | N/A |
+| Measure | Count_distinct_approx | Not Supported (Known Issue) | N/A |
+| Rolling Window | - | Not Supported (Power BI does not support) | - |
+
+
+**Limitations**
+
+Due to limitations in Power BI’s DirectQuery mode, rolling window measures cannot be queried. This is because DirectQuery does not support date hierarchies, making it impossible to offer time-based granularity required for rolling window logic.
+
+**Points to Note**
+
+When creating cross-table queries, always select fields from logically related tables. Transitive joins are not auto-recognized by Power BI, and querying unrelated tables can yield incorrect results.
+
+**5. How does model update work?**
+
+If there are any schema changes in the semantic model, the model must be re-synced with Power BI. Re-downloading the Power BI project folder and opening the .pbip file without proper steps can cause previously created reports to be lost.
+
+To safely update the model without losing existing reports:
+
+- Download the new semantic model from Data Product Hub.
+
+- Replace only the model.bim file in your current Power BI project’s SemanticModel folder with the updated model.bim from the newly downloaded folder.
+
+**6. Where does semantic modeling occur, and how does semantic model syncing to Power BI in DataOS differ from other use cases?**
+
+**Semantic Model in BI Tools**
+
+Semantic models built within BI tools like Power BI or Tableau allow for agile, team-specific dashboarding and metric development. However, this results in inconsistent definitions, semantic sprawl, and reduced trust as organizations scale.
+
+**Best suited for:**
+
+Teams engaged in frequent ad-hoc analysis and non-centralized metric definition.
+
+**Limitations:**
+
+- Duplicate modeling across teams.
+
+- Platform-specific metric definitions.
+
+- Proficiency in DAX and Power Query required.
+
+- No native versioning support.
+
+**Universal Semantic Layer**
+
+Acts as a central bridge between raw data (e.g., warehouses or lakehouses) and analytics consumers. It standardizes metric and dimension definitions across tools, fostering trust and reuse.
+
+**Best suited for:**
+
+Organizations prioritizing governance and consistent analytics definitions.
+
+**Limitations:**
+
+- All logic must be defined in Lens.
+
+- Custom dimensions and measures cannot be created in Power BI directly.
+
+- Lens modeling expertise is necessary.
+
+**Modeling at the Warehouse/Lakehouse Level**
+
+Semantic logic is embedded within transformation pipelines, producing physically modeled data for specific use cases. However, this leads to redundancy and higher maintenance.
+
+**Best suited for:**
+
+- High-volume processing and complex transformation needs.
+
+- Modifications often require table recreations.
+
+- Increased data sprawl and complexity.
+
+**7. How does Power BI sync work when syncing model-first data products?**
+
+- The Power BI Developer downloads the project folder containing the semantic model and .pbip file.
+
+- The .pbip file is launched in Power BI Desktop.
+
+- Authentication is performed using DataOS credentials (User ID and API Token) via DirectQuery on port 6432.
+
+- Queries triggered in Power BI are routed through the Postern service to the PgSQL API layer.
+
+- The API forwards the request to Lens, which translates it into native SQL and queries the data source.
+
+- The response flows back to Power BI Desktop for visual creation.
+
+**8. What connection mode does Power BI use to connect to DataOS when working with a model-first data product?**
+
+Power BI connects to DataOS using DirectQuery mode via the Postern service. When a visual is created, Power BI directly queries the underlying data source, and visual refresh time depends on source performance.
+
+**9. Where does the computation happen for the Power BI semantic model sync?**
+
+Computation occurs in two layers:
+
+- Within DataOS: Lens translates semantic model queries into native SQL.
+
+- Within Data Source: Actual data retrieval and computation are performed.
+
+**10. What data sources are supported to sync model-first data products to Power BI?**
+
+All data sources compatible with Lens can be synced to Power BI.
+
+<!-- For direct connection:
+
+**Integrating DataOS Lakehouse with Power BI Via DataOS REST API Connector**
+
+- Install the custom connector and visualize catalog tables in Power BI. Data is retrieved via the Minerva cluster. Installation guide [here](/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/#integrating-dataos-lakehouse-with-power-bi-via-dataos-rest-api-connector).
+
+- Via Presto ODBC Driver (requires paid license) -->
+
+
+**11. Is custom measure and dimension creation supported for model-first data products in Power BI?**
+
+No. All measures and dimensions must be defined in Lens. Power BI does not support custom calculation creation when using model-first products. For flexible use cases, integration with the Lakehouse is recommended. More info.
+
+**12. What are the known limitations when syncing model-first data products to Power BI?**
+
+- **Direct Publishing:** Not supported. Manual download and update are required for model changes.
+
+- **On-Premises Gateway Dependency:**
+
+    - Required to connect PostgreSQL-based semantic models.
+
+    - Must configure gateway with Npgsql driver.
+
+- **Special Characters:** Limited support in Power BI. Such characters must be handled in raw data or during semantic modeling.
+
+**13. How can percentage formatting be enforced in Power BI visuals?**
+
+Power BI allows format enforcement through its UI.
+
+- **For Columns:** Select the column, go to Column Tools → Formatting → Set to "Percentage".
+
+- **For Measures:** Select the measure, go to Measure Tools → Formatting → Choose "Percentage".
+
+
+**14. How is dashboard data freshness maintained in Power BI using DirectQuery?**
+
+DirectQuery ensures real-time querying from the data source, requiring no scheduled refresh. However, to ensure uninterrupted access, source-level monitoring of pipelines or jobs should be configured.
+
+<aside class="callout">
+🗣️ Any changes to the semantic model require re-publishing to Power BI to reflect updates.
+</aside>
+
 
