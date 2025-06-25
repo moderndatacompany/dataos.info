@@ -18,18 +18,26 @@ A data developer must be familiar with how the Go text templates are defined, as
 
 The below points outline the high-level steps involved in the creation of a custom Stack Resource within the DataOS instance.
 
-1. [Define the Stack image](#definition-of-stack-image)
-2. [Create a Stack YAML manifest](#creation-of-stack-manifest)
-    <br>a. [Configure the Resource meta section](#configure-the-resource-meta-section)
-    <br>b. [Configure the Stack-specific section](#configure-the-stack-specific-section)
-3. [Apply the Stack YAML manifest](#apply-the-stack-yaml)
+- [How to create your own Stack?](#how-to-create-your-own-stack)
+  - [Prerequisites](#prerequisites)
+    - [**Understanding of Docker and Kubernetes**](#understanding-of-docker-and-kubernetes)
+    - [**JSON Schema Proficiency**](#json-schema-proficiency)
+    - [**Go Text Templates Proficiency**](#go-text-templates-proficiency)
+  - [Building a Stack](#building-a-stack)
+    - [**Definition of Stack Image**](#definition-of-stack-image)
+    - [**Creation of Stack YAML manifest**](#creation-of-stack-yaml-manifest)
+      - [**Configure the Resource meta section**](#configure-the-resource-meta-section)
+      - [**Configure the Stack-specific section**](#configure-the-stack-specific-section)
+    - [**Apply the Stack YAML manifest**](#apply-the-stack-yaml-manifest)
+    - [**Verify Stack creation**](#verify-stack-creation)
+  - [Attributes of Stack YAML manifest](#attributes-of-stack-yaml-manifest)
 
 ### **Definition of Stack Image**
 
 The initial and primary phase in the creation of a new Stack involves the development of its code. The Stack image serves as a comprehensive representation of all the functionalities and capabilities inherent in the Stack, along with delineating its interaction dynamics with its orchestrating Resource.
 
 <aside class="best-practice">
-🗣 <b>Best Practice:</b> When crafting a customized Stack, it is advisable to assess the basic functionality of the Stack by testing its vanilla image on the <a href="/resources/stacks/container/">Alpha</a> Stack.
+🗣 <b>Best Practice:</b> When crafting a customized Stack, it is advisable to assess the basic functionality of the Stack by testing its vanilla image on the <a href="/resources/stacks/container/">Container</a> Stack.
 
 </aside>
 

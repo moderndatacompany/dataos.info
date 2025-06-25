@@ -34,12 +34,17 @@ Only the following column data types are supported
 | decimal | Fixed-point decimal; precision P, scale S | Scale is fixed, [1], precision must be 38 or less |
 | date | Calendar date without timezone or time |  |
 | time | Time of day without date, timezone | Microsecond precision  |
-| timestamp | Timestamp without timezone | Microsecond precision [2] |
-| timestamptz | Timestamp with timezone | Stored as UTC [2] |
+| timestamp_without_zone | Date and time (YYYY-MM-DD HH:MM:SS) with no timezone | Microsecond precision |
+| timestamp_with_zone | Timestamp with timezone awareness | Stored in UTC; timezone info is normalized internally |
 | string | Arbitrary-length character sequences | Encoded with UTF-8 [3] |
 | uuid | Universally unique identifiers | Should use 16-byte fixed |
 | fixed(L) | Fixed-length byte array of length L |  |
 | binary | Arbitrary-length byte array |  |
+
+<aside class=callout>
+🗣 The `time` data type is not supported in the Themis cluster.
+</aside>
+
 
 Initial Schema observed in Workbench
 
@@ -99,7 +104,7 @@ dataos-ctl dataset -a dataos://icebase:retail/city drop-field \
 
 <!-- ![Schema Evolution 3](./case_scenario_schema_evolution/2.png) -->
 
-Let’s remove column `new1` from the city dataset. Execute the following code in the terminal
+Let's remove column `new1` from the city dataset. Execute the following code in the terminal
 
 ```shell
 dataos-ctl dataset -a dataos://icebase:retail/city drop-field \
