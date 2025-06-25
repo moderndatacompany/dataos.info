@@ -26,11 +26,14 @@ The semantic model can be integrated with Power BI using the following ways:
 
 - **Power BI Desktop version:** Use [Power BI Desktop](https://powerbi.microsoft.com/desktop) version `2.132.908.0` or later (version released after August 2024).
 
+- **DataOS username:** Go to the DPH page > Click the Profile icon (bottom-left) > Select your Name/Email > On the Profile page, copy the ‘Id’—this will be used as your DataOS username.
+
 - **DataOS API Key:** Obtain your key from DPH Page > Profile Icon (bottom-left) > Name/Email > Tokens Tab.
 
     - If no API key is listed, click **`+Add API Key`**, provide a name for the token, and set an expiration duration (e.g., 24h or a specific date).
 
     - Once the key appears, click the eye icon to reveal it, then click the API key to copy.
+  
 
 Follow the below steps to integrate semantic model with Power BI using Data Product Hub:
 
