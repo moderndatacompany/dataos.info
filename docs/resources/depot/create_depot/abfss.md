@@ -29,9 +29,9 @@ To create an ABFSS Depot you must have the following details:
 
 - **Container**: The name of the container within the Azure storage account that holds your data. You can find this information in the Azure portal under the "Containers" section of your storage account, or it can be provided by your Azure administrator.
 
-- **Relative Path**: The relative path to the specific data within the container. This path is relative to the root of the container and can be provided by the person managing the data stored in the container or found by navigating through the container in Azure Blob Storage.
+- **Relative Path (`relativePath`)**: The relative path to the specific data within the container. This path is relative to the root of the container and can be provided by the person managing the data stored in the container or found by navigating through the container in Azure Blob Storage.
 
-- **Data Format Stored in the Container**: The format of the data stored in the container (e.g., Parquet, CSV, JSON). This should be specified during data storage and can be verified by reviewing the data files or by asking the administrator managing the data.
+- **Data format (`format`)**: `format` specifies the type of table format used to store the data in the container. Common values are 'ICEBERG' or 'DELTA', depending on how the data is organized.
 
 ## Create an ABFSS Depot
 
@@ -64,14 +64,13 @@ depot:
   secrets:
     - name: ${{abfss-instance-secret-name}}-r
       allkeys: true
-
     - name: ${{abfss-instance-secret-name}}-rw
       allkeys: true
   abfss:                                             
     account: ${{account-name}}
     container: ${{container-name}}
     relativePath: ${{relative-path}}
-    format: ${{format}}
+    format: ${{format}} # ICEBERG or DELTA
 ```
 
 To get the details of each attribute, please refer [to this link](/resources/depot/configurations).
@@ -140,28 +139,14 @@ By executing the above command, the specified Depot will be deleted from your Da
 
 ## Limit the data source's file format
 
-Another important function that a Depot can play is to limit the file type that can read from and write to a particular data source. In the `spec` section of the config file, simply mention the `format` of the files you want to allow access to.
-
-```yaml
-depot:
-  type: S3
-  description: $${{description}}
-  external: true
-  spec:
-    scheme: $${{s3a}}
-    bucket: $${{bucket-name}}
-    relativePath: "raw" 
-    format: $${{format}}  # mention the file format, such as JSON
-```
-
-For file-based systems, if you define the format as ‘Iceberg’, you can choose the meta-store catalog between Hadoop and Hive. This is how you do it:
+Another important function that a Depot can play is to limit the file type that can read from and write to a particular data source. In the `abfss` section of the config file, simply mention the `format` of the files you want to allow access to. For file-based systems, if you define the format as ‘Iceberg’, you can choose the meta-store catalog between Hadoop and Hive. This is how you do it:
 
 ```yaml
 depot:
   type: ABFSS
   description: "ABFSS Iceberg Depot for sanity"
   compute: runnable-default
-  spec:
+  abfss:
     account: 
     container: 
     relativePath:
