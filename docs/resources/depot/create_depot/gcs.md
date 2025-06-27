@@ -34,6 +34,12 @@ To create a GCS Depot you must have the following details:
 
 - **GCS Key**: The JSON key file associated with the Google Cloud service account used for authentication. You can download this key by going to the IAM & Admin \> Service Accounts section in the Google Cloud Console, selecting the service account, and clicking "Add Key" \> "JSON".
 
+- **Data format (`format`)**: `format` specifies the type of table format used to store the data in the container. Common values are 'ICEBERG' or 'DELTA', depending on how the data is organized.
+
+- **Iceberg Catalog Type (`icebergCatalogType`)**: (Optional) Specifies the type of Iceberg catalog to use when the format is set to 'ICEBERG'. This parameter is only required when working with Iceberg-formatted data and you need to specify a custom catalog type.
+
+- **Metastore URL (`metastoreUrl`)**: (Optional) The URL of the metastore service that manages metadata for Iceberg tables. This parameter is only required when using Iceberg format and you need to connect to an external metastore for metadata management.
+
 ## Create a GCS Depot
 
 DataOS provides the capability to connect to Google Cloud Storage data using Depot. To create a Depot of Google Cloud Storage follow the below steps:
@@ -58,19 +64,23 @@ tags:
     - ${{Sanity}}
 layer: user
 depot:
-    type: GCS
-    description: ${{"GCS depot for sanity"}}
-    compute: ${{runnable-default}}
-    gcs:
-    bucket: ${{"airbyte-minio-testing"}}
-    relativePath: ${{"/sanity"}}
-    external: ${{true}}
-    secrets:
+  type: GCS
+  description: ${{"GCS depot for sanity"}}
+  compute: ${{runnable-default}}
+  external: ${{true}}
+  secrets:
     - name: ${{gcs-instance-secret-name}}-r
-        allkeys: true
+      allkeys: true
 
     - name: ${{gcs-instance-secret-name}}-rw
-        allkeys: true
+      allkeys: true  
+  gcs:
+    bucket: ${{"airbyte-minio-testing"}}
+    relativePath: ${{"/sanity"}}
+    format: ${{ICEBERG}}
+    icebergCatalogType: ${{}}
+    metastoreUrl: ${{}}
+
 ```
 To get the details of each attribute, please refer [to this link](/resources/depot/configurations).
 
@@ -109,7 +119,7 @@ To ensure that your Depot has been successfully created, you can verify it in tw
     dataos-ctl get -t depot -a
     ```
 
-You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
+You can also access the details of any created Depot through the DataOS GUI in the [Operations App](https://dataos.info/interfaces/operations/) and [Metis UI](https://dataos.info/interfaces/metis/).
 
 ## Delete a Depot
 
