@@ -1,0 +1,33 @@
+name: fastfun-worker # Name of the Worker Resource
+version: v1beta # Manifest Version of the Worker Resource
+type: worker # Type of Resource
+tags: # Tags for categorization
+  - worker
+  - fastfun
+description: This is a worker for sinking gateway events from pulsar to icebase # Description of the worker
+worker:
+  replicas: 1 # Number of replicas
+  tags: # Additional tags
+    - workflow
+    - metadata
+  stack: fastfun+alpha:1.0 # Stack version
+  logLevel: INFO # Log level
+  compute: runnable-default # Compute configuration
+  stackSpec:
+    input:
+      datasets:
+        - dataos://systemstreams:poros/workflows # Input topic udl address
+      options:
+        cleanupSubscription: ${true} # Cleanup subscription option
+        processingGuarantees: ATLEAST_ONCE # Processing guarantees
+        subscriptionPosition: LATEST # Subscription position
+    output:
+      datasets:
+        - dataos://icebase:sys01/workflowmetadata2?acl=rw # Output dataset udl address
+      options:
+        commitInterval: "30" # Commit interval
+        iceberg:
+          properties:
+            write.format.default: parquet # Write format
+            write.metadata.compression-codec: gzip # Metadata compression codec
+        recordsPerCommit: "100000" # Records per commit

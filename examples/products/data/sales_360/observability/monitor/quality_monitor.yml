@@ -1,0 +1,52 @@
+name: soda-checks-alerts
+version: v1alpha
+type: monitor
+tags:
+  - dataos:type:resource
+  - dataos:layer:user
+description: Alerts ..! recent quality check has resulted in a failure due to ambiguities found in the data. It appears there are inconsistencies or inaccuracies that require your immediate attention. To ensure the integrity and reliability of the data,Your prompt action in addressing these discrepancies will greatly assist us in maintaining the highest standards of quality.
+layer: user
+monitor:
+  schedule: '*/30 * * * *'
+  type: equation_monitor
+  equation:
+    leftExpression:
+      queryCoefficient: 1
+      queryConstant: 0
+      query:
+        type: trino 
+        cluster: system
+        ql: 
+          WITH cte AS (
+            SELECT
+              CASE
+                WHEN check_outcome = 'fail' THEN 0
+                ELSE NULL
+              END AS result,
+              timestamp
+            FROM
+              icebase.sys01.soda_quality_checks
+            WHERE
+              collection = 'financial_data_companies'
+              AND dataset IN (
+                'company_enriched_data_01',
+                'company_details_master'
+              )
+              and check_definition = 'duplicate_count(d_u_n_s) = 0'
+              AND from_iso8601_timestamp(timestamp) >= (CURRENT_TIMESTAMP - INTERVAL '30' MINUTE)
+          )
+          SELECT
+            DISTINCT result
+          FROM
+            cte
+          WHERE
+            result IS NOT NULL
+  
+    rightExpression:
+      queryCoefficient: 1
+      queryConstant: 0
+    operator: equals
+  incident:
+    name: soda-check-fail
+    severity: high
+    incident_type: soda-quality
