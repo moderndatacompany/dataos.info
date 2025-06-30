@@ -39,7 +39,7 @@ The interface consists of three panels:
 - **Top-right**: View the transformed output.
 
 
-## Your first assignment
+## First assignment
 
 The primary function of a Bloblang mapping is to generate a new document using an input document as a reference. This is achieved through a series of assignments. Bloblang is primarily used for mapping JSON documents, which will be the focus of this walkthrough.
 
@@ -275,7 +275,30 @@ root.pet.treats = if this.pet.is_cute {
 }
 ```
 
-This is possible because field deletions are expressed as assigned values created with the [`deleted()` function](/resources/stacks/bento/bloblang/functions). This is cool but also in poor taste, treats should be allocated based on need, not cuteness!
+This is possible because field deletions are expressed as assigned values created with the [`deleted()` function](/resources/stacks/bento/bloblang/functions).
+
+### **If Statement**
+
+The `if` keyword can also be used as a statement in order to conditionally apply a series of mapping assignments, the previous example can be rewritten as:
+
+```go
+root = this
+if this.pet.is_cute {
+  root.pet.treats = this.pet.treats + 10
+} else {
+  root.pet.treats = deleted()
+}
+```
+
+Converting this mapping to use a statement has resulted in a more verbose mapping as we had to specify `root.pet.treats` multiple times as an assignment target. However, using `if` as a statement can be beneficial when multiple assignments rely on the same logic:
+
+```go
+root = this
+if this.pet.is_cute {
+  root.pet.treats = this.pet.treats + 10
+  root.pet.toys = this.pet.toys + 10
+}
+```
 
 ### **Match Expression**
 
@@ -351,9 +374,9 @@ To proceed safely despite errors, the [`catch` method](/resources/stacks/bento/b
 root.in_trouble = (this.angry_peasants > this.palace_guards).catch(true)
 ```
 
-Now instead of an error we should see an output with in_trouble set to true. Try changing to value of angry_peasants to a few different values, including some numbers.
+Instead of returning an error, the output now includes the field `in_trouble` set to true. Modify the value of angry_peasants to test various inputs, including numeric values, to observe different output behaviors.
 
-One of the powerful features of catch is that when it is added at the end of a series of expressions and methods it will capture errors at any part of the series, allowing you to capture errors at any granularity. For example, the mapping:
+One of the powerful features of catch is that when it is added at the end of a series of expressions and methods it will capture errors at any part of the series, which allows to capture errors at any granularity. For example, the mapping:
 
 ```go
 root.abort_mission = if this.mission.type == "impossible" {
@@ -365,9 +388,9 @@ root.abort_mission = if this.mission.type == "impossible" {
 
 Will catch errors caused by:
 
-- this.mission.type not being a string
-- this.user.motives not being an array
-- this.mission.difficulty not being a number
+- `this.mission.type` not being a string
+- `this.user.motives` not being an array
+- `this.mission.difficulty` not being a number
 
 But will always return false if any of those errors occur. Try it out with this input and play around by breaking some of the fields:
 
@@ -444,7 +467,7 @@ However, the "context" can change depending on the mapping structure. This has a
 root = this.foo.bar.(this.baz + this.buz)
 ```
 
-Within the bracketed query expression the context becomes the result of the query that it's a method of, so within the brackets in the above mapping the value of this points to the result of this.foo.bar, and the mapping is therefore equivalent to:
+Within the bracketed query expression the context becomes the result of the query that it's a method of, so within the brackets in the above mapping the value of this points to the result of `this.foo.bar`, and the mapping is therefore equivalent to:
 
 ```go
 root = this.foo.bar.baz + this.foo.bar.buz
