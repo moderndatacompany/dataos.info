@@ -265,7 +265,7 @@ root.new_doc = match {
 # Out: {"doc":{"type":"neither","content":"some other stuff unchanged"}}
 ```
 
-If no case matches then the mapping is skipped entirely, hence we would end up with the original document in this case.
+If no case matches then the mapping is skipped entirely, which result in the original document in this case.
 
 ## Functions
 
