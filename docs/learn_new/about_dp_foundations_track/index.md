@@ -5,9 +5,9 @@ Your starting point for building smart, reliable Data Products in DataOS.
 This track is designed for anyone new to DataOS or just getting started with the concept of data product development. It introduces the foundational concepts, tools, and workflows you’ll use to build and manage Data Products with confidence.
 
 
-## Who Should Take This Track?
+## Who should take this track?
 
-The Data Product Foundations course is ideal for the following learner personas:
+The 'Data Product Foundations' course is ideal for the following learner personas:
 
 | Persona & Description                                                                 | Why It Matters                                                                                      | Level        |
 |----------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|--------------|
@@ -46,7 +46,7 @@ Build your first Data Product using raw source system data. Learn how to connect
 | 6   | **Set Up Monitors & Pagers**         | Set up monitoring and alerting to track failures and ensure visibility into data issues.                                                                                               | - Creating Monitors for workflow and Soda failures<br>- Setting up Pagers with email/webhook alerts<br>- Validating alerts                        |
 | 7   | **Build and Deploy Your First Source-aligned Data Product** | Package and deploy your Data Product by bundling all resources, defining the spec, and registering it in the Data Product Hub and Metis.                 | - Creating a bundle.yaml<br>- Writing the Data Product specification<br>- Deploying and registering the Data Product                              |
 
-## ✅ Start Learning 
+### ✅ **Start learning** 
 
 :rocket: [Start this course here](/learn_new/dp_foundations1_learn_track/) 
 
@@ -69,6 +69,6 @@ Take it further by designing a product tailored for business consumption—featu
 | 7   | **Deploy and Register Data Product** | Package and register the complete data product so it’s discoverable in Data Product Hub and Metis.                                                     | - Create bundle.yaml<br>- Write the product spec<br>- Deploy and register the Data Product                                                               |
 
 
-## ✅ Start Learning 
+### ✅ **Start learning** 
 
 :rocket: [Start this course here](/learn_new/dp_foundations2_learn_track/)
