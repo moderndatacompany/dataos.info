@@ -2,7 +2,7 @@
 
 In this topic, you’ll learn how to establish secure connections from DataOS to your external data sources using Depots—without moving any data. 
 
-## Scenario
+## 📘 Scenario
 
 Imagine you are a DataOS Operator or Data Product Developer and you need to integrate various data sources within DataOS. For this example, the data for your use case is stored in PostgreSQL and Azure BLOB Storage.
 
@@ -66,6 +66,53 @@ dataos-ctl resource apply -f /path/to/instance_secret.yml
 
 This step ensures that the database credentials are securely stored and ready for use in the next step.
 
+🎯 **Your actions:** 
+
+1. **Postgres credentials required:** Make sure you have the username and password. If not, contact your DevOps team.
+2. Create your secrets using the given templates and save them securely.
+3. Create separate secrets for access level ‘r’ and ‘rw’.
+4. Follow the naming convention for Instance secrets- `depotname-r` and `depotname-rw`.
+5. Apply the YAMLs using `dataos-ctl apply` command.
+6. Open the Operations app to verify the successful creation of your resource by checking the status. The Operations app provides a centralized view of all your resources, allowing you to monitor their statuses and ensure they are functioning as intended.
+    ![resource_in_operations.png](/learn_new/dp_foundations1_learn_track/data_source_connectivity/setting_up_depots/resource_in_operations.png)
+
+<details><summary>Postgres-read-only Instance Secret YAML</summary>
+
+```yaml
+# Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
+name: postgresxx-r   # Instance name convention- {{depotname}}-{{acl}}
+version: v1
+type: instance-secret
+description: Read-only secret for Postgres database
+layer: user
+instance-secret:
+  type: key-value-properties
+  acl: r
+  data:
+    username: <your-username>
+    password: <your-password>
+```
+
+</details>
+
+<details><summary>Postgres-read-write Instance Secret YAML</summary>
+
+```yaml
+# Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
+name: postgresxx-rw      # Instance name convention- {{depotname}}-{{acl}}
+version: v1
+type: instance-secret
+description: Read-write secret for Postgres database
+layer: user
+instance-secret:
+  type: key-value-properties
+  acl: rw
+  data:
+    username: <your-username>
+    password: <your-password>
+```
+
+</details>
 <aside class="callout">
 🗣 If you don’t have the necessary credentials, contact your administrator. They will create the instance secret for you and provide its details, which you can then reference in the Depot.
 </aside>
@@ -73,8 +120,6 @@ This step ensures that the database credentials are securely stored and ready fo
 ### **Step 2: Create a Depot manifest file**
 
 Now link your secret to a Depot that defines the database connection.
-
-**Depot manifest**
 
 ```yaml
 # PostgreSQL Depot Manifest
@@ -114,7 +159,7 @@ dataos-ctl resource apply -f <filename with path>
 ```
 ---
 
-### **Step 4: Verify the Connection**
+### **Step 4: Verify the connection**
 
 Run this to confirm the Depot is live and connected:
 
@@ -126,56 +171,53 @@ This command displays the details of the configured Depot, confirming that it is
 
 ---
 
-<aside>
-Ensure that the name of your Instance secret is ${depot-name}-${acl}. For instance, if your Depot name is postgres and the acl(access control list) is rw, then the instance secret name will be postgres-rw.
+<aside class="callout">
+🗣 Ensure that the name of your Instance secret is ${depot-name}-${acl}. For instance, if your Depot name is postgres and the acl(access control list) is rw, then the instance secret name will be postgres-rw.
 </aside>
+
+🎯 **Your Actions:** 
+
+1. **Ensure you have Postgres connection details**: Hostname, port, database, etc. Contact your DevOps team if needed.
+2. Refer to instance secrets (created in the previous step) in the depot yaml.
+3. Apply the yaml file using `dataos-ctl apply` command.
+
+<details><summary>Postgres Depot YAML</summary>
+
+```yaml
+# Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
+name: postgresxx
+version: v2alpha
+type: depot
+layer: user
+depot:
+  type: jdbc
+  description: Default Postgres depot
+  external: true
+  secrets:
+    - name: postgresxx-rw
+      keys:
+        - postgresxx-rw
+      allkeys: true
+    - name: postgresxx-r
+      keys:
+        - postgresxx-r
+      allkeys: true
+  jdbc:
+    subprotocol: postgresql
+    host: <your-host>            # Enter host name
+    port: 5432
+    database: <databasename>     # Enter database name
+```
+</details>
 
 To simplify the creation of depots for commonly used data sources, a set of pre-defined manifest [templates](/resources/depot/#templates-of-depot-for-different-source-systems) is available. These templates provide a quick starting point for setting up depots for popular data sources.
 
 To use these templates, you must fill in the key-value properties in the manifest file with the specific details of your data source. The required values will vary depending on the data source. A basic understanding of your organization's data infrastructure, as well as the necessary credentials or connection details, is essential for configuring these templates effectively.
 
-Similarly you can create a Depot for Azure using Instance-secret:
-??? "Click to see Azure Depot manifest"
+<aside class="callout">
+🗣 For this training, the  **Azure ABFSS Depot** named **`thirdparty`** has already been created. Please open the Operations app to confirm its existence.
 
-    ```yaml
-    name: thirdparty
-    version: v1
-    type: depot
-    tags:
-      - dataos:type:resource
-      - dataos:type:cluster-resource
-      - dataos:resource:depot
-      - dataos:layer:user
-    description: Default Third Party Depot for new
-    owner: {{owner}}
-    layer: user
-    depot:
-      name: thirdparty
-      type: ABFSS
-      owner: 
-      description: Default Third Party Depot for new
-      secrets:
-            - name: thirdparty-rw
-              keys:
-              - thirdparty-rw
-            - name: thirdparty-r
-              keys:
-              - thirdparty-r
-      external: true
-      compute: query-default
-      resources:
-        requests:
-          cpu: 100m
-          memory: 550Mi
-        limits:
-          cpu: 1000m
-          memory: 1500Mi
-      spec:
-        account: mockdataos
-        container: dropzone001
-        relativePath: large_dataset_20200511
-      source: thirdparty
-    ```
+</aside>
 
 ---
 

@@ -1,14 +1,9 @@
 # Build Workflows for Transformed Output Datasets
 
 
-You’ve already transformed raw, unstructured data from Azure Blob into structured tables in Postgres during the first part of the learning path. Now, your next challenge is to derive actionable insights from this structured data—insights that sales and marketing teams can consume.
+You’ve already transformed raw, unstructured data from Azure Blob into structured tables in Postgres during the first part of the foundations learning path. Now, your next challenge is to derive actionable insights from this structured data— insights that sales and marketing teams can consume.
 
 In this step, we’ll build Flare workflows to ingest and transform data into two strategic outputs. These workflows demonstrate complex SQL logic and joins, and also show how you can support analytics to drive business decisions by providing enriched datasets as output.
-
-<aside class="callout">
-🗣 
-Some steps in this module require permissions typically granted to DataOS Operators. Hence, before diving into building data pipelines, you need to ensure you have the `Operator` tag. Contact the training team for assistance.
-</aside>
 
 ---
 
@@ -24,9 +19,14 @@ To meet this need, you’ll create two output datasets from the curated source d
 
 ---
 
+<aside class="callout">
+🗣 
+Some steps in this module require permissions typically granted to DataOS Operators. Hence, before diving into building data pipelines, you need to ensure you have the `Operator` tag. Contact the training team for assistance.
+</aside>
+
 ## Step 1: Create Flare Workflows
 
-You’ll build two Flare workflows in this step—one for each output dataset. These workflows will read from your structured Postgres tables and write the results into Lakehouse for scalable downstream access.
+You’ll build two Flare workflows in this step— one for each output dataset. These workflows will read from your structured Postgres tables and write the results into Lakehouse for scalable downstream access.
 
 <aside class="callout">
 
@@ -115,11 +115,13 @@ Analyzes co-purchase patterns between product categories to identify cross-categ
                         #     name: day
 
     ```
+
     
 ### **Creating cross-sell recommendations output**
+
 Segments customers by risk and maps them to personalized product pairings.
 
-??? example "Show YAML Template"
+??? "Show YAML Template"
     ```yaml
     # Important: Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
     version: v1  # v1
@@ -194,53 +196,57 @@ Segments customers by risk and maps them to personalized product pairings.
 
 <aside class="callout">
 🗣 
-For this example, the **`lakehouse`** depot has already been created in the training instance. Please open the Operations app to confirm its existence.
+For this example, the `lakehouse` depot has already been created in the training instance. Please open the Operations app to confirm its existence.
 </aside>
 
-## Your Actions
+## 🎯 Your actions
 
-1. **Review Workflow Templates**
+1. Review Workflow Templates
 
-Use the provided YAML templates for both **affinity** and **recommendation** outputs. Review the UDL properties, inputs, and outputs before deployment.
+    Use the provided YAML templates for both **affinity** and **recommendation** outputs. Review the UDL properties, inputs, and outputs before deployment.
 
 2. Customize the SQL Logic
 
-Adapt the transformation SQL to align with your business logic (e.g., segmentation thresholds, product mappings).
+    Adapt the transformation SQL to align with your business logic (e.g., segmentation thresholds, product mappings).
 
 3. Create a Workspace (if needed) 
 
-Create a workspace using the following command:
+    Create a workspace using the following command:
 
-```bash
-dataos-ctl workspace create -n <workspace-name>
-```
+    ```bash
+    dataos-ctl workspace create -n <workspace-name>
+    ```
+
 4. Deploy Your Workflow
 
-```bash
+    ```bash
 
-dataos-ctl apply -f <workflow-file.yaml> -w <workspace-name>
-```
+    dataos-ctl apply -f <workflow-file.yaml> -w <workspace-name>
+    ```
+
 5. Monitor Execution in Operations App
-Use the Operations app to monitor logs and ensure successful execution.
+    
+    Use the Operations app to monitor logs and ensure successful execution.
 
-6. Verify Output in Workbench
-Open Workbench, and explore the generated datasets under:
+6. Verify output in Workbench
+   
+   Open Workbench, and explore the generated datasets under:
 
-lakehouse → crm_data → product_affinity_matrix  
-lakehouse → crm_data → cross_sell_recommendations
+    lakehouse → crm_data → product_affinity_matrix  
+    lakehouse → crm_data → cross_sell_recommendations
 
-## ✅ Checklist Before Moving On
+## Checklist before moving on
 
-- [] Flare workflows created and deployed using `dataos-ctl`  
-- [] Jobs executed successfully (verified in Operations app)  
-- [] Datasets verified in Workbench  
-- [] Outputs match expected schema and business logic  
+- ✅ Flare workflows created and deployed using `dataos-ctl`  
+- ✅ Jobs executed successfully (verified in Operations app)  
+- ✅ Datasets verified in Workbench  
+- ✅ Outputs match expected schema and business logic  
 
 ---
 
-## What’s Next?
+## Next step
 
-Now that you’ve created these refined output datasets, the next step is to create a business-ready **semantic model** so consumers can easily explore them using **Lens** or **APIs**.
+Now that you’ve created these refined output datasets, the next step is to create a business-ready **semantic model** so consumers can easily explore them on Data Product Hub or using **APIs**.
 
 👉 [Go to: Define the Semantic Model](/learn_new/dp_foundations2_learn_track/semantic_model/)
 

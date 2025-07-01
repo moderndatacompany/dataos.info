@@ -5,7 +5,7 @@ Our **Retail Source-Aligned Data Product** unlocks the true value of customer, p
 
 ---
 
-## 💡 What Is a Source-Aligned Data Product?
+## 💡 What Is a Source-aligned Data Product?
 
 A **Source-Aligned Data Product** (also known as an **Entity-First Data Product**) is a curated, high-quality version of data that closely mirrors the structure and behavior of its source system—but with a critical difference: it's cleaned, validated, and made fit for purpose.
 
@@ -13,7 +13,9 @@ These products preserve the original data’s granularity and lineage while enfo
 
 ---
 
-## Key Features of Source-Aligned (Entity-First) Data Products
+## Key features 
+
+Source-aligned (Entity-First) Data Product:
 
 - **Source Representation**  
   Mirrors the structure and content of operational systems for familiarity and traceability.
@@ -38,7 +40,7 @@ These products preserve the original data’s granularity and lineage while enfo
 
 ---
 
-## Next Steps
+## Next step
 
 Now that you understand the concept and value of source-aligned data products, it’s time to get hands-on.
 

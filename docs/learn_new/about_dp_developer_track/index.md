@@ -4,7 +4,7 @@ With a strong emphasis on aligning technical execution with business objectives,
 
 **Data Product Developers** play a key role in creating, managing, and evolving Data Products within DataOS. They are responsible for building the data infrastructure that powers everything from analytics to business intelligence, making sure data flows smoothly through pipelines and stays accurate and accessible for users.
 
-## Who This Track Is For
+## Who is this track for?
 
 | **Persona**                       | **Why It Matters**                                                                                                                              | **Level**        |
 |------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|--------------|
@@ -15,7 +15,7 @@ With a strong emphasis on aligning technical execution with business objectives,
 | **Data Product Owners**      | Oversee delivery and success of Data Products. Learn the technical depth needed to work closely with development teams and shape product vision. | Recommended  |
 
 
-## What You Will Learn
+## What you’ll learn
 
 As a Data Products Developer, you'll master how to:
 
@@ -41,7 +41,7 @@ The learning track walks you through each stage of the data product lifecycle wi
 <img src="/learn_new/about_dp_developer_track/dp_developer_track_1.png" alt="infographics" style="max-width: 90%; height: auto; border: 1px solid #000;">
 </div>
 
-## 📘 Module Overview
+## 📘 Module overview
 
 | No. | Module                                | Objective                                                                                  | Topics Covered                                                                                                         |
 |-----|----------------------------------------|--------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
@@ -57,7 +57,7 @@ The learning track walks you through each stage of the data product lifecycle wi
 🗣 This track includes hands-on modules that use both the DataOS CLI and GUI. You’ll work with CLI in the training environment to apply YAMLs, run workflows, and navigate DataOS GUI (Workbench, Metis, DPH).
 </aside> 
 
-## ✅ Start Learning 
+## ✅ Start learning 
 
 :rocket: [Start learning the modules here](/link)
 

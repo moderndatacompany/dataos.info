@@ -90,11 +90,11 @@ INFO[0000] 🔍 product get...complete
     ![dp_on_dph.png](/learn_new/dp_foundations1_learn_track/deploy_dp_cli/retail_data_dp.png)
 
 <aside class="callout">
-Great work completing Track 1: Source-Aligned Data Product Foundations! You've successfully connected your data sources, applied governance and observability, and deployed your first source-aligned Data Product on the Data Product Hub.
+🎯 Great work completing Data Products Foundations Track: Course I! You've successfully connected your data sources, applied governance and observability, and deployed your first source-aligned Data Product on the Data Product Hub.
 
 </aside>
 
-## 🎯 What's Next?
-Now it’s time to advance to Foundations Track- Part 2, where you’ll focus on creating Consumer-Aligned Data Products—tailored, business-ready products built on top of source-aligned foundations.
+##  Next step
+Now it’s time to advance to Data Products Foundations Track- Course II, where you’ll focus on creating Consumer-Aligned Data Products—tailored, business-ready products built on top of source-aligned foundations.
 
 👉 Head to the next module: [Creating a Consumer-Aligned Data Product]()
