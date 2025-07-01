@@ -8,7 +8,7 @@ For example, you can automate checks to ensure customer data integrity by verify
 
 ---
 
-## Scenario
+## 📘 Scenario
 
 As a data engineer, you’re working with datasets and exploring them on Workbench and Metis. Before using this data to create a Data Product, you need to validate its quality. Your task is to set up quality checks that verify the data's accuracy, completeness, and consistency, ensuring it meets the necessary standards for consumer use.
 
@@ -29,7 +29,7 @@ For example:
 
 ---
 
-## Setting Up data quality checks
+## Setting up data quality checks
 
 With your SLOs in place, define the quality checks in YAML files (e.g., `customer.yml`, `product.yml`, `purchase.yml`). Use SodaCL syntax to build rule-based checks.
 
@@ -45,13 +45,13 @@ Quality checks will be implemented using the Soda framework, leveraging SodaCL�
 
 ---
 
-## Configuring quality checks using Soda Stack
+## Configuring quality checks
 
-Use Soda Stack within DataOS to establish robust data quality checks using 
+Use Soda Stack within DataOS to establish robust data quality checks.
 
-### **Step 1: Choose the right DataOS Resource for the Job**
+### **Step 1: Choose the right DataOS Resource**
 
-The type of DataOS Resource you select depends on the use case:
+The type of DataOS Resource you choose for a Job depends on the specific use case.
 
 - Workflow Resource: Ideal for batch workloads and periodic quality checks.
 
@@ -259,10 +259,10 @@ The quality checks displayed in Metis as defined in the Soda YAML manifest file,
 ![soda_checks_metis.png](/learn_new/dp_foundations1_learn_track/quality_check/soda_checks_metis.png)
 
 <aside class="callout">
-🗣️ Similarly, define the quality checks for all other input datasets. 
+🗣️ Similarly, you can define the quality checks for all other input datasets. 
 </aside>
 
-## Hands-on exercise: Product data quality
+## Hands-on exercise
 
 Create a similar Soda Workflow for the product dataset.
 

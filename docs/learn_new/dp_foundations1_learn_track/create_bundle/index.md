@@ -2,7 +2,7 @@
 
 After creating and testing all necessary components, it's time to assemble them into a single, deployable unit using a Bundle Resource in DataOS. This bundle acts as the foundation of your data product, packaging all production ready Resources, ensuring consistent and scalable deployments across environments.
 
-## Scenario
+## 📘 Scenario
 
 In our source-aligned retail data product, a bundle in DataOS packages ingestion, quality checks, monitors, and pagers into a single deployable unit. It keeps everything connected and consistent, making it easy to deploy the product across enironments with minimal setup.
 

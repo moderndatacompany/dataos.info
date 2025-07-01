@@ -6,29 +6,28 @@ In this module, you'll learn how to configure Monitor and Pager resources in Dat
 
 ## Scenario
 
+You are working with customer data from your CRM system. This data powers applications and dashboards used by your sales and marketing teams. Recently, some quality issues—like missing values and invalid formats—went unnoticed and caused problems in reporting. To avoid this in the future, you need to:
 
+- Set up a Monitor that checks for failed quality checks in the crm_data collection.
 
-> ⚠️ Important: A workflow must be set up to sink SodaStream incidents into the Lakehouse for this monitor to function correctly. Contact your training team to verify this setup.
+- Create a Pager that sends an alert to your team on Microsoft Teams when a failure happens.
 
-## What You'll Do
+In this exercise, you’ll configure both the Monitor and Pager using the templates provided. 
+
+## What you'll do
 
 1. Review and understand a sample Monitor configuration for Soda quality checks.
 
-2. Configure a Pager to send alerts (e.g., via Microsoft Teams webhook).
+2. Configure a Pager to send alerts (e.g., via Microsoft Teams webhook/mail).
 
 3. Update the webhook URL and customize identifiers as needed.
-
-
-
-1. Review the template to understand how a quality checks monitor is configured.
-2. Review the template to understand how a quality checks pager is configured. Ensure you update the webhook URL.
 
 **📜 Templates:**
 
 - **Quality Checks Monitor**
     
     ```yaml
-    **# Important:** Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
+    # Important: Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
     name: quality-checks-alerts-xx
     version: v1alpha
     type: monitor
@@ -76,11 +75,12 @@ In this module, you'll learn how to configure Monitor and Pager resources in Dat
         incident_type: sodaquality
     
     ```
+> ⚠️ Important: A workflow must be set up to sink SodaStream incidents into the Lakehouse for this monitor to function correctly. Contact your training team to verify this setup.
     
 - **Quality Checks Pager**
     
     ```yaml
-    **# Important:** Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
+    # Important: Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
     name: pager-checks-alert-xx
     version: v1alpha
     type: pager
@@ -136,11 +136,11 @@ In this module, you'll learn how to configure Monitor and Pager resources in Dat
 
 ## Checklist
 
-- [ ]  Check the schedule defined in the Monitor YAML.
-- [ ]  Review the conditions and bodyTemplate in the pager manifest.
-- [ ]  Update the URL in the webhook section with the actual webhook URL.
+- ✅  Check the schedule defined in the Monitor YAML.
+- ✅  Review the conditions and bodyTemplate in the pager manifest.
+- ✅  Update the URL in the webhook section with the actual webhook URL.
 
-## Next Step
+## Next step
 
 With monitors and pagers in place for quality checks, it's time to bundle all your components, define the Data Product specification, and register it in the Data Product Hub.
 
