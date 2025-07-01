@@ -4,9 +4,9 @@ A well-structured data product isn’t just about clean code—it’s about enab
 
 ---
 
-## Step 1: Create and Set Up Your Code Repository
+## Step 1: Create and set up your code repository
 
-###  ** Initialize a Git Repository**
+###  ** Initialize a Git repository**
 
 Start by creating a version-controlled repository using your team’s preferred platform:
 
@@ -20,22 +20,19 @@ Once created, clone the repository to your local machine and begin developing yo
 
 ---
 
-### **Organize with a Clear Folder Structure**
+### **Organize with a clear folder structure**
 
-Structure your data product directory to keep things organized:
+Structure your data product directory to keep things organized. Each folder should hold only the relevant YAML specs for that DataOS component.
 
-![image](/learn_new/dp_foundations2_learn_track/deploy_dp_cli/dp_folder.png)
-
-
-Each folder should hold only the relevant YAML specs for that DataOS component.
+<div style="text-align: left; padding-left: 1em;">
+<img src="/learn_new/dp_foundations2_learn_track/repo_structure/dp_folder.png" alt="infographics" style="max-width: 75%; height: auto; border: 1px solid #000;">
+</div>
 
 > 💡 **Tip:** A clear folder structure helps new contributors onboard faster and ensures smooth CI/CD workflows.
 
-![dp_folder.png](attachment:b0841bad-fd9b-4713-9661-5aff6fcf8601:dp_folder.png)
-
 ---
 
-## Step 2: Configure a Repo Secret for DataOS
+## Step 2: Configure a repo secret for DataOS
 
 To enable DataOS to sync from your private repository, you must define an **Instance Secret** containing Git credentials.
 
@@ -74,13 +71,13 @@ dataos-ctl apply -f bitbucket-secret.yaml
 
 </aside>
 
-## Step 3: Push the Data Product Directory to a Code Repository 
+## Step 3: Push the Data Product directory to a code repository 
 
 After developing all your code, you will push your local data product directory to a preferred hosted code repository.
 
-## What’s Next?
+## Next step
 
 Now that your data product has a structured, version-controlled foundation, it’s time to connect it to the real world—your source systems.
 
-👉 [Next: Configure Source Connectivity](/learn_new/dp_foundations2_learn_track/data_source_connectivity/)
+👉 [Next topic: Configure Source Connectivity](/learn_new/dp_foundations2_learn_track/data_source_connectivity/)
 
