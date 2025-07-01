@@ -4,7 +4,7 @@ Welcome to the Data Product Consumer Track—your starting point to explore, ana
 
 Whether you're a data analyst, data scientist, app developer, or product manager, this track helps you turn data into valuable business intelligence and drive innovation by leveraging the power of DataOS.
 
-## Who Is This Track For?
+## Who is this track for?
 
 | **Persona**                     | **Why It Matters**                                                                                                     | **Level**     |
 |---------------------------------|------------------------------------------------------------------------------------------------------------------------|---------------|
@@ -17,11 +17,11 @@ Whether you're a data analyst, data scientist, app developer, or product manager
 | **Data Product Owners**        | Gain visibility into how Data Products are being used and ensure they align with end-user needs and business goals.   | Recommended   |
 
 <div style="text-align: left; padding-left: 1em;">
-<img src="/learn_new/about_dp_consumer_track/role_based_use.png" alt="infographics" style="max-width: 90%; height: auto; border: 1px solid #000;">
+<img src="/learn_new/about_dp_consumer_track/role_based_use.png" alt="infographics" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
 
-## What You’ll Learn
+## What you’ll learn
 
 As a consumer of Data Products, you'll master how to:
 
@@ -37,7 +37,7 @@ As a consumer of Data Products, you'll master how to:
 
 - **Track metrics and performance:** Monitor performance, usage, and impact metrics of Data Products to assess their effectiveness and communicate results to stakeholders.
 
-## 📚 Core Modules Overview
+## 📚 Core modules
 
 This track introduces the concepts, capabilities, and practical workflows that enable Data Product consumers to confidently explore and extract value from data within DataOS.
 
@@ -47,7 +47,7 @@ In this learning track, you will get a comprehensive introduction to Data Produc
 <img src="/learn_new/about_dp_consumer_track/consumer_track_1.png" alt="infographics" style="max-width: 100%; height: 60%; border: 1px solid #000;">
 </div>
 
-## 📚 Data Product Consumer Track – Module Overview
+## 📚 Module overview
 
 | **No.** | **Module**                                      | **Description**                                                                                          | **Key Topics**                                                                                      |
 |--------:|--------------------------------------------------|----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|
@@ -63,7 +63,7 @@ In this learning track, you will get a comprehensive introduction to Data Produc
 
 
 
-## ✅ Start Learning 
+## ✅ Start learning 
 
 Ready to begin?
 

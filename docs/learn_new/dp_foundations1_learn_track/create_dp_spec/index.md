@@ -6,7 +6,7 @@ After setting up your Bundle manifest, the next step is to define your Data Prod
 
 You're building a source-aligned retail data product that curates customer, product, and sales data to power downstream use of this data. To make this product easy to deploy, discover, and reuse, you’ll define a Data Product Spec—a blueprint that links metadata, input/output datasets, collaborators, and a production-ready Bundle containing ingestion workflows, quality checks, monitors, and pagers.
 
-## Step 1: Define General Information
+## Step 1: Define general information
 
 Start with the high-level metadata about your data product:
 
@@ -241,4 +241,4 @@ workflow:
 
 You now have all the components in place—Bundle, Data Product Spec, and Scanner Workflow— it’s time to bring your data product to life in the DataOS environment.
 
-👉 Continue to the next module: [Deploying Your Data Product on DataOS](/learn/dp_developer_learn_track/deploy_dp_cli/).
+👉 Continue to the next module: [Deploying Your Data Product on DataOS](/learn_new/dp_foundations1_learn_track/deploy_dp_cli/).

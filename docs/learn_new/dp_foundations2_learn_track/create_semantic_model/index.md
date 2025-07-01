@@ -66,7 +66,7 @@ These SQL scripts extract relevant fields from your input datasets.
 1. Create SQL scripts for each entity.
 2. Add SQL files to the `sqls` folder.
 
-??? example "customer.sql"
+??? "customer.sql"
 
     ```sql
     # Replace xx with your initials
@@ -81,7 +81,7 @@ These SQL scripts extract relevant fields from your input datasets.
         postgres.public.customer_data
     ```
 
-??? example "product.sql"
+??? "product.sql"
     ```sql
     # Replace xx with your initials
     select 
@@ -94,7 +94,7 @@ These SQL scripts extract relevant fields from your input datasets.
         postgresxx.public.product_data
     ```
 
-??? example "purchase.sql"
+??? "purchase.sql"
 
     ```sql
     # Replace xx with your initials
@@ -195,7 +195,7 @@ In the YAML manifest, each segment is defined by:
 - **sql:** Contains the SQL logic or condition that defines the segment. The SQL condition is used to filter the data, ensuring that only the records that meet the condition are included in the segment. In the provided YAML example, the condition is {TABLE}.state = 'Illinois', which means only rows where the state column equals "Illinois" will be included in this segment.
 
 
-🎯 **Your Actions:**
+🎯 **Your actions:**
 
 1. In the tables folder, define logical table definitions in YAML format. The templates show how to define tables referencing the SQL scripts created in the previous step and defining dimensions, joins, measures, and segments.
 2. Add these files to the `tables` folder.
@@ -507,7 +507,7 @@ tables:
 
 
 
-### **Define Manifest Files for Business Views**
+### **Step 4: Define Manifest Files for Business Views**
 
 The `views` folder contains business views, encapsulating the identified drivers and metrics to provide targeted insights.
 
@@ -658,7 +658,7 @@ views:
 ```
 </details>
 
-### **Define Access Control**
+### **Step 5: Define Access Control**
 
 The `user_groups.yml` file manages access permissions for different user groups within your data model.
 
@@ -701,7 +701,7 @@ user_groups:
     includes: "*"
 ```
 
-### Create a Lens Resource Manifest File
+### **Step 6: Create a Lens Resource Manifest File**
 
 This file is your blueprint for configuring your Lens Resource on DataOS. This file contains a meta section and a Lens Lens-specific section to define all the technical configurations, such as secrets, code base, repo, and source configuration that your Lens will be mapped to.
 
@@ -773,7 +773,7 @@ lens:
     logLevel: info
 ```
 
-### **Push the code to Repo** 
+### **Step 7: Push the code to Repo** 
 
 Push the code to Repo and update the repo URL and base directory location under lens section.  Use clear commit messages to describe changes effectively.
 
@@ -781,9 +781,9 @@ Push the code to Repo and update the repo URL and base directory location under 
 Don’t forget to replace placeholder values with your project-specific info and push changes to your repo with clear commit messages.
 </aside>
 
-## Next Step
+## Next step
 
 Your semantic model is now in place. The final milestone is to deploy your first consumer-aligned data product.
 
-👉 [Continue to Enable Consumption→](/learn_new/dp_foundations2_learn_track/deploy_sm/)
+👉 [Deploy and Register Data Product](/learn_new/dp_foundations2_learn_track/deploy_sm/)
 

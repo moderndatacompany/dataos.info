@@ -31,7 +31,7 @@ Gain the skills and mindset to drive strategic data product outcomes across the 
 - **Operationalize Reliability**: Configure alerts and response workflows to ensure timely detection and resolution of data product issues.
 
 
-### **Data Product Owner – Learning Modules**
+## Core modules
 
 <div style="text-align: left; padding-left: 1em;">
 <img src="/learn_new/about_dp_owner_track/dp_owner_track.jpg" alt="infographics">

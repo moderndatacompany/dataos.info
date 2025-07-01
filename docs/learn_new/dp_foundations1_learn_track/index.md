@@ -1,28 +1,28 @@
-# Data Product Foundations · Course I 
+# Data Product Foundations Track: Course I 
 
 In this course, you'll learn how to build a **source-aligned data product** from the ground up. By following each step and completing the checklists, you’ll learn how to connect, ingest, and shape source data into a product-ready asset on DataOS.
 
 ---
 
-## 🌟 What You’ll Learn
+## 🌟 What you’ll learn
 
 By the end of this course, you’ll be able to:
 
-- **Create Source-Aligned Data Products**  
+- **Create source-aligned data Products**  
   Understand the concepts and build a working data product using DataOS.
 
-- **Connect, Explore, and Ingest Data**  
+- **Connect, explore, and ingest Data**  
   Use depots to connect with source systems, explore external data using Scanner and Workbench, and build Flare workflows for ingestion and transformation.
 
-- **Define Data Quality and Set Up Monitoring**  
+- **Define data quality and set up monitoring**  
   Define SLOs, run Soda quality checks, and configure monitors and pagers for reliable, observable data workflows.
 
-- **Deploy and Register Data Products**  
+- **Deploy and register Data Products**  
   Package your work into a bundle, create the data product spec, deploy it, and make it searchable in the Data Product Hub.
 
 ---
 
-## Scenario: Your Mission
+## 📘 Scenario
 
 You’re part of a retail company’s data team. You’ve been asked to build a **Retail Data Product** that makes customer, product, and sales data clean, trusted, and usable for dashboards, analytics, and future data products. Right now, this raw data is scattered across databases and blob storage—messy, inconsistent, and full of nulls and duplicates.
 
@@ -30,7 +30,7 @@ You’re part of a retail company’s data team. You’ve been asked to build a 
 
 ---
 
-## 📚 Learning Modules
+## 📚 Learning modules
 
 ### **Module 1: Understand Source-Aligned Data Products**
 
@@ -58,9 +58,9 @@ You’re part of a retail company’s data team. You’ve been asked to build a 
 
 - [#1 Create a Scanner Workflow](/learn_new/dp_foundations1_learn_track/create_scanner/) 
 
-- [#2 View Scanned Metadata in Metis]()  
+<!-- - [#2 View Scanned Metadata in Metis]()  
 
-- [#3 Explore External Data via Workbench]()  
+- [#3 Explore External Data via Workbench]()   -->
 
 </div>
 
@@ -70,9 +70,9 @@ You’re part of a retail company’s data team. You’ve been asked to build a 
 
 <div class="grid cards" markdown>
 
-- [#1 Build Ingestion Pipelines](/learn_new/dp_foundations1_learn_track/build_pipeline/)
+- [Build Ingestion Pipelines](/learn_new/dp_foundations1_learn_track/build_pipeline/)
 
-- [#2 Verify Ingested Data]()  
+<!-- - [#2 Verify Ingested Data]()   -->
 </div>
 
 ---
@@ -81,9 +81,9 @@ You’re part of a retail company’s data team. You’ve been asked to build a 
 
 <div class="grid cards" markdown>
 
-- [#1 Define SLOs]()  
+<!-- - [#1 Define SLOs]()   -->
 
-- [#2 Implement Quality Checks](/learn_new/dp_foundations1_learn_track/quality_check/)
+- [Implement Quality Checks](/learn_new/dp_foundations1_learn_track/quality_check/)
 
 </div>
 
@@ -117,21 +117,25 @@ You’re part of a retail company’s data team. You’ve been asked to build a 
 
 ---
 
-## How to Use These Modules
+## How to use these modules
 
 Each module in this track is designed for self-paced, hands-on learning.
 
 To follow along:
 
-1. Copy the YAML snippets provided in each step.
+1. Open your preferred code editor and create a new file with a `.yaml` extension.
 
-2. Customize them for your use case (e.g., names, paths, credentials).
+2. Based on your objective (e.g., creating a data pipeline, configuring access policies), copy the relevant YAML snippets provided in the training materials.
 
-3. Login to your DataOS training instance via the CLI.
+3. Modify the snippets as needed to suit your use case—update names, paths, and credentials as appropriate.
 
-4. Use the dataos-ctl apply command to deploy and test your changes.
+4. Login to your DataOS training instance via the CLI.
 
-## Checklist for Success
+5. Use the `dataos-ctl apply` command to deploy and test your changes.
+
+> Each section includes specific instructions and configuration details to guide you through the process.
+
+## Checklist for success
 
 Make sure you complete the following:
 

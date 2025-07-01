@@ -4,7 +4,7 @@ After establishing a secure connection using a Depot, the next step is to valida
 
 ---
 
-📘 Scenario
+## 📘 Scenario
 
 Let’s say your sales data lives in a purchase table in a PostgreSQL database. Once the Postgres Depot is configured, you can scan its metadata to inspect table structures and immediately begin querying it in Workbench, all without copying or moving the data.
 
@@ -28,7 +28,7 @@ Depots are used to connect to metadata sources to extract entities' metadata. To
 
 - Configure and apply a Scanner Workflow YAML
 
-### **Step 1: Define Your Scanner Workflow YAML**
+### **Step 1: Define your Scanner Workflow YAML**
 
 Create a file named scanner.yaml and define your Scanner Workflow using the following template:
 
@@ -66,24 +66,24 @@ Check the Operations app for the status of your workflow. If it fails, review th
 
 ---
 
-## Verify Metadata in Metis
+## Verify metadata in Metis
 
 1. Go to the Metis app.
 
 2. On Metis UI, go to Settings > Databases to access it.
 
-  ![dimage](/learn_new/dp_foundations1_learn_track/create_scanner/scanned_database.png)
+    ![dimage](/learn_new/dp_foundations1_learn_track/create_scanner/scanned_database.png)
 
 3. Select the database (same as Depot name).
 
-  ![dimage](/learn_new/dp_foundations1_learn_track/create_scanner/scanned_data.png)
+    ![dimage](/learn_new/dp_foundations1_learn_track/create_scanner/scanned_data.png)
 
 4. Verify metadata fields like column names, data types, sample values, etc.
 
 
 ---
 
-## Explore Data in Workbench
+## Explore data in Workbench
 
 <aside class="callout">
 🗣
@@ -109,4 +109,4 @@ You can now explore source data using SQL without ingestion—thanks to the meta
 
 With Depot in place, you are now ready to build data pipelines to deliver reliable data for your data products ensuring seamless data flow.
 
-👉 Next Topic:[Building and maintaining data pipelines](/learn/dp_foundations_learn_track/build_pipeline/).
+👉 Next topic:[Building and Maintaining Data Pipelines](/learn_new/dp_foundations1_learn_track/build_pipeline/).
