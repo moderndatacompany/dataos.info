@@ -72,64 +72,66 @@ Here are the available Stacks to handle various processing needs.
 
 Prepare your manifest file to configure the pipeline. 
 
+🎯 Your Actions: 
+
 1. Specify the Workflow Resource, define the input and output data sources, and integrate the Flare Stack. 
 2. Customize the SQL query (used for transformations) for your dataset. The provided query in the `steps` section already include transformations like casting string fields to numerical types.
 > Carefully review the input & output proerties specifying the dataset addresses, to ensure everything is correctly configured before proceeding— this helps avoid issues later in the workflow.
->
 
-```yaml
-# Important: Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
-version: v1
-name: wf-customer-data-xx
-type: workflow
-workflow:
-  dag:
-    - name: dg-customer-data
-      spec:
-        stack: flare:6.0
-        compute: runnable-default
-        stackSpec:
-          inputs:
-            - name: customer_data
-              dataset: dataos://thirdparty:onboarding/customer.csv
-              format: csv
-          steps:
-            - sequence:
+
+    ```yaml
+    # Important: Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
+    version: v1
+    name: wf-customer-data-xx
+    type: workflow
+    workflow:
+      dag:
+        - name: dg-customer-data
+          spec:
+            stack: flare:6.0
+            compute: runnable-default
+            stackSpec:
+              inputs:
+                - name: customer_data
+                  dataset: dataos://thirdparty:onboarding/customer.csv
+                  format: csv
+              steps:
+                - sequence:
+                    - name: final
+                      sql: >
+                        SELECT 
+                            CAST(customer_id AS LONG)  as customer_id,
+                            CAST(birth_year AS LONG) as birth_year,
+                            education, 
+                            marital_status, 
+                            CAST(income AS DOUBLE) as income,
+                            country,
+                            current_timestamp() as created_at
+                        FROM customer_data
+              outputs:
                 - name: final
-                  sql: >
-                    SELECT 
-                        CAST(customer_id AS LONG)  as customer_id,
-                        CAST(birth_year AS LONG) as birth_year,
-                        education, 
-                        marital_status, 
-                        CAST(income AS DOUBLE) as income,
-                        country,
-                        current_timestamp() as created_at
-                    FROM customer_data
-          outputs:
-            - name: final
-              dataset: dataos://postgresxx:public/customer_data?acl=rw
-              driver: org.postgresql.Driver
-              format: jdbc
-              title: Purchase Dataset
-                options:
-                  saveMode: overwrite
+                  dataset: dataos://postgresxx:public/customer_data?acl=rw
+                  driver: org.postgresql.Driver
+                  format: jdbc
+                  title: Purchase Dataset
+                    options:
+                      saveMode: overwrite
 
-```
+    ```
 
 3. With the manifest file complete, use the DataOS CLI to deploy the pipeline. Create a dedicated workspace for all your resources. You can create a new workspace using the command. 
     
-  ```bash
-  dataos-ctl workspace create -n <workspacename>
-  ```
+    ```bash
+    dataos-ctl workspace create -n <workspacename>
+    ```
     
     To learn more, refer to https://dataos.info/interfaces/cli/workspace/details/#create.
 4. Deploy the workflow in the personal workspace using the following command. This applies only to workspace-level resources. 
     
-  ```bash
+    ```bash
 
-  dataos-ctl apply -f <filename with path> -w <workspace name>
-  ```
+    dataos-ctl apply -f <filename with path> -w <workspace name>
+    ```
 
 5. Check the progress of your Workflow.
 
@@ -147,18 +149,18 @@ workflow:
 
   
 
-By the end of this process, you have successfully created a batch data pipeline that automated the transfer of customer data from Azure blob storage to PostgreSQL. 
+> By the end of this process, you have successfully created a batch data pipeline that automated the transfer of customer data from Azure blob storage to PostgreSQL. 
 
 ## Troubleshooting
 
 Need help debugging issues like Depot creation failures or ingestion/transformation errors? 
 Refer to the [Troubleshooting Guide](/learn_new/troubleshooting/). You can find information to diagnose and resolve problems.
 
-## Hands on exercise: Ingest Product Data
+## Hands on exercise
 
 Ready to take on your next data pipeline challenge? Follow the same steps and start building your own workflows in DataOS to transfer product data for the example use case.
 
-??? "Click here to see Workflow for ingesting Product data from Azure blob storage to DataOS Lakehouse"
+??? "Click here to see Workflow for ingesting Product data from Azure blob storage to PostgreSQL"
     ```yaml
     # Important: Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
     version: v1
@@ -233,14 +235,14 @@ You are now equipped to handle batch data pipelines efficiently. As you move for
 
 For a detailed guide on setting up and managing pipeline schedules, refer to the link below.
 
-[Topic: Scheduling pipelines](/learn_new/dp_foundations_learn_track/build_pipeline/scheduling_workflows/)
+[Topic: Scheduling pipelines](/learn_new/dp_foundations1_learn_track/build_pipeline/scheduling_workflows/)
 
 
 ## Next step
 
 Now that your pipeline is running smoothly, it’s time to set quality checks using SLOs to ensure your data is accurate and trustworthy.
 
-👉 Refer to this topic: [Define quality checks](/learn_new/dp_foundations_learn_track/quality_check/)
+👉 Refer to this topic: [Define quality checks](/learn_new/dp_foundations1_learn_track/quality_check/)
 
 
 

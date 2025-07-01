@@ -210,144 +210,147 @@ output:
         
 ```
 
-??? "Click here to view the complete manifest file for email notification"
-      ```yaml
-      # Important: Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
-    name: failedworkflowpager-xx
-    version: v1alpha
-    type: pager
-    description: sends alerts to email and teams when a juicefs pod deletion incident is created
-    pager:
-      conditions:
-        - valueJqFilter: .properties.name
-          operator: equals
-          value: Failed Workflow Alert
-        - valueJqFilter: .properties.incident_type
-          operator: equals
-          value: Alerts For Failed Workflow
-      output:
-        email:
-          emailTargets:
-            - {{Your email ID}}
-          templateType: liquid
-          template: |
-            <p><strong>Dear Team,</strong></p>
+<details><summary>Click here to view the complete manifest file for email notification</summary>
+```yaml
 
-            <p>⚠️ Our system detected an issue with the workflow and was unable to complete the process as expected.</p>
+# Important: Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
+name: failedworkflowpager-xx
+version: v1alpha
+type: pager
+description: sends alerts to email and teams when a juicefs pod deletion incident is created
+pager:
+  conditions:
+    - valueJqFilter: .properties.name
+      operator: equals
+      value: Failed Workflow Alert
+    - valueJqFilter: .properties.incident_type
+      operator: equals
+      value: Alerts For Failed Workflow
+  output:
+    email:
+      emailTargets:
+        - {{Your email ID}}
+      templateType: liquid
+      template: |
+        <p><strong>Dear Team,</strong></p>
 
-            <div style="font-family: Arial, sans-serif;">
-              <table border="0" cellspacing="0" cellpadding="8" style="font-family: Arial, sans-serif; font-size: 14px; width: 100%; border-collapse: collapse;">
-                <tbody>
-                  <tr style="border-top: 2px solid #000; border-bottom: 1px solid #ccc;">
-                    <td style="font-weight: bold;">Incident Name</td>
-                    <td>{{ incidentProperties.name }}</td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid #ccc;">
-                    <td style="font-weight: bold;">Severity</td>
-                    <td>{{ incidentProperties.severity }}</td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid #ccc;">
-                    <td style="font-weight: bold;">Workflow Name</td>
-                    <td>{{ (incidentContext.resourceId | split: ':')[2] }}</td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid #ccc;">
-                    <td style="font-weight: bold;">Failure Time</td>
-                    <td>{{ incidentCreated }}</td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid #ccc;">
-                    <td style="font-weight: bold;">Run Details</td>
-                    <td><a href="https://dataos-training.dataos.app/operations/user-space/resources/resource-runtime?name={{ (incidentContext.resourceId | split: ':')[2] }}&type=workflow&workspace=public">Operation</a></td>
-                  </tr>
-                  <tr style="border-bottom: 2px solid #000;">
-                    <td style="font-weight: bold;">Logs</td>
-                    <td><a href="https://dataos-training.dataos.app/metis/resources/workflow/dataos.public.{{ (incidentContext.resourceId | split: ':')[2] }}/run_history">Metis</a></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+        <p>⚠️ Our system detected an issue with the workflow and was unable to complete the process as expected.</p>
 
-            <p>We understand the importance of timely and accurate data processing, and our team is actively working to resolve the issue and get the pipeline back up and running as soon as possible. In the meantime, please be aware that the data processing for the affected workflow may be delayed or incomplete.</p>
+        <div style="font-family: Arial, sans-serif;">
+          <table border="0" cellspacing="0" cellpadding="8" style="font-family: Arial, sans-serif; font-size: 14px; width: 100%; border-collapse: collapse;">
+            <tbody>
+              <tr style="border-top: 2px solid #000; border-bottom: 1px solid #ccc;">
+                <td style="font-weight: bold;">Incident Name</td>
+                <td>{{ incidentProperties.name }}</td>
+              </tr>
+              <tr style="border-bottom: 1px solid #ccc;">
+                <td style="font-weight: bold;">Severity</td>
+                <td>{{ incidentProperties.severity }}</td>
+              </tr>
+              <tr style="border-bottom: 1px solid #ccc;">
+                <td style="font-weight: bold;">Workflow Name</td>
+                <td>{{ (incidentContext.resourceId | split: ':')[2] }}</td>
+              </tr>
+              <tr style="border-bottom: 1px solid #ccc;">
+                <td style="font-weight: bold;">Failure Time</td>
+                <td>{{ incidentCreated }}</td>
+              </tr>
+              <tr style="border-bottom: 1px solid #ccc;">
+                <td style="font-weight: bold;">Run Details</td>
+                <td><a href="https://dataos-training.dataos.app/operations/user-space/resources/resource-runtime?name={{ (incidentContext.resourceId | split: ':')[2] }}&type=workflow&workspace=public">Operation</a></td>
+              </tr>
+              <tr style="border-bottom: 2px solid #000;">
+                <td style="font-weight: bold;">Logs</td>
+                <td><a href="https://dataos-training.dataos.app/metis/resources/workflow/dataos.public.{{ (incidentContext.resourceId | split: ':')[2] }}/run_history">Metis</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-            <p>If you have any questions or concerns, please do not hesitate to reach out to us on our support portal. We will keep you updated on the status of the resolution efforts.</p>
+        <p>We understand the importance of timely and accurate data processing, and our team is actively working to resolve the issue and get the pipeline back up and running as soon as possible. In the meantime, please be aware that the data processing for the affected workflow may be delayed or incomplete.</p>
 
-            <p>Best regards,</p>
+        <p>If you have any questions or concerns, please do not hesitate to reach out to us on our support portal. We will keep you updated on the status of the resolution efforts.</p>
 
-            <p>The Modern Data Company</p>
+        <p>Best regards,</p>
 
-              
+        <p>The Modern Data Company</p>            
 
-      ```
+```
+</details>
 
-??? "Click here to view the complete manifest file for Webhook configuration"
-      ```yaml
-      # Important: Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
-        # Important: Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
-    name: failedworkflowpager-xx
-    version: v1alpha
-    type: pager
-    tags:
-      - dataos:type:resource
-      - workflow-failed-pager
-    description: This is for sending Alerts on Microsoft Teams Alert Test Channel.
-    workspace: {{workspacename}}
-    pager:
-      conditions:
-        - valueJqFilter: .properties.name
-          operator: equals
-          value: monitorbuildfailed
-        - valueJqFilter: .properties.incident_type
-          operator: equals
-          value: monitorerrorworkflow
-      output:
-        webHook: 
-          url: {{Your webhook url}}
-          verb: post
-          headers:
-            content-type: application/json
-          bodyTemplate: |
+<details><summary>Click here to view the complete manifest file for Webhook configuration</summary>
+
+```yaml
+
+# Important: Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
+name: failedworkflowpager-xx
+version: v1alpha
+type: pager
+tags:
+  - dataos:type:resource
+  - workflow-failed-pager
+description: This is for sending Alerts on Microsoft Teams Alert Test Channel.
+workspace: {{workspacename}}
+pager:
+  conditions:
+    - valueJqFilter: .properties.name
+      operator: equals
+      value: monitorbuildfailed
+    - valueJqFilter: .properties.incident_type
+      operator: equals
+      value: monitorerrorworkflow
+  output:
+    webHook: 
+      url: {{Your webhook url}}
+      verb: post
+      headers:
+        content-type: application/json
+      bodyTemplate: |
+        {
+          "@type": "MessageCard",
+          "summary": "Workflow has Failed",
+          "themeColor": "0076D7",
+          "sections": [
             {
-              "@type": "MessageCard",
-              "summary": "Workflow has Failed",
-              "themeColor": "0076D7",
-              "sections": [
+              "activityTitle": "Dear Team,",
+              "activitySubtitle": "⚠️ Our system detected an issue with the workflow and was unable to complete the process as expected.",
+              "facts": [
                 {
-                  "activityTitle": "Dear Team,",
-                  "activitySubtitle": "⚠️ Our system detected an issue with the workflow and was unable to complete the process as expected.",
-                  "facts": [
-                    {
-                      "name": "   The following workflow has failed:",
-                      "value": "{{ index (splitn ":" 4 .ReportContext.ResourceId) "_2" }}"
-                    },
-                    {
-                      "name": "   Failure Time:",
-                      "value": "{{ .CreateTime }}"
-                    },
-                    {
-                      "name": "   Severity:",
-                      "value": "{{ .Properties.severity }}"
-                    },
-                    {
-                      "name": "   Run Details:",
-                      "value": "<a href=\"https://dataos-training.dataos.app/operations/user-space/resources/resource-runtime?name={{ index (splitn ":" 4 .ReportContext.ResourceId) "_2" }}&type=workflow&workspace=public\">Operation</a>"
-                    },
-                    {
-                      "name": "   Logs:",
-                      "value": "<a href=\"https://dataos-training.dataos.app/metis/resources/workflow/dataos.public.{{ index (splitn ":" 4 .ReportContext.ResourceId) "_2" }}/run_history\">Metis</a>"
-                    }
-                  ]
+                  "name": "   The following workflow has failed:",
+                  "value": "{{ index (splitn ":" 4 .ReportContext.ResourceId) "_2" }}"
                 },
                 {
-                  "text": "We understand the importance of timely and accurate data processing, and our team is actively working to resolve the issue and get the pipeline back up and running as soon as possible. In the meantime, please be aware that the data processing for the affected workflow may be delayed or incomplete.\n\nIf you have any questions or concerns, please do not hesitate to reach out to us on our support portal. We will keep you updated on the status of the resolution efforts."
+                  "name": "   Failure Time:",
+                  "value": "{{ .CreateTime }}"
                 },
                 {
-                  "text": "Best regards,\n\nThe Modern Data Company"
+                  "name": "   Severity:",
+                  "value": "{{ .Properties.severity }}"
+                },
+                {
+                  "name": "   Run Details:",
+                  "value": "<a href=\"https://dataos-training.dataos.app/operations/user-space/resources/resource-runtime?name={{ index (splitn ":" 4 .ReportContext.ResourceId) "_2" }}&type=workflow&workspace=public\">Operation</a>"
+                },
+                {
+                  "name": "   Logs:",
+                  "value": "<a href=\"https://dataos-training.dataos.app/metis/resources/workflow/dataos.public.{{ index (splitn ":" 4 .ReportContext.ResourceId) "_2" }}/run_history\">Metis</a>"
                 }
               ]
+            },
+            {
+              "text": "We understand the importance of timely and accurate data processing, and our team is actively working to resolve the issue and get the pipeline back up and running as soon as possible. In the meantime, please be aware that the data processing for the affected workflow may be delayed or incomplete.\n\nIf you have any questions or concerns, please do not hesitate to reach out to us on our support portal. We will keep you updated on the status of the resolution efforts."
+            },
+            {
+              "text": "Best regards,\n\nThe Modern Data Company"
             }
-        
-              
+          ]
+        }
+    
+          
 
-      ```
+```
+</details>
+
 ## Notification example
 
 Once the Pager is connected to a Monitor and triggered, your team will receive alerts in the configured channel, like this:
@@ -371,6 +374,7 @@ Incidents are stored in a Pulsar topic, not exposed on the UI, but accessible wi
 **Q5: Why are Monitors and Pagers separate Resources?**
 Monitors and Pagers are separate Resources because they serve distinct functions. Monitors detect issues and generate incidents, while Pagers send alerts based on those incidents. This separation gives customers flexibility—they can choose to use only Monitors, integrate with third-party alerting tools like Datadog, or rely on DataOS Pager based on their needs.
 
-## Next Step
+## Next step
 Next, set up monitors and pagers to track quality check failures and enhance observability.
+
 👉 [Create Monitor and Pager for Quality Checks ](/learn_new/dp_foundations1_learn_track/quality_observability/)

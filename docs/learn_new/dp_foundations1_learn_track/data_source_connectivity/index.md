@@ -11,7 +11,7 @@ Your team is expanding its use of DataOS and needs to integrate multiple data so
 
 ---
 
-## Quick Concepts 
+## Quick concepts 
 
 The **Depot Resource** in DataOS provides a standardized way to connect to a variety of enterprise data sources, such as:
 
@@ -110,18 +110,18 @@ Before diving into configuring data source connections, make sure you have every
 4. **Install any IDE, such as Visual Studio Code**  
    This is necessary for creating YAML files for your data product. Installation links for various operating systems are provided below:
 
-   - **Linux**: [Install VS Code on Linux](https://code.visualstudio.com/docs/setup/linux)  
-   - **Windows**: [Install VS Code on Windows](https://code.visualstudio.com/docs/setup/windows)  
-   - **macOS**: [Install VS Code on macOS](https://code.visualstudio.com/docs/setup/mac)
+    - **Linux**: [Install VS Code on Linux](https://code.visualstudio.com/docs/setup/linux)  
+    - **Windows**: [Install VS Code on Windows](https://code.visualstudio.com/docs/setup/windows)  
+    - **macOS**: [Install VS Code on macOS](https://code.visualstudio.com/docs/setup/mac)
 
-## **Checklist:**
+## Checklist
 
-- [ ]  CLI is installed 
-- [ ]  CLI is initialized and logged in
-- [ ]  IDE (like VS Code) is installed
+- ✅  CLI is installed 
+- ✅  CLI is initialized and logged in
+- ✅  IDE (like VS Code) is installed
  
 
-## Next Step: Setting Up Depots
+## Next step
 You’re now ready to configure depots and start connecting to your source systems.
 
-👉 Next Topic: [Setting Up Depots](/learn_new/dp_foundations1_learn_track/data_source_connectivity/setting_up_depots/)
+👉 Next topic: [Setting Up Depots](/learn_new/dp_foundations1_learn_track/data_source_connectivity/setting_up_depots/)
