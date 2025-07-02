@@ -35,12 +35,12 @@ Before diving into configuring data source connections, make sure you have every
 1. **Check required permissions**  
    Some tasks require specific permissions typically assigned to DataOS Operators. Ensure you have access to one of the following permission sets either via use-case or via tags:
 
-   | **Access Permission (via use-cases)** | **Access Permissions (via tags)** |
-   |--------------------------------------|-----------------------------------|
-   | Read Workspace                       | `roles:id:data-dev`               |
-   | Manage All Depot                     | `roles:id:system-dev`             |
-   | Read All Dataset                     | `roles:id:user`                   |
-   | Read all secrets from Heimdall       | *(Not specified)*                 |
+      | **Access Permission (via use-cases)** | **Access Permissions (via tags)** |
+      |--------------------------------------|-----------------------------------|
+      | Read Workspace                       | `roles:id:data-dev`               |
+      | Manage All Depot                     | `roles:id:system-dev`             |
+      | Read All Dataset                     | `roles:id:user`                   |
+      | Read all secrets from Heimdall       | *(Not specified)*                 |
 
 2. **Check CLI installation**  
    You need this text-based interface that allows you to interact with the DataOS context via command prompts.  

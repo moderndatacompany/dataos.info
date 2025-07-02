@@ -20,12 +20,16 @@ Analysts, QA, support involved in data workflows                                
 | **Technical Decision Makers / Architects**  
 Architects, Admins, team leads evaluating DataOS                                                | Gain a high-level overview of key DataOS primitives and workflows for better strategic planning.    | Recommended  |
 
+<aside class="callout">
+🗣 To fully engage with the hands-on components of this learning track, access to a dedicated DataOS training instance is required. Please contact your training team to obtain the necessary credentials.
+
+</aside>
 
 ## Core modules
 The Foundations Track is split into two structured courses—each designed to walk you through the lifecycle of a Data Product. Each module within these courses covers key topics through step-by-step guidance, hands-on examples, and best practices—ensuring a clear and practical learning experience. This Foundations track keeps the content streamlined, emphasizing core concepts and guiding learners through one complete end-to-end example.
 
 <aside class="callout">
-🗣 This track includes hands-on modules that use both the DataOS CLI and GUI. You’ll work with CLI in the training environment to apply YAMLs, run workflows, and navigate DataOS GUI (Workbench, Metis, DPH).
+🗣 This track features hands-on modules utilizing both the DataOS CLI and GUI. You'll use the CLI to apply YAML configurations and execute workflows. Concurrently, you'll navigate key DataOS graphical interfaces—such as Workbench for querying data, Metis for metadata management, and the Data Product Hub (DPH) for overseeing data products—to gain comprehensive insights into the platform's capabilities.
 </aside>
 
 ### **Course 1: Creating a Source-Aligned Data Product**

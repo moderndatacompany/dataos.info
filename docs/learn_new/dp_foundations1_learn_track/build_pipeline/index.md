@@ -126,6 +126,7 @@ Prepare your manifest file to configure the pipeline.
     ```
     
     To learn more, refer to https://dataos.info/interfaces/cli/workspace/details/#create.
+
 4. Deploy the workflow in the personal workspace using the following command. This applies only to workspace-level resources. 
     
     ```bash
@@ -145,7 +146,7 @@ Prepare your manifest file to configure the pipeline.
 
 6. Verify ingested data.
    
-   Go to the Workbench app and query data.
+    Go to the Workbench app and query data.
 
   
 

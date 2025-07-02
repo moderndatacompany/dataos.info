@@ -1,10 +1,11 @@
-# Build a semantic model 
+# Build a Semantic Model 
 
 This guide outlines the end-to-end process for building and deploying a semantic model (Lens) For your data product. 
 
-## Scenario
+## 📘 Scenario
 
-After you've established data connections and built robust data pipelines to process and transform raw data, the next step is to create a semantic model (Lens). Your objective is to transform raw data into a structured model that enables the generation of trusted, consistent metrics and KPIs. These metrics will be accessible through APIs and usable across business intelligence, AI, and embedded analytics tools.
+To provide business users with consistent, trustworthy metrics across BI tools and applications, you need to create a semantic model (Lens) that encapsulates business logic and definitions. This model translates complex data structures into familiar business terms, facilitating self-service analytics. Leverage your source-aligned data product, which processes raw data into structured formats, ensuring the semantic model is grounded in accurate, well-prepared data sources. Metrics become accessible via APIs for use in BI, AI, and embedded analytics tools.
+
 
 ## Quick concepts
 
@@ -20,9 +21,8 @@ Semantic models aim to represent data in a way that is easily understandable by 
 
 Based on the identified goals of analysis, value objectives, and the key factors or drivers that will influence our value objectives, create the semantic model with the following steps.
 
-<aside>
-
-You can create semantic models directly from structured sources. However, if data comes from multiple or unstructured sources, you may need to collect, clean, and transform it into a usable format.
+<aside class="callout">
+🗣 You can create semantic models directly from structured sources. However, if data comes from multiple or unstructured sources, you may need to collect, clean, and transform it into a usable format.
 
 </aside>
 
