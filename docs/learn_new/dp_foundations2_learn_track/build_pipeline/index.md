@@ -37,7 +37,7 @@ You’ll build two Flare workflows in this step— one for each output dataset. 
 ### **Creating product affinity matrix output**
 Analyzes co-purchase patterns between product categories to identify cross-category buying behavior.
 
-??? example "Show YAML Template"
+??? "Show YAML Template"
     ```yaml
     # Important: Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
     version: v1
@@ -248,6 +248,6 @@ For this example, the `lakehouse` depot has already been created in the training
 
 Now that you’ve created these refined output datasets, the next step is to create a business-ready **semantic model** so consumers can easily explore them on Data Product Hub or using **APIs**.
 
-👉 [Go to: Define the Semantic Model](/learn_new/dp_foundations2_learn_track/semantic_model/)
+👉 [Go to: Define the Semantic Model](/learn_new/dp_foundations2_learn_track/create_semantic_model/)
 
 
