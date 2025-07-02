@@ -13,30 +13,23 @@ These products preserve the original data’s granularity and lineage while enfo
 
 ---
 
-## Key features 
+## Key features
 
 Source-aligned (Entity-First) Data Product:
 
-- **Source Representation**  
-  Mirrors the structure and content of operational systems for familiarity and traceability.
+- **Source Representation:**  Mirrors the structure and content of operational systems for familiarity and traceability.
 
-- **Entity-Centric Design**  
-  Built around key business entities like customers, products, and transactions.
+- **Entity-Centric Design:** Built around key business entities like customers, products, and transactions.
 
-- **High Data Quality**  
-  Undergoes thorough profiling and validation for accuracy, completeness, and consistency.
+- **High Data Quality:**  Undergoes thorough profiling and validation for accuracy, completeness, and consistency.
 
-- **Governance-Ready**  
-  Aligned with organizational policies and access control standards.
+- **Governance-Ready:**  Aligned with organizational policies and access control standards.
 
-- **Lineage & Traceability**  
-  Retains full visibility into data origins and transformations.
+- **Lineage & Traceability:**  Retains full visibility into data origins and transformations.
 
-- **Ready for Consumption**  
-  Provides a trusted input for BI dashboards, analytics, and downstream pipelines.
+- **Ready for Consumption:**  Provides a trusted input for BI dashboards, analytics, and downstream pipelines.
 
-- **Scalable Foundation**  
-  Reduces duplication and inconsistency across data products and teams.
+- **Scalable Foundation:**  Reduces duplication and inconsistency across data products and teams.
 
 ---
 
@@ -46,4 +39,4 @@ Now that you understand the concept and value of source-aligned data products, i
 
 In the next module, you’ll learn how to connect to raw data sources and set up the building blocks needed to bring your data product to life.
 
-👉 [**Next Module: Connect to Raw Data Sources**](/learn_new/dp_foundations1_learn_track/data_source_connectivity/)
+👉 [Next Module: Connect to Raw Data Sources](/learn_new/dp_foundations1_learn_track/data_source_connectivity/)

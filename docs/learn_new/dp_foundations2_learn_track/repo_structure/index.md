@@ -6,7 +6,7 @@ A well-structured data product isn’t just about clean code—it’s about enab
 
 ## Step 1: Create and set up your code repository
 
-###  ** Initialize a Git repository**
+###  **Initialize a Git repository**
 
 Start by creating a version-controlled repository using your team’s preferred platform:
 
