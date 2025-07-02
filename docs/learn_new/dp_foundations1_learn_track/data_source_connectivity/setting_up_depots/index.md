@@ -74,6 +74,7 @@ This step ensures that the database credentials are securely stored and ready fo
 4. Follow the naming convention for Instance secrets- `depotname-r` and `depotname-rw`.
 5. Apply the YAMLs using `dataos-ctl apply` command.
 6. Open the Operations app to verify the successful creation of your resource by checking the status. The Operations app provides a centralized view of all your resources, allowing you to monitor their statuses and ensure they are functioning as intended.
+   
     ![resource_in_operations.png](/learn_new/dp_foundations1_learn_track/data_source_connectivity/setting_up_depots/resource_in_operations.png)
 
 <details><summary>Postgres-read-only Instance Secret YAML</summary>
@@ -113,6 +114,7 @@ instance-secret:
 ```
 
 </details>
+
 <aside class="callout">
 🗣 If you don’t have the necessary credentials, contact your administrator. They will create the instance secret for you and provide its details, which you can then reference in the Depot.
 </aside>
@@ -148,7 +150,6 @@ depot:
     port: 5432  # Replace with the database port number
     database: postgres  # Replace with the database name to connect to
 ```
----
 
 ### **Step 3: Applying the Depot manifest**
 
@@ -157,7 +158,6 @@ Apply the Depot manifest using the following command:
 ```bash
 dataos-ctl resource apply -f <filename with path>
 ```
----
 
 ### **Step 4: Verify the connection**
 
@@ -169,7 +169,6 @@ dataos-ctl get -t depot
 
 This command displays the details of the configured Depot, confirming that it is active and properly connected to the PostgreSQL database.
 
----
 
 <aside class="callout">
 🗣 Ensure that the name of your Instance secret is ${depot-name}-${acl}. For instance, if your Depot name is postgres and the acl(access control list) is rw, then the instance secret name will be postgres-rw.
@@ -215,7 +214,7 @@ To simplify the creation of depots for commonly used data sources, a set of pre-
 To use these templates, you must fill in the key-value properties in the manifest file with the specific details of your data source. The required values will vary depending on the data source. A basic understanding of your organization's data infrastructure, as well as the necessary credentials or connection details, is essential for configuring these templates effectively.
 
 <aside class="callout">
-🗣 For this training, the  **Azure ABFSS Depot** named **`thirdparty`** has already been created. Please open the Operations app to confirm its existence.
+🗣 For this training, the  Azure ABFSS Depot named `thirdparty` has already been created. Please open the Operations app to confirm its existence.
 
 </aside>
 

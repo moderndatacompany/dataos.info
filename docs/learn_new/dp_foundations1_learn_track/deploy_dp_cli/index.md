@@ -20,7 +20,7 @@ Ddeployment process has three stages:
 
 DataOS CLI is a text-based interface that allows users to interact with the DataOS context via command prompts.
 
-## Step 2: Use the `apply` command on CLI to deploy your Data Product on Data Product Hub successfully.
+## Step 2: Use the `apply` command 
 
 1. Run the Bundle manifest file created in the previous topic.
     
@@ -80,7 +80,7 @@ INFO[0000] 🔍 product get...complete
 
 ## Step 4: Exploring Data Product on Data Product Hub
 
-🎯 You're done creating your source-alined data product! Now, check it on Data Product Hub.
+You're done creating your source-alined data product! Now, check it on Data Product Hub.
 
 1. Log in to the DataOS instance and Navigate to Data Product Hub to search the data product.
     

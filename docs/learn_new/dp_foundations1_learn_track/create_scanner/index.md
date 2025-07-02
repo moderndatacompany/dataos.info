@@ -60,7 +60,6 @@ dataos-ctl apply -f <scanner_workflow yaml file>
 
 Check the Operations app for the status of your workflow. If it fails, review the logs and debug as needed.
 
-[screenshot]
 
 > For troubleshooting common issues encountered during the proces of creating Scanner Workflows in DataOS, please refer to the [Troubleshooting Guide](/learn_new/troubleshooting/). This section provides guidance on resolving errors. You can find information to diagnose and resolve problems.
 
