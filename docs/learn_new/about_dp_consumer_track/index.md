@@ -37,6 +37,11 @@ As a consumer of Data Products, you'll master how to:
 
 - **Track metrics and performance:** Monitor performance, usage, and impact metrics of Data Products to assess their effectiveness and communicate results to stakeholders.
 
+<aside class="callout">
+🗣 To fully engage with the hands-on components of this learning track, access to a dedicated DataOS training instance is required. Please contact your training team to obtain the necessary credentials.
+
+</aside>
+
 ## 📚 Core modules
 
 This track introduces the concepts, capabilities, and practical workflows that enable Data Product consumers to confidently explore and extract value from data within DataOS.
