@@ -11,11 +11,11 @@ So, you start by clearly defining the desired outcome or goal of your data analy
 
 ## Step 1: Define the vision and goals
 
-**Vision  is a**  single, concise statement representing the high-level value the data product aims to deliver.
+Vision is a single, concise statement representing the high-level value the data product aims to deliver.
 
 - Define the vision and with stakeholders ensure alignment and agreement.
 
-**Goals is s**pecific targets that deliver on the vision, with measurable success indicators.
+Goals is specific targets that deliver on the vision, with measurable success indicators.
 
 - Conduct a collaborative session to define clear, quantifiable goals and associated measures.
 
@@ -31,13 +31,13 @@ Hypotheses is a statements linking initiatives to goals such as  “We believe t
 
 - Brainstorm and finalize the most promising hypotheses with stakeholders.
 
-**Initiatives are a**pproaches to realize the goals. Multiple initiatives might support one goal.
+Initiatives are approaches to realize the goals. Multiple initiatives might support one goal.
 
 - Define and evaluate different initiatives to determine feasibility and relevance.
 
 ## Step 3: Prioritize use cases and Data Products
 
-**Use Cases are p**ractical applications of the chosen hypothesis.
+Use Cases are practical applications of the chosen hypothesis.
 
 - Identify and prioritize use cases based on business needs.
 - Map each use case to relevant data products.
@@ -63,7 +63,7 @@ Try to ask questions to find the following:
 
 ## Step 5: Define Service Level Objectives (SLOs)
 
-### Key Metrics:
+**Key Metrics:**
 
 - **Architecture**: Performance, scalability, and reliability.
 - **Data Quality**: Completeness, freshness, and accuracy.
