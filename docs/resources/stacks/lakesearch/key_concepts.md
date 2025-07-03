@@ -1,6 +1,6 @@
 # Key concepts of Lakesearch
 
-This section involves key concepts that helps to understand LakeSearch better.
+This section involves key concepts that helps to understand Lakesearch better.
 
 ## full-text search
 
@@ -12,9 +12,9 @@ An index is a collection of documents uniquely identified by a name or an alias.
 
 ## Documents
 
-LakeSearch serializes and stores data in the form of JSON documents. A document is a set of fields, which are key-value pairs that contain your data. Each document has a unique ID, which you can create or have LakeSearch auto-generate.
+Lakesearch serializes and stores data in the form of JSON documents. A document is a set of fields, which are key-value pairs that contain your data. Each document has a unique ID, which you can create or have Lakesearch auto-generate.
 
-A simple LakeSearch document might look like this:
+A simple Lakesearch document might look like this:
 
 ```json
 {
@@ -71,7 +71,7 @@ The Indexer is responsible for reading data from the source table and loading it
 
 ## Search API
 
-A search consists of one or more queries that are combined and sent to LakeSearch. Documents that match a search’s queries are returned in the hits, or search results, of the response. A search may also contain additional information used to better process its queries. For example, a search may be limited to a specific index or only return a specific number of results. You can use the search API to search and aggregate data stored in LakeSearch indices. 
+A search consists of one or more queries that are combined and sent to Lakesearch. Documents that match a search’s queries are returned in the hits, or search results, of the response. A search may also contain additional information used to better process its queries. For example, a search may be limited to a specific index or only return a specific number of results. You can use the search API to search and aggregate data stored in Lakesearch indices. 
 
 
 

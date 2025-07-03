@@ -383,7 +383,12 @@ Create a manifest file for Lakesearch Service. The below given manifest file of 
   ```
 </details>
 
+<aside class="callout">
+🗣️ When configuring a Lakesearch Service, it is recommended to provide the endpoint option (e.g., endpoint: s3.us-gov-east-1.amazonaws.com) along with region when input data resides in S3 source (Lakehouse or Depot). This helps ensure correct connectivity, especially for non-default regions. For other data sources, specifying an endpoint is not required.
+</aside>
+
 To know more about each attribute in detail, please refer to [this link.](/resources/stacks/lakesearch/configurations/)  
+
 
     
 ### **2. Apply the manifest file**
