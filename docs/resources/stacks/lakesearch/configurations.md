@@ -42,7 +42,8 @@ service:
           - name: city
             dataset: dataos://icebase:retail/city
             options:
-              region: ap-south-1
+              region: us-gov-east-1
+              endpoint: s3.us-gov-east-1.amazonaws.com
       index_tables:
         - name: city
           description: "index for cities"
@@ -107,6 +108,7 @@ service:
               factor: 1.2
               jitter: true
 ```
+
 
 The service YAML is divided into two main sections, Service-specific configurations and Index specific configurations.
 
@@ -263,7 +265,7 @@ servicePort: 4080
 
 **Description:**
 
-The `ingress` attribute defines the network exposure configuration for the **LakeSearch** service. It controls how external requests are routed to the service, whether authentication is required, and how paths are handled.
+The `ingress` attribute defines the network exposure configuration for the **Lakesearch** service. It controls how external requests are routed to the service, whether authentication is required, and how paths are handled.
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
@@ -454,7 +456,7 @@ envs:
 
 ```
 
-In this example, the server name is set to `public:testingls`, which uniquely identifies the LakeSearch instance.
+In this example, the server name is set to `public:testingls`, which uniquely identifies the Lakesearch instance.
 
 ---
 
@@ -475,7 +477,7 @@ envs:
 
 ```
 
-This configuration sets the data directory to `public/testingls/sample`, where LakeSearch stores its indexed datasets.
+This configuration sets the data directory to `public/testingls/sample`, where Lakesearch stores its indexed datasets.
 
 ---
 
@@ -483,7 +485,7 @@ This configuration sets the data directory to `public/testingls/sample`, where L
 
 **Description:**
 
-Specifies the directory path for user-defined modules and configurations used by **LakeSearch**.
+Specifies the directory path for user-defined modules and configurations used by **Lakesearch**.
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
@@ -567,7 +569,7 @@ stack: lakesearch:6.0
 
 ### **stackSpec**
 
-**Description:** The `stackSpec` attribute defines the stack-specific configurations required to deploy and manage the indexing pipeline for **LakeSearch**. It encapsulates settings related to data sources, indexing tables, and indexing processes.
+**Description:** The `stackSpec` attribute defines the stack-specific configurations required to deploy and manage the indexing pipeline for **Lakesearch**. It encapsulates settings related to data sources, indexing tables, and indexing processes.
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
@@ -577,7 +579,7 @@ stack: lakesearch:6.0
 
 ### **lakesearch**
 
-**Description:** The `lakesearch` attribute within `stackSpec` specifies configurations for indexing data in LakeSearch, including data sources, index tables, and indexing processes.
+**Description:** The `lakesearch` attribute within `stackSpec` specifies configurations for indexing data in Lakesearch, including data sources, index tables, and indexing processes.
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
@@ -610,8 +612,8 @@ Lakesearch supports four types of sources.
             - name: <name of the dataset>
               dataset: <fully qualified name of the dataset>
               options: (optional)
-                region: <region> (required for Env. created on AWS cloud) 
-        ```
+                region: <region> (required for Env. created on AWS cloud)
+                endpoint: <s3.us-gov-east-1.amazonaws.com> (required for S3 source)
     === "Example"
         ```yaml
         source:
@@ -679,13 +681,11 @@ Lakesearch supports four types of sources.
 </div>
 
 
-
-
 ---
 
 ### **datasets**
 
-**Description:** Defines the input datasets used by LakeSearch.
+**Description:** Defines the input datasets used by Lakesearch.
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
@@ -706,15 +706,100 @@ source:
     - name: city
       dataset: dataos://icebase:retail/city
       options:
-        region: ap-south-1
+        region: us-gov-east-1
+        endpoint: s3.us-gov-east-1.amazonaws.com
+```
 
+---
+
+### **datasets.name**
+
+**Description:** The identifier for the dataset within the Lakesearch Serviceconfiguration. This is a user-defined name used to reference the dataset in other parts of the configuration (such as indexers).
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | mandatory | none | Any alphanumeric string |
+
+**Example usage:**
+
+```yaml
+datasets:
+  - name: city
+```
+
+---
+
+### **datasets.dataset**
+
+**Description:** The fully qualified reference to the data source. This typically follows the format `dataos://<catalog>:<schema>/<dataset>` for Lakehouse sources.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | mandatory | none | A valid dataset URI (e.g., `dataos://icebase:retail/city`) |
+
+**Example usage:**
+
+```yaml
+datasets:
+  - name: city
+    dataset: dataos://icebase:retail/city
+```
+
+---
+
+### **datasets.options**
+
+**Description:** Additional configuration options for the dataset source. For S3 sources, it is recommended to specify both `region` and `endpoint` for correct connectivity, especially in non-default or government regions. For other source types, this field may be omitted or used for other relevant options.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| object | optional | none | Key-value pairs for source-specific settings |
+
+**Example usage:**
+
+```yaml
+options:
+  region: us-gov-east-1
+  endpoint: s3.us-gov-east-1.amazonaws.com
+```
+
+---
+
+### **datasets.options.region**
+
+**Description:** Specifies the AWS region where the S3 bucket is located. Required for environments created on AWS cloud.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | recommended | none | Any valid AWS region (e.g., `us-east-1`, `ap-south-1`, `us-gov-east-1`) |
+
+**Example usage:**
+
+```yaml
+region: us-gov-east-1
+```
+
+---
+
+### **datasets.options.endpoint**
+
+**Description:** Specifies the S3 service endpoint. This is recommended for S3 sources, especially when using non-default or government regions. For other data sources, this is not required.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | recommended for S3 | none | Any valid S3 endpoint (e.g., `s3.us-gov-east-1.amazonaws.com`) |
+
+**Example usage:**
+
+```yaml
+endpoint: s3.us-gov-east-1.amazonaws.com
 ```
 
 ---
 
 ### **index_tables**
 
-**Description:** Defines the structure and metadata of an index table used in LakeSearch.
+**Description:** Defines the structure and metadata of an index table used in Lakesearch.
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
@@ -740,7 +825,7 @@ name: city
 
 ### **index_tables.description**
 
-**Description:** A brief description of the index table’s purpose.
+**Description:** A brief description of the index table's purpose.
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
@@ -905,8 +990,8 @@ The data types defined in the `source.index_table` is different from standard SQ
 | --- | --- | --- |
 | `text` | The text data type forms the full-text part of the table. Text fields are indexed and can be searched for keywords. | full-text field |
 | `keyword` | Unlike full-text fields, string attributes are stored as they are received and cannot be used in full-text searches. Instead, they are returned in results, can be used to filter, sort and aggregate results. In general, it's not recommended to store large texts in string attributes, but use string attributes for metadata like names, titles, tags, keys, etc. | attribute |
-| `int` | Integer type allows storing 32 bit **unsigned** integer values. | attribute |
-| `bigint` | Big integers (bigint) are 64-bit wide **signed** integers. | attribute |
+| `int` | Integer type allows storing 32 bit **unsigned** integer values. | attribute |
+| `bigint` | Big integers (bigint) are 64-bit wide **signed** integers. | attribute |
 | `bool` | Declares a boolean attribute. It's equivalent to an integer attribute with bit count of 1. | attribute |
 | `timestamp` | The timestamp type represents Unix timestamps, which are stored as 32-bit integers. The system expects a date/timestamp type object from the base_sql. | attribute |
 | `float` | Real numbers are stored as 32-bit IEEE 754 single precision floats. | attribute |
@@ -915,7 +1000,7 @@ The data types defined in the `source.index_table` is different from standard SQ
 
 <aside class="callout">
 
-🗣️ It’s often useful to index the same field in different ways for different purposes. For example, you might want to index a string field as both a text field for full-text search and as a keyword field for sorting or aggregating your data. Or, you might choose to use more than one language analyzer to process the contents of a string field that contains user input.
+🗣️ It's often useful to index the same field in different ways for different purposes. For example, you might want to index a string field as both a text field for full-text search and as a keyword field for sorting or aggregating your data. Or, you might choose to use more than one language analyzer to process the contents of a string field that contains user input.
 
 </aside>
 
@@ -923,7 +1008,7 @@ The data types defined in the `source.index_table` is different from standard SQ
 
 ### **index_tables.columns.description**
 
-**Description:** A brief explanation of the column’s role.
+**Description:** A brief explanation of the column's role.
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
@@ -1094,71 +1179,4 @@ start: 1734979551
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| integer | optional | none | Time interval in seconds (e.g., `86400` for daily indexing) |
-
-**Example usage:**
-
-```yaml
-
-step: 86400
-
-```
-
----
-
-### **indexers.options.batch_sql**
-
-**Description:** SQL query used for batch processing of indexed data based on time intervals.
-
-| Data Type | Requirement | Default Value | Possible Value |
-| --- | --- | --- | --- |
-| string (SQL) | optional | none | Valid SQL query |
-
-**Example usage:**
-
-```yaml
-
-batch_sql: |
-  WITH base AS (
-      {base_sql}
-  ) SELECT
-    *
-  FROM
-    base
-  WHERE
-    epoch(ts_city) >= {start} AND epoch(ts_city) < {end}
-
-```
-
-<aside class="callout">
-🗣️ If the dataset does not contain a column of type `timestamp`, any numeric column with unique values can be used, without applying the `epoch` function.
-</aside>
-
-
----
-
-### **indexers.throttle**
-
-**Description:** Controls the rate at which indexing operations are executed.
-
-| Data Type | Requirement | Default Value | Possible Value |
-| --- | --- | --- | --- |
-| object | optional | none | Contains `min`, `max`, `factor`, and `jitter` |
-
-
-- **`min`**: Minimum number of records processed per batch.
-- **`max`**: Maximum number of records processed per batch.
-- **`factor`**: Scaling factor for adjusting batch size dynamically.
-- **`jitter`**: Enables randomness to prevent synchronized execution patterns.
-
-**Example usage:**
-
-```yaml
-
-throttle:
-  min: 10000
-  max: 60000
-  factor: 1.2
-  jitter: true
-
-```
+| integer | optional | none | Time interval in seconds (e.g., `

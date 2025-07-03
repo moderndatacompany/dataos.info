@@ -80,7 +80,7 @@ INFO[0001] 📃 log(public)...complete
                   city
     ```
     
-3. Reapply the LakeSearch Service by running the command below. It will update automatically, eliminating the need to delete the existing Service.
+3. Reapply the Lakesearch Service by running the command below. It will update automatically, eliminating the need to delete the existing Service.
     
     ```bash
     dataos-ctl resource apply -f ${{path-to-the-manifest-file}}
@@ -110,9 +110,9 @@ INFO[0001] 📃 log(public)...complete
 
 ## Depot type GCS not supported
 
-If you deploy LakeSearch in a DataOS environment built on GCS, the Service will remain in a pending state, as LakeSearch is only supported in environments built on Azure or AWS.
+If you deploy Lakesearch in a DataOS environment built on GCS, the Service will remain in a pending state, as Lakesearch is only supported in environments built on Azure or AWS.
 
-Below is an example of the indexer logs when attempting to run a LakeSearch service in a GCS-based environment.
+Below is an example of the indexer logs when attempting to run a Lakesearch service in a GCS-based environment.
 
 ```bash
  dataos-ctl log -t service -n ls-test-query-rewrite -w public -r
