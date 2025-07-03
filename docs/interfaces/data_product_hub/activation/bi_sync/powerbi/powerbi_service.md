@@ -275,108 +275,108 @@ Data masking policies are enforced based on the user who creates and registers t
 
 ## FAQs
 
-**1. Can models be synced directly to Power BI Service?**
+1. **Can models be synced directly to Power BI Service?**
 
-No, the semantic model must first be synced via Power BI Desktop. Direct synchronization to the Power BI Service is not supported. 
+    No, the semantic model must first be synced via Power BI Desktop. Direct synchronization to the Power BI Service is not supported. 
 
-**2. How does the Power BI Service connection work?**
+2. **How does the Power BI Service connection work?**
 
-To establish a connection between the Power BI Service and DataOS, an on-premises data gateway is required. This acts as a secure bridge between Power BI’s cloud environment and on-premises infrastructure hosting the data source.
+    To establish a connection between the Power BI Service and DataOS, an on-premises data gateway is required. This acts as a secure bridge between Power BI’s cloud environment and on-premises infrastructure hosting the data source.
 
-**Prerequisites include:**
+    **Prerequisites include:**
 
-- Microsoft Gateway application must be installed and configured.
+    - Microsoft Gateway application must be installed and configured.
 
-- Npgsql driver version 4.0.16 or earlier must be installed. During installation, the “Npgsql GAC Installation” option should be selected.
+    - Npgsql driver version 4.0.16 or earlier must be installed. During installation, the “Npgsql GAC Installation” option should be selected.
 
-**Connection setup process:**
+    **Connection setup process:**
 
-- Install the Microsoft gateway application and the Npgsql driver.
+    - Install the Microsoft gateway application and the Npgsql driver.
 
-- Publish the .pbip report from Power BI Desktop to Power BI Service.
+    - Publish the .pbip report from Power BI Desktop to Power BI Service.
 
-**Steps:**
+    **Steps:**
 
-- Navigate to the semantic model and open File > Settings.
+    - Navigate to the semantic model and open File > Settings.
 
-- Enable the on-premises gateway toggle.
+    - Enable the on-premises gateway toggle.
 
-- Create a new connection by specifying a unique connection name.
+    - Create a new connection by specifying a unique connection name.
 
-- Provide DataOS username and API token for authentication.
+    - Provide DataOS username and API token for authentication.
 
-- Set the connection type to "Not encrypted".
+    - Set the connection type to "Not encrypted".
 
-- Map this connection to the configured gateway.
+    - Map this connection to the configured gateway.
 
-Once these steps are completed, the Power BI Service can communicate with the DataOS semantic model through the gateway.
+    Once these steps are completed, the Power BI Service can communicate with the DataOS semantic model through the gateway.
 
-**3. How does governance work in Power BI Service?**
+3. **How does governance work in Power BI Service?**
 
-Governance is enforced through access control and semantic data policies at the gateway connection level.
+    Governance is enforced through access control and semantic data policies at the gateway connection level.
 
-**Access control mechanisms:**
+    **Access control mechanisms:**
 
-Each data product requires a distinct connection setup in Power BI Service. The connection includes specific details such as host, port, and database name for the model. Authentication must be done using a valid DataOS username and API token.
+    Each data product requires a distinct connection setup in Power BI Service. The connection includes specific details such as host, port, and database name for the model. Authentication must be done using a valid DataOS username and API token.
 
-**Permission management:**
+    **Permission management:**
 
-Data masking and filtering policies are applied based on the user who creates the gateway connection. This user must either be the owner of the semantic model or have administrative rights within the workspace. These policies are enforced automatically across dashboards and reports, ensuring secure access and compliance.
+    Data masking and filtering policies are applied based on the user who creates the gateway connection. This user must either be the owner of the semantic model or have administrative rights within the workspace. These policies are enforced automatically across dashboards and reports, ensuring secure access and compliance.
 
-**4. How does Power BI sync work when syncing Model-First Data Products?**
+4. **How does Power BI sync work when syncing Model-First Data Products?**
 
-Once the report is published from Desktop to the Power BI Service, a semantic model is created but initially contains no data. To enable data access and interaction:
+    Once the report is published from Desktop to the Power BI Service, a semantic model is created but initially contains no data. To enable data access and interaction:
 
-- The Power BI On-Premises Data Gateway must be configured to link the published semantic model to its data source in DataOS. This gateway acts as a bridge between the cloud-based Power BI Service and the on-premises PostgreSQL interface exposed by DataOS.
+    - The Power BI On-Premises Data Gateway must be configured to link the published semantic model to its data source in DataOS. This gateway acts as a bridge between the cloud-based Power BI Service and the on-premises PostgreSQL interface exposed by DataOS.
 
-- Queries from visuals in Power BI Service are routed through the npgsql driver via the gateway to the Postern Service.
+    - Queries from visuals in Power BI Service are routed through the npgsql driver via the gateway to the Postern Service.
 
-- The Postern Service sends the query to the PgSQL API, which translates and executes it on the relevant Data Sources.
+    - The Postern Service sends the query to the PgSQL API, which translates and executes it on the relevant Data Sources.
 
-Results are returned along the same path back to Power BI Service for rendering in the dashboard.
+    Results are returned along the same path back to Power BI Service for rendering in the dashboard.
 
-**5. What connection mode does Power BI use to connect to DataOS when working with a ‘model-first data product’?**
+5. **What connection mode does Power BI use to connect to DataOS when working with a ‘model-first data product’?**
 
-Power BI uses the DirectQuery mode to connect to DataOS. This connection is established through the Postern service, which routes queries from Power BI Desktop or Service to the appropriate semantic model in Lens. As a result, visuals are refreshed in real-time based on live data, with refresh latency depending on the performance of the data source.
+    Power BI uses the DirectQuery mode to connect to DataOS. This connection is established through the Postern service, which routes queries from Power BI Desktop or Service to the appropriate semantic model in Lens. As a result, visuals are refreshed in real-time based on live data, with refresh latency depending on the performance of the data source.
 
-**6. Where does the computation happen for the Power BI semantic model sync?**
+6. **Where does the computation happen for the Power BI semantic model sync?**
 
-Computation is performed at two levels:
+    Computation is performed at two levels:
 
-- Within DataOS, where the Lens service translates semantic queries into the appropriate source-specific SQL syntax.
+    - Within DataOS, where the Lens service translates semantic queries into the appropriate source-specific SQL syntax.
 
-- Within the data source itself, where the query is executed and the results are returned.
+    - Within the data source itself, where the query is executed and the results are returned.
 
-**7. What data sources are supported to sync the model-first data product to Power BI?**
+7. **What data sources are supported to sync the model-first data product to Power BI?**
 
-All data sources that are compatible with Lens-based semantic modeling can be synchronized with Power BI. You can find the full list of supported data sources here.
+    All data sources that are compatible with Lens-based semantic modeling can be synchronized with Power BI. You can find the full list of supported data sources here.
 
-If you are not using model-first data products and want to connect directly to Power BI use the [Presto ODBC Driver](/resources/cluster/bi_tools/powerbi/using_odbc_driver/#requirements).
+    If you are not using model-first data products and want to connect directly to Power BI use the [Presto ODBC Driver](/resources/cluster/bi_tools/powerbi/using_odbc_driver/#requirements).
 
 
-**8. Do we need to register a separate connection for each ‘model-first data product’ in Power BI Service?**
+8. **Do we need to register a separate connection for each ‘model-first data product’ in Power BI Service?**
 
-Yes, each model-first data product must be registered independently through the Power BI On-Premises Data Gateway. The connection credentials and configuration must be provided for every unique semantic model to ensure secure and isolated access.
+    Yes, each model-first data product must be registered independently through the Power BI On-Premises Data Gateway. The connection credentials and configuration must be provided for every unique semantic model to ensure secure and isolated access.
 
-**9. Do semantic model changes reflect directly in Power BI Service upon refresh?**
+9. **Do semantic model changes reflect directly in Power BI Service upon refresh?**
 
-No, changes made to the Lens-based semantic model do not automatically propagate to the Power BI Service. Users must republish the updated .pbip file from Power BI Desktop to Service to reflect semantic updates in dashboards or reports.
+    No, changes made to the Lens-based semantic model do not automatically propagate to the Power BI Service. Users must republish the updated .pbip file from Power BI Desktop to Service to reflect semantic updates in dashboards or reports.
 
-**10. Is custom measure and dimension creation supported for model-first data products in Power BI?**
+10. **Is custom measure and dimension creation supported for model-first data products in Power BI?**
 
-No, custom definitions are not supported in Power BI when using model-first data products. All logic must be implemented in the semantic model using Lens. To support frequent measure changes, work directly with physical data. More guidance is available here.
+    No, custom definitions are not supported in Power BI when using model-first data products. All logic must be implemented in the semantic model using Lens. To support frequent measure changes, work directly with physical data. More guidance is available here.
 
-**11. What are the known limitations when syncing model-first data products to Power BI?**
+11. **What are the known limitations when syncing model-first data products to Power BI?**
 
-**No direct publishing:**
+    **No direct publishing:**
 
-Semantic model updates cannot be published directly from the Lens interface to Power BI Service. Manual download and project replacement are required.
+    Semantic model updates cannot be published directly from the Lens interface to Power BI Service. Manual download and project replacement are required.
 
-**Gateway dependency:**
+    **Gateway dependency:**
 
-Power BI Service must use the On-Premises Data Gateway and the Npgsql driver to connect with PostgreSQL-based semantic models. PostgreSQL is not supported natively in Power BI cloud-based DirectQuery sources.
+    Power BI Service must use the On-Premises Data Gateway and the Npgsql driver to connect with PostgreSQL-based semantic models. PostgreSQL is not supported natively in Power BI cloud-based DirectQuery sources.
 
-**Special character handling:**
+    **Special character handling:**
 
-Power BI has limited support for special characters in semantic models. It is recommended to resolve such characters either in the raw dataset or during semantic modeling within DataOS.
+    Power BI has limited support for special characters in semantic models. It is recommended to resolve such characters either in the raw dataset or during semantic modeling within DataOS.
 
