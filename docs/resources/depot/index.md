@@ -145,11 +145,11 @@ The catalogue of data sources accessible by one or more components within DataOS
 
 **1. How do I know which data sources are supported in DataOS?**
 
-You can refer to the official DataOS documentation or run the CLI command `dataos sources list` to view all supported data sources.
+You can refer to the [Supported Connectors in DataOS](/resources/depot/list_of_connectors/) document to view all supported data sources.
 
 **2. What are Uniform Data Links (UDLs), and how do they work?**  
 
-UDLs are standardized links that let you access and reference data across environments without moving it. They provide consistent data access regardless of where the data resides.
+UDLs are standardized links that let you access and reference data across the environment without moving it. They provide consistent data access regardless of where the data resides within DataOS.
 
 **3. How can I use the data in a Depot without moving it?**  
 
@@ -157,7 +157,7 @@ DataOS allows compute-on-read and virtual access, so you can query and analyze d
 
 **4. Can I restrict access to specific columns or rows in a Depot?**  
 
-Yes, you can define row- and column-level access policies to control who sees what data within a Depot.
+Yes, you can define row- and column-level access [policies](/resources/policy/) to control who sees what data within a Depot.
 
 **5. Can you get metadata directly from source data?**  
 
@@ -166,12 +166,4 @@ Yes, DataOS automatically extracts metadata during ingestion and allows further 
 **6. Can users see everyone’s Depots or only their own?**  
 
 Access to Depots is controlled by permissions. Users can only see Depots they have access to.
-
-**7. Are workspaces distinctly different if multiple Depots are spun up?**  
-
-Yes, each workspace is logically isolated, ensuring that different Depots and workflows don’t interfere with each other.
-
-**8. Is there any way to know which Resources are using a Depot?**  
-
-Yes, you can track resource usage and dependencies from the Depot UI or by using the CLI/API.
 
