@@ -4,7 +4,7 @@
 
 A [map](/resources/stacks/bento/components/processors/mapping) definition only has one input parameter, which is the context that it is called upon:
 
-```yaml
+```go
 map formatting {
   root = "(%v)".format(this)
 }
@@ -16,9 +16,10 @@ root.b = this.b.apply("formatting")
 # Out: {"a":"(foo)","b":"(bar)"}
 ```
 
-However, we can use object literals in order to provide multiple map parameters. Imagine if we wanted a map that is the exact same as above, except the pattern is `[%v]` instead, with the potential for even more patterns in the future. To do that, we can pass an object with a field `value` with our target to map and a field `pattern` that allows us to specify the pattern to apply:
+Object literals can be used to supply multiple parameters to the mapping function. For example, to replicate the map behavior described previously but apply the pattern `[%v]` instead, an object containing both the value to be mapped and a pattern field specifying the desired format can be provided. This approach also supports extensibility for future pattern variations.
 
-```yaml
+
+```go
 map formatting {
   root = this.pattern.format(this.value)
 }
@@ -41,7 +42,7 @@ root.b = {
 
 Sometimes it's necessary to perform a mapping on all values within an unknown tree structure. You can do that easily with recursive mapping:
 
-```yaml
+```go
 map unescape_values {
   root = match {
     this.type() == "object" => this.map_each(item -> item.value.apply("unescape_values")),
@@ -72,7 +73,7 @@ Expanding a single message into multiple messages can be done by mapping message
 }
 ```
 
-We can pull `items` out to the root with `root = items` with a `mapping` processor and follow it with an `unarchive` processor to expand each element into its own independent message:
+The `items` field can be promoted to the root level by configuring the `mapping` processor with `root = items`. Subsequently, the unarchive processor can be applied to transform each element within the array into a separate, individual message.
 
 ```yaml
 pipeline:
@@ -82,18 +83,18 @@ pipeline:
         format: json_array
 ```
 
-However, most of the time, we also need to map the elements before expanding them, and often that includes copying fields outside of our target array. We can do that with methods such as `map_each` and `merge`:
+However, most of the time, mapping the elements before expanding them is also needed, and often that includes copying fields outside of our target array. This can done with methods such as `map_each` and `merge`:
 
-```yaml
+```go
 root = this.items.map_each(ele -> this.without("items").merge(ele))
 
 # In:  {"id":"foobar","items":[{"content":"foo"},{"content":"bar"},{"content":"baz"}]}
 # Out: [{"content":"foo","id":"foobar"},{"content":"bar","id":"foobar"},{"content":"baz","id":"foobar"}]
 ```
 
-However, the above mapping is slightly inefficient as we would create a copy of our source object for each element with the `this.without("items")` part. A more efficient way to do this would be to capture that query within a variable:
+The mapping described above introduces inefficiency by duplicating the source object for each element due to the use of `this.without("items")`. A more efficient approach involves assigning the result of this query to a variable, thereby avoiding repeated evaluation and redundant object copying.
 
-```yaml
+```go
 let doc_root = this.without("items")
 root = this.items.map_each($doc_root.merge(this))
 
@@ -101,7 +102,7 @@ root = this.items.map_each($doc_root.merge(this))
 # Out: [{"content":"foo","id":"foobar"},{"content":"bar","id":"foobar"},{"content":"baz","id":"foobar"}]
 ```
 
-Also note that when we set `doc_root` we remove the field `items` from the target document. The full config would now be:
+It should also be noted that setting `doc_root` results in the removal of the `items` field from the target document. The complete configuration is as follows:
 
 ```yaml
 pipeline:
@@ -115,11 +116,13 @@ pipeline:
 
 ## Creating CSV
 
-Bento has a few different ways of outputting a stream of CSV data. However, the best way to do it is by converting the documents into CSV rows with Bloblang as this gives you full control over exactly how the schema is generated, erroneous data is handled, and escaping of column data is performed.
+Bento has a few different ways of outputting a stream of CSV data. However, the best way to do it is by converting the documents into CSV rows with Bloblang as this gives the full control over exactly how the schema is generated, erroneous data is handled, and escaping of column data is performed.
 
-A common and simple use case is to simply flatten documents and write out the column values in alphabetical order. The first row we generate should also be prefixed with a row containing those column names. Here's a mapping that achieves this by using a `count` function to detect the very first invocation of the mapping in a stream pipeline:
+A common and simple use case is to simply flatten documents and write out the column values in alphabetical order. The initial row generated should be prefixed with a row containing the corresponding column names. This can be achieved by employing a `count` function within the mapping to identify the first invocation in the stream pipeline. The following mapping demonstrates this behavior:
 
-```yaml
+
+
+```go
 map escape_csv {
   root = if this.re_match("[\"\n,]+") {
     "\"" + this.replace_all("\"", "\"\"") + "\""
@@ -139,7 +142,7 @@ let header = if count("rows_in_file") == 1 {
 root = $header + $kvs.map_each(kv -> kv.value.string().apply("escape_csv")).join(",")
 ```
 
-And with this mapping we can write the data to a newly created CSV file using an output with a simple `lines` codec:
+And with this mapping, the data to a newly created CSV file can be written using an output with a simple `lines` codec:
 
 ```yaml
 output:
