@@ -1,7 +1,8 @@
 
 # Source Data Connectivity
 
-In this module, rather than creating new Depots, you'll utilize the existing source-aligned Data Product established in the previous course of the foundations track. This Data Product exposes three curated datasets—customer_data, product_data, and purchase_data—that have been processed and structured for your use case. These datasets serve as reliable inputs for building semantic models, and consumer-aligned Data Products.
+!!! info "Overview"
+    In this module, rather than creating new Depots, you'll utilize the existing source-aligned Data Product established in the previous course of the foundations track. This Data Product exposes three curated datasets—customer_data, product_data, and purchase_data—that have been processed and structured for your use case. These datasets serve as reliable inputs for building semantic models, and consumer-aligned Data Products.
 
 ---
 

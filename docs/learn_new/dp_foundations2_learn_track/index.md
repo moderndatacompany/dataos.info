@@ -1,6 +1,7 @@
 # Data Product Foundations Track: Course II
 
-Welcome to the second course of the Data Product Foundations Track! In this hands-on journey, you'll build a **consumer-aligned data product** that transforms raw data into structured, business-ready insights for reporting, dashboards, and self-service analytics.
+!!! info "Overview"
+    Welcome to the second course of the Data Product Foundations Track! In this hands-on journey, you'll build a **consumer-aligned data product** that transforms raw data into structured, business-ready insights for reporting, dashboards, and self-service analytics.
 
 ---
 
@@ -74,7 +75,7 @@ To create a successful Data Product, it’s crucial to first understand the busi
 ### **Module 5: Transform & Ingest**
 <div class="grid cards" markdown>
 
-- [Create and Deploy Flare Workflows](/learn_new/dp_foundations2_learn_track/transform_and_ingest/)
+- [Create and Deploy Flare Workflows](/learn_new/dp_foundations2_learn_track/build_pipeline/)
 
 </div>
 
