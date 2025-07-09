@@ -1,10 +1,11 @@
 # Create Monitor and Pager for quality checks 
 
-In this module, you'll learn how to configure Monitor and Pager resources in DataOS to proactively detect data quality check failures and send real-time alerts to your team. This ensures faster incident response and improves the overall reliability of your Data Products.
+!!! info "Overview"
+    In this module, you'll learn how to configure Monitor and Pager resources in DataOS to proactively detect data quality check failures and send real-time alerts to your team. This ensures faster incident response and improves the overall reliability of your Data Products.
 
 ---
 
-## Scenario
+## 📘 Scenario
 
 You are working with customer data from your CRM system. This data powers applications and dashboards used by your sales and marketing teams. Recently, some quality issues—like missing values and invalid formats—went unnoticed and caused problems in reporting. To avoid this in the future, you need to:
 

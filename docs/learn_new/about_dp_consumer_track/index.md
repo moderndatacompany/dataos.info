@@ -1,8 +1,7 @@
 # Data Product Consumer Track
 
-Welcome to the Data Product Consumer Track—your starting point to explore, analyze, and activate Data Products with confidence.
-
-Whether you're a data analyst, data scientist, app developer, or product manager, this track helps you turn data into valuable business intelligence and drive innovation by leveraging the power of DataOS.
+!!! info "Overview"
+    Welcome to the Data Product Consumer Track—your starting point to explore, analyze, and activate Data Products with confidence. Whether you're a data analyst, data scientist, app developer, or product manager, this track helps you turn data into valuable business intelligence and drive innovation by leveraging the power of DataOS.
 
 ## Who is this track for?
 

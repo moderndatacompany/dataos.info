@@ -1,6 +1,7 @@
 # Integration with AI/ML
 
-In this section of the module, you'll learn how to consume the Data Product for training machine learning models. This guide provides step-by-step instructions to consume the Data Product with the help of Jupyter Notebook.
+!!! info "Overview"
+    In this topic of the module, you'll learn how to consume the Data Product for training machine learning models. This guide provides step-by-step instructions to consume the Data Product with the help of Jupyter Notebook.
 
 ## Scenario
 
@@ -106,4 +107,4 @@ Follow these steps to start training your machine learning model using the Data 
 ## Next step
 
 You may want to consume the Data Product via Postgres, then follow the next module:
-[Integration with Postgres](/learn_new/dp_consumer_learn_track/integrate_postgres/)
+👉 [Integration with Postgres](/learn_new/dp_consumer_learn_track/integrate_postgres/)

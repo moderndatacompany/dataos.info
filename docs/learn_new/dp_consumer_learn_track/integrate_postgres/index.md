@@ -1,13 +1,8 @@
 # Integration with Postgres
 
-In this topic, you'll learn how to effectively consume the 'Product Affinity' Data Product through Postgres after confirming that it meets your use case requirements. This guide provides step-by-step instructions to help you connect and query the Data Product seamlessly.
+!!! info "Overview"
+    In this topic, you'll learn how to effectively consume the 'Product Affinity' Data Product through Postgres after confirming that it meets your use case requirements. This guide provides step-by-step instructions to help you connect and query the Data Product seamlessly.
 
-<aside class="callout">
-🗣
-
-Note that, the consumption of the Data Product through Postgres will be unavailable in the Data Products that do not have the semantic model.
-
-</aside>
 
 ## Prerequisites
 
@@ -15,6 +10,13 @@ To maximize your learning experience, ensure you have the following in place:
 
 - An established connection with Postgres.
 - PSQL  client installation.
+
+<aside class="callout">
+🗣
+
+Note that, the consumption of the Data Product through Postgres will be unavailable in the Data Products that do not have the semantic model.
+
+</aside>
 
 ## Steps to  consume Data Products
 
@@ -66,4 +68,4 @@ lens:public:cross-sell-affinity=> select * from cross_sell_opportunity_score lim
 
 If you want to consume the Data Product via GraphQL, refer to the next topic.
 
-[Integration with GraphQL](/learn_new/dp_consumer_learn_track/integrate_graphql/)
+👉 [Integration with GraphQL](/learn_new/dp_consumer_learn_track/integrate_graphql/)

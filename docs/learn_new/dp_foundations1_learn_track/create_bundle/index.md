@@ -1,6 +1,7 @@
 # Creating a Deployable Bundle Resource
 
-After creating and testing all necessary components, it's time to assemble them into a single, deployable unit using a Bundle Resource in DataOS. This bundle acts as the foundation of your data product, packaging all production ready Resources, ensuring consistent and scalable deployments across environments.
+!!! info "Overview"
+    After creating and testing all necessary components, it's time to assemble them into a single, deployable unit using a Bundle Resource in DataOS. This bundle acts as the foundation of your data product, packaging all production ready Resources, ensuring consistent and scalable deployments across environments.
 
 ## 📘 Scenario
 
