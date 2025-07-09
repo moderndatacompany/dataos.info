@@ -541,7 +541,20 @@ nav:
               - Inputs: resources/stacks/bento/components/inputs.md
               - Logger: resources/stacks/bento/components/logger.md
               - Metrics: resources/stacks/bento/components/metrics.md
-              - Output: resources/stacks/bento/components/output.md
+              - Output: 
+                  - resources/stacks/bento/components/output/index.md
+                  - AWS S3 : resources/stacks/bento/components/output/aws_s3.md
+                  - Azure Blob Storage : resources/stacks/bento/components/output/azure_blob_storage.md
+                  - Azure CosmosDB : resources/stacks/bento/components/output/azure_cosmosdb.md
+                  - Azure Queue Storage : resources/stacks/bento/components/output/azure_queue_storage.md
+                  - Azure Table Storage : resources/stacks/bento/components/output/azure_table_storage.md
+                  - Fastbase Depot : resources/stacks/bento/components/output/fastbase_depot.md
+                  - Kafka : resources/stacks/bento/components/output/kafka.md
+                  - kafka Depot : resources/stacks/bento/components/output/kafka_depot.md
+                  - sftp : resources/stacks/bento/components/output/sftp.md
+                  - SQL database Insert : resources/stacks/bento/components/output/sql_insert.md
+                  - SQL Arbitrary query : resources/stacks/bento/components/output/sql_raw.md
+
               - Processors: resources/stacks/bento/components/processors.md
               - Rate Limit: resources/stacks/bento/components/rate_limit.md
             - Recipes: 
