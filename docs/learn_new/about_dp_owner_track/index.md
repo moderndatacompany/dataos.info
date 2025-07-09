@@ -1,8 +1,7 @@
 # Data Product Owner Track
 
-Welcome to the DataOS Owner learning track!
-
-In DataOS, a data product owner must oversee the entire journey of a data product, from its initial design and deployment to its eventual deprecation.This track equips you to define, manage, and evolve Data Products that align with business goals, deliver measurable value, and stay governed throughout their lifecycle.
+!!! info "Overview"
+    Welcome to the DataOS Owner learning track! In DataOS, a data product owner must oversee the entire journey of a data product, from its initial design and deployment to its eventual deprecation.This track equips you to define, manage, and evolve Data Products that align with business goals, deliver measurable value, and stay governed throughout their lifecycle.
 
 ## Who this track is for
 
@@ -31,7 +30,7 @@ Gain the skills and mindset to drive strategic data product outcomes across the 
 - **Operationalize Reliability**: Configure alerts and response workflows to ensure timely detection and resolution of data product issues.
 
 
-## Core modules
+## 📚 Core modules
 
 <div style="text-align: left; padding-left: 1em;">
 <img src="/learn_new/about_dp_owner_track/dp_owner_track.jpg" alt="infographics">

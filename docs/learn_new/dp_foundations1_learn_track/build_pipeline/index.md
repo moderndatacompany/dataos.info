@@ -1,6 +1,8 @@
 # Building and Maintaining Data Pipelines
 
-In this topic, you’ll learn how to build and maintain data pipelines to deliver reliable data for your data products. Your focus will be on maintaining seamless data flow, ensuring data accuracy, and applying the necessary transformations when needed.
+!!! info "Overview"
+    In this topic, you’ll learn how to build and maintain data pipelines to deliver reliable data for your data products. Your focus will be on maintaining seamless data flow, ensuring data accuracy, and applying the necessary transformations when needed.
+
 
 DataOS enables you to explore your data without the need to move it. However, there are scenarios where data transformations are necessary to prepare it for use—for example, converting string fields to integers or doubles. In such cases, we ingest the data and apply the required transformations before it can be effectively utilized.
 
