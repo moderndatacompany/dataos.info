@@ -1,6 +1,7 @@
 # Create a Scanner Workflow
 
-After establishing a secure connection using a Depot, the next step is to validate that connection by creating and running a Scanner Workflow. This allows you to extract metadata from the connected data source and make it available for query within DataOS—without needing to ingest the data. 
+!!! info "Overview"
+    After establishing a secure connection using a Depot, the next step is to validate that connection by creating and running a Scanner Workflow. This allows you to extract metadata from the connected data source and make it available for query within DataOS—without needing to ingest the data. 
 
 ---
 
@@ -102,7 +103,7 @@ Contact the administrator to confirm if a cluster is set up for you, then select
 5. Click Run and review the query results
 
 You can now explore source data using SQL without ingestion—thanks to the metadata discovered through scanning.
-
+![dimage](/learn_new/dp_foundations1_learn_track/create_scanner/query_scanned_data.png)
 
 ## Next step
 

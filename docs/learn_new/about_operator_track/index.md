@@ -1,8 +1,7 @@
 # DataOS Operator Track
 
-Welcome to the DataOS Operator Track!
-
-This track is built for those who are responsible for managing and maintaining the DataOS platform. This role involves overseeing the system’s performance, ensuring the secure management of resources, and guaranteeing compliance with regulatory standards. 
+!!! info "Overview"
+    Welcome to the DataOS Operator Track! This track is built for those who are responsible for managing and maintaining the DataOS platform. This role involves overseeing the system’s performance, ensuring the secure management of resources, and guaranteeing compliance with regulatory standards. 
 
 The DataOS Operator handles a range of tasks, from provisioning compute resources to managing access controls and system security. They are also responsible for monitoring system health, ensuring interoperability with external systems, and scaling the platform to meet growing demands. In essence, the DataOS Operator ensures the platform’s integrity and performance, allowing teams to leverage data efficiently while safeguarding critical assets.
 
@@ -27,7 +26,7 @@ The DataOS Operator handles a range of tasks, from provisioning compute resource
 - **Platform upgrades & rollbacks**: Ensure smooth updates with strategies for hotfixes, rollbacks, and downtime planning.
 
 
-## Core modules
+## 📚 Core modules
 
 The learning track is divided into modules, with each module focusing on key operational areas. Every module contains specific topics that address common challenges you will encounter as a DataOS Operator and guide you through the core aspects of this role with the tools to troubleshoot efficiently.
 

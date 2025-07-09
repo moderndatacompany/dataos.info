@@ -1,6 +1,7 @@
 # Setting Up Depots
 
-In this topic, you’ll learn how to establish secure connections from DataOS to your external data sources using Depots—without moving any data. 
+!!! info "Overview"
+    In this topic, you’ll learn how to establish secure connections from DataOS to your external data sources using Depots—without moving any data. 
 
 ## 📘 Scenario
 

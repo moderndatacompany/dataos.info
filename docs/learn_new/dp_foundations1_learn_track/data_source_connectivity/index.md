@@ -1,7 +1,8 @@
 
 # Source Data Connectivity
 
-Before you can build a data product, you need to connect to the data itself. In this module, you’ll learn how to configure **Depots** in DataOS—your gateway to accessing external data sources securely, without needing to move the data.
+!!! info "Overview"
+    Before you can build a data product, you need to connect to the data itself. In this module, you’ll learn how to configure **Depots** in DataOS—your gateway to accessing external data sources securely.
 
 ---
 

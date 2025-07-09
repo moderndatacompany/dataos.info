@@ -1,9 +1,7 @@
 # Build Workflows for Transformed Output Datasets
 
-
-You’ve already transformed raw, unstructured data from Azure Blob into structured tables in Postgres during the first part of the foundations learning path. Now, your next challenge is to derive actionable insights from this structured data— insights that sales and marketing teams can consume.
-
-In this step, we’ll build Flare workflows to ingest and transform data into two strategic outputs. These workflows demonstrate complex SQL logic and joins, and also show how you can support analytics to drive business decisions by providing enriched datasets as output.
+!!! info "Overview"
+    You’ve already transformed raw, unstructured data from Azure Blob into structured tables in Postgres during the first part of the foundations learning path. Now, your next challenge is to derive actionable insights from this structured data— insights that sales and marketing teams can consume. In this step, we’ll build Flare workflows to ingest and transform data into two strategic outputs. These workflows demonstrate complex SQL logic and joins, and also show how you can support analytics to drive business decisions by providing enriched datasets as output.
 
 ---
 
