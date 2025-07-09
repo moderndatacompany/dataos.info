@@ -1,6 +1,7 @@
 # Pipeline Observability
 
-In this topic, you'll learn how to enhance the observability of your DataOS workflows by configuring Monitor and Pager resources. These tools help detect workflow failures and notify your team in real time.
+!!! info "Overview"
+    In this topic, you'll learn how to enhance the observability of your DataOS workflows by configuring Monitor and Pager resources. These tools help detect workflow failures and notify your team in real time.
 
 ---
 
