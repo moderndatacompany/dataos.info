@@ -1,6 +1,7 @@
 # Data Product Developer Track
 
-With a strong emphasis on aligning technical execution with business objectives, this track ensures learners can confidently translate requirements into reliable, governed data products that drive value across the organization.
+!!! info "Overview"
+    With a strong emphasis on aligning technical execution with business objectives, this track ensures learners can confidently translate requirements into reliable, governed data products that drive value across the organization.
 
 **Data Product Developers** play a key role in creating, managing, and evolving Data Products within DataOS. They are responsible for building the data infrastructure that powers everything from analytics to business intelligence, making sure data flows smoothly through pipelines and stays accurate and accessible for users.
 
@@ -33,7 +34,7 @@ As a Data Products Developer, you'll master how to:
 🗣️ Specific tasks may differ based on the role or objective:
 </aside>
 
-## Core modules
+## 📚 Core modules
 
 The learning track walks you through each stage of the data product lifecycle with hands-on modules and best practices—helping you build and manage production-ready Data Products in DataOS, ensuring a comprehensive and practical learning experience.
 

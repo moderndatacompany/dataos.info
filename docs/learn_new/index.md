@@ -9,9 +9,20 @@ search:
 
 Welcome to the DataOS Learning Hub!
 
-We have designed the DataOS Learning Hub to cater to your specific role and expertise level within the DataOS ecosystem. Our learning tracks are tailored to meet the needs of different personas, ensuring you receive the knowledge and skills required to excel. To further support your journey, we have made quick start guides and instructional videos available. 
+We have designed the DataOS Learning Hub to cater to your specific role and expertise level within the DataOS ecosystem. Our learning tracks are tailored to meet the needs of different personas, ensuring you receive the knowledge and skills required to excel. To further support your journey, we have made quick start guides and instructional videos available.
 
-## Learning tracks 
+## :material-smart-card-outline: Foundation course
+
+Start your data journey with the DataOS Foundations Course- your essential starting point for understanding data products and navigating the DataOS ecosystem. 
+
+<div class= "grid cards" markdown>
+
+-   [An Introduction to Data Products in DataOS](/learn_new/understand_data_products/)
+
+-   [DataOS essentials](/learn_new/dataos_essentials/)
+    
+</div>
+## :fontawesome-solid-user-group: Learning tracks 
 
 Our learning tracks are crafted to meet the diverse needs of data consumers, developers, product owners, and platform operators. Each track is broken into bite-sized modules and topics, blending quick concepts, real-world scenarios, code snippets, and visuals. 
 

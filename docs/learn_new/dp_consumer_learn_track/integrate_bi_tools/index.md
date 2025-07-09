@@ -6,36 +6,47 @@ search:
 
 # Integration with BI tools
 
-This module explores how a data analyst activates 'Product Affinity' data product within their organization’s data ecosystem. It enables you to connect the semantic model with various Business Intelligence (BI) tools. This synchronization facilitates real-time access to critical insights, empowering organizational stakeholders to make informed, data-driven decisions.
+!!! info "Overview"
+    Unlock the power of your semantic model by connecting the Product Affinity Data Product to your favorite BI tools. This enables real-time access to meaningful insights and empowers teams to make fast, data-driven decisions.
 
 ## Scenario
 
-After understanding the semantic model and validating the data quality, you are ready to build a comprehensive dashboard for your marketing campaign analysis. Using your preferred BI tool, you integrate the 'Product Affinity' Data Product to create visualizations that reveal customer behavior patterns and potential product affinities, allowing you to present actionable insights to the marketing team.
+You’ve explored the semantic model and validated data quality—now it’s time to visualize your insights!
 
-To integrate with BI tools, click the 'BI Sync' icon from the 'Product Affinity' Data Product page. This will redirect you to the 'BI Sync' section under the 'Access Options' tab.
+As a data analyst preparing a marketing campaign dashboard, you want to reveal patterns in customer behavior and highlight product affinities. To do this, you’ll integrate Product Affinity with your BI tool of choice and build compelling visualizations to share with your marketing team.
+
+## Getting Started with BI Sync
+
+To begin integration:
+
+1. Go to the Product Affinity Data Product page.
+
+2. Click the BI Sync icon.
+
+3. You’ll be redirected to the Access Options tab → BI Sync section.
 
 ![image.png](/learn/dp_consumer_learn_track/integrate_bi_tools/image.png)
 
-
+## Available Integrations
 The BI Sync option allows you to integrate 'Product Affinity' with the following tools:
 
-## Tableau Cloud
+### **Tableau Cloud**
 
 Click [here](/learn/dp_consumer_learn_track/integrate_bi_tools/tab_cloud/) to connect to Tableu Cloud, online platform for creating and sharing interactive dashboards, enabling real-time insights from 'Product Affinity'.
 
-## Tableau Desktop
+### **Tableau Desktop**
 
 Click [here](/learn/dp_consumer_learn_track/integrate_bi_tools/tab_desktop/) to link to Tabaleu desktop, your local analytics tool for building custom visualizations and in-depth analysis from 'Product Affinity' data.
 
-## Superset
+### **Superset**
 
 Refer [here](/learn/dp_consumer_learn_track/integrate_bi_tools/superset/) to integrate with this open-source tool to quickly explore and create lightweight dashboards using 'Product Affinity' Data Product.
 
-## Power BI Desktop
+### **Power BI Desktop**
 
 Click [here](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/) to sync with interactive reporting tool to visualize and analyze 'Product Affinity' data in real-time.
 
-## PowerBI Service
+### **PowerBI Service**
 
 Click [here](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/powerbi_service/) to sync with interactive reporting tool to visualize and analyze 'Product Affinity' data in real-time.
 
