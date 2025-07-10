@@ -66,31 +66,37 @@ The Data Product Hub serves as a centralized place where you can access and anal
 **Q2: : What’s the benefit of a Perspective?**
 Perspectives let you save your data exploration path, so you or others can return to that exact analysis with one click.
 
-## Quick quiz
+## Self-Check Quiz
+
+Do a self-check quiz to gauge your understanding.
 
 1. What is required to create a Perspective in the Data Product Hub?
-a) A saved API query
-b) A semantic model-enabled Data Product
-c) A Metric with two measures
-d) Admin privileges
+
+a) A saved API query <br>
+b) A semantic model-enabled Data Product<br>
+c) A Metric with two measures <br>
+d) Admin privileges <br>
 
 2. Which of the following is not a feature of the Data Product Hub?
-a) Access to governed data
-b) Creating new source systems
-c) Exploring business metrics
-d) Saving reusable views as Perspectives
+
+a) Access to governed data<br>
+b) Creating new source systems<br>
+c) Exploring business metrics<br>
+d) Saving reusable views as Perspectives<br>
 
 3. Why is contextual metadata important in a Data Product?
-a) It helps compress the data for faster delivery
-b) It provides background and understanding for the data’s use
-c) It’s needed for file export functionality
-d) It enables password-protected access
+
+a) It helps compress the data for faster delivery<br>
+b) It provides background and understanding for the data’s use<br>
+c) It’s needed for file export functionality<br>
+d) It enables password-protected access<br>
 
 4. What best describes a Metric in the Data Product Hub?
-a) A visualization template
-b) A logical view with one measure and a time dimension
-c) A database snapshot
-d) A version of a Data Product
+
+a) A visualization template<br>
+b) A logical view with one measure and a time dimension<br>
+c) A database snapshot<br>
+d) A version of a Data Product<br>
 
 ## Next step
 
