@@ -1,6 +1,7 @@
 # Deploy and Register Data Product
 
-In the last module you built business-ready tables, views, and a Lens model on top of the source-aligned retail datasets you ingested earlier.
+!!! info "Overview"
+    In the last module you built business-ready tables, views, and a Lens model on top of the source-aligned retail datasets you ingested earlier.
 Now it’s time to wrap everything into a single, deployable bundle, publish the Data Product spec, and surface it in the Data Product Hub (DPH) & Metis for your consumers.
 
 ## Step 1: Create a Bundle Definition

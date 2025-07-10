@@ -1,6 +1,7 @@
 # Designing a Consumer-Aligned Data Product
 
-Designing a consumer-aligned data product isn't just about connecting data pipelines—it's about crafting insights that matter to your business. In this module, you’ll dive into a structured, right-to-left approach to design a **consumer-aligned data product** that meets real-world business goals with precision.
+!!! info "Overview"
+    Designing a consumer-aligned data product isn't just about connecting data pipelines—it's about crafting insights that matter to your business. In this module, you’ll dive into a structured, right-to-left approach to design a **consumer-aligned data product** that meets real-world business goals with precision.
 
 You’ll learn to translate business needs into well-modeled, high-quality data products that are secure, scalable, and insight-driven.
 
