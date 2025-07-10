@@ -1,4 +1,4 @@
-# Viewing Data Product details
+# Viewing Data Product Details
 
 !!! info "Overview"
     In this topic, you'll learn to explore the details of a Data Product in the Data Product Hub.
@@ -7,7 +7,7 @@
 
 You’ve found the Product Affinity Data Product. Now, let’s assess whether it fits your needs for analyzing purchasing patterns. You’ll evaluate its reliability by reviewing contributors, metadata, quality, metrics, and outputs.
 
-## Quick refresher
+## Quick concepts
 
 
 As we understand that Data Product is a ready-to-use, reliable, and governed data solution designed to provide meaningful and actionable insights to meet specific business needs. It exposes clean, analysis-ready data through APIs and interfaces.
@@ -61,7 +61,7 @@ After discovering the 'Product Affinity' Data Product, follow these steps to exp
         ![view_model.png](/learn_new/dp_consumer_learn_track/view_dp_info/view_model.png)
         
     - **Metrics Details**: On the Metrics tab, you’ll see how each metric is calculated from the input datasets. For example, the “Cross Sell Opportunity Score” metric is derived from the product and purchase datasets.
-        
+    
         ![view_metrics.png](/learn_new/dp_consumer_learn_track/view_dp_info/view_metrics.png)
         
 5. **Review quality checks:** Get the details on the quality of the Data Product categorized by accuracy, completeness, freshness, schema, uniqueness, and validity.
@@ -115,19 +115,19 @@ b) Storing raw input data<br>
 c) Mapping data to business terms for easier analysis<br>
 d) Sending alerts<br>
 
-Q2. Try it task: Explore a Data Product in Your Training Instance
+**Q2. Try it task: Explore a Data Product in Your Training Instance.**
 
 Follow the steps below in your **DataOS training instance** to reinforce your learning:
 
-1. **Open the Data Product Hub**
-2. **Search** for the Data Product named **"Product Affinity"**
-3. **Navigate** through its tabs and answer the following:
+1. Open the Data Product Hub
+2. Search for the Data Product named **"Product Affinity"**
+3. Navigate through its tabs and answer the following:
 
-    - **What inputs does it use?**  
+    - *What inputs does it use?* 
   
-    - **What key metric is defined in the Semantic Model?**  
+    - *What key metric is defined in the Semantic Model?*  
   
-    - **Which BI tools are listed in its access options?**  
+    - *Which BI tools are listed in its access options?*  
   
 
 ## Next step
