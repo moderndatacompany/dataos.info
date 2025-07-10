@@ -31,19 +31,20 @@ Outputs have an optional field `label` that can uniquely identify them in obse
 |---|---|
 |[Fastbase Depot](/resources/stacks/bento/components/output/fastbase_depot/)|Depot, Pulsar|
 |[kafka Depot](/resources/stacks/bento/components/output/kafka_depot/)|Depot, Kafka|
-|[Kafka](/resources/stacks/bento/components/output/kafka/)|Kafka|
 |[AWS S3](/resources/stacks/bento/components/output/aws_s3)| AWS S3 Bucket|
 |[Azure Blob Storage](/resources/stacks/bento/components/output/azure_blob_storage)| Azure Blob Storage |
-|[Azure CosmosDB](/resources/stacks/bento/components/output/azure_cosmosdb)| Azure CosmosDB |
-|[Azure Queue Storage](/resources/stacks/bento/components/output/azure_queue_storage)| Azure Queue Storage |
-|[Azure Table Storage](/resources/stacks/bento/components/output/azure_table_storage)| Azure Table Storage |
+
+<!-- 
+|[Kafka](/resources/stacks/bento/components/output/kafka/)|Kafka|
 |[sftp](/resources/stacks/bento/components/output/sftp)| SSH/Secure File Transfer Protocol Server |
 |[SQL database Insert](/resources/stacks/bento/components/output/sql_insert)| For mysql, postgres, clickhouse, mssql, sqlite, oracle, snowflake, trino, gocosmos, spanner |
 |[Arbitrary SQL query](/resources/stacks/bento/components/output/sql_raw)| For mysql, postgres, clickhouse, mssql, sqlite, oracle, snowflake, trino, gocosmos, spanner |
 
-
-
-<!-- |[Pulsar](/resources/stacks/bento/components/output/pulsar/)|Pulsar| -->
+|[Azure CosmosDB](/resources/stacks/bento/components/output/azure_cosmosdb)| Azure CosmosDB | 
+|[Azure Queue Storage](/resources/stacks/bento/components/output/azure_queue_storage)| Azure Queue Storage |
+|[Azure Table Storage](/resources/stacks/bento/components/output/azure_table_storage)| Azure Table Storage |
+|[Pulsar](/resources/stacks/bento/components/output/pulsar/)|Pulsar| 
+-->
 
 
 </div>
