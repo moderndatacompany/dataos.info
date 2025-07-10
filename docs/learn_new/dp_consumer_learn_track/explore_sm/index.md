@@ -1,23 +1,24 @@
-# Exploration of semantic model
+# Exploration of Semantic Model
 
-In this topic, we’ll walk you through navigating and understanding the associated semantic model of Data Product to explore data in Studio to understand how it aligns with business goals.
+!!! info "Overview"
+    Learn how to explore and understand a Data Product’s semantic model in DataOS using Studio. This helps you connect data structure with business goals.
 
-## Scenario
+## 📘 Scenario
 
-Imagine you’re a data analyst and want to analyze data product 'Product Affinity', aiming to leverage data insights for performance tracking and customer behavior analysis. By exploring its semantic model on Data Product Hub, you plan to access and analyze cross-sell and upsell opportunities, which involves examining dimensions, measures, and metrics like `customer_segments`, `product affinity scores`,and `total spending`. Let’s see how this exploration unfolds.
+Imagine you’re a data analyst and want to analyze data product 'Product Affinity', aiming to leverage data insights for performance tracking and customer behavior analysis. By exploring its semantic model on Data Product Hub, you plan to access and analyze cross-sell and upsell opportunities, which involves examining dimensions, measures, and metrics like `customer_segments`, `product affinity scores`,and `total spending`. 
 
 ## Quick concepts
 
-'Lens' is a key DataOS Resource in creating and implementing semantic models. Here are the foundational concepts to know before diving into exploring your semantic model:
+'Lens' is a key DataOS Resource in creating and implementing semantic models. Here’s what makes them powerful:
 
 1. **Physical Data Sources**  
-   Semantic models connect to a variety of physical data sources, such as Postgres, BigQuery, and Redshift. Understanding where your data originates helps in appreciating how the semantic model organizes it into logical structures.
+   Semantic models connect to a variety of physical data sources, such as Postgres, BigQuery, and Redshift. Knowing the origin helps you understand how the semantic model organizes it into logical structures.
 
 2. **Lakehouse (Optional)**  
-   For large datasets, consider creating a Lakehouse within DataOS. Lakehouses unify data from multiple sources, making it easier to manage and query data.
+   For large datasets, you may unify data from multiple sources, making it easier to manage and query data. Consider storing the aggragated data to Lakehouse, a managed storage architecture that blends the strengths of both data lakes and data warehouses.
 
 3. **Logical Tables**  
-   A semantic model maps physical data (from data sources or Lakehouse) to logical tables establishing relationships between data entities. These logical tables are structured representations of your data. Semantic models organize these tables to simplify analysis and help users focus on insights rather than raw data.
+   A semantic model maps physical data (from data sources or Lakehouse) to logical tables establishing relationships between data entities—making your work faster and clearer.
 
 4. **Table Properties**  
    When creating logical tables, SQL and key properties like schema, data types, and constraints are specified.
@@ -34,17 +35,17 @@ Imagine you’re a data analyst and want to analyze data product 'Product Affini
 
 ## Uncover insights from Semantic Model
 
-Exploring semantic models allows users to understand the data flow, relationships within the data, and the transformations that drive insights.
+Exploring semantic models allows you to understand the data flow, relationships within the data, and the transformations that drive insights.
 
 **Navigate to the ‘Explore’ option**
     
-On the Data Product details page, click the 'Explore' button to navigate to the Studio in the Data Product Hub.
+1. On the Data Product details pageand click 'Explore' to navigate to the Studio in the Data Product Hub.
 
-![exploration_page.png](/learn_new/dp_consumer_learn_track/explore_sm/exploration_page.png)
+    ![exploration_page.png](/learn_new/dp_consumer_learn_track/explore_sm/exploration_page.png)
 
-The interface presents three tabs: 'Studio', 'Model', and 'GraphQL'. Each tab is designed to help you analyze the data model from a unique perspective
+2. You'll land in the Explore view with tabs: Studio, Model, and GraphQL.
 
-![sm_explore.png](/learn_new/dp_consumer_learn_track/explore_sm/sm_explore.png)
+    ![sm_explore.png](/learn_new/dp_consumer_learn_track/explore_sm/sm_explore.png)
 
 Before exploring data via the semantic model in Studio, let us understand the model fully. 
     
@@ -63,7 +64,7 @@ Explore entities like `Customer`, `Product`, and `Purchase` Data along with key 
 
 Click 'Show Fullscreen' to explore the model easily. Then, use 'Expand All' to view all measures, dimensions, entities, and metrics for detailed insights.
 
-To examine the members of a single metric, say `total_spending`. You hover over it and get the names of the dimensions and measures taken from purchase_data and the product table represented by the blue dashed line. The blue dashed lines highlight which dimensions and measures from the tables are utilized to calculate the `total_spending` metric. This referencing adopts a naming convention where each measure or dimension is prefixed with its table name, like `purchase_total_spend`. This convention and visual representation make it easy to understand the relationships and dependencies within the data model.
+To examine the members of a single metric, say `total_spending`. You hover over it and get the names of the dimensions and measures taken from purchase_data and the product table represented by the blue dashed line. The blue dashed lines highlight which dimensions and measures from the tables are utilized to calculate the metric. This referencing adopts a naming convention where each measure or dimension is prefixed with its table name, like `purchase_total_spend`. This convention and visual representation make it easy to understand the relationships and dependencies within the data model.
 
 ![metric_referennce.png](/learn_new/dp_consumer_learn_track/explore_sm/metric_referennce.png)
 
@@ -77,39 +78,31 @@ Under 'Schema', gain insight into the table structure, column names, data types,
 
 ![schema.png](/learn_new/dp_consumer_learn_track/explore_sm/schema.png)
 
-Here you gain access to specific information about table structures, columns, data types, and relationships, deepening your understanding of how data is stored and connected within the Data Product. The 'Overview' section gives you additional details, such as the Lens model’s name and user groups  (default), and the API scopes give the info on the level of access given to the users included in the group and the redacted fields for data security. Here, the group includes *, which means everyone provides access to all other members.
+The 'Overview' section gives you additional details, such as the Lens model’s name and user groups  (default), and the API scopes give the info on the level of access given to the users included in the group and the redacted fields for data security. Here, the group includes *, which means everyone provides access to all other members.
 
-![schema_overview.png](/learn_new/dp_consumer_learn_track/explore_sm/71c9f0db-a619-4394-9139-630e0de7eb84.png)
+![schema_overview.png](/learn_new/dp_consumer_learn_track/explore_sm/schema_overview.png)
 
 You select a table `customer` to get more details on the table.
 
-![customer_table.png](/learn_new/dp_consumer_learn_track/explore_sm/99e6316a-f97d-4c9a-885a-7c399e763d40.png)
+![customer_table.png](/learn_new/dp_consumer_learn_track/explore_sm/customer_table.png)
 
 The schema section shares the following details:
 
-- **Table Name and Type**: The name `Customer` is shown along with its type which is a table.
-- **Measures**: Here, `total_customers` provides a quantitative count of customers, with its data type and aggregation type shown.
-- **Dimensions**: `customer_id`, `country`, and `customer_segments` are categorized as data within the `Customer` table. You observe the key on the `customer_id` row, indicating that the `cusotmer_id` the primary key of the `customer` table.
-- **Segments**: If available, pre-defined filters enhance granular analysis. Here, there are no segments defined, hence zero.
-- **Additional Info**: Secured and redacted fields for sensitive data protection will be shown at the bottom as you set them in the Lens user groups and data policy manifest file.
+**Quick Schema Insights**
 
-Each element you explore reinforces your understanding of how data connects, ensuring you can confidently interact with and analyze the Data Product. 
+- **Name & Type**: E.g., `Customer` table.
+- **Measures**: Like `total_customers` with count logic.
+- **Dimensions**: Fields like `customer_id` (primary key), `country`, `segments`.
+- **Segments**: Optional pre-defined filters for granular analysis.
+- **Additional Info**: Displays redacted fields and user access as you set them in the Lens user groups and data policy manifest file.
 
 ### **Explore Configuration in Files Section**
 
-View the underlying SQL, YAML files, and other resources to see the logic and structure of the data model.
-
-This section contains all relevant SQL files, tables, views, and YAML files essential for defining the Lens. This resource proves invaluable as you explore the actual implementation and configuration of the model.
-
-You begin examining the files available, recognizing that this is a crucial feature for developers who need access to the underlying code and metadata that powers the Data Product. As you look through the list, you see the YAML implementation files for the Lens model, which span all entities involved in your analysis.
-
-If you want further details, notice the 'Open in Metis' button in the top right corner. You click this button to access the semantic model artifact in Metis.
-
-Engaging with the 'Files' section, you understand the Data Product’s structure and logic, empowering you to effectively develop and manage your data workflows.
+View all relevant SQL files, tables, views, and YAML files essential for defining the Lens. This resource helps you explore the actual implementation and configuration of the model. You can click the 'Open in Metis' button in the top right corner to access the semantic model artifact in Metis.
 
 ## Analyze data with Studio
 
-You begin your exploration on the 'Studio' tab, which opens by default when you access the Explore page. This interactive workspace is designed for data consumers who want to create queries to analyze and visualize data as tables, pivot tables, and charts- all without coding skills.
+Start in the 'Studio' tab—an interactive, no-code workspace to query and visualize data as tables, charts, and pivots.
 
 ![studio_tab.png](/learn_new/dp_consumer_learn_track/explore_sm/studio_tab.png)
 
@@ -147,9 +140,7 @@ Save your query result for later by clicking 'Save Perspective'. Give it a meani
 
 Once you save any Perspective, it will be accessible to everyone and can be accessed in the Perspective section of Explore Studio.
 
- 
-
-![access_perspective.png](/learn_new/dp_consumer_learn_track/explore_sm/dc0927ba-08ae-4376-8e91-3e9743a31943.png)
+![access_perspective.png](/learn_new/dp_consumer_learn_track/explore_sm/access_paerspective.png)
 
 <aside class="callout">
 🗣️ If you want to download the findings, click on the download ⬇️ icon next to the 'Save Perspective' button to download it. It will ask you to download the table in various formats, such as csv, json, etc., as shown in the image below.
@@ -182,7 +173,7 @@ Transform your table into a visual story:
     
 4. Now, you want to name both axes to make it more readable. For it, you click the Configure section and choose the Axes section in it.
     
-    Now, you label both the axes with a suitable name as given in the following image:
+    Now, you label both the axes as given in the following image:
     
     ![axes.png](/learn_new/dp_consumer_learn_track/explore_sm/axes.png)
     
@@ -261,118 +252,59 @@ To save a query from two days ago for future reference, click on the query, give
 
 ## Integration with API
 
-Some team members, who are developers working on a data-driven application, need a flexible and efficient way to query and retrieve specific data, a specific metric or a subset of data, from the system. 
+<aside class="callout"> ⚠️ **Developer-Focused Section**: This content is specifically intended for <b>developers</b> or <b>technical users</b> who want to integrate data programmatically into apps, pipelines, or services using APIs.  
 
-For teams needing to fetch data programmatically, the 'Integration' tab provides options:
+If you're a **business user** exploring data through visual tools (like dashboards or Studio), you can skip this section—no action needed.
+</aside>
 
-![integration_tab.png](/learn_new/dp_consumer_learn_track/explore_sm/integration_tab.png)
+👉 Developers: [Click here to learn more about API Integeration →](/learn_new/dp_consumer_learn_track/explore_sm/api_integration/)
 
-Let’s assume you need to fetch the 'total number of customers by country'. Rather than building REST endpoints, you can efficiently query the data using a `curl` command, `GraphQL`, or `Postgres`, depending on your preference. These methods allow you to retrieve data from a given endpoint and present it in a user-friendly format within your application.
+## Quick knowledge check
 
-First, select the following dimensions and measures:
+**1. What does the Studio tab in DataOS allow you to do?**
 
-- `total_customers`
-- `country`
+&nbsp;&nbsp;A. View data lineage <br>
+&nbsp;&nbsp;B. Write Python scripts <br>
+&nbsp;&nbsp;C. Run drag-and-drop queries and visualize results <br>
+&nbsp;&nbsp;D. Edit data pipelines <br>
 
-### **Using Curl**
+**2. What does the ‘Save Perspective’ option help with?**
 
-To access your data over HTTP using `curl`, follow these steps:
+&nbsp;&nbsp;A. Archives old datasets <br>
+&nbsp;&nbsp;B. Schedules automated reports <br>
+&nbsp;&nbsp;C. Saves your query view for future reuse <br>
+&nbsp;&nbsp;D. Deletes previous charts <br>
 
-1. **Copy the `curl` Command**
-    
-    Go to the 'Integration' section and choose 'Curl' option. Copy the provided Curl command and paste it into your terminal.
-    
-    ![using_curl.png](/learn_new/dp_consumer_learn_track/explore_sm/using_curl.png)
-    
-2. **Replace Placeholder**
-You will notice a placeholder for `<api_key>` in the command. Replace it with your actual API key. This will allow you to fetch the required data for integration into your application.
+**3. A stakeholder requests a downloadable chart of total customers by country. What's the best approach?**
 
-### **Using GraphQL**
+&nbsp;&nbsp;A. Write a SQL query in Metis <br>
+&nbsp;&nbsp;B. Use the Studio tab → Chart view → Configure labels → Download <br>
+&nbsp;&nbsp;C. Use the GraphQL tab <br>
+&nbsp;&nbsp;D. Explore it in the Files section <br>
 
-GraphQL is another option for querying data over HTTP. 
+**4. While performing analysis, you wrote a query yesterday in Studio but forgot to save. How can you retrieve it?**
 
-To use GraphQL:
+&nbsp;&nbsp;A. It’s lost unless exported <br>
+&nbsp;&nbsp;B. Use the Graph View<br>
+&nbsp;&nbsp;C. Go to Studio → History tab → Locate by timestamp <br>
+&nbsp;&nbsp;D. Check in API logs<br>
 
-1. Select 'GraphQL' in integration options.
-2. Click on 'GraphQL' and copy the query provided.
-    
-3. **Test the Query**
-    
-    You can either paste the query into your terminal or click 'Try it out' to test it in the GraphQL playground.
-    
-    ![graphql_tab.png](/learn_new/dp_consumer_learn_track/explore_sm/graphql_tab.png)
-    
+**5. You want to filter high-income customers for a marketing campaign analysis. Which steps should you follow?**
 
- 4. **View Data in GraphQL Interface**
+&nbsp;&nbsp;A. Select only total_customers and click Run<br>
+&nbsp;&nbsp;B. Apply filter income > 50000 in Studio <br>
+&nbsp;&nbsp;C. Use Pivot before filtering<br>
+&nbsp;&nbsp;D. Create a new semantic model<br>
 
-After testing, you can view the results in the GraphQL interface alongside the Studio tab.
+**6. While analyzing total spending by segment and country, you need a visual summary. What tool should you use?** 
 
-![graphql.png](/learn_new/dp_consumer_learn_track/explore_sm/graphql.png)
-
-You can now successfully integrate the query code into your application.
-
-### **Using Postgres**
-
-For those who prefer using the Postgres database, follow these steps:
-
-1. **Copy Postgres Command**
-    
-    To interact with the Postgres database, copy the given PSQL client command and paste it into your terminal. When prompted for a password, enter your API key.
-    
-    ![postgres.png](/learn_new/dp_consumer_learn_track/explore_sm/postgres.png)
-    
-2. **Retrieve the API Key**
-    
-    To get the API key, click on the link in the password section of your connection details.
-    
-3. **Expected Output**
-    
-    Once you enter the command in the terminal, the following output confirms that the Postgres database connection was successful:
-    
-    ```bash
-    psql (16.4 (Ubuntu 16.4-0ubuntu0.24.04.2), server 14.2 (Lens2/public:cross-sell-affinity v0.35.60-9))
-    
-    lens:public:cross-sell-affinity=>
-    ```
-    
-    You can now interact with the Lens or semantic model using Postgres commands. For example, to list all tables in the connected database, use:
-    
-    ```yaml
-    lens:public:cross-sell-affinity=> /dt
-    ```
-    
-    **Expected Output:**
-    
-    ```yaml
-                           List of relations
-     Schema |             Name             | Type  |     Owner
-    --------+------------------------------+-------+----------------
-     public | cross_sell_opportunity_score | table | iamgroot
-     public | customer                     | table | iamgroot
-     public | product                      | table | iamgroot
-     public | purchase_data                | table | iamgroot
-     public | purchase_frequency           | table | iamgroot
-     public | total_spending               | table | iamgroot
-    
-    ```
-    
-    ### **Additional PostgreSQL Commands**
-    
-    Here are some useful commands to interact with the Postgres database:
-    
-    | **Command** | **Description** | **Example** |
-    | --- | --- | --- |
-    | `\d [table_name]` | Show the schema and details of a specific table. | `\d customers` |
-    | `\l` | List all databases in the PostgreSQL server. | `\l` |
-    | `\du` | List all roles and users in the PostgreSQL server. | `\du` |
-    | `\dn` | List all schemas in the database. | `\dn` |
-    | `\dv` | List all views in the connected database. | `\dv` |
-    | `\q` | Exit the PostgreSQL prompt. | `\q` |
-
-
+&nbsp;&nbsp;A. Pivot tab in Studio <br>
+&nbsp;&nbsp;B. Files tab in Model<br>
+&nbsp;&nbsp;C. Postgres terminal<br>
+&nbsp;&nbsp;D. Explore via GraphQL<br>
 
 ## Next step
 
-Learn more about the quality checks applied to ensure that Data Product meets data standards.
+Now that you understand your data model, move on to learning how DataOS enforces Data Product Quality.
 
-[Knowing the Quality of Data Products](/learn_new/dp_consumer_learn_track/dp_quality/)
+👉 [Knowing the Quality of Data Products](/learn_new/dp_consumer_learn_track/dp_quality/)

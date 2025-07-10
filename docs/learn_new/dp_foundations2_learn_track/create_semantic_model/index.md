@@ -1,6 +1,7 @@
 # Build a Semantic Model 
 
-This guide outlines the end-to-end process for building and deploying a semantic model (Lens) For your data product. 
+!!! info "Overview"
+    This guide outlines the end-to-end process for building and deploying a semantic model (Lens) For your data product. 
 
 ## 📘 Scenario
 

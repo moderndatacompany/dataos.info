@@ -1,6 +1,7 @@
 # Data Product Foundations Track: Course I 
 
-In this course, you'll learn how to build a **source-aligned data product** from the ground up. By following each step and completing the checklists, you’ll learn how to connect, ingest, and shape source data into a product-ready asset on DataOS.
+!!! info "Overview"
+    In this course, you'll learn how to build a **source-aligned data product** from the ground up. By following each step and completing the checklists, you’ll learn how to connect, ingest, and shape source data into a product-ready asset on DataOS.
 
 ---
 
@@ -56,7 +57,7 @@ You’re part of a retail company’s data team. You’ve been asked to build a 
 
 <div class="grid cards" markdown>
 
-- [#1 Create a Scanner Workflow](/learn_new/dp_foundations1_learn_track/create_scanner/) 
+- [Create a Scanner Workflow](/learn_new/dp_foundations1_learn_track/create_scanner/) 
 
 <!-- - [#2 View Scanned Metadata in Metis]()  
 

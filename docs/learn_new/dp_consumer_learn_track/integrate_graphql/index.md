@@ -1,6 +1,7 @@
 # Integration with GraphQL
 
-In this module, you’ll learn how to consume the Data Product through GraphQL, after ensuring that the “Product Affinity” Data Product is completely solving the use case. Follow a step-by-step approach to integrate it seamlessly into your application.
+!!! info "Overview"
+    In this module, you’ll learn how to consume the Data Product through GraphQL, after ensuring that the “Product Affinity” Data Product is completely solving the use case. Follow a step-by-step approach to integrate it seamlessly into your application.
 
 ## Steps to Get Started
 

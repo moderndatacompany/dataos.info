@@ -1,6 +1,7 @@
 # Understanding Business Goals
 
-This topic provides a structured approach to identify the **North Star Metric** for your business and develop a consumer-aligned data product by working backward from business goals to source data. Each step builds on the previous one, ensuring a clear alignment between business objectives and technical execution.
+!!! info "Overview"
+    This topic provides a structured approach to identify the **North Star Metric** for your business and develop a consumer-aligned data product by working backward from business goals to source data. Each step builds on the previous one, ensuring a clear alignment between business objectives and technical execution.
 
 ## Quick Concepts
 

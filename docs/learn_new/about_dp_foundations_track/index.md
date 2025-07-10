@@ -1,8 +1,7 @@
 # Data Product Foundations Track
 
-Your starting point for building smart, reliable Data Products in DataOS.
-
-This track is designed for anyone new to DataOS or just getting started with the concept of data product development. It introduces the foundational concepts, tools, and workflows you’ll use to build and manage Data Products with confidence.
+!!! info "Overview"
+    Your starting point for building smart, reliable Data Products in DataOS. This track is designed for anyone new to DataOS or just getting started with the concept of data product development. It introduces the foundational concepts, tools, and workflows you’ll use to build and manage Data Products with confidence.
 
 
 ## Who should take this track?
@@ -25,7 +24,7 @@ Architects, Admins, team leads evaluating DataOS                                
 
 </aside>
 
-## Core modules
+## 📚 Core modules
 The Foundations Track is split into two structured courses—each designed to walk you through the lifecycle of a Data Product. Each module within these courses covers key topics through step-by-step guidance, hands-on examples, and best practices—ensuring a clear and practical learning experience. This Foundations track keeps the content streamlined, emphasizing core concepts and guiding learners through one complete end-to-end example.
 
 <aside class="callout">
