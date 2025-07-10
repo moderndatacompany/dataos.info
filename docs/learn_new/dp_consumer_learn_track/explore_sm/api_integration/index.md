@@ -117,5 +117,5 @@ For those who prefer using the Postgres database, follow these steps:
 
 
 <aside class="callout">🔙 <b>>Back to parent topic</b><br>  
-Finished integrating via API? [Return to the topic- Explore Semantic Model →](/learn_new/dp_consumer_learn_track/explore_sm/#integration-with-api/) to continue your workflow or explore other data access options.
+Finished integrating via API? <a href="/learn_new/dp_consumer_learn_track/explore_sm/#integration-with-api/">Return to the topic- Explore Semantic Model →</a> to continue your workflow or explore other data access options.
 </aside>

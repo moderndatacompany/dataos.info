@@ -1,9 +1,9 @@
-# Introduction to DataOS
+# DataOS Essentials
 
 !!! info "Overview"
     This topic introduces DataOS, a data product platform that transforms how organizations work with data. You will learn about its key components that enable technical and business users to turn raw data into powerful, governed, and production-ready data assets.
 
-DataOS is an enterprise-grade data product platform that enables organizations to build, manage, and share data products. It provides the essential building blocks data developers require to create powerful data products that drive significant business outcomes.
+DataOS is an enterprise-grade data product platform for the development, management, processing, and deployment of Data Products across an organization. It provides the essential building blocks data developers require to create powerful data products that drive significant business outcomes.
 
 ## Key Benefits
 
@@ -31,80 +31,128 @@ The development of a data product in **DataOS** follows a structured lifecycle:
 
 4. **Iterate**: Continuously improve the product through feedback and performance analysis.
 
-## Key Components in Data Product Development
+5. **Deprecate**: Gradually retire the data product when it is no longer needed, ensuring users are informed, dependencies are removed, and resources are cleaned up safely.
 
-### **Depots**  
-Serve as data connectors between external systems and DataOS without requiring data movement. Depots enable secure and consistent access to raw data while maintaining it in place, enhancing both efficiency and governance. :contentReference[oaicite:1]{index=1}
 
----
+## DataOS Building Blocks (Resources)
 
-### **Stacks**
+DataOS provides a variety of primitives, referred to as Resources, that power the core functionalities of any data stack. These resources are categorized by their functional roles:
 
-Stacks acts as an execution engine and integrates new programming paradigms. Key Stacks in this category are Flare, Bento, Soda and Scanner.  
+### Source Connectivity and Metadata Management
 
-**Flare**: DataOS’s declarative engine built atop Apache Spark, designed for scalable batch and streaming data processing. 
-Flare supports various job types:
+These resources connect to various data sources, enable metadata scanning, and support quality checks and data profiling.
 
-- **Batch jobs** for full-data loads  
-- **Incremental jobs** for efficient updates  
-- **Streaming jobs** for real-time processing  
+- **Depot**: Connects diverse data sources to DataOS, abstracting underlying complexities. Depots enable secure and consistent access to raw data while maintaining it in place, enhancing both efficiency and governance. Examples include Databases, warehouses, Object storages such as Postgres, Azure ABFSS, Amazon S3, Kafka, Snowflake, etc.
 
-**Bento:** DataOS’s lightweight, stateless engine designed for real-time stream processing. It utilizes a declarative YAML-based configuration, enabling efficient data transformations such as mapping, validation, filtering, and enrichment. Bento is ideal for scenarios requiring low-latency processing, like IoT data ingestion or real-time analytics.
-
-Supported Job Types:
-
-- **Streaming Jobs** for continuous processing of real-time data streams.
-
-**Soda**:  Data quality validation Stack for implementing data quality checks within and beyond data pipelines. Utilizing the Soda Checks Language (SodaCL), it allows users to define validation rules to monitor metrics like accuracy, completeness, and uniqueness. 
-
-Supported Job Types:
-
-- **Batch Jobs** for scheduled data quality checks on datasets.
-
-- **Continuous Monitoring** for ongoing validation processes for real-time data quality assurance.
-
-**Scanner:** DataOS’s stack designed for extracting metadata from external source systems and internal DataOS resources. It facilitates the discovery and understanding of data assets by collecting metadata such as schemas, column details, and data lineage. Scanner supports metadata ingestion from databases, dashboards, messaging services, and more.
-
-Supported Job Types:
-
-**Batch Jobs** for scheduled metadata extraction tasks.
-
-**Reactive Jobs** for event-driven metadata updates based on resource lifecycle events.
+- **Stacks** (e.g. **Scanner**): Act as execution engines supporting metadata exploration and data validation. They integrate new programming paradigms.
+  - **Scanner**: Stack designed for extracting metadata from external source systems and internal DataOS resources. It facilitates the discovery and understanding of data assets by collecting metadata such as schemas, column details, and data lineage. It supports metadata ingestion from databases, dashboards, messaging services, and more.
 
 ---
 
-### **Lens**  
-The semantic modeling layer that translates technical data into business-friendly terms. Lens empowers users to define and expose metrics, dimensions, and business logic, making data consumable for BI tools, APIs, or direct consumers.
+### Data Movement and Processing
+
+These resources handle the transformation and movement of data.
+
+#### Batch Data Resources
+
+Support scheduled, large-scale data processing.
+
+- **Workflow**: Manages batch data processing tasks with dependencies.
+- **Operator**: Standardizes orchestration of external resources, enabling programmatic actions from DataOS.
+- **Stacks** (e.g., **Flare**, **DBT**):  
+  - **Flare** DataOS’s declarative engine built atop Apache Spark, designed for scalable batch, incremental and streaming data processing.
+  - **Soda**:  Data quality validation Stack utilizing the Soda Checks Language (SodaCL), it allows users to define validation rules to monitor metrics like accuracy, completeness, and uniqueness for your data.  
+
+#### Streaming Data Resources
+
+Handle real-time processing and continuous ingestion.
+
+- **Workflow**: Manages stream data tasks using micro-batching.
+- **Service**: Long-running process that acts as an API receiver/provider.
+- **Worker**: Long-running process that performs tasks continuously.
+- **Stacks** (e.g., **Flare**, **Bento**): Key engines for streaming workflows.
+  - **Bento:** DataOS’s lightweight, stateless engine designed for real-time stream processing. It utilizes a declarative YAML-based configuration, enabling efficient data transformations such as mapping, validation, filtering, and enrichment. Bento is ideal for scenarios requiring low-latency processing, like IoT data ingestion or real-time analytics.
 
 ---
 
-### **Monitors & Pagers**
-Tools to track data quality, pipelines, and system health.
+### Storage
 
-- **Monitors** observe performance, quality, and SLA compliance.
+Resources for efficient, scalable storage solutions.
 
-- **Pagers** trigger alerts and incident management workflows to quickly address failures 
-
----
-
-### **Policies**
-
-DataOS enables Attribute‑Based Access Control (ABAC)—tagging tables, rows, or columns with access rules and automatically enforcing them across all access channels (API, BI, queries, etc.). Data policies in DataOS help ensure that sensitive data is accessed only by the right users, keeping it secure and compliant across the entire ecosystem.
+- **Volume**: Persistent shared storage for Pod containers.
+- **Lakehouse**: Fully managed hybrid of data lake and warehouse for storing processed datasets.
+- **Database**: Managed Postgres database used for transactional data.
+- **Stacks** (e.g., **Beacon**): Execution engine for storage operations.
 
 ---
 
-### **Bundles**  
-A declarative packaging mechanism for deploying and managing entire data products. Bundles encapsulate Depots, Flare jobs, Lens models, and pipelines into a single deployable unit—ensuring consistency, version control, and testability within CI/CD workflows.
+### **Semantic Model**  
+
+The semantic modeling layer that translates technical data into business-friendly terms. 
+
+- **Lens**: Empowers users to define and expose metrics, dimensions, and business logic, making data consumable for BI tools, APIs, or direct consumers.
+
+---
+
+### Observability
+
+Tracks system health and performance; enables proactive incident management.
+
+- **Monitor**: observes performance, quality, and SLA compliance. For example, it detects workflow failures and tracks resource status for reliability and performance.
+- **Pager**: Delivers alerts based on stream conditions (e.g., quality check failures or system incidents) to quickly address failures.
+
+---
+
+### Security
+
+Ensures data protection through access control and secure handling of credentials.
+
+- **Instance-Secret**: Stores sensitive information securely at the instance level (e.g., database credentials).
+- **Secret**: Stores credentials, certificates, or tokens securely within a workspace.
+- **Policy**: uses Attribute-Based Access Control (ABAC).
+    - **Access policy**: To define and automatically enforce access rules across all channels (API, BI, queries, etc.).
+    - **Data policy**: To ensure sensitive data is securely accessed only by authorized users and remains compliant throughout the ecosystem.
+- **Grant**: Maps Subject–Predicate–Object relationships to implement access control.
+
+---
+
+### Deployment
+
+Streamlines how data products and applications are packaged, distributed, and executed.
+
+- **Bundle**: A declarative packaging mechanism for deploying and managing entire data product. Groups related components (e.g., workflows, models, scripts) into a single deployable unit—ensuring consistency, version control, and testability within CI/CD workflows.
+- **Stacks** (e.g., **Container**, **SteamPipe**): Execution engines for deploying resources and applications.
+
+---
+
+### Infrastructure Resources
+
+Manage compute and infrastructure configuration to run data workloads effectively.
+
+- **Cluster**: Provides compute environments and configuration for data engineering and analytics.
+- **Compute**: Abstracts node pools of virtual machines, allocating processing power for workloads.
+
+---
 
 To learn more about all the Resources, refer to [DataOS Resources](/resources/)
 
----
+## 🧩 Assembling Data Products: A LEGO analogy
+Building data products in DataOS is like constructing with LEGO bricks—each piece has a purpose, and when combined thoughtfully, they create something powerful and functional. Just as you wouldn’t build a LEGO castle with only one type of brick, you can’t build an effective data product with a single resource. DataOS offers a rich set of modular components that come together to solve complex business problems through well-structured, reusable data products.
 
-## Governance, Security, and Observability
+## How does DataOS support different user roles?
+
+Data Product Consumer: Discovers, explores, and utilises data products, including integration with BI tools, AI/ML, and data APIs.
+Data Product Developer: Builds and maintains data products end-to-end. Focuses on translating business goals into data products by designing, sourcing, building pipelines, ensuring quality, modeling semantics, and deploying solutions.
+DataOS Operator: Oversees credential security, data source connectivity, routine checks, upgrade strategies, configuring alerts, and cluster management.
+Data Product Owner: Aligns product development with business goals, sets success metrics and priorities defineing the strategic vision for data products. 
+
+## Trusted & Observable by Design
 
 ### **Governance and Security**
-DataOS incorporates robust security measures to protect data confidentiality, integrity, and availability. It implements access controls, encryption mechanisms, and privacy safeguards, ensuring data is safeguarded from unauthorized access or breaches .
-dataos.info
+DataOS includes built-in controls to ensure data confidentiality, integrity, and compliance. Through robust access policies, encryption, and automated enforcement, it protects sensitive information across all access channels.
 
 ### **Observability**
-Observability in DataOS involves systematically monitoring the health and performance of data products to ensure continuous operation and enhance data reliability. This includes tracking key metrics such as data availability, latency, and throughput, as well as detecting and alerting on anomalies.
+DataOS continuously monitors the health and performance of data products. Key metrics like availability, latency, and throughput are tracked in real time, with automated alerts helping teams detect and resolve issues proactively.
+
+Together, governance, security, and observability form the backbone of DataOS’s enterprise-grade reliability. These capabilities aren’t optional add-ons—they’re integral to the platform. This ensures every data product is secure, compliant, and resilient by design, empowering teams to scale operations confidently with trust and control.
+
