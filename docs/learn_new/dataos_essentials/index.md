@@ -1,4 +1,4 @@
-# Introduction to DataOS
+# DataOS Essentials
 
 !!! info "Overview"
     This topic introduces DataOS, a data product platform that transforms how organizations work with data. You will learn about its key components that enable technical and business users to turn raw data into powerful, governed, and production-ready data assets.
