@@ -252,9 +252,9 @@ To save a query from two days ago for future reference, click on the query, give
 
 ## Integration with API
 
-<aside class="callout"> ⚠️ **Developer-Focused Section**: This content is specifically intended for <b>developers</b> or <b>technical users</b> who want to integrate data programmatically into apps, pipelines, or services using APIs.  
+<aside class="callout"> ⚠️ <b>Developer-Focused Section</b>: This content is specifically intended for <b>developers</b> or <b>technical users</b> who want to integrate data programmatically into apps, pipelines, or services using APIs.  
 
-If you're a **business user** exploring data through visual tools (like dashboards or Studio), you can skip this section—no action needed.
+If you're a <b>business user</b> exploring data through visual tools (like dashboards or Studio), you can skip this section—no action needed.
 </aside>
 
 👉 Developers: [Click here to learn more about API Integeration →](/learn_new/dp_consumer_learn_track/explore_sm/api_integration/)
