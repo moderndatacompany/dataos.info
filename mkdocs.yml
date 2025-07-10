@@ -549,7 +549,7 @@ nav:
                   # - Azure Queue Storage : resources/stacks/bento/components/output/azure_queue_storage.md
                   # - Azure Table Storage : resources/stacks/bento/components/output/azure_table_storage.md
                   - Fastbase Depot : resources/stacks/bento/components/output/fastbase_depot.md
-                  # - Kafka : resources/stacks/bento/components/output/kafka.md
+                  - Kafka : resources/stacks/bento/components/output/kafka.md
                   - kafka Depot : resources/stacks/bento/components/output/kafka_depot.md
                   # - sftp : resources/stacks/bento/components/output/sftp.md
                   # - SQL database Insert : resources/stacks/bento/components/output/sql_insert.md
