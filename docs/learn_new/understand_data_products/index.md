@@ -4,7 +4,21 @@
     A Data Product is an integrated and self-contained combination of data, metadata, semantics and templates. It includes access and logic-certified implementation for tackling specific data and analytics (D&A) scenarios and reuse. A Data Product must be consumption-ready (trusted by consumers), up to date (by engineering teams) and approved for use (governed). Data Products enable various D&A use cases, such as data sharing, data monetization, analytics and application integration.
     - **Gartner®**
 
-In today’s data-driven world, businesses are constantly looking for ways to leverage data to make informed decisions, optimize operations, and drive revenue growth. A *Data Product* is an integrated, self-contained data solution that serves as a key enabler of these business goals. It combines data, metadata, and analytical capabilities into a consumable format that solves specific business problems or supports data analytics and business intelligence efforts. 
+## Data as a Product
+
+Treating data as a product is a transformative approach that shifts the focus from simply collecting and storing data to delivering purposeful, user-centric data solutions. This philosophy emphasizes designing, building, and maintaining data with the end-user in mind—ensuring that data is not only accessible, but also reliable, understandable, and ready for use.
+
+Traditional data management often leads to problems like inefficiencies, disconnected systems (silos), and low confidence in data insights. In contrast, the data-as-a-product approach applies proven *product management* practices to the entire data lifecycle. This includes clear ownership, consistent quality checks, and a strong focus on what users actually need from the data.
+
+In this model, data is treated as a complete product: something that is discoverable, understandable, reusable, and valuable on its own. These products are built with security and governance in mind, and they follow standards that make them easy to integrate with other systems.
+
+Implementing this approach requires a cultural shift within organizations—from managing pipelines to delivering products. It encourages cross-functional collaboration and continuous iteration, enabling teams to deliver high-quality data assets that directly support business goals.
+
+> By embracing the data-as-a-product philosophy, organizations can overcome the shortcomings of traditional data practices and unlock new levels of agility, trust, and value from their data.
+
+## Data Products in DataOS
+
+A *Data Product* in DataOS is a self-contained unit that packages data, metadata, and analytics into a ready-to-use solution. It is developed and managed by dedicated teams to solve specific business problems or support analytics and business intelligence needs.
 
 A Data Product encompasses:
 
@@ -60,7 +74,7 @@ Think of Data Products as purpose-driven solutions designed to transform raw dat
     
 <aside class= "callout">
 🗣️ Data Products directly align your data efforts with real business outcomes, providing measurable results and clarity for decision-making.
-</callout>
+</aside>
 
 ## Key characteristics of a Data Product
 
