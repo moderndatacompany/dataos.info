@@ -259,7 +259,7 @@ If you're a <b>business user</b> exploring data through visual tools (like dashb
 
 👉 Developers: [Click here to learn more about API Integeration →](/learn_new/dp_consumer_learn_track/explore_sm/api_integration/)
 
-## Quick knowledge check
+## Self-check quiz
 
 **1. What does the Studio tab in DataOS allow you to do?**
 

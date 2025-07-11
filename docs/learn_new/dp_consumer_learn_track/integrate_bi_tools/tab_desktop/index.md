@@ -1,14 +1,16 @@
 # Tableau Desktop
 
-In this module, you will learn how to activate a data product using Tableau Desktop to build interactive dashboards and uncover valuable insights from your data. 
+!!! info "Overview"
+    In this module, you will learn how to activate a data product using Tableau Desktop to build interactive dashboards and uncover valuable insights from your data. 
 
-<aside class="callout">
-🗣 Tableau Desktop is available for Windows and macOS. If you’re using Linux, you’ll need to set up a virtual machine or use an alternative method since Tableau Desktop isn’t natively supported on this platform.
-</aside>
 
 ## Scenario
 
 Imagine you’re a sales analyst for a retail company, and you’re tasked with analyzing 'Product Affinity' Data Product—an extensive data stored in DataOS. Your goal is to visualize and analyze this data within Tableau to help the sales team track trends, understand which products are frequently purchased together (product affinity), and monitor sales across different regions.
+
+<aside class="callout">
+🗣 Tableau Desktop is available for Windows and macOS. If you’re using Linux, you’ll need to set up a virtual machine or use an alternative method since Tableau Desktop isn’t natively supported on this platform.
+</aside>
 
 ## Step-by-Step: Syncing Tableau with DataOS
 
