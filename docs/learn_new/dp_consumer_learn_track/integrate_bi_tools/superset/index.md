@@ -1,8 +1,9 @@
 # Superset
 
-In this topic, you’ll learn how to activate a data product through Apache Superset to create interactive dashboards and extract actionable insights.
+!!! info "Overview
+    In this topic, you’ll learn how to activate a data product through Apache Superset to create interactive dashboards and extract actionable insights.
 
-### Steps to connect Superset with DataOS
+## Steps to connect Superset with DataOS
 
 1. **Access Superset Integration**
     

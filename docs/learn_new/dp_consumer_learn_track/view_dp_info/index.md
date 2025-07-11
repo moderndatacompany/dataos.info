@@ -106,7 +106,7 @@ Consumption ports are the methods or interfaces to expose data from a Data Produ
 **Q5: What happens if a Data Product has no semantic model?**  
 If a Data Product lacks a Semantic Model, its outputs are typically limited to processed output datasets that are consumed using Talos APIs. "Talos" is a service within DataOS that provides APIs for interacting with data.
 
-## Quick knowledge check
+## Self-check quiz
 
 **Q1. What does the Semantic Model help with in a Data Product?**
 
