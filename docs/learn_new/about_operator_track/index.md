@@ -1,8 +1,7 @@
 # DataOS Operator Track
 
-Welcome to the DataOS Operator Track!
-
-This track is built for those who are responsible for managing and maintaining the DataOS platform. This role involves overseeing the system’s performance, ensuring the secure management of resources, and guaranteeing compliance with regulatory standards. 
+!!! info "Overview"
+    Welcome to the DataOS Operator Track! This track is built for those who are responsible for managing and maintaining the DataOS platform. This role involves overseeing the system’s performance, ensuring the secure management of resources, and guaranteeing compliance with regulatory standards. 
 
 The DataOS Operator handles a range of tasks, from provisioning compute resources to managing access controls and system security. They are also responsible for monitoring system health, ensuring interoperability with external systems, and scaling the platform to meet growing demands. In essence, the DataOS Operator ensures the platform’s integrity and performance, allowing teams to leverage data efficiently while safeguarding critical assets.
 
@@ -14,20 +13,20 @@ The DataOS Operator handles a range of tasks, from provisioning compute resource
 | **Cloud Engineers / Engineering Leads** | Understand platform mechanics to support infrastructure, scaling, and cost efficiency.                          | Must-have     |
 | **Technical Architects**             | Align platform operations with architectural goals and governance policies.                                      | Recommended   |
 
-## 💡 What you will learn
+## What you will learn
 
-- **Credential Security & Secrets Management**: Securely manage credentials to protect sensitive configurations.
+- **Credential security & secrets management**: Securely manage credentials to protect sensitive configurations.
 
-- **Cloud & Kubernetes Infrastructure**: Monitor and manage compute, clusters, and deployments across environments.
+- **Cloud & Kubernetes infrastructure**: Monitor and manage compute, clusters, and deployments across environments.
 
-- **Monitoring & Alerts**: Use Prometheus and Grafana to proactively track health and performance.
+- **Monitoring & alerts**: Use Prometheus and Grafana to proactively track health and performance.
 
-- **Access Controls & Compliance**: Grant, revoke, and audit user permissions with robust policy enforcement.
+- **Access controls & compliance**: Grant, revoke, and audit user permissions with robust policy enforcement.
 
-- **Platform Upgrades & Rollbacks**: Ensure smooth updates with strategies for hotfixes, rollbacks, and downtime planning.
+- **Platform upgrades & rollbacks**: Ensure smooth updates with strategies for hotfixes, rollbacks, and downtime planning.
 
 
-## Core modules
+## 📚 Core modules
 
 The learning track is divided into modules, with each module focusing on key operational areas. Every module contains specific topics that address common challenges you will encounter as a DataOS Operator and guide you through the core aspects of this role with the tools to troubleshoot efficiently.
 
@@ -55,7 +54,7 @@ The learning track is divided into modules, with each module focusing on key ope
 
 
 
-## ✅ Start Learning 
+## ✅ Start learning 
 
 :rocket: [Start learning the modules here](/learn_new/operator_learn_track/)
 

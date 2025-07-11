@@ -1,6 +1,7 @@
 # Deploying your Data Product on DataOS
 
-After setting up the essential YAML files — the Bundle YAML, Data Product Specification YAML, and Lens YAMLs — the final step is to deploy your data product on the Data Product Hub. This process makes your product available for discovery and consumption within your organization. The deployment involves resource instantiation and metadata registration.
+!!! info "Overview"
+    After setting up the essential YAML files — the Bundle YAML, Data Product Specification YAML, and Lens YAMLs — the final step is to deploy your data product on the Data Product Hub. This process makes your product available for discovery and consumption within your organization. The deployment involves resource instantiation and metadata registration.
 
 ## 📘 Scenario
 

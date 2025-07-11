@@ -1,8 +1,9 @@
 # Sheduling Workflows
 
-In this topic, you will explore how to set up and manage automated workflows, ensuring data is consistently updated and aligned with business needs. By the end, you’ll be equipped to configure scheduling attributes, use cron expressions, and implement best practices for creating reliable automated workflows in DataOS.
+!!! info "Overview"
+    In this topic, you will explore how to set up and manage automated workflows, ensuring data is consistently updated and aligned with business needs. By the end, you’ll be equipped to configure scheduling attributes, use cron expressions, and implement best practices for creating reliable automated workflows in DataOS.
 
-## Scenario
+## 📘 Scenario
 
 You understand the importance of efficient and reliable data workflows. When your team faces the challenge of frequent manual updates to keep data pipelines current, it leads to inefficiencies. To streamline this process, you’ll learn how to automate scheduling of data pipelines in DataOS, minimizing manual intervention.
 
@@ -28,6 +29,7 @@ Begin by defining your workflow setup:
 Next, configure key scheduling attributes, starting with a cron expression to set execution intervals.
 
 <aside class="callout"> 🗣️ Use a cron expression generator to simplify testing and minimize errors. </aside>
+
 Key attributes include:
 
 1. **cron**: A cron expression defines the timing of workflow executions.
@@ -37,7 +39,7 @@ Key attributes include:
      - `Hour` (0-23): `*` means any hour.
      - `Day of Month` (1-31), `Month` (1-12), `Day of Week` (0-7): `*` applies to any value.
      
-   > **Tip**: Use tools like Cron Expression Generator to test cron expressions.
+    > **Tip**: Use tools like Cron Expression Generator to test cron expressions.
 
 2. **concurrencyPolicy**: Determines how instances of the workflow behave when overlapping.
    - **Allow**: Multiple workflow instances can run concurrently.

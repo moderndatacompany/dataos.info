@@ -1,13 +1,12 @@
 # Data Product Foundations Track
 
-Your starting point for building smart, reliable Data Products in DataOS.
+!!! info "Overview"
+    Your starting point for building smart, reliable Data Products in DataOS. This track is designed for anyone new to DataOS or just getting started with the concept of data product development. It introduces the foundational concepts, tools, and workflows you’ll use to build and manage Data Products with confidence.
 
-This track is designed for anyone new to DataOS or just getting started with the concept of data product development. It introduces the foundational concepts, tools, and workflows you’ll use to build and manage Data Products with confidence.
 
+## Who should take this track?
 
-## Who Should Take This Track?
-
-The Data Product Foundations course is ideal for the following learner personas:
+The 'Data Product Foundations' course is ideal for the following learner personas:
 
 | Persona & Description                                                                 | Why It Matters                                                                                      | Level        |
 |----------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|--------------|
@@ -20,12 +19,16 @@ Analysts, QA, support involved in data workflows                                
 | **Technical Decision Makers / Architects**  
 Architects, Admins, team leads evaluating DataOS                                                | Gain a high-level overview of key DataOS primitives and workflows for better strategic planning.    | Recommended  |
 
+<aside class="callout">
+🗣 To fully engage with the hands-on components of this learning track, access to a dedicated DataOS training instance is required. Please contact your training team to obtain the necessary credentials.
 
-## Core modules
+</aside>
+
+## 📚 Core modules
 The Foundations Track is split into two structured courses—each designed to walk you through the lifecycle of a Data Product. Each module within these courses covers key topics through step-by-step guidance, hands-on examples, and best practices—ensuring a clear and practical learning experience. This Foundations track keeps the content streamlined, emphasizing core concepts and guiding learners through one complete end-to-end example.
 
 <aside class="callout">
-🗣 This track includes hands-on modules that use both the DataOS CLI and GUI. You’ll work with CLI in the training environment to apply YAMLs, run workflows, and navigate DataOS GUI (Workbench, Metis, DPH).
+🗣 This track features hands-on modules utilizing both the DataOS CLI and GUI. You'll use the CLI to apply YAML configurations and execute workflows. Concurrently, you'll navigate key DataOS graphical interfaces—such as Workbench for querying data, Metis for metadata management, and the Data Product Hub (DPH) for overseeing data products—to gain comprehensive insights into the platform's capabilities.
 </aside>
 
 ### **Course 1: Creating a Source-Aligned Data Product**
@@ -46,7 +49,7 @@ Build your first Data Product using raw source system data. Learn how to connect
 | 6   | **Set Up Monitors & Pagers**         | Set up monitoring and alerting to track failures and ensure visibility into data issues.                                                                                               | - Creating Monitors for workflow and Soda failures<br>- Setting up Pagers with email/webhook alerts<br>- Validating alerts                        |
 | 7   | **Build and Deploy Your First Source-aligned Data Product** | Package and deploy your Data Product by bundling all resources, defining the spec, and registering it in the Data Product Hub and Metis.                 | - Creating a bundle.yaml<br>- Writing the Data Product specification<br>- Deploying and registering the Data Product                              |
 
-## ✅ Start Learning 
+### ✅ **Start learning** 
 
 :rocket: [Start this course here](/learn_new/dp_foundations1_learn_track/) 
 
@@ -69,6 +72,6 @@ Take it further by designing a product tailored for business consumption—featu
 | 7   | **Deploy and Register Data Product** | Package and register the complete data product so it’s discoverable in Data Product Hub and Metis.                                                     | - Create bundle.yaml<br>- Write the product spec<br>- Deploy and register the Data Product                                                               |
 
 
-## ✅ Start Learning 
+### ✅ **Start learning** 
 
 :rocket: [Start this course here](/learn_new/dp_foundations2_learn_track/)

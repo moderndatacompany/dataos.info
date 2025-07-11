@@ -1,13 +1,14 @@
 # Deploy and Register Data Product
 
-In the last module you built business-ready tables, views, and a Lens model on top of the source-aligned retail datasets you ingested earlier.
+!!! info "Overview"
+    In the last module you built business-ready tables, views, and a Lens model on top of the source-aligned retail datasets you ingested earlier.
 Now it’s time to wrap everything into a single, deployable bundle, publish the Data Product spec, and surface it in the Data Product Hub (DPH) & Metis for your consumers.
 
 ## Step 1: Create a Bundle Definition
 
 Group related components—workflows, scripts, models—into a single bundle for easy management. Referencing the bundle in your Data Product manifest ensures all resources are deployed together.
 
-🎯 Your Actions:
+🎯 **Your actions**:
 
 1. Create a bundle.yaml file using the template below.
 
@@ -15,9 +16,9 @@ Group related components—workflows, scripts, models—into a single bundle for
 
 3. Organize resources into a dedicated workspace (recommended).
 
-4. Apply the bundle using dataos-ctl apply.
+4. Apply the bundle using `dataos-ctl apply`.
 
-??? example "bundle.yaml"
+??? "bundle.yaml"
 
     ```yaml
     name: productaffinity-bundle-practice
@@ -58,11 +59,11 @@ Group related components—workflows, scripts, models—into a single bundle for
         #   workspace: <workspace_name>
 
     ```
-## Step 2: Create the Data Product Specification File
+## Step 2: Create the Data Product Specification file
 
 Document key metadata, purpose, and the structure of your data product.
 
-🎯 Your Actions:
+🎯 **Your actions:**
 
 1. Create a productaffinity.yaml file using the template below.
 
@@ -179,8 +180,9 @@ workflow:
                 includes:
                  - productaffinity # data product details
 ```
+</details>
 
-## Step 4: ### Activity 8.4: **Validating the Creation of Data Product**
+## Step 4: Validating the creation of Data Product
 
 **🎯 Your Actions:**
 
@@ -196,13 +198,15 @@ workflow:
       data | v1beta  |      productaffinity   | active | nandapage  
     ```
     
-## Step 4: Exploring Data Product on Data Product Hub
-
-You can also check your data product on Data Product Hub.
+## Step 5: Exploring Data Product on Data Product Hub
 
 1. Log in to the DataOS instance and Navigate to Data Product Hub.
     
-    ![dp_on_dph.png](/learn_new/dp_foundations2_learn_track/deploy_dp_cli/product360.png)
+    ![dp_on_dph.png](/learn_new/dp_foundations2_learn_track/deploy_sm/productaffinity.png)
     
 2. Click on the data product to view its details.
-    ![dp_on_dph.png](/learn_new/dp_foundations2_learn_track/deploy_dp_cli/product360_details.png)
+    ![dp_on_dph.png](/learn_new/dp_foundations2_learn_track/deploy_sm/productaffinity_details.png)
+
+<aside class="callout">
+🎯 Great work completing Data Products Foundations Track: Course II! You've successfully generated desired output datasets, designed & created semantic model, and deployed your first consumer-aligned Data Product on the Data Product Hub.
+</aside>

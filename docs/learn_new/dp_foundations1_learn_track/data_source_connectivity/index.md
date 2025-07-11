@@ -1,7 +1,8 @@
 
 # Source Data Connectivity
 
-Before you can build a data product, you need to connect to the data itself. In this module, you’ll learn how to configure **Depots** in DataOS—your gateway to accessing external data sources securely, without needing to move the data.
+!!! info "Overview"
+    Before you can build a data product, you need to connect to the data itself. In this module, you’ll learn how to configure **Depots** in DataOS—your gateway to accessing external data sources securely.
 
 ---
 
@@ -11,7 +12,7 @@ Your team is expanding its use of DataOS and needs to integrate multiple data so
 
 ---
 
-## Quick Concepts 
+## Quick concepts 
 
 The **Depot Resource** in DataOS provides a standardized way to connect to a variety of enterprise data sources, such as:
 
@@ -35,12 +36,12 @@ Before diving into configuring data source connections, make sure you have every
 1. **Check required permissions**  
    Some tasks require specific permissions typically assigned to DataOS Operators. Ensure you have access to one of the following permission sets either via use-case or via tags:
 
-   | **Access Permission (via use-cases)** | **Access Permissions (via tags)** |
-   |--------------------------------------|-----------------------------------|
-   | Read Workspace                       | `roles:id:data-dev`               |
-   | Manage All Depot                     | `roles:id:system-dev`             |
-   | Read All Dataset                     | `roles:id:user`                   |
-   | Read all secrets from Heimdall       | *(Not specified)*                 |
+      | **Access Permission (via use-cases)** | **Access Permissions (via tags)** |
+      |--------------------------------------|-----------------------------------|
+      | Read Workspace                       | `roles:id:data-dev`               |
+      | Manage All Depot                     | `roles:id:system-dev`             |
+      | Read All Dataset                     | `roles:id:user`                   |
+      | Read all secrets from Heimdall       | *(Not specified)*                 |
 
 2. **Check CLI installation**  
    You need this text-based interface that allows you to interact with the DataOS context via command prompts.  
@@ -110,18 +111,18 @@ Before diving into configuring data source connections, make sure you have every
 4. **Install any IDE, such as Visual Studio Code**  
    This is necessary for creating YAML files for your data product. Installation links for various operating systems are provided below:
 
-   - **Linux**: [Install VS Code on Linux](https://code.visualstudio.com/docs/setup/linux)  
-   - **Windows**: [Install VS Code on Windows](https://code.visualstudio.com/docs/setup/windows)  
-   - **macOS**: [Install VS Code on macOS](https://code.visualstudio.com/docs/setup/mac)
+    - **Linux**: [Install VS Code on Linux](https://code.visualstudio.com/docs/setup/linux)  
+    - **Windows**: [Install VS Code on Windows](https://code.visualstudio.com/docs/setup/windows)  
+    - **macOS**: [Install VS Code on macOS](https://code.visualstudio.com/docs/setup/mac)
 
-## **Checklist:**
+## Checklist
 
-- [ ]  CLI is installed 
-- [ ]  CLI is initialized and logged in
-- [ ]  IDE (like VS Code) is installed
+- ✅  CLI is installed 
+- ✅  CLI is initialized and logged in
+- ✅  IDE (like VS Code) is installed
  
 
-## Next Step: Setting Up Depots
+## Next step
 You’re now ready to configure depots and start connecting to your source systems.
 
-👉 Next Topic: [Setting Up Depots](/learn_new/dp_foundations1_learn_track/data_source_connectivity/setting_up_depots/)
+👉 Next topic: [Setting Up Depots](/learn_new/dp_foundations1_learn_track/data_source_connectivity/setting_up_depots/)
