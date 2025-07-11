@@ -1,34 +1,32 @@
 # Introduction to Data Product Hub
 
-Welcome to the Data Products Consumer Learning Track! In this section of the module, you'll be introduced to the Data Product Hub to discover Data Products for your use case.
-
-## Scenario
-
-Imagine you're a data analyst tasked with supporting a new marketing campaign aimed at boosting customer loyalty. To get started, you need access to reliable, up-to-date data on customer purchasing patterns, product performance, and historical campaign metrics. In the past, gathering customer data would involve reaching out to multiple teams and merging disparate datasets. But with the Data Product Hub, you have a centralized, comprehensive source where you can instantly locate a set of relevant, curated Data Products designed specifically for customer behavior analysis.
-
-You find 'Metrics' that give insights into purchase frequency and 'Perspectives' that provide saved analysis views on product affinity trends. With these resources at your fingertips, you can dive straight into analysis, build machine learning models for predictive insights, and present actionable data to the marketing team—all while ensuring that the data is accurate, compliant, and well-documented.
-
-## What do you need to get started?
-
-To make the most out of this content, you’ll need:
-
-- Understanding of Data Products.
-
-## Quick concepts
-
-- Data Products: Curated, structured data sets that provide valuable insights, automate processes, or enhance decision-making.  They take various forms, such as enriched datasets, semantic models, dashboards, or machine learning models, and are designed to help users understand and act on data easily. Essentially, Data Products turn raw data into useful information that can drive actions and improve outcomes.
+!!! info "Overview"
+    In this section of the module, you'll be introduced to the Data Product Hub to discover Data Products for your use case.
 
 ## What is Data Product Hub?
 
 The Data Product Hub is a user-friendly interface within DataOS where you can discover and access curated Data Products, Metrics, and Perspectives. It enables seamless integration of data for your use cases. By offering trusted data in multiple formats and access to Data APIs, the Hub accelerates time-to-value and bridges the gap between IT and business teams.
 
-### **Highlights**
+### **Key Features at a Glance**
 
-- **Self-Service Access**: Users can independently discover, explore, and use Data Products tailored to specific needs.
-- **Centralized Access Layer**: Data Product Hub provides a single layer for generating APIs, and accessing metrics.
-- **Contextual Metadata**: Data products include documentation, semantic definitions, quality metrics, lineage, and usage guidelines.
-- **Data Governance**: Ensures data accuracy, compliance, and reliability.
-- **Seamless Integration**: Data Product Hub connects effortlessly with analytics, AI, and ML platforms for continuous insight flow.
+| **Feature**                     | **What It Enables**                                                       |
+| --------------------------- | --------------------------------------------------------------------- |
+|  **Self-Service Access**  | Explore and use data independently—no engineering bottlenecks         |
+|  **Central Access Layer** | Access APIs, metrics, and metadata from one place                     |
+|  **Contextual Metadata**  | Understand data with built-in documentation, lineage, and definitions |
+|  **Governed & Reliable** | Trusted data that meets compliance and quality standards              |
+|  **Tool Integration**     | Connect effortlessly with BI, ML, and AI platforms                    |
+
+
+## What do you need to get started?
+
+1. Contact the DataOS administrator or your organization's admin for sign-in details to access the DataOS instance. 
+
+2. Enter the DataOS URL in your browser and sign in. Upon successful login, you'll be directed to the DataOS homepage.
+
+3. From the DataOS home page, navigate to the Data Product Hub to begin exploring relevant Data Products.
+    
+    ![disc_dataos.png](/learn_new/dp_consumer_learn_track/intro_dph/dataos_home.png)
 
 The hub displays a list of Data Products, each designed to provide relevant data for analytics, AI/ML, and data-driven applications. Each Data Product is tailored to specific use cases that support key business objectives, such as brand affinity or customer engagement.
 
@@ -36,7 +34,7 @@ The hub displays a list of Data Products, each designed to provide relevant data
 
 ## What is a Metric?
 
-A Metric is an entity that, by default, provides a logical view of a logical table, containing only one measure and a time dimension. This means that a Metric represents a specific data point or calculation over time, focusing on one key measure, such as average spent per category, retention rate, or churn rate, and linking it to a time for analysis. 
+A Metric represents a single business KPI (like churn rate or average spend), tracked over time. It simplifies complex data into digestible, time-bound insights.
 
 On Data Product Hub, you can access and analyze key business metrics in one place for a unified view of organizational performance and decision-making. Further details of the Metrics are provided in the later modules.
 
@@ -44,22 +42,65 @@ On Data Product Hub, you can access and analyze key business metrics in one plac
 
 ## What is a Perspective?
 
-A Perspective is a saved exploration of a Data Product. A Perspective can be created for any Data Product that has an exposed semantic model. After exploring the Data Product on the Data Product Hub, the exploration can be saved as a Perspective, which can then be accessed in the Perspective tab. 
+A Perspective is a saved exploration of a Data Product using its semantic model. Think of it as a personalized view, ready to revisit or share.
 
-![intro_perspective.png](/learn_new/dp_consumer_learn_track/intro_dph/intro_perspective.png)
+How to use:
 
-Click any Perspective to be redirected to the Data Product’s Explore page. Further details of the  Perspectives are provided in the later modules.
+1. Explore a Data Product
 
-![intro_explore.png](/learn_new/dp_consumer_learn_track/intro_dph/intro_explore.png)
+2. Save your query/view as a Perspective
+
+3. Reopen it anytime from the Perspectives tab
+
+    ![intro_perspective.png](/learn_new/dp_consumer_learn_track/intro_dph/intro_perspective.png)
+
+4. Click on a Perspective to dive directly into the Explore view. Further details of the  Perspectives are provided in the later modules.
+
+    ![intro_explore.png](/learn_new/dp_consumer_learn_track/intro_dph/intro_explore.png)
 
 ## FAQs
 
 **Q1: How can you use Metrics in the Data Product Hub for data-driven decision-making?**
 The Data Product Hub serves as a centralized place where you can access and analyze all your essential business metrics. It offers a unified, data-driven view of your organization's performance, enabling you to make well-informed decisions.
 
+**Q2: : What’s the benefit of a Perspective?**
+Perspectives let you save your data exploration path, so you or others can return to that exact analysis with one click.
+
+## Self-Check Quiz
+
+Do a self-check quiz to gauge your understanding.
+
+1. What is required to create a Perspective in the Data Product Hub?
+
+a) A saved API query <br>
+b) A semantic model-enabled Data Product<br>
+c) A Metric with two measures <br>
+d) Admin privileges <br>
+
+2. Which of the following is not a feature of the Data Product Hub?
+
+a) Access to governed data<br>
+b) Creating new source systems<br>
+c) Exploring business metrics<br>
+d) Saving reusable views as Perspectives<br>
+
+3. Why is contextual metadata important in a Data Product?
+
+a) It helps compress the data for faster delivery<br>
+b) It provides background and understanding for the data’s use<br>
+c) It’s needed for file export functionality<br>
+d) It enables password-protected access<br>
+
+4. What best describes a Metric in the Data Product Hub?
+
+a) A visualization template<br>
+b) A logical view with one measure and a time dimension<br>
+c) A database snapshot<br>
+d) A version of a Data Product<br>
+
 ## Next step
 
 To discover the Data Products of interest that can solve your use case, refer to the next module:
 
-[Discover Data Product](/learn_new/dp_consumer_learn_track/discover_dp/)
+👉 [Discover Data Product](/learn_new/dp_consumer_learn_track/discover_dp/)
 

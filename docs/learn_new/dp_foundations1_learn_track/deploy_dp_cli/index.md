@@ -1,6 +1,7 @@
 # Deploying your Data Product on DataOS
 
-After setting up the essential YAML files — the Bundle YAML, Data Product Specification YAML, and Lens YAMLs — the final step is to deploy your data product on the Data Product Hub. This process makes your product available for discovery and consumption within your organization. The deployment involves resource instantiation and metadata registration.
+!!! info "Overview"
+    After setting up the essential YAML files — the Bundle YAML, Data Product Specification YAML, and Lens YAMLs — the final step is to deploy your data product on the Data Product Hub. This process makes your product available for discovery and consumption within your organization. The deployment involves resource instantiation and metadata registration.
 
 ## 📘 Scenario
 
@@ -8,7 +9,7 @@ Imagine you've built a source-aligned data product called retaildata that delive
 
 ## Deploying Data Product
 
-Ddeployment process has three stages:
+Deployment process has three stages:
 
 - **Instantiate Resources**: Using the Bundle YAML, all referenced resources such as Workflows, Secrets, and Services are created.
 
@@ -20,7 +21,7 @@ Ddeployment process has three stages:
 
 DataOS CLI is a text-based interface that allows users to interact with the DataOS context via command prompts.
 
-## Step 2: Use the `apply` command on CLI to deploy your Data Product on Data Product Hub successfully.
+## Step 2: Use the `apply` command 
 
 1. Run the Bundle manifest file created in the previous topic.
     
@@ -80,7 +81,7 @@ INFO[0000] 🔍 product get...complete
 
 ## Step 4: Exploring Data Product on Data Product Hub
 
-🎯 You're done creating your source-alined data product! Now, check it on Data Product Hub.
+You're done creating your source-alined data product! Now, check it on Data Product Hub.
 
 1. Log in to the DataOS instance and Navigate to Data Product Hub to search the data product.
     
@@ -90,11 +91,11 @@ INFO[0000] 🔍 product get...complete
     ![dp_on_dph.png](/learn_new/dp_foundations1_learn_track/deploy_dp_cli/retail_data_dp.png)
 
 <aside class="callout">
-Great work completing Track 1: Source-Aligned Data Product Foundations! You've successfully connected your data sources, applied governance and observability, and deployed your first source-aligned Data Product on the Data Product Hub.
+🎯 Great work completing Data Products Foundations Track: Course I! You've successfully connected your data sources, applied governance and observability, and deployed your first source-aligned Data Product on the Data Product Hub.
 
 </aside>
 
-## 🎯 What's Next?
-Now it’s time to advance to Foundations Track- Part 2, where you’ll focus on creating Consumer-Aligned Data Products—tailored, business-ready products built on top of source-aligned foundations.
+##  Next step
+Now it’s time to advance to Data Products Foundations Track- Course II, where you’ll focus on creating Consumer-Aligned Data Products—tailored, business-ready products built on top of source-aligned foundations.
 
 👉 Head to the next module: [Creating a Consumer-Aligned Data Product]()

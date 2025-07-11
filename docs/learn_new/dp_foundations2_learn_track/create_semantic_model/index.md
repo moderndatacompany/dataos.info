@@ -1,10 +1,12 @@
-# Build a semantic model 
+# Build a Semantic Model 
 
-This guide outlines the end-to-end process for building and deploying a semantic model (Lens) For your data product. 
+!!! info "Overview"
+    This guide outlines the end-to-end process for building and deploying a semantic model (Lens) For your data product. 
 
-## Scenario
+## 📘 Scenario
 
-After you've established data connections and built robust data pipelines to process and transform raw data, the next step is to create a semantic model (Lens). Your objective is to transform raw data into a structured model that enables the generation of trusted, consistent metrics and KPIs. These metrics will be accessible through APIs and usable across business intelligence, AI, and embedded analytics tools.
+To provide business users with consistent, trustworthy metrics across BI tools and applications, you need to create a semantic model (Lens) that encapsulates business logic and definitions. This model translates complex data structures into familiar business terms, facilitating self-service analytics. Leverage your source-aligned data product, which processes raw data into structured formats, ensuring the semantic model is grounded in accurate, well-prepared data sources. Metrics become accessible via APIs for use in BI, AI, and embedded analytics tools.
+
 
 ## Quick concepts
 
@@ -20,9 +22,8 @@ Semantic models aim to represent data in a way that is easily understandable by 
 
 Based on the identified goals of analysis, value objectives, and the key factors or drivers that will influence our value objectives, create the semantic model with the following steps.
 
-<aside>
-
-You can create semantic models directly from structured sources. However, if data comes from multiple or unstructured sources, you may need to collect, clean, and transform it into a usable format.
+<aside class="callout">
+🗣 You can create semantic models directly from structured sources. However, if data comes from multiple or unstructured sources, you may need to collect, clean, and transform it into a usable format.
 
 </aside>
 
@@ -66,7 +67,7 @@ These SQL scripts extract relevant fields from your input datasets.
 1. Create SQL scripts for each entity.
 2. Add SQL files to the `sqls` folder.
 
-??? example "customer.sql"
+??? "customer.sql"
 
     ```sql
     # Replace xx with your initials
@@ -81,7 +82,7 @@ These SQL scripts extract relevant fields from your input datasets.
         postgres.public.customer_data
     ```
 
-??? example "product.sql"
+??? "product.sql"
     ```sql
     # Replace xx with your initials
     select 
@@ -94,7 +95,7 @@ These SQL scripts extract relevant fields from your input datasets.
         postgresxx.public.product_data
     ```
 
-??? example "purchase.sql"
+??? "purchase.sql"
 
     ```sql
     # Replace xx with your initials
@@ -195,7 +196,7 @@ In the YAML manifest, each segment is defined by:
 - **sql:** Contains the SQL logic or condition that defines the segment. The SQL condition is used to filter the data, ensuring that only the records that meet the condition are included in the segment. In the provided YAML example, the condition is {TABLE}.state = 'Illinois', which means only rows where the state column equals "Illinois" will be included in this segment.
 
 
-🎯 **Your Actions:**
+🎯 **Your actions:**
 
 1. In the tables folder, define logical table definitions in YAML format. The templates show how to define tables referencing the SQL scripts created in the previous step and defining dimensions, joins, measures, and segments.
 2. Add these files to the `tables` folder.
@@ -507,7 +508,7 @@ tables:
 
 
 
-### **Define Manifest Files for Business Views**
+### **Step 4: Define Manifest Files for Business Views**
 
 The `views` folder contains business views, encapsulating the identified drivers and metrics to provide targeted insights.
 
@@ -658,7 +659,7 @@ views:
 ```
 </details>
 
-### **Define Access Control**
+### **Step 5: Define Access Control**
 
 The `user_groups.yml` file manages access permissions for different user groups within your data model.
 
@@ -701,7 +702,7 @@ user_groups:
     includes: "*"
 ```
 
-### Create a Lens Resource Manifest File
+### **Step 6: Create a Lens Resource Manifest File**
 
 This file is your blueprint for configuring your Lens Resource on DataOS. This file contains a meta section and a Lens Lens-specific section to define all the technical configurations, such as secrets, code base, repo, and source configuration that your Lens will be mapped to.
 
@@ -773,7 +774,7 @@ lens:
     logLevel: info
 ```
 
-### **Push the code to Repo** 
+### **Step 7: Push the code to Repo** 
 
 Push the code to Repo and update the repo URL and base directory location under lens section.  Use clear commit messages to describe changes effectively.
 
@@ -781,9 +782,9 @@ Push the code to Repo and update the repo URL and base directory location under 
 Don’t forget to replace placeholder values with your project-specific info and push changes to your repo with clear commit messages.
 </aside>
 
-## Next Step
+## Next step
 
 Your semantic model is now in place. The final milestone is to deploy your first consumer-aligned data product.
 
-👉 [Continue to Enable Consumption→](/learn_new/dp_foundations2_learn_track/deploy_sm/)
+👉 [Deploy and Register Data Product](/learn_new/dp_foundations2_learn_track/deploy_sm/)
 

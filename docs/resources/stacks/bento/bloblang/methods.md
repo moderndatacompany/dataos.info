@@ -1,8 +1,8 @@
 # Methods
 
-Methods provide most of the power in Bloblang as they allow you to augment values and can be added to any expression (including other methods):
+Methods provide most of the power in Bloblang as they allows to augment values and can be added to any expression (including other methods):
 
-```yaml
+```go
 root.doc.id = this.thing.id.string().catch(uuid_v4())
 root.doc.reduced_nums = this.thing.nums.map_each(num -> if num < 10 {
   deleted()
@@ -14,7 +14,7 @@ root.has_good_taste = ["pikachu","mewtwo","magmar"].contains(this.user.fav_pokem
 
 Methods support both named and nameless style arguments:
 
-```yaml
+```go
 root.foo_one = this.(bar | baz).trim().replace_all(old: "dog", new: "cat")
 root.foo_two = this.(bar | baz).trim().replace_all("dog", "cat")
 ```
@@ -27,11 +27,11 @@ Apply a declared mapping to a target value.
 
 **Parameters**
 
-**`mapping`** \<string\> The mapping to apply.
+**`mapping`** <string\> The mapping to apply.
 
 **Examples**
 
-```yaml
+```go
 map thing {
   root.inner = this.first
 }
@@ -42,7 +42,7 @@ root.foo = this.doc.apply("thing")
 # Out: {"foo":{"inner":"hello world"}}
 ```
 
-```yaml
+```go
 map create_foo {
   root.name = "a foo"
   root.purpose = "to be a foo"
@@ -55,7 +55,8 @@ root.foo = null.apply("create_foo")
 # Out: {"foo":{"name":"a foo","purpose":"to be a foo"},"id":"1234"}
 ```
 
----
+
+
 
 ### **`catch`**
 
@@ -63,17 +64,17 @@ If the result of a target query fails (due to incorrect types, failed parsing, e
 
 **Parameters**
 
-**`fallback`** \<query expression\> A value to yield, or query to execute, if the target query fails.
+**`fallback`** <query expression\> A value to yield, or query to execute, if the target query fails.
 
 **Examples**
 
-```yaml
+```go
 root.doc.id = this.thing.id.string().catch(uuid_v4())
 ```
 
-The fallback argument can be a [mapping](../components/processors/mapping.md), allowing you to capture the error string and yield structured data back.
+The fallback argument can be a [mapping](../components/processors/mapping.md), which allows to capture the error string and yield structured data back.
 
-```yaml
+```go
 root.url = this.url.parse_url().catch(err -> {"error":err,"input":this.url})
 
 # In:  {"url":"invalid %&# url"}
@@ -82,7 +83,7 @@ root.url = this.url.parse_url().catch(err -> {"error":err,"input":this.url})
 
 When the input document is not structured attempting to reference structured fields with this will result in an error. Therefore, a convenient way to delete non-structured data is with a catch.
 
-```yaml
+```go
 root = this.catch(deleted())
 
 # In:  {"doc":{"foo":"bar"}}
@@ -92,7 +93,8 @@ root = this.catch(deleted())
 # Out: <Message deleted>
 ```
 
----
+
+
 
 ### **`exists`**
 
@@ -100,10 +102,10 @@ Checks that a field, identified via a dot path, exists in an object.
 
 **Parameters**
 
-**`path`** \<string\> A dot path to a field.
+**`path`** <string\> A dot path to a field.
 
 **Examples**
-```yaml
+```go
 root.result = this.foo.exists("bar.baz")
 
 # In:  {"foo":{"bar":{"baz":"yep, I exist"}}}
@@ -116,26 +118,28 @@ root.result = this.foo.exists("bar.baz")
 # Out: {"result":false}
 ```
 
----
+
+
 
 ### **`from`**
 
-Modifies a target query such that certain [functions](../bloblang/functions.md) are executed from the perspective of another message in the batch. This allows you to mutate events based on the contents of other messages. [Functions](../bloblang/functions.md) that support this behaviour are content, json and meta.
+Modifies a target query such that certain [functions](../bloblang/functions.md) are executed from the perspective of another message in the batch. This allows to mutate events based on the contents of other messages. [Functions](../bloblang/functions.md) that support this behaviour are content, json and meta.
 
 **Parameters**
 
-**`index`** \<integer\> The message index to use as a perspective.
+**`index`** <integer\> The message index to use as a perspective.
 
 **Examples**
 
 For example, the following map extracts the contents of the JSON field foo specifically from message index 1 of a batch, effectively overriding the field foo for all messages of a batch to that of message 1:
 
-```yaml
+```go
 root = this
 root.foo = json("foo").from(1)
 ```
 
----
+
+
 
 ### **`from_all`**
 
@@ -143,12 +147,13 @@ Modifies a target query such that certain functions are executed from the perspe
 
 **Examples**
 
-```yaml
+```go
 root = this
 root.foo_summed = json("foo").from_all().sum()
 ```
 
----
+
+
 
 ### **`or`**
 
@@ -156,10 +161,10 @@ If the result of the target query fails or resolves to null, returns the argumen
 
 **Parameters**
 
-**`fallback`** \<query expression\> A value to yield, or query to execute, if the target query fails or resolves to null.
+**`fallback`** <query expression\> A value to yield, or query to execute, if the target query fails or resolves to null.
 
 **Examples**
-```yaml
+```go
 root.doc.id = this.thing.id.or(uuid_v4())
 ```
 
@@ -170,13 +175,14 @@ root.doc.id = this.thing.id.or(uuid_v4())
 Takes a string value and returns a copy with all Unicode letters that begin words mapped to their Unicode title case.
 
 **Examples**
-```yaml
+```go
 root.title = this.title.capitalize()
 
 # In:  {"title":"the foo bar"}
 # Out: {"title":"The Foo Bar"}
 ```
----
+
+
 
 
 ### **`compare_argon2`**
@@ -185,23 +191,24 @@ Checks whether a string matches a hashed secret using Argon2.
 
 **Parameters**
 
-**hashed_secret** \<string\> The hashed secret to compare with the input. This must be a fully-qualified string which encodes the Argon2 options used to generate the hash.
+**hashed_secret** <string\> The hashed secret to compare with the input. This must be a fully-qualified string which encodes the Argon2 options used to generate the hash.
 
 **Examples**
 
-```yaml
+```go
 root.match = this.secret.compare_argon2("$argon2id$v=19$m=4096,t=3,p=1$c2FsdHktbWNzYWx0ZmFjZQ$RMUMwgtS32/mbszd+ke4o4Ej1jFpYiUqY6MHWa69X7Y")
 
 # In:  {"secret":"there-are-many-blobs-in-the-sea"}
 # Out: {"match":true}
 ```
-```yaml
+```go
 root.match = this.secret.compare_argon2("$argon2id$v=19$m=4096,t=3,p=1$c2FsdHktbWNzYWx0ZmFjZQ$RMUMwgtS32/mbszd+ke4o4Ej1jFpYiUqY6MHWa69X7Y")
 
 # In:  {"secret":"will-i-ever-find-love"}
 # Out: {"match":false}
 ```
----
+
+
 
 ### **`compare_bcrypt`**
 
@@ -209,23 +216,24 @@ Checks whether a string matches a hashed secret using bcrypt.
 
 **Parameters**
 
-**hashed_secret** \<string\> The hashed secret value to compare with the input.
+**hashed_secret** <string\> The hashed secret value to compare with the input.
 
 **Examples**
-```yaml
+```go
 root.match = this.secret.compare_bcrypt("$2y$10$Dtnt5NNzVtMCOZONT705tOcS8It6krJX8bEjnDJnwxiFKsz1C.3Ay")
 
 # In:  {"secret":"there-are-many-blobs-in-the-sea"}
 # Out: {"match":true}
 ```
 
-```yaml
+```go
 root.match = this.secret.compare_bcrypt("$2y$10$Dtnt5NNzVtMCOZONT705tOcS8It6krJX8bEjnDJnwxiFKsz1C.3Ay")
 
 # In:  {"secret":"will-i-ever-find-love"}
 # Out: {"match":false}
 ```
----
+
+
 
 ### **`contains`**
 
@@ -233,10 +241,10 @@ Checks whether a string contains a substring and returns a boolean result.
 
 **Parameters**
 
-**value** \<unknown\> A value to test against elements of the target.
+**value** <unknown\> A value to test against elements of the target.
 
 **Examples**
-```yaml
+```go
 root.has_foo = this.thing.contains("foo")
 
 # In:  {"thing":"this foo that"}
@@ -245,50 +253,54 @@ root.has_foo = this.thing.contains("foo")
 # In:  {"thing":"this bar that"}
 # Out: {"has_foo":false}
 ```
----
+
+
 
 ### **`escape_html`**
 
 Escapes a string so that special characters like < to become &lt;. It escapes only five such characters: <, >, &, ' and " so that it can be safely placed within an HTML entity.
 
 **Examples**
-```yaml
+```go
 root.escaped = this.value.escape_html()
 
 # In:  {"value":"foo & bar"}
 # Out: {"escaped":"foo &amp; bar"}
 ```
----
+
+
 ### **`escape_url_query`**
 Escapes a string so that it can be safely placed within a URL query.
 
 **Examples**
 
-```yaml
+```go
 root.escaped = this.value.escape_url_query()
 
 # In:  {"value":"foo & bar"}
 # Out: {"escaped":"foo+%26+bar"}
 ```
----
+
+
 
 ### **`filepath_join`**
 Joins an array of path elements into a single file path. The separator depends on the operating system of the machine.
 
 **Examples**
-```yaml
+```go
 root.path = this.path_elements.filepath_join()
 
 # In:  {"path_elements":["/foo/","bar.txt"]}
 # Out: {"path":"/foo/bar.txt"}
 ```
----
+
+
 
 ### **`filepath_split`**
 Splits a file path immediately following the final Separator, separating it into a directory and file name component returned as a two element array of strings. If there is no Separator in the path, the first element will be empty and the second will contain the path. The separator depends on the operating system of the machine.
 
 **Examples**
-```yaml
+```go
 root.path_sep = this.path.filepath_split()
 
 # In:  {"path":"/foo/bar.txt"}
@@ -297,19 +309,21 @@ root.path_sep = this.path.filepath_split()
 # In:  {"path":"baz.txt"}
 # Out: {"path_sep":["","baz.txt"]}
 ```
----
+
+
 
 ### **`format`**
 Use a value string as a format specifier in order to produce a new string, using any number of provided arguments. Please refer to the Go fmt package documentation for the list of valid format verbs.
 
 **Examples**
-```yaml
+```go
 root.foo = "%s(%v): %v".format(this.name, this.age, this.fingers)
 
 # In:  {"name":"lance","age":37,"fingers":13}
 # Out: {"foo":"lance(37): 13"}
 ```
----
+
+
 
 ### **`has_prefix`**
 
@@ -317,34 +331,36 @@ Checks whether a string has a prefix argument and returns a bool.
 
 **Parameters**
 
-**value** \<string\> The string to test.
+**value** <string\> The string to test.
 
 **Examples**
-```yaml
+```go
 root.t1 = this.v1.has_prefix("foo")
 root.t2 = this.v2.has_prefix("foo")
 
 # In:  {"v1":"foobar","v2":"barfoo"}
 # Out: {"t1":true,"t2":false}
 ```
----
+
+
 
 ### **`has_suffix`**
 Checks whether a string has a suffix argument and returns a bool.
 
 **Parameters**
 
-**`value`** \<string\> The string to test.
+**`value`** <string\> The string to test.
 
 **Examples**
-```yaml
+```go
 root.t1 = this.v1.has_suffix("foo")
 root.t2 = this.v2.has_suffix("foo")
 
 # In:  {"v1":"foobar","v2":"barfoo"}
 # Out: {"t1":false,"t2":true}
 ```
----
+
+
 
 ### **`index_of`**
 
@@ -352,82 +368,87 @@ Returns the starting index of the argument substring in a string target, or -1 i
 
 **Parameters**
 
-**value** \<string\> A string to search for.
+**value** <string\> A string to search for.
 
 **Examples**
 
-```yaml
+```go
 root.index = this.thing.index_of("bar")
 
 # In:  {"thing":"foobar"}
 # Out: {"index":3}
 ```
 
-```yaml
+```go
 root.index = content().index_of("meow")
 
 # In:  the cat meowed, the dog woofed
 # Out: {"index":8}
 ```
----
+
+
 
 ### **`length`**
 
 Returns the length of a string.
 
 **Examples**
-```yaml
+```go
 root.foo_len = this.foo.length()
 
 # In:  {"foo":"hello world"}
 # Out: {"foo_len":11}
 ```
----
+
+
 
 ### **`lowercase`**
 
 Convert a string value into lowercase.
 
 **Examples**
-```yaml
+```go
 root.foo = this.foo.lowercase()
 
 # In:  {"foo":"HELLO WORLD"}
 # Out: {"foo":"hello world"}
 ```
----
+
+
 
 ### **`parse_jwt_hs256`**
 Parses a claims object from a JWT string encoded with HS256. This method does not validate JWT claims.
 
 **Parameters**
 
-**signing_secret** \<string\> The HMAC secret that was used for signing the token.
+**signing_secret** <string\> The HMAC secret that was used for signing the token.
 
 **Examples**
-```yaml
+```go
 root.claims = this.signed.parse_jwt_hs256("dont-tell-anyone")
 
 # In:  {"signed":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyMTIzIn0.hUl-nngPMY_3h9vveWJUPsCcO5PeL6k9hWLnMYeFbFQ"}
 # Out: {"claims":{"sub":"user123"}}
 ```
----
+
+
 ### **`parse_jwt_hs384`**
 
 Parses a claims object from a JWT string encoded with HS384. This method does not validate JWT claims.
 
 **Parameters**
 
-**`signing_secret`** \<string\> The HMAC secret that was used for signing the token.
+**`signing_secret`** <string\> The HMAC secret that was used for signing the token.
 
 **Examples**
-```yaml
+```go
 root.claims = this.signed.parse_jwt_hs384("dont-tell-anyone")
 
 # In:  {"signed":"eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyMTIzIn0.zGYLr83aToon1efUNq-hw7XgT20lPvZb8sYei8x6S6mpHwb433SJdXJXx0Oio8AZ"}
 # Out: {"claims":{"sub":"user123"}}
 ```
----
+
+
 
 ### **`parse_jwt_hs512`**
 
@@ -435,55 +456,58 @@ Parses a claims object from a JWT string encoded with HS512. This method does no
 
 **Parameters**
 
-**`signing_secret`** \<string\> The HMAC secret that was used for signing the token.
+**`signing_secret`** <string\> The HMAC secret that was used for signing the token.
 
 **Examples**
-```yaml
+```go
 root.claims = this.signed.parse_jwt_hs512("dont-tell-anyone")
 
 # In:  {"signed":"eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyMTIzIn0.zBNR9o_6EDwXXKkpKLNJhG26j8Dc-mV-YahBwmEdCrmiWt5les8I9rgmNlWIowpq6Yxs4kLNAdFhqoRz3NXT3w"}
 # Out: {"claims":{"sub":"user123"}}
 ```
----
+
+
 
 ### **`quote`**
 
 Quotes a target string using escape sequences (\t, \n, \xFF, \u0100) for control characters and non-printable characters.
 
 **Examples**
-```yaml
+```go
 root.quoted = this.thing.quote()
 
 # In:  {"thing":"foo\nbar"}
 # Out: {"quoted":"\"foo\\nbar\""}
 ```
----
+
+
 ### **`replace_all`**
 
 Replaces all occurrences of the first argument in a target string with the second argument.
 
 **Parameters**
 
-**`old`** \<string\> A string to match against.
+**`old`** <string\> A string to match against.
 
-**`new`** \<string\> A string to replace with.
+**`new`** <string\> A string to replace with.
 
 **Examples**
-```yaml
+```go
 root.new_value = this.value.replace_all("foo","dog")
 
 # In:  {"value":"The foo ate my homework"}
 # Out: {"new_value":"The dog ate my homework"}
 ```
----
+
+
 ### **`replace_all_many`**
 For each pair of strings in an argument array, replaces all occurrences of the first item of the pair with the second. This is a more compact way of chaining a series of replace_all methods.
 
 **Parameters**
-**`values`** \<array\> An array of values, each even value will be replaced with the following odd value.
+**`values`** <array\> An array of values, each even value will be replaced with the following odd value.
 
 **Examples**
-```yaml
+```go
 root.new_value = this.value.replace_all_many([
   "<b>", "&lt;b&gt;",
   "</b>", "&lt;/b&gt;",
@@ -494,36 +518,38 @@ root.new_value = this.value.replace_all_many([
 # In:  {"value":"<i>Hello</i> <b>World</b>"}
 # Out: {"new_value":"&lt;i&gt;Hello&lt;/i&gt; &lt;b&gt;World&lt;/b&gt;"}
 ```
----
+
+
 ### **`reverse`**
 Returns the target string in reverse order.
 
 **Examples**
-```yaml
+```go
 root.reversed = this.thing.reverse()
 
 # In:  {"thing":"backwards"}
 # Out: {"reversed":"sdrawkcab"}
 ```
-```yaml
+```go
 root = content().reverse()
 
 # In:  {"thing":"backwards"}
 # Out: }"sdrawkcab":"gniht"{
 ```
----
+
+
 ### **`slice`**
 
 Extract a slice from a string by specifying two indices, a low and high bound, which selects a half-open range that includes the first character, but excludes the last one. If the second index is omitted then it defaults to the length of the input sequence.
 
 **Parameters**
 
-**`low`** \<integer\> The low bound, which is the first element of the selection, or if negative selects from the end.
+**`low`** <integer\> The low bound, which is the first element of the selection, or if negative selects from the end.
 
-**`high`** \<(optional) integer\> An optional high bound.
+**`high`** <(optional) integer\> An optional high bound.
 
 **Examples**
-```yaml
+```go
 root.beginning = this.value.slice(0, 2)
 root.end = this.value.slice(4)
 
@@ -533,14 +559,15 @@ root.end = this.value.slice(4)
 
 A negative low index can be used, indicating an offset from the end of the sequence. If the low index is greater than the length of the sequence then an empty result is returned.
 
-```yaml
+```go
 root.last_chunk = this.value.slice(-4)
 root.the_rest = this.value.slice(0, -4)
 
 # In:  {"value":"foo bar"}
 # Out: {"last_chunk":" bar","the_rest":"foo"}
 ```
----
+
+
 ### **`slug`**
 
 <aside style="padding:15px; border-radius:5px;">
@@ -556,12 +583,12 @@ Creates a "slug" from a given string. Wraps the github.com/gosimple/slug package
 
 **Parameters**
 
-**`lang`** \<(optional) string, default "en"\>
+**`lang`** <(optional) string, default "en"\>
 
 **Examples**
 
 Creates a slug from an English string
-```yaml
+```go
 root.slug = this.value.slug()
 
 # In:  {"value":"Gopher & Bento"}
@@ -570,39 +597,41 @@ root.slug = this.value.slug()
 
 Creates a slug from a French string
 
-```yaml
+```go
 root.slug = this.value.slug("fr")
 
 # In:  {"value":"Gaufre & Poisson d'Eau Profonde"}
 # Out: {"slug":"gaufre-et-poisson-deau-profonde"}
 ```
----
+
+
 ### **`split`**
 
 Split a string value into an array of strings by splitting it on a string separator.
 
 **Parameters**
 
-**`delimiter`** \<string\> The delimiter to split with.
+**`delimiter`** <string\> The delimiter to split with.
 
 **Examples**
-```yaml
+```go
 root.new_value = this.value.split(",")
 
 # In:  {"value":"foo,bar,baz"}
 # Out: {"new_value":["foo","bar","baz"]}
 ```
----
+
+
 ### **`strip_html`**
 
 Attempts to remove all HTML tags from a target string.
 
 **Parameters**
 
-**`preserve`** \<(optional) array\> An optional array of element types to preserve in the output.
+**`preserve`** <(optional) array\> An optional array of element types to preserve in the output.
 
 **Examples**
-```yaml
+```go
 root.stripped = this.value.strip_html()
 
 # In:  {"value":"<p>the plain <strong>old text</strong></p>"}
@@ -610,46 +639,49 @@ root.stripped = this.value.strip_html()
 ```
 
 It's also possible to provide an explicit list of element types to preserve in the output.
-```yaml
+```go
 root.stripped = this.value.strip_html(["article"])
 
 # In:  {"value":"<article><p>the plain <strong>old text</strong></p></article>"}
 # Out: {"stripped":"<article>the plain old text</article>"}
 ```
----
+
+
 ### **`trim`**
 Remove all leading and trailing characters from a string that are contained within an argument cutset. If no arguments are provided then whitespace is removed.
 
 **Parameters**
 
-**`cutset`** \<(optional) string\> An optional string of characters to trim from the target value.
+**`cutset`** <(optional) string\> An optional string of characters to trim from the target value.
 
 **Examples**
-```yaml
+```go
 root.title = this.title.trim("!?")
 root.description = this.description.trim()
 
 # In:  {"description":"  something happened and its amazing! ","title":"!!!watch out!?"}
 # Out: {"description":"something happened and its amazing!","title":"watch out"}
 ```
----
+
+
 ### **`trim_prefix`**
 
 Remove the provided leading prefix substring from a string. If the string does not have the prefix substring, it is returned unchanged.
 
 **`Parameters`**
 
-**`prefix`** \<string\> The leading prefix substring to trim from the string.
+**`prefix`** <string\> The leading prefix substring to trim from the string.
 
 **`Examples`**
-```yaml
+```go
 root.name = this.name.trim_prefix("foobar_")
 root.description = this.description.trim_prefix("foobar_")
 
 # In:  {"description":"unchanged","name":"foobar_blobton"}
 # Out: {"description":"unchanged","name":"blobton"}
 ```
----
+
+
 ### **`trim_suffix`**
 
 Remove the provided trailing suffix substring from a string. If the string does not have the suffix substring, it is returned unchanged.
@@ -657,59 +689,63 @@ Remove the provided trailing suffix substring from a string. If the string does 
 
 **Parameters**
 
-**`suffix`** \<string\> The trailing suffix substring to trim from the string.
+**`suffix`** <string\> The trailing suffix substring to trim from the string.
 
 **Examples**
-```yaml
+```go
 root.name = this.name.trim_suffix("_foobar")
 root.description = this.description.trim_suffix("_foobar")
 
 # In:  {"description":"unchanged","name":"blobton_foobar"}
 # Out: {"description":"unchanged","name":"blobton"}
 ```
----
+
+
 ### **`unescape_html`**
 
 Unescapes a string so that entities like &lt; become <. It unescapes a larger range of entities than escape_html escapes. For example, &aacute; unescapes to á, as does &#225; and &xE1;.
 
 **Examples**
-```yaml
+```go
 root.unescaped = this.value.unescape_html()
 
 # In:  {"value":"foo &amp; bar"}
 # Out: {"unescaped":"foo & bar"}
 ```
----
+
+
 ### **`unescape_url_query`**
 
 Expands escape sequences from a URL query string.
 
 **Examples**
-```yaml
+```go
 root.unescaped = this.value.unescape_url_query()
 
 # In:  {"value":"foo+%26+bar"}
 # Out: {"unescaped":"foo & bar"}
 ```
----
+
+
 ### **`unquote`**
 
 Unquotes a target string, expanding any escape sequences (\t, \n, \xFF, \u0100) for control characters and non-printable characters.
 
 **Examples**
-```yaml
+```go
 root.unquoted = this.thing.unquote()
 
 # In:  {"thing":"\"foo\\nbar\""}
 # Out: {"unquoted":"foo\nbar"}
 ```
----
+
+
 ### **`uppercase`**
 
 Convert a string value into uppercase.
 
 **Examples**
-```yaml
+```go
 root.foo = this.foo.uppercase()
 
 # In:  {"foo":"hello world"}
@@ -724,17 +760,18 @@ Returns an array containing all successive matches of a regular expression in a 
 
 **Parameters**
 
-**`pattern`** \<string\> The pattern to match against.
+**`pattern`** <string\> The pattern to match against.
 
 **Examples**
 
-```yaml
+```go
 root.matches = this.value.re_find_all("a.")
 
 # In:  {"value":"paranormal"}
 # Out: {"matches":["ar","an","al"]}
 ```
----
+
+
 
 ### **`re_find_all_object`**
 
@@ -742,25 +779,26 @@ Returns an array of objects containing all matches of the regular expression and
 
 **Parameters**
 
-**`pattern`** \<string\> The pattern to match against.
+**`pattern`** <string\> The pattern to match against.
 
 **Examples**
 
-```yaml
+```go
 root.matches = this.value.re_find_all_object("a(?P<foo>x*)b")
 
 # In:  {"value":"-axxb-ab-"}
 # Out: {"matches":[{"0":"axxb","foo":"xx"},{"0":"ab","foo":""}]}
 ```
 
-```yaml
+```go
 root.matches = this.value.re_find_all_object("(?m)(?P<key>\\w+):\\s+(?P<value>\\w+)$")
 
 # In:  {"value":"option1: value1\noption2: value2\noption3: value3"}
 # Out: {"matches":[{"0":"option1: value1","key":"option1","value":"value1"},{"0":"option2: value2","key":"option2","value":"value2"},{"0":"option3: value3","key":"option3","value":"value3"}]}
 ```
 
----
+
+
 
 ### **`re_find_all_submatch`**
 
@@ -768,18 +806,19 @@ Returns an array of arrays containing all successive matches of the regular expr
 
 **Parameters**
 
-**`pattern`** \<string\> The pattern to match against.
+**`pattern`** <string\> The pattern to match against.
 
 **Examples**
 
-```yaml
+```go
 root.matches = this.value.re_find_all_submatch("a(x*)b")
 
 # In:  {"value":"-axxb-ab-"}
 # Out: {"matches":[["axxb","xx"],["ab",""]]}
 ```
 
----
+
+
 
 ### **`re_find_object`**
 
@@ -787,25 +826,26 @@ Returns an object containing the first match of the regular expression and the m
 
 **Parameters**
 
-**`pattern`** \<string\> The pattern to match against.
+**`pattern`** <string\> The pattern to match against.
 
 **Examples**
 
-```yaml
+```go
 root.matches = this.value.re_find_object("a(?P<foo>x*)b")
 
 # In:  {"value":"-axxb-ab-"}
 # Out: {"matches":{"0":"axxb","foo":"xx"}}
 ```
 
-```yaml
+```go
 root.matches = this.value.re_find_object("(?P<key>\\w+):\\s+(?P<value>\\w+)")
 
 # In:  {"value":"option1: value1"}
 # Out: {"matches":{"0":"option1: value1","key":"option1","value":"value1"}}
 ```
 
----
+
+
 
 ### **`re_match`**
 
@@ -813,11 +853,11 @@ Checks whether a regular expression matches against any part of a string and ret
 
 **Parameters**
 
-**`pattern`** \<string\> The pattern to match against.
+**`pattern`** <string\> The pattern to match against.
 
 **Examples**
 
-```yaml
+```go
 root.matches = this.value.re_match("[0-9]")
 
 # In:  {"value":"there are 10 puppies"}
@@ -827,7 +867,8 @@ root.matches = this.value.re_match("[0-9]")
 # Out: {"matches":false}
 ```
 
----
+
+
 
 ### **`re_replace_all`**
 
@@ -835,13 +876,13 @@ Replaces all occurrences of the argument regular expression in a string with a v
 
 **Parameters**
 
-**`pattern`** \<string\> The pattern to match against.
+**`pattern`** <string\> The pattern to match against.
 
-**`value`** \<string\> The value to replace with.
+**`value`** <string\> The value to replace with.
 
 **Examples**
 
-```yaml
+```go
 root.new_value = this.value.re_replace_all("ADD ([0-9]+)","+($1)")
 
 # In:  {"value":"foo ADD 70"}
@@ -856,7 +897,7 @@ Returns the absolute value of a number.
 
 **Examples**
 
-```yaml
+```go
 root.new_value = this.value.abs()
 
 # In:  {"value":5.3}
@@ -866,7 +907,8 @@ root.new_value = this.value.abs()
 # Out: {"new_value":5.9}
 ```
 
----
+
+
 
 ### **`ceil`**
 
@@ -874,7 +916,7 @@ Returns the least integer value greater than or equal to a number. If the result
 
 **Examples**
 
-```yaml
+```go
 root.new_value = this.value.ceil()
 
 # In:  {"value":5.3}
@@ -883,7 +925,8 @@ root.new_value = this.value.ceil()
 # In:  {"value":-5.9}
 # Out: {"new_value":-5}
 ```
----
+
+
 
 ### **`floor`**
 
@@ -891,13 +934,14 @@ Returns the greatest integer value less than or equal to the target number. If t
 
 **Examples**
 
-```yaml
+```go
 root.new_value = this.value.floor()
 
 # In:  {"value":5.7}
 # Out: {"new_value":5}
 ```
----
+
+
 
 ### **`int32`**
 
@@ -907,7 +951,7 @@ If the value is a string, then an attempt will be made to parse it as a 32-bit i
 
 **Examples**
 
-```yaml
+```go
 root.a = this.a.int32()
 root.b = this.b.round().int32()
 root.c = this.c.int32()
@@ -916,13 +960,14 @@ root.c = this.c.int32()
 # Out: {"a":12,"b":12,"c":12}
 ```
 
-```yaml
+```go
 root = this.int32()
 
 # In:  "0xB70B"
 # Out: 46859
 ```
----
+
+
 
 ### **`int64`**
 
@@ -932,7 +977,7 @@ If the value is a string, then an attempt will be made to parse it as a 64-bit i
 
 **Examples**
 
-```yaml
+```go
 root.a = this.a.int64()
 root.b = this.b.round().int64()
 root.c = this.c.int64()
@@ -941,14 +986,15 @@ root.c = this.c.int64()
 # Out: {"a":12,"b":12,"c":12}
 ```
 
-```yaml
+```go
 root = this.int64()
 
 # In:  "0xDEADBEEF"
 # Out: 3735928559
 ```
 
----
+
+
 
 ### **`log`**
 
@@ -956,7 +1002,7 @@ Returns the natural logarithm of a number.
 
 **Examples**
 
-```yaml
+```go
 root.new_value = this.value.log().round()
 
 # In:  {"value":1}
@@ -966,7 +1012,8 @@ root.new_value = this.value.log().round()
 # Out: {"new_value":1}
 ```
 
----
+
+
 
 ### **`log10`**
 
@@ -974,7 +1021,7 @@ Returns the decimal logarithm of a number.
 
 **Examples**
 
-```yaml
+```go
 root.new_value = this.value.log10()
 
 # In:  {"value":100}
@@ -984,7 +1031,8 @@ root.new_value = this.value.log10()
 # Out: {"new_value":3}
 ```
 
----
+
+
 
 ### **`max`**
 
@@ -992,14 +1040,14 @@ Returns the largest numerical value found within an array. All values must be nu
 
 **Examples**
 
-```yaml
+```go
 root.biggest = this.values.max()
 
 # In:  {"values":[0,3,2.5,7,5]}
 # Out: {"biggest":7}
 ```
 
-```yaml
+```go
 root.new_value = [0,this.value].max()
 
 # In:  {"value":-1}
@@ -1008,7 +1056,8 @@ root.new_value = [0,this.value].max()
 # In:  {"value":7}
 # Out: {"new_value":7}
 ```
----
+
+
 
 ### **`min`**
 
@@ -1016,14 +1065,14 @@ Returns the smallest numerical value found within an array. All values must be n
 
 **Examples**
 
-```yaml
+```go
 root.smallest = this.values.min()
 
 # In:  {"values":[0,3,-2.5,7,5]}
 # Out: {"smallest":-2.5}
 ```
 
-```yaml
+```go
 root.new_value = [10,this.value].min()
 
 # In:  {"value":2}
@@ -1032,7 +1081,8 @@ root.new_value = [10,this.value].min()
 # In:  {"value":23}
 # Out: {"new_value":10}
 ```
----
+
+
 
 ### **`round`**
 
@@ -1040,7 +1090,7 @@ Rounds numbers to the nearest integer, rounding half away from zero. If the resu
 
 **Examples**
 
-```yaml
+```go
 root.new_value = this.value.round()
 
 # In:  {"value":5.3}
@@ -1049,7 +1099,8 @@ root.new_value = this.value.round()
 # In:  {"value":5.9}
 # Out: {"new_value":6}
 ```
----
+
+
 
 ### **`uint32`**
 
@@ -1059,7 +1110,7 @@ If the value is a string, then an attempt will be made to parse it as a 32-bit u
 
 **Examples**
 
-```yaml
+```go
 root.a = this.a.uint32()
 root.b = this.b.round().uint32()
 root.c = this.c.uint32()
@@ -1069,13 +1120,14 @@ root.d = this.d.uint32().catch(0)
 # Out: {"a":12,"b":12,"c":12,"d":0}
 ```
 
-```yaml
+```go
 root = this.uint32()
 
 # In:  "0xB70B"
 # Out: 46859
 ```
----
+
+
 
 ### **`uint64`**
 
@@ -1085,7 +1137,7 @@ If the value is a string, then an attempt will be made to parse it as a 64-bit u
 
 **Examples**
 
-```yaml
+```go
 root.a = this.a.uint64()
 root.b = this.b.round().uint64()
 root.c = this.c.uint64()
@@ -1095,7 +1147,7 @@ root.d = this.d.uint64().catch(0)
 # Out: {"a":12,"b":12,"c":12,"d":0}
 ```
 
-```yaml
+```go
 root = this.uint64()
 
 # In:  "0xDEADBEEF"
@@ -1109,20 +1161,21 @@ root = this.uint64()
 Attempts to parse a string as a duration and returns an integer of nanoseconds. A duration string is a possibly signed sequence of decimal numbers, each with an optional fraction and a unit suffix, such as "300ms", "-1.5h" or "2h45m". Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h".
 
 **Examples**
-```yaml
+```go
 root.delay_for_ns = this.delay_for.parse_duration()
 
 # In:  {"delay_for":"50us"}
 # Out: {"delay_for_ns":50000}
 ```
-```yaml
+```go
 root.delay_for_s = this.delay_for.parse_duration() / 1000000000
 
 # In:  {"delay_for":"2h"}
 # Out: {"delay_for_s":7200}
 ```
 
----
+
+
 
 ### **`parse_duration_iso8601`**
 
@@ -1139,7 +1192,7 @@ Attempts to parse a string using ISO-8601 rules as a duration and returns an int
 **Examples**
 
 Arbitrary ISO-8601 duration string to nanoseconds:
-```yaml
+```go
 root.delay_for_ns = this.delay_for.parse_duration_iso8601()
 
 # In:  {"delay_for":"P3Y6M4DT12H30M5S"}
@@ -1148,7 +1201,7 @@ root.delay_for_ns = this.delay_for.parse_duration_iso8601()
 
 Two hours ISO-8601 duration string to seconds:
 
-```yaml
+```go
 root.delay_for_s = this.delay_for.parse_duration_iso8601() / 1000000000
 
 # In:  {"delay_for":"PT2H"}
@@ -1157,14 +1210,15 @@ root.delay_for_s = this.delay_for.parse_duration_iso8601() / 1000000000
 
 Two and a half seconds ISO-8601 duration string to seconds:
 
-```yaml
+```go
 root.delay_for_s = this.delay_for.parse_duration_iso8601() / 1000000000
 
 # In:  {"delay_for":"PT2.5S"}
 # Out: {"delay_for_s":2.5}
 ```
 
----
+
+
 
 ### **`ts_add_iso8601`**
 
@@ -1180,9 +1234,10 @@ Parse parameter string as ISO 8601 period and add it to value with high precisio
 
 **Parameters**
 
-**`duration`** \<string\> Duration in ISO 8601 format
+**`duration`** <string\> Duration in ISO 8601 format
 
----
+
+
 
 ### **`ts_format`**
 
@@ -1199,20 +1254,20 @@ The output format is defined by showing how the reference time, defined to be Mo
 
 **Parameters**
 
-**`format`** \<string, default "2006-01-02T15:04:05.999999999Z07:00"\> The output format to use.
+**`format`** <string, default "2006-01-02T15:04:05.999999999Z07:00"\> The output format to use.
 
-**`tz`** \<(optional) string\> An optional timezone to use, otherwise the timezone of the input string is used, or in the case of unix timestamps the local timezone is used.
+**`tz`** <(optional) string\> An optional timezone to use, otherwise the timezone of the input string is used, or in the case of unix timestamps the local timezone is used.
 
 **Examples**
-```yaml
+```go
 root.something_at = (this.created_at + 300).ts_format()
 ```
 An optional string argument can be used in order to specify the output format of the timestamp. The format is defined by showing how the reference time, defined to be Mon Jan 2 15:04:05 -0700 MST 2006, would be displayed if it were the value.
-```yaml
+```go
 root.something_at = (this.created_at + 300).ts_format("2006-Jan-02 15:04:05")
 ```
 A second optional string argument can also be used in order to specify a timezone, otherwise the timezone of the input string is used, or in the case of unix timestamps the local timezone is used.
-```yaml
+```go
 root.something_at = this.created_at.ts_format(format: "2006-Jan-02 15:04:05", tz: "UTC")
 
 # In:  {"created_at":1597405526}
@@ -1222,7 +1277,7 @@ root.something_at = this.created_at.ts_format(format: "2006-Jan-02 15:04:05", tz
 # Out: {"something_at":"2020-Aug-14 11:50:26"}
 ```
 And `ts_format` supports up to nanosecond precision with floating point timestamp values.
-```yaml
+```go
 root.something_at = this.created_at.ts_format("2006-Jan-02 15:04:05.999999", "UTC")
 
 # In:  {"created_at":1597405526.123456}
@@ -1232,7 +1287,8 @@ root.something_at = this.created_at.ts_format("2006-Jan-02 15:04:05.999999", "UT
 # Out: {"something_at":"2020-Aug-14 11:50:26.371"}
 ```
 
----
+
+
 
 ### **`ts_parse`**
 
@@ -1249,17 +1305,18 @@ The input format is defined by showing how the reference time, defined to be Mon
 
 **Parameters**
 
-**`format`** \<string\> The format of the target string.
+**`format`** <string\> The format of the target string.
 
 **Examples**
-```yaml
+```go
 root.doc.timestamp = this.doc.timestamp.ts_parse("2006-Jan-02")
 
 # In:  {"doc":{"timestamp":"2020-Aug-14"}}
 # Out: {"doc":{"timestamp":"2020-08-14T00:00:00Z"}}
 ```
 
----
+
+
 
 ### **`ts_round`**
 
@@ -1274,20 +1331,21 @@ Returns the result of rounding a timestamp to the nearest multiple of the argume
 
 **Parameters**
 
-**`duration`** \<integer\> A duration measured in nanoseconds to round by.
+**`duration`** <integer\> A duration measured in nanoseconds to round by.
 
 **Examples**
 
 Use the method parse_duration to convert a duration string into an integer argument.
 
-```yaml
+```go
 root.created_at_hour = this.created_at.ts_round("1h".parse_duration())
 
 # In:  {"created_at":"2020-08-14T05:54:23Z"}
 # Out: {"created_at_hour":"2020-08-14T06:00:00Z"}
 ```
 
----
+
+
 
 ### **`ts_strftime`**
 
@@ -1302,20 +1360,20 @@ Attempts to format a timestamp value as a string according to a specified strfti
 
 **Parameters**
 
-**format** \<string\> The output format to use.
+**format** <string\> The output format to use.
 
-**tz** \<(optional) string\> An optional timezone to use, otherwise the timezone of the input string is used.
+**tz** <(optional) string\> An optional timezone to use, otherwise the timezone of the input string is used.
 
 **Examples**
 
 The format consists of zero or more conversion specifiers and ordinary characters (except %). All ordinary characters are copied to the output string without modification. Each conversion specification begins with % character followed by the character that determines the behaviour of the specifier. Please refer to man 3 strftime for the list of format specifiers.
 
-```yaml
+```go
 root.something_at = (this.created_at + 300).ts_strftime("%Y-%b-%d %H:%M:%S")
 ```
 A second optional string argument can also be used in order to specify a timezone, otherwise the timezone of the input string is used, or in the case of unix timestamps the local timezone is used.
 
-```yaml
+```go
 root.something_at = this.created_at.ts_strftime("%Y-%b-%d %H:%M:%S", "UTC")
 
 # In:  {"created_at":1597405526}
@@ -1326,7 +1384,7 @@ root.something_at = this.created_at.ts_strftime("%Y-%b-%d %H:%M:%S", "UTC")
 ```
 As an extension provided by the underlying formatting library, itchyny/timefmt-go, the %f directive is supported for zero-padded microseconds, which originates from Python. Note that E and O modifier characters are not supported.
 
-```yaml
+```go
 root.something_at = this.created_at.ts_strftime("%Y-%b-%d %H:%M:%S.%f", "UTC")
 
 # In:  {"created_at":1597405526}
@@ -1336,7 +1394,8 @@ root.something_at = this.created_at.ts_strftime("%Y-%b-%d %H:%M:%S.%f", "UTC")
 # Out: {"something_at":"2020-Aug-14 11:50:26.371000"}
 ```
 
----
+
+
 
 ### **`ts_strptime`**
 
@@ -1350,13 +1409,13 @@ Attempts to parse a string as a timestamp following a specified strptime-compati
 
 **Parameters**
 
-**`format`** \<string\> The format of the target string.
+**`format`** <string\> The format of the target string.
 
 **Examples**
 
 The format consists of zero or more conversion specifiers and ordinary characters (except %). All ordinary characters are copied to the output string without modification. Each conversion specification begins with a % character followed by the character that determines the behaviour of the specifier. Please refer to man 3 strptime for the list of format specifiers.
 
-```yaml
+```go
 root.doc.timestamp = this.doc.timestamp.ts_strptime("%Y-%b-%d")
 
 # In:  {"doc":{"timestamp":"2020-Aug-14"}}
@@ -1364,14 +1423,15 @@ root.doc.timestamp = this.doc.timestamp.ts_strptime("%Y-%b-%d")
 ```
 As an extension provided by the underlying formatting library, itchyny/timefmt-go, the %f directive is supported for zero-padded microseconds, which originates from Python. Note that E and O modifier characters are not supported.
 
-```yaml
+```go
 root.doc.timestamp = this.doc.timestamp.ts_strptime("%Y-%b-%d %H:%M:%S.%f")
 
 # In:  {"doc":{"timestamp":"2020-Aug-14 11:50:26.371000"}}
 # Out: {"doc":{"timestamp":"2020-08-14T11:50:26.371Z"}}
 ```
 
----
+
+
 
 ### **`ts_sub_iso8601`**
 
@@ -1386,9 +1446,10 @@ Parse parameter string as ISO 8601 period and subtract it from value with high p
 
 **Parameters**
 
-**`duration`** \<string\> Duration in ISO 8601 format
+**`duration`** <string\> Duration in ISO 8601 format
 
----
+
+
 
 ### **`ts_tz`**
 
@@ -1403,16 +1464,17 @@ Returns the result of converting a timestamp to a specified timezone. Timestamp 
 
 **Parameters**
 
-**tz** \<string\> The timezone to change to. If set to "UTC" then the timezone will be UTC. If set to "Local" then the local timezone will be used. Otherwise, the argument is taken to be a location name corresponding to a file in the IANA Time Zone database, such as "America/New_York".
+**tz** <string\> The timezone to change to. If set to "UTC" then the timezone will be UTC. If set to "Local" then the local timezone will be used. Otherwise, the argument is taken to be a location name corresponding to a file in the IANA Time Zone database, such as "America/New_York".
 
 **Examples**
-```yaml
+```go
 root.created_at_utc = this.created_at.ts_tz("UTC")
 
 # In:  {"created_at":"2021-02-03T17:05:06+01:00"}
 # Out: {"created_at_utc":"2021-02-03T16:05:06Z"}
 ```
----
+
+
 
 ### **`ts_unix`**
 
@@ -1425,14 +1487,15 @@ This method is mostly stable but breaking changes could still be made outside of
 Attempts to format a timestamp value as a unix timestamp. Timestamp values can either be a numerical unix time in seconds (with up to nanosecond precision via decimals), or a string in RFC 3339 format. The `ts_parse` method can be used in order to parse different timestamp formats.
 
 **Examples**
-```yaml
+```go
 root.created_at_unix = this.created_at.ts_unix()
 
 # In:  {"created_at":"2009-11-10T23:00:00Z"}
 # Out: {"created_at_unix":1257894000}
 ```
 
----
+
+
 
 ### **`ts_unix_micro`**
 
@@ -1445,13 +1508,14 @@ This method is mostly stable but breaking changes could still be made outside of
 Attempts to format a timestamp value as a unix timestamp with microsecond precision. Timestamp values can either be a numerical unix time in seconds (with up to nanosecond precision via decimals), or a string in RFC 3339 format. The `ts_parse` method can be used in order to parse different timestamp formats.
 
 **Examples**
-```yaml
+```go
 root.created_at_unix = this.created_at.ts_unix_micro()
 
 # In:  {"created_at":"2009-11-10T23:00:00Z"}
 # Out: {"created_at_unix":1257894000000000}
 ```
----
+
+
 
 ### **`ts_unix_milli`**
 
@@ -1466,13 +1530,14 @@ Attempts to format a timestamp value as a unix timestamp with millisecond precis
 
 **Examples**
 
-```yaml
+```go
 root.created_at_unix = this.created_at.ts_unix_milli()
 
 # In:  {"created_at":"2009-11-10T23:00:00Z"}
 # Out: {"created_at_unix":1257894000000}
 ```
----
+
+
 
 ### **`ts_unix_nano`**
 
@@ -1485,7 +1550,7 @@ This method is mostly stable but breaking changes could still be made outside of
 Attempts to format a timestamp value as a unix timestamp with nanosecond precision. Timestamp values can either be a numerical unix time in seconds (with up to nanosecond precision via decimals), or a string in RFC 3339 format. The `ts_parse` method can be used in order to parse different timestamp formats.
 
 **Examples**
-```yaml
+```go
 root.created_at_unix = this.created_at.ts_unix_nano()
 
 # In:  {"created_at":"2009-11-10T23:00:00Z"}
@@ -1500,35 +1565,37 @@ Attempt to parse a value into a boolean. An optional argument can be provided, i
 
 **Parameters**
 
-**`default`** \<(optional) bool\> An optional value to yield if the target cannot be parsed as a boolean.
+**`default`** <(optional) bool\> An optional value to yield if the target cannot be parsed as a boolean.
 
 **Examples**
-```yaml
+```go
 root.foo = this.thing.bool()
 root.bar = this.thing.bool(true)
 ```
 
----
+
+
 
 ### **`bytes`**
 
 Marshal a value into a byte array. If the value is already a byte array it is unchanged.
 
 **Examples**
-```yaml
+```go
 root.first_byte = this.name.bytes().index(0)
 
 # In:  {"name":"foobar bazson"}
 # Out: {"first_byte":102}
 ```
 
----
+
+
 
 ### **`not_empty`**
 Ensures that the given string, array or object value is not empty, and if so returns it, otherwise an error is returned.
 
 **Examples**
-```yaml
+```go
 root.a = this.a.not_empty()
 
 # In:  {"a":"foo"}
@@ -1550,14 +1617,15 @@ root.a = this.a.not_empty()
 # Out: Error("failed assignment (line 1): field `this.a`: object value is empty")
 ```
 
----
+
+
 
 ### **`not_null`**
 
 Ensures that the given value is not null, and if so returns it, otherwise an error is returned.
 
 **Examples**
-```yaml
+```go
 root.a = this.a.not_null()
 
 # In:  {"a":"foobar","b":"barbaz"}
@@ -1567,7 +1635,8 @@ root.a = this.a.not_null()
 # Out: Error("failed assignment (line 1): field `this.a`: value is null")
 ```
 
----
+
+
 
 ### **`number`**
 
@@ -1575,35 +1644,37 @@ Attempt to parse a value into a number. An optional argument can be provided, in
 
 **Parameters**
 
-**`default`** \<(optional) float\> An optional value to yield if the target cannot be parsed as a number.
+**`default`** <(optional) float\> An optional value to yield if the target cannot be parsed as a number.
 
 **Examples**
-```yaml
+```go
 root.foo = this.thing.number() + 10
 root.bar = this.thing.number(5) * 10
 ```
 
----
+
+
 
 ### **`string`**
 
 Marshal a value into a string. If the value is already a string it is unchanged.
 
 **Examples**
-```yaml
+```go
 root.nested_json = this.string()
 
 # In:  {"foo":"bar"}
 # Out: {"nested_json":"{\"foo\":\"bar\"}"}
 ```
-```yaml
+```go
 root.id = this.id.string()
 
 # In:  {"id":228930314431312345}
 # Out: {"id":"228930314431312345"}
 ```
 
----
+
+
 
 ### **`type`**
 
@@ -1611,14 +1682,14 @@ Returns the type of a value as a string, providing one of the following values: 
 
 **Examples**
 
-```yaml
+```go
 root.bar_type = this.bar.type()
 root.foo_type = this.foo.type()
 
 # In:  {"bar":10,"foo":"is a string"}
 # Out: {"bar_type":"number","foo_type":"string"}
 ```
-```yaml
+```go
 
 root.type = this.type()
 
@@ -1640,13 +1711,13 @@ root.type = this.type()
 # In:  null
 # Out: {"type":"null"}
 ```
-```yaml
+```go
 root.type = content().type()
 
 # In:  foobar
 # Out: {"type":"bytes"}
 ```
-```yaml
+```go
 root.type = this.ts_parse("2006-01-02").type()
 
 # In:  "2022-06-06"
@@ -1661,13 +1732,13 @@ Compresses a string or byte array value according to a specified algorithm.
 
 **Parameters**
 
-**`algorithm`** \<string\> One of flate, gzip, pgzip, lz4, snappy, zlib, zstd.
+**`algorithm`** <string\> One of flate, gzip, pgzip, lz4, snappy, zlib, zstd.
 
-**`level`** \<integer, default -1\> The level of compression to use. May not be applicable to all algorithms.
+**`level`** <integer, default -1\> The level of compression to use. May not be applicable to all algorithms.
 
 **Examples**
 
-```yaml
+```go
 let long_content = range(0, 1000).map_each(content()).join(" ")
 root.a_len = $long_content.length()
 root.b_len = $long_content.compress("gzip").length()
@@ -1676,13 +1747,14 @@ root.b_len = $long_content.compress("gzip").length()
 # Out: {"a_len":32999,"b_len":161}
 ```
 
-```yaml
+```go
 root.compressed = content().compress("lz4").encode("base64")
 
 # In:  hello world I love space
 # Out: {"compressed":"BCJNGGRwuRgAAIBoZWxsbyB3b3JsZCBJIGxvdmUgc3BhY2UAAAAAGoETLg=="}
 ```
----
+
+
 
 ### **`decode`**
 
@@ -1692,24 +1764,25 @@ Available schemes are: base64, base64url (RFC 4648 with padding characters), bas
 
 **Parameters**
 
-**`scheme`** \<string\> The decoding scheme to use.
+**`scheme`** <string\> The decoding scheme to use.
 
 **Examples**
 
-```yaml
+```go
 root.decoded = this.value.decode("hex").string()
 
 # In:  {"value":"68656c6c6f20776f726c64"}
 # Out: {"decoded":"hello world"}
 ```
 
-```yaml
+```go
 root = this.encoded.decode("ascii85")
 
 # In:  {"encoded":"FD,B0+DGm>FDl80Ci\"A>F`)8BEckl6F`M&(+Cno&@/"}
 # Out: this is totally unstructured data
 ```
----
+
+
 
 ### **`decompress`**
 
@@ -1717,10 +1790,10 @@ Decompresses a string or byte array value according to a specified algorithm. Th
 
 **Parameters**
 
-**`algorithm`** \<string\> One of gzip, pgzip, zlib, bzip2, flate, snappy, lz4, zstd.
+**`algorithm`** <string\> One of gzip, pgzip, zlib, bzip2, flate, snappy, lz4, zstd.
 
 **Examples**
-```yaml
+```go
 root = this.compressed.decode("base64").decompress("lz4")
 
 # In:  {"compressed":"BCJNGGRwuRgAAIBoZWxsbyB3b3JsZCBJIGxvdmUgc3BhY2UAAAAAGoETLg=="}
@@ -1729,13 +1802,14 @@ root = this.compressed.decode("base64").decompress("lz4")
 
 Use the .string() method in order to coerce the result into a string, this makes it possible to place the data within a JSON document without automatic base64 encoding.
 
-```yaml
+```go
 root.result = this.compressed.decode("base64").decompress("lz4").string()
 
 # In:  {"compressed":"BCJNGGRwuRgAAIBoZWxsbyB3b3JsZCBJIGxvdmUgc3BhY2UAAAAAGoETLg=="}
 # Out: {"result":"hello world I love space"}
 ```
----
+
+
 
 ### **`decrypt_aes`**
 
@@ -1743,16 +1817,16 @@ Decrypts an encrypted string or byte array target according to a chosen AES encr
 
 **Parameters**
 
-**`scheme`** \<string\> The scheme to use for decryption, one of ctr, ofb, cbc.
+**`scheme`** <string\> The scheme to use for decryption, one of ctr, ofb, cbc.
 
-**`key`** \<string\> A key to decrypt with.
+**`key`** <string\> A key to decrypt with.
 
-**`iv`** \<string\> An initialization vector / nonce.
+**`iv`** <string\> An initialization vector / nonce.
 
 
 **Examples**
 
-```yaml
+```go
 let key = "2b7e151628aed2a6abf7158809cf4f3c".decode("hex")
 let vector = "f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff".decode("hex")
 root.decrypted = this.value.decode("hex").decrypt_aes("ctr", $key, $vector).string()
@@ -1760,46 +1834,48 @@ root.decrypted = this.value.decode("hex").decrypt_aes("ctr", $key, $vector).stri
 # In:  {"value":"84e9b31ff7400bdf80be7254"}
 # Out: {"decrypted":"hello world!"}
 ```
----
+
+
 ### **`encode`**
 
 Encodes a string or byte array target according to a chosen scheme and returns a string result. Available schemes are: base64, base64url (RFC 4648 with padding characters), base64rawurl (RFC 4648 without padding characters), hex, ascii85.
 
 **Parameters**
 
-**`scheme`** \<string\> The encoding scheme to use.
+**`scheme`** <string\> The encoding scheme to use.
 
 **Examples**
 
-```yaml
+```go
 root.encoded = this.value.encode("hex")
 
 # In:  {"value":"hello world"}
 # Out: {"encoded":"68656c6c6f20776f726c64"}
 ```
-```yaml
+```go
 root.encoded = content().encode("ascii85")
 
 # In:  this is totally unstructured data
 # Out: {"encoded":"FD,B0+DGm>FDl80Ci\"A>F`)8BEckl6F`M&(+Cno&@/"}
 ```
----
+
+
 ### **`encrypt_aes`**
 
 Encrypts a string or byte array target according to a chosen AES encryption method and returns a string result. The algorithms require a key and an initialization vector / nonce. Available schemes are: ctr, ofb, cbc.
 
 **Parameters**
 
-**`scheme`** \<string\> The scheme to use for encryption, one of ctr, ofb, cbc.
+**`scheme`** <string\> The scheme to use for encryption, one of ctr, ofb, cbc.
 
-**`key`** \<string\> A key to encrypt with.
+**`key`** <string\> A key to encrypt with.
 
-**`iv`** \<string\> An initialization vector / nonce.
+**`iv`** <string\> An initialization vector / nonce.
 
 
 **Examples**
 
-```yaml
+```go
 let key = "2b7e151628aed2a6abf7158809cf4f3c".decode("hex")
 let vector = "f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff".decode("hex")
 root.encrypted = this.value.encrypt_aes("ctr", $key, $vector).encode("hex")
@@ -1807,7 +1883,8 @@ root.encrypted = this.value.encrypt_aes("ctr", $key, $vector).encode("hex")
 # In:  {"value":"hello world!"}
 # Out: {"encrypted":"84e9b31ff7400bdf80be7254"}
 ```
----
+
+
 ### **`hash`**
 
 Hashes a string or byte array according to a chosen algorithm and returns the result as a byte array. When mapping the result to a JSON field the value should be cast to a string using the method string, or encoded using the method encode, otherwise it will be base64 encoded by default.
@@ -1818,14 +1895,14 @@ The following algorithms require a key, which is specified as a second argument:
 
 **Parameters**
 
-**`algorithm`** \<string\> The hasing algorithm to use.
+**`algorithm`** <string\> The hasing algorithm to use.
 
-**`key`** \<(optional) string\> An optional key to use.
+**`key`** <(optional) string\> An optional key to use.
 
-**`polynomial`** \<string, default "IEEE"\> An optional polynomial key to use when selecting the crc32 algorithm, otherwise ignored. Options are IEEE (default), Castagnoli and Koopman
+**`polynomial`** <string, default "IEEE"\> An optional polynomial key to use when selecting the crc32 algorithm, otherwise ignored. Options are IEEE (default), Castagnoli and Koopman
 
 Examples
-```yaml
+```go
 root.h1 = this.value.hash("sha1").encode("hex")
 root.h2 = this.value.hash("hmac_sha1","static-key").encode("hex")
 
@@ -1835,7 +1912,7 @@ root.h2 = this.value.hash("hmac_sha1","static-key").encode("hex")
 
 The crc32 algorithm supports options for the polynomial.
 
-```yaml
+```go
 root.h1 = this.value.hash(algorithm: "crc32", polynomial: "Castagnoli").encode("hex")
 root.h2 = this.value.hash(algorithm: "crc32", polynomial: "Koopman").encode("hex")
 
@@ -1861,7 +1938,8 @@ Looks up an IP address against a MaxMind database file and, if found, returns an
 
 **`path`** <string> A path to an mmdb (maxmind) file.
 
----
+
+
 
 ### **`geoip_asn`**
 
@@ -1876,9 +1954,10 @@ Looks up an IP address against a MaxMind database file and, if found, returns an
 
 **Parameters**
 
-**`path`** \<string\> A path to an mmdb (maxmind) file.
+**`path`** <string\> A path to an mmdb (maxmind) file.
 
----
+
+
 
 ### **`geoip_city`**
 
@@ -1894,9 +1973,10 @@ Looks up an IP address against a MaxMind database file and, if found, returns an
 
 **Parameters**
 
-**`path`** \<string\> A path to an mmdb (maxmind) file.
+**`path`** <string\> A path to an mmdb (maxmind) file.
 
----
+
+
 
 ### **`geoip_connection_type`**
 
@@ -1912,9 +1992,10 @@ Looks up an IP address against a MaxMind database file and, if found, returns an
 
 **Parameters**
 
-**`path`** \<string\> A path to an mmdb (maxmind) file.
+**`path`** <string\> A path to an mmdb (maxmind) file.
 
----
+
+
 
 ### **`geoip_country`**
 
@@ -1929,9 +2010,10 @@ Looks up an IP address against a MaxMind database file and, if found, returns an
 
 **Parameters**
 
-**`path`** \<string\> A path to an mmdb (maxmind) file.
+**`path`** <string\> A path to an mmdb (maxmind) file.
 
----
+
+
 
 ### **`geoip_domain`**
 
@@ -1946,9 +2028,10 @@ Looks up an IP address against a MaxMind database file and, if found, returns an
 
 **Parameters**
 
-**`path`** \<string\> A path to an mmdb (maxmind) file.
+**`path`** <string\> A path to an mmdb (maxmind) file.
 
----
+
+
 
 ### **`geoip_enterprise`**
 
@@ -1964,9 +2047,10 @@ Looks up an IP address against a MaxMind database file and, if found, returns an
 
 **Parameters**
 
-**`path`** \<string\> A path to an mmdb (maxmind) file.
+**`path`** <string\> A path to an mmdb (maxmind) file.
 
----
+
+
 
 ### **`geoip_isp`**
 
@@ -1982,7 +2066,7 @@ Looks up an IP address against a MaxMind database file and, if found, returns an
 
 **Parameters**
 
-**`path`** \<string\> A path to an mmdb (maxmind) file.
+**`path`** <string\> A path to an mmdb (maxmind) file.
 
 ## Deprecated
 
@@ -1994,11 +2078,12 @@ The output format is defined by showing how the reference time, defined to be Mo
 
 **Parameters**
 
-**`format`** \<string, default "2006-01-02T15:04:05.999999999Z07:00"\> The output format to use.
+**`format`** <string, default "2006-01-02T15:04:05.999999999Z07:00"\> The output format to use.
 
-**`tz`** \<(optional) string\> An optional timezone to use, otherwise the timezone of the input string is used, or in the case of unix timestamps the local timezone is used.
+**`tz`** <(optional) string\> An optional timezone to use, otherwise the timezone of the input string is used, or in the case of unix timestamps the local timezone is used.
 
----
+
+
 
 ### **`format_timestamp_strftime`**
 
@@ -2006,35 +2091,40 @@ Attempts to format a timestamp value as a string according to a specified strfti
 
 **Parameters**
 
-**`format`** \<string\> The output format to use.
+**`format`** <string\> The output format to use.
 
-**`tz`** \<(optional) string\> An optional timezone to use, otherwise the timezone of the input string is used.
+**`tz`** <(optional) string\> An optional timezone to use, otherwise the timezone of the input string is used.
 
----
+
+
 
 ### **`format_timestamp_unix`**
 
 Attempts to format a timestamp value as a unix timestamp. Timestamp values can either be a numerical unix time in seconds (with up to nanosecond precision via decimals), or a string in RFC 3339 format. The ts_parse method can be used in order to parse different timestamp formats.
 
----
+
+
 
 ### **`format_timestamp_unix_micro`**
 
 Attempts to format a timestamp value as a unix timestamp with microsecond precision. Timestamp values can either be a numerical unix time in seconds (with up to nanosecond precision via decimals), or a string in RFC 3339 format. The ts_parse method can be used in order to parse different timestamp formats.
 
----
+
+
 
 ### **`format_timestamp_unix_milli`**
 
 Attempts to format a timestamp value as a unix timestamp with millisecond precision. Timestamp values can either be a numerical unix time in seconds (with up to nanosecond precision via decimals), or a string in RFC 3339 format. The ts_parse method can be used in order to parse different timestamp formats.
 
----
+
+
 
 ### **`format_timestamp_unix_nano`**
 
 Attempts to format a timestamp value as a unix timestamp with nanosecond precision. Timestamp values can either be a numerical unix time in seconds (with up to nanosecond precision via decimals), or a string in RFC 3339 format. The ts_parse method can be used in order to parse different timestamp formats.
 
----
+
+
 
 ### **`parse_timestamp`**
 
@@ -2044,9 +2134,10 @@ The input format is defined by showing how the reference time, defined to be Mon
 
 **Parameters**
 
-**`format`** \<string\> The format of the target string.
+**`format`** <string\> The format of the target string.
 
----
+
+
 
 ### **`parse_timestamp_strptime`**
 
@@ -2054,4 +2145,4 @@ Attempts to parse a string as a timestamp following a specified strptime-compati
 
 **Parameters**
 
-**`format`** \<string\> The format of the target string.
+**`format`** <string\> The format of the target string.
