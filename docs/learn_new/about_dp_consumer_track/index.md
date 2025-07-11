@@ -1,7 +1,7 @@
 # Data Product Consumer Track
 
 !!! info "Overview"
-    Welcome to the Data Product Consumer Track—your starting point to explore, analyze, and activate Data Products with confidence. Whether you're a data analyst, data scientist, app developer, or product manager, this track helps you turn data into valuable business intelligence and drive innovation by leveraging the power of DataOS.
+    Welcome to the Data Product Consumer Track—your starting point to explore, analyze, and activate Data Products with confidence. This track shows you how to discover the right data, explore it visually, and use it to power decisions—all within DataOS.
 
 ## Who is this track for?
 
@@ -16,8 +16,12 @@
 | **Data Product Owners**        | Gain visibility into how Data Products are being used and ensure they align with end-user needs and business goals.   | Recommended   |
 
 <div style="text-align: left; padding-left: 1em;">
-<img src="/learn_new/about_dp_consumer_track/role_based_use.png" alt="infographics" style="max-width: 80%; height: auto; border: 1px solid #000;">
+<img src="/learn_new/about_dp_consumer_track/role_based_use.png" alt="infographics" style="max-width: 70%; height: auto; border: 1px solid #000;">
 </div>
+
+**Basic data utilization** is about using data through dashboards, simple queries, and self-service tools to support daily decisions. It focuses on consuming curated data products with no need for coding.
+
+**Advanced data utilization** involves building models, performing complex analyses, and creating derived datasets using APIs, scripting, or modeling tools. It requires deeper technical expertise to generate new insights or automate decisions.
 
 
 ## What you’ll learn

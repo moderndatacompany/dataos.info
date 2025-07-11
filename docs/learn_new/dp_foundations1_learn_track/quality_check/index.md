@@ -329,7 +329,7 @@ Create a similar Soda Workflow for the product dataset.
 
 
 
-## Next Step
+## Next step
 Set up proactive observability to monitor and alert on workflow or data quality issues.
 
 👉 [Pipeline observability](/learn_new/dp_foundations1_learn_track/pipeline_observability/)
