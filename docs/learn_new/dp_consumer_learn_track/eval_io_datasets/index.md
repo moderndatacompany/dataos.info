@@ -152,7 +152,7 @@ For instance, the email and phone columns in the following dataset lack tags to 
 
 ![image](/learn_new/dp_consumer_learn_track/eval_io_datasets/col_missing_tags_metis.png)
 
-## Quick knowledge check
+## Self-check quiz
 
 **1. Why are column-level tags important in the schema section?**
 
