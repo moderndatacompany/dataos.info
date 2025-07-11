@@ -7,7 +7,8 @@
 ## Scenario
 
 You’re preparing to analyze customer and sales data to uncover product affinities. But before diving into insights, how do you know the data is actually trustworthy?
-Answer: You validate it with quality checks!
+
+**Answer:** You validate it with quality checks!
 
 ## Quick concepts
 
@@ -82,7 +83,7 @@ The 'Validity' tab shows a 0% trend line, indicating that some quality checks ha
 4. Schedule workflows to update data regularly, preventing outdated information from affecting analysis.
 5. Investigate and resolve issues flagged in tabs like Validity or Schema as soon as possible.
 
-## Quick knowledge check
+## Self-check quiz
 
 **1. What does a 0% validity score indicate?**<br>
 A. All data is valid<br>

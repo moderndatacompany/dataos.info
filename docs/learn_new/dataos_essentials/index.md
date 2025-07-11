@@ -38,7 +38,7 @@ The development of a data product in **DataOS** follows a structured lifecycle:
 
 DataOS provides a variety of primitives, referred to as Resources, that power the core functionalities of any data stack. These resources are categorized by their functional roles:
 
-### Source Connectivity and Metadata Management
+### **Source Connectivity and Metadata Management**
 
 These resources connect to various data sources, enable metadata scanning, and support quality checks and data profiling.
 
@@ -49,11 +49,11 @@ These resources connect to various data sources, enable metadata scanning, and s
 
 ---
 
-### Data Movement and Processing
+### **Data Movement and Processing**
 
 These resources handle the transformation and movement of data.
 
-#### Batch Data Resources
+#### **Batch Data Resources**
 
 Support scheduled, large-scale data processing.
 
@@ -63,7 +63,7 @@ Support scheduled, large-scale data processing.
   - **Flare** DataOS’s declarative engine built atop Apache Spark, designed for scalable batch, incremental and streaming data processing.
   - **Soda**:  Data quality validation Stack utilizing the Soda Checks Language (SodaCL), it allows users to define validation rules to monitor metrics like accuracy, completeness, and uniqueness for your data.  
 
-#### Streaming Data Resources
+#### **Streaming Data Resources**
 
 Handle real-time processing and continuous ingestion.
 
@@ -75,7 +75,7 @@ Handle real-time processing and continuous ingestion.
 
 ---
 
-### Storage
+### **Storage**
 
 Resources for efficient, scalable storage solutions.
 
@@ -94,7 +94,7 @@ The semantic modeling layer that translates technical data into business-friendl
 
 ---
 
-### Observability
+### **Observability**
 
 Tracks system health and performance; enables proactive incident management.
 
@@ -103,7 +103,7 @@ Tracks system health and performance; enables proactive incident management.
 
 ---
 
-### Security
+### **Security**
 
 Ensures data protection through access control and secure handling of credentials.
 
@@ -116,7 +116,7 @@ Ensures data protection through access control and secure handling of credential
 
 ---
 
-### Deployment
+### **Deployment**
 
 Streamlines how data products and applications are packaged, distributed, and executed.
 
@@ -125,7 +125,7 @@ Streamlines how data products and applications are packaged, distributed, and ex
 
 ---
 
-### Infrastructure Resources
+### **Infrastructure Resources**
 
 Manage compute and infrastructure configuration to run data workloads effectively.
 
@@ -141,10 +141,13 @@ Building data products in DataOS is like constructing with LEGO bricks—each pi
 
 ## How does DataOS support different user roles?
 
-Data Product Consumer: Discovers, explores, and utilises data products, including integration with BI tools, AI/ML, and data APIs.
-Data Product Developer: Builds and maintains data products end-to-end. Focuses on translating business goals into data products by designing, sourcing, building pipelines, ensuring quality, modeling semantics, and deploying solutions.
-DataOS Operator: Oversees credential security, data source connectivity, routine checks, upgrade strategies, configuring alerts, and cluster management.
-Data Product Owner: Aligns product development with business goals, sets success metrics and priorities defineing the strategic vision for data products. 
+- **Data Product Consumer:** Discovers, explores, and utilises data products, including integration with BI tools, AI/ML, and data APIs.
+
+- **Data Product Developer:** Builds and maintains data products end-to-end. Focuses on translating business goals into data products by designing, sourcing, building pipelines, ensuring quality, modeling semantics, and deploying solutions.
+
+- **DataOS Operator:** Oversees credential security, data source connectivity, routine checks, upgrade strategies, configuring alerts, and cluster management.
+
+- **Data Product Owner:** Aligns product development with business goals, sets success metrics and priorities defineing the strategic vision for data products. 
 
 ## Trusted & Observable by Design
 
