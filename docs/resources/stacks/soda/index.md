@@ -161,13 +161,16 @@ stackSpec:
 dataset: dataos://sstdepot:ltv/visit_copy
 ```
 
-Trino stores information schema in lowercase, so it is unable to properly parse uppercase values for table and schema names. If you require the uppercase address format like this `dataos://sstdepot:LTV/VISIT_COPY`, you can query directly through the Snowflake engine by removing the following snippet from your YAML:
+Trino inherently stores and resolves information schema identifiers in lowercase. As a result, any uppercase characters in schema or table names (e.g., dataos://sstdepot:LTV/VISIT_COPY) will not be parsed correctly and may lead to query failures.
+
+If the data source provides its own native query engine (such as Snowflake, BigQuery, etc.), you may bypass this limitation by removing the following snippet from your YAML, thereby enabling execution on the source's engine:
 
 ```yaml
 options:
   engine: minerva
   clusterName: miniature
 ```
+Conversely, for sources that do not support their own query engine, Minerva must be used, and lowercase formatting is mandatory.
 </aside>
 
 #### **Defining Soda checks**
