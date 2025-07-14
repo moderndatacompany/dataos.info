@@ -632,24 +632,6 @@ stackSpec:
 
 This configuration illustrates how to set the `branchName` to "test". Adjust the `branchName` parameter to match the branch you intend to assess.
 
-### **Table and Schema Name Casing for Trino Engine**
-
-When using the Trino engine for compute, ensure that table and schema names are provided in lowercase format. For example:
-
-```yaml
-dataset: dataos://sstdepot:ltv/visit_copy
-```
-
-Trino stores information schema in lowercase, so it is unable to properly parse uppercase values for table and schema names. If you have been using uppercase names because the table is in Snowflake (which stores its information schema in uppercase), remember that as a general rule, always provide the table and schema names in lowercase to be safe when using the Trino engine.
-
-If you prefer to use the uppercase address format like in your existing workflow (`dataos://sstdepot:LTV/VISIT_COPY`), you can query directly through the Snowflake engine by removing the following snippet from your YAML:
-
-```yaml
-options:
-  engine: minerva
-  clusterName: miniature
-```
-
 ### **Code samples**
 
 <details>
