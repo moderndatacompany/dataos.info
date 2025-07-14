@@ -171,7 +171,6 @@ options:
   clusterName: miniature
 ```
 
-For sources that do not support their own processing engine, Minerva must be used, and lowercase formatting is required.
 </aside>
 
 #### **Defining Soda checks**
