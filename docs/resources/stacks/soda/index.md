@@ -154,7 +154,21 @@ stackSpec:
     - dataset: dataos://postgresdb:state/city
       # ...other input attributes
 ```
+<aside class="callout">
+🗣️ When using the Trino engine (Minerva) for compute, ensure that table and schema names are provided in lowercase format. For example:
 
+```yaml
+dataset: dataos://sstdepot:ltv/visit_copy
+```
+
+Trino stores information schema in lowercase, so it is unable to properly parse uppercase values for table and schema names. If you require the uppercase address format like this `dataos://sstdepot:LTV/VISIT_COPY`, you can query directly through the Snowflake engine by removing the following snippet from your YAML:
+
+```yaml
+options:
+  engine: minerva
+  clusterName: miniature
+```
+</aside>
 
 #### **Defining Soda checks**
 
