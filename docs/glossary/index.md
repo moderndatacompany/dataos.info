@@ -17,6 +17,7 @@ hide:
 | --- | --- |
 | [Access Policy](/resources/policy/#access-policy) | An access policy in DataOS serves as a regulatory mechanism that governs user authorizations by defining rules for granting or denying access to specific actions. These policies determine whether a user, referred to as the subject, is authorized to perform a particular action, known as the predicate, on a given dataset, API path, or other resources, referred to as objects. Read about [Bifrost](/interfaces/bifrost/) to establish access control via a Graphical User Interface.  |
 | [Airbyte](/resources/depot/list_of_connectors/) | Airbyte is a modern ELT data pipeline tool that streamlines data integration and replication by efficiently collecting data from diverse sources and making it available for analysis and storage. DataOS seamlessly integrates with Airbyte and provides a graphical user interface to enable access to Airbyte connectors. This integration empowers users to leverage Airbyte's functionalities effortlessly within the DataOS ecosystem. |
+| API | API (Application Programming Interface) in DataOS allows users and systems to programmatically interact with DataOS services and resources. It supports integration, automation, and extensibility. |
 | [Assertions]() | Assertions are custom validation rules tailored to a specific business domain. They are essential in evaluating the suitability of datasets for their intended purpose. By implementing assertions, datasets can undergo additional validation checks, leading to enhanced data quality.  |
 | [Audiences](/interfaces/audiences/) | It is an application derived from Lens that uses the semantic data models created through Lens to identify and categorize specific groups of people who have similar characteristics, traits, or behaviors. These categorized groups are referred to as audiences. |
 | [Authorization Atoms](/interfaces/bifrost/) | Each predicate and object in an Access Policy is an Authorization Atom. This allows us to use them in a composable manner to create modular use cases or policies. |
@@ -31,6 +32,7 @@ hide:
 | [Bento](/resources/stacks/bento/) | Bento is a robust and efficient stream processing stack within DataOS. It offers a user-friendly declarative YAML programming approach, enabling seamless execution of essential data engineering tasks like data transformation, mapping, schema validation, filtering, and enrichment.|
 | [Bifrost](/interfaces/bifrost/) | Bifrost is a Graphical User Interface (GUI) that empowers users to effortlessly create and manage access policies for applications, services, people, and datasets. Bifrost leverages the governance engine of DataOS, Heimdall, to ensure secure and compliant data access through ABAC policies, giving users fine-grained control over the data and resources.|
 | [Bloblang](/resources/stacks/bento/bloblang/walkthrough/) | Bento incorporates Bloblang, a built-in mapping language designed to extract, modify, and restructure data in formats like JSON, CSV, and XML. Bloblang is used in data integration and processing pipelines to perform tasks like data mapping, filtering, and conversion. With Bloblang, users can efficiently manipulate and transform data within Bento, enhancing their data processing capabilities.  |
+| [Bundle](/resources/bundle/) | A Bundle in DataOS is a declarative packaging mechanism that groups related components like workflows, models, and scripts into a single deployable unit. |
 
 
 ## c 
@@ -39,6 +41,8 @@ hide:
 | [Caretaker](/architecture/#caretaker) | Caretaker is a component within DataOS that captures, stores, and provides information related to pods, including their states and aggregates. It maintains historical data in blob storage while serving real-time information about running pods through the Operations app. |
 | [CLI](/interfaces/cli/) | Command Line Interface is  a text-based interface to interact with the DataOS context. It offers quick access to system functionality with flexibility and control making it ideal for data engineers or system administrators. |
 | [Cloud Kernel](/architecture/#cloud-kernel)  | Cloud Kernel is an abstraction layer over the cloud APIs of cloud providers like AWS, GCP & Azure that facilitates interactions with cloud-based services and resources. It makes DataOS cloud-agnostic. |
+| [Cluster](/resources/cluster/) | A group of compute nodes in DataOS that provides scalable processing infrastructure for data workloads. |
+| [Compute](/resources/compute/) | The abstraction layer for allocating processing resources (CPU, memory) to data jobs and pipelines. |
 | Collection | The collection represents a logical container that holds related data entities, and it plays a key role in establishing the data hierarchy. Once a mapping is established between a depot and a collection, it generates a Uniform Data Link (UDL) that can be utilized throughout DataOS to access the dataset. |
 | Context | DataOS Context refers to the environment or instance where DataOS is deployed and operates.   |
 | [Core Kernel](/architecture/#core-kernel) | Core Kernel serves as the traditional operating system kernel, responsible for OS functionalities that are independent of cloud-specific features. It incorporates drivers to enable communications between services, enforces access controls for both ingress & egress, and manages creation, scheduling & termination of various DataOS Resources & applications.   |
@@ -50,6 +54,7 @@ hide:
 | --- | --- |
 | Data Developer | Data developer in DataOS, specializes in designing, building, and maintaining data-centric applications and systems. They work with data infrastructure, data sources, and data pipelines to enable efficient data processing and analysis. |
 | [Data Policy](/resources/policy/#data-policy) | Data Policy serves as an additional layer of control in regulating the visibility and interaction with specific data after access has been granted. It employs techniques like data masking or filtering to  restrict the visibility of sensitive or restricted data based on predefined rules or conditions. By enforcing these policies, organizations can ensure data privacy and regulatory compliance, minimizing the risk of unauthorized access to sensitive information. |
+| [Data Product](/products/data_product/) | A self-contained, reusable unit in DataOS that encapsulates data, metadata, and semantics to solve a specific business problem or support analytics. |
 | [Depot](/resources/depot/) | Depot is a Dataos Resource that simplifies connectivity to different data sources by abstracting the complexities of the underlying systems.  Depots handle protocols, credentials, and connection schemas, making it easier for users to access and utilize data from diverse sources, including file systems, data lake systems, database systems, and event systems |
 | Dropzone | Dropzone is a depot in DataOS referring to an object storage. This storage is used as data lake to easily and securely upload files. |
 | [Dimensions](/resources/lens/concepts/#dimensions) | Dimensions are descriptive attributes, often text values, which help to categorize and provide context for the entity. |
@@ -66,7 +71,6 @@ hide:
 | Term | Description |
 | --- | --- |
 | [Flare](/resources/stacks/flare/) | Flare stack is used for building end-to-end data pipelines within DataOS. It uses a YAML-based declarative programming paradigm built as an abstraction over Apache Spark. It offers an all-in-one solution for performing diverse data ingestion, transformation, enrichment, and syndication processes on batch and streaming data. |
-| [Fastbase](/resources/depot/fastbase/) | Fastbase is a depot type in DataOS specifically designed to support Apache Pulsar format for streaming workloads. With Fastbase depots, users can seamlessly leverage the power of streaming and real-time data processing within the DataOS ecosystem. |
 | Filebase | It is a depot that is configured during the DataOS installation and serves as a destination for storing various types of data in file formats like parquet, csv, pdfs, and more. |
 
 ## g 
@@ -74,6 +78,7 @@ hide:
 | Term | Description |
 | --- | --- |
 | Grafana | Grafana is a powerful tool that allows the creation of  dashboards and provides capabilities for querying, visualizing, and exploring metrics, logs, and traces within the DataOS environment. It empowers administrators to effectively assess health of Kubernetes clusters. |
+| [Grant](/resources/grant/) | A resource used to bind users or applications to policies, allowing or restricting access based on Subject-Predicate-Object relationships. |
 | [GUI](/interfaces/#graphical-user-interface-gui) | The Graphical User Interface (GUI) in DataOS provides a user-friendly and visually appealing interface for interacting with DataOS and its components. |
 
 
@@ -81,7 +86,6 @@ hide:
 
 | Term | Description |
 | --- | --- |
-| Hera| Hera is a source of record for lineage and topology that collates metadata from multiple sources, schedulers and/or data processing frameworks as long as the necessary integration is in place. It can receive lieneage information from workflow orchestration engine like Argo or Airflow, or a Jupyter notebook. |
 | [Heimdall](/architecture/#heimdall/) | Heimdall is the authentication, authorization, and governance engine in DataOS, responsible for implementing a robust security strategy. It ensures that only authorized users have access to DataOS resources. |
 
 
@@ -89,10 +93,10 @@ hide:
 
 | Term | Description |
 | --- | --- |
-| [Icebase](/resources/depot/icebase/) | Icebase is a depot in DataOS that utilizes the Apache Iceberg table format. It seamlessly integrates with popular object storage systems like Azure Data Lake, Google Cloud Storage, and Amazon S3, following the Lakehouse pattern. Icebase offers a powerful OLAP (Online Analytical Processing) system that simplifies access to data lakes.|
 | Indexer | It is a continuous running service within the DataOS environment that keeps track of newly created or updated datasets/topics/pipelines(workflows). With the information about the changed entity, a reconciliation Scanner YAML is created with filters to scan the metadata of the affected entity. |
 | [Ingress](/interfaces/operations/#ingresses) | Ingress in DataOS exposes HTTP and HTTPS routes from outside the DataOS context to services within a DataOS context. It configures the incoming port for the service to allow access to DataOS resources from external links. |
 | [Interface](/interfaces/) | Interfaces in DataOS such as CLI, GUI, API provide points of communication and interaction between different components for efficient data operations,  and control over various activities. Interfaces enable self-service data management.  |
+| [Instance-secret](/resources/instance_secret/) | Instance-Secret securely stores sensitive credentials at the platform level in DataOS, minimizing exposure in code or manifests. |
 
 
 ## j 
@@ -111,6 +115,7 @@ hide:
 
 | Term | Description |
 | --- | --- |
+| [Lakehouse](/resources/lakehouse/) | A managed hybrid storage layer combining data lakes and warehouses, designed for storing processed datasets in DataOS. |
 | [Lens](/interfaces/lens/) | It is a modeling layer capable of accessing and modeling data from disparate sources. It supports data-driven decision-making by supporting and connecting to underlying data to the real-world business objects, formulates and delineate measure, KPIs, and relationships between different business concepts. |
 | [Lens Explorer](/interfaces/lens/#lens-explorer) | Lens Explorer is an intuitive graphical user interface that allows users to discover and analyze data within the Ontology layer. Users can utilize Lens Explorer to query the semantic model(lens) and obtain answers to complex data questions in an exploratory manner.|
 
@@ -122,6 +127,7 @@ hide:
 | [Minerva](/resources/cluster/#minerva) | Minerva is a query engine that enables access to data for business insights. It is an interactive query engine based on Trino that makes it easy to analyze big data using SQL. |
 |[Measures](/resources/lens/concepts/#measures)|Measures are quantifications or numerical value on which statistical calculations can be applied.|
 |[Metric](/interfaces/data_product_hub/core_concepts/#metrics)|A metric is a focused measurement in a data model that highlights key performance indicators. It includes relevant dimensions for grouping and filtering, enabling clear analysis of business performance. |
+| [Monitor](/resources/monitor/) | A resource that continuously checks the performance, health, and operational metrics of workflows and services in DataOS. |
 
 ## n 
 
@@ -138,12 +144,14 @@ hide:
 | --- | --- |
 | OpenID | OpenID Connect is an identity layer built on top of the OAuth protocol, providing a streamlined mechanism for Clients to verify the identity of End-Users. It utilizes an Authorization Server to authenticate the user and retrieve basic profile information through exposed REST APIs. In DataOS, Heimdall leverages OpenID Connect for authentication and authorization when processing sign-in requests from users. |
 | [Operations](/interfaces/operations/) | Operations app provides administrators a centralized way to understand and govern activity on the DataOS platform and monitor how users optimally utilize available resources. |
+| [Operator](/resources/operator/) | A DataOS Resource responsible for managing or orchestrating external applications and systems within DataOS workflows. |
 
 
 ## p
 
 | Term | Description |
 | --- | --- |
+| [Pager](/resources/stacks/) | Pager sends alerts based on defined conditions such as workflow failures or quality issues, helping with proactive incident response. |
 | [PDP](/resources/policy/core_concepts/#policy-decision-point-pdp) | Policy Desicion Point is the service that evaluates a specific subject-predicate-object-metadata request against the current policies to determine if access to the DataOS resource/ environment is allowed or denied. |
 | [Perspective](/interfaces/data_product_hub/core_concepts/#perspectives) | Perspective is a saved exploration of a Data Product in Data Product Hub. |
 | [PEP](/resources/policy/#policy-enforcement-point-pep/) | Policy Enforcement Point is responsible for execution of the decision returned from PDP. |
@@ -152,11 +160,6 @@ hide:
 | [Profiling](/resources/stacks/flare/case_scenario/data_profiling_jobs/#data-profiling-jobs) | Data profiling is a process that involves examining data to gain insights into its structure, quality, and characteristics. In DataOS,  data profiling workflow aims to analyze data for valid formats, null values, and inconsistencies to enhance data quality. By utilizing basic statistics, it uncovers anomalies, redundancies, and provides insights into the validity of the data. |
 
 
-## q
-
-| Term | Description |
-| --- | --- |
-| Querybook | Querybook is an integrated interface to run SQL queries on any datasets and explore.|
 
 
 ## r 
@@ -174,9 +177,9 @@ hide:
 | [Scanner](/resources/stacks/scanner/) |  Scanner is a Stack in DataOS, a Python-based framework for extracting metadata from external source systems and the components within the DataOS environment. |
 | [Secret](/resources/secret/) | Secret is a DataOS Resource to store sensitive information such as passwords, tokens or keys in the internal vault of DataOS. |
 | [Service](/resources/service/) | Service is a DataOS Resource for long running process that is receiving and/or serving API. It is used for scenarios that need a continuous flow of real-time data, such as event processing, streaming IoT and more.   |
+| [Soda Stack](/resources/stacks/soda/) | A validation stack in DataOS used to run data quality checks using SodaCL and monitor metrics like completeness or uniqueness. |
 | [Stack](/resources/stacks/) | DataOS Stacks are the programming paradigms supporting processing and management of data. They acts as the extension points of runnable resources, Workflow, and Service. |
 | Sentinel | Sentinel is a monitoring and logging solution offering centralized observability in the DataOS infrastructure. |
-
 
 ## t 
 
@@ -196,7 +199,8 @@ hide:
 
 | Term | Description |
 | ---- | ----------- | 
-|[Views](/resources/lens/concepts/#views)|Views are abstractions that provide a simplified interface for interacting with a data model. They allow users to access key metrics and relevant information without needing to navigate the entire underlying data structure. A view serves as a reference point to dimensions, measures, and segments from multiple logical tables, but does not define any metrics or attributes independently.
+|[Views](/resources/lens/concepts/#views)|Views are abstractions that provide a simplified interface for interacting with a data model. They allow users to access key metrics and relevant information without needing to navigate the entire underlying data structure. A view serves as a reference point to dimensions, measures, and segments from multiple logical tables, but does not define any metrics or attributes independently.|
+| [Volume](/resources/volume/) | Volume provides persistent, shared storage within the DataOS environment, typically used for intermediate data storage and workload runtime. |
 
 
 
@@ -206,6 +210,7 @@ hide:
 | Term | Description |
 | --- | --- |
 | [Workbench](/interfaces/workbench/) | Workbench is a query interface within DataOS that provides functionality for editing, running, and saving SQL scripts, viewing query results and more. It serves as a versatile tool for running both simple and complex SQL queries on diverse data sources, enabling efficient data exploration.  |
+| Worker | A continuously running process that executes assigned tasks like data transformation, enrichment, or streaming analytics. |
 | [Workflow](/resources/workflow/) | The Workflow is a DataOS Resource for orchestrating data processing tasks with dependencies. It defines a pipeline involving a sequence of jobs, each utilizing stacks behind the scenes to accomplish various tasks. Within a Workflow, a job encompasses a sequence of processing tasks that need to be executed in a specific order to achieve desired outcomes.  |
 | Workspace | In DataOS, a Workspace is a separate work environment for individuals or teams, providing logical separation and control over resources. Each Workspace functions like a tenant, allowing the creation and management of resources in an isolated context. By default, resources are created in the public Workspace, serving as a shared environment. |
 

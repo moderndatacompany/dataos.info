@@ -1,13 +1,13 @@
-# Custom applications to consume Data Products
+# Custom Applications to Consume Data Products
 
-This topic discusses several ways DataOS enables users to consume data productsâ€”through applications built using Streamlit, Appsmith, etc., leveraging REST APIs, GraphQL, and LLM capabilities. You can develop and deploy custom applications to consume data products. Whether you're building dashboards, analytical tools, or specialized business applications, DataOS makes it easy to integrate and access these applications.
+This topic discusses several ways DataOS enables users to consume Data Productsâ€”through applications built using Streamlit, Appsmith, etc., leveraging REST APIs, GraphQL, and LLM capabilities. You can develop and deploy custom applications to consume Data Products. Whether you're building dashboards, analytical tools, or specialized business applications, DataOS makes it easy to integrate and access these applications.
 
 <div class= "grid cards" markdown>
 
 -   :simple-streamlit:{ .lg .middle } **Streamlit applications**
 
     ---
-    One popular way to consume your data product is by building a Streamlit application powered by the DataOS REST API.
+    One popular way to consume your Data Product is by building a Streamlit application powered by the DataOS REST API.
 
     [:octicons-arrow-right-24: Learn more](/learn/dp_consumer_learn_track/apps_consume_data_products/#streamlit-applications)
 
@@ -15,14 +15,14 @@ This topic discusses several ways DataOS enables users to consume data productsâ
 -   :fontawesome-solid-user-gear:{ .lg .middle } **Appsmith applications**
 
     ---
-    You can create custom Appsmith applications that seamlessly integrate with DataOS data products, connecting through REST APIs, PostgreSQL, or GraphQL.
+    You can create custom Appsmith applications that seamlessly integrate with DataOS Data Products, connecting through REST APIs, PostgreSQL, or GraphQL.
 
     [:octicons-arrow-right-24:  Learn more](/learn/dp_consumer_learn_track/apps_consume_data_products/#appsmith-applications)
 
 -   :material-application-settings-outline:{ .lg .middle } **SOPHOS LLM application**
 
     ---
-    Sophos integrates LLM capabilities, enabling natural language queries on your data product's semantic model.
+    Sophos integrates LLM capabilities, enabling natural language queries on your Data Product's semantic model.
 
     [:octicons-arrow-right-24: Learn more](/learn/dp_consumer_learn_track/apps_consume_data_products/#sophos-llm-application)
 
@@ -30,7 +30,7 @@ This topic discusses several ways DataOS enables users to consume data productsâ
 
 ## Streamlit applications
 
-Here is the sample Streamlit application built which is powered by the example data product- Product Affinity.
+Here is the sample Streamlit application built which is powered by the example Data Product- Product Affinity.
 
 ### **Deploying Streamlit application on DataOS**
 
@@ -71,21 +71,21 @@ Users can analyze individual customer data using the available options in the ap
 
 ## Appsmith applications
 
-Similarly, you can build custom applications using Appsmith. DataOS supports integration with REST APIs, PostgreSQL, and GraphQL for effortless data connectivity and application development. A sample Appsmith application powered by the example data product has been built.
+Similarly, you can build custom applications using Appsmith. DataOS supports integration with REST APIs, PostgreSQL, and GraphQL for effortless data connectivity and application development. A sample Appsmith application powered by the example Data Product has been built.
 
 ![image.png](/learn/dp_consumer_learn_track/apps_consume_data_products/image.png)
 
 ### **Building application with Appsmith** 
 
-Appsmith provides a low-code development platform to create feature-rich applications quickly. Using its drag-and-drop interface, you can build interactive dashboards, forms, and workflows with seamless connectivity to your data products within DataOS.
+Appsmith provides a low-code development platform to create feature-rich applications quickly. Using its drag-and-drop interface, you can build interactive dashboards, forms, and workflows with seamless connectivity to your Data Products within DataOS.
 
 [Building an application with Appsmith](/learn/dp_consumer_learn_track/apps_consume_data_products/build_app_appsmith/)
 
 ## Sophos- LLM application
 
-Sophos is an advanced application that seamlessly integrates LLM (Large Language Model) capabilities, offering a powerful natural language interface to query your data product's semantic model. With Sophos, users can interact with their Data Product using simple, conversational queries without needing to write complex SQL or GraphQL statements. The LLM-powered interface understands user intent, context, and data relationships and provides accurate and meaningful responses.
+Sophos is an advanced application that seamlessly integrates LLM (Large Language Model) capabilities, offering a powerful natural language interface to query your Data Product's semantic model. With Sophos, users can interact with their Data Product using simple, conversational queries without needing to write complex SQL or GraphQL statements. The LLM-powered interface understands user intent, context, and data relationships and provides accurate and meaningful responses.
 
-By leveraging Sophos, both technical and non-technical users can unlock the full potential of their data products, enhancing productivity and decision-making.
+By leveraging Sophos, both technical and non-technical users can unlock the full potential of their Data Products, enhancing productivity and decision-making.
 
 ### **Accessing Sophos**
 
@@ -120,7 +120,7 @@ The following examples demonstrate the LLM system for natural language interacti
 
 If an invalid query is entered, Sophos will not only provide a reason why the query is invalid but also suggest probable questions based on the text entered. This feature helps users refine their queries and obtain accurate results.
 
-By leveraging the capabilities of Sophos, businesses can explore their data product effectively and make informed decisions.
+By leveraging the capabilities of Sophos, businesses can explore their Data Product effectively and make informed decisions.
 
 ![invalid_query.png](/learn/dp_consumer_learn_track/apps_consume_data_products/invalid_query.png)
 
