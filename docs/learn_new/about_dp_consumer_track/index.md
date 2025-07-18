@@ -23,28 +23,6 @@
 
 **Advanced data utilization** involves building models, performing complex analyses, and creating derived datasets using APIs, scripting, or modeling tools. It requires deeper technical expertise to generate new insights or automate decisions.
 
-
-## What you’ll learn
-
-As a consumer of Data Products, you'll master how to:
-
-- **Discover and access Data Products**: Identify and access relevant Data Products based on business needs. Interpret metadata to understand product details and assess the usability of Data Products for informed decision-making.
-
-- **Navigate semantic models:** Understand the relationships between data entities within semantic models to improve data comprehension.
-
-- **Check data quality:** Evaluate Data Products for accuracy, consistency, and completeness, ensuring high-quality analysis and decision-making.
-
-- **Understand governance and policies:** Ensure data usage and access aligns with organizational security standards and regulations.
-
-- **Activate Data Products:** Consider how Data Products can be consumed with Business Intelligence (BI) tools, APIs, and other applications to enhance workflows and reporting. Leverage designated endpoints or interfaces for efficient and secure data access.
-
-- **Track metrics and performance:** Monitor performance, usage, and impact metrics of Data Products to assess their effectiveness and communicate results to stakeholders.
-
-<aside class="callout">
-🗣 To fully engage with the hands-on components of this learning track, access to a dedicated DataOS training instance is required. Please contact your training team to obtain the necessary credentials.
-
-</aside>
-
 ## 📚 Core modules
 
 This track introduces the concepts, capabilities, and practical workflows that enable Data Product consumers to confidently explore and extract value from data within DataOS.
@@ -69,10 +47,15 @@ In this learning track, you will get a comprehensive introduction to Data Produc
 | 8       | **Integrating Data Products with Tools & APIs** | Activate Data Products in BI tools, notebooks, and apps through endpoints and APIs.                      | Lens, Talos, Postgres, GraphQL, REST, Jupyter integration                                           |
 
 
+<aside class="callout">
+🗣 To fully engage with the hands-on components of this learning track, access to a dedicated DataOS training instance is required. Please contact your training team to obtain the necessary credentials.
+
+</aside>
 
 
 ## ✅ Start learning 
 
-Ready to begin?
+!!! abstract "Ready to Dive In?" 
+    :rocket: [Start learning the modules here.](/learn_new/dp_consumer_learn_track/)
 
-:rocket: [Start learning the modules here](/learn_new/dp_consumer_learn_track/)
+

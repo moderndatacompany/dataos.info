@@ -1,11 +1,11 @@
 # Build a Semantic Model 
 
 !!! info "Overview"
-    This guide outlines the end-to-end process for building and deploying a semantic model (Lens) For your data product. 
+    This guide outlines the end-to-end process for building and deploying a semantic model (Lens) For your Data Product. 
 
 ## 📘 Scenario
 
-To provide business users with consistent, trustworthy metrics across BI tools and applications, you need to create a semantic model (Lens) that encapsulates business logic and definitions. This model translates complex data structures into familiar business terms, facilitating self-service analytics. Leverage your source-aligned data product, which processes raw data into structured formats, ensuring the semantic model is grounded in accurate, well-prepared data sources. Metrics become accessible via APIs for use in BI, AI, and embedded analytics tools.
+To provide business users with consistent, trustworthy metrics across BI tools and applications, you need to create a semantic model (Lens) that encapsulates business logic and definitions. This model translates complex data structures into familiar business terms, facilitating self-service analytics. Leverage your source-aligned Data Product, which processes raw data into structured formats, ensuring the semantic model is grounded in accurate, well-prepared data sources. Metrics become accessible via APIs for use in BI, AI, and embedded analytics tools.
 
 
 ## Quick concepts
@@ -14,10 +14,10 @@ Semantic models aim to represent data in a way that is easily understandable by 
 
 **Importance of semantic models:**
 
-- **Improved Data Accessibility:** Semantic models present data in a understandable way, using a common business language that enables users of all technical levels to access and use data effectively, promoting self-service in data product development.
+- **Improved Data Accessibility:** Semantic models present data in a understandable way, using a common business language that enables users of all technical levels to access and use data effectively, promoting self-service in Data Product development.
 - **Enhanced Data Discovery:** By organizing data clearly, semantic models simplify the process of discovering and exploring data, especially in large or complex datasets, helping users quickly find relevant information.
 - **Easier Data Integration:** Semantic models define common meanings and relationships between data elements, making it easier to integrate and maintain consistency across various data sources and systems.
-- **Support for Data Governance:** These models enforce data quality standards, ensuring accuracy and reliability, which is essential for regulatory compliance and maintaining trust in data products.
+- **Support for Data Governance:** These models enforce data quality standards, ensuring accuracy and reliability, which is essential for regulatory compliance and maintaining trust in Data Products.
 - **Empowering Business Users:** By simplifying technical complexities, semantic models allow business users to access and analyze data independently, fostering a data-driven culture and reducing reliance on IT teams.
 
 Based on the identified goals of analysis, value objectives, and the key factors or drivers that will influence our value objectives, create the semantic model with the following steps.
@@ -784,7 +784,7 @@ Don’t forget to replace placeholder values with your project-specific info and
 
 ## Next step
 
-Your semantic model is now in place. The final milestone is to deploy your first consumer-aligned data product.
+Your semantic model is now in place. The final milestone is to deploy your first consumer-aligned Data Product.
 
 👉 [Deploy and Register Data Product](/learn_new/dp_foundations2_learn_track/deploy_sm/)
 

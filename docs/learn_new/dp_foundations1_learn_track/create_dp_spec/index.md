@@ -5,14 +5,14 @@
 
 ## 📘 Scenario
 
-You're building a source-aligned retail data product that curates customer, product, and sales data to power downstream use of this data. To make this product easy to deploy, discover, and reuse, you’ll define a Data Product Spec—a blueprint that links metadata, input/output datasets, collaborators, and a production-ready Bundle containing ingestion workflows, quality checks, monitors, and pagers.
+You're building a source-aligned retail Data Product that curates customer, product, and sales data to power downstream use of this data. To make this product easy to deploy, discover, and reuse, you’ll define a Data Product Spec—a blueprint that links metadata, input/output datasets, collaborators, and a production-ready Bundle containing ingestion workflows, quality checks, monitors, and pagers.
 
 ## Step 1: Define general information
 
-Start with the high-level metadata about your data product:
+Start with the high-level metadata about your Data Product:
 
 
-- **Name:** `product360`Identifies the data product name for purchase behaviour analysis. The name cannot contain underscores (_). Names with multiple words can only be punctuated using hyphens(-).
+- **Name:** `product360`Identifies the Data Product name for purchase behaviour analysis. The name cannot contain underscores (_). Names with multiple words can only be punctuated using hyphens(-).
     
     ```yaml
     #Example 1
@@ -23,10 +23,10 @@ Start with the high-level metadata about your data product:
     ```
     
 - **Version:** `v1beta`Indicates the version of the product.
-- **Entity:** `product`Classifies the entity as a data product.
+- **Entity:** `product`Classifies the entity as a Data Product.
 - **Type:** `data` Specifies that the product handles data.
 - **Purpose:** Defines the objective and impact of the product.
-- **Tags:** Tags provide important context for categorizing the data product on the DPH (Data Product Hub). These tags are used to populate three important data points on the DPH UI - `Domain`, `Usecase` and `Tier`
+- **Tags:** Tags provide important context for categorizing the Data Product on the DPH (Data Product Hub). These tags are used to populate three important data points on the DPH UI - `Domain`, `Usecase` and `Tier`
 - **Description:** Provides an overview of what the Data Product delivers.
 - **Refs**: Include reference links in the DP spec file to add any additional context to the DP.  Provide `title` and link `href`.
     
@@ -50,12 +50,12 @@ Start with the high-level metadata about your data product:
 
 ## Step 2: Add Data Product-specific attributes
 
-All the specific details related to the data product comes under `data` section in spec file.
+All the specific details related to the Data Product comes under `data` section in spec file.
 
 - **Meta**
     
     Include a `meta` section, nested under the `data` section, to provide additional context and information to DPH.
-    - title which is shown for your data product
+    - title which is shown for your Data Product
     - The `sourceCodeUrl` key is used to link the associated repository where the DP artefacts are maintained
     - The `trackerUrl` key is used to link the associated JIRA ticket where the DP issues are being managed
         
@@ -70,7 +70,7 @@ All the specific details related to the data product comes under `data` section 
         
 - **Collaborators**
     
-    User IDs of individuals who are collaborating on this data product. You can to add`name` and `description` as additional context to each collaborator under the `data` section in the DP Spec YAML.
+    User IDs of individuals who are collaborating on this Data Product. You can to add`name` and `description` as additional context to each collaborator under the `data` section in the DP Spec YAML.
     
     ```yaml
     v1beta:
@@ -103,7 +103,7 @@ resource:
 ```
     
 ## Step 4: Define inputs and outputs
-Set up datasets that the data product will consume and produce:
+Set up datasets that the Data Product will consume and produce:
     
 There are two types of dataset references - 
 
@@ -150,7 +150,7 @@ ports:
     
 ## Data Product Spec (YAML) file
 
-Here is the comprehensive and efficient configuration for your data product, which makes it easier to manage and evolve over time.
+Here is the comprehensive and efficient configuration for your Data Product, which makes it easier to manage and evolve over time.
 <details>
 <summary>Click here to view the complete Data Product Spec file</summary>
 
@@ -208,7 +208,7 @@ v1beta:
 </details>
 
 ## Data Product Scanner manifest file
-The Scanner Workflow is required to register your data product on the Data Product Hub, making it discoverable and ready for consumption.
+The Scanner Workflow is required to register your Data Product on the Data Product Hub, making it discoverable and ready for consumption.
 
 ```yaml
 version: v1
@@ -217,7 +217,7 @@ type: workflow
 tags:
   - scanner
   - data-product
-description: The job scans data product from poros
+description: The job scans Data Product from poros
 workflow:
   dag:
     - name: scan-data-product-job
@@ -240,6 +240,6 @@ workflow:
 
 ## Next step
 
-You now have all the components in place—Bundle, Data Product Spec, and Scanner Workflow— it’s time to bring your data product to life in the DataOS environment.
+You now have all the components in place—Bundle, Data Product Spec, and Scanner Workflow— it’s time to bring your Data Product to life in the DataOS environment.
 
 👉 Continue to the next module: [Deploying Your Data Product on DataOS](/learn_new/dp_foundations1_learn_track/deploy_dp_cli/).
