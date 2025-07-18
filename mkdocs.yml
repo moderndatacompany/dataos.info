@@ -785,7 +785,7 @@ nav:
           - Capture objectives, KPIs & metrics: learn_new/dp_foundations2_learn_track/understand_business_goals/index.md
           - Design Data Product: learn_new/dp_foundations2_learn_track/design_dp/index.md
           - Repository and folder structure: learn_new/dp_foundations2_learn_track/repo_structure/index.md
-          - Source data connectivity: learn_new/dp_foundations2_learn_track/data_source_connectivity/
+          - Source data connectivity: learn_new/dp_foundations2_learn_track/data_source_connectivity/index.md
           - Build pipeline: learn_new/dp_foundations2_learn_track/build_pipeline/index.md
           - Create semantic model: learn_new/dp_foundations2_learn_track/create_semantic_model/index.md
           - Deploy and register: learn_new/dp_foundations2_learn_track/deploy_sm/index.md
