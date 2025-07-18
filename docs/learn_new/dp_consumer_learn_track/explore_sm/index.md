@@ -11,25 +11,25 @@ Imagine you’re a data analyst and want to analyze data product 'Product Affini
 
 'Lens' is a key DataOS Resource in creating and implementing semantic models. Here’s what makes them powerful:
 
-1. **Physical Data Sources**  
+1. **Physical data sources**  
    Semantic models connect to a variety of physical data sources, such as Postgres, BigQuery, and Redshift. Knowing the origin helps you understand how the semantic model organizes it into logical structures.
 
 2. **Lakehouse (Optional)**  
    For large datasets, you may unify data from multiple sources, making it easier to manage and query data. Consider storing the aggragated data to Lakehouse, a managed storage architecture that blends the strengths of both data lakes and data warehouses.
 
-3. **Logical Tables**  
+3. **Logical tables**  
    A semantic model maps physical data (from data sources or Lakehouse) to logical tables establishing relationships between data entities—making your work faster and clearer.
 
-4. **Table Properties**  
+4. **Table properties**  
    When creating logical tables, SQL and key properties like schema, data types, and constraints are specified.
 
-5. **Data Quality and Transformation**  
+5. **Data quality and transformation**  
    Semantic models incorporate tools for ensuring high data quality and transforming raw data into user-friendly formats. By maintaining accuracy, consistency, and reliability, semantic models ensure that the data is ready for exploration.
 
 6. **Metrics**  
    Semantic models define meaningful metrics to track performance or key business indicators.
 
-7. **Consumption Ports**  
+7. **Consumption ports**  
    Semantic models enable versatile data consumption options, such as BI tools and APIs for seamless integration with GraphQL and Studio for advanced analytics.
 
 
@@ -54,7 +54,7 @@ Before exploring data via the semantic model in Studio, let us understand the mo
 
 You first decide to explore the Model. As you open the Model tab, you start exploring the structure of the Data Product, gaining insights into the connections and dependencies across datasets. 
 
-### **Visualize Connections in Graph View**
+### **Visualize connections in Graph view**
 
 The **Graph** view offers a visual representation of the 'Product Affinity' semantic model, showcasing how logical tables and entities are interconnected, with key metrics highlighting their relationships.
 
@@ -72,7 +72,7 @@ You click on a metric, say `cross_sell_oppurtunity_score`, which opens a side pa
 
 ![customer_schema.png](/learn_new/dp_consumer_learn_track/explore_sm/customer_schema.png)
 
-### **Explore Details in Schema Section**
+### **Explore details in Schema section**
 
 Under 'Schema', gain insight into the table structure, column names, data types, and primary keys. This detailed breakdown ensures that you have a thorough understanding of data hierarchies and access control.
 
@@ -88,7 +88,7 @@ You select a table `customer` to get more details on the table.
 
 The schema section shares the following details:
 
-**Quick Schema Insights**
+**Quick schema insights**
 
 - **Name & Type**: E.g., `Customer` table.
 - **Measures**: Like `total_customers` with count logic.
@@ -96,7 +96,7 @@ The schema section shares the following details:
 - **Segments**: Optional pre-defined filters for granular analysis.
 - **Additional Info**: Displays redacted fields and user access as you set them in the Lens user groups and data policy manifest file.
 
-### **Explore Configuration in Files Section**
+### **Explore configuration in Files section**
 
 View all relevant SQL files, tables, views, and YAML files essential for defining the Lens. This resource helps you explore the actual implementation and configuration of the model. You can click the 'Open in Metis' button in the top right corner to access the semantic model artifact in Metis.
 
@@ -147,7 +147,7 @@ Once you save any Perspective, it will be accessible to everyone and can be acce
 
 </aside>
 
-### **Visualizing Data with Charts**
+### **Visualizing data with charts**
 
 Transform your table into a visual story:
 
@@ -189,7 +189,7 @@ Transform your table into a visual story:
     ![members.png](/learn_new/dp_consumer_learn_track/explore_sm/members.png)
  
 
-### **Filtering Data**
+### **Filtering data**
 
 After clearing all members, you move to analyze some data with filters on and want to get insight on the following scenario:
 

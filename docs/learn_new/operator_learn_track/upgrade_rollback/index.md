@@ -2,7 +2,7 @@
 
 In this module, you’ll walk through the key steps for both upgrading and rolling back processes, ensuring your platform remains robust and scalable.
 
-## Scenario
+## 📘 Scenario
 
 Imagine you’re the DataOS Operator, preparing for a scheduled upgrade to improve performance and add new features. Shortly after the upgrade, unforeseen issues disrupt system functionality. With limited time, you assess the situation, determine a rollback is needed, and follow a structured rollback plan to restore service.
 
