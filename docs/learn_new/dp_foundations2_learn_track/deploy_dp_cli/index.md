@@ -1,11 +1,11 @@
 # Deploying your Data Product on DataOS
 
 !!! info "Overview"
-    After setting up the essential YAML files — the Bundle YAML, Data Product Specification YAML, and Lens YAMLs — the final step is to deploy your data product on the Data Product Hub. This process makes your product available for discovery and consumption within your organization. The deployment involves resource instantiation and metadata registration.
+    After setting up the essential YAML files — the Bundle YAML, Data Product Specification YAML, and Lens YAMLs — the final step is to deploy your Data Product on the Data Product Hub. This process makes your product available for discovery and consumption within your organization. The deployment involves resource instantiation and metadata registration.
 
 ## 📘 Scenario
 
-Imagine you've built a source-aligned data product called retaildata that delivers curated customer, product, and sales data. You’ve already created the necessary configuration files—now it’s time to deploy it using the DataOS CLI.
+Imagine you've built a source-aligned Data Product called retaildata that delivers curated customer, product, and sales data. You’ve already created the necessary configuration files—now it’s time to deploy it using the DataOS CLI.
 
 ## Deploying Data Product
 
@@ -21,7 +21,7 @@ Ddeployment process has three stages:
 
 DataOS CLI is a text-based interface that allows users to interact with the DataOS context via command prompts.
 
-## Step 2: Use the `apply` command on CLI to deploy your Data Product on Data Product Hub successfully.
+## Step 2: Use the `apply` command on CLI to deploy your Data Product on Data Product Hub.
 
 1. Run the Bundle manifest file created in the previous topic.
     
@@ -61,7 +61,7 @@ DataOS CLI is a text-based interface that allows users to interact with the Data
 
 ## Step 3: Validating the creation of Data Product
 
-To check if you have created a data product, run the following command. It lists all data products created by you:
+To check if you have created a Data Product, run the following command. It lists all Data Products created by you:
 
 ```bash
 ➜ dataos-ctl product get
@@ -81,13 +81,13 @@ INFO[0000] 🔍 product get...complete
 
 ## Step 4: Exploring Data Product on Data Product Hub
 
-🎯 You're done creating your source-alined data product! Now, check it on Data Product Hub.
+🎯 You're done creating your source-alined Data Product! Now, check it on Data Product Hub.
 
 1. Log in to the DataOS instance and Navigate to Data Product Hub.
     
     ![dp_on_dph.png](/learn/dp_developer_learn_track/deploy_dp_cli/retaildata.png)
     
-2. Click on the data product to view its details.
+2. Click on the Data Product to view its details.
     ![dp_on_dph.png](/learn/dp_developer_learn_track/deploy_dp_cli/retaildata_details.png)
 
 <aside class="callout">

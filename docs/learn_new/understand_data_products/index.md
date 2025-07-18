@@ -86,7 +86,7 @@ A Data Product is designed to be easily discovered by users. It includes appropr
 
 **Addressable**
 
-A Data Product is assigned a unique identifier, making it easily referencable and accessible within a data ecosystem. This ensures that users can reliably access and work with the data product without ambiguity.
+A Data Product is assigned a unique identifier, making it easily referencable and accessible within a data ecosystem. This ensures that users can reliably access and work with the Data Product without ambiguity.
 
 **Understandable**
 
@@ -102,7 +102,7 @@ A Data Product adheres to rigorous quality assurance processes and data governan
 
 **Interoperable and composable**
 
-A Data Product is designed to integrate and interact with other Data Products and systems seamlessly. It follows standardized protocols and interfaces, enabling interoperability and composability, thus allowing users to combine and leverage multiple data products for comprehensive analysis.
+A Data Product is designed to integrate and interact with other Data Products and systems seamlessly. It follows standardized protocols and interfaces, enabling interoperability and composability, thus allowing users to combine and leverage multiple Data Products for comprehensive analysis.
 
 **Valuable**
 
@@ -145,7 +145,7 @@ Entity-first Data Products focus on the characteristics and origins of the under
 - Serving as foundational datasets for further processing.
 
 <aside class= "callout">
-🗣️ Source-aligned data products represent data as it is in the operational system with minimal transformation.
+🗣️ Source-aligned Data Products represent data as it is in the operational system with minimal transformation.
 </aside>
 
 #### **Consumer-aligned Data Products or Model-First Data Products**
@@ -159,7 +159,7 @@ Model-first Data Products are designed with a focus on the end-user’s needs an
 - Emphasizes intuitive interaction for consumers of the data.
 
 <aside class= "callout">
-🗣️ Consumer-aligned data products are value-driven solutions crafted by domain SMEs and developers to address specific business use cases, delivering actionable insights aligned with business objectives.
+🗣️ Consumer-aligned Data Products are value-driven solutions crafted by domain SMEs and developers to address specific business use cases, delivering actionable insights aligned with business objectives.
 </aside>
 
 #### **Aggregate Data Products**
@@ -202,6 +202,6 @@ Yes, Data Products are designed to be:
 **Responsive**: Adaptable to user feedback and changing requirements.  
 **Reactive**: Capable of processing real-time data for timely decision-making.
 
-**Q8: Can multiple consumer-aligned data products use the same set of source-aligned data products?**  
-DataOS offers the flexibility to build a variety of Data Products with potentially shared underlying data sources. This means that multiple data products aligned with different consumers can use the same set of source-aligned data products. For example, you could create data products using Customer, Product, and Sales data to support marketing campaigns, cross-sell opportunities, and customer 360 use cases.
+**Q8: Can multiple consumer-aligned Data Products use the same set of source-aligned Data Products?**  
+DataOS offers the flexibility to build a variety of Data Products with potentially shared underlying data sources. This means that multiple Data Products aligned with different consumers can use the same set of source-aligned Data Products. For example, you could create Data Products using Customer, Product, and Sales data to support marketing campaigns, cross-sell opportunities, and customer 360 use cases.
 

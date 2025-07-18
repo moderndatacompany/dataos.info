@@ -5,7 +5,7 @@
 
 DataOS is an enterprise-grade data product platform for the development, management, processing, and deployment of Data Products across an organization. It provides the essential building blocks data developers require to create powerful data products that drive significant business outcomes.
 
-## Key Benefits
+## Key benefits
 
 DataOS empowers organizations to build faster, collaborate smarter, and scale confidently. It provides a modular, composable, and interoperable data infrastructure built on open standards, making it extensible and flexible for integration with existing tools and infrastructure.
 
@@ -34,11 +34,11 @@ The development of a data product in **DataOS** follows a structured lifecycle:
 5. **Deprecate**: Gradually retire the data product when it is no longer needed, ensuring users are informed, dependencies are removed, and resources are cleaned up safely.
 
 
-## DataOS Building Blocks (Resources)
+## DataOS building blocks (Resources)
 
 DataOS provides a variety of primitives, referred to as Resources, that power the core functionalities of any data stack. These resources are categorized by their functional roles:
 
-### **Source Connectivity and Metadata Management**
+### **Source connectivity and metadata management**
 
 These resources connect to various data sources, enable metadata scanning, and support quality checks and data profiling.
 
@@ -49,11 +49,11 @@ These resources connect to various data sources, enable metadata scanning, and s
 
 ---
 
-### **Data Movement and Processing**
+### **Data movement and processing**
 
 These resources handle the transformation and movement of data.
 
-#### **Batch Data Resources**
+#### **Batch data Resources**
 
 Support scheduled, large-scale data processing.
 
@@ -63,7 +63,7 @@ Support scheduled, large-scale data processing.
   - **Flare** DataOS’s declarative engine built atop Apache Spark, designed for scalable batch, incremental and streaming data processing.
   - **Soda**:  Data quality validation Stack utilizing the Soda Checks Language (SodaCL), it allows users to define validation rules to monitor metrics like accuracy, completeness, and uniqueness for your data.  
 
-#### **Streaming Data Resources**
+#### **Streaming data Resources**
 
 Handle real-time processing and continuous ingestion.
 
@@ -86,7 +86,7 @@ Resources for efficient, scalable storage solutions.
 
 ---
 
-### **Semantic Model**  
+### **Semantic model**  
 
 The semantic modeling layer that translates technical data into business-friendly terms. 
 
@@ -149,7 +149,7 @@ Building data products in DataOS is like constructing with LEGO bricks—each pi
 
 - **Data Product Owner:** Aligns product development with business goals, sets success metrics and priorities defineing the strategic vision for data products. 
 
-## Trusted & Observable by Design
+## Trusted & observable by design
 
 ### **Governance and Security**
 DataOS includes built-in controls to ensure data confidentiality, integrity, and compliance. Through robust access policies, encryption, and automated enforcement, it protects sensitive information across all access channels.
