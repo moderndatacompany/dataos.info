@@ -1,38 +1,38 @@
 # Designing a Consumer-Aligned Data Product
 
 !!! info "Overview"
-    Designing a consumer-aligned data product isn't just about connecting data pipelines—it's about crafting insights that matter to your business. In this module, you’ll dive into a structured, right-to-left approach to design a **consumer-aligned data product** that meets real-world business goals with precision.
+    Designing a consumer-aligned Data Product isn't just about connecting data pipelines—it's about crafting insights that matter to your business. In this module, you’ll dive into a structured, right-to-left approach to design a **consumer-aligned Data Product** that meets real-world business goals with precision.
 
-You’ll learn to translate business needs into well-modeled, high-quality data products that are secure, scalable, and insight-driven.
+You’ll learn to translate business needs into well-modeled, high-quality Data Products that are secure, scalable, and insight-driven.
 
 ## Learning goals
 
 By the end of this module, you’ll be able to:
 
 - Define meaningful use cases and success metrics  
-- Discover and evaluate existing data products  
+- Discover and evaluate existing Data Products  
 - Plan source-to-consumption design with transformations  
 - Design semantic models with governed access  
 - Implement quality checks and delivery paths  
 
 ---
 ## 📘 Scenario
-Imagine an online retail company aiming to boost its sales next year. The business team has tasked the Product Manager with developing a data product that can uncover valuable insights from customer purchase behaviors. The goal is to identify cross-sell opportunities, helping sales and marketing teams fine-tune their strategies to increase revenue.
+Imagine an online retail company aiming to boost its sales next year. The business team has tasked the Product Manager with developing a Data Product that can uncover valuable insights from customer purchase behaviors. The goal is to identify cross-sell opportunities, helping sales and marketing teams fine-tune their strategies to increase revenue.
 
-As a Product Manager, you must design this data product, ensuring it captures essential metrics like cross-sell opportunity scores, purchase frequency, and total customer spending. Designing a data product requires meticulous planning and a deep understanding of the business needs. To effectively design the data product, consider the following key aspects:
+As a Product Manager, you must design this Data Product, ensuring it captures essential metrics like cross-sell opportunity scores, purchase frequency, and total customer spending. Designing a Data Product requires meticulous planning and a deep understanding of the business needs. To effectively design the Data Product, consider the following key aspects:
 
 
 ## Step 1: Define the use case and metrics
 
 ###  **Identify Business Problems**
 
-Anchor your design by answering: What decisions will this data product support? Talk to stakeholders, understand their pain points, and define the insight they seek.
+Anchor your design by answering: What decisions will this Data Product support? Talk to stakeholders, understand their pain points, and define the insight they seek.
 
 **Example:** Unlock customer purchase trends to drive cross-sell strategies.
 
 ###  **Define metrics that matter**
 
-Pin down measurable outcomes. These become your data product’s north star.
+Pin down measurable outcomes. These become your Data Product’s north star.
 
 **Key Metrics:**
 
@@ -48,7 +48,7 @@ Pin down measurable outcomes. These become your data product’s north star.
 
 ---
 
-## Step 2: Discover reusable data products
+## Step 2: Discover reusable Data Products
 
 Before building anything new, explore the **Data Product Hub** for existing assets.
 
@@ -119,7 +119,7 @@ Use tools like Metis or Workbench to:
 
 ## Step 4: Identifying the need for ETL process
 
-The ETL process is critical for converting raw data into a usable format. It involves extracting data, transforming it based on business logic, and loading it into a storage system. This process enables the creation of source-aligned data products, which represent data in its original form with minimal transformation. These source-aligned products can then be used to create consumer-aligned data products.
+The ETL process is critical for converting raw data into a usable format. It involves extracting data, transforming it based on business logic, and loading it into a storage system. This process enables the creation of source-aligned Data Products, which represent data in its original form with minimal transformation. These source-aligned products can then be used to create consumer-aligned Data Products.
 
 > If your data is already in a usable, structured format, you can skip this step.
 
@@ -220,7 +220,7 @@ Mask sensitive PII like emails or phone numbers.
 
 ## Step 7: Define SLOs and quality gates
 
-Great data products are reliable. Define **Service Level Objectives (SLOs)** to maintain trust.
+Great Data Products are reliable. Define **Service Level Objectives (SLOs)** to maintain trust.
 
 ### **SLO categories**
 
@@ -238,7 +238,7 @@ Great data products are reliable. Define **Service Level Objectives (SLOs)** to 
 
 ## Step 8: Enable output and delivery
 
-Identify how end users will consume the data product and the methods used for data delivery, such as APIs or connecting with BI tools.
+Identify how end users will consume the Data Product and the methods used for data delivery, such as APIs or connecting with BI tools.
 
 
 ###  **APIs and BI tools**
@@ -258,6 +258,6 @@ Identify how end users will consume the data product and the methods used for da
 
 You’ve sketched a complete design blueprint. Now it's time to bring it to life.
 
-Each next module will guide you through building this design into a working consumer-aligned data product. Let’s build it—one module at a time!
+Each next module will guide you through building this design into a working consumer-aligned Data Product. Let’s build it—one module at a time!
 
 👉 [Start with configuring source connectivity](/learn_new/dp_foundations2_learn_track/data_source_connectivity/)
