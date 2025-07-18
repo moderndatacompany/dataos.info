@@ -9,8 +9,8 @@ This learning track is divided into two hands-on modules:
 
 | Course | Title | Description |
 |--------|-------|-------------|
-| 1 | [Creating a Source-Aligned Data Product](#course-1-creating-a-source-aligned-data-product) | Learn to build a foundational data product directly from raw source systems—starting from connectivity to monitoring and packaging. |
-| 2 | [Creating a Consumer-Aligned Data Product](#course-2-creating-a-consumer-aligned-data-product) | Take your product further with transformations, semantic modeling, and governed delivery of metrics tailored for business users. |
+| 1 | [Creating a Source-Aligned Data Product](/learn_new/about_dp_foundations_track/#course-1-create-a-source-aligned-data-product) | Learn to build a foundational data product directly from raw source systems—starting from connectivity to monitoring and packaging. |
+| 2 | [Creating a Consumer-Aligned Data Product](/learn_new/about_dp_foundations_track/#course-2-create-a-consumer-aligned-data-product) | Take your product further with transformations, semantic modeling, and governed delivery of metrics tailored for business users. |
 
 
 ✨ Ready to get started? Scroll down to explore the full track structure and dive into each course to begin your Data Product journey.
