@@ -156,10 +156,10 @@ Building data products in DataOS is like constructing with LEGO bricks—each pi
 
 ## Trusted & observable by design
 
-### **Governance and Security**
+- **Governance and Security**
 DataOS includes built-in controls to ensure data confidentiality, integrity, and compliance. Through robust access policies, encryption, and automated enforcement, it protects sensitive information across all access channels.
 
-### **Observability**
+- **Observability**
 DataOS continuously monitors the health and performance of data products. Key metrics like availability, latency, and throughput are tracked in real time, with automated alerts helping teams detect and resolve issues proactively.
 
 Together, governance, security, and observability form the backbone of DataOS’s enterprise-grade reliability. These capabilities aren’t optional add-ons—they’re integral to the platform. This ensures every data product is secure, compliant, and resilient by design, empowering teams to scale operations confidently with trust and control.
