@@ -175,7 +175,7 @@ The Router manages interactions between the API instances and the workers.
 | **resources** | Resource requests and limits for the Router. Defaults are CPU 100m, memory 100Mi, with limits at CPU 400m, memory 400Mi. |
 | **envs** | Environment variables for the Router. |
 
-**i. `Iris`:**
+<!-- **i. `Iris`:**
 
 This section configures how your Lens interacts with Iris dashboards.
 
@@ -184,7 +184,7 @@ This section configures how your Lens interacts with Iris dashboards.
 | **logLevel** | Log level for Iris. The default is `INFO`, with other options like `WARN`, `DEBUG`, or `ERROR`. |
 | **replicas** | Number of Iris replicas to deploy. The default is 1, but adjust as needed. |
 | **resources** | Resource requests and limits for Iris. Defaults are CPU 100m, memory 100Mi, with limits at CPU 400m, memory 400Mi. |
-| **envs** | Environment variables for Iris. |
+| **envs** | Environment variables for Iris. | -->
 
 ### **Complete Example**
 
@@ -255,16 +255,16 @@ lens:
       limits:
         cpu: 6000m
         memory: 6048Mi
-  iris:
-    logLevel: info
-    replicas: 1
-    resources:
-      requests:
-        cpu: 100m
-        memory: 256Mi
-      limits:
-        cpu: 4000m
-        memory: 5240Mi
+  # iris:
+  #   logLevel: info
+  #   replicas: 1
+  #   resources:
+  #     requests:
+  #       cpu: 100m
+  #       memory: 256Mi
+  #     limits:
+  #       cpu: 4000m
+  #       memory: 5240Mi
 ```
 </details>
     
@@ -323,7 +323,7 @@ You can check the details of the deployed Lens on Metis.
     ![lens2_query.png](/quick_guides/deploy_data_model/lens2_query.png)
     
 
-1. You can view your data model and understand various elements in detail by clicking on **Model**.
+-  You can view your data model and understand various elements in detail by clicking on **Model**.
     
     ![lens2_model1.png](/quick_guides/deploy_data_model/lens2_model1.png)
     
@@ -341,10 +341,10 @@ You can check the details of the deployed Lens on Metis.
     
     ![lens2_model_files.png](/quick_guides/deploy_data_model/lens2_model_files.png)
     
-2. From Metis UI, you can access Iris board and see the created business views to assess the important metrics defined within the data model.
+<!-- 2. From Metis UI, you can access Iris board and see the created business views to assess the important metrics defined within the data model.
     
     ![lens2_iris1.png](/quick_guides/deploy_data_model/lens2_iris1.png)
-    
+     -->
 
 <!-- Next Steps:
 
