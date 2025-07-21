@@ -36,7 +36,9 @@ The development of a data product in **DataOS** follows a structured lifecycle:
 
 ## DataOS building blocks (Resources)
 
-DataOS provides a variety of primitives, referred to as Resources, that power the core functionalities of any data stack. These resources are categorized by their functional roles:
+DataOS offers a rich set of building blocks, known as Resources, that enable the core capabilities of a modern data stack.
+
+These Resources are organized by the key capabilities they support within DataOS, helping users understand how each contributes to building, managing, and consuming data products.
 <div style="text-align: left; padding-left: 1em;">
 <img src="/learn_new/dataos_essentials/capability.png" alt="infographics" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
