@@ -18,15 +18,15 @@ Before you install and run this project, make sure you have Python 3.11.7 or hig
 
 ### Setup
 1. Clone this repository to your local machine using:
-   ```shell
+   ```bash
    git clone https://github.com/moderndatacompany/dataos.info.git
    ```
 2. Navigate into the project directory:
-   ```shell
+   ```bash
    cd tests
    ```
 3. Install the required Python packages:
-   ```shell
+   ```bash
    pip install -r requirements.txt
    ```
 

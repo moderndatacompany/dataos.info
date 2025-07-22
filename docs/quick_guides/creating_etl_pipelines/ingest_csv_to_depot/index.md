@@ -79,7 +79,7 @@ spark = session_builder.SparkSessionBuilder(log_level="INFO") \
 <summary>Expected Output</summary>
 
 
-```shell
+```bash
 12-02 08:23 - pyflare.sdk.utils.pyflare_logger - INFO - Creating file at path: /opt/spark/conf/log4j.properties
 12-02 08:23 - pyflare.sdk.utils.pyflare_logger - INFO - Data written successfully to: /opt/spark/conf/log4j.properties
 12-02 08:23 - pyflare.sdk.utils.pyflare_logger - INFO - Secrets API status: 200

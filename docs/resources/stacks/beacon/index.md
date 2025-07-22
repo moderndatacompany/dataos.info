@@ -118,13 +118,13 @@ Each of the attributes in this section has been elaborated in detail on the [Att
 
 You can apply the YAML file to create a Beacon Service within the DataOS environment using the command given below:
 
-```shell
+```bash
 dataos-ctl apply -f ${{path-of-the-config-file}} -w ${{workspace}}
 ```
 
 ### **Check Run time**
 
-```shell
+```bash
 dataos-ctl -t service -w ${{workspace}} -n ${{service-name}}  get runtime -r
 # Sample
 dataos-ctl -t service -w public -n pulsar-random  get runtime -r

@@ -227,7 +227,7 @@ For more information about the various sections, refer to the link: [YAML manife
 
 After creating the YAML file for the Operator Resource, it's time to apply it to instantiate the Resource-instance in the DataOS environment. To apply the Operator YAML file, utilize the `apply` command.
 
-```shell
+```bash
 dataos-ctl apply -f {{operator yaml manifest file path}}
 ```
 
@@ -237,7 +237,7 @@ To ensure that your operator has been successfully created, you can verify it in
 
 Check the name of the newly created depot in the list of depots where you are named as the owner:
 
-```shell
+```bash
 dataos-ctl get -t operator
 
 # Expected Output
@@ -251,7 +251,7 @@ INFO[0000] 🔍 get...complete
 
 Alternatively, retrieve the list of all operators created in your organization:
 
-```shell
+```bash
 dataos-ctl get -t operator -a
 ```
 
@@ -312,7 +312,7 @@ resource:
 
 To trigger a pipeline run, you can apply the Resource YAML using the following command:
 
-```shell
+```bash
 dataos-ctl apply -f {{resource-yaml-file-path}} -w {{workspace}}
 
 # Sample
@@ -321,7 +321,7 @@ dataos-ctl apply -f ../adf-operator/resource.yaml -w public
 
 ### **Get Status of Pipeline Run**
 
-```shell
+```bash
 dataos-ctl get -t resource -w {{workspace}}
 
 # Sample

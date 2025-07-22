@@ -14,14 +14,14 @@ Download or set up the Talos project template and initialize it using Bitbucket.
 
 - Initialize the project using Git:
 
-    ```shell
+    ```bash
     git init
     git add --all
     git commit -m "Initial Commit"
     ```
 - Push the repository to Bitbucket:
 
-    ```shell
+    ```bash
     git remote add origin https://username@your.bitbucket.domain/repo.git
     git push -u origin master
     ```

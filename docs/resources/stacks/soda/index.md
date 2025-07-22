@@ -944,7 +944,7 @@ worker:
 
 Use the apply command to apply the workflow using CLI.
 
-```shell
+```bash
 dataos-ctl apply -f ${{path/file-name}} -w ${{workspace}} # By default the workspace is public
 ```
 

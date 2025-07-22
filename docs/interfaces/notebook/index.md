@@ -128,7 +128,7 @@ dataset = sdk.save(name = "c181",format = "iceberg", mode='overwrite', options=w
 ```
 #### **Set Metadata**
 To show the dataset on the workbench and start querying, run set-metadata command on DataOS CLI.
-```shell
+```bash
 dataos-ctl dataset set-metadata -a dataos://icebase:shopper_360/model_prediction -v latest
 ```
 <aside class="callout">
