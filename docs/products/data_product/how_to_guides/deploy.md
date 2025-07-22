@@ -38,7 +38,7 @@ workflow:
 
 To apply the Scanner Workflow manifest file, run the following command.
 
-```shell
+```bash
 
 dataos-ctl resource apply -f ${path-to-your-scanner-manifest-file}
 

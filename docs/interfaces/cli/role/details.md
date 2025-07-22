@@ -4,7 +4,7 @@ You run the following `role` sub commands by appending them to *dataos-ctl role*
 ## `changes`
 View a DataOS® Role changes
 
-```shell
+```bash
 
 Usage:
   dataos-ctl role changes [command]
@@ -24,7 +24,7 @@ Use "dataos-ctl role changes [command] --help" for more information about a comm
 ### **'get'**
 
 
-```shell
+```bash
 Get the changes for a role
 
 Usage:
@@ -42,7 +42,7 @@ Global Flags:
 ## `get`
 Get DataOS® Roles
 
-```shell
+```bash
 
 Usage:
   dataos-ctl role get [flags]

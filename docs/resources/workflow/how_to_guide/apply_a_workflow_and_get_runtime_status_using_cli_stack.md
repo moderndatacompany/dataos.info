@@ -24,7 +24,7 @@ To fetch the details about the User ID and User API Key token, execute the follo
 
     To fetch the details about the User ID
 
-    ```shell
+    ```bash
     dataos-ctl user get
     # Sample Output
     INFO[0000] 😃 user get...                                
@@ -45,7 +45,7 @@ To fetch the details about the User ID and User API Key token, execute the follo
 
    
 
-    ```shell
+    ```bash
     dataos-ctl user apikey get
     #Expected Output
     |               TOKEN                                                       │  TYPE  │        EXPIRATION         │                  NAME                               
@@ -60,7 +60,7 @@ To fetch the details about the User ID and User API Key token, execute the follo
 
     If no apikey token exists, create a new one using the following command:
 
-    ```shell
+    ```bash
     dataos-ctl user apikey create
     # Sample Output
     INFO[0000] 🔑 user apikey get...                         
@@ -116,13 +116,13 @@ Replace `${dataos_user_id}` and `${dataos_user_apikey_token}` with values obtain
 
 === "Command"
 
-    ```shell
+    ```bash
     dataos-ctl apply -f ${instance secret yaml file path}
     ```
 
 === "Example"
 
-    ```shell
+    ```bash
     dataos-ctl apply -f home/iamgroot/workflow/instance_secret.yaml
 
     # Expected Output
@@ -144,7 +144,7 @@ The Sample YAML for a Workflow that creates a Volume, checks its status, and del
 
 ### **Apply the Workflow manifest**
 
-```shell
+```bash
 dataos-ctl apply -f ${workflow yaml file path} -w ${workspace name}
 
 # Sample and Expected Output
@@ -157,7 +157,7 @@ INFO[0003] 🛠 apply...complete
 
 ### **Verify Workflow creation**
 
-```shell
+```bash
 dataos-ctl get -t workflow -w ${workspace name}
 
 # Sample Output
@@ -177,13 +177,13 @@ Copy the name to Workspace from the output table of the [`get`](/interfaces/cli
 
 === "Command"
 
-    ```shell
+    ```bash
     dataos-ctl -i "${copy the name to workspace in the output table from get command}" --node ${failed node name from get runtime command} log
     ```
 
 === "Example"
 
-    ```shell
+    ```bash
     dataos-ctl -i "dataos-ctl-volume-lifecycle-01 | v1      | workflow | public" log                                                                                             
     # Expected Output
 

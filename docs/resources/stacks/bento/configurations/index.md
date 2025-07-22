@@ -160,13 +160,13 @@ processor_resources:
 
 We can select our chosen resource by changing which file we import, either running:
 
-```shell
+```bash
 bento -r ./staging/request.yaml -c ./config.yaml
 ```
 
 Or:
 
-```shell
+```bash
 bento -r ./production/request.yaml -c ./config.yaml
 ```
 
@@ -182,12 +182,12 @@ But hey, why don't you chill out? Bento has a (currently experimental) alternati
 
 It's possible to have a running instance of Bento reload configurations, including resource files imported with `-r`/`--resources`, automatically when the files are updated without needing to manually restart the service. This is done by specifying the `-w`/`--watcher` flag when running Bento in normal mode or in streams mode:
 
-```shell
+```bash
 # Normal mode
 bento -w -r ./production/request.yaml -c ./config.yaml
 ```
 
-```shell
+```bash
 # Streams mode
 bento -w -r ./production/request.yaml streams ./stream_configs/*.yaml
 ```
@@ -216,7 +216,7 @@ In order to make this process easier, Bento is able to generate usable configura
 
 If, for example, we wanted to generate a config with a websocket input, a Kafka output, and a `mapping` processor in the middle, we could do it with the following command:
 
-```shell
+```bash
 bento create websocket/mapping/kafka
 ```
 
@@ -247,7 +247,7 @@ input:
 
 We can catch this error before attempting to run the config:
 
-```shell
+```bash
 $ bento lint ./foo.yaml
 ./foo.yaml: line 3: field yourl not recognised
 ```
@@ -258,7 +258,7 @@ For more information, read the output from `bento lint --help`.
 
 Echoing is where Bento can print back your configuration *after* it has been parsed. It is done with the `echo` subcommand, which is able to show you a normalised version of your config, allowing you to see how it was interpreted:
 
-```shell
+```bash
 bento -c ./your-config.yaml echo
 ```
 

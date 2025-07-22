@@ -6,7 +6,7 @@ Bloblang is implemented as a processor and supports usage within function interp
 
 Mappings can also be executed from the command line using the `blobl` subcommand.
 
-```shell
+```bash
 $ cat data.jsonl | bento blobl 'foo.(bar | baz).buz'
 ```
 The document describes the core features of the Bloblang language. For users unfamiliar with Bloblang, it is recommended to visit [Bloblang Overview](/resources/stacks/bento/bloblang/walkthrough) prior to proceeding.

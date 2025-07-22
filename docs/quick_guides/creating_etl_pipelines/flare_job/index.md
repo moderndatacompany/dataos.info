@@ -251,14 +251,14 @@ Once you have created the Workflow manifest file, it's time to apply it and crea
 
 Linter: Before running the workflow, make sure the manifest file is valid. Use the `-l` flag with the `apply` command: It will check for correct syntax, indentation, and output references.  Provide the file name with the complete path.
 
-```shell
+```bash
  dataos-ctl apply -f <file-path> -l
  
 ```
 
 **Sample output:**
 
-```shell
+```bash
 ✗ dataos-ctl apply -f /Users/Recipes/customertest.yaml -l
 ...
 ...
@@ -275,7 +275,7 @@ In case you encounter errors, check out [this](/resources/stacks/flare/optimizat
 
 Use the `apply` command to create a workflow from the YAML file. 
 
-```shell
+```bash
 dataos-ctl apply -f <file-path> -w <workspace-name>
 ```
 
@@ -291,7 +291,7 @@ INFO[0001] 🛠 workspace create(learn:user)...created
 ```
 **'apply` command with Workspace**
 
-```shell
+```bash
 ✗ dataos-ctl apply -f /Users/Recipes/customertest.yaml -w learn
 INFO[0000] 🛠 apply...                                   
 INFO[0000] 🔧 applying(learn) wf-test-customer:v1:workflow... 
@@ -307,13 +307,13 @@ Keep track of your workflow’s runtime information with these commands:
 
 Use the `get` command for the workflow information on CLI. This command will list the workflows created by you. 
 
-```shell
+```bash
 dataos-ctl -t workflow -w <workspace-name> get
 ```
 
 **Sample output**:
 
-```shell
+```bash
 ✗ dataos-ctl -t workflow -w learn get                                                           
 INFO[0000] 🔍 get...                                     
 INFO[0001] 🔍 get...complete                             
@@ -327,7 +327,7 @@ INFO[0001] 🔍 get...complete
 
 Use the `get runtime` command.
 
-```shell
+```bash
 dataos-ctl -i "wf-test-customer | v1      | workflow | learn" get runtime                                                   
 INFO[0000] 🔍 workflow...                                
 INFO[0001] 🔍 workflow...complete                        
@@ -356,7 +356,7 @@ INFO[0001] 🔍 workflow...complete
 
 You can see the updates for the workflow progress with -r in the *runtime* command.
 
-```shell
+```bash
 dataos-ctl -i "wf-test-customer | v1      | workflow | learn" get runtime -r
 ```
 
@@ -364,7 +364,7 @@ dataos-ctl -i "wf-test-customer | v1      | workflow | learn" get runtime -r
 
 Use the `logs` along with `node` information from the previous command output. These logs will help you to troubleshoot issues.
 
-```shell
+```bash
 dataos-ctl -i "wf-sports-test-customer | v1      | workflow | learn" --node test-customer-4rg9-0809113233-driver logs
 ```
 
@@ -378,10 +378,10 @@ After your workflow runs successfully, head over to DataOS’s Workbench to expl
 
 After your job is successfully run, don’t forget to delete it to keep your environment clean: Otherwise, it will stay floating in the environment for three days.
 
-```shell
+```bash
 dataos-ctl delete -f <file-path>
 ```
-```shell
+```bash
 dataos-ctl delete  -f /Users/Recipes/customertest.yaml 
 INFO[0000] 🗑 delete...                                  
 INFO[0001] 🗑 deleting(learn) wf-test-customer:workflow...nothing 

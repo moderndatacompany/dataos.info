@@ -68,7 +68,7 @@ monitor:
 
 Deploy the Equation Monitor using the following `apply` command.
 
-```shell
+```bash
 dataos-ctl resource apply {manifest-file-path}
 ```
 **3. Validate the created Equation Monitor**
@@ -77,12 +77,12 @@ Validate the creation of Equation monitor and check status using the `get` comma
 
 === "Command"
 
-    ```shell
+    ```bash
     dataos-ctl get -t monitor -w <WORKSPACE_NAME>
     ```
 === "Example"
 
-    ```shell
+    ```bash
     dataos-ctl get -t monitor -w curriculum
     ```
   
@@ -93,13 +93,13 @@ Get the runtime of the Equation Monitor using the `get runtime` command:
 
 === "Command"
 
-    ```shell
+    ```bash
     dataos-ctl get runtime -t monitor -n <MONITOR_NAME> -w <WORKSPACE_NAME> 
     ```
 
 === "Example"
 
-    ```shell
+    ```bash
     dataos-ctl get runtime -t monitor -n lens-monitor -w curriculum 
     ```
 
@@ -151,12 +151,12 @@ pager:
 
 Deploy the Pager using the following `apply` command:
 
-```shell
+```bash
 dataos-ctl resource apply -f {manifest-file-path}
 ```
 **3. Validate the creation of Equation Pager**
 
-```shell
+```bash
 dataos-ctl get -t pager -w <WORKSPACE_NAME>
 ```
 **4. Check the MS Teams for incident**
@@ -230,7 +230,7 @@ A status code of 200 indicates that you can proceed further.
 
 After validating the API endpoint, the next step is to apply the Monitor manifest file by executing the code below.
 
-```shell
+```bash
 dataos-ctl resource apply -f ${{path-of-your-manifest-file}}
 ```
 
@@ -238,11 +238,11 @@ dataos-ctl resource apply -f ${{path-of-your-manifest-file}}
 
 Validate or check the runtime of the Monitor by executing the below command.
 
-```shell
+```bash
 dataos-ctl get runtime -t monitor -w curriculum -n <MONITOR_NAME> -r 
 ```
 
-```shell
+```bash
 dataos-ctl get runtime -t monitor -w curriculum -n s-monitor1 -r         
 INFO[0000] 🔍 monitor...                                 
 INFO[0000] 🔍 monitor...complete                         
@@ -349,7 +349,7 @@ pager:
 
 Apply the manifest file for Pager Resource using following command in your terminal:
 
-```shell
+```bash
 dataos-ctl resource apply -f ${{path-of-your-manifest-file}}
 ```
 

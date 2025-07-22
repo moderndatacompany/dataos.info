@@ -296,18 +296,18 @@ Alternatively, you can also use the following command:
 To retrieve the list of all Databases created in the Workspace, add the `-a` flag to the command:
  
 === "Command"
-     ```shell
+     ```bash
      dataos-ctl resource get -t database -w ${workspace-name} -a
      ```
 
 === "Example"
-     ```shell
+     ```bash
      dataos-ctl resource get -t database -w curriculum -a
      ```
 
 ### **Getting Database logs**
 
-  ```shell
+  ```bash
   dataos-ctl resource get -t database -w curriculum -n products_db -d
   ```
 
@@ -323,12 +323,12 @@ There are 3 ways to delete Database(or any Resource):
 
     === "Command"
 
-        ```shell
+        ```bash
         dataos-ctl delete -t ${database} -n ${name of database} -w ${name of workspace}
         ```
     === "Example"
 
-        ```shell
+        ```bash
         dataos-ctl delete -t service -n products_db -w curriculum
         ```
 
@@ -338,12 +338,12 @@ There are 3 ways to delete Database(or any Resource):
 
     === "Command"
 
-        ```shell
+        ```bash
         dataos-ctl delete -i ${name of database in the output table from get status command}
         ```
     === "Example"
 
-        ```shell
+        ```bash
         dataos-ctl delete -i "products_db  | v1 | database | curriculum"
         ```
 
@@ -353,12 +353,12 @@ There are 3 ways to delete Database(or any Resource):
 
     === "Command"
 
-        ```shell
+        ```bash
         dataos-ctl delete -f ${file-path}
         ```
     === "Example"
 
-        ```shell
+        ```bash
         dataos-ctl delete -f home/iamgroot/database/database_product.yml
         ```
 
@@ -417,13 +417,13 @@ To validate the outcome, execute a request to the designated URL:
 
 === "Syntax"
 
-    ```shell
+    ```bash
     https://<dataos_fqdn>/<database_path>/<table_name>
     ```
 
 === "Example"
 
-    ```shell
+    ```bash
     https://liberal-donkey.dataos.app/products_db/api/v1/products
     ```
     #Expected Output
@@ -454,12 +454,12 @@ There are 3 ways to delete Service(or any Resource):
 
     === "Command"
 
-        ```shell
+        ```bash
         dataos-ctl delete -t ${service} -n ${name of service} -w{workspace}
         ```
     === "Example"
 
-        ```shell
+        ```bash
         dataos-ctl delete -t service -n products-service -w curriculum
         ```
 
@@ -467,12 +467,12 @@ There are 3 ways to delete Service(or any Resource):
 
     === "Command"
 
-        ```shell
+        ```bash
         dataos-ctl delete -i ${name of service in the output table from get status command}
         ```
     === "Example"
 
-        ```shell
+        ```bash
         dataos-ctl delete -i "products-service  | v1 | service | curriculum"
         ```
 
@@ -481,12 +481,12 @@ There are 3 ways to delete Service(or any Resource):
     
     === "Command"
 
-        ```shell
+        ```bash
         dataos-ctl delete -f ${file-path}
         ```
     === "Example"
 
-        ```shell
+        ```bash
         dataos-ctl delete -f home/iamgroot/database/service.yml
         ```
 

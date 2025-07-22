@@ -4,7 +4,7 @@ You run the following `product` sub commands by appending them to *dataos-ctl pr
 ## `apply`
 Apply products in the DataOS®
 
-```shell
+```bash
 
 Usage:
   dataos-ctl product apply [flags]
@@ -23,7 +23,7 @@ Flags:
 ## `delete`
 Delete products in the DataOS®
 
-```shell
+```bash
 
 Usage:
   dataos-ctl product delete [flags]
@@ -41,7 +41,7 @@ Flags:
 ## `get`
 Get products in the DataOS®
 
-```shell
+```bash
 
 Usage:
   dataos-ctl product get [flags]
@@ -64,7 +64,7 @@ Flags:
 
 **Examples:**
 
-```shell
+```bash
 ~ dataos-ctl product get -a
 INFO[0000] 🔍 product get...                             
 INFO[0001] 🔍 product get...complete                     

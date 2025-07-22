@@ -63,7 +63,7 @@ policy:
 
 To create a Policy Resource in the DataOS environment, open the DataOS CLI and use the apply command with the provided YAML file.
 
-```shell
+```bash
 dataos-ctl apply -f {{file path}}
 ```
 
@@ -105,7 +105,7 @@ policy:
 
 Open the DataOS CLI and use the apply command to create a Policy Resource in the DataOS environment.
 
-```shell
+```bash
 dataos-ctl apply -f access_policy_allowing.yaml
 ```
 
@@ -113,7 +113,7 @@ dataos-ctl apply -f access_policy_allowing.yaml
 
 To allow a user to access the sample dataset, add the custom tag using the following CLI command. The custom tag will be listed in the output for the user.
 
-```shell
+```bash
 dataos-ctl user tag add -i 'iamgroot' -t 'roles:id:test:user'
 
 # Expected Output

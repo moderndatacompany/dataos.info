@@ -43,7 +43,7 @@ pulsar: # optional
 
 **Command**
 
-```shell
+```bash
 dataos-ctl dataset create -a ${{udl-address}} -f ${{yaml-file-path}}
 ```
 
