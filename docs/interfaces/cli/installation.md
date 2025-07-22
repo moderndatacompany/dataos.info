@@ -54,7 +54,7 @@ Follow the steps enumerated below to install the Command Line Interface. Check t
 
 3. Download the DataOS CLI binary using the below command (replace the **`ARCH`** </span> value of the processor and the **`CLI_VERSION`** </span>to be installed):
 
-    ```shell
+    ```bash
     curl --silent --output dataos-ctl-{{ARCH}}.tar.gz --location --request GET "https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-{{ARCH}}.tar.gz&dir=cli-apps-{{CLI_VERSION}}&apikey=$PRIME_APIKEY"
     ```
     
@@ -62,13 +62,13 @@ Follow the steps enumerated below to install the Command Line Interface. Check t
 
     A Mac user with intel-chip, installing the 2.8 version of the CLI would input the below command.
     
-    ```shell
+    ```bash
     curl --silent --output dataos-ctl-darwin-amd64.tar.gz --location --request GET "https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-darwin-amd64.tar.gz&dir=cli-apps-2.8&apikey=$PRIME_APIKEY"
     ```
 
 4. *Optional step*: Download the checksum file using the following command (replace the **`ARCH`** value of the processor and the **`CLI_VERSION`** to be installed):
 
-    ```shell
+    ```bash
     curl --silent --output dataos-ctl-{{ARCH}}.tar.gz.sha256sum --location --request GET "https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-{{ARCH}}.tar.gz.sha256sum&dir=cli-apps-{{CLI_VERSION}}&apikey=$PRIME_APIKEY"
     ```
 
@@ -76,7 +76,7 @@ Follow the steps enumerated below to install the Command Line Interface. Check t
 
     A Mac user with an intel-chip (identified as  **darwin-amd64** for the processor), installing the **2.8 version of the CLI** would input the below command.
 
-    ```shell
+    ```bash
     
     curl --silent --output dataos-ctl-darwin-amd64.tar.gz.sha256sum --location --request GET "https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-darwin-amd64.tar.gz.sha256sum&dir=cli-apps-2.8&apikey=$PRIME_APIKEY"
     ```
@@ -84,41 +84,41 @@ Follow the steps enumerated below to install the Command Line Interface. Check t
 
 5. *Optional step*: Validate that the zip has not been tampered with.
 
-    ```shell
+    ```bash
     shasum -a 256 -c dataos-ctl-{{Arch}}.tar.gz.sha256sum
     ```
     Example:
 
-    ```shell
+    ```bash
     shasum -a 256 -c dataos-ctl-darwin-amd64.tar.gz.sha256sum
     ```
 
     If the zip file has been downloaded as expected, you should get the following output:
 
-    ```shell
+    ```bash
     dataos-ctl-darwin-amd64.tar.gz: OK
     ```
 
 6. Extract the dataos-ctl binary.
 
-    ```shell
+    ```bash
     tar -xvf dataos-ctl-{{ARCH}}.tar.gz
     ```
     Example:
 
-    ```shell
+    ```bash
     tar -xvf dataos-ctl-darwin-amd64.tar.gz
     ```
     Here is the expected output:
 
-    ```shell
+    ```bash
     x darwin-amd64/
     x darwin-amd64/dataos-ctl
     ```
 
 7. Run the following command to place the extracted dataos-ctl in a directory that is in your PATH. 
 
-    ```shell
+    ```bash
     export PATH=$PATH:$HOME/{{dir-name}}
     ```
     You will get the directory name from the output of the previous command. 
@@ -240,7 +240,7 @@ You have successfully installed the CLI, now the next step is to [initialize](/i
 5. *Optional step*: Validate that the zip has not been tampered with. Update the **`ARCH`** value in the command.
 
 
-    ```shell
+    ```bash
     
     shasum -a 256 -c dataos-ctl-linux-{{ARCH}}.tar.gz.sha256sum
     ```
@@ -254,7 +254,7 @@ You have successfully installed the CLI, now the next step is to [initialize](/i
 6. Extract the dataos-ctl binary. Update the **`ARCH`** value in the command
 
 
-    ```shell
+    ```bash
     
     tar -xvf dataos-ctl-linux-{{ARCH}}.tar.gz
     ```
@@ -268,7 +268,7 @@ You have successfully installed the CLI, now the next step is to [initialize](/i
 
 7. Run the following command to place the extracted dataos-ctl in a directory that is in your PATH.
 
-    ```shell
+    ```bash
     export PATH=$PATH:$HOME/linux-{{ARCH}}
     ```
     

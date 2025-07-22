@@ -309,7 +309,7 @@ secret:
     
 <b>Apply the Secret YAML</b>
     
-```shell
+```bash
 dataos-ctl apply -f ${{secret-yaml-file-path}} -w ${{workspace}}
 ```
     
@@ -486,7 +486,7 @@ For in-depth information about the attributes of the Operator-specific section, 
 
 After creating the YAML configuration file for the Operator Resource, it's time to apply it to instantiate the Resource-instance in the DataOS environment. To apply the Operator YAML file, utilize the [`apply`](/interfaces/cli/command_reference/#apply) command.
 
-```shell
+```bash
 dataos-ctl apply -f ${{operator yaml manifest file path}}
 ```
 
@@ -496,7 +496,7 @@ To ensure that your Operator has been successfully created, you can verify it in
 
 Check the name of the newly created Operator in the list of Operators where you are named as the owner:
 
-```shell
+```bash
 dataos-ctl get -t operator
 
 # Expected Output
@@ -510,7 +510,7 @@ INFO[0000] 🔍 get...complete
 
 Alternatively, retrieve the list of all Operators created in your organization:
 
-```shell
+```bash
 dataos-ctl get -t operator -a
 ```
 
@@ -567,7 +567,7 @@ When creating Resources with this approach, the Operator's JSON Schema plays a v
 
 To trigger a pipeline run, you can apply the Resource YAML using the following command:
 
-```shell
+```bash
 dataos-ctl apply -f ${{resource-yaml-file-path}} -w ${{workspace}}
 
 # Sample
@@ -576,7 +576,7 @@ dataos-ctl apply -f ./resources/adf-operator/resource.yaml -w public
 
 #### **Get Status of Pipeline Run**
 
-```shell
+```bash
 dataos-ctl get -t resource -w ${{workspace}}
 
 # Sample
@@ -619,13 +619,13 @@ Once we apply we can go over on the Azure Data Factory UI.
 
 While the pipeline is in progress, you have the capability to capture metadata from Azure Data Factory back into DataOS Metis. The process of metadata capture is orchestrated through the Operator Component and NATS Cluster. While coding the Operator, you have the complete complete control over determining which specific state information from the external cluster, in this case, Azure Cluster, should be retrieved and synchronized with DataOS. To get information about which information is being synchronized, utilize the following command:
 
-```shell
+```bash
 dataos-ctl get -t resource -w public -n ${{external-resource-name}} -d
 ```
 
 Here, `${{external-resource-name}}` should be replaced with the relevant identifier, such as the name of the specific external resource (Resource) run:
 
-```shell
+```bash
 dataos-ctl get -t resource -w public -n pipeline-run-1 -d
 ```
 
@@ -633,7 +633,7 @@ dataos-ctl get -t resource -w public -n pipeline-run-1 -d
 
 If you need to delete an operator, you first need to delete all the workloads or Resources that are dependent on it. Once it's done, use the `delete` command to remove the specific operator from the DataOS instance:
 
-```shell
+```bash
 dataos-ctl delete -t operator -n ${{name of operator}}
 ```
 

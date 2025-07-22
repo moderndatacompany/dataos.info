@@ -11,7 +11,7 @@ Imagine you're working on a DataOS platform with varying traffic loads. One day,
 ### **`operate`**
 Operate the DataOS®
 
-```shell
+```bash
 
 Usage:
   dataos-ctl operate [command]
@@ -202,7 +202,7 @@ INFO[0004] : metis http://localhost:8081
 
 Interact with the FastBase Depot in the DataOS®
 
-```shell
+```bash
 
 Usage:
   dataos-ctl fastbase [command]
@@ -226,7 +226,7 @@ You run the following `fastbase` sub commands by appending them to *dataos-ctl f
 ### `namespace`
 Interact with namespaces in the DataOS® FastBase
 
-```shell
+```bash
 
 Usage:
   dataos-ctl fastbase namespace [command]
@@ -243,7 +243,7 @@ Flags:
 #### **`list`**
 List namespaces in the DataOS® FastBase
 
-```shell
+```bash
 
 Usage:
   dataos-ctl fastbase namespace list [flags]
@@ -255,7 +255,7 @@ Flags:
 ### `tenant`
 Interact with tenants in the DataOS® FastBase
 
-```shell
+```bash
 
 Usage:
   dataos-ctl fastbase tenant [command]
@@ -272,7 +272,7 @@ Flags:
 #### **`list`**
 List tenants in the DataOS® FastBase
 
-```shell
+```bash
 
 Usage:
   dataos-ctl fastbase tenant list [flags]
@@ -284,7 +284,7 @@ Flags:
 ### `topic`
 Interact with topics in the DataOS® FastBase
 
-```shell
+```bash
 
 Usage:
   dataos-ctl fastbase topic [command]
@@ -304,7 +304,7 @@ Flags:
 
 #### **`consume`**
 Consume Messages from a Topic in the DataOS® FastBase
-```shell
+```bash
 
 Usage:
   dataos-ctl fastbase topic consume [flags]
@@ -319,7 +319,7 @@ Flags:
 
 ### **`list`**
 List topics in the DataOS® FastBase
-```shell
+```bash
 
 Usage:
   dataos-ctl fastbase topic list [flags]
@@ -331,7 +331,7 @@ Flags:
 
 #### **`permissions`**
 List Permissions of a Topic in the DataOS® FastBase
-```shell
+```bash
 
 Usage:
   dataos-ctl fastbase topic permissions [flags]
@@ -344,7 +344,7 @@ Flags:
 #### **`read`**
 Read Message from a Topic in the DataOS® FastBase
 
-```shell
+```bash
 
 Usage:
   dataos-ctl fastbase topic read [flags]
@@ -364,7 +364,7 @@ In Fastbase, topics are the endpoints for publishing and consuming messages. The
 
 - List tenants
 
-```shell
+```bash
 ➜  ~ dataos-ctl fastbase tenant list
 INFO[0000] 🔍 list...                                    
 INFO[0003] 🔍 list...complete                            
@@ -379,7 +379,7 @@ INFO[0003] 🔍 list...complete
 
 ```
 - List namespaces - You need to specify tenant for the namespace
-```shell
+```bash
  ~ dataos-ctl fastbase namespace -t public list
 INFO[0000] 🔍 list...                                    
 INFO[0002] 🔍 list...complete                            
@@ -392,7 +392,7 @@ INFO[0002] 🔍 list...complete
 
 - List topics
 
-```shell
+```bash
  ~ dataos-ctl fastbase topic -n public/default list
 INFO[0000] 🔍 list...                                    
 INFO[0001] 🔍 list...complete                            
@@ -412,7 +412,7 @@ INFO[0001] 🔍 list...complete
 
 - Consume Topic
 
-```shell
+```bash
 ~ dataos-ctl fastbase topic consume -p -s -t persistent://public/default/random_users_test_01
 INFO[0000] 🔍 consume...                                 
 WARN[0002] code: 404 reason: Subscription not found     
@@ -432,7 +432,7 @@ INFO[0004] Created consumer                              consumerID=1 name=fyita
 
 - Read topics
 
-```shell
+```bash
 ~ dataos-ctl fastbase topic read -p -t persistent://public/default/random_users_test_01
 INFO[0000] 🔍 read...                                    
 INFO[0000] Connecting to broker                          remote_addr="pulsar+ssl://tcp.fun-bluegill.dataos.app:6651"

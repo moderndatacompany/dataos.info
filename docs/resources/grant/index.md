@@ -142,13 +142,13 @@ Upon applying the grant, administrators can track and manage grant requests thro
 
 === "Syntax"
 
-      ```shell
+      ```bash
       dataos-ctl resource apply -f ${manifest-file-path} 
       ```
 
 === "Example"
 
-      ```shell
+      ```bash
       dataos-ctl resource apply -f grant.yaml  
       #Expected Output 
       INFO[0000] 🛠 apply...                                   
@@ -184,13 +184,13 @@ To check the successful creation of Grant in DataOS Workspace use the following 
 
 - **Check the Grant in a Workspace:** Use the following command to list the grant
 
-```shell
+```bash
 dataos-ctl resource get -t grant 
 ```
 
 - **Retrieve all Databases in a Workspace:** To retrieve the list of all Grants created, add the `-a` flag to the command:
 
-```shell
+```bash
 dataos-ctl resource get -t grant -a
 ```
 
@@ -198,7 +198,7 @@ dataos-ctl resource get -t grant -a
 
 When a Grant creation encounter errors, data developers can employ various tactics to diagnose and resolve issues effectively using command:
 
-```shell
+```bash
 dataos-ctl get -t grant -n test-user-runas-test-dev1 -d
 ```
 
@@ -208,18 +208,18 @@ To delete Grant that are no longer in use the following methods:
 
 === "Method1"
 
-    ```shell
+    ```bash
     dataos-ctl delete -t ${grant} -n ${name of grant}
     ```
 
 === "Method2"
 
-    ```shell
+    ```bash
     dataos-ctl delete -i ${name to workspace the in the output table from get status command}
     ```
 
 === "Method3"
 
-    ```shell
+    ```bash
     dataos-ctl delete -f ${file-path}
     ```

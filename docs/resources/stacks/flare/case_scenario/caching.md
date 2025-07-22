@@ -13,7 +13,7 @@ Replace `<TABLE_NAME>` placeholder with table name you wish to cache.
 
 ## Flare workflow manifest for caching the Iceberg table
 
-```yaml hl_lines hl_lines= "46-47", "66-67"
+```yaml hl_lines="46 47"
 version: v1
 name: resource-usage-read-pulsar
 type: workflow

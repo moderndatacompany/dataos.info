@@ -53,7 +53,7 @@ workflow:
 
 Use the CLI to apply the Scanner Workflow:
 
-```shell
+```bash
 dataos-ctl apply -f <scanner_workflow yaml file>
 ```
 

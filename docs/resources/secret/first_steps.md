@@ -81,22 +81,22 @@ For more information about the various attributes in Secret specific section, re
 To apply the Secret manifest, utilize the DataOS [CLI](/interfaces/cli/) by explicitly specifying the path to the manifest file and the designated workspace. The apply command is provided below:
 
 === "Command"
-    ```shell
+    ```bash
     dataos-ctl apply -f ${path-to-secret-yaml} -w ${name-of-the-workspace}
     ```
 === "Example Usage"
-    ```shell
+    ```bash
     dataos-ctl apply -f mysecrets.yaml -w sandbox
     ```
 
 Alternative to the above apply command.
 
 === "Command"
-    ```shell
+    ```bash
     dataos-ctl resource apply -f ${path/secret.yaml} -w ${name of the workspace}
     ```
 === "Example Usage"
-    ```shell
+    ```bash
     dataos-ctl resource apply -f mysecrets.yaml -w sandbox
     ```
 
@@ -113,13 +113,13 @@ To validate the proper creation of the Secret Resource within the DataOS environ
 
 === "Command"
 
-    ```shell
+    ```bash
     dataos-ctl get -t secret -w ${workspace}
     ```
 
 === "Example Usage"
 
-    ```shell
+    ```bash
     dataos-ctl get -t secret -w sandbox
 
     Expected Output:
@@ -135,13 +135,13 @@ To validate the proper creation of the Secret Resource within the DataOS environ
 
 === "Command"
 
-    ```shell
+    ```bash
     dataos-ctl resource get -t secret -w ${workspace}
     ```
 
 === "Example Usage"
 
-    ```shell
+    ```bash
     dataos-ctl resource get -t secret -w sandbox
 
     Expected Output:
@@ -166,25 +166,25 @@ To remove the Secret Resource from the DataOS environment, utilize the `delete` 
 
 === "Command"
 
-    ```shell
+    ```bash
     dataos-ctl delete -t {{resource-type}} -n {{resource-name}} -w ${workspace}
     ```
 
 === "Example Usage"
 
-    ```shell
+    ```bash
     dataos-ctl delete -t secret -n mysecret -w sandbox
     ```
 **Altenative command:**
 === "Command"
 
-    ```shell
+    ```bash
     dataos-ctl resource delete -t {{resource-type}} -n {{resource-name}} -w ${workspace}
     ```
 
 === "Example Usage"
 
-    ```shell
+    ```bash
     dataos-ctl resource delete -t secret -n mysecret -w sandbox
     ```
 
@@ -192,13 +192,13 @@ To remove the Secret Resource from the DataOS environment, utilize the `delete` 
 
 === "Command"
 
-    ```shell
+    ```bash
     dataos-ctl delete -i {{resource-name:version:resource-type}}
     ```
 
 === "Example Usage"
 
-    ```shell
+    ```bash
     dataos-ctl delete -i mysecret:v1:secret
     ```
 

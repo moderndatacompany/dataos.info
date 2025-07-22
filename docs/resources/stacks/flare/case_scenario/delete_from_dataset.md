@@ -3,16 +3,14 @@
 <!-- > Supported in Flare Stack Version `flare:4.0` only.
 >  -->
 
-The `delete_from_dataset` [action](/resources/stacks/flare/configurations/#delete_from_dataset) removes data from tables upon a specified filter. There could be myriad such filter condition, two such scenarios are provided below.
+The [`delete_from_dataset` action](/resources/stacks/flare/configurations/#delete_from_dataset) removes data from tables upon a specified filter. There could be myriad such filter condition, two such scenarios are provided below.
 
 !!! info  
 
     `deletefromdataset` only remove data files,metadata files (like snapshots, manifests, etc.) are retained for audit and rollback purposes until they are explicitly cleaned up.
  
 
-## Code snippet
-
-### **Delete from single dataset**
+## **Delete from single dataset**
 
 The below case scenario depicts data deletion based on a filter. To accomplish this, we make use of Flare Stack's `delete_from_dataset` action upon the input dataset `inputDf` and delete from the dataset upon the filter condition provided in `deleteWhere` property. The YAML for the same is provided below:
 
@@ -46,7 +44,7 @@ workflow: # Workflow Specific Section
                 deleteWhere: "target.state_code = 'AL'" # Delete where the provided condition is true
 ```
 
-### **Delete from multiple dataset**
+## **Delete from multiple dataset**
 
 The below case scenario also depicts data deletion based on a filter.
 
