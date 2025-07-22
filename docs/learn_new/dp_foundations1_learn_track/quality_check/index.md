@@ -1,7 +1,7 @@
 # Implementing Quality Checks
 
 !!! info "Overview"
-    Ensuring high data quality is critical for delivering trustworthy insights and supporting confident business decisions. As a Data Product developer, you’ll often face challenges like missing values, invalid formats, and inconsistent records. Proactively detecting and addressing these issues is key to building reliable data products.
+    Ensuring high data quality is critical for delivering trustworthy insights and supporting confident business decisions. As a Data Product developer, you’ll often face challenges like missing values, invalid formats, and inconsistent records. Proactively detecting and addressing these issues is key to building reliable Data Products.
 
 With Soda Stack in DataOS, you can implement robust, flexible quality checks using Soda Checks Language (SodaCL). These checks validate key metrics such as accuracy, completeness, freshness, and uniqueness directly within your workflows.
 

@@ -186,15 +186,15 @@ lens:
         memory: 2548Mi
 
 # Iris configuration 
-  iris: #(optional)
-    logLevel: info # Log level for Iris (optional)
-    resources: # CPU and memory resource specifications for the iris board (optional)
-      requests:
-        cpu: 200m
-        memory: 256Mi
-      limits:
-        cpu: 1600m
-        memory: 2240Mi
+  # iris: #(optional)
+  #   logLevel: info # Log level for Iris (optional)
+  #   resources: # CPU and memory resource specifications for the iris board (optional)
+  #     requests:
+  #       cpu: 200m
+  #       memory: 256Mi
+  #     limits:
+  #       cpu: 1600m
+  #       memory: 2240Mi
 # Metric configuration 
   metric:                         #(optional)
     logLevel: info # Log level for metrics (optional)
@@ -209,7 +209,7 @@ A typical deployment of Lens includes the following components:
 | **API** | Configures an API service that processes incoming requests, connecting to the database for raw data. A single instance is provisioned by default, but the system can auto-scale to add more instances based on workload demands, with a recommendation of one instance for every 5-10 requests per second. |
 | **Worker** | When `LENS2_REFRESH_WORKER` is set to true, a Refresh Worker manages and refreshes the memory cache in the background, keeping refresh keys for all data models up-to-date. It invalidates the in-memory cache but does not populate it, which is done lazily during query execution. |
 | **Router** | Configures a Router Service responsible for receiving queries from Lens, managing metadata, and handling query planning and distribution to the workers. Lens communicates only with the Router, not directly with the workers. |
-| **Iris** | Manages interaction with Iris dashboards. |
+<!-- | **Iris** | Manages interaction with Iris dashboards. | -->
 | **Metrics** | Populates the metrics in the metric section of the Data Product Hub. |
 
 

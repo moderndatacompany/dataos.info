@@ -22,9 +22,9 @@ As we understand that Data Product is a ready-to-use, reliable, and governed dat
 
     1. **Abstracting complexity**:  It abstract representations of the data designed for ease of use.
     2. **Providing insights**: Enables easy understanding of key metrics and relationships. Metrics are  derived from the Semantic Model and represent key business indicators.
-    3. **Facilitating Interaction**: Serves as a user-friendly interface for data exploration.
+    3. **Facilitating interaction**: Serves as a user-friendly interface for data exploration.
 
-- **Data Quality**: Coverage on accuracy, freshness, schema, and completeness for its intended use.
+- **Data quality**: Coverage on accuracy, freshness, schema, and completeness for its intended use.
 
 - **Access options**: Consumption portsfor exposing data through APIs or BI tools for downstream applications.
 
@@ -60,7 +60,7 @@ After discovering the 'Product Affinity' Data Product, follow these steps to exp
         
         ![view_model.png](/learn_new/dp_consumer_learn_track/view_dp_info/view_model.png)
         
-    - **Metrics Details**: On the Metrics tab, you’ll see how each metric is calculated from the input datasets. For example, the “Cross Sell Opportunity Score” metric is derived from the product and purchase datasets.
+    - **Metrics details**: On the Metrics tab, you’ll see how each metric is calculated from the input datasets. For example, the “Cross Sell Opportunity Score” metric is derived from the product and purchase datasets.
     
         ![view_metrics.png](/learn_new/dp_consumer_learn_track/view_dp_info/view_metrics.png)
         

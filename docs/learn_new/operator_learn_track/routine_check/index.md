@@ -2,7 +2,7 @@
 
 In this module, you’ll learn how to manage Kubernetes and Pulsar configurations to keep DataOS running smoothly. These tools are key to ensuring the stability and scalability of the platform. You’ll gain hands-on experience with essential commands, resource adjustments, and monitoring techniques for troubleshooting, optimizing, and maintaining your DataOS infrastructure.
 
-## Scenario 
+## 📘 Scenario 
 
 Imagine you're working on a DataOS platform with varying traffic loads. One day, the system experiences a sudden surge in traffic, and resources need to be scaled quickly to handle the load. Additionally, you're dealing with a persistent issue in the `poros` namespace affecting the platform’s performance. With the help of Kubernetes and Pulsar, you need to troubleshoot the issue, adjust resources, and ensure everything runs smoothly. Follow the commands given in this topic, to manage these tasks and maintain a robust, efficient platform.
 
