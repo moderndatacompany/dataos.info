@@ -31,14 +31,14 @@ The below points outline the high-level steps involved in establishing a connect
 
 Before commencing, ascertain the existence of a Steampipe Stack within the DataOS instance. Utilize the [`get`](/interfaces/cli/command_reference/#get) command to list all available the Stacks within the DataOS instance:
 
-```shell
+```bash
 dataos-ctl get -t stack -a
 ```
 
 <details>
 <summary>Sample</summary>
     
-```shell
+```bash
 dataos-ctl get -t stack -a          
 # Expected Output
 INFO[0000] 🔍 get...                                     
@@ -108,7 +108,7 @@ A [Service](/resources/service/) is a long-running process designed to handle an
     
     The configuration for the `csv.spc` is provided below:
     
-    ```shell
+    ```bash
     connection "csv" {
       plugin = "csv"
     
@@ -208,7 +208,7 @@ service:
 
 Once you have created the Service manifest, [`apply`](/interfaces/cli/command_reference/#apply) it using the DataOS Command Line Interface (CLI) to instantiate a Service Resource instance. Execute the following command:
 
-```shell
+```bash
 dataos-ctl apply -f ${{file-path}} -w ${{workspace-name}}
 ```
 
@@ -216,7 +216,7 @@ dataos-ctl apply -f ${{file-path}} -w ${{workspace-name}}
 
 Validate the Service Resource instance creation by utilizing the [`get`](/interfaces/cli/command_reference/#get) command:
 
-```shell
+```bash
 dataos-ctl get -t service -w ${{workspace-name}}
 ```
 
@@ -284,7 +284,7 @@ depot:
 
 To create Depot Resource instance within the DataOS environment, use the [`apply`](/interfaces/cli/command_reference/#apply) command as shown below:
 
-```shell
+```bash
 dataos-ctl apply -f ${{depot manifest file path}}
 ```
 
@@ -292,7 +292,7 @@ dataos-ctl apply -f ${{depot manifest file path}}
 
 Use the [`get`](/interfaces/cli/command_reference/#get) command to verify whether the depot is in an active state or not.
 
-```shell
+```bash
 dataos-ctl get -t depot
 ```
 
@@ -304,7 +304,7 @@ Prior to directing queries towards a [Cluster](/resources/cluster/) through the 
 
 Execute the following command on the DataOS CLI to port forward the servicePort to a locally designated listenPort:
 
-```shell
+```bash
 dataos-ctl -t service -w public -n ${{service name}} tcp-stream --servicePort 9193 --listenPort ${{valid localhost port number}}
 ```
 
@@ -312,7 +312,7 @@ dataos-ctl -t service -w public -n ${{service name}} tcp-stream --servicePort 91
 
 Utilize the DataOS `usql` command to query the Database:
 
-```shell
+```bash
 dataos-ctl usql "postgres://localhost:${{username}}@${{password}}"
 
 # Sample Command
@@ -367,7 +367,7 @@ cluster:
 
 To create Cluster Resource instance within the DataOS environment, use the [`apply`](/interfaces/cli/command_reference/#apply) command as shown below:
 
-```shell
+```bash
 dataos-ctl apply -f ${{cluster manifest file path}} -w ${{workspace name}}
 ```
 
@@ -375,7 +375,7 @@ dataos-ctl apply -f ${{cluster manifest file path}} -w ${{workspace name}}
 
 Validate the Cluster Resource instance creation by utilizing the [`get`](/interfaces/cli/command_reference/#get) command:
 
-```shell
+```bash
 dataos-ctl get -t cluster -w ${{workspace-name}}
 ```
 

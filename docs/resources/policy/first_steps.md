@@ -313,7 +313,7 @@ After creating the manifest file for the Policy Resource, it's time to apply it 
 
 === "Command"
 
-    ```shell
+    ```bash
     dataos-ctl resource apply -f ${yaml-file-path} -w ${workspace-name}
     ```
 
@@ -321,7 +321,7 @@ After creating the manifest file for the Policy Resource, it's time to apply it 
 
 === "Example"
 
-    ```shell
+    ```bash
     dataos-ctl resource apply -f resources/policy.yaml -w public
     # Expected Output
     INFO[0000] 🛠 apply...                                   
@@ -339,24 +339,24 @@ To confirm that your Policy has been successfully created, you can verify it usi
 **Check Policy in a Workspace:** Use the following command to list the Policy created by you in a specific Workspace:
 
 === "Command"
-     ```shell
+     ```bash
      dataos-ctl get -t policy -w ${workspace-name}
      ```
 
 === "Example"
-     ```shell
+     ```bash
      dataos-ctl get -t policy -w curriculum
      ```
 
 **Retrieve All Policy in a Workspace:** To retrieve the list of all Policy created in the Workspace, add the `-a` flag to the command:
 
 === "Command"
-     ```shell
+     ```bash
      dataos-ctl get -t policy -w curriculum -a
      ```
 
 === "Example"
-     ```shell
+     ```bash
      dataos-ctl get -t policy -w curriculum -a
      ```
 
@@ -372,11 +372,11 @@ When a Policy encounters errors, data developers can employ various tactics to d
     - Retrieve detailed information about the Policy to gain deeper insights into its configuration and execution status. This can be accomplished using the following command:
 
         === "Command"
-            ```shell
+            ```bash
             dataos-ctl resource get -t policy -w ${workspace-name} -n ${policy-name} -d
             ```
         === "Example"
-            ```shell
+            ```bash
             dataos-ctl resource get -t policy -w public -n access_policy -d
             ```
 

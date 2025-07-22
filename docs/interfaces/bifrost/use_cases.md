@@ -82,19 +82,19 @@ For instance:
 
 - To grant access to the entire depot, dataset, and tables, use the following address format:
 
-```shell
+```bash
 dataos://******
 ```
 
 - If access is to be restricted to specific tables, utilize the address format below:
 
-```shell
+```bash
 dataos://icebase:emr_healthcare/*
 ```
 
 - To grant access specifically on icebase, employ the address format demonstrated:
 
-```shell
+```bash
 dataos://icebase:******
 ```
 

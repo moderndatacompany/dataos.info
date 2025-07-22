@@ -5,7 +5,7 @@ You run the following `develop` commands by appending them to *dataos-ctl develo
 Generate example manifests
 
 
-```shell
+```bash
 
 Usage:
   dataos-ctl develop generate [flags]
@@ -20,7 +20,7 @@ Flags:
 ## `get`
 Get running development containers
 
-```shell
+```bash
 
 Usage:
   dataos-ctl develop get [flags]
@@ -32,7 +32,7 @@ Flags:
 ## `schema`
 JSON Schema visibility for DataOS® resource types and apis
 
-```shell
+```bash
 
 Usage:
   dataos-ctl develop schema [command]
@@ -48,7 +48,7 @@ Flags:
 ### **`generate`**
 JSON Schema generation for DataOS® resources
 
-```shell
+```bash
 
 Usage:
   dataos-ctl develop schema generate [flags]
@@ -61,7 +61,7 @@ Flags:
 ### **`get`**
 JSON Schema retrieval for DataOS® resources
 
-```shell
+```bash
 
 Usage:
   dataos-ctl develop schema get [command]
@@ -77,7 +77,7 @@ Flags:
 #### **`api`**
 JSON Schema for DataOS® apis
 
-```shell
+```bash
 
 Usage:
   dataos-ctl develop schema get api [flags]
@@ -91,7 +91,7 @@ Flags:
 #### **`resource`**
 JSON Schema retrieval for DataOS® resources
 
-```shell
+```bash
 
 
 Usage:
@@ -107,7 +107,7 @@ Flags:
 
 ## `stack`
 Stack specific commands
-```shell
+```bash
 
 Usage:
   dataos-ctl develop stack [command]
@@ -123,7 +123,7 @@ Flags:
 ### **`image-pull-secret`**
 Get stack image pull secret
 
-```shell
+```bash
 
 Usage:
   dataos-ctl develop stack image-pull-secret [flags]
@@ -135,7 +135,7 @@ Flags:
 
 ### **`versions`**
 Get stack versions
-```shell
+```bash
 
 Usage:
   dataos-ctl develop stack versions [flags]
@@ -149,19 +149,19 @@ Flags:
 
 <!-- ## `start`
 
-```shell
+```bash
 
 ```
 
 ## `stop`
 
-```shell
+```bash
 
 ```
 
 ## `types`
 
-```shell
+```bash
 
 ```
  -->

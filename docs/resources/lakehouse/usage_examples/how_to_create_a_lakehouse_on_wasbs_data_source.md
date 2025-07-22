@@ -46,7 +46,7 @@ instance-secret:
 
 Apply both the Instance-secret manifest by using the below command.
 
-```shell
+```bash
 dataos-ctl resource apply -f ${file-path}
 # or
 dataos-ctl apply -f ${instance-secret-manifest-file-path}
@@ -96,6 +96,6 @@ lakehouse:
 
 Finally, apply the Lakehouse manifest to instantiate your Lakehouse Resource. Ensure all the placeholders `${}` in the manifest are replaced with actual values before applying.
 
-```shell
+```bash
 dataos-ctl apply -f ${lakehouse-manifest-file-path} -w ${workspace-name}
 ```

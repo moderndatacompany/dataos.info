@@ -98,7 +98,7 @@ The Volume-specific section of a manifest file encompasses attributes specific t
 
 After creating the Volume manifest file, it's time to apply it to instantiate the Resource-instance in the DataOS environment. To apply the manifest file, utilize the  `apply`  command.
 
-```shell
+```bash
 dataos-ctl resource apply -f ${{yaml config file path}} -w ${{workspace}}
 
 # Sample
@@ -111,13 +111,13 @@ To ensure that your Volume has been successfully created, you can verify it in t
 
 Check the name of the newly created Volume in the list of Volumes created by you in a specific Workspace:
 
-```shell
+```bash
 dataos-ctl get -t volume -w ${{workspace}}
 ```
 
 Alternatively, retrieve the list of all Volumes created in your organization:
 
-```shell
+```bash
 dataos-ctl get -t volume -w ${{workspace}} -a
 ```
 
@@ -127,7 +127,7 @@ You can also access the details of any created Volume through the DataOS GUI in 
 
 Use the `delete` command to remove the specific Volume Resource-instance from the DataOS environment:
 
-```shell
+```bash
 # METHOD 1
 dataos-ctl delete -t volume -n ${{name of Volume}}
 # Sample
