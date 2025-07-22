@@ -60,6 +60,6 @@ The learning track walks you through each stage of the data product lifecycle wi
 
 ## ✅ Start learning 
 
-:rocket: [Start learning the modules here](/link)
+!!! abstract "Ready to Dive In?" 
+    :rocket: [Coming soon: More advanced scenarios and real-world design patterns.]()
 
-:hourglass: Coming soon: More advanced scenarios and real-world design patterns.

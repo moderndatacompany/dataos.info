@@ -155,24 +155,27 @@ stackSpec:
       # ...other input attributes
 ```
 <aside class="callout">
-🗣️ When using the Trino engine (Minerva) for compute, ensure that table and schema names are provided in lowercase format. For example:
+🗣️ When using the Trino engine (Minerva) for compute, ensure that table and schema names in your dataset address are provided in lowercase format. For example:
 
 ```yaml
 dataset: dataos://sstdepot:ltv/visit_copy
 ```
 
-Trino stores information schema in lowercase, so it is unable to properly parse uppercase values for table and schema names. If you require the uppercase address format like this `dataos://sstdepot:LTV/VISIT_COPY`, you can query directly through the Snowflake engine by removing the following snippet from your YAML:
+Trino stores and resolves schema and table identifiers in lowercase. Using uppercase characters (e.g., `dataos://sstdepot:LTV/VISIT_COPY`) may result in query failures.
+
+When using a data source that provides its own native processing engine (such as Snowflake, BigQuery, etc.) remove the following snippet from your YAML and specify the dataset address as needed:
 
 ```yaml
 options:
   engine: minerva
   clusterName: miniature
 ```
+
 </aside>
 
 #### **Defining Soda checks**
 
-Soda Stack utilzies SodaCL, a YAML-based, low-code, human-readable, domain-specific language for data reliability and data quality management. SodaCL enables data developers to write checks for data quality, then run a scan of the data in the data source to execute those checks.
+Soda Stack utilizes SodaCL, a YAML-based, low-code, human-readable, domain-specific language for data reliability and data quality management. SodaCL enables data developers to write checks for data quality, then run a scan of the data in the data source to execute those checks.
 
 <div style="text-align: center;">
   <img src="/resources/stacks/soda/soda_check.png" alt="SODA" style="border:1px solid black; width: 80%; height: auto;">

@@ -1,7 +1,7 @@
 # Understanding Business Goals
 
 !!! info "Overview"
-    This topic provides a structured approach to identify the **North Star Metric** for your business and develop a consumer-aligned data product by working backward from business goals to source data. Each step builds on the previous one, ensuring a clear alignment between business objectives and technical execution.
+    This topic provides a structured approach to identify the **North Star Metric** for your business and develop a consumer-aligned Data Product by working backward from business goals to source data. Each step builds on the previous one, ensuring a clear alignment between business objectives and technical execution.
 
 ## Quick Concepts
 
@@ -12,7 +12,7 @@ So, you start by clearly defining the desired outcome or goal of your data analy
 
 ## Step 1: Define the vision and goals
 
-Vision is a single, concise statement representing the high-level value the data product aims to deliver.
+Vision is a single, concise statement representing the high-level value the Data Product aims to deliver.
 
 - Define the vision and with stakeholders ensure alignment and agreement.
 
@@ -22,9 +22,9 @@ Goals is specific targets that deliver on the vision, with measurable success in
 
 **Questions to ask:**
 
-What business problems are we solving with this data product?
+What business problems are we solving with this Data Product?
 Who are the key stakeholders, and what insights do they need?
-How will this data product support decision-making processes?
+How will this Data Product support decision-making processes?
 
 ## Step 2: Define hypotheses and initiatives
 
@@ -41,7 +41,7 @@ Initiatives are approaches to realize the goals. Multiple initiatives might supp
 Use Cases are practical applications of the chosen hypothesis.
 
 - Identify and prioritize use cases based on business needs.
-- Map each use case to relevant data products.
+- Map each use case to relevant Data Products.
 
 Data Products are components interacting to fulfill use cases.
 
@@ -52,7 +52,7 @@ Data Products are components interacting to fulfill use cases.
 
 Try to ask questions to find the following:
 
-**Frequency**: How often will the data product be used?
+**Frequency**: How often will the Data Product be used?
 
 **Users**: Who are the end-users or systems?
 
@@ -84,7 +84,7 @@ Try to ask questions to find the following:
     - Identify the measures, dimensions, and data sources required to track progress.
     - Ensure every step ties back to achieving the North Star Metric.
 3. **Build with purpose:**
-    - Use the right-to-left approach to design a data product that directly serves the defined goals.
+    - Use the right-to-left approach to design a Data Product that directly serves the defined goals.
 
 ## Next step
 
