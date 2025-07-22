@@ -132,12 +132,12 @@ To set up a Lakehouse in DataOS, besides possessing an object storage account wi
 
     === "Command"
     
-        ```shell
+        ```bash
         dataos-ctl resource apply -f ${manifest-file-path} -w ${workspace}
         ```
     === "Example"
 
-        ```shell
+        ```bash
         dataos-ctl resource apply -f data_product/instance_secret.yaml -w curriculum
         ```
     
@@ -145,13 +145,13 @@ To set up a Lakehouse in DataOS, besides possessing an object storage account wi
 
     === "Command"
 
-        ```shell
+        ```bash
         dataos-ctl apply -f ${manifest-file-path} -w ${workspace}
         ```
 
     === "Example"
 
-        ```shell
+        ```bash
         dataos-ctl apply -f ../data_product/instance_secret.yaml -w curriculum
         ```
 
@@ -159,13 +159,13 @@ To set up a Lakehouse in DataOS, besides possessing an object storage account wi
     
     Check the name of the newly created Instance-secret in the list of Instance-secret created by you using the `resource get` command:
     
-    ```shell
+    ```bash
     dataos-ctl resource get -t instance-secret
     ```
     
     Alternatively, retrieve the list of all Instance-secret created by all users in a DataOS instance by appending `-a` flag:
     
-    ```shell
+    ```bash
     dataos-ctl resource get -t instance-secret -a
     ```
     
@@ -927,13 +927,13 @@ After creating the manifest file for the Lakehouse Resource, it's time to apply 
 
 === "Command"
 
-    ```shell
+    ```bash
     dataos-ctl apply -f ${manifest-file-path} - w ${workspace}
     ```
 
 === "Example"
 
-    ```shell
+    ```bash
     dataos-ctl apply -f dataproducts/new-lakehouse.yaml -w curriculum
     ```
 
@@ -952,19 +952,19 @@ To ensure that your Lakehouse has been successfully created, you can verify it i
 
 Check the name of the newly created Lakehouse in the list of lakehouses created by you in a particular Workspace:
 
-```shell
+```bash
 dataos-ctl get -t lakehouse - w ${workspace name}
 ```
 
 Sample
 
-```shell
+```bash
 dataos-ctl get -t lakehouse -w curriculum
 ```
 
 Alternatively, retrieve the list of all Lakehouses created in the Workspace by appending `-a` flag:
 
-```shell
+```bash
 dataos-ctl get -t lakehouse -w ${workspace name} -a
 # Sample
 dataos-ctl get -t lakehouse -w curriculum
@@ -980,19 +980,19 @@ Use the [`delete`](/interfaces/cli/command_reference/#delete) command to remov
 
 Command
 
-```shell
+```bash
 dataos-ctl delete -i "${identifier string}"
 ```
 
 Example
 
-```shell
+```bash
 dataos-ctl delete -i "cnt-lakehouse-demo-01 | v1alpha | lakehouse | public"
 ```
 
 Output
 
-```shell
+```bash
 INFO[0000] 🗑 delete...
 INFO[0001] 🗑 deleting(public) cnt-lakehouse-demo-01:v1alpha:lakehouse...
 INFO[0003] 🗑 deleting(public) cnt-lakehouse-demo-01:v1alpha:lakehouse...deleted
@@ -1003,7 +1003,7 @@ INFO[0003] 🗑 delete...complete
 
 Command
 
-```shell
+```bash
 dataos-ctl delete -f ${manifest-file-path}
 ```
 
@@ -1026,19 +1026,19 @@ INFO[0001] 🗑 delete...complete
 
 Command
 
-```shell
+```bash
 dataos-ctl delete -w ${workspace} -t lakehouse -n ${lakehouse name}
 ```
 
 Example
 
-```shell
+```bash
 dataos-ctl delete -w public -t lakehouse -n cnt-product-demo-01
 ```
 
 Output
 
-```shell
+```bash
 INFO[0000] 🗑 delete...
 INFO[0000] 🗑 deleting(public) cnt-city-demo-010:v1alpha:lakehouse...
 INFO[0001] 🗑 deleting(public) cnt-city-demo-010:v1alpha:lakehouse...deleted

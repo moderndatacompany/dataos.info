@@ -390,6 +390,7 @@ stackSpec:
 
 ---
 
+
 ### **`logLevel`**
 
 **Description:** The `logLevel` attribute sets the verbosity level of the logging for the job. Common levels include `INFO`, `DEBUG`, `WARN`, etc.
@@ -405,7 +406,10 @@ stackSpec:
   job:
     logLevel: INFO
 ```
+
+
 ---
+
 
 ### **`showPreviewLines`**
 

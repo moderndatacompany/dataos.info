@@ -324,14 +324,14 @@ Use the apply command to apply the workflow using CLI.
 
 === "Command"
 
-    ```shell
+    ```bash
     dataos-ctl resource apply -f ${yaml-file-path} -w ${workspace-name}
     #or
     dataos-ctl apply -f ${yaml-file-path} -w ${workspace-name}
     ```
 === "Example"
 
-    ```shell
+    ```bash
     dataos-ctl resource apply -f dbt.yaml -w sandbox # By default the workspace is public
     #or
     dataos-ctl apply -f dbt.yaml -w sandbox
@@ -341,13 +341,13 @@ Use the apply command to apply the workflow using CLI.
 
 === "Command"
 
-    ```shell
+    ```bash
     dataos-ctl resource get -t ${workspace-name} -w {sandbox} -n ${workflow-name}
     ```
 
 === "Example"
 
-    ```shell
+    ```bash
     dataos-ctl resource get -t workflow -w sandbox -n dbt-worfklow-v01
     #Expected Output
     INFO[0000] 🔍 get...
@@ -362,13 +362,13 @@ To check this information for all users in a specific Workspace, add the `-a` fl
 
 === "Command"
 
-    ```shell
+    ```bash
     dataos-ctl resource get -t workflow -w ${workspace-name} -a
     ```
 
 === "Example"
 
-    ```shell
+    ```bash
     dataos-ctl resource get -t workflow -w sandbox -a
     #Expected Output
     INFO[0000] 🔍 get...

@@ -371,7 +371,7 @@ Once you have created a Pager manifest, you can instantiate a Pager Resource-ins
 
 === "Command"
 
-    ```shell
+    ```bash
     dataos-ctl resource apply -f ${yaml-file-path} -w ${workspace-name}
     ```
 
@@ -379,7 +379,7 @@ Once you have created a Pager manifest, you can instantiate a Pager Resource-ins
 
 === "Example"
 
-    ```shell
+    ```bash
     dataos-ctl resource apply -f resources/pager.yaml -w sandbox
     # Expected Output
     INFO[0000] 🛠 apply...                                   
@@ -395,23 +395,23 @@ To confirm that your Pager has been successfully created, you can verify it usin
 - **Check Pagers in a Workspace:** Use the following command to list the Pagers created by you in a specific Workspace:
 
 === "Command"
-     ```shell
+     ```bash
      dataos-ctl get -t pager -w ${workspace-name}
      ```
 
 === "Example"
-     ```shell
+     ```bash
      dataos-ctl get -t pager -w sandbox
      ```
 
 - **Retrieve All Pagers in a Workspace:** To retrieve the list of all Pagers created in the Workspace, add the `-a` flag to the command:
 === "Command"
-     ```shell
+     ```bash
      dataos-ctl get -t pager -w ${workspace-name} -a
      ```
 
 === "Example"
-     ```shell
+     ```bash
      dataos-ctl get -t pager -w sandbox -a
      ```
 
@@ -428,11 +428,11 @@ When a Pager encounters errors, data developers can employ various tactics to di
     - Retrieve detailed information about the Pager to gain deeper insights into its configuration and execution status. This can be accomplished using the following command:
 
         === "Command"
-            ```shell
+            ```bash
             dataos-ctl resource get -t pager -w ${workspace-name} -n ${pager-name} -d
             ```
         === "Example"
-            ```shell
+            ```bash
             dataos-ctl resource get -t pager -w sandbox -n alert-pager -d
             ```
 
@@ -460,13 +460,13 @@ To remove a specific Pager Resource-instance from the DataOS environment, you ca
 
 === "Command"
   
-    ```shell
+    ```bash
     dataos-ctl delete -i "${name to workspace in the output table from get command}"
     ```
 
 === "Example"
 
-    ```shell
+    ```bash
     dataos-ctl delete -i "pager-alert | v1alpha | pager | public"
     ```
 
@@ -478,13 +478,13 @@ To remove a specific Pager Resource-instance from the DataOS environment, you ca
 
 === "Command"
 
-    ```shell
+    ```bash
     dataos-ctl delete -f ${file-path}
     ```
 
 === "Example"
 
-    ```shell
+    ```bash
     dataos-ctl delete -f /home/pager/v1alpha.yaml
     ```
 
@@ -494,13 +494,13 @@ To remove a specific Pager Resource-instance from the DataOS environment, you ca
 
 === "Command"
 
-    ```shell
+    ```bash
     dataos-ctl delete -w ${workspace-name} -t pager -n ${pager-name}
     ```
 
 === "Example"
 
-    ```shell
+    ```bash
     dataos-ctl delete -w sandbox -t pager -n pager-alert
     ```
 
