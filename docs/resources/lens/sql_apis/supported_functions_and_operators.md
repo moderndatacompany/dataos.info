@@ -9,7 +9,7 @@
 `SELECT` retrieves rows from a table. The `FROM` clause specifies one or more source tables for the `SELECT`. Qualification conditions can be added (via `WHERE`) to restrict the returned rows to a small subset of the original dataset.
 
 
-```shell
+```bash
 SELECT select_expr [, ...]
   FROM from_item
     CROSS JOIN join_item
@@ -26,7 +26,7 @@ The `EXPLAIN` command displays the query execution plan that the Lens  planner w
 
 **Example:**
 
-```shell
+```bash
 lens:public:productaffinity=> EXPLAIN select total_customers, country from customer;
    plan_type   |                                           plan                                            
 ---------------+-------------------------------------------------------------------------------------------
@@ -61,7 +61,7 @@ lens:public:productaffinity=> EXPLAIN ANALYZE select total_customers, country fr
 
 Returns the value of a runtime parameter using name, or all runtime parameters if ALL is specified.
 
-```shell
+```bash
 SHOW timezone;
 
 lens:public:productaffinity=> show timezone;
@@ -74,7 +74,7 @@ lens:public:productaffinity=> show timezone;
 Returns the value of a runtime parameter using name, or all runtime parameters if `ALL` is specified.
 
 
-```shell
+```bash
 lens:public:productaffinity=> show all;
             name             |    setting     | description 
 -----------------------------+----------------+-------------

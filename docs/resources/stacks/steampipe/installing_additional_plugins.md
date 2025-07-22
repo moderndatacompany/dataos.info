@@ -188,7 +188,7 @@ func runCommand(command string) error {
 
 Open a terminal, navigate to the directory containing your Dockerfile, and execute the following command:
 
-```shell
+```bash
 docker build -t {{image name}}:{{tag}} .
 ```
 

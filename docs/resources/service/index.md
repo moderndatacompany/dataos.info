@@ -240,7 +240,7 @@ service:
 
 Run the `apply` command on DataOS CLI to create the service resource in DataOS environment.
 
-```shell
+```bash
 dataos-ctl apply -f ${filename.yaml} -w ${name of the workspace}
 ```
 

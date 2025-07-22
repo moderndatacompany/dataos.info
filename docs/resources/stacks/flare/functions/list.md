@@ -26,7 +26,7 @@
 
     Output
 
-    ```shell
+    ```bash
     | order_amount |
     |--------------|
     |      8       |
@@ -65,7 +65,7 @@
 
     Output
 
-    ```shell
+    ```bash
     +--------------------+----------+
     |            END_YEAR|  year_end|
     +--------------------+----------+
@@ -106,7 +106,7 @@
     ```       
     Output
 
-    ```shell
+    ```bash
     +--------------------+-------------------+
     |            END_YEAR|      END_YEAR_ASIA|
     +--------------------+-------------------+
@@ -116,7 +116,7 @@
     ```
     for 'timezone': America/New_York
      
-    ```shell
+    ```bash
     +--------------------+-------------------+
     |            END_YEAR|   END_YEAR_AMERICA|
     +--------------------+-------------------+
@@ -156,7 +156,7 @@
 
     patient column in lower case will be displayed
 
-    ```shell
+    ```bash
     +--------------------+--------------------+
     |             patient|            MEMBERID|
     +--------------------+--------------------+
@@ -189,7 +189,7 @@
 
     Output
 
-    ```shell
+    ```bash
     +--------------------+--------------------+
     |          PATIENT   |            MEMBERID|
     +--------------------+--------------------+
@@ -221,7 +221,7 @@
 
     Before
 
-    ```shell
+    ```bash
     +----------------------+----------------------+
     |          PATIENT     |       MEMBERID      |
     +----------------------+----------------------+
@@ -231,7 +231,7 @@
     ```
     After
     
-    ```shell
+    ```bash
     +----------------------+----------------------+
     |patient               |memberid              |
     +----------------------+----------------------+
@@ -264,7 +264,7 @@
     ```
     Before
 
-    ```shell
+    ```bash
     +--------------------+---------------+---------+
     |             PATIENT|num_days_stay  |stay_days|
     +--------------------+---------------+---------+
@@ -274,7 +274,7 @@
     ```
     After
 
-    ```shell
+    ```bash
     +--------------------+---------------+----------+
     |     PATIENT        |num_days_stayed|stayed_days|
     +--------------------+---------------+-----------+
@@ -307,7 +307,7 @@
     ```
     Before
 
-    ```shell
+    ```bash
     +--------------------+---------------+
     |               PAYER|SECONDARY_PAYER|
     +--------------------+---------------+
@@ -317,7 +317,7 @@
     ```
     After
 
-    ```shell
+    ```bash
     +--------------------+--------------------+
     |               PAYER|SECONDARY_PAYER     |
     +--------------------+--------------------+
@@ -354,7 +354,7 @@
 
     Output
 
-    ```shell
+    ```bash
     +----------+----------+
     | BIRTHDATE|birth_year|
     +----------+----------+
@@ -388,7 +388,7 @@
     ```
     Before
 
-    ```shell
+    ```bash
     +-----------+
     |ZIP_ENCODED|
     +-----------+
@@ -398,7 +398,7 @@
     ```
     After
 
-    ```shell
+    ```bash
     +-----+
     |  ZIP_DECODED|
     +-------------+
@@ -432,7 +432,7 @@
     ```
     Output
 
-    ```shell
+    ```bash
     +--------------------+--------------------+-----------+
     |          START_YEAR|            END_YEAR|Days_Stayed|
     +--------------------+--------------------+-----------+
@@ -466,7 +466,7 @@
     ```
     Before
 
-    ```shell
+    ```bash
     |-- Id: string (nullable = true)
     |-- NAME: string (nullable = true)
     |-- ADDRESS: string (nullable = true)
@@ -477,7 +477,7 @@
     ```
     After
 
-    ```shell
+    ```bash
     |-- Id: string (nullable = true)
     |-- NAME: string (nullable = true)
     |-- ADDRESS: string (nullable = true)
@@ -510,7 +510,7 @@
     ```
     Before
 
-    ```shell
+    ```bash
     +------------+
     |        CITY|
     +------------+
@@ -528,7 +528,7 @@
     ```
     After
 
-    ```shell
+    ```bash
     +------------+
     |        CITY|
     +------------+
@@ -569,7 +569,7 @@
     ``` 
     Before
 
-    ```shell
+    ```bash
     +-----+
     |  ZIP_DECODED|
     +-------------+
@@ -579,7 +579,7 @@
     ```
     After
 
-    ```shell
+    ```bash
     +-----------+
     |ZIP_ENCODED|
     +-----------+
@@ -612,7 +612,7 @@
     ```
     Output
 
-    ```shell
+    ```bash
     +----------+-------------------+
     |    epochs|          timestamp|
     +----------+-------------------+
@@ -647,7 +647,7 @@
 
     Before
 
-    ```shell
+    ```bash
     +---------+
     |   PREFIX|
     +---------+
@@ -658,7 +658,7 @@
 
     After
 
-    ```shell
+    ```bash
     +---------+
     |   PREFIX|
     +---------+
@@ -691,7 +691,7 @@
     ```
     Before
 
-    ```shell
+    ```bash
     +--------------------+
     |           OWNERNAME|
     +--------------------+
@@ -704,7 +704,7 @@
     ```
     After
 
-    ```shell
+    ```bash
     +-------------------+
     |          OWNERNAME|
     +-------------------+
@@ -739,7 +739,7 @@
     ```
     Output
 
-    ```shell
+    ```bash
     root
     |-- discount: array (nullable = true)
     |    |-- element: struct (containsNull = true)
@@ -779,7 +779,7 @@
 
     Before
 
-    ```shell
+    ```bash
     +--------------------+
     |          START_YEAR|
     +--------------------+
@@ -789,7 +789,7 @@
     ```
     After
 
-    ```shell
+    ```bash
     +--------------------+
     |          START_YEAR|
     +--------------------+
@@ -822,7 +822,7 @@
     ```
     Before:
 
-    ```shell
+    ```bash
     +------------+
     |epoch_column|
     +------------+
@@ -832,7 +832,7 @@
     ```
     After:
 
-    ```shell
+    ```bash
     +-------------------+
     |       epoch_column|
     +-------------------+
@@ -864,7 +864,7 @@
     ```
     Output
 
-    ```shell
+    ```bash
     ----------------+
     |         UUID_COLUMN|
     +--------------------+
@@ -897,7 +897,7 @@
     ```
     Before:
 
-    ```shell
+    ```bash
     +--------------+
     |    PHONE     |
     +--------------+
@@ -907,7 +907,7 @@
     ```
     After:
 
-    ```shell
+    ```bash
     +--------------------+
     |       PHONE        |
     +--------------------+
@@ -957,7 +957,7 @@
     ```
     Before:
 
-    ```shell
+    ```bash
     +-----------+
     |    SSN    |
     +-----------+
@@ -967,7 +967,7 @@
     ```
     After:
 
-    ```shell
+    ```bash
     +-----------+
     |    SSN    |
     +-----------+
@@ -1002,7 +1002,7 @@
     --8<--  "examples/resources/stacks/flare/functions/merge.yaml"
     ```
 
-    ```shell
+    ```bash
     +--------+----------+-------------------+
     |   FIRST|      LAST|          full_name|
     +--------+----------+-------------------+
@@ -1081,7 +1081,7 @@
     ```
     Output
 
-    ```shell
+    ```bash
     | ADDRESS           | STATE_HEADQUARTERED | null | Baltimore  | Bloomfield | Chicago | Hartford  | Indianapolis | Louisville | Minnetonka  |
     |-------------------|---------------------|------|------------|------------|---------|-----------|--------------|------------|------------|
     | Security Blvd     | MD                  | null | 2.309825E7 | null       | null    | null      | null         | null       | null       |
@@ -1093,7 +1093,7 @@
 
     Example 2: with values added, values is optional here 
 
-    ```shell
+    ```bash
     +--------------------+-------------------+------+-----+
     |             ADDRESS|STATE_HEADQUARTERED|Mexico|India|
     +--------------------+-------------------+------+-----+
@@ -1148,7 +1148,7 @@
     ```
     Before
 
-    ```shell
+    ```bash
     +--------------------+----------+
     |                  Id|      CITY|
     +--------------------+----------+
@@ -1158,7 +1158,7 @@
     ```
     After
 
-    ```shell
+    ```bash
     +--------------------+-----------+
     |           payers_id|payers_city|
     +--------------------+-----------+
@@ -1196,7 +1196,7 @@
       ```
       Output
 
-      ```shell
+      ```bash
       +--------------+--------------------+
       |customer_index|            discount|
       +--------------+--------------------+
@@ -1253,13 +1253,13 @@
     ```
     Before
 
-    ```shell
+    ```bash
     |-- HEALTHCARE_EXPENSES: string (nullable = true)
     |-- HEALTHCARE_COVERAGE: string (nullable = true)
     ```
     After
 
-    ```shell
+    ```bash
     |-- HEALTHCARE_EXPENSES: float (nullable = true)
     |-- HEALTHCARE_COVERAGE: float (nullable = true)
     ```
@@ -1288,7 +1288,7 @@
     ```
     Output
 
-    ```shell
+    ```bash
     +-------------------+---------------------------+
     |HEALTHCARE_EXPENSES|HEALTHCARE_EXPENSES_ROUNDED|
     +-------------------+---------------------------+
@@ -1320,7 +1320,7 @@
     
     Before
 
-    ```shell
+    ```bash
     |-- COVERED_ENCOUNTERS: string (nullable = true)
     |-- UNCOVERED_ENCOUNTERS: string (nullable = true)
     |-- COVERED_MEDICATIONS: string (nullable = true)
@@ -1329,7 +1329,7 @@
     ```
     After
 
-    ```shell
+    ```bash
     |-- covered_encounters: string (nullable = true)
     |-- uncovered_encounters: string (nullable = true)
     |-- covered_medications: string (nullable = true)
@@ -1360,7 +1360,7 @@
     --8<--  "examples/resources/stacks/flare/functions/split_email.yaml"
     ```
 
-    ```shell
+    ```bash
     +------------------+-------------+------------+
     |             Email|Email_account|Email_domain|
     +------------------+-------------+------------+
@@ -1391,7 +1391,7 @@
     --8<--  "examples/resources/stacks/flare/functions/split_url.yaml"
     ```
 
-    ```shell
+    ```bash
     +-----------------+------------+-------------+--------+
     |              URL|URL_protocol|URL_authority|URL_port|
     +-----------------+------------+-------------+--------+
@@ -1424,7 +1424,7 @@
     ```
     Before
 
-    ```shell
+    ```bash
     +--------------------+-----+
     |                  Id|  ZIP|
     +--------------------+-----+
@@ -1436,7 +1436,7 @@
     ```
     After
 
-    ```shell
+    ```bash
     +-----+--------------------+
     |   Id|                 ZIP|
     +-----+--------------------+
@@ -1496,7 +1496,7 @@
 
     Before
 
-    ```shell
+    ```bash
     |-- discount: array (nullable = true)
     |    |-- element: struct (containsNull = true)
     |    |    |-- discount_amount: long (nullable = true)
@@ -1506,7 +1506,7 @@
     ```
     After
 
-    ```shell
+    ```bash
     |-- discount01: struct (nullable = true)
     |    |-- discount_amount: long (nullable = true)
     |    |-- discount_percent: long (nullable = true)
@@ -1549,7 +1549,7 @@
     ```
     pivoted_column
 
-    ```shell
+    ```bash
     +--------------------+-------------------+------+-----+
     |             ADDRESS|STATE_HEADQUARTERED|Mexico|India|
     +--------------------+-------------------+------+-----+
@@ -1562,7 +1562,7 @@
     ```
     unpivoted_column
 
-    ```shell
+    ```bash
     +------------------+-------------------+------+-------+
     |           ADDRESS|STATE_HEADQUARTERED|  CITY|Revenue|
     +------------------+-------------------+------+-------+

@@ -189,7 +189,7 @@ workflow:
 
 Total Duration: 8.13
 
-```
+```bash
 		RUNTIME  | PROGRESS |          STARTED          |         FINISHED           
  ------------|----------|---------------------------|----------------------------
    succeeded | 8/8      | 2022-08-10T22:36:43+05:30 | 2022-08-10T22:44:16+05:30
@@ -387,7 +387,7 @@ workflow:
 
 Total Duration: 7.33
 
-```yaml
+```bash
    RUNTIME  | PROGRESS |          STARTED          |         FINISHED           
 ------------|----------|---------------------------|----------------------------
   succeeded | 8/8      | 2022-08-10T22:50:41+05:30 | 2022-08-10T22:57:39+05:30
@@ -737,7 +737,7 @@ workflow:
 
 Total Duration: 6.25
 
-```yaml
+```bash
 	 RUNTIME  | PROGRESS |          STARTED          |         FINISHED           
 ------------|----------|---------------------------|----------------------------
   succeeded | 8/8      | 2022-08-10T23:24:06+05:30 | 2022-08-10T23:30:31+05:30
@@ -768,7 +768,7 @@ Total Duration: 6.25
 
 Total Duration: 6.04
 
-```yaml
+```bash
    RUNTIME  | PROGRESS |          STARTED          |         FINISHED           
 ------------|----------|---------------------------|----------------------------
   succeeded | 8/8      | 2022-08-11T10:41:29+05:30 | 2022-08-11T10:47:33+05:30
@@ -776,6 +776,8 @@ Total Duration: 6.04
 
 
 <details>
+
+<summary> Click here to see the full manifest file </summary>
 
 ```yaml
 version: v1
@@ -965,7 +967,7 @@ workflow:
 
 Total Duration: 6.05
 
-```yaml
+```bash
    RUNTIME  | PROGRESS |          STARTED          |         FINISHED           
 ------------|----------|---------------------------|----------------------------
   succeeded | 8/8      | 2022-08-11T22:38:39+05:30 | 2022-08-11T22:44:44+05:30
@@ -1161,7 +1163,7 @@ workflow:
 
 Total Duration: 6.11
 
-```yaml
+```bash
 	 RUNTIME  | PROGRESS |          STARTED          |         FINISHED           
 ------------|----------|---------------------------|----------------------------
   succeeded | 8/8      | 2022-08-11T22:46:25+05:30 | 2022-08-11T22:52:36+05:30
@@ -1169,6 +1171,7 @@ Total Duration: 6.11
 
 
 <details>
+
 <summary> Click here to see the full manifest file </summary>
 
 ```yaml
@@ -1356,7 +1359,7 @@ workflow:
 
 Total Duration: 6.38
 
-```yaml
+```bash
    RUNTIME  | PROGRESS |          STARTED          |         FINISHED           
 ------------|----------|---------------------------|----------------------------
   succeeded | 8/8      | 2022-08-11T22:58:41+05:30 | 2022-08-11T23:04:39+05:30
@@ -1552,7 +1555,7 @@ workflow:
 
 Total Duration: 6
 
-```yaml
+```bash
    RUNTIME  | PROGRESS |          STARTED          |         FINISHED           
 ------------|----------|---------------------------|----------------------------
   succeeded | 8/8      | 2022-08-11T23:07:17+05:30 | 2022-08-11T23:13:17+05:30
@@ -1749,13 +1752,14 @@ workflow:
 
 Total  Duration: 6.33
 
-```yaml
+```bash
    RUNTIME  | PROGRESS |          STARTED          |         FINISHED           
 ------------|----------|---------------------------|----------------------------
   succeeded | 8/8      | 2022-08-11T23:51:59+05:30 | 2022-08-11T23:57:52+05:30
 ```
 
 <details>
+
 <summary> Click here to see the full manifest file </summary>
 
 ```yaml

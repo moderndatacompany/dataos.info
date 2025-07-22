@@ -41,7 +41,7 @@ The `ingress` attribute allows access to the Flash web app, which enables monito
 
 2. **Access the metrics**: Use the following URL syntax in postman to fetch the metrics endpoint by providing the DataOS API key as the bearer token:
 
-    ```shell
+    ```bash
     <DataOS env URL>/flash/workspace:service_name/metrics
     ```
 

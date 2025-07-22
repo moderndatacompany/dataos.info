@@ -243,7 +243,7 @@ dataos-ctl user get
 
 To retrieve your API key (used as the password), run:
 
-```shell
+```bash
 dataos-ctl user apikey get 
 ```
 

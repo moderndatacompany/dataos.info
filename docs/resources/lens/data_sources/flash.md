@@ -43,7 +43,7 @@ The resultant size will be in the bytes.
 
 Apply the persistent volume manifest file, using the following command in terminal:
 
-```shell
+```bash
 dataos-ctl resource apply -f <file path of persistent volume>
 ```
 This will deploy the Persistent Volume Resource, making it available for use by Flash Service.

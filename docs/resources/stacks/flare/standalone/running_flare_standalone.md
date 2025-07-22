@@ -22,7 +22,7 @@ But before diving right into the programming stuff, let's ensure you have the re
 
 DataOS CLI should be installed on your system with the latest version. To get the details of the CLI version, run the command after logging into DataOS.
 
-```shell
+```bash
 dataos-ctl version
 ```
 
@@ -37,7 +37,7 @@ If CLI is not updated to the latest version, navigate to the below page.
 
 Since we would be dealing with environment Pulsar format, you will need the `pulsar-admin` tag to read the data. To check the available tags that you have, execute the command:
 
-```shell
+```bash
 dataos-ctl user get
 # Output
 			NAME     |     ID      |  TYPE  |        EMAIL         |              TAGS               
@@ -154,7 +154,7 @@ You can store the data and the `config.yaml` anywhere you want. You have to go a
 
 - You also require the DataOS `apikey`, which you can get by executing the below command.
 
-```shell
+```bash
 dataos-ctl user apikey get
 ```
 
@@ -171,13 +171,13 @@ dataos-ctl user apikey get
 
 - You can use the below command to run the `config.yaml`.
 
-```shell
+```bash
 dataos-ctl develop start -s <flare-version> -i <custom-image> -f <path-of-config.yaml> -d <path-of-data-directory> -P <port-number>
 ```
 
 Example
 
-```shell
+```bash
 dataos-ctl develop start -s flare:3.0 -i **rubiklabs/flare3:6.0.93** -f standalone/config.yaml -d standalone -P 14042 # For Apple Mac M1/M2 Chip, change the image to **rubiklabs/flare3:6.0.93-xp.01**
 ```
 
@@ -201,7 +201,7 @@ To know more about the various sections of the Spark UI and what each one of the
 
 - On successful execution, the Scala command line shell will open as below:
 
-```shell
+```bash
 
 2022-12-05 05:28:10,854 INFO  [main] i.d.f.c.ProcessingContext: **run complete.
 # When you see this run complete message, then only your job has successfully executed**
@@ -233,7 +233,7 @@ After successful job execution, you can run various Spark commands in Scala inte
 
 - `tables` command will give you the list of all tables in the current directory. You should see the `finaldf` and `transactions_connect` tables listed, which are created after the given YAML is successfully run.
 
-```shell
+```bash
 scala> tables
 # Expected Output
 +---------+--------------------+-----------+
@@ -248,13 +248,13 @@ You must debug your code if you don't get the required output or find the above 
 
 - You can also run a Spark SQL query to verify the data, as follows:
 
-```shell
+```bash
 scala> spark.sql("SELECT * FROM customers_final").show(false)
 ```
 
 - You can also run a Spark SQL query to print schema to verify the data, as follows:
 
-```shell
+```bash
 scala> spark.sql("SELECT * FROM finaldf").printSchema
 # Expected Output
 root
