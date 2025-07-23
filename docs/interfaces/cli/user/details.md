@@ -5,7 +5,7 @@ You run the following `user` sub commands by appending them to *dataos-ctl user*
 
 Manage a DataOS® User apikey
 
-```shell
+```bash
 
 Usage:
   dataos-ctl user apikey [command]
@@ -27,7 +27,7 @@ Use "dataos-ctl user apikey [command] --help" for more information about a comma
 ### **`create`**
 Create an apikey for a user
 
-```shell
+```bash
 
 Usage:
   dataos-ctl user apikey create [flags]
@@ -45,7 +45,7 @@ Global Flags:
 ### **`delete`**
 Delete the apikey for a user
 
-```shell
+```bash
 
 Usage:
   dataos-ctl user apikey delete [flags]
@@ -61,7 +61,7 @@ Global Flags:
 ### **`get`**
 Get the apikey for a user
 
-```shell
+```bash
 
 Usage:
   dataos-ctl user apikey get [flags]
@@ -79,7 +79,7 @@ Global Flags:
 ## `changes`
 View a DataOS® User changes
 
-```shell
+```bash
 
 Usage:
   dataos-ctl user changes [command]
@@ -100,7 +100,7 @@ Use "dataos-ctl user changes [command] --help" for more information about a comm
 ### **`get`**
 Get the changes for a user
 
-```shell
+```bash
 
 Usage:
   dataos-ctl user changes get [flags]
@@ -116,7 +116,7 @@ Global Flags:
 ## `create`
 
 Create a DataOS® User
-```shell
+```bash
 
 Usage:
   dataos-ctl user create [flags]
@@ -138,7 +138,7 @@ Global Flags:
 ## `delete`
 Delete a DataOS® User
 
-```shell
+```bash
 
 Usage:
   dataos-ctl user delete [flags]
@@ -154,7 +154,7 @@ Global Flags:
 ## `get`
 Get DataOS® Users
 
-```shell
+```bash
 
 Usage:
   dataos-ctl user get [flags]
@@ -171,7 +171,7 @@ Global Flags:
 ## `tag`
 Manage DataOS® User's tags
 
-```shell
+```bash
 
 Usage:
   dataos-ctl user tag [command]
@@ -192,7 +192,7 @@ Use "dataos-ctl user tag [command] --help" for more information about a command.
 ### **`add`**
 Add tags to a user
 
-```shell
+```bash
 
 Usage:
   dataos-ctl user tag add [flags]
@@ -208,7 +208,7 @@ Global Flags:
 
 ### **`delete`**
 Delete tags from a user
-```shell
+```bash
 
 Usage:
   dataos-ctl user tag delete [flags]

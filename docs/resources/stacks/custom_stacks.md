@@ -372,7 +372,7 @@ To take a look at a case scenario, refer to the link: [Stack orchestrated by a S
 
 Once the Stack YAML file is prepared, the [`apply`](/interfaces/cli/command_reference/#apply) command can be utilized to create a Stack Resource within the DataOS environment.
 
-```shell
+```bash
 dataos-ctl apply -f ${{path/file-name}}
 ```
 
@@ -384,7 +384,7 @@ To ensure that your Stack has been successfully created, you can verify it in tw
 
 Check the name of the newly created Stack in the list of Stacks where you are named as the owner:
 
-```shell
+```bash
 dataos-ctl get -t operator
 
 # Expected Output
@@ -398,7 +398,7 @@ INFO[0000] 🔍 get...complete
 
 Alternatively, retrieve the list of all Stacks created in your organization:
 
-```shell
+```bash
 dataos-ctl get -t operator -a
 ```
 

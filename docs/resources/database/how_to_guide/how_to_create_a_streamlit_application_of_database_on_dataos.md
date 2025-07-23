@@ -243,7 +243,7 @@ This Dockerfile starts with a lightweight Python 3.7.6 base image, installs all 
 To build the Docker image, run the following command in the same directory as your `Dockerfile`:
 
 
-```shell
+```bash
 docker login --username=your-username
 ```
 
@@ -255,13 +255,13 @@ To push an image to Docker Hub, your image needs to be tagged. In case it’s no
 
 === "Command"
 
-    ```shell
+    ```bash
     docker image tag my-app:new your-username/my-app:1.0.1
     ```
 
 === "Example"
 
-    ```shell
+    ```bash
     docker build -t iamgroot/my-first-db-st-app:1.0.1 
     ```
 
@@ -279,7 +279,7 @@ Now, Use the following command to list all Docker images on your system, this wi
 
 === "Output"
 
-    ```shell
+    ```bash
     REPOSITORY                                  TAG          IMAGE ID       CREATED         SIZE
     iamgroot/my-first-db-st-app              1.0.4           3bcfa387913d   5 hours ago     1.41GB
     my-first-db-st-app                           new         3bcfa387913d   5 hours ago     1.41GB
@@ -302,7 +302,7 @@ Before pushing a Docker image to a repository, it is crucial to verify that the 
 
 === "Output"
 
-    ```shell
+    ```bash
     REPOSITORY                                  TAG          IMAGE ID       CREATED         SIZE
     iamgroot/my-first-db-st-app              1.0.4           3bcfa387913d   5 hours ago     1.41GB
     my-first-db-st-app                           new         3bcfa387913d   5 hours ago     1.41GB
@@ -318,13 +318,13 @@ Finally, push the Docker image to Docker Hub using the following command:
 
 === "Command"
 
-    ```shell
+    ```bash
     docker push your-username/my-app:<any-version>
     ```
 
 === "Example"
 
-    ```shell
+    ```bash
     docker push iamgroot/my-first-db-st-app:1.0.1
     ```
 
@@ -341,13 +341,13 @@ Apply the YAML file using the `apply` command, as follows:
 
 === "Command"
 
-    ```shell
+    ```bash
     dataos-ctl apply -f ${path-to-file} -w ${workspace}
     ```
 
 === "Example"
 
-    ```shell
+    ```bash
     dataos-ctl apply -f iamgroot/product/product_container.yaml -w public
     ```
 

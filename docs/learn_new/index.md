@@ -11,9 +11,11 @@ Welcome to the DataOS Learning Hub!
 
 We have designed the DataOS Learning Hub to cater to your specific role and expertise level within the DataOS ecosystem. Our learning tracks are tailored to meet the needs of different personas, ensuring you receive the knowledge and skills required to excel. To further support your journey, we have made quick start guides and instructional videos available.
 
-## :material-smart-card-outline: DataOS Primer: Understanding Data Products and Platform Essentials
+## :material-smart-card-outline: DataOS Primer
 
-Start your data journey by learning the “data as a product” philosophy—treating data as something purposeful and valuable. Discover how the DataOS platform helps you turn this idea into action by making it easier to create, manage, and use data products in real-world scenarios. 
+Your first step toward understanding Data Products and discovering how DataOS powers Data Product development.
+
+Start your data journey by learning the “data as a product” philosophy—treating data as something purposeful and valuable. Discover how the DataOS platform helps you turn this idea into action by making it easier to create, manage, and use Data Products in real-world scenarios. 
 
 <div class= "grid cards" markdown>
 
@@ -22,9 +24,10 @@ Start your data journey by learning the “data as a product” philosophy—tre
 -   [#2 DataOS essentials](/learn_new/dataos_essentials/)
     
 </div>
+
 ## :fontawesome-solid-user-group: Learning tracks 
 
-Our learning tracks are crafted to meet the diverse needs of data consumers, developers, product owners, and platform operators. Each track is broken into bite-sized modules and topics, blending quick concepts, real-world scenarios, code snippets, and visuals. 
+Our learning tracks are crafted to meet the diverse needs of various user personas- Data Product consumers, developers, product owners, and platform operators. Each track is broken into bite-sized modules and topics, blending quick concepts, real-world scenarios, code snippets, and visuals. 
 
 Pick the path that best aligns with your role and goals:
 
@@ -34,7 +37,7 @@ Pick the path that best aligns with your role and goals:
 
     ---
 
-    Learn how to explore, analyze, and consume data products confidently. Ideal for Data Analysts, Scientists, Product Managers, and App Developers looking to get insights faster and smarter.
+    Learn how to explore, analyze, and consume Data Products confidently. Ideal for Data Analysts, Scientists, Product Managers, and App Developers looking to get insights faster and smarter.
 
     [:octicons-arrow-right-24: Start Exploring](/learn_new/about_dp_consumer_track/)
 
@@ -42,7 +45,7 @@ Pick the path that best aligns with your role and goals:
 
     ---
 
-    Get familiar with DataOS essentials and develop the foundational understanding needed to navigate DataOS. Ideal for new data engineers, collaborators, and aspiring product owners, this track lays the groundwork for more advanced learning paths..
+    Develop the foundational understanding needed to navigate DataOS. Ideal for new data engineers, collaborators, and aspiring product owners, this track lays the groundwork for more advanced learning paths.
 
 
     [:octicons-arrow-right-24: Start Learning](/learn_new/about_dp_foundations_track)
@@ -52,7 +55,7 @@ Pick the path that best aligns with your role and goals:
 
     ---
 
-    Dive into hands-on, scenario-driven learning that reflects real-world challenges in building and scaling production-grade data products. Geared towards Data Engineers, AI/ML Engineers, Modelers, and Solution Architects.
+    Dive into hands-on, scenario-driven learning that reflects real-world challenges in building and scaling production-grade Data Products. Geared towards Data Engineers, AI/ML Engineers, Modelers, and Solution Architects.
     
     [:octicons-arrow-right-24: Build With DataOS](/learn_new/about_dp_developer_track/)
 
@@ -60,7 +63,7 @@ Pick the path that best aligns with your role and goals:
 
     ---
 
-    Learn how to define, manage, and evolve data products in alignment with strategic goals while balancing governance, user adoption, and performance. Designed for aspiring or active product owners driving data strategy. 
+    Learn how to define, manage, and evolve Data Products in alignment with strategic goals while balancing governance, user adoption, and performance. Designed for aspiring or active product owners driving data strategy. 
 
 
     [:octicons-arrow-right-24:  Learn more](/learn_new/about_dp_owner_track/)

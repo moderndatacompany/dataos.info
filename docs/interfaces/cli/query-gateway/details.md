@@ -4,7 +4,7 @@ You run the following `query-details` sub commands by appending them to *dataos-
 ## `connect`
 Connect to the DataOS® Query Gateway
 
-```shell
+```bash
 
 Usage:
   dataos-ctl query-gateway connect [flags]

@@ -52,7 +52,7 @@ Flags:
 ## `drop`
 Drop dataset.
 
-```shell
+```bash
 
 Usage:
   dataos-ctl dataset drop [flags]
@@ -148,7 +148,7 @@ Flags:
 ## `rollback`
 Rollback Snapshot
 
-```shell
+```bash
 
 Usage:
   dataos-ctl dataset rollback [flags]

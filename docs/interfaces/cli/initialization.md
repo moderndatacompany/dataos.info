@@ -44,7 +44,7 @@ INFO[0452] 🚀 initialization...complete
 <br>
 When attempting to log in using the <code>dataos-ctl</code> command-line tool, if the following sequence of log messages are observed:
 
-```shell
+```bash
 iamgroot@abcs-MacBook-Pro-2 ~ % ./darwin-arm64/dataos-ctl login
 INFO[0000] 🔑 login...                                   
 ERRO[0000] no cred file, need to login                  
@@ -61,7 +61,7 @@ Ensure that the URL specified during initialization or within your configuration
 <br>
 <b>Correct URL Format</b>
 
-```shell
+```bash
 INFO[0383] Please enter the fully qualified domain name of the DataOS® instance?  
 ->vasudhaiva-kutumbakam.dataos.app
 ```
@@ -71,7 +71,7 @@ INFO[0383] Please enter the fully qualified domain name of the DataOS® instance
 
 After the successful initialization of DataOS context, you can log in to your account with the following command. 
 
-```shell
+```bash
 dataos-ctl login
 ```
 
@@ -81,7 +81,7 @@ If your enterprise has multiple DataOS contexts, you can use the same command-li
 
 Run the following commands to ensure the successful installation of DataOS CLI. These commands will show the version and health status of the installed DataOS CLI.
 
-```shell
+```bash
 dataos-ctl version
 dataos-ctl health
 ```

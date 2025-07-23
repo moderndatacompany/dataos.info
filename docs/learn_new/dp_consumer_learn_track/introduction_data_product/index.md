@@ -12,11 +12,11 @@ A Data Product encompasses:
 
 - **Metadata**: Information about the data, including its origin, quality, and relevance.
 
-- **Transformation Code**: Scripts or programs that process and prepare the data for analysis.
+- **Transformation code**: Scripts or programs that process and prepare the data for analysis.
 
-- **Input and Output Definitions**: Specifications for how data is ingested and delivered.
+- **Input and output definitions**: Specifications for how data is ingested and delivered.
 
-- **Discovery and Observability**: Mechanisms for finding and monitoring the Data Product.
+- **Discovery and observability**: Mechanisms for finding and monitoring the Data Product.
 
 - **APIs**: Interfaces for programmatic access to the data (consumption options).
 
@@ -26,7 +26,7 @@ A Data Product encompasses:
 
 - **Governance**: Rules and policies for managing access, security, and compliance.
 
-- **Platform Dependencies**: Resources like compute and storage required to run the Data Product
+- **Platform dependencies**: Resources like compute and storage required to run the Data Product
 
 ![data_product_def.png](/learn_new/dp_consumer_learn_track/introduction_data_product/data_product_def.png)
 
@@ -55,15 +55,15 @@ DataOS is the platform that helps you develop, manage, process, and deploy Data 
 
 ## Features of Data Products
 
-- **Purpose-Driven Design**
+- **Purpose-driven design**
 Data Products solve specific challenges. For instance, they can uncover purchase behavior trends or help plan targeted email campaigns for better customer engagement.
-- **Self-Service Enablement**
+- **Self-service enablement**
 Forget reinventing the wheel. Data Products let you set up workflows—like segmenting customers for personalized offers—without starting from scratch.
 - **Modularity**
 Are you already using tools like Tableau or Power BI? Data Products integrate seamlessly, making it easy to expand your capabilities. Use them to analyze cross-sell opportunities or track product affinity in real-time.
-- **Governance and Quality Assurance**
+- **Governance and quality assurance**
 Data Products prioritize accuracy and compliance. For example, you can ensure data reliability when running loyalty programs for high-value customers.
-- **User-Centric Interface**
+- **User-centric interface**
 Data doesn't have to be complex. With intuitive, user-friendly interfaces, Data Products makes exploring key metrics like campaign click-through rates or average order values easy, without requiring advanced knowledge of data analytics or data science.
 
 ## Key characteristics of a Data Product
@@ -124,7 +124,7 @@ Data Products are categorized based on how they are designed and structured to m
 
 Entity-first Data Products focus on the characteristics and origins of the underlying data sources. These products emphasize data quality, governance, and compliance with organizational standards and policies. They are often aligned with the data domains of the organization and are sometimes referred to as Source-aligned Data Products.
 
-**Key Features:**
+**Key features:**
 
 - Data is structured around the source systems or entities, such as customers, products, or transactions.
 - Prioritizes consistency and accuracy of data.
@@ -138,7 +138,7 @@ Entity-first Data Products focus on the characteristics and origins of the under
 
 Model-first Data Products are designed with a focus on the end-user’s needs and use cases, emphasizing semantics and context. Instead of starting with the raw data, these products prototype the desired outcomes first, and then the underlying components are organized to achieve those outcomes. These are also known as Consumer-aligned Data Products.
 
-**Key Features:**
+**Key features:**
 
 - Data is modeled to align with user-specific use cases and decision-making processes.
 - Highly flexible and often tailored to specific business objectives.

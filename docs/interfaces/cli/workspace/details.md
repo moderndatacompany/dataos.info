@@ -5,7 +5,7 @@ You run the following `workspace` sub commands by appending them to *dataos-ctl 
 
 Create workspace.
 
-```shell
+```bash
 Usage:
 dataos-ctl workspace create [flags]
 
@@ -23,7 +23,7 @@ Flags:
 
 Delete workspaces.
 
-```shell
+```bash
 Usage:
 dataos-ctl workspace delete [flags]
 
@@ -36,7 +36,7 @@ Flags:
 
 Get workspaces.
 
-```shell
+```bash
 Usage:
 dataos-ctl workspace get [flags]
 

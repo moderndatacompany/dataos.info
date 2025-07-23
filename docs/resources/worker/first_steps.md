@@ -236,23 +236,23 @@ To ensure that your Worker has been successfully created, you can verify it in t
 
 Check the name of the newly created Worker in the list of workers created by you in a particular Workspace:
 
-```shell
+```bash
 dataos-ctl get -t worker - w <workspace-name>
 ```
 
-```shell
+```bash
 dataos-ctl get -t worker - w <workspace-name>
 ```
 
 Sample
 
-```shell
+```bash
 dataos-ctl get -t worker -w curriculum
 ```
 
 Alternatively, retrieve the list of all Workers created in the Workspace by appending `-a` flag:
 
-```shell
+```bash
 dataos-ctl get -t worker -w <workspace-name> -a
 # Sample
 dataos-ctl get -t worker -w curriculum -a
@@ -270,19 +270,19 @@ Use the [`delete`](/interfaces/cli/command_reference/#delete) command to remov
 
 Command
 
-```shell
+```bash
 dataos-ctl delete -i "${identifier string}"
 ```
 
 Example
 
-```shell
+```bash
 dataos-ctl delete -i "demo-01 | v1beta | worker | public"
 ```
 
 Output
 
-```shell
+```bash
 INFO[0000] 🗑 delete...
 INFO[0001] 🗑 deleting(public) demo-01:v1beta:worker...
 INFO[0003] 🗑 deleting(public) demo-01:v1beta:worker...deleted
@@ -293,19 +293,19 @@ INFO[0003] 🗑 delete...complete
 
 Command
 
-```shell
+```bash
 dataos-ctl delete -f ${manifest-file-path}
 ```
 
 Example
 
-```shell
+```bash
 dataos-ctl delete -f /home/desktop/connect-city/config_v1alpha.yaml
 ```
 
 Output
 
-```shell
+```bash
 INFO[0000] 🗑 delete...
 INFO[0001] 🗑 deleting(public) demo-01:v1beta:worker...
 INFO[0003] 🗑 deleting(public) demo-01:v1beta:worker...deleted
@@ -316,19 +316,19 @@ INFO[0003] 🗑 delete...complete
 
 Command
 
-```shell
+```bash
 dataos-ctl delete -w ${workspace} -t worker -n ${worker name}
 ```
 
 Example
 
-```shell
+```bash
 dataos-ctl delete -w public -t worker -n demo-01
 ```
 
 Output
 
-```shell
+```bash
 INFO[0000] 🗑 delete...
 INFO[0001] 🗑 deleting(public) demo-01:v1beta:worker...
 INFO[0003] 🗑 deleting(public) demo-01:v1beta:worker...deleted

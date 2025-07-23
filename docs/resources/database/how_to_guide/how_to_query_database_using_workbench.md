@@ -74,7 +74,7 @@ Once you have created a Depot manifest, simply copy the  or relative path of the
       dataos-ctl apply -t depot 
       ```
       #Expected Output
-      ```shell
+      ```bash
       NAME         | VERSION | TYPE  | WORKSPACE | STATUS | RUNTIME |     OWNER       
     ----------------------|---------|-------|-----------|--------|---------|-----------------
       customersdb0curriculum  | v1      | depot |           | active |         | iamgroot
@@ -120,7 +120,7 @@ Create a new Cluster manifest with specified depot address. Below is a sample Cl
     dataos-ctl resource get -t cluster
     ```
     #Expected Output
-    ```shell
+    ```bash
     NAME         | VERSION |  TYPE   | WORKSPACE | STATUS |   RUNTIME   |     OWNER       
     ----------------------|---------|---------|-----------|--------|-------------|-----------------
     databasetestcluster | v1      | cluster | public    | active | running:1 | iamgroot

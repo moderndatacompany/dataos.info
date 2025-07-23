@@ -2,7 +2,7 @@
 
 As a DataOS Operator, you understand that managing sensitive credentials is critical for ensuring secure and seamless platform operations. This module dives into Credential Security, equipping you with the tools and best practices needed to protect sensitive information within DataOS. Through a guided journey, you’ll learn how to prevent accidental exposure of credentials, establish robust security practices, and confidently manage sensitive credentials across workflows.
 
-## Scenario
+## 📘 Scenario
 
 Imagine a scenario where your team accidentally commits database credentials to a public repository. While the issue is quickly fixed, it highlights the critical risks associated with poor credential management.
 

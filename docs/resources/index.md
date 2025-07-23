@@ -84,7 +84,7 @@ Users of the operating system interact with the instances of DataOS Resources in
 
 Used to create, update & deploy a Resource-instance
 
-```shell
+```bash
 dataos-ctl apply -f {{file path}}
 ```
 
@@ -94,7 +94,7 @@ When you apply an updated configuration file of a Resource, it gets appended by 
 
 Used for read operations
 
-```shell
+```bash
 dataos-ctl get -t {{type of Resource}} -n {{name of the Resource-instance}}
 
 # alternate command
@@ -105,7 +105,7 @@ dataos-ctl get -i "{{name:version:type}}"
 
 To delete an existing instance of a Resource from the system
 
-```shell
+```bash
 dataos-ctl delete -t {{type of Resource}} -n {{name of Resource-instance}}
 
 # alternate command
@@ -119,7 +119,7 @@ dataos-ctl delete -i "{{name:version:type}}"
 
 To run the linter & check for possible errors in the config file of the Resource-instance.
 
-```shell
+```bash
 dataos-ctl apply -f {{file path}} -l
 ```
 
@@ -136,7 +136,7 @@ Always run the lint command to flag possible errors before deploying a Resource.
 
 Check the logs for the Resource-instance
 
-```shell
+```bash
 dataos-ctl log -t {{type of Resource}} -n {{name of Resource-instance}}
 ```
 

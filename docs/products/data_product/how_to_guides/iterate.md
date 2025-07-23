@@ -13,14 +13,14 @@ Iterating a Data Product involves refining and enhancing it based on feedback, p
 
 - **Implement changes:** Update the Data Product according to the issues arises. This might involve modifying data sources, transformation logic, data models, and workflows. To update the Data Product simply make the changes in the Resources that require updation and re-apply the Bundle Resource using the below command:
 
-```shell
+```bash
 
 dataos-ctl apply -f /home/office/bundle.yaml
 
 ```
 Output:
 
-```shell
+```bash
 
 INFO[0000] 🛠 apply...                                   
 INFO[0000] 🔧 applying data-product-bundle:v1:bundle...   

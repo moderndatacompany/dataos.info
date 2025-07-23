@@ -100,7 +100,7 @@ As this is your first Monitor, we have tried to keep it as simple as possible. C
 
 ### **Step 2: Check the Monitor Equation**
 
-```shell
+```bash
 dataos-ctl develop observability monitor equation -f testing/manifest/monitor/new_monitor.yml
 INFO[0000] 🔮 develop observability...                   
 INFO[0000] 🔮 develop observability...monitor tcp-stream...starting 
@@ -121,13 +121,13 @@ RESULT (maxRows: 10, totalRows:1): 🟩 monitor condition met
 
 Once you have created your Monitor manifest file, you will need to apply it within the DataOS environment to create the Monitor Resource-Instance. You can do this using the Command Line Interface (CLI) with the following commands:
 
-```shell
+```bash
 dataos-ctl resource apply -f ${manifest-file-path} -w ${workspace-name}
 ```
 
 Alternatively, this task can also be accomplished using a simpler command. Both commands are equivalent, and you can use either one depending on your preference:
 
-```shell
+```bash
 dataos-ctl apply -f ${manifest-file-path} -w ${workspace-name}
 ```
 
@@ -135,7 +135,7 @@ Example
 
 Here is an example of how to apply a Monitor manifest file located at `/home/monitor/incident-monitor.yml` to the `curriculum` workspace:
 
-```shell
+```bash
 dataos-ctl resource apply -f /home/monitor/incident-monitor.yml -w curriculum
 ```
 
@@ -143,7 +143,7 @@ Expected Output
 
 After running the command, you should see an output similar to the following, indicating that the Monitor Resource instance has been applied.
 
-```shell
+```bash
 # Expected Output
 INFO[0000] 🔍 apply...                                     
 INFO[0001] 🔍 applying(curriculum) cpu-usage-spike:v1alpha:monitor...
@@ -155,13 +155,13 @@ INFO[0003] 🔍 apply...complete
 
 Use the below command to get all the existing monitors for all owners.
 
-```shell
+```bash
 dataos-ctl resource get -t monitor -w ${workspace name} -a
 ```
 
 Sample
 
-```shell
+```bash
 dataos-ctl resource get -t monitor -w curriculum -a
 
 # Expected output
@@ -177,7 +177,7 @@ You can also access the details of any created Monitor through the DataOS GUI in
 
 ### **Step 5: Get the Runtime status of the Monitor**
 
-```shell
+```bash
 dataos-ctl get runtime -t monitor -w public -n monitorthemisnew01
 # Expected output
 dataos-ctl resource get runtime -t monitor -w public -n monitorthemisnew01
@@ -215,7 +215,7 @@ INFO[0001] 🔍 monitor...complete
 
 - To check the incident messages use the following command:
 
-  ```shell
+  ```bash
   dataos-ctl develop observability incident -i ${runID}
 
   dataos-ctl develop observability incident -i dkzlw8l3nksg

@@ -7,7 +7,7 @@
 
 Imagine you are a DataOS Operator or Data Product Developer and you need to integrate various data sources within DataOS. For this example, the data for your use case is stored in PostgreSQL and Azure BLOB Storage.
 
-By setting up Depots, you can securely connect to these systems and enable data access for exploration, workflows, and data product creation—right within DataOS.
+By setting up Depots, you can securely connect to these systems and enable data access for exploration, workflows, and Data Product creation—right within DataOS.
 
   > We'll walk through a PostgreSQL Depot creation example, but the process applies to any JDBC-compatible system like MySQL, MariaDB, or MSSQL Server.
 
@@ -175,7 +175,7 @@ This command displays the details of the configured Depot, confirming that it is
 🗣 Ensure that the name of your Instance secret is ${depot-name}-${acl}. For instance, if your Depot name is postgres and the acl(access control list) is rw, then the instance secret name will be postgres-rw.
 </aside>
 
-🎯 **Your Actions:** 
+🎯 **Your actions:** 
 
 1. **Ensure you have Postgres connection details**: Hostname, port, database, etc. Contact your DevOps team if needed.
 2. Refer to instance secrets (created in the previous step) in the depot yaml.

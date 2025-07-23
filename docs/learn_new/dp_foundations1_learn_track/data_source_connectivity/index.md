@@ -2,7 +2,7 @@
 # Source Data Connectivity
 
 !!! info "Overview"
-    Before you can build a data product, you need to connect to the data itself. In this module, you’ll learn how to configure **Depots** in DataOS—your gateway to accessing external data sources securely.
+    Before you can build a Data Product, you need to connect to the data itself. In this module, you’ll learn how to configure **Depots** in DataOS—your gateway to accessing external data sources securely.
 
 ---
 
@@ -109,7 +109,7 @@ Before diving into configuring data source connections, make sure you have every
      ```
 
 4. **Install any IDE, such as Visual Studio Code**  
-   This is necessary for creating YAML files for your data product. Installation links for various operating systems are provided below:
+   This is necessary for creating YAML files for your Data Product. Installation links for various operating systems are provided below:
 
     - **Linux**: [Install VS Code on Linux](https://code.visualstudio.com/docs/setup/linux)  
     - **Windows**: [Install VS Code on Windows](https://code.visualstudio.com/docs/setup/windows)  

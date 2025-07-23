@@ -3,12 +3,11 @@
 !!! info "Overview"
     In this module, you’ll learn how to discover Data Products that meet your specific use cases. 
 
-
 ## 📘 Scenario
 
 As a data analyst supporting a new marketing campaign, you need quick access to reliable data on customer purchasing patterns, product trends, and past campaign results. Instead of chasing multiple teams for scattered data, use the Data Product Hub to instantly discover relevant, curated Data Products focused on customer behavior.
 
-> Explore the Hub to find a Data Product that helps you analyze sales and uncover product affinities—enabling smarter, loyalty-driven recommendations.
+<!-- > Explore the Hub to find a Data Product that helps you analyze sales and uncover product affinities—enabling smarter, loyalty-driven recommendations. -->
 
 ## Quick concepts
 
