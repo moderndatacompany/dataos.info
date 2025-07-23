@@ -59,12 +59,6 @@ views:
 
 ```
 
-<!-- <aside class="callout">
-
-To populate an Entity view on Iris, one must use the `export_to_iris` attribute. However, same is not the case in the Metric view.
-
-</aside> -->
-
 
 
 ### **Metrics-first approach**
@@ -209,86 +203,6 @@ views:
 
 - **Exploration**: Views can be explored using tools such as [Data Product Hub](/interfaces/data_product_hub/) which provides automated, dynamic dashboards for visualizing and analyzing performance metrics. These tools help detect anomalies and reveal trends over time. You can also query the view in Lens Studio directly.
 - **Activation**: Metrics can be embedded into operational workflows, triggering alerts, populating Excel models for cross-tab analysis, or integrated into email automation tools for marketing or retention strategies.
-<!-- 
-### **Lens Studio**
-
-To explore the views via **Lens Studio,** follow the below steps:
-
-**Step 1: Access Lens Studio** Navigate to the DataOS Home Page and click on **Lens2**.
-
-  <div style="text-align: center;">
-      <img src="/resources/lens/working_with_views/lens01.png" alt="Tables and Views" style="max-width: 80%; height: auto; border: 1px solid #000;">
-      <figcaption> Home Page </figcaption>
-  </div>
-
-  - This action will open a Lens Studio page, as shown below. Here, you will be greeted with a welcome message that includes a link redirecting you to [Metis](/interfaces/metis/), where you can discover the list of lens resource.
-
-  <div style="text-align: center;">
-      <img src="/resources/lens/working_with_views/lens02.png" alt="Tables and Views" style="max-width: 80%; height: auto; border: 1px solid #000;">
-      <figcaption> Lens Studio Page </figcaption>
-  </div>
-
-**Step 2: View the list of Lenses**
-
-  - From the given list of Lens, users can select the desired lens to explore.
-
-  - Users can search for a specific Lens in the Resource section using the search bar.
-
-  - Additionally, advanced filter options are available to narrow down the list of Lens. Filters allow users to sort all Lenses by parameters such as domain, owner, source, state, tags, tier, and workspace.
-
-
-  <div style="text-align: center;">
-      <img src="/resources/lens/working_with_views/lens03.png" alt="Tables and Views" style="max-width: 80%; height: auto; border: 1px solid #000;">
-      <figcaption> Metis </figcaption>
-  </div>
-
-
-
-**Step 3: Selecting a Lens** 
-
-- Select a desired Lens from the list to explore. For example, apply the advanced filter state: active to filter only the active Lens. From the filtered list, select the Lens **Churn Prediction** to view detailed information, including metadata, usage history, and related resources.
-
-<div style="text-align: center;">
-    <img src="/resources/lens/working_with_views/lens04.png" alt="Tables and Views" style="max-width: 80%; height: auto; border: 1px solid #000;">
-    <figcaption> Metis search and filter Lens </figcaption>
-</div>
-
-
-- Upon selection, the corresponding interface for the selected lens will open.\
-
-- Click on the **Explore in Studio** button.
-<div style="text-align: center;">
-    <img src="/resources/lens/working_with_views/lens05.png" alt="Tables and Views" style="max-width: 80%; height: auto; border: 1px solid #000;">
-    <figcaption> Lens in Metis </figcaption>
-</div>
-
-**Step 4: Exploring a View**
-
-- In the **Explore** interface, click the **View** tab to query and access all associated views.
-- Select a view from the list to display its available measures and dimensions in the dropdown menu.
-- Choose the required measures and dimensions, then click the **Run Query** button to execute the query.
-
-<div style="text-align: center;">
-    <img src="/resources/lens/working_with_views/lens06.png" alt="Tables and Views" style="max-width: 80%; height: auto; border: 1px solid #000;">
-    <figcaption> Views in Lens Explorer </figcaption>
-</div> -->
-
-<!-- 
-### **Iris Board in Metis**
-
-To explore the view via Iris Board, follow the same steps as above to navigate to the Lens Studio page.
-
-<div style="text-align: center;">
-    <img src="/resources/lens/working_with_views/iris01.png" alt="Tables and Views" style="max-width: 80%; height: auto; border: 1px solid #000;">
-    <figcaption> Iris button on Metis </figcaption>
-</div>
-
-Once on the Lens Studio page, click the Iris button located beside the Explore button to explore the view via the Iris Board. An Iris board exploration page will be displayed, listing all the views.
-
-<div style="text-align: center;">
-    <img src="/resources/lens/working_with_views/iris02.png" alt="Tables and Views" style="max-width: 80%; height: auto; border: 1px solid #000;">
-    <figcaption> View in Iris </figcaption>
-</div> -->
 
 ### **Exploring Views on Data Products Hub**
 
@@ -334,12 +248,6 @@ Follow these steps to explore views and metrics within the Data Products Hub.
     <img src="/resources/lens/working_with_views/dph4.png" alt="Tables and Views" style="max-width: 80%; height: auto; border: 1px solid #000;">
     <figcaption> Data Lineage </figcaption>
 </div>
-    
-
-<!-- **Step 5: Access the Iris board for Metric analysis**
-
-- Click on the Quick Insights link at the **References** section's top-right corner.
-- This will take you directly to the **Iris Board**, where you can observe and analyze the metric view in more detail. -->
 
 **Step 5: Navigate to the Data Product Hub Studio**
 

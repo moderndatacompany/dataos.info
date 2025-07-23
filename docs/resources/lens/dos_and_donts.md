@@ -1,6 +1,6 @@
 # Best practices of semantic model built using Lens 
 
-This documentation outlines essential guidelines while creating a semantic model, highlighting key best practices, such as when to create views and how to avoid common errors. and do's and don't's.
+This documentation outlines essential guidelines while creating a semantic model, highlighting key best practices, such as when to create views and how to avoid common errors and do's and don't's.
 
 ## Do's
 
