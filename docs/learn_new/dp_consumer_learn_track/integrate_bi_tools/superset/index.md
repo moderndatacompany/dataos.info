@@ -1,10 +1,11 @@
 # Superset
 
-In this topic, you’ll learn how to activate a data product through Apache Superset to create interactive dashboards and extract actionable insights.
+!!! info "Overview
+    In this topic, you’ll learn how to activate a data product through Apache Superset to create interactive dashboards and extract actionable insights.
 
-### Steps to connect Superset with DataOS
+## Steps to connect Superset with DataOS
 
-1. **Access Superset Integration**
+1. **Access Superset integration**
     
     Go to the 'Access Options' tab for your Data product in Data Product Hub. Under the 'BI Sync'
     
@@ -12,14 +13,14 @@ In this topic, you’ll learn how to activate a data product through Apache Supe
     
     ![superset_sync.png](/learn_new/dp_consumer_learn_track/integrate_bi_tools/superset/superset_sync.png)
     
-2. **Initiate the Connection**
+2. **Initiate the connection**
     
     Click on 'Add Connection' under the Superset option. This action will open a new window where you’ll enter your credentials to link DataOS with Superset.
     
 
     ![superset_conn.png](/learn_new/dp_consumer_learn_track/integrate_bi_tools/superset/superset_conn.png)
 
-3. **Enter Superset Credentials**
+3. **Enter Superset credentials**
     
     In the setup window, fill in the required credentials:
     
@@ -40,6 +41,6 @@ In this topic, you’ll learn how to activate a data product through Apache Supe
     
     After activation, go to the DataOS homepage. Scroll to the 'Apache Superset' section, click on 'Datasets', and locate your activated data product available as datasets. You’re now ready to start visualizing and building analytical dashboards.
     
-6. **Creating Visualizations in Superset**
+6. **Creating visualizations in Superset**
     
     To create a chart, select datasets labeled with the data product name. Choose the 'Measures' and 'Dimensions' that best suit your analysis goals. This enables you to explore and analyze data directly from the 'Product Affinity' model within Superset, making it easy to generate insights.

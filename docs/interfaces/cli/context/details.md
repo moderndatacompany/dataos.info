@@ -39,7 +39,7 @@ Flags:
 ## `product`
 Manage products and releases for the current DataOS® context
 
-```shell
+```bash
 
 Usage:
   dataos-ctl context product [command]
@@ -57,7 +57,7 @@ Flags:
 ### **`create-inputs`**
 Create inputs assets for the specified product and release and model
 
-```shell
+```bash
 
 Usage:
   dataos-ctl context product create-inputs [flags]
@@ -74,7 +74,7 @@ Flags:
 ### **`create-install`**
 Create install assets for the specified product and release and model
 
-```shell
+```bash
 
 Usage:
   dataos-ctl context product create-install [flags]
@@ -89,7 +89,7 @@ Flags:
 ```
 ### **`interpolate`**
 
-```shell
+```bash
 Interpolates a file
 
 Usage:
@@ -103,7 +103,7 @@ Flags:
 
 ### **`list`**
 
-```shell
+```bash
 List entitled products and releases for the current DataOS® context
 
 Usage:

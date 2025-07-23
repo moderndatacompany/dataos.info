@@ -6,19 +6,36 @@ search:
 
 # Flare Stack
 
-Flare is a declarative [Stack](/resources/stacks/) for large-scale data processing within DataOS. It leverages a YAML-based declarative programming paradigm, built as an abstraction over Apache Spark, to provide a comprehensive solution for data ingestion, transformation, enrichment, profiling, quality assessment and syndication on both batch and streaming data.
+Flare is a declarative [Stack](/resources/stacks/) for large-scale data processing within DataOS. It leverages a manifest file–based declarative programming paradigm, built as an abstraction over Apache Spark, to provide a comprehensive solution for data ingestion, transformation, enrichment, profiling, quality assessment, and syndication across both batch and streaming data.
+
+
+!!! tip "Flare Stack in the Data Product Lifecycle"
+
+      The Flare Stack plays a central role in the Data Product Lifecycle within DataOS. Its declarative, manifest-driven design abstracts Apache Spark to streamline high-volume data processing.
+
+      **Key Functions in the Lifecycle:**
+
+      •  **Ingestion and Transformation:** Enables seamless ingestion and transformation of data from diverse sources into the data lake.
+
+      •  **Data Quality Assurance:** Supports validation of datasets against predefined assertions, ensuring data integrity and relevance.
+
+      •  **Batch and Streaming Processing:** Accommodates both real-time data streams and historical datasets through flexible job configurations.
+
+      •  **Operational Optimization:** Executes scheduled maintenance and performance tuning through action jobs.
+
+      Integrating the Flare Stack into the data lifecycle allows DataOS to deliver structured, high-quality data products aligned with organizational requirements. This enables efficient transformation of raw data into actionable assets for business decision-making.
 
 
 <figure>
-  <img src="/resources/stacks/flare/flare_overview.png" alt="Flare Overview" style="width:31rem;" />
+  <img src="/resources/stacks/flare/flare_overview.png" alt="Flare Overview" style="width:31rem; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);" />
   <figcaption><i>Placement of Flare Stack within DataOS</i></figcaption>
 </figure>
 
 
-## Syntax of Flare YAML configuration
+## Syntax of Flare manifest file configuration
 
 ![Flare YAML Configuration Syntax](/resources/stacks/flare/flare_syntax.png)
-<center><i>Flare YAML Configuration Syntax</i></center>
+<center><i>Flare manifest file Configuration Syntax</i></center>
 
 ## How to create jobs using Flare Stack
 
@@ -36,13 +53,13 @@ Flare Stack offers varied configuration to execute different types of [Jobs](/re
 | **Data Quality Job** | Validates data using user-defined assertions to ensure accuracy and fitness for purpose.                                                          | Business validation, compliance checks.                                            | Medium               | Medium                  |
 | **Incremental Job**| Processes only new or changed data since the last run, reducing computation.                                                                       | Large, frequently changing datasets.                                               | Low                  | Low (scales efficiently) |
 | **Stream Job**     | Continuously processes real-time data with very low latency requirements.                                                                          | Real-time use cases requiring <1-minute latency.                                   | Very Low             | Very High               |
-| **Action Job**     | Executes maintenance actions on depots using Iceberg format (e.g., compaction, cleanup).                                                           | Data maintenance tasks in Icebase or similar depots.                              | Depends on action     | Depends on action type  |
+| **Action Job**     | Executes maintenance actions on Depots using Iceberg format (e.g., compaction, cleanup).                                                           | Data maintenance tasks in Icebase or similar Depots.                              | Depends on action     | Depends on action type  |
 
 
 
 ### **Batch Job**
 
-Batch Jobs involve recomputing all changed datasets during each run, ensuring consistent end-to-end performance over time. However, they suffer from high latency as all data must be processed, even if it hasn't changed since the last synchronization. When a large volume of new data is introduced, batch jobs can become excessively costly and time-consuming. For smaller data sizes, running batch jobs for various transformation tasks is recommended. However, as data size grows and changes, [incremental jobs](#incremental-job) are a better option. Simple batch jobs typically involve reading data from one depot (depot A), performing transformations, and writing the data to another depot (depot B). To explore case scenario for a Batch Job, refer to the link: [Case Scenarios: Batch Jobs](/resources/stacks/flare/case_scenario/#batch-jobs).
+Batch Jobs involve recomputing all changed datasets during each run, ensuring consistent end-to-end performance over time. However, they suffer from high latency as all data must be processed, even if it hasn't changed since the last synchronization. When a large volume of new data is introduced, batch jobs can become excessively costly and time-consuming. For smaller data sizes, running batch jobs for various transformation tasks is recommended. However, as data size grows and changes, [incremental jobs](#incremental-job) are a better option. Simple batch jobs typically involve reading data from one Depot (Depot A), performing transformations, and writing the data to another Depot (Depot B). To explore case scenario for a Batch Job, refer to the link: [Case Scenarios: Batch Jobs](/resources/stacks/flare/case_scenario/#batch-jobs).
 
 <!-- Apart from regular batch jobs, there are three specialized types of batch jobs designed for specific scenarios: [Data Profiling Jobs](#data-profiling-job), [Data Quality Jobs](#data-quality-job), and [Incremental Jobs](#incremental-job).
 
@@ -77,7 +94,7 @@ Stream Jobs continuously process incoming data in real-time. They offer low late
 
 ### **Action Job**
 
-The DataOS platform provides comprehensive support for executing maintenance actions jobs within the depots supporting the Iceberg table format such as Icebase. These are specified within the actions section. To explore action-specific properties for Action Jobs, click here. For a case scenario illustrating how a action job is declared within DataOS, refer to the link: [Case Scenario: Action Job](/resources/stacks/flare/case_scenario/#flare-actions).
+The DataOS platform provides comprehensive support for executing maintenance actions jobs within the Depots supporting the Iceberg table format such as Icebase. These are specified within the actions section. To explore action-specific properties for Action Jobs, click here. For a case scenario illustrating how a action job is declared within DataOS, refer to the link: [Case Scenario: Action Job](/resources/stacks/flare/case_scenario/#flare-actions).
 
 <!-- | Flare Job Type  | Description                                                                                                            |
 |-----------------|------------------------------------------------------------------------------------------------------------------------|
@@ -86,23 +103,25 @@ The DataOS platform provides comprehensive support for executing maintenance act
 | [Data Quality Job](/resources/stacks/flare/job_types#data-quality-job) | Evaluates data quality based on business-specific validation rules (assertions).                                                      |
 | [Incremental Job](/resources/stacks/flare/job_types#incremental-job) | Computes only the changed rows or files of data since the last build, reducing overall computation and latency.        |
 | [Stream Job](/resources/stacks/flare/job_types#stream-job)      | Processes new data continuously with low latency, but incurs high computing costs and requires constant resource availability. |
-| [Action Job](/resources/stacks/flare/job_types#action-job)      | Performs maintenance actions on data stored in Iceberg format in any depot (including Icebase) |  -->
-
-<!-- Further information regarding Flare Jobs can be accessed [here](/resources/stacks/flare/job_types) -->
+| [Action Job](/resources/stacks/flare/job_types#action-job)      | Performs maintenance actions on data stored in Iceberg format in any depot (including Icebase) | 
 
 
 
-## Attributes in Flare Stack YAML configuration
+Further information regarding Flare Jobs can be accessed [here](/resources/stacks/flare/job_types) -->
 
-The Flare Stack YAML consists of multitude of configuration settings tailored for different use cases. These settings govern data reading, writing, and transformation from diverse sources and destinations. 
 
-[Flare Stack YAML Configurations](/resources/stacks/flare/configurations/)
 
-## Flare functions
+## Attributes in Flare Stack manifest configuration
 
-- [Flare functions](/resources/stacks/flare/functions/list/)
+The Flare Stack manifest comprises a wide range of configuration parameters designed to support various use cases. These configurations control how data is read, written, and transformed across multiple source and destination systems. Refer to the [Flare Stack Manifest Configurations](/resources/stacks/flare/configurations/) for detailed documentation.
 
-<!-- ## How to test Flare Jobs
+
+<!-- ## Flare functions
+
+- [Flare functions](/resources/stacks/flare/functions/list/) 
+
+
+ ## How to test Flare Jobs
 
 Before deploying your logic into production, thorough testing is crucial. Flare Standalone provides a powerful and reliable testing interface, allowing you to test your Flare Jobs locally on your system. It helps identify and address potential issues before deployment. Further information regarding Flare Standalone can be accessed by clicking the link below.
 
@@ -110,18 +129,22 @@ Before deploying your logic into production, thorough testing is crucial. Flare 
 
 ## How to optimize jobs in Flare
 
-To achieve peak performance based on specific requirements, each job executed on the Flare stack requires fine-tuning and optimization. Detailed information on available optimization techniques is provided in the following link.
+To ensure optimal performance under different workloads, each job executed on the Flare Stack requires specific tuning and optimization. Refer to [Flare Optimizations](/resources/stacks/flare/optimizations/) for detailed techniques.
 
-[Flare Optimizations](/resources/stacks/flare/optimizations/)
 
-## Pre-defined Flare YAML configuration templates
+## Pre-defined Flare manifest file configuration templates
 
-Refer to the following page for a comprehensive list of available connecting depots in Flare, along with detailed information pertaining to the configurations associated with each depot. 
+For a complete list of available Depot connectors in Flare, along with the associated configuration details, see [Flare Configuration Templates](/resources/stacks/flare/configuration_templates/).
 
-[Flare Configuration Templates](/resources/stacks/flare/configuration_templates/)
 
 ## Case Scenarios
 
-Explore practical case scenarios that exemplify the application of Flare stack in real-world data processing scenarios. Click on the link below, to know more.
+To review implementation examples that demonstrate the practical application of the Flare Stack in real-world data processing workflows, refer to the [Case Scenario](/resources/stacks/flare/case_scenario/).
 
-[Case Scenario](/resources/stacks/flare/case_scenario/)
+
+
+
+
+
+
+

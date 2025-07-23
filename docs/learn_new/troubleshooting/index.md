@@ -1,12 +1,8 @@
 # Troubleshooting Guide
 
 
-<aside class="callout">
-🗣
-
-**Note:** These are some common errors you may encounter when starting with DataOS to create Data Products. This guide aims to help users troubleshoot typical issues. It is not an exhaustive list but covers key scenarios to assist users. For more in-depth information, please refer to the detailed documentation at [dataos.info](https://dataos.info/).
-
-</aside>
+!!! info "Overview"
+    Creating Data Products in DataOS can be powerful—but like any platform, the early stages may come with a few challenges. This guide outlines common errors and how to resolve them, helping you troubleshoot faster and build with confidence. It’s not a complete list, but it covers the issues most users face when getting started. For more in-depth information, please refer to the detailed documentation at <a href="https://dataos.info/">dataos.info</a>
 
 ## Depot Related Errors
 

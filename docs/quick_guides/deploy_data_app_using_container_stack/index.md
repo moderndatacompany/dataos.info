@@ -17,7 +17,7 @@ To illustrate the process, we'll create a simple Streamlit application. Streamli
     
     Run the application on your machine. When you run this application locally, it will be launched in your default web browser.
     
-    ```shell
+    ```bash
     streamlit run {path}/appname.py
     ```
     

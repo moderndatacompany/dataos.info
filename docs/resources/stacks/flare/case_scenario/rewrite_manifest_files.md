@@ -1,7 +1,7 @@
 # Rewrite Manifest Files
 
 
-When a table’s write pattern doesn’t align with the query pattern, metadata can be rewritten to re-group data files into manifests using `rewrite_manifest` [action](/resources/stacks/flare/configurations/#rewrite_manifest)
+When a table’s write pattern doesn’t align with the query pattern, metadata can be rewritten to re-group data files into manifests using [`rewrite_manifest` action](/resources/stacks/flare/configurations/#rewrite_manifest)
 
 ## Configurations
 
@@ -10,7 +10,7 @@ When a table’s write pattern doesn’t align with the query pattern, metadata 
 | use_caching   | boolean | Use caching during the operation. Defaults to true. |
 
 
-## Code Snippet
+## Code Snippet Example 01
 
 The below case scenario depicts rewriting manifest files of dataset stored within the Lakehouse Depot using the `rewrite_manifest` action. 
 
@@ -43,7 +43,7 @@ workflow: # Workflow Section
                 input: inputDf # Input Dataset Name
 ```
 
-## Example 2
+## Code Snippet Example 02
 
 The below case scenario depicts rewriting manifest files of dataset stored within the Lakehouse    using the `rewrite_manifest` action with `useCaching` as False. 
 

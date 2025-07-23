@@ -1,7 +1,7 @@
 # Building and Maintaining Data Pipelines
 
 !!! info "Overview"
-    In this topic, you’ll learn how to build and maintain data pipelines to deliver reliable data for your data products. Your focus will be on maintaining seamless data flow, ensuring data accuracy, and applying the necessary transformations when needed.
+    In this topic, you’ll learn how to build and maintain data pipelines to deliver reliable data for your Data Products. Your focus will be on maintaining seamless data flow, ensuring data accuracy, and applying the necessary transformations when needed.
 
 
 DataOS enables you to explore your data without the need to move it. However, there are scenarios where data transformations are necessary to prepare it for use—for example, converting string fields to integers or doubles. In such cases, we ingest the data and apply the required transformations before it can be effectively utilized.
@@ -10,7 +10,7 @@ DataOS enables you to explore your data without the need to move it. However, th
 
 ## 📘 Scenario
 
-You’re a Data Engineer responsible for transforming raw data into structured datasets for analytics. In this scenario, you're working with CSV files stored in Azure Blob Storage. Your goal is to ingest this raw data into DataOS, apply type conversions (e.g., string to numeric), and prep it for downstream data products.
+You’re a Data Engineer responsible for transforming raw data into structured datasets for analytics. In this scenario, you're working with CSV files stored in Azure Blob Storage. Your goal is to ingest this raw data into DataOS, apply type conversions (e.g., string to numeric), and prepare it for downstream Data Products.
 
 <aside class="callout">
 🗣 
@@ -74,7 +74,7 @@ Here are the available Stacks to handle various processing needs.
 
 Prepare your manifest file to configure the pipeline. 
 
-🎯 Your Actions: 
+🎯 **Your Actions: **
 
 1. Specify the Workflow Resource, define the input and output data sources, and integrate the Flare Stack. 
 2. Customize the SQL query (used for transformations) for your dataset. The provided query in the `steps` section already include transformations like casting string fields to numerical types.
@@ -127,7 +127,7 @@ Prepare your manifest file to configure the pipeline.
     dataos-ctl workspace create -n <workspacename>
     ```
     
-    To learn more, refer to https://dataos.info/interfaces/cli/workspace/details/#create.
+    To learn more, refer to [Workspaces](https://dataos.info/interfaces/cli/workspace/details/#create).
 
 4. Deploy the workflow in the personal workspace using the following command. This applies only to workspace-level resources. 
     

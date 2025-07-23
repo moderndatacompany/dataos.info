@@ -26,7 +26,7 @@ Group related components—workflows, scripts, models—into a single bundle for
     type: bundle
     tags:
     - dataproduct
-    description: This bundle resource is for the product affinity data product.
+    description: This bundle resource is for the product affinity Data Product.
     layer: "user"
     bundle:
     resources:
@@ -61,7 +61,7 @@ Group related components—workflows, scripts, models—into a single bundle for
     ```
 ## Step 2: Create the Data Product Specification file
 
-Document key metadata, purpose, and the structure of your data product.
+Document key metadata, purpose, and the structure of your Data Product.
 
 🎯 **Your actions:**
 
@@ -147,7 +147,7 @@ To make your product discoverable in the Data Product Hub and Metis, apply a sca
 
 1. Create a scanner.yaml file using the template.
 
-2. Replace the includes field with your data product name.
+2. Replace the includes field with your Data Product name.
 
 3. Apply using:
 
@@ -160,11 +160,11 @@ dataos-ctl apply -f scanner.yaml
 version: v1
 name: scan-data-product-xx
 type: workflow
-description: Registers the data product in the Data Product Hub.
+description: Registers the Data Product in the Data Product Hub.
 workflow:
   dag:
     - name: scan-data-product-job
-      description: Scans and registers the data product.
+      description: Scans and registers the Data Product.
       spec:
         tags:
           - scanner2
@@ -178,7 +178,7 @@ workflow:
               markDeletedDataProducts: true
               dataProductFilterPattern:
                 includes:
-                 - productaffinity # data product details
+                 - productaffinity # Data Product details
 ```
 </details>
 
@@ -186,7 +186,7 @@ workflow:
 
 **🎯 Your Actions:**
 
-1. Run the following command in your terminal to list your data products.
+1. Run the following command in your terminal to list your Data Products.
     
     ```bash
     ~ dataos-ctl product get
@@ -204,7 +204,7 @@ workflow:
     
     ![dp_on_dph.png](/learn_new/dp_foundations2_learn_track/deploy_sm/productaffinity.png)
     
-2. Click on the data product to view its details.
+2. Click on the Data Product to view its details.
     ![dp_on_dph.png](/learn_new/dp_foundations2_learn_track/deploy_sm/productaffinity_details.png)
 
 <aside class="callout">

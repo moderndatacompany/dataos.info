@@ -4,7 +4,7 @@
 
 The following command can be used to create a dataset.
 
-```shell
+```bash
 dataos-ctl dataset -a ${{udl}} create \
 -f ${{manifest-file-path}}
 ```
@@ -51,20 +51,20 @@ INFO[0003] 📂 create dataset...completed
 
 The `get` command to fetch a dataset is given below.
 
-```shell
+```bash
 dataos-ctl dataset -a ${{udl}} get
 ```
 **Example**
 
 If the dataset to be fetched is stored at the udl address - `dataos://icebase:retail/city` the command will be as follows:
 
-```shell
+```bash
 dataos-ctl dataset -a dataos://icebase:retail/city get
 ```
 
 Expected Output
 
-```shell
+```bash
 INFO[0000] 📂 get dataset...                             
 
 schema:
@@ -94,7 +94,7 @@ To drop a dataset that already exists within the Icebase depot, you can use the 
 
 **Command**
 
-```shell
+```bash
 dataos-ctl dataset -a ${{udl}} drop
 # OR
 dataos-ctl dataset -a ${{udl}} drop -p false # -p flag is Purge Value (its by default: false)
@@ -105,7 +105,7 @@ dataos-ctl dataset -a ${{udl}} drop --purge false
 **Example**
 
 
-```shell
+```bash
 dataos-ctl dataset -a dataos://icebase:retail/city drop
 # OR
 dataos-ctl dataset -a dataos://icebase:retail/city drop -p false # -p flag is Purge Value (its by default: false)
@@ -115,7 +115,7 @@ dataos-ctl dataset -a dataos://icebase:retail/city drop --purge false
 
 Output
 
-```shell
+```bash
 INFO[0000] 📂 drop dataset...                            
 INFO[0001] 📂 drop dataset...completed
 ```
@@ -126,7 +126,7 @@ To drop an existing dataset such that both the entry from the metastore gets del
 
 **Command**
 
-```shell
+```bash
 dataos-ctl dataset -a ${{udl}} drop -p true # -p flag is Purge Value (its by default: false)
 # OR
 dataos-ctl dataset -a ${{udl}} drop --purge true
@@ -134,7 +134,7 @@ dataos-ctl dataset -a ${{udl}} drop --purge true
 
 **Example**
 
-```shell
+```bash
 dataos-ctl dataset -a dataos://icebase:retail/city drop -p true # -p flag is Purge Value (its by default: false)
 # OR
 dataos-ctl dataset -a dataos://icebase:retail/city drop --purge true
@@ -142,7 +142,7 @@ dataos-ctl dataset -a dataos://icebase:retail/city drop --purge true
 
 Output
 
-```shell
+```bash
 INFO[0000] 📂 drop dataset...                            
 INFO[0001] 📂 drop dataset...completed
 ```

@@ -1,15 +1,15 @@
 # Creating a Deployable Bundle Resource
 
 !!! info "Overview"
-    After creating and testing all necessary components, it's time to assemble them into a single, deployable unit using a Bundle Resource in DataOS. This bundle acts as the foundation of your data product, packaging all production ready Resources, ensuring consistent and scalable deployments across environments.
+    After creating and testing all necessary components, it's time to assemble them into a single, deployable unit using a Bundle Resource in DataOS. This bundle acts as the foundation of your Data Product, packaging all production ready Resources, ensuring consistent and scalable deployments across environments.
 
 ## 📘 Scenario
 
-In our source-aligned retail data product, a bundle in DataOS packages ingestion, quality checks, monitors, and pagers into a single deployable unit. It keeps everything connected and consistent, making it easy to deploy the product across enironments with minimal setup.
+In our source-aligned retail Data Product, a bundle in DataOS packages ingestion, quality checks, monitors, and pagers into a single deployable unit. It keeps everything connected and consistent, making it easy to deploy the product across enironments with minimal setup.
 
 ## Quick concepts
 
-- A Bundle Resource in DataOS is a standardized way to deploy multiple resources, data products, or applications at once. It lets data developers easily manage the deployment, scheduling, and creation of related resources in a single step.
+- A Bundle Resource in DataOS is a standardized way to deploy multiple resources, Data Products, or applications at once. It lets data developers easily manage the deployment, scheduling, and creation of related resources in a single step.
 
 - The Bundle acts like a flattened DAG (directed acyclic graph) where each node is a DataOS Resource, linked by dependencies.
 
