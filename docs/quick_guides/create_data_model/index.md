@@ -847,7 +847,7 @@ The YAML configuration contains the various attributes and nested sections.
     | --- | --- |
     <!-- | `export_to_iris` | Boolean flag indicating if the view should be exported to Iris. |
     | `iris` | Configuration related to Iris export settings. | -->
-    | `timeseries` | Field used for time series data in Iris. |
+    | `timeseries` | Field used for time series data. |
     | `available_time_zones` | List of time zones available for time series data. |
 
 3. **`tables`** 
