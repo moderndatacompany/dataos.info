@@ -185,16 +185,6 @@ lens:
         cpu: 1000m
         memory: 2548Mi
 
-# Iris configuration 
-  # iris: #(optional)
-  #   logLevel: info # Log level for Iris (optional)
-  #   resources: # CPU and memory resource specifications for the iris board (optional)
-  #     requests:
-  #       cpu: 200m
-  #       memory: 256Mi
-  #     limits:
-  #       cpu: 1600m
-  #       memory: 2240Mi
 # Metric configuration 
   metric:                         #(optional)
     logLevel: info # Log level for metrics (optional)
