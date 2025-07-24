@@ -331,6 +331,9 @@ nav:
             - Oracle: resources/depot/create_depot/oracle.md
             - PostgreSQL: resources/depot/create_depot/postgre.md
             - Snowflake: resources/depot/create_depot/snowflake.md
+          - Supported Table Format:
+            - Iceberg: resources/depot/iceberg_table_format.md
+            - Delta: resources/depot/delta_table_format.md
           - Configurations: resources/depot/configurations.md
           - Governance: resources/depot/governance.md
           - Observability: resources/depot/observability.md
