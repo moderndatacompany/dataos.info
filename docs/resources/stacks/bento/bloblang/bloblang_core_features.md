@@ -6,7 +6,7 @@ Bloblang is implemented as a processor and supports usage within function interp
 
 Mappings can also be executed from the command line using the `blobl` subcommand.
 
-```shell
+```bash
 $ cat data.jsonl | bento blobl 'foo.(bar | baz).buz'
 ```
 The document describes the core features of the Bloblang language. For users unfamiliar with Bloblang, it is recommended to visit [Bloblang Overview](/resources/stacks/bento/bloblang/walkthrough) prior to proceeding.
@@ -17,7 +17,7 @@ A [Bloblang mapping](/resources/stacks/bento/components/processors/mapping/) exp
 
 The keyword root on the left-hand side refers to the root of the new document, the keyword this on the right-hand side refers to the current context of the query, which is the read-only input document when querying from the root of a mapping:
 
-```yaml
+```go
 root.id = this.thing.id
 root.type = "yo"
 
@@ -30,7 +30,7 @@ content = thing.doc.message
 
 Since the document being created starts off empty it is sometimes useful to begin a mapping by copying the entire contents of the input document, which can be expressed by assigning this to root.
 
-```yaml
+```go
 root = this
 root.foo = "added value"
 
@@ -44,7 +44,7 @@ If the new document root is never assigned to or otherwise mutated then the orig
 
 Quotes can be used to describe sections of a field path that contain whitespace, dots or other special characters:
 
-```yaml
+```go
 # Use quotes around a path segment in order to include whitespace or dots within
 # the path
 root."foo.bar".baz = this."buz bev".fub
@@ -57,7 +57,7 @@ root."foo.bar".baz = this."buz bev".fub
 
 Bloblang is able to map data that is unstructured, whether it's a log line or a binary blob, by referencing it with the content function, which returns the raw bytes of the input document:
 
-```yaml
+```go
 # Parse a base64 encoded JSON document
 root = content().decode("base64").parse_json()
 
@@ -67,7 +67,7 @@ root = content().decode("base64").parse_json()
 
 The newly mapped document can be unstructured by assigning a value type to the root of the document.
 
-```yaml
+```go
 root = this.foo
 
 # In:  {"foo":"hello world"}
@@ -80,7 +80,7 @@ The resulting message payload will consist of the raw value that has been assign
 
 It's possible to selectively delete fields from an object by assigning the function deleted() to the field path:
 
-```yaml
+```go
 root = this
 root.bar = deleted()
 
@@ -92,7 +92,7 @@ root.bar = deleted()
 
 Another type of assignment is a let statement, which creates a variable that can be referenced elsewhere within a mapping. Variables are discarded at the end of the mapping and are mostly useful for query reuse. Variables are referenced within queries with $:
 
-```yaml
+```go
 # Set a temporary variable
 let foo = "yo"
 
@@ -103,7 +103,7 @@ root.new_doc.type = $foo
 
 Bento messages contain metadata that is separate from the main payload. In Bloblang, the metadata of the resulting message can be modified using the `meta` assignment keyword. Metadata values are referenced within queries using the `@` prefix.
 
-```yaml
+```go
 # Reference a metadata value
 root.new_doc.bar = @kafka_topic
 
@@ -124,7 +124,7 @@ root.meta_obj = @
 
 The pipe operator (`|`), when used within brackets, enables coalescing of multiple candidates for a path segment. The first field that exists and contains a non-null value is selected.
 
-```yaml
+```go
 root.new_doc.type = this.thing.(article | comment | this).type
 
 # In:  {"thing":{"article":{"type":"foo"}}}
@@ -142,7 +142,7 @@ Opening brackets on a field begins a query where the context of this changes to 
 ## Literals
 Bloblang supports number, boolean, string, null, array and object literals:
 
-```yaml
+```go
 root = [
   7, false, "string", null, {
     "first": 11,
@@ -163,7 +163,7 @@ The values within literal arrays and objects can be dynamic query expressions, a
 
 Comments are started with a hash (#) and end with a line break:
 
-```yaml
+```go
 root = this.some.value # And now this is a comment
 ```
 
@@ -171,7 +171,7 @@ root = this.some.value # And now this is a comment
 
 Bloblang supports a range of boolean operators !, >, >=, ==, <, <=, &&, || and mathematical operators +, -, *, /, %:
 
-```yaml
+```go
 root.is_big = this.number > 100
 root.multiplied = this.number * 7
 
@@ -188,7 +188,7 @@ For more information about these operators and how they work check out the arith
 
 Use if expressions to perform maps conditionally:
 
-```yaml
+```go
 root = this
 root.sorted_foo = if this.foo.type() == "array" { this.foo.sort() }
 
@@ -201,7 +201,7 @@ root.sorted_foo = if this.foo.type() == "array" { this.foo.sort() }
 
 Multiple `if`–`else` queries can be added as needed, followed by an optional final fallback `else`.
 
-```yaml
+```go
 root.sound = if this.type == "cat" {
   this.cat.meow
 } else if this.type == "dog" {
@@ -224,7 +224,7 @@ root.sound = if this.type == "cat" {
 
 A `match` expression enables conditional mappings on a value. Each case must be either a boolean expression, a literal value for comparison against the target value, or an underscore (`_`) to capture any value not matched by a previous case.
 
-```yaml
+```go
 root.new_doc = match this.doc {
   this.type == "article" => this.article
   this.type == "comment" => this.comment
@@ -245,7 +245,7 @@ Within a match block the context of this changes to the pattern matched expressi
 
 Match cases can specify a literal value for simple comparison:
 
-```yaml
+```go
 root = this
 root.type = match this.type { "doc" => "document", "art" => "article", _ => this }
 
@@ -255,7 +255,7 @@ root.type = match this.type { "doc" => "document", "art" => "article", _ => this
 
 The match expression can also be left unset which means the context remains unchanged, and the catch-all case can also be omitted:
 
-```yaml
+```go
 root.new_doc = match {
   this.doc.type == "article" => this.doc.article
   this.doc.type == "comment" => this.doc.comment
@@ -265,20 +265,20 @@ root.new_doc = match {
 # Out: {"doc":{"type":"neither","content":"some other stuff unchanged"}}
 ```
 
-If no case matches then the mapping is skipped entirely, hence we would end up with the original document in this case.
+If no case matches then the mapping is skipped entirely, which result in the original document in this case.
 
 ## Functions
 
 Functions can be used in any position within a mapping to extract information from the environment, generate values, or access data from the underlying message.
 
-```yaml
+```go
 root.doc.id = uuid_v4()
 root.doc.received_at = now()
 root.doc.host = hostname()
 ```
 Functions support both named and nameless style arguments:
 
-```yaml
+```go
 root.values_one = range(start: 0, stop: this.max, step: 2)
 root.values_two = range(0, this.max, 2)
 ```
@@ -289,7 +289,7 @@ A complete list of functions and their parameters is available on the functions 
 
 Methods operate similarly to functions but are applied to a target value. They provide most of the expressive capability in Bloblang by enabling augmentation of query values. Methods can be appended to any expression, including other methods.
 
-```yaml
+```go
 root.doc.id = this.thing.id.string().catch(uuid_v4())
 root.doc.reduced_nums = this.thing.nums.map_each(num -> if num < 10 {
   deleted()
@@ -301,7 +301,7 @@ root.has_good_taste = ["pikachu","mewtwo","magmar"].contains(this.user.fav_pokem
 
 Methods also support both named and nameless style arguments:
 
-```yaml
+```go
 root.foo_one = this.(bar | baz).trim().replace_all(old: "dog", new: "cat")
 root.foo_two = this.(bar | baz).trim().replace_all("dog", "cat")
 ```
@@ -312,7 +312,7 @@ A complete list of methods and their parameters is available on the methods page
 
 Named maps can be defined to enable reuse of common mappings on values using the `apply` method.
 
-```yaml
+```go
 map things {
   root.first  = this.thing_one
   root.second = this.thing_two
@@ -331,7 +331,7 @@ Within a map, the keyword `root` refers to a newly created document that will re
 
 It's possible to import maps defined in a file with an import statement:
 
-```yaml
+```go
 import "./common_maps.blobl"
 
 root.foo = this.value_one.apply("things")
@@ -344,7 +344,7 @@ Imports from a Bloblang mapping within a Bento config are relative to the proces
 
 Assigning the root of a mapped document to the `deleted()` function deletes the message entirely.
 
-```yaml
+```go
 # Filter all messages that have fewer than 10 URLs.
 root = if this.doc.urls.length() < 10 { deleted() }
 ```
@@ -353,21 +353,21 @@ root = if this.doc.urls.length() < 10 { deleted() }
 
 Functions and methods can fail under certain circumstances, such as when they receive types they aren't able to act upon. These failures, when not caught, will cause the entire mapping to fail. However, the method catch can be used in order to return a value when a failure occurs instead:
 
-```yaml
+```go
 # Map an empty array to `foo` if the field `bar` is not a string.
 root.foo = this.bar.split(",").catch([])
 ```
 
 Since `catch` is a method it can also be attached to bracketed map expressions:
 
-```yaml
+```go
 # Map `false` if any of the operations in this boolean query fail.
 root.thing = ( this.foo > this.bar && this.baz.contains("wut") ).catch(false)
 ```
 
 And one of the more powerful features of Bloblang is that a single catch method at the end of a chain of methods can recover errors from any method in the chain:
 
-```yaml
+```go
 # Catch errors caused by:
 # - foo not existing
 # - foo not being a string
@@ -380,7 +380,7 @@ root.things = this.foo.split(",").map_each( ele -> ele.parse_json().catch({}) )
 
 However, the catch method only acts on errors, sometimes it's also useful to set a fall back value when a query returns null in which case the method or can be used the same way:
 
-```yaml
+```go
 # Map "default" if either the element index 5 does not exist, or the underlying
 # element is `null`.
 root.foo = this.bar.index(5).or("default")

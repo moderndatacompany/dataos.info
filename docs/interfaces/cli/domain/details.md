@@ -4,7 +4,7 @@ You run the following `domain` commands by appending them to *dataos-ctl domain*
 ## `apply`
 Apply domains in the DataOS®
 
-```shell
+```bash
 
 Usage:
   dataos-ctl domain apply [flags]
@@ -23,7 +23,7 @@ Flags:
 Delete domains in the DataOS®
 
 
-```shell
+```bash
 
 Usage:
   dataos-ctl domain delete [flags]
@@ -41,7 +41,7 @@ Flags:
 ## `get`
 Get domains in the DataOS®
 
-```shell
+```bash
 
 Usage:
   dataos-ctl domain get [flags]

@@ -545,7 +545,7 @@ To create a Cluster Resource within DataOS, you have two options:
 
     To create a Cluster Resource, you need to use the apply command on the CLI. The apply command for Cluster is given below:
 
-    ```shell
+    ```bash
     dataos-ctl resource apply -f ${{cluster-yaml-file-path}} -w ${{workspace name}}
     # Sample
     dataos-ctl resource apply -f dataproduct/themis-cluster.yaml -w curriculum
@@ -557,7 +557,7 @@ To create a Cluster Resource within DataOS, you have two options:
 
     Check the name of the newly created Cluster in the list of clusters created by you in a particular Workspace:
 
-    ```shell
+    ```bash
     dataos-ctl resource get -t cluster - w ${{workspace name}}
     # Sample
     dataos-ctl resource get -t cluster -w curriculum
@@ -565,7 +565,7 @@ To create a Cluster Resource within DataOS, you have two options:
 
     Alternatively, retrieve the list of all Workers created in the Workspace by appending `-a` flag:
 
-    ```shell
+    ```bash
     dataos-ctl resource get -t cluster -w ${{workspace name}} -a
     # Sample
     dataos-ctl resource get -t cluster -w curriculum

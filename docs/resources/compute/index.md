@@ -143,7 +143,7 @@ Additionally, if you are looking for pre-configured Compute templates tailored f
 
 Once the Compute YAML file is prepared, the [`apply`](/interfaces/cli/command_reference/#apply) command can be utilized to create a Compute Resource within the DataOS environment.
 
-```shell
+```bash
 dataos-ctl apply -f ${{path/file-name}}
 ```
 

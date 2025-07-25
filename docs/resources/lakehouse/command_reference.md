@@ -11,13 +11,13 @@ Applying the Lakehouse Resource manifest creates a Lakehouse Resource-instance i
 
 **Command**
 
-```shell
+```bash
 dataos-ctl resource apply -f ${manifest-file-path} -w ${workspace}
 ```
 
 **Alternate Command**
 
-```shell
+```bash
 dataos-ctl apply -f ${manifest-file-path} -w ${workspace}
 ```
 
@@ -34,7 +34,7 @@ dataos-ctl apply -f ${manifest-file-path} -w ${workspace}
 
 To apply a Lakehouse Resource manifest to a specific workspace, replace the placeholders with the actual file path and workspace name. For instance:
 
-```shell
+```bash
 dataos-ctl resource apply -f ./lakehouse/manifest.yaml -w testing
 ```
 
@@ -46,13 +46,13 @@ Retrieving the status of a specific Lakehouse provides insight into its current 
 
 **Command**
 
-```shell
+```bash
 dataos-ctl resource get -t lakehouse -w ${workspace-name}
 ```
 
 **Alternate Command**
 
-```shell
+```bash
 dataos-ctl resource get -t lakehouse -w ${workspace-name}
 ```
 
@@ -67,7 +67,7 @@ dataos-ctl resource get -t lakehouse -w ${workspace-name}
 
 To check the status of a Lakehouse in the 'curriculum' workspace:
 
-```shell
+```bash
 dataos-ctl resource get -t lakehouse -w curriculum
 ```
 
@@ -81,13 +81,13 @@ To overview the status of all Workers related to Lakehouse instances within a sp
 
 **Command**
 
-```shell
+```bash
 dataos-ctl resource get -t lakehouse -w ${workspace-name} -a
 ```
 
 **Alternate Command**
 
-```shell
+```bash
 dataos-ctl get -t lakehouse -w ${workspace-name} -a
 ```
 
@@ -100,7 +100,7 @@ dataos-ctl get -t lakehouse -w ${workspace-name} -a
 
 To obtain the status of all Workers in the 'curriculum' workspace:
 
-```shell
+```bash
 dataos-ctl resource get -t lakehouse -w curriculum -a
 ```
 
@@ -114,14 +114,14 @@ Generating the JSON schema for a Lakehouse, especially for a specified version, 
 
 **Command**
 
-```shell
+```bash
 dataos-ctl develop schema generate -t lakehouse -v ${version}
 
 ```
 
 **Sample Command**
 
-```shell
+```bash
 dataos-ctl develop schema generate -t lakehouse -v v1alpha
 
 ```
@@ -137,7 +137,7 @@ dataos-ctl develop schema generate -t lakehouse -v v1alpha
 
 To generate a JSON schema for a Lakehouse of version 'v1alpha':
 
-```shell
+```bash
 dataos-ctl develop schema generate -t lakehouse -v v1alpha
 
 ```
@@ -152,7 +152,7 @@ To obtain the JSON resource schema for a Lakehouse, especially for a specific ve
 
 **Command**
 
-```shell
+```bash
 dataos-ctl develop get resource -t lakehouse -v ${version}
 
 ```
@@ -172,7 +172,7 @@ Similar to generating the JSON schema, the flags `-t` and `-v` are used to speci
 
 For acquiring the JSON resource schema for a Lakehouse version 'v1alpha':
 
-```shell
+```bash
 dataos-ctl develop get resource -t lakehouse -v v1alpha
 
 ```
@@ -187,7 +187,7 @@ To delete a specific lakehouse, you can use the below command:
 
 **Command**
 
-```shell
+```bash
 dataos-ctl resource delete -t lakehouse -w ${workspace_name} -n ${lakehouse_name}
 ```
 
@@ -203,7 +203,7 @@ dataos-ctl resource delete -t lakehouse -w ${workspace_name} -n ${lakehouse_name
 
 **Example**
 
-```shell
+```bash
 dataos-ctl resource delete -t lakehouse -w curriculum -n bento3-lakehouse
 ```
 
@@ -221,7 +221,7 @@ This command enables users to list datasets within a specific depot and collecti
 
 **Command**
 
-```shell
+```bash
 dataos-ctl dataset list -a dataos://icebase:retail
 ```
 
@@ -234,7 +234,7 @@ dataos-ctl dataset list -a dataos://icebase:retail
 
 Upon executing the command, the output provides a list of datasets available under the specified depot and collection:
 
-```shell
+```bash
   DATASETS
 ──────────────────
   city_test
@@ -249,7 +249,7 @@ This command allows users to retrieve detailed information about a specific data
 
 **Command**
 
-```shell
+```bash
 dataos-ctl dataset  get -a dataos://${depot}:${collection}/${dataset}  #UDL
 ```
 
@@ -263,7 +263,7 @@ dataos-ctl dataset  get -a dataos://${depot}:${collection}/${dataset}  #UDL
 
 To retrieve information about the dataset located at `dataos://icebase:retail/city`, you can use the following command:
 
-```shell
+```bash
 dataos-ctl dataset  get -a dataos://icebase:retail/city
 ```
 
@@ -273,7 +273,7 @@ This command is used to drop a dataset specified by its unique dataset location 
 
 **Command**
 
-```shell
+```bash
 dataos-ctl dataset properties -a dataos://{collection}/{dataset}
 ```
 
@@ -285,7 +285,7 @@ dataos-ctl dataset properties -a dataos://{collection}/{dataset}
 
 **Example**
 
-```shell
+```bash
 dataos-ctl dataset -a dataos://icebase:retail/city drop
 ```
 
@@ -299,7 +299,7 @@ If this `-p`/`--purge` (Purge Value) is set to `true` (by default, this is `fals
 
 **Command**
 
-```shell
+```bash
 dataos-ctl dataset -a ${udl} drop -p false
 # OR
 dataos-ctl dataset -a ${udl} drop --purge false
@@ -322,7 +322,7 @@ This command allows users to retrieve properties of a specific dataset within a 
 
 **Command**
 
-```shell
+```bash
 dataos-ctl dataset properties -a dataos://{collection}/{dataset}
 ```
 
@@ -336,7 +336,7 @@ dataos-ctl dataset properties -a dataos://{collection}/{dataset}
 
 To retrieve properties of the city dataset in the retail collection:
 
-```shell
+```bash
 dataos-ctl dataset properties -a dataos://retail/city
 ```
 
@@ -348,7 +348,7 @@ This command allows users to add custom properties to a specific dataset within 
 
 **Command**
 
-```shell
+```bash
 dataos-ctl dataset add-properties -a dataos://${depot}:${collection}/${dataset} \
 -p ${property_key}:{property_value}
 ```
@@ -366,7 +366,7 @@ dataos-ctl dataset add-properties -a dataos://${depot}:${collection}/${dataset} 
 
 To add the custom property `write.sample.property` with the value `testaddproperty` to the city dataset in the retail collection of Icebase depot:
 
-```shell
+```bash
 dataos-ctl dataset add-properties -a dataos://icebase:retail/city \
 -p write.sample.property:testaddproperty
 
@@ -380,7 +380,7 @@ This command allows users to remove custom properties from a specific dataset wi
 
 **Command**
 
-```shell
+```bash
 dataos-ctl dataset remove-properties -a dataos://${depot}:${collection}/${dataset} \
 -p ${property_key}
 ```
@@ -400,7 +400,7 @@ dataos-ctl dataset remove-properties -a dataos://${depot}:${collection}/${datase
 
 To remove the custom property `write.sample.property` from the city dataset in the retail collection of Icebase depot:
 
-```shell
+```bash
 dataos-ctl dataset remove-properties -a dataos://icebase:retail/city \
 -p write.sample.property
 ```
@@ -415,7 +415,7 @@ This command allows users to add a new field to a specific dataset within a coll
 
 **Command**
 
-```shell
+```bash
 dataos-ctl dataset add-field -a dataos://${depot}:${collection}/${dataset} \
 -n ${field_name} \
 -t ${field_type}
@@ -437,7 +437,7 @@ dataos-ctl dataset add-field -a dataos://${depot}:${collection}/${dataset} \
 
 To add a new field named `sample_field` of type `string` to the city dataset in the retail collection of Icebase depot:
 
-```shell
+```bash
 dataos-ctl dataset add-field -a dataos://icebase:retail/city \
 -n sample_field \
 -t string
@@ -451,7 +451,7 @@ This command allows users to drop (delete) a field from a specific dataset withi
 
 **Command**
 
-```shell
+```bash
 dataos-ctl dataset drop-field -a dataos://${depot}:${collection}/${dataset} \
 -n ${field_name}
 ```
@@ -471,7 +471,7 @@ This command allows users to rename a field in a specific dataset within a colle
 
 **Command**
 
-```shell
+```bash
 dataos-ctl dataset rename-field -a dataos://${depot}:${collection}/${dataset} \
 -n ${old_field_name} \
 -m ${new_field_name}
@@ -493,7 +493,7 @@ dataos-ctl dataset rename-field -a dataos://${depot}:${collection}/${dataset} \
 
 To rename the field from `county_name` to `country_name` in the city dataset of the retail collection in Icebase depot:
 
-```shell
+```bash
 dataos-ctl dataset rename-field -a dataos://icebase:retail/city -n county_name -m country_name
 ```
 
@@ -505,7 +505,7 @@ This command allows users to update the type of a field in a specific dataset wi
 
 **Command**
 
-```shell
+```bash
 dataos-ctl dataset update-field -a dataos://${depot}:${collection}/${dataset} \
 -n ${field_name} \
 -t ${new_field_type}
@@ -527,7 +527,7 @@ dataos-ctl dataset update-field -a dataos://${depot}:${collection}/${dataset} \
 
 To update the type of the field `zip_code` to `long` in the city dataset of the retail collection in Icebase depot:
 
-```shell
+```bash
 dataos-ctl dataset update-field -a dataos://icebase:retail/city -n zip_code -t long
 ```
 
@@ -547,13 +547,13 @@ day, and hour.
 
 **Command**
 
-```shell
+```bash
 dataos-ctl dataset -a <dataset_udl> -p "<partition_key>"
 ```
 
 **Example**
 
-```shell
+```bash
 dataos-ctl dataset -a dataos://icebase:retail/city -p "identity:state_name"
 
 ```
@@ -562,26 +562,26 @@ dataos-ctl dataset -a dataos://icebase:retail/city -p "identity:state_name"
 
 - **identity**
 
-```shell
+```bash
 dataos-ctl dataset -a dataos://icebase:retail/city -p "identity:state_name"
 ```
 
 - **year**
 
-```shell
+```bash
 dataos-ctl dataset -a dataos://icebase:retail/city -p "year:ts_city:year_partition"
 ```
 
 - **month**
 
-```shell
+```bash
 dataos-ctl dataset -a dataos://icebase:retail/city \
 -p "month:ts_city:month_partition"
 ```
 
 - **day**
 
-```shell
+```bash
 dataos-ctl dataset -a dataos://icebase:retail/city \
 -p "day:ts_city:day_partition"
 ```
@@ -598,7 +598,7 @@ dataos-ctl dataset -a dataos://icebase:retail/city \
 Partitioning can be done on multiple levels. For example, a user wants 
 to partition the city data into two partitions, the first based on `state_code` and the second based on the `month`. This can be done using the below command:
 
-```shell
+```bash
 dataos-ctl dataset -a dataos://icebase:retail/city \
 -p "identity:state_code" \
 -p "month:ts_city:month_partition"
@@ -613,7 +613,7 @@ dataos-ctl dataset -a dataos://icebase:retail/city \
 
 Command
 
-```shell
+```bash
 dataos-ctl dataset -a dataos://icebase:retail/city update-partition \
 -p "${partition_type}:${column_name}:${partition_name}"
 ```
@@ -630,7 +630,7 @@ dataos-ctl dataset -a dataos://icebase:retail/city update-partition \
 
 **Example**
 
-```shell
+```bash
 dataos-ctl dataset -a dataos://icebase:retail/city update-partition \
 -p "month:ts_city:month_partition"
 
@@ -647,7 +647,7 @@ This command allows users to list branches for a specific dataset within a depot
 
 **Command**
 
-```shell
+```bash
 dataos-ctl dataset list-branch -a dataos://${depot}:${collection}/${dataset}
 ```
 
@@ -661,13 +661,13 @@ dataos-ctl dataset list-branch -a dataos://${depot}:${collection}/${dataset}
 
 To list the branches of the city dataset in the retail collection of Icebase depot
 
-```shell
+```bash
 dataos-ctl dataset list-branch -a dataos://icebase:retail/city
 ```
 
 Output:
 
-```shell
+```bash
 INFO[0000] 📂 list branches...                           
 INFO[0001] 📂 list branches...completed                  
 
@@ -684,7 +684,7 @@ This command allows users to create a new branch for a specific dataset within a
 
 **Command**
 
-```shell
+```bash
 dataos-ctl dataset create-branch -a dataos://${depot}:${collection}/${dataset} -b ${branch_name}
 ```
 
@@ -701,7 +701,7 @@ dataos-ctl dataset create-branch -a dataos://${depot}:${collection}/${dataset} -
 
 To create a new branch named 'test_branch2' for the city dataset in the retail collection of the Icebase depot:
 
-```shell
+```bash
 dataos-ctl dataset create-branch -a dataos://icebase:retail/city -b test_branch2
 ```
 
@@ -713,7 +713,7 @@ This command allows users to rename a branch for a specific dataset within a dep
 
 **Command**
 
-```shell
+```bash
 dataos-ctl dataset rename-branch -a dataos://${depot}:${collection}/${dataset} -b ${branch_name} -n ${new_branch_name}
 ```
 
@@ -733,13 +733,13 @@ dataos-ctl dataset rename-branch -a dataos://${depot}:${collection}/${dataset} -
 
 To rename the branch named 'test' to 'test_branch' for the city dataset in the retail collection of Icebase depot:
 
-```shell
+```bash
 dataos-ctl dataset rename-branch -a dataos://icebase:retail/city -b test -n test_branch
 ```
 
 This command will rename the specified branch, and upon listing the branches again, you would observe the updated branch name.
 
-```shell
+```bash
  BRANCH     │     SNAPSHOTID
 ────────────┼─────────────────────
 test_branch │ 905423312211489819
@@ -752,7 +752,7 @@ This command allows users to delete a specific branch for a dataset within a dep
 
 **Command**
 
-```shell
+```bash
 dataos-ctl dataset delete-branch -a dataos://icebase:retail/city -b ${branch_name}
 ```
 
@@ -769,7 +769,7 @@ dataos-ctl dataset delete-branch -a dataos://icebase:retail/city -b ${branch_nam
 
 To delete the branch named 'test_branch2' for the city dataset in the retail collection of Icebase depot:
 
-```shell
+```bash
 dataos-ctl dataset delete-branch -a dataos://${depot}:${collection}/${dataset} -b test_branch2
 ```
 
@@ -781,7 +781,7 @@ This command allows users to replace the snapshot of a branch with another snaps
 
 **Command**
 
-```shell
+```bash
 dataos-ctl dataset replace-branch -a dataos://${depot}:${collection}/${dataset} --source ${branch_name} --target ${branch_to_replace_with}
 ```
 
@@ -801,7 +801,7 @@ dataos-ctl dataset replace-branch -a dataos://${depot}:${collection}/${dataset} 
 
 To replace the snapshot of the 'test_branch' with another snapshot for the 'test_branch2' for the city dataset in the retail collection of Icebase depot:
 
-```shell
+```bash
 dataos-ctl dataset replace-branch -a dataos://icebase:retail/city --source test_branch --target test_branch2
 ```
 
@@ -813,7 +813,7 @@ This command allows users to fast-forward a branch to another branch's state for
 
 **Command**
 
-```shell
+```bash
 dataos-ctl dataset fastforward-branch -a dataos://${depot}:${collection}/${dataset} --source ${source_branch} --target ${target_branch}
 ```
 
@@ -833,7 +833,7 @@ dataos-ctl dataset fastforward-branch -a dataos://${depot}:${collection}/${datas
 
 To fast forward the `test_branch` to the state of the `main` branch for the city dataset in the retail collection of Icebase depot:
 
-```shell
+```bash
 dataos-ctl dataset fastforward-branch -a dataos://icebase:retail/city --source main --target test_branch
 ```
 
@@ -845,7 +845,7 @@ This command allows users to set a specific snapshot as the current state of a d
 
 **Command**
 
-```shell
+```bash
 dataos-ctl dataset set-snapshot -a dataos://${depot}:${collection}/${dataset} -i ${snapshot_id}
 ```
 
@@ -860,7 +860,7 @@ dataos-ctl dataset set-snapshot -a dataos://${depot}:${collection}/${dataset} -i
 
 To set the snapshot with ID `905423312211489819` as the current state of the `city` dataset in the `retail` collection of the `icebase` depot:
 
-```shell
+```bash
 dataos-ctl dataset set-snapshot -a dataos://icebase:retail/city -i 905423312211489819
 ```
 
@@ -868,7 +868,7 @@ This command will set the specified snapshot as the current state of the `city` 
 
 Before
 
-```shell
+```bash
     BRANCH    │     SNAPSHOTID       
 ──────────────┼──────────────────────
   stage       │ 8843932524527268980  
@@ -878,7 +878,7 @@ Before
 
 After
 
-```shell
+```bash
 
      BRANCH    │     SNAPSHOTID       
 ───────────────┼──────────────────────
@@ -893,7 +893,7 @@ This command allows users to cherry-pick changes from one snapshot to another fo
 
 **Command**
 
-```shell
+```bash
 dataos-ctl dataset cherrypick-snapshot -a dataos://${depot}:${collection}/${dataset} --sid ${snapshot_id}
 ```
 
@@ -908,7 +908,7 @@ dataos-ctl dataset cherrypick-snapshot -a dataos://${depot}:${collection}/${data
 
 To cherry-pick changes from the snapshot with ID `8546760663040429688` for the `city` dataset in the `retail` collection of the `icebase` depot:
 
-```shell
+```bash
 dataos-ctl dataset cherrypick-snapshot -a dataos://icebase:retail/city --sid 8546760663040429688
 ```
 
@@ -916,7 +916,7 @@ This command will cherry-pick changes from the specified snapshot for the `city`
 
 This will result in 
 
-```shell
+```bash
      BRANCH    │     SNAPSHOTID       
 ───────────────┼──────────────────────
   test_branch  │ 8546760663040429688  
@@ -930,7 +930,7 @@ This command allows users to roll back a dataset to a specific snapshot within a
 
 **Command**
 
-```shell
+```bash
 dataos-ctl dataset rollback -a dataos://${depot}:${collection}/${dataset} -i ${snapshot_id}
 ```
 
@@ -945,7 +945,7 @@ dataos-ctl dataset rollback -a dataos://${depot}:${collection}/${dataset} -i ${s
 
 To roll back the `city` dataset in the `retail` collection of the `icebase` depot to the snapshot with ID `905423312211489819`:
 
-```shell
+```bash
 dataos-ctl dataset rollback -a dataos://icebase:retail/city -i 905423312211489819
 ```
 
@@ -974,7 +974,7 @@ This command allows users to retrieve information about the snapshots associated
 
 **Command**
 
-```shell
+```bash
 dataos-ctl dataset snapshots -a dataos://${depot}:${collection}/${dataset}
 ```
 
@@ -994,7 +994,7 @@ dataos-ctl dataset snapshots -a dataos://${depot}:${collection}/${dataset}
 
 To retrieve information about the snapshots associated with the city dataset in the retail collection of Icebase depot:
 
-```shell
+```bash
 dataos-ctl dataset snapshots -a dataos://icebase:retail/city
 ```
 
@@ -1006,7 +1006,7 @@ This command allows users to retrieve information about the versions of metadata
 
 **Command**
 
-```shell
+```bash
 dataos-ctl dataset metadata -a dataos://${depot}:${collection}/${dataset}
 ```
 
@@ -1025,7 +1025,7 @@ dataos-ctl dataset metadata -a dataos://${depot}:${collection}/${dataset}
 
 To retrieve information about the metadata versions associated with the city dataset in the retail collection of Icebase depot:
 
-```shell
+```bash
 dataos-ctl dataset metadata -a dataos://icebase:retail/city
 ```
 
@@ -1037,7 +1037,7 @@ This command allows users to set the metadata version for a specific dataset wit
 
 **Command**
 
-```shell
+```bash
 dataos-ctl dataset set-metadata -a dataos://${depot}:${collection}/${dataset} -v ${metadata_version}
 ```
 
@@ -1054,7 +1054,7 @@ dataos-ctl dataset set-metadata -a dataos://${depot}:${collection}/${dataset} -v
 
 To set the metadata version to "latest" for the city dataset in the retail collection of Icebase depot:
 
-```shell
+```bash
 dataos-ctl dataset set-metadata -a dataos://icebase:retail/city -v latest
 ```
 

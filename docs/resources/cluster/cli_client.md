@@ -10,13 +10,13 @@ To set up the Minerva Client or minerva-cli and run queries on Minerva via the t
 
 - Open the terminal and pull the minerva-cli image by executing the following command. Ensure that Docker is installed and running on your system.
 
-    ```shell
+    ```bash
     docker pull tmdc/minerva-cli:latest
     ```
 
 - To verify that the installation is successful, run the following command. It should display a list of supported commands.
 
-    ```shell
+    ```bash
     docker run --rm -it --name minerva tmdc/minerva-cli:latest java -jar minerva-cli.jar --help
     ```
 
@@ -70,7 +70,7 @@ To set up the Minerva Client or minerva-cli and run queries on Minerva via the t
 
 To connect with a running Minerva Cluster, use the following command:
 
-```shell
+```bash
 minerva --server https://tcp.{{dataos instance fqdn}}:7432 \
      --user {{user id}} \
      --apikey {{dataos api key}} \
@@ -137,7 +137,7 @@ The following commands can be used to perform various operations:
 
 - List Catalogs:
 
-    ```shell
+    ```bash
     ➜ Minerva# show catalogs;
      Catalog 
     ---------
@@ -152,7 +152,7 @@ The following commands can be used to perform various operations:
 
 - List Schemas within a Catalog:
 
-    ```shell
+    ```bash
     ➜ Minerva# show schemas in icebase;
            Schema       
     --------------------
@@ -178,14 +178,14 @@ The following commands can be used to perform various operations:
 
 - Set Default Catalog:
 
-    ```shell
+    ```bash
     ➜ Minerva# USE icebase.surveys;
     	USE
     ```
 
 - Show Tables:
 
-    ```shell
+    ```bash
     ➜ Minerva:icebase.surveys# SHOW tables;
 	           Table           
 	---------------------------
@@ -204,7 +204,7 @@ The following commands can be used to perform various operations:
 
 - Describe Table:
 
-    ```shell
+    ```bash
     ➜ Minerva:icebase.surveys# describe qualtrics_questions_table;
               Column           |         Type          | Extra | Comment 
     ---------------------------+-----------------------+-------+---------
@@ -227,7 +227,7 @@ The following commands can be used to perform various operations:
 
 - Show Table Data:
 
-    ```shell
+    ```bash
     ➜ Minerva:icebase.surveys# SELECT question_number, question_name, groups FROM qualtrics_questions_table LIMIT 10;
      question_number | question_name | groups 
     -----------------+---------------+--------
@@ -245,7 +245,7 @@ The following commands can be used to perform various operations:
 
 - Quit CLI:
 
-    ```shell
+    ```bash
     ➜ Minerva:icebase.surveys# quit
     ```
 
@@ -253,7 +253,7 @@ The following commands can be used to perform various operations:
 
 To export query results as a CSV file, you can use the `output-format` option. The example below demonstrates how to execute a query and save the results to a CSV file named `result.csv`:
 
-```shell
+```bash
 minerva \
      --server https://tcp.<DATAOS_INSTANCE>:7432 \
      --user <USER_NAME> \

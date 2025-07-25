@@ -8,19 +8,19 @@ The list snapshot command is used to list all the snapshots of the dataset. This
 
 **Command**
 
-```shell
+```bash
 dataos-ctl dataset -a ${{udl}} snapshots 
 ```
 
 **Example**
 
-```shell
+```bash
 dataos-ctl dataset -a dataos://icebase:retail/city snapshots 
 ```
 
 Output
 
-```shell
+```bash
 INFO[0000] 📂 get snapshots...                           
 INFO[0000] 📂 get snapshots...completed                  
 
@@ -38,7 +38,7 @@ The Set Snapshot command helps to set a snapshot so that you can travel back. Th
 
 **Command**
 
-```shell
+```bash
 dataos-ctl dataset -a ${{udl}} set-snapshot \
 -i ${{snapshot-id}}
 ```
@@ -47,14 +47,14 @@ dataos-ctl dataset -a ${{udl}} set-snapshot \
 
 Let’s say you wanna revert back to a specific snapshot ID from the once listed by the list snapshots command. The command will be:
 
-```shell
+```bash
 dataos-ctl dataset -a dataos://icebase:retail/city set-snapshot \
 -i 5724215526433994041
 ```
 
 Output (successful execution)
 
-```shell
+```bash
 INFO[0000] 📂 set snapshot...                            
 INFO[0001] 📂 set snapshot...completed
 ```
@@ -69,19 +69,19 @@ The metadata command lists all the metadata files. The command is given below.
 
 **Command**
 
-```shell
+```bash
 dataos-ctl dataset -a ${{udl}} metadata
 ```
 
 **Example**
 
-```shell
+```bash
 dataos-ctl dataset -a dataos://icebase:retail/city metadata
 ```
 
 Output (successful execution)
 
-```shell
+```bash
 INFO[0000] 📂 get metadata...                            
 INFO[0000] 📂 get metadata...completed                   
 
@@ -106,7 +106,7 @@ In order to set the metadata to the latest or some specific version, use the bel
 
 **Command**
 
-```shell
+```bash
 dataos-ctl dataset -a ${{udl}} set-metadata \
 -v ${{latest|version.gz.metadata.json}}
 ```
@@ -114,21 +114,21 @@ dataos-ctl dataset -a ${{udl}} set-metadata \
 
 In order to set the metadata of the dataset `dataos://icebase:retail/city` to the `latest` format.
 
-```shell
+```bash
 dataos-ctl dataset -a dataos://icebase:retail/city set-metadata \
 -v latest
 ```
 
 In order to set the metadata to some specfic version among the ones in the list say `v4.gz.metadata.json`.
 
-```shell
+```bash
 dataos-ctl dataset -a dataos://icebase:retail/city set-metadata \
 -v v4.gz.metadata.json
 ```
 
 Output
 
-```shell
+```bash
 INFO[0000] 📂 set metadata...                            
 INFO[0001] 📂 set metadata...completed
 ```
@@ -137,7 +137,7 @@ INFO[0001] 📂 set metadata...completed
 
 To set nullability in a specific column. The command is as follows:
 
-```shell
+```bash
 dataos-ctl dataset -a ${{udl}} set-nullable \
 -n ${{column-name}} \
 -b ${{true/false}}
@@ -145,7 +145,7 @@ dataos-ctl dataset -a ${{udl}} set-nullable \
 
 Let’s say we wanna set a column random as nullable. The command is given below:
 
-```shell
+```bash
 dataos-ctl dataset -a dataos://icebase:retail/city set-nullable \
 -n random \
 -b true
@@ -153,7 +153,7 @@ dataos-ctl dataset -a dataos://icebase:retail/city set-nullable \
 
 Output (on successful execution)
 
-```shell
+```bash
 INFO[0000] 📂 set nullability                            
 INFO[0000] 📂 set nullability...completed
 ```

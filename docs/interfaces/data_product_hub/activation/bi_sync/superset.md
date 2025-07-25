@@ -1,12 +1,12 @@
 # Apache Superset Integration
-The semantic model can be integrated with Superset using the following Ways
+The semantic model can be integrated with Superset in the following Ways
 
-* [Using Data Product Hub(Recommended - GUI based)](/resources/lens/bi_integration/superset#using-data-product-hub): This method provides a user-friendly, graphical interface for integrating the semantic model with Superset.  This approach is ideal for those who prefer an intuitive, no-code setup.
+* [Using Data Product Hub (Recommended - GUI based)](/resources/lens/bi_integration/superset#using-data-product-hub): Connect the semantic model to Superset using Data Product Hub an intuitive graphical interface.
 
-* [Using cURL command (Command-Line based)](/resources/lens/bi_integration/superset#using-curl-command): By executing a simple cURL request, users can fetch and connect the semantic model directly to Superset. This method is suitable for advanced users looking to script or automate the integration process.
+* [Using cURL command (CLI based)](/resources/lens/bi_integration/superset#using-curl-command): Connect semantic model to Superset using cURL command.
 
 
-## Using Data Product Hub(Recommended)
+## Using Data Product Hub (Recommended)
 
 This method provides a user-friendly, graphical interface for integrating the semantic model with Superset. This approach is ideal for those who prefer an intuitive, no-code setup while ensuring seamless integration with Superset.
 
@@ -57,13 +57,13 @@ After activation, go to the DataOS homepage. Scroll to the 'Apache Superset' sec
 
 - **Lens API endpoint**: The API endpoint provided by Lens to sync semantic model, enabling integration with Superset.
 
-- **Access credentials**: Access credentials such as username, password, and host are required for Superset.
+- **Access credentials**: Access credentials such as Superset username, password, and host are required for Superset.
 
-Superset requires the login credentials (username and password) and the host address where Superset is hosted. The command establishes a database and table with a live connection to the Lens model in Superset, enabling direct interaction with and visualization of data from Lens within the Superset environment.
+Superset requires the login credentials (Superset username and password) and the host address where Superset is hosted. The command establishes a database and table with a live connection to the semantic model in Superset.
 
 ### **Steps**
 
-To sync the Lens model with Superset, follow these steps:
+To sync the semantic model with Superset, follow these steps:
 
 **Step 1: Run the curl command**
 

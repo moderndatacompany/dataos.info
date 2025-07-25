@@ -331,6 +331,9 @@ nav:
             - Oracle: resources/depot/create_depot/oracle.md
             - PostgreSQL: resources/depot/create_depot/postgre.md
             - Snowflake: resources/depot/create_depot/snowflake.md
+          - Supported Table Format:
+            - Iceberg: resources/depot/iceberg_table_format.md
+            - Delta: resources/depot/delta_table_format.md
           - Configurations: resources/depot/configurations.md
           - Governance: resources/depot/governance.md
           - Observability: resources/depot/observability.md
@@ -541,7 +544,20 @@ nav:
               - Inputs: resources/stacks/bento/components/inputs.md
               - Logger: resources/stacks/bento/components/logger.md
               - Metrics: resources/stacks/bento/components/metrics.md
-              - Output: resources/stacks/bento/components/output.md
+              - Output: 
+                  - resources/stacks/bento/components/output/index.md
+                  - AWS S3 : resources/stacks/bento/components/output/aws_s3.md
+                  - Azure Blob Storage : resources/stacks/bento/components/output/azure_blob_storage.md
+                  # - Azure CosmosDB : resources/stacks/bento/components/output/azure_cosmosdb.md
+                  # - Azure Queue Storage : resources/stacks/bento/components/output/azure_queue_storage.md
+                  # - Azure Table Storage : resources/stacks/bento/components/output/azure_table_storage.md
+                  - Fastbase Depot : resources/stacks/bento/components/output/fastbase_depot.md
+                  - Kafka : resources/stacks/bento/components/output/kafka.md
+                  - kafka Depot : resources/stacks/bento/components/output/kafka_depot.md
+                  # - sftp : resources/stacks/bento/components/output/sftp.md
+                  # - SQL database Insert : resources/stacks/bento/components/output/sql_insert.md
+                  # - SQL Arbitrary query : resources/stacks/bento/components/output/sql_raw.md
+
               - Processors: resources/stacks/bento/components/processors.md
               - Rate Limit: resources/stacks/bento/components/rate_limit.md
             - Recipes: 
@@ -561,9 +577,92 @@ nav:
           #   - resources/stacks/data_toolbox/index.md
           - DBT: 
             - resources/stacks/dbt/index.md
+          # - Flare: 
+          #   - resources/stacks/flare/index.md
+          #   - Quick Guide: resources/stacks/flare/creating_flare_jobs.md
           - Flare: 
             - resources/stacks/flare/index.md
-            - Quick Guide: resources/stacks/flare/creating_flare_jobs.md
+            - Creating Flare Jobs: resources/stacks/flare/creating_flare_jobs.md
+            - Configurations: resources/stacks/flare/configurations.md
+            - Data Sources:
+              - resources/stacks/flare/configuration_templates/index.md
+              - Databases:
+                - PostgreSQL: resources/stacks/flare/configuration_templates/postgres.md
+                - MySQL: resources/stacks/flare/configuration_templates/mysql.md
+                - Oracle: resources/stacks/flare/configuration_templates/oracle.md
+                - MS-SQL: resources/stacks/flare/configuration_templates/mssql.md
+                - MongoDB: resources/stacks/flare/configuration_templates/mongodb.md
+              - Data Warehouses:
+                - Snowflake: resources/stacks/flare/configuration_templates/snowflake.md
+                - BigQuery: resources/stacks/flare/configuration_templates/google_bigquery.md
+                - Amazon Redshift: resources/stacks/flare/configuration_templates/amazon_redshift.md
+              - Object Storage:
+                - resources/stacks/flare/configuration_templates/object_storage_depots.md
+                - Delta Tables: resources/stacks/flare/configuration_templates/delta_table.md
+              - Streaming Sources:
+                - Kafka: resources/stacks/flare/configuration_templates/kafka.md
+                - EventHub: resources/stacks/flare/configuration_templates/eventhub.md
+                - Pulsar: resources/stacks/flare/configuration_templates/pulsar.md
+              - Search Engines:
+                - Elasticsearch: resources/stacks/flare/configuration_templates/elasticsearch.md
+                - OpenSearch: resources/stacks/flare/configuration_templates/opensearch.md
+            - Functions:
+              - resources/stacks/flare/functions.md
+              - Function Reference: resources/stacks/flare/functions/list.md
+            # - Data Quality:
+            #   - Defining Assertions: resources/stacks/flare/defining_assertions.md
+            #   - Assertion Configuration: resources/stacks/flare/assertion_configuration.md
+            #   - Data Profiling Jobs: resources/stacks/flare/creating_data_profiling_jobs.md
+            #   - Case Scenarios: resources/stacks/flare/assertions_case_scenario.md
+            - Use Cases & Examples:
+              - resources/stacks/flare/case_scenario.md
+              - Data Ingestion:
+                - Incremental Jobs: resources/stacks/flare/case_scenario/incremental_jobs.md
+                - Streaming Jobs: resources/stacks/flare/case_scenario/streaming_jobs.md
+              - Data Transformation:
+                - Iceberg Operations: resources/stacks/flare/case_scenario/iceberg_branch_read_write.md
+                - Merge Operations: resources/stacks/flare/case_scenario/merge_into_functionality.md
+                - Data Replay: resources/stacks/flare/case_scenario/data_replay.md
+                - Concurrent Writes: resources/stacks/flare/case_scenario/concurrent_writes.md
+                - Column Tagging: resources/stacks/flare/case_scenario/column_tagging.md
+                - Data Syndication: resources/stacks/flare/case_scenario/syndication.md
+                - Enrichment: resources/stacks/flare/case_scenario/enrichment.md
+                - Fingerprinting: resources/stacks/flare/case_scenario/fingerprinting.md
+              - Performance Optimization:
+                - Partitioning: resources/stacks/flare/case_scenario/partitioning.md
+                - Partition Evolution: resources/stacks/flare/case_scenario/partition_evolution.md
+                - Bucketing: resources/stacks/flare/case_scenario/bucketing.md
+                - Caching: resources/stacks/flare/case_scenario/caching.md
+                - Compression: resources/stacks/flare/case_scenario/compression.md
+                - Job Tuning: resources/stacks/flare/case_scenario/job_optimization_by_tuning.md
+              - Data Maintenance:
+                - Data Compaction: resources/stacks/flare/case_scenario/rewrite_dataset.md
+                - Manifest Rewrite: resources/stacks/flare/case_scenario/rewrite_manifest_files.md
+                - Delete from Dataset: resources/stacks/flare/case_scenario/delete_from_dataset.md
+                - Expire Snapshots: resources/stacks/flare/case_scenario/expire_snapshots.md
+                - Remove Orphans: resources/stacks/flare/case_scenario/remove_orphans.md
+                - Query Progress Monitoring: resources/stacks/flare/case_scenario/query_dataset_for_job_in_progress.md
+              # - Data Quality:
+              #   - Data Quality Jobs: resources/stacks/flare/case_scenario/data_quality_jobs.md
+            - Optimization & Troubleshooting:
+              - resources/stacks/flare/optimizations.md
+              - Performance Tuning:
+                - resources/stacks/flare/optimizations/performance_tuning.md
+                - Configuration Tuning: resources/stacks/flare/optimizations/performance_tuning/tuning_configurations.md
+                - SQL Optimization: resources/stacks/flare/optimizations/performance_tuning/sql_query_optimization.md
+              - Monitoring:
+                - Spark UI: resources/stacks/flare/optimizations/inspecting_the_spark_ui.md
+                - Workflow Observability: resources/stacks/flare/optimizations/observability_of_workflow.md
+              # - Troubleshooting:
+              #   - resources/stacks/flare/optimizations/errors_and_issues.md
+              #   - Ingestion Errors: resources/stacks/flare/optimizations/errors_and_issues/ingestion_errors.md
+              #   - Streaming Errors: resources/stacks/flare/optimizations/errors_and_issues/streaming_errors.md
+              #   - Transformation Errors: resources/stacks/flare/optimizations/errors_and_issues/transformation_errors.md
+              #   - Resource Allocation Errors: resources/stacks/flare/optimizations/errors_and_issues/resource_allocation_errors.md
+              #   - Linter & Validation Errors: resources/stacks/flare/optimizations/errors_and_issues/linter_command_validation_and_errors.md
+              #   - Other Errors: resources/stacks/flare/optimizations/errors_and_issues/other_errors.md
+    
+    
           - Flash:
             - resources/stacks/flash/index.md
             - Create a Flash Service: resources/stacks/flash/flash_service.md

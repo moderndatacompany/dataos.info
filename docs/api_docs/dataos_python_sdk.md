@@ -29,20 +29,20 @@ Prior to installation, ensure that you have Python 3.7 and above installed on yo
 
 *For Linux/macOS*
 
-```shell
+```bash
 python3 --version
 ```
 
 *For Windows*
 
-```shell
+```bash
 py --version
 ```
 
 If you do not have Python, please install the latest version from [python.org](https://www.python.org/).
 
 > <b>Note:</b> If you’re using an enhanced shell like IPython or Jupyter notebook, you can run system commands like those given above by prefacing them with a <code>!</code> character:
-```shell
+```bash
 In [1]: import sys
         !{sys.executable} --version
 # Output
@@ -60,13 +60,13 @@ Ensure that `pip` is available by running the following command:
 
 *For Linux/macOS*
 
-```shell
+```bash
 python3 -m pip --version
 ```
 
 *For Windows*
 
-```shell
+```bash
 py -m pip --version
 ```
 
@@ -84,13 +84,13 @@ The DataOS SDK for Python can be installed from the Python Package Index (PyPI) 
 
 *For Linux/macOS*
 
-```shell
+```bash
 python3 -m pip install dataos-sdk-py==0.0.1
 ```
 
 *For Windows*
 
-```shell
+```bash
 py -m pip install dataos-sdk-py==0.0.1
 ```
 

@@ -24,7 +24,7 @@ The following request searches the number of times the keyword "master" appeared
 
 ## GET and POST requests
 
-GET APIs is generally used to retrive the information without the body. All LakeSearch GET APIs that require a body can be submitted as POST requests.
+GET APIs is generally used to retrive the information without the body. All Lakesearch GET APIs that require a body can be submitted as POST requests.
 
 ## Endpoint details
 
@@ -87,7 +87,7 @@ The following table containd the different endpoints for different purposes.
 
 
 
-LakeSearch allows a user to search for an index using various filters and search parameters. The below sections explains how to perform searches efficiently.
+Lakesearch allows a user to search for an index using various filters and search parameters. The below sections explains how to perform searches efficiently.
 
 <!-- ## Search Types
 
@@ -719,7 +719,7 @@ A bool query can be nested inside another bool so you can make more complex quer
 
 ## Aggregations
 
-Aggregations in LakeSearch allow you to group and analyze data based on specific attributes. The aggregation results can be customized using sorting, aliasing, and different calculation methods.
+Aggregations in Lakesearch allow you to group and analyze data based on specific attributes. The aggregation results can be customized using sorting, aliasing, and different calculation methods.
 
 **Key points**
 

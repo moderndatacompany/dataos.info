@@ -297,7 +297,7 @@ description: "This is a description of my workspace."
 
 **Additional Details:** Certain tags like `dataos:type:workspace:**`, `dataos:layer:**`, `dataos:workspace:**` are assigned by the DataOS itself for internal discoverability purposes. You can get the list of tags on the DataOS CLI using the following command:
 
-```shell
+```bash
 dataos-ctl workspace get
 
 # Expected Sample Output

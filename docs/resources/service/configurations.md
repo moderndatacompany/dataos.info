@@ -757,13 +757,13 @@ service:
 
 **Additional Details:** The apikey can be obtained by executing the following command from the CLI:
 
-```shell
+```bash
 dataos-ctl user apikey get
 ```
 
 In case no apikey is available, the below command can be run to create a new apikey
 
-```shell
+```bash
 dataos-ctl user apikey create -n ${{name of the apikey}} -d ${{duration for the apikey to live}}
 ```
 

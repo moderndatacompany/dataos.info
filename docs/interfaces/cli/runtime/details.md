@@ -4,7 +4,7 @@ You run the following `runtime` sub commands by appending them to *dataos-ctl ru
 ## `get`
 Get runnable resources in the DataOS®
 
-```shell
+```bash
 
 Usage:
   dataos-ctl resource runtime get [flags]
@@ -30,7 +30,7 @@ Global Flags:
 ## `pause`
 
 Pause runnable resources in the DataOS®
-```shell
+```bash
 
 Usage:
   dataos-ctl resource runtime pause [flags]
@@ -50,7 +50,7 @@ Flags:
 ## `re-run`
 Re-run runnable resources in the DataOS®
 
-```shell
+```bash
 
 Usage:
   dataos-ctl  runtime re-run [flags]
@@ -70,7 +70,7 @@ Flags:
 ## `resume`
 Resume runnable resources in the DataOS®
 
-```shell
+```bash
 
 Usage:
   dataos-ctl runtime resume [flags]
@@ -91,7 +91,7 @@ Flags:
 
 Stop runnable resources in the DataOS®
 
-```shell
+```bash
 
 Usage:
   dataos-ctl  runtime stop [flags]

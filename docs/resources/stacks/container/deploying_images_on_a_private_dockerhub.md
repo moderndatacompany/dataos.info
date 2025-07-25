@@ -31,7 +31,7 @@ The `type` field should be set to "cloud-kernel-image-pull", which will generate
 
 Apply the Secret to the desired workspace where the Container Service or Workflow will be executed.
 
-```shell
+```bash
 dataos-ctl apply -f ${path-to-secret-yaml} -w ${name of the workspace}
 ```
 
