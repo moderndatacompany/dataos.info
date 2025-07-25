@@ -211,7 +211,7 @@ The metadata for all other tables was scanned.
     ```
 
 
-To know more about how to specify filters in different scenarios, refer to [Filter Pattern Examples](/resources/stacks/scanner/creating_scanner_workflows/filter_pattern_examples/).
+To know more about how to specify filters in different scenarios, refer to [Filter Pattern Examples](/quick_guides/scan_metadata/filter_pattern_examples/).
 
 ## Scheduling Scanner Workflow Run
 

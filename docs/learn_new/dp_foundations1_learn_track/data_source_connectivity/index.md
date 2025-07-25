@@ -34,7 +34,7 @@ Depots allow you to:
 Before diving into configuring data source connections, make sure you have everything ready:
 
 1. **Check required permissions**  
-   Some tasks require specific permissions typically assigned to DataOS Operators. Ensure you have access to one of the following permission sets either via use-case or via tags:
+   Ensure you have the necessary roles assigned (data-dev, system-dev, and operator) to create and manage data products in DataOS. In DataOS, roles are defined with specific tags such as data-dev, system-dev, and operator. These tags determine the permissions and access levels for users.
 
       | **Access Permission (via use-cases)** | **Access Permissions (via tags)** |
       |--------------------------------------|-----------------------------------|
@@ -42,6 +42,13 @@ Before diving into configuring data source connections, make sure you have every
       | Manage All Depot                     | `roles:id:system-dev`             |
       | Read All Dataset                     | `roles:id:user`                   |
       | Read all secrets from Heimdall       | *(Not specified)*                 |
+   
+      To check this, login to DataOS and view your profile. You can verify the assigned roles by checking the associated tags.
+      
+      ![image](/learn_new/dp_foundations1_learn_track/data_source_connectivity/profile_on_dataos_home.png)
+      <aside class="callout"> 
+      🗣️ Some tasks require specific permissions typically assigned to DataOS Operators. Contact DataOS administartor or training team for 'Operator' tag.
+      </aside>
 
 2. **Check CLI installation**  
    You need this text-based interface that allows you to interact with the DataOS context via command prompts.  
