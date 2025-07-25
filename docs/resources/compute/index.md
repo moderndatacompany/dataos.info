@@ -84,15 +84,15 @@ Once the node pool is established, you can associate it with DataOS by configuri
 In DataOS, a Compute is classified as a [Resource-type.](/resources/types/) Below is the YAML configuration for the Resource Section:
 
 ```yaml
-name: ${{my-workflow}}
+name: ${{my-compute}}
 version: v1 
-type: workflow 
+type: compute
 tags: 
   - ${{dataos:type:resource}}
-description: ${{This is a sample workflow YAML configuration}}
+  - ${{resource:type:compute}}
+description: ${{This is a sample compute YAML configuration}}
 owner: ${{iamgroot}}
 ```
-
 
 For detailed customization options and additional attributes within the Resource Section, refer to the [Attributes of Resource section.](/resources/manifest_attributes/).
 
