@@ -456,20 +456,11 @@ To ensure that Metrics show up on DPH and under **Metrics** tab on the DP detail
 
 2. **Add a metric section to the Lens Deployment Manifest File.**
     
-    The iris and metric section go at the end of the YAML.
+    The metric section go at the end of the YAML.
     
     ```yaml
     ...
-      iris:
-        logLevel: info
-        resources:
-          requests:
-            cpu: 200m
-            memory: 256Mi
-          limits:
-            cpu: 1600m
-            memory: 2240Mi
-    
+          
       metric:
         logLevel: info
     ```

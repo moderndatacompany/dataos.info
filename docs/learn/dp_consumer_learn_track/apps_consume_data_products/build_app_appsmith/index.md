@@ -1,10 +1,10 @@
-# Building an application with Appsmith
+# Building an Application with Appsmith
 
-This guide walks you through creating a simple Appsmith application to consume a DataOS data product. Let's get started and transform your data into interactive and insightful visualizations!
+This guide walks you through creating a simple Appsmith application to consume a DataOS Data Product. Let's get started and transform your data into interactive and insightful visualizations!
 
 ## **What do you need to get started?**
 
-1. Ensure your data product is created and the semantic model is configured before starting application development. For this demonstration, we are using the Product Affinity data product. Once completed, the following access options will be available.
+1. Ensure your Data Product is created and the semantic model is configured before starting application development. For this demonstration, we are using the Product Affinity Data Product. Once completed, the following access options will be available.
     
     ![access_options.png](/learn/dp_consumer_learn_track/apps_consume_data_products/build_app_appsmith/access_options.png)
     

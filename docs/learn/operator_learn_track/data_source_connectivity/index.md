@@ -4,7 +4,7 @@ As an Operator in the DataOS ecosystem, you are the backbone of secure and effic
 
 This module focuses on Data Source Connectivity, a critical responsibility that involves configuring Depots, establishing secure access to diverse data sources, and maintaining operational efficiency. By the end, you’ll have the tools to ensure workflows remain efficient, data remains protected, and your team can access data sources securely.
 
-## Scenario
+## 📘 Scenario
 
 A key project in your organization requires real-time data from multiple systems. Every configuration you manage will directly impact the team's ability to work with the data efficiently and securely. As you step into this challenge, you're faced with multiple objectives:
 
