@@ -1,6 +1,6 @@
 # Organizing and Versioning Your Data Product
 
-A well-structured data product isn’t just about clean code—it’s about enabling collaboration, versioning, and long-term maintainability. In this module, you’ll set up your code repository, define a clean folder structure, and securely connect DataOS to your version control system.
+A well-structured Data Product isn’t just about clean code—it’s about enabling collaboration, versioning, and long-term maintainability. In this module, you’ll set up your code repository, define a clean folder structure, and securely connect DataOS to your version control system.
 
 ---
 
@@ -22,7 +22,7 @@ Once created, clone the repository to your local machine and begin developing yo
 
 ### **Organize with a clear folder structure**
 
-Structure your data product directory to keep things organized. Each folder should hold only the relevant YAML specs for that DataOS component.
+Structure your Data Product directory to keep things organized. Each folder should hold only the relevant YAML specs for that DataOS component.
 
 <div style="text-align: left; padding-left: 1em;">
 <img src="/learn_new/dp_foundations2_learn_track/repo_structure/dp_folder.png" alt="infographics" style="max-width: 75%; height: auto; border: 1px solid #000;">
@@ -73,11 +73,11 @@ dataos-ctl apply -f bitbucket-secret.yaml
 
 ## Step 3: Push the Data Product directory to a code repository 
 
-After developing all your code, you will push your local data product directory to a preferred hosted code repository.
+After developing all your code, you will push your local Data Product directory to a preferred hosted code repository.
 
 ## Next step
 
-Now that your data product has a structured, version-controlled foundation, it’s time to connect it to the real world—your source systems.
+Now that your Data Product has a structured, version-controlled foundation, it’s time to connect it to the real world—your source systems.
 
 👉 [Next topic: Configure Source Connectivity](/learn_new/dp_foundations2_learn_track/data_source_connectivity/)
 

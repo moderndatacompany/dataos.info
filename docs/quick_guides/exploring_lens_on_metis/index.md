@@ -67,7 +67,7 @@ A typical deployment of a Lens Resource includes the following components:
 - **API Instances:** These handle incoming requests and execute business logic. Configured in the Lens manifest, they query raw data from databases. They have access to both data and model schema.
 - **Workers:** Created by the Worker section in the Lens manifest, these Workers process subqueries from the Router and interact with distributed storage for data operations. Workers communicate through the Router.
 - **Router:** This service, defined in the Lens manifest, manages queries between API instances and Workers, handles metadata, and plans query distribution. Lens only interacts with the Router.
-- **Iris:** Manages interactions with Iris dashboards.
+
 
 ![Lens_runtime_on_metis.png](/quick_guides/exploring_lens_on_metis/Lens_runtime_on_metis.png)
 

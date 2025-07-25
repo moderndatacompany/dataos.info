@@ -4,7 +4,7 @@ You run the following `role` sub commands by appending them to *dataos-ctl role*
 ## `apply`
 Apply resources in the DataOS®
 
-```shell
+```bash
 
 Usage:
   dataos-ctl resource apply [flags]
@@ -25,7 +25,7 @@ Flags:
 ## `create`
 Create resources in the DataOS®
 
-```shell
+```bash
 
 Usage:
   dataos-ctl resource create [flags]
@@ -43,7 +43,7 @@ Flags:
 ## `delete`
 Delete resources in the DataOS®
 
-```shell
+```bash
 
 Usage:
   dataos-ctl resource delete [flags]
@@ -65,7 +65,7 @@ Flags:
 Get resources in the DataOS®
 
 
-```shell
+```bash
 
 Usage:
   dataos-ctl resource get [flags]
@@ -99,7 +99,7 @@ Use "dataos-ctl resource get [command] --help" for more information about a comm
 ## `log`
 Get the logs for a resource in the DataOS®
 
-```shell
+```bash
 
 Usage:
   dataos-ctl resource log [flags]
@@ -127,7 +127,7 @@ Global Flags:
 ## `run`
 Create and Run a Resource in the DataOS®
 
-```shell
+```bash
 
 Usage:
   dataos-ctl resource run [flags]
@@ -155,7 +155,7 @@ Global Flags:
 ## `runtime`
 DataOS® runtime management commands
 
-```shell
+```bash
 
 Usage:
   dataos-ctl resource runtime [command]
@@ -178,7 +178,7 @@ Use "dataos-ctl resource runtime [command] --help" for more information about a 
 ### **`get`**
 Get runnable resources in the DataOS®
 
-```shell
+```bash
 
 Usage:
   dataos-ctl resource runtime get [flags]
@@ -204,7 +204,7 @@ Global Flags:
 ### **`pause`**
 
 Pause runnable resources in the DataOS®
-```shell
+```bash
 
 Usage:
   dataos-ctl resource runtime pause [flags]
@@ -224,7 +224,7 @@ Flags:
 ### **`re-run`**
 Re-run runnable resources in the DataOS®
 
-```shell
+```bash
 
 Usage:
   dataos-ctl resource runtime re-run [flags]
@@ -244,7 +244,7 @@ Flags:
 ### **`resume`**
 Resume runnable resources in the DataOS®
 
-```shell
+```bash
 
 Usage:
   dataos-ctl resource runtime resume [flags]
@@ -265,7 +265,7 @@ Flags:
 
 Stop runnable resources in the DataOS®
 
-```shell
+```bash
 
 Usage:
   dataos-ctl resource runtime stop [flags]
@@ -285,7 +285,7 @@ Flags:
 ## `tcp-stream`
 
 Open a tcp stream for resources in the DataOS®
-```shell
+```bash
 
 
 Usage:
@@ -308,7 +308,7 @@ Flags:
 ## `update`
 
 Update resources in the DataOS®
-```shell
+```bash
 
 Usage:
   dataos-ctl resource update [flags]

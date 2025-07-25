@@ -1,6 +1,6 @@
 # Expire Snapshots
 
-The `expire_snapshots` [action](/resources/stacks/flare/configurations/#expire_snapshots) expires amassed snapshots.  Data files are not deleted until they are no longer referenced by a snapshot that may be used for time travel or rollback. Regularly expiring snapshots deletes unused data files.
+The [`expire_snapshots` action](/resources/stacks/flare/configurations/#expire_snapshots) expires amassed snapshots.  Data files are not deleted until they are no longer referenced by a snapshot that may be used for time travel or rollback. Regularly expiring snapshots deletes unused data files.
 
 
 !!! info "Important considerations"
@@ -12,7 +12,7 @@ The `expire_snapshots` [action](/resources/stacks/flare/configurations/#expire_s
 
 To check the timestamp and list of snapshot add the following command in your terminal:
 
-```
+```bash
 dataos-ctl dataset snapshots -a data://lakehouse:retail/pos_store_product_cust
 ```
 

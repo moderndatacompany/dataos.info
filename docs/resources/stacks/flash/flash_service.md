@@ -6,7 +6,7 @@ This section provides guidance for caching datasets using the Flash Service in D
 
 Ensure that the Flash Stack is available in the DataOS environment by executing the following command:
 
-```shell
+```bash
 dataos-ctl develop stack versions
 ```
 
@@ -14,7 +14,7 @@ Ensure that appropriate access permissions are available to execute this command
 
 **Expected output:**
 
-```shell
+```bash
 ➜  ~ dataos-ctl develop stack versions                  
 
        STACK      │ FLAVOR  │ VERSION │                       IMAGE                       │     IMAGE PULL SECRET      
@@ -88,13 +88,13 @@ stack:
 
 To deploy the Stack, run the following command:
 
-```shell
+```bash
 dataos-ctl resource apply -f ${flash-stack-manifest-path} --disable-interpolation
 ```
 
 Alternatively, use:
 
-```shell
+```bash
 dataos-ctl apply -f ${flash-stack-manifest-path} --disable-interpolation
 ```
 
@@ -102,13 +102,13 @@ dataos-ctl apply -f ${flash-stack-manifest-path} --disable-interpolation
 
 Check if the Stack is created successfully:
 
-```shell
+```bash
 dataos-ctl resource get -t stack
 ```
 
 To view Stacks created by all users in the organization:
 
-```shell
+```bash
 dataos-ctl resource get -t stack -a
 ```
 
@@ -202,25 +202,25 @@ Once the Flash Stack is available, follow these steps to create a Flash Service:
 
 To run the Service and load the datasets into the Flash layer, apply the manifest file using the DataOS CLI:
 
-```shell
+```bash
 dataos-ctl resource apply -f ${flash-service-manifest-file-path} -w ${workspace}
 ```
 
 Alternatively, use:
 
-```shell
+```bash
 dataos-ctl apply -f ${flash-service-manifest-file-path} -w ${workspace}
 ```
 
 **Example usage:**
 
-```shell
+```bash
 dataos-ctl resource apply -f ./flash/service_manifest.yaml -w curriculum
 ```
 
 **Expected output:**
 
-```shell
+```bash
 INFO[0000] 🛠 apply...                                   
 INFO[0000] 🔧 applying(public) flash-service-test:v1:service... 
 INFO[0008] 🔧 applying(public) flash-service-test:v1:service...created 

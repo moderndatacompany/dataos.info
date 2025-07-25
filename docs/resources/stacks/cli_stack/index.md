@@ -33,7 +33,7 @@ To execute a resource using this stack, users need to provide their API key and 
 
 To fetch the details about the User ID and User API Key token, execute the following commands after logging into DataOS:
 
-```shell
+```bash
 dataos-ctl user get
 
 # Sample Output
@@ -51,7 +51,7 @@ INFO[0000] 😃 user get...complete
 
 For User API key token, execute the commands:
 
-```shell
+```bash
 # if apikey token already exists execute
 dataos-ctl user apikey get
 
@@ -89,7 +89,7 @@ instance-secret:
 
 ### **Apply the Instance Secret manifest**
 
-```shell
+```bash
 dataos-ctl apply -f ${{instance secret yaml file path}}
 
 # Expected Output
@@ -176,7 +176,7 @@ workflow:
 
 ### **Apply the Workflow manifest**
 
-```shell
+```bash
 dataos-ctl apply -f ${{workflow yaml file path}} -w ${{workspace name}}
 
 # Sample and Expected Output
@@ -189,7 +189,7 @@ INFO[0005] 🛠 apply...complete
 
 ### **Verify Workflow creation**
 
-```shell
+```bash
 dataos-ctl get -t workflow -w ${{workspace name}}
 
 # Sample Output
@@ -205,7 +205,7 @@ INFO[0001] 🔍 get...complete
 
 Copy the name to Workspace from the output table of the [`get`](/interfaces/cli/command_reference/#get) command and use it as a string in the delete command.
 
-```shell
+```bash
 dataos-ctl -i "${{copy the name to workspace in the output table from get command}}" --node ${{failed node name from get runtime command}} log
 
 # Sample

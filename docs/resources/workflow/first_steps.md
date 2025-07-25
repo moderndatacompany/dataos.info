@@ -218,12 +218,12 @@ Once you have constructed the Workflow YAML file, it's time to [apply](/resource
 
 === "Command"
 
-    ```shell
+    ```bash
     dataos-ctl apply -f ${{yaml file path}} -w ${{workspace}}
     ```
 ===  "Example"
 
-    ```shell
+    ```bash
     dataos-ctl apply -f home/iamgroot/resource/workflow.yml -w curriculum
     ```
 
@@ -231,13 +231,13 @@ Workspace specification is optional. In case its not provided the Workflow runs 
 
 === "Command"
 
-    ```shell
+    ```bash
     dataos-ctl workspace create -n ${{name of your workspace}}
     ```
 
 ===  "Example"
 
-    ```shell
+    ```bash
     dataos-ctl workspace create -n new_workspace
     ```
 
@@ -249,12 +249,12 @@ To retrieve information about the Workflow, use the [`get`](/interfaces/cli/comm
 
 === "Command"
 
-    ```shell
+    ```bash
     dataos-ctl get -t ${workflow} -w ${curriculum}
     ```
 === "Example"
 
-    ```shell
+    ```bash
     dataos-ctl get -t workflow -w curriculum
     #expected_output
     INFO[0000] 🔍 get...
@@ -269,7 +269,7 @@ To retrieve information about the Workflow, use the [`get`](/interfaces/cli/comm
 To check this information for all users in a specific Workspace, add the `-a` flag to the command as shown below.
 
 
-```shell
+```bash
 dataos-ctl get -t workflow -w curriculum -a
 #expected_output
 INFO[0000] 🔍 get...
@@ -290,13 +290,13 @@ To obtain the runtime status of the Workflow, use the [`get runtime`](/interface
 
 === "Command"
 
-    ```shell
+    ```bash
     dataos-ctl get runtime -w ${{workspace-name}} -t workflow -n ${{name of workflow}}
     ```
 
 === "Example"
 
-    ```shell
+    ```bash
     dataos-ctl get runtime -w curriculum -t workflow -n cnt-product-demo-01
     ```
 
@@ -304,13 +304,13 @@ Alternatively, you can extract the Workflow information from the output of the [
 
 === "Command"
 
-    ```shell
+    ```bash
     dataos-ctl get -t workflow -w ${curriculum}
     ```
 
 === "Example"
 
-    ```shell
+    ```bash
     dataos-ctl get -t workflow -w curriculum
     # the output is shown below
               NAME        | VERSION |   TYPE   | WORKSPACE | STATUS | RUNTIME |   OWNER     
@@ -321,7 +321,7 @@ Alternatively, you can extract the Workflow information from the output of the [
 Select the workflow details from Name to Workspace tab, for example, `cnt-product-demo-01 | v1 | workflow | curriculum`.
 
 
-```shell
+```bash
 dataos-ctl get runtime -i "cnt-product-demo-01 | v1 | workflow | curriculum"
 ```
 
@@ -329,7 +329,7 @@ dataos-ctl get runtime -i "cnt-product-demo-01 | v1 | workflow | curriculum"
 
 <summary>Output</summary>
 
-```shell
+```bash
 INFO[0000] 🔍 workflow...
 INFO[0001] 🔍 workflow...complete
 
@@ -362,7 +362,7 @@ INFO[0001] 🔍 workflow...complete
 
 To refresh or see updates on the Workflow progress, add the `-r` flag to the [`get runtime`](/interfaces/cli/command_reference/#runtime) command:
 
-```shell
+```bash
 dataos-ctl -i get runtime " cnt-product-demo-01 | v1 | workflow | curriculum" -r
 ```
 
@@ -378,13 +378,13 @@ To check the logs for errors, retrieve the node name from the output of the `get
 
 === "Command"
 
-    ```shell
+    ```bash
     dataos-ctl -i "${{copy the name to workspace in the output table from get command}}" --node ${{failed node name from get runtime command}} log
     ```
 
 === "Example"
 
-    ```shell
+    ```bash
     dataos-ctl -i " cnt-product-demo-01 | v1 | workflow | curriculum" --node city-001-c5dq-0624114155-driver log
     ```
 
@@ -493,13 +493,13 @@ Before re-running the Workflow, delete the previous version from the environment
 
     === "Command"
 
-        ```shell
+        ```bash
         dataos-ctl delete -i "${{name to workspace in the output table from get status command}}"
         ```
 
     === "Example"
 
-        ```shell
+        ```bash
         dataos-ctl delete -i "cnt-product-demo-01 | v1 | workflow | curriculum"
         #Expected_Output
         INFO[0000] 🗑 delete...
@@ -514,13 +514,13 @@ Before re-running the Workflow, delete the previous version from the environment
 
     ===  "Command"
 
-        ```shell
+        ```bash
         dataos-ctl delete -f ${{file-path}}
         ```
 
     === "Example"
 
-        ```shell
+        ```bash
         dataos-ctl delete -f /home/desktop/flare/connect-city/config_v1.yaml
         #expected_output
         INFO[0000] 🗑 delete...
@@ -535,13 +535,13 @@ Before re-running the Workflow, delete the previous version from the environment
 
     === "Command"
 
-        ```shell
+        ```bash
         dataos-ctl delete -w ${{workspace}} -t workflow -n ${{workflow name}}
         ```
 
     === "Example"
 
-        ```shell
+        ```bash
         dataos-ctl delete -w curriculum -t workflow -n cnt-product-demo-01
         #expected_output
         INFO[0000] 🗑 delete...
@@ -556,20 +556,20 @@ Run the Workflow again using the [`apply`](/interfaces/cli/command_reference/#ap
 
 Command:
 
-```shell
+```bash
 dataos-ctl apply -f ${{file path}} -w ${{workspace}}
 ```
 Once you have applied the Workflow, check the runtime for its success by using the [`get runtime`](/interfaces/cli/command_reference/#runtime) command
 
 === "Command"
 
-    ```shell
+    ```bash
     dataos-ctl get runtime -i "${{copy the name to workspace in the output table from get status command}}" -r
     ```
 
 === "Example"
 
-    ```shell
+    ```bash
     dataos-ctl -i "cnt-city-demo-999 | v1 | workflow | curriculum" get runtime -r
     ```
 
@@ -577,7 +577,7 @@ Once you have applied the Workflow, check the runtime for its success by using t
 
 <summary>Output</summary>
 
-```shell
+```bash
 INFO[0000] 🔍 workflow...
 INFO[0002] 🔍 workflow...complete
 

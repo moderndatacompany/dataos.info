@@ -319,7 +319,7 @@ Data developers can alter the customize the behaviour of Bundle Resources by con
 
 After creating the Bundle YAML manifest, it's time to apply it to instantiate the Resource-instance in the DataOS environment. To apply the Bundle YAML file, utilize the  `apply`  command.
 
-```shell
+```bash
 dataos-ctl apply -f ${{yaml config file path}}
 
 # Sample
@@ -332,7 +332,7 @@ To ensure that your Bundle has been successfully created, you can verify it in t
 
 Check the name of the newly created bundle in the list of bundles created by you:
 
-```shell
+```bash
 dataos-ctl get -t bundle
 
 # Expected Output
@@ -346,7 +346,7 @@ INFO[0000] 🔍 get...complete
 
 Alternatively, retrieve the list of all bundles created in your organization:
 
-```shell
+```bash
 dataos-ctl get -t bundle -a
 
 # Expected Output
@@ -367,7 +367,7 @@ When a Bundle Resource is deleted, it triggers the removal of all resources asso
 
 Before deleting the Bundle, you must delete all workloads or resources that are dependent on it. This step ensures that there are no dependencies left that could cause issues during deletion. Once it's done, use the `delete` command to remove the specific Bundle Resource-instance from the DataOS environment:
 
-```shell
+```bash
 # METHOD 1
 dataos-ctl delete -t bundle -n ${{name of bundle}}
 # Sample
@@ -395,37 +395,37 @@ Here is a reference to the various commands related to managing Bundles in DataO
 
 - **Applying a Bundle:** Use the following command to apply a Bundle using a YAML configuration file:
     
-    ```shell
+    ```bash
     dataos-ctl apply -f ${{yaml config file path}}
     ```
     
 - **Get Bundle Status:** To retrieve the status of a specific Bundle, use the following command:
     
-    ```shell
+    ```bash
     dataos-ctl get -t bundle
     ```
     
 - **Get Status of all Bundles:** To get the status of all Bundles within the current context, use this command:
     
-    ```shell
+    ```bash
     dataos-ctl get -t bundle -a
     ```
     
 - **Generate Bundle JSON Schema:** To generate the JSON schema for a Bundle with a specific version (e.g., v1alpha), use the following command:
     
-    ```shell
+    ```bash
     dataos-ctl develop schema generate -t bundle -v v1alpha
     ```
     
 - **Get Bundle JSON Resource Schema:** To retrieve the JSON schema for a Bundle Resource from Poros with a specific version (e.g., v1alpha), use the following command:
     
-    ```shell
+    ```bash
     dataos-ctl develop get resource -t bundle -v v1alpha
     ```
     
 - **Delete Bundles:** To delete a specific bundle, you can use the below command
     
-    ```shell
+    ```bash
     dataos-ctl delete -t bundle -n ${{name of bundle}}
     ```
     

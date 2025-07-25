@@ -53,7 +53,7 @@ workflow:
 
 Use the CLI to apply the Scanner Workflow:
 
-```shell
+```bash
 dataos-ctl apply -f <scanner_workflow yaml file>
 ```
 
@@ -107,6 +107,6 @@ You can now explore source data using SQL without ingestion—thanks to the meta
 
 ## Next step
 
-With Depot in place, you are now ready to build data pipelines to deliver reliable data for your data products ensuring seamless data flow.
+With Depot in place, you are now ready to build data pipelines to deliver reliable data for your Data Products ensuring seamless data flow.
 
 👉 Next topic:[Building and Maintaining Data Pipelines](/learn_new/dp_foundations1_learn_track/build_pipeline/).

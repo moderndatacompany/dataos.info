@@ -807,7 +807,7 @@ v1alpha:
 
 Apply the Data Product manifest file by executing the below command:
 
-```shell
+```bash
 dataos-ctl product apply -f ${path-to-dp-manifest-file}
 ```
 

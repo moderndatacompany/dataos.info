@@ -47,14 +47,14 @@ First, let’s create a new branch named `stage` from the existing Iceberg datas
 
 Use the create-branch command to create a new branch within a dataset at a specified location within DataOS Lakehouse Storage (Icebase):
 
-```shell
+```bash
 # Create a Branch on the dataset called 'stage'
 dataos-ctl dataset create-branch -a dataos://icebase:retail/customer -b stage
 ```
 
 ### **List Branch**
 
-```shell
+```bash
 # List all Table References
 dataos-ctl dataset list-branch -a dataos://icebase:retail/customer
 ```
@@ -219,7 +219,7 @@ The final operation in the WAP pattern is to publish the changes and make the da
 
 List branch snapshots
 
-```shell
+```bash
 dataos-ctl dataset snapshots -a dataos://icebase:retail/city -b stage
 ```
 
@@ -232,7 +232,7 @@ SELECT * FROM catalog.db.table.refs
 
 This will return our list of references (branches and tags), and we can see the current snapshot ID for each branch, which is the information we need. Now let’s execute the cherry_pick() procedure:
 
-```shell
+```bash
 dataos-ctl dataset cherrypick-snapshot -a dataos://icebase:retail/city -sid 8018697
 ```
 
