@@ -10,8 +10,7 @@ At its core, Delta table format adds a transactional metadata layer to cloud obj
 🗣️ Delta table format is supported only for read and write Flare jobs.
 You cannot query Delta tables in Workbench or via SQL-based interactive interfaces.
 For query support across multiple engines (Spark, Trino), use `format: iceberg`.
-</aside>                     |
-
+</aside>
 
 **In DataOS:**
 
