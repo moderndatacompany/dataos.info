@@ -1,0 +1,25 @@
+name: {{policy-test-hash}}
+version: v1
+type: policy
+tags:
+  - {{dataos:type:resource}}
+description: {{'policy to hash on column '}}
+owner: {{iamgroot}}
+layer: user
+policy:
+  data:
+    dataset: {{sample_ride}}
+    collection: {{data_uber}}
+    depot: {{icebase}}
+    priority: {{90}}
+    type: mask
+    mask:
+      operator: redact
+    selector:
+      column:
+        names:
+          - {{payment_method}}
+      user:
+        match: {{any}}
+        tags:
+          - {{users:id:iamgroot}}
