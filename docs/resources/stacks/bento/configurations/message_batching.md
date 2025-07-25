@@ -2,9 +2,13 @@
 
 Bento is able to join sources and sinks with sometimes conflicting batching behaviors without sacrificing its strong delivery guarantees. It's also able to perform powerful [processing functions](/resources/stacks/bento/configurations/window_processing) across batches of messages, such as grouping, archiving, and reduction. Therefore, batching within Bento is a mechanism that serves multiple purposes:
 
-1. [Performance (throughput)](#performance)
-2. [Grouped message processing](#grouped-message-processing)
-3. [Compatibility (mixing multi and single-part message protocols)](#compatibility)
+- [Message Batching in Bento](#message-batching-in-bento)
+  - [Performance](#performance)
+  - [Grouped Message Processing](#grouped-message-processing)
+  - [Compatibility](#compatibility)
+    - [Shrinking Batches](#shrinking-batches)
+  - [Batch Policy](#batch-policy)
+    - [Post-Batch Processing](#post-batch-processing)
 
 ## Performance
 
@@ -42,7 +46,7 @@ output:
 
 Inputs that behave this way are documented as such and have a `batching` configuration block.
 
-Sometimes you may prefer to create your batches before processing in order to benefit from [batch wide processing](#grouped-message-processing), in which case, if your input doesn't already support [a batch policy](#batch-policy), you can instead use a [`broker`](dataos.info/docs/resources/stacks/bento/components/inputs/broker), which also allows you to combine inputs with a single batch policy:
+Sometimes you may prefer to create your batches before processing in order to benefit from [batch wide processing](#grouped-message-processing), in which case, if your input doesn't already support [a batch policy](#batch-policy), you can instead use a [`broker`](/resources/stacks/bento/components/inputs/broker), which also allows you to combine inputs with a single batch policy:
 
 ```yaml
 input:

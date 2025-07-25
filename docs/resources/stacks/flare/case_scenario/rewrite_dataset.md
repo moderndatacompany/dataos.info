@@ -1,6 +1,6 @@
 # Rewrite Dataset
 
-DataOS managed depot, Lakehouse built on top of Iceberg format can compact data files in parallel using Flare’s `rewrite_dataset` [action](/resources/stacks/flare/configurations/#rewrite_dataset). This will combine small files into larger files to reduce metadata overhead and runtime file open costs.
+DataOS managed depot, Lakehouse built on top of Iceberg format can compact data files in parallel using Flare’s [`rewrite_dataset` action](/resources/stacks/flare/configurations/#rewrite_dataset). This will combine small files into larger files to reduce metadata overhead and runtime file open costs.
 
 !!! tip
 
@@ -12,11 +12,8 @@ DataOS managed depot, Lakehouse built on top of Iceberg format can compact data 
 |---------------|--------|-------------|
 | `strategy`      | string | Name of the compaction strategy. Supported values: `binpack` (default) or `sort`. |
 | `sort_order`    | string | Defines sort order. For Z-ordering, use: `zorder(col1,col2)`. For regular sorting, use: `ColumnName SortDirection NullOrder` (e.g., `col1 ASC NULLS LAST`). Defaults to the table's current sort order. |
-| [`properties`](/resources/stacks/flare/case_scenario/rewrite_dataset/)    | mapping    | Configuration properties to be used during the compaction action. |
+| `properties`   | mapping    | Configuration properties to be used during the compaction action. |
 | `where`         | string | Predicate string used to filter which files are eligible for rewriting. All files that may contain matching data will be considered. |
-
-## strategy
-
 
 
 ## Properties
@@ -32,7 +29,7 @@ DataOS managed depot, Lakehouse built on top of Iceberg format can compact data 
 
 
 
-## Examples
+## Example Strategies
 
 ### **Binpack strategy**
 
@@ -114,7 +111,7 @@ workflow: # Workflow Specific Section
 ```
 
 
-###  **binpack strategy with `where` filter condition**
+###  **Binpack strategy with `where` filter condition**
 
 
 Since the where clause is specified (id = 3 and name = "foo"), the query will select the files that contain data matching the filter condition (id = 3 and name = "foo"), and only those files will be rewritten.

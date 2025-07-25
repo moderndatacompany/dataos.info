@@ -286,6 +286,6 @@ The process remains the same for other hosted code repository such as GitHub, an
     </center>
 - To test the endpoint via CLI, use `curl` with the API key as a query parameter:
 
-    ```shell
+    ```bash
     curl --location 'https://dataos-training.dataos.app/talos/public:cross-sell-api/api/affinity?apikey=xxxx'
     ```

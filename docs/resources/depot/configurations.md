@@ -2,24 +2,170 @@
 
 ## Structure of Depot YAML
 
-```yaml
-depot:
-  type: ${{S3}}                                          
-  description: ${{description}}
-  external: ${{true}}
-  source: ${{metadata}}
-  compute: ${{runnable-default}}
-  connectionSecret:                                
-    - acl: ${{rw}}
-      type: key-value-properties
-      data:
-        ${{data-source-specific-connection-secrets}}
-  spec:
-    ${{data-source-specifications}}
-```
+=== "Manifest file"
+    ```yaml
+    name: ${{depot-name}}
+    version: v2alpha
+    type: depot
+    tags:
+      - ${{tag1}}
+      - ${{tag2}}
+    owner: ${{owner-name}}
+    layer: user
+    depot:
+      type: ${{source-type}}                                       
+      description: ${{description}}
+      external: ${{true}}
+      compute: ${{runnable-default}}
+      secrets:
+        - name: ${{abfss-instance-secret-name}}-r
+          allkeys: true
+        - name: ${{abfss-instance-secret-name}}-rw
+          allkeys: true
+      ${{source-type}}:                                             
+    ```
+
+=== "Example"    
+    ```yaml
+    name: mydepot
+    version: v2alpha
+    type: depot
+    tags:
+      - abfss
+    owner: iamgroot
+    layer: user
+    depot:
+      type: ABFSS                                       
+      description: abfss connection
+      external: true
+      compute: runnable-default
+      secrets:
+        - name: abfss-instance-secret-r
+          allkeys: true
+        - name: abfss-instance-secret-rw
+          allkeys: true
+      abfss:                                             
+        account: ${{account-name}}
+        container: ${{container-name}}
+        relativePath: ${{relative-path}}
+        format: DELTA # ICEBERG or DELTA
+    ```
+
 <center><i> Structure of Depot YAML configuration </i></center>
 
 ## Attributes Configuration
+
+### **`name`**
+
+**Description:** Declare a name for the Depot.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value**                                                                                                                                                                                                                                                                                                                   |
+| ------------- | --------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| string        | mandatory       | none              | alpha numeric values with the RegEx  `[a-z0-9]([-a-z0-9]*[a-z0-9])`; a hyphen/dash is allowed as a special character      total length of the string should be less than or equal to 48 characters      names of cluster & depot have a different RegEx  `[a-z]([a-z0-9]*)`; a hyphen/dash is **not** allowed as a special character |
+
+
+**Example usage:**
+
+```yaml
+name: resourcename
+```
+
+### **`version`**
+
+**Description:** The version of the Resource
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value**           |
+| ------------- | --------------- | ----------------- | ---------------------------- |
+| string        | mandatory       | none              | v1, v2alpha                  |
+
+**Example usage:**
+
+```bash
+version: v2alpha
+```
+
+### **`type`**
+
+**Description:** Provide the value for the Resource type.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value**                                                   |
+| ------------- | --------------- | ----------------- | -------------------------------------------------------------------- |
+| string        | mandatory       | none              | cluster, compute, depot, policy,  secret, service, stack or workflow |
+
+**Example usage:**
+
+```yaml
+type: depot
+```
+
+### **`tags`**
+
+**Description:** Assign tags to the Resource-instance
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value**                         |
+| ------------- | --------------- | ----------------- | ------------------------------------------ |
+| mapping       | mandatory       | none              | any string; special characters are allowed |
+
+**Example usage:**
+
+```javascript
+tags: 
+  - data connection
+  - snowflake depot
+```
+
+### **`description`**
+
+**Description:** Assign description to Resource
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | --------------- | ----------------- | ------------------ |
+| string        | optional        | none              | any string         |
+
+**Additional information:** the description can be within quotes or without.
+
+<aside class="callout">
+🗣️ YAML supports 'scalars' such as strings, numbers, booleans, and null. A scalar value can be unquoted, within single quotes (') or double quotes ("). When the scalar contains a special character, the value must be declared within quotes.
+</aside>
+
+**Example usage:**
+
+```yaml
+description: "This is a sample description of a Resource"  
+```
+
+### **`owner`**
+
+**Description:** Identification of the user
+
+| **Data Type** | **Requirement** | **Default Value**                    | **Possible Value**       |
+| ------------- | --------------- | ------------------------------------ | ------------------------ |
+| string        | optional        | id of the user applying the Resource | any valid dataos user id |
+
+**Additional information:** when no ID**** is provided, or an incorrect ID is provided, the system automatically corrects it to the ID of the user who applied the Resource on DataOS CLI
+
+**Example usage:**
+
+```yaml
+owner: iamgroot
+```
+
+### **`layer`**
+
+**Description:** Declare the name of the layer in which the Resource is going to be deployed
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | --------------- | ----------------- | ------------------ |
+| string        | optional        | user              | user/system        |
+
+**Additional information:**
+From a user's perspective, the operating system can be envisaged as working at two levels - user layer & system layer. This is only a logical separation to understand the workings of the system.
+
+**Example usage:**
+
+```yaml
+layer: user
+```
 
 ## `depot`
 <b>Description:</b> specifies the configuration for the Depot section <br>
@@ -97,47 +243,8 @@ source: bigquerymetadata
 compute: runnable-default
 ```
 
-### **`connectionSecret`**
-<b>Description:</b> Specifies the connection secrets for the data source.<br>
-
-| **Data Type**    | **Requirement** | **Default Value** | **Possible Value** |
-|-----------|-------------|---------------|----------------|
-| mapping    | optional    | none          | varies between data sources |
-
-<b>Example Usage:</b>
-```yaml
-connectionSecret:
-  {} 
-```
-
-#### **`acl`**
-<b>Description:</b> Declares the access policy for the depot. Multiple connections with different access levels can be created for the same depot. For example, read and write permissions for a specific transformation and read-only permission for another operation using the same depot. <br>
-
-| **Data Type**    | **Requirement** | **Default Value** | **Possible Value** |
-|-----------|-------------|---------------|----------------|
-| string    | optional    | r             | r/rw           |
-
-<b>Example Usage:</b>
-
-```yaml
-acl: rw
-```
-
-#### **`type`**
-<b>Description:</b> Specifies the type of Secret<br>
-
-| **Data Type**    | **Requirement** | **Default Value** | **Possible Value** |
-|-----------|-------------|-------------------|--------------------|
-| string    | optional    | key-value-properties | key-value-properties |
-
-<b>Example Usage:</b>
-
-```yaml
-type: key-value-properties 
-```
-
-#### **`data`**
-<b>Description:</b> Provides the credentials and additional information needed to connect with the data source, such as access key ID, secret key ID, username, and passwords. <br>
+### **`secrets`**
+<b>Description:</b> Specifies the cInstance Secret reference of the data source.<br>
 
 | **Data Type**    | **Requirement** | **Default Value** | **Possible Value** |
 |-----------|-------------|---------------|----------------|
@@ -146,26 +253,23 @@ type: key-value-properties
 <b>Example Usage:</b>
 
 ```yaml
-data:
-  projectid: project-name
-  email: iamgroot@tmdc.io
+secrets:
+  - name: ${{abfss-instance-secret-name}}-r    # Name of the read-only Instance Secret
+    allkeys: true                              # Use all keys from this secret
+  - name: ${{abfss-instance-secret-name}}-rw   # Name of the read-write Instance Secret
+    allkeys: true                              # Use all keys from this secret
 ```
 
-#### **`files`**
-<b>Description:</b> Allows storing sensitive information in a separate JSON file. Specify the absolute path to the JSON file containing the credentials.<br>
+### **`secrets.name`**
 
-| **Data Type**    | **Requirement** | **Default Value** | **Possible Value** |
-|-----------|-------------|---------------|-------------------|
-| string    | optional    | none          | valid absolute path |
+The 'name' attribute specifies the name of the Instance Secret to be used for authentication.
 
-<b>Example Usage:</b>
+### **`secrets.allkeys`**
 
-```yaml
-files:
-  json_keyfile: secrets/gcp-demo-sa.json
-```
+The 'allkeys' attribute, when set to true, indicates that all keys within the referenced Instance Secret are available for use.
 
-### **`spec`**
+### **`${{depot-type}}`**
+
 <b>Description:</b> Specifies the precise location of the data and provides the hierarchical structure in which the data is stored. <br>
 
 | **Data Type**    | **Requirement** | **Default Value** | **Possible Value** |
@@ -175,8 +279,12 @@ files:
 <b>Example Usage:</b>
 
 ```yaml
-spec:
-  host: host
-  port: port
+  abfss:                                             
+    account: ${{account-name}}
+    container: ${{container-name}}
+    relativePath: ${{relative-path}}
+    format: ${{format}} # ICEBERG or DELTA
 ```
-
+<aside class="callout">
+🗣️ More information about the attributes specific to each source type is provided in their respective prerequisites section.
+</aside>

@@ -6,9 +6,9 @@ For new users, setting up Bento in a local environment is recommended as part of
 
 Once the local setup is complete, guidance is available for transitioning to DataOS and expanding pipeline capabilities. Refer to the step-by-step guide for detailed instructions on each stage of the process.
 
-## Install
+## Installation
 
-Firstly, let's get started by installing the Bento stack. The installation process is a breeze, that involves a single command to be executed on the command line:  
+To begin, install the Bento Stack by executing a single command in the terminal. This streamlined installation process requires no additional configuration steps.
 
 ```bash
 curl -Lsf https://warpstreamlabs.github.io/bento/sh/install | bash # Downloads the latest stable version
@@ -114,7 +114,7 @@ This configuration directs Bento to fetch data from the specified API endpoint u
 
 ### **Pipeline**
 
-The `pipeline` section defines processors that transform the incoming data. Bento uses Blob[Bloblang](/resources/stacks/bento/bloblang/walkthrough/)lang, a flexible language designed for data transformation.
+The `pipeline` section defines processors that transform the incoming data. Bento uses [Bloblang](/resources/stacks/bento/bloblang/walkthrough/), a flexible language designed for data transformation.
 
 The [`processors`](/resources/stacks/bento/components/processors/) are specified as a subsection within the `pipeline` section. The following example demonstrates basic Bloblang transformations:
 
@@ -145,18 +145,19 @@ output:
     codec: lines
 ```
 
-In this example:  
-- The `file` field specifies the output type as a file system.  
-- The `path` defines the location where the output file will be saved.  
-- The `codec` is set to `lines`, ensuring each record is written as a separate line.  
+In this example:
+
+- The `file` field specifies the output type as a file system.
+- The `path` defines the location where the output file will be saved.
+- The `codec` is set to `lines`, ensuring each record is written as a separate line.
 
 This configuration stores transformed data efficiently in a local text file.
 
 ### **Example Code**
 
-For the purposes of this guide, the Chuck Norris Jokes API will be used as an example. This API is selected due to its simplicity and ease of integration.
+For demonstration purposes, the "Chuck Norris Jokes" API has been selected due to its minimal integration requirements.
 
-To begin, a Bento configuration file must be created. This file defines the inputs, outputs, and any required Bloblang transformations. The following example provides a starting point for this configuration file:
+To initiate the process, a Bento configuration file must be created. This file specifies the inputs, outputs, and any necessary Bloblang transformations. The following example serves as an initial configuration template:
 
 ```yaml
 input:
@@ -168,8 +169,8 @@ input:
 
 output:
   file:
-    path: /home/Desktop/new.text # Path of the output file
-    codec: lines # Writes every new 
+    path: /home/Desktop/new.text           # Path of the output file
+    codec: lines                           # Writes every new 
 
 pipeline:
   processors:
@@ -179,7 +180,7 @@ pipeline:
       }
 ```
 
-In this configuration file, an HTTP input is defined to retrieve a random Chuck Norris joke from the API. Additionally, a file output is specified to store the joke locally. A Bloblang processor is included to transform the data before it is written to the file.
+In this configuration file, an HTTP input is defined to retrieve a random 'Chuck Norris joke' from the API. Additionally, a file output is specified to store the joke locally. A Bloblang processor is included to transform the data before it is written to the file.
 
 To execute this configuration, save it as a `.yaml` (example: `pipeline.yaml`) file and run the following command:
 
@@ -188,7 +189,7 @@ bento -c /home/Desktop/pipeline.yaml
 ```
 
 <aside class="callout">
-🗣️ Remember to stop the current stream by pressing0 Ctrl + C (on Windows/Linux) or Command + C (on macOS). This action is necessary to terminate the stream; otherwise, it will continue running indefinitely.</a>.
+🗣️ Remember to stop the current stream by pressing Ctrl + C (on Windows/Linux) or Command + C (on macOS). This action is necessary to terminate the stream; otherwise, it will continue running indefinitely.</a>.
 </aside>
 
 Before proceeding, it is recommended to review both the input and the processed output. To inspect the input, copy the specified URL into a web browser to observe the raw data. Next, review the content inside the output file to understand how the Bloblang processor has transformed the data.
@@ -215,7 +216,7 @@ This step ensures a clear understanding of the data flow and the applied transfo
 {"joke":"Jesus Walked on water. Chuck Norris Swam on land"}
 ```
 
-Now, let's break down the Bloblang transformation a bit further. Here's what the code is doing:
+The Bloblang transformation can be further analyzed to clarify its function. The following explanation outlines the operations performed by the code:
 
 ```go
 bloblang
@@ -226,4 +227,4 @@ root = {
 
 This transformation takes the incoming data and creates a new object with a single key-value pair. The key is "joke", and the value is the joke itself. the code essentially just extracting the joke from the API response and storing it in a more structured format.
 
-In summary, this configuration demonstrates how to set up a Bento pipeline with minimal code. The pipeline retrieves Chuck Norris jokes from an API, processes the data using a Bloblang transformation, and stores the result locally.
+This configuration demonstrates how to set up a Bento pipeline with minimal code. The pipeline retrieves Chuck Norris jokes from an API, processes the data using a Bloblang transformation, and stores the result locally.

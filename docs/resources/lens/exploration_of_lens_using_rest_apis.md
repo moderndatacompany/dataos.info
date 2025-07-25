@@ -348,7 +348,7 @@ Curl is a command-line tool used for transferring data with URLs, making it a co
 
 1. **Prepare the Request:** To send a GraphQL query using Curl, construct your request with the following template:
 
-    ```shell
+    ```bash
     curl -X POST <URL> \
     -H "Content-Type: application/json" \
     -H "apikey: <DATAOS_API_KEY>" \
@@ -379,7 +379,7 @@ Curl is a command-line tool used for transferring data with URLs, making it a co
 
     === "Graphql"
 
-        ```shell
+        ```bash
         curl -X POST https://alpha-omega.dataos.app/lens2/api/public:sales-analysis/v2/graphql \
         -H "Content-Type: application/json" \
         -H "apikey: abcdefghijklmnopqrstuvwxyz" \
@@ -387,7 +387,7 @@ Curl is a command-line tool used for transferring data with URLs, making it a co
         ```
     === "Load and SQL"
 
-        ```shell
+        ```bash
         curl -X POST 'http://liberal-donkey.dataos.app/lens2/api/public:sales-analysis/v2/load' \
         --header 'Content-Type: application/json' \
         --header 'Authorization: Bearer dG9rZW5fc3RlYWRpbHlfbWVyZWx5X2Z1bl9veXN0ZXIuMjNjYTdkYzktOGU2Zi00MmIzLTgxMjktM2MxNDY5MTNlYzdl' \
@@ -419,7 +419,7 @@ Python provides a flexible and powerful way to interact with the Lens REST API. 
 
     If you haven’t already installed the `requests` library, you can do so by running the following command:
 
-    ```shell
+    ```bash
     pip install requests
     ```
 
@@ -515,7 +515,7 @@ Python provides a flexible and powerful way to interact with the Lens REST API. 
 
     Save the script as a `.py` file and execute it using the following command in your terminal:
 
-    ```shell
+    ```bash
     python <your_script_name>.py
     ```
 

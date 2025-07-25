@@ -95,6 +95,17 @@ Now that you've installed a gateway, install a `npgsql`.
 
 Follow the below steps to sync the integrate the `productaffinity` semantic model with the Power BI and create a basic Power BI report Publish the report to the Power BI service to get a Power BI semantic model.
 
+### **Prerequisite**
+
+To authenticate with DataOS when connecting via Power BI Desktop and Power BI Service both the DataOS ID and API key must be retrieved from the Profile section. These values act as the username and password during integration and should be copied and stored securely.
+
+- **DataOS Id (username):** Click the profile icon (bottom-left corner) in the Data Product Hub and select Profile. The Id shown here serves as your DataOS username for authentication.
+
+- **DataOS API key (password):** In the Tokens tab of the Profile section, click the eye icon to reveal and copy your API key, which is used as the password during authentication.
+
+[profile-section](/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/profile.png)
+
+
 ### **Step 1: Navigate to the BI sync option**
 
 In Data Product Hub, choose a Data Product let's say `product-affinity` Navigate to the Access Options tab on the Data Product Hub application on DataOS. Within a specific Data Product, and under the BI Sync options, select 'Excel and Power BI'. Click on the download icon to download the `.pbip` file.
@@ -107,7 +118,7 @@ After downloading, locate the ZIP file in file manager and extract it to the pre
 
 <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/pb_serv_02.png" alt="DPH" style="width:40rem; height:auto; border: 1px solid black;" />
   
-The folder stores the main components of a Power BI project for syncing the Lens Model (here Product Affinity). Here is the brief description of each:
+The folder stores the main components of a Power BI project for syncing the semantic model (here Product Affinity). Here is the brief description of each:
 
 This folder contains files that define the report's structure and visual elements.
 
@@ -136,7 +147,7 @@ Customize and create report as required.
 
 <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/pb_report_05.png" alt="DPH" style="width:40rem; height:auto; border: 1px solid black;" />
         
-### **Step 5: Publish the report to PowerBI Service Account**
+### **Step 5: Publish the report to Power BI Service Account**
 
 On the Home tab, select Publish.
 
@@ -171,7 +182,7 @@ To connect Power BI to the on-premises PostgreSQL interface via the data gateway
     <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/config_gateway_04.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
     
     
-5. A New Connection screen will appear, here ensure On-premises is selected and complete the following fields(some fields are pre-configured):
+5. A new Connection screen will appear, here ensure On-premises is selected and complete the following fields(some fields are pre-configured):
     
     <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/config_gateway_05.png" 
         alt="DPH" 
@@ -191,7 +202,7 @@ To connect Power BI to the on-premises PostgreSQL interface via the data gateway
 <aside class="callout">
 💡 To retrieve the API Key and Username, click on the profile icon in the Data Product Hub interface and select 'Profile'. Then, navigate to the Tokens section. Click the eye icon to reveal and copy API Key. The Username of DataOS is User ID.
 
-<img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/apikey.png" alt="API Key" width="800" height="400" />
+<img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/profile.png" alt="API Key" width="800" height="400" />
 
 
 </aside>
@@ -258,6 +269,6 @@ Upon encountering the error 'unknown cluster: <cluster_name>' as shown below, ch
 - Power BI's Direct Query mode does not support creating custom dimensions and measures or querying the rolling window measure due to the lack of date hierarchy.
 - DAX functions and Import query mode are not supported.
 
-## Governance of model on PowerBI Service
+## Governance of semantic model on Power BI Service
 
-Data masking policies are enforced based on the user who creates and registers the gateway connection for the semantic model in PowerBI Service.
+Data masking policies are enforced based on the user who creates and registers the gateway connection for the semantic model in Power BI Service.

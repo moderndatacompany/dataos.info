@@ -217,11 +217,11 @@ Rules for linking to other documents or external resources.
 - Ensure that you have access to the repository `https://github.com/moderndatacompany/dataos.info`
 - Ensure that you are operating with the most recent versions of Python and MkDocs.
 - To create a local build, execute the following command:
-```shell
+```bash
 mkdocs build
 ```
 - For a local server, the command is as follows:
-```shell
+```bash
 mkdocs serve
 ```
 - Your documentation will be accessible on port 8000. To view it, simply copy the following URL into your browser:
@@ -816,7 +816,7 @@ search:
 ## Danger
 
 !!! danger "Phasellus posuere in sem ut cursus"
-
+    
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.

@@ -114,7 +114,7 @@ Create a manifest file for Lakesearch Service. The below given manifest file of 
     logLevel: 'DEBUG'
     compute: runnable-default
     envs:
-      LAKESEARCH_SERVER_NAME: "public:testingls"
+      LAKESEARCH_SERVER_NAME: "/lakesearch/public:testingls"
       DATA_DIR: public/testingls/sample
       USER_MODULES_DIR: /etc/dataos/config
     persistentVolume:
@@ -124,13 +124,13 @@ Create a manifest file for Lakesearch Service. The below given manifest file of 
       requests:
         cpu: 1000m
         memory: 1536Mi
-    stack: lakesearch:6.0
+    stack: lakesearch:1.0
     stackSpec:
       lakesearch:
         source:
           datasets:
             - name: city
-              dataset: dataos://icebase:retail/city
+              dataset: dataos://lakehouse:retail/city
               options:
                 region: ap-south-1
         index_tables:
@@ -230,7 +230,7 @@ Create a manifest file for Lakesearch Service. The below given manifest file of 
     logLevel: 'DEBUG'
     compute: runnable-default
     envs:
-      LAKESEARCH_SERVER_NAME: "public:ls-test-plain"
+      LAKESEARCH_SERVER_NAME: "/lakesearch/public:ls-test-plain"
       DATA_DIR: public/ls-test-plain-part/datanew01
       USER_MODULES_DIR: /etc/dataos/config
     persistentVolume:
@@ -246,7 +246,7 @@ Create a manifest file for Lakesearch Service. The below given manifest file of 
         source:
           datasets:
             - name: devices
-              dataset: dataos://icebase:_ls_data/devices_with_d
+              dataset: dataos://lakehouse:_ls_data/devices_with_d
               options:
                 region: ap-south-1
         index_tables:
@@ -383,7 +383,12 @@ Create a manifest file for Lakesearch Service. The below given manifest file of 
   ```
 </details>
 
+<aside class="callout">
+🗣️ When configuring a Lakesearch Service, it is recommended to provide the endpoint option (e.g., endpoint: s3.us-gov-east-1.amazonaws.com) along with region when input data resides in S3 source (Lakehouse or Depot). This helps ensure correct connectivity, especially for non-default regions. For other data sources, specifying an endpoint is not required.
+</aside>
+
 To know more about each attribute in detail, please refer to [this link.](/resources/stacks/lakesearch/configurations/)  
+
 
     
 ### **2. Apply the manifest file**

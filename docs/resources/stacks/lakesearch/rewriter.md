@@ -1,11 +1,10 @@
-# Lakesearch query rewriter
+# Lakesearch Query Rewriter
 
-LakeSearch includes a Query Rewriter feature that dynamically modifies incoming queries before execution. This ensures that searches return more relevant results by applying contextual modifications, such as filtering or restructuring queries based on data partitions or predefined business rules.
+Lakesearch includes a Query Rewriter feature that dynamically modifies incoming queries before execution. This ensures that searches return more relevant results by applying contextual modifications, such as filtering or restructuring queries based on data partitions or predefined business rules.
 
 In this implementation, the Query Rewriter adds a platform-based filter to every query, ensuring that only results matching "Windows" as the platform are retrieved.
 
-## How does query rewriter works?
-
+## How does the query rewriter work?
 
 The following implementation defines a custom query rewriter that:
 

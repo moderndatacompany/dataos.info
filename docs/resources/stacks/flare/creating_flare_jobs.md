@@ -1,25 +1,32 @@
-# Creating Jobs upon Flare Stack
+# Quick Guide for Flare Workflow
 
-## Flare Workflow
 
-DataOS uses Flare workflows to carry out large-scale data transformation, ingestion, syndication, and even a combination of these tasks.
+DataOS uses Flare Workflows to carry out large-scale data transformation, ingestion, syndication, and even a combination of these tasks.
 
 <div style="text-align: center;">
-  <img src="/resources/stacks/flare/basic_concepts/diagram_03.jpg" alt="diagram 03.jpg" style="border:1px solid black; width: 80%; height: auto;">
+  <img src="/resources/stacks/flare/basic_concepts/diagram_03.jpg" alt="diagram 03.jpg" style="border:1px solid black; width: 80%; height: auto box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);">
 </div>
 
-Flare is a declarative stack that processes large-scale data workflows using sequential YAML. On the other hand, a workflow is a primitive/Resource within DataOS that runs a sequence of jobs in a specific order. A workflow is a DAG (Directed Acyclic Graph) of jobs. To learn more about workflows, click [here](/resources/workflow/). 
+
+Flare is a declarative stack designed to process large-scale data Workflows using sequential manifest configurations. In contrast, a Workflow is a primitive, or Resource, within DataOS that executes a defined sequence of jobs in a specific order. Each Workflow is represented as a Directed Acyclic Graph (DAG) of jobs. For additional information on Workflows, refer to the [Workflow Resource documentation](/resources/workflow/).
+
 
 <aside class="callout">
 
-🗣️ In this section and every subsequent one, when we say Flare workflow, we essentially imply a workflow containing a DAG with a job (or multiple jobs) that uses Flare stack. To submit a job that uses Flare stack (Flare Job), you need to write a Workflow.
+🗣️ In this section and all subsequent sections, the term Flare Workflow refers to a Workflow represented as a Directed Acyclic Graph (DAG) that includes one or more jobs utilizing the Flare stack. To submit a job that uses the Flare stack (referred to as a Flare Job), a Workflow must be defined.
 
 </aside>
 
 ## Deep Diving into a Flare Job
 
-A Job is a generalized way of defining a transformation task based on the scenario and use case; it requires the assistance of stacks to achieve the desired outcome. Any job is fully reliant on the completion of the job before it. E.g., a Flare Job represents a data processing workload such as ingestion, transformation, profiling, or syndication, running on the Flare stack. 
-In terms of YAML structure, a Flare Job declared within the DAG comprises three sections: Input (data source), Output (data destination), and Steps (data transformation).
+A job defines a transformation task based on a specific scenario or use case. Each job requires a supporting stack to execute the task and is fully dependent on the successful completion of its preceding job. For example, a **Flare Job** represents a data processing workload—such as ingestion, transformation, profiling, or syndication—executed on the Flare stack.
+
+In the manifest configuration, a Flare Job defined within a DAG consists of three main sections:
+
+* **Input**: Specifies the data source.
+* **Output**: Specifies the data destination.
+* **Steps**: Defines the data transformation logic.
+
 
 ![Build.svg](/resources/stacks/flare/basic_concepts/build.svg)
 
@@ -30,413 +37,243 @@ However, before delving into the technical aspects of this task, it is vital to 
 
 ## Prerequisites
 
-### **Check whether DataOS CLI (Command Line Interface) is Installed**
+### **Required Permissions**
 
-Before proceeding, verify that the DataOS CLI is installed on your system. If it is, proceed to the next step. If not, use the provided link to install the CLI.
+Before executing a Flare Workflow, the necessary permission tags must be in place. To run a Flare Workflow using the CLI, the following tags are required:
 
-[CLI](/interfaces/cli/) 
+* `roles:id:data-dev`
+* `roles:id:system-dev`
 
-### **Check Required Permissions to Run the Flare Workflow**
+> A `Forbidden Error` will be returned if the required permissions are not assigned.
 
-Before running a Flare Workflow, ensure you have the necessary permissions. To execute the Flare Workflow through the CLI, you must possess the `roles:id:data-dev`, `roles:id:depot-manager`, `roles:id:depot-reader`, and `roles:id:user` tags.
+The following command can be used to verify the assigned permission tags. Authentication to the DataOS CLI must be completed prior to executing the command.
 
-> If you don’t have the required permissions, you will get the `Forbidden Error` message.
-> 
-
-Use the command below to check your permission tags. Make sure that you are logged in to DataOS CLI before running the above command. 
-
-```shell
+```bash
 dataos-ctl user get
-#This is the output you will get
-INFO[0000] 😃 user get...   # we hope u keep smiling                             
+
+#expected Output
+
+INFO[0000] 😃 user get...                           
 INFO[0000] 😃 user get...complete
 
       NAME     |     ID      |  TYPE  |        EMAIL         |              TAGS               
 ---------------|-------------|--------|----------------------|---------------------------------
-    IamGroot   |   iamgroot  | person |   iamgroot@tmdc.io   | roles:direct:collated,          
-               |             |        |                      | **roles:id:data-dev**,              
-               |             |        |                      | **roles:id:depot-manager**,         
-               |             |        |                      | **roles:id:depot-reader**,                  
+    IamGroot   |   iamgroot  | person |   iamgroot@tmdc.io   | roles:id:data-dev,
                |             |        |                      | roles:id:system-dev,            
-               |             |        |                      | **roles:id:user**,                  
+               |             |        |                      | roles:id:user,                  
                |             |        |                      | users:id:iamgroot
 ```
 
->
+> **Note:** If the required permission tags are not assigned, contact an administrator within the organization who holds Operator-level permissions. The administrator is responsible for assigning the necessary tags to enable Workflow execution.
 
-**Note:** In case of unavailability of required tags, contact the administrator within your organization with Operator-level permissions or `dataos:u:operator` tag to add the required tags for running your workflow.
->
 
-### **Check the required depot**
 
-To run a Flare Workflow, you need depots addressing both source and sink systems to read and write data. If you already have a depot created you can proceed to the next step. You can take help from the Metis to explore the datasets within various depots.
+### **Check the required Depot**
 
-To get the list of `depots`, created by all the DataOS users, run the command below in the CLI.
+To execute a Flare Workflow, Depots must be configured to interface with both source and sink systems for data read and write operations. To retrieve a list of Depots created by all DataOS users, execute the following command in the CLI:
 
-```shell
-dataos-ctl get -t depot -a
-```
+```bash
+dataos-ctl resource get -t depot -a
 
-<details>
-
-<summary>To check the output, click the toggle button</summary>
-    
-Output (with your job highlighted in bold)
-
-```shell
+# Expected Output
 INFO[0000] 🔍 get...                                     
 INFO[0000] 🔍 get...complete                             
 
         NAME      | VERSION | TYPE  | WORKSPACE | STATUS  |  RUNTIME  |          OWNER           
 -----------------|---------|-------|-----------|---------|-----------|--------------------------
-  azureblob      | v1      | depot |           | pending | running:1 | user01       
-  blender        | v1      | depot |           | active  |           | dataos-resource-manager  
-  crmbq          | v1      | depot |           | active  |           | user02             
-  customer       | v1      | depot |           | active  | running:1 | user02             
-  distribution   | v1      | depot |           | active  |           | user02             
-  dropzone01     | v1      | depot |           | active  | running:1 | dataos-resource-manager  
-  fastbase       | v1      | depot |           | active  |           | dataos-resource-manager  
-  filebase       | v1      | depot |           | active  | running:1 | dataos-resource-manager  
-  gateway        | v1      | depot |           | active  |           | dataos-resource-manager  
-  **icebase**        | v1      | depot |           | active  | running:1 | dataos-resource-manager  
-  manufacturing  | v1      | depot |           | active  |           | user02             
-  metisdb        | v1      | depot |           | active  |           | dataos-resource-manager  
-  poss3          | v1      | depot |           | active  | running:1 | user02             
-  primeorgbucket | v1      | depot |           | active  | running:1 | dataos-resource-manager  
-  product        | v1      | depot |           | active  | running:1 | user02             
-  publicstreams  | v1      | depot |           | active  |           | dataos-resource-manager  
-  redshift       | v1      | depot |           | active  |           | user03                
-  retail         | v1      | depot |           | active  | running:1 | user02             
-  snowflake01    | v1      | depot |           | active  |           | user02             
-  snrksh         | v1      | depot |           | active  |           | user04        
-  syndicate01    | v1      | depot |           | active  | running:1 | dataos-resource-manager  
-  systemstreams  | v1      | depot |           | active  |           | dataos-resource-manager  
-  **thirdparty01   | v1**      **| depot |           | active  | running:1 | dataos-resource-manager**  
-  transportation | v1      | depot |           | active  | running:1 | user02             
-  yakdevbq       | v1      | depot |           | active  |           | user02
+  lakehouse01        | v2alpha     | depot |           | active  | running:1 | dataos-resource-manager  
+  redshiftdepot  | v2alpha     | depot |           | active  |           | user03                
+  retail         | v2alpha     | depot |           | active  | running:1 | user02             
+  snowflake01    | v2alpha     | depot |           | active  |           | dataos-resource-manager         
+  thirdparty01   | v2alpha     | depot |           | active  | running:1 | user02
+
 ```
 
-</details>
-    
 
-In case you don’t have the required depot in the list, you can create a YAML configuration file for a depot and apply it through CLI. To know more about creating a depot click on the below link 
-
-[Create Depot](/resources/depot/#how-to-create-a-depot)
-
-### **Check the type of workload you want run**
-
-A workload can either be a **Batch** or **Streaming** workload.
-
-### **Check the size of the data**
-
-For small and medium-sized data, stick to the default configurations. For heavy workloads, such as hundreds of gigabytes or terabytes, alter and optimize the configuration accordingly. To know more about optimization click the below link
-
-[Flare Optimizations](/resources/stacks/flare/optimizations/)
-
-## Getting started with Flare Job
-
-Excited to run the workflow for Flare Job, without further ado let’s get right into it. 
-
-### **Create a YAML file**
-
-To define a workflow for the Flare job you want to run, you must provide various configuration values in the key-value pairs in the YAML file. Before creating the YAML, you need to get the UDL of the input and output depots. For this case scenario 
-
-- Input
-    - `dataset` - `dataos://thirdparty01:none/city`
-    - `format` - `CSV`
-- Output: `dataos://icebase:retailsample`
-
-This example requires two depots (`thirdparty01` and `lakehouse`) to connect with the source and sink to perform the reading and writing of data.
+If a suitable Depot already exists, proceed to the next step of creating a Flare Job. Metis may be used to explore datasets across various Depots.
+If the required Depot is not present in the list, a manifest configuration file can be created for the appropriate source Depot and applied using the CLI.
+Following template display the manifest configuration for a Snowflake Depot: 
 
 ```yaml
-version: v1
-name: cnt-city-demo-001
-type: workflow
+name: ${{snowflake-depot}}
+version: v2alpha
+type: depot
 tags:
-- Connect 2342
-- CONNECT
-description: The job ingests city data from dropzone into raw zone
-workflow: # Workflow
-  title: Connect City
-  dag: # DAG (Directed Acyclic Graph)
-  - name: wf-sample-job-001 # Job 1
-    title: City Dimension Ingester
-    description: The job ingests city data from dropzone into raw zone
-    spec:
-      tags:
+    - ${{tag1}}
+    - ${{tag2}}
+layer: user
+depot:
+    type: snowflake
+    description: ${{snowflake-depot-description}}
+    snowflake:
+    warehouse: ${{warehouse-name}}
+    url: ${{snowflake-url}}
+    database: ${{database-name}}
+    external: true
+    secrets:
+    - name: ${{redshift-instance-secret-name}}-r
+        allkeys: true
+
+    - name: ${{redshift-instance-secret-name}}-rw
+        allkeys: true
+
+```
+
+For detailed instructions on creating a Depot on different sources, refer to the [Create Depot](/resources/depot/) documentation.
+
+
+## Crating the Flare Job
+
+
+To define a workflow for executing a Flare job, configuration parameters must be specified as key-value pairs within a manifest configuration file. Prior to constructing the manifest file, the Uniform Data Locator (UDL) values for both the input and output Depots must be identified.
+
+For this scenario:
+
+* **Input**
+
+  * `dataset`: `dataos://thirdparty01:none/city`
+  * `format`: `CSV`
+
+* **Output**
+
+  * `dataset`: `dataos://lakehouse01:retailsample`
+
+This configuration requires integration with two Depots—`thirdparty01` and `lakehouse01`—to enable data ingestion from the source and data persistence to the sink. These Depots serve as endpoints for reading and writing operations, respectively.
+
+
+```yaml
+name: ${{cnt-city-demo-001}}                                        # Name of the Workflow
+version: v1                                                         # Version of the Workflow
+type: workflow                                                      # Type of Workflow
+tags:                                                               # Tags for classification
+- ${{tag}}                                         
+- ${{tag}}                                         
+description: The job ingests city data from dropzone into raw zone  # Description of the workflow
+
+workflow:                                                           # Workflow block
+  title: Connect City                                               # Title of the workflow
+  dag:                                                              # DAG (Directed Acyclic Graph)
+  - name: ${{wf-sample-job-001}}                                    # Job identifier
+    title: ${{City Dimension Ingester}}                             # Job title
+    description: The job ingests city data from dropzone into raw zone                    # Job description
+    spec:                                                           # Job specifications
+      tags:                                                         # Additional classification tags
       - Connect
       - City
-      stack: flare:6.0 # Stack is Flare, so its Flare Job
-      compute: runnable-default
-      stackSpec:
+      stack: flare:7.0                                              # Runtime stack to use 
+      compute: runnable-default                                     # Compute resource profile
+      stackSpec:                                                    # Stack-specific configuration
         job:
-          explain: true
-          logLevel: INFO
-					# Inputs
-          inputs:
-           - name: city_connect
-             dataset: dataos://thirdparty01:none/city
-             format: csv
-             schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc
-					# Outputs
-          outputs:
-            - name: cities
-              dataset: dataos://icebase:retailsample/city?acl=rw
-              format: Iceberg
-              description: City data ingested from external csv
-              options:
-                saveMode: append
-                sort:
+          explain: true                                             # Enable explain plan for transformations
+          logLevel: INFO                                            # Log level
+
+          inputs:                                                   # Input dataset specifications
+           - name: city_connect                                     # Input alias
+             dataset: dataos://thirdparty01:none/city               # Source dataset path
+             format: csv                                            # Input file format
+             schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc             # Avro schema location
+
+          outputs:                                                  # Output dataset specifications
+            - name: cities                                          # Output alias
+              dataset: dataos://lakehouse01:retailsample/city?acl=rw    # Output dataset path
+              format: Iceberg                                       # Output format
+              description: City data ingested from external csv     # Output description
+              options:                                              # Write options
+                saveMode: append                                    # Save mode for writing (append)
+                sort:                                               # Sorting configuration for partitions
                   mode: partition
                   columns:
-                    - name: version
-                      order: desc
-                iceberg:
-                  properties:
-                    write.format.default: parquet
-                    write.metadata.compression-codec: gzip
-                  partitionSpec:
+                    - name: version                                 # Partition column
+                      order: desc                                   # Sorting order
+                iceberg:                                            # Iceberg-specific settings
+                  properties:                                       # Additional Iceberg properties
+                    write.format.default: parquet                   # Default file format
+                    write.metadata.compression-codec: gzip          # Metadata compression
+                  partitionSpec:                                    # Iceberg partitioning
                     - type: identity
-                      column: version
-					# Steps
-          steps:
-          - sequence:
-              - name: cities
-                doc: Pick all columns from cities and add version as yyyyMMddHHmm formatted
-                  timestamp.
-                sql: |
+                      column: version                               # Partition by version column
+
+          steps:                                                    # Steps for data transformation
+          - sequence:                                               # Step sequence
+              - name: cities                                        # Step name
+                doc: Pick all columns from cities and add version as yyyyMMddHHmm formatted timestamp.      # Step description
+                sql: |                                                                                      # SQL transformation logic
                     SELECT
                       *,
-                      date_format (now(), 'yyyyMMddHHmm') AS version,
-                      now() AS ts_city
+                      date_format (now(), 'yyyyMMddHHmm') AS version,  
+                      now() AS ts_city             
                     FROM
-                      city_connect
+                      city_connect                 
+
 ```
 
-Save the YAML and copy its path. Path could be either relative or absolute.
+Save the manifest file and copy its path. Path could be either relative or absolute.
 
-> To know more about the various Flare Stack YAML configurations, click [here](/resources/stacks/flare/configurations/).
->
-
-### **Validate the YAML**
-
-Before running the workflow, ensure the validity of the YAML using the Linter command. The Linter command will check for correct syntax, indentation, naming convention, etc. To know more about the aspects verified by the Linter command -
-
-In case you encounter errors, check out the below link
-
-[Flare Errors and Issues](/resources/stacks/flare/optimizations/errors_and_issues/) 
-
-To use the linter command use the lint `-l` flag with the `apply` command. 
-
-```shell
-dataos-ctl apply -f <file-path> -l
-```
-
-Sample
-
-```shell
-dataos-ctl apply -f /home/tmdc/Desktop/city_flare -l
-```
-<details>
-<summary>If there are no errors in the YAML config file, click the toggle to check the output</summary>
-    
-```shell
-INFO[0000] 🛠 apply...                                   
-INFO[0000] 🔧 applying(public) cnt-city-demo-001:v1:workflow... 
-
----
-# cnt-city-demo-001:v1:workflow
-name: cnt-city-demo-001
-version: v1
-type: workflow
-tags:
-  - Connect 2342
-  - CONNECT
-description: The job ingests city data from dropzone into raw zone
-owner: aadityasoni
-workspace: public
-workflow:
-  title: Connect City
-  dag:
-    - name: wf-sample-job-001
-      description: The job ingests city data from dropzone into raw zone
-      title: City Dimension Ingester
-      spec:
-        stack: flare:6.0
-        compute: runnable-default
-        stackSpec:
-          job:
-            explain: true
-            inputs:
-              - dataset: dataos://thirdparty01:none/city
-                format: csv
-                name: city_connect
-                schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc
-            logLevel: INFO
-            outputs:
-              - dataset: dataos://icebase:retailsample/city?acl=rw
-                description: City data ingested from external csv
-                format: Iceberg
-                name: cities
-                options:
-                  iceberg:
-                    partitionSpec:
-                      - column: version
-                        type: identity
-                    properties:
-                      write.format.default: parquet
-                      write.metadata.compression-codec: gzip
-                  saveMode: append
-                  sort:
-                    columns:
-                      - name: version
-                        order: desc
-                    mode: partition
-            steps:
-              - sequence:
-                  - doc: Pick all columns from cities and add version as yyyyMMddHHmm formatted timestamp.
-                    name: cities
-                    sql: |
-                      SELECT
-                        *,
-                        date_format (now(), 'yyyyMMddHHmm') AS version,
-                        now() AS ts_city
-                      FROM
-                        city_connect
+> To know more about the various Flare Stack manifest file configurations, click [here](/resources/stacks/flare/configurations/).
 
 
-INFO[0003] 🔧 applying cnt-city-demo-001:v1:workflow...valid 
-INFO[0003] 🛠 apply(public)...lint                       
-INFO[0003] 🛠 apply...nothing   
-```
+### **Applying the Flare Workflow**
 
-</details>
-    
-<!-- 
-### **Testing the YAML on Flare Standalone**
+Apply the Workflow manifest by executing the below command:
 
-In spite of validating the YAML, there is a chance that the Flare job will fail in production which will result in a loss of both computing resources and time. To avoid such unforeseeable situations its the best practice to test the Flare job in the Flare Standalone before deploying it into production.
+```bash
+dataos-ctl resource apply -f <file-path>
 
-<aside>
-🗣️ This is a highly recommended step, but not a mandatory step. In case when you know the Flare job runs without errors, you can directly proceed to the step 4
+# Example 
 
-</aside>
+dataos-ctl resource apply -f /home/Desktop/city_flare.yaml
 
-[Testing the Flare job on Flare Standalone](/resources/stacks/flare/creating_flare_jobs/testing_the_flare_job_on_flare_standalone/) -->
+# Expected Output
 
-### **Applying the YAML**
-
-Use the `apply` command to create a workflow from the given YAML file. 
-
-```shell
-dataos-ctl apply -f <file-path>
-```
-
-```shell
-dataos-ctl apply -f /home/tmdc/Desktop/city_flare
-```
-
-Output
-
-```shell
 INFO[0000] 🛠 apply...                                   
 INFO[0000] 🔧 applying(public) cnt-city-demo-001:v1beta1:workflow... 
 INFO[0002] 🔧 applying(public) cnt-city-demo-001:v1beta1:workflow...created 
 INFO[0002] 🛠 apply...complete
 ```
 
-**Create Your Workspace (Optional)**
 
-This is an **optional** step. By default, you can always run your Flare workflow
+If a workspace is not explicitly defined, the resource is applied to the `public` workspace by default.
 
-s in `public` workspace, but if you want to create a new workspace for some specific workflows, execute the below command.
+!!! info "Best Practice"
 
-```shell
-dataos-ctl workspace create -n <name of your workspace>
+      It is recommended that workflows be created within a specific workspace aligned to the client's context, such as by environment (e.g., `dev`) or domain (e.g., `marketing`).
+
+To apply a resource within a specific workspace, use the following syntax:
+
+```bash
+dataos-ctl resource apply -f <file-path> -w <workspace-name>
 ```
 
-### **Monitoring Workflow**
+If the specified workspace does not exist, create it using the following command:
 
-#### **Get Status of the Workflow**
-
-**Created by you**
-
-Use the `get` command for the workflow information on CLI. This command will list the workflows created by you. You can check this information for all the users by adding `-a` flag to the command.
-
-```shell
-dataos-ctl -t workflow -w public get
+```bash
+dataos-ctl workspace create -n <workspace-name>
 ```
 
-Output
 
-```shell
-INFO[0000] 🔍 get...                                     
-INFO[0001] 🔍 get...complete                             
 
-        NAME        | VERSION |   TYPE   | WORKSPACE | STATUS | RUNTIME |   OWNER     
---------------------|---------|----------|-----------|--------|---------|-------------
-  cnt-city-demo-001 | v1      | workflow | public    | active | running |   tmdc
-```
 
-**Created by everyone**
+### **Workflow Runtime Information**
 
-```shell
-dataos-ctl -t workflow -w public get -a
-```
+To obtain runtime status for a specific workflow, execute the following command:
 
-Output
+```bash
+dataos-ctl get runtime -w <workspace-name> -t workflow -n <workflow-name>
 
-```shell
-INFO[0000] 🔍 get...                                     
-INFO[0001] 🔍 get...complete                             
+# Example:
 
-                 NAME                | VERSION |   TYPE   | WORKSPACE | STATUS |  RUNTIME  |       OWNER        
--------------------------------------|---------|----------|-----------|--------|-----------|--------------------
-  checks-sports-data                 | v1      | workflow | public    | active | succeeded | user01        
-  cnt-city-demo-001                  | v1      | workflow | public    | active | running   | tmdc         
-  cnt-city-demo-001-01               | v1      | workflow | public    | active | succeeded | otheruser          
-  cnt-city-demo-01001                | v1      | workflow | public    | active | succeeded | user03       
-```
-
-#### **Get Runtime Information**
-
-Get the Runtime status of the workflow, using the below command
-
-Command
-
-```shell
-dataos-ctl get runtime -w <workspace-name> -t workflow -n <name-of-workflow>
-```
-
-Example
-
-```shell
 dataos-ctl get runtime -w public -t workflow -n cnt-city-demo-001
 ```
 
-**Alternative method:** 
+**Alternative Method:**
 
-You can pass the information as a string from the output of the `get` command as highlighted in red in the below command
+Workflow runtime details can also be retrieved by passing workflow metadata as a string. Extract the segment from the `NAME` to `WORKSPACE` column in the `get` command output and use the `-i` flag.
 
-```shell
-dataos-ctl -t workflow -w public get
-# the output is shown below
-        NAME        | VERSION |   TYPE   | WORKSPACE | STATUS | RUNTIME |   OWNER     
---------------------|---------|----------|-----------|--------|---------|-------------
-  **cnt-city-demo-001 | v1      | workflow | public**    | active | running |   tmdc
-```
-
-Select from Name to workspace, for example `cnt-city-demo-001 | v1     | workflow | public` 
-
-```shell
+```bash
 dataos-ctl -i " cnt-city-demo-001 | v1      | workflow | public" get runtime
-```
 
-<details>
+# Expected Output
 
-<summary>Output</summary>
-
-```shell
 INFO[0000] 🔍 workflow...                                
 INFO[0001] 🔍 workflow...complete                        
 
@@ -463,51 +300,31 @@ INFO[0001] 🔍 workflow...complete
   cnt-city-demo-001-run-failure-rnnbl | system   | cnt-city-demo-001-c5dq-620000540  | pod-workflow | wait,main               | succeeded  
   cnt-city-demo-001-start-rnnbl       | system   | cnt-city-demo-001-c5dq-169925113  | pod-workflow | wait,main               | succeeded
 ```
-</details>
 
-#### **Get runtime refresh**
+To view live updates of workflow progress, append the `-r` flag:
 
-You can see the updates for the workflow progress. 
-
-```shell
-dataos-ctl -i " cnt-city-demo-001 | v1     | workflow | public" get runtime -r
-```
-<details>
-
-<summary>Output</summary>
-    
-```shell
-INFO[0000] 🔍 workflow...                                
-INFO[0001] 🔍 workflow...complete                        
-
-        NAME        | VERSION |   TYPE   | WORKSPACE |    TITLE     |   OWNER     
---------------------|---------|----------|-----------|--------------|-------------
-  cnt-city-demo-001 | v1beta1 | workflow | public    | Connect City | mebinmoncy  
-
-  JOB NAME |   STACK    |        JOB TITLE        | JOB DEPENDENCIES  
------------|------------|-------------------------|-------------------
-  city-001 | flare:6.0  | City Dimension Ingester |                   
-  system   | dataos_cli | System Runnable Steps   |                   
-
-  RUNTIME | PROGRESS |          STARTED          |         FINISHED           
-----------|----------|---------------------------|----------------------------
-  failed  | 6/6      | 2022-06-24T17:11:55+05:30 | 2022-06-24T17:13:23+05:30  
-
-                NODE NAME              | JOB NAME |             POD NAME              |     TYPE     |       CONTAINERS        |   PHASE    
---------------------------------------|----------|-----------------------------------|--------------|-------------------------|------------
-  city-001-bubble-failure-rnnbl       | city-001 | cnt-city-demo-001-c5dq-2803083439 | pod-workflow | wait,main               | failed     
-  city-001-c5dq-0624114155-driver     | city-001 | city-001-c5dq-0624114155-driver   | pod-flare    | spark-kubernetes-driver | failed     
-  city-001-execute                    | city-001 | cnt-city-demo-001-c5dq-3254930726 | pod-workflow | main                    | failed     
-  city-001-failure-rnnbl              | city-001 | cnt-city-demo-001-c5dq-3875756933 | pod-workflow | wait,main               | succeeded  
-  city-001-start-rnnbl                | city-001 | cnt-city-demo-001-c5dq-843482008  | pod-workflow | wait,main               | succeeded  
-  cnt-city-demo-001-run-failure-rnnbl | system   | cnt-city-demo-001-c5dq-620000540  | pod-workflow | wait,main               | succeeded  
-  cnt-city-demo-001-start-rnnbl       | system   | cnt-city-demo-001-c5dq-169925113  | pod-workflow | wait,main               | succeeded
+```bash
+dataos-ctl -i " cnt-city-demo-001 | v1      | workflow | public" get runtime -r
 ```
 
-</details>
+Press `Ctrl + C` to exit the runtime stream.
 
-Press `Ctrl + C` to Exit.
 
+
+## Additional Link
+
+- [Flare Stack Manifest Configurations](/resources/stacks/flare/configurations/) – Configuration settings for reading, writing, and transforming data.
+
+- [Flare Functions List](/resources/stacks/flare/functions/list/) – List of supported functions for Flare-based data processing.
+
+- [Flare Optimizations](/resources/stacks/flare/optimizations/) – Techniques for tuning and optimizing Flare stack jobs.
+
+- [Case Scenario](/resources/stacks/flare/case_scenario/) – Examples of real-world data processing using the Flare stack.
+
+
+
+
+<!-- 
 ### **Troubleshoot Errors**
 
 #### **Check Logs for Errors**
@@ -516,19 +333,19 @@ Run the same workflow again with the same specifications
 
 Check the logs using the following command. You can run the runtime command to get the names of nodes that failed
 
-```shell
+```bash
 dataos-ctl -i "<copy the name-to-workspace in the output table from get status command" --node <failed-node-name-from-get-runtime-command> log
 ```
 
 **Example**
 
-```shell
+```bash
 dataos-ctl -i " cnt-city-demo-001 | v1 | workflow | public" --node city-001-c5dq-0624114155-driver log
 ```
 <details>
 <summary>Output</summary>
     
-```shell
+```bash
 INFO[0000] 📃 log(public)...                             
 INFO[0001] 📃 log(public)...complete                     
 
@@ -565,7 +382,7 @@ INFO[0001] 📃 log(public)...complete
 + exec /usr/bin/tini -s -- /opt/spark/bin/spark-submit --conf spark.driver.bindAddress=10.212.6.129 --deploy-mode client --properties-file /opt/spark/conf/spark.properties --class io.dataos.flare.Flare local:///opt/spark/jars/flare.jar -c /etc/dataos/config/jobconfig.yaml
 2022-06-24 11:42:37,146 WARN  [main] o.a.h.u.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
 build version: 5.9.16-dev; workspace name: public; workflow name: cnt-city-demo-001; workflow run id: 761eea3b-693b-4863-a83d-9382aa078ad1; run as user: mebinmoncy; job name: city-001; job run id: 03b60c0e-ea75-4d08-84e1-cd0ff2138a4e; 
-found configuration: Map(explain -> true, appName -> city-001, outputs -> List(Map(depot -> dataos://icebase:retailsample?acl=rw, name -> output01)), inputs -> List(Map(dataset -> dataos://thirdparty01:none/city, format -> csv, name -> city_connect, schemaPath -> dataos://thirdparty01:none/schemas/avsc/city.avsc)), steps -> List(/etc/dataos/config/step-0.yaml), logLevel -> INFO)
+found configuration: Map(explain -> true, appName -> city-001, outputs -> List(Map(depot -> dataos://lakehouse01:retailsample?acl=rw, name -> output01)), inputs -> List(Map(dataset -> dataos://thirdparty01:none/city, format -> csv, name -> city_connect, schemaPath -> dataos://thirdparty01:none/schemas/avsc/city.avsc)), steps -> List(/etc/dataos/config/step-0.yaml), logLevel -> INFO)
 22/06/24 11:42:41 INFO Flare$: context is io.dataos.flare.contexts.ProcessingContext@49f40c00
 22/06/24 11:42:41 ERROR Flare$: =>Flare: Job finished with error build version: 5.9.16-dev; workspace name: public; workflow name: cnt-city-demo-001; workflow run id: 761eea3b-693b-4863-a83d-9382aa078ad1; run as user: mebinmoncy; job name: city-001; job run id: 03b60c0e-ea75-4d08-84e1-cd0ff2138a4e; 
 io.dataos.flare.exceptions.FlareInvalidConfigException: Could not alter output datasets for workspace: public, job: city-001. There is an existing job with same workspace: public and name: city-001 writing into below datasets
@@ -628,13 +445,13 @@ Now before you rerun the workflow, you need to `delete` the previous version of 
 
 Command
 
-```shell
+```bash
 dataos-ctl -i "<name-to-workspace in the output table from get status command>" delete
 ```
 
 Example
 
-```shell
+```bash
 dataos-ctl -i " cnt-city-demo-001 | v1 | workflow | public" delete
 # this is the output
 INFO[0000] 🗑 delete...                                  
@@ -647,13 +464,13 @@ INFO[0003] 🗑 delete...complete
 
 Command
 
-```shell
+```bash
 dataos-ctl delete -f <file-path>
 ```
 
 Example
 
-```shell
+```bash
 dataos-ctl delete -f /home/desktop/flare/connect-city/config_v2beta1.yaml 
 # this is the output
 INFO[0000] 🗑 delete...                                  
@@ -666,13 +483,13 @@ INFO[0001] 🗑 delete...complete
 
 Command
 
-```shell
+```bash
 dataos-ctl -w <workspace> -t workflow -n <workflow-name> delete
 ```
 
 Example
 
-```shell
+```bash
 dataos-ctl -w public -t workflow -n cnt-city-demo-001 delete
 # this is the output
 INFO[0000] 🗑 delete...                                  
@@ -687,20 +504,20 @@ Run the workflow again using `apply` command. Check the Runtime for its success.
 
 **Command**
 
-```shell
+```bash
 dataos-ctl -i "copy the name-to-workspace in the output table from get status command" get runtime -r
 ```
 
 **Example**
 
-```shell
+```bash
 dataos-ctl -i " cnt-city-demo-999 | v1 | workflow | public" get runtime -r
 ```
 <details>
 <summary>
 Output</summary>
     
-```shell
+```bash
 INFO[0000] 🔍 workflow...                                
 INFO[0002] 🔍 workflow...complete                        
 
@@ -744,13 +561,13 @@ It’s always good to clean your desk, after getting the work done. You should d
 
 First, list the workflows.
 
-```shell
+```bash
 dataos-ctl -t workflow -w public get
 ```
 
 Output
 
-```shell
+```bash
 INFO[0000] 🔍 get...                                     
 INFO[0001] 🔍 get...complete                             
 
@@ -761,15 +578,15 @@ INFO[0001] 🔍 get...complete
 
 And then delete using the below command
 
-```shell
+```bash
 dataos-ctl -i "cnt-city-demo-999     | v1 | workflow | public " delete
 ```
 
 Output
 
-```shell
+```bash
 INFO[0000] 🗑 delete...                                  
 INFO[0001] 🗑 deleting(public) cnt-city-demo-999:v1beta1:workflow... 
 INFO[0003] 🗑 deleting(public) cnt-city-demo-999:v1beta1:workflow...deleted 
 INFO[0003] 🗑 delete...complete
-```
+``` -->

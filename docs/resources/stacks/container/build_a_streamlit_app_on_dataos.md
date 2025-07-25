@@ -50,7 +50,7 @@ This Dockerfile starts with a lightweight Python 3.10 base image, installs Strea
 
 To build the Docker image, run the following command in the same directory as your `Dockerfile`:
 
-```shell
+```bash
 docker build -t my-app:new .
 ```
 
@@ -64,7 +64,7 @@ First, you need to create a Docker Hub account and repository.
 
 Next, log in to Docker Hub using the `docker login` command.
 
-```shell
+```bash
 docker login --username=your-username
 ```
 
@@ -74,13 +74,13 @@ Replace `your-username` with your Docker Hub username, and input the password to
 
 To push an image to Docker Hub, your image needs to be tagged. In case it’s not tagged, you can use the below command.
 
-```shell
+```bash
 docker image tag my-app:new your-username/my-app:new
 ```
 
 Finally, push the Docker image to Docker Hub using the following command:
 
-```shell
+```bash
 docker image push your-username/my-app:new
 ```
 
@@ -117,7 +117,7 @@ service: # Service Specific Section
 
 Apply the YAML file using the `apply` command, as follows:
 
-```shell
+```bash
 dataos-ctl apply -f ${path-to-file} -w ${workspace}
 ```
 

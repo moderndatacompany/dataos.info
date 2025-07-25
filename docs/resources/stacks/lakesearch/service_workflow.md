@@ -1,6 +1,6 @@
 # Lakesearch Service workflow
 
-LakeSearch is designed to provide scalable, high-performance full-text search capabilities for Lakehouse tables.
+Lakesearch is designed to provide scalable, high-performance full-text search capabilities for Lakehouse tables.
 
 ## Indexing a Table
 
