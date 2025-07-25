@@ -4,14 +4,10 @@ In DataOS, object storage Depots (ABFSS, Amazon S3, GCS, WASBS) supports two dif
 
 ## What does the Delta table format actually do?
 
-At its core, Delta table format adds a transactional metadata layer to cloud object storage, enabling ACID-compliant operations for Parquet files. In DataOS, when you configure a Depot with `format: delta`, you're enabling:
-
-- Structured data ingestion and updates using Delta-compatible write pipelines (e.g., Flare jobs).
-
-- Reliable reads from versioned data, with support for schema enforcement and rollback.
+At its core, Delta table format adds a transactional metadata layer to cloud object storage, enabling ACID-compliant operations for Parquet files. In DataOS, when you configure a Depot with `format: delta`, you're enabling data ingestion using Delta-compatible read and write [Flare jobs](/resources/stacks/flare/).
 
 <aside, class="callout">
-Delta table format is supported only for read and write Flare jobs.
+🗣️ Delta table format is supported only for read and write Flare jobs.
 You cannot query Delta tables in Workbench or via SQL-based interactive interfaces.
 For query support across multiple engines (Spark, Trino), use format: iceberg.
 </aside>                     |
@@ -28,7 +24,7 @@ For query support across multiple engines (Spark, Trino), use format: iceberg.
 
 DataOS supports the Delta table format on the following object storage Depots:
 
-- **Amazon S3** (`type: S3`)
+=== "Amazon S3"
 
     ```yaml
     name: ${{depot-name}}
@@ -56,7 +52,7 @@ DataOS supports the Delta table format on the following object storage Depots:
         endpoint: ${{s3.us-gov-east-1.amazonaws.com}}
     ```
 
-- **Azure Blob File System Secure** (`type: ABFSS`)
+=== "Azure Blob File System Secure (ABFSS)"
 
     ```yaml
     name: ${{depot-name}}
@@ -85,7 +81,7 @@ DataOS supports the Delta table format on the following object storage Depots:
         relativePath: ${{delta}}
     ```
 
-- **Google Cloud Storage** (`type: GCS`)
+=== "Google Cloud Storage (GCS)"
 
     ```yaml
     name: ${{"sanitygcs01"}}
@@ -111,7 +107,7 @@ DataOS supports the Delta table format on the following object storage Depots:
         format: delta
     ```
 
-- **Windows Azure Storage Blob Service** (`type: WASBS`)
+=== "Windows Azure Storage Blob Service (WASBS)"
 
     ```yaml
     name: ${{depot-name}}
