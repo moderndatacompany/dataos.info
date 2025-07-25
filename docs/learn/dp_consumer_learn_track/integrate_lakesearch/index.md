@@ -1,6 +1,7 @@
 # Lakesearch API 
 
-LakeSearch is a powerful DataOS Stack that makes it easy to add fast, scalable search across Lakehouse tables. It allows app developers to add powerful search functionality, with indexing and query performance that can scale to meet business needs.
+!!! info "Overview"
+    LakeSearch is a powerful DataOS Stack that makes it easy to add fast, scalable search across Lakehouse tables. It allows app developers to add powerful search functionality, with indexing and query performance that can scale to meet business needs.
 
 The LakeSearch API lets users search, filter and aggregate data from indexed tables using simple, flexible queries. A search consists of one or more queries that are combined and sent to Lakesearch. The system processes these queries and returns matching documents as hits or search results in the response. Additionally, a search may include parameters to refine query processing. For instance, it can be restricted to a specific index or configured to return a limited number of results. 
 
@@ -257,7 +258,7 @@ Query:
 
 ![match_all.png](/learn/dp_consumer_learn_track/integrate_lakesearch/match_all.png)
 
-### **2. Filter by Specific Value**
+### **2. Filter by specific value**
 
     List customers tagged as "High Risk" to target them for risk-based intervention.
 
@@ -275,7 +276,7 @@ Query:
 
 ![high_risk.png](/learn/dp_consumer_learn_track/integrate_lakesearch/high_risk.png)
 
-### **3. Exact Phrase Match**
+### **3. Exact phrase match**
     
 Find entries where the recommendation is exactly “Pair Wine with Meat”.
     
@@ -297,7 +298,7 @@ CopyEdit
 ![match_phrase.png](/learn/dp_consumer_learn_track/integrate_lakesearch/match_phrase.png)
     
 
-### **4. Highlight Matched Text (e.g., "Spain")**
+### **4. Highlight matched text (e.g., "Spain")**
     
 A marketing analyst needs to identify all customers located in **Spain** to assess regional preferences and engagement.
     
@@ -399,7 +400,7 @@ Query:
 ![condition_expr_sort.png](/learn/dp_consumer_learn_track/integrate_lakesearch/condition_expr_sort.png)
     
 
-### **8. Multi-Condition Filtering**
+### **8. Multi-Condition filtering**
     
 Segment + Recommendation: Get customers who are “Moderate Risk” and have a recommendation involving "Fish".
     

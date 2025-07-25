@@ -1,6 +1,8 @@
-# Data Product Developer Learning Track
+# Data Product Foundations Learning Track
 
 This track is designed to equip you with the skills needed to develop robust and scalable Data Products using DataOS. 
+
+
 
 By the end of this course, you'll be able to:
 
@@ -11,6 +13,17 @@ By the end of this course, you'll be able to:
 - **Build and implement Data Products**: Develop logical semantic models, data pipelines, and apply access control.
 
 - **Deploy and manage Data Products**: Utilize CI/CD practices for seamless deployment and updates.
+
+## Module 1: Understanding Data Products
+
+Get a solid foundation on what Data Products are and how they can drive insights and decision-making. Learn about their features, and importance in business processes.
+
+
+<div class= "grid cards" markdown>
+
+-   [Features and importance of Data Products](/learn/dp_consumer_learn_track/introduction_data_product/)
+
+</div>
 
 ## Module 1: Understanding data needs
 

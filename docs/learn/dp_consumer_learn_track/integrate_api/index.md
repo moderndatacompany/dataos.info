@@ -1,6 +1,7 @@
 # Integration with Data API
 
-In this topic, you will learn how to use the Data Product via REST API. This guide offers step-by-step instructions for accessing and integrating the Data Product through REST API.
+!!! info "Overview"
+    In this topic, you will learn how to use the Data Product via REST API. This guide offers step-by-step instructions for accessing and integrating the Data Product through REST API.
 
 ## Scenario
 
@@ -53,4 +54,4 @@ Follow these steps to access and consume the Data Product using the REST API:
 
 If you want to train machine learning models on your Data Product, proceed to the next module:
 
-[Integration with AI/ML](/learn/dp_consumer_learn_track/integrate_aiml/)
+👉 [Integration with AI/ML](/learn/dp_consumer_learn_track/integrate_aiml/)

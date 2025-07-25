@@ -59,14 +59,6 @@ views:
 
 ```
 
-<!-- <aside class="callout">
-
-To populate an Entity view on Iris, one must use the `export_to_iris` attribute. However, same is not the case in the Metric view.
-
-</aside> -->
-
-
-
 ### **Metrics-first approach**
 
 The **metrics-first approach** builds views around key performance metrics in a data model. Each view focuses on a specific measure and includes all relevant dimensions for grouping, filtering, and tracking time. This approach helps business teams make informed, data-driven decisions by providing clear, consistent, actionable metrics.
@@ -335,12 +327,6 @@ Follow these steps to explore views and metrics within the Data Products Hub.
     <figcaption> Data Lineage </figcaption>
 </div>
     
-
-<!-- **Step 5: Access the Iris board for Metric analysis**
-
-- Click on the Quick Insights link at the **References** section's top-right corner.
-- This will take you directly to the **Iris Board**, where you can observe and analyze the metric view in more detail. -->
-
 **Step 5: Navigate to the Data Product Hub Studio**
 
 - Next to the **Quick Insights** button, click the **Explore** button.
