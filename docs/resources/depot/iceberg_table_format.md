@@ -2,7 +2,7 @@
 
 In DataOS, object storage Depots (ABFSS, Amazon S3, GCS, WASBS) supports two different table formats: `iceberg` and `delta`.  This section focuses on the Iceberg table format.
 
-## What Does the Iceberg Table Format Actually Do?
+## What does the Iceberg table format actually do?
 
 The Iceberg format manages both the data (Parquet/ORC/Avro files) and the metadata (schemas, snapshots, partitions) in a structured, versioned layout across object storage. Here's how it works behind the scenes:
 
@@ -32,7 +32,7 @@ In essence, Iceberg separates metadata from compute, enabling multiple engines (
 
 DataOS supports the Iceberg table format on the following object storage Depots:
 
-- **Amazon S3** (`type: S3`)
+=== "Amazon S3"
 
     ```yaml
     name: ${{depot-name}}
@@ -65,7 +65,7 @@ DataOS supports the Iceberg table format on the following object storage Depots:
         endpoint: ${{s3.us-gov-east-1.amazonaws.com}}
     ```
 
-- **Azure Blob File System Secure** (`type: ABFSS`)
+=== "Azure Blob File System Secure (ABFSS)"
 
     ```yaml
     name: ${{depot-name}}
@@ -97,7 +97,7 @@ DataOS supports the Iceberg table format on the following object storage Depots:
         relativePath: ${{icebase}}
     ```
 
-- **Google Cloud Storage** (`type: GCS`)
+=== "Google Cloud Storage (GCS)"
 
     ```yaml
     name: ${{"sanitygcs01"}}
@@ -127,7 +127,7 @@ DataOS supports the Iceberg table format on the following object storage Depots:
         relativePath: ${{icebase}}
     ```
 
-- **Windows Azure Storage Blob Service** (`type: WASBS`)
+=== "Windows Azure Storage Blob Service (WASBS)"
 
     ```yaml
     name: ${{depot-name}}
@@ -163,18 +163,6 @@ DataOS supports the Iceberg table format on the following object storage Depots:
 
 For each of these storage types, a Depot can be created with `format: iceberg` so that Iceberg table management is enabled in DataOS.
 
-## Specification of Iceberg catalog type and metastore
-
-The way in which Iceberg metadata is managed can be controlled by specifying the catalog type in the Depot manifest file:
-
-```yaml
-s3:
-  ...
-  format: ICEBERG
-  icebergCatalogType: hive   # or hadoop (default)
-  metastoreType: iceberg-rest-catalog
-  metastoreUrl: <REST_CATALOG_URL>
-```
 
 
 
