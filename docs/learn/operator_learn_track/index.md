@@ -1,7 +1,8 @@
-# DataOS Operator Learning Track
+# DataOS Operator Learning Track Modules
 
-This track is designed to empower you with the expertise to manage, optimize, and ensure the reliability of the DataOS platform.
+The modules in this track are designed to empower you with the expertise to manage, optimize, and ensure the reliability of the DataOS platform.
 
+## 🌟 What you’ll learn
 By the end of this course, you'll be able to:
 
 - **Secure platform operations**: Implement credential security and access management practices to protect sensitive data and enforce proper access control.
