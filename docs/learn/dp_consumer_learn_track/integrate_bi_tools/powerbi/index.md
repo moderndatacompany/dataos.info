@@ -6,7 +6,8 @@ search:
 
 # Integrate semantic model with Power BI
 
-In this guide, you will learn how to integrate a Data Product with Power BI and activate it to build rich, interactive dashboards.
+!!! info "Overview"
+    In this guide, you will learn how to integrate a Data Product with Power BI and activate it to build rich, interactive dashboards.
 
 ### **Prerequesite**
 
