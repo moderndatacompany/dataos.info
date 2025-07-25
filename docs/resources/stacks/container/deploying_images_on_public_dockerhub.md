@@ -61,13 +61,13 @@ service: # Service Specific Section
 
 ### **Apply the Resource manifest through CLI**
 
-```shell
+```bash
 dataos-ctl apply -f ${manifest-file-name} -w ${workspace}
 ```
 
 Since Service is a Workspace Resource, you can use the `get` command along with the type and workspace, to get details of the service. You can also use the `-r` command to regularly update the runtime status. 
 
-```shell
+```bash
 dataos-ctl -t service -w public get
 # Expected Output
 INFO[0000] 🔍 get...                                     

@@ -258,7 +258,7 @@ Query:
 
 ![match_all.png](/learn_new/dp_consumer_learn_track/integrate_lakesearch/match_all.png)
 
-### **2. Filter by Specific Value**
+### **2. Filter by specific value**
 
     List customers tagged as "High Risk" to target them for risk-based intervention.
 
@@ -276,7 +276,7 @@ Query:
 
 ![high_risk.png](/learn_new/dp_consumer_learn_track/integrate_lakesearch/high_risk.png)
 
-### **3. Exact Phrase Match**
+### **3. Exact phrase match**
     
 Find entries where the recommendation is exactly “Pair Wine with Meat”.
     
@@ -298,7 +298,7 @@ CopyEdit
 ![match_phrase.png](/learn_new/dp_consumer_learn_track/integrate_lakesearch/match_phrase.png)
     
 
-### **4. Highlight Matched Text (e.g., "Spain")**
+### **4. Highlight matched text (e.g., "Spain")**
     
 A marketing analyst needs to identify all customers located in **Spain** to assess regional preferences and engagement.
     
@@ -400,7 +400,7 @@ Query:
 ![condition_expr_sort.png](/learn_new/dp_consumer_learn_track/integrate_lakesearch/condition_expr_sort.png)
     
 
-### **8. Multi-Condition Filtering**
+### **8. Multi-Condition filtering**
     
 Segment + Recommendation: Get customers who are “Moderate Risk” and have a recommendation involving "Fish".
     

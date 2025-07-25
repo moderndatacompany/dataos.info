@@ -52,7 +52,7 @@ instance-secret:
 
 Depending on your requirement (read-only or read-write), apply the corresponding secret YAML. Use the DataOS CLI interface to apply these YAML files.
 
-```shell
+```bash
 dataos-ctl apply -f {{file path}}
 ```
 
@@ -98,6 +98,6 @@ lakehouse:
 
 Finally, apply the Lakehouse YAML to instantiate your Lakehouse resource. Ensure all the placeholders ({{ }}) in the YAML are replaced with actual values before applying. 
 
-```shell
+```bash
 dataos-ctl apply -f {{lakehouse yaml path}} -w {{workspace name}}
 ```

@@ -83,7 +83,7 @@ Flags:
 ### **`collation`**
 Interact with the Collation Service in the DataOS®
 
-```shell
+```bash
 
 Usage:
   dataos-ctl collation [command]
@@ -259,7 +259,7 @@ To learn more, refer to [Develop Command Group](/interfaces/cli/develop/details/
 ### **`doc`**
 Generate markdown documentation for every command
 
-```shell
+```bash
 
 Usage:
   dataos-ctl doc [flags]
@@ -276,7 +276,7 @@ Global Flags:
 
 ### **`domain`**
 Manage domains in the DataOS®
-```shell
+```bash
 
 Usage:
   dataos-ctl domain [command]
@@ -300,7 +300,7 @@ To learn more, refer to [Domain Command Group](/interfaces/cli/domain/details/).
 
 Interact with the FastBase Depot in the DataOS®
 
-```shell
+```bash
 
 Usage:
   dataos-ctl fastbase [command]
@@ -426,7 +426,7 @@ Flags:
 ### **`jq`**
 JSON filter a manifest using a jq filter
 
-```shell
+```bash
 
 Usage:
   dataos-ctl jq [flags]
@@ -530,7 +530,7 @@ To learn more, refer to [Maintenance Command Group](/interfaces/cli/maintenance/
 ### **`operate`**
 Operate the DataOS®
 
-```shell
+```bash
 
 Usage:
   dataos-ctl operate [command]
@@ -557,7 +557,7 @@ Use "dataos-ctl operate [command] --help" for more information about a command.
 ### **`product`**
 Manage products in the DataOS®
 
-```shell
+```bash
 
 Usage:
   dataos-ctl product [command]
@@ -580,7 +580,7 @@ To learn more, refer to [Product Command Group](/interfaces/cli/product/details/
 ### **`query-gateway`**
 Interact with the Query Gateway in the DataOS®
 
-```shell
+```bash
 
 Usage:
   dataos-ctl query-gateway [command]
@@ -601,7 +601,7 @@ To learn more, refer to [Query-gateway Command Group](/interfaces/cli/query-gate
 ### **`resource`**
 Manage resources in the DataOS®
 
-```shell
+```bash
 
 Usage:
   dataos-ctl resource [command]
@@ -630,7 +630,7 @@ To learn more, refer to [Resource Command Group](/interfaces/cli/resource/detail
 ### **`role`**
 Manage DataOS® Roles
 
-```shell
+```bash
 
 Usage:
   dataos-ctl role [command]
@@ -656,7 +656,7 @@ To learn more, refer to [Role Command Group](/interfaces/cli/role/details/).
 ### **`runtime`**
 DataOS® runtime management commands
 
-```shell
+```bash
 
 Usage:
   dataos-ctl runtime [command]
@@ -682,7 +682,7 @@ To learn more, refer to [Runtime Command Group](/interfaces/cli/runtime/details/
 **Examples:**
 The "runtime run" sub-command initiates a directive to the Poros operator, instructing it to execute a workflow immediately. This functionality is applicable to both scheduled and one-time workflows. In the case of scheduled workflows, it triggers an immediate run, while for one-time workflows, it behaves same as 're-run' operation.
 
-```shell
+```bash
 ~ dataos-ctl get -w system -a
 INFO[0000] 🔍 get...                                     
 INFO[0004] 🔍 get...complete                             
@@ -745,7 +745,7 @@ INFO[0000] 🔍 get...complete
 ### **`tcp-stream`**
 
 Open a tcp stream for resources in the DataOS®
-```shell
+```bash
 Open a tcp stream for resources in the DataOS®
 
 Usage:
@@ -788,7 +788,7 @@ Flags:
 ### **`update`**
 Update resources in the DataOS®
 
-```shell
+```bash
 
 Usage:
   dataos-ctl update [flags]
@@ -807,7 +807,7 @@ Flags:
 ### **`user`**
 Manage DataOS® Users
 
-```shell
+```bash
 
 Usage:
   dataos-ctl user [command]
@@ -836,7 +836,7 @@ To learn more, refer to [User Command Group](/interfaces/cli/user/details/).
 ### **`usql`**
 usql, the universal command-line interface for SQL databases
 
-```shell
+```bash
 
 Usage:
   usql [OPTIONS]... [DSN]

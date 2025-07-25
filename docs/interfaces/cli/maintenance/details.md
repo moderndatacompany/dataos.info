@@ -4,7 +4,7 @@ You run the following `maintenance` sub commands by appending them to *dataos-ct
 ## `collect-garbage`
 Collect Garbage on the DataOS®
 
-```shell
+```bash
 
 Usage:
   dataos-ctl maintenance collect-garbage [flags]
@@ -19,7 +19,7 @@ Flags:
 ## `create-docker-secret`
 Creates a Docker Secret for K8S
 
-```shell
+```bash
 
 Usage:
   dataos-ctl maintenance create-docker-secret [flags]

@@ -28,7 +28,7 @@ You’ll build two Flare workflows in this step— one for each output dataset. 
 
 <aside class="callout">
 
-🗣 It’s important to note that these workflows are powered by a **source-aligned data product**, which acts as a curated, trusted foundation for all downstream consumer data products. This separation of responsibilities ensures that raw data is consistently processed, quality-checked, and made analytics-ready—so your consumer-aligned products focus purely on delivering business value.
+🗣 It’s important to note that these workflows are powered by a **Source-aligned Data Product**, which acts as a curated, trusted foundation for all downstream consumer Data Products. This separation of responsibilities ensures that raw data is consistently processed, quality-checked, and made analytics-ready—so your consumer-aligned products focus purely on delivering business value.
 
 </aside>
 

@@ -87,24 +87,24 @@ For more information about the various attributes in Instance Secret specific se
 To create an Instance Secret Resource-instance within the DataOS, use the `apply` command. When applying the manifest file from the DataOS CLI, make sure you don't specify Workspace as Instance Secrets are [Instance-level Resource](/resources/). The `apply` command is as follows:
 
 === "Command"
-    ```shell
+    ```bash
     dataos-ctl resource apply -f ${path/instance_secret.yaml}
     ```
     Alternate
-    ```shell
+    ```bash
     dataos-ctl apply -f ${path/instance_secret.yaml}
     ```
 === "Example Usage"
-    ```shell
+    ```bash
     dataos-ctl resource apply -f depot_secret.yaml
     ```
     Alternate
-    ```shell
+    ```bash
     dataos-ctl apply -f depot_secret.yaml
     ```
     Expected output:
 
-    ```shell
+    ```bash
     $ dataos-ctl apply -f depot_secret.yaml
     INFO[0000] 🛠 apply...                                   
     INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
@@ -121,37 +121,37 @@ To validate the proper creation of the Instance Secret Resource within the DataO
 === "Command"
     - To get the details of instance-secret created by the user who applies the instance-secret, use the following command:
 
-        ```shell
+        ```bash
         dataos-ctl resource get -t instance-secret
         ```
         Alternative command
 
-        ```shell
+        ```bash
         dataos-ctl get -t instance-secret
         ```
     - To get the details of instance-secret created by all the users within the DataOS Instance, use the above command with `-a` flag:
 
-        ```shell
+        ```bash
         dataos-ctl resource get -t instance-secret -a
         ```
         Alternate command
 
-        ```shell
+        ```bash
         dataos-ctl get -t instance-secret -a
         ```
 
 
 === "Example Usage"
 
-    ```shell
+    ```bash
     dataos-ctl get -t instance-secret
     ```
     Alternative command
-    ```shell
+    ```bash
     dataos-ctl resource get -t instance-secret -a
     ```
     Expected Output
-    ```shell
+    ```bash
     INFO[0000] 🔍 get...                                     
     INFO[0000] 🔍 get...complete                             
 
@@ -171,7 +171,7 @@ The following error will be thrown if any Resource has a dependency on Instance 
 
 Example usage:
 
-```shell
+```bash
 dataos-ctl delete -t instance-secret -n sampleinstsecret
 INFO[0000] 🗑 delete...                                  
 INFO[0000] 🗑 deleting sampleinstsecret:v1:instance-secret... 
@@ -188,26 +188,26 @@ To remove the Instance Secret Resource from the DataOS environment, utilize the 
 
 === "Command"
 
-    ```shell
+    ```bash
     dataos-ctl resource delete -t ${resource-type} -n ${resource-name}
     ```
     Alternative command
-    ```shell
+    ```bash
     dataos-ctl delete -t ${resource-type} -n ${resource-name}
     ```
 
 === "Example Usage"
 
-    ```shell
+    ```bash
     dataos-ctl resource delete -t instance-secret -n sampleinstsecret
     ```
     Alternative command
-    ```shell
+    ```bash
     dataos-ctl delete -t instance-secret -n sampleinstsecret
     ```
 Output
 
-```shell
+```bash
 dataos-ctl delete -t instance-secret -n sampleinstsecret
 INFO[0000] 🗑 delete...                                  
 INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
@@ -218,22 +218,22 @@ INFO[0000] 🗑 delete...complete
 
 === "Command"
 
-    ```shell
+    ```bash
     dataos-ctl resource delete -i ${resource-name:version:resource-type}
     ```
     Alternative command
-    ```shell
+    ```bash
     dataos-ctl resource delete -i ${resource-name:version:resource-type}
     ```
 
 === "Example Usage"
 
-    ```shell
+    ```bash
     dataos-ctl resource delete -i sampleinstsecret:v1:instance-secret
     ```
 Output
 
-```shell
+```bash
 dataos-ctl delete -t instance-secret -n sampleinstsecret
 INFO[0000] 🗑 delete...                                  
 INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
@@ -243,19 +243,19 @@ INFO[0000] 🗑 delete...complete
 
 === "Command"
 
-    ```shell
+    ```bash
     dataos-ctl delete -f ${manifest-file-path}
     ```
 
 === "Example"
 
-    ```shell
+    ```bash
     dataos-ctl delete -f /home/desktop/connect-city/instance_secret.yaml
     ```
 
 Output
 
-```shell
+```bash
 dataos-ctl delete -t instance-secret -n sampleinstsecret
 INFO[0000] 🗑 delete...                                  
 INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted

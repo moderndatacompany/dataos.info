@@ -224,7 +224,7 @@ Flags:
 ## resource
 Interact with resources in the DataOS® Collation Service
 
-```shell
+```bash
 
 Usage:
   dataos-ctl collation resource [command]
@@ -238,7 +238,7 @@ Flags:
 ```
 ### **get**
 Get the resource in the DataOS® Collation Service
-```shell
+```bash
 
 Usage:
   dataos-ctl collation resource get [flags]

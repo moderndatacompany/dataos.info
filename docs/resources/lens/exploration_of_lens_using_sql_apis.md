@@ -424,7 +424,7 @@ For instance, in a view that aggregates data from the purchase and product table
 
 **Example:**
 
-```shell
+```bash
 lens:public:productaffinity=> SELECT purchase_purchase_frequency, product_product_name FROM purchase_frequency;
  purchase_purchase_frequency | product_product_name 
 -----------------------------+----------------------

@@ -44,7 +44,7 @@ Let's take a scenario where you write a Flare Workflow YAML to write terabytes o
 
 ### **Anatomy of the Standalone command**
 
-```shell
+```bash
 dataos-ctl develop start -s flare -i rubiklabs/flare3:6.0.93 -f sample/standalone-config/config.yaml -d standalone -P 14042
 ```
 
