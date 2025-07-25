@@ -845,9 +845,7 @@ The YAML configuration contains the various attributes and nested sections.
     
     | Attribute | Description |
     | --- | --- |
-    <!-- | `export_to_iris` | Boolean flag indicating if the view should be exported to Iris. |
-    | `iris` | Configuration related to Iris export settings. | -->
-    | `timeseries` | Field used for time series data in Iris. |
+    | `timeseries` | Field used for time series data. |
     | `available_time_zones` | List of time zones available for time series data. |
 
 3. **`tables`** 
@@ -872,38 +870,23 @@ views:
     description: View containing transactions 360 degree information
     public: true
     meta:
-        export_to_iris: true
-        iris:
-        timeseries: products.launchdate
-        available_time_zones:
-            - America/Los_Angeles
-            - America/Chicago
-            - America/New_York
-            - Europe/London
-            - Europe/Paris
-            - Asia/Jerusalem
-            - Europe/Moscow
-            - Asia/Kolkata
-            - Asia/Shanghai
-            - Asia/Tokyo
-            - Australia/Sydney
+      title: product_analysis 
 
     tables:
-
-        - join_path: products
-        prefix: true
-        includes:
-            - productname
-            - productcategory
-            - designername
-            - productid
-            - launchdate
-            - total_products
-            - price          
-            - cost
-            - average_margin
-            - average_price          
-            - subcategory
+      - join_path: products
+      prefix: true
+      includes:
+          - productname
+          - productcategory
+          - designername
+          - productid
+          - launchdate
+          - total_products
+          - price          
+          - cost
+          - average_margin
+          - average_price          
+          - subcategory
 ```
 </details>
         

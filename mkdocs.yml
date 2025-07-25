@@ -331,6 +331,9 @@ nav:
             - Oracle: resources/depot/create_depot/oracle.md
             - PostgreSQL: resources/depot/create_depot/postgre.md
             - Snowflake: resources/depot/create_depot/snowflake.md
+          - Supported Table Format:
+            - Iceberg: resources/depot/iceberg_table_format.md
+            - Delta: resources/depot/delta_table_format.md
           - Configurations: resources/depot/configurations.md
           - Governance: resources/depot/governance.md
           - Observability: resources/depot/observability.md
@@ -1060,33 +1063,33 @@ nav:
           - quick_guides/sql_query_studio/index.md
         - Querying diverse data sources: 
           - quick_guides/query_diverse_data_source/index.md
-      - Using data modeling layer:
-        - Defining a Data Model:
-          - quick_guides/define_data_model/index.md
-        - Creating a data model:
-          - quick_guides/create_data_model/index.md
+      # - Using data modeling layer:
+      #   - Defining a Data Model:
+      #     - quick_guides/define_data_model/index.md
+      #   - Creating a data model:
+      #     - quick_guides/create_data_model/index.md
         # - Testing a data model:
         #   - quick_guides/test_data_model/index.md
-        - Deploying a data model:
-          - quick_guides/deploy_data_model/index.md
-        - Exploring Lens on Catalog:
-          - quick_guides/exploring_lens_on_metis/index.md
-        - Working on Lens Studio:
-          - quick_guides/working_on_lens_studio/index.md
-        - Working with Payloads:
-          - quick_guides/working_with_payload/index.md
-          - Example scenarios: quick_guides/working_with_payload/filter_operator_example_scenarios/index.md
-        - Pre-defined filtering using Segments:
-          - quick_guides/working_with_segments/index.md
-        - Defining Data Policies:
-          - quick_guides/apply_data_policy_lens/index.md 
+        # - Deploying a data model:
+        #   - quick_guides/deploy_data_model/index.md
+        # - Exploring Lens on Catalog:
+        #   - quick_guides/exploring_lens_on_metis/index.md
+        # - Working on Lens Studio:
+        #   - quick_guides/working_on_lens_studio/index.md
+        # - Working with Payloads:
+        #   - quick_guides/working_with_payload/index.md
+        #   - Example scenarios: quick_guides/working_with_payload/filter_operator_example_scenarios/index.md
+        # - Pre-defined filtering using Segments:
+        #   - quick_guides/working_with_segments/index.md
+        # - Defining Data Policies:
+        #   - quick_guides/apply_data_policy_lens/index.md 
         # - Creating a Lens: 
         #   - quick_guides/create_lens/index.md
         # - Using a Lens: 
         #   - quick_guides/use_lens/index.md
         # - Creating Dashboard with LQL: 
         #   - quick_guides/create_dashboard_lql/index.md
-      - Building Data Products: quick_guides/building_data_product/index.md
+      # - Building Data Products: quick_guides/building_data_product/index.md
       - Scanning metadata: quick_guides/scan_metadata/index.md
       - Creating ETL pipelines:
         - Ingest external files into DataOS: 
