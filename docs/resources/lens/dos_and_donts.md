@@ -236,46 +236,42 @@ Always aim to roll down data as much as possible to minimize the amount of data 
 
 3. **Refresh key:** Use a refresh key if the underlying data is refreshed on a regular cadence.
 
-**Example: `revenue_view`**
+**Example: `total_spend`**
 
 In the following example, we create a view called `revenue_view`, which includes selected members from the `sales`, `product`, and `account` tables:
 
 ```yaml
 views:
-  - name: revenue_view
-    description: View containing sales 360 degree information
+  - name: total_spending
+    description: This metric measures how many marketing campaigns a customer has engaged with. 
     public: true
-    meta:     
-      export_to_iris: true
-      iris:
-        timeseries: sales.invoice_date
-        excludes:
-         - sales.source
-         - sales.invoice_date
-        refresh:
-          every: 24h
-
+    meta:
+      title: Customer Spending by Product Category
+      tags:   
+        - DPDomain.Marketing
+        - DPUsecase.Customer Segmentation
+        - DPUsecase.Product Recommendation
+        - DPTier.Consumer Aligned
+      metric:
+        expression: "*/45  * * * *"
+        timezone: "UTC"
+        window: "day"
+        excludes: 
+         - spend
     tables:
-      - join_path: sales
-        prefix: false
+      - join_path: purchase
+        prefix: true
         includes:
-          - revenue
-          - invoice_date
-          - ext_net
-          - source
+          - purchase_date
+          - customer_id
+          - total_spend
+          - spend
 
       - join_path: product
-        prefix: true   # product_category
+        prefix: true
         includes:
-          - category
-          - brand
-          - class
-
-      - join_path: account
-        prefix: false
-        includes:
-          - site_name
-          - state
+          - product_category
+          - product_name
 ```
 
 ### **Jinja macros**

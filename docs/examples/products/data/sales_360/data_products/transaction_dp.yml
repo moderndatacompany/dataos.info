@@ -1,3 +1,5 @@
+#This is not referred by any doc, and is old manifest file 
+
 name: transactions-sales-dp
 version: v1alpha
 type: data
