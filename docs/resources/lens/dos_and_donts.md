@@ -246,14 +246,7 @@ views:
     description: View containing sales 360 degree information
     public: true
     meta:     
-      export_to_iris: true
-      iris:
-        timeseries: sales.invoice_date
-        excludes:
-         - sales.source
-         - sales.invoice_date
-        refresh:
-          every: 24h
+      title: "revenue_view"
 
     tables:
       - join_path: sales

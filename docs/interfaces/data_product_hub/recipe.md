@@ -115,7 +115,7 @@ To address the problem, the Data Product Hub, a graphical user interface within 
     <img src="/interfaces/data_product_hub/recipe/image%20(49).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
     </center>
 
-15. Clicking the Explore button opens a studio interface. Within this interface, Max explores the iris board. For this use case, the `price_to_earnings_ratio` measure and `company_id` dimension are selected. The Run Query button is clicked to examine the table, followed by clicking the Chart tab to visualize the data points.
+15. Clicking the Explore button opens a studio interface. For this use case, the `price_to_earnings_ratio` measure and `company_id` dimension are selected. The Run Query button is clicked to examine the table, followed by clicking the Chart tab to visualize the data points.
 
     <center>
     <img src="/interfaces/data_product_hub/recipe/image%20(16).png" alt="DPH" style="width:40rem; border: 1px solid black;" />

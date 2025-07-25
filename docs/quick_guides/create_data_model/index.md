@@ -806,13 +806,9 @@ views:
   - name: view_name
     description: "purpose of the view"
     public: true
-    #use meta property to define whether you want to export a view to IRIS board
+    
     meta:
-      #set this property to true if you want to export the view to IRIS board
-      export_to_board: true
-      board:
-        #provide the time dimension to be used for displaying time-series
-        timeseries: table_name.dimension_name 
+      title: "view_name"
     tables:
         # table name to be included in the view
       - join_path: table1
@@ -898,21 +894,7 @@ views:
     description: View containing transactions 360 degree information
     public: true
     meta:
-        export_to_iris: true
-        iris:
-        timeseries: transactions.transaction_date
-        available_time_zones:
-            - America/Los_Angeles
-            - America/Chicago
-            - America/New_York
-            - Europe/London
-            - Europe/Paris
-            - Asia/Jerusalem
-            - Europe/Moscow
-            - Asia/Kolkata
-            - Asia/Shanghai
-            - Asia/Tokyo
-            - Australia/Sydney
+      title:"transaction_analysis"  
 
     tables:
         - join_path: transactions
