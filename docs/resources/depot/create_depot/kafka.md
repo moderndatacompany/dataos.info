@@ -35,7 +35,7 @@ DataOS allows you to create a Depot of type 'KAFKA' to read live topic data. Thi
 Begin by creating a manifest file to hold the configuration details for your Kafka Depot.
 
 
-```yaml 
+```yaml
 name: ${{depot-name}}
 version: v1
 type: depot
