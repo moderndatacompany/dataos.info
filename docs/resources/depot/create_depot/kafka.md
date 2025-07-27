@@ -40,31 +40,18 @@ name: ${{depot-name}}
 version: v1
 type: depot
 tags:
-    - ${{tag1}}
-    - ${{tag2}}
+  - ${{tag1}}
 owner: ${{owner-name}}
 layer: user
 depot:
-    type: ABFSS                                       
-    description: ${{description}}
-    external: ${{true}}
-    compute: ${{runnable-default}}
-    connectionSecret:                                 
-    - acl: rw
-        type: key-value-properties
-        data:
-        azurestorageaccountname: ${{account-name}}
-        azurestorageaccountkey: ${{account-key}}
-    - acl: r
-        type: key-value-properties
-        data:
-        azurestorageaccountname: ${{account-name}}
-        azurestorageaccountkey: ${{account-key}}
-    spec:                                             
-    account: ${{account-name}}
-    container: ${{container-name}}
-    relativePath: ${{relative-path}}
-    format: ${{format}}
+  type: KAFKA                     
+  description: ${{description}}
+  external: ${{true}}
+  spec:                           
+    brokers:
+      - ${{broker1}}
+      - ${{broker2}}
+    schemaRegistryUrl: ${{http://20.9.63.231:8081/}}
 ```
 To get the details of each attribute, please refer [to this link](/resources/depot/configurations).
 
