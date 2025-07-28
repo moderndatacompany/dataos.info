@@ -61,17 +61,16 @@ depot:
   external: ${{true}}
   secrets:
     - name: ${{sf-instance-secret-name}}-r
-        allkeys: true
-
+      allkeys: true
     - name: ${{sf-instance-secret-name}}-rw
-        allkeys: true
+      allkeys: true
   postgresql:                        
     subprotocol: "postgresql"
     host: ${{host}}
     port: ${{port}}
     database: ${{postgres}}
     params: #Required 
-        sslmode: ${{disable}}
+      sslmode: ${{disable}}
 ```
 
 
@@ -85,26 +84,24 @@ name: ${{depot-name}}
 version: v2alpha
 type: Depot
 tags:
-    - ${{tag1}}
+  - ${{tag1}}
 owner: ${{owner-name}}
 layer: user
-Depot:
+depot:
   type: POSTGRESQL
   description: ${{description}}
   external: true
   secrets:
     - name: ${{instance-secret-name}}-r
-        allkeys: true
-
+      allkeys: true
     - name: ${{instance-secret-name}}-rw
-        allkeys: true
+      allkeys: true
   postgresql:                                          
     host: ${{host}}
     port: ${{port}}
     database: ${{database-name}}
     params: # Optional
-        ${{"key1": "value1"}}
-        ${{"key2": "value2"}}
+      ${{"key1": "value1"}}
 ```
 
 

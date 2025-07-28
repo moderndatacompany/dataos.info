@@ -4,11 +4,11 @@ name: bento3-worker-sample # Name of the Worker Resource (mandatory)
 version: v1beta # Version of the Worker Resource (mandatory)
 type: worker # Type of the resource, in this case, it is a worker (optional)
 tags:
-    - worker 
-    - dataos:type:resource 
-    - dataos:resource:worker 
-    - dataos:layer:user 
-    - dataos:workspace:public 
+  - worker 
+  - dataos:type:resource 
+  - dataos:resource:worker 
+  - dataos:layer:user 
+  - dataos:workspace:public 
 description: Random User Console # Description of the Worker Resource (optional)
 
 # WORKER-SPECIFIC SECTION

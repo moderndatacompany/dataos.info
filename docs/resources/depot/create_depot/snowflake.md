@@ -52,23 +52,22 @@ name: ${{snowflake-depot}}
 version: v2alpha
 type: depot
 tags:
-    - ${{tag1}}
-    - ${{tag2}}
+  - ${{tag1}}
+  - ${{tag2}}
 layer: user
 depot:
-    type: snowflake
-    description: ${{snowflake-depot-description}}
-    snowflake:
+  type: snowflake
+  description: ${{snowflake-depot-description}}
+  snowflake:
     warehouse: ${{warehouse-name}}
     url: ${{snowflake-url}}
     database: ${{database-name}}
-    external: true
-    secrets:
+  external: true
+  secrets:
     - name: ${{redshift-instance-secret-name}}-r
-        allkeys: true
-
+      allkeys: true
     - name: ${{redshift-instance-secret-name}}-rw
-        allkeys: true
+      allkeys: true
 ```
 
 To get the details of each attribute, please refer [to this link](/resources/depot/configurations).

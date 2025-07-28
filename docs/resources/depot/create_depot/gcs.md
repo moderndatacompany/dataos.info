@@ -60,8 +60,8 @@ name: ${{"sanitygcs01"}}
 version: v2alpha
 type: depot
 tags:
-    - ${{GCS}}
-    - ${{Sanity}}
+  - ${{GCS}}
+  - ${{Sanity}}
 layer: user
 depot:
   type: GCS
@@ -71,7 +71,6 @@ depot:
   secrets:
     - name: ${{gcs-instance-secret-name}}-r
       allkeys: true
-
     - name: ${{gcs-instance-secret-name}}-rw
       allkeys: true  
   gcs:
