@@ -54,8 +54,8 @@ name: ${{depot-name}}
 version: v2alpha
 type: depot
 tags:
-    - ${{tag1}}
-    - ${{tag2}}
+  - ${{tag1}}
+  - ${{tag2}}
 owner: ${{owner-name}}
 layer: user
 depot:
@@ -71,7 +71,6 @@ depot:
   secrets:
     - name: ${{instance-secret-name}}-r
       allkeys: true
-
     - name: ${{instance-secret-name}}-rw
       allkeys: true
 ```
@@ -86,8 +85,8 @@ name: ${{mssql01}}
 version: v2alpha
 type: depot
 tags:
-    - ${{dropzone}}
-    - ${{mssql}}
+  - ${{dropzone}}
+  - ${{mssql}}
 layer: user
 depot:
   type: JDBC
@@ -104,7 +103,6 @@ depot:
   secrets:
     - name: ${{instance-secret-name}}-r
       allkeys: true
-
     - name: ${{instance-secret-name}}-rw
       allkeys: true
 ```
