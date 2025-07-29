@@ -1,25 +1,23 @@
 version: v1
-name: standalone-read-bigquery
+name: add-column-function-example
 type: workflow
 tags:
-  - standalone
-  - readJob
-  - bigquery
-description: Sample job
+  - flare
+  - functions
+  - add-column
+description: Example workflow demonstrating the add_column function
+owner: ${owner-name}
+layer: user
 workflow:
   dag:
-    - name: city-bigquery-read-01
-      title: Sample Transaction Data Ingester
-      description: The job ingests customer data from Bigquery to file source
+    - name: add-column-demo
       spec:
         tags:
-          - standalone
-          - readJob
-          - bigquery
+          - flare
+          - functions
         stack: flare:6.0
         compute: runnable-default
-        tier: connect
-        flare:
+        stackSpec:
           job:
             explain: true
             logLevel: INFO
@@ -33,7 +31,7 @@ workflow:
                   dataset: <dataset-name>
 
             outputs: # Write to Local System
-              - name: finalDf
+              - name: output_with_new_column
                 outputType: file
                 file:
                   schemaName: retail
@@ -45,12 +43,12 @@ workflow:
 
             steps:
               - sequence:
-                  - name: finalDf
-                    sql: SELECT * FROM transactions_connect LIMIT 1
+                  - name: output_with_new_column
+                    sql: SELECT * FROM sample_data
 
                     functions:    
                       - name: add_column 
-                        column: transactions
+                        column: transaction_count
                         value: 8 
                         type: int
 

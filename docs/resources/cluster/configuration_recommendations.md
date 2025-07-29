@@ -21,27 +21,31 @@ A default Minerva cluster can be used with the properties specified in the toggl
 name: minervab
 version: v1    
 type: cluster
-description: the default minerva cluster b
+description: Default Minerva cluster configuration for analyst workloads
+owner: ${{owner-name}}
+layer: user
 tags:
-- cluster
-- minerva
-cluster:                          
-nodeSelector:
+  - cluster
+  - minerva
+cluster:
+  compute: query-default
+  type: minerva
+  nodeSelector:
     "dataos.io/purpose": "query"
-toleration: query
-runAsApiKey: api-key
-minerva:            
+  toleration: query
+  runAsApiKey: api-key
+  minerva:            
     replicas: 2
     resources:
-    limits:
+      limits:
         cpu: 2000m
         memory: 4Gi
-    requests:
+      requests:
         cpu: 2000m
         memory: 4Gi
     debug:
-    logLevel: INFO
-    trinoLogLevel: ERROR
+      logLevel: INFO
+      trinoLogLevel: ERROR
 ```
 </details>
 

@@ -52,6 +52,7 @@ tags:
 owner: ${{owner-name}}
 layer: user
 depot:
+<<<<<<< Updated upstream
   type: ELASTICSEARCH              
   description: ${{description}}
   external: ${{true}}
@@ -62,6 +63,20 @@ depot:
       allkeys: true
   elasticsearch:                           
     nodes: ${{["localhost:9092", "localhost:9093"]}}
+=======
+    type: elasticsearch                 
+    description: ${{description}}
+    external: ${{true}}
+    secrets:
+    - name: ${{elasticsearch-instance-secret-name}}-r
+        allkeys: true
+
+    - name: ${{elasticsearch-instance-secret-name}}-rw
+        allkeys: true
+    elasticsearch:                           
+        nodes: 
+            - ${{["localhost:9092", "localhost:9093"]}}
+>>>>>>> Stashed changes
 ```
 To get the details of each attribute, please refer [to this link](/resources/depot/configurations).
 

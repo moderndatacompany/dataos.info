@@ -11,6 +11,7 @@ description: |
 
 workflow:
   dag:
+<<<<<<< Updated upstream
     - name: sanity-read-az-job
       title: Sanity read files from azure abfss
       description: |
@@ -37,6 +38,34 @@ workflow:
               # - name: a_city_parquet
               #   dataset: dataos://sanityazure:sanity/azure_write_parquet
               #   format: parquet
+=======
+  - name: sanity-read-az-job
+    title: Sanity read files from azure abfss
+    description: |
+      The purpose of this job is to verify if we are able to read different
+      file formats from azure abfss or not. 
+    spec:
+      tags:
+      - Sanity
+      - Abfss
+      stack: flare:6.0
+      compute: runnable-default
+      stackSpec:
+        job:
+          explain: true
+          logLevel: INFO
+          showPreviewLines: 2
+          inputs:
+          - name: a_city_csv
+            dataset: dataos://sanityazure:sanity/azure_write_csv_14?acl=rw
+            format: csv
+          # - name: a_city_json
+          #   dataset: dataos://sanityazure:sanity/azure_write_json
+          #   format: json
+          # - name: a_city_parquet
+          #   dataset: dataos://sanityazure:sanity/azure_write_parquet
+          #   format: parquet
+>>>>>>> Stashed changes
 
 
             outputs:

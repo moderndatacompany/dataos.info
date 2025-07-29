@@ -20,7 +20,7 @@ workflow:
         compute: runnable-default
         envs:
           DISABLE_HADOOP_PATH_CHECKS: "true"
-        flare:
+        stackSpec:
           job:
             explain: true
             inputs:

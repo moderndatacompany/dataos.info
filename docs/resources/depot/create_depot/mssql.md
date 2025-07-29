@@ -64,7 +64,7 @@ depot:
   external: ${{true}}
   compute: ${{runnable-default}}
   jdbc:
-    subprotocol: ${{sqlserver}}                                             
+    subprotocol: ${{sqlserver}}
     host: ${{host}}
     port: ${{port}}
     database: ${{database}}
