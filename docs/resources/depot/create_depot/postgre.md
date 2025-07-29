@@ -54,15 +54,25 @@ Begin by creating a manifest file to hold the configuration details for your Pos
 name: ${{postgresdb}}
 version: v2alpha
 type: depot
+tags:
+  - ${{tag1}}
+  - ${{tag2}}
+owner: ${{owner-name}}
 layer: user
 depot:
   type: JDBC                  
   description: ${{To write data to postgresql database}}
   external: ${{true}}
   secrets:
+<<<<<<< Updated upstream
     - name: ${{sf-instance-secret-name}}-r
       allkeys: true
     - name: ${{sf-instance-secret-name}}-rw
+=======
+    - name: ${{postgres-instance-secret-name}}-r
+      allkeys: true
+    - name: ${{postgres-instance-secret-name}}-rw
+>>>>>>> Stashed changes
       allkeys: true
   postgresql:                        
     subprotocol: "postgresql"

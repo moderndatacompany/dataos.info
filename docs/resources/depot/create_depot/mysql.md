@@ -54,16 +54,29 @@ type: depot
 tags:
   - ${{dropzone}}
   - ${{mysql}}
+<<<<<<< Updated upstream
+=======
+owner: ${{owner-name}}
+>>>>>>> Stashed changes
 layer: user
 depot:
   type: MYSQL
   description: ${{"MYSQL Sample Database"}}
+  external: ${{true}}
+  secrets:
+    - name: ${{mysql-instance-secret-name}}-r
+      keys: 
+        - ${{mysql-instance-secret-name}}-r
+    - name: ${{mysql-instance-secret-name}}-rw
+      keys: 
+        - ${{mysql-instance-secret-name}}-rw
   mysql:
     subprotocol: "mysql"
     host: ${{host}}
     port: ${{port}}
     params: # Required
       tls: ${{skip-verify}}
+<<<<<<< Updated upstream
   external: ${{true}}
   secrets:
     - name: ${{instance-secret-name}}-r
@@ -72,6 +85,8 @@ depot:
     - name: ${{instance-secret-name}}-rw
       keys: 
         - ${{instance-secret-name}}-rw
+=======
+>>>>>>> Stashed changes
 ```
 
 

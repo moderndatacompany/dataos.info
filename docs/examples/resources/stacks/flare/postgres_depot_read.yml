@@ -3,7 +3,7 @@ version: v1
 name: postgres-write-01
 type: workflow
 tags:
-  - bq
+  - postgres
   - dataset
 description: This job read and write data from postgres
 title: Read Write Postgres
@@ -18,7 +18,7 @@ workflow:
         stack: flare:6.0
         compute: runnable-default
 
-        flare:
+        stackSpec:
           job:
             explain: true
             inputs:

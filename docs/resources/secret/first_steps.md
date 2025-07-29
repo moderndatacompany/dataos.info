@@ -1,4 +1,4 @@
-# Secret: Fisrt Steps
+# Secret: Fisrt Step
 
 ## Create a Secret
 
@@ -35,17 +35,17 @@ For more information about the various attributes in Resource meta section, refe
 
 The Secret-specific Section of the manifest configuration file includes key-value pairs specific to the type of Secret being created. The following manifest snippet illustrates the key values to be declared in this section:
 
-=== "Syntax"
-    ```yaml
-    secret:
-    type: ${{secret-subtype}} # Mandatory
-    acl: ${{access-control-level}} # Mandatory
-    data:                   # Mandatory
-        ${{key1}}: ${{value1}} 
-        ${{key2}}: ${{value2}}
-    files: # Manifest file path (optional)
-      ${{xyz: /home/secret.yaml}}
-    ```
+
+```yaml
+secret:
+  type: ${{secret-subtype}} # Mandatory
+  acl: ${{access-control-level}} # Mandatory
+  data:                   # Mandatory
+    ${{key1}}: ${{value1}} 
+    ${{key2}}: ${{value2}}
+  files: # Manifest file path (optional)
+    ${{xyz: /home/secret.yaml}}
+```
 === "Example Usage"
     ```yaml
     secret:

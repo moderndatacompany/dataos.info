@@ -3,7 +3,11 @@
 name: ${snowflake-depot-name}-r # Unique identifier for Resource, replace ${snowflake-depot-name} with depot name
 version: v1 # Manifest version
 type: instance-secret # Type of the Resource
+tags:
+  - snowflake
+  - instance-secret
 description: ${description} # Purpose of the Instance-secret
+owner: ${owner-name}
 layer: user # DataOS layer
 instance-secret:
   type: key-value-properties # Secret type
