@@ -529,16 +529,7 @@ lens:
       limits:
         cpu: 1000m
         memory: 2548Mi
-  iris:
-    logLevel: info
-    resources:
-      requests:
-        cpu: 200m
-        memory: 256Mi
-      limits:
-        cpu: 1600m
-        memory: 2240Mi
-
+  
   metric:
     logLevel: info
 ```

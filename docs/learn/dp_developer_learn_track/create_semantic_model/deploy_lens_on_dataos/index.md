@@ -185,17 +185,6 @@ lens:
         cpu: 1000m
         memory: 2548Mi
 
-# Iris configuration 
-  # iris: #(optional)
-  #   logLevel: info # Log level for Iris (optional)
-  #   resources: # CPU and memory resource specifications for the iris board (optional)
-  #     requests:
-  #       cpu: 200m
-  #       memory: 256Mi
-  #     limits:
-  #       cpu: 1600m
-  #       memory: 2240Mi
-
 # Metric configuration 
   metric:                         #(optional)
     logLevel: info # Log level for metrics (optional)
@@ -220,6 +209,6 @@ For more information on how to configure Lens manifest file, refer to the link:Â
 
 Apply the Lens manifest file using the `apply` command as shown below, or reference the Lens manifest path in the Bundle Resource along with other Resources.
 
-```bash
+```shell
 dataos-ctl apply -f /home/data_product/resources/lens/deployment.yaml #path
 ```
