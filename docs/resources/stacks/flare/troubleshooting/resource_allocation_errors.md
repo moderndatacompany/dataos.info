@@ -3,7 +3,7 @@
 
 ##  Insufficient Resource
 
-```verilog
+```bash
 check your cluster UI to ensure that workers are registered and have sufficient resources
 ```
 
