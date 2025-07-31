@@ -1,5 +1,6 @@
 # Ingestion Errors
 
+Ingestion Errors cover issues related to reading or loading input data sources, including file format mismatches, missing paths, or schema incompatibility.
 
 ##  Job finished with error=Could not alter output datasets for workspace
 
@@ -40,7 +41,7 @@ Caused by: io.fabric8.kubernetes.client.KubernetesClientException: **too old res
 
 **What went wrong?**
 
-It's the standard behaviour of Kubernetes to give 410 after some time during watch. It's usually the client's responsibility to handle it. In the context of a watch, it will return `HTTP_GONE` when you ask to see changes for a `resourceVersion` that is too old - i.e. when it can no longer tell you what has changed since that version since too many things have changed. In that case, you'll need to start again and upgrade to the `latest version`
+It's the standard behavior of Kubernetes to give 410 after some time during watch. It's usually the client's responsibility to handle it. In the context of a watch, it will return `HTTP_GONE` when you ask to see changes for a `resourceVersion` that is too old - i.e. when it can no longer tell you what has changed since that version since too many things have changed. In that case, you'll need to start again and upgrade to the `latest version`
 
 ##  Too Many Data Columns
 
@@ -50,10 +51,13 @@ This happens because the column has been `incremented` at the time of ingestion.
 
 ##  Apply Error
 
-![Untitled](/resources/stacks/flare/ingestion_errors/untitled.png)
+<!-- ![Untitled](/resources/stacks/flare/ingestion_errors/untitled.png) -->
 
 ```bash
-tmdc@tmdc:~/data$ dataos-ctl apply -f data-ingestion/flare/super-dag/config-super-dag1.yaml -l  
+dataos-ctl apply -f data-ingestion/flare/super-dag/config-super-dag1.yaml -l  
+
+# Expected Output
+
 INFO[0000] 🛠 apply...                                    
 INFO[0000] 🔧 applying(public) bronze-s-dag1:v1beta1:workflow...  
 ERRO[0000] 🔧 applying(public) bronze-s-dag1:v1beta1:workflow...error  
@@ -64,7 +68,7 @@ ERRO[0000] failure applying a resource
 
 ##  Same workflow name already exists
 
-```verilog
+```bash
 There is an existing job with same workspace: public and name: camp-connect-city writing into below datasets
   1. dataos://icebase:campaign/city
  You should use a different job name for your job as you cannot change output datasets for any job.
@@ -80,7 +84,7 @@ You can change the workflow name.
 
 **Message**
 
-```verilog
+```bash
 22/06/27 05:51:33 ERROR ProcessingContext: =>Flare: Job finished with error=Path does not exist: s3a://tmdc-dataos/demo-mockdata/data-analyst/campaigns02.csv
 Exception in thread "shutdownHook1" io.dataos.flare.exceptions.FlareException: Path does not exist: s3a://tmdc-dataos/demo-mockdata/data-analyst/campaigns02.csv
 ```
@@ -94,7 +98,7 @@ If your input path does not match from cloud source then the path is not found w
 
 ##  label-names and the value length <= 47
 
-```verilog
+```bash
 spark.kubernetes.executor.podNamePrefix is invalid. must conform https://kubernetes.io/docs/concepts/overview/working-with-objects/names/
 #dns-label-names and the value length <= 47
 ```
@@ -103,24 +107,4 @@ spark.kubernetes.executor.podNamePrefix is invalid. must conform https://kuberne
 
 The reason behind the error is workflow and dag name are less than equal to 47. if the length is more than 47 then the job will be failed. To resolve this you can reduce the length of workflow & dag name.
 
-<!-- ##  Hera bases not provided
 
-**Message**
-
-```verilog
-Exception in thread "main" java.lang.Exception: Fatal! env HERA_BASE_URL not provided.
-```
-
-**What went wrong?**
-
-Hera bases missing. 
-
-**Solution**
-
-Hera Bases need to be provided in the following format - 
-
-```yaml
-envs:
-  HERA_SSL: "false"
-  HERA_BASE_URL: "https://eager-skylark.dataos.app/hera"
-``` -->
