@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Assertions: Configuration Fields
 The following configuration fields are to be defined in the assertion YAML. Here are the details of the fields.
 

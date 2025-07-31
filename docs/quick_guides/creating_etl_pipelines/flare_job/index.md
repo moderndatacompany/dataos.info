@@ -269,7 +269,7 @@ INFO[0001] 🛠 apply...nothing
 ****
 ```
 
-In case you encounter errors, check out [this](/resources/stacks/flare/optimizations/errors_and_issues/linter_command_validation_and_errors/) link.
+In case you encounter errors, check out [this](/resources/stacks/flare/troubleshooting/linter_command_validation_and_errors/) link.
 
 ### **Use *apply* command**
 

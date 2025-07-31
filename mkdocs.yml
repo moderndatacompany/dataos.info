@@ -446,6 +446,8 @@ nav:
             - Errors: resources/lens/errors.md
             - Optimizing Semantic Model: resources/lens/fine_tuning_a_lens_model.md
             - Aggregation Strategies: resources/lens/best_practices_for_solution_designing.md
+            - Complex Analysis: resources/lens/complex_analysis.md
+            - Row Multiplication Handling: resources/lens/row_multiplication.md
           - Configurations: resources/lens/lens_manifest_attributes.md
             # - Docker Compose Manifest: resources/lens/docker_compose_manifest_attributes.md
           - Cataloging: resources/lens/cataloging.md
@@ -603,16 +605,16 @@ nav:
               - Search Engines:
                 - Elasticsearch: resources/stacks/flare/configuration_templates/elasticsearch.md
                 - OpenSearch: resources/stacks/flare/configuration_templates/opensearch.md
-            - Functions:
-              - resources/stacks/flare/functions.md
-              - Function Reference: resources/stacks/flare/functions/list.md
+            - Flare Functions:
+              - resources/stacks/flare/index.md
+              - List of Flare Functions: resources/stacks/flare/functions/list.md
             # - Data Quality:
             #   - Defining Assertions: resources/stacks/flare/defining_assertions.md
             #   - Assertion Configuration: resources/stacks/flare/assertion_configuration.md
             #   - Data Profiling Jobs: resources/stacks/flare/creating_data_profiling_jobs.md
             #   - Case Scenarios: resources/stacks/flare/assertions_case_scenario.md
             - Use Cases & Examples:
-              - resources/stacks/flare/case_scenario.md
+              - resources/stacks/flare/case_scenario/index.md
               - Data Ingestion:
                 - Incremental Jobs: resources/stacks/flare/case_scenario/incremental_jobs.md
                 - Streaming Jobs: resources/stacks/flare/case_scenario/streaming_jobs.md
@@ -641,23 +643,23 @@ nav:
                 - Query Progress Monitoring: resources/stacks/flare/case_scenario/query_dataset_for_job_in_progress.md
               # - Data Quality:
               #   - Data Quality Jobs: resources/stacks/flare/case_scenario/data_quality_jobs.md
-            - Optimization & Troubleshooting:
-              - resources/stacks/flare/optimizations.md
+            - Optimizing Flare:
+              - resources/stacks/flare/optimizations/index.md
               - Performance Tuning:
-                - resources/stacks/flare/optimizations/performance_tuning.md
+                - resources/stacks/flare/optimizations/performance_tuning/index.md
                 - Configuration Tuning: resources/stacks/flare/optimizations/performance_tuning/tuning_configurations.md
                 - SQL Optimization: resources/stacks/flare/optimizations/performance_tuning/sql_query_optimization.md
-              - Monitoring:
-                - Spark UI: resources/stacks/flare/optimizations/inspecting_the_spark_ui.md
-                - Workflow Observability: resources/stacks/flare/optimizations/observability_of_workflow.md
-              # - Troubleshooting:
-              #   - resources/stacks/flare/optimizations/errors_and_issues.md
-              #   - Ingestion Errors: resources/stacks/flare/optimizations/errors_and_issues/ingestion_errors.md
-              #   - Streaming Errors: resources/stacks/flare/optimizations/errors_and_issues/streaming_errors.md
-              #   - Transformation Errors: resources/stacks/flare/optimizations/errors_and_issues/transformation_errors.md
-              #   - Resource Allocation Errors: resources/stacks/flare/optimizations/errors_and_issues/resource_allocation_errors.md
-              #   - Linter & Validation Errors: resources/stacks/flare/optimizations/errors_and_issues/linter_command_validation_and_errors.md
-              #   - Other Errors: resources/stacks/flare/optimizations/errors_and_issues/other_errors.md
+              # - Monitoring:
+              #   - Spark UI: resources/stacks/flare/optimizations/inspecting_the_spark_ui.md
+                # - Workflow Observability: resources/stacks/flare/optimizations/observability_of_workflow.md
+            # - Troubleshooting:
+            #   - resources/stacks/flare/troubleshooting/index.md
+            #   - Ingestion Errors: resources/stacks/flare/troubleshooting/ingestion_errors.md
+            #   - Streaming Errors: resources/stacks/flare/troubleshooting/streaming_errors.md
+            #   - Transformation Errors: resources/stacks/flare/troubleshooting/transformation_errors.md
+            #   - Resource Allocation Errors: resources/stacks/flare/troubleshooting/resource_allocation_errors.md
+            #   - Linter & Validation Errors: resources/stacks/flare/troubleshooting/linter_command_validation_and_errors.md
+              # - Other Errors: resources/stacks/flare/troubleshooting/other_errors.md
     
     
           - Flash:
