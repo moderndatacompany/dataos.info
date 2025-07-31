@@ -2,9 +2,11 @@ version: v1
 name: elasticsearch-read
 type: workflow
 tags:
-  - eventhub
+  - elasticsearch
   - read
+  - flare
 description: this jobs reads data from elasticsearch and writes to lakehouse
+owner: ${owner-name}
 workflow:
   dag:
     - name: elasticsearch-read
@@ -15,7 +17,7 @@ workflow:
           - Connect
         stack: flare:6.0
         compute: runnable-default
-        flare:
+        stackSpec:
           job:
             explain: true
             inputs:

@@ -28,6 +28,7 @@ A Database [Resource](/resources/) in DataOS acts as a repository for storing tr
     version: v1                           
     type: database                        
     description: ${description}
+    tags:
       - ${tag1}
       - ${tag2}
     owner: ${iamgroot}

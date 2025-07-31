@@ -4,6 +4,7 @@ type: workflow
 tags:
   - pulsar
   - read
+  - flare
 description: this jobs reads data from thirdparty and writes to pulsar
 workflow:
   dag:
@@ -15,7 +16,7 @@ workflow:
           - Connect
         stack: flare:6.0
         compute: runnable-default
-        flare:
+        stackSpec:
           job:
             explain: true
             inputs:

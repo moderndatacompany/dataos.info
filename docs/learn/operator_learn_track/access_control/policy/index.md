@@ -26,7 +26,7 @@ Here’s an example of the resource metadata:
 ```yaml
 version: v1
 name: "user-access-demo-depots"
-type: Policy
+type: policy
 layer: user
 description: "Policy allowing data engineers to read from demo depots."
 ```
@@ -46,7 +46,7 @@ Here’s how to define the full Policy configuration:
 ```yaml
 version: v1
 name: "user-access-demo-depots"
-type: Policy
+type: policy
 layer: user
 description: "Policy allowing data engineers to read from demo depots."
 Policy:

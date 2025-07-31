@@ -79,10 +79,10 @@ layer: user
 depot:
   type: SNOWFLAKE
   description: testing instance secrets using snowflake depot
-snowflake:
-  warehouse: mywarehouse
-  url: avengers.central-india.azure.snowflakecomputing.com
-  database: mydatabase
+  spec:
+    warehouse: mywarehouse
+    url: avengers.central-india.azure.snowflakecomputing.com
+    database: mydatabase
   external: true
   dataosSecrets:
     - name: depotsecret-rw

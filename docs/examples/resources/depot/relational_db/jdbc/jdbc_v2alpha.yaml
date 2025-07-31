@@ -6,22 +6,22 @@ tags:
 owner: ${{owner-name}}
 layer: user
 depot:
-  type: JDBC                                      
-  description: ${{description}}
-  external: ${{true}}
-  secrets:
-    - name: ${{instance-secret-name}}-r
-      keys: 
-        - ${{instance-secret-name}}-r
-
-    - name: ${{instance-secret-name}}-rw
-      keys: 
-        - ${{instance-secret-name}}-rw
-  jdbc:                                           
-    subprotocol: ${{subprotocol}}
-    host: ${{host}}
-    port: ${{port}}
-    database: ${{database-name}}
-    params:
-      ${{"key1": "value1"}}
-      ${{"key2": "value2"}}
+    type: JDBC                                      
+    description: ${{description}}
+    external: ${{true}}
+    secrets:
+      - name: ${{instance-secret-name}}
+        keys: 
+          - ${{instance-secret-name}}-r
+          - ${{instance-secret-name}}-rw
+      - name: ${{instance-secret-name}}-rw
+        keys: 
+          - ${{instance-secret-name}}-rw
+    jdbc:                                           
+        subprotocol: ${{subprotocol}}
+        host: ${{host}}
+        port: ${{port}}
+        database: ${{database}}
+        params:
+          ${{"key1": "value1"}}
+          ${{"key2": "value2"}}

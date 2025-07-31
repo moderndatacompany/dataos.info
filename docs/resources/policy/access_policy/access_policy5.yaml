@@ -10,8 +10,8 @@ policy:
   access:
     subjects:
       tags:
-        - - {{roles:id:**}}
-        - - {{users:id:**}}
+        - {{roles:id:**}}
+        - {{users:id:**}}
     predicates:
       - {{create}}
       - {{read}}

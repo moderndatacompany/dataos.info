@@ -1,8 +1,12 @@
 name: filter-icebase-city
 version: v1
 type: policy
-layer: user
+tags:
+  - policy
+  - data
+  - filter
 description: "data policy to filter zip data"
+layer: user
 policy:
   data:
     type: filter

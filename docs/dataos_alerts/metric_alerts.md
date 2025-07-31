@@ -217,12 +217,12 @@ workflow:
   dag:
     - name: alpha-alert
       spec:
-        stack: alpha
+        stack: container
         compute: runnable-default
-        alpha:
+        container:
           image: <hubUsername>/<dockerTag>
           command: 
-			- python
+            - python
           arguments:
             - alert_daily.py
             - function.py

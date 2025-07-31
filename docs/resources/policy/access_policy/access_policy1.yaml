@@ -9,7 +9,7 @@ policy:
   access:
     subjects:
       tags:
-        - - {{dataos:u:user}}
+        - {{dataos:u:user}}
     predicates:
       - {{get}}
       - {{post}}

@@ -5,11 +5,8 @@ tags:
   - dataos:resources:workflow
 description:  The workflow transforms and cleans data from  source, ensuring it aligns with Lakehouse schema standards. After transformations, the data is ingested into Lakehouse, enabling reliable access for analytics and downstream applications.
 workflow:
-  title: Policy Details Data Ingestion 
   dag:
     - name: wf-policy-details-ingestion
-      title: Policy Details Data Ingestion Process
-      description: The DAG for Data Transformation and Ingestion automates the process of transforming and cleaning data before loading it into the target system, ensuring it is ready for analysis and reporting.
       spec:
         tags:
           # - Domain.Sales
@@ -24,7 +21,7 @@ workflow:
             coreLimit: 1400m
             cores: 1
             instances: 1
-            memory: 1600m 
+            memory: 1600Mi
           job:
             explain: true  
             inputs:

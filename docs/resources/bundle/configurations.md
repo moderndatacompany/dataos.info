@@ -6,7 +6,7 @@
 # Bundle-specific section
 bundle:
 
-	# Bundle schedule section
+  # Bundle schedule section
   schedule: 
     initialState: ${{initial state}}
     timezone: ${{timezone}}
@@ -15,16 +15,16 @@ bundle:
     delete:
       - cron: ${{delete cron expression}}
 
-	# Bundle Workspaces section
-	workspaces: 
-		- name: ${{workspace to be created name}}
-			description: ${{workspace description}}
-			tags: 
-				- ${{tag1}}
-				- ${{tag2}}
-			labels: 
-				${{key: value}}
-			layer: ${{layer}}
+  # Bundle Workspaces section
+  workspaces: 
+    - name: ${{workspace to be created name}}
+      description: ${{workspace description}}
+      tags: 
+        - ${{tag1}}
+        - ${{tag2}}
+      labels: 
+        ${{key: value}}
+      layer: ${{layer}}
 
   # Bundle Resources section
   resources:
@@ -48,9 +48,9 @@ bundle:
             contains: # Runtime contains (optional)
               - ${{run}}
 
-	# Additional properties section
-	properties:
-	  ${{key: value}}
+  # Additional properties section
+  properties:
+    ${{key: value}}
   
   manageAsUser: ${{iamgroot}}
 ```

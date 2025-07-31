@@ -51,24 +51,45 @@ name: ${{depot-name}}
 version: v2alpha
 type: depot
 tags:
-    - ${{dropzone}}
-    - ${{oracle}}
+<<<<<<< Updated upstream
+  - ${{dropzone}}
+  - ${{oracle}}
+layer: user
+depot:
+  type: ORACLE                                    
+  description: ${{"Oracle Sample data"}}
+  oracle:
+    subprotocol: ${{subprotocol}} # for example "oracle:thin"                                     
+    host: ${{host}}
+    port: ${{port}}
+    service: ${{service}}
+  external: ${{true}}
+  secrets:
+    - name: ${{sf-instance-secret-name}}-r
+      allkeys: true
+    - name: ${{sf-instance-secret-name}}-rw
+      allkeys: true
+=======
+    - ${{tag1}}
+    - ${{tag2}}
+owner: ${{owner-name}}
 layer: user
 depot:
     type: ORACLE                                    
     description: ${{"Oracle Sample data"}}
     oracle:
-    subprotocol: ${{subprotocol}} # for example "oracle:thin"                                     
-    host: ${{host}}
-    port: ${{port}}
-    service: ${{service}}
+        subprotocol: ${{subprotocol}} # for example "oracle:thin"                                     
+        host: ${{host}}
+        port: ${{port}}
+        service: ${{service}}
     external: ${{true}}
     secrets:
-    - name: ${{sf-instance-secret-name}}-r
+      - name: ${{oracle-instance-secret-name}}-r
         allkeys: true
 
-    - name: ${{sf-instance-secret-name}}-rw
+      - name: ${{oracle-instance-secret-name}}-rw
         allkeys: true
+>>>>>>> Stashed changes
 ```
 
 To get the details of each attribute, please refer [to this link](/resources/depot/configurations).

@@ -32,7 +32,7 @@ Data Developers can create a Grant Resource by applying the manifest file of a G
         run-as-dataos-resource: 
          - path: ${valid-path}
       requester: iamgroot
-      notes: the user test-user needs to runas the test-developer for data dev purposes
+      notes: the user test-user needs to run as the test-developer for data dev purposes
       approve: false
     ```
 *The above YAML artifact defines a grant named "test-user-runas-test-dev1" for allowing the user "test-user" to run as a "test-developer" for data development purposes.*
@@ -95,7 +95,7 @@ The Grant-specific section of a Grant manifest comprises attributes-specific to 
           run-as-dataos-resource: 
           - path: ${valid-path}
         requester: ${iamgroot}
-        notes: ${the user test-user needs to runasathe test-developer for data dev purposes}
+        notes: ${the user test-user needs to run as the test-developer for data dev purposes}
         approve: ${false}
       ```
 === "Example"
@@ -107,9 +107,9 @@ The Grant-specific section of a Grant manifest comprises attributes-specific to 
         - users:id:test-user
         values:
           run-as-dataos-resource: 
-          - path: 
+          - path: ${valid-path}
         requester: iamgroot
-        notes: the user test-user needs to runasathe test-developer for data dev purposes
+        notes: the user test-user needs to run as the test-developer for data dev purposes
         approve: false
       ```
 | Attribute          | Data Type        | Default Value | Possible Values                                | Requirement |

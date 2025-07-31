@@ -5,15 +5,11 @@ tags:
   - demo.transactions
 description: The job involves performing a thorough and detailed statistical analysis, including data profiling, of extensive raw transactions data using the advanced features of the DataOS platform.
 workflow:
-  title: transactions Profile Dataset
   dag:
     - name: transactions-profile
-      title: transactions Profile Dataset
-      description: The job involves performing a thorough and detailed statistical analysis, including data profiling, of extensive raw transactions data using the advanced features of the DataOS platform.
       spec:
         stack: flare:4.0
         compute: runnable-default
-        title: transactions Profile Dataset
         persistentVolume:
           name: persistent-v
           directory: fides
@@ -26,7 +22,7 @@ workflow:
             coreLimit: 2200m
             cores: 2
             instances: 2
-            memory: 3000m 
+            memory: 3000Mi
           job:
             explain: true
             inputs:
@@ -48,9 +44,9 @@ workflow:
             logLevel: INFO
             profile:
               level: basic
-        sparkConf:
-          - spark.sql.adaptive.autoBroadcastJoinThreshold: 40m
-          - spark.executor.heartbeatInterval: 110000ms
-          - spark.sql.shuffle.partitions: 800
-          - spark.sql.shuffle.partitions: 600
-          - spark.dynamicAllocation.shuffleTracking.enabled: true   
+          sparkConf:
+            - spark.sql.adaptive.autoBroadcastJoinThreshold: 40m
+            - spark.executor.heartbeatInterval: 110000ms
+            - spark.sql.shuffle.partitions: 800
+            - spark.sql.shuffle.partitions: 600
+            - spark.dynamicAllocation.shuffleTracking.enabled: true   

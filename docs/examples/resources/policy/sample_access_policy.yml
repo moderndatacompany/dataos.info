@@ -12,7 +12,7 @@ policy:
     collection: default       #optional
     subjects:
       tags:
-       - "roles:id:operator"          
+        - "roles:id:operator"          
     predicates:
       - "read"
     objects:

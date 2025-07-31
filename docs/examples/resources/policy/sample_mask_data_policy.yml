@@ -34,5 +34,5 @@ policy:
     name: age_masking_policy
     description: An age bucket is formed by grouping the ages together. Based on defined
       age buckets, the age of individuals is redacted and anonymized. If an
-      individual’s age falls under a defined bucket, it is replaced with the
+      individual's age falls under a defined bucket, it is replaced with the
       lowest value of the bucket.

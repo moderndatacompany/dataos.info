@@ -4,6 +4,8 @@ type: workflow
 tags:
   - bq
   - City
+  - flare
+  - bigquery
 description: This job read data from biquery and writes to lakehouse
 title: Write bq
 workflow:
@@ -17,7 +19,7 @@ workflow:
           - City
         stack: flare:6.0
         compute: runnable-default
-        flare:
+        stackSpec:
           job:
             explain: true
             inputs:

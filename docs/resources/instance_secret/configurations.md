@@ -248,7 +248,7 @@ For a more detailed analysis of each type and to explore the syntax, please navi
     name: ${testing}
     version: v1
     type: instance-secret
-    secret:
+    instance-secret:
       type: key-value-properties
       acl: r
       data:

@@ -17,7 +17,7 @@ workflow:
           - read
         stack: flare:6.0
         compute: runnable-default
-        flare:
+        stackSpec:
           job:
             explain: true
             inputs:

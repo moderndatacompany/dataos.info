@@ -8,7 +8,7 @@ version: v1alpha
 type: grant
 layer: user
 tags:
-- governance
+  - governance
 grant:
   policy_use_case_id: run-as-user
   subjects:

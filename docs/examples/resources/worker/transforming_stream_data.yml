@@ -20,7 +20,7 @@ worker:
       memory: 100Mi
     limits:
       cpu: 400m
-      memory: 
+      memory: 512Mi
   stackSpec:
     input:
       datasets:

@@ -1,25 +1,23 @@
 version: v1
-name: standalone-read-bigquery
+name: cleanse-column-names-function-example
 type: workflow
 tags:
-  - standalone
-  - readJob
-  - bigquery
-description: Sample job
+  - flare
+  - functions
+  - cleanse-column-names
+description: Example workflow demonstrating the cleanse_column_names function
+owner: ${owner-name}
+layer: user
 workflow:
   dag:
-    - name: city-bigquery-read-01
-      title: Sample Transaction Data Ingester
-      description: The job ingests customer data from Bigquery to file source
+    - name: cleanse-column-names-demo
       spec:
         tags:
-          - standalone
-          - readJob
-          - bigquery
-        stack: flare:3.0
+          - flare
+          - functions
+        stack: flare:6.0
         compute: runnable-default
-        tier: connect
-        flare:
+        stackSpec:
           job:
             explain: true
             logLevel: INFO

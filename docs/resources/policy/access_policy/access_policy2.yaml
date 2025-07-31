@@ -10,7 +10,7 @@ policy:
   access:
     subjects:
       tags:
-        - - {{roles:id:healthcaredatauser}}
+        - {{roles:id:healthcaredatauser}}
     predicates:
       - {{read}}
     objects:

@@ -47,22 +47,36 @@ name: ${{depot-name}}
 version: v2alpha
 type: depot
 tags:
-    - ${{tag1}}
-    - ${{tag2}}
+  - ${{tag1}}
+  - ${{tag2}}
 owner: ${{owner-name}}
 layer: user
 depot:
-    type: ELASTICSEARCH              
+<<<<<<< Updated upstream
+  type: ELASTICSEARCH              
+  description: ${{description}}
+  external: ${{true}}
+  secrets:
+    - name: ${{sf-instance-secret-name}}-r
+      allkeys: true
+    - name: ${{sf-instance-secret-name}}-rw
+      allkeys: true
+  elasticsearch:                           
+    nodes: ${{["localhost:9092", "localhost:9093"]}}
+=======
+    type: elasticsearch                 
     description: ${{description}}
     external: ${{true}}
     secrets:
-    - name: ${{sf-instance-secret-name}}-r
+    - name: ${{elasticsearch-instance-secret-name}}-r
         allkeys: true
 
-    - name: ${{sf-instance-secret-name}}-rw
+    - name: ${{elasticsearch-instance-secret-name}}-rw
         allkeys: true
     elasticsearch:                           
-    nodes: ${{["localhost:9092", "localhost:9093"]}}
+        nodes: 
+            - ${{["localhost:9092", "localhost:9093"]}}
+>>>>>>> Stashed changes
 ```
 To get the details of each attribute, please refer [to this link](/resources/depot/configurations).
 
