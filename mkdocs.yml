@@ -916,13 +916,16 @@ nav:
       # - About Operator Track:
       #   - Overview: learn/about_operator_track/index.md
       
-      - About Data product Developer Track:
+      - About Data Product Developer Track:
         - learn/about_dp_developer_track/index.md
         # - Learning path overview:
         #   - learn/dp_developer_learn_track/index.md
       
       # - About Dp Developer Track:
       #   - Overview: learn/about_dp_developer_track/index.md
+      - About Data product Owner Track:
+        - learn/about_dp_owner_track/index.md
+      
       - Operator Learn Track:
         - learn/about_operator_track/index.md
         - Learning path overview:
