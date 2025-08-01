@@ -918,8 +918,8 @@ nav:
       
       - About Data product Developer Track:
         - learn/about_dp_developer_track/index.md
-        - Learning path overview:
-          - learn/dp_developer_learn_track/index.md
+        # - Learning path overview:
+        #   - learn/dp_developer_learn_track/index.md
       
       # - About Dp Developer Track:
       #   - Overview: learn/about_dp_developer_track/index.md
