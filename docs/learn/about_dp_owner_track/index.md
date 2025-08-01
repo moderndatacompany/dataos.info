@@ -53,7 +53,7 @@ Gain the skills and mindset to drive strategic data product outcomes across the 
 ## ✅ Start learning 
 
 !!! abstract "Ready to Dive In?" 
-    :rocket: [Coming soon: Advanced ownership scenarios and real-world governance patterns.]()
+    :rocket: [Coming soon: Advanced ownership scenarios and real-world governance patterns.](/learn/about_dp_owner_track/#start-learning)
 
 
 
