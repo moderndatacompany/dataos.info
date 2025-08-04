@@ -5,7 +5,7 @@ Follow the steps enumerated below to install the Command Line Interface. Check t
 
 ## Requirements
 
- 1. Get the following items from our **Customer Success** team:
+ 1. Get the following items from the DataOS administrator or the Modern Data team:
     - DataOS prime apikey
     - Domain name of the DataOS context/instance
     - Version of the CLI to be installed
@@ -50,7 +50,7 @@ Follow the steps enumerated below to install the Command Line Interface. Check t
     ```
     You can use this output with the "darwin" prefix as ARCH value in your shell commands to specify the architecture. The available values are `darwin-amd64`, `darwin-arm64` for different types of processors on macOS.
 
-    <aside class="callout">🗣️ Contact the admin (DataOS operator in your organization) to get the correct and latest version of the CLI.</aside>
+    <aside class="callout">🗣️ Reach out to the DataOS administrator to obtain the latest version of the CLI.</aside>
 
 3. Download the DataOS CLI binary using the below command (replace the **`ARCH`** </span> value of the processor and the **`CLI_VERSION`** </span>to be installed):
 
@@ -214,7 +214,7 @@ You have successfully installed the CLI, now the next step is to [initialize](/i
     
     if the output here appears as x86_64, it also means you have amd64 processor. The available ARCH values are linux-386, linux-amd64, linux-arm, linux-arm64.
 
-    <aside class="callout">🗣️ Contact the admin (DataOS operator in your organization) to get the correct and latest version of the CLI.</aside>
+    <aside class="callout">🗣️ Reach out to the DataOS administrator to obtain the latest version of the CLI.</aside>
     
 
 3. Download the CLI binary file using the following command (replace the **`ARCH`** & **`CLI_version`** before executing the command).
@@ -326,7 +326,7 @@ You have successfully installed the CLI, now the next step is to [initialize](/i
     - If the required value is **0** or **x86,** then it's a 32-bit architecture; in that case, use the **`ARCH`** value as **386**.
     - If the required value is **6, 9,** or **x64**, then it's a 64-bit architecture; in that case, use the **`ARCH`** value as **amd64**.
    
-    <aside class="callout">🗣️ Contact the admin (DataOS operator in your organization) to get the correct and latest version of the CLI.</aside>
+    <aside class="callout">🗣️ Reach out to the DataOS administrator to obtain the latest version of the CLI.</aside>
 
 2. Download the DataOS CLI .tar file using the following link in the browser (replace the **`ARCH`**, **`CLI_VERSION`**, and **`PRIME_APIKEY`** with respective values).
     ```
@@ -351,7 +351,7 @@ You have successfully installed the CLI, now the next step is to [initialize](/i
     ``` 
     https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-windows-amd64.tar.gz.sha256sum&dir=cli-apps-2.8&apikey=abcdefgh12345678987654321
     ```
-    <aside class="callout">🗣️ Contact the admin(operator in your organization) to get the latest version of the CLI</aside>
+    <aside class="callout">🗣️ Reach out to the DataOS administrator to obtain the latest version of the CLI.</aside>
 
 
 4. *Optional step*: Validate that the .tar file has not been tampered with. Replace the **`tar-file-path`** with the path of the downloaded tar file. Also, open the .shasum file in a text editor and copy the hash value and paste it inside quotes in place of **`hash-value-from-shasum-file`**.
