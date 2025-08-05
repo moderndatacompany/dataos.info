@@ -4,9 +4,8 @@ This document outlines advanced analytical patterns in **Lens**, accompanied by 
 
 !!! info 
 
-        Each configuration defines a *measure*. Successful execution requires selecting appropriate *dimensions* within the Lens UI. Failure to do so may result in “group by” errors.
+    Each configuration defines a *measure*. Successful execution requires selecting appropriate *dimensions* within the Lens UI. Failure to do so may result in “group by” errors.
 
----
 
 ## Use Case 1: Sequential Campaign Indexing
 
@@ -48,7 +47,7 @@ This document outlines advanced analytical patterns in **Lens**, accompanied by 
 
 !!! tip "Recommendation"
 
-        For period-over-period metrics such as Month-over-Month (MoM), Week-over-Week (WoW), or Year-over-Year (YoY), the following method is preferred over `LEAD` or `LAG`.
+    For period-over-period metrics such as Month-over-Month (MoM), Week-over-Week (WoW), or Year-over-Year (YoY), the following method is preferred over `LEAD` or `LAG`.
 
 **Objective**: Calculate revenue for the current and previous month, along with their ratio.
 
@@ -131,10 +130,10 @@ This document outlines advanced analytical patterns in **Lens**, accompanied by 
 * Rankings are recalculated monthly based on `year` and `month_name`.
 * `offset: start` includes all entries in the partition window.
 
----
 
-!!info "Note"
 
-        Partitioning dimensions and window definitions can be modified based on data model requirements and reporting needs.
+!!! info "Note"
+
+    Partitioning dimensions and window definitions can be modified based on data model requirements and reporting needs.
 
 
