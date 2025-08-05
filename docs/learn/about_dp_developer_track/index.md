@@ -61,5 +61,5 @@ The learning track walks you through each stage of the data product lifecycle wi
 ## ✅ Start learning 
 
 !!! abstract "Ready to Dive In?" 
-    :rocket: [Coming soon: More advanced scenarios and real-world design patterns.]()
+    :rocket: [Coming soon: More advanced scenarios and real-world design patterns.](/learn/about_dp_developer_track/#start-learning)
 
