@@ -609,7 +609,7 @@ nav:
                 - Elasticsearch: resources/stacks/flare/configuration_templates/elasticsearch.md
                 - OpenSearch: resources/stacks/flare/configuration_templates/opensearch.md
             - Flare Functions:
-              - resources/stacks/flare/index.md
+              - resources/stacks/flare/functions/index.md
               - List of Flare Functions: resources/stacks/flare/functions/list.md
             # - Data Quality:
             #   - Defining Assertions: resources/stacks/flare/defining_assertions.md
