@@ -89,11 +89,9 @@ workflow:
 ```
 </details>
 
-In the succeeding list, we provide comprehensive information about these pre-defined functions and their usage.
 
-[List of Flare Functions](/resources/stacks/flare/functions/list/)
 
-# User-Defined Flare Functions
+## User-Defined Flare Functions
 
 In addition to the pre-defined Flare Functions, Flare offers the ability to create custom User-Defined Flare Functions. These functions can be defined using YAML syntax, as demonstrated below.
 
@@ -171,3 +169,8 @@ workflow:
                 sql: SELECT *, to_upper(city_name) as city_name_upper, to_mask(city_id, 'xx###', 'X') as mask_city_id FROM cities
 ```
 </details>
+
+
+## List of Flare Functions
+
+The following list provides detailed information about the predefined [Flare functions](/resources/stacks/flare/functions/list/) and their usage.
