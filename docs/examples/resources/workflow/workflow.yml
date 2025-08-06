@@ -10,13 +10,10 @@ description: The job ingests city data from dropzone into raw zone
 
 # Workflow-specific Section
 workflow:
-  title: Connect City
   dag: 
 
-# Job 1 Specific Section
+  # Job 1 Specific Section
     - name: wf-job1 # Job 1 name
-      title: City Dimension Ingester
-      description: The job ingests city data from dropzone into raw zone
       spec:
         tags:
           - Connect
@@ -42,14 +39,14 @@ workflow:
                         NOW() AS ts_city1
                       FROM
                         icebase.retail.city 
-            #    dataset: dataos://icebase:retail/city
-             #   format: Iceberg
+                #   dataset: dataos://icebase:retail/city
+                #   format: Iceberg
                 options: 
                   SSL: "true"
                   driver: "io.trino.jdbc.TrinoDriver"
                   cluster: "system"
 
-              #   schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc #schema path is not necessary for icebase to icebase
+                #   schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc #schema path is not necessary for icebase to icebase
 
             outputs:
               - name: city_connect

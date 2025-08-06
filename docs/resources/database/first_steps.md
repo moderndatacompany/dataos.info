@@ -25,7 +25,7 @@ To create a Database Resource, data developers can define a set of attributes in
 
 ???tip "Sample Database manifest"
     
-    ```yaml title="sample_worker.yml"
+    ```yaml title="sample_database.yml"
     --8<-- "examples/resources/database/database.yaml"
     ```
 
@@ -64,9 +64,9 @@ In DataOS, a Database is categorized as a Resource-type. The Resource meta secti
     description: product database created for testing.
     tags:
       - database
-    database: #database specific mapping(mandatory)
     owner: iamgroot
     layer: user 
+    database: #database specific mapping(mandatory)
     ```
 
 To configure a Database Resource, replace the values of `name`, `layer`, `tags`, `description`, and `owner` with appropriate values. For additional configuration information about the attributes of the Resource meta section, refer to the link: [Attributes of Resource meta section](/resources/manifest_attributes/).

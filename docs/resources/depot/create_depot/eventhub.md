@@ -49,21 +49,34 @@ name: ${{"sanityeventhub01"}}
 version: v2alpha
 type: depot
 tags:
-    - ${{Eventhub}}
-    - ${{Sanity}}
+  - ${{Eventhub}}
+  - ${{Sanity}}
+<<<<<<< Updated upstream
 layer: user
 depot:
-    type: "EVENTHUB"
-    compute: ${{runnable-default}}
-    eventhub:
+  type: "EVENTHUB"
+  compute: ${{runnable-default}}
+  eventhub:
     endpoint: ${{"sb://event-hubns.servicebus.windows.net/"}}
-    external: ${{true}}
-    secrets:
+=======
+description: ${{EventHub depot for streaming data}}
+owner: ${{owner-name}}
+layer: user
+depot:
+  type: "EVENTHUB"
+  description: ${{EventHub streaming depot}}
+>>>>>>> Stashed changes
+  external: ${{true}}
+  secrets:
     - name: ${{eh-instance-secret-name}}-r
-        allkeys: true
-
+      allkeys: true
     - name: ${{eh-instance-secret-name}}-rw
-        allkeys: true
+      allkeys: true
+<<<<<<< Updated upstream
+=======
+  eventhub:
+    endpoint: ${{"sb://event-hubns.servicebus.windows.net/"}}
+>>>>>>> Stashed changes
 ```
 To get the details of each attribute, please refer [to this link](/resources/depot/configurations).
 

@@ -56,7 +56,7 @@ Follow the steps below to create a use case in DataOS.
 
 2. In the YAML artifact, you define the necessary parameters for the use case. For example, to create a Use-case for reading a DataOS workspace, you will enter the following YAML configuration:
 
-    ```bash
+    ```yaml
     # Enter the Yaml Use-case Artifact
 
     id: read-dataos-workspace
@@ -103,7 +103,7 @@ Following are the configurations of creating a Use-case:
 
 Similarly, you create a Use-case to read a depot as shown below:
 
-```bash
+```yaml
 # Enter the Yaml Use-case Artifact
 
 id: read-depot
@@ -122,7 +122,7 @@ values:
 
 Similarly, you create a coarser access level Use-case to manage the depot, which combines all the predicates on the Depot type object.
 
-```bash
+```yaml
 # Enter the Yaml Use-case Artifact
 
 id: write-depot-dataset
@@ -143,7 +143,7 @@ values:
 
 **Use-case to manage lens**
     
-```bash
+```yaml
 # to create lens
 
 id: manage-lens
