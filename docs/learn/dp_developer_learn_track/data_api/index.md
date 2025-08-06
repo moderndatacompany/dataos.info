@@ -151,7 +151,7 @@ Here, you’ll find step-by-step instructions to build data API.
 
 5. Apply the Instance Secret manifest file.
 
-    ```bash
+    ```shell
     dataos-ctl apply -f /home/office/secrets/instance_secret.yaml
     ```
 
@@ -204,7 +204,7 @@ Here, you’ll find step-by-step instructions to build data API.
         
 7. Apply the Service manifest file using CLI, or you can refer the Talos Service manifest path in the Bundle Resource to apply the Talos Service along with the other Resources.
     
-```bash
+```shell
 dataos-ctl apply -f /home/iamgroot/talos/setup/service.yaml
 ```
 

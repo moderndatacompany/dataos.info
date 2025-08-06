@@ -60,18 +60,21 @@ name: ${{"sanitygcs01"}}
 version: v2alpha
 type: depot
 tags:
-    - ${{GCS}}
-    - ${{Sanity}}
+  - ${{GCS}}
+  - ${{Sanity}}
+<<<<<<< Updated upstream
+=======
+description: ${{GCS depot for cloud storage}}
+owner: ${{owner-name}}
+>>>>>>> Stashed changes
 layer: user
 depot:
   type: GCS
   description: ${{"GCS depot for sanity"}}
-  compute: ${{runnable-default}}
   external: ${{true}}
   secrets:
     - name: ${{gcs-instance-secret-name}}-r
       allkeys: true
-
     - name: ${{gcs-instance-secret-name}}-rw
       allkeys: true  
   gcs:
@@ -79,8 +82,6 @@ depot:
     relativePath: ${{"/sanity"}}
     format: ${{ICEBERG}}
     icebergCatalogType: ${{}}
-    metastoreUrl: ${{}}
-
 ```
 To get the details of each attribute, please refer [to this link](/resources/depot/configurations).
 

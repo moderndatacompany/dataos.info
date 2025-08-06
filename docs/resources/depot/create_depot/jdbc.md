@@ -56,7 +56,7 @@ name: ${{depot-name}}
 version: v2alpha
 type: depot
 tags:
-    - ${{tag1}}
+  - ${{tag1}}
 owner: ${{owner-name}}
 layer: user
 depot:

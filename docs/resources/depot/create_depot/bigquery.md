@@ -62,7 +62,6 @@ depot:
     - name: ${{instance-secret-name}}-r
       keys: 
         - ${{instance-secret-name}}-r
-
     - name: ${{instance-secret-name}}-rw
       keys: 
         - ${{instance-secret-name}}-rw

@@ -40,8 +40,8 @@ name: ${{depot-name}}
 version: v1
 type: depot
 tags:
-    - ${{tag1}}
-    - ${{tag2}}
+  - ${{tag1}}
+  - ${{tag2}}
 owner: ${{owner-name}}
 layer: user
 depot:

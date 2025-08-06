@@ -39,16 +39,16 @@ Begin by creating an Instance Secret Resource by following the [Instance Secret 
 Begin by creating a manifest file to hold the configuration details for your Kafka Depot.
 
 
-```yaml 
+```yaml
 name: ${{depot-name}}
 version: v1
 type: depot
 tags:
-    - ${{tag1}}
-    - ${{tag2}}
+  - ${{tag1}}
 owner: ${{owner-name}}
 layer: user
 depot:
+<<<<<<< HEAD
   type: KAFKA
   description: {{description}}
   kafka:
@@ -59,6 +59,16 @@ depot:
       allkeys: true
 
  
+=======
+  type: KAFKA                     
+  description: ${{description}}
+  external: ${{true}}
+  spec:                           
+    brokers:
+      - ${{broker1}}
+      - ${{broker2}}
+    schemaRegistryUrl: ${{http://20.9.63.231:8081/}}
+>>>>>>> 66e06414923c702eaf26303c578d8dd080d029bf
 ```
 To get the details of each attribute, please refer [to this link](/resources/depot/configurations).
 

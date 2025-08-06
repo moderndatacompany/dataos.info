@@ -32,7 +32,7 @@ Flare is a declarative [Stack](/resources/stacks/) for large-scale data processi
 </figure>
 
 
-## Syntax of Flare manifest file configuration
+## Flare Manifest File Syntax
 
 ![Flare YAML Configuration Syntax](/resources/stacks/flare/flare_syntax.png)
 <center><i>Flare manifest file Configuration Syntax</i></center>
@@ -44,7 +44,7 @@ Flare supports both batch and streaming data processing through distinct job typ
 
 ## Types of Flare Jobs
 
-Flare Stack offers varied configuration to execute different types of [Jobs](/resources/workflow/#configure-the-job-specific-section). The details of each job are provided in the table below:
+Flare Stack offers varied configuration to execute different types of [Jobs](/resources/stacks/flare/case_scenario/). The details of each job are provided in the table below:
 
 
 | **Job Type**       | **Description**                                                                                                                                     | **Best Use Case**                                                                 | **Latency**         | **Cost**               |
@@ -56,18 +56,18 @@ Flare Stack offers varied configuration to execute different types of [Jobs](/re
 | **Action Job**     | Executes maintenance actions on Depots using Iceberg format (e.g., compaction, cleanup).                                                           | Data maintenance tasks in Icebase or similar Depots.                              | Depends on action     | Depends on action type  |
 
 
-
+<!--
 ### **Batch Job**
 
 Batch Jobs involve recomputing all changed datasets during each run, ensuring consistent end-to-end performance over time. However, they suffer from high latency as all data must be processed, even if it hasn't changed since the last synchronization. When a large volume of new data is introduced, batch jobs can become excessively costly and time-consuming. For smaller data sizes, running batch jobs for various transformation tasks is recommended. However, as data size grows and changes, [incremental jobs](#incremental-job) are a better option. Simple batch jobs typically involve reading data from one Depot (Depot A), performing transformations, and writing the data to another Depot (Depot B). To explore case scenario for a Batch Job, refer to the link: [Case Scenarios: Batch Jobs](/resources/stacks/flare/case_scenario/#batch-jobs).
 
-<!-- Apart from regular batch jobs, there are three specialized types of batch jobs designed for specific scenarios: [Data Profiling Jobs](#data-profiling-job), [Data Quality Jobs](#data-quality-job), and [Incremental Jobs](#incremental-job).
+Apart from regular batch jobs, there are three specialized types of batch jobs designed for specific scenarios: [Data Profiling Jobs](#data-profiling-job), [Data Quality Jobs](#data-quality-job), and [Incremental Jobs](#incremental-job).
 
 #### **Data Profiling Job**
 
 Data Profiling Jobs assess the validity and structure of datasets. These jobs examine source data to determine accuracy, completeness, and validity, providing summaries and insights about the data. Accurate and complete data is essential for making informed decisions based on the available data. Data Profiling Jobs enable you to analyze the structure, content, and relationships within the data, uncovering inconsistencies, and anomalies to achieve higher data quality.
-To learn more about creating Data Profiling Jobs, refer to the link: [Case Scenarios: Data Profiling Jobs](/resources/stacks/flare/case_scenario/#data-profiling-job). -->
-<!-- 
+To learn more about creating Data Profiling Jobs, refer to the link: [Case Scenarios: Data Profiling Jobs](/resources/stacks/flare/case_scenario/#data-profiling-job). 
+
 **Fingerprinting**
 
 Initiating a data profiling job for a dataset automatically triggers the fingerprinting process.
@@ -82,7 +82,7 @@ DataOS conducts fingerprinting and stores the classification information for the
 
 DataOS allows users to define their data quality expectations and discover data shortcomings for the success of data-driven operations. It uses the Flare stack that provides a set of tools and functions for data quality analysis and validation. Flare provides assertions, which are business-specific validation rules, to test and evaluate the quality of specific datasets if they are appropriate for the intended purpose.
 
-Data Quality Jobs measure and ensure data quality based on these assertions. For more information on defining assertions and their properties, refer to [Performing Business Validation Checks with Assertions](/resources/stacks/flare/assertions_case_scenario/). -->
+Data Quality Jobs measure and ensure data quality based on these assertions. For more information on defining assertions and their properties, refer to [Performing Business Validation Checks with Assertions](/resources/stacks/flare/assertions_case_scenario/). 
 
 #### **Incremental Job**
 
@@ -96,7 +96,7 @@ Stream Jobs continuously process incoming data in real-time. They offer low late
 
 The DataOS platform provides comprehensive support for executing maintenance actions jobs within the Depots supporting the Iceberg table format such as Icebase. These are specified within the actions section. To explore action-specific properties for Action Jobs, click here. For a case scenario illustrating how a action job is declared within DataOS, refer to the link: [Case Scenario: Action Job](/resources/stacks/flare/case_scenario/#flare-actions).
 
-<!-- | Flare Job Type  | Description                                                                                                            |
+ | Flare Job Type  | Description                                                                                                            |
 |-----------------|------------------------------------------------------------------------------------------------------------------------|
 | [Batch Job](/resources/stacks/flare/job_types#batch-job)       | Recomputes all changed datasets on each run, providing consistent performance. Has high latency and is suitable for smaller data sizes.                                              |
 | [Data Profiling Job](/resources/stacks/flare/job_types#data-profiling-job) | Assesses data quality and structure, examining source data for accuracy, completeness, and validity.                    |
@@ -116,18 +116,18 @@ Further information regarding Flare Jobs can be accessed [here](/resources/stack
 The Flare Stack manifest comprises a wide range of configuration parameters designed to support various use cases. These configurations control how data is read, written, and transformed across multiple source and destination systems. Refer to the [Flare Stack Manifest Configurations](/resources/stacks/flare/configurations/) for detailed documentation.
 
 
-<!-- ## Flare functions
+## Flare functions
 
-- [Flare functions](/resources/stacks/flare/functions/list/) 
+Flare provides a comprehensive set of built-in data manipulation functions that can be applied at various stages of job execution. These functions enable the implementation of complex data operations without requiring custom code. For a complete list of supported functions, refer to the [Flare functions reference.Flare functions](/resources/stacks/flare/functions/list/) 
 
-
+<!-- 
  ## How to test Flare Jobs
 
 Before deploying your logic into production, thorough testing is crucial. Flare Standalone provides a powerful and reliable testing interface, allowing you to test your Flare Jobs locally on your system. It helps identify and address potential issues before deployment. Further information regarding Flare Standalone can be accessed by clicking the link below.
 
 [Flare Standalone](/resources/stacks/flare/standalone/) -->
 
-## How to optimize jobs in Flare
+## Job Optimization in Flare
 
 To ensure optimal performance under different workloads, each job executed on the Flare Stack requires specific tuning and optimization. Refer to [Flare Optimizations](/resources/stacks/flare/optimizations/) for detailed techniques.
 
@@ -137,11 +137,16 @@ To ensure optimal performance under different workloads, each job executed on th
 For a complete list of available Depot connectors in Flare, along with the associated configuration details, see [Flare Configuration Templates](/resources/stacks/flare/configuration_templates/).
 
 
-## Case Scenarios
+## Flare Job Use Cases
 
 To review implementation examples that demonstrate the practical application of the Flare Stack in real-world data processing workflows, refer to the [Case Scenario](/resources/stacks/flare/case_scenario/).
 
+<!-- 
+## Troubleshooting in Flare
+Flare provides detailed execution metadata and logging to support efficient troubleshooting of job failures and unexpected behavior. Issues can be identified through system-generated logs, job statuses, and validation messages.
 
+For examples of valid configurations and job patterns, refer to the [Flare configuration templates.](/resources/stacks/flare/troubleshooting/)
+ -->
 
 
 

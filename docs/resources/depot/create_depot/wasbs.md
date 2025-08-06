@@ -50,8 +50,8 @@ name: ${{depot-name}}
 version: v2alpha
 type: depot
 tags:
-    - ${{tag1}}
-    - ${{tag2}}
+  - ${{tag1}}
+  - ${{tag2}}
 owner: ${{owner-name}}
 layer: user
 depot:
@@ -62,7 +62,6 @@ depot:
   secrets:
     - name: ${{wasbs-instance-secret-name}}-r
       allkeys: true
-
     - name: ${{wasbs-instance-secret-name}}-rw
       allkeys: true
   wasbs:                                          

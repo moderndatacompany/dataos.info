@@ -209,6 +209,6 @@ For more information on how to configure Lens manifest file, refer to the link:Â
 
 Apply the Lens manifest file using the `apply` command as shown below, or reference the Lens manifest path in the Bundle Resource along with other Resources.
 
-```bash
+```shell
 dataos-ctl apply -f /home/data_product/resources/lens/deployment.yaml #path
 ```
