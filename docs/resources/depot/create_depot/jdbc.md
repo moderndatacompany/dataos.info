@@ -56,27 +56,39 @@ name: ${{depot-name}}
 version: v2alpha
 type: depot
 tags:
-    - ${{tag1}}
+  - ${{tag1}}
 owner: ${{owner-name}}
 layer: user
 depot:
+<<<<<<< Updated upstream
+  type: JDBC                                      
+  description: ${{description}}
+  external: ${{true}}
+  secrets:
+    - name: ${{sf-instance-secret-name}}-r
+      allkeys: true
+    - name: ${{sf-instance-secret-name}}-rw
+      allkeys: true
+  jdbc:                                           
+=======
     type: JDBC                                      
     description: ${{description}}
     external: ${{true}}
     secrets:
-    - name: ${{sf-instance-secret-name}}-r
+    - name: ${{jdbc-instance-secret-name}}-r
         allkeys: true
 
-    - name: ${{sf-instance-secret-name}}-rw
+    - name: ${{jdbc-instance-secret-name}}-rw
         allkeys: true
     jdbc:                                           
+>>>>>>> Stashed changes
     subprotocol: ${{subprotocol}}
     host: ${{host}}
     port: ${{port}}
     database: ${{database-name}}
     params:
-        ${{"key1": "value1"}}
-        ${{"key2": "value2"}}
+      ${{\"key1\": \"value1\"}}
+      ${{\"key2\": \"value2\"}}
 ```
 To get the details of each attribute, please refer [to this link](/resources/depot/configurations).
 

@@ -244,16 +244,7 @@ lens:
       limits:
         cpu: 6000m
         memory: 6048Mi
-  # iris:
-  #   logLevel: info
-  #   replicas: 1
-  #   resources:
-  #     requests:
-  #       cpu: 100m
-  #       memory: 256Mi
-  #     limits:
-  #       cpu: 4000m
-  #       memory: 5240Mi
+  
 ```
 </details>
     
@@ -330,11 +321,3 @@ You can check the details of the deployed Lens on Metis.
     
     ![lens2_model_files.png](/quick_guides/deploy_data_model/lens2_model_files.png)
     
-<!-- 2. From Metis UI, you can access Iris board and see the created business views to assess the important metrics defined within the data model.
-    
-    ![lens2_iris1.png](/quick_guides/deploy_data_model/lens2_iris1.png)
-     -->
-
-<!-- Next Steps:
-
-Begin utilizing your Lens -->

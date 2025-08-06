@@ -12,16 +12,15 @@ tags: # Tags for categorizing the Resource
   - ${{tag_example_1}} # Tags (e.g., dataos:volume)
   - ${{tag_example_2}} # Additional tags (e.g., dataos:workspace:curriculum)
 description: ${{resource_description}} # Description of the resource (e.g., Common attributes applicable to all DataOS Resources)
-workspace
 owner: ${{resource_owner}} # Owner of the Resource (e.g., iamgroot)
 layer: ${{resource_layer}} # DataOS Layer (e.g., user, system)
 
 # VOLUME-SPECIFIC SECTION
 # Attributes specific to Volume resource-type
 volume:
-   size: ${{1Gi} } #100Gi, 50Mi, 10Ti, 500Mi
-   accessMode: ${{accessMode}} #Mode options ReadWriteMany | ReadWriteOnce | ReadOnlyMany 
-   type: ${{typeofvolume}} #Volume type options persistent | temp | CloudTemp | CloudPersistent
+  size: ${{1Gi}} #100Gi, 50Mi, 10Ti, 500Mi
+  accessMode: ${{accessMode}} #Mode options ReadWriteMany | ReadWriteOnce | ReadOnlyMany 
+  type: ${{typeofvolume}} #Volume type options persistent | temp | CloudTemp | CloudPersistent
 ```
 
 

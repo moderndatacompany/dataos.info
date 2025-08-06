@@ -1,16 +1,15 @@
-# Exploring input & output datasets 
+# Exploring Input & Output Datasets 
 
-This topic explains how to access detailed information about input and output datasets. Users can explore these details through two options available in the Data Product Hub: delve into Metis to review metadata, schema, and quality standards, or explore them directly in Workbench for a greater insight into the data.
+!!! info "Overview"
+    Gain deeper insight into the data behind a Data Product by exploring its input and output datasets using Metis (for metadata and quality) and Workbench (for hands-on querying).
 
-## Scenario
+## 📘 Scenario
 
-To gain a deeper understanding of the data you plan to use for the marketing campaign, you thoroughly explore the input and output datasets of the 'Product Affinity' Data Product. You analyze the schema and metadata for insights, such as identifying missing fields or outdated entries, to better comprehend the data.
-
-On Data Product Hub, open the data product details and follow the below steps:
+You're preparing for a marketing campaign and need to ensure the underlying data is accurate and complete. You’ve identified the Product Affinity Data Product. Now, it’s time to assess its inputs and outputs to evaluate its fitness for your use case.
 
 ## Step 1: Start with Data Product details
 
-Begin by reviewing the data product's input and output datasets in the Data Product Hub. This initial overview provides insight into the dataset’s structure and integrity. For deeper details, open the dataset in Metis to explore schema, quality, lineage, and policies.
+From the Data Product Hub, select Product Affinity to view its metadata, inputs, outputs, and more. For deeper details, open the dataset in Metis to explore schema, quality, lineage, and policies.
 
 Click on the Metis option as shown below:
 
@@ -18,17 +17,15 @@ Click on the Metis option as shown below:
 
 ## Step 2: View input dataset metadata in Metis
 
-For structured data sources, you will see comprehensive details such as asset type, meta version, last update time, follower count, and various editing options for owner, tier, domain, tags, and description.
+- For structured data sources, you will see comprehensive details such as asset type, meta version, last update time, follower count, and various editing options for owner, tier, domain, tags, and description.
 
-You will see the DataOS address for your dataset. Within DataOS, each source system is identified by a unique Uniform Data Link (UDL). This address acts as a consistent reference point, regardless of the source system's internal naming conventions and structure. Leveraging the UDL enables access to datasets and seamless execution of various operations.
-
-You will also get schema details, including table/column names, their descriptions and type, constraints, and sensitive tags, etc. You can suggest some tags if required.
+- You will see the DataOS address for your dataset. Within DataOS, each source system is identified by a unique Uniform Data Link (UDL). This address acts as a consistent reference point, regardless of the source system's internal naming conventions and structure. Leveraging the UDL enables access to datasets and seamless execution of various operations.
 
 ![dataset_metis.png](/learn/dp_consumer_learn_track/eval_io_datasets/dataset_metis.png)
 
 ### **Assess schema and tags**
 
-In the schema section, you can view tags assigned to each column. You may also request additional tags that align with your use-case and compliance. Tags are invaluable for tracking and categorizing data elements that meet specific requirements, such as regulatory standards or analytical needs.
+You’ll also find comprehensive schema details, including table and column names, data types, descriptions, constraints, and any applied sensitive tags. In the Schema section, each column’s tags are visible—these help classify and track data elements for compliance and analytical relevance. If certain columns are missing tags, you can request additions based on your specific use case or regulatory needs. Tags play a vital role in ensuring data is properly categorized, governed, and aligned with enterprise standards.
 
 ### **Review stats & activity feeds**
 
@@ -90,7 +87,7 @@ By following these steps, you gain a comprehensive understanding of the dataset�
 
 ## Step 3: Performing exploratory data analysis using Workbench
 
-After understanding the schema, structure, and quality of your dataset, you’re ready to dive into exploratory data analysis on DataOS Workbench. This web-based data exploration tool lets you run both simple and complex queries across a variety of relational databases, storage systems, and lakehouses. By doing this, you can examine the actual data and assess its suitability for your specific use case.
+Now, you’re ready to dive into exploratory data analysis on DataOS Workbench. This web-based data exploration tool lets you run both simple and complex queries across a variety of relational databases, storage systems, and lakehouses. By doing this, you can examine the actual data and assess its suitability for your specific use case.
 
 ### **Open Workbench app**
 
@@ -105,7 +102,7 @@ When you open the Workbench app, the first step is to select a cluster for your 
 ![select_cluster.png](/learn/dp_consumer_learn_track/eval_io_datasets/select_cluster.png)
 
 <aside class="callout">
-🗣 To ensure your query runs successfully, please select a cluster that you are authorized to access. If you encounter an error after selecting a cluster, try choosing a different one. If the problem persists, please reach out to your administrator for assistance.
+🗣 To ensure your query runs successfully, please select a cluster that you are authorized to access. If you encounter an error after selecting a cluster, try choosing a different one. If the problem persists, please contact administrator.
 
 </aside>
 
@@ -133,11 +130,6 @@ Check the results of your query and review any applied governance policies. The 
 
 ![policy_details.png](/learn/dp_consumer_learn_track/eval_io_datasets/policy_details.png)
 
-<aside class="callout">
-🗣 For a closer look at the metadata structure or to see sample data for the Outputs datasets, generated by the data product, simply navigate to Metis and Workbench, following the instructions provided above.
-
-</aside>
-
 ## Best practices
 
 - **Assess metadata thoroughly**: Check for accurate descriptions of datasets and columns.
@@ -148,26 +140,58 @@ Check the results of your query and review any applied governance policies. The 
 
 - **Check governance policies**: Know about compliance with regulatory and security standards, especially for sensitive data fields. You can 
 
-## Guidelines: Do's and Don'ts
+## ⚠️ Do’s & Don’ts
 
-**Do's**
+| ✅ **Do**                                | ❌ **Don't**                                 |
+|------------------------------------------|----------------------------------------------|
+| Request missing column descriptions      | Rely on datasets with failed validations     |
+| Use lineage to confirm transformations   | Overlook untagged sensitive data             |
+| Validate metrics before analysis         | Skip policy reviews                          |
 
-- Ask for missing column descriptions, as they provide essential context and help you fully understand the data.
+For instance, the email and phone columns in the following dataset lack tags to identify them as sensitive data, you can request the addition of appropriate tags to ensure their protection. 
 
-- Use the 'Last 5 Runs' feature to track data quality trends over time and identify recurring issues.
+![image](/learn/dp_consumer_learn_track/eval_io_datasets/col_missing_tags_metis.png)
 
+## Self-check quiz
 
-**Don'ts**
+**1. Why are column-level tags important in the schema section?**
 
-- Don't rely on datasets with unresolved quality issues or failed validation checks, as these can propagate errors into downstream processes.
+A. They increase dataset size  <br>
+B. They ensure faster queries  <br>
+C. They support governance and compliance  <br>
+D. They add color coding to columns<br>
 
-- Don't overlook untagged or misclassified columns, as they can create governance and compliance gaps.
-    For instance, the email and phone columns in the following dataset lack tags to identify them as sensitive data, you can request the addition of appropriate tags to ensure their protection. 
+**2. What is the function of a Uniform Data Link (UDL) in DataOS?**
 
-    ![image](/learn/dp_consumer_learn_track/eval_io_datasets/col_missing_tags_metis.png)
+A. It formats the schema of datasets  <br>
+B. It uniquely identifies a dataset across the platform  <br>
+C. It encrypts the dataset  <br>
+D. It visualizes the lineage <br>
+
+**3. You're exploring the Product Affinity Data Product and notice missing tags for customer email and phone columns in the input dataset. What should you do?**
+
+A. Ignore them if the data seems usable<br>
+B. Delete those columns from the dataset<br>
+C. Request the addition of appropriate tags for compliance<br>
+D. Manually edit the schema structure in Metis<br>
+
+**4. While reviewing the quality tab of a dataset, you observe the rule “Customer ID should not be zero” has failed in 3 of the last 5 runs. What does this indicate?**
+
+A. The dataset is ready for analysis<br>
+B. There is a governance policy misconfiguration<br>
+C. Some records may contain invalid IDs<br>
+D. The dataset size is too large<br>
+
+**5. You’re tasked with verifying that a dataset meets specific regulatory requirements. Which of the following would be MOST relevant?**  
+
+A. Queries tab and record count <br> 
+B. Schema structure and column order  <br>
+C. Tags, data quality checks, and policies<br>
+D. Owner and tier fields  <br>
+
 
 ## Next step
 
-To further understand relationships between data entities and improve data comprehension, refer to the next module:
+Understand relationships and logic behind your data to drive meaningful insights, refer to the next module:
 
-[Explore Semantic Model](/learn/dp_consumer_learn_track/explore_sm/)
+👉 [Explore Semantic Model](/learn/dp_consumer_learn_track/explore_sm/)

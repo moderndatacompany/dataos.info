@@ -41,7 +41,3 @@ workflow:
                format: Iceberg
                options:
                  saveMode: overwrite
-           options: 
-               SSL: "true"
-               driver: "io.trino.jdbc.TrinoDriver"
-               cluster: "system"

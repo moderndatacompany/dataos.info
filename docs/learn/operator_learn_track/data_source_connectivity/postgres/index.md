@@ -2,7 +2,7 @@
 
 In this topic, you'll learn about data connectivity by establishing a connection from the DataOS platform to a hosted PostgreSQL database.
 
-## Scenario
+## 📘 Scenario
 
 Imagine you are a DataOS Operator or Data Product Developer and you need to integrate various data sources within DataOS without moving the data. By configuring a Depot, you can establish a secure connection to your PostgreSQL database, making it accessible for querying, building pipelines, and creating data products directly in DataOS. This setup not only enhances data security but also promotes interoperability with a wide range of DataOS Resources.
 

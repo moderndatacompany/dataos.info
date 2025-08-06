@@ -1,3 +1,9 @@
+---
+title: Flare Configuration
+search:
+  boost: 2
+---
+
 # Attributes of Flare `stackSpec`
 
 The `stackSpec` configuration within a Flare Job provides a flexible way to define the operational characteristics of a job. The configuration is expressed through a structured mapping in a declarative YAML. Each attribute within the `stackSpec` mapping (or section) precisely controls various aspects of the job's execution environment, allowing for detailed customization and optimization of resource allocation and job behavior. By specifying these attributes, users can finely tune their Flare Jobs to match specific performance and resource requirements.

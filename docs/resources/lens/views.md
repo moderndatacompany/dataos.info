@@ -59,8 +59,11 @@ views:
 
 ```
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 66e06414923c702eaf26303c578d8dd080d029bf
 ### **Metrics-first approach**
 
 The **metrics-first approach** builds views around key performance metrics in a data model. Each view focuses on a specific measure and includes all relevant dimensions for grouping, filtering, and tracking time. This approach helps business teams make informed, data-driven decisions by providing clear, consistent, actionable metrics.
@@ -248,7 +251,7 @@ Follow these steps to explore views and metrics within the Data Products Hub.
     <img src="/resources/lens/working_with_views/dph4.png" alt="Tables and Views" style="max-width: 80%; height: auto; border: 1px solid #000;">
     <figcaption> Data Lineage </figcaption>
 </div>
-
+    
 **Step 5: Navigate to the Data Product Hub Studio**
 
 - Next to the **Quick Insights** button, click the **Explore** button.

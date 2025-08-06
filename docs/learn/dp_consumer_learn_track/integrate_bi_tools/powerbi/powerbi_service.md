@@ -6,7 +6,8 @@ search:
 
 # Publish Power BI Reports to the Power BI Service
 
-In this guide, you will learn how to integrate Power BI Desktop with the semantic model to create the report and Power BI Service to publish reports.
+!!! info "Overview"
+    In this guide, you will learn how to integrate Power BI Desktop with the semantic model to create the report and Power BI Service to publish reports.
 
 ## Prerequisites
 

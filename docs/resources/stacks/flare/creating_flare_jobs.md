@@ -106,15 +106,16 @@ depot:
     type: snowflake
     description: ${{snowflake-depot-description}}
     snowflake:
-    warehouse: ${{warehouse-name}}
-    url: ${{snowflake-url}}
-    database: ${{database-name}}
+      warehouse: ${{warehouse-name}}
+      url: ${{snowflake-url}}
+      database: ${{database-name}}
+      account: ${{account}}
     external: true
     secrets:
-    - name: ${{redshift-instance-secret-name}}-r
+      - name: ${{snowflake-instance-secret-name}}-r
         allkeys: true
 
-    - name: ${{redshift-instance-secret-name}}-rw
+      - name: ${{snowflake-instance-secret-name}}-rw
         allkeys: true
 
 ```

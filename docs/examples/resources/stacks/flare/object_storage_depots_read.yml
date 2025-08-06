@@ -2,8 +2,8 @@ version: v1
 name: sanity-read-azure
 type: workflow
 tags:
-- Sanity
-- Azure
+  - Sanity
+  - Azure
 title: Sanity read from Azure
 description: |
   The purpose of this workflow is to verify if we are able to read different
@@ -11,6 +11,34 @@ description: |
 
 workflow:
   dag:
+<<<<<<< Updated upstream
+    - name: sanity-read-az-job
+      title: Sanity read files from azure abfss
+      description: |
+        The purpose of this job is to verify if we are able to read different
+        file formats from azure abfss or not. 
+      spec:
+        tags:
+          - Sanity
+          - Abfss
+        stack: flare:6.0
+        compute: runnable-default
+        stackSpec:
+          job:
+            explain: true
+            logLevel: INFO
+            showPreviewLines: 2
+            inputs:
+              - name: a_city_csv
+                dataset: dataos://sanityazure:sanity/azure_write_csv_14?acl=rw
+                format: csv
+              # - name: a_city_json
+              #   dataset: dataos://sanityazure:sanity/azure_write_json
+              #   format: json
+              # - name: a_city_parquet
+              #   dataset: dataos://sanityazure:sanity/azure_write_parquet
+              #   format: parquet
+=======
   - name: sanity-read-az-job
     title: Sanity read files from azure abfss
     description: |
@@ -22,7 +50,7 @@ workflow:
       - Abfss
       stack: flare:6.0
       compute: runnable-default
-      flare:
+      stackSpec:
         job:
           explain: true
           logLevel: INFO
@@ -37,56 +65,57 @@ workflow:
           # - name: a_city_parquet
           #   dataset: dataos://sanityazure:sanity/azure_write_parquet
           #   format: parquet
+>>>>>>> Stashed changes
 
 
-          outputs:
-            # csv
-            - name: finalDf_csv
-              dataset: dataos://icebase:smoketest/azure_read_csv_14?acl=rw
-              format: iceberg
-              options:
-                saveMode: overwrite
-                partitionBy:
-                  - version
-              tags:
-                - Sanity
-                - Azure
-                - CSV
-              title: Azure csv read sanity
-              description: Azure csv read sanity
-            # # json
-            # - name: finalDf_json
-            #   dataset: dataos://icebase:sanity/azure_read_json?acl=rw
-            #   format: json
-            #   options:
-            #     saveMode: overwrite
-            #     partitionBy:
-            #       - version
-            #   tags:
-            #     - Sanity
-            #     - Azure
-            #     - JSON
-            #   title: Azure json read sanity
-            #   description: Azure json read sanity  
-            # # parquet
-            # - name: finalDf_parquet
-            #   dataset: dataos://icebase:sanity/azure_read_parquet?acl=rw
-            #   format: parquet
-            #   options:
-            #     saveMode: overwrite
-            #     partitionBy:
-            #       - version
-            #   tags:
-            #     - Sanity
-            #     - Azure
-            #     - Parquet
-            #   title: Azure parquet read sanity
-            #   description: Azure parquet read sanity
-          steps:
-            - sequence:
-                - name: finalDf_csv
-                  sql: SELECT * FROM a_city_csv LIMIT 10
-                  functions:
-                    - name: drop
-                      columns:
-                        - "__metadata_dataos_run_mapper_id"
+            outputs:
+              # csv
+              - name: finalDf_csv
+                dataset: dataos://icebase:smoketest/azure_read_csv_14?acl=rw
+                format: iceberg
+                options:
+                  saveMode: overwrite
+                  partitionBy:
+                    - version
+                tags:
+                  - Sanity
+                  - Azure
+                  - CSV
+                title: Azure csv read sanity
+                description: Azure csv read sanity
+              # # json
+              # - name: finalDf_json
+              #   dataset: dataos://icebase:sanity/azure_read_json?acl=rw
+              #   format: json
+              #   options:
+              #     saveMode: overwrite
+              #     partitionBy:
+              #       - version
+              #   tags:
+              #     - Sanity
+              #     - Azure
+              #     - JSON
+              #   title: Azure json read sanity
+              #   description: Azure json read sanity  
+              # # parquet
+              # - name: finalDf_parquet
+              #   dataset: dataos://icebase:sanity/azure_read_parquet?acl=rw
+              #   format: parquet
+              #   options:
+              #     saveMode: overwrite
+              #     partitionBy:
+              #       - version
+              #   tags:
+              #     - Sanity
+              #     - Azure
+              #     - Parquet
+              #   title: Azure parquet read sanity
+              #   description: Azure parquet read sanity
+            steps:
+              - sequence:
+                  - name: finalDf_csv
+                    sql: SELECT * FROM a_city_csv LIMIT 10
+                    functions:
+                      - name: drop
+                        columns:
+                          - "__metadata_dataos_run_mapper_id"

@@ -2,7 +2,7 @@
 
 Managing user access is a key aspect of system administration in Keycloak. This guide explains how to create and manage users within the Keycloak Admin Console, ensuring seamless user onboarding.
 
-## Scenario
+## 📘 Scenario
 
 You’re responsible for onboarding a new team member to your organization’s system. To provide them secure access, you need to create their user profile in Keycloak. With administrative access, you navigate to the Users section in the Keycloak Admin Console. Using the Create User option, you set up user profile to access the system confidently and securely.
 
