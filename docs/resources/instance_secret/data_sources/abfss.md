@@ -101,9 +101,9 @@ Begin by creating a manifest file to hold the configuration details for your ABF
     description: ${description}   # Optional: Brief description of the instance-secret's purpose.
     layer: user # DataOS Layer                 
     instance-secret:
-    type: key-value-properties  # Type of Instance-secret
-    acl: r                     # Access control level, set to 'r' for read-only access.
-    data:                       
+      type: key-value-properties  # Type of Instance-secret
+      acl: r                     # Access control level, set to 'r' for read-only access.
+      data:                       
         azureendpointsuffix: ${azure-endpoint-suffix}  # Endpoint suffix for the Azure storage account.
         azurestorageaccountkey: ${azure-storage-account-key}  # Access key for the Azure storage account.
         azurestorageaccountname: ${azure-storage-account-name}  # Name of the Azure storage account.
@@ -120,9 +120,9 @@ Begin by creating a manifest file to hold the configuration details for your ABF
     description: ${description}   # Optional: Brief description of the instance-secret's purpose.
     layer: user # DataOS Layer                 
     instance-secret:
-    type: key-value-properties  # Type of Instance-secret
-    acl: rw                     # Access control level, set to 'rw' for read-write access.
-    data:                       
+      type: key-value-properties  # Type of Instance-secret
+      acl: rw                     # Access control level, set to 'rw' for read-write access.
+      data:                       
         azureendpointsuffix: ${azure-endpoint-suffix}  # Endpoint suffix for the Azure storage account.
         azurestorageaccountkey: ${azure-storage-account-key}  # Access key for the Azure storage account.
         azurestorageaccountname: ${azure-storage-account-name}  # Name of the Azure storage account.

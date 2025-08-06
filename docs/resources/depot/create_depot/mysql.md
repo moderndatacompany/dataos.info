@@ -76,7 +76,10 @@ depot:
     port: ${{port}}
     params: # Required
       tls: ${{skip-verify}}
+<<<<<<< HEAD
+=======
 <<<<<<< Updated upstream
+>>>>>>> 66e06414923c702eaf26303c578d8dd080d029bf
   external: ${{true}}
   secrets:
     - name: ${{instance-secret-name}}-r
@@ -116,7 +119,7 @@ depot:
     - name: ${{instance-secret-name}}-rw
       keys: 
         - ${{instance-secret-name}}-rw
-
+ 
 ```
 
 To get the details of each attribute, please refer [to this link](/resources/depot/configurations).

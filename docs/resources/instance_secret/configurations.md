@@ -20,13 +20,13 @@ This section provides detailed information about each attribute in the manifest 
     layer: user
     # Instance Secret-specific section
     instance-secret: # Instance Secret mapping (mandatory)
-        type: key-value-properties # Type of Instance-secret (mandatory)
-        acl: r # Access control list (mandatory)
-        data: # Data section mapping (mandatory)
-          username: iamgroot
-          password: yourpassword
-        files: 
-          key_json: value1.json
+      type: key-value-properties # Type of Instance-secret (mandatory)
+      acl: r # Access control list (mandatory)
+      data: # Data section mapping (mandatory)
+        username: iamgroot
+        password: yourpassword
+      files: 
+        key_json: value1.json
     ```
 
 === "Read-write Instance Secret"
@@ -44,13 +44,13 @@ This section provides detailed information about each attribute in the manifest 
     layer: user
     # Instance Secret-specific section
     instance-secret: # Instance Secret mapping (mandatory)
-        type: key-value-properties # Type of Instance-secret (mandatory)
-        acl: rw # Access control list (mandatory)
-        data: # Data section mapping (mandatory)
-          username: iamgroot
-          password: yourpassword
-        files: 
-          key_json: value1.json      
+      type: key-value-properties # Type of Instance-secret (mandatory)
+      acl: rw # Access control list (mandatory)
+      data: # Data section mapping (mandatory)
+        username: iamgroot
+        password: yourpassword
+      files: 
+        key_json: value1.json      
     ```
 
 
