@@ -19,81 +19,81 @@ purpose: To provide detailed insights into vendor data, including incorporation 
 
 # Product categorization tags
 tags:   
-    - DPDomain.VendorManagement
-    - DPTier.Bronze
-    - DPUsecase.Vendor Insights
+  - DPDomain.VendorManagement
+  - DPTier.Bronze
+  - DPUsecase.Vendor Insights
 
 description: Provides vendor details, including state of incorporation, DBE status, and contact attributes like email, phone, and organization information. This data product supports reporting, tracking, and vendor management workflows.
 
 # External references and documentation
 refs:
-    - title: 'Vendor Data Management Info'
+  - title: 'Vendor Data Management Info'
     href: https://proud-cobra.dataos.app/metis/assets/table/lakehouse.lakehouse.promo_effectiveness.vendor_subscription_insights
 
 # Main product configuration
 v1beta:
-    data:
+  data:
     # Metadata and tracking information
-    meta:
-        sourceCodeUrl: https://bitbucket.org/tmdc/vendor-data-insights/src/main/
-        title: Vendor Subscription Insights
-        trackerUrl: https://rubikai.atlassian.net/browse/DPRB-245?atlOrigin=eyJpIjoiOWMyMDg1ZGE4ZjQ2NDUwNTkzYjYyYTMxM2IwMDY5YWQiLCJwIjoiaiJ9
+  meta:
+    sourceCodeUrl: https://bitbucket.org/tmdc/vendor-data-insights/src/main/
+    title: Vendor Subscription Insights
+    trackerUrl: https://rubikai.atlassian.net/browse/DPRB-245?atlOrigin=eyJpIjoiOWMyMDg1ZGE4ZjQ2NDUwNTkzYjYyYTMxM2IwMDY5YWQiLCJwIjoiaiJ9
 
     # Team members and roles
-    collaborators:
-        - name: iamgroot
-        description: data product owner
-        - name: thisisthor
-        description: data product developer
-        - name: itsloki
-        description: consumer of vendor insights
+  collaborators:
+    - name: iamgroot
+      description: data product owner
+    - name: thisisthor
+      description: data product developer
+    - name: itsloki
+      description: consumer of vendor insights
 
     # Resource bundle configuration
-    resource:
-        description: 'Resources associated with Vendor Data Insights Data Product'
-        purpose: 'Vendor Data Management'
-        refType: dataos  
-        ref:  bundle:v1beta:vendor-data-bundle
+  resource:
+    description: 'Resources associated with Vendor Data Insights Data Product'
+    purpose: 'Vendor Data Management'
+    refType: dataos  
+    ref:  bundle:v1beta:vendor-data-bundle
 
     # Input data sources
-    inputs:
+  inputs:
         # Vendor database sources
     #  - refType: dataos
     #    ref: dataset:lakehouse:promo_effectiveness:vendor_subscription_insights
 
-        - refType: dataos
-        ref: dataset:operationaldb:public:organization
+    - refType: dataos
+      ref: dataset:operationaldb:public:organization
 
-        - refType: depot
+    - refType: depot
         ref: dataos://operationaldb:public/categories
 
-        - refType: depot
+    - refType: depot
         ref: dataos://operationaldb:public/vendor
 
-        - refType: depot
+    - refType: depot
         ref: dataos://operationaldb:public/certification
 
-        - refType: depot
+    - refType: depot
         ref: dataos://operationaldb:public/pending_user
 
-        - refType: depot
+    - refType: depot
         ref: dataos://operationaldb:public/user
 
-        - refType: depot
+      - refType: depot
         ref: dataos://operationaldb:public/vendor_categories
 
-        - refType: depot
+      - refType: depot
         ref: dataos://operationaldb:public/vendor_lists
 
-        - refType: depot
+      - refType: depot
         ref: dataos://operationaldb:public/government_subscriptions
 
-        - refType: depot
+      - refType: depot
         ref: dataos://operationaldb:public/vendor_list_users
 
     # Output destinations
     outputs:
-        - refType: dataos
+    - refType: dataos
         ref: dataset:operationlake:analytics:vendor_data_insights
 
     # Service endpoints

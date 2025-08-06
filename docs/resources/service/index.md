@@ -68,24 +68,24 @@ The Service-specific Section contains configurations specific to the Service res
 
 ```yaml
 service: 
-    title: ${"Hit Collector Service"}
-    replicas: ${1}
-    autoScaling: 
-        enabled: ${true}
-        minReplicas: ${2}
-        maxReplicas: ${4}
-        targetMemoryUtilizationPercentage: ${80}
-        targetCPUUtilizationPercentage: ${80}
-    ingress: 
-        enabled: ${true}
-        stripPath: ${false}
-        path: ${/hit-collector}
-        noAuthentication: ${true}
-    stack: ${stack} # Specify stack here
-    logLevel: ${INFO}
-    dryRun: ${true}
-    servicePort: ${8099}
-    ${Stack-specific-section}
+  title: ${"Hit Collector Service"}
+  replicas: ${1}
+  autoScaling: 
+    enabled: ${true}
+    minReplicas: ${2}
+    maxReplicas: ${4}
+    targetMemoryUtilizationPercentage: ${80}
+    targetCPUUtilizationPercentage: ${80}
+  ingress: 
+    enabled: ${true}
+    stripPath: ${false}
+    path: ${/hit-collector}
+    noAuthentication: ${true}
+  stack: ${stack} # Specify stack here
+  logLevel: ${INFO}
+  dryRun: ${true}
+  servicePort: ${8099}
+  ${Stack-specific-section}
 ```
 <center><i>Service-specific Section Configuration</i></center>
 
@@ -123,41 +123,41 @@ tags:
 description: This is a sample service YAML configuration
 owner: iamgroot
 service: 
-    title: "Hit Collector Service" 
-    replicas: 1 
-    autoScaling: 
-        enabled: true
-        minReplicas: 2
-        maxReplicas: 4
-        targetMemoryUtilizationPercentage: 80
-        targetCPUUtilizationPercentage: 80
-    ingress: 
-        enabled: true
-        stripPath: false
-        path: /hit-collector
-        noAuthentication: true
-    stack: bento 
-    logLevel: INFO
-    compute: runnable-default
-    dryRun: true
-    servicePort: 8099
-    stackSpec:
+  title: "Hit Collector Service" 
+  replicas: 1 
+  autoScaling: 
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 4
+    targetMemoryUtilizationPercentage: 80
+    targetCPUUtilizationPercentage: 80
+  ingress: 
+    enabled: true
+    stripPath: false
+    path: /hit-collector
+    noAuthentication: true
+  stack: bento 
+  logLevel: INFO
+  compute: runnable-default
+  dryRun: true
+  servicePort: 8099
+  stackSpec:
         # Input (From Google Tag Manager API)
-        input:
-            http_server:
-            address: 0.0.0.0:8099
-            path: /hit-collector
-            allowed_verbs:
-                - POST
-            timeout: 5s
-            processors:
-            - log:
-                level: INFO
-                message: hit collector - received hit...
+    input:
+      http_server:
+        address: 0.0.0.0:8099
+        path: /hit-collector
+        allowed_verbs:
+          - POST
+        timeout: 5s
+        processors:
+          - log:
+            level: INFO
+            message: hit collector - received hit...
 
         # Pipeline (Processing)
         pipeline:
-            processors:
+          processors:
             - log:
                 level: DEBUG
                 message: processing message...
@@ -167,71 +167,71 @@ service:
             - bloblang: meta status_code = 200
             - for_each:
             - conditional:
-                condition:
-                    type: processor_failed
-                processors:
-                - log:
-                    level: ERROR
-                    message: 'Schema validation failed due to: ${!error()}'
-                - bloblang: meta status_code = 400
-                - log:
-                    level: DEBUG
-                    message: ${! meta() }
-                - bloblang: |
+          condition:
+            type: processor_failed
+            processors:
+              - log:
+                level: ERROR
+                message: 'Schema validation failed due to: ${!error()}'
+              - bloblang: meta status_code = 400
+              - log:
+                level: DEBUG
+                message: ${! meta() }
+              - bloblang: |
                     root.payload = this.string().encode("base64").string()
                     root.received_at = timestamp("2006-01-02T15:04:05.000Z")
                     root.metadata = meta()
                     root.id = uuid_v4()
-            - log:
+              - log:
                 level: DEBUG
                 message: processing message...complete
             threads: 1
 
         # Output (Into Kafka Depot)
-        output:
-            broker:
+    output:
+      broker:
+        outputs:
+          - broker:
             outputs:
-            - broker:
-                outputs:
-                - type: dataos_depot
-                    plugin:
-                    address: dataos://kafkapulsar:default/gtm_hits_dead_letter01
-                    metadata:
-                        type: STREAM
-                        description: The GTM Hit Error Data Stream
-                        format: json
-                        schema: '{"type":"record","name":"default","namespace":"default","fields":[]}'
-                        tags:
-                        - hit
-                        - gtm
-                        - stream
-                        - error-stream
-                        - dead-letter
-                        title: GTM Hit Error Stream
-                - type: sync_response
+              - type: dataos_depot
+                plugin:
+                  address: dataos://kafkapulsar:default/gtm_hits_dead_letter01
+                  metadata:
+                    type: STREAM
+                    description: The GTM Hit Error Data Stream
+                    format: json
+                    schema: '{"type":"record","name":"default","namespace":"default","fields":[]}'
+                    tags:
+                      - hit
+                      - gtm
+                      - stream
+                      - error-stream
+                      - dead-letter
+                    title: GTM Hit Error Stream
+              - type: sync_response
                 pattern: fan_out
                 processors:
-                - bloblang: root = if !errored() { deleted() }
-            - broker:
-                outputs:
-                - type: dataos_depot
-                    plugin:
-                    address: dataos://kafkapulsar:default/gtm_hits01
-                    metadata:
-                        type: STREAM
-                        description: The GTM Hit Data Stream
-                        format: json
-                        schema: '{"type":"record","name":"default","namespace":"default","fields":[]}'
-                        tags:
-                        - hit
-                        - gtm
-                        - event
-                        - stream
-                        title: GTM Hit Stream
-                - type: sync_response
+                  - bloblang: root = if !errored() { deleted() }
+          - broker:
+            outputs:
+              - type: dataos_depot
+                plugin:
+                  address: dataos://kafkapulsar:default/gtm_hits01
+                  metadata:
+                    type: STREAM
+                    description: The GTM Hit Data Stream
+                    format: json
+                    schema: '{"type":"record","name":"default","namespace":"default","fields":[]}'
+                    tags:
+                      - hit
+                      - gtm
+                      - event
+                      - stream
+                    title: GTM Hit Stream
+              - type: sync_response
                 pattern: fan_out
                 processors:
-                - bloblang: root = if errored() { deleted() }
+                  - bloblang: root = if errored() { deleted() }
             pattern: fan_out
 ```
 </details>

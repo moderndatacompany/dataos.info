@@ -30,7 +30,11 @@ To create a Kafka Depot you must have the following details:
 
 DataOS allows you to create a Depot of type 'KAFKA' to read live topic data. This Depot enables you to access and consume real-time streaming data from Kafka. To create a Depot of type 'KAFKA', follow the below steps:
 
-### **Step 1: Create a Kafka Depot manifest file**
+### **Step 1: Create an Instance Secret for securing Kafka credentials**
+
+Begin by creating an Instance Secret Resource by following the [Instance Secret document](/resources/instance_secret/data_sources/kafka/).
+
+### **Step 2: Create a Kafka Depot manifest file**
 
 Begin by creating a manifest file to hold the configuration details for your Kafka Depot.
 
@@ -44,6 +48,18 @@ tags:
 owner: ${{owner-name}}
 layer: user
 depot:
+<<<<<<< HEAD
+  type: KAFKA
+  description: {{description}}
+  kafka:
+    brokers:
+      -  {{broker1}}
+  secret:
+    - name: ${{kafka-instance-secret-name}}-r
+      allkeys: true
+
+ 
+=======
   type: KAFKA                     
   description: ${{description}}
   external: ${{true}}
@@ -52,10 +68,11 @@ depot:
       - ${{broker1}}
       - ${{broker2}}
     schemaRegistryUrl: ${{http://20.9.63.231:8081/}}
+>>>>>>> 66e06414923c702eaf26303c578d8dd080d029bf
 ```
 To get the details of each attribute, please refer [to this link](/resources/depot/configurations).
 
-### **Step 2: Apply the Depot manifest file**
+### **Step 3: Apply the Depot manifest file**
 
 Once you have the manifest file ready in your code editor, simply copy the path of the manifest file and apply it through the DataOS CLI by pasting the path in the placeholder, using the command given below:
 

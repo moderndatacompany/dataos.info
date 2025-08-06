@@ -90,12 +90,12 @@ Begin by creating a manifest file to hold the configuration details for your GCS
     description: ${description}  # Optional: Brief description of the instance-secret's purpose.
     layer: user  # DataOS layer where the secret is assigned.
     instance-secret:
-    type: key-value-properties  # Type of Instance-secret, stored as key-value pairs.
-    acl: r  # Access control level, set to 'r' for read-only access.
-    data:
+      type: key-value-properties  # Type of Instance-secret, stored as key-value pairs.
+      acl: r  # Access control level, set to 'r' for read-only access.
+      data:
         projectid: ${project-id}  # Unique identifier of the Google Cloud project that your GCS bucket resides in.
         email: ${client-email}  # Email address associated with the Google Cloud service account.
-    files:
+      files:
         gcskey_json: ${path-to-gcskey-json}  # Path to the JSON key file for the Google Cloud service account.
 
     ```
@@ -108,12 +108,12 @@ Begin by creating a manifest file to hold the configuration details for your GCS
     description: ${description}  # Optional: Brief description of the instance-secret's purpose.
     layer: user  # DataOS layer where the secret is assigned.
     instance-secret:
-    type: key-value-properties  # Type of Instance-secret, stored as key-value pairs.
-    acl: rw  # Access control level, set to 'rw' for read-write access.
-    data:
+      type: key-value-properties  # Type of Instance-secret, stored as key-value pairs.
+      acl: rw  # Access control level, set to 'rw' for read-write access.
+      data:
         projectid: ${project-id}  # Unique identifier of the Google Cloud project that your GCS bucket resides in.
         email: ${client-email}  # Email address associated with the Google Cloud service account.
-    files:
+      files:
         gcskey_json: ${path-to-gcskey-json}  # Path to the JSON key file for the Google Cloud service account.
     ```
 

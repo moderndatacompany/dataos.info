@@ -13,26 +13,26 @@ version: v1
 type: cluster
 description: testing 
 tags:
-    - cluster
+  - cluster
 
 # Cluster-specific section
 cluster:
-    compute: query-default
-    type: minerva
+  compute: query-default
+  type: minerva
 
     # Minerva-specific section
-    minerva:
+  minerva:
     replicas: 1
     resources:
-        limits:
+      limits:
         cpu: 2000m
         memory: 4Gi
-        requests:
+      requests:
         cpu: 2000m
         memory: 4Gi
     debug:
-        logLevel: INFO
-        trinoLogLevel: ERROR
+      logLevel: INFO
+      trinoLogLevel: ERROR
     depots:
-        - address: dataos://bqdepot
+      - address: dataos://bqdepot
 ```
