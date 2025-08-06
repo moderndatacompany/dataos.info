@@ -64,10 +64,17 @@ version: v2alpha
 type: depot
 tags:
   - ${{redshift}}
-layer: user
 description: ${{Redshift Sample data}}
+owner: ${{owner-name}}
+layer: user
 depot:
   type: REDSHIFT
+  external: ${{true}}
+  secrets:
+    - name: ${{redshift-instance-secret-name}}-r
+      allkeys: true
+    - name: ${{redshift-instance-secret-name}}-rw
+      allkeys: true
   redshift:
     host: ${{hostname}}
     subprotocol: ${{subprotocol}}
@@ -75,13 +82,6 @@ depot:
     database: ${{sample-database}}
     bucket: ${{tmdc-dataos}}
     relativePath: ${{development/redshift/data_02/}}
-  external: ${{true}}
-  secrets:
-    - name: ${{redshift-instance-secret-name}}-r
-      allkeys: true
-
-    - name: ${{redshift-instance-secret-name}}-rw
-      allkeys: true
 ```
 
 To get the details of each attribute, please refer [to this link](/resources/depot/configurations).

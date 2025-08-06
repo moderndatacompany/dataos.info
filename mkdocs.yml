@@ -435,7 +435,7 @@ nav:
 
             # - Using Data Product Hub: resources/lens/exploration_of_lens_using_data_product_hub.md
 
-            # - Using Iris dashboard: resources/lens/exploration_of_lens_using_iris_dashboard.md
+            
           - BI Integrations:
           #  - API Endpoints and Scopes: resources/lens/api_endpoints_and_scopes.md
             - Power BI:
@@ -449,6 +449,8 @@ nav:
             - Errors: resources/lens/errors.md
             - Optimizing Semantic Model: resources/lens/fine_tuning_a_lens_model.md
             - Aggregation Strategies: resources/lens/best_practices_for_solution_designing.md
+            - Complex Analysis: resources/lens/complex_analysis.md
+            - Row Multiplication Handling: resources/lens/row_multiplication.md
           - Configurations: resources/lens/lens_manifest_attributes.md
             # - Docker Compose Manifest: resources/lens/docker_compose_manifest_attributes.md
           - Cataloging: resources/lens/cataloging.md
@@ -610,16 +612,16 @@ nav:
               - Search Engines:
                 - Elasticsearch: resources/stacks/flare/configuration_templates/elasticsearch.md
                 - OpenSearch: resources/stacks/flare/configuration_templates/opensearch.md
-            - Functions:
-              - resources/stacks/flare/functions.md
-              - Function Reference: resources/stacks/flare/functions/list.md
+            - Flare Functions:
+              - resources/stacks/flare/functions/index.md
+              - List of Flare Functions: resources/stacks/flare/functions/list.md
             # - Data Quality:
             #   - Defining Assertions: resources/stacks/flare/defining_assertions.md
             #   - Assertion Configuration: resources/stacks/flare/assertion_configuration.md
             #   - Data Profiling Jobs: resources/stacks/flare/creating_data_profiling_jobs.md
             #   - Case Scenarios: resources/stacks/flare/assertions_case_scenario.md
             - Use Cases & Examples:
-              - resources/stacks/flare/case_scenario.md
+              - resources/stacks/flare/case_scenario/index.md
               - Data Ingestion:
                 - Incremental Jobs: resources/stacks/flare/case_scenario/incremental_jobs.md
                 - Streaming Jobs: resources/stacks/flare/case_scenario/streaming_jobs.md
@@ -648,23 +650,23 @@ nav:
                 - Query Progress Monitoring: resources/stacks/flare/case_scenario/query_dataset_for_job_in_progress.md
               # - Data Quality:
               #   - Data Quality Jobs: resources/stacks/flare/case_scenario/data_quality_jobs.md
-            - Optimization & Troubleshooting:
-              - resources/stacks/flare/optimizations.md
+            - Optimizing Flare:
+              - resources/stacks/flare/optimizations/index.md
               - Performance Tuning:
-                - resources/stacks/flare/optimizations/performance_tuning.md
+                - resources/stacks/flare/optimizations/performance_tuning/index.md
                 - Configuration Tuning: resources/stacks/flare/optimizations/performance_tuning/tuning_configurations.md
                 - SQL Optimization: resources/stacks/flare/optimizations/performance_tuning/sql_query_optimization.md
-              - Monitoring:
-                - Spark UI: resources/stacks/flare/optimizations/inspecting_the_spark_ui.md
-                - Workflow Observability: resources/stacks/flare/optimizations/observability_of_workflow.md
-              # - Troubleshooting:
-              #   - resources/stacks/flare/optimizations/errors_and_issues.md
-              #   - Ingestion Errors: resources/stacks/flare/optimizations/errors_and_issues/ingestion_errors.md
-              #   - Streaming Errors: resources/stacks/flare/optimizations/errors_and_issues/streaming_errors.md
-              #   - Transformation Errors: resources/stacks/flare/optimizations/errors_and_issues/transformation_errors.md
-              #   - Resource Allocation Errors: resources/stacks/flare/optimizations/errors_and_issues/resource_allocation_errors.md
-              #   - Linter & Validation Errors: resources/stacks/flare/optimizations/errors_and_issues/linter_command_validation_and_errors.md
-              #   - Other Errors: resources/stacks/flare/optimizations/errors_and_issues/other_errors.md
+              # - Monitoring:
+              #   - Spark UI: resources/stacks/flare/optimizations/inspecting_the_spark_ui.md
+                # - Workflow Observability: resources/stacks/flare/optimizations/observability_of_workflow.md
+            # - Troubleshooting:
+            #   - resources/stacks/flare/troubleshooting/index.md
+            #   - Ingestion Errors: resources/stacks/flare/troubleshooting/ingestion_errors.md
+            #   - Streaming Errors: resources/stacks/flare/troubleshooting/streaming_errors.md
+            #   - Transformation Errors: resources/stacks/flare/troubleshooting/transformation_errors.md
+            #   - Resource Allocation Errors: resources/stacks/flare/troubleshooting/resource_allocation_errors.md
+            #   - Linter & Validation Errors: resources/stacks/flare/troubleshooting/linter_command_validation_and_errors.md
+              # - Other Errors: resources/stacks/flare/troubleshooting/other_errors.md
     
     
           - Flash:
@@ -825,25 +827,25 @@ nav:
   - Glossary: glossary/index.md
   
   - Learn:
-    - learn_new/index.md
+    - learn/index.md
     - DataOS Primer:
-      - Introduction to Data Products: learn_new/understand_data_products/index.md
-      - DataOS essentials: learn_new/dataos_essentials/index.md
+      - Introduction to Data Products: learn/understand_data_products/index.md
+      - DataOS essentials: learn/dataos_essentials/index.md
     
     - Learning tracks:
       - Data Product Consumer Track:
-        - learn_new/about_dp_consumer_track/index.md
+        - learn/about_dp_consumer_track/index.md
         - Learning path overview:
-          - learn_new/dp_consumer_learn_track/index.md
+          - learn/dp_consumer_learn_track/index.md
           - Discovering Data Products:
-            - Navigating Data Product Hub: learn_new/dp_consumer_learn_track/intro_dph/index.md
-            - Finding the right Data Product: learn_new/dp_consumer_learn_track/discover_dp/index.md
-          - View Data Product information: learn_new/dp_consumer_learn_track/view_dp_info/index.md
-          - Know about I/O datasets: learn_new/dp_consumer_learn_track/eval_io_datasets/index.md
+            - Navigating Data Product Hub: learn/dp_consumer_learn_track/intro_dph/index.md
+            - Finding the right Data Product: learn/dp_consumer_learn_track/discover_dp/index.md
+          - View Data Product information: learn/dp_consumer_learn_track/view_dp_info/index.md
+          - Know about I/O datasets: learn/dp_consumer_learn_track/eval_io_datasets/index.md
           - Explore semantic model: 
-            - learn_new/dp_consumer_learn_track/explore_sm/index.md
-            - API integration: learn_new/dp_consumer_learn_track/explore_sm/api_integration/index.md
-          - Underastand quality: learn_new/dp_consumer_learn_track/dp_quality/index.md
+            - learn/dp_consumer_learn_track/explore_sm/index.md
+            - API integration: learn/dp_consumer_learn_track/explore_sm/api_integration/index.md
+          - Underastand quality: learn/dp_consumer_learn_track/dp_quality/index.md
           - Connnect Data Products with BI tools and applications:
             - Integration with BI tools:
               - learn/dp_consumer_learn_track/integrate_bi_tools/index.md
@@ -863,84 +865,87 @@ nav:
                 - learn/dp_consumer_learn_track/apps_consume_data_products/build_app_appsmith/index.md
         
       - Data Product Foundations Track:
-        - learn_new/about_dp_foundations_track/index.md
+        - learn/about_dp_foundations_track/index.md
         - Foundations- Course I:
-          - learn_new/dp_foundations1_learn_track/index.md
-          - Source-aligned Data Product: learn_new/dp_foundations1_learn_track/source_aligned_dp/index.md
+          - learn/dp_foundations1_learn_track/index.md
+          - Source-aligned Data Product: learn/dp_foundations1_learn_track/source_aligned_dp/index.md
           - Data source connectivity: 
-            - learn_new/dp_foundations1_learn_track/data_source_connectivity/index.md
-            - Set up Depots: learn_new/dp_foundations1_learn_track/data_source_connectivity/setting_up_depots/index.md
-          - Create Scanner: learn_new/dp_foundations1_learn_track/create_scanner/index.md
+            - learn/dp_foundations1_learn_track/data_source_connectivity/index.md
+            - Set up Depots: learn/dp_foundations1_learn_track/data_source_connectivity/setting_up_depots/index.md
+          - Create Scanner: learn/dp_foundations1_learn_track/create_scanner/index.md
           - Build Pipeline: 
-            - learn_new/dp_foundations1_learn_track/build_pipeline/index.md
-            - Scheduling pipelines: learn_new/dp_foundations1_learn_track/build_pipeline/scheduling_workflows/index.md
-          - Quality check: learn_new/dp_foundations1_learn_track/quality_check/index.md
+            - learn/dp_foundations1_learn_track/build_pipeline/index.md
+            - Scheduling pipelines: learn/dp_foundations1_learn_track/build_pipeline/scheduling_workflows/index.md
+          - Quality check: learn/dp_foundations1_learn_track/quality_check/index.md
           - Set up monitoring:
-            - Pipeline observability: learn_new/dp_foundations1_learn_track/pipeline_observability/index.md
-            - Quality check observability: learn_new/dp_foundations1_learn_track/quality_check_observability/index.md
+            - Pipeline observability: learn/dp_foundations1_learn_track/pipeline_observability/index.md
+            - Quality check observability: learn/dp_foundations1_learn_track/quality_check_observability/index.md
           - Deploy Your first Source-aligned Data Products:
-            - Create Bundle: learn_new/dp_foundations1_learn_track/create_bundle/index.md
-            - Create Data Product Spec: learn_new/dp_foundations1_learn_track/create_dp_spec/index.md
-            - Deploy Data Product: learn_new/dp_foundations1_learn_track/deploy_dp_cli/index.md
+            - Create Bundle: learn/dp_foundations1_learn_track/create_bundle/index.md
+            - Create Data Product Spec: learn/dp_foundations1_learn_track/create_dp_spec/index.md
+            - Deploy Data Product: learn/dp_foundations1_learn_track/deploy_dp_cli/index.md
         
         - Foundations- Course II:
-          - learn_new/dp_foundations2_learn_track/index.md
-          - Capture objectives, KPIs & metrics: learn_new/dp_foundations2_learn_track/understand_business_goals/index.md
-          - Design Data Product: learn_new/dp_foundations2_learn_track/design_dp/index.md
-          - Repository and folder structure: learn_new/dp_foundations2_learn_track/repo_structure/index.md
-          - Source data connectivity: learn_new/dp_foundations2_learn_track/data_source_connectivity/index.md
-          - Build pipeline: learn_new/dp_foundations2_learn_track/build_pipeline/index.md
-          - Create semantic model: learn_new/dp_foundations2_learn_track/create_semantic_model/index.md
-          - Deploy and register: learn_new/dp_foundations2_learn_track/deploy_sm/index.md
-        # - CI CD: /learn_new/dp_foundations2_learn_track/ci_cd/index.md
-        # - Create Bundle: learn_new/dp_foundations2_learn_track/create_bundle/index.md
-        # - Create Dp Spec: learn_new/dp_foundations2_learn_track/create_dp_spec/index.md
-        # - Create Scanner: learn_new/dp_foundations2_learn_track/create_scanner/index.md
+          - learn/dp_foundations2_learn_track/index.md
+          - Capture objectives, KPIs & metrics: learn/dp_foundations2_learn_track/understand_business_goals/index.md
+          - Design Data Product: learn/dp_foundations2_learn_track/design_dp/index.md
+          - Repository and folder structure: learn/dp_foundations2_learn_track/repo_structure/index.md
+          - Source data connectivity: learn/dp_foundations2_learn_track/data_source_connectivity/index.md
+          - Build pipeline: learn/dp_foundations2_learn_track/build_pipeline/index.md
+          - Create semantic model: learn/dp_foundations2_learn_track/create_semantic_model/index.md
+          - Deploy and register: learn/dp_foundations2_learn_track/deploy_sm/index.md
+        # - CI CD: /learn/dp_foundations2_learn_track/ci_cd/index.md
+        # - Create Bundle: learn/dp_foundations2_learn_track/create_bundle/index.md
+        # - Create Dp Spec: learn/dp_foundations2_learn_track/create_dp_spec/index.md
+        # - Create Scanner: learn/dp_foundations2_learn_track/create_scanner/index.md
         
-        # - Data Policy: learn_new/dp_foundations2_learn_track/data_policy/index.md
+        # - Data Policy: learn/dp_foundations2_learn_track/data_policy/index.md
         
-        # - Deploy Semantic Model: learn_new/dp_foundations2_learn_track/deploy_sm/index.md
+        # - Deploy Semantic Model: learn/dp_foundations2_learn_track/deploy_sm/index.md
         
        # - Dp Interaction Map: dp_foundations2_learn_track/dp_interaction_map/index.md
-        # - Pipeline Observability: learn_new/dp_foundations2_learn_track/pipeline_observability/index.md
-        # - Quality Check: learn_new/dp_foundations2_learn_track/quality_check/index.md
-        # - Quality Check Observability: learn_new/dp_foundations2_learn_track/quality_check_observability/index.md
+        # - Pipeline Observability: learn/dp_foundations2_learn_track/pipeline_observability/index.md
+        # - Quality Check: learn/dp_foundations2_learn_track/quality_check/index.md
+        # - Quality Check Observability: learn/dp_foundations2_learn_track/quality_check_observability/index.md
         
-        # - Source Aligned Data Product: learn_new/dp_foundations2_learn_track/source_aligned_dp/index.md
+        # - Source Aligned Data Product: learn/dp_foundations2_learn_track/source_aligned_dp/index.md
         
       
       # - About Data Product Foundations Track:
-      #   - Overview: learn_new/about_dp_foundations_track/index.md
+      #   - Overview: learn/about_dp_foundations_track/index.md
       # - Troubleshooting:
-      #   - Overview: learn_new/troubleshooting/index.md
+      #   - Overview: learn/troubleshooting/index.md
       # - About Data Product Owner Track:
-      #   - Overview: learn_new/about_dp_owner_track/index.md
+      #   - Overview: learn/about_dp_owner_track/index.md
       # - About Data Product Consumer Track:
-      #   - Overview: learn_new/about_dp_consumer_track/index.md
+      #   - Overview: learn/about_dp_consumer_track/index.md
       # - About Operator Track:
-      #   - Overview: learn_new/about_operator_track/index.md
+      #   - Overview: learn/about_operator_track/index.md
       
-      - About Data product Developer Track:
-        - learn_new/about_dp_developer_track/index.md
-        - Learning path overview:
-          - learn_new/dp_developer_learn_track/index.md
+      - Data Product Developer Track:
+        - learn/about_dp_developer_track/index.md
+        # - Learning path overview:
+        #   - learn/dp_developer_learn_track/index.md
       
       # - About Dp Developer Track:
-      #   - Overview: learn_new/about_dp_developer_track/index.md
+      #   - Overview: learn/about_dp_developer_track/index.md
+      - Data Product Owner Track:
+        - learn/about_dp_owner_track/index.md
+      
       - Operator Learn Track:
-        - learn_new/about_operator_track/index.md
+        - learn/about_operator_track/index.md
         - Learning path overview:
-          - learn_new/operator_learn_track/index.md
-          - Access control: learn_new/operator_learn_track/access_control/index.md
-          - Alerts Grafana: learn_new/operator_learn_track/alerts_grafana/index.md
-          - Cluster management: learn_new/operator_learn_track/cluster_management/index.md
-          - Cluster tuning: learn_new/operator_learn_track/cluster_tuning/index.md
-          - Cred security: learn_new/operator_learn_track/cred_security/index.md
-          - Data source connectivity: learn_new/operator_learn_track/data_source_connectivity/index.md
-          - Keycloak: learn_new/operator_learn_track/keycloak/index.md
-          - Lakehouse insights: learn_new/operator_learn_track/lakehouse_insights/index.md
-          - Routine check: learn_new/operator_learn_track/routine_check/index.md
-          - Upgrade rollback: learn_new/operator_learn_track/upgrade_rollback/index.md
+          - learn/operator_learn_track/index.md
+          - Access control: learn/operator_learn_track/access_control/index.md
+          - Alerts Grafana: learn/operator_learn_track/alerts_grafana/index.md
+          - Cluster management: learn/operator_learn_track/cluster_management/index.md
+          - Cluster tuning: learn/operator_learn_track/cluster_tuning/index.md
+          - Cred security: learn/operator_learn_track/cred_security/index.md
+          - Data source connectivity: learn/operator_learn_track/data_source_connectivity/index.md
+          - Keycloak: learn/operator_learn_track/keycloak/index.md
+          - Lakehouse insights: learn/operator_learn_track/lakehouse_insights/index.md
+          - Routine check: learn/operator_learn_track/routine_check/index.md
+          - Upgrade rollback: learn/operator_learn_track/upgrade_rollback/index.md
   
   # - Learn:
   #   - learn/index.md
@@ -1067,33 +1072,33 @@ nav:
           - quick_guides/sql_query_studio/index.md
         - Querying diverse data sources: 
           - quick_guides/query_diverse_data_source/index.md
-      - Using data modeling layer:
-        - Defining a Data Model:
-          - quick_guides/define_data_model/index.md
-        - Creating a data model:
-          - quick_guides/create_data_model/index.md
+      # - Using data modeling layer:
+      #   - Defining a Data Model:
+      #     - quick_guides/define_data_model/index.md
+      #   - Creating a data model:
+      #     - quick_guides/create_data_model/index.md
         # - Testing a data model:
         #   - quick_guides/test_data_model/index.md
-        - Deploying a data model:
-          - quick_guides/deploy_data_model/index.md
-        - Exploring Lens on Catalog:
-          - quick_guides/exploring_lens_on_metis/index.md
-        - Working on Lens Studio:
-          - quick_guides/working_on_lens_studio/index.md
-        - Working with Payloads:
-          - quick_guides/working_with_payload/index.md
-          - Example scenarios: quick_guides/working_with_payload/filter_operator_example_scenarios/index.md
-        - Pre-defined filtering using Segments:
-          - quick_guides/working_with_segments/index.md
-        - Defining Data Policies:
-          - quick_guides/apply_data_policy_lens/index.md 
+        # - Deploying a data model:
+        #   - quick_guides/deploy_data_model/index.md
+        # - Exploring Lens on Catalog:
+        #   - quick_guides/exploring_lens_on_metis/index.md
+        # - Working on Lens Studio:
+        #   - quick_guides/working_on_lens_studio/index.md
+        # - Working with Payloads:
+        #   - quick_guides/working_with_payload/index.md
+        #   - Example scenarios: quick_guides/working_with_payload/filter_operator_example_scenarios/index.md
+        # - Pre-defined filtering using Segments:
+        #   - quick_guides/working_with_segments/index.md
+        # - Defining Data Policies:
+        #   - quick_guides/apply_data_policy_lens/index.md 
         # - Creating a Lens: 
         #   - quick_guides/create_lens/index.md
         # - Using a Lens: 
         #   - quick_guides/use_lens/index.md
         # - Creating Dashboard with LQL: 
         #   - quick_guides/create_dashboard_lql/index.md
-      - Building Data Products: quick_guides/building_data_product/index.md
+      # - Building Data Products: quick_guides/building_data_product/index.md
       - Scanning metadata: quick_guides/scan_metadata/index.md
       - Creating ETL pipelines:
         - Ingest external files into DataOS: 

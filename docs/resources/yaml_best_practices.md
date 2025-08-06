@@ -19,7 +19,7 @@ To do this, use three dashes `---` to separate the two entities. For example, we
         awssecretaccesskey: 
     ---
     version: v1
-    name:
+    name: 
     type: depot
     tags:
     layer: user
@@ -30,7 +30,7 @@ To do this, use three dashes `---` to separate the two entities. For example, we
         bucket: 
         relativePath:
       external: true
-    # using the 'Secret' created & stored previously
+      # using the 'Secret' created & stored previously
       dataosSecrets:   
         - name: s3-pos-rw
           workspace: public

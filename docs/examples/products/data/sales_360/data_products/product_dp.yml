@@ -24,8 +24,8 @@ refs:
   - title: sales_intelligence_app
     href: https://cheerful-maggot.dataos.app/sales-analysis/
 
-  - title: iris_dashboard
-    href: https://cheerful-maggot.dataos.app/lens2/iris/public:sales-intelligence/dashboard/transaction_analysis
+  # - title: iris_dashboard
+  #   href: https://cheerful-maggot.dataos.app/lens2/iris/public:sales-intelligence/dashboard/transaction_analysis
 entity: product
 v1alpha:
   data:

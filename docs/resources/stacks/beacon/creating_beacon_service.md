@@ -47,14 +47,14 @@ service: # Service Section
       name: storesdb # Source Name
       workspace: public # Workspace
   topology: # Topology Section
-  - name: database # Topology Name
-    type: input # Topology Type
-    doc: stores database connection # Document of the Topology step
-  - name: rest-api # Toplogy Name
-    type: output # Topology Type
-    doc: serves up the stores database as a RESTful API # Document of the Topology step
-    dependencies: # Dependency
-    - database # Topology step 2 is dependent on step 1
+    - name: database # Topology Name
+      type: input # Topology Type
+      doc: stores database connection # Document of the Topology step
+    - name: rest-api # Toplogy Name
+      type: output # Topology Type
+      doc: serves up the stores database as a RESTful API # Document of the Topology step
+      dependencies: # Dependency
+      - database # Topology step 2 is dependent on step 1
 ```
 
 ### **Apply the YAML file**

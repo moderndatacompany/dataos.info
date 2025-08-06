@@ -40,13 +40,13 @@ Learn how to explore and analyze data using the Workbench component of DataOS. D
 
 </div>
 
-## :interfaces-lens: Working with Data Modeling Layer
+<!-- ## :interfaces-lens: Working with Data Modeling Layer
 
 The Data Modeling Layer, Lens component of DataOS provides a user-friendly interface for interacting with your data. It abstracts the complexities of the underlying data structure and presents it in familiar business terms, making it easier to answer key questions and track essential metrics.
 
 ### **Designing and Creating Data Modeling Layer**
 
-Learn how to define and create a data model, turning your conceptual design into a functional logical data model. 
+Learn how to define a data model, turning your conceptual design into a functional logical data model. 
 
 <div class= "grid cards" markdown>
 
@@ -54,7 +54,6 @@ Learn how to define and create a data model, turning your conceptual design into
 
 -   [Creating a Data Model](/quick_guides/create_data_model/)
 
-<!-- -   [Testing a Data Model locally](/quick_guides/test_data_model/) -->
 -   [Deploying Data model to DataOS](/quick_guides/deploy_data_model/)
      
 </div>
@@ -79,16 +78,16 @@ Learn how to examine and experiment with logical data models. Lens will help you
 
 <aside class="callout">
 🗣 If you’re working with Lens 1.0, click <a href="/quick_guides/lens1/">here</a> to check out the guides for assistance.
-</aside>
+</aside> -->
 
-## :products-dataproduct: Designing and Building Data Products
+<!-- ## :products-dataproduct: Designing and Building Data Products
 Learn to develop reusable and composable Data Products that streamline data management and provide valuable business insights across the organization.
 
 <div class= "grid cards" markdown>
 
 -   [Building Data Products](/quick_guides/building_data_product/)
 
-</div>
+</div> -->
 
 ## :material-scanner: Scanning Metadata
 

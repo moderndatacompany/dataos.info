@@ -52,27 +52,44 @@ name: ${{mysql01}}
 version: v2alpha
 type: depot
 tags:
-    - ${{dropzone}}
-    - ${{mysql}}
+  - ${{dropzone}}
+  - ${{mysql}}
+<<<<<<< Updated upstream
+=======
+owner: ${{owner-name}}
+>>>>>>> Stashed changes
 layer: user
 depot:
   type: MYSQL
   description: ${{"MYSQL Sample Database"}}
+  external: ${{true}}
+  secrets:
+    - name: ${{mysql-instance-secret-name}}-r
+      keys: 
+        - ${{mysql-instance-secret-name}}-r
+    - name: ${{mysql-instance-secret-name}}-rw
+      keys: 
+        - ${{mysql-instance-secret-name}}-rw
   mysql:
     subprotocol: "mysql"
     host: ${{host}}
     port: ${{port}}
     params: # Required
       tls: ${{skip-verify}}
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+>>>>>>> 66e06414923c702eaf26303c578d8dd080d029bf
   external: ${{true}}
   secrets:
     - name: ${{instance-secret-name}}-r
       keys: 
         - ${{instance-secret-name}}-r
-
     - name: ${{instance-secret-name}}-rw
       keys: 
         - ${{instance-secret-name}}-rw
+=======
+>>>>>>> Stashed changes
 ```
 
 
@@ -85,8 +102,8 @@ name: ${{"mysql01"}}
 version: v2alpha
 type: Depot
 tags:
-    - ${{dropzone}}
-    - ${{mysql}}
+  - ${{dropzone}}
+  - ${{mysql}}
 layer: user
 depot:
   type: MYSQL
@@ -99,11 +116,10 @@ depot:
     - name: ${{instance-secret-name}}-r
       keys: 
         - ${{instance-secret-name}}-r
-
-   - name: ${{instance-secret-name}}-rw
+    - name: ${{instance-secret-name}}-rw
       keys: 
         - ${{instance-secret-name}}-rw
-
+ 
 ```
 
 To get the details of each attribute, please refer [to this link](/resources/depot/configurations).
