@@ -48,7 +48,6 @@ tags:
 owner: ${{owner-name}}
 layer: user
 depot:
-<<<<<<< HEAD
   type: KAFKA
   description: {{description}}
   kafka:
@@ -59,16 +58,6 @@ depot:
       allkeys: true
 
  
-=======
-  type: KAFKA                     
-  description: ${{description}}
-  external: ${{true}}
-  spec:                           
-    brokers:
-      - ${{broker1}}
-      - ${{broker2}}
-    schemaRegistryUrl: ${{http://20.9.63.231:8081/}}
->>>>>>> 66e06414923c702eaf26303c578d8dd080d029bf
 ```
 To get the details of each attribute, please refer [to this link](/resources/depot/configurations).
 
