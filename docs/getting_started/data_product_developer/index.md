@@ -86,63 +86,61 @@ workflow:
     - name: sports-test-customer
       title: sports_data Dag
       description: This job ingests customer csv from Azure blob storage into icebase catalog 
-        tags:         
-          - customer    
-        stack: flare:5.0        
-        compute: runnable-default
-        stackSpec:         
-          job:            
-            explain: true            
-            inputs:                                
-              - name: sports_data_customer                                                                                              
-                dataset: dataos://azureexternal01:sports_data/customers/
-                format: CSV
-                options:
-                  inferSchema : true
-  
-            logLevel: INFO
+      tags:         
+        - customer    
+      stack: flare:5.0        
+      compute: runnable-default
+      stackSpec:         
+        job:            
+          explain: true            
+          inputs:                                
+            - name: sports_data_customer
+              dataset: dataos://azureexternal01:sports_data/customers/
+              format: CSV
+              options:
+                inferSchema : true
+          logLevel: INFO
+          steps:              
+            - sequence:                  
+              - name: customer                           # Reading columns from definition files.File names is used to create Survey Ids                    
+                sql: > 
+                  SELECT *
+                  from sports_data_customer   
+                functions: 
+                    - name: cleanse_column_names
 
-            steps:              
-              - sequence:                  
-                - name: customer                           # Reading columns from definition files.File names is used to create Survey Ids                    
-                  sql: > 
-                    SELECT *
-                    from sports_data_customer   
-                  functions: 
-                      - name: cleanse_column_names
+                    # - name: change_column_case 
+                    #   case: lower
 
-                      # - name: change_column_case 
-                      #   case: lower
+                    - name: find_and_replace 
+                      column: annual_income
+                      sedExpression: "s/[$]//g"
 
-                      - name: find_and_replace 
-                        column: annual_income
-                        sedExpression: "s/[$]//g"
+                    - name: find_and_replace 
+                      column: annual_income
+                      sedExpression: "s/,//g"
 
-                      - name: find_and_replace 
-                        column: annual_income
-                        sedExpression: "s/,//g"
+                    - name: set_type 
+                      columns: 
+                        customer_key: int 
+                        annual_income: int
+                        total_children: int
 
-                      - name: set_type 
-                        columns: 
-                          customer_key: int 
-                          annual_income: int
-                          total_children: int
-
-                      - name: any_date 
-                        column: birth_date
-                        asColumn: birth_date
+                    - name: any_date 
+                      column: birth_date
+                      asColumn: birth_date
 
                                                  
-            outputs:              
-              - name: customer
-                dataset: dataos://icebase:sports/sample_customer?acl=rw
-                format: Iceberg
-                title: sports_data
-                description: this dataset contains customer csv from sports_data 
-                tags:                                                                     
-                  - customer
-                options:                  
-                  saveMode: overwrite
+          outputs:              
+            - name: customer
+              dataset: dataos://icebase:sports/sample_customer?acl=rw
+              format: Iceberg
+              title: sports_data
+              description: this dataset contains customer csv from sports_data 
+              tags:                                                                     
+                - customer
+              options:                  
+                saveMode: overwrite
 
 ```
 ## Run the Workflow 

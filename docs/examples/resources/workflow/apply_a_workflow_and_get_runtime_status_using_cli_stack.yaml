@@ -13,13 +13,13 @@ workflow:
       stack: dataos-ctl # dataos-ctl stack name
       compute: runnable-default
 
-        # Referred Instance secrets 
+      # Referred Instance secrets 
       dataosSecrets:
-      - name: dataos-ctl-user-apikey # Instance secret name same as declared above
-        allKeys: true
-        consumptionType: envVars
+        - name: dataos-ctl-user-apikey # Instance secret name same as declared above
+          allKeys: true
+          consumptionType: envVars
 
-        # Stack-specific section
+      # Stack-specific section
       stackSpec:
         arguments:
           - resource
@@ -101,13 +101,13 @@ workflow:
       stack: dataos-ctl
       compute: runnable-default
 
-        # Referred Instance secrets 
+      # Referred Instance secrets 
       dataosSecrets:
       - name: dataos-ctl-user-apikey
         allKeys: true
         consumptionType: envVars
 
-        # Stack-specific section
+      # Stack-specific section
       stackSpec:
         arguments:
           - resource

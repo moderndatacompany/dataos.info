@@ -30,7 +30,6 @@ bundle:
         layer: user
         depot: 
           type: snowflake
-          description: this is not a snowflake depot
           connectionSecret: 
             - acl: rw
               type: key-value-properties
@@ -58,8 +57,6 @@ bundle:
           title: Connect Snowflake
           dag:
             - name: write-snowflake-06
-              title: Reading data and writing to snowflake
-              description: This job writes data to wnowflake
               spec:
                 tags:
                   - Connect
