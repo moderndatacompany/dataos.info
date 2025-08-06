@@ -10,7 +10,7 @@ policy:
   access:
     subjects:
       tags:
-        - - {{roles:id:tag:selective-restricted-access}}
+        - {{roles:id:tag:selective-restricted-access}}
     predicates:
       - {{'**'}}
     objects:

@@ -26,8 +26,31 @@
 #   - title: sales_intelligence_dashboard
 #     href: https://cheerful-maggot-superset.dataos.app/superset/dashboard/204
 
+<<<<<<< HEAD
 #   - title: sales_intelligence_app
 #     href: https://cheerful-maggot.dataos.app/sales-analysis/
+=======
+  # - title: iris_dashboard
+  #   href: https://cheerful-maggot.dataos.app/lens2/iris/public:sales-intelligence/dashboard/transaction_analysis
+entity: product
+v1alpha:
+  data:
+    useCases:
+      - Sales Intelligence
+    resources:
+      - description: transactions Dataset Ingestion Piplines
+        purpose: build the data product's data set
+        type: workflow
+        version: v1
+        refType: dataos
+        name: wf-transactions-ingestion
+        workspace: public
+    inputs:
+      - description: A data product for transactions that optimizes transactions management using real-time data and advanced analytics for accurate demand forecasting.
+        purpose: source
+        refType: dataos
+        ref: dataos://bigquery:sales_360/transaction_data
+>>>>>>> 66e06414923c702eaf26303c578d8dd080d029bf
 
 #   - title: iris_dashboard
 #     href: https://cheerful-maggot.dataos.app/lens2/iris/public:sales-intelligence/dashboard/transaction_analysis

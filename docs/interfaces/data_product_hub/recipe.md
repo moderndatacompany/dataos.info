@@ -115,7 +115,11 @@ To address the problem, the Data Product Hub, a graphical user interface within 
     <img src="/interfaces/data_product_hub/recipe/image%20(49).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
     </center>
 
+<<<<<<< HEAD
 15. Clicking the Explore button opens a studio interface. Within this interface, Max explores Studio. For this use case, the `total_net_profit_after_tax` measure and `company_id` dimension are selected. The Run Query button is clicked to examine the table, followed by clicking the Chart tab to visualize the data points.
+=======
+15. Clicking the Explore button opens a studio interface. For this use case, the `price_to_earnings_ratio` measure and `company_id` dimension are selected. The Run Query button is clicked to examine the table, followed by clicking the Chart tab to visualize the data points.
+>>>>>>> 66e06414923c702eaf26303c578d8dd080d029bf
 
     <center>
     <img src="/interfaces/data_product_hub/recipe/image%20(16).png" alt="DPH" style="width:40rem; border: 1px solid black;" />

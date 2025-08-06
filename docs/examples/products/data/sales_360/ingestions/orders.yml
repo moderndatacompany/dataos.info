@@ -7,11 +7,9 @@ tags:
   - Domain.Finance
 description: The job is to ingest order enriched data for company StrideRight Shoes from Bigquery Source to Icebase.
 workflow:
-  title: Order Enriched Data
   dag:
     - name: order-enriched-data
       description: The job is to ingest order enriched data for company StrideRight Shoes from Bigquery Source to Icebase.
-      title: Order Enriched Data
       spec:
         tags:
           - company.order_enriched
@@ -161,7 +159,7 @@ workflow:
                         model_name,
                         brand_name,
                         product_name,
-                        product_size
+                        product_size,
                         first_name,
                         last_name,
                         gender,

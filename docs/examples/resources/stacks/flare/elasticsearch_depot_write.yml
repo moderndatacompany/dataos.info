@@ -2,8 +2,9 @@ version: v1
 name: elasticsearch-write
 type: workflow
 tags:
-  - eventhub
+  - elasticsearch
   - write
+  - flare
 description: this jobs reads data from thirdparty and writes to elasticsearch
 workflow:
   title: Connect City
@@ -17,7 +18,7 @@ workflow:
           - City
         stack: flare:6.0
         compute: runnable-default
-        flare:
+        stackSpec:
           job:
             explain: true
             inputs:

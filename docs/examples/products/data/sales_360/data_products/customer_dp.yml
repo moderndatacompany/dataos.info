@@ -25,6 +25,7 @@
 #   - title: sales_intelligence_app
 #     href: https://liberal-donkey.dataos.app/sales-analysis/
 
+<<<<<<< HEAD
 #   - title: iris_dashboard
 #     href: https://liberal-donkey.dataos.app/lens2/iris/public:sales-intelligence/dashboard/transaction_analysis
 # entity: product
@@ -45,6 +46,28 @@
 #         purpose: source
 #         refType: dataos
 #         ref: dataos://bigquery:sales_360/customer_data
+=======
+  # - title: iris_dashboard
+  #   href: https://liberal-donkey.dataos.app/lens2/iris/public:sales-intelligence/dashboard/transaction_analysis
+entity: product
+v1alpha:
+  data:
+    useCases:
+      - Sales Intelligence
+    resources:
+      - description: customer Dataset Ingestion Piplines
+        purpose: build the data product's data set
+        type: workflow
+        version: v1
+        refType: dataos
+        name: wf-customer-ingestion
+        workspace: public
+    inputs:
+      - description: A data product for customer that optimizes customer management using real-time data and advanced analytics for accurate demand forecasting.
+        purpose: source
+        refType: dataos
+        ref: dataos://bigquery:sales_360/customer_data
+>>>>>>> 66e06414923c702eaf26303c578d8dd080d029bf
 
 
 #     outputs:
