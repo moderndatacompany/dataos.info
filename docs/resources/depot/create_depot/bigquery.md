@@ -50,27 +50,27 @@ name: ${{depot-name}}
 version: v2alpha
 type: depot
 tags:
-    - ${{dropzone}}
-    - ${{bigquery}}
+  - ${{dropzone}}
+  - ${{bigquery}}
 owner: ${{owner-name}}
 layer: user
 depot:
-    type: BIGQUERY                 
-    description: ${{description}} # optional
-    external: ${{true}}
-    secrets:
+  type: BIGQUERY                 
+  description: ${{description}} # optional
+  external: ${{true}}
+  secrets:
     - name: ${{instance-secret-name}}-r
-        keys: 
+      keys: 
         - ${{instance-secret-name}}-r
 
     - name: ${{instance-secret-name}}-rw
-        keys: 
+      keys: 
         - ${{instance-secret-name}}-rw
-    bigquery:  # optional                         
-      project: ${{project-name}} # optional
-      params: # optional
-        ${{"key1": "value1"}}
-        ${{"key2": "value2"}}
+  bigquery:  # optional                         
+    project: ${{project-name}} # optional
+    params: # optional
+      ${{"key1": "value1"}}
+      ${{"key2": "value2"}}
 ```
 
 To get the details of each attribute, please refer [to this link](/resources/depot/configurations).

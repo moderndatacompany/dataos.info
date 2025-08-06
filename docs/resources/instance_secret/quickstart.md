@@ -42,11 +42,11 @@ Suppose, you want to secure credentials for a new Postgres Depot and store them 
       description: Read instance secret for Postgres data source credentials
       layer: user
       instance-secret:
-      type: key-value-properties
-      acl: r
-      data:
-         username: $POSTGRES_USERNAME
-         password: $POSTGRES_PASSWORD
+        type: key-value-properties
+        acl: r
+        data:
+          username: $POSTGRES_USERNAME
+          password: $POSTGRES_PASSWORD
 
       ```
 
@@ -60,11 +60,11 @@ Suppose, you want to secure credentials for a new Postgres Depot and store them 
       description: Read-write instance secret for Postgres data source credentials
       layer: user
       instance-secret:
-      type: key-value-properties
-      acl: rw
-      data:
-         username: $POSTGRES_USERNAME
-         password: $POSTGRES_PASSWORD
+        type: key-value-properties
+        acl: rw
+        data:
+          username: $POSTGRES_USERNAME
+          password: $POSTGRES_PASSWORD
 
       ```
 

@@ -52,16 +52,16 @@ tags:
 owner: ${{owner-name}}
 layer: user
 depot:
-    type: ELASTICSEARCH              
-    description: ${{description}}
-    external: ${{true}}
-    secrets:
+  type: ELASTICSEARCH              
+  description: ${{description}}
+  external: ${{true}}
+  secrets:
     - name: ${{sf-instance-secret-name}}-r
-        allkeys: true
+      allkeys: true
 
     - name: ${{sf-instance-secret-name}}-rw
-        allkeys: true
-    elasticsearch:                           
+      allkeys: true
+  elasticsearch:                           
     nodes: ${{["localhost:9092", "localhost:9093"]}}
 ```
 To get the details of each attribute, please refer [to this link](/resources/depot/configurations).

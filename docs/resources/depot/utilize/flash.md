@@ -15,34 +15,34 @@ tags:
 description: Flash service
 workspace: public
 service:
-    servicePort: 8080
-    servicePorts:
+  servicePort: 8080
+  servicePorts:
     - name: backup
-        servicePort: 5433  
-    ingress:
+      servicePort: 5433  
+  ingress:
     enabled: true
     stripPath: false
     path: /flash/public:flashtest
     noAuthentication: true
-    replicas: 1
-    logLevel: info
-    compute: runnable-default
-    envs:
+  replicas: 1
+  logLevel: info
+  compute: runnable-default
+  envs:
     APP_BASE_PATH: 'dataos-basepath'
     FLASH_BASE_PATH: /flash/public:flashtest
-    resources:
+  resources:
     requests:
         cpu: 1000m
         memory: 1024Mi
-    stack: flash+python:2.0
-    stackSpec:
+  stack: flash+python:2.0
+  stackSpec:
 # Datasets
     datasets:
-        - name: city
+      - name: city
         address: dataos://lakehouse:retail/city
 
     init:
-        - create table mycity as (select * from retail.city)
+      - create table mycity as (select * from retail.city)
 
     # schedule:
     #   - expression: "*/2 * * * *"

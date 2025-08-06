@@ -60,23 +60,23 @@ tags:
 owner: ${{owner-name}}
 layer: user
 depot:
-    type: JDBC                                      
-    description: ${{description}}
-    external: ${{true}}
-    secrets:
+  type: JDBC                                      
+  description: ${{description}}
+  external: ${{true}}
+  secrets:
     - name: ${{sf-instance-secret-name}}-r
-        allkeys: true
+      allkeys: true
 
     - name: ${{sf-instance-secret-name}}-rw
-        allkeys: true
-    jdbc:                                           
+      allkeys: true
+  jdbc:                                           
     subprotocol: ${{subprotocol}}
     host: ${{host}}
     port: ${{port}}
     database: ${{database-name}}
     params:
-        ${{"key1": "value1"}}
-        ${{"key2": "value2"}}
+      ${{"key1": "value1"}}
+      ${{"key2": "value2"}}
 ```
 To get the details of each attribute, please refer [to this link](/resources/depot/configurations).
 

@@ -55,19 +55,19 @@ tags:
     - ${{oracle}}
 layer: user
 depot:
-    type: ORACLE                                    
-    description: ${{"Oracle Sample data"}}
-    oracle:
+  type: ORACLE                                    
+  description: ${{"Oracle Sample data"}}
+  oracle:
     subprotocol: ${{subprotocol}} # for example "oracle:thin"                                     
     host: ${{host}}
     port: ${{port}}
     service: ${{service}}
     external: ${{true}}
     secrets:
-    - name: ${{sf-instance-secret-name}}-r
+      - name: ${{sf-instance-secret-name}}-r
         allkeys: true
 
-    - name: ${{sf-instance-secret-name}}-rw
+      - name: ${{sf-instance-secret-name}}-rw
         allkeys: true
 ```
 

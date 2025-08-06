@@ -85,9 +85,9 @@ Begin by creating a manifest file to hold the configuration details for your Git
     description: ${{"git credentials"}}
     layer: ${{user}}
     instance-secret:
-    type: ${{key-value}}
-    acl: ${{r}}
-    data:
+      type: ${{key-value}}
+      acl: ${{r}}
+      data:
         GITSYNC_USERNAME: ${{"iamgroot"}}
         GITSYNC_PASSWORD: ${{"56F4japOhkkQDS3trUnZsetFB2J3lnclDPgHThHLto="}}
     ```
@@ -101,9 +101,9 @@ Begin by creating a manifest file to hold the configuration details for your Git
     description: ${{"git credentials"}}
     layer: ${{user}}
     instance-secret:
-    type: ${{key-value}}
-    acl: ${{rw}}
-    data:
+      type: ${{key-value}}
+      acl: ${{rw}}
+      data:
         GITSYNC_USERNAME: ${{"iamgroot"}}
         GITSYNC_PASSWORD: ${{"56F4japOhkkQDS3trUnZsetFBKL3lnclDPgHThHLto="}}
     ```
