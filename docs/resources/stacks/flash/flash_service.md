@@ -21,13 +21,12 @@ Ensure that appropriate access permissions are available to execute this command
 ──────────────────┼─────────┼─────────┼───────────────────────────────────────────────────┼────────────────────────────
   beacon          │ graphql │ 1.0     │ docker.io/rubiklabs/beacon:postgraphile-4.10.0.d1 │ dataos-container-registry  
   beacon          │ rest    │ 1.0     │ docker.io/postgrest/postgrest:v7.0.1              │ dataos-container-registry  
-  bento         │         │ 3.0     │ docker.io/rubiklabs/bento-ds:0.8.28             │ dataos-container-registry  
+  bento           │         │ 3.0     │ docker.io/rubiklabs/bento-ds:0.8.28             │ dataos-container-registry  
   container       │         │ 1.0     │                                                   │                            
   dataos-ctl      │         │ 1.0     │ docker.io/rubiklabs/dataos-ctl:2.26.18            │ dataos-container-registry  
   dataos-resource │ apply   │ 1.0     │ docker.io/rubiklabs/dataos-ctl:2.26.18            │ dataos-container-registry  
   dataos-resource │ delete  │ 1.0     │ docker.io/rubiklabs/dataos-ctl:2.26.18            │ dataos-container-registry  
   dataos-resource │ run     │ 1.0     │ docker.io/rubiklabs/dataos-ctl:2.26.18            │ dataos-container-registry  
-  fastfun         │ alpha   │ 1.0     │ docker.io/rubiklabs/fastbase-functions:2.10.2-d2  │ dataos-container-registry  
   flare           │         │ 5.0     │ docker.io/rubiklabs/flare5:7.3.17                 │ dataos-container-registry  
   flare           │         │ 6.0     │ docker.io/rubiklabs/flare6:8.0.9                  │ dataos-container-registry  
   flash           │ python  │ 1.0     │ docker.io/rubiklabs/flash:0.0.36                   │ dataos-container-registry  

@@ -459,7 +459,7 @@ runAsUser: iamgroot
 ```yaml
 topology:
   - name: random            # mandatory
-    type: alpha             # mandatory
+    type: container             # mandatory
     doc: new                # Documentation for the element
     properties:
       random: lost          # Custom properties for the element
@@ -472,7 +472,7 @@ topology:
 
 #### **`stackSpec`**
 
-> Attributes named `flare`/`bento`/`beacon`/`scanner`/`alpha` has been deprecated and will be removed in future releases, please replace with the generic `stackSpec`
+> Attributes named `flare`/`bento`/`beacon`/`scanner`/`container` has been deprecated and will be removed in future releases, please replace with the generic `stackSpec`
 > 
 
 **Description:** This attribute allows for specifying stack-specific attributes. These attributes are specific to the stack configuration used by the Worker.
@@ -484,6 +484,6 @@ topology:
 **Example Usage:**
 
 ```yaml
-stackSpec/flare/bento/beacon/scanner/alpha:
+stackSpec/flare/bento/beacon/scanner/container:
   ${{Stack-specific Attributes}}
 ```

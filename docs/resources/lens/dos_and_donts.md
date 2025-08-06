@@ -234,8 +234,6 @@ Always aim to roll down data as much as possible to minimize the amount of data 
 
 2. **Members:** Views do not have their members. Instead, use the `table` or `includes` parameters to incorporate measures and dimensions from other tables into the view.
 
-3. **Refresh key:** Use a refresh key if the underlying data is refreshed on a regular cadence.
-
 **Example: `total_spend`**
 
 In the following example, we create a view called `revenue_view`, which includes selected members from the `sales`, `product`, and `account` tables:

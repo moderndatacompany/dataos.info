@@ -806,9 +806,7 @@ views:
   - name: view_name
     description: "purpose of the view"
     public: true
-    #use meta property to define whether you want to export a view to IRIS board
     meta:
-      #set this property to true if you want to export the view to IRIS board
       export_to_board: true
       board:
         #provide the time dimension to be used for displaying time-series
