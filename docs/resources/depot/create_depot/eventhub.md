@@ -51,12 +51,6 @@ type: depot
 tags:
   - ${{Eventhub}}
   - ${{Sanity}}
-layer: user
-depot:
-  type: "EVENTHUB"
-  compute: ${{runnable-default}}
-  eventhub:
-    endpoint: ${{"sb://event-hubns.servicebus.windows.net/"}}
 description: ${{EventHub depot for streaming data}}
 owner: ${{owner-name}}
 layer: user
@@ -64,6 +58,8 @@ depot:
   type: "EVENTHUB"
   description: ${{EventHub streaming depot}}
   external: ${{true}}
+  eventhub:
+    endpoint: ${{"sb://event-hubns.servicebus.windows.net/"}}
   secrets:
     - name: ${{eh-instance-secret-name}}-r
       allkeys: true
