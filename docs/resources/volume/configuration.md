@@ -19,9 +19,9 @@ layer: ${{resource_layer}} # DataOS Layer (e.g., user, system)
 # VOLUME-SPECIFIC SECTION
 # Attributes specific to Volume resource-type
 volume:
-   size: ${{1Gi} } #100Gi, 50Mi, 10Ti, 500Mi
-   accessMode: ${{accessMode}} #Mode options ReadWriteMany | ReadWriteOnce | ReadOnlyMany 
-   type: ${{typeofvolume}} #Volume type options persistent | temp | CloudTemp | CloudPersistent
+  size: ${{1Gi} } #100Gi, 50Mi, 10Ti, 500Mi
+  accessMode: ${{accessMode}} #Mode options ReadWriteMany | ReadWriteOnce | ReadOnlyMany 
+  type: ${{typeofvolume}} #Volume type options persistent | temp | CloudTemp | CloudPersistent
 ```
 
 
@@ -57,9 +57,9 @@ description: example resource manifest
 owner: iamgroot
 layer: user
 volume:
-   size: 1Gi  #100Gi, 50Mi, 10Ti, 500Mi
-   accessMode: ReadWriteMany  #ReadWriteOnce, ReadOnlyMany.
-   type: temp
+  size: 1Gi  #100Gi, 50Mi, 10Ti, 500Mi
+  accessMode: ReadWriteMany  #ReadWriteOnce, ReadOnlyMany.
+  type: temp
 ```
 
 ### **`size`**

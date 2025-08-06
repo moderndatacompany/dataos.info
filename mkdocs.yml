@@ -346,7 +346,6 @@ nav:
             - Query the source: resources/depot/utilize/cluster.md
             - Accelerating queries: resources/depot/utilize/flash.md
             - Building Data APIs: resources/depot/utilize/apis.md
-            - Building Data Products: resources/depot/utilize/dp.md
             - Depot as Lakehouse: resources/depot/utilize/lakehouse.md
             - Scanning metadata: resources/depot/utilize/scanner.md
         - Grant:
@@ -365,7 +364,8 @@ nav:
             - Eventhub: resources/instance_secret/data_sources/eventhub.md
             - Google BigQuery: resources/instance_secret/data_sources/bigquery.md
             - GCS: resources/instance_secret/data_sources/gcs.md
-            - JDBC: resources/instance_secret/data_sources/jdbc.md 
+            - JDBC: resources/instance_secret/data_sources/jdbc.md
+            - Kafka: resources/instance_secret/data_sources/kafka.md 
             - MongoDB: resources/instance_secret/data_sources/mongo.md
             - Microsoft SQL Server: resources/instance_secret/data_sources/mssql.md
             - MySQL: resources/instance_secret/data_sources/mysql.md
@@ -459,6 +459,10 @@ nav:
         
         - Monitor: 
           - resources/monitor/index.md
+          - Types: 
+            - Equation Monitor: resources/monitor/equation.md
+            - Report Monitor: resources/monitor/report.md
+            - Stream Monitor: resources/monitor/streaming.md
           - First Steps: resources/monitor/first_steps.md
           - Configurations: resources/monitor/configurations.md
           - Recipes: 

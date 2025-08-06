@@ -61,17 +61,17 @@ depot:
   external: ${{true}}
   secrets:
     - name: ${{sf-instance-secret-name}}-r
-        allkeys: true
+     allkeys: true
 
     - name: ${{sf-instance-secret-name}}-rw
-        allkeys: true
+      allkeys: true
   postgresql:                        
     subprotocol: "postgresql"
     host: ${{host}}
     port: ${{port}}
     database: ${{postgres}}
     params: #Required 
-        sslmode: ${{disable}}
+      sslmode: ${{disable}}
 ```
 
 
@@ -94,17 +94,17 @@ Depot:
   external: true
   secrets:
     - name: ${{instance-secret-name}}-r
-        allkeys: true
+      allkeys: true
 
     - name: ${{instance-secret-name}}-rw
-        allkeys: true
+      allkeys: true
   postgresql:                                          
     host: ${{host}}
     port: ${{port}}
     database: ${{database-name}}
     params: # Optional
-        ${{"key1": "value1"}}
-        ${{"key2": "value2"}}
+      ${{"key1": "value1"}}
+      ${{"key2": "value2"}}
 ```
 
 

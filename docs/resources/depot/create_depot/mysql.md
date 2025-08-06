@@ -63,7 +63,7 @@ depot:
     host: ${{host}}
     port: ${{port}}
     params: # Required
-        tls: ${{skip-verify}}
+      tls: ${{skip-verify}}
   external: ${{true}}
   secrets:
     - name: ${{instance-secret-name}}-r
@@ -88,7 +88,7 @@ tags:
     - ${{dropzone}}
     - ${{mysql}}
 layer: user
-Depot:
+depot:
   type: MYSQL
   description: ${{"MYSQL Sample data"}}
   mysql:
@@ -98,11 +98,11 @@ Depot:
   secrets:
     - name: ${{instance-secret-name}}-r
       keys: 
-      - ${{instance-secret-name}}-r
+        - ${{instance-secret-name}}-r
 
    - name: ${{instance-secret-name}}-rw
       keys: 
-      - ${{instance-secret-name}}-rw
+        - ${{instance-secret-name}}-rw
 
 ```
 

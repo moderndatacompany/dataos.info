@@ -55,17 +55,17 @@ tags:
 owner: ${{owner-name}}
 layer: user
 depot:
-    type: WASBS                                      
-    description: ${{description}}
-    external: ${{true}}
-    compute: ${{runnable-default}}
-    secrets:
+  type: WASBS                                      
+  description: ${{description}}
+  external: ${{true}}
+  compute: ${{runnable-default}}
+  secrets:
     - name: ${{wasbs-instance-secret-name}}-r
-        allkeys: true
+      allkeys: true
 
     - name: ${{wasbs-instance-secret-name}}-rw
-        allkeys: true
-    wasbs:                                          
+      allkeys: true
+  wasbs:                                          
     account: ${{account-name}}
     container: ${{container-name}}
     relativePath: ${{relative-path}}

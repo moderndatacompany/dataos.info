@@ -53,17 +53,17 @@ tags:
     - ${{Sanity}}
 layer: user
 depot:
-    type: "EVENTHUB"
-    compute: ${{runnable-default}}
-    eventhub:
+  type: "EVENTHUB"
+  compute: ${{runnable-default}}
+  eventhub:
     endpoint: ${{"sb://event-hubns.servicebus.windows.net/"}}
-    external: ${{true}}
-    secrets:
+  external: ${{true}}
+  secrets:
     - name: ${{eh-instance-secret-name}}-r
-        allkeys: true
+      allkeys: true
 
     - name: ${{eh-instance-secret-name}}-rw
-        allkeys: true
+      allkeys: true
 ```
 To get the details of each attribute, please refer [to this link](/resources/depot/configurations).
 

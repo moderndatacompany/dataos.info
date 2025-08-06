@@ -56,18 +56,18 @@ tags:
     - ${{tag2}}
 layer: user
 depot:
-    type: snowflake
-    description: ${{snowflake-depot-description}}
-    snowflake:
+  type: snowflake
+  description: ${{snowflake-depot-description}}
+  snowflake:
     warehouse: ${{warehouse-name}}
     url: ${{snowflake-url}}
     database: ${{database-name}}
     external: true
     secrets:
-    - name: ${{redshift-instance-secret-name}}-r
+      - name: ${{redshift-instance-secret-name}}-r
         allkeys: true
 
-    - name: ${{redshift-instance-secret-name}}-rw
+      - name: ${{redshift-instance-secret-name}}-rw
         allkeys: true
 ```
 
