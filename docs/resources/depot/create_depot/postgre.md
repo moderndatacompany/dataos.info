@@ -64,21 +64,9 @@ depot:
   description: ${{To write data to postgresql database}}
   external: ${{true}}
   secrets:
-<<<<<<< Updated upstream
     - name: ${{sf-instance-secret-name}}-r
-<<<<<<< HEAD
      allkeys: true
-
     - name: ${{sf-instance-secret-name}}-rw
-=======
-      allkeys: true
-    - name: ${{sf-instance-secret-name}}-rw
-=======
-    - name: ${{postgres-instance-secret-name}}-r
-      allkeys: true
-    - name: ${{postgres-instance-secret-name}}-rw
->>>>>>> Stashed changes
->>>>>>> 66e06414923c702eaf26303c578d8dd080d029bf
       allkeys: true
   postgresql:                        
     subprotocol: "postgresql"
