@@ -175,17 +175,6 @@ The Router manages interactions between the API instances and the workers.
 | **resources** | Resource requests and limits for the Router. Defaults are CPU 100m, memory 100Mi, with limits at CPU 400m, memory 400Mi. |
 | **envs** | Environment variables for the Router. |
 
-<!-- **i. `Iris`:**
-
-This section configures how your Lens interacts with Iris dashboards.
-
-| **Parameter** | **Description** |
-| --- | --- |
-| **logLevel** | Log level for Iris. The default is `INFO`, with other options like `WARN`, `DEBUG`, or `ERROR`. |
-| **replicas** | Number of Iris replicas to deploy. The default is 1, but adjust as needed. |
-| **resources** | Resource requests and limits for Iris. Defaults are CPU 100m, memory 100Mi, with limits at CPU 400m, memory 400Mi. |
-| **envs** | Environment variables for Iris. | -->
-
 ### **Complete Example**
 
 Here's what a fully configured Lens manifest file might look like, complete with all the necessary sections and parameters. You can use this as a template to get your Lens Resource up and running.

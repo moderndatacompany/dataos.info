@@ -14,8 +14,6 @@ By following these best practices, teams can reduce errors, improve communicatio
 - Views: `opportunities`, `cloud_accounts`, `arr`
 - Measures: `count`, `avg_price`, `total_amount_shipped`
 - Dimensions: `name`, `is_shipped`, `created_at`
-<!-- - Pre-aggregations: `main`, `orders_by_status`, `lambda_invoices` -->
-
 ---
 
 ## SQL expressions

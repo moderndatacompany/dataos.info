@@ -96,7 +96,7 @@ stack:
 **Example Usage:** 
 
 ```yaml
-name: alpha
+name: container
 ```
 
 ---
