@@ -32,14 +32,15 @@ Once rate limit resources are defined, you can apply them to various components 
 
 ``` yaml
 # Resource-specific section
-name: wf-random-user-api 
+name: random-user-api 
 version: v1
 type: service
 tags:
   - service
-description: The workflow is for the job to ingest random user api data for demo from bento into fastbase
+  - bento
+  - api
+description: Bento service for ingesting random user API data with rate limiting
 service:
-  title: Random User Streaming Dataset
   replicas: 1
   autoScaling:
     enabled: true
@@ -55,10 +56,6 @@ service:
     limits:
       cpu: 1000m
       memory: 1024Mi
-  ingress:
-    enabled: true
-    path: /random-user2
-    noAuthentication: true
   stack: bento
   logLevel: DEBUG
   compute: runnable-default
@@ -121,7 +118,7 @@ service:
                 auth:
                   token:
                     enabled: true
-                    token: asdfrC5kNTVjMDE5Yy05MThmLTQ4OGMtYTEyMS01ODhjY2IyZDI1MjE=
+                    token: <apikey>
                 description: Random users data
                 format: AVRO
                 schema: "{\"type\":\"record\",\"name\":\"default\",\"namespace\":\"defaultNamespace\",\"fields\":[{\"name\":\"id\",\"type\":\"string\"},{\"name\":\"title\",\"type\":\"string\"},{\"name\":\"first_name\",\"type\":\"string\"},{\"name\":\"last_name\",\"type\":\"string\"}, {\"name\":\"gender\",\"type\":\"string\"},{\"name\":\"email\",\"type\":\"string\"},{\"name\":\"city\",\"type\":\"string\"},{\"name\":\"state\",\"type\":\"string\"},{\"name\":\"country\",\"type\":\"string\"},{\"name\":\"postcode\",\"type\":\"string\"},{\"name\":\"age\",\"type\":\"string\"},{\"name\":\"phone\",\"type\":\"string\"},{\"name\":\"phones\",\"type\":\"string\"},{\"name\":\"timezone\",\"type\":\"string\"}]}"

@@ -80,9 +80,9 @@ Begin by creating a manifest file to hold the configuration details for your MSS
     description: ${description} # Purpose of the Instance-secret
     layer: user # DataOS layer
     instance-secret:
-    type: key-value-properties # Secret type
-    acl: r # Access control: 'r' for read-only
-    data:
+      type: key-value-properties # Secret type
+      acl: r # Access control: 'r' for read-only
+      data:
         username: ${username} # replace with MSSQL or Azure SQL username
         password: ${password} # replace with MSSQL or Azure SQL password
     ```
@@ -95,9 +95,9 @@ Begin by creating a manifest file to hold the configuration details for your MSS
     description: ${description} # Purpose of the Instance-secret
     layer: user # DataOS layer
     instance-secret:
-    type: key-value-properties # Secret type
-    acl: rw # Access control: 'rw' for read-write
-    data:
+      type: key-value-properties # Secret type
+      acl: rw # Access control: 'rw' for read-write
+      data:
         username: ${username} # replace with MSSQL or Azure SQL username
         password: ${password} # replace with MSSQL or Azure SQL password
     ```

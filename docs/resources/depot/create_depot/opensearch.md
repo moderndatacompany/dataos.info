@@ -48,23 +48,23 @@ name: ${{depot-name}}
 version: v2alpha
 type: depot
 tags:
-    - ${{tag1}}
-    - ${{tag2}}
+  - ${{tag1}}
+  - ${{tag2}}
 owner: ${{owner-name}}
 layer: user
 depot:
-    type: OPENSEARCH           
-    description: ${{description}}
-    external: ${{true}}
-    secrets:
+  type: OPENSEARCH           
+  description: ${{description}}
+  external: ${{true}}
+  secrets:
     - name: ${{sf-instance-secret-name}}-r
-        allkeys: true
+      allkeys: true
 
     - name: ${{sf-instance-secret-name}}-rw
-        allkeys: true
-    elasticesearch:                           
+      allkeys: true
+  opensearch:                           
     nodes:
-        - ${{nodes}}
+      - ${{nodes}}
 ```
 
 To get the details of each attribute, please refer [to this link](/resources/depot/configurations).

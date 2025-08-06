@@ -15,37 +15,37 @@ tags:
     - postgres-depot
 description: The workflow scans schema tables and register data
 workflow:
-    dag:
+  dag:
     - name: postgres-depot
-        description: The job scans schema from depot tables and register data to metis2
-        spec:
+      description: The job scans schema from depot tables and register data to metis2
+      spec:
         tags:
-            - scanner
+          - scanner
         stack: scanner:2.0
         compute: runnable-default
         runAsUser: metis
         stackSpec:
-            depot: postgresdepot           
-            # sourceConfig:           
-            #   config:
-            #     markDeletedTables: false
-            #     includeTables: true
-            #     includeViews: true
-            #     databaseFilterPattern:
-            #       includes:
-            #         - <databasename> 
-            #       excludes:
-            #         - <databasename> 
-            #     schemaFilterPattern:
-            #       includes:
-            #         - <schemaname>
-            #       excludes:
-            #         - <schemaname>
-            #     tableFilterPattern:
-            #       includes:
-            #         - <schemaname>
-            #       excludes:
-            #         - <schemaname>
+          depot: postgresdepot           
+          # sourceConfig:           
+          #   config:
+          #     markDeletedTables: false
+          #     includeTables: true
+          #     includeViews: true
+          #     databaseFilterPattern:
+          #       includes:
+          #         - <databasename> 
+          #       excludes:
+          #         - <databasename> 
+          #     schemaFilterPattern:
+          #       includes:
+          #         - <schemaname>
+          #       excludes:
+          #         - <schemaname>
+          #     tableFilterPattern:
+          #       includes:
+          #         - <schemaname>
+          #       excludes:
+          #         - <schemaname>
 ```
 
 After successfully executing the Scanner Workflow, a user can find the metadata on Metis UI as shown below.

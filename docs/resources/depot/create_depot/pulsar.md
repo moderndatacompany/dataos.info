@@ -40,15 +40,15 @@ name: ${{depot-name}}
 version: v1
 type: depot
 tags:
-    - ${{tag1}}
-    - ${{tag2}}
+  - ${{tag1}}
+  - ${{tag2}}
 owner: ${{owner-name}}
 layer: user
 depot:
-    type: PULSAR       
-    description: ${{description}}
-    external: ${{true}}
-    spec:              
+  type: PULSAR       
+  description: ${{description}}
+  external: ${{true}}
+  spec:              
     adminUrl: ${{admin-url}}
     serviceUrl: ${{service-url}}
     tenant: ${{system}}

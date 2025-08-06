@@ -88,9 +88,9 @@ Begin by creating a manifest file to hold the configuration details for your Ope
     description: ${description}   # Optional: Brief description of the instance-secret's purpose.
     layer: user # DataOS Layer                 
     instance-secret:
-    type: key-value-properties  # Type of Instance-secret
-    acl: r                     # Access control level, set to 'r' for read-only access.
-    data:
+      type: key-value-properties  # Type of Instance-secret
+      acl: r                     # Access control level, set to 'r' for read-only access.
+      data:
         username: ${{Opensearch username}}
         password: ${{Opensearch password}}
     ```
@@ -103,9 +103,9 @@ Begin by creating a manifest file to hold the configuration details for your Ope
     description: ${description}   # Optional: Brief description of the instance-secret's purpose.
     layer: user # DataOS Layer                 
     instance-secret:
-    type: key-value-properties  # Type of Instance-secret
-    acl: rw                     # Access control level, set to 'rw' for read-write access.
-    data:
+      type: key-value-properties  # Type of Instance-secret
+      acl: rw                     # Access control level, set to 'rw' for read-write access.
+      data:
         username: ${{username}}
         password: ${{password}}
     ```
