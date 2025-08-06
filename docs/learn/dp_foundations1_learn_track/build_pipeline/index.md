@@ -116,8 +116,8 @@ Prepare your manifest file to configure the pipeline.
                   driver: org.postgresql.Driver
                   format: jdbc
                   title: Purchase Dataset
-                    options:
-                      saveMode: overwrite
+                  options:
+                    saveMode: overwrite
 
     ```
 

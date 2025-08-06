@@ -35,7 +35,7 @@ In this exercise, you’ll configure both the Monitor and Pager using the templa
     tags:
       - dataos:type:resource
       - dataos:layer:user
-    description: Alerts ..! recent quality check has resulted in a failure due to a mbiguities found in the data. It appears there are inconsistencies or inaccu racies that require your immediate attention. To ensure the integrity and re liability of the data,Your prompt action in addressing these discrepancies will greatly assist us in maintaining the highest standards of quality.
+    description: Alerts ..! recent quality check has resulted in a failure due to ambiguities found in the data. It appears there are inconsistencies or inaccu racies that require your immediate attention. To ensure the integrity and re liability of the data,Your prompt action in addressing these discrepancies will greatly assist us in maintaining the highest standards of quality.
     layer: user
     monitor:
       schedule: '30 9 * * 1-5'
@@ -87,7 +87,7 @@ In this exercise, you’ll configure both the Monitor and Pager using the templa
     type: pager
     tags:
       - dataos:type:resource
-    description: This is for sending Alerts on Microsoft Teams Alert Test chan nel
+    description: This is for sending Alerts to Microsoft Teams Alert Test chan nel
     workspace: public
     pager:
       conditions:
