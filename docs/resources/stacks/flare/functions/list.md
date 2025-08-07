@@ -20,7 +20,7 @@
     ```
 === "Example"
 
-    ```yaml title="add_column.yaml" hl_lines="51-55"
+    ```yaml title="add_column.yaml" hl_lines="50-55"
     --8<--  "examples/resources/stacks/flare/functions/add_column.yaml"
     ```
 
@@ -215,7 +215,7 @@
     ```
 === "Example"
 
-    ```yaml title="cleanse_column_names" hl_lines="51-54"
+    ```yaml title="cleanse_column_names" hl_lines="49 50"
     --8<--  "examples/resources/stacks/flare/functions/cleanse_column_names.yaml"
     ```
 

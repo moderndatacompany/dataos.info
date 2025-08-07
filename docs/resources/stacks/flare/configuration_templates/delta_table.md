@@ -29,7 +29,7 @@ To execute Flare Jobs on Delta tables using object storage depots, such as Amazo
 
 Flare supports reading from and writing to Delta tables. To enable this functionality, the value delta must be assigned to the format parameter in the inputs section for reading operations, and in the outputs section for writing operations, within the stackSpec. Examples are provided below:
 
-## Read Config
+## Read Configuration
 
 Following is the config file to read data from Delta tables using Flare:
 
@@ -79,14 +79,14 @@ workflow:
 ```
 
 
-## Write Config
+## Write Configuration
 
 Following is the config file to write data to Delta tables using Flare:
 
 ```yaml
 
 version: v1
-name: abfss-deleta-write
+name: abfss-delta-write
 type: workflow
 tags:
   - Connect

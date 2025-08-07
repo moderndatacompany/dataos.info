@@ -3,7 +3,7 @@
 
 To read/write data on the Redshift data source, you first need to create a Depot on top of it. In case you haven’t created a Redshift Depot navigate to the link: [Redshift Depot](/resources/depot/depot_config_templates/amazon_redshift/).
 
-## Read Config
+## Read Configuration
 
 Once you have set up a Redshift Depot, you can start reading data from it. 
 
@@ -26,7 +26,7 @@ inputs:
     --8<-- "examples/resources/stacks/flare/redshift_depot_read.yml"
     ```
 
-## Write Config
+## Write Configuration
 
 Sample Output section
 

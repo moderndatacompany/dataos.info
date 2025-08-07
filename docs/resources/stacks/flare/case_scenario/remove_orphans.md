@@ -48,32 +48,33 @@ The following code snippet demonstrates removing orphan files older than the tim
 The task relies on the `remove_orphans` action, which requires the inputDf dataset as an input. This dataset is defined as `dataos://lakehouse:retail/city` and is in Iceberg format. Additionally, the action provides options, such as the `olderThan` parameter, which specifies the timestamp (in Unix format) for identifying orphan files.
 
 ```yaml
-version: v1 
-name: orphans 
-type: workflow 
-tags: 
+name: orphans                                    # Name of the Workflow
+version: v1                                      # Version
+type: workflow                                   # Type of Resource (Here its workflow)
+tags:                                            # Tags
   - orphans
-workflow: 
-  title: Remove orphan files 
-  dag: 
-    - name: orphans 
-      title: Remove orphan files 
-      spec: 
-        tags: 
+workflow:                                        # Workflow Section
+  title: Remove orphan files                     # Title of the DAG
+  dag:                                           # Directed Acyclic Graph (DAG)
+    - name: orphans                              # Name of the Job
+      title: Remove orphan files                 # Title of the Job
+      spec:                                      # Specs
+        tags:                                    # Tags
           - orphans
-        stack: flare:5.0 
-        compute: runnable-default 
-        stackSpec: 
-          job: 
-            explain: true 
-            logLevel: INFO 
-            inputs: 
-              - name: inputDf 
-                dataset: dataos://lakehouse:retail/city 
-                format: Iceberg 
-            actions: # Flare Action
-              - name: remove_orphans # Action Name
-                input: inputDf # Input Dataset Name
-                options: # Options
-                  olderThan: "1739734172" # Timestamp in Unix Format
+        stack: flare:5.0                         # Stack is Flare
+        compute: runnable-default                # Compute
+        stackSpec:                               # Flare Stack Specific Section
+          job:                                   # Job Section
+            explain: true                        # Explain
+            logLevel: INFO                       # Loglevel
+            inputs:                              # Inputs Section
+              - name: inputDf                    # Input Dataset Name
+                dataset: dataos://lakehouse:retail/city                # Input UDL
+                format: Iceberg                  # Format
+            actions:                             # Flare Action
+              - name: remove_orphans             # Action Name
+                input: inputDf                   # Input Dataset Name
+                options:                         # Options
+                  olderThan: "1739734172"        # Timestamp in Unix Format
+
 ```
