@@ -15,7 +15,6 @@ workflow:
         stackSpec:
           job:
             explain: true
-            #triggerDuration: "20 seconds"
             inputs:
               - name: sample_data
                 dataset: dataos://sanitykafka:default/write_kafka_12

@@ -1,7 +1,8 @@
+# Streaming Jobs
+
 In scenarios where there is a continuous requirement to process incoming data in real-time, Flare stream jobs offer an effective solution. However, it is advisable to exercise caution when creating stream jobs, as they should be reserved for cases where strict latency requirements exist, typically demanding a processing time of less than a minute, considering that they may incur higher computing costs.
 
-
-## Available configurations for streaming job
+## Attribute configuration table for streaming job:
 
 
 | **Feature**                        | **Description**                                                                                                                                                                          | **Used In Which Trigger Modes?**                                             | **Notes**                                                                 |
@@ -21,7 +22,7 @@ In scenarios where there is a continuous requirement to process incoming data in
 
 
 
-### **ForeachBatchMode**
+## **ForeachBatchMode**
 
 The `foreachBatchMode` option enables treating each micro-batch of streaming data as a standard batch dataset when set to true.
 
@@ -33,26 +34,19 @@ It also facilitates writing the same micro-batch to multiple destinations, suppo
 
     `foreachBatchMode` does not work with the continuous processing mode as it fundamentally relies on the micro-batch execution of a streaming query. 
 
-### **Trigger modes**
+## **Trigger modes**
 
 The `triggerMode` controls the frequency and style in which streaming data is processed. By setting an appropriate trigger mode, you can decide whether the streaming query operates in micro-batch mode (processing data in discrete intervals) or in continuous mode (processing data as soon as it arrives).
 
 This setting is crucial to balance between latency, throughput, and cost-efficiency, depending on your business needs. Here are the different kinds of triggers that are supported:
 
--  [Default](/resources/stacks/flare/case_scenario/streaming_jobs#default)
--  [Once](/resources/stacks/flare/case_scenario/streaming_jobs#once)
--  [AvailableNow](/resources/stacks/flare/case_scenario/streaming_jobs#availablenow)
--  [ProcessingTime](/resources/stacks/flare/case_scenario/streaming_jobs#processingtime)
--  [Continuous](/resources/stacks/flare/case_scenario/streaming_jobs#continuous)
-
-
-#### **`Unspecified(default)`** 
+### **`Unspecified(default)`** 
 
 
 If no trigger setting is explicitly specified, then by default, the query will be executed in micro-batch mode, where micro-batches will be generated as soon as the previous micro-batch has completed processing.
 
 
-#### **`Once`**
+### **`Once`**
 
 The query will execute only one micro-batch to process all the available data and then stop on its own. This is useful in scenarios you want to periodically spin up a cluster, process everything that is available since the last period, and then shutdown the cluster. In some case, this may lead to significant cost savings.
 
@@ -102,7 +96,7 @@ workflow:
                   checkpointLocation: dataos://lakehouse:checkpoints/tqueryeventsync01
 ```
 
-#### **`AvailableNow`**
+### **`AvailableNow`**
 
 Similar to `Once` trigger, the query will process all the available data and then stop on its own. The difference is that, it will process the data in (possibly) multiple micro-batches based on the source options which will result in better query scalability.
 
@@ -154,7 +148,7 @@ workflow:
                     sql: SELECT * FROM input
 ```
 
-#### **`ProcessingTime`**
+### **`ProcessingTime`**
 
 Processes data at a fixed time interval (e.g., every 5 seconds). The query will be executed with micro-batches mode, where micro-batches will be kicked off at the user-specified intervals.
 
@@ -214,7 +208,7 @@ workflow:
                     sql: SELECT * FROM input
 ```
 
-#### **`Continuous`**
+### **`Continuous`**
 
 A trigger that continuously processes streaming data, asynchronously checkpointing at a specified interval (e.g., every 1 second).
 
