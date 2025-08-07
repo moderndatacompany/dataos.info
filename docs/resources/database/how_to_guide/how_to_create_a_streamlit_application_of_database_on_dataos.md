@@ -141,15 +141,15 @@ Replace dataos_fqdn with the current value of your DataOS Fully Qualified Domain
 
 you can now access the PostgreSQL Database Resource using the exposed API by
 
-To validate the outcome, execute a request to the designated URL as higlihted in the above manifest:
+To validate the outcome, execute a request to the designated URL as highlighted in the above manifest:
 
-A successful response with no errors indicates that the Database Resource has been successfully initialized with no data initally.
+A successful response with no errors indicates that the Database Resource has been successfully initialized with no data initially.
 
 <aside class='callout'>Service creation is an optional step used solely for verifying Database creation or to check if the schema has been successfully written to the database.</aside>
 
 ## Create the Depot manifest
 
-Next, a depot will be established to connect PostgreSQL Database with DataOS. This depot will serves as an intermediary to facilitate data movement from from icebase depot to product Database Resource depot which is backed by postgreSQL Database.
+Next, a depot will be established to connect PostgreSQL Database with DataOS. This depot will serves as an intermediary to facilitate data movement from from icebase Depot to product Database Resource depot which is backed by postgreSQL Database.
 
 Here we need information of the following attributes:
 

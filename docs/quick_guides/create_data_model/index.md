@@ -806,9 +806,17 @@ views:
   - name: view_name
     description: "purpose of the view"
     public: true
+<<<<<<< HEAD
+    meta:
+      export_to_board: true
+      board:
+        #provide the time dimension to be used for displaying time-series
+        timeseries: table_name.dimension_name 
+=======
     
     meta:
       title: "view_name"
+>>>>>>> 66e06414923c702eaf26303c578d8dd080d029bf
     tables:
         # table name to be included in the view
       - join_path: table1
