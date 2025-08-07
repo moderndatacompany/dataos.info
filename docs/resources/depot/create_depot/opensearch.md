@@ -53,34 +53,18 @@ tags:
 owner: ${{owner-name}}
 layer: user
 depot:
-<<<<<<< Updated upstream
   type: OPENSEARCH           
   description: ${{description}}
   external: ${{true}}
   secrets:
     - name: ${{sf-instance-secret-name}}-r
       allkeys: true
+
     - name: ${{sf-instance-secret-name}}-rw
       allkeys: true
-  elasticesearch:                           
+  opensearch:                           
     nodes:
       - ${{nodes}}
-=======
-    type: OPENSEARCH           
-    description: ${{description}}
-    external: ${{true}}
-    secrets:
-      - name: ${{opensearch-instance-secret-name}}-r
-        allkeys: true
-
-      - name: ${{opensearch-instance-secret-name}}-rw
-    allkeys: true
-    spec:                           
-      nodes: 
-        - ${{opensearch.example.com:9200}}
-        # SSL Enabled: false # Default: false
-        # auth: ${{basic}} # Default: none
->>>>>>> Stashed changes
 ```
 
 To get the details of each attribute, please refer [to this link](/resources/depot/configurations).

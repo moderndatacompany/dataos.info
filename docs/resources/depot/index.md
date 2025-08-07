@@ -111,8 +111,6 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
 
 - [Building Data APIs](/resources/depot/utilize/apis/)
 
-- [Building Data Products](/resources/depot/utilize/dp/)
-
 - [Depot as Lakehouse](/resources/depot/utilize/lakehouse/)
 
 - [Scanning metadata](/resources/depot/utilize/scanner/)

@@ -104,8 +104,8 @@ DataOS supports the Iceberg table format on the following object storage Depots:
     version: v2alpha
     type: depot
     tags:
-        - ${{GCS}}
-        - ${{Sanity}}
+      - ${{GCS}}
+      - ${{Sanity}}
     layer: user
     depot:
       type: GCS
@@ -134,30 +134,30 @@ DataOS supports the Iceberg table format on the following object storage Depots:
     version: v2alpha
     type: depot
     tags:
-        - ${{tag1}}
-        - ${{tag2}}
+      - ${{tag1}}
+      - ${{tag2}}
     owner: ${{owner-name}}
     layer: user
     depot:
-        type: WASBS                                      
-        description: ${{description}}
-        external: ${{true}}
-        compute: ${{runnable-default}}
-        secrets:
+      type: WASBS                                      
+      description: ${{description}}
+      external: ${{true}}
+      compute: ${{runnable-default}}
+      secrets:
         - name: ${{wasbs-instance-secret-name}}-r
-            allkeys: true
+          allkeys: true
 
         - name: ${{wasbs-instance-secret-name}}-rw
-            allkeys: true
-        wasbs:                                          
-          account: ${{account-name}}
-          container: ${{container-name}}
-          relativePath: ${{relative-path}}
-          format: iceberg
-          icebergCatalogType: hadoop
-          metastoreType: rest
-          metastoreUrl: http://lakehouse-svc.cluster.local:1000
-          relativePath: ${{icebase}}          
+          allkeys: true
+      wasbs:                                          
+        account: ${{account-name}}
+        container: ${{container-name}}
+        relativePath: ${{relative-path}}
+        format: iceberg
+        icebergCatalogType: hadoop
+        metastoreType: rest
+        metastoreUrl: http://lakehouse-svc.cluster.local:1000
+        relativePath: ${{icebase}}          
     ```
 
 
