@@ -9,15 +9,15 @@ To run a Flare Job all you need is the UDL address of the input or output datase
 For reading the data, we need to configure the `name`, `dataset`, and `format` properties in the `inputs` section of the YAML. Along with this there are some additional properties which are to be mentioned in the `options` section. Then the inputs section will be as follows-
 
 ```yaml
+
 inputs:
 	- name: input
-		dataset: dataos://eventhub01:default/eventhub01
-		options:
-			eventhubs.consumergroup: "tmdc"
-			eventhubs.startingposition: "{\"offset\":\"-1\",\"seqNo\":-1,\"enqueuedTime\":null,\"isInclusive\":true}"
-		isStream: true
-```
-
+	  dataset: dataos://eventhub01:default/eventhub01
+	  options:
+		eventhubs.consumergroup: "tmdc"
+		eventhubs.startingposition: "{\"offset\":\"-1\",\"seqNo\":-1,\"enqueuedTime\":null,\"isInclusive\":true}"
+	  isStream: true
+```		
 **Sample Read configuration YAML**
 
 Let’s take a case scenario where the dataset is stored in Eventhub Depot and you have to read it from the source, perform some transformation steps and write it to the Icebase which is a managed depot within the DataOS. The read config YAML will be as follows:
@@ -33,8 +33,8 @@ For writing the data to a depot on an object store, we need to configure the `na
 ```yaml
 outputs:
 	- name: finalDf
-		dataset: dataos://eventhub01:default/eventhub01?acl=rw
-		format: EventHub
+	  dataset: dataos://sanityeventhub:default/eventhub01?acl=rw
+	  format: Eventhub
 ```
 
 **Sample Write configuration YAML**

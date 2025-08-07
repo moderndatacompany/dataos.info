@@ -147,8 +147,12 @@ stackSpec:                                              # Flare Stack-specific s
           - max_order_amount < 1000                         # Test for maximum order amount (mandatory)
 
 
-    actions:                                                # Actions configuration
-      {}                                                    # Depends on action to be performed
+    actions:                                                # Actions configuration, depending on action to be performed
+      - name: rewrite_dataset                              # Name of the Action
+        input: <input-dataset-name>                        # Input dataset name
+        options:                                           # Options
+          properties:                                      # Properties
+            "target-file-size-bytes": "<target-file-size>" # Target File Size in Bytes
 
 ```
 
@@ -273,7 +277,7 @@ stackSpec:
 | --- | --- | --- | --- |
 | string | optional | none | cpu resource limit (e.g., '1000m') |
 
-**Additional Details:** m stands for "milli," which is a thousandth of a unit. So, 1000m means 1000 milli-units of CPU, which is equivalent to one full CPU core. Here are some possible values and their meanings:
+**Additional Details:** 'm' stands for "milli," which is a thousandth of a unit. So, 1000m means 1000 milli-units of CPU, which is equivalent to one full CPU core. Here are some possible values and their meanings:
 
 - 500m: Half (0.5) of a CPU core.
 - 100m: One-tenth (0.1) of a CPU core.
@@ -335,7 +339,7 @@ stackSpec:
 | string | mandatory | none | memory allocation (e.g., '1024m') |
 
 
-**Additional details:** m stands for "megabytes." Therefore, 1024m means 1024 megabytes of memory, which is equivalent to 1 gigabyte (GB). Here are some common memory units used in such configurations:
+**Additional details:** 'm' stands for "megabytes." Therefore, 1024m means 1024 megabytes of memory, which is equivalent to 1 gigabyte (GB). Here are some common memory units used in such configurations:
 
 - 1024m or 1Gi: 1 gigabyte (GB) of memory.
 - 512m: 512 megabytes of memory.
@@ -2201,10 +2205,10 @@ The data files can be compacted in parallel within Lakehouse Depot using Flareâ€
 
 ```yaml
 actions:
-  - name: rewrite_dataset # Name of the Action
-    input: <input-dataset-name> # Input dataset name
-    options: # Options
-      properties: # Properties
+  - name: rewrite_dataset                              # Name of the Action
+    input: <input-dataset-name>                        # Input dataset name
+    options:                                           # Options
+      properties:                                      # Properties
         "target-file-size-bytes": "<target-file-size>" # Target File Size in Bytes
 ```
 

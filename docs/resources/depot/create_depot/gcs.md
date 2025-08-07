@@ -62,11 +62,6 @@ type: depot
 tags:
   - ${{GCS}}
   - ${{Sanity}}
-<<<<<<< Updated upstream
-=======
-description: ${{GCS depot for cloud storage}}
-owner: ${{owner-name}}
->>>>>>> Stashed changes
 layer: user
 depot:
   type: GCS
