@@ -17,7 +17,7 @@ An example segment declaration to create the `Illinois` segment filters the data
 ```yaml
 segments:
   - name: common_state
-    sql: "{TABLE}.state = 'Illinois'"
+    sql: "{TABLE.state} = 'Illinois'"
 ```
 
 Use ‘OR’ to define a filter involving multiple columns.
@@ -25,7 +25,7 @@ Use ‘OR’ to define a filter involving multiple columns.
 ```yaml
 segments:
   - name: common_state
-    sql: "{TABLE}.state = 'Illinois' or {TABLE}.state = 'Ohio'"
+    sql: "{TABLE.state} = 'Illinois' or {TABLE.state} = 'Ohio'"
 ```
 
 Leverage filtering keywords such as `LIKE` to define filtering criteria.
@@ -33,7 +33,7 @@ Leverage filtering keywords such as `LIKE` to define filtering criteria.
 ```yaml
 segments:
   - name: common_state
-    sql: "{TABLE}.state = 'Illinois' or {TABLE}.state like '%Ohio%'"
+    sql: "{TABLE.state} = 'Illinois' or {TABLE.state} like '%Ohio%'"
 ```
 
 Use `AND` to create dynamic criteria for segments. 
@@ -42,19 +42,8 @@ Use `AND` to create dynamic criteria for segments.
 # The common_state_and_salary segment filters the dataset to include only rows where the state is 'Illinois' and the sales value is '1000'.
 segments:
 - name: common_state_and_salary
-  sql: "{TABLE}.state = 'Illinois' and {TABLE}.sales = '1000'"
+  sql: "{TABLE.state} = 'Illinois' and {TABLE.sales} = '1000'"
 ``` 
-
-<!-- - Use `In` operator to filter multiple values for a column. It is a short hand for multiple `OR` conditions.
-
-    An example segment declaration to filter for records where the state is either Illinois or Ohio:
-
-    ```yaml
-    segments:
-    - name: common_multiple_state
-      sql: "{TABLE}.state = 'Illinois' and {TABLE}.sales = '1000'"
-    ```  -->
-
 
 ## Defining row filter policy on Segment
 
@@ -71,7 +60,7 @@ Let's demonstrate an example by adding the filter policy to the `segments` secti
 
     segments:
       - name: online_sales
-        sql: "{TABLE}.order_mode = 'online'"
+        sql: "{TABLE.order_mode} = 'online'"
         meta:
           secure:
             user_groups:

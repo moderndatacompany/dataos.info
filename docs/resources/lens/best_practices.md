@@ -200,12 +200,12 @@ tables:
 
     joins:
       - name: contacts
-        sql: "{TABLE}.contact_id = {contacts.id}"
+        sql: "{TABLE.contact_id} = {contacts.id}"
         relationship: one_to_one
 
     dimensions:
       - name: id
-        sql: "{TABLE}.id"
+        sql: "{TABLE.id}"
         type: number
         primary_key: true
 
@@ -221,12 +221,12 @@ tables:
 
     dimensions:
       - name: id
-        sql: "{TABLE}.id"
+        sql: "{TABLE.id}"
         type: number
         primary_key: true
 
       - name: name
-        sql: "{TABLE}.name"
+        sql: "{TABLE.name}"
         type: string
 ```
 

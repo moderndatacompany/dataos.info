@@ -161,7 +161,7 @@ tables:
     joins:
       - name: contacts
         relationship: one_to_many
-        sql: "{TABLE.owner_id}= {contacts.owner_id}"   
+        sql: "{TABLE.owner_id} = {contacts.owner_id}"   
 ```
 
 ## Dimensions
@@ -253,7 +253,7 @@ The measure declaration involves the following properties:
 | `type`        | The data type of the measure         | `time`, `string`, `number`, `boolean`, `count`, `sum`, `count_distinct`, `count_distinct_approx`, `avg`, `min`, `max` | Choose the appropriate type to match the measure's calculation method                                                               |                                                                                                                                |
 | `description` | Description of the measure's purpose | String                                                                                                                | Highlight Purpose and Usage                                                                                                         |                                                                                                                                |
 | `public`      | Controls visibility of the measure   | True, False                                                                                                           | Set to **`True`** for key measures that should be visible by default                                                                |                                                                                                                                |
-| `filters`     | Filters applied to the measure       | SQL conditions                                                                                                        | To aggregate a measure for a specific category, apply a filter.<br /> For example, apply a filter for product category.             | **Syntax:** <code>{table}.{dimension_name} = 'dimension_value'</code><br /> **e.g.** `sales.product_category = 'Electronics'` |
+| `filters`     | Filters applied to the measure       | SQL conditions                                                                                                        | To aggregate a measure for a specific category, apply a filter.<br /> For example, apply a filter for product category.             | **Syntax:** <code>{table.dimension_name} = 'dimension_value'</code><br /> **e.g.** `sales.product_category = 'Electronics'` |
 | `meta`        | Custom metadata                      |                                                                                                                       |                                                                                                                                     |                                                                                                                                |
 
 ```yaml
@@ -335,7 +335,7 @@ tables:
 
     segments:
       - name: active_owners
-        sql: "{TABLE}.status = 'active'"
+        sql: "{TABLE.status} = 'active'"
 ```
 
 Since the `segments` attribute type is an array, you can apply as many segments as required.
@@ -343,13 +343,13 @@ Since the `segments` attribute type is an array, you can apply as many segment
 ```yaml
 segments:
   - name: sanfrancisco_sales
-    sql: "{TABLE}.city = 'San Francisco'"
+    sql: "{TABLE} = 'San Francisco'"
 
   - name: losangeles_sales
-    sql: "{TABLE}.city = 'Los Angeles'"
+    sql: "{TABLE.city} = 'Los Angeles'"
 
   - name: chicago_sales
-    sql: "{TABLE}.city = 'Chicago'"
+    sql: "{TABLE.city} = 'Chicago'"
 
  #....
 ```

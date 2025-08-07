@@ -90,7 +90,7 @@ access:
 ```yaml
 subjects:
   tags:
-    -- "roles:id:testuser"
+    - "roles:id:testuser"
 ```
 
 ---

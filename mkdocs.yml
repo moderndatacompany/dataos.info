@@ -123,11 +123,11 @@ markdown_extensions:
   - pymdownx.tilde
 #  - pymdownx.extra
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji          # while pushing to dev
-      emoji_generator: !!python/name:materialx.emoji.to_svg       # while pushing to dev
+      # emoji_index: !!python/name:materialx.emoji.twemoji          # while pushing to dev
+      # emoji_generator: !!python/name:materialx.emoji.to_svg       # while pushing to dev
 
-      # emoji_index: !!python/name:materialx.emoji.twemoji                      # while hosting locally  
-      # emoji_generator: !!python/name:materialx.emoji.to_svg                   # while hosting locally 
+      emoji_index: !!python/name:materialx.emoji.twemoji                      # while hosting locally  
+      emoji_generator: !!python/name:materialx.emoji.to_svg                   # while hosting locally 
       
       # before pushing to dev branch replace materialx.emoji.to_svg with material.extensions.emoji.to_svg
       # before pushing to dev branch replace materialx.emoji.twemoji with material.extensions.emoji.twemoji
@@ -435,10 +435,7 @@ nav:
 
             # - Using Data Product Hub: resources/lens/exploration_of_lens_using_data_product_hub.md
 
-<<<<<<< HEAD
-=======
             
->>>>>>> 66e06414923c702eaf26303c578d8dd080d029bf
           - BI Integrations:
           #  - API Endpoints and Scopes: resources/lens/api_endpoints_and_scopes.md
             - Power BI:
