@@ -1,10 +1,8 @@
-
-
-## Batch Jobs
+# Batch Jobs
 
 Batch jobs in DataOS are used to recompute all relevant datasets during each execution cycle. This approach guarantees full data refresh and consistency across the pipeline, regardless of the number or type of data changes. Batch processing is appropriate for use cases where complete data recomputation is required on a recurring schedule.
 
-### Use Case
+## Use Case
 
 Batch jobs are suitable for:
 
@@ -12,7 +10,7 @@ Batch jobs are suitable for:
 * Scenarios requiring deterministic, end-to-end recomputation
 * Workflows where incremental logic is either unavailable or not preferred
 
-### Execution Pattern
+## Execution Pattern
 
 Each batch job follows a consistent operational pattern:
 
@@ -22,7 +20,7 @@ Each batch job follows a consistent operational pattern:
 
 This structure ensures full replacement of the target dataset during each execution.
 
-### Workflow Example
+## Workflow Example
 
 The following example demonstrates a simple Flare batch job that:
 

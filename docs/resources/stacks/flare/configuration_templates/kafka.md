@@ -44,6 +44,6 @@ outputs:
 
 Let’s take a case scenario where the output dataset is to be stored a Kafka Depot and you have to read data from the Icebase depot within the DataOS The write config YAML will be as follows
 
-```yaml title="kafa_depot_write.yml"
+```yaml title="kafka_depot_write.yml"
 --8<-- "examples/resources/stacks/flare/kafka_depot_write.yml"
 ```
