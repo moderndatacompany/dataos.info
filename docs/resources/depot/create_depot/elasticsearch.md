@@ -110,7 +110,7 @@ You can also access the details of any created Depot through the DataOS GUI in t
 
 If you need to delete a Depot, use the following command in the DataOS CLI:
 
-==== "Command"
+=== "Command"
 
     ```bash
     dataos-ctl delete -t depot -n ${{name of Depot}}
