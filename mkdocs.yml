@@ -599,7 +599,10 @@ nav:
                 - BigQuery: resources/stacks/flare/configuration_templates/google_bigquery.md
                 - Amazon Redshift: resources/stacks/flare/configuration_templates/amazon_redshift.md
               - Object Storage:
-                - resources/stacks/flare/configuration_templates/object_storage_depots.md
+                - Object Storage Configuration: 
+                  - resources/stacks/flare/configuration_templates/object_storage_configurations/index.md
+                  - Schema Configuration: resources/stacks/flare/configuration_templates/object_storage_configurations/schema_configurations.md
+                  - Data Format Configuration: resources/stacks/flare/configuration_templates/object_storage_configurations/configuration_data_format.md
                 - Delta Tables: resources/stacks/flare/configuration_templates/delta_table.md
               - Streaming Sources:
                 - Kafka: resources/stacks/flare/configuration_templates/kafka.md
@@ -619,6 +622,7 @@ nav:
             - Use Cases & Examples:
               - resources/stacks/flare/case_scenario/index.md
               - Data Ingestion:
+                - Batch Jobs: resources/stacks/flare/case_scenario/batch_jobs.md
                 - Incremental Jobs: resources/stacks/flare/case_scenario/incremental_jobs.md
                 - Streaming Jobs: resources/stacks/flare/case_scenario/streaming_jobs.md
               - Data Transformation:
@@ -643,7 +647,7 @@ nav:
                 - Delete from Dataset: resources/stacks/flare/case_scenario/delete_from_dataset.md
                 - Expire Snapshots: resources/stacks/flare/case_scenario/expire_snapshots.md
                 - Remove Orphans: resources/stacks/flare/case_scenario/remove_orphans.md
-                - Query Progress Monitoring: resources/stacks/flare/case_scenario/query_dataset_for_job_in_progress.md
+                # - Query Progress Monitoring: resources/stacks/flare/case_scenario/query_dataset_for_job_in_progress.md
               # - Data Quality:
               #   - Data Quality Jobs: resources/stacks/flare/case_scenario/data_quality_jobs.md
             - Optimizing Flare:

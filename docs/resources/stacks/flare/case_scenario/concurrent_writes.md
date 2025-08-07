@@ -37,48 +37,47 @@ description: The job ingests NY-Taxi data small files and combined them to one f
 workflow:
   title: Connect NY Taxi
   dag:
-  - name: nytaxi-vendor-one
-    title: NY-taxi data ingester-parallel 
-    description: The job ingests NY-Taxi data from dropzone into raw zone
-    spec:
-      tags:
-      - Connect
-      - NY-Taxi
-      stack: flare:6.0
-      stackSpec:
-        job:
-          explain: true
-          inputs:
-           - name: ny_taxi
-             dataset: dataos://thirdparty01:none/ny-taxi-data?acl=r
-             format: json
-             isStream: false
+    - name: nytaxi-vendor-one
+      title: NY-taxi data ingester-parallel 
+      description: The job ingests NY-Taxi data from dropzone into raw zone
+      spec:
+        tags:
+        - Connect
+        - NY-Taxi
+        stack: flare:6.0
+        stackSpec:
+          job:
+            explain: true
+            inputs:
+              - name: ny_taxi
+                dataset: dataos://thirdparty01:none/ny-taxi-data?acl=r
+                format: json
+                isStream: false
 
-          logLevel: INFO
-          outputs:
-            - name: ny_taxi_ts
-              dataset: dataos://lakehouse:raw01/ny_taxi_ts?acl=rw
-              type: iceberg
-              options:
-                 saveMode: append
-                 iceberg:
-                  properties:
-                      write.format.default: parquet
-                      write.metadata.compression-codec: gzip
-                      #overwrite-mode: dynamic # this was used only when one partition data is need to be replaced with saveMode as Overwrite that job was seperate if need will send that as well
-                  partitionSpec:
-                    - type: month # identity partitioning was used at vendor_id level
-                      column: date_col # col name = vendor_id
-                      name: month
-                  tags:
-                      - Connect
-                      - NY-Taxi
-                  title: NY-Taxi Data Partitioned
+            logLevel: INFO
 
+            outputs:
+              - name: ny_taxi_ts
+                dataset: dataos://lakehouse:raw01/ny_taxi_ts?acl=rw
+                type: iceberg
+                options:
+                  saveMode: append
+                  iceberg:
+                    properties:
+                        write.format.default: parquet
+                        write.metadata.compression-codec: gzip
+                        # overwrite-mode: dynamic # this was used only when one partition data is need to be replaced with saveMode as Overwrite that job was seperate if need will send that as well
+                    partitionSpec:
+                      - type: month # identity partitioning was used at vendor_id level
+                        column: date_col # col name = vendor_id
+                        name: month
+                    tags:
+                        - Connect
+                        - NY-Taxi
+                    title: NY-Taxi Data Partitioned
 
-          steps:
-             - sequence:
-
+            steps:
+              - sequence:
                   - name: ny_taxi_changed_dateformat
                     sql: select *, to_timestamp(pickup_datetime/1000) as date_col from ny_taxi where vendor_id = 1
 
@@ -87,48 +86,49 @@ workflow:
                       ts_ny_taxi FROM ny_taxi_changed_dateformat
 
 
-  - name: nytaxi-vendor-two
-    title: NY-taxi data ingester-parallel
-    description: The job ingests NY-Taxi data from dropzone into raw zone
-    spec:
-      tags:
-      - Connect
-      - NY-Taxi
-      stack: flare:6.0
-      stackSpec:
-        job:
-          explain: true
-          inputs:
-           - name: ny_taxi
-             dataset: dataos://thirdparty01:none/ny-taxi-data?acl=r
-             format: json
-             isStream: false
+    - name: nytaxi-vendor-two
+      title: NY-taxi data ingester-parallel
+      description: The job ingests NY-Taxi data from dropzone into raw zone
+      spec:
+        tags:
+        - Connect
+        - NY-Taxi
+        stack: flare:6.0
+        stackSpec:
+          job:
+            explain: true
+            inputs:
+              - name: ny_taxi
+                dataset: dataos://thirdparty01:none/ny-taxi-data?acl=r
+                format: json
+                isStream: false
 
-          logLevel: INFO
-          outputs:
-            - name: output02
-              dataset: dataos://lakehouse:raw01/ny_taxi_ts?acl=rw
-              options:
-                 saveMode: append
-                 iceberg:
-                  properties:
-                      write.format.default: parquet
-                      write.metadata.compression-codec: gzip
-                  partitionSpec:
-                    - type: month
-                      column: date_col
-                      name: month
-               tags:
-                  - Connect
-                  - NY-Taxi
-               title: NY-Taxi Data Partitioned
-          steps:
-             - sequence: ny_taxi_ts
+            logLevel: INFO
 
+            outputs:
+              - name: output02
+                dataset: dataos://lakehouse:raw01/ny_taxi_ts?acl=rw
+                options:
+                  saveMode: append
+                  iceberg:
+                    properties:
+                        write.format.default: parquet
+                        write.metadata.compression-codec: gzip
+                    partitionSpec:
+                      - type: month
+                        column: date_col
+                        name: month
+                tags:
+                    - Connect
+                    - NY-Taxi
+                title: NY-Taxi Data Partitioned
+            
+            steps:
+              - sequence: ny_taxi_ts
                   - name: ny_taxi_changed_dateformat
                     sql: select *, to_timestamp(pickup_datetime/1000) as date_col from ny_taxi where vendor_id = 2
 
                   - name: ny_taxi_ts
                     sql: SELECT *, date_format(now(), 'yyyyMMddHHmm') as version, now() as
-                      ts_ny_taxi FROM ny_taxi_changed_dateformat
+                        ts_ny_taxi FROM ny_taxi_changed_dateformat
 ```

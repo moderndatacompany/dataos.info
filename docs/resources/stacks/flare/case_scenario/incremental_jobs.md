@@ -5,7 +5,6 @@
 
 This case scenario describes a situation where your data source contains a large amount of data that are continuously updated. Reloading the entire data set can be time-consuming. So you want only to read new data, hence we would be using the incremental job or the incremental load method. The incremental load method (incremental job) is more efficient as compared to full data load (batch job) when working with a huge volume of data. 
 
-To know more about an Incremental Job, click [here](/resources/stacks/flare/case_scenario/#incremental-job)
 
 ## Implementation flow
 
@@ -42,7 +41,9 @@ incremental:
 
 ## Flare Workflow for Incremental Ingestion
 
-1. The Flare Workflow provided below in the code snippet reads data incrementally based on the commit timestamp.
+**1. Manifest Configuration for Incremental Ingestion** 
+
+The below Flare Workflow reads data incrementally based on the commit timestamp.
 
 ```yaml
 version: v1
@@ -54,61 +55,59 @@ tags:
 workflow:
   title: Connect Order Incremental Data
   dag:
-  - name: order-incremental-001
-    title: Order Incremental Data
-    spec:
-      tags:
-      - Connect
-      - Incremental
-      stack: flare:6.0
-      compute: runnable-default
-      # envs:  ## need to ask from yogesh about the attribute which was causing error
-      #   FLARE_AUDIT_MODE: LOG
-      #   STORE_URL: https://<full-domain>/stores/api/v1
-      stackSpec:
-        job:
-          explain: true
-          inputs:
-           - name: order_input
-             dataset: dataos://icebase:retail/orders_enriched
-             format: iceberg
- 
-          logLevel: WARN
-          outputs:
+    - name: order-incremental-001
+      title: Order Incremental Data
+      spec:
+        tags:
+        - Connect
+        - Incremental
+        stack: flare:6.0
+        compute: runnable-default
+        stackSpec:
+          job:
+            explain: true
+            inputs:
             - name: order_input
-              dataset: dataos://icebase:sample/order_incremental_08?acl=rw
+              dataset: dataos://icebase:retail/orders_enriched
               format: iceberg
-              description: Orders Data Incremental From Iceberg
-              options:
-                saveMode: overwrite
-                sort:
-                  mode: global
-                  columns:
-                    - name: order_date
-                      order: desc
-                iceberg:
-                  properties:
-                    write.format.default: parquet
-                    write.metadata.compression-codec: gzip
-                    overwrite-mode: dynamic
-                  partitionSpec:
-                    - type: day
-                      column: order_date
-                      name: day_partition # this should be different from column names in schema in column
-              tags:
-                - Connect
-                - Incremental
-              title: Order Incremental Data
+  
+            logLevel: WARN
+            outputs:
+              - name: order_input
+                dataset: dataos://icebase:sample/order_incremental_08?acl=rw
+                format: iceberg
+                description: Orders Data Incremental From Iceberg
+                options:
+                  saveMode: overwrite
+                  sort:
+                    mode: global
+                    columns:
+                      - name: order_date
+                        order: desc
+                  iceberg:
+                    properties:
+                      write.format.default: parquet
+                      write.metadata.compression-codec: gzip
+                      overwrite-mode: dynamic
+                    partitionSpec:
+                      - type: day
+                        column: order_date
+                        name: day_partition       # this should be different from column names in schema in column
+                tags:
+                  - Connect
+                  - Incremental
+                title: Order Incremental Data
 ```
 
 
-2. **Apply the Workflow using the following command:**
+**2. Apply the Workflow using the following command:**
 
 ```bash
 dataos-ctl resource apply  -f  <file-path>
 ```
 
-3. **Get the status of the Workflow using:**
+
+**3. Get the status of the Workflow using:**
 
 === "Command"
 
@@ -138,10 +137,10 @@ incremental:
   context: incremental_order_15
   sql: select * from incremental_order_15 where order_date > '$|start|' AND order_date <= '$|end|'
   keys:
-    - name: start # this will alway be stored in string
+    - name: start                           # name will always be stored in string
       sql: select to_timestamp('2020-01-01 00:00:00')
 
-    - name: end # this will alway be stored in string
+    - name: end                             # name will always be stored in string
       sql: select to_timestamp('$|start|') + INTERVAL '1' MONTH
 
   state:

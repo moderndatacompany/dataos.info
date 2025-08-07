@@ -120,7 +120,7 @@ select * from "lakehouse01"."sample"."customer_bucket_data$files" limit 10;
 You will see the output has the 2 partition [0, 1] as following:
 
 ```bash
-| **content** | **file_path**                                                                                                                        | **file_format** | **spec_id** | **partition** | **record_count** | **file_size_in_bytes** |
+| content | file_path                                                                                                                        | file_format | spec_id | partition | record_count | file_size_in_bytes |
 |-------------|----------------------------------------------------------------------------------------------------------------------------------------|-----------------|-------------|---------------|------------------|------------------------|
 | 0           | gs://lake001-apparentm-dev/lakehouse01/sample/customer_bucket_data/data/customer_id_bucket=0/00000-4-3ae81b47-62aa-45c8-8acc-2447ba767eb8-0-00002.parquet | PARQUET         | 0           | [0]           | 1186             | 12076                  |
 | 0           | gs://lake001-apparentm-dev/lakehouse01/sample/customer_bucket_data/data/customer_id_bucket=1/00000-4-3ae81b47-62aa-45c8-8acc-2447ba767eb8-0-00001.parquet | PARQUET         | 0           | [1]           | 1186             | 12076                  |
