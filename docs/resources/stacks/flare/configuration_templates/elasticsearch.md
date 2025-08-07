@@ -33,8 +33,8 @@ For writing the data to an Elasticsearch Depot, we need to configure the `name`,
 
 ```yaml
 outputs:
-	- name: output01
-	  dataset: dataos://elasticsearch:default/elastic_write?acl=rw
+  - name: output01
+    dataset: dataos://elasticsearch:default/elastic_write?acl=rw
     format: elasticsearch
 ```
 

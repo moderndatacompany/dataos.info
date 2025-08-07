@@ -3,8 +3,8 @@
 
 ## Avoid Expensive Operations
 
-> **Beneficial Scenario:** Joins causing expensive shuffles resulting in low performance
-> 
+**Beneficial Scenario:** Joins causing expensive shuffles resulting in low performance
+
 
 Joins cause shuffling hence should be looked at carefully and optimized. Try to avoid the following operations - 
 
@@ -20,8 +20,8 @@ Joins cause shuffling hence should be looked at carefully and optimized. Try to 
 
 ## Level of Parallelism
 
-> **Beneficial Scenario:** Increase or decrease partitions
-> 
+**Beneficial Scenario:** Increase or decrease partitions
+
 
 There are two ways to maintain parallelism:
 
@@ -44,8 +44,8 @@ SELECT /*+ REPARTITION_BY_RANGE(3, dept_col) */ * FROM EMP_TABLE
 
 ## Predicate Pushdown Optimization
 
-> **Beneficial Scenario:** When you want to limit the number of files and partitions SparkSQL reads while querying, to reduce disk I/O
-> 
+**Beneficial Scenario:** When you want to limit the number of files and partitions SparkSQL reads while querying, to reduce disk I/O
+
 
 Predicate Pushdown is a technique to process only the required data. Predicates can be applied to SparkSQL by defining filters in where conditions. 
 
@@ -67,14 +67,14 @@ Querying on data in buckets with predicate pushdowns produces results faster wit
 
 ## Windowing Function
 
-> **Beneficial Scenario:** When you have to carry out processing tasks such as calculating a moving average, computing a cumulative statistic, or accessing the value of rows given the relative position of the current row
-> 
+**Beneficial Scenario:** When you have to carry out processing tasks such as calculating a moving average, computing a cumulative statistic, or accessing the value of rows given the relative position of the current row
+
 
 A window function defines a frame through which we can calculate the input rows of a table. On individual row level. Each row can have a clear framework. Windowing allows us to define a window for data in the data frame. We can compare multiple rows in the same data frame.
 
 ![Diagrammatic Representation of Window Function](./sql_query_optimization/untitled.png)
 
-<center> <i> Diagrammatic Representation of Window Function</i></center>
+<center><i>Diagrammatic Representation of Window Function</i></center>
 
 **Syntax of a window function**
 
@@ -87,8 +87,8 @@ window_function [ nulls_option ] OVER
 
 ## Persisting and Caching Data in Memory
 
-> **Useful Scenario:** Dataset is accessed multiple times in a single job or task or when there is an iterative loop such as in Machine Learning algorithms or the cost to generate the partitions again is higher.
-> 
+**Useful Scenario:** Dataset is accessed multiple times in a single job or task or when there is an iterative loop such as in Machine Learning algorithms or the cost to generate the partitions again is higher.
+
 
 Spark persisting/caching is one of the best techniques to improve the performance of Spark workloads. Spark provides an optimization mechanism to store the intermediate computation of a Spark DataFrame so it can be reused in subsequent actions.
 
@@ -98,7 +98,7 @@ Spark persisting/caching is one of the best techniques to improve the performanc
 
 <aside class="callout">
 🗣️ Transformations in Spark are lazily evaluated. Cache the dataset only when you’re sure that the cached data will be used for further transformation down the line. <b>Do not cache just because the dataset is small, or it's a dimension table (rather broadcast it)</b>. Too much caching can create overhead for the LRU algorithm as it will keep evicting things being cached and bringing new ones in to replace them. And the cycle will continue. 
-Caching needs to be seen from the perspective of the data lineage, the DAG of transformations. Observe the <b>amount of data cached</b> in Spark UI and then decide.
+Caching needs to be seen from the perspective of the data lineage, the DAG of transformations. Observe the <b>amount of data cached</bin Spark UI and then decide.
 
 </aside>
 

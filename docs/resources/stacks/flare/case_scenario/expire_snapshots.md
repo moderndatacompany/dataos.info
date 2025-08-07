@@ -13,7 +13,7 @@ The [`expire_snapshots` action](/resources/stacks/flare/configurations/#expire_s
 To check the timestamp and list of snapshot add the following command in your terminal:
 
 ```bash
-dataos-ctl dataset snapshots -a data://lakehouse:retail/pos_store_product_cust
+dataos-ctl dataset snapshots -a dataos://lakehouse:retail/pos_store_product_cust
 ```
 
 **Expected output**
@@ -57,34 +57,35 @@ INFO[0003] 📂 get snapshots...completed
 The `olderThanMillis` attribute specifies a cutoff timestamp in unix format. Snapshots created before this timestamp are considered expired and will be deleted, along with their associated metadata and manifest files, if no longer referenced. This helps manage storage and keep the table metadata clean by removing historical data no longer needed for rollback or time travel.
 
 ```yaml
-version: v1 # Version
-name: wf-expire-snapshots # Name of the Workflow
-type: workflow # Type of Resource (Here its workflow)
-tags: # Tags
+name: wf-expire-snapshots                           # Name of the Workflow
+version: v1                                         # Version
+type: workflow                                      # Type of Resource (Here its workflow)
+tags:                                               # Tags
   - expire
-workflow: # Workflow Section
-  title: expire snapshots # Title of the DAG
-  dag: # Directed Acyclic Graph (DAG)
-    - name: expire # Name of the Job
-      title: expire snapshots # Title of the Job
-      spec: # Specs
-        tags: # Tags
+workflow:                                           # Workflow Section
+  title: expire snapshots                           # Title of the DAG
+  dag:                                              # Directed Acyclic Graph (DAG)
+    - name: expire                                  # Name of the Job
+      title: expire snapshots                       # Title of the Job
+      spec:                                         # Specs
+        tags:                                       # Tags
           - Expire
-        stack: flare:5.0 # Stack is Flare (so its a Flare Job)
-        compute: runnable-default # Compute
-        stackSpec: # Flare Stack specific Section
-          job: # Job Section
-            explain: true # Explain
-            logLevel: INFO # Loglevel
-            inputs: # Inputs Section
-              - name: inputDf # Input Dataset Name
-                dataset: dataos://lakehouse:retail/pos_store_product_cust?acl=rw # Input UDL
-                format: Iceberg # Format
-            actions: # Action Section
-              - name: expire_snapshots # Name of Flare Action
-                input: inputDf # Input Dataset Name
-                options: # Options
-                  olderThanMillis: "1741987433222" # Timestamp in Unix Format (All snapshots older than the timestamp are expired)
+        stack: flare:6.0                            # Stack is Flare (so its a Flare Job)
+        compute: runnable-default                   # Compute
+        stackSpec:                                  # Flare Stack specific Section
+          job:                                      # Job Section
+            explain: true                           # Explain
+            logLevel: INFO                          # Loglevel
+            inputs:                                 # Inputs Section
+              - name: inputDf                       # Input Dataset Name
+                dataset: dataos://lakehouse:retail/pos_store_product_cust?acl=rw        # Input UDL
+                format: Iceberg                     # Format
+            actions:                                # Action Section
+              - name: expire_snapshots              # Name of Flare Action
+                input: inputDf                      # Input Dataset Name
+                options:                            # Options
+                  olderThanMillis: "1741987433222"  # Timestamp in Unix Format (All snapshots older than the timestamp are expired)
+
 ```
 
 ### **`olderThanMillis`** with **`retainLast`**
@@ -93,35 +94,35 @@ Remove snapshots older than specific day and time, but retain the last 5 snapsho
 
 
 ```yaml
-version: v1 # Version
-name: wf-expire-snapshots # Name of the Workflow
-type: workflow # Type of Resource (Here its workflow)
-tags: # Tags
+name: wf-expire-snapshots                        # Name of the Workflow
+version: v1                                      # Version
+type: workflow                                   # Type of Resource (Here its workflow)
+tags:                                            # Tags
   - expire
-workflow: # Workflow Section
-  title: expire snapshots # Title of the DAG
-  dag: # Directed Acyclic Graph (DAG)
-    - name: expire # Name of the Job
-      title: expire snapshots # Title of the Job
-      spec: # Specs
-        tags: # Tags
+workflow:                                        # Workflow Section
+  title: expire snapshots                        # Title of the DAG
+  dag:                                           # Directed Acyclic Graph (DAG)
+    - name: expire                               # Name of the Job
+      title: expire snapshots                    # Title of the Job
+      spec:                                      # Specs
+        tags:                                    # Tags
           - Expire
-        stack: flare:5.0 # Stack is Flare (so its a Flare Job)
-        compute: runnable-default # Compute
-        stackSpec: # Flare Stack specific Section
-          job: # Job Section
-            explain: true # Explain
-            logLevel: INFO # Loglevel
-            inputs: # Inputs Section
-              - name: inputDf # Input Dataset Name
-                dataset: dataos://lakehouse:retail/pos_store_product_cust?acl=rw # Input UDL
-                format: Iceberg # Format
-            actions: # Action Section
-              - name: expire_snapshots # Name of Flare Action
-                input: inputDf # Input Dataset Name
-                options: # Options
-                  olderThanMillis: "1741987433222"  # Timestamp in Unix Format (All snapshots older than the   timestamp are expired)
-                  retainLast: 5
+        stack: flare:6.0                         # Stack is Flare (so its a Flare Job)
+        compute: runnable-default                # Compute
+        stackSpec:                               # Flare Stack specific Section
+          job:                                   # Job Section
+            explain: true                        # Explain
+            logLevel: INFO                       # Loglevel
+            inputs:                              # Inputs Section
+              - name: inputDf                    # Input Dataset Name
+                dataset: dataos://lakehouse:retail/pos_store_product_cust?acl=rw    # Input UDL
+                format: Iceberg                  # Format
+            actions:                             # Action Section
+              - name: expire_snapshots           # Name of Flare Action
+                input: inputDf                   # Input Dataset Name
+                options:                         # Options
+                  olderThanMillis: "1741987433222"    # Timestamp in Unix Format (All snapshots older than the timestamp are expired)
+                  retainLast: 5                       # Retain the last 5 snapshots
 ```
 
 ### **`snapshotIds`**
@@ -129,86 +130,86 @@ workflow: # Workflow Section
 Remove snapshots with snapshot ID 12345679 (note that this snapshot ID should not be the current snapshot):
 
 ```yaml
-version: v1 # Version
-name: wf-expire-snapshots-10 # Name of the Workflow
-type: workflow # Type of Resource (Here its workflow)
-tags: # Tags
+name: wf-expire-snapshots-10                     # Name of the Workflow
+version: v1                                      # Version
+type: workflow                                   # Type of Resource (Here its workflow)
+tags:                                            # Tags
   - expire
-workflow: # Workflow Section
-  title: expire snapshots # Title of the DAG
-  dag: # Directed Acyclic Graph (DAG)
-    - name: expire # Name of the Job
-      title: expire snapshots # Title of the Job
-      spec: # Specs
-        tags: # Tags
+workflow:                                        # Workflow Section
+  title: expire snapshots                        # Title of the DAG
+  dag:                                           # Directed Acyclic Graph (DAG)
+    - name: expire                               # Name of the Job
+      title: expire snapshots                    # Title of the Job
+      spec:                                      # Specs
+        tags:                                    # Tags
           - Expire
-        stack: flare:5.0 # Stack is Flare (so its a Flare Job)
-        compute: runnable-default # Compute
-        stackSpec: # Flare Stack specific Section
-          job: # Job Section
-            explain: true # Explain
-            logLevel: INFO # Loglevel
-            inputs: # Inputs Section
-              - name: inputDf # Input Dataset Name
-                dataset: dataos://lakehouse:sandbox3/test_pyflare2?acl=rw # Input UDL
-                format: Iceberg # Format
-            actions: # Action Section
-              - name: expire_snapshots # Name of Flare Action     
-                input: inputDf # Input Dataset Name               #mandatory
-                options: # Options                                #mandatory
-                  snapshotIds: 
-                    - "12345679" #snapshot with given snapshot id will be deleted
+        stack: flare:6.0                         # Stack is Flare (so its a Flare Job)
+        compute: runnable-default                # Compute
+        stackSpec:                               # Flare Stack specific Section
+          job:                                   # Job Section
+            explain: true                        # Explain
+            logLevel: INFO                       # Loglevel
+            inputs:                              # Inputs Section
+              - name: inputDf                    # Input Dataset Name
+                dataset: dataos://lakehouse:sandbox3/test_pyflare2?acl=rw    # Input UDL
+                format: Iceberg                  # Format
+            actions:                             # Action Section
+              - name: expire_snapshots           # Name of Flare Action     
+                input: inputDf                   # Input Dataset Name                     # mandatory
+                options:                         # Options                                # mandatory
+                  snapshotIds:                   # Snapshots to delete by ID
+                    - "12345679"                 # Snapshot with given snapshot ID will be deleted
+
 ```
 
 
 You can also provide multiple snapshot Ids:
 
 ```yaml
-actions: # Action Section
-  - name: expire_snapshots # Name of Flare Action     
-    input: inputDf # Input Dataset Name               #mandatory
-    options: # Options                                #mandatory
-      snapshotIds: 
-        - "1234567912" #snapshot with given snapshot id will be deleted
-        - "1122344342"
+actions:                                         # Action Section
+  - name: expire_snapshots                       # Name of Flare Action     
+    input: inputDf                               # Input Dataset Name    (mandatory)
+    options:                                     # Options               (mandatory)
+      snapshotIds:                               # Snapshots to delete by ID
+        - "1234567912"                           # Snapshot with given snapshot ID will be deleted
+        - "1122344342"                           # Snapshot with given snapshot ID will be deleted
+
 ```
-
-<!-- Olderthantimestamp also works with Flare 5.0-->
-
 
 
 ### **olderThanTimestamp**
 
 ```yaml
-version: v1 # Version
-name: expire-04 # Name of the Workflow
-type: workflow # Type of Resource (Here its workflow)
-tags: # Tags
+name: expire-04                                  # Name of the Workflow
+version: v1                                      # Version
+type: workflow                                   # Type of Resource (Here its workflow)
+tags:                                            # Tags
   - expire
-workflow: # Workflow Section
-  title: expire snapshots # Title of the DAG
-  dag: # Directed Acyclic Graph (DAG)
-    - name: expire # Name of the Job
-      title: expire snapshots # Title of the Job
-      spec: # Specs
-        tags: # Tags
+workflow:                                        # Workflow Section
+  title: expire snapshots                        # Title of the DAG
+  dag:                                           # Directed Acyclic Graph (DAG)
+    - name: expire                               # Name of the Job
+      title: expire snapshots                    # Title of the Job
+      spec:                                      # Specs
+        tags:                                    # Tags
           - Expire
-        stack: flare:5.0 # Stack is Flare (so its a Flare Job)
-        compute: runnable-default # Compute
-        stackSpec: # Flare Stack specific Section
-          job: # Job Section
-            explain: true # Explain
-            logLevel: INFO # Loglevel
-            inputs: # Inputs Section
-              - name: inputDf # Input Dataset Name
-                dataset: dataos://lakehouse:retail/pos_store_product_cust?acl=rw # Input UDL
-                format: Iceberg # Format
-            actions: # Action Section
-              - name: expire_snapshots # Name of Flare Action
-                input: inputDf # Input Dataset Name
-                options: # Options
-                  olderThanTimestamp: '2025-04-19 00:00:00.000' # Timestamp(All snapshots older than the timestamp are expired)
-                  retainLast: 2
+        stack: flare:6.0                         # Stack is Flare (so its a Flare Job)
+        compute: runnable-default                # Compute
+        stackSpec:                               # Flare Stack specific Section
+          job:                                   # Job Section
+            explain: true                        # Explain
+            logLevel: INFO                       # Loglevel
+            inputs:                              # Inputs Section
+              - name: inputDf                    # Input Dataset Name
+                dataset: dataos://lakehouse:retail/pos_store_product_cust?acl=rw    # Input UDL
+                format: Iceberg                  # Format
+            actions:                             # Action Section
+              - name: expire_snapshots           # Name of Flare Action
+                input: inputDf                   # Input Dataset Name
+                options:                         # Options
+                  olderThanTimestamp: '2025-04-19 00:00:00.000'    # Timestamp (All snapshots older than the timestamp are expired)
+                  retainLast: 2                                       # Retain the last 2 snapshots
+
 ```
 
 
