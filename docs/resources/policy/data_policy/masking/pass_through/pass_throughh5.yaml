@@ -14,8 +14,6 @@ policy:
     dataset: {{patients}}
     collection: {{test_healthcare}}
     depot: {{icebase}}
-    description: {{policy to allow staff with role:id:staff tag to view patient's data
-    name: test-phi-reader-staff}}
     priority: {{30}}
     type: mask
     mask:

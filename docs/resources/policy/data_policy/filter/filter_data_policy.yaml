@@ -16,6 +16,7 @@ policy:
     type: filter
     filters:
       - column: {{vehicle_id}}
+        operator: {{equals}}
         value: {{FL}}
     selector:
       user:

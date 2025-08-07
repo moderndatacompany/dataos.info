@@ -12,10 +12,10 @@ tags:
 grant:
   policy_use_case_id: run-as-user
   subjects:
-  - users:id:test-user
+    - users:id:test-user
   values:
-    run-as-dataos-resource: 
-     - path : ${valid-path}
+    run-as-dataos-resource:
+      - path: ${valid-path}
   requester: iamgroot
   notes: the user test-user needs to runas the test-developer for data dev purposes
   approve: false
@@ -40,7 +40,7 @@ grant:
   write: false
 ```
 
-#### **`policy-use-case-id`**
+#### **`policy_use_case_id`**
 
 **Description:** Identifier for the policy use case.
 
@@ -51,7 +51,7 @@ grant:
 **Example usage:**
 
 ```yaml
-policy-use-case-id: my_policy_use_case
+policy_use_case_id: my_policy_use_case
 ```
 
 #### **`subjects`**
