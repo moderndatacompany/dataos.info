@@ -1,14 +1,33 @@
 # Implementing Masking Data Policy
 
-
-When a Data Policy is implemented in DataOS, there are two primary options available:
-
-**Using exisitng Data Masking Policies:** Predefined policies in DataOS can be applied to column data by assigning tags to the relevant columns via Metis. For example, if the goal is to mask an age column using a predefined policy such as age bucketing, the appropriate tag (e.g., PII.Age) should be applied to the column, and the pre-existing policy will be automatically enforced.
-
-**Creating Custom Data Masking Policies:** If the predefined Data policies do not meet specific requirements, a custom policy can be created. This involves defining both a custom tag and a custom Data Policy. For instance, if the default age bucketing policy is unsuitable, a new policy can be created to group ages according to the desired preferences.
+Data masking policies in DataOS can be implemented using one of the following approaches:
 
 
-## How to implement Data Policy using exisitng Data Masking Policies?
+## Using existing Data Masking Policies
+
+DataOS includes a set of predefined data masking policies that are automatically enforced when certain standard tags (such as `PII.DateOfBirth`, `PII.Age`, etc.) are applied to dataset columns within DataOS using [Metis](/docs/interfaces/metis/) UI.
+
+The following tags are attached with data masking policies maintained by the DataOS. Each of these policies is assigned a default priority of `99` and is enforced when the tag is applied.
+
+| Tag                 | Policy Name            | Masking Behavior                                                                                      |
+| ------------------- | ---------------------- | ----------------------------------------------------------------------------------------------------- |
+| `PII.Age`           | `age`                  | Groups age values into predefined buckets (e.g., 18–25).                                              |
+| `PII.DateOfBirth`   | `dateofbirth`          | Displays only the year of birth.                                                                      |
+| `PII.Email`         | `email`                | Masks all characters before the `@` symbol.                                                           |
+| `PII.PhoneNumber`   | `phonenumber`          | Replaces the last five digits of an individual’s phone number with ‘XXXX’.                            |
+| `PII.Name`          | `name`                 | Masks an individual’s name by replacing it with a generated hash.                                     |
+| `PII.SocialSecurityNumber`| `socialsecuritynumber`| Replaces an individual's SSN with a random string of the same length. Data type is preserved.    |
+| `PII.LicenseNumber` | `licensenumber`        | Replaces an individual's license number with a random string of the same length. Data type preserved. |
+| `PII.Gender`        | `gender`               | Applies default gender masking logic (e.g., value redaction or standard grouping).                    |
+| `PII.Income`        | `income`               | Applies income range masking using predefined brackets.                                               |
+| `PII.Location`      | `location`             | Reduces location granularity (e.g., shows only city or region).                                       |
+
+
+## Creating Custom Data Masking Policies
+
+If the predefined Data policies do not meet specific requirements, a custom policy can be created. This involves defining both a custom tag and a custom Data Policy. For instance, if the default age bucketing policy is unsuitable, a new policy can be created to group ages according to the desired preferences.
+
+## How to implement Data Policy using existing Data Masking Policies?
 
 The initial step in applying a Data Policy involves assigning tags to columns. Tags serve as identifiers, facilitating the categorization and management of data based on its sensitivity and regulatory requirements.
 
@@ -18,7 +37,7 @@ Let's first examine the state of our Age column data before implementing the pol
 
 <div style="text-align: center;">
   <img src="/resources/policy/how_to_guide/maskingbefore.png" alt="Sample inaccessible dataset" style="border:1px solid black; width: 80%; height: auto;">
-  <figcaption> Before: The Age column presents individual ages without any grouping</ficaption>
+  <figcaption> Before: The Age column presents individual ages without any grouping</figcaption>
 </div>
 
 ### **Assign tags to columns**
@@ -27,35 +46,35 @@ Let's first examine the state of our Age column data before implementing the pol
 
     <div style="text-align: center;">
     <img src="/resources/policy/how_to_guide/dataoshomepage.png" alt="Sample inaccessible dataset" style="border:1px solid black; width: 80%; height: auto;">
-    <figcaption>Metis</ficaption>
+    <figcaption>Metis</figcaption>
     </div>
 
-2. Search for the specific table containing the data to be masked, e.g.,**`icebase.retail.customer`**.
+2. Search for the specific table containing the data to be masked, e.g., **`lakehouse.retail.customer`**.
 
     <div style="text-align: center;">
     <img src="/resources/policy/how_to_guide/metis.png" alt="Sample inaccessible dataset" style="border:1px solid black; width: 80%; height: auto;">
-    <figcaption>Metis</ficaption>
+    <figcaption>Metis</figcaption>
     </div>
 
 3. Select the relevant table from the search results to display all associated columns.
     
     <div style="text-align: center;">
     <img src="/resources/policy/how_to_guide/customertable.png" alt="Sample inaccessible dataset" style="border:1px solid black; width: 80%; height: auto;">
-    <figcaption>Metis - customer table</ficaption>
+    <figcaption>Metis - customer table</figcaption>
     </div>
 
 4. Within the **Schema** section, click on the search box to search specific columns intended for grouping or redaction. e.g., to categorize the Age column using the bucket_number masking policy, locate the Age column within the table.
     
     <div style="text-align: center;">
     <img src="/resources/policy/how_to_guide/customertable.png" alt="Sample inaccessible dataset" style="border:1px solid black; width: 80%; height: auto;">
-    <figcaption>Metis - customer table Schema section</ficaption>
+    <figcaption>Metis - customer table Schema section</figcaption>
     </div>
 
 5. In the Tag column, click on the **Add** button and select the appropriate tag, such as **`PII.Age`**, to apply to the column.
 
     <div style="text-align: center;">
     <img src="/resources/policy/how_to_guide/customer_table_01.png" alt="Sample inaccessible dataset" style="border:1px solid black; width: 80%; height: auto;">
-    <figcaption> Applying PII.Age tag on Age column in customer table</ficaption>
+    <figcaption> Applying PII.Age tag on Age column in customer table</figcaption>
     </div>
 
 *You have now successfully applied a tag to the Age column.*
@@ -64,7 +83,7 @@ Let's first examine the state of our Age column data before implementing the pol
 
     <div style="text-align: center;">
     <img src="/resources/policy/how_to_guide/Pasted image.png" alt="Sample inaccessible dataset" style="border:1px solid black; width: 80%; height: auto;">
-    <figcaption> After applying the tag the age bucket data policy is activated </ficaption>
+    <figcaption> After applying the tag the age bucket data policy is activated </figcaption>
     </div>
 
 
@@ -72,7 +91,7 @@ Let's first examine the state of our Age column data before implementing the pol
 
     <div style="text-align: center;">
     <img src="/resources/policy/how_to_guide/csutomer_table_02.png" alt="Sample inaccessible dataset" style="border:1px solid black; width: 80%; height: auto;">
-    <figcaption> Governance tab </ficaption>
+    <figcaption> Governance tab </figcaption>
     </div>
 
 
@@ -88,14 +107,14 @@ To create a new tag within Metis, follow these steps:
 
 - **Access Tag Groups:** Choose the appropriate tag group like `PII` where you want to create a new tag, or create a new tag group if needed.
 
-- **Add a New Tag:** Click on the Add Tag button in the top right corner to initiate the creation of a new tag. for instance, `mycustomtag`.
+- **Add a New Tag:** Click on the Add Tag button in the top right corner to initiate the creation of a new tag. For instance, `mycustomtag`.
 
--**Define Tag Details:** Provide a Name and Description for the new tag to clearly identify its purpose and usage.
+- **Define Tag Details:** Provide a Name and Description for the new tag to clearly identify its purpose and usage.
 
 
 ### **Create a Data Policy manifest file**
 
-After creating the tag, the next step is to define the policy associated with it. For example, if you need to customize an age bucket data masking policy for the tag PII.mycustomtag, the policy structure will be as follows:
+After creating the tag, the next step is to define the policy associated with it. For example, if you need to customize an age bucket data masking policy for the tag `PII.mycustomtag`, the policy structure will be as follows:
 
 
 ???tip "Custom age bucketing data policy"
@@ -107,43 +126,43 @@ After creating the tag, the next step is to define the policy associated with it
     layer: user
     description: "data policy to filter zip data"
     policy:
-    data:
-        priority: 1 #lower number superesede the higher number during policy evalution
+      data:
+        priority: 1 #lower number supersede the higher number during policy evaluation
         type: mask
         depot: icebase
         collection: retail
         dataset: customer
         selector:
-        column:
+          column:
             tags:
-            - PII.mycustomtag
-        user:
+              - PII.mycustomtag
+          user:
             match: any
             tags:
-            - "roles:id:user"
+              - "roles:id:user"
         mask:
-        operator: bucket_number
-        bucket_number:
+          operator: bucket_number
+          bucket_number:
             buckets:
-            - 15
-            - 25
-            - 30
-            - 35
-            - 40
-            - 45
-            - 50
-            - 55
-            - 60
+              - 15
+              - 25
+              - 30
+              - 35
+              - 40
+              - 45
+              - 50
+              - 55
+              - 60
         name: age_masking_policy
         description: An age bucket is formed by grouping the ages together. Based on defined
-        age buckets, the age of individuals is redacted and anonymized. If an
-        individual’s age falls under a defined bucket, it is replaced with the
-        lowest value of the bucket.
+          age buckets, the age of individuals is redacted and anonymized. If an
+          individual's age falls under a defined bucket, it is replaced with the
+          lowest value of the bucket.
     ```
 
 !!! info
 
-        To override an existing default policy, a custom policy must be assigned a priority between 1 and 98. Lower priority numbers take precedence during policy evaluation.     
+    To override an existing default policy, a custom policy must be assigned a priority between 1 and 98. Lower priority numbers take precedence during policy evaluation.     
 
 ### **Assign tag to the appropriate column of the dataset**
 
@@ -155,6 +174,6 @@ Once the tag has been created and its associated policy defined, the next step i
 
 **Identify the Column:** Browse through the dataset schema to find the column that requires the tag application.
 
-### **Apply the Tag:**
+### **Apply the Tag**
 
 Apply the tag using the same process as in first method.

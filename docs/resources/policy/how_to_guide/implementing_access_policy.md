@@ -34,7 +34,7 @@ User with user tag `user:id:iamgroot` needs access to **Sample Ingested Dataset*
 
 ## Implementation of Access Policy
 
-### **Creating a Acces Policy manifest file**
+### **Creating a Access Policy manifest file**
 
 To enable access to the dataset, a Policy Resource can be used to grant access to pre-existing users or a subset of those users. Below is an example Policy configuration:
 
@@ -144,7 +144,7 @@ These tags can also be viewed in the user's profile on the DataOS UI.
 </div>
 
 
-The user with the identifier 'iamgroot' can now access and query the sample dataset due to the access policy implemented with the custom tag.
+The user with the identifier `iamgroot` can now access and query the sample dataset due to the access policy implemented with the custom tag.
 
 The following screenshot displays the query result on the DataOS Workbench.
 

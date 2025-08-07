@@ -29,8 +29,8 @@ Data Developers can create a Grant Resource by applying the manifest file of a G
       subjects:
         - users:id:test-user
       values:
-        run-as-dataos-resource: 
-         - path: ${valid-path}
+        run-as-dataos-resource:
+          - path: ${valid-path}
       requester: iamgroot
       notes: the user test-user needs to run as the test-developer for data dev purposes
       approve: false
@@ -90,10 +90,10 @@ The Grant-specific section of a Grant manifest comprises attributes-specific to 
       grant:
         policy_use_case_id: ${policy-use-case-id}
         subjects:
-        - ${users:id:test-user}
+          - ${users:id:test-user}
         values:
-          run-as-dataos-resource: 
-          - path: ${valid-path}
+          run-as-dataos-resource:
+            - path: ${valid-path}
         requester: ${iamgroot}
         notes: ${the user test-user needs to run as the test-developer for data dev purposes}
         approve: ${false}
@@ -104,10 +104,10 @@ The Grant-specific section of a Grant manifest comprises attributes-specific to 
       grant:
         policy_use_case_id: run-as-user
         subjects:
-        - users:id:test-user
+          - users:id:test-user
         values:
-          run-as-dataos-resource: 
-          - path: ${valid-path}
+          run-as-dataos-resource:
+            - path: ${valid-path}
         requester: iamgroot
         notes: the user test-user needs to run as the test-developer for data dev purposes
         approve: false

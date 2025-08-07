@@ -338,7 +338,7 @@ Segments are filters that allow for the application of specific conditions to re
 ```yaml
 segments:
   - name: state_filter
-    sql: "{TABLE}.state IN ('Illinois', 'Ohio')"  #Here {TABLE} refers to the current table (jinja templating)
+    sql: "{TABLE.state} IN ('Illinois', 'Ohio')"  #Here {TABLE} refers to the current table (jinja templating)
 ```
 
 To know more about segments click [here](/resources/lens/segments/).

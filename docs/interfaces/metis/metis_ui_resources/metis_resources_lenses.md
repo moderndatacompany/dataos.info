@@ -86,7 +86,6 @@ In addition to basic Cluster information, the following details and options are 
 | Attribute | Description |
 | --- | --- |
 | Explore in Studio | Opens up Lens Studio for exploring the deployed Lens |
-<!-- | Iris | Opens up Iris dashboard | -->
 | Explore Assets | Explore assets on top of which Lens is built |
 | Meta Version | Provides information on the latest Meta version. Click to see the version history and corresponding updates.  |
 | Created | Time of creation of Lens |

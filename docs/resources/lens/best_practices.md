@@ -14,8 +14,6 @@ By following these best practices, teams can reduce errors, improve communicatio
 - Views: `opportunities`, `cloud_accounts`, `arr`
 - Measures: `count`, `avg_price`, `total_amount_shipped`
 - Dimensions: `name`, `is_shipped`, `created_at`
-<!-- - Pre-aggregations: `main`, `orders_by_status`, `lambda_invoices` -->
-
 ---
 
 ## SQL expressions
@@ -202,12 +200,12 @@ tables:
 
     joins:
       - name: contacts
-        sql: "{TABLE}.contact_id = {contacts.id}"
+        sql: "{TABLE.contact_id} = {contacts.id}"
         relationship: one_to_one
 
     dimensions:
       - name: id
-        sql: "{TABLE}.id"
+        sql: "{TABLE.id}"
         type: number
         primary_key: true
 
@@ -223,12 +221,12 @@ tables:
 
     dimensions:
       - name: id
-        sql: "{TABLE}.id"
+        sql: "{TABLE.id}"
         type: number
         primary_key: true
 
       - name: name
-        sql: "{TABLE}.name"
+        sql: "{TABLE.name}"
         type: string
 ```
 
