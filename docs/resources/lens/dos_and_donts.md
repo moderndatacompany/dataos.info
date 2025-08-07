@@ -95,7 +95,7 @@ In this case, the name field is referenced from both the users and contacts tabl
 
 #### **Use the `TABLE` constant**
 
-If you need to refer to a column in the current table, use the TABLE constant `"{TABLE}.column_name"` (e.g., `"{TABLE.status}"` to avoid repeating the table's name.
+If you need to refer to a column in the current table, use the TABLE constant `"{TABLE.column_name}"` (e.g., `"{TABLE.status}"` to avoid repeating the table's name.
 
 ```yaml
 tables:
@@ -103,26 +103,26 @@ tables:
     sql: {{ load_sql('users') }}
     joins:
       - name: contacts
-        sql: "{TABLE}.contact_id = {contacts}.id"
+        sql: "{TABLE.contact_id} = {contacts.id}"
         relationship: one_to_one
     dimensions:
       - name: id
-        sql: "{TABLE}.id"
+        sql: "{TABLE.id}"
         type: number
         primary_key: true
       - name: name
-        sql: "COALESCE({TABLE}.name, {contacts}.name)"
+        sql: "COALESCE({TABLE.name}, {contacts.name})"
         type: string
 
   - name: contacts
     sql: {{ load_sql('contacts') }}
     dimensions:
       - name: id
-        sql: "{TABLE}.id"
+        sql: "{TABLE.id}"
         type: number
         primary_key: true
       - name: name
-        sql: "{TABLE}.name"
+        sql: "{TABLE.name}"
         type: string
 ```
 
