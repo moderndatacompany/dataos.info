@@ -42,6 +42,5 @@ workflow:
             steps:
               - sequence:
                   - name: cities
-                    doc: Pick all columns from cities and add version as yyyyMMddHHmm formatted
-                      timestamp.
+                    doc: Pick all columns from cities and add version as yyyyMMddHHmm formatted timestamp.
                     sql: SELECT * FROM city_connect limit 10

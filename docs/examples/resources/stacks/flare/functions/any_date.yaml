@@ -43,7 +43,7 @@ workflow:
                       write.format.default: parquet
                       write.metadata.compression-codec: snappy
                 title: Policy Details Data Transformations
-               
+
             steps:
               - sequence:
                   - name: finalDf
@@ -53,7 +53,7 @@ workflow:
                       from input_data
 
                     functions:
-                      - name: cleanse_column_names  #check for 
+                      - name: cleanse_column_names  
                       - name: change_column_case 
                         case: lower
 

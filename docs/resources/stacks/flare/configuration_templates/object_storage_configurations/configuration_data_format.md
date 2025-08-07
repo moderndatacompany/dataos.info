@@ -20,8 +20,10 @@ inputs:
       positionalFieldMatching: true/false
 ```
 
-> **Note**: For a more comprehensive understanding of AVRO options and their usage, please refer to the refer to [Avro options](https://spark.apache.org/docs/latest/sql-data-sources-avro.html#data-source-option).
-> 
+!!! info "Note" 
+      
+      For a more comprehensive understanding of AVRO options and their usage, please refer to the refer to [Avro options](https://spark.apache.org/docs/latest/sql-data-sources-avro.html#data-source-option).
+
 
 ## CSV
 
@@ -50,8 +52,10 @@ inputs:
       inferSchema: true
 ```
 
-> **Note**: For a detailed understanding of each option available for CSV files, please refer to the [CSV options](https://spark.apache.org/docs/latest/sql-data-sources-csv.html#data-source-option) documentation.
-> 
+!!! info "Note" 
+      
+      For a detailed understanding of each option available for CSV files, please refer to the [CSV options](https://spark.apache.org/docs/latest/sql-data-sources-csv.html#data-source-option) documentation.
+
 
 ## Iceberg
 
@@ -72,8 +76,10 @@ outputs:
           column: trip_duration
 ```
 
-> **Note:** For more information on the available options when working with Iceberg files, refer to the [Apache Iceberg](https://iceberg.apache.org/docs/latest/spark-configuration/) documentation.
-> 
+!!! info "Note" 
+      
+      For more information on the available options when working with Iceberg files, refer to the [Apache Iceberg](https://iceberg.apache.org/docs/latest/spark-configuration/) documentation.
+
 
 ## JSON
 
@@ -96,8 +102,10 @@ inputs:
       multiLine: true/false
 ```
 
-> **Note**: For a comprehensive understanding of the available options for JSON files, please refer to the [JSON options](https://spark.apache.org/docs/latest/sql-data-sources-json.html#data-source-option) documentation.
-> 
+!!! info "Note" 
+      
+      For a comprehensive understanding of the available options for JSON files, please refer to the [JSON options](https://spark.apache.org/docs/latest/sql-data-sources-json.html#data-source-option) documentation.
+
 
 ## ORC
 
@@ -114,8 +122,10 @@ inputs:
       mergeSchema: false/true # Sets whether we should merge schemas collected from all ORC part-files.
 ```
 
-> **Note**: For more details on the available options when working with ORC files, refer to the [ORC options](https://spark.apache.org/docs/latest/sql-data-sources-orc.html) documentation.
-> 
+!!! info "Note" 
+      
+      For more details on the available options when working with ORC files, refer to the [ORC options](https://spark.apache.org/docs/latest/sql-data-sources-orc.html) documentation.
+
 
 ## Parquet
 
@@ -136,8 +146,10 @@ inputs:
       datetimeRebaseMode: EXCEPTION/CORRECTED/LEGACY
 ```
 
-> **Note**: For detailed information on the available options for Parquet files, please refer to the [Parquet options](https://spark.apache.org/docs/latest/sql-data-sources-parquet.html#data-source-option) documentation.
-> 
+!!! info "Note" 
+      
+      For detailed information on the available options for Parquet files, please refer to the [Parquet options](https://spark.apache.org/docs/latest/sql-data-sources-parquet.html#data-source-option) documentation.
+
 
 ## Text
 
@@ -162,8 +174,10 @@ inputs:
         lineSep: \r, \r\n, \n
 ```
 
-> **Note**: For more details on the available options when working with text files, refer to the [Text options](https://spark.apache.org/docs/latest/sql-data-sources-text.html#data-source-option) documentation.
-> 
+!!! info "Note" 
+      
+      For more details on the available options when working with text files, refer to the [Text options](https://spark.apache.org/docs/latest/sql-data-sources-text.html#data-source-option) documentation.
+
 
 ## XLSX
 
@@ -187,8 +201,10 @@ inputs:
     format: xlsx
 ```
 
-> **Note**: For a more detailed understanding of the available options when working with XLSX files, refer to the [Spark Excel options](https://github.com/crealytics/spark-excel) documentation. ****
-> 
+!!! info "Note" 
+      
+      For a more detailed understanding of the available options when working with XLSX files, refer to the [Spark Excel options](https://github.com/crealytics/spark-excel) documentation. ****
+
 
 ## XML
 
@@ -215,5 +231,6 @@ inputs:
       dateFormat: ISO_DATE
 ```
 
-> **Note**: For a detailed understanding of the available options when working with XML files, refer to the [Spark XML options](https://github.com/databricks/spark-xml) documentation. 
->
+!!! info "Note" 
+      
+      For a detailed understanding of the available options when working with XML files, refer to the [Spark XML options](https://github.com/databricks/spark-xml) documentation. 

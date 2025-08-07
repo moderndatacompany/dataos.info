@@ -1,4 +1,4 @@
-# Object Storage Depots
+# Object Storage Configurations
 
 To execute Flare Jobs on object storage depots such as Amazon S3, Azure ABFSS, Azure WASBS, Google Cloud Storage etc., a corresponding depot must first be created. If the required depot has not yet been created, refer to the following documentation links:
 
@@ -14,13 +14,13 @@ Depots created on top of supported object stores enable uniform interaction acro
 
 To run a Flare Job, the following information is required:
 
-- The Uniform Data Locator (UDL) address of the input dataset (for read operations) or the output dataset (for write operations)
+- The Uniform Data Locator (UDL) address of the input dataset (for read operations) or the output dataset (for write operations).
 
-- The file format of the associated data
+- The file format of the associated data.
 
 ## Common Configurations
 
-### **Read Config**
+### **Read Configuration**
 
 For reading the data, we need to configure the `name`, `dataset`, and `format` properties in the `inputs` section of the YAML. For instance, if your dataset name is `city_connect`, UDL address dataset stored in Azure Blob Storage is `dataos://thirdparty01:sampledata/avro`, and the file format is `avro`. Then the `inputs` section will be as follows-
 
@@ -47,7 +47,8 @@ inputs:
   - name: sample_states                                               # name of the dataset
     dataset: dataos://thirdparty01:none/states                        # address of the input dataset
     format: csv                                                       # file format
-    schema: "{\"type\":\"struct\",\"fields\":[{\"name\":\"country_code\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}},{\"name\":\"country_id\",\"type\":\"long\",\"nullable\":true,\"metadata\":{}},{\"name\":\"id\",\"type\":\"long\",\"nullable\":true,\"metadata\":{}},{\"name\":\"latitude\",\"type\":\"double\",\"nullable\":true,\"metadata\":{}},{\"name\":\"longitude\",\"type\":\"double\",\"nullable\":true,\"metadata\":{}}]}" # schema
+                                                                      # schema defining
+    schema: "{\"type\":\"struct\",\"fields\":[{\"name\":\"country_code\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}},{\"name\":\"country_id\",\"type\":\"long\",\"nullable\":true,\"metadata\":{}},{\"name\":\"id\",\"type\":\"long\",\"nullable\":true,\"metadata\":{}},{\"name\":\"latitude\",\"type\":\"double\",\"nullable\":true,\"metadata\":{}},{\"name\":\"longitude\",\"type\":\"double\",\"nullable\":true,\"metadata\":{}}]}"
 
   - name: transaction_abfss                                           # name of the dataset
     dataset: dataos://abfss01:default/transactions_abfss_01           # address of the input dataset
@@ -69,9 +70,11 @@ Let’s take a case scenario where the dataset is stored in Azure Blob File Syst
 --8<-- "examples/resources/stacks/flare/object_storage_depots_read.yml"
 ```
 
-### **Write Config**
+### **Write Configuration**
 
-> **Note:** The `?acl=rw` suffix in the UDL indicates that the Access Control List (ACL) is configured with read-write permissions. The address of the output dataset can also be specified using the format `dataos://[depot]:[collection]?acl=rw`. The system will automatically append the name of the output dataset to this address.
+!!! info "Note" 
+
+      The `?acl=rw` suffix in the UDL indicates that the Access Control List (ACL) is configured with read-write permissions. The address of the output dataset can also be specified using the format `dataos://[depot]:[collection]?acl=rw`. The system will automatically append the name of the output dataset to this address.
 
 For writing the data to a depot on an object store, we need to configure the `name`,  `dataset` and `format` properties in the `outputs` section of the YAML. For instance, if your dataset is to be stored at the UDL address  `dataos://thirdparty01:sampledata`  by the name `output01` and the file format is `avro`. Then the `outputs` section will be as follows
 
@@ -95,26 +98,26 @@ Let’s take a case scenario where the output dataset is to be stored in Azure B
 
 ## Schema Configurations
 
-This section describes schema configuration strategies used to manage and customize schemas for supported data sources within the Flare stack. For implementation guidance, refer to the [Schema Configurations documentation](/resources/stacks/flare/configuration_templates/object_storage_depots/schema_configurations/).
+This section describes schema configuration strategies used to manage and customize schemas for supported data sources within the Flare stack. For implementation guidance, refer to the [Schema Configurations documentation](/resources/stacks/flare/configuration_templates/object_storage_configurations/schema_configurations/).
 
 
 
 
 
-## Advanced Configurations
+## Data Formats Configurations
 
-For detailed information for all supported formats, see [Source Configurations by Data Formats](/resources/stacks/flare/configuration_templates/object_storage_depots/source_configurations_by_data_formats/).
+For detailed information for all supported formats, see [Source Configurations by Data Formats](/resources/stacks/flare/configuration_templates/object_storage_configurations/configuration_data_format/).
 The following list provides format-specific configuration references for integrating various data sources with the Flare stack:
 
-* **AVRO** – Describes how to configure [AVRO files](/resources/stacks/flare/configuration_templates/object_storage_depots/source_configurations_by_data_formats#avro) for source ingestion. 
+* **AVRO** – Describes how to configure [AVRO files](/resources/stacks/flare/configuration_templates/object_storage_configurations/configuration_data_format/#avro) for source ingestion. 
 
-* **CSV** – Covers options for parsing and validating CSV-formatted input. [View CSV configuration](/resources/stacks/flare/configuration_templates/object_storage_depots/source_configurations_by_data_formats#csv)
-* **Iceberg** – Provides guidance on configuring [Apache Iceberg table formats](/resources/stacks/flare/configuration_templates/object_storage_depots/source_configurations_by_data_formats#iceberg). 
-* **JSON** – Explains how to manage nested structures and data typing for [JSON input](/resources/stacks/flare/configuration_templates/object_storage_depots/source_configurations_by_data_formats#json).
-* **ORC** – Details parameter settings for optimized ingestion of [ORC files](/resources/stacks/flare/configuration_templates/object_storage_depots/source_configurations_by_data_formats#orc).
-* **Parquet** – Outlines best practices for reading schema-aware [Parquet data](/resources/stacks/flare/configuration_templates/object_storage_depots/source_configurations_by_data_formats#parquet).
-* **Text** – Defines configuration options for [Plain text data sources](/resources/stacks/flare/configuration_templates/object_storage_depots/source_configurations_by_data_formats#text).
-* **XLSX** – Specifies how to configure [Excel spreadsheet(XLSX) ingestion](/resources/stacks/flare/configuration_templates/object_storage_depots/source_configurations_by_data_formats#xlsx).
-* **XML** – Provides details on parsing and validating structured [XML input](/resources/stacks/flare/configuration_templates/object_storage_depots/source_configurations_by_data_formats#xml).
+* **CSV** – Covers options for parsing and validating CSV-formatted input. [View CSV configuration](/resources/stacks/flare/configuration_templates/object_storage_configurations/configuration_data_format/#csv)
+* **Iceberg** – Provides guidance on configuring [Apache Iceberg table formats](/resources/stacks/flare/configuration_templates/object_storage_configurations/configuration_data_format/#iceberg). 
+* **JSON** – Explains how to manage nested structures and data typing for [JSON input](/resources/stacks/flare/configuration_templates/object_storage_configurations/configuration_data_format/#json).
+* **ORC** – Details parameter settings for optimized ingestion of [ORC files](/resources/stacks/flare/configuration_templates/object_storage_configurations/configuration_data_format/#orc).
+* **Parquet** – Outlines best practices for reading schema-aware [Parquet data](/resources/stacks/flare/configuration_templates/object_storage_configurations/configuration_data_format/#parquet).
+* **Text** – Defines configuration options for [Plain text data sources](/resources/stacks/flare/configuration_templates/object_storage_configurations/configuration_data_format/#text).
+* **XLSX** – Specifies how to configure [Excel spreadsheet(XLSX) ingestion](/resources/stacks/flare/configuration_templates/object_storage_configurations/configuration_data_format/#xlsx).
+* **XML** – Provides details on parsing and validating structured [XML input](/resources/stacks/flare/configuration_templates/object_storage_configurations/configuration_data_format/#xml).
 
 
