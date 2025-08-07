@@ -54,10 +54,6 @@ type: depot
 tags:
   - ${{dropzone}}
   - ${{mysql}}
-<<<<<<< Updated upstream
-=======
-owner: ${{owner-name}}
->>>>>>> Stashed changes
 layer: user
 depot:
   type: MYSQL
@@ -76,17 +72,6 @@ depot:
     port: ${{port}}
     params: # Required
       tls: ${{skip-verify}}
-<<<<<<< Updated upstream
-  external: ${{true}}
-  secrets:
-    - name: ${{instance-secret-name}}-r
-      keys: 
-        - ${{instance-secret-name}}-r
-    - name: ${{instance-secret-name}}-rw
-      keys: 
-        - ${{instance-secret-name}}-rw
-=======
->>>>>>> Stashed changes
 ```
 
 
@@ -116,7 +101,7 @@ depot:
     - name: ${{instance-secret-name}}-rw
       keys: 
         - ${{instance-secret-name}}-rw
-
+ 
 ```
 
 To get the details of each attribute, please refer [to this link](/resources/depot/configurations).

@@ -92,12 +92,12 @@ Begin by creating a manifest file to hold the configuration details for your Big
     description: ${description} # Purpose of the Instance-secret
     layer: user # DataOS layer
     instance-secret:
-    type: key-value-properties # Secret type
-    acl: r # Access control: 'r' for read-only
-    data:
+      type: key-value-properties # Secret type
+      acl: r # Access control: 'r' for read-only
+      data:
         projectid: ${project-name} # Replace with Bigquery project ID
         email: ${email-id} # Replace with Bigquery email ID
-    files:
+      files:
         json_keyfile: ${json-file-path}
 
     ```
@@ -112,12 +112,12 @@ Begin by creating a manifest file to hold the configuration details for your Big
     description: ${description} # Purpose of the Instance-secret
     layer: user # DataOS layer
     instance-secret:
-    type: key-value-properties # Secret type
-    acl: rw # Access control: 'rw' for read-write
-    data:
+      type: key-value-properties # Secret type
+      acl: rw # Access control: 'rw' for read-write
+      data:
         projectid: ${project-name} # Replace with Bigquery project ID
         email: ${email-id} # Replace with Bigquery email ID
-    files:
+      files:
         json_keyfile: ${json-file-path}
     ```
 
