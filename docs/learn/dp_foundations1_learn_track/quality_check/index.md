@@ -142,7 +142,7 @@ stackSpec:
             attributes:
               category: Freshness
 
-        - invalid_count(customer_id) = 1 :
+        - invalid_count(customer_id) = 1:
             name: Customer Id  should not be zero
             valid min: 1
             attributes:

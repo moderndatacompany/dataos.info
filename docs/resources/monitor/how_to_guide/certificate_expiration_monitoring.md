@@ -13,7 +13,7 @@ description: ${{SSL certificate is about to expire less then 24 hrs}} # Resource
 layer: user
 runAsUser: ${{iamgroot}} # User ID of User (or use case assignee)
 monitor:
-
+  
 # Monitor-specific section
   schedule: ${{'*/2 * * * *'}} # Monitor schedule
   properties:

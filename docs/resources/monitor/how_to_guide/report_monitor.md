@@ -14,10 +14,9 @@ type: monitor
 tags:
   - dataos:type:resource
   - dataos:layer:user
-description: Attention! workflow run is succeeded.
+description: "Attention! workflow run is succeeded."
 layer: user
 monitor:
-
 # Monitor-specific section
   schedule: '*/3 * * * *'
   incident:

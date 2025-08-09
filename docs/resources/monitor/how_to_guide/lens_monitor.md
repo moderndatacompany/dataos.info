@@ -25,10 +25,10 @@ monitor:
             workspace: public
             sslmode: 'disable'
         ql: SELECT deal_momentum, deal_name FROM deal_momemtum_analysis where deal_momentum is not null and deal_momentum != 0
-        comparisonColumn: {
+        comparisonColumn: 
             name: deal_momentum,
             dataType: int64
-        }
+        
     rightExpression:
       queryCoefficient: 0
       queryConstant: 50
