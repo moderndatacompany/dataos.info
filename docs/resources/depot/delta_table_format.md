@@ -87,8 +87,8 @@ DataOS supports the Delta table format on the following object storage Depots:
     version: v2alpha
     type: depot
     tags:
-        - ${{GCS}}
-        - ${{Sanity}}
+      - ${{GCS}}
+      - ${{Sanity}}
     layer: user
     depot:
       type: GCS
@@ -113,8 +113,8 @@ DataOS supports the Delta table format on the following object storage Depots:
     version: v2alpha
     type: depot
     tags:
-        - ${{tag1}}
-        - ${{tag2}}
+      - ${{tag1}}
+      - ${{tag2}}
     owner: ${{owner-name}}
     layer: user
     depot:
