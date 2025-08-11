@@ -209,19 +209,19 @@ After connecting, one can run queries in the Postgres dialect, just like the fol
 
 ```sql
 SELECT 
-	 customer.country,
-	 purchase.purchase_date,
-	 MEASURE(purchase.total_spend)
- FROM
-	 customer
-	 CROSS JOIN purchase
- WHERE
-	 (purchase.purchase_date BETWEEN '2024-01-01T15:37:55' AND '2024-12-31T15:38:02' AND (customer.country = 'Australia'))
- GROUP BY 1,2
- LIMIT 
-	 10
- OFFSET 
-	 0
+    customer.country,
+    purchase.purchase_date,
+    MEASURE(purchase.total_spend)
+FROM
+    customer
+    CROSS JOIN purchase
+WHERE
+    (purchase.purchase_date BETWEEN '2024-01-01T15:37:55' AND '2024-12-31T15:38:02' AND (customer.country = 'Australia'))
+GROUP BY 1,2
+LIMIT 
+    10
+OFFSET 
+    0
 ```
 
 ## Query format in the SQL API
