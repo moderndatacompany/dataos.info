@@ -30,7 +30,7 @@ monitor:
         dsn: 'postgres://USER:PASS@HOSTNAME:5432/DB?sslmode=require'
     operator: greater_than_equals
   incident:
-    type: pulsar
+    type: postgres
     name: monitor-incident
     category: equation
     severity: info
