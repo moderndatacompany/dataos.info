@@ -363,7 +363,6 @@ This guide provided a reference use case for monitoring Data Product metrics in 
 - Set up incidents on top of events using Report Monitor. See [How to Create a Report Monitor?](/resources/monitor/how_to_guide/report_monitor/)
 - Set up incidents on top of Postgres source using Equation Monitor. See [How to Create a Equation Monitor on top of Postgres source?](/resources/monitor/equation_monitor_on_postgres/)
 - Set up incidents for certificate expiration using Equation Monitor. See [How to Generate incidents for certificate expiration?](/resources/monitor/how_to_guide/certificate_expiration_monitoring/)
-- Set up the custom body template in Pager to add Alert messages. See [How to Create a Custom Body Template for Pager?](/resources/pager/custom_body_template_for_pager/)
 
 
 
