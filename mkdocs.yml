@@ -464,16 +464,18 @@ nav:
           - Types: 
             - Equation Monitor: resources/monitor/equation.md
             - Report Monitor: resources/monitor/report.md
-            - Stream Monitor: resources/monitor/streaming.md
-          - First Steps: resources/monitor/first_steps.md
+            # - Stream Monitor: resources/monitor/streaming.md
+          # - First Steps: resources/monitor/first_steps.md
           - Configurations: resources/monitor/configurations.md
           - Recipes: 
             - Add context columns to Monitors: resources/monitor/how_to_guide/context_column.md
-            - Create a Report Monitor: resources/monitor/how_to_guide/report_monitor.md
-            - Create a Stream Monitor: resources/monitor/how_to_guide/stream_monitor.md
             - Create an Equation Monitor on Lens: resources/monitor/how_to_guide/lens_monitor.md
             - Create an Equation Monitor on Postgres: resources/monitor/equation_monitor_on_postgres.md
             - Generate incidents for certificate expiration: resources/monitor/how_to_guide/certificate_expiration_monitoring.md
+          - Use Case: resources/monitor/usecases/lens_metrics.md  
+          - Best Practices: resources/monitor/bestpractices.md
+        
+          
         - Operator: 
           - resources/operator/index.md
           - Configurations: resources/operator/configurations.md
