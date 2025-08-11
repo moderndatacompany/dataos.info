@@ -36,16 +36,6 @@
             type: ${{prom}} # mandatory
             cluster: ${{thanos}}
             description: ${{query description}}
-            dsn: ${{integer}}
-            dsnSecretRef:
-              name: ${{secret}} # mandatory
-              workspace: ${{sandbox}}
-              key: ${{username}}
-              keys:
-                - ${{username}}
-                - ${{password}}
-              allkeys: ${{true}}
-              consumptionType: ${{string}}
             ql: certmanager_certificate_expiration_timestamp_seconds{container="cert-manager-controller", endpoint="9402", exported_namespace="caretaker", instance="10.212.4.9:9402", issuer_group="cert-manager.io", issuer_kind="ClusterIssuer", issuer_name="ca", job="cert-manager-ds", name="caretaker-api-cert", namespace="cert-manager", pod="cert-manager-ds-7d8cc489dd-d46sb", service="cert-manager-ds"} - time() # mandatory
             comparisonColumn:  
               name: ${{column1}}
@@ -57,17 +47,7 @@
           queryConstant: ${{7766092}} # mandatory
           query: # mandatory
             type: ${{trino}} # mandatory
-            cluster: ${{themis}} # mandatory
-            dsn: ${{integer}} 
-            dsnSecretRef: 
-              name: ${{secret}} # mandatory
-              workspace: ${{sandbox}}
-              key: ${{username}}
-              keys:
-                - ${{username}}
-                - ${{password}}
-              allkeys: ${{true}}
-              consumptionType: ${{string}}       
+            cluster: ${{themis}} # mandatory     
             ql: ${{SELECT metric_value FROM icebase.soda.soda_check_metrics_01 WHERE metric_name = 'missing_count' ORDER BY timestamp DESC LIMIT 1;}} # mandatory
             comparisonColumn: 
               name: ${{column1}} # mandatory
@@ -103,7 +83,7 @@
     # Report Monitor specification
       report: 
         source: # mandatory
-          dataOSInstance:
+          dataOsInstance:
             path: ${{/collated/api/v1/reports/resources/runtime?id=workflow:v1:snowflakescannerdepotis:public}} # mandatory
         conditions: # mandatory
           - valueComparison:
@@ -117,8 +97,7 @@
               startedJqFilter: ${{}} # mandatory
               completedJqFilter: ${{}} # mandatory
               operator: ${{equals}} # mandatory
-              value: ${{running}} # mandatory
-      runAsUser: iamgroot              
+              value: ${{running}} # mandatory             
     ```    
 
 ## Configuration
@@ -394,16 +373,6 @@ monitor:
         type: ${{prom}} # mandatory
         cluster: ${{thanos}}
         description: ${{query description}}
-        dsn: ${{integer}}
-        dsnSecretRef:
-          name: ${{secret}} # mandatory
-          workspace: ${{sandbox}}
-          key: ${{username}}
-          keys:
-            - ${{username}}
-            - ${{password}}
-          allkeys: ${{true}}
-          consumptionType: ${{string}}
 ```
 
 ---
@@ -518,14 +487,14 @@ monitor:
 monitor:
   report: 
     source:
-      dataOSInstance:
+      dataOsInstance:
         path: /collated/api/v1/reports/resources/runtime?id=workflow:v1:snowflakescannerdepotis:public
 ```
 
 ---
 
 
-#### **`dataOSInstance`**
+#### **`dataOsInstance`**
 
 **Description:** Specifies the DataOS instance paths from which to fetch report data.
 
@@ -539,7 +508,7 @@ monitor:
 monitor:
   report: 
     source:
-      dataOSInstance:
+      dataOsInstance:
         path: /collated/api/v1/reports/resources/runtime?id=workflow:v1:snowflakescannerdepotis:public
 ```
 
@@ -557,7 +526,7 @@ monitor:
 monitor:
   report: 
     source:
-      dataOSInstance:
+      dataOsInstance:
         path: /collated/api/v1/reports/resources/runtime?id=workflow:v1:snowflakescannerdepotis:public
 ```
 
@@ -577,7 +546,7 @@ monitor:
 monitor:
   report: 
     source:
-      dataOSInstance:
+      dataOsInstance:
         path: /collated/api/v1/reports/resources/runtime?id=workflow:v1:snowflakescannerdepotis:public
 ```
 
