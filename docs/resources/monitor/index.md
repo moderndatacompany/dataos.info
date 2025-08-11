@@ -49,7 +49,7 @@ This section provides practical examples for creating and configuring different 
 
 ## Use case
 
-This section outlines real-world scenarios where Monitor Resources can be effectively applied within DataOS. Use cases include proactive incident detection, automated alerting for critical workflows, monitoring infrastructure health, and ensuring compliance with SLAs. Reviewing these examples will help you understand how to leverage Monitors to enhance observability and reliability in your DataOS environment.
+This section outlines real-world scenario where Monitor Resources can be effectively applied within DataOS. Please refer to [this link](/resources/monitor/usecases/lens_metrics/) for the use case.
 
 ## Best Practices
 
