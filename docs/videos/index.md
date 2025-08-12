@@ -1,7 +1,5 @@
 ---
 title: Videos
-search:
-  boost: 4
 tags:
   - Videos
 hide:
