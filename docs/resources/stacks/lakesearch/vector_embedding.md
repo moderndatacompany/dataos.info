@@ -178,6 +178,7 @@ The following Python implementation defines an embedding model using the Sentenc
                   devices
               options:
                 start: 1735084800
+                start_query: "SELECT max(updated_at) FROM devices"
                 step: -86400
                 batch_sql: |
                   WITH base AS (
@@ -219,6 +220,7 @@ The following Python implementation defines an embedding model using the Sentenc
                   devices
               options:
                 start: 1735084800
+                start_query: "SELECT max(updated_at) FROM devices"
                 step: 86400
                 batch_sql: |
                   WITH base AS (

@@ -50,13 +50,13 @@ Begin by creating a manifest file to hold the configuration details for the Orac
 name: ${{depot-name}}
 version: v2alpha
 type: depot
+description: ${{"Oracle Sample data"}}
 tags:
   - ${{dropzone}}
   - ${{oracle}}
 layer: user
 depot:
   type: ORACLE                                    
-  description: ${{"Oracle Sample data"}}
   oracle:
     subprotocol: ${{subprotocol}} # for example "oracle:thin"                                     
     host: ${{host}}
