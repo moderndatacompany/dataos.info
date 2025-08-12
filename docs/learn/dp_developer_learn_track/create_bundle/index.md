@@ -1,3 +1,8 @@
+---
+title: Lens
+search:
+  exclude: true
+---
 # Creating a deployable Bundle Resource
 
 After completing the creation of required Resources, it's time to assemble them for building your data product. This involves setting up data ingestion and transformation processes, managing credentials, enforcing quality rules, and more. 

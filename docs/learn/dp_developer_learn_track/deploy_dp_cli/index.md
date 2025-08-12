@@ -1,3 +1,8 @@
+---
+title: Deploy Data Product
+search:
+  exclude: true
+---
 # Deploying your Data Product on DataOS
 
 After setting up the essential YAML files — the Bundle YAML, Data Product Specification YAML, and Lens YAMLs — the final step is to deploy your data product on the Data Product Hub. Using the apply command in the DataOS CLI, you can seamlessly register your data product, making it available for users to discover and consume. This deployment process involves resource instantiation and metadata registration.
