@@ -9,7 +9,7 @@ Imagine you've built a source-aligned Data Product called retaildata that delive
 
 ## Deploying Data Product
 
-Ddeployment process has three stages:
+Deployment process has three stages:
 
 - **Instantiate Resources**: Using the Bundle YAML, all referenced resources such as Workflows, Secrets, and Services are created.
 

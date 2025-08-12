@@ -4,7 +4,7 @@ After creating and testing all necessary components, it's time to assemble them 
 
 ## Scenario
 
-In our source-aligned retail Data Product, a bundle in DataOS packages ingestion, quality checks, monitors, and pagers into a single deployable unit. It keeps everything connected and consistent, making it easy to deploy the product across enironments with minimal setup.
+In our source-aligned retail Data Product, a bundle in DataOS packages ingestion, quality checks, monitors, and pagers into a single deployable unit. It keeps everything connected and consistent, making it easy to deploy the product across environments with minimal setup.
 
 ## Quick concepts
 
@@ -19,7 +19,7 @@ Ensure you have created all necessary Resources, such as Worker, Workflow, Servi
 The following DataOS Resources are required for the example scenarios:
 
 1. Instance-Secret to store credentials safely
-2. Depot to connect to the source system.(e.g., bigquery)
+2. Depot to connect to the source system (e.g., BigQuery)
 3. Flare Workflow to ingest raw data from Bigquery to DataOS Lakehouse
 4. Soda Workflows to check the quality of data
 5. Monitors and Pagers to observe Workflow and Quality failures
@@ -28,7 +28,7 @@ The following DataOS Resources are required for the example scenarios:
 
 The Bundle manifest defines all related resources and their interdependencies. It ensures they are packaged and deployed together.
 
-Create a Bundle resource with the above mentioned Resources. The Bundle is necessary to link all relevant artifacts to your Data Product. This enables both data producers and consumers to view all workspace-level resources needed for the DP under one umbrella.
+Create a Bundle resource with the above mentioned Resources. The Bundle links all relevant artifacts to your Data Product, allowing both producers and consumers to view all required workspace-level resources in one place.
 
 In the below example, the bundle contains:
 
@@ -59,7 +59,7 @@ bundle:
       workspace: <workspace_name>
       
     - id: quality_monitor
-      file: 
+      file: <actual_path>
       workspace: <workspace_name>
       
     - id: workflow_monitor

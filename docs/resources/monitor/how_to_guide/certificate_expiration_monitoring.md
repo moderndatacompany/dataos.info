@@ -19,11 +19,11 @@ tags:
   - dataos:type:resource
 description: Monitor for SSL certificates expiring in less than 24 hours
 layer: user
-runAsUser: iamgroot
-
+runAsUser: ${{iamgroot}} # User ID of User (or use case assignee)
 monitor:
-  # Monitor-specific section
-  schedule: '*/2 * * * *' # Runs every 2 minutes
+  
+# Monitor-specific section
+  schedule: ${{'*/2 * * * *'}} # Monitor schedule
   properties:
     alert_window: 24h
   incident:

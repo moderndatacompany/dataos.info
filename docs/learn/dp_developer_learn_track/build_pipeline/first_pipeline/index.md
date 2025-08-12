@@ -1,3 +1,8 @@
+---
+title: Pipeline
+search:
+  exclude: true
+---
 # Creating your first data pipeline
 
 In this topic, you navigate through the process of building a batch data pipeline using DataOS Resources. By the end of this topic, you'll be able to create and manage efficient batch data pipelines in your own DataOS environment.
