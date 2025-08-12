@@ -49,7 +49,7 @@ The image represents the configuration file of DataOS Resources.
 
 <div style="text-align: center;">
   <img src="/resources/sample_yaml.png" alt="Attributes used to define an instance of a Resource" style="border:1px solid black; width: 80%; height: auto;">
-  <figcaption>Attributes used to define an instance of a Resource</ficaption>
+  <figcaption>Attributes used to define an instance of a Resource</figcaption>
 </div>
 
 

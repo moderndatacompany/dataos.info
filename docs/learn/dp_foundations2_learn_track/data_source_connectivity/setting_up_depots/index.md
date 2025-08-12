@@ -39,7 +39,7 @@ instance-secret:
 ```
 
 <aside class="callout">
-📖 Best Practice: You can use enviroment variables for attributes like `$POSTGRES_USERNAME` and `$POSTGRES_PASSWORD` to ensure that sensitive data is not hardcoded into the manifest file.
+📖 Best Practice: You can use environment variables for attributes like `$POSTGRES_USERNAME` and `$POSTGRES_PASSWORD` to ensure that sensitive data is not hardcoded into the manifest file.
 
 </aside>
 
@@ -91,19 +91,16 @@ depot:
       keys: 
         - postgres-rw
       allkeys: true
-
     - name: postgres-r    # Reference the Instance Secret for read access
       keys: 
         - postgres-r
       allkeys: true
-    
   jdbc:
     subprotocol: postgresql
     host: usr-db-dataos-ck-eymm-dataostra-stg.postgres.database.azure.com # Replace with the database host URL
     port: 5432  # Replace with the database port number
     database: postgres  # Replace with the database name to connect to
 ```
----
 
 ### **Step 3: Applying the Depot manifest**
 
@@ -112,7 +109,6 @@ Apply the Depot manifest using the following command:
 ```bash
 dataos-ctl resource apply -f <filename with path>
 ```
----
 
 ### **Step 4: Verify the Connection**
 
@@ -124,8 +120,6 @@ dataos-ctl get -t depot
 
 This command displays the details of the configured Depot, confirming that it is active and properly connected to the PostgreSQL database.
 
----
-
 <aside>
 Ensure that the name of your Instance secret is ${depot-name}-${acl}. For instance, if your Depot name is postgres and the acl(access control list) is rw, then the instance secret name will be postgres-rw.
 </aside>
@@ -135,7 +129,9 @@ To simplify the creation of depots for commonly used data sources, a set of pre-
 To use these templates, you must fill in the key-value properties in the manifest file with the specific details of your data source. The required values will vary depending on the data source. A basic understanding of your organization's data infrastructure, as well as the necessary credentials or connection details, is essential for configuring these templates effectively.
 
 Similarly you can create a Depot for Azure using Instance-secret:
-??? "Click to see Azure Depot manifest"
+
+<details>
+<summary>Click to see Azure Depot manifest</summary>
 
     ```yaml
     name: thirdparty
@@ -155,12 +151,12 @@ Similarly you can create a Depot for Azure using Instance-secret:
       owner: 
       description: Default Third Party Depot for new
       secrets:
-            - name: thirdparty-rw
-              keys:
-              - thirdparty-rw
-            - name: thirdparty-r
-              keys:
-              - thirdparty-r
+        - name: thirdparty-rw
+          keys:
+            - thirdparty-rw
+        - name: thirdparty-r
+          keys:
+            - thirdparty-r
       external: true
       compute: query-default
       resources:
@@ -177,7 +173,7 @@ Similarly you can create a Depot for Azure using Instance-secret:
       source: thirdparty
     ```
 
----
+</details>
 
 ## FAQs
 
@@ -186,7 +182,7 @@ Similarly you can create a Depot for Azure using Instance-secret:
 **In Instance-secret names:**
 
 - Only lowercase letters (`a-z`), digits (`0-9`), and hyphens/dashes () are allowed.
-- Hyphens/dashes cannot be at the start or end of the string.
+- Hyphens/dashes (-) cannot be at the start or end of the string.
 - No uppercase letters or additional special characters are allowed.
 
 **In Depot names:**
@@ -219,8 +215,6 @@ dataos-ctl get -t depot -a
 ```
 
 Depot details can also be explored via the Metis UI in DataOS.
-
----
 
 ## Additional learning resources
 
