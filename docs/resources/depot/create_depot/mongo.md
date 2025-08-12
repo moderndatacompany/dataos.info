@@ -70,13 +70,13 @@ This section involves the alternative steps to create a MongoDB  Depot without a
     version: ${{v1}} # depot version
     name: ${{"mongodb03"}}
     type: ${{depot}}
+    description: ${{"MongoDb depot for sanity"}}
     tags:
       - ${{MongoDb}}
       - ${{Sanity}}
     layer: ${{user}}
     depot:
       type: ${{mongodb}}
-      description: ${{"MongoDb depot for sanity"}}
       compute: ${{query-default}}
       spec:
         subprotocol: ${{"mongodb"}}
@@ -143,13 +143,13 @@ This section involves the alternative steps to create a MongoDB  Depot without a
     version: ${{v1}} # depot version
     name: ${{"mongodb"}}
     type: ${{depot}}
+    description: ${{"MongoDb depot for sanity"}}
     tags:
       - ${{MongoDb}}
       - ${{Sanity}}
     layer: ${{user}}
     depot:
       type: ${{mongodb}}
-      description: ${{"MongoDb depot for sanity"}}
       compute: ${{query-default}}
       spec:
         subprotocol: ${{"mongodb"}}
@@ -222,12 +222,12 @@ This section involves the alternative steps to create a MongoDB  Depot without a
     version: ${{v1}}
     name: ${{"ldmmongodb"}}
     type: ${{depot}}
+    description: ${{"MongoDb depot for sanity"}}
     tags:
       - ${{Mongodb}}
     layer: ${{user}}
     depot:
       type: ${{mongodb}}
-      description: ${{"MongoDb depot for sanity"}}
       compute: ${{query-default}}
       spec:
         subprotocol: ${{"mongodb"}}

@@ -38,11 +38,11 @@ DataOS supports the Iceberg table format on the following object storage Depots:
     name: ${{depot-name}}
     version: v2alpha
     type: depot
+    description: ${{description}}
     tags:
         - ${{tag1}}
     owner: ${{owner-name}}
     layer: user
-    description: ${{description}}
     depot:
       type: S3                                          
       external: ${{true}}
@@ -71,6 +71,7 @@ DataOS supports the Iceberg table format on the following object storage Depots:
     name: ${{depot-name}}
     version: v2alpha
     type: depot
+    description: ${{description}}
     tags:
       - ${{tag1}}
       - ${{tag2}}
@@ -78,7 +79,6 @@ DataOS supports the Iceberg table format on the following object storage Depots:
     layer: user
     depot:
       type: ABFSS                                       
-      description: ${{description}}
       external: ${{true}}
       compute: ${{runnable-default}}
       secrets:
@@ -103,13 +103,13 @@ DataOS supports the Iceberg table format on the following object storage Depots:
     name: ${{"sanitygcs01"}}
     version: v2alpha
     type: depot
+    description: ${{"GCS depot for sanity"}}
     tags:
       - ${{GCS}}
       - ${{Sanity}}
     layer: user
     depot:
       type: GCS
-      description: ${{"GCS depot for sanity"}}
       compute: ${{runnable-default}}
       external: ${{true}}
       secrets:
@@ -133,6 +133,7 @@ DataOS supports the Iceberg table format on the following object storage Depots:
     name: ${{depot-name}}
     version: v2alpha
     type: depot
+    description: ${{description}}
     tags:
       - ${{tag1}}
       - ${{tag2}}
@@ -140,7 +141,6 @@ DataOS supports the Iceberg table format on the following object storage Depots:
     layer: user
     depot:
       type: WASBS                                      
-      description: ${{description}}
       external: ${{true}}
       compute: ${{runnable-default}}
       secrets:
