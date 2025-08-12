@@ -1,6 +1,6 @@
 # Scanning metadata
 
-After creating the Depot, a user can run a Scanner Workflow for Depot to extract the metadata which later can be accessed on Metis UI. To know more about Scanner, please refer to this.
+After creating the Depot, a user can run a [Scanner Workflow](/resources/stacks/scanner/) for Depot to extract the metadata which later can be accessed on Metis UI. To know more about Scanner, please refer to this.
 
 **For example:**
 A user have created a Depot now he wants to add the meta data related to the data present in that Depot to Metis UI so that anyone can understand what the data have what kind of use cases we can solve with that, for which he created a Scanner workflow targetting the Depot which extracts all the meta data and register it to the Metis UI.
