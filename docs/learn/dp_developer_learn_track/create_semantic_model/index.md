@@ -1,3 +1,8 @@
+---
+title: Semantic Model
+search:
+  exclude: true
+---
 # Build a semantic model 
 
 This guide outlines the end-to-end process for building and deploying a semantic model (Lens) in DataOS. It covers everything from conceptualizing the model to implementing, testing, and deploying it for analytical and business needs.

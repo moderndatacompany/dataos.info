@@ -422,7 +422,7 @@ Segment + Recommendation: Get customers who are “Moderate Risk” and have a r
     
 ![moderate_risk_fish.png](/learn/dp_consumer_learn_track/integrate_lakesearch/moderate_risk_fish.png)
     
-### **9. Show Only Specific Fields: ID and Recommendation**
+### **9. Show Only Specific Fields**
     
 Minimize API response by returning only essential fields. Only return `customer_id` and `cross_sell_recommendations` .
     
