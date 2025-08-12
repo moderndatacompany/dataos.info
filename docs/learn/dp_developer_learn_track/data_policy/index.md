@@ -1,3 +1,8 @@
+---
+title: Defining data policy
+search:
+  exclude: true
+---
 # Defining data policies for semantic model
 
 This topic outlines how to apply data masking and row filtering policies to control data access for your Lens model based on user groups.

@@ -1,3 +1,8 @@
+---
+title: business objectives and KPIs
+search:
+  exclude: true
+---
 # Defining business objectives and KPIs
 
 This topic covers the process of defining business objectives and key performance indicators (KPIs) to guide the development of a data model that aligns with strategic goals.

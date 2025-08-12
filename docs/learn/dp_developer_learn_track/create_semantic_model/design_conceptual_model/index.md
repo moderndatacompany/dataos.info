@@ -1,3 +1,8 @@
+---
+title: Conceptual Model
+search:
+  exclude: true
+---
 # Designing the conceptual model
 
 In this topic, you’ll learn how to design a conceptual semantic model that transforms business needs into structured data. As a Data Engineer, your role is to create a model that aligns with business goals, supports key metrics, and drives insights for decision-making.
