@@ -179,6 +179,7 @@ Create a manifest file for Lakesearch Service. The below given manifest file of 
                 city
             options:
               start: 1734979551
+              start_query: "SELECT max(ts_city) FROM city"
               step: 86400
               batch_sql: |
                 WITH base AS (
@@ -323,6 +324,7 @@ Create a manifest file for Lakesearch Service. The below given manifest file of 
                 devices
             options:
               start: 1735084800
+              start_query: "SELECT max(updated_at) FROM devices"
               step: -86400
               batch_sql: |
                 WITH base AS (
@@ -364,6 +366,7 @@ Create a manifest file for Lakesearch Service. The below given manifest file of 
                 devices
             options:
               start: 1735084800
+              start_query: "SELECT max(updated_at) FROM devices"
               step: 86400
               batch_sql: |
                 WITH base AS (

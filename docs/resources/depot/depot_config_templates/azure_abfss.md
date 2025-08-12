@@ -22,6 +22,7 @@ To create a Depot of type ‘ABFSS‘, utilize the following template:
     name: {{depot-name}}
     version: v1
     type: depot
+    description: {{description}}
     tags:
       - {{tag1}}
       - {{tag2}}
@@ -29,7 +30,6 @@ To create a Depot of type ‘ABFSS‘, utilize the following template:
     layer: user
     depot:
       type: ABFSS                                       
-      description: {{description}}
       external: {{true}}
       compute: {{runnable-default}}
       connectionSecret:                                 
@@ -55,6 +55,7 @@ To create a Depot of type ‘ABFSS‘, utilize the following template:
     name: {{depot-name}}
     version: v2alpha
     type: depot
+    description: {{description}}
     tags:
       - {{tag1}}
       - {{tag2}}
@@ -62,7 +63,6 @@ To create a Depot of type ‘ABFSS‘, utilize the following template:
     layer: user
     depot:
       type: ABFSS                                       
-      description: {{description}}
       external: {{true}}
       compute: {{runnable-default}}
       connectionSecret:                                 
