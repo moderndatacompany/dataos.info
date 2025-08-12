@@ -49,6 +49,7 @@ Begin by creating a manifest file to hold the configuration details for your Big
 name: ${{depot-name}}
 version: v2alpha
 type: depot
+description: ${{description}} # optional
 tags:
   - ${{dropzone}}
   - ${{bigquery}}
@@ -56,7 +57,6 @@ owner: ${{owner-name}}
 layer: user
 depot:
   type: BIGQUERY                 
-  description: ${{description}} # optional
   external: ${{true}}
   secrets:
     - name: ${{instance-secret-name}}-r

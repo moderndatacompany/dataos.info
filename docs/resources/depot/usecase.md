@@ -59,12 +59,12 @@ After creating an Instance Secret, next step is to create a manifest file for De
 name: mssqldepot
 version: v2alpha
 type: depot
+description: MSSQL data
 tags:
 - mssql
 layer: user
 depot:
 type: JDBC
-description: MSSQL data
 jdbc:
     subprotocol: sqlserver
     host: ${{host}}
