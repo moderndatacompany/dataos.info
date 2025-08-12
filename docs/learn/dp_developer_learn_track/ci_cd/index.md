@@ -1,3 +1,8 @@
+---
+title: CI/CD
+search:
+  exclude: true
+---
 # Data Product CI/CD Pipeline
 
 Ready to get your Data Product up and running smoothly? In this guide, we'll show you how to set up a CI/CD pipeline for deploying a Data Product using Bitbucket. A CI/CD pipeline (Continuous Integration/Continuous Deployment) automates the process of building, testing, and deploying your Data Product, saving you time and reducing manual work.

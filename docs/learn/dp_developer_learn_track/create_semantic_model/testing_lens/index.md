@@ -1,3 +1,8 @@
+---
+title: Lens
+search:
+  exclude: true
+---
 # Test Lens locally in development environment 
 
 This guide walks you through steps to validate your SQL queries and Lens model configuration directly on your local machine to confirm that your tables, joins, and data relationships behave as intended before moving to the production environment on DataOS.

@@ -1,3 +1,8 @@
+---
+title: Observability
+search:
+  exclude: true
+---
 # Pipeline observability
 
 In this topic, you will learn how to configure a Monitor Resource to generate incidents whenever a workflow fails and set up a Pager Resource to send notifications for these incidents.
