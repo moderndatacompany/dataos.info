@@ -14,7 +14,7 @@ tags:
   - pod
   - stream
   - monitor
-description: observing the temprature in a sample streaming data.
+description: Observing the temperature in a sample streaming data
 worker:
   stack: stream-monitor
   compute: runnable-default

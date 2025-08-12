@@ -1,3 +1,8 @@
+---
+title: Pipelines
+search:
+  exclude: true
+---
 # Building and maintaining data pipelines
 
 In this topic, you’ll learn how to build and maintain data pipelines to deliver high-quality, reliable data for your data products. Your goal is to ensure seamless data flow through various processes, focusing on accuracy and consistency.

@@ -1,3 +1,8 @@
+---
+title: API
+search:
+  exclude: true
+---
 # Creating Data APIs
 
 In this section of the module, you'll be building data APIs to create data applications. This guide provides the step-by-step instructions you need to build data APIs within DataOS.

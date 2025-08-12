@@ -1,3 +1,8 @@
+---
+title: quality check
+search:
+  exclude: true
+---
 # Implementing quality checks
 
 Ensuring high data quality is critical for delivering reliable insights and maintaining trust in your Data Products. This guide will walk you through implementing using Soda Stack in DataOS. These quality checks help ensure that the data is accurate, complete, and ready for reliable analysis.
