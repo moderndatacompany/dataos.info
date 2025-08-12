@@ -86,14 +86,13 @@ In DataOS, a Compute is classified as a [Resource-type.](/resources/types/) Belo
 ```yaml
 name: ${{my-compute}}
 version: v1 
-type: compute 
+type: compute
 tags: 
   - ${{dataos:type:resource}}
-  - ${{compute}}
+  - ${{resource:type:compute}}
 description: ${{This is a sample compute YAML configuration}}
 owner: ${{iamgroot}}
 ```
-
 
 For detailed customization options and additional attributes within the Resource Section, refer to the [Attributes of Resource section.](/resources/manifest_attributes/).
 

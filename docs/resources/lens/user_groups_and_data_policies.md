@@ -159,7 +159,7 @@ You can apply a row filter policy to show specific data based on user groups.
   ```yaml
   segments:
     - name: online_sales
-      sql: "{TABLE}.order_mode = 'online'"
+      sql: "{TABLE.order_mode} = 'online'"
       meta:
         secure:
           user_groups:

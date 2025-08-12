@@ -1,15 +1,23 @@
-# How to Generate incidents for certificate expiration?
+# How to Generate Incidents for Certificate Expiration
 
-You can generate incidents for whenever the certificate is about to expire using Equation Monitor. Let's see how you can do so.
+This guide explains how to set up a monitor that generates incidents when an SSL certificate is about to expire, using the Equation Monitor.
 
-``` yaml
+## Overview
+
+You can use an Equation Monitor to compare the certificate expiration timestamp with the current time and trigger an incident if the certificate is expiring soon (e.g., within 24 hours).
+
+## Example Equation Monitor YAML
+
+Below is an example configuration for monitoring certificate expiration:
+
+```yaml
 # Resource meta section
-name: ${{certificateexpirymonitornew}} # Resource name
+name: certificate-expiry-monitor
 version: v1alpha
 type: monitor
 tags:
-  - ${{dataos:type:resource}} # Tags
-description: ${{SSL certificate is about to expire less then 24 hrs}} # Resource description
+  - dataos:type:resource
+description: Monitor for SSL certificates expiring in less than 24 hours
 layer: user
 runAsUser: ${{iamgroot}} # User ID of User (or use case assignee)
 monitor:
@@ -17,61 +25,64 @@ monitor:
 # Monitor-specific section
   schedule: ${{'*/2 * * * *'}} # Monitor schedule
   properties:
-    ${{alpha: beta}}
-  incident: # mandatory
-    asset: ${{output_1}}
-    column: ${{column_2}}
-    name: ${{CertificateExpirydata}}
-    severity: ${{high}}
-    incidentType: ${{field_profiling}}
+    alert_window: 24h
+  incident:
+    asset: caretaker-api-cert
+    column: expiration_timestamp
+    name: Certificate Expiry Alert
+    severity: high
+    incidentType: field_profiling
 
-# Equation monitor specification
-  type: equation_monitor # mandatory
-  equation: 
-    # LHS
-    leftExpression: 
-      queryCoefficient: ${{1}} # mandatory
-      queryConstant: ${{0}} # mandatory
-      query: # mandatory
-        type: ${{prom}} # mandatory
-        cluster: ${{thanos}}
-        description: ${{query description}}
-        dsnSecretRef:
-          name: ${{secret}} # mandatory
-          workspace: ${{sandbox}}
-          key: ${{username}}
-          keys:
-            - ${{username}}
-            - ${{password}}
-          allkeys: ${{true}}
-          consumptionType: ${{string}}
-        ql: certmanager_certificate_expiration_timestamp_seconds{container="cert-manager-controller", endpoint="9402", exported_namespace="caretaker", instance="10.212.4.9:9402", issuer_group="cert-manager.io", issuer_kind="ClusterIssuer", issuer_name="ca", job="cert-manager-ds", name="caretaker-api-cert", namespace="cert-manager", pod="cert-manager-ds-7d8cc489dd-d46sb", service="cert-manager-ds"} - time() # mandatory
-        comparisonColumn:  
-          name: ${{column1}}
-          dataType: ${{string}}
+  # Equation monitor specification
+  type: equation_monitor
+  equation:
+    # LHS: Time left until certificate expiration (in seconds)
+    leftExpression:
+      queryCoefficient: 1
+      queryConstant: 0
+      query:
+        type: prom
+        cluster: thanos
+        description: Get certificate expiration timestamp and subtract current time
+        ql: certmanager_certificate_expiration_timestamp_seconds{job="cert-manager-ds", name="caretaker-api-cert"} - time()
+        comparisonColumn:
+          name: expiration_seconds_left
+          dataType: float
 
-    # RHS
-    rightExpression: # mandatory
-      queryCoefficient: ${{1}} # mandatory
-      queryConstant: ${{7766092}} # mandatory
-      query: # mandatory
-        type: ${{trino}} # mandatory
-        cluster: ${{themis}} # mandatory
-        dsn: ${{integer}} 
-        dsnSecretRef: 
-          name: ${{secret}} # mandatory
-          workspace: ${{sandbox}}
-          key: ${{username}}
-          keys:
-            - ${{username}}
-            - ${{password}}
-          allkeys: ${{true}}
-          consumptionType: ${{string}}       
-        ql: ${{SELECT metric_value FROM icebase.soda.soda_check_metrics_01 WHERE metric_name = 'missing_count' ORDER BY timestamp DESC LIMIT 1;}} # mandatory
-        comparisonColumn: 
-          name: ${{column1}} # mandatory
-          dataType: ${{integer}} # mandatory      
-    # Operator
-    operator: ${{less_than}}
+    # RHS: Threshold (e.g., 24 hours = 86400 seconds)
+    rightExpression:
+      queryCoefficient: 1
+      queryConstant: 86400
+      query:
+        type: static
+        cluster: none
+        ql: ''
+        comparisonColumn:
+          name: threshold_seconds
+          dataType: integer
+
+    # Operator: Trigger incident if time left is less than threshold
+    operator: less_than
 ```
+<aside class="callout">
+🗣️ Ensure that the metrics you are trying to observe are present in Prometheus and that the query returns valid results before applying the Monitor.
+</aside>
+
+## How it Works
+
+- **Schedule:** The monitor runs every 2 minutes.
+- **Left Expression:** Calculates how many seconds are left until the certificate expires.
+- **Right Expression:** Sets the threshold (e.g., 24 hours = 86400 seconds).
+- **Operator:** If the time left is less than the threshold, an incident is generated.
+
+## Customization
+
+- Change the `schedule` to adjust how often the monitor runs.
+- Update the `ql` query to match your certificate and Prometheus setup.
+- Adjust the `queryConstant` in `rightExpression` to set a different alert window (in seconds).
+
+
+---
+
+ 
 

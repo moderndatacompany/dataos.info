@@ -3,8 +3,8 @@
 
 ## Use Serialized data formats
 
-> **Beneficial Scenario:**  If your job performance is low and you are using CSV, JSON, or Text input files.
-> 
+**Beneficial Scenario:**  If your job performance is low and you are using CSV, JSON, or Text input files.
+
 
 Most of the Spark jobs run as a pipeline where one Spark job writes data into a File and another Spark job read the data, processes it, and writes it to another file for another Spark job to pick up. 
 
@@ -17,8 +17,8 @@ When you have such a use case, prefer writing an intermediate file in serialized
 
 ## Serialization
 
-> **Beneficial Scenario:** When transferring data over the network or writing to disk, you experience slower access speed.
-> 
+**Beneficial Scenario:** When transferring data over the network or writing to disk, you experience slower access speed.
+
 
 An object is serialized and deserialized during network transfer, writing to disk, etc. It plays a distinctive role in the performance of any distributed application as storing data in serialized form is slower to access, due to having to deserialize each object on the fly. 
 
@@ -37,8 +37,8 @@ Often, this will be the first thing you should tune to optimize your Flare job.
 
 # Memory Management and Tuning
 
-> **Beneficial Errors:** When you encounter Out of Space Errors during execution
-> 
+**Beneficial Errors:** When you encounter Out of Space Errors during execution
+
 
 For computations such as shuffling, sorting, and so on, **Execution memory** is used whereas for caching purposes **storage memory** is used that also propagates internal data. Cached jobs always apply less storage space where the data is not allowed to be evicted by any execution requirement. **Configuration Properties**
 
@@ -55,8 +55,8 @@ Although there are two relevant configurations, the typical user should not need
 
 ## Cost Based Optimizer
 
-> **Beneficial Scenario:** While working with multiple joins
-> 
+**Beneficial Scenario:** While working with multiple joins
+
 
 When working with Multiple joins, Cost Based Optimizer improves the query plan on the table and column statistics.
 
@@ -82,8 +82,8 @@ ANALYZE TABLE table_name [ PARTITION ( partition_col_name [ = partition_col_val 
 
 ## Enable Adaptive Query Execution
 
-> **Beneficial Scenario:** In cases where you suffer performance problems due to miscalculations in manual query plans due to an increased amount of data.
-> 
+**Beneficial Scenario:** In cases where you suffer performance problems due to miscalculations in manual query plans due to an increased amount of data.
+
 
 Adaptive Query Execution is a feature that improves the query performance by re-optimizing the query plan during runtime with the statistics it collects after each stage completion. 
 
@@ -101,8 +101,8 @@ There are three major features in AQE: coalescing post-shuffle partitions, conve
 
 ### **Converting sort-merge join to broadcast join**
 
-> **Beneficial Scenario:** When one of your joins tables is small enough to fit in memory within the broadcast threshold.
-> 
+**Beneficial Scenario:** When one of your joins tables is small enough to fit in memory within the broadcast threshold.
+
 
 AQE converts sort-merge join to broadcast hash join when the runtime statistics of any join side is smaller than the adaptive broadcast hash join threshold. This is not as efficient as planning a broadcast hash join in the first place, but it’s better than keep doing the sort-merge join, as we can save the sorting of both the join sides, and read shuffle files locally to save network traffic (if `spark.sql.adaptive.localShuffleReader.enabled` is true)
 
@@ -114,8 +114,8 @@ AQE converts sort-merge join to broadcast hash join when the runtime statistics 
 
 ### **Coalescing Post-Shuffle Partitions**
 
-> **Beneficial Scenario:** When you don’t know the exact number of shuffle partitions to be done
-> 
+**Beneficial Scenario:** When you don’t know the exact number of shuffle partitions to be done
+
 
 After every stage of the job, Spark dynamically determines the optimal number of partitions by looking at the metrics of the completed stage. 
 
@@ -134,8 +134,8 @@ This feature coalesces the post-shuffle partitions based on the map output stati
 
 ## **Converting sort-merge join to shuffled hash join**
 
-> **Beneficial Scenario: W**hen projections of the joined tables are not already sorted on the join columns
-> 
+**Beneficial Scenario:** When projections of the joined tables are not already sorted on the join columns
+
 
 AQE converts sort-merge join to shuffled hash join when all post-shuffle partitions are smaller than a threshold.
 
@@ -150,8 +150,8 @@ To enable sort-merge to shuffle hash join, configure the below two properties wi
 
 ### **Optimizing Skew Join**
 
-> **Beneficial Scenario:** When there is Data Skew
-> 
+**Beneficial Scenario:** When there is Data Skew
+
 
 When data in partitions is not evenly distributed, it's called Data Skew. Operations such as join perform very slowly on these partitions. By enabling Adaptive Query Execution (AQE), Spark checks the stage statistics and determines if there are any Skew joins, and optimizes it by splitting the bigger partitions into smaller (matching partition size on another table/dataframe)
 
@@ -166,8 +166,8 @@ To enable skew join optimization enable the below two properties
 
 ## Level of Parallelism
 
-> **Beneficial Scenario:** When your job performance is low due to improper cluster utilization. Though it can be used to increase performance in general too.
-> 
+**Beneficial Scenario:** When your job performance is low due to improper cluster utilization. Though it can be used to increase performance in general too.
+
 
 An increase in parallelism can considerably increase performance. Every partition or task requires a single core for processing. Clusters will not be fully utilized unless you set the level of parallelism for each operation high enough.  
 
@@ -181,8 +181,8 @@ You can use the below parameter to change the default value type
 
 ## Garbage Collection Tuning
 
-> **Beneficial Scenario:** When you have a large collection of unused objects resulting in a long-running job process and decreased performance time.
-> 
+**Beneficial Scenario:** When you have a large collection of unused objects resulting in a long-running job process and decreased performance time.
+
 
 To make room for new objects, old objects are evicted, which requires the need to trace through all Java objects and find unused ones. The main point to remember here is that the cost of garbage collection (GC) is proportional to the number of Java objects. 
 
@@ -208,7 +208,7 @@ Next time your Spark job is run, you will see messages printed in the worker’s
 
 </aside>
 
-****************************************************************************Ways to reduce garbage collection cost****************************************************************************
+**Ways to reduce garbage collection cost**
 
 - Use data structures with fewer objects (e.g. an array of `Int`s instead of a `LinkedList`) greatly lowers this cost.
 - An even better method is to persist objects in serialized form.
@@ -237,8 +237,8 @@ By Tuning the batchSize property you can improve Spark Performance
 
 ## Optimal Value of Shuffle Partitions
 
-> **Beneficial Scenario:** While performing operations that trigger data shuffle (like Aggregate and Joins)
-> 
+**Beneficial Scenario:** While performing operations that trigger data shuffle (like Aggregate and Joins)
+
 
 Shuffling is a mechanism Spark uses to redistribute data across different executors and even across machines. Spark Shuffle is an expensive operation since it involves Disk I/O, data serialization and deserialization, and Network I/O. 
 
@@ -256,8 +256,8 @@ You need to tune this value along with others until you reach your performance b
 
 ## Parallel Listing on Input Paths
 
-> **Beneficial Scenario:** When job has large number of directories, especially in object stores like S3, GCS etc.
-> 
+**Beneficial Scenario:** When job has large number of directories, especially in object stores like S3, GCS etc.
+
 
 To increase directory listing parallelism when job input has large number of directories, when against object store like S3. For Spark SQL with file-based data sources, you can tune the following property
 

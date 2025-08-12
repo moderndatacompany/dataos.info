@@ -90,9 +90,9 @@ Begin by creating a manifest file to hold the configuration details for your Eve
     description: ${description} # Purpose of the Instance-secret
     layer: user # DataOS layer
     instance-secret:
-    type: key-value-properties # Secret type
-    acl: r # Access control: 'r' for read-only
-    data:
+      type: key-value-properties # Secret type
+      acl: r # Access control: 'r' for read-only
+      data:
         eh_shared_access_key_name: ${EH_SHARED_ACCESS_KEY_NAME} # replace with eventhub access key name
         eh_shared_access_key: ${EH_SHARED_ACCESS_KEY} # replace with eventhub access key
 
@@ -109,9 +109,9 @@ Begin by creating a manifest file to hold the configuration details for your Eve
     description: ${description} # Purpose of the Instance-secret
     layer: user # DataOS layer
     instance-secret:
-    type: key-value-properties # Secret type
-    acl: rw # Access control: 'rw' for read-write
-    data:
+      type: key-value-properties # Secret type
+      acl: rw # Access control: 'rw' for read-write
+      data:
         eh_shared_access_key_name: ${EH_SHARED_ACCESS_KEY_NAME} # replace with eventhub access key name
         eh_shared_access_key: ${EH_SHARED_ACCESS_KEY} # replace with eventhub access key
     ```

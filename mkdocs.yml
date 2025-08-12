@@ -123,11 +123,11 @@ markdown_extensions:
   - pymdownx.tilde
 #  - pymdownx.extra
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji          # while pushing to dev
-      emoji_generator: !!python/name:materialx.emoji.to_svg       # while pushing to dev
+      # emoji_index: !!python/name:materialx.emoji.twemoji          # while pushing to dev
+      # emoji_generator: !!python/name:materialx.emoji.to_svg       # while pushing to dev
 
-      # emoji_index: !!python/name:materialx.emoji.twemoji                      # while hosting locally  
-      # emoji_generator: !!python/name:materialx.emoji.to_svg                   # while hosting locally 
+      emoji_index: !!python/name:materialx.emoji.twemoji                      # while hosting locally  
+      emoji_generator: !!python/name:materialx.emoji.to_svg                   # while hosting locally 
       
       # before pushing to dev branch replace materialx.emoji.to_svg with material.extensions.emoji.to_svg
       # before pushing to dev branch replace materialx.emoji.twemoji with material.extensions.emoji.twemoji
@@ -346,7 +346,6 @@ nav:
             - Query the source: resources/depot/utilize/cluster.md
             - Accelerating queries: resources/depot/utilize/flash.md
             - Building Data APIs: resources/depot/utilize/apis.md
-            - Building Data Products: resources/depot/utilize/dp.md
             - Depot as Lakehouse: resources/depot/utilize/lakehouse.md
             - Scanning metadata: resources/depot/utilize/scanner.md
         - Grant:
@@ -365,7 +364,8 @@ nav:
             - Eventhub: resources/instance_secret/data_sources/eventhub.md
             - Google BigQuery: resources/instance_secret/data_sources/bigquery.md
             - GCS: resources/instance_secret/data_sources/gcs.md
-            - JDBC: resources/instance_secret/data_sources/jdbc.md 
+            - JDBC: resources/instance_secret/data_sources/jdbc.md
+            - Kafka: resources/instance_secret/data_sources/kafka.md 
             - MongoDB: resources/instance_secret/data_sources/mongo.md
             - Microsoft SQL Server: resources/instance_secret/data_sources/mssql.md
             - MySQL: resources/instance_secret/data_sources/mysql.md
@@ -461,15 +461,21 @@ nav:
         
         - Monitor: 
           - resources/monitor/index.md
-          - First Steps: resources/monitor/first_steps.md
+          - Types: 
+            - Equation Monitor: resources/monitor/equation.md
+            - Report Monitor: resources/monitor/report.md
+            # - Stream Monitor: resources/monitor/streaming.md
+          # - First Steps: resources/monitor/first_steps.md
           - Configurations: resources/monitor/configurations.md
           - Recipes: 
             - Add context columns to Monitors: resources/monitor/how_to_guide/context_column.md
-            - Create a Report Monitor: resources/monitor/how_to_guide/report_monitor.md
-            - Create a Stream Monitor: resources/monitor/how_to_guide/stream_monitor.md
             - Create an Equation Monitor on Lens: resources/monitor/how_to_guide/lens_monitor.md
             - Create an Equation Monitor on Postgres: resources/monitor/equation_monitor_on_postgres.md
             - Generate incidents for certificate expiration: resources/monitor/how_to_guide/certificate_expiration_monitoring.md
+          - Use Case: resources/monitor/usecases/lens_metrics.md  
+          - Best Practices: resources/monitor/bestpractices.md
+        
+          
         - Operator: 
           - resources/operator/index.md
           - Configurations: resources/operator/configurations.md
@@ -599,7 +605,10 @@ nav:
                 - BigQuery: resources/stacks/flare/configuration_templates/google_bigquery.md
                 - Amazon Redshift: resources/stacks/flare/configuration_templates/amazon_redshift.md
               - Object Storage:
-                - resources/stacks/flare/configuration_templates/object_storage_depots.md
+                - Object Storage Configuration: 
+                  - resources/stacks/flare/configuration_templates/object_storage_configurations/index.md
+                  - Schema Configuration: resources/stacks/flare/configuration_templates/object_storage_configurations/schema_configurations.md
+                  - Data Format Configuration: resources/stacks/flare/configuration_templates/object_storage_configurations/configuration_data_format.md
                 - Delta Tables: resources/stacks/flare/configuration_templates/delta_table.md
               - Streaming Sources:
                 - Kafka: resources/stacks/flare/configuration_templates/kafka.md
@@ -619,6 +628,7 @@ nav:
             - Use Cases & Examples:
               - resources/stacks/flare/case_scenario/index.md
               - Data Ingestion:
+                - Batch Jobs: resources/stacks/flare/case_scenario/batch_jobs.md
                 - Incremental Jobs: resources/stacks/flare/case_scenario/incremental_jobs.md
                 - Streaming Jobs: resources/stacks/flare/case_scenario/streaming_jobs.md
               - Data Transformation:
@@ -643,7 +653,7 @@ nav:
                 - Delete from Dataset: resources/stacks/flare/case_scenario/delete_from_dataset.md
                 - Expire Snapshots: resources/stacks/flare/case_scenario/expire_snapshots.md
                 - Remove Orphans: resources/stacks/flare/case_scenario/remove_orphans.md
-                - Query Progress Monitoring: resources/stacks/flare/case_scenario/query_dataset_for_job_in_progress.md
+                # - Query Progress Monitoring: resources/stacks/flare/case_scenario/query_dataset_for_job_in_progress.md
               # - Data Quality:
               #   - Data Quality Jobs: resources/stacks/flare/case_scenario/data_quality_jobs.md
             - Optimizing Flare:

@@ -58,7 +58,7 @@ partitionSpec:
     - type: identity  
       column: vendor_id   # columns used - identity (vendor_id, one string column) & for rest date_col**
 
-    - type: year          **# options tested: identity, year, month, day, hour**
+    - type: year          # options tested: identity, year, month, day, hour
       column: date_col  
       name: year
 ```
@@ -77,13 +77,13 @@ For non-Iceberg formats such as Parquet, you are required to provide a categoric
 
 ```yaml
 - sequence:
-  - name: ny_taxi_ts
-    outputType: Parquet
-    outputOptions:
-    saveMode: overwrite
-    partitionBy:
-      - vendor_id
-```
+    - name: ny_taxi_ts
+      outputType: Parquet
+      outputOptions:
+      saveMode: overwrite
+      partitionBy:
+        - vendor_id
+  ```
 
 
 Partitioned files are organized into folders based on the defined partitioning criteria. You can view them directly in the storage location or within the Workbench.
@@ -125,53 +125,53 @@ description: The job ingests NY-Taxi data small files and write with partitionin
 workflow:
   title: Connect NY Taxi
   dag:
-  - name: nytaxi
-    title: NY-taxi data ingester
-    description: The job ingests NY-Taxi data from dropzone into raw zone
-    spec:
-      tags:
-      - Connect
-      - NY-Taxi
-      stack: flare:6.0
-      compute: runnable-default
-      stackSpec:
-        job:
-          explain: true
-          inputs:
-           - name: customer
-             dataset: dataos://lakehouse:retail/customer?acl=r
-             format: Iceberg
-             isStream: false
+    - name: nytaxi
+      title: NY-taxi data ingester
+      description: The job ingests NY-Taxi data from dropzone into raw zone
+      spec:
+        tags:
+        - Connect
+        - NY-Taxi
+        stack: flare:6.0
+        compute: runnable-default
+        stackSpec:
+          job:
+            explain: true
+            inputs:
+              - name: customer
+                dataset: dataos://lakehouse:retail/customer?acl=r
+                format: Iceberg
+                isStream: false
 
-          logLevel: INFO
-          outputs:
-            - name: ts_customer
-              dataset: dataos://lakehouse:sample/partioning03?acl=rw
-              format: Iceberg
-              description: This is a customer dataset
-              options:
-                 saveMode: overwrite
-                 iceberg:
-                  properties:
-                      write.format.default: parquet
-                      write.metadata.compression-codec: gzip
-                  partitionSpec:
-                    - type: identity      # options tested: string, integer, long
-                      column: social_class   # columns used - identity (vendor_id, one string column)
+            logLevel: INFO
 
-                    - type: year      # options tested: string, integer, long
-                      column: birthdate   # columns used - identity (vendor_id, one string column) 
-                      name: yearly
-              tags:
-                  - Connect
-                  - customer
-              title: customer Data Partitioned Vendor
-
-
-          steps:
-            - sequence:
+            outputs:
               - name: ts_customer
-                sql: SELECT *  FROM customer;
+                dataset: dataos://lakehouse:sample/partioning03?acl=rw
+                format: Iceberg
+                description: This is a customer dataset
+                options:
+                  saveMode: overwrite
+                  iceberg:
+                    properties:
+                        write.format.default: parquet
+                        write.metadata.compression-codec: gzip
+                    partitionSpec:
+                      - type: identity      # options tested: string, integer, long
+                        column: social_class   # columns used - identity (vendor_id, one string column)
+
+                      - type: year      # options tested: string, integer, long
+                        column: birthdate   # columns used - identity (vendor_id, one string column) 
+                        name: yearly
+                tags:
+                    - Connect
+                    - customer
+                title: customer Data Partitioned Vendor
+
+            steps:
+              - sequence:
+                - name: ts_customer
+                  sql: SELECT *  FROM customer;
 ```
 
 

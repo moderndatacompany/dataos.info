@@ -26,6 +26,7 @@ monitor:
         comparisonColumn:
           name: exec_time
           dataType: float64
+          
     rightExpression:
       queryCoefficient: 1.75
       queryConstant: 0
