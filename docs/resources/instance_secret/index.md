@@ -1,7 +1,10 @@
 ---
 title: Instance Secret
 search:
-  boost: 2
+  boost: 3
+tags:
+  - credential
+  - securing credential
 ---
 
 # Instance Secret
