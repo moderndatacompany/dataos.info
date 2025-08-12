@@ -14,40 +14,39 @@ name: alphaomega
 version: v1alpha
 type: lakehouse
 tags:
-    - Iceberg
-    - Azure
+  - Iceberg
+  - Azure
 description: lakehouse depot of storage-type S3
 owner: iamgroot
 layer: user
 
 # Lakehouse-specific section 
 lakehouse:
-    type: iceberg
-    compute: runnable-default
-    iceberg:
-
-    # Storage section 
+  type: iceberg
+  compute: runnable-default
+  iceberg:
+  # Storage section 
     storage:
-        depotName: alphaomega
-        type: s3
-        s3:
+      depotName: alphaomega
+      type: s3
+      s3:
         bucket: dataos-lakehouse   
         relativePath: /test
         secrets:
-        - name: alphaomega-r
+          - name: alphaomega-r
             keys:
-            - alphaomega-r
+              - alphaomega-r
             allkeys: true 
-        - name: alphaomega-rw
+          - name: alphaomega-rw
             keys:
-            - alphaomega-rw
+              - alphaomega-rw
             allkeys: true  
 
-    # Metastore section 
-    metastore:
-        type: "iceberg-rest-catalog"
+  # Metastore section 
+  metastore:
+    type: "iceberg-rest-catalog"
 
-    # Query engine section 
-    queryEngine:
-        type: themis
+  # Query engine section 
+  queryEngine:
+    type: themis
 ```

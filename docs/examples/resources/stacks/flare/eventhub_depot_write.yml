@@ -30,7 +30,6 @@ workflow:
             logLevel: INFO
             outputs:
               - name: finalDf
-                # dataset: dataos://sanityeventhub:default/tmdchubs?acl=rw
                 dataset: dataos://sanityeventhub:default/eventhub01?acl=rw
                 format: Eventhub
                 options:

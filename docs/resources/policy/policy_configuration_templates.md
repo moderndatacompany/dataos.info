@@ -48,7 +48,7 @@ The provided template defines a policy that allows access to a dataset stored wi
 
 !!! note
 
-    Certain predefined tags such as `pii.dateofbirth`, pii.age, and pii.location have default policies already created for them, each assigned a priority of 99. These policies are not applied automatically — they only take effect when the tag is manually applied to a column.
+    Certain predefined tags such as `PII.dateofbirth`, `PII.age`, and `PII.location` have default policies already created for them, each assigned a priority of 99. These policies are not applied automatically — they only take effect when the tag is manually applied to a column.
 
     Once a tag is applied, its associated default policy (e.g., data bucketing or masking logic) will take effect.
 

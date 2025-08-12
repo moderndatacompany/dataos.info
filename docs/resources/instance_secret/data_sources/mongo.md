@@ -90,9 +90,9 @@ Begin by creating a manifest file to hold the configuration details for your Mon
     description: ${description} # Purpose of the Instance-secret
     layer: user # DataOS layer
     instance-secret:
-    type: key-value-properties # Secret type
-    acl: r # Access control: 'r' for read-only
-    data:
+      type: key-value-properties # Secret type
+      acl: r # Access control: 'r' for read-only
+      data:
         username: ${username} # replace with mongodb username
         password: ${password} # replace with mongodb password
     ```
@@ -107,9 +107,9 @@ Begin by creating a manifest file to hold the configuration details for your Mon
     description: ${description} # Purpose of the Instance-secret
     layer: user # DataOS layer
     instance-secret:
-    type: key-value-properties # Secret type
-    acl: rw # Access control: 'rw' for read-write
-    data:
+      type: key-value-properties # Secret type
+      acl: rw # Access control: 'rw' for read-write
+      data:
         username: ${username} # replace with mongodb username
         password: ${password} # replace with mongodb password
     ```

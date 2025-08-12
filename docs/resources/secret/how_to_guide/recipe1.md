@@ -12,24 +12,24 @@ To refer the stored secret data in DataOS, you can reference them in your code u
 === "dataosSecrets"
     ```yaml
     dataosSecrets:
-    - name: ${your-secret-name} # Mandatory
+      - name: ${your-secret-name} # Mandatory
         workspace: ${secret-workspace} # Optional
         key: ${key of your secret} # Optional, used when only single key is required.
         keys:            # Optional, used when multiple key is required.
-        - ${secret_key}
-        - ${secret-key}
+          - ${secret_key}
+          - ${secret-key}
         allKeys: ${true-or-false} # Optional
         consumptionType: ${envVars} # Optional, possible values: envVars, propfile and file.
     ```
 === "secrets"    
     ```yaml
     secrets:
-    - name: ${your-secret-name} # Mandatory
+      - name: ${your-secret-name} # Mandatory
         workspace: ${secret-workspace} # Optional
         key: ${key of your secret} # Optional, used when only single key is required.
         keys:            # Optional, used when multiple key is required.
-        - ${secret_key}
-        - ${secret-key}
+          - ${secret_key}
+          - ${secret-key}
         allKeys: ${true-or-false} # Optional
         consumptionType: ${envVars} # Optional, possible values: envVars, propfile and file.
     ```

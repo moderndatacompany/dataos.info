@@ -20,32 +20,32 @@ lens:
  runAsApiKey: abcdefghijklmnopqrstuvwxyz # DataOS API key (optional)
  runAsUser: iamgroot # DataOS UserID (optional)
  secrets: # Referred Instance-secret configuration (mandatory for private repository)
-	- name: bitbucket-r # Instance-secret name (mandatory)
-		key: abcd # Key to be referred (optional)
-		keys: # List of keys to be referred (optional)
-			- abcd
-			- efgh
-		allKeys: true # Whether all keys are required or not (optional)
-		consumptionType: envVars # Secret consumption type (optional)
+  - name: bitbucket-r # Instance-secret name (mandatory)
+    key: abcd # Key to be referred (optional)
+    keys: # List of keys to be referred (optional)
+      - abcd
+      - efgh
+    allKeys: true # Whether all keys are required or not (optional)
+    consumptionType: envVars # Secret consumption type (optional)
  source: # mandatory
-	type: themis # mandatory
-	name: minithemis # mandatory
-	catalog: lakehouse
+  type: themis # mandatory
+  name: minithemis # mandatory
+  catalog: lakehouse
  repo: # Code repository configuration (mandatory)
-	url: https://www.bitbucket.org/abcd/lens2 # Code Repository URL (mandatory)
-	lensBaseDir: lens2/sales/model # mandatory
+  url: https://www.bitbucket.org/abcd/lens2 # Code Repository URL (mandatory)
+  lensBaseDir: lens2/sales/model # mandatory
   secretId: bitbucket_r_r
-	syncFlags: # refer to the branch of the repo, default main,master branch
-		- --ref=lens2test
+  syncFlags: # refer to the branch of the repo, default main,master branch
+    - --ref=lens2test
  api:
-	logLevel: INFO  
-	replicas: 3
-	autoScaling:
-		enabled: true
-		minReplicas: 1
-		maxReplicas: 3
-		targetMemoryUtilizationPercentage: 60
-		targetCPUUtilizationPercentage: 60
+  logLevel: INFO  
+  replicas: 3
+  autoScaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 3
+    targetMemoryUtilizationPercentage: 60
+    targetCPUUtilizationPercentage: 60
   resources:                     #optional
     requests:
       cpu: 4Gi

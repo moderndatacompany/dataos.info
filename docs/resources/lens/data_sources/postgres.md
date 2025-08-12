@@ -168,7 +168,7 @@ Segments are filters that allow for the application of specific conditions to re
 ```yaml
 segments:
   - name: state_filter
-    sql: "{TABLE}.state IN ('Illinois', 'Ohio')"
+    sql: "{TABLE.state} IN ('Illinois', 'Ohio')"
 ```
 
 To know more about segments click [here](/resources/lens/segments/).

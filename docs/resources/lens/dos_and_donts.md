@@ -1,6 +1,6 @@
 # Best practices of semantic model built using Lens 
 
-This documentation outlines essential guidelines while creating a semantic model, highlighting key best practices, such as when to create views and how to avoid common errors. and do's and don't's.
+This documentation outlines essential guidelines while creating a semantic model, highlighting key best practices, such as when to create views and how to avoid common errors and do's and don't's.
 
 ## Do's
 
@@ -95,7 +95,7 @@ In this case, the name field is referenced from both the users and contacts tabl
 
 #### **Use the `TABLE` constant**
 
-If you need to refer to a column in the current table, use the TABLE constant `"{TABLE}.column_name"` (e.g., `"{TABLE.status}"` to avoid repeating the table's name.
+If you need to refer to a column in the current table, use the TABLE constant `"{TABLE.column_name}"` (e.g., `"{TABLE.status}"` to avoid repeating the table's name.
 
 ```yaml
 tables:
@@ -103,26 +103,26 @@ tables:
     sql: {{ load_sql('users') }}
     joins:
       - name: contacts
-        sql: "{TABLE}.contact_id = {contacts}.id"
+        sql: "{TABLE.contact_id} = {contacts.id}"
         relationship: one_to_one
     dimensions:
       - name: id
-        sql: "{TABLE}.id"
+        sql: "{TABLE.id}"
         type: number
         primary_key: true
       - name: name
-        sql: "COALESCE({TABLE}.name, {contacts}.name)"
+        sql: "COALESCE({TABLE.name}, {contacts.name})"
         type: string
 
   - name: contacts
     sql: {{ load_sql('contacts') }}
     dimensions:
       - name: id
-        sql: "{TABLE}.id"
+        sql: "{TABLE.id}"
         type: number
         primary_key: true
       - name: name
-        sql: "{TABLE}.name"
+        sql: "{TABLE.name}"
         type: string
 ```
 
@@ -234,41 +234,42 @@ Always aim to roll down data as much as possible to minimize the amount of data 
 
 2. **Members:** Views do not have their members. Instead, use the `table` or `includes` parameters to incorporate measures and dimensions from other tables into the view.
 
-3. **Refresh key:** Use a refresh key if the underlying data is refreshed on a regular cadence.
-
-**Example: `revenue_view`**
+**Example: `total_spend`**
 
 In the following example, we create a view called `revenue_view`, which includes selected members from the `sales`, `product`, and `account` tables:
 
 ```yaml
 views:
-  - name: revenue_view
-    description: View containing sales 360 degree information
+  - name: total_spending
+    description: This metric measures how many marketing campaigns a customer has engaged with. 
     public: true
-    meta:     
-      title: "revenue_view"
-
+    meta:
+      title: Customer Spending by Product Category
+      tags:   
+        - DPDomain.Marketing
+        - DPUsecase.Customer Segmentation
+        - DPUsecase.Product Recommendation
+        - DPTier.Consumer Aligned
+      metric:
+        expression: "*/45  * * * *"
+        timezone: "UTC"
+        window: "day"
+        excludes: 
+         - spend
     tables:
-      - join_path: sales
-        prefix: false
+      - join_path: purchase
+        prefix: true
         includes:
-          - revenue
-          - invoice_date
-          - ext_net
-          - source
+          - purchase_date
+          - customer_id
+          - total_spend
+          - spend
 
       - join_path: product
-        prefix: true   # product_category
+        prefix: true
         includes:
-          - category
-          - brand
-          - class
-
-      - join_path: account
-        prefix: false
-        includes:
-          - site_name
-          - state
+          - product_category
+          - product_name
 ```
 
 ### **Jinja macros**

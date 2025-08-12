@@ -529,7 +529,7 @@ lens:
       limits:
         cpu: 1000m
         memory: 2548Mi
-  
+
   metric:
     logLevel: info
 ```

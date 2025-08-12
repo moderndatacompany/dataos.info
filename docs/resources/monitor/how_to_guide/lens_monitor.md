@@ -5,11 +5,11 @@ Equation Monitor can observe the Lens metrics to generate the incidents when the
 **Configuring Equation Monitor**
 
 This sample configuration demonstrates how to set up the Equation Monitor for observing the Lens. An incident will be generated if the calculated value of the left expression is less than the calculated value of the right expression.
+
 ```yaml
 name: monitor-lens-metric
 version: v1alpha
 type: monitor
-runAsUser: iamgroot
 monitor:
   schedule: '*/2 * * * *'
   type: equation_monitor
@@ -32,7 +32,7 @@ monitor:
     rightExpression:
       queryCoefficient: 0
       queryConstant: 50
-      query:
+      
     operator: less_than_equals
   incident:
     type: business-metric

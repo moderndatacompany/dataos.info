@@ -46,7 +46,7 @@ INFO[0000] 🔍 get...complete
 
             NAME            | VERSION | TYPE  | WORKSPACE | STATUS | RUNTIME |       OWNER        
 ----------------------------|---------|-------|-----------|--------|---------|--------------------
-    alpha-v1                  | v1alpha | stack |           | active |         | dataos-manager     
+    container-v1                  | v1alpha | stack |           | active |         | dataos-manager     
     beacon-graphql-v1         | v1alpha | stack |           | active |         | dataos-manager     
     beacon-rest-v1            | v1alpha | stack |           | active |         | dataos-manager     
     bento-v3                | v1alpha | stack |           | active |         | dataos-manager     

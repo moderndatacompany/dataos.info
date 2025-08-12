@@ -1,6 +1,6 @@
 # Google Bigquery Depots
 
-Flare stack enables execution of jobs on top of Google Bigquery data source. To do so, you first need to create a Bigquery depot. If you have already created a depot, you can proceed with the following instructions. Otherwise, please refer to the [Biguery Depot](/resources/depot/depot_config_templates/google_bigquery/).
+Flare stack enables execution of jobs on top of Google Bigquery data source. To do so, you first need to create a Bigquery depot. If you have already created a depot, you can proceed with the following instructions. Refer to the [Biguery Depot](/resources/depot/depot_config_templates/google_bigquery/) for more information.
 
 ## Read Configuration
 
@@ -8,9 +8,9 @@ For reading data using Flare stack, the `name`, `dataset`, and `format` properti
 
 ```yaml
 inputs:
-  - name: city_connect # name of the dataset
-    dataset: dataos://bqdepot:state/city # address of the input dataset
-    format: bigquery # format
+  - name: city_connect                      # name of the dataset
+    dataset: dataos://bqdepot:state/city    # address of the input dataset
+    format: bigquery                        # format
 ```
 
 <details><summary>Sample Read configuration YAML</summary>
@@ -25,7 +25,7 @@ Consider a scenario where the dataset named `city` is stored in a BigQuery Depot
 
 ## Write Configuration
 
-For writing the data to a depot on a Bigquery depot, we need to configure the `name`,  `dataset` and `format` properties in the `outputs` section of the YAML. For instance, if your dataset is to be stored at the UDL address is `dataos://yakdevbq:dev/city_bq?acl=rw`  by the name `finaldf` and the file format is `Bigquery`. Then the outputs section will be as follows
+For writing the data to a Depot on a Bigquery depot, we need to configure the `name`,  `dataset` and `format` properties in the `outputs` section of the YAML. For instance, if your dataset is to be stored at the UDL address is `dataos://yakdevbq:dev/city_bq?acl=rw`  by the name `finaldf` and the file format is `Bigquery`. Then the outputs section will be as follows
 
 ```yaml
 outputs:
@@ -33,9 +33,9 @@ outputs:
     dataset: dataos://yakdevbq:dev/city_bq?acl=rw
     format: Bigquery
     options:
-	    saveMode: append
+      saveMode: append
       bigquery:
-	      temporaryBucket: tmdc-development-new
+        temporaryBucket: tmdc-development-new
 ```
 
 **Sample Write configuration YAML**
@@ -84,10 +84,11 @@ In the indirect method, data is first written to a GCS bucket and then loaded in
 > 
 
 ```yaml
+
 outputs:
-  - dataset: dataos://sanitybigquery:dev/bigquery_write_nabeel_103?acl=rw
+  - name: finalDf
+    dataset: dataos://sanitybigquery:dev/bigquery_write_nabeel_103?acl=rw
     format: bigquery
-    name: finalDf
     options:
       bigquery:
         temporaryBucket: tmdc-development-new
