@@ -139,12 +139,12 @@ The Ports section lets you set up links to various services and tools tied to co
 ```yaml
 ports:
     lens:
-    ref: lens:v1alpha:product360-lens:public
-    refType: dataos
+      ref: lens:v1alpha:product360-lens:public
+      refType: dataos
 
     talos:
-    - ref: service:v1:service-product360-api:public
-    refType: dataos
+      - ref: service:v1:service-product360-api:public
+        refType: dataos
 ```
     
 ## Data Product Spec (YAML) file

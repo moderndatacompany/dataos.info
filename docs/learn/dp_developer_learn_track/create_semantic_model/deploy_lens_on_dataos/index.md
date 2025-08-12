@@ -1,3 +1,8 @@
+---
+title: Deploy Lens
+search:
+  exclude: true
+---
 # Deploy Lens in DataOS 
 
 In this topic, you'll learn how to deploy your semantic model (Lens) in DataOS. This step ensures your model is accessible, reliable, and ready for real-time use, enabling stakeholders to derive insights and make data-driven decisions.
