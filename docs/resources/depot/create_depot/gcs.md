@@ -59,13 +59,13 @@ Begin by creating a manifest file to hold the configuration details for your GCS
 name: ${{"sanitygcs01"}}
 version: v2alpha
 type: depot
+description: ${{"GCS depot for sanity"}}
 tags:
   - ${{GCS}}
   - ${{Sanity}}
 layer: user
 depot:
   type: GCS
-  description: ${{"GCS depot for sanity"}}
   external: ${{true}}
   secrets:
     - name: ${{gcs-instance-secret-name}}-r

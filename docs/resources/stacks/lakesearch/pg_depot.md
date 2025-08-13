@@ -99,6 +99,7 @@ This section utilizes the city table stored in the DataOS Lakehouse as an exampl
                     city
                 options:
                   start: 1734979551
+                  start_query: "SELECT max(ts_city) FROM city"
                   step: 86400
                   batch_sql: |
                     WITH base AS (
@@ -243,6 +244,7 @@ This section utilizes the city table stored in the DataOS Lakehouse as an exampl
                     devices
                 options:
                   start: 1735084800
+                  start_query: "SELECT max(updated_at) FROM devices"
                   step: -86400
                   batch_sql: |
                     WITH base AS (
@@ -284,6 +286,7 @@ This section utilizes the city table stored in the DataOS Lakehouse as an exampl
                     devices
                 options:
                   start: 1735084800
+                  start_query: "SELECT max(updated_at) FROM devices"
                   step: 86400
                   batch_sql: |
                     WITH base AS (
