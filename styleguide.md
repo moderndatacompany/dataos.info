@@ -736,7 +736,7 @@ search:
   exclude: true
 ---
 
-# bakcticks inside HTML callout block
+# backticks inside HTML callout block
 
 - Use <code> this </code> tags.
 
