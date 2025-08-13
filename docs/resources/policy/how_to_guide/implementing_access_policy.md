@@ -29,7 +29,7 @@ User with user tag `user:id:iamgroot` needs access to **Sample Ingested Dataset*
 
 <div style="text-align: center;">
   <img src="/resources/policy/how_to_guide/access_denied.png" alt="Sample inaccessible dataset" style="border:1px solid black; width: 80%; height: auto;">
-  <figcaption>Dataset access denied</ficaption>
+  <figcaption>Dataset access denied</figcaption>
 </div>
 
 ## Implementation of Access Policy
@@ -71,7 +71,7 @@ Once the Policy is applied, all users will be able to access this dataset from W
 
 <div style="text-align: center;">
   <img src="/resources/policy/how_to_guide/allow_access.png" alt="Access allowed" style="border:1px solid black; width: 80%; height: auto;">
-  <figcaption>Dataset accessible after implementing the Policy</ficaption>
+  <figcaption>Dataset accessible after implementing the Policy</figcaption>
 </div>
 
 ## Granting Access via Custom Tags
@@ -140,7 +140,7 @@ These tags can also be viewed in the user's profile on the DataOS UI.
 
 <div style="text-align: center;">
   <img src="/resources/policy/how_to_guide/ui_new_tag.png" alt="Tags on user’s profile page" style="border:1px solid black; width: 80%; height: auto;">
-  <figcaption>Tags displayed on user's profile page</ficaption>
+  <figcaption>Tags displayed on user's profile page</figcaption>
 </div>
 
 
@@ -151,5 +151,5 @@ The following screenshot displays the query result on the DataOS Workbench.
 
 <div style="text-align: center;">
   <img src="/resources/policy/how_to_guide/allow_access.png" alt="Access allowed" style="border:1px solid black; width: 80%; height: auto;">
-  <figcaption>Dataset accessible after adding a custom tag</ficaption>
+  <figcaption>Dataset accessible after adding a custom tag</figcaption>
 </div>
