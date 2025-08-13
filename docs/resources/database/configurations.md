@@ -3,7 +3,7 @@
 ## Structure of Database manifest
 
 ```yaml
-#Attribtues for Resource
+#Attributes for Resource
 name: products_db
 version: v1                           #database_name 
 type: database                        
