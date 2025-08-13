@@ -31,7 +31,7 @@ The Service Resource is configured using a YAML file, consisting of several root
 
 <div style="text-align: center;">
   <img src="/resources/service/service_yaml.png" alt="Access allowed" style="border:1px solid black; width: 80%; height: auto;">
-  <figcaption>Service Resource YAML configuration structure</ficaption>
+  <figcaption>Service Resource YAML configuration structure</figcaption>
 </div>
 
 
