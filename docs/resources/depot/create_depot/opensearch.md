@@ -47,6 +47,7 @@ Begin by creating a manifest file to hold the configuration details for your Ope
 name: ${{depot-name}}
 version: v2alpha
 type: depot
+description: ${{description}}
 tags:
   - ${{tag1}}
   - ${{tag2}}
@@ -54,7 +55,6 @@ owner: ${{owner-name}}
 layer: user
 depot:
   type: OPENSEARCH           
-  description: ${{description}}
   external: ${{true}}
   secrets:
     - name: ${{sf-instance-secret-name}}-r

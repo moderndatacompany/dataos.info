@@ -59,7 +59,7 @@ To implement the filter policy that restricts access based on city data, use the
 
 <div style="text-align: center;">
   <img src="/resources/policy/how_to_guide/afterfilter01.png" alt="Sample inaccessible dataset" style="border:1px solid black; width: 80%; height: auto;">
-  <figcaption>The user having access to all cities except Verbena</ficaption>
+  <figcaption>The user having access to all cities except Verbena</figcaption>
 </div>
 
 In this scenario, the policy applies a filter on the city_name column, restricting access to rows where city_name is Verbena. If the operator assigns this filter to the user tagged as `users:id:iamgroot`, the user will not be able to view any data rows where the city is Verbena.
@@ -67,7 +67,7 @@ In this scenario, the policy applies a filter on the city_name column, restricti
 
 ### **Case 2**
 
-Alternatively, another user, 'ironman', is specifically responsible for Verben, a filter can be set to allow access only to data where the city is 'Verbena', ensuring they have the necessary information to develop targeted marketing strategies.
+Alternatively, another user, 'ironman', is specifically responsible for Verbena, a filter can be set to allow access only to data where the city is 'Verbena', ensuring they have the necessary information to develop targeted marketing strategies.
 
 
 ???tip "Filter Policy for city not equals to Verbena"
@@ -100,9 +100,9 @@ Alternatively, another user, 'ironman', is specifically responsible for Verben, 
 
 <div style="text-align: center;">
   <img src="/resources/policy/how_to_guide/Untitled.png" alt="Sample inaccessible dataset" style="border:1px solid black; width: 80%; height: auto;">
-  <figcaption>The user iamgroot has access to only Verbena city</ficaption>
+  <figcaption>The user iamgroot has access to only Verbena city</figcaption>
 </div>
 
-In this scenario, the policy applies a filter on the city_name column, restricting access to all citites except when city_name is Verbena. If the operator assigns this filter to the user tagged as `users:id:ironman`, the user will not be able to view any data rows of city other than Verbena.
+In this scenario, the policy applies a filter on the city_name column, restricting access to all cities except when city_name is Verbena. If the operator assigns this filter to the user tagged as `users:id:ironman`, the user will not be able to view any data rows of city other than Verbena.
 
 

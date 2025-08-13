@@ -206,11 +206,7 @@ Performance targets refer to predefined goals or benchmarks related to the data 
 
 Once the Data Product design is finalized, it undergoes review sessions with key stakeholders and team members to ensure it meets all defined requirements and goals. Feedback from these sessions is carefully documented. If needed, the design is refined based on this feedback to improve its alignment with requirements. All changes made during this process are noted to ensure continuous improvement of the design phase.
 
-<<<<<<< HEAD
-### **Create the Data Product manifest file**
-=======
 ## Create the Data Product manifest file
->>>>>>> 4b79989467990efa0e8d75d62e02b9cd2913d942
 
 After successfully executing the above steps, you’ll create a manifest file for the Data Product. 
 
@@ -363,7 +359,7 @@ v1beta: # mandatory
 ```
 For more information about the various attributes in the Data Product-specific section, refer to the [Attributes of Data Product-Specific section](/products/data_product/configurations/).
 
-### **Apply the Data Product manifest file**
+## Apply the Data Product manifest file
 
 To create a Data Product within the DataOS, use the `apply` command. When applying the manifest file from the DataOS CLI, `apply` command is as follows:
 

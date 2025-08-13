@@ -51,6 +51,7 @@ Begin by creating a manifest file to hold the configuration details for your ABF
 name: ${{depot-name}}
 version: v2alpha
 type: depot
+description: ${{description}}
 tags:
   - ${{tag1}}
   - ${{tag2}}
@@ -58,7 +59,6 @@ owner: ${{owner-name}}
 layer: user
 depot:
   type: ABFSS                                       
-  description: ${{description}}
   external: ${{true}}
   compute: ${{runnable-default}}
   secrets:

@@ -43,13 +43,13 @@ Begin by creating a manifest file to hold the configuration details for your Kaf
 name: ${{depot-name}}
 version: v1
 type: depot
+description: {{description}}
 tags:
   - ${{tag1}}
 owner: ${{owner-name}}
 layer: user
 depot:
   type: KAFKA
-  description: {{description}}
   kafka:
     brokers:
       -  {{broker1}}

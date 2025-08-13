@@ -51,13 +51,13 @@ Create a manifest file to hold the configuration details for your Snowflake Depo
 name: ${{snowflake-depot}}
 version: v2alpha
 type: depot
+description: ${{snowflake-depot-description}}
 tags:
   - ${{tag1}}
   - ${{tag2}}
 layer: user
 depot:
   type: snowflake
-  description: ${{snowflake-depot-description}}
   external: true
   secrets:
     - name: ${{snowflake-instance-secret-name}}-r
