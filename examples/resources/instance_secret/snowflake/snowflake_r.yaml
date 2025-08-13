@@ -1,0 +1,17 @@
+# Snowflake Read Instance-secret Manifest
+
+name: ${snowflake-depot-name}-r # Unique identifier for Resource, replace ${snowflake-depot-name} with depot name
+version: v1 # Manifest version
+type: instance-secret # Type of the Resource
+tags:
+  - snowflake
+  - instance-secret
+description: ${description} # Purpose of the Instance-secret
+owner: ${owner-name}
+layer: user # DataOS layer
+instance-secret:
+  type: key-value-properties # Secret type
+  acl: r # Access control: 'r' for read-only
+  data:
+    username: ${username} # replace with snowflake username
+    password: ${password} # replace with snowflake password
