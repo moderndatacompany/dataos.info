@@ -51,13 +51,13 @@ Begin by creating a manifest file to hold the configuration details for your MyS
 name: ${{mysql01}}
 version: v2alpha
 type: depot
+description: ${{"MYSQL Sample Database"}}
 tags:
   - ${{dropzone}}
   - ${{mysql}}
 layer: user
 depot:
   type: MYSQL
-  description: ${{"MYSQL Sample Database"}}
   external: ${{true}}
   secrets:
     - name: ${{mysql-instance-secret-name}}-r
@@ -83,13 +83,13 @@ depot:
 name: ${{"mysql01"}}
 version: v2alpha
 type: Depot
+description: ${{"MYSQL Sample data"}}
 tags:
   - ${{dropzone}}
   - ${{mysql}}
 layer: user
 depot:
   type: MYSQL
-  description: ${{"MYSQL Sample data"}}
   mysql:
     host: ${{host}}
     port: ${{port}}

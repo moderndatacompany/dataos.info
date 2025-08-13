@@ -53,6 +53,7 @@ Begin by creating a manifest file to hold the configuration details for your MSS
 name: ${{depot-name}}
 version: v2alpha
 type: depot
+description: ${{description}}
 tags:
   - ${{tag1}}
   - ${{tag2}}
@@ -60,7 +61,6 @@ owner: ${{owner-name}}
 layer: user
 depot:
   type: JDBC                                       
-  description: ${{description}}
   external: ${{true}}
   compute: ${{runnable-default}}
   jdbc:
@@ -84,13 +84,13 @@ depot:
 name: ${{mssql01}}
 version: v2alpha
 type: depot
+description: ${{MSSQL Sample data}}
 tags:
   - ${{dropzone}}
   - ${{mssql}}
 layer: user
 depot:
   type: JDBC
-  description: ${{MSSQL Sample data}}
   jdbc:
     subprotocol: ${{sqlserver}}
     host: ${{host}}
