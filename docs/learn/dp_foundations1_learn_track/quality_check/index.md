@@ -334,7 +334,7 @@ Set up proactive observability to monitor and alert on workflow or data quality 
 
 👉 [Pipeline observability](/learn/dp_foundations1_learn_track/pipeline_observability/)
 
-👉 [Quality observability](/learn/dp_foundations1_learn_track/quality_observability/)
+👉 [Quality observability](/learn/dp_foundations1_learn_track/quality_check_observability/)
 
 
 
