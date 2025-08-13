@@ -22,13 +22,13 @@ To create a Depot of Google Cloud Storage, in the type field you will have to sp
     name: {{"sanitygcs01"}}
     version: v1
     type: depot
+    description: {{"GCS depot for sanity"}}
     tags:
       - {{GCS}}
       - {{Sanity}}
     layer: user
     depot:
       type: GCS
-      description: {{"GCS depot for sanity"}}
       compute: {{runnable-default}}
       spec:
         bucket: {{"airbyte-minio-testing"}}
@@ -49,13 +49,13 @@ To create a Depot of Google Cloud Storage, in the type field you will have to sp
     name: {{"sanitygcs01"}}
     version: v2alpha
     type: depot
+    description: {{"GCS depot for sanity"}}
     tags:
       - {{GCS}}
       - {{Sanity}}
     layer: user
     depot:
       type: GCS
-      description: {{"GCS depot for sanity"}}
       compute: {{runnable-default}}
       gcs:
         bucket: {{"airbyte-minio-testing"}}

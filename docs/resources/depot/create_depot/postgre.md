@@ -54,6 +54,7 @@ Begin by creating a manifest file to hold the configuration details for your Pos
 name: ${{postgresdb}}
 version: v2alpha
 type: depot
+description: ${{To write data to postgresql database}}
 tags:
   - ${{tag1}}
   - ${{tag2}}
@@ -61,7 +62,6 @@ owner: ${{owner-name}}
 layer: user
 depot:
   type: JDBC                  
-  description: ${{To write data to postgresql database}}
   external: ${{true}}
   secrets:
     - name: ${{sf-instance-secret-name}}-r
@@ -87,13 +87,13 @@ depot:
 name: ${{depot-name}}
 version: v2alpha
 type: Depot
+description: ${{description}}
 tags:
   - ${{tag1}}
 owner: ${{owner-name}}
 layer: user
 depot:
   type: POSTGRESQL
-  description: ${{description}}
   external: true
   secrets:
     - name: ${{instance-secret-name}}-r

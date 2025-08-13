@@ -359,7 +359,7 @@ v1beta: # mandatory
 ```
 For more information about the various attributes in the Data Product-specific section, refer to the [Attributes of Data Product-Specific section](/products/data_product/configurations/).
 
-### **Apply the Data Product manifest file**
+## Apply the Data Product manifest file
 
 To create a Data Product within the DataOS, use the `apply` command. When applying the manifest file from the DataOS CLI, `apply` command is as follows:
 

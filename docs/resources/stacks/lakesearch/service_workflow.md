@@ -122,6 +122,7 @@ Furthermore, users can also throttle the system to control the batch execution:
     ```yaml
     options:
     		start: 1735084800
+    		start_query: "SELECT max(updated_at) FROM devices"
     		step: 86400
     		batch_sql: |
     		  WITH base AS (
