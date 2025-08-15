@@ -26,7 +26,7 @@ While it's straightforward to assign Use-Cases to users via the Bifrost UI, ther
 ```yaml
 policy_use_case_id: manage-pulsar
   subjects:
-  - roles:id:operator
+    - roles:id:operator
 ```
 -  Click on the **Create** button to apply the Use-Case Grant.
 
