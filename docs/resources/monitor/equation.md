@@ -183,4 +183,4 @@ Details of any created Monitor can also be accessed through the DataOS GUI in th
 
 ## Next steps
 
-After successfully creating the Equation Monitor, the next step is to configure a [Pager Resource](/resource/pager/). The Pager Resource is responsible for sending alerts to pre-configured Teams channels or email addresses whenever the incident condition is met. 
+After successfully creating the Equation Monitor, the next step is to configure a [Pager Resource](/resources/pager/). The Pager Resource is responsible for sending alerts to pre-configured Teams channels or email addresses whenever the incident condition is met. 
