@@ -57,7 +57,7 @@ version: v1
 
 | **Data Type**    | **Requirement** | **Default Value** | **Possible Value** |
 |------------------|-----------------|-------------------|-------------------|
-| string          | mandatory       | none              | cluster, compute, depot, policy,<br> secret, service, stack or workflow              |
+| string          | mandatory       | none              | cluster, compute, depot, policy, instance-secret, service, workflow, bundle, grant, lens, lakehouse, worker, database, monitor, operator, pager, secret, volume.   |
 
 **Example usage:**
 ```yaml
