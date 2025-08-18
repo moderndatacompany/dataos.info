@@ -21,6 +21,7 @@ To create a Depot of type 'BIGQUERY', utilize the following template:
     name: {{depot-name}}
     version: v1
     type: depot
+    description: {{description}}
     tags:
       - {{dropzone}}
       - {{bigquery}}
@@ -28,7 +29,6 @@ To create a Depot of type 'BIGQUERY', utilize the following template:
     layer: user
     depot:
       type: BIGQUERY                 
-      description: {{description}}
       external: {{true}}
       connectionSecret:            
         - acl: rw
@@ -57,6 +57,7 @@ To create a Depot of type 'BIGQUERY', utilize the following template:
     name: {{depot-name}}
     version: v2alpha
     type: depot
+    description: {{description}}
     tags:
       - {{dropzone}}
       - {{bigquery}}
@@ -64,7 +65,6 @@ To create a Depot of type 'BIGQUERY', utilize the following template:
     layer: user
     depot:
       type: BIGQUERY                 
-      description: {{description}}
       external: {{true}}
       connectionSecret:            
         - acl: rw

@@ -39,6 +39,7 @@ Create a manifest file to hold the configuration details for your Pulsar Depot.
 name: ${{depot-name}}
 version: v1
 type: depot
+description: ${{description}}
 tags:
   - ${{tag1}}
   - ${{tag2}}
@@ -46,7 +47,6 @@ owner: ${{owner-name}}
 layer: user
 depot:
   type: PULSAR       
-  description: ${{description}}
   external: ${{true}}
   spec:              
     adminUrl: ${{admin-url}}

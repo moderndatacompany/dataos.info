@@ -272,6 +272,7 @@ A user must have the following requirements met before setting up a Lakesearch S
                   devices
               options:
                 start: 1608681600
+                start_query: "SELECT max(updated_at) FROM devices"
                 step: 86400
                 batch_sql: |
                   WITH base AS (
@@ -313,6 +314,7 @@ A user must have the following requirements met before setting up a Lakesearch S
                   devices
               options:
                 start: 1736640000
+                start_query: "SELECT max(updated_at) FROM devices"
                 step: 86400
                 batch_sql: |
                   WITH base AS (

@@ -33,10 +33,10 @@ To create a Depot of type ‘REDSHIFT‘, utilize the following template:
     name: {{redshift-depot-name}}
     version: v1
     type: depot
+    description: {{Redshift Sample data}}
     tags:
       - {{redshift}}
     layer: user
-    description: {{Redshift Sample data}}
     depot:
       type: REDSHIFT
       spec:
@@ -63,10 +63,10 @@ To create a Depot of type ‘REDSHIFT‘, utilize the following template:
     name: {{redshift-depot-name}}
     version: v2alpha
     type: depot
+    description: {{Redshift Sample data}}
     tags:
       - {{redshift}}
     layer: user
-    description: {{Redshift Sample data}}
     depot:
       type: REDSHIFT
       redshift:

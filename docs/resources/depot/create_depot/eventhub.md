@@ -48,15 +48,14 @@ Begin by creating a manifest file to hold the configuration details for your Eve
 name: ${{"sanityeventhub01"}}
 version: v2alpha
 type: depot
+description: ${{EventHub depot for streaming data}}
 tags:
   - ${{Eventhub}}
   - ${{Sanity}}
-description: ${{EventHub depot for streaming data}}
 owner: ${{owner-name}}
 layer: user
 depot:
   type: "EVENTHUB"
-  description: ${{EventHub streaming depot}}
   external: ${{true}}
   eventhub:
     endpoint: ${{"sb://event-hubns.servicebus.windows.net/"}}

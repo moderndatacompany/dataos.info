@@ -123,11 +123,11 @@ markdown_extensions:
   - pymdownx.tilde
 #  - pymdownx.extra
   - pymdownx.emoji:
-      # emoji_index: !!python/name:materialx.emoji.twemoji          # while pushing to dev
-      # emoji_generator: !!python/name:materialx.emoji.to_svg       # while pushing to dev
+      emoji_index: !!python/name:material.extensions.emoji.twemoji          # while pushing to dev
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg       # while pushing to dev
 
-      emoji_index: !!python/name:materialx.emoji.twemoji                      # while hosting locally  
-      emoji_generator: !!python/name:materialx.emoji.to_svg                   # while hosting locally 
+      # emoji_index: !!python/name:materialx.emoji.twemoji                      # while hosting locally  
+      # emoji_generator: !!python/name:materialx.emoji.to_svg                   # while hosting locally 
       
       # before pushing to dev branch replace materialx.emoji.to_svg with material.extensions.emoji.to_svg
       # before pushing to dev branch replace materialx.emoji.twemoji with material.extensions.emoji.twemoji
@@ -464,18 +464,16 @@ nav:
           - Types: 
             - Equation Monitor: resources/monitor/equation.md
             - Report Monitor: resources/monitor/report.md
-            # - Stream Monitor: resources/monitor/streaming.md
-          # - First Steps: resources/monitor/first_steps.md
+            - Stream Monitor: resources/monitor/streaming.md
+          - First Steps: resources/monitor/first_steps.md
           - Configurations: resources/monitor/configurations.md
           - Recipes: 
             - Add context columns to Monitors: resources/monitor/how_to_guide/context_column.md
+            - Create a Report Monitor: resources/monitor/how_to_guide/report_monitor.md
+            - Create a Stream Monitor: resources/monitor/how_to_guide/stream_monitor.md
             - Create an Equation Monitor on Lens: resources/monitor/how_to_guide/lens_monitor.md
             - Create an Equation Monitor on Postgres: resources/monitor/equation_monitor_on_postgres.md
             - Generate incidents for certificate expiration: resources/monitor/how_to_guide/certificate_expiration_monitoring.md
-          - Use Case: resources/monitor/usecases/lens_metrics.md  
-          - Best Practices: resources/monitor/bestpractices.md
-        
-          
         - Operator: 
           - resources/operator/index.md
           - Configurations: resources/operator/configurations.md
@@ -947,9 +945,7 @@ nav:
           - Cluster management: learn/operator_learn_track/cluster_management/index.md
           - Cluster tuning: learn/operator_learn_track/cluster_tuning/index.md
           - Cred security: learn/operator_learn_track/cred_security/index.md
-          - Data source connectivity: 
-            - learn/operator_learn_track/data_source_connectivity/index.md
-            - Set up PostgreSQL Depot: learn/dp_developer_learn_track/data_source_connectivity/postgres/index.md
+          - Data source connectivity: learn/operator_learn_track/data_source_connectivity/index.md
           - Keycloak: learn/operator_learn_track/keycloak/index.md
           - Lakehouse insights: learn/operator_learn_track/lakehouse_insights/index.md
           - Routine check: learn/operator_learn_track/routine_check/index.md

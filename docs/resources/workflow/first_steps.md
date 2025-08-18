@@ -152,7 +152,7 @@ The Stack-specific Section allows you to specify the desired [Stack](/resources/
 
 - [Scanner Stack](/resources/stacks/scanner/): The Scanner Stack provides metadata ingestion capabilities from a source.
 
-For more detailed instructions on setting up and customizing the Stack-specific Section attributes according to your needs, refer to the respective documentation of [Flare](/resources/stacks/flare/configurations/), [Container](/resources/stacks/container/#container-stack-section), [Scanner](/resources/stacks/scanner/field_ref/) Stack. Each Stack has its unique attributes that can enhance the functionality of your job.
+For more detailed instructions on setting up and customizing the Stack-specific Section attributes according to your needs, refer to the respective documentation of [Flare](/resources/stacks/flare/configurations/), [Container](/resources/stacks/container/#container-stack-section), [Scanner](/resources/stacks/scanner/) Stack. Each Stack has its unique attributes that can enhance the functionality of your job.
 
 
 <details>
@@ -160,7 +160,7 @@ For more detailed instructions on setting up and customizing the Stack-specific 
 Click here to view a sample Workflow YAML configuration
 </summary>
 
-The sample Workflow code snippet provide below consists of a single job that leverages the <a href="/resources/stacks/flare/">Flare</a> Stack for transforming data read from the <a href="/resources/depot/icebase/">Icebase</a> Depot and storing it in the <code>thirdparty01</code> Depot.
+The sample Workflow code snippet provide below consists of a single job that leverages the <a href="/resources/stacks/flare/">Flare</a> Stack for transforming data read from the <a href="/resources/lakehouse/">Lakehouse</a> Depot and storing it in the <code>thirdparty01</code> Depot.
 <br>
 <br>
 <b>Code Snippet</b>
@@ -173,7 +173,7 @@ type: workflow
 tags:
   - Connect
   - City
-description: This workflow reads data from Icebase depot and stores it in thirdparty depot.
+description: This workflow reads data from Lakehouse depot and stores it in thirdparty depot.
 
 # Workflow-specific Section
 workflow:
@@ -183,7 +183,7 @@ workflow:
 # Job-specific Section
     - name: city-abfss-write-avro
       title: City Dimension Ingester
-      description: The job ingests data from Icebase to thirdparty depot.
+      description: The job ingests data from Lakehouse to thirdparty depot.
       spec:
         tags:
           - Connect
@@ -197,7 +197,7 @@ workflow:
             explain: true
             inputs:
               - name: city_connect
-                dataset: dataos://icebase:retail/city
+                dataset: dataos://lakehouse:retail/city
                 format: iceberg
             logLevel: INFO
             outputs:
@@ -428,7 +428,7 @@ INFO[0001] 📃 log(curriculum)...complete
 + exec /usr/bin/tini -s -- /opt/spark/bin/spark-submit --conf spark.driver.bindAddress=10.212.6.129 --deploy-mode client --properties-file /opt/spark/conf/spark.properties --class io.dataos.flare.Flare local:///opt/spark/jars/flare.jar -c /etc/dataos/config/jobconfig.yaml
 2022-06-24 11:42:37,146 WARN  [main] o.a.h.u.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
 build version: 5.9.16-dev; workspace name: curriculum; workflow name: cnt-city-demo-001; workflow run id: 761eea3b-693b-4863-a83d-9382aa078ad1; run as user: mebinmoncy; job name: city-001; job run id: 03b60c0e-ea75-4d08-84e1-cd0ff2138a4e; 
-found configuration: Map(explain -> true, appName -> city-001, outputs -> List(Map(depot -> dataos://icebase:retailsample?acl=rw, name -> output01)), inputs -> List(Map(dataset -> dataos://thirdparty01:none/city, format -> csv, name -> city_connect, schemaPath -> dataos://thirdparty01:none/schemas/avsc/city.avsc)), steps -> List(/etc/dataos/config/step-0.yaml), logLevel -> INFO)
+found configuration: Map(explain -> true, appName -> city-001, outputs -> List(Map(depot -> dataos://lakehouse:retailsample?acl=rw, name -> output01)), inputs -> List(Map(dataset -> dataos://thirdparty01:none/city, format -> csv, name -> city_connect, schemaPath -> dataos://thirdparty01:none/schemas/avsc/city.avsc)), steps -> List(/etc/dataos/config/step-0.yaml), logLevel -> INFO)
 22/06/24 11:42:41 INFO Flare$: context is io.dataos.flare.contexts.ProcessingContext@49f40c00
 22/06/24 11:42:41 ERROR Flare$: =>Flare: Job finished with error build version: 5.9.16-dev; workspace name: curriculum; workflow name: cnt-city-demo-001; workflow run id: 761eea3b-693b-4863-a83d-9382aa078ad1; run as user: mebinmoncy; job name: city-001; job run id: 03b60c0e-ea75-4d08-84e1-cd0ff2138a4e; 
 io.dataos.flare.exceptions.FlareInvalidConfigException: Could not alter output datasets for workspace: curriculum, job: city-001. There is an existing job with same workspace: curriculum and name: city-001 writing into below datasets

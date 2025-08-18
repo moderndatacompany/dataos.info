@@ -7,6 +7,7 @@
     name: ${{depot-name}}
     version: v2alpha
     type: depot
+    description: ${{description}}
     tags:
       - ${{tag1}}
       - ${{tag2}}
@@ -14,7 +15,6 @@
     layer: user
     depot:
       type: ${{source-type}}                                       
-      description: ${{description}}
       external: ${{true}}
       compute: ${{runnable-default}}
       secrets:
@@ -30,13 +30,13 @@
     name: mydepot
     version: v2alpha
     type: depot
+    description: abfss connection
     tags:
       - abfss
     owner: iamgroot
     layer: user
     depot:
       type: ABFSS                                       
-      description: abfss connection
       external: true
       compute: runnable-default
       secrets:

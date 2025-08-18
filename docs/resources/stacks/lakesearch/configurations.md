@@ -92,6 +92,7 @@ service:
               city
           options:
             start: 1734979551
+            start_query: "SELECT max(source_ts_ms) FROM products"
             step: 86400
             batch_sql: |
               WITH base AS (
@@ -1079,6 +1080,7 @@ indexers:
         city
     options:
       start: 1734979551
+      start_query: "SELECT max(source_ts_ms) FROM products"
       step: 86400
       batch_sql: |
         WITH base AS (
@@ -1151,7 +1153,7 @@ base_sql: |
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| object | optional | none | Contains `start`, `step`, and `batch_sql` |
+|| object | optional | none | Contains `start`, `start_query`, `step`, and `batch_sql` |
 
 ---
 
@@ -1168,6 +1170,26 @@ base_sql: |
 ```yaml
 
 start: 1734979551
+
+```
+
+---
+
+### **indexers.options.start_query**
+
+**Description:** Specifies a SQL query that returns a single integer value formulated via `max(value)` to determine the maximum value of the specified numeric column (e.g., row_num, source_ts_ms, etc) in the index. This maximum value is used as the starting point for fetching new records from the source Lakehouse dataset. The query should return the maximum value of a timestamp, row number, or similar incremental column that can be used to identify the most recent indexed data.
+
+**Additional Information:** This approach provides a dynamic way to determine the starting point for incremental indexing. Instead of manually specifying a fixed timestamp via the `start` parameter, the system can automatically determine where to begin by executing the provided query against the existing dataset to find the maximum value of the specified column.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string (SQL query) | optional | none | SQL query that returns a single integer (e.g., `"SELECT max(ts_city) FROM city"`, `"SELECT max(row_num) FROM products"`, `"SELECT max(source_ts_ms) FROM products"`) |
+
+**Example usage:**
+
+```yaml
+
+start_query: "SELECT max(source_ts_ms) FROM products"
 
 ```
 

@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Fastbase
 
 Fastbase is a depot type within the DataOS that supports Apache Pulsar format for streaming workloads. Pulsar offers a “unified messaging model”  that combines the best features of traditional messaging systems like RabbitMQ and pub-sub (publish-subscribe) event streaming platforms like Apache Kafka. Users can leverage Fastbase depots for their streaming and real-time data workloads. 
