@@ -1,7 +1,7 @@
 ---
 title: Integrate semantic model with Power BI Desktop
 search:
-  boost: 4
+  boost: 2
 tags:
   - PowerBI Desktop
   - Power BI Sync

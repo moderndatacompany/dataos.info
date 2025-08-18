@@ -137,10 +137,10 @@ Draft the manifest file for the Depot:
 name: postgres    # Unique name for the Depot
 version: v2alpha  # Manifest version
 type: depot       # Type of the Resource
+description: default postgres depot
 layer: user
 depot:
   type: jdbc                 
-  description: default postgres depot
   external: true
   secrets:
     - name: postgres-rw   # Reference the Instance Secret for read & write access

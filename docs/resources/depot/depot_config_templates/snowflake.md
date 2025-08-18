@@ -22,13 +22,13 @@ To create a Depot of type 'SNOWFLAKE', you can utilize the following YAML templa
     name: {{snowflake-depot}}
     version: v1
     type: depot
+    description: {{snowflake-depot-description}}
     tags:
       - {{tag1}}
       - {{tag2}}
     layer: user
     depot:
       type: snowflake
-      description: {{snowflake-depot-description}}
       spec:
         warehouse: {{warehouse-name}}
         url: {{snowflake-url}}
@@ -47,13 +47,13 @@ To create a Depot of type 'SNOWFLAKE', you can utilize the following YAML templa
     name: {{snowflake-depot}}
     version: v2alpha
     type: depot
+    description: {{snowflake-depot-description}}
     tags:
       - {{tag1}}
       - {{tag2}}
     layer: user
     depot:
       type: snowflake
-      description: {{snowflake-depot-description}}
       snowflake:
         warehouse: {{warehouse-name}}
         url: {{snowflake-url}}

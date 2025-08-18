@@ -704,7 +704,7 @@ Charlie will be upset but at least it's safe.
 
 Mappings should be validated with unit tests to ensure their reliability. Without proper testing, mappings can become unmanageable over time.  
 
-Bento provides [unit testing capabilities](../configurations/unit_testing) that can be applied to mappings. To begin, save a mapping in a file, such as `naughty_man.blobl`. The example from the reusable mappings section can be used as a reference:
+Bento provides [unit testing capabilities](/resources/stacks/bento/configurations/unit_testing/) that can be applied to mappings. To begin, save a mapping in a file, such as `naughty_man.blobl`. The example from the reusable mappings section can be used as a reference:
 
 ```go
 map remove_naughty_man {

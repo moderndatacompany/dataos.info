@@ -5,7 +5,7 @@ Data masking policies in DataOS can be implemented using one of the following ap
 
 ## Using existing Data Masking Policies
 
-DataOS includes a set of predefined data masking policies that are automatically enforced when certain standard tags (such as `PII.DateOfBirth`, `PII.Age`, etc.) are applied to dataset columns within DataOS using [Metis](/docs/interfaces/metis/) UI.
+DataOS includes a set of predefined data masking policies that are automatically enforced when certain standard tags (such as `PII.DateOfBirth`, `PII.Age`, etc.) are applied to dataset columns within DataOS using [Metis](/interfaces/metis/) UI.
 
 The following tags are attached with data masking policies maintained by the DataOS. Each of these policies is assigned a default priority of `99` and is enforced when the tag is applied.
 

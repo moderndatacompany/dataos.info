@@ -1,7 +1,7 @@
 ---
 title: Scanner Stack
 search:
-  boost: 2
+  boost: 3
 ---
 
 # Scanner Stack

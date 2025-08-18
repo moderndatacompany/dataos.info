@@ -40,7 +40,7 @@ Lens is engineered to handle complex and large-scale data models with ease. Key 
 
 - **Governance and access control:** Lens ensures data governance through[ user group management and data policies](/resources/lens/user_groups_and_data_policies/), enabling precise control over who can access and interact with data models. 
 
-- **BI integration:** Lens improves interoperability through robust integration with Superset, Tableau,  and PowerBI. This ensures that data models can be easily utilized across various BI platforms, enhancing the overall analytics experience. For more details on BI integration, visit the [BI Integration Guide](/resources/lens/bi_integration/).
+- **BI integration:** Lens improves interoperability through robust integration with Superset, Tableau,  and PowerBI. This ensures that data models can be easily utilized across various BI platforms, enhancing the overall analytics experience. 
 
 - **Performance optimization through Flash:** Designed to work with DataOS Lakehouse and Iceberg-format Depots, [Flash](/resources/stacks/flash/) improves query performance by leveraging in-memory execution. This optimization ensures that data teams can efficiently handle large-scale queries with enhanced speed and performance.
 
