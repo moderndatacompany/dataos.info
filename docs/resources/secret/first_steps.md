@@ -35,17 +35,17 @@ For more information about the various attributes in Resource meta section, refe
 
 The Secret-specific Section of the manifest configuration file includes key-value pairs specific to the type of Secret being created. The following manifest snippet illustrates the key values to be declared in this section:
 
-
-```yaml
-secret:
-  type: ${{secret-subtype}} # Mandatory
-  acl: ${{access-control-level}} # Mandatory
-  data:                   # Mandatory
-    ${{key1}}: ${{value1}} 
-    ${{key2}}: ${{value2}}
-  files: # Manifest file path (optional)
-    ${{xyz: /home/secret.yaml}}
-```
+=== "Syntax"
+    ```yaml
+    secret:
+    type: ${{secret-subtype}} # Mandatory
+    acl: ${{access-control-level}} # Mandatory
+    data:                   # Mandatory
+        ${{key1}}: ${{value1}} 
+        ${{key2}}: ${{value2}}
+    files: # Manifest file path (optional)
+        ${{xyz: /home/secret.yaml}}
+    ```
 === "Example Usage"
     ```yaml
     secret:
@@ -67,7 +67,7 @@ The table below provides a summary of the various attributes of the Secret-speci
 | Field | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
 | [`secret`](/resources/secret/configurations/#secret) | object | none | none | mandatory |
-| [`type`](resources/secret/configurations/#type) | string | none | cloud-kernel, cloud-kernel-image-pull, key-value, key-value-properties, certificates | mandatory |
+| [`type`](/resources/secret/configurations/#type) | string | none | cloud-kernel, cloud-kernel-image-pull, key-value, key-value-properties, certificates | mandatory |
 | [`acl`](/resources/secret/configurations/#acl) | string | none | r, rw | mandatory |
 | [`data`](/resources/secret/configurations/#data) | mapping | none | none | mandatory |
 | [`files`](/resources/secret/configurations/#file) | string | none | file-path | optional |

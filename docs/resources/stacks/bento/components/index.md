@@ -76,7 +76,7 @@ These are the main components within Bento and they provide the majority of usef
 
 ### **Observability Components**
 
-There are also the observability components [http](/resources/stacks/bento/components/http/), [logger](/resources/stacks/bento/components/logger/), [metrics](/resources/stacks/bento/components/metrics/), and [tracing](/resources/stacks/bento/components/tracers/), which allow you to specify how Bento exposes observability data:
+There are also the observability components [http](/resources/stacks/bento/components/http/), [logger](/resources/stacks/bento/components/logger/), and [metrics](/resources/stacks/bento/components/metrics/), which allow you to specify how Bento exposes observability data:
 
 ```yaml
 http:
@@ -96,7 +96,7 @@ metrics:
 
 ### **Resource Components**
 
-Finally, there are [caches](/resources/stacks/bento/components/caches/) and [rate limits](/resources/stacks/bento/components/rate_limit/). These are components that are referenced by core components and can be shared.
+Finally, there are [caches](/resources/stacks/bento/components/metrics/#caches) and [rate limits](/resources/stacks/bento/components/rate_limit/). These are components that are referenced by core components and can be shared.
 
 ```yaml
 input:

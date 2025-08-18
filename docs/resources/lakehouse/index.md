@@ -232,15 +232,15 @@ A sample Lakehouse manifest file is provided below; the sections that make up th
           type: themis
     ```
 
-    1.  **Resource meta section** within a manifest file comprises metadata attributes universally applicable to all [Resource-types](/resources/types_of_dataos_resources/). To learn more about how to configure attributes within this section, refer to the link: [Attributes of Resource meta section](/resources/manifest_attributes/).
+  1.  **Resource meta section** within a manifest file comprises metadata attributes universally applicable to all [Resource-types](/resources/types/). To learn more about how to configure attributes within this section, refer to the link: [Attributes of Resource meta section](/resources/manifest_attributes/).
 
-    2.  **Lakehouse-specific section** within a manifest file comprises attributes specific to the Lakehouse Resource. This section is further subdivided into: Storage, Metastore, and Query Engine section. To learn more about how to configure attributes of Lakehouse-specific section, refer the link: [Attributes of Lakehouse-specific section](/resources/lakehouse/configurations/).
+  2.  **Lakehouse-specific section** within a manifest file comprises attributes specific to the Lakehouse Resource. This section is further subdivided into: Storage, Metastore, and Query Engine section. To learn more about how to configure attributes of Lakehouse-specific section, refer the link: [Attributes of Lakehouse-specific section](/resources/lakehouse/configurations/).
 
-    3.  **Storage section** comprises attributes for storage configuration.
+  3.  **Storage section** comprises attributes for storage configuration.
 
-    4.  **Metastore section** comprises attributes for metastore configuration.
+  4.  **Metastore section** comprises attributes for metastore configuration.
 
-    5.  **Query Engine section** comprises attributes for query engine configuration.
+  5.  **Query Engine section** comprises attributes for query engine configuration.
 
 
 **Resource meta section**
