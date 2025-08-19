@@ -1,3 +1,9 @@
+---
+title: Testing Data Model Locally
+search:
+  exclude: true
+---
+
 # Testing Data Model Locally
 
 !!! info "Information"
