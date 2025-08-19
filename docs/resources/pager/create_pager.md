@@ -9,13 +9,9 @@ This section provides a step-by-step guide on creating and managing Pager resour
 
 Before creating a Pager Resource, the following prerequisites must be met.
 
-**Logged into DataOS CLI:**
+- Ensure that the [Monitor Resource](/resources/monitor/) is already configured and working as expected.
 
-Ensure that the DataOS Command Line Interface is set up on the local system and that the user is logged in before proceeding. See [Setting up CLI](/interfaces/cli/).
-
-**Permissions:**
-
-Verify that the appropriate permissions are available to create and manage a Pager Resource.
+- Verify that the appropriate permissions are available to create and manage a Pager Resource.
 
 Once the prerequisites are satisfied, Pager Resource in DataOS can be created.
 
