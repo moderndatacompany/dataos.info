@@ -8,7 +8,7 @@ Before creating a Equation Monitor, the following prerequisites must be met for 
 
 **Logged into DataOS CLI:**
 
-Ensure that the DataOS Command Line Interface is set up on the local system and that the user is logged in before proceeding. See Setting up CLI.
+Ensure that the DataOS Command Line Interface is set up on the local system and that the user is logged in before proceeding. See [Setting up CLI](/interfaces/cli/).
 
 **Permissions:**
 
