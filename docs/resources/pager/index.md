@@ -11,13 +11,13 @@ A Pager in DataOS is a [Resource](/resources/) that enables data developers to s
 
 <div class="grid cards" markdown>
 
--   :material-card-bulleted-settings-outline:{ .lg .middle } **How to create and manage a Pager?**
+-   :material-card-bulleted-settings-outline:{ .lg .middle } **How to create a Pager?**
 
     ---
 
     Learn how to create and manage a Pager in DataOS.
 
-    [:octicons-arrow-right-24: Create and manage a Pager](#how-to-create-and-manage-a-pager)
+    [:octicons-arrow-right-24: Create a Pager](#how-to-create-a-pager-resource)
 
 
 -   :material-list-box-outline:{ .lg .middle } **How to configure the manifest file of Pager?**
@@ -43,7 +43,7 @@ A Pager in DataOS is a [Resource](/resources/) that enables data developers to s
 
     Explore examples showcasing the usage of Pager in various scenarios.
 
-    [:octicons-arrow-right-24:  Pager usage examples](#pager-usage-examples)
+    [:octicons-arrow-right-24:  Pager recipes](#recipes)
 
 </div>
 
