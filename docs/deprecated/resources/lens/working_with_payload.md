@@ -4,7 +4,7 @@ search:
   exclude: true
 ---
 
-
+<!-- This document contains screenshots of Old UI -->
 
 # Working with Payload
 
