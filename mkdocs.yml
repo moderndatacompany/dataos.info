@@ -481,9 +481,10 @@ nav:
             - Orchestrate Hightouch pipeline using Hightouch Factory Operator: resources/operator/case_scenario/hightouch_factory_operator.md
         - Pager: 
           - resources/pager/index.md
+          - First Steps: resources/pager/create_pager.md
           - Configurations: resources/pager/configurations.md
           - Recipes: 
-            - Create a Custom Body Template for Pager: resources/pager/custom_body_template_for_pager.md
+            - Custom Body Template for Pager: resources/pager/custom_body_template_for_pager.md
         - Policy: 
           - resources/policy/index.md
           - Core Concepts: resources/policy/core_concepts.md
