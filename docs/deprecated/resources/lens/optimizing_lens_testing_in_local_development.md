@@ -1,3 +1,9 @@
+---
+title: Local development environment
+search:
+  exclude: true
+---
+
 
 ## Local development environment
 

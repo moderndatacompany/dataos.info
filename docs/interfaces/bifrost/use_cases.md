@@ -71,10 +71,10 @@ A sample Use-Case manifest is given below:
     values:
     - authorization_atom_id: post-path-ingress
       variable_values:
-      - path: /ds/api/v2**
+        - path: /ds/api/v2**
     - authorization_atom_id: put-path-ingress
       variable_values:
-      - path: /ds/api/v2**
+        - path: /ds/api/v2**
     ```
 Note: When granting a new use-case, it is essential to specify whether full access is desired or if limited access should be granted.
 

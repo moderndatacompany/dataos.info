@@ -1,5 +1,5 @@
 ---
-title: Lens
+title: Test Lens locally in development environment 
 search:
   exclude: true
 ---

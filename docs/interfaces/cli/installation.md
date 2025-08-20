@@ -9,13 +9,13 @@ Follow the steps enumerated below to install the Command Line Interface. Check t
     - DataOS prime apikey
     - Domain name of the DataOS context/instance
     - Version of the CLI to be installed
- 2. Please ensure that the curl utility is installed on your system. To check, use this command:
+ <!-- 2. Please ensure that the curl utility is installed on your system. To check, use this command:
     ```sh
     curl --version
     ```
-    If curl is not installed, follow the steps to [download curl](/interfaces/cli/read_on_curl_utility/).
+    If curl is not installed, follow the steps to [download curl](/interfaces/cli/read_on_curl_utility/). -->
 
- 3. Find out the operating system you are using, and the processor's architecture. The following is a list of supported Arch values:
+ 2. Find out the operating system you are using, and the processor's architecture. The following is a list of supported Arch values:
      
 
      | Operating System | Processor | Arch |
@@ -28,8 +28,16 @@ Follow the steps enumerated below to install the Command Line Interface. Check t
      |  | M1 & M2 (64 bit) | linux-arm64 |
      | `Windows` | 32bit | 386|
      | | 64bit | amd64 (works for both intel & amd chips)|
+
+ 3. Ensure that the curl utility is installed on your system. This step applies to Mac and Linux users.
+    To check, use this command:
+    ```sh
+    curl --version
+    ```
+    If curl is not installed, follow the steps to [download curl](/interfaces/cli/read_on_curl_utility/).
   
-   <aside class="callout">🗣️ Replace <b>{{placeholder}}</b> text in various commands with appropriate values before running the command.</aside>
+
+<aside class="callout">🗣️ Replace <b>{{placeholder}}</b> text in various commands with appropriate values before running the command.</aside>
 
 ## Installation on MacOS
 
