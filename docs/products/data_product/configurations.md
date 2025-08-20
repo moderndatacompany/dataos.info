@@ -45,28 +45,28 @@ v1beta: # mandatory
 
     inputs: # mandatory
       - refType: ${{dataos}}
-        ref: ${{dataset:icebase:customer_relationship_management:customer}}
+        ref: ${{dataset:lakehouse:customer_relationship_management:customer}}
         description: ${{'Ingest data'}}
         purpose: ${{'ingestion'}}
 
       - refType: ${{dataos}}
-        ref: ${{dataset:icebase:customer_relationship_management:purchase}}
+        ref: ${{dataset:lakehouse:customer_relationship_management:purchase}}
         description: ${{'Ingest data'}}
         purpose: ${{'ingestion'}}
 
       - refType: ${{dataos}}
-        ref: ${{dataset:icebase:customer_relationship_management:product}}
+        ref: ${{dataset:lakehouse:customer_relationship_management:product}}
         description: ${{'Ingest data'}}
         purpose: ${{'ingestion'}}
 
     outputs: # optional
       - refType: ${{dataos}}
-        ref: ${{dataset:icebase:customer_relationship_management:product_affinity_matrix}}
+        ref: ${{dataset:lakehouse:customer_relationship_management:product_affinity_matrix}}
         description: ${{'Ingest data'}}
         purpose: ${{'ingestion'}}
 
       - refType: ${{dataos}}
-        ref: ${{dataset:icebase:customer_relationship_management:cross_sell_recommendations}}
+        ref: ${{dataset:lakehouse:customer_relationship_management:cross_sell_recommendations}}
         description: ${{'Ingest data'}}
         purpose: ${{'ingestion'}}
 
@@ -487,13 +487,13 @@ ref: ${{bundle:v1beta:sales-data-pipeline}}
 ```yaml
 inputs: # mandatory
   - refType: dataos
-    ref: dataset:icebase:customer_relationship_management:customer
+    ref: dataset:lakehouse:customer_relationship_management:customer
 
   - refType: dataos
-    ref: dataset:icebase:customer_relationship_management:purchase
+    ref: dataset:lakehouse:customer_relationship_management:purchase
 
   - refType: dataos
-    ref: dataset:icebase:customer_relationship_management:product
+    ref: dataset:lakehouse:customer_relationship_management:product
 ```
 
 <center>
@@ -520,10 +520,10 @@ inputs: # mandatory
 ```yaml
 outputs: # optional
   - refType: dataos
-    ref: dataset:icebase:customer_relationship_management:product_affinity_matrix
+    ref: dataset:lakehouse:customer_relationship_management:product_affinity_matrix
 
   - refType: dataos
-    ref: dataset:icebase:customer_relationship_management:cross_sell_recommendations
+    ref: dataset:lakehouse:customer_relationship_management:cross_sell_recommendations
 ```
 
 <center>

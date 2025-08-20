@@ -1,4 +1,4 @@
-name: filtericebasecity
+name: filterlakehousecity
 version: v1
 type: policy
 layer: user
@@ -6,14 +6,14 @@ description: "data policy to filter city data"
 policy:
   data:
     type: filter
-    name: "filtericebasecity"
+    name: "filterlakehousecity"
     priority: 1
     selector:
       user:
         match: all
         tags:
           - "users:id:iamgroot"
-    dataset_id: "icebase.retail.city"
+    dataset_id: "lakehouse.retail.city"
     description: 'data policy to filter data on zip code'
     filters:
       - column: city_name

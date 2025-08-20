@@ -106,7 +106,7 @@ To configure the Stack-specific Section, refer to the appropriate stack document
 Click here to view a sample service
 </summary>
 
-The sample service ingests product data from the thirdparty01 depot and store it in the icebase depot. This workflow leverages the Flare stack to efficiently execute the necessary data ingestion tasks. The provided YAML code snippet outlines the configuration and specifications of this workflow.
+The sample service ingests product data from the thirdparty01 depot and store it in the lakehouse depot. This workflow leverages the Flare stack to efficiently execute the necessary data ingestion tasks. The provided YAML code snippet outlines the configuration and specifications of this workflow.
 
 
 <br>

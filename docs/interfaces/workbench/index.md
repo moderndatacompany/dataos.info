@@ -36,7 +36,7 @@ The next step is to select the names of the `Catalog`, `Schema`, and `Table` whe
 
 Once you select a table from the list of tables, its columns and data types appear on the screen. The mapping from source data to tables is defined by the connector. For relational databases, depot translates to `Catalog` in Workbench, while Collection to `Schema`, and Dataset to `Table`.
 
-A fully-qualified table name such as `icebase.audience.customers_large_data` refers to the Table `customers_large_data` in the Schema `audience` which is in the Catalog `icebase`.
+A fully-qualified table name such as `lakehouse.audience.customers_large_data` refers to the Table `customers_large_data` in the Schema `audience` which is in the Catalog `lakehouse`.
 
 Query Pane is used to edit scripts, save them, and run scripts. When you run a SQL script, results are shown in the Result pane.
 

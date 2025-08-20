@@ -27,7 +27,7 @@ workflow:
             explain: true
             inputs:
               - name: transactions
-                dataset:  dataos://icebase:sales_360/transactions?acl=rw
+                dataset:  dataos://lakehouse:sales_360/transactions?acl=rw
                 format: iceberg
                 incremental:
                   context: transactions_profile

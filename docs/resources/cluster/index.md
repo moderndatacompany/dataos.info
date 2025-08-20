@@ -181,7 +181,7 @@ To create a Cluster Resource within DataOS, you have two options:
               executor:
                 memory: '4096M'
             depots:
-              - address: dataos://icebase
+              - address: dataos://lakehouse
         ``` 
 
     ???tip "Minerva Cluster manifest"
@@ -215,7 +215,7 @@ To create a Cluster Resource within DataOS, you have two options:
               logLevel: INFO
               trinoLogLevel: ERROR
             depots:
-              - address: dataos://icebase
+              - address: dataos://lakehouse
         ``` 
 
     The structure of a Cluster Resource manifest encompasses the following sections:
@@ -373,7 +373,7 @@ To create a Cluster Resource within DataOS, you have two options:
             logLevel: ${{INFO}} 
             trinoLogLevel: ${{ERROR}} 
           depots: 
-            - address: ${{dataos://icebase:default}} 
+            - address: ${{dataos://lakehouse:default}} 
               properties: 
                 iceberg.file-format: ${{PARQUET}} 
                 iceberg.compression-codec: ${{GZIP}} 
@@ -494,7 +494,7 @@ To create a Cluster Resource within DataOS, you have two options:
         ```yaml
         themis: # Themis mapping (mandatory)
           depots: # mandatory
-            - address: ${{dataos://icebase}} # Depot UDL address (mandatory)
+            - address: ${{dataos://lakehouse}} # Depot UDL address (mandatory)
               properties: # Depot properties (optional)
                 ${{properties attributes}} 
         ```

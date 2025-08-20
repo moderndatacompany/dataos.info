@@ -94,12 +94,12 @@ workflow:
             explain: true
             inputs:
               - name: customer_data
-                dataset: dataos://icebase:customer_relationship_management/crm_raw_data?acl=rw
+                dataset: dataos://lakehouse:customer_relationship_management/crm_raw_data?acl=rw
                 format: iceberg
             logLevel: INFO
             outputs:
               - name: final
-                dataset: dataos://icebase:customer_relationship_management/customer?acl=rw
+                dataset: dataos://lakehouse:customer_relationship_management/customer?acl=rw
                 format: Iceberg
                 options:
                   saveMode: overwrite
@@ -157,12 +157,12 @@ workflow:
             explain: true
             inputs:
               - name: raw_data
-                dataset: dataos://icebase:customer_relationship_management/crm_raw_data?acl=rw
+                dataset: dataos://lakehouse:customer_relationship_management/crm_raw_data?acl=rw
                 format: iceberg
             logLevel: INFO
             outputs:
               - name: final
-                dataset: dataos://icebase:customer_relationship_management/product?acl=rw
+                dataset: dataos://lakehouse:customer_relationship_management/product?acl=rw
                 format: Iceberg
                 options:
                   saveMode: overwrite
@@ -232,12 +232,12 @@ workflow:
             explain: true
             inputs:
               - name: purchase_data
-                dataset: dataos://icebase:customer_relationship_management/crm_raw_data?acl=rw
+                dataset: dataos://lakehouse:customer_relationship_management/crm_raw_data?acl=rw
                 format: iceberg
             logLevel: INFO
             outputs:
               - name: final
-                dataset: dataos://icebase:customer_relationship_management/purchase?acl=rw
+                dataset: dataos://lakehouse:customer_relationship_management/purchase?acl=rw
                 format: Iceberg
                 options:
                   saveMode: overwrite
@@ -311,7 +311,7 @@ workflow:
         logLevel: INFO # WARNING, ERROR, DEBUG
         stackSpec:
           inputs:
-            - dataset: dataos://icebase:customer_relationship_management/customer
+            - dataset: dataos://lakehouse:customer_relationship_management/customer
               options:
                 engine: minerva
                 clusterName: system
@@ -373,7 +373,7 @@ workflow:
         logLevel: INFO # WARNING, ERROR, DEBUG
         stackSpec:
           inputs:
-            - dataset: dataos://icebase:customer_relationship_management/product              
+            - dataset: dataos://lakehouse:customer_relationship_management/product              
               options:
                 engine: minerva
                 clusterName: system
@@ -424,7 +424,7 @@ workflow:
             logLevel: INFO # WARNING, ERROR, DEBUG
             stackSpec:
               inputs:
-                - dataset: dataos://icebase:customer_relationship_management/purchase
+                - dataset: dataos://lakehouse:customer_relationship_management/purchase
                   options:
                     engine: minerva
                     clusterName: system
@@ -487,7 +487,7 @@ lens:
   source:
     type: minerva
     name: system
-    catalog: icebase
+    catalog: lakehouse
   repo:
     url: https://bitbucket.org/tmdc/product-affinity-cross-sell
     lensBaseDir: product-affinity-cross-sell/resources/lens2/model
@@ -567,7 +567,7 @@ lens:
         income, 
         country 
     FROM 
-        icebase.customer_relationship_management.customer
+        lakehouse.customer_relationship_management.customer
     ```
     
     **product.sql**
@@ -580,7 +580,7 @@ lens:
         product_name,
         price
     FROM
-        icebase.customer_relationship_management.product
+        lakehouse.customer_relationship_management.product
     ```
     
     **purchase.sql**
@@ -604,7 +604,7 @@ lens:
         numwebpurchases + numcatalogpurchases + numstorepurchases + numstorepurchases as purchases,
         (mntwines+mntmeatproducts+mntfishproducts+mntsweetproducts+mntgoldprods+mntfruits) as spend
     FROM
-        icebase.customer_relationship_management.purchase
+        lakehouse.customer_relationship_management.purchase
     ```
     
 
@@ -1276,20 +1276,20 @@ v1beta:
 
     inputs:
       - refType: dataos
-        ref: dataset:icebase:customer_relationship_management:customer
+        ref: dataset:lakehouse:customer_relationship_management:customer
 
       - refType: dataos
-        ref: dataset:icebase:customer_relationship_management:purchase
+        ref: dataset:lakehouse:customer_relationship_management:purchase
 
       - refType: dataos
-        ref: dataset:icebase:customer_relationship_management:product
+        ref: dataset:lakehouse:customer_relationship_management:product
 
     outputs:
       - refType: dataos
-        ref: dataset:icebase:customer_relationship_management:product_affinity_matrix
+        ref: dataset:lakehouse:customer_relationship_management:product_affinity_matrix
 
       - refType: dataos
-        ref: dataset:icebase:customer_relationship_management:cross_sell_recommendations
+        ref: dataset:lakehouse:customer_relationship_management:cross_sell_recommendations
 
     ports:
       lens:

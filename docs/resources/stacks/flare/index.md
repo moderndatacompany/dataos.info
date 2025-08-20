@@ -53,7 +53,7 @@ Flare Stack offers varied configuration to execute different types of [Jobs](/re
 | **Data Quality Job** | Validates data using user-defined assertions to ensure accuracy and fitness for purpose.                                                          | Business validation, compliance checks.                                            | Medium               | Medium                  |
 | **Incremental Job**| Processes only new or changed data since the last run, reducing computation.                                                                       | Large, frequently changing datasets.                                               | Low                  | Low (scales efficiently) |
 | **Stream Job**     | Continuously processes real-time data with very low latency requirements.                                                                          | Real-time use cases requiring <1-minute latency.                                   | Very Low             | Very High               |
-| **Action Job**     | Executes maintenance actions on Depots using Iceberg format (e.g., compaction, cleanup).                                                           | Data maintenance tasks in Icebase or similar Depots.                              | Depends on action     | Depends on action type  |
+| **Action Job**     | Executes maintenance actions on Depots using Iceberg format (e.g., compaction, cleanup).                                                           | Data maintenance tasks in Lakehouse or similar Depots.                              | Depends on action     | Depends on action type  |
 
 
 <!--
@@ -94,7 +94,7 @@ Stream Jobs continuously process incoming data in real-time. They offer low late
 
 ### **Action Job**
 
-The DataOS platform provides comprehensive support for executing maintenance actions jobs within the Depots supporting the Iceberg table format such as Icebase. These are specified within the actions section. To explore action-specific properties for Action Jobs, click here. For a case scenario illustrating how a action job is declared within DataOS, refer to the link: [Case Scenario: Action Job](/resources/stacks/flare/case_scenario/#flare-actions).
+The DataOS platform provides comprehensive support for executing maintenance actions jobs within the Depots supporting the Iceberg table format such as Lakehouse. These are specified within the actions section. To explore action-specific properties for Action Jobs, click here. For a case scenario illustrating how a action job is declared within DataOS, refer to the link: [Case Scenario: Action Job](/resources/stacks/flare/case_scenario/#flare-actions).
 
  | Flare Job Type  | Description                                                                                                            |
 |-----------------|------------------------------------------------------------------------------------------------------------------------|
@@ -103,7 +103,7 @@ The DataOS platform provides comprehensive support for executing maintenance act
 | [Data Quality Job](/resources/stacks/flare/job_types#data-quality-job) | Evaluates data quality based on business-specific validation rules (assertions).                                                      |
 | [Incremental Job](/resources/stacks/flare/job_types#incremental-job) | Computes only the changed rows or files of data since the last build, reducing overall computation and latency.        |
 | [Stream Job](/resources/stacks/flare/job_types#stream-job)      | Processes new data continuously with low latency, but incurs high computing costs and requires constant resource availability. |
-| [Action Job](/resources/stacks/flare/job_types#action-job)      | Performs maintenance actions on data stored in Iceberg format in any depot (including Icebase) | 
+| [Action Job](/resources/stacks/flare/job_types#action-job)      | Performs maintenance actions on data stored in Iceberg format in any depot (including Lakehouse) | 
 
 
 

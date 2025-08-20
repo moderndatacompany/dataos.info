@@ -5,7 +5,7 @@
 In Flash, attempting to create tables or views for datasets with no records can result in failures, as the absence of data prevents the retrieval of a schema. Without a schema, Flash cannot generate the required tables or views, leading to errors like the one shown below:
 
 ```
-2024-10-08 09:13:52,822: flash - ERROR - flash_migrations.py:130 - could not create view - `operating_system` for dataset - `{'address': 'dataos://icebase:pminsights/os?acl=rw', 'name': 'operating_system'}`, error - IO Error: Iceberg metadata file not found for table version '2' using 'none' compression and format(s): 'v%s%s.metadata.json,%s%s.metadata.json'
+2024-10-08 09:13:52,822: flash - ERROR - flash_migrations.py:130 - could not create view - `operating_system` for dataset - `{'address': 'dataos://lakehouse:pminsights/os?acl=rw', 'name': 'operating_system'}`, error - IO Error: Iceberg metadata file not found for table version '2' using 'none' compression and format(s): 'v%s%s.metadata.json,%s%s.metadata.json'
 ```
 
 ## Workaround

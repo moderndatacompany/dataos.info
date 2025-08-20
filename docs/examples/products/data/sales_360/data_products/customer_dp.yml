@@ -51,4 +51,4 @@ v1alpha:
 #       - description: A data product for customer that optimizes customer management using real-time data and advanced analytics for accurate demand forecasting.
 #         purpose: source
 #         refType: dataos
-#         ref: dataos://icebase:sales_analytics/customer
+#         ref: dataos://lakehouse:sales_analytics/customer

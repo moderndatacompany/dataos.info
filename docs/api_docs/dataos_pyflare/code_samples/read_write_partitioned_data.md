@@ -1,4 +1,4 @@
-# How to read write partitioned data within Icebase using DataOS PyFlare?
+# How to read write partitioned data within Lakehouse using DataOS PyFlare?
 
 ```python
 
@@ -24,7 +24,7 @@ spark = session_builder.SparkSessionBuilder(log_level="INFO") \
     .with_spark_conf(sparkConf) \
     .with_user_apikey(token) \
     .with_dataos_fqdn(DATAOS_FQDN) \
-    .with_depot(depot_name="icebase", acl="rw") \
+    .with_depot(depot_name="lakehouse", acl="rw") \
     .build_session()
 
 # Generate random data and create a DataFrame
@@ -82,13 +82,13 @@ opts = {
 }
 
 # Save DataFrame to DataOS in Iceberg format with partitioning
-save(name="dataos://icebase:pyflaresdk/test_write_02", dataframe=df, format="iceberg", mode="overwrite", options=opts)
+save(name="dataos://lakehouse:pyflaresdk/test_write_02", dataframe=df, format="iceberg", mode="overwrite", options=opts)
 
 # Load and display data from DataOS in Iceberg format
-load(name="dataos://icebase:pyflaresdk/test_write_02", format="iceberg").show()
+load(name="dataos://lakehouse:pyflaresdk/test_write_02", format="iceberg").show()
 
 # Count the total number of records in the stored dataset
-load(name="dataos://icebase:pyflaresdk/test_write_02", format="iceberg").count()
+load(name="dataos://lakehouse:pyflaresdk/test_write_02", format="iceberg").count()
 
 # Uncomment the following line if you wish to stop the Spark session
 # spark.stop()

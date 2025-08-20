@@ -204,15 +204,15 @@ Following these steps will result in the selected Role or Tag being removed from
   </div>
 </center>
 
-- Provide values for the fields according to your use-case. Let’s say you want access to the miniature cluster, its catalog is icebase, under schema retail, which have table city:
+- Provide values for the fields according to your use-case. Let’s say you want access to the miniature cluster, its catalog is lakehouse, under schema retail, which have table city:
     
     | Authorization Atom ID | Variable name | Value |
     | --- | --- | --- |
     | minerva-cluster-access | cluster | miniature |
-    | minerva-table-read | catalog | icebase |
+    | minerva-table-read | catalog | lakehouse |
     | minerva-table-read | schema | retail |
     | minerva-table-read | table | city |
-    | ds-read | depot | icebase |
+    | ds-read | depot | lakehouse |
     | ds-read | collection | city |
     | ds-read | dataset | city |
 

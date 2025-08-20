@@ -51,7 +51,7 @@ entities:
   - name: customer
     sql:
       query: >
-        SELECT * FROM icebase.audience.customers_large_data
+        SELECT * FROM lakehouse.audience.customers_large_data
       columns:
         - name: customer_id
         - name: customer_name
@@ -73,7 +73,7 @@ entities:
         - name: consent
       verified: true
       tables:
-        - icebase.audience.customers_large_data
+        - lakehouse.audience.customers_large_data
     fields:
       - name: customer_id
         type: string
@@ -226,7 +226,7 @@ entities:
           feature10 as request_delivery_date,
           activity_occurence,
           activity_repeated_at
-        FROM icebase.audience.activity_streams_large_data where activity = 'order_placed'
+        FROM lakehouse.audience.activity_streams_large_data where activity = 'order_placed'
       columns:
         - name: activity_uuid
         - name: entity_id
@@ -245,7 +245,7 @@ entities:
         - name: activity_repeated_at
       verified: true
       tables:
-        - icebase.audience.activity_streams_large_data
+        - lakehouse.audience.activity_streams_large_data
     fields:
       - name: activity_uuid
         type: string
@@ -357,7 +357,7 @@ entities:
           feature10 as request_delivery_date,
           activity_occurence,
           activity_repeated_at
-        FROM icebase.audience.activity_streams_large_data where activity = 'order_rejected'
+        FROM lakehouse.audience.activity_streams_large_data where activity = 'order_rejected'
       columns:
         - name: activity_uuid
         - name: entity_id
@@ -375,7 +375,7 @@ entities:
         - name: activity_repeated_at
       verified: true
       tables:
-        - icebase.audience.activity_streams_large_data
+        - lakehouse.audience.activity_streams_large_data
     fields:
       - name: activity_uuid
         type: string
@@ -469,7 +469,7 @@ entities:
           feature10 as request_delivery_date,
           activity_occurence,
           activity_repeated_at
-        FROM icebase.audience.activity_streams_large_data where activity = 'order_invoiced'
+        FROM lakehouse.audience.activity_streams_large_data where activity = 'order_invoiced'
       columns:
         - name: activity_uuid
         - name: entity_id
@@ -488,7 +488,7 @@ entities:
         - name: activity_repeated_at
       verified: true
       tables:
-        - icebase.audience.activity_streams_large_data
+        - lakehouse.audience.activity_streams_large_data
     fields:
       - name: activity_uuid
         type: string

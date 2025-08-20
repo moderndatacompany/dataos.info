@@ -14,7 +14,7 @@ workflow:
       spec:
         stack: soda+python:1.0
         soda:
-            - dataset: dataos://icebase:retail/customer
+            - dataset: dataos://lakehouse:retail/customer
               checks:
                 - row_count between 10 and 1000:
                     attributes:
@@ -38,7 +38,7 @@ workflow:
                 columns:
                   - "*"
               engine: minerva
-            - dataset: dataos://icebase:retail/customer_360
+            - dataset: dataos://lakehouse:retail/customer_360
               checks:
                 - row_count between 10 and 1000
                 - missing_count(birth_date) = 0

@@ -1,8 +1,13 @@
+---
+search:
+  exclude: true
+---
+
 # azure_cosmosdb
 
 !!! warning "EXPERIMENTAL"
         
-        This component is experimental and therefore subject to change or removal outside of major version releases.
+    This component is experimental and therefore subject to change or removal outside of major version releases.
 
 Creates or updates messages as JSON documents in [Azure CosmosDB](https://learn.microsoft.com/en-us/azure/cosmos-db/introduction).
 

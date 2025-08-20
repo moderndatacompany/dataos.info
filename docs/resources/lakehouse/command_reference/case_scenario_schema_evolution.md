@@ -10,14 +10,14 @@ dataos-ctl dataset -a ${{udl}} set-metadata \
 -v latest
 ```
 
-**Dataset** - `dataos://icebase:retail/city`
+**Dataset** - `dataos://lakehouse:retail/city`
 
 ## Add Field/Column
 
 The following command can be used to add a column to the table or a nested struct.
 
 ```bash
-dataos-ctl dataset -a dataos://icebase:retail/city add-field \
+dataos-ctl dataset -a dataos://lakehouse:retail/city add-field \
 -n ${{column-name}} \
 -t ${{column-datatype}}
 ```
@@ -57,7 +57,7 @@ Initial Schema observed in Workbench
 Let's add a new column called `new1` into the city dataset with a type `string`. Execute the following code in the terminal.
 
 ```bash
-dataos-ctl dataset -a dataos://icebase:retail/city add-field \
+dataos-ctl dataset -a dataos://lakehouse:retail/city add-field \
 -n new1 \
 -t string
 ```
@@ -72,7 +72,7 @@ INFO[0001] 📂 add field...completed
 To observe the changes made to the initial dataset, execute the following code
 
 ```bash
-dataos-ctl dataset -a dataos://icebase:retail/city set-metadata \
+dataos-ctl dataset -a dataos://lakehouse:retail/city set-metadata \
 -v latest
 ```
 
@@ -94,7 +94,7 @@ Observe the change in the workbench; a new field by the name `new1` is added
 To remove an existing column from the table or a nested struct, the following command can be executed
 
 ```bash
-dataos-ctl dataset -a dataos://icebase:retail/city drop-field \
+dataos-ctl dataset -a dataos://lakehouse:retail/city drop-field \
 -n ${{column-name}}
 ```
 
@@ -107,7 +107,7 @@ dataos-ctl dataset -a dataos://icebase:retail/city drop-field \
 Let's remove column `new1` from the city dataset. Execute the following code in the terminal
 
 ```bash
-dataos-ctl dataset -a dataos://icebase:retail/city drop-field \
+dataos-ctl dataset -a dataos://lakehouse:retail/city drop-field \
 -n new1
 ```
 
@@ -121,7 +121,7 @@ INFO[0001] 📂 remove field...completed
 To observe the changes made to the initial dataset, execute the following code
 
 ```bash
-dataos-ctl dataset -a dataos://icebase:retail/city set-metadata \
+dataos-ctl dataset -a dataos://lakehouse:retail/city set-metadata \
 -v latest
 ```
 
@@ -145,7 +145,7 @@ Observe the change in the workbench; the `new1` column is removed
 To rename an existing column or field in a nested struct, execute the below code
 
 ```bash
-dataos-ctl dataset -a dataos://icebase:retail/city rename-field \
+dataos-ctl dataset -a dataos://lakehouse:retail/city rename-field \
 -n ${{column-name}} \
 -m ${{column-new-name}}
 ```
@@ -159,7 +159,7 @@ Let’s rename the column `city_name` in the city dataset to `name`. For this fo
 <!-- ![Schema Evolution 5](./case_scenario_schema_evolution/4.png) -->
 
 ```bash
-dataos-ctl dataset -a dataos://icebase:retail/city rename-field \
+dataos-ctl dataset -a dataos://lakehouse:retail/city rename-field \
 -n city_name \
 -m name
 ```
@@ -174,7 +174,7 @@ INFO[0001] 📂 rename field...completed
 To observe the renamed column in the workbench, run the set-metadata command
 
 ```bash
-dataos-ctl dataset -a dataos://icebase:retail/city set-metadata \
+dataos-ctl dataset -a dataos://lakehouse:retail/city set-metadata \
 -v latest
 ```
 
@@ -198,7 +198,7 @@ The `city_name` column is renamed to `name`. As observed below
 To widen the type of a column, struct field, map key, map value, or list element, the below command can be executed
 
 ```bash
-dataos-ctl dataset -a dataos://icebase:retail/city update-field \
+dataos-ctl dataset -a dataos://lakehouse:retail/city update-field \
 -n ${{column-name}} \
 -t ${{column-datatype}}
 ```
@@ -219,7 +219,7 @@ dataos-ctl dataset -a dataos://icebase:retail/city update-field \
 Let’s update the `zip_code` column type from `INTEGER (integer)` to `BIGINT (long)`. The code is as follows -
 
 ```bash
-dataos-ctl dataset -a dataos://icebase:retail/city update-field \
+dataos-ctl dataset -a dataos://lakehouse:retail/city update-field \
 -n zip_code \
 -t long
 ```
@@ -234,7 +234,7 @@ INFO[0001] 📂 update field datatype...completed
 To observe the changes in the workbench, execute the set-metadata command as follows -
 
 ```bash
-dataos-ctl dataset -a dataos://icebase:retail/city set-metadata \
+dataos-ctl dataset -a dataos://lakehouse:retail/city set-metadata \
 -v latest
 ```
 

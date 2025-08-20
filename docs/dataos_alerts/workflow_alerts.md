@@ -251,7 +251,7 @@ workflow:
 
           outputs:
             - name: cities
-              dataset: dataos://icebase:retail/city01?acl=rw
+              dataset: dataos://lakehouse:retail/city01?acl=rw
               format: Iceberg
               description: City data ingested from external csv
               options:

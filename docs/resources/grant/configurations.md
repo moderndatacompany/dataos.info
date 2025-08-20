@@ -82,7 +82,7 @@ subjects:
 
 ```yaml
 values:
-  - path: ds/icebase/retail
+  - path: ds/lakehouse/retail
 ```
 ##### **`path`**
 
@@ -95,7 +95,7 @@ values:
 **Example usage:**
 
 ```yaml
-path: ds/icebase/retail
+path: ds/lakehouse/retail
 ```
 
 #### **`approve`**

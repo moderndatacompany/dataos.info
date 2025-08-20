@@ -64,7 +64,7 @@ type: lakehouse
 tags:
   - Iceberg
   - Azure
-description: "Icebase depot of storage-type S3"
+description: "Lakehouse depot of storage-type S3"
 lakehouse:
   type: iceberg
   compute: runnable-default

@@ -240,7 +240,7 @@ lakehouse:
 lakehouse:
 	iceberg:
 		storage:
-			depotName: icebasedev
+			depotName: lakehousedev
 			type: ABFSS
 			# additional Storage section attributes
 		metastore:
@@ -266,7 +266,7 @@ lakehouse:
 lakehouse:
 	iceberg:
 		storage:
-			depotName: icebasedev
+			depotName: lakehousedev
 			type: ABFSS
 			# other Storage section attributes
 ```
@@ -287,7 +287,7 @@ lakehouse:
 lakehouse:
   iceberg:
     storage:
-      depotName: icebasestage
+      depotName: lakehousestage
       # Additional attributes for the Storage section
 ```
 

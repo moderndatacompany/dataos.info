@@ -20,7 +20,7 @@ Configure the Flash service as the data source in the Lens deployment manifest f
 source:
   type: flash  # Specifies the data source type as Flash
   name: flash-test  # Name of the Flash service
-  catalog: icebase
+  catalog: lakehouse
 ```
 
 ### **2. Add environment variables**

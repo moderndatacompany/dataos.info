@@ -58,7 +58,7 @@ For instance, the Overview pane gives the details of `system-metadata-sync` Scan
 | **Last Updated**     | December 12, 2024 at 02:00 PM by metis                   |
 | **Jobs**             |                                                          |
 | **fastbase-scanner** | Scans and publishes all datasets from fastbase to metis. |
-| **icebase-scanner**  | Scans and publishes all datasets from icebase to metis.  |
+| **lakehouse-scanner**  | Scans and publishes all datasets from lakehouse to metis.  |
 
 ## Detailed Page
 

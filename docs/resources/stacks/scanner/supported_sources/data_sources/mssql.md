@@ -57,7 +57,7 @@ MSSQL metadata Scanner Workflow can be configured and scheduled through the Data
     | demoprepbq       | v2alpha | depot |           | active |         | pengvin    |
     | mssql01          | v2alpha | depot |           | active |         | hulk       |
     | kafka01          | v2alpha | depot |           | active |         | peeter     |
-    | icebase          | v2alpha | depot |           | active |         | blackpink  |
+    | lakehouse          | v2alpha | depot |           | active |         | blackpink  |
     | azuresql         | v2alpha | depot |           | active |         | arnold     |
     | fastbase         | v2alpha | depot |           | active |         | ddevil     |
     ```

@@ -29,9 +29,9 @@ WITH customer_activity AS (
         c.phone_number,
         MAX(t.transaction_date) AS last_transaction_date
     FROM
-        icebase.sales_360.customer c
+        lakehouse.sales_360.customer c
     LEFT JOIN
-        icebase.sales_360.transactions t ON CAST(c.customer_id AS VARCHAR) = t.customer_id
+        lakehouse.sales_360.transactions t ON CAST(c.customer_id AS VARCHAR) = t.customer_id
     GROUP BY
         c.customer_id, c.first_name, c.last_name, c.email_id, c.phone_number
 )
@@ -47,7 +47,7 @@ SELECT
         ELSE 'Not Churned'
     END AS churn_status
 FROM
-    icebase.sales_360.customer c
+    lakehouse.sales_360.customer c
 LEFT JOIN
     customer_activity ca ON c.customer_id = ca.customer_id
 """

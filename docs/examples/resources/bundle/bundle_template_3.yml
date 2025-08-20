@@ -21,16 +21,16 @@ bundle:
         "name" : "dataosBundleJobsv14"
       layer: "user"
   resources:
-    - id: create-icebase-depot
+    - id: create-lakehouse-depot
       file: depot.yaml
-    - id: write-into-icebase
+    - id: write-into-lakehouse
       dependencies:
-        - create-icebase-depot
+        - create-lakehouse-depot
       workspace: testbundle14
-      file: read_icebase_write_snowflake.yaml
-    - id: read-from-icebase
+      file: read_lakehouse_write_snowflake.yaml
+    - id: read-from-lakehouse
       dependencies:
-        - write-into-icebase
+        - write-into-lakehouse
       workspace: testbundle14
       spec:
         version: v1
@@ -38,22 +38,22 @@ bundle:
         type: workflow
         tags:
           - Sanity
-          - Icebase
-        title: Sanity read from icebase
+          - Lakehouse
+        title: Sanity read from lakehouse
         description: |
           The purpose of this workflow is to verify if we are able to read different
-          file formats Icebase.
+          file formats Lakehouse.
         workflow:
           dag:
             - name: sanity-read-job-v14
-              title: Sanity read files from icebase
+              title: Sanity read files from lakehouse
               description: |
                 The purpose of this job is to verify if we are able to read different
-                file formats from icebase.
+                file formats from lakehouse.
               spec:
                 tags:
                   - Sanity
-                  - icebase
+                  - lakehouse
                 stack: flare:6.0
                 compute: runnable-default
                 stackSpec:
@@ -83,7 +83,7 @@ bundle:
                             - version
                         tags:
                           - Sanity
-                          - Icebase
+                          - Lakehouse
                           - CSV
                         title:  Csv read sanity
                         description: Csv read sanity
@@ -97,7 +97,7 @@ bundle:
                             - version
                         tags:
                           - Sanity
-                          - Icebase
+                          - Lakehouse
                           - JSON
                         title: Json read sanity
                         description: Json read sanity
@@ -111,7 +111,7 @@ bundle:
                             - version
                         tags:
                           - Sanity
-                          - Icebase
+                          - Lakehouse
                           - Parquet
                         title: Parquet read sanity
                         description: Parquet read sanity

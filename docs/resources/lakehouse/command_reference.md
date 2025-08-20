@@ -222,7 +222,7 @@ This command enables users to list datasets within a specific depot and collecti
 **Command**
 
 ```bash
-dataos-ctl dataset list -a dataos://icebase:retail
+dataos-ctl dataset list -a dataos://lakehouse:retail
 ```
 
 **Flags and Placeholders**
@@ -257,14 +257,14 @@ dataos-ctl dataset  get -a dataos://${depot}:${collection}/${dataset}  #UDL
 
 - **`-a`** or **`--address`**: This flag specifies the target address or location of a dataset in a UDL format.
     - **Placeholder**: `${depot}`, `${collection}`, and `${dataset}`
-    - **Example**: `dataos://icebase:retail/city`
+    - **Example**: `dataos://lakehouse:retail/city`
 
 **Example**
 
-To retrieve information about the dataset located at `dataos://icebase:retail/city`, you can use the following command:
+To retrieve information about the dataset located at `dataos://lakehouse:retail/city`, you can use the following command:
 
 ```bash
-dataos-ctl dataset  get -a dataos://icebase:retail/city
+dataos-ctl dataset  get -a dataos://lakehouse:retail/city
 ```
 
 #### **Drop Dataset**
@@ -286,7 +286,7 @@ dataos-ctl dataset properties -a dataos://{collection}/{dataset}
 **Example**
 
 ```bash
-dataos-ctl dataset -a dataos://icebase:retail/city drop
+dataos-ctl dataset -a dataos://lakehouse:retail/city drop
 ```
 
 Dropping a dataset will permanently delete it and its associated data. This action cannot be undone.
@@ -305,7 +305,7 @@ dataos-ctl dataset -a ${udl} drop -p false
 dataos-ctl dataset -a ${udl} drop --purge false
 
 # '-a' flag denotes the Dataset Address
-# ${udl} is a placeholder for dataset UDL - dataos://icebase:retail/city is one such sample UDL
+# ${udl} is a placeholder for dataset UDL - dataos://lakehouse:retail/city is one such sample UDL
 # '-p' or '--purge' flags denote the purge value
 ```
 
@@ -357,17 +357,17 @@ dataos-ctl dataset add-properties -a dataos://${depot}:${collection}/${dataset} 
 
 - **`-a`** or **`--address`**: Specifies the target address or location of the dataset in a UDL format.
     - **Placeholder**: `${depot}`, `${collection}`, and `${dataset}`
-    - **Example**: `dataos://icebase:retail/city`
+    - **Example**: `dataos://lakehouse:retail/city`
 - **`-p`** or **`--properties`**: Specifies the properties to be added to the dataset.
     - **Placeholder**: ${property_key}:{property_value}
     - **Example**: `write.sample.property:testaddproperty`
 
 **Example**
 
-To add the custom property `write.sample.property` with the value `testaddproperty` to the city dataset in the retail collection of Icebase depot:
+To add the custom property `write.sample.property` with the value `testaddproperty` to the city dataset in the retail collection of Lakehouse depot:
 
 ```bash
-dataos-ctl dataset add-properties -a dataos://icebase:retail/city \
+dataos-ctl dataset add-properties -a dataos://lakehouse:retail/city \
 -p write.sample.property:testaddproperty
 
 ```
@@ -391,17 +391,17 @@ dataos-ctl dataset remove-properties -a dataos://${depot}:${collection}/${datase
     
     **Placeholder**: `${depot}`, `${collection}`, and `${dataset}`
     
-    - **Example**: `dataos://icebase:retail/city`
+    - **Example**: `dataos://lakehouse:retail/city`
 - **`-p`** or **`--properties`**: Specifies the property key to be removed from the dataset.
     - **Placeholder**: ${property_key}
     - **Example**: `write.sample.property`
 
 **Example**
 
-To remove the custom property `write.sample.property` from the city dataset in the retail collection of Icebase depot:
+To remove the custom property `write.sample.property` from the city dataset in the retail collection of Lakehouse depot:
 
 ```bash
-dataos-ctl dataset remove-properties -a dataos://icebase:retail/city \
+dataos-ctl dataset remove-properties -a dataos://lakehouse:retail/city \
 -p write.sample.property
 ```
 
@@ -425,7 +425,7 @@ dataos-ctl dataset add-field -a dataos://${depot}:${collection}/${dataset} \
 
 - **`-a`** or **`--address`**: Specifies the target address or location of the dataset in a UDL format.
     - **Placeholder**: `${depot}`, `${collection}`, and `${dataset}`
-    - **Example**: `dataos://icebase:retail/city`
+    - **Example**: `dataos://lakehouse:retail/city`
 - **`-n`** or **`--name`**: Specifies the name of the field to be added.
     - **Placeholder**: ${field_name}
     - **Example**: `sample_field`
@@ -435,10 +435,10 @@ dataos-ctl dataset add-field -a dataos://${depot}:${collection}/${dataset} \
 
 **Example**
 
-To add a new field named `sample_field` of type `string` to the city dataset in the retail collection of Icebase depot:
+To add a new field named `sample_field` of type `string` to the city dataset in the retail collection of Lakehouse depot:
 
 ```bash
-dataos-ctl dataset add-field -a dataos://icebase:retail/city \
+dataos-ctl dataset add-field -a dataos://lakehouse:retail/city \
 -n sample_field \
 -t string
 ```
@@ -460,7 +460,7 @@ dataos-ctl dataset drop-field -a dataos://${depot}:${collection}/${dataset} \
 
 - **`-a`** or **`--address`**: Specifies the target address or location of the dataset in a UDL format.
     - **Placeholder**: `${depot}`, `${collection}`, and `${dataset}`
-    - **Example**: `dataos://icebase:retail/city`
+    - **Example**: `dataos://lakehouse:retail/city`
 - **`-n`** or **`--name`**: Specifies the name of the field to be dropped.
     - **Placeholder**: ${field_name}
     - **Example**: `sample_field`
@@ -481,7 +481,7 @@ dataos-ctl dataset rename-field -a dataos://${depot}:${collection}/${dataset} \
 
 - **`-a`** or **`--address`**: Specifies the target address or location of the dataset in a UDL format.
     - **Placeholder**: `${depot}`, `${collection}`, and `${dataset}`
-    - **Example**: `dataos://icebase:retail/city`
+    - **Example**: `dataos://lakehouse:retail/city`
 - **`-n`** or **`--name`**: Specifies the current name of the field to be renamed.
     - **Placeholder**: ${old_field_name}
     - **Example**: `county_name`
@@ -491,10 +491,10 @@ dataos-ctl dataset rename-field -a dataos://${depot}:${collection}/${dataset} \
 
 **Example**
 
-To rename the field from `county_name` to `country_name` in the city dataset of the retail collection in Icebase depot:
+To rename the field from `county_name` to `country_name` in the city dataset of the retail collection in Lakehouse depot:
 
 ```bash
-dataos-ctl dataset rename-field -a dataos://icebase:retail/city -n county_name -m country_name
+dataos-ctl dataset rename-field -a dataos://lakehouse:retail/city -n county_name -m country_name
 ```
 
 This command will rename the specified field from `county_name` to `country_name` in the city dataset.
@@ -515,7 +515,7 @@ dataos-ctl dataset update-field -a dataos://${depot}:${collection}/${dataset} \
 
 - **`-a`** or **`--address`**: Specifies the target address or location of the dataset in a UDL format.
     - **Placeholder**: `${depot}`, `${collection}`, and `${dataset}`
-    - **Example**: `dataos://icebase:retail/city`
+    - **Example**: `dataos://lakehouse:retail/city`
 - **`-n`** or **`--name`**: Specifies the name of the field to be updated.
     - **Placeholder**: ${field_name}
     - **Example**: `zip_code`
@@ -525,10 +525,10 @@ dataos-ctl dataset update-field -a dataos://${depot}:${collection}/${dataset} \
 
 **Example**
 
-To update the type of the field `zip_code` to `long` in the city dataset of the retail collection in Icebase depot:
+To update the type of the field `zip_code` to `long` in the city dataset of the retail collection in Lakehouse depot:
 
 ```bash
-dataos-ctl dataset update-field -a dataos://icebase:retail/city -n zip_code -t long
+dataos-ctl dataset update-field -a dataos://lakehouse:retail/city -n zip_code -t long
 ```
 
 This command will update the specified field `zip_code` to have the type `long` in the city dataset.
@@ -554,7 +554,7 @@ dataos-ctl dataset -a <dataset_udl> -p "<partition_key>"
 **Example**
 
 ```bash
-dataos-ctl dataset -a dataos://icebase:retail/city -p "identity:state_name"
+dataos-ctl dataset -a dataos://lakehouse:retail/city -p "identity:state_name"
 
 ```
 
@@ -563,33 +563,33 @@ dataos-ctl dataset -a dataos://icebase:retail/city -p "identity:state_name"
 - **identity**
 
 ```bash
-dataos-ctl dataset -a dataos://icebase:retail/city -p "identity:state_name"
+dataos-ctl dataset -a dataos://lakehouse:retail/city -p "identity:state_name"
 ```
 
 - **year**
 
 ```bash
-dataos-ctl dataset -a dataos://icebase:retail/city -p "year:ts_city:year_partition"
+dataos-ctl dataset -a dataos://lakehouse:retail/city -p "year:ts_city:year_partition"
 ```
 
 - **month**
 
 ```bash
-dataos-ctl dataset -a dataos://icebase:retail/city \
+dataos-ctl dataset -a dataos://lakehouse:retail/city \
 -p "month:ts_city:month_partition"
 ```
 
 - **day**
 
 ```bash
-dataos-ctl dataset -a dataos://icebase:retail/city \
+dataos-ctl dataset -a dataos://lakehouse:retail/city \
 -p "day:ts_city:day_partition"
 ```
 
 - **hour**
 
 ```
-dataos-ctl dataset -a dataos://icebase:retail/city \
+dataos-ctl dataset -a dataos://lakehouse:retail/city \
 -p "hour:ts_city:hour_partition"
 ```
 
@@ -599,7 +599,7 @@ Partitioning can be done on multiple levels. For example, a user wants
 to partition the city data into two partitions, the first based on `state_code` and the second based on the `month`. This can be done using the below command:
 
 ```bash
-dataos-ctl dataset -a dataos://icebase:retail/city \
+dataos-ctl dataset -a dataos://lakehouse:retail/city \
 -p "identity:state_code" \
 -p "month:ts_city:month_partition"
 ```
@@ -614,14 +614,14 @@ dataos-ctl dataset -a dataos://icebase:retail/city \
 Command
 
 ```bash
-dataos-ctl dataset -a dataos://icebase:retail/city update-partition \
+dataos-ctl dataset -a dataos://lakehouse:retail/city update-partition \
 -p "${partition_type}:${column_name}:${partition_name}"
 ```
 
 **Flags and Placeholders**
 
 - **`-a`**: Denotes the Dataset Address. It specifies the UDL (Unique Dataset Location) of the dataset to be updated.
-    - `dataos://icebase:retail/city`: Sample UDL provided.
+    - `dataos://lakehouse:retail/city`: Sample UDL provided.
 - **`-p "${partition_type}:${column_name}:${partition_name}"`**: Specifies the new partition configuration.
     - `${partition_type}`: Placeholder for the type of partitioning to be used (e.g., identity, range).
     - `${column_name}`: Placeholder for the column name used for partitioning.
@@ -631,7 +631,7 @@ dataos-ctl dataset -a dataos://icebase:retail/city update-partition \
 **Example**
 
 ```bash
-dataos-ctl dataset -a dataos://icebase:retail/city update-partition \
+dataos-ctl dataset -a dataos://lakehouse:retail/city update-partition \
 -p "month:ts_city:month_partition"
 
 --Output
@@ -655,14 +655,14 @@ dataos-ctl dataset list-branch -a dataos://${depot}:${collection}/${dataset}
 
 - **`-a`** or **`--address`**: This flag specifies the target address or location of a dataset in a UDL format.
     - **Placeholder**: `${depot}`, `${collection}`, and `${dataset}`
-    - **Example**: `dataos://icebase:retail/city`
+    - **Example**: `dataos://lakehouse:retail/city`
 
 **Example**
 
-To list the branches of the city dataset in the retail collection of Icebase depot
+To list the branches of the city dataset in the retail collection of Lakehouse depot
 
 ```bash
-dataos-ctl dataset list-branch -a dataos://icebase:retail/city
+dataos-ctl dataset list-branch -a dataos://lakehouse:retail/city
 ```
 
 Output:
@@ -692,17 +692,17 @@ dataos-ctl dataset create-branch -a dataos://${depot}:${collection}/${dataset} -
 
 - **`-a`** or **`--address`**: Specifies the target address or location of the dataset in a UDL format.
     - **Placeholder**: `${depot}`, `${collection}`, and `${dataset}`
-    - **Example**: `dataos://icebase:retail/city`
+    - **Example**: `dataos://lakehouse:retail/city`
 - **`-b`** or **`--branch`**: Specifies the name of the new branch to be created.
     - **Placeholder**: ${branch_name}
     - **Example**: `test_branch2`
 
 **Example**
 
-To create a new branch named 'test_branch2' for the city dataset in the retail collection of the Icebase depot:
+To create a new branch named 'test_branch2' for the city dataset in the retail collection of the Lakehouse depot:
 
 ```bash
-dataos-ctl dataset create-branch -a dataos://icebase:retail/city -b test_branch2
+dataos-ctl dataset create-branch -a dataos://lakehouse:retail/city -b test_branch2
 ```
 
 This command will create a new branch named 'test_branch2' for the specified [dataset.](http://dataset.You) You can use the list branch command to look for newly created branch
@@ -721,7 +721,7 @@ dataos-ctl dataset rename-branch -a dataos://${depot}:${collection}/${dataset} -
 
 - **`-a`** or **`--address`**: Specifies the target address or location of the dataset in a UDL format.
     - **Placeholder**: `${depot}`, `${collection}`, and `${dataset}`
-    - **Example**: `dataos://icebase:retail/city`
+    - **Example**: `dataos://lakehouse:retail/city`
 - **`-b`** or **`--branch`**: Specifies the current name of the branch to be renamed.
     - **Placeholder**: ${branch_name}
     - **Example**: `test`
@@ -731,10 +731,10 @@ dataos-ctl dataset rename-branch -a dataos://${depot}:${collection}/${dataset} -
 
 **Example**
 
-To rename the branch named 'test' to 'test_branch' for the city dataset in the retail collection of Icebase depot:
+To rename the branch named 'test' to 'test_branch' for the city dataset in the retail collection of Lakehouse depot:
 
 ```bash
-dataos-ctl dataset rename-branch -a dataos://icebase:retail/city -b test -n test_branch
+dataos-ctl dataset rename-branch -a dataos://lakehouse:retail/city -b test -n test_branch
 ```
 
 This command will rename the specified branch, and upon listing the branches again, you would observe the updated branch name.
@@ -753,21 +753,21 @@ This command allows users to delete a specific branch for a dataset within a dep
 **Command**
 
 ```bash
-dataos-ctl dataset delete-branch -a dataos://icebase:retail/city -b ${branch_name}
+dataos-ctl dataset delete-branch -a dataos://lakehouse:retail/city -b ${branch_name}
 ```
 
 **Flags and Placeholders**
 
 - **`-a`** or **`--address`**: Specifies the target address or location of the dataset in a UDL format.
     - **Placeholder**: `${depot}`, `${collection}`, and `${dataset}`
-    - **Example**: `dataos://icebase:retail/city`
+    - **Example**: `dataos://lakehouse:retail/city`
 - **`-b`** or **`--branch`**: Specifies the name of the branch to be deleted.
     - **Placeholder**: ${branch_name}
     - **Example**: `test_branch2`
 
 **Example**
 
-To delete the branch named 'test_branch2' for the city dataset in the retail collection of Icebase depot:
+To delete the branch named 'test_branch2' for the city dataset in the retail collection of Lakehouse depot:
 
 ```bash
 dataos-ctl dataset delete-branch -a dataos://${depot}:${collection}/${dataset} -b test_branch2
@@ -789,7 +789,7 @@ dataos-ctl dataset replace-branch -a dataos://${depot}:${collection}/${dataset} 
 
 - **`-a`** or **`--address`**: Specifies the target address or location of the dataset in a UDL format.
     - **Placeholder**: `${depot}`, `${collection}`, and `${dataset}`
-    - **Example**: `dataos://icebase:retail/city`
+    - **Example**: `dataos://lakehouse:retail/city`
 - **`--source`**: Specifies the source branch whose snapshot needs to be replaced.
     - **Placeholder**: ${branch_name}
     - **Example**: `test_branch`
@@ -799,10 +799,10 @@ dataos-ctl dataset replace-branch -a dataos://${depot}:${collection}/${dataset} 
 
 **Example**
 
-To replace the snapshot of the 'test_branch' with another snapshot for the 'test_branch2' for the city dataset in the retail collection of Icebase depot:
+To replace the snapshot of the 'test_branch' with another snapshot for the 'test_branch2' for the city dataset in the retail collection of Lakehouse depot:
 
 ```bash
-dataos-ctl dataset replace-branch -a dataos://icebase:retail/city --source test_branch --target test_branch2
+dataos-ctl dataset replace-branch -a dataos://lakehouse:retail/city --source test_branch --target test_branch2
 ```
 
 This command will replace the snapshot of the 'test_branch' with another snapshot for the 'test_branch2' branch.
@@ -821,7 +821,7 @@ dataos-ctl dataset fastforward-branch -a dataos://${depot}:${collection}/${datas
 
 - **`-a`** or **`--address`**: Specifies the target address or location of the dataset in a UDL format.
     - **Placeholder**: `${depot}`, `${collection}`, and `${dataset}`
-    - **Example**: `dataos://icebase:retail/city`
+    - **Example**: `dataos://lakehouse:retail/city`
 - **`--source`**: Specifies the source branch from which the changes will be fast-forwarded.
     - **Placeholder**: ${source_branch}
     - **Example**: `main`
@@ -831,10 +831,10 @@ dataos-ctl dataset fastforward-branch -a dataos://${depot}:${collection}/${datas
 
 **Example**
 
-To fast forward the `test_branch` to the state of the `main` branch for the city dataset in the retail collection of Icebase depot:
+To fast forward the `test_branch` to the state of the `main` branch for the city dataset in the retail collection of Lakehouse depot:
 
 ```bash
-dataos-ctl dataset fastforward-branch -a dataos://icebase:retail/city --source main --target test_branch
+dataos-ctl dataset fastforward-branch -a dataos://lakehouse:retail/city --source main --target test_branch
 ```
 
 This command will fast forward the `test_branch` to the state of the `main` branch for the city dataset.
@@ -858,10 +858,10 @@ dataos-ctl dataset set-snapshot -a dataos://${depot}:${collection}/${dataset} -i
 
 **Example**
 
-To set the snapshot with ID `905423312211489819` as the current state of the `city` dataset in the `retail` collection of the `icebase` depot:
+To set the snapshot with ID `905423312211489819` as the current state of the `city` dataset in the `retail` collection of the `lakehouse` depot:
 
 ```bash
-dataos-ctl dataset set-snapshot -a dataos://icebase:retail/city -i 905423312211489819
+dataos-ctl dataset set-snapshot -a dataos://lakehouse:retail/city -i 905423312211489819
 ```
 
 This command will set the specified snapshot as the current state of the `city` dataset.
@@ -906,10 +906,10 @@ dataos-ctl dataset cherrypick-snapshot -a dataos://${depot}:${collection}/${data
 
 **Example**
 
-To cherry-pick changes from the snapshot with ID `8546760663040429688` for the `city` dataset in the `retail` collection of the `icebase` depot:
+To cherry-pick changes from the snapshot with ID `8546760663040429688` for the `city` dataset in the `retail` collection of the `lakehouse` depot:
 
 ```bash
-dataos-ctl dataset cherrypick-snapshot -a dataos://icebase:retail/city --sid 8546760663040429688
+dataos-ctl dataset cherrypick-snapshot -a dataos://lakehouse:retail/city --sid 8546760663040429688
 ```
 
 This command will cherry-pick changes from the specified snapshot for the `city` dataset.
@@ -943,10 +943,10 @@ dataos-ctl dataset rollback -a dataos://${depot}:${collection}/${dataset} -i ${s
 
 **Example**
 
-To roll back the `city` dataset in the `retail` collection of the `icebase` depot to the snapshot with ID `905423312211489819`:
+To roll back the `city` dataset in the `retail` collection of the `lakehouse` depot to the snapshot with ID `905423312211489819`:
 
 ```bash
-dataos-ctl dataset rollback -a dataos://icebase:retail/city -i 905423312211489819
+dataos-ctl dataset rollback -a dataos://lakehouse:retail/city -i 905423312211489819
 ```
 
 This command will roll back the dataset to the specified ancestral snapshot.
@@ -982,7 +982,7 @@ dataos-ctl dataset snapshots -a dataos://${depot}:${collection}/${dataset}
 
 - **`-a`** or **`--address`**: Specifies the target address or location of the dataset in a UDL format.
     - **Placeholder**: `${depot}`, `${collection}`, and `${dataset}`
-    - **Example**: `dataos://icebase:retail/city`
+    - **Example**: `dataos://lakehouse:retail/city`
 
 **Output Columns**
 
@@ -992,10 +992,10 @@ dataos-ctl dataset snapshots -a dataos://${depot}:${collection}/${dataset}
 
 **Example**
 
-To retrieve information about the snapshots associated with the city dataset in the retail collection of Icebase depot:
+To retrieve information about the snapshots associated with the city dataset in the retail collection of Lakehouse depot:
 
 ```bash
-dataos-ctl dataset snapshots -a dataos://icebase:retail/city
+dataos-ctl dataset snapshots -a dataos://lakehouse:retail/city
 ```
 
 This command will display the snapshot ID, timestamp, and date/time (GMT) of the snapshots associated with the city dataset.
@@ -1014,7 +1014,7 @@ dataos-ctl dataset metadata -a dataos://${depot}:${collection}/${dataset}
 
 - **`-a`** or **`--address`**: Specifies the target address or location of the dataset in a UDL format.
     - **Placeholder**: `${depot}`, `${collection}`, and `${dataset}`
-    - **Example**: `dataos://icebase:retail/city`
+    - **Example**: `dataos://lakehouse:retail/city`
 
 **Output Columns**
 
@@ -1023,10 +1023,10 @@ dataos-ctl dataset metadata -a dataos://${depot}:${collection}/${dataset}
 
 **Example**
 
-To retrieve information about the metadata versions associated with the city dataset in the retail collection of Icebase depot:
+To retrieve information about the metadata versions associated with the city dataset in the retail collection of Lakehouse depot:
 
 ```bash
-dataos-ctl dataset metadata -a dataos://icebase:retail/city
+dataos-ctl dataset metadata -a dataos://lakehouse:retail/city
 ```
 
 This command will display the versions and timestamps of the metadata files associated with the city dataset.
@@ -1045,17 +1045,17 @@ dataos-ctl dataset set-metadata -a dataos://${depot}:${collection}/${dataset} -v
 
 - **`-a`** or **`--address`**: Specifies the target address or location of the dataset in a UDL format.
     - **Placeholder**: `${depot}`, `${collection}`, and `${dataset}`
-    - **Example**: `dataos://icebase:retail/city`
+    - **Example**: `dataos://lakehouse:retail/city`
 - **`-v`** or **`--version`**: Specifies the metadata version to be set.
     - **Placeholder**: ${metadata_version}
     - **Example**: `latest`
 
 **Example**
 
-To set the metadata version to "latest" for the city dataset in the retail collection of Icebase depot:
+To set the metadata version to "latest" for the city dataset in the retail collection of Lakehouse depot:
 
 ```bash
-dataos-ctl dataset set-metadata -a dataos://icebase:retail/city -v latest
+dataos-ctl dataset set-metadata -a dataos://lakehouse:retail/city -v latest
 ```
 
 This command will set the metadata version of the city dataset to "latest".
