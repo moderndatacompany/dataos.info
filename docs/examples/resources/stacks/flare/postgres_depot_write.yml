@@ -33,7 +33,7 @@ workflow:
                 format: jdbc
                 options:
                   saveMode: overwrite
-                description: Data set from Icebase
+                description: Data set from Lakehouse
                 tags:
                   - Connect
                 title: Postgres Dataset

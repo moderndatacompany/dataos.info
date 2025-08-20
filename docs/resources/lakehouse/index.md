@@ -196,7 +196,7 @@ A sample Lakehouse manifest file is provided below; the sections that make up th
     tags:
       - Iceberg
       - Azure
-    description: Icebase depot of storage-type S3
+    description: Lakehouse depot of storage-type S3
     owner: iamgroot
     layer: user
 

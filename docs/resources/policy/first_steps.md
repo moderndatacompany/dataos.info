@@ -32,10 +32,10 @@ To create a Policy, the first step is to create a Policy manifest file. A sample
             objects:
               tags:
                 - dataos:resource:cluster:minerva:system   #minerva cluster access
-                - dataos:system:minerva:table:icebase:retail:city  
-                - dataos:type:secret:icebase_r_r  #read specific secret
-                - dataos:type:secret:icebase_rw_rw  #read specific secret
-                - dataos:system:ds:dataset:icebase:retail:city  #read dataset
+                - dataos:system:minerva:table:lakehouse:retail:city  
+                - dataos:type:secret:lakehouse_r_r  #read specific secret
+                - dataos:type:secret:lakehouse_rw_rw  #read specific secret
+                - dataos:system:ds:dataset:lakehouse:retail:city  #read dataset
             allow: true           # Granting access
         ```
                          
@@ -59,9 +59,9 @@ To create a Policy, the first step is to create a Policy manifest file. A sample
             policy:
               data:
                 type: filter
-                name: "filtericebasecity"
+                name: "filterlakehousecity"
                 description: 'data policy to filter data on zip code'
-                dataset_id: "icebase.retail.city"
+                dataset_id: "lakehouse.retail.city"
                 priority: 1
                 selector:
                   user:
@@ -85,7 +85,7 @@ To create a Policy, the first step is to create a Policy manifest file. A sample
               data:
                 priority: 1
                 type: mask
-                depot: icebase
+                depot: lakehouse
                 collection: retail
                 dataset: customer
                 selector:
@@ -202,7 +202,7 @@ The Policy-specific Section focuses on the configurations specific to the Policy
               - "read"
             objects:
               path:
-                - "dataos://icebase:retail/city"
+                - "dataos://lakehouse:retail/city"
             allow: true
         ```
 
@@ -237,9 +237,9 @@ The Policy-specific Section focuses on the configurations specific to the Policy
             policy:
               data:
                 type: filter
-                name: "filtericebasecity"
+                name: "filterlakehousecity"
                 description: 'data policy to filter data on zip code'
-                dataset_id: "icebase.retail.city"
+                dataset_id: "lakehouse.retail.city"
                 priority: 100
                 selector:
                   user:
@@ -289,7 +289,7 @@ The Policy-specific Section focuses on the configurations specific to the Policy
                 name: email_masking_policy
                 description: to mask private mail address
                 priority: 1
-                depot: icebase
+                depot: lakehouse
                 collection: retail
                 dataset: customer
                 selector:
@@ -325,8 +325,8 @@ After creating the manifest file for the Policy Resource, it's time to apply it 
     dataos-ctl resource apply -f resources/policy.yaml -w public
     # Expected Output
     INFO[0000] 🛠 apply...                                   
-    INFO[0000] 🔧 applying filtericebasecity:v1:policy...    
-    INFO[0001] 🔧 applying filtericebasecity:v1:policy...created 
+    INFO[0000] 🔧 applying filterlakehousecity:v1:policy...    
+    INFO[0001] 🔧 applying filterlakehousecity:v1:policy...created 
     INFO[0001] 🛠 apply...complete  
     ```
 

@@ -40,7 +40,7 @@ service:
       source:
         datasets:
           - name: city
-            dataset: dataos://icebase:retail/city
+            dataset: dataos://lakehouse:retail/city
             options:
               region: us-gov-east-1
               endpoint: s3.us-gov-east-1.amazonaws.com
@@ -620,7 +620,7 @@ Lakesearch supports four types of sources.
         source:
           datasets:
             - name: devices
-              dataset: dataos://icebase:lenovo_ls_data/devices_with_d
+              dataset: dataos://lakehouse:lenovo_ls_data/devices_with_d
               options:
         ```       
 
@@ -705,7 +705,7 @@ Lakesearch supports four types of sources.
 source:
   datasets:
     - name: city
-      dataset: dataos://icebase:retail/city
+      dataset: dataos://lakehouse:retail/city
       options:
         region: us-gov-east-1
         endpoint: s3.us-gov-east-1.amazonaws.com
@@ -736,14 +736,14 @@ datasets:
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| string | mandatory | none | A valid dataset URI (e.g., `dataos://icebase:retail/city`) |
+| string | mandatory | none | A valid dataset URI (e.g., `dataos://lakehouse:retail/city`) |
 
 **Example usage:**
 
 ```yaml
 datasets:
   - name: city
-    dataset: dataos://icebase:retail/city
+    dataset: dataos://lakehouse:retail/city
 ```
 
 ---

@@ -141,7 +141,7 @@ Here, you’ll find step-by-step instructions to build data API.
     
 4. Create an Instance Secret that will have the Bitbucket username and password (Butbucket App password) for security, and refer the Instance Secret in Talos Service.
   ```yaml
-  name: icebasedev-rw
+  name: lakehousedev-rw
   version: v1
   type: instance-secret
   description: "abfss v2 alpha depot password; acl=rw"

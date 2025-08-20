@@ -1,4 +1,4 @@
-# Mask Data After Moving from Database to Icebase
+# Mask Data After Moving from Database to Lakehouse
 
 This article explains the steps to access Sales transaction data in PostgreSQL, a relational database in the DataOS storage. We need to create a Beacon service that enables you to access this database through PostgreSQL REST API. We can also enforce DataOS governance policies for the secure access of the data in PostgreSQL.
 

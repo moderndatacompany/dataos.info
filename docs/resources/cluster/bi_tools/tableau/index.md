@@ -160,7 +160,7 @@ You need to configure the Presto driver in the Tableau application to connect to
     | --- | --- |
     | Server | e.g. tcp.reasonably-welcome-grub.dataos.io |
     | Port | 7432 |
-    | Catalog | e.g. icebase |
+    | Catalog | e.g. lakehouse |
     | Schema | an optional field |
     | Authentication | LDAP |
     | Username | Username |

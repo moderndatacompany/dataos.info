@@ -39,7 +39,7 @@ workflow:
 
             inputs:
               - name: profile_city
-                dataset: dataos://icebase:retail/city01 # Dataset Name
+                dataset: dataos://lakehouse:retail/city01 # Dataset Name
                 format: iceberg
 
             profile:

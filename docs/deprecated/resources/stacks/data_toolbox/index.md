@@ -10,7 +10,7 @@ search:
 
 # Toolbox Stack
 
-Data Toolbox Stack or simply Toolbox Stack provides vital functionality in case of metadata updation in [Icebase](/resources/depot/#icebase) depots. When data is ingested into Icebase using [Flare](/resources/stacks/flare/) Stack, the metadata of ingested datasets needs to be registered with [Metis](/interfaces/metis/) before it can be queried using [Workbench](/interfaces/workbench/). The Data Toolbox allows `set_version` action on the data stored in the DataOS internal storage Icebase, which uses the Iceberg format. The [Metis](/interfaces/metis/) keeps track of the Iceberg table by storing a reference to the latest metadata file. Using the Data Toolbox `set_version` action, you can update the metadata version to the latest or any specific version.
+Data Toolbox Stack or simply Toolbox Stack provides vital functionality in case of metadata updation in [Lakehouse](/resources/depot/#lakehouse) depots. When data is ingested into Lakehouse using [Flare](/resources/stacks/flare/) Stack, the metadata of ingested datasets needs to be registered with [Metis](/interfaces/metis/) before it can be queried using [Workbench](/interfaces/workbench/). The Data Toolbox allows `set_version` action on the data stored in the DataOS internal storage Lakehouse, which uses the Iceberg format. The [Metis](/interfaces/metis/) keeps track of the Iceberg table by storing a reference to the latest metadata file. Using the Data Toolbox `set_version` action, you can update the metadata version to the latest or any specific version.
 
 ## Syntax of Data Toolbox YAML Configuration
 
@@ -50,7 +50,7 @@ workflow:
       stack: toolbox 
       compute: runnable-default 
       stackSpec: 
-        dataset: dataos://icebase:sample/city?acl=rw 
+        dataset: dataos://lakehouse:sample/city?acl=rw 
         action: 
           name: set_version 
           value: latest 
@@ -118,7 +118,7 @@ workflow: # Workflow Section
 
           outputs:
             - name: cities
-              dataset: dataos://icebase:retail/city01?acl=rw
+              dataset: dataos://lakehouse:retail/city01?acl=rw
               format: Iceberg
               description: City data ingested from external csv
               options:
@@ -154,7 +154,7 @@ workflow: # Workflow Section
       stack: toolbox
       compute: runnable-default
       stackSpec:
-        dataset: dataos://icebase:retail/city01
+        dataset: dataos://lakehouse:retail/city01
         action:
           name: set_version
           value: latest

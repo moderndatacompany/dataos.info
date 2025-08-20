@@ -93,8 +93,8 @@ Talos offers extensive compatibility with a range of popular data sources, ensur
 - [Building data API on Snowflake using Talos.](/resources/stacks/talos/recipes/snowflake/)
 
 <aside class="callout">
-🗣 Talos does not directly support Icebase Depots. However, <span title="Flash is a Stack designed to manage and control query costs and performance within DataOS. It achieves this by caching datasets using an in-memory query processing layer."> <a href="/resources/stacks/flash/">Flash</a> 
-</span> can be used as a data source to build APIs for data stored in Icebase.
+🗣 Talos does not directly support Lakehouse Depots. However, <span title="Flash is a Stack designed to manage and control query costs and performance within DataOS. It achieves this by caching datasets using an in-memory query processing layer."> <a href="/resources/stacks/flash/">Flash</a> 
+</span> can be used as a data source to build APIs for data stored in Lakehouse.
 </aside>
 
 

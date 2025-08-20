@@ -58,7 +58,7 @@ The ensuing sections delineate the various sections of a Stack YAML.
 
 #### **Configure the Resource meta section**
 
-In DataOS, a Stack is categorized as a [Resource-type](/resources/types_of_dataos_resources/). The Resource meta section within the YAML manifest encompasses attributes universally applicable to all Resource-types. The provided YAML codeblock elucidates the requisite attributes for this section:
+In DataOS, a Stack is categorized as a [Resource-type](/resources/types/). The Resource meta section within the YAML manifest encompasses attributes universally applicable to all Resource-types. The provided YAML codeblock elucidates the requisite attributes for this section:
 
 ```yaml
 name: ${{my-stack}}

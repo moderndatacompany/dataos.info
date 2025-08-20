@@ -12,7 +12,7 @@ This setup ensures the workflow is triggered every 2 minutes, regardless of the 
     --8<-- "examples/resources/workflow/scheduled_workflow.yml"
     ```
 
-This code snippet will run the workflow in every 2 minutes on the given date to read data from pulsar topic and write to icebase whose detailed explanation is  given below .
+This code snippet will run the workflow in every 2 minutes on the given date to read data from pulsar topic and write to lakehouse whose detailed explanation is  given below .
 
 ### **`cron: '*/2 * * * *'`**
 

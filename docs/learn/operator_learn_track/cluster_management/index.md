@@ -67,7 +67,7 @@ Follow the steps given below.
     # Themis-specific section (3)
       themis:
         depots:
-          - address: dataos://icebase
+          - address: dataos://lakehouse
     ```
     
     | **Attribute** | **Description** |
@@ -80,7 +80,7 @@ Follow the steps given below.
     | `compute` | Defines the compute environment for the cluster. Here, `query-default` indicates the default configuration for processing queries. |
     | `type` | Specifies the type of the cluster. The value `themis` indicates that the cluster is using Themis query engine. |
     | `depots` | A list of depots (storage locations) associated with the cluster. |
-    | `address` | Specifies the location of the depot. In this case, it points to `dataos://icebase.` |
+    | `address` | Specifies the location of the depot. In this case, it points to `dataos://lakehouse.` |
     
 2. Apply the Cluster manifest by executing the following command in the terminal.
     
@@ -131,7 +131,7 @@ Follow the steps given below.
             cpu: 2000m
             memory: 4Gi
         depots:
-          - address: dataos://icebase
+          - address: dataos://lakehouse
     ```
     
     | **Attribute** | **Description** |
@@ -149,7 +149,7 @@ Follow the steps given below.
     | `requests` | Defines the resources requested by the cluster. It includes `2000m` (2 CPUs) of CPU and `4Gi` of memory, matching the resource limits. |
     | `debug` | Defines the logging configuration for the cluster. The `logLevel` is set to `INFO` for general logs, and the `trinoLogLevel` is set to `ERROR` for Trino logs. |
     | `depots` | A list of depots (storage locations) associated with the cluster. |
-    | `address` | Specifies the location of the depot. In this case, it points to `dataos://icebase`, indicating a depot in the DataOS. |
+    | `address` | Specifies the location of the depot. In this case, it points to `dataos://lakehouse`, indicating a depot in the DataOS. |
     
 2. Apply the Cluster manifest using the following command in the terminal.
     

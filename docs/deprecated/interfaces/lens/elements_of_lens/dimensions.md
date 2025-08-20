@@ -44,7 +44,7 @@ You can add any valid SQL expression to define a dimension. A field, dimension, 
 entity:
  - name: product
    sql:
-     - query: SELECT * FROM icebase.test.products
+     - query: SELECT * FROM lakehouse.test.products
      ---
      ---
    ---
@@ -69,7 +69,7 @@ owner: xxx
 entities:
   - name: order
     sql:
-      query: SELECT * FROM icebase.retail.orders
+      query: SELECT * FROM lakehouse.retail.orders
     fields:
 			------
 			------
@@ -83,7 +83,7 @@ entities:
 			
 	- name: customer
 		sql:
-			query: SELECT * FROM icebase.retail.customers
+			query: SELECT * FROM lakehouse.retail.customers
 		fields:
 			------
 			------

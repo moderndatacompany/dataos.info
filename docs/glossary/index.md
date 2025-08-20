@@ -114,8 +114,7 @@ hide:
 | Term | Description |
 | --- | --- |
 | [Lakehouse](/resources/lakehouse/) | A managed hybrid storage layer combining data lakes and warehouses, designed for storing processed datasets in DataOS. |
-| [Lens](/interfaces/lens/) | It is a modeling layer capable of accessing and modeling data from disparate sources. It supports data-driven decision-making by supporting and connecting to underlying data to the real-world business objects, formulates and delineate measure, KPIs, and relationships between different business concepts. |
-| [Lens Explorer](/interfaces/lens/#lens-explorer) | Lens Explorer is an intuitive graphical user interface that allows users to discover and analyze data within the Ontology layer. Users can utilize Lens Explorer to query the semantic model(lens) and obtain answers to complex data questions in an exploratory manner.|
+| [Lens](/resources/lens/) | It is a modeling layer capable of accessing and modeling data from disparate sources. It supports data-driven decision-making by supporting and connecting to underlying data to the real-world business objects, formulates and delineate measure, KPIs, and relationships between different business concepts. |
 
 ## m 
 

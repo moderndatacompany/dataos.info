@@ -72,7 +72,7 @@ entities:
   - name: customer
     sql:
       query: >
-        SELECT * , cast(birth_date as timestamp) as dob FROM icebase.sports.sample_customer 
+        SELECT * , cast(birth_date as timestamp) as dob FROM lakehouse.sports.sample_customer 
       columns:
         - name: customer_key
         - name: prefix
@@ -250,12 +250,12 @@ To streamline and consolidate, a join operation is performed that combines the c
           subcategory_name as product_subcategory_name , product_description , 
           product_color , product_size , product_style , product_cost , product_price 
         from
-          icebase.sports.sample_product_category
+          lakehouse.sports.sample_product_category
         inner join
-          icebase.sports.sample_product_sub_category
+          lakehouse.sports.sample_product_sub_category
         using (product_category_key)
         inner join
-          icebase.sports.sample_product
+          lakehouse.sports.sample_product
         using(product_subcategory_key)
       columns:
         - name: product_key
@@ -285,12 +285,12 @@ Now add fields, dimensions, and measures to the definition of the Product entity
               subcategory_name as product_subcategory_name , product_description , 
               product_color , product_size , product_style , product_cost , product_price 
             from
-              icebase.sports.sample_product_category
+              lakehouse.sports.sample_product_category
             inner join
-              icebase.sports.sample_product_sub_category
+              lakehouse.sports.sample_product_sub_category
             using (product_category_key)
             inner join
-              icebase.sports.sample_product
+              lakehouse.sports.sample_product
             using(product_subcategory_key)
           columns:
             - name: product_key
@@ -390,12 +390,12 @@ To incorporate sales details into our data model, we will define a new entity ca
             SELECT * , cast(order_date as timestamp) as date_of_order , 
               cast(stock_date as timestamp) as date_of_stock 
             from
-              icebase.sports.sample_product
+              lakehouse.sports.sample_product
             inner join
-              icebase.sports.sample_sales
+              lakehouse.sports.sample_sales
             using (product_key) 
             inner join
-              icebase.sports.sample_customer
+              lakehouse.sports.sample_customer
             using(customer_key)
           columns:
             - name: order_date
@@ -569,7 +569,7 @@ As we want to analyze customer dissatisfaction and issues with product quality a
     - name: return
         sql:
           query: >
-            SELECT * , cast(return_date as timestamp) as date_of_return FROM icebase.sports.sample_return
+            SELECT * , cast(return_date as timestamp) as date_of_return FROM lakehouse.sports.sample_return
           columns:
             - name: return_date
             - name: territory_key
@@ -625,7 +625,7 @@ Territory table includes various attributes or columns that provide details abou
     - name: territory
         sql:
           query: >
-            SELECT *  FROM icebase.sports.sample_territory
+            SELECT *  FROM lakehouse.sports.sample_territory
           columns:
             - name: sales_territory_key
             - name: region
@@ -730,12 +730,12 @@ Likewise, a measure is defined to calculate the count of sales order quantities 
         SELECT * , cast(order_date as timestamp) as date_of_order , 
           cast(stock_date as timestamp) as date_of_stock 
         from
-          icebase.sports.sample_product
+          lakehouse.sports.sample_product
         inner join
-          icebase.sports.sample_sales
+          lakehouse.sports.sample_sales
         using (product_key) 
         inner join
-          icebase.sports.sample_customer
+          lakehouse.sports.sample_customer
         using(customer_key)
       columns:
         
@@ -779,7 +779,7 @@ Here is the complete example for the sports retail data lens.
       - name: customer
         sql:
           query: >
-            SELECT *, cast(birth_date as timestamp) as dob FROM icebase.sports.sample_customer 
+            SELECT *, cast(birth_date as timestamp) as dob FROM lakehouse.sports.sample_customer 
           columns:
             - name: customer_key
             - name: first_name
@@ -910,12 +910,12 @@ Here is the complete example for the sports retail data lens.
             SELECT * , cast(order_date as timestamp) as date_of_order , 
               cast(stock_date as timestamp) as date_of_stock 
             from
-              icebase.sports.sample_product
+              lakehouse.sports.sample_product
             inner join
-              icebase.sports.sample_sales
+              lakehouse.sports.sample_sales
             using (product_key) 
             inner join
-              icebase.sports.sample_customer
+              lakehouse.sports.sample_customer
             using(customer_key)
           columns:
             - name: order_date
@@ -1078,12 +1078,12 @@ Here is the complete example for the sports retail data lens.
               subcategory_name as product_subcategory_name , product_description , 
               product_color , product_size , product_style , product_cost , product_price 
             from
-              icebase.sports.sample_product_category
+              lakehouse.sports.sample_product_category
             inner join
-              icebase.sports.sample_product_sub_category
+              lakehouse.sports.sample_product_sub_category
             using (product_category_key)
             inner join
-              icebase.sports.sample_product
+              lakehouse.sports.sample_product
             using(product_subcategory_key)
           columns:
             - name: product_key
@@ -1173,7 +1173,7 @@ Here is the complete example for the sports retail data lens.
       - name: return
         sql:
           query: >
-            SELECT * , cast(return_date as timestamp) as date_of_return FROM icebase.sports.sample_return
+            SELECT * , cast(return_date as timestamp) as date_of_return FROM lakehouse.sports.sample_return
           columns:
             - name: return_date
             - name: territory_key
@@ -1220,7 +1220,7 @@ Here is the complete example for the sports retail data lens.
       - name: territory
         sql:
           query: >
-            SELECT *  FROM icebase.sports.sample_territory
+            SELECT *  FROM lakehouse.sports.sample_territory
           columns:
             - name: sales_territory_key
             - name: region

@@ -35,6 +35,6 @@ The code snippet below shows the master Workflow or  super dag (`super_dag.yaml`
 
 - Apply the `super_dag.yaml` command from the CLI.
 
-When you apply the `super_dag.yaml` file, using CLI, it calls in the `workflow.yaml` file first and the `profiling.yaml` file second as the second file is dependent upon the first. The Workflow within the `workflow.yaml` writes the data from `icebase.retail.city` depot to `icebase.retail.city01`. Once that is done the second workflow is executed which does profiling on the same data from `icebase.retail.city01`. This finishes the two processing tasks by applying just one file.
+When you apply the `super_dag.yaml` file, using CLI, it calls in the `workflow.yaml` file first and the `profiling.yaml` file second as the second file is dependent upon the first. The Workflow within the `workflow.yaml` writes the data from `lakehouse.retail.city` depot to `lakehouse.retail.city01`. Once that is done the second workflow is executed which does profiling on the same data from `lakehouse.retail.city01`. This finishes the two processing tasks by applying just one file.
 
 

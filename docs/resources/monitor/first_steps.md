@@ -19,7 +19,7 @@ To resolve this, we can use Monitor Resource in DataOS to set up incidents that 
 
 ## Scenario Details
 
-- Database Table: `icebase.retail.customers`
+- Database Table: `lakehouse.retail.customers`
 - Metric: Row count in the `customers` table
 - Threshold: 100,000 rows
 - Condition: Row count exceeds 100,000 rows
@@ -70,7 +70,7 @@ monitor:
 			query:
 				type: trino
 				cluster: minithemis
-        ql: SELECT CASE WHEN check_outcome = 'pass' THEN 1 WHEN check_outcome = 'fail' THEN 0 END FROM icebase.soda.soda_check_metrics_01 WHERE metric_name = 'row_count' AND dataset = 'customer' ORDER BY timestamp DESC LIMIT 1;
+        ql: SELECT CASE WHEN check_outcome = 'pass' THEN 1 WHEN check_outcome = 'fail' THEN 0 END FROM lakehouse.soda.soda_check_metrics_01 WHERE metric_name = 'row_count' AND dataset = 'customer' ORDER BY timestamp DESC LIMIT 1;
     # Right Hand Side Expression
     right_expression:
       query_coefficient: 0
@@ -272,7 +272,7 @@ INFO[0001] 🔍 monitor...complete
           "query": {
             "type": "trino",
             "cluster": "system",
-            "ql": "select count(*) from \"icebase\".\"retail\".city"
+            "ql": "select count(*) from \"lakehouse\".\"retail\".city"
           }
         },
         "rightExpression": {

@@ -37,7 +37,7 @@ service:
   stackSpec:
     datasets:
       - name: ${{records}}
-        address: ${dataos://icebase:flash/records}}
+        address: ${dataos://lakehouse:flash/records}}
 
       - name: ${{f_sales}}
         depot: ${{dataos://bigquery}}
@@ -295,7 +295,7 @@ stack: flash+python:2.0
 stackSpec:
   datasets:
     - name: records
-      address: dataos://icebase:flash/records
+      address: dataos://lakehouse:flash/records
 ```
 
 ---
@@ -313,7 +313,7 @@ stackSpec:
 ```yaml
 datasets:
   - name: records
-    address: dataos://icebase:flash/records
+    address: dataos://lakehouse:flash/records
 ```
 
 ---

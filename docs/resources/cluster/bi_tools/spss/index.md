@@ -172,7 +172,7 @@ To use the Simba Presto ODBC Driver in the SPSS Statistics application, you need
     - Now in the 'Data Source' section, provide the required information.
         - Host (e.g. tcp.reasonably-welcome-grub.dataos.io)
         - Port (e.g. 7432)
-        - Catalog (e.g. icebase)
+        - Catalog (e.g. lakehouse)
         - Schema (optional)
             
     <center>

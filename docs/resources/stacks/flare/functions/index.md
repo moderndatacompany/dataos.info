@@ -47,7 +47,7 @@ workflow:
             logLevel: INFO
             outputs:
               - name: clustered_records
-                dataset: dataos://icebase:sample/unpivot_data_02?acl=rw
+                dataset: dataos://lakehouse:sample/unpivot_data_02?acl=rw
                 format: Iceberg
                 description: unpivotdata
                 options:
@@ -132,7 +132,7 @@ workflow:
           explain: true
           inputs:
            - name: cities
-             dataset: dataos://icebase:retail/city
+             dataset: dataos://lakehouse:retail/city
              format: Iceberg
 # User Defined Flare Functions
           udfs:
@@ -146,7 +146,7 @@ workflow:
           logLevel: INFO
           outputs:
             - name: out001
-              depot: dataos://icebase:retailsample?acl=rw
+              depot: dataos://lakehouse:retailsample?acl=rw
           steps:
           - sink:
               - sequenceName: finalDf

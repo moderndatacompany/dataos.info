@@ -38,15 +38,15 @@ v1alpha:
         type: lakehouse
         version: v1alpha
         refType: dataos
-        name: icebasegcstestv1
+        name: lakehousegcstestv1
         workspace: public
     inputs:
       - description: Customer 360
         purpose: source
         refType: dataos
-        ref: dataos://icebase:retail/customer
+        ref: dataos://lakehouse:retail/customer
     outputs:
       - description: Customer
         purpose: consumption
         refType: dataos_address
-        ref: dataos://icebase:retail/customer_360_final
+        ref: dataos://lakehouse:retail/customer_360_final
