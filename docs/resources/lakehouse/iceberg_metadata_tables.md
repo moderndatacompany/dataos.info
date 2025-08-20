@@ -29,7 +29,7 @@ In the following code snippet, we run a query to get the snapshot_id from all sn
 
 ```sql
 SELECT snapshot_id
-FROM icebase.retail."city$metadata_log_entries"
+FROM lakehouse.retail."city$metadata_log_entries"
 WHERE made_current_at < '2024-03-26 00:00:00'
 ORDER BY made_current_at ASC
 ```
@@ -46,12 +46,12 @@ The following code snippet shows how to query all entries from the history metad
 
 ```sql
 --- Spark SQL for Themis Cluster
-SELECT * FROM icebase.retail.city.history;
+SELECT * FROM lakehouse.retail.city.history;
 ```
 
 ```sql
 --- Trino for Minerva Cluster
-SELECT * FROM icebase.retail."city$history"
+SELECT * FROM lakehouse.retail."city$history"
 ```
 
 ## `metadata_log_entries` Metadata Table
@@ -85,7 +85,7 @@ WITH Ranked_Entries AS (
  ROW_NUMBER() OVER(PARTITION BY latest_schema_id ORDER BY timestamp
 DESC) as row_num
  FROM
- icebase.retail.city.metadata_log_entries
+ lakehouse.retail.city.metadata_log_entries
  WHERE
  latest_schema_id IS NOT NULL
 )
@@ -105,12 +105,12 @@ The following code snippet will query all entries from this table:
 
 ```sql
 --- Spark SQL for Themis Cluster
-SELECT * FROM icebase.retail.city.metadata_log_entries;
+SELECT * FROM lakehouse.retail.city.metadata_log_entries;
 ```
 
 ```sql
 --- Trino for Minerva Cluster
-SELECT * FROM icebase.retail."city$metadata_log_entries"
+SELECT * FROM lakehouse.retail."city$metadata_log_entries"
 ```
 
 ## `snapshots` Metadata Table

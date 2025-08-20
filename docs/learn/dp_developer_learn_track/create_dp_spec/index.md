@@ -117,20 +117,20 @@ There are two types of dataset references -
 inputs:
     - description: Fetching sales data from the S3 bucket, for comprehensive analysis of sales metrics, providing insights into revenue trends, performance tracking, and decision-making support.
     refType: dataos
-    ref: dataset:icebase:sales360mockdb:f_sales
+    ref: dataset:lakehouse:sales360mockdb:f_sales
 
     - description: Pulling customer data from the S3 bucket, for understanding customer demographics, behaviors, preferences and customer segmentation.
     refType: dataos
-    ref: dataset:icebase:sales360mockdb:customer_data_master
+    ref: dataset:lakehouse:sales360mockdb:customer_data_master
 
     - description: Fetching product data from the S3 bucket,to get a full view of the product portfolio, product performance analysis, and market positioning strategies.
     refType: dataos 
-    ref: dataset:icebase:sales360mockdb:product_data_master
+    ref: dataset:lakehouse:sales360mockdb:product_data_master
 
 outputs:
     - description: The objective is to expose this sales data to facilitate the creation of data APIs to enable seamless access to sales data, allowing integration with external systems, real-time data consumption, and enhanced analytical capabilities.
     refType: dataos
-    ref: dataset:icebase:sales360mockdb:f_sales
+    ref: dataset:lakehouse:sales360mockdb:f_sales
 ```
         
 ## Step 5: Configure ports for integration
@@ -201,20 +201,20 @@ v1beta:
 
     inputs:
       - refType: dataos
-        ref: dataset:icebase:customer_relationship_management:customer
+        ref: dataset:lakehouse:customer_relationship_management:customer
 
       - refType: dataos
-        ref: dataset:icebase:customer_relationship_management:purchase
+        ref: dataset:lakehouse:customer_relationship_management:purchase
 
       - refType: dataos
-        ref: dataset:icebase:customer_relationship_management:product
+        ref: dataset:lakehouse:customer_relationship_management:product
 
     outputs:
       - refType: dataos
-        ref: dataset:icebase:customer_relationship_management:product_affinity_matrix
+        ref: dataset:lakehouse:customer_relationship_management:product_affinity_matrix
 
       - refType: dataos
-        ref: dataset:icebase:customer_relationship_management:cross_sell_recommendations
+        ref: dataset:lakehouse:customer_relationship_management:cross_sell_recommendations
 
     ports:
       lens:

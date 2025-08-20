@@ -3,7 +3,7 @@
 Imagine a scenario where your sales are booming but you don't realize that your inventory is running low. This guide will demonstrate how to use DataOS with Python and SQL to set up alerts for
 key metrics such as, inventory, sales, or pipeline leakages. This way, you can stay informed and take action when needed.
 
-In this example, an alert is created that triggers when the total revenue for a specific country surpasses $10,000. The alert will notify the country manager about the significant revenue milestone. This alert system will be established through a Python script dockerized and deployed using Alpha Stack on DataOS, interacting with the Icebase depot, where the relevant data is stored.
+In this example, an alert is created that triggers when the total revenue for a specific country surpasses $10,000. The alert will notify the country manager about the significant revenue milestone. This alert system will be established through a Python script dockerized and deployed using Alpha Stack on DataOS, interacting with the Lakehouse depot, where the relevant data is stored.
 
 ## DataOS Alerts: Setting the Stage
 

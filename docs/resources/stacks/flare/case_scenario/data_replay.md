@@ -64,7 +64,7 @@ workflow:
             logLevel: INFO
             outputs:
               - name: ny_taxi_ts
-                dataset: dataos://icebase:raw01?acl=rw
+                dataset: dataos://lakehouse:raw01?acl=rw
                 format: iceberg
                 options:
                   saveMode: overwrite

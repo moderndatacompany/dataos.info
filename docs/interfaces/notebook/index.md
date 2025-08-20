@@ -24,18 +24,18 @@ DataOS is configured to take advantage of the Jupyter ecosystem's open-source to
 - **Apache Toree**: DataOS supports Apache Toree, a Scala-based Jupyter Kernel. This kernel enables Jupyter Notebooks to execute Scala code and seamlessly connect to Apache Spark. With Apache Toree, you can build interactive applications, leverage the power of Spark for big data processing, and perform advanced analytics within your Jupyter environment.
 
 
-## Use Case- Writing Data To Icebase
-This use case demonstrates how to write a test dataset to DataOS Icebase using PyFlare on Jupyter Notebook. We achieve the objective with help of `PyFlare` and `PySpark` on Notebook hosted on DataOS. 
+## Use Case- Writing Data To Lakehouse
+This use case demonstrates how to write a test dataset to DataOS Lakehouse using PyFlare on Jupyter Notebook. We achieve the objective with help of `PyFlare` and `PySpark` on Notebook hosted on DataOS. 
 
 ### **Prerequisites**
-- DataOS credentials and access to Icebase depot.
+- DataOS credentials and access to Lakehouse depot.
 - Hosted Jupyter Notebook on DataOS.
 
 Launch Notebook from DataOS Home and navigate to persistent-systems directory.
 
 1. Install PyFlare on Jupyter
-2. Input credentials and connect to Icebase with a spark session
-3. Read and save data to icebase using PyFlare
+2. Input credentials and connect to Lakehouse with a spark session
+3. Read and save data to lakehouse using PyFlare
 
 ### **Installation**
 
@@ -50,7 +50,7 @@ from pyflare import session, logger, sdk
 ```
 
 ### **Connection to Spark**
-Connect to Icebase with a Spark session. Enter your tokens and table address, we are writing a test dataset on vehicle collision to Icebase. 
+Connect to Lakehouse with a Spark session. Enter your tokens and table address, we are writing a test dataset on vehicle collision to Lakehouse. 
 
 #### **Define Datasets to be Read**
 Define the datasets to be read, including the dataset path. 
@@ -62,15 +62,15 @@ inputs = {
 		}                   # else path
 ```
 #### **Output Table address**
-Specify the output table address in Icebase where you want to write the data. `c181` is the name of the view.
+Specify the output table address in Lakehouse where you want to write the data. `c181` is the name of the view.
 ```python
 outputs = {
-    "c181": "dataos://icebase:<schema>/vehiclecollision"   ##address of table
+    "c181": "dataos://lakehouse:<schema>/vehiclecollision"   ##address of table
 }
 ```
 
-#### **Specific spark conf for Icebase**  
-Set up the necessary Spark configurations that would be needed for Icebase depot.
+#### **Specific spark conf for Lakehouse**  
+Set up the necessary Spark configurations that would be needed for Lakehouse depot.
 ```python
 sparkConf = [
     ("spark.app.name", "Dataos Sdk Spark App"),
@@ -87,14 +87,14 @@ DATAOS_FQDN = "engaging-ocelot.dataos.app"
 
 token = "<api token>"
 ```
-#### **Create Spark Session to Connect with ICEBASE**
-Create a Spark session to connect with Icebase using the provided credentials and configurations.
+#### **Create Spark Session to Connect with LAKEHOUSE**
+Create a Spark session to connect with Lakehouse using the provided credentials and configurations.
 ```python
 spark = session(api_key=token, dataos_url=DATAOS_FQDN, inputs=inputs, outputs=outputs,
                 spark_conf_options=sparkConf)
 ```
 
-#### **Read and Save Data to Icebase**
+#### **Read and Save Data to Lakehouse**
 
 Read your dataset using the Spark object created in the previous step. Supported data formats include CSV, JDBC, JSON, ORC, Parquet, Table, and Text. Create a temporary view with a name of your choice for further processing.
 
@@ -107,8 +107,8 @@ df.createOrReplaceTempView("c181")
 
 #### **Configurations for Output Dataset**
 
-Configure the output dataset options, such as compression and file format, for the data to be saved in Icebase.
-Use the PyFlare SDK to save the dataset to Icebase with the specified options.
+Configure the output dataset options, such as compression and file format, for the data to be saved in Lakehouse.
+Use the PyFlare SDK to save the dataset to Lakehouse with the specified options.
 
 ```python
 write_options = {
@@ -129,7 +129,7 @@ dataset = sdk.save(name = "c181",format = "iceberg", mode='overwrite', options=w
 #### **Set Metadata**
 To show the dataset on the workbench and start querying, run set-metadata command on DataOS CLI.
 ```bash
-dataos-ctl dataset set-metadata -a dataos://icebase:shopper_360/model_prediction -v latest
+dataos-ctl dataset set-metadata -a dataos://lakehouse:shopper_360/model_prediction -v latest
 ```
 <aside class="callout">
 🗣 You can run the SQL query on the intermediate view to check the data before writing it to the Icabase.
@@ -144,12 +144,12 @@ inputs = {
     'collision': ""  # Leave blank if the data is in the same directory, otherwise provide the path
 }
 
-# Specify the output table address in Icebase
+# Specify the output table address in Lakehouse
 outputs = {
-    "c181": "dataos://icebase:<schema>/vehiclecollision"  # Address of the table
+    "c181": "dataos://lakehouse:<schema>/vehiclecollision"  # Address of the table
 }
 
-# Specify the Spark configurations for Icebase
+# Specify the Spark configurations for Lakehouse
 sparkConf = [
     ("spark.app.name", "Dataos Sdk Spark App"),
     ("spark.master", "local[*]"),
@@ -161,7 +161,7 @@ sparkConf = [
 DATAOS_FQDN = "engaging-ocelot.dataos.app"
 token = "<api token>"
 
-# Create a Spark session to connect with Icebase
+# Create a Spark session to connect with Lakehouse
 spark = session(api_key=token, dataos_url=DATAOS_FQDN, inputs=inputs, outputs=outputs,
                 spark_conf_options=sparkConf)
 
@@ -175,7 +175,7 @@ write_options = {
     "write.format.default": "parquet"
 }
 
-# Save the dataset to Icebase using PyFlare SDK
+# Save the dataset to Lakehouse using PyFlare SDK
 dataset = sdk.save(name="c181", format="iceberg", mode='overwrite', options=write_options)
 ```
-Your data is successfully written in Icebase. Make sure to customize the database name, table name, and any additional options based on your specific use case.
+Your data is successfully written in Lakehouse. Make sure to customize the database name, table name, and any additional options based on your specific use case.

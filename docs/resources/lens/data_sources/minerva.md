@@ -456,7 +456,7 @@ x-lens2-environment: &lens2-environment
   # Data Source
   LENS2_SOURCE_TYPE: minerva  #themis, depot
   LENS2_SOURCE_NAME: minervacluster  #cluster name
-  LENS2_SOURCE_CATALOG_NAME: icebase   #depot name, specify any catalog
+  LENS2_SOURCE_CATALOG_NAME: lakehouse   #depot name, specify any catalog
   DATAOS_RUN_AS_APIKEY: *****
   
   #LENS2_DB_SSL: true
@@ -502,7 +502,7 @@ Follow these steps to create the `docker-compose.yml`:
 ```yaml
 LENS2_SOURCE_TYPE: minerva  #themis, depot
 LENS2_SOURCE_NAME: minervacluster  #cluster name
-LENS2_SOURCE_CATALOG_NAME: icebase   #depot name, specify any catalog
+LENS2_SOURCE_CATALOG_NAME: lakehouse   #depot name, specify any catalog
 DATAOS_RUN_AS_APIKEY: *****
 ``` -->
 <!-- 
@@ -541,7 +541,7 @@ Add the following environment variables to your Lens (.env) file
     LENS2_DB_HOST="tcp.alpha-omega.dataos.app"
     LENS2_DB_USER="iamgroot"
     LENS2_DB_PASS="abcdefghijklmnopqrstuvwxyz"
-    LENS2_DB_PRESTO_CATALOG="icebase"
+    LENS2_DB_PRESTO_CATALOG="lakehouse"
     LENS2_DB_PORT=7432
     ```
 **Sample environment variable file configuration**
@@ -554,7 +554,7 @@ LENS2_DB_HOST=tcp.alpha-omega.dataos.app
 LENS2_DB_PORT=7432
 LENS2_DB_USER=iamgroot
 LENS2_DB_PASS="abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwzyz"
-LENS2_DB_PRESTO_CATALOG=icebase
+LENS2_DB_PRESTO_CATALOG=lakehouse
 LENS2_DB_SSL=true
 LENS2_DB_TYPE=trino
 
@@ -580,7 +580,7 @@ LENS2_HEIMDALL_BASE_URL="https://alpa-omega.dataos.app/heimdall"
 
 LENS2_SOURCE_TYPE=trino
 LENS2_SOURCE_NAME=system
-LENS2_SOURCE_CATALOG_NAME=icebase 
+LENS2_SOURCE_CATALOG_NAME=lakehouse 
 
 LENS2_BASE_URL="http://localhost:4000/lens2/api"
 LENS2_META_PATH="/v2/meta"
@@ -598,7 +598,7 @@ LENS2_BOARD_PATH=boards
 | `LENS2_DB_PORT` | The port for the database connection | A valid port number | `7432` | ❌ |
 | `LENS2_DB_USER` | The DataOS user-id used to connect to the database. It can be retrieved from the second column of the output by running the `dataos-ctl user get` command from the DataOS CLI | A valid DataOS user-id | `iamgroot` | ✅ |
 | `LENS2_DB_PASS` | The DataOS Wrap Token that serves as a password used to connect to the database | A valid Cluster Wrap Token. Learn more about how to create a Cluster Wrap Token [**here.**](/interfaces/atlas/bi_tools/tableau/#generate-dataos-api-token) | `abcdefghijklmnopqrstuvwxyz` | ✅ |
-| `LENS2_DB_PRESTO_CATALOG` | The catalog within Trino/Presto to connect to | A valid catalog name within the Trino/Presto database | `icebase` | ✅ |
+| `LENS2_DB_PRESTO_CATALOG` | The catalog within Trino/Presto to connect to | A valid catalog name within the Trino/Presto database | `lakehouse` | ✅ |
 | `LENS2_DB_SSL` | If `true`, enables SSL encryption for database connections from Lens2. | `true`, `false` | `true` | ❌ | -->
 <!-- 
 ### **Example**

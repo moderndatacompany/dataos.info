@@ -1,3 +1,9 @@
+---
+search:
+  exclude: true
+
+---
+
 # sql_raw
 
 Executes an arbitrary SQL query for each incoming message. This processor was introduced in version 1.0.0.

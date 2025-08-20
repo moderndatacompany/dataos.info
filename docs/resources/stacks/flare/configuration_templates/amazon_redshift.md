@@ -10,7 +10,7 @@ Once you have set up a Redshift Depot, you can start reading data from it.
 
 **Sample Read configuration manifest**
 
-Let’s take a case scenario where the dataset is stored in Redshift Depot and you have to read data from the source, perform some transformation steps and write it to Lakehouse (e.g. Icebase) within the DataOS. The read config manifest will be as follows:
+Let’s take a case scenario where the dataset is stored in Redshift Depot and you have to read data from the source, perform some transformation steps and write it to Lakehouse (e.g. Lakehouse) within the DataOS. The read config manifest will be as follows:
 
 Sample Input section
 

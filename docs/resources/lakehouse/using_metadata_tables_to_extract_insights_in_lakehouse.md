@@ -8,8 +8,8 @@ To confirm the accurate addition of records, observe storage growth in specific 
 
 ```sql
 SELECT file.*, entry.snapshot_id
-FROM icebase.retail.city.entries AS entry
-JOIN icebase.retail.city.files AS file
+FROM lakehouse.retail.city.entries AS entry
+JOIN lakehouse.retail.city.files AS file
 ON entry.data_file.file_path = file.file_path
 WHERE entry.status = 1 AND entry.snapshot_id = <your_snapshot_id>;
 ```
@@ -21,7 +21,7 @@ For insights into the addition, deletion, and presence of a file throughout its 
 ```sql
 SELECT entry.snapshot_id, entry.sequence_number, entry.status, manifest.added_snapshot_id,
 manifest.deleted_data_files_count, manifest.added_data_files_count
-FROM icebase.retail.table.entries AS entry
+FROM lakehouse.retail.table.entries AS entry
 JOIN catalog.table.manifests AS manifest
 ON entry.snapshot_id = manifest.added_snapshot_id
 WHERE entry.data_file.file_path = '<your_file_path>'

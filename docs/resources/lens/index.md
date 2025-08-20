@@ -2,6 +2,9 @@
 title: Lens
 search:
   boost: 4
+tags:
+  - Semantic Model
+  - semantic layer
 ---
 
 # :resources-lens: Lens

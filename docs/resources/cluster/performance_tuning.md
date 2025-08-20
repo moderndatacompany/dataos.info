@@ -67,15 +67,15 @@ Improving storage performance in Minerva involves considerations related to file
 
 - **Use columnar formats that efficiently store data**
 
-Minerva processes data in vectorized columns, holding only the relevant data for processing and compressing each column individually. Icebase stores data in the Parquet format, which is optimized for fast data retrieval.
+Minerva processes data in vectorized columns, holding only the relevant data for processing and compressing each column individually. Lakehouse stores data in the Parquet format, which is optimized for fast data retrieval.
 
 - **Optimize file size**
 
-File size has a significant impact on query processing. Small files result in numerous small IO requests, which can affect performance due to high latency, throttling, or IO capacity limitations. Handling each file separately increases scheduling time and costs. To mitigate these issues, use file sizes of at least 100MB to overcome potential IO-related challenges. DataOS enables merging and compacting data/metadata files within Icebase data storage using Flare Stack's Maintenance Actions.
+File size has a significant impact on query processing. Small files result in numerous small IO requests, which can affect performance due to high latency, throttling, or IO capacity limitations. Handling each file separately increases scheduling time and costs. To mitigate these issues, use file sizes of at least 100MB to overcome potential IO-related challenges. DataOS enables merging and compacting data/metadata files within Lakehouse data storage using Flare Stack's Maintenance Actions.
 
 - **Apply data compression**
 
-Compressing your data can significantly enhance performance. Icebase stores data in the Apache Parquet format, which offers built-in data compression.
+Compressing your data can significantly enhance performance. Lakehouse stores data in the Apache Parquet format, which offers built-in data compression.
 
 - **Partition your data**
 

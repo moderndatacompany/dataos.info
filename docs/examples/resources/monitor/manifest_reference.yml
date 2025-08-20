@@ -37,7 +37,7 @@ monitor:
       query: # Query configuration (mandatory)
         type: trino # Type of query (mandatory)
         cluster: themis # Cluster for the query (mandatory)
-        ql: SELECT metric_value FROM icebase.soda.soda_check_metrics_01 WHERE metric_name = 'missing_count' ORDER BY timestamp DESC LIMIT 1; # Query language (mandatory)
+        ql: SELECT metric_value FROM lakehouse.soda.soda_check_metrics_01 WHERE metric_name = 'missing_count' ORDER BY timestamp DESC LIMIT 1; # Query language (mandatory)
       operator: equals # Operator for the equation (mandatory)
   report: 
     source: # Report source configuration (mandatory)

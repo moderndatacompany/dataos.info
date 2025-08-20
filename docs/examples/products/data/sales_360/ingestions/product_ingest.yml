@@ -5,12 +5,12 @@ tags:
   - demo.products
   - Tier.Gold
   - Domain.Sales
-description: This workflow is responsible for ingesting products  for analysis and insights from poss3 into Icebase.
+description: This workflow is responsible for ingesting products  for analysis and insights from poss3 into Lakehouse.
 workflow:
   title: products Ingestion Workflow
   dag:
     - name: products-ingestion
-      description: This workflow is responsible for ingesting products  for analysis and insights from poss3 into Icebase.
+      description: This workflow is responsible for ingesting products  for analysis and insights from poss3 into Lakehouse.
       title: products Ingestion Workflow
       spec:
         tags:
@@ -39,7 +39,7 @@ workflow:
             logLevel: INFO
             outputs:
               - name: products_final_dataset
-                dataset: dataos://icebase:sales_analytics/products?acl=rw
+                dataset: dataos://lakehouse:sales_analytics/products?acl=rw
                 format: Iceberg
                 description: The products table is a structured dataset that contains comprehensive information about various products within the organization. It serves as a central repository for products data, facilitating efficient management, analysis, and decision-making processes related to products operations, logistics, and customer engagement.
                 tags:

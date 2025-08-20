@@ -23,7 +23,7 @@ workflow:
             explain: true
             inputs:
               - name: input
-                dataset: dataos://icebase:retail/product
+                dataset: dataos://lakehouse:retail/product
                 format: Iceberg
               #  schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc
             logLevel: INFO
@@ -34,7 +34,7 @@ workflow:
                 format: jdbc
                 options:
                   saveMode: overwrite
-                description: Data set from Icebase
+                description: Data set from Lakehouse
                 tags:
                   - Connect
                 title: Postgres Dataset

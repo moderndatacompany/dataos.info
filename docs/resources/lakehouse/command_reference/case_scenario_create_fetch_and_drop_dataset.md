@@ -37,7 +37,7 @@ Let’s say we want to create a new dataset by the name `city2`. We can use the 
 **Example**
 
 ```yaml
-dataos-ctl dataset -a dataos://icebase:retail/city2 create -f /home/folder/new.yml
+dataos-ctl dataset -a dataos://lakehouse:retail/city2 create -f /home/folder/new.yml
 ```
 
 Output (on successful execution)
@@ -56,10 +56,10 @@ dataos-ctl dataset -a ${{udl}} get
 ```
 **Example**
 
-If the dataset to be fetched is stored at the udl address - `dataos://icebase:retail/city` the command will be as follows:
+If the dataset to be fetched is stored at the udl address - `dataos://lakehouse:retail/city` the command will be as follows:
 
 ```bash
-dataos-ctl dataset -a dataos://icebase:retail/city get
+dataos-ctl dataset -a dataos://lakehouse:retail/city get
 ```
 
 Expected Output
@@ -90,7 +90,7 @@ INFO[0001] 📂 get dataset...completed
 
 ### **Delete the Entry from Metastore only (not data files)**
 
-To drop a dataset that already exists within the Icebase depot, you can use the commands given in the code block below; this would delete the corresponding entry from the metastore while leaving the source file intact.
+To drop a dataset that already exists within the Lakehouse depot, you can use the commands given in the code block below; this would delete the corresponding entry from the metastore while leaving the source file intact.
 
 **Command**
 
@@ -106,11 +106,11 @@ dataos-ctl dataset -a ${{udl}} drop --purge false
 
 
 ```bash
-dataos-ctl dataset -a dataos://icebase:retail/city drop
+dataos-ctl dataset -a dataos://lakehouse:retail/city drop
 # OR
-dataos-ctl dataset -a dataos://icebase:retail/city drop -p false # -p flag is Purge Value (its by default: false)
+dataos-ctl dataset -a dataos://lakehouse:retail/city drop -p false # -p flag is Purge Value (its by default: false)
 # OR
-dataos-ctl dataset -a dataos://icebase:retail/city drop --purge false
+dataos-ctl dataset -a dataos://lakehouse:retail/city drop --purge false
 ```
 
 Output
@@ -135,9 +135,9 @@ dataos-ctl dataset -a ${{udl}} drop --purge true
 **Example**
 
 ```bash
-dataos-ctl dataset -a dataos://icebase:retail/city drop -p true # -p flag is Purge Value (its by default: false)
+dataos-ctl dataset -a dataos://lakehouse:retail/city drop -p true # -p flag is Purge Value (its by default: false)
 # OR
-dataos-ctl dataset -a dataos://icebase:retail/city drop --purge true
+dataos-ctl dataset -a dataos://lakehouse:retail/city drop --purge true
 ```
 
 Output

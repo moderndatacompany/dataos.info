@@ -136,7 +136,7 @@ Begin by creating a manifest file that will hold the configuration details for y
     source: # Data Source configuration
       type: minerva # Source type 
       name: system # Source name
-      catalog: icebase #in case of minerva or themis
+      catalog: lakehouse #in case of minerva or themis
     repo: # Lens
     #model code repository configuration (mandatory)
       url: https://bitbucket.org/iamgroot/lens # URL of repository containing the Lens model (mandatory)

@@ -47,7 +47,7 @@ workflow:
   title: NY Taxi Data Ingestion
   dag:
     - name: storage-event-context
-      description: The job ingests NY-Taxi data from dropzone into Icebase with enhanced metadata configuration.
+      description: The job ingests NY-Taxi data from dropzone into Lakehouse with enhanced metadata configuration.
       title: NY Taxi Ingestion
       spec:
         tags:
@@ -128,7 +128,7 @@ workflow:
   title: NY Taxi Data Ingestion
   dag:
     - name: storage-event-context
-      description: The job ingests NY-Taxi data from dropzone into Icebase with enhanced metadata configuration.
+      description: The job ingests NY-Taxi data from dropzone into Lakehouse with enhanced metadata configuration.
       title: NY Taxi Ingestion
       spec:
         tags:

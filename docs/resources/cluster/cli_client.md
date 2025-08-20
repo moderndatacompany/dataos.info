@@ -141,7 +141,7 @@ The following commands can be used to perform various operations:
     ➜ Minerva# show catalogs;
      Catalog 
     ---------
-     icebase 
+     lakehouse 
      system  
     (2 rows)
     
@@ -153,7 +153,7 @@ The following commands can be used to perform various operations:
 - List Schemas within a Catalog:
 
     ```bash
-    ➜ Minerva# show schemas in icebase;
+    ➜ Minerva# show schemas in lakehouse;
            Schema       
     --------------------
      default            
@@ -179,14 +179,14 @@ The following commands can be used to perform various operations:
 - Set Default Catalog:
 
     ```bash
-    ➜ Minerva# USE icebase.surveys;
+    ➜ Minerva# USE lakehouse.surveys;
     	USE
     ```
 
 - Show Tables:
 
     ```bash
-    ➜ Minerva:icebase.surveys# SHOW tables;
+    ➜ Minerva:lakehouse.surveys# SHOW tables;
 	           Table           
 	---------------------------
 	 combined_survey_list      
@@ -205,7 +205,7 @@ The following commands can be used to perform various operations:
 - Describe Table:
 
     ```bash
-    ➜ Minerva:icebase.surveys# describe qualtrics_questions_table;
+    ➜ Minerva:lakehouse.surveys# describe qualtrics_questions_table;
               Column           |         Type          | Extra | Comment 
     ---------------------------+-----------------------+-------+---------
      __metadata                | map(varchar, varchar) |       |         
@@ -228,7 +228,7 @@ The following commands can be used to perform various operations:
 - Show Table Data:
 
     ```bash
-    ➜ Minerva:icebase.surveys# SELECT question_number, question_name, groups FROM qualtrics_questions_table LIMIT 10;
+    ➜ Minerva:lakehouse.surveys# SELECT question_number, question_name, groups FROM qualtrics_questions_table LIMIT 10;
      question_number | question_name | groups 
     -----------------+---------------+--------
                    1 | Q118          | NULL   
@@ -246,7 +246,7 @@ The following commands can be used to perform various operations:
 - Quit CLI:
 
     ```bash
-    ➜ Minerva:icebase.surveys# quit
+    ➜ Minerva:lakehouse.surveys# quit
     ```
 
 ## Export results as CSV
@@ -260,8 +260,8 @@ minerva \
      --apikey <API_KEY> \
      --cluster-name=<CLUSTER_NAME> \
      --execute "
-SELECT * FROM icebase.surveys.qualtrics_responses_table R 
-INNER JOIN icebase.surveys.sharepoint_metadata M 
+SELECT * FROM lakehouse.surveys.qualtrics_responses_table R 
+INNER JOIN lakehouse.surveys.sharepoint_metadata M 
 ON R.survey_id=M.surveyid 
 WHERE M.templatetypeltemplatecategory like '%Workplace' LIMIT 10
 " \

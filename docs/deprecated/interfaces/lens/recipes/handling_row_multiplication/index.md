@@ -71,7 +71,7 @@ We need to define a dimension ‘order_id_clickstream’ within the clickstream 
         row_number() over(partition by session_id order by created_on) as row_num,
         lag(created_on) over ( partition by session_id order by created_on ) last_act_time
         FROM
-        icebase.campaign.click_stream
+        lakehouse.campaign.click_stream
       columns:
       -----
       -----

@@ -115,7 +115,7 @@ The YAML snippet below shows a sample structure of the Soda [`stackSpec`](/resou
 ```yaml
 stackSpec:
   inputs:
-    - dataset: dataos://icebase:retail/customer
+    - dataset: dataos://lakehouse:retail/customer
       options:
         engine: minerva
         clusterName: miniature
@@ -149,7 +149,7 @@ The [`dataset`](/resources/stacks/soda/configurations/#dataset) attribute allows
 ```yaml
 stackSpec:
   inputs:
-    - dataset: dataos://icebase:retail/customer
+    - dataset: dataos://lakehouse:retail/customer
       # ...other input attributes
     - dataset: dataos://postgresdb:state/city
       # ...other input attributes
@@ -189,7 +189,7 @@ The [`checks`](/resources/stacks/soda/configurations/#checks) section allows use
 
 stackSpec:
   inputs:
-    - dataset: dataos://icebase:retail/customer
+    - dataset: dataos://lakehouse:retail/customer
       checks:
         - row_count between 1 and 170:
             attributes:
@@ -222,7 +222,7 @@ stackSpec:
 
 stackSpec:
   inputs:
-    - dataset: dataos://icebase:retail/customer
+    - dataset: dataos://lakehouse:retail/customer
       checks:
       - avg(safety_stock_level) > 50:
           attributes:
@@ -235,7 +235,7 @@ stackSpec:
 
 stackSpec:
   inputs:
-    - dataset: dataos://icebase:retail/customer
+    - dataset: dataos://lakehouse:retail/customer
       checks:
         - freshness(test) < 551d:
             name: Freshness01
@@ -249,7 +249,7 @@ stackSpec:
 
 stackSpec:
   inputs:
-    - dataset: dataos://icebase:retail/customer
+    - dataset: dataos://lakehouse:retail/customer
       checks:
         - values in (city_name) must exist in city (city_name):
             samples limit: 20
@@ -287,7 +287,7 @@ workflow:
         logLevel: INFO # WARNING, ERROR, DEBUG
         stackSpec:
           inputs:
-            - dataset: dataos://icebase:sales_360/account
+            - dataset: dataos://lakehouse:sales_360/account
               options:
                 engine: minerva
                 clusterName: system
@@ -453,7 +453,7 @@ The following YAML sample demonstrates how the [`filter`](/resources/stacks/soda
 ```yaml
 stackSpec:
   inputs:
-    - dataset: dataos://icebase:retail/customer
+    - dataset: dataos://lakehouse:retail/customer
       filter:
         name: filter_on_age
         where: age > 50
@@ -472,7 +472,7 @@ The [`engine`](/resources/stacks/soda/configurations/#engine) attribute can assu
 - The `minerva` option utilizes the DataOS query engine (Minerva) to execute queries on the depot connected to the cluster. When opting for `minerva`, specifying the [`clusterName`](/resources/stacks/soda/configurations/#clustername) becomes mandatory.
 
 <aside class="callout">
-🗣 For sources like <b>Icebase</b>, engine must be <code>minerva</code>. For more information, refer to the list of sources and supported engines provided below.
+🗣 For sources like <b>Lakehouse</b>, engine must be <code>minerva</code>. For more information, refer to the list of sources and supported engines provided below.
 
 <details>
 <summary>List of Sources and Supported Engine</summary>
@@ -591,7 +591,7 @@ If applicable, users can provide the [`clusterName`](/resources/stacks/soda/conf
 ```yaml
 stackSpec:
   inputs:
-    - dataset: dataos://icebase:retail/customer
+    - dataset: dataos://lakehouse:retail/customer
       options:
         engine: minerva
         clusterName: miniature
@@ -617,16 +617,16 @@ The following table provides a comprehensive overview of the various attributes 
 
 For further details regarding the Soda Stack-specific attributes, you can refer to the link: [Attributes of Soda Stack YAML](/resources/stacks/soda/configurations/).
 
-**Branch name configuration for Lakehouse storage or Icebase type Depots**
+**Branch name configuration for Lakehouse storage or Lakehouse type Depots**
 
-In DataOS, Soda facilitates the execution of checks on different branches within a Lakehouse storage or Icebase-type Depot. By default, if no branch name is specified, Soda automatically targets the `main` branch. However, users have the option to direct the checks towards a specific branch by providing the branch name.
+In DataOS, Soda facilitates the execution of checks on different branches within a Lakehouse storage or Lakehouse-type Depot. By default, if no branch name is specified, Soda automatically targets the `main` branch. However, users have the option to direct the checks towards a specific branch by providing the branch name.
 
 To specify a branch name when running a check in a Depot that supports the Iceberg table format, follow the sample configuration below. This capability ensures checks are performed on the desired branch, enhancing the flexibility and accuracy of data management.
 
 ```yaml
 stackSpec:
   inputs:
-    - dataset: dataos://icebase:retail/customer
+    - dataset: dataos://lakehouse:retail/customer
       options:
         engine: minerva
         clusterName: miniature
@@ -693,7 +693,7 @@ workflow:
                     attributes:
                       category: Accuracy
             # Minerva
-            - dataset: dataos://icebase:retail/customer
+            - dataset: dataos://lakehouse:retail/customer
               options:
                 engine: minerva
                 clusterName: miniature
@@ -839,7 +839,7 @@ worker:
   stackSpec:
     inputs:
       # Minerva
-      - dataset: dataos://icebase:retail/customer
+      - dataset: dataos://lakehouse:retail/customer
         options:
           engine: minerva
           clusterName: miniature
@@ -955,7 +955,7 @@ dataos-ctl apply -f ${{path/file-name}} -w ${{workspace}} # By default the works
 
 Soda check results and profiling information are stored in Iceberg tables, and querying this information can be accomplished through [Workbench](/interfaces/workbench/) App. 
 
-To do so, Workflows can be executed to sink the information related to Checks and Profiles into the [Icebase](/resources/depot/#icebase) depot. The YAML for both Workflows is provided below.
+To do so, Workflows can be executed to sink the information related to Checks and Profiles into the [Lakehouse](/resources/depot/#lakehouse) depot. The YAML for both Workflows is provided below.
 
 <details>
 <summary>Workflow for sinking Soda Check information</summary>
@@ -982,11 +982,11 @@ workflow:
             logLevel: INFO
             outputs:
               - name: joined_checks_metrics
-                dataset: dataos://icebase:soda/soda_check_metrics_01?acl=rw
+                dataset: dataos://lakehouse:soda/soda_check_metrics_01?acl=rw
                 format: Iceberg
                 options:
                   saveMode: append
-                  checkpointLocation: dataos://icebase:sys01/checkpoints/soda-checks-data/v001?acl=rw
+                  checkpointLocation: dataos://lakehouse:sys01/checkpoints/soda-checks-data/v001?acl=rw
                   sort:
                     mode: partition
                     columns:
@@ -1100,11 +1100,11 @@ workflow:
             logLevel: INFO
             outputs:
               - name: changed_datatype
-                dataset: dataos://icebase:soda/soda_profiles_01?acl=rw
+                dataset: dataos://lakehouse:soda/soda_profiles_01?acl=rw
                 format: Iceberg
                 options:
                   saveMode: append
-                  checkpointLocation: dataos://icebase:sys01/checkpoints/soda-profiles-data/v001?acl=rw
+                  checkpointLocation: dataos://lakehouse:sys01/checkpoints/soda-profiles-data/v001?acl=rw
                   sort:
                     mode: partition
                     columns:
@@ -1234,15 +1234,15 @@ workflow:
 ```
 </details>
 
-Once executed, the information can be queried from the Icebase tables using the Workbench App.
+Once executed, the information can be queried from the Lakehouse tables using the Workbench App.
 
-- For checks information, query the `dataos://icebase:soda/soda_check_metrics_01` table.
-- For profiling information, query the `dataos://icebase:soda/soda_profiles_01` table.
+- For checks information, query the `dataos://lakehouse:soda/soda_check_metrics_01` table.
+- For profiling information, query the `dataos://lakehouse:soda/soda_profiles_01` table.
 
 **Sample query**
 
 ```sql
-SELECT * FROM icebase.soda.soda_check_metrics_01 LIMIT 10
+SELECT * FROM lakehouse.soda.soda_check_metrics_01 LIMIT 10
 ```
 
 ## Case scenarios

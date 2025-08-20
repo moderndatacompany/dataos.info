@@ -212,7 +212,7 @@ If you have defined a relationship between product and transaction within the pr
 - name: product
     description: A product item that can be sold
     sql:
-      query: SELECT * FROM icebase.campaign.products
+      query: SELECT * FROM lakehouse.campaign.products
      -----
      -----
     fields:
@@ -243,7 +243,7 @@ And, if a relationship between customer and product is defined, i.e., Customer â
   - name: customer
     description: A Customer entity having information about customers
     sql:
-      query: SELECT * FROM icebase.campaign.customers
+      query: SELECT * FROM lakehouse.campaign.customers
       -----
       -----
     fields:

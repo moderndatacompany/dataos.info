@@ -22,5 +22,5 @@ policy:
       - {{post}}
     objects:
       paths:
-        - {{dataos://icebase:spend_analysis/**}}
+        - {{dataos://lakehouse:spend_analysis/**}}
     allow: {{false}}

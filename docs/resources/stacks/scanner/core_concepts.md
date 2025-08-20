@@ -1,6 +1,6 @@
 # Core Concepts of the Scanner Stack
 
-The Scanner facilitates metadata extraction by utilizing [Depots](/resources/depot/index) to connect to the metadata source.  The core concepts include:
+The Scanner facilitates metadata extraction by utilizing [Depots](/resources/depot/) to connect to the metadata source.  The core concepts include:
 
 * **Metadata Extraction**: Collects metadata from source systems, DataOS services, and components.
 

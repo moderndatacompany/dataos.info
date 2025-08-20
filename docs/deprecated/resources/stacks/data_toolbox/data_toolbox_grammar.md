@@ -11,7 +11,7 @@ search:
 
 ```yaml
 stackSpec: 
-  dataset: dataos://icebase:sample/city?acl=rw 
+  dataset: dataos://lakehouse:sample/city?acl=rw 
   action: 
     name: set_version 
     value: latest 
@@ -44,7 +44,7 @@ stackSpec:
 **Additional Information:** adding acl=rw after the dataset name is part of best practice in case the source system has separate keys for read and read write<br>
 **Example Usage:**<br>
 ```yaml
-dataset: dataos://icebase:sample/city?acl=rw
+dataset: dataos://lakehouse:sample/city?acl=rw
 ```
 
 ---

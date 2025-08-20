@@ -129,7 +129,7 @@ After creating the tag, the next step is to define the policy associated with it
       data:
         priority: 1 #lower number supersede the higher number during policy evaluation
         type: mask
-        depot: icebase
+        depot: lakehouse
         collection: retail
         dataset: customer
         selector:

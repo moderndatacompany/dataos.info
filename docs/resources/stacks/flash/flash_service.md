@@ -153,7 +153,7 @@ Once the Flash Stack is available, follow these steps to create a Flash Service:
       stackSpec:
         datasets:
           - name: records
-            address: dataos://icebase:flash/records
+            address: dataos://lakehouse:flash/records
 
           - name: f_sales
             depot: dataos://bigquery

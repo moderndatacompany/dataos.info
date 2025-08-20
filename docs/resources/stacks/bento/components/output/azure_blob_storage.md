@@ -2,7 +2,7 @@
 
 !!! Warning "BETA"
 
-        This component is mostly stable but breaking changes could still be made outside of major version releases if a fundamental problem with the component is found.
+    This component is mostly stable but breaking changes could still be made outside of major version releases if a fundamental problem with the component is found.
 
 Sends message parts as objects to an Azure Blob Storage Account container. Each object is uploaded with the filename specified with the container field. This processor was introduced in version 1.0.0.
 

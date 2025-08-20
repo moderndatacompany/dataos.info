@@ -11,7 +11,7 @@ owner: {{iamgroot}}
 layer: user
 policy:
   data:
-    dataset_id: {{icebase.retail.customer}}
+    dataset_id: {{lakehouse.retail.customer}}
     priority: {{10}}
     type: filter
     filters:

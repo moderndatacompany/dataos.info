@@ -39,7 +39,7 @@ cluster:
     trinoLogLevel: ERROR
     depots:                        
 # Pre-defined Depots and their properties 
-      - address: dataos://icebase:default         
+      - address: dataos://lakehouse:default         
         properties:
             iceberg.file-format: PARQUET
             iceberg.compression-codec: GZIP

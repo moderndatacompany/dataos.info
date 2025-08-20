@@ -10,11 +10,11 @@ Ingestion Errors cover issues related to reading or loading input data sources, 
 22/10/17 12:29:14 INFO Flare$: Gracefully stopping Spark Application
 22/10/17 12:29:14 ERROR ProcessingContext: =>Flare: Job finished with error=Could not alter output datasets for workspace: p....
 There is an existing job with same workspace: public and name: account-new-n writing into below datasets
-		1. dataos://icebase:gcdcore_bronze/gcdcore_account
+		1. dataos://lakehouse:gcdcore_bronze/gcdcore_account
 You should use a different job name for your job as you cannot change output datasets for any job
 Exception in thread "shutdownHook1" io.dataos.flare.exceptions.FlareException: Could not alter output datasets for workspace
 There is an existing job with same workspace; public and name: account-new-n writing into below datasets
-		1. dataos://icebase:gcdcore_bronze/gcdcore_account
+		1. dataos://lakehouse:gcdcore_bronze/gcdcore_account
 You should use a different job name for your job as you cannot change output datasets for any job.
 		at io.dataos.flare.contexts.ProcessingContext.error(ProcesingContext.scala:87)
 ```
@@ -70,7 +70,7 @@ ERRO[0000] failure applying a resource
 
 ```bash
 There is an existing job with same workspace: public and name: camp-connect-city writing into below datasets
-  1. dataos://icebase:campaign/city
+  1. dataos://lakehouse:campaign/city
  You should use a different job name for your job as you cannot change output datasets for any job.
 ```
 

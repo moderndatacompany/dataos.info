@@ -32,7 +32,7 @@ workflow:
         # Manifest for the Resource against which the above command is executed
         manifest:
          # Resource Section
-          #This is a icebase to icebase workflow hence it's way of giving input and output is diff.
+          #This is a lakehouse to lakehouse workflow hence it's way of giving input and output is diff.
           version: v1 
           name: wf-tmdc-01 
           type: workflow 
@@ -47,7 +47,7 @@ workflow:
             dag: 
 
           # Job 1 Specific Section
-              - name: read-write-icebase # Job 1 name
+              - name: read-write-lakehouse # Job 1 name
                 title: City Dimension Ingester
                 description: The job ingests city data from dropzone into raw zone
                 spec:
@@ -74,19 +74,19 @@ workflow:
                                   date_format (NOW(), 'yyyyMMddHHmm') AS version1,
                                   NOW() AS ts_city1
                                 FROM
-                                  icebase.retail.city 
-                      #    dataset: dataos://icebase:retail/city
+                                  lakehouse.retail.city 
+                      #    dataset: dataos://lakehouse:retail/city
                       #   format: Iceberg
                           options: 
                             SSL: "true"
                             driver: "io.trino.jdbc.TrinoDriver"
                             cluster: "system"
 
-                        #   schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc #schema path is not necessary for icebase to icebase
+                        #   schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc #schema path is not necessary for lakehouse to lakehouse
 
                       outputs:
                         - name: city_connect
-                          dataset: dataos://icebase:retail/city10?acl=rw
+                          dataset: dataos://lakehouse:retail/city10?acl=rw
                           format: Iceberg
                           description: City data ingested from retail city
                           tags:
