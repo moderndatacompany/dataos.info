@@ -256,13 +256,6 @@ tables:
     measures:
       - name: count
         type: count
-
-    pre_aggregations:
-      - name: orders_by_status
-        dimensions:
-          - TABLE.status
-        measures:
-          - TABLE.count
 ```
 
 <aside class="callout">
