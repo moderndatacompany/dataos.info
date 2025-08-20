@@ -60,7 +60,7 @@ DataOS supports the Iceberg table format on the following object storage Depots:
         icebergCatalogType: hadoop
         metastoreType: rest
         metastoreUrl: http://lakehouse-svc.cluster.local:1000
-        relativePath: ${{icebase}}        
+        relativePath: ${{lakehouse}}        
         region: ${{us-gov-east-1}}
         endpoint: ${{s3.us-gov-east-1.amazonaws.com}}
     ```
@@ -94,7 +94,7 @@ DataOS supports the Iceberg table format on the following object storage Depots:
         icebergCatalogType: hadoop
         metastoreType: rest
         metastoreUrl: http://lakehouse-svc.cluster.local:1000
-        relativePath: ${{icebase}}
+        relativePath: ${{lakehouse}}
     ```
 
 === "Google Cloud Storage (GCS)"
@@ -124,7 +124,7 @@ DataOS supports the Iceberg table format on the following object storage Depots:
         format: iceberg
         icebergCatalogType: ${{}}
         metastoreUrl: ${{}}
-        relativePath: ${{icebase}}
+        relativePath: ${{lakehouse}}
     ```
 
 === "Windows Azure Storage Blob Service (WASBS)"
@@ -157,7 +157,7 @@ DataOS supports the Iceberg table format on the following object storage Depots:
         icebergCatalogType: hadoop
         metastoreType: rest
         metastoreUrl: http://lakehouse-svc.cluster.local:1000
-        relativePath: ${{icebase}}          
+        relativePath: ${{lakehouse}}          
     ```
 
 

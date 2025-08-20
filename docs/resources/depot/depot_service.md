@@ -14,7 +14,7 @@ Depot can handle four broad types of data sources, categorized as either managed
 
 - File systems: Unmanaged object storage that contains files in formats such as CSV, Parquet, and Avro.
 
-- Data-lake systems: Managed object storage with files arranged in a specific structure and format. These systems are often managed by a metadata system, examples include Delta Lake, Apache Hudi, Apache Hive, DataOS Icebase, etc.
+- Data-lake systems: Managed object storage with files arranged in a specific structure and format. These systems are often managed by a metadata system, examples include Delta Lake, Apache Hudi, Apache Hive, DataOS Lakehouse, etc.
 
 - Database systems: Any database or data warehouse accessible via JDBC APIs. These systems have an in-built metadata system to manage the data.
 
@@ -56,7 +56,7 @@ Depot Service offers a scalable API and JDBC-based query interface for querying 
 
 ### **DDL (Data Definition Language)**
 
-Depot Service supports DDL interfaces for creating and managing depots. This includes adding/removing columns, managing partitions, and other operations specific to the depot type. The capabilities and features of Depot can vary depending on the type of depot. For managed depots like Icebase and Fastbase offer a wide range of operations and functionalities within Depot, while unmanaged depots provide a more basic level of support that is dependent on the capabilities of the connected source system.
+Depot Service supports DDL interfaces for creating and managing depots. This includes adding/removing columns, managing partitions, and other operations specific to the depot type. The capabilities and features of Depot can vary depending on the type of depot. For managed depots like Lakehouse and Fastbase offer a wide range of operations and functionalities within Depot, while unmanaged depots provide a more basic level of support that is dependent on the capabilities of the connected source system.
 
 ### **DML (Data Manipulation Language)**
 
@@ -87,7 +87,7 @@ The table below summarizes the supported features for each source system type:
 | Files | AWS S3 | NO |
 | Files | Azure Blob, ADLS | NO |
 | Files | GCS | NO |
-| Data-lake | DataOS Icebase | YES |
+| Data-lake | DataOS Lakehouse | YES |
 | Data-lake | Databricks Delta Lake | YES |
 | Data-lake | Apache Hudi | YES |
 | Data-lake | Apache Hive | YES |

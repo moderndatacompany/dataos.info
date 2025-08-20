@@ -7,7 +7,7 @@ This app will provide insights on the product data contained in the database.
 We will start by 
   - creating an initial schema migration and \n
   - set up a Database Resource resource, configure a depot for data transfer, \n
-  - migrate data from IceBase to Database, validate with a cluster setup, and finally, dockerize and deploy the Streamlit app using Alpha Stack.\n
+  - migrate data from LakeHouse to Database, validate with a cluster setup, and finally, dockerize and deploy the Streamlit app using Alpha Stack.\n
 
 To achieve this, follow this step by step guide
 
@@ -149,7 +149,7 @@ A successful response with no errors indicates that the Database Resource has be
 
 ## Create the Depot manifest
 
-Next, a depot will be established to connect PostgreSQL Database with DataOS. This depot will serves as an intermediary to facilitate data movement from from icebase Depot to product Database Resource depot which is backed by postgreSQL Database.
+Next, a depot will be established to connect PostgreSQL Database with DataOS. This depot will serves as an intermediary to facilitate data movement from from lakehouse Depot to product Database Resource depot which is backed by postgreSQL Database.
 
 Here we need information of the following attributes:
 
@@ -177,7 +177,7 @@ Here, we will be using cluster to check whether we are able to query the Databas
 
 ## Create the Cluster manifest
 
-To verify the successful movement of the data from Icebase to productdb database, we will set up a cluster. This cluster will allow us to query the data using a workbench. Successful querying will confirm that the data has been correctly migrated.
+To verify the successful movement of the data from Lakehouse to productdb database, we will set up a cluster. This cluster will allow us to query the data using a workbench. Successful querying will confirm that the data has been correctly migrated.
 
 ```yaml title="product_database_cluster.yaml "hl_lines="17"
 --8<-- "examples/resources/database/use_case/product_cluster.yml"
@@ -187,7 +187,7 @@ To verify the successful movement of the data from Icebase to productdb database
 
 ## Create a Flare job manifest
 
-After succesful creation of PostgreSQL Database Depot. Now, We will migrate data from IceBase to the Database via Flare stack.
+After succesful creation of PostgreSQL Database Depot. Now, We will migrate data from LakeHouse to the Database via Flare stack.
 
 ```yaml
 --8<-- "examples/resources/database/use_case/product_flare.yml"

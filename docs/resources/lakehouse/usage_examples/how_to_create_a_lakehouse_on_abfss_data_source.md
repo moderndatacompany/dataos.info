@@ -64,7 +64,7 @@ type: lakehouse
 tags:
 - Iceberg
 - Azure
-description: "Icebase depot of storage-type ABFSS"
+description: "Lakehouse depot of storage-type ABFSS"
 lakehouse:
 	type: iceberg
 	compute: ${compute-name}

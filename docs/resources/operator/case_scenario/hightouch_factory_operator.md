@@ -284,9 +284,9 @@ resource:
       isSchema: false
       primaryKey: "__metadata"
       raw:
-        sql: "SELECT * FROM icebase.retail.city LIMIT 10000"
+        sql: "SELECT * FROM lakehouse.retail.city LIMIT 10000"
     sync:
-      slug: "icebase-excel-01"
+      slug: "lakehouse-excel-01"
       "configuration":
         "mode": "mirror"
         "driveId": "me/drive"

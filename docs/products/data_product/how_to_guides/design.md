@@ -110,7 +110,7 @@ To know more about the Scanner, [refer to this](/resources/stacks/scanner/).
 
 ### **Explore the Data**
 
-Now for data exploration, you can query the data using the Workbench. To query the data on the Workbench without moving the data to Icebase, you first need to create a Minerva or a Themis cluster that will target the Depot. By applying the below manifest file, you can create the Cluster.
+Now for data exploration, you can query the data using the Workbench. To query the data on the Workbench without moving the data to Lakehouse, you first need to create a Minerva or a Themis cluster that will target the Depot. By applying the below manifest file, you can create the Cluster.
 
 ```yaml
 version: v1
@@ -154,7 +154,7 @@ cluster:
       CONF__config__query.max-run-time: 30m        #total completion time for query
 
     depots:
-      - address: dataos://icebase:default
+      - address: dataos://lakehouse:default
         properties:
           iceberg.file-format: PARQUET
           iceberg.compression-codec: GZIP
@@ -253,20 +253,20 @@ v1beta: # mandatory
 
     inputs: # mandatory
       - refType: ${{dataos}}
-        ref: ${{dataset:icebase:customer_relationship_management:customer}}
+        ref: ${{dataset:lakehouse:customer_relationship_management:customer}}
 
       - refType: ${{dataos}}
-        ref: ${{dataset:icebase:customer_relationship_management:purchase}}
+        ref: ${{dataset:lakehouse:customer_relationship_management:purchase}}
 
       - refType: ${{dataos}}
-        ref: ${{dataset:icebase:customer_relationship_management:product}}
+        ref: ${{dataset:lakehouse:customer_relationship_management:product}}
 
     outputs: # optional
       - refType: ${{dataos}}
-        ref: ${{dataset:icebase:customer_relationship_management:product_affinity_matrix}}
+        ref: ${{dataset:lakehouse:customer_relationship_management:product_affinity_matrix}}
 
       - refType: ${{dataos}}
-        ref: ${{dataset:icebase:customer_relationship_management:cross_sell_recommendations}}
+        ref: ${{dataset:lakehouse:customer_relationship_management:cross_sell_recommendations}}
 
     ports: # optional
       lens:
@@ -337,20 +337,20 @@ v1beta: # mandatory
 
     inputs: # mandatory
       - refType: dataos
-        ref: dataset:icebase:customer_relationship_management:customer
+        ref: dataset:lakehouse:customer_relationship_management:customer
 
       - refType: dataos
-        ref: dataset:icebase:customer_relationship_management:purchase
+        ref: dataset:lakehouse:customer_relationship_management:purchase
 
       - refType: dataos
-        ref: dataset:icebase:customer_relationship_management:product
+        ref: dataset:lakehouse:customer_relationship_management:product
 
     outputs: # optional
       - refType: dataos
-        ref: dataset:icebase:customer_relationship_management:product_affinity_matrix
+        ref: dataset:lakehouse:customer_relationship_management:product_affinity_matrix
 
       - refType: dataos
-        ref: dataset:icebase:customer_relationship_management:cross_sell_recommendations
+        ref: dataset:lakehouse:customer_relationship_management:cross_sell_recommendations
 
     ports: # optional
       lens:

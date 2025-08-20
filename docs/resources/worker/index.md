@@ -45,7 +45,7 @@ Workers can be configured to autoscale and match varying workload demands, refer
 Workers orchestrate Stacks to accomplish myriad tasks. Below are some recipes to help you configure and utilize Workers effectively:
 
 - [How to declare a Worker configuration within a Stack definition for seamless orchestration?](/resources/worker/how_to_guide/declare_a_stack_for_operation_with_a_worker/)
-- [How to use a Worker for syncing data from Fastbase Stream to Icebase using the Fast Fun Stack?](/resources/worker/how_to_guide/syncing_data_from_fastbase_stream_to_icebase/)
+- [How to use a Worker for syncing data from Fastbase Stream to Lakehouse using the Fast Fun Stack?](/resources/worker/how_to_guide/syncing_data_from_fastbase_stream_to_lakehouse/)
 - [How to use Workers for transforming Stream data using Bento Stack?](/resources/worker/how_to_guide/transforming_stream_data/)
 - [How to autoscale Workers?](/resources/worker/how_to_guide/autoscale_workers/)
 - [How to refer Secrets in Worker configuration?](/resources/worker/how_to_guide/referring_secrets_in_worker/) -->

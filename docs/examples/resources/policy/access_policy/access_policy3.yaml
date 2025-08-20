@@ -12,5 +12,5 @@ policy:
       - {{read}}
     objects:
       paths:
-        - {{dataos://icebase:people_dw/*}}
+        - {{dataos://lakehouse:people_dw/*}}
     allow: {{true}}

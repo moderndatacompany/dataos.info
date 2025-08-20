@@ -81,7 +81,7 @@ conn = connect(
 )
 
 customer_query_qr = '''
-    SELECT * FROM "icebasetw"."fs_accelerator".customer_overview_raw
+    SELECT * FROM "lakehousetw"."fs_accelerator".customer_overview_raw
 '''
 customer_df = pd.read_sql(customer_query_qr,conn)
 
@@ -580,7 +580,7 @@ def update_personal_type_customer_attributes(attributes_list, customer_df):
 customer_id = input ("Enter Customer ID to be updated : ")
 
 customer_query_qr = '''
-    SELECT * FROM "icebasetw"."fs_accelerator".customer_overview_raw WHERE cust_id=\'{customer_id}\'
+    SELECT * FROM "lakehousetw"."fs_accelerator".customer_overview_raw WHERE cust_id=\'{customer_id}\'
 '''.format(customer_id=customer_id)
 
 customer_df = pd.read_sql(customer_query_qr,conn)
@@ -709,7 +709,7 @@ def update_personal_type_customer_attributes(attributes_list, customer_df):
 customer_id = input ("Enter Customer ID to be updated : ")
 
 customer_query_qr = '''
-    SELECT * FROM "icebasetw"."fs_accelerator".customer_overview_raw WHERE cust_id=\'{customer_id}\'
+    SELECT * FROM "lakehousetw"."fs_accelerator".customer_overview_raw WHERE cust_id=\'{customer_id}\'
 '''.format(customer_id=customer_id)
 
 customer_df = pd.read_sql(customer_query_qr,conn)
@@ -801,7 +801,7 @@ v1alpha:
       - description: Data Product Dataset
         purpose: consumption
         refType: dataos_address
-        ref: dataos://icebasetw:fs_accelerator/customer_overview_dp
+        ref: dataos://lakehousetw:fs_accelerator/customer_overview_dp
 
 ```
 
@@ -985,7 +985,7 @@ workflow:
             - /jobsfolder/data-product/transformation/steps/steps-raw.yaml
           outputs:
             - name: final
-              dataset: dataos://icebasetw:${SCHEMA}/customer_overview_raw?acl=rw  # option: icebase
+              dataset: dataos://lakehousetw:${SCHEMA}/customer_overview_raw?acl=rw  # option: lakehouse
               format: iceberg
               description: This dataset gives you details of all customer data and their corresponding attributes
               tags:
@@ -1048,7 +1048,7 @@ workflow:
           explain: true
           inputs:
             - name: customer_dp
-              dataset: dataos://icebasetw:${SCHEMA}/customer_overview_raw?acl=rw                 
+              dataset: dataos://lakehousetw:${SCHEMA}/customer_overview_raw?acl=rw                 
               format: iceberg
               incremental:
                 context: customer007
@@ -1138,7 +1138,7 @@ workflow:
             - /jobsfolder/data-product/transformation/steps/steps.yaml
           outputs:
             - name: final
-              dataset: dataos://icebasetw:${SCHEMA}/customer_overview_dp?acl=rw 
+              dataset: dataos://lakehousetw:${SCHEMA}/customer_overview_dp?acl=rw 
               format: iceberg
               description: This dataset gives you details of all customer and their corresponding attributes.
               tags:
@@ -1161,7 +1161,7 @@ workflow:
 ```
 </details>
 
-The above workflows involve various data transformations and writing to Icebase. Similarly, transformations have been applied to other entities.
+The above workflows involve various data transformations and writing to Lakehouse. Similarly, transformations have been applied to other entities.
 
 ### **Create workflow for Data Profiling**
 
@@ -1176,7 +1176,7 @@ name: wf-customer-overview-profile
 type: workflow
 tags:
   - profiling
-description: The job performs profiling on customer data from icebase 
+description: The job performs profiling on customer data from lakehouse 
 workflow:
   title: Customer Overview Profiler 
   dag:
@@ -1203,7 +1203,7 @@ workflow:
           explain: true
           inputs:
             - name: customer_data
-              dataset: dataos://icebasetw:${SCHEMA}/customer_overview_dp?acl=rw 
+              dataset: dataos://lakehousetw:${SCHEMA}/customer_overview_dp?acl=rw 
               format: iceberg
               incremental:
                 context: customer_dp_profile_03
@@ -1268,7 +1268,7 @@ workflow:
 
 ### **Create Policy for Governance**
 
-After transforming and storing the data in Icebase, we now need to implement data governance policies.
+After transforming and storing the data in lakehouse, we now need to implement data governance policies.
 
 ```yaml
 version: v1
@@ -1350,19 +1350,19 @@ The above data masking policy will mask the columns with "TW.mask" and "TW.dob" 
 
 ### **Create Scanner workflow for metadata extraction**
 
-The Scanner is a stack orchestrated by Workflow to extract metadata. The following Scanner manifest scans metadata from the Depot named `icebasetw` and registers it on Metis.
+The Scanner is a stack orchestrated by Workflow to extract metadata. The following Scanner manifest scans metadata from the Depot named `lakehousetw` and registers it on Metis.
 
 ```yaml
 version: v1
-name: wf-icebasetw-depot-scanner
+name: wf-lakehousetw-depot-scanner
 type: workflow
 tags:
-  - icebasetw
+  - lakehousetw
 description: The job scans schema tables and register metadata
 workflow:
   dag:
-    - name: icebasetw-depot-scanner
-      description: The job scans schema from icebasetw depot tables and register metadata to metis
+    - name: lakehousetw-depot-scanner
+      description: The job scans schema from lakehousetw depot tables and register metadata to metis
       spec:
         tags:
           - scanner
@@ -1370,7 +1370,7 @@ workflow:
         runAsUser: metis
         compute: fs-runnable-default
         stackSpec:
-          depot: dataos://icebasetw
+          depot: dataos://lakehousetw
           sourceConfig:
             config:
               schemaFilterPattern:
@@ -1414,7 +1414,7 @@ We have implemented the Flare stack, orchestrated by Workflow, to perform qualit
               logLevel: INFO
               inputs:
                 - name: source
-                  dataset:  dataos://icebasetw:${SCHEMA}/customer_overview_dp
+                  dataset:  dataos://lakehousetw:${SCHEMA}/customer_overview_dp
                   format: iceberg
               assertions:
                 - column: cust_id
@@ -1501,7 +1501,7 @@ v1alpha:
       - description: Data Product Dataset
         purpose: consumption
         refType: dataos_address
-        ref: dataos://icebasetw:fs_accelerator/customer_overview_dp
+        ref: dataos://lakehousetw:fs_accelerator/customer_overview_dp
 
 ```
 All these resources are applied using [DataOS CLI](/interfaces/cli/).

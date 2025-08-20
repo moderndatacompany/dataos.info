@@ -29,7 +29,7 @@ policy:
       - ${access}
     objects:
       paths:
-        - ${dataos://icebase:retail/city}
+        - ${dataos://lakehouse:retail/city}
     allow: ${true}
     collection: default
     name: ${test_access_policy}
@@ -259,7 +259,7 @@ tags:
 policy:
   data:
     type: ${filter/mask}
-    depot: ${icebase}
+    depot: ${lakehouse}
     collection: ${data_uber}
     dataset: ${sample_driver}
     priority: ${90}
@@ -322,7 +322,7 @@ priority: 80
 **Example Usage:** 
 
 ```yaml
-depot: icebase
+depot: lakehouse
 ```
 
 ---

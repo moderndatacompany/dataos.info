@@ -12,13 +12,13 @@ type: workflow
 tags:
   - customers
   - orders
-description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Icebase.
+description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Lakehouse.
 workflow:
   title: Customer Order Enriched Data
   dag:
     - name: orders-enriched-data
       title: Customer Order Enriched Data
-      description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Icebase.
+      description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Lakehouse.
       spec:
         tags:
           - customers
@@ -81,7 +81,7 @@ workflow:
             logLevel: INFO
             outputs:
               - name: last_5_tans_each_cust
-                dataset: dataos://icebase:sandbox/last_5_tans_each_cust?acl=rw
+                dataset: dataos://lakehouse:sandbox/last_5_tans_each_cust?acl=rw
                 format: Iceberg
                 description: This dataset has information of all event
                 tags:
@@ -207,13 +207,13 @@ type: workflow
 tags:
   - customers
   - orders
-description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Icebase.
+description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Lakehouse.
 workflow:
   title: Customer Order Enriched Data
   dag:
     - name: orders-enriched-data
       title: Customer Order Enriched Data
-      description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Icebase.
+      description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Lakehouse.
       spec:
         tags:
           - customers
@@ -276,7 +276,7 @@ workflow:
             logLevel: INFO
             outputs:
               - name: last_5_tans_each_cust
-                dataset: dataos://icebase:sandbox/last_5_tans_each_cust?acl=rw
+                dataset: dataos://lakehouse:sandbox/last_5_tans_each_cust?acl=rw
                 format: Iceberg
                 description: This dataset has information of all event
                 tags:
@@ -405,13 +405,13 @@ type: workflow
 tags:
   - customers
   - orders
-description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Icebase.
+description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Lakehouse.
 workflow:
   title: Customer Order Enriched Data
   dag:
     - name: orders-enriched-data
       title: Customer Order Enriched Data
-      description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Icebase.
+      description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Lakehouse.
       spec:
         tags:
           - customers
@@ -474,7 +474,7 @@ workflow:
             logLevel: INFO
             outputs:
               - name: last_5_tans_each_cust
-                dataset: dataos://icebase:sandbox/last_5_tans_each_cust?acl=rw
+                dataset: dataos://lakehouse:sandbox/last_5_tans_each_cust?acl=rw
                 format: Iceberg
                 description: This dataset has information of all event
                 tags:
@@ -589,13 +589,13 @@ type: workflow
 tags:
   - customers
   - orders
-description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Icebase.
+description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Lakehouse.
 workflow:
   title: Customer Order Enriched Data
   dag:
     - name: orders-enriched-data
       title: Customer Order Enriched Data
-      description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Icebase.
+      description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Lakehouse.
       spec:
         tags:
           - customers
@@ -658,7 +658,7 @@ workflow:
             logLevel: INFO
             outputs:
               - name: last_5_tans_each_cust
-                dataset: dataos://icebase:sandbox/last_5_tans_each_cust?acl=rw
+                dataset: dataos://lakehouse:sandbox/last_5_tans_each_cust?acl=rw
                 format: Iceberg
                 description: This dataset has information of all event
                 tags:
@@ -786,13 +786,13 @@ type: workflow
 tags:
   - customers
   - orders
-description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Icebase.
+description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Lakehouse.
 workflow:
   title: Customer Order Enriched Data
   dag:
     - name: orders-enriched-data
       title: Customer Order Enriched Data
-      description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Icebase.
+      description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Lakehouse.
       spec:
         tags:
           - customers
@@ -855,7 +855,7 @@ workflow:
             logLevel: INFO
             outputs:
               - name: last_5_tans_each_cust
-                dataset: dataos://icebase:sandbox/last_5_tans_each_cust?acl=rw
+                dataset: dataos://lakehouse:sandbox/last_5_tans_each_cust?acl=rw
                 format: Iceberg
                 description: This dataset has information of all event
                 tags:
@@ -985,13 +985,13 @@ type: workflow
 tags:
   - customers
   - orders
-description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Icebase.
+description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Lakehouse.
 workflow:
   title: Customer Order Enriched Data
   dag:
     - name: orders-enriched-data
       title: Customer Order Enriched Data
-      description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Icebase.
+      description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Lakehouse.
       spec:
         tags:
           - customers
@@ -1054,7 +1054,7 @@ workflow:
             logLevel: INFO
             outputs:
               - name: last_5_tans_each_cust
-                dataset: dataos://icebase:sandbox/last_5_tans_each_cust?acl=rw
+                dataset: dataos://lakehouse:sandbox/last_5_tans_each_cust?acl=rw
                 format: Iceberg
                 description: This dataset has information of all event
                 tags:
@@ -1181,13 +1181,13 @@ type: workflow
 tags:
   - customers
   - orders
-description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Icebase.
+description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Lakehouse.
 workflow:
   title: Customer Order Enriched Data
   dag:
     - name: orders-enriched-data
       title: Customer Order Enriched Data
-      description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Icebase.
+      description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Lakehouse.
       spec:
         tags:
           - customers
@@ -1250,7 +1250,7 @@ workflow:
             logLevel: INFO
             outputs:
               - name: last_5_tans_each_cust
-                dataset: dataos://icebase:sandbox/last_5_tans_each_cust?acl=rw
+                dataset: dataos://lakehouse:sandbox/last_5_tans_each_cust?acl=rw
                 format: Iceberg
                 description: This dataset has information of all event
                 tags:
@@ -1375,13 +1375,13 @@ type: workflow
 tags:
   - customers
   - orders
-description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Icebase.
+description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Lakehouse.
 workflow:
   title: Customer Order Enriched Data
   dag:
     - name: orders-enriched-data
       title: Customer Order Enriched Data
-      description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Icebase.
+      description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Lakehouse.
       spec:
         tags:
           - customers
@@ -1445,7 +1445,7 @@ workflow:
             logLevel: INFO
             outputs:
               - name: last_5_tans_each_cust
-                dataset: dataos://icebase:sandbox/last_5_tans_each_cust?acl=rw
+                dataset: dataos://lakehouse:sandbox/last_5_tans_each_cust?acl=rw
                 format: Iceberg
                 description: This dataset has information of all event
                 tags:
@@ -1571,13 +1571,13 @@ type: workflow
 tags:
   - customers
   - orders
-description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Icebase.
+description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Lakehouse.
 workflow:
   title: Customer Order Enriched Data
   dag:
     - name: orders-enriched-data
       title: Customer Order Enriched Data
-      description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Icebase.
+      description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Lakehouse.
       spec:
         tags:
           - customers
@@ -1641,7 +1641,7 @@ workflow:
             logLevel: INFO
             outputs:
               - name: last_5_tans_each_cust
-                dataset: dataos://icebase:sandbox/last_5_tans_each_cust?acl=rw
+                dataset: dataos://lakehouse:sandbox/last_5_tans_each_cust?acl=rw
                 format: Iceberg
                 description: This dataset has information of all event
                 tags:
@@ -1769,13 +1769,13 @@ type: workflow
 tags:
   - customers
   - orders
-description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Icebase.
+description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Lakehouse.
 workflow:
   title: Customer Order Enriched Data
   dag:
     - name: orders-enriched-data
       title: Customer Order Enriched Data
-      description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Icebase.
+      description: The purpose of the workflow is to retrieve clickstream data from blobstorage to Lakehouse.
       spec:
         tags:
           - customers
@@ -1839,7 +1839,7 @@ workflow:
             logLevel: INFO
             outputs:
               - name: last_5_tans_each_cust
-                dataset: dataos://icebase:sandbox/last_5_tans_each_cust?acl=rw
+                dataset: dataos://lakehouse:sandbox/last_5_tans_each_cust?acl=rw
                 format: Iceberg
                 description: This dataset has information of all event
                 tags:

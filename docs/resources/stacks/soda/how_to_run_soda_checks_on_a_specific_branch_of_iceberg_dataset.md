@@ -27,7 +27,7 @@ workflow:
         logLevel: DEBUG # WARNING, ERROR, DEBUG
         stackSpec:
           inputs:
-            - dataset: dataos://icebase:retail/city?acl=rw
+            - dataset: dataos://lakehouse:retail/city?acl=rw
               options:
                 branchName: b1 # branch name
                 engine: minerva

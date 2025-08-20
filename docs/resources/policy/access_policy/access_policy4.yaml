@@ -15,5 +15,5 @@ policy:
       - {{'**'}}
     objects:
       paths:
-        - {{dataos://icebase:test/customer_test}}
+        - {{dataos://lakehouse:test/customer_test}}
     allow: {{false}}

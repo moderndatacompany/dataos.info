@@ -85,7 +85,7 @@ workflow:
   dag:    
     - name: sports-test-customer
       title: sports_data Dag
-      description: This job ingests customer csv from Azure blob storage into icebase catalog 
+      description: This job ingests customer csv from Azure blob storage into lakehouse catalog 
       tags:         
         - customer    
       stack: flare:5.0        
@@ -133,7 +133,7 @@ workflow:
                                                  
           outputs:              
             - name: customer
-              dataset: dataos://icebase:sports/sample_customer?acl=rw
+              dataset: dataos://lakehouse:sports/sample_customer?acl=rw
               format: Iceberg
               title: sports_data
               description: this dataset contains customer csv from sports_data 

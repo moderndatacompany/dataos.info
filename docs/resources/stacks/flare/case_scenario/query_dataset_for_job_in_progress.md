@@ -5,7 +5,7 @@ This case scenario describes that Read & Write operations work in isolation for 
 
 ## Implementation Details
 
-While a Flare job is running for writing in Icebase, we can run the query with the previous snapshot- metadata location set before the job run. If we update the snapshot ID during a job run, it picks data from that snapshot.
+While a Flare job is running for writing in Lakehouse, we can run the query with the previous snapshot- metadata location set before the job run. If we update the snapshot ID during a job run, it picks data from that snapshot.
 
 The code snippet will be the same as [Concurrent Writes](/resources/stacks/flare/case_scenario/concurrent_writes/)
 

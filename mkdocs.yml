@@ -123,8 +123,8 @@ markdown_extensions:
   - pymdownx.tilde
 #  - pymdownx.extra
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji          # while pushing to dev
-      emoji_generator: !!python/name:materialx.emoji.to_svg       # while pushing to dev
+      emoji_index: !!python/name:material.extensions.emoji.twemoji          # while pushing to dev
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg       # while pushing to dev
 
       # emoji_index: !!python/name:materialx.emoji.twemoji                      # while hosting locally  
       # emoji_generator: !!python/name:materialx.emoji.to_svg                   # while hosting locally 
@@ -481,10 +481,9 @@ nav:
             - Orchestrate Hightouch pipeline using Hightouch Factory Operator: resources/operator/case_scenario/hightouch_factory_operator.md
         - Pager: 
           - resources/pager/index.md
-          - First Steps: resources/pager/create_pager.md
           - Configurations: resources/pager/configurations.md
           - Recipes: 
-            - Custom Body Template for Pager: resources/pager/custom_body_template_for_pager.md
+            - Create a Custom Body Template for Pager: resources/pager/custom_body_template_for_pager.md
         - Policy: 
           - resources/policy/index.md
           - Core Concepts: resources/policy/core_concepts.md
@@ -573,7 +572,7 @@ nav:
               - Fetching Data from Instagram API: resources/stacks/bento/recipes/fetching_data_from_instagram_api.md
               - Twitter API Data Processing: resources/stacks/bento/recipes/twitter_api_data_processing.md
               - Discord Bot: resources/stacks/bento/recipes/discord_bot.md
-              - Stock Data API to Icebase: resources/stacks/bento/recipes/fetching_data_from_stock_data_api_using_bento.md
+              - Stock Data API to Lakehouse: resources/stacks/bento/recipes/fetching_data_from_stock_data_api_using_bento.md
               - Performing Rate Limit: resources/stacks/bento/recipes/how_to_perform_rate_limit.md
               - Performing Pagination: resources/stacks/bento/recipes/pagination.md
           - CLI Stack: 

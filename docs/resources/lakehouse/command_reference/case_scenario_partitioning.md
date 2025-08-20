@@ -7,35 +7,35 @@ The partitioning in any iceberg table is column based. Currently, Flare currentl
 - ### **identity**
     
     ```bash
-    dataos-ctl dataset -a dataos://icebase:retail/city \
+    dataos-ctl dataset -a dataos://lakehouse:retail/city \
     -p "identity:state_name"
     ```
     
 - ### **year**
     
     ```bash
-    dataos-ctl dataset -a dataos://icebase:retail/city \
+    dataos-ctl dataset -a dataos://lakehouse:retail/city \
     -p "year:ts_city:year_partition"
     ```
     
 - ### **month**
     
     ```bash
-    dataos-ctl dataset -a dataos://icebase:retail/city \
+    dataos-ctl dataset -a dataos://lakehouse:retail/city \
     -p "month:ts_city:month_partition"
     ```
     
 - ### **day**
     
     ```bash
-    dataos-ctl dataset -a dataos://icebase:retail/city \
+    dataos-ctl dataset -a dataos://lakehouse:retail/city \
     -p "day:ts_city:day_partition"
     ```
     
 - ### **hour**
     
     ```bash
-    dataos-ctl dataset -a dataos://icebase:retail/city \
+    dataos-ctl dataset -a dataos://lakehouse:retail/city \
     -p "hour:ts_city:hour_partition"
     ```
     
@@ -44,7 +44,7 @@ The partitioning in any iceberg table is column based. Currently, Flare currentl
 Partitioning can be done on multiple levels. For e.g, a user wants to partition the city data into two partitions, first based on `state_code` and second based on `month`. The command will be as follows:
 
 ```bash
-dataos-ctl dataset -a dataos://icebase:retail/city \
+dataos-ctl dataset -a dataos://lakehouse:retail/city \
 -p "identity:state_code" \
 -p "month:ts_city:month_partition"
 ```
@@ -70,7 +70,7 @@ dataos-ctl dataset -a ${{udl}} update-partition \
 Let’s say we wanna update the partition of city data along the `month` using the timestamp in the `ts_city` column, the code will be as follows -
 
 ```bash
-dataos-ctl dataset -a dataos://icebase:retail/city update-partition \
+dataos-ctl dataset -a dataos://lakehouse:retail/city update-partition \
 -p "month:ts_city:month_partition"
 ```
 

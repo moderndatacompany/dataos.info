@@ -4,7 +4,7 @@ type: worker
 tags:
   - worker
   - fastfun
-description: This is a worker for sinking gateway events from pulsar to icebase
+description: This is a worker for sinking gateway events from pulsar to lakehouse
 workspace: sandbox
 worker:
   replicas: 1
@@ -31,7 +31,7 @@ worker:
         subscriptionPosition: LATEST   # OR LATEST
     output:
       datasets:
-        - dataos://icebase:sys01/workflowmetadata2?acl=rw
+        - dataos://lakehouse:sys01/workflowmetadata2?acl=rw
       options:
         commitInterval: "30"
         iceberg:

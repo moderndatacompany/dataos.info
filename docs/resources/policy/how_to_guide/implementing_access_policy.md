@@ -22,7 +22,7 @@ In a policy, we define:
 | **Object**         | **Object Tags**                                 | **Description**                                                    | **Predicate** |
 |--------------------|-------------------------------------------------|--------------------------------------------------------------------|---------------|
 | Minerva Cluster    | dataos:system:minerva:cluster                   | Access given to a user or a role on a specific cluster to query data using this cluster | read          |
-| Minerva Table      | dataos:system:minerva:table:icebase:retail:city | Access given to a user or a role to query a specific table         | select        |
+| Minerva Table      | dataos:system:minerva:table:lakehouse:retail:city | Access given to a user or a role to query a specific table         | select        |
 
 
 User with user tag `user:id:iamgroot` needs access to **Sample Ingested Dataset**. By default, access to ingested datasets on Workbench is denied due to the DataOS default policy applied during installation, which restricts all DataOS users from accessing these datasets.
@@ -54,7 +54,7 @@ policy:
       - "read"
     objects:
       paths:                            # Sample dataset resource
-        - "dataos://icebase:sample/test_dataset"
+        - "dataos://lakehouse:sample/test_dataset"
     allow: true                        # Granting access
 ```
 <center><i>Example of an Access Policy</i></center>
@@ -97,7 +97,7 @@ policy:
       - "read"
     objects:
       paths:                            # Sample dataset resource
-        - "dataos://icebase:sample/test_dataset"
+        - "dataos://lakehouse:sample/test_dataset"
     allow: true
 ```
 

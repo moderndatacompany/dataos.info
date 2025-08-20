@@ -50,7 +50,7 @@ SELECT
   social_class,
   country
 FROM
-  icebase.retail.orders_enriched
+  lakehouse.retail.orders_enriched
 WHERE
   marital_status = 'Single'                # hard coded value provided
 GROUP BY
@@ -147,7 +147,7 @@ SELECT customer_id,
        date(order_date) AS order_dt,
        month(order_date) AS order_month,
        year(order_date) AS order_year
-FROM icebase.retail.orders_enriched
+FROM lakehouse.retail.orders_enriched
 WHERE date(order_date) = date('{{ my_date }}')    # Date parameter added
 ORDER BY order_date
 LIMIT 100
@@ -189,7 +189,7 @@ SELECT customer_id,
        date(order_date) AS order_dt,
        month(order_date) AS order_month,
        year(order_date) AS order_year
-FROM icebase.retail.orders_enriched
+FROM lakehouse.retail.orders_enriched
 WHERE date(order_date) > date('{{ my_date.start }}')
        AND date(order_date) <= date('{{ my_date.end }}')
 ORDER BY order_date
@@ -238,7 +238,7 @@ SELECT
   social_class,
   country
 FROM
-  icebase.retail.orders_enriched
+  lakehouse.retail.orders_enriched
 WHERE
   marital_status = {{ marital_status_param }} 
 GROUP BY
@@ -286,7 +286,7 @@ SELECT customer_id,
        month(order_date) AS order_month,
        year(order_date) AS order_year
        
-FROM icebase.retail.orders_enriched
+FROM lakehouse.retail.orders_enriched
 
 WHERE order_status = {{order_status}}
 

@@ -525,7 +525,7 @@ A user must have the following requirements met before setting up a Lakesearch S
           source:
             datasets:
               - name: devices
-                dataset: dataos://icebase:ls_data/devices_with_d
+                dataset: dataos://lakehouse:ls_data/devices_with_d
           index_tables:
             - name: devices
               description: "index for devices"

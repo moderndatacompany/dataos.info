@@ -136,7 +136,7 @@ If `pip` does not find a wheel to install, it will locally build a wheel and c
 <!-- 
 ## Getting Started
 
-The following code snippet exemplifies the configuration of a Flare session for generating fictitious data, applying transformations, and saving the results to Icebase depot.
+The following code snippet exemplifies the configuration of a Flare session for generating fictitious data, applying transformations, and saving the results to Lakehouse depot.
 
 ### **Import the Requisite Libraries**
 
@@ -239,7 +239,7 @@ spark.stop()
 
 ## Code Samples
 
-- [ How to read and write partitioned data within Icebase Depot using PyFlare?](/api_docs/dataos_pyflare/code_samples/read_write_partitioned_data/)
+- [ How to read and write partitioned data within Lakehouse Depot using PyFlare?](/api_docs/dataos_pyflare/code_samples/read_write_partitioned_data/)
 
 - [How to overwrite dynamic Iceberg partitions using PyFlare?](/api_docs/dataos_pyflare/code_samples/overwrite_dynamic_iceberg_partitions/)
 

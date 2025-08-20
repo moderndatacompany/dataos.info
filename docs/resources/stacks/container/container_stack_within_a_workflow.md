@@ -18,7 +18,7 @@ workflow:
           arguments:
             - dataset
             - drop-column
-            - --address=dataos://icebase:retail/city?acl=rw
+            - --address=dataos://lakehouse:retail/city?acl=rw
             - --name=country
     - name: add-column
       spec:
@@ -30,7 +30,7 @@ workflow:
           arguments:
             - dataset
             - add-column
-            - --address=dataos://icebase:retail/city?acl=rw
+            - --address=dataos://lakehouse:retail/city?acl=rw
             - --name=time
             - --type=timestamp_without_zone
       dependencies:

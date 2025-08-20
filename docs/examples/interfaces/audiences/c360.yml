@@ -9,7 +9,7 @@ tags:
 entities:
 - name: "customer"
   sql:
-    query: "SELECT * FROM icebase.audience.customers_large_data"
+    query: "SELECT * FROM lakehouse.audience.customers_large_data"
     columns:
     - name: "customer_id"
     - name: "customer_name"
@@ -20,7 +20,7 @@ entities:
     - name: "county_name"
     - name: "zip"
     tables:
-    - "icebase.audience.customers_large_data_01"
+    - "lakehouse.audience.customers_large_data_01"
   fields:
   - name: "customer_id"
     description: "unique identifier of the customer"
@@ -100,7 +100,7 @@ entities:
     query: "SELECT \n  activity_uuid, \n  entity_id,\n  trim(feature1) as order_id,\n\
       \  activity_ts,\n  trim(feature2) as product_id,\n  trim(feature3) as brand_name,\n\
       \  trim(feature4) as supplier_name,\n  trim(feature5) as product_category,\n  cast(feature9 as double)\
-      \ as order_value,\n  feature10 as request_delivery_date\nFROM icebase.audience.activity_streams_large_data\
+      \ as order_value,\n  feature10 as request_delivery_date\nFROM lakehouse.audience.activity_streams_large_data\
       \ where activity = 'order_placed'\n"
     columns:
     - name: "activity_uuid"
@@ -113,7 +113,7 @@ entities:
     - name: "order_value"
     - name: "request_delivery_date"
     tables:
-    - "icebase.audience.activity_streams_large_data"
+    - "lakehouse.audience.activity_streams_large_data"
   fields:
   - name: "activity_uuid"
     description: "unique identifier of the activity event"
@@ -176,7 +176,7 @@ entities:
     query: "SELECT \n  activity_uuid, \n  entity_id,\n  trim(feature1) as ref_order_id,\n\
       \  activity_ts,\n  trim(feature2) as product_id,\n  trim(feature3) as order_reject_code,\n\
       \  trim(feature4) as order_status_code,\n  trim(feature5) as order_delivery_status,\n\
-      \  cast(feature9 as double) as order_value,\n  feature10 as request_delivery_date,\nFROM icebase.audience.activity_streams_large_data\
+      \  cast(feature9 as double) as order_value,\n  feature10 as request_delivery_date,\nFROM lakehouse.audience.activity_streams_large_data\
       \  where activity = 'order_rejected'\n"
     columns:
     - name: "activity_uuid"
@@ -190,7 +190,7 @@ entities:
     - name: "order_value"
     - name: "request_delivery_date"
     tables:
-    - "icebase.audience.activity_streams_large_data"
+    - "lakehouse.audience.activity_streams_large_data"
     lenses: []
   fields:
   - name: "activity_uuid"
@@ -254,7 +254,7 @@ entities:
     query: "SELECT \n  activity_uuid, \n  entity_id,\n  trim(feature1) as ref_order_id,\n\
       \  activity_ts,\n  trim(feature2) as product_id,\n\
       \  trim(feature4) as supplier_name,\n  trim(feature5) as product_category,\n  cast(feature9 as double) as order_value,\n   \  feature10 as request_delivery_date,\n\
-      \  FROM icebase.audience.activity_streams_large_data \
+      \  FROM lakehouse.audience.activity_streams_large_data \
       \ where activity = 'order_invoiced'\n"
     columns:
     - name: "activity_uuid"
@@ -267,7 +267,7 @@ entities:
     - name: "order_value"
     - name: "request_delivery_date"
     tables:
-    - "icebase.audience.activity_streams_large_data"
+    - "lakehouse.audience.activity_streams_large_data"
   fields:
   - name: "activity_uuid"
     description: "unique identifier of the activity event"

@@ -30,7 +30,7 @@ In scenarios where a single cluster is insufficient to handle the query load or 
         logLevel: INFO
         trinoLogLevel: ERROR
       depots:
-        - address: dataos://icebase:default
+        - address: dataos://lakehouse:default
           properties:
             iceberg.file-format: PARQUET
             iceberg.compression-codec: GZIP
@@ -90,7 +90,7 @@ In scenarios where a single cluster is insufficient to handle the query load or 
         logLevel: INFO
         trinoLogLevel: ERROR
       depots:
-        - address: dataos://icebase:default
+        - address: dataos://lakehouse:default
           properties:
             iceberg.file-format: PARQUET
             iceberg.compression-codec: GZIP

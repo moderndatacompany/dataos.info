@@ -68,7 +68,7 @@ type: lakehouse
 tags:
   - Iceberg
   - Azure
-description: "Icebase depot of storage-type GCS"
+description: "Lakehouse depot of storage-type GCS"
 lakehouse:
   type: iceberg
   compute: {{compute name}}

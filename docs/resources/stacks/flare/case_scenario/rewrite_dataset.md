@@ -188,7 +188,7 @@ workflow: # Workflow Specific Section
             logLevel: INFO # Loglevel
             inputs: # Inputs Section
               - name: inputDf # Name of Input Dataset
-                dataset: dataos://icebase:retail/pos_store_product_cust?acl=rw # Dataset UDL
+                dataset: dataos://lakehouse:retail/pos_store_product_cust?acl=rw # Dataset UDL
                 format: Iceberg # Dataset Format
             actions: # Flare Action
               - name: rewrite_dataset # Name of the action

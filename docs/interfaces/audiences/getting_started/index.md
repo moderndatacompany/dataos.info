@@ -126,12 +126,12 @@ Schedule the Audiences using the feature available in the Audiences App. You can
 
 #### **3.8: Save the Audiences. Again!!!**
 
-As soon as you save the audiences again after scheduling, a workflow will be triggered to write the audience data to the DataOS internal storage, Icebase. 
+As soon as you save the audiences again after scheduling, a workflow will be triggered to write the audience data to the DataOS internal storage, Lakehouse. 
 
 ## Leveraging the Generated Audience Insights
 
-Once the Audience data has been saved to the Icebase, it can be accessed using the Workbench for marketing campaigns targeting these specific audiences. To access the data, select the `icebase` depot and the `audience_segment` catalog in the Workbench, where you have two datasets available, `segment_stream` and `max_occurence_state`. Both these datasets can be queried to provide answers to various questions. An example query is provided below:
+Once the Audience data has been saved to the Lakehouse, it can be accessed using the Workbench for marketing campaigns targeting these specific audiences. To access the data, select the `lakehouse` depot and the `audience_segment` catalog in the Workbench, where you have two datasets available, `segment_stream` and `max_occurence_state`. Both these datasets can be queried to provide answers to various questions. An example query is provided below:
 
 ```sql
-SELECT * FROM "icebase"."audience_segment".segment_stream LIMIT 10;
+SELECT * FROM "lakehouse"."audience_segment".segment_stream LIMIT 10;
 ```

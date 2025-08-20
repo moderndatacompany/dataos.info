@@ -123,7 +123,7 @@ For more details, refer to the [Workbench](/interfaces/workbench/) documentation
 
 ### **Data Product Architectural Design**
 
-Once you've explored the data, the next step is to plan the architectural design. For example, In our case, the  Data Sources is Bigquery and to connect with  this source we will need to create Depots. The flare job will then use this depot and will faciliate easy ingestion and transformation from source to icebase. After ingestion, the data will must go through profiling and pass all the defined quality checks we will discuss this in detail in Build Phase. Then our data product will be ready to be used in a Analytical Platform.
+Once you've explored the data, the next step is to plan the architectural design. For example, In our case, the  Data Sources is Bigquery and to connect with  this source we will need to create Depots. The flare job will then use this depot and will faciliate easy ingestion and transformation from source to lakehouse. After ingestion, the data will must go through profiling and pass all the defined quality checks we will discuss this in detail in Build Phase. Then our data product will be ready to be used in a Analytical Platform.
 
 <center> ![Architectural Diagram](/products/data_product/templates/architecture.png) </center> 
 

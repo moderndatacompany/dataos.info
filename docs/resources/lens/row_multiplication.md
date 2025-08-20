@@ -67,7 +67,7 @@ Within the `clickstream` entity, a dimension `order_id_clickstream` is defined, 
           max(order_id) OVER (PARTITION BY session_id) AS order_id_session_wise,
           row_number() OVER (PARTITION BY session_id ORDER BY created_on) AS row_num,
           lag(created_on) OVER (PARTITION BY session_id ORDER BY created_on) AS last_act_time
-        FROM icebase.campaign.click_stream
+        FROM lakehouse.campaign.click_stream
     columns:
     #   ...
     #   ...

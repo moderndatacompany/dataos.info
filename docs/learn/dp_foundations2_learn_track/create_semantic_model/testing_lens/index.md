@@ -130,7 +130,7 @@ x-lens2-environment: &lens2-environment
   LENS2_AUTHORS: "${Author1, Author2}"
   LENS2_SOURCE_TYPE: ${minerva}
   LENS2_SOURCE_NAME: ${system}
-  LENS2_SOURCE_CATALOG_NAME: ${icebase}
+  LENS2_SOURCE_CATALOG_NAME: ${lakehouse}
   DATAOS_RUN_AS_APIKEY: ${YOUR_DATAOS_APIKEY}
   # Log
   LENS2_LOG_LEVEL: error
@@ -185,7 +185,7 @@ Add the environment variables to connect to the data source via Depot.
     ```bash
       # Data Source env variables for connecting to the source via the depot
       LENS2_SOURCE_TYPE: depot
-      LENS2_SOURCE_NAME: icebase #add the name of the depot (e.g., icebase)
+      LENS2_SOURCE_NAME: lakehouse #add the name of the depot (e.g., lakehouse)
       DATAOS_RUN_AS_APIKEY: ****** # Add the user API Key for the env
     ```
     
@@ -195,7 +195,7 @@ Add the environment variables to connect to the data source via Depot.
       # Data Source env variables for connecting to the source via the Minerva cluster
       LENS2_SOURCE_TYPE: minerva #If you want to connect via Themis, change the source type to Themis 
       LENS2_SOURCE_NAME: ${system} #add the cluster name(e.g., system)
-      LENS2_SOURCE_CATALOG_NAME: ${icebase} #add the catalog name (e.g., icebase)
+      LENS2_SOURCE_CATALOG_NAME: ${lakehouse} #add the catalog name (e.g., lakehouse)
       DATAOS_RUN_AS_APIKEY: abcdefgHh==
     ```
      -->

@@ -657,7 +657,7 @@ Flags:
 Examples:
 
 ```bash
-dataos-ctl get runtime -t depot -n icebase
+dataos-ctl get runtime -t depot -n lakehouse
 dataos-ctl get runtime -w system -t cluster -n minervaa
 dataos-ctl get runtime -w system -t service -n iosa-receiver
 dataos-ctl get runtime -w public -t workflow -n cnt-city-demo-01

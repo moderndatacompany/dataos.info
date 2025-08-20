@@ -342,5 +342,5 @@ INFO[0003] 🗑 delete...complete
 Your next steps depend upon whether you want to learn about what you want to do, or want to configure a specific Worker further, here are some how to guides to help you with that process:
 
 - Learn how to configure the manifest file of a Worker. See [Worker: Configuration]()
-- Set up workers to sync data from Fastbase topics to Icebase dataset. See [How to Create a Report Monitor]()
+- Set up workers to sync data from Fastbase topics to Lakehouse dataset. See [How to Create a Report Monitor]()
 - Set up workers to transform stream data. See [How to create a Stream Monitor]()

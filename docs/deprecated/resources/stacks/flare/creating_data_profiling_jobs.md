@@ -35,7 +35,7 @@ workflow:
         job:
           inputs:
             - name: profile_city
-              dataset: dataos://icebase:retail/city # Dataset Name
+              dataset: dataos://lakehouse:retail/city # Dataset Name
               format: iceberg
 
           profile:
@@ -130,7 +130,7 @@ workflow:
 
           inputs:
             - name: profile_city
-              dataset: dataos://icebase:retail/city # Dataset Name
+              dataset: dataos://lakehouse:retail/city # Dataset Name
               format: iceberg
 
           profile:

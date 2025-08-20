@@ -13,7 +13,7 @@ policy:
   data:
     dataset: {{patients}}
     collection: {{test_healthcare}}
-    depot: {{icebase}}
+    depot: {{lakehouse}}
     description: {{policy to allow staff with role:id:staff tag to view patient's data
     name: test-phi-reader-staff}}
     priority: {{30}}
