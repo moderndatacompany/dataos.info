@@ -48,7 +48,7 @@ This section utilizes the city table stored in the DataOS Lakehouse as an exampl
             source:
               datasets:
                 - name: city
-                  dataset: dataos://icebase:retail/city
+                  dataset: dataos://lakehouse:retail/city
                   options:
                     region: ap-south-1
             index_tables:
@@ -167,7 +167,7 @@ This section utilizes the city table stored in the DataOS Lakehouse as an exampl
             source:
               datasets:
                 - name: devices
-                  dataset: dataos://icebase:lenovo_ls_data/devices_with_d
+                  dataset: dataos://lakehouse:lenovo_ls_data/devices_with_d
                   options:
                     region: ap-south-1
             index_tables:

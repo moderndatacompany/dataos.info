@@ -303,7 +303,7 @@ x-lens2-environment: &lens2-environment
   # Data Source
   LENS2_SOURCE_TYPE: themis  #minerva, depot
   LENS2_SOURCE_NAME: lenstestingthemis  #cluster name
-  LENS2_SOURCE_CATALOG_NAME: icebase   #depot name, specify any catalog
+  LENS2_SOURCE_CATALOG_NAME: lakehouse   #depot name, specify any catalog
   DATAOS_RUN_AS_APIKEY: ***** #dataos apikey
   
   # Log
@@ -386,7 +386,7 @@ Add the following environment variables to your Lens (.env) file
     LENS2_DB_PORT=7432
     LENS2_DB_USER=iamgroot
     LENS2_DB_PASS="abcdefghijklmopqrstuvwyzabcdefghijklmopqrstuvwxyz"
-    LENS2_DB_PRESTO_CATALOG=icebase
+    LENS2_DB_PRESTO_CATALOG=lakehouse
     LENS2_DB_SSL=true
     ```
 
@@ -444,7 +444,7 @@ LENS2_LOCAL_PG_USER=iamgroot
 | `LENS2_DB_PORT` | The port for the database connection | A valid port number | `7432` | ❌ |
 | `LENS2_DB_USER` | The DataOS user-id used to connect to the database. It can be retrieved from the second column of the output by running the `dataos-ctl user get` command from the DataOS CLI | A valid DataOS user-id | `iamgroot` | ✅ |
 | `LENS2_DB_PASS` | The DataOS Wrap Token that serves as a password used to connect to the database | A valid Cluster Wrap Token.| `abcdefghijklmnopqrstuvwxyz` | ✅ |
-| `LENS2_DB_PRESTO_CATALOG` | The catalog within Themis to connect to | A valid catalog name  | `icebase` | ✅ |
+| `LENS2_DB_PRESTO_CATALOG` | The catalog within Themis to connect to | A valid catalog name  | `lakehouse` | ✅ |
 | `LENS2_DB_SSL` | If `true`, enable SSL encryption for database connections from Lens2. | `true`, `false` | `true` | ❌ |
 | `LENS2_CONCURRENCY` | The number of concurrent connections each queue has to the database. Default is `2` | 3,4 | `2` |  |
 | `LENS2_DB_MAX_POOL` | The maximum number of concurrent database connections to pool. Default is `8` | 9,10 |   `8` |  | -->

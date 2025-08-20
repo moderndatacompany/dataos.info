@@ -27,7 +27,7 @@ entities:
       cast(order_id AS varchar) AS order_ids,
       concat(cast(order_id AS varchar), '-', cast(created_on AS varchar)) AS uuid
       FROM
-      icebase.campaign.transactions
+      lakehouse.campaign.transactions
      columns:
 		 -------
      -------
@@ -56,14 +56,14 @@ Apart from an order entity, we will also need a product entity that will help us
 entities:
  - name: product
    sql:
-    - query: SELECT * FROM icebase.campaign.products
+    - query: SELECT * FROM lakehouse.campaign.products
       columns: 
        - name: product_id
        - name: brand_name
        - name: category_name
       verified: true
       tables:
-        - icebase.campaign.products
+        - lakehouse.campaign.products
 ```
 
 Following fields are needed within the product entity. 
@@ -88,7 +88,7 @@ We will also need a city entity to narrow down to a specific state, let’s also
 entities:
  - name: city
    sql:
-    - query: SELECT * FROM icebase.campaign.city
+    - query: SELECT * FROM lakehouse.campaign.city
       columns: 
       -----
       -----

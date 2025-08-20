@@ -223,7 +223,7 @@ Multiple tags can be added to an entity. They aid in discoverability.
 entities:
 	- name: product
 		sql: 
-      query: SELECT * FROM icebase.test.products
+      query: SELECT * FROM lakehouse.test.products
       ---
       ---
     tags:
@@ -259,7 +259,7 @@ Within the SQL ‘query’ property, you can pass in the SQL query to generate t
 entities:
   - name: product
     sql:
-      query: SELECT * FROM icebase.test.products
+      query: SELECT * FROM lakehouse.test.products
 ```
 
 OR
@@ -273,7 +273,7 @@ entities:
 		        row_number() over(partition by session_id order by created_on) as row_num,
 		        lag(created_on) over ( partition by session_id order by created_on ) last_act_time
 		        FROM
-		        icebase.campaign.click_stream
+		        lakehouse.campaign.click_stream
 ```
 
 You can also reference and reuse the SQL expression of an existing entity to create a new entity.
@@ -282,7 +282,7 @@ You can also reference and reuse the SQL expression of an existing entity to cre
 entities:
   - name: activity_stream
     sql:
-      query: SELECT * FROM icebase.entity_360.campaign_stream
+      query: SELECT * FROM lakehouse.entity_360.campaign_stream
       -----
       -----
     fields:
@@ -305,7 +305,7 @@ entities:
 
 ```yaml
 sql: 
-			query: SELECT * FROM icebase.test.products
+			query: SELECT * FROM lakehouse.test.products
       # add all the column names referred to in the fields
 	    columns:
 			  - name: product_id
@@ -321,12 +321,12 @@ sql:
 entities:
   - name: product
     sql:
-      query: SELECT * FROM icebase.test.products
+      query: SELECT * FROM lakehouse.test.products
 			columns:
         - name: uuid
       verified: true
       tables:
-        - icebase.test.products
+        - lakehouse.test.products
 ```
 
 ### **`lenses`**
@@ -350,7 +350,7 @@ owner: iamgroot
 entities:
   - name: activity_stream
     sql:
-      query: SELECT * FROM icebase.entity_360.campaign_stream
+      query: SELECT * FROM lakehouse.entity_360.campaign_stream
     fields:
 			------
 			------
@@ -386,7 +386,7 @@ entities:
       >
         SELECT *
         FROM
-          icebase.supply_chain.retailer_info
+          lakehouse.supply_chain.retailer_info
       columns:
         - name: retailer_id
         - name: type
@@ -396,7 +396,7 @@ entities:
         - name: city
       verified: true
       tables:
-        - icebase.supply_chain.retailer_info
+        - lakehouse.supply_chain.retailer_info
     fields:
       - name: retailer_id
         type: string
@@ -551,7 +551,7 @@ owner: xxx
 entities:
   - name: order
     sql:
-      query: SELECT * FROM icebase.retail.orders
+      query: SELECT * FROM lakehouse.retail.orders
     fields:
 			------
 			------
@@ -565,7 +565,7 @@ entities:
 			
 	- name: customer
 		sql:
-			query: SELECT * FROM icebase.retail.customers
+			query: SELECT * FROM lakehouse.retail.customers
 		fields:
 			------
 			------
@@ -649,7 +649,7 @@ Gives the count of values for a column. It’s similar to the SQL count function
 	entity:
 - name: product
   sql:
-   - query: SELECT * FROM icebase.test.products
+   - query: SELECT * FROM lakehouse.test.products
    ----
    ----
 	fields:
@@ -704,7 +704,7 @@ Measure declared as type ‘min’ returns a minimum of values given in the snip
 entity:
  - name: orders
    sql:
-    - query: select * from icebase.test.orders
+    - query: select * from lakehouse.test.orders
    ----
    ----
 # measure to identify the first purchase date
@@ -756,7 +756,7 @@ owner: xxx
 entities:
   - name: order
     sql:
-      query: SELECT * FROM icebase.retail.orders
+      query: SELECT * FROM lakehouse.retail.orders
     fields:
 			------
 			------

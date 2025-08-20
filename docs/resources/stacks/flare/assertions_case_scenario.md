@@ -59,7 +59,7 @@ workflow:
 
             outputs:              
               - name: passenger
-                dataset: dataos://icebase:sports/sample_passenger_assertion?acl=rw
+                dataset: dataos://lakehouse:sports/sample_passenger_assertion?acl=rw
                 format: Iceberg
                 title: data_uber
                 description: this dataset contains passenger csv from data_uber 
@@ -179,7 +179,7 @@ workflow:
                         case: lower
             outputs:              
               - name: passenger
-                dataset: dataos://icebase:sports/sample_passenger_assertion?acl=rw
+                dataset: dataos://lakehouse:sports/sample_passenger_assertion?acl=rw
                 format: Iceberg
                 title: data_uber
                 description: this dataset contains passenger csv from data_uber 
@@ -250,7 +250,7 @@ workflow:
     ..
     ..
     
-    Exception in thread "shutdownHook1" io.dataos.flare.exceptions.FlareException: 1 out of 4 assertions failed for dataset dataos://icebase:sports/sample_passenger_assertion. For more details, please look into the assertion results table in logs.
+    Exception in thread "shutdownHook1" io.dataos.flare.exceptions.FlareException: 1 out of 4 assertions failed for dataset dataos://lakehouse:sports/sample_passenger_assertion. For more details, please look into the assertion results table in logs.
     	at io.dataos.flare.contexts.ProcessingContext.error(ProcessingContext.scala:87)
     	at io.dataos.flare.Flare$.$anonfun$addShutdownHook$1(Flare.scala:90)
     	at scala.sys.ShutdownHookThread$$anon$1.run(ShutdownHookThread.scala:37)

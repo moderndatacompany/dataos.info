@@ -4,9 +4,9 @@ search:
   exclude: true
 ---
 
-# Depot for Icebase
+# Depot for Lakehouse
 
-DataOS provides the capability to establish a connection with the Icebase Lakehouse over Amazon S3 or other object storages. We have provided the template for the manifest file to establish this connection. Follow these steps to create the depot:
+DataOS provides the capability to establish a connection with the Lakehouse Lakehouse over Amazon S3 or other object storages. We have provided the template for the manifest file to establish this connection. Follow these steps to create the depot:
 
 **Step 1**: Copy the template from below and paste it in a code editor.
 

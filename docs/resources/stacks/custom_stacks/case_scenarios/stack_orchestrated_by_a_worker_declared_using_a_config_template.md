@@ -13,7 +13,7 @@ description: "dataos pulsar function stack alpha version 02"
 stack:
   name: pulsar-function
   version: "3.0"
-  flavor: icebase-sink
+  flavor: lakehouse-sink
   reconciler: stackManager
   dataOsAddressJqFilters:
     - .input.datasets[]
@@ -135,7 +135,7 @@ worker:
   tags:
     - function-mesh
     - worker
-  stack: pulsar-function+icebase-sink:3.0
+  stack: pulsar-function+lakehouse-sink:3.0
   autoScaling:
     enabled: true
     minReplicas: 1

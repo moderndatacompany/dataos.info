@@ -48,7 +48,7 @@
           query: # mandatory
             type: ${{trino}} # mandatory
             cluster: ${{themis}} # mandatory     
-            ql: ${{SELECT metric_value FROM icebase.soda.soda_check_metrics_01 WHERE metric_name = 'missing_count' ORDER BY timestamp DESC LIMIT 1;}} # mandatory
+            ql: ${{SELECT metric_value FROM lakehouse.soda.soda_check_metrics_01 WHERE metric_name = 'missing_count' ORDER BY timestamp DESC LIMIT 1;}} # mandatory
             comparisonColumn: 
               name: ${{column1}} # mandatory
               dataType: ${{integer}} # mandatory      
@@ -130,7 +130,7 @@ monitor:
       query:
         type: trino
         cluster: themis
-        ql: SELECT metric_value FROM icebase.soda.soda_check_metrics_01 WHERE metric_name = 'missing_count' ORDER BY timestamp DESC LIMIT 1;
+        ql: SELECT metric_value FROM lakehouse.soda.soda_check_metrics_01 WHERE metric_name = 'missing_count' ORDER BY timestamp DESC LIMIT 1;
     right_expression:
       query_coefficient: 0
       query_constant: 0
@@ -259,7 +259,7 @@ monitor:
       query:
         type: trino
         cluster: themis
-        ql: SELECT metric_value FROM icebase.soda.soda_check_metrics_01 WHERE metric_name = 'missing_count' ORDER BY timestamp DESC LIMIT 1;
+        ql: SELECT metric_value FROM lakehouse.soda.soda_check_metrics_01 WHERE metric_name = 'missing_count' ORDER BY timestamp DESC LIMIT 1;
     right_expression:
       query_coefficient: 0
       query_constant: 0
@@ -311,7 +311,7 @@ monitor:
       query:
         type: trino
         cluster: themis
-        ql: SELECT metric_value FROM icebase.soda.soda_check_metrics_01 WHERE metric_name = 'missing_count' ORDER BY timestamp DESC LIMIT 1;
+        ql: SELECT metric_value FROM lakehouse.soda.soda_check_metrics_01 WHERE metric_name = 'missing_count' ORDER BY timestamp DESC LIMIT 1;
 ```
 
 

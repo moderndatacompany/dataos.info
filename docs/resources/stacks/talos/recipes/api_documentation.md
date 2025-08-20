@@ -85,7 +85,7 @@ Dependencies specify external tables and columns required for API functionality.
 
 ```yaml
 depends:
-  - table: dataos://icebase:default/country  # Defines the external table dependency
+  - table: dataos://lakehouse:default/country  # Defines the external table dependency
     columns:
       - Country  # Specifies required column
       - Country_code  # Specifies required column

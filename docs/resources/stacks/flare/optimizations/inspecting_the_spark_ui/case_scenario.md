@@ -78,7 +78,7 @@ workflow:
             logLevel: INFO
             outputs:
               - name: region_output
-                dataset: dataos://icebase:sample?acl=rw
+                dataset: dataos://lakehouse:sample?acl=rw
                 options:
                     saveMode: overwrite
                     sort:

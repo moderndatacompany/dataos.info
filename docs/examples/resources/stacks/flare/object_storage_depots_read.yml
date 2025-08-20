@@ -42,7 +42,7 @@ workflow:
           outputs:
             # csv
             - name: finalDf_csv                                 
-              dataset: dataos://icebase:smoketest/azure_read_csv_14?acl=rw
+              dataset: dataos://lakehouse:smoketest/azure_read_csv_14?acl=rw
               format: iceberg
               options:
                 saveMode: overwrite
@@ -57,7 +57,7 @@ workflow:
 
             # json
             - name: finalDf_json
-              dataset: dataos://icebase:sanity/azure_read_json?acl=rw
+              dataset: dataos://lakehouse:sanity/azure_read_json?acl=rw
               format: json
               options:
                 saveMode: overwrite
@@ -72,7 +72,7 @@ workflow:
 
             # parquet
             - name: finalDf_parquet
-              dataset: dataos://icebase:sanity/azure_read_parquet?acl=rw
+              dataset: dataos://lakehouse:sanity/azure_read_parquet?acl=rw
               format: parquet
               options:
                 saveMode: overwrite

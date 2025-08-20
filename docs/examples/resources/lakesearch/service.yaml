@@ -36,7 +36,7 @@ service:
   stackSpec:
     lakesearch:
       tables:
-        - dataset: dataos://icebase:audience/customers_large_data
+        - dataset: dataos://lakehouse:audience/customers_large_data
           name: customers_large_data
 
           options: 

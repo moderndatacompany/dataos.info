@@ -302,7 +302,7 @@ SELECT
   home_owner
   -- ,'test' as test
 FROM
-  icebase.sports.sample_customer
+  lakehouse.sports.sample_customer
 
 -- where occupation in ('service','business')
 ```

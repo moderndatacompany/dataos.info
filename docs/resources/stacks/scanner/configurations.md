@@ -145,7 +145,7 @@ compute: runnable-default
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value**                               |
 | ------------- | --------------- | ----------------- | ------------------------------------------------ |
-| string        | Mandatory       | None              | icebase, redshift\_depot, dataos://icebase, etc. |
+| string        | Mandatory       | None              | lakehouse, redshift\_depot, dataos://lakehouse, etc. |
 
 **Additional information**: The Scanner job will scan all the datasets referred by a Depot. Scanner Workflow will automatically create a source (with the same name as the Depot name) where the scanned metadata is saved within Metastore.
 
@@ -153,7 +153,7 @@ compute: runnable-default
 
 ```yaml
 stackSpec:    
-  depot: dataos://icebase
+  depot: dataos://lakehouse
 ```
 
 ### **`type`**

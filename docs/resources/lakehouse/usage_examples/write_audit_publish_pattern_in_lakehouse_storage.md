@@ -2,7 +2,7 @@
 
 Ensuring the highest standard of data quality is imperative for extracting valuable insights. Compromises in data quality at any stage within a data engineering workflow can detrimentally impact downstream analyses, including Business Intelligence (BI) and predictive analytics.
 
-Take, for instance, an Extract, Transform, and Load (ETL) process. This process involves moving data from an operational system, such as a relational database, to an analytical system like DataOS Lakehouse storage (Icebase Depot), for utilization in BI reporting or ad-hoc analysis. If the original data contains duplicates or inconsistencies, or if such issues arise during the ETL process and are not resolved before the data is integrated into the production analytics environment, the integrity of insights derived could be compromised, leading to potentially erroneous decisions. This underscores the paramount importance of maintaining data quality throughout data engineering processes. Ensuring data accuracy, consistency, and reliability is not merely theoretical but a practical imperative.
+Take, for instance, an Extract, Transform, and Load (ETL) process. This process involves moving data from an operational system, such as a relational database, to an analytical system like DataOS Lakehouse storage (Lakehouse Depot), for utilization in BI reporting or ad-hoc analysis. If the original data contains duplicates or inconsistencies, or if such issues arise during the ETL process and are not resolved before the data is integrated into the production analytics environment, the integrity of insights derived could be compromised, leading to potentially erroneous decisions. This underscores the paramount importance of maintaining data quality throughout data engineering processes. Ensuring data accuracy, consistency, and reliability is not merely theoretical but a practical imperative.
 
 The **Write-Audit-Publish (WAP) pattern** offers a structured method to guarantee data quality. This approach can be broken down into three key stages:
 
@@ -10,7 +10,7 @@ The **Write-Audit-Publish (WAP) pattern** offers a structured method to guarante
 2. **Audit:** In this stage, the staged data is subjected to comprehensive validation checks. These checks may include the examination of null values, identification of duplicates, verification of data types, and ensuring data integrity.
 3. **Publish:** Once the data has passed validation, it is seamlessly integrated into production tables. This ensures that end-users either have access to the entire, updated dataset or none of it, preserving data integrity.
 
-Below, we'll explore how to implement this framework within the context of DataOS Lakehouse Storage (alternatively known as Icebase Depot) using Iceberg tables’ branching capability.
+Below, we'll explore how to implement this framework within the context of DataOS Lakehouse Storage (alternatively known as Lakehouse Depot) using Iceberg tables’ branching capability.
 
 ## WAP Using Iceberg’s Branching Capability
 
@@ -38,25 +38,25 @@ The solution involves utilizing Iceberg's branching capability to implement the 
 ### **Prerequisites**
 
 - Operational Data Source - Postgres Depot
-- Analytical Data Source - Lakehouse Storage (Icebase Depot)
-- Dataset - `dataos://icebase:retail/customer`
+- Analytical Data Source - Lakehouse Storage (Lakehouse Depot)
+- Dataset - `dataos://lakehouse:retail/customer`
 
 ### **Create a branch**
 
 First, let’s create a new branch named `stage` from the existing Iceberg dataset. This branch will act as the staging area for the new data.
 
-Use the create-branch command to create a new branch within a dataset at a specified location within DataOS Lakehouse Storage (Icebase):
+Use the create-branch command to create a new branch within a dataset at a specified location within DataOS Lakehouse Storage (Lakehouse):
 
 ```bash
 # Create a Branch on the dataset called 'stage'
-dataos-ctl dataset create-branch -a dataos://icebase:retail/customer -b stage
+dataos-ctl dataset create-branch -a dataos://lakehouse:retail/customer -b stage
 ```
 
 ### **List Branch**
 
 ```bash
 # List all Table References
-dataos-ctl dataset list-branch -a dataos://icebase:retail/customer
+dataos-ctl dataset list-branch -a dataos://lakehouse:retail/customer
 ```
 
 ### **List Branch Snapshots**
@@ -64,7 +64,7 @@ dataos-ctl dataset list-branch -a dataos://icebase:retail/customer
 This command lists all snapshots associated with a specific branch within a dataset at a specified location in DataOS.
 
 ```bash
-dataos-ctl dataset snapshots -a dataos://icebase:retail/customer -b stage
+dataos-ctl dataset snapshots -a dataos://lakehouse:retail/customer -b stage
 ```
 
 ### **Write the data**
@@ -87,10 +87,10 @@ type: workflow
 tags:
   - lakehouse
   - storage
-  - icebase
+  - lakehouse
   - depot
   - write
-description: The job ingests data from operational source depots to DataOS Lakehouse storage (or Icebase depot) in the staging branch
+description: The job ingests data from operational source depots to DataOS Lakehouse storage (or Lakehouse depot) in the staging branch
 workflow:
   dag:
     - name: source-read-lakehouse-write
@@ -114,7 +114,7 @@ workflow:
             logLevel: INFO
             outputs:
               - name: output01
-                dataset: dataos://icebase:retail/customer
+                dataset: dataos://lakehouse:retail/customer
                 format: ICEBERG
                 options:
                   extraOptions:
@@ -164,7 +164,7 @@ workflow:
             memory: 250Mi
         stackSpec:
           inputs:
-            - dataset: dataos://icebase:retail/customer
+            - dataset: dataos://lakehouse:retail/customer
               options:
                 engine: minerva
                 clusterName: miniature
@@ -220,7 +220,7 @@ The final operation in the WAP pattern is to publish the changes and make the da
 List branch snapshots
 
 ```bash
-dataos-ctl dataset snapshots -a dataos://icebase:retail/city -b stage
+dataos-ctl dataset snapshots -a dataos://lakehouse:retail/city -b stage
 ```
 
 or you can query the 'refs' metadata table from the DataOS Workbench app.
@@ -233,7 +233,7 @@ SELECT * FROM catalog.db.table.refs
 This will return our list of references (branches and tags), and we can see the current snapshot ID for each branch, which is the information we need. Now let’s execute the cherry_pick() procedure:
 
 ```bash
-dataos-ctl dataset cherrypick-snapshot -a dataos://icebase:retail/city -sid 8018697
+dataos-ctl dataset cherrypick-snapshot -a dataos://lakehouse:retail/city -sid 8018697
 ```
 
 Once the operation runs successfully, our main branch’s current snapshot will be made the same snapshot at the current `stage` snapshot. This means we have made the newly inserted records in `stage` available to the `main` branch for production usage. If we now query the record count on `main` and `stage`, we should see they are identical:

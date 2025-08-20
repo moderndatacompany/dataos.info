@@ -21,7 +21,7 @@ The available Depot configuration Templates are provided in the table below:
 | [Azure Blob File System Storage (ABFSS)](/resources/depot/depot_config_templates/azure_abfss/) | Lakehouse or Data Lake          |
 | [Windows Azure Storage Blob Service (WASBS)](/resources/depot/depot_config_templates/azure_wasbs/) | Lakehouse or Data Lake          |
 | [Google Cloud Storage (GCS)](/resources/depot/depot_config_templates/google_gcs/)           | Lakehouse or Data Lake          |
-| [Icebase](/resources/depot/depot_config_templates/icebase_hadoop_s3/)       | Lakehouse or Data Lake          |
+| [Lakehouse](/resources/depot/depot_config_templates/lakehouse_hadoop_s3/)       | Lakehouse or Data Lake          |
 | [Apache Pulsar](/resources/depot/depot_config_templates/apache_pulsar/)              | Streaming Source   |
 | [Eventhub](/resources/depot/depot_config_templates/eventhub/)                       | Streaming Source   |
 | [Apache Kafka](/resources/depot/depot_config_templates/kafka/)                       | Streaming Source   |

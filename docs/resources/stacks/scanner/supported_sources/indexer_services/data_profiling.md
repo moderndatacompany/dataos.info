@@ -61,4 +61,4 @@ If the Depot or Scanner configurations are updated, the Scanner must be redeploy
     As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
     User can view this captured metadata, data profiling information about the dataset on Metis UI.
 
-The objective of this worker is to proactively scan data profiling information, which includes descriptive statistics for datasets stored in Icebase. It operates in response to a triggered data profiling job, publishing the metadata to the Metis DB.
+The objective of this worker is to proactively scan data profiling information, which includes descriptive statistics for datasets stored in Lakehouse. It operates in response to a triggered data profiling job, publishing the metadata to the Metis DB.

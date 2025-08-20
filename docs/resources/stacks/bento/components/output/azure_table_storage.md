@@ -1,7 +1,13 @@
+---
+search:
+  exclude: true
+
+---
+
 # azure_table_storage
 !!! warning "BETA"
 
-        This component is mostly stable but breaking changes could still be made outside of major version releases if a fundamental problem with the component is found.
+    This component is mostly stable but breaking changes could still be made outside of major version releases if a fundamental problem with the component is found.
 
 Stores messages in an Azure Table Storage table.This processor was introduced in version 1.0.0. 
 

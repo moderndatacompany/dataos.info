@@ -68,7 +68,7 @@ Follow these steps to create the Data Product template:
         - dataset_context (testing_dp)
         - blob_relative_path (finance_service)
         - source_depot (twdepot)
-        - destination_depot (icebasetw)
+        - destination_depot (lakehousetw)
         - incremental_context (table1_context)
         - primary_key (cust_id)
     - After successfully executing the above step, in your local system, a new directory will be created by the name you provided during the prompt.

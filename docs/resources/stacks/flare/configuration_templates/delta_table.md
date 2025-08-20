@@ -67,7 +67,7 @@ workflow:
             logLevel: INFO
             outputs:
               - name: finalDf
-                dataset: dataos://icebase:abcd/delta_abfss_re_jun19_01?acl=rw
+                dataset: dataos://lakehouse:abcd/delta_abfss_re_jun19_01?acl=rw
                 format: Iceberg
                 options:
                   saveMode: overwrite

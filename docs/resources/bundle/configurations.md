@@ -378,13 +378,13 @@ layer: user
 
 ```yaml
 resources:
-  - name: create-icebase-depot
+  - name: create-lakehouse-depot
     file: depot.yaml
-  - name: write-into-icebase
+  - name: write-into-lakehouse
     dependencies:
-      - create-icebase-depot
+      - create-lakehouse-depot
     workspace: testbundle14
-    file: read_icebase_write_snowflake.yaml
+    file: read_lakehouse_write_snowflake.yaml
 ```
 
 ---
