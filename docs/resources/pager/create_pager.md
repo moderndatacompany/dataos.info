@@ -221,17 +221,17 @@ You can also access the details of any created Pager through the DataOS GUI in t
 
 Below are example images of how Pager alerts appear in different channels:
 
-**Teams channel alert:**
+=== "Teams channel alert"
 
-<center>
-  <img src="/resources/pager/teamsalert.png" alt="MS Teams alert" style="width:40rem; border: 1px solid black; padding: 5px;" />
-  <figcaption><i>MS Teams alert</i></figcaption>
-</center>
+    <center>
+      <img src="/resources/pager/teamsalert01.png" alt="MS Teams alert" style="width:40rem; border: 1px solid black; padding: 5px;" />
+      <figcaption><i>MS Teams alert</i></figcaption>
+    </center>
 
-**Email alert:**
+=== "Email alert"
 
-<center>
-  <img src="/resources/pager/emailalert.png" alt="Email alert" style="width:40rem; border: 1px solid black; padding: 5px;" />
-  <figcaption><i>Email alert</i></figcaption>
-</center>
+    <center>
+      <img src="/resources/pager/emailalert01.png" alt="Email alert" style="width:40rem; border: 1px solid black; padding: 5px;" />
+      <figcaption><i>Email alert</i></figcaption>
+    </center>
 
