@@ -1,0 +1,1 @@
+sourceset_dependencies = '{":asset-tags-service:dokkaHtmlPartial/main":[],":heimdall:dokkaHtmlPartial/main":[],":fingerprint:dokkaHtmlPartial/main":[],":poros:dokkaHtmlPartial/main":[],":depot-service:dokkaHtmlPartial/main":[],":hera:dokkaHtmlPartial/main":[],":stack-service:dokkaHtmlPartial/main":[],":commons:dokkaHtmlPartial/main":[]}'
