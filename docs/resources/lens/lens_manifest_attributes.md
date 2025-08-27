@@ -406,7 +406,7 @@ lens:
 ```   
 ### **`api`**
 
-**Description:** Defines configurations for API instances of Lens, which handles incoming requests and executes business logic.
+**Description:** Defines configurations for API instances of Lens, which handles incoming requests, handles authentication, and maintains session state to executes business logic.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | --- | --- | --- | --- |
@@ -416,7 +416,7 @@ lens:
 
 ### **`logLevel`**
 
-**Description:** the log level for the Lens api classifies enteries in logs in terms of urgency which helps to filter logs during search and helps control the amount of information in logs.
+**Description:** the log level for the Lens api classifies entries in logs in terms of urgency which helps to filter logs during search and helps control the amount of information in logs.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |
@@ -427,7 +427,7 @@ lens:
 - INFO: Designates informational messages that highlight the progress of the API Instance.<br>
 - WARN: Designates potentially harmful situations.<br>
 - DEBUG: Designates fine-grained informational events that are most useful while debugging.<br>
-- ERROR: Desingates error events that might still allow the workflow to continue running.<br>
+- ERROR: Designates error events that might still allow the workflow to continue running.<br>
 
 **Example usage:**<br>
 ```yaml
@@ -570,7 +570,7 @@ lens:
 ---
 
 
-### **`resources`**: 
+### **`resources`** 
 
 
 **Description:** The resources attribute provides the configuration for CPU and memory resources allocated to the Lens API Instances. It includes settings for both requests and limits of these resources.
@@ -601,7 +601,7 @@ lens:
  **Attributes for `env`**
 
 
-#### **`LENS2_SCHEDULED_REFRESH_TIMEZONES`**
+### **`LENS2_SCHEDULED_REFRESH_TIMEZONES`**
 
 **Description:** Specifies a list of time zones in which the user wants to run queries. Multiple time zones can be specified using the TZ Database Name format, such as "UTC,America/Vancouver,America/Toronto". The default value is a single time zone, UTC.
 
@@ -642,7 +642,7 @@ lens:
 
 ### **`worker`**
 
-**Description:** Defines worker instance of Lens.
+**Description:** Performs the query processing and execution plan optimization
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | --- | --- | --- | --- |
@@ -772,7 +772,7 @@ lens:
 
 ### **`router`**
 
-**Description:** Manages interaction between API instance and workers.
+**Description:** Determines the optimal way to execute queries across data sources and manages load balancing.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | --- | --- | --- | --- |
