@@ -153,6 +153,6 @@ workflow:
 
 Please note that this workflow will be part of the data product bundle. 
 
-Click [here](/resources/stacks/flare/), to access the comprehensive DataOS Resource specific documentaion on dataos.info. 
+Click [here](/resources/types/), to access the comprehensive DataOS Resource specific documentation on dataos.info. 
 
 Explore the rich set of DataOS resources, which serve as the building blocks for data products and processing stacks. Additionally, refer to the learning assets to master the required proficiency level for the role of data product developer.
