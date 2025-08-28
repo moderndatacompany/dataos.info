@@ -4,13 +4,8 @@ In DataOS, object storage Depots (ABFSS, Amazon S3, GCS, WASBS) supports two dif
 
 ## What does the Delta table format actually do?
 
-At its core, Delta table format adds a transactional metadata layer to cloud object storage, enabling ACID-compliant operations for Parquet files. In DataOS, when you configure a Depot with `format: delta`, you're enabling data ingestion using Delta-compatible read and write [Flare jobs](/resources/stacks/flare/).
+At its core, Delta table format adds a transactional metadata layer to cloud object storage, enabling ACID-compliant operations for Parquet files. In DataOS, when you configure a Depot with `format: delta`, you're enabling data ingestion using Delta-compatible read and write [Flare jobs](/resources/stacks/flare/configuration_templates/delta_table/).
 
-<aside class="callout">
-🗣️ Delta table format is supported only for read and write Flare jobs.
-You cannot query Delta tables in Workbench or via SQL-based interactive interfaces.
-For query support across multiple engines (Spark, Trino), use `format: iceberg`.
-</aside>
 
 **In DataOS:**
 
