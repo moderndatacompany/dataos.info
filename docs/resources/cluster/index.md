@@ -8,7 +8,7 @@ search:
 
 A Cluster in DataOS is a [Resource](/resources/) that encompasses a set of computational resources and configurations necessary for executing data engineering and analytics tasks. It relies on the [Compute](/resources/compute/) Resource, which provides the required processing power for the workloads executed within the Cluster. 
 
-A Cluster Resource can be provisioned [on-demand](/resources/cluster/on_demand_computing/), allowing for efficient allocation of resources based on workload-specific requirements. This decoupling of computation and storage, facilitates flexibility, cost-efficiency and scalability.
+A Cluster Resource can be provisioned [on-demand](/resources/cluster/on_demand_computing/), allowing for efficient allocation of resources based on workload-specific requirements. This decoupling of computation and storage, facilitates flexibility, cost-efficiency, and scalability.
 
 <div class="grid cards" markdown>
 
@@ -81,6 +81,7 @@ Minerva supports an extensive range of data sources, encompassing both tradition
 **Query Execution Process**
 
 When initiating a SQL query from sources such as Workbench, Minerva-CLI, JDBC, or Lens App UI, the query is seamlessly directed to the Minerva Gateway Service. The Gateway Service conducts a thorough analysis of the query and the associated tables, forwarding it to the Minerva Clusters for execution. Furthermore, the Gateway Service facilitates data policy decisions, including Masking and Filtering policies. Once the analysis is completed, the query is seamlessly passed on to the Minerva Cluster for execution.
+
 <!-- 
 **Managing Data Access Policies and Cluster Resources**
 
@@ -88,18 +89,22 @@ Minerva assumes the crucial role of executing access policies based on user tags
 
 ### **Themis**
 
-Themis is an elastic SQL query engine optimized for fast, distributed querying across large datasets. As a modern JDBC server, Themis offers a comprehensive interface for various database management systems (DBMS), distinguishing itself through high performance, versatility, scalability, availability, and security measures, making it ideal for large-scale enterprise applications.
+Themis is an elastic SQL query engine optimized for fast, distributed querying across [DataOS Lakehouse](/resources/lakehouse/). As a modern JDBC server, Themis offers a comprehensive interface specifically designed for DataOS Lakehouse, distinguishing itself through high performance, versatility, scalability, availability, and security measures, making it ideal for large-scale enterprise applications working with Lakehouse.
+
+<aside class="callout">
+⚠️ Themis cluster is only supported for DataOS Lakehouse.
+</aside>
 
 **Key Characteristics of Themis**
 
 Themis excels in its domain with several notable features:
 
 - **Elasticity**: In contrast to Minerva, which is a static query engine, Themis operates as an elastic query engine, adapting dynamically to varying workload demands.
-- **Extensive Data Source Compatibility**: Themis supports a broad array of data sources, notably Hive, HBase, and Cassandra. Its compatibility extends to HDFS, Apache Hive, Kafka, and Cassandra, among others, streamlining the process of interfacing with diverse data sources.
+- **Data Source Compatibility**: Themis is specifically optimized for and only compatible with DataOS Lakehouse. This focused compatibility ensures optimal performance when working with the Lakehouse data architecture.
 - **Concurrent Processing and Scalability**: Designed with a multi-threaded architecture, Themis excels in demanding enterprise environments that require high concurrency and scalability. It is compatible with major big data frameworks, including Apache Hadoop, Spark, and Kubernetes.
 - **Enhanced Security**: Themis incorporates Apache Hive's security features and supports advanced security protocols such as Kerberos, LDAP, and Active Directory, enabling straightforward integration with existing security infrastructures.
 - **Optimized Performance**: Advanced caching and memory management techniques in Themis significantly enhance SQL query performance and efficiency.
-- **JDBC and ODBC Connectivity**: Themis offers native JDBC and ODBC connectivity, facilitating straightforward integration with a range of programming languages and tools.
+<!-- - **JDBC and ODBC Connectivity**: Themis offers native JDBC and ODBC connectivity, facilitating straightforward integration with a range of programming languages and tools. -->
 - **High Availability**: With inherent load balancing and failover mechanisms, Themis ensures consistent availability and reliability.
 - **Efficient Memory Usage**: Its design prioritizes efficiency, resulting in a smaller memory footprint.
 
@@ -114,7 +119,7 @@ Themis and Minerva, both SQL query engines, are designed for efficient, distribu
 | *Scalability* | Limited | High | Themis offers superior scalability compared to Minerva, accommodating fluctuating workloads efficiently. |
 | *Resource Utilization* | Constant | Adaptive | Themis adjusts resource usage in real-time, unlike Minerva's consistent resource requirement. |
 | *Performance in Variable Workloads* | Consistent | Optimal | Themis excels in environments with variable data queries, providing enhanced performance. |
-| *Data Source Compatibility* | Basic | Extensive | Themis supports a wider range of data sources than Minerva, making it more versatile for diverse data environments. |
+| *Data Source Compatibility* | Extensive | Lakehouse Only | Minerva supports a wide range of data sources, while Themis is specifically optimized for and only compatible with DataOS Lakehouse. |
 | *Security Features* | Standard | Advanced | Themis integrates more sophisticated security protocols, beneficial for environments with stringent security requirements. |
 | *Concurrency Handling* | Moderate | High | Themis is designed to handle higher levels of concurrency, suitable for large-scale enterprise applications. |
 | *Flexibility in Deployment* | Fixed | Flexible | Themis offers more flexibility in deployment, adapting to various big data platforms like Hadoop, Spark, and Kubernetes. |
@@ -162,7 +167,7 @@ To create a Cluster Resource within DataOS, you have two options:
         name: themiscluster
         version: v1
         type: cluster
-        description: We are using this cluster to check the monitor and pager stuff with the help of themis cluster. 
+        description: Themis cluster for DataOS Lakehouse
         tags:
           - cluster
           - themis
@@ -181,8 +186,9 @@ To create a Cluster Resource within DataOS, you have two options:
               executor:
                 memory: '4096M'
             depots:
-              - address: dataos://lakehouse
-        ``` 
+              - address: dataos://lakehouse  # Note: Themis clusters only support DataOS Lakehouse
+        ```
+         
 
     ???tip "Minerva Cluster manifest"
 
@@ -291,9 +297,9 @@ To create a Cluster Resource within DataOS, you have two options:
               type: ${{cluster-type}} 
               runAsUser: ${{run-as-user}} 
               maintenance: 
-                restartCron: ${{restaart-cron-expression}} 
+                restartCron: ${{restart-cron-expression}} 
                 scalingCrons: 
-                - cron: ${{scalling-cron-expression}} 
+                - cron: ${{scaling-cron-expression}} 
                   replicas: ${{number-of-replicas}} 
                   resources: 
                     limits: 
@@ -349,7 +355,7 @@ To create a Cluster Resource within DataOS, you have two options:
 
     For additional information about attributes within the Cluster-specific section, refer to the link: [Attributes of Cluster-specific section.](/resources/cluster/configurations/#cluster)
 
-    For the two different types of Cluster the configuration varies, which are elucidated in the sections below:
+    For the two different types of Cluster, the configuration varies, which are elucidated in the sections below:
 
     === "Minerva"
 
@@ -482,7 +488,7 @@ To create a Cluster Resource within DataOS, you have two options:
                 <li><code>spark.driver.cores=2</code></li>
                 <li><code>spark.driver.memoryOverhead=1g</code></li>
                 <li><code>spark.executor.memory=4g</code></li>
-                <li><code>spark.executor.cores=2g</code></li>
+                <li><code>spark.executor.cores=2</code></li>
             </ul>
             <p>For more information, refer to the following <a href="https://spark.apache.org/docs/latest/configuration.html">link.</a></p>
         </details>
@@ -558,7 +564,7 @@ To create a Cluster Resource within DataOS, you have two options:
     Check the name of the newly created Cluster in the list of clusters created by you in a particular Workspace:
 
     ```bash
-    dataos-ctl resource get -t cluster - w ${{workspace name}}
+    dataos-ctl resource get -t cluster -w ${{workspace name}}
     # Sample
     dataos-ctl resource get -t cluster -w curriculum
     ```
@@ -568,7 +574,7 @@ To create a Cluster Resource within DataOS, you have two options:
     ```bash
     dataos-ctl resource get -t cluster -w ${{workspace name}} -a
     # Sample
-    dataos-ctl resource get -t cluster -w curriculum
+    dataos-ctl resource get -t cluster -w curriculum -a
     ```
 
     You can also access the details of any created Cluster through the DataOS GUI in the Resource tab of the  [Operations App.](/interfaces/operations/)
