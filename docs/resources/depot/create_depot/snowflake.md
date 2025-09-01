@@ -33,6 +33,10 @@ To create a Snowflake Depot you must have the following details:
 
 - **Database Schema**: The specific schema within the Snowflake database where your required table resides. This can also be found in the Snowflake console under the relevant database or provided by the team managing the database structure.
 
+- **Snowflake Role**: The role that defines the privileges and access control for the Snowflake user. While this attribute is optional in the Depot manifest, it is highly recommended to specify it to ensure proper access permissions and security.If no role is defined, the system will take "PUBLIC" as the default role.
+
+
+
 ## Create a Snowflake Depot
 
 DataOS provides integration with Snowflake, allowing you to seamlessly read data from Snowflake tables using Depots. Snowflake is a cloud-based data storage and analytics data warehouse offered as a Software-as-a-Service (SaaS) solution. It utilizes a new SQL database engine designed specifically for cloud infrastructure, enabling efficient access to Snowflake databases. To create a Depot of type 'SNOWFLAKE', follow the below steps:
@@ -69,6 +73,8 @@ depot:
     url: ${{snowflake-url}}
     database: ${{database-name}}
     account: ${{account-name}}
+    role: ${{snowflake-role}} # optional but recommended
+    schema: ${{schema-name}}
 ```
 
 To get the details of each attribute, please refer [to this link](/resources/depot/configurations).
