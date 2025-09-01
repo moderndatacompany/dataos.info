@@ -13,6 +13,10 @@ At its core, Delta table format adds a transactional metadata layer to cloud obj
 
 - Use `format: iceberg` in a Depot to enable Iceberg table format support (works with Spark, Trino, and more).
 
+<aside class="callout">
+🗣️ Delta tables created using an Amazon S3 source can be queried directly on Workbench using the <a href="/resources/cluster/">Minerva cluster</a>. Querying Delta tables is not supported for Depots configured with any other object storage sources (ABFSS, GCS, WASBS).
+</aside>
+
 
 ## Supported object storage sources in DataOS for Delta table format
 
