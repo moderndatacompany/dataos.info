@@ -17,7 +17,7 @@ Flare is a declarative [Stack](/resources/stacks/) for large-scale data processi
 
       •  **Ingestion and Transformation:** Enables seamless ingestion and transformation of data from diverse sources into the data lake.
 
-      •  **Data Quality Assurance:** Supports validation of datasets against predefined assertions, ensuring data integrity and relevance.
+      <!-- •  **Data Quality Assurance:** Supports validation of datasets against predefined assertions, ensuring data integrity and relevance. -->
 
       •  **Batch and Streaming Processing:** Accommodates both real-time data streams and historical datasets through flexible job configurations.
 
@@ -118,7 +118,7 @@ The Flare Stack manifest comprises a wide range of configuration parameters desi
 
 ## Flare functions
 
-Flare provides a comprehensive set of built-in data manipulation functions that can be applied at various stages of job execution. These functions enable the implementation of complex data operations without requiring custom code. For a complete list of supported functions, refer to the [Flare functions reference.Flare functions](/resources/stacks/flare/functions/list/) 
+Flare provides a comprehensive set of built-in data manipulation functions that can be applied at various stages of job execution. These functions enable the implementation of complex data operations without requiring custom code. For a complete list of supported functions, refer to the [Flare functions reference.](/resources/stacks/flare/functions/list/) 
 
 <!-- 
  ## How to test Flare Jobs
