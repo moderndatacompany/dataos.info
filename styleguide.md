@@ -54,7 +54,7 @@ workflow: # Workflow Section
 
 ### 3.2 Placeholders and Comments
 ```yaml
-stack: ${flare:6.0} # Stack Name and Version
+stack: ${flare:7.0} # Stack Name and Version
 ```
 ### 3.3 Directory Organization
 To maintain consistency, each markdown page that contains nested pages should store its files using the parent page's name, written in Proper Case with hyphens.

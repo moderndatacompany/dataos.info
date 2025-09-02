@@ -206,7 +206,7 @@ workflow:
     - name: order-summary-data
       title: Order Summary
       spec:
-        stack: flare:5.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           job:
