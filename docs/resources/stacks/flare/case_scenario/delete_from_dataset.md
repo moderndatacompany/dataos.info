@@ -25,7 +25,7 @@ workflow:                                                 # Workflow Specific Se
       spec:                                               # Specs
         tags:                                             # Tags
           - Delete
-        stack: flare:7.0                                  # Stack Version (Here its Flare stack)
+        stack: flare:7.0                                  # Stack Version
         compute: runnable-default                         # Compute 
         stackSpec:                                        # Flare Section
           job:                                            # Job Section

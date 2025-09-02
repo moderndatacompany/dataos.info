@@ -27,7 +27,7 @@ workflow:
   dag:
     - name: sample
       spec:
-        stack: flare:6.0
+        stack: flare:7.0
         stackSpec:
           driver:    
             coreLimit: 12000m
@@ -84,8 +84,6 @@ workflow:
                     - name: clustered_records
                       sql: SELECT * FROM select_all_column CLUSTER BY week_year_column
 
-          sparkConf:
-            - spark.sql.extensions: org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions
 ```
 </details>
 
@@ -125,7 +123,7 @@ workflow:
       tags:
       - Connect
       - City
-      stack: flare:6.0
+      stack: flare:7.0
       compute: runnable-default
       stackSpec:
         job:

@@ -24,7 +24,7 @@ workflow:
         - ${tag2}
       gcWhenComplete: true
       spec: 
-        stack: ${flare:5.0}
+        stack: ${flare:7.0}
         logLevel: ${INFO}
         compute: ${compute resource name}
         configs: 
