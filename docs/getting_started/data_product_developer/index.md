@@ -88,7 +88,7 @@ workflow:
       description: This job ingests customer csv from Azure blob storage into lakehouse catalog 
       tags:         
         - customer    
-      stack: flare:5.0        
+      stack: flare:7.0        
       compute: runnable-default
       stackSpec:         
         job:            

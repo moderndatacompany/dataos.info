@@ -10,7 +10,7 @@ Iceberg makes partitioning simple by implementing hidden partitioning. You need 
 
 For example, a simple query like this is capable of fetching data from multiple partition spec:
 
-```yaml
+```sql
 Select * from NY-Taxi where date_col > 2010-10-23 AND date_col < 2013-01-01
 ```
 
@@ -52,7 +52,7 @@ workflow:
       spec:
         tags:
           - NY-Taxi
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           driver:
@@ -134,7 +134,7 @@ workflow:
         tags:
           - NY-Taxi
           - Connect
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           driver:

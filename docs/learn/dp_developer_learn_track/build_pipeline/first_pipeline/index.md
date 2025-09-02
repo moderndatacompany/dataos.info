@@ -84,7 +84,7 @@ workflow:
       spec:
         tags:
           - crm
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           driver:
@@ -173,7 +173,7 @@ By the end of this process, you have successfully created a batch data pipeline 
           spec:
             tags:
               - crm
-            stack: flare:6.0
+            stack: flare:7.0
             compute: runnable-default
             stackSpec:
               driver:
@@ -245,7 +245,7 @@ By the end of this process, you have successfully created a batch data pipeline 
           spec:
             tags:
               - crm
-            stack: flare:6.0
+            stack: flare:7.0
             compute: runnable-default
             stackSpec:
               driver:

@@ -45,7 +45,7 @@ Create a Flare workflow that takes Minerva query results as input and ingests th
       - name: enriched-table-wfl
         title: sports data enriched table
         spec:
-          stack: flare:5.0
+          stack: flare:7.0
           compute: runnable-default
     ```
     
@@ -118,7 +118,7 @@ Create a Flare workflow that takes Minerva query results as input and ingests th
         - name: enriched-table-wfl
             title: sports data enriched table
             spec:
-            stack: flare:5.0
+            stack: flare:7.0
             compute: runnable-default
             stackSpec:
                 job:

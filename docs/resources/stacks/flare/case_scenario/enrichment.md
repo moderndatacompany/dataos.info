@@ -4,13 +4,13 @@ The enrichment process in the following workflow enhances the raw data related t
 
 
 <aside class="callout">
-In Flare 6.0, the sink attribute has been deprecated. In earlier versions, the sink attribute was used to define various properties for the output datasets, such as their format, schema, and other dataset-specific properties. 
+In Flare 7.0, the sink attribute has been deprecated. In earlier versions, the sink attribute was used to define various properties for the output datasets, such as their format, schema, and other dataset-specific properties. 
 
-However, in the latest YAML format (Flare 6.0), this structure has been simplified and consolidated in the `dataset` attribute of the `output` object.
+However, in the latest YAML format (Flare 7.0), this structure has been simplified and consolidated in the `dataset` attribute of the `output` object.
 </aside>
 
 ```yaml title="enrichment.yml"
-#flare 6.0
+#flare 7.0
 version: v1
 name: wf-ingest-city-state-countries
 type: workflow
@@ -33,7 +33,7 @@ workflow:
           - states
           - countries
           - enriched
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           job:
@@ -58,7 +58,7 @@ workflow:
             
             outputs:
               - name: cities_uppdated  # cities
-                dataset: dataos://lakehouse:countries_states_cities/cities?acl=rw #sink attribute is deperecated in the flare 6.0 which was used to define the different output dataset it's format and it's properties and in place of the depot in the output attribute  the dataset attribute defines the schema dataset it's format and it's properties along with the depot.
+                dataset: dataos://lakehouse:countries_states_cities/cities?acl=rw #sink attribute is deperecated in the flare 7.0 which was used to define the different output dataset it's format and it's properties and in place of the depot in the output attribute  the dataset attribute defines the schema dataset it's format and it's properties along with the depot.
                 format: Iceberg
                 options:
                   saveMode: overwrite

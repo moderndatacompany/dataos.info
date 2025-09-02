@@ -31,7 +31,7 @@ workflow:
 
         # Manifest for the Resource against which the above command is executed
         manifest:
-         # Resource Section
+          # Resource Section
           #This is a lakehouse to lakehouse workflow hence it's way of giving input and output is diff.
           version: v1 
           name: wf-tmdc-01 
@@ -54,7 +54,7 @@ workflow:
                   tags:
                     - Connect
                     - City
-                  stack: flare:5.0 # The job gets executed upon the Flare Stack, so its a Flare Job
+                  stack: flare:7.0            # The job gets executed upon the Flare Stack, so its a Flare Job
                   compute: runnable-default
 
                   # Flare Stack-specific Section
@@ -119,4 +119,4 @@ workflow:
           - -w
           - public
     dependencies:
-     - create-workflow # Second Job dependent on successful execution of First Job
+      - create-workflow # Second Job dependent on successful execution of First Job
