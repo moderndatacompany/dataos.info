@@ -16,7 +16,7 @@ workflow:
       spec:
         tags:
           - Connect
-        stack: flare:5.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           job:
@@ -39,9 +39,9 @@ workflow:
                   - Connect
                 title: Postgres Dataset
             steps:
-             - sequence: 
-                 - name: finalDf
-                   sql: |
+              - sequence: 
+                  - name: finalDf
+                    sql: |
                       SELECT 
                         product_id,
                         product_name ,

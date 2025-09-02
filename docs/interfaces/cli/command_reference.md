@@ -211,7 +211,8 @@ Flags:
       --force                 Force delete even though dependencies are not allowing it
   -h, --help                  help for delete
       --id string             Resource ID, like: TYPE:VERSION:NAME:WORKSPACE(optional), depot:v1:lakehouse or service:v1:ping:sandbox
-  -i, --identifier string     Identifier of resource, like: NAME:VERSION:TYPE
+  -i, --identifier string     Identifier of resource, like: TYPE:VERSION:NAME:WORKSPACE(optional) or NAME|VERSION|TYPE|WORKSPACE(optional),  depot:v1:icebase or service:v1:ping:sandbox
+
   -f, --manifestFile string   Manifest file location
   -n, --name string           Name of resource
       --tls-allow-insecure    Allow Insecure TLS connections
@@ -337,7 +338,8 @@ Flags:
   -d, --details               Set to true to include details in the result
   -h, --help                  help for get
       --id string             Resource ID, like: TYPE:VERSION:NAME:WORKSPACE(optional), depot:v1:lakehouse or service:v1:ping:sandbox
-  -i, --identifier string     Identifier of resource, like: NAME:VERSION:TYPE
+  -i, --identifier string     Identifier of resource, like: TYPE:VERSION:NAME:WORKSPACE(optional) or NAME|VERSION|TYPE|WORKSPACE(optional),  depot:v1:icebase or service:v1:ping:sandbox
+
   -f, --manifestFile string   Manifest File location
   -n, --name string           Name to query
   -o, --owner string          Get resources for a specific owner id, defaults to your id.
@@ -352,13 +354,14 @@ Flags:
 
 Use "dataos-ctl get [command] --help" for more information about a command.
 ```
-**Examples:** All four syntaxes of the command are valid.
+**Examples:** All five syntaxes of the command are valid.
 
 ```jsx
 dataos-ctl get -t workflow -w public -n quality-checks-test-cases
 dataos-ctl -t workflow -w public -n quality-checks-test-cases   get
 dataos-ctl -i "quality-checks-test-cases | v1beta1 | workflow | public"   get
-dataos-ctl get -i "quality-checks-test-cases | v1beta1 | workflow | public"
+dataos-ctl get -i "quality-checks-test-cases | | v1beta1 | | workflow | public"
+dataos-ctl get -i "quality-checks-test-cases | v1beta1 | workflow | public | active | usertest"
 ```
 
 **Output:**
@@ -452,7 +455,8 @@ Flags:
   -c, --container string    Container name to filter logs
   -f, --follow              Follow the logs
   -h, --help                help for log
-  -i, --identifier string   Identifier of resource, like: NAME:VERSION:TYPE
+  -i, --identifier string     Identifier of resource, like: TYPE:VERSION:NAME:WORKSPACE(optional) or NAME|VERSION|TYPE|WORKSPACE(optional),  depot:v1:icebase or service:v1:ping:sandbox
+
   -r, --includeRunnable     Include runnable system pods and logs
   -n, --name string         Name to query
       --node string         Node name to filter logs
@@ -754,7 +758,8 @@ Usage:
 Flags:
       --dataplane string       Dataplane name; default=hub (default "hub")
   -h, --help                   help for tcp-stream
-  -i, --identifier string      Identifier of resource, like: NAME:VERSION:TYPE
+  -i, --identifier string     Identifier of resource, like: TYPE:VERSION:NAME:WORKSPACE(optional) or NAME|VERSION|TYPE|WORKSPACE(optional),  depot:v1:icebase or service:v1:ping:sandbox
+
       --listenPort int         Port the local client will listen on to tcp stream (default 14040)
   -n, --name string            Name of resource
       --node string            Node name to open tcp stream in resource runtime

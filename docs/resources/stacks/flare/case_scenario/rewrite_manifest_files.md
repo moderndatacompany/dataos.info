@@ -7,7 +7,7 @@ When a table’s write pattern doesn’t align with the query pattern, metadata 
 
 | Attribute     | Type    | Description |
 |---------------|---------|-------------|
-| use_caching   | boolean | Use caching during the operation. Defaults to true. |
+| `useCaching`   | boolean | Use caching during the operation. Defaults to true. |
 
 
 ## Code Snippet Example 01

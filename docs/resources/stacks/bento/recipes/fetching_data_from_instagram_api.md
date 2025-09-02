@@ -169,7 +169,7 @@ workflow:
       spec:
         tags:
           - insta    
-        stack: flare:5.0  
+        stack: flare:7.0  
 
         stackSpec:
           driver:

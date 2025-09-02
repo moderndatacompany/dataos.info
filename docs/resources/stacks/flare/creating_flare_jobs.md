@@ -284,7 +284,7 @@ INFO[0001] 🔍 workflow...complete
 
   JOB NAME |   STACK    |        JOB TITLE        | JOB DEPENDENCIES  
 -----------|------------|-------------------------|-------------------
-  city-001 | flare:6.0  | City Dimension Ingester |                   
+  city-001 | flare:7.0  | City Dimension Ingester |                   
   system   | dataos_cli | System Runnable Steps   |                   
 
   RUNTIME | PROGRESS |          STARTED          |         FINISHED           
@@ -528,7 +528,7 @@ INFO[0002] 🔍 workflow...complete
 
   JOB NAME |   STACK    |        JOB TITLE        | JOB DEPENDENCIES  
 -----------|------------|-------------------------|-------------------
-  city-999 | flare:6.0  | City Dimension Ingester |                   
+  city-999 | flare:7.0  | City Dimension Ingester |                   
   system   | dataos_cli | System Runnable Steps   |                   
 
     RUNTIME  | PROGRESS |          STARTED          |         FINISHED           

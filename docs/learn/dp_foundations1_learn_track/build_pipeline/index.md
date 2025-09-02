@@ -90,7 +90,7 @@ Prepare your manifest file to configure the pipeline.
       dag:
         - name: dg-customer-data
           spec:
-            stack: flare:6.0
+            stack: flare:7.0
             compute: runnable-default
             stackSpec:
               inputs:
@@ -182,7 +182,7 @@ Ready to take on your next data pipeline challenge? Follow the same steps and st
           spec:
             tags:
               - crm
-            stack: flare:6.0
+            stack: flare:7.0
             compute: runnable-default
             stackSpec:
               driver:

@@ -42,7 +42,7 @@ workflow:
           - standalone
           - readJob
           - postgres
-        stack: flare:5.0
+        stack: flare:7.0
         compute: runnable-default
         tier: connect
         stackSpec:
@@ -113,7 +113,7 @@ workflow:
         tags:
           - Postgres
           - Standalone
-        stack: flare:5.0
+        stack: flare:7.0
         compute: runnable-default
         tier: connect
         stackSpec:

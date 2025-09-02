@@ -38,7 +38,7 @@ workflow:
       title: Metrics and checks
       description: The job performs metrics calculations and checks on order enriched data
       spec:
-        stack: flare:5.0
+        stack: flare:7.0
         compute: runnable-default
         tags:
           - Metrics
@@ -133,7 +133,7 @@ workflow: # Workflow Section
         tags: # Tags
           - Assertions
           - Quality
-        stack: flare:6.0 # Flare Stack Version (Here its 4.0)
+        stack: flare:7.0 # Flare Stack Version (Here its 4.0)
         compute: runnable-default # Compute
         stackSpec: # Flare Section
           job: # Job Section

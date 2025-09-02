@@ -52,7 +52,7 @@ workflow:
           - standalone
           - readJob
           - snowflake
-        stack: flare:5.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           job:
@@ -130,7 +130,7 @@ workflow:
           - standalone
           - writeJob
           - snowflake
-        stack: flare:5.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           job:
