@@ -81,7 +81,7 @@ workflow:
           ENABLE_PULSAR_AUTH: true
 					DATAOS_RUN_AS_APIKEY: <apikey> #can be obtained from `dataos-ctl user apikey get` command
 
-        stack: flare:5.0
+        stack: flare:7.0
         compute: runnable-default
         tier: connect
         stackSpec:
@@ -166,7 +166,7 @@ workflow:
           ENABLE_PULSAR_AUTH: true
 					DATAOS_RUN_AS_APIKEY: <apikey> # can be obtained from `dataos-ctl user apikey get` command
 
-        stack: flare:5.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           job:

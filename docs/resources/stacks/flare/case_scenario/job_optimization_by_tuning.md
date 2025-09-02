@@ -23,7 +23,7 @@ workflow:
         tags:
           - customers
           - orders
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           driver:
@@ -218,7 +218,7 @@ workflow:
         tags:
           - customers
           - orders
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           driver:
@@ -416,7 +416,7 @@ workflow:
         tags:
           - customers
           - orders
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
 					driver:
@@ -600,7 +600,7 @@ workflow:
         tags:
           - customers
           - orders
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
 					driver:
@@ -797,7 +797,7 @@ workflow:
         tags:
           - customers
           - orders
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
 					driver:
@@ -996,7 +996,7 @@ workflow:
         tags:
           - customers
           - orders
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           driver:
@@ -1192,7 +1192,7 @@ workflow:
         tags:
           - customers
           - orders
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
 					driver:
@@ -1386,7 +1386,7 @@ workflow:
         tags:
           - customers
           - orders
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           driver:
@@ -1582,7 +1582,7 @@ workflow:
         tags:
           - customers
           - orders
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           driver:
@@ -1780,7 +1780,7 @@ workflow:
         tags:
           - customers
           - orders
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           driver:

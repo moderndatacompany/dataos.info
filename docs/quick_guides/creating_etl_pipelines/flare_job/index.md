@@ -103,7 +103,7 @@ The manifest YAML file is a comprehensive configuration for setting up and runni
     spec:     
       tags:         
         - customer    
-      stack: flare:6.0        
+      stack: flare:7.0        
       compute: runnable-default
     ```
     
@@ -187,7 +187,7 @@ workflow:
       spec:     
         tags:         
           - customer    
-        stack: flare:6.0        
+        stack: flare:7.0        
         compute: runnable-default
         stackSpec:         
           job:            
@@ -339,7 +339,7 @@ INFO[0001] 🔍 workflow...complete
     JOB NAME    |   STACK    |       JOB TITLE       | JOB DEPENDENCIES  
 ----------------|------------|-----------------------|-------------------
   system        | dataos_cli | System Runnable Steps |                   
-  test-customer | flare:6.0  | sports_data Dag       |                   
+  test-customer | flare:7.0  | sports_data Dag       |                   
 
   RUNTIME | PROGRESS |          STARTED          | FINISHED  
 ----------|----------|---------------------------|-----------

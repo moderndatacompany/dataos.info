@@ -44,7 +44,7 @@ workflow:
         tags:
         - Connect
         - NY-Taxi
-        stack: flare:6.0
+        stack: flare:7.0
         stackSpec:
           job:
             explain: true
@@ -93,7 +93,7 @@ workflow:
         tags:
         - Connect
         - NY-Taxi
-        stack: flare:6.0
+        stack: flare:7.0
         stackSpec:
           job:
             explain: true
