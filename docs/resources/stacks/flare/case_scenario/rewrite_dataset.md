@@ -4,7 +4,7 @@ DataOS managed depot, Lakehouse built on top of Iceberg format can compact data 
 
 !!! tip
 
-    It is recommended to use the Flare 5.0 for `rewrite-dataset` action job.
+    It is recommended to use the Flare 7.0 for `rewrite-dataset` action job.
 
 ## Attribute configuration
 
@@ -20,12 +20,12 @@ DataOS managed depot, Lakehouse built on top of Iceberg format can compact data 
 
 | Attributes                         | Default Value           | Description |
 |-----------------------------------|--------------------------|-------------|
-| max-concurrent-file-group-rewrites | 5                        | Maximum number of file groups that can be rewritten in parallel. |
-| partial-progress.enabled           | false                    | Enables committing file groups incrementally before the full rewrite is finished. Useful for partitions larger than available memory. |
-| partial-progress.max-commits       | 10                       | Maximum number of commits allowed when partial progress is enabled. |
-| target-file-size-bytes             | 536870912                | Target output file size in bytes (default is 512 MB). |
-| rewrite-all                        | false                    | Force rewriting of all provided files, overriding other options. |
-| max-file-group-size-bytes          | 107374182400 (100 GB)    | Largest amount of data that should be rewritten in a single file group. Helps split very large partitions into smaller, rewritable chunks to avoid cluster resource limits. |
+| `max-concurrent-file-group-rewrites` | 5                        | Maximum number of file groups that can be rewritten in parallel. |
+| `partial-progress.enabled`           | false                    | Enables committing file groups incrementally before the full rewrite is finished. Useful for partitions larger than available memory. |
+| `partial-progress.max-commits`       | 10                       | Maximum number of commits allowed when partial progress is enabled. |
+| `target-file-size-bytes`             | 536870912                | Target output file size in bytes (default is 512 MB). |
+| `rewrite-all`                        | false                    | Force rewriting of all provided files, overriding other options. |
+| `max-file-group-size-bytes`          | 107374182400 (100 GB)    | Largest amount of data that should be rewritten in a single file group. Helps split very large partitions into smaller, rewritable chunks to avoid cluster resource limits. |
 
 
 
@@ -39,32 +39,33 @@ The binpack strategy is the default behavior in Iceberg when no explicit sorting
 Rewrite the data files in table `lakehouse:retail/pos_store_product_cust` using the default rewrite algorithm of bin-packing to combine small files and also split large files according to the default write size of the table.
 
 ```yaml
-version: v1 # Version
-name: rewrite # Name of the Workflow
-type: workflow # Type of Resource (Here its a workflow)
-tags: # Tags
+version: v1                                   # Version
+name: rewrite                                 # Name of the Workflow
+type: workflow                                # Type of Resource (Here its a workflow)
+tags:                                         # Tags
   - Rewrite
-workflow: # Workflow Specific Section
-  title: Compress iceberg data files # Title of the DAG
-  dag: # DAG (Directed Acyclic Graph)
-    - name: rewrite # Name of the Job
-      title: Compress iceberg data files # Title of the Job
-      spec: # Specs
-        tags: # Tags
+workflow:                                     # Workflow Specific Section
+  title: Compress iceberg data files          # Title of the DAG
+  dag:                                        # DAG (Directed Acyclic Graph)
+    - name: rewrite                           # Name of the Job
+      title: Compress iceberg data files      # Title of the Job
+      spec:                                   # Specs
+        tags:                                 # Tags
           - Rewrite
-        stack: flare:5.0 # Stack Version (Here its Flare stack Version 5.0)
-        compute: runnable-default # Compute 
-        stackSpec: # Flare Section
-          job: # Job Section
-            explain: true # Explain
-            logLevel: INFO # Loglevel
-            inputs: # Inputs Section
-              - name: inputDf # Name of Input Dataset
-                dataset: dataos://lakehouse:retail/pos_store_product_cust?acl=rw # Dataset UDL
-                format: Iceberg # Dataset Format
-            actions: # Flare Action
-              - name: rewrite_dataset # Name of the action
-                input: inputDf # Input Dataset Name   # defaults to bin packing
+        stack: flare:7.0                      # Stack Version 
+        compute: runnable-default             # Compute 
+        stackSpec:                            # Flare Section
+          job:                                # Job Section
+            explain: true                     # Explain
+            logLevel: INFO                    # Loglevel
+            inputs:                           # Inputs Section
+              - name: inputDf                 # Name of Input Dataset
+                dataset: dataos://lakehouse:retail/pos_store_product_cust?acl=rw   # Dataset UDL
+                format: Iceberg               # Dataset Format
+            actions:                          # Flare Action
+              - name: rewrite_dataset         # Name of the action
+                input: inputDf                # Input Dataset Name   # defaults to bin packing
+
 ```
 
 
@@ -79,35 +80,36 @@ When you perform a binpack operation, the data files are merged or "packed" toge
 The following code snippet demonstrates the compression of Iceberg data files for a given input dataset, `inputDf`, stored in a DataOS Depot. The compression process aims to reduce the file size to a specified target size in bytes, denoted by the variable `target-file-size-bytes`.
 
 ```yaml
-version: v1 # Version
-name: rewrite # Name of the Workflow
-type: workflow # Type of Resource (Here its a workflow)
-tags: # Tags
+version: v1                                   # Version
+name: rewrite                                 # Name of the Workflow
+type: workflow                                # Type of Resource (Here its a workflow)
+tags:                                         # Tags
   - Rewrite
-workflow: # Workflow Specific Section
-  title: Compress iceberg data files # Title of the DAG
-  dag: # DAG (Directed Acyclic Graph)
-    - name: rewrite # Name of the Job
-      title: Compress iceberg data files # Title of the Job
-      spec: # Specs
-        tags: # Tags
+workflow:                                     # Workflow Specific Section
+  title: Compress iceberg data files          # Title of the DAG
+  dag:                                        # DAG (Directed Acyclic Graph)
+    - name: rewrite                           # Name of the Job
+      title: Compress iceberg data files      # Title of the Job
+      spec:                                   # Specs
+        tags:                                 # Tags
           - Rewrite
-        stack: flare:5.0 # Stack Version (Here its Flare stack Version 5.0)
-        compute: runnable-default # Compute 
-        stackSpec: # Flare Section
-          job: # Job Section
-            explain: true # Explain
-            logLevel: INFO # Loglevel
-            inputs: # Inputs Section
-              - name: inputDf # Name of Input Dataset
-                dataset: dataos://lakehouse:retail/pos_store_product_cust?acl=rw # Dataset UDL
-                format: Iceberg # Dataset Format
-            actions: # Flare Action
-              - name: rewrite_dataset # Name of the action
-                input: inputDf # Input Dataset Name 
-                options: # Options
-                  properties: # Properties
-                    "target-file-size-bytes": "2500048" # Target File Size in Bytes
+        stack: flare:7.0                      # Stack Version 
+        compute: runnable-default             # Compute 
+        stackSpec:                            # Flare Section
+          job:                                # Job Section
+            explain: true                     # Explain
+            logLevel: INFO                    # Loglevel
+            inputs:                           # Inputs Section
+              - name: inputDf                 # Name of Input Dataset
+                dataset: dataos://lakehouse:retail/pos_store_product_cust?acl=rw   # Dataset UDL
+                format: Iceberg               # Dataset Format
+            actions:                          # Flare Action
+              - name: rewrite_dataset         # Name of the action
+                input: inputDf                # Input Dataset Name 
+                options:                      # Options
+                  properties:                 # Properties
+                    "target-file-size-bytes": "2500048"   # Target File Size in Bytes
+
 ```
 
 
@@ -117,34 +119,35 @@ workflow: # Workflow Specific Section
 Since the where clause is specified (id = 3 and name = "foo"), the query will select the files that contain data matching the filter condition (id = 3 and name = "foo"), and only those files will be rewritten.
 
 ```yaml
-version: v1 # Version
-name: rewrite # Name of the Workflow
-type: workflow # Type of Resource (Here its a workflow)
-tags: # Tags
+version: v1                                   # Version
+name: rewrite                                 # Name of the Workflow
+type: workflow                                # Type of Resource (Here its a workflow)
+tags:                                         # Tags
   - Rewrite
-workflow: # Workflow Specific Section
-  title: Compress iceberg data files # Title of the DAG
-  dag: # DAG (Directed Acyclic Graph)
-    - name: rewrite # Name of the Job
-      title: Compress iceberg data files # Title of the Job
-      spec: # Specs
-        tags: # Tags
+workflow:                                     # Workflow Specific Section
+  title: Compress iceberg data files          # Title of the DAG
+  dag:                                        # DAG (Directed Acyclic Graph)
+    - name: rewrite                           # Name of the Job
+      title: Compress iceberg data files      # Title of the Job
+      spec:                                   # Specs
+        tags:                                 # Tags
           - Rewrite
-        stack: flare:5.0 # Stack Version (Here its Flare stack Version 5.0)
-        compute: runnable-default # Compute 
-        stackSpec: # Flare Section
-          job: # Job Section
-            explain: true # Explain
-            logLevel: INFO # Loglevel
-            inputs: # Inputs Section
-              - name: inputDf # Name of Input Dataset
-                dataset: dataos://lakehouse:retail/pos_store_product_cust?acl=rw # Dataset UDL
-                format: Iceberg # Dataset Format
-            actions: # Flare Action
-              - name: rewrite_dataset # Name of the action
-                input: inputDf # Input Dataset Name   #defaults to bin packing ? check the file zie to verify if file is 512 MB.
-                options: # Options
+        stack: flare:7.0                      # Stack Version 
+        compute: runnable-default             # Compute 
+        stackSpec:                            # Flare Section
+          job:                                # Job Section
+            explain: true                     # Explain
+            logLevel: INFO                    # Loglevel
+            inputs:                           # Inputs Section
+              - name: inputDf                 # Name of Input Dataset
+                dataset: dataos://lakehouse:retail/pos_store_product_cust?acl=rw   # Dataset UDL
+                format: Iceberg               # Dataset Format
+            actions:                          # Flare Action
+              - name: rewrite_dataset         # Name of the action
+                input: inputDf                # Input Dataset Name   #defaults to bin packing ? check the file zie to verify if file is 512 MB.
+                options:                      # Options
                   where: 'id = 3 and name = "foo"'
+
 ``` 
 
 
@@ -167,35 +170,36 @@ Provide the following information in right order (ColumnName, Order, NUllOrder):
      - `NULLS LAST`: This places all rows with NULL values at the end of the sorted data.
 
 ```yaml
-version: v1 # Version
-name: rewrite # Name of the Workflow
-type: workflow # Type of Resource (Here its a workflow)
-tags: # Tags
+version: v1                                   # Version
+name: rewrite                                 # Name of the Workflow
+type: workflow                                # Type of Resource (Here its a workflow)
+tags:                                         # Tags
   - Rewrite
-workflow: # Workflow Specific Section
-  title: Compress iceberg data files # Title of the DAG
-  dag: # DAG (Directed Acyclic Graph)
-    - name: rewrite # Name of the Job
-      title: Compress iceberg data files # Title of the Job
-      spec: # Specs
-        tags: # Tags
+workflow:                                     # Workflow Specific Section
+  title: Compress iceberg data files          # Title of the DAG
+  dag:                                        # DAG (Directed Acyclic Graph)
+    - name: rewrite                           # Name of the Job
+      title: Compress iceberg data files      # Title of the Job
+      spec:                                   # Specs
+        tags:                                 # Tags
           - Rewrite
-        stack: flare:5.0 # Stack Version (Here its Flare stack Version 5.0)
-        compute: runnable-default # Compute 
-        stackSpec: # Flare Section
-          job: # Job Section
-            explain: true # Explain
-            logLevel: INFO # Loglevel
-            inputs: # Inputs Section
-              - name: inputDf # Name of Input Dataset
-                dataset: dataos://lakehouse:retail/pos_store_product_cust?acl=rw # Dataset UDL
-                format: Iceberg # Dataset Format
-            actions: # Flare Action
-              - name: rewrite_dataset # Name of the action
-                input: inputDf # Input Dataset Name   #defaults to bin packing ? check the file zie to verify if file is 512 MB.
-                options: # Options
+        stack: flare:7.0                      # Stack Version 
+        compute: runnable-default             # Compute 
+        stackSpec:                            # Flare Section
+          job:                                # Job Section
+            explain: true                     # Explain
+            logLevel: INFO                    # Loglevel
+            inputs:                           # Inputs Section
+              - name: inputDf                 # Name of Input Dataset
+                dataset: dataos://lakehouse:retail/pos_store_product_cust?acl=rw   # Dataset UDL
+                format: Iceberg               # Dataset Format
+            actions:                          # Flare Action
+              - name: rewrite_dataset         # Name of the action
+                input: inputDf                # Input Dataset Name   #defaults to bin packing ? check the file zie to verify if file is 512 MB.
+                options:                      # Options
                   strategy: sort
-                  sort_order: (id, ASC NULLS FIRST).     #(id, Order NullOrder).
+                  sort_order: (id, ASC NULLS FIRST).   #(id, Order NullOrder).
+
 ```
 
 
@@ -206,33 +210,33 @@ Z-ordering sorts data based on multiple columns (e.g., `product_type` and `store
 In a retail dataset (`lakehouse:retail/pos_store_product_cust`), Z-ordering by product_type and store_location helps efficiently query sales data for specific combinations of these fields.
 
 ```yaml
-version: v1 # Version
-name: rewrite # Name of the Workflow
-type: workflow # Type of Resource (Here its a workflow)
-tags: # Tags
+version: v1                                       # Version
+name: rewrite                                     # Name of the Workflow
+type: workflow                                    # Type of Resource (Here its a workflow)
+tags:                                             # Tags
   - Rewrite
-workflow: # Workflow Specific Section
-  title: Compress iceberg data files # Title of the DAG
-  dag: # DAG (Directed Acyclic Graph)
-    - name: rewrite # Name of the Job
-      title: Compress iceberg data files # Title of the Job
-      spec: # Specs
-        tags: # Tags
+workflow:                                         # Workflow Specific Section
+  title: Compress iceberg data files              # Title of the DAG
+  dag:                                            # DAG (Directed Acyclic Graph)
+    - name: rewrite                               # Name of the Job
+      title: Compress iceberg data files          # Title of the Job
+      spec:                                       # Specs
+        tags:                                     # Tags
           - Rewrite
-        stack: flare:5.0 # Stack Version (Here its Flare stack Version 5.0)
-        compute: runnable-default # Compute 
-        stackSpec: # Flare Section
-          job: # Job Section
-            explain: true # Explain
-            logLevel: INFO # Loglevel
-            inputs: # Inputs Section
-              - name: inputDf # Name of Input Dataset
+        stack: flare:7.0                          # Stack Version 
+        compute: runnable-default                 # Compute 
+        stackSpec:                                # Flare Section
+          job:                                    # Job Section
+            explain: true                         # Explain
+            logLevel: INFO                        # Loglevel
+            inputs:                               # Inputs Section
+              - name: inputDf                     # Name of Input Dataset
                 dataset: dataos://lakehouse:retail/pos_store_product_cust?acl=rw # Dataset UDL
-                format: Iceberg # Dataset Format
-            actions: # Flare Action
-              - name: rewrite_dataset # Name of the action
-                input: inputDf # Input Dataset Name   #defaults to bin packing ? check the file zie to verify if file is 512 MB.
-                options: # Options
+                format: Iceberg                   # Dataset Format
+            actions:                              # Flare Action
+              - name: rewrite_dataset             # Name of the action
+                input: inputDf                    # Input Dataset Name   #defaults to bin packing ? check the file zie to verify if file is 512 MB.
+                options:                          # Options
                   strategy: sort
                   sortOrder: zorder(product_type, store_location)
 ```

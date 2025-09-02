@@ -2,7 +2,11 @@
 
 To execute Flare Jobs on top of object storage depots, you first need to create a depot. If you have already created a depot, then continue reading else proceed to following link: [Kafka Depot](/resources/depot/depot_config_templates/kafka/)
 
-To run a Flare Job all you need is the UDL address of the input or output dataset for the reading and writing scenarios respectively. Apart from this you also need the file `format` of the data and some additional properties
+To run a Flare Job all you need is the UDL address of the input or output dataset for the reading and writing scenarios respectively. Apart from this you also need the file `format` of the data and some additional properties.
+
+!!! info "Recommendation"
+
+		You must have the Flare 7.0 stack to run Flare jobs in Kafka.
 
 ## Read Config
 
