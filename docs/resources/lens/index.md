@@ -139,12 +139,12 @@ Semantic modeling is the process of organizing raw data into meaningful business
 Lens can be configured to connect to different sources using data source attributes and configurable attributes in the deployment.yml manifest files. For a comprehensive guide to configure supported properties, click [here](/resources/lens/lens_manifest_attributes/).
 
 <!-- - [Configuration Fields of the Docker Compose File](/resources/lens/docker_compose_manifest_attributes/)
-    Review the configuration fields and settings in the Docker Compose file for orchestrating multi-container applications. -->
+    Review the configuration fields and settings in the Docker Compose file for orchestrating multi-container applications. 
 
 <aside class="callout">
 🗣️ If working with Lens 1.0 interface, click <a href="/interfaces/lens/">here</a>.
 </aside>
-
+-->
 
 ## Best Practices
 

@@ -32,7 +32,7 @@ project-directory/
 
 <aside class="callout">
 
-💡 If you already have a Database that you want to use, feel free to <a href="https://dataos.info/resources/database/how_to_guide/back_streamlit_via_database/#create-a-beacon-service"> skip to the next step </a>.
+💡 If you already have a Database that you want to use, feel free to <a href="https://dataos.info/resources/database/how_to_guide/how_to_create_a_streamlit_application_of_database_on_dataos/#create-a-beacon-service"> skip to the next step </a>.
 
 </aside>
 
