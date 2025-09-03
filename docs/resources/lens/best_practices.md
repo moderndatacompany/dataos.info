@@ -268,10 +268,10 @@ tables:
 - Partitions should be small so that the Lens workers can process them in less time. Start with a relatively large partition (e.g., yearly) and adjust as needed.
 - To minimize partition queueing, make refresh keys as infrequent as possible.
 
-
+<!-- 
 ## Payload edit
 
-For more information on handling JSON payloads, refer to [Working with Payload](/resources/lens/working_with_payload/).
+For more information on handling JSON payloads, refer to [Working with Payload](/resources/lens/working_with_payload/). -->
 
 ## Commenting in SQL files
 
