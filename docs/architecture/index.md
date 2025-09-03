@@ -82,13 +82,15 @@ The [User Space](/architecture/#user-space) is the layer of DataOS where data de
 - Data developers & operators interact with these components via the interfaces provided in the form of CLI, GUI and APIs.
 
 Throughout this journey of data across various applications & services, the data remains secured with customized access & data policies, and the user has control & observability over both the data & the infrastructure. 
+
 ### **Infrastructure to build data-products**
+
 DataOS specs resemble the principles of a Data Developer Platform, such as declarative infrastructure management and dynamic configuration management with access control & version control systems in place, among others. This makes it the infrastructure of choice for creating, deploying and managing data products at scale.
 
 - The depots & APIs provide the input/output ports, while the stacks like [Flare](/resources/stacks/flare/) & [Bento](/resources/stacks/bento/) are used to configure the transformation logic on the data products. All the while, the system provides you with end-to-end observability, monitoring & customizability to define metrics or SLOs for different stages of the data product’s lifecycle, and provision computes & clusters with DataOS Resources on demand.
 - The separation of Compute & Storage allows the users to scale both independently & optimize costs while building & experimenting with new data products.
 - The native governance with Heimdall & Gateway ensures granular access control on every aspect of data products, Metis provides the ability to discover, understand & categorize the data products, and Poros automates the orchestration.
-- The interfaces of applications like [Lens](/interfaces/lens/) and [Workbench](/interfaces/workbench/) enable data developers to experiment with data products quickly and in a self-serve manner.
+- The interfaces of applications like [Lens](/resources/lens/) and [Workbench](/interfaces/workbench/) enable data developers to experiment with data products quickly and in a self-serve manner.
 - The niche capabilities as provided with DataOS Resources like [Service](/resources/service/) & [Container stack](/resources/stacks/container/) allow one to create data products even for the edge cases.
 - Abstractions over all the parts of the aforementioned micro-services architecture and the open standards used while building them makes the system flexible and customizable towards the addition of new tools & technologies. 
 
