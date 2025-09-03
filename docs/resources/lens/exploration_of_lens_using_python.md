@@ -84,7 +84,7 @@ dataos-ctl user apikey create -n apikey_for_powerbi -d 48h
 
 Create the payload for the POST request. This payload is a JSON object containing the query parameters, such as measures, dimensions, segments, filters, time dimensions, limit, and response format.
 
-Choose the dimensions and measures from the Explorer Studio in the Data Product Hub tab and click on the 'Integration' button to generate a payload and paste them below. To know more about Payload click [here](/resources/lens/working_with_payload/)
+Choose the dimensions and measures from the Explorer Studio in the Data Product Hub tab and click on the 'Integration' button to generate a payload and paste them below. 
 
 ```python
 payload = json.dumps({

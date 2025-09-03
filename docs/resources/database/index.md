@@ -15,7 +15,7 @@ A Database [Resource](/resources/) in DataOS acts as a repository for storing tr
 
 
 <aside class="callout">
-🗣️ A Database is a <a href="https://dataos.info/resources/types_of_dataos_resources/"> Workspace-level </a> resource, implying that its scope is limited to a particular Workspace.
+🗣️ A Database is a <a href="https://dataos.info/resources/types/#workspace-level-resources"> Workspace-level </a> resource, implying that its scope is limited to a particular Workspace.
 </aside>
 
 ## Structure of Database manifest
