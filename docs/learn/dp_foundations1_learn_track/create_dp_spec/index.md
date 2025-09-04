@@ -56,7 +56,7 @@ All the specific details related to the Data Product comes under `data` section 
     
     Include a `meta` section, nested under the `data` section, to provide additional context and information to DPH.
     - title which is shown for your Data Product
-    - The `sourceCodeUrl` key is used to link the associated repository where the DP artefacts are maintained
+    <!-- - The `sourceCodeUrl` key is used to link the associated repository where the DP artefacts are maintained
     - The `trackerUrl` key is used to link the associated JIRA ticket where the DP issues are being managed
         
         ```yaml
@@ -66,7 +66,7 @@ All the specific details related to the Data Product comes under `data` section 
               sourceCodeUrl: https://bitbucket.org/tmdc/cloud-cost-360/src/main/
               title: Retail Data # this appears on the UI | If you want to capitalise and format your DP name's appearance on DPH
               trackerUrl: https://rubikai.atlassian.net/browse/DPRB-19?atlOrigin=eyJpIjoiZDVmMDNmYmYxOWYwNGVjZDlhNDdiYTA4NTZmMjg0NTIiLCJwIjoiaiJ9
-        ```
+        ``` -->
         
 - **Collaborators**
     
@@ -76,9 +76,8 @@ All the specific details related to the Data Product comes under `data` section 
     v1beta:
       data:
         meta:
-          foo: bar
-          sourceCodeUrl: https://github.com/NandaAtModern/dp_product360/tree/master/product360
-          trackerUrl: https://rubikai.atlassian.net/browse/DPRB-19?atlOrigin=eyJpIjoiZDVmMDNmYmYxOWYwNGVjZDlhNDdiYTA4NTZmMjg0NTIiLCJwIjoiaiJ9
+          title: Retail Data
+          
         collaborators:
           - name: nandapage # dataos id is mandatory
             description: owner # description is optional
@@ -99,7 +98,7 @@ resource:
     description: 'Resources associated with retaildata Data Product'
     purpose: 'DP Life Cyle Management'
     refType: dataos                     # mandatory
-    ref: bundle:v1beta:product360-bundle. # mandatory | referred Bundle must exist
+    ref: bundle:v1beta:retaildata-bundle. # mandatory | referred Bundle must exist
 ```
     
 ## Step 4: Define inputs and outputs
@@ -112,14 +111,14 @@ There are two types of dataset references -
 
 ```yaml
 inputs:
-  - refType: dataos
-    ref: dataset:postgresxx:public:customer_data
+  - refType: depot
+        ref: dataos://thirdparty:onboarding/customer.csv
 
-  - refType: dataos
-    ref: dataset:postgresxx:public:purchase_data
+  - refType: depot
+        ref: dataos://thirdparty:onboarding/purchase.csv
 
-  - refType: dataos
-    ref: dataset:postgresxx:public:product_data
+  - refType: depot
+        ref: dataos://thirdparty:onboarding/product.csv
 
 outputs:
   - refType: dataos
@@ -132,7 +131,7 @@ outputs:
     ref: dataset:postgresxx:public:product_data
 ```
         
-## Step 5: Configure ports for integration
+<!-- ## Step 5: Configure ports for integration
 Set up Ports to connect the Data Product to Lens, Talos APIs, REST endpoints, and more:
     
 The Ports section lets you set up links to various services and tools tied to consumption of your Data Product. While it's **optional** for creating a Data Product, adding ports significantly enhances functionality.
@@ -146,11 +145,11 @@ ports:
     talos:
     - ref: service:v1:service-product360-api:public
     refType: dataos
-```
+``` -->
     
 ## Data Product Spec (YAML) file
 
-Here is the comprehensive and efficient configuration for your Data Product, which makes it easier to manage and evolve over time.
+Here is the comprehensive configuration for your Data Product, which makes it easier to manage and evolve over time.
 <details>
 <summary>Click here to view the complete Data Product Spec file</summary>
 
@@ -167,8 +166,7 @@ v1beta:
   data:
     meta:
       title: Retail Data
-      #sourceCodeUrl: https://bitbucket.org/tmdc/product-affinity-training/src/main/
-      #trackerUrl: https://rubikai.atlassian.net/browse/DPRB-65
+      
     
     collaborators:
       - name: manishagrawal      #Provide dataos id 
@@ -183,14 +181,14 @@ v1beta:
       refType: dataos
       ref: bundle:v1beta:retaildata-bundle-xx
     inputs:
-      - refType: dataos
-        ref: dataset:postgresxx:public:customer_data
+      - refType: depot
+        ref: dataos://thirdparty:onboarding/customer.csv
 
-      - refType: dataos
-        ref: dataset:postgresxx:public:purchase_data
+      - refType: depot
+        ref: dataos://thirdparty:onboarding/purchase.csv
 
-      - refType: dataos
-        ref: dataset:postgresxx:public:product_data
+      - refType: depot
+        ref: dataos://thirdparty:onboarding/product.csv
 
     outputs:
       - refType: dataos
@@ -202,7 +200,7 @@ v1beta:
       - refType: dataos
         ref: dataset:postgresxx:public:product_data
 
-    ports:
+    
              
 ```
 </details>
