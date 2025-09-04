@@ -1,0 +1,34 @@
+version: v1
+name: mongodb-write-01
+type: workflow
+workflow:
+  dag:
+    - name: mongodb-write-01
+      spec:
+        stack: flare:7.0
+        compute: runnable-default
+        stackSpec:
+          job:
+            explain: true
+            logLevel: INFO
+            inputs:
+              - name: input
+                dataset: dataos://thirdparty01:none/city
+                format: csv
+                schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc
+
+            steps:
+              - sequence:
+                - name: finalDf
+                  sql: SELECT *, date_format (now(), 'yyyyMMddHHmm') AS version, current_timestamp() AS ts_city FROM input limit 10
+
+            outputs:
+              - name: finalDf
+                dataset: dataos://sanitymongodb:tmdc/write_mongodb_12?acl=rw
+                format: mongodb
+                options:
+                  saveMode: append
+                  connectionProps:
+                    ssl: "true"
+                    retryWrites: "true"
+                    w: "majority"
