@@ -67,7 +67,7 @@ Let us look at DataOS from the perspective of a data infrastructure.
 
 
 <figure>
-  <img src="/architecture/dataos_architecture.jpg" alt="Design showcasing data-flow patterns in the User Space of DataOS" style="width:31rem;" />
+  <img src="/architecture/data-flow-arch.svg" alt="Design showcasing data-flow patterns in the User Space of DataOS" style="width:45rem;" />
   <figcaption><i>Design showcasing data-flow patterns in the User Space of DataOS</i></figcaption>
 </figure>
 
@@ -90,7 +90,7 @@ DataOS specs resemble the principles of a Data Developer Platform, such as decla
 - The depots & APIs provide the input/output ports, while the stacks like [Flare](/resources/stacks/flare/) & [Bento](/resources/stacks/bento/) are used to configure the transformation logic on the data products. All the while, the system provides you with end-to-end observability, monitoring & customizability to define metrics or SLOs for different stages of the data product’s lifecycle, and provision computes & clusters with DataOS Resources on demand.
 - The separation of Compute & Storage allows the users to scale both independently & optimize costs while building & experimenting with new data products.
 - The native governance with Heimdall & Gateway ensures granular access control on every aspect of data products, Metis provides the ability to discover, understand & categorize the data products, and Poros automates the orchestration.
-- The interfaces of applications like [Lens](/resources/lens/) and [Workbench](/interfaces/workbench/) enable data developers to experiment with data products quickly and in a self-serve manner.
+- The interfaces of applications [Workbench](/interfaces/workbench/) enable data developers to experiment with data products quickly and in a self-serve manner.
 - The niche capabilities as provided with DataOS Resources like [Service](/resources/service/) & [Container stack](/resources/stacks/container/) allow one to create data products even for the edge cases.
 - Abstractions over all the parts of the aforementioned micro-services architecture and the open standards used while building them makes the system flexible and customizable towards the addition of new tools & technologies. 
 
@@ -105,7 +105,7 @@ Let us delve into how such a vast system with complexities underneath can be cla
 The architecture of DataOS can be segregated into three logically separated layers - User Space, Core Kernel & Cloud Kernel. 
 
 <figure class="custom-figure">
-  <img src="/architecture/layered_arch.png" alt="Layered Architecture of DataOS" />
+  <img src="/architecture/layer_arch_up.jpg" alt="Layered Architecture of DataOS" />
   <figcaption>Layered Architecture of DataOS</figcaption>
 </figure>
 
