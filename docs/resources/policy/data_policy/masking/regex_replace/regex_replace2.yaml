@@ -10,7 +10,7 @@ policy:
   data:
     dataset: {{sample_driver}}
     collection: {{data_uber}}
-    depot: {{icebase}}
+    depot: {{lakehouse}}
     priority: {{90}}
     type: mask
     mask:

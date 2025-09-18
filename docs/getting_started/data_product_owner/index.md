@@ -95,8 +95,8 @@ v1alpha:
         name: scanner-newdepot09
         workspace: public
 
-      - description: 'Flare job to write data from snowflake to icebase'
-        purpose: to write data from snowflake to icebase 
+      - description: 'Flare job to write data from snowflake to lakehouse'
+        purpose: to write data from snowflake to lakehouse 
         refType: dataos
         type: workflow
         version: v1
@@ -129,5 +129,5 @@ v1alpha:
       - description: Processed data
         purpose: consumption
         refType: dataos_address
-        ref: dataos://icebase:sandbox/google_analytics09
+        ref: dataos://lakehouse:sandbox/google_analytics09
 ```

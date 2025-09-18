@@ -10,8 +10,6 @@ MERGE INTO allows you to perform an upsert operation (update or insert) between 
   - 
 It updates the target table using a source table using a set of conditions and updates records. This is a row-specific update where the row is found based on the **ON** clause.
 
-> Spark 3 added support for **MERGE INTO** queries that can express row-level updates.
-> 
 
 ## Case Scenario
 
@@ -54,9 +52,9 @@ outputOptions:
 
 **`whenClause`:**  This will be executed when `onClause` condition matches and **`whenClause`** conditions can be referred.
 
-`**old**` : Refers to the existing dataset in Lakehouse.
+**`old`:** Refers to the existing dataset in Lakehouse.
 
-`**new**`: Refers to the data frame by you are updating existing dataset.
+**`new`:** Refers to the data frame by you are updating existing dataset.
 
 !!! info
     Merge Into requires below sparkConf and this is mandatory for merge into function to work.
@@ -117,7 +115,7 @@ workflow:
         tags:
           - merge
           - iceberg
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
         envs:
           DISABLE_HADOOP_PATH_CHECKS: "true"
@@ -166,67 +164,67 @@ workflow:
     ??? note
 
         ```yaml
-        version: v1
-        name: iceberg-merge-job-011 #workflow name
-        type: workflow
-        tags:
-          - Connect
-          - merge
-          - iceberg
-        description: Merges city data into Iceberg table based on zip_code
-        workflow:
-          title: Merge City Data into Iceberg
-          dag:
-            - name: merge-iceberg-city
-              title: Merging city dataset
-              description: Performs a MERGE INTO operation on Iceberg table using zip_code
-              spec:
-                tags:
-                  - merge
-                  - iceberg
-                stack: flare:5.0
-                compute: runnable-default
-                envs:
-                  DISABLE_HADOOP_PATH_CHECKS: "true"
-                stackSpec:
-                  job:
-                    explain: true
-                    logLevel: INFO
-                    inputs:
-                      - name: input01
-                        dataset: dataos://lakehouse:retail/city
-                        format: iceberg
-                        # schemaPath: dataos://lakehouse:default/schemas/city.avsc
-                        options:
-                          saveMode: append
-                    outputs:
-                      - name: city_merge_output
-                        dataset: dataos://lakehouse:syndicate/city_merge
-                        format: iceberg
-                        options:
-                          saveMode: overwrite
-                          merge:
-                            onClause: "old.zip_code = new.zip_code"
-                            whenClause: >
-                              MATCHED THEN UPDATE SET
-                              old.city_name = new.city_name,
-                              old.county_name = new.county_name,
-                              old.state_code = new.state_code,
-                              old.state_name = new.state_name
-                          properties:
-                            write.format.default: parquet
-                            write.metadata.compression-codec: gzip
-                    steps:
-                      - sequence:
-                          - name: city_source 
-                            sql: select * from input01 where zip_code = "36006"   # Selecting only zip code (36006) 
-                          - name: city_merge_output  # Updating table value for zip code (36006)  
-                            sql: select city_id, zip_code, 'abc' as city_name, 'abcd' as county_name, 'ab' as state_code , 'abcde' as state_name from city_source 
-              
-                  
-                    sparkConf:  # spark configuration 
-                      - spark.sql.extensions: org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions  # mandatory for merge into function to work  
-                ```
+          version: v1
+          name: iceberg-merge-job-011 #workflow name
+          type: workflow
+          tags:
+            - Connect
+            - merge
+            - iceberg
+          description: Merges city data into Iceberg table based on zip_code
+          workflow:
+            title: Merge City Data into Iceberg
+            dag:
+              - name: merge-iceberg-city
+                title: Merging city dataset
+                description: Performs a MERGE INTO operation on Iceberg table using zip_code
+                spec:
+                  tags:
+                    - merge
+                    - iceberg
+                  stack: flare:5.0
+                  compute: runnable-default
+                  envs:
+                    DISABLE_HADOOP_PATH_CHECKS: "true"
+                  stackSpec:
+                    job:
+                      explain: true
+                      logLevel: INFO
+                      inputs:
+                        - name: input01
+                          dataset: dataos://lakehouse:retail/city
+                          format: iceberg
+                          # schemaPath: dataos://lakehouse:default/schemas/city.avsc
+                          options:
+                            saveMode: append
+                      outputs:
+                        - name: city_merge_output
+                          dataset: dataos://lakehouse:syndicate/city_merge
+                          format: iceberg
+                          options:
+                            saveMode: overwrite
+                            merge:
+                              onClause: "old.zip_code = new.zip_code"
+                              whenClause: >
+                                MATCHED THEN UPDATE SET
+                                old.city_name = new.city_name,
+                                old.county_name = new.county_name,
+                                old.state_code = new.state_code,
+                                old.state_name = new.state_name
+                            properties:
+                              write.format.default: parquet
+                              write.metadata.compression-codec: gzip
+                      steps:
+                        - sequence:
+                            - name: city_source 
+                              sql: select * from input01 where zip_code = "36006"   # Selecting only zip code (36006) 
+                            - name: city_merge_output  # Updating table value for zip code (36006)  
+                              sql: select city_id, zip_code, 'abc' as city_name, 'abcd' as county_name, 'ab' as state_code , 'abcde' as state_name from city_source 
+                
+                    
+                      sparkConf:  # spark configuration 
+                        - spark.sql.extensions: org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions  # mandatory for merge into function to work  
+        ```
 
 
 

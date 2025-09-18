@@ -51,7 +51,7 @@ workflow:
         tags:
           - Connect
           - City
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           job:
@@ -67,7 +67,7 @@ workflow:
             logLevel: INFO
             outputs:
               - name: finalDf
-                dataset: dataos://icebase:abcd/delta_abfss_re_jun19_01?acl=rw
+                dataset: dataos://lakehouse:abcd/delta_abfss_re_jun19_01?acl=rw
                 format: Iceberg
                 options:
                   saveMode: overwrite
@@ -103,7 +103,7 @@ workflow:
         tags:
           - Connect
           - City
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           job:

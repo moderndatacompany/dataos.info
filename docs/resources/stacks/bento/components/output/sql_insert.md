@@ -1,3 +1,9 @@
+---
+search:
+  exclude: true
+
+---
+
 # sql_insert
 Inserts a row into an SQL database for each message. This processor was introduced in version 1.0.0.
 
@@ -134,7 +140,8 @@ The following is a list of supported drivers, their placeholder style, and their
 </div>
 
 !!! info
-        Please note that the postgres driver enforces SSL by default, user can override this with the parameter `sslmode=disable` if required.
+        
+    Please note that the postgres driver enforces SSL by default, user can override this with the parameter `sslmode=disable` if required.
 
 The `snowflake` driver supports multiple DSN formats. Please consult [the docs](https://pkg.go.dev/github.com/snowflakedb/gosnowflake#hdr-Connection_String) for more details. 
 For key pair authentication, the DSN has the following format: `<snowflake_user>@<snowflake_account>/<db_name>/<schema_name>?warehouse=<warehouse>&role=<role>&authenticator=snowflake_jwt&privateKey=<base64_url_encoded_private_key>`, where the value for the privateKey parameter can be constructed from an unencrypted RSA private key `file rsa_key.p8` using `openssl enc -d -base64 -in rsa_key.p8 | basenc --base64url -w0` (user can use `gbasenc` insted of `basenc` on OSX if user install `coreutils` via Homebrew). 

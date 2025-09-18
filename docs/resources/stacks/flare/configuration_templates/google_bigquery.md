@@ -15,7 +15,7 @@ inputs:
 
 <details><summary>Sample Read configuration YAML</summary>
 
-Consider a scenario where the dataset named `city` is stored in a BigQuery Depot at the address `dataos://bqdepot:state/city`, and you need to read this data from the source Bigquery depot, perform some transformation steps, and write it to Icebase, a managed depot within DataOS. The read config YAML will be as follows:
+Consider a scenario where the dataset named `city` is stored in a BigQuery Depot at the address `dataos://bqdepot:state/city`, and you need to read this data from the source Bigquery depot, perform some transformation steps, and write it to Lakehouse, a managed depot within DataOS. The read config YAML will be as follows:
 
 ```yaml title="bigquery_depot_read.yml"
 --8<-- "examples/resources/stacks/flare/bigquery_depot_read.yml"
@@ -40,7 +40,7 @@ outputs:
 
 **Sample Write configuration YAML**
 
-Let’s take a case scenario where the output dataset is to be stored in Bigquery Depot and you have to read data from the Icebase depot within the DataOS The write config YAML will be as follows
+Let’s take a case scenario where the output dataset is to be stored in Bigquery Depot and you have to read data from the Lakehouse depot within the DataOS The write config YAML will be as follows
 
 
 ```yaml title="bigquery_depot_write.yml"

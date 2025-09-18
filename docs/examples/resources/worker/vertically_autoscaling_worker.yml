@@ -32,7 +32,7 @@ worker:
         processingGuarantees: "EFFECTIVELY_ONCE"
     output:
       datasets:
-        - "dataos://icebase:sys01/flare_query_events_01?acl=rw"
+        - "dataos://lakehouse:sys01/flare_query_events_01?acl=rw"
       options:
         commitInterval: "30"
         recordsPerCommit: "50000"

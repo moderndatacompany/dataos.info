@@ -31,7 +31,7 @@ stackSpec:
             attributes:
               category: Accuracy
     # Minerva
-    - dataset: dataos://icebase:retail/customer
+    - dataset: dataos://lakehouse:retail/customer
       options:
         engine: minerva
         clusterName: miniature
@@ -359,7 +359,7 @@ It is necessary to add the category of the checks, as this allows the category t
 ```yaml
 stackSpec:
   inputs:
-    - dataset: dataos://icebase:retail/customer
+    - dataset: dataos://lakehouse:retail/customer
       options:
         engine: minerva
         clusterName: miniature
@@ -412,7 +412,7 @@ To run checks on such a source, we must first connect it to a depot.
 ```yaml
 stackSpec:
   inputs:
-    - dataset: dataos://icebase:retail/customer
+    - dataset: dataos://lakehouse:retail/customer
       options:
         engine: minerva
       # ...other inputs attributes
@@ -433,7 +433,7 @@ stackSpec:
 ```yaml
 stackSpec:
   inputs:
-    - dataset: dataos://icebase:retail/customer
+    - dataset: dataos://lakehouse:retail/customer
       options:
         clusterName: miniature
       # ...other inputs attributes
@@ -454,7 +454,7 @@ stackSpec:
 ```yaml
 stackSpec:
   inputs:
-    - dataset: dataos://icebase:retail/customer
+    - dataset: dataos://lakehouse:retail/customer
       options:
         branchName: test
       # ...other inputs attributes
@@ -475,7 +475,7 @@ stackSpec:
 ```yaml
 stackSpec:
   inputs:
-    - dataset: dataos://icebase:retail/customer
+    - dataset: dataos://lakehouse:retail/customer
       filter:
           name: filter_on_age
           where: age > 50
@@ -497,7 +497,7 @@ stackSpec:
 ```yaml
 stackSpec:
   inputs:
-    - dataset: dataos://icebase:retail/customer
+    - dataset: dataos://lakehouse:retail/customer
       filter:
           name: filter_on_age
         # ...other filter attributes
@@ -518,7 +518,7 @@ stackSpec:
 ```yaml
 stackSpec:
   inputs:
-    - dataset: dataos://icebase:retail/customer
+    - dataset: dataos://lakehouse:retail/customer
       filter:
           where: age < 60
         # ...other filter attributes
@@ -541,7 +541,7 @@ It can help you to gain insight into the type of checks you can prepare to test 
 ```yaml
 stackSpec:
   inputs:
-    - dataset: dataos://icebase:retail/customer
+    - dataset: dataos://lakehouse:retail/customer
       profile:
         columns:
           - customer_index
@@ -623,7 +623,7 @@ stackSpec:
 ```yaml
 stackSpec:
   inputs:
-    - dataset: dataos://icebase:retail/customer
+    - dataset: dataos://lakehouse:retail/customer
       profile:
         columns:
           - customer_index

@@ -25,7 +25,7 @@ monitor:
               END AS result,
               timestamp
             FROM
-              icebase.sys01.soda_quality_checks
+              lakehouse.sys01.soda_quality_checks
             WHERE
               collection = 'financial_data_companies'
               AND dataset IN (

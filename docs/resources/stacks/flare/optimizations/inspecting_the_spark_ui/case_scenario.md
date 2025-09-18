@@ -19,7 +19,7 @@ workflow:
         tags:
           - customers
           - orders
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
         tier: connect
         flare:
@@ -78,7 +78,7 @@ workflow:
             logLevel: INFO
             outputs:
               - name: region_output
-                dataset: dataos://icebase:sample?acl=rw
+                dataset: dataos://lakehouse:sample?acl=rw
                 options:
                     saveMode: overwrite
                     sort:

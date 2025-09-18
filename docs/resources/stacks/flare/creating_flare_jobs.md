@@ -31,7 +31,7 @@ In the manifest configuration, a Flare Job defined within a DAG consists of thre
 ![Build.svg](/resources/stacks/flare/basic_concepts/build.svg)
 
 
-In order to grasp the intricacies of creating a Flare Job and the process of testing and deploying it, we shall explore a specific example of Data Ingestion. The data ingestion process will involve acquiring batch data in CSV format from an external source, applying various transformations on top of it, and ultimately storing the data within DataOS internal storage, Icebase.
+In order to grasp the intricacies of creating a Flare Job and the process of testing and deploying it, we shall explore a specific example of Data Ingestion. The data ingestion process will involve acquiring batch data in CSV format from an external source, applying various transformations on top of it, and ultimately storing the data within DataOS internal storage, Lakehouse.
 
 However, before delving into the technical aspects of this task, it is vital to verify certain prerequisites for smooth execution.
 
@@ -284,7 +284,7 @@ INFO[0001] 🔍 workflow...complete
 
   JOB NAME |   STACK    |        JOB TITLE        | JOB DEPENDENCIES  
 -----------|------------|-------------------------|-------------------
-  city-001 | flare:6.0  | City Dimension Ingester |                   
+  city-001 | flare:7.0  | City Dimension Ingester |                   
   system   | dataos_cli | System Runnable Steps   |                   
 
   RUNTIME | PROGRESS |          STARTED          |         FINISHED           
@@ -528,7 +528,7 @@ INFO[0002] 🔍 workflow...complete
 
   JOB NAME |   STACK    |        JOB TITLE        | JOB DEPENDENCIES  
 -----------|------------|-------------------------|-------------------
-  city-999 | flare:6.0  | City Dimension Ingester |                   
+  city-999 | flare:7.0  | City Dimension Ingester |                   
   system   | dataos_cli | System Runnable Steps   |                   
 
     RUNTIME  | PROGRESS |          STARTED          |         FINISHED           
@@ -552,7 +552,7 @@ INFO[0002] 🔍 workflow...complete
 
 Check the registered dataset on the Metis UI.
 
-> You have just run your first Flare Workflow and successfully ingested a dataset within the Icebase. We have also checked it on the Datanet. Once we are done with the ingestion and transformation, we can start querying the data using the Workbench and build analytics Dashboard.
+> You have just run your first Flare Workflow and successfully ingested a dataset within the Lakehouse. We have also checked it on the Datanet. Once we are done with the ingestion and transformation, we can start querying the data using the Workbench and build analytics Dashboard.
 
 But wait! The work doesn’t end here
 

@@ -15,5 +15,5 @@ policy:
       - {{read}}
     objects:
       paths:
-        - {{dataos://icebase:test_healthcare/patients}}
+        - {{dataos://lakehouse:test_healthcare/patients}}
     allow: {{true}}

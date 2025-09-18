@@ -17,7 +17,7 @@ The YAML template defines a DataOS Bundle Resource that automates the deployment
 
 ## Template 2
 
-This YAML template defines a DataOS Bundle Resource. It demonstrates how to reference resources either directly within the bundle or by using external manifest files with the file attribute (e.g., depot.yaml, read_icebase_write_snowflake.yaml). This approach allows you to modularize resource definitions and keep your bundle manifest clean and manageable.
+This YAML template defines a DataOS Bundle Resource. It demonstrates how to reference resources either directly within the bundle or by using external manifest files with the file attribute (e.g., depot.yaml, read_lakehouse_write_snowflake.yaml). This approach allows you to modularize resource definitions and keep your bundle manifest clean and manageable.
 
 ```yaml title="bundle_template_3.yml"
 --8<-- "examples/resources/bundle/bundle_template_3.yml"
@@ -95,7 +95,7 @@ bundle:
                 tags:
                   - Connect
                   - write
-                stack: flare:6.0
+                stack: flare:7.0
                 compute: runnable-default
                 stackSpec:
                   job:

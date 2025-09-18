@@ -25,7 +25,7 @@ workflow:
         DISABLE_RAW_FILE_SYSTEM_PERMISSION_SET: "true"
       tags:
       - {{tags}}
-      stack: flare:5.0
+      stack: flare:7.0
       compute: runnable-default
 
       persistentVolume: # Define Persistent Volume
@@ -35,7 +35,7 @@ workflow:
         job:
           inputs:
             - name: profile_city
-              dataset: dataos://icebase:retail/city # Dataset Name
+              dataset: dataos://lakehouse:retail/city # Dataset Name
               format: iceberg
 
           profile:
@@ -107,7 +107,7 @@ workflow:
       - Fides
       - City
       - has_profile
-      stack: flare:5.0
+      stack: flare:7.0
       compute: runnable-default
       title: City Profile
 
@@ -130,7 +130,7 @@ workflow:
 
           inputs:
             - name: profile_city
-              dataset: dataos://icebase:retail/city # Dataset Name
+              dataset: dataos://lakehouse:retail/city # Dataset Name
               format: iceberg
 
           profile:

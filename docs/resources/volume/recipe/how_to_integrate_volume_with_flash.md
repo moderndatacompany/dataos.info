@@ -65,16 +65,16 @@ service:
   stackSpec:
     datasets:
 
-      - address: dataos://icebase:sandbox/sfmc_email_activity
+      - address: dataos://lakehouse:sandbox/sfmc_email_activity
         name: email_campaign
 
-      - address: dataos://icebase:sandbox/efdp_sales_v2
+      - address: dataos://lakehouse:sandbox/efdp_sales_v2
         name: sales
 
-      - address: dataos://icebase:sandbox/efdp_product_v2
+      - address: dataos://lakehouse:sandbox/efdp_product_v2
         name: product
 
-      - address: dataos://icebase:sandbox/efdp_customer_v2
+      - address: dataos://lakehouse:sandbox/efdp_customer_v2
         name: customer
 
     init:

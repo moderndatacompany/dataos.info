@@ -71,50 +71,50 @@ columnTags:
 The code snippet to define column identifiers and tags is provided below: 
 
 ```yaml
-version: v1 # Version
-name: columnlevel-tag-workflow # Name of the Workflow
-type: workflow # Type of Resource (Here its workflow)
-title: Column Level Tagging # Title
-description: |
+version: v1                                   # Version
+name: columnlevel-tag-workflow                # Name of the Workflow
+type: workflow                                # Type of Resource (Here its workflow)
+title: Column Level Tagging                   # Title
+description: |                                # Description
   The purpose of this workflow is to provide tags at the column level using Flare. 
-workflow: # Workflow Section
-  dag: # Directed Acyclic Graph (DAG)
-    - name: columnlevel-tag-job # Name of the Job
-      title: Column Level Tagging Job # Title of the Job
-      description: |
+workflow:                                     # Workflow Section
+  dag:                                        # Directed Acyclic Graph (DAG)
+    - name: columnlevel-tag-job               # Name of the Job
+      title: Column Level Tagging Job         # Title of the Job
+      description: |                          # Description
         The purpose of this job is to tag columns at column level.
-      spec: # Specifications
-        stack: flare:6.0 # Stack Version (Here its 4.0)
-        compute: runnable-default # Compute
-        stackSpec: # Flare Section
-          job: # Job Section
-            explain: true # Explain
-            logLevel: INFO # Loglevel
-            showPreviewLines: 2 # Show Preview Lines
-            inputs: # Inputs Section
-              - name: a_city_csv # Input Dataset Name
-                dataset: dataos://thirdparty01:none/city # UDL of the Dataset
-                format: csv # Input Dataset Format
-                schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc # Schema Path
+      spec:                                   # Specifications
+        stack: flare:7.0                      # Stack Version 
+        compute: runnable-default             # Compute
+        stackSpec:                            # Flare Section
+          job:                                # Job Section
+            explain: true                     # Explain
+            logLevel: INFO                    # Loglevel
+            showPreviewLines: 2               # Show Preview Lines
+            inputs:                           # Inputs Section
+              - name: a_city_csv              # Input Dataset Name
+                dataset: dataos://thirdparty01:none/city                # UDL of the Dataset
+                format: csv                   # Input Dataset Format
+                schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc   # Schema Path
 
-            outputs: # Outputs Section
-              - name: finalDf # Output Dataset Name
-                dataset: dataos://lakehouse:publiccollection/customer_406?acl=rw # Output Dataset UDL
-                options: # Options
-                  iceberg: # Iceberg Specific Properties Section
+            outputs:                          # Outputs Section
+              - name: finalDf                 # Output Dataset Name
+                dataset: dataos://lakehouse:publiccollection/customer_406?acl=rw   # Output Dataset UDL
+                options:                      # Options
+                  iceberg:                    # Iceberg Specific Properties Section
                     partitionSpec:
                       - column: version
                         type: identity
                     properties:
                       write.format.default: parquet
                       write.metadata.compression-codec: gzip
-                  sort: # Sort
+                  sort:                       # Sort
                     columns:
                       - name: version
                         order: desc
                     mode: partition
-                format: iceberg # Format of Output Dataset
-                # tags:
+                format: iceberg               # Format of Output Dataset
+                # tags:                       # Tags (commented out)
                 # - Tier.System
                 # - Tier.Bronze              
                 # - PII.DateOfBirth
@@ -124,42 +124,43 @@ workflow: # Workflow Section
                 title: Column tags
                 description: Column tags 
 
-                columnTags: # Column Tag Property
-                  - columnRegex: "city_*" # Column Regular Expression to specify columns to be tagged.
-                    tags: # Tags to be designated
+                columnTags:                   # Column Tag Property
+                  - columnRegex: "city_*"     # Column Regular Expression to specify columns to be tagged.
+                    tags:                     # Tags to be designated
                       - PII.Sensitive
                       - PII.Email
                       - Tier.Bronze
                       - customer
-                  - columnName: "zip_code" # Name of the column to be tagged
-                    tags: # Tags to be applied to the column
+                  - columnName: "zip_code"    # Name of the column to be tagged
+                    tags:                     # Tags to be applied to the column
                       - PII.Gender
                       - PHI.DateOfBirth
-                  - columnName: "state_name" # Name of the column to be tagged
-                    tags: # Tags to be applied to the column
+                  - columnName: "state_name"  # Name of the column to be tagged
+                    tags:                     # Tags to be applied to the column
                       - PII.Sensitive
                       - PII.Name
                       - PII.Name
-                  - columnNames: # Name of the columns to be tagged (multiple)
+                  - columnNames:              # Name of the columns to be tagged (multiple)
                       - "state_name"
                       - "version"
                       - "zip_code"
                       - "zip_code"
-                    tags: # Tags to be applied to the column
+                    tags:                     # Tags to be applied to the column
                       - PII.Name
                       - Tier.Bronze
                       - Rubber
                       - Pencil
                       - PII.*
             
-            steps: # Steps Section
-              - sequence: # Sequence Section
-                  - name: finalDf # Name of the transformation step
-                    sql: SELECT *, date_format(now(), 'yyyyMMddHHmm') AS version FROM a_city_csv LIMIT 10 # sql
-                    functions: # Flare Function
+            steps:                            # Steps Section
+              - sequence:                     # Sequence Section
+                  - name: finalDf             # Name of the transformation step
+                    sql: SELECT *, date_format(now(), 'yyyyMMddHHmm') AS version FROM a_city_csv LIMIT 10   # sql
+                    functions:                # Flare Function
                       - name: drop
                         columns:
                           - "__metadata_dataos_run_mapper_id"
+
 ```
 
 The above code snippet will apply the tags to the specified columns of the dataset. To verify that the correct tags have been applied, navigate to Metis. In Metis, go to Assets, go to Table choose `customer_406` dataset. You will be able to see that the tags have been successfully applied, as shown in the image below. 

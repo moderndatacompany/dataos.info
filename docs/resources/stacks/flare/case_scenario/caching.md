@@ -22,7 +22,7 @@ workflow:
   dag:
     - name: resource-level-pod-usage
       spec:
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           job:
@@ -70,7 +70,7 @@ workflow:
 
             outputs:
               - name: final_data
-                dataset: dataos://icebase:pod_usage/resource_usage?acl=rw
+                dataset: dataos://lakehouse:pod_usage/resource_usage?acl=rw
                 format: Iceberg
                 options:
                   saveMode: append

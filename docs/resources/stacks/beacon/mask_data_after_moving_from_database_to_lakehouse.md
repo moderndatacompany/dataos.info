@@ -1,4 +1,4 @@
-# Mask Data After Moving from Database to Icebase
+# Mask Data After Moving from Database to Lakehouse
 
 This article explains the steps to access Sales transaction data in PostgreSQL, a relational database in the DataOS storage. We need to create a Beacon service that enables you to access this database through PostgreSQL REST API. We can also enforce DataOS governance policies for the secure access of the data in PostgreSQL.
 
@@ -135,7 +135,7 @@ You need to create a workflow to ingest sales data given in JSON format to the P
             tags:
                 - Connect_jobs
                 - transactions_connect
-            stack: flare:6.0
+            stack: flare:7.0
             envs:
               HERA_URL: "https://enough-kingfish.dataos.app/hera/api"
               DEPOT_SERVICE_URL: "https://enough-kingfish.dataos.app/ds/api/v2"
@@ -227,7 +227,7 @@ You need to create a workflow to ingest sales data given in JSON format to the P
 
       JOB NAME |   STACK    |           JOB TITLE            | JOB DEPENDENCIES  
     -----------|------------|--------------------------------|-------------------
-      sales    | flare:6.0  | connect sales transactions     |                   
+      sales    | flare:7.0  | connect sales transactions     |                   
               |            | data                           |                   
       system   | dataos_cli | System Runnable Steps          |                   
 

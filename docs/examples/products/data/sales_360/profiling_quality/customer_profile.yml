@@ -25,7 +25,7 @@ monitor:
               round(result,2) * 100 as missing_percentage,
               concat(depot,':',collection,':',dataset) as dataset
             FROM
-              icebase.sys01.profiles
+              lakehouse.sys01.profiles
             WHERE
               analyzer_name = 'Missing'
               and result > 0 and created_at >= CAST(((SELECT CURRENT_TIMESTAMP()) AS TIMESTAMP) - INTERVAL '5' MINUTE)

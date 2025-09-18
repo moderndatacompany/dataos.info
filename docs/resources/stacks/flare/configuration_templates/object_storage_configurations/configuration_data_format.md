@@ -66,7 +66,7 @@ To write an Iceberg file using Flare, you can use the following YAML configurati
 ```yaml
 outputs:
   - name: ny_taxi_ts
-    dataset: dataos://icebase:sample/ny_taxi_iceberg?acl=rw
+    dataset: dataos://lakehouse:sample/ny_taxi_iceberg?acl=rw
     format: Iceberg
     options:
       saveMode: append         

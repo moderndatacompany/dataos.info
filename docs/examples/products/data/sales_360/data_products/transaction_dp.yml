@@ -69,4 +69,4 @@ v1alpha:
 #       - description: A data product for transactions that optimizes transactions management using real-time data and advanced analytics for accurate demand forecasting.
 #         purpose: source
 #         refType: dataos
-#         ref: dataos://icebase:sales_analytics/transactions
+#         ref: dataos://lakehouse:sales_analytics/transactions

@@ -27,7 +27,7 @@ workflow:
   dag:
     - name: sample
       spec:
-        stack: flare:6.0
+        stack: flare:7.0
         stackSpec:
           driver:    
             coreLimit: 12000m
@@ -47,7 +47,7 @@ workflow:
             logLevel: INFO
             outputs:
               - name: clustered_records
-                dataset: dataos://icebase:sample/unpivot_data_02?acl=rw
+                dataset: dataos://lakehouse:sample/unpivot_data_02?acl=rw
                 format: Iceberg
                 description: unpivotdata
                 options:
@@ -84,8 +84,6 @@ workflow:
                     - name: clustered_records
                       sql: SELECT * FROM select_all_column CLUSTER BY week_year_column
 
-          sparkConf:
-            - spark.sql.extensions: org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions
 ```
 </details>
 
@@ -125,14 +123,14 @@ workflow:
       tags:
       - Connect
       - City
-      stack: flare:6.0
+      stack: flare:7.0
       compute: runnable-default
       stackSpec:
         job:
           explain: true
           inputs:
            - name: cities
-             dataset: dataos://icebase:retail/city
+             dataset: dataos://lakehouse:retail/city
              format: Iceberg
 # User Defined Flare Functions
           udfs:
@@ -146,7 +144,7 @@ workflow:
           logLevel: INFO
           outputs:
             - name: out001
-              depot: dataos://icebase:retailsample?acl=rw
+              depot: dataos://lakehouse:retailsample?acl=rw
           steps:
           - sink:
               - sequenceName: finalDf

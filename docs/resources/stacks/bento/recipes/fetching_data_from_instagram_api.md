@@ -148,7 +148,7 @@ dataos-ctl fastbase topic consume -p -s -t persistent://<tenant>/<namespace>/<to
 dataos-ctl fastbase topic consume -p -s -t persistent://public/default/test12
 ```
 
-## Step 11: Read from Fastbase and write to Icebase
+## Step 11: Read from Fastbase and write to Lakehouse
 
 ```yaml
 version: v1
@@ -156,7 +156,7 @@ name: pulsar-insta
 type: workflow
 tags:
   - json-api
-description: This jobs ingest Data from pulsar to icebase
+description: This jobs ingest Data from pulsar to lakehouse
 workflow:
   schedule:                # workflow scheduler                                                
     cron: '* * * * *'           # Every Minutes               
@@ -169,7 +169,7 @@ workflow:
       spec:
         tags:
           - insta    
-        stack: flare:5.0  
+        stack: flare:7.0  
 
         stackSpec:
           driver:
@@ -186,7 +186,7 @@ workflow:
             streaming:
               batchMode: true
               triggerMode: Once
-              checkpointLocation: dataos://icebase:sys01/checkpoints/insta/insta?acl=rw 
+              checkpointLocation: dataos://lakehouse:sys01/checkpoints/insta/insta?acl=rw 
             inputs:
              - name: randomip
                dataset: dataos://fastbase:default/test13
@@ -196,7 +196,7 @@ workflow:
             logLevel: INFO
             outputs:
               - name: output01 # http client data
-                depot: dataos://icebase:sample?acl=rw
+                depot: dataos://lakehouse:sample?acl=rw
             steps:
               - sink: 
                   - sequenceName: randomip

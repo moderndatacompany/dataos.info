@@ -12,7 +12,7 @@ The provided template defines an access policy for REST APIs within DataOS. The 
 
 #### **Dataset Access**
 
-The provided template defines an access policy for a [Depot](/resources/depot/) within DataOS. The sample given below authorizes users with the `roles:id:healthcaredatauser` tag to `READ` predicate on the dataset stored at the UDL address, `dataos://icebase:test/customer_test`. Please remember to customize the template by replacing the placeholder values with the necessary details based on your specific requirements.
+The provided template defines an access policy for a [Depot](/resources/depot/) within DataOS. The sample given below authorizes users with the `roles:id:healthcaredatauser` tag to `READ` predicate on the dataset stored at the UDL address, `dataos://lakehouse:test/customer_test`. Please remember to customize the template by replacing the placeholder values with the necessary details based on your specific requirements.
 
 ```yaml
 --8<-- "examples/resources/policy/access_policy/access_policy2.yaml"
@@ -20,7 +20,7 @@ The provided template defines an access policy for a [Depot](/resources/depot/) 
 
 #### **Collection Access**
 
-The provided template defines an access policy for a Collection within a Depot. The sample given below authorizes users with the `dataos:u:people-DW:user` tag to perform `READ` predicate on the collection stored at the UDL address, `dataos://icebase:people_dw/*`. Please remember to customize the template by replacing the placeholder values with the necessary details based on your specific requirements.
+The provided template defines an access policy for a Collection within a Depot. The sample given below authorizes users with the `dataos:u:people-DW:user` tag to perform `READ` predicate on the collection stored at the UDL address, `dataos://lakehouse:people_dw/*`. Please remember to customize the template by replacing the placeholder values with the necessary details based on your specific requirements.
 
 ```yaml
 --8<-- "examples/resources/policy/access_policy/access_policy3.yaml"
@@ -28,7 +28,7 @@ The provided template defines an access policy for a Collection within a Depot. 
 
 #### **Deny All Predicates on Dataset by Tag**
 
-The provided template defines a policy that denies access to a dataset stored within a Depot. The sample given below denies users with the `roles:id:tag:selective-restricted-access` tag to execute any predicates on the dataset stored at the UDL address, `dataos://icebase:test/customer_test`. Please remember to customize the template by replacing the placeholder values with the necessary details based on your specific requirements.
+The provided template defines a policy that denies access to a dataset stored within a Depot. The sample given below denies users with the `roles:id:tag:selective-restricted-access` tag to execute any predicates on the dataset stored at the UDL address, `dataos://lakehouse:test/customer_test`. Please remember to customize the template by replacing the placeholder values with the necessary details based on your specific requirements.
 
 ```yaml
 --8<-- "examples/resources/policy/access_policy/access_policy4.yaml"
@@ -36,7 +36,7 @@ The provided template defines a policy that denies access to a dataset stored wi
 
 #### **Collection Access by Regex-Filtered Tags**
 
-The provided template defines a policy that allows access to a dataset stored within a Depot. The sample given below allows users with tags following the regex `roles:id:**` OR `users:id:**` tag to execute any predicates on the dataset stored at the UDL address, `dataos://icebase:test_healthcare/**`. Please remember to customize the template by replacing the placeholder values with the necessary details based on your specific requirements.
+The provided template defines a policy that allows access to a dataset stored within a Depot. The sample given below allows users with tags following the regex `roles:id:**` OR `users:id:**` tag to execute any predicates on the dataset stored at the UDL address, `dataos://lakehouse:test_healthcare/**`. Please remember to customize the template by replacing the placeholder values with the necessary details based on your specific requirements.
 
 ```yaml
 --8<-- "examples/resources/policy/access_policy/access_policy5.yaml"

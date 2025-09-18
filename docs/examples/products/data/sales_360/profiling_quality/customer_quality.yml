@@ -24,7 +24,7 @@ workflow:
             memory: 250Mi
         stackSpec:
           inputs:
-            - dataset: dataos://icebase:sales_360/customer?acl=rw
+            - dataset: dataos://lakehouse:sales_360/customer?acl=rw
               options:
                 engine: minerva
                 clusterName: system   

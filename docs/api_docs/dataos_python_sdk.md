@@ -132,7 +132,7 @@ ds_client.set_base_url(base_url)
 ds_client_instance = ds_client.build()
 
 # Access the dataset_api and list metadata for a specific dataset
-metadata = ds_client_instance.dataset_api.list_metadata(depot="icebase", collection="retail", dataset="city")
+metadata = ds_client_instance.dataset_api.list_metadata(depot="lakehouse", collection="retail", dataset="city")
 
 # Print Metadata
 print(metadata)

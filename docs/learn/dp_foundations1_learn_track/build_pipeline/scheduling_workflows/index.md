@@ -94,7 +94,7 @@ workflow:
        tags:
          - Connect
          - write
-       stack: flare:6.0
+       stack: flare:7.0
        compute: runnable-default
        stackSpec:
          job:
@@ -108,7 +108,7 @@ workflow:
            logLevel: INFO
            outputs:
              - name: poros_workflows
-               dataset: dataos://icebase:sys09/poros_workflows_pulsar?acl=rw
+               dataset: dataos://lakehouse:sys09/poros_workflows_pulsar?acl=rw
                format: Iceberg
                options:
                  saveMode: overwrite

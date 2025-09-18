@@ -58,13 +58,13 @@ inputs:
       key2:value2
 
   - name: input_customers                                             # name of the dataset
-    dataset: dataos://icebase:retail/customer                         # address of the input dataset
+    dataset: dataos://lakehouse:retail/customer                         # address of the input dataset
     format: iceberg                                                   # file format
 ```
 
 **Sample Read configuration YAML**
 
-Let’s take a case scenario where the dataset is stored in Azure Blob File System (ABFSS) and you have to read data from the source, perform some transformation steps and write it to the Icebase, which is a managed depot within the DataOS. The read config YAML will be as follows
+Let’s take a case scenario where the dataset is stored in Azure Blob File System (ABFSS) and you have to read data from the source, perform some transformation steps and write it to the Lakehouse, which is a managed depot within the DataOS. The read config YAML will be as follows
 
 ```yaml title="object_storage_depots_read.yml"
 --8<-- "examples/resources/stacks/flare/object_storage_depots_read.yml"
@@ -87,7 +87,7 @@ outputs:
 
 **Sample Write configuration YAML**
 
-Let’s take a case scenario where the output dataset is to be stored in Azure Blob File System Depot (ABFSS), and you have to read data from the Icebase depot within the DataOS. The write config YAML will be as follows
+Let’s take a case scenario where the output dataset is to be stored in Azure Blob File System Depot (ABFSS), and you have to read data from the Lakehouse depot within the DataOS. The write config YAML will be as follows
 
 ```yaml title="object_storage_depots_write.yml"
 --8<-- "examples/resources/stacks/flare/object_storage_depots_write.yml"

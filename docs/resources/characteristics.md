@@ -54,7 +54,7 @@ depot:
 
 Without the Secret Resource, data developer would have to fill up the credentials to the S3 bucket, or wait for the IT team to create it for them. Likewise you can refer & call both Depot & Stacks in the config files of *runnable Resources*, Workflow & Service.
 
-Now let us take an example to illustrate the composability of the Resources. Say you want to ingest streaming data into a Lakehouse to later run OLAP use cases on top of it, or create data models after applying appropriate Governance policies. One way to do this is to compose the three Resources together: Service, Depot (Fastbase & Icebase), and Workflow.
+Now let us take an example to illustrate the composability of the Resources. Say you want to ingest streaming data into a Lakehouse to later run OLAP use cases on top of it, or create data models after applying appropriate Governance policies. One way to do this is to compose the three Resources together: Service, Depot (Fastbase & Lakehouse), and Workflow.
 
 You will learn about interoperability & composability of Resources with more extensive examples as you go through the documentation.
 

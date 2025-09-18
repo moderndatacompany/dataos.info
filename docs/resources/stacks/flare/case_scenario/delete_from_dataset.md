@@ -25,7 +25,7 @@ workflow:                                                 # Workflow Specific Se
       spec:                                               # Specs
         tags:                                             # Tags
           - Delete
-        stack: flare:6.0                                  # Stack Version (Here its Flare stack)
+        stack: flare:7.0                                  # Stack Version
         compute: runnable-default                         # Compute 
         stackSpec:                                        # Flare Section
           job:                                            # Job Section
@@ -56,7 +56,7 @@ workflow:                                                    # Workflow Section
   dag:                                                       # Directed Acyclic Graph (DAG)
     - name: delete-from-city                                 # Name of the Job
       spec:                                                  # Specs
-        stack: flare:6.0                                     # Stack is Flare (so its a Flare Job)
+        stack: flare:7.0                                     # Stack is Flare (so its a Flare Job)
         compute: runnable-default                            # Compute
         stackSpec:                                           # Flare Stack Specific Section
           job:                                               # Job Section
@@ -81,4 +81,32 @@ workflow:                                                    # Workflow Section
 
 !!! tip
 
-    To verify you can use Workbench and count the record before and after running the `delete_from_dataset` action job.
+    - To verify you can use Workbench and count the record before and after running the `delete_from_dataset` action job.
+    - Multiple input datasets are supported exclusively by the `delete_from_dataset` action.
+    - When operating within a Google Cloud Storage (GCS) ecosystem, the dataset address must include the acl=rw query parameter. For example:
+      ```yaml
+      inputs:
+        - name: inputDf
+          dataset: dataos://icebase:actions/random_users_data?acl=rw
+          format: Iceberg
+      ```
+    - The inclusion of the `acl=rw` parameter is required due to GCS credential behavior. GCS typically generates two sets of credentials: one with read-only access and another with read and write access. Since Flare `actions` involve writing operations, the write-enabled credentials must be explicitly specified. If the `acl` parameter is omitted, Flare defaults to read-only mode, which restricts the ability to write or update data and metadata files.
+    - Expected Error if `acl=rw` is omitted:
+    ```json
+    [CIRCULAR REFERENCE:com.google.api.client.googleapis.json.GoogleJsonResponseException: 403 Forbidden
+    POST https://storage.googleapis.com/upload/storage/v1/b/lake001-shiningtr-dev/o?ifGenerationMatch=0&name=icebase/test/city251/data/version%3D202301250835/00131-8-8ac950a8-6007-4679-90e3-6902966af097-00001.parquet&uploadType=resumable
+    {
+      "error": {
+        "code": 403,
+        "message": "ds-sa-r-shiningtr-stw-dev@<account-name>.iam.gserviceaccount.com does not have storage.objects.create access to the Google Cloud Storage object. Permission 'storage.objects.create' denied on resource (or it may not exist).",
+        "errors": [
+          {
+            "message": "ds-sa-r-shiningtr-stw-dev@<account-name>.iam.gserviceaccount.com does not have storage.objects.create access to the Google Cloud Storage object. Permission 'storage.objects.create' denied on resource (or it may not exist).",
+            "domain": "global",
+            "reason": "forbidden"
+          }
+        ]
+      }
+    }
+    ]
+    ```

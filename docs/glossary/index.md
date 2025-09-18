@@ -114,8 +114,7 @@ hide:
 | Term | Description |
 | --- | --- |
 | [Lakehouse](/resources/lakehouse/) | A managed hybrid storage layer combining data lakes and warehouses, designed for storing processed datasets in DataOS. |
-| [Lens](/interfaces/lens/) | It is a modeling layer capable of accessing and modeling data from disparate sources. It supports data-driven decision-making by supporting and connecting to underlying data to the real-world business objects, formulates and delineate measure, KPIs, and relationships between different business concepts. |
-| [Lens Explorer](/interfaces/lens/#lens-explorer) | Lens Explorer is an intuitive graphical user interface that allows users to discover and analyze data within the Ontology layer. Users can utilize Lens Explorer to query the semantic model(lens) and obtain answers to complex data questions in an exploratory manner.|
+| [Lens](/resources/lens/) | It is a modeling layer capable of accessing and modeling data from disparate sources. It supports data-driven decision-making by supporting and connecting to underlying data to the real-world business objects, formulates and delineate measure, KPIs, and relationships between different business concepts. |
 
 ## m 
 
@@ -155,7 +154,7 @@ hide:
 | [PEP](/resources/policy/#policy-enforcement-point-pep/) | Policy Enforcement Point is responsible for execution of the decision returned from PDP. |
 | Poros | DataOS Poros is an orchestration engine for managing workflows, which are run for data transformation and movement. Working in coordination with Kubernetes, Poros efficiently allocates resources to various running jobs and services for data processing.  |
 | [Policy](/resources/policy/) | Policy is a DataOS Resource which governs the behaviour of users(applications and persons). In DataoS, two types of policies can be created- Access Policy & Data Policy.  |
-| [Profiling](/resources/stacks/flare/case_scenario/data_profiling_jobs/#data-profiling-jobs) | Data profiling is a process that involves examining data to gain insights into its structure, quality, and characteristics. In DataOS,  data profiling workflow aims to analyze data for valid formats, null values, and inconsistencies to enhance data quality. By utilizing basic statistics, it uncovers anomalies, redundancies, and provides insights into the validity of the data. |
+| Profiling | Data profiling is a process that involves examining data to gain insights into its structure, quality, and characteristics. In DataOS,  data profiling workflow aims to analyze data for valid formats, null values, and inconsistencies to enhance data quality. By utilizing basic statistics, it uncovers anomalies, redundancies, and provides insights into the validity of the data. |
 
 
 

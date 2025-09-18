@@ -27,7 +27,7 @@ cluster:
     secrets:
       - ${{mysecret}}
     depots: # mandatory
-      - address: ${{dataos://icebase:default}} # mandatory
+      - address: ${{dataos://lakehouse:default}} # mandatory
         properties:
           iceberg.file-format: ${{PARQUET}} 
           iceberg.compression-codec: ${{GZIP}} 
@@ -147,7 +147,7 @@ cluster:
       logLevel: INFO
       trinoLogLevel: ERROR
     depots: 
-      - address: dataos://icebase:default
+      - address: dataos://lakehouse:default
         properties: 
           iceberg.file-format: PARQUET
           iceberg.compression-codec: GZIP
@@ -505,7 +505,7 @@ cluster:
     secrets:
       - mysecret
     depots: # mandatory
-      - address: dataos://icebase:default # mandatory
+      - address: dataos://lakehouse:default # mandatory
         properties:
           iceberg.file-format: PARQUET 
           iceberg.compression-codec: GZIP 
@@ -562,7 +562,7 @@ Each depot configuration comprises of the following attributes:
 cluster:
   minerva:
     depots:
-      - address: dataos://icebase:default
+      - address: dataos://lakehouse:default
         properties:
           iceberg.file-format: PARQUET
           iceberg.compression-codec: GZIP
@@ -593,7 +593,7 @@ cluster:
 cluster:
   minerva:
     depots:
-      - address: dataos://icebase:default
+      - address: dataos://lakehouse:default
 ```
 
 ---

@@ -89,13 +89,13 @@ dataos://******
 - If access is to be restricted to specific tables, utilize the address format below:
 
 ```bash
-dataos://icebase:emr_healthcare/*
+dataos://lakehouse:emr_healthcare/*
 ```
 
-- To grant access specifically on icebase, employ the address format demonstrated:
+- To grant access specifically on lakehouse, employ the address format demonstrated:
 
 ```bash
-dataos://icebase:******
+dataos://lakehouse:******
 ```
 
 Alternatively, you can apply the following sample access policy manifest 

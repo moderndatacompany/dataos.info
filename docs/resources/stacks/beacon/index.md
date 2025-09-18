@@ -141,6 +141,6 @@ dataos-ctl -t service -w public -n pulsar-random  get runtime -r
 
 - [Query Pushdown SSL Postgres](/resources/stacks/beacon/query_pushdown_ssl_postgres/)
 
-- [Mask Data After Moving from Database to Icebase ](/resources/stacks/beacon/mask_data_after_moving_from_database_to_icebase/)
+- [Mask Data After Moving from Database to Lakehouse ](/resources/stacks/beacon/mask_data_after_moving_from_database_to_lakehouse/)
 
 - [Exposing an API After Creating a Database ](/resources/stacks/beacon/exposing_an_api_after_creating_a_database/)

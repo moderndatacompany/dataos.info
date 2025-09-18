@@ -10,7 +10,7 @@ Iceberg makes partitioning simple by implementing hidden partitioning. You need 
 
 For example, a simple query like this is capable of fetching data from multiple partition spec:
 
-```yaml
+```sql
 Select * from NY-Taxi where date_col > 2010-10-23 AND date_col < 2013-01-01
 ```
 
@@ -47,12 +47,12 @@ workflow:
   title: NY Taxi Data Ingestion
   dag:
     - name: storage-event-context
-      description: The job ingests NY-Taxi data from dropzone into Icebase with enhanced metadata configuration.
+      description: The job ingests NY-Taxi data from dropzone into Lakehouse with enhanced metadata configuration.
       title: NY Taxi Ingestion
       spec:
         tags:
           - NY-Taxi
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           driver:
@@ -128,13 +128,13 @@ workflow:
   title: NY Taxi Data Ingestion
   dag:
     - name: storage-event-context
-      description: The job ingests NY-Taxi data from dropzone into Icebase with enhanced metadata configuration.
+      description: The job ingests NY-Taxi data from dropzone into Lakehouse with enhanced metadata configuration.
       title: NY Taxi Ingestion
       spec:
         tags:
           - NY-Taxi
           - Connect
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           driver:

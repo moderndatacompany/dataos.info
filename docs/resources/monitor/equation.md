@@ -8,7 +8,7 @@ Before creating a Equation Monitor, the following prerequisites must be met for 
 
 **Logged into DataOS CLI:**
 
-Ensure that the DataOS Command Line Interface is set up on the local system and that the user is logged in before proceeding. See Setting up CLI.
+Ensure that the DataOS Command Line Interface is set up on the local system and that the user is logged in before proceeding. See [Setting up CLI](/interfaces/cli/).
 
 **Permissions:**
 
@@ -183,4 +183,4 @@ Details of any created Monitor can also be accessed through the DataOS GUI in th
 
 ## Next steps
 
-After successfully creating the Equation Monitor, the next step is to configure a [Pager Resource](/resource/pager/). The Pager Resource is responsible for sending alerts to pre-configured Teams channels or email addresses whenever the incident condition is met. 
+After successfully creating the Equation Monitor, the next step is to configure a [Pager Resource](/resources/pager/). The Pager Resource is responsible for sending alerts to pre-configured Teams channels or email addresses whenever the incident condition is met. 

@@ -28,7 +28,7 @@ From the design phase, it is clear which DataOS Resources we require to build th
 
 Let’s see how you can utilize Flare for various transformations, we are taking the same example of Google Analytics here, to ingest raw data as is from S3, with the only transformation being the conversion of the date column to date_time since it's initially in varchar format.
 
-The code snippet below demonstrates a Workflow involving a single Flare batch job that reads the input dataset from the S3 depot, performs transformation using Flare Stack, and stores the output dataset in the Icebase Depot. 
+The code snippet below demonstrates a Workflow involving a single Flare batch job that reads the input dataset from the S3 depot, performs transformation using Flare Stack, and stores the output dataset in the Lakehouse Depot. 
 
 ```yaml
 version: v1
@@ -46,7 +46,7 @@ workflow:
       spec:
         tags:
           - GA-Sessions-Daily-Data-Raw
-        stack: flare:5.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           driver:
@@ -63,7 +63,7 @@ workflow:
             streaming:
               forEachBatchMode: true
               triggerMode: Once
-              checkpointLocation: dataos://icebase:sys01/checkpoints/ga-sessions-daily-data-raw/ga-1001?acl=rw
+              checkpointLocation: dataos://lakehouse:sys01/checkpoints/ga-sessions-daily-data-raw/ga-1001?acl=rw
             inputs:
               - name: ga_sessions_daily_data
                 dataset: dataos://s3depot:none/ga_data/
@@ -72,7 +72,7 @@ workflow:
             logLevel: INFO
             outputs:
               - name: ga_sessions_daily_data_raw_v
-                dataset: dataos://icebase:google_analytics/ga_sessions_daily_data_raw?acl=rw
+                dataset: dataos://lakehouse:google_analytics/ga_sessions_daily_data_raw?acl=rw
                 format: Iceberg
                 title: GA Sessions Daily Data
                 description: Ingests GA Sessions Data daily
@@ -281,7 +281,7 @@ policy:
   data:
     dataset: ga_sessions_daily_data_raw
     collection: google_analytics
-    depot: icebase
+    depot: lakehouse
     priority: 40
     type: mask
     mask:

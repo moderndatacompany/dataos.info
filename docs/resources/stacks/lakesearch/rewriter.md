@@ -55,7 +55,335 @@ A user must have the following requirements met before setting up a Lakesearch S
     </div>
 
     
-- Ensure the Lakesearch Stack is available in the DataOS Environment.
+- Ensure the Lakesearch Stack is available in the DataOS Environment. To deploy the Lakesearch Stack in your DataOS Environment follow the below steps. 
+
+    **Create a Lakesearch Stack manifest file using the template below and apply it to make the Lakesearch Stack available:**
+
+    <details>
+      <summary>lakesearch_stack.yaml</summary>
+      
+      ```yaml
+      name: lakesearch-v2
+      version: v1alpha
+      type: stack
+      tags:
+        - dataos:type:resource
+        - dataos:resource:stack
+        - dataos:type:cluster-resource
+        - dataos:layer:user
+      description: dataos lakesearch stack v1alpha version 2
+      layer: user
+      stack:
+        name: lakesearch
+        version: '2.0'
+        reconciler: stackManager
+        image:
+          registry: docker.io
+          repository: tmdcio
+          image: lakesearch
+          tag: 0.4.0
+          auth:
+            imagePullSecret: dataos-container-registry
+        environmentVars:
+          DEPOT_SERVICE_URL: https://${{dataos-fqdn}}/ds
+          ENABLE_SET_ULIMITS: '1'
+          GIN_MODE: release
+          HEIMDALL_URL: https://${{dataos-fqdn}}/heimdall/
+          LAKESEARCH_CONFIG_PATH: /etc/dataos/config/lakesearch.yaml
+          LAKESEARCH_GRPC_SERVER_PORT: '4090'
+          PROJECT_ROOT_PATH: /go/src/bitbucket.org/rubik_/lakesearch
+          PUSHGATEWAY_URL: http://thanos-query-frontend.sentinel.svc.cluster.local:9090
+          SEARCHD_TEMPLATE_PATH: /etc/searchd/searchd.conf.tmpl
+          SEARCHD_URL: http://localhost:9308
+        stackSpecValueSchema:
+          jsonSchema: |
+            {
+              "$schema": "http://json-schema.org/draft-07/schema#",
+              "type": "object",
+              "properties": {
+                "lakesearch": {
+                  "type": "object",
+                  "properties": {
+                    "index_tables": {
+                      "items": {
+                      "type": "array"                    
+                      "type": "array"                    
+                      "type": "array"                    
+                      "type": "array"                       
+                      "type": "array"                       
+                      "type": "array"                       
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                    },                                   
+                    "source": {
+                      ]
+                      ]                            
+                      ]                             
+                      ]                                
+                      ]                                
+                      ]                                
+                      ]                                
+                      ]                                
+                      ]                                
+                      ]                                
+                      ]                                
+                      ]                                
+                      ]                                
+                      ]                                
+                      ]                                
+                      ]                                
+                      ]                                
+                      ]                                
+                      ]                                
+                      ]                                
+                      ]                                
+                      ]                                      
+                      ]                                      
+                      ]                                      
+                      ]                                      
+                      ]                                      
+                      ]                                      
+                      ]                                      
+                      ]                                      
+                      ]                                      
+                      ]                                      
+                      ]                                      
+                      ]                                      
+                      ]                                      
+                      ]                                      
+                      ]                                      
+                      ]                                      
+                      ]                                      
+                      ]                                      
+                      ]                                      
+                      ]                                      
+                      ]                                      
+                      ]                                      
+                      ]                                      
+                      ]                                      
+                      ]                                      
+                    },
+                    "indexers": {
+                      "type": "array"
+                      "type": "array"
+                      "type": "array"                                       
+                      "type": "array"                                       
+                      "type": "array"                                       
+                      "type": "array"                                       
+                      "type": "array"                                       
+                      "type": "array"                                       
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                      "type": "array"                                          
+                    }
+                  }
+                }
+              }
+            }
+        serviceConfig:
+          configFileTemplate: |
+            lakesearch.yaml: |
+            {{ toYaml .ApplicationSpec.StackSpec | indent 2 }}
+          containerResourceTemplate: |
+            container:
+              name: "{{.Name}}{{.Stamp}}-indexer"
+              image: "{{.Image}}"
+              imagePullPolicy: IfNotPresent
+              command:
+                - "/usr/bin/lakesearch"
+              ports:
+                - containerPort: 4080
+              volumeMounts:
+                {{ if .HasConfigConfs }}
+                - name: dataos-config-mount
+                  mountPath: "{{.DataOsConfigMountPath}}"
+                  readOnly: true
+                {{- end }}
+                {{ if .ApplicationSpec.TempVolume -}}
+                - name: {{.Name}}-{{.Type}}{{.Stamp}}-tdm
+                  mountPath: "{{.DataTempMountPath}}"
+                  subPath: {{.Name}}{{.Stamp}}
+                {{- end }}
+                {{ if .ApplicationSpec.PersistentVolume -}}
+                - name: {{.Name}}-{{.Type}}{{.Stamp}}-pdm
+                  mountPath: "{{.DataPersistentMountPath}}/{{.ApplicationSpec.PersistentVolume.Directory}}"
+                  subPath: "{{.ApplicationSpec.PersistentVolume.Directory}}"
+                {{- end }}
+                {{ if .Volumes }}
+                {{- range $volume := .Volumes }}
+                - name: {{$volume.Name}}
+                  mountPath: "{{$volume.MountPath}}"
+                  readOnly: {{$volume.ReadOnly}}
+                  {{ if $volume.SubPath }}
+                  subPath: "{{$volume.SubPath}}"
+                  {{- end }}
+                {{- end }}
+                {{- end }}
+              {{ if .ApplicationSpec.Resources -}}
+              resources:
+            {{toYaml .ApplicationSpec.Resources | indent 4}}
+      i>....                                                                                                                                                                                                                             
+              {{- end }}
+              envFrom:
+              - secretRef:
+                  name: "{{.Name}}-{{.Type}}{{.Stamp}}-env"
+              {{ if .EnvironmentVarsFromSecret }}
+              {{- range $secName := .EnvironmentVarsFromSecret }}
+              - secretRef:
+                name: "{{$secName}}"
+              {{- end }}
+              {{- end }}
+            sidecars:
+              - name: "{{.Name}}{{.Stamp}}-searcher"
+                image: "{{.Image}}"
+                imagePullPolicy: IfNotPresent
+                command:
+                - /usr/bin/lakesearch
+                ports:
+                  - containerPort: 9306
+                  - containerPort: 9308
+                  - containerPort: 9312
+                securityContext:
+                  privileged: true
+                volumeMounts:
+                  {{ if .HasConfigConfs }}
+                  - name: dataos-config-mount
+                    mountPath: "{{.DataOsConfigMountPath}}"
+                    readOnly: true
+                  {{- end }}
+                  {{ if .ApplicationSpec.TempVolume -}}
+                  - name: {{.Name}}-{{.Type}}{{.Stamp}}-tdm
+                    mountPath: "{{.DataTempMountPath}}"
+                    subPath: {{.Name}}{{.Stamp}}
+                  {{- end }}
+                  {{ if .ApplicationSpec.PersistentVolume -}}
+                  - name: {{.Name}}-{{.Type}}{{.Stamp}}-pdm
+                    mountPath: "{{.DataPersistentMountPath}}/{{.ApplicationSpec.PersistentVolume.Directory}}"
+                    subPath: "{{.ApplicationSpec.PersistentVolume.Directory}}"
+                  {{- end }}
+                  {{ if .Volumes }}
+                  {{- range $volume := .Volumes }}
+                  - name: {{$volume.Name}}
+                    mountPath: "{{$volume.MountPath}}"
+                    readOnly: {{$volume.ReadOnly}}
+                    {{ if $volume.SubPath }}
+                      subPath: "{{$volume.SubPath}}"
+                    {{- end }}
+                  {{- end }}
+                  {{- end }}
+                envFrom:
+                - secretRef:
+                    name: "{{.Name}}-{{.Type}}{{.Stamp}}-env"
+                {{ if .EnvironmentVarsFromSecret }}
+                {{- range $secName := .EnvironmentVarsFromSecret }}
+                - secretRef:
+                  name: "{{$secName}}"
+                {{- end }}
+                {{- end }}
+                env:
+                  - name: MODE
+                    value: searchd
+        secretProjection:
+          type: propFile 
+      ```
+    </details>
+
+
+    **Apply the Stack manifest file using the following command:**
+
+    ```bash
+    dataos-ctl apply -f ${{path-to-lakesearch-stack-manifest-file}} --disable-interpolation
+    ```
 
 - Configure Volume Resource for storage allocation. Follow the below steps to configure a Volume Resource.
 
@@ -197,7 +525,7 @@ A user must have the following requirements met before setting up a Lakesearch S
           source:
             datasets:
               - name: devices
-                dataset: dataos://icebase:ls_data/devices_with_d
+                dataset: dataos://lakehouse:ls_data/devices_with_d
           index_tables:
             - name: devices
               description: "index for devices"
@@ -272,7 +600,6 @@ A user must have the following requirements met before setting up a Lakesearch S
                   devices
               options:
                 start: 1608681600
-                start_query: "SELECT max(updated_at) FROM devices"
                 step: 86400
                 batch_sql: |
                   WITH base AS (
@@ -314,7 +641,6 @@ A user must have the following requirements met before setting up a Lakesearch S
                   devices
               options:
                 start: 1736640000
-                start_query: "SELECT max(updated_at) FROM devices"
                 step: 86400
                 batch_sql: |
                   WITH base AS (
