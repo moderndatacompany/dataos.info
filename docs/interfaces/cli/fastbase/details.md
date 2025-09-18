@@ -1,4 +1,5 @@
 # Fastbase Command Group
+
 You run the following `fastbase` sub commands by appending them to *dataos-ctl fastbase*.
 
 ## `namespace`
