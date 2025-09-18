@@ -5,7 +5,7 @@ workflow:
   dag:
     - name: mongodb-read-01
       spec:
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           job:
@@ -26,7 +26,7 @@ workflow:
 
             outputs:
               - name: finalDf
-                dataset: dataos://icebase:smoketest/read_mongodb_12?acl=rw
+                dataset: dataos://lakehouse:smoketest/read_mongodb_12?acl=rw
                 format: Iceberg
                 options:
                   saveMode: append

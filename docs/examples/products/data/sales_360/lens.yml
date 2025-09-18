@@ -34,7 +34,7 @@ entities:
           country,
           zip_code
         FROM
-          "icebase"."sales_analytics".customer
+          "lakehouse"."sales_analytics".customer
       columns:
         - name:  customer_id 
         - name:  first_name 
@@ -226,7 +226,7 @@ entities:
           size,
           model
         FROM
-          "icebase"."sales_analytics".products
+          "lakehouse"."sales_analytics".products
       columns:
         - name: productid
         - name: skuid
@@ -358,7 +358,7 @@ entities:
           skuid,
           store_id
         FROM
-          "icebase"."sales_analytics".transactions
+          "lakehouse"."sales_analytics".transactions
       columns:
         - name: transaction_id
         - name: customer_id

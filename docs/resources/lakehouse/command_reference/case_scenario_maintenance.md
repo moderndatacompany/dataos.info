@@ -15,7 +15,7 @@ dataos-ctl dataset -a ${{udl}} snapshots
 **Example**
 
 ```bash
-dataos-ctl dataset -a dataos://icebase:retail/city snapshots 
+dataos-ctl dataset -a dataos://lakehouse:retail/city snapshots 
 ```
 
 Output
@@ -48,7 +48,7 @@ dataos-ctl dataset -a ${{udl}} set-snapshot \
 Let’s say you wanna revert back to a specific snapshot ID from the once listed by the list snapshots command. The command will be:
 
 ```bash
-dataos-ctl dataset -a dataos://icebase:retail/city set-snapshot \
+dataos-ctl dataset -a dataos://lakehouse:retail/city set-snapshot \
 -i 5724215526433994041
 ```
 
@@ -76,7 +76,7 @@ dataos-ctl dataset -a ${{udl}} metadata
 **Example**
 
 ```bash
-dataos-ctl dataset -a dataos://icebase:retail/city metadata
+dataos-ctl dataset -a dataos://lakehouse:retail/city metadata
 ```
 
 Output (successful execution)
@@ -112,17 +112,17 @@ dataos-ctl dataset -a ${{udl}} set-metadata \
 ```
 **Example**
 
-In order to set the metadata of the dataset `dataos://icebase:retail/city` to the `latest` format.
+In order to set the metadata of the dataset `dataos://lakehouse:retail/city` to the `latest` format.
 
 ```bash
-dataos-ctl dataset -a dataos://icebase:retail/city set-metadata \
+dataos-ctl dataset -a dataos://lakehouse:retail/city set-metadata \
 -v latest
 ```
 
 In order to set the metadata to some specfic version among the ones in the list say `v4.gz.metadata.json`.
 
 ```bash
-dataos-ctl dataset -a dataos://icebase:retail/city set-metadata \
+dataos-ctl dataset -a dataos://lakehouse:retail/city set-metadata \
 -v v4.gz.metadata.json
 ```
 
@@ -146,7 +146,7 @@ dataos-ctl dataset -a ${{udl}} set-nullable \
 Let’s say we wanna set a column random as nullable. The command is given below:
 
 ```bash
-dataos-ctl dataset -a dataos://icebase:retail/city set-nullable \
+dataos-ctl dataset -a dataos://lakehouse:retail/city set-nullable \
 -n random \
 -b true
 ```

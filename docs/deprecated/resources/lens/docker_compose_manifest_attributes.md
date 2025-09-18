@@ -26,7 +26,7 @@ x-lens2-environment: &lens2-environment
   # Data Source
   LENS2_SOURCE_TYPE: minerva
   LENS2_SOURCE_NAME: system
-  LENS2_SOURCE_CATALOG_NAME: icebase
+  LENS2_SOURCE_CATALOG_NAME: lakehouse
   DATAOS_RUN_AS_APIKEY: bGVuc21lItYTVmYi05MjE4YWRiMDY2YmE=
 
   # Log
@@ -93,7 +93,7 @@ x-lens2-environment: &lens2-environment
   LENS2_DB_PORT: 7432
   LENS2_DB_USER: iamgroot
   LENS2_DB_PASS: "eyJ0b2tlbiI6IlpHVjJhV05sWDJWMlpXNTBjeTR3WkRjNE1USTNaQzFoTURKaUxUUmpZamt0WWpZek9DMDBZamMwTTJFME16WXlZekU9IiwgImNsdXN0ZXIiOiJzeXN0ZW0ifQo="
-  LENS2_DB_PRESTO_CATALOG: icebase
+  LENS2_DB_PRESTO_CATALOG: lakehouse
   LENS2_DB_SSL: true
   LENS2_DB_TYPE: trino
   LENS2_LOG_LEVEL: error

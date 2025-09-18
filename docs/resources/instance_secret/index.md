@@ -60,7 +60,7 @@ If you want to store credentials for various data sources in an Instance Secret 
 - [Java Database Connectivity (JDBC)](/resources/instance_secret/data_sources/jdbc/)
 - [MongoDB](/resources/instance_secret/data_sources/mongo/)
 - [Microsoft SQL Server (MSSQL) or Azure SQL](/resources/instance_secret/data_sources/mssql/)
-- [MySQL](/resources/instance_secret/data_sources/myssql/)
+- [MySQL](/resources/instance_secret/data_sources/mysql/)
 - [Opensearch](/resources/instance_secret/data_sources/opensearch/)
 - [Oracle](/resources/instance_secret/data_sources/oracle/)
 - [Postgres](/resources/instance_secret/data_sources/postgres/)

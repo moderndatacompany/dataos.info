@@ -18,14 +18,14 @@ owner: iamgroot
 entities:
   - name: activitystream
     sql:
-      query: SELECT * FROM icebase.entity_360.campaign_stream
+      query: SELECT * FROM lakehouse.entity_360.campaign_stream
       columns:
         - name: ts_
         - name: occurrence
         - name: entity_id
       verified: true
       tables:
-        - icebase.entity_360.campaign_stream
+        - lakehouse.entity_360.campaign_stream
     fields:
       - name: uuid
         type: string
@@ -65,7 +65,7 @@ entities:
         - name: occurence
         - name: entity_id
       tables:
-        - icebase.entity_360.campaign_stream
+        - lakehouse.entity_360.campaign_stream
     fields:
       - name: uuid
         type: string
@@ -113,7 +113,7 @@ entities:
         - name: occurrence
         - name: entity_id
       tables:
-        - icebase.entity_360.campaign_stream
+        - lakehouse.entity_360.campaign_stream
     fields:
       - name: uuid
         type: string

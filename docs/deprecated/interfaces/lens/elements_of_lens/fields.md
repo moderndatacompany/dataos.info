@@ -25,7 +25,7 @@ Using the description property, you can describe and provide a better understand
 entities:
  - name: product
    sql:
-    - query: SELECT * FROM icebase.test.products
+    - query: SELECT * FROM lakehouse.test.products
       ---
       ---
    fields:
@@ -48,7 +48,7 @@ You can assign the appropriate types while declaring a field. It is recommended 
 entities:
  - name: product
    sql:
-    - query: SELECT * FROM icebase.test.products
+    - query: SELECT * FROM lakehouse.test.products
       ---
       ---
    fields:
@@ -67,7 +67,7 @@ In this field, the property specifies the column that directly maps to your unde
 entities:
  - name: product
    sql:
-    - query: SELECT * FROM icebase.test.products
+    - query: SELECT * FROM lakehouse.test.products
       ---
       ---
    fields:
@@ -99,7 +99,7 @@ entities:
 		 query: SELECT *,
 						concat(cast(product_id AS varchar), '-', cast(product_sku AS varchar)) AS uuid
 						FROM
-						icebase.test.products
+						lakehouse.test.products
      ---
      ---
    fields:

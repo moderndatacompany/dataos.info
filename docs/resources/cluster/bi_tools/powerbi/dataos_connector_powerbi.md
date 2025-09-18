@@ -18,7 +18,27 @@ The DataOs connector functions in alignment with existing data and access polici
 ## Prerequisites
 
 - Contact your customer success representative to obtain the connector installer file.
-- DataOS API key is required to authenticate and access DataOS from the Power BI interface. To learn more about generating an API key/token, refer to [Create API Key](https://dataos.info/interfaces/create_token/).
+- DataOS API key is required to authenticate and access DataOS from the Power BI interface. The Api key `token` can be obtained by executing the following command on the CLI:
+
+  ```bash
+  dataos-ctl user apikey get
+
+  # Expected Output
+  INFO[0000] 🔑 user apikey get...                         
+  INFO[0000] 🔑 user apikey get...complete                 
+
+                                                    TOKEN                                                     │  TYPE  │        EXPIRATION         │                   NAME                     
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────┼────────┼───────────────────────────┼────────────────────────────────────────────
+    dG9rZW5faG9wZWZ1bGx5X2xvdWRsedHJpa2luZ19jkNSDnk4uZXd0LmFiMzAyMTdjLTExYzAtNDg2Yi1iZjEyLWJkMjY1ZWM2YzgwOA==     │ apikey │ 2025-04-13T05:30:00+05:30 │ token_specially_mistakenly_special_dinosaur       
+    dG9rZW5fdGlnaHRseV9uZWVkbGVzcX2xpYmVyYWxfcGjkNSDnk4FuZ29saW4uNTY0ZDc4ZTQtNWNhMy00YjI1LWFkNWMtYmFlMTcwYTM5MWU1 │ apikey │ 2025-04-11T05:30:00+05:30 │ token_hopelessly_largely_holy_sunbird  
+  ```
+
+  If there are no apikey's present, create a new one by using the `create` command as shown below:
+
+  ```bash
+  dataos-ctl user apikey create
+  ```
+
 
 <aside class="callout">
 🗣 Please note that this custom connector is designed to integrate DataOS with Power BI Desktop only and is not compatible with other Power BI versions.</aside>

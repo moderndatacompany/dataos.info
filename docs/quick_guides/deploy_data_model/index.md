@@ -200,7 +200,7 @@ lens:
   source:                    # Data Source configuration
     type: minerva            # Source type 
     name: system             # Source name
-    catalog: icebase         #in case of minerva or themis
+    catalog: lakehouse         #in case of minerva or themis
   repo:                      # Lens2 model code repository config (mandatory)
     url: ${repo_url}         # URL of repository for the Lens model (mandatory)
     lensBaseDir: lens_testing/model # Relative path of the Lens model directory in repository (mandatory)

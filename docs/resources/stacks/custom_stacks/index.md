@@ -1,6 +1,6 @@
 # How to create your own Stack?
 
-## Prerequisites
+## **Prerequisites**
 
 ### **Understanding of Docker and Kubernetes**
 
@@ -18,19 +18,21 @@ A data developer must be familiar with how the Go text templates are defined, as
 
 The below points outline the high-level steps involved in the creation of a custom Stack Resource within the DataOS instance.
 
-- [How to create your own Stack?](#how-to-create-your-own-stack)
-  - [Prerequisites](#prerequisites)
-    - [**Understanding of Docker and Kubernetes**](#understanding-of-docker-and-kubernetes)
-    - [**JSON Schema Proficiency**](#json-schema-proficiency)
-    - [**Go Text Templates Proficiency**](#go-text-templates-proficiency)
-  - [Building a Stack](#building-a-stack)
-    - [**Definition of Stack Image**](#definition-of-stack-image)
-    - [**Creation of Stack YAML manifest**](#creation-of-stack-yaml-manifest)
-      - [**Configure the Resource meta section**](#configure-the-resource-meta-section)
-      - [**Configure the Stack-specific section**](#configure-the-stack-specific-section)
-    - [**Apply the Stack YAML manifest**](#apply-the-stack-yaml-manifest)
-    - [**Verify Stack creation**](#verify-stack-creation)
-  - [Attributes of Stack YAML manifest](#attributes-of-stack-yaml-manifest)
+- [How to create your own Stack?](/resources/stacks/custom_stacks/#how-to-create-your-own-stack)
+  - [Prerequisites](/resources/stacks/custom_stacks/#prerequisites)
+    - [Understanding of Docker and Kubernetes](/resources/stacks/custom_stacks/#understanding-of-docker-and-kubernetes)
+    - [JSON Schema Proficiency](/resources/stacks/custom_stacks/#json-schema-proficiency)
+    - [Go Text Templates Proficiency](/resources/stacks/custom_stacks/#go-text-templates-proficiency)
+  - [Building a Stack](/resources/stacks/custom_stacks/#building-a-stack)
+    - [Definition of Stack Image](/resources/stacks/custom_stacks/#definition-of-stack-image)
+    - [Creation of Stack YAML manifest](/resources/stacks/custom_stacks/#creation-of-stack-yaml-manifest)
+      - [Configure the Resource meta section](/resources/stacks/custom_stacks/#configure-the-resource-meta-section)
+      - [Configure the Stack-specific section](/resources/stacks/custom_stacks/#configure-the-stack-specific-section)
+    - [Apply the Stack YAML manifest](/resources/stacks/custom_stacks/#apply-the-stack-yaml-manifest)
+    - [Verify Stack creation](/resources/stacks/custom_stacks/#verify-stack-creation)
+  - [Attributes of Stack YAML manifest](/resources/stacks/custom_stacks/#attributes-of-stack-yaml-manifest)
+
+
 
 ### **Definition of Stack Image**
 
@@ -58,7 +60,7 @@ The ensuing sections delineate the various sections of a Stack YAML.
 
 #### **Configure the Resource meta section**
 
-In DataOS, a Stack is categorized as a [Resource-type](/resources/types_of_dataos_resources/). The Resource meta section within the YAML manifest encompasses attributes universally applicable to all Resource-types. The provided YAML codeblock elucidates the requisite attributes for this section:
+In DataOS, a Stack is categorized as a [Resource-type](/resources/types/). The Resource meta section within the YAML manifest encompasses attributes universally applicable to all Resource-types. The provided YAML codeblock elucidates the requisite attributes for this section:
 
 ```yaml
 name: ${{my-stack}}

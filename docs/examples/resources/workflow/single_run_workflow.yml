@@ -5,7 +5,7 @@ owner: iamgroot
 tags:
   - Tier.Gold
   - mpulse.altamed
-description: The "wf-city" is a data pipeline focused on ingesting city data from icebase to icebase AltaMed healthcare provider. It involves stages such as data ingestion, tranformation and profiling.
+description: The "wf-city" is a data pipeline focused on ingesting city data from lakehouse to lakehouse AltaMed healthcare provider. It involves stages such as data ingestion, tranformation and profiling.
 workflow:
   title: City Data Pipeline
   dag: 
@@ -16,7 +16,7 @@ workflow:
         tags:
           - Connect
           - City
-        stack: flare:5.0 # The job gets executed upon the Flare Stack, so its a Flare Job
+        stack: flare:7.0 # The job gets executed upon the Flare Stack, so its a Flare Job
         compute: runnable-default
 
         # Flare Stack-specific Section
@@ -36,7 +36,7 @@ workflow:
                         date_format (NOW(), 'yyyyMMddHHmm') AS version1,
                         NOW() AS ts_city1
                       FROM
-                        icebase.retail.city 
+                        lakehouse.retail.city 
                 options: 
                   SSL: "true"
                   driver: "io.trino.jdbc.TrinoDriver"
@@ -44,7 +44,7 @@ workflow:
 
             outputs:
               - name: city_connect
-                dataset: dataos://icebase:retail/city01?acl=rw
+                dataset: dataos://lakehouse:retail/city01?acl=rw
                 format: Iceberg
                 description: City data ingested from retail city
                 tags:
@@ -53,7 +53,7 @@ workflow:
                 options:
                   saveMode: overwrite
 
-    - name: icebase-city-profiling
+    - name: lakehouse-city-profiling
       title: Profiler City01
       description: The job performs profiling on city01 data
       spec:
@@ -63,7 +63,7 @@ workflow:
           - Fides
           - City
           - has_profile
-        stack: flare:5.0
+        stack: flare:7.0
         compute: runnable-default
         title: City Profile
 
@@ -86,7 +86,7 @@ workflow:
 
             inputs:
               - name: profile_city
-                dataset: dataos://icebase:retail/city01 # Dataset Name
+                dataset: dataos://lakehouse:retail/city01 # Dataset Name
                 format: iceberg
 
             profile:
@@ -100,5 +100,5 @@ workflow:
             - spark.sql.shuffle.partitions: 10
             - spark.default.parallelism: 10
 
-    dependencies:
-      - city-data-ingestion
+      dependencies:
+        - city-data-ingestion

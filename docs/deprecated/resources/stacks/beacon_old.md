@@ -58,6 +58,6 @@ Let's take a closer look at each section of the YAML configuration and understan
 
 [Query Pushdown SSL Postgres]
 
-[Mask Data After Moving from Database to Icebase ]
+[Mask Data After Moving from Database to Lakehouse ]
 
 [Exposing an API After Creating a Database ]

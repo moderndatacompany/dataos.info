@@ -61,20 +61,20 @@ workflow:
         tags:
         - Connect
         - Incremental
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           job:
             explain: true
             inputs:
             - name: order_input
-              dataset: dataos://icebase:retail/orders_enriched
+              dataset: dataos://lakehouse:retail/orders_enriched
               format: iceberg
   
             logLevel: WARN
             outputs:
               - name: order_input
-                dataset: dataos://icebase:sample/order_incremental_08?acl=rw
+                dataset: dataos://lakehouse:sample/order_incremental_08?acl=rw
                 format: iceberg
                 description: Orders Data Incremental From Iceberg
                 options:

@@ -5,7 +5,7 @@
 In a filter policy, the following elements are defined:
 
 - **Selector:** Specifies the user(s) to whom this policy applies. Here, the user with the tag `users:id:iamgroot` is selected.
-- **Dataset ID:** Indicates the dataset to which the filter is applied, in this case, `icebase.retail.city`.
+- **Dataset ID:** Indicates the dataset to which the filter is applied, in this case, `lakehouse.retail.city`.
 - **Filters:** Defines the conditions to filter data rows. Here, the policy filters out rows where the `city_name` column value is not equals to `Verbena`.
 
 ## Example
@@ -32,7 +32,7 @@ To implement the filter policy that restricts access based on city data, use the
 ???tip "Filter Policy for city not equals to Verbena"
 
     ```yaml
-    name: filtericebasecity
+    name: filterlakehousecity
     version: v1
     type: policy
     layer: user
@@ -40,14 +40,14 @@ To implement the filter policy that restricts access based on city data, use the
     policy:
       data:
         type: filter
-        name: "filtericebasecity"
+        name: "filterlakehousecity"
         priority: 1
         selector:
           user:
             match: all
             tags:
               - "users:id:iamgroot"
-        dataset_id: "icebase.retail.city"
+        dataset_id: "lakehouse.retail.city"
         description: 'data policy to filter data on city'
         filters:
           - column: city_name
@@ -73,7 +73,7 @@ Alternatively, another user, 'ironman', is specifically responsible for Verbena,
 ???tip "Filter Policy for city not equals to Verbena"
 
     ```yaml
-    name: filtericebasecity
+    name: filterlakehousecity
     version: v1
     type: policy
     layer: user
@@ -81,14 +81,14 @@ Alternatively, another user, 'ironman', is specifically responsible for Verbena,
     policy:
       data:
         type: filter
-        name: "filtericebasecity"
+        name: "filterlakehousecity"
         priority: 1
         selector:
           user:
             match: all
             tags:
               - "users:id:ironman"
-        dataset_id: "icebase.retail.city"
+        dataset_id: "lakehouse.retail.city"
         description: 'data policy to filter data on city'
         filters:
           - column: city_name

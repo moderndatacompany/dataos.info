@@ -31,7 +31,7 @@ workflow:
       title: sample data ingestion assertion job
       description: sample data ingestion assertion job
       spec:
-        stack: flare:5.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           job:
@@ -59,7 +59,7 @@ workflow:
 
             outputs:              
               - name: passenger
-                dataset: dataos://icebase:sports/sample_passenger_assertion?acl=rw
+                dataset: dataos://lakehouse:sports/sample_passenger_assertion?acl=rw
                 format: Iceberg
                 title: data_uber
                 description: this dataset contains passenger csv from data_uber 
@@ -111,7 +111,7 @@ In this process, it initially evaluates the assertion, and only if all the check
                     JOB NAME               |   STACK    |           JOB TITLE            | JOB DEPENDENCIES  
     ---------------------------------------|------------|--------------------------------|-------------------
       system                               | dataos_cli | System Runnable Steps          |                   
-      wf-assertion-job                     | flare:5.0  | sample data ingestion          |                   
+      wf-assertion-job                     | flare:7.0  | sample data ingestion          |                   
                                            |            | assertion job                  |                   
     
        RUNTIME  | PROGRESS |          STARTED          |         FINISHED           
@@ -150,7 +150,7 @@ workflow:
       title: sample data ingestion assertion job
       description: sample data ingestion assertion job
       spec:
-        stack: flare:5.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           job:
@@ -179,7 +179,7 @@ workflow:
                         case: lower
             outputs:              
               - name: passenger
-                dataset: dataos://icebase:sports/sample_passenger_assertion?acl=rw
+                dataset: dataos://lakehouse:sports/sample_passenger_assertion?acl=rw
                 format: Iceberg
                 title: data_uber
                 description: this dataset contains passenger csv from data_uber 
@@ -219,7 +219,7 @@ workflow:
                     JOB NAME               |   STACK    |           JOB TITLE            | JOB DEPENDENCIES  
     ---------------------------------------|------------|--------------------------------|-------------------
       system                               | dataos_cli | System Runnable Steps          |                   
-      wf-assertion-job                     | flare:5.0  | sample data ingestion          |                   
+      wf-assertion-job                     | flare:7.0  | sample data ingestion          |                   
                                            |            | assertion job                  |                   
     
       RUNTIME | PROGRESS |          STARTED          | FINISHED  
@@ -250,7 +250,7 @@ workflow:
     ..
     ..
     
-    Exception in thread "shutdownHook1" io.dataos.flare.exceptions.FlareException: 1 out of 4 assertions failed for dataset dataos://icebase:sports/sample_passenger_assertion. For more details, please look into the assertion results table in logs.
+    Exception in thread "shutdownHook1" io.dataos.flare.exceptions.FlareException: 1 out of 4 assertions failed for dataset dataos://lakehouse:sports/sample_passenger_assertion. For more details, please look into the assertion results table in logs.
     	at io.dataos.flare.contexts.ProcessingContext.error(ProcessingContext.scala:87)
     	at io.dataos.flare.Flare$.$anonfun$addShutdownHook$1(Flare.scala:90)
     	at scala.sys.ShutdownHookThread$$anon$1.run(ShutdownHookThread.scala:37)

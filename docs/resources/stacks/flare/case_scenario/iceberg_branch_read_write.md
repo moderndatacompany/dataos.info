@@ -12,7 +12,7 @@ workflow:
   dag:
     - name: write-data
       spec:
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           job:
@@ -21,7 +21,7 @@ workflow:
             showPreviewLines: 2
             inputs:
               - name: sanity_city_input
-                dataset: dataos://icebase:retail/city
+                dataset: dataos://lakehouse:retail/city
                 format: Iceberg
                 options:
                   branch: b1
@@ -32,7 +32,7 @@ workflow:
                     sql: select * from city_connect where state_code = 'AZ'
 
             outputs:
-              - dataset: dataos://icebase:retail/city?acl=rw
+              - dataset: dataos://lakehouse:retail/city?acl=rw
                 format: iceberg
                 name: cities
 ```
@@ -49,7 +49,7 @@ workflow:
   dag:
     - name: write-data
       spec:
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           job:
@@ -57,7 +57,7 @@ workflow:
             logLevel: INFO
             showPreviewLines: 2
             inputs:
-              - dataset: dataos://icebase:retail/city
+              - dataset: dataos://lakehouse:retail/city
                 format: iceberg
                 name: city_connect
 
@@ -67,7 +67,7 @@ workflow:
                     sql: select * from city_connect where state_code = 'AZ'
 
             outputs:
-              - dataset: dataos://icebase:retail/city?acl=rw
+              - dataset: dataos://lakehouse:retail/city?acl=rw
                 format: iceberg
                 name: cities
                 options:

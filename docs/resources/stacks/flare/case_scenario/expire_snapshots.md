@@ -29,9 +29,9 @@ INFO[0003] 📂 get snapshots...completed
   2613385101287075565 │ 1744366357891 │ 2025-04-11T10:12:37+00:00  
 ```
 
-!!! Tip
+<!-- !!! Tip
 
-    It is advisable to use Flare 5.0 with updated image tag `7.3.21` for the expire_snapshot action, as Flare 6.0 currently supports only two methods for snapshot expiration: the `expireOlderThan` and `expireSnapshotId` attributes.
+    It is advisable to use Flare 7.0 with updated image tag `7.3.21` for the expire_snapshot action, as Flare 7.0 currently supports only two methods for snapshot expiration: the `expireOlderThan` and `expireSnapshotId` attributes. -->
 
 ## Configuration Options for Snapshot Deletion
 
@@ -42,22 +42,20 @@ INFO[0003] 📂 get snapshots...completed
 | **`olderThanTimestamp`**    | A human-readable timestamp before which snapshots will be removed (e.g., `2024-12-01T00:00:00Z`).  |
 | **`snapshotIds`**           | Specifies the list of specific snapshots to expire.                                                                                                               |
 | **`retainLast`**            | Number of ancestor snapshots to preserve regardless of `olderThanMillis`. (Defaults to 1)                                                                        |
-| **`max_concurrent_deletes`**| Size of the thread pool used for delete file actions. (By default, no thread pool is used.)                                                                      |
+| **`maxConcurrentDeletes`**| Size of the thread pool used for delete file actions. (By default, no thread pool is used.)                                                                      |
 | **`streamDeleteResults`**   | By default, all files to delete are brought to the driver at once, which may cause memory issues with large file lists. Set to `true` to use `toLocalIterator`. |
 
-
-## Examples
 
 ### **`olderThanMillis`**
 
 !!! info
 
-    `expireOlderThan` is only available in Flare 6. Use `olderThanMillis` in place of `expireOlderThan` in Flare 5.0 (image tag: `7.3.21`). 
+    `expireOlderThan` is only available in Flare 7.0. Use `olderThanMillis` in place of `expireOlderThan` in Flare 7.0. 
 
 The `olderThanMillis` attribute specifies a cutoff timestamp in unix format. Snapshots created before this timestamp are considered expired and will be deleted, along with their associated metadata and manifest files, if no longer referenced. This helps manage storage and keep the table metadata clean by removing historical data no longer needed for rollback or time travel.
 
 ```yaml
-name: wf-expire-snapshots                           # Name of the Workflow
+name: expire-snapshots01                            # Name of the Workflow
 version: v1                                         # Version
 type: workflow                                      # Type of Resource (Here its workflow)
 tags:                                               # Tags
@@ -70,7 +68,7 @@ workflow:                                           # Workflow Section
       spec:                                         # Specs
         tags:                                       # Tags
           - Expire
-        stack: flare:6.0                            # Stack is Flare (so its a Flare Job)
+        stack: flare:7.0                            # Stack is Flare
         compute: runnable-default                   # Compute
         stackSpec:                                  # Flare Stack specific Section
           job:                                      # Job Section
@@ -88,13 +86,13 @@ workflow:                                           # Workflow Section
 
 ```
 
-### **`olderThanMillis`** with **`retainLast`**
+### **`retainLast`**
 
 Remove snapshots older than specific day and time, but retain the last 5 snapshots:
 
 
 ```yaml
-name: wf-expire-snapshots                        # Name of the Workflow
+name: expire-snapshots02                         # Name of the Workflow
 version: v1                                      # Version
 type: workflow                                   # Type of Resource (Here its workflow)
 tags:                                            # Tags
@@ -107,7 +105,7 @@ workflow:                                        # Workflow Section
       spec:                                      # Specs
         tags:                                    # Tags
           - Expire
-        stack: flare:6.0                         # Stack is Flare (so its a Flare Job)
+        stack: flare:7.0                         # Stack is Flare
         compute: runnable-default                # Compute
         stackSpec:                               # Flare Stack specific Section
           job:                                   # Job Section
@@ -130,7 +128,7 @@ workflow:                                        # Workflow Section
 Remove snapshots with snapshot ID 12345679 (note that this snapshot ID should not be the current snapshot):
 
 ```yaml
-name: wf-expire-snapshots-10                     # Name of the Workflow
+name: expire-snapshots03                         # Name of the Workflow
 version: v1                                      # Version
 type: workflow                                   # Type of Resource (Here its workflow)
 tags:                                            # Tags
@@ -143,7 +141,7 @@ workflow:                                        # Workflow Section
       spec:                                      # Specs
         tags:                                    # Tags
           - Expire
-        stack: flare:6.0                         # Stack is Flare (so its a Flare Job)
+        stack: flare:7.0                         # Stack is Flare
         compute: runnable-default                # Compute
         stackSpec:                               # Flare Stack specific Section
           job:                                   # Job Section
@@ -180,7 +178,7 @@ actions:                                         # Action Section
 ### **olderThanTimestamp**
 
 ```yaml
-name: expire-04                                  # Name of the Workflow
+name: expire-snapshots04                                  # Name of the Workflow
 version: v1                                      # Version
 type: workflow                                   # Type of Resource (Here its workflow)
 tags:                                            # Tags
@@ -193,7 +191,7 @@ workflow:                                        # Workflow Section
       spec:                                      # Specs
         tags:                                    # Tags
           - Expire
-        stack: flare:6.0                         # Stack is Flare (so its a Flare Job)
+        stack: flare:7.0                         # Stack is Flare
         compute: runnable-default                # Compute
         stackSpec:                               # Flare Stack specific Section
           job:                                   # Job Section
@@ -211,5 +209,87 @@ workflow:                                        # Workflow Section
                   retainLast: 2                                       # Retain the last 2 snapshots
 
 ```
+
+
+### **`maxConcurrentDeletes`**
+
+The `maxConcurrentDeletes` attribute configures the size of the thread pool used for deleting files during snapshot expiration. By default, deletions happen sequentially. Using this option can significantly improve performance when expiring large numbers of snapshots or when the dataset has many files to delete.
+
+```yaml
+name: expire-snapshots05                                  # Name of the Workflow
+version: v1                                      # Version
+type: workflow                                   # Type of Resource (Here its workflow)
+tags:                                            # Tags
+  - expire
+workflow:                                        # Workflow Section
+  title: expire snapshots                        # Title of the DAG
+  dag:                                           # Directed Acyclic Graph (DAG)
+    - name: expire                               # Name of the Job
+      title: expire snapshots                    # Title of the Job
+      spec:                                      # Specs
+        tags:                                    # Tags
+          - Expire
+        stack: flare:7.0                         # Stack is Flare
+        compute: runnable-default                # Compute
+        stackSpec:                               # Flare Stack specific Section
+          job:                                   # Job Section
+            explain: true                        # Explain
+            logLevel: INFO                       # Loglevel
+            inputs:                              # Inputs Section
+              - name: inputDf                    # Input Dataset Name
+                dataset: dataos://lakehouse:retail/pos_store_product_cust?acl=rw    # Input UDL
+                format: Iceberg                  # Format
+            actions:                             # Action Section
+              - name: expire_snapshots           # Name of Flare Action
+                input: inputDf                   # Input Dataset Name
+                options:                         # Options
+                  olderThanMillis: "1741987433222"    # Expire snapshots older than this timestamp
+                  maxConcurrentDeletes: 5           # Use 5 concurrent threads for delete operations
+```
+
+!!! info
+    
+    Use this option for datasets with **large amounts of files** to improve delete performance. Be mindful of resource constraints when setting a high value.
+
+
+### **`streamDeleteResults`**
+
+By default, Flare collects all files marked for deletion into memory at once. This can lead to memory issues for large datasets with many files. The `streamDeleteResults` attribute streams results to the driver using `toLocalIterator`, avoiding high memory usage by processing deletions incrementally.
+
+```yaml
+name: expire-snapshots06                         # Name of the Workflow
+version: v1                                      # Version
+type: workflow                                   # Type of Resource (Here its workflow)
+tags:                                            # Tags
+  - expire
+workflow:                                        # Workflow Section
+  title: expire snapshots                        # Title of the DAG
+  dag:                                           # Directed Acyclic Graph (DAG)
+    - name: expire                               # Name of the Job
+      title: expire snapshots                    # Title of the Job
+      spec:                                      # Specs
+        tags:                                    # Tags
+          - Expire
+        stack: flare:7.0                         # Stack is Flare
+        compute: runnable-default                # Compute
+        stackSpec:                               # Flare Stack specific Section
+          job:                                   # Job Section
+            explain: true                        # Explain
+            logLevel: INFO                       # Loglevel
+            inputs:                              # Inputs Section
+              - name: inputDf                    # Input Dataset Name
+                dataset: dataos://lakehouse:retail/pos_store_product_cust?acl=rw    # Input UDL
+                format: Iceberg                  # Format
+            actions:                             # Action Section
+              - name: expire_snapshots           # Name of Flare Action
+                input: inputDf                   # Input Dataset Name
+                options:                         # Options
+                  olderThanMillis: "1741987433222"    # Expire snapshots older than this timestamp
+                  streamDeleteResults: true           # Stream deletion results to avoid memory pressure
+```
+
+!!! info
+
+    Set `streamDeleteResults: true` for **large Iceberg tables** where snapshot expiration involves deleting thousands of files. This reduces memory pressure on the driver at the cost of slightly slower delete operations.
 
 

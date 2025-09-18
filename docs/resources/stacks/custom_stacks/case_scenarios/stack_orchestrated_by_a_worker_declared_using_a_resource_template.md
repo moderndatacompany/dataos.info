@@ -9,7 +9,7 @@ description: "dataos function mesh stack alpha version 01"
 stack:
   name: function-mesh
   version: "1.0"
-  flavor: icebase-sink
+  flavor: lakehouse-sink
   reconciler: stackManager
   stackSpecValueSchema:
     jsonSchema: |

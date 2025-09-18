@@ -143,20 +143,20 @@ A Data Product manifest outlines essential metadata and configuration details ab
 
         inputs: # mandatory
           - refType: ${{dataos}}
-            ref: ${{dataset:icebase:customer_relationship_management:customer}}
+            ref: ${{dataset:lakehouse:customer_relationship_management:customer}}
 
           - refType: ${{dataos}}
-            ref: ${{dataset:icebase:customer_relationship_management:purchase}}
+            ref: ${{dataset:lakehouse:customer_relationship_management:purchase}}
 
           - refType: ${{dataos}}
-            ref: ${{dataset:icebase:customer_relationship_management:product}}
+            ref: ${{dataset:lakehouse:customer_relationship_management:product}}
 
         outputs: # optional
           - refType: ${{dataos}}
-            ref: ${{dataset:icebase:customer_relationship_management:product_affinity_matrix}}
+            ref: ${{dataset:lakehouse:customer_relationship_management:product_affinity_matrix}}
 
           - refType: ${{dataos}}
-            ref: ${{dataset:icebase:customer_relationship_management:cross_sell_recommendations}}
+            ref: ${{dataset:lakehouse:customer_relationship_management:cross_sell_recommendations}}
 
         ports: # optional
           lens:

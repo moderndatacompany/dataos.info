@@ -71,7 +71,7 @@ spark = session_builder.SparkSessionBuilder(log_level="INFO") \
     .with_spark_conf(sparkConf) \
     .with_user_apikey(token) \
     .with_dataos_fqdn(DATAOS_FQDN) \
-    .with_depot(depot_name="icebase", acl="rw") \
+    .with_depot(depot_name="lakehouse", acl="rw") \
     .build_session()
 
 load(name="dataos://lakehouse:sandbox3/test_pyflare2", format="iceberg").show()

@@ -12,7 +12,7 @@ dataos-ctl get runtime [flags]
 Flags:
   -d, --details               Print lots of details
   -h, --help                  help for runtime
-      --id string             Resource ID, like: TYPE:VERSION:NAME:WORKSPACE(optional), depot:v1:icebase or service:v1:ping:sandbox
+      --id string             Resource ID, like: TYPE:VERSION:NAME:WORKSPACE(optional), depot:v1:lakehouse or service:v1:ping:sandbox
   -i, --identifier string     Identifier of resource, like: NAME:VERSION:TYPE:WORKSPACE
   -f, --manifestFile string   Manifest file location
   -n, --name string           Name to query
@@ -28,7 +28,7 @@ Flags:
 **Examples:**
 
 ```bash
-dataos-ctl get runtime -t depot -n icebase
+dataos-ctl get runtime -t depot -n lakehouse
 dataos-ctl get runtime -w system -t cluster -n minervaa
 dataos-ctl get runtime -w system -t service -n iosa-receiver
 dataos-ctl get runtime -w public -t workflow -n cnt-city-demo-01

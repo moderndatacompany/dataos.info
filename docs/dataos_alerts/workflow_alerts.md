@@ -236,7 +236,7 @@ workflow:
       tags:
       - Connect
       - City
-      stack: flare:6.0 
+      stack: flare:7.0 
       compute: runnable-default 
       stackSpec:
         job:
@@ -251,7 +251,7 @@ workflow:
 
           outputs:
             - name: cities
-              dataset: dataos://icebase:retail/city01?acl=rw
+              dataset: dataos://lakehouse:retail/city01?acl=rw
               format: Iceberg
               description: City data ingested from external csv
               options:

@@ -62,7 +62,7 @@ monitor:
             - ${{password}}
           allkeys: ${{true}}
           consumptionType: ${{string}}       
-        ql: ${{SELECT metric_value FROM icebase.soda.soda_check_metrics_01 WHERE metric_name = 'missing_count' ORDER BY timestamp DESC LIMIT 1;}} # mandatory
+        ql: ${{SELECT metric_value FROM lakehouse.soda.soda_check_metrics_01 WHERE metric_name = 'missing_count' ORDER BY timestamp DESC LIMIT 1;}} # mandatory
         comparisonColumn: 
           name: ${{column1}} # mandatory
           dataType: ${{integer}} # mandatory      

@@ -194,7 +194,7 @@ spark.stop()
 To update the partitioning options, execute the following command in the CLI:
 
 ```bash
-dataos-ctl dataset update-partition -a dataos://icebase:retail/city \
+dataos-ctl dataset update-partition -a dataos://lakehouse:retail/city \
 -p "<partition_type>:<column_name>:<partition_name>" \
 -p "<partition_type>:<column_name>" \
 -p "<partition_type>:<column_name>:<partition_name>:<number_of_buckets>"
@@ -205,7 +205,7 @@ dataos-ctl dataset update-partition -a dataos://icebase:retail/city \
 To delete the entry from the metastore and remove the associated files, use the following code:
 
 ```bash
-dataos-ctl dataset drop -a dataos://icebase:retail/city --purge true
+dataos-ctl dataset drop -a dataos://lakehouse:retail/city --purge true
 ```
 
 ## Additional links

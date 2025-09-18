@@ -54,7 +54,7 @@ INFO[0000] 🔍 get...complete
     NAME          | VERSION | TYPE  | WORKSPACE | STATUS |  RUNTIME  |         OWNER          
 ------------------|---------|-------|-----------|--------|-----------|------------------------
 
-icebase           | v2alpha | depot |           | active |           | dataos-manager         
+lakehouse           | v2alpha | depot |           | active |           | dataos-manager         
 kafka1            | v1      | depot |           | active |           | yogeshkhangode        
 metisdb           | v1      | depot |           | active |           | dataos-manager       
 postgre01         | v1      | depot |           | active |           | shraddhaade            
@@ -93,7 +93,7 @@ The manifest YAML file is a comprehensive configuration for setting up and runni
     dag:    
       - name: sports-test-customer
         title: sports_data Dag
-        description: This job ingests customer CSV into the icebase 
+        description: This job ingests customer CSV into the lakehouse 
         spec: 
     ```
     
@@ -103,7 +103,7 @@ The manifest YAML file is a comprehensive configuration for setting up and runni
     spec:     
       tags:         
         - customer    
-      stack: flare:6.0        
+      stack: flare:7.0        
       compute: runnable-default
     ```
     
@@ -159,7 +159,7 @@ The manifest YAML file is a comprehensive configuration for setting up and runni
       ```yaml 
         outputs:              
           - name: customer
-            dataset: dataos://icebase:sports/customers?acl=rw
+            dataset: dataos://lakehouse:sports/customers?acl=rw
             format: Iceberg
             title: sports_data
             description: this dataset contains customer data 
@@ -183,11 +183,11 @@ workflow:
   dag:    
     - name: sports-test-customer
       title: sports_data Dag
-      description: This job ingests customer CSV into icebase
+      description: This job ingests customer CSV into lakehouse
       spec:     
         tags:         
           - customer    
-        stack: flare:6.0        
+        stack: flare:7.0        
         compute: runnable-default
         stackSpec:         
           job:            
@@ -232,7 +232,7 @@ workflow:
                                                  
             outputs:              
               - name: customer
-                dataset: dataos://icebase:sports/customers?acl=rw
+                dataset: dataos://lakehouse:sports/customers?acl=rw
                 format: Iceberg
                 title: sports_data
                 description: this dataset contains customer data 
@@ -339,7 +339,7 @@ INFO[0001] 🔍 workflow...complete
     JOB NAME    |   STACK    |       JOB TITLE       | JOB DEPENDENCIES  
 ----------------|------------|-----------------------|-------------------
   system        | dataos_cli | System Runnable Steps |                   
-  test-customer | flare:6.0  | sports_data Dag       |                   
+  test-customer | flare:7.0  | sports_data Dag       |                   
 
   RUNTIME | PROGRESS |          STARTED          | FINISHED  
 ----------|----------|---------------------------|-----------

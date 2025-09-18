@@ -279,7 +279,7 @@ Here's a comprehensive example of the 'Retail Supply Chain' Lens to drive our us
               state,
               city
             FROM
-              icebase.supply_chain.retailer_info
+              lakehouse.supply_chain.retailer_info
           columns:
             - name: retailer_id
             - name: type
@@ -289,7 +289,7 @@ Here's a comprehensive example of the 'Retail Supply Chain' Lens to drive our us
             - name: city
           verified: true
           tables:
-            - icebase.supply_chain.retailer_info
+            - lakehouse.supply_chain.retailer_info
         fields:
           - name: retailer_id
             type: string
@@ -342,7 +342,7 @@ Here's a comprehensive example of the 'Retail Supply Chain' Lens to drive our us
               product_cat as product_category,
               product_condition as disease_name
             FROM
-              icebase.supply_chain.product_info
+              lakehouse.supply_chain.product_info
           columns:
             - name: product_id
             - name: product_name
@@ -350,7 +350,7 @@ Here's a comprehensive example of the 'Retail Supply Chain' Lens to drive our us
             - name: disease_name
           verified: true
           tables:
-            - icebase.supply_chain.product_info
+            - lakehouse.supply_chain.product_info
         fields:
           - name: product_id
             type: string
@@ -389,7 +389,7 @@ Here's a comprehensive example of the 'Retail Supply Chain' Lens to drive our us
               product_ids as product_id,
               quantities
             FROM
-              icebase.supply_chain.retail_order_line_item
+              lakehouse.supply_chain.retail_order_line_item
             where order_datetime is not null
             
           columns:
@@ -401,7 +401,7 @@ Here's a comprehensive example of the 'Retail Supply Chain' Lens to drive our us
             - name: quantities
           verified: true
           tables:
-            - icebase.supply_chain.retail_order_line_item
+            - lakehouse.supply_chain.retail_order_line_item
         fields:
           - name: order_id
             type: string

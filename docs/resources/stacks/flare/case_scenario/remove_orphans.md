@@ -4,9 +4,11 @@ The [`remove_orphans` action](/resources/stacks/flare/configurations/#remove_orp
 
 !!! note 
 
-    It is dangerous to remove orphan files with a retention interval shorter than the time expected for any write to complete because it might corrupt the table if in-progress files are considered orphaned and are deleted. The default interval is 3 days.
+    - It is dangerous to remove orphan files with a retention interval **shorter** than the time expected for any write to complete; in-progress files might be treated as orphans and deleted, potentially corrupting the table.
+    
+    - The **default retention interval is 3 days** (if not explicitly set).
 
-**Get the list of snapshots by writing the following command**
+**Get the list of snapshots by using the following command**
 
 ```bash
 dataos-ctl dataset snapshots -a dataos://lakehouse:retail/city
@@ -24,12 +26,13 @@ dataos-ctl dataset snapshots -a dataos://lakehouse:retail/city
 
 ## Configuration
 
-| Attribute               | Type      | Description |
-|-------------------------|-----------|-------------|
-| `older_than`              | timestamp | Remove orphan files created before this timestamp. Defaults to 3 days ago. |
-| `location`                | string    | Directory to look for files in. Defaults to the table's location. |
-| `dry_run`                 | boolean   | If true, performs a dry run without actually removing files. Defaults to false. |
-| `max_concurrent_deletes`  | int       | Size of the thread pool used for delete operations. By default, no thread pool is used. |
+| Attribute              | Type       | Description                                                                                          |
+| ---------------------- | ---------- | ---------------------------------------------------------------------------------------------------- |
+| `olderThanMillis`      | string/int | Remove orphan files created **before** this Unix epoch (milliseconds).                               |
+| `olderThanTimestamp`   | string     | Remove orphan files created **before** this timestamp (e.g., `2024-12-01 00:00:00.000`).             |
+| `location`             | string     | Directory to look for files in. Defaults to the table’s location.                                    |
+| `dryRun`               | boolean    | If `true`, performs a dry run without actually removing files. Defaults to `false`.                  |
+| `maxConcurrentDeletes` | int        | Size of the thread pool used for delete operations. By default, no thread pool is used (sequential). |
 
 
 <!-- actions:
@@ -43,9 +46,7 @@ dataos-ctl dataset snapshots -a dataos://lakehouse:retail/city
     maxConcurrentDeletes: 2 -->
 
 
-The following code snippet demonstrates removing orphan files older than the time specified in the `olderThan` in Unix epoch format.
-
-The task relies on the `remove_orphans` action, which requires the inputDf dataset as an input. This dataset is defined as `dataos://lakehouse:retail/city` and is in Iceberg format. Additionally, the action provides options, such as the `olderThan` parameter, which specifies the timestamp (in Unix format) for identifying orphan files.
+The following code snippet demonstrates removing orphan files for different attribute format. The task relies on the `remove_orphans` action, which requires the inputDf dataset as an input. This dataset is defined as `dataos://lakehouse:retail/city` and is in Iceberg format. 
 
 ```yaml
 name: orphans                                    # Name of the Workflow
@@ -61,7 +62,7 @@ workflow:                                        # Workflow Section
       spec:                                      # Specs
         tags:                                    # Tags
           - orphans
-        stack: flare:5.0                         # Stack is Flare
+        stack: flare:7.0                         # Stack is Flare
         compute: runnable-default                # Compute
         stackSpec:                               # Flare Stack Specific Section
           job:                                   # Job Section
@@ -69,12 +70,215 @@ workflow:                                        # Workflow Section
             logLevel: INFO                       # Loglevel
             inputs:                              # Inputs Section
               - name: inputDf                    # Input Dataset Name
-                dataset: dataos://lakehouse:retail/city                # Input UDL
-                format: Iceberg                  # Format
+                dataset: ${{dataos://lakehouse:retail/city }}               # Input UDL
+                format: ${{Iceberg}}                  # Format
             actions:                             # Flare Action
               - name: remove_orphans             # Action Name
                 input: inputDf                   # Input Dataset Name
                 options:                         # Options
-                  olderThan: "1739734172"        # Timestamp in Unix Format
-
+                  olderThanMillis: '1740643647492'  # Timestamp in Unix Format
+                  # olderThanTimestamp: '2021-06-30 00:00:00.000'
+                  # location: 'path-to-file'
+                  # dryRun: false
+                  # maxConcurrentDeletes: 2
 ```
+
+### **`olderThanMillis`**
+
+Expire orphan files created before a Unix epoch (milliseconds):
+
+```yaml
+name: orphans-millis
+version: v1
+type: workflow
+tags:
+  - orphans
+workflow:
+  title: Remove orphan files (olderThanMillis)
+  dag:
+    - name: orphans
+      title: Remove orphan files
+      spec:
+        tags:
+          - orphans
+        stack: flare:7.0
+        compute: runnable-default
+        stackSpec:
+          job:
+            explain: true
+            logLevel: INFO
+            inputs:
+              - name: inputDf
+                dataset: dataos://icebase:actions/random_users_data
+                format: Iceberg
+            actions:
+              - name: remove_orphans
+                input: inputDf
+                options:
+                  olderThanMillis: '1646309607000'   # snapshots older than this epoch are considered orphans
+```
+
+---
+
+### **`olderThanTimestamp`**
+
+Use a human-readable timestamp:
+
+```yaml
+name: orphans-ts
+version: v1
+type: workflow
+tags:
+  - orphans
+workflow:
+  title: Remove orphan files (olderThanTimestamp)
+  dag:
+    - name: orphans
+      title: Remove orphan files
+      spec:
+        tags:
+          - orphans
+        stack: flare:7.0
+        compute: runnable-default
+        stackSpec:
+          job:
+            explain: true
+            logLevel: INFO
+            inputs:
+              - name: inputDf
+                dataset: dataos://icebase:actions/random_users_data
+                format: Iceberg
+            actions:
+              - name: remove_orphans
+                input: inputDf
+                options:
+                  olderThanTimestamp: '2021-06-30 00:00:00.000'  # do not set olderThanMillis together with this
+```
+
+### **`dryRun`**
+
+Preview deletions without removing files:
+
+```yaml
+name: orphans-dry-run
+version: v1
+type: workflow
+tags:
+  - orphans
+workflow:
+  title: Remove orphan files (dry run)
+  dag:
+    - name: orphans
+      title: Remove orphan files
+      spec:
+        tags:
+          - orphans
+        stack: flare:7.0
+        compute: runnable-default
+        stackSpec:
+          job:
+            explain: true
+            logLevel: INFO
+            inputs:
+              - name: inputDf
+                dataset: dataos://icebase:actions/random_users_data
+                format: Iceberg
+            actions:
+              - name: remove_orphans
+                input: inputDf
+                options:
+                  olderThanTimestamp: '2021-06-30 00:00:00.000'
+                  dryRun: true                          # report-only; no files are deleted
+```
+
+
+
+### **`location`**
+
+Target a specific directory (overrides table location):
+
+```yaml
+name: orphans-location
+version: v1
+type: workflow
+tags:
+  - orphans
+workflow:
+  title: Remove orphan files (custom location)
+  dag:
+    - name: orphans
+      title: Remove orphan files
+      spec:
+        tags:
+          - orphans
+        stack: flare:7.0
+        compute: runnable-default
+        stackSpec:
+          job:
+            explain: true
+            logLevel: INFO
+            inputs:
+              - name: inputDf
+                dataset: dataos://icebase:actions/random_users_data
+                format: Iceberg
+            actions:
+              - name: remove_orphans
+                input: inputDf
+                options:
+                  olderThanMillis: '1646309607000'
+                  location: '${{path to file}}'  # adjust for your storage
+```
+
+
+
+### **`maxConcurrentDeletes`**
+
+Speed up deletes using a small thread pool:
+
+```yaml
+name: orphans-concurrency
+version: v1
+type: workflow
+tags:
+  - orphans
+workflow:
+  title: Remove orphan files (concurrent deletes)
+  dag:
+    - name: orphans
+      title: Remove orphan files
+      spec:
+        tags:
+          - orphans
+        stack: flare:7.0
+        compute: runnable-default
+        stackSpec:
+          job:
+            explain: true
+            logLevel: INFO
+            inputs:
+              - name: inputDf
+                dataset: dataos://icebase:actions/random_users_data
+                format: Iceberg
+            actions:
+              - name: remove_orphans
+                input: inputDf
+                options:
+                  olderThanTimestamp: '2021-06-30 00:00:00.000'
+                  maxConcurrentDeletes: 2     # tune based on cluster I/O and rate limits
+```
+
+!!! tip
+
+    - Start with **2–4** threads and observe driver/executor and storage system utilization. Increase gradually if stable.
+    - Combine `dryRun: true` with `maxConcurrentDeletes` during validation to estimate run duration without risk.
+
+
+
+## Best Practices
+
+* **Choose exactly one cutoff**: set **either** `olderThanMillis` **or** `olderThanTimestamp`.
+* **Safety first**: for active tables, use a conservative cutoff (≥ 72 hours) to avoid racing in-flight writes.
+* **Pilot with `dryRun`**: verify counts/paths before enabling deletion.
+* **Scope with `location`**: helpful when table directories contain auxiliary data you want to exclude/include deliberately.
+* **Tune concurrency carefully**: avoid overwhelming your object store or hitting API rate limits.
+

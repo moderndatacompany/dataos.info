@@ -149,16 +149,16 @@ service:
       memory: 2Gi
   stackSpec:
     datasets:
-      - address: dataos://icebase:flash/f_sales
+      - address: dataos://lakehouse:flash/f_sales
         name: numerous
 
-      - address: dataos://icebase:flash/product_data_master
+      - address: dataos://lakehouse:flash/product_data_master
         name: product
 
-      - address: dataos://icebase:flash/site_check1
+      - address: dataos://lakehouse:flash/site_check1
         name: site
 
-      - address: dataos://icebase:flash/customer_data_master
+      - address: dataos://lakehouse:flash/customer_data_master
         name: customer
 
     init:

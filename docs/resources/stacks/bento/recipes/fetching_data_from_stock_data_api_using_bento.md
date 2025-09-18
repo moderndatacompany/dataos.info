@@ -113,7 +113,7 @@ A YAML configuration file is required to define the Bento stack, specifying inpu
                         level
     ```
     
-5. Reading data from pulsar and writing to icebase
+5. Reading data from pulsar and writing to lakehouse
     
     ```yaml
     version: v1
@@ -123,9 +123,9 @@ A YAML configuration file is required to define the Bento stack, specifying inpu
       - pulsar
       - read
       - applestock
-    description: this jobs reads data from pulsar and writes to icebase
+    description: this jobs reads data from pulsar and writes to lakehouse
     
-    #ingestion YAML starts
+    # ingestion YAML starts
     workflow:
       dag:
         - name: pulsar-appledata
@@ -134,7 +134,7 @@ A YAML configuration file is required to define the Bento stack, specifying inpu
           spec:
             tags:
               - Connect
-            stack: flare:5.0
+            stack: flare:7.0
     
     # a dataos APIkey is required of operator tag.
             envs: 
@@ -142,8 +142,8 @@ A YAML configuration file is required to define the Bento stack, specifying inpu
             stackSpec:
               job:
                 explain: true
-    #enter the name of depo "/stockdatapple" is the pulsar topic name
-    #publicstreams is the depo of pulsar which is created in DataOS
+    # enter the name of depo "/stockdatapple" is the pulsar topic name
+    # publicstreams is the depo of pulsar which is created in DataOS
                 inputs:
                   - name: input
                     dataset: dataos://publicstreams:default/stockdatapple
@@ -153,7 +153,7 @@ A YAML configuration file is required to define the Bento stack, specifying inpu
                 logLevel: INFO
                 outputs:
                   - name: stockdata
-                    depot: dataos://icebase:sample?acl=rw
+                    depot: dataos://lakehouse:sample?acl=rw
                 steps:
                   - sink:
                       - sequenceName: input

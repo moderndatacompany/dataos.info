@@ -6,7 +6,8 @@ search:
 
 # :resources-bundle: Bundle
 
-A Bundle [Resource](/resources/) within DataOS serves as a declarative and standardized mechanism for deploying a collection of Resources, Data Products, or applications in a single operation. It empowers data developers with the capability to programmatically orchestrate the deployment, scheduling, creation, and dismantling of code and infrastructure resources linked to these Data Products and applications in a unified manner. 
+A Bundle [Resource](/resources/) within DataOS is a declarative and standardized construct used to deploy a collection of Resources or applications in a single operation. Bundles are a required component within every Data Product and enable the programmatic orchestration of deployment, scheduling, creation, and teardown of code and infrastructure components associated with those Resources and applications in a consistent and unified manner.
+
 
 As implied by its name, the Bundle Resource aggregates various [DataOS Resources](/resources/) into a flattened directed acyclic graph (DAG). Within this structure, each node represents a distinct DataOS Resource, interconnected through dependency relationships.
 

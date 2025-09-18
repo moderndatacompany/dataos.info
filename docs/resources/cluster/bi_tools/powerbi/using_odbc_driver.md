@@ -146,7 +146,7 @@ To use the Simba Presto ODBC Driver in Power BI application, you need to configu
     - Now in the 'Data Source' section, provide the required information.
         - Host (e.g. tcp.reasonably-welcome-grub.dataos.io)
         - Port (e.g. 7432)
-        - Catalog (e.g. icebase)
+        - Catalog (e.g. lakehouse)
         - Schema (optional)
 
     <center>

@@ -74,7 +74,7 @@ A [Perspective](/interfaces/data_product_hub/discovery/#perspectives) is a saved
 
 ## Inputs
 
-In the Data Product Hub, an [input](/interfaces/data_product_hub/discovery/#inputs-tab) is a dataset fed into the Data Product. A Data Product can have multiple inputs, as shown below. An input is populated from the input dataset referenced in the Data Product manifest file. For example in the 'Customer Churn Prediction' Data Product the input `customer` is populated from the address `dataos://icebase:customer_relationship_management/customer` referred in its manifest file, as shown below.
+In the Data Product Hub, an [input](/interfaces/data_product_hub/discovery/#inputs-tab) is a dataset fed into the Data Product. A Data Product can have multiple inputs, as shown below. An input is populated from the input dataset referenced in the Data Product manifest file. For example in the 'Customer Churn Prediction' Data Product the input `customer` is populated from the address `dataos://lakehouse:customer_relationship_management/customer` referred in its manifest file, as shown below.
 
 <center>
 <img src="/interfaces/data_product_hub/input.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -84,7 +84,7 @@ In the Data Product Hub, an [input](/interfaces/data_product_hub/discovery/#inpu
 
 ## Outputs
 
-In the Data Product Hub, an [output](/interfaces/data_product_hub/discovery/#outputs-tab) is a materialized dataset generated from the Data Product. A Data Product can have multiple outputs, as shown below. An output is populated from the output dataset referenced in the Data Product manifest file. For example in the 'Customer Churn Prediction' Data Product the output `churn_probability_per_customer` is populated from the address `dataos://icebase:customer_relationship_management/churn_probability_per_customer` referred in its manifest file, as shown below.
+In the Data Product Hub, an [output](/interfaces/data_product_hub/discovery/#outputs-tab) is a materialized dataset generated from the Data Product. A Data Product can have multiple outputs, as shown below. An output is populated from the output dataset referenced in the Data Product manifest file. For example in the 'Customer Churn Prediction' Data Product the output `churn_probability_per_customer` is populated from the address `dataos://lakehouse:customer_relationship_management/churn_probability_per_customer` referred in its manifest file, as shown below.
 
 <center>
 <img src="/interfaces/data_product_hub/output.png" alt="DPH" style="width:40rem; border: 1px solid black;" />

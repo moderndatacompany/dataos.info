@@ -16,28 +16,28 @@ workflow:
     endOn: 2024-11-01T23:40:45Z
     timezone: Asia/Kolkata
   dag: 
-   - name: write-snowflake-02
-     title: Reading data and writing to snowflake
-     description: This job writes data to wnowflake
-     spec:
-       tags:
-         - Connect
-         - write
-       stack: flare:5.0
-       compute: runnable-default
-       stackSpec:
-         job:
-           explain: true
-           inputs:
-             - name: poros_workflows
-               dataset: dataos://systemstreams:poros/workflows
-               isStream: true
-               options:
-                 startingOffsets: earliest
-           logLevel: INFO
-           outputs:
-             - name: poros_workflows
-               dataset: dataos://icebase:sys09/poros_workflows_pulsar?acl=rw
-               format: Iceberg
-               options:
-                 saveMode: overwrite
+    - name: write-snowflake-02
+      title: Reading data and writing to snowflake
+      description: This job writes data to wnowflake
+      spec:
+        tags:
+          - Connect
+          - write
+        stack: flare:7.0
+        compute: runnable-default
+        stackSpec:
+          job:
+            explain: true
+            inputs:
+              - name: poros_workflows
+                dataset: dataos://systemstreams:poros/workflows
+                isStream: true
+                options:
+                  startingOffsets: earliest
+            logLevel: INFO
+            outputs:
+              - name: poros_workflows
+                dataset: dataos://lakehouse:sys09/poros_workflows_pulsar?acl=rw
+                format: Iceberg
+                options:
+                  saveMode: overwrite

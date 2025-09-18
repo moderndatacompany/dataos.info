@@ -61,7 +61,7 @@ Gives the count of values for a column. It’s similar to the SQL count function
 	entity:
 - name: product
   sql:
-   - query: SELECT * FROM icebase.test.products
+   - query: SELECT * FROM lakehouse.test.products
    ----
    ----
 	fields:
@@ -116,7 +116,7 @@ Measure declared as type ‘min’ returns a minimum of values given in the snip
 entity:
  - name: orders
    sql:
-    - query: select * from icebase.test.orders
+    - query: select * from lakehouse.test.orders
    ----
    ----
 # measure to identify the first purchase date
@@ -168,7 +168,7 @@ owner: xxx
 entities:
   - name: order
     sql:
-      query: SELECT * FROM icebase.retail.orders
+      query: SELECT * FROM lakehouse.retail.orders
     fields:
 			------
 			------

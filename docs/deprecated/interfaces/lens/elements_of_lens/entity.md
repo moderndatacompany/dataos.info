@@ -41,7 +41,7 @@ Within the SQL ‘query’ property, you can pass in the SQL query to generate t
 entities:
   - name: product
     sql:
-      query: SELECT * FROM icebase.test.products
+      query: SELECT * FROM lakehouse.test.products
 ```
 
 OR
@@ -55,7 +55,7 @@ entities:
 		        row_number() over(partition by session_id order by created_on) as row_num,
 		        lag(created_on) over ( partition by session_id order by created_on ) last_act_time
 		        FROM
-		        icebase.campaign.click_stream
+		        lakehouse.campaign.click_stream
 ```
 
 Columns must be specified in addition to the query property. It cannot be left empty. 
@@ -64,12 +64,12 @@ Columns must be specified in addition to the query property. It cannot be left e
 entities:
   - name: product
     sql:
-      query: SELECT * FROM icebase.test.products
+      query: SELECT * FROM lakehouse.test.products
 			columns:
         - name: uuid
       verified: true
       tables:
-        - icebase.test.products
+        - lakehouse.test.products
     fields:
       - name: uuid
         type: string
@@ -87,7 +87,7 @@ You can also reference and reuse the SQL expression of an existing entity to cre
 entities:
   - name: activity_stream
     sql:
-      query: SELECT * FROM icebase.entity_360.campaign_stream
+      query: SELECT * FROM lakehouse.entity_360.campaign_stream
       -----
       -----
     fields:
@@ -109,7 +109,7 @@ owner: iamgroot
 entities:
   - name: activity_stream
     sql:
-      query: SELECT * FROM icebase.entity_360.campaign_stream
+      query: SELECT * FROM lakehouse.entity_360.campaign_stream
     fields:
 			------
 			------
@@ -134,7 +134,7 @@ Multiple tags can be added to a lens. They aid in discoverability.
 entities:
 	- name: product
 		sql: 
-      query: SELECT * FROM icebase.test.products
+      query: SELECT * FROM lakehouse.test.products
       ---
       ---
     tags:

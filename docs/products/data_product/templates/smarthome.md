@@ -53,7 +53,7 @@ v1alpha:
         name: smarthome-data-ingest
         workspace: public
       - description: Smart Home Stream Worker Sync
-        purpose: Sync data from Fastbase to Icebase
+        purpose: Sync data from Fastbase to Lakehouse
         type: worker
         version: v1
         refType: dataos
@@ -64,7 +64,7 @@ v1alpha:
         type: workflow
         version: v1
         refType: dataos
-        name: wf-icebase-depot-scanner
+        name: wf-lakehouse-depot-scanner
         workspace: public
       - description: Smart Home Dataset quality checks
         purpose: Runs quality checks on top of dataset
@@ -83,6 +83,6 @@ v1alpha:
       - description: By transforming streaming data from Fastbase, the output is created
         purpose: consumption
         refType: dataos_address
-        ref: dataos://icebase:smarthome/dataset
+        ref: dataos://lakehouse:smarthome/dataset
 
 ```

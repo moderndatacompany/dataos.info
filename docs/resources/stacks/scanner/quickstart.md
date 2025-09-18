@@ -14,7 +14,7 @@ Follow the below steps:
 <img src="/resources/stacks/scanner/scanner_img/quickstart-scan-01.png"  class="center" style="width:30rem; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3); display: block; margin: 0 auto;" />
 
 
-[Depots](/resources/depot/index) are used to connect to metadata sources to extract entities' metadata. Users must provide the Depot name or address to establish a connection and scan all datasets from the data source referenced by the Depot.
+[Depots](/resources/depot/) are used to connect to metadata sources to extract entities' metadata. Users must provide the Depot name or address to establish a connection and scan all datasets from the data source referenced by the Depot.
 
 ## **Source Data in Snowflake**
 

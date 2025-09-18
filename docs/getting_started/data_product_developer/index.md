@@ -85,10 +85,10 @@ workflow:
   dag:    
     - name: sports-test-customer
       title: sports_data Dag
-      description: This job ingests customer csv from Azure blob storage into icebase catalog 
+      description: This job ingests customer csv from Azure blob storage into lakehouse catalog 
       tags:         
         - customer    
-      stack: flare:5.0        
+      stack: flare:7.0        
       compute: runnable-default
       stackSpec:         
         job:            
@@ -133,7 +133,7 @@ workflow:
                                                  
           outputs:              
             - name: customer
-              dataset: dataos://icebase:sports/sample_customer?acl=rw
+              dataset: dataos://lakehouse:sports/sample_customer?acl=rw
               format: Iceberg
               title: sports_data
               description: this dataset contains customer csv from sports_data 
@@ -153,6 +153,6 @@ workflow:
 
 Please note that this workflow will be part of the data product bundle. 
 
-Click [here](/resources/stacks/flare/), to access the comprehensive DataOS Resource specific documentaion on dataos.info. 
+Click [here](/resources/types/), to access the comprehensive DataOS Resource specific documentation on dataos.info. 
 
 Explore the rich set of DataOS resources, which serve as the building blocks for data products and processing stacks. Additionally, refer to the learning assets to master the required proficiency level for the role of data product developer.

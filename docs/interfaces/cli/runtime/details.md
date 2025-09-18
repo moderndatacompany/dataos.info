@@ -12,7 +12,7 @@ Usage:
 Flags:
   -d, --details               Print lots of details
   -h, --help                  help for get
-      --id string             Resource ID, like: TYPE:VERSION:NAME:WORKSPACE(optional), depot:v1:icebase or service:v1:ping:sandbox
+      --id string             Resource ID, like: TYPE:VERSION:NAME:WORKSPACE(optional), depot:v1:lakehouse or service:v1:ping:sandbox
   -i, --identifier string     Identifier of resource, like: NAME:VERSION:TYPE:WORKSPACE
   -f, --manifestFile string   Manifest file location
   -n, --name string           Name to query
@@ -37,7 +37,7 @@ Usage:
 
 Flags:
   -h, --help                  help for pause
-      --id string             Resource ID, like: TYPE:VERSION:NAME:WORKSPACE(optional), depot:v1:icebase or service:v1:ping:sandbox
+      --id string             Resource ID, like: TYPE:VERSION:NAME:WORKSPACE(optional), depot:v1:lakehouse or service:v1:ping:sandbox
   -i, --identifier string     Identifier of resource, like: NAME:VERSION:TYPE
   -f, --manifestFile string   Manifest File location
   -n, --name string           Name to pause
@@ -57,7 +57,7 @@ Usage:
 
 Flags:
   -h, --help                  help for re-run
-      --id string             Resource ID, like: TYPE:VERSION:NAME:WORKSPACE(optional), depot:v1:icebase or service:v1:ping:sandbox
+      --id string             Resource ID, like: TYPE:VERSION:NAME:WORKSPACE(optional), depot:v1:lakehouse or service:v1:ping:sandbox
   -i, --identifier string     Identifier of resource, like: NAME:VERSION:TYPE
   -f, --manifestFile string   Manifest File location
   -n, --name string           Name to re-run
@@ -77,7 +77,7 @@ Usage:
 
 Flags:
   -h, --help                  help for resume
-      --id string             Resource ID, like: TYPE:VERSION:NAME:WORKSPACE(optional), depot:v1:icebase or service:v1:ping:sandbox
+      --id string             Resource ID, like: TYPE:VERSION:NAME:WORKSPACE(optional), depot:v1:lakehouse or service:v1:ping:sandbox
   -i, --identifier string     Identifier of resource, like: NAME:VERSION:TYPE
   -f, --manifestFile string   Manifest File location
   -n, --name string           Name to resume
@@ -98,7 +98,7 @@ Usage:
 
 Flags:
   -h, --help                  help for stop
-      --id string             Resource ID, like: TYPE:VERSION:NAME:WORKSPACE(optional), depot:v1:icebase or service:v1:ping:sandbox
+      --id string             Resource ID, like: TYPE:VERSION:NAME:WORKSPACE(optional), depot:v1:lakehouse or service:v1:ping:sandbox
   -i, --identifier string     Identifier of resource, like: NAME:VERSION:TYPE
   -f, --manifestFile string   Manifest File location
   -n, --name string           Name to stop

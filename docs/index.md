@@ -114,7 +114,7 @@ The Interfaces section in the documentation introduces various ways to interact 
 
 Resources section of the documentation will help you understand the primitives of DataOS that power the core functionalities necessary in any data stack. We have mapped these DataOS Resources to their functional role in the data stack:
 
-#### **Source Connectivity and Metadata management**
+#### Source Connectivity and Metadata management
 
 This category includes DataOS Resources that facilitate the connection to various data sources, scan the metadata, and run quality checks & data profiling.
 
@@ -135,7 +135,7 @@ This category includes DataOS Resources that facilitate the connection to variou
 </div>
 
 
-#### **Data Movement and Processing**
+#### Data Movement and Processing
 
 This category includes DataOS Resources that facilitate the movement and transformation of data.
 
@@ -198,7 +198,7 @@ These DataOS Resources are designed for stream data processing, handling real-ti
 </div>
 
 
-#### **Storage**
+#### Storage
 
 
 This category includes DataOS Resources for providing efficient & scalable data storage.
@@ -229,7 +229,7 @@ This category includes DataOS Resources for providing efficient & scalable data 
     Key Stack in this category is [Beacon](/resources/stacks/beacon/).
 </div>
 
-#### **Observability**
+#### Observability
 
 These key DataOS Resources are essential for tracking system performance and managing alerts, providing visibility into the health and status of the data infrastructure.
 
@@ -247,7 +247,7 @@ These key DataOS Resources are essential for tracking system performance and man
     Enables developers to define criteria for identifying incidents from a stream, delivering alerts based on specified conditions.
 </div>
 
-#### **Security**
+#### Security
 
 These DataOS Resources ensure data security and access control, managing sensitive information and enforcing policies for data protection.
 
@@ -277,7 +277,7 @@ These DataOS Resources ensure data security and access control, managing sensiti
     Links the Subject-Predicate-Object relationship to create access policies, granting specific system or data access.
 </div>
 
-#### **Deployment**
+#### Deployment
 
 These DataOS Resources streamline the deployment process of data products, facilitate the packaging, distribution, and execution of applications and services.
 
@@ -296,7 +296,7 @@ These DataOS Resources streamline the deployment process of data products, facil
     Key Stacks in this category are [Container](/resources/stacks/container/) and [SteamPipe](/resources/stacks/steampipe/).
 </div>
 
-#### **Infrastructure Resources**
+#### Infrastructure Resources
 
 This category includes DataOS Resources for managing computational power and infrastructure configurations, essential for running your analytics and data processing workloads. They ensure optimal performance and scalability of data processing environments.
 

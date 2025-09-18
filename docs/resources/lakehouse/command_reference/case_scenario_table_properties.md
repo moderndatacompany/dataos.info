@@ -14,7 +14,7 @@ dataos-ctl dataset properties -a ${{udl}}
 **Example**
 
 ```bash
-dataos-ctl dataset properties -a dataos://icebase:retail/city
+dataos-ctl dataset properties -a dataos://lakehouse:retail/city
 ```
 
 Output (Successful Execution)
@@ -44,7 +44,7 @@ dataos-ctl dataset add-properties -a ${{udl}} \
 To add multiple properties at the same time, use:
 
 ```bash
-dataos-ctl dataset add-properties -a dataos://icebase:retail/city \
+dataos-ctl dataset add-properties -a dataos://lakehouse:retail/city \
 -p "${{property-name}}:${{property-value}}" \
 -p "${{property-name}}:${{property-value}}"
 ```
@@ -54,7 +54,7 @@ dataos-ctl dataset add-properties -a dataos://icebase:retail/city \
 Let’s say we want to add a new property by the name `write.metadata.metrics.default` and set its value to `full`. To do this, execute the following code:
 
 ```bash
-dataos-ctl dataset add-properties -a dataos://icebase:retail/city \
+dataos-ctl dataset add-properties -a dataos://lakehouse:retail/city \
 -p write.metadata.metrics.default:full
 ```
 
@@ -68,7 +68,7 @@ INFO[0000] 📂 add properties...completed
 To check whether the property is added or not, run the list properties command:
 
 ```bash
-dataos-ctl dataset properties -a dataos://icebase:retail/city
+dataos-ctl dataset properties -a dataos://lakehouse:retail/city
 ```
 
 Output
@@ -102,7 +102,7 @@ dataos-ctl dataset remove-properties -a ${{udl}} \
 Let’s say we want to remove the property `write.metadata.metrics.default`. To accomplish this, execute the following code:
 
 ```bash
-dataos-ctl dataset remove-properties -a dataos://icebase:retail/city \
+dataos-ctl dataset remove-properties -a dataos://lakehouse:retail/city \
 -p write.metadata.metrics.default
 ```
 
@@ -116,7 +116,7 @@ INFO[0001] 📂 remove properties...completed
 To check whether the property is deleted or not, use the list properties command.
 
 ```bash
-dataos-ctl dataset properties -a dataos://icebase:retail/city
+dataos-ctl dataset properties -a dataos://lakehouse:retail/city
 ```
 
 ```bash

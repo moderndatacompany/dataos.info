@@ -2,7 +2,11 @@
 
 To execute Flare Jobs on top of object storage depots, you first need to create a depot. If you have already created a depot, then continue reading else proceed to following link: [Kafka Depot](/resources/depot/depot_config_templates/kafka/)
 
-To run a Flare Job all you need is the UDL address of the input or output dataset for the reading and writing scenarios respectively. Apart from this you also need the file `format` of the data and some additional properties
+To run a Flare Job all you need is the UDL address of the input or output dataset for the reading and writing scenarios respectively. Apart from this you also need the file `format` of the data and some additional properties.
+
+!!! info "Recommendation"
+
+		You must have the Flare 7.0 stack to run Flare jobs in Kafka.
 
 ## Read Config
 
@@ -23,7 +27,7 @@ inputs:
 
 **Sample Read configuration YAML**
 
-Let’s take a case scenario where the dataset is stored in Kafka Depot and you have to read it from the source, perform some transformation steps and write it to the Icebase which is a managed depot within the DataOS. The read config YAML will be as follows
+Let’s take a case scenario where the dataset is stored in Kafka Depot and you have to read it from the source, perform some transformation steps and write it to the Lakehouse which is a managed depot within the DataOS. The read config YAML will be as follows
 
 ```yaml title="kafa_depot_read.yml"
 --8<-- "examples/resources/stacks/flare/kafka_depot_read.yml"
@@ -37,12 +41,12 @@ For writing the data to a depot on an object store, we need to configure the `na
 outputs:
   - name: output01
     depot: dataos://kafka:default?acl=rw
-	checkpointLocation: dataos://icebase:sys01/checkpoints/ny_taxi/output01/nyt01?acl=rw
+	checkpointLocation: dataos://lakehouse:sys01/checkpoints/ny_taxi/output01/nyt01?acl=rw
 ```
 
 **Sample Write configuration YAML**
 
-Let’s take a case scenario where the output dataset is to be stored a Kafka Depot and you have to read data from the Icebase depot within the DataOS The write config YAML will be as follows
+Let’s take a case scenario where the output dataset is to be stored a Kafka Depot and you have to read data from the Lakehouse depot within the DataOS The write config YAML will be as follows
 
 ```yaml title="kafka_depot_write.yml"
 --8<-- "examples/resources/stacks/flare/kafka_depot_write.yml"

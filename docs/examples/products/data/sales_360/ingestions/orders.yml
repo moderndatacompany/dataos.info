@@ -5,11 +5,11 @@ tags:
   - company.order_enriched
   - Tier.Gold
   - Domain.Finance
-description: The job is to ingest order enriched data for company StrideRight Shoes from Bigquery Source to Icebase.
+description: The job is to ingest order enriched data for company StrideRight Shoes from Bigquery Source to Lakehouse.
 workflow:
   dag:
     - name: order-enriched-data
-      description: The job is to ingest order enriched data for company StrideRight Shoes from Bigquery Source to Icebase.
+      description: The job is to ingest order enriched data for company StrideRight Shoes from Bigquery Source to Lakehouse.
       spec:
         tags:
           - company.order_enriched
@@ -54,7 +54,7 @@ workflow:
             logLevel: INFO
             outputs:
               - name: final
-                dataset: dataos://icebase:sales_analytics/order_enriched?acl=rw
+                dataset: dataos://lakehouse:sales_analytics/order_enriched?acl=rw
                 format: Iceberg
                 description: The "order_enriched" table contains a dataset that has been augmented with additional information to provide deeper insights or to support more comprehensive analyses. This enrichment process involves integrating supplementary data from various sources or applying data transformation and enhancement techniques to the original dataset. Here are some common characteristics of an enriched table.
                 tags:

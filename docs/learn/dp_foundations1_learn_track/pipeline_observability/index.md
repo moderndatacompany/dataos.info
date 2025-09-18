@@ -378,4 +378,4 @@ Monitors and Pagers are separate Resources because they serve distinct functions
 ## Next step
 Next, set up monitors and pagers to track quality check failures and enhance observability.
 
-👉 [Create Monitor and Pager for Quality Checks ](/learn/dp_foundations1_learn_track/quality_observability/)
+👉 [Create Monitor and Pager for Quality Checks ](/learn/dp_foundations1_learn_track/quality_check_observability/)

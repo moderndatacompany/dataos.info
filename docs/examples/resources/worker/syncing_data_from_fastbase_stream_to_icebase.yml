@@ -4,7 +4,7 @@ type: worker # Type of Resource
 tags: # Tags for categorization
   - worker
   - fastfun
-description: This is a worker for sinking gateway events from pulsar to icebase # Description of the worker
+description: This is a worker for sinking gateway events from pulsar to lakehouse # Description of the worker
 worker:
   replicas: 1 # Number of replicas
   tags: # Additional tags
@@ -23,7 +23,7 @@ worker:
         subscriptionPosition: LATEST # Subscription position
     output:
       datasets:
-        - dataos://icebase:sys01/workflowmetadata2?acl=rw # Output dataset udl address
+        - dataos://lakehouse:sys01/workflowmetadata2?acl=rw # Output dataset udl address
       options:
         commitInterval: "30" # Commit interval
         iceberg:

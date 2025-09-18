@@ -1,4 +1,4 @@
-name: filter-icebase-city
+name: filter-lakehouse-city
 version: v1
 type: policy
 tags:
@@ -10,7 +10,7 @@ layer: user
 policy:
   data:
     type: filter
-    name: "filtericebasecity"
+    name: "filterlakehousecity"
     priority: 10
     selector:
       user:
@@ -21,5 +21,5 @@ policy:
       - column: county_name
         operator: not_equals
         value: "Autauga County"
-    dataset_id: icebase.retail.city
+    dataset_id: lakehouse.retail.city
     description: 'data policy to filter data on zip code'

@@ -82,7 +82,7 @@ SELECT
     country,
     zip_code
 FROM
-    "icebase"."sales_360".customer
+    "lakehouse"."sales_360".customer
 ```
 </details>
     
@@ -104,7 +104,7 @@ SELECT
     size,
     model
 FROM
-    "icebase"."sales_360".products
+    "lakehouse"."sales_360".products
 ```
 </details>
     
@@ -133,7 +133,7 @@ SELECT
     order_status,
     skuid
 FROM
-    "icebase"."sales_360".transactions
+    "lakehouse"."sales_360".transactions
 ```
 </details>  
 
