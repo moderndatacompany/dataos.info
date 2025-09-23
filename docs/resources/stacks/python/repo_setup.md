@@ -86,7 +86,7 @@ if __name__ == "__main__":
 <details>
     <summary>requirements.txt</summary>
     
-```
+```bash
 streamlit==1.37.1
 ```
 </details>

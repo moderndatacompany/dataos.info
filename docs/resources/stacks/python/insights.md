@@ -110,7 +110,7 @@ In the files with the `.py` extension, add the Python script, and in the `requir
    
 **requirements.txt**
     
-```yaml
+```bash
 requests
 ```
   
@@ -183,7 +183,7 @@ service:
 
 Apply the Service manifest file by executing the command below.
 
-```yaml
+```bash
 dataos-ctl resource apply -f ${{path-to-manifest-file}}
 ```
 
@@ -191,13 +191,13 @@ dataos-ctl resource apply -f ${{path-to-manifest-file}}
 
 Validate the Service by executing the command below.
 
-```yaml
+```bash
 dataos-ctl resource get -t service -n ${{service-identifier}} -w ${{workspace}}
 ```
 
 **Example:**
 
-```yaml
+```bash
 dataos-ctl resource get -t service -w public -n my-python-app-test
 # Expected output:
 INFO[0000] 🔍 get...                                     
