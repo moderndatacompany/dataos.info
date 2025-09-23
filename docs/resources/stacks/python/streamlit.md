@@ -81,7 +81,7 @@ In the files with the `.py` extension, add your Python script, in the `requireme
     
 === "requirements.txt"
     
-    ```
+    ```bash
     streamlit==1.45.0
     pandas==2.2.2
     numpy>=1.24.0
@@ -169,7 +169,7 @@ service:
 
 Apply the Service manifest file by executing the command below.
 
-```yaml
+```bash
 dataos-ctl resource apply -f ${{path-to-manifest-file}}
 ```
 
@@ -177,13 +177,13 @@ dataos-ctl resource apply -f ${{path-to-manifest-file}}
 
 Validate the Service by executing the command below.
 
-```yaml
+```bash
 dataos-ctl resource get -t service -n ${{service-identifier}} -w ${{workspace}}
 ```
 
 **Example:**
 
-```yaml
+```bash
 dataos-ctl resource get -t service -w public -n my-python-app-test
 # Expected output:
 INFO[0000] 🔍 get...                                     
