@@ -1,6 +1,12 @@
+---
+title: Python Stack
+search:
+  boost: 2
+---
+
 # Python Stack
 
-Python Stack provides a Python environment for executing Python applications and scripts within DataOS. It handles containerization, automatically installs dependencies from the repository, synchronizes the code from Git, and injects secrets securely, so the application runs the same way every time. Key features include:
+Python Stack provides an environment for executing Python applications and scripts within DataOS. It handles containerization, automatically installs dependencies from the repository, synchronizes the code from Git, and injects secrets securely, so the application runs the same way every time. Key features include:
 
 - **Ready Python environment:** lightweight Python 3.12 image with pip, optimized for production.
 - **Dependency management:** installs packages from `requirements.txt` automatically.
@@ -16,6 +22,7 @@ Before using the Python Stack, ensure the following requirements are met:
     
     ```bash
     dataos-ctl get -t stack -a
+
     #expected output:
                 NAME            | VERSION | TYPE  | WORKSPACE | STATUS | RUNTIME |       OWNER        
     ----------------------------|---------|-------|-----------|--------|---------|--------------------
@@ -26,10 +33,11 @@ Before using the Python Stack, ensure the following requirements are met:
       python-3-12               | v1alpha | stack |           | active |         | iamgroot           
     ```
     
-    If Python Stack is not available, deploy the Stack by following the steps given in the link below.
-    
-    [Deploy Python as a Stack](/resources/stacks/python/stack_deployment/)
-    
+    <aside class="callout">
+    🗣 If Python Stack is not available, deploy the Stack by following the steps given in the link below.<br>
+    <a href="/resources/stacks/python/stack_deployment/">Deploy Python as a Stack</a>
+    </aside>
+
 - A Compute Resource must be configured and accessible for running Python workloads. To configure the Compute Resource, please [refer to this link.](/resources/compute/)
 
 - Persistent Volume Resource should be provisioned for data processing use cases. To configure Volume Resource,  please [refer to this link.](/resources/volume/)
@@ -46,7 +54,7 @@ Before using the Python Stack, ensure the following requirements are met:
 
 - Application code must be compatible with Python 3.12.
 
-## Getting Started with Python Stack
+## Getting started with Python Stack
 
 This section guides you through the complete flow, from securing repository access to structuring the code and finally deploying it as a managed Service within DataOS.
 
@@ -78,7 +86,7 @@ Authentication ensures that only authorized users can access Python applications
 
 [Authentication](/resources/stacks/python/authentication/)
 
-### **Access Control**
+### **Access control**
 
 Access control defines what authenticated users are allowed to do. For Python applications, this involves regulating who can access the Python Application. Policies, roles, use cases, and tags are applied to enforce permissions, ensuring that users interact only with approved Python applications.
 
@@ -108,17 +116,17 @@ Vizro is an open-source, Python-based toolkit designed to simplify the creation 
 
 This section provides  Python scripts that help developers automate common tasks and interact with DataOS resources more efficiently. These examples are designed to illustrate how simple automation logic can be integrated into applications running on the Python Stack.
 
-#### Retrieve insights from the Semantic Model
+#### Retrieve data insights
 
 This example demonstrates how to use a Python script to query the Semantic Model and extract insights.
 
 [Retrieve insights from the Semantic Model](/resources/stacks/python/insights/)
 
-## Best Practices
+## Best practices
 
 This section includes recommended approaches for using the Python Stack effectively. It highlights how to organize repositories, manage dependencies, configure applications with environment variables, and implement proper logging and error handling.
 
-[Best Practices](/resources/stacks/python/bestpractices/)
+[Best practices](/resources/stacks/python/bestpractices/)
 
 ## Troubleshooting
 
