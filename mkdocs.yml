@@ -702,6 +702,24 @@ nav:
             - Index Searching: resources/stacks/lakesearch/index_searching.md
             - Observability: resources/stacks/lakesearch/observability.md
             - Troubleshooting: resources/stacks/lakesearch/troubleshooting.md
+          - Python:
+            - resources/stacks/python/index.md
+            - Stack Deployment: resources/stacks/python/stack_deployment.md
+            - Getting Started: 
+              - Build Application: resources/stacks/python/repo_setup.md
+              - Deploy Application: resources/stacks/python/python_service.md 
+            - Configurations: resources/stacks/python/configurations.md
+            - Governance:
+              - Authentication: resources/stacks/python/authentication.md
+              - Access Control: resources/stacks/python/access.md
+            - Recipes: 
+              - Frameworks:
+                - Streamlit: resources/stacks/python/streamlit.md
+                - Vizro: resources/stacks/python/vizro.md
+              - Utilities:
+                - Retrieve Insights: resources/stacks/python/insights.md 
+            - Best Practices: resources/stacks/python/bestpractices.md
+            - Troubleshooting: resources/stacks/python/troubleshooting.md
 
           - Scanner: 
             - resources/stacks/scanner/index.md

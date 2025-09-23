@@ -126,13 +126,13 @@ If you need to delete a Depot, use the following command in the DataOS CLI:
 
 === "Command"
 
-    ```bash Command
+    ```bash 
     dataos-ctl delete -t depot -n ${{name of Depot}}
     ```
 
 === "Alternative Command"
 
-    ```bash Alternative command
+    ```bash
     dataos-ctl delete -f ${{path of your manifest file}}
     ```
 
