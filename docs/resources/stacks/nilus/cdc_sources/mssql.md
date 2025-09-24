@@ -66,7 +66,7 @@ The user needs to perform the steps below to enable it before running the CDC se
     Contact the Database Administrator (DBA) to set up Change Data Capture (CDC) or to provide the correct values for parameters such as database name, table name, etc.
 
 
-### **Pre-created SQL Server Depot **
+### **Pre-created SQL Server Depot**
 
 A Depot must exist in DataOS with read-write access. To check the Depot, go to the Metis UI of the DataOS or use the following command:
 
