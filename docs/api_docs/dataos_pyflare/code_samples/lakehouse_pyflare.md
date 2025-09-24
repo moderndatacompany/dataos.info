@@ -178,14 +178,14 @@ spark.stop()
 
 !!! success "Note"
         
-        Placeholder values such as depot names, schema names, FQDN, and token will be updated to representative examples, and every script will explicitly include `spark.stop()` at the end to terminate the Spark session.
+    Placeholder values such as depot names, schema names, FQDN, and token will be updated to representative examples, and every script will explicitly include `spark.stop()` at the end to terminate the Spark session.
 
-        **Important Placeholder Changes Required:**
+    **Important Placeholder Changes Required:**
 
-        - **`DATAOS_FQDN`**: Replace `example-dataos.dataos.app` with the actual FQDN of the target DataOS instance.
-        - **`token`**: Replace with a valid DataOS API key.
-        - **`depot_name` in `.with_depot(...)`**: Confirm that the depots (e.g., `lakehouse`) exist and have proper permissions.
-        - **`load(...)` and `save(...)` URIs**: Replace the table and path values to match the desired source and target datasets.
+    - **`DATAOS_FQDN`**: Replace `example-dataos.dataos.app` with the actual FQDN of the target DataOS instance.
+    - **`token`**: Replace with a valid DataOS API key.
+    - **`depot_name` in `.with_depot(...)`**: Confirm that the depots (e.g., `lakehouse`) exist and have proper permissions.
+    - **`load(...)` and `save(...)` URIs**: Replace the table and path values to match the desired source and target datasets.
 
 ## Command Line Interface (CLI) References
 
