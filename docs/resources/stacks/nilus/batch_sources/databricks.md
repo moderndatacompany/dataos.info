@@ -75,6 +75,12 @@ workflow:
 
 
 
+Deploy the manifest file using the following command:
+
+```bash
+dataos-ctl resource apply -f ${{path to the Nilus Workflow YAML}}
+```
+
 
 ## Supported Attribute Details
 

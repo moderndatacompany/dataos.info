@@ -108,6 +108,13 @@ workflow:
     Ensure that all placeholder values and required fields (e.g., connection addresses, slot names, and access credentials) are properly updated before applying the configuration to a DataOS workspace.
 
 
+Deploy the manifest file using the following command:
+
+```bash
+dataos-ctl resource apply -f ${{path to the Nilus Workflow YAML}}
+```
+
+
 ## Supported Attribute Details 
 
 Nilus supports the following source options for MySQL:

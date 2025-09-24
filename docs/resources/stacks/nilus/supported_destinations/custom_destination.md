@@ -12,12 +12,13 @@ Custom destinations let you:
 > Place your destination files in a repository and reference them directly in your Nilus workflow (`repo` block + `sink.address: custom://<ClassName>`). Nilus will sync and execute your code.
 
 !!! warning
+
         **Dependency Management for Custom Sources**
 
         * Only include **new dependencies** required by the custom source or destination.
         * Do **not** add libraries that are already part of the existing environment.
         * This prevents duplication and avoids version conflicts.
-        
+
         **Pre-Installed Packages**
 
         The following packages are already included by default and should **NOT** be listed in `requirements.txt`:

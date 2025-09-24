@@ -19,6 +19,7 @@ Custom Sources allow the development of **user-defined connectors** while utiliz
 5. Custom sources are deployed by referring to the custom source repository within a Nilus workflow.
 
 !!! warning
+
         **Dependency Management for Custom Sources**
 
         * Only include **new dependencies** required by the custom source or destination.
