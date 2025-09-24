@@ -48,9 +48,10 @@ The following are mandatory requirements that need to be completed to make CDC w
 !!! info
     Grant only the roles required for your environment to follow the principle of least privilege.
 
-    **Pre-created MongoDB Depot**
 
-    A Depot must exist in DataOS with read-write access. To check the Depot, go to the Metis UI of the DataOS or use the following command:
+**Pre-created MongoDB Depot**
+
+A Depot must exist in DataOS with read-write access. To check the Depot, go to the Metis UI of the DataOS or use the following command:
 
 ```bash
 dataos-ctl resource get -t depot -a
@@ -135,7 +136,8 @@ service:                                                   # Service specificati
 !!! info
     Ensure that all placeholder values and required fields (e.g., connection addresses, slot names, and access credentials) are properly updated before applying the configuration to a DataOS workspace.
 
-    The above sample manifest file is deployed using the following command:
+
+The above sample manifest file is deployed using the following command:
 
 ```bash
 dataos-ctl resource apply -f ${{path to the Nilus Service YAML}}
@@ -305,7 +307,7 @@ workflow:
 !!! info
     Ensure that all placeholder values and required fields (e.g., connection addresses, slot names, and access credentials) are properly updated before applying the configuration to a DataOS workspace.
 
-    The above sample manifest file is deployed using the following command:
+The above sample manifest file is deployed using the following command:
 
 ```bash
 dataos-ctl resource apply -f ${{path to the Nilus Service YAML}}
