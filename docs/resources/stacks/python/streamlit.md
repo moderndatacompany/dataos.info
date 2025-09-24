@@ -203,8 +203,7 @@ To validate if the Python script executed without any errors, run the following 
 dataos-ctl resource log -t service -w public -n ${{service-identifier}}
 ```
 
-<details>
-    <summary>Example</summary>
+??? note "Example"
     
     ```bash
     dataos-ctl resource log -t service -w public -n my-python-app-test
@@ -349,7 +348,6 @@ dataos-ctl resource log -t service -w public -n ${{service-identifier}}
       URL: http://0.0.0.0:8050/test_sample_st01
     
     ```
-</details>    
 
 ## Step 10. Access the web app
 
