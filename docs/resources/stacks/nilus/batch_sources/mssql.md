@@ -67,7 +67,7 @@ If the Depot is not created, use the following manifest configuration template t
 
 
 
-SQL Server also supports Azure Active Directory (AAD) authentication, allowing integration with enterprise identity management systems. For Example:\
+SQL Server also supports Azure Active Directory (AAD) authentication, allowing integration with enterprise identity management systems. For Example:
 
 ```bash
 mssql://<username>:<token>@<host>:<port>/<database-name>?Authentication=ActiveDirectoryAccessToken
@@ -115,6 +115,12 @@ workflow:
     Ensure that all placeholder values and required fields (e.g., connection addresses, slot names, and access credentials) are properly updated before applying the configuration to a DataOS workspace.
 
 
+Deploy the manifest file using the following command:
+
+```bash
+dataos-ctl resource apply -f ${{path to the Nilus Workflow YAML}}
+```
+
 ## Supported Attribute Details
 
 Nilus supports the following source options for MSSQL Server:
@@ -126,8 +132,7 @@ Nilus supports the following source options for MSSQL Server:
 | `interval-start`  | No       | Start timestamp for incremental load     |
 | `interval-end`    | No       | End timestamp for incremental load       |
 
-!!! info
-    **Nilus Incremental Loading for MSSQL Server**
+!!! info  "Nilus Incremental Loading for MSSQL Server"
 
     Nilus supports incremental loading for MSSQL Server using a monotonically increasing column, such as a timestamp or sequential ID. This allows Nilus to efficiently track and load new or updated rows based on value changes in this field.
 
