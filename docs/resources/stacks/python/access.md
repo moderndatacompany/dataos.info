@@ -288,7 +288,7 @@ def layout():
     ])
 ```
 
-**4. Configure Environment Variables**
+**4. Configure environment variables**
 
 Add the Heimdall base URL to the Python Service manifest file (e.g., `deployment.yaml`):
 
@@ -298,7 +298,7 @@ envs:
   HEIMDALL_BASE_URL: "https://${{dataos-fqdn}}$/heimdall"
 ```
 
-**5. Ensure Path Matching**
+**5. Ensure path matching**
 
 Make sure the path in the use-case YAML matches the path used in the code and the ingress path defined in the Python Service manifest.
 
