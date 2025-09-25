@@ -1,6 +1,6 @@
 # Configure the Python Service
 
-## Pre-requisites
+## Prerequisites
 
 Before starting to configure the Python Service using Python Stack, ensure you have met the requirements listed [in this section](/resources/stacks/python/#pre-requisites).
 
