@@ -122,7 +122,7 @@ Here, the steps include how to incorporate this logic in the code for a flask ba
 🗣 Users with the <code>operator</code> tag have admin-level permissions and can access the application regardless of use case assignments. Assigning use cases is required for other users or roles to access the application. The tags and roles, and their associated permission levels, depend on the organization's governance policies and may vary between organizations.
 </aside>
 
-Once the OIDC is set up, follow the steps below to create a use case for accessing a Python application using Bifrost Governance.
+Follow the steps below to create a use case for accessing a Python application using Bifrost Governance.
 
 1. Access Bifrost Governance.
     
