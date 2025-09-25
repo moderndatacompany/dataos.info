@@ -4,15 +4,240 @@ This section provides a step-by-step guide on how to manage access permissions f
 
 Use cases in Bifrost Governance are reusable templates that bundle together a set of permissions.
 
-## Prerequisites
+## Pre-requisites
 
 Ensure you meet the following requirements.
 
+- Using Bifrost requires admin-level permissions; in other words, the `roles:id:operator` tag must be assigned to the user.
 - In the Python Service configuration, `noAuthentication` must be false.
 - The Python Service should be running and accessible.
-- DataOS API token.
+- DataOS user token.
+
+## Configure Policy Enforcement Point (PEP)
+
+A PEP enforces access control policies defined in Bifrost Governance. By configuring PEP, users can specify and manage who is allowed to access the application and what operations each user or role can perform. This enables fine-grained permission control, ensuring that only authorized users can perform specific actions.
+
+**Steps to create PEP:**
+
+Here, the steps include how to incorporate this logic in the code for a flask based app in which user will be authorized to access the application.
+
+1. Log in to DataOS and navigate to Bifrost application.
+    
+    <div style="text-align: center;">
+      <figure>
+        <img src="/resources/stacks/python/bifrost.png" 
+            alt="Bifrost Governance" 
+            style="border: 1px solid black; width: 80%; height: auto; display: block; margin: auto;">
+        <figcaption style="margin-top: 8px; font-style: italic;">Bifrost Governance</figcaption>
+      </figure>
+    </div>
+    
+2. Click on 'Heimdall primitives' > 'Providers'.
+
+    <div style="text-align: center;">
+      <figure>
+        <img src="/quick_guides/secure_deployed_app/heimdall_prim.png" 
+            alt="Bifrost Governance" 
+            style="border: 1px solid black; width: 80%; height: auto; display: block; margin: auto;">
+        <figcaption style="margin-top: 8px; font-style: italic;">Bifrost Governance</figcaption>
+      </figure>
+    </div>
+
+3. Click on 'Create Provider' button.  Bifrost PEP creats authorization atoms for granular level access.
+    
+    <div style="text-align: center;">
+      <figure>
+        <img src="/resources/stacks/python/provider.png" 
+            alt="Bifrost Governance" 
+            style="border: 1px solid black; width: 80%; height: auto; display: block; margin: auto;">
+        <figcaption style="margin-top: 8px; font-style: italic;">Bifrost Governance</figcaption>
+      </figure>
+    </div>    
+    
+4. Define the authorization atoms and predicates in the YAML format. For the flask app, predicate like `“get"` is defined. Then click "Create" button.
+
+    <aside class="callout">
+    🗣 Authorization logic depends on the specific operations permitted within the data application, which may vary across different apps.
+    </aside>
+
+    ```yaml
+    version: "0.0.1"
+    id: "auth-app-pep-provider-1.0"
+    name: "Auth App PEP"
+    description: "Auth app pep provider."
+    authorization_atoms:
+      - id: get-path-st-auth
+        description: user have read-only access to auth-app
+        predicate: get
+        paths:
+          - "${path}"
+    ```
+
+    <details>
+    <summary>Breaking down the manifest configuration</summary> 
+
+    <aside class="callout">
+    🗣 Authorization atoms are reusable building blocks that define specific access rules or permissions. Each atom specifies what kind of operation (predicate) is allowed, on which resource (paths), and provides a description for clarity. Atoms can be referenced in use cases to compose complex access policies.
+    </aside>
+
+    | Field                | Value                        | Description                                                      |
+    |----------------------|------------------------------|------------------------------------------------------------------|
+    | version              | "0.0.1"                      | Version of the PEP provider configuration                        |
+    | id                   | "auth-app-pep-provider-1.0"  | Unique identifier for the PEP provider                           |
+    | name                 | "Auth App PEP"               | Name of the PEP provider                                         |
+    | description          | "Auth app pep provider."      | Description of the PEP provider                                  |
+    | authorization_atoms  |                              | List of access rules ("atoms")                                   |
+    | └ id                 | get-path-st-auth              | Unique ID for the atom (rule)                                    |
+    | └ description        | user have read-only access... | What this atom allows (read-only access to auth-app)             |
+    | └ predicate          | get                          | Allowed operation (GET, i.e., read-only)                    |
+    | └ paths              | "${path}"                    | Path(s) where this rule applies; "${path}" is a variable         |
+    
+    </details>
+
+    <div style="text-align: center;">
+      <figure>
+        <img src="/resources/stacks/python/pep_yaml.png" 
+            alt="Bifrost Governance" 
+            style="border: 1px solid black; width: 80%; height: auto; display: block; margin: auto;">
+        <figcaption style="margin-top: 8px; font-style: italic;">Bifrost Governance</figcaption>
+      </figure>
+    </div>
+
+    
+5. Once created, you can see the details of atoms created with their respective predicates information in the list of providers.
+    
+    <div style="text-align: center;">
+      <figure>
+        <img src="/resources/stacks/python/pep.png" 
+            alt="Bifrost Governance" 
+            style="border: 1px solid black; width: 80%; height: auto; display: block; margin: auto;">
+        <figcaption style="margin-top: 8px; font-style: italic;">Bifrost Governance</figcaption>
+      </figure>
+    </div>
+    
+## Add authorization logic in code
+
+This section explains how to integrate Heimdall authorization checks into the OIDC-enabled Python application.
+
+**1. Add required dependencies**
+
+Update your `requirements.txt` to include the necessary packages:
+
+```txt
+dash==2.*
+Flask==3.*
+Authlib==1.*
+requests==2.*
+python-dotenv==1.*
+dataos-sdk-py==0.0.1   # mandatory for authorization
+```
+
+**2. Implement authorization function**
+
+Add the following function to your `oidc_auth.py` file to check user permissions using Heimdall:
+
+```python
+from heimdall.heimdall_client import HeimdallClientBuilder
+from heimdall.models.authorization_request import AuthorizationRequest
+
+def authorize_user(heimdall_base_url, permissions):
+    '''Check if user has required permissions'''
+    user = session.get('user', {})
+    token = user.get('access_token') or user.get('id_token')
+    if not token:
+        return False
+
+    auth_request = AuthorizationRequest(
+        token=token,
+        permissions=permissions,
+        context={
+            "predicate": permissions[0],
+            "object": {
+                "paths": ["/st_auth**"]  # Match your use-case path
+            }
+        }
+    )
+
+    try:
+        h_client = HeimdallClientBuilder().set_base_url(heimdall_base_url).build()
+        auth_response = h_client.authorize_api.authorize(auth_request)
+        return auth_response.allow
+    except Exception:
+        return False
+```
+
+**3. Use authorization in application**
+
+Update the main app code (e.g., `dash_app.py`) to use the authorization function:
+
+```python
+from oidc_auth import get_current_user, add_auth_routes, authorize_user
+
+def layout():
+    current_user = get_current_user()
+    if not current_user:
+        return html.Div([
+            html.H1("Please log in"),
+            html.A("Sign in with OIDC", href="/auth/login")
+        ])
+
+    heimdall_url = os.environ.get("HEIMDALL_BASE_URL", "")
+    if not authorize_user(heimdall_url, ["get"]):
+        return html.Div([
+            html.H1("Access Denied"),
+            html.P("You don't have permission to access this application"),
+            html.A("Logout", href="/auth/logout")
+        ])
+
+    return html.Div([
+        html.H1(f"Welcome {current_user.get('name')}!"),
+        html.A("Logout", href="/auth/logout")
+    ])
+```
+
+**4. Configure Environment Variables**
+
+Add the Heimdall base URL to the Python Service manifest file (e.g., `deployment.yaml`):
+
+```yaml
+envs:
+  # ... existing OIDC config
+  HEIMDALL_BASE_URL: "https://${{dataos-fqdn}}$/heimdall"
+```
+
+**5. Ensure Path Matching**
+
+Make sure the path in the use-case YAML matches the path used in the code and the ingress path defined in the Python Service manifest.
+
+**Use-case YAML:**
+
+```yaml
+variable_values:
+  - path: /st_auth**
+```
+
+**Python code (oidc_auth.py):**
+
+```python
+"paths": ["/st_auth**"]  # Must match exactly
+```
+
+**Python Service manifest (e.g., deployment.yaml):**
+
+```yaml
+ingress:
+  path: /st_auth**
+```
+
+> **Note:** All three paths (use-case YAML, Python code, and Python Service manifest) must match exactly for authorization to work as expected.
+
+Your application now supports OIDC authentication and Heimdall-based authorization. 🚀
 
 ## Create the use cases specific to a Python application
+
+<aside class="callout">
+🗣 Users with the <code>operator</code> tag have admin-level permissions and can access the application regardless of use case assignments. Assigning use cases is required for other users or roles to access the application. The tags and roles, and their associated permission levels, depend on the organization's governance policies and may vary between organizations.
+</aside>
 
 Once the OIDC is set up, follow the steps below to create a use case for accessing a Python application using Bifrost Governance.
 
@@ -230,4 +455,4 @@ Alternatively, instead of assigning use cases to a single user, one can assign u
       </figure>
     </div>
 
-    
+
