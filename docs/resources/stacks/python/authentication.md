@@ -2,7 +2,7 @@
 
 This section includes the steps to add OIDC authentication to the Python application.To add OpenID Connect (OIDC) authentication to your Python application, you'll need to follow a series of steps to configure the application to interact with an OIDC provider. The provided example code, which uses Dash and Flask, handles the core OIDC logic and Flask-based routing for login, callback, and logout. Similarly, you can add OIDC for other frameworks such as Streamlit.
 
-## Pre-requisites
+## Prerequisites
 
 The following credentials must be obtained from your DevOps team before configuring OIDC authentication in the Python application:
 
