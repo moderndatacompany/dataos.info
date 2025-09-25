@@ -1,10 +1,10 @@
 # Manage access permission for the Python application
 
-This section provides a step-by-step guide on how to manage access permissions for a Python application using Bifrost Governance. By leveraging OpenID Connect (OIDC) and Bifrost Governance, you can define granular access policies, create reusable "use cases," and assign these permissions to individual users or roles.
+This section provides a step-by-step guide on how to manage access permissions for a Python application using Bifrost Governance. By leveraging Bifrost Governance, you can define granular access policies, create reusable "use cases," and assign these permissions to individual users or roles.
 
 Use cases in Bifrost Governance are reusable templates that bundle together a set of permissions.
 
-## Pre-requisites
+## Prerequisites
 
 Ensure you meet the following requirements.
 
@@ -114,6 +114,99 @@ Here, the steps include how to incorporate this logic in the code for a flask ba
         <figcaption style="margin-top: 8px; font-style: italic;">Bifrost Governance</figcaption>
       </figure>
     </div>
+
+
+## Create the use cases specific to a Python application
+
+<aside class="callout">
+🗣 Users with the <code>operator</code> tag have admin-level permissions and can access the application regardless of use case assignments. Assigning use cases is required for other users or roles to access the application. The tags and roles, and their associated permission levels, depend on the organization's governance policies and may vary between organizations.
+</aside>
+
+Once the OIDC is set up, follow the steps below to create a use case for accessing a Python application using Bifrost Governance.
+
+1. Access Bifrost Governance.
+    
+    <div style="text-align: center;">
+      <figure>
+        <img src="/resources/stacks/python/bifrosthome.png" 
+            alt="Bifrost Governance" 
+            style="border: 1px solid black; width: 80%; height: auto; display: block; margin: auto;">
+        <figcaption style="margin-top: 8px; font-style: italic;">Bifrost Governance</figcaption>
+      </figure>
+    </div>
+    
+2. Navigate to the “Use Cases” section.
+    
+    <div style="text-align: center;">
+      <figure>
+        <img src="/resources/stacks/python/usecase.png" 
+            alt="Bifrost Governance" 
+            style="border: 1px solid black; width: 80%; height: auto; display: block; margin: auto;">
+        <figcaption style="margin-top: 8px; font-style: italic;">Bifrost Governance</figcaption>
+      </figure>
+    </div>
+    
+3. Click on the “Create Use Case” button and paste the code below with some specific updates.
+    
+    This code defines two distinct use cases for an application hosted at `st_auth` ingress path configured in the Python Service manifest file:
+    
+    - `read-st-auth`: Provides read-only access. confi
+    - `manage-st-auth`: Provides full read/write/delete access.
+
+    === "Read"
+        ```yaml
+        ---
+        id: read-st-auth
+        name: 'Read St Auth'
+        description: 'Read St Auth'
+        category: stauth
+        authorization_atoms:
+        - get-path-ingress
+        values:
+        - authorization_atom_id: get-path-ingress
+          variable_values:
+          - path: /st_auth/**
+        ```
+
+    === "Manage"
+        ```yaml
+        ---
+        id: manage-st-auth
+        name: 'Manage St Auth'
+        description: 'Manage St Auth'
+        category: stauth
+        authorization_atoms:
+        - get-path-ingress
+        - delete-path-ingress
+        - put-path-ingress
+        - post-path-ingress
+        values:
+        - authorization_atom_id: get-path-ingress
+          variable_values:
+          - path: /st_auth/**
+        - authorization_atom_id: put-path-ingress
+          variable_values:
+          - path: /st_auth/**
+        - authorization_atom_id: post-path-ingress
+          variable_values:
+          - path: /st_auth/**
+        - authorization_atom_id: delete-path-ingress
+          variable_values:
+        - path: /st_auth/**
+        ```
+    
+    Similarly, you can configure the use case for your particular Python application by updating the `id`, `name`, `description`, and the `path` variable in the code above.
+    
+4. Then click on the “Create” button, and it is done.
+    
+    <div style="text-align: center;">
+      <figure>
+        <img src="/resources/stacks/python/usecasefile.png" 
+            alt="Bifrost Governance" 
+            style="border: 1px solid black; width: 80%; height: auto; display: block; margin: auto;">
+        <figcaption style="margin-top: 8px; font-style: italic;">Bifrost Governance</figcaption>
+      </figure>
+    </div>    
     
 ## Add authorization logic in code
 
@@ -233,98 +326,6 @@ ingress:
 
 Your application now supports OIDC authentication and Heimdall-based authorization. 🚀
 
-## Create the use cases specific to a Python application
-
-<aside class="callout">
-🗣 Users with the <code>operator</code> tag have admin-level permissions and can access the application regardless of use case assignments. Assigning use cases is required for other users or roles to access the application. The tags and roles, and their associated permission levels, depend on the organization's governance policies and may vary between organizations.
-</aside>
-
-Once the OIDC is set up, follow the steps below to create a use case for accessing a Python application using Bifrost Governance.
-
-1. Access Bifrost Governance.
-    
-    <div style="text-align: center;">
-      <figure>
-        <img src="/resources/stacks/python/bifrosthome.png" 
-            alt="Bifrost Governance" 
-            style="border: 1px solid black; width: 80%; height: auto; display: block; margin: auto;">
-        <figcaption style="margin-top: 8px; font-style: italic;">Bifrost Governance</figcaption>
-      </figure>
-    </div>
-    
-2. Navigate to the “Use Cases” section.
-    
-    <div style="text-align: center;">
-      <figure>
-        <img src="/resources/stacks/python/usecase.png" 
-            alt="Bifrost Governance" 
-            style="border: 1px solid black; width: 80%; height: auto; display: block; margin: auto;">
-        <figcaption style="margin-top: 8px; font-style: italic;">Bifrost Governance</figcaption>
-      </figure>
-    </div>
-    
-3. Click on the “Create Use Case” button and paste the code below with some specific updates.
-    
-    This code defines two distinct use cases for an application hosted at `st_auth` ingress path configured in the Python Service manifest file:
-    
-    - `read-st-auth`: Provides read-only access. confi
-    - `manage-st-auth`: Provides full read/write/delete access.
-
-    === "Read"
-        ```yaml
-        ---
-        id: read-st-auth
-        name: 'Read St Auth'
-        description: 'Read St Auth'
-        category: stauth
-        authorization_atoms:
-        - get-path-ingress
-        values:
-        - authorization_atom_id: get-path-ingress
-          variable_values:
-          - path: /st_auth/**
-        ```
-
-    === "Manage"
-        ```yaml
-        ---
-        id: manage-st-auth
-        name: 'Manage St Auth'
-        description: 'Manage St Auth'
-        category: stauth
-        authorization_atoms:
-        - get-path-ingress
-        - delete-path-ingress
-        - put-path-ingress
-        - post-path-ingress
-        values:
-        - authorization_atom_id: get-path-ingress
-          variable_values:
-          - path: /st_auth/**
-        - authorization_atom_id: put-path-ingress
-          variable_values:
-          - path: /st_auth/**
-        - authorization_atom_id: post-path-ingress
-          variable_values:
-          - path: /st_auth/**
-        - authorization_atom_id: delete-path-ingress
-          variable_values:
-        - path: /st_auth/**
-        ```
-    
-    Similarly, you can configure the use case for your particular Python application by updating the `id`, `name`, `description`, and the `path` variable in the code above.
-    
-4. Then click on the “Create” button, and it is done.
-    
-    <div style="text-align: center;">
-      <figure>
-        <img src="/resources/stacks/python/usecasefile.png" 
-            alt="Bifrost Governance" 
-            style="border: 1px solid black; width: 80%; height: auto; display: block; margin: auto;">
-        <figcaption style="margin-top: 8px; font-style: italic;">Bifrost Governance</figcaption>
-      </figure>
-    </div>
-    
 
 ## Assign use cases to a specific user
 
