@@ -1,6 +1,6 @@
 # IBM DB2
 
-The Nilus connector for **IBM Db2** supports **Change Data Capture (CDC)**, enabling row-level changes from Db2 tables to be streamed in near real-time into [supported destinations](/resources/stacks/nilus/supported_destinations/) such as the Lakehouse. CDC leverages Db2’s **SQL Replication** feature, which uses **ASN Capture/Apply agents** to detect and store changes in change-data tables.
+The Nilus connector for IBM Db2 supports Change Data Capture (CDC), enabling row-level changes from Db2 tables to be streamed in near real-time into [supported destinations](/resources/stacks/nilus/supported_destinations/) such as the Lakehouse. CDC leverages Db2’s SQL Replication feature, which uses ASN Capture/Apply agents to detect and store changes in change-data tables.
 
 !!! info
       IBM Db2 is not supported via Depot.
@@ -13,12 +13,12 @@ The following are the requirements to enable CDC data movement in IBM DB2:
 ### **SQL Replication and Licensing**
 
 * SQL Replication must be enabled on the Db2 source.
-* This requires a license for **IBM InfoSphere Data Replication (IIDR)**.
+* This requires a license for IBM InfoSphere Data Replication (IIDR).
 
 ### **Capture Mode**
 
-* Tables must be explicitly placed into **capture mode**.
-* Capture mode generates **change-data tables** that store row-level changes.
+* Tables must be explicitly placed into capture mode.
+* Capture mode generates change-data tables that store row-level changes.
 * Administrators manage capture mode using Db2 control commands to:
     * Start, stop, or reinitialize the ASN Capture agent.
     * Put tables into/out of capture mode.
@@ -139,7 +139,7 @@ service:
 
 !!! info
     * Ensure that all placeholder values and required fields (e.g., connection addresses, slot names, and access credentials) are properly updated before applying the configuration to a DataOS workspace.
-    * The Db2 source tables are in **capture mode,** and the change-data tables exist before deploying.
+    * The Db2 source tables are in capture mode, and the change-data tables exist before deploying.
 
 
 Deploy the manifest file using the following command:
