@@ -157,7 +157,7 @@ workflow:
       title: {{job-title}}
       description: {{job-description}}
       spec:
-        stack: flare:5.0
+        stack: flare:7.0
         compute: runnable-default
         tags:
           - {{tag1}}
@@ -197,7 +197,7 @@ workflow:
           title: Metrics and checks
           description: The job performs metrics calculations and checks on order-enriched data
           spec:
-            stack: flare:5.0
+            stack: flare:7.0
             compute: runnable-default
             tags:
               - Metrics
@@ -283,7 +283,7 @@ workflow:
       spec:
         tags:
           - {{tag1}}
-        stack: flare:5.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           job:
@@ -335,7 +335,7 @@ workflow:
             tags:
               - Sanity
               - Azure
-            stack: flare:5.0
+            stack: flare:7.0
             compute: runnable-default
             stackSpec:
               job:

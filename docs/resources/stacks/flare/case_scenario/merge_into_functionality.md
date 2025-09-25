@@ -115,7 +115,7 @@ workflow:
         tags:
           - merge
           - iceberg
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
         envs:
           DISABLE_HADOOP_PATH_CHECKS: "true"

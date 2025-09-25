@@ -10,7 +10,7 @@ workflow:
       spec:
         tags:
           # - Domain.Sales
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           driver:
@@ -41,7 +41,7 @@ workflow:
                       write.format.default: parquet
                       write.metadata.compression-codec: snappy
                 title: Policy Details Data Transformations
-               
+
             steps:
               - sequence:
                   - name: finalDf

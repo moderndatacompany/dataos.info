@@ -968,7 +968,7 @@ workflow:
   dag:
     - name: soda-cm-data
       spec:
-        stack: flare:5.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           job:
@@ -1086,7 +1086,7 @@ workflow:
   dag:
     - name: soda-prf-data
       spec:
-        stack: flare:5.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           job:

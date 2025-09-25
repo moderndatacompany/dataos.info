@@ -9,17 +9,17 @@ description: The "wf-city" is a data pipeline focused on ingesting city data fro
 workflow:
   title: City Data Pipeline
   dag: 
-   - name: city-data-ingestion
-     file: /home/iamgroot/resources/workflow/workflow.yml
-     retry:
-       count: 2
-       strategy: "OnFailure"
+    - name: city-data-ingestion
+      file: /home/iamgroot/resources/workflow/workflow.yml
+      retry:
+        count: 2
+        strategy: "OnFailure"
 
-   - name: lakehouse-city-profiling
-     file: /home/iamgroot/resources/workflow/profile.yml
-     retry:
-       count: 2
-       strategy: "OnFailure"
-     dependencies:
-       - city-data-ingestion
+    - name: lakehouse-city-profiling
+      file: /home/iamgroot/resources/workflow/profile.yml
+      retry:
+        count: 2
+        strategy: "OnFailure"
+      dependencies:
+        - city-data-ingestion
   

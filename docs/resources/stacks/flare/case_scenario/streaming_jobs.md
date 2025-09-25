@@ -71,7 +71,7 @@ workflow:
     - name: sample-read-kafka
       title: read kafka sample data
       spec:
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
 
         stackSpec:
@@ -119,7 +119,7 @@ workflow:
       spec:
         tags:
           - Connect
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           job:
@@ -178,7 +178,7 @@ workflow:
       spec:
         tags:
           - Connect
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           job:
@@ -234,7 +234,7 @@ workflow:
     - name: sample-read-kafka
       title: read kafka sample data
       spec:
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           driver:

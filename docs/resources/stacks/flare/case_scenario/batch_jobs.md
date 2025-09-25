@@ -25,7 +25,7 @@ This structure ensures full replacement of the target dataset during each execut
 The following example demonstrates a simple Flare batch job that:
 
 * Reads a CSV-formatted dataset from the `thirdparty01` depot
-* Applies a SQL transformation using Flare Stack v6.0
+* Applies a SQL transformation using Flare Stack v7.0
 * Writes the result to a BigQuery table in the `bqdepot` depot
 
 ```yaml
@@ -45,7 +45,7 @@ workflow:
         tags:
           - Connect
           - City
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           job:

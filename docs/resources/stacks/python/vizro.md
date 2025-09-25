@@ -174,11 +174,13 @@ To validate if the Python script executed without any errors, run the following 
 dataos-ctl resource log -t service -w public -n ${{service-identifier}}
 ```
 
-<details>
-    <summary>Example</summary>
+??? note "Example"
     
     ```bash
     dataos-ctl resource log -t service -w public -n python-vizro           
+    
+    # Expected Output
+    
     INFO[0000] 📃 log(public)...                             
     INFO[0001] 📃 log(public)...complete                     
     
@@ -401,7 +403,6 @@ dataos-ctl resource log -t service -w public -n ${{service-identifier}}
     INFO:werkzeug:10.213.1.236 - - [11/Sep/2025 09:09:21] "POST /test_sample/_dash-update-component HTTP/1.1" 200 -
     
     ```
-</details>    
 
 ## Step 10. Access the web app
 

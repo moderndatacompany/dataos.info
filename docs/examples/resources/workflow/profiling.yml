@@ -17,7 +17,7 @@ workflow:
           - Fides
           - City
           - has_profile
-        stack: flare:5.0
+        stack: flare:7.0
         compute: runnable-default
 
         persistentVolume: # Define Persistent Volume

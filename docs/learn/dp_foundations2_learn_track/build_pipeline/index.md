@@ -51,7 +51,7 @@ Analyzes co-purchase patterns between product categories to identify cross-categ
           spec:
             tags:
               - crm
-            stack: flare:6.0
+            stack: flare:7.0
             compute: runnable-default
             stackSpec:
               driver:
@@ -135,7 +135,7 @@ Segments customers by risk and maps them to personalized product pairings.
           spec:
             tags:
               - crm
-            stack: flare:6.0
+            stack: flare:7.0
             compute: runnable-default
             stackSpec:
               driver:
