@@ -1,7 +1,7 @@
 ---
 title: Python SDK
 search:
-  boost: 2
+  boost: 4
 tags:
     - Python
     - SDK

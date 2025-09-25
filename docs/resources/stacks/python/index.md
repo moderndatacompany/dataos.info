@@ -1,7 +1,7 @@
 ---
 title: Python Stack
 search:
-  boost: 2
+  boost: 6
 ---
 
 # Python Stack
@@ -14,7 +14,7 @@ Python Stack provides an environment for executing Python applications and scrip
 - **Secure secret handling:** injects secrets as environment variables during execution.
 - **Reproducibility:** ensures consistent execution across environments, reducing setup issues.
 
-## Pre-requisites
+## Prerequisites
 
 Before using the Python Stack, ensure the following requirements are met:
 
