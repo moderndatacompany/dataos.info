@@ -153,11 +153,11 @@ To create PEP:
     
 3. Define the authorization atoms and predicates in the YAML format.  For the Calculator app, predicates like `“get"`,  `"view_multiplication"` or `"view_division"` are defined.
     
-    ![bifrost_pep_creation.png](/quick_guides/secure_deployed_app/bifrost_pep_creation.png)
+    ![bifrost_pep_creation.png](/quick_guides/secure_deployed_app/pep_created.png)
     
-4. Click on **Create** button.  BIfrost PEP created atoms for granular level access.
+4. Click on **Create** button.  Bifrost PEP created atoms for granular level access.
     
-    ![pep_created.png](/quick_guides/secure_deployed_app/pep_created.png)
+    ![pep_created.png](/quick_guides/secure_deployed_app/bifrost_pep_creation.png)
     
 5. You can see the details of atoms created with their respective predicates information.
     
