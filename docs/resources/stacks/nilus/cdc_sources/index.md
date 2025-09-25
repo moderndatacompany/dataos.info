@@ -2,8 +2,6 @@
 
 The following are the supported sources for CDC:
 
-## Available CDC Sources
-
 | Source | Link |
 |--------|------|
 | IBM DB2 | [IBM DB2](/resources/stacks/nilus/cdc_sources/ibm_db2/) |

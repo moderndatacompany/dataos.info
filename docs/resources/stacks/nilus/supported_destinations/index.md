@@ -2,8 +2,6 @@
 
 The following are the supported destinations for both CDC and Batch ingestion:
 
-## Available Destinations
-
 | Destination | Link |
 |-------------|------|
 | AWS DataOS Lakehouse | [aws_dataos_lakehouse](/resources/stacks/nilus/supported_destinations/aws_dataos_lakehouse/) |

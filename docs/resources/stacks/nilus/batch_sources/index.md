@@ -2,7 +2,6 @@
 
 The following are the supported sources for Batch ingestion:
 
-## Available Batch Sources
 
 | Source | Link |
 |--------|------|

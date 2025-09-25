@@ -1,6 +1,6 @@
 # MS SQL Server
 
-The Nilus connector for **Microsoft SQL Server** supports **Change Data Capture (CDC)**, enabling real-time replication of changes from PostgreSQL transactional databases to [Supported Destinations](/resources/stacks/nilus/supported_destinations/), such as the Lakehouse. **CDC** uses SQL Server’s built-in CDC feature to capture `INSERT`, `UPDATE`, and `DELETE` operations on source tables.
+The Nilus connector for Microsoft SQL Server supports Change Data Capture (CDC), enabling real-time replication of changes from PostgreSQL transactional databases to [Supported Destinations](/resources/stacks/nilus/supported_destinations/), such as the Lakehouse. CDC uses SQL Server’s built-in CDC feature to capture `INSERT`, `UPDATE`, and `DELETE` operations on source tables.
 
 ## Prerequisites 
 
@@ -21,7 +21,7 @@ The connection user requires:
 * **Additional grants:**
     * `VIEW SERVER STATE`
     * `SELECT` on the `cdc` schema
-* Access to **SQL Server Agent jobs** (tables: `sysjobs`, `sysjobactivity`) if CDC jobs are used.
+* Access to SQL Server Agent jobs (tables: `sysjobs`, `sysjobactivity`) if CDC jobs are used.
 
 !!! info
     SQL Server Agent must be enabled for CDC to function.
@@ -29,7 +29,7 @@ The connection user requires:
 
 ### **CDC Setup in SQL Server**
 
-Change data capture is not enabled on the database and tables **by default** in MS SQL Server
+Change data capture is not enabled on the database and tables by default in MS SQL Server
 
 ```sql
 USE demodb;
@@ -204,25 +204,25 @@ Nilus supports the following sink options for SQL Server CDC workflows:
 Following are the Core Concepts related to MS SQL server:
 
 1. **SQL Server CDC Framework**
-      1. SQL Server’s native **CDC feature** records `INSERT`, `UPDATE`, and `DELETE` operations on tracked tables.
-      2. CDC data is written to **change tables** in the `cdc` schema (e.g., `cdc.dbo_orders_CT`).
-      3. **CDC Jobs**: Two SQL Server Agent jobs are created automatically:
+      1. SQL Server’s native CDC feature records `INSERT`, `UPDATE`, and `DELETE` operations on tracked tables.
+      2. CDC data is written to change tables in the `cdc` schema (e.g., `cdc.dbo_orders_CT`).
+      3. CDC Jobs: Two SQL Server Agent jobs are created automatically:
             1. `cdc.demodb_capture`: Captures changes from the transaction log.
             2. `cdc.demodb_cleanup`: Cleans up old CDC data.
       4. Nilus consumes these change tables to emit structured CDC events.
 2. **Transaction Log & LSN**
-      1. All SQL Server changes are first written to the **transaction log**.
-      2. Each event has a **Log Sequence Number (LSN)**, which Nilus uses to:
+      1. All SQL Server changes are first written to the transaction log.
+      2. Each event has a Log Sequence Number (LSN), which Nilus uses to:
             1. Resume from the last processed offset.
             2. Ensure change ordering.
             3. Detect data loss if LSN ranges roll off before being consumed.
 3. **Snapshot + Stream**
-      1. On first run, Nilus may perform a **snapshot (**&#x49;f configure&#x64;**)**:
+      1. On first run, Nilus may perform a snapshot (If configured):
             1. Captures the baseline table contents.
             2. Emits op: r events for each row.
-      2. After snapshotting, Nilus switches to **streaming mode**, consuming changes from CDC tables continuously.
+      2. After snapshotting, Nilus switches to streaming mode, consuming changes from CDC tables continuously.
 4.  **CDC Change Tables**
-      Each CDC-enabled table has a corresponding **change table** with:
+      Each CDC-enabled table has a corresponding change table with:
       1. Source columns.
       2. Metadata:
              1. `__$start_lsn` → transaction commit LSN.
@@ -232,13 +232,13 @@ Following are the Core Concepts related to MS SQL server:
    
 5. **Cleanup and Retention**
 
-      1. SQL Server periodically runs **cleanup jobs** to purge change tables.
-      2. If Nilus lags beyond the retention window, data loss occurs → requires **re-snapshot**.
+      1. SQL Server periodically runs cleanup jobs to purge change tables.
+      2. If Nilus lags beyond the retention window, data loss occurs → requires re-snapshot.
       3. Recommendation: extend retention to cover expected downtime or pipeline backpressure.
 
 6.  **Monitoring & Maintenance**
 
-       1. Validate that **CDC jobs** (`cdc.cdc_jobs`) are running.
+       1. Validate that CDC jobs (`cdc.cdc_jobs`) are running.
        2. Track:
              1. Change table growth.
              2. Cleanup job latency.
@@ -253,7 +253,7 @@ Schema changes (ALTER TABLE) are common in operational databases. Nilus handles 
 
 **Online Schema Evolution**
 
-* Supported for **non-breaking changes**:
+* Supported for non-breaking changes:
     * Adding a new nullable column.
     * Adding default values.
 * Nilus detects schema changes in the base table, updates its internal schema cache, and continues streaming with minimal disruption.
@@ -331,13 +331,13 @@ Schema changes (ALTER TABLE) are common in operational databases. Nilus handles 
 
 **Offline Schema Evolution**
 
-* Required for **breaking changes**, such as:
+* Required for breaking changes, such as:
     * Dropping a column.
     * Changing column type incompatibly (e.g., `VARCHAR` → `INT`).
     * Renaming a column.
 * In these cases:
-    * CDC for the table must be **disabled and re-enabled**.
-    * Nilus must be **reinitialized with a new snapshot**.
+    * CDC for the table must be disabled and re-enabled.
+    * Nilus must be reinitialized with a new snapshot.
 * Best practice:
     * Plan downtime or maintenance windows.
     * Document schema version changes for downstream consumers.
@@ -356,8 +356,8 @@ Schema changes (ALTER TABLE) are common in operational databases. Nilus handles 
     EXEC sys.sp_cdc_enable_table @source_schema = 'dbo', @source_name = 'orders', @role_name = NULL;
     ```
 
-* **Online schema evolution** is safe for non-breaking changes.
-* For breaking changes, plan **offline schema evolution** with snapshot reinitialization.
+* Online schema evolution is safe for non-breaking changes.
+* For breaking changes, plan offline schema evolution with snapshot reinitialization.
 * Align CDC retention with max expected downtime.
 * Monitor CDC jobs to avoid lag or cleanup issues.
 

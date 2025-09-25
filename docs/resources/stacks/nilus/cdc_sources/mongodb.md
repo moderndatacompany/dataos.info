@@ -1,6 +1,6 @@
 # MongoDB
 
-The Nilus connector for **MongoDB** supports **Change Data Capture (CDC)**, enabling near real-time replication of data changes from MongoDB to [Supported Destinations](/resources/stacks/nilus/supported_destinations/), such as the Lakehouse. CDC captures change events from MongoDB’s `oplog.rs` and streams them continuously.
+The Nilus connector for MongoDB supports Change Data Capture (CDC), enabling near real-time replication of data changes from MongoDB to [Supported Destinations](/resources/stacks/nilus/supported_destinations/), such as the Lakehouse. CDC captures change events from MongoDB’s `oplog.rs` and streams them continuously.
 
 !!! info
     Batch data movement is not supported for MongoDB.
@@ -12,7 +12,7 @@ Before enabling CDC, ensure the following configurations depending on your hosti
 
 ### **MongoDB Replica Set**
 
-* MongoDB **must run as a replica set**, even for single-node deployments.
+* MongoDB must run as a replica set, even for single-node deployments.
 * Nilus CDC for MongoDB relies on the `oplog.rs` collection, which is only available in replica sets.
 
 ### **Enable `oplog` Access**
@@ -168,33 +168,33 @@ Nilus supports the following sink options for MongoDB CDC:
 
 ## Core Concepts
 
-Nilus captures **row-level changes** from MongoDB using the **replica set** `oplog`. Below are the essential concepts for understanding how Nilus integrates with MongoDB.
+Nilus captures row-level changes from MongoDB using the replica set `oplog`. Below are the essential concepts for understanding how Nilus integrates with MongoDB.
 
 - **Replica Set**
 
-    - MongoDB must run as a **replica set**, even in single-node deployments.
-    - Nilus connects to the **primary replica** and tails the `oplog` (`local.oplog.rs`).
-    - Standalone MongoDB servers are **not supported** for CDC.
+    - MongoDB must run as a replica set, even in single-node deployments.
+    - Nilus connects to the primary replica and tails the `oplog` (`local.oplog.rs`).
+    - Standalone MongoDB servers are not supported for CDC.
 
 - **The MongoDB Oplog**
 
     - The **oplog** (`oplog.rs`) is a capped collection in the `local` database.
     - It records every `insert`, `update`, and `delete` applied to the primary.
-    - Nilus reads this log to generate **change data capture (CDC) events**.
-    - `oplog` entries roll off in **FIFO (first-in-first-out)** order once the allocated size is exhausted.
+    - Nilus reads this log to generate CDC events.
+    - `oplog` entries roll off in FIFO (first-in-first-out) order once the allocated size is exhausted.
   
 - **Schema-Less Nature of MongoDB**
 
-    - MongoDB is **schema-less**, but Nilus dynamically infers schemas.
-    - The sink table is created from the **first document observed**.
-    - Schema evolution is tracked using a **Schema Registry with Avro**.
+    - MongoDB is schema-less, but Nilus dynamically infers schemas.
+    - The sink table is created from the first document observed.
+    - Schema evolution is tracked using a Schema Registry with Avro.
 
 - **`oplog` Retention & Disk Pressure**
     
     Nilus maintains a cursor in the `oplog`. If it lags:
 
     - Older `oplog` entries may expire.
-    - Expiration causes **event loss** and forces a **new snapshot**.
+    - Expiration causes event loss and forces a new snapshot.
 
     **Disk pressure:**
 
@@ -235,13 +235,16 @@ Nilus captures **row-level changes** from MongoDB using the **replica set** `opl
 
     **Prevention**
 
-    -  **Size the `oplog`** for the worst-case lag:
+    -  Size the `oplog` for the worst-case lag:
 
         ```
         RequiredSize(MB) ≈ PeakWrites/sec × MaxLag(sec) × avgEntrySize × safetyFactor
         ```
-    - **Monitor** with `rs.printReplicationInfo()`.
-    - **Avoid long pauses** beyond the `oplog` retention window.
+
+    - Monitor with `rs.printReplicationInfo()`.
+
+    - Avoid long pauses beyond the `oplog` retention window.
+    
     - Use `replSetResizeOplog` (MongoDB 4.4+) or `minRetentionHours` (MongoDB 6.0+) for stronger guarantees.
 
     !!! info
@@ -249,22 +252,30 @@ Nilus captures **row-level changes** from MongoDB using the **replica set** `opl
 
 
     - **`oplog` Polling**
+
     Nilus continuously tails the `oplog`:
-    - Use a **cursor** to track the last processed entry.
-    - Parses each entry and emits structured CDC events.
-    - Keeps streaming aligned with replication order.
+
+        - Use a cursor to track the last processed entry.
+        - Parses each entry and emits structured CDC events.
+        - Keeps streaming aligned with replication order.
+        
     - **MongoDB System Databases & Access**
-    Nilus requires specific database access:
-    - **`local`**
-        - Source of oplog (`local.oplog.rs`).
-        - Requires **`read`** permissions.
-    - **`admin`**
-        - Used for server metadata, discovery, and auth.
-        - Requires **`read`** on commands like `replSetGetStatus`, `buildInfo`, `listDatabases`.
     
-    - **`config`:** Needed only in **sharded clusters**.
+        Nilus requires specific database access:
+        
+        - **`local`**
+        
+            - Source of oplog (`local.oplog.rs`).
+            - Requires **`read`** permissions.
+        - **`admin`**
+
+            - Used for server metadata, discovery, and auth.
+            - Requires **`read`** on commands like `replSetGetStatus`, `buildInfo`, `listDatabases`.
+        
+        - **`config`:** Needed only in **sharded clusters**.
 
     - **Target Databases (Application Data)**
+    
         - Collections you want to capture.
         - Requires **`read`** permissions.
         - If snapshotting is enabled, Nilus reads **all documents** during startup.
