@@ -34,7 +34,7 @@ workflow:
             options:
               dest-table: b_007_batch
               incremental-strategy: append
-              aws_region: us-west-2
+
 ```
 
 **Error Message:**

@@ -5,7 +5,8 @@
 Nilus supports Athena as a **batch ingestion source**, enabling queries over S3 data (typically in **Parquet, ORC, or Iceberg format**) and movement of results into the DataOS Lakehouse or other supported destinations.
 
 !!! info
-    AWS Athena does not support Depot. To configure connections, use service account credentials provided through the Instance Secret Resource in the URI.
+    - AWS Athena does not support Depot. To configure connections, use service account credentials provided through the Instance Secret Resource in the URI.
+    - Contact the DataOS Administrator or Operator to obtain configured URI and other required parameters.
 
 
 ## Prerequisites

@@ -1,6 +1,6 @@
-# IBM DB2
+# IBM Db2
 
-The Nilus connector for IBM Db2 supports Change Data Capture (CDC), enabling row-level changes from Db2 tables to be streamed in near real-time into [supported destinations](/resources/stacks/nilus/supported_destinations/) such as the Lakehouse. CDC leverages Db2’s SQL Replication feature, which uses ASN Capture/Apply agents to detect and store changes in change-data tables.
+The Nilus connector for IBM Db2 supports Change Data Capture (CDC), enabling row-level changes from Db2 tables to be streamed in near real-time into [supported destinations](/resources/stacks/nilus/supported_destinations/) such as the Lakehouse. Nilus CDC connector is based on the ASN Capture and Apply programs that enable SQL Replication in Db2 to detect and store changes in change-data tables.
 
 !!! info
       IBM Db2 is not supported via Depot.
@@ -8,7 +8,7 @@ The Nilus connector for IBM Db2 supports Change Data Capture (CDC), enabling row
 
 ## Prerequisites 
 
-The following are the requirements to enable CDC data movement in IBM DB2:
+The following are the requirements to enable CDC data movement in IBM Db2:
 
 ### **SQL Replication and Licensing**
 
@@ -24,11 +24,15 @@ The following are the requirements to enable CDC data movement in IBM DB2:
     * Put tables into/out of capture mode.
     * Generate change-data tables.
 
+!!! info
+      Elevated roles such as `DBADM`, `DATAACCESS`, `CATALOGADM`, or `SECADM` may be required depending on how replication is managed. Contact the Database Administrator (DBA) to set up and enable Change Data Capture (CDC) in Db2.
+
+
 ### **CDC Setup & Enablement**
 
-Steps for setting up and enabling Change Data Capture in IBM DB2:
+The following example displays steps for setting up and enabling Change Data Capture on a local machine, :
 
-- **Access the DB2 Environment**
+- **Access the Db2 Environment**
 - **Start CDC Capture Agent**
 
     ```bash
@@ -96,9 +100,6 @@ GRANT DATAACCESS, DBADM ON DATABASE TO user;
 -- Depending on environment:
 GRANT CATALOGADM, SECADM ON DATABASE TO user;
 ```
-
-!!! info
-      Elevated roles such as `DBADM`, `DATAACCESS`, `CATALOGADM`, or `SECADM` may be required depending on how replication is managed. Contact the Database Administrator (DBA) to set up Change Data Capture (CDC).
 
 
 ## Sample Service Config
@@ -174,7 +175,7 @@ Nilus supports the following sink options for Db2 CDC service:
 | ---------------------- | ---------------------------------------------- | -------- |
 | `dest-table`           | Target table in the sink.                      | —        |
 | `incremental-strategy` | Write mode (`append` recommended for CDC).     | `append` |
-| `aws_region`           | AWS region (required for S3-backed Lakehouse). | —        |
+
 
 ## Core Concepts
 

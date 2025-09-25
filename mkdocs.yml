@@ -717,6 +717,7 @@ nav:
               - PostgreSQL: resources/stacks/nilus/cdc_sources/postgresql.md
             - Batch sources:
               - resources/stacks/nilus/batch_sources/index.md
+              - Apache Kafka: resources/stacks/nilus/batch_sources/kafka.md
               - AWS Athena: resources/stacks/nilus/batch_sources/aws_athena.md
               - AWS DataOS Lakehouse: resources/stacks/nilus/batch_sources/aws_dataos_lakehouse.md
               - AWS Redshift: resources/stacks/nilus/batch_sources/aws_redshift.md
@@ -727,7 +728,6 @@ nav:
               - GCS DataOS Lakehouse: resources/stacks/nilus/batch_sources/gcs_dataos_lakehouse.md
               - Google Analytics: resources/stacks/nilus/batch_sources/google_analytics.md
               - Google BigQuery: resources/stacks/nilus/batch_sources/google_bigquery.md
-              - Kafka: resources/stacks/nilus/batch_sources/kafka.md
               - MongoDB: resources/stacks/nilus/batch_sources/mongodb.md
               - MS SQL Server: resources/stacks/nilus/batch_sources/mssql.md
               - MySQL: resources/stacks/nilus/batch_sources/mysql.md
@@ -743,10 +743,10 @@ nav:
               - BigQuery: resources/stacks/nilus/supported_destinations/bigquery.md
               - GCS DataOS Lakehouse: resources/stacks/nilus/supported_destinations/gcs_dataos_lakehouse.md
               - MS SQL Server: resources/stacks/nilus/supported_destinations/mssql.md
-              - Custom Destination: resources/stacks/nilus/supported_destinations/custom_destination.md
               - Redshift: resources/stacks/nilus/supported_destinations/redshift.md
               - Snowflake: resources/stacks/nilus/supported_destinations/snowflake.md
               - PostgreSQL: resources/stacks/nilus/supported_destinations/postgresql.md
+              - Custom Destination: resources/stacks/nilus/supported_destinations/custom_destination.md
             # - Governance: resources/stacks/nilus/governance.md
             # - Observability: resources/stacks/nilus/observability.md
             - Best Practices: resources/stacks/nilus/best_practices.md

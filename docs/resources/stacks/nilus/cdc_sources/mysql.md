@@ -36,7 +36,7 @@ Nilus works with various MySQL architectures:
     Contact the Database Administrator (DBA) to either set up Change Data Capture (CDC) or to provide the correct values for parameters such as  `server-id`, `log_bin`, `port`, `snapshot` etc.
 
 
-To configure Change Data Capture (CDC) in MySQL, follow these steps:&#x20;
+To configure Change Data Capture (CDC) in MySQL, follow these steps:
 
 1.  **Edit `my.cnf` (or pass as Docker args):** 
       
@@ -182,8 +182,8 @@ service:                                                   # Service specificati
     sink:                                                  # Sink configuration block
       address: dataos://testinghouse                       # Sink DataOS Lakehouse address
       options:                                             # Sink-specific options
-         dest-table: destination_schema                    # Destination table name in sink
-        incremental-strategy: append                       # Append mode for CDC write strategy
+        dest-table: destination_schema                 # Destination table name in sink
+        incremental-strategy: append                   # Append mode for CDC write strategy
 ```
 
 !!! info
@@ -216,7 +216,7 @@ dataos-ctl resource apply -f ${{path to the Nilus Service YAML}}
 | ---------------------- | ----------------------------------- | -------- |
 | `dest-table`           | Target sink table.                  | —        |
 | `incremental-strategy` | Write mode (`append` for CDC).      | `append` |
-| `aws_region`           | AWS region for S3-backed Lakehouse. | —        |
+
 
 ## Core Concepts
 

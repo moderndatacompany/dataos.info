@@ -15,16 +15,17 @@ Before enabling CDC, ensure the following configurations depending on your hosti
 
 The connection user requires:
 
-* **`db_owner` role in:**
+* `db_owner` role in:
     * `master` database (for database-level setup).
     * Target database(s) (for CDC configuration).
-* **Additional grants:**
+* Additional grants:
     * `VIEW SERVER STATE`
     * `SELECT` on the `cdc` schema
 * Access to SQL Server Agent jobs (tables: `sysjobs`, `sysjobactivity`) if CDC jobs are used.
 
 !!! info
-    SQL Server Agent must be enabled for CDC to function.
+    SQL Server Agent must be enabled for CDC to function. Contact the Database Administrator (DBA) to set up and enable Change Data Capture (CDC) in MS SQL Server to provide the correct values for parameters such as database name, table name, etc.
+
 
 
 ### **CDC Setup in SQL Server**
@@ -61,9 +62,6 @@ The user needs to perform the steps below to enable it before running the CDC se
     -- Verify
     SELECT * FROM cdc.change_tables;
     ```
-
-!!! info
-    Contact the Database Administrator (DBA) to set up Change Data Capture (CDC) or to provide the correct values for parameters such as database name, table name, etc.
 
 
 ### **Pre-created SQL Server Depot**
@@ -157,7 +155,7 @@ service:
       options:
         dest-table: sqlserver_cdc_test
         incremental-strategy: append
-        aws_region: us-west-2
+
 ```
 
 !!! info
@@ -197,7 +195,7 @@ Nilus supports the following sink options for SQL Server CDC workflows:
 | ---------------------- | ------------------------------------------ | -------- |
 | `dest-table`           | Target table in the sink.                  | —        |
 | `incremental-strategy` | Write mode (`append` recommended for CDC). | `append` |
-| `aws_region`           | AWS region (for S3-backed Lakehouse).      | —        |
+
 
 ## Core Concepts
 

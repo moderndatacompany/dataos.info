@@ -15,6 +15,9 @@ Before enabling CDC, ensure the following configurations depending on your hosti
 * MongoDB must run as a replica set, even for single-node deployments.
 * Nilus CDC for MongoDB relies on the `oplog.rs` collection, which is only available in replica sets.
 
+!!! info
+      Contact the Database Administrator (DBA) to set up and enable Change Data Capture (CDC) in MongoDB.
+
 ### **Enable `oplog` Access**
 
 * Nilus uses MongoDB’s `oplog.rs` to capture changes.
@@ -124,7 +127,7 @@ service:                                                   # Service specificati
       options:                                             # Sink-specific options
         dest-table: mdb_test_001                           # Destination table name in the sink depot
         incremental-strategy: append                       # Append-only strategy for streaming writes
-        aws_region: us-west-2                              # AWS region for S3-backed DataOS Lakehouse
+
 
 ```
 
@@ -164,7 +167,7 @@ Nilus supports the following sink options for MongoDB CDC:
 | ---------------------- | ---------------------------------------------- | -------- |
 | `dest-table`           | Target table in the sink.                      | —        |
 | `incremental-strategy` | Write mode (`append` recommended for CDC).     | `append` |
-| `aws_region`           | AWS region (required for S3-backed Lakehouse). | —        |
+
 
 ## Core Concepts
 
@@ -301,7 +304,7 @@ Nilus captures row-level changes from MongoDB using the replica set `oplog`. Bel
       options:
         dest-table: mongodb_test
         incremental-strategy: append
-        aws_region: us-west-2
+
     ```
 
     **Option Reference:**

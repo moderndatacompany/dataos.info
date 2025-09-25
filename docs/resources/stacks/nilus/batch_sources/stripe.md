@@ -3,7 +3,7 @@
 Stripe is a financial infrastructure platform that enables businesses to accept online payments and manage their financial processes. It acts as a payment processor, allowing businesses to integrate payment processing into their websites, apps, and other online platforms.
 
 !!! info
-    Salesforce does not support Depot. To configure connections, use service account credentials provided through the Instance Secret Resource in URI.
+    Stripe does not support Depot. To configure connections, use service account credentials provided through the Instance Secret Resource in URI.
 
 
 ## Prerequisites
@@ -14,7 +14,7 @@ The following are the requirements for enabling Batch Data Movement in Stripe:
 * API keys should be stored securely, preferably in a **DataOS Instance Secret.**
 
 !!! info
-    - To create a Nilus Workflow for batch data movement in Stripe, an active API key is essential. Create a Stripe API key using the following document: [API Key](https://docs.stripe.com/keys).&#x20;
+    - To create a Nilus Workflow for batch data movement in Stripe, an active API key is essential. Create a Stripe API key using the following document: [API Key](https://docs.stripe.com/keys).
     - To create an Instance Secret for your Nilus Workflow, contact the DataOS admin or DataOS Operator
 
 
@@ -105,7 +105,6 @@ workflow:
             address: dataos://testawslh:sandbox/strip_test?acl=rw  
             options:  
               incremental-strategy: replace  
-              aws_region: us-west-2
 ```
 
 !!! info
@@ -124,4 +123,4 @@ Nilus supports the following source options for Stripe:
 
 | Option         | Required | Description                                                                      |
 | -------------- | -------- | -------------------------------------------------------------------------------- |
-| `source-table` | Yes      | Stripe endpoint (e.g., `charges`, `customers:sync`, `invoices:sync:incremental)` |
+| `source-table` | Yes      | Stripe endpoint (e.g., `charges`, `customers:sync`, `invoices:sync:incremental`) |
