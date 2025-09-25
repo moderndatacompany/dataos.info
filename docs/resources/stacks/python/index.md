@@ -1,7 +1,7 @@
 ---
 title: Python Stack
 search:
-  boost: 2
+  boost: 4
 ---
 
 # Python Stack
