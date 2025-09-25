@@ -1,6 +1,6 @@
 # Data Movement Architecture
 
-Nilus is designed to overcome the limitations of legacy ingestion solutions. It provides a modern, cost-efficient approach to data movement. Its architecture emphasizes extensibility, allowing it to evolve in alignment with changing enterprise needs.
+Nilus is designed to overcome the limitations of traditional data movement solutions. It provides a modern, cost-efficient approach to data movement. Its architecture emphasizes extensibility, allowing it to evolve in alignment with changing enterprise needs.
 
 The framework facilitates the onboarding of new data sources and destinations with minimal configuration, maximizing developer efficiency and ensuring operational maintainability. Nilus abstracts the complexities of data movement into a standardized pipeline model, enabling the creation of consistent and maintainable ingestion workflows.
 
@@ -87,3 +87,4 @@ The final stage of the Nilus pipeline is the Load phase, which is responsible fo
 * The load process begins with schema migration, where Nilus applies necessary schema changes to the destination to accommodate updates or new data structures introduced upstream. To maintain scalability and efficiency, loading is performed in chunks. This chunked loading approach divides large datasets into smaller segments, which are processed in parallel, improving throughput and reducing risk.
 * To ensure data consistency and avoid duplication, Nilus employs idempotent load operations. Even if the load process is retried due to transient issues, the system guarantees that duplicate records are not created (unless the source contains duplicates). Robust error handling and recovery mechanisms are in place to detect issues during loading and automatically recover when possible.
 * Finally, comprehensive monitoring and logging capabilities provide transparency and traceability, enabling teams to audit, troubleshoot, and optimize loading operations with confidence via prometheus metrics and detailed logs.
+

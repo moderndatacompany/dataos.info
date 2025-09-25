@@ -4,7 +4,7 @@ description: Welcome to the Nilus Quick Start Guide!
 
 # Quick Start
 
-This page will help you onboard rapidly and begin moving data with **Nilus** using either **Batch Ingestion** or **Change Data Capture (CDC)**. Whether you're syncing large historical datasets or streaming real-time updates, Nilus makes data movement into **DataOS Lakehouse** and other destinations simple, secure, and scalable.
+This page will help you onboard rapidly and begin moving data with Nilus using either Batch Ingestion or Change Data Capture (CDC). Whether you're syncing large historical datasets or streaming real-time updates, Nilus makes data movement into DataOS Lakehouse and other destinations simple, secure, and scalable.
 
 ## Change Data Capture (CDC)
 
@@ -129,7 +129,7 @@ service:                                                   # Service specificati
       options:                                             # Sink-specific options
         dest-table: mdb_test_001                           # Destination table name in the sink depot
         incremental-strategy: append                       # Append-only strategy for streaming writes
-        aws_region: us-west-2                              # AWS region for S3-backed DataOS Lakehouse
+
 
 ```
 
@@ -193,7 +193,6 @@ This section outlines the necessary attributes of Nilus CDC Service.
     | `address`              | Target address (DataOS Lakehouse as example)                                | Yes      |
     | `dest-table`           | Schema to write change records. Table name will fetched from `topic.prefix` | Yes      |
     | `incremental-strategy` | Defines write mode; append is preferred for CDC                             | Yes      |
-    | `aws-region`           | Lakehouse specific config option                                            | No       |
 
 ## Batch Ingestion
 
@@ -301,7 +300,7 @@ workflow:
             options:
               dest-table: mdb_retail.batch_customer_1
               incremental-strategy: replace
-              aws_region: us-west-2
+
 ```
 
 !!! info
@@ -359,4 +358,3 @@ This section outlines the necessary attributes of Nilus Batch Workflow.
     | `address`              | Target address (DataOS Lakehouse as example)                                               | Yes      |
     | `dest-table`           | Schema to write change records. Destination table is defined in `schema.table_name` format | Yes      |
     | `incremental-strategy` | Data ingestion strategy (append or replace)                                                | Yes      |
-    | `aws-region`           | Lakehouse specific config option                                                           | No       |
