@@ -2,7 +2,7 @@
 
 This section includes the steps to add OIDC authentication to the Python application.To add OpenID Connect (OIDC) authentication to your Python application, you'll need to follow a series of steps to configure the application to interact with an OIDC provider. The provided example code, which uses Dash and Flask, handles the core OIDC logic and Flask-based routing for login, callback, and logout. Similarly, you can add OIDC for other frameworks such as Streamlit.
 
-## Pre-requisites
+## Prerequisites
 
 The following credentials must be obtained from your DevOps team before configuring OIDC authentication in the Python application:
 
@@ -316,7 +316,7 @@ To get more details on each attribute of the Python Service manifest file, pleas
 
 Apply the Python Service manifest file by executing the command below.
 
-```yaml
+```bash
 dataos-ctl resource apply -f ${{path-to-manifest-file}}
 ```
 
@@ -324,13 +324,13 @@ dataos-ctl resource apply -f ${{path-to-manifest-file}}
 
 Validate the Python Service by executing the command below.
 
-```yaml
+```bash
 dataos-ctl resource get -t service -n ${{service-identifier}} -w ${{workspace}}
 ```
 
 **Example:**
 
-```yaml
+```bash
 dataos-ctl resource get -t service -w public -n my-python-app-test
 # Expected output:
 INFO[0000] 🔍 get...                                     
@@ -369,6 +369,17 @@ Upon successful authentication, a welcome page will appear, confirming you are l
          alt="Web app" 
          style="border: 1px solid black; width: 80%; height: auto; display: block; margin: auto;">
     <figcaption style="margin-top: 8px; font-style: italic;">Web app</figcaption>
+  </figure>
+</div>
+
+If a user without the required permissions tries to access the application, they will see an access denied message as shown below.
+
+<div style="text-align: center;">
+  <figure>
+    <img src="/resources/stacks/python/denied.png" 
+         alt="Access Denied" 
+         style="border: 1px solid black; width: 80%; height: auto; display: block; margin: auto;">
+    <figcaption style="margin-top: 8px; font-style: italic;">Access Denied</figcaption>
   </figure>
 </div>
 

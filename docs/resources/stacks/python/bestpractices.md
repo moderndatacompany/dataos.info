@@ -4,7 +4,7 @@ This section outlines recommended best practices for developing, deploying, and 
 
 ### **Avoid embedding secrets directly in the manifest file**
 
-Hardcoding secrets such as tokens, keys, or passwords into the manifest file directly creates major security risks. Instead, always secure the repository credentials using [Instance Secret](https://dataos.info/resources/instance_secret/) (instance level) or [Secret](https://dataos.info/resources/secret/) (Workspace level) and then refer to those secrets in the Service manifest file as shown in the example below.
+Hardcoding secrets such as tokens, keys, or passwords into the manifest file directly creates major security risks. Instead, always secure the repository credentials using [Instance Secret](/resources/instance_secret/) (instance level) or [Secret](/resources/secret/) (Workspace level) and then refer to those secrets in the Service manifest file as shown in the example below.
 
 ```yaml
   dataosSecrets:

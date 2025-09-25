@@ -13,7 +13,7 @@ This section provides the steps to implement the Streamlit framework to build a 
 
 
 
-## Pre-requisites
+## Prerequisites
 
 Before starting to implement the Streamlit framework using Python Stack, ensure you have met the requirements listed [in this section.](/resources/stacks/python/#pre-requisites) 
 
