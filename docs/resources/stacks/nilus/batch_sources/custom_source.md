@@ -51,7 +51,7 @@ class MyCustomSource(CustomSource):
 ```
 
 * `handles_incrementality()`: Returns `True` If
-* &#x20;The connector supports incremental loading.
+* The connector supports incremental loading.
 * `nilus_source()`: Defines the entry point Nilus will invoke during execution.
 
 
@@ -138,27 +138,26 @@ Connection and data-fetching errors must be handled explicitly to ensure reliabi
 !!! info
     If `table_name` is not defined in the `@nilus.resource` decorator; it defaults to the function name. Check the Example Implementations section below for more details.
 
-
-    <pre class="language-python"><code class="lang-python"><strong>@nilus.resource()
-    </strong>def fetch_data_with_error_handling():
+```yaml
+@nilus.resource()
+</strong>def fetch_data_with_error_handling():
+try:
+    conn = establish_connection()
     try:
-        conn = establish_connection()
-        try:
-            data = conn.get_data()
-            for item in data:
-                yield item
-        finally:
-            conn.close()
-    except Exception as e:
-        logger.error(f"Error fetching data: {str(e)}")
-        raise
-    </code></pre>
+        data = conn.get_data()
+        for item in data:
+            yield item
+    finally:
+        conn.close()
+except Exception as e:
+    logger.error(f"Error fetching data: {str(e)}")
+    raise
+```
 
 
+**Step 6: Performance Optimization**
 
-    **Step 6: Performance Optimization**
-
-    For large datasets, batching and pagination must be implemented to ensure efficiency:
+For large datasets, batching and pagination must be implemented to ensure efficiency:
 
 ```python
 @nilus.resource()

@@ -1,6 +1,6 @@
 # MS SQL Server
 
-Microsoft SQL Server (MS SQL Server) is a robust relational database system developed by Microsoft. The **Nilus connector** supports MS SQL Server as a **destination**, enabling both **Change Data Capture (CDC)** and **Batch** data movement—whether streaming in real time or bulk ingestion on a schedule.
+Microsoft SQL Server (MS SQL Server) is a robust relational database system developed by Microsoft. The Nilus connector supports MS SQL Server as a destination, enabling both Change Data Capture (CDC) and Batch data movement—whether streaming in real time or bulk ingestion on a schedule.
 
 Nilus connects to MS SQL Server using standard drivers (via ODBC) and supports upsert (`merge`), append, and replace strategies, as well as efficient staging for bulk loads.
 
@@ -18,7 +18,9 @@ The following configurations must be set up before using the MS SQL Server:
     * `DROP` or `TRUNCATE` for full replace operations
 
 !!! info
-    In production environments, while full ownership simplifies setup, it's recommended to use least-privilege access limited to the destination schema.
+    - In production environments, while full ownership simplifies setup, it's recommended to use least-privilege access limited to the destination schema.
+    - Contact the DataOS Administrator or Operator to obtain configured Depot UDL and other required parameters.
+
 
 
 ## Sink Configuration

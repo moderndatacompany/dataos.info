@@ -36,6 +36,9 @@ GRANT ROLE <role_name> TO USER <username>;
 | `warehouse` | Virtual warehouse to use (required)                                                                                                                                                   |
 | `role`      | Role for connection (optional)                                                                                                                                                        |
 
+!!! info
+    Contact the DataOS Administrator or Operator to obtain configured Depot UDL and other required parameters.
+
 ## Sink Configuration
 
 === "Syntax with Depot"

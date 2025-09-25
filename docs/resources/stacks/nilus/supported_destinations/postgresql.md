@@ -17,7 +17,8 @@ The following configurations must be set up before using the PostgreSQL:
     * `DROP` or `TRUNCATE` for full replace operations
 
 !!! info
-    In production environments, while full ownership simplifies setup, it's recommended to use least-privilege access limited to the destination schema.
+    - In production environments, while full ownership simplifies setup, it's recommended to use least-privilege access limited to the destination schema.
+    - Contact the DataOS Administrator or Operator to obtain configured Depot UDL and other required parameters.
 
 
 ## Sink Configuration
