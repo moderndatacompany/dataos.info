@@ -703,6 +703,74 @@ nav:
             - Observability: resources/stacks/lakesearch/observability.md
             - Troubleshooting: resources/stacks/lakesearch/troubleshooting.md
 
+          - Nilus:
+            - resources/stacks/nilus/index.md
+            - Data Movement Architecture: resources/stacks/nilus/data_movement_architecture.md
+            # - Set Up Nilus: resources/stacks/nilus/set_up.md
+            - Quick Start: resources/stacks/nilus/quick_start.md
+            - CDC Sources:
+              - resources/stacks/nilus/cdc_sources/index.md
+              - IBM Db2: resources/stacks/nilus/cdc_sources/ibm_db2.md
+              - MongoDB: resources/stacks/nilus/cdc_sources/mongodb.md
+              - MS SQL Server: resources/stacks/nilus/cdc_sources/mssql.md
+              - MySQL: resources/stacks/nilus/cdc_sources/mysql.md
+              - PostgreSQL: resources/stacks/nilus/cdc_sources/postgresql.md
+            - Batch sources:
+              - resources/stacks/nilus/batch_sources/index.md
+              - AWS Athena: resources/stacks/nilus/batch_sources/aws_athena.md
+              - AWS DataOS Lakehouse: resources/stacks/nilus/batch_sources/aws_dataos_lakehouse.md
+              - AWS Redshift: resources/stacks/nilus/batch_sources/aws_redshift.md
+              - Azure DataOS Lakehouse: resources/stacks/nilus/batch_sources/azure_dataos_lakehouse.md
+              - Azure Synapse: resources/stacks/nilus/batch_sources/azure_synapse.md
+              - Databricks: resources/stacks/nilus/batch_sources/databricks.md
+              - Delta Lake: resources/stacks/nilus/batch_sources/delta_lake.md
+              - GCS DataOS Lakehouse: resources/stacks/nilus/batch_sources/gcs_dataos_lakehouse.md
+              - Google Analytics: resources/stacks/nilus/batch_sources/google_analytics.md
+              - Google BigQuery: resources/stacks/nilus/batch_sources/google_bigquery.md
+              - Kafka: resources/stacks/nilus/batch_sources/kafka.md
+              - MongoDB: resources/stacks/nilus/batch_sources/mongodb.md
+              - MS SQL Server: resources/stacks/nilus/batch_sources/mssql.md
+              - MySQL: resources/stacks/nilus/batch_sources/mysql.md
+              - PostgreSQL: resources/stacks/nilus/batch_sources/postgresql.md
+              - Salesforce: resources/stacks/nilus/batch_sources/salesforce.md
+              - Snowflake: resources/stacks/nilus/batch_sources/snowflake.md
+              - Stripe: resources/stacks/nilus/batch_sources/stripe.md
+              - Custom Source: resources/stacks/nilus/batch_sources/custom_source.md
+            - Supported Destinations:
+              - resources/stacks/nilus/supported_destinations/index.md
+              - AWS DataOS Lakehouse: resources/stacks/nilus/supported_destinations/aws_dataos_lakehouse.md
+              - Azure DataOS Lakehouse: resources/stacks/nilus/supported_destinations/azure_dataos_lakehouse.md
+              - BigQuery: resources/stacks/nilus/supported_destinations/bigquery.md
+              - GCS DataOS Lakehouse: resources/stacks/nilus/supported_destinations/gcs_dataos_lakehouse.md
+              - MS SQL Server: resources/stacks/nilus/supported_destinations/mssql.md
+              - Custom Destination: resources/stacks/nilus/supported_destinations/custom_destination.md
+              - Redshift: resources/stacks/nilus/supported_destinations/redshift.md
+              - Snowflake: resources/stacks/nilus/supported_destinations/snowflake.md
+              - PostgreSQL: resources/stacks/nilus/supported_destinations/postgresql.md
+            # - Governance: resources/stacks/nilus/governance.md
+            # - Observability: resources/stacks/nilus/observability.md
+            - Best Practices: resources/stacks/nilus/best_practices.md
+            # - Troubleshooting: resources/stacks/nilus/troubleshooting.md
+    
+          - Python:
+            - resources/stacks/python/index.md
+            - Stack Deployment: resources/stacks/python/stack_deployment.md
+            - Getting Started: 
+              - Build Application: resources/stacks/python/repo_setup.md
+              - Deploy Application: resources/stacks/python/python_service.md 
+            - Configurations: resources/stacks/python/configurations.md
+            - Governance:
+              - Authentication: resources/stacks/python/authentication.md
+              - Access Control: resources/stacks/python/access.md
+            - Recipes: 
+              - Frameworks:
+                - Streamlit: resources/stacks/python/streamlit.md
+                - Vizro: resources/stacks/python/vizro.md
+              - Utilities:
+                - Retrieve Insights: resources/stacks/python/insights.md 
+            - Best Practices: resources/stacks/python/bestpractices.md
+            - Troubleshooting: resources/stacks/python/troubleshooting.md
+
           - Scanner: 
             - resources/stacks/scanner/index.md
             - Quickstart: resources/stacks/scanner/quickstart.md 
