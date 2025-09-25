@@ -6,7 +6,7 @@ search:
 
 # :resources-database: Database
 
-A Database [Resource](/resources/) in DataOS acts as a repository for storing transaction data, utilizing a managed Postgres relational database. It fulfills the transactional data storage needs of custom data applications developed on top of DataOS. Internal applications like [Lens Studio](/interfaces/lens/), [Metis UI](/interfaces/metis/), etc., also leverage the Database Resource for their transactional data storage. Utilizing a [Service](/resources/service/) supported by the [Beacon Stack](/resources/stacks/beacon/) facilitates CRUD operations (Create, Read, Update, Delete) on data assets stored in the Database, ensuring smooth connectivity between the data application and the Database. For analytical operations, users can utilize the [Flare Stack](/resources/stacks/flare/) to move the data from transactional data storage to other [Depots](/resources/depot/) or [Lakehouses](/resources/lakehouse/).
+A Database [Resource](/resources/) in DataOS acts as a repository for storing transaction data, utilizing a managed Postgres relational database. It fulfills the transactional data storage needs of custom data applications developed on top of DataOS. Internal applications such as [Metis UI](/interfaces/metis/) can help to leverage the Database Resource for their transactional data storage. Utilizing a [Service](/resources/service/) supported by the [Beacon Stack](/resources/stacks/beacon/) facilitates CRUD operations (Create, Read, Update, Delete) on data assets stored in the Database, ensuring smooth connectivity between the data application and the Database. For analytical operations, users can utilize the [Flare Stack](/resources/stacks/flare/) to move the data from transactional data storage to other [Depots](/resources/depot/) or [Lakehouses](/resources/lakehouse/).
 
 <div style="text-align: center;">
   <img src="/resources/database/database.png" alt="Database Resource" style="border:1px solid black; width: 60%; height: auto;">
@@ -15,7 +15,7 @@ A Database [Resource](/resources/) in DataOS acts as a repository for storing tr
 
 
 <aside class="callout">
-🗣️ A Database is a <a href="https://dataos.info/resources/types_of_dataos_resources/"> Workspace-level </a> resource, implying that its scope is limited to a particular Workspace.
+🗣️ A Database is a <a href="https://dataos.info/resources/types/#workspace-level-resources"> Workspace-level </a> resource, implying that its scope is limited to a particular Workspace.
 </aside>
 
 ## Structure of Database manifest

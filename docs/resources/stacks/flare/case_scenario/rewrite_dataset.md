@@ -11,7 +11,7 @@ DataOS managed depot, Lakehouse built on top of Iceberg format can compact data 
 | Attributes     | Type   | Description |
 |---------------|--------|-------------|
 | `strategy`      | string | Name of the compaction strategy. Supported values: `binpack` (default) or `sort`. |
-| `sort_order`    | string | Defines sort order. For Z-ordering, use: `zorder(col1,col2)`. For regular sorting, use: `ColumnName SortDirection NullOrder` (e.g., `col1 ASC NULLS LAST`). Defaults to the table's current sort order. |
+| `sortOrder`    | string | Defines sort order. For Z-ordering, use: `zorder(col1,col2)`. For regular sorting, use: `ColumnName SortDirection NullOrder` (e.g., `col1 ASC NULLS LAST`). Defaults to the table's current sort order. |
 | `properties`   | mapping    | Configuration properties to be used during the compaction action. |
 | `where`         | string | Predicate string used to filter which files are eligible for rewriting. All files that may contain matching data will be considered. |
 
@@ -198,7 +198,7 @@ workflow:                                     # Workflow Specific Section
                 input: inputDf                # Input Dataset Name   #defaults to bin packing ? check the file zie to verify if file is 512 MB.
                 options:                      # Options
                   strategy: sort
-                  sort_order: (id, ASC NULLS FIRST).   #(id, Order NullOrder).
+                  sortOrder: (id, ASC NULLS FIRST).   #(id, Order NullOrder).
 
 ```
 

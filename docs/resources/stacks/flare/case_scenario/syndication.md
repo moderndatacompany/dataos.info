@@ -24,7 +24,7 @@ workflow:
         tags:
         - Offline
         - Syndicate
-        stack: flare:6.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           configs: {}

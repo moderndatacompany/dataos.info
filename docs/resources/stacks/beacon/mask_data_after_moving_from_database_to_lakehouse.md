@@ -135,7 +135,7 @@ You need to create a workflow to ingest sales data given in JSON format to the P
             tags:
                 - Connect_jobs
                 - transactions_connect
-            stack: flare:6.0
+            stack: flare:7.0
             envs:
               HERA_URL: "https://enough-kingfish.dataos.app/hera/api"
               DEPOT_SERVICE_URL: "https://enough-kingfish.dataos.app/ds/api/v2"
@@ -227,7 +227,7 @@ You need to create a workflow to ingest sales data given in JSON format to the P
 
       JOB NAME |   STACK    |           JOB TITLE            | JOB DEPENDENCIES  
     -----------|------------|--------------------------------|-------------------
-      sales    | flare:6.0  | connect sales transactions     |                   
+      sales    | flare:7.0  | connect sales transactions     |                   
               |            | data                           |                   
       system   | dataos_cli | System Runnable Steps          |                   
 

@@ -2175,7 +2175,7 @@ stackSpec:
 
 !!! tip
 
-    It is recommended to use the Flare 5.0 with updated image tag `7.3.21`.
+    It is recommended to use the Flare 7.0 to enable all action options.
 
 **Additional details:** The Data Maintenance Actions are only supported in Depot with Iceberg datasets. For e.g. Lakehouse. Following are the different actions that can be accomplished using Flare in DataOS:
 

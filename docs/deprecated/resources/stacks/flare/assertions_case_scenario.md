@@ -31,7 +31,7 @@ workflow:
       title: sample data ingestion assertion job
       description: sample data ingestion assertion job
       spec:
-        stack: flare:5.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           job:
@@ -111,7 +111,7 @@ In this process, it initially evaluates the assertion, and only if all the check
                     JOB NAME               |   STACK    |           JOB TITLE            | JOB DEPENDENCIES  
     ---------------------------------------|------------|--------------------------------|-------------------
       system                               | dataos_cli | System Runnable Steps          |                   
-      wf-assertion-job                     | flare:5.0  | sample data ingestion          |                   
+      wf-assertion-job                     | flare:7.0  | sample data ingestion          |                   
                                            |            | assertion job                  |                   
     
        RUNTIME  | PROGRESS |          STARTED          |         FINISHED           
@@ -150,7 +150,7 @@ workflow:
       title: sample data ingestion assertion job
       description: sample data ingestion assertion job
       spec:
-        stack: flare:5.0
+        stack: flare:7.0
         compute: runnable-default
         stackSpec:
           job:
@@ -219,7 +219,7 @@ workflow:
                     JOB NAME               |   STACK    |           JOB TITLE            | JOB DEPENDENCIES  
     ---------------------------------------|------------|--------------------------------|-------------------
       system                               | dataos_cli | System Runnable Steps          |                   
-      wf-assertion-job                     | flare:5.0  | sample data ingestion          |                   
+      wf-assertion-job                     | flare:7.0  | sample data ingestion          |                   
                                            |            | assertion job                  |                   
     
       RUNTIME | PROGRESS |          STARTED          | FINISHED  
