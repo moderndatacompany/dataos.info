@@ -210,7 +210,7 @@ Once the OIDC is set up, follow the steps below to create a use case for accessi
     
 ## Add authorization logic in code
 
-This section explains how to integrate Heimdall authorization checks into the OIDC-enabled Python application.
+This section explains how to integrate Heimdall authorization checks into the authentication enabled Python application.
 
 **1. Add required dependencies**
 
