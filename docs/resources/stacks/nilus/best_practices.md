@@ -104,7 +104,6 @@ workflow:
             options:
               dest-table: B_007_batch.ecom_product_test
               incremental-strategy: append
-              aws_region: us-west-2
 ```
 
 **Recommendation:**

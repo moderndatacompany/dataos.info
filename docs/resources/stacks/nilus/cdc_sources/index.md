@@ -2,12 +2,10 @@
 
 The following are the supported sources for CDC:
 
-## Available CDC Sources
-
 | Source | Link |
 |--------|------|
 | IBM DB2 | [IBM DB2](/resources/stacks/nilus/cdc_sources/ibm_db2/) |
-| MongoDB | [mongodb](/resources/stacks/nilus/cdc_sources/mongodb/) |
-| MS SQL Server | [mssql](/resources/stacks/nilus/cdc_sources/mssql/) |
-| MySQL | [mysql](/resources/stacks/nilus/cdc_sources/mysql/) |
-| PostgreSQL | [postgresql](/resources/stacks/nilus/cdc_sources/postgresql/) |
+| MongoDB | [MongoDB](/resources/stacks/nilus/cdc_sources/mongodb/) |
+| MS SQL Server | [MS SQL Server](/resources/stacks/nilus/cdc_sources/mssql/) |
+| MySQL | [MySQL](/resources/stacks/nilus/cdc_sources/mysql/) |
+| PostgreSQL | [PostgreSQL](/resources/stacks/nilus/cdc_sources/postgresql/) |

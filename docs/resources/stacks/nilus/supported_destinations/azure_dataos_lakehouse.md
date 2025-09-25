@@ -1,12 +1,10 @@
 # Azure-backed DataOS Lakehouse
 
-DataOS Lakehouse is a Resource that merges Apache Iceberg table format with cloud object storage, yielding a fully managed storage architecture that blends the strengths of data lakes and data warehouses.&#x20;
+DataOS Lakehouse is a Resource that merges Apache Iceberg table format with cloud object storage, yielding a fully managed storage architecture that blends the strengths of data lakes and data warehouses.
 
-The DataOS Lakehouse (Azure-backed) provides a secure, scalable, and cloud-native data storage and analytics layer built on Azure Data Lake Storage Gen2 (ABFSS), using Apache Iceberg or Delta Lake as table formats.
+The DataOS Lakehouse (Azure-backed) provides a secure, scalable, and cloud-native data storage and analytics layer built on Azure Data Lake Storage Gen2 (ABFSS), using Apache Iceberg or Delta Lake as table formats. It can be used as a sink to store both batch and change data capture (CDC) pipelines in Nilus. It provides a unified data storage layer where structured and semi-structured data can be written and consumed downstream.
 
-The DataOS Lakehouse can be used as a sink to store both batch and change data capture (CDC) pipelines in Nilus. It provides a unified data storage layer where structured and semi-structured data can be written and consumed downstream.
-
-Connections to the Azure Lakehouse are managed only through DataOS Depot, which centralizes authentication and storage configuration. Nilus writes batch and CDC data to a DataOS **Lakehouse** (Iceberg), addressed by providing UDL as:
+Connections to the Azure Lakehouse are managed only through DataOS Depot, which centralizes authentication and storage configuration. Nilus writes batch and CDC data to a DataOS Lakehouse (Iceberg), addressed by providing UDL as:
 
 ```yaml
 dataos://<lakehouse-name>
@@ -29,7 +27,7 @@ For Azure-backed Lakehouse, following environment variables must be configured (
 | `METASTORE_URL`              | (Optional) External metastore URL                                |
 
 !!! info
-    Contact the DataOS Administrator or Operator to obtain configured Depot UDL.
+    Contact the DataOS Administrator or Operator to obtain configured Depot UDL and other required parameters.
 
 
 ### **Required Azure Setup**

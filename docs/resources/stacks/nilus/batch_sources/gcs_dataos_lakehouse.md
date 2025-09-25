@@ -63,35 +63,39 @@ Nilus supports authentication via HMAC credentials for GCP:
 ## Sample Workflow Config
 
 ```yaml
-name: nb-lh-gcs-test-01
+name: lakehouse-gcp-to-pg
 version: v1
 type: workflow
 tags:
-    - workflow
-    - nilus-batch
-description: Nilus Batch Workflow Sample for GCS Lakehouse
-workspace: research
+  - workflow
+  - nilus-batch
+description: Nilus Batch Service Sample
+# workspace: public
 workflow:
   dag:
-    - name: nb-job-01
+    - name: gcp-pg
       spec:
         stack: nilus:1.0
         compute: runnable-default
-        logLevel: INFO
         resources:
           requests:
-            cpu: 500m
-            memory: 512Mi
+            cpu: 100m
+            memory: 256Mi
+        logLevel: Info
+        envs:
+          PAGE_SIZE: 50000
+          LOADER_FILE_SIZE: 50000000
         stackSpec:
           source:
-            address: dataos://gcs_lh_depot
+            address: dataos://gcslakesrc
             options:
-              source-table: sales.orders
+              source-table: "sandbox1.validation_data_types"
+              sql-exclude-columns: __metadata 
           sink:
-            address: lakehouse://postgres_depot
+            address: dataos://ncdcpostgres3
             options:
-              dest-table: retail.orders
-              incremental-strategy: append
+              dest-table: varun_testing.data_type_validation
+              incremental-strategy: replace
 ```
 
 !!! info
@@ -112,6 +116,7 @@ Nilus supports the following source options for GCP-backed DataOS Lakehouse:
 | Option           | Required | Description                       |
 | ---------------- | -------- | --------------------------------- |
 | `source-table`   | Yes      | Table name (`schema.table`)       |
+| `sql-exclude-columns`   | Optional      | To exclude columns(e.g., metadata column `_metadata`)       |
 | `staging-bucket` | Optional | GCS bucket for staging operations |
 | `metastore_url`  | No       | External metastore URL            |
 

@@ -6,7 +6,7 @@
     Salesforce does not support Depot. To configure connections, use service account credentials provided through the Instance Secret Resource in URI.
 
 
-## Prerequisites&#x20;
+## Prerequisites
 
 The following are the requirements for enabling Batch Data Movement in Salesforce:
 
@@ -20,7 +20,7 @@ Salesforce is not integrated with Depot. Therefore, direct credentials are requi
 * `token`: Salesforce security token (generated/reset in Salesforce settings)
 * `domain`: Salesforce instance domain (optional, defaults to `login.salesforce.com`)
 
-To create an instance secret for your Nilus workflow, contact the DataOS admin or DataOS Operator.&#x20;
+To create an instance secret for your Nilus workflow, contact the DataOS admin or DataOS Operator.
 
 ??? note "DataOS Instance Secret for Salesforce"
 
@@ -42,7 +42,7 @@ To create an instance secret for your Nilus workflow, contact the DataOS admin o
 
 
 
-Once created, this secret can be referenced within the Nilus Workflow to facilitate the connection securely. The syntax of URI is as follows:&#x20;
+Once created, this secret can be referenced within the Nilus Workflow to facilitate the connection securely. The syntax of URI is as follows:
 
 ```yaml
 address: "salesforce://?username={SALESFORCE_USERNAME}&password={SALESFORCE_PASSWORD}&token={SALESFORCE_TOKEN}"

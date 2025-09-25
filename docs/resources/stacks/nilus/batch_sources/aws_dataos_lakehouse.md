@@ -1,14 +1,14 @@
 # AWS-backed DataOS Lakehouse
 
-The **DataOS Lakehouse (AWS-backed)** provides a secure, scalable, and cost-efficient data storage and analytics layer built on **Amazon S3** with **Apache Iceberg** as the table format.
+The DataOS Lakehouse (AWS-backed) provides a secure, scalable, and cost-efficient data storage and analytics layer built on Amazon S3 with Apache Iceberg as the table format. Nilus supports the Lakehouse both as a source and a destination, enabling seamless batch data movement to and from the DataOS ecosystem.
 
-Nilus supports the Lakehouse both as a **source** and a **sink**, enabling seamless batch data movement to and from the DataOS ecosystem.
-
-Connections to the AWS Lakehouse are managed via **DataOS Depot**, which centralizes authentication and credentials by offering UDL as:
+Connections to the AWS Lakehouse are managed via DataOS Depot, which centralizes authentication and credentials by offering UDL as:
 
 ```yaml
 dataos://<lakehouse-name>
 ```
+!!! info
+    - Contact the DataOS Administrator or Operator to obtain configured Depot UDL and other required parameters.
 
 ## Prerequisites
 
@@ -26,9 +26,6 @@ For AWS-backed Lakehouse, the following environment variables must be configured
 | `AWS_SECRET_ACCESS_KEY` | AWS secret key                          |
 | `AWS_REGION`            | AWS region (e.g., `us-east-1`)          |
 | `AWS_ENDPOINT`          | (Optional) Custom S3 endpoint URL       |
-
-!!! info
-    Contact the DataOS Administrator or Operator to obtain the configured Depot UDL.
 
 
 ### **Required AWS Setup**

@@ -1,12 +1,10 @@
 # GCP-backed DataOS Lakehouse
 
-DataOS Lakehouse is a Resource that merges Apache Iceberg table format with cloud object storage, yielding a fully managed storage architecture that blends the strengths of data lakes and data warehouses.&#x20;
+DataOS Lakehouse is a Resource that merges Apache Iceberg table format with cloud object storage, yielding a fully managed storage architecture that blends the strengths of data lakes and data warehouses.
 
-The DataOS Lakehouse (GCP-backed) provides a secure, scalable, and cloud-native data storage and analytics layer built on Google Cloud Storage (GCS), using Apache Iceberg or Delta Lake as table formats.
+The DataOS Lakehouse (GCP-backed) provides a secure, scalable, and cloud-native data storage and analytics layer built on Google Cloud Storage (GCS), using Apache Iceberg or Delta Lake as table formats. It can be used as a sink to store both batch and change data capture (CDC) pipelines in Nilus. It provides a unified data storage layer where structured and semi-structured data can be written and consumed downstream.
 
-The DataOS Lakehouse can be used as a sink to store both batch and change data capture (CDC) pipelines in Nilus. It provides a unified data storage layer where structured and semi-structured data can be written and consumed downstream.
-
-Connections to the GCP Lakehouse are managed only through DataOS Depot, which centralizes authentication and storage configuration. Nilus writes batch and CDC data to a DataOS **Lakehouse** (Iceberg), addressed by providing UDL as:
+Connections to the GCP Lakehouse are managed only through DataOS Depot, which centralizes authentication and storage configuration. Nilus writes batch and CDC data to a DataOS Lakehouse (Iceberg), addressed by providing UDL as:
 
 ```yaml
 dataos://<lakehouse-name>
@@ -31,7 +29,7 @@ For GCP-backed Lakehouse, following environment variables must be configured (vi
 | `METASTORE_URL`          | (Optional) External metastore URL        |
 
 !!! info
-    Contact the DataOS Administrator or Operator to obtain configured Depot UDL.
+    Contact the DataOS Administrator or Operator to obtain configured Depot UDL and other required parameters.
 
 
 ### **Authentication Methods**
@@ -123,7 +121,10 @@ Nilus supports two authentication methods for GCP:
 
 ## Sink Attributes Details
 
-<table><thead><tr><th>Option</th><th>Required</th><th width="190.765625">Description</th><th>Callouts</th></tr></thead><tbody><tr><td><code>dest-table</code></td><td>yes</td><td>Destination table name in <code>schema.table</code> format</td><td></td></tr><tr><td><code>incremental-strategy</code></td><td>yes</td><td>Strategy for writes (<code>append</code>, <code>replace</code>, <code>merge</code>)</td><td>Merge requires <code>primary-key</code></td></tr><tr><td><code>primary-key</code></td><td>Required for merge</td><td>Column(s) used to deduplicate</td><td></td></tr></tbody></table>
-
+| Option                | Required | Description                                               | Callouts                                  |
+|-----------------------|----------|-----------------------------------------------------------|-------------------------------------------|
+| `dest-table`        | yes      | Destination table name in `schema.table` format          |                                           |
+| `incremental-strategy` | yes      | Strategy for writes (`append`, `replace`, `merge`)       | Merge requires `primary-key`             |
+| `primary-key`       | Required for merge | Column(s) used to deduplicate                       |                                           |
 
 

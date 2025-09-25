@@ -1,6 +1,6 @@
 # Redshift
 
-Amazon Redshift is a fully managed, petabyte-scale data warehouse service in AWS that allows fast query performance and scalability. The **Nilus connector** supports Redshift as a **destination** for both **Change Data Capture (CDC)** and **Batch** data movement, enabling real-time streaming–style upserts or scheduled bulk loads.
+Amazon Redshift is a fully managed, petabyte-scale data warehouse service in AWS that allows fast query performance and scalability. The Nilus connector supports Redshift as a destination for both Change Data Capture (CDC) and Batch data movement, enabling real-time streaming–style upserts or scheduled bulk loads.
 
 Nilus connects to Redshift either via a direct connection URI or through DataOS Depot, which centralizes authentication, credentials, and connection details.
 
@@ -35,6 +35,10 @@ GRANT SELECT ON <schema_name>.<table_name> TO <username>;
 | `host`     | Redshift cluster endpoint     |
 | `port`     | Redshift port (default: 5439) |
 | `database` | Target database name          |
+
+!!! info
+    Contact the DataOS Administrator or Operator to obtain configured Depot UDL and other required parameters.
+
 
 ## Sink Configuration
 

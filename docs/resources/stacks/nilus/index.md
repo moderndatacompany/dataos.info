@@ -36,7 +36,7 @@ Nilus is designed as a lightweight, extensible, and API-centric ingestion framew
 
     Custom data source connectors can be defined in Python and deployed rapidly. Most new connectors can be developed, tested, and onboarded within one week, enabling teams to respond quickly to changing ingestion requirements.
 
-- **Unified Support for Batch and Streaming**
+- **Unified Support for Batch and CDC**
 
     Nilus supports both scheduled batch jobs and real-time data ingestion using change data capture (CDC) patterns, including Write-Ahead Logging (WAL)-based techniques. This dual-mode support ensures compatibility with both periodic and event-driven ingestion use cases.
 
@@ -80,7 +80,7 @@ Nilus supports a variety of databases, warehouses, and lakehouses as both source
 !!! tip "Ingest Data from Any API"
     **Need to ingest data from REST APIs, GraphQL endpoints, or custom APIs?** Nilus makes it easy!
     
-    While Nilus includes built-in connectors for popular APIs like Google Analytics, Salesforce, and Stripe, you can ingest data from **any API** using our powerful [Custom Source](/resources/stacks/nilus/batch_sources/custom_source/) feature.
+    While Nilus includes built-in connectors for popular APIs like Google Analytics, Salesforce, and Stripe, you can ingest data from any API using our powerful [Custom Source](/resources/stacks/nilus/batch_sources/custom_source/) feature.
     
     **Common API Integration Use Cases:**
     
@@ -92,10 +92,10 @@ Nilus supports a variety of databases, warehouses, and lakehouses as both source
     
     **Key Benefits:**
     
-    * **Write simple Python code** to connect to any API endpoint
-    * **Automatic incremental loading** with state tracking
-    * **Built-in retry logic** and error handling
-    * **Flexible authentication** support (API keys, OAuth, custom headers)
-    * **Deploy in minutes** using Git repository integration
+    * Write simple Python code to connect to any API endpoint
+    * Automatic incremental loading with state tracking
+    * Built-in retry logic and error handling
+    * Flexible authentication support (API keys, OAuth, custom headers)
+    * Deploy in minutes using Git repository integration
     
     [**Get started with Custom Sources →**](/resources/stacks/nilus/batch_sources/custom_source/)
