@@ -28,7 +28,7 @@ The following are the required parameters:
 
 ### **Required Permissions**
 
-The following are the essential permissions:&#x20;
+The following are the essential permissions:
 
 * Database-level **CONNECT** and **USAGE**
 * Schema-level **SELECT**
@@ -81,7 +81,7 @@ If the Depot is not created, use the following manifest configuration template t
 
     !!! info
         * **Question:** What is the server name for synapse-test-batch?\
-        **Answer:** The server name is defined by Starbust as `yourserver-ondemand.sql.azuresynapse.net`&#x20;
+        **Answer:** The server name is defined by Starbust as `yourserver-ondemand.sql.azuresynapse.net`
         * Update variables such as `name`, `owner`, `compute`, `layer`,`host`, `port`, `database` etc., and contact the DataOS Administrator or Operator to obtain the appropriate secret name.
 
 

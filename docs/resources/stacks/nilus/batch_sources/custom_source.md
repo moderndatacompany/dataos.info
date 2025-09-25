@@ -51,7 +51,7 @@ class MyCustomSource(CustomSource):
 ```
 
 * `handles_incrementality()`: Returns `True` If
-* &#x20;The connector supports incremental loading.
+* The connector supports incremental loading.
 * `nilus_source()`: Defines the entry point Nilus will invoke during execution.
 
 

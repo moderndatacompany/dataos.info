@@ -8,6 +8,10 @@ Before enabling CDC, ensure the following configurations depending on your hosti
 
 ### **PostgreSQL Configuration**
 
+!!! info
+    Contact the Database Administrator (DBA) to set up Change Data Capture (CDC) for PostgreSQL.
+
+
 - **Azure-hosted PostgreSQL :** Set `wal_level` to `logical` to enable logical replication.
 
     ```sql
@@ -53,7 +57,7 @@ WHERE rolname = 'username';
     ALTER ROLE <username> WITH LOGIN REPLICATION;
     ```
 
-- Or create a new user:&#x20;
+- Or create a new user:
 
     ```sql
     CREATE ROLE <username> WITH LOGIN REPLICATION PASSWORD '<password>';
@@ -153,7 +157,7 @@ service:                                                   # Service specificati
       options:                                             # Sink-specific options
          dest-table: pgdb_test_004                         # Destination table name in sink
         incremental-strategy: append                       # Append mode for CDC write strategy
-        aws_region: us-west-2                              # AWS region for S3-backed DataOS Lakehouse
+
 
 ```
 
@@ -206,7 +210,7 @@ Nilus supports the following sink options for PostgreSQL CDC workflows:
 | ---------------------- | ---------------------------------------------- | -------- |
 | `dest-table`           | Target table in the sink.                      | —        |
 | `incremental-strategy` | Write mode (`append` recommended for CDC).     | `append` |
-| `aws_region`           | AWS region (required for S3-backed Lakehouse). | —        |
+
 
 ## Core Concepts
 

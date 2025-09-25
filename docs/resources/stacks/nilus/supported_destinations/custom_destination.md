@@ -1,6 +1,6 @@
 # Custom Destination
 
-Nilus includes different [Supported Destination](/resources/stacks/nilus/supported_destinations/), but you can also push data to **any target system** by implementing a **Custom Destination**.
+Nilus includes different [Supported Destination](/resources/stacks/nilus/supported_destinations/), but you can also push data to any target system by implementing a Custom Destination.
 
 Custom destinations let you:
 

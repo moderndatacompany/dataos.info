@@ -1,6 +1,6 @@
 # BigQuery
 
-BigQuery is Google Cloud’s fully managed, serverless cloud data warehouse. The **Nilus connector** supports BigQuery as a **destination** for both **Change Data Capture (CDC)** and **Batch** data movement, enabling real-time streaming–style upserts or scheduled bulk loads.
+BigQuery is Google Cloud’s fully managed, serverless cloud data warehouse. The Nilus connector supports BigQuery as a destination for both Change Data Capture (CDC) and Batch data movement, enabling real-time streaming–style upserts or scheduled bulk loads.
 
 Nilus connects to BigQuery either via a direct connection URI or through DataOS Depot, which centralizes authentication, credentials, and connection details.
 
@@ -27,8 +27,8 @@ The service account used for BigQuery connections must have the following roles:
 | `location`           | Dataset location (default: `US`)                      |
 
 !!! info
-    Prefer granting `jobUser` at **project** scope and `dataEditor` at **dataset** scope to keep privileges tight while allowing loads to run.
-
+    - Prefer granting `jobUser` at **project** scope and `dataEditor` at **dataset** scope to keep privileges tight while allowing loads to run.
+    - Contact the DataOS Administrator or Operator to obtain configured Depot UDL and other required parameters.
 
 ## Sink Configuration
 
