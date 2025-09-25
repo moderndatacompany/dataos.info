@@ -1,7 +1,7 @@
 # Retrieve insights from the Semantic Model
 This section provides the steps to retrieve insights from the Semantic Model using Python as a Stack.
 
-## Pre-requisites
+## Prerequisites
 
 Ensure you have met the requirements listed [in this section.](/resources/stacks/python/#pre-requisites) 
 
