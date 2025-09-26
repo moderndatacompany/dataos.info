@@ -150,7 +150,7 @@ Follow the steps below to create a use case for accessing a Python application u
     
     This code defines two distinct use cases for an application hosted at `st_auth` ingress path configured in the Python Service manifest file:
     
-    - `read-st-auth`: Provides read-only access. confi
+    - `read-st-auth`: Provides read-only access. 
     - `manage-st-auth`: Provides full read/write/delete access.
 
     === "Read"
@@ -288,7 +288,7 @@ def layout():
     ])
 ```
 
-**4. Configure Environment Variables**
+**4. Configure environment variables**
 
 Add the Heimdall base URL to the Python Service manifest file (e.g., `deployment.yaml`):
 
@@ -298,7 +298,7 @@ envs:
   HEIMDALL_BASE_URL: "https://${{dataos-fqdn}}$/heimdall"
 ```
 
-**5. Ensure Path Matching**
+**5. Ensure path matching**
 
 Make sure the path in the use-case YAML matches the path used in the code and the ingress path defined in the Python Service manifest.
 
