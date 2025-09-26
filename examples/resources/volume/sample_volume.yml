@@ -1,0 +1,19 @@
+# volumetest:v1beta:volume
+## RESOURCE META SECTION
+version: v1beta
+name: volumetest
+type: volume
+tags:
+  - example
+  - manifest
+description: example resource manifest
+owner: iamgroot
+layer: user
+
+#VOLUME-SPECIFIC SECTION 
+
+volume:
+   size: 1Gi  #100Gi, 50Mi, 10Ti, 500Mi
+   accessMode: ReadWriteMany #ReadWriteOnce, ReadOnlyMany 
+   type: temp
+

@@ -1,0 +1,36 @@
+version: v1
+name: mongodb-read-01
+type: workflow
+workflow:
+  dag:
+    - name: mongodb-read-01
+      spec:
+        stack: flare:7.0
+        compute: runnable-default
+        stackSpec:
+          job:
+            explain: true
+            logLevel: INFO
+            inputs:
+              - name: input
+                dataset: dataos://sanitymongodb:tmdc/write_mongodb_12
+                format: mongodb
+                connectionProps:
+                  ssl: "true"
+                  retryReads: "true"
+
+            steps:
+              - sequence:
+                  - name: finalDf
+                    sql: SELECT * FROM input limit 10
+
+            outputs:
+              - name: finalDf
+                dataset: dataos://lakehouse:smoketest/read_mongodb_12?acl=rw
+                format: Iceberg
+                options:
+                  saveMode: append
+                  iceberg:
+                    properties:
+                      write.format.default: parquet
+                      write.metadata.compression-codec: none
