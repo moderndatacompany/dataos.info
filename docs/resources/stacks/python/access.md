@@ -150,7 +150,7 @@ Follow the steps below to create a use case for accessing a Python application u
     
     This code defines two distinct use cases for an application hosted at `st_auth` ingress path configured in the Python Service manifest file:
     
-    - `read-st-auth`: Provides read-only access. confi
+    - `read-st-auth`: Provides read-only access. 
     - `manage-st-auth`: Provides full read/write/delete access.
 
     === "Read"
