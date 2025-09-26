@@ -30,7 +30,7 @@ python-stack/
 
 ### **Step 3. Add the Python code and dependencies**
 
-In the file with the .py extension, add your Python script. In requirements.txt, add the requirements to run that Python script. 
+In the file with the `.py` extension, add your Python script. In `requirements.txt`, add the requirements to run that Python script. 
 
 **Example:**
 

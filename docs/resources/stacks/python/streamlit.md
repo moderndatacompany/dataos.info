@@ -113,8 +113,8 @@ git push -u origin main
 
 If the app code is in a private Git repository, credentials must be secured in DataOS using secrets. These secrets are referred to during repository sync:
 
-- **GitHub:** Create a Personal Access Token (PAT), then store it in DataOS as a secret. [Guide](https://dataos.info/resources/instance_secret/repositories/git/) | [GitHub PAT docs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic)
-- **Bitbucket:** Generate an App Password (API token) with repo permissions, then store it in DataOS as a secret. [Guide](https://dataos.info/resources/instance_secret/repositories/bitbucket/) | [Bitbucket docs](https://support.atlassian.com/bitbucket-cloud/docs/create-an-api-token/)
+- **GitHub:** Create a Personal Access Token (PAT), then store it in DataOS as a secret. [Guide](/resources/instance_secret/repositories/git/) | [GitHub PAT docs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic)
+- **Bitbucket:** Generate an App Password (API token) with repo permissions, then store it in DataOS as a secret. [Guide](/resources/instance_secret/repositories/bitbucket/) | [Bitbucket docs](https://support.atlassian.com/bitbucket-cloud/docs/create-an-api-token/)
 
 ## Step 6. Create a Python Service manifest file
 
