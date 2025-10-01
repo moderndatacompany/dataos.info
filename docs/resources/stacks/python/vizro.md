@@ -262,7 +262,6 @@ dataos-ctl resource log -t service -w public -n ${{service-identifier}}
     
     Dash is running on http://0.0.0.0:8050/test_sample/
     
-     * Serving Flask app 'main'
      * Debug mode: off
     INFO:werkzeug:WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
      * Running on all addresses (0.0.0.0)
@@ -295,7 +294,7 @@ dataos-ctl resource log -t service -w public -n ${{service-identifier}}
     INFO:werkzeug:10.213.1.236 - - [11/Sep/2025 09:09:19] "GET /test_sample/_dash-component-suites/vizro/static/js/actions/build_action_loop_callbacks.v0_1_44m1757581727.js HTTP/1.1" 200 -
     INFO:werkzeug:10.213.1.236 - - [11/Sep/2025 09:09:19] "GET /test_sample/_dash-component-suites/dash/deps/prop-types@15.v3_2_0m1757581726.8.1.min.js HTTP/1.1" 200 -
     INFO:werkzeug:10.213.1.236 - - [11/Sep/2025 09:09:19] "GET /test_sample/_dash-component-suites/vizro/static/js/models/checklist.v0_1_44m1757581727.js HTTP/1.1" 200 -
-    INFO:werkzeug:10.213.1.236 - - [11/Sep/2025 09:09:19] "GET /test_sample/_dash-component-suites/vizro/static/js/models/dropdown.v0_1_44m1757581727.js HTTP/1.1" 200 -
+    INFO:werkzeug:10.213.1.236 - - [11/Sep/2025 09:09:19] "GET /test_sample/_dash-component-suites/vizro/static/js/models/dropdown.v0_1_44m1757581727.js HTTP/1.1" 200  -
     INFO:werkzeug:10.213.1.236 - - [11/Sep/2025 09:09:19] "GET /test_sample/_dash-component-suites/vizro/static/js/models/container.v0_1_44m1757581727.js HTTP/1.1" 200 -
     INFO:werkzeug:10.213.1.236 - - [11/Sep/2025 09:09:19] "GET /test_sample/_dash-component-suites/vizro/static/js/models/dashboard.v0_1_44m1757581727.js HTTP/1.1" 200 -
     INFO:werkzeug:10.213.1.236 - - [11/Sep/2025 09:09:19] "GET /test_sample/_dash-component-suites/dash_ag_grid/dash_ag_grid.v32_3_1m1757581727.min.js HTTP/1.1" 200 -
