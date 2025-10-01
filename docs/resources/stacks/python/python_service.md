@@ -109,10 +109,10 @@ Create a Python Service manifest file using the template given below.
         memory: 1536Mi
     stackSpec:
       repo:
-      baseDir: python-stack/app/
-      syncFlags:
-        - '--ref=main'
-      url: https://github.com/python-stack/
+        baseDir: python-stack/app/
+        syncFlags:
+          - '--ref=main'
+        url: https://github.com/python-stack/
     ```
 
 To get more details on each attribute of the Python Service manifest file, please refer [to this link.](/resources/stacks/python/configurations/)
