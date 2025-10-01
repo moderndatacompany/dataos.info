@@ -67,10 +67,10 @@ Create a Python Service manifest file using the template given below.
         memory: 1536Mi
     stackSpec:
       repo:
-      baseDir: ${{path-to-base-directory}}
-      syncFlags:
-        - '--ref=${{branch}}'
-      url: ${{git-repo-url}}
+        baseDir: ${{path-to-base-directory}}
+        syncFlags:
+          - '--ref=${{branch}}'
+        url: ${{git-repo-url}}
     ```
 
 === "Example"
