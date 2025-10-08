@@ -129,8 +129,8 @@ Once the Flash Stack is available, follow these steps to create a Flash Service:
     service:
       servicePort: 8080
       servicePorts:
-      - name: backup
-        servicePort: 5433
+        - name: backup
+          servicePort: 5433
       ingress:
         enabled: true
         stripPath: false
