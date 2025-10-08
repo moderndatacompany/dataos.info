@@ -48,29 +48,29 @@ Create a Python Service manifest file using the template given below.
     owner: ${{user-id}}
     workspace: ${{workspace-name}}
     service:
-    servicePort: 8050
-    ingress:
-      enabled: true
-      path: ${{/endpoint}}
-      noAuthentication: ${{true/false}}
-    replicas: 1
-    stack: python3:1.0
-    logLevel: INFO
-    dataosSecrets:
-      - name: ${{instance-secret-identifier}}
-        allKeys: true
-        consumptionType: envVars
-    compute: ${{runnable-default}}
-    resources:
-      requests:
-        cpu: 1000m
-        memory: 1536Mi
-    stackSpec:
-      repo:
-        baseDir: ${{path-to-base-directory}}
-        syncFlags:
-          - '--ref=${{branch}}'
-        url: ${{git-repo-url}}
+      servicePort: 8050
+      ingress:
+        enabled: true
+        path: ${{/endpoint}}
+        noAuthentication: ${{true/false}}
+      replicas: 1
+      stack: python3:1.0
+      logLevel: INFO
+      dataosSecrets:
+        - name: ${{instance-secret-identifier}}
+          allKeys: true
+          consumptionType: envVars
+      compute: ${{runnable-default}}
+      resources:
+        requests:
+          cpu: 1000m
+          memory: 1536Mi
+      stackSpec:
+        repo:
+          baseDir: ${{path-to-base-directory}}
+          syncFlags:
+            - '--ref=${{branch}}'
+          url: ${{git-repo-url}}
     ```
 
 === "Example"
@@ -112,7 +112,7 @@ Create a Python Service manifest file using the template given below.
         baseDir: python-stack/app/
         syncFlags:
           - '--ref=main'
-        url: https://github.com/python-stack/
+        url: https://github.com/iamgroot/python-stack/
     ```
 
 To get more details on each attribute of the Python Service manifest file, please refer [to this link.](/resources/stacks/python/configurations/)
