@@ -77,11 +77,10 @@ In [1]: import sys
 Python 3.6.3
 ```
 
-<aside class="best-practice">
+!!! tip "Best Practice"
 
-📖 <b>Best Practice:</b> It’s recommended to write <code>{sys.executable}</code> rather than plain <code>python</code> in order to ensure that commands are run in the Python installation matching the currently running Notebook (which may not be the same Python installation that the <code>python</code> command refers to).
+    It’s recommended to write `{sys.executable}` rather than plain `python` in order to ensure that commands are run in the Python installation matching the currently running notebook (which may not be the same Python installation that the `python` command refers to).
 
-</aside>
 
 **Ensure you have `pip` installed**
 
