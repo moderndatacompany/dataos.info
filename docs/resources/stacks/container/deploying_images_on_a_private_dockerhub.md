@@ -37,7 +37,7 @@ dataos-ctl apply -f ${path-to-secret-yaml} -w ${name of the workspace}
 
 ## Reference the secret within the Container YAML
 
-Specify the name of the secret and add it to the "secrets" attribute of the service section in the Container Service/ Workflow YAML file. This will mount the Dataos secret directory on each replica of your Service and/or Workflow in the directory specified by the environment variable
+Specify the name of the secret and add it to the "secrets" attribute of the service section in the Container Service/ Workflow YAML file. This will mount the DataOS secret directory on each replica of your Service and/or Workflow in the directory specified by the environment variable
 
 ```yaml
 name: example-container

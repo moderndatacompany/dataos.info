@@ -213,7 +213,7 @@ To validate the proper creation of the ABFSS Instance Secret in DataOS, use the 
     ```
 
 
-To get the list of all the Instance Secret within the Dataos environment execute the following command.
+To get the list of all the Instance Secret within the DataOS environment execute the following command.
 
 === "Command"
 

@@ -18,6 +18,10 @@ When deploying an application using Container Stack, the containerized image con
 
 ## Getting Started with Container Stack
 
+!!! warning
+
+     DataOS only host Docker images that have been built for the `amd64` architecture. Images built for `arm64` are not supported.
+
 ### **Deploying Images from a Public DockerHub Repository**
 
 To begin the journey with Container Stack, let’s take an image already available on the public DockerHub repository and run it atop DataOS through Container Stack. To know more, navigate to the link below:
