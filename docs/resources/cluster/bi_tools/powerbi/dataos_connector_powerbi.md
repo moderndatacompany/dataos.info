@@ -13,7 +13,7 @@ With the connector set up, users can start designing queries within Power BI. Wh
 
 End users have the capability to execute queries on any data source, provided a corresponding depot is established or a connector configuration is done for the data source to access it as a ‘catalog’ within the selected Minerva cluster. Additionally, it supports the execution of Lens queries within Power BI.
 
-The DataOs connector functions in alignment with existing data and access policies. Users can confidently explore and analyze data from DataOS within Power BI, adhering to access policy decisions and data governance through data policy decisions such as masking and filtering of data.
+The DataOS connector functions in alignment with existing data and access policies. Users can confidently explore and analyze data from DataOS within Power BI, adhering to access policy decisions and data governance through data policy decisions such as masking and filtering of data.
 
 ## Prerequisites
 
@@ -55,14 +55,6 @@ The following section contains further information about configuring this connec
         <figcaption>Connector installer</figcaption>
       </div>
     </center>
-
-    <center>
-      <div style="text-align: center;">
-        <img src="/resources/cluster/bi_tools/tableau/integration-tableau-visualization.png" alt="Tableau visualization" style="width: 40rem; border: 1px solid black;">
-        <figcaption>Tableau visualization</figcaption>
-      </div>
-    </center>
-
 
 2. Click the **Next** button to proceed.
 

@@ -103,9 +103,6 @@ To securely store Snowflake credentials, two Instance Secrets must be created fo
 
 - Read-write Instance Secret
 
-<aside class="callout">
-Make sure to keep these Instance Secret manifest files stored locally and avoid pushing them to the code repository.
-</aside>
 
 1. The following manifest files are provided as templates. Simply update them with your credentials and use them to create the corresponding instance secrets.
 

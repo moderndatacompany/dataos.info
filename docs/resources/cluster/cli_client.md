@@ -201,6 +201,7 @@ The following commands can be used to perform various operations:
 	Query 20220714_030421_00054_izefc, FINISHED, 2 nodes
 	Splits: 20 total, 20 done (100.00%)
 	0.64 [7 rows, 263B] [10 rows/s, 410B/s]
+    ```
 
 - Describe Table:
 
@@ -268,4 +269,6 @@ WHERE M.templatetypeltemplatecategory like '%Workplace' LIMIT 10
 --output-format CSV > result.csv
 ```
 
-> The `execute` option enables batch mode, allowing the query to automatically exit after execution.
+!!! info
+
+        The `execute` option enables batch mode, allowing the query to automatically exit after execution.
