@@ -26,6 +26,15 @@ Custom Sources allow the development of **user-defined connectors** while utiliz
     - This prevents duplication and avoids version conflicts.
 
     **Pre-Installed Packages:** See the [requirements.txt](/resources/stacks/nilus/requirments.txt), to know the installed packages or [Download](/resources/stacks/nilus/requirments.zip).   
+
+    **Nilus Core Library:** UPDATE EXISTING IMPORTS
+
+    ```yaml
+    import nilus                        # Import the main Nilus library for decorators and state management
+    from nilus import CustomSource      # Import the base class for creating custom sources
+    from nilus import current           # Import current for state tracking in incremental loads
+    from nilus.common import pendulum   # Optional: Import pendulum from nilus.common for advanced date filtering
+    ```
     
 
 

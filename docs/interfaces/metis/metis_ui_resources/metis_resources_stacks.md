@@ -115,7 +115,7 @@ The subsequent tabs will provide you with more detailed information, as explaine
 | Version | The specific version or release of the Resource |
 | Reconciler | Specifies the reconciler responsible for managing this stack |
 | SecretProjection.type | Describes how secrets are projected for this Stack |
-| Dataos Stack Version | Version of the Stack |
+| DataOS Stack Version | Version of the Stack |
 | Flavor | Specifies the configuration or type of the Stack Resource within the DataOS environment. |
 | State | The current state of the Resource |
 | Aggregate Status

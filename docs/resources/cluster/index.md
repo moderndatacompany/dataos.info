@@ -197,10 +197,10 @@ To create a Cluster Resource within DataOS, you have two options:
         name: minervacluster
         version: v1
         type: cluster
-        description: We are using this cluster to check the monitor and pager stuff with the help of themis cluster. 
+        description: We are using this cluster to check the monitor and pager stuff with the help of minerva cluster. 
         tags:
           - cluster
-          - themis
+          - minerva
 
         # Cluster-specific section
         cluster:
