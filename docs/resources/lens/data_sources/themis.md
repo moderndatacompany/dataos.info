@@ -234,7 +234,7 @@ The above manifest is intended for a cluster named `lenstestingthemis`, created 
 </aside>
 
 
-## Step 4: Apply the Lens manifest file
+## Apply the Lens manifest file
 
 After configuring the deployment file with the necessary settings and specifications, apply the manifest using the following command:
 

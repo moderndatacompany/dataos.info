@@ -1,5 +1,7 @@
 ---
-description: Nilus Stack enables effortless, real-time, and scalable data ingestion.
+title: Nilus Stack
+search:
+  boost: 4
 ---
 
 # Nilus Stack

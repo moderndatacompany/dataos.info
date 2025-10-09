@@ -16,7 +16,7 @@ Follow the below steps:
 
 [Depots](/resources/depot/) are used to connect to metadata sources to extract entities' metadata. Users must provide the Depot name or address to establish a connection and scan all datasets from the data source referenced by the Depot.
 
-## **Source Data in Snowflake**
+## Source Data in Snowflake
 
 For illustration purposes, the Snowflake data source will be connected.
 

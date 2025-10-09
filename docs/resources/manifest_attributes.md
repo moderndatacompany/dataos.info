@@ -133,7 +133,8 @@ layer: user
 
 ### **`<resource-type>`**
 
-**Description:** Specifies attributes specific to a \<resource-type\> <br>
+**Description:** Specifies attributes specific to a `<resource-type>` 
+
 
 | **Data Type**    | **Requirement** | **Default Value** | **Possible Value** |
 |------------------|-----------------|-------------------|-------------------|
@@ -155,14 +156,26 @@ workflow:
 The table below summarizes how the values for `version`, `type` & `layer` are declared for different types of Resources.
 
 
-| Resource | version | type | layer | Resource-type |
-| --- | --- | --- | --- | --- |
-| Cluster | v1 | cluster | not required | cluster |
-| Compute | v1beta | compute | system | compute |
-| Depot | v1 | depot | user | depot |
-| Policy | v1 | policy | user/system | policy |
-| Secret | v1 | secret | not required | secret |
-| Service | v1 | service | not required | service |
-| Stack | NA | NA | NA | stack |
-| Workflow | v1 | workflow | not required | workflow |
+| Resource         | Version     | Type          | Layer      |
+|------------------|-------------|---------------|------------|
+| Cluster          | v1          | cluster       | optional   |
+| Compute          | v1beta      | compute       | system     |
+| Depot            | v1, v2alpha | depot         | user{default} |
+| Policy           | v1          | policy        | user/system |
+| Secret           | v1          | secret        | optional   |
+| Service          | v1          | service       | optional   |
+| Stack            | N/A         | stack         | optional   |
+| Workflow         | v1          | workflow      | optional   |
+| Database         | v1          | database      | optional   |
+| Lakehouse        | v1alpha     | lakehouse     | optional   |
+| Lens             | v1alpha     | lens          | optional   |
+| Monitor          | v1alpha     | monitor       | optional   |
+| Pager            | v1alpha     | pager         | optional   |
+| Resource         | v1beta      | resource      | optional   |
+| Volume           | v1beta      | volume        | optional   |
+| Worker           | v1beta      | worker        | optional   |
+| Bundle           | v1beta      | bundle        | optional   |
+| Grant            | v1alpha     | grant         | optional   |
+| Instance-secret  | v1          | instance-secret | optional |
+| Operator         | v1alpha     | operator      | optional   |
 

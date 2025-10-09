@@ -183,7 +183,7 @@ To validate the proper creation of the Instance Secret in DataOS, use the `get` 
     ```
 
 
-To get the list of all the Instance Secrets within the Dataos environment execute the following command.
+To get the list of all the Instance Secrets within the DataOS environment execute the following command.
 
 
 === "Command"
