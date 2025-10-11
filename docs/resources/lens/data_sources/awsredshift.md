@@ -87,7 +87,7 @@ model
 ```
 
 
-### **Load data from the data source**
+### **Step 2.1: Load data from the data source**
 
 In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure that only the necessary columns are extracted, and the SQL dialect is specific to the data source.
 
@@ -118,7 +118,7 @@ SELECT
 FROM
   "onelakehouse"."retail".customer;
 ```
-### **Define the table in the model**
+### **Step 2.2: Define the table in the model**
 
 Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For example, to define a table for `sales `data:
 
@@ -129,7 +129,7 @@ table:
     description: Table containing information about sales transactions.
 ```
 
-### **Add dimensions and measures**
+### **Step 2.3: Add dimensions and measures**
 
 After defining the base table, add the necessary dimensions and measures. For example, to create a table for sales data with measures and dimensions, the YAML definition could look as follows:
 
@@ -154,7 +154,7 @@ tables:
         description: Total number of orders.
 ```
 
-### **Add segments to filter**
+### **Step 2.4: Add segments to filter**
 
 Segments are filters that allow for the application of specific conditions to refine the data analysis. By defining segments, you can focus on particular subsets of data, ensuring that only the relevant records are included in your analysis. For example, to filter for records where the state is either Illinois or Ohio, you can define a segment as follows:
 
@@ -166,7 +166,7 @@ segments:
 
 To know more about segments click [here](/resources/lens/segments/).
 
-### **Create the views**
+### **Step 2.5: Create the views**
 
 Create a **views** folder to store all logical views, with each view defined in a separate YAML file (e.g., `sample_view.yml`). Each view references dimensions, measures, and segments from multiple logical tables. For instance the following`customer_churn` view is created.
 
@@ -187,7 +187,7 @@ views:
 
 To know more about the views click [here](/resources/lens/views/).
 
-### **Create user groups**
+### **Step 2.6: Create user groups**
 
 This YAML manifest file is used to manage access levels for the semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, there is a 'default' user group in the YAML file that includes all users.
 
@@ -284,7 +284,7 @@ After configuring the deployment file with the necessary settings and specificat
 
 Once the Lens Resource is applied and all configurations are correctly set up, the Lens model will be deployed. Upon deployment, a Lens Service is created in the backend, which may take some time to initialize.
 
-To verify whether the Lens Service is running, execute the following command. The Service name follows the pattern: **`<lens-name>-api`**
+To v**erify whether the Lens Service is running, execute the following command. The Service name follows the pattern: `<lens-name>-api`**
 
 Ensure Service is active and running before proceeding to the next steps.
 
@@ -310,7 +310,7 @@ INFO[0002] 🔍 get...complete
 > Note: Ensure the user has AWS console access before proceeding.
 > 
 
-### **1. Log in to AWS Console and access Redshift**
+### Step 2. :**1. Log in to AWS Console and access Redshift**
 
   a. Login to the AWS Console.<br>
   b. Search for 'Redshift' in the AWS Console search bar.
@@ -319,7 +319,7 @@ INFO[0002] 🔍 get...complete
     <img src="/resources/lens/data_sources/awsredshift/Untitled1.png" alt="Untitled" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-### **2. Select Redshift Cluster**
+### Step 2. :**2. Select Redshift Cluster**
 
   a. Click on 'Amazon Redshift' from the search results.You will be directed to the Redshift dashboard.<br>
   b. Select the appropriate region and choose the desired cluster name from the list.
@@ -328,7 +328,7 @@ INFO[0002] 🔍 get...complete
     <img src="/resources/lens/data_sources/awsredshift/Untitled2.png" alt="Untitled" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-### **3. Access Query Monitoring**
+### Step 2. :**3. Access Query Monitoring**
 
   a. Select the cluster you want to monitor.<br>
   b. Navigate to the 'Query monitoring' tab to view query statistics.
@@ -337,7 +337,7 @@ INFO[0002] 🔍 get...complete
     <img src="/resources/lens/data_sources/awsredshift/Untitled3.png" alt="Untitled" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-### **4. View running and completed queries**
+### Step 2. :**4. View running and completed queries**
 
   a. In the 'Query monitoring' tab, you will see a list of running  and completed queries.
 
@@ -345,7 +345,7 @@ INFO[0002] 🔍 get...complete
     <img src="/resources/lens/data_sources/awsredshift/Untitled4.png" alt="Untitled" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-### **5. Monitor specific query**
+### Step 2. :**5. Monitor specific query**
 
   a. Click on the query you want to monitor.
   b. View the query statistics, as shown in the example below.

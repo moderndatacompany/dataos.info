@@ -8,7 +8,7 @@ Additionally, this governance extends to the Lens Studio Interface, where access
 
 Follow these steps to create and manage user groups:
 
-### **Step 1** Create a `user_groups.yml` file in your model folder.
+### Create a `user_groups.yml` file in your model folder.
 
 ```latex
 model/
@@ -21,7 +21,7 @@ model/
 └── user_groups.yml
 ```
 
-### **Step 2**  Define user groups using the following format:
+### Define user groups using the following format:
 
 ```yaml
 user_groups: # List of user groups
@@ -95,7 +95,7 @@ You can mask data on a table's dimension using the `secure` property in the meta
 - **Redact**: Replaces the value with the string `redact`.
 - **md5**: Hashes the value using the MD5 algorithm.
 
-#### **Step 1 Define the data masking function** 
+#### **Define the data masking function** 
 
 - Include the masking function in the `meta` section of your dimension definition. Here we have masked the gender column for the  specific group `dataconsumer` but the same column is not redacted for the users in the default group. That means everybody can see the row values of gender column except for the users in `dataconsumer` group.
 
@@ -114,7 +114,7 @@ You can mask data on a table's dimension using the `secure` property in the meta
             - default
   ```
 
-#### **Step 2: Configure user group policies**
+#### **Configure user group policies**
 
 - You can configure user group policies to control access:
 
@@ -150,7 +150,7 @@ You can mask data on a table's dimension using the `secure` property in the meta
 
 You can apply a row filter policy to show specific data based on user groups.
 
-#### **Step 1: Define the row filter policy**
+#### **Define the row filter policy**
 
 - Add the filter policy to the `segments` section of your table definition:
 
