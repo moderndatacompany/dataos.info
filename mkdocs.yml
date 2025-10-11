@@ -282,9 +282,9 @@ nav:
           - Integration: 
             - resources/cluster/bi_tools/index.md
             - Power BI: 
-              - resources/cluster/bi_tools/powerbi/index.md
-              - Using Connector: resources/cluster/bi_tools/powerbi/dataos_connector_powerbi.md
-              - Using ODBC Driver: resources/cluster/bi_tools/powerbi/using_odbc_driver.md
+              - resources/cluster/bi_tools/powerbi/using_odbc_driver/index.md
+              # - Using Connector: resources/cluster/bi_tools/powerbi/dataos_connector_powerbi.md
+              # - Using ODBC Driver: resources/cluster/bi_tools/powerbi/using_odbc_driver.md
             - Tableau: resources/cluster/bi_tools/tableau/index.md
             - IBM SPSS: resources/cluster/bi_tools/spss/index.md
             - CLI Client: resources/cluster/cli_client.md

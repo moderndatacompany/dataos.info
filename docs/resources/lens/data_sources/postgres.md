@@ -93,7 +93,7 @@ model
 ```
 
 
-### **Load data from the data source**
+### **Step 2.1: Load data from the data source**
 
 In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure that only the necessary columns are extracted, and the SQL dialect is specific to the data source.
 
@@ -125,7 +125,7 @@ FROM
   "onelakehouse"."retail".customer; #catalog_name
 ```
 
-### **Define the table in the Model**
+### **Step 2.2: Define the table in the Model**
 
 Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For example, to define a table for `sales `data:
 
@@ -136,7 +136,7 @@ table:
     description: Table containing information about sales transactions.
 ```
 
-#### **Add dimensions and measures**
+#### **Step 2.2.1: Add dimensions and measures**
 
 After defining the base table, add the necessary dimensions and measures. For example, to create a table for sales data with measures and dimensions, the YAML definition could look as follows:
 
@@ -161,7 +161,7 @@ tables:
         description: Total number of orders.
 ```
 
-#### **Add segments to filter**
+#### **Step 2.2.2: Add segments to filter**
 
 Segments are filters that allow for the application of specific conditions to refine the data analysis. By defining segments, you can focus on particular subsets of data, ensuring that only the relevant records are included in your analysis. For example, to filter for records where the state is either Illinois or Ohio, you can define a segment as follows:
 
@@ -174,7 +174,7 @@ segments:
 To know more about segments click [here](/resources/lens/segments/).
 
 
-### **Create views**
+### **Step 2.3: Create views**
 
 Create a `views` folder to store all logical views, with each view defined in a separate YAML file (e.g., `sample_view.yml`). Each view references dimensions, measures, and segments from multiple logical tables. For instance the following`customer_churn` view is created.
 
@@ -196,7 +196,7 @@ views:
 To know more about the views click [here](/resources/lens/views/).
 
 
-### **Create User groups**
+### **Step 2.4: Create User groups**
 
 This YAML manifest file is used to manage access levels for the semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, there is a 'default' user group in the YAML file that includes all users.
 
@@ -293,7 +293,7 @@ After configuring the deployment file with the necessary settings and specificat
 
 Once the Lens Resource is applied and all configurations are correctly set up, the Lens model will be deployed. Upon deployment, a Lens Service is created in the backend, which may take some time to initialize.
 
-To verify whether the Lens Service is running, execute the following command. The Service name follows the pattern: **`<lens-name>-api`**
+To v**erify whether the Lens Service is running, execute the following command. The Service name follows the pattern: `<lens-name>-api`**
 
 Ensure Service is active and running before proceeding to the next steps.
 
