@@ -5,22 +5,28 @@ search:
 
 # DataOS Integration with Power BI Using ODBC Driver
 
-This article will help you to set up the connection between DataOS and Power BI. It provides specific steps needed to fetch data from DataOS into Power BI using Simba Presto ODBC driver.
+This guide walks you through the process of connecting DataOS with Power BI using the Simba Presto ODBC Driver. By following these steps, you’ll be able to query and visualize data from your DataOS environment directly within Power BI.
+
+
+!!! warning "Note"
+    The connection between the Minerva (Trino) engine and Power BI requires the Simba Presto ODBC Driver. This driver must be obtained separately from the third-party vendor and does not come with DataOS.
+
+    Follow the link for licensing details and download instructions before proceeding. [Simba Presto Drivers for ODBC and JDBC Connectivity](https://insightsoftware.com/drivers/presto-odbc-jdbc/)
 
 ## Requirements
 
-- Power BI Desktop installed on your system - If Power BI is not installed on your system, you can download the latest version from the [Power BI website](https://powerbi.microsoft.com/en-us/downloads/).
-- Simba Presto ODBC Driver - In order to connect to DataOS Catalog, you would have to install this Presto driver.
-- DataOS API token - To authenticate and access DataOS, you will need API token.
+- **Power BI Desktop** installed on your system - If Power BI is not installed on your system, you can download the latest version from the [Power BI website](https://powerbi.microsoft.com/en-us/downloads/).
+- **Simba Presto ODBC Driver** - In order to connect to DataOS Catalog, you would have to install Simba Presto driver.
+- **DataOS API token** - To authenticate and access DataOS, you will need API token.
 
 ## Download and Install Presto Driver
 
-1.  Download it from [Presto ODBC & JDBC Drivers download page](https://www.magnitude.com/drivers/presto-odbc-jdbc).
+1.  Download it from [Presto ODBC & JDBC Drivers download page](https://insightsoftware.com/drivers/presto-odbc-jdbc/).
 
     <center>
       <div style="text-align: center;">
-        <img src="/resources/cluster/bi_tools/powerbi/using_odbc_driver/integration-presto-download.png" alt="Presto download" style="width: 40rem; border: 1px solid black;">
-        <figcaption>Presto download</figcaption>
+        <img src="/resources/cluster/bi_tools/powerbi/using_odbc_driver/simba-presto-driver.png" alt="Simba Presto Drivers for ODBC Connectivity" style="width: 40rem; border: 1px solid black;">
+        <figcaption>Simba Presto Drivers for ODBC Connectivity</figcaption>
       </div>
     </center>
 
@@ -66,7 +72,8 @@ This article will help you to set up the connection between DataOS and Power BI.
 
     
 
-> 📌 Note: Contact your network administrator in case you encounter an error due to not having required admin privileges.
+!!! Info "Note" 
+    Contact your network administrator in case you encounter an error due to not having required admin privileges.
 
 ## Generate DataOS API Token
 
@@ -175,9 +182,10 @@ To use the Simba Presto ODBC Driver in Power BI application, you need to configu
       </div>
     </center>
 
-7.Click OK to save your DSN.
+7. Click OK to save your DSN.
 
-> 📌 Note: If you encounter any error in setting up the connection, please check DataOS url, validity of API key and try again or contact your administrator.
+!!! Info "Note" 
+    If you encounter any error in setting up the connection, please check DataOS url, validity of API key and try again or contact your administrator.
 
 ## Access DataOS on Power BI
 
