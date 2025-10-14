@@ -486,3 +486,9 @@ List all Low Risk customers sorted by `customer_id`.
 ![image](/learn/dp_consumer_learn_track/integrate_lakesearch/sort.png)
     
 
+## Next step
+
+If you want to expose the Data Product via Data API, refer to the next topic.
+
+👉 [Integration with Data API](/learn/dp_consumer_learn_track/integrate_api/)
+

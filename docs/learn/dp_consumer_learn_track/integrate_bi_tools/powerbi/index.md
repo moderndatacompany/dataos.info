@@ -65,10 +65,9 @@ To publish the created report to the Power BI service account for sharing and co
 
 In the PowerBI, click 'Publish'. This action will push the report to your online Power BI service account, making it available for access in the Power BI workspace. Choose the required workspace.
 
-<aside class="callout">
-💡 This step requires a valid Power BI service account, as the report will be published to the online service.
+!!! info
+    This step requires a valid Power BI service account, as the report will be published to the online service.
 
-</aside>
 
 ![powerbi_publish.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_publish.png)
 
@@ -113,10 +112,10 @@ After successfully connecting, you will be able to access the dashboard.
 ![powerbi_chart.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_chart.png)
 
 
-<aside class="callout">
-🗣️ Power BI also provides the functionality to interact with the downloaded file in Excel.
+!!! info 
+    Power BI also provides the functionality to interact with the downloaded file in Excel.
 
-</aside> 
+
 
 ## Supported data types
 
