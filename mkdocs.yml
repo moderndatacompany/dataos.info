@@ -783,10 +783,11 @@ nav:
                 - Lakehouse: resources/stacks/scanner/supported_sources/data_sources/lakehouse.md
                 - MariaDB: resources/stacks/scanner/supported_sources/data_sources/maria_db.md
                 - MSSQL: resources/stacks/scanner/supported_sources/data_sources/mssql.md
+                - MongoDB: resources/stacks/scanner/supported_sources/data_sources/mongodb.md
                 - MySQL: resources/stacks/scanner/supported_sources/data_sources/mysql.md
                 - Oracle: resources/stacks/scanner/supported_sources/data_sources/oracle.md
                 - PostgreSQL: resources/stacks/scanner/supported_sources/data_sources/postgresql.md 
-                - Pulsar: resources/stacks/scanner/supported_sources/data_sources/pulsar.md
+                # - Pulsar: resources/stacks/scanner/supported_sources/data_sources/pulsar.md
                 - Redshift: resources/stacks/scanner/supported_sources/data_sources/redshift.md
                 - Snowflake: resources/stacks/scanner/supported_sources/data_sources/snowflake.md
               - System Sources: 
@@ -921,10 +922,19 @@ nav:
           - Explore semantic model: 
             - learn/dp_consumer_learn_track/explore_sm/index.md
             - API integration: learn/dp_consumer_learn_track/explore_sm/api_integration/index.md
-          - Underastand quality: learn/dp_consumer_learn_track/dp_quality/index.md
-          - Connnect Data Products with BI tools and applications:
+          - Understand quality: learn/dp_consumer_learn_track/dp_quality/index.md
+          - Connect Data Products with BI tools and applications:
             - Integration with BI tools:
               - learn/dp_consumer_learn_track/integrate_bi_tools/index.md
+              - Tableau Cloud: learn/dp_consumer_learn_track/integrate_bi_tools/tab_cloud/index.md
+              - Tableau Desktop: learn/dp_consumer_learn_track/integrate_bi_tools/tab_desktop/index.md
+              - Superset: learn/dp_consumer_learn_track/integrate_bi_tools/superset/index.md
+              - Power BI: learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/index.md
+              - Power BI Service: learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/powerbi_service.md
+
+
+
+
             - Integration with AI/ML:
               - learn/dp_consumer_learn_track/integrate_aiml/index.md
             - Integration with Postgres:
