@@ -107,4 +107,5 @@ Follow these steps to start training your machine learning model using the Data 
 ## Next step
 
 You may want to consume the Data Product via Postgres, then follow the next module:
+
 👉 [Integration with Postgres](/learn/dp_consumer_learn_track/integrate_postgres/)

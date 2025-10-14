@@ -39,35 +39,23 @@ To scan metadata from a Redshift data source, prerequisites are as follows:
     
     * **Read All Secrets from Heimdall**
     
-    To validate assigned use cases, refer to the **Bifrost Application Use Cases** section.
+    To validate assigned use cases Contact DataOS Operator, and to know more refer to the **Bifrost Application Use Cases** section.
 
 5. Pre-created Redshift Depot. To check the Depot go to the Metis UI of the DataOS or use the following command:
     
     ```bash
     dataos-ctl get -t depot -a
-    ```
 
-    ```bash
-    #expected output
+
+    # Expected output
     
     INFO[0000] 🔍 get...
     INFO[0000] 🔍 get...complete
     
     | NAME             | VERSION | TYPE  | WORKSPACE | STATUS | RUNTIME | OWNER      |
     | ---------------- | ------- | ----- | --------- | ------ | ------- | ---------- |
-    | mongodepot       | v2alpha | depot |           | active |         | usertest   |
-    | snowflakedepot   | v2alpha | depot |           | active |         | gojo       |
-    | redshiftdepot    | v2alpha | depot |           | active |         | kira       |
-    | mysqldepot       | v2alpha | depot |           | active |         | ryuk       |
-    | oracle01         | v2alpha | depot |           | active |         | drdoom     |
-    | mariadb01        | v2alpha | depot |           | active |         | tonystark  |
-    | demopreppostgres | v2alpha | depot |           | active |         | slimshaddy |
-    | demoprepbq       | v2alpha | depot |           | active |         | pengvin    |
-    | mssql01          | v2alpha | depot |           | active |         | hulk       |
-    | kafka01          | v2alpha | depot |           | active |         | peeter     |
-    | lakehouse          | v2alpha | depot |           | active |         | blackpink  |
-    | azuresql         | v2alpha | depot |           | active |         | arnold     |
-    | fastbase         | v2alpha | depot |           | active |         | ddevil     |
+    | redshiftdepot    | v2alpha | depot |           | active |         | usertest   |
+
     ```
 
 - If the Redshift Depot is not created, create a Depot using the following Depot Template:
@@ -120,7 +108,7 @@ workflow:
         compute: runnable-default
         runAsUser: metis
         stackSpec:
-          depot: demoprepredshift
+          depot: redshiftdepot
           sourceConfig:
             config:
               markDeletedTables: false
