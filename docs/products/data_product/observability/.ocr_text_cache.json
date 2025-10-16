@@ -1,0 +1,786 @@
+{
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/._runnable_resources_static_resources_observability.png": {
+    "hash": "2acbba57855bcd413b85496efb3d6bba93fccdcaf4ce65d7506420c97311f247",
+    "text": " \n\nRunnable Resources\n\nStatic Resources\n\nObservability Data\n\nObservability Endpoints\n\nAlerting Endpoints\n\n \n\n \n\n \n\n \n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/._cluster_mosoneeee_mosoneeee.png": {
+    "hash": "c6ef352dab1299733c5d33992628b28e352d3344db445443a78756806301ae82",
+    "text": "Cluster\n\n \n\n      \n \n\n      \n \n\nMosoneeee Mosoneeee\n\n \n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/alerts/alerts_post_unknown_user_channel_testing.png": {
+    "hash": "7da613e1c4a302041a1c19fef5f62cab5e3d39e9cbe55a17a317ffa2815405b9",
+    "text": "Post by Unknown user\n\nGo to channel\ntesting\n\n& Unknown user 16/06 14:35\n\n \n\nDear Team,\nOur system detected an issue with the workflow and was unable to complete the process as expected.\nThe Following workflow is in pending state |tv-source-aligned-dataproduct-scanner\n\nFailure Time: 2025-06-16 09:05:00.844354696 +0000 UTC\n\nSeverity: high\n\nRun Details: Operation\n\nQ\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/alerts/alerts_notified_posts_files_notes_reply.png": {
+    "hash": "2277e34d5546d35a3af4bce8f146a0596f845c0ed96275dbdf77f5d8fe2b3864",
+    "text": "   \n\nB notified Posts Files Notes\n\n& Reply\n\n& Unknown user 26/02 23:16\n\n \n\nDear Team,\n\nOur system detected that your Service is deleted, if it is not you then take the action.\nThe following Lakesearch Service is deleted: testingls\n\nFailure Time: 2025-02-26 17:46:00.316313187 +0000 UTC\n\nSeverity: high\n\nRun Details: Operation\n\nDisclaimer\n\nBees\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_home_dashboards_infrastructure_cluster_infrastructure.png": {
+    "hash": "d442135de371ebc016ae98cc52e911134e1471a0fd7507da3c875ec0013da520",
+    "text": " \n\nHome > Dashboards > Infrastructure > K8s Cluster Infrastructure Q Search... crsk) +v | @\n\nS\n\nw Eait | | Export »\n\n \n\nENV | https://pro-alien.dataos.app v || Nodes All v | Namespace All v | Microservice (Container Name) |All v || Pod All v © LastS minutes » Q © Refresh ~\n\n» Certificates\n\nTime Left\nEw 9 Namespace 7 Certificate name 7 Time to Expire 7\nhttps://pro-alien.dataos.app dataos-system pro-alien-dataos-app 2 months, 1 week, 6 days\nhttps://pro-alien.dataos.app cert-manager dataos-private-ca 2 months, 1 week, 6 days\nhttps://pro-alien.dataos.app network-gateway network-gateway-cert 2 months, 1 week, 6 days\nhttps://pro-alien.dataos.app dataos-system flink-operator-serving-cert 2 months, 1 week, 6 days\nhttps://pro-alien.dataos.app system system 2 months, 1 week, 6 days\n\n<BR 2) (2) > | 1s ott rows\nExpired Certificates. © Certificate Expiring in < 7 Days ©\nNo data No data\nCertificate Signing Requests approved © Certificate Signing Requests denied © Certificate Signing Requests pending © Number of issued certificates. ©\n\n0 0 0 0\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_pvcs_full_days_based_daily.png": {
+    "hash": "bf83f043d5c03849a351d997c3703e4c6dcb6a40ed35878b063e717b4d4097ca",
+    "text": "PVCs Full in 7 days - Based on Daily Usage\n\n \n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_deployments_name_namespace_status_ready.png": {
+    "hash": "041919f77f1c43c3b52ccdcafb7b506db6c654da8536522899626bef07682f22",
+    "text": "Deployments ©\n\nName 7 Env 7 Namespace 7 Status 7 Ready Pod's C\nflash-tpch-service01-mloj-d https://pro-alien.data research Down 0\nsports-data-flash-ysOf-d https://pro-alien.data public Down 0\napi-server https://pro-alien.data plc Running 1\nargo-server https://pro-alien.data dataos-system Running 1\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_certificate_signing_requests_pending.png": {
+    "hash": "7772537e11002621bc51c64759e4ddaf8e7632adbc19e039208a88244ab7b322",
+    "text": "Certificate Signing Requests pending ©\n\n0\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_home_dashboards_infrastructure_cluster_infrastructure_dup.png": {
+    "hash": "12c37c28df88a9a5adad2095cd6c1f76ac3db6d692283b51acf5a104dd135241",
+    "text": "I~ Home > Dashboards > Infrastructure > Ks Cluster Infrastructure Q Search ctisk| +» | @\n\nw Edit | | Export »\n\n \n\nENV | https://pro-alien.dataos.app » || Nodes All » || Namespace All v | Microservice (Container Name) |All v | | Pod All v © LastS minutes » Q Refresh ~\n\n> Kubernetes Cluster Overview (28 panels)\n> APIServer (9 panels)\n\n> Networking — (5 panels)\n\n> Storage (7 panels)\n\n> Certificates (7 panels)\n\n> Workloads (8 panels)\n\n> Secrets (2 panels)\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_pvcs_lost_state.png": {
+    "hash": "f3bd25cfe90f0dfc3b4e31ac5d47f95b40754004972e1647ea96dc6ab8cd724e",
+    "text": "PVCs in Lost State ©\n\n \n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_statefulsets_name_namespace_status_ready.png": {
+    "hash": "aa3a21cbe8517884f941b9cd5a0b52badc9d37e8f2f751c81543d114ca608625",
+    "text": "Statefulsets @\n\nName 9 Env 7 Namespace 7 Status 7 Ready Pod's Cou 7 Total Pod's\nredis-caretaker-replic https://pro-alien.data caretaker NotRunning 0 0\nredis-sql-workbench’ https://pro-alien.data caretaker NotRunning 0 0\nredis-heimdall-cache https://pro-alien.data heimdall NotRunning 0 0\nredis-storage-meta-r https://pro-alien.data juicefs-system NotRunning 0 0\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_usage_145215_145230_1452_145300.png": {
+    "hash": "165ecd237ca9f293e4015cdcdfa7156e4c8e5782a022246025a6b43b4f03a802",
+    "text": "PVC usage% ©\n\n30)\n25)\n20)\n15\n\n  \n  \n  \n  \n \n\n \n\n \n\n \n\n                             \n\n14:52:15 14:52:30 14:52\n\n \n\n5 14:53:00 14:53:15\n\n \n\n30 14:53:45 14:54:00 14:54:15\n\n \n\n30 14:54:45\n\n \n\n00 © 14:55:15 1\n\n \n\n30 14:55:45\n= cola-volume | https://pro-alien.dataos.app | research —= data-zookeeper-stream-2 | https://pro-allen.dataos.app | caretaker —= mellisearch-meilisearch-0 | https://pro-allen.dataos.app | caretaker\n‘= pulsar-bookie-journal-pulsar-bookie-2 | https://pro-alien.dataos.app | caretaker = pulsar-bookie-journal-pulsar-bookie-5 | https://pro-allen.dataos.app | caretaker == pulsar-bookie-ledgers-pulsar-bookie-2 | https://pro-alien.dataos.app | caretaker\n\n‘= pulsar-bookie-ledgers-pulsar-bookie-5 | https://pro-alien.dataos.app | caretaker =» metadata-pv-claim | https://pro-alien.dataos.app | pl_ = nats-sts-vol-pl-nats-1 | https://pro-allen.dataos.app | plc == postgres-pv-claim | https://pro-alien.dataos.app | plc\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_networking_check_average_image_pull_dup.png": {
+    "hash": "4bf60d1da898497e6e0d660d9ee57a87040311d069fa995d1c61e3d4c7638e9a",
+    "text": "» Networking\n\n \n\n \n\n \n\n \n\nCheck average image pull duration © Container Network Errors ©\n25 mins Name E\n20.8 mins —*-—_—*__*__*__*—_*+ +++ +++ +++ +++ ++ — Receive - https://pro-alien.dataos.app/aks-dsckOnpOdev-56813114-vmss0000(\n16.7 mi = Receive - https://pro-alien.dataos.app/aks-dsckOnpOdev-56813114-vmss0000(\n.7 mins\n— Receive - https://pro-alien.dataos.app/aks-dsckOnpOdev-56813114-vmss0000(\n12.5 mins = Receive - https://pro-alien.dataos.app/aks-pulsar-39519725-vmss000001\n8.33 mins = Receive - https://pro-alien.dataos.app/aks-runOdsckOdev-41831249-vmss000C\n427 mins = Receive - https://pro-alien.dataos.app/aks-runOdsckOdev-41831249-vmss000(\n= Receive - https://pro-alien.dataos.app/aks-runOdsckOdev-41831249-vmss000(\n\n \n\nReceive - https://pro-allen.dataos.app/aks-runOdsckOdev-41831249-vmss000C\n\n \n\n30 18:\n\n \n\n00 18\n\n \n\n3018:\n\n \n\n:00 18:\n\n \n\n:30 18:18:00 18:18:30-——18:19:00\n\n \n\n00 18:\n\n \n\n= Receive - https://pro-alien.dataos.app/aks-runOdsckOdev-41831249-vmss000(_\n\n \n\n \n\n— 0-10MB — 100MB-S0OMB — 10MB-100MB — 1GB-5GB = S00MB-IGB — SGB-106B teas “\nCount of HTTP Fallback Usage (Env - Node) © Ephemeral Containers Usage (Debug Containers) ©\n100 100\n5\n3 80 2\n8 z\nS 3 80\n3\nz 6 &\ne 4“ 2 60\ne £\n20 s\nG 5\n= 8\no 2 40\n18:14:30 18:15:00 18:15:30 18:16:00 18:16:30 18:17:00 18:17:90 18:18:00 18:18:30 18:19:00 :\nName last+ 9\n1 2 20\n— https://pro-alien.dataos.app - aks-dsckOnpOdev-56813114-vmss000001 ° &\n— https://pro-alien.dataos.app - aks-dsckOnpOdev-56813114-vmss000002 ° °\n— hitns:/inro-allen.datans.ann ~ aks-dackOnnOdev-56B13114-vmas000008 ra 18:14:30 18:15:00 18:15:30 18:16:00 18:16:30 18:17:00 18:17:30 18:18:00 18:18:30 18:19:00\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_replicasets_name_namespace_status_total.png": {
+    "hash": "59493c79d60d5a7b29a1d7e4b497e935f622250c69ab036a48023030ace466a2",
+    "text": "ReplicaSets. ©\n\nName 7 Env 7 Namespace 7 Status 7 Total Pod's Count 7 Ready Pod\ncalico-kube-controlle https://pro-alien.data calico-system NotRunning O oO\ncalico-typha-6bf848: https://pro-alien.data calico-system NotRunning oO oO\ncaretaker-api-55f48€ https://pro-alien.data caretaker NotRunning oO oO\ncaretaker-api-778d9 https://pro-alien.data caretaker NotRunning 0 0\n\n< a 2 3 4 5 6 7 ™ 16 > 1-40f 463 rows\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_certificate_signing_requests_denied.png": {
+    "hash": "10dc38015079bfc97fc1cba2eaffc66a5ff538282f967a9536a976b8f22dc3e3",
+    "text": "Certificate Signing Requests denied ©\n\n0\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_kubernetes_scheduler_latency_1sms_sses.png": {
+    "hash": "a7f859aa5f4744be86011ac0a1f92ac36657f05d84127f6b7316f8560fcf3d05",
+    "text": "Kubernetes Scheduler Latency By Job ©\n\n     \n\n \n\n \n\n \n\n     \n\n   \n     \n\n8\n° 2ms\nS 1sms\n2 ims\n2 SSS SSeS —— ISS\n2S SSS Eee\n2 500 ys [KZ —YVJft eer NL x Xs =\noo be Z Z NZ La a\n3 5\ni 18:14:30 18:15:00 18:15:30 18:16:00 18:16:30-18:17:00 18:17:30 18:18:00 18:18:30 18:19:00\nName Last* §\n= thanos-bucketweb 76.7 us\n\n= thanos-compactor 709 ps\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_daemonsets_name_namespace_status_ready.png": {
+    "hash": "1c5b32b7df141d69bf6d8d6ee3d1982241543c21cd49a9acc36afc458c7c76a5",
+    "text": "DaemonSets ©\n\nName 7 Env 7 Namespace 7 Status 7 Ready Pod's Coui 7 Total Pod's\nazure-cns-win https://pro-alien.data kube-system NotRunning 0 0\ncloud-node-manager https://pro-alien.data kube-system NotRunning 0 0\ncsi-azuredisk-node-v https://pro-alien.data kube-system NotRunning 0 0\nwindows-kube-proxy https://pro-alien.data kube-system NotRunning 0 0\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_volume_cleanup_failures_count_httpsproaliendataosapp.png": {
+    "hash": "50508f6e9c6e3acd7f0245bac4438b65ed9554138054404786298c342c82d29a",
+    "text": "Volume Cleanup Failures Count ©\nEnv 7\nhttps://pro-alien.dataos.app\nhttps://pro-alien.dataos.app\nhttps://pro-alien.dataos.app\nhttps://pro-alien.dataos.app\n\nhttps://pro-alien.dataos.app\n\nNode 7\naks-dsckOnpOdev-56813114-vmss000001\naks-dsckOnpOdev-56813114-vmss000002\naks-dsckOnpOdev-56813114-vmss000003\naks-pulsar-39519725-vmss000001\n\naks-runOdsckOdev-41831249-vmss00006f\n\nFailures Count 7\na\n\n2\n2\n2\n\n2\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_running_pods_namespace_system_kubesystem.png": {
+    "hash": "6174ba8254c4944efae5e8776e013c22d89367e09ececc56084580b262c6bb5e",
+    "text": "Running Pods By Namespace © A\n\nSs\ne\nB\n\n7\n\nsystem\nkube-system\npublic\nsentinel\n|ulcefs-system\ncaretaker\n\nple\ncalico-system\n\nporos\n\nValue g\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_certificates_time_left_httpsproaliendataosapp_httpsproaliendataosapp.png": {
+    "hash": "28b2a52fa77fc55538bed646d179ebc95fcf61d0c2c0116f4b2d1260b5e94cdd",
+    "text": "- Certificates\n\nTime Left\n\nEn 7\nhttps://pro-alien.dataos.app\nhttps://pro-alien.dataos.app\nhttps://pro-alien.dataos.app\nhttps://pro-alien.dataos.app\n\nhttps://pro-alien.dataos.app\n\nNamespace 7\ndataos-system\ncert-manager\nnetwork-gateway\ndataos-system\n\nsystem\n\nCertificate name 7\npro-alien-dataos-app\ndataos-private-ca\nnetwork-gateway-cert\nflink-operator-serving-cert\n\nsystem\n\n> 1-Sof Nrows\n\nTime to Expire 7\n1 month, 0 weeks, 2 days\n1 month, 0 weeks, 2 days\n1 month, 0 weeks, 2 days\n1 month, 0 weeks, 2 days\n\n1 month, 0 weeks, 2 days\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_count_http_fallback_usage_node.png": {
+    "hash": "748201e26c836e00e7409fd7f8295e927c2ea7415e7844ee48033142eaca3418",
+    "text": "Count of HTTP Fallback Usage (Env - Node) ©\n\n100\n80\n60\n40\n20\n\nHTTP Fallback Count\n\n°\n00 14:20:30 14:21:00 14:21:30 14:22:00 14:22\n\nLast *\n\n \n\n14:18:00 14:18:30 14:19:00 14119:30 14s\n\nName\n= nhttps://pro-allen.dataos.app - aks-dsckOnpOdev-56813114-vmss000001\n= https://pro-allen.dataos.app - aks-dsckOnpOdev-56813114-vmss000002\n\n|= hitns:/Inrn-alian datans ann - aks-dsckAnnOdev-5RAR13N4-vmssannnns\n\n \n\n \n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_pvcs_pending_state.png": {
+    "hash": "839494f29be091478e86c69a3f4947fcfb2f53f69387f010e10d91c2047da91a",
+    "text": "PVCs in Pending State\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_server_errors_instance_server_http.png": {
+    "hash": "644d8ffa5d7738efab7386ed253537bd6752e72d80e07e5f12ee698011715758",
+    "text": "API Server - Errors by Instance API Server - HTTP Requests Latency by verb\n\n \n\n10 Name Last* Mean = Max goo ms Name Last * Mean Max\n= 20.207124.48:443 2.90 257 913 — APPLY 0.00734ms 0.0137 ms_—_(0.0214 ms,\n8 = CONNECT 0.749 ms 0.242 ms 0.750 ms\n600 ms\n= DELETE —0.00720ms 0.00801ms 0.0139 ms,\n6\n= cer 0.00495 ms 0.00481ms 0.00526 ms\n400 ms\n4 = ust 0.0136 ms 0.00954ms 0.0136 ms\n= PATCH 0.0107ms 0.00892 ms 0.0111 ms.\n2 200 ms ‘= PosT 0.00461ms 0.00717 ms_—0.0187 ms.\n= Put 0.00731ms 0.00791ms 0.0131 ms.\n0 Ooms = WATCH 369 ms 514 ms 895 ms\n18:15:00 18:16:00 18:17:00 18:18:00 18:19:00 18:15:00 18:16:00 18:17:00 18:18:00 18:19:00\n\nAPI Server CONNECT Error Count by HTTP Code (Non-2xx) ©\n\n500\n400\n300\n200\n\nError Count\n\n100\n\n0\n18:14:30 18:15:00 18:\n\nName\n\n \n\n \n\n30 18:16:00 18:16:30 18:17:00 18:17:30 18:18:00 18:18:30 18:19:00\n\n= HTTP 404\n= HTTP 503\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_global_usage_nodes_pressure.png": {
+    "hash": "e078389262dc77f0797818602b3fd97848b3ce901047d8062556fd4bf9b49184",
+    "text": "Global CPU Usage ©\n\n= 2.05%\n\nNodes CPU Pressure ©\n\n \n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_secret_count_namespace_httpsproaliendataosapp_httpsproaliendataosapp.png": {
+    "hash": "c57822f8098a4c03012564dca68cc46c7c8bf152daf66002fc7771ef17299cd3",
+    "text": "Secret Count By Env and Namespace A\\\nEnv\nhttps://pro-alien.dataos.app\nhttps://pro-alien.dataos.app\n\nhttps://pro-alien.dataos.app\n\nNamespace 7\nsystem\npublic\n\nresearch\n\n>\n\n1-3 of 30 rows\n\nSecret Count 7\n288\n\n92\n\n32\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_global_memory_usage_1966.png": {
+    "hash": "5fead5d96c08f9e13d7430b3b5834532f32561debc06f5120479db6fa3a1d1c1",
+    "text": "Global Memory Usage ©\n\n¢ 19.66%\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_home_explore_thanos_search_ctik.png": {
+    "hash": "6e83ffeccd2c9e3c6d8ced8eeff7837620edb4980fb7f02c3b0bcbbedf1f5b44",
+    "text": "o Home > Explore > thanos Q Search... ctik| tv | @\n\n© Query history | e@ Share\n\n   \n\n \n\nQ thanos »~ | Q Goqueryless split Add» © LastSminutes » Q\nhb\nty A thanos) ©Gowm :\nle Queries\nKiek start your query | Explain @D Builder Code\nalla Staph\n\n \n\n}[Sm])) /sum(machine_cpu_cores)*180\n\n \n\nMetrics browser > Sum(rate(container_cpu_usage_seconds_total{container_name!=\"POD\", imag\n\n \n\nPOD\" }[59])) 7 sum(machine_cpu_cores) *\n\n \n\n1 sum(rate(container_cpu_usage_seconds_total {container_name\n\nFetch all series matching metric name and label filters.\n2 rate(-expr>[5»])\nCalculates the per-second average rate of increase of the time series in the range vector. Breaks in monotonicity (such as counter resets due to target restarts) are automatically adjusted for. Also, the calculation\n\nextrapolates to the ends of the time range, allowing for missed scrapes or imperfect alignment of scrape cycles with the range's time period.\n\n3 sum(<expr>)\n\nCalculates sum over the dimensions.\n\n> Options Legend: Verbose Format: Time series Step: Type: Both Exemplars: false\n\n+ Addquery © Query inspector\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_global_usage_view_edit_share.png": {
+    "hash": "cfbaa65dec79d1917015a1d0a6b08b973124a5338e0ffba043532fe30a2f2a5f",
+    "text": "Global CPU Usage ©\n\n© View\n@ Edit\n= 2 2 share\nExpl\nNodes CPU Pressure © © Explore\n© Inspect\n\n  \n  \n \n\n@ More...\n\nev\n\nGe\n\n@ px\n\nei\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_slowest_requests_clusterserviceversionsput_operatorconditionsget_zookeeperclustersget.png": {
+    "hash": "2a1e6d622f093da51fca0982a81822de52f72e4c8fd6492151d17b687f1f69fa",
+    "text": "Slowest Requests (Top 10) ©\n\nclusterserviceversions:PUT\noperatorconditions:GET\nzookeeperclusters:GET\ncertificaterequests:POST\ncustomresourcedefinitions:POST\ncustomresourcedefinitions:APPLY\ncustomresourcedefinitions:DELETE\n\nconfigmaps:PATCH\n\nCI LL 39 i! secon\n\n380 milliseconds\n183 milliseconds\n182 milliseconds\n176 milliseconds\n175 milliseconds\n175 milliseconds\n170 milliseconds\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_server_health_status_server_read.png": {
+    "hash": "0c95e3b212be2647b2b7d88c5467d832be8956db430b1ae820d1536739c659f8",
+    "text": "v API Server\n\nHealth Status API Server - Read Success Rate © API Server - Write Success Rate ©\nAPI Server - CPU Usage in CPU Seconds API Server - HTTP Requests Latency by instance\nName Last * Mean Max Name Last* Mean Max\n50.00 mins ‘= 20.207.124.48:443 49.59mins 16.52mins 49.59 mins 25 = 20.207.124.48:443 17.2 ms 20.6ms 30.6ms\nms\n41.67 mins\n33,33 mins 20 ms.\n25,00 mins\n15 ms\n16.67 mins\n8,33 mins 10 ms\nOs\n\n18:15:00 18:16:00 18:17:00 18:18:00 18:19:00 18:15:00 18:16:00 18:17:00 18:18:00 18:19:00\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_expired_certificates_data.png": {
+    "hash": "fa11249b46d6e1087311aacb72603404cebbdc8accd9a49f1d8b3ccbd3cb3c18",
+    "text": "Expired Certificates ©\n\nNo data\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_ephemeral_containers_usage_debug_containers.png": {
+    "hash": "e7f87b747b59afc66c640288bc5b666923be18e944f5368df5058aea33748691",
+    "text": "Ephemeral Containers Usage (Debug Containers) ©\n\n100\nE\n2 80\ng\n2 60\n3\n2\n5\n8 40\ng\n5\nE\n2 20\n&\n\n°\n\n14:18:00 14:18:30 14:19:0014:19:30 14:20:00 14:20:30 14:21:00 14:21:30 14:22:00 14:\n\n \n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_certificate_expiring_days_data.png": {
+    "hash": "a620bc5cb57fa16c3cf23bc23fe9783718cef0926561e053df71e34046d4b33d",
+    "text": "Certificate Expiring ins 7 Days ©\n\nNo data\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_pods_running_pods_succeeded_pods.png": {
+    "hash": "a6953d42b935f744da33083401408749ee25df77a027bd763370aedbe3430595",
+    "text": "Pods Running © Pods Succeeded ©\n\nPods Capacity © Pods Unknown ©\n\n \n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_kubernetes_cluster_overview_taint_nodes.png": {
+    "hash": "5e5fb197a4824aa4b2d929b704a6ce91652e0d60485ce894fc0719c983f11260",
+    "text": "v Kubernetes Cluster Overview\n\nBee eg\n\n9\n\nNo Taint Nodes\n\nS\n\nScary\n\nrelohe)\n\nNES oe\n\nfs\n\nBEC i Cy\n\n6\n\nTotal PVCs\n\noy,\n\n \n\nENV Status ©\n\nUP\n\n \n\nK8s Version ©\n\nv1.32.0\n\nv1.33.0\n\nHealthy Nodes ©\n\n9\n\nUnhealthy Nodes ©\n\n0\n\nNode Unschedulable @\n\n0\n\nNode Not Ready ©\n\n0\n\nGlobal CPU Usage ©\n\nes 383%\n\nNodes CPU Pressure @\n\nGlobal CPU Requests and Limits % ©\n\nReal\n\nil 7.26%\n\nRequests\n\n  \n\nJ 48%\nLimits\nI\n\nGlobal CPU Core Requests and Limits ©\n\n  \n\nJ 202%\n\nReal Requests Limits Total\n\n6.06 141 192 96\n\nGlobal Memory Usage ©\n\n¢ 19.43%\n\nNodes Memory Pressure ©\n\nGlobal Memory Requests and Limits % ©\n\nReal\n\niit 22%\nRequests\n\nPUUMANAUNNL 56%\nLimits\n\nTT 60%\n\nGlobal Memory Requests and Limits ©\n\nReal Requests Limits Total\n126 GiB 314 GiB 339GiB 565 GiB\n\nGlobal Disk Usage % ©\n\nD\n\na 15.00%\n\nGlobal Disk Usage ©\n\nUsed Total\n\n568 cis 3.71 TiB\n\nPods ErrlmagePull ©\n\n;\n\n \n\nPods OOMKilled ©\n\n \n\nPods CrashLoopBackOff ©\n\n;\n\n \n\nPods ImagePullBackOff ©\n\n \n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_networking_check_average_image_pull.png": {
+    "hash": "e96ab716b4df0b0a3f26250583b636a44f7f7c20fc85d16a40d70b6736fd0862",
+    "text": "» Networking\n\nCheck average image pull duration ©\n\n \n\n \n\n \n\n \n\n \n\n \n\n25 mins\n16.7 mins\n839 mine ee\n\n14:18:00 14:18:30-—14:19:00- 14:19:30 14:20:00 14:21\n\n \n\n(0 14:21:00 14:21:30 14:22:00\n\n \n\n= 0-10MB == 100MB-500MB = 10MB-100MB == 1GB-5GB = S500MB-IGB = 5GB-10GB\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_pvcs_above.png": {
+    "hash": "8002fbc49ca8ec81e09b05d084a84a50a2dd4c26e77a5729bc1842c0025288b8",
+    "text": "PVCs Above 80% ©\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_secrets_kubernetes_secrets_count.png": {
+    "hash": "63f05cf04230fef8b6cbd49af6dc225651df4a25e00b24ef7f7b1eef217a2c71",
+    "text": "v Secrets\n\nKubernetes Secrets Count ©\n\n660\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_container_network_errors_1420_name.png": {
+    "hash": "5f3cd1b7a04ff30e9b1a7d6bc9cd7b86dda74623acee15a6dd127734d530fed7",
+    "text": "Container Network Errors @\n\n14:20\n\nName\n\n= Receive - https://pro-alien.dataos.app/aks-dsckOnpOdev-56813114-vmss0000(\n\nReceive - https://pro-allen.dataos.app/aks-dsckOnpOdev-56813114-vmss0000(|\n\nReceive - https://pro-allen.dataos.app/aks-dsckOnpOdev-56813114-vmss0000(|\nReceive - https://pro-allen.dataos.app/aks-pulsar-39519725-vmss000001\n\nReceive - https://pro-allen.dataos.app/aks-runOdsckOdev-41831249-vmss000C\nReceive - https://pro-allen.dataos.app/aks-runOdsckOdev-41831249-vmss000C\n\nReceive - https://pro-allen.dataos.app/aks-runOdsckOdev-41831249-vmss000C\n\nReceive - https://pro-allen.dataos.app/aks-runOdsckOdev-41831249-vmss000C\n\n= Receive - https://pro-alien.dataos.app/aks-runOdsckOdev-41831249-vmss000(_\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_number_issued_certificates.png": {
+    "hash": "091e080d96e501e9325b033efedc77ef9f1f9e1b3be1ce1545c610bfed6b663e",
+    "text": "Number of issued certificates ©\n\n0\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_certificate_signing_requests_approved.png": {
+    "hash": "9673e4d5574af81cf95966cdf864c1c3c6bc5f0aad22323b79399264b52765c8",
+    "text": "Certificate Signing Requests approved ©\n\n0\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/infra/infra_storage_storage_usage_nedevol01_meilisearchmeilisearcho.png": {
+    "hash": "2db37d6539782c1bc2177977ae7cc9e138ada30d7d422c9baa1fa4cbb8d40501",
+    "text": "¥ Storage\nPVC Storage Usage ©\n\npve 7\n\nnede-vol-01\nmeilisearch-meilisearch-O\ndata-thanos-storegateway-0\npostgres-py-claim\npulsar-bookie-journal-pulsar-bookie-0\n\npulsar-bookie-ledgers-pulsar-bookie-4\n\nEw 9\nhttps://pro-alien.dataos.app\nhttps://pro-alien.dataos.app\nhttps://pro-alien.dataos.app\nhttps://pro-alien.dataos.app\nhttps://pro-alien.dataos.app\n\nhttps://pro-alien.dataos.app\n\nNamespaces 7 Usage 7\npublic 2GiB\ncaretaker 16iB\nsentinel 416 MiB\nple 70 MiB\ncaretaker 2GiB\ncaretaker 2GiB\n\nTotal 7\n\n8 GiB\n5 GiB\n5 GiB\n957 MiB\n49 GiB\n\n49 GiB\n\n1-6 of 52 rows,\n\nUsed (%) 7\n28.88%\n\n28.63%\n8.42%\n7.35%\n4.08%\n\n3.37%\n\nDays to full 7\n2 weeks, 6 days\n\n2 weeks, 6 days\n2 weeks, 6 days\n2 weeks, 6 days\n2 weeks, 6 days\n\n2 weeks, 6 days\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_check_overall_memory_utilization_3268.png": {
+    "hash": "7b6cf3e236217baded01a830936168dccb2591a0f9d7059214f81e0f2f72dd3a",
+    "text": "Check Overall Memory Utilization ©\n\n3268\n\n16GB\n\nsce\n\n4cB\n\n12:10 12:15 1\n\n= lakesearchtest\n\n \n\n \n\n10 12:25 12:30 12:35\n\nsentinel == dataos-system == depot = kube-system =® core-apps = calico-system == caretaker = cert-manager\n\nsystem == starrocks @® research =@ public —@ juicefs-system «= dataos-manager == network-gateway «= heimdall\n\n= metis = observability —= neo4j — poros = superset —= shreya = user-system == tigera-operator\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_namespace_resource_statistics_spaces_microservices.png": {
+    "hash": "9bd48fda8fab337d3cfb838a4895a13c83ca9bd4021dd40cb291be39c42d8bdf",
+    "text": "Namespace Resource Statistics ©\n\nSpaces Microservices Pod svc Configuration Passwords\nple 20 22 20 29 20\ncaretaker 9 30 25 16 2\nsystem 6 302 7 m 288\nsentinel 6 31 20 50 7\nkube-system 6 57 4 B B\n\nTotal 179 591 187 334 661\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_pending_count_1210_1215_1220.png": {
+    "hash": "e86d12dcffcc806314b72fe3894faf8ac0680a3c2e4a6ae15ff6852881b606f7",
+    "text": "Pending Pod Count ©\n\n33\n32\n31\n30\n29\n\n28\n\n \n\n12:10 12:15 12:20 12:25 12:30 12:35\n\n= sum(kube_pod_status_phase(phase=\"Pending\"})\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_check_node_disk_pressure_node.png": {
+    "hash": "4e4f37112316b689bf43b780618e524d248bd6cb98fd8893c32d712001ec621c",
+    "text": "Check node disk pressure ©\n\nEw 7 Node 9 Disk Pressure 9\nhttps://pro-alien.dataos.app aks-dsckOnpOdev-56813114-vmss00001d 0\nhttps://pro-alien.dataos.app aks-dsckOnpOdev-56813114-vmss00001e 0\nhttps://pro-alien.dataos.app aks-dsckOnpOdev-56813114-vmssOO001f 0\nhttps://pro-alien.dataos.app aks-runOdsckOdev-41831249-vmss00012u 0\n\n2 | >  1-40f Brows\n\n \n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_node_resource_overview_selected_nodes.png": {
+    "hash": "f5fafb537989e28dbefa45acf90e7fc9e9052fcec80d47c2b45a31b958015a95",
+    "text": "y Node Resource Overview - Selected Nodes: [All]\n\nAll : Node Information Detail ©\n\nNode\n\naks-pulsar-39519725-vmss000001\naks-runOdsckOdev-41831249-vmss00006f\n\naks-runOdsckOdev-41831249-vmss0000q8\n\nNode Memory Ratio ©\n\n65.7% 69.2%\n\n22.4%\n\nMemory Ut... Memory Re... Memory Li...\n\nNode Memory Information ©\n\n528.1GiB\n347.2 cig 365.4 GiB\n118.4 GiB\nTotal... Usage Requests Limits\n\nPod Limit Number of Pods\n19\n30 1B\n210 ng\n210 79\n\nNode CPU Number of cores ©\n\n167.0\n94.1\n77\nUsage\n\nTotal C... Requests\n\nNode CPU Ratio ©\n\n24\nW7A%\n~\n\nCPU Limit .\n\nCPU Utiliza.... CPU Reque.\n\n231.9\n\nLimit\n\n6.3%\n\n \n\nCPU Usage%\n\nMemory Usage%\n\n \n\nNode Storage Information ©\n\n0.2B\nUtilization Rate Usage\n\nNodes with Pod ©\n\n589\n9\n\nNumber of nod... Pod Number of...\n\nDisk Usage%\n\n599.6 GiB\n\nATiB\n\nTotal\n\n1830\n\nUpper limit Pod\n\nCPU Total Cores\n\n \n\n1-4 0f 10 rows,\n\nCPU Core\n\n0.0172\n\nTotal Memory\n\nMemory Usage\n\nDisk Total\n\nDisk Usage\n\nCPU Requests'\n\n   \n\n565 MiB 40.8 GiB\n\n0.0525 3.28 GiB 65.1 GiB\n\n0.0547 4.37 GiB 70.6 GiB\n\nAll : Network Overview (Associable nodes and namespaces) ©\n10 Gib/s\n8 Gib/s\n6 Gib/s\n4 Gib/s\n2Gib/s\nOb/s\n11:53:30 11:54:00 1:54:30 11:55:00 11:55:30 11:56:00 1:56:30 11:57:00 11:57:30 11:58:\n\n= Receive Max: 9.31 Gib/s == Send Max: 9.57 Gib/s\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_microservices_container_name_overall_memory.png": {
+    "hash": "22c00720f88bfcf66fd78a8f550a83f962d174262c53c7cd7f4f5923e26d2c0b",
+    "text": "Microservices (Container Name) Overall Memory Usage ©\n\n48 GIB\n40 GIB\n\n \n\n32.618\n24.618\n16.618\n\n8c\n\n \n\n \n\n \n\n \n\n \n\n \n\n0B\n\n \n\n \n\n \n\n12:10 1215\nName\n\n= Memory Limit : azuredisk\n= Memory Limit : fe\n\n12:30 12:38\nMax~ Last Mean 4\n\n43.8GIB 438GIB 43.8GIB\nRow «92GB 861268\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_network_overview_associable_nodes_namespaces.png": {
+    "hash": "e59309d223a7735fc573065da03013af138c35b746841403b061bffa0f51a564",
+    "text": "All : Network Overview (Associable nodes and namespaces) ©\n10 Gib/s\n\n8 Gib/s\n\n6 Gib/s\n\n4 Gib/s\n\n \n\n2 Gibis\n\n13:\n\n \n\n230 13:24:00 18:\n\n   \n\n330 13:25:00\n\n \n\n:30 18:26:00\n\n \n\n= Receive Max: 9.44 Gib/s == Send Max: 9.48 Gib/s,\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_node_memory_ratio_memory_memory.png": {
+    "hash": "71b9406aa7a05ee8fd92826ee68f56f5167ec55a63d52c778040e08760fd5253",
+    "text": "Node Memory Ratio ©\n\n65.9% 69.1%\n\n \n\nMemory... Memory... Memory ...\n\n \n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_network_bandwidth_second_associable_nodes.png": {
+    "hash": "51e743a18f2704558187795fda06845331b40f1cfb71205898a0d0ca4232c298",
+    "text": "Pod Network bandwidth per second (Associable Nodes) ©\n\n12:10 12:15 12:20 12:25 12:30 12:35\nName Max Last\n\n= Inflow:a-starrocks-in-share-data-mode-cn-0 11.3 Kib/s 10.0 Kib/s\n\n‘= Inflow:a-starrocks-in-share-data-mode-fe-O 714 Kib/s 5.82 Kib/s\n\n9.\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_microservices_container_name_overall_cores.png": {
+    "hash": "02bc06e1fe2499b477229875664ba41b383835781ebf42940ffe512ef69efebf",
+    "text": "Microservices (Container Name) Overall CPU Cores Used ©\n30\n\n \n\n \n\n \n\n \n\n \n\n25\n\n20\n\n6\n\n10\n\n5\n\n[SSS\n12:10 12:15 12:20 12:25 12:30 12:35\n\nName Max ~ Last\n— CPU Limitations : spark-kubernetes-driver 272 272\n\n= CPU Limitations : coredns 8\n\n8\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_table_time_2025_2025_2025.png": {
+    "hash": "451fc1a4e4601a7c4fc64b5a030474314d0c1ab62fd7006639a9f7c17441f32c",
+    "text": "Table\n\nTime\n\n2025-'\n\n2025-'\n\n2025-'\n\n2025-'\n\n2025-'\n\n2025-'\n\n2025-'\n\n2025-'\n\n2025-'\n\nnode\n\naks-dsckOnpOdev-5€\naks-runOdsckOdev-4.\naks-runOdsckOdev-4.\naks-dsckOnpOdev-5€\naks-dsckOnpOdev-5€\naks-runOdsckOdev-4.\naks-runOdsckOdev-4.\naks-runOdsckOdev-4.\n\naks-pulsar-39519725\n\nValue #/\n\n63\n\n67\n\n46\n\n58\n\n55\n\n72\n\n19\n\n67\n\ncontainer\n\nkube-state-metrics\n\nkube-state-metrics\n\nkube-state-metrics\n\nkube-state-metrics\n\nkube-state-metrics\n\nkube-state-metrics\n\nkube-state-metrics\n\nkube-state-metrics\n\nkube-state-metrics\n\nendpoint\nhttp\nhttp\nhttp\nhttp\nhttp\nhttp\nhttp\nhttp\n\nhttp\n\nenv\nhttps://pro-alien.data\nhttps://pro-alien.data\nhttps://pro-alien.data\nhttps://pro-alien.data\nhttps://pro-alien.data\nhttps://pro-alien.data\nhttps://pro-alien.data\nhttps://pro-alien.data\n\nhttps://pro-alien.data\n\ninstance\n\n10.212.3.119:8080\n\n10.212.3.119:8080\n\n10.212.3.119:8080\n\n10.212.3.119:8080\n\n10.212.3.119:8080\n\n10.212.3.119:8080\n\n10.212.3.119:8080\n\n10.212.3.119:8080\n\n10.212.3.119:8080\n\njob\nprometheus-do-kube\nprometheus-do-kube\nprometheus-do-kube\nprometheus-do-kube\nprometheus-do-kube\nprometheus-do-kube\nprometheus-do-kube\nprometheus-do-kube\n\nprometheus-do-kube\n\nnamespace\n\nsentinel\n\nsentinel\n\nsentinel\n\nsentinel\n\nsentinel\n\nsentinel\n\nsentinel\n\nsentinel\n\nsentinel\n\npod\nprometheus-do-kube\nprometheus-do-kube\nprometheus-do-kube\nprometheus-do-kube\nprometheus-do-kube\nprometheus-do-kube\nprometheus-do-kube\nprometheus-do-kube\n\nprometheus-do-kube\n\nprometheus\n\nsentinel/prometheus-\nsentinel/prometheus-\nsentinel/prometheus-\nsentinel/prometheus-\nsentinel/prometheus-\nsentinel/prometheus-\nsentinel/prometheus-\nsentinel/prometheus-\n\nsentinel/prometheus-\n\nprometheus_replica\n\nprometheus-prometh\nprometheus-prometh\nprometheus-prometh\nprometheus-prometh\nprometheus-prometh\nprometheus-prometh\nprometheus-prometh\nprometheus-prometh\n\nprometheus-prometh\n\nTable Raw\n\nresource service\n\ncpu\n\ncpu\n\ncpu\n\ncpu\n\ncpu\n\ncpu\n\ncpu\n\ncpu\n\ncpu\n\nprometheus-do\nprometheus-do\nprometheus-do\nprometheus-do\nprometheus-do\nprometheus-do\nprometheus-do\nprometheus-do\n\nprometheus-do\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_node_ratio_2466_1780_utili.png": {
+    "hash": "15eb9a239a5de1706b6c02c4357ff497d2237282695be53f4bb296735671fd54",
+    "text": "Node CPU Ratio ©\n\n246.6%\n178.0%\n\n6.2%\nCPU Utili.... CPU Req... CPU Limit...\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_memory_consuming_pods_poroscollationworkerpodso_cluster02ss0.png": {
+    "hash": "83a0315465169e6120ad904e7df810fbbaca233d49ad3cc5d1569c2cc4758818",
+    "text": "Top 10 Memory Consuming Pods\n\nporos-collation-worker-pods-O\ncluster02-ss-0\nprometheus-prometheus-prometheus-O\nsystem-ss-0\n\ntest-ss-0\n\noO\n\n1.75 GiB\n1.61 GiB\n1.43 GiB\n1.20 GiB\n1.14 GiB\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_monitor_preregistration_node_spinup_time.png": {
+    "hash": "c6fbec677b3d9207fd83b72d4557f777dbe4872f9d787acd8450b8636be4d386",
+    "text": "Monitor pre-registration node spin-up time © A\n\naks-runOdsckOdev-41831249-vmss00012u\n\naks-runOdsckOdev-41831249-vmss00012v\naks-runOdsckOdev-41831249-vmss00012W\naks-runOdsckOdev-41831249-vmss00012x\n\naks-runOdsckOdev-41831249-vmss00012y\n\naks-dsckOnpOdev-56813114-vmss00001d\n\naks-dsckOnpOdev-56813114-vmss00001e\n\naks-dsckOnpOdev-56813114-vmssO0001F\n\n11:37:00 11:38:00 11:39:00 11:40:00 11:41:00\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_check_node_startup_duration_httpsproaliendataosapp.png": {
+    "hash": "1d44a6ff0a3e0e8b68f1517729256ce3000801d0b5cca7e52c71dac1242aa14d",
+    "text": "Check node startup duration ©\n\nEnv 7\n\nhttps://pro-alien.dataos.app\nhttps://pro-alien.dataos.app\nhttps://pro-alien.dataos.app\n\nhttps://pro-alien.dataos.app\n\n \n\nNode 7\naks-runOdsckOdev-41831249-vmss00012u\n\naks-runOdsckOdev-41831249-vmss00012v\naks-runOdsckOdev-41831249-vmss00012w\n\naks-runOdsckOdev-41831249-vmss00012x\n\n2 | > | 1-40f 8 rows\n\nStartu 7\n427s\n\n35.9 mins\n46.6s\n\n42.9s\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_node_memory_breakdown_113700_113800.png": {
+    "hash": "ced672a9fa7617cacf0a9d502bfd9bb295d8f61a19e476f56b172213b52e03ce",
+    "text": "All : Node Memory Breakdown ©\n\n \n\n20%\n\n18%\n\n \n\n \n\n——\n\n \n\n \n\n11:37:00 11:38:00 11:39:00 11:40:00 11\n\n \n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_microservice_container_name_network_bandwidth.png": {
+    "hash": "f2488f59e318b9e3983adb7a1d459c7522c6ace49a2cfc348f26aa9b43459f7e",
+    "text": "Microservice (Container Name) Network bandwidth per second (Associable N.... ©\n\n384 Mib/s\n256 Mb/s\n128 Mib/s\n\nOb/s\n\nName\n\n \n\n= Infiow:alertmanager 21.4 Kib/s\n\n32AKib/s 40.7 Kib/s\n14 kibls 271 Kib/s _\n\n= Inflow:argo-server 2.5 Kib/s\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_microservices_container_name_resource_statistics.png": {
+    "hash": "55a8044a95ad1872275179716331edef3357eb6a467c1b7e37673fcb3f5b63eb",
+    "text": "Microservices (Container Name) Resource Statistics ©\n\n \n\n \n\nNamespace Container Name Pod Average CPU Usage% Total CPU Restrictions Total CPUC: Total Memory Limit Total CPL Total Memory Requirements\nsentinel alertmanager | 1% 0.100 0.000800 0.0500 128 MiB\ndepot asset-metastore-service | 0% 0.200 0.000161 0.0500 512 MiB\nkube-system autoscaler | 0% 0.550 0.000366 0.0400 20 MiB\nkube-system azure-ip-masq-agent le | | 0% 4 0.000966 0.800 400 MiB\ncore-apps bifrost-app La | 2% 0.100 0.00155 0.0500 128 MiB\n\n© BE) 2) (4) (5 (6) (7) ~ (5) [5] v-sortr3 cons\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_httpsproaliendataosapp_nodes_namespace_meroservice_container.png": {
+    "hash": "fff5bd80f80f3f5c24b8a952672a5e910bf4fef179cdbce4d4199f161ff0139d",
+    "text": " \n\nENV | https://pro-alien.dataos.app > | | Nodes\n\n \n\n \n\nAl v | | Namespace\n\n \n\nAl v | | Meroservice (Container Name)\n\n \n\nait» | [Fos\n\n \n\nAlly\n\n \n\nv Node Resource Overview - Selected Nodes: [All]\n\nall\n\n \n\nlode Information Detail ©\n\nNode\n\naks-pulsar-39519725-vmss000001\naks-runOdsckOdev-41831249-vmss00006t\n\naks-runOdsckOdev-41831249-vmss0000q8\n\nPod Limit Number of Pods\n\n30\n\n210\n\n210\n\n19\n\n1B\n\nng\n\n79\n\nCPU Usage% — Memory Usage%\n\nDisk Usage% CPU Total Cores\n\n \n\nCPU Core\n\n0.0172\n\n0.0525\n\n0.0547\n\n1-4of 10 rows\n\nTotal Memory\n\n \n\nMemory Usage\n\n565 MIB\n3.28 GIB\n\n4.37 GIB\n\nDisk Total\n\n \n\nDisk Usage\n\n40.8 GIB\n65.1 GIB\n\n70.6 GIB\n\n© LastSminutes v QQ Refresh ~\n\nCPU Requests% Memory Requests% CPU Limit’\n\n \n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_monitor_network_latency_between_nodes.png": {
+    "hash": "4ee6d4f1659e3e946776d51468fc51f7b7ce474347e0b633ae9333582c369681",
+    "text": "Monitor network latency between nodes ©\n\n1:36:30 11:37:00 11:37:30 1:38:00 1:38:30 11:39:00 11:39:30 11:40:00 1:40:30 11:41:00\n\n= (container=\"kube-rbac-proxy\", device=\"azv0018d3b18ca\", endpoil https://pro-alien.dataos.app\", instance=\"aks-dsckOnr8\n\n \n\n=\"https\", en)\n\n \n\n‘= (container=\"kube-rbac-proxy\", device=\"a2v016974b6998\", endpoint=\"https\", env=\"https://pro-alien.dataos.app\", instanc:\n\n \n\n‘aks-dsckOn)\n\n \n\n= (container=\"kube-rbac-proxy\", device=\"azv01d26a6fibe\", endpoint=\"https\", env=\"nttps://pro-allen.dataos.app\", instance=\"aks-dsckOnp\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_check_overall_cluster_node_health.png": {
+    "hash": "4453c1f9b40b0d2a542b7a41067a357fe0ebc2cbf0b634a675f08478c842b519",
+    "text": "Check overall cluster node health ©\n\n100\n80\n60\n40\n20\n\n°\n\n \n\n11:36:30 11:37:00 11:37:30 11:38:00 11:38:30 11:39:00 11:39:30 11:40:00 11:40:30 11:41:00\n\n= count(kube_node_info) == sum(kube_node_status_condition{conditio\n\n \n\nReady\" status=\"false\"})\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_microservices_container_name_average_usage.png": {
+    "hash": "ecdeeb16e084b6916513490b2073e62bb49de21b2c4b82853c3c1f071323ae57",
+    "text": "Microservices (Container Name) Average CPU Usage (Maximum100%) ©\n\n \n   \n\n12:30 12:38\n\n \n\nox = =\n12:10 1215 12:20 12:28\nName Max Last Mean\n= alertmanager 210% 0.800% 0.933%\n0.183% 0.019% —0.0280% _\n\n= asset-metastore-service\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_home_dashboards_infrastructure_cluster_entities.png": {
+    "hash": "08acd5612a853573d4fda6573527354e2a2d439d2adae6f7df3c74c91fa85a6d",
+    "text": "Home > Dashboards > Infrastructure > K8s Cluster Entities Q Search...\n\nS\n\nansk) +» | O |\n\nYe | Eait | Export ¥\n\n \n\n \n\n[ew\n\n \n\n \n\nAlly ] | Namespace\n\n \n\nAll» | | Microservce (Container Name)\n\n \n\nail v || Poa\n\n \n\nhttps://pro-alien.dataos.app ~ | nodes Ally © Last30 minutes - Q © Refresh ~\n\n \n\nv Microservices (Container Name) Resource Overview - Selected Microservices: [All]\n\nContainers Running © Containers Waiting © Containers Terminated Containers Restarts (Last 30 Minutes) ©\n\ni a a\n\nMicroservices (Container Name) Resource Statistics ©\n\n  \n\nNamespace Container Name Pod Average CPU Usage% Total CPU Restrictions Total CPUC: Total Memory Limit Total CPL Total Memory Requirements\nsentinel alertmanager Li | 1% 0.100 0.000800 ee 0.0500 128 MiB\ndepot asset-metastore-service | 0% 0.200 0.000161 0.0500 512 MiB\nkube-system autoscaler 2 ff 0% 0.550 0.000366 0.0400 20 MiB\nkube-system azure-ip-masq-agent le | | 0% 4 0.000966 0.800 400 MiB\ncore-apps bifrost-app La | 2% 0.100 0.00155  — 0.0500 128 MiB\n\nMicroservices (Container Name) Average CPU Usage (Maximum100%) ©\n\n \n\n \n  \n \n\n \n\nMicroservice (Container Name) Average Memory Utilization ©\n\n1-5 of 173 rows\n\nMicroservice (Container Name) Network bandwidth per second (Associable N.... ©\n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n100%\n60% rr ae 384 Mib/s\n40% 60% 256 Mib/s\n40% —\n9 TY IAD a\n20% av, \\ 20% 128 Mib/s,\n0% § 0% ovis\n10 12:15 12:20 12:25 12:30 12:35 12:10 12:15 12:20 12:25 12:30 12:35\nName Max Last Mean § Name Max Last = Mean § Name\n= alertmanager 210% 0.800% 0.933% — WSS : alertmanager 15.8% 15.2% 15.2% = Inflow:alertmanager 21.4 Kibls 32:1 Kib/s 40.7 Kib/s\n— asset-metastore-service 0.183% 0.019% —0.0280% _ = WSS: argo-server 2% wo 2% | = Inflow:argo-server 248 Kib/s 114 Kib/s 27:1 Kib/s _\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_usage_node_113700_113800_113900.png": {
+    "hash": "78933050f2e52a484ef31e5138eb10643a2577d6f208bce59a464880f1738e7c",
+    "text": "All: CPU Usage By Node ©\n\n5%\n4%\n3%\n2%\n\n1%\n\n \n\n0%\n\n11:37:00 11:38:00 11:39:00 11:40:00 11:41:00\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_containers_utilization_maximum100associable_nodes_1205.png": {
+    "hash": "6be6e5174d15dd048b9eff958089240541ef56a30e3b34381bb9b103be6e6610",
+    "text": "Pod Containers CPU Utilization (Maximum100%Associable Nodes) ©\n\n \n\n  \n\n   \n\n12:05 12:10 12:15 12:20 12:25\nName v Mean Max\n= zookeeper-operator-56b747bbd5-q4inc 0.701% 0.901% wey\n= vision-service-79796771b5-9s2bg 0.0265% 0.0354% 0.0498%\n\n \n\n= velero-6b55564b54-mmdv8 272% 4.95% TST%\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_monitor_restart_name_last_flashservicetrainingeyecd57dc945ttbmgtw7.png": {
+    "hash": "964fe2b46564dd0cc8770efde4fca62c6611dd839800f9ac793671e5bb1947d3",
+    "text": "Monitor Pod Restart\n\nName Last *~\nflash-service-training-eyec-d-57dc945ttb-mgtw7 42\nmycluster-ss-O a1\n\nsales360-router-ju9z-d-5c46479468-pxwir\nquery-usage-indexer-eu2s-ss-0\ndataset-profiling-indexer-xxtI-ss-0\nporos-indexer-xwvh-ss-O\nsales360-iris-ju9z-d-747e64bdc-jpqb8\nsoda-quality-checks-indexer-rmgu-ss-O\n\ngateway-audit-receiver-db94864b7-hbjnI\n\nRR Oa ao o ©\n\nporos-indexer-xwvh-ss-1\n\n12:10 12:15 12:20 12:25 12:30 12:35\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_microservice_container_name_number_1210.png": {
+    "hash": "ef6276e5e94e2321f5e327911b13bfb88d26664004456319daa7072336fbec9e",
+    "text": "Microservice (Container Name) Pod Number ©\n\n70\n60\n50\n40\n30\n20\n10\n\n0\n\n \n\n \n\n \n\n \n\n12:10 1215 12:20 12:28 12:30 12:38\nName Max Last = Mean §\n= sentinel : alertmanager 1 1 1\n= dataos-system : argo-server 1 1 1\n= depot : asset-metastore-service 1 1 i=\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_resource_overview_selectedpod_consuming_pods.png": {
+    "hash": "84fb7dad551388010b688e3d77b3685fb7774b9814dc85f2b503c185d6c6bddc",
+    "text": "v Pod Resource Overview - SelectedPod: [All]\n\nTop 10 CPU Consuming Pods @\n\nPoros-coltation-worker-pocs-° LCCC. LL 17.3%\nheimdall-ap-d5744c9-rxzzp es 14.5%\n\ngratana-69c7887cb6-208x 11%\n\nSe\ncaretaker-usage-process-0 ns 10.4%\nee 9.62%\n\nmellisearch-O\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_check_average_node_spinuptine_mins.png": {
+    "hash": "a66b75a4e1b258510185a8bc2309d865f4c18fb8571195380879f32e8ef5ce06",
+    "text": "Check average node spin-uptine © A\n\n1.67 mins Name\n= aks-runOdsckOdev-41831249-vmss00012U\n1.33 mins\n= aks-runOdsckOdev-41831249-vmss00012v\nmi = aks-runOdsckOdev-41831249-vmss00012W:\n. min\ns = aks-runOdsckOdev-41831249-vmss00012x\n2 40s = aks-runOdsckOdev-41831249-vmss00012y\n= aks-dsckOnpOdev-56813114-vmss00001d\n208 = aks-dsckOnpOdev-56813114-vmss00001e\n\naks-dsckOnpOdev-56813114-vmss00001F\n\n0s 0 +0 0 0 0 0 0 0 0 0 0 0 0 0 0 # 9\n11:37:00 11:39:00 11:40:00 11:41:00\n\n \n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_node_memory_information_5281cib_3479.png": {
+    "hash": "59e8fbde83c6f07e8170fd00b687ea17d4cf6fb99a439d29375d2f18bb0abf79",
+    "text": "Node Memory Information @\n\n528.1ciB\n347.9 GiB 365.1 ciB\n\nTotal... Usage Reque... Limits\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_home_dashboards_infrastructure_cluster_entities_dup.png": {
+    "hash": "083dc250e45974a3af9e03fdd85b63cc90d9daf09f6b8632769efd1bfaf28892",
+    "text": "I~ Home » Dashboards > Infrastructure > K8s Cluster Entities\n\n \n\n \n\n| ENV | https://pro-\n\n \n\nn.dataos.app » | nodes Ally | Namespace Ally | | microservice (Container Name) Ally || Po Ally\n\n \n\n \n\n \n\n \n\n \n\n>» Node Resource Overview - Selected Nodes: [All] (20 panels)\n\ny Pod Resource Overview - SelectedPod: [All]\n\nTop 10 CPU Consuming Pods ©\nporos-collation-worker-pods-0\naws-delete-buckets\ngratana-69c7887cb6-jq5n7\nsuperset-worker-65dd4b8185-4km2z\nheimdall-api-ffd5744c9-gsx9r\n\nTop 10 Memory Consuming Pods. ©\n\npulsar-broker-0\npulsar-bookie-2\n\npulsar-bookie-0\nsystem-ss-0\n\n \n\n \n\nPod Containers CPU Utilization (Maximum100%Associable Nodes) © Monitor Pod Restart\n30%\n\nnove Donor ee\n\n10%\n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n    \n \n\n   \n\n16:40:30 16:41:00 16:41:30\nName Mean Max\n= zookeeper-operator-S6b747bbd5-wzrc7 0.653% 0.551% 115%\n= Vislon-service-79796771b5-kp65s 0.0270% — 0.0637% —0.0637%\n= velero-6b55564b54-m8rgn 2.77% 5.24% 8.29%\ne 16:41:00\n\n16:42:00\n\n16:43:00\n\n16:44:00\n\n16:45:00\n\n& | ea\n\n© Last 5 minutes ~ ] Q\n\npulser-b00K¢-1 TT\n\nName\n\n32.8%\n12.3%\n1.3%\n715%\n7.74%\n\n2.72 GiB\n2.63 GiB\n2.59 GiB\n2.54 GiB\n2.37 GiB\n\nLast\n\nflash-service-tralning-eyec-d-6cfbSbt6d9-p8mpt\n\nlakehouse-ms-7cza-d-6497d99977-zItwd\ntestazih-ms-an70-d-7db975bbd6-Sc7dv\ntestgcsih-ms-u6s0-d-7b67c97b88-71/'5\nmycluster-ss-0\ncola-server-tlim-d-7876c48b57-h2wh2\ndataset-quality-checks-indexer-xs6y-ss-O\nporos-indexer-xwvh-ss-O\nporos-indexer-xwvh-ss-1\nstack-exee-context-sink-Sc4c@f96dd-sx2nx\n\n \n\n50\n50\n50\n35\n\nNNN No\n\n \n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_nodewise_image_pull_duration_mins.png": {
+    "hash": "648d4bd4edfbe7a6df4bc1bb88e556474869236c14160a57fe2e8fa45654c74e",
+    "text": "All: node-wise image pull duration @\n\n16.7 mins\n\n13.3 mins\n\n10 mins\n\n6.67 mins\n\n3.33 mins\n\nOs\n\n11:37:00\n\n11:38:00\n\n11:39:00\n\n11:40:00\n\n \n\n \n\n11:41:00\n\nName\naks-dsckOnpOdev-56813114-vmss00001d | 0-I0MB\naks-dsckOnpOdev-56813114-vmss00001e | 0-10MB\naks-dsckOnpOdev-56813114-vmss00001t | 0-10MB.\naks-runOdsckOdev-41831249-vmss00072u | 0-1OMB\naks-runOdsckOdev-41831249-vmss00012v | 0~1OMB\naks-runOdsckOdev-41831249-vmss00012W | 0-10MB\naks-runOdsckOdev-41831249-vmss00012x | 0-10MB\naks-runOdsckOdev-41831249-vmss00012y | “IMB\n\naks-dsckOnpOdev-56813114-vmss00001d | 100MB-SOOMB\n\n \n\n \n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_nodes_with_1830_number_number.png": {
+    "hash": "093bb77785914de15209bea15bf636081b64504f03c1e7a8527781fe62dc34c6",
+    "text": "Nodes with Pod ©\n1830\n\n588\n9\n\nNumber of n.... Pod Number .... Upper limit P...\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_kubernetes_node_memory_pressure_axsdsekonpodevsostsi4umss00004.png": {
+    "hash": "e1b57183de14c2689db0a72de59849af22b781380354b65f8fbe887d7e971578",
+    "text": "Kubernetes Node Memory Pressure ©\n\n= axs-dsekonpodev-sostsi4-umss0000%4\n3 #0 = axs-dsekonpodev-sostst4-umss0000%\n5 s = aks-csckonpodev-sostoe-vmss00001\ni = aks-runodsckodev-41831249-vmss00012u\nE o = aks runodsekosers1931249-vmss00012¥\n8 ‘= aks-runOdsckOdev-41831249-vmss00012W\n3 20 = aks-runodsckodev-41831249-vmss00012x\n\naks-runOdsckOdev-41831249-vmss00012y\n\nNo Pressure\n11:37:00 11:38:00 MW\n\n \n\n200 11:40:00 11:41:00\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_microservice_container_name_average_memory.png": {
+    "hash": "af23fbe289248723d152767a4e9a2fb49d590c1115fbadb68e7a18b05695d272",
+    "text": "Microservice (Container Name) Average Memory Utilization ©\n\n100%\n80% _\n60% f\n40%\n20%\n\n0%.\n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n12:10 1215 12:20 12:28 12:30 12:38\nName Max Last. == Mean\n\n18.2% 15.2%\n\n \n\n= WSS : alertmanager\n\n \n\n= WSS : argo-server 2% 20%\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_node_number_cores_2322_total.png": {
+    "hash": "c64b59e74ffe009ad82518eb66173d324381874a1acd6bb684cb6d3dd7e677fa",
+    "text": "Node CPU Number of cores @\n232.2\n\n \n\nTotal... Usage Reque... Limit\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_node_storage_information_4tib_5177.png": {
+    "hash": "3e461ba84336da1234a87cb590e886a5d66b7966e48e45c1436dbd21a086dbe0",
+    "text": "Node Storage Information ©\n4TiB\n\n517.7 GiB\n018 i>\nUtilization Rate Usage Total\n\n \n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/dashboards/entities/entities_check_overall_cluster_count_1210.png": {
+    "hash": "bdcce21446e058afc362458344f4677067c55513c557ca9061c20eff0b5edc6e",
+    "text": "Check Overall Cluster Pod Count ©\n\n3at\n340\n338\n338\n337\n\nau —— \\ I \\\n\n12:10 1215 12:20 12:25 12:30 12:35\n\n= count(kube_pod_info)\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/depot/depot_depots_thirdparty_thirdparty_owner_domain.png": {
+    "hash": "5bfa2e3b6e6ce56ebac9d07661e6488c15647a2aafd13ed58211e49987a776c0",
+    "text": "Depots / thirdparty\n\n \n\n \n\n \n\n®  thirdparty 9\na Owner: © @ | Tie: - @ Domain - @\ndataos.Azure dataos.thirdparty 2\n= Default Third Party Depot fornew 2 a\n\nDetails Activity Feeds & Tasks 5 Runtime Manifest\nType Layer Version State Aggregate Status Runtime State\nabfss user va active active running:1\nConfigurations\nRequests Limits\ncpu: 100m cpu: 1000m\nmemory: 550Mi memory: 1500Mi\n\nExplore Assets\n\nCompute\n\nquery-default\n\n¥ Meta Version: 0.6\n\nRun As User\n\nCreated: 5 months ago\n\nUpdated: 5 months ago\n\nYW Follow: 0\n\nGLearn\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/depot/depot_queries_ally_graph_prometheus_split.png": {
+    "hash": "3ffb848809032b0f5b8c4d5200eb323bf7ee46b6a35ab23d4f6a365d4c553de1",
+    "text": " \n\n| <> Queries\n\nally Graph\n\n© Raw Prometheus\n\nv (0 Split 85 Addtodashboard © Lastihour vy Q [Regi\n\n \n\nCy\n\n \n\n \n\n \n\nGraph Lines Bars Points Stacked lines Stacked bars\n400 Mil\n300 Mil\n200 Mil\n100 Mil\n0\n16:00 16:05 16:10 16:15 16:20 16:25 16:30 16:35 16:40 16:45 16:50 16:55\n\n= {_name_=\"container_memory_working_set_bytes\", container=\"thirdparty\", endpoint=\"https-metrics\", env=\"https://dataos-training.dataos.app”, id=\"/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podffOfcd\n\n   \n\n= {_name_=\"container_memory_working_set_bytes”, endpoint=\"https-metrics\", env=\"https://dataos-training.dataos.app\", id=\"/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podff0fcde2_e840_Abcb_b8e9_8z\n\n   \n\n= {_name_=\"container_memory_working_set_bytes”, endpoint=\"https-metrics\", env=\"https://dataos-training.dataos.app\", id=\"/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podtff0fcde2_e840_Abcb_b8e9_8:\nRaw Table Raw\n\nExpand results @ Result series: 3\n\n \n\n© container_memory_working_set_bytes{container=\"thirdparty\", endpoint=\"https-metrics\", env=\"https://dataos-training.dataos.app\", id=\"/kubepods.slice/kubepods-burstable.sli 371822597\n\n© container_memory_working_set_bytes{endpoint=\"https-metrics\", env=\"https://dataos-training.dataos.app\", id=\"/kubepods.slice/kubepods-burstable.slice/kubepods-burstable 37375590.\n\n \n\n \n\n© container_memory_working_set_bytes{endpoint=\"https-metrics\", env=\"https://dataos-training.dataos.app\", id=\"/kubepods.slice/kubepods-burstable.slice/kubepods-burstable 225280\n\n \n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/depot/depot_aggregates_node_states_time_slices.png": {
+    "hash": "f09960285c6ffd3443a6fcb0d642b540db60fd7ef54e214602ca7820133d3f2e",
+    "text": "Aggregates (node states: 975 time slices: 120)\n\nType\n\nmemory\nmemory\n\nmemory\n\nName\n\nusage\n\nrequest\n\nlimit\n\nusage\n\nrequest\n\nlimit\n\nMean\n\n1.07\n\n100\n\n1000\n\n354.30\n\n550.00\n\n1500.00\n\nMedian\n\n100\n\n1000\n\n354.28\n\n550.00\n\n1500.00\n\n1\n\n100\n\n1000\n\n354.26\n\n550.00\n\n1500.00\n\n2.25\n\n100\n\n1000\n\n354.54\n\n550.00\n\n1500.00\n\nsum\n\n139.73\n\n13100\n\n131000\n\n46412.95\n\n72050.00\n\n196500.00\n\nUnit\nmillicore\nmillicore\nmillicore\nmebibyte\nmebibyte\n\nmebibyte\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/depot/depot_depots_thirdparty_explore_assets_meta.png": {
+    "hash": "4df9908de905c31124b24a2e1346b3630e3093ee6c99d747b55a27dd75c10139",
+    "text": "Depots / thirdparty Explore Assets | 39 Meta Version: 0.6 | Created: 5 months ago | Updated:5monthsago — ¥¥ Follow: 0 lean ;\n\n®  thirdparty 9\n\na Owner: . ~ @ tier - @ | Domain: - &\n\n \n\nS dataos.Azure dataos.thirdparty 2\n\n \n\nDefault Third Party Depot fornew 2 a\n\nDetails Activity Feeds & Tasks 5 Runtime Manifest\n\n \n\no\n\nName > & Created < Workspace = Data Plane > © Status > © Uptime\n\nthirdparty-ss-O 15 Jun 2025 08:05:17 user-system hub Running 2 days ago\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/depot/depot_thirdpartyss0_details_usage_logs_manifest.png": {
+    "hash": "5a78bc54a6b688d790272b23c524e23256f879e2895c3960e37a9772fbe457fc",
+    "text": "%, thirdparty-ss-0 x\n\nPod Details Pod Usage Pod Logs Pod Manifest\n\n \n\nInfo\nPod Name WorkSpace\nthirdparty-ss-O user-system\nCPU Time Series\n1,000 m\nGB Usage\n800m Request\n500m Limit\n€\n= 400 m\n=)\na\n° 200m\n\nTime\n\n  \n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/depot/depot_thirdpartyss0_memory_time_series_1500.png": {
+    "hash": "0ddce70345dec0c11ff451dedea5771d9ebab0293af9c4cb915750019f05d739",
+    "text": " \n\n \n\n \n\n%, thirdparty-ss-0\nMEMORY Time Series\n1,500 MiB\nGB Usage\ng 41,200 MiB © Request\n3 900 Mis SB Limit\ns\n> 600 MiB\nS\n§\nS — 300Mis\noO MiB Time\nPM 36,3, 10 5H x %, cs aH 9H, 96%, 29 oF wa co, 6% a 50% 41% 308 an\nCr xo sa a we ae a BO KB oe som oe soe\"\n\nsi\n\nno on << no? ms eo ao? 20\" Sy no? Nod\noo 108 0 A AO get gst ost g0™ oo 708\n\n- 5.2\n29?\"900\" os rr 29\" 907?* “5 oy\nOE Oo oo OE OE ON OE ON OO\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/depot/depot_search_jump_ctrlk_home_explore_dup.png": {
+    "hash": "08671b1da994a7d839228a1586415fc29200681b94e9293656503e6840d3d639",
+    "text": " \n\nQ Search or jump to... @ ctrl+k +e ®@ rv\n\n \n\nHome » Explore > thanos « v\n\n \n\n \n\na\nv (D Split §8 Addtodashboard © Lastihour vy Q\nely Gthanos) Geen\n\n|e Queries\n\nKick start your query Explain @ Builder Code\nally Graph\n\nMetric Label filters\n© Raw Prometheus\n\ncontainer_cpu_usage_seconds_total v pod v = ~ | thirdparty-ss-O v | x a\n\n+ Operations int: add rate\n\n \n\ncontainer_cpu_usage_seconds_total{pod=\"thirdparty-ss-8\"}\n\n> Options Legend: Auto Format: Time series Step: auto Type: Both Exemplars: false\n\n+ Addquery © Queryhistory @ Query inspector\nGraph\n\nLines Bars Points Stacked lines Stacked bars\n\n150\n\n \n\n \n\n125\n\n100\n\n75\n\n50\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/depot/depot_thirdpartyss0_runtime_node_details_runtime.png": {
+    "hash": "9431f301fefbf7cc7dd4b1fc05423e8d779d2ab8126d0fe981aa179207658bba",
+    "text": " \n\n_ thirdparty-ss-0: Runtime Node Details\n\nRuntime Node Details Runtime Node YAML. Runtime Node Logs\n\nInfo\n\nPod Name\n\nthirdparty-ss-O\n\nAggregates (node states: 1706 time slices: 120)\n\nType Name Mean\ncpu usage 1.02\ncpu request 100\ncpu limit 1000\nmemory usage 357.37\nmemory request 550\nmemory limit 1500\nCPU Time Series\n1,000 m\n\n© 800m\n\n8\n\n= 600 m\n\n€\n\ns 400m\n\n=)\n\na\n\n5\n\n200m\n\nMedian\n1\n\n100\n1000\n357.41\n550\n1500\n\nRuntime Node Usage\n\nWorkspace\n\nuser-system\n\n100\n1000\n357.28\n550\n1500\n\n1.57\n\n100\n\n1000\n\n357.49\n\n550\n\n1500\n\nUnit\nmillicore\nmillicore\nmillicore\nmebibyte\nmebibyte\nmebibyte\n\n~O- usage\nRequest\n\nLimit\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/depot/depot_search_jump_ctrlk_home_explore.png": {
+    "hash": "dc285916ce4aadf9a7a0ca82e217bbe8a0e05d4e38d1cd273d32d858fd2eb59a",
+    "text": "Q Search or jump to... @ ctrl+k\n\n \n\n   \n\n \n\n+y OA\nHome > Explore > thanos & Aa\nOutline © thanos v (DO Split 85 Addtodashboard © Lastthour vy Q\nel ~ A (thanos) Ooeco wt\n|e Queries\nKick start your query Explain @ Builder Code\nally Graph\nMetric Label filters\n© Raw Prometheus\ncontainer_memory_working_set_bytes v pod v = ~ | thirdparty-ss-O v | x +\n\n+ Operations\n\ncontainer_memory_working_set_bytes{pod=\"thirdparty-ss-0\"}\n\n> Options Legend: Auto Format: Time series Step: auto Type: Both Exemplars: false\n\n+ Addquery © Queryhistory @ Query inspector\n\nGraph\n\nLines Bars Points Stacked lines Stacked bars\n\n400 Mil\n\n \n\n \n\n300 Mil\n\n200 Mil\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/depot/depot_split_addtodashboard_lastihour_lines_bars.png": {
+    "hash": "9ddafaf002e6557ebd1ab74649b185de2c0d21eb8be2def37c09a3f866bab2d1",
+    "text": "v (D Split §8 Addtodashboard © Lastihour vy Q\n\nLines Bars Points Stacked lines Stacked bars\n\n \n\n| <> Queries\n\nGraph\nalla Crap 150\n\n \n\n \n\n© Raw Prometheus\n125\n\n100\n75\n50\n\n25\n\n \n\n0\n15:50 15:55 16:00 16:05 16:10 16:15 16:20 16:25 16:30 16:35 16:40 16:45\n\n= {_name_=\"container_cpu_usage_seconds_total\", container=\"thirdparty\", cpu=\"total\", endpoint=\"https-metrics\", env=\"https://dataos-training.dataos.app\", id=\"/kubepods.slice/kubepods-burstable.slice/kubepods-burstable:\n\n \n\n= {_name_=\"container_cpu_usage_seconds_total\", cpu=\"total\", endpoint=\"https-metrics\", env=\"https://dataos-training.dataos.app\", id=\"/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podff0fede2_e840_Abc\n\n= {_name_=\"container_cpu_usage_seconds_total\", cpu=\"total\", endpoint=\"https-metrics\", env=\"https://dataos-training.dataos.app\", id=\"/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podff0fede2_e840_Abc\n\n \n\nRaw Table Raw\n\nExpand results @ Result series: 3\n\n© container_cpu_usage_seconds_total{container=\"thirdparty\", cpu=\"total\", endpoint=\"https-metrics\", env=\"https://dataos-training.dataos.app\", id=\"/kubepods.slice/kubepods-bt 135.90221\n\n \n\n© container_cpu_usage_seconds_total{cpu=\"total\", endpoint=\"https-metrics\", env=\"https://dataos-training.dataos.app\", id=\"/kubepods.slice/kubepods-burstable.slice/kubepods 145.97550\n\n \n\n© container_cpu_usage_seconds_total{cpu=\"total\", endpoint=\"https-metrics\", env=\"https://dataos-training.dataos.app\", id=\"/kubepods.slice/kubepods-burstable.slice/kubepods 0.025184\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/depot/depot_dataos_operations_user_spac_user.png": {
+    "hash": "a9d5cd8c7b62a38133abf5622b92f917cc55f1d79ace7338f7f041740591a7dd",
+    "text": " \n\nDataOS® operations —_User Spac\n\nUser Space\nResources Minerva Queries\nName 4 _ thirdparty\nthirdparty\n\nthirdparty01\n\n« < > »\n\nthirdparty\n\nResource Details\n\nRuntime Status\nrunning:1\n\nRuntime Nodes\n\nName «\n\nthirdparty-ss-O\n\n« < >\n\nResource YAML\n\nApp\n\nName «\n\nthirdparty\n\n»\n\nResource Runtime\n\nAll\n\nLast Refresh\n2025-06-17T10:25:56.153Z\n\nPod\n\nType Name\n\nWorkspace\n\npod- thirdparty-\nstatefulset ss-0\n\nuser-system\n\nPage 1of1|GoTo: 1\n\nData\nPlane\n\nhub\n\nAll\n\n \n\nPhase All\n\nrunning\n\nShow 10\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/depot/depot_split_dashboard_absolute_time_range.png": {
+    "hash": "2346f719b4ec38df613f1dd6882865b020d13e0a66e3335ebe3549d0c0efb9bb",
+    "text": "1\n\n(DO Split 88 Add to dashboard\n\nAbsolute time range\n\nFrom\n\nnow-1h\n\n \n\nTo\n\nnow\n\nO OB BRN Watereie\n\nIt looks like you haven't used this time\n\n \n\npicker before. As soon as you enter some\ntime intervals, recently used intervals will\nappear here.\n\nRead the documentation to find out more\nabout how to enter custom time ranges.\n\nBrowser Time Ist\n\n© Last1lhour ~ Q\n\nQ Search quick ranges\n\nLast 5 minutes\n\nLast 15 minutes\n\nLast 30 minutes\n\nLast 1 hour\n\nLast 3 hours\n\nLast 6 hours\n\nLast 12 hours\n\nLast 24 hours\n\nLast 2 days\n\nUTC+05:30\n\n¥ Change time settings\n\nq\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/depot/depot_time_series_1000_usage_request.png": {
+    "hash": "931b302c2ea2d7f5383aa29723e2299a29788d5dc4dd8e34834a832550582a8a",
+    "text": "CPU Time Series\n\n \n\n \n\n1,000 m\n-O- usage\n° 800 m ~O- Request\n8\n-O> Limit\n600 m\n400 m\n\nCPU in mi\n\nTime\n\n \n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/depot/depot_grafana_data_visualization_analytics_platform.png": {
+    "hash": "33964ab8d232a06a915323b8ddae0e616c32de2426b4ac0179cde8040ce6f68a",
+    "text": "@ Grafana\n\nData visualization and analytics platform the Data0S®.\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/depot/depot_depot_thirdparty_depots_thirdparty_thirdpartyo1.png": {
+    "hash": "ea9acf168b01a7fda90559536972328812df23649201295e939ed9baf0e319e3",
+    "text": "wk @\nDepot thirdparty st\n\nYW Depots\ne\n\n \n\n@®  thirdparty\n\n@  thirdpartyo1\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/depot/depot_dataos_operations_user_space_resources.png": {
+    "hash": "ec8b256d92cc7f76d284e53183758fadcc712dd5fc285af22aa33ee60508879b",
+    "text": "né DataOS? operations\n\nUser Space\n\nResources\n\nMinerva Queries\n\nName 4 _ thirdparty\n\nthirdparty\n\nthirdparty01\n\n« <\n\n»\n\nUser Space\n\nCore Kernel\n\nCloud Kernel Product\n\nType «\n\ndepot\n\ndepot\n\ndepot\n\nWorkspace\n\nPage 1 of 1| Go To:\n\n1\n\nStatus\n\nactive\n\nactive\n\nRuntime\n\nrunning:1\n\nrunning:1\n\nOwner\n\noe\n\nShow 10\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/worker/worker_sales360worker_sales360api_bundles_sales360bundle_workers.png": {
+    "hash": "7cb5e0bc3ad4e524881b15f8563b1dd67a50992e5dc84dff9d75eb6113973b22",
+    "text": "All v _ sales360-worker\nsales360-api\n\n@ Bundles\nsales360-bundle\n\nTA Workers\nsales360-worker\na\n\nsales360-worker\n\nsales3601-worker\n\new K\n\n®\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/worker/worker_split_absolute_time_range_vercleun.png": {
+    "hash": "960810d898fd17b8abab367b36f1be6810841f42ca49f559a1f375d55a014ce6",
+    "text": "(D split Add ~\n\nAbsolute time range\n\nony\n\nLio Vercleun)\n\n \n\nTo\n\nLely\n\ncw\n\na lelo RL Beli aOR Rd\n\n \n\nPe eg oe EER UR nan\ntime intervals, recently used intervals will\nEyecam es\n\nRead the documentation to find out more\nEla U RCN cme OMT NCTC (-om\n\nTeta oe UTC+05:30\n\n© Last 30 minutes ~\nQ Search quick ranges\n\neT eR\neT Le\n| eT ecTem Tes\nLast 1 hour\nTECH TOLLE\neT OLES\nLast 12 hours\nLast 24 hours\n\n[ETE\n\nQ\n\nMRC Reet\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/worker/worker_ally_graph_berea_split_last30minutes.png": {
+    "hash": "33e812f942a87f4bebbbbec03c0a4c3e5df03426bf8370d42212ca9458992467",
+    "text": " \n\niS eeu\nally Graph\n\nCe Berea\n\ny split Add- © Last30minutes vy Q cea mee\n\nTE SC CSCC\n\n \n\n \n\n40\n30\n20\n\n10\n\nto} rrr eRe RieRieRieieeRieRReeeEeemeameeeae\n15:35\n\n15:10 cai 15:20 BS 15:30\nPeete ee tote ee Re as eee\n\n \n\nMe eae SR Te toot RO Rr Te eR eam Se aR eC coe CCT\nCMe eae Te eco Rc pe SC ee eee ee CUR CC a ee Re eee tc a eye oe Ret ce ect em Cae Tora)\nPOC CUR CC a ee ee a eee eet eye et Re ce ect eee ar Tora)\n\n   \n\nMea Tee econ mS CT eam ceri\n\n \n\n \n\nRaw SECM\n\nExpand results @ Costas)\n\n\"/kubepods.slice/kubepods- 41.534669\n\n \n\n© container_cpu_usage_seconds_total{container=\"sales360-worker\", cpu=\"total\", endpoint=\"https-metrics\", env=\"https://pro-alien.dataos.app\", i\n\nid=\"/kubepods.slice/kubepods-burstable.slice/kubepods-burs CUR TR YAle\n\n \n\n© container_cpu_usage_seconds_total{cpu=\"total\", endpoint=\"https-metrics\", env=\"https://pro-alien.dataos.app\"\n\n \n\nid=\"/kubepods.slice/kubepods-burstable.slice/kubepods-burs (eKeyEK A\n\n   \n\n© container_cpu_usage_seconds_total{cpu=\"total\", endpoint=\"https-metrics\", env=\"https://pro-alien.dataos.app\"\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/worker/worker_time_series_1000_usage_request.png": {
+    "hash": "7fe9101bf37fb63490860b0bdc558cb89a99eee73cbe7f715807911899e068b3",
+    "text": "CPU Time\n\nore\n\n \n\n€\n<\n>\na\noO\n\nSeries\n\n1,000 m\n\n \n\n-O- Usage\n800 m ~O> Request\n-O> Limit\n600m\n400 m\n\n200m\n\n   \n \n   \n  \n\nome .\nQo, Oo so 0 0, x\ne008 580 Ros 3% pV 08%, fog\n\n4g 4g 6 4o\" ot oe\nae\" pe ue si oe cae ss si ph oe se ce rae 9\n\n    \n\nTime\n\n      \n\n<\n\nMEMORY Time Series\n\nMemory in mebibyte\n\n1,200 MiB\n\n~O- usage\n1,000 MiB Oo Request\n800 MiB —O> Limit\n\n600 MiB\n\n \n\n400 MiB\n\n200 MiB\n\n   \n\nOMB Time\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/worker/worker_dataos_operations_userspace_core_kernel.png": {
+    "hash": "bc86233dd9e88bdd847277b36dca1bffbdb311bb15b65fab873b6a00fbacb4a7",
+    "text": " \n\nDataOS® operations —_UserSpace _—Core Kernel\n\nUser Space\nResources Minerva Queries\nName « _ sales360-worker\n\nsales360-worker\n\n« < > »\n\nCloud Kernel\n\nType «\n\nworker\n\nProduct\n\nworker\n\nPage 1 of 1| Go To:\n\n1\n\nWorkspace\n\nactive\n\nRuntime Owner\n\nrunning:1\n\nShow 10\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/worker/worker_workers_shreya_meta_version_created.png": {
+    "hash": "8053549c66db14276627d75f59465211d9a5b1a07fafcd6ea0f9e4bc9ae8153d",
+    "text": "Workers | shreya 39 Meta Version: 0.4 | Created: 8daysago | Updated: 8daysago | YY Follow: 0 lean ;\n\nT] sales360-worker 3\n\na Owner: @ Tier) - @ | Domain - @\n\n \n\ndataos.iens 2\n\n=~ worker is part of the lens sales360 in workspace shreya 2\n\n \n\nDetails Topology Activity Feeds & Tasks 3 Runtime Manifest\n\n \n\nName > 2 Created > Workspace ~ Data Plane > © Status\n\n> © Uptime o\n\nsales360-worker-ju9z-ss-O 04 Jun 2025 04:31:24 shreya hub Running 8 hours ago\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/worker/worker_sales360workerju9zss0_runtime_node_details_runtime.png": {
+    "hash": "e5bbf28705a09df8b7ff77998c60ed2f57087b91e7feb1afbc696f8a2c508bf2",
+    "text": "> sales360-worker-ju9z-ss-0: Runtime Node Details\n\nRuntime Node Details Runtime Node YAML Runtime Node Logs Runtime Node Usage\n\nInfo\nPod Name Workspace\nsales360-worker-ju9z-ss-0 shreya\n\nAggregates (node states: 1718 time slices: 120)\n\nType Name Mean Median Min Max Unit\n\ncpu usage 1.86 2 1 2 millicore\ncpu h request 100 100 100 100 millicore\ncpu limit 2000 2000 2000 2000 millicore\nmemory usage 135.43 135.40 135.36 135.85 mebibyte\nmemory request 256 256 256 256 mebibyte\n\nmemory limit 2048 2048 2048 2048 mebibyte\n\n \n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/worker/worker_time_series_millicore_2000_1500.png": {
+    "hash": "ad9b75d28bfa245d6b8bbe0c5b18605541851c41270a8b0e493c769acd834e33",
+    "text": "CPU Time Series\n\nCPU in millicore\n\n2,000 m\n\n1,500 m\n\n1,000 m\n\n500 m\n\nom\n\n \n\nEB Usage\nGB Request\nSB tint\n\nTime\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/worker/worker_dataos_operations_user_spac_user.png": {
+    "hash": "257f37256c380ed6abe0c28b7dd26b1d38cc679102fee912c4aa7528a82a3081",
+    "text": "a DataOS® operations —_ User Spac\n\nUser Space\nResources Minerva Queries\nName « _ sales360-worker\n\nsales360-worker\n\n« < > »\n\nsales360-worker\n\nResource Details Resource YAML Resource Runtime\n\nRuntime Status\nrunning:1\n\nRuntime Nodes\n\nApp\n\nName « All\n\nName «\n\nsales360-worker-ju9z-ss-O  sales360-worker\n\n« < > »\n\nLast Refresh\n2025-06-04T07:45:46.684Z\n\nType Pod Name Workspace\n\npod- sales360-worker- shreya\nstatefulset ju9z-ss-0\n\nPage 1of1|GoTo: 1\n\nData\nPlane\n\nhub\n\n \n\nPhase All\n\nrunning\n\nShow 10\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/worker/worker_meel_ally_graph_berea_thanos.png": {
+    "hash": "4fd42c290f60fd82647ffec749fbc1c2c004ce5af5f9742e14e8bcc53438c263",
+    "text": "oC Ra ee\n\n \n\n| Co Meel CT\n\nally Graph\n\nCe Berea\n\naN (thanos)\n\nee cee a: ng Explain @\n\nNVC\n\ncontainer_memory_working_set_bytes ~\n\n+ Operations\n\ncontainer_memory_working_set_bytes {pod=\"sales360-worker-ju9z-ss-8\"}\n\nBae) Cn\n\nSe Rig\n\nGraph\n\nPilon)\n\nconv\n\naCCON\n\neeu ee Mc\n\n@® Query inspector\n\nQ Search or jump to... eck +v |@ @ g\n\n© Query history © Share v\n\nsplit Add» © LastSminutes vy Q cea ae\n\n \n\n \n\nOe oO wf i\nEO ae\nTenor)\npod v = v_— sales360-worker-ju9z-ss-O v |X ar\nCee\nMSC Cre\nc e e e e e e e e e e e e *\ncS - - - - - - - - - - - *\n\n \n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/worker/worker_memory_time_series_memory_mebibyte.png": {
+    "hash": "49828ef8e1704adcea49ddb788d75ad9315950f05d3091b0717cd8b2f7cb7bfd",
+    "text": "MEMORY Time Series\n\nMemory in mebibyte\n\n2,500 MiB\n\n2,000 MiB\n\n1,500 MiB\n\n1,000 MiB\n\n500 MiB\n\no MiB\n\n \n\n@B Us2g¢\nGB Request\nSB iim\n\nTime\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/worker/worker_aggregates_node_states_time_slices.png": {
+    "hash": "758c089a9dc3f2ee73bce27085297ecb2ad6fa4db312826aec625f39fe8336e9",
+    "text": "Aggregates (node states: 9 time slices: 2)\n\n \n\n \n\nType Name Mean Median Min Max sum ui\n\ncpu usage 460 460 230 690 920 millicore\ncpu request 200 200 200 200 400 millicore\ncpu 2000 2000 2000 2000 4000 millicore\nmemory usage 527.72 527.72 263.86 791.58 1055.44 mebibyte\nmemory request 2432.00 2432.00 2432.00 2432.00 4864.00 mebibyte\n\nmemory limit 2432.00 2432.00 2432.00 2432.00 4864.00 mebibyte\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/worker/worker_home_explore_thanos_search_jump.png": {
+    "hash": "cb08900b53fe953b8ecf487bd348b7ac97f8f1e2d860a3aee44b8e60f4c6560d",
+    "text": "°C Home > Explore > thanos Q Search or jump to... @ecth+k +yv @® @ g\n\n© Query history « Share v\n\nOutline (a rues v 0 Split Add - ©»r-r Qa oe\n\nal\n\n   \n\n~ A (REIN ©oeow #\n<> Queries\nTefl aesele aU (UC-Ig Explain @ [=I (el amexerel\nPl eenecToda\natid lie\ne eM Solan Aa Ley\ncontainer_cpu_usage_seconds_total ~ pod » = »_— sales360-worker-ju9z-ss-O v xX apr\n\ncontainer_cpu_usage_seconds_total {pod=\"sales36@-worker-ju9z-ss-8\"}\n\n>» Options Legend: Auto Format: Time series Step: auto Type: Both Exemplars: false\n\n+ Add query @ Query inspector\n\nGraph Lines Bars Points Stacked lines Stacked bars\n\n50.\n\n \n\n \n\n40\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/worker/worker_split_last5minutes_cscc_queries_berea.png": {
+    "hash": "b0b712bedb524e71fca4a4eae43796110caa1dfe18ee7ccd13f871a4ac266a67",
+    "text": " \n\ny split Add» © Last5minutes v Q cea ae\n\nTE SC CSCC\n\n \n\n \n\n \n\n \n\n   \n\nSa CIC) 01)\n| <> Queries\neee OM C a + a + a + a + a + a + a *\na\nCe Berea\nOn\nc + ss + ss + ss + ss + ss + ss 9\ncee\nBont\n0) ss - ss ss ss ss ss ss ns _ a _ *\ntly 15:40:00 os aE PaO} ay Palo 15:43:00 yey aT PE}\n\n   \n\n \n\nDE eee ea eT CR CC a Ew tet see oe sce eed eo ec cee a)\n\n \n\nen ae (Saf SHAT ERLE SIEES, Cee eee Came) Tol\n\nSn en SR a ke TN LORS Lose oy oe Pe ec Cee ee Mae ete fete tem ols ORL\n\n \n \n\nMee aR mete CoM TL\nDn eno Ee heer ON Ce a eee oy oe Re ce ee ee a oes teem eee erro\n\n \n\nMea mete CoS TL\n\n \n\n \n\nRaw SECM\n\nExpand results @ Costas)\n\n© container_memory_working_set_bytes{container=\"sales360-worker\", endpoint=\"https-metrics\", env=\"https://pro-alien.dataos.app\", id=\"/kubepods.slice/kubepods-burstable. 141963264\n\n \n\n\"/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod: 20697088\n\n   \n\nttps://pro-alien.dataos.app\", i\n\n \n\n© container_memory_working_set_bytes{endpoint=\"https-metrics\", env:\n\n   \n\n\"/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod: PAO E-Tolo)\n\n \n\nttps://pro-alien.dataos.app\", i\n\n \n\n© container_memory_working_set_bytes{endpoint=\"https-metrics\", env:\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/lens/lens_worker_dataproduct_insights_workers_dataproductinsightsworker.png": {
+    "hash": "7fef1d7b1f247a9220d288e7020cab8a00cfdd174f77ce4debfbe755d22f7908",
+    "text": "Worker data-product insights\n\nTA Workers\n\n \n\ndata-product-insights-worker\n\n®\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/lens/lens_dataproductinsightq_services_dataproductinsightsapi_dataproductinsightsmetric_dataproductinsightsrouter.png": {
+    "hash": "69956240a0be4480b6ee68371d4cc7ea3f7cb3a9e5e64fb591888a2f9d64ceaf",
+    "text": " \n\nAll v | data-product-insightq eu\n\n \n\n \n\n, Services\ndata-product-insights-api\n\ndata-product-insights-metric\n\ndata-product.insights-router\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/service/service_colaservel_ctrl_workflows_colaworkflow_mscolaworkflow.png": {
+    "hash": "a76d9de29bd48a46b119d85cbdd3c4b88591c01aa79d6bfdc776a0f95d679d5c",
+    "text": " \n\n \n\nAll cola-servel|\n\n \n\nctrl\n\nK\n\n®\n\n \n\n= Workflows\n\n \n\ncola-workflow\nms-cola-workflow\nmy-cola-workflow\n\n& Services\n\ncola-server\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/service/service_aggregates_node_states_time_slices.png": {
+    "hash": "758c089a9dc3f2ee73bce27085297ecb2ad6fa4db312826aec625f39fe8336e9",
+    "text": "Aggregates (node states: 9 time slices: 2)\n\n \n\n \n\nType Name Mean Median Min Max sum ui\n\ncpu usage 460 460 230 690 920 millicore\ncpu request 200 200 200 200 400 millicore\ncpu 2000 2000 2000 2000 4000 millicore\nmemory usage 527.72 527.72 263.86 791.58 1055.44 mebibyte\nmemory request 2432.00 2432.00 2432.00 2432.00 4864.00 mebibyte\n\nmemory limit 2432.00 2432.00 2432.00 2432.00 4864.00 mebibyte\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/service/service_meel_ally_graph_berea_split.png": {
+    "hash": "25c4594f3d7f09a60b982f6afa5f8b3bb71d824f19dfc7cc668377d150272ba3",
+    "text": " \n\n| Co Meel CT\n\nally Graph\n\nCe Berea\n\nO Split Add- © Last30minutes vy Q cea ae\n\n \n\nay (thanos) O9eo wt\nee cee a: ng Explain @ Builder Code\nNT Tenor)\ncontainer_cpu_usage_seconds_total ~ pod vy = v_ nilus-server-3zef-d-66b64fb88d-krq8b v | x a\n\n+ Operations\n\nCores MCT MT Pam rcP ETT\n\nBe) Cee eS COM oot\n\n \n\n \n\nDSS aL tere lee Se Lee aa\n\neure\n\n+ Addquery @ Query inspector\n\nGraph\n\n60\n50\n40\n30\n\n20\n\nTE SC CSCC\n\ncece cece ecce eee eee e eee cere eee eee eee eeeeeeS SSeS eeTOOe eee eeeeeeTOOe eee T TEESE TTT TeetT Toes e ee Teese ee eee\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/service/service_cosc_cool_graph_deso_reienenierieeierierierireorerereremamamaemeeeeeee.png": {
+    "hash": "4c7a13d4dc0fd6c025c8c542e10d5c9670aa924545a370dfb4f0cd9fb9ed2a3b",
+    "text": "TE SC COSC CooL\n\nGraph\n\nie}\n\nco CER BSC DESO D EDI BIE EEO OIE EI AEA OD\n40\n\n30\n\n20\n\n10\n\nto} ier nn RR ReienenieRieeieRieRieRiReoReReReRemamamaemeeeeeEE\nsels) 18:10 HE 18:20 ied) 18:30\n\n \n\nCMe eae Tee eco Re ea eR eo eee ee eC een CO sce oye Ret es ae Cee ee coed\n\nPt tete el Pe eee eet eee ae ae\n\n    \n\n‘https://pro-alien.dataos.app\", id:\n\n   \n\nForet Tort\nToe To eee ce aa ae oe COT esse a oye Ee es ae ee eee Le\n\nMeas TR ero mT Ree\n\n \n\nCMe es TR ero mT\n\n \n\nRaw SECM\n\nExpand results @ Costas)\n\n     \n\n© container_cpu_usage_seconds_total{container=\"nilus-server\", cpu=\"total\", endpoint=\"https-metrics\", env=\"https://pro-alien.dataos.app\", id=\"/kubepods.slice/kubepods-burs' SYA: VAY\n\n© container_cpu_usage_seconds_total{cpu=\"total\", endpoint=\"https-metrics\", env=\"https://pro-alien.dataos.app\", id=\"/kubepods.slice/kubepods-burstable.slice/kubepods-burs EY Rech on\n\n© container_cpu_usage_seconds_total{cpu=\"total\", endpoint=\"https-metrics\", env=\"https://pro-alien.dataos.app\", id=\"/kubepods.slice/kubepods-burstable.slice/kubepods-burs 0.025807\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/service/service_8dataos_metis_activity_products_assets.png": {
+    "hash": "557a12343db797214f6d9decc8f337fdffc9306cf5d6e11e906b905f9d72883c",
+    "text": " \n\n \n\n \n\n8éDataOS® metis Activity Products Assets Resources All cola-server\nServices | public\n\n© cola-server 0\n\na Owner: i » @ Tier - @ Domain - 2\n\n9 Add\n\n=  NoDescription 2 ical}\nDetails Topology Activity Feeds & Tasks 13 Runtime Manifest\n\nName > 2 Created\n\ncola-server-hxp9-d-6f4c9648f6-7p9kg\n\ncola-server-89ps-d-59cdf94dc8-6dgv4\n\ncola-server-89ps-d-7dfb748765-h28zm\n\n12 May 2025 13:04:40\n\n12 May 2025 12:11:17\n\n26 Apr 2025 13:26:02\n\n¥ Meta Version: 1.4\n\nWorkspace\n\npublic\n\npublic\n\npublic\n\new K\n\nCreated: 1 month ago\n\nData Plane\n\nhub\n\nhub\n\nhub\n\n® Govemnv Settings O @ &\n\nUpdated: 8 days ago\n\nSucceeded\n\nDeleted\n\nSucceeded\n\nYW Follow: 0\n\nGLearn\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/service/service_time_series_millicore_2000_1500.png": {
+    "hash": "ad9b75d28bfa245d6b8bbe0c5b18605541851c41270a8b0e493c769acd834e33",
+    "text": "CPU Time Series\n\nCPU in millicore\n\n2,000 m\n\n1,500 m\n\n1,000 m\n\n500 m\n\nom\n\n \n\nEB Usage\nGB Request\nSB tint\n\nTime\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/service/service_adataos_operations_userspace_core_kernel.png": {
+    "hash": "825ed418b53101a8ec74b9f943bdd05b1a1bf691dc32053f7d072fb38bb853c3",
+    "text": "aéDataOS® operations —_UserSpace _Core Kernel\n\nUser Space\nResources Minerva Queries\nName «  cola-server\n\ncola-server\n\n« < > »\n\nCloud Kernel\n\nType «\n\nservice\n\nProduct\n\nservice\n\nPage 1 of 1| Go To:\n\n1\n\nWorkspace\n\nresearch\n\nactive\n\noe\n\nRuntime Owner\nrunning:1\n\nShow 10\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/service/service_colaserverxjmgdf6b6d49cdid8hb_runtime_node_details_runtime.png": {
+    "hash": "5bf265d1344d484fa15f46283bd94e01a14dbcc9a89c8dae5eadbadb67ac7e9c",
+    "text": "&_ cola-server-xjmg-d-f6b6d49cd-Id8hb: Runtime Node Details\n\nRuntime Node Details Runtime Node YAML Runtime Node Logs Runtime Node Usage\n\nInfo\nPod Name Workspace\ncola-server-xjmg-d-f6b6d49cd-Id8hb research\nAggregates (node states: 1688 time slices: 120)\nType Name Mean Median Min Max Unit\ncpu usage 1.23 1 1 2 millicore\ncpu request 1000 1000 1000 1000 millicore\ncpu limit 0 0 0 0 millicore\nmemory usage 83.54 83.54 83.54 83.66 mebibyte\nmemory request 1024 1024 1024 1024 mebibyte\n\nmemory limit 0 0 0 0 mebibyte\n\n \n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/service/service_berea_split_last30minutes_cscc_accon.png": {
+    "hash": "50d60def25f5a87adb8755ebc7504c039252c7520a4d210ca409272717ee2c1a",
+    "text": " \n\nCe Berea\n\ny split Add- © Last30minutes vy Q eed uc ee\n\nTE Co CSCC\n\naN\n\n \n\nPT\naCCON\n80 Mil\nConvil\nCOT\n\nPoni\n\nto} ee\n18:00 sels) 18:10 HE 18:20 ied)\n\n \n\nCe eee eo eR eT UT eM eee EH [eRe MS EUs Ee oes ere eee tele Peele SRL ed\n\nhttps-metrics\", env=\"https://pro-alien.dataos.app\", id=\"/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod941f7ed5_e497 46e6_b70b_7e18eC\n\n \n\nMCR mete CMS TL\n\n   \n\n \n\nTre ls ee eee ee Te ee le Pee eel aes ae ee ate\n\nLatte La oe MR MU od] Ke) eee)\n\n \n\nMea mete CoS TL\n\n \n\nRaw SECM\n\nExpand results @ Costas)\n\n \n\nnilus-server\", endpoint=\"https-metrics\", env=\"https://pro-alien.dataos.app\", id=\"/kubepods.slice/kubepods-burstable.slice/ 135364606\n\n \n\n© container_memory_working_set_bytes{containel\n© container_memory_working_set_bytes{endpoint=\"https-metrics\", env=\"https://pro-alien.dataos.app\", id=\"/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod< 135626752\n\n© container_memory_working_set_bytes{endpoint=\"https-metrics\", env=\"https://pro-alien.dataos.app\", id=\"/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod< 212992\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/service/service_dataos_operations_user_spac_user.png": {
+    "hash": "fd9a3ae443777855b9eccb9b26d2f3b73194d2138f989fdf72a19ef40791a0e0",
+    "text": "a DataOS® operations —_ User Spac\n\nUser Space\n\nResources Minerva Queries\nName «  cola-server\ncola-server\n\n« < > »\n\ncola-server\n\nResource Details Resource YAML Resource Runtime\n\nRuntime Status\nrunning:1\n\nRuntime Nodes\n\nAl\nName « PP All\nName «\n\ncola-server-xjmg-d- cola-server\nf6b6d49cd-Id8hb\n\n« < > »\n\nLast Refresh\n2025-06-03T12:11:36.726Z\n\nType Pod Name Workspace\npod- cola-server-xjmg-d- research\ndeploymen f6b6d49cd-Id8hb\n\nt\n\nPage 1of1|GoTo: 1\n\nData\nPlane\n\nhub\n\n \n\nPhase All\n\nrunning\n\nShow 10\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/service/service_time_series_1000_usage_request.png": {
+    "hash": "7fe9101bf37fb63490860b0bdc558cb89a99eee73cbe7f715807911899e068b3",
+    "text": "CPU Time\n\nore\n\n \n\n€\n<\n>\na\noO\n\nSeries\n\n1,000 m\n\n \n\n-O- Usage\n800 m ~O> Request\n-O> Limit\n600m\n400 m\n\n200m\n\n   \n \n   \n  \n\nome .\nQo, Oo so 0 0, x\ne008 580 Ros 3% pV 08%, fog\n\n4g 4g 6 4o\" ot oe\nae\" pe ue si oe cae ss si ph oe se ce rae 9\n\n    \n\nTime\n\n      \n\n<\n\nMEMORY Time Series\n\nMemory in mebibyte\n\n1,200 MiB\n\n~O- usage\n1,000 MiB Oo Request\n800 MiB —O> Limit\n\n600 MiB\n\n \n\n400 MiB\n\n200 MiB\n\n   \n\nOMB Time\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/workflow/workflow_dataproductsync_owner_metis_tier_domain.png": {
+    "hash": "abb260fc03bdaefbc27c399d0b2d0d388cf01212ae293413ed6df2a056c93bca",
+    "text": "Y= data-product-sync 0\n\na Owner: metis @ | Tier: - @ | Domain: - B\n\ndataos.data-products dataos.Scanner\n\n \n\n= Scan and publish all the data product related information\n\nDetails Jobs Activity Feeds & Tasks 1279 Run History Manifest\n\nRun Name > Status\n\ndata-product-sync-zxgd-1748595600 Succeeded\na\n\ndata-product-sync-zxgd-1748584800 Succeeded\n\ndata-product-sync-zxgd-1748574000 Succeeded\n\nStarted At\n30 May 2025 at 02:30 PM\n30 May 2025 at 11:30 AM\n\n30 May 2025 at 08:30 AM\n\n \n\n \n\n \n\n \n\n{=} Date Filter 2025-05-23 2025-05-30\n\nDuration\n1 Minutes 27.00 Seconds\n1 Minutes 35.00 Seconds\n\n14 Minutes 32.00 Seconds\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/workflow/workflow_aggregates_states_time_slices_type.png": {
+    "hash": "62aa09a47e3b1167d856b936359d1a7c2c6f0a4a76022f1424f4f15d3b4a9c9b",
+    "text": "Aggregates (pod states: 20 time slices: 2)\n\nType\n\ncpu\n\nmemory\nmemory\n\nmemory\n\nName\n\nusage\n\nrequest\n\nlimit\n\nusage\n\nrequest\n\nlimit\n\nMean\n\n42.86\n\n1112.50\n\n1200\n\n56.22\n\n1600.00\n\n1408.00\n\nMedian\n\n42.86\n\n1112.50\n\n1200\n\n56.22\n\n1600.00\n\n1408.00\n\n150\n\n256.00\n\n85.71\n\n2075\n\n2400\n\n112.43\n\n2944.00\n\n2816.00\n\nsum\n\n85.71\n\n2225\n\n2400\n\n112.43\n\n3200.00\n\n2816.00\n\nUnit\nmillicore\nmillicore\nmillicore\nmebibyte\nmebibyte\n\nmebibyte\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/workflow/workflow_logical_plan_physical_plan_usage.png": {
+    "hash": "92f1fb0c816e9d5099b2321d0bb4deb15f7ff1f8ea4d09599c080baf2afaaaef",
+    "text": "Logical Plan Physical Plan Usage\n\n \n\n \n\n \n\nCPU Time Series\n2,500 m\n@B Usage\n© 2,000 m GB Request\nSs ts00m GB Limit\n€\n£  1,000m\n=)\na\n° 500 m\nom Time\nop? ye ©\n: oa\nnor\" 29\nget agioe\"\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/workflow/workflow_dataproductsyne_tables_lakehousehemmarketing_lakehousesys01lensqueryevents02_lakehousesrumodemperformancedata.png": {
+    "hash": "69035b016250ba26fb6bf57b405f558a87a942d3d3a394e339bfb33adf1a6d4f",
+    "text": " \n\n \n\nAll v | data-product-syne| ew kK) @\n\n \n\n \n\n \n\n \n\n \n\nTables\n\n \n\n \n\nw  lakehouse.hem.marketing\nw  lakehouse.sys01.lens_query_events_02\nw  lakehouse.sru.modem_performance_data\n= Workflows\ndata-product-sync\nj delivery-delay-monitor-dp-scanner\n\ndata-product-scan\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/workflow/workflow_memory_time_series_memory_mebibyte.png": {
+    "hash": "3e3c8dcac52affecd555f7418974e25d0e9f22650393340574c4b09e7fcc07ee",
+    "text": "MEMORY Time Series\n\nMemory in mebibyte\n\n3,000 MiB\n2,500 MiB\n2,000 MiB\n1,500 MiB\n1,000 MiB\n\n500 MiB\n\no MiB\n\n \n\n \n\n@B Usage\nGB Request\nGB Limit\n\nTime\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/cluster/cluster_bqcluster_clusters_bqcluster_yreareriewee_euerars.png": {
+    "hash": "943e8cf4dccf604cd5fba2a70e482cd801c50ece3b9e60af2c65819996ac3899",
+    "text": "eg\n\nAll» _ bqcluster\n\n®&® Clusters\n\nbqcluster\n\nyreareriewee op euerars:\n\nctrl\n\nK\n\n®\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/cluster/cluster_cluster_mosoneeee_mosoneeee.png": {
+    "hash": "c6ef352dab1299733c5d33992628b28e352d3344db445443a78756806301ae82",
+    "text": "Cluster\n\n \n\n      \n \n\n      \n \n\nMosoneeee Mosoneeee\n\n \n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/cluster/cluster_clusters_public_bqcluster_owner_tiers.png": {
+    "hash": "9673aee2c0f52c15839797276a8a46f821c1e0b1dd2be0bf9caac74232a388e1",
+    "text": "Clusters | public\n\nSQ bqcluster 0\n\n \n\n \n\n \n\na Owner: - 7 @ Tiers - @ | Domain. - @\ndataos.cluster dataos.mineva 2\n=~ thedefault minervaclustera 2 a\nDetails Activity Feeds & Tasks 2 Runtime Manifest\nName > Q Created ¢ Workspace\n03 Jun 2025 13:26:24 public\n\nbqcluster-ss-0\n\neo\n\n¥ Meta Version: 0.3\n\nData Plane\n\nhub\n\nCreated: 29 minutes ago\n\nUpdated: 27 minutes ago\n\nStatus +\n\nRunning\n\nYW Follow: 0\n\nUptime\n\n30 minutes ago\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/cluster/cluster_bgclusterss0_runtime_node_details_runtime.png": {
+    "hash": "18a8d698edd8eba3f5d1e7be0fb2d4df7b583ced8db8d75cb7d7f23ebab0b51d",
+    "text": "> bgcluster-ss-0: Runtime Node Details\n\nRuntime Node Details Runtime Node YAML Runtime Node Logs Runtime Node Usage\n\nInfo\nPod Name Workspace\nbqcluster-ss-0 public\n\nAggregates (node states: 556 time slices: 66)\n\nType Name Mean Median Min Max Unit\n\ncpu usage 53.21 15.94 0 535 millicore\ncpu request 1200 1200 1200 1200 millicore\ncpu limit 1200 1200 1200 1200 millicore\nmemory usage 1274.38 1252.90 0 1940.24 mebibyte\nmemory request 2048 2048 2048 2048 mebibyte\n\nmemory limit 2048 2048 2048 2048 mebibyte\n\n \n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/cluster/cluster_query_history_share_split_last15minutes.png": {
+    "hash": "64d8a3b5f87ed8aed6b113d4233fc212a7f64786b441c2efa91cb01c8e3b5b19",
+    "text": "oC Ra ee ORs cs nce eck +h © B®\n\n© Query history © Share v\n\ny split Add» © Last15minutes v Q cea ae\n\n \n\n \n\na\nane ee) OM OMEG]\n\niS eeu\n\nee cee a: ng Explain @ Builder Code\nally Graph\n\nNT Tenor)\nCe Berea\n\ncontainer_cpu_usage_seconds_total v pod ~- = ~  bqcluster-ss-O -~ |x ar\n\nCee Cs RT OMT are tree\n\nPe) Ce ae Ot SC eM ee Co\n\n+ Addquery @ Query inspector\n\n(eli) TATE Le SLE LCST CO CED\n\n200\n150\n\n100\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/cluster/cluster_split_absolute_time_range_vercleun.png": {
+    "hash": "960810d898fd17b8abab367b36f1be6810841f42ca49f559a1f375d55a014ce6",
+    "text": "(D split Add ~\n\nAbsolute time range\n\nony\n\nLio Vercleun)\n\n \n\nTo\n\nLely\n\ncw\n\na lelo RL Beli aOR Rd\n\n \n\nPe eg oe EER UR nan\ntime intervals, recently used intervals will\nEyecam es\n\nRead the documentation to find out more\nEla U RCN cme OMT NCTC (-om\n\nTeta oe UTC+05:30\n\n© Last 30 minutes ~\nQ Search quick ranges\n\neT eR\neT Le\n| eT ecTem Tes\nLast 1 hour\nTECH TOLLE\neT OLES\nLast 12 hours\nLast 24 hours\n\n[ETE\n\nQ\n\nMRC Reet\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/cluster/cluster_dataos_operations_user_spac_user.png": {
+    "hash": "e08d442826bfe1a9cee18fba7133fdfa7a15998284b7a12167b0206865162092",
+    "text": "a DataOS® operations —_ User Spac\n\nUser Space\nResources Minerva Queries\nName « _ bqcluster\n\nbqcluster\n\n« < > »\n\nbqcluster\n\nResource Details\n\nRuntime Status\nrunning:1\n\nRuntime Nodes\n\nName «\n\nbqcluster-ss-0\n\n« < >\n\nResource YAML\n\n‘App\nName «\n\nbqcluster\n\n»\n\nResource Runtime\n\nAll\n\nLast Refresh\n2025-06-03T08:57:23.587Z\n\nType Pod Workspace\nyp Name P\npod- bqcluster- —_ public\n\nstatefulset ss-0\n\nPage 1of1|GoTo: 1\n\nData\nPlane\n\nhub\n\nAll\n\n \n\nPhase All\n\nrunning\n\nShow 10\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/cluster/cluster_memory_time_series_memory_mebibyte.png": {
+    "hash": "49828ef8e1704adcea49ddb788d75ad9315950f05d3091b0717cd8b2f7cb7bfd",
+    "text": "MEMORY Time Series\n\nMemory in mebibyte\n\n2,500 MiB\n\n2,000 MiB\n\n1,500 MiB\n\n1,000 MiB\n\n500 MiB\n\no MiB\n\n \n\n@B Us2g¢\nGB Request\nSB iim\n\nTime\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/cluster/cluster_split_last15minutes_tate_lcst_meel.png": {
+    "hash": "512fa3ee9c8479f0d7b9baa1de5a44d552a13b1ddae9d2849600d7e9540ceb47",
+    "text": "y split Add» © Last15minutes v Q cea ae\n\n(eli) TATE Le SLE LCST CO CED\n\n \n\n| Co Meel CT\n\nally Graph\n\nCe Berea\n\n \n\ncL)\noT\n\n80 a OOO OD OL a\n0 ed\n\n \n\n10 SEs Heo) ay Ho)\n\n \n\n10 14:44:00 14:45:00 i 00 ay le)\n\n \n\ntole} 14:47:00 SLE LRoLe) Ey\n\n \n\n14:40:00 14:41:00 14:42:00 er\n\n   \n\na erence UOT Motos Mole OCCT ee ol a OE oles Coe een eM Ce AC eRe Le COE MN EMU els CR Co aN ot look eels (OYA) hct 10 MPG ema\n\n \n\nMeee Teo ole RR STR ee Ute URC a eae eR ec se ee [OT Roya Le) OP EY oem\n\n \n\nCo OC Lu Me MLO ml SUMO ToL MCL roo Mol SUE A CODA ATER SSUES MALU IRCA Le] WMS EM OOo] a cd LoL sls Teo oe PAR ETC Roo CC\n\nTable ae eet\nami) a1 foto Te cpu endpoint Ng id image instance\n2025-06-03 14:54:4¢ container_cpu_usage, bqcluster ile] veer LUllery https://pro-alien.data /kubepods.slice/kube docker.io/tmdcio/trin: 10.212.0.63:102\n2025-06-03 14:54:4¢ container_cpu_usage. ile] veer LUllery Hales 59) 91ers CLL ole Mey ae 10.212.0.63:102\n\n2025-06-03 14:54:4¢ container_cpu_usage. ile] veer LUllery https://pro-alien.data /kubepods.slice/kube mcr.microsoft.com/os 10.212.0.63:102\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/cluster/cluster_time_series_1200_usage_1000m.png": {
+    "hash": "52dcd9bbc6fbadad92d8c70025bfaf32eeaf2868a74198b8e0ffac2a49b9ce1d",
+    "text": " \n\nCPU Time Series\n\n \n\n \n\n \n\n \n\n1,200 m\n~O- usage\ne  1000m -O- request\nS 800m ~O> Limit\nE 600m\na 400m\n5\n200m\nom Time\nst\n0!\n9)\n200!\n0 gi pat\nMEMORY Time Series\n2,500 MiB\n~O- Usage\n2\nS 2,000 MiB ~O> Request\n3 -O> Limit\n2 1,500 mi\ns\n2 1,000 MiB\nS\n&\n3 500 MiB\noMmiB Time\naa or oe\n9\" 190\" 190\na =o ioe\"\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/cluster/cluster_dataos_operations_user_space_core.png": {
+    "hash": "aaa27d37ee12a732920e4f89ef048b19dab99f1333e7bd9079fd5e7190622bda",
+    "text": "né DataOS? operations User Space Core Kernel Cloud Kernel Product @ 2\n\nUser Space\n\nResources Minerva Queries Cluster Analysis Cc\nName « Type « cluster Workspace Status Runtime Owner\nbqcluster cluster public active running:1 « ——_\n\n«<)>» Page 1of1|GoTo: 1 Show 10\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/cluster/cluster_aggregates_node_states_time_slices.png": {
+    "hash": "758c089a9dc3f2ee73bce27085297ecb2ad6fa4db312826aec625f39fe8336e9",
+    "text": "Aggregates (node states: 9 time slices: 2)\n\n \n\n \n\nType Name Mean Median Min Max sum ui\n\ncpu usage 460 460 230 690 920 millicore\ncpu request 200 200 200 200 400 millicore\ncpu 2000 2000 2000 2000 4000 millicore\nmemory usage 527.72 527.72 263.86 791.58 1055.44 mebibyte\nmemory request 2432.00 2432.00 2432.00 2432.00 4864.00 mebibyte\n\nmemory limit 2432.00 2432.00 2432.00 2432.00 4864.00 mebibyte\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/cluster/cluster_split_last30minutes_thanos_o9eo_explain.png": {
+    "hash": "a4f587a165e68cac78f1c5679ec91bed832b56aee484cc17d5e1d759eed503fa",
+    "text": "O Split Add- © Last30minutes vy Q cea ae\n\n \n\nay (thanos) O9eo wt\niS eeu\nee cee a: ng Explain @ Builder Code\nally Graph\nNT Tenor)\nCe Berea\ncontainer_memory_working_set_bytes v pod - = »-_ miniature-ss-O ~ | x ar\n\n+ Operations\n\ncontainer_memory_working_set_bytes{pod=\"miniature-ss-8\"}\n\nPe) Ce ae Ot SC eM ee Co\n\n+ Addquery @ Query inspector\n\n(eli) TATE Le SLE LCST CO CED\n\n8 Bil\n\nri\n\nrai\n\nPail\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/cluster/cluster_tate_lcst_pail_iors_1630.png": {
+    "hash": "c3c894ea518daed896a467488881891b02b581143a0ed9bddb09504cb9578ced",
+    "text": "(eli) TATE Le SLE LCST CO CED\n\n8 Bil\nri\nrai\nPail\n\nto} ee\niors) 16:30 acct) 16:40 ort) 16:50\n\nCL ee Mo OLSON Le RCM LL See ML Mo Cee CNS Loe LU Lele tele Me tL es ee ee er Tele aed\n\nSMe Ree CCC SC em oe ee UR Le eM ee te Ee ec tot ete ye ee eC RY CABS MPN\nhttps://pro-alien.dataos.app\", id=\"/kubepods. slice/kubepods-burstable.slice/kubepods-burstable-pod91a9e3be_e471_415b_88¢2_62ab4\n\n \n\n= {_name_=\"container_memory_working_set_bytes\", endpoint=\"https-metrics\", env=\n\nTable ae eet\nami) a1 foto Te endpoint rN ite] ele |-3 instance sole)\n2025-06-03 16:54:4€ container_memory_w miniature https-metrics https://pro-alien.data /kubepods.slice/kube docker.io/tmdcio/trin« 10.212.4.63:10250 —_ kubelet\n2025-06-03 16:54:4€ container_memory_w https-metrics https://pro-alien.data /kubepods.slice/kube a lOhA Ve Soh (072510 EL CU ol\n\n2025-06-03 16:54:4€ container_memory_w https-metrics https://pro-alien.data /kubepods.slice/kube mcr.microsoft.com/os 10.212.4.63:10250 _—_ kubelet\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/cpu/cluster/cluster_time_series_millicore_2000_1500.png": {
+    "hash": "ad9b75d28bfa245d6b8bbe0c5b18605541851c41270a8b0e493c769acd834e33",
+    "text": "CPU Time Series\n\nCPU in millicore\n\n2,000 m\n\n1,500 m\n\n1,000 m\n\n500 m\n\nom\n\n \n\nEB Usage\nGB Request\nSB tint\n\nTime\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/depot/depot_depots_poss3_explore_assets_meta.png": {
+    "hash": "1248bc7eec900150819c65c355f6618cf0c74351f56084bbeb17d74708ff2f1c",
+    "text": "Depots | poss3 Explore Assets | 39 Meta Version: 0.1 | Created: 5 months ago — Updated: 5 months ago | ¥ Follow: 0 lean :\n\ni@ poss3 0\n\na Owner: oe @ Tier - @ | Domain: - @\n\nAdd\n\n \n\n \n\n= NoDescription @ a\n\nDetails Activity Feeds & Tasks 0 Runtime Manifest\n\n \n\nName > 2 Created > Workspace > Data Plane > © Status\n\no\n“\nc\n\n2\n3\na\n\no\n\nposs3-ss-0 11 Jun 2025 21:01:56 user-system hub Running 2 days ago\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/depot/depot_dataos_operations_user_space_core.png": {
+    "hash": "83f97fb6bcb298460b461aa8245d6ef3059d3004375ed9aa5981f2001aa105cf",
+    "text": " \n\nDataOS® operations User Space —Core Kernel\n\nUser Space\n\nResources Minerva Queries\nName\nazureblobshowcase\n‘crmbq\ncustomer\ndebiqquey\ndepotservice\ndistribution\ndropzone01\nfastbase\ngateway\n\ngesnabeel01\n\n« <> »\n\nCloud Kernel\n\nProduct\n\nmee)\n\nall\ndepot\nbundle\n\ndepot cluster\n\ncompute\ndepot\ndatabase\ndepot depot\ninstance-seret\ndepot\nlakehouse\ndepot\ndepot\ndepot\ndepot\ndepot\n\nPage 1 of 7| Go To:\n\n1\n\nactive\n\nactive\n\nactive\n\nactive\n\nactive\n\nactive\n\nactive\n\nactive\n\nactive\n\nactive\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/depot/depot_dataosmetis_activity_products_assets_resources.png": {
+    "hash": "e551e4f2f7b1cee64cafdf5d119336aef9d6a147b00beeb22987bdbf9a2c5ccd",
+    "text": "DataOS®metis activity Products Assets Resources all\n\n \n\n \n\n& Owner: dataos-manager 2 | Tie - B@ | Domain: - B\n\nS Add a\n\n \n\n= _ Default DataOS Pulsar Depot, system tenant 2\n\nDetails Activity Feeds & Tasks 2. Manifest\n\n \n\nType Layer Version State Agategate Status Run As User\npulsar system vi active active dataos-manager\nConfigurations\n\nRequests Limits\n\n‘cpu: 100m ‘cpu: 1000m\n\nmemory: 550Mi memory: 1500Mi\n\n‘Spec\n\n1 parans:\n2 “users: true\n3 _verifyHostnane: false\n\n4 tenant: systen\n\n5 adninUrl: https: //pulsar-proxy.caretaker.svc.cluster.local:443\n\n6 serviceUrl: pulsaressl: //pulsar-proxy.caretaker.svc.cluster.local:6651\n7\n\nGovemy setings O © &\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/depot/depot_dataosmetis_activity_products_assets_resources_dup.png": {
+    "hash": "d5f354dca13114b53fb13ece458ca7e9dc31f37017e00dba50f4555f3c380dc9",
+    "text": " \n\nDataOS®metis activity Products Assets Resources all eallK) Q\n\n \n\n \n\n \n\nResources Advance Fille’ Depots) systemstreams\n624 ‘Type\nzy  systemstreams\na\n@ Services v 189 Depot Source\n[t vepots an & Owner: dataos-manager | Created: 2months ago | Tier: - | Domain: - | State: Active\n@& Clusters ao5 «(Domain Default DataOS Pulsar Depot, system tenant\n@ Bundles 22 Owner\n12 Worker\n& s ed stat Depots | icebasedev2\nte\n® Policies an\nactive 7 j\nS Stacks 35 @®  icebasedev2\ndeleted 139\n& Databases s unknown 3 8 Owner: | Created: 26 days ago | Tier - | Domain: - | State: Active\n© Computes 8 Tags My v2alpha abfss depot for iceberg\n= Secrets 24\nddataos.dropzone _dataos. mysql\nMonitors a Tier\n(__Lakehouses 15\n@® Instance Secrets 125 Depots | icebasedev\n3 Operators 0\nPagers Ba © icebasedev\nLenses 36 & Owner: | Created: 26 days ago | Tier: - | Domain: - | State: Active\n\nMy v2alpha abfss depot for iceberg\n\ndataos.dropzone —_dataos. mysql\n\nGovemy setings O © &\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/depot/depot_dataos_operations_user_space_corel.png": {
+    "hash": "3a9d4d2b80ce440cab2a6819c07e7adf233bff86d236d7a0dc414aff801efe29",
+    "text": " \n\nDataOS® operations User Space — Corel\n\nUser Space\n\nResources Minerva Queries\nName\nazureblobshowcase\n‘crmbq\ncustomer\ndebiqquey\ndepotservice\ndistribution\ndropzone01\nfastbase\ngateway\n\ngesnabeel01\n\n« <> »\n\ndropzone01\n\nResource Details\n\nInfo\n\nName\ndropzone01\n\nTags\n\ndataostyperesource\n\nStatus\n\n‘Status\nactive\n\nBuilder Stage\nbuilding\n\nResource YAML.\n\nType\ndepot\n\ndataostyperclusterresource | dataostesource:depot\n\nCloud Kernel Resource Count\n\n1\n\nRuntime Status\n\nLayer Version\nuser vl\ndataosiayeruser\n\nWebservice Resource Count\n\n3\n\nDescription\n\nDefault Drop Zone Depot\n\n‘Operator Runtime Resource Count\n\nOwner\ndataos-manager\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/lakehouse/lakehouse_lakehouse_policies_customersegmentspolicy_lakehouses_lakehouse.png": {
+    "hash": "e073666783ec3ebcbe7c9fbc9c5f85c31128f16b887775b708ce3b4da5d2a1ce",
+    "text": " \n\n \n\nAll lakehouse ak ®\n\n \n\n \n\n@) Policies\ne\ncustomersegmentspolicy\n(Q Lakehouses\nlakehouse\nmetalh\n\nnedcs3lakehouse\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/lakehouse/lakehouse_lakehouses_public_lakehouse_owner_dataosazure.png": {
+    "hash": "7578177895e3bcb063852200713b0b46c36154831b71deaa7df287e0d4a4b4fb",
+    "text": "Lakehouses | public\n\nQ\n\n \n\nlakehouse 9\n\n \n\n& Owner: ° -\n\n9 dataos.Azure —_dataos.Iceberg\n\n= Default Lakehouse 2 ©\nDetails Activity Feeds & Tasks 6\nWorkspace Version State\npublic vialpha active\n\n \n\n \n\n@ Tier - @ | Domain: -\ndataoslakehouse 2 [2]\na\n\nRuntime Manifest\n\nAggregate Status Compute\n\nactive runnable-default\n\nExplore Assets\n\nRun As User\n\n¥ Meta Version: 0.7\n\nDepot\nlakehouse\n\nCreated: 5 months age\n\nCluster\n\nlakehouse\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/lakehouse/lakehouse_adataos_operations_userspace_core_kernel.png": {
+    "hash": "fdaa3e752b6b516431df19369bbcd43b46335712d5d776aac44bfdad510f0c57",
+    "text": "aéDataOS® operations —_UserSpace _Core Kernel\n\nUser Space\n\nResources Minerva Queries\n\nName « | lakehouse|\n\nlakehouse\n\n« < > »\n\nCloud Kernel Product\nType « lakehouse\nlakehouse\n\nWorkspace\n\npublic\n\nPage 1 of 1| Go To:\n\n1\n\nStatus\n\nactive\n\nRuntime\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/lakehouse/lakehouse_dataos_operations_user_spac_user.png": {
+    "hash": "161f9acd957bf96a4b78b04637e159751f44c4082c0ddc80e28b397fa589f646",
+    "text": " \n\nDataOS® operations —_User Spac\n\nUser Space\nResources Minerva Queries\ndocker-secret\n\nName «\n\ndocker-secret\n\nmodern-docker-secret\n\n« < > »\n\ndocker-secret\n\nResource Details\n\nInfo\n\nName\ndocker-secret\n\nTags\n\ndataos:type:resource\n\nStatus\n\nStatus\nactive\n\nBuilder Stage\nbuilding\n\nResource YAML\n\nType\nsecret\n\ndataos:resource:secret _dataos:layer:user\n\nCloud Kernel Resource Count\n\n2\n\nWorkspace\n\npublic v1\n\nVersion\n\ndataos:workspace:public\n\nWebService Resource Count\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/worker/worker_dataos_operations_userspace_core_kernel.png": {
+    "hash": "59baf476dcf4a61d39451ed588f396934b1a4d92fec6deafdbe30f984af77f84",
+    "text": " \n\nDataOS® operations —_UserSpace _—Core Kernel\n\nUser Space\nResources Minerva Queries\nName « — data-product-insights-wor\n\ndata-product-insights-worker\n\nCloud Kernel\n\nType «\n\nworker\n\nProduct\n\nworker\n\nPage 1 of 1| Go To:\n\n1\n\nWorkspace\n\npublic\n\nStatus\n\nactive\n\nRuntime\n\nrunning:1\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/worker/worker_dataproductinsightsworker_workers_dataproductinsightsworker_churndataproductworker.png": {
+    "hash": "b639b1b43d337a229cfd20436c8cf96e1e49a05fc5c351f61f04cd16e9fee80c",
+    "text": " \n\nAll » | data-product-insights-worker\n\n \n\new K\n\n®\n\n \n\nT Workers\ndata-product-insights-worker\n\nchurn-data-product-worker\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/worker/worker_dataproductinsightsworker_resource_details_resource_yaml.png": {
+    "hash": "6cc32ab16cdef9159b22cd61d70550618ed921b4a14003b690570651e8981dda",
+    "text": "data-product-insights-worker\n\nResource Details Resource YAML Resource Runtime\n\nRuntime Status Last Refresh\nrunning:1 2025-05-30T08:04:59.720Z\n\n \n\nRuntime Nodes\n\nApp Data\n\nName « Name « All Type Pod Name Workspace Plane All Phase All\ndata-product-insights- data-product-insights-worker pod- data-product- public hub running\nworker-r4gw-ss-0 statefulset  insights-worker-\n\nr4gw-ss-0\n\n«i <)>) » Page 1of1|GoTo: 1 Show 10\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/worker/worker_workers_public_dataproductinsightsworker_tier_domain.png": {
+    "hash": "be35d3d50ee59ce309433c9aee0b0c8b46552689658fbe5b62e14421c123750e",
+    "text": "Workers / public\nTi] | data-product-insights-worker 0\n\nwi 2 | Tier: - 2 | Domain: - B\n\n& owner @\n\n \n\ndataos.iens 2\n\n \n\n=~ worker is part of the lens data-product-insights in workspace public 2\n\n \n\nDetails Topology Activity Feeds & Tasks 3 Runtime Manifest\nWorkspace Version State Aggregate Status Runtime State Replicas Stack\npublic vibeta active active running:1 1 container\n\n¥ Meta Version: 0.4\n\n‘Compute\n\nrunnable-default\n\nCreated: 16 days ago\n\nRun As User\n\n~—\n\nUpdated: 16 days ago\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/lens/lens_adataos_operations_userspace_core_kernel.png": {
+    "hash": "04165ba1c0b99c3cd3aab885ef9861787944d6c7c5a638f0d52471d485c36a29",
+    "text": "aéDataOS® operations —_UserSpace _Core Kernel\n\nUser Space\n\nResources Minerva Queries\nName — data-product-\ndata-product-insights\n\n« < > »\n\nCloud Kernel\n\nType «\n\nlens\n\nProduct\n\nlens\n\nPage 1 of 1| Go To:\n\n1\n\nWorkspace\n\npublic\n\nStatus\n\nactive\n\nRuntime\n\nOwner\n\nShow 10\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/lens/lens_lenses_dataproductinsights_explore_assets_meta.png": {
+    "hash": "965f1b08a6c21cbd383a668f77d4ec2c18e5f503bc5a8b55c1f1d4c3fdc6e363",
+    "text": "Lenses |\n\n \n\ndata-product-insights 9\n\n \n\n \n\n \n\nExplore Assets ¥ Meta Version: 0.5 Created: 1 month ago\n\nQA Owner: i A | Tier: - B | Domain: -\n\nS dataosiens 2\n\n= This data model provides comprehensive insights data products. 2 @)\nDetails Model Permissions Activity Feeds & Tasks 5 Runtime Manifest\nWorkspace Version State Aggregate Status Compute Run As User\npublic vialpha active active runnable-default\nLifecycle Event(s)\n\nCreated\n\n+ 13 May 2025 at 04:53 PM\n\n+ 13 May 2025 at 04:37 PM\n\nBundles (1)\n\ndata-product-bundle\n\n> Deleted\n\n13 May 2025 at 04:51 PM\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/lens/lens_lens_lenses_dataproductinsights_churndataproduct_churndataproduct.png": {
+    "hash": "630f7e1fdafc2316ab65fc96bac2c5e26a6775393e793d1e60dc6ce0bafb94cc",
+    "text": "cu kK ®\n\nLens\n\nLenses\n\n \n\n \n\ndata-product-insights\nchurn-data-product\n\nchurn-data-product\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/lens/lens_dataos_operations_user_spac_dataproductinsights.png": {
+    "hash": "ee0eac0213b2f7d8f4ad0de973854051e51cffb44c89e8eb962c07eafddee1fc",
+    "text": " \n\nDataOS® operations — User Spac  data-product-insights\n\nUser Space Resource Details Resource YAML\nResources —_ Minerva Queries Info\nName Type Workspace Version Description Owner\nName — data-product- data-product-insights lens public vialpha This data model provides a\ncomprehensive insights data\ndata-product-insights products.\n\nTags\n\nlens dataosctyperesource —dataos:resourceilens _dataos‘layeruser__dataos:workspace:public\n\nStatus\nStatus Cloud Kernel Resource Count WebService Resource Count Operator Runtime Resource Count\nactive 2 4\n\nBuilder Stage\nbuilding\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/secrets/secrets_secrets_public_dockersecret_owner_tier.png": {
+    "hash": "f8bfac38ac735d059ffda22982f962af26f372a8239fba4497f824d3f3b9fe91",
+    "text": "Secrets I public\n\n©  docker-secret 4\n\n \n\n \n\n \n\n2 owner - 2 tier - B | domain - 2\nS ‘Add @\n=  NoDescripton 2 &\n\nDetails Activity Feeds & Tasks 1 Manifest\n\nWorkspace Version State Aggregate Status\n\npublic va active active\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/secrets/secrets_dataos_operations_user_space_core.png": {
+    "hash": "510577de832b8bf6a4a21fa4ffea765d71ff20e26c8f527df3486547d2312b90",
+    "text": "a DataOS® operations User Space Core Kernel Cloud Kernel Product\n\nUser Space\n\nResources Minerva Queries\n\nName « Type « — secret Workspace Status Runtime Owner\n\ndocker-secret secret public active\n\nmodern-docker-secret secret public active -\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/secrets/secrets_dockersecret_secrets_dockersecret_moderndockersecret_dockeractionssecret.png": {
+    "hash": "11f8a7f6049883944b3639ba080af66638ce8f0442592174df2db06bc05b1c23",
+    "text": "All v\n\n \n\n \n\ndocker-secret\n\new K\n\n®\n\n \n\n& Secrets\n\ndocker-secret\n\nmodern-docker-secret\n\ndocker-actions-secret\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/secrets/secrets_dataos_operations_user_spac_user.png": {
+    "hash": "161f9acd957bf96a4b78b04637e159751f44c4082c0ddc80e28b397fa589f646",
+    "text": " \n\nDataOS® operations —_User Spac\n\nUser Space\nResources Minerva Queries\ndocker-secret\n\nName «\n\ndocker-secret\n\nmodern-docker-secret\n\n« < > »\n\ndocker-secret\n\nResource Details\n\nInfo\n\nName\ndocker-secret\n\nTags\n\ndataos:type:resource\n\nStatus\n\nStatus\nactive\n\nBuilder Stage\nbuilding\n\nResource YAML\n\nType\nsecret\n\ndataos:resource:secret _dataos:layer:user\n\nCloud Kernel Resource Count\n\n2\n\nWorkspace\n\npublic v1\n\nVersion\n\ndataos:workspace:public\n\nWebService Resource Count\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/service/service_flashservicetraining_tables_lakehouse_modemtesting_lakehouse.png": {
+    "hash": "88210d4ad0ba219d465c5c09a17cd98202518afd7b8b9290f813b7d0f07c109b",
+    "text": " \n\nAll | flash-service-training ak ®\n\n \n\n \n\n&& tables\ne\nw lakehouse. @.modem_testing\nw lakehouse. “.modem_tests\n\n(PB _ public.modem-failure-analysis.modem_performance\n@ Services\nflash-service-training\nflash-service-training\n\ntextile-flash\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/service/service_adataos_operations_userspace_core_kernel.png": {
+    "hash": "f7d7792d4c842468f5a862fe1a60e4103cb63f4bf7db79af2da1ea907622ad53",
+    "text": "aéDataOS® operations —_UserSpace _Core Kernel\n\nUser Space\n\nResources Minerva Queries\n\ntoe\n\nflash-service-training\n\nflash-service-training\n\n« < > »\n\nCloud Kernel\n\nType «\n\nservice\n\nservice\n\nProduct\n\nservice\n\nPage 1 of 1| Go To:\n\nWorkspace\n\npublic\n\ncurriculum\n\nStatus\n\nactive\n\nactive\n\noe\n\nCc\nRuntime Owner\nrunning:1 =\nrunning:1 iamgroot\n\nShow 10\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/service/service_flashservicetraining_owner_iamgroot_tier_domain.png": {
+    "hash": "43c79d15e13c83bdc930fd8f252b7067a5caa71c19e154f21a1e4bd5b56dfcef",
+    "text": "v\n\nflash-service-training 9\n\nOwner: iamgroot @ | Tier: - @ | Domain: - 2\n\ndataosservice 2\n\n \n\n \n\na\n\n= flashservice 2\n\nDetails Topology Activity Feeds & Tasks 1 Runtime Manifest\n\n \n\nWorkspace Version State Aggregate Status Runtime State\ncurriculum va active active running:1\nConfigurations\n\nIngress Auto Scaling Requests\n\nNo Ingress available No Auto Scaling available cpu: 1000m\n\nmemory: 1024Mi\n\nService Port Replicas\n5433 1\nLimits\n\nStack\nflash+python:2.0\n\nCompute\n\nrunnable-default\n\nRun As User\n\niamgroot\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/service/service_flashservicetraining_resource_details_resource_yaml.png": {
+    "hash": "c39625c5ae57dcb53f7ff198b50ef5a406af8603c4fff10683fc0f98562d6e54",
+    "text": "flash-service-training\n\nResource Details Resource YAML Resource Runtime\n\nRuntime Status Last Refresh\nrunning:1 2025-05-30T07:40:28.685Z\n\nRuntime Nodes\n\nApp Data\nName « Name « All Type Pod Name Workspace Plane All\nflash-service-training- flash-service-training pod- flash-service-training- curriculum hub\nbz9y-d-7894df4c66- deploymen bz9y-d-7894df4c66-\nhmw4w t hmw4w\n«i < > » Page 1of1|GoTo: 1\n\n \n\nPhase All\n\nrunning\n\nShow 10\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/workflow/workflow_ps10scanner_workflows_ps10scanner_ps10scanner_ps10ingestionpipeline.png": {
+    "hash": "ed3246787673fce3b74931a9b7dfd89d0e9704ce81fb1b45281f04a886bc01b3",
+    "text": "All» ps10-scanner ai kK @®\n\nce\nl\n\n¥= Workflows\nps10-scanner\na\nps10scanner\nps10-ingestion-pipeline\nYW Depots\ni psld\n@® instance Secrets\nps10-r\n\nps10-rw\n\n \n\nsee) epowcene\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/workflow/workflow_adataos_operations_userspace_core_kernel.png": {
+    "hash": "5f7f479d32931bd797060d8d7979a3f56ee16bb1f520d961a5ebd5685db7e2a9",
+    "text": "aéDataOS® operations —_UserSpace _Core Kernel\n\nUser Space\nResources Minerva Queries\nName 4 _ingestion-user\n\ningestion-user-location\n\n« < > »\n\nCloud Kernel\n\nType «\n\nworkflow\n\nProduct\n\nworkflow\n\nPage 1 of 1| Go To:\n\n1\n\nWorkspace\n\npublic\n\nactive\n\nRuntime Owner\n\nsucceeded\n\nShow 10\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/workflow/workflow_dataos_operations_user_spac_user.png": {
+    "hash": "7fe39bbe169e7f061112a94a78fb57e81d9dee4006cae0644388955cf50a6512",
+    "text": "a DataOS® operations —_ User Spac\n\nUser Space\nResources Minerva Queries\nName 4 _ingestion-user\n\ningestion-user-location\n\n« < > »\n\ningestion-user-location\n\nResource Details\n\nRuntime Status\nsucceeded\n\nRuntime Nodes\n\nName «\n\ningestion-user-\nlocation-r-execute\n\ningestion-user-\nlocation-rd\n\n« < > »\n\nResource YAML Resource Runtime\n\nApp\n\nAll\nName «\n\ningestion-user-location\n\ningestion-user-location\n\nLast Refresh\n2025-05-29T11:01:18.454Z\n\nType Pod Name\npod- ingestion-user-location- public\nworkflow e9jn-9gp-ingestion-user-\nlocation-t-execute-\n283183309\npod- ingestion-user-location- public\n\nworkflow e9jn-9gp-2879168602\n\nPage 1 of 1| Go To:\n\nWorkspace\n\n1\n\nData\nPlane\n\nhub\n\nhub\n\n \n\nPhase All\n\nsucceeded\n\nsucceeded\n\nShow 10\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/workflow/workflow_workflows_public_meta_version_ps10scanner.png": {
+    "hash": "97a22004da75c48b947f8da772bfe386e0f181d5431accba0ffeebb08fb004b7",
+    "text": "Workflows | public ¥ Meta Version: 0.2\n\n¥=__ps10-scanner 9\n\na Owner: » @ | Tier: - B | Domain: - B\n\ndataos.Scanner 2\n\na\n\n \n\n= ___ The job scans schema tables and register metadata 2\n\nDetails Jobs Activity Feeds & Tasks 2 Run History Manifest\n\n \n\nWorkspace Version State Aggregate Status Runtime State\n\npublic va active active failed\n\nLifecycle Event(s)\n\nCreated > Deleted\n\n+ 17 January 2025 at 10:59 AM\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/bundle/bundle_bundle_azure_bundles_azurebillingbundle_ctrl.png": {
+    "hash": "ad4a8d4470102569ea51ac6188216c450abe391a24b61c1d5ed7ffecf20ec21b",
+    "text": "Bundle azure\n\n@ Bundles\n\n \n\nazure-billing-bundle\n\na\n\nctrl\n\nK\n\n®\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/bundle/bundle_adataos_operations_userspace_core_kernel.png": {
+    "hash": "e94839318dceff0c888a745aaf7cc7fe1823d983f6b6918e0c9309f7242fde94",
+    "text": "aéDataOS® operations —_UserSpace _Core Kernel\n\nUser Space\n\nResources Minerva Queries\nName = azure\nazure-billing-bundle\n\n« < > »\n\nCloud Kernel\n\nType «\n\nbundle\n\nProduct\n\nbundle\n\nPage 1 of 1| Go To:\n\n1\n\nWorkspace\n\nactive\n\nRuntime\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/bundle/bundle_dataos_operations_user_spac_user.png": {
+    "hash": "bec8a08e25e06849ca996c34988e916dbb5ecb3afc94f74b7f6c601a4bb16244",
+    "text": "a DataOS® operations —_ User Spac\n\nUser Space\n\nResources Minerva Queries\nName = azure\nazure-billing-bundle\n\n« < > »\n\nazure-billing-bundle\n\nResource Details Resource YAML\n\nInfo\n\nName Type\nazure-billing-bundle bundle\nTags\n\ndataproduct | Cloud Cost Analysis Azure\n\nStatus\nStatus Cloud Kernel Resource Count\nactive 1\n\nBuilder Stage\nbuilding\n\ndataos:type:resource\n\nLayer\nuser\n\ndataos:type:cluster-resource\n\nVersion\nvibeta\n\ndataos:resource:bundle\n\nWebService Resource Count\n\nDescription\n\nThis bundle resource is for\nCloud Cost Analysis data\nproduct's source aligned DP\n(Azure)\n\ndataos:layeruser\n\nOperator Runtime Resource Count\n\n1\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/bundle/bundle_bundles_meta_version_created_days.png": {
+    "hash": "adad90282c5350f542d99d770f0ebcdb92092eece2c1814ea7bc45c94684e0ff",
+    "text": "Bundles ¥ Meta Version: 0.3 Created: 4 days ago\n@ __ azure-billing-bundle\n\na Owner: @ @ Tier - @ | Domain - @\n\n \n\n©} dataos.Azure —_dataos.Cloud Cost Analysis dataos.dataos:layer.user__dataos.dataos:resource:bundle _dataos.dataos:type:cluster-resource 2\n\ndataos.dataos:type:resource _ dataos.dataproduct\n\n \n\n= This bundle resource is for Cloud Cost Analysis data product's source aligned DP (Azure) 2\n\nDetails Resources Activity Feeds & Tasks 2 Manifest\n\n \n\nLayer Version State Aggregate Status\n\nuser vibeta active active\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/instance_secret/instance_secret_adataos_operations_userspace_core_kernel.png": {
+    "hash": "6f96bcb96576200429889ab914f1b5f40051f727e499f7c81ad56c9ae07a1cea",
+    "text": "aéDataOS® operations —_UserSpace _Core Kernel\n\nUser Space\n\nResources Minerva Queries\n\nName « | bqdepot\n\nbqdepot-r\n\nbqdepot-rw\n\n« < >|»\n\nCloud Kernel Product\n\nType « __instance-secret Workspace\n\ninstance-secret\n\ninstance-secret\n\nPage 1o0f1|GoTo: 1\n\nStatus\n\nactive\n\nactive\n\nRuntime Owner\noe\n_\n\nShow 10\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/instance_secret/instance_secret_metis_catalog_endtoend_metadata_management.png": {
+    "hash": "7d0020050de9a36b2edc73b80c2493533811c6722919b1eacc31567c36925d7f",
+    "text": "& Metis Catalog\n‘An end-to-end metadata management solution that includes data discovery, governance, data quality, observability, and people collaboration\n\nAssets | Resources\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/instance_secret/instance_secret_bqdepotr_resource_details_info_name.png": {
+    "hash": "b37959169e5ab5a3aeea482c135d2d091a72c45a30c7d86728aec52aa1e74330",
+    "text": "bqdepot-r\n\nResource Details\n\nInfo\n\nName\n\nbqdepot-r\n\nTags\n\ndataos:type:resource\n\nStatus\n\nStatus\nactive\n\nBuilder Stage\nbuilding\n\nResource YAML\nType Layer\ninstance-secret user\n\ndataos:type:cluster-resource __dataos:resource:instance-secret\n\nCloud Kernel Resource Count\n\n1\n\nVersion\nv1\n\ndataos:layeruser\n\nWebService Resource Count\n\n1\n\nDescription\ndescription\n\nOperator Runtime Resource Count\n\nOwner\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/instance_secret/instance_secret_operations_administer_data0s_grafana.png": {
+    "hash": "0f1fe4114f3ffa4247f6487b3073f71aafd8579f735469031da136b11d4d96d2",
+    "text": "@ Operations\n\nAdminister the Data0S®.\n\nGrafana\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/instance_secret/instance_secret_instance_secrets_badepotr_owner_tier.png": {
+    "hash": "03292e7ed55be2ffce6138524fd5c92dad555ab413b0b78ca2fc4a505d753d2b",
+    "text": "Instance Secrets\n\n@®  badepot-r a\n\na Owner: - @ | Tier - @ | Domain: - 2\n\n \n\n \n\na\n\n= description 2\n\nDetails Activity Feeds & Tasks 0 Manifest\n\n \n\nVersion State Aggregate Status\nv1 active active\nLifecycle Event(s)\n\nCreated\n\n+ 7 April 2025 at 12:45 PM\n\n+\n\n¥ Meta Version: 0.1\n\nDeleted\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/instance_secret/instance_secret_bqdepot_tables_dataosckresyakdevamazonamazonmetadata_dataosckresyakdevamazonamazonmetadataext_dataosckresyakdevamazonuserdetails.png": {
+    "hash": "4e982ab4f4afbba4306fe89a7e7ac499d7967ae7d836cd6a84a32dcfe8711eb0",
+    "text": " \n\nbqdepot a [x\n\n \n\n \n\n \n\n \n\nTables\n\n \n\n \n\n@ dataos-ck-res-yak-dev.amazon.amazon_metadata\n@ dataos-ck-res-yak-dev.amazon.amazon_metadata_ext\n@ dataos-ck-res-yak-dev.amazon.user_details\nTR, Depots\n©  badepot\n@ instance secrets\nbavcpote\n\nbqdepot-rw\n\necono» apoucne\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/compute/compute_computes_meta_version_created_days.png": {
+    "hash": "037530b6380d4ff270161e816b49a7c1bfe2c13e689d18d3178733d6d35b72d9",
+    "text": "Computes ¥ Meta Version: 0.1 Created: 2 days ago\n\n@ _new-usecases 0\n\n@ | Tier: - @ | Domain: - B\n\n \n\na\n\n \n\n= compute for new-usecases 2\n\nDetails Activity Feeds & Tasks 0 Manifest\n\n \n\nLayer Version Data Plane State Aggregate Status\nsystem vibeta hub active active\nLifecycle Event(s)\n\nCreated > Deleted\n\n+ 12 June 2025 at 06:02 PM -\n\n+ 10 June 2025 at 03:01 PM 12 June 2025 at 06:02 PM\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/compute/compute_compute_newusecases_computes_newusecases_ctrl.png": {
+    "hash": "03e28021c44fda5ed65e148f68645f74a0d39dbf7bebe0a22c6f2c7f7a025dfd",
+    "text": "Compute new-usecases\n\n& Computes\n\n \n\nnew-usecases\n\na\n\nctrl\n\nK\n\n®\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/compute/compute_adataos_operations_userspace_core_kernel.png": {
+    "hash": "6b36f8482062205e0ff1e2dc96281e6b76479008617969ea19e649e6819da0dc",
+    "text": "aéDataOS® operations —_UserSpace _Core Kernel\n\nUser Space\nResources Minerva Queries\nName « new\n\nnew-usecases\n\n« < > »\n\nCloud Kernel Product\nType « compute\ncompute\n\nWorkspace\n\nPage 1 of 1| Go To:\n\n1\n\nStatus\n\nactive\n\nRuntime\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/compute/compute_dataos_operations_user_spac_user.png": {
+    "hash": "e14a96dc4e4f2473ff8cd8d802c3cd2c31cc86a8191cfff9725a6f30cb81745c",
+    "text": "a DataOS® operations —_ User Spac\n\nUser Space\nResources Minerva Queries\nName « new\n\nnew-usecases\n\n« < > »\n\nnew-usecases\n\nResource Details\n\nInfo\n\nName\n\nnew-usecases\n\nTags\n\ndataos:type:resource\n\nStatus\n\nStatus\nactive\n\nBuilder Stage\nbuilding\n\nResource YAML\n\nType\ncompute\n\ndataos:type:cluster-resource\n\nResource Compute Nodes\n\nLayer\nsystem\n\ndataos:resource:compute\n\nCloud Kernel Resource Count\n\n1\n\nVersion\nvibeta\n\ndataos:layer:system\n\nWebService Resource Count\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/volume/volume_adataos_operations_userspace_core_kernel.png": {
+    "hash": "75500e83920c0f4b20bc09d74fbdf919a45c55818cce51d7a1a30a2d55d283f1",
+    "text": "aéDataOS® operations —_UserSpace _Core Kernel\n\nUser Space\n\nResources Minerva Queries\n\npap-volume\n\n« < > »\n\nCloud Kernel\n\nType «\n\nvolume\n\nProduct\n\nvolume\n\nPage 1 of 1| Go To:\n\n1\n\nWorkspace\n\npublic\n\nStatus\n\nactive\n\nRuntime\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/volume/volume_dataos_operations_user_spac_user.png": {
+    "hash": "f516f2f7aa0856f0ab45b362e4b4fbf5cf4b171609e5472419e79f3b7ca1efe7",
+    "text": "a DataOS® operations —_ User Spac\n\nUser Space\n\nResources Minerva Queries\nName pap\npap-volume\n\n« < > »\n\npap-volume\n\nResource Details Resource YAML\nInfo\n\nName Type\npap-volume volume\nTags\n\nvolume  dataos:type:resource __dataos:resource:volume\n\nStatus\nStatus Cloud Kernel Resource Count\nactive 2\n\nBuilder Stage\nbuilding\n\nWorkspace\n\npublic\n\ndataos‘layeruser\n\nVersion\nvibeta\n\ndataos:workspace:public\n\nWebService Resource Count\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/cluster/cluster_adataos_operations_userspace_core_kernel.png": {
+    "hash": "5c7fa2e91dee6fbd3227962278d647b0ec7e67e674fa7c6a4e5e5f69a9a712a3",
+    "text": "aéDataOS® operations —_UserSpace _Core Kernel\n\nUser Space\n\nResources Minerva Queries\n\ntoe\n\nlakehouse\n\n« < > »\n\nCloud Kernel Product\nType « cluster\ncluster\n\nWorkspace\n\npublic\n\nPage 1 of 1| Go To:\n\n1\n\nStatus\n\npending\n\noe\n\nCluster Analysis C\n\nRuntime Owner\nrunning:1 -\n\nShow 10\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/cluster/cluster_lakehouse_clusters_lakehouse_test.png": {
+    "hash": "c0bcf72c1f213ece817af3c58ff69fff140ef3401dde09d69e9b06352b7296c1",
+    "text": " \n\n \n\n \n\nAll v | lakehouse ul kK ®\n®&® Clusters\nlakehouse\n\ntest\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/cluster/cluster_dataos_operations_user_spac_user.png": {
+    "hash": "b0c4c198bc125dfee5da44ae0cfce62faefab4969f396c3cf1d064639017d48a",
+    "text": "a DataOS® operations —_ User Spac\n\nUser Space\nResources Minerva Queries\nName 4 _ lakehouse\n\nlakehouse\n\n« < > »\n\nlakehouse\n\nResource Details\n\nRuntime Status\n\nrunning:1\n\nRuntime Nodes\n\nName «\n\nlakehouse-mgn0-\n\n687b6c5b55-ww4bf\n\n« < >\n\n»\n\nResource YAML\n\nApp\n\nAll\nName «\n\nlakehouse\n\nResource Runtime\n\nLast Refresh\n\n2025-05-30T06:13:32.465Z\nType Pod Name Workspace\npod- lakehouse-mgn0- public\n\ndeploymen 687b6c5b55-ww4bf\nt\n\nPage 1of1|GoTo: 1\n\nData\nPlane\n\nhub\n\n \n\nPhase All\n\nrunning\n\nShow 10\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/status/cluster/cluster_dataos_metis_activity_products_assets.png": {
+    "hash": "8d6c24a9e4e06f0d0b4fdc79772d921a65039ef76cbd360589a27180d1eee3c3",
+    "text": "BS DataOS® metis Activity Products Assets Resources Ally lakehouse ul (K] ® Govern Settings O © &\n\nClusters | public 39 Meta Version: 0.4 | Created: 5 months ago | Updated: 4 months ago —-¥¥ Follow: O lean ;\n\n§Q lakehouse @\n\nOwner: ~ @ | Tie: - @ Domain: - B\n\n \n\nS dataos.Azure dataos Iceberg dataos.lakehouse 2\n\n= cluster is part of the lakehouse lakehouse in workspace public 2\n\n \n\nDetails Activity Feeds & Tasks 3 Runtime Manifest\n\n \n\nName Created Workspace Data Plane Status Uptime\n\nlakehouse-mgn0-687b6c5b55-ww4bf 29 May 2025 21:02:04 public hub Running 14 hours ago\n\nthemis-lakehouse-acies02-default-533Lec5c-c6a2-4d61-9f10-3518966e5140-exec-1 29 May 2025 17:50:03 public hub Succeeded -\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/usecase/usecase_connection_cluster_minerva_mycluster_error.png": {
+    "hash": "0b80979e99902c0353c3a6889f9ba141a2420ae4e630d202d00e3cc2f46268a9",
+    "text": " \n\nConnection Cluster\nMinerva mycluster #”\n\nError: Bad Gateway Refresh\nTrino Sql\n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/usecase/usecase_chat_testing_microsoft_teams_search.png": {
+    "hash": "612d43b0d8eeb14b60b99eb73ea4267fef76295c7b18ea016078bf5749041f75",
+    "text": " \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n(1) Chat | testing | Microsoft Teams\n\nQ Search (Ctrl+Alt+E)\n\n@ testing Posts Files Notes\n\n \n\n& Unknown user 12:54\n\n \n\nfo' alert for 'cpu-monitor01' monitor\n\nincident details:\n\nid epwjofeshzwg\n\ndescription Hurry up! mycluster CPU usage (uy\nhave reached the 80% of its limits\n\ncreated Tue, 24 Jun 2025 07:24:00 UTC\nseverity info\nname value\ncategory equation\n\n(ers\n\n \n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/usecase/usecase_yclu_runtime_lode_ails_serie.png": {
+    "hash": "53b687196fbcb081c5ee1febb8b0ea66ef68ba5c01f016c22b88bb6d2f24a042",
+    "text": "x\nm\nyclu\nste!\nr01\n-ss-0:\n: Runtime N\nlode\nDet\nails\nx\n\nCPI\nU Ti\nime Serie:\nS\n\n \n\n600 m\ne 5\n: 00 m\n: 400m\n£\ns 300m\n&\n200m\n100 m\noO\nUsage\nRe\nequest\nLimit\n\nBO oA tO ps0 a8 se 99 ne can asd oor Neogene,\nRy\n08\nws ot *\nNee *\nan ~\ni Se *\nan 39° *\nnl oe *\nfeo\nee\nht a\ns Pap\nal -\nSi 20%\n5 mu\ne\n\nnen\nee se\nsi o.\noe oo.\nye 1.\n08\nst\n00\nok oe\n08\nsot se\n05 ct 0\n0 we\nno oe\nqn ote\nio\n\n \n\f"
+  },
+  "/home/shraddhaade/dataos.info/docs/products/data_product/observability/usecase/usecase_mycluster01ss0_runtime_node_details_runtime.png": {
+    "hash": "a4ef343d5d84c94fb63cf6ae272313482fc3d4f73f6c7c4699d6dc2b5c3abfc6",
+    "text": "> mycluster01-ss-0: Runtime Node Details\n\nRuntime Node Details Runtime Node YAML. Runtime Node Logs\n\nInfo\nPod Name Workspace\nmycluster01-ss-0 public\n\nAggregates (node states: 103 time slices: 14)\n\nType Name Mean Median Min Max Unit\n\ncpu usage 25 25 25 25 millicore\ncpu request 5 5 5 5 millicore\ncpu limit 30 30 30 30 millicore\nmemory usage 0 0 0 0 mebibyte\nmemory request 10 10 10 10 mebibyte\n\nmemory limit 60 60 60 60 mebibyte\n\n \n\f"
+  }
+}
