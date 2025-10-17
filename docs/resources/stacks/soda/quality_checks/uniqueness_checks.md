@@ -2,7 +2,7 @@
 
 Ensuring data uniqueness is essential for maintaining the integrity and reliability of datasets. In Soda, uniqueness checks can be defined to monitor and enforce the absence of duplicate records. Below are explanations and sample configurations for various types of uniqueness checks.
 
-**1. Check for duplicate values in a column:** Ensure that a specific column does not contain any duplicate values.
+**Check for duplicate values in a column:** Ensure that a specific column does not contain any duplicate values.
 
 In the following example, the check verifies the `customer_no` column has no duplicate entries, ensuring each customer number is unique.
 
@@ -14,7 +14,7 @@ In the following example, the check verifies the `customer_no` column has no dup
       title: Ensure each customer number is unique
 ```
 
-**2. Check for duplicate values across multiple columns:** Ensure that combinations of values across multiple columns are unique.
+**Check for duplicate values across multiple columns:** Ensure that combinations of values across multiple columns are unique.
 
 The following check ensures the combination of `first_name`, `last_name`, and `birth_date` is unique across all records, preventing duplicate entries for individuals.
 
@@ -27,7 +27,7 @@ The following check ensures the combination of `first_name`, `last_name`, and `b
       title: Ensure no duplicate records based on name and birth date
 ```
 
-**3. Check for duplicate values with a tolerance threshold:** Allow a certain percentage of duplicate values in a column.
+**Check for duplicate values with a tolerance threshold:** Allow a certain percentage of duplicate values in a column.
 
 Here, the check ensures the `email` column has less than 1% duplicate values, allowing for minimal duplication.
 
@@ -39,7 +39,7 @@ Here, the check ensures the `email` column has less than 1% duplicate values, al
       title: Limit duplicate email addresses to less than 1%
 ```
 
-**4. Check for duplicate values with custom sample limits:** Limit the number of failed row samples collected for analysis when duplicates are detected.
+**Check for duplicate values with custom sample limits:** Limit the number of failed row samples collected for analysis when duplicates are detected.
 
 This check verifies the `phone_number` column has no duplicate values and limits the collection of failed row samples to 5 for analysis.
 
@@ -52,7 +52,7 @@ This check verifies the `phone_number` column has no duplicate values and limits
       title: Ensure each phone number is unique and limit sample collection
 ```
 
-**5. Check for duplicate values with custom filters:** Apply a filter to assess the uniqueness of specific subsets of data.
+**Check for duplicate values with custom filters:** Apply a filter to assess the uniqueness of specific subsets of data.
 
 The following configuration checks that records with a `status` of 'completed' in the `transaction_id` column are unique, ensuring no duplication in completed transactions.
 
@@ -64,6 +64,30 @@ The following configuration checks that records with a `status` of 'completed' i
       category: Uniqueness
       title: Ensure each completed transaction ID is unique
 ```
+
+
+### **List of numeric metrics**
+
+| **Metric**          | **Description**                                                                                                                                             | **Supported data type** | **Supported data sources** |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- | -------------------------- |
+| `duplicate_count`   | The count of distinct values that have duplicates. Multiple column names can be specified to count duplicate sets of values, as in `duplicate_count(a, b)`. | number, text, time      | all                        |
+| `duplicate_percent` | `duplicate_count` (as defined above) over the total row count, expressed as a percentage.                                                                   | number, text, time      | all                        |
+
+
+### **List of comparison symbols and phrases**
+
+```
+ =
+ <
+ >
+ <=
+ >=
+ !=
+ <>
+ between
+ not between
+```
+
 
 Incorporating uniqueness checks into workflows enables proactive monitoring and maintenance of data distinctness, ensuring compliance with organizational data quality standards.
 
