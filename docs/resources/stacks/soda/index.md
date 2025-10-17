@@ -19,91 +19,91 @@ Soda operates as a Stack that can be orchestrated through various [Resources](/r
 
 For detailed insights into the selection and utilization of the appropriate Resource, please refer to the dedicated documentation for [Workflow](/resources/workflow/) and [Worker](/resources/worker/) Resources.
 
-<details><summary>Code Snippet for Workflow and Worker manifest</summary>
+??? note "**Code Snippet for Workflow and Worker manifest**"
 
-<h3><b>Code Snippet for Workflow</b></h3>
+    **Code Snippet for Workflow**
 
-```yaml
-# Configuration for Resource meta section
+    ```yaml
+    # Configuration for Resource meta section
 
-name: soda-workflow         # Resource name (mandatory, default: none, possible: any string confirming the regex [a-z0-9]([-a-z0-9]*[a-z0-9]) and length less than or equal to 48 characters)
-version: v1                 # Manifest version (mandatory, default: none, possible: v1)
-type: workflow              # Resource-type (mandatory, default: none, possible: workflow)
-tags:                       # Tags (optional, default: none, possible: list of strings)
-  - workflow
-  - soda-checks
-description: Soda workflow  # Resource description (optional, default: none, possible: any string)
-workspace: public           # Workspace name (optional, default: public, possible: any DataOS Workspace name)
+    name: soda-workflow         # Resource name (mandatory, default: none, possible: any string confirming the regex [a-z0-9]([-a-z0-9]*[a-z0-9]) and length less than or equal to 48 characters)
+    version: v1                 # Manifest version (mandatory, default: none, possible: v1)
+    type: workflow              # Resource-type (mandatory, default: none, possible: workflow)
+    tags:                       # Tags (optional, default: none, possible: list of strings)
+      - workflow
+      - soda-checks
+    description: Soda workflow  # Resource description (optional, default: none, possible: any string)
+    workspace: public           # Workspace name (optional, default: public, possible: any DataOS Workspace name)
 
-# Configuration for Workflow-specific section
+    # Configuration for Workflow-specific section
 
-workflow:
-  dag:
-    - name: soda-job-v1           # Job name (mandatory, default: none, possible: any string confirming the regex [a-z0-9]([-a-z0-9]*[a-z0-9]) and length less than or equal to 48 characters)
-      title: Soda checks job      # Job title (optional, default: none, possible: any string)
-      description: Soda job       # Job description (optional, default: none, possible: any string)
-      spec:                       # Job spec (mandatory)
-        stack: soda+python:1.0    # Stack name, flavor, and version (mandatory, default: none, value: for soda use soda+python:1.0. Here soda is the stack, python is flavor, and 1.0 is version)
-        compute: runnable-default # Compute name (mandatory, default: none, possible: runnable-default or any other runnable-type Compute Resource name)
-        resources:                # CPU and memory resources (optional)
-          requests:               # Requested resources (optional)
-            cpu: 1000m            # Requested CPU resources (optional, default: 100m, possible: cpu units in milliCPU(m) or cpu core)
-            memory: 100Mi         # Requested memory resources (optional, default: 100Mi, possible: memory in Mebibytes(Mi) or Gibibytes(Gi))
-          limits:                 # Resource limits (optional)
-            cpu: 400m             # CPU resource limits (optional, default: 400m, possible: cpu units in milliCPU(m) or cpu core)
-            memory: 400Mi         # Memory resource limits (optional, default: 400Mi, possible: cpu units in milliCPU(m) or cpu core)
-        logLevel: INFO            # Logging level (optional, default: INFO, possible: INFO / WARNING / ERROR / DEBUG)
+    workflow:
+      dag:
+        - name: soda-job-v1           # Job name (mandatory, default: none, possible: any string confirming the regex [a-z0-9]([-a-z0-9]*[a-z0-9]) and length less than or equal to 48 characters)
+          title: Soda checks job      # Job title (optional, default: none, possible: any string)
+          description: Soda job       # Job description (optional, default: none, possible: any string)
+          spec:                       # Job spec (mandatory)
+            stack: soda+python:1.0    # Stack name, flavor, and version (mandatory, default: none, value: for soda use soda+python:1.0. Here soda is the stack, python is flavor, and 1.0 is version)
+            compute: runnable-default # Compute name (mandatory, default: none, possible: runnable-default or any other runnable-type Compute Resource name)
+            resources:                # CPU and memory resources (optional)
+              requests:               # Requested resources (optional)
+                cpu: 1000m            # Requested CPU resources (optional, default: 100m, possible: cpu units in milliCPU(m) or cpu core)
+                memory: 100Mi         # Requested memory resources (optional, default: 100Mi, possible: memory in Mebibytes(Mi) or Gibibytes(Gi))
+              limits:                 # Resource limits (optional)
+                cpu: 400m             # CPU resource limits (optional, default: 400m, possible: cpu units in milliCPU(m) or cpu core)
+                memory: 400Mi         # Memory resource limits (optional, default: 400Mi, possible: cpu units in milliCPU(m) or cpu core)
+            logLevel: INFO            # Logging level (optional, default: INFO, possible: INFO / WARNING / ERROR / DEBUG)
 
-# Configuration for Soda Stack-specific section
-        stackSpec:
-          # ... attributes specific to Soda Stack are specified here.
-```
-<center><i>Configuration for a Workflow YAML manifest</i></center>
+    # Configuration for Soda Stack-specific section
+            stackSpec:
+              # ... attributes specific to Soda Stack are specified here.
+    ```
+    *Configuration for a Workflow YAML manifest*
 
-To learn more about the attributes of <a href="/resources/workflow/">Workflow</a> Resource, refer to the link: <a href="/resources/workflow/configurations/">Attributes of Workflow YAML</a>.
+    To learn more about the attributes of [Workflow](/resources/workflow/) Resource, refer to the link: [Attributes of Workflow YAML](/resources/workflow/configurations/).
 
-<h3><b>Code Snippet for Worker</b></h3>
+    **Code Snippet for Worker**
 
-```yaml
+    ```yaml
 
-# Configuration for Resource meta section
+    # Configuration for Resource meta section
 
-name: soda-worker           # Resource name (mandatory, default: none, possible: any string confirming the regex [a-z0-9]([-a-z0-9]*[a-z0-9]) and length less than or equal to 48 characters)
-version: v1beta             # Manifest version (mandatory, default: none, possible: v1beta)
-type: worker                # Resource-type (mandatory, default: none, possible: worker)
-tags:                       # Tags (optional, default: none, possible: list of strings)
-  - worker
-  - soda-checks
-description: Soda worker    # Resource description (optional, default: none, possible: any string)
-workspace: public           # Workspace name (optional, default: public, possible: any DataOS Workspace name)
+    name: soda-worker           # Resource name (mandatory, default: none, possible: any string confirming the regex [a-z0-9]([-a-z0-9]*[a-z0-9]) and length less than or equal to 48 characters)
+    version: v1beta             # Manifest version (mandatory, default: none, possible: v1beta)
+    type: worker                # Resource-type (mandatory, default: none, possible: worker)
+    tags:                       # Tags (optional, default: none, possible: list of strings)
+      - worker
+      - soda-checks
+    description: Soda worker    # Resource description (optional, default: none, possible: any string)
+    workspace: public           # Workspace name (optional, default: public, possible: any DataOS Workspace name)
 
-# Configuration for Worker-specific section
+    # Configuration for Worker-specific section
 
-worker:
-  replicas: 1                        # Number of worker replicas (optional, default: 1, possible: any positive integer)
-  tags:                              # Tags (optional, default: none, possible: list of strings)
-    - sodaworker
-  stack: soda+python:1.0             # Stack name, flavor, and version (mandatory, default: none, value: for soda use sodaworker+python:1.0. Here sodaworker is the stack, python is flavor, and 1.0 is version)
-  logLevel: INFO                     # Logging level (optional, default: INFO, possible: INFO / WARNING / ERROR / DEBUG)
-  compute: runnable-default          # Compute name (mandatory, default: none, possible: runnable-default or any other runnable-type Compute Resource name)
-  resources:                # CPU and memory resources (optional)
-    requests:               # Requested resources (optional)
-      cpu: 1000m            # Requested CPU resources (optional, default: 100m, possible: cpu units in milliCPU(m) or cpu core)
-      memory: 100Mi         # Requested memory resources (optional, default: 100Mi, possible: memory in Mebibytes(Mi) or Gibibytes(Gi))
-    limits:                 # Resource limits (optional)
-      cpu: 400m             # CPU resource limits (optional, default: 400m, possible: cpu units in milliCPU(m) or cpu core)
-      memory: 400Mi         # Memory resource limits (optional, default: 400Mi, possible: cpu units in milliCPU(m) or cpu core)
+    worker:
+      replicas: 1                        # Number of worker replicas (optional, default: 1, possible: any positive integer)
+      tags:                              # Tags (optional, default: none, possible: list of strings)
+        - sodaworker
+      stack: soda+python:1.0             # Stack name, flavor, and version (mandatory, default: none, value: for soda use sodaworker+python:1.0. Here sodaworker is the stack, python is flavor, and 1.0 is version)
+      logLevel: INFO                     # Logging level (optional, default: INFO, possible: INFO / WARNING / ERROR / DEBUG)
+      compute: runnable-default          # Compute name (mandatory, default: none, possible: runnable-default or any other runnable-type Compute Resource name)
+      resources:                # CPU and memory resources (optional)
+        requests:               # Requested resources (optional)
+          cpu: 1000m            # Requested CPU resources (optional, default: 100m, possible: cpu units in milliCPU(m) or cpu core)
+          memory: 100Mi         # Requested memory resources (optional, default: 100Mi, possible: memory in Mebibytes(Mi) or Gibibytes(Gi))
+        limits:                 # Resource limits (optional)
+          cpu: 400m             # CPU resource limits (optional, default: 400m, possible: cpu units in milliCPU(m) or cpu core)
+          memory: 400Mi         # Memory resource limits (optional, default: 400Mi, possible: cpu units in milliCPU(m) or cpu core)
 
-# Configuration for Soda Stack-specific section
+    # Configuration for Soda Stack-specific section
 
-  stackSpec: 
-    # ... attributes specific to Soda Stack are specified here.
-```
-<center><i>Configuration for a Worker YAML manifest</i></center>
+      stackSpec: 
+        # ... attributes specific to Soda Stack are specified here.
+    ```
+    *Configuration for a Worker YAML manifest*
 
-To learn more about the attributes of <a href="/resources/worker/">Worker</a> Resource, refer to the link: <a href="/resources/worker/configurations/">Attributes of Worker YAML</a>.
+    To learn more about the attributes of [Worker](/resources/worker/) Resource, refer to the link: [Attributes of Worker YAML](/resources/worker/configurations/).
 
-</details>
+
 
 
 ### **Declare the configuration for Soda `stackSpec` section**
@@ -137,9 +137,9 @@ stackSpec:
 This involves the declaration of following parts:
 
 1. [Declare Input Dataset Address](#declaring-input-dataset-address)
-2. [Define columns to be profiled (optional)](#defining-columns-to-be-profiled-optional)
-3. [Define filters](#define-filters)
-4. [Define Soda Checks](#defining-soda-checks)
+2. [Define filters](#define-filters)
+3. [Define Soda Checks](#defining-soda-checks)
+4. [Define columns to be profiled (optional)](#defining-columns-to-be-profiled-optional)
 5. [Define Optional configuration](#define-optional-configuration)
 
 #### **Declaring input dataset address**
@@ -154,24 +154,44 @@ stackSpec:
     - dataset: dataos://postgresdb:state/city
       # ...other input attributes
 ```
-<aside class="callout">
-🗣️ When using the Trino engine (Minerva) for compute, ensure that table and schema names in your dataset address are provided in lowercase format. For example:
+!!! info
+
+    When using the Trino engine (Minerva) for compute, ensure that table and schema names in your dataset address are provided in lowercase format. For example:
+
+    ```yaml
+    dataset: dataos://sstdepot:ltv/visit_copy
+    ```
+
+    Trino stores and resolves schema and table identifiers in lowercase. Using uppercase characters (e.g., `dataos://sstdepot:LTV/VISIT_COPY`) may result in query failures.
+
+    When using a data source that provides its own native processing engine (such as Snowflake, BigQuery, etc.) remove the following snippet from your YAML and specify the dataset address as needed:
+
+    ```yaml
+    options:
+      engine: minerva
+      clusterName: miniature
+    ```
+
+#### **Define Filters**
+
+The [`filter`](/resources/stacks/soda/configurations/#filter) attribute or section works as a global filter for all checks specified within a dataset. 
+
+
+!!! info
+    This global filter functionality differs from the filter applied within the [checks](/resources/stacks/soda/#defining-soda-checks) section.
+
+
+The following YAML sample demonstrates how the [`filter`](/resources/stacks/soda/configurations/#filter) section can be employed to apply a global filter on all checks specified within the [`checks`](/resources/stacks/soda/configurations/#checks) section.
 
 ```yaml
-dataset: dataos://sstdepot:ltv/visit_copy
+stackSpec:
+  inputs:
+    - dataset: dataos://lakehouse:retail/customer
+      filter:
+        name: filter_on_age
+        where: age > 50
 ```
 
-Trino stores and resolves schema and table identifiers in lowercase. Using uppercase characters (e.g., `dataos://sstdepot:LTV/VISIT_COPY`) may result in query failures.
-
-When using a data source that provides its own native processing engine (such as Snowflake, BigQuery, etc.) remove the following snippet from your YAML and specify the dataset address as needed:
-
-```yaml
-options:
-  engine: minerva
-  clusterName: miniature
-```
-
-</aside>
 
 #### **Defining Soda checks**
 
@@ -184,197 +204,156 @@ Soda Stack utilizes SodaCL, a YAML-based, low-code, human-readable, domain-speci
 
 The [`checks`](/resources/stacks/soda/configurations/#checks) section allows users to specify a list of specific data quality checks or tests that will be performed on the designated dataset. These checks can be tailored to suit the unique requirements of the dataset and the data quality objectives.
 
-```yaml
-# Checks for basic validations would be named in `Validity` category
+??? note "Sample Checks Declaration"
 
-stackSpec:
-  inputs:
-    - dataset: dataos://lakehouse:retail/customer
-      checks:
-        - row_count between 1 and 170:
-            attributes:
-              title: Row Count Between 1 and 170
-              category: Accuracy
-        - missing_count(customer_no) = 0:
-            attributes:
-              category: Completeness
-        - invalid_percent(customer_name) < 1%:
-            valid max length: 27
-            filter: site_number > 0
-            attributes:
-              category: Validity     
-        # - invalid_percent(phone) < 1 %:
-        #     valid format: phone number
-        - invalid_count(number_cars_owned) = 0:
-            valid min: 1
-            valid max: 6
-            attributes:
-              category: Validity
-        - duplicate_count(phone) = 0:
-            attributes:
-              category: Uniqueness
-        - invalid_count(site_number) < 0:
-            valid min: 5
-            valid max: 98
-            attributes:
-              category: Validity
-      # ...other inputs attributes
+    ```yaml
+    # Checks for basic validations would be named in `Validity` category
 
-stackSpec:
-  inputs:
-    - dataset: dataos://lakehouse:retail/customer
-      checks:
-      - avg(safety_stock_level) > 50:
-          attributes:
-            category: Accuracy
-      # ...other inputs attributes
+    stackSpec:
+      inputs:
+        - dataset: dataos://lakehouse:retail/customer
+          checks:
+            - row_count between 1 and 170:
+                attributes:
+                  title: Row Count Between 1 and 170
+                  category: Accuracy
+            - missing_count(customer_no) = 0:
+                attributes:
+                  category: Completeness
+            - invalid_percent(customer_name) < 1%:
+                valid max length: 27
+                filter: site_number > 0
+                attributes:
+                  category: Validity     
+            # - invalid_percent(phone) < 1 %:
+            #     valid format: phone number
+            - invalid_count(number_cars_owned) = 0:
+                valid min: 1
+                valid max: 6
+                attributes:
+                  category: Validity
+            - duplicate_count(phone) = 0:
+                attributes:
+                  category: Uniqueness
+            - invalid_count(site_number) < 0:
+                valid min: 5
+                valid max: 98
+                attributes:
+                  category: Validity
+          # ...other inputs attributes
 
----
+    stackSpec:
+      inputs:
+        - dataset: dataos://lakehouse:retail/customer
+          checks:
+          - avg(safety_stock_level) > 50:
+              attributes:
+                category: Accuracy
+          # ...other inputs attributes
 
-# Check for Freshness would be categorised in `Freshness` category 
+    ---
 
-stackSpec:
-  inputs:
-    - dataset: dataos://lakehouse:retail/customer
-      checks:
-        - freshness(test) < 551d:
-            name: Freshness01
-            attributes:
-              category: Freshness
-      # ...other inputs attributes
+    # Check for Freshness would be categorised in `Freshness` category 
 
----
+    stackSpec:
+      inputs:
+        - dataset: dataos://lakehouse:retail/customer
+          checks:
+            - freshness(test) < 551d:
+                name: Freshness01
+                attributes:
+                  category: Freshness
+          # ...other inputs attributes
 
-# Check for Accuracy Category
+    ---
 
-stackSpec:
-  inputs:
-    - dataset: dataos://lakehouse:retail/customer
-      checks:
-        - values in (city_name) must exist in city (city_name):
-            samples limit: 20
-            attributes:
-              category: Accuracy
-      # ...other inputs attributes
-```
+    # Check for Accuracy Category
 
-<details>
+    stackSpec:
+      inputs:
+        - dataset: dataos://lakehouse:retail/customer
+          checks:
+            - values in (city_name) must exist in city (city_name):
+                samples limit: 20
+                attributes:
+                  category: Accuracy
+          # ...other inputs attributes
+    ```
 
-<summary>Sample Soda checks</summary>
+??? note "Complete Soda Manifest Example"
 
-```yaml
-name: soda-customer-checks
-version: v1
-type: workflow
-tags:
-  - workflow
-  - soda-checks
-description: Empowering sales360 dp.
-workspace: public
-workflow:
-  dag:
-    - name: soda-job-v1
-      spec:
-        stack: soda+python:1.0
-        compute: runnable-default
-        resources:
-          requests:
-            cpu: 1000m
-            memory: 250Mi
-          limits:
-            cpu: 1000m
-            memory: 250Mi
-        logLevel: INFO # WARNING, ERROR, DEBUG
-        stackSpec:
-          inputs:
-            - dataset: dataos://lakehouse:sales_360/account
-              options:
-                engine: minerva
-                clusterName: system
-              profile:
-                columns:
-                  - site_number
-                  - customer_no
-                  - city
-              checks:
+    ```yaml
+    name: soda-customer-checks
+    version: v1
+    type: workflow
+    tags:
+      - workflow
+      - soda-checks
+    description: Empowering sales360 dp.
+    workspace: public
+    workflow:
+      dag:
+        - name: soda-job-v1
+          spec:
+            stack: soda+python:1.0
+            compute: runnable-default
+            resources:
+              requests:
+                cpu: 1000m
+                memory: 250Mi
+              limits:
+                cpu: 1000m
+                memory: 250Mi
+            logLevel: INFO # WARNING, ERROR, DEBUG
+            stackSpec:
+              inputs:
+                - dataset: dataos://lakehouse:sales_360/account
+                  options:
+                    engine: minerva
+                    clusterName: system
+                  profile:
+                    columns:
+                      - site_number
+                      - customer_no
+                      - city
+                  checks:
 
-                - schema:
-                    name: Confirm that required columns are present
-                    warn:
-                      when required column missing: [customer_name,premise_code]
-                    fail:
-                      when required column missing: 
-                        - city
-                      when wrong column type:
-                        site_number: integer
+                    - schema:
+                        name: Confirm that required columns are present
+                        warn:
+                          when required column missing: [customer_name,premise_code]
+                        fail:
+                          when required column missing: 
+                            - city
+                          when wrong column type:
+                            site_number: integer
 
-                - invalid_count(customer_name) = 0 :
-                    valid min length: 5
-                    name: First name has 5 or more characters
-                    warn: when between 5 and 27
-                    fail: when > 27  
+                    - invalid_count(customer_name) = 0 :
+                        valid min length: 5
+                        name: First name has 5 or more characters
+                        warn: when between 5 and 27
+                        fail: when > 27  
 
-                - invalid_percent(customer_name) < 1%:
-                    valid max length: 27
-                    filter: site_number > 0
+                    - invalid_percent(customer_name) < 1%:
+                        valid max length: 27
+                        filter: site_number > 0
 
-                - invalid_count(site_number) < 0:
-                    valid min: 5
-                    valid max: 98
+                    - invalid_count(site_number) < 0:
+                        valid min: 5
+                        valid max: 98
 
-                - missing_percent("phone_number") = 0
+                    - missing_percent("phone_number") = 0
 
-                - duplicate_percent(customer_no) < 1%
+                    - duplicate_percent(customer_no) < 1%
 
-                - row_count between 1 and 170
-                - avg_length(address) > 16
-                - min(customer_no) > 0:
-                    filter: site_number = 3
-    # ...other inputs attributes
-```
-
-</details>
+                    - row_count between 1 and 170
+                    - avg_length(address) > 16
+                    - min(customer_no) > 0:
+                        filter: site_number = 3
+        # ...other inputs attributes
+    ```
 
 
-## Soda check references
-
-Explore the available checks within each category by clicking on the respective category names below:
-
-- [Accuracy](/resources/stacks/soda/accuracy_checks/)
-- [Completeness](/resources/stacks/soda/completeness_checks/)
-- [Freshness](/resources/stacks/soda/freshness_checks/)
-- [Schema validation](/resources/stacks/soda/schema_checks/)
-- [Uniqueness](/resources/stacks/soda/uniqueness_checks/)
-- [Validity](/resources/stacks/soda/validity_checks/)
-
-[Data Product Hub](/interfaces/data_product_hub/) consolidates the status of all your data quality checks under the **Quality** tab, giving a comprehensive view of the health of your data assets.   There are two ways for a check and its latest result to appear on the dashboard:
-
-**Manual scans with Scanner:** When you define checks in a YAML file and run a scanner using the Soda Library, the checks and their results are displayed in the Checks dashboard.
-
-**Scheduled scans by Soda Workflow:** When Soda runs a scheduled workflow, the checks and their latest results automatically appear on the Checks dashboard.
-
-Each check result on the dashboard indicates whether it has passed or failed based on the specific quality dimension it is assessing. For Instance, in the below provided image, we can see the status of various data quality checks:
-
-- Accuracy: Passed, as indicated by the green checkmark.
-- Completeness: Passed, with a green checkmark.
-- Freshness: Flagged with a warning (⚠️), suggesting the data might not be up-to-date.
-- Schema: Also flagged (⚠️), which could mean there are schema mismatches or other issues with the data structure.
-- Uniqueness: Passed successfully.
-- Validity: Passed, indicating the data adheres to the expected validation rules.
-
-<div style="text-align: center;">
-  <img src="/resources/stacks/soda/soda_checks_01.png" alt="SODA" style="border:1px solid black; width: 80%; height: auto;">
-  <figcaption><i>Checks Symbol</i></figcaption>
-</div>
-
-When you click on any of the check, a detailed trend chart appears, displaying the specific times the check was executed along with the percentage of SLO compliance over time. The chart includes a graphical representation of how the data met the predefined quality standards, with 100% indicating full compliance. Any dips in the line graph highlight potential issues during specific check runs. Additionally, the dashboard may show more information like dataset details and error messages, offering a comprehensive view of the data quality trends over time. For instance, here you can see that the Trend Chart of the Validity check which indicates the time checks were ran against the percentage of SLOs.
-
-<div style="text-align: center;">
-  <img src="/resources/stacks/soda/image.png" alt="SODA" style="border:1px solid black; width: 80%; height: auto;">
-  <figcaption><i>Checks Symbol</i></figcaption>
-</div>
-
-The detailed trend chart shows that the data quality check was consistently run at 8:05 AM on several specific dates, including September 25, 26, 28, and daily from October 1 to 9. This regular cadence indicates the check was scheduled to run at the same time on these dates, ensuring continuous monitoring. The trend line remains at 100%, meaning the data met all SLO criteria during each check. For more details on the Quality tab refer [this link](/interfaces/data_product_hub/discovery/#data-product-tab) and scroll to Quality tab.
 
 #### **Defining columns to be profiled (optional)**
 
@@ -395,69 +374,15 @@ The [`columns`](/resources/stacks/soda/configurations/#columns) attribute under 
 
 You can provide the exact column name, or you can use special patterns to match multiple columns. The column matching patterns are provided in the list below:
 
-<table>
-    <tr>
-        <th>Column Patterns</th>
-        <th>Description</th>
-        <th>Example</th>
-    </tr>
-    <tr>
-        <td>Exact Column Matching</td>
-        <td>If you provide an exact column name, the profiling will focus only on that specific column.</td>
-        <td>
-            <pre>profile:<br>  columns:<br>    - customer_index</pre>
-        </td>
-    </tr>
-    <tr>
-        <td>Wildcard Matching</td>
-        <td>If you want to profile multiple columns that share a common pattern, you can use the "*" wildcard character. This wildcard matches any sequence of characters within a column name.</td>
-        <td>
-            <pre>profile:<br>  columns:<br>    - include d*</pre>
-        </td>
-    </tr>
-    <tr>
-        <td>Wildcard for all Columns</td>
-        <td>To profile all columns in the dataset, you can use the "*" wildcard without any prefix.</td>
-        <td>
-            <pre>profile:<br>  columns:<br>    - "*"</pre>
-        </td>
-    </tr>
-    <tr>
-        <td>Excluding Columns</td>
-        <td>To exclude specific columns from the profiling process, you can use the "exclude" keyword followed by the column names.</td>
-        <td>
-            <pre>profile:<br>  columns:<br>    - "*"<br>    - exclude email_id</pre>
-        </td>
-    </tr>
-    <tr>
-        <td>Combining Patterns</td>
-        <td>You can combine different patterns to create more refined selections.</td>
-        <td>
-            <pre>profile:<br>  columns:<br>   - customer_index<br>   - exclude email_id<br>   - include d*<br>   - e*</pre>
-        </td>
-    </tr>
-</table>
 
-#### **Define Filters**
+| **Column Patterns**          | **Description**                                                                                                                                                                       | **Example**                                                                                   |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| **Exact Column Matching**    | If you provide an exact column name, the profiling will focus only on that specific column.                                                                                           | `- customer_index `                                              |
+| **Wildcard Matching**        | If you want to profile multiple columns that share a common pattern, you can use the `"*"` wildcard character. This wildcard matches any sequence of characters within a column name. | `- include d* `                                                  |
+| **Wildcard for all Columns** | To profile all columns in the dataset, you can use the `"*"` wildcard without any prefix.                                                                                             | ` - "*" `                                                         |
+| **Excluding Columns**        | To exclude specific columns from the profiling process, you can use the `"exclude"` keyword followed by the column names.                                                             | `  - "*"` </br> `- exclude email_id `                                  |
+| **Combining Patterns**       | You can combine different patterns to create more refined selections.                                                                                                                 | `- customer_index` </br>  `- exclude email_id` </br>   `- include d*`  </br>  `- e* ` |
 
-The [`filter`](/resources/stacks/soda/configurations/#filter) attribute or section works as a global filter for all checks specified within a dataset. 
-
-<aside class="callout">
-
-🗣️ This global filter functionality differs from the filter applied within the <a href="/resources/stacks/soda/#defining-soda-checks"><code>checks</code></a> section.
-
-</aside>
-
-The following YAML sample demonstrates how the [`filter`](/resources/stacks/soda/configurations/#filter) section can be employed to apply a global filter on all checks specified within the [`checks`](/resources/stacks/soda/configurations/#checks) section.
-
-```yaml
-stackSpec:
-  inputs:
-    - dataset: dataos://lakehouse:retail/customer
-      filter:
-        name: filter_on_age
-        where: age > 50
-```
 
 
 #### **Define optional configuration**
@@ -471,122 +396,38 @@ The [`engine`](/resources/stacks/soda/configurations/#engine) attribute can assu
 - The `default` value executes queries on the data source.
 - The `minerva` option utilizes the DataOS query engine (Minerva) to execute queries on the depot connected to the cluster. When opting for `minerva`, specifying the [`clusterName`](/resources/stacks/soda/configurations/#clustername) becomes mandatory.
 
-<aside class="callout">
-🗣 For sources like <b>Lakehouse</b>, engine must be <code>minerva</code>. For more information, refer to the list of sources and supported engines provided below.
+!!! info 
+    For sources like **Lakehouse**, engine must be `minerva`. For more information, refer to the list of sources and supported engines provided below.
 
-<details>
-<summary>List of Sources and Supported Engine</summary>
-
-<center>
-
-<table>
-    <tr>
-        <th><strong>Source Name/Engine</strong></th>
-        <th><strong>Default</strong></th>
-        <th><strong>Minerva</strong></th>
-    </tr>
-    <tr>
-        <td>Snowflake</td>
-        <td>Yes</td>
-        <td>Yes</td>
-    </tr>
-    <tr>
-        <td>Oracle</td>
-        <td>Yes</td>
-        <td>Yes</td>
-    </tr>
-    <tr>
-        <td>Trino</td>
-        <td>Yes</td>
-        <td>Yes</td>
-    </tr>
-    <tr>
-        <td>Minerva</td>
-        <td>No</td>
-        <td>Yes</td>
-    </tr>
-    <tr>
-        <td>BigQuery</td>
-        <td>Yes</td>
-        <td>Yes</td>
-    </tr>
-    <tr>
-        <td>Postgres</td>
-        <td>Yes</td>
-        <td>Yes</td>
-    </tr>
-    <tr>
-        <td>MySQL</td>
-        <td>Yes</td>
-        <td>Yes</td>
-    </tr>
-    <tr>
-        <td>MSSQL</td>
-        <td>Yes</td>
-        <td>Yes</td>
-    </tr>
-    <tr>
-        <td>Redshift</td>
-        <td>Yes</td>
-        <td>Yes</td>
-    </tr>
-    <tr>
-        <td>Elastic Search</td>
-        <td>No</td>
-        <td>Yes</td>
-    </tr>
-    <tr>
-        <td>MongoDB</td>
-        <td>No</td>
-        <td>Yes</td>
-    </tr>
-    <tr>
-        <td>Kafka</td>
-        <td>No</td>
-        <td>Yes</td>
-    </tr>
-    <tr>
-        <td>Azure File System</td>
-        <td>No</td>
-        <td>No</td>
-    </tr>
-    <tr>
-        <td>Eventhub</td>
-        <td>No</td>
-        <td>No</td>
-    </tr>
-    <tr>
-        <td>GCS</td>
-        <td>No</td>
-        <td>No</td>
-    </tr>
-    <tr>
-        <td>OpenSearch</td>
-        <td>No</td>
-        <td>No</td>
-    </tr>
-    <tr>
-        <td>S3</td>
-        <td>No</td>
-        <td>No</td>
-    </tr>
-</table>
-
-</center>
-
-</details>
-
-</aside>
+    ??? note "List of Sources and Supported Engine"
+        | **Source Name / Engine** | **Default** | **Minerva** |
+        | ------------------------ | ----------- | ----------- |
+        | Snowflake                | Yes         | Yes         |
+        | Oracle                   | Yes         | Yes         |
+        | Trino                    | Yes         | Yes         |
+        | Minerva                  | No          | Yes         |
+        | BigQuery                 | Yes         | Yes         |
+        | Postgres                 | Yes         | Yes         |
+        | MySQL                    | Yes         | Yes         |
+        | MSSQL                    | Yes         | Yes         |
+        | Redshift                 | Yes         | Yes         |
+        | Elastic Search           | No          | Yes         |
+        | MongoDB                  | No          | Yes         |
+        | Kafka                    | No          | Yes         |
+        | Azure File System        | No          | No          |
+        | Eventhub                 | No          | No          |
+        | GCS                      | No          | No          |
+        | OpenSearch               | No          | No          |
+        | S3                       | No          | No          |
 
 **Cluster name**
 
 If applicable, users can provide the [`clusterName`](/resources/stacks/soda/configurations/#clustername) on which queries will run. This is a mandatory field in the case of the Minerva engine. You can check the cluster on which your depot is mounted in Workbench or check the cluster definition in the [Operations](/interfaces/operations/) App.
 
-<aside class="callout">
 
-🗣 You can use all source-supported properties that the <a href="https://github.com/sodadata/soda-core/blob/main/docs/overview-main">Soda Core</a> library supports as well.
+!!! info
+    You can use all source-supported properties that the [Soda Core](https://github.com/sodadata/soda-core/blob/main/docs/overview-main.md) library supports as well.
 
-</aside>
 
 ```yaml
 stackSpec:
@@ -617,11 +458,12 @@ The following table provides a comprehensive overview of the various attributes 
 
 For further details regarding the Soda Stack-specific attributes, you can refer to the link: [Attributes of Soda Stack YAML](/resources/stacks/soda/configurations/).
 
-**Branch name configuration for Lakehouse storage or Lakehouse type Depots**
+**Branch name for Lakehouse**
 
 In DataOS, Soda facilitates the execution of checks on different branches within a Lakehouse storage or Lakehouse-type Depot. By default, if no branch name is specified, Soda automatically targets the `main` branch. However, users have the option to direct the checks towards a specific branch by providing the branch name.
 
-To specify a branch name when running a check in a Depot that supports the Iceberg table format, follow the sample configuration below. This capability ensures checks are performed on the desired branch, enhancing the flexibility and accuracy of data management.
+!!! info
+    To specify a branch name when running a check in a Depot that supports the Iceberg table format, follow the sample configuration below. This capability ensures checks are performed on the desired branch, enhancing the flexibility and accuracy of data management.
 
 ```yaml
 stackSpec:
@@ -635,321 +477,369 @@ stackSpec:
 
 This configuration illustrates how to set the `branchName` to "test". Adjust the `branchName` parameter to match the branch you intend to assess.
 
-### **Code samples**
+### **Soda Samples Manifest**
 
-<details>
-<summary>Sample manifest for Soda Stack orchestrated using a Workflow</summary>
 
-```yaml
-name: soda-workflow-v01
-version: v1
-type: workflow
-tags:
-  - workflow
-  - soda-checks
-description: Random User Console
-workspace: public
-workflow:
-  dag:
-    - name: soda-job-v1
-      title: soda Sample Test Job
-      description: This is sample job for soda dataos sdk
-      spec:
-        stack: soda+python:1.0
-        compute: runnable-default
-        resources:
-          requests:
-            cpu: 1000m
-            memory: 250Mi
-          limits:
-            cpu: 1000m
-            memory: 250Mi
-        logLevel: INFO # WARNING, ERROR, DEBUG
-        stackSpec:
-          inputs:
-            # Redshift
-            - dataset: dataos://sanityredshift:public/redshift_write_12
-              checks:
-                - row_count between 10 and 1000:
+??? note "Sample manifest for Soda Stack using Workflow"
+
+    ```yaml
+    name: soda-workflow-v01
+    version: v1
+    type: workflow
+    tags:
+      - workflow
+      - soda-checks
+    description: Random User Console
+    workspace: public
+    workflow:
+      dag:
+        - name: soda-job-v1
+          title: soda Sample Test Job
+          description: This is sample job for soda dataos sdk
+          spec:
+            stack: soda+python:1.0
+            compute: runnable-default
+            resources:
+              requests:
+                cpu: 1000m
+                memory: 250Mi
+              limits:
+                cpu: 1000m
+                memory: 250Mi
+            logLevel: INFO # WARNING, ERROR, DEBUG
+            stackSpec:
+              inputs:
+                # Redshift
+                - dataset: dataos://sanityredshift:public/redshift_write_12
+                  checks:
+                    - row_count between 10 and 1000:
+                        attributes:
+                          category: Accuracy
+                  
+                # Oracle
+                - dataset: dataos://sanityoracle:dev/oracle_write_12
+                  checks:
+                    - row_count between 10 and 1000:
+                        attributes:
+                          category: Accuracy
+                # MySql
+                - dataset: dataos://sanitymysql:tmdc/mysql_write_csv_12
+                  checks:
+                    - row_count between 10 and 1000:
+                        attributes:
+                          category: Accuracy
+                # MSSQL
+                - dataset: dataos://sanitymssql:tmdc/mssql_write_csv_12
+                  checks:
+                    - row_count between 10 and 1000:
+                        attributes:
+                          category: Accuracy
+                # Minerva
+                - dataset: dataos://lakehouse:retail/customer
+                  options:
+                    engine: minerva
+                    clusterName: miniature
+                  profile:
+                    columns:
+                      - customer_index
+                      - exclude email_id
+                      - include d*
+                      - e*
+                  checks:
+                    - row_count between 10 and 1000:
+                        attributes:
+                          category: Accuracy
+                    - row_count between (10 and 55):
+                        attributes:
+                          category: Accuracy
+                    - missing_count(birthdate) = 0:
+                        attributes:
+                          category: Completeness
+                    - invalid_percent(phone_number) < 1 %:
+                        valid format: phone number
+                    - invalid_count(number_of_children) < 0:
+                        valid min: 0
+                        valid max: 6
+                        attributes:
+                          category: Validity
+                    - min(age) > 30:
+                        filter: marital_status = 'Married'
+                          attributes:
+                            category: Accuracy
+
+                    - duplicate_count(phone_number) = 0:
+                        attributes:
+                          category: Uniqueness
+                    - row_count same as city:
+                        name: Cross check customer datasets
+                        attributes:
+                          category: Accuracy
+
+                    - duplicate_count(customer_index) > 10:
+                        attributes:
+                          category: Uniqueness               
+                    - duplicate_percent(customer_index) < 0.10:
+                        attributes:
+                          category: Uniqueness
+                    - failed rows:
+                        samples limit: 70
+                        fail condition: age < 18  and age >= 50
+                    - failed rows:
+                        fail query: |
+                          SELECT DISTINCT customer_index
+                          FROM customer as customer
+                    - freshness(ts_customer) < 1d:
+                        name: Freshness01
+                        attributes:
+                          category: Freshness
+                    - freshness(ts_customer) < 5d:
+                        name: Freshness02
+                        attributes:
+                          category: Freshness
+                    - max(age) <= 100:
+                        attributes:
+                          category: Accuracy
+                    - max_length(first_name) = 8:
+                        attributes:
+                          category: Accuracy
+                    - values in (occupation) must exist in city (city_name):
+                        samples limit: 20
+                        attributes:
+                          category: Accuracy
+                          
+                    - schema:
+                        name: Confirm that required columns are present
+                        warn:
+                          when required column missing: [first_name, last_name]
+                        fail:
+                          when required column missing:
+                            - age
+                            - no_phone
+                        attributes:
+                          category: Schema
+                    - schema:
+                        warn:
+                          when forbidden column present: [Voldemort]
+                          when wrong column type:
+                            first_name: int
+                        fail:
+                          when forbidden column present: [Pii*]
+                          when wrong column type:
+                            number_of_children: DOUBLE
+                        attributes:
+                          category: Schema
+                # Postgres
+                - dataset: dataos://metisdb:public/classification
+                  checks:
+                    - row_count between 0 and 1000:
+                        attributes:
+                          category: Accuracy
+                # Big Query
+                - dataset: dataos://distribution:distribution/dc_info
+                  checks:
+                  - row_count between 0 and 1000:
+
+                # Snowflake
+                - dataset: dataos://sodasnowflake:TPCH_SF10/CUSTOMER
+                  options: # this option is default no need to set, added for example.
+                    engine: default
+                  checks:
+                    - row_count between 10 and 1000:
+                        attributes:
+                          category: Accuracy
+
+    ```
+
+
+
+??? note "Sample manifest for Soda Stack orchestrated using a Worker"
+
+    ```yaml
+    name: soda-worker-sample-v01
+    version: v1beta
+    type: worker
+    tags:
+      - worker
+      - soda-checks
+    description: Soda Sample Worker
+    workspace: public
+    worker:
+      replicas: 1
+      tags:
+        - worker
+        - soda-checks
+      stack: sodaworker+python:1.0
+      logLevel: INFO
+      compute: runnable-default
+      resources:
+        requests:
+          cpu: 100m
+          memory: 128Mi
+        limits:
+          cpu: 1000m
+          memory: 1024Mi
+      stackSpec:
+        inputs:
+          # Minerva
+          - dataset: dataos://lakehouse:retail/customer
+            options:
+              engine: minerva
+              clusterName: miniature
+            profile:
+              columns:
+                - customer_index
+                - exclude email_id
+                - include d*
+                - e*
+            checks:
+              - row_count between 10 and 1000:
+                  attributes:
+                    category: Accuracy
+
+              - row_count between (10 and 55):
+                  attributes:
+                    category: Accuracy
+            
+              - missing_count(birthdate) = 0:
+                  attributes:
+                    category: Completeness
+
+              # - invalid_percent(phone_number) < 1 %:
+              #     valid format: phone number
+              - invalid_count(number_of_children) < 0:
+                  valid min: 0
+                  valid max: 6
+                  attributes:
+                    category: Validity
+
+
+              - min(age) > 30:
+                  filter: marital_status = 'Married'
                     attributes:
                       category: Accuracy
-              
-            # Oracle
-            - dataset: dataos://sanityoracle:dev/oracle_write_12
-              checks:
-                - row_count between 10 and 1000:
-                    attributes:
-                      category: Accuracy
-            # MySql
-            - dataset: dataos://sanitymysql:tmdc/mysql_write_csv_12
-              checks:
-                - row_count between 10 and 1000:
-                    attributes:
-                      category: Accuracy
-            # MSSQL
-            - dataset: dataos://sanitymssql:tmdc/mssql_write_csv_12
-              checks:
-                - row_count between 10 and 1000:
-                    attributes:
-                      category: Accuracy
-            # Minerva
-            - dataset: dataos://lakehouse:retail/customer
-              options:
-                engine: minerva
-                clusterName: miniature
-              profile:
-                columns:
-                  - customer_index
-                  - exclude email_id
-                  - include d*
-                  - e*
-              checks:
-                - row_count between 10 and 1000:
-                    attributes:
-                      category: Accuracy
-                - row_count between (10 and 55):
-                    attributes:
-                      category: Accuracy
-                - missing_count(birthdate) = 0:
-                    attributes:
-                      category: Completeness
-                # - invalid_percent(phone_number) < 1 %:
-                #     valid format: phone number
-                - invalid_count(number_of_children) < 0:
-                    valid min: 0
-                    valid max: 6
-                    attributes:
-                      category: Validity
-                - min(age) > 30:
-                    filter: marital_status = 'Married'
-                      attributes:
-                        category: Accuracy
 
-                - duplicate_count(phone_number) = 0:
-                    attributes:
-                      category: Uniqueness
-                - row_count same as city:
-                    name: Cross check customer datasets
-                    attributes:
-                      category: Accuracy
+              - duplicate_count(phone_number) = 0:
+                  attributes:
+                    category: Uniqueness  
+              - row_count same as city:
+                  name: Cross check customer datasets
+                  attributes:
+                    category: Accuracy
 
-                - duplicate_count(customer_index) > 10:
-                    attributes:
-                      category: Uniqueness               
-                - duplicate_percent(customer_index) < 0.10:
-                    attributes:
-                      category: Uniqueness
-                # - failed rows:
-                #     samples limit: 70
-                #     fail condition: age < 18  and age >= 50
-                # - failed rows:
-                #     fail query: |
-                #       SELECT DISTINCT customer_index
-                #       FROM customer as customer
-                - freshness(ts_customer) < 1d:
-                    name: Freshness01
-                    attributes:
-                      category: Freshness
-                - freshness(ts_customer) < 5d:
-                    name: Freshness02
-                    attributes:
-                      category: Freshness
-                - max(age) <= 100:
-                    attributes:
-                      category: Accuracy
-                # - max_length(first_name) = 8:
-                #     attributes:
-                #       category: Accuracy
-                - values in (occupation) must exist in city (city_name):
-                    samples limit: 20
-                    attributes:
-                      category: Accuracy
-                      
-                - schema:
-                    name: Confirm that required columns are present
-                    warn:
-                      when required column missing: [first_name, last_name]
-                    fail:
-                      when required column missing:
-                        - age
-                        - no_phone
-                    attributes:
-                      category: Schema
-                - schema:
-                    warn:
-                      when forbidden column present: [Voldemort]
-                      when wrong column type:
-                        first_name: int
-                    fail:
-                      when forbidden column present: [Pii*]
-                      when wrong column type:
-                        number_of_children: DOUBLE
-                    attributes:
-                      category: Schema
-            # Postgres
-            - dataset: dataos://metisdb:public/classification
-              checks:
-                - row_count between 0 and 1000:
-                    attributes:
-                      category: Accuracy
-            # Big Query
-            - dataset: dataos://distribution:distribution/dc_info
-              checks:
-              - row_count between 0 and 1000:
-
-            # Snowflake
-            - dataset: dataos://sodasnowflake:TPCH_SF10/CUSTOMER
-              options: # this option is default no need to set, added for example.
-                engine: default
-              checks:
-                - row_count between 10 and 1000:
-                    attributes:
-                      category: Accuracy
-
-```
-</details>
-
-<details>
-<summary>Sample manifest for Soda Stack orchestrated using a Worker</summary>
-
-```yaml
-name: soda-worker-sample-v01
-version: v1beta
-type: worker
-tags:
-  - worker
-  - soda-checks
-description: Soda Sample Worker
-workspace: public
-worker:
-  replicas: 1
-  tags:
-    - worker
-    - soda-checks
-  stack: sodaworker+python:1.0
-  logLevel: INFO
-  compute: runnable-default
-  resources:
-    requests:
-      cpu: 100m
-      memory: 128Mi
-    limits:
-      cpu: 1000m
-      memory: 1024Mi
-  stackSpec:
-    inputs:
-      # Minerva
-      - dataset: dataos://lakehouse:retail/customer
-        options:
-          engine: minerva
-          clusterName: miniature
-        profile:
-          columns:
-            - customer_index
-            - exclude email_id
-            - include d*
-            - e*
-        checks:
-          - row_count between 10 and 1000:
-              attributes:
-                category: Accuracy
-
-          - row_count between (10 and 55):
-              attributes:
-                category: Accuracy
-        
-          - missing_count(birthdate) = 0:
-              attributes:
-                category: Completeness
-
-          # - invalid_percent(phone_number) < 1 %:
-          #     valid format: phone number
-          - invalid_count(number_of_children) < 0:
-              valid min: 0
-              valid max: 6
-              attributes:
-                category: Validity
-
-
-          - min(age) > 30:
-              filter: marital_status = 'Married'
-                attributes:
-                  category: Accuracy
-
-          - duplicate_count(phone_number) = 0:
-              attributes:
-                category: Uniqueness  
-          - row_count same as city:
-              name: Cross check customer datasets
-              attributes:
-                category: Accuracy
-
-          - duplicate_count(customer_index) > 10:
-              attributes:
-                category: Uniqueness
+              - duplicate_count(customer_index) > 10:
+                  attributes:
+                    category: Uniqueness
 
 
 
-          - duplicate_percent(customer_index) < 0.10:
-              attributes:
-                category: Uniqueness
-          # - failed rows:
-          #     samples limit: 70
-          #     fail condition: age < 18  and age >= 50
-          # - failed rows:
-          #     fail query: |
-          #       SELECT DISTINCT customer_index
-          #       FROM customer as customer
+              - duplicate_percent(customer_index) < 0.10:
+                  attributes:
+                    category: Uniqueness
+              # - failed rows:
+              #     samples limit: 70
+              #     fail condition: age < 18  and age >= 50
+              # - failed rows:
+              #     fail query: |
+              #       SELECT DISTINCT customer_index
+              #       FROM customer as customer
 
-          - freshness(ts_customer) < 1d:
-              name: Freshness01
-              attributes:
-                category: Freshness
-          - freshness(ts_customer) < 5d:
-              name: Freshness02
-              attributes:
-                category: Freshness
-               
-          - max(age) <= 100:
-              attributes:
-                category: Accuracy
-          # - max_length(first_name) = 8:
-          #     attributes:
-          #       category: Accuracy
-          - values in (occupation) must exist in city (city_name):
-              samples limit: 20
-              attributes:
-                category: Accuracy               
+              - freshness(ts_customer) < 1d:
+                  name: Freshness01
+                  attributes:
+                    category: Freshness
+              - freshness(ts_customer) < 5d:
+                  name: Freshness02
+                  attributes:
+                    category: Freshness
+                  
+              - max(age) <= 100:
+                  attributes:
+                    category: Accuracy
+              # - max_length(first_name) = 8:
+              #     attributes:
+              #       category: Accuracy
+              - values in (occupation) must exist in city (city_name):
+                  samples limit: 20
+                  attributes:
+                    category: Accuracy               
 
 
-          - schema:
-              name: Confirm that required columns are present
-              warn:
-                when required column missing: [first_name, last_name]
-              fail:
-                when required column missing:
-                  - age
-                  - no_phone
-              attributes:
-                category: Schema
-          - schema:
-              warn:
-                when forbidden column present: [Voldemort]
-                when wrong column type:
-                  first_name: int
-              attributes:
-                category: Schema
-```
-</details>
+              - schema:
+                  name: Confirm that required columns are present
+                  warn:
+                    when required column missing: [first_name, last_name]
+                  fail:
+                    when required column missing:
+                      - age
+                      - no_phone
+                  attributes:
+                    category: Schema
+              - schema:
+                  warn:
+                    when forbidden column present: [Voldemort]
+                    when wrong column type:
+                      first_name: int
+                  attributes:
+                    category: Schema
+    ```
+
 
 
 ### **Apply the manifest using CLI**
 
-Use the apply command to apply the workflow using CLI.
+Configure the Check as per the use-cases and apply the orkflow using the following command:
 
 ```bash
 dataos-ctl apply -f ${{path/file-name}} -w ${{workspace}} # By default the workspace is public
 ```
+
+## Soda Quality Check references
+
+
+| Quality Category | What It Checks | Key Capabilities | Business Value |
+|---------------------|-------------------|---------------------|-------------------|
+| [Accuracy](/resources/stacks/soda/quality_checks/accuracy_checks/) | Data correctness and statistical measures | • Row count validation<br>• Min/max value verification<br>• Average calculations<br>• Sum and percentile checks<br> | Ensures data reflects real-world values and meets expected statistical ranges |
+| [Completeness](/resources/stacks/soda/quality_checks/completeness_checks/) | Missing or incomplete data | • Null value detection<br>• Missing count/percentage<br>• Custom missing value patterns<br>• Failed rows identification<br> | Guarantees essential data fields are populated for reliable analysis |
+| [Freshness](/resources/stacks/soda/quality_checks/freshness_checks/) | Data recency and timeliness | • Time-based thresholds (hours/days)<br>• Alert configurations<br>• Filtered freshness checks<br>• Timestamp validation | Ensures data is current and updated according to business requirements |
+| [Schema Validation](/resources/stacks/soda/quality_checks/schema_checks/) | Data structure and format consistency | • Required/forbidden columns<br>• Data type validation<br>• Column order verification<br>• Pattern-based column checks<br>• Schema change detection | Maintains structural integrity and prevents downstream processing errors |
+| [Uniqueness](/resources/stacks/soda/quality_checks/uniqueness_checks/) | Duplicate detection and prevention | • Single column uniqueness<br>• Multi-column combinations<br>• Tolerance thresholds<br>• Custom sampling limits<br>• Filtered duplicate checks | Prevents data redundancy and ensures entity integrity |
+| [Validity](/resources/stacks/soda/quality_checks/validity_checks/) | Data format and rule compliance | • Predefined value sets<br>• Regex pattern matching<br>• Length constraints<br>• Numerical ranges<br>• Format validation (email, phone, etc.) | Confirms data adheres to business rules and expected formats |
+
+!!! tip
+    By specifying a category, checks are better organized and easily searchable, ensuring that users can quickly understand the type of validation being applied. Therefore, it is recommended to add the category of the checks, as this allows the category to be populated in the [Data Product Hub](/interfaces/data_product_hub/).
+
+
+[Data Product Hub](/interfaces/data_product_hub/) consolidates the status of all your data quality checks under the **Quality** tab, giving a comprehensive view of the health of your data assets.  There are two ways for a check and its latest result to appear on the dashboard:
+
+- **Manual scans with Scanner:** When you define checks in a YAML file and run a scanner using the Soda Library, the checks and their results are displayed in the Checks dashboard.
+
+- **Scheduled scans by Soda Workflow:** When Soda runs a scheduled workflow, the checks and their latest results automatically appear on the Checks dashboard.
+
+Each check result on the dashboard indicates whether it has passed or failed based on the specific quality dimension it is assessing. For Instance, in the below provided image, we can see the status of various data quality checks:
+
+- **Accuracy:** Passed, as indicated by the green checkmark.
+- **Completeness:** Passed, with a green checkmark.
+- **Freshness:** Flagged with a warning (⚠️), suggesting the data might not be up-to-date.
+- **Schema:** Also flagged (⚠️), which could mean there are schema mismatches or other issues with the data structure.
+- **Uniqueness:** Passed successfully.
+- **Validity:** Passed, indicating the data adheres to the expected validation rules.
+
+<div style="text-align: center;">
+  <img src="/resources/stacks/soda/soda_checks_01.png" alt="SODA" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption><i>Checks Symbol</i></figcaption>
+</div>
+
+When you click on any of the check, a detailed trend chart appears, displaying the specific times the check was executed along with the percentage of SLO compliance over time. The chart includes a graphical representation of how the data met the predefined quality standards, with 100% indicating full compliance. Any dips in the line graph highlight potential issues during specific check runs. Additionally, the dashboard may show more information like dataset details and error messages, offering a comprehensive view of the data quality trends over time. For instance, here you can see that the Trend Chart of the Validity check which indicates the time checks were ran against the percentage of SLOs.
+
+<div style="text-align: center;">
+  <img src="/resources/stacks/soda/image.png" alt="SODA" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption><i>Checks Symbol</i></figcaption>
+</div>
+
+The detailed trend chart shows that the data quality check was consistently run at 8:05 AM on several specific dates, including September 25, 26, 28, and daily from October 1 to 9. This regular cadence indicates the check was scheduled to run at the same time on these dates, ensuring continuous monitoring. The trend line remains at 100%, meaning the data met all SLO criteria during each check. For more details on the Quality tab refer [this link](/interfaces/data_product_hub/discovery/#data-product-tab) and scroll to Quality tab.
+
+
+
 
 ## Querying profiling and checks data
 
