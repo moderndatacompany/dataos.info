@@ -806,6 +806,18 @@ nav:
             - Recipes: resources/stacks/scanner/recipes.md
           - Soda: 
             - resources/stacks/soda/index.md
+            - Quality Checks:
+              - Accuracy Checks: resources/stacks/soda/quality_checks/accuracy_checks.md 
+              - Completeness: resources/stacks/soda/quality_checks/completeness_checks.md 
+              - Freshness: resources/stacks/soda/quality_checks/freshness_checks.md
+              - Schema validation: resources/stacks/soda/quality_checks/schema_checks.md
+              - Uniqueness: resources/stacks/soda/quality_checks/uniqueness_checks.md
+              - Validity: resources/stacks/soda/quality_checks/validity_checks.md
+              - User-defined: resources/stacks/soda/quality_checks/user_defined_checks.md
+            - Configurations: resources/stacks/soda/configurations.md
+            - Recipes:
+              - Running Data Profiling with Soda: resources/stacks/soda/how_to_run_profiling_using_soda_stack.md
+              - Running Checks on a Specific Branch: resources/stacks/soda/how_to_run_soda_checks_on_a_specific_branch_of_iceberg_dataset.md
           - Steampipe: 
             - resources/stacks/steampipe/index.md
           - Talos:
@@ -989,7 +1001,7 @@ nav:
         
         # - Deploy Semantic Model: learn/dp_foundations2_learn_track/deploy_sm/index.md
         
-       # - Dp Interaction Map: dp_foundations2_learn_track/dp_interaction_map/index.md
+        # - Dp Interaction Map: dp_foundations2_learn_track/dp_interaction_map/index.md
         # - Pipeline Observability: learn/dp_foundations2_learn_track/pipeline_observability/index.md
         # - Quality Check: learn/dp_foundations2_learn_track/quality_check/index.md
         # - Quality Check Observability: learn/dp_foundations2_learn_track/quality_check_observability/index.md
