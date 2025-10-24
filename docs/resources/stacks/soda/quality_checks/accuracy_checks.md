@@ -89,6 +89,30 @@ The following check verifies that the vacation_hours column has a maximum value 
 
 ```
 
+**Reference check for value consistency across datasets:** Ensures that values in a column of one dataset exist in a column of another dataset, maintaining referential integrity.
+
+In the following example, the check verifies that every value in the `city` column exists in the `site_state_name` column of the `site_check1` dataset, ensuring consistency across datasets.
+
+```yaml
+- values in (city) must exist in site_check1 (site_state_name):
+    name: City values should exist in site_state_name of site_check1
+    attributes:
+      category: Accuracy
+      title: Validate referential integrity between city and site_state_name
+```
+
+**Cross check for row count consistency between datasets:** Ensures the number of records in one dataset matches the number in another, verifying consistency across datasets.
+
+This check compares the row count of the current dataset with that of `site_check1`, ensuring both datasets have the same number of records, which is crucial for data integrity.
+
+```yaml
+- row_count same as site_check1:
+    name: Dataset should have the same number of records as site_check1
+    attributes:
+      category: Accuracy
+      title: Validate row count consistency between datasets
+```
+
 
 
 
@@ -129,64 +153,5 @@ The following check verifies that the vacation_hours column has a maximum value 
 ```
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- **7. Reference check for value consistency across datasets:** Ensures that values in a column of one dataset exist in a column of another dataset, maintaining referential integrity.
-
-In the following example, the check verifies that every value in the `city` column exists in the `site_state_name` column of the `site_check1` dataset, ensuring consistency across datasets.
-
-```yaml
-- values in (city) must exist in site_check1 (site_state_name):
-    name: City values should exist in site_state_name of site_check1
-    attributes:
-      category: Accuracy
-      title: Validate referential integrity between city and site_state_name
-```
-
-**8. Cross check for row count consistency between datasets:** Ensures the number of records in one dataset matches the number in another, verifying consistency across datasets.
-
-This check compares the row count of the current dataset with that of `site_check1`, ensuring both datasets have the same number of records, which is crucial for data integrity.
-
-```yaml
-- row_count same as site_check1:
-    name: Dataset should have the same number of records as site_check1
-    attributes:
-      category: Accuracy
-      title: Validate row count consistency between datasets
-```
--->
 
 By incorporating these accuracy checks into your workflows, you can proactively monitor and maintain the correctness of your datasets, ensuring they meet your organization's data quality standards. 
