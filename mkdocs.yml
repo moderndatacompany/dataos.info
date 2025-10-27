@@ -273,7 +273,12 @@ nav:
         - Bundle: 
           - resources/bundle/index.md
           - Configurations: resources/bundle/configurations.md
-          - Templates: resources/bundle/bundle_templates.md
+          - Recipes:
+            - Optimize bundling Resources in Data Product: resources/bundle/recipe/bundling_resources_in_data_product.md
+          - Templates: 
+            - Inline Bundle Template: resources/bundle/templates/direct_bundle.md
+            - File Path Bundle Template: resources/bundle/templates/file_path_bundle.md
+            - Dependencies in Bundle: resources/bundle/templates/bundle_dependencies.md
         - Cluster: 
           - resources/cluster/index.md
           - Configurations: 
