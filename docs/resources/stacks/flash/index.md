@@ -6,7 +6,7 @@ search:
 
 # Flash Stack
 
-Flash is a Stack designed to manage and control query costs and performance within DataOS by caching datasets from the DataOS Lakehouse using an in-memory query processing layer.
+Flash is a Stack designed to manage and control query costs and performance by caching datasets from the DataOS Lakehouse using an in-memory query processing layer.
 
 The Flash Stack is orchestrated using a [Service](/resources/service/) Resource. Each instance of a Flash Service is purpose-driven and tailored to specific consumption patterns.
 
