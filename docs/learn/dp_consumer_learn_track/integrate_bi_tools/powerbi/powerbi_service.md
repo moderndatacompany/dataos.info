@@ -191,7 +191,7 @@ To connect Power BI to the on-premises PostgreSQL interface via the data gateway
 <aside class="callout">
 💡 To retrieve your API Key and Username, click your profile icon in the Data Product Hub interface and select 'Profile'. Then, navigate to the Tokens section. Click the eye icon to reveal and copy your API Key. Your Username is your User ID.
 
-<img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/apikey.png" alt="API Key" width="800" height="400" />
+<img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/dataosapi.png" alt="API Key" width="800" height="400" />
 
 
 </aside>

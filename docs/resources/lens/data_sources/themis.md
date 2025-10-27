@@ -4,7 +4,7 @@
 
 Ensure you have an active and running Themis Cluster.
 
-## Step 1: Prepare the Lens model folder
+## Prepare the Lens model folder
 
 Organize the Lens model folder with the following structure to define tables, views, and governance policies:
 
@@ -234,7 +234,7 @@ The above manifest is intended for a cluster named `lenstestingthemis`, created 
 </aside>
 
 
-## Step 4: Apply the Lens manifest file
+## Apply the Lens manifest file
 
 After configuring the deployment file with the necessary settings and specifications, apply the manifest using the following command:
 
@@ -257,26 +257,25 @@ After configuring the deployment file with the necessary settings and specificat
     ```
 
 
-<aside class="callout">
+!!! info "Note"
 
-Once the Lens Resource is applied and all configurations are correctly set up, the Lens model will be deployed. Upon deployment, a Lens Service is created in the backend, which may take some time to initialize.
+    Once the Lens Resource is applied and all configurations are correctly set up, the Lens model will be deployed. Upon deployment, a Lens Service is created in the backend, which may take some time to initialize.
 
-To verify whether the Lens Service is running, execute the following command. The Service name follows the pattern: **`<lens-name>-api`**
+    To verify whether the Lens Service is running, execute the following command. The Service name follows the pattern: **`${{lens-name}}-api`**
 
-Ensure Service is active and running before proceeding to the next steps.
+    Ensure Service is active and running before proceeding to the next steps.
 
-```bash
-dataos-ctl get -t service -n themis-lens-lens-api -w public
-# Expected output:
-INFO[0000] 🔍 get...                                     
-INFO[0002] 🔍 get...complete                             
+    ```bash
+    dataos-ctl get -t service -n themis-lens-lens-api -w public
+    # Expected output:
+    INFO[0000] 🔍 get...                                     
+    INFO[0002] 🔍 get...complete                             
 
-           NAME           | VERSION |  TYPE   | WORKSPACE | STATUS |  RUNTIME  |    OWNER     
---------------------------|---------|---------|-----------|--------|-----------|--------------
-  themis-lens-lens-api | v1      | service | public    | active | running:1 | iamgroot
-```
+              NAME           | VERSION |  TYPE   | WORKSPACE | STATUS |  RUNTIME  |    OWNER     
+    --------------------------|---------|---------|-----------|--------|-----------|--------------
+      themis-lens-lens-api | v1      | service | public    | active | running:1 | iamgroot
+    ```
 
-</aside>
 
 
 

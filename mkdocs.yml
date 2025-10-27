@@ -287,9 +287,9 @@ nav:
           - Integration: 
             - resources/cluster/bi_tools/index.md
             - Power BI: 
-              - resources/cluster/bi_tools/powerbi/index.md
-              - Using Connector: resources/cluster/bi_tools/powerbi/dataos_connector_powerbi.md
-              - Using ODBC Driver: resources/cluster/bi_tools/powerbi/using_odbc_driver.md
+              - resources/cluster/bi_tools/powerbi/using_odbc_driver/index.md
+              # - Using Connector: resources/cluster/bi_tools/powerbi/dataos_connector_powerbi.md
+              # - Using ODBC Driver: resources/cluster/bi_tools/powerbi/using_odbc_driver.md
             - Tableau: resources/cluster/bi_tools/tableau/index.md
             - IBM SPSS: resources/cluster/bi_tools/spss/index.md
             - CLI Client: resources/cluster/cli_client.md
@@ -788,10 +788,11 @@ nav:
                 - Lakehouse: resources/stacks/scanner/supported_sources/data_sources/lakehouse.md
                 - MariaDB: resources/stacks/scanner/supported_sources/data_sources/maria_db.md
                 - MSSQL: resources/stacks/scanner/supported_sources/data_sources/mssql.md
+                - MongoDB: resources/stacks/scanner/supported_sources/data_sources/mongodb.md
                 - MySQL: resources/stacks/scanner/supported_sources/data_sources/mysql.md
                 - Oracle: resources/stacks/scanner/supported_sources/data_sources/oracle.md
                 - PostgreSQL: resources/stacks/scanner/supported_sources/data_sources/postgresql.md 
-                - Pulsar: resources/stacks/scanner/supported_sources/data_sources/pulsar.md
+                # - Pulsar: resources/stacks/scanner/supported_sources/data_sources/pulsar.md
                 - Redshift: resources/stacks/scanner/supported_sources/data_sources/redshift.md
                 - Snowflake: resources/stacks/scanner/supported_sources/data_sources/snowflake.md
               - System Sources: 
@@ -810,6 +811,18 @@ nav:
             - Recipes: resources/stacks/scanner/recipes.md
           - Soda: 
             - resources/stacks/soda/index.md
+            - Quality Checks:
+              - Accuracy Checks: resources/stacks/soda/quality_checks/accuracy_checks.md 
+              - Completeness: resources/stacks/soda/quality_checks/completeness_checks.md 
+              - Freshness: resources/stacks/soda/quality_checks/freshness_checks.md
+              - Schema validation: resources/stacks/soda/quality_checks/schema_checks.md
+              - Uniqueness: resources/stacks/soda/quality_checks/uniqueness_checks.md
+              - Validity: resources/stacks/soda/quality_checks/validity_checks.md
+              - User-defined: resources/stacks/soda/quality_checks/user_defined_checks.md
+            - Configurations: resources/stacks/soda/configurations.md
+            - Recipes:
+              - Running Data Profiling with Soda: resources/stacks/soda/how_to_run_profiling_using_soda_stack.md
+              - Running Checks on a Specific Branch: resources/stacks/soda/how_to_run_soda_checks_on_a_specific_branch_of_iceberg_dataset.md
           - Steampipe: 
             - resources/stacks/steampipe/index.md
           - Talos:
@@ -926,10 +939,19 @@ nav:
           - Explore semantic model: 
             - learn/dp_consumer_learn_track/explore_sm/index.md
             - API integration: learn/dp_consumer_learn_track/explore_sm/api_integration/index.md
-          - Underastand quality: learn/dp_consumer_learn_track/dp_quality/index.md
-          - Connnect Data Products with BI tools and applications:
+          - Understand quality: learn/dp_consumer_learn_track/dp_quality/index.md
+          - Connect Data Products with BI tools and applications:
             - Integration with BI tools:
               - learn/dp_consumer_learn_track/integrate_bi_tools/index.md
+              - Tableau Cloud: learn/dp_consumer_learn_track/integrate_bi_tools/tab_cloud/index.md
+              - Tableau Desktop: learn/dp_consumer_learn_track/integrate_bi_tools/tab_desktop/index.md
+              - Superset: learn/dp_consumer_learn_track/integrate_bi_tools/superset/index.md
+              - Power BI: learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/index.md
+              - Power BI Service: learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/powerbi_service.md
+
+
+
+
             - Integration with AI/ML:
               - learn/dp_consumer_learn_track/integrate_aiml/index.md
             - Integration with Postgres:
@@ -984,7 +1006,7 @@ nav:
         
         # - Deploy Semantic Model: learn/dp_foundations2_learn_track/deploy_sm/index.md
         
-       # - Dp Interaction Map: dp_foundations2_learn_track/dp_interaction_map/index.md
+        # - Dp Interaction Map: dp_foundations2_learn_track/dp_interaction_map/index.md
         # - Pipeline Observability: learn/dp_foundations2_learn_track/pipeline_observability/index.md
         # - Quality Check: learn/dp_foundations2_learn_track/quality_check/index.md
         # - Quality Check Observability: learn/dp_foundations2_learn_track/quality_check_observability/index.md

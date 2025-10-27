@@ -75,7 +75,7 @@ In addition to external applications, the Scanner Stack extracts metadata from *
 
 * Scans and publishes metadata related to DataOS Resources such as Workflows, including execution history, execution states, and job metadata.
 
-* Collects historical metadata for **pods, logs, and processing stacks** like **Flare** and **Benthos**, capturing job information and source-destination relationships.
+* Collects historical metadata for **pods, logs, and processing stacks** like **Flare** and **Bento**, capturing job information and source-destination relationships.
 
 
 **Gateway Service**

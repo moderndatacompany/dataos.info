@@ -1,7 +1,7 @@
 ---
 title: Python SDK
 search:
-  boost: 4
+  boost: 3
 tags:
     - Python
     - SDK
@@ -48,11 +48,11 @@ In [1]: import sys
 # Output
 Python 3.7.3
 ```
-<aside class="best-practice">
 
-📖 <b>Best Practice:</b> It’s recommended to write <code>{sys.executable}</code> rather than plain <code>python</code> in order to ensure that commands are run in the Python installation matching the currently running notebook (which may not be the same Python installation that the <code>python</code> command refers to).
+!!! tip "Best Practice"
 
-</aside>
+        It’s recommended to write `{sys.executable}` rather than plain `python` in order to ensure that commands are run in the Python installation matching the currently running notebook (which may not be the same Python installation that the `python` command refers to).
+
 
 **Ensure you have `pip` installed**
 
@@ -284,5 +284,5 @@ properties = {
 
 ## Python SDK Library Reference
 
-For a detailed reference guide on the Python SDK and its subpackages, modules, and classes, please visit the [Python SDK Library Reference.](/api_docs/dataos_python_sdk/reference_index.html). 
+For a detailed reference guide on the Python SDK and its subpackage, modules, and classes, please visit the [Python SDK Library Reference.](/api_docs/dataos_python_sdk/reference_index.html). 
 

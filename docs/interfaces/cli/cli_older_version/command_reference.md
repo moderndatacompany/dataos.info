@@ -1052,7 +1052,7 @@ INFO[0004] : metis http://localhost:8081
 
 ### **TUI**
 
-Dataos-ctl TUI is a Terminal User Interface for DataOS. It shows all the key resources deployed on the server. You can click on the resource menu to see the corresponding details in the Resource Summary section. You can view artefacts and Run time services/resources and and their YAML. You can also view logs for runtime.
+Terminal UI of the DataOS® can be used by `dataos-ctl tui` command which is a Terminal User Interface for DataOS®. It shows all the key resources deployed on the server. You can click on the resource menu to see the corresponding details in the Resource Summary section. You can view artefacts and Run time services/resources and and their YAML. You can also view logs for runtime.
 
 !<center>
   <div style="text-align: center;">

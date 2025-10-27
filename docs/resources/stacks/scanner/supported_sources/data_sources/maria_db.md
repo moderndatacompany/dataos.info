@@ -31,35 +31,22 @@ MariaDB metadata Scanner Workflow can be configured and scheduled through the Da
     - **Read All Dataset**
     - **Read All Secrets from Heimdall**
 
-    To validate assigned use cases, refer to the [**Bifrost Application Use Cases**](/interfaces/bifrost/ "Bifrost is a Graphical User Interface (GUI) that empowers users to effortlessly create and manage access policies for applications, services, people, and datasets. Bifrost leverages the governance engine of DataOS, Heimdall, to ensure secure and compliant data access through ABAC policies, giving users fine-grained control over the data and resources.") section.
+    To validate assigned use cases Contact DataOS Operator, and to know more refer to the [**Bifrost Application Use Cases**](/interfaces/bifrost/ "Bifrost is a Graphical User Interface (GUI) that empowers users to effortlessly create and manage access policies for applications, services, people, and datasets. Bifrost leverages the governance engine of DataOS, Heimdall, to ensure secure and compliant data access through ABAC policies, giving users fine-grained control over the data and resources.") section.
 
 - **Depot Verification**: Ensure a JDBC-type Depot is created via the Metis UI or using the CLI:
 
     ```bash
     dataos-ctl get -t depot -a
-    ```
 
-    ```bash
-    # expected output
+    # Expected output
 
     INFO[0000] 🔍 get...
     INFO[0000] 🔍 get...complete
 
     | NAME             | VERSION | TYPE  | WORKSPACE | STATUS | RUNTIME | OWNER      |
     | ---------------- | ------- | ----- | --------- | ------ | ------- | ---------- |
-    | mongodepot       | v2alpha | depot |           | active |         | usertest   |
-    | snowflakedepot   | v2alpha | depot |           | active |         | gojo       |
-    | redshiftdepot    | v2alpha | depot |           | active |         | kira       |
-    | mysqldepot       | v2alpha | depot |           | active |         | ryuk       |
-    | oracle01         | v2alpha | depot |           | active |         | drdoom     |
-    | mariadb01        | v2alpha | depot |           | active |         | tonystark  |
-    | demopreppostgres | v2alpha | depot |           | active |         | slimshaddy |
-    | demoprepbq       | v2alpha | depot |           | active |         | pengvin    |
-    | mssql01          | v2alpha | depot |           | active |         | hulk       |
-    | kafka01          | v2alpha | depot |           | active |         | peeter     |
-    | lakehouse          | v2alpha | depot |           | active |         | blackpink  |
-    | azuresql         | v2alpha | depot |           | active |         | arnold     |
-    | fastbase         | v2alpha | depot |           | active |         | ddevil     |
+    | mariadepot       | v2alpha | depot |           | active |         | usertest   |
+
     ```
 
     If the desired depot is not present, create it using the following manifest:

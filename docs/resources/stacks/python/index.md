@@ -4,7 +4,6 @@ search:
   boost: 4
 tags: 
     - Python
-    - Python stack
     - Python Application Deployment
     - Containerized Python
 ---
