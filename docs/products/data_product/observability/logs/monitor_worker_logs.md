@@ -63,27 +63,7 @@ To monitor the  logs of a Worker using DataOS CLI, follow the steps below:
             "allow_private_members_access": false
           }
         ]
-        DEBUG: /etc/dataos/work/dp-automation/demo_1/textile-analytics/data-product/consumer-aligned/build/semantic-model-view/model/sqls/inventory_view.sql:205:1749852016065.9807
-        DEBUG: /etc/dataos/work/dp-automation/demo_1/textile-analytics/data-product/consumer-aligned/build/semantic-model-view/model/sqls/production_view.sql:242:1749852016065.9807
-        DEBUG: /etc/dataos/work/dp-automation/demo_1/textile-analytics/data-product/consumer-aligned/build/semantic-model-view/model/sqls/sales_view.sql:232:1749852016065.9807
-        DEBUG: /etc/dataos/work/dp-automation/demo_1/textile-analytics/data-product/consumer-aligned/build/semantic-model-view/model/tables/inventory_view.yml:2220:1749852016065.9807
-        DEBUG: /etc/dataos/work/dp-automation/demo_1/textile-analytics/data-product/consumer-aligned/build/semantic-model-view/model/tables/production_view.yml:2918:1749852016065.9807
-        DEBUG: /etc/dataos/work/dp-automation/demo_1/textile-analytics/data-product/consumer-aligned/build/semantic-model-view/model/tables/sales_view.yml:2491:1749852016065.9807
-        DEBUG: ENV ->  ROUTER_TELEMETRY : false
-        DEBUG: ENV ->  ROUTER_WORKERS : textile-insights-worker-gqjk-ss-0.textile-insights-worker.public.svc.cluster.local:10001
-        DEBUG: ENV ->  ROUTER_WORKER_PORT : 10001
-        DEBUG: ENV ->  RUNNABLE_ARTIFACT_DIR : /etc/dataos/work
-        DEBUG: ENV ->  RUNNABLE_TYPE : worker
-        DEBUG: ENV ->  RUST_BACKTRACE : true
-        DEBUG: ENV ->  SCS_SERVICE_URL : https://stack-exec-context-sink.poros.svc.cluster.local:39100/sink
-        DEBUG: ENV ->  STORE_INTERNAL_URL : http://stores-api.caretaker.svc.cluster.local:8891/stores
-        DEBUG: ENV ->  STORE_SERVICE_SSL_ENABLED : false
-        DEBUG: ENV ->  STORE_SERVICE_SSL_HOSTNAME_VERIFICATION : false
-        DEBUG: ENV ->  STORE_SERVICE_URL_PATH : /api/v1
-        DEBUG: ENV ->  STORE_URL : https://dataos-training.dataos.app/stores
-        DEBUG: ENV ->  TERM : rxvt-unicode
-        DEBUG: ENV ->  YARN_VERSION : 1.22.19
-        args:  [ 'router' ] , cwd:  /etc/dataos/work
+
         
         ```
         
