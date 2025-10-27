@@ -37,28 +37,13 @@ service:
   stackSpec:
     datasets:
       - name: ${{records}}
-        address: ${dataos://lakehouse:flash/records}}
+        address: ${{dataos://lakehouse:flash/records}}
 
-      - name: ${{f_sales}}
-        depot: ${{dataos://bigquery}}
-        sql: ${{SELECT * FROM sales_360.f_sales}}
-        meta:
-          bucket: ${{tmdcdemogcs}}
-        refresh:
-          expression: ${{"*/2 * * * *"}}
-          sql: ${{SELECT MAX(invoice_dt_sk) FROM sales_360.f_sales}}
-          where: ${{invoice_dt_sk > PREVIOUS_SQL_RUN_VALUE}}
+      - name: ${{customer}}
+        address: ${{dataos://lakehouse:retail/customer}}
 
-      - name: ${{duplicate_sales}}
-        depot: ${{dataos://bigquery}}
-        sql: ${{SELECT * FROM sales_360.f_sales}}
-        meta:
-          bucket: ${{tmdcdemogcs}}
-        refresh:
-          expression: ${{"*/4 * * * *"}}
-          sql: ${{SELECT MAX(invoice_dt_sk) FROM sales_360.f_sales}}
-          where: ${{invoice_dt_sk > CURRENT_SQL_RUN_VALUE}}
-
+      - name: ${{sales}}
+        address: ${{dataos://lakehouse:retail/sales}}
 
     init:
       - ${{create table f_sales as (select * from records)}}
