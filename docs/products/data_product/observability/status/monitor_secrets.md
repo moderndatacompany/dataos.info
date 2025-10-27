@@ -31,19 +31,19 @@ To monitor the status of Secret on the Metis Catalog UI, follow the steps below:
 1. Open the Metis Catalog.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/status/instance_secret/instance_secret_bqdepot_tables.png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 2. Search for a Secret by name.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/status/secrets/secrets_dockersecret_secrets_dockersecret_moderndockersecret_dockeractionssecret.png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 3. Click on the Secret that needs to be monitored and check the Status, which is represented as `State`.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/status/secrets/secrets_secrets_public_dockersecret_owner_tier.png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 
@@ -56,13 +56,13 @@ To monitor the status of Secret on the Operations app, follow the steps below:
 1. Open the Operations app.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/status/instance_secret/instance_secret_operations_administer_data0s_grafana.png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 2. Under the User space → type → Secret, search for the Secret.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/status/secrets/secrets_dataos_operations_user_space_core.png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
     The `active` status indicates that the Resource is valid and available for use within DataOS. This is the expected state for a healthy and usable Resource.
@@ -79,7 +79,7 @@ To monitor the status of Secret on the Operations app, follow the steps below:
     </aside>
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/status/secrets/secrets_dataos_operations_user_spac_user.png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
     Monitoring the Builder Stage is crucial, especially when `status` = `error`. If the `builder stage` = `building`, the issue likely occurred after build, possibly runtime or external issues.

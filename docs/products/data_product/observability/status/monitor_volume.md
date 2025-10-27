@@ -31,13 +31,13 @@ To monitor the status of Volume on the Operations app, follow the steps below:
 1. Open the Operations app.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/status/instance_secret/instance_secret_operations_administer_data0s_grafana.png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 2. Under the User space → type → Volume, search for the Volume by name.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/status/volume/volume_adataos_operations_userspace_core_kernel.png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
     The `active` status indicates that the Resource is valid and available for use within DataOS. This is the expected state for a healthy and usable Resource.
@@ -54,7 +54,7 @@ To monitor the status of Volume on the Operations app, follow the steps below:
     </aside>
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/status/volume/volume_dataos_operations_user_spac_user.png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
     Monitoring the Builder Stage is crucial, especially when `status` = `error`. If the `builder stage` = `building`, the issue likely occurred after build, possibly runtime or external issues.

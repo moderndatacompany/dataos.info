@@ -12,7 +12,7 @@ dataos-ctl get -t lakehouse -w ${{workspace-name}}
 
 **Example Usage:**
 
-```bash
+```bash0
 dataos-ctl get -t lakehouse -w public
 INFO[0000] 🔍 get...                                     
 INFO[0001] 🔍 get...complete                             
@@ -31,19 +31,19 @@ To monitor the status of Lakehouse on the Metis Catalog UI, follow the steps bel
 1. Open the Metis Catalog.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/status/instance_secret/instance_secret_metis_catalog_endtoend_metadata_management.png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 2. Search for a Lakehouse by name.
     
     <div style="text-align: center;">
-      <img src="/products/data_product/observability/status/lakehouse/lakehouse_lakehouses_public_lakehouse_owner_dataosazure.png" style="width: 70%; height: auto;">
+      <img src="/products/data_product/observability/status/lakehouse/lakehouse_lakehouse_policies_customersegmentspolicy_lakehouses_lakehouse.png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 3. Click on the Lakehouse that needs to be monitored and check the Status, which is represented as `State`.
     
     <div style="text-align: center;">
-      <img src="/products/data_product/observability/status/lakehouse/lakehouse_lakehouses_public_lakehouse_owner_dataosazure.png" style="width: 70%; height: auto;">
+      <img src="/products/data_product/observability/status/lakehouse/lakehouse_lakehouses_public_lakehouse_owner_dataosazure.png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 
@@ -56,13 +56,13 @@ To monitor the status of Lakehouse on the Operations app, follow the steps below
 1. Open the Operations app.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/status/instance_secret/instance_secret_operations_administer_data0s_grafana.png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 2. Under the User space → type → Lakehouse, search for the Lakehouse by name.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/status/lakehouse/lakehouse_adataos_operations_userspace_core_kernel.png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
     The `active` status indicates that the Resource is valid and available for use within DataOS. This is the expected state for a healthy and usable Resource.
@@ -79,7 +79,7 @@ To monitor the status of Lakehouse on the Operations app, follow the steps below
     </aside>
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/status/lakehouse/lakeouse_ops.png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
     Monitoring the Builder Stage is recommended when the Resource status shows an `error`.

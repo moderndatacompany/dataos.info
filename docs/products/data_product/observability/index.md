@@ -1,3 +1,8 @@
+---
+search:
+  boost: 0
+---
+
 # Observability
 
 This documentation provides a comprehensive guide that explains how to set up and use Observability in DataOS to keep track of how different Resources are working. It helps users understand how to monitor performance, check system health, and get alerts when something goes wrong with the Resources used to build the Data Products. Each section focuses on a specific layer, monitoring, logging, and alerting, and includes instructions, usage examples, and pre-built dashboard integrations.

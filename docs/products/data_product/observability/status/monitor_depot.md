@@ -30,21 +30,21 @@ Users can track the status of a Depot, whether active or deleted, along with the
 - Simply navigate to `Resources → Depots` to check the status of any Depot within the environment. Additionally, users can quickly find a specific Depot by searching for its name in the Metis UI search bar.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/status/instance_secret/instance_secret_metis_catalog_endtoend_metadata_management.png" style="border:1px solid black; width: 70%; height: auto">
     <figcaption><i>Observability in DataOS</i></figcaption>
     </div>
     
 - When a user clicks on a specific Depot, they can also track the aggregated status along with the runtime, which applies only to the object storage Depots.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/status/depot/depot_dataosmetis_activity_products_assets_resources_dup.png" style="border:1px solid black; width: 70%; height: auto">
     <figcaption><i>Observability in DataOS</i></figcaption>
     </div>
     
 - To check the runtime of a Depot (If applicable), simply navigate to the ‘Runtime’ tab as shown below.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/status/depot/depot_depots_poss3_explore_assets_meta.png" style="border:1px solid black; width: 70%; height: auto">
     <figcaption><i>Observability in DataOS</i></figcaption>
     </div>
     
@@ -57,10 +57,10 @@ Using the Operations App, users can monitor the operational logs of a Depot. In 
 
 Follow the steps below to monitor a Depot on the Operations app:
 
-1. Open the Operations **app.
+1. Open the Operations app.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/observability.png" style="border:1px solid black; width: 70%; height: auto">
     <figcaption><i>Observability in DataOS</i></figcaption>
     </div>
     
@@ -68,7 +68,7 @@ Follow the steps below to monitor a Depot on the Operations app:
 3. Select Depot as the Resource type to filter all Depots in the environment.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/observability.png" style="border:1px solid black; width: 70%; height: auto">
     <figcaption><i>Observability in DataOS</i></figcaption>
     </div>
     
@@ -77,7 +77,7 @@ Follow the steps below to monitor a Depot on the Operations app:
     
     <div style="text-align: center;">
     <div style="text-align: center;">
-      <img src="/products/data_product/observability/cpu/depot/depot_dataos_operations_user_space_resources.png" style="width: 70%; height: auto;">
+      <img src="/products/data_product/observability/cpu/depot/depot_dataos_operations_user_space_resources.png" style="border:1px solid black; width: 70%; height: auto">
       <figcaption><i>né DataOS? operations User Space Resources Minerva Queries Name 4 _ thirdparty thirdparty thirdparty01 « < » User Spa...</i></figcaption>
     </div>
     <figcaption><i>Observability in DataOS</i></figcaption>

@@ -32,21 +32,21 @@ To monitor the status of an Instance Secret on the Metis Catalog UI, follow the 
 1. Open the Metis Catalog.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/status/instance_secret/metis1.png" style="border:1px solid black; width: 70%; height: auto;">
+    <img src="/products/data_product/observability/status/instance_secret/instance_secret_metis_catalog_endtoend_metadata_management.png" style="border:1px solid black; width: 70%; height: auto;">
     <figcaption><i>Metis UI</i></figcaption>
     </div>
     
 2. Search for the Instance Secret by name.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/status/instance_secret/metis2.png" style="border:1px solid black; width: 70%; height: auto;">
+    <img src="/products/data_product/observability/status/instance_secret/instance_secret_bqdepot_tables.png" style="border:1px solid black; width: 70%; height: auto;">
     <figcaption><i>Metis UI</i></figcaption>
     </div>
     
 3. Click on the Instance Secret that needs to be monitored and check the Status, which is represented as `State`.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/status/instance_secret/metis3.png" style="border:1px solid black; width: 70%; height: auto;">
+    <img src="/products/data_product/observability/status/instance_secret/instance_secret_instance_secrets_badepotr_owner_tier.png" style="border:1px solid black; width: 70%; height: auto;">
     <figcaption><i></i>Metis UI</figcaption>
     </div>
     
@@ -60,7 +60,7 @@ To monitor the status of an Instance Secret on the Operations app, follow the st
 1. Open the Operations app.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/status/instance_secret/ops1.png" style="border:1px solid black; width: 70%; height: auto;">
+    <img src="/products/data_product/observability/status/instance_secret/instance_secret_operations_administer_data0s_grafana.png" style="border:1px solid black; width: 70%; height: auto;">
     <figcaption><i>Operations UI</i></figcaption>
     </div>
     
@@ -84,7 +84,7 @@ To monitor the status of an Instance Secret on the Operations app, follow the st
     </aside>
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/status/instance_secret/ops3.png" style="border:1px solid black; width: 70%; height: auto;">
+    <img src="/products/data_product/observability/status/instance_secret/instance_secret_bqdepotr_resource_details_info_name.png" style="border:1px solid black; width: 70%; height: auto;">
     <figcaption><i>Operations UI</i></figcaption>
     </div>
     

@@ -6,7 +6,7 @@ search:
 
 # Flash Stack
 
-Flash is a Stack designed to manage and control query costs and performance within DataOS. It achieves this by caching datasets using an in-memory query processing layer.
+Flash is a Stack designed to manage and control query costs and performance within DataOS by caching datasets from the DataOS Lakehouse using an in-memory query processing layer.
 
 The Flash Stack is orchestrated using a [Service](/resources/service/) Resource. Each instance of a Flash Service is purpose-driven and tailored to specific consumption patterns.
 
@@ -30,7 +30,7 @@ Effective configuration of Flash requires understanding each attribute of the Fl
 
 ## Supported data sources
 
-Flash supports BigQuery, Snowflake, Redshift, and Depots with the Iceberg table format (DataOS Lakehouse, AWS S3, Azure ABFSS, Azure WASBS). This section includes steps for configuring the Flash Service for each of these Depots. For further details, [see this section](/resources/stacks/flash/data_sources/).
+Flash supports DataOS Lakehouse with the Iceberg table format. This section includes steps for configuring the Flash Service to work with Lakehouse Depots. For further details, [see this section](/resources/stacks/flash/data_sources/).
 
 ## Monitoring the cached dataset
 
