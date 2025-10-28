@@ -75,7 +75,7 @@ workflow:
   title: scheduled Scanner Workflow
   schedule:  
     cron: '*/2 * * * *'  #every 2 minute  [Minute, Hour, day of the month ,month, dayoftheweek]
-    concurrencyPolicy: Allow #forbid/replace
+    concurrencyPolicy: Allow #Forbid/Replace
     endOn: 2024-11-01T23:40:45Z
     timezone: Asia/Kolkata
 ```
