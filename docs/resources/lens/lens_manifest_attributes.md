@@ -19,7 +19,7 @@ lens:
  compute: runnable-default # Compute Resource name (mandatory)
  runAsApiKey: abcdefghijklmnopqrstuvwxyz # DataOS API key (optional)
  runAsUser: iamgroot # DataOS UserID (optional)
- secrets: # Referred Instance-secret configuration (mandatory for private repository)
+ secrets: # Referred Instance-secret configuration (optional for public repositories, mandatory for private repositories)
   - name: bitbucket-r # Instance-secret name (mandatory)
     key: abcd # Key to be referred (optional)
     keys: # List of keys to be referred (optional)
@@ -195,11 +195,11 @@ lens:
 
 ### **`secrets`**
 
-**Description:** The `secret` attribute is used to reference pre-defined Instance Secrets within the Lens manifest file. Each referred secret is a list of secret configurations.
+**Description:** The `secret` attribute is used to reference pre-defined Instance Secrets within the Lens manifest file. Each referred secret is a list of secret configurations. This attribute is **optional for public repositories** but **mandatory for private repositories** to provide secure access credentials.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | --- | --- | --- | --- |
-| list of mappings | mandatory | none | list of secret configurations |
+| list of mappings | optional for public repositories, mandatory for private repositories | none | list of secret configurations |
 
 **Attributes for `secrets`**
 
@@ -243,7 +243,11 @@ lens:
 | ---           | ---             | ---               | ---                                                             |
 | string        | optional        | `envVars`         | `envVars`, or other consumption methods                         |
 
-**Example usage:** If the codebase for your Lens is stored in a private code repository, you can create a Secret for the same and refer to it within the manifest file of Lens in the following way:
+**Example usage:** 
+
+**For public repositories:** Secrets are not required. You can simply omit the `secrets` section from your Lens manifest.
+
+**For private repositories:** If the codebase for your Lens is stored in a private code repository, you can create a Secret for the same and refer to it within the manifest file of Lens in the following way:
 
 ```yaml title="instance_secret.yml"
 name: github-r

@@ -20,10 +20,6 @@ description: The job scans schema tables and register data  # Brief description 
 
 # Workflow configuration
 workflow:
-  # Schedule configuration (optional)
-  # schedule:
-  #   cron: '*/20 * * * *'  # Cron expression for scheduling (e.g., every 20 minutes)
-  #   concurrencyPolicy: Forbid  # Concurrency policy (e.g., forbid concurrent runs)
 
   # Workflow DAG (Directed Acyclic Graph)
   dag:
