@@ -15,9 +15,9 @@ When setting up a semantic model, it is crucial to understand that the semantic 
 
     - BI Sync is not supported.
 
-   **Databricks Depot Limitation:** Databricks depots can only be used as a source for Lens, not for other stacks or resources.
+    - **Databricks Depot Limitation:** Databricks depots can only be used as a source for Lens, not for other stacks or resources.
 
-   **Metadata Scanning:** Metadata scanning for Databricks tables is not yet supported.
+    - **Metadata Scanning:** Metadata scanning for Databricks tables is not yet supported.
 
 ## Step 1: Set up a connection with source
 
@@ -36,7 +36,34 @@ instance-secret:
   data:
     token: "dapi0123"  # databricks's personal access token here
 ```
+To create Depot:
 
+1. Go to your Databricks workspace.
+
+2. Navigate to: SQL → SQL Warehouses → <select your warehouse> → Connection Details.
+
+3. Copy the JDBC URL — it will look like this:
+
+    ```
+    jdbc:spark://<your-databricks-host>:443/default;transportMode=http;ssl=1;AuthMech=3;httpPath=sql/protocolv1/o/<org-id>/<warehouse-id>
+    ```
+
+Extract the following values from the URL to fill in your depot YAML:
+
+| **Field**       | **Description**                                                       | **Example Value**                        |
+| --------------- | --------------------------------------------------------------------- | ---------------------------------------- |
+| `subprotocol`   | Identifies the JDBC driver type used to connect to Databricks.        | `databricks-jdbc`                        |
+| `database`      | specifies the default database or schema to connect to. (optional)    | `main`                                   |
+| `host`          | The Databricks workspace host (server hostname).                      | `dbc-123abc23-d0aa.cloud.databricks.com` |
+| `port`          | The port used for the JDBC connection.                                | `443`                                    |
+| `transportMode` | Specifies the transport protocol used for communication.              | `http`                                   |
+| `ssl`           | Enables SSL encryption for the connection.                            | `1`                                      |
+| `AuthMech`      | Defines the authentication mechanism used.                            | `3`                                      |
+| `httpPath`      | The HTTP path to the Databricks SQL Warehouse.                        | `/sql/1.0/warehouses/99123`              |
+| `accept_policy` | Confirms acceptance of Databricks JDBC driver usage terms (required). | `true`                                   |
+
+
+4. Generate a [Personal Access Token](https://docs.databricks.com/aws/en/dev-tools/auth/pat#create-personal-access-tokens-for-workspace-users) (if not already created). You’ll use this token in your connection or instance-secret.
 
 ```yaml title="databricks-depot.yml"
 name: databricks-a
@@ -53,7 +80,7 @@ depot:
       allkeys: true
   jdbc:
     subprotocol: databricks-jdbc
-    database: main
+    database: main                               #optional
     host: dbc-123abc23-d0aa.cloud.databricks.com
     port: 443
     params:
@@ -61,7 +88,7 @@ depot:
       ssl: 1
       AuthMech: 3
       httpPath: /sql/1.0/warehouses/99123
-      accept_policy: true # # This accepts the Databricks usage policy and must be set to `true` to use the Databricks JDBC driver
+      accept_policy: true # This accepts the Databricks usage policy and must be set to `true` to use the Databricks JDBC driver
 ```
 
 ## Step 2: Prepare the Lens model folder
