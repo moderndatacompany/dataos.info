@@ -1,12 +1,16 @@
 # PostgreSQL
 
-The Nilus connector for **PostgreSQL** supports **Change Data Capture (CDC)**, enabling real-time replication of changes from PostgreSQL transactional databases to  [Supported Destinations](/resources/stacks/nilus/supported_destinations/), such as the Lakehouse.
+The Nilus connector for PostgreSQL supports Change Data Capture (CDC), enabling real-time replication of changes from PostgreSQL transactional databases to  [Supported Destinations](/resources/stacks/nilus/supported_destinations/), such as the Lakehouse.
 
 ## Prerequisites
 
 Before enabling CDC, ensure the following configurations depending on your hosting environment:
 
 ### **PostgreSQL Configuration**
+
+!!! info
+    Contact the Database Administrator (DBA) to set up Change Data Capture (CDC) for PostgreSQL.
+
 
 - **Azure-hosted PostgreSQL :** Set `wal_level` to `logical` to enable logical replication.
 
@@ -27,6 +31,7 @@ Before enabling CDC, ensure the following configurations depending on your hosti
         ```sql
         rds.logical_replication = 1;
         ```
+
     - Adjust replication parameters if needed:\
       `wal_level`, `max_wal_senders`, `max_replication_slots`, `max_connections`.
 
@@ -52,7 +57,7 @@ WHERE rolname = 'username';
     ALTER ROLE <username> WITH LOGIN REPLICATION;
     ```
 
-- Or create a new user:&#x20;
+- Or create a new user:
 
     ```sql
     CREATE ROLE <username> WITH LOGIN REPLICATION PASSWORD '<password>';
@@ -152,7 +157,7 @@ service:                                                   # Service specificati
       options:                                             # Sink-specific options
          dest-table: pgdb_test_004                         # Destination table name in sink
         incremental-strategy: append                       # Append mode for CDC write strategy
-        aws_region: us-west-2                              # AWS region for S3-backed DataOS Lakehouse
+
 
 ```
 
@@ -168,7 +173,7 @@ dataos-ctl resource apply -f ${{path to the Nilus Service YAML}}
 
 ### **Best Practices**
 
-1. Always include **all partitions** in `table.include.list`.
+1. Always include all partitions in `table.include.list`.
 2. Confirm `wal_level = logical`.
 3. Grant replication user sufficient privileges.
 4. Monitor replication slots to avoid WAL buildup.
@@ -205,23 +210,23 @@ Nilus supports the following sink options for PostgreSQL CDC workflows:
 | ---------------------- | ---------------------------------------------- | -------- |
 | `dest-table`           | Target table in the sink.                      | —        |
 | `incremental-strategy` | Write mode (`append` recommended for CDC).     | `append` |
-| `aws_region`           | AWS region (required for S3-backed Lakehouse). | —        |
+
 
 ## Core Concepts
 
-Nilus captures **row-level changes** from PostgreSQL using its **logical replication** infrastructure. Below are the key concepts that explain how Nilus works with PostgreSQL.
+Nilus captures row-level changes from PostgreSQL using its logical replication infrastructure. Below are the key concepts that explain how Nilus works with PostgreSQL.
 
 1. **Logical Replication**
 
-      1. Nilus relies on **logical replication** to stream data changes from the Write-Ahead Log (WAL).
+      1. Nilus relies on logical replication to stream data changes from the Write-Ahead Log (WAL).
       2. It must be enabled at the PostgreSQL server level (`wal_level = logical`).
-      3. Only changes to tables with a **primary key** and a valid **replica identity** are captured.
-      4. **Replica Identity** defines how PostgreSQL identifies rows during `UPDATE` or `DELETE` operations.
+      3. Only changes to tables with a primary key and a valid replica identity are captured.
+      4. Replica Identity defines how PostgreSQL identifies rows during `UPDATE` or `DELETE` operations.
 
 2. **WAL and LSN**
-      1. **Write-Ahead Log (WAL):** PostgreSQL’s transaction log containing all committed changes.
-      2. Nilus reads the WAL via a **logical decoding plugin**.
-      3. Each event is tagged with a **Log Sequence Number (LSN)**, allowing Nilus to:
+      1. Write-Ahead Log (WAL): PostgreSQL’s transaction log containing all committed changes.
+      2. Nilus reads the WAL via a logical decoding plugin.
+      3. Each event is tagged with a Log Sequence Number (LSN), allowing Nilus to:
             1. Resume precisely after interruptions.
             2. Guarantee ordered and lossless streaming.
    
@@ -237,7 +242,7 @@ Nilus captures **row-level changes** from PostgreSQL using its **logical replica
 
 4. **Logical Decoding**
 
-      After snapshotting, Nilus switches to **streaming mode**:
+      After snapshotting, Nilus switches to streaming mode:
 
       1. Consumes logical decoding messages from WAL using a plugin such as:
                1. `pgoutput` (default, recommended for PostgreSQL ≥10).
@@ -248,7 +253,7 @@ Nilus captures **row-level changes** from PostgreSQL using its **logical replica
 
 5. **Replication Slot**
 
-      1. Nilus creates a **replication slot** to retain WAL changes until consumed.
+      1. Nilus creates a replication slot to retain WAL changes until consumed.
       2. Ensures no data loss, but requires monitoring (slots can cause WAL bloat if Nilus is paused).
       3.  Useful queries:
 
@@ -303,7 +308,7 @@ Nilus captures **row-level changes** from PostgreSQL using its **logical replica
 
 7.  **Partitioned Tables**
 
-      Nilus supports **declaratively partitioned tables**, with special considerations:
+      Nilus supports declaratively partitioned tables, with special considerations:
 
       1. **Data Routing:** Inserts/updates/deletes must target the parent table. PostgreSQL routes changes to child partitions.
       2. **Primary Key:** Must be defined on the parent table and inherited by child partitions.

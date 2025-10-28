@@ -1,8 +1,11 @@
 # Redshift
 
-**Amazon Redshift** is a fully managed, petabyte-scale data warehouse service in AWS that allows fast query performance and scalability. Nilus supports Redshift as both a **batch ingestion source** and a **destination**, enabling seamless movement of data between Redshift and the DataOS Lakehouse or other supported sinks.
+Amazon Redshift is a fully managed, petabyte-scale data warehouse service in AWS that allows fast query performance and scalability. Nilus supports Redshift as both a batch ingestion source and a destination, enabling seamless movement of data between Redshift and the DataOS Lakehouse or other supported sinks.
 
-Nilus connects to Redshift either via a **direct connection URI** or through **DataOS Depot**, which centralizes authentication, credentials, and connection details.
+Nilus connects to Redshift either via a direct connection URI or through DataOS Depot, which centralizes authentication, credentials, and connection details.
+
+!!! info
+    - Contact the DataOS Administrator or Operator to obtain configured URI/Depot UDL and other required parameters.
 
 
 

@@ -26,6 +26,15 @@ Custom Sources allow the development of **user-defined connectors** while utiliz
     - This prevents duplication and avoids version conflicts.
 
     **Pre-Installed Packages:** See the [requirements.txt](/resources/stacks/nilus/requirments.txt), to know the installed packages or [Download](/resources/stacks/nilus/requirments.zip).   
+
+    **Nilus Core Library:** UPDATE EXISTING IMPORTS
+
+    ```yaml
+    import nilus                        # Import the main Nilus library for decorators and state management
+    from nilus import CustomSource      # Import the base class for creating custom sources
+    from nilus import current           # Import current for state tracking in incremental loads
+    from nilus.common import pendulum   # Optional: Import pendulum from nilus.common for advanced date filtering
+    ```
     
 
 
@@ -51,7 +60,7 @@ class MyCustomSource(CustomSource):
 ```
 
 * `handles_incrementality()`: Returns `True` If
-* &#x20;The connector supports incremental loading.
+* The connector supports incremental loading.
 * `nilus_source()`: Defines the entry point Nilus will invoke during execution.
 
 
@@ -138,27 +147,26 @@ Connection and data-fetching errors must be handled explicitly to ensure reliabi
 !!! info
     If `table_name` is not defined in the `@nilus.resource` decorator; it defaults to the function name. Check the Example Implementations section below for more details.
 
-
-    <pre class="language-python"><code class="lang-python"><strong>@nilus.resource()
-    </strong>def fetch_data_with_error_handling():
+```yaml
+@nilus.resource()
+</strong>def fetch_data_with_error_handling():
+try:
+    conn = establish_connection()
     try:
-        conn = establish_connection()
-        try:
-            data = conn.get_data()
-            for item in data:
-                yield item
-        finally:
-            conn.close()
-    except Exception as e:
-        logger.error(f"Error fetching data: {str(e)}")
-        raise
-    </code></pre>
+        data = conn.get_data()
+        for item in data:
+            yield item
+    finally:
+        conn.close()
+except Exception as e:
+    logger.error(f"Error fetching data: {str(e)}")
+    raise
+```
 
 
+**Step 6: Performance Optimization**
 
-    **Step 6: Performance Optimization**
-
-    For large datasets, batching and pagination must be implemented to ensure efficiency:
+For large datasets, batching and pagination must be implemented to ensure efficiency:
 
 ```python
 @nilus.resource()

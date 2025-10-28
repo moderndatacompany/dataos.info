@@ -20,7 +20,7 @@ Depot in DataOS is a [Resource](/resources/) used to connect different data sou
 
     - **Security and governance:** Depots enforce security policies, ensuring only authorized users and services can access specific datasets. Role-based access control (RBAC) and data policies (such as column masking) help maintain compliance with organizational and regulatory requirements.
 
-    - **Data transformation and querying:** Depots facilitate operations like data ingestion, transformation, and query acceleration using DataOS Stacks (Flare, Benthos, etc.). This enhances data readiness for consumption in analytical and operational use cases.
+    - **Data transformation and querying:** Depots facilitate operations like data ingestion, transformation, and query acceleration using DataOS Stacks (Flare, Bento, etc.). This enhances data readiness for consumption in analytical and operational use cases.
 
     - **Metadata management and observability:** A Depot provides deep introspection into registered data sources, enabling visibility into constraints, partitions, and indexing. It also supports monitoring and tracking changes via Metis UI for enhanced observability.
 

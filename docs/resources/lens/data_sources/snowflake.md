@@ -103,9 +103,6 @@ To securely store Snowflake credentials, two Instance Secrets must be created fo
 
 - Read-write Instance Secret
 
-<aside class="callout">
-Make sure to keep these Instance Secret manifest files stored locally and avoid pushing them to the code repository.
-</aside>
 
 1. The following manifest files are provided as templates. Simply update them with your credentials and use them to create the corresponding instance secrets.
 
@@ -262,7 +259,7 @@ semantic_model
 └── user_groups.yml  # User group policies for governance
 ```
 
-### **Load data from the data source**
+###  **Step 4.1: Load data from the data source**
 
 In the `sqls/` folder, create a `.sql` file for each logical table. Each file should be responsible for loading or selecting the relevant data from the source, using Snowflake-compatible SQL syntax such as table names are formatted as schema.table.
 
@@ -294,7 +291,7 @@ FROM
   "retail".customer;
 ```
 
-### **Define the table in the model**
+###  **Step 4.2: Define the table in the model**
 
 Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For example, to define a table for `sales `data:
 
@@ -305,7 +302,7 @@ table:
     description: Table containing information about sales transactions.
 ```
 
-#### **Add dimensions and measures**
+####  **Step 4.2.1: Add dimensions and measures**
 
 After defining the base table, add the necessary dimensions and measures. For example, to create a table for sales data with measures and dimensions, the YAML definition could look as follows:
 
@@ -331,7 +328,7 @@ tables:
 ```
 Know more about [dimensions](/resources/lens/concepts/#dimensions) and [measures](/resources/lens/concepts/#measures).
 
-#### **Add segments to filter**
+####  **Step 4.2.2: Add segments to filter**
 
 Segments are filters that allow for the application of specific conditions to refine the data analysis. By defining segments, you can focus on particular subsets of data, ensuring that only the relevant records are included in your analysis. For example, to filter for records where the state is either Illinois or Ohio, you can define a segment as follows:
 
@@ -344,7 +341,7 @@ segments:
 To know more about segments click [here](/resources/lens/segments/).
 
 
-### **Create views**
+###  **Step 4.3: Create views**
 
 Create a `views` folder to store all logical views, with each view defined in a separate YAML file (e.g., `sample_view.yml`). Each view references dimensions, measures, and segments from multiple logical tables. For instance the following`customer_churn` view is created.
 
@@ -365,7 +362,7 @@ views:
 
 To know more about the views click [here](/resources/lens/views/).
 
-### **Create user groups**
+###  **Step 4.4: Create user groups**
 
 This YAML manifest file is used to manage access levels for the semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model. By default, there is a 'default' user group in the YAML file that includes all users.
 
@@ -378,7 +375,7 @@ user_groups:
 
 To know more about the User groups click [here](/resources/lens/user_groups_and_data_policies/)
 
-## Step 3: Deployment manifest file
+## Step 5: Deployment manifest file
 
 After setting up the semantic model folder, the next step is to configure the deployment manifest. Below is the YAML template for configuring a Lens deployment.
 
@@ -437,7 +434,7 @@ Each section of the YAML template defines key aspects of the Lens deployment. Be
 
 * **Configuring API, Worker and Metric Settings (Optional):** Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
 
-## Step 4: Apply the Lens manifest file
+## Step 6: Apply the Lens manifest file
 
 After configuring the deployment file with the necessary settings and specifications, apply the manifest using the following command:
 

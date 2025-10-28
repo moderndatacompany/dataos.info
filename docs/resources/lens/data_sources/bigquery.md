@@ -78,7 +78,7 @@ In the `model` folder, the semantic model will be defined, encompassing SQL mapp
 [lens template](/resources/lens/lens_model_folder_setup/lens-project-template.zip)
 
 
-### **Load data from the data source**
+### **Step 2.1: Load data from the data source**
 
 In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure, only the necessary columns are extracted, and the SQL dialect is specific to the bigquery. For instance,
 
@@ -116,7 +116,7 @@ FROM
   "onelakehouse"."retail".customer;
 ```
   
-### **Define the table in the model**
+### **Step 2.2: Define the table in the model**
 
 Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For instance, to define a table for `sales `data:
 
@@ -127,7 +127,7 @@ table:
     description: Table containing information about sales transactions.
 ```
 
-### **Add dimensions and measures**
+### **Step 2.3: Add dimensions and measures**
 
 After defining the base table, add the necessary dimensions and measures. For instance, to create a table for sales data with measures and dimensions, the YAML definition could look as follows:
 
@@ -152,7 +152,7 @@ tables:
         description: Total number of orders.
 ```
 
-### **Add segments to filter**
+### **Step 2.4: Add segments to filter**
 
 Segments are filters that allow for the application of specific conditions to refine the data analysis. By defining segments, you can focus on particular subsets of data, ensuring that only the relevant records are included in your analysis. For example, to filter for records where the state is either Illinois or Ohio, you can define a segment as follows:
 
@@ -165,7 +165,7 @@ segments:
 To know more about segments click [here](/resources/lens/segments/).
 
 
-### **Create views**
+### **Step 2.5: Create views**
 
 Create a **views** folder to store all logical views, with each view defined in a separate YAML file (e.g., `sample_view.yml`). Each view references dimensions, measures, and segments from multiple logical tables. For instance the following`customer_churn` view is created.
 
@@ -187,7 +187,7 @@ views:
 To know more about the views click [here](/resources/lens/views/).
 
 
-### **Create User groups**
+### **Step 2.6: Create User groups**
 
 This YAML manifest file is used to manage access levels for the semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, there is a 'default' user group in the YAML file that includes all users.
 
@@ -284,7 +284,7 @@ After configuring the deployment file with the necessary settings and specificat
 
 Once the Lens Resource is applied and all configurations are correctly set up, the Lens model will be deployed. Upon deployment, a Lens Service is created in the backend, which may take some time to initialize.
 
-To verify whether the Lens Service is running, execute the following command. The Service name follows the pattern: **`<lens-name>-api`**
+To v**erify whether the Lens Service is running, execute the following command. The Service name follows the pattern: `<lens-name>-api`**
 
 Ensure Service is active and running before proceeding to the next steps.
 
@@ -302,136 +302,3 @@ INFO[0002] 🔍 get...complete
 </aside>
 
 
-
-<!-- ## Docker compose manifest file
-
-Ensure that the necessary attributes are highlighted in the Docker Compose Manifest file for proper configuration during the connection setup process.
-
-
-<details>
-
-  <summary>Docker compose manifest file for local testing</summary>
-
-```yaml hl_lines="13-15"
-version: "2.2"
-
-x-lens2-environment: &lens2-environment
-  # DataOS
-  DATAOS_FQDN: liberal-monkey.dataos.app
-  # Overview
-  LENS2_NAME: sales360
-  LENS2_DESCRIPTION: "Ecommerce use case on Adventureworks sales data"
-  LENS2_TAGS: "lens2, ecom, sales and customer insights"
-  LENS2_AUTHORS: "iamgroot, ironman"
-  LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-  # Data Source
-  LENS2_SOURCE_TYPE: ${depot} #source name - depot
-  LENS2_SOURCE_NAME: ${bigquerydepot} #name of the bigquery depot
-  DATAOS_RUN_AS_APIKEY: ${A1ZjMDliZTFhZWJhMQ==}
-  # LogZjAtNDY4My05
-  LENS2_LOG_LEVEL: error
-  CACHE_LOG_LEVEL: "trace"
-  # Operation
-  LENS2_DEV_MODE: true
-  LENS2_DEV_MODE_PLAYGROUND: false
-  LENS2_REFRESH_WORKER: true
-  LENS2_SCHEMA_PATH: model
-  LENS2_PG_SQL_PORT: 5432
-  CACHE_DATA_DIR: "/var/work/.store"
-  NODE_ENV: production
-  LENS2_ALLOW_UNGROUPED_WITHOUT_PRIMARY_KEY: "true"
-services:
-  api:
-    restart: always
-    image: rubiklabs/lens2:0.35.41-05
-    ports:
-      - 4000:4000
-      - 25432:5432
-      - 13306:13306
-    environment:
-      <<: *lens2-environment   
-    volumes:
-      - ./model:/etc/dataos/work/model
-      # - ./scripts/commons.js:/app/scripts/commons.js
-      # - ./scripts/bootstrap.js:/app/scripts/bootstrap.js
-      # - ./scripts/config.js:/app/scripts/config.js
-```
-
-</details> -->
-
-
-
-<!-- 
-## Connecting to Bigquery without Depot/Cluster
-
-### **Prerequisites**
-
-In order to connect Google BigQuery to Lens, you need to provide service account credentials. Lens2 requires the service account to have **BigQuery Data Viewer** and **BigQuery Job User** roles enabled. You can learn more about acquiring Google BigQuery credentials [here](https://cloud.google.com/docs/authentication/getting-started).
-
-
-- The [Google Cloud Project ID](https://cloud.google.com/resource-manager/docs/creating-managing-projects#before_you_begin) for the BigQuery project.
-- A set of [Google Cloud service credentials](https://support.google.com/a/answer/7378726?hl=en) which [allow access](https://cloud.google.com/docs/authentication/getting-started) to the BigQuery project
-- The [Google Cloud region](https://cloud.google.com/bigquery/docs/locations#regional-locations) for the BigQuery project
-
-Syntax with example is written below:
-
-=== "Syntax"
-
-    ```yaml
-    # Bigquery configuration
-    LENS2_DB_TYPE=bigquery
-    LENS2_DB_BQ_PROJECT_ID=${BIGQUERY_PROJECT_ID}
-    LENS2_DB_BQ_KEY_FILE=${BIGQUERY_KEY_FILE_PATH}
-    ```
-
-=== "Sample"
-
-    ```yaml
-    # Bigquery configuration
-    LENS2_DB_TYPE=bigquery
-    LENS2_DB_BQ_PROJECT_ID=my-bigquery-project-123456
-    LENS2_DB_BQ_KEY_FILE=/path/to/my/keyfile.json
-    ```
-**Sample manifest file**
-
-```yaml
-LENS2_VERSION=0.34.60-13
-LENS2_CACHE_VERSION=0.34.60-amd64v8
-
-LENS2_LOG_LEVEL=error
-LENS2_LOADER_LOG_LEVEL=debug
-
-LENS2_HEIMDALL_BASE_URL="https://alpha-omega.dataos.app/heimdall"
-
-LENS2_SCHEDULED_REFRESH_DEFAULT="false"
-LENS2_API_SECRET=28487985729875987397AHFUHUD
-
-CACHE_TELEMETRY="false"
-CACHE_LOG_LEVEL=error
-
-# Bigquery configuration
-LENS2_DB_TYPE=bigquery
-LENS2_DB_BQ_PROJECT_ID=my-bigquery-project-123456
-LENS2_DB_BQ_KEY_FILE=/path/to/my/keyfile.json
-
- #Lens Configs
-LENS2_NAME=bq_lens
-LENS2_DESCRIPTION=lens description
-LENS2_TAGS='lens2 tags (comma separated)'
-LENS2_AUTHORS='lens2 auther names (comma separated)'
-
-LENS2_BASE_URL=http://localhost:4000/lens2
-LENS2_META_PATH=/v2/meta
-LENS2_DATAOS_USER_NAME=USERNAME
-LENS2_DATAOS_USER_APIKEY=APIKEY
-LENS2_RILL_PATH=rill
-LENS2_CHECKS_PATH=checks
-```
-
-### Environment variables
-
-| **Environment Variable** | **Description** | **Possible Values** | **Example Value** | **Required** |
-| --- | --- | --- | --- | --- |
-| `LENS2_DB_TYPE` | The type of database | bigquery | bigquery | ✅ |
-| `LENS2_DB_BQ_PROJECT_ID` | The Google BigQuery project ID to connect to | A valid Google BigQuery Project ID | my-bigquery-project-123456 | ✅ |
-| `LENS2_DB_BQ_KEY_FILE` | The path to a JSON key file for connecting to Google BigQuery | A valid Google BigQuery JSON key file | /path/to/my/keyfile.json | ✅ | -->

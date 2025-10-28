@@ -115,7 +115,7 @@ dataos-ctl resource get -t stack -a
 
 Once the Flash Stack is available, follow these steps to create a Flash Service:
 
-1. Identify the datasets to be cached in Flash. Flash supports BigQuery, Snowflake, Redshift, and Iceberg types of Depots.
+1. Identify the datasets to be cached in Flash. Flash supports DataOS Lakehouse with Iceberg table format.
 2. Create a Flash Service manifest file that specifies the datasets to be cached, the schedule, and initialization. A sample is provided below:
 
     ```yaml
@@ -129,8 +129,8 @@ Once the Flash Stack is available, follow these steps to create a Flash Service:
     service:
       servicePort: 8080
       servicePorts:
-      - name: backup
-        servicePort: 5433
+        - name: backup
+          servicePort: 5433
       ingress:
         enabled: true
         stripPath: false
@@ -155,25 +155,11 @@ Once the Flash Stack is available, follow these steps to create a Flash Service:
           - name: records
             address: dataos://lakehouse:flash/records
 
-          - name: f_sales
-            depot: dataos://bigquery
-            sql: SELECT * FROM sales_360.f_sales
-            meta:
-              bucket: tmdcdemogcs
-            refresh:
-              expression: "*/2 * * * *"
-              sql: SELECT MAX(invoice_dt_sk) FROM sales_360.f_sales
-              where: invoice_dt_sk > PREVIOUS_SQL_RUN_VALUE
+          - name: sales
+            address: dataos://lakehouse:retail/sales
     
-          - name: duplicate_sales
-            depot: dataos://bigquery
-            sql: SELECT * FROM sales_360.f_sales
-            meta:
-              bucket: tmdcdemogcs
-            refresh:
-              expression: "*/4 * * * *"
-              sql: SELECT MAX(invoice_dt_sk) FROM sales_360.f_sales
-              where: invoice_dt_sk > CURRENT_SQL_RUN_VALUE
+          - name: customer
+            address: dataos://lakehouse:retail/customer
 
         init:
           - create table f_sales as (select * from records)
@@ -190,7 +176,7 @@ Once the Flash Stack is available, follow these steps to create a Flash Service:
     | `datasets`    | List of mappings specifying the name and address of datasets to be cached. | List of mapping | Mandatory |
     | `address`     | UDL address of the dataset to be cached in Flash. | String | Mandatory |
     | `name`        | Name of the dataset to be cached. | String | Mandatory |
-    | `init`        | List of PostgreSQL statements for initialization. | List of strings | Mandatory |
+    | `init`        | List of SQL statements for initialization. | List of strings | Mandatory |
     | `schedule`    | List of mappings for schedule expressions and SQL queries. | List of mapping | Optional |
     | `expression`  | Cron expression for scheduling. | String | Mandatory |
     | `sql`         | SQL statement for refreshing data. | String | Mandatory |

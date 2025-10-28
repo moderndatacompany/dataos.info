@@ -30,9 +30,15 @@ In the setup window, fill in the required credentials:
 
 ![tableau_username_and_pw.png](/learn/dp_consumer_learn_track/integrate_bi_tools/tab_cloud/tableau_username_and_pw.png)
 
+<<<<<<< HEAD
 <aside class="callout">
 🗣️ For environments requiring Multi-Factor Authentication (MFA), use Personal Access Tokens instead of traditional username and password credentials.
 </aside>
+=======
+!!! info 
+    For environments requiring Multi-Factor Authentication (MFA), use Personal Access Tokens instead of traditional username and password credentials.
+
+>>>>>>> 4cbd9c75d775a9a15e13ee443bcad041321023b1
 
 
 In addition to using standard Tableau credentials, you can also opt to use 'Personal Access Tokens (PAT)' for authentication, to create a PAT follow the below steps:
@@ -84,6 +90,7 @@ Once the 'Product Affinity' Data Product has been successfully activated, you ca
 
     ![tableau_dashboard.png](/learn/dp_consumer_learn_track/integrate_bi_tools/tab_cloud/tableau_dashboard.png)
 
+<<<<<<< HEAD
 <aside class="callout">
 🗣️
 
@@ -92,6 +99,13 @@ The publisher can embed their credentials (DataOS username and API Token) or ask
 Once the credentials are embedded, they cannot be accessed. You need to overwrite and ‘publish-as’ the workbook to reconfigure the embedding password optionality.
 
 </aside>
+=======
+!!! info 
+    The publisher can embed their credentials (DataOS username and API Token) or ask users to provide credentials whenever they want to access the published Workbook/Sheet/Dashboard. If the publisher has chosen to ‘Embed password for data source’, users can access the published workbook and dashboard without providing credentials.
+
+    Once the credentials are embedded, they cannot be accessed. You need to overwrite and ‘publish-as’ the workbook to reconfigure the embedding password optionality.
+
+>>>>>>> 4cbd9c75d775a9a15e13ee443bcad041321023b1
 
 
 ## Supported data types
@@ -149,9 +163,15 @@ Once the credentials are embedded, they cannot be accessed. You need to overwrit
 - To define granularity, right-click on the selected time dimension and set granularity (choose a granularity where the complete time, along with the year, is shown).
 - Add the time dimension to the filter, and define the range filter.
 
+<<<<<<< HEAD
 <aside class="callout">
 🗣️ Be aware that custom calculations or fields (measures/dimensions) created in BI tools may be lost during re-sync. It is preferable to create custom logic directly in Tableau's Lens.
 </aside>
+=======
+!!! info
+    Be aware that custom calculations or fields (measures/dimensions) created in BI tools may be lost during re-sync. It is preferable to create custom logic directly in Tableau's Lens.
+    
+>>>>>>> 4cbd9c75d775a9a15e13ee443bcad041321023b1
 
 ## Error handling 
 

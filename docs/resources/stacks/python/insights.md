@@ -89,22 +89,6 @@ In the files with the `.py` extension, add the Python script, and in the `requir
     print("No data returned.")
     else:
     print("Error:", response.status_code, response.text)
-    # main.py
-    import os
-    from app_ui import run_app  # Import the user's Streamlit app
-    
-    def main():
-        # Check if already running inside Streamlit to avoid recursion
-        if not os.getenv("IS_RUNNING_STREAMLIT"):
-            os.environ["IS_RUNNING_STREAMLIT"] = "1"
-            os.system(f"streamlit run {__file__}")
-            return
-    
-        # Call the actual app function
-        run_app()
-    
-    if __name__ == "__main__":
-        main()
     ```
 </details>
    

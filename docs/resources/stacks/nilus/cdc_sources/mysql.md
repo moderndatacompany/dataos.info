@@ -1,6 +1,6 @@
 # MySQL
 
-The Nilus connector for **MySQL** supports **Change Data Capture (CDC),** which captures row-level changes from MySQL's **binary log (binlog)** and streams them to the [Supported Destinations](/resources/stacks/nilus/supported_destinations/), such as the Lakehouse. Nilus CDC in MySQL continuously reads the binlog to capture `INSERT`, `UPDATE`, and `DELETE` operations.
+The Nilus connector for MySQL supports Change Data Capture (CDC), which captures row-level changes from MySQL's binary log (binlog) and streams them to the [Supported Destinations](/resources/stacks/nilus/supported_destinations/), such as the Lakehouse. Nilus CDC in MySQL continuously reads the binlog to capture `INSERT`, `UPDATE`, and `DELETE` operations.
 
 ## Prerequisites 
 
@@ -18,16 +18,17 @@ Before enabling CDC, ensure the following configurations:
       ```
 
 - **Recommended**: Enable GTID (Global Transaction Identifier) for consistency and easier replication—especially in HA (High Availability) environments.
+
 - Binlog retention (`expire_logs_days`) should be set such that logs aren’t purged before Nilus processes them.
 
 ### **Supported Topologies**
 
 Nilus works with various MySQL architectures:
 
-* **Standalone**
-* **Primary–Replica** (reads from one binlog-streaming instance)
-* **High-Availability clusters** using GTID (including multi-primary Network Database Clusters)
-* **Hosted platforms** (e.g., RDS/Aurora), though note that global read locks may not be allowed. In such cases, Nilus uses table-level locks for consistent snapshots.
+* Standalone
+* Primary–Replica (reads from one binlog-streaming instance)
+* High-Availability clusters using GTID (including multi-primary Network Database Clusters)
+* Hosted platforms (e.g., RDS/Aurora), though note that global read locks may not be allowed. In such cases, Nilus uses table-level locks for consistent snapshots.
 
 ### **Configure MySQL for CDC**
 
@@ -35,23 +36,23 @@ Nilus works with various MySQL architectures:
     Contact the Database Administrator (DBA) to either set up Change Data Capture (CDC) or to provide the correct values for parameters such as  `server-id`, `log_bin`, `port`, `snapshot` etc.
 
 
-To configure Change Data Capture (CDC) in MySQL, follow these steps:&#x20;
+To configure Change Data Capture (CDC) in MySQL, follow these steps:
 
-1.  Edit `my.cnf` (or pass as Docker args): 
-
-
-```ini
-[mysqld]
-server-id               = 184054
-log_bin                 = mysql-bin
-binlog_format           = ROW
-binlog_row_image        = FULL
-gtid_mode               = ON
-enforce_gtid_consistency= ON
-```
+1.  **Edit `my.cnf` (or pass as Docker args):** 
+      
 
 
-Restart MySQL after these changes.
+      ```ini
+      [mysqld]
+      server-id               = 184054
+      log_bin                 = mysql-bin
+      binlog_format           = ROW
+      binlog_row_image        = FULL
+      gtid_mode               = ON
+      enforce_gtid_consistency= ON
+      ```
+
+      Restart MySQL after these changes.
 
 2.  **Create CDC User**
 
@@ -89,9 +90,9 @@ ON *.* TO 'nilus'@'%';
 
 If global read locks are prohibited (e.g., RDS/Aurora), also grant:
 
-      ```sql
-      GRANT LOCK TABLES ON *.* TO 'nilus'@'%';
-      ```
+```sql
+GRANT LOCK TABLES ON *.* TO 'nilus'@'%';
+```
 
 Apply `FLUSH PRIVILEGES;` afterward. 
 
@@ -181,8 +182,8 @@ service:                                                   # Service specificati
     sink:                                                  # Sink configuration block
       address: dataos://testinghouse                       # Sink DataOS Lakehouse address
       options:                                             # Sink-specific options
-         dest-table: destination_schema                    # Destination table name in sink
-        incremental-strategy: append                       # Append mode for CDC write strategy
+        dest-table: destination_schema                 # Destination table name in sink
+        incremental-strategy: append                   # Append mode for CDC write strategy
 ```
 
 !!! info
@@ -215,15 +216,15 @@ dataos-ctl resource apply -f ${{path to the Nilus Service YAML}}
 | ---------------------- | ----------------------------------- | -------- |
 | `dest-table`           | Target sink table.                  | —        |
 | `incremental-strategy` | Write mode (`append` for CDC).      | `append` |
-| `aws_region`           | AWS region for S3-backed Lakehouse. | —        |
+
 
 ## Core Concepts
 
 1. **Supported MySQL Topologies**
-      1. **Standalone MySQL** with binlog enabled works seamlessly.
-      2. **Primary/Replica replication**: Nilus may follow the primary or any replica that has binlog enabled; it tracks its position per server.
-      3. **High-availability (HA) clusters** using GTIDs are supported — failover works if the new replica is fully caught up.
-      4. **Cloud-hosted instances** (e.g., Amazon RDS, Aurora) supported—snapshotting uses table-level locks due to the lack of global lock capability.
+      1. Standalone MySQL with binlog enabled works seamlessly.
+      2. Primary/Replica replication: Nilus may follow the primary or any replica that has binlog enabled; it tracks its position per server.
+      3. High-availability (HA) clusters using GTIDs are supported — failover works if the new replica is fully caught up.
+      4. Cloud-hosted instances (e.g., Amazon RDS, Aurora) supported—snapshotting uses table-level locks due to the lack of global lock capability.
 
 2. **Snapshot + Binlog Streaming**
       1. Upon startup, Nilus performs a **consistent snapshot** of selected tables using repeatable-read semantics. It then reads the binlog starting from that snapshot point.
@@ -234,12 +235,12 @@ dataos-ctl resource apply -f ${{path to the Nilus Service YAML}}
             4. Release locks and begin streaming
 
 3. **Schema Evolution Handling**
-      1. The connector captures DDL statements (like `CREATE`, `ALTER`, `DROP`) from the binlog and updates its **in-memory schema representation**.
-      2. DDL history is recorded in a **database history topic** to rebuild the schema on restart.
-      3. Optionally, Nilus can also emit DDLs as **consumer-facing schema change events** to a dedicated topic (`include.schema.changes=true`).
+      1. The connector captures DDL statements (like `CREATE`, `ALTER`, `DROP`) from the binlog and updates its in-memory schema representation.
+      2. DDL history is recorded in a database history topic to rebuild the schema on restart.
+      3. Optionally, Nilus can also emit DDLs as consumer-facing schema change events to a dedicated topic (`include.schema.changes=true`).
 
 4. **Offsets & Recovery**
-      1. Supports both **GTID-based tracking** and traditional **binlog filename + position**.
+      1. Supports both GTID-based tracking and traditional binlog filename + position.
       2. On restart, Nilus replays the DDL history to reconstruct the right schema state before resuming.
 
 5. **Binlog Retention & Snapshot Safety**

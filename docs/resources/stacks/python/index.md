@@ -1,7 +1,11 @@
 ---
 title: Python Stack
 search:
-  boost: 6
+  boost: 4
+tags: 
+    - Python
+    - Python Application Deployment
+    - Containerized Python
 ---
 
 # Python Stack

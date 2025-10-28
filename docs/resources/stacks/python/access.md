@@ -1,6 +1,6 @@
 # Manage access permission for the Python application
 
-This section provides a step-by-step guide on how to manage access permissions for a Python application using Bifrost Governance. By leveraging Bifrost Governance, you can define granular access policies, create reusable "use cases," and assign these permissions to individual users or roles.
+This section provides a step-by-step guide on how to manage access permissions for a Python application using Bifrost Governance. By leveraging Bifrost Governance, you can define granular access policies, create reusable 'use cases', and assign these permissions to individual users or roles.
 
 Use cases in Bifrost Governance are reusable templates that bundle together a set of permissions.
 
@@ -43,7 +43,7 @@ Here, the steps include how to incorporate this logic in the code for a flask ba
       </figure>
     </div>
 
-3. Click on 'Create Provider' button.  Bifrost PEP creats authorization atoms for granular level access.
+3. Click on 'Create Provider' button. Bifrost PEP creats authorization atoms for granular level access.
     
     <div style="text-align: center;">
       <figure>
@@ -54,7 +54,7 @@ Here, the steps include how to incorporate this logic in the code for a flask ba
       </figure>
     </div>    
     
-4. Define the authorization atoms and predicates in the YAML format. For the flask app, predicate like `“get"` is defined. Then click "Create" button.
+4. Define the authorization atoms and predicates in the YAML format. For the flask app, predicate like `get` is defined. Then click 'Create' button.
 
     <aside class="callout">
     🗣 Authorization logic depends on the specific operations permitted within the data application, which may vary across different apps.
@@ -87,10 +87,10 @@ Here, the steps include how to incorporate this logic in the code for a flask ba
     | name                 | "Auth App PEP"               | Name of the PEP provider                                         |
     | description          | "Auth app pep provider."      | Description of the PEP provider                                  |
     | authorization_atoms  |                              | List of access rules ("atoms")                                   |
-    | └ id                 | get-path-st-auth              | Unique ID for the atom (rule)                                    |
-    | └ description        | user have read-only access... | What this atom allows (read-only access to auth-app)             |
-    | └ predicate          | get                          | Allowed operation (GET, i.e., read-only)                    |
-    | └ paths              | "${path}"                    | Path(s) where this rule applies; "${path}" is a variable         |
+    | id                 | get-path-st-auth              | Unique ID for the atom (rule)                                    |
+    | description        | user have read-only access... | What this atom allows (read-only access to auth-app)             |
+    | predicate          | get                          | Allowed operation (GET, i.e., read-only)                    |
+    | paths              | "${path}"                    | Path(s) where this rule applies; "${path}" is a variable         |
     
     </details>
 
@@ -122,7 +122,7 @@ Here, the steps include how to incorporate this logic in the code for a flask ba
 🗣 Users with the <code>operator</code> tag have admin-level permissions and can access the application regardless of use case assignments. Assigning use cases is required for other users or roles to access the application. The tags and roles, and their associated permission levels, depend on the organization's governance policies and may vary between organizations.
 </aside>
 
-Once the OIDC is set up, follow the steps below to create a use case for accessing a Python application using Bifrost Governance.
+Follow the steps below to create a use case for accessing a Python application using Bifrost Governance.
 
 1. Access Bifrost Governance.
     
@@ -135,7 +135,7 @@ Once the OIDC is set up, follow the steps below to create a use case for accessi
       </figure>
     </div>
     
-2. Navigate to the “Use Cases” section.
+2. Navigate to the 'Use Cases' section.
     
     <div style="text-align: center;">
       <figure>
@@ -146,11 +146,11 @@ Once the OIDC is set up, follow the steps below to create a use case for accessi
       </figure>
     </div>
     
-3. Click on the “Create Use Case” button and paste the code below with some specific updates.
+3. Click on the 'Create Use Case' button and paste the code below with some specific updates.
     
     This code defines two distinct use cases for an application hosted at `st_auth` ingress path configured in the Python Service manifest file:
     
-    - `read-st-auth`: Provides read-only access. confi
+    - `read-st-auth`: Provides read-only access. 
     - `manage-st-auth`: Provides full read/write/delete access.
 
     === "Read"
@@ -197,7 +197,7 @@ Once the OIDC is set up, follow the steps below to create a use case for accessi
     
     Similarly, you can configure the use case for your particular Python application by updating the `id`, `name`, `description`, and the `path` variable in the code above.
     
-4. Then click on the “Create” button, and it is done.
+4. Then click on the 'Create' button, and it is done.
     
     <div style="text-align: center;">
       <figure>
@@ -210,7 +210,7 @@ Once the OIDC is set up, follow the steps below to create a use case for accessi
     
 ## Add authorization logic in code
 
-This section explains how to integrate Heimdall authorization checks into the OIDC-enabled Python application.
+This section explains how to integrate Heimdall authorization checks into the authentication enabled Python application.
 
 **1. Add required dependencies**
 
@@ -288,7 +288,7 @@ def layout():
     ])
 ```
 
-**4. Configure Environment Variables**
+**4. Configure environment variables**
 
 Add the Heimdall base URL to the Python Service manifest file (e.g., `deployment.yaml`):
 
@@ -298,7 +298,7 @@ envs:
   HEIMDALL_BASE_URL: "https://${{dataos-fqdn}}$/heimdall"
 ```
 
-**5. Ensure Path Matching**
+**5. Ensure path matching**
 
 Make sure the path in the use-case YAML matches the path used in the code and the ingress path defined in the Python Service manifest.
 
@@ -324,7 +324,6 @@ ingress:
 
 > **Note:** All three paths (use-case YAML, Python code, and Python Service manifest) must match exactly for authorization to work as expected.
 
-Your application now supports OIDC authentication and Heimdall-based authorization. 🚀
 
 
 ## Assign use cases to a specific user

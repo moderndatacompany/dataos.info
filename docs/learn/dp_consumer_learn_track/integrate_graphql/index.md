@@ -24,3 +24,11 @@ Here are the steps to access and use the Data Product via GraphQL.
     In the Playground, enter your query and hit the Play button to run it. Copy the endpoint URL and authentication details, and input them into your application’s settings to establish a connection. You’re now ready to integrate the data into your application!
     
     ![gq_query.png](/learn/dp_consumer_learn_track/integrate_graphql/gq_query.png)
+
+
+
+## Next step
+
+If you want to explore the capabilities such as full-text search, semantic search, etc., refer to the next topic.
+
+👉 [Integration with LakeSearch](/learn/dp_consumer_learn_track/integrate_lakesearch/)
