@@ -182,7 +182,7 @@ To know more about segments click [here](/resources/lens/segments/).
 
 ### **Step 2.5: Create views**
 
-Create a **views** folder to store all logical views, with each view defined in a separate YAML file (e.g., `sample_view.yml`). Each view references dimensions, measures, and segments from multiple logical tables. For instance the following`customer_churn` view is created.
+Create a views folder to store all logical views, with each view defined in a separate YAML file (e.g., `sample_view.yml`). Each view references dimensions, measures, and segments from multiple logical tables. For instance the following`customer_churn` view is created.
 
 ```yaml
 views:
