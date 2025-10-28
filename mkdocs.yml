@@ -686,7 +686,6 @@ nav:
             - resources/stacks/flash/index.md
             - Create a Flash Service: resources/stacks/flash/flash_service.md
             - Configurations: resources/stacks/flash/configurations.md
-            - Supported Data Sources: resources/stacks/flash/data_sources.md
             - Monitoring Flash: resources/stacks/flash/recipes/monitor.md
             - Best Practices: resources/stacks/flash/best_practices.md
             - Do's and Dont's: resources/stacks/flash/dos_and_donts.md

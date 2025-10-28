@@ -28,9 +28,6 @@ Flash enables caching datasets within an in-memory layer, enhancing data consump
 
 Effective configuration of Flash requires understanding each attribute of the Flash Service manifest file. This section provides detailed descriptions to help in the creation of the Flash Service. For more information, [refer to this section](/resources/stacks/flash/configurations/).
 
-## Supported data sources
-
-Flash supports DataOS Lakehouse with the Iceberg table format. This section includes steps for configuring the Flash Service to work with Lakehouse Depots. For further details, [see this section](/resources/stacks/flash/data_sources/).
 
 ## Monitoring the cached dataset
 
