@@ -712,6 +712,7 @@ nav:
             - Data Movement Architecture: resources/stacks/nilus/data_movement_architecture.md
             # - Set Up Nilus: resources/stacks/nilus/set_up.md
             - Quick Start: resources/stacks/nilus/quick_start.md
+            - Data Masking: resources/stacks/nilus/data_masking.md
             - CDC Sources:
               - resources/stacks/nilus/cdc_sources/index.md
               - IBM Db2: resources/stacks/nilus/cdc_sources/ibm_db2.md
@@ -745,6 +746,7 @@ nav:
               - AWS DataOS Lakehouse: resources/stacks/nilus/supported_destinations/aws_dataos_lakehouse.md
               - Azure DataOS Lakehouse: resources/stacks/nilus/supported_destinations/azure_dataos_lakehouse.md
               - BigQuery: resources/stacks/nilus/supported_destinations/bigquery.md
+              - Databricks: resources/stacks/nilus/supported_destinations/databricks.md
               - GCS DataOS Lakehouse: resources/stacks/nilus/supported_destinations/gcs_dataos_lakehouse.md
               - MS SQL Server: resources/stacks/nilus/supported_destinations/mssql.md
               - Redshift: resources/stacks/nilus/supported_destinations/redshift.md

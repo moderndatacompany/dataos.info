@@ -18,7 +18,7 @@ Salesforce is not integrated with Depot. Therefore, direct credentials are requi
 * `username`: Salesforce account username
 * `password`: Salesforce account password
 * `token`: Salesforce security token (generated/reset in Salesforce settings)
-* `domain`: Salesforce instance domain (optional, defaults to `login.salesforce.com`)
+* `domain`: Salesforce instance domain
 
 To create an instance secret for your Nilus workflow, contact the DataOS admin or DataOS Operator.
 
@@ -76,7 +76,7 @@ workflow:
           DATAOS_WORK_DIR: /etc/dataos/work
         stackSpec:
           source:
-            address: "salesforce://?username={SALESFORCE_USERNAME}&password={SALESFORCE_PASSWORD}&token={SALESFORCE_TOKEN}"
+            address: "salesforce://?username={SALESFORCE_USERNAME}&password={SALESFORCE_PASSWORD}&token={SALESFORCE_TOKEN}&domain=b3JnZmFybS1hN2NhNjdkNzZkLWRldi1lZC5kZXZlbG9wLm15Cg=="
             options:
               source-table: account
               columns: "name,industry,annualrevenue"
@@ -124,6 +124,7 @@ Objects always loaded in full:
 | `campaign`               | Marketing campaign details                                    |
 | `product` (Product2)     | Product catalog information                                   |
 | `pricebook` (Pricebook2) | Price book definitions                                        |
+|`custom:<custom_object_name>`	|Track and store data that’s unique to your organization. For more information about custom objects in Salesforce, To know more, visit [Custom Objects](https://developer.salesforce.com/docs/atlas.en-us.object_reference.meta/object_reference/sforce_api_objects_custom_objects.htm)|
 
 ### **Append Mode (Incremental)**
 
