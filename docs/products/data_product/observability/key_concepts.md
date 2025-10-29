@@ -1,10 +1,10 @@
 # Key Concepts
 This section includes the key concepts that will help the users better understand Observability in DataOS.
 
-<div style="text-align: center;">
+<!-- <div style="text-align: center;">
   <img src="/products/data_product/observability/key.png" style="width: 70%; height: auto;">
   <figcaption><i>Observability in DataOS</i></figcaption>
-</div>
+</div> -->
 
 ## Runnable Resources
 
