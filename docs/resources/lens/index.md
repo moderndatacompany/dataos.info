@@ -61,6 +61,8 @@ When data resides in a single source such as AWS Redshift, BigQuery, PostgreSQL,
 
 - [Bigquery](/resources/lens/data_sources/bigquery/)
 
+- [Databricks](/resources/lens/data_sources/databricks/)
+
 - [Postgres](/resources/lens/data_sources/postgres/)
 
 - [Snowflake](/resources/lens/data_sources/snowflake/)
