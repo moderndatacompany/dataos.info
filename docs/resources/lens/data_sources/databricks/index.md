@@ -40,13 +40,15 @@ To create Depot:
 
 1. Go to your Databricks workspace.
 
-2. Navigate to: SQL → SQL Warehouses → <select your warehouse> → Connection Details.
+2. Navigate to: SQL → SQL Warehouses → select your warehouse  
+
+→ Connection Details.
 
 3. Copy the JDBC URL — it will look like this:
 
-    ```
-    jdbc:spark://<your-databricks-host>:443/default;transportMode=http;ssl=1;AuthMech=3;httpPath=sql/protocolv1/o/<org-id>/<warehouse-id>
-    ```
+  ```
+  jdbc:spark://<your-databricks-host>:443/default;transportMode=http;ssl=1;AuthMech=3;httpPath=sql/protocolv1/o/<org-id>/<warehouse-id>
+  ```
 
 Extract the following values from the URL to fill in your depot YAML:
 
@@ -63,7 +65,6 @@ Extract the following values from the URL to fill in your depot YAML:
 | `accept_policy` | Confirms acceptance of Databricks JDBC driver usage terms (required). | `true`                                   |
 
 
-4. Generate a [Personal Access Token](https://docs.databricks.com/aws/en/dev-tools/auth/pat#create-personal-access-tokens-for-workspace-users) (if not already created). You’ll use this token in your connection or instance-secret.
 
 ```yaml title="databricks-depot.yml"
 name: databricks-a
