@@ -123,11 +123,11 @@ markdown_extensions:
   - pymdownx.tilde
 #  - pymdownx.extra
   - pymdownx.emoji:
-      # emoji_index: !!python/name:material.extensions.emoji.twemoji              # while pushing to dev
-      # emoji_generator: !!python/name:material.extensions.emoji.to_svg           # while pushing to dev
+      emoji_index: !!python/name:material.extensions.emoji.twemoji              # while pushing to dev
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg           # while pushing to dev
 
-      emoji_index: !!python/name:materialx.emoji.twemoji                      # while hosting locally  
-      emoji_generator: !!python/name:materialx.emoji.to_svg                   # while hosting locally 
+      # emoji_index: !!python/name:materialx.emoji.twemoji                      # while hosting locally  
+      # emoji_generator: !!python/name:materialx.emoji.to_svg                   # while hosting locally 
       
       # before pushing to dev branch replace materialx.emoji.to_svg with material.extensions.emoji.to_svg
       # before pushing to dev branch replace materialx.emoji.twemoji with material.extensions.emoji.twemoji
@@ -684,6 +684,7 @@ nav:
             - Data Movement Architecture: resources/stacks/nilus/data_movement_architecture.md
             # - Set Up Nilus: resources/stacks/nilus/set_up.md
             - Quick Start: resources/stacks/nilus/quick_start.md
+            - Data Masking: resources/stacks/nilus/data_masking.md
             - CDC Sources:
               - resources/stacks/nilus/cdc_sources/index.md
               - IBM Db2: resources/stacks/nilus/cdc_sources/ibm_db2.md
@@ -717,6 +718,7 @@ nav:
               - AWS DataOS Lakehouse: resources/stacks/nilus/supported_destinations/aws_dataos_lakehouse.md
               - Azure DataOS Lakehouse: resources/stacks/nilus/supported_destinations/azure_dataos_lakehouse.md
               - BigQuery: resources/stacks/nilus/supported_destinations/bigquery.md
+              - Databricks: resources/stacks/nilus/supported_destinations/databricks.md
               - GCS DataOS Lakehouse: resources/stacks/nilus/supported_destinations/gcs_dataos_lakehouse.md
               - MS SQL Server: resources/stacks/nilus/supported_destinations/mssql.md
               - Redshift: resources/stacks/nilus/supported_destinations/redshift.md
