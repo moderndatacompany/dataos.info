@@ -14,20 +14,25 @@
 
     - **Metadata Scanning:** Metadata scanning for Databricks tables is not yet supported.
 
+## Prerequisites
+
+Before setting up the connection, ensure all necessary prerequisites are in place:
+
+- Databricks workspace and active SQL Warehouse, required to connect and run queries.
+
+- **Personal Access Token (PAT):** used as credentials and securely stored in an Instance Secret.
+
+- **Instance Secret:** secures the source credentials (and repository credentials if the repo is private).
+
+- **JDBC connection details:** includes the host, port, httpPath, and database parameters from your Databricks SQL Warehouse connection URL.
+
+- **Depot:** references both the Instance Secret and the JDBC parameters to establish a secure connection between Lens and Databricks.
+
+- **Repository for version control:** The semantic model should be version-controlled within a dedicated Lens repository and `model/` folder before deployment.
+
 ## Step 1: Set up a connection with source
 
 To ensure a smooth setup, complete the following prerequisites before proceeding.
-
-- Databricks workspace and an active SQL Warehouse.
-
-- [Personal Access Token (PAT)](https://docs.databricks.com/aws/en/dev-tools/auth/pat#create-personal-access-tokens-for-workspace-users): Required as credentials and securely stored in an Instance Secret.
-
-- Instance Secret: To secure the source credentials.
-
-- JDBC connection details: JDBC connection details from Databricks (`host`, `port`, `httpPath`, `database`, etc.) to be used to set up the connection via Depot.
-
-- Depot: Depot that references the Instance Secret and the JDBC details to establish a secure connection to Databricks.
-
 
 1. **Secure source credentials by creating Instance Secret**
 
@@ -53,7 +58,7 @@ To connect to Databricks through a Depot, you’ll need its JDBC connection deta
 
   2. Navigate to: SQL → SQL Warehouses → select your warehouse  → Connection Details.
 
-  3. Copy the JDBC URL — it will look like this:
+  3. Copy the JDBC URL, it will look like this:
 
   ```
   jdbc:spark://<your-databricks-host>:443/default;transportMode=http;ssl=1;AuthMech=3;httpPath=sql/protocolv1/o/<org-id>/<warehouse-id>
@@ -157,12 +162,12 @@ FROM
   
 ### **Step 2.2: Define the table in the model**
 
-Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For instance, to define a table for `sales `data:
+Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For instance, to define a table for `customer `data:
 
 ```yaml title="customer.yaml"
 table:
   - name: customers
-    sql: {{ load_sql('customers') }}
+    sql: {{ load_sql('customer') }}
     description: Table containing information about sales transactions.
 ```
 
@@ -173,8 +178,8 @@ After defining the base table, add the necessary dimensions and measures. For in
 ```yaml title
 tables:
   - name: customer
-    sql: {{ load_sql('sales') }}
-    description: Table containing sales records with order details.
+    sql: {{ load_sql('customer') }}
+    description: Table containing customer records with order details.
 
     dimensions:
       - name: customer_id
@@ -239,6 +244,9 @@ user_groups:
 ```
 
 To know more about the User groups click [here](/resources/lens/user_groups_and_data_policies/).
+
+
+Once you have completely created your model, push the model files to your version control repository before proceeding with deployment.
 
 
 ## Step 3: Deployment manifest file
