@@ -11,19 +11,34 @@ When setting up a semantic model, it is crucial to understand that the semantic 
 
     - Users cannot query semantic models via SQL API.
 
-    - BI tools relying on PSQL-based connections cannot access semantic models.
+    - BI tools relying on psql-based connections cannot access semantic models.
 
     - BI Sync is not supported.
 
-    - **Databricks Depot Limitation:** Databricks depots can only be used as a source for Lens, not for other stacks or resources.
+    - **Databricks Depot:** Databricks Depots can only be used as a source for Lens, not for other Stacks or Resources.
 
     - **Metadata Scanning:** Metadata scanning for Databricks tables is not yet supported.
 
 ## Step 1: Set up a connection with source
 
-To set up a connection with the source, create Depot if the Depot has already been created and activated during the Design phase of the Data Product, skip this step. The Lens model will utilize the existing Depot and the associated Instance Secrets set up. Ensure that the Depot is properly connected to the correct data source and that you have the necessary access credentials (Instance Secrets) available for the Lens deployment.
+Before setting up the the Lens semantic model, ensure you have:
 
-Before establishing a connection to the databricks, an [Instance Secret](/resources/instance_secret/) must be created. This secret securely stores the credentials(here, the Databricks Personal Access Token). Follow the official Databricks guide to generate a [Personal Access Token](https://docs.databricks.com/aws/en/dev-tools/auth/pat#create-personal-access-tokens-for-workspace-users).
+- Databricks workspace and an active SQL Warehouse.
+
+- Personal Access Token (PAT): Required as credentials and securely stored in an Instance Secret.
+
+- Instance Secret: To secure the source credentials.
+
+- JDBC connection details: JDBC connection details from Databricks (`host`, `port`, `httpPath`, `database`, etc.) to be used to set up the connection via Depot.
+
+- Depot: Depot that references the Instance Secret and the JDBC details to establish a secure connection to Databricks.
+
+If a Depot was already created and activated during the Design phase of your Data Product, you can skip creation and reuse it. Otherwise, follow these steps:
+
+1. Secure source credentials by creating Instance Secret
+
+Before establishing a connection to the Databricks, an [Instance Secret](/resources/instance_secret/) must be created. This secret securely stores the credentials(here, the Databricks Personal Access Token). Follow the official Databricks guide to generate a [Personal Access Token](https://docs.databricks.com/aws/en/dev-tools/auth/pat#create-personal-access-tokens-for-workspace-users).
+
 
 ```yaml title="databricks-r.yml"
 name: databricks-r
@@ -36,24 +51,26 @@ instance-secret:
   data:
     token: "dapi0123"  # databricks's personal access token here
 ```
-To create Depot:
+2. Connect to source by creating a Depot
 
-1. Go to your Databricks workspace.
+To connect to the Databricks source via Depot you would need the JDBC connection details of the Databricks. To get the connection details follow the below steps:
 
-2. Navigate to: SQL → SQL Warehouses → select your warehouse  → Connection Details.
+  1. Go to your Databricks workspace.
 
-3. Copy the JDBC URL — it will look like this:
+  2. Navigate to: SQL → SQL Warehouses → select your warehouse  → Connection Details.
+
+  3. Copy the JDBC URL — it will look like this:
 
   ```
   jdbc:spark://<your-databricks-host>:443/default;transportMode=http;ssl=1;AuthMech=3;httpPath=sql/protocolv1/o/<org-id>/<warehouse-id>
   ```
 
-Extract the following values from the URL to fill in your depot YAML:
+Extract the following values from the URL to fill in your Depot YAML:
 
 | **Field**       | **Description**                                                       | **Example Value**                        |
 | --------------- | --------------------------------------------------------------------- | ---------------------------------------- |
 | `subprotocol`   | Identifies the JDBC driver type used to connect to Databricks.        | `databricks-jdbc`                        |
-| `database`      | specifies the default database or schema to connect to. (optional)    | `main`                                   |
+| `database`      | Specifies the default database or schema to connect to. (optional)    | `main`                                   |
 | `host`          | The Databricks workspace host (server hostname).                      | `dbc-123abc23-d0aa.cloud.databricks.com` |
 | `port`          | The port used for the JDBC connection.                                | `443`                                    |
 | `transportMode` | Specifies the transport protocol used for communication.              | `http`                                   |
@@ -61,10 +78,6 @@ Extract the following values from the URL to fill in your depot YAML:
 | `AuthMech`      | Defines the authentication mechanism used.                            | `3`                                      |
 | `httpPath`      | The HTTP path to the Databricks SQL Warehouse.                        | `/sql/1.0/warehouses/99123`              |
 | `accept_policy` | Confirms acceptance of Databricks JDBC driver usage terms (required). | `true`                                   |
-
-
-
-
 
 
 ```yaml title="databricks-depot.yml"
@@ -97,9 +110,23 @@ depot:
 
 In the `model` folder, the semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each subfolder contains specific files related to the Lens model. 
 
+```
+model/
+├── sqls/                        # Contains SQL files that load or transform data from Databricks
+│   └── customer.sql             # SQL query for extracting and preparing customer data
+│
+├── tables/                      # YAML definitions describing logical tables, dimensions, measures, and joins
+│   └── customer.yaml            # Defines the customer table schema, joins, dimensions, and measures
+│
+├── views/                       # YAML views combining data from multiple tables
+│   └── customer_churn.yaml      # Logical view combining customer and campaign data for churn insights
+│
+└── user_groups.yaml             # Defines access control and user groups for the Lens model
+```
+
 ### **Step 2.1: Load data from the data source**
 
-In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure, only the necessary columns are extracted, and the SQL dialect is specific to the databricks. For instance,
+In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure that only the necessary columns are extracted and the SQL dialect is specific to the databricks. For instance,
 
 * Format table names as: `database.table`.
 
@@ -184,7 +211,8 @@ To know more about segments click [here](/resources/lens/segments/).
 
 ### **Step 2.5: Create views**
 
-Create a views folder to store all logical views, with each view defined in a separate YAML file (e.g., `sample_view.yml`). Each view references dimensions, measures, and segments from multiple logical tables. For instance the following`customer_churn` view is created.
+Create a views folder to store all logical views, with each view defined in a separate YAML file (e.g., `sample_view.yml`). Each view references dimensions, measures, and segments from multiple logical tables. For instance, the following customer_churn view is created:
+
 
 ```yaml
 views:
@@ -211,7 +239,7 @@ This YAML manifest file is used to manage access levels for the semantic model. 
 ```yaml
 user_groups:
   - name: default
-    description: this is default user group
+    description: default user group for all users.
     includes: "*"
 ```
 
