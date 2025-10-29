@@ -89,7 +89,7 @@ Extract the following values from the URL to fill in Depot YAML:
 Use the extracted values to populate the following Depot manifest file:
 
 ```yaml title="databricks-depot.yml"
-name: databricks-a   #depot name
+name: databricks   #depot name
 version: v2alpha
 type: depot
 description: databricks jdbc depot
@@ -194,7 +194,7 @@ FROM
   
 ### **Step 2.3: Define the table in the model**
 
-Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For instance, to define a table for `customer `data:
+Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For instance, to define a table for `customer` data:
 
 ```yaml title="customer.yaml"
 table:
@@ -243,7 +243,7 @@ To know more about segments click [here](/resources/lens/segments/).
 
 ### **Step 2.6: Create views**
 
-Create a views folder to store all logical views, with each view defined in a separate YAML file (e.g., `sample_view.yml`). Each view references dimensions, measures, and segments from multiple logical tables. For instance, the following customer_churn view is created:
+Create a views folder to store all logical views, with each view defined in a separate YAML file (e.g., `sample_view.yml`). Each view references dimensions, measures, and segments from multiple logical tables. For instance, the following `customer_churn` view is created:
 
 
 ```yaml
@@ -307,7 +307,7 @@ lens:
     type: depot # Source type is depot here
     name: databricks # Name of the databricks depot 
 
-    #The name under source: should match the actual depot name (databricks-a here)
+    #The name under source: should match the actual depot name (databricks here)
 
   repo: # Lens model code repository configuration (mandatory)
     url: https://bitbucket.org/tmdc/sample # URL of repository containing the Lens model (mandatory)
@@ -358,30 +358,85 @@ After configuring the deployment file with the necessary settings and specificat
     dataos-ctl resource apply -f /lens/lens_deployment.yml -w curriculum
     # Expected output
     INFO[0000] 🛠 apply...                                   
-    INFO[0000] 🔧 applying(curriculum) sales360:v1alpha:lens... 
-    INFO[0001] 🔧 applying(curriculum) sales360:v1alpha:lens...created 
+    INFO[0000] 🔧 applying(curriculum) sales-analysis:v1alpha:lens... 
+    INFO[0001] 🔧 applying(curriculum) sales-analysis:v1alpha:lens...created 
     INFO[0001] 🛠 apply...complete
     ```
 
 
-<aside class="callout">
+## Step 5: Verify Lens creation
+
+To ensure that your Lens Resource has been successfully created, you can verify it in two ways:
+
+Check the name of the newly created Lens Resource in the list of Lens resources created by you:
+
+```bash
+dataos-ctl get -t lens
+
+# Expected Output
+INFO[0000] 🔍 get...
+INFO[0000] 🔍 get...complete
+
+       NAME     | VERSION |  TYPE  | WORKSPACE | STATUS | RUNTIME |  OWNER
+----------------|---------|--------|-----------|--------|---------|----------------
+     sales-analysis    | v1beta  | lens   |           | active |         | iamgroot
+```
+
+Alternatively, retrieve the list of all Lens resources created in your organization:
+
+```bash
+dataos-ctl get -t lens -a
+
+# Expected Output
+INFO[0000] 🔍 get...
+INFO[0000] 🔍 get...complete
+
+       NAME     | VERSION |  TYPE  | WORKSPACE | STATUS | RUNTIME | OWNER
+----------------|---------|--------|-----------|--------|---------|----------------
+     sales-analysis    | v1beta  | lens   |           | active |         | iamgroot
+     lens101    | v1beta  | lens   |           | active |         | thor
+
+```
 
 Once the Lens Resource is applied and all configurations are correctly set up, the Lens model will be deployed. Upon deployment, a Lens Service is created in the backend, which may take some time to initialize.
 
-To verify whether the Lens Service is running, execute the following command. The Service name follows the pattern: `<lens-name>-api`
-
-Ensure Service is active and running before proceeding to the next steps.
+To verify whether the Lens Service is running, execute the following command. The Service name follows the pattern: `<lens-name>-api`.  Ensure Service is active and running state.
 
 ```bash
-dataos-ctl get -t service -n sales-insights-lens-api -w public
+dataos-ctl get -t service -n sales-analysis-lens-api -w public
 # Expected output:
 INFO[0000] 🔍 get...                                     
 INFO[0002] 🔍 get...complete                             
 
            NAME           | VERSION |  TYPE   | WORKSPACE | STATUS |  RUNTIME  |    OWNER     
 --------------------------|---------|---------|-----------|--------|-----------|--------------
-  sales360-lens-api | v1      | service | public    | active | running:1 | iamgroot
+  sales-analysis-lens-api | v1      | service | public    | active | running:1 | iamgroot
 ```
 
+!!! info 
+
+    You can also view detailed information about any created Lens Resource through the [Operations](docs/interfaces/operations) App in the DataOS GUI. Note that you must have the Operator role assigned to access this information.
+
+
+## Step 6: Delete Lens
+
+<aside class="callout">
+🗣️ As best practice, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
 </aside>
+
+If you need to delete a Lens which is no longer in use, type the following command in the DataOS CLI:
+
+=== "Command"
+
+    ```bash
+    dataos-ctl delete -t lens -n ${{name of Lens}}
+    ```
+=== "Alternative Command"
+
+    ```bash
+    dataos-ctl delete -f ${{path of your manifest file}}
+    ```
+
+By executing the above command, the specified Lens will be deleted from your DataOS environment.
+
 
