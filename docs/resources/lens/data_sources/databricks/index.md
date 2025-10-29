@@ -40,9 +40,7 @@ To create Depot:
 
 1. Go to your Databricks workspace.
 
-2. Navigate to: SQL → SQL Warehouses → select your warehouse  
-
-→ Connection Details.
+2. Navigate to: SQL → SQL Warehouses → select your warehouse  → Connection Details.
 
 3. Copy the JDBC URL — it will look like this:
 
@@ -63,6 +61,9 @@ Extract the following values from the URL to fill in your depot YAML:
 | `AuthMech`      | Defines the authentication mechanism used.                            | `3`                                      |
 | `httpPath`      | The HTTP path to the Databricks SQL Warehouse.                        | `/sql/1.0/warehouses/99123`              |
 | `accept_policy` | Confirms acceptance of Databricks JDBC driver usage terms (required). | `true`                                   |
+
+
+
 
 
 
@@ -115,7 +116,7 @@ FROM
 
 Alternatively, you can write more advanced queries that include transformations, such as:
 
-```sql
+```sql title="customer.yaml"
 SELECT
   CAST(customer_id AS VARCHAR) AS customer_id,
   first_name,
@@ -136,7 +137,7 @@ FROM
 
 Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For instance, to define a table for `sales `data:
 
-```yaml
+```yaml title="customer.sql"
 table:
   - name: customers
     sql: {{ load_sql('customers') }}
@@ -147,14 +148,14 @@ table:
 
 After defining the base table, add the necessary dimensions and measures. For instance, to create a table for sales data with measures and dimensions, the YAML definition could look as follows:
 
-```yaml
+```yaml title
 tables:
-  - name: sales
+  - name: customer
     sql: {{ load_sql('sales') }}
     description: Table containing sales records with order details.
 
     dimensions:
-      - name: order_id
+      - name: customer_id
         type: number
         description: Unique identifier for each order.
         sql: order_id
@@ -162,7 +163,7 @@ tables:
         public: true
 
     measures:
-      - name: total_orders_count
+      - name: total_customer_count
         type: count
         sql: id
         description: Total number of orders.
@@ -284,6 +285,7 @@ After configuring the deployment file with the necessary settings and specificat
     ```bash 
     dataos-ctl resource apply -f ${manifest-file-path}
     ```
+
 === "Example usage"
 
     ```bash 
