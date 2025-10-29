@@ -20,11 +20,11 @@ Before setting up the connection, ensure all necessary prerequisites are in plac
 
 - Databricks workspace and active SQL Warehouse, required to connect and run queries.
 
-- **Personal Access Token (PAT):** used as credentials and securely stored in an Instance Secret.
+- **Personal Access Token (PAT):** Used as credentials and securely stored in an Instance Secret.
 
-- **Instance Secret:** secures the source credentials (and repository credentials if the repo is private).
+- **Instance Secret:**Ssecures the source credentials (and repository credentials if the repo is private).
 
-- **JDBC connection details:** includes the host, port, httpPath, and database parameters from your Databricks SQL Warehouse connection URL.
+- **JDBC connection details:**Iincludes the `host`, `port`, `httpPath`, and `database` parameters from Databricks SQL Warehouse connection URL.
 
 - **Depot:** references both the Instance Secret and the JDBC parameters to establish a secure connection between Lens and Databricks.
 
@@ -54,17 +54,17 @@ instance-secret:
 
 To connect to Databricks through a Depot, you’ll need its JDBC connection details. Follow these steps to retrieve them:
 
-  1. Go to your Databricks workspace.
+  1. Go to Databricks workspace.
 
-  2. Navigate to: SQL → SQL Warehouses → select your warehouse  → Connection Details.
+  2. Navigate to: SQL → SQL Warehouses → select warehouse  → Connection Details.
 
   3. Copy the JDBC URL, it will look like this:
 
   ```
-  jdbc:spark://<your-databricks-host>:443/default;transportMode=http;ssl=1;AuthMech=3;httpPath=sql/protocolv1/o/<org-id>/<warehouse-id>
+  jdbc:spark://<databricks-host>:443/default;transportMode=http;ssl=1;AuthMech=3;httpPath=sql/protocolv1/o/<org-id>/<warehouse-id>
   ```
 
-Extract the following values from the URL to fill in your Depot YAML:
+Extract the following values from the URL to fill in Depot YAML:
 
 | **Field**       | **Description**                                                       | **Example Value**                        |
 | --------------- | --------------------------------------------------------------------- | ---------------------------------------- |
@@ -198,7 +198,7 @@ tables:
 
 ### **Step 2.4: Add segments to filter**
 
-Segments are filters that allow for the application of specific conditions to refine the data analysis. By defining segments, you can focus on particular subsets of data, ensuring that only the relevant records are included in your analysis. For example, to filter for records where the state is either Illinois or Ohio, you can define a segment as follows:
+Segments are filters that allow for the application of specific conditions to refine the data analysis. By defining segments, you can focus on particular subsets of data, ensuring that only the relevant records are included in analysis. For example, to filter for records where the state is either Illinois or Ohio, you can define a segment as follows:
 
 ```yaml
 segments:
@@ -245,8 +245,9 @@ user_groups:
 
 To know more about the User groups click [here](/resources/lens/user_groups_and_data_policies/).
 
+!!! info
 
-Once you have completely created your model, push the model files to your version control repository before proceeding with deployment.
+    Once you have completely created model, push the model files to a version control repository before proceeding with deployment.
 
 
 ## Step 3: Deployment manifest file
@@ -299,7 +300,7 @@ Each section of the YAML template defines key aspects of the Lens deployment. Be
 
 * **Defining Repository:**
 
-      * **`url`** The `url` attribute in the repo section specifies the Git repository where the Lens model files are stored. For instance, if your repo name is lensTutorial then the repo `url` will be  [https://bitbucket.org/tmdc/lensTutorial](https://bitbucket.org/tmdc/lensTutorial)
+      * **`url`** The `url` attribute in the repo section specifies the Git repository where the Lens model files are stored. For instance, if repo name is lensTutorial then the repo `url` will be  [https://bitbucket.org/tmdc/lensTutorial](https://bitbucket.org/tmdc/lensTutorial)
 
       * **`lensBaseDir`:**  The `lensBaseDir` attribute refers to the directory in the repository containing the Lens model. Example: `sample/lens/source/depot/databricks/model`.
 
