@@ -92,4 +92,4 @@ To monitor the status of Lakehouse on the Operations app, follow the steps below
 
 ## Configure Alerts for Status Changes
 
-To automatically track critical state transitions, users can configure a Monitor and Pager to send alerts when the status of a Lakehouse changes to values like `error` or `deleted`. This enables teams to respond immediately to resource failures, misconfigurations, or unexpected deletions that may impact dependent components. [Click here to view the steps to set up alerts for status changes](https://www.notion.so/Alerts-for-Resource-Status-Change-20fc5c1d487680519a0bf069917dec31?pvs=21).
+To automatically track critical state transitions, users can configure a Monitor and Pager to send alerts when the status of a Lakehouse changes to values like `error` or `deleted`. This enables teams to respond immediately to resource failures, misconfigurations, or unexpected deletions that may impact dependent components. [Click here to view the steps to set up alerts for status changes](/products/data_product/observability/alerts/alerts_resource_status_change).

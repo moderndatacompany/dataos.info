@@ -31,21 +31,21 @@ To monitor the status of Compute on the Metis Catalog UI, follow the steps below
 1. Open the Metis Catalog.
     
     <div style="text-align: center;">
-      <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+      <img src="/products/data_product/observability/status/instance_secret/instance_secret_metis_catalog_endtoend_metadata_management.png" style="border:1px solid black; width: 70%; height: auto">
       <figcaption><i>Observability in DataOS</i></figcaption>
     </div>
     
 2. Search for a Compute by name.
     
     <div style="text-align: center;">
-      <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+      <img src="/products/data_product/observability/status/compute/compute_compute_newusecases_computes_newusecases_ctrl.png" style="border:1px solid black; width: 70%; height: auto">
       <figcaption><i>Observability in DataOS</i></figcaption>
     </div>
     
 3. Click on the Compute that needs to be monitored and check the Status, which is represented as `State`.
     
     <div style="text-align: center;">
-      <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+      <img src="/products/data_product/observability/status/compute/compute_computes_meta_version_created_days.png" style="border:1px solid black; width: 70%; height: auto">
       <figcaption><i>Observability in DataOS</i></figcaption>
     </div>
     
@@ -59,20 +59,14 @@ To monitor the status of Compute on the Operations app, follow the steps below:
 1. Open the Operations app.
     
     <div style="text-align: center;">
-      <div style="text-align: center;">
-        <img src="/products/data_product/observability/status/worker/worker_dataos_operations_userspace_core_kernel.png" style="width: 70%; height: auto;">
-        <figcaption><i>DataOS® operations —_UserSpace _—Core Kernel User Space Resources Minerva Queries Name « — data-product-insights-wor ...</i></figcaption>
-      </div>
+      <img src="/products/data_product/observability/status/instance_secret/instance_secret_operations_administer_data0s_grafana.png" style="border:1px solid black; width: 70%; height: auto">
       <figcaption><i>Observability in DataOS</i></figcaption>
     </div>
     
 2. Under the User space → type → Compute, search for Compute.
     
     <div style="text-align: center;">
-      <div style="text-align: center;">
-        <img src="/products/data_product/observability/status/worker/worker_dataos_operations_userspace_core_kernel.png" style="width: 70%; height: auto;">
-        <figcaption><i>DataOS® operations —_UserSpace _—Core Kernel User Space Resources Minerva Queries Name « — data-product-insights-wor ...</i></figcaption>
-      </div>
+      <img src="/products/data_product/observability/status/compute/compute_adataos_operations_userspace_core_kernel.png" style="border:1px solid black; width: 70%; height: auto">
       <figcaption><i>Observability in DataOS</i></figcaption>
     </div>
     
@@ -90,7 +84,7 @@ To monitor the status of Compute on the Operations app, follow the steps below:
     </aside>
     
     <div style="text-align: center;">
-      <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+      <img src="/products/data_product/observability/status/compute/compute_dataos_operations_user_spac_user.png" style="border:1px solid black; width: 70%; height: auto">
       <figcaption><i>Observability in DataOS</i></figcaption>
     </div>
     
@@ -104,4 +98,4 @@ To monitor the status of Compute on the Operations app, follow the steps below:
 
 ## Configure Alerts for Status Changes
 
-To automatically track critical state transitions, users can configure a Monitor and Pager to send alerts when the status of a Compute changes to values like `error` or `deleted`. This enables teams to respond immediately to resource failures, misconfigurations, or unexpected deletions that may impact dependent components. [Click here to view the steps to set up alerts for status changes](https://www.notion.so/Alerts-for-Resource-Status-Change-20fc5c1d487680519a0bf069917dec31?pvs=21).
+To automatically track critical state transitions, users can configure a Monitor and Pager to send alerts when the status of a Compute changes to values like `error` or `deleted`. This enables teams to respond immediately to resource failures, misconfigurations, or unexpected deletions that may impact dependent components. [Click here to view the steps to set up alerts for status changes](/products/data_product/observability/alerts/alerts_resource_status_change).

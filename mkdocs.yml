@@ -885,7 +885,49 @@ nav:
       - Building from Scratch with Snowflake: products/data_product/examples/firstdp.md
       - Using DataOS Lakehouse as a Source: products/data_product/templates/product_affinity.md
     - Configurations: products/data_product/configurations.md 
-    - Observability: resources/monitor/usecases/lens_metrics.md
+    - Observability: 
+      - products/data_product/observability/index.md
+      - Key Concepts: products/data_product/observability/key_concepts.md
+      - Monitoring:
+        - Resource Health:
+          - Instance Secret: products/data_product/observability/status/monitor_instance_secret.md
+          - Secrets: products/data_product/observability/status/monitor_secrets.md
+          - Volume: products/data_product/observability/status/monitor_volume.md
+          - Lakehouse: products/data_product/observability/status/monitor_lakehouse.md
+          - Depot: products/data_product/observability/status/monitor_depot.md
+          - Workflow: products/data_product/observability/status/monitor_workflow.md
+          - Cluster: products/data_product/observability/status/monitor_cluster.md
+          - Service: products/data_product/observability/status/monitor_service.md
+          - Worker: products/data_product/observability/status/monitor_worker.md
+          - Lens: products/data_product/observability/status/monitor_lens.md
+          - Compute: products/data_product/observability/status/monitor_compute.md
+          - Bundle: products/data_product/observability/status/monitor_bundle.md
+        - CPU and Memory Usage:
+          - Workflow: products/data_product/observability/cpu/monitor_workflow_cpu_memory.md
+          - Cluster: products/data_product/observability/cpu/monitor_cluster_cpu_memory.md
+          - Service: products/data_product/observability/cpu/monitor_service_cpu_memory.md
+          - Worker: products/data_product/observability/cpu/monitor_worker_cpu_memory.md
+          - Lens: products/data_product/observability/cpu/monitor_lens_cpu_memory.md
+          - Depot: products/data_product/observability/cpu/monitor_depot_cpu_memory.md
+        - System Metrics:
+          - K8 Cluster Infrastructure Dashboard: products/data_product/observability/dashboards/infra/infra.md
+          - K8 Cluster Entities Dashboard: products/data_product/observability/dashboards/entities/entities.md
+      - logging:  
+        - Workflow: products/data_product/observability/logs/monitor_workflow_logs.md
+        - Cluster: products/data_product/observability/logs/monitor_cluster_logs.md
+        - Service: products/data_product/observability/logs/monitor_service_logs.md
+        - Worker: products/data_product/observability/logs/monitor_worker_logs.md
+        - Lens: products/data_product/observability/logs/lens.md
+        - Depot: products/data_product/observability/logs/depot.md
+      - Alerting:
+        - Alerts for High CPU Usage: products/data_product/observability/alerts/alerts_high_cpu_usage.md
+        - Alerts for High Memory Usage: products/data_product/observability/alerts/alerts_high_memory_usage.md
+        - Alerts for Runtime Failure: products/data_product/observability/alerts/alerts_runtime_failure.md
+        - Alerts for Resource Status: products/data_product/observability/alerts/alerts_resource_status_change.md
+      - Use Cases: 
+        - Resolve CPU Limit Breach: products/data_product/observability/usecase.md
+        - Monitoring Lens Metrics: products/data_product/observability/usecase2.md
+
     - Recipes: 
       - Deploy Data Product using CI/CD pipeline: products/data_product/recipes/ci_cd.md
 

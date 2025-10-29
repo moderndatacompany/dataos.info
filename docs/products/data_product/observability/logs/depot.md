@@ -75,19 +75,19 @@ To monitor the logs of a Depot on the Metis Catalog UI, follow the steps below:
 1. Open the Metis Catalog.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/depot/image%20(21).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 2. Search for the Depot by name.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/depot/image%20(22).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 3. Click on the Depot that needs to be monitored and navigate to the ‘Runtime’ section.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/depot/image%20(23).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 4. Click on the pod and navigate to the ‘Pod Logs’ section. In the ‘Pog Logs’ section, users can monitor the logs of the init and main containers.
@@ -95,19 +95,19 @@ To monitor the logs of a Depot on the Metis Catalog UI, follow the steps below:
     **Main container logs:**
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/depot/image%20(24).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
     **`dbi` container logs:**
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/depot/image%20(25).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
     **`dbc` container logs:**
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/depot/image%20(26).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 
@@ -118,29 +118,29 @@ To monitor the logs of a Depot on the Operations App, follow the steps below:
 1. Open the Operations app.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/depot/image%20(27).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 2. Navigate to User Space → Resources → Depot and search for the Depot by name.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/depot/image%20(28).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 3. Click on the Depot that needs to be monitored and navigate to the ‘Resource Runtime’ section.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/depot/image%20(29).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 4. Click on the runtime node for which you want to monitor the logs, and navigate to the ‘Runtime Node Logs’ section.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/depot/image%20(30).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/depot/image%20(31).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
     These logs confirm that:

@@ -58,8 +58,8 @@ This section outlines how users can track CPU and memory usage across various Da
 
 System metrics for DataOS Resources can be explored through Grafana dashboards. These dashboards offer detailed insights into CPU, memory, and runtime behavior across clusters, pods, and services. Users can navigate these dashboards to quickly assess resource health, analyze trends, and troubleshoot issues using visual cues.
 
-- [K8 Cluster Infrastructure Dashboard](/products/data_product/observability/dashboards/k8_cluster_infrastructure_dashboard/)
-- [K8 Cluster Entities Dashboard](/products/data_product/observability/dashboards/k8_cluster_entities_dashboard/)
+- [K8 Cluster Infrastructure Dashboard](/products/data_product/observability/dashboards/infra/infra/)
+- [K8 Cluster Entities Dashboard](/products/data_product/observability/dashboards/entities/entities/)
 
 ## Logging
 
@@ -100,17 +100,14 @@ This section guides users on how to monitor the operational status of DataOS Res
 
 [Alerts for Resource Status Change](/products/data_product/observability/alerts/alerts_resource_status_change/)
 
-## Observing Data Product Metrics
-
-This section provides step-by-step instructions to observe a [Data Product](https://dataos.info/products/data_product/) in DataOS, so users can continuously monitor core business KPIs to receive immediate alerts when those metrics degrade and route incidents to the Teams channel or email.
-
-[Observability for Data Product Metrics](/products/data_product/observability/data-product-metrics/)
 
 ## Use cases
 
-This section describes a real-world example of how users handle alerts in DataOS. 
+This section provides practical scenarios demonstrating how to leverage DataOS observability features to enhance monitoring, alerting, and overall system management. It covers common use cases involving monitoring Resource health, detecting anomalies, triggering alerts, and optimizing performance.
 
-[Observability Use Case](/products/data_product/observability/usecase/)
+- [Resolving CPU Limit Breach on Cluster Resource](/products/data_product/observability/usecase/)
+- [Observing Lens Metrics](/products/data_product/observability/usecase2/)
+
 
 ## FAQs
 

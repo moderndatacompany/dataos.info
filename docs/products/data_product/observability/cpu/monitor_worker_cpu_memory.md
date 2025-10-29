@@ -7,29 +7,29 @@ To monitor the CPU and memory usage of a Worker on the Metis Catalog UI, follow 
 1. Open the Metis Catalog.
     
     <div style="text-align: center;">
-      <img src="/products/data_product/observability/dashboards/entities/entities_containers_utilization_maximum100associable_nodes_1205.png" style="width: 70%; height: auto;">
-      <figcaption><i>Pod Containers CPU Utilization (Maximum100%Associable Nodes) © 12:05 12:10 12:15 12:20 12:25 Name v Mean Max = zookee...</i></figcaption>
+      <img src="/products/data_product/observability/status/instance_secret/instance_secret_metis_catalog_endtoend_metadata_management.png" style="border:1px solid black; width: 70%; height: auto">
+      <figcaption><i>caption</i></figcaption>
     </div>
     
 2. Search for the Worker by name.
     
     <div style="text-align: center;">
-      <img src="/products/data_product/observability/dashboards/entities/entities_containers_utilization_maximum100associable_nodes_1205.png" style="width: 70%; height: auto;">
-      <figcaption><i>Pod Containers CPU Utilization (Maximum100%Associable Nodes) © 12:05 12:10 12:15 12:20 12:25 Name v Mean Max = zookee...</i></figcaption>
+      <img src="/products/data_product/observability/cpu/worker/worker_sales360worker_sales360api_bundles_sales360bundle_workers.png" style="border:1px solid black; width: 70%; height: auto">
+      <figcaption><i>caption</i></figcaption>
     </div>
     
 3. Click on the Worker that needs to be monitored and navigate to the ‘Runtime’ section.
     
     <div style="text-align: center;">
-      <img src="/products/data_product/observability/dashboards/entities/entities_containers_utilization_maximum100associable_nodes_1205.png" style="width: 70%; height: auto;">
-      <figcaption><i>Pod Containers CPU Utilization (Maximum100%Associable Nodes) © 12:05 12:10 12:15 12:20 12:25 Name v Mean Max = zookee...</i></figcaption>
+      <img src="/products/data_product/observability/cpu/worker/worker_workers_shreya_meta_version_created.png" style="border:1px solid black; width: 70%; height: auto">
+      <figcaption><i>caption</i></figcaption>
     </div>
     
 4. Click on the pod name for which you want to monitor the CPU and memory usage, and navigate to the ‘Pod Usage’ section.
     
     <div style="text-align: center;">
-      <img src="/products/data_product/observability/dashboards/entities/entities_containers_utilization_maximum100associable_nodes_1205.png" style="width: 70%; height: auto;">
-      <figcaption><i>Pod Containers CPU Utilization (Maximum100%Associable Nodes) © 12:05 12:10 12:15 12:20 12:25 Name v Mean Max = zookee...</i></figcaption>
+      <img src="/products/data_product/observability/cpu/worker/worker_time_series_millicore_2000_1500.png" style="border:1px solid black; width: 70%; height: auto">
+      <figcaption><i>caption</i></figcaption>
     </div>
     
     **CPU usage:**
@@ -38,16 +38,14 @@ To monitor the CPU and memory usage of a Worker on the Metis Catalog UI, follow 
     - Request (green line) is fixed at approximately 250 millicores, indicating the CPU guaranteed for the pod at scheduling time.
     - Limit (yellow line) is flat at 2000 millicores, representing the maximum CPU the pod is allowed to use if resources are available.
     
-    <aside>
-    🗣
-    
-    The actual usage exceeds the requested value, meaning the pod consumed more than what was guaranteed but stayed well below the limit. This could result in temporary throttling, and it may be worth revisiting the request configuration for better scheduling efficiency.
+    <aside class="callout">
+    🗣 The actual usage exceeds the requested value, meaning the pod consumed more than what was guaranteed but stayed well below the limit. This could result in temporary throttling, and it may be worth revisiting the request configuration for better scheduling efficiency.
     
     </aside>
     
     <div style="text-align: center;">
-      <img src="/products/data_product/observability/dashboards/entities/entities_containers_utilization_maximum100associable_nodes_1205.png" style="width: 70%; height: auto;">
-      <figcaption><i>Pod Containers CPU Utilization (Maximum100%Associable Nodes) © 12:05 12:10 12:15 12:20 12:25 Name v Mean Max = zookee...</i></figcaption>
+      <img src="/products/data_product/observability/cpu/worker/worker_memory_time_series_memory_mebibyte.png" style="border:1px solid black; width: 70%; height: auto">
+      <figcaption><i>caption</i></figcaption>
     </div>
     
     **Memory usage:**
@@ -56,16 +54,14 @@ To monitor the CPU and memory usage of a Worker on the Metis Catalog UI, follow 
     - Request (green line) is not visible in the graph, which indicates that memory was not explicitly requested or the request value is not available in this dataset.
     - Limit (yellow line) remains constant at 2500 MiB, indicating the maximum memory the pod is allowed to consume.
     
-    <aside>
-    🗣
-    
-    The memory usage is well below the defined limit. Since no request value is shown, the scheduler may not have reserved memory explicitly. Overall, the workload appears to be operating within safe limits, with potential to optimize further if needed.
+    <aside class="callout">
+    🗣 The memory usage is well below the defined limit. Since no request value is shown, the scheduler may not have reserved memory explicitly. Overall, the workload appears to be operating within safe limits, with potential to optimize further if needed.
     
     </aside>
     
     <div style="text-align: center;">
-      <img src="/products/data_product/observability/dashboards/entities/entities_home_dashboards_infrastructure_cluster_entities_dup.png" style="width: 70%; height: auto;">
-      <figcaption><i>I~ Home » Dashboards > Infrastructure > K8s Cluster Entities | ENV | https://pro- n.dataos.app » | nodes Ally | Names...</i></figcaption>
+      <img src="/products/data_product/observability/cpu/worker/worker_aggregates_node_states_time_slices.png" style="border:1px solid black; width: 70%; height: auto">
+      <figcaption><i>caption</i></figcaption>
     </div>
     
     **Details:**
@@ -85,7 +81,7 @@ To monitor the CPU and memory usage of a Worker on the Metis Catalog UI, follow 
     > The Worker was allowed to consume significantly more CPU than it requested, and it did so, but stayed under the defined limit. Memory usage remained far below both the request and limit. This suggests an opportunity to reduce memory allocation to free up resources for other workloads.
     > 
 
-## **Monitor the CPU and memory usage of a Worker using the Operations App**
+## Monitor the CPU and memory usage of a Worker using the Operations App
 
 When a Worker Resource is created, a corresponding pod is automatically provisioned in the backend. You can monitor the CPU and memory usage of this pod directly through the Operations app.
 
@@ -94,29 +90,29 @@ To monitor the CPU and memory usage of a Worker on the Operations app, follow th
 1. Open the Operations app.
     
     <div style="text-align: center;">
-      <img src="/products/data_product/observability/dashboards/entities/entities_resource_overview_selectedpod_consuming_pods.png" style="width: 70%; height: auto;">
-      <figcaption><i>v Pod Resource Overview - SelectedPod: [All] Top 10 CPU Consuming Pods @ Poros-coltation-worker-pocs-° LCCC. LL 17.3%...</i></figcaption>
+      <img src="/products/data_product/observability/status/instance_secret/instance_secret_operations_administer_data0s_grafana.png" style="border:1px solid black; width: 70%; height: auto">
+      <figcaption><i>caption</i></figcaption>
     </div>
     
 2. Navigate to User Space → Resources → types, select the Worker as type, and search for the Worker by its name that needs to be monitored.
     
     <div style="text-align: center;">
-      <img src="/products/data_product/observability/dashboards/entities/entities_resource_overview_selectedpod_consuming_pods.png" style="width: 70%; height: auto;">
-      <figcaption><i>v Pod Resource Overview - SelectedPod: [All] Top 10 CPU Consuming Pods @ Poros-coltation-worker-pocs-° LCCC. LL 17.3%...</i></figcaption>
+      <img src="/products/data_product/observability/cpu/worker/worker_dataos_operations_userspace_core_kernel.png" style="border:1px solid black; width: 70%; height: auto">
+      <figcaption><i>caption</i></figcaption>
     </div>
     
 3. Click on the Worker, navigate to the ‘Resource Runtime’ section.
     
     <div style="text-align: center;">
-      <img src="/products/data_product/observability/dashboards/entities/entities_resource_overview_selectedpod_consuming_pods.png" style="width: 70%; height: auto;">
-      <figcaption><i>v Pod Resource Overview - SelectedPod: [All] Top 10 CPU Consuming Pods @ Poros-coltation-worker-pocs-° LCCC. LL 17.3%...</i></figcaption>
+      <img src="/products/data_product/observability/cpu/worker/worker_dataos_operations_user_spac_user.png" style="border:1px solid black; width: 70%; height: auto">
+      <figcaption><i>caption</i></figcaption>
     </div>
     
 4. Click on the pod name for which you want to monitor the CPU and memory usage, and navigate to the ‘Runtime Node Usage’ section.
     
     <div style="text-align: center;">
-      <img src="/products/data_product/observability/dashboards/entities/entities_resource_overview_selectedpod_consuming_pods.png" style="width: 70%; height: auto;">
-      <figcaption><i>v Pod Resource Overview - SelectedPod: [All] Top 10 CPU Consuming Pods @ Poros-coltation-worker-pocs-° LCCC. LL 17.3%...</i></figcaption>
+      <img src="/products/data_product/observability/cpu/worker/worker_sales360workerju9zss0_runtime_node_details_runtime.png" style="border:1px solid black; width: 70%; height: auto">
+      <figcaption><i>caption</i></figcaption>
     </div>
     
     **Details:**
@@ -134,8 +130,8 @@ To monitor the CPU and memory usage of a Worker on the Operations app, follow th
     - **Memory Limit**: Each pod has been allocated 2048 MiB as a limited memory reservation.
     
     <div style="text-align: center;">
-      <img src="/products/data_product/observability/dashboards/entities/entities_containers_utilization_maximum100associable_nodes_1205.png" style="width: 70%; height: auto;">
-      <figcaption><i>Pod Containers CPU Utilization (Maximum100%Associable Nodes) © 12:05 12:10 12:15 12:20 12:25 Name v Mean Max = zookee...</i></figcaption>
+      <img src="/products/data_product/observability/cpu/worker/worker_time_series_1000_usage_request.png" style="border:1px solid black; width: 70%; height: auto">
+      <figcaption><i>caption</i></figcaption>
     </div>
     
     **CPU usage:**
@@ -144,11 +140,8 @@ To monitor the CPU and memory usage of a Worker on the Operations app, follow th
     - Request (green line) is not plotted, suggesting no CPU request was explicitly configured or it’s not captured here.
     - Limit (yellow line) remains constant at around 1200 millicores, representing the maximum CPU the pod can consume.
     
-    <aside>
-    🗣
-    
-    The CPU usage exhibits bursty behavior, likely due to periodic task execution. Since usage stays well within the limit, throttling is unlikely, but the absence of a visible request means scheduling guarantees may not be enforced.
-    
+    <aside class="callout">
+    🗣 The CPU usage exhibits bursty behavior, likely due to periodic task execution. Since usage stays well within the limit, throttling is unlikely, but the absence of a visible request means scheduling guarantees may not be enforced.
     </aside>
     
     **Memory usage:**
@@ -157,15 +150,12 @@ To monitor the CPU and memory usage of a Worker on the Operations app, follow th
     - Request (green line) is missing, indicating it was either not set or not shown in this view.
     - Limit (yellow line) is fixed at 2048 MiB, defining the upper bound for memory allocation.
     
-    <aside>
-    🗣
-    
-    Memory usage is close to the limit but stays within bounds, suggesting the pod is memory-intensive. A configured memory request would improve scheduling reliability.
-    
+    <aside class="callout">
+    🗣 Memory usage is close to the limit but stays within bounds, suggesting the pod is memory-intensive. A configured memory request would improve scheduling reliability.
     </aside>
     
 
-## **Monitor the CPU and memory usage of a Worker** **using Grafana**
+## Monitor the CPU and memory usage of a Worker using Grafana
 
 When a Worker Resource is created, a corresponding pod is automatically provisioned in the back-end. You can monitor the CPU and memory usage of this pod directly through the Grafana app.
 
@@ -212,20 +202,23 @@ To monitor the CPU and memory usage of a Service on the Grafana app, follow the 
     
 2. Open the Grafana app. 
     
-    ![image.png](attachment:c620a0a4-2311-4c84-9b78-8fd822d80410:image.png)
+    <div style="text-align: center;">
+      <img src="/products/data_product/observability/status/instance_secret/instance_secret_operations_administer_data0s_grafana.png" style="border:1px solid black; width: 70%; height: auto">
+      <figcaption><i>caption</i></figcaption>
+    </div>
     
 3. Navigate to the Explore section and select ‘Thanos’ as a source and search for the metric `cpu_container_usage_total`, and in the label filters select pod and paste the pod name which we have gotten from step 1, then click on ‘Run Query’. 
     
     <div style="text-align: center;">
-      <img src="/products/data_product/observability/dashboards/infra/infra_home_explore_thanos_search_ctik.png" style="width: 70%; height: auto;">
-      <figcaption><i>o Home > Explore > thanos Q Search... ctik| tv | @ © Query history | e@ Share Q thanos »~ | Q Goqueryless split Add» ...</i></figcaption>
+      <img src="/products/data_product/observability/cpu/worker/worker_home_explore_thanos_search_jump.png" style="border:1px solid black; width: 70%; height: auto">
+      <figcaption><i>caption</i></figcaption>
     </div>
     
 4. After clicking on the ‘Run Query’, you can find the usage of CPU by the Service.
     
     <div style="text-align: center;">
-      <img src="/products/data_product/observability/dashboards/infra/infra_home_explore_thanos_search_ctik.png" style="width: 70%; height: auto;">
-      <figcaption><i>o Home > Explore > thanos Q Search... ctik| tv | @ © Query history | e@ Share Q thanos »~ | Q Goqueryless split Add» ...</i></figcaption>
+      <img src="/products/data_product/observability/cpu/worker/worker_ally_graph_berea_split_last30minutes.png" style="border:1px solid black; width: 70%; height: auto">
+      <figcaption><i>caption</i></figcaption>
     </div>
     
     This graph displays cumulative CPU usage (`container_cpu_usage_seconds_total`) for each container inside a pod belonging to the `sales360-worker` Worker:
@@ -239,15 +232,15 @@ To monitor the CPU and memory usage of a Service on the Grafana app, follow the 
 5. To monitor the memory usage, select the `container_memory_working_set_bytes` in the query explorer and select the pod name as the label filter of the corresponding Service, and run the query.
     
     <div style="text-align: center;">
-      <img src="/products/data_product/observability/dashboards/entities/entities_containers_utilization_maximum100associable_nodes_1205.png" style="width: 70%; height: auto;">
-      <figcaption><i>Pod Containers CPU Utilization (Maximum100%Associable Nodes) © 12:05 12:10 12:15 12:20 12:25 Name v Mean Max = zookee...</i></figcaption>
+      <img src="/products/data_product/observability/cpu/worker/worker_meel_ally_graph_berea_thanos.png" style="border:1px solid black; width: 70%; height: auto">
+      <figcaption><i>caption</i></figcaption>
     </div>
     
 6. On executing the query, you can see the memory used by the pod in the last thirty minutes. 
     
     <div style="text-align: center;">
-      <img src="/products/data_product/observability/dashboards/entities/entities_containers_utilization_maximum100associable_nodes_1205.png" style="width: 70%; height: auto;">
-      <figcaption><i>Pod Containers CPU Utilization (Maximum100%Associable Nodes) © 12:05 12:10 12:15 12:20 12:25 Name v Mean Max = zookee...</i></figcaption>
+      <img src="/products/data_product/observability/cpu/worker/worker_split_last5minutes_cscc_queries_berea.png" style="border:1px solid black; width: 70%; height: auto">
+      <figcaption><i>caption</i></figcaption>
     </div>
     
     This graph displays the cumulative CPU usage (in seconds) at the pod level for the `sales360-worker` Worker. The distinct lines represent total CPU consumed by individual containers within the same pod, but together, they reflect the overall CPU footprint of the pod.
@@ -259,15 +252,15 @@ To monitor the CPU and memory usage of a Service on the Grafana app, follow the 
 7. You can further select the time range at which you want to see the CPU and memory usage.
     
     <div style="text-align: center;">
-      <img src="/products/data_product/observability/dashboards/entities/entities_containers_utilization_maximum100associable_nodes_1205.png" style="width: 70%; height: auto;">
-      <figcaption><i>Pod Containers CPU Utilization (Maximum100%Associable Nodes) © 12:05 12:10 12:15 12:20 12:25 Name v Mean Max = zookee...</i></figcaption>
+      <img src="/products/data_product/observability/cpu/cluster/cluster_split_absolute_time_range_vercleun.png" style="border:1px solid black; width: 70%; height: auto">
+      <figcaption><i>caption</i></figcaption>
     </div>
     
 
 ## Configure alerts for CPU usage
 
-To automatically track the CPU usage, users can configure a Monitor and a Pager to send alerts when the CPU usage exceeds certain limits. This enables teams to respond immediately to resource failures that may impact dependent components. [Click here to view the steps to set up alerts for CPU usage](https://www.notion.so/Alerts-for-High-CPU-Usage-20fc5c1d48768026ada4e7dfa2a0f802?pvs=21).
+To automatically track the CPU usage, users can configure a Monitor and a Pager to send alerts when the CPU usage exceeds certain limits. This enables teams to respond immediately to resource failures that may impact dependent components. [Click here to view the steps to set up alerts for CPU usage](/products/data_product/observability/alerts/alerts_high_cpu_usage).
 
 ## Configure alerts for memory usage
 
-To automatically track the memory usage, users can configure a Monitor and a Pager to send alerts when the memory usage exceeds certain limits. This enables teams to respond immediately to resource failures that may impact dependent components. [Click here to view the steps to set up alerts for memory usage](https://www.notion.so/Alerts-for-High-Memory-Usage-20fc5c1d487680a4ba64f082a07857f3?pvs=21).
+To automatically track the memory usage, users can configure a Monitor and a Pager to send alerts when the memory usage exceeds certain limits. This enables teams to respond immediately to resource failures that may impact dependent components. [Click here to view the steps to set up alerts for memory usage](/products/data_product/observability/alerts/alerts_high_memory_usage).
