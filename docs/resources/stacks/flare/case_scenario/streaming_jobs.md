@@ -1,8 +1,15 @@
+---
+title: Streaming Jobs
+search:
+  boost: 4
+---
+
 # Streaming Jobs
 
 In scenarios where there is a continuous requirement to process incoming data in real-time, Flare stream jobs offer an effective solution. However, it is advisable to exercise caution when creating stream jobs, as they should be reserved for cases where strict latency requirements exist, typically demanding a processing time of less than a minute, considering that they may incur higher computing costs.
 
-## Attribute configuration table for streaming job:
+
+## Attribute configuration table for streaming job
 
 
 | **Feature**                        | **Description**                                                                                                                                                                          | **Used In Which Trigger Modes?**                                             | **Notes**                                                                 |
@@ -37,6 +44,15 @@ It also facilitates writing the same micro-batch to multiple destinations, suppo
 ## **Trigger modes**
 
 The `triggerMode` controls the frequency and style in which streaming data is processed. By setting an appropriate trigger mode, you can decide whether the streaming query operates in micro-batch mode (processing data in discrete intervals) or in continuous mode (processing data as soon as it arrives).
+
+
+| **Trigger Mode**             | **Execution Model**                                          | **Runs Continuously?** | **Latency Characteristics**                                                    | **Use Case / Notes**                                                                   |
+| ---------------------------- | ------------------------------------------------------------ | ---------------------- | ------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
+| **once**                     | Processes all available data once and stops                  | ❌ No                   | Latency depends on total data size and processing time; not real-time          | Batch-style processing using streaming API; good for ad-hoc jobs                       |
+| **availableNow**             | Processes all data that has arrived up to now, then stops    | ❌ No                   | Processes only the data that has arrived; latency tied to processing           | Similar to *once*, but guarantees processing of all data received so far               |
+| **processingTime(interval)** | Processes data in micro-batches every interval               | ✅ Yes                  | Minimum latency ≈ interval + processing time; may queue if data volume is high | Near real-time streaming; most commonly used trigger for continuous streams            |
+| **continuous(interval)**     | Processes data continuously in small chunks with low latency | ✅ Yes                  | Very low latency (millisecond-level); ideal for ultra-low-latency use cases    | Experimental / advanced; not all operations supported; uses Continuous Processing mode |
+
 
 This setting is crucial to balance between latency, throughput, and cost-efficiency, depending on your business needs. Here are the different kinds of triggers that are supported:
 

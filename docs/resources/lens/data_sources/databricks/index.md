@@ -22,7 +22,7 @@ Before setting up the connection, ensure all necessary prerequisites are in plac
 
 - **Personal Access Token (PAT):** Used as credentials and securely stored in an Instance Secret.
 
-- **Instance Secret:**Ssecures the source credentials (and repository credentials if the repo is private).
+- **Instance Secret:** Secures the source credentials (and repository credentials if the repo is private).
 
 - **JDBC connection details:**Iincludes the `host`, `port`, `httpPath`, and `database` parameters from Databricks SQL Warehouse connection URL.
 
@@ -32,9 +32,27 @@ Before setting up the connection, ensure all necessary prerequisites are in plac
 
 ## Step 1: Set up a connection with source
 
-To ensure a smooth setup, complete the following prerequisites before proceeding.
+To ensure a smooth setup, complete the following prerequisites:
 
-1. **Secure source credentials by creating Instance Secret**
+1. **Secure repository credentials by creating Instance Secret:**
+
+Create Instance Secret for your preferred hosted repository (Bitbucket, AWS Code Commit, Github) if repository is public you can skip this step. Lens service requires the Personal Access Token (PAT) to access private Github repositories. After creating PAT, the user must store it in DataOS as a secret so the Lens service can authenticate the token during repository synchronization and read the model file from the repository. 
+
+```yaml title="bitbucket-r.yaml"
+name: bitbucket-r
+version: v1
+type: instance-secret
+description: bitbucket credentials
+layer: user
+instance-secret:
+  type: key-value
+  acl: r                                # read level access
+  data:
+    GITSYNC_USERNAME: ${{"iamgroot"}}   # replace the placeholder with the bitbucket (or preferred code repository) username
+    GITSYNC_PASSWORD: ${{"0123Abcedefghij="}}   #replace the placeholder with the personal access token
+```
+
+2. **Secure source credentials by creating Instance Secret**
 
 Before establishing a connection to the Databricks, an Instance Secret must be created. This secret securely stores the credentials(here, the Databricks Personal Access Token). Follow the official Databricks guide to generate a [Personal Access Token](https://docs.databricks.com/aws/en/dev-tools/auth/pat#create-personal-access-tokens-for-workspace-users).
 
@@ -50,7 +68,7 @@ instance-secret:
   data:
     token: "dapi0123"  # databricks's personal access token here
 ```
-2. **Connect to source by creating a Depot**
+3. **Connect to source by creating a Depot**
 
 To connect to Databricks through a Depot, you’ll need its JDBC connection details. Follow these steps to retrieve them:
 
@@ -105,6 +123,7 @@ depot:
       httpPath: /sql/1.0/warehouses/99123
       accept_policy: true # This accepts the Databricks usage policy and must be set to `true` to use the Databricks JDBC driver
 ```
+
 
 ## Step 2: Prepare the Lens model folder
 

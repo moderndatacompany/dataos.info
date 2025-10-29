@@ -86,7 +86,7 @@ Now that you've got your model ready, it's time to bring it all together by sett
 
 Here's what it includes:
 
-### 1.  Meta Section**
+### 1. **Meta Section**
 
 This section is where you give your Lens its identity. You'll provide essential details like:
 
