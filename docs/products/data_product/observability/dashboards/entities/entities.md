@@ -27,9 +27,9 @@ This section shows per-node statistics including pod limits, active pods, resour
 
 ![image.png](K8%20Cluster%20Entities%20Dashboard/image%201.png)
 
-### Node Information Detail
+### **Node Information Detail**
 
-This panel offers a per-node breakdown of CPU, memory, disk, and pod utilization metrics across three nodes in the `sentinel` namespace and `pro-alien.dataos.app` environment. /
+This panel offers a per-node breakdown of CPU, memory, disk, and pod utilization metrics across three nodes in the `sentinel` namespace and `pro-alien.dataos.app` environment.
 
 ![image.png](K8%20Cluster%20Entities%20Dashboard/image%202.png)
 

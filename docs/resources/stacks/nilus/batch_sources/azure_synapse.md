@@ -102,6 +102,10 @@ mssql://user:password@workspace.sql.azuresynapse.net:1433/database
 
 ## Sample Workflow Config
 
+!!! warning "Mandatory Attribute"
+    To ensure successful connectivity with Azure Synapse, users must explicitly set the environment variable `MSSQL_IGNORE_NO_TRANSACTION_ON_ROLLBACK=true`(by Default it is `false`). This configuration is mandatory to handle specific transaction behaviors and prevent connection issues during rollback operations.
+
+
 ```yaml
 name: nb-synapse-test-01
 version: v1
@@ -117,6 +121,8 @@ workflow:
       spec:
         stack: nilus:1.0
         compute: runnable-default
+        envs:
+          MSSQL_IGNORE_NO_TRANSACTION_ON_ROLLBACK: true
         logLevel: INFO
         resources:
           requests:

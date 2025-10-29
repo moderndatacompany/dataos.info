@@ -69,6 +69,16 @@ To begin ingesting data using Nilus, refer to the appropriate quick-start guide 
 1. [Nilus CDC Workflow](/resources/stacks/nilus/quick_start/#change-data-capture-cdc)
 2. [Nilus Batch Workflow](/resources/stacks/nilus/quick_start/#batch-ingestion)
 
+
+### **Data Masking in Nilus**
+
+Data masking replaces or transforms sensitive values with non-sensitive equivalents. This technique enables Nilus users to safeguard sensitive information during data ingestion while maintaining its structural integrity and analytical utility.
+
+[**Get started with Data Masking in Nilus**](/resources/stacks/nilus/data_masking/)
+
+
+Data masking is required when handling production-grade data in non-production, shared, or compliance-sensitive environments.
+
 ## Source and Destination
 
 Nilus supports a variety of databases, warehouses, and lakehouses as both sources and destinations, which are as follows:
@@ -100,4 +110,4 @@ Nilus supports a variety of databases, warehouses, and lakehouses as both source
     * Flexible authentication support (API keys, OAuth, custom headers)
     * Deploy in minutes using Git repository integration
     
-    [**Get started with Custom Sources →**](/resources/stacks/nilus/batch_sources/custom_source/)
+    [**Get started with Custom Sources**](/resources/stacks/nilus/batch_sources/custom_source/)
