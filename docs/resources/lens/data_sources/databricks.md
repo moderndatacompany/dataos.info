@@ -1,58 +1,48 @@
 # Creating a semantic model on Databricks source
 
-!!! warning "Databricks source known limitations"
+!!! warning "Known limitations"
 
-    All core features of Lens are supported except SQL API, which means:
+    **The psql endpoint is not available for Databricks source, meaning:**
 
-    - Users cannot query semantic models via SQL API.
+      - Users cannot query semantic models via the SQL API.
 
-    - BI tools relying on psql-based connections cannot access semantic models.
+      - BI tools that rely on PSQL based connections will not be able to access semantic model.
 
-    - BI Sync is not supported.
+      - BI Sync is not supported 
 
-    - **Databricks Depot:** Databricks Depots can only be used as a source for Lens, not for other Stacks or Resources.
+    **Databricks depot is not supported to be used in other stacks or resources:**
 
-    - **Metadata Scanning:** Metadata scanning for Databricks tables is not yet supported.
+      - Databricks can only be referenced as a source for Lens, and cannot be used in other stacks or resources yet.
 
+      - Metadata scanning for Databricks tables is not supported.
+      
 ## Prerequisites
 
 Before setting up the connection, ensure all necessary prerequisites are in place:
 
-- Databricks workspace and active SQL Warehouse, required to connect and run queries.
+**Databricks Configuration Requirements**
 
-- **Personal Access Token (PAT):** Used as credentials and securely stored in an Instance Secret.
+- **Databricks Workspace and Active SQL Warehouse:** Required to establish a connection and execute SQL queries.
 
-- **Instance Secret:** Secures the source credentials (and repository credentials if the repo is private).
+- **JDBC Connection Details:** Includes the host, port, httpPath, and database parameters obtained from the Databricks SQL Warehouse connection URL.
 
-- **JDBC connection details:**Iincludes the `host`, `port`, `httpPath`, and `database` parameters from Databricks SQL Warehouse connection URL.
+- **Personal Access Token (PAT):** Used for authentication. This token must be securely stored within an Instance Secret.
 
-- **Depot:** references both the Instance Secret and the JDBC parameters to establish a secure connection between Lens and Databricks.
+**DataOS Requirements**
 
-- **Repository for version control:** The semantic model should be version-controlled within a dedicated Lens repository and `model/` folder before deployment.
+- **Instance Secret:** Stores and secures source credentials (and repository credentials if the repository is private).
+
+- **Depot Configuration:** References both the Instance Secret and the JDBC parameters to create a secure connection between Lens and Databricks.
+
+**Version Control and Model Management**
+
+- **Repository Setup:** The semantic model should be version-controlled within a dedicated Lens repository. Ensure the model is placed inside the `model/` directory before deployment.
 
 ## Step 1: Set up a connection with source
 
 To ensure a smooth setup, complete the following prerequisites:
 
-**1. Secure repository credentials by creating Instance Secret**
-
-Create Instance Secret for your preferred hosted repository (Bitbucket, AWS Code Commit, Github) if repository is public you can skip this step. Lens service requires the Personal Access Token (PAT) to access private Github repositories. After creating PAT, the user must store it in DataOS as a secret so the Lens service can authenticate the token during repository synchronization and read the model file from the repository. 
-
-```yaml title="bitbucket-r.yaml"
-name: bitbucket-r
-version: v1
-type: instance-secret
-description: bitbucket credentials
-layer: user
-instance-secret:
-  type: key-value
-  acl: r                                # read level access
-  data:
-    GITSYNC_USERNAME: ${{"iamgroot"}}   # replace the placeholder with the bitbucket (or preferred code repository) username
-    GITSYNC_PASSWORD: ${{"0123Abcedefghij="}}   #replace the placeholder with the personal access token
-```
-
-**2. Secure source credentials by creating Instance Secret**
+**1. Secure source credentials by creating Instance Secret**
 
 Before establishing a connection to the Databricks, an Instance Secret must be created. This secret securely stores the credentials(here, the Databricks Personal Access Token). Follow the official Databricks guide to generate a [Personal Access Token](https://docs.databricks.com/aws/en/dev-tools/auth/pat#create-personal-access-tokens-for-workspace-users).
 
@@ -68,7 +58,7 @@ instance-secret:
   data:
     token: "dapi0123"  # databricks's personal access token here
 ```
-**3. Connect to source by creating a Depot**
+**2. Connect to source by creating a Depot**
 
 To connect to Databricks through a Depot, you’ll need its JDBC connection details. Follow these steps to retrieve them:
 
@@ -127,6 +117,25 @@ depot:
 
 ## Step 2: Prepare the Lens model folder
 
+### **Step 2.1: Secure repository credentials by creating Instance Secret**
+
+Create an Instance Secret for your preferred hosted repository (Bitbucket, AWS CodeCommit, or GitHub). If the repository is public, this step can be skipped.Lens service requires the Personal Access Token (PAT) to access private Github repositories. After creating PAT, the user must store it in DataOS as a secret so the Lens service can authenticate the token during repository synchronization and read the model file from the repository. 
+
+```yaml title="bitbucket-r.yaml"
+name: bitbucket-r
+version: v1
+type: instance-secret
+description: bitbucket credentials
+layer: user
+instance-secret:
+  type: key-value
+  acl: r                                # read level access
+  data:
+    GITSYNC_USERNAME: ${{"iamgroot"}}   # replace the placeholder with the bitbucket (or preferred code repository) username
+    GITSYNC_PASSWORD: ${{"0123Abcedefghij="}}   #replace the placeholder with the personal access token
+```
+
+
 In the `model` folder, the semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each subfolder contains specific files related to the Lens model. 
 
 ```
@@ -143,7 +152,7 @@ model/
 └── user_groups.yaml             # Defines access control and user groups for the Lens model
 ```
 
-### **Step 2.1: Load data from the data source**
+### **Step 2.2: Load data from the data source**
 
 In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. 
 
@@ -183,7 +192,7 @@ FROM
   main.customer;
 ```
   
-### **Step 2.2: Define the table in the model**
+### **Step 2.3: Define the table in the model**
 
 Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For instance, to define a table for `customer `data:
 
@@ -194,7 +203,7 @@ table:
     description: Table containing information about sales transactions.
 ```
 
-### **Step 2.3: Add dimensions and measures**
+### **Step 2.4: Add dimensions and measures**
 
 After defining the base table, add the necessary dimensions and measures. For instance, to create a table for sales data with measures and dimensions, the YAML definition could look as follows:
 
@@ -219,7 +228,7 @@ tables:
         description: Total number of orders.
 ```
 
-### **Step 2.4: Add segments to filter**
+### **Step 2.5: Add segments to filter**
 
 Segments are filters that allow for the application of specific conditions to refine the data analysis. By defining segments, you can focus on particular subsets of data, ensuring that only the relevant records are included in analysis. For example, to filter for records where the state is either Illinois or Ohio, you can define a segment as follows:
 
@@ -232,7 +241,7 @@ segments:
 To know more about segments click [here](/resources/lens/segments/).
 
 
-### **Step 2.5: Create views**
+### **Step 2.6: Create views**
 
 Create a views folder to store all logical views, with each view defined in a separate YAML file (e.g., `sample_view.yml`). Each view references dimensions, measures, and segments from multiple logical tables. For instance, the following customer_churn view is created:
 
@@ -255,7 +264,7 @@ views:
 To know more about the views click [here](/resources/lens/views/).
 
 
-### **Step 2.6: Create User groups**
+### **Step 2.7: Create User groups**
 
 This YAML manifest file is used to manage access levels for the semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, there is a 'default' user group in the YAML file that includes all users.
 
