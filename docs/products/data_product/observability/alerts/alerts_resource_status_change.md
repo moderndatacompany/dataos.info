@@ -115,5 +115,5 @@ This section outlines how to configure a Monitor Resource that watches for a cha
 7. Get notified! When the Resource status changes from `active` to any other value, the Monitor triggers an incident, and the Pager sends a notification to the configured destination, as shown below.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/alerts/alerts_notified_posts_files_notes_reply.png" style="border:1px solid black; width: 70%; height: auto">
     </div>

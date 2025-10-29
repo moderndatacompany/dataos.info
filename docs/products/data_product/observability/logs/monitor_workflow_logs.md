@@ -3,9 +3,11 @@
 This section involves the steps to observe the logs of the Workflow on different endpoints such as DataOS CLI, Metis UI, and Operations App.
 
 <aside class="callout">
-🗣
-- <b>`init` Logs</b>: These are the logs from the init container, which runs before the main container starts. In workflows, it often handles preparation tasks, such as loading artifacts or mounting volumes. If something fails here, the main logic won’t even start.
-- <b>`main` Logs</b>: These are from the primary container, where the actual workload or execution logic runs. This is where the core of the workflow pipeline executes, and most application-level logs will appear.
+🗣 The logs of a Workflow consist of two types:
+<ul>
+  <li><b><code>init</code> Logs</b>: These are the logs from the init container, which runs before the main container starts. In workflows, it often handles preparation tasks, such as loading artifacts or mounting volumes. If something fails here, the main logic won’t even start.</li>
+  <li><b><code>main</code> Logs</b>: These are from the primary container, where the actual workload or execution logic runs. This is where the core of the workflow pipeline executes, and most application-level logs will appear.</li>
+</ul>
 </aside>
 
 ## Monitor the logs of a Workflow using DataOS CLI
@@ -42,10 +44,9 @@ Users will not see `init` container logs in the CLI output. If a workflow fails 
     ```
     
     <aside class="callout">
-    ⚠️
-    If the workflow is in a `running` state but no logs are visible, it may be due to insufficient Cluster resources (e.g., CPU, node availability) preventing the pod from starting. This scenario can be confirmed by checking the Runtime Node Details of the Workflow in the Operations App, where scheduling issues and event messages are displayed for further diagnosis.
+    ⚠️ If the workflow is in a `running` state but no logs are visible, it may be due to insufficient Cluster resources (e.g., CPU, node availability) preventing the pod from starting. This scenario can be confirmed by checking the Runtime Node Details of the Workflow in the Operations App, where scheduling issues and event messages are displayed for further diagnosis.
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/workflow/image%20(21).png" style="border:1px solid black; width: 80%; height: auto">
     </div>
     </aside>
     
@@ -57,37 +58,37 @@ To monitor the logs of a Workflow on the Metis Catalog UI, follow the steps belo
 1. Open the Metis Catalog.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/workflow/image%20(22).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 2. Search for the Workflow by name.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/workflow/image%20(23).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 3. Click on the Workflow that needs to be monitored and navigate to the ‘Run History’ section.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/workflow/image%20(24).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 4. Click on any run name for which you want to monitor the logs, and navigate to the ‘Physical Plan’ section.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/workflow/image%20(25).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 5. Under the ‘Physical Plan’ section, click on the pod name.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/workflow/image%20(26).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 6. Navigate to the pod logs section, where you can access the init and main logs.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/workflow/image%20(27).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 
@@ -102,23 +103,23 @@ To monitor the logs of a Workflow on the Operations App, follow the steps below:
 1. Open the Operations app.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/workflow/image%20(28).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 2. Navigate to User Space → Resources → Workflow and search for the Workflow by name.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/workflow/image%20(29).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 3. Click on the Workflow that needs to be monitored and navigate to the ‘Resource Runtime’ section.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/workflow/image%20(30).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 4. Click on any runtime node for which you want to monitor the logs, and navigate to the ‘Runtime Node Logs’ section. Here, users can monitor the init container and main container logs.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/workflow/image%20(31).png" style="border:1px solid black; width: 70%; height: auto">
     </div>

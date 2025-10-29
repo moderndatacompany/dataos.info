@@ -7,7 +7,7 @@ This document describes a real-world example of how users handle alerts in DataO
 An observability Monitor in DataOS detected that a Cluster’s CPU usage had surpassed a critical threshold, automatically triggering an Incident. The Cluster is the part of a Data Product powering a business use case. DataOS pairs the Monitors with a Pager Resource to route alerts to external channels. In this case, the Pager was configured with a Microsoft Teams webhook, causing an instant alert notification in the team’s channel. The MS Teams message contained key details (monitor name, severity “high”, timestamp, and description), informing the operators that the Cluster’s CPU limit was breached. This seamless integration of DataOS Monitor and Pager ensured the team received real-time notification of the issue via Microsoft Teams, enabling a quick response.
 
 <div style="text-align: center;">
-<img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+<img src="/products/data_product/observability/usecase/usecase_chat_testing_microsoft_teams_search.png" style="border:1px solid black; width: 70%; height: auto">
 </div>
 
 ## Monitor and Pager configuration for CPU usage alert
@@ -173,17 +173,16 @@ In practice, the `ql`, PromQL would be formulated to retrieve the CPU usage metr
 8. Get notified! When the CPU usage condition is met, the incident is triggered, and the Pager sends the notification to the configured destination.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/usecase/usecase_chat_testing_microsoft_teams_search.png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 
-## Investigating the CPU spike in Workbench
+## Investigating the CPU spike in Operations App
 
 Upon receiving the alert, the user turned to the Operations App to check on the CPU usage of the Cluster named ‘mycluster01’. They focused on CPU usage vs. CPU limit for the affected Cluster. Operations App displayed a table for the Cluster’s CPU consumption, confirming the alert’s details: the CPU usage was more the 80% of the configured limit. 
 
 <div style="text-align: center;">
-  <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
-  <figcaption><i>Observability in DataOS</i></figcaption>
+<img src="/products/data_product/observability/usecase/usecase_mycluster01ss0_runtime_node_details_runtime.png" style="border:1px solid black; width: 70%; height: auto">
 </div>
 
 This made it clear that the Cluster’s CPU was fully saturated, the usage metric would reach the value of the limit, and could not go any higher. This evidence pointed to the Cluster being CPU-starved. This aligned with the alert: the CPU usage remained above the 80% threshold consistently, triggering the incident.
@@ -191,8 +190,7 @@ This made it clear that the Cluster’s CPU was fully saturated, the usage metri
 <aside class="callout">
 🗣️ Exhausting 100% of the CPU limit of a Cluster can cause failed queries on Workbench with a ‘Bad Gateway’ error and stop the other Resources consuming that Cluster. For example, if a user creates a lens based on a Cluster and the Cluster reaches its CPU limit, that lens will stop functioning properly.
 <div style="text-align: center;">
-  <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
-  <figcaption><i>Observability in DataOS</i></figcaption>
+<img src="/products/data_product/observability/usecase/usecase_connection_cluster_minerva_mycluster_error.png" style="border:1px solid black; width: 50%; height: auto">
 </div>
 </aside>
 
@@ -257,8 +255,7 @@ INFO[0001] 🛠 apply...complete
 This command pushes the new configuration to DataOS, updating the Cluster resource with the higher CPU limit (in Kubernetes terms, this would update the pod’s resource limits). The platform then provisioned the additional CPU for the Cluster. Once this step is complete, the Cluster resource gets updated with the new CPU allocation as shown below.
 
 <div style="text-align: center;">
-  <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
-  <figcaption><i>Observability in DataOS</i></figcaption>
+<img src="/products/data_product/observability/usecase/usecase_yclu_runtime_lode_ails_serie.png" style="border:1px solid black; width: 70%; height: auto">
 </div>
 
 ## Conclusion

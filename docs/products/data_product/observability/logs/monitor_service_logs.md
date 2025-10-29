@@ -60,25 +60,25 @@ To monitor the logs of a Service on the Metis Catalog UI, follow the steps below
 1. Open the Metis Catalog.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/service/image%20(40).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 2. Search for the Service by name.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/service/image%20(41).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 3. Click on the Service that needs to be monitored and navigate to the ‘Runtime’ section.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/service/image%20(42).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 4. Click on any run name for which you want to monitor the logs, and navigate to the ‘Pod Logs’ section.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/service/image%20(43).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
     The logs in the above example show that:
@@ -98,25 +98,25 @@ To monitor the logs of a Service on the Operations App, follow the steps below:
 1. Open the Operations app.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/service/image%20(44).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 2. Navigate to User Space → Resources → Service and search for the Service by name.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/service/image%20(45).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 3. Click on the Service that needs to be monitored and navigate to the ‘Resource Runtime’ section.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/service/image%20(46).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 4. Click on any runtime node for which you want to monitor the logs, and navigate to the ‘Runtime Node Logs’ section.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/service/image%20(47).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
     The logs in the above example show that:

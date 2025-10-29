@@ -1,22 +1,19 @@
 # K8 Cluster Infrastructure Dashboard
 
-<aside>
+<aside class="callout">
 ℹ️
 
 This document provides insights for interpreting and responding to the metrics shown in the Kubernetes Cluster Infrastructure Dashboard, hosted via Grafana within DataOS. While the dashboard provides powerful visualization, this documentation adds value by translating visual data into operational understanding, diagnostic workflows, and strategic decisions.
 
-**Intended Audience:** Site Reliability Engineers (SREs), Kubernetes Administrators, Platform Engineers, and Data Product Developers responsible for sustaining infrastructure reliability, cluster efficiency, and service uptime.
+<br><b>Intended Audience:</b> Site Reliability Engineers (SREs), Kubernetes Administrators, Platform Engineers, and Data Product Developers responsible for sustaining infrastructure reliability, cluster efficiency, and service uptime.
 
 </aside>
 
-# Overview
+## Overview
 
 The Kubernetes Cluster Infrastructure Dashboard provides a unified observability layer for monitoring health, performance, capacity, and operational bottlenecks within a DataOS-managed Kubernetes cluster. The dashboard is organized into seven sections, which are described one by one in the sections below: 
 
-<div style="text-align: center;">
-  <img src="/products/data_product/observability/dashboards/infra/infra_home_dashboards_infrastructure_cluster_infrastructure_dup.png" style="width: 70%; height: auto;">
-  <figcaption><i>I~ Home > Dashboards > Infrastructure > Ks Cluster Infrastructure Q Search ctisk| +» | @ w Edit | | Export » ENV | ht...</i></figcaption>
-</div>
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/b7258376-0626-418f-b9f6-f92c1568c5f0.png)
 
 - Kubernetes Cluster Overview
 - API Server
@@ -26,38 +23,32 @@ The Kubernetes Cluster Infrastructure Dashboard provides a unified observability
 - Workloads
 - Secrets
 
-# Exploring the Metrics
+## Exploring the Metrics
 
 Users can explore the Prometheus query used to power the metrics visualized in the dashboard. To do so, follow the steps below.
 
 1. Hover over any graph that you want to explore.
     
-    ![image.png](attachment:4ce44cde-6af1-4f27-8e6d-9104e364ac85:image.png)
+    ![image.png](K8%20Cluster%20Infrastructure%20Dashboard/image.png)
     
 2. Click on the three-dot menu, then click on the ‘Explore’ option.
     
-    <div style="text-align: center;">
-      <img src="/products/data_product/observability/cpu/depot/depot_search_jump_ctrlk_home_explore_dup.png" style="width: 70%; height: auto;">
-      <figcaption><i>Q Search or jump to... @ ctrl+k +e ®@ rv Home » Explore > thanos « v a v (D Split §8 Addtodashboard © Lastihour vy Q ...</i></figcaption>
-    </div>
+    ![image.png](K8%20Cluster%20Infrastructure%20Dashboard/image%201.png)
     
 3. On clicking the ‘Explore’ option, an explore interface will open, where you can see the query used to derive those metrics, as shown below.
     
-    ![image.png](attachment:4ba97e5e-8914-476b-b527-509eb8952284:image.png)
+    ![image.png](K8%20Cluster%20Infrastructure%20Dashboard/image%202.png)
     
 
-# Kubernetes Cluster Overview
+## Kubernetes Cluster Overview
 
 This section provides an overview of the Kubernetes cluster's topology and health at a high level. Understanding the cluster’s composition and its readiness is essential for validating environment setup, onboarding applications, and pre-scaling planning.
 
-<div style="text-align: center;">
-  <img src="/products/data_product/observability/dashboards/entities/entities_check_overall_cluster_count_1210.png" style="width: 70%; height: auto;">
-  <figcaption><i>Check Overall Cluster Pod Count © 3at 340 338 338 337 au —— \ I \ 12:10 1215 12:20 12:25 12:30 12:35 = count(kube_pod...</i></figcaption>
-</div>
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/image%203.png)
 
-## Key Metrics
+### **Key Metrics**
 
-### **Total Nodes**
+#### Total Nodes
 
 Indicates the number of worker nodes that are part of the Cluster in which the DataOS environment is running. Useful for capacity estimation and node-level troubleshooting. This metric is derived from the following query:
 
@@ -67,7 +58,7 @@ count by(origin_prometheus)(kube_node_info{origin_prometheus=~".*"})
 
 It counts the number of unique nodes that are part of the Kubernetes cluster. `kube_node_info` contains metadata about each node. The count by(...) function groups data by the `origin_prometheus` label and counts the number of nodes found. 
 
-### **Namespaces**
+#### Namespaces
 
 Logical boundaries for organizing workloads. A high number may indicate strong tenant isolation or over-segmentation. This metric is derived from the following query:
 
@@ -77,14 +68,14 @@ count(kube_namespace_created)
 
 This query uses the `kube_namespace_created` metric, which captures the creation timestamp of each namespace. The `count()` function calculates how many distinct namespace records exist, thus reflecting the total number of namespaces in the cluster. 
 
-<aside>
+<aside class="callout">
 ℹ️
 
 In Kubernetes, namespaces provide a mechanism for isolating groups of resources within a single cluster. Names of resources need to be unique within a namespace, but not across namespaces. Namespace-based scoping is applicable only for namespaced objects (e.g., Deployments, Services, etc.) and not for cluster-wide objects (e.g., StorageClass, Nodes, PersistentVolumes, etc.).
 
 </aside>
 
-### **No Taint Nodes**
+#### No Taint Nodes
 
 This metric determines how many nodes in the cluster are not tainted and are therefore generally available for scheduling all kinds of workloads. Untainted nodes are considered open and schedulable unless constrained by other affinity rules
 
@@ -96,7 +87,7 @@ count by(origin_prometheus)(kube_node_spec_taint{origin_prometheus=~".*", key=~"
 
 This subtracts the number of tainted nodes from the total number of nodes. The first part counts all nodes using `kube_node_info`. The second part counts nodes that have taints applied using the `kube_node_spec_taint` metric. The difference gives the number of nodes without taints, i.e., available for general-purpose workloads.
 
-### **Taint: Dedicated Nodes**
+#### Taint: Dedicated Nodes
 
 This metric counts nodes that have specific taints applied using the key prefix `node.kubernetes.io/`, which is often used to isolate workloads on dedicated infrastructure.
 
@@ -106,7 +97,7 @@ count by(key, origin_prometheus)(kube_node_spec_taint{origin_prometheus=~".*", k
 
 Here, `kube_node_spec_taint` lists taints applied to nodes. The query filters taints whose `key` matches the common Kubernetes taint pattern and groups them by `key` and `origin_prometheus`. This count reflects how many taint groups are applied, which helps identify nodes reserved for specialized use cases like GPU jobs or system-critical workloads.
 
-### **Total Pods**
+#### Total Pods
 
 This metric shows the number of pods currently present in the cluster. It helps assess workload density and identify trends such as pod churn or autoscaling activity.
 
@@ -116,7 +107,7 @@ count(kube_pod_info{origin_prometheus=~".*"})
 
 The `kube_pod_info` metric provides metadata about each pod, such as name, namespace, and node association. The `count()` function simply returns how many pod entries exist. This includes all phases pending, running, failed, etc.
 
-### **PVCs (Persistent Volume Claims)**
+#### PVCs (Persistent Volume Claims)
 
 This metric provides the total number of Persistent Volume Claims, which represent requests for storage resources by workloads. PVCs are essential for Resources such as Lakesearch Stack, Flash Stack, etc.
 
@@ -126,7 +117,7 @@ count(kube_persistentvolumeclaim_info)
 
 The metric `kube_persistentvolumeclaim_info` lists PVCs across namespaces. By applying `count()`, this query tallies the number of storage volumes requested. This number is useful for tracking the footprint of storage-backed Resources.
 
-### **Total Workloads**
+#### Total Workloads
 
 This metric aggregates all types of workload controllers such as Deployments, DaemonSets, StatefulSets, and ReplicaSets. It reflects the scale and design of the cluster's workload topology.
 
@@ -136,14 +127,11 @@ count({__name__=~"kube_deployment_metadata_generation|kube_daemonset_metadata_ge
 
 Each of these `*_metadata_generation` metrics reports the current generation of a workload controller, meaning how many times the configuration has been updated. Counting these across all types gives a combined view of all workload definitions present in the cluster.
 
-## Cluster Health
+### **Cluster Health**
 
-<div style="text-align: center;">
-  <img src="/products/data_product/observability/dashboards/entities/entities_check_overall_cluster_count_1210.png" style="width: 70%; height: auto;">
-  <figcaption><i>Check Overall Cluster Pod Count © 3at 340 338 338 337 au —— \ I \ 12:10 1215 12:20 12:25 12:30 12:35 = count(kube_pod...</i></figcaption>
-</div>
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/image%203.png)
 
-### **ENV Status**
+#### ENV Status
 
 “UP” implies the cluster is responding to health checks. Indicates whether the API Server, Scheduler, or Controller manager is down. 
 
@@ -153,7 +141,7 @@ min(up{job=~"apiserver"})
 
 The `up` metric returns `1` for a reachable target and `0` otherwise. Using the `min()` function ensures that if any API server instance is down, the entire metric reflects it. This is vital for monitoring the health of the Kubernetes API layer.
 
-### **Kubernetes Versions**
+#### Kubernetes Versions
 
 This panel shows the current Kubernetes version of the selected cluster.
 
@@ -163,7 +151,7 @@ count by(kubelet_version)(kube_node_info)
 
 The `kube_node_info` metric provides metadata about each node, including its Kubelet version. Grouping by `kubelet_version` and counting allows the user to see how many nodes are running each version. It's useful for managing upgrade rollouts and ensuring compatibility across the cluster.
 
-### **Node Health**
+#### Node Health
 
 **Healthy Nodes**
 
@@ -205,21 +193,18 @@ sum(kube_node_status_condition{condition="Ready", status!="true"})
 
 The `kube_node_status_condition` metric reflects the health status of each node. Filtering for the `Ready` condition and excluding `true` status captures nodes in `False` or `Unknown` state. Summing across all such conditions gives a clear count of problematic nodes.
 
-<aside>
+<aside class="callout">
 💡
 
-**Best Practice:** Set up alerts for node status changes and use `kubectl describe node <node-name>` for root cause analysis.
+<b>Best Practice:</b> Set up alerts for node status changes and use `kubectl describe node <node-name>` for root cause analysis.
 
 </aside>
 
-## CPU Metrics
+### **CPU Metrics**
 
-<div style="text-align: center;">
-  <img src="/products/data_product/observability/dashboards/infra/infra_kubernetes_cluster_overview_taint_nodes.png" style="width: 70%; height: auto;">
-  <figcaption><i>v Kubernetes Cluster Overview Bee eg 9 No Taint Nodes S Scary relohe) NES oe fs BEC i Cy 6 Total PVCs oy, ENV Status ...</i></figcaption>
-</div>
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/image%203.png)
 
-### **Global CPU Usage**
+#### Global CPU Usage
 
 This metric shows the percentage of total CPU being used across all running containers in the cluster.
 
@@ -229,7 +214,7 @@ sum(rate(container_cpu_usage_seconds_total{container_name!="POD", image!=""}[5m]
 
 The numerator sums the rate of CPU usage (per second) over the past 5 minutes for all non-pause containers. The denominator sums the total CPU cores available in the cluster. This gives a normalized CPU utilization percentage at the cluster level.
 
-### **Node CPU Pressure**
+#### Node CPU Pressure
 
 In Kubernetes, Node CPU Pressure is a condition that indicates the node is under significant CPU stress. It means the node does not have enough available CPU cycles to keep up with all the running workloads. 
 
@@ -239,14 +224,14 @@ sum(kube_node_status_condition{condition="PIDPressure", status!="false"})
 
 The `PIDPressure` condition reflects whether the node is constrained on PID allocations (indirectly indicating CPU and process stress). A non-zero value here implies that nodes may throttle or reject pods due to resource exhaustion.
 
-<aside>
+<aside class="callout">
 ⚠️
 
-**Typical Pitfall:** Forgetting to set limits can allow runaway CPU usage.
+<b>Typical Pitfall:</b> Forgetting to set limits can allow runaway CPU usage.
 
 </aside>
 
-### **Global CPU Requests and Limits**
+#### Global CPU Requests and Limits
 
 This metric visualizes CPU resource guarantees and constraints in percentage terms across the cluster. It consists of three parts:
 
@@ -264,7 +249,7 @@ Limits: sum(kube_pod_container_resource_limits{unit="core"}) / sum(machine_cpu_c
 
 This helps evaluate overcommitment or underutilization across workloads.
 
-### Global CPU Core Requests and Limits
+#### Global CPU Core Requests and Limits
 
 This panel displays the absolute values (in CPU cores) associated with workload scheduling and enforcement:
 
@@ -280,14 +265,11 @@ Limits: sum(kube_pod_container_resource_limits{unit="core"})
 Total: sum(machine_cpu_cores)
 ```
 
-## Memory Metrics
+### **Memory Metrics**
 
-<div style="text-align: center;">
-  <img src="/products/data_product/observability/cpu/workflow/workflow_aggregates_states_time_slices_type.png" style="width: 70%; height: auto;">
-  <figcaption><i>Aggregates (pod states: 20 time slices: 2) Type cpu memory memory memory Name usage request limit usage request limit...</i></figcaption>
-</div>
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/image%203.png)
 
-### **Global Memory Requests and Limits**
+#### Global Memory Requests and Limits
 
 This metric compares total memory requests and limits to cluster allocatable memory:
 
@@ -300,14 +282,11 @@ Limits: sum(kube_pod_container_resource_limits{unit="byte"}) / sum(machine_memor
 
 This view provides clarity on how much of the cluster memory is committed versus constrained.
 
-### Global Memory Usage
+#### obal Memory Usa
 
 This metric displays the percentage of physical memory consumed across the cluster.
 
-<div style="text-align: center;">
-  <img src="/products/data_product/observability/cpu/workflow/workflow_aggregates_states_time_slices_type.png" style="width: 70%; height: auto;">
-  <figcaption><i>Aggregates (pod states: 20 time slices: 2) Type cpu memory memory memory Name usage request limit usage request limit...</i></figcaption>
-</div>
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/image%204.png)
 
 ```bash
 sum(container_memory_working_set_bytes{container_name!="POD", image!=""}) / sum(machine_memory_bytes) * 100
@@ -315,7 +294,7 @@ sum(container_memory_working_set_bytes{container_name!="POD", image!=""}) / sum(
 
 The `working_set_bytes` includes resident memory used by containers, excluding cache. Dividing by the total allocatable memory across nodes gives the memory usage percentage cluster-wide.
 
-### **Node Memory Pressure**
+#### Node Memory Pressure
 
 This metric identifies whether any node is experiencing memory pressure, which could result in pods being evicted. A value of `1` indicates that at least one node is under memory stress. The Prometheus query for this metric is:
 
@@ -325,14 +304,11 @@ sum(kube_node_status_condition{condition="MemoryPressure", status!="false"})
 
 It sums all nodes where the condition `MemoryPressure` is active (not `false`). This is critical for the early detection of memory saturation issues that could impact workload stability.
 
-## Disk Metrics
+### **Disk Metrics**
 
-<div style="text-align: center;">
-  <img src="/products/data_product/observability/dashboards/entities/entities_home_dashboards_infrastructure_cluster_entities_dup.png" style="width: 70%; height: auto;">
-  <figcaption><i>I~ Home » Dashboards > Infrastructure > K8s Cluster Entities | ENV | https://pro- n.dataos.app » | nodes Ally | Names...</i></figcaption>
-</div>
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/image%203.png)
 
-### **Global Disk Usage (%)**
+#### Global Disk Usage (%)
 
 This metric shows the percentage of total disk space used across the cluster:
 
@@ -342,21 +318,18 @@ sum(container_fs_usage_bytes{device=~"^/dev/.*$",id="/"}) / sum(container_fs_lim
 
 It helps detect storage saturation, which can lead to failed writes or node instability.
 
-### **Global Disk Usage**
+#### Global Disk Usage
 
 This panel displays the absolute values for disk space usage and capacity in the cluster.
 
 - **Used:** This is the actual amount of disk space consumed across all nodes.
 - **Total:** This is the total allocatable or mounted disk space available for workloads and system components across all nodes.
 
-## Pod Status Summary
+### **Pod Status Summary**
 
 This section helps operationalize workload readiness, triage failures, and manage application health.
 
-<div style="text-align: center;">
-  <img src="/products/data_product/observability/cpu/depot/depot_thirdpartyss0_details_usage_logs_manifest.png" style="width: 70%; height: auto;">
-  <figcaption><i>%, thirdparty-ss-0 x Pod Details Pod Usage Pod Logs Pod Manifest Info Pod Name WorkSpace thirdparty-ss-O user-system ...</i></figcaption>
-</div>
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/image%205.png)
 
 - **Pods Running**: Pods in `Running` phase
     
@@ -431,14 +404,11 @@ This section helps operationalize workload readiness, triage failures, and manag
     This Prometheus query counts the total number of pods that are in a waiting state due to either `ImagePullBackOff` or `ErrImagePull` errors. It uses the metric `kube_pod_container_status_waiting_reason` and filters for both error types using a regular expression pattern match (=~). This helps identify pods that are failing to start because of container image download issues, which could be due to invalid image references, registry authentication problems, or network connectivity issues.
     
 
-## Namespace Distribution
+### **Namespace Distribution**
 
 The ‘Running Pods by Namespace’ metric presents a breakdown of all active pods currently in the `Running` phase, grouped by Kubernetes namespace. Each segment of the chart represents the number of running pods within a specific namespace, reflecting how compute workloads are distributed.
 
-<div style="text-align: center;">
-  <img src="/products/data_product/observability/dashboards/entities/entities_check_overall_cluster_count_1210.png" style="width: 70%; height: auto;">
-  <figcaption><i>Check Overall Cluster Pod Count © 3at 340 338 338 337 au —— \ I \ 12:10 1215 12:20 12:25 12:30 12:35 = count(kube_pod...</i></figcaption>
-</div>
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/image%206.png)
 
 ```bash
 count by(namespace) (
@@ -448,25 +418,19 @@ rate(kube_pod_container_status_running{namespace=~".*"}[$__rate_interval])
 
 This query calculates the rate of running containers per namespace in Kubernetes. It uses the `'rate'` function to measure the change in running container status over a time interval (defined by `$__rate_interval`), then groups these rates by namespace using `'count by(namespace)'`. The regex pattern `'.*'` matches all namespaces, providing a comprehensive view of pod distribution across the cluster.
 
-# API Server Insights
+## API Server Insights
 
 This component ensures that the API server, the control plane’s central hub, is responsive, performant, and error-free.
 
-<div style="text-align: center;">
-  <img src="/products/data_product/observability/dashboards/entities/entities_check_overall_cluster_count_1210.png" style="width: 70%; height: auto;">
-  <figcaption><i>Check Overall Cluster Pod Count © 3at 340 338 338 337 au —— \ I \ 12:10 1215 12:20 12:25 12:30 12:35 = count(kube_pod...</i></figcaption>
-</div>
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/image%207.png)
 
-<div style="text-align: center;">
-  <img src="/products/data_product/observability/dashboards/entities/entities_check_overall_cluster_count_1210.png" style="width: 70%; height: auto;">
-  <figcaption><i>Check Overall Cluster Pod Count © 3at 340 338 338 337 au —— \ I \ 12:10 1215 12:20 12:25 12:30 12:35 = count(kube_pod...</i></figcaption>
-</div>
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/image%208.png)
 
-## Health Status
+### **Health Status**
 
 Health Status indicates whether the Kubernetes API server is currently operational and reachable. A status of UP confirms that the API server's health endpoints are responding successfully, meaning the control plane is live and functional.
 
-## API Server – Read Success Rate
+### **API Server – Read Success Rate**
 
 Read Success Rate shows the percentage of successful read-only API operations (e.g., `GET`, `LIST`, `WATCH`) processed by the API server within the observed interval. A high value (e.g., 99.6%) suggests consistent, reliable reads from the cluster's data store and control plane.
 
@@ -474,7 +438,7 @@ Read Success Rate shows the percentage of successful read-only API operations (e
 sum(irate(apiserver_request_total{code=~"20.*",verb=~"GET|LIST"}[5m]))/sum(irate(apiserver_request_total{verb=~"GET|LIST"}[5m]))
 ```
 
-## API Server – Write Success Rate
+### **API Server – Write Success Rate**
 
 Write Success Rate represents the percentage of successful write operations (e.g., `POST`, `PUT`, `PATCH`, `DELETE`) processed by the API server. A lower value (e.g., 95.8%) compared to read success may indicate failed mutation requests, often due to validation errors, authorization issues, or webhook rejections.
 
@@ -484,7 +448,7 @@ sum(irate(apiserver_request_total{code=~"20.*",verb!~"GET|LIST|WATCH|CONNECT"}[5
 
 This Prometheus query calculates the API server's write success rate by dividing successful write operations (those with HTTP 200-series response codes) by the total number of write operations. It identifies write operations by excluding read verbs (GET, LIST, WATCH, CONNECT) and uses the irate() function to measure the per-second instantaneous rate over the last 5 minutes. A lower success rate (compared to read operations) may indicate validation errors, authorization issues, or webhook rejections that are preventing successful resource mutations in the Kubernetes cluster.
 
-## API Server – CPU Usage in CPU Seconds
+### **API Server – CPU Usage in CPU Seconds**
 
 CPU Usage in CPU Seconds displays the total CPU time consumed by the API server, sampled over time. This is a measure of the compute load on the API server pods, influenced by control plane activity such as high pod churn, watch requests, or configuration reloads.
 
@@ -494,7 +458,7 @@ rate(process_cpu_seconds_total{job=~"kubernetes-apiservers|apiserver"}[1m])
 
 This Prometheus query calculates the per-second CPU usage rate of the Kubernetes API server over a 1-minute window. It uses the `rate()` function on the `process_cpu_seconds_total` metric, filtering for jobs matching either the "kubernetes-apiservers" or "apiserver" pattern. The result shows how many CPU seconds are being consumed by the API server processes, which helps monitor control plane resource utilization and identify performance bottlenecks or scaling needs.
 
-## API Server – HTTP Request Latency by Instance
+### **API Server – HTTP Request Latency by Instance**
 
 HTTP Request Latency by Instance shows the response time of API server requests, broken down by individual API server pods or nodes. This metric helps isolate performance degradation at the replica level, useful in multi-master clusters.
 
@@ -506,7 +470,7 @@ sum(rate(apiserver_request_duration_seconds_count{job=~"kubernetes-apiservers|ap
 
 This Prometheus query calculates the average request latency for the Kubernetes API server by instance. It divides the sum of request duration in seconds by the count of requests, grouped by instance. The query uses the rate function over a 1-minute window to measure the per-second rate of change for both duration sum and request count metrics, filtering for jobs matching either "kubernetes-apiservers" or "apiserver". This provides visibility into how each API server instance is performing, helping to identify specific instances that might be experiencing latency issues or performance degradation.
 
-## API Server – Errors by Instance
+### **API Server – Errors by Instance**
 
 Errors by Instance counts the number of failed HTTP API requests handled by each API server instance. Failures include client-side issues (`4xx`) and server-side errors (`5xx`). A spike here indicates misconfigured clients, webhook issues, or degraded API responsiveness.
 
@@ -516,7 +480,7 @@ sum by(instance) (rate(apiserver_request_total{code=~"5..", job=~"kubernetes-api
 
 This Prometheus query calculates the rate of HTTP 5xx server errors per second from the Kubernetes API server, grouped by instance. It uses the rate() function to measure the change over a 1-minute interval, filters for error codes starting with "5" (server-side errors), and includes jobs matching either "kubernetes-apiservers" or "apiserver" patterns. The query helps identify which specific API server instances are experiencing internal failures, making it easier to troubleshoot stability issues in the control plane.
 
-## API Server – HTTP Request Latency by Verb
+### **API Server – HTTP Request Latency by Verb**
 
 HTTP Request Latency by Verb measures average API latency, categorized by HTTP verb (e.g., `GET`, `LIST`, `POST`, `WATCH`). It helps identify specific types of requests (e.g., `WATCH`) that are taking longer to process, often due to resource size, controller pressure, or API complexity.
 
@@ -528,7 +492,7 @@ sum(rate(apiserver_request_duration_seconds_count{job=~"kubernetes-apiservers|ap
 
 This Prometheus query calculates the average HTTP request latency for the Kubernetes API server, broken down by HTTP verb (GET, LIST, POST, etc.). It divides the sum of request duration seconds by the count of requests, grouped by verb, using the rate function over a 1-minute window to measure the per-second change. The query filters for jobs matching either "kubernetes-apiservers" or "apiserver" patterns. This provides visibility into which types of API operations are experiencing latency issues, helping to identify performance bottlenecks in specific request categories.
 
-## API Server – CONNECT Error Count by HTTP Code (Non-2xx)
+### **API Server – CONNECT Error Count by HTTP Code (Non-2xx)**
 
 CONNECT Error Count by HTTP Code shows the volume of failed API requests returning non-2xx status codes, such as:
 
@@ -543,9 +507,9 @@ This Prometheus query calculates the number of failed CONNECT requests to the Ku
 
 This metric highlights API access or availability issues and helps detect infrastructure or permission-related disruptions.
 
-## Slowest Requests (Top 10)
+### **Slowest Requests (Top 10)**
 
-![image.png](attachment:b3c2ce13-b441-4716-9d0f-c998e4e49571:image.png)
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/image%209.png)
 
 Slowest Requests (Top 10) lists the API operations with the highest observed latency, ranked by response time.
 
@@ -555,21 +519,15 @@ topk(10, cluster_quantile:apiserver_request_duration_seconds:histogram_quantile{
 
 This Prometheus query uses the `topk(10)` function to identify and display the 10 API requests with the highest latency in the Kubernetes cluster. It specifically examines the 90th percentile (`quantile="0.9"`) of request duration times, meaning these are requests that are consistently slow for most users. The query filters for API requests that don't target specific subresources (`subresource=""`) and includes all jobs (using the regex pattern `job=~".+"`) in the cluster. This metric is particularly useful for identifying performance bottlenecks in the Kubernetes API server and prioritizing optimization efforts for the slowest API operations.
 
-# Networking Metrics
+## Networking Metrics
 
 Evaluate network health from pod ingress/egress, DNS resolution, and service routing.
 
-<div style="text-align: center;">
-  <img src="/products/data_product/observability/dashboards/entities/entities_home_dashboards_infrastructure_cluster_entities_dup.png" style="width: 70%; height: auto;">
-  <figcaption><i>I~ Home » Dashboards > Infrastructure > K8s Cluster Entities | ENV | https://pro- n.dataos.app » | nodes Ally | Names...</i></figcaption>
-</div>
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/image%2010.png)
 
-## Check Average Image Pull Duration
+### **Check Average Image Pull Duration**
 
-<div style="text-align: center;">
-  <img src="/products/data_product/observability/dashboards/entities/entities_home_dashboards_infrastructure_cluster_entities_dup.png" style="width: 70%; height: auto;">
-  <figcaption><i>I~ Home » Dashboards > Infrastructure > K8s Cluster Entities | ENV | https://pro- n.dataos.app » | nodes Ally | Names...</i></figcaption>
-</div>
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/image%2011.png)
 
 This panel presents the average time taken to pull container images across the cluster, segmented by image size buckets:
 
@@ -588,12 +546,9 @@ avg(kubelet_image_pull_duration_seconds_sum) by (image_size_in_bytes)
 
 This Prometheus query calculates the average duration it takes to pull container images in a Kubernetes cluster, categorized by image size. The query uses `avg()` to compute the mean pull time across all nodes and containers, while `by (image_size_in_bytes)` groups these averages according to predefined image size buckets. This metric helps identify whether larger images are causing noticeable delays during pod initialization, which can impact deployment speed and scaling responsiveness in the cluster.
 
-## Container Network Errors
+### **Container Network Errors**
 
-<div style="text-align: center;">
-  <img src="/products/data_product/observability/dashboards/entities/entities_check_overall_cluster_count_1210.png" style="width: 70%; height: auto;">
-  <figcaption><i>Check Overall Cluster Pod Count © 3at 340 338 338 337 au —— \ I \ 12:10 1215 12:20 12:25 12:30 12:35 = count(kube_pod...</i></figcaption>
-</div>
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/image%2012.png)
 
 This panel tracks network-related failures for each node in the cluster, specifically those reported at the container level under "Receive" operations.
 
@@ -612,9 +567,9 @@ sum by (env, node) (increase(container_network_receive_errors_total[1m0s]))
 
 This Prometheus query calculates the total number of network receive errors on container interfaces across a Kubernetes cluster over a 1-minute interval, grouped by environment and node. It uses the `increase()` function to measure the absolute change in the `container_network_receive_errors_total` counter metric during this timeframe, then aggregates results with `sum by (env, node)` to organize errors by their source location. This metric helps identify nodes experiencing network communication issues like packet drops, MTU mismatches, or CNI plugin misconfiguration.
 
-## Count of HTTP Fallback Usage (Env - Node)
+### **Count of HTTP Fallback Usage (Env - Node)**
 
-![image.png](attachment:d62174ec-ca62-498f-a522-1a7d552787e8:image.png)
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/image%2013.png)
 
 This graph tracks the number of HTTP fallback requests issued per environment-node pair when a primary endpoint failed to respond or deliver the expected result. 
 
@@ -628,12 +583,9 @@ sum by (env, node) (increase(kubelet_lifecycle_handler_http_fallbacks_total[1m0s
 
 This Prometheus query calculates the total number of HTTP fallback requests that occurred across a Kubernetes cluster over a 1-minute interval, grouped by environment and node. It uses the `increase()` function to measure the absolute change in the `kubelet_lifecycle_handler_http_fallbacks_total` counter during this timeframe, then aggregates these counts with `sum by (env, node)` to organize them by their source location. This metric helps identify nodes experiencing connectivity issues where primary HTTP endpoints failed, requiring fallback mechanisms to maintain operations.
 
-## Ephemeral Containers Usage (Debug Containers)
+### **Ephemeral Containers Usage (Debug Containers)**
 
-<div style="text-align: center;">
-  <img src="/products/data_product/observability/dashboards/entities/entities_home_dashboards_infrastructure_cluster_entities_dup.png" style="width: 70%; height: auto;">
-  <figcaption><i>I~ Home » Dashboards > Infrastructure > K8s Cluster Entities | ENV | https://pro- n.dataos.app » | nodes Ally | Names...</i></figcaption>
-</div>
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/image%2014.png)
 
 This metric reflects the count of ephemeral containers, also referred to as debug containers, in use at any given time across the cluster. Ephemeral containers are introduced to live pods to troubleshoot issues without restarting them. While extremely useful for diagnostics, their usage should be controlled due to:
 
@@ -657,12 +609,9 @@ sum(kubelet_managed_ephemeral_containers)
 
 This Prometheus query uses the `sum()` function to calculate the total number of ephemeral debugging containers currently being managed across the entire Kubernetes cluster. Ephemeral containers are temporary containers that can be added to running pods for troubleshooting purposes without restarting the pod. The metric `kubelet_managed_ephemeral_containers` tracks these special-purpose debug containers, and summing them provides visibility into how frequently administrators are performing live debugging in the production environment.
 
-## Kubernetes Scheduler Latency by Job
+### **Kubernetes Scheduler Latency by Job**
 
-<div style="text-align: center;">
-  <img src="/products/data_product/observability/dashboards/entities/entities_home_dashboards_infrastructure_cluster_entities_dup.png" style="width: 70%; height: auto;">
-  <figcaption><i>I~ Home » Dashboards > Infrastructure > K8s Cluster Entities | ENV | https://pro- n.dataos.app » | nodes Ally | Names...</i></figcaption>
-</div>
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/image%2015.png)
 
 This panel reports the latency experienced by the Kubernetes scheduler when binding pods to nodes, segmented by job or workload identity. Latency here represents the time between when a pod is ready for scheduling and when it is successfully assigned to a node. This metric is critical for assessing scheduling efficiency and cluster responsiveness.
 
@@ -682,22 +631,19 @@ This Prometheus query uses the histogram_quantile function to calculate the 99th
 
 ---
 
-# Storage  Monitoring
+## Storage  Monitoring
 
 Used to track the capacity, performance, and cleanup behavior of persistent storage.
 
-## PVC Storage Usage (Tabular Breakdown)
+### **PVC Storage Usage (Tabular Breakdown)**
 
-<div style="text-align: center;">
-  <img src="/products/data_product/observability/dashboards/infra/infra_kubernetes_scheduler_latency_1sms_sses.png" style="width: 70%; height: auto;">
-  <figcaption><i>Kubernetes Scheduler Latency By Job © 8 ° 2ms S 1sms 2 ims 2 SSS SSeS —— ISS 2S SSS Eee 2 500 ys [KZ —YVJft eer NL x ...</i></figcaption>
-</div>
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/image%2016.png)
 
 This panel provides a granular view of individual PVCs across the environment, showing their associated namespace, allocated capacity, current usage, percentage used, and projected time until full.
 
 Each row includes the following fields:
 
-### **PVC (Name)**
+#### PVC (Name)
 
 This column shows the name of the PersistentVolumeClaim. It is derived from the label `persistentvolumeclaim` in the metrics.
 
@@ -709,7 +655,7 @@ This query extracts all unique values from the 'persistentvolumeclaim' label in 
 
 ---
 
-### **Env (Environment URL)**
+#### Env (Environment URL)
 
 This is the cluster or environment where the PVC resides, inferred from the `env` or `origin_prometheus` label.
 
@@ -721,7 +667,7 @@ This query is used to extract all unique values from the 'origin_prometheus' lab
 
 ---
 
-### **Namespaces**
+#### Namespaces
 
 The namespace of the PVC, taken from the `namespace` label.
 
@@ -733,7 +679,7 @@ This PromQL query uses the `label_values()` function to extract all unique value
 
 ---
 
-### **Usage (Bytes used)**
+#### Usage (Bytes used)
 
 The current space is used by the PVC.
 
@@ -747,7 +693,7 @@ This query finds the maximum number of bytes used by each PersistentVolumeClaim 
 
 ---
 
-### **Total (Bytes capacity)**
+#### Total (Bytes capacity)
 
 The total capacity = used + available.
 
@@ -767,7 +713,7 @@ This query calculates the total storage capacity of each PersistentVolumeClaim (
 
 ---
 
-### **Used (%)**
+#### Used (%)
 
 Percentage of total capacity consumed.
 
@@ -792,7 +738,7 @@ This PromQL query calculates the percentage of storage space used for each Persi
 
 ---
 
-### **Days to Full**
+#### Days to Full
 
 This is a projected estimate based on the current usage growth rate. It is often derived externally via Grafana transformations or recording rules using `predict_linear`:
 
@@ -812,9 +758,9 @@ In the current state, no PVCs are close to full, and all are well under critical
 
 ---
 
-## PVCs Full in 7 Days – Based on Daily Usage
+### **PVCs Full in 7 Days – Based on Daily Usage**
 
-![image.png](attachment:07ab2782-614f-4a6f-992f-3a5b3da675b8:a05673af-b5a6-4d34-ada1-7a9234b7ccc5.png)
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/a05673af-b5a6-4d34-ada1-7a9234b7ccc5.png)
 
 This panel forecasts the number of PVCs that are expected to reach full capacity within the next 7 days, based on recent average daily usage.
 
@@ -841,9 +787,9 @@ If this metric rises, it may require action such as resizing volumes, offloading
 
 ---
 
-## PVCs Above 80%
+### **PVCs Above 80%**
 
-![image.png](attachment:1d68e65c-1109-4705-8421-f5ec0926ed57:05345fde-3be5-4f29-94cc-2aebf1e358d2.png)
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/05345fde-3be5-4f29-94cc-2aebf1e358d2.png)
 
 This metric counts the number of PVCs that have crossed 80% of their provisioned capacity, a critical threshold for preemptive alerting.
 
@@ -870,9 +816,9 @@ The dashboard reports `0`, which is ideal and suggests that volume usage is well
 
 ---
 
-## PVCs in Pending State
+### **PVCs in Pending State**
 
-![image.png](attachment:c9864ce1-ccca-4b1f-98db-95426715f9d8:06b581e3-460c-44f5-beb2-e33cc71af11d.png)
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/06b581e3-460c-44f5-beb2-e33cc71af11d.png)
 
 This metric reflects the count of PVCs that have been created but not yet successfully bound to a Persistent Volume (PV).
 
@@ -898,9 +844,9 @@ Pending PVCs often lead to pod scheduling delays or crashes, so this metric is a
 
 ---
 
-## PVCs in Lost State
+### **PVCs in Lost State**
 
-![image.png](attachment:e4893a54-fbfc-4ab2-8927-98baa1e6fa42:a7b63ff6-939b-442a-badc-ce6295ccefc4.png)
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/a7b63ff6-939b-442a-badc-ce6295ccefc4.png)
 
 This metric displays the number of PVCs marked as `Lost`, which occurs when the underlying Persistent Volume becomes unavailable or is deleted outside the control of Kubernetes. Counts PVCs marked as "Lost" by Kubernetes:
 
@@ -914,12 +860,9 @@ With `0` lost PVCs reported, the environment shows strong volume lifecycle hygie
 
 ---
 
-## Volume Cleanup Failures Count
+### **Volume Cleanup Failures Count**
 
-<div style="text-align: center;">
-  <img src="/products/data_product/observability/dashboards/infra/infra_pvcs_lost_state.png" style="width: 70%; height: auto;">
-  <figcaption><i>PVCs in Lost State ©</i></figcaption>
-</div>
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/image%2017.png)
 
 This panel tracks the number of failed attempts to clean up volumes (e.g., after PVC deletion), grouped by environment and node.
 
@@ -942,9 +885,9 @@ This is a deviation from expected behavior and should be triaged by inspecting:
 - Cloud provider or storage backend APIs
 - Counts cleanup failures of orphaned PVCs grouped by environment and node:
 
-## PVC Usage %
+### **PVC Usage %**
 
-![image.png](attachment:bdff87d6-a2e5-4188-83b3-1dd56e3f7da5:image.png)
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/image%2018.png)
 
 This panel shows the percentage of storage capacity used for individual Persistent Volume Claims (PVCs) over time. Each colored line represents a PVC, with its usage plotted as a percentage of its total allocated volume. The graph helps identify PVCs that are:
 
@@ -960,29 +903,23 @@ kubelet_volume_stats_used_bytes / kubelet_volume_stats_capacity_bytes * 100
 
 ---
 
-# Certificates
+## Certificates
 
 Monitors certificates (e.g., kubelet client certs, admission webhooks, TLS secrets) for expiry.
 
-![image.png](attachment:26e73106-192d-4620-91fa-e3118935310a:image.png)
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/image%2019.png)
 
-## Time Left
+### **Time Left**
 
 This panel shows how much time remains before certificates expire in the cluster. It helps track certificate lifecycle and ensure timely renewal to prevent service disruptions.
 
-<div style="text-align: center;">
-  <img src="/products/data_product/observability/dashboards/infra/infra_certificates_time_left_httpsproaliendataosapp_httpsproaliendataosapp.png" style="width: 70%; height: auto;">
-  <figcaption><i>- Certificates Time Left En 7 https://pro-alien.dataos.app https://pro-alien.dataos.app https://pro-alien.dataos.app ...</i></figcaption>
-</div>
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/image%2020.png)
 
-## Expired Certificates
+### **Expired Certificates**
 
 This panel displays the number of certificates that have already expired and are still present in the cluster. Currently, it shows “No data”, meaning no certificates are expired, which indicates good operational hygiene and active certificate management.
 
-<div style="text-align: center;">
-  <img src="/products/data_product/observability/dashboards/infra/infra_certificates_time_left_httpsproaliendataosapp_httpsproaliendataosapp.png" style="width: 70%; height: auto;">
-  <figcaption><i>- Certificates Time Left En 7 https://pro-alien.dataos.app https://pro-alien.dataos.app https://pro-alien.dataos.app ...</i></figcaption>
-</div>
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/3ef3b153-77bb-404a-a9d4-540c960a233c.png)
 
 ```bash
 (certmanager_certificate_expiration_timestamp_seconds - time()) < 0
@@ -992,11 +929,11 @@ This PromQL query identifies certificates that have already expired in the Kuber
 
 ---
 
-## Certificates Expiring in ≤ 7 Days
+### **Certificates Expiring in ≤ 7 Days**
 
 This panel highlights any certificates that are due to expire within the next 7 days.
 
-![image.png](attachment:7acbaaf3-4922-4f86-a0b8-2f6225f44587:10c6c9bc-1d44-4744-b757-ec55270afcc6.png)
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/10c6c9bc-1d44-4744-b757-ec55270afcc6.png)
 
 A value of `0` here means there are no certificates at immediate risk of expiring, which is ideal for maintaining uninterrupted cluster security, especially in production environments.
 
@@ -1008,11 +945,11 @@ This PromQL query identifies certificates that will expire within the next 7 day
 
 ---
 
-## Certificate Signing Requests Approved
+### **Certificate Signing Requests Approved**
 
 This metric shows the number of approved CSR (Certificate Signing Requests).
 
-![image.png](attachment:389d302c-a412-4be9-968e-9100ca0736cc:39764d65-dded-4aec-bdb9-92a43d8699a3.png)
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/39764d65-dded-4aec-bdb9-92a43d8699a3.png)
 
 In Kubernetes, CSRs are submitted when components request client certificates (e.g., kubelet, kube-controller-manager). A value of `0` may indicate:
 
@@ -1028,7 +965,7 @@ This PromQL query counts the number of Certificate Signing Requests (CSRs) in th
 
 ---
 
-## Certificate Signing Requests Denied
+### **Certificate Signing Requests Denied**
 
 This tracks CSRs that were explicitly denied, often due to:
 
@@ -1036,7 +973,7 @@ This tracks CSRs that were explicitly denied, often due to:
 - Improper request format
 - Lack of RBAC permissions
 
-![image.png](attachment:9900dab5-61c8-469c-99a4-f2b8864d7be2:84841f12-84fc-4c90-8a73-9b7e387b7b62.png)
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/84841f12-84fc-4c90-8a73-9b7e387b7b62.png)
 
 Currently at `0`, which suggests no abnormal request attempts or security policy violations.
 
@@ -1048,11 +985,11 @@ This PromQL query counts the number of Certificate Signing Requests (CSRs) in th
 
 ---
 
-## Certificate Signing Requests Pending
+### **Certificate Signing Requests Pending**
 
 This shows how many CSRs are currently waiting for approval or denial.
 
-![image.png](attachment:ec3b558e-f57a-41bd-aeb3-fee22f6f1d7e:d0c1810b-0057-43a6-b93c-a17ffed5166c.png)
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/d0c1810b-0057-43a6-b93c-a17ffed5166c.png)
 
 A value of `0` means no outstanding certificate requests are awaiting manual review, ensuring there are no bottlenecks in the cert issuance process.
 
@@ -1064,11 +1001,11 @@ This PromQL query counts the number of Certificate Signing Requests (CSRs) in th
 
 ---
 
-## Number of Issued Certificates
+### **Number of Issued Certificates**
 
 This panel counts the total certificates issued in the current time window (e.g., last hour or day).
 
-![image.png](attachment:26e95b15-4d2b-4b8f-b972-28a7fe9c0b7f:6e7878b4-b05c-4d80-9513-b7545fa59efe.png)
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/6e7878b4-b05c-4d80-9513-b7545fa59efe.png)
 
 Right now, it’s at `0`, which is expected if there hasn’t been recent certificate rotation, onboarding of new nodes, or service deployments requiring new TLS identities.
 
@@ -1080,17 +1017,17 @@ This PromQL query `count(kube_certmanager_certificate_ready)` counts the total n
 
 ---
 
-# Workloads Breakdown
+## Workloads Breakdown
 
 Aims to break down Kubernetes controllers by health, to aid in pinpointing deployment or scaling issues.
 
-![image.png](attachment:ce1ac0bb-3743-4b6c-8e58-719da5a5c148:image.png)
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/image%2021.png)
 
-## Deployments
+### **Deployments**
 
 This panel tracks the health of Kubernetes Deployments, which are used to manage applications with automatic rollout and rollback capabilities.
 
-![image.png](attachment:5f9e18a4-ef37-4260-a2e2-835b59fc84d0:48d3aff7-1449-4122-881c-aad200657b81.png)
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/48d3aff7-1449-4122-881c-aad200657b81.png)
 
 In the given state, 112 deployments are running successfully, representing the majority. One deployment is marked as underprovisioned, meaning it may not have sufficient resources to scale as intended, or its replicas are not fully scheduled. Additionally, one deployment is reported as down, which typically indicates that no pods are available or the deployment is failing liveness or readiness checks. There are no deployments marked as “not running,” confirming that no deployment is idle without any active pods. This reflects a healthy deployment posture overall, with only two needing investigation.
 
@@ -1123,11 +1060,11 @@ This PromQL query categorizes Kubernetes deployments into four status types usin
 
 ---
 
-## StatefulSets
+### **StatefulSets**
 
 This panel displays the status of StatefulSets, which are used for stateful applications where persistent storage and stable network identity are required (e.g., Lakesearch, Flash).
 
-![image.png](attachment:1b07f5b1-de85-4192-9ffc-3e00c84837e0:59980662-f8f1-404e-8be4-506f008fc36a.png)
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/59980662-f8f1-404e-8be4-506f008fc36a.png)
 
 Out of the 71 total StatefulSets, 60 are currently running. However, 10 are in the “not running” category, implying pods were created but are not active. One StatefulSet is down, likely failing at the pod or controller level. No StatefulSets are underprovisioned, meaning all required replicas have at least been attempted, though not necessarily running.
 
@@ -1163,14 +1100,11 @@ This PromQL query categorizes Kubernetes StatefulSets into four distinct operati
 
 ---
 
-## DaemonSets
+### **DaemonSets**
 
 This panel covers DaemonSets, which ensure that a specific pod runs on all (or selected) nodes. Common examples include monitoring agents or log collectors.
 
-<div style="text-align: center;">
-  <img src="/products/data_product/observability/dashboards/entities/entities_home_dashboards_infrastructure_cluster_entities_dup.png" style="width: 70%; height: auto;">
-  <figcaption><i>I~ Home » Dashboards > Infrastructure > K8s Cluster Entities | ENV | https://pro- n.dataos.app » | nodes Ally | Names...</i></figcaption>
-</div>
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/ffd02ed3-fb87-4bf1-a46a-28d6a93481ef.png)
 
 There are 14 DaemonSets running successfully, with 4 showing as “not running.” This suggests that some expected pods are not deployed on one or more nodes. No DaemonSets are underprovisioned or down, indicating that resource availability is not currently the issue.
 
@@ -1206,14 +1140,11 @@ This PromQL query categorizes Kubernetes DaemonSets into four operational status
 
 ---
 
-## ReplicaSets
+### **ReplicaSets**
 
 This panel reports on ReplicaSets, the low-level controller that ensures a specified number of pod replicas are maintained. Deployments automatically manage ReplicaSets under the hood, but standalone ReplicaSets may also exist.
 
-<div style="text-align: center;">
-  <img src="/products/data_product/observability/dashboards/entities/entities_home_dashboards_infrastructure_cluster_entities_dup.png" style="width: 70%; height: auto;">
-  <figcaption><i>I~ Home » Dashboards > Infrastructure > K8s Cluster Entities | ENV | https://pro- n.dataos.app » | nodes Ally | Names...</i></figcaption>
-</div>
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/6488426e-fe54-4b0e-8d69-f3ec11038edb.png)
 
 There are 453 ReplicaSets reported as running, with 340 marked as “not running.” While this seems high, it's common behavior in Kubernetes. Older ReplicaSets from past deployment rollouts often persist even when their pods are scaled to zero. Only two ReplicaSets are considered down, which indicates they are failing to maintain any pods.
 
@@ -1249,18 +1180,15 @@ This PromQL query categorizes Kubernetes ReplicaSets into four operational statu
 
 ---
 
-# Kubernetes Secrets
+## Kubernetes Secrets
 
 This section helps maintain visibility into sensitive configuration data.
 
-## Kubernetes Secrets Count
+### **Kubernetes Secrets Count**
 
 This panel displays the total number of Kubernetes Secrets currently stored in the cluster. Secrets are used to securely store sensitive data such as passwords, tokens, SSH keys, and TLS certificates. The current count is 660, which includes all secrets across all namespaces in the environment.
 
-<div style="text-align: center;">
-  <img src="/products/data_product/observability/dashboards/infra/infra_secrets_kubernetes_secrets_count.png" style="width: 70%; height: auto;">
-  <figcaption><i>v Secrets Kubernetes Secrets Count © 660</i></figcaption>
-</div>
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/0038c978-cb17-48ec-ab61-406d3021fb67.png)
 
 While this number alone doesn’t indicate an issue, a steadily increasing secret count over time may suggest:
 
@@ -1278,14 +1206,11 @@ This PromQL query `count(kube_secret_info)` simply counts the total number of Ku
 
 ---
 
-## Secret Count by Env and Namespace
+### **Secret Count by Env and Namespace**
 
 This table breaks down the secret count across different environments and namespaces, helping identify where secrets are concentrated.
 
-<div style="text-align: center;">
-  <img src="/products/data_product/observability/dashboards/infra/infra_secrets_kubernetes_secrets_count.png" style="width: 70%; height: auto;">
-  <figcaption><i>v Secrets Kubernetes Secrets Count © 660</i></figcaption>
-</div>
+![image.png](K8%20Cluster%20Infrastructure%20Dashboard/f9479106-263c-45f2-a40a-5c7febfcb21c.png)
 
 In the current view:
 
