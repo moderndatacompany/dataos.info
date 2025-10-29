@@ -1,10 +1,5 @@
 # Creating a semantic model on Databricks source
 
-<!-- <aside class="callout">
-
-When setting up a semantic model, it is crucial to understand that the semantic model is part of the Data Product. Therefore, you do not need to create a separate Git repository. Instead, semantic model will be in the <code>/build</code> folder of the the Data Product's existing repository. 
-</aside> -->
-
 !!! warning "Databricks source known limitations"
 
     All core features of Lens are supported except SQL API, which means:
@@ -21,11 +16,11 @@ When setting up a semantic model, it is crucial to understand that the semantic 
 
 ## Step 1: Set up a connection with source
 
-Before setting up the the Lens semantic model, ensure you have:
+To ensure a smooth setup, complete the following prerequisites before proceeding.
 
 - Databricks workspace and an active SQL Warehouse.
 
-- Personal Access Token (PAT): Required as credentials and securely stored in an Instance Secret.
+- [Personal Access Token (PAT)](https://docs.databricks.com/aws/en/dev-tools/auth/pat#create-personal-access-tokens-for-workspace-users): Required as credentials and securely stored in an Instance Secret.
 
 - Instance Secret: To secure the source credentials.
 
@@ -33,11 +28,10 @@ Before setting up the the Lens semantic model, ensure you have:
 
 - Depot: Depot that references the Instance Secret and the JDBC details to establish a secure connection to Databricks.
 
-If a Depot was already created and activated during the Design phase of your Data Product, you can skip creation and reuse it. Otherwise, follow these steps:
 
-1. Secure source credentials by creating Instance Secret
+1. **Secure source credentials by creating Instance Secret**
 
-Before establishing a connection to the Databricks, an [Instance Secret](/resources/instance_secret/) must be created. This secret securely stores the credentials(here, the Databricks Personal Access Token). Follow the official Databricks guide to generate a [Personal Access Token](https://docs.databricks.com/aws/en/dev-tools/auth/pat#create-personal-access-tokens-for-workspace-users).
+Before establishing a connection to the Databricks, an Instance Secret must be created. This secret securely stores the credentials(here, the Databricks Personal Access Token). Follow the official Databricks guide to generate a [Personal Access Token](https://docs.databricks.com/aws/en/dev-tools/auth/pat#create-personal-access-tokens-for-workspace-users).
 
 
 ```yaml title="databricks-r.yml"
@@ -51,9 +45,9 @@ instance-secret:
   data:
     token: "dapi0123"  # databricks's personal access token here
 ```
-2. Connect to source by creating a Depot
+2. **Connect to source by creating a Depot**
 
-To connect to the Databricks source via Depot you would need the JDBC connection details of the Databricks. To get the connection details follow the below steps:
+To connect to Databricks through a Depot, you’ll need its JDBC connection details. Follow these steps to retrieve them:
 
   1. Go to your Databricks workspace.
 
@@ -79,9 +73,10 @@ Extract the following values from the URL to fill in your Depot YAML:
 | `httpPath`      | The HTTP path to the Databricks SQL Warehouse.                        | `/sql/1.0/warehouses/99123`              |
 | `accept_policy` | Confirms acceptance of Databricks JDBC driver usage terms (required). | `true`                                   |
 
+Use the extracted values to populate the following Depot manifest file:
 
 ```yaml title="databricks-depot.yml"
-name: databricks-a
+name: databricks-a   #depot name
 version: v2alpha
 type: depot
 description: databricks jdbc depot
@@ -91,7 +86,7 @@ depot:
   type: JDBC
   external: true
   secrets:
-    - name: databricks-r
+    - name: databricks-r  #instance-secret created
       allkeys: true
   jdbc:
     subprotocol: databricks-jdbc
@@ -164,7 +159,7 @@ FROM
 
 Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For instance, to define a table for `sales `data:
 
-```yaml title="customer.sql"
+```yaml title="customer.yaml"
 table:
   - name: customers
     sql: {{ load_sql('customers') }}
@@ -269,13 +264,15 @@ lens:
 
   source: # Data Source configuration
     type: depot # Source type is depot here
-    name: databricks # Name of the databricks depot
+    name: databricks # Name of the databricks depot 
+
+    #The name under source: should match the actual depot name (databricks-a here)
 
   repo: # Lens model code repository configuration (mandatory)
     url: https://bitbucket.org/tmdc/sample # URL of repository containing the Lens model (mandatory)
     lensBaseDir: sample/lens/source/depot/databricks/model # Relative path of the Lens 'model' directory in the repository (mandatory)
     syncFlags: # Additional flags used during synchronization, such as specific branch.
-      - --ref=lens # Repository Branch
+      - --ref=main # Repository Branch
 ```
 
 Each section of the YAML template defines key aspects of the Lens deployment. Below is a detailed explanation of its components:
