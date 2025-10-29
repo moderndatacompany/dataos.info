@@ -20,11 +20,11 @@ Before setting up the connection, ensure all necessary prerequisites are in plac
 
 - Databricks workspace and active SQL Warehouse, required to connect and run queries.
 
-- **Personal Access Token (PAT):** used as credentials and securely stored in an Instance Secret.
+- **Personal Access Token (PAT):** Used as credentials and securely stored in an Instance Secret.
 
-- **Instance Secret:** secures the source credentials (and repository credentials if the repo is private).
+- **Instance Secret:** Secures the source credentials (and repository credentials if the repo is private).
 
-- **JDBC connection details:** includes the host, port, httpPath, and database parameters from your Databricks SQL Warehouse connection URL.
+- **JDBC connection details:**Iincludes the `host`, `port`, `httpPath`, and `database` parameters from Databricks SQL Warehouse connection URL.
 
 - **Depot:** references both the Instance Secret and the JDBC parameters to establish a secure connection between Lens and Databricks.
 
@@ -32,9 +32,27 @@ Before setting up the connection, ensure all necessary prerequisites are in plac
 
 ## Step 1: Set up a connection with source
 
-To ensure a smooth setup, complete the following prerequisites before proceeding.
+To ensure a smooth setup, complete the following prerequisites:
 
-1. **Secure source credentials by creating Instance Secret**
+1. **Secure repository credentials by creating Instance Secret:**
+
+Create Instance Secret for your preferred hosted repository (Bitbucket, AWS Code Commit, Github) if repository is public you can skip this step. Lens service requires the Personal Access Token (PAT) to access private Github repositories. After creating PAT, the user must store it in DataOS as a secret so the Lens service can authenticate the token during repository synchronization and read the model file from the repository. 
+
+```yaml title="bitbucket-r.yaml"
+name: bitbucket-r
+version: v1
+type: instance-secret
+description: bitbucket credentials
+layer: user
+instance-secret:
+  type: key-value
+  acl: r                                # read level access
+  data:
+    GITSYNC_USERNAME: ${{"iamgroot"}}   # replace the placeholder with the bitbucket (or preferred code repository) username
+    GITSYNC_PASSWORD: ${{"0123Abcedefghij="}}   #replace the placeholder with the personal access token
+```
+
+2. **Secure source credentials by creating Instance Secret**
 
 Before establishing a connection to the Databricks, an Instance Secret must be created. This secret securely stores the credentials(here, the Databricks Personal Access Token). Follow the official Databricks guide to generate a [Personal Access Token](https://docs.databricks.com/aws/en/dev-tools/auth/pat#create-personal-access-tokens-for-workspace-users).
 
@@ -50,21 +68,21 @@ instance-secret:
   data:
     token: "dapi0123"  # databricks's personal access token here
 ```
-2. **Connect to source by creating a Depot**
+3. **Connect to source by creating a Depot**
 
 To connect to Databricks through a Depot, you’ll need its JDBC connection details. Follow these steps to retrieve them:
 
-  1. Go to your Databricks workspace.
+  1. Go to Databricks workspace.
 
-  2. Navigate to: SQL → SQL Warehouses → select your warehouse  → Connection Details.
+  2. Navigate to: SQL → SQL Warehouses → select warehouse  → Connection Details.
 
   3. Copy the JDBC URL, it will look like this:
 
   ```
-  jdbc:spark://<your-databricks-host>:443/default;transportMode=http;ssl=1;AuthMech=3;httpPath=sql/protocolv1/o/<org-id>/<warehouse-id>
+  jdbc:spark://<databricks-host>:443/default;transportMode=http;ssl=1;AuthMech=3;httpPath=sql/protocolv1/o/<org-id>/<warehouse-id>
   ```
 
-Extract the following values from the URL to fill in your Depot YAML:
+Extract the following values from the URL to fill in Depot YAML:
 
 | **Field**       | **Description**                                                       | **Example Value**                        |
 | --------------- | --------------------------------------------------------------------- | ---------------------------------------- |
@@ -105,6 +123,7 @@ depot:
       httpPath: /sql/1.0/warehouses/99123
       accept_policy: true # This accepts the Databricks usage policy and must be set to `true` to use the Databricks JDBC driver
 ```
+
 
 ## Step 2: Prepare the Lens model folder
 
@@ -198,7 +217,7 @@ tables:
 
 ### **Step 2.4: Add segments to filter**
 
-Segments are filters that allow for the application of specific conditions to refine the data analysis. By defining segments, you can focus on particular subsets of data, ensuring that only the relevant records are included in your analysis. For example, to filter for records where the state is either Illinois or Ohio, you can define a segment as follows:
+Segments are filters that allow for the application of specific conditions to refine the data analysis. By defining segments, you can focus on particular subsets of data, ensuring that only the relevant records are included in analysis. For example, to filter for records where the state is either Illinois or Ohio, you can define a segment as follows:
 
 ```yaml
 segments:
@@ -245,8 +264,9 @@ user_groups:
 
 To know more about the User groups click [here](/resources/lens/user_groups_and_data_policies/).
 
+!!! info
 
-Once you have completely created your model, push the model files to your version control repository before proceeding with deployment.
+    Once you have completely created model, push the model files to a version control repository before proceeding with deployment.
 
 
 ## Step 3: Deployment manifest file
@@ -299,7 +319,7 @@ Each section of the YAML template defines key aspects of the Lens deployment. Be
 
 * **Defining Repository:**
 
-      * **`url`** The `url` attribute in the repo section specifies the Git repository where the Lens model files are stored. For instance, if your repo name is lensTutorial then the repo `url` will be  [https://bitbucket.org/tmdc/lensTutorial](https://bitbucket.org/tmdc/lensTutorial)
+      * **`url`** The `url` attribute in the repo section specifies the Git repository where the Lens model files are stored. For instance, if repo name is lensTutorial then the repo `url` will be  [https://bitbucket.org/tmdc/lensTutorial](https://bitbucket.org/tmdc/lensTutorial)
 
       * **`lensBaseDir`:**  The `lensBaseDir` attribute refers to the directory in the repository containing the Lens model. Example: `sample/lens/source/depot/databricks/model`.
 

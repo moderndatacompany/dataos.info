@@ -205,26 +205,7 @@ nav:
           - Graphql: interfaces/data_product_hub/activation/graphql.md
           - Data APIs: interfaces/data_product_hub/activation/data_api.md
         - Best Practices: interfaces/data_product_hub/bestpractices.md 
-        - Examples: interfaces/data_product_hub/recipe.md
-      # - Lens: 
-      #   - interfaces/lens/index.md
-      #   - Building Lens: 
-      #     - interfaces/lens/building_lens/index.md
-      #     - Tutorial: interfaces/lens/building_lens/tutorial_lens.md
-      #     - Data Modelling Concepts: interfaces/lens/building_lens/data_modeling_concepts.md
-      #     - Lens Attributes: interfaces/lens/building_lens/attributes_lens.md
-      #     - Dynamic Parameters: interfaces/lens/building_lens/scenarios_dynamic_params.md
-      #   - Lens Explorer: interfaces/lens/lens_explorer/index.md
-      #   - Lens Ecosystem: 
-      #     - interfaces/lens/lens_ecosystem/index.md
-      #     - Lens Query: interfaces/lens/lens_ecosystem/lens_query.md
-      #   - Elements of Lens: 
-      #     - interfaces/lens/elements_of_lens/index.md
-      #     - Entities: interfaces/lens/elements_of_lens/entity.md
-      #     - Fields: interfaces/lens/elements_of_lens/fields.md      
-      #     - Dimensions: interfaces/lens/elements_of_lens/dimensions.md
-      #     - Measures: interfaces/lens/elements_of_lens/measures.md
-      #     - Relationships: interfaces/lens/elements_of_lens/relationships.md
+        - Examples: interfaces/data_product_hub/recipe.md 
       - Metis: 
         - interfaces/metis/index.md
         - Metis UI: 
@@ -405,31 +386,22 @@ nav:
           - resources/lens/index.md
           - Semantic Modeling:
             - Key concepts: resources/lens/concepts.md
-            # - Working with Payload: resources/lens/working_with_payload.md
             - Segments: resources/lens/segments.md
             - Views: resources/lens/views.md
             - User Groups: resources/lens/user_groups_and_data_policies.md
-
-          # - Lens Setup: 
-          #     - Lens Model Folder Setup: resources/lens/lens_model_folder_setup.md
-          #     # - Develop Lens Locally: resources/lens/optimizing_lens_testing_in_local_development.md
-          #     - Develop Lens in DataOS: resources/lens/lens_deployment.md
-          #   # - Optimizing Lens testing in local development: resources/lens/optimizing_lens_testing_in_local_development.md
-          #   # - Lens Deployment: resources/lens/lens_deployment.md
           - Supported Data Sources: 
-            # resources/lens/data_sources.md
               - Bigquery: resources/lens/data_sources/bigquery.md
-              - Flash: resources/lens/data_sources/flash.md
-              - Minerva: resources/lens/data_sources/minerva.md
+              - Databricks: resources/lens/data_sources/databricks.md
               - Postgres: resources/lens/data_sources/postgres.md
               - Redshift: resources/lens/data_sources/awsredshift.md
               - Snowflake: resources/lens/data_sources/snowflake.md
+              - Flash: resources/lens/data_sources/flash.md
+              - Minerva: resources/lens/data_sources/minerva.md
               - Themis: resources/lens/data_sources/themis.md
           - Exploration:
             - Using GraphQL: 
                 Overview: resources/lens/exploration_of_lens_using_graphql.md
                 Examples: resources/lens/graphql_api/graphql_query_example.md
-
             - Using Python: resources/lens/exploration_of_lens_using_python.md
             - Using SQL APIs: 
                 - Overview: resources/lens/exploration_of_lens_using_sql_apis.md
