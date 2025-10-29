@@ -72,9 +72,9 @@ To connect to Databricks through a Depot, you’ll need its JDBC connection deta
   jdbc:spark://<databricks-host>:443/default;transportMode=http;ssl=1;AuthMech=3;httpPath=sql/protocolv1/o/<org-id>/<warehouse-id>
   ```
 
-Extract the following values from the URL to fill in Depot YAML:
+Extract the following values from the URL to fill in Depot manifest file:
 
-| **Field**       | **Description**                                                       | **Example Value**                        |
+| Field           |                       Description                                     |            Example Value                 |
 | --------------- | --------------------------------------------------------------------- | ---------------------------------------- |
 | `subprotocol`   | Identifies the JDBC driver type used to connect to Databricks.        | `databricks-jdbc`                        |
 | `database`      | Specifies the default database or schema to connect to. (optional)    | `main`                                   |
@@ -166,16 +166,16 @@ In the `sqls` folder, create `.sql` files for each logical table, where each fil
 
 For instance, a simple data load might look as follows:
 
-```sql
+```sql title="customer.sql"
 SELECT
   *
 FROM
-  main.account;  --database_name.table_name
+  main.customer;  --database_name.table_name
 ```
 
 Alternatively, you can write more advanced queries that include transformations, such as:
 
-```sql title="customer.yaml"
+```sql title="customer.sql"
 SELECT
   CAST(customer_id AS VARCHAR) AS customer_id,
   first_name,
@@ -198,7 +198,7 @@ Create a `tables` folder to store logical table definitions, with each table def
 
 ```yaml title="customer.yaml"
 table:
-  - name: customers
+  - name: customer
     sql: {{ load_sql('customer') }}
     description: Table containing information about sales transactions.
 ```
@@ -207,7 +207,7 @@ table:
 
 After defining the base table, add the necessary dimensions and measures. For instance, to create a table for sales data with measures and dimensions, the YAML definition could look as follows:
 
-```yaml title
+```yaml title="customer.yaml"
 tables:
   - name: customer
     sql: {{ load_sql('customer') }}
@@ -232,7 +232,7 @@ tables:
 
 Segments are filters that allow for the application of specific conditions to refine the data analysis. By defining segments, you can focus on particular subsets of data, ensuring that only the relevant records are included in analysis. For example, to filter for records where the state is either Illinois or Ohio, you can define a segment as follows:
 
-```yaml
+```yaml title="customer.yaml"
 segments:
   - name: state_filter
     sql: "{TABLE.state} IN ('Illinois', 'Ohio')"
@@ -246,7 +246,7 @@ To know more about segments click [here](/resources/lens/segments/).
 Create a views folder to store all logical views, with each view defined in a separate YAML file (e.g., `sample_view.yml`). Each view references dimensions, measures, and segments from multiple logical tables. For instance, the following `customer_churn` view is created:
 
 
-```yaml
+```yaml title="customer.yaml"
 views:
   - name: customer_churn_prediction
     description: Contains customer churn information.
@@ -268,7 +268,7 @@ To know more about the views click [here](/resources/lens/views/).
 
 This YAML manifest file is used to manage access levels for the semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, there is a 'default' user group in the YAML file that includes all users.
 
-```yaml
+```yaml title="user_groups.yaml"
 user_groups:
   - name: default
     description: default user group for all users.
@@ -286,7 +286,7 @@ To know more about the User groups click [here](/resources/lens/user_groups_and_
 
 After setting up the Lens model folder, the next step is to configure the deployment manifest. Below is the YAML template for configuring a Lens deployment.
 
-```yaml
+```yaml title="lens_deployment.yaml"
 # RESOURCE META SECTION
 version: v1alpha # Lens manifest version (mandatory)
 name: "databricks-lens" # Lens Resource name (mandatory)
@@ -415,14 +415,15 @@ INFO[0002] 🔍 get...complete
 
 !!! info 
 
-    You can also view detailed information about any created Lens Resource through the [Operations](docs/interfaces/operations) App in the DataOS GUI. Note that you must have the Operator role assigned to access this information.
+    You can also view detailed information about any created Lens Resource through the [Operations](interfaces/operations/) App in the DataOS GUI. Note that you must have the Operator role assigned to access this information.
 
 
 ## Step 6: Delete Lens
 
-<aside class="callout">
-🗣️ As best practice, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
-</aside>
+!!! info
+
+    As best practice, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
+
 
 If you need to delete a Lens which is no longer in use, type the following command in the DataOS CLI:
 
