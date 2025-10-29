@@ -20,7 +20,7 @@
 
 Before setting up the connection, ensure all necessary prerequisites are in place:
 
-**Databricks Configuration Requirements**
+**1. Databricks Configuration Requirements**
 
 - **Databricks Workspace and Active SQL Warehouse:** Required to establish a connection and execute SQL queries.
 
@@ -28,13 +28,13 @@ Before setting up the connection, ensure all necessary prerequisites are in plac
 
 - **Personal Access Token (PAT):** Used for authentication. This token must be securely stored within an Instance Secret.
 
-**DataOS Requirements**
+**2. DataOS Requirements**
 
 - **Instance Secret:** Stores and secures source credentials (and repository credentials if the repository is private).
 
 - **Depot Configuration:** References both the Instance Secret and the JDBC parameters to create a secure connection between Lens and Databricks.
 
-**Version Control and Model Management**
+**3. Version Control and Model Management**
 
 - **Repository Setup:** The semantic model should be version-controlled within a dedicated Lens repository. Ensure the model is placed inside the `model/` directory before deployment.
 
