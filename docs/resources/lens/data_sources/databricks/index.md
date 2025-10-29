@@ -34,7 +34,7 @@ Before setting up the connection, ensure all necessary prerequisites are in plac
 
 To ensure a smooth setup, complete the following prerequisites:
 
-1. **Secure repository credentials by creating Instance Secret:**
+**1. Secure repository credentials by creating Instance Secret**
 
 Create Instance Secret for your preferred hosted repository (Bitbucket, AWS Code Commit, Github) if repository is public you can skip this step. Lens service requires the Personal Access Token (PAT) to access private Github repositories. After creating PAT, the user must store it in DataOS as a secret so the Lens service can authenticate the token during repository synchronization and read the model file from the repository. 
 
@@ -52,7 +52,7 @@ instance-secret:
     GITSYNC_PASSWORD: ${{"0123Abcedefghij="}}   #replace the placeholder with the personal access token
 ```
 
-2. **Secure source credentials by creating Instance Secret**
+**2. Secure source credentials by creating Instance Secret**
 
 Before establishing a connection to the Databricks, an Instance Secret must be created. This secret securely stores the credentials(here, the Databricks Personal Access Token). Follow the official Databricks guide to generate a [Personal Access Token](https://docs.databricks.com/aws/en/dev-tools/auth/pat#create-personal-access-tokens-for-workspace-users).
 
@@ -68,7 +68,7 @@ instance-secret:
   data:
     token: "dapi0123"  # databricks's personal access token here
 ```
-3. **Connect to source by creating a Depot**
+**3. Connect to source by creating a Depot**
 
 To connect to Databricks through a Depot, you’ll need its JDBC connection details. Follow these steps to retrieve them:
 
@@ -145,11 +145,15 @@ model/
 
 ### **Step 2.1: Load data from the data source**
 
-In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure that only the necessary columns are extracted and the SQL dialect is specific to the databricks. For instance,
+In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. 
 
-* Format table names as: `database.table`.
+!!! info 
+    
+    Ensure that only the necessary columns are extracted and the SQL dialect is specific to the databricks. For instance,
 
-* Use `STRING` for text data types instead of `VARCHAR`.
+      * Format table names as: `database.table`.
+
+      * Use `STRING` for text data types instead of `VARCHAR`.
 
 For instance, a simple data load might look as follows:
 
