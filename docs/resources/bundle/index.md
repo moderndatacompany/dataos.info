@@ -36,67 +36,68 @@ The YAML manifest outlined below details the structure of a Bundle:
 
 ```yaml
 # Resource meta section
-name: ${{my-bundle}}
-version: v1alpha 
-type: bundle
-layer: user 
-tags: 
-  - ${{dataos:type:resource}}
-  - ${{dataos:resource:bundle}}
-description: ${{this bundle resource is for a data product}}
-owner: ${{iamgroot}}
+name: ${{my-bundle}}                                         # Bundle name
+version: v1alpha                                             # Version of the bundle
+type: bundle                                                 # Type of resource
+layer: user                                                  # Execution layer
+tags:                                                        # Tags for categorization
+  - ${{dataos:type:resource}}                                # Indicates a DataOS resource type
+  - ${{dataos:resource:bundle}}                              # Identifies this as a bundle resource
+description: ${{this bundle resource is for a data product}}  # Description of the bundle
+owner: ${{iamgroot}}                                         # Owner of the bundle
 
 # Bundle-specific section
-bundle:
+bundle:                                                      # Root section for bundle configuration
 
   # Bundle Schedule section
-  schedule:
-    initialState: ${{initial state}}
-    timezone: ${{time zone}}
-    create:
-      cron: ${{cron expression}}
-    delete:
-      cron: ${{cron expression}}
+  schedule:                                                  # Defines bundle scheduling
+    initialState: ${{initial state}}                         # Initial state of the schedule
+    timezone: ${{time zone}}                                 # Time zone for scheduling
+    create:                                                  # Create operation schedule
+      cron: ${{cron expression}}                             # Cron expression for create
+    delete:                                                  # Delete operation schedule
+      cron: ${{cron expression}}                             # Cron expression for delete
 
   # Bundle Workspaces section
-  workspaces:
-    - name: ${{bundlespace}} # Workspace name (mandatory)
-      description: ${{this is a bundle workspace}} # Workspace description (optional)
-      tags: # Workspace tags (optional)
-        - ${{bundle}}
-        - ${{myworkspace}}
-      labels: # Workspace labels (optional)
-        ${{purpose: testing}}
-      layer: user # Workspace layer (mandatory)
+  workspaces:                                                # List of workspaces in the bundle
+    - name: ${{bundlespace}}                                 # Workspace name (mandatory)
+      description: ${{this is a bundle workspace}}            # Workspace description (optional)
+      tags:                                                  # Workspace tags (optional)
+        - ${{bundle}}                                        # Bundle tag
+        - ${{myworkspace}}                                   # Workspace-specific tag
+      labels:                                                # Workspace labels (optional)
+        ${{purpose: testing}}                                # Label indicating purpose
+      layer: user                                            # Workspace layer (mandatory)
 
   # Bundle Resources section
-  resources:
-    - id: ${{bundle-scanner}} # Resource ID (mandatory)
-      workspace: ${{bundlespace}} # Workspace (optional)
-      spec: # Resource spec (mandatory) 
-        ${{resource spec manifest}}
-      file: ${{/home/Desktop/bundle-scanner.yaml}} # Resource spec file (optional)
-      dependencies: # Resource dependency (optional)
-        - ${{bundle-depot}}
-      dependencyConditions: # Resource dependency conditions (optional)
-        - resourceId: ${{bundle-depot}} # Resource ID (mandatory)
-          status: # Status dependency condition (optional)
-            is: # Status is (optional)
-              - ${{active}}
-            contains: # Status contains (optional)
-              - ${{activ}}
-          runtime: # Runtime dependency condition (optional)
-            is: # Runtime is (optional)
-              - ${{running}}
-            contains: # Runtime contains (optional)
-              - ${{run}}
+  resources:                                                 # Resource list within the bundle
+    - id: ${{bundle-scanner}}                                # Resource ID (mandatory)
+      workspace: ${{bundlespace}}                            # Workspace association (optional)
+      spec:                                                  # Resource specification (mandatory)
+        ${{resource spec manifest}}                          # Inline resource spec
+      file: ${{/home/Desktop/bundle-scanner.yaml}}           # Resource spec file (optional)
+      dependencies:                                          # Resource dependencies (optional)
+        - ${{bundle-depot}}                                  # Dependent resource ID
+      dependencyConditions:                                  # Dependency condition list (optional)
+        - resourceId: ${{bundle-depot}}                      # Resource ID for condition (mandatory)
+          status:                                            # Status dependency condition (optional)
+            is:                                              # Specific required statuses
+              - ${{active}}                                  # Expected active status
+            contains:                                        # Partial match for status
+              - ${{active}}                                   # Contains substring 'active'
+          runtime:                                           # Runtime dependency condition (optional)
+            is:                                              # Expected runtime states
+              - ${{running}}                                 # Runtime should be running
+            contains:                                        # Partial runtime match
+              - ${{run}}                                     # Contains substring 'run'
 
   # Additional properties section
-  properties:
-    ${{additional properties}}
+  properties:                                                # Additional configuration properties
+    ${{additional properties}}                               # Placeholder for custom properties
 
   # Manage As User
-  manageAsUser: ${{iamgroot}}
+  manageAsUser: ${{iamgroot}}                                # User context for management
+
 ```
 
 ## How to create a Bundle?
@@ -113,15 +114,15 @@ In DataOS, a Bundle is categorized as a [Resource-type](/resources/types/). The 
 
 ```yaml
 # Resource meta section
-name: ${{my-bundle}} # Resource name (mandatory)
-version: v1beta # Manifest version (mandatory)
-type: bundle # Resource-type (mandatory)
-tags: # Resource Tags (optional)
+name: ${{my-bundle}}              # Resource name (mandatory)
+version: v1beta                   # Manifest version (mandatory)
+type: bundle                      # Resource-type (mandatory)
+tags:                             # Resource Tags (optional)
   - ${{dataos:type:resource}}
   - ${{dataos:resource:bundle}}
 description: ${{This is a bundle yaml manifest}} # Resource Description (optional)
-owner: ${{iamgroot}} # Resource Owner (optional)
-bundle: # Bundle-specific section mapping(mandatory)
+owner: ${{iamgroot}}              # Resource Owner (optional)
+bundle:                           # Bundle-specific section mapping(mandatory)
   ${{Attributes of Bundle-specific section}}
 ```
 
@@ -139,16 +140,17 @@ The Bundle-specific section contains attributes specific to the Bundle Resource.
 Each of these sections should be appropriately configured when creating a Bundle YAML manifest. The high-level structure of the various separate sections within the Bundle-specific section is provided in the YAML below:
 
 ```yaml
-bundle:
-  schedule: # Bundle schedule section (optional)
-    ${{attributes for scheduling the bundle}}
-  workspaces: # Bundle workspaces section (optional)
-    ${{attributes specific to workspace configuration}}
-  resources: # Bundle resources section (mandatory)
-    ${{attributes specific to bundle resources}}
-  properties: # Addtional Properties (optional)
-    ${{additional properties}}
-  manageAsUser: ${{iamgroot}} # Manage As User (optional)
+bundle:                                                     # Root section for bundle configuration
+  schedule:                                                 # Bundle schedule section (optional)
+    ${{attributes for scheduling the bundle}}               # Attributes related to scheduling
+  workspaces:                                               # Bundle workspaces section (optional)
+    ${{attributes specific to workspace configuration}}     # Workspace configuration attributes
+  resources:                                                # Bundle resources section (mandatory)
+    ${{attributes specific to bundle resources}}            # Resource configuration attributes
+  properties:                                               # Additional properties (optional)
+    ${{additional properties}}                              # Custom user-defined properties
+  manageAsUser: ${{iamgroot}}                               # Manage As User (optional)
+
 ```
 
 <div style="text-align: center;" markdown="1">
@@ -169,13 +171,13 @@ bundle:
 The Bundle Schedule section allows you to specify scheduling attributes for the Bundle Resource. You can schedule the creation or deletion of a Bundle at specific intervals using a cron-like schedule. The following YAML code block outlines the attributes specified in the Bundle Workspaces section:
 
 ```yaml
-bundle: # Bundle-specific section (mandatory)
-  schedule: # Bundle Schedule section (optional)
-    initialState: ${{create}} # Initial State of Bundle (mandatory)
-    timezone: ${{Asia/Kolkata}} # Time Zone (mandatory)
-    create: # Bundle creation cron (optional)
+bundle:                           # Bundle-specific section (mandatory)
+  schedule:                       # Bundle Schedule section (optional)
+    initialState: ${{create}}     # Initial State of Bundle (mandatory)
+    timezone: ${{Asia/Kolkata}}   # Time Zone (mandatory)
+    create:                       # Bundle creation cron (optional)
       - cron: ${{'5 0 24 1 *'}}
-    delete: # Bundle deletion cron (optional)
+    delete:                       # Bundle deletion cron (optional)
       - cron: ${{'25 0 24 1 *'}}
 ```
 
@@ -209,16 +211,16 @@ It is noteworthy that the Workspace-level Resources present in a Bundle can also
 The following YAML code block outlines the attributes specified in the Bundle Workspaces section:
 
 ```yaml
-bundle: # Bundle-specific section (mandatory)
-  workspaces: # Bundle Workspaces section (optional)
-    - name: ${{bundlespace}} # Workspace name (mandatory)
+bundle:                             # Bundle-specific section (mandatory)
+  workspaces:                       # Bundle Workspaces section (optional)
+    - name: ${{bundlespace}}        # Workspace name (mandatory)
       description: ${{this is a bundle workspace}} # Workspace description (optional)
-      tags: # Workspace tags (optional)
+      tags:                         # Workspace tags (optional)
         - ${{bundle}}
         - ${{myworkspace}}
-      labels: # Workspace labels (optional)
+      labels:                       # Workspace labels (optional)
         ${{purpose: testing}}
-      layer: ${{user}} # Workspace layer (mandatory)
+      layer: ${{user}}              # Workspace layer (mandatory)
 ```
 
 Refer to the table below for a summary of the attributes within the Bundle Workspaces section. For detailed information about each attribute, please refer to the respective links provided in the attribute column.
@@ -242,26 +244,26 @@ Refer to the table below for a summary of the attributes within the Bundle Works
 The Bundle Resources section allows you to define the Resources that make up the Data Product/application and their dependencies in the form of a flattened DAG. Each node within this DAG represents a Resource interconnected through a set of dependencies. Using the dependency and dependencyConditions, relationship and conditions can be specified such that resource only instantiates when the right dependency condition is met either the correct status and runtime, else it doesn’t. The following YAML code block outlines the attributes specified in the Bundle Workspaces section:
 
 ```yaml
-bundle: # Bundle-specific section (mandatory)
+bundle:                                         # Bundle-specific section (mandatory)
   resources:
-    - id: ${{bundle-scanner}} # Resource ID (mandatory)
-      workspace: ${{bundlespace}} # Workspace (optional)
-      spec: # Resource spec (mandatory) 
+    - id: ${{bundle-scanner}}                   # Resource ID (mandatory)
+      workspace: ${{bundlespace}}               # Workspace (optional)
+      spec:                                     # Resource spec (mandatory) 
         ${{resource spec manifest}}
       file: ${{/home/Desktop/bundle-scanner.yaml}} # Resource spec file (optional)
-      dependencies: # Resource dependency (optional)
+      dependencies:                                # Resource dependency (optional)
         - ${{bundle-depot}}
-      dependencyConditions: # Resource dependency conditions (optional)
-        - resourceId: ${{bundle-depot}} # Resource ID (mandatory)
-          status: # Status dependency condition (optional)
-            is: # Status is (optional)
+      dependencyConditions:                        # Resource dependency conditions (optional)
+        - resourceId: ${{bundle-depot}}            # Resource ID (mandatory)
+          status:                                  # Status dependency condition (optional)
+            is:                                    # Status is (optional)
               - ${{active}}
-            contains: # Status contains (optional)
-              - ${{activ}}
-          runtime: # Runtime dependency condition (optional)
-            is: # Runtime is (optional)
+            contains:                              # Status contains (optional)
+              - ${{active}}
+          runtime:                                 # Runtime dependency condition (optional)
+            is:                                    # Runtime is (optional)
               - ${{running}}
-            contains: # Runtime contains (optional)
+            contains:                              # Runtime contains (optional)
               - ${{run}}
 ```
 
@@ -290,8 +292,8 @@ Refer to the table below for a summary of the attributes within the Bundle Works
 The Additional Properties section lets you include any additional key-value properties relevant to the Bundle Resource. The following YAML code block outlines the attributes specified in the additional properties section:
 
 ```yaml
-bundle: # Bundle-specific section (mandatory)
-	properties: # Additional properties section (optional)
+bundle:                 # Bundle-specific section (mandatory)
+	properties:           # Additional properties section (optional)
 		${{alpha: beta}}
 		${{gamma: sigma}}
 ```
@@ -307,12 +309,12 @@ Refer to the table below for a summary of the attributes within the additional p
 
 </div>
 
-Data developers can alter the customize the behaviour of Bundle Resources by configuring the sections and attributes as needed. For a detailed insights into the description and constraints of the attributes within the Bundle-specific section, please consult the 'Attributes of Bundle-specific Section' documentation page.
+Data developers can alter the customize the behavior of Bundle Resources by configuring the sections and attributes as needed. For a detailed insights into the description and constraints of the attributes within the Bundle-specific section, please consult the 'Attributes of Bundle-specific Section' documentation page.
 
 ???tip "Sample Bundle YAML manifest"
 
     ```yaml title="monitor_manifest_structure.yml"
-    --8<-- "examples/resources/bundle/sample_bundle.yml"
+    --8<-- "examples/resources/bundle/bundling_resources_in_data_product/bundle_for_lens_and_talos.yml"
     ```
 
 
@@ -433,4 +435,4 @@ Here is a reference to the various commands related to managing Bundles in DataO
 
 ## Recipe
 
-[Optmize Bundling of Resources in Data Product](/resources/bundle/recipe/bundling_resources_in_data_product/)
+[Optimize Bundling of Resources in Data Product](/resources/bundle/recipe/bundling_resources_in_data_product/)

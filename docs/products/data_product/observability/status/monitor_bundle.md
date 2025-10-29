@@ -30,15 +30,24 @@ To monitor the status of Bundle on the Metis Catalog UI, follow the steps below:
 
 1. Open the Metis Catalog.
     
-    ![image.png](attachment:1763d314-f178-47da-89d9-9f60b4bd9189:image.png)
+    <div style="text-align: center;">
+      <img src="/products/data_product/observability/status/instance_secret/instance_secret_metis_catalog_endtoend_metadata_management.png" style="border:1px solid black; width: 70%; height: auto">
+      <figcaption><i>Observability in DataOS</i></figcaption>
+    </div>
     
 2. Search for a Bundle by name.
     
-    ![image.png](attachment:fb0f3193-4777-4f2c-a5d9-86c696494bf1:image.png)
+    <div style="text-align: center;">
+      <img src="/products/data_product/observability/status/bundle/bundle_bundle_azure_bundles_azurebillingbundle_ctrl.png" style="border:1px solid black; width: 70%; height: auto">
+      <figcaption><i>Observability in DataOS</i></figcaption>
+    </div>
     
 3. Click on the Bundle that needs to be monitored and check the Status, which is represented as `State`.
     
-    ![image.png](attachment:25b9b891-40e4-4f55-a35b-592118c75cbe:image.png)
+    <div style="text-align: center;">
+      <img src="/products/data_product/observability/status/bundle/bundle_bundles_meta_version_created_days.png" style="border:1px solid black; width: 70%; height: auto">
+      <figcaption><i>Observability in DataOS</i></figcaption>
+    </div>
     
 
 The `active` state indicates that the Bundle is currently accessible and usable by other DataOS Resources.  This is the expected state for any Bundle that is in use by other DataOS Resources.
@@ -50,14 +59,14 @@ To monitor the status of Bundle on the Operations app, follow the steps below:
 1. Open the Operations app.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/status/instance_secret/instance_secret_operations_administer_data0s_grafana.png" style="border:1px solid black; width: 70%; height: auto">
     <figcaption><i>Metis UI</i></figcaption>
     </div>
     
 2. Under the User space → type → Bundle, search for the Bundle by name.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/status/bundle/bundle_adataos_operations_userspace_core_kernel.png" style="border:1px solid black; width: 70%; height: auto">
     <figcaption><i>Metis UI</i></figcaption>
     </div>
     
@@ -75,7 +84,7 @@ To monitor the status of Bundle on the Operations app, follow the steps below:
     </aside>
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/status/bundle/bundle_dataos_operations_user_spac_user.png" style="border:1px solid black; width: 70%; height: auto">
     <figcaption><i>Metis UI</i></figcaption>
     </div>
     
@@ -89,4 +98,4 @@ To monitor the status of Bundle on the Operations app, follow the steps below:
 
 ## Configure Alerts for Status Changes
 
-To automatically track critical state transitions, users can configure a Monitor and Pager to send alerts when the status of a Bundle changes to values like `error` or `deleted`. This enables teams to respond immediately to resource failures, misconfigurations, or unexpected deletions that may impact dependent components. [Click here to view the steps to set up alerts for status changes]().
+To automatically track critical state transitions, users can configure a Monitor and Pager to send alerts when the status of a Bundle changes to values like `error` or `deleted`. This enables teams to respond immediately to resource failures, misconfigurations, or unexpected deletions that may impact dependent components. [Click here to view the steps to set up alerts for status changes](/products/data_product/observability/alerts/alerts_resource_status_change).

@@ -34,19 +34,19 @@ To monitor the status and runtime of a Worker on the Metis Catalog UI, follow th
 1. Open the Metis Catalog.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/status/instance_secret/instance_secret_metis_catalog_endtoend_metadata_management.png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 2. Search for the Worker by name.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/status/worker/worker_dataproductinsightsworker_workers_dataproductinsightsworker_churndataproductworker.png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 3. Click on the Worker that needs to be monitored and check the status and runtime.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/status/worker/worker_workers_public_dataproductinsightsworker_tier_domain.png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 
@@ -57,26 +57,26 @@ To monitor the status and runtime of a Service on the Operations app, follow the
 1. Open the Operations app.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/status/instance_secret/instance_secret_operations_administer_data0s_grafana.png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 2. Under the User space → type → Worker, search for the Worker that needs to be monitored.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/status/worker/worker_dataos_operations_userspace_core_kernel.png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 3. On clicking the Service, its detailed logs can also be monitored.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/status/worker/worker_dataproductinsightsworker_resource_details_resource_yaml.png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 
 ## Configure Alerts for Status Changes
 
-To proactively track critical state transitions, users can configure a Monitor and Pager to send alerts when the status of a Worker changes to values like `error` or `deleted`. This enables teams to respond immediately to resource failures, misconfigurations, or unexpected deletions that may impact dependent components. [Click here to view the steps to set up alerts for status changes](https://www.notion.so/Alerts-for-Resource-Status-Change-20fc5c1d487680519a0bf069917dec31?pvs=21).
+To proactively track critical state transitions, users can configure a Monitor and Pager to send alerts when the status of a Worker changes to values like `error` or `deleted`. This enables teams to respond immediately to resource failures, misconfigurations, or unexpected deletions that may impact dependent components. [Click here to view the steps to set up alerts for status changes](/products/data_product/observability/alerts/alerts_resource_status_change).
 
 ## Configure Alerts for Runtime Changes
 
-To proactively detect execution issues, users can configure a Monitor and Pager to send alerts when the runtime of a Worker enters a failure state, such as `failed` or remains stuck in `pending`. This ensures timely awareness of broken or stalled executions that may affect downstream processes. [Click here to view the steps to set up alerts for runtime failures.](https://www.notion.so/Alerts-for-Resource-Runtime-Failure-20fc5c1d487680dfa1dae5d37ad1c39b?pvs=21)
+To proactively detect execution issues, users can configure a Monitor and Pager to send alerts when the runtime of a Worker enters a failure state, such as `failed` or remains stuck in `pending`. This ensures timely awareness of broken or stalled executions that may affect downstream processes. [Click here to view the steps to set up alerts for runtime failures.](/products/data_product/observability/alerts/alerts_runtime_failure).

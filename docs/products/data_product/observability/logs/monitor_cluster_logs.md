@@ -100,28 +100,26 @@ To monitor the logs of a Cluster on the Metis Catalog UI, follow the steps below
 1. Open the Metis Catalog.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/cluster/image%20(32).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 2. Search for the Cluster by name.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/cluster/image%20(38).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 3. Click on the Cluster that needs to be monitored and navigate to the ‘Runtime’ section.
     
     <div style="text-align: center;">
-  <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
-  <figcaption><i>Observability in DataOS</i></figcaption>
-</div>
+    <img src="/products/data_product/observability/logs/cluster/image%20(33).png" style="border:1px solid black; width: 70%; height: auto">
+    </div>
     
 4. Click on any pod name for which you want to monitor the logs, and navigate to the ‘Pod Logs’ section.
     
     <div style="text-align: center;">
-  <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
-  <figcaption><i>Observability in DataOS</i></figcaption>
-</div>
+    <img src="/products/data_product/observability/logs/cluster/image%20(34).png" style="border:1px solid black; width: 70%; height: auto">
+    </div>
     
     These logs show:
     
@@ -140,25 +138,25 @@ To monitor the logs of a Cluster on the Operations App, follow the steps below:
 1. Open the Operations app.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/cluster/image%20(35).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 2. Navigate to User Space → Resources → Cluster and search for the Cluster by name.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/cluster/image%20(39).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 3. Click on the Cluster that needs to be monitored and navigate to the ‘Resource Runtime’ section.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/cluster/image%20(36).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
 4. Click on any runtime node for which you want to monitor the logs, and navigate to the ‘Runtime Node Logs’ section. 
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="width: 70%; height: auto;">
+    <img src="/products/data_product/observability/logs/cluster/image%20(37).png" style="border:1px solid black; width: 70%; height: auto">
     </div>
     
     These logs show:
