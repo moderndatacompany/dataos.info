@@ -16,4 +16,6 @@
 
 [Flash](/resources/lens/data_sources/flash/)
 
+[Databricks](/resources/lens/data_sources/databricks/)
+
 <!-- [Snowflake](/resources/lens/data_sources/snowflake/) -->

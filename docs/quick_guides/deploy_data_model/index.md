@@ -27,7 +27,7 @@ First, push your local Lens model directory to a preferred hosted code repositor
 
 Need help? Check out the relevant guides for [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/push-code-to-bitbucket/), [GitHub](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github), or [AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/getting-started.html).
 
-If your repository is private, continue to Step 2. If it's public, skip ahead to Step 3.
+**Important Update**: Secrets are optional for public repositories. If your repository is public, you can skip Step 2 entirely and go directly to Step 3. If it's private, continue to Step 2.
 
 ## Step 2: Create Instance Secrets for Repository Credentials
 
@@ -86,7 +86,7 @@ Now that you've got your model ready, it's time to bring it all together by sett
 
 Here's what it includes:
 
-### 1.  Meta Section**
+### 1. **Meta Section**
 
 This section is where you give your Lens its identity. You'll provide essential details like:
 
@@ -110,7 +110,7 @@ These fields ensure that your Lens Resource is applied under the correct user’
 
 **c. `Secrets`:**
 
-This is where you provide access to your Lens's codebase. Secrets help you securely manage credentials and other sensitive data.
+This section is **optional for public repositories** but **required for private repositories**. Secrets help you securely manage credentials and other sensitive data when accessing private code repositories.
 
 | **Parameter** | **Description** |
 | --- | --- |

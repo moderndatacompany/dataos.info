@@ -60,7 +60,7 @@ Follow the steps below to monitor a Depot on the Operations app:
 1. Open the Operations app.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="border:1px solid black; width: 70%; height: auto">
+    <img src="/products/data_product/observability/status/instance_secret/instance_secret_operations_administer_data0s_grafana.png" style="border:1px solid black; width: 70%; height: auto">
     <figcaption><i>Observability in DataOS</i></figcaption>
     </div>
     
@@ -68,7 +68,7 @@ Follow the steps below to monitor a Depot on the Operations app:
 3. Select Depot as the Resource type to filter all Depots in the environment.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/observability/observability.png" style="border:1px solid black; width: 70%; height: auto">
+    <img src="/products/data_product/observability/status/depot/depot_dataos_operations_user_space_core.png" style="border:1px solid black; width: 70%; height: auto">
     <figcaption><i>Observability in DataOS</i></figcaption>
     </div>
     
@@ -76,12 +76,10 @@ Follow the steps below to monitor a Depot on the Operations app:
 5. Monitor its status, including Cloud Kernel Resource Count, WebService Resource Count, Operator Runtime Resource Count, Builder Stage, and Runtime Status.
     
     <div style="text-align: center;">
-    <div style="text-align: center;">
-      <img src="/products/data_product/observability/cpu/depot/depot_dataos_operations_user_space_resources.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>né DataOS? operations User Space Resources Minerva Queries Name 4 _ thirdparty thirdparty thirdparty01 « < » User Spa...</i></figcaption>
+      <img src="/products/data_product/observability/status/depot/depot_dataos_operations_user_space_corel.png" style="border:1px solid black; width: 70%; height: auto">
+      <figcaption><i>Operations UI</i></figcaption>
     </div>
-    <figcaption><i>Observability in DataOS</i></figcaption>
-    </div>
+
     
     Monitoring the Builder Stage is recommended when the Resource status shows an `error`.
     
@@ -93,8 +91,8 @@ Follow the steps below to monitor a Depot on the Operations app:
 
 ## Configure Alerts for Status Changes
 
-To proactively track critical state transitions, users can configure a Monitor and Pager to send alerts when the status of a Depot changes to values like `error` or `deleted`. This enables teams to respond immediately to resource failures, misconfigurations, or unexpected deletions that may impact dependent components. [Click here to view the steps to set up alerts for status changes](https://www.notion.so/Alerts-for-Resource-Status-Change-20fc5c1d487680519a0bf069917dec31?pvs=21).
+To proactively track critical state transitions, users can configure a Monitor and Pager to send alerts when the status of a Depot changes to values like `error` or `deleted`. This enables teams to respond immediately to resource failures, misconfigurations, or unexpected deletions that may impact dependent components. [Click here to view the steps to set up alerts for status changes](/products/data_product/observability/alerts/alerts_resource_status_change).
 
 ## Configure Alerts for Runtime Changes
 
-To proactively detect execution issues, users can configure a Monitor and Pager to send alerts when the runtime of a Resource enters a failure state, such as `failed` or remains stuck in `pending`. This ensures timely awareness of broken or stalled executions that may affect downstream processes. [Click here to view the steps to set up alerts for runtime failures.](https://www.notion.so/Alerts-for-Resource-Runtime-Failure-20fc5c1d487680dfa1dae5d37ad1c39b?pvs=21)
+To proactively detect execution issues, users can configure a Monitor and Pager to send alerts when the runtime of a Resource enters a failure state, such as `failed` or remains stuck in `pending`. This ensures timely awareness of broken or stalled executions that may affect downstream processes. [Click here to view the steps to set up alerts for runtime failures.](/products/data_product/observability/alerts/alerts_runtime_failure).

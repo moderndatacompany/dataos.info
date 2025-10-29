@@ -123,11 +123,11 @@ markdown_extensions:
   - pymdownx.tilde
 #  - pymdownx.extra
   - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji              # while pushing to dev
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg           # while pushing to dev
+      # emoji_index: !!python/name:material.extensions.emoji.twemoji              # while pushing to dev
+      # emoji_generator: !!python/name:material.extensions.emoji.to_svg           # while pushing to dev
 
-      # emoji_index: !!python/name:materialx.emoji.twemoji                      # while hosting locally  
-      # emoji_generator: !!python/name:materialx.emoji.to_svg                   # while hosting locally 
+      emoji_index: !!python/name:materialx.emoji.twemoji                      # while hosting locally  
+      emoji_generator: !!python/name:materialx.emoji.to_svg                   # while hosting locally 
       
       # before pushing to dev branch replace materialx.emoji.to_svg with material.extensions.emoji.to_svg
       # before pushing to dev branch replace materialx.emoji.twemoji with material.extensions.emoji.twemoji
@@ -205,26 +205,7 @@ nav:
           - Graphql: interfaces/data_product_hub/activation/graphql.md
           - Data APIs: interfaces/data_product_hub/activation/data_api.md
         - Best Practices: interfaces/data_product_hub/bestpractices.md 
-        - Examples: interfaces/data_product_hub/recipe.md
-      # - Lens: 
-      #   - interfaces/lens/index.md
-      #   - Building Lens: 
-      #     - interfaces/lens/building_lens/index.md
-      #     - Tutorial: interfaces/lens/building_lens/tutorial_lens.md
-      #     - Data Modelling Concepts: interfaces/lens/building_lens/data_modeling_concepts.md
-      #     - Lens Attributes: interfaces/lens/building_lens/attributes_lens.md
-      #     - Dynamic Parameters: interfaces/lens/building_lens/scenarios_dynamic_params.md
-      #   - Lens Explorer: interfaces/lens/lens_explorer/index.md
-      #   - Lens Ecosystem: 
-      #     - interfaces/lens/lens_ecosystem/index.md
-      #     - Lens Query: interfaces/lens/lens_ecosystem/lens_query.md
-      #   - Elements of Lens: 
-      #     - interfaces/lens/elements_of_lens/index.md
-      #     - Entities: interfaces/lens/elements_of_lens/entity.md
-      #     - Fields: interfaces/lens/elements_of_lens/fields.md      
-      #     - Dimensions: interfaces/lens/elements_of_lens/dimensions.md
-      #     - Measures: interfaces/lens/elements_of_lens/measures.md
-      #     - Relationships: interfaces/lens/elements_of_lens/relationships.md
+        - Examples: interfaces/data_product_hub/recipe.md 
       - Metis: 
         - interfaces/metis/index.md
         - Metis UI: 
@@ -405,31 +386,22 @@ nav:
           - resources/lens/index.md
           - Semantic Modeling:
             - Key concepts: resources/lens/concepts.md
-            # - Working with Payload: resources/lens/working_with_payload.md
             - Segments: resources/lens/segments.md
             - Views: resources/lens/views.md
             - User Groups: resources/lens/user_groups_and_data_policies.md
-
-          # - Lens Setup: 
-          #     - Lens Model Folder Setup: resources/lens/lens_model_folder_setup.md
-          #     # - Develop Lens Locally: resources/lens/optimizing_lens_testing_in_local_development.md
-          #     - Develop Lens in DataOS: resources/lens/lens_deployment.md
-          #   # - Optimizing Lens testing in local development: resources/lens/optimizing_lens_testing_in_local_development.md
-          #   # - Lens Deployment: resources/lens/lens_deployment.md
           - Supported Data Sources: 
-            # resources/lens/data_sources.md
               - Bigquery: resources/lens/data_sources/bigquery.md
-              - Flash: resources/lens/data_sources/flash.md
-              - Minerva: resources/lens/data_sources/minerva.md
+              - Databricks: resources/lens/data_sources/databricks/index.md
               - Postgres: resources/lens/data_sources/postgres.md
               - Redshift: resources/lens/data_sources/awsredshift.md
               - Snowflake: resources/lens/data_sources/snowflake.md
+              - Flash: resources/lens/data_sources/flash.md
+              - Minerva: resources/lens/data_sources/minerva.md
               - Themis: resources/lens/data_sources/themis.md
           - Exploration:
             - Using GraphQL: 
                 Overview: resources/lens/exploration_of_lens_using_graphql.md
                 Examples: resources/lens/graphql_api/graphql_query_example.md
-
             - Using Python: resources/lens/exploration_of_lens_using_python.md
             - Using SQL APIs: 
                 - Overview: resources/lens/exploration_of_lens_using_sql_apis.md
@@ -915,7 +887,49 @@ nav:
       - Building from Scratch with Snowflake: products/data_product/examples/firstdp.md
       - Using DataOS Lakehouse as a Source: products/data_product/templates/product_affinity.md
     - Configurations: products/data_product/configurations.md 
-    - Observability: resources/monitor/usecases/lens_metrics.md
+    - Observability: 
+      - products/data_product/observability/index.md
+      - Key Concepts: products/data_product/observability/key_concepts.md
+      - Monitoring:
+        - Resource Health:
+          - Instance Secret: products/data_product/observability/status/monitor_instance_secret.md
+          - Secrets: products/data_product/observability/status/monitor_secrets.md
+          - Volume: products/data_product/observability/status/monitor_volume.md
+          - Lakehouse: products/data_product/observability/status/monitor_lakehouse.md
+          - Depot: products/data_product/observability/status/monitor_depot.md
+          - Workflow: products/data_product/observability/status/monitor_workflow.md
+          - Cluster: products/data_product/observability/status/monitor_cluster.md
+          - Service: products/data_product/observability/status/monitor_service.md
+          - Worker: products/data_product/observability/status/monitor_worker.md
+          - Lens: products/data_product/observability/status/monitor_lens.md
+          - Compute: products/data_product/observability/status/monitor_compute.md
+          - Bundle: products/data_product/observability/status/monitor_bundle.md
+        - CPU and Memory Usage:
+          - Workflow: products/data_product/observability/cpu/monitor_workflow_cpu_memory.md
+          - Cluster: products/data_product/observability/cpu/monitor_cluster_cpu_memory.md
+          - Service: products/data_product/observability/cpu/monitor_service_cpu_memory.md
+          - Worker: products/data_product/observability/cpu/monitor_worker_cpu_memory.md
+          - Lens: products/data_product/observability/cpu/monitor_lens_cpu_memory.md
+          - Depot: products/data_product/observability/cpu/monitor_depot_cpu_memory.md
+        - System Metrics:
+          - K8 Cluster Infrastructure Dashboard: products/data_product/observability/dashboards/infra/infra.md
+          - K8 Cluster Entities Dashboard: products/data_product/observability/dashboards/entities/entities.md
+      - logging:  
+        - Workflow: products/data_product/observability/logs/monitor_workflow_logs.md
+        - Cluster: products/data_product/observability/logs/monitor_cluster_logs.md
+        - Service: products/data_product/observability/logs/monitor_service_logs.md
+        - Worker: products/data_product/observability/logs/monitor_worker_logs.md
+        - Lens: products/data_product/observability/logs/lens.md
+        - Depot: products/data_product/observability/logs/depot.md
+      - Alerting:
+        - Alerts for High CPU Usage: products/data_product/observability/alerts/alerts_high_cpu_usage.md
+        - Alerts for High Memory Usage: products/data_product/observability/alerts/alerts_high_memory_usage.md
+        - Alerts for Runtime Failure: products/data_product/observability/alerts/alerts_runtime_failure.md
+        - Alerts for Resource Status: products/data_product/observability/alerts/alerts_resource_status_change.md
+      - Use Cases: 
+        - Resolve CPU Limit Breach: products/data_product/observability/usecase.md
+        - Monitoring Lens Metrics: products/data_product/observability/usecase2.md
+
     - Recipes: 
       - Deploy Data Product using CI/CD pipeline: products/data_product/recipes/ci_cd.md
 
