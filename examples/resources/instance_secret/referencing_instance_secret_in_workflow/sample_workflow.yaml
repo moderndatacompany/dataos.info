@@ -1,0 +1,74 @@
+# Resource meta section
+name: cli-workflow
+version: v1
+type: workflow
+
+# Workflow-specific section
+workflow:
+  dag:
+
+# First Job
+  - name: create-volume
+    spec:
+      stack: dataos-ctl # dataos-ctl stack name
+      compute: runnable-default
+
+    # Referred Instance secrets 
+      dataosSecrets:
+        - name: instance-secret-cli-r # Instance secret name same as declared above
+          allKeys: true
+          consumptionType: envVars
+
+        - name: instance-secret-cli-rw # Instance secret name same as declared above
+          allKeys: true
+          consumptionType: envVars
+
+        # Stack-specific section
+      stackSpec:
+        arguments:
+        - resource
+        - apply
+        - -f
+        - /etc/dataos/config/manifest.yaml
+        - -w
+        - ${CURRENT_WORKSPACE}
+
+        # Manifest for the Resource against which the above command is executed
+        manifest:
+          version: v1beta
+          name: "temp001"
+          type: volume
+          volume:
+            size: 1Gi
+            accessMode: ReadWriteMany
+            type: temp
+
+# Second Job
+  - name: get-volume
+    spec:
+      stack: dataos-ctl
+      compute: runnable-default
+
+        # Referred Instance secrets 
+      dataosSecrets:
+        - name: instance-secret-cli-r # Instance secret name same as declared above
+          allKeys: true
+          consumptionType: envVars
+
+        - name: instance-secret-cli-rw # Instance secret name same as declared above
+          allKeys: true
+          consumptionType: envVars
+
+        # Stack-specific section
+      stackSpec:
+        arguments:
+        - resource
+        - get
+        - -t
+        - volume
+        - -n
+        - temp001
+        - -w
+        - ${CURRENT_WORKSPACE}
+    dependencies:
+    - create-volume # Second Job dependent on successful execution of First Job

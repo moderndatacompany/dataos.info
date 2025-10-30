@@ -1,0 +1,48 @@
+# creds depends upon the env refer to default schema public
+version: v1
+name: postgres-write-01
+type: workflow
+tags:
+  - postgres
+  - dataset
+description: This job read and write data from postgres
+title: Read Write Postgres
+workflow:
+  dag:
+    - name: write-postgres-01
+      title: Write Postgres
+      description: This job reads data from postgres
+      spec:
+        tags:
+          - Connect
+        stack: flare:7.0
+        compute: runnable-default
+
+        stackSpec:
+          job:
+            explain: true
+            inputs:
+              - name: city_connect
+                dataset: dataos://postgres:none/city
+                options:
+                    driver: org.postgresql.Driver # remember driver would be inside  options attribute in input but outside option attribute in output 
+
+
+            logLevel: INFO
+            outputs:
+              - name: input
+                dataset: dataos://sanitypostgres:public/postgres_write_12?acl=rw
+                driver: org.postgresql.Driver
+                format: jdbc
+                options:
+                  saveMode: overwrite
+                description: Data set from lakehouse
+                tags:
+                  - Connect
+                title: Postgres Dataset
+            steps:
+              - sequence:
+                  - name: input
+                    doc: Pick all columns from cities and add version as yyyyMMddHHmm formatted
+                      timestamp.
+                    sql: SELECT * FROM city_connect limit 10        
