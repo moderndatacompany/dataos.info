@@ -2,11 +2,11 @@
 
 !!! warning "Known limitations"
 
-    **The psql endpoint is not available for Databricks source, meaning:**
+    **The PostgreSQL endpoint is not available for Databricks source, meaning:**
 
       - Users cannot query semantic models via the PostgreSQL API.
 
-      - BI tools that rely on PSQL based connections will not be able to access semantic model.
+      - BI tools that rely on PostgreSQL based connections will not be able to access semantic model.
 
       - BI Sync is not supported 
 
