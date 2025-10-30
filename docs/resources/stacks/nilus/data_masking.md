@@ -242,7 +242,7 @@ Modifies numeric data while preserving approximate magnitude or distribution.
 
     Rounds numeric values to the nearest specified multiple.
     
-    This algorithm requires the destination column to be of type `BIGINT`. You need to define the column inside `type-hints`.
+    This algorithm requires the destination column to be of type `TEXT`. You need to define the column inside `type-hints`.
 
     ```yaml
     source:
@@ -250,7 +250,7 @@ Modifies numeric data while preserving approximate magnitude or distribution.
       options:
           source-table: "masking_test.aws_masking_data"
           type-hints:
-            salary: bigint
+            salary: text
           mask:
             salary: round:5000
             age: round:10
@@ -308,7 +308,7 @@ Transforms date or datetime values while preserving logical time intervals.
 
     Randomly shifts dates by up to *N* days.
 
-    `date_shift` requires the destination column to be of type `TEXT` as showm below inside `type-hints`:
+    `date_shift` requires the destination column to be of type `TEXT` as shown below inside `type-hints`:
 
     ```yaml
     source:
@@ -328,7 +328,7 @@ Transforms date or datetime values while preserving logical time intervals.
 
     Retains only the year component.
 
-    `year_only` requires the destination column to be of type `TEXT` as showm below inside `type-hints`:
+    `year_only` requires the destination column to be of type `TEXT` as shown below inside `type-hints`:
     
 
     ```yaml
@@ -347,7 +347,7 @@ Transforms date or datetime values while preserving logical time intervals.
 
     Preserves the month and year components.
 
-    `month_year` requires the destination column to be of type `TEXT` as showm below inside `type-hints`:
+    `month_year` requires the destination column to be of type `TEXT` as shown below inside `type-hints`:
 
 
     ```yaml
@@ -387,7 +387,7 @@ Transforms date or datetime values while preserving logical time intervals.
         source-table: "masking_test.aws_masking_data"
         type-hints:
           income: text
-          salary: bigint
+          salary: text
           score: text
           revenue: double
           temperature: double
