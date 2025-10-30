@@ -116,7 +116,8 @@ This section outlines how to configure both a Monitor Resource to observe memory
         msTeams:
           webHookUrl: https://rubikdatasolutions.webhook.office.com/webhookb2/IncomingWebhook/92dcd2
         email:
-          - iamgroot@tmdc.io  
+          emailTargets:
+            - iamgroot@tmdc.io  
     ```
     
 6. Apply the Pager Resource using the command below.
@@ -245,7 +246,8 @@ This section outlines how to configure a Monitor Resource to observe pod memory 
       msTeams:
         webHookUrl: https://rubikdatasolutions.webhook.office.com/webhookb2/09239cd8-9d59-9621-9217305bf6e22bdde-3ec2-4392-78e9f35a44fb/IncomingWebhook/92dcd2acdaee4e6cac125ac4a729e48f/631bd149-c89d-4d3b-8979-8e364b419/V23AwNxCZx9fToWpqDSYeRkQefDZ-cPn74pY60
         email:
-          - iamgroot@tmdc.io  
+          emailTargets:
+            - iamgroot@tmdc.io  
     ```
     
 6. Apply the Pager Resource.
