@@ -11,7 +11,7 @@ This section provides step-by-step instructions to observe the `Sales 360` [Data
   <figcaption><i>Sales 360 Data Product</i></figcaption>
 </div>
 
-## Define the use case: Gross profit margin drop
+## Use case: Margin drop
 
 **Business Need:** If profitability slips below 25 %, downstream stakeholders (finance, sales ops) should be notified immediately to investigate pricing, cost, or discount policies.
 
@@ -27,7 +27,7 @@ Ensure the following prerequisites are satisfied before configuring the [Monitor
 
 - An incoming webhook endpoint must be available for alert delivery (e.g., Microsoft Teams).
 
-## Sales 360: Key metrics
+## Key metrics
 
 The following metrics are available in the `Sales 360` Data Product:
 
@@ -96,7 +96,7 @@ The following metrics are available in the `Sales 360` Data Product:
   <figcaption><i>Sales 360 Data Product Metrics</i></figcaption>
 </div>
 
-## Equation Monitor configuration
+## Equation monitor
 
 [Equation Monitors](/resources/monitor/) enable scheduled comparisons between two numeric expressions. An incident is generated when the defined condition is met. In the example below, an alert is triggered if the `gross_profit_margin` metric falls below 25%.
 
@@ -308,7 +308,7 @@ Follow the steps outlined below to configure the monitor.
         ```
 
 
-##  Alert delivery via Pager Resource
+## Alert delivery
 
 Follow the below steps to set up a [Pager Resource](/resources/pager/) to deliver alerts to the Teams channel. Once the Monitor condition met, a Pager routes the incident payload to Teams channel.
 

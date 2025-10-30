@@ -8,28 +8,28 @@ To monitor the CPU and memory usage of a Worker on the Metis Catalog UI, follow 
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/status/instance_secret/instance_secret_metis_catalog_endtoend_metadata_management.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Open the Metis Catalog (Metis UI)</i></figcaption>
     </div>
     
 2. Search for the Worker by name.
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/worker/worker_sales360worker_sales360api_bundles_sales360bundle_workers.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Search for the Worker in Metis</i></figcaption>
     </div>
     
 3. Click on the Worker that needs to be monitored and navigate to the ‘Runtime’ section.
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/worker/worker_workers_shreya_meta_version_created.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Worker details in Metis</i></figcaption>
     </div>
     
 4. Click on the pod name for which you want to monitor the CPU and memory usage, and navigate to the ‘Pod Usage’ section.
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/worker/worker_time_series_millicore_2000_1500.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Pod CPU usage vs request and limit</i></figcaption>
     </div>
     
     **CPU usage:**
@@ -45,7 +45,7 @@ To monitor the CPU and memory usage of a Worker on the Metis Catalog UI, follow 
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/worker/worker_memory_time_series_memory_mebibyte.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Pod memory usage vs limit</i></figcaption>
     </div>
     
     **Memory usage:**
@@ -61,7 +61,7 @@ To monitor the CPU and memory usage of a Worker on the Metis Catalog UI, follow 
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/worker/worker_aggregates_node_states_time_slices.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Aggregated CPU and memory statistics</i></figcaption>
     </div>
     
     **Details:**
@@ -81,7 +81,7 @@ To monitor the CPU and memory usage of a Worker on the Metis Catalog UI, follow 
     > The Worker was allowed to consume significantly more CPU than it requested, and it did so, but stayed under the defined limit. Memory usage remained far below both the request and limit. This suggests an opportunity to reduce memory allocation to free up resources for other workloads.
     > 
 
-## Monitor the CPU and memory usage of a Worker using the Operations App
+## Operations App
 
 When a Worker Resource is created, a corresponding pod is automatically provisioned in the backend. You can monitor the CPU and memory usage of this pod directly through the Operations app.
 
@@ -91,28 +91,28 @@ To monitor the CPU and memory usage of a Worker on the Operations app, follow th
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/status/instance_secret/instance_secret_operations_administer_data0s_grafana.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Open the Operations app</i></figcaption>
     </div>
     
 2. Navigate to User Space → Resources → types, select the Worker as type, and search for the Worker by its name that needs to be monitored.
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/worker/worker_dataos_operations_userspace_core_kernel.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Operations > User Space > Resources</i></figcaption>
     </div>
     
 3. Click on the Worker, navigate to the ‘Resource Runtime’ section.
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/worker/worker_dataos_operations_user_spac_user.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Worker resource runtime in Operations</i></figcaption>
     </div>
     
 4. Click on the pod name for which you want to monitor the CPU and memory usage, and navigate to the ‘Runtime Node Usage’ section.
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/worker/worker_sales360workerju9zss0_runtime_node_details_runtime.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Runtime Node Usage details</i></figcaption>
     </div>
     
     **Details:**
@@ -131,7 +131,7 @@ To monitor the CPU and memory usage of a Worker on the Operations app, follow th
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/worker/worker_time_series_1000_usage_request.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>CPU usage over time in Operations</i></figcaption>
     </div>
     
     **CPU usage:**
@@ -155,7 +155,7 @@ To monitor the CPU and memory usage of a Worker on the Operations app, follow th
     </aside>
     
 
-## Monitor the CPU and memory usage of a Worker using Grafana
+## Grafana
 
 When a Worker Resource is created, a corresponding pod is automatically provisioned in the back-end. You can monitor the CPU and memory usage of this pod directly through the Grafana app.
 
@@ -204,21 +204,21 @@ To monitor the CPU and memory usage of a Service on the Grafana app, follow the 
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/status/instance_secret/instance_secret_operations_administer_data0s_grafana.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Open the Grafana app</i></figcaption>
     </div>
     
 3. Navigate to the Explore section and select ‘Thanos’ as a source and search for the metric `cpu_container_usage_total`, and in the label filters select pod and paste the pod name which we have gotten from step 1, then click on ‘Run Query’. 
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/worker/worker_home_explore_thanos_search_jump.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Grafana Explore: CPU usage query</i></figcaption>
     </div>
     
 4. After clicking on the ‘Run Query’, you can find the usage of CPU by the Service.
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/worker/worker_ally_graph_berea_split_last30minutes.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>CPU usage by container over time</i></figcaption>
     </div>
     
     This graph displays cumulative CPU usage (`container_cpu_usage_seconds_total`) for each container inside a pod belonging to the `sales360-worker` Worker:
@@ -233,14 +233,14 @@ To monitor the CPU and memory usage of a Service on the Grafana app, follow the 
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/worker/worker_meel_ally_graph_berea_thanos.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Grafana Explore: memory working set query</i></figcaption>
     </div>
     
 6. On executing the query, you can see the memory used by the pod in the last thirty minutes. 
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/worker/worker_split_last5minutes_cscc_queries_berea.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Memory usage by container over time</i></figcaption>
     </div>
     
     This graph displays the cumulative CPU usage (in seconds) at the pod level for the `sales360-worker` Worker. The distinct lines represent total CPU consumed by individual containers within the same pod, but together, they reflect the overall CPU footprint of the pod.
@@ -253,14 +253,14 @@ To monitor the CPU and memory usage of a Service on the Grafana app, follow the 
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/cluster/cluster_split_absolute_time_range_vercleun.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Adjust the time range in Grafana</i></figcaption>
     </div>
     
 
-## Configure alerts for CPU usage
+## CPU alerts
 
 To automatically track the CPU usage, users can configure a Monitor and a Pager to send alerts when the CPU usage exceeds certain limits. This enables teams to respond immediately to resource failures that may impact dependent components. [Click here to view the steps to set up alerts for CPU usage](/products/data_product/observability/alerts/alerts_high_cpu_usage).
 
-## Configure alerts for memory usage
+## Memory alerts
 
 To automatically track the memory usage, users can configure a Monitor and a Pager to send alerts when the memory usage exceeds certain limits. This enables teams to respond immediately to resource failures that may impact dependent components. [Click here to view the steps to set up alerts for memory usage](/products/data_product/observability/alerts/alerts_high_memory_usage).

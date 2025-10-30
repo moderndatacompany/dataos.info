@@ -2,7 +2,7 @@
 
 In DataOS, the status of a Resource indicates its current life-cycle state, such as `active`, `error`, or `deleted`. Monitoring status allows teams to detect state transitions (e.g., from `active` to `deleted` or `error`) that may impact downstream dependencies, trigger configuration issues, or reflect access problems. 
 
-## Monitor the Status of Volume using DataOS CLI
+## DataOS CLI
 
 The status of Volume can be monitored using the DataOS CLI by executing the following command, replacing the placeholder with the workspace in which the user is working. This command will list all the Volumes created by the user.
 
@@ -24,7 +24,7 @@ INFO[0001] 🔍 get...complete
 
 In the example above, the `STATUS` column indicates the current state of the Volume `active` in this case, which confirms that the Volume is available and usable. 
 
-## Monitor the Status of Volume on Operations
+## Operations App
 
 To monitor the status of Volume on the Operations app, follow the steps below:
 
@@ -32,12 +32,14 @@ To monitor the status of Volume on the Operations app, follow the steps below:
     
     <div style="text-align: center;">
     <img src="/products/data_product/observability/status/instance_secret/instance_secret_operations_administer_data0s_grafana.png" style="border:1px solid black; width: 70%; height: auto">
+    <figcaption><i>Open the Operations app</i></figcaption>
     </div>
     
 2. Under the User space → type → Volume, search for the Volume by name.
     
     <div style="text-align: center;">
     <img src="/products/data_product/observability/status/volume/volume_adataos_operations_userspace_core_kernel.png" style="border:1px solid black; width: 70%; height: auto">
+    <figcaption><i>Operations > User Space > Volume</i></figcaption>
     </div>
     
     The `active` status indicates that the Resource is valid and available for use within DataOS. This is the expected state for a healthy and usable Resource.
@@ -55,12 +57,13 @@ To monitor the status of Volume on the Operations app, follow the steps below:
     
     <div style="text-align: center;">
     <img src="/products/data_product/observability/status/volume/volume_dataos_operations_user_spac_user.png" style="border:1px solid black; width: 70%; height: auto">
+    <figcaption><i>Volume details in Operations</i></figcaption>
     </div>
     
     Monitoring the Builder Stage is crucial, especially when `status` = `error`. If the `builder stage` = `building`, the issue likely occurred after build, possibly runtime or external issues.
     But if the `builder stage` = `error`, then the YAML file itself needs fixing.
     
 
-## Configure Alerts for Status Changes
+## Status alerts
 
 To automatically track critical state transitions, users can configure a Monitor and Pager to send alerts when the status of a Volume changes to values like `error` or `deleted`. This enables teams to respond immediately to resource failures, misconfigurations, or unexpected deletions that may impact dependent components. [Click here to view the steps to set up alerts for status changes](/products/data_product/observability/alerts/alerts_resource_status_change).

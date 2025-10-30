@@ -2,7 +2,7 @@
 
 This section involves the steps to observe the logs of a Cluster on different endpoints such as DataOS CLI, Metis UI, and Operations App.
 
-## Monitor the logs of a Cluster using DataOS CLI
+## DataOS CLI
 
 To monitor the  logs of a Cluster using DataOS CLI, follow the steps below:
 
@@ -93,7 +93,7 @@ To monitor the  logs of a Cluster using DataOS CLI, follow the steps below:
     This output is typical for a Spark/SQL gateway container like Kyuubi deployed in a cluster resource.
     
 
-## Monitor the logs of a Cluster using Metis UI
+## Metis UI
 
 To monitor the logs of a Cluster on the Metis Catalog UI, follow the steps below:
 
@@ -101,24 +101,28 @@ To monitor the logs of a Cluster on the Metis Catalog UI, follow the steps below
     
     <div style="text-align: center;">
     <img src="/products/data_product/observability/logs/cluster/image%20(32).png" style="border:1px solid black; width: 70%; height: auto">
+    <figcaption><i>Open the Metis Catalog</i></figcaption>
     </div>
     
 2. Search for the Cluster by name.
     
     <div style="text-align: center;">
     <img src="/products/data_product/observability/logs/cluster/image%20(38).png" style="border:1px solid black; width: 70%; height: auto">
+    <figcaption><i>Search the Cluster in Metis</i></figcaption>
     </div>
     
 3. Click on the Cluster that needs to be monitored and navigate to the ‘Runtime’ section.
     
     <div style="text-align: center;">
     <img src="/products/data_product/observability/logs/cluster/image%20(33).png" style="border:1px solid black; width: 70%; height: auto">
+    <figcaption><i>Cluster runtime in Metis</i></figcaption>
     </div>
     
 4. Click on any pod name for which you want to monitor the logs, and navigate to the ‘Pod Logs’ section.
     
     <div style="text-align: center;">
     <img src="/products/data_product/observability/logs/cluster/image%20(34).png" style="border:1px solid black; width: 70%; height: auto">
+    <figcaption><i>Pod Logs in Metis</i></figcaption>
     </div>
     
     These logs show:
@@ -131,7 +135,7 @@ To monitor the logs of a Cluster on the Metis Catalog UI, follow the steps below
     This output is typical for a Spark/SQL gateway container like Kyuubi deployed in a cluster resource.
     
 
-## Monitor the logs of a Cluster using the Operations app
+## Operations App
 
 To monitor the logs of a Cluster on the Operations App, follow the steps below:
 
@@ -139,24 +143,28 @@ To monitor the logs of a Cluster on the Operations App, follow the steps below:
     
     <div style="text-align: center;">
     <img src="/products/data_product/observability/logs/cluster/image%20(35).png" style="border:1px solid black; width: 70%; height: auto">
+    <figcaption><i>Open the Operations app</i></figcaption>
     </div>
     
 2. Navigate to User Space → Resources → Cluster and search for the Cluster by name.
     
     <div style="text-align: center;">
     <img src="/products/data_product/observability/logs/cluster/image%20(39).png" style="border:1px solid black; width: 70%; height: auto">
+    <figcaption><i>Operations > Resources > Cluster</i></figcaption>
     </div>
     
 3. Click on the Cluster that needs to be monitored and navigate to the ‘Resource Runtime’ section.
     
     <div style="text-align: center;">
     <img src="/products/data_product/observability/logs/cluster/image%20(36).png" style="border:1px solid black; width: 70%; height: auto">
+    <figcaption><i>Cluster resource runtime in Operations</i></figcaption>
     </div>
     
 4. Click on any runtime node for which you want to monitor the logs, and navigate to the ‘Runtime Node Logs’ section. 
     
     <div style="text-align: center;">
     <img src="/products/data_product/observability/logs/cluster/image%20(37).png" style="border:1px solid black; width: 70%; height: auto">
+    <figcaption><i>Runtime Node Logs in Operations</i></figcaption>
     </div>
     
     These logs show:

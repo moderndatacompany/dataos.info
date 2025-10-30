@@ -2,7 +2,7 @@
 
 In DataOS, the status of a Resource indicates its current life-cycle state, such as `active`, `error`, or `deleted`. Monitoring status allows teams to detect state transitions (e.g., from `active` to `deleted` or `error`) that may impact downstream dependencies, trigger configuration issues, or reflect access problems. 
 
-## Monitor the Status of Bundle using DataOS CLI
+## DataOS CLI
 
 The status of a Bundle can be monitored using the DataOS CLI by executing the following command. This command will list all the Bundles created by the user.
 
@@ -24,7 +24,7 @@ INFO[0001] 🔍 get...complete
 
 In the example above, the `STATUS` column indicates the current state of the Bundle `active` in this case, which confirms that the Bundle is available and usable. 
 
-## Monitor the Status of Bundle on Metis
+## Metis UI
 
 To monitor the status of Bundle on the Metis Catalog UI, follow the steps below:
 
@@ -32,27 +32,27 @@ To monitor the status of Bundle on the Metis Catalog UI, follow the steps below:
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/status/instance_secret/instance_secret_metis_catalog_endtoend_metadata_management.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>Observability in DataOS</i></figcaption>
+      <figcaption><i>Open the Metis Catalog</i></figcaption>
     </div>
     
 2. Search for a Bundle by name.
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/status/bundle/bundle_bundle_azure_bundles_azurebillingbundle_ctrl.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>Observability in DataOS</i></figcaption>
+      <figcaption><i>Search the Bundle in Metis</i></figcaption>
     </div>
     
 3. Click on the Bundle that needs to be monitored and check the Status, which is represented as `State`.
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/status/bundle/bundle_bundles_meta_version_created_days.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>Observability in DataOS</i></figcaption>
+      <figcaption><i>Bundle details in Metis</i></figcaption>
     </div>
     
 
 The `active` state indicates that the Bundle is currently accessible and usable by other DataOS Resources.  This is the expected state for any Bundle that is in use by other DataOS Resources.
 
-## Monitor the Status of Bundle on Operations
+## Operations App
 
 To monitor the status of Bundle on the Operations app, follow the steps below:
 
@@ -60,14 +60,14 @@ To monitor the status of Bundle on the Operations app, follow the steps below:
     
     <div style="text-align: center;">
     <img src="/products/data_product/observability/status/instance_secret/instance_secret_operations_administer_data0s_grafana.png" style="border:1px solid black; width: 70%; height: auto">
-    <figcaption><i>Metis UI</i></figcaption>
+    <figcaption><i>Open the Operations app</i></figcaption>
     </div>
     
 2. Under the User space → type → Bundle, search for the Bundle by name.
     
     <div style="text-align: center;">
     <img src="/products/data_product/observability/status/bundle/bundle_adataos_operations_userspace_core_kernel.png" style="border:1px solid black; width: 70%; height: auto">
-    <figcaption><i>Metis UI</i></figcaption>
+    <figcaption><i>Operations > User Space > Bundle</i></figcaption>
     </div>
     
     The `active` status indicates that the Resource is valid and available for use within DataOS. This is the expected state for a healthy and usable Resource.
@@ -85,7 +85,7 @@ To monitor the status of Bundle on the Operations app, follow the steps below:
     
     <div style="text-align: center;">
     <img src="/products/data_product/observability/status/bundle/bundle_dataos_operations_user_spac_user.png" style="border:1px solid black; width: 70%; height: auto">
-    <figcaption><i>Metis UI</i></figcaption>
+    <figcaption><i>Bundle details in Operations</i></figcaption>
     </div>
     
     Monitoring the Builder Stage is recommended when the Resource status shows an `error`.
@@ -96,6 +96,6 @@ To monitor the status of Bundle on the Operations app, follow the steps below:
     This helps in identifying whether the problem lies within the building phase or after the Resource was built.
     
 
-## Configure Alerts for Status Changes
+## Status alerts
 
 To automatically track critical state transitions, users can configure a Monitor and Pager to send alerts when the status of a Bundle changes to values like `error` or `deleted`. This enables teams to respond immediately to resource failures, misconfigurations, or unexpected deletions that may impact dependent components. [Click here to view the steps to set up alerts for status changes](/products/data_product/observability/alerts/alerts_resource_status_change).

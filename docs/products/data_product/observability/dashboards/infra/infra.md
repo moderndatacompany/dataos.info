@@ -23,7 +23,7 @@ The Kubernetes Cluster Infrastructure Dashboard provides a unified observability
 - Workloads
 - Secrets
 
-## Exploring the Metrics
+## Explore metrics
 
 Users can explore the Prometheus query used to power the metrics visualized in the dashboard. To do so, follow the steps below.
 

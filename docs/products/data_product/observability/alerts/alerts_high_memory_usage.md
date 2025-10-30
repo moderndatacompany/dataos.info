@@ -2,7 +2,7 @@
 
 Whenever a DataOS Resource is created, it runs as a single pod in the underlying Kubernetes cluster. These pods inherit resource definitions such as CPU and memory limits or requests from the Resource configurations. Observability in this context is applied at the pod level by monitoring pod metrics, considering a single pod per Resource, which effectively helps in understanding the behavior and performance of the higher-level DataOS Resources that generated them.
 
-## Alerts when memory usage reaches the dedicated memory limit
+## Memory limit breach
 
 This section outlines how to configure both a Monitor Resource to observe memory usage at the pod level and a Pager Resource to send alerts when usage crosses a defined percentage of the pod’s total memory limit. This alert helps detect when a pod is approaching its maximum memory allocation, which could lead to OOM (Out Of Memory) kills or degraded performance.
 
@@ -127,7 +127,7 @@ This section outlines how to configure both a Monitor Resource to observe memory
     
 7. Get notified! When the memory usage crosses the threshold, the incident is triggered, and the Pager sends the notification to the configured destination.
 
-## Alerts when memory usage reaches the requested memory limit
+## Usage exceeds request
 
 This section outlines how to configure a Monitor Resource to observe pod memory usage relative to its defined memory requests, and a Pager Resource to send alerts when usage crosses a defined percentage. This is useful for detecting pods that are exceeding their expected baseline allocation and may need to be scaled or reconfigured.
 

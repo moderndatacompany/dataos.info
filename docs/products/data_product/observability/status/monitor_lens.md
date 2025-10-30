@@ -38,18 +38,21 @@ To monitor the status of Lens on the Metis Catalog UI, follow the steps below:
     
     <div style="text-align: center;">
     <img src="/products/data_product/observability/status/instance_secret/instance_secret_metis_catalog_endtoend_metadata_management.png" style="border:1px solid black; width: 70%; height: auto">
+    <figcaption><i>Open the Metis Catalog</i></figcaption>
     </div>
     
 2. Search for a Lens by name.
     
     <div style="text-align: center;">
     <img src="/products/data_product/observability/status/lens/lens_lens_lenses_dataproductinsights_churndataproduct_churndataproduct.png" style="border:1px solid black; width: 70%; height: auto">
+    <figcaption><i>Search the Lens in Metis</i></figcaption>
     </div>
     
 3. Click on the Lens that needs to be monitored and check the Status, which is represented as `State`.
     
     <div style="text-align: center;">
     <img src="/products/data_product/observability/status/lens/lens_lenses_dataproductinsights_explore_assets_meta.png" style="border:1px solid black; width: 70%; height: auto">
+    <figcaption><i>Lens details in Metis</i></figcaption>
     </div>
     
 
@@ -63,12 +66,14 @@ To monitor the status of Lens on the Operations app, follow the steps below:
     
     <div style="text-align: center;">
     <img src="/products/data_product/observability/status/instance_secret/instance_secret_operations_administer_data0s_grafana.png" style="border:1px solid black; width: 70%; height: auto">
+    <figcaption><i>Open the Operations app</i></figcaption>
     </div>
     
 2. Under the User space → type → Lens search for the Lens.
     
     <div style="text-align: center;">
     <img src="/products/data_product/observability/status/lens/lens_adataos_operations_userspace_core_kernel.png" style="border:1px solid black; width: 70%; height: auto">
+    <figcaption><i>Operations > User Space > Lens</i></figcaption>
     </div>
     
     The `active` status indicates that the Resource is valid and available for use within DataOS. This is the expected state for a healthy and usable Resource.
@@ -86,6 +91,7 @@ To monitor the status of Lens on the Operations app, follow the steps below:
     
     <div style="text-align: center;">
     <img src="/products/data_product/observability/status/lens/lens_dataos_operations_user_spac_dataproductinsights.png" style="border:1px solid black; width: 70%; height: auto">
+    <figcaption><i>Lens details in Operations</i></figcaption>
     </div>
     
     Monitoring the Builder Stage is crucial, especially when `status` = `error`. If the `builder stage` = `building`, the issue likely occurred after build, possibly runtime or external issues.

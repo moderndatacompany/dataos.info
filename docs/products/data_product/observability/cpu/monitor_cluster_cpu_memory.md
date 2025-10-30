@@ -2,7 +2,7 @@
 
 When a Cluster Resource is created, a corresponding pod is automatically provisioned in the backend. This section involves steps to monitor the CPU and memory usage of a Cluster’s pod using different endpoints.
 
-## Monitor the CPU and memory usage of a Cluster using Metis UI
+## Metis UI
 
 To monitor the CPU and memory usage of a Cluster on the Metis Catalog UI, follow the steps below:
 
@@ -10,28 +10,28 @@ To monitor the CPU and memory usage of a Cluster on the Metis Catalog UI, follow
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/status/instance_secret/instance_secret_metis_catalog_endtoend_metadata_management.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Open the Metis Catalog (Metis UI)</i></figcaption>
     </div>
     
 2. Search for the Cluster by name.
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/cluster/cluster_bqcluster_clusters_bqcluster_yreareriewee_euerars.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Search the Cluster in Metis</i></figcaption>
     </div>
     
 3. Click on the Cluster that needs to be monitored and navigate to the ‘Runtime’ section.
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/cluster/cluster_clusters_public_bqcluster_owner_tiers.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Cluster details in Metis</i></figcaption>
     </div>
     
 4. Click on the run name for which you want to monitor the CPU and memory usage, and navigate to the ‘Pod Usage’ section.
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/cluster/cluster_time_series_millicore_2000_1500.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Pod CPU usage vs request and limit</i></figcaption>
     </div>
     
     **CPU usage:**
@@ -46,7 +46,7 @@ To monitor the CPU and memory usage of a Cluster on the Metis Catalog UI, follow
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/cluster/cluster_memory_time_series_memory_mebibyte.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Pod memory usage vs limit</i></figcaption>
     </div>
     
     **Memory usage:**
@@ -61,7 +61,7 @@ To monitor the CPU and memory usage of a Cluster on the Metis Catalog UI, follow
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/cluster/cluster_aggregates_node_states_time_slices.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Aggregated CPU and memory statistics</i></figcaption>
     </div>
     
     **Details:**
@@ -81,7 +81,7 @@ To monitor the CPU and memory usage of a Cluster on the Metis Catalog UI, follow
     > The Cluster was allowed to consume significantly more CPU than it requested, and it did so, but stayed under the defined limit. Memory usage remained far below both the request and limit. This suggests an opportunity to reduce memory allocation to free up resources for other workloads.
     > 
 
-## Monitor the CPU and memory usage of a Cluster using the Operations App
+## Operations App
 
 When a Cluster Resource is created, a corresponding pod is automatically provisioned in the backend. You can monitor the CPU and memory usage of this pod directly through the Operations app.
 
@@ -91,28 +91,28 @@ To monitor the CPU and memory usage of a Cluster on the Operations app, follow t
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/status/instance_secret/instance_secret_operations_administer_data0s_grafana.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Open the Operations app</i></figcaption>
     </div>
     
 2. Navigate to User Space → Resources → types, select the Cluster as type, and search for the Cluster that needs to be monitored.
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/cluster/cluster_dataos_operations_user_space_core.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Operations > User Space > Resources</i></figcaption>
     </div>
     
 3. Click on the Cluster, navigate to the ‘Resource Runtime’ section.
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/cluster/cluster_dataos_operations_user_spac_user.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Cluster resource runtime in Operations</i></figcaption>
     </div>
     
 4. Click on the pod name for which you want to monitor the CPU and memory usage, and navigate to the ‘Runtime Node Usage’ section.
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/cluster/cluster_bgclusterss0_runtime_node_details_runtime.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Runtime Node Usage details</i></figcaption>
     </div>
     
     **Details:**
@@ -131,7 +131,7 @@ To monitor the CPU and memory usage of a Cluster on the Operations app, follow t
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/cluster/cluster_time_series_1200_usage_1000m.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>CPU usage over time in Operations</i></figcaption>
     </div>
     
     **CPU usage:**
@@ -155,13 +155,13 @@ To monitor the CPU and memory usage of a Cluster on the Operations app, follow t
     </aside>
     
 
-## Monitor the CPU and memory usage of a Cluster using Grafana 
+## Grafana
 
 When a Cluster Resource is created, a corresponding pod is automatically provisioned in the back-end. You can monitor the CPU and memory usage of this pod directly through the Grafana app.
 
 <div style="text-align: center;">
   <img src="/products/data_product/observability/cpu/cluster/cluster_cluster_mosoneeee_mosoneeee.png" style="border:1px solid black; width: 70%; height: auto">
-  <figcaption><i>caption</i></figcaption>
+  <figcaption><i>Grafana: Cluster metrics overview</i></figcaption>
 </div>
 
 To monitor the CPU and memory usage of a Cluster on the Grafana app, follow the steps below:
@@ -205,21 +205,21 @@ To monitor the CPU and memory usage of a Cluster on the Grafana app, follow the 
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/status/instance_secret/instance_secret_operations_administer_data0s_grafana.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Open the Grafana app</i></figcaption>
     </div>
     
 3. Navigate to the Explore section and select ‘Thanos’ as a source and search for the metric `cpu_container_usage_total`, and in the label filters select pod and paste the pod name which we have gotten from step 1, then click on ‘Run Query’. 
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/cluster/cluster_query_history_share_split_last15minutes.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Grafana Explore: CPU usage query</i></figcaption>
     </div>
     
 4. After clicking on the ‘Run Query’, you can find the usage of CPU by a Cluster within the selected time range.
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/cluster/cluster_split_last15minutes_tate_lcst_meel.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>CPU usage by container over time</i></figcaption>
     </div>
     
     The graph represents CPU usage over time for multiple containers (including both init and main containers) that exist within a single pod belonging to a Cluster Resource named `bqcluster`.
@@ -231,14 +231,14 @@ To monitor the CPU and memory usage of a Cluster on the Grafana app, follow the 
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/cluster/cluster_split_last30minutes_thanos_o9eo_explain.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Grafana Explore: memory working set query</i></figcaption>
     </div>
     
 6. On executing the query, users can see the memory used by the pod in the last thirty minutes. 
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/cluster/cluster_tate_lcst_pail_iors_1630.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Memory usage by container over time</i></figcaption>
     </div>
     
     The graph represents memory usage over time for multiple containers inside a single pod. 
@@ -252,14 +252,14 @@ To monitor the CPU and memory usage of a Cluster on the Grafana app, follow the 
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/cluster/cluster_split_absolute_time_range_vercleun.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Adjust the time range in Grafana</i></figcaption>
     </div>
     
 
-## Configure alerts for CPU usage
+## CPU alerts
 
 To automatically track the CPU usage, users can configure a Monitor and a Pager to send alerts when the CPU usage exceeds certain limits. This enables teams to respond immediately to resource failures that may impact dependent components. [Click here to view the steps to set up alerts for CPU usage](/products/data_product/observability/alerts/alerts_high_cpu_usage).
 
-## Configure alerts for memory usage
+## Memory alerts
 
 To automatically track the memory usage, users can configure a Monitor and a Pager to send alerts when the memory usage exceeds certain limits. This enables teams to respond immediately to resource failures that may impact dependent components. [Click here to view the steps to set up alerts for memory usage](/products/data_product/observability/alerts/alerts_high_memory_usage).
