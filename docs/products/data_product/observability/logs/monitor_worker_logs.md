@@ -11,7 +11,7 @@ This section involves the steps to observe the logs of the Worker on different e
 </aside>
 
 
-## Monitor the logs of a Worker using DataOS CLI
+## DataOS CLI
 
 To monitor the  logs of a Worker using DataOS CLI, follow the steps below:
 
@@ -69,7 +69,7 @@ To monitor the  logs of a Worker using DataOS CLI, follow the steps below:
     ```
         
 
-## Monitor the logs of a Worker using Metis UI
+## Metis UI
 
 To monitor the logs of a Worker on the Metis Catalog UI, follow the steps below:
 
@@ -77,28 +77,32 @@ To monitor the logs of a Worker on the Metis Catalog UI, follow the steps below:
     
     <div style="text-align: center;">
     <img src="/products/data_product/observability/logs/worker/image%20(20).png" style="border:1px solid black; width: 70%; height: auto">
+    <figcaption><i>Open the Metis Catalog</i></figcaption>
     </div>
     
 2. Search for the Worker by name.
     
     <div style="text-align: center;">
     <img src="/products/data_product/observability/logs/worker/image%20(21).png" style="border:1px solid black; width: 70%; height: auto">
+    <figcaption><i>Search the Worker in Metis</i></figcaption>
     </div>
     
 3. Click on the Worker that needs to be monitored and navigate to the ‘Runtime’ section.
     
     <div style="text-align: center;">
     <img src="/products/data_product/observability/logs/worker/image%20(22).png" style="border:1px solid black; width: 70%; height: auto">
+    <figcaption><i>Worker runtime in Metis</i></figcaption>
     </div>
     
 4. Click on any pod name for which you want to monitor the logs, and navigate to the ‘Pod Logs’ section.
     
     <div style="text-align: center;">
     <img src="/products/data_product/observability/logs/worker/image%20(23).png" style="border:1px solid black; width: 70%; height: auto">
+    <figcaption><i>Pod Logs in Metis</i></figcaption>
     </div>
     
 
-## Monitor the logs of a Worker using the Operations app
+## Operations App
 
 <aside class="callout">
 🗣
@@ -111,22 +115,26 @@ To monitor the logs of a Worker on the Operations App, follow the steps below:
     
     <div style="text-align: center;">
     <img src="/products/data_product/observability/logs/worker/image%20(24).png" style="border:1px solid black; width: 70%; height: auto">
+    <figcaption><i>Open the Operations app</i></figcaption>
     </div>
     
 2. Navigate to User Space → Resources → Worker and search for the Worker by name.
     
     <div style="text-align: center;">
     <img src="/products/data_product/observability/logs/worker/image%20(25).png" style="border:1px solid black; width: 70%; height: auto">
+    <figcaption><i>Operations > Resources > Worker</i></figcaption>
     </div>
     
 3. Click on the Worker that needs to be monitored and navigate to the ‘Resource Runtime’ section.
     
     <div style="text-align: center;">
     <img src="/products/data_product/observability/logs/worker/image%20(26).png" style="border:1px solid black; width: 70%; height: auto">
+    <figcaption><i>Worker resource runtime in Operations</i></figcaption>
     </div>
     
 4. Click on any runtime node for which you want to monitor the logs, and navigate to the ‘Runtime Node Logs’ section. Here, users can monitor the init container and main container logs.
     
     <div style="text-align: center;">
     <img src="/products/data_product/observability/logs/worker/image%20(27).png" style="border:1px solid black; width: 70%; height: auto">
+    <figcaption><i>Runtime Node Logs in Operations</i></figcaption>
     </div>

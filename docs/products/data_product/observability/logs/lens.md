@@ -6,12 +6,12 @@ Additionally, when configuring a Lens Resource, users have the option to enable 
 
 <div style="text-align: center;">
   <img src="/products/data_product/observability/cpu/lens/lens_dataproductinsightq_services_dataproductinsightsapi_dataproductinsightsmetric_dataproductinsightsrouter.png" style="border:1px solid black; width: 70%; height: auto">
-  <figcaption><i>caption</i></figcaption>
+  <figcaption><i>Lens-generated Services in Metis</i></figcaption>
 </div>
 
 <div style="text-align: center;">
   <img src="/products/data_product/observability/cpu/lens/lens_worker_dataproduct_insights_workers_dataproductinsightsworker.png" style="border:1px solid black; width: 70%; height: auto">
-  <figcaption><i>caption</i></figcaption>
+  <figcaption><i>Lens-generated Worker in Metis</i></figcaption>
 </div>
 
 To monitor logs for these components, users should refer to the documentation linked below.

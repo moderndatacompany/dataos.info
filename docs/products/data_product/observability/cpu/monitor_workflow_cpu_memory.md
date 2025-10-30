@@ -2,7 +2,7 @@
 
 CPU and memory analytics can only be viewed via Operations and Grafana for Workflows that are in a `running` state or are scheduled and the steps are similar to [Services](/products/data_product/observability/cpu/monitor_service_cpu_memory). If a Workflow has already `succeeded` or `failed` its CPU and memory analytics will no longer be accessible through Operations and Grafana. Use the Metis Catalog to view historical data in such cases. 
 
-## Monitor the CPU and memory usage of a Workflow using the Metis Catalog
+## Metis Catalog
 
 This section explains how to monitor the overall CPU and memory usage of a Workflow in DataOS using the Metis UI. Since each Workflow in DataOS runs as a Kubernetes pod this information helps users evaluate runtime efficiency validate resource configurations and troubleshoot performance issues such as throttling or memory exhaustion. 
 
@@ -12,21 +12,21 @@ To monitor the CPU and memory usage of a Workflow on the Metis Catalog UI follow
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/status/instance_secret/instance_secret_metis_catalog_endtoend_metadata_management.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Open the Metis Catalog (Metis UI)</i></figcaption>
     </div>
     
 2. Search for the Workflow by name.
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/workflow/workflow_dataproductsyne_tables_lakehousehemmarketing_lakehousesys01lensqueryevents02_lakehousesrumodemperformancedata.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Search the Workflow in Metis</i></figcaption>
     </div>
     
 3. Click on the Workflow that needs to be monitored and navigate to the ‘Run History’ section.
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/workflow/workflow_dataproductsync_owner_metis_tier_domain.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Workflow run history in Metis</i></figcaption>
     </div>
     
     **Breakdown of the Components:**
@@ -39,7 +39,7 @@ To monitor the CPU and memory usage of a Workflow on the Metis Catalog UI follow
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/workflow/workflow_logical_plan_physical_plan_usage.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Workflow Usage charts</i></figcaption>
     </div>
     
     **CPU usage:**
@@ -54,7 +54,7 @@ To monitor the CPU and memory usage of a Workflow on the Metis Catalog UI follow
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/workflow/workflow_memory_time_series_memory_mebibyte.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Pod memory usage vs request and limit</i></figcaption>
     </div>
     
     **Memory usage:**
@@ -71,7 +71,7 @@ To monitor the CPU and memory usage of a Workflow on the Metis Catalog UI follow
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/cpu/workflow/workflow_aggregates_states_time_slices_type.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>caption</i></figcaption>
+      <figcaption><i>Aggregated CPU and memory statistics</i></figcaption>
     </div>
     
     **Details:**
@@ -91,10 +91,10 @@ To monitor the CPU and memory usage of a Workflow on the Metis Catalog UI follow
     > Overall this data suggests significant over-provisioning for both CPU and memory. Resource configurations can likely be tuned to reduce overhead without affecting workload performance.
     > 
 
-## Configure alerts for CPU usage
+## CPU alerts
 
 To automatically track the CPU usage users can configure a Monitor and a Pager to send alerts when the CPU usage exceeds certain limits. This enables teams to respond immediately to resource failures that may impact dependent components. [Click here to view the steps to set up alerts for CPU usage](/products/data_product/observability/alerts/alerts_high_cpu_usage).
 
-## Configure alerts for memory usage
+## Memory alerts
 
 To automatically track the memory usage users can configure a Monitor and a Pager to send alerts when the memory usage exceeds certain limits. This enables teams to respond immediately to resource failures that may impact dependent components. [Click here to view the steps to set up alerts for memory usage](/products/data_product/observability/alerts/alerts_high_memory_usage).
