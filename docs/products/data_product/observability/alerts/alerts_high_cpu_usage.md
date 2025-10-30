@@ -145,7 +145,8 @@ This section outlines how to configure both a Monitor Resource to observe the in
         msTeams:
           webHookUrl: https://rubikdatasolutions.webhook.office.com/webhookb2/09239cd8-9d59-9621-9217305bf6e22bdde-3ec2-4392-78e9f35a44fb/IncomingWebhook/92dcd2acdaee4e6cac125ac4a729e48f/631bd149-c89d-4d3b-8979-8e364b419/V23AwNxCZx9fToWpqDSYeRkQefDZ-cPn74pY60
         email:
-          - iamgroot@tmdc.io  
+          emailTargets:
+            - iamgroot@tmdc.io  
     ```
     
 7. Once defined, apply the Pager Resource using the command below.
@@ -259,7 +260,8 @@ This section outlines how to configure both a Monitor Resource to observe the in
         msTeams:
           webHookUrl: https://rubikdatasolutions.webhook.office.com/webhookb2/09239cd8-9d59-9621-9217305bf6e22bdde-3ec2-4392-78e9f35a44fb/IncomingWebhook/92dcd2acdaee4e6cac125ac4a729e48f/631bd149-c89d-4d3b-8979-8e364b419/V23AwNxCZx9fToWpqDSYeRkQefDZ-cPn74pY60
         email:
-          - iamgroot@tmdc.io  
+          emailTargets:
+            - iamgroot@tmdc.io  
     ```
     
 6. Once defined, apply the Pager Resource using the command below.
