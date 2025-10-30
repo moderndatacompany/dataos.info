@@ -12,7 +12,7 @@
 
     **Databricks Depot support is only for Lens and not supported to be used in other Stacks or Resources:**
 
-      - Databricks can only be referenced as a source for Lens, and cannot be used in other stacks or resources yet.
+      - Databricks can only be referenced as a source for Lens, and cannot be used in other Stacks or Resources yet.
 
       - Metadata scanning for Databricks tables is not supported.
       
