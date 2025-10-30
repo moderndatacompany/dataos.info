@@ -6,7 +6,7 @@ The status indicates the Resource's lifecycle state, such as `active`, `error`, 
 🗣 A Resource is considered healthy when its status is `active` and its runtime is either `running` or `succeeded`, depending on the type of workload it handles. For long-running services, a `running` runtime indicates health, whereas for batch jobs or workflows, `succeeded` confirms successful execution. Both signals together ensure the Resource is available and behaving as expected.
 </aside>
 
-## Monitor the status and runtime of a Cluster using DataOS CLI
+## DataOS CLI
 
 The status and Runtime of a Cluster can be monitored using the DataOS CLI by executing the following command.
 
@@ -26,7 +26,7 @@ NAME    | VERSION |  TYPE   | WORKSPACE |   STATUS    |  RUNTIME  |         OWNE
 lakehouse  | v1      | cluster | public    | active | running:1 | iamgroot 
 ```
 
-## Monitor the status and runtime of a Cluster using Metis
+## Metis Catalog
 
 To monitor the status and runtime of a Cluster on the Metis Catalog UI, follow the steps below:
 
@@ -34,25 +34,25 @@ To monitor the status and runtime of a Cluster on the Metis Catalog UI, follow t
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/status/instance_secret/instance_secret_metis_catalog_endtoend_metadata_management.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>Observability in DataOS</i></figcaption>
+      <figcaption><i>Open the Metis Catalog</i></figcaption>
     </div>
     
 2. Search for the Cluster by name.
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/status/cluster/cluster_lakehouse_clusters_lakehouse_test.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>Observability in DataOS</i></figcaption>
+<figcaption><i>Search the Cluster in Metis Catalog</i></figcaption>
     </div>
     
 3. Click on the Cluster that needs to be monitored and check the status and runtime.
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/status/cluster/cluster_dataos_metis_activity_products_assets.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>Observability in DataOS</i></figcaption>
+      <figcaption><i>Cluster details in Metis</i></figcaption>
     </div>
     
 
-## Monitor the status and runtime of a Cluster on Operations
+## Operations App
 
 To monitor the status and runtime of a Cluster on the Operations app, follow the steps below:
 
@@ -60,14 +60,14 @@ To monitor the status and runtime of a Cluster on the Operations app, follow the
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/status/instance_secret/instance_secret_operations_administer_data0s_grafana.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>Observability in DataOS</i></figcaption>
+<figcaption><i>Open the Operations App</i></figcaption>
     </div>
     
 2. Under the User space → type → Cluster, search for the Cluster that needs to be monitored.
 
     <div style="text-align: center;">
       <img src="/products/data_product/observability/status/cluster/cluster_adataos_operations_userspace_core_kernel.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>Observability in DataOS</i></figcaption>
+      <figcaption><i>Operations > User Space > Cluster</i></figcaption>
     </div>
 
     
@@ -75,15 +75,15 @@ To monitor the status and runtime of a Cluster on the Operations app, follow the
     
     <div style="text-align: center;">
       <img src="/products/data_product/observability/status/cluster/cluster_dataos_operations_user_spac_user.png" style="border:1px solid black; width: 70%; height: auto">
-      <figcaption><i>Observability in DataOS</i></figcaption>
+      <figcaption><i>Cluster resource details in Operations</i></figcaption>
     </div>
 
     
 
-## Configure Alerts for Status Changes
+## Status alerts
 
 To proactively track critical state transitions, users can configure a Monitor and Pager to send alerts when the status of a Cluster changes to values like `error` or `deleted`. This enables teams to respond immediately to resource failures, misconfigurations, or unexpected deletions that may impact dependent components. [Click here to view the steps to set up alerts for status changes](/products/data_product/observability/alerts/alerts_resource_status_change).
 
-## Configure Alerts for Runtime Changes
+## Runtime alerts
 
 To proactively detect execution issues, users can configure a Monitor and Pager to send alerts when the runtime of a Cluster enters a failure state, such as `failed` or remains stuck in `pending`. This ensures timely awareness of broken or stalled executions that may affect downstream processes. [Click here to view the steps to set up alerts for runtime failures.](/products/data_product/observability/alerts/alerts_runtime_failure).

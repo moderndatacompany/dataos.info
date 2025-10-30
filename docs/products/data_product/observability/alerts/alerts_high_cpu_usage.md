@@ -2,7 +2,7 @@
 
 Whenever a DataOS Resource is created, it runs as a single pod in the underlying Kubernetes cluster. These pods inherit resource definitions such as CPU and memory limits or requests from the Resource configurations. Observability in this context is applied at the pod level by monitoring pod metrics, considering a single pod per Resource, and this effectively helps in understanding the behavior and performance of the higher-level DataOS Resources that generated them.
 
-## Alerts when CPU usage reaches the dedicated CPU limit
+## CPU limit breach
 
 This section outlines how to configure both a Monitor Resource to observe the incident condition and a Pager Resource to send alerts when the condition is met. This type of alert is useful when CPU limits are configured for the Resource. Exceeding the CPU limit can lead to throttling, affecting the Resource's performance. This alert helps in proactively detecting such behavior.
 
@@ -145,7 +145,8 @@ This section outlines how to configure both a Monitor Resource to observe the in
         msTeams:
           webHookUrl: https://rubikdatasolutions.webhook.office.com/webhookb2/09239cd8-9d59-9621-9217305bf6e22bdde-3ec2-4392-78e9f35a44fb/IncomingWebhook/92dcd2acdaee4e6cac125ac4a729e48f/631bd149-c89d-4d3b-8979-8e364b419/V23AwNxCZx9fToWpqDSYeRkQefDZ-cPn74pY60
         email:
-          - iamgroot@tmdc.io  
+          emailTargets:
+            - iamgroot@tmdc.io  
     ```
     
 7. Once defined, apply the Pager Resource using the command below.
@@ -156,7 +157,7 @@ This section outlines how to configure both a Monitor Resource to observe the in
     
 8. Get notified! When the CPU usage condition is met, the incident is triggered, and the Pager sends the notification to the configured destination.
 
-## Alerts when CPU usage is greater than the requested CPU usage
+## Usage exceeds request
 
 This section outlines how to configure both a Monitor Resource to observe the incident condition and a Pager Resource to send alerts when the condition is met. This alert is useful when a pod consumes more CPU than what was originally requested, indicating possible scheduling pressure or a need to adjust resource allocation.
 
@@ -259,7 +260,8 @@ This section outlines how to configure both a Monitor Resource to observe the in
         msTeams:
           webHookUrl: https://rubikdatasolutions.webhook.office.com/webhookb2/09239cd8-9d59-9621-9217305bf6e22bdde-3ec2-4392-78e9f35a44fb/IncomingWebhook/92dcd2acdaee4e6cac125ac4a729e48f/631bd149-c89d-4d3b-8979-8e364b419/V23AwNxCZx9fToWpqDSYeRkQefDZ-cPn74pY60
         email:
-          - iamgroot@tmdc.io  
+          emailTargets:
+            - iamgroot@tmdc.io  
     ```
     
 6. Once defined, apply the Pager Resource using the command below.

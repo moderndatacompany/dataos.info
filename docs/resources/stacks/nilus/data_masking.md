@@ -300,12 +300,15 @@ Modifies numeric data while preserving approximate magnitude or distribution.
 
 Transforms date or datetime values while preserving logical time intervals.
 
+!!! warning
+    Date masking algorithms require explicit type definitions for columns, specified as `TEXT` in the `type-hints` configuration.
+
 
 - **`date_shift`**
 
     Randomly shifts dates by up to *N* days.
 
-    This requires the destination column to be of type `TEXT`. You need to define the column inside `type-hints`.
+    `date_shift` requires the destination column to be of type `TEXT` as showm below inside `type-hints`:
 
     ```yaml
     source:
@@ -325,7 +328,7 @@ Transforms date or datetime values while preserving logical time intervals.
 
     Retains only the year component.
 
-    This requires the destination column to be of type `TEXT`. You need to define the column inside `type-hints`.
+    `year_only` requires the destination column to be of type `TEXT` as showm below inside `type-hints`:
     
 
     ```yaml
@@ -344,7 +347,7 @@ Transforms date or datetime values while preserving logical time intervals.
 
     Preserves the month and year components.
 
-    This requires the destination column to be of type `TEXT`. You need to define the column inside `type-hints`.
+    `month_year` requires the destination column to be of type `TEXT` as showm below inside `type-hints`:
 
 
     ```yaml

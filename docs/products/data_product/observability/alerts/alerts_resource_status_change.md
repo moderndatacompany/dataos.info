@@ -116,4 +116,5 @@ This section outlines how to configure a Monitor Resource that watches for a cha
     
     <div style="text-align: center;">
     <img src="/products/data_product/observability/alerts/alerts_notified_posts_files_notes_reply.png" style="border:1px solid black; width: 70%; height: auto">
+    <figcaption><i>Teams alert for Resource status change</i></figcaption>
     </div>
