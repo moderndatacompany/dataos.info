@@ -4,13 +4,13 @@
 
     **The psql endpoint is not available for Databricks source, meaning:**
 
-      - Users cannot query semantic models via the SQL API.
+      - Users cannot query semantic models via the PostgreSQL API.
 
       - BI tools that rely on PSQL based connections will not be able to access semantic model.
 
       - BI Sync is not supported 
 
-    **Databricks depot is not supported to be used in other stacks or resources:**
+    **Databricks Depot support is only for Lens and not supported to be used in other Stacks or Resources:**
 
       - Databricks can only be referenced as a source for Lens, and cannot be used in other stacks or resources yet.
 
@@ -26,7 +26,7 @@ Before setting up the connection, ensure all necessary prerequisites are in plac
 
 - **JDBC Connection Details:** Includes the host, port, httpPath, and database parameters obtained from the Databricks SQL Warehouse connection URL.
 
-- **Personal Access Token (PAT):** Used for authentication. This token must be securely stored within an Instance Secret.
+- **Databricks Personal Access Token (PAT):** Used for authentication to Databricks. This token must be securely stored within an Instance Secret.
 
 **2. DataOS Requirements**
 
