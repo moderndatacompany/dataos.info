@@ -14,7 +14,7 @@ Together, these init containers ensure the object storage environment is correct
 
 The below section involves the steps to observe the logs of a Depot on different endpoints, such as DataOS CLI, Metis UI, and Operations App. 
 
-## Monitor the logs of a Depot using DataOS CLI
+## DataOS CLI
 
 To monitor the  logs of a Depot using DataOS CLI, follow the steps below:
 
@@ -68,7 +68,7 @@ If the init container logs also do not appear, it may indicate that there are in
     No errors are present in the output, and the startup appears to be smooth and complete.
     
 
-## Monitor the logs of a Depot using Metis UI
+## Metis UI
 
 To monitor the logs of a Depot on the Metis Catalog UI, follow the steps below:
 
@@ -111,7 +111,7 @@ To monitor the logs of a Depot on the Metis Catalog UI, follow the steps below:
     </div>
     
 
-## Monitor the logs of a Depot using the Operations app
+## Operations App
 
 To monitor the logs of a Depot on the Operations App, follow the steps below:
 

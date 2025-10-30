@@ -21,13 +21,13 @@ The dashboard is organized into three key sections:
 - Pod Resource Overview
 - Microservices (Container Name) Resources Overview
 
-## Node Resource Overview
+## Node overview
 
 This section shows per-node statistics including pod limits, active pods, resource usage percentages (CPU, memory, disk), and absolute values for CPU cores and memory. This overview provides a quick assessment of node health and capacity utilization, enabling proactive resource management and scaling decisions. The panel displays current values and trends that help identify potential bottlenecks or performance issues before they impact service availability.
 
 ![image.png](K8%20Cluster%20Entities%20Dashboard/image%201.png)
 
-### **Node Information Detail**
+### Node details
 
 This panel offers a per-node breakdown of CPU, memory, disk, and pod utilization metrics across three nodes in the `sentinel` namespace and `pro-alien.dataos.app` environment.
 
@@ -533,7 +533,7 @@ sum(kube_pod_container_resource_limits{origin_prometheus=~"",resource="memory", 
 
 This query calculates the memory limits percentage. It divides the sum of all memory limits defined across pods by the total allocatable memory across all nodes. This shows the upper bound of memory usage that pods are allowed to reach before being terminated.
 
-### Node CPU Number of Cores
+### Node CPU cores
 
 ![image.png](K8%20Cluster%20Entities%20Dashboard/image%205.png)
 
@@ -551,7 +551,7 @@ sum(kube_node_status_allocatable{origin_prometheus=~"",resource="cpu", unit="cor
 
 This PromQL query calculates the total CPU capacity available across all nodes in a Kubernetes cluster. It sums up the allocatable CPU cores from all nodes by using the `kube_node_status_allocatable` metric, filtering specifically for CPU resources measured in core units. The query applies regex pattern matching to include all nodes in the cluster, providing a comprehensive view of the total CPU resources that can be allocated to workloads.
 
-### Node Storage Information
+### Node storage
 
 ![image.png](K8%20Cluster%20Entities%20Dashboard/image%206.png)
 
@@ -569,7 +569,7 @@ sum (container_fs_usage_bytes{origin_prometheus=~"",device=~"^/dev/.*$",id="/",n
 
 This PromQL query calculates the overall disk usage ratio across all nodes in a Kubernetes cluster. It divides the sum of all container filesystem usage bytes by the sum of all filesystem limits across nodes. The query filters for actual block devices (matching `/dev/.*` pattern), targets the root filesystem (`id="/"`), and includes all nodes. This provides a single percentage value representing cluster-wide storage utilization, which is displayed as 0.1 B/s in the Node Storage Information panel.
 
-### Node Memory Information
+### Node memory
 
 ![image.png](K8%20Cluster%20Entities%20Dashboard/image%207.png)
 
@@ -604,7 +604,7 @@ sum (irate(container_cpu_usage_seconds_total{origin_prometheus=~"",container!=""
 
 This PromQL query calculates the overall CPU utilization ratio across all nodes in a Kubernetes cluster. It divides the sum of CPU usage rate (measured over a 2-minute window using the irate function) by the total allocatable CPU cores across all nodes. The query specifically excludes system containers and considers all nodes in the cluster using regex pattern matching. This metric provides a percentage value representing how much of the cluster's total CPU capacity is currently being consumed by all workloads.
 
-### Nodes with Pod
+### Nodes with pods
 
 ![image.png](K8%20Cluster%20Entities%20Dashboard/image%209.png)
 
@@ -646,7 +646,7 @@ sum (irate(container_network_transmit_bytes_total{origin_prometheus=~"",node=~"^
 
 This PromQL query calculates the total outbound network traffic rate across all nodes in a Kubernetes cluster. It uses the `irate` function to measure the rate of change in transmitted bytes over a 2-minute window, aggregating data from all nodes and namespaces. The query sums these values and multiplies by 8 to convert from bytes to bits, which is typically how network bandwidth is measured. This metric is useful for monitoring overall cluster network utilization, detecting traffic spikes, and capacity planning for network resources.
 
-### Namespace Resource Statistics
+### Namespace resources
 
 ![image.png](K8%20Cluster%20Entities%20Dashboard/image%2011.png)
 
@@ -714,7 +714,7 @@ This PromQL query calculates the percentage of memory currently being used on ea
 
 ---
 
-### Check Node Disk Pressure
+### Node disk pressure
 
 ![image.png](K8%20Cluster%20Entities%20Dashboard/image%2014.png)
 
@@ -754,7 +754,7 @@ This panel tracks the average image pull durations across nodes, segmented by im
 
 This PromQL query calculates the average image pull duration across all nodes in a Kubernetes cluster, grouped by image size and node name. It uses the `kubelet_image_pull_duration_seconds_sum` metric and filters to include all nodes with the regex pattern `node=~"^.*$"`. 
 
-### Monitor network latency between nodes
+### Node network latency
 
 ![image.png](K8%20Cluster%20Entities%20Dashboard/image%2017.png)
 
@@ -768,7 +768,7 @@ This PromQL query calculates the rate of network packets received by each node i
 
 ---
 
-### Check overall cluster node health
+### Cluster node health
 
 ![image.png](K8%20Cluster%20Entities%20Dashboard/image%2018.png)
 
@@ -792,7 +792,7 @@ This PromQL query calculates the total number of Kubernetes nodes that are in a 
 
 ---
 
-### Check the average node spin-up time
+### Avg node spin-up time
 
 ![image.png](K8%20Cluster%20Entities%20Dashboard/image%2019.png)
 
@@ -806,7 +806,7 @@ This PromQL query calculates the rate of change in node startup duration over a 
 
 ---
 
-### Monitor pre-registration node spin-up time
+### Pre-registration spin-up time
 
 ![image.png](K8%20Cluster%20Entities%20Dashboard/image%2020.png)
 
@@ -822,7 +822,7 @@ This PromQL query calculates the rate of change in node pre-registration duratio
 
 ---
 
-### Kubernetes Node Memory Pressure
+### Node memory pressure
 
 ![image.png](K8%20Cluster%20Entities%20Dashboard/image%2021.png)
 
@@ -836,7 +836,7 @@ Displays whether any node is under memory pressure. A value of 1 signals high me
 
 This PromQL query (`kube_node_status_condition{condition="MemoryPressure",status="true"}`) monitors Kubernetes nodes experiencing memory pressure. It specifically filters for nodes where the condition "MemoryPressure" has a status value of "true", which indicates the node is running low on available memory resources. When this metric returns a value of 1 for any node, it signals that the node's memory is constrained, which could impact pod scheduling and container operations. This metric is critical for proactive cluster health monitoring as memory pressure can lead to pod evictions and degraded application performance.
 
-## Pod Resource Overview
+## Pod overview
 
 The Pod Resource Overview section provides insights into individual pod behavior and resource utilization patterns across the Kubernetes cluster. This visualization helps DevOps teams and SREs identify resource-intensive workloads, potential bottlenecks, and anomalous pod behaviors that may impact overall system performance.
 
@@ -870,7 +870,7 @@ This sums the working set memory used by each pod (excluding `POD`), and lists t
 
 ---
 
-### Pod Containers CPU Utilization (Maximum 100% Associable Nodes)
+### Pod CPU utilization
 
 ![image.png](K8%20Cluster%20Entities%20Dashboard/image%2025.png)
 
@@ -923,7 +923,7 @@ This panel tracks the total number of pods across the cluster that are currently
 
 This PromQL query `sum(kube_pod_status_phase{phase="Pending"})` calculates the total number of Kubernetes pods that are currently in the "Pending" phase across the entire cluster. The query filters for pods with the phase status of "Pending" and then sums them up.
 
-### Pod Network Bandwidth per Second (Associable Nodes)
+### Pod network bandwidth
 
 ![image.png](K8%20Cluster%20Entities%20Dashboard/image%2028.png)
 
@@ -937,7 +937,7 @@ This PromQL query calculates the maximum network receive bandwidth across all po
 
 ---
 
-### Check Overall Cluster Pod Count
+### Cluster pod count
 
 ![image.png](K8%20Cluster%20Entities%20Dashboard/image%2029.png)
 
@@ -951,7 +951,7 @@ This PromQL query `count(kube_pod_info)` counts the total number of active pods 
 
 ---
 
-### Check Overall Memory Utilization
+### Cluster memory usage
 
 ![image.png](K8%20Cluster%20Entities%20Dashboard/image%2030.png)
 
@@ -963,7 +963,7 @@ This graph shows memory consumption (in GiB) across all namespaces, calculated f
 
 This PromQL query calculates the total memory usage per Kubernetes namespace by summing up the working set memory bytes across all containers and then dividing by 1,073,741,824 (1024³) to convert from bytes to gibibytes (GiB). The working set memory represents the actual memory in active use that cannot be reclaimed by the kernel, making it a good indicator of real memory consumption. By aggregating this metric by namespace, the query enables administrators to quickly identify which namespaces are consuming the most memory resources across the cluster.
 
-## Microservices (Container Name) Resource Overview
+## Microservices overview
 
 This section provides insights into container-level resource consumption and performance metrics across the Kubernetes cluster. It enables operations teams to identify specific microservices causing resource pressure, track container lifecycle states, and understand utilization patterns at a granular level. By monitoring containers directly, platform engineers can pinpoint application-specific issues that might be obscured in pod or node-level views, allowing for targeted optimization and more effective troubleshooting of application components.
 
@@ -1099,7 +1099,7 @@ This PromQL query sums up the memory resource requests for all containers across
 
 ---
 
-### Microservices (Container Name) Average CPU Usage (Maximum100%)
+### Microservices CPU usage %
 
 ![image.png](K8%20Cluster%20Entities%20Dashboard/image%2033.png)
 
@@ -1115,7 +1115,7 @@ This PromQL query calculates the average CPU usage of containers as a percentage
 
 ---
 
-### Microservice (Container Name) Average Memory Utilization
+### Microservices memory usage %
 
 ![image.png](K8%20Cluster%20Entities%20Dashboard/image%2034.png)
 
@@ -1137,7 +1137,7 @@ The first query uses working set memory, which is more reflective of memory acti
 
 ---
 
-### Microservice (Container Name) Network Bandwidth per Second (Associable Nodes)
+### Microservices network bandwidth
 
 ![image.png](K8%20Cluster%20Entities%20Dashboard/image%2035.png)
 
@@ -1167,7 +1167,7 @@ These PromQL queries measure network bandwidth usage for containers in a Kuberne
 - The second query aggregates outbound network traffic (transmitted bytes) per container and multiplies by 8 (likely to convert to bits)
 - The third and fourth queries calculate net bandwidth (receive minus transmit rates) for specific pod patterns
 
-### Microservices (Container Name) Overall CPU Cores Used
+### Microservices CPU cores used
 
 ![image.png](K8%20Cluster%20Entities%20Dashboard/image%2036.png)
 
@@ -1191,7 +1191,7 @@ This PromQL query calculates the total CPU usage per container across all namesp
 
 ---
 
-### Microservices (Container Name) Overall Memory Usage
+### Microservices memory usage
 
 ![image.png](K8%20Cluster%20Entities%20Dashboard/image%2037.png)
 
@@ -1213,7 +1213,7 @@ sum(container_spec_memory_limit_bytes{origin_prometheus=~".*", container =~".*",
 
 This PromQL query sums up all memory limits defined for containers across the Kubernetes cluster, grouped by container name. It retrieves the `container_spec_memory_limit_bytes` metric, which represents the maximum memory allocation allowed for each container as specified in their resource configurations. The query filters to include all containers while excluding empty containers and the Kubernetes internal "POD" containers, spanning all namespaces. This metric is crucial for capacity planning and for calculating memory utilization percentages when compared against actual memory usage.
 
-### Microservices (Container Name) Pod Number
+### Microservices pod count
 
 ![image.png](K8%20Cluster%20Entities%20Dashboard/image%2038.png)
 
