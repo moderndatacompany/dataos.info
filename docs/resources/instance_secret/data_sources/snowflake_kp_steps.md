@@ -34,9 +34,9 @@ You can use the same password for all three prompts.
 However, ensure that you securely note down the passphrase, as it will be required later when configuring Snowflake authentication.
 
 
-## Step 2: Retrieve the Private Key for Snowflake
+## Step 2: Retrieve the Private Key 
 
-Run the following command to display the private key contents:
+Run the following command to display the private key contents which will be used while creating Instance Secret:
 
 ```bash
 cd ~/.snowflake/keys
