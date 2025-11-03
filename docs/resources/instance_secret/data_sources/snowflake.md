@@ -75,6 +75,8 @@ Alternatively, if access is managed through use cases, ensure the following use 
 
   For key generation steps, see the [Generate RSA Key Pair section](/resources/instance_secret/data_sources/snowflake_kp_steps/).
 
+- **Passphrase**: A secure passphrase to encrypt the private key.
+
 ## Steps to configure Key-Pair Authentication
 
 Snowflake is a data warehouse that serves as a centralized repository for structured data, enabling efficient query and analysis. Follow the steps below to complete the creation process efficiently and securely.
