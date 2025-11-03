@@ -32,66 +32,64 @@ Create a Python Stack manifest file using the template given below.
     <summary>python_stack.yaml</summary>
 
 ```yaml
-name: python-3-12
-version: v1alpha
-type: stack
-tags:
-    - dataos:type:resource
-    - dataos:resource:stack
-    - dataos:layer:user
-description: dataos python stack v1alpha version 1
-layer: user
+name: "python-3-12"
+version: "v1alpha"
+type: "stack"
+layer: "user"
+description: "dataos python stack v1alpha version 1"
 stack:
-    name: python3
-    version: '1.0'
-    reconciler: stackManager
-    image:
-    registry: docker.io
-    repository: library
-    image: python
-    tag: 3.12-slim-bullseye
-    stackSpecValueSchema:
-    jsonSchema: >
-        { "$schema": "http://json-schema.org/draft-07/schema#", "type": "object",
-        "properties": { "repo": { "type": "object", "properties": { "url": {
-        "type": "string" }, "syncFlags": { "type": "array", "items": { "type":
-        "string" } }, "baseDir": { "type": "string" } }, "required": [ "url",
-        "baseDir" ] } }, "required": [ "repo" ] }
-    serviceConfig:
+  name: "python3"
+  version: "1.0"
+  reconciler: "stackManager"
+  dataOsAddressJqFilters:
+    - .depots
+  secretProjection:
+    type: "envVars"
+  image:
+    registry: "docker.io"
+    repository: "library"
+    image: "python"
+    tag: "3.12-slim-bullseye"
+    auth:
+      imagePullSecret: "dataos-container-registry"
+  stackSpecValueSchema:
+    jsonSchema: |
+      { "$schema": "http://json-schema.org/draft-07/schema#", "type": "object", "properties": { "repo": { "type": "object", "properties": { "url": { "type": "string" }, "syncFlags": { "type": "array", "items": { "type": "string" } }, "baseDir": { "type": "string" } }, "required": [ "url", "baseDir" ] } }, "required": [ "repo" ] }
+  serviceConfig:
     containerResourceTemplate: |
-        {{- $repo := .ApplicationSpec.StackSpec.repo }}
-        initContainers:
+      {{- $repo := .ApplicationSpec.StackSpec.repo }}
+      initContainers:
         - command:
-            - /git-sync
-            args:
-            - --repo={{ getNested $repo "url" }}
-            - --one-time=true
-            - --root=/etc/dataos/work
-            {{- if hasKey $repo "syncFlags" }}
-            {{- range $flag := getNested $repo "syncFlags" }}
-            - {{ $flag }}
-            {{- end }}
-            {{- end }}
-            image: docker.io/tmdcio/git-sync:latest
-            imagePullPolicy: IfNotPresent
-            name:  "{{.Name}}{{.Stamp}}-ic"
-            {{ if .ApplicationSpec.Resources -}}
-            resources:
+          - /git-sync
+          args:
+          - --repo={{ getNested $repo "url" }}
+          - --one-time=true
+          - --root=/etc/dataos/work
+          {{- if hasKey $repo "syncFlags" }}
+          {{- range $flag := getNested $repo "syncFlags" }}
+          - {{ $flag }}
+          {{- end }}
+          {{- end }}
+          image: 933570616564.dkr.ecr.us-west-2.amazonaws.com/released-images/git-sync:latest
+          imagePullPolicy: IfNotPresent
+          name:  "{{.Name}}{{.Stamp}}-ic"
+          {{ if .ApplicationSpec.Resources -}}
+          resources:
         {{toYaml .ApplicationSpec.Resources | indent 4}}
-            {{- end }}
-            volumeMounts:
-            - mountPath: /etc/dataos/work
+          {{- end }}
+          volumeMounts:
+          - mountPath: /etc/dataos/work
             name: workdir
-            envFrom:
-            - secretRef:
-                name: "{{.Name}}-{{.Type}}{{.Stamp}}-env"
-            {{ if .EnvironmentVarsFromSecret }}
-            {{- range $secName := .EnvironmentVarsFromSecret }}
-            - secretRef:
-                name: "{{$secName}}"
-            {{- end }}
-            {{- end }}
-        container:
+          envFrom:
+          - secretRef:
+              name: "{{.Name}}-{{.Type}}{{.Stamp}}-env"
+          {{ if .EnvironmentVarsFromSecret }}
+          {{- range $secName := .EnvironmentVarsFromSecret }}
+          - secretRef:
+              name: "{{$secName}}"
+          {{- end }}
+          {{- end }}
+      container:
         name: {{.Name}}{{.Stamp}}-main
         image: "{{.Image}}"
         imagePullPolicy: IfNotPresent
@@ -99,15 +97,15 @@ stack:
         - sh
         - -c
         - |
-            # cd into the work root
-            cd /etc/dataos/work &&
-            pwd &&
-            # move into your repo’s baseDir
-            cd {{ getNested $repo "baseDir" }} &&
-            # install dependencies from requirements.txt
-            pip install --no-cache-dir -r requirements.txt &&
-            # finally, hand off to the real entrypoint
-            exec "$@"
+          # cd into the work root
+          cd /etc/dataos/work &&
+          pwd &&
+          # move into your repo’s baseDir
+          cd {{ getNested $repo "baseDir" }} &&
+          # install dependencies from requirements.txt
+          pip install --no-cache-dir -r requirements.txt &&
+          # finally, hand off to the real entrypoint
+          exec "$@"
         - --
         args:
         - python3
@@ -124,55 +122,51 @@ stack:
         volumeMounts:
         {{ if .HasSecretRefs }}
         - name: dataos-secret-mount
-            mountPath: "{{.DataOsSecretMountPath}}"
-            readOnly: true
+          mountPath: "{{.DataOsSecretMountPath}}"
+          readOnly: true
         {{- end }}
         - name: workdir
-            mountPath: /etc/dataos/work
+          mountPath: /etc/dataos/work
         {{ if .HasConfigConfs }}
         - name: dataos-config-mount
-            mountPath: "{{.DataOsConfigMountPath}}"
-            readOnly: true
+          mountPath: "{{.DataOsConfigMountPath}}"
+          readOnly: true
         {{- end }}
         {{ if .ApplicationSpec.TempVolume -}}
         - name: {{.Name}}-{{.Type}}{{.Stamp}}-tdm
-            mountPath: "{{.DataTempMountPath}}"
-            subPath: {{.Name}}{{.Stamp}}
+          mountPath: "{{.DataTempMountPath}}"
+          subPath: {{.Name}}{{.Stamp}}
         {{- end }}
         {{ if .ApplicationSpec.PersistentVolume -}}
         - name: {{.Name}}-{{.Type}}{{.Stamp}}-pdm
-            mountPath: "{{.DataPersistentMountPath}}/{{.ApplicationSpec.PersistentVolume.Directory}}"
-            subPath: "{{.ApplicationSpec.PersistentVolume.Directory}}"
+          mountPath: "{{.DataPersistentMountPath}}/{{.ApplicationSpec.PersistentVolume.Directory}}"
+          subPath: "{{.ApplicationSpec.PersistentVolume.Directory}}"
         {{- end }}
         {{ if .Volumes }}
         {{- range $volume := .Volumes }}
         - name: {{$volume.Name}}
-            mountPath: "{{$volume.MountPath}}"
-            readOnly: {{$volume.ReadOnly}}
-            {{ if $volume.SubPath }}
-            subPath: "{{$volume.SubPath}}"
-            {{- end }}
+          mountPath: "{{$volume.MountPath}}"
+          readOnly: {{$volume.ReadOnly}}
+          {{ if $volume.SubPath }}
+          subPath: "{{$volume.SubPath}}"
+          {{- end }}
         {{- end }}
         {{- end }}
         {{ if .ApplicationSpec.Resources -}}
         resources:
-        {{toYaml .ApplicationSpec.Resources | indent 4}}
+      {{toYaml .ApplicationSpec.Resources | indent 4}}
         {{- end }}
         env:
-            - name: POD_NAME
+          - name: POD_NAME
             valueFrom:
-                fieldRef:
+              fieldRef:
                 fieldPath: metadata.name
         {{ if .ApplicationSpec.EnvironmentVars }}
-            {{- range $conf, $value := .ApplicationSpec.EnvironmentVars }}
-            - name: {{$conf}}
+          {{- range $conf, $value := .ApplicationSpec.EnvironmentVars }}
+          - name: {{$conf}}
             value: {{ $value | quote }}
-            {{- end }}
+          {{- end }}
         {{- end}}
-    dataOsAddressJqFilters:
-    - .depots
-    secretProjection:
-    type: envVars
 ```
 </details>
 
