@@ -1,6 +1,17 @@
 # Snowflake
 
-### Pre-requisites
+<aside class="callout">
+⚠️ Snowflake no longer supports password-based authentication.
+All authentication must now use Key-Pair Authentication with RSA keys
+</aside>
+
+With Key-Pair Authentication:
+
+- Create a **public/private RSA key pair** locally.
+- Register the **public key** with the Snowflake user account.
+- Register the **private key** with DataOS using an Instance Secret.
+
+## Pre-requisites
 
 To create an Instance Secret for securing Snowflake credentials, you must have the following information:
 
@@ -51,15 +62,22 @@ Alternatively, if access is managed through use cases, ensure the following use 
 
 - **Username**: The Snowflake username used to authenticate to the Snowflake account. This can be obtained from your Snowflake administrator or found in your Snowflake account settings.
 
-- **Password**: The password associated with the Snowflake username for authentication. If you do not have the password, you will need to reset it via the Snowflake web interface or contact your Snowflake administrator to obtain it.
+- **RSA Key Pair**:
+  You must generate a public and private RSA key pair in PKCS#8 PEM format for key-pair authentication.
 
-Ensure you have these credentials ready before proceeding with the Instance Secret creation process.
+    - The public key (`snowflake_rsa_key.pub`) must be registered with your Snowflake user account using:
 
-## Create an Instance Secret for securing Snowflake credentials
+        ```sql
+        ALTER USER <snowflake-username> SET RSA_PUBLIC_KEY='<your_public_key>';
+        ```
+ 
+    - The private key (`snowflake_rsa_key.p8`)  will be used in Instance Secret.
 
-Snowflake is a data warehouse that serves as a centralized repository for structured data, enabling efficient query and analysis.
+  For key generation steps, see the [Generate RSA Key Pair section](/resources/instance_secret/data_sources/snowflake_kp_steps/).
 
-To create a Snowflake Instance Secret in DataOS, ensure you have access to the DataOS Command Line Interface (CLI) and the required permissions. Follow the steps below to complete the creation process efficiently and securely.
+## Steps to configure Key-Pair Authentication
+
+Snowflake is a data warehouse that serves as a centralized repository for structured data, enabling efficient query and analysis. Follow the steps below to complete the creation process efficiently and securely.
 
 ### **Step 1: Create a manifest file**
 
@@ -92,10 +110,14 @@ Begin by creating a manifest file to hold the configuration details for your Sno
     instance-secret:
       type: key-value-properties # Secret type
       acl: r # Access control: 'r' for read-only
-      data:
-        username: ${username} # replace with snowflake username
-        password: ${password} # replace with snowflake password
-
+        data:
+          username: ${snowflake-username}
+          auth_mode: key-pair
+          passphrase: ${pass phrase}
+          key: |
+            -----BEGIN ENCRYPTED PRIVATE KEY-----
+            add the private key here
+            -----END ENCRYPTED PRIVATE KEY-----       
     ```
 
 === "Read-write Instance Secret"
@@ -110,12 +132,47 @@ Begin by creating a manifest file to hold the configuration details for your Sno
     layer: user # DataOS layer
     instance-secret:
       type: key-value-properties # Secret type
-      acl: rw # Access control: 'rw' for read-write
-      data:
-        username: ${username} # replace with snowflake username
-        password: ${password} # replace with snowflake password
+      acl: rw # Access control: 'r' for read-only
+        data:
+          username: ${snowflake-username}
+          auth_mode: key-pair
+          passphrase: ${pass phrase}
+          key: |
+            -----BEGIN ENCRYPTED PRIVATE KEY-----
+            add the private key here
+            -----END ENCRYPTED PRIVATE KEY-----   
     ```
 
+=== "Example Usage"
+
+    ```yaml
+    # Snowflake Read Instance-secret Manifest
+
+    name: sfdepottest-r # Unique identifier for Resource
+    version: v1 # Manifest version
+    type: instance-secret # Type of the Resource
+    description: snowflake credentails # Purpose of the Instance-secret
+    layer: user # DataOS layer
+    instance-secret:
+    type: key-value-properties
+    acl: r
+    data:
+        username: TESTUSER_1
+        auth_mode: key-pair
+        passphrase: SnoF@k3!2025
+        key: |        # Key provided here is only for demonstration purpose, please provide the actual key                                                    
+        -----BEGIN ENCRYPTED PRIVATE KEY-----
+        MIIFHDBOBgkqhkiG9w0BBQ0wQTApBgkqhkiG9w0BBQwwHAQIJwUWFEM/l8UCAggA
+        MAwGCCqGSIb3DQIJBQAwFAYIKoZIhvcNAwcECMg2/lnrMBUfBIIEyBkriuK7ZXw6
+        b3xpJiRRvIdd+Ii9Vd1oxU+qwD/LsBi0sIXSnKzGkEgTEUEpuSuuEH0p8kjOLcbm
+        JfVY0iU9ZKdgDb3aqsG8sc4PvSH8xOCzE0Oy4sWH4jnoKMryOi43yd+tR16kR+u5
+        PybjvuOeLRB1EUaftrCYe69SzZkZh8dRmSUgYC6PCjmsq3C5+eqNVvqagHfRmHzd
+        O7orBZvmsqMNFI47QOLsZ3mplwjzrUqlArLlpa3HXa854z0iM9+U5XA1+uNY+OHy
+        a7VR9Ag4NSouhuzEWCxshSWpMEVCO0cT3QWut+E+q+RRXX19UQeL67GcROfsYyP/
+        K7JWroJQSTLV5XUSumY1OpcACw/ipO4+ImJ8L8inWFvQ5vBcdEO8uDJmRNr+0xD8
+        +lL5rfGAlN97yFeTwzCIQg==
+        -----END ENCRYPTED PRIVATE KEY-----     
+    ```        
 
 **Resource meta section**
 
@@ -129,7 +186,7 @@ This section focuses on attributes specific to Snowflake Instance Secrets. It in
 
 - `acl`: Access control level (read-only or read-write).
 
-- `data`: Contains sensitive information such as Azure endpoint suffix, storage account key, and storage account name.
+- `data`: Contains sensitive information such as Snowflake username, authentication mode, passphrase, and encrypted private key.
 
 For more information, refer to the [configurations section](/resources/instance_secret/configurations/).
 
@@ -312,5 +369,13 @@ Specify the path of the manifest file and use the [`delete`](/interfaces/cli/co
     INFO[0000] 🗑 delete...complete
     ```
 
+## Troubleshooting
+
+This section provides guidance on resolving errors encountered during consumption of Snowflake Depot with Key-Pair Authentication.
+
+| Issue | Cause|
+| --- | --- |
+| `JWT token is invalid` | The private key used by the client doesn’t match the public key on the Snowflake user. |
+| `Insufficient privileges` | The active role cannot modify the user; switch to `ACCOUNTADMIN` or equivalent. |
 
 
