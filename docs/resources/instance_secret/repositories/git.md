@@ -4,7 +4,7 @@ A Git repository is a central storage location where code, documentation, and re
 
 ## Pre-requisites
 
-To create an Instance Secret for securing AWS CodeCommit credentials, you must have the following information:
+To create an Instance Secret for securing Git repository credentials, you must have the following information:
 
 ### **Access Permissions in DataOS**
 
