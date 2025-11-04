@@ -18,6 +18,7 @@ The following are the supported sources for Batch ingestion:
 | Google BigQuery | [Google BigQuery](/resources/stacks/nilus/batch_sources/google_bigquery/) |
 | MongoDB | [MongoDB](/resources/stacks/nilus/batch_sources/mongodb/) |
 | MySQL | [MySQL](/resources/stacks/nilus/batch_sources/mysql/) |
+| NATS | [NATS](/resources/stacks/nilus/batch_sources/nats/) |
 | PostgreSQL | [PostgreSQL](/resources/stacks/nilus/batch_sources/postgresql/) |
 | Salesforce | [Salesforce](/resources/stacks/nilus/batch_sources/salesforce/) |
 | Snowflake | [Snowflake](/resources/stacks/nilus/batch_sources/snowflake/) |
