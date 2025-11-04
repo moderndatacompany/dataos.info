@@ -4,7 +4,7 @@ Bitbucket repository is a central storage location where code, documentation, an
 
 ## Pre-requisites
 
-To create an Instance Secret for securing AWS CodeCommit credentials, you must have the following information:
+To create an Instance Secret for securing Bitbucket repository credentials, you must have the following information:
 
 ### **Access Permissions in DataOS**
 
