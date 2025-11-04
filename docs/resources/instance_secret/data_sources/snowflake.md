@@ -159,10 +159,10 @@ Begin by creating a manifest file to hold the configuration details for your Sno
     type: key-value-properties
     acl: r
     data:
-        username: TESTUSER_1
-        auth_mode: key-pair
-        passphrase: SnoF@k3!2025
-        key: |        # Key provided here is only for demonstration purpose, please provide the actual key                                                    
+      username: TESTUSER_1
+      auth_mode: key-pair
+      passphrase: SnoF@k3!2025
+      key: |        # Key provided here is only for demonstration purpose, please provide the actual key                                                    
         -----BEGIN ENCRYPTED PRIVATE KEY-----
         MIIFHDBOBgkqhkiG9w0BBQ0wQTApBgkqhkiG9w0BBQwwHAQIJwUWFEM/l8UCAggA
         MAwGCCqGSIb3DQIJBQAwFAYIKoZIhvcNAwcECMg2/lnrMBUfBIIEyBkriuK7ZXw6
