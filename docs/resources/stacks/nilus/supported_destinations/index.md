@@ -7,6 +7,7 @@ The following are the supported destinations for both CDC and Batch ingestion:
 | AWS DataOS Lakehouse | [AWS DataOS Lakehouse](/resources/stacks/nilus/supported_destinations/aws_dataos_lakehouse/) |
 | Azure DataOS Lakehouse | [Azure DataOS Lakehouse](/resources/stacks/nilus/supported_destinations/azure_dataos_lakehouse/) |
 | BigQuery | [BigQuery](/resources/stacks/nilus/supported_destinations/bigquery/) |
+| Databricks | [Databricks](/resources/stacks/nilus/supported_destinations/databricks/) |
 | GCS DataOS Lakehouse | [GCS DataOS Lakehouse](/resources/stacks/nilus/supported_destinations/gcs_dataos_lakehouse/) |
 | MS SQL Server | [MS SQL Server](/resources/stacks/nilus/supported_destinations/mssql/) |
 | PostgreSQL | [PostgreSQL](/resources/stacks/nilus/supported_destinations/postgresql/) |
