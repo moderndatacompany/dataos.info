@@ -25,16 +25,15 @@ To create a Snowflake Depot you must have the following details:
 
 - **Snowflake Account URL**: The unique URL used to access your Snowflake account, typically in the format `https://<account_name>.snowflakecomputing.com`. You can retrieve this from your Snowflake admin or find it in your Snowflake login credentials email.
 
-- **Snowflake Username**: The username used to log in to your Snowflake account. This is usually provided by the Snowflake admin when your account is created.
+- **Snowflake Account Identifier**: The unique identifier assigned to the Snowflake account, usually consisting of letters and numbers. Obtain this information from the Snowflake admin or check it in the Snowflake account details.
 
-- **Snowflake User Password**: The password associated with your Snowflake username for authentication. This password is set during account creation or upon first login. If forgotten, you may need to reset it via the Snowflake login page or contact your Snowflake admin.
+- **Warehouse**: The name of the warehouse in Snowflake that you require access to. Locate this information in the Snowflake console under Warehouses or consult the team responsible for managing the Snowflake environment.
 
-- **Snowflake Database Name**: The name of the database in Snowflake that you need to connect to. You can find this in the Snowflake console under the Databases section or by consulting the team managing the Snowflake environment.
+- **Database**: The name of the database in Snowflake that you need to connect to. You can find this in the Snowflake console under the Databases section or by consulting the team managing the Snowflake environment.
 
-- **Database Schema**: The specific schema within the Snowflake database where your required table resides. This can also be found in the Snowflake console under the relevant database or provided by the team managing the database structure.
+- **Schema (optional)**: The specific schema within the Snowflake database where your required table resides. This can also be found in the Snowflake console under the relevant database or provided by the team managing the database structure.
 
 - **Snowflake Role**: The role that defines the privileges and access control for the Snowflake user. While this attribute is optional in the Depot manifest, it is highly recommended to specify it to ensure proper access permissions and security.If no role is defined, the system will take "PUBLIC" as the default role.
-
 
 
 ## Create a Snowflake Depot

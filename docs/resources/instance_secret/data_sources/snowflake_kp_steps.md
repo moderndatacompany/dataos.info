@@ -43,7 +43,7 @@ cd ~/.snowflake/keys
 cat snowflake_rsa_key.p8
 ```
 
-## Step 2: Retrieve the Public Key for Snowflake
+## Step 3: Retrieve the Public Key for Snowflake
 
 Display the public key as a single line to register in Snowflake:
 
@@ -53,7 +53,7 @@ awk 'NR>1 && !/-----/' ~/.snowflake/keys/snowflake_rsa_key.pub | tr -d '\n'
 
 Copy the output string and use it in the next step.
 
-## Step 3: Register the Public Key in Snowflake
+## Step 4: Register the Public Key in Snowflake
 
 Use the Snowflake account (with appropriate privileges such as ACCOUNTADMIN or SECURITYADMIN) and run:
 
@@ -68,7 +68,7 @@ Verify that your public key has been registered successfully:
 DESC USER <snowflake-username>;
 ```
 
-## Step 4: (Optional) Verify the Key Fingerprint
+## Step 5: (Optional) Verify the Key Fingerprint
 
 To verify that your registered public key matches your local key, generate a fingerprint:
 
@@ -85,7 +85,7 @@ They must match for successful authentication.
 <figcaption><i>Snowflake UI</i></figcaption>
 </center>
 
-## Step 5: Rotate Keys (Recommended Practice)
+## Step 6: Rotate Keys (Recommended Practice)
 
 Snowflake supports dual public keys (RSA_PUBLIC_KEY and RSA_PUBLIC_KEY_2) to allow seamless key rotation.
 
