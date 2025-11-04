@@ -709,6 +709,7 @@ nav:
               - MongoDB: resources/stacks/nilus/batch_sources/mongodb.md
               - MS SQL Server: resources/stacks/nilus/batch_sources/mssql.md
               - MySQL: resources/stacks/nilus/batch_sources/mysql.md
+              - NATS: resources/stacks/nilus/batch_sources/nats.md
               - PostgreSQL: resources/stacks/nilus/batch_sources/postgresql.md
               - Salesforce: resources/stacks/nilus/batch_sources/salesforce.md
               - Snowflake: resources/stacks/nilus/batch_sources/snowflake.md
