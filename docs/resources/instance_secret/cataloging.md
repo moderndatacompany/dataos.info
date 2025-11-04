@@ -40,7 +40,7 @@ Each Instance Secret resource in the list will have a Card view that displays th
 
 In the card view, click anywhere except the resource name to get the overview.
 
-![Quick information](https://dataos.info/interfaces/metis/metis_ui_resources/metis_resources_instance_secrets/isecret_overview.png)
+![Quick information](/interfaces/metis/metis_ui_resources/metis_resources_instance_secrets/isecret_overview.png)
 
 | Attribute       | Description                                                                      |
 | --------------- | -------------------------------------------------------------------------------- |
@@ -54,7 +54,7 @@ In the card view, click anywhere except the resource name to get the overview.
 
 In the Result or Overview pane, click on the name of the secret to open the Resource Details page, which includes:
 
-![Comprehensive details](https://dataos.info/interfaces/metis/metis_ui_resources/metis_resources_instance_secrets/isecret_details.png "Comprehensive details")
+![Comprehensive details](/interfaces/metis/metis_ui_resources/metis_resources_instance_secrets/isecret_details.png "Comprehensive details")
 
 
 
