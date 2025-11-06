@@ -2,19 +2,23 @@
 
 !!! warning "Known limitations"
 
-    **The PostgreSQL endpoint is not available for Databricks source, meaning:**
+    **The PostgreSQL endpoint is operational but currently undergoing testing and validation, meaning:**
 
-      - Users cannot query semantic models via the PostgreSQL API.
+      - Users may encounter unverified limitations when using PSQL clients to query semantic models.
 
-      - BI tools that rely on PostgreSQL based connections will not be able to access semantic model.
+      - BI tools connected via the PSQL endpoint or BI Sync may experience unverified or inconsistent behavior.
 
-      - BI Sync is not supported 
+      - Please use with discretion until full validation is complete.
 
     **Databricks Depot support is only for Lens and not supported to be used in other Stacks or Resources:**
 
       - Databricks can only be referenced as a source for Lens, and cannot be used in other Stacks or Resources yet.
 
       - Metadata scanning for Databricks tables is not supported.
+
+
+The PSQL endpoint is operational but still undergoing testing and validation. Users may encounter unverified limitations when using PSQL clients or BI tools connected via the PSQL endpoint or BI Sync. Please use with discretion until full validation is complete.
+ 
       
 ## Prerequisites
 
