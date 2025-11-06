@@ -79,7 +79,7 @@ These SQL scripts extract relevant fields from your input datasets.
         income, 
         country 
     FROM 
-        postgres.public.customer_data
+        postgresxx.public.customer_data
     ```
 
 ??? "product.sql"

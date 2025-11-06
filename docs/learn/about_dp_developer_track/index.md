@@ -31,7 +31,7 @@ As a Data Products Developer, you'll master how to:
 - **Enable Consumption Through APIs and Models**: Publish semantic models and APIs via Lens, Talos, and other tools to serve analysts, apps, and business users.
 
 <aside class="callout">
-🗣️ Specific tasks may differ based on the role or objective:
+🗣️ Specific tasks may differ based on the role or objective. 
 </aside>
 
 ## 📚 Core modules
