@@ -4,12 +4,8 @@
 
     **The PostgreSQL endpoint is operational but currently undergoing testing and validation, meaning:**
 
-      - Users may encounter unverified limitations when using PSQL clients to query semantic models.
-
-      - BI tools connected via the PSQL endpoint or BI Sync may experience unverified or inconsistent behavior.
-
-      - Please use with discretion until full validation is complete.
-
+      - Users may encounter unverified limitations when using PSQL clients or BI tools connected via the PSQL endpoint or BI Sync. Please use with discretion until full validation is complete.
+ 
     **Databricks Depot support is only for Lens and not supported to be used in other Stacks or Resources:**
 
       - Databricks can only be referenced as a source for Lens, and cannot be used in other Stacks or Resources yet.
