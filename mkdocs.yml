@@ -684,6 +684,7 @@ nav:
             # - Set Up Nilus: resources/stacks/nilus/set_up.md
             - Quick Start: resources/stacks/nilus/quick_start.md
             - Data Masking: resources/stacks/nilus/data_masking.md
+            - Schema Evolution: resources/stacks/nilus/schema_evolution.md
             - CDC Sources:
               - resources/stacks/nilus/cdc_sources/index.md
               - IBM Db2: resources/stacks/nilus/cdc_sources/ibm_db2.md
