@@ -98,7 +98,7 @@ Steps to validate API endpoint using Postman application:
       
       | Placeholder        | Description                                      | Possible Values                                                                 |
       |-------------------|--------------------------------------------------|--------------------------------------------------------------------------------|
-      | `dataos-fqdn`     | Fully Qualified Domain Name of your DataOS enironment | Any valid DataOS FQDN                |
+      | `dataos-fqdn`     | Fully Qualified Domain Name of your DataOS environment | Any valid DataOS FQDN                |
       | `resource-type`   | Type of Resource to monitor                      | `workflow`, `service`, `worker`, `depot`, `lens`, `cluster`, etc.               |
       | `resource-version`| Version of the Resource                          | `v1`, `v2alpha`, `v1beta`, etc.                                                |
       | `resource-name`   | Name of the Resource instance                    | Any valid resource name in your DataOS environment                             |

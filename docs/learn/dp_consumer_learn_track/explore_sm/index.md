@@ -15,7 +15,7 @@ Imagine you’re a data analyst and want to analyze data product 'Product Affini
    Semantic models connect to a variety of physical data sources, such as Postgres, BigQuery, and Redshift. Knowing the origin helps you understand how the semantic model organizes it into logical structures.
 
 2. **Lakehouse (Optional)**  
-   For large datasets, you may unify data from multiple sources, making it easier to manage and query data. Consider storing the aggragated data to Lakehouse, a managed storage architecture that blends the strengths of both data lakes and data warehouses.
+   For large datasets, you may unify data from multiple sources, making it easier to manage and query data. Consider storing the aggregated data to Lakehouse, a managed storage architecture that blends the strengths of both data lakes and data warehouses.
 
 3. **Logical tables**  
    A semantic model maps physical data (from data sources or Lakehouse) to logical tables establishing relationships between data entities—making your work faster and clearer.
@@ -257,7 +257,7 @@ To save a query from two days ago for future reference, click on the query, give
 If you're a <b>business user</b> exploring data through visual tools (like dashboards or Studio), you can skip this section—no action needed.
 </aside>
 
-👉 Developers: [Click here to learn more about API Integeration →](/learn/dp_consumer_learn_track/explore_sm/api_integration/)
+👉 Developers: [Click here to learn more about API Integration →](/learn/dp_consumer_learn_track/explore_sm/api_integration/)
 
 ## Self-check quiz
 

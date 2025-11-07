@@ -37,7 +37,7 @@ name: hightouch-factory
 version: v1alpha
 type: operator
 layer: user
-description: provides management of hightouch sync resource lifecyle
+description: provides management of hightouch sync resource lifecycle
 tags:
   - operator
   - hightouch

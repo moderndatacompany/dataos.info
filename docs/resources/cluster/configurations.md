@@ -101,7 +101,7 @@ cluster:
       appDetailSpec: ${{random}}
       apiDetailSpec: ${{random}}
     oidcConfig: # mandatory
-      clientId: ${{hellow}} # mandatory
+      clientId: ${{hello}} # mandatory
       clientSecret: ${{delta}} # mandatory
     storageClass: ${{alpha}} # mandatory
     singleUserConfig: # mandatory
@@ -520,7 +520,7 @@ cluster:
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |
-| string | mandatory | 1 | any valid postive integer |
+| string | mandatory | 1 | any valid positive integer |
 
 **Example Usage:**<br>
 ```yaml
@@ -1110,7 +1110,7 @@ cluster:
       appDetailSpec: random
       apiDetailSpec: random
     oidcConfig: 
-      clientId: hellow 
+      clientId: hello 
       clientSecret: delta
     storageClass: alpha
     singleUserConfig:
@@ -1159,7 +1159,7 @@ cluster:
 cluster:
   jupyterHub:
     oidcConfig:
-      clientId: hellow
+      clientId: hello
       clientSecret: delta
 ```
 

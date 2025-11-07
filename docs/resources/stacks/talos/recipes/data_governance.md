@@ -12,7 +12,7 @@ If granting access through a **use case**, the following use case is required:
 - **Manage Talos**
 - **Read Talos**
 
-If access is granted using a **role**, the role containing the Talos-related use case must be assigned. For example, the `system-dev` role includes permissions to manage Talos and `data-dev role` includes the premission to read Talos Services.
+If access is granted using a **role**, the role containing the Talos-related use case must be assigned. For example, the `system-dev` role includes permissions to manage Talos and `data-dev role` includes the permission to read Talos Services.
 
 ## How to Grant a Use Case to a User?
 
@@ -91,7 +91,7 @@ auth:
 
 ### Case Scenarios
 
-Conside a scenario in which, two users, `user01data` and `user02engg`, have different role assignments. `user01data` holds the `data-dev` role, while `user02engg` has `new-role`, `system-dev`, and `data-dev` roles. Various access control cases are tested based on explicit user inclusion, role-based access, and exclusion rules. 
+Consider a scenario in which, two users, `user01data` and `user02engg`, have different role assignments. `user01data` holds the `data-dev` role, while `user02engg` has `new-role`, `system-dev`, and `data-dev` roles. Various access control cases are tested based on explicit user inclusion, role-based access, and exclusion rules. 
 The table below outlines various authentication test cases with these users:
 
 | **Test Case** | **Included Users** | **Included Roles** | **Excluded Users** | **Excluded Roles** | **Expected Behavior** |

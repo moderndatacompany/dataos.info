@@ -16,11 +16,11 @@ Create an Instance Secret to store the database connection credentials of Postgr
 === "Read-only Instance Secret"
 
   ```yaml 
-  # PostgresSQL Read Instance-secret Manifest
+  # postgresql Read Instance-secret Manifest
   name: postgresdb-r # Unique identifier for Resource, replace ${postgres-depot-name} with depot name
   version: v1 # Manifest version
   type: instance-secret # Type of the Resource
-  description: an instance secret for storing PostgreSQL credentails # Purpose of the Instance-secret
+  description: an instance secret for storing PostgreSQL credentials # Purpose of the Instance-secret
   layer: user # DataOS layer
   instance-secret:
     type: key-value-properties # Secret type
@@ -32,11 +32,11 @@ Create an Instance Secret to store the database connection credentials of Postgr
 === "Read-write Instance Secret"
 
   ```yaml 
-  # PostgresSQL Read Write Instance-secret Manifest
+  # postgresql Read Write Instance-secret Manifest
   name: postgresdb-rw 
   version: v1 # Manifest version
   type: instance-secret # Type of the Resource
-  description: an instance secret for storing PostgreSQL credentails # Purpose of the Instance-secret
+  description: an instance secret for storing PostgreSQL credentials # Purpose of the Instance-secret
   layer: user # DataOS layer
   instance-secret:
     type: key-value-properties # Secret type

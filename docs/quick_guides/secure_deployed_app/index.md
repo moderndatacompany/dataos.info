@@ -124,7 +124,7 @@ def authenticator(user_info, nav_url = url):
 
 ## 2. Configuring PEP for App-Level Authorization
 
-You need to configure your application as Policy Enforcement Point (PEP) in Bifrost. While doing this, you can decide who can access the Application or who can perform the specific opeations within the application.
+You need to configure your application as Policy Enforcement Point (PEP) in Bifrost. While doing this, you can decide who can access the Application or who can perform the specific operations within the application.
 
 <aside class="callout">
 🗣
@@ -170,7 +170,7 @@ To create PEP:
     version: 0.0.2
     id: streamlit
     name: Streamlit
-    description: Streamlit application Managment
+    description: Streamlit application Management
     authorization_atoms:
       - id: access-streamlit-ui
         description: access the ui of streamlit
@@ -178,12 +178,12 @@ To create PEP:
         paths:
         - /streamlit/**
       - id: streamlit-view-multiplication
-        description: gives persmission to view different tabs accordingly
+        description: gives permission to view different tabs accordingly
         predicate: view_multiplication
         paths:
         - /streamlit/**
       - id: streamlit-view-division
-        description: gives persmission to view different tabs accordingly
+        description: gives permission to view different tabs accordingly
         predicate: view_division
         paths:
         - /streamlit/**

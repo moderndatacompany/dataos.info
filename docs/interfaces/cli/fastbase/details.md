@@ -143,7 +143,7 @@ Flags:
 ```
 
 **Example:**
-In Fastbase, topics are the endpoints for publishing and consuming messages. They are organized in three level heirarchy. 
+In Fastbase, topics are the endpoints for publishing and consuming messages. They are organized in three level hierarchy. 
 **Tenant -> Namespace -> Topic**
 
 - List tenants

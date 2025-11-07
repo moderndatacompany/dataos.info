@@ -89,7 +89,7 @@ includes:
 
 **Description:** It is an object property that uses a pattern property to allow keys of any string and values that must be strings. It is used to represent inline or embedded migration scripts directly within the configuration.
 
-It is used to represent inline or embeed migration scripts directly within the configuration in the form of key-value pairs, where key represent the name of the migration and value is the migration script
+It is used to represent inline or embed migration scripts directly within the configuration in the form of key-value pairs, where key represent the name of the migration and value is the migration script
 
 | Property | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- | --- |

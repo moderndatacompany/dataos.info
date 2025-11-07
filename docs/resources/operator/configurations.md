@@ -274,7 +274,7 @@ command:
 
 ### **`arguments`**
 
-**Description:** specifies the additional arguments apart from the primary command specified within the Dockerfile. Addtional arguments for the command, indicating to run and specify a configuration file.
+**Description:** specifies the additional arguments apart from the primary command specified within the Dockerfile. Additional arguments for the command, indicating to run and specify a configuration file.
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |

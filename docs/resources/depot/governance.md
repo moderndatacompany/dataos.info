@@ -2,8 +2,6 @@
 
 After a Depot is created, a developer can control and manage access to it. This section involves governance aspect of a Depot.
 
-
-
 To access a Depot a user must have the following tags assigned:
 
 - `roles:id:data-dev`

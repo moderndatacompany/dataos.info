@@ -79,7 +79,7 @@ dataos-ctl apply -f apply /access_policy.yml
 
 ## Policy evaluation
 
-After applying the Policy it is time to understand how this Policy will be evaluted.
+After applying the Policy it is time to understand how this Policy will be evaluated.
 
 Policies are evaluated dynamically by the Policy Decision Point (PDP), which uses attributes (tags) associated with the subject, object, and predicate to decide whether to grant or deny access.
 

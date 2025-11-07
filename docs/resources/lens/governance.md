@@ -28,7 +28,7 @@ In addition to data source-level security, governance can also be enforced at th
 
 Governance at the federated query engine levManage Worker in System Workspacesel can be applied in the following ways:
 
-* **Access control:** It enables administrators to define role-based access to restrict or grant data access. This ensures that only authorized users can query or modify data according to their assigned roles. In DataOS, access control is managed through Policy Resource and it's interface Bifrost, which provides an intutive and easy to use GUI to manage access permissions.
+* **Access control:** It enables administrators to define role-based access to restrict or grant data access. This ensures that only authorized users can query or modify data according to their assigned roles. In DataOS, access control is managed through Policy Resource and it's interface Bifrost, which provides an intuitive and easy to use GUI to manage access permissions.
 
 * **Data masking:** Data Masking in federated query engines is applied through Data policies of Policy Resource to protect sensitive information. Administrators define masking rules to obfuscate sensitive data, like Personally Identifiable Information (PII), ensuring that only authorized users can view the full data.
 

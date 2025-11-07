@@ -9,7 +9,7 @@ search:
 !!! info "Overview"
     In this guide, you will learn how to integrate a Data Product with Power BI and activate it to build rich, interactive dashboards.
 
-### **Prerequesite**
+### **Prerequisite**
 
 [Power BI Desktop](https://powerbi.microsoft.com/desktop) installed on the system(version released after June 15, 2023).
 

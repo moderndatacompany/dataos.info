@@ -1,4 +1,4 @@
-# Sheduling Workflows
+# Scheduling Workflows
 
 !!! info "Overview"
     In this topic, you will explore how to set up and manage automated workflows, ensuring data is consistently updated and aligned with business needs. By the end, you’ll be equipped to configure scheduling attributes, use cron expressions, and implement best practices for creating reliable automated workflows in DataOS.

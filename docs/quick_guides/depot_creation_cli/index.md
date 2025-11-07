@@ -120,7 +120,7 @@ Refer to the [Depot templates](/resources/depot/depot_config_templates/) for gui
 
 The **`spec`** section directs the Depot to the precise location of your data and provides the hierarchical structure of the data source. It establishes a mapping between the data and the hierarchy followed within DataOS ie. Depot→Collection→Dataset.
 
-For the PostgresSQL example, the `spec` section will look like the following:
+For the postgresql example, the `spec` section will look like the following:
 
 ```yaml
 spec:                                           
@@ -197,7 +197,7 @@ In DataOS, Secrets serve as a Resource designed for securely storing sensitive i
 1. Create an Instance-Secret YAML file.
     
     ```yaml
-    # PostgresSQL Read Instance-secret Manifest
+    # postgresql Read Instance-secret Manifest
     
     name: mypostgresdepot-r # Unique identifier for Resource, replace ${postgres-depot-name} with depot name
     version: v1 # Manifest version

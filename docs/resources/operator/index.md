@@ -287,7 +287,7 @@ operator:
 		- sandbox
 ```
 
-You can also pass the Azure-specific Secrets seperately.
+You can also pass the Azure-specific Secrets separately.
 
 <details><summary>How to pass Secrets as a Resource and refer them in a separate Resource?</summary>
     

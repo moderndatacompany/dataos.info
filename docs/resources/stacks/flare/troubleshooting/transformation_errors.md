@@ -9,7 +9,7 @@
     ...62 more
 Caused by: java.lang.IllogicalStateException: Already closed files for partition: month=2019-04
 		at org.apache.iceberg.io.PartitionedWriter.write(PartitionedWriter.java:69)
-		at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$.$anonfun$run$run$1(WriteT.....
+		at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$.$anonfun$run$run$1(writes.....
 ```
 
 **What went wrong?**

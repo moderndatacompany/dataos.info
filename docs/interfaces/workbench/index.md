@@ -224,7 +224,7 @@ Workbench interface allows you to compare the results of two queries without hav
 Select the two query results as shown in the image and click Compare option.
 
 <div style="text-align: center;">
-  <img src="/interfaces/workbench/campare.png" alt="Results of 2 queries at a time to compare" style="border:1px solid black; width: 80%; height: auto;">
+  <img src="/interfaces/workbench/compare.png" alt="Results of 2 queries at a time to compare" style="border:1px solid black; width: 80%; height: auto;">
   <figcaption>Results of 2 queries at a time to compare</figcaption>
 </div>
 

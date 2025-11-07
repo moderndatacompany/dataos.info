@@ -28,7 +28,7 @@ The optional `IF NOT EXISTS` clause causes the error to be suppressed if the
 
 ### SET PROPERTIES
 
-The `ALTER TABLE SET PROPERTIES` statement followed by some number of `property_name` and `expression` pairs applies the specified properties and values to a table. Ommitting an already-set property from this statement leaves that property unchanged in the table.
+The `ALTER TABLE SET PROPERTIES` statement followed by some number of `property_name` and `expression` pairs applies the specified properties and values to a table. Omitting an already-set property from this statement leaves that property unchanged in the table.
 
 A property in a `SET PROPERTIES` statement can be set to `DEFAULT`, which reverts its value back to the default in that table.
 

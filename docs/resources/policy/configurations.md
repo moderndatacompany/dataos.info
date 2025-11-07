@@ -526,7 +526,7 @@ Using the `bucket_number` operator, numerical data can be categorized into defin
 
 === "Configuration Syntax"
 
-    To leverage the `bucket_number` operator, incorporate the following YAML configuration in your data masking definitio. The`${bucket_list}` is a placeholder for your list of bucket ranges.
+    To leverage the `bucket_number` operator, incorporate the following YAML configuration in your data masking definition. The`${bucket_list}` is a placeholder for your list of bucket ranges.
 
     ```yaml
     mask:

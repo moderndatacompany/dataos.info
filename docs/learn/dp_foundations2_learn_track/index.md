@@ -35,7 +35,7 @@ You’re continuing work on the **Retail Data Product**, and now it’s time to 
 
 ### **Module 1: Define Business Requirements**
 
-To create a successful Data Product, it’s crucial to first understand the business context and requirements. This module focuses on capturing key needs and expectations for Data Products for your organization based on Righ to Left approach:
+To create a successful Data Product, it’s crucial to first understand the business context and requirements. This module focuses on capturing key needs and expectations for Data Products for your organization based on Right to Left approach:
 
 <div class="grid cards" markdown>
 

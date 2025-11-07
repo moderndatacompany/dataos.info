@@ -13,7 +13,7 @@ If you have already defined Depots to access data sources, you can specify the a
 ### **Catalog** 
 This approach involves providing the name of the connector and its associated properties, such as the connection URL, username, and password for accessing the data source.
 
-**Sample Conector Configuration**
+**Sample Connector Configuration**
 
 Below is an example of connector configuration using Depot definitions and Catalog key-value properties. These definitions will be converted into catalogs that can be accessed through DataOS Workbench.
 

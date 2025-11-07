@@ -163,7 +163,7 @@ timezone: Asia/Kolkata
 |------------------|-------------|---------------|----------------|
 | mapping          | mandatory   | none          | none           |
 
-<b>Additional Details:</b> there should be atleast one job within a DAG<br>
+<b>Additional Details:</b> there should be at least one job within a DAG<br>
 <b>Example Usage:</b>
 
 ```yaml

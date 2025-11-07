@@ -58,7 +58,7 @@ SELECT url_extract_protocol('ftp://path/file');
 | `url_extract_query(url)`   | Returns the query string from URL.          | `varchar`   |
 
 
-## Encoding funtions
+## Encoding functions
 
 ### **`url_encode()`**
 

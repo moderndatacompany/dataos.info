@@ -203,7 +203,7 @@
 
 | Function | Description |
 | --- | --- |
-| `cleanse_column_names`  | The *cleanse_column_names* function sanatizes column names, following these rules: <br> • Trim leading and trailing spaces <br> • Lowercases the column name <br> • Replaces any character that are not one of [A-Z][a-z][0-9] or _ with an underscore (_) |
+| `cleanse_column_names`  | The *cleanse_column_names* function sanitizes column names, following these rules: <br> • Trim leading and trailing spaces <br> • Lowercases the column name <br> • Replaces any character that are not one of [A-Z][a-z][0-9] or _ with an underscore (_) |
 
 <div class="grid" markdown>
 
@@ -503,7 +503,7 @@
           - column_1 
           - column_2
     ```
-=== "Exmaple"
+=== "Example"
 
     ```yaml title="drop_duplicates.yaml" hl_lines="51-55"
     --8<-- "examples/resources/stacks/flare/functions/drop_duplicates.yaml"
@@ -1036,7 +1036,7 @@
 
 | Function | Description |
 | --- | --- |
-| `parse_html` | The *parse_html* function is used to convert the HTML-coded string to a normal string without any html tags. Here, asColumn is an optional parameter incase you wish to create a separate column for the processed data. Else, the processed data will replace the original column on which the function is performed. The function works using the jsoup library. More details about this library can be found here: https://github.com/jhy/jsoup |
+| `parse_html` | The *parse_html* function is used to convert the HTML-coded string to a normal string without any html tags. Here, asColumn is an optional parameter in case you wish to create a separate column for the processed data. Else, the processed data will replace the original column on which the function is performed. The function works using the jsoup library. More details about this library can be found here: https://github.com/jhy/jsoup |
 
 <div class="merge" markdown>
 

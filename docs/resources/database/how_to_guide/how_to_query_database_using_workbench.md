@@ -146,7 +146,7 @@ To verify the successful execution of the query, navigate to the Workbench, then
 
  ![ Query Workbench](/resources/database/query_workbench.png) 
 
-<center> Quering the customers database through Workbench</center>
+<center> Querying the customers database through Workbench</center>
 
 
 For comprehensive details on the features and capabilities of Workbench, refer to the dedicated [Workbench](/interfaces/workbench/) documentation.

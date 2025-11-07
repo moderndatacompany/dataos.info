@@ -94,7 +94,7 @@ Type: `array`
 
 ### `regexp_topics`
 
-Whether listed topics should be interpretted as regular expression patterns for matching multiple topics.
+Whether listed topics should be interpreted as regular expression patterns for matching multiple topics.
 
 Type: `bool`
 

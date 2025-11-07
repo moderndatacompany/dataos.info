@@ -5,7 +5,7 @@
 
 ## 📘 Scenario
 
-In our source-aligned retail Data Product, a bundle in DataOS packages ingestion, quality checks, monitors, and pagers into a single deployable unit. It keeps everything connected and consistent, making it easy to deploy the product across enironments with minimal setup.
+In our source-aligned retail Data Product, a bundle in DataOS packages ingestion, quality checks, monitors, and pagers into a single deployable unit. It keeps everything connected and consistent, making it easy to deploy the product across environments with minimal setup.
 
 ## Quick concepts
 

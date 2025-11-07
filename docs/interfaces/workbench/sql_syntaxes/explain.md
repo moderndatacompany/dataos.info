@@ -622,7 +622,7 @@ EXPLAIN (TYPE VALIDATE) SELECT regionkey, count(*) FROM nation GROUP BY 1;
 If the statement is not correct because a syntax error, such as an unknown keyword, is found the error message details the problem:
 
 ```yaml
-EXPLAIN (TYPE VALIDATE) SELET 1=0;
+EXPLAIN (TYPE VALIDATE) SELECT 1=0;
 ```
 
 ```yaml
