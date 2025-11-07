@@ -108,7 +108,7 @@ Using cURL to connect with Appsmith allows you to quickly import API requests di
 
     ![connect_datasource.png](/learn/dp_consumer_learn_track/apps_consume_data_products/build_app_appsmith/connect_datasource.png)
 
-3. You will see the follwoing screen. Click on ‘Edit Configurations’ to provide the datasource connection details.
+3. You will see the following screen. Click on ‘Edit Configurations’ to provide the datasource connection details.
     
     ![untitled_ds.png](/learn/dp_consumer_learn_track/apps_consume_data_products/build_app_appsmith/untitled_ds.png)
     

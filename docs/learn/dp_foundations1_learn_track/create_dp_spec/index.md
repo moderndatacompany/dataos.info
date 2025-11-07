@@ -96,7 +96,7 @@ This section is crucial to bring every workspace-level resource needed for the D
 ```yaml
 resource:
     description: 'Resources associated with retaildata Data Product'
-    purpose: 'DP Life Cyle Management'
+    purpose: 'DP Life Cycle Management'
     refType: dataos                     # mandatory
     ref: bundle:v1beta:retaildata-bundle. # mandatory | referred Bundle must exist
 ```

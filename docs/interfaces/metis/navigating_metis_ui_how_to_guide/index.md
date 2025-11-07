@@ -97,7 +97,7 @@ Here are some scenarios where using these terms can be powerful:
 3. You can add synonyms, the other terms used for the same term, such as for customer, you can add client, buyer, etc.
 4. You can add related terms for the term, such as for customer, you can add related terms ‘loyal’, ‘preferred’, ‘high-importance’, etc.
 5. Add links from where you inherited the term.
-6. Add the tags which are alreday existing in DataOS
+6. Add the tags which are already existing in DataOS
 7. A term also has a set of **Reviewers** who review and accept the changes to the Glossary. This is to ensure the consistent use of terms across the organization. 
 
 ### **How to Bulk Upload Glossary**

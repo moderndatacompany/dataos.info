@@ -82,7 +82,7 @@ Begin by creating a manifest file to hold the configuration details for your Pos
 === "Read-only Instance Secret"
 
     ```yaml
-    # PostgresSQL Read Instance-secret Manifest
+    # postgresql Read Instance-secret Manifest
 
     name: ${postgres-depot-name}-r # Unique identifier for Resource, replace ${postgres-depot-name} with depot name
     version: v1 # Manifest version
@@ -100,7 +100,7 @@ Begin by creating a manifest file to hold the configuration details for your Pos
 === "Read-write Instance Secret"
 
     ```yaml
-    # PostgresSQL read-write Instance-secret Manifest
+    # postgresql read-write Instance-secret Manifest
 
     name: ${postgres-depot-name}-rw # Unique identifier for Resource, replace ${postgres-depot-name} with depot name
     version: v1 # Manifest version

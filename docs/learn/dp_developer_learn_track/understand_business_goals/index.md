@@ -8,7 +8,7 @@ This guide provides a structured approach to identify the **North Star Metric** 
 
 - Define the vision and with stakeholders ensure alignment and agreement.
 
-**Goals is s**pecific targets that deliver on the vision, with measurable success indicators.
+**Goals are specific** targets that deliver on the vision, with measurable success indicators.
 
 - Conduct a collaborative session to define clear, quantifiable goals and associated measures.
 

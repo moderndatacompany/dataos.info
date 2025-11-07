@@ -171,7 +171,7 @@ workflow: # Workflow Section
                 title: Azure csv # Title
                 description: Azure csv # Description
               - name: cities # Name of Output Dataset
-                dataset: dataos://sanityazurealok01:retail/city_json?acl=rw # Output Datset UDL
+                dataset: dataos://sanityazurealok01:retail/city_json?acl=rw # Output Dataset UDL
                 format: json # Format
                 options: # Options
                   saveMode: overwrite
@@ -183,7 +183,7 @@ workflow: # Workflow Section
                 description: Azure json # Description
               - name: cities # Output Dataset Name
                 dataset: dataos://sanityazurealok01:retail/city_parquet?acl=rw # Output Dataset UDL
-                format: parquet # Output Datset Format
+                format: parquet # Output Dataset Format
                 options: # Options
                   saveMode: overwrite
                   partitionBy:

@@ -279,7 +279,7 @@ By analyzing the resource utilization of the data processing job, it becomes app
 
 By scaling up the allocated resources, such as CPU and Memory, the executor node will have more capacity to handle the workload. This can lead to improved processing speed, reduced latency, and overall better performance of the data processing job.
 
-### **Identifing the Node Associated with a Pod**
+### **Identifying the Node Associated with a Pod**
 
 You can get this information in multiple ways. To determine the node associated with a pod using the Operations app, follow these steps:
 

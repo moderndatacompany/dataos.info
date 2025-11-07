@@ -976,7 +976,7 @@ You can also access the details of any created Lakehouse through the DataOS GUI 
 
 Use the [`delete`](/interfaces/cli/command_reference/#delete) command to remove the specific Lakehouse Resource Instance from the DataOS environment. As shown below, there are three ways to delete a Lakehouse.
 
-**Method 1:** Copy the Lakehouse name, version, Resource-type and Workspace name from the output of the [`get`](/interfaces/cli/command_reference/#get) command seperated by '|' enclosed within quotes and use it as a string in the delete command.
+**Method 1:** Copy the Lakehouse name, version, Resource-type and Workspace name from the output of the [`get`](/interfaces/cli/command_reference/#get) command separated by '|' enclosed within quotes and use it as a string in the delete command.
 
 Command
 
@@ -1059,7 +1059,7 @@ This section provides a comprehensive guide for managing Lakehouse Resource and 
 - [Iceberg Metadata Tables in Lakehouse](/resources/lakehouse/iceberg_metadata_tables/)
 - [How to use Iceberg metadata tables to extract insights in Lakehouse storage?](/resources/lakehouse/using_metadata_tables_to_extract_insights_in_lakehouse/)
 - [How to create, fetch, and drop dataset in a Lakehouse using CLI commands?](/resources/lakehouse/command_reference/case_scenario_create_fetch_and_drop_dataset/)
-- [How to perform Iceberg dataset maintainence in a Lakehouse using CLI commands?](/resources/lakehouse/command_reference/case_scenario_maintenance/)
+- [How to perform Iceberg dataset maintenance in a Lakehouse using CLI commands?](/resources/lakehouse/command_reference/case_scenario_maintenance/)
 - [How to perform partitioning on Lakehouse datasets using CLI commands?](/resources/lakehouse/command_reference/case_scenario_partitioning/)
 - [How to perform schema evolution on Lakehouse datasets using CLI commands?](/resources/lakehouse/command_reference/case_scenario_schema_evolution/)
 - [How to manipulate table properties of Lakehouse datasets using CLI commands?](/resources/lakehouse/command_reference/case_scenario_table_properties/)

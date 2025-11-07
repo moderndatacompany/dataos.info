@@ -27,7 +27,7 @@ Get a solid foundation on what Data Products are and how they can drive insights
 
 ## Module 1: Understanding data needs
 
-To create a successful Data Product, it’s crucial to first understand the business context and requirements. This module focuses on capturing key needs and expectations for Data Products for your organization based on Righ to Left approach:
+To create a successful Data Product, it’s crucial to first understand the business context and requirements. This module focuses on capturing key needs and expectations for Data Products for your organization based on Right to Left approach:
 
 <div class= "grid cards" markdown>
 

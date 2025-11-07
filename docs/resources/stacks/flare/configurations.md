@@ -757,7 +757,7 @@ inputs:
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| mapping | optional, mandatory (for incremental processing) | none | valid incremental read configuraiton |
+| mapping | optional, mandatory (for incremental processing) | none | valid incremental read configuration |
 
 **Example Usage:**
 

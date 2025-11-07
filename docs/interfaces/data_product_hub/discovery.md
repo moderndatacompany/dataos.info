@@ -356,7 +356,7 @@ API endpoints for developing data applications can be explored in the [Data APIs
 
 #### **Quality tab**
 
-The **Quality tab** provides insights into the health and quality of input and output data, allowing for monitoring and ensuring that the data meets expected standards across several quality checks. Wihtin DataOS the quality checks are created using [Soda Stack](/resources/stacks/soda/).
+The **Quality tab** provides insights into the health and quality of input and output data, allowing for monitoring and ensuring that the data meets expected standards across several quality checks. Within DataOS the quality checks are created using [Soda Stack](/resources/stacks/soda/).
 
 Quality is categorized into six types: Schema, Freshness, Validity, Completeness, Uniqueness, and Accuracy.
 

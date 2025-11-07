@@ -94,7 +94,7 @@ lens:public:productaffinity=> show all;
 
 ### **SQL functions and operators**
 
-#### **Comaprison operators**
+#### **Comparison operators**
 
 <aside class="callout">
   Learn more in the <a href="https://www.postgresql.org/docs/current/functions-comparison.html#FUNCTIONS-COMPARISON-OP-TABLE" target="_blank">relevant section</a>  of the PostgreSQL documentation.

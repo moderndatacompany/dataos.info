@@ -355,7 +355,7 @@ import pandas as pd
 
 # Define your lens connection details
 db_username = '**'                        #dataos id copied from 'dataos-ctl user get' command
-db_password = '***'                       #apikey copied fromm 'dataos-ctl user apikey get' command
+db_password = '***'                       #apikey copied from 'dataos-ctl user apikey get' command
 db_host = 'tcp.liberal-donkey.dataos.app' 
 db_port = '6432'
 db_name = 'lens:public:customer'  # The name of semantic model

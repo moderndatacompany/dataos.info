@@ -253,7 +253,7 @@ Example Usage:
 
 ### **`data`**
 
-**Description**: `data` comprises the various key value pairs of sensitive informations such as username and password.
+**Description**: `data` comprises the various key value pairs of sensitive information such as username and password.
 
 Example Usage:
 

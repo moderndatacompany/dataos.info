@@ -78,7 +78,7 @@ Prepare your manifest file to configure the pipeline.
 
 1. Specify the Workflow Resource, define the input and output data sources, and integrate the Flare Stack. 
 2. Customize the SQL query (used for transformations) for your dataset. The provided query in the `steps` section already include transformations like casting string fields to numerical types.
-> Carefully review the input & output proerties specifying the dataset addresses, to ensure everything is correctly configured before proceeding— this helps avoid issues later in the workflow.
+> Carefully review the input & output properties specifying the dataset addresses, to ensure everything is correctly configured before proceeding— this helps avoid issues later in the workflow.
 
 
     ```yaml

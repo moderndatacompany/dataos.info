@@ -43,7 +43,7 @@ Here, the steps include how to incorporate this logic in the code for a flask ba
       </figure>
     </div>
 
-3. Click on 'Create Provider' button. Bifrost PEP creats authorization atoms for granular level access.
+3. Click on 'Create Provider' button. Bifrost PEP creates authorization atoms for granular level access.
     
     <div style="text-align: center;">
       <figure>

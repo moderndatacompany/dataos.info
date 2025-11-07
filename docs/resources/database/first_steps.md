@@ -41,7 +41,7 @@ In DataOS, a Database is categorized as a Resource-type. The Resource meta secti
 === "Syntax"
 
     ```yaml
-    #Attribtues for Resource
+    #Attributes for Resource
     name: ${resource-name}                #database_name 
     version: v1                           
     type: database                        
@@ -57,7 +57,7 @@ In DataOS, a Database is categorized as a Resource-type. The Resource meta secti
 === "Sample"
 
     ```yaml
-    #Attribtues for Resource
+    #Attributes for Resource
     name: products_db
     version: v1                           #database_name 
     type: database                        

@@ -1732,7 +1732,7 @@ Compresses a string or byte array value according to a specified algorithm.
 
 **Parameters**
 
-**`algorithm`** <string\> One of flate, gzip, pgzip, lz4, snappy, zlib, zstd.
+**`algorithm`** <string\> One of flat, gzip, pgzip, lz4, snappy, zlib, zstd.
 
 **`level`** <integer, default -1\> The level of compression to use. May not be applicable to all algorithms.
 
@@ -1790,7 +1790,7 @@ Decompresses a string or byte array value according to a specified algorithm. Th
 
 **Parameters**
 
-**`algorithm`** <string\> One of gzip, pgzip, zlib, bzip2, flate, snappy, lz4, zstd.
+**`algorithm`** <string\> One of gzip, pgzip, zlib, bzip2, flat, snappy, lz4, zstd.
 
 **Examples**
 ```go
@@ -1895,7 +1895,7 @@ The following algorithms require a key, which is specified as a second argument:
 
 **Parameters**
 
-**`algorithm`** <string\> The hasing algorithm to use.
+**`algorithm`** <string\> The hashing algorithm to use.
 
 **`key`** <(optional) string\> An optional key to use.
 

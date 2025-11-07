@@ -22,7 +22,7 @@ All policies in DataOS are implemented as [ABAC](/interfaces/bifrost/abac_implem
 
 DataOS enforces a zero default denial stance, requiring users must explicitly request access to perform any action within the system. It establishes a continuous authorization mechanism, where access permissions are dynamically evaluated each time a user attempts an action. Access is granted only if the user has the requisite permissions at that precise moment. Bifrost is a tool to implement this philosophy,  backed by Heimdall, the governance engine of DataOS implementing Attribute-Based Access Control (ABAC).
 
-Understanding how Bifrost works involves focusing on key concepts that are defined as followings:
+Understanding how Bifrost works involves focusing on key concepts that are defined as following:
 
 ## User
 

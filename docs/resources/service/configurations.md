@@ -509,7 +509,7 @@ service:
 
 ### **`logLevel`**
 
-**Description:** the log level for the Service classifies enteries in logs in terms of urgency which helps to filter logs during search and helps control the amount of information in logs.
+**Description:** the log level for the Service classifies entries in logs in terms of urgency which helps to filter logs during search and helps control the amount of information in logs.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |

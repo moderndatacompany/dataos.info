@@ -50,7 +50,7 @@ service: # Service Section
     - name: database # Topology Name
       type: input # Topology Type
       doc: stores database connection # Document of the Topology step
-    - name: rest-api # Toplogy Name
+    - name: rest-api # Topology Name
       type: output # Topology Type
       doc: serves up the stores database as a RESTful API # Document of the Topology step
       dependencies: # Dependency

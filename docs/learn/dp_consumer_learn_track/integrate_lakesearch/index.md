@@ -194,7 +194,7 @@ A basic search request is a structured query used to retrieve documents from an 
 
 ### **GET requests**
 
-GET APIs is generally used to retrive the information without the body. All LakeSearch GET APIs that require a body can be submitted as POST requests.
+GET APIs is generally used to retrieve the information without the body. All LakeSearch GET APIs that require a body can be submitted as POST requests.
 
 ```yaml
 GET https://dataos-training.dataos.app/lakesearch/public:pals/api/v2/index/customer/keywords?word=master

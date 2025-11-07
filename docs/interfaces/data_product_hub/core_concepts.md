@@ -58,7 +58,7 @@ A [Perspective](/interfaces/data_product_hub/discovery/#perspectives) is a saved
     <figcaption><i>Explore section</i></figcaption>
     </center>
 
-=== "Save the Perpective"
+=== "Save the Perspective"
     <center>
     <img src="/interfaces/data_product_hub/exploration1.png" alt="DPH" style="width:30rem; border: 1px solid black;" />
     <figcaption><i>Save Perspective</i></figcaption>

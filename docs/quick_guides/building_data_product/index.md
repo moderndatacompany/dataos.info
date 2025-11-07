@@ -221,7 +221,7 @@ This section outlines data product-specific attributes such as Bundle resource, 
     ```yaml
     resource:
       description: 'Resources associated with retail360 Data Product'
-      purpose: 'DP Life Cyle Management'
+      purpose: 'DP Life Cycle Management'
       refType: dataos.                     # mandatory
       ref: bundle:v1beta:retail360-bundle. # mandatory | referred Bundle must exist
     ```

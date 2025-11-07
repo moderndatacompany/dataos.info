@@ -326,7 +326,7 @@ pager:
 
 ##### **`headers`**
 
-**Description:** The `headers` attribute specifies any additional headers to be included in the webhook request. For specififying authorization headers like apikey tokens, use the `authorization` attribute for secured authorization.
+**Description:** The `headers` attribute specifies any additional headers to be included in the webhook request. For specifying authorization headers like apikey tokens, use the `authorization` attribute for secured authorization.
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |

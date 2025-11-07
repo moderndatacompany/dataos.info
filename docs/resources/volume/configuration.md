@@ -4,7 +4,7 @@
 
 ```yaml 
 ## RESOURCE META SECTION
-# Attributes commmon across all DataOS Resources
+# Attributes common across all DataOS Resources
 name: ${{resource_name}} # Name of the Resource (e.g., my-first-volume)
 version: v1beta # Manifest version of the Resource
 type: volume # Type of Resource

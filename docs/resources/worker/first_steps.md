@@ -85,7 +85,7 @@ The Worker-specific section of a manifest file encompasses attributes specific t
           stack: ${{worker_stack}} # Stack used (mandatory) 
           compute: ${{compute_resource_name}} # Compute configuration (mandatory)
           stackSpec: # Stack-specific section
-            # Attributes specific to the choosen Stack are declared here
+            # Attributes specific to the chosen Stack are declared here
         ```
     === "Example"
 
@@ -94,7 +94,7 @@ The Worker-specific section of a manifest file encompasses attributes specific t
           stack: bento # Stack used (mandatory) 
           compute: runnable-default # Compute configuration (mandatory)
           stackSpec: # Stack-specific section (mandatory)
-            # Attributes specific to the choosen stack are declared here
+            # Attributes specific to the chosen stack are declared here
         ```
 
 === "Advanced configuration"
@@ -168,7 +168,7 @@ The Worker-specific section of a manifest file encompasses attributes specific t
                 - ${{dependency1}} # Example dependency 
                 - ${{dependency2}} # Additional dependency
           stackSpec: 
-            # Attributes specific to the choosen Stack
+            # Attributes specific to the chosen Stack
         ```
 
 #### **Stack-specific section**
@@ -266,7 +266,7 @@ You can also access the details of any created Lakehouse through the DataOS GUI 
 
 Use the [`delete`](/interfaces/cli/command_reference/#delete) command to remove the Worker from the DataOS environment. As shown below, there are three ways to delete a Worker.
 
-**Method 1:** Copy the Worker name, version, Resource-type and Workspace name from the output of the [`get`](/interfaces/cli/command_reference/#get) command seperated by '|' enclosed within quotes and use it as a string in the delete command.
+**Method 1:** Copy the Worker name, version, Resource-type and Workspace name from the output of the [`get`](/interfaces/cli/command_reference/#get) command separated by '|' enclosed within quotes and use it as a string in the delete command.
 
 Command
 

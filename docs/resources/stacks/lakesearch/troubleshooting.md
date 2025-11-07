@@ -153,7 +153,7 @@ INFO[0001] 📃 log(public)...complete
 ```
 
 
-## Unspported Column
+## Unsupported Column
 
 If the column used for filtering is mistakenly assigned a text data type, an error will occur when accessing the endpoint. 
 
@@ -168,7 +168,7 @@ If the column used for filtering is mistakenly assigned a text data type, an err
 
 **Steps to resolve**
 
-1. To fix this, delete that Service by excuting the below command.
+1. To fix this, delete that Service by executing the below command.
 
     ```bash
     dataos-ctl delete -f /home/iamgroot/work/lakesearch/service.yaml

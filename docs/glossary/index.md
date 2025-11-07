@@ -120,7 +120,7 @@ hide:
 
 | Term | Description |
 | --- | --- |
-| [Metis](/interfaces/metis/) | Metis is a metadata manager, cataloging service, and database within the DataOS environment assissting with discoverability and observability capabilities for your enterprise data. |
+| [Metis](/interfaces/metis/) | Metis is a metadata manager, cataloging service, and database within the DataOS environment assisting with discoverability and observability capabilities for your enterprise data. |
 | [Minerva](/resources/cluster/#minerva) | Minerva is a query engine that enables access to data for business insights. It is an interactive query engine based on Trino that makes it easy to analyze big data using SQL. |
 |[Measures](/resources/lens/concepts/#measures)|Measures are quantifications or numerical value on which statistical calculations can be applied.|
 |[Metric](/interfaces/data_product_hub/core_concepts/#metrics)|A metric is a focused measurement in a data model that highlights key performance indicators. It includes relevant dimensions for grouping and filtering, enabling clear analysis of business performance. |
@@ -131,7 +131,7 @@ hide:
 | Term | Description |
 | --- | --- |
 | Network Gateway | In DataOS, a Network Gateway is a component that enables secure communication and connectivity between different networks or systems within the DataOS infrastructure. It serves as a bridge or interface that facilitates the exchange of data and information between networks while enforcing security measures such as access control and data encryption.  |
-| Node Pool | A Node pool refers to a groups of virtual machines (VMs) with similar configurations (CPU, RAM, Storage Capacity, Network Protocal, and Storage Drive Types). Nodepools are made available to DataOS as a Compute Resource.  |
+| Node Pool | A Node pool refers to a groups of virtual machines (VMs) with similar configurations (CPU, RAM, Storage Capacity, Network Protocol, and Storage Drive Types). Nodepools are made available to DataOS as a Compute Resource.  |
 
 
 ## o 
@@ -149,7 +149,7 @@ hide:
 | Term | Description |
 | --- | --- |
 | [Pager](/resources/stacks/) | Pager sends alerts based on defined conditions such as workflow failures or quality issues, helping with proactive incident response. |
-| [PDP](/resources/policy/core_concepts/#policy-decision-point-pdp) | Policy Desicion Point is the service that evaluates a specific subject-predicate-object-metadata request against the current policies to determine if access to the DataOS resource/ environment is allowed or denied. |
+| [PDP](/resources/policy/core_concepts/#policy-decision-point-pdp) | Policy Decision Point is the service that evaluates a specific subject-predicate-object-metadata request against the current policies to determine if access to the DataOS resource/ environment is allowed or denied. |
 | [Perspective](/interfaces/data_product_hub/core_concepts/#perspectives) | Perspective is a saved exploration of a Data Product in Data Product Hub. |
 | [PEP](/resources/policy/#policy-enforcement-point-pep/) | Policy Enforcement Point is responsible for execution of the decision returned from PDP. |
 | Poros | DataOS Poros is an orchestration engine for managing workflows, which are run for data transformation and movement. Working in coordination with Kubernetes, Poros efficiently allocates resources to various running jobs and services for data processing.  |

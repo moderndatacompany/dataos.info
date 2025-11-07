@@ -156,7 +156,7 @@ FROM your_table;
 | `random(n)`    | Returns a pseudo-random number between 0 and n (exclusive). | [same as input] |
 | `random(m, n)` | Returns a pseudo-random number between m and n (exclusive). | [same as input] |
 
-## Trignometric functions
+## Trigonometric functions
 
 ### **`acos()`**
 
