@@ -58,10 +58,10 @@ Or Download the following [“Template”](/resources/stacks/talos/talos.zip) an
     
           NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
     ───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
-      Jhon Doe     │   jhondoe   │ person │ jhon.doe@example.com │ roles:id:data-dev, 
+      Jhon Doe     │   johndoe   │ person │ jhon.doe@example.com │ roles:id:data-dev, 
                    │             │        │                      │ roles:id:system-dev,       
                    │             │        │                      │ roles:id:user,                  
-                   │             │        │                      │ users:id:jhondoe   
+                   │             │        │                      │ users:id:johndoe   
     ```
     
     If any required tags or use cases are missing, contact a DataOS Operator.

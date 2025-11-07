@@ -1,5 +1,5 @@
 # How to set up Talos locally?
-This section involves step-by-step guide to set up Talos on your local enviroment. 
+This section involves step-by-step guide to set up Talos on your local environment. 
 
 ## Pre-requisite
 
@@ -62,7 +62,7 @@ This section involves step-by-step guide to set up Talos on your local enviromen
     ```
     
     <aside class="callout">
-    🗣 Before moving into the next steps make sure that your Depot is active. You can excute `dataos-ctl get -t depot` command on your terminal to check if Depot is active or not. 
+    🗣 Before moving into the next steps make sure that your Depot is active. You can execute `dataos-ctl get -t depot` command on your terminal to check if Depot is active or not. 
     
     </aside>
     
@@ -83,7 +83,7 @@ This section involves step-by-step guide to set up Talos on your local enviromen
 4. Navigate to `docker-compose.yaml` manifest file and update the `volumes` path `/home/Desktop/talos/depot-postgres` with the actual path of your repository, add your dataos username and dataos API key in `DATAOS_RUN_AS_USER` and `DATAOS_RUN_AS_APIKEY` respectively.
 
     <aside class="callout">
-    🗣 Ensure to provide the current verion and image of Talos by confirming with DataOS administrator.
+    🗣 Ensure to provide the current version and image of Talos by confirming with DataOS administrator.
     </aside>
     
     ```yaml

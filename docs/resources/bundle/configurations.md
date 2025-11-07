@@ -41,7 +41,7 @@ bundle:
             is: # Status is (optional)
               - ${{active}}
             contains: # Status contains (optional)
-              - ${{activ}}
+              - ${{active}}
           runtime: # Runtime dependency condition (optional)
             is: # Runtime is (optional)
               - ${{running}}

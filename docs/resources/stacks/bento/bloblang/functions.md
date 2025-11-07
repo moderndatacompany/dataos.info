@@ -601,7 +601,7 @@ Use jwt to generate a JWT token:
 root.jwt = fake("jwt")
 ```
 
-Use uuid_hyphenated to generate a hypenated UUID:
+Use uuid_hyphenated to generate a hyphenated UUID:
 
 ```go
 root.uuid = fake("uuid_hyphenated")

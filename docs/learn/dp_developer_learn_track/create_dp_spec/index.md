@@ -100,7 +100,7 @@ This section is crucial to bring every workspace-level resource needed for the D
 ```yaml
 resource:
     description: 'Resources associated with product360 Data Product'
-    purpose: 'DP Life Cyle Management'
+    purpose: 'DP Life Cycle Management'
     refType: dataos.                     # mandatory
     ref: bundle:v1beta:product360-bundle. # mandatory | referred Bundle must exist
 ```

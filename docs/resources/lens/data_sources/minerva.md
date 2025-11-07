@@ -102,7 +102,7 @@ workflow:
 ```
 
 <aside class="callout">
-Similarly, create the Instance Secret, Depot and Scanner for all the sources to be incldued in the semantic model.
+Similarly, create the Instance Secret, Depot and Scanner for all the sources to be included in the semantic model.
 </aside>
 
 ### **Create Minerva Cluster manifest file**
@@ -196,7 +196,7 @@ FROM
 ```
 ### **Define the table in the model**
 
-Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For example, to define a table for `cutomer `data:
+Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For example, to define a table for `customer `data:
 
 ```yaml
 tables:

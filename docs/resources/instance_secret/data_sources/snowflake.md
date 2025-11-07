@@ -153,7 +153,7 @@ Begin by creating a manifest file to hold the configuration details for your Sno
     name: sfdepottest-r # Unique identifier for Resource
     version: v1 # Manifest version
     type: instance-secret # Type of the Resource
-    description: snowflake credentails # Purpose of the Instance-secret
+    description: snowflake credentials # Purpose of the Instance-secret
     layer: user # DataOS layer
     instance-secret:
     type: key-value-properties

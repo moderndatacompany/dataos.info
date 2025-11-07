@@ -391,6 +391,7 @@ DataOS integrates with Airbyte, allowing you to connect to over 300 additional d
     </center>
 
 ### **Business Intelligence (BI) Tools**
+
 DataOS supports seamless integration with popular BI tools:
 
 - [Tableau Cloud](/interfaces/data_product_hub/activation/bi_sync/tableau_cloud/)

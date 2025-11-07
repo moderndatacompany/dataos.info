@@ -1,4 +1,4 @@
-# Comparsion functions and operators
+# Comparison functions and operators
 
 ## comaprsion operators
 

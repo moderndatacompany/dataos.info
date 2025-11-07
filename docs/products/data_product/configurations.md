@@ -171,7 +171,7 @@ Following are the predefined tags which you can customize as per the specific Da
 
 | Tags | Description |
 | --- | --- |
-| `DPDomain.Sales` | Refers to Data Products related to the sales domain, focusing on sales data and analytics. similarly you can assign any related doamin to the Data Product. |
+| `DPDomain.Sales` | Refers to Data Products related to the sales domain, focusing on sales data and analytics. similarly you can assign any related domain to the Data Product. |
 | `DPDomain.Marketing` | Pertains to Data Products in the marketing domain, emphasizing customer outreach and campaigns. |
 | `DPUsecase.Customer Segmentation` | Assigns the customer segmentation use case. |
 | `DPUsecase.Product Recommendation` |  Assigns the product recommendation use case.  |

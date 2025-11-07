@@ -25,7 +25,7 @@ input:
     max_buffer: 1000000
 ```
 
-If the multipart option is set to true, then lines are interpretted as message parts, and an empty line indicates the end of the message.
+If the multipart option is set to true, then lines are interpreted as message parts, and an empty line indicates the end of the message.
 
 If the delimiter field is left empty, then line feed (\n) is used.
 

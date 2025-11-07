@@ -336,8 +336,8 @@ def generate_cust_category():
     probabilities = [0.50, 0.60]
     return random.choices(categories, probabilities)[0]
 
-# Generate a Customer previlege
-def generate_customer_previlege():
+# Generate a Customer privilege
+def generate_customer_privilege():
     categories = ['Yes', 'No']
     probabilities = [0.50, 0.50]
     return random.choices(categories, probabilities)[0]
@@ -756,7 +756,7 @@ else:
 
 </details>
 
-Similarly, mock data have been created for Product, Transaction, and Account enities.
+Similarly, mock data have been created for Product, Transaction, and Account entities.
 
 ### **Design Data Product solution architecture**
 
@@ -945,7 +945,7 @@ The above yamll contains steps to orchestrate workflow.
 
 
 <details>
-  <summary>Flare Worflow manifest</summary>
+  <summary>Flare Workflow manifest</summary>
 
 ```yaml
 version: v1
@@ -1014,7 +1014,7 @@ workflow:
 </details>
 
 <details>
-  <summary>Flare Worflow manifest</summary>
+  <summary>Flare Workflow manifest</summary>
 
 ```yaml
 
@@ -1168,7 +1168,7 @@ The above workflows involve various data transformations and writing to Lakehous
 We utilized the Flare stack to carry out the data profiling task. Below is the manifest file for the data profiling job using the Flare stack.
 
 <details>
-  <summary>Worflow manifest</summary>
+  <summary>Workflow manifest</summary>
 
 ```yaml
 version: v1
@@ -1387,18 +1387,18 @@ We have implemented the Flare stack, orchestrated by Workflow, to perform qualit
   type: workflow
   tags:
     - demo.customer
-  description: The job performs metrics calculations  checks and metrix on customerdp overview
+  description: The job performs metrics calculations  checks and metrics on customerdp overview
   workflow:
     title: Customer overview Quality Datasets
     dag:
       - name: customer-data-quality
         title: Metrics and checks
-        description: The job performs metrics calculations  checks and metrix on customer overview
+        description: The job performs metrics calculations  checks and metrics on customer overview
         spec:
           stack: flare:7.0
           compute: runnable-default
           title: Customerdp data Quality Datasets
-          description: The job performs metrics calculations  checks and metrix on customer overview
+          description: The job performs metrics calculations  checks and metrics on customer overview
           stackSpec:
             driver:
               coreLimit: 2400m

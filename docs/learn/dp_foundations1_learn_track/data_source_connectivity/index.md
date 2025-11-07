@@ -47,7 +47,7 @@ Before diving into configuring data source connections, make sure you have every
       
       ![image](/learn/dp_foundations1_learn_track/data_source_connectivity/profile_on_dataos_home.png)
       <aside class="callout"> 
-      🗣️ Some tasks require specific permissions typically assigned to DataOS Operators. Contact DataOS administartor or training team for 'Operator' tag.
+      🗣️ Some tasks require specific permissions typically assigned to DataOS Operators. Contact DataOS administrator or training team for 'Operator' tag.
       </aside>
 
 2. **Check CLI installation**  

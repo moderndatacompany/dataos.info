@@ -235,7 +235,7 @@ Using the Operations App, users can monitor the operational logs of a Depot. In 
 
 Follow the below steps to monitor a Depot on the Operations app:
 
-1. Open the **Operations*- app.
+1. Open the **Operations** app.
 
     <div style="text-align: center;">
       <img src="/resources/depot/operations_home.png" alt="Hierarchical Structure of a Data Source within DataOS" style="border:1px solid black; width: 80%; height: auto;">
@@ -261,7 +261,7 @@ Follow the below steps to monitor a Depot on the Operations app:
 
 Follow the below steps to observe the pod logs of the Depot Service.
 
-1. Go to the **Core Kernel*- section in the **Operations*- app.
+1. Go to the **Core Kernel** section in the **Operations** app.
 
     <div style="text-align: center;">
       <img src="/resources/depot/core_kernel.png" alt="Hierarchical Structure of a Data Source within DataOS" style="border:1px solid black; width: 80%; height: auto;">
@@ -331,7 +331,7 @@ Follow the below steps to observe the pod logs of the Depot Service.
 
         - `ContainersReady`: **True**
 
-        - `PodScheduled`: **True*- (All conditions being `True` indicates the pod is successfully running and fully operational.)
+        - `PodScheduled`: **True** (All conditions being `True` indicates the pod is successfully running and fully operational.)
 
     - **Container Status**
 
@@ -379,3 +379,10 @@ This dashboard helps maintain system stability and efficiency by providing clear
 2. **Trend Analysis**: Time series graphs visualize usage patterns, helping identify spikes, bottlenecks, or inefficiencies.
 
 3. **Optimization & Scaling**: Monitoring usage trends enables better resource allocation and scaling decisions.
+
+
+
+
+
+
+

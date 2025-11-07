@@ -119,7 +119,7 @@ dataos-ctl dataset -a dataos://lakehouse:retail/city set-metadata \
 -v latest
 ```
 
-In order to set the metadata to some specfic version among the ones in the list say `v4.gz.metadata.json`.
+In order to set the metadata to some specific version among the ones in the list say `v4.gz.metadata.json`.
 
 ```bash
 dataos-ctl dataset -a dataos://lakehouse:retail/city set-metadata \

@@ -340,7 +340,7 @@ steps:
               job:
                 explain: true
                 streaming:
-                  triggerMode: Continous
+                  triggerMode: Continuous
                   checkpointLocation: dataos://lakehouse:sys01/if_kafka_raw/if_kafka_raw_ip_chkpt
                   showPreviewLines: 20
                 inputs:

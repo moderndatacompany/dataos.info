@@ -1,4 +1,4 @@
-# Table funtions
+# Table functions
 When a function's returned table type can vary based on its invoked arguments, it's termed as a polymorphic table function. Such functions enable dynamic invocation of custom logic directly within SQL queries. They serve various purposes, including interfacing with external systems and extending Trino's capabilities beyond standard SQL functionalities.
 ## Built-in table functions
 

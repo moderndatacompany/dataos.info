@@ -58,7 +58,7 @@ workflow:
             
             outputs:
               - name: cities_uppdated  # cities
-                dataset: dataos://lakehouse:countries_states_cities/cities?acl=rw #sink attribute is deperecated in the flare 7.0 which was used to define the different output dataset it's format and it's properties and in place of the depot in the output attribute  the dataset attribute defines the schema dataset it's format and it's properties along with the depot.
+                dataset: dataos://lakehouse:countries_states_cities/cities?acl=rw #sink attribute is deprecated in the flare 7.0 which was used to define the different output dataset it's format and it's properties and in place of the depot in the output attribute  the dataset attribute defines the schema dataset it's format and it's properties along with the depot.
                 format: Iceberg
                 options:
                   saveMode: overwrite

@@ -24,7 +24,7 @@ The following request searches the number of times the keyword "master" appeared
 
 ## GET and POST requests
 
-GET APIs is generally used to retrive the information without the body. All Lakesearch GET APIs that require a body can be submitted as POST requests.
+GET APIs is generally used to retrieve the information without the body. All Lakesearch GET APIs that require a body can be submitted as POST requests.
 
 ## Endpoint details
 
@@ -1532,7 +1532,7 @@ Boolean operators (`AND`, `OR`, `NOT`) behave as expected. They are left-associa
         ```
         
 6. `INTERVAL()`
-    - Another way to categorize numerical data into discreet ranges. Use this function in queries to filter results based on defined ranges.
+    - Another way to categorize numerical data into discrete ranges. Use this function in queries to filter results based on defined ranges.
     - The `INTERVAL` function takes two or more arguments and returns the index of the argument that is less than the first argument (`expr`)
     - The points must be in strictly increasing order (i.e., `point1 < point2 < ... < pointN`) for the function to work correctly.
         

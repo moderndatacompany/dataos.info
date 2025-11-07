@@ -25,7 +25,7 @@ compute:
 
 ## `compute`
 
-<b>Description:</b> compute-specific attributes are declared within the Compute section specifed by the <code>compute</code> key<br>
+<b>Description:</b> compute-specific attributes are declared within the Compute section specified by the <code>compute</code> key<br>
 
 | **Data Type**    | **Requirement** | **Default Value** | **Possible Value** |
 |------------------|-----------------|-------------------|-------------------|

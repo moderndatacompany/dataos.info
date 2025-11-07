@@ -255,7 +255,7 @@ hide:
 | features | map(bigint,double) | double, double, double, double, double, double, double, double, double | scalar | 1 |  |  |
 | features | map(bigint,double) | double, double, double, double, double, double, double, double, double, double | scalar | 1 |  |  |
 | filter | array(t) | array(t), function(t,boolean) | scalar | 0 | Return array containing elements that match the given predicate |  |
-| find_in_set | bigint | varchar, varchar | scalar | 1 | Returns the first occurance of string in string list (inputStrList) where string list (inputStrList) is a comma-delimited string. |  |
+| find_in_set | bigint | varchar, varchar | scalar | 1 | Returns the first occurrence of string in string list (inputStrList) where string list (inputStrList) is a comma-delimited string. |  |
 | first_value | t | t | window | 1 |  |  |
 | flatten | array(E) | array(array(E)) | scalar | 1 | Flattens the given array |  |
 | floor | bigint | bigint | scalar | 1 | Round down to nearest integer |  |

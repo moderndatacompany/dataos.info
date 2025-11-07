@@ -40,7 +40,7 @@ instance-secret:
 ```
 
 <aside class="callout">
-📖 Best Practice: You can use enviroment variables for attributes like `$POSTGRES_USERNAME` and `$POSTGRES_PASSWORD` to ensure that sensitive data is not hardcoded into the manifest file.
+📖 Best Practice: You can use environment variables for attributes like `$POSTGRES_USERNAME` and `$POSTGRES_PASSWORD` to ensure that sensitive data is not hardcoded into the manifest file.
 
 </aside>
 

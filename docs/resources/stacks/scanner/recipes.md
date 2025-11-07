@@ -477,7 +477,7 @@ workflow:
                   - TEST_SPORTS_RETAIL   # The database filter include only the TEST_SPORTS_RETAIL database
               tableFilterPattern:
                 includes:
-                  - ^CUSTOMER$    # With this filter pattern only the CUSTOMER tables present in the differnt schemas of the TEST_SPORTS_RETAIL are ingested
+                  - ^CUSTOMER$    # With this filter pattern only the CUSTOMER tables present in the different schemas of the TEST_SPORTS_RETAIL are ingested
 ```
 
 **Example 2:**

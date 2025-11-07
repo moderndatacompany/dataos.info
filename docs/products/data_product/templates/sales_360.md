@@ -74,7 +74,7 @@ For this project, we aim to create a Sales 360 data product that will integrate 
 
 **Create a Depot**
 
-Creating a bigquery depot with json file of the credentails of the client's warehouse.
+Creating a bigquery depot with json file of the credentials of the client's warehouse.
 
 <details>
 
@@ -123,7 +123,7 @@ For more details, refer to the [Workbench](/interfaces/workbench/) documentation
 
 ### **Data Product Architectural Design**
 
-Once you've explored the data, the next step is to plan the architectural design. For example, In our case, the  Data Sources is Bigquery and to connect with  this source we will need to create Depots. The flare job will then use this depot and will faciliate easy ingestion and transformation from source to lakehouse. After ingestion, the data will must go through profiling and pass all the defined quality checks we will discuss this in detail in Build Phase. Then our data product will be ready to be used in a Analytical Platform.
+Once you've explored the data, the next step is to plan the architectural design. For example, In our case, the  Data Sources is Bigquery and to connect with  this source we will need to create Depots. The flare job will then use this depot and will facilitate easy ingestion and transformation from source to lakehouse. After ingestion, the data will must go through profiling and pass all the defined quality checks we will discuss this in detail in Build Phase. Then our data product will be ready to be used in a Analytical Platform.
 
 <center> ![Architectural Diagram](/products/data_product/templates/architecture.png) </center> 
 
@@ -133,7 +133,7 @@ Here we will define our Input, Output, Transformations and SLOs.
 
   - **Input** acts as an intermediary connecting diverse data sources. You can define as many input ports as you would like for each database. Here our input is `bigquery` depot.
 
-  - **Transformation** is where you enrich the data to make it more useable  accurate and realiable. The stack we used for transformation is **`flare`**. The transformation stops involved were:
+  - **Transformation** is where you enrich the data to make it more usable  accurate and reliable. The stack we used for transformation is **`flare`**. The transformation stops involved were:
 
     - **Read Input from BigQuery:** Ingest raw data as is from Bigquery, with the only transformation being the conversion of cases to lower case.
 
@@ -187,7 +187,7 @@ These targets guide system design and optimization efforts, ensuring technical c
 
 After finalizing the design of the Data Product, it undergoes review sessions with key stakeholders and team members to verify compliance with defined requirements and goals. All modifications made during this phase are recorded to facilitate ongoing enhancements to the design.
 
-Once the design aligns with requirements, the subsequent phase focuses on devloping the Data Product.
+Once the design aligns with requirements, the subsequent phase focuses on developing the Data Product.
 
 ## Build Phase
 

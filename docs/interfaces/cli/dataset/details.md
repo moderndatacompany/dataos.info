@@ -1,4 +1,4 @@
-# Dataset Commnad Group
+# Dataset Command Group
 You run the following `dataset` commands by appending them to *dataos-ctl dataset*. 
 
 ## `add-field`

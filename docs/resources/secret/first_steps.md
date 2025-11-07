@@ -1,4 +1,4 @@
-# Secret: Fisrt Step
+# Secret: First Step
 
 ## Create a Secret
 
@@ -175,7 +175,7 @@ To remove the Secret Resource from the DataOS environment, utilize the `delete` 
     ```bash
     dataos-ctl delete -t secret -n mysecret -w sandbox
     ```
-**Altenative command:**
+**Alternative command:**
 === "Command"
 
     ```bash

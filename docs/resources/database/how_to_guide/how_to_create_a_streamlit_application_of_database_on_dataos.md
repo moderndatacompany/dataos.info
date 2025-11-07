@@ -187,7 +187,7 @@ To verify the successful movement of the data from Lakehouse to productdb databa
 
 ## Create a Flare job manifest
 
-After succesful creation of PostgreSQL Database Depot. Now, We will migrate data from LakeHouse to the Database via Flare stack.
+After successful creation of PostgreSQL Database Depot. Now, We will migrate data from LakeHouse to the Database via Flare stack.
 
 ```yaml
 --8<-- "examples/resources/database/use_case/product_flare.yml"
@@ -238,7 +238,7 @@ CMD streamlit run streamlit.py --server.port 8501
 #/product_data
 ```
 
-This Dockerfile starts with a lightweight Python 3.7.6 base image, installs all packages and libraries mentioned in requirments.txt, sets the working directory to `/app`, copies the `app.py` file into the container, and defines the command to run the application.
+This Dockerfile starts with a lightweight Python 3.7.6 base image, installs all packages and libraries mentioned in requirements.txt, sets the working directory to `/app`, copies the `app.py` file into the container, and defines the command to run the application.
 
 To build the Docker image, run the following command in the same directory as your `Dockerfile`:
 

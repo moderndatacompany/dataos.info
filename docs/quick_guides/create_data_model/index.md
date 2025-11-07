@@ -149,7 +149,7 @@ tables:
     # Path of the sql file, example - {{table_name.sql}}
     sql: {{ load_sql('sql_sample') }}
     description: Table description
-    # Set this property to true/false to control visibilty of table. 
+    # Set this property to true/false to control visibility of table. 
     public: true # table will be visible to everyone
 
     # To establish relationship with other table (this will always create left join)
@@ -179,7 +179,7 @@ tables:
       - name: measure_name
         title: measure_title
         description: Measure description
-        # Define custome SQL snippet or map dimension
+        # Define custom SQL snippet or map dimension
         sql: measure_sql
         # Set type for this measure (types - string,time,boolean,number,count,count_distinct,count_distinct_approx,sum,avg,min,max)
         type: string
