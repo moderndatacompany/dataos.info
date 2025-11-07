@@ -1058,7 +1058,7 @@ Joins allow you to combine data from multiple relations.
 
 ### CROSS JOIN
 
-A cross join returns the Cartesian product (all combinations) of two relations. Cross joins can either be specified using the explit `CROSS JOIN` syntax or by specifying multiple relations in the `FROM` clause.
+A cross join returns the Cartesian product (all combinations) of two relations. Cross joins can either be specified using the explicit `CROSS JOIN` syntax or by specifying multiple relations in the `FROM` clause.
 
 Both of the following queries are equivalent:
 

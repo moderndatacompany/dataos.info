@@ -362,7 +362,7 @@ When working with a Postman collection to test APIs, you typically need to confi
         }
         ```
 
-        - Replace table name and choose requried dimensions and measures. 
+        - Replace table name and choose required dimensions and measures. 
 
         - **For Example:** If you want to  compare the average price and average margin of two major categories: Apparel and Footwear for the `products` table. The  request body will be:
 
@@ -446,7 +446,7 @@ A GraphQL query to retrieve the `city` dimension associated with an `account` ta
     },
     {
       "account": {
-        "city": "Baton Rouge"
+        "city": "Baton Rogue"
       }
     },
     {

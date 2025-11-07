@@ -10,7 +10,7 @@ DataOS provides the capability to establish a connection with the Lakehouse Lake
 
 **Step 1**: Copy the template from below and paste it in a code editor.
 
-**Step 2**: Fill the values for the atttributes/fields declared in the YAML-based manifest file.
+**Step 2**: Fill the values for the attributes/fields declared in the YAML-based manifest file.
 
 **Step 3**: Apply the file through DataOS CLI
 

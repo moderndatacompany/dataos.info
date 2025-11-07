@@ -101,7 +101,7 @@ workflow:
           depot: mariadb01
           # sourceConfig:
           #   config:
-          #     schemaFilterPattern:      # use schemas and table filters to get specefic metadata from the data source
+          #     schemaFilterPattern:      # use schemas and table filters to get specific metadata from the data source
           #       includes:
           #         - mariadb     
 ```

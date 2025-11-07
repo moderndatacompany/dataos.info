@@ -1,4 +1,4 @@
-# Intance Secret: First Steps
+# Instance Secret: First Steps
 
 ## Create an Instance Secret
 
@@ -214,7 +214,7 @@ INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...deleted
 INFO[0000] 🗑 delete...complete
 ```
 
-**Method 2:** Copy the Instance Secret name, version, and Resource-type from the output of the [`get`](/interfaces/cli/command_reference/#get) command seperated by '|' enclosed within quotes and use it as a string in the delete command.
+**Method 2:** Copy the Instance Secret name, version, and Resource-type from the output of the [`get`](/interfaces/cli/command_reference/#get) command separated by '|' enclosed within quotes and use it as a string in the delete command.
 
 === "Command"
 

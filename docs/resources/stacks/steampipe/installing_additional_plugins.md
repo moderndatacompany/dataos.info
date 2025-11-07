@@ -33,7 +33,7 @@ RUN apt-get update -y \
  && apt-get install -y git
 USER steampipe:0
 
-# Installing defualt plugins
+# Installing default plugins
 RUN steampipe plugin install csv --skip-config
 RUN steampipe plugin install aws --skip-config
 RUN steampipe plugin install config --skip-config

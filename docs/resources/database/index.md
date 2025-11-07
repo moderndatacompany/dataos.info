@@ -23,7 +23,7 @@ A Database [Resource](/resources/) in DataOS acts as a repository for storing tr
 === "Syntax"
 
     ```yaml
-    #Attribtues for Resource
+    #Attributes for Resource
     name: ${resource-name}                #database_name 
     version: v1                           
     type: database                        

@@ -35,7 +35,7 @@ Here are the key responsibilities of a Data Product Consumer, though specific ta
 
 #### **Key Responsibilities**
 
-- **Discovering and Accessing Data Products: I**dentify and access relevant data products based on business needs. Interpret metadata to understand product details and assess the usability of data products for informed decision-making.
+- **Discovering and Accessing Data Products:** Identify and access relevant data products based on business needs. Interpret metadata to understand product details and assess the usability of data products for informed decision-making.
 
 - **Navigating Semantic Models:** Understand the relationships between data entities within semantic models to improve data comprehension.
 
@@ -43,7 +43,7 @@ Here are the key responsibilities of a Data Product Consumer, though specific ta
 
 - **Understanding Governance and Policies:** Ensure data usage and access aligns with organizational security standards and regulations.
 
-- **Activating Data Products: Consider how** data products can be consumed with Business Intelligence (BI) tools, APIs, and other applications to enhance workflows and reporting.
+- **Activating Data Products:** Consider how data products can be consumed with Business Intelligence (BI) tools, APIs, and other applications to enhance workflows and reporting.
 
 - **Tracking Metrics and Performance:** Monitor performance, usage, and impact metrics of data products to assess their effectiveness and communicate results to stakeholders.
 
@@ -67,7 +67,7 @@ Here are the key responsibilities of a Data Product Developer, though specific t
 
 - **Data Governance and Security**: Apply appropriate data security, access controls, ensuring regulatory compliance.
 
-- **deployment and Maintainance**: Deploy data products efficiently, monitor their performance, and manage updates using CI/CD practices.
+- **deployment and Maintenance**: Deploy data products efficiently, monitor their performance, and manage updates using CI/CD practices.
 
 If you are a Data Product Developer, click [here](/getting_started/data_product_developer/) to begin your DataOS journey.
 

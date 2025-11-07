@@ -228,7 +228,7 @@ Follow these steps to explore views and metrics within the Data Products Hub.
 **Step 3: Explore Metrics**
 
 - The **Overview** opens by default when you access the page.
-- Click on either **Entitites** or **Metrics** tab to view all available views for the selected Data Product.
+- Click on either **Entities** or **Metrics** tab to view all available views for the selected Data Product.
 - This section provides an overview of the metric-first approach and displays key metrics associated with the Data Product.
     
 <div style="text-align: center;">

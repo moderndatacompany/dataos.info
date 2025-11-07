@@ -29,7 +29,7 @@ INFO[0001] 🛠 apply...complete
 
 ```
 
-- **Access in business-friendly ways:** After successfull deployment of a Data Product, it can be accessible through SQL interfaces (Workbench), dashboards (Superset), a semantic layer, APIs, or a Data Product Hub for user convenience. To access the Data Product via Workbench you can go to Workbench , select the Cluster, schema, and output dataset and you are good to go. 
+- **Access in business-friendly ways:** After successful deployment of a Data Product, it can be accessible through SQL interfaces (Workbench), dashboards (Superset), a semantic layer, APIs, or a Data Product Hub for user convenience. To access the Data Product via Workbench you can go to Workbench , select the Cluster, schema, and output dataset and you are good to go. 
 
 - **Deploy updated product:** Deploy the updated Data Product to the production environment.
 

@@ -66,7 +66,7 @@ workflow:
                     properties:
                         write.format.default: parquet
                         write.metadata.compression-codec: gzip
-                        # overwrite-mode: dynamic # this was used only when one partition data is need to be replaced with saveMode as Overwrite that job was seperate if need will send that as well
+                        # overwrite-mode: dynamic # this was used only when one partition data is need to be replaced with saveMode as Overwrite that job was separate if need will send that as well
                     partitionSpec:
                       - type: month # identity partitioning was used at vendor_id level
                         column: date_col # col name = vendor_id

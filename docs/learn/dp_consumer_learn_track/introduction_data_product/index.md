@@ -76,7 +76,7 @@ A Data Product is designed to be easily discovered by users. It includes appropr
 
 **Addressable**
 
-A Data Product is assigned a unique identifier, making it easily referencable and accessible within a data ecosystem. This ensures that users can reliably access and work with the data product without ambiguity.
+A Data Product is assigned a unique identifier, making it easily referenceable and accessible within a data ecosystem. This ensures that users can reliably access and work with the data product without ambiguity.
 
 **Understandable**
 

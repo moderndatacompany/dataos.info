@@ -39,7 +39,7 @@ Your team needs to connect a new data source to DataOS while ensuring robust sec
 
 
 ## Module 3: Routine checks
-As part of your daily tasks, you perform a routine system health check as you might often encounters challenges in managing DataOS’ Kubernetes infrastucture and managing Pulsar configurations to ensure DataOS operates smoothly. In this module, navigate through essential commands, dashboards, and administrative adjustments to keep the platform robust and efficient.
+As part of your daily tasks, you perform a routine system health check as you might often encounters challenges in managing DataOS’ Kubernetes infrastructure and managing Pulsar configurations to ensure DataOS operates smoothly. In this module, navigate through essential commands, dashboards, and administrative adjustments to keep the platform robust and efficient.
 
 <div class= "grid cards" markdown>
 

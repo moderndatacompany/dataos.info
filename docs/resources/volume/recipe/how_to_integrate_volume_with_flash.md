@@ -25,7 +25,7 @@ volume:
 
 ## Flash Service manifest file
 
-Refernce the Volume created in the `persistanceVolume` attribute of the Flash Service.
+Reference the Volume created in the `persistanceVolume` attribute of the Flash Service.
 
 ```yaml
 name: flash-email-attribution-service

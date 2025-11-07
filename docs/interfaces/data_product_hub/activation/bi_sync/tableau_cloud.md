@@ -73,7 +73,7 @@ After successfully creating the PAT, follow the same steps as of connection deta
 - **PAT Name**: Tableau PAT Name. (e.g., `iamgroot`, `test_token`)
 - **PAT Value**: Personal Access Token.
 
-After filling all details, click on the Acitvate button. A confirmation message will appear upon successful connection.  
+After filling all details, click on the Activate button. A confirmation message will appear upon successful connection.  
 
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau4.png" alt="DPH" style="width:40rem; border: 1px solid black;" />

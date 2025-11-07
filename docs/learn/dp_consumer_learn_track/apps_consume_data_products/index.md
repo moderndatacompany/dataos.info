@@ -99,7 +99,7 @@ The following examples demonstrate the LLM system for natural language interacti
 
 ### **Exploring Data Product**
 
-Click on ‘Explore DP’. The follwoing screen will appear.
+Click on ‘Explore DP’. The following screen will appear.
 
 You will get the option to enter your query. Enter the query in natural language and click on ‘Submit’. 
 

@@ -75,7 +75,7 @@ For ETL, we will be using the Flare Stack. A couple of preparatory steps are req
 
 The configuration of the Flare job involves specifying input sources and customizing output settings to direct the data specifically to the desired branch. Here is a detailed breakdown of how to configure and run an ETL job using the Flare Stack:
 
-- **Input Configuration:** Start by configuring the input to read data from a Postgres Depot. To know more about the configuation, refer to the link: Flare Postgres Read configuration.
+- **Input Configuration:** Start by configuring the input to read data from a Postgres Depot. To know more about the configuration, refer to the link: Flare Postgres Read configuration.
 - **Output Configuration:** The output needs special attention to ensure data is written to the correct branch. Set the branch attribute in the Flare configuration to direct the writing action to the `stage` branch specifically.
 
 Below is a sample manifest file for an ETL job that ingests new records into a specific staging branch of an Iceberg dataset:

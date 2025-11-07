@@ -62,7 +62,7 @@ FROM
 ```
 ### **Define the table in the model**
 
-Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For example, to define a table for `cutomer `data:
+Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For example, to define a table for `customer `data:
 
 ```yaml
 tables:

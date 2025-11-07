@@ -12,7 +12,7 @@ Furthermore, every job within a Directed Acyclic Graph (DAG) is associated with 
 </div>
 
 
-In the above illustration, **Job 1** is the first job to be executed as it has no dependencies. Once **Job 1** completes, both **Job 2** and **Job 3** can run concurrently or parallely. Only after the successful completion of both **Job 2** and **Job 3**, **Job 4** becomes eligible for execution. Finally, **Job 5** can be executed sequentially after **Job 4** successfully finishes. This hierarchical structure ensures optimal job execution without creating bottlenecks.
+In the above illustration, **Job 1** is the first job to be executed as it has no dependencies. Once **Job 1** completes, both **Job 2** and **Job 3** can run concurrently or parallelly. Only after the successful completion of both **Job 2** and **Job 3**, **Job 4** becomes eligible for execution. Finally, **Job 5** can be executed sequentially after **Job 4** successfully finishes. This hierarchical structure ensures optimal job execution without creating bottlenecks.
 
 <aside class=callout>
 🗣️ A Directed Acyclic Graph may have multiple root nodes, which means that a Workflow can contain both jobs and other nested Workflows stored in different locations. This feature allows for the decomposition of complex workflows into manageable components. For more information on this scenario, refer to <a href="/resources/workflow/how_to_guide/multiple_workflows_from_a_single_workflow/">Orchestrating Multiple Workflows from a Single Workflow.</a>

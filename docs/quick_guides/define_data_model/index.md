@@ -103,7 +103,7 @@ Now, let’s specify the dimensions (attributes that provide context) and measur
 
 - **Customer Measures**: Metrics like Total spend, and frequency of purchases.
 - **Product Measures**: Sales volume, profit margin
-- **Transaction Measures**: Order total, Average order value, Fulfilment time.
+- **Transaction Measures**: Order total, Average order value, Fulfillment time.
 
 ---
 

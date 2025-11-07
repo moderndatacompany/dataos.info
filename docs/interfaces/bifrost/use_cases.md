@@ -12,7 +12,7 @@ The ‘**Use-Cases**’ tab in Bifrost lists all the possible actions needed to 
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/bifrost/use_cases/usecases.png" alt="Use-Cases" style="width: 80%; border: 1px solid black; heigt:auto">
+    <img src="/interfaces/bifrost/use_cases/usecases.png" alt="Use-Cases" style="width: 80%; border: 1px solid black; height:auto">
     <figcaption>Use-Cases tab in Bifrost</figcaption>
   </div>
 </center>
@@ -219,7 +219,7 @@ Here is the list of use-cases we currently support:
 | Read Metis | knowledge | read metis entities |
 | Run Incremental Jobs | knowledge | access to run incremental jobs |
 | Manage Metis | knowledge | manage metis entities |
-| Admin Grafana App | observability | Gives persmission to create and edit graph in grafana |
+| Admin Grafana App | observability | Gives permission to create and edit graph in grafana |
 | View Grafana App | observability | It will give access to view the graphs of grafana |
 | Create Update and Delete Lakehouse in system layer workspaces | resource-management | Manage lakehouse in the system layer workspaces |
 | Create Update and Delete Lens in System layer Workspaces | resource-management | Manage lens in the System layer Workspaces |

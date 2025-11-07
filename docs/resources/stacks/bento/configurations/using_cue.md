@@ -107,7 +107,7 @@ When you are satisfied with the results, terminate the Bento process and let's m
 
 ## Enhance
 
-The `config.cue` above looks eerily like JSON. This is because CUE is a superset of JSON and shares its syntax. However, we can shorten our configuration to reduce identation and curly brackets. Let's rewrite `config.cue` to look like this:
+The `config.cue` above looks eerily like JSON. This is because CUE is a superset of JSON and shares its syntax. However, we can shorten our configuration to reduce indentation and curly brackets. Let's rewrite `config.cue` to look like this:
 
 ```yaml
 import "example.com/hello-cue/bento"

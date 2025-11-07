@@ -25,7 +25,7 @@ secret:
       }
 ```
 
-The `type` field should be set to "cloud-kernel-image-pull", which will generate a Docker container registry Secret within the same Workspace. Learn more about Cloud Kernel Image Pull secret on the link: [Referencing Secrets to Pull Images from a Private Conatiner Registry](/resources/secret/#referencing-secrets-to-pull-images-from-private-container-registry)
+The `type` field should be set to "cloud-kernel-image-pull", which will generate a Docker container registry Secret within the same Workspace. Learn more about Cloud Kernel Image Pull secret on the link: [Referencing Secrets to Pull Images from a Private Container Registry](/resources/secret/#referencing-secrets-to-pull-images-from-private-container-registry)
 
 ## Apply the Secret Resource
 
