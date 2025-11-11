@@ -80,7 +80,7 @@ A Pod can have multiple containers running apps within it, but it can also hav
 - Init containers always run to completion.
 - Each init container must complete successfully before the next one starts.
 
-If a Pod's init container fails, the kubelet repeatedly restarts that init container until it succeeds. However, if the Pod has a `restartPolicy` of Never, and an init container fails during startup of that Pod, Kubernetes treats the overall Pod as failed. To specify an init container for a Pod, add the `initContainers` field to the Pod specification, as an array of `container` items (similar to a
+If a Pod's init container fails, the kubelet repeatedly restarts that init container until it succeeds. However, if the Pod has a `restartPolicy` of Never, and an init container fails during startup of that Pod, Kubernetes treats the overall Pod as failed. To specify an init container for a Pod, add the `initContainers` field to the Pod specification, as an array of `container` items.
 
 ## Ephemeral containers
 

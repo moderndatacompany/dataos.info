@@ -16,36 +16,36 @@ layer: user # DataOS Layer (optional)
 
 # LENS-SPECIFIC SECTION
 lens:
- compute: runnable-default # Compute Resource name (mandatory)
- runAsApiKey: abcdefghijklmnopqrstuvwxyz # DataOS API key (optional)
- runAsUser: iamgroot # DataOS UserID (optional)
- secrets: # Referred Instance-secret configuration (optional for public repositories, mandatory for private repositories)
-  - name: bitbucket-r # Instance-secret name (mandatory)
-    key: abcd # Key to be referred (optional)
-    keys: # List of keys to be referred (optional)
-      - abcd
-      - efgh
-    allKeys: true # Whether all keys are required or not (optional)
-    consumptionType: envVars # Secret consumption type (optional)
- source: # mandatory
-  type: themis # mandatory
-  name: minithemis # mandatory
-  catalog: lakehouse
- repo: # Code repository configuration (mandatory)
-  url: https://www.bitbucket.org/abcd/lens2 # Code Repository URL (mandatory)
-  lensBaseDir: lens2/sales/model # mandatory
-  secretId: bitbucket_r_r
-  syncFlags: # refer to the branch of the repo, default main,master branch
-    - --ref=lens2test
- api:
-  logLevel: INFO  
-  replicas: 3
-  autoScaling:
-    enabled: true
-    minReplicas: 1
-    maxReplicas: 3
-    targetMemoryUtilizationPercentage: 60
-    targetCPUUtilizationPercentage: 60
+  compute: runnable-default # Compute Resource name (mandatory)
+  runAsApiKey: abcdefghijklmnopqrstuvwxyz # DataOS API key (optional)
+  runAsUser: iamgroot # DataOS UserID (optional)
+  secrets: # Referred Instance-secret configuration (optional for public repositories, mandatory for private repositories)
+    - name: bitbucket-r # Instance-secret name (mandatory)
+      key: abcd # Key to be referred (optional)
+      keys: # List of keys to be referred (optional)
+        - abcd
+        - efgh
+      allKeys: true # Whether all keys are required or not (optional)
+      consumptionType: envVars # Secret consumption type (optional)
+  source: # mandatory
+    type: themis # mandatory
+    name: minithemis # mandatory
+    catalog: lakehouse
+  repo: # Code repository configuration (mandatory)
+    url: https://www.bitbucket.org/abcd/lens2 # Code Repository URL (mandatory)
+    lensBaseDir: lens2/sales/model # mandatory
+    secretId: bitbucket_r_r
+    syncFlags: # refer to the branch of the repo, default main,master branch
+      - --ref=lens2test
+  api:
+    logLevel: INFO  
+    replicas: 3
+    autoScaling:
+      enabled: true
+      minReplicas: 1
+      maxReplicas: 3
+      targetMemoryUtilizationPercentage: 60
+      targetCPUUtilizationPercentage: 60
   resources:                     #optional
     requests:
       cpu: 4Gi
@@ -57,13 +57,13 @@ lens:
     LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
     LENS2_SOURCE_WORKSPACE_NAME: public
     LENS2_DB_TIMEOUT: 1500000
- router:
-	logLevel: INFO
+  router:
+  logLevel: INFO
   envs:
     LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
     LENS2_SOURCE_WORKSPACE_NAME: public
     LENS2_DB_TIMEOUT: 1500000
-	resources:
+  resources:
     requests:
       cpu: 4Gi
       memory: 1000m
@@ -71,23 +71,23 @@ lens:
       cpu: 16Gi
       memory: 2000m		
     
- worker:
-	logLevel: INFO
-	replicas: 2
-  highAvailabilityConfig:
-    level: hostname #hostname/region/zone
-    mode: preferred #preferred/required
+  worker:
+    logLevel: INFO
+    replicas: 2
+    highAvailabilityConfig:
+      level: hostname #hostname/region/zone
+      mode: preferred #preferred/required
   envs:
     LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
     LENS2_SOURCE_WORKSPACE_NAME: public
     LENS2_DB_TIMEOUT: 1500000
-	resources:
-		requests:
-			cpu: 4Gi
-			memory: 1000m
-		limits:
-			cpu: 16Gi
-			memory: 2000m		
+  resources:
+    requests:
+      cpu: 4Gi
+      memory: 1000m
+    limits:
+      cpu: 16Gi
+      memory: 2000m		
 ```
 
 ## Resource meta section
@@ -256,11 +256,11 @@ type: instance-secret
 description: "bitbucket read secrets for lens repos"
 layer: user
 instance-secret:
- type: key-value
- acl: r
- data:
-  GITSYNC_USERNAME: ${USERNAME}
-  GITSYNC_PASSWORD: ${PASSWORD}
+  type: key-value
+  acl: r
+  data:
+    GITSYNC_USERNAME: ${USERNAME}
+    GITSYNC_PASSWORD: ${PASSWORD}
 ```
 
 ```yaml
@@ -318,9 +318,9 @@ lens:
 
 ```yaml
 lens:
- source:
-  type: themis
-  name: minithemis
+  source:
+    type: themis
+    name: minithemis
 ```
 
 ---
@@ -382,10 +382,10 @@ repo: # Code repository configuration (mandatory)
 
 ```yaml
 lens:
- repo: 
-	url: https://github.com/abcd/lens2
-	lensBaseDir: lens2/sales/model 
-	secretId: github-r
+  repo: 
+	  url: https://github.com/abcd/lens2
+	  lensBaseDir: lens2/sales/model 
+	  secretId: github-r
 ```
 
 
@@ -406,7 +406,7 @@ lens:
     lensBaseDir: lens/sales/model 
     secretId: github-r
     syncFlags: 
-        - --ref=main
+      - --ref=main
 ```   
 ### **`api`**
 
@@ -588,14 +588,14 @@ lens:
 
 ```yaml
 lens:
- api:  
-  resources:
-    requests:
-      cpu: 100m
-      memory: 256Mi
-    limits:
-      cpu: 2000m
-      memory: 2048Mi
+  api:  
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 2000m
+        memory: 2048Mi
 ```
 
 ### **`envs`**
@@ -627,11 +627,11 @@ lens:
 
 ```yaml
 lens:
- api:  
-  replicas: 2 
-  logLevel: info
+  api:  
+    replicas: 2 
+    logLevel: info
   envs:
-	  LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
+    LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
     LENS2_DB_TIMEOUT: 300000
   resources:
     requests:
@@ -758,18 +758,18 @@ highAvailabilityConfig:     #optional
 
 ```yaml
 lens:
- worker: 
-  replicas: 1 
-  logLevel: info
-  envs:
-    LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-  resources: # optional
-    requests:
-    cpu: 100m
-    memory: 256Mi
-    limits:
-    cpu: 6000m
-    memory: 6048M
+  worker: 
+    replicas: 1 
+    logLevel: info
+    envs:
+      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
+    resources: # optional
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 6000m
+        memory: 6048M
 ```
 
 ---
