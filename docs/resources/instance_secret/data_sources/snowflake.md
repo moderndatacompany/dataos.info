@@ -112,14 +112,14 @@ Begin by creating a manifest file to hold the configuration details for your Sno
     instance-secret:
       type: key-value-properties # Secret type
       acl: r # Access control: 'r' for read-only
-        data:
-          username: ${snowflake-username}
-          auth_mode: key-pair
-          passphrase: ${pass phrase}
-          key: |
-            -----BEGIN ENCRYPTED PRIVATE KEY-----
-            add the private key here
-            -----END ENCRYPTED PRIVATE KEY-----       
+      data:
+        username: ${snowflake-username}
+        auth_mode: key-pair
+        passphrase: ${pass phrase}
+        key: |
+          -----BEGIN ENCRYPTED PRIVATE KEY-----
+          add the private key here
+          -----END ENCRYPTED PRIVATE KEY-----       
     ```
 
 === "Read-write Instance Secret"
@@ -135,14 +135,14 @@ Begin by creating a manifest file to hold the configuration details for your Sno
     instance-secret:
       type: key-value-properties # Secret type
       acl: rw # Access control: 'r' for read-only
-        data:
-          username: ${snowflake-username}
-          auth_mode: key-pair
-          passphrase: ${pass phrase}
-          key: |
-            -----BEGIN ENCRYPTED PRIVATE KEY-----
-            add the private key here
-            -----END ENCRYPTED PRIVATE KEY-----   
+      data:
+        username: ${snowflake-username}
+        auth_mode: key-pair
+        passphrase: ${pass phrase}
+        key: |
+          -----BEGIN ENCRYPTED PRIVATE KEY-----
+          add the private key here
+          -----END ENCRYPTED PRIVATE KEY-----   
     ```
 
 === "Example Usage"

@@ -56,7 +56,6 @@ dataos resource apply -f db-secret.yaml
 3. **Refer to the Instance Secret in the Depot Manifest**
 
 
-
 Now that the secret is stored securely, reference it in the Depot Manifest. The Depot Manifest defines the PostgreSQL connection for the Data Product development.
 
 ```yaml
