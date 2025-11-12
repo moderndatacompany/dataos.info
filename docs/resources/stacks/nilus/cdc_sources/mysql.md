@@ -167,7 +167,7 @@ service:                                                   # Service specificati
   servicePort: 9010                                        # Service port
   replicas: 1                                              # Number of replicas
   logLevel: INFO                                           # Logging level
-  compute: ${{query-default}}                              # Compute profile
+  compute: ${{query-default}}                              # Compute type
   stack: nilus:1.0                                         # Nilus stack version
   stackSpec:                                               # Stack specification
     source:                                                # Source configuration block

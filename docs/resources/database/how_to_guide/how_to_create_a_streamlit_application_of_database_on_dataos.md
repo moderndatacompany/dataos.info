@@ -199,7 +199,7 @@ Before moving to deploy streamlit in DataOS. You can download this zip folder to
 
 ## Add dependencies to your requirements file
 
-In the application folder, let's create a create a `requirements.txt` file, preferably pinning its version (replace x.x.x with the version you want installed):
+In the application folder, let's create a create a `requirements.txt` file, preferably pinning its version (replace the version you want installed):
 
 ```text title="requirements.txt"
 trino==0.316.0
