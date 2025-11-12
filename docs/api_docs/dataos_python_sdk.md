@@ -51,7 +51,7 @@ Python 3.7.3
 
 !!! tip "Best Practice"
 
-        It’s recommended to write `{sys.executable}` rather than plain `python` in order to ensure that commands are run in the Python installation matching the currently running notebook (which may not be the same Python installation that the `python` command refers to).
+    It’s recommended to write `{sys.executable}` rather than plain `python` in order to ensure that commands are run in the Python installation matching the currently running notebook (which may not be the same Python installation that the `python` command refers to).
 
 
 **Ensure you have `pip` installed**

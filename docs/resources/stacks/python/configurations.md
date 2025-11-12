@@ -290,11 +290,11 @@ dataosSecrets:
 
 ## compute
 
-**Description:** Defines the compute profile where the Service runs.
+**Description:** Defines the compute type where the Service runs.
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| string | optional | runnable-default | runnable-default, custom profiles |
+| string | optional | runnable-default | runnable-default, custom types |
 
 **Example usage:**
 
