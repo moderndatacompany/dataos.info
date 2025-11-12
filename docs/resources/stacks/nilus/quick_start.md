@@ -113,7 +113,7 @@ service:                                                   # Service specificati
   servicePort: 9010                                        # Service port
   replicas: 1                                              # Number of replicas
   logLevel: INFO                                           # Logging level
-  compute: ${{query-default}}                              # Compute profile
+  compute: ${{query-default}}                              # Compute type
   stack: nilus:3.0                                         # Nilus stack version
   stackSpec:                                               # Stack specification
     source:                                                # Source configuration block
@@ -169,7 +169,7 @@ This section outlines the necessary attributes of Nilus CDC Service.
     | `servicePort`        | Internal port exposed by the service     |
     | `replicas`           | Number of instances to run               |
     | `logLevel`           | Logging verbosity level                  |
-    | `compute`            | Compute profile for workload placement   |
+    | `compute`            | Compute type for workload placement   |
     | `resources.requests` | Guaranteed compute resources             |
     | `resources.limits`   | Max compute resources allowed            |
     | `stack`              | Specifies the stack to use with version. |
@@ -334,7 +334,7 @@ This section outlines the necessary attributes of Nilus Batch Workflow.
     | `schedule`      | Defines the frequency and schedule for workflow runs. This parameter is optional. If not specified, the workflow is triggered only once at run time.                                                 |
     | `dag`           | dag (Directed Acyclic Graph) specifies the sequence of processing steps in the workflow.                                                                                                             |
     | `stack`         | Identifies the Nilus stack to be used. Available versions can be viewed in the Operations App.                                                                                                       |
-    | `compute`       | Defines the compute profile to be used. Available profiles can be viewed in the Operations App.                                                                                                      |
+    | `compute`       | Defines the Compute type to be used. Available profiles can be viewed in the Operations App.                                                                                                      |
     | `resources`     | Specifies the resources allocated to complete the batch workflow. This parameter is optional.                                                                                                        |
     | `loglevel`      | Defines the level of logging to be applied for the workflow.                                                                                                                                         |
     | `dataosSecrets` | Points to the secret resource that stores credentials required to connect to a source. This is applicable for non-depotable sources. If the source supports a depot, this parameter is not required. |
