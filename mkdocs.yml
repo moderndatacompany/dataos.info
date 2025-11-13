@@ -681,7 +681,7 @@ nav:
           - Nilus:
             - resources/stacks/nilus/index.md
             - Data Movement Architecture: resources/stacks/nilus/data_movement_architecture.md
-            # - Set Up Nilus: resources/stacks/nilus/set_up.md
+            - Setting Up Nilus: resources/stacks/nilus/set_up.md
             - Quick Start: resources/stacks/nilus/quick_start.md
             - Data Masking: resources/stacks/nilus/data_masking.md
             - Schema Evolution: resources/stacks/nilus/schema_evolution.md
