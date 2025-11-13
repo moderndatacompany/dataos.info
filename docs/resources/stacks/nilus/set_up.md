@@ -4,29 +4,128 @@ The Nilus stack in DataOS is designed for developers and enables data movement f
 
 ## Prerequisites
 
-* A running **Nilus Server** (FastAPI) with its database (**PostgreSQL**).
-* Access to **Depot Service** and **Heimdall** (for secret/permission resolution in **DataOS**).
-* For **Change Data Capture (CDC),** ensure that all required database prerequisites are configured. This includes enabling features such as PostgreSQL Write-Ahead Logging (WAL), SQL Server (change table), MySQL binary logging (binlog), and supplemental logging in Oracle.
+Deployment of the Nilus Server requires appropriate access permissions. These permissions must be granted either through predefined use cases or by assigning the `operator` tag. Only users with the `operator` role are authorized to deploy Nilus Server.
 
-### **Sample Nilus Stack**
+> **Note:** Permission requirements may vary across organizations, depending on role configurations and access policies defined within each DataOS environment.
 
-Use the following template as a reference to create Nilus Stack. This configuration leverages the Nilus Python entry point, eliminating the need for a custom wrapper script.
+**Verifying User Permissions**
 
-!!! abstract  "Configuration Requirement"
-    When deploying the `nilus-server` in a non-default workspace, the `NILUS_SERVICE_URL` environment variable must be updated to target the appropriate workspace.
+To verify whether the required access permissions or `operator` tag are present, execute the following command:
 
+```bash
+dataos-ctl user get
+
+# Expected Output:
+
+dataos-ctl user get                
+INFO[0000] 😃 user get...                                
+INFO[0000] 😃 user get...complete                        
+
+      NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
+───────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
+      Groot    │  iamgroot   │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
+               │             │        │                      │ roles:id:operator,              
+               │             │        │                      │ roles:id:system-dev,            
+               │             │        │                      │ roles:id:user,                  
+               │             │        │                      │ users:id:iamgroot
+```
+
+In the example above, the presence of `roles:id:operator` indicates that the user is authorized to deploy the Nilus Server.
+
+**Error on Missing Permissions**
+
+If a deployment attempt is made without the required permissions or `operator` tag, the following error will be returned:
+
+```bash
+⚠️ Invalid Parameter - failure validating resource : could not get the secret map for the dataos address: 'dataos://nilusdb?acl=rw' err: 403 <nil>
+WARN[0001] 🛠 apply...error                              
+ERRO[0001] failure applying resources                   
+```
+
+!!! success "Resolution"
+    If the required tags or access permissions are not assigned, contact a DataOS Administrator or Operator to request the necessary access.
+
+
+
+## **Sample Nilus Server**
+
+The Nilus Server is a FastAPI service responsible for capturing and managing pipeline metadata.
+It must be deployed and running before the Nilus Stack, as the stack depends on the server’s API endpoint. The following template defines the Nilus Server service used to capture pipeline information.
+
+
+??? note "Nilus Server Manifest"
+
+    ```yaml
+    name: nilus-server
+    version: v1
+    type: service
+    tags:
+      - service
+      - nilus-server
+    description: Nilus Server for capturing pipeline information
+    workspace: system
+    service:
+      servicePort: 8000
+      ingress:
+        enabled: true
+        path: /nilus/system:nilus-server
+        stripPath: false
+        noAuthentication: false
+      replicas: 1
+      logLevel: INFO
+      compute: runnable-default
+      resources:
+        requests:
+          cpu: 1000m
+          memory: 1000Mi
+        limit:
+          cpu: 2000m
+          memory: 2000Mi
+      stack: container
+      envs:
+        NILUS_DB_DEPOT_ADDRESS: dataos://nilusdb?acl=rw
+        NILUS_SERVER_PORT: 8000
+      stackSpec:
+        image: 933570616564.dkr.ecr.us-west-2.amazonaws.com/released-images/nilus:0.1.1
+        command:
+          - /bin/sh
+          - -c
+        arguments:
+          - |
+            python3 /app/nilus_server/entrypoint.py run-migration \
+              && exec python3 /app/nilus_server/entrypoint.py run-server
+    ```
+
+Replace all placeholder values—with the appropriate environment-specific configurations.
+
+
+!!! abstract "Configuration Requirement"
+    The default workspace for Nilus components is `system`. When deploying the `nilus-server` in a non-default workspace, both the `ingress.path` and the Nilus Stack YAML must be updated to reflect the correct workspace reference.
+ 
     **Expected Format:**
-
+ 
     ```yaml
-    http://nilus-server.${{WORKSPACE}}.svc.cluster.local:8000/nilus/${{WORKSPACE}}:nilus-server
+    /nilus/${{workspace}}:nilus-server
+    ```
+ 
+    **Example:**
+    For a workspace named `analytics`, the path should be:
+ 
+    ```yaml
+    /nilus/analytics:nilus-server
     ```
 
-    **Example:** For a workspace named `analytics`, the environment variable should be:
+**Common Environment Variables in the Server**
 
-    ```yaml
-    http://nilus-server.analytics.svc.cluster.local:8000/nilus/analytics:nilus-server
-    ```
+* `NILUS_DB_DEPOT_ADDRESS`: Defines the DataOS depot location for Nilus database connections.
+* `NILUS_SERVER_PORT`: Specifies the port on which the Nilus Server listens.
 
+
+
+
+## **Sample Nilus Stack**
+
+Once the Nilus Server is active, use the following template as a reference to create a Nilus Stack. This configuration utilizes the Nilus Python entry point, thereby removing the requirement for a custom wrapper script.
 
 
 ??? note "Nilus Stack Manifest"
@@ -270,7 +369,23 @@ Use the following template as a reference to create Nilus Stack. This configurat
             {{- end}}
     ```
 
-Replace all placeholder values—including image, registry, secrets, and URLs—with the appropriate environment-specific configurations.
+Replace all placeholder values—including image, registry, and URLs—with the appropriate environment-specific configurations.
+
+!!! abstract  "Configuration Requirement"
+    If the `nilus-server` deployed in a non-default workspace, the `NILUS_SERVICE_URL` environment variable in the Nilus Stack must be updated to target the appropriate workspace.
+
+    **Expected Format:**
+
+    ```yaml
+    http://nilus-server.${{WORKSPACE}}.svc.cluster.local:8000/nilus/${{WORKSPACE}}:nilus-server
+    ```
+
+    **Example:** For a workspace named `analytics`, the environment variable should be:
+
+    ```yaml
+    http://nilus-server.analytics.svc.cluster.local:8000/nilus/analytics:nilus-server
+    ```
+
 
 **Common Environment Variables in the Stack**
 
@@ -285,72 +400,3 @@ Replace all placeholder values—including image, registry, secrets, and URLs—
 * `NILUS_HOSTNAME_VERIFICATION_ENABLED` : Controls hostname verification for internal service communication. Set to `"false"` to disable verification.
 
 
-### **Sample Nilus Server**
-
-The following template defines the Nilus Server service used to capture pipeline information.
-
-!!! abstract "Configuration Requirement"
-    When deploying the `nilus-server` in a non-default workspace, both the `ingress.path` and the Nilus Stack YAML must be updated to reflect the correct workspace reference.
- 
-    **Expected Format:**
- 
-    ```yaml
-    /nilus/${{workspace}}:nilus-server
-    ```
- 
-    **Example:**
-    For a workspace named `analytics`, the path should be:
- 
-    ```yaml
-    /nilus/analytics:nilus-server
-    ```
-
-??? note "Nilus Server Manifest"
-
-    ```yaml
-    name: nilus-server
-    version: v1
-    type: service
-    tags:
-      - service
-      - nilus-server
-    description: Nilus Server for capturing pipeline information
-    workspace: system
-    service:
-      servicePort: 8000
-      ingress:
-        enabled: true
-        path: /nilus/system:nilus-server
-        stripPath: false
-        noAuthentication: false
-      replicas: 1
-      logLevel: INFO
-      compute: runnable-default
-      resources:
-        requests:
-          cpu: 1000m
-          memory: 1000Mi
-        limit:
-          cpu: 2000m
-          memory: 2000Mi
-      stack: container
-      envs:
-        NILUS_DB_DEPOT_ADDRESS: dataos://nilusdb?acl=rw
-        NILUS_SERVER_PORT: 8000
-      stackSpec:
-        image: 933570616564.dkr.ecr.us-west-2.amazonaws.com/released-images/nilus:0.1.1
-        command:
-          - /bin/sh
-          - -c
-        arguments:
-          - |
-            python3 /app/nilus_server/entrypoint.py run-migration \
-              && exec python3 /app/nilus_server/entrypoint.py run-server
-    ```
-
-Replace all placeholder values—with the appropriate environment-specific configurations.
-
-**Common Environment Variables in the Server**
-
-* `NILUS_DB_DEPOT_ADDRESS`: Defines the DataOS depot location for Nilus database connections.
-* `NILUS_SERVER_PORT`: Specifies the port on which the Nilus Server listens.
