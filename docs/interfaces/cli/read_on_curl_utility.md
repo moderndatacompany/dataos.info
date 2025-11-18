@@ -15,7 +15,7 @@ curl --version
 brew -v
 
 # In case brew is not installed, make sure to install it:
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # After installing brew, let's install curl:
 brew install curl

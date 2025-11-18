@@ -104,3 +104,7 @@ Snowflake supports dual public keys (RSA_PUBLIC_KEY and RSA_PUBLIC_KEY_2) to all
     ```sql
     ALTER USER <your_user> UNSET RSA_PUBLIC_KEY;
     ```
+
+
+
+    
