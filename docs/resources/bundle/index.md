@@ -389,7 +389,7 @@ dataos-ctl delete -i "my-bundle | v1beta | bundle |      "
 
 ## Bundle Templates
 
-The Bundle templates serve as blueprints, defining the structure and configurations for various types of Bundles, making it easier for data developers to consistently deploy resources. To know more, refer to the link: [Bundle Templates](/resources/bundle/bundle_templates/).
+The Bundle templates serve as blueprints, defining the structure and configurations for various types of Bundles, making it easier for data developers to consistently deploy resources. To know more, refer to the link: [Bundle Templates](/resources/bundle/templates/bundle_dependencies/)
 
 
 ## Bundle Command Reference

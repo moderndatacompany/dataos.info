@@ -415,7 +415,7 @@ INFO[0002] 🔍 get...complete
 
 !!! info 
 
-    You can also view detailed information about any created Lens Resource through the [Operations](interfaces/operations/) App in the DataOS GUI. Note that you must have the Operator role assigned to access this information.
+    You can also view detailed information about any created Lens Resource through the [Operations](/interfaces/operations/) App in the DataOS GUI. Note that you must have the Operator role assigned to access this information.
 
 
 ## Step 6: Delete Lens
