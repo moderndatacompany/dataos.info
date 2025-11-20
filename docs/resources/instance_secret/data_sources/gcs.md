@@ -71,7 +71,7 @@ Begin by creating a manifest file to hold the configuration details for your GCS
 🗣️ Note that for read-write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
     ```bash
-    dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+    dataos-ctl apply -f /home/office/Depots/abc_depot.yaml
     INFO[0000] 🛠 apply...                                   
     INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
     WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
@@ -134,7 +134,18 @@ This section focuses on attributes specific to GCS Instance Secrets. It includes
 
 For more information, refer to the [configurations section](/resources/instance_secret/configurations/).
 
+
 ### **Step 2: Apply the manifest**
+
+!!! warning
+    If the connection credentials contain special characters such as `@ : / ? # & = + ; % \ ' { } ( ) * $ !`, the `--disable-interpolation` flag must be used when applying `instance-secrets` or `secrets`. This ensures that special characters are retained as-is in the string.
+
+    **Example:**
+
+    ```bash
+    dataos-ctl resource apply -f ${{path/to/instance-secret.yml}} --disable-interpolation
+    ```
+
 
 To create the GCS Instance Secret within DataOS, use the `apply` command. Since GCS Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest.
 

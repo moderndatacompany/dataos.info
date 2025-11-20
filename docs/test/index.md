@@ -150,11 +150,11 @@ These DataOS Resources support batch data processing, enabling scheduled, large-
     ---
     Manages batch data processing tasks with dependencies.
 
--   :resources-operator:{ .lg .middle } [**Operator**](/resources/operator/)
+<!-- -   :resources-operator:{ .lg .middle } [**Operator**](/resources/operator/)
 
     ---
 
-    Standardizes orchestration of external resources, enabling programmatic actions from DataOS interfaces.
+    Standardizes orchestration of external resources, enabling programmatic actions from DataOS interfaces. -->
     
 
 -   :resources-stack:{ .lg .middle } [**Stacks**](/resources/stacks/)
