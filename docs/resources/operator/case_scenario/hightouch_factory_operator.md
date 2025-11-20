@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # How to orchestrate a Hightouch pipeline using Hightouch Factory Operator?
 
 The Hightouch Operator facilitates the programmatic orchestration and monitoring of the state cycle of the **hightouch-pipeline** from the DataOS CLI interface within the **Hightouch Factory**.
@@ -20,12 +25,16 @@ To manage the lifecycle of a hightouch-pipeline from DataOS, a Hightouch Factory
 
 Orchestrating a hightouch pipeline involves a series of logical steps as delineated below:
 
-1. [YAML Manifest for Hightouch Factory Operator](#yaml-manifest-for-hightouch-factory-operator)
-2. [Apply the Operator YAML](#apply-the-operator-manifest)
-3. [Verify Operator creation](#verify-operator-creation)
-4. [YAML Manifest for Resource (Hightouch pipeline)](#yaml-manifest-for-resource-hightouch-pipeline)
-5. [Apply the Resource manifest](#apply-the-resource-yaml)
-6. [Retrieve status of Resource](#get-status-of-pipeline-run)
+- [How to orchestrate a Hightouch pipeline using Hightouch Factory Operator?](#how-to-orchestrate-a-hightouch-pipeline-using-hightouch-factory-operator)
+  - [Prerequisite](#prerequisite)
+    - [**Hightouch Operator Image in the Container Registry**](#hightouch-operator-image-in-the-container-registry)
+  - [Steps](#steps)
+    - [**YAML manifest for Hightouch Factory Operator**](#yaml-manifest-for-hightouch-factory-operator)
+    - [**Apply the Operator manifest**](#apply-the-operator-manifest)
+    - [**Verify Operator Creation**](#verify-operator-creation)
+    - [**YAML manifest for Resource (Hightouch pipeline)**](#yaml-manifest-for-resource-hightouch-pipeline)
+    - [**Apply the Resource YAML**](#apply-the-resource-yaml)
+    - [**Get Status of Pipeline Run**](#get-status-of-pipeline-run)
 
 ### **YAML manifest for Hightouch Factory Operator**
 

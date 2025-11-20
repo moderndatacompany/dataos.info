@@ -2,6 +2,7 @@
 title: Operator
 search:
   boost: 4
+  exclude: true
 ---
 
 # :resources-operator: Operator
