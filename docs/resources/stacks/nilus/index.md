@@ -128,7 +128,7 @@ Nilus supports the use of special characters in connection credentials across al
 
 
 !!! info
-        When connection credentials include special characters, the `--disable-interpolation` flag must be used while applying `instance-secrets`, or `secrets`. This ensures the special characters are preserved accurately.
+    When connection credentials include special characters, the `--disable-interpolation` flag must be used while applying `instance-secrets`, or `secrets`. This ensures the special characters are preserved accurately.
 
 **Example:**  
 

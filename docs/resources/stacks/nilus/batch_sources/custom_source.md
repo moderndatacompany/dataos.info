@@ -25,7 +25,7 @@ Custom Sources allow the development of **user-defined connectors** while utiliz
     - Do **not** add libraries that are already part of the existing environment.
     - This prevents duplication and avoids version conflicts.
 
-    **Pre-Installed Packages:** See the [requirements.txt](/resources/stacks/nilus/requirements.txt), to know the installed packages or [Download](/resources/stacks/nilus/requirements.zip).   
+    **Pre-Installed Packages:** See the [requirements.txt](/resources/stacks/nilus/files/dependencies.txt), to know the installed packages or [Download](/resources/stacks/nilus/files/nilus.zip).   
 
     **Nilus Core Library:** UPDATE EXISTING IMPORTS
 
