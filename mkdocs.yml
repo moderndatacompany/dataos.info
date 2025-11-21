@@ -231,7 +231,7 @@ nav:
           - Lakehouses: interfaces/metis/metis_ui_resources/metis_resources_lakehouses.md
           - Lenses: interfaces/metis/metis_ui_resources/metis_resources_lenses.md
           - Monitors: interfaces/metis/metis_ui_resources/metis_resources_monitors.md
-          - Operators: interfaces/metis/metis_ui_resources/metis_resources_operators.md
+          # - Operators: interfaces/metis/metis_ui_resources/metis_resources_operators.md
           - Pagers: interfaces/metis/metis_ui_resources/metis_resources_pagers.md
           - Policies: interfaces/metis/metis_ui_resources/metis_resources_policies.md
           - Secrets: interfaces/metis/metis_ui_resources/metis_resources_secrets.md
@@ -281,6 +281,7 @@ nav:
           - Examples:
             - Restart and scale Cluster on a pre-defined schedule: resources/cluster/examples/cluster_maintenance.md
             - Multiple Cluster Setup using single manifest: resources/cluster/examples/multiple_cluster_setup.md
+            - Querying Minerva Cluster using Python: resources/cluster/minerva_python_client.md
           - Core Concepts: 
             - On-demand Computing: resources/cluster/on_demand_computing.md
         - Compute: 
@@ -451,11 +452,11 @@ nav:
             - Create an Equation Monitor on Lens: resources/monitor/how_to_guide/lens_monitor.md
             - Create an Equation Monitor on Postgres: resources/monitor/equation_monitor_on_postgres.md
             - Generate incidents for certificate expiration: resources/monitor/how_to_guide/certificate_expiration_monitoring.md
-        - Operator: 
-          - resources/operator/index.md
-          - Configurations: resources/operator/configurations.md
-          - Recipes: 
-            - Orchestrate Hightouch pipeline using Hightouch Factory Operator: resources/operator/case_scenario/hightouch_factory_operator.md
+        # - Operator: 
+        #   - resources/operator/index.md
+        #   - Configurations: resources/operator/configurations.md
+        #   - Recipes: 
+        #     - Orchestrate Hightouch pipeline using Hightouch Factory Operator: resources/operator/case_scenario/hightouch_factory_operator.md
         - Pager: 
           - resources/pager/index.md
           - Configurations: resources/pager/configurations.md
@@ -682,7 +683,7 @@ nav:
           - Nilus:
             - resources/stacks/nilus/index.md
             - Data Movement Architecture: resources/stacks/nilus/data_movement_architecture.md
-            # - Set Up Nilus: resources/stacks/nilus/set_up.md
+            - Setting Up Nilus: resources/stacks/nilus/set_up.md
             - Quick Start: resources/stacks/nilus/quick_start.md
             - Data Masking: resources/stacks/nilus/data_masking.md
             - Schema Evolution: resources/stacks/nilus/schema_evolution.md

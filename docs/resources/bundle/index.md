@@ -204,7 +204,7 @@ Within a Bundle, you have the option to deploy Workspace-level Resources in a ne
 
 🗣 The Workspaces specified within a Bundle does not dictate the location of Bundle creation. Instead, it pertains to the Workspace designated to encompass all <a href="/resources/types/#workspace-level-resources">Workspace-level Resources</a> (such as <a href="/resources/workflow/">Workflow</a>, <a href="/resources/service/">Service</a>, <a href="/resources/worker/">Worker</a>, <a href="/resources/secret/">Secret</a>, Database, <a href="/resources/lakehouse/">Lakehouse</a> and <a href="/resources/cluster/">Cluster</a>) housed within the Bundle.
 
-It is noteworthy that the Workspace-level Resources present in a Bundle can also be instantiated within other Workspaces, not necessarily that was created using the Bundle. But, the <a href="/resources/types/#instance-level-resources">Instance-level Resources</a>, irrespective of their presence within a Bundle, such as <a href="/resources/depot/">Depot</a>, <a href="/resources/policy/">Policy</a>, <a href="/resources/compute/">Compute</a>, <a href="/resources/stacks/">Stacks</a>, Instance-Secret, <a href="/resources/operator/">Operator</a>, or even another Bundle, maintain their instance-level scope and are not constrained to a specific Workspace.
+It is noteworthy that the Workspace-level Resources present in a Bundle can also be instantiated within other Workspaces, not necessarily that was created using the Bundle. But, the <a href="/resources/types/#instance-level-resources">Instance-level Resources</a>, irrespective of their presence within a Bundle, such as <a href="/resources/depot/">Depot</a>, <a href="/resources/policy/">Policy</a>, <a href="/resources/compute/">Compute</a>, <a href="/resources/stacks/">Stacks</a>, Instance-Secret, or even another Bundle, maintain their instance-level scope and are not constrained to a specific Workspace.
 
 </aside>
 
@@ -389,7 +389,7 @@ dataos-ctl delete -i "my-bundle | v1beta | bundle |      "
 
 ## Bundle Templates
 
-The Bundle templates serve as blueprints, defining the structure and configurations for various types of Bundles, making it easier for data developers to consistently deploy resources. To know more, refer to the link: [Bundle Templates](/resources/bundle/bundle_templates/).
+The Bundle templates serve as blueprints, defining the structure and configurations for various types of Bundles, making it easier for data developers to consistently deploy resources. To know more, refer to the link: [Bundle Templates](/resources/bundle/templates/bundle_dependencies/)
 
 
 ## Bundle Command Reference

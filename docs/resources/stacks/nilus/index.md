@@ -50,6 +50,13 @@ Nilus is designed as a lightweight, extensible, and API-centric ingestion framew
 
     By combining a minimal operational footprint with extensible design and broad integration capabilities, Nilus reduces total cost of ownership (TCO) while unlocking advanced use cases across operational analytics, machine learning pipelines, and real-time observability.
 
+## Setting Up Nilus 
+
+Set up Nilus to enable seamless data movement across DataOS. Deploy the Nilus Server (backed by PostgreSQL) and the Nilus Stack to orchestrate pipelines, manage metadata, and support both batch and CDC workloads.
+
+[**Get started with Nilus Setup →**](/resources/stacks/nilus/set_up/)
+
+
 ## Choosing Between CDC and Batch
 
 Since Nilus supports both CDC and Batch ingestion modes, selecting the appropriate one depends on your specific data requirements, latency tolerances, and the capabilities of your source system. The following key considerations can help determine whether CDC or Batch ingestion best suits your use case.
@@ -74,7 +81,7 @@ To begin ingesting data using Nilus, refer to the appropriate quick-start guide 
 
 Data masking replaces or transforms sensitive values with non-sensitive equivalents. This technique enables Nilus users to safeguard sensitive information during data ingestion while maintaining its structural integrity and analytical utility.
 
-[**Get started with Data Masking in Nilus**](/resources/stacks/nilus/data_masking/)
+[**Get started with Data Masking in Nilus →**](/resources/stacks/nilus/data_masking/)
 
 
 Data masking is required when handling production-grade data in non-production, shared, or compliance-sensitive environments.
@@ -110,4 +117,40 @@ Nilus supports a variety of databases, warehouses, and lakehouses as both source
     * Flexible authentication support (API keys, OAuth, custom headers)
     * Deploy in minutes using Git repository integration
     
-    [**Get started with Custom Sources**](/resources/stacks/nilus/batch_sources/custom_source/)
+    [**Get started with Custom Sources →**](/resources/stacks/nilus/batch_sources/custom_source/)
+
+
+## Special Characters in Credentials
+
+Nilus supports the use of special characters in connection credentials across all major sources and destinations.
+
+**Supported Characters:** `@ : / ? # & = + ; % \ ' { } ( ) * $ !`
+
+
+!!! info
+    When connection credentials include special characters, the `--disable-interpolation` flag must be used while applying `instance-secrets`, or `secrets`. This ensures the special characters are preserved accurately.
+
+**Example:**  
+
+```bash
+dataos-ctl resource apply -f ${{/config/instance-secret.yml}} --disable-interpolation
+```
+
+The table below outlines the current compatibility of special character handling across supported sources and destinations.
+
+| **Source**    | **Batch Source** | **CDC Source** | **Destination** | **Comments**                                                                                                                              |
+| ------------- | ---------------- | -------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| MS SQL Server | ✅                | ✅              | ✅               |                                                                                                                                           |
+| PostgreSQL    | ✅                | ✅              | ✅               |                                                                                                                                           |
+| MongoDB       | ✅                | ✅              | ✅               |                                                                                                                                           |
+| MySQL         | ✅                | ✅              | ✅               |                                                                                                                                           |
+| Redshift      | ✅                | 🚫             | ✅               | The source system does not support `'`, `"`, `\`, `/`, or `@` in credentials. This is a source-side limitation and not governed by Nilus. |
+| Snowflake     | ✅                | 🚫             | ✅               |                                                                                                                                           |
+| Clickhouse    | ✅                | 🚫             | ❌               | Support for special characters in connection credentials for Clickhouse as a destination is not available in the current release.         |
+| Azure Synapse | ✅                | 🚫             | 🚫              |                                                                                                                                           |
+
+**Legend:**
+
+* ✅ — Supported
+* ❌ — Not supported (Planned for future releases)
+* 🚫 — Not applicable

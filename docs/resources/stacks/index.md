@@ -46,7 +46,7 @@ Stacks assure specific guarantees, such as displaying lineage information on the
 
 Data Developers can create tailor-made Stacks to incorporate their existing codebases into DataOS, eliminating the need for rewriting. This expedites onboarding and allows developers to seamlessly declare their Stacks (e.g., RClone, Great Expectations) and commence work within the DataOS ecosystem.
 
-## Stack vs. Operator
+<!-- ## Stack vs. Operator
 
 DataOS has two distinct resources that supports its interoperability and extensibility. One is the Stack and the other is the [Operator](/resources/operator/). Though both [Resource-types](/resources/types/) are quite similar, yet they are relevant in different scenarios. The table below summarizes the difference between the two Resource-types.
 
@@ -58,7 +58,7 @@ DataOS has two distinct resources that supports its interoperability and extensi
 | *Creator Persona* | Data Developer primarily the Data Engineer | Platform Engineering Team  |
 | *Supporting capabilities* | Modularity, extensibility | Interoperability, Extensibility  |
 | *Use Case* | Introduction of new programming paradigms within DataOS like Flink, Spark, Soda, DBT, Steampipe, Function Mesh | Controlling an external resource from the interface of DataOS like Azure Data Factory Pipeline, Databricks Workflow, Hightouch Factory. |
-| *Scope* | Instance-Level | Instance-Level |
+| *Scope* | Instance-Level | Instance-Level | -->
 
 ## Built-in Stacks in DataOS
 

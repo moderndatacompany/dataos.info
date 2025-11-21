@@ -62,22 +62,6 @@ Ensure you have these credentials ready before proceeding with the Instance Secr
 
 Begin by creating a manifest file to hold the configuration details for your Git repository Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
-<aside class="callout">
-🗣️ Note that for read-write access of an  Instance Secret the user has to create two Instance Secrets one with `acl:r` and other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
-
-    ```bash
-    dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
-    INFO[0000] 🛠 apply...                                   
-    INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
-    WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
-    ⚠️ Invalid Parameter - failure validating instance resource : invalid depot, missing a secret reference with acl: r
-    WARN[0000] 🛠 apply...error                              
-    ERRO[0000] failure applying resources
-    ```
-</aside>
-
-=== "Read-only Instance Secret"
-
     ```yaml
     name: ${{gitcred-r}}
     version: ${{v1}}
@@ -87,22 +71,6 @@ Begin by creating a manifest file to hold the configuration details for your Git
     instance-secret:
       type: ${{key-value}}
       acl: ${{r}}
-      data:
-        GITSYNC_USERNAME: ${{"iamgroot"}}
-        GITSYNC_PASSWORD: ${{"56F4japOhkkQDS3trUnZsetFB2J3lnclDPgHThHLto="}}
-    ```
-
-=== "Read-write Instance Secret"
-
-    ```yaml
-    name: ${{gitcred-rw}}
-    version: ${{v1}}
-    type: instance-secret
-    description: ${{"git credentials"}}
-    layer: ${{user}}
-    instance-secret:
-      type: ${{key-value}}
-      acl: ${{rw}}
       data:
         GITSYNC_USERNAME: ${{"iamgroot"}}
         GITSYNC_PASSWORD: ${{"56F4japOhkkQDS3trUnZsetFBKL3lnclDPgHThHLto="}}
@@ -127,7 +95,18 @@ This section focuses on attributes specific to Git repository Instance Secret. I
 For more information, refer to the [configurations section](/resources/instance_secret/configurations/).
 
 
+
 ### **Step 2: Apply the manifest**
+
+!!! warning
+    If the connection credentials contain special characters such as `@ : / ? # & = + ; % \ ' { } ( ) * $ !`, the `--disable-interpolation` flag must be used when applying `instance-secrets` or `secrets`. This ensures that special characters are retained as-is in the string.
+
+    **Example:**
+
+    ```bash
+    dataos-ctl resource apply -f ${{path/to/instance-secret.yml}} --disable-interpolation
+    ```
+
 
 To create the Git repository Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest.
 

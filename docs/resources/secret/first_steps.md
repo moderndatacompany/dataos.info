@@ -80,6 +80,17 @@ For more information about the various attributes in Secret specific section, re
 
 To apply the Secret manifest, utilize the DataOS [CLI](/interfaces/cli/) by explicitly specifying the path to the manifest file and the designated workspace. The apply command is provided below:
 
+!!! warning
+    If the connection credentials contain special characters such as `@ : / ? # & = + ; % \ ' { } ( ) * $ !`, the `--disable-interpolation` flag must be used when applying `instance-secrets` or `secrets`. This ensures that special characters are retained as-is in the string.
+
+    **Example:**
+
+    ```bash
+    dataos-ctl resource apply -f ${{path/to/secret.yml}} -w ${name-of-the-workspace} --disable-interpolation
+    ```
+
+
+
 === "Command"
     ```bash
     dataos-ctl apply -f ${path-to-secret-yaml} -w ${name-of-the-workspace}

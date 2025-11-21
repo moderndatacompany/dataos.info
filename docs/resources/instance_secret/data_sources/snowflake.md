@@ -73,7 +73,7 @@ Alternatively, if access is managed through use cases, ensure the following use 
  
     - The private key (`snowflake_rsa_key.p8`)  will be used in Instance Secret.
 
-  For key generation steps, see the [Generate RSA Key Pair section](/resources/instance_secret/data_sources/snowflake_kp_steps/).
+    For key generation steps, see the [Generate RSA Key Pair section](/resources/instance_secret/data_sources/snowflake_kp_steps/).
 
 - **Passphrase**: A secure passphrase to encrypt the private key.
 
@@ -89,7 +89,7 @@ Begin by creating a manifest file to hold the configuration details for your Sno
 🗣️ Note that for read-write access of an  Instance Secret, the user has to create two Instance Secrets one with `acl:r` and the other with `acl:rw` with similar names such as `testdepot-r `and` testdepot-rw`. If a user creates an Instance Secret with only read-write access and does not create a separate read-only Instance Secret, an error will be triggered while applying the Depot manifest file, as shown below.
 
     ```bash
-    dataos-ctl apply -f /home/office/Depots/sf_depot.yaml
+    dataos-ctl apply -f /home/office/Depots/abc_depot.yaml
     INFO[0000] 🛠 apply...                                   
     INFO[0000] 🔧 applying testdepot:v2alpha:depot...        
     WARN[0000] 🔧 applying testdepot:v2alpha:depot...error   
@@ -112,14 +112,14 @@ Begin by creating a manifest file to hold the configuration details for your Sno
     instance-secret:
       type: key-value-properties # Secret type
       acl: r # Access control: 'r' for read-only
-        data:
-          username: ${snowflake-username}
-          auth_mode: key-pair
-          passphrase: ${pass phrase}
-          key: |
-            -----BEGIN ENCRYPTED PRIVATE KEY-----
-            add the private key here
-            -----END ENCRYPTED PRIVATE KEY-----       
+      data:
+        username: ${snowflake-username}
+        auth_mode: key-pair
+        passphrase: ${pass phrase}
+        key: |
+          -----BEGIN ENCRYPTED PRIVATE KEY-----
+          add the private key here
+          -----END ENCRYPTED PRIVATE KEY-----       
     ```
 
 === "Read-write Instance Secret"
@@ -135,14 +135,14 @@ Begin by creating a manifest file to hold the configuration details for your Sno
     instance-secret:
       type: key-value-properties # Secret type
       acl: rw # Access control: 'r' for read-only
-        data:
-          username: ${snowflake-username}
-          auth_mode: key-pair
-          passphrase: ${pass phrase}
-          key: |
-            -----BEGIN ENCRYPTED PRIVATE KEY-----
-            add the private key here
-            -----END ENCRYPTED PRIVATE KEY-----   
+      data:
+        username: ${snowflake-username}
+        auth_mode: key-pair
+        passphrase: ${pass phrase}
+        key: |
+          -----BEGIN ENCRYPTED PRIVATE KEY-----
+          add the private key here
+          -----END ENCRYPTED PRIVATE KEY-----   
     ```
 
 === "Example Usage"
@@ -192,7 +192,18 @@ This section focuses on attributes specific to Snowflake Instance Secrets. It in
 
 For more information, refer to the [configurations section](/resources/instance_secret/configurations/).
 
+
 ### **Step 2: Apply the manifest**
+
+!!! warning
+    If the connection credentials contain special characters such as `@ : / ? # & = + ; % \ ' { } ( ) * $ !`, the `--disable-interpolation` flag must be used when applying `instance-secrets` or `secrets`. This ensures that special characters are retained as-is in the string.
+
+    **Example:**
+
+    ```bash
+    dataos-ctl resource apply -f ${{path/to/instance-secret.yml}} --disable-interpolation
+    ```
+
 
 To create the Snowflake Instance Secret within DataOS, use the `apply` command. Since Instance Secrets are Instance-level resources, do not specify a workspace while applying the manifest.
 

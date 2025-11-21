@@ -137,7 +137,7 @@ service:                                                   # Service specificati
   servicePort: 9010                                        # Service port
   replicas: 1                                              # Number of replicas
   logLevel: INFO                                           # Logging level
-  compute: ${{query-default}}                              # Compute profile
+  compute: ${{query-default}}                              # Compute type
   persistentVolume:                                        # Persistent volume configuration
     name: ${{ncdc-vo1-01}}                                 # Volume name (multiple options commented)
     directory: ${{nilus_01}}                               # Target directory within the volume

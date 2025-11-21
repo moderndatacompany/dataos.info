@@ -141,7 +141,7 @@ hide:
 | --- | --- |
 | OpenID | OpenID Connect is an identity layer built on top of the OAuth protocol, providing a streamlined mechanism for Clients to verify the identity of End-Users. It utilizes an Authorization Server to authenticate the user and retrieve basic profile information through exposed REST APIs. In DataOS, Heimdall leverages OpenID Connect for authentication and authorization when processing sign-in requests from users. |
 | [Operations](/interfaces/operations/) | Operations app provides administrators a centralized way to understand and govern activity on the DataOS platform and monitor how users optimally utilize available resources. |
-| [Operator](/resources/operator/) | A DataOS Resource responsible for managing or orchestrating external applications and systems within DataOS workflows. |
+<!-- | [Operator](/resources/operator/) | A DataOS Resource responsible for managing or orchestrating external applications and systems within DataOS workflows. | -->
 
 
 ## p

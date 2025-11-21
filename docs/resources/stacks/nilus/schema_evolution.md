@@ -2,7 +2,7 @@
 
 Nilus handles schema registration and evolution automatically when ingesting data from various sources. This document explains how schema registration, evolution, and data type management work in Nilus.
 
-Nilus is a data movement stack that ingests data from source systems (APIs, databases, etc.) and writes it to destination systems. When working with semi-structured data formats like JSON, schema registration happens automatically on-the-fly as data is ingested.
+Nilus is a data movement stack that ingests data from source systems (APIs, databases, etc.) and writes it to destination systems. Along with this, schema registration happens automatically on-the-fly as data is ingested.
 
 ## Automatic Schema Registration
 

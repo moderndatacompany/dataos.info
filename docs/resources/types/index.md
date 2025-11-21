@@ -100,11 +100,11 @@ A Grant Resource enables administrators assign use cases to subjects either as u
 
 An Instance Secret is a Resource within DataOS for securely storing confidential information at the DataOS Instance level. Its scope spans the entire DataOS Instance, enabling access across all Workspaces. Conversely, a Secret is limited in accessibility, allowing access solely to Resources within the Workspace where it's created. 
 
-### **Operator**
+<!-- ### **Operator**
 
 <!-- >🔔 Components labeled as **[𝛼 alpha]** are in their Alpha release phase. This stage is primarily for testing and evaluation; therefore, we advise against using these components for critical production tasks. Availability in all environments is not guaranteed. For further information and confirmation of their accessibility, please consult with your DataOS administrator. -->
 
-Operator is a DataOS Resource that offers a standardized interface for orchestrating resources located outside the DataOS cluster. It enables data developers to programmatically control these external resources through DataOS interfaces. Central to its function is allowing DataOS’s orchestrator, *Poros*, to manage external resources using custom Operators. To know more about Operator, refer to the link: [Operator](/resources/operator/).
+Operator is a DataOS Resource that offers a standardized interface for orchestrating resources located outside the DataOS cluster. It enables data developers to programmatically control these external resources through DataOS interfaces. Central to its function is allowing DataOS’s orchestrator, *Poros*, to manage external resources using custom Operators. To know more about Operator, refer to the link: [Operator](/resources/operator/). -->
 
 ### **Policy**
 

@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Metadata of Operators on Metis UI
 
 <aside class="callout">

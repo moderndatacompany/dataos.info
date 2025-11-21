@@ -78,6 +78,61 @@ To maximize performance, organizations can establish Minerva query engine cluste
 
 Minerva supports an extensive range of data sources, encompassing both traditional relational databases such as Oracle, PostgreSQL, MySQL, and Redshift, as well as Lakehouses built on object storages like Amazon S3, and Google Cloud Storage. This broad compatibility ensures seamless access to various data sources, enabling comprehensive and integrated analyses. To know more about the various data sources supported by Minerva, click on the following link: [Connectors Configuration](/resources/cluster/connectors_configuration/).
 
+
+!!! tip
+    When configuring a Cluster for Snowflake Depot, the following environment variables must be set to ensure compatibility with the Snowflake JDBC driver:
+
+    ```yaml
+    coordinatorEnvs:
+      "JVM__opts": "--add-opens=java.base/java.nio=ALL-UNNAMED -Dnet.snowflake.jdbc.enableBouncyCastle=TRUE"
+    workerEnvs:
+      "JVM__opts": "--add-opens=java.base/java.nio=ALL-UNNAMED -Dnet.snowflake.jdbc.enableBouncyCastle=TRUE"
+    ```
+
+
+    ??? note "Sample Snowflake Minerva Cluster Configuration"
+
+        ```yaml
+        # Resource metadata
+        name: snowflakecluster
+        version: v1
+        type: cluster
+        description: Snowflake Depot Cluster using Minerva.
+        tags:
+          - cluster
+          - minerva
+
+        # Cluster specification
+        cluster:
+          compute: query-default
+          type: minerva
+
+          # Minerva-specific configuration
+          minerva:
+            replicas: 1
+            # resources:
+            #   limits:
+            #     cpu: 2000m
+            #     memory: 4Gi
+            #   requests:
+            #     cpu: 2000m
+            #     memory: 4Gi
+            # debug:
+            #   logLevel: INFO
+            #   trinoLogLevel: ERROR
+            depots:
+              - address: dataos://snowflakedepot
+
+            coordinatorEnvs:
+              "JVM__opts": "--add-opens=java.base/java.nio=ALL-UNNAMED -Dnet.snowflake.jdbc.enableBouncyCastle=TRUE"
+            workerEnvs:
+              "JVM__opts": "--add-opens=java.base/java.nio=ALL-UNNAMED -Dnet.snowflake.jdbc.enableBouncyCastle=TRUE"
+        ```
+
+
+
+
+
 **Query Execution Process**
 
 When initiating a SQL query from sources such as Workbench, Minerva-CLI, JDBC, or Lens App UI, the query is seamlessly directed to the Minerva Gateway Service. The Gateway Service conducts a thorough analysis of the query and the associated tables, forwarding it to the Minerva Clusters for execution. Furthermore, the Gateway Service facilitates data policy decisions, including Masking and Filtering policies. Once the analysis is completed, the query is seamlessly passed on to the Minerva Cluster for execution.
@@ -154,430 +209,447 @@ To create a Cluster Resource within DataOS, you have two options:
 
 2. **Using the Operations App's Graphical User Interface (GUI):** Alternatively, you can create a Cluster Resource by utilizing the GUI in the Operations App.
 
-=== "Using DataOS CLI"
 
-    ### **Create a Cluster manifest** 
+### **Create a Cluster manifest** 
 
-    In DataOS, users have the capability to instantiate Cluster Resources by creating manifest files (YAML configuration files) and applying them via the DataOS CLI. The code block below provides the sample Cluster manifests for the two different Cluster-types:
+In DataOS, users have the capability to instantiate Cluster Resources by creating manifest files (YAML configuration files) and applying them via the DataOS CLI. The code block below provides the sample Cluster manifests for the two different Cluster-types:
 
-    ???tip "Themis Cluster manifest"
-
-        ```yaml
-        # Resource meta section (1)
-        name: themiscluster
-        version: v1
-        type: cluster
-        description: Themis cluster for DataOS Lakehouse
-        tags:
-          - cluster
-          - themis
-
-        # Cluster-specific section (2)
-        cluster:
-          compute: query-default
-          type: themis
-        # Themis-specific section (3)
-          themis:
-            themisConf:  
-              "kyuubi.frontend.thrift.binary.bind.host": "0.0.0.0"
-              "kyuubi.frontend.thrift.binary.bind.port": "10101"
-              driver:
-                memory: '4096M'
-              executor:
-                memory: '4096M'
-            depots:
-              - address: dataos://lakehouse  # Note: Themis clusters only support DataOS Lakehouse
-        ```
-         
-
-    ???tip "Minerva Cluster manifest"
-
-        ```yaml
-        # Resource meta section
-        name: minervacluster
-        version: v1
-        type: cluster
-        description: We are using this cluster to check the monitor and pager stuff with the help of minerva cluster. 
-        tags:
-          - cluster
-          - minerva
-
-        # Cluster-specific section
-        cluster:
-          compute: query-default
-          type: minerva
-
-          # Minerva-specific section
-          minerva:
-            replicas: 1
-            resources:
-              limits:
-                cpu: 2000m
-                memory: 4Gi
-              requests:
-                cpu: 2000m
-                memory: 4Gi
-            debug:
-              logLevel: INFO
-              trinoLogLevel: ERROR
-            depots:
-              - address: dataos://lakehouse
-        ``` 
-
-    The structure of a Cluster Resource manifest encompasses the following sections:
-
-    - [Resource Meta Section](#resource-meta-section)
-    - [Cluster-specific Section](#cluster-specific-section)
-
-    #### **Resource meta section**
-
-    The Resource meta section is a standardized component across all DataOS Resource manifests, detailing essential metadata attributes necessary for Resource identification, classification, and management. This metadata is organized within the Poros Database. Below is the syntax for the Resource meta section:
+???tip "Themis Cluster manifest"
 
     ```yaml
-    name: ${{minervac}}
-    version: v1 
-    type: cluster 
-    tags: 
-      - ${{dataos:type:cluster}}
-      - ${{dataos:type:workspace-resource}}
-    description: ${{this is a sample cluster configuration}}
-    owner: ${{iamgroot}}
-    cluster: 
+    # Resource meta section (1)
+    name: themiscluster
+    version: v1
+    type: cluster
+    description: Themis cluster for DataOS Lakehouse
+    tags:
+      - cluster
+      - themis
+
+    # Cluster-specific section (2)
+    cluster:
+      compute: query-default
+      type: themis
+    # Themis-specific section (3)
+      themis:
+        themisConf:  
+          "kyuubi.frontend.thrift.binary.bind.host": "0.0.0.0"
+          "kyuubi.frontend.thrift.binary.bind.port": "10101"
+          driver:
+            memory: '4096M'
+          executor:
+            memory: '4096M'
+        depots:
+          - address: dataos://lakehouse  # Note: Themis clusters only support DataOS Lakehouse
+    ```
+      
+
+???tip "Minerva Cluster manifest"
+
+    ```yaml
+    # Resource meta section
+    name: minervacluster
+    version: v1
+    type: cluster
+    description: We are using this cluster to check the monitor and pager stuff with the help of minerva cluster. 
+    tags:
+      - cluster
+      - minerva
+
+    # Cluster-specific section
+    cluster:
+      compute: query-default
+      type: minerva
+
+      # Minerva-specific section
+      minerva:
+        replicas: 1
+        resources:
+          limits:
+            cpu: 2000m
+            memory: 4Gi
+          requests:
+            cpu: 2000m
+            memory: 4Gi
+        debug:
+          logLevel: INFO
+          trinoLogLevel: ERROR
+        depots:
+          - address: dataos://lakehouse
+    ``` 
+
+The structure of a Cluster Resource manifest encompasses the following sections:
+
+- [Resource Meta Section](#resource-meta-section)
+- [Cluster-specific Section](#cluster-specific-section)
+
+
+!!! warning 
+    To display sensitive information in Minerva cluster logs, configure the `VERBOSE_CONFIG` variable. This setting controls whether secrets are displayed or redacted in logs:
+    
+    - **`VERBOSE_CONFIG = false`** or not set: Secrets are redacted and hashed in logs.
+    - **`VERBOSE_CONFIG = true`**: Secrets and sensitive information are printed in logs.
+    
+    **Sample Configuration:**
+
+    ```yaml
+    minerva:
+      coordinatorEnvs:
+        "VERBOSE_CONFIG": "false"
+      workerEnvs:
+        "VERBOSE_CONFIG": "false"
     ```
 
-    <center><i>Resource meta section of a Cluster manifest file</i></center>
 
-    For further details on each attribute, refer to the documentation: [Attributes of Resource-specific section](/resources/manifest_attributes/).
+#### **Resource meta section**
 
-    #### **Cluster-specific section**
+The Resource meta section is a standardized component across all DataOS Resource manifests, detailing essential metadata attributes necessary for Resource identification, classification, and management. This metadata is organized within the Poros Database. Below is the syntax for the Resource meta section:
 
-    The Cluster-specific Section contains configurations specific to the Cluster Resource-type. The YAML syntax is provided below:
+```yaml
+name: ${{minervac}}
+version: v1 
+type: cluster 
+tags: 
+  - ${{dataos:type:cluster}}
+  - ${{dataos:type:workspace-resource}}
+description: ${{this is a sample cluster configuration}}
+owner: ${{iamgroot}}
+cluster: 
+```
 
-    === "Basic configuration"
+<center><i>Resource meta section of a Cluster manifest file</i></center>
 
-        The basic configuration of a manifest snippet includes only the essential attributes required for establishing a Cluster.
+For further details on each attribute, refer to the documentation: [Attributes of Resource-specific section](/resources/manifest_attributes/).
 
-        === "Syntax"
-            ```yaml
-            cluster: 
-              compute: ${{compute-name}}
-              type: ${{cluster-type}}
+#### **Cluster-specific section**
 
-              # Minerva/Themis-specific section
-              minerva/themis: 
-                # attributes specific to the Cluster-type
-            ```
+The Cluster-specific Section contains configurations specific to the Cluster Resource-type. The YAML syntax is provided below:
 
-        === "Example"
-            ```yaml
-            cluster: 
-              compute: query-default
-              type: themis
+=== "Basic configuration"
 
-              # Themis-specific section
-              themis: 
-                # attributes specific to the Themis Cluster-type
-            ```
+    The basic configuration of a manifest snippet includes only the essential attributes required for establishing a Cluster.
 
-            | Field | Data Type | Default Value | Possible Value | Requirement |
-            | --- | --- | --- | --- | --- |
-            | [`cluster`](/resources/cluster/configurations/#cluster) | mapping | none | none | mandatory |
-            | [`compute`](/resources/cluster/configurations/#compute) | string | none | query-default or any other query type custom Compute Resource | mandatory |
-            | [`type`](/resources/cluster/configurations/#type) | string | none | minerva/themis | mandatory |
-
-    === "Advanced configuration"
-
-        The advanced configuration covers the full spectrum of attributes that can be specified within the Cluster-specific section a manifest for comprehensive customization.
-
-        === "Syntax"
-
-            ```yaml
-            cluster: 
-              compute: ${{compute-name}}
-              type: ${{cluster-type}} 
-              runAsUser: ${{run-as-user}} 
-              maintenance: 
-                restartCron: ${{restart-cron-expression}} 
-                scalingCrons: 
-                - cron: ${{scaling-cron-expression}} 
-                  replicas: ${{number-of-replicas}} 
-                  resources: 
-                    limits: 
-                      cpu: ${{cpu-limits}} 
-                      memory: ${{memory-limits}} 
-                    requests: 
-                      cpu: ${{cpu-requests}} 
-                      memory: ${{memory-requests}}
-              minerva/themis:
-                # attributes specific to the Cluster-type
-            ```
-
-        === "Example"
-
-            ```yaml
-            cluster: 
-              compute: query-default
-              type: themis
-              runAsUser: iamgroot
-              maintenance: 
-                restartCron: '13 1 */2 * *'
-                scalingCrons: 
-                - cron: '5/10 * * * *'
-                  replicas: 3
-                  resources: 
-                    limits: 
-                      cpu: 1000m
-                      memory: 2Gi
-                    requests: 
-                      cpu: 800m
-                      memory: 1Gi
-              themis:
-                # attributes specific to the Themis Cluster-type
-            ``` 
-
-            <center><i>Cluster-specific Section Configuration</i></center>
-
-            | Field | Data Type | Default Value | Possible Value | Requirement |
-            | --- | --- | --- | --- | --- |
-            | [`cluster`](/resources/cluster/configurations/#cluster) | mapping | none | none | mandatory |
-            | [`compute`](/resources/cluster/configurations/#compute) | string | none | query-default or any other query type custom Compute Resource | mandatory |
-            | [`runAsUser`](/resources/cluster/configurations/#runasuser) | string | none | userid of the use case assignee | optional |
-            | [`maintenance`](/resources/cluster/configurations/#maintenance) | mapping | none | none | optional |
-            | [`restartCron`](/resources/cluster/configurations/#restartcron) | string | none | any valid cron expression | optional |
-            | [`scalingCrons`](/resources/cluster/configurations/#scalingcrons) | mapping | none | none | optional |
-            | [`cron`](/resources/cluster/configurations/#cron) | string | none | any valid cron expression | optional |
-            | [`replicas`](/resources/cluster/configurations/#replicas) | integer | 1 | positive integer | optional |
-            | [`resources`](/resources/cluster/configurations/#resources) | mapping | none | none | optional |
-            | [`limits`](/resources/cluster/configurations/#limits) | mapping | none | none | optional |
-            | [`cpu`](/resources/cluster/configurations/#cpu) | string | requests: 100m, limits: 400m | number of cpu units in milliCPU(m) or cpu Core| optional |
-            | [`memory`](/resources/cluster/configurations/#memory) | string | requests: 100Mi, limits: 400Mi | memory in Mebibytes(Mi) or Gibibytes(Gi) | optional |
-            | [`requests`](/resources/cluster/configurations/#requests) | mapping | none | none | optional |
-
-    For additional information about attributes within the Cluster-specific section, refer to the link: [Attributes of Cluster-specific section.](/resources/cluster/configurations/#cluster)
-
-    For the two different types of Cluster, the configuration varies, which are elucidated in the sections below:
-
-    === "Minerva"
-
-        The Minerva-specific Section contains configurations specific to the Minerva Cluster. The YAML syntax is provided below:
-
+    === "Syntax"
         ```yaml
-        minerva: 
-          replicas: ${{2}} 
-          match: '' 
-          priority: ${{'10'}} 
-          runAsApiKey: ${{dataos api key}} 
-          runAsUser: ${{iamgroot}} 
-          resources: 
-            limits: 
-              cpu: ${{4000m}} 
-              memory: ${{8Gi}} 
-            requests: 
-              cpu: ${{1200m}} 
-              memory: ${{2Gi}} 
-          debug: 
-            logLevel: ${{INFO}} 
-            trinoLogLevel: ${{ERROR}} 
-          depots: 
-            - address: ${{dataos://lakehouse:default}} 
-              properties: 
-                iceberg.file-format: ${{PARQUET}} 
-                iceberg.compression-codec: ${{GZIP}} 
-                hive.config.resources: ${{"/usr/trino/etc/catalog/core-site.xml"}} 
-            - address: ${{dataos://yakdevbq:default}} 
-          catalogs: 
-            - name: ${{cache}} 
-              type: ${{memory}} 
-              properties: 
-                memory.max-data-per-node: ${{"128MB"}} 
+        cluster: 
+          compute: ${{compute-name}}
+          type: ${{cluster-type}}
 
+          # Minerva/Themis-specific section
+          minerva/themis: 
+            # attributes specific to the Cluster-type
         ```
 
-        Certainly, here's the table with only the attribute names and their corresponding data types, requirements, default values, and possible values:                                          
+    === "Example"
+        ```yaml
+        cluster: 
+          compute: query-default
+          type: themis
 
+          # Themis-specific section
+          themis: 
+            # attributes specific to the Themis Cluster-type
+        ```
 
         | Field | Data Type | Default Value | Possible Value | Requirement |
         | --- | --- | --- | --- | --- |
-        | [`minerva`](/resources/cluster/configurations/#minerva) | mapping | none | none | mandatory |
-        | [`replicas`](/resources/cluster/configurations/#replicas) | integer | 1 | 1-4 | mandatory |
-        | [`match`](/resources/cluster/configurations/#match) | string | none | any/all | mandatory |
-        | [`priority`](/resources/cluster/configurations/#priority) | integer | 10 | 1-5000 | mandatory |
-        | [`runAsApiKey`](/resources/cluster/configurations/#runasapikey) | string | users dataos api key | any valid dataos api key | mandatory |
+        | [`cluster`](/resources/cluster/configurations/#cluster) | mapping | none | none | mandatory |
+        | [`compute`](/resources/cluster/configurations/#compute) | string | none | query-default or any other query type custom Compute Resource | mandatory |
+        | [`type`](/resources/cluster/configurations/#type) | string | none | minerva/themis | mandatory |
+
+=== "Advanced configuration"
+
+    The advanced configuration covers the full spectrum of attributes that can be specified within the Cluster-specific section a manifest for comprehensive customization.
+
+    === "Syntax"
+
+        ```yaml
+        cluster: 
+          compute: ${{compute-name}}
+          type: ${{cluster-type}} 
+          runAsUser: ${{run-as-user}} 
+          maintenance: 
+            restartCron: ${{restart-cron-expression}} 
+            scalingCrons: 
+            - cron: ${{scaling-cron-expression}} 
+              replicas: ${{number-of-replicas}} 
+              resources: 
+                limits: 
+                  cpu: ${{cpu-limits}} 
+                  memory: ${{memory-limits}} 
+                requests: 
+                  cpu: ${{cpu-requests}} 
+                  memory: ${{memory-requests}}
+          minerva/themis:
+            # attributes specific to the Cluster-type
+        ```
+
+    === "Example"
+
+        ```yaml
+        cluster: 
+          compute: query-default
+          type: themis
+          runAsUser: iamgroot
+          maintenance: 
+            restartCron: '13 1 */2 * *'
+            scalingCrons: 
+            - cron: '5/10 * * * *'
+              replicas: 3
+              resources: 
+                limits: 
+                  cpu: 1000m
+                  memory: 2Gi
+                requests: 
+                  cpu: 800m
+                  memory: 1Gi
+          themis:
+            # attributes specific to the Themis Cluster-type
+        ``` 
+
+        <center><i>Cluster-specific Section Configuration</i></center>
+
+        | Field | Data Type | Default Value | Possible Value | Requirement |
+        | --- | --- | --- | --- | --- |
+        | [`cluster`](/resources/cluster/configurations/#cluster) | mapping | none | none | mandatory |
+        | [`compute`](/resources/cluster/configurations/#compute) | string | none | query-default or any other query type custom Compute Resource | mandatory |
         | [`runAsUser`](/resources/cluster/configurations/#runasuser) | string | none | userid of the use case assignee | optional |
+        | [`maintenance`](/resources/cluster/configurations/#maintenance) | mapping | none | none | optional |
+        | [`restartCron`](/resources/cluster/configurations/#restartcron) | string | none | any valid cron expression | optional |
+        | [`scalingCrons`](/resources/cluster/configurations/#scalingcrons) | mapping | none | none | optional |
+        | [`cron`](/resources/cluster/configurations/#cron) | string | none | any valid cron expression | optional |
+        | [`replicas`](/resources/cluster/configurations/#replicas) | integer | 1 | positive integer | optional |
         | [`resources`](/resources/cluster/configurations/#resources) | mapping | none | none | optional |
         | [`limits`](/resources/cluster/configurations/#limits) | mapping | none | none | optional |
         | [`cpu`](/resources/cluster/configurations/#cpu) | string | requests: 100m, limits: 400m | number of cpu units in milliCPU(m) or cpu Core| optional |
         | [`memory`](/resources/cluster/configurations/#memory) | string | requests: 100Mi, limits: 400Mi | memory in Mebibytes(Mi) or Gibibytes(Gi) | optional |
         | [`requests`](/resources/cluster/configurations/#requests) | mapping | none | none | optional |
-        | [`debug`](/resources/cluster/configurations/#debug) | mapping | none | none | mandatory |
-        | [`logLevel`](/resources/cluster/configurations/#loglevel) | mapping | INFO | INFO/DEBUG/ERROR | optional |
-        | [`trinoLogLevel`](/resources/cluster/configurations/#trinologlevel) | mapping | INFO | INFO/DEBUG/ERROR | optional |
-        | [`depots`](/resources/cluster/configurations/#depots) | list of mappings | none | none | optional |
-        | [`address`](/resources/cluster/configurations/#address) | string | none | valid depot udl address | optional |
-        | [`properties`](/resources/cluster/configurations/#properties) | mapping | none | none | optional |
-        | [`catalogs`](/resources/cluster/configurations/#catalogs) | list of mappings | none | none | optional |
-        | [`name`](/resources/cluster/configurations/#name) | string | none | any valid string | optional |
-        | [`type`](/resources/cluster/configurations/#type) | string | none | oracle/memory/wrangler/redshift | mandatory |
-        | [`properties`](/resources/cluster/configurations/#properties_1) | mapping | none | valid connector properties | optional |
 
-        For additional information about attributes above attributes, refer to the [Attributes of Minerva-specific section.](/resources/cluster/configurations/#minerva)
+For additional information about attributes within the Cluster-specific section, refer to the link: [Attributes of Cluster-specific section.](/resources/cluster/configurations/#cluster)
 
-    === "Themis"
+For the two different types of Cluster, the configuration varies, which are elucidated in the sections below:
 
-        Attributes particular to the Themis Cluster are defined here. This includes configurations such as Pod Resources, Spark settings, Depot specifications, and Environment variables.
+=== "Minerva"
 
-        Example YAML syntax for the Themis-specific section:
+    The Minerva-specific Section contains configurations specific to the Minerva Cluster. The YAML syntax is provided below:
 
-        ```yaml
-        themis:
-          resources: # Pod Resources specification 
-            {}
-          envs: # Environment variables
-            {}
-          themisConf: # Themis configurations
-            {}
-          spark:
-            {} # Spark configuration
-          depots:
-            {} # Depots specification
-        ```
+    ```yaml
+    minerva: 
+      replicas: ${{2}} 
+      match: '' 
+      priority: ${{'10'}} 
+      runAsApiKey: ${{dataos api key}} 
+      runAsUser: ${{iamgroot}} 
+      resources: 
+        limits: 
+          cpu: ${{4000m}} 
+          memory: ${{8Gi}} 
+        requests: 
+          cpu: ${{1200m}} 
+          memory: ${{2Gi}} 
+      debug: 
+        logLevel: ${{INFO}} 
+        trinoLogLevel: ${{ERROR}} 
+      depots: 
+        - address: ${{dataos://lakehouse:default}} 
+          properties: 
+            iceberg.file-format: ${{PARQUET}} 
+            iceberg.compression-codec: ${{GZIP}} 
+            hive.config.resources: ${{"/usr/trino/etc/catalog/core-site.xml"}} 
+        - address: ${{dataos://yakdevbq:default}} 
+      catalogs: 
+        - name: ${{cache}} 
+          type: ${{memory}} 
+          properties: 
+            memory.max-data-per-node: ${{"128MB"}} 
 
-        **Pod Resources**
-
-        Specifies the requested and maximum CPU and memory limits for Pod Resources.
-
-        ```yaml
-        themis: # Themis mapping (mandatory)
-          resources: # Pod Resources (optional)
-            requests: # Requested CPU and memory resources (optional)
-              cpu: ${{1000m}} # (optional)
-              memory: ${{2Gi}} # (optional)
-            limits: # Maximum limit of CPU and memory resources (optional)
-              cpu: ${{2000m}} # (optional)
-              memory: ${{4Gi}} # (optional)
-        ```
-
-        **Spark environment configuration**
-
-        Details the memory size, cores, and other configurations for Spark drivers and executors.
-
-        ```yaml
-        themis: # Themis mapping (mandatory)
-          spark:
-            driver: # Spark driver memory and core configuration (mandatory)
-              memory: ${{4096M}} # (mandatory)
-              cores: ${{1}} # (mandatory)
-            executor: # Spark executor memory, core, and instanceCount configuration (mandatory)
-              memory: ${{4096M}} # (mandatory)
-              cores: ${{1}} # (mandatory)
-              instanceCount: ${{1}} # (mandatory)
-              maxInstanceCount: ${{5}} # (mandatory)
-            sparkConf: # Spark configurations (optional)
-              ${{spark.dynamicAllocation.enabled: true}} 
-        ```
-
-        The list of Spark configuration that can be configured within this section are specified in the toggle below.
-
-        <details>
-            <summary>Spark Configurations</summary>
-            The Spark Configuration can be specified within the <code>sparkConf</code> attribute. The list of spark configurations is provided below:
-            <ul>
-                <li><code>spark.eventLog.dir = location of folder/directory</code></li>
-                <li><code>spark.ui.port = 4040</code></li>
-                <li><code>spark.driver.memory=6g</code></li>
-                <li><code>spark.driver.cores=2</code></li>
-                <li><code>spark.driver.memoryOverhead=1g</code></li>
-                <li><code>spark.executor.memory=4g</code></li>
-                <li><code>spark.executor.cores=2</code></li>
-            </ul>
-            <p>For more information, refer to the following <a href="https://spark.apache.org/docs/latest/configuration.html">link.</a></p>
-        </details>
-
-        **Depot specification**
-
-        Defines the Depots targeted by the Themis Cluster.
-
-        ```yaml
-        themis: # Themis mapping (mandatory)
-          depots: # mandatory
-            - address: ${{dataos://lakehouse}} # Depot UDL address (mandatory)
-              properties: # Depot properties (optional)
-                ${{properties attributes}} 
-        ```
-
-        **Themis Configuration**
-
-        Allows for additional key-value pair configurations specific to the Themis Cluster.
-
-        ```yaml
-        themis: # Themis mapping (mandatory)
-          themisConf:  # Themis configuration specification (optional)
-            ${{"kyuubi.frontend.thrift.binary.bind.host": "0.0.0.0"}} # (optional)
-            ${{"kyuubi.frontend.thrift.binary.bind.port": "10101"}} # (optional)
-        ```
-
-        The list of the available Themis Cluster configurations is provided in the toggle below.
-
-        <details>
-            <summary>Themis Cluster configuration</summary>
-            The Themis configuration can be supplied using the <code>themisConf</code> attribute. The configurations are provided below:
-            <ul>
-                <li><code>kyuubi.operation.incremental.collect=true</code> : To get paginated data.</li>
-                <li><code>kyuubi.frontend.thrift.worker.keepalive.time=PT30S</code> : TTL for spark engine, this indicated that after 30 seconds of idle time spark engine is terminated.</li>
-                <li><code>kyuubi.engine.hive.java.options</code> : The extra Java options for the Hive query engine</li>
-                <li><code>kyuubi.frontend.thrift.worker.keepalive.time=PT1M</code> : Keep-alive time (in milliseconds) for an idle worker thread</li>
-                <li><code>kyuubi.frontend.thrift.login.timeout=PT10S</code> : Timeout for Thrift clients during login to the thrift frontend service.</li>
-                <li><code>kyuubi.metadata.cleaner.interval=PT30M</code> : The interval to check and clean expired metadata.</li>
-                <li><code>kyuubi.metadata.max.age=PT72H</code> : The maximum age of metadata, the metadata exceeding the age will be cleaned.</li>
-                <li><code>kyuubi.server.periodicGC.interval</code> : How often to trigger a garbage collection</li>
-                <li><code>kyuubi.server.redaction.regex</code> : Regex to decide which Kyuubi contain sensitive information. When this regex matches a property key or value, the value is redacted from the various logs.</li>
-            </ul>
-            <p>For more information, refer to the following <a href="https://kyuubi.readthedocs.io/en/master/configuration/settings.html">link.</a></p>
-        </details>
-
-
-        **Environment Variables**
-
-        Configures the Themis Cluster for various environments through key-value pair environment variables.
-
-        ```yaml
-        themis: # Themis mapping (mandatory)
-          envs: # Environment variables (optional)
-            ${{key-value pairs of environment variables}}
-        ```
-
-
-    ### **Apply the Cluster manifest**
-
-    To create a Cluster Resource, you need to use the apply command on the CLI. The apply command for Cluster is given below:
-
-    ```bash
-    dataos-ctl resource apply -f ${{cluster-yaml-file-path}} -w ${{workspace name}}
-    # Sample
-    dataos-ctl resource apply -f dataproduct/themis-cluster.yaml -w curriculum
     ```
 
-    ### **Verify Cluster creation**
+    Certainly, here's the table with only the attribute names and their corresponding data types, requirements, default values, and possible values:                                          
 
-    To ensure that your Cluster has been successfully created, you can verify it in two ways:
 
-    Check the name of the newly created Cluster in the list of clusters created by you in a particular Workspace:
+    | Field | Data Type | Default Value | Possible Value | Requirement |
+    | --- | --- | --- | --- | --- |
+    | [`minerva`](/resources/cluster/configurations/#minerva) | mapping | none | none | mandatory |
+    | [`replicas`](/resources/cluster/configurations/#replicas) | integer | 1 | 1-4 | mandatory |
+    | [`match`](/resources/cluster/configurations/#match) | string | none | any/all | mandatory |
+    | [`priority`](/resources/cluster/configurations/#priority) | integer | 10 | 1-5000 | mandatory |
+    | [`runAsApiKey`](/resources/cluster/configurations/#runasapikey) | string | users dataos api key | any valid dataos api key | mandatory |
+    | [`runAsUser`](/resources/cluster/configurations/#runasuser) | string | none | userid of the use case assignee | optional |
+    | [`resources`](/resources/cluster/configurations/#resources) | mapping | none | none | optional |
+    | [`limits`](/resources/cluster/configurations/#limits) | mapping | none | none | optional |
+    | [`cpu`](/resources/cluster/configurations/#cpu) | string | requests: 100m, limits: 400m | number of cpu units in milliCPU(m) or cpu Core| optional |
+    | [`memory`](/resources/cluster/configurations/#memory) | string | requests: 100Mi, limits: 400Mi | memory in Mebibytes(Mi) or Gibibytes(Gi) | optional |
+    | [`requests`](/resources/cluster/configurations/#requests) | mapping | none | none | optional |
+    | [`debug`](/resources/cluster/configurations/#debug) | mapping | none | none | mandatory |
+    | [`logLevel`](/resources/cluster/configurations/#loglevel) | mapping | INFO | INFO/DEBUG/ERROR | optional |
+    | [`trinoLogLevel`](/resources/cluster/configurations/#trinologlevel) | mapping | INFO | INFO/DEBUG/ERROR | optional |
+    | [`depots`](/resources/cluster/configurations/#depots) | list of mappings | none | none | optional |
+    | [`address`](/resources/cluster/configurations/#address) | string | none | valid depot udl address | optional |
+    | [`properties`](/resources/cluster/configurations/#properties) | mapping | none | none | optional |
+    | [`catalogs`](/resources/cluster/configurations/#catalogs) | list of mappings | none | none | optional |
+    | [`name`](/resources/cluster/configurations/#name) | string | none | any valid string | optional |
+    | [`type`](/resources/cluster/configurations/#type) | string | none | oracle/memory/wrangler/redshift | mandatory |
+    | [`properties`](/resources/cluster/configurations/#properties_1) | mapping | none | valid connector properties | optional |
 
-    ```bash
-    dataos-ctl resource get -t cluster -w ${{workspace name}}
-    # Sample
-    dataos-ctl resource get -t cluster -w curriculum
+    For additional information about attributes above attributes, refer to the [Attributes of Minerva-specific section.](/resources/cluster/configurations/#minerva)
+
+=== "Themis"
+
+    Attributes particular to the Themis Cluster are defined here. This includes configurations such as Pod Resources, Spark settings, Depot specifications, and Environment variables.
+
+    Example YAML syntax for the Themis-specific section:
+
+    ```yaml
+    themis:
+      resources: # Pod Resources specification 
+        {}
+      envs: # Environment variables
+        {}
+      themisConf: # Themis configurations
+        {}
+      spark:
+        {} # Spark configuration
+      depots:
+        {} # Depots specification
     ```
 
-    Alternatively, retrieve the list of all Workers created in the Workspace by appending `-a` flag:
+    **Pod Resources**
 
-    ```bash
-    dataos-ctl resource get -t cluster -w ${{workspace name}} -a
-    # Sample
-    dataos-ctl resource get -t cluster -w curriculum -a
+    Specifies the requested and maximum CPU and memory limits for Pod Resources.
+
+    ```yaml
+    themis: # Themis mapping (mandatory)
+      resources: # Pod Resources (optional)
+        requests: # Requested CPU and memory resources (optional)
+          cpu: ${{1000m}} # (optional)
+          memory: ${{2Gi}} # (optional)
+        limits: # Maximum limit of CPU and memory resources (optional)
+          cpu: ${{2000m}} # (optional)
+          memory: ${{4Gi}} # (optional)
     ```
 
-    You can also access the details of any created Cluster through the DataOS GUI in the Resource tab of the  [Operations App.](/interfaces/operations/)
+    **Spark environment configuration**
+
+    Details the memory size, cores, and other configurations for Spark drivers and executors.
+
+    ```yaml
+    themis: # Themis mapping (mandatory)
+      spark:
+        driver: # Spark driver memory and core configuration (mandatory)
+          memory: ${{4096M}} # (mandatory)
+          cores: ${{1}} # (mandatory)
+        executor: # Spark executor memory, core, and instanceCount configuration (mandatory)
+          memory: ${{4096M}} # (mandatory)
+          cores: ${{1}} # (mandatory)
+          instanceCount: ${{1}} # (mandatory)
+          maxInstanceCount: ${{5}} # (mandatory)
+        sparkConf: # Spark configurations (optional)
+          ${{spark.dynamicAllocation.enabled: true}} 
+    ```
+
+    The list of Spark configuration that can be configured within this section are specified in the toggle below.
+
+    <details>
+        <summary>Spark Configurations</summary>
+        The Spark Configuration can be specified within the <code>sparkConf</code> attribute. The list of spark configurations is provided below:
+        <ul>
+            <li><code>spark.eventLog.dir = location of folder/directory</code></li>
+            <li><code>spark.ui.port = 4040</code></li>
+            <li><code>spark.driver.memory=6g</code></li>
+            <li><code>spark.driver.cores=2</code></li>
+            <li><code>spark.driver.memoryOverhead=1g</code></li>
+            <li><code>spark.executor.memory=4g</code></li>
+            <li><code>spark.executor.cores=2</code></li>
+        </ul>
+        <p>For more information, refer to the following <a href="https://spark.apache.org/docs/latest/configuration.html">link.</a></p>
+    </details>
+
+    **Depot specification**
+
+    Defines the Depots targeted by the Themis Cluster.
+
+    ```yaml
+    themis: # Themis mapping (mandatory)
+      depots: # mandatory
+        - address: ${{dataos://lakehouse}} # Depot UDL address (mandatory)
+          properties: # Depot properties (optional)
+            ${{properties attributes}} 
+    ```
+
+    **Themis Configuration**
+
+    Allows for additional key-value pair configurations specific to the Themis Cluster.
+
+    ```yaml
+    themis: # Themis mapping (mandatory)
+      themisConf:  # Themis configuration specification (optional)
+        ${{"kyuubi.frontend.thrift.binary.bind.host": "0.0.0.0"}} # (optional)
+        ${{"kyuubi.frontend.thrift.binary.bind.port": "10101"}} # (optional)
+    ```
+
+    The list of the available Themis Cluster configurations is provided in the toggle below.
+
+    <details>
+        <summary>Themis Cluster configuration</summary>
+        The Themis configuration can be supplied using the <code>themisConf</code> attribute. The configurations are provided below:
+        <ul>
+            <li><code>kyuubi.operation.incremental.collect=true</code> : To get paginated data.</li>
+            <li><code>kyuubi.frontend.thrift.worker.keepalive.time=PT30S</code> : TTL for spark engine, this indicated that after 30 seconds of idle time spark engine is terminated.</li>
+            <li><code>kyuubi.engine.hive.java.options</code> : The extra Java options for the Hive query engine</li>
+            <li><code>kyuubi.frontend.thrift.worker.keepalive.time=PT1M</code> : Keep-alive time (in milliseconds) for an idle worker thread</li>
+            <li><code>kyuubi.frontend.thrift.login.timeout=PT10S</code> : Timeout for Thrift clients during login to the thrift frontend service.</li>
+            <li><code>kyuubi.metadata.cleaner.interval=PT30M</code> : The interval to check and clean expired metadata.</li>
+            <li><code>kyuubi.metadata.max.age=PT72H</code> : The maximum age of metadata, the metadata exceeding the age will be cleaned.</li>
+            <li><code>kyuubi.server.periodicGC.interval</code> : How often to trigger a garbage collection</li>
+            <li><code>kyuubi.server.redaction.regex</code> : Regex to decide which Kyuubi contain sensitive information. When this regex matches a property key or value, the value is redacted from the various logs.</li>
+        </ul>
+        <p>For more information, refer to the following <a href="https://kyuubi.readthedocs.io/en/master/configuration/settings.html">link.</a></p>
+    </details>
+
+
+    **Environment Variables**
+
+    Configures the Themis Cluster for various environments through key-value pair environment variables.
+
+    ```yaml
+    themis: # Themis mapping (mandatory)
+      envs: # Environment variables (optional)
+        ${{key-value pairs of environment variables}}
+    ```
+
+
+### **Apply the Cluster manifest**
+
+To create a Cluster Resource, you need to use the apply command on the CLI. The apply command for Cluster is given below:
+
+```bash
+dataos-ctl resource apply -f ${{cluster-yaml-file-path}} -w ${{workspace name}}
+# Sample
+dataos-ctl resource apply -f dataproduct/themis-cluster.yaml -w curriculum
+```
+
+### **Verify Cluster creation**
+
+To ensure that your Cluster has been successfully created, you can verify it in two ways:
+
+Check the name of the newly created Cluster in the list of clusters created by you in a particular Workspace:
+
+```bash
+dataos-ctl resource get -t cluster -w ${{workspace name}}
+# Sample
+dataos-ctl resource get -t cluster -w curriculum
+```
+
+Alternatively, retrieve the list of all Workers created in the Workspace by appending `-a` flag:
+
+```bash
+dataos-ctl resource get -t cluster -w ${{workspace name}} -a
+# Sample
+dataos-ctl resource get -t cluster -w curriculum -a
+```
+
+You can also access the details of any created Cluster through the DataOS GUI in the Resource tab of the  [Operations App.](/interfaces/operations/)
 
 
 ## Interacting with Clusters

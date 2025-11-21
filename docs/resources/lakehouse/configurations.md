@@ -12,55 +12,55 @@ lakehouse:
     storage: 
       depotName: ${depot-name} 
       type: ${storage-type} 
-			# For gcs-type storage
-			gcs:
-				bucket: ${gcs-bucket-name}
-				format: ${format}
-				icebergCatalogType: ${iceberg-catalog-type}
-				metastoreType: ${metastore-type}
-				metastoreUrl: ${metastore-url}
-				relativePath: ${relative-path}
-			# For abfss-type storage
-			abfss:
-				account: ${abfss-account}
-				container: ${container}
-				endpointSuffix: ${endpoint-suffix}
-				format: ${format}
-				icebergCatalogType: ${iceberg-catalog-type}
-				metastoreType: ${metastore-type}
-				metastoreUrl: ${metastore-url}
-				relativePath: ${relative-path}
-			# For wasbs-type storage
-			wasbs:
-				account: ${wasbs-account}
-				container: ${container}
-				endpointSuffix: ${endpoint-suffix}
-				format: ${format}
-				icebergCatalogType: ${iceberg-catalog-type}
-				metastoreType: ${metastore-type}
-				metastoreUrl: ${metastore-url}
-				relativePath: ${relative-path}
-			# For s3-type storage
-			s3:
-				bucket: ${s3-bucket}
-				format: ${format}
-				icebergCatalogType: ${iceberg-catalog-type}
+      # For gcs-type storage
+      gcs:
+        bucket: ${gcs-bucket-name}
+        format: ${format}
+        icebergCatalogType: ${iceberg-catalog-type}
+        metastoreType: ${metastore-type}
+        metastoreUrl: ${metastore-url}
+        relativePath: ${relative-path}
+      # For abfss-type storage
+      abfss:
+        account: ${abfss-account}
+        container: ${container}
+        endpointSuffix: ${endpoint-suffix}
+        format: ${format}
+        icebergCatalogType: ${iceberg-catalog-type}
+        metastoreType: ${metastore-type}
+        metastoreUrl: ${metastore-url}
+        relativePath: ${relative-path}
+      # For wasbs-type storage
+      wasbs:
+        account: ${wasbs-account}
+        container: ${container}
+        endpointSuffix: ${endpoint-suffix}
+        format: ${format}
+        icebergCatalogType: ${iceberg-catalog-type}
+        metastoreType: ${metastore-type}
+        metastoreUrl: ${metastore-url}
+        relativePath: ${relative-path}
+      # For s3-type storage
+      s3:
+        bucket: ${s3-bucket}
+        format: ${format}
+        icebergCatalogType: ${iceberg-catalog-type}
         region: ${us-gov-east-1}
         endpoint: ${s3.us-gov-east-1.amazonaws.com}
-				metastoreType: ${metastore-type}
-				metastoreUrl: ${metastore-url}
-				relativePath: ${relative-path}
-				scheme: ${scheme}
-			# Instance-secret reference
-			secrets:
-				- name: ${secret-name} 
-					workspace: ${workspace-name} # (for instance-secret workspace is not applicable)
-					key: ${secret-key-name}
-					keys:
-						- ${key1}
-						- ${key2}
-					allKeys: ${include-allkeys-or-not}
-					consumptionType: ${secret-consumption-type}
+        metastoreType: ${metastore-type}
+        metastoreUrl: ${metastore-url}
+        relativePath: ${relative-path}
+        scheme: ${scheme}
+      # Instance-secret reference
+      secrets:
+        - name: ${secret-name} 
+          workspace: ${workspace-name} # (for instance-secret workspace is not applicable)
+          key: ${secret-key-name}
+          keys:
+            - ${key1}
+            - ${key2}
+          allKeys: ${include-allkeys-or-not}
+          consumptionType: ${secret-consumption-type}
     metastore:
       type: ${metastore-type} 
       replicas: ${number-of-replicas}
@@ -150,8 +150,8 @@ lakehouse:
 
 ```yaml
 lakehouse:
-	type: iceberg
-	# Additional Lakehouse-specific attributes
+  type: iceberg
+  # Additional Lakehouse-specific attributes
 ```
 
 ---
@@ -168,8 +168,8 @@ lakehouse:
 
 ```yaml
 lakehouse:
-	compute: query-default
-	# Additional Lakehouse-specific attributes
+  compute: query-default
+  # Additional Lakehouse-specific attributes
 ```
 
 ---
@@ -238,16 +238,16 @@ lakehouse:
 
 ```yaml
 lakehouse:
-	iceberg:
-		storage:
-			depotName: lakehousedev
-			type: ABFSS
-			# additional Storage section attributes
-		metastore:
-			# additional Metastore section attributes
-		queryEngine:
-			# additional Query Engine section attributes
-	# Additional Lakehouse-specific attributes
+  iceberg:
+    storage:
+      depotName: lakehousedev
+      type: ABFSS
+      # additional Storage section attributes
+    metastore:
+      # additional Metastore section attributes
+    queryEngine:
+      # additional Query Engine section attributes
+  # Additional Lakehouse-specific attributes
 ```
 
 ---
@@ -264,11 +264,11 @@ lakehouse:
 
 ```yaml
 lakehouse:
-	iceberg:
-		storage:
-			depotName: lakehousedev
-			type: ABFSS
-			# other Storage section attributes
+  iceberg:
+    storage:
+      depotName: lakehousedev
+      type: ABFSS
+      # other Storage section attributes
 ```
 
 ---
