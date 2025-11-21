@@ -144,11 +144,14 @@ stackSpec:
     # Snowflake
     - dataset: dataos://snowflakedepot:TPCH_SF10/CUSTOMER
       options: # this option is default no need to set, added for example.
-        engine: default
+        branchName: b1  # Specify the Iceberg branch name
+        engine: minerva
+        clusterName: miniature
       checks:
         - row_count between 10 and 1000:
             attributes:
               category: Accuracy      
+
 ```
 
 ## Configuration Attributes

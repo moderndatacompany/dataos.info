@@ -1,12 +1,10 @@
-# Tableau Desktop Integration
-
-## Steps
+## Integrating Data Products with Tableau Desktop
 
 The following steps outline the process for integrating Tableau Desktop with DataOS:
 
 ### **Step 1: Navigate to the Data Product Hub**
 
-Access the **Home Page** of DataOS. From the home page, navigate to the **Data Product Hub** to explore the various Data Products available within the platform.
+Access the Home Page of DataOS. From the home page, navigate to the Data Product Hub to explore the various Data Products available within the platform.
 
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(20).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -23,7 +21,7 @@ In the Data Product Hub, users can browse through a comprehensive list of availa
 
 ### **Step 3: Access Integration Options**
 
-After selecting Sales360 Data Product, navigate to the **Access Options** tab. Within this tab, various methods to access and interact with the Data Product can be found, including the **BI Sync** tab, where **Tableau Desktop** is located.
+After selecting Sales360 Data Product, navigate to the Access Options tab. Within this tab, various methods to access and interact with the Data Product can be found, including the BI Sync tab, where Tableau Desktop is located.
 
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/Screenshot%20from%202024-09-21%2000-14-20.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -67,6 +65,67 @@ Once the connection is established, users can begin visualizing the Data Product
 The publisher can embed their credentials (DataOS username and API Token) or ask users to provide credentials whenever they want to access the published Workbook/Sheet/Dashboard. If the publisher has chosen to ‘Embed password for data source’, users can access the published workbook and dashboard without providing credentials.
 
 **Note:** Once the credentials are embedded, they cannot be accessed. You need to overwrite and ‘publish-as’ the workbook to reconfigure the embedding password optionality.
+
+
+
+## Integrating Data Product with Tableau Desktop using curl command
+
+
+### **Prerequisites**
+
+- **Curl**: Ensure that `curl` is installed on the system. For Windows systems, `curl.exe` may be necessary.
+- **Lens API endpoint**: The API endpoint provided by Lens to sync semantic model, enabling integration with Tableau.
+- **Access credentials**: Access credentials such as username, password, project name etc., are required for Tableau.
+- **DataOS API key**: Ensure the DataOS API key is available. Get it by using the following command:
+
+```bash
+dataos-ctl user apikey get
+```
+
+To sync the semantic model with Tableau, copy the payload below and replace the placeholders with appropriate values:
+
+==== Command
+
+    ```bash
+    curl --location --request POST 'http://<DATAOS_FQDN>/lens2/sync/api/v1/tableau-desktop/<WORKSPACE_NAME>:<LENS_NAME>' \
+    --header 'apikey: <APIKEY>' \
+    --header 'Content-Type: application/json' \
+    --data ''
+    ```
+
+==== "Example"
+
+    ```bash
+    curl --location --request POST 'https://gentle-akita.dataos.app/lens2/sync/api/v1/tableau-desktop/public:sales-analysis' \
+    --header 'apikey: Abcdefghijklmno==' \
+    --data ''
+    ```
+
+
+**Parameters explained**
+
+| Placeholder        | Description                                                                                           |
+| ------------------ | ----------------------------------------------------------------------------------------------------- |
+| `<DATAOS_FQDN>`    | The fully qualified domain name (FQDN) of your DataOS environment. Example: `gentle-akita.dataos.app` |
+| `<WORKSPACE_NAME>` | The DataOS workspace where your Lens (semantic model) resides. Example: `public`, `sandbox`                     |
+| `<LENS_NAME>`      | The name of the Lens (semantic model) to sync. Example: `sales-analysis`                              |
+| `<APIKEY>`         | Your DataOS API key for authentication. Obtain this from your DataOS **Profile > API Key** section.   |
+
+
+
+## Exploring the Data Product on Tableau Cloud
+
+Once the sync is successful, the data source is published to the Tableau cloud/server:
+
+### **Step 1: Log in to Tableau Cloud**
+
+Users should log in to Tableau Cloud using the same credentials of Tableau. This will redirect to the Tableau Cloud home page.
+
+<center>
+<img src="/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau5.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+</center>
+
+### **Step 2: Manage Projects**
 
 
 ## Supported data types
