@@ -114,7 +114,7 @@ depot:
 To get the details of each attribute, please refer [to this link](/resources/depot/configurations).
    
 
-### Step 3: Apply the Depot manifest file
+### **Step 3: Apply the Depot manifest file**
 
 Once you have the manifest file ready in your code editor, simply copy the path of the manifest file and apply it through the DataOS CLI by pasting the path in the placeholder, using the command given below:
 
