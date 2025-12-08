@@ -34,9 +34,9 @@ Depots are used to connect to metadata sources to extract entities' metadata. To
 Create a file named scanner.yaml and define your Scanner Workflow using the following template:
 
 ```yaml
-# Important: Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
+# Important: Replace 'abc' with your initials to personalize and distinguish the resource you’ve created.
 version: v1
-name: wf-postgres-depot-xx
+name: wf-postgres-depot-abc
 type: workflow
 workflow:
   dag:

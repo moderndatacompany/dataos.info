@@ -112,23 +112,23 @@ There are two types of dataset references -
 ```yaml
 inputs:
   - refType: dataos
-    ref: dataset:postgresxx:public:customer_data
+    ref: dataset:postgresabc:public:customer_data
 
   - refType: dataos
-    ref: dataset:postgresxx:public:purchase_data
+    ref: dataset:postgresabc:public:purchase_data
 
   - refType: dataos
-    ref: dataset:postgresxx:public:product_data
+    ref: dataset:postgresabc:public:product_data
 
 outputs:
   - refType: dataos
-    ref: dataset:postgresxx:public:customer_data
+    ref: dataset:postgresabc:public:customer_data
 
   - refType: dataos
-    ref: dataset:postgresxx:public:purchase_data
+    ref: dataset:postgresabc:public:purchase_data
 
   - refType: dataos
-    ref: dataset:postgresxx:public:product_data
+    ref: dataset:postgresabc:public:product_data
 ```
         
 ## Step 5: Configure ports for integration
@@ -180,26 +180,25 @@ v1beta:
         description: consumer
     resource:
       refType: dataos
-      ref: bundle:v1beta:retaildata-bundle-xx
+      ref: bundle:v1beta:retaildata-bundle-abc
     inputs:
       - refType: dataos
-        ref: dataset:postgresxx:public:customer_data
+        ref: dataset:postgresabc:public:customer_data
 
-      - refType: dataos
-        ref: dataset:postgresxx:public:purchase_data
-
-      - refType: dataos
-        ref: dataset:postgresxx:public:product_data
-
+                - refType: dataos
+                  ref: dataset:postgresabc:public:purchase_data
+      
+                - refType: dataos
+                  ref: dataset:postgresabc:public:product_data
     outputs:
       - refType: dataos
-        ref: dataset:postgresxx:public:customer_data
+        ref: dataset:postgresabc:public:customer_data
 
       - refType: dataos
-        ref: dataset:postgresxx:public:purchase_data
+        ref: dataset:postgresabc:public:purchase_data
 
       - refType: dataos
-        ref: dataset:postgresxx:public:product_data
+        ref: dataset:postgresabc:public:product_data
 
     ports:
              

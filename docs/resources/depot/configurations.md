@@ -90,7 +90,7 @@ version: v2alpha
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value**                                                   |
 | ------------- | --------------- | ----------------- | -------------------------------------------------------------------- |
-| string        | mandatory       | none              | cluster, compute, depot, policy,  secret, service, stack or workflow |
+| string        | mandatory       | none              | depot(i this case), policy,  secret, service, stack or workflow |
 
 **Example usage:**
 

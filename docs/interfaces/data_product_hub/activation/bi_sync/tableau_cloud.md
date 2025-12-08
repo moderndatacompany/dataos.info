@@ -1,10 +1,10 @@
-## Steps for Integrating Data Products with Tableau Cloud
+## Integrating Data Products with Tableau Cloud
 
 This document outlines the steps required to integrate Data Products from DataOS with Tableau Cloud.
 
 ### **Step 1: Navigate to the Data Product Hub**
 
-Access the **Home Page** of DataOS. From the home page, navigate to the **Data Product Hub** to explore the various Data Products available.
+Access the Home Page of DataOS. From the home page, navigate to the Data Product Hub to explore the various Data Products available.
 
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(6).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -20,7 +20,7 @@ Browse through the list of available Data Products. Select a specific Data Produ
 
 ### **Step 3: Navigate to the Access Options**
 
-After selecting a Data Product, navigate to the **BI Sync** option in the **Access Options** tab. Scroll through the BI Sync and locate the **Tableau Cloud** option. Now, Click on the **Add Connection** button
+After selecting a Data Product, navigate to the BI Sync option in the Access Options tab. Scroll through the BI Sync and locate the Tableau Cloud option. Now, Click on the Add Connection button
 
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau1.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -53,9 +53,9 @@ These details can be obtained upon logging into Tableau. The URL format will app
 
 [https://prod-apnortheast-a.online.tableau.com/#/site/tableauuser@123/home](https://prod-apnortheast-a.online.tableau.com/#/site/tableauuser@123/home)
 
-In this example, `tableuuser@123` represents the **site_id**.
+In this example, `tableuuser@123` represents the site_id.
 
-After entering the required credentials, click the **Activate** button to establish the connection. A confirmation message will appear upon successful connection.  
+After entering the required credentials, click the Activate button to establish the connection. A confirmation message will appear upon successful connection.  
 
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau3.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -78,6 +78,71 @@ After filling all details, click on the Activate button. A confirmation message 
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau4.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 </center>
+
+
+## Integrating Data Products with Tableau Cloud using cURL command
+
+### **Prerequisites**
+
+- **Curl**: Ensure that `curl` is installed on the system. For Windows systems, `curl.exe` may be necessary.
+- **Lens API endpoint**: The API endpoint provided by Lens to sync semantic model, enabling integration with Tableau.
+- **Access credentials**: Access credentials such as username, password, project name etc., are required for Tableau.
+- **DataOS API key**: Ensure the DataOS API key is available. Get it by using the following command:
+
+```bash
+dataos-ctl user apikey get
+```
+
+To sync the semantic model with Tableau, copy the payload below and replace the placeholders with appropriate values:
+
+```bash
+curl --location --request POST 'http://<DATAOS_FQDN>/lens2/sync/api/v1/tableau/<WORKSPACE_NAME>:<LENS_NAME>' \
+--header 'apikey: <APIKEY>' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "project_name": "<SAMPLE>",
+    "username": "{USER_NAME/EMAIL}",
+    "password": "<PASSWORD>",
+    "site_id": "<SITE_ID>",
+    "server_address": "https://prod-apnortheast-a.online.tableau.com"
+}'
+```
+
+1. **URL:**
+
+    - This endpoint is used to sync a specific semantic model to Tableau for public access.
+    - Replace <DATAOS_FQDN> with the Fully Qualified Domain Name (FQDN) where Lens is hosted. Example: liberal-monkey.dataos.app.
+    - Replace <WORKSPACE_NAME> with the name of the workspace where the semantic model (Lens) is deployed. e.g., `public`, `curriculum`.
+    - Replace <LENS_NAME> with the name of the semantic model to sync. e.g., `sales360`.
+
+2. **Headers:**
+
+    - **apikey:** User's API key for the current context in Lens. The DataOS API key for the user can be obtained by executing the below command.
+
+        ```bash
+        dataos-ctl user apikey get
+        ```
+
+    - **`Content-Type application/json`:** Specifies that the data being sent is in JSON format.
+ 
+3. **Raw data payload:**
+
+    This section defines the details of the user's Tableau credentials and project configuration:
+
+    - **project_name:** The name of the Tableau project where the data will be synced. Replace "<sample>" with the actual project name. If the project does not already exist, Tableau will create a new project with the given name.
+
+    - **username:** Tableau account username, typically the email ID used to log in to Tableau.
+
+    - **password:** Tableau account password.
+    
+    - **site_id:** The site ID associated with the current Tableau connection.
+
+    - **server_address:** The URL of the Tableau server.  Replace <server_address> with the correct server address (e.g., https://prod-apnortheast-a.online.tableau.com). This information can be obtained upon logging in to Tableau. The URL will appear as follows:
+
+        > https://prod-apnortheast-a.online.tableau.com/#/site/iamgroot1086a891fef336/home
+
+         Here: **iamgroot1086a891fef336**  is the **site_id**.
+
 
 ## Exploring the Data Product on Tableau Cloud
 

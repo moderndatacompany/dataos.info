@@ -47,7 +47,7 @@ ERRO[0001] failure applying resources
 
 
 
-## **Sample Nilus Server**
+## Sample Nilus Server
 
 The Nilus Server is a FastAPI service responsible for capturing and managing pipeline metadata.
 It must be deployed and running before the Nilus Stack, as the stack depends on the server’s API endpoint. The following template defines the Nilus Server service used to capture pipeline information.
@@ -120,10 +120,16 @@ Replace all placeholder values—with the appropriate environment-specific confi
 * `NILUS_DB_DEPOT_ADDRESS`: Defines the DataOS depot location for Nilus database connections.
 * `NILUS_SERVER_PORT`: Specifies the port on which the Nilus Server listens.
 
+### **Apply the Server Manifest File**
+
+Apply the Nilus Server by executing the command below.
+
+```bash
+dataos-ctl resource apply -f ${{file-path}} 
+```
 
 
-
-## **Sample Nilus Stack**
+## Sample Nilus Stack
 
 Once the Nilus Server is active, use the following template as a reference to create a Nilus Stack. This configuration utilizes the Nilus Python entry point, thereby removing the requirement for a custom wrapper script.
 
@@ -370,6 +376,17 @@ Once the Nilus Server is active, use the following template as a reference to cr
     ```
 
 Replace all placeholder values—including image, registry, and URLs—with the appropriate environment-specific configurations.
+
+### **Apply the Stack Manifest File**
+
+!!! warning
+    Using the `--disable-interpolation` flag is mandatory while applying Stack manifest. If the manifest file is applied without this flag, DataOS will attempt to substitute placeholders—such as values wrapped in `${{ }}`—with environment variables during runtime. This behavior can lead to unintended replacements or deployment errors. By specifying `--disable-interpolation`, you ensure the manifest is applied exactly as written, preserving all template variables and preventing misconfigurations.
+
+Apply the Nilus Stack by executing the command below.
+
+```bash
+dataos-ctl resource apply -f ${{file-path}} --disable-interpolation
+```
 
 !!! abstract  "Configuration Requirement"
     If the `nilus-server` deployed in a non-default workspace, the `NILUS_SERVICE_URL` environment variable in the Nilus Stack must be updated to target the appropriate workspace.
