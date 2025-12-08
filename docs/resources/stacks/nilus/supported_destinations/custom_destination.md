@@ -294,25 +294,67 @@ my-custom-destinations/
 ### **Workflow Configuration**
 
 To deploy the custom source, reference the repository in a Nilus Workflow:
+=== "Syntax"
+    ```yaml
+    repo:
+      url: "https://github.com/your-repo"
+      syncFlags:
+        - "--ref=main"
+      baseDir: "examples/custom_destination"
+    
+    source:
+      address: postgresql://user:pass@localhost:5432/db
+      options:
+        source-table: "public.users"
+    
+    sink:
+      address: custom://ApiDestination   # must match class name
+      options:
+        dest-table: "processed.users"
+        incremental-strategy: append  
+    ```
 
-```yaml
-repo:
-  url: "https://github.com/your-repo"
-  syncFlags:
-    - "--ref=main"
-  baseDir: "examples/custom_destination"
+=== "Example"
+    ```yaml
+    name: custom-source-destination10
+    version: v1
+    type: workflow
+    tags:
+      - custom_source
+      - nilus_batch
+    workflow:
+      dag:
+        - name: custom-source-destination
+          spec:
+            stack: nilus:1.0
+            compute: runnable-default
+            dataosSecrets:
+              - name: git-secret-dj
+                allKeys: true
+                consumptionType: envVars
+            resources:
+              requests:
+                cpu: 100m
+                memory: 128Mi
+            logLevel: INFO 
+            stackSpec:
+              repo:  
+                url: "<BITBUCKET URL>"
+                syncFlags:
+                  - '--ref=main' 
+                baseDir: "<BITBUCKET BASE CODE DIRECTORY>"
+              source:
+                address: dataos://stpostgres
+                options:
+                  source-table: "public.customer_data"
+                  incremental-key: "customer_id"
+              sink:
+                address: "custom://WebhookDestination"     
+                options:                                                
+                  dest-table: "output8"
+                  incremental-strategy: append 
+    ```
 
-source:
-  address: postgresql://user:pass@localhost:5432/db
-  options:
-    source-table: "public.users"
-
-sink:
-  address: custom://ApiDestination   # must match class name
-  options:
-    dest-table: "processed.users"
-    incremental-strategy: append
-```
 
 ### **Data Processing Notes**
 

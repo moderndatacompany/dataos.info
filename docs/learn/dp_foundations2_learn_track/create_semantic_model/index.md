@@ -67,10 +67,8 @@ These SQL scripts extract relevant fields from your input datasets.
 1. Create SQL scripts for each entity.
 2. Add SQL files to the `sqls` folder.
 
-??? "customer.sql"
-
     ```sql
-    # Replace xx with your initials
+    # Replace abc with your initials
     SELECT 
         customer_id, 
         birth_year, 
@@ -79,7 +77,7 @@ These SQL scripts extract relevant fields from your input datasets.
         income, 
         country 
     FROM 
-        postgresxx.public.customer_data
+        postgresabc.public.customer_data
     ```
 
 ??? "product.sql"

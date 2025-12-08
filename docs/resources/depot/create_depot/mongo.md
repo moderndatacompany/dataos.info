@@ -1,3 +1,8 @@
+---
+search:
+  boost: 3
+---
+
 # Steps to create MongoDB Depot
 
 There are two ways to set up the MongoDB connection: Through `username` and `password`, and certificate authentication. Follow the sections below to create the Depot using both methods.

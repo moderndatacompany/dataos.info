@@ -37,9 +37,9 @@ Analyzes co-purchase patterns between product categories to identify cross-categ
 
 ??? "Show YAML Template"
     ```yaml
-    # Important: Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
+    # Important: Replace 'abc' with your initials to personalize and distinguish the resource you’ve created.
     version: v1
-    name: wf-affinity-matrix-data-xx
+    name: wf-affinity-matrix-data-abc
     type: workflow
     tags:
       - crm
@@ -68,7 +68,7 @@ Analyzes co-purchase patterns between product categories to identify cross-categ
                 logLevel: INFO
                 inputs:                # Change the depotname
                   - name: product_data
-                    dataset: dataos://postgresxx:public/product_data?acl=rw
+                    dataset: dataos://postgresabc:public/product_data?acl=rw
                     driver: org.postgresql.Driver
                     format: jdbc
 
@@ -121,7 +121,7 @@ Segments customers by risk and maps them to personalized product pairings.
 
 ??? "Show YAML Template"
     ```yaml
-    # Important: Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
+    # Important: Replace 'abc' with your initials to personalize and distinguish the resource you’ve created.
     version: v1  # v1
     name: wf-cross-sell-data
     type: workflow
@@ -152,7 +152,7 @@ Segments customers by risk and maps them to personalized product pairings.
                 logLevel: INFO
                 inputs:
                   - name: product_data
-                    dataset: dataos://postgresxx:public/product_data?acl=rw
+                    dataset: dataos://postgresabc:public/product_data?acl=rw
                     driver: org.postgresql.Driver
                     format: jdbc
 
