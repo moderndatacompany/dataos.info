@@ -707,6 +707,7 @@ nav:
               - GCS DataOS Lakehouse: resources/stacks/nilus/batch_sources/gcs_dataos_lakehouse.md
               - Google Analytics: resources/stacks/nilus/batch_sources/google_analytics.md
               - Google BigQuery: resources/stacks/nilus/batch_sources/google_bigquery.md
+              - Google Sheets: resources/stacks/nilus/batch_sources/google_sheets.md
               - MongoDB: resources/stacks/nilus/batch_sources/mongodb.md
               - MS SQL Server: resources/stacks/nilus/batch_sources/mssql.md
               - MySQL: resources/stacks/nilus/batch_sources/mysql.md
@@ -723,6 +724,7 @@ nav:
               - BigQuery: resources/stacks/nilus/supported_destinations/bigquery.md
               - Databricks: resources/stacks/nilus/supported_destinations/databricks.md
               - GCS DataOS Lakehouse: resources/stacks/nilus/supported_destinations/gcs_dataos_lakehouse.md
+              - MongoDB: resources/stacks/nilus/supported_destinations/mongodb.md
               - MS SQL Server: resources/stacks/nilus/supported_destinations/mssql.md
               - Redshift: resources/stacks/nilus/supported_destinations/redshift.md
               - Snowflake: resources/stacks/nilus/supported_destinations/snowflake.md

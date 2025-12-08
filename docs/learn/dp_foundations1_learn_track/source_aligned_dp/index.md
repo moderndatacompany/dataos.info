@@ -39,15 +39,23 @@ Source-aligned (Entity-First) Data Product:
 ## Self-check quiz
 
 **1. What benefit does a source-aligned Data Product provide to downstream consumers like analysts or dashboard users?**  <br>
+  
   A. Fast ingestion speed  
+  
   B. Access to raw, unfiltered data  
+  
   C. Trusted, high-quality data ready for exploration and analysis
+  
   D. Encryption for compliance
 
 **2. Which of the following is an expected output of a source-aligned Data Product?**  
+  
   A. Executable code  
+  
   B. Raw logs  
-  C. Clean, validated datasets ready for downstream analytics 
+  
+  C. Clean, validated datasets ready for downstream analytics
+
   D. Deployment scripts
 
 ## Next step

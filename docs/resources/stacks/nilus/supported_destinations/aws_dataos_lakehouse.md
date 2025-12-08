@@ -106,6 +106,67 @@ For AWS-backed Lakehouse, following environment variables must be configured (vi
 * `incremental-strategy` – `append` (typical for CDC).
 * Cloud region option (`aws_region` ) only when needed for cloud-specific routing.
 
+??? note "Defining Partitions on Lakehouse Destination Datasets"
+    Partitions can be defined on Lakehouse destination datasets using the `sink.options` field within a Nilus manifest file. Partitioning improves query performance and data organization by segmenting the dataset based on specified column values.
+
+    ```yaml
+    name: lh-partition-demo
+    version: v1
+    type: workflow
+    tags:
+      - workflow
+      - nilus-batch
+    description: Nilus Batch Service Sample
+    workflow:
+      dag:
+        - name: partition-lakehouse
+          spec:
+            stack: nilus:1.0
+            compute: runnable-default
+            resources:
+              requests:
+                cpu: 100m
+                memory: 256Mi
+            logLevel: Info
+            stackSpec:
+              source:
+                address: dataos://ncdcpostgres3
+                options:
+                  source-table: "public.customer"
+              sink:
+                address: dataos://demolakehouse
+                options:
+                  dest-table: "partition.pg_to_lh_2"
+                  incremental-strategy: append
+                  partition-by:
+                    - column: updated_at
+                      type: year
+                      name: yearly_partition
+                      index: 2
+                    - column: premise
+                      type: identity
+                      name: identity_partition
+                      index: 1
+                    - column: city
+                      type: bucket
+                      bucket-count: 3
+                      name: bucket_partition
+                      index: 1
+    ```
+    
+    The `partition-by` option defines how data is partitioned in the destination Lakehouse table. Each entry in the list represents a partitioning strategy based on a specific column. The attributes available for each partition definition include:
+    
+    - `column`: Specifies the column from the source dataset on which partitioning is applied.
+
+    - `type`: Determines the partitioning strategy.(`year`, `identity`, `bucket`, etc. )
+
+    - `name`: Defines a custom name for the partition. This name is used in the physical layout of the data within the destination.
+
+    - `index`: Specifies the order in which partition keys are applied. Lower index values indicate higher priority in the partition hierarchy.
+
+    - `bucket-count` (required for `bucket` type only): Indicates the total number of buckets into which the data will be distributed based on the hash of the column values.
+
+
 ## Sink Attributes Details
 
 | Option                 | Required           | Description                                                | Callouts                     |

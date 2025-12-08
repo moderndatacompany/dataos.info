@@ -178,8 +178,8 @@ dataos-ctl apply -f /path/to/soda-workflow.yaml -w <workspace>
 ```
 ??? "Click here to view the complete manifest file"
     ```yaml
-    # Important: Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
-    name: soda-customer-quality-xx
+    # Important: Replace 'abc' with your initials to personalize and distinguish the resource you’ve created.
+    name: soda-customer-quality-abc
     version: v1
     type: workflow
     tags:
@@ -269,8 +269,8 @@ Create a similar Soda Workflow for the product dataset.
 
 ??? "Click here to view the complete manifest file for Product_data"
     ```yaml
-    # Important: Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
-    name: soda-product-quality-xx
+    # Important: Replace 'abc' with your initials to personalize and distinguish the resource you’ve created.
+    name: soda-product-quality-abc
     version: v1
     type: workflow
     tags:
@@ -294,7 +294,7 @@ Create a similar Soda Workflow for the product dataset.
             logLevel: INFO
             stackSpec:
               inputs:
-                - dataset: dataos://postgresxx:public/product_data
+                - dataset: dataos://postgresabc:public/product_data
                   options:
                     engine: minerva
                     clusterName: miniature
