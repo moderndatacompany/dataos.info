@@ -156,24 +156,24 @@ Begin by creating a manifest file to hold the configuration details for your Sno
     description: snowflake credentials # Purpose of the Instance-secret
     layer: user # DataOS layer
     instance-secret:
-    type: key-value-properties
-    acl: r
-    data:
-      username: TESTUSER_1
-      auth_mode: key-pair
-      passphrase: SnoF@k3!2025
-      key: |        # Key provided here is only for demonstration purpose, please provide the actual key                                                    
-        -----BEGIN ENCRYPTED PRIVATE KEY-----
-        MIIFHDBOBgkqhkiG9w0BBQ0wQTApBgkqhkiG9w0BBQwwHAQIJwUWFEM/l8UCAggA
-        MAwGCCqGSIb3DQIJBQAwFAYIKoZIhvcNAwcECMg2/lnrMBUfBIIEyBkriuK7ZXw6
-        b3xpJiRRvIdd+Ii9Vd1oxU+qwD/LsBi0sIXSnKzGkEgTEUEpuSuuEH0p8kjOLcbm
-        JfVY0iU9ZKdgDb3aqsG8sc4PvSH8xOCzE0Oy4sWH4jnoKMryOi43yd+tR16kR+u5
-        PybjvuOeLRB1EUaftrCYe69SzZkZh8dRmSUgYC6PCjmsq3C5+eqNVvqagHfRmHzd
-        O7orBZvmsqMNFI47QOLsZ3mplwjzrUqlArLlpa3HXa854z0iM9+U5XA1+uNY+OHy
-        a7VR9Ag4NSouhuzEWCxshSWpMEVCO0cT3QWut+E+q+RRXX19UQeL67GcROfsYyP/
-        K7JWroJQSTLV5XUSumY1OpcACw/ipO4+ImJ8L8inWFvQ5vBcdEO8uDJmRNr+0xD8
-        +lL5rfGAlN97yFeTwzCIQg==
-        -----END ENCRYPTED PRIVATE KEY-----     
+      type: key-value-properties
+      acl: r
+      data:
+        username: TESTUSER_1
+        auth_mode: key-pair
+        passphrase: SnoF@k3!2025
+        key: |        # Key provided here is only for demonstration purpose, please provide the actual key                                                    
+            -----BEGIN ENCRYPTED PRIVATE KEY-----
+            MIIFHDBOBgkqhkiG9w0BBQ0wQTApBgkqhkiG9w0BBQwwHAQIJwUWFEM/l8UCAggA
+            MAwGCCqGSIb3DQIJBQAwFAYIKoZIhvcNAwcECMg2/lnrMBUfBIIEyBkriuK7ZXw6
+            b3xpJiRRvIdd+Ii9Vd1oxU+qwD/LsBi0sIXSnKzGkEgTEUEpuSuuEH0p8kjOLcbm
+            JfVY0iU9ZKdgDb3aqsG8sc4PvSH8xOCzE0Oy4sWH4jnoKMryOi43yd+tR16kR+u5
+            PybjvuOeLRB1EUaftrCYe69SzZkZh8dRmSUgYC6PCjmsq3C5+eqNVvqagHfRmHzd
+            O7orBZvmsqMNFI47QOLsZ3mplwjzrUqlArLlpa3HXa854z0iM9+U5XA1+uNY+OHy
+            a7VR9Ag4NSouhuzEWCxshSWpMEVCO0cT3QWut+E+q+RRXX19UQeL67GcROfsYyP/
+            K7JWroJQSTLV5XUSumY1OpcACw/ipO4+ImJ8L8inWFvQ5vBcdEO8uDJmRNr+0xD8
+            +lL5rfGAlN97yFeTwzCIQg==
+            -----END ENCRYPTED PRIVATE KEY-----     
     ```        
 
 **Resource meta section**
