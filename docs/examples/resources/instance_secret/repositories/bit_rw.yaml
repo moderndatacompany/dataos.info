@@ -8,4 +8,4 @@ instance-secret:
   acl: rw
   data:
     GITSYNC_USERNAME: "shraddha7340"
-    GITSYNC_PASSWORD: "ATATT3xFfGF0Di9sltuZBwE905e1a7ipFVbTO0ckz_CbrvCJdTOlxYRxKKdX82I1hc-o3J8wIfxXY5Ws2jsKG_iQQcYu-U64VB2FDPcG1gshHizaviuOHwcAZZxiWnbEaExgkOWsuoy9B9mJncXzZBVzbfrtcQDzCvvbhUT2iBuiXTDjS8qWJag=98C2756F"
+    GITSYNC_PASSWORD: ""

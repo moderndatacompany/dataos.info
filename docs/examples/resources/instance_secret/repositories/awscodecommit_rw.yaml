@@ -8,4 +8,4 @@ instance-secret:
   acl: ${{rw}}
   data:
     GITSYNC_USERNAME: ${{"iamgroot"}}
-    GITSYNC_PASSWORD: ${{"56F4japOhkkQDS3trUnZsetFB2J3lnclDPgHThHLto="}}
+    GITSYNC_PASSWORD: ${{""}}
