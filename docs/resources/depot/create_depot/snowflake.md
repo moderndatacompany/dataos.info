@@ -1,3 +1,9 @@
+---
+title: Snowflake
+search:
+  boost: 4
+---
+
 # Steps to create Snowflake Depot
 
 To create a Snowflake Depot you must have the following details:

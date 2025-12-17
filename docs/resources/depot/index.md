@@ -1,7 +1,7 @@
 ---
 title: Depot
 search:
-  boost: 4
+  boost: 6
 ---
 
 # :resources-depot: Depot

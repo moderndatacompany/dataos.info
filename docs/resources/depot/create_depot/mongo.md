@@ -1,4 +1,5 @@
 ---
+title: MongoDB 
 search:
   boost: 3
 ---
@@ -67,35 +68,70 @@ The following are the prerequisites for creating a MongoDB Depot.
 
 ## Steps to create MongoDB Depot through username and password authentication
 
-This section involves the alternative steps to create a MongoDB  Depot without an Instance Secret.
+This section involves the steps to create a MongoDB  Depot with [Instance Secret reference](/resources/instance_secret/data_sources/mongo/).
 
 1. Create a manifest file for Depot containing the following code and update the details.
 
-    ```yaml
-    version: ${{v1}} # depot version
-    name: ${{"mongodb03"}}
-    type: ${{depot}}
-    description: ${{"MongoDb depot for sanity"}}
-    tags:
-      - ${{MongoDb}}
-      - ${{Sanity}}
-    layer: ${{user}}
-    depot:
-      type: ${{mongodb}}
-      compute: ${{query-default}}
-      spec:
-        subprotocol: ${{"mongodb"}}
-        nodes: ${{["mongodb-tmdc.dataos.info:27017"]}}
-        params: 
-          tls: ${{false}}
-      external: ${{true}}
-      connectionSecret:
-        - acl: ${{rw}}
-          type: ${{key-value-properties}}
-          data:
-            username: ${{root}}
-            password: ${{f5ce9b0d972fd9555560}}
-    ```
+    === "Manifest file"
+
+        ```yaml
+        version: v2alpha # depot version
+        name: ${{"depot-name"}}
+        type: ${{depot}}
+        description: ${{"MongoDb depot for sanity"}}
+        tags:
+          - ${{MongoDb}}
+          - ${{Sanity}}
+        layer: ${{user}}
+        depot:
+          type: ${{mongodb}}
+          compute: ${{query-default}}
+          mongodb:
+            subprotocol: ${{"mongodb"}}
+            nodes: ${{["mongodb-tmdc.dataos.info:27017"]}}
+            params: 
+              tls: ${{false}}
+              replicaSet: "${{replica set name}}"  # Required for Nilus CDC only
+          external: true
+          secrets:
+            - name: ${{"instance-secret-name"}}-r
+              keys:
+                - ${{"instance-secret-name"}}-r
+              allkeys: true
+        ```
+
+    === "Example Usage"
+
+          ```yaml
+          name: coremongodbcdc
+          version: v2alpha
+          type: depot
+          tags:
+            - mongodb
+            - depot
+          layer: user
+          depot:
+            type: mongodb                                 
+            description: description
+            compute: runnable-default
+            mongodb:                                          
+              subprotocol: "mongodb"                         # Changed to mongodb (not srv)
+              nodes: ["mongodb-replicas-tmdc.dataos.info:27017"]   # Port allowed here
+              params: 
+                tls: "false"
+                replicaSet: "rs0"
+            external: true
+            secrets:
+              - name: coremongodbcdc-r
+                keys:
+                  - coremongodbcdc-r
+                allkeys: true
+          ```
+
+    <aside class="callout">
+    🗣️ The replicaSet parameter is required only for Nilus CDC. For batch/non-CDC connections you can omit the replicaSet setting.
+    </aside>
+
     To get the details of each attribute, please refer [to this link](/resources/depot/configurations).
 
 2. Apply the Depot manifest file by executing the below command.

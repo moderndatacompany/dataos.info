@@ -1,17 +1,32 @@
-# Snowflake Read Instance-secret Manifest
-
-name: ${snowflake-depot-name}-r # Unique identifier for Resource, replace ${snowflake-depot-name} with depot name
-version: v1 # Manifest version
-type: instance-secret # Type of the Resource
+name: mysnowflake01
+version: v2alpha
+type: depot
 tags:
-  - snowflake
-  - instance-secret
-description: ${description} # Purpose of the Instance-secret
-owner: ${owner-name}
-layer: user # DataOS layer
-instance-secret:
-  type: key-value-properties # Secret type
-  acl: r # Access control: 'r' for read-only
-  data:
-    username: ${username} # replace with snowflake username
-    password: ${password} # replace with snowflake password
+  - dataos:type:resource
+  - dataos:type:cluster-resource
+  - dataos:resource:depot
+  - dataos:layer:user
+description: My v2alpha snowflake depot with private_key
+owner: harshnagar
+layer: user
+depot:
+  name: mysnowflake01
+  type: snowflake
+  description: Snowflake Sample data
+  secrets:
+    - name: mysnowflake01-rw
+      keys:
+        - mysnowflake01-rw
+      allKeys: true
+    - name: mysnowflake01-r
+      keys:
+        - mysnowflake01-r
+      allKeys: true
+  external: false
+  snowflake:
+    database: SNOWFLAKE_LEARNING_DB
+    url: FGDUSDB-LX76786.snowflakecomputing.com
+    warehouse: SNOWFLAKE_LEARNING_WH
+    account: FGDUSDB-LX76786
+    role: ACCOUNTADMIN
+  source: mysnowflake01
