@@ -1,11 +1,11 @@
-name: ${{bitbucket-rw}}
-version: ${{v1}}
+name: sabitbucket-rw
+version: v1
 type: instance-secret
-description: ${{"bitbucket credentials"}}
-layer: ${{user}}
+description: "bitbucket credentials"
+layer: user
 instance-secret:
-  type: ${{key-value}}
-  acl: ${{rw}}
+  type: key-value
+  acl: rw
   data:
-    GITSYNC_USERNAME: ${{"iamgroot"}}
-    GITSYNC_PASSWORD: ${{"56F4japOhkkQDS3trUnZsetFB2J3lnclDPgHThHLto="}}
+    GITSYNC_USERNAME: "shraddha7340"
+    GITSYNC_PASSWORD: "ATATT3xFfGF0Di9sltuZBwE905e1a7ipFVbTO0ckz_CbrvCJdTOlxYRxKKdX82I1hc-o3J8wIfxXY5Ws2jsKG_iQQcYu-U64VB2FDPcG1gshHizaviuOHwcAZZxiWnbEaExgkOWsuoy9B9mJncXzZBVzbfrtcQDzCvvbhUT2iBuiXTDjS8qWJag=98C2756F"
