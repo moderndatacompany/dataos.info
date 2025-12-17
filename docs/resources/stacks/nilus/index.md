@@ -118,3 +118,39 @@ Nilus supports a variety of databases, warehouses, and lakehouses as both source
     * Deploy in minutes using Git repository integration
     
     [**Get started with Custom Sources →**](/resources/stacks/nilus/batch_sources/custom_source/)
+
+
+## Special Characters in Credentials
+
+Nilus supports the use of special characters in connection credentials across all major sources and destinations.
+
+**Supported Characters:** `@ : / ? # & = + ; % \ ' { } ( ) * $ !`
+
+
+!!! info
+    When connection credentials include special characters, the `--disable-interpolation` flag must be used while applying `instance-secrets`, or `secrets`. This ensures the special characters are preserved accurately.
+
+**Example:**  
+
+```bash
+dataos-ctl resource apply -f ${{/config/instance-secret.yml}} --disable-interpolation
+```
+
+The table below outlines the current compatibility of special character handling across supported sources and destinations.
+
+| **Source**    | **Batch Source** | **CDC Source** | **Destination** | **Comments**                                                                                                                              |
+| ------------- | ---------------- | -------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| MS SQL Server | ✅                | ✅              | ✅               |                                                                                                                                           |
+| PostgreSQL    | ✅                | ✅              | ✅               |                                                                                                                                           |
+| MongoDB       | ✅                | ✅              | ✅               |                                                                                                                                           |
+| MySQL         | ✅                | ✅              | ✅               |                                                                                                                                           |
+| Redshift      | ✅                | 🚫             | ✅               | The source system does not support `'`, `"`, `\`, `/`, or `@` in credentials. This is a source-side limitation and not governed by Nilus. |
+| Snowflake     | ✅                | 🚫             | ✅               |                                                                                                                                           |
+| Clickhouse    | ✅                | 🚫             | ❌               | Support for special characters in connection credentials for Clickhouse as a destination is not available in the current release.         |
+| Azure Synapse | ✅                | 🚫             | 🚫              |                                                                                                                                           |
+
+**Legend:**
+
+* ✅ — Supported
+* ❌ — Not supported (Planned for future releases)
+* 🚫 — Not applicable

@@ -82,9 +82,9 @@ Prepare your manifest file to configure the pipeline.
 
 
     ```yaml
-    # Important: Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
+    # Important: Replace 'abc' with your initials to personalize and distinguish the resource you’ve created.
     version: v1
-    name: wf-customer-data-xx
+    name: wf-customer-data-abc
     type: workflow
     workflow:
       dag:
@@ -112,7 +112,7 @@ Prepare your manifest file to configure the pipeline.
                         FROM customer_data
               outputs:
                 - name: final
-                  dataset: dataos://postgresxx:public/customer_data?acl=rw
+                  dataset: dataos://postgresabc:public/customer_data?acl=rw
                   driver: org.postgresql.Driver
                   format: jdbc
                   title: Purchase Dataset
@@ -165,9 +165,9 @@ Ready to take on your next data pipeline challenge? Follow the same steps and st
 
 ??? "Click here to see Workflow for ingesting Product data from Azure blob storage to PostgreSQL"
     ```yaml
-    # Important: Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
+    # Important: Replace 'abc' with your initials to personalize and distinguish the resource you’ve created.
     version: v1
-    name: wf-product-data-xx
+    name: wf-product-data-abc
     type: workflow
     tags:
       - crm
@@ -218,8 +218,8 @@ Ready to take on your next data pipeline challenge? Follow the same steps and st
                         
                 outputs:
                   - name: final
-                    dataset: dataos://postgresxx:public/product_data?acl=rw  
-                    # Replace xx with your initials
+                    dataset: dataos://postgresabc:public/product_data?acl=rw  
+                    # Replace abc with your initials
                     driver: org.postgresql.Driver
                     format: jdbc
                     title: Product Dataset

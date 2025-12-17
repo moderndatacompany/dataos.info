@@ -95,7 +95,7 @@ tags:
 v1beta:
   data:
     meta:
-      title: Product Affinity xx
+      title: Product Affinity abc
       #sourceCodeUrl: https://bitbucket.org/tmdc/product-affinity-training/src/main/
       #trackerUrl: https://rubikai.atlassian.net/browse/DPRB-65
     collaborators:
@@ -112,13 +112,13 @@ v1beta:
       ref: bundle:v1beta:productaffinity-bundle
     inputs:
       - refType: dataos
-        ref: dataset:postgresxx:public:customer_data
+        ref: dataset:postgresabc:public:customer_data
 
       - refType: dataos
-        ref: dataset:postgresxx:public:purchase_data
+        ref: dataset:postgresabc:public:purchase_data
 
       - refType: dataos
-        ref: dataset:postgresxx:public:product_data
+        ref: dataset:postgresabc:public:product_data
 
     outputs:
       - refType: dataos
@@ -129,7 +129,7 @@ v1beta:
 
     ports:
       lens:
-        ref: lens:v1alpha:productaffinity-xx:public
+        ref: lens:v1alpha:productaffinity-abc:public
         refType: dataos
 
       # talos:
@@ -158,7 +158,7 @@ dataos-ctl apply -f scanner.yaml
 
 ```yaml
 version: v1
-name: scan-data-product-xx
+name: scan-data-product-abc
 type: workflow
 description: Registers the Data Product in the Data Product Hub.
 workflow:

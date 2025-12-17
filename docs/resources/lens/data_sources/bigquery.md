@@ -94,7 +94,7 @@ For instance, a simple data load might look as follows:
 SELECT
   *
 FROM
-  "onelakehouse"."retail".channel;
+  "bigquery"."retail".channel;
 ```
 
 Alternatively, you can write more advanced queries that include transformations, such as:
@@ -113,7 +113,7 @@ SELECT
   country,
   zip_code
 FROM
-  "onelakehouse"."retail".customer;
+  "bigquery"."retail".customer;
 ```
   
 ### **Step 2.2: Define the table in the model**

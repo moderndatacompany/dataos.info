@@ -67,7 +67,7 @@ A connection window will open, prompting the entry of the necessary connection d
 
     In addition to using standard Tableau credentials, users can also opt to use Personal Access Tokens (PAT) for authentication.
 
-    #### **Prerequisites**
+    #### Prerequisites
 
     **Tableau Personal Access Token (PAT):** Before integrating the semantic model with Tableau using a PAT, ensure that you generate a PAT in Tableau by following the instructions provided in [this guide](https://help.tableau.com/current/online/en-us/security_personal_access_tokens.htm).
 

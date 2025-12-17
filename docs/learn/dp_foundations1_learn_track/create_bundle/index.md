@@ -40,7 +40,7 @@ In the below example, the bundle contains:
 
 
 ```yaml
-name: retaildata-bundle-xx
+name: retaildata-bundle-abc
 version: v1beta
 type: bundle
 description: Source-aligned Data Product Bundle

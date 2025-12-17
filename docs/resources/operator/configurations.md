@@ -1,3 +1,7 @@
+---
+search:
+  exclude: true
+---
 # Attributes of Operator YAML
 
 ## Structure of Operator YAML configuration

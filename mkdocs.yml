@@ -231,7 +231,7 @@ nav:
           - Lakehouses: interfaces/metis/metis_ui_resources/metis_resources_lakehouses.md
           - Lenses: interfaces/metis/metis_ui_resources/metis_resources_lenses.md
           - Monitors: interfaces/metis/metis_ui_resources/metis_resources_monitors.md
-          - Operators: interfaces/metis/metis_ui_resources/metis_resources_operators.md
+          # - Operators: interfaces/metis/metis_ui_resources/metis_resources_operators.md
           - Pagers: interfaces/metis/metis_ui_resources/metis_resources_pagers.md
           - Policies: interfaces/metis/metis_ui_resources/metis_resources_policies.md
           - Secrets: interfaces/metis/metis_ui_resources/metis_resources_secrets.md
@@ -281,6 +281,7 @@ nav:
           - Examples:
             - Restart and scale Cluster on a pre-defined schedule: resources/cluster/examples/cluster_maintenance.md
             - Multiple Cluster Setup using single manifest: resources/cluster/examples/multiple_cluster_setup.md
+            - Querying Minerva Cluster using Python: resources/cluster/minerva_python_client.md
           - Core Concepts: 
             - On-demand Computing: resources/cluster/on_demand_computing.md
         - Compute: 
@@ -390,7 +391,7 @@ nav:
             - Views: resources/lens/views.md
             - User Groups: resources/lens/user_groups_and_data_policies.md
           - Supported Data Sources: 
-              - resources/lens/data_sources.md
+              - resources/lens/data_sources/index.md
               - Bigquery: resources/lens/data_sources/bigquery.md
               - Databricks: resources/lens/data_sources/databricks.md
               - Postgres: resources/lens/data_sources/postgres.md
@@ -399,6 +400,7 @@ nav:
               - Flash: resources/lens/data_sources/flash.md
               - Minerva: resources/lens/data_sources/minerva.md
               - Themis: resources/lens/data_sources/themis.md
+
           - Exploration:
             - Using GraphQL: 
                 Overview: resources/lens/exploration_of_lens_using_graphql.md
@@ -450,11 +452,11 @@ nav:
             - Create an Equation Monitor on Lens: resources/monitor/how_to_guide/lens_monitor.md
             - Create an Equation Monitor on Postgres: resources/monitor/equation_monitor_on_postgres.md
             - Generate incidents for certificate expiration: resources/monitor/how_to_guide/certificate_expiration_monitoring.md
-        - Operator: 
-          - resources/operator/index.md
-          - Configurations: resources/operator/configurations.md
-          - Recipes: 
-            - Orchestrate Hightouch pipeline using Hightouch Factory Operator: resources/operator/case_scenario/hightouch_factory_operator.md
+        # - Operator: 
+        #   - resources/operator/index.md
+        #   - Configurations: resources/operator/configurations.md
+        #   - Recipes: 
+        #     - Orchestrate Hightouch pipeline using Hightouch Factory Operator: resources/operator/case_scenario/hightouch_factory_operator.md
         - Pager: 
           - resources/pager/index.md
           - Configurations: resources/pager/configurations.md
@@ -705,6 +707,7 @@ nav:
               - GCS DataOS Lakehouse: resources/stacks/nilus/batch_sources/gcs_dataos_lakehouse.md
               - Google Analytics: resources/stacks/nilus/batch_sources/google_analytics.md
               - Google BigQuery: resources/stacks/nilus/batch_sources/google_bigquery.md
+              - Google Sheets: resources/stacks/nilus/batch_sources/google_sheets.md
               - MongoDB: resources/stacks/nilus/batch_sources/mongodb.md
               - MS SQL Server: resources/stacks/nilus/batch_sources/mssql.md
               - MySQL: resources/stacks/nilus/batch_sources/mysql.md
@@ -721,6 +724,7 @@ nav:
               - BigQuery: resources/stacks/nilus/supported_destinations/bigquery.md
               - Databricks: resources/stacks/nilus/supported_destinations/databricks.md
               - GCS DataOS Lakehouse: resources/stacks/nilus/supported_destinations/gcs_dataos_lakehouse.md
+              - MongoDB: resources/stacks/nilus/supported_destinations/mongodb.md
               - MS SQL Server: resources/stacks/nilus/supported_destinations/mssql.md
               - Redshift: resources/stacks/nilus/supported_destinations/redshift.md
               - Snowflake: resources/stacks/nilus/supported_destinations/snowflake.md

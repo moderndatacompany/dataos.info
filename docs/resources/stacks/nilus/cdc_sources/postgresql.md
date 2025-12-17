@@ -138,9 +138,7 @@ service:                                                   # Service specificati
   replicas: 1                                              # Number of replicas
   logLevel: INFO                                           # Logging level
   compute: ${{query-default}}                              # Compute type
-  persistentVolume:                                        # Persistent volume configuration
-    name: ${{ncdc-vo1-01}}                                 # Volume name (multiple options commented)
-    directory: ${{nilus_01}}                               # Target directory within the volume
+
   stack: nilus:3.0                                         # Nilus stack version
   stackSpec:                                               # Stack specification
     source:                                                # Source configuration block

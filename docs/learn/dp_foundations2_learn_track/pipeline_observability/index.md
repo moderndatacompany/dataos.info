@@ -90,8 +90,8 @@ With the Monitor in place, you receive high-severity incident alerts whenever th
 
 ??? "Click here to see the complete Monitor manifest file"
     ```yaml
-    # Important: Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
-    name: failedworkflowmonitor-xx
+    # Important: Replace 'abc' with your initials to personalize and distinguish the resource you’ve created.
+    name: failedworkflowmonitor-abc
     version: v1alpha
     type: monitor
     tags:
@@ -213,8 +213,8 @@ output:
 
 ??? "Click here to view the complete manifest file for email notification"
       ```yaml
-      # Important: Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
-    name: failedworkflowpager-xx
+      # Important: Replace 'abc' with your initials to personalize and distinguish the resource you’ve created.
+    name: failedworkflowpager-abc
     version: v1alpha
     type: pager
     description: sends alerts to email and teams when a juicefs pod deletion incident is created
@@ -281,9 +281,9 @@ output:
 
 ??? "Click here to view the complete manifest file for Webhook configuration"
       ```yaml
-      # Important: Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
-        # Important: Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
-    name: failedworkflowpager-xx
+      # Important: Replace 'abc' with your initials to personalize and distinguish the resource you’ve created.
+        # Important: Replace 'abc' with your initials to personalize and distinguish the resource you’ve created.
+    name: failedworkflowpager-abc
     version: v1alpha
     type: pager
     tags:

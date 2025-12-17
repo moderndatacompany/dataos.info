@@ -25,7 +25,7 @@ Custom Sources allow the development of **user-defined connectors** while utiliz
     - Do **not** add libraries that are already part of the existing environment.
     - This prevents duplication and avoids version conflicts.
 
-    **Pre-Installed Packages:** See the [requirements.txt](/resources/stacks/nilus/requirements.txt), to know the installed packages or [Download](/resources/stacks/nilus/requirements.zip).   
+    **Pre-Installed Packages:** See the [requirements.txt](/resources/stacks/nilus/files/dependencies.txt), to know the installed packages or [Download](/resources/stacks/nilus/files/nilus.zip).   
 
     **Nilus Core Library:** UPDATE EXISTING IMPORTS
 
@@ -203,24 +203,71 @@ my-custom-sources/
 
 To deploy the custom source, reference the repository in a Nilus Workflow:
 
-```yaml
-repo:
-  url: "https://github.com/your-repo"
-  syncFlags:
-    - "--ref=main"
-  baseDir: "my-custom-sources"
+=== "Syntax"
+    ```yaml
+    repo:
+      url: "https://github.com/your-repo"
+      syncFlags:
+        - "--ref=main"
+      baseDir: "my-custom-sources"
 
-source:
-  address: custom://MyCustomSource?param1=value1
-  options:
-    source-table: "my_data"
+    source:
+      address: custom://MyCustomSource?param1=value1
+      options:
+        source-table: "my_data"
 
-sink:
-  address: dataos://lakehouse
-  options:
-    incremental-strategy: append
-    dest-table: "raw"
-```
+    sink:
+      address: dataos://lakehouse
+      options:
+        incremental-strategy: append
+        dest-table: "raw"
+    ```
+
+=== "Example"
+    ```yaml
+    name: dynamic-az-lh1
+    version: v1
+    type: workflow
+    tags:
+    - workflow
+    - nilus-batch
+    description: Nilus Batch Customer Insertion
+    workflow:
+    dag:
+        - name: dynamic-az-lh
+        spec:
+            stack: nilus:1.0
+            compute: runnable-default
+            resources:
+            requests:
+                cpu: 200m
+                memory: 256Mi
+            logLevel: Info
+            dataosSecrets:
+            - name: azure-blob-cred             
+                allKeys: true
+                consumptionType: envVars
+            - name: git-secret-dj
+                allKeys: true
+                consumptionType: envVars
+            stackSpec:
+            repo:
+                url: "<BITBUCKET URL>"
+                syncFlags:
+                - '--ref=main' 
+                baseDir: "<BITBUCKET BASE CODE DIRECTORY>"
+            source:
+                address: "custom://AzureBlobCustomSource?account_name={ACCOUNT_NAME}&account_key={ACCOUNT_KEY}&container={CONTAINER}&path=nilus/custom_code"
+                options:
+                source-table: "input"   
+            sink:
+                address: dataos://testawslh
+                options:
+                dest-table: "sandbox4.batch_azure"
+                incremental-strategy: replace
+                            
+    ```
+
 
 ## Example Implementations
 
@@ -354,36 +401,37 @@ class RandomUserSource(CustomSource):
         return random_user_source(uri, table, **kwargs)
 ```
 
-### **How It Works**
+!!! tip "How It Works"
+    - **`random_users.py`**
+        - Defines a resource (`fetch_random_users`) that yields static user data.
+        - Registers a Nilus source (`random_user_source`) to expose the resource.
+    - **`nilus_custom_source.py`**
+        - Wraps the source in a `CustomSource` class (`RandomUserSource`).
+        - Nilus expects this class when running the custom source.
+    - The name of the destination will be defined:
 
-* **`random_users.py`**
-    * Defines a resource (`fetch_random_users`) that yields static user data.
-    * Registers a Nilus source (`random_user_source`) to expose the resource.
-* **`nilus_custom_source.py`**
-    * Wraps the source in a `CustomSource` class (`RandomUserSource`).
-    * Nilus expects this class when running the custom source.
-*   The name of the destination will be defined:
+       - Explicitly through the table_name parameter in the `@nilus.resource` decorator.
 
-    * Explicitly through the table_name parameter in the `@nilus.resource` decorator.
+       ```python
+       @nilus.resource(table_name="my_table")   
+       def fetch_random_users():
+       ```
 
-    ```python
-    @nilus.resource(table_name="my_table")   
-    def fetch_random_users():
-    ```
+       - If `table_name` is not defined in the `@nilus.resource` decorator; it defaults to the function name.
+       - Looking at the actual example in `random_users.py`
 
-    * If `table_name` is not defined in the `@nilus.resource` decorator; it defaults to the function name.
-    * Looking at the actual example in `random_users.py`
+       ```python
+       @nilus.resource()
+       def fetch_random_users():
+           response = dummy_data
+           for d in response:
+               yield d
+       ```
 
-    ```python
-    @nilus.resource()
-    def fetch_random_users():
-        response = dummy_data
-        for d in response:
-            yield d
-    ```
-
-    * Since the `table_name` parameter is not defined in the `@nilus.resource()`, the destination table name will be `fetch_random_users` (the function name).
-* Nilus executes the custom source like any other built-in connector, streaming the yielded records into downstream pipelines.
+       - Since the `table_name` parameter is not defined in the `@nilus.resource()`, the destination table name will be `fetch_random_users` (the function name).
+     
+    - Custom sources can now create more than one destination table in the sink schema.
+    - Nilus executes the custom source like any other built-in connector, streaming the yielded records into downstream pipelines.
 
 ## Best Practices
 

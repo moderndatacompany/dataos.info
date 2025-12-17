@@ -81,8 +81,8 @@ This step ensures that the database credentials are securely stored and ready fo
 <details><summary>Postgres-read-only Instance Secret YAML</summary>
 
 ```yaml
-# Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
-name: postgresxx-r   # Instance name convention- {{depotname}}-{{acl}}
+# Replace 'abc' with your initials to personalize and distinguish the resource you’ve created.
+name: postgresabc-r   # Instance name convention- {{depotname}}-{{acl}}
 version: v1
 type: instance-secret
 description: Read-only secret for Postgres database
@@ -100,8 +100,8 @@ instance-secret:
 <details><summary>Postgres-read-write Instance Secret YAML</summary>
 
 ```yaml
-# Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
-name: postgresxx-rw      # Instance name convention- {{depotname}}-{{acl}}
+# Replace 'abc' with your initials to personalize and distinguish the resource you’ve created.
+name: postgresabc-rw      # Instance name convention- {{depotname}}-{{acl}}
 version: v1
 type: instance-secret
 description: Read-write secret for Postgres database
@@ -184,8 +184,8 @@ This command displays the details of the configured Depot, confirming that it is
 <details><summary>Postgres Depot YAML</summary>
 
 ```yaml
-# Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
-name: postgresxx
+# Replace 'abc' with your initials to personalize and distinguish the resource you’ve created.
+name: postgresabc
 version: v2alpha
 type: depot
 layer: user
@@ -194,13 +194,13 @@ depot:
   description: Default Postgres depot
   external: true
   secrets:
-    - name: postgresxx-rw
+    - name: postgresabc-rw
       keys:
-        - postgresxx-rw
+        - postgresabc-rw
       allkeys: true
-    - name: postgresxx-r
+    - name: postgresabc-r
       keys:
-        - postgresxx-r
+        - postgresabc-r
       allkeys: true
   jdbc:
     subprotocol: postgresql

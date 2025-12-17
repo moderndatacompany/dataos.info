@@ -103,7 +103,7 @@ For example, a simple data load might look as follows:
 SELECT
   *
 FROM
-  "onelakehouse"."retail".channel;
+  "postgres"."retail".channel;
 ```
 
 Alternatively, you can write more advanced queries that include transformations, such as:
@@ -122,7 +122,7 @@ SELECT
   country,
   zip_code
 FROM
-  "onelakehouse"."retail".customer; #catalog_name
+  "postgres"."retail".customer; #catalog_name
 ```
 
 ### **Step 2.2: Define the table in the Model**

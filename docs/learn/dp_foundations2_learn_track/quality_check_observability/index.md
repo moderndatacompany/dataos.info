@@ -28,8 +28,8 @@ In this module, you'll learn how to configure Monitor and Pager resources in Dat
 - **Quality Checks Monitor**
     
     ```yaml
-    **# Important:** Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
-    name: quality-checks-alerts-xx
+    **# Important:** Replace 'abc' with your initials to personalize and distinguish the resource you’ve created.
+    name: quality-checks-alerts-abc
     version: v1alpha
     type: monitor
     tags:
@@ -80,8 +80,8 @@ In this module, you'll learn how to configure Monitor and Pager resources in Dat
 - **Quality Checks Pager**
     
     ```yaml
-    **# Important:** Replace 'xx' with your initials to personalize and distinguish the resource you’ve created.
-    name: pager-checks-alert-xx
+    **# Important:** Replace 'abc' with your initials to personalize and distinguish the resource you’ve created.
+    name: pager-checks-alert-abc
     version: v1alpha
     type: pager
     tags:

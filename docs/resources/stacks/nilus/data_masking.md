@@ -30,7 +30,7 @@ source:
       ssn: redact
       salary: round:5000
 sink:
-  address: duckdb://output.duckdb
+  address: dataos://postgresdepot
   options:
     dest-table: "public.masked_users"
     incremental-strategy: append
@@ -53,14 +53,21 @@ mask:
 | `parameter` | Optional argument for algorithms that support configuration (e.g., `partial:2`, `round:1000`). |
 
 
+!!! tip "Data Masking and Access Restrictions in Nilus"
+
+    - Data is masked during ingestion, resulting in the destination dataset containing only the masked version.
+    - There is no separate unmasked dataset stored; hence, it is not possible to grant access to unmasked data for different users or groups.
+    - Nilus does not support dynamic data masking—masking cannot be applied or removed on-demand.
+    - To access unmasked data, the dataset must be **re-ingested** directly from the source **without** applying masking rules.
+
 ## Masking Algorithms
 
 Nilus supports a comprehensive set of masking algorithms, categorized by functional purpose. Each algorithm enables specific masking behavior to meet varying privacy, security, and compliance requirements.
 
 
-### **1. Irreversible Masking**
+### **1. Irreversible Masking Algorithms**
 
-Permanently transforms data using one-way functions. Original values cannot be restored.
+Transforms data using one-way functions.
 
 - **`hash` / `sha256`**
 
@@ -102,7 +109,7 @@ Permanently transforms data using one-way functions. Original values cannot be r
 
 
 
-### **2. Format-Preserving Masking**
+### **2. Format-Preserving Algorithms**
 
 Preserves recognizable data structure or formatting while masking sensitive content.
 
@@ -148,7 +155,7 @@ Preserves recognizable data structure or formatting while masking sensitive cont
 
 
 
-### **3. Partial Masking**
+### **3. Partial Masking Algorithms**
 
 Exposes limited portions of a value, with the remainder masked.
 
@@ -194,7 +201,7 @@ Exposes limited portions of a value, with the remainder masked.
 
 
 
-### **4. Tokenization**
+### **4. Tokenization Algorithms**
 
 Substitutes sensitive values with generated identifiers to maintain uniqueness or referential integrity.
 
@@ -230,7 +237,7 @@ Substitutes sensitive values with generated identifiers to maintain uniqueness o
 
 
 
-### **5. Numeric Masking**
+### **5. Numeric Masking Algorithms**
 
 Modifies numeric data while preserving approximate magnitude or distribution.
 
@@ -296,7 +303,7 @@ Modifies numeric data while preserving approximate magnitude or distribution.
 
 
 
-### **6. Date Masking**
+### **6. Date Masking Algorithms**
 
 Transforms date or datetime values while preserving logical time intervals.
 

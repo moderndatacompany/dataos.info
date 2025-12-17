@@ -30,11 +30,11 @@ A tag-namespace should be thought of as a container for tags. A specific glob pa
 
 Tags serve as identifiers for different types of users, guiding the assignment of policies. These policies are then applied based on the tags associated with each user. Heimdall only recognizes tags categorized within a Tag-Namespace for access policies Based on a particular Use-Case, the system administrator can create all the requisite policies against a tag or a set of tags and apply them. 
 
-For instance, if a particular user John Doe has the following two tags:
+For instance, if a particular user John Doe has the following tags:
 
 `roles:id:data-dev` <br> `roles:direct:metis` <br>  `users:id:testuser`
 
-The policies created with the above-given tags as subjects will apply to John Doe. To remove the access from user John Doe, the policies must be deleted.
+The policies created with the above-given tags as subjects will apply to John Doe. To remove the access from user John Doe, unattach the tag.
 
 ## Subject
 
