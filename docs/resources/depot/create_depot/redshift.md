@@ -1,3 +1,9 @@
+---
+title: Redshift
+search:
+  boost: 3
+---
+
 # Steps to create Amazon Redshift Depot
 
 ## Pre-requisites specific to the Redshift Depot

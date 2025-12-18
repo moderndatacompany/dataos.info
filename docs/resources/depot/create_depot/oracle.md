@@ -1,3 +1,9 @@
+---
+title: Oracle
+search:
+  boost: 3
+---
+
 # Steps to create Oracle Depot
 
 To create an Oracle Depot you must have the following details:

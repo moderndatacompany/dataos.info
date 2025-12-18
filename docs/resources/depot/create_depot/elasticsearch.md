@@ -1,3 +1,9 @@
+---
+title: Elasticsearch
+search:
+  boost: 3
+---
+
 # Steps to create Elasticsearch Depot
 
 To create an Elasticsearch Depot you must have the following details:

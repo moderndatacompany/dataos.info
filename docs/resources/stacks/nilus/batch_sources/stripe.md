@@ -87,9 +87,7 @@ workflow:
       spec:
         stack: nilus:1.0
         compute: runnable-default
-        envs:
-          - DATAOS_WORK_DIR: /etc/dataos/work
-          - HEIMDALL_URL: "<https://pro-alien.dataos.app/heimdall>"
+
         resources:
           requests:
             cpu: 100m
@@ -102,8 +100,9 @@ workflow:
               source-table: "customer"
               max-table-nesting: "0"
           sink:
-            address: dataos://testawslh:sandbox/strip_test?acl=rw  
+            address: dataos://testawslh
             options:  
+              dest-table: sandbox.strip_test
               incremental-strategy: replace  
 ```
 

@@ -1,3 +1,9 @@
+---
+title: GCS
+search:
+  boost: 3
+---
+
 # Steps to create GCS Depot
 
 

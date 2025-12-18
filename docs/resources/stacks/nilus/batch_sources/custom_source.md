@@ -229,43 +229,43 @@ To deploy the custom source, reference the repository in a Nilus Workflow:
     version: v1
     type: workflow
     tags:
-    - workflow
-    - nilus-batch
+      - workflow
+      - nilus-batch
     description: Nilus Batch Customer Insertion
     workflow:
-    dag:
+      dag:
         - name: dynamic-az-lh
-        spec:
+          spec:
             stack: nilus:1.0
             compute: runnable-default
             resources:
-            requests:
+              requests:
                 cpu: 200m
                 memory: 256Mi
             logLevel: Info
             dataosSecrets:
-            - name: azure-blob-cred             
+              - name: azure-blob-cred             
                 allKeys: true
                 consumptionType: envVars
-            - name: git-secret-dj
+              - name: git-secret-dj
                 allKeys: true
                 consumptionType: envVars
             stackSpec:
-            repo:
+              repo:
                 url: "<BITBUCKET URL>"
                 syncFlags:
-                - '--ref=main' 
+                  - '--ref=main' 
                 baseDir: "<BITBUCKET BASE CODE DIRECTORY>"
-            source:
+              source:
                 address: "custom://AzureBlobCustomSource?account_name={ACCOUNT_NAME}&account_key={ACCOUNT_KEY}&container={CONTAINER}&path=nilus/custom_code"
                 options:
-                source-table: "input"   
-            sink:
+                  source-table: "input"   
+              sink:
                 address: dataos://testawslh
                 options:
-                dest-table: "sandbox4.batch_azure"
-                incremental-strategy: replace
-                            
+                  dest-table: "sandbox4.batch_azure"
+                  incremental-strategy: replace
+                  
     ```
 
 

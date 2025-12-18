@@ -39,7 +39,7 @@ To create a Snowflake Depot you must have the following details:
 
 - **Schema (optional)**: The specific schema within the Snowflake database where your required table resides. This can also be found in the Snowflake console under the relevant database or provided by the team managing the database structure.
 
-- **Snowflake Role**: The role that defines the privileges and access control for the Snowflake user. While this attribute is optional in the Depot manifest, it is highly recommended to specify it to ensure proper access permissions and security.If no role is defined, the system will take "PUBLIC" as the default role.
+- **Snowflake Role**: The role that defines the privileges and access control for the Snowflake user. While this attribute is optional in the Depot manifest, it is highly recommended to specify it to ensure proper access permissions and security. If no role is defined, the system will take "PUBLIC" as the default role.
 
 
 ## Create a Snowflake Depot

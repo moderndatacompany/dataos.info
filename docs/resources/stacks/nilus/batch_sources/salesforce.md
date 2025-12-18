@@ -72,19 +72,19 @@ workflow:
           - name: salesforce-cred
             allKeys: true
             consumptionType: envVars
-        envs:
-          DATAOS_WORK_DIR: /etc/dataos/work
+
         stackSpec:
           source:
             address: "salesforce://?username={SALESFORCE_USERNAME}&password={SALESFORCE_PASSWORD}&token={SALESFORCE_TOKEN}&domain=b3JnZmFybS1hN2NhNjdkNzZkLWRldi1lZC5kZXZlbG9wLm15Cg=="
             options:
               source-table: account
-              columns: "name,industry,annualrevenue"
+
           sink:
-            address: dataos://icebaselh:salesforce_objects/account?acl=rw
+            address: dataos://icebaselh
             options:
+              dest-table: salesforce_objects.account
               incremental-strategy: replace
-              aws_region: us-west-2
+              
 
 ```
 
@@ -105,7 +105,6 @@ Nilus supports the following source options for Salesforce:
 | Option         | Required | Description                                                        |
 | -------------- | -------- | ------------------------------------------------------------------ |
 | `source-table` | Yes      | Salesforce object name (e.g., `account`, `opportunity`)            |
-| `columns`      | No       | Optional list of fields to extract (default: all available fields) |
 
 ## Supported Objects
 

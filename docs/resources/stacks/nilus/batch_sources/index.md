@@ -16,6 +16,7 @@ The following are the supported sources for Batch ingestion:
 | GCS DataOS Lakehouse | [GCS DataOS Lakehouse](/resources/stacks/nilus/batch_sources/gcs_dataos_lakehouse/) |
 | Google Analytics | [Google Analytics](/resources/stacks/nilus/batch_sources/google_analytics/) |
 | Google BigQuery | [Google BigQuery](/resources/stacks/nilus/batch_sources/google_bigquery/) |
+| Google Sheets | [Google Sheets](/resources/stacks/nilus/batch_sources/google_sheets/) |
 | MongoDB | [MongoDB](/resources/stacks/nilus/batch_sources/mongodb/) |
 | MySQL | [MySQL](/resources/stacks/nilus/batch_sources/mysql/) |
 | NATS | [NATS](/resources/stacks/nilus/batch_sources/nats/) |
