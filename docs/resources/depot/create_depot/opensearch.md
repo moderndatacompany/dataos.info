@@ -1,3 +1,9 @@
+---
+title: Opensearch
+search:
+  boost: 3
+---
+
 # Steps to create Opersearch Depot
 
 To create an Opensearch Depot you must have the following details:

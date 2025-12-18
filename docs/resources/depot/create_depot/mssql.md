@@ -1,3 +1,9 @@
+---
+title: MSSQL
+search:
+  boost: 3
+---
+
 # Steps to create MSSQL Depot
 
 To create a MSSQL Depot you must have the following details:

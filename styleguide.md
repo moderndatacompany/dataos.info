@@ -695,6 +695,49 @@ Add multiple images in a single slide! Just copy and edit the below code to add 
 
 ## Search feature in markdown
 
+
+### Search Boosting Guidelines
+
+**Field Impact on Search Ranking (Highest to Lowest):**
+
+| Where the Keyword Matches             | Impact / Weight     |
+|----------------------------------------|---------------------|
+| Title / H1                            | ⭐⭐⭐⭐⭐ (Very High)   |
+| Headings (H2–H6)                     | ⭐⭐⭐⭐               |
+| First Paragraph                       | ⭐⭐⭐                |
+| Body Text                            | ⭐⭐                 |
+| Lists / Tables                        | ⭐                  |
+
+*Note:*  
+A single match in the **Title** can outweigh multiple matches in the **Body**.
+
+---
+
+### Search Scoring Formula
+
+The relevance score for a document is calculated as:
+
+```
+score = Σ (
+   term_frequency
+   × inverse_document_frequency
+   × field_weight
+   × position_factor
+   × length_normalization
+)
+× document_boost
+```
+
+**Where:**
+
+- **term_frequency:** How often the term appears in the field.
+- **inverse_document_frequency:** The rarity of the term across all documents.
+- **field_weight:** The importance assigned to the field (see impact table above).
+- **position_factor:** The significance of the term's position within the field.
+- **length_normalization:** Normalizes score based on the length of the field.
+- **document_boost:** A boost factor for specific documents to prioritize.
+
+
 ### to enable search
 
 ---

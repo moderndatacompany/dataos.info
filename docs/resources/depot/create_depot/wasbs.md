@@ -1,3 +1,9 @@
+---
+title: WASBS
+search:
+  boost: 3
+---
+
 # Steps to create WASBS Depot
 
 To create a WASBS Depot, you must have the following details:

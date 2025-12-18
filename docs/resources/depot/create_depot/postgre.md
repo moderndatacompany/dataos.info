@@ -1,3 +1,9 @@
+---
+title: PostgreSQL
+search:
+  boost: 3
+---
+
 # Steps to create Postgres Depot
 
 To create a Postgres Depot you must have the following details:

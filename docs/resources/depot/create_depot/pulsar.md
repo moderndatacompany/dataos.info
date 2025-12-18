@@ -1,3 +1,9 @@
+---
+title: Pulsar
+search:
+  boost: 3
+---
+
 # Steps to Create Pulsar Depot
 
 To create a Pulsar Depot you must have the following details:

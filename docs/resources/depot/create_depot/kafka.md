@@ -1,3 +1,9 @@
+---
+title: Kafka
+search:
+  boost: 3
+---
+
 # Steps to create Kafka Depot
 To create a Kafka Depot you must have the following details:
 
