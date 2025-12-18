@@ -1,3 +1,9 @@
+---
+title: Eventhub
+search:
+  boost: 3
+---
+
 # Steps to create Eventhub Depot
 
 To create an Eventhub Depot you must have the following details:

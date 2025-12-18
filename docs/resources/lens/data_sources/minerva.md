@@ -342,12 +342,12 @@ description: minerva deployment on lens2
 lens:
   compute: runnable-default
   secrets:
-    - name: bitbucket-cred #repo-cred
+    - name: bitbucket-cred           #repo-cred
       allKeys: true
   source:
-    type: minerva #minerva/themis/depot
-    name: minervacluster  # name of minerva cluster
-    catalog: lakehouse              # optional   # list of depots
+    type: minerva                    # minerva/themis/depot
+    name: minervacluster             # name of minerva cluster
+    catalog: lakehouse               # list of depots
   repo:
     url: https://bitbucket.org/tmdc/sample
     lensBaseDir: sample/lens/source/minerva/model 

@@ -1,3 +1,9 @@
+---
+title: MYSQL
+search:
+  boost: 3
+---
+
 # Steps to create MYSQL Depot
 
 To create a MySQL Depot you must have the following details:

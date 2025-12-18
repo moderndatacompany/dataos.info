@@ -1,3 +1,9 @@
+---
+title: ABFSS
+search:
+  boost: 3
+---
+
 # Steps to create ABFSS Depot
 
 To create an ABFSS Depot you must have the following details:

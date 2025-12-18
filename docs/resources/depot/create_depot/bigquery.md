@@ -1,3 +1,9 @@
+---
+title: Bigquery
+search:
+  boost: 3
+---
+
 # Steps to create Bigquery Depot
 
 To create a Bigquery Depot you must have the following details:

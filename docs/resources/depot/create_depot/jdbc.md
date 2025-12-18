@@ -1,3 +1,9 @@
+---
+title: JDBC
+search:
+  boost: 3
+---
+
 # Steps to create JDBC Depot
 
 To create a JDBC Depot you must have the following details:
