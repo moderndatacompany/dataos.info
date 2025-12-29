@@ -801,6 +801,9 @@ nav:
             - Recipes:
               - Running Data Profiling with Soda: resources/stacks/soda/how_to_run_profiling_using_soda_stack.md
               - Running Checks on a Specific Branch: resources/stacks/soda/how_to_run_soda_checks_on_a_specific_branch_of_iceberg_dataset.md
+              - Profiling Data to Lakehouse: resources/stacks/soda/how_to_sync_soda_profiling_to_lakehouse.md
+              - Quality Check Results to Lakehouse: resources/stacks/soda/sync_quality_checks_to_lakehouse.md
+              - Queries Data to Lakehouse: resources/stacks/soda/sync_queries_data_to_lakehouse.md
           - Steampipe: 
             - resources/stacks/steampipe/index.md
           - Talos:
