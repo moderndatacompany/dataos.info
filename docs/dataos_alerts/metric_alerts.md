@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Setting up Metric Alerts
 
 Imagine a scenario where your sales are booming but you don't realize that your inventory is running low. This guide will demonstrate how to use DataOS with Python and SQL to set up alerts for
