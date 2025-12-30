@@ -1,6 +1,17 @@
-## Integrating Data Products with Tableau Desktop
+# Integrating Data Products with Tableau Desktop
 
-The following steps outline the process for integrating Tableau Desktop with DataOS:
+The following document outline the process for integrating Tableau Desktop with DataOS.
+
+The semantic model can be integrated with Tableau Cloud using the following ways:
+
+
+- [Using Data Product Hub (Recommended – GUI based)](/interfaces/data_product_hub/activation/bi_sync/tableau_desk/#using-data-product-hub-recommended--gui-based): Add connection details through an intuitive graphical interface.
+
+- [Using cURL command (Command-Line based)](/interfaces/data_product_hub/activation/bi_sync/tableau_desk/#using-curl-command-command-line-based): Add connection details in the terminal via cURL command.
+
+## Using Data Product Hub (Recommended - GUI based) {#using-data-product-hub}
+
+Follow the below steps:
 
 ### **Step 1: Navigate to the Data Product Hub**
 
@@ -67,8 +78,7 @@ The publisher can embed their credentials (DataOS username and API Token) or ask
 **Note:** Once the credentials are embedded, they cannot be accessed. You need to overwrite and ‘publish-as’ the workbook to reconfigure the embedding password optionality.
 
 
-
-## Integrating Data Product with Tableau Desktop using curl command
+## Using cURL command (Command-Line based)
 
 
 ### **Prerequisites**
@@ -82,27 +92,33 @@ The publisher can embed their credentials (DataOS username and API Token) or ask
 dataos-ctl user apikey get
 ```
 
+### **Syntax command**
+
 To sync the semantic model with Tableau, copy the payload below and replace the placeholders with appropriate values:
 
-==== Command
+
+=== "Command"
 
     ```bash
     curl --location --request POST 'http://<DATAOS_FQDN>/lens2/sync/api/v1/tableau-desktop/<WORKSPACE_NAME>:<LENS_NAME>' \
     --header 'apikey: <APIKEY>' \
     --header 'Content-Type: application/json' \
-    --data ''
+    --data '' \
+    --output '<FILE_NAME>'
     ```
 
-==== "Example"
+=== "Example"
+
 
     ```bash
-    curl --location --request POST 'https://gentle-akita.dataos.app/lens2/sync/api/v1/tableau-desktop/public:sales-analysis' \
-    --header 'apikey: Abcdefghijklmno==' \
-    --data ''
+    curl --location 'https://gentle-akita.dataos.app/lens2/sync/api/v1/tableau-desktop/public:sales-analysis' \
+    --header 'apikey: AbcdefghijK;=' \ 
+    --header 'Content-Type: application/json' \
+    --data ''  \
+    -- output 'tableau.zip'
     ```
 
-
-**Parameters explained**
+### **Command configuration details**
 
 | Placeholder        | Description                                                                                           |
 | ------------------ | ----------------------------------------------------------------------------------------------------- |

@@ -123,8 +123,8 @@ markdown_extensions:
   - pymdownx.tilde
 #  - pymdownx.extra
   - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji              # while pushing to dev
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg           # while pushing to dev
+      # emoji_index: !!python/name:material.extensions.emoji.twemoji              # while pushing to dev
+      # emoji_generator: !!python/name:material.extensions.emoji.to_svg           # while pushing to dev
 
       # emoji_index: !!python/name:materialx.emoji.twemoji                      # while hosting locally  
       # emoji_generator: !!python/name:materialx.emoji.to_svg                   # while hosting locally 
@@ -193,11 +193,12 @@ nav:
         - Data Product Exploration: interfaces/data_product_hub/exploration.md
         - Data Product Activation:
           - BI Sync: 
-            - Tableau Cloud: interfaces/data_product_hub/activation/bi_sync/tableau_cloud.md
             - Power BI: 
                 - Power BI Desktop: interfaces/data_product_hub/activation/bi_sync/powerbi.md
                 - Power BI Service: interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service.md
-            - Tableau Desktop: interfaces/data_product_hub/activation/bi_sync/tableau_desk.md
+            - Tableau:
+                - Tableau Desktop: interfaces/data_product_hub/activation/bi_sync/tableau_desk.md
+                - Tableau Cloud: interfaces/data_product_hub/activation/bi_sync/tableau_cloud.md
             - Microsoft Excel: interfaces/data_product_hub/activation/bi_sync/excel.md
           #   - Apache Superset: interfaces/data_product_hub/activation/bi_sync/superset.md
           - AI/ML: interfaces/data_product_hub/activation/jupyter.md
