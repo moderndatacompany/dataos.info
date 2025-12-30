@@ -1,6 +1,16 @@
-## Integrating Data Products with Tableau Cloud
+# Integrating Data Products with Tableau Cloud
 
-This document outlines the steps required to integrate Data Products from DataOS with Tableau Cloud.
+The following document outlines the process for integrating semantic model with Tableau Cloud.
+
+The semantic model can be integrated with Tableau Cloud using the following ways:
+
+- [Using Data Product Hub (Recommended – GUI based)](/interfaces/data_product_hub/activation/bi_sync/tableau_cloud/#using-data-product-hub-recommended--gui-based): Add connection details through an intuitive graphical interface.
+
+- [Using cURL command (Command-Line based)](/interfaces/data_product_hub/activation/bi_sync/tableau_cloud/#using-curl-command-command-line-based): Add connection details in the terminal via cURL command.
+
+## Using Data Product Hub(Recommended - GUI based)
+
+Follow the below steps:
 
 ### **Step 1: Navigate to the Data Product Hub**
 
@@ -80,12 +90,14 @@ After filling all details, click on the Activate button. A confirmation message 
 </center>
 
 
-## Integrating Data Products with Tableau Cloud using cURL command
+## Using cURL command (Command-Line based)
+
+Follow the below steps:
 
 ### **Prerequisites**
 
 - **Curl**: Ensure that `curl` is installed on the system. For Windows systems, `curl.exe` may be necessary.
-- **Lens API endpoint**: The API endpoint provided by Lens to sync semantic model, enabling integration with Tableau.
+- **Lens API endpoint**: The API endpoint provided by Lens to sync semantic model, enabling integration with Tableau. Format: `http://<DATAOS_FQDN>/lens2/sync/api/v1/tableau/<WORKSPACE_NAME>:<LENS_NAME>`
 - **Access credentials**: Access credentials such as username, password, project name etc., are required for Tableau.
 - **DataOS API key**: Ensure the DataOS API key is available. Get it by using the following command:
 
@@ -93,25 +105,48 @@ After filling all details, click on the Activate button. A confirmation message 
 dataos-ctl user apikey get
 ```
 
+### **Syntax of the command**
+
 To sync the semantic model with Tableau, copy the payload below and replace the placeholders with appropriate values:
 
-```bash
-curl --location --request POST 'http://<DATAOS_FQDN>/lens2/sync/api/v1/tableau/<WORKSPACE_NAME>:<LENS_NAME>' \
---header 'apikey: <APIKEY>' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "project_name": "<SAMPLE>",
-    "username": "{USER_NAME/EMAIL}",
-    "password": "<PASSWORD>",
-    "site_id": "<SITE_ID>",
-    "server_address": "https://prod-apnortheast-a.online.tableau.com"
-}'
-```
+=== "Command"
+
+    ```bash
+    curl --location --request POST 'http://tcp.<DATAOS_FQDN>/lens2/sync/api/v1/tableau-cloud/<WORKSPACE_NAME>:<LENS_NAME>' \
+    --header 'apikey: <APIKEY>' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+        "project_name": "<SAMPLE>",
+        "username": "<USER_NAME/EMAIL>",
+        "password": "<PASSWORD>",
+        "site_id": "<SITE_ID>",
+        "server_address": "https://prod-apnortheast-a.online.tableau.com"
+    }'
+    ```
+
+=== "Example"
+
+
+    ```bash
+    curl --location --request POST 'http://tcp.gentle-akita.dataos.app/lens2/sync/api/v1/tableau-cloud/<WORKSPACE_NAME>:<LENS_NAME>' \
+    --header 'apikey: <APIKEY>' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+        "project_name": "default",
+        "username": "tmdc@labs.com",
+        "password": "<PASSWORD>",
+        "site_id": "modern",
+        "server_address": "https://prod-apnortheast-a.online.tableau.com"
+    }'
+    ``` 
+
+### **Command configuration details**
+
 
 1. **URL:**
 
-    - This endpoint is used to sync a specific semantic model to Tableau for public access.
-    - Replace <DATAOS_FQDN> with the Fully Qualified Domain Name (FQDN) where Lens is hosted. Example: liberal-monkey.dataos.app.
+    - This URL `http://tcp.<DATAOS_FQDN>/lens2/sync/api/v1/tableau-cloud/<WORKSPACE_NAME>:<LENS_NAME>` is used to sync a specific semantic model to Tableau.
+    - Replace <DATAOS_FQDN> with the Fully Qualified Domain Name (FQDN) where Lens is hosted. Example: `liberal-monkey.dataos.app`.
     - Replace <WORKSPACE_NAME> with the name of the workspace where the semantic model (Lens) is deployed. e.g., `public`, `curriculum`.
     - Replace <LENS_NAME> with the name of the semantic model to sync. e.g., `sales360`.
 
