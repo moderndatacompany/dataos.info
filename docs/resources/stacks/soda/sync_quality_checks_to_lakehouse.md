@@ -1,14 +1,15 @@
-# Syncing SODA Quality Check Results to Lakehouse
+# Syndicating Soda Quality Check Results
+
+Soda Stack performs data quality checks and writes the results to the `systemstreams:soda/quality_profile_results_03` stream , which are also populated on [Metis UI](/interfaces/metis/metis_ui_assets/metis_assets_tables/#data-quality).
+
+These results can be syndicated to any external storage system, including Snowflake, Redshift, or PostgreSQL, depending on the integration needs. The steps below illustrate this process using a Lakehouse implementation. 
+
+!!! info
+    The stream address `systemstreams:soda/quality_profile_results_03` may vary depending on the environment. Contact the Database Administrator or a DataOS Operator to confirm the correct stream address.
 
 
-SODA Stack executes data quality checks on your datasets and publishes the results to the DataOS stream at `systemstreams:soda/quality_profile_results_03`. This guide demonstrates how to extract, transform, and sync quality check results to your Lakehouse for analysis, monitoring, and reporting.
 
-!!! warning
-    The stream address `systemstreams:soda/quality_profile_results_03` may vary depending on the environment. Contact the DBA or a DataOS Operator to confirm the correct stream address.
-
-
-
-By syncing quality check results to Lakehouse, you can:
+By syndicating quality check results to Lakehouse, you can:
 
 - Track data quality trends over time across all datasets.
 - Build comprehensive data quality dashboards and scorecards.
@@ -18,7 +19,7 @@ By syncing quality check results to Lakehouse, you can:
 
 ## Understanding Quality Check Data
 
-SODA quality checks validate data against defined rules and constraints. Each check execution generates:
+Soda quality checks validate data against defined rules and constraints. Each check execution generates:
 
 - **Check Definition**: The specific quality rule being validated (e.g., "row_count between 100 and 1000")
 - **Check Outcome**: Result status (passed, failed, warning)
@@ -26,7 +27,7 @@ SODA quality checks validate data against defined rules and constraints. Each ch
 - **Category**: Type of quality check (Completeness, Accuracy, Validity, Uniqueness, Freshness, Schema)
 - **Context**: Dataset identification (depot, collection, dataset, column)
 
-This workflow extracts these elements from the nested SODA stream format and transforms them into a clean, queryable table structure.
+This workflow extracts these elements from the nested Soda stream format and transforms them into a clean, queryable table structure.
 
 
 ## Workflow Architecture
@@ -34,7 +35,7 @@ This workflow extracts these elements from the nested SODA stream format and tra
 The quality check sync workflow follows a five-stage transformation pipeline:
 
 ```
-SODA Stream (Raw Data)
+Soda Stream (Raw Data)
         ↓
 [Step 1] Drop Unnecessary Columns
         ↓
@@ -55,7 +56,7 @@ Lakehouse (Iceberg Table)
 
 ```yaml
 # Quality Check Events Workflow
-# Purpose: Process and aggregate quality check results from SODA stream into Lakehouse
+# Purpose: Process and aggregate quality check results from Soda stream into Lakehouse
 name: quality-check-events-sync
 version: v1
 type: workflow
@@ -72,7 +73,7 @@ workflow:
         stackSpec:
           job:
             explain: true
-            # Input configuration - Read quality check results from SODA
+            # Input configuration - Read quality check results from Soda
             inputs:
               - name: soda
                 dataset: dataos://systemstreams:soda/quality_profile_results_03
@@ -83,11 +84,11 @@ workflow:
             # Output configuration - Write processed results to Iceberg
             outputs:
               - name: final
-                dataset: dataos://icebase:sys01/slo_quality_checks?acl=rw
+                dataset: dataos://lakehouse:sys01/slo_quality_checks?acl=rw
                 format: Iceberg
                 options:
                   saveMode: overwrite
-                  checkpointLocation: dataos://icebase:sys01/checkpoints/quality-checks/v1000?acl=rw
+                  checkpointLocation: dataos://lakehouse:sys01/checkpoints/quality-checks/v1000?acl=rw
                   # Configure sorting by depot, collection, and dataset
                   sort:
                     mode: partition
@@ -247,11 +248,11 @@ Use `startingOffsets: latest` for incremental processing of only new check resul
 ```yaml
 outputs:
   - name: final
-    dataset: dataos://icebase:sys01/slo_quality_checks_a?acl=rw
+    dataset: dataos://lakehouse:sys01/slo_quality_checks_a?acl=rw
     format: Iceberg
     options:
       saveMode: overwrite
-      checkpointLocation: dataos://icebase:sys01/checkpoints/quality-checks/v1000_a?acl=rw
+      checkpointLocation: dataos://lakehouse:sys01/checkpoints/quality-checks/v1000_a?acl=rw
       sort:
         mode: partition
         columns:
@@ -363,7 +364,7 @@ This is the core transformation that flattens the nested check structure. Let's 
   expression: explode(checks) as checks_
 ```
 
-- One SODA scan can execute multiple quality checks
+- One Soda scan can execute multiple quality checks
 - `explode(checks)` creates one row per check execution
 - **Example**: If a scan runs 5 checks, this creates 5 rows
 
@@ -427,7 +428,7 @@ A flat table where each row represents one check execution for one metric identi
         - metrics_value_
 ```
 
-This step extracts the actual metric values from the `metrics_value` array (which was originally the `metrics` array from the root level, not from checks). In the SODA stream structure:
+This step extracts the actual metric values from the `metrics_value` array (which was originally the `metrics` array from the root level, not from checks). In the Soda stream structure:
 
 - **`checks[].metrics`**: Contains metric *identifiers* (strings like "dataset-row_count")
 - **`metrics[]`**: Contains actual metric *values* (objects with metric_name, value, identity)
@@ -563,15 +564,31 @@ The final transformation step provides a clean, flat table with all check detail
 
 ## Output Schema
 
+When querying through Workbench, final output looks like following table:
+
+| __metadata | dataos_run_id | job_name | timestamp | user_name | depot | collection | dataset | column | check_definition | resource_attributes | metric_name | metric_value | check_outcome | category |
+|-----------|---------------|----------|-----------|-----------|-------|------------|---------|--------|------------------|---------------------|-------------|--------------|---------------|----------|
+| {"_dataos_run_map...} | f5dwn3781ds0 | bikesales-quality | 2025-11-27T12:21:36+00:00 | iamgroot | icebase | sandbox | bikesales | sales_transaction_id | duplicate_count(sales_transaction_id) = 0 | [{"name":"category","value":"Uniqueness"},{"name":"description","value":"The sales_transaction_id column must not contain duplicate values."}] | duplicate_count | 0 | pass | Uniqueness |
+| {"_dataos_run_map...} | f5dwn3781ds0 | bikesales-quality | 2025-11-27T12:21:36+00:00 | iamgroot | icebase | sandbox | bikesales | sales_transaction_id | duplicate_count(sales_transaction_id) = 0 | [{"name":"category","value":"Uniqueness"},{"name":"description","value":"The sales_transaction_id column must not contain duplicate values."}] | duplicate_count | 0 | pass | Uniqueness |
+| {"_dataos_run_map...} | f5dwn3781ds0 | bikesales-quality | 2025-11-27T12:21:36+00:00 | iamgroot | icebase | sandbox | bikesales | sales_transaction_id | duplicate_count(sales_transaction_id) = 0 | [{"name":"category","value":"Uniqueness"},{"name":"description","value":"The sales_transaction_id column must not contain duplicate values."}] | duplicate_count | 0 | pass | Uniqueness |
+| {"_dataos_run_map...} | f5dwn3781ds0 | bikesales-quality | 2025-11-27T12:21:36+00:00 | iamgroot | icebase | sandbox | bikesales | sales_transaction_id | duplicate_count(sales_transaction_id) = 0 | [{"name":"category","value":"Uniqueness"},{"name":"description","value":"The sales_transaction_id column must not contain duplicate values."}] | duplicate_count | 0 | pass | Uniqueness |
+| {"_dataos_run_map...} | f5dwn3781ds0 | bikesales-quality | 2025-11-27T12:21:36+00:00 | iamgroot | icebase | sandbox | bikesales | sales_transaction_id | duplicate_count(sales_transaction_id) = 0 | [{"name":"category","value":"Uniqueness"},{"name":"description","value":"The sales_transaction_id column must not contain duplicate values."}] | duplicate_count | 0 | pass | Uniqueness |
+| {"_dataos_run_map...} | f5dwn3781ds0 | bikesales-quality | 2025-11-27T12:21:36+00:00 | iamgroot | icebase | sandbox | bikesales | sales_transaction_id | duplicate_percent(sales_transaction_id) < 0.10 | [{"name":"category","value":"Validity"}] | duplicate_percent | 0.0 | pass | Validity |
+| {"_dataos_run_map...} | f5dwn3781ds0 | bikesales-quality | 2025-11-27T12:21:36+00:00 | iamgroot | icebase | sandbox | bikesales | sales_transaction_id | duplicate_percent(sales_transaction_id) < 0.10 | [{"name":"category","value":"Validity"}] | duplicate_percent | 0.0 | pass | Validity |
+| {"_dataos_run_map...} | f5dwn3781ds0 | bikesales-quality | 2025-11-27T12:21:36+00:00 | iamgroot | icebase | sandbox | bikesales | sales_transaction_id | duplicate_percent(sales_transaction_id) < 0.10 | [{"name":"category","value":"Validity"}] | duplicate_percent | 0.0 | pass | Validity |
+| {"_dataos_run_map...} | f5dwn3781ds0 | bikesales-quality | 2025-11-27T12:21:36+00:00 | iamgroot | icebase | sandbox | bikesales | sales_transaction_id | duplicate_percent(sales_transaction_id) < 0.10 | [{"name":"category","value":"Validity"}] | duplicate_percent | 0.0 | pass | Validity |
+| {"_dataos_run_map...} | f5dwn3781ds0 | bikesales-quality | 2025-11-27T12:21:36+00:00 | iamgroot | icebase | sandbox | bikesales | sales_transaction_id | duplicate_percent(sales_transaction_id) < 0.10 | [{"name":"category","value":"Validity"}] | duplicate_percent | 0.0 | pass | Validity |
+
+
 The final output table contains the following columns:
 
 | Column | Type | Description |
 |--------|------|-------------|
-| `dataos_run_id` | String | Unique identifier for the SODA scan execution; links all checks from the same run |
-| `job_name` | String | Name of the SODA job or workflow that executed the quality checks |
+| `dataos_run_id` | String | Unique identifier for the Soda scan execution; links all checks from the same run |
+| `job_name` | String | Name of the Soda job or workflow that executed the quality checks |
 | `timestamp` | Timestamp | When the quality check scan was executed (from `scan_start_timestamp`) |
 | `user_name` | String | DataOS user who triggered the quality check job |
-| `depot` | String | Data source or depot identifier where the dataset resides (e.g., icebase, snowflake) |
+| `depot` | String | Data source or depot identifier where the dataset resides (e.g., lakehouse, snowflake) |
 | `collection` | String | Schema or database name containing the dataset being checked |
 | `dataset` | String | Table or dataset name that was validated by the quality check |
 | `column` | String | Column name being checked (NULL for dataset-level checks like row_count) |
@@ -582,25 +599,7 @@ The final output table contains the following columns:
 | `check_outcome` | String | Result of the quality check: "passed", "failed", or "warning" |
 | `category` | String | Quality dimension category: Completeness, Accuracy, Validity, Uniqueness, Freshness, or Schema |
 
-### **Sample Output**
 
-```
-dataos_run_id | job_name          | timestamp           | user_name | depot   | collection | dataset  | column      | check_definition                    | metric_name     | metric_value | check_outcome | category
---------------|-------------------|---------------------|-----------|---------|------------|----------|-------------|-------------------------------------|-----------------|--------------|---------------|-------------
-run_20240115  | check-retail-data | 2024-01-15 10:30:00 | john_doe  | icebase | retail     | customer | NULL        | row_count between 100 and 1000      | row_count       | 852.0        | passed        | Accuracy
-run_20240115  | check-retail-data | 2024-01-15 10:30:00 | john_doe  | icebase | retail     | customer | email       | missing_count(email) = 0            | missing_count   | 12.0         | failed        | Completeness
-run_20240115  | check-retail-data | 2024-01-15 10:30:00 | john_doe  | icebase | retail     | customer | email       | duplicate_count(email) = 0          | duplicate_count | 5.0          | failed        | Uniqueness
-run_20240115  | check-retail-data | 2024-01-15 10:30:00 | john_doe  | icebase | retail     | customer | age         | invalid_count(age) = 0              | invalid_count   | 0.0          | passed        | Validity
-run_20240115  | check-retail-data | 2024-01-15 10:30:00 | john_doe  | icebase | retail     | customer | phone       | invalid_percent(phone) < 1%         | invalid_percent | 0.5          | passed        | Validity
-```
-
-**Insights from Sample Data:**
-
-- **Row 1**: Dataset has 852 rows, within expected range (100-1000) ✓
-- **Row 2**: Email column has 12 missing values, violating the completeness check ✗
-- **Row 3**: Email column has 5 duplicate values, violating the uniqueness check ✗
-- **Row 4**: Age column has no invalid values, passing validation ✓
-- **Row 5**: Phone column has 0.5% invalid values, within 1% threshold ✓
 
 
 <!--## Example Case Scenarios
@@ -619,7 +618,7 @@ SELECT
   SUM(CASE WHEN check_outcome = 'passed' THEN 1 ELSE 0 END) as passed_checks,
   SUM(CASE WHEN check_outcome = 'failed' THEN 1 ELSE 0 END) as failed_checks,
   ROUND(SUM(CASE WHEN check_outcome = 'passed' THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) as quality_score
-FROM dataos://icebase:sys01/slo_quality_checks_a
+FROM dataos://lakehouse:sys01/slo_quality_checks_a
 WHERE timestamp >= current_date() - INTERVAL 7 DAYS
 GROUP BY depot, collection, dataset
 ORDER BY quality_score ASC
@@ -637,7 +636,7 @@ SELECT
   COUNT(*) as total_checks,
   SUM(CASE WHEN check_outcome = 'passed' THEN 1 ELSE 0 END) as passed_checks,
   ROUND(SUM(CASE WHEN check_outcome = 'passed' THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) as pass_rate
-FROM dataos://icebase:sys01/slo_quality_checks_a
+FROM dataos://lakehouse:sys01/slo_quality_checks_a
 WHERE timestamp >= current_date() - INTERVAL 30 DAYS
 GROUP BY DATE(timestamp), category
 ORDER BY check_date DESC, category
@@ -659,7 +658,7 @@ SELECT
   metric_name,
   metric_value,
   category
-FROM dataos://icebase:sys01/slo_quality_checks_a
+FROM dataos://lakehouse:sys01/slo_quality_checks_a
 WHERE check_outcome = 'failed'
   AND timestamp >= current_timestamp() - INTERVAL 1 DAY
 ORDER BY timestamp DESC
@@ -676,7 +675,7 @@ SELECT
   COUNT(*) as total_critical_checks,
   SUM(CASE WHEN check_outcome = 'passed' THEN 1 ELSE 0 END) as sla_compliant,
   ROUND(SUM(CASE WHEN check_outcome = 'passed' THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) as sla_compliance_percent
-FROM dataos://icebase:sys01/slo_quality_checks_a
+FROM dataos://lakehouse:sys01/slo_quality_checks_a
 WHERE timestamp >= current_date() - INTERVAL 30 DAYS
   AND check_definition LIKE '%critical%'  -- Assuming critical checks are tagged
 GROUP BY category
@@ -706,7 +705,7 @@ SELECT
     ROUND(SUM(CASE WHEN check_outcome = 'passed' THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 1)
   END) as uniqueness_score,
   MAX(timestamp) as last_checked
-FROM dataos://icebase:sys01/slo_quality_checks_a
+FROM dataos://lakehouse:sys01/slo_quality_checks_a
 WHERE timestamp >= current_date() - INTERVAL 7 DAYS
 GROUP BY depot, collection, dataset
 ORDER BY depot, collection, dataset
@@ -727,7 +726,7 @@ WITH metric_history AS (
     metric_name,
     DATE(timestamp) as check_date,
     AVG(metric_value) as avg_metric_value
-  FROM dataos://icebase:sys01/slo_quality_checks_a
+  FROM dataos://lakehouse:sys01/slo_quality_checks_a
   WHERE metric_name = 'missing_count'
     AND timestamp >= current_date() - INTERVAL 30 DAYS
   GROUP BY depot, collection, dataset, column, metric_name, DATE(timestamp)
@@ -795,8 +794,8 @@ ORDER BY z_score DESC
     ```yaml
     outputs:
       - name: final
-        dataset: dataos://icebase:your_collection/your_table_name?acl=rw
-        checkpointLocation: dataos://icebase:your_collection/checkpoints/quality-checks?acl=rw
+        dataset: dataos://lakehouse:your_collection/your_table_name?acl=rw
+        checkpointLocation: dataos://lakehouse:your_collection/checkpoints/quality-checks?acl=rw
     ```
 
     **Enable Scheduling**
@@ -814,8 +813,8 @@ ORDER BY z_score DESC
 
     **Scheduling Best Practices:**
 
-    - Align with your SODA check execution frequency
-    - Run after SODA checks complete (with appropriate delay)
+    - Align with your Soda check execution frequency
+    - Run after Soda checks complete (with appropriate delay)
     - Use `concurrencyPolicy: Forbid` to prevent concurrent executions
 
     **Add Custom Partitioning**
@@ -843,7 +842,7 @@ ORDER BY z_score DESC
           - name: filtered_data
             sql: |
               SELECT * FROM soda
-              WHERE depot IN ('icebase', 'snowflake')
+              WHERE depot IN ('lakehouse', 'snowflake')
                 AND scan_start_timestamp >= current_date() - INTERVAL 7 DAYS
     ```
 
@@ -900,7 +899,7 @@ ORDER BY z_score DESC
     ```sql
     -- GOOD: Uses partitioning
     SELECT * FROM quality_checks
-    WHERE depot = 'icebase' AND collection = 'retail' AND dataset = 'customer'
+    WHERE depot = 'lakehouse' AND collection = 'retail' AND dataset = 'customer'
 
     -- BAD: Full table scan
     SELECT * FROM quality_checks
@@ -929,7 +928,7 @@ ORDER BY z_score DESC
       COUNT(*) as total_checks,
       SUM(CASE WHEN check_outcome = 'passed' THEN 1 ELSE 0 END) as passed_checks,
       SUM(CASE WHEN check_outcome = 'failed' THEN 1 ELSE 0 END) as failed_checks
-    FROM dataos://icebase:sys01/slo_quality_checks_a
+    FROM dataos://lakehouse:sys01/slo_quality_checks_a
     GROUP BY DATE(timestamp), depot, collection, dataset, category
     ```
 
@@ -939,7 +938,7 @@ ORDER BY z_score DESC
 
     ```sql
     -- Delete data older than 90 days
-    DELETE FROM dataos://icebase:sys01/slo_quality_checks_a
+    DELETE FROM dataos://lakehouse:sys01/slo_quality_checks_a
     WHERE timestamp < current_date() - INTERVAL 90 DAYS
     ```
 
@@ -960,7 +959,7 @@ Error message about unresolved columns during transformation
 
 **Solution:**
 
-- Verify column names match the actual SODA stream structure
+- Verify column names match the actual Soda stream structure
 - Check if `cleanse_column_names` is changing column names unexpectedly
 - Use `explain: true` to see the query plan and identify the problematic column
 
@@ -990,7 +989,7 @@ SELECT * FROM (
       PARTITION BY dataos_run_id, check_definition, metric_name
       ORDER BY timestamp DESC
     ) as rn
-  FROM dataos://icebase:sys01/slo_quality_checks_a
+  FROM dataos://lakehouse:sys01/slo_quality_checks_a
 ) WHERE rn = 1
 ```
 
@@ -1000,7 +999,7 @@ Some checks have NULL category values
 
 **Solution:**
 
-- Verify that SODA checks have `category` attribute defined
+- Verify that Soda checks have `category` attribute defined
 - Check if `resource_attributes` contains the category:
 
 ```sql
@@ -1057,7 +1056,7 @@ Error about checkpoint location being invalid or inaccessible
 - If changing workflow significantly, use a new checkpoint path:
 
 ```yaml
-checkpointLocation: dataos://icebase:sys01/checkpoints/quality-checks/v1001_a?acl=rw
+checkpointLocation: dataos://lakehouse:sys01/checkpoints/quality-checks/v1001_a?acl=rw
 ```
 
 **Issue: LATERAL VIEW Syntax Error**
@@ -1083,8 +1082,8 @@ WHERE attribute['name'] = 'category'
 
 ## Additional Links
 
-- [SODA Stack Overview](/resources/stacks/soda/)
-- [Syncing SODA Profiling Data to Lakehouse](/resources/stacks/soda/how_to_sync_soda_profiling_to_lakehouse/)
-- [Syncing SODA Queries Data to Lakehouse](/resources/stacks/soda/sync_queries_data_to_lakehouse/)
+- [Soda Stack Overview](/resources/stacks/soda/)
+- [Syncing Soda Profiling Data to Lakehouse](/resources/stacks/soda/sync_profiling_data_to_lakehouse/)
+- [Syncing Soda Queries Data to Lakehouse](/resources/stacks/soda/sync_queries_data_to_lakehouse/)
 - [Monitor Resource](/resources/monitor/)
 - [Quality Check Types](/resources/stacks/soda/quality_checks/)

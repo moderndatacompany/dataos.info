@@ -1,13 +1,15 @@
-# Syncing SODA Profiling Data to Lakehouse
+# Syndicating Soda Profiling Data 
 
-SODA Stack generates data quality checks and profiling results that are published to the `systemstreams:soda/quality_profile_results_03` stream. To enable further analysis, reporting, and modeling on this profiling data, you can sync it to your Lakehouse using Flare workflows.
+Soda Stack generates data quality checks and profiling results, which are published to the `systemstreams:soda/quality_profile_results_03` stream. This data can be further distributed to any supported storage system such as Snowflake, Redshift, PostgreSQL, and others. 
 
-!!! warning
-    The stream address `systemstreams:soda/quality_profile_results_03` may vary depending on the environment. Contact the DBA or a DataOS Operator to confirm the correct stream address.
+The following implementation demonstrates this syndication process for a DataOS Lakehouse environment. The same profiling data is also available for exploration through [Metis](/interfaces/metis/metis_ui_assets/metis_assets_tables/#profile).
 
-This guide demonstrates three approaches to sync SODA profiling data from the stream to Iceberg tables in your Lakehouse, progressing from simple to advanced:
+!!! info
+    The stream address `systemstreams:soda/quality_profile_results_03` may vary depending on the environment. Contact the Database Administrator or a DataOS Operator to confirm the correct stream address.
 
-1. **Raw Data Sync**: Extract all SODA stream data as-is without transformation.
+This guide demonstrates three approaches to syndicate Soda profiling data from the stream to Iceberg tables in your Lakehouse, progressing from simple to advanced:
+
+1. **Raw Data Sync**: Extract all Soda stream data as-is without transformation.
 2. **Basic Profiling Extraction**: Extract and flatten profiling metrics for analysis.
 3. **Advanced Profiling with Derived Metrics**: Extract profiling data and calculate additional quality metrics.
 
@@ -18,7 +20,7 @@ The Workflows below demonstrate how to extract and transform this data for diffe
 
 Use this approach when you want to:
 
-- Preserve all raw SODA stream data without any transformation.
+- Preserve all raw Soda stream data without any transformation.
 
 - Perform custom analysis and transformations downstream.
 
@@ -42,7 +44,7 @@ workflow:
         stackSpec:
           job:
             explain: true
-            # Input configuration - Read quality check results from SODA
+            # Input configuration - Read quality check results from Soda
             inputs:
               - name: soda
                 dataset: dataos://systemstreams:soda/quality_profile_results_03
@@ -53,11 +55,11 @@ workflow:
             # Output configuration - Write processed results to Iceberg
             outputs:
               - name: final
-                dataset: dataos://icebase:sys01/raw_data?acl=rw
+                dataset: dataos://lakehouse:sys01/raw_data?acl=rw
                 format: Iceberg
                 options:
                   saveMode: overwrite
-                  checkpointLocation: dataos://icebase:sys01/checkpoints/quality-checks/raw_data?acl=rw
+                  checkpointLocation: dataos://lakehouse:sys01/checkpoints/quality-checks/raw_data?acl=rw
 
             # Data processing pipeline
             steps:
@@ -70,7 +72,7 @@ workflow:
 
 | Attribute | Description |
 |-----------|-------------|
-| `inputs.dataset` | Source SODA stream location: `systemstreams:soda/quality_profile_results_03` |
+| `inputs.dataset` | Source Soda stream location: `systemstreams:soda/quality_profile_results_03` |
 | `inputs.isStream` | Set to `false` to read as batch; `true` for continuous streaming |
 | `inputs.options.startingOffsets` | `earliest` reads all historical data; `latest` reads only new data |
 | `outputs.dataset` | Target Iceberg table location in your Lakehouse |
@@ -79,35 +81,49 @@ workflow:
 
 ### **Output Schema**
 
-The output table contains all columns from the SODA stream. The SODA stream contains nested JSON structures with comprehensive quality check and profiling information. The raw data includes columns for metadata (`__metadata`, `__key`, `__topic`, `__messageid`, `__publishtime`, `__eventtime`, `__messageproperties`), dataset identification (`depot`, `collection`, `dataset`, `defaultdatasource`, `branchname`), execution context (`username`, `jobname`, `runid`, `dataosresourceid`, `dataosrunid`, `engine`, `clustername`, `servicetype`), timing information (`scanstarttimestamp`, `scanendtimestamp`, `datatimestamp`), quality check results (`checks`, `automatedmonitoringchecks`, `haserrors`, `hasfailures`, `haswarnings`), profiling statistics (`profiling`, `metrics`), execution details (`logs`, `queries`, `definitionname`), and additional metadata (`metadata`).
+The output table contains all columns from the Soda stream. The Soda stream contains nested JSON structures with comprehensive quality check and profiling information. When querying via Workbench, raw data looks like following table: 
+
+| __metadata | automatedmonitoringchecks | checks | collection | datatimestamp | dataset | defaultdatasource | definitionname | depot | servicetype | haserrors | hasfailures | haswarnings | logs | metadata | metrics | profiling | queries | scanendtimestamp | scanstarttimestamp | engine | clustername | branchname | username | jobname | runid | dataosresourceid | dataosrunid | __key | __topic | __messageid | __publishtime | __eventtime | __messageproperties |
+|-----------|---------------------------|--------|------------|---------------|---------|-------------------|----------------|-------|-------------|-----------|-------------|-------------|------|----------|---------|-----------|---------|------------------|--------------------|--------|-------------|------------|----------|---------|-------|------------------|-------------|-------|---------|-------------|---------------|-------------|---------------------|
+| {_dataos_run...}... | [] | [null,null,"iceb... | sandbox | 2025-11-28T12:31... | bikesales | lakehouse | lakehouse_sand... | lakehouse | dataset | true | false | false | [[null,1,"INFO"... | [] | ["lakehouse","me... | [[["date",null... | [null,"lakehouse"... | 2025-11-28T12:31... | 2025-11-28T12:31... | minerva | minervacluster | main | jhondoe | bikesales-quality | bikesales-qua... | workflow:v1... | f5hhxw68a9s0 | null | persistent://s... | CMJ1EAAYADAA | 2025-11-28 12:31... | null | {} |
+| {_dataos_run...}... | [] | [null,null,"iceb... | sandbox | 2025-11-28T12:38... | bikesales | lakehouse | lakehouse_sand... | lakehouse | dataset | true | false | false | [[null,1,"INFO"... | [] | ["lakehouse","me... | [[["date",null... | [null,"lakehouse"... | 2025-11-28T12:39... | 2025-11-28T12:38... | minerva | minervacluster | main | user007 | bikesales-quality | bikesales-qua... | workflow:v1... | f5himstymsjk | null | persistent://s... | CNCEARAAGAwAA== | 2025-11-28 12:39... | null | {} |
+| {_dataos_run...}... | [] | [] | sandbox | 2025-11-28T12:43... | bikesales | lakehouse | lakehouse_sand... | lakehouse | dataset | false | false | false | [] | [] | ["lakehouse","me... | [] | [] | 2025-11-28T12:43... | 2025-11-28T12:43... | minerva | minervacluster | main | user007 | bikesales-quality | bikesales-qua... | workflow:v1... | f5hj2b3to074 | null | persistent://s... | CNCEARABGAwAA== | 2025-11-28 12:43... | null | {} |
+| {_dataos_run...}... | [] | [null,"sales_tra... | sandbox | 2025-12-01T09:47... | bikesales | lakehouse | lakehouse_sand... | lakehouse | dataset | false | false | false | [] | [] | ["lakehouse","me... | [[["date",null... | [null,"lakehouse"... | 2025-12-01T09:48... | 2025-12-01T09:47... | minerva | usertest | main | user007 | bikesales-quality | bikesales-qua... | workflow:v1... | f5rsri2m0mio | null | persistent://s... | CPaoARAAGAwAA== | 2025-12-01 09:48... | null | {} |
+| {_dataos_run...}... | [] | [null,"sales_tra... | sandbox | 2025-12-01T09:54... | bikesales | lakehouse | lakehouse_sand... | lakehouse | dataset | false | false | false | [] | [] | ["lakehouse","me... | [[["date",null... | ["sales_trans... | 2025-12-01T09:54... | 2025-12-01T09:54... | minerva | usertest | main | imgroot | bikesales-quality | bikesales-qua... | workflow:v1... | f5rtbx8woem8 | null | persistent://s... | CNnEARAAGAwAA== | 2025-12-01 09:54... | null | {} |
+| {_dataos_run...}... | [] | [] | sandbox | 2025-12-01T10:08... | bikesales | lakehouse | lakehouse_sand... | lakehouse | dataset | true | false | false | [[null,1,"INFO"... | [] | ["lakehouse","me... | [[["date",null... | [null,"lakehouse"... | 2025-12-01T10:09... | 2025-12-01T10:08... | minerva | usertest | main | imgroot | bikesales-quality | bikesales-qua... | workflow:v1... | f5rumguv4iyo | null | persistent://s... | CNnEARABGAwAA== | 2025-12-01 10:09... | null | {} |
+
+
+![alt text](raw_data.png)
+
+The raw data includes columns for metadata (`__metadata`, `__key`, `__topic`, `__messageid`, `__publishtime`, `__eventtime`, `__messageproperties`), dataset identification (`depot`, `collection`, `dataset`, `defaultdatasource`, `branchname`), execution context (`username`, `jobname`, `runid`, `dataosresourceid`, `dataosrunid`, `engine`, `clustername`, `servicetype`), timing information (`scanstarttimestamp`, `scanendtimestamp`, `datatimestamp`), quality check results (`checks`, `automatedmonitoringchecks`, `haserrors`, `hasfailures`, `haswarnings`), profiling statistics (`profiling`, `metrics`), execution details (`logs`, `queries`, `definitionname`), and additional metadata (`metadata`).
 
 
 ??? info "Detailed explanation of each column"
 
     **Dataset Identification**
 
-    - **`depot`**: Data source or depot name where the dataset resides (e.g., icebase, snowflake).
+    - **`depot`**: Data source or depot name where the dataset resides (e.g., lakehouse, snowflake).
     - **`collection`**: Schema or database name containing the dataset.
     - **`dataset`**: Table or dataset name being profiled or checked.
-    - **`defaultdatasource`**: Default data source connection used for the SODA scan.
+    - **`defaultdatasource`**: Default data source connection used for the Soda scan.
     - **`branchname`**: Branch name for versioned datasets (relevant for Iceberg branch-specific scans).
 
     **Execution Context**
 
-    - **`username`**: DataOS user who triggered or owns the SODA job execution.
-    - **`jobname`**: Name of the SODA job or Workflow that executed the quality checks.
-    - **`runid`**: Unique identifier for the specific SODA scan run.
-    - **`dataosresourceid`**: DataOS resource identifier for the SODA Workflow or Worker Resource.
+    - **`username`**: DataOS user who triggered or owns the Soda job execution.
+    - **`jobname`**: Name of the Soda job or Workflow that executed the quality checks.
+    - **`runid`**: Unique identifier for the specific Soda scan run.
+    - **`dataosresourceid`**: DataOS resource identifier for the Soda Workflow or Worker Resource.
     - **`dataosrunid`**: DataOS-level run identifier tracking the execution across the platform.
     - **`engine`**: Query engine used to execute the checks (e.g., minerva, themis).
-    - **`clustername`**: Cluster name where the SODA checks were executed.
+    - **`clustername`**: Cluster name where the Soda checks were executed.
     - **`servicetype`**: Type of service or stack used (e.g., soda, soda+python).
-    - **`definitionname`**: Name of the SODA check definition file or configuration used.
+    - **`definitionname`**: Name of the Soda check definition file or configuration used.
 
     **Timing Information**
 
-    - **`scanstarttimestamp`**: Timestamp when the SODA scan began execution.
-    - **`scanendtimestamp`**: Timestamp when the SODA scan completed execution.
+    - **`scanstarttimestamp`**: Timestamp when the Soda scan began execution.
+    - **`scanendtimestamp`**: Timestamp when the Soda scan completed execution.
     - **`datatimestamp`**: Timestamp representing the data snapshot or data freshness being checked.
 
     **Quality Check Results**
@@ -125,7 +141,7 @@ The output table contains all columns from the SODA stream. The SODA stream cont
 
     **Execution Details**
 
-    - **`logs`**: Nested array containing execution logs, error messages, and debug information from the SODA scan.
+    - **`logs`**: Nested array containing execution logs, error messages, and debug information from the Soda scan.
     - **`queries`**: Array of SQL queries executed during the scan for checks and profiling.
     - **`metadata`**: Additional metadata about the scan configuration and environment.
 
@@ -191,7 +207,7 @@ Use this approach when you need:
               logLevel: INFO
               outputs:
                 - name: profiling_final
-                  dataset: dataos://icebase:sandbox/soda_quality_checks?acl=rw
+                  dataset: dataos://lakehouse:sandbox/soda_quality_checks?acl=rw
                   format: Iceberg
                   options:
                     saveMode: overwrite
@@ -423,7 +439,7 @@ Use this approach when you need:
                 logLevel: INFO
                 outputs:
                   - name: profiling_metrics_final
-                    dataset: dataos://icebase:sandbox/soda_quality_checks_data?acl=rw
+                    dataset: dataos://lakehouse:sandbox/soda_quality_checks_data?acl=rw
                     format: Iceberg
                     options:
                       saveMode: append
@@ -674,7 +690,7 @@ Joins profiling and duplicate metrics, then calculates:
 
 | Column | Type | Description |
 |--------|------|-------------|
-| `job_name` | String | Name of the SODA job that generated the profiling |
+| `job_name` | String | Name of the Soda job that generated the profiling |
 | `timestamp` | Timestamp | When the profiling scan was executed |
 | `user_name` | String | User who ran the profiling job |
 | `depot` | String | Data source identifier |
@@ -723,7 +739,7 @@ Joins profiling and duplicate metrics, then calculates:
     ```yaml
     outputs:
       - name: profiling_final
-        dataset: dataos://icebase:your_collection/your_table?acl=rw
+        dataset: dataos://lakehouse:your_collection/your_table?acl=rw
         format: Iceberg
     ```
 
@@ -814,7 +830,7 @@ Joins profiling and duplicate metrics, then calculates:
 
     **5. Schedule Appropriately**
     
-    - Align schedule with SODA profiling job frequency
+    - Align schedule with Soda profiling job frequency
     
     - Consider data freshness requirements vs. compute costs
 
@@ -863,8 +879,8 @@ SELECT DISTINCT * FROM your_table
 
 ## Additional Links 
 
-For more information on working with SODA Stack, see:
+For more information on working with Soda Stack, see:
 
-- [SODA Stack Overview](/resources/stacks/soda/)
-- [Syncing SODA Queries Data to Lakehouse](/resources/stacks/soda/sync_queries_data_to_lakehouse/)
-- [Syncing SODA Quality Check Results to Lakehouse](/resources/stacks/soda/sync_quality_checks_to_lakehouse/)
+- [Soda Stack Overview](/resources/stacks/soda/)
+- [Syncing Soda Queries Data to Lakehouse](/resources/stacks/soda/sync_queries_data_to_lakehouse/)
+- [Syncing Soda Quality Check Results to Lakehouse](/resources/stacks/soda/sync_quality_checks_to_lakehouse/)
