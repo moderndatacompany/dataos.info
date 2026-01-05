@@ -1,24 +1,27 @@
-# Syncing SODA Queries Data to Lakehouse
+# Syndicating Soda Queries Data
+
+As part of executing quality checks and profiling scans, Soda Stack generates SQL queries against datasets. These queries are captured and logged in the `systemstreams:soda/quality_profile_results_03` stream. This data can be syndicated to storage platforms such as Snowflake, Redshift, or PostgreSQL for downstream analysis. 
+
+This guide demonstrates the process using a DataOS Lakehouse as the target system. The same query data is also available in [Metis](/interfaces/metis/metis_ui_assets/metis_assets_tables/).
 
 
-When SODA Stack executes quality checks and profiling scans, it generates and runs SQL queries against your datasets. These queries are logged in the SODA stream at `systemstreams:soda/quality_profile_results_03`. This guide demonstrates how to extract, aggregate, and sync query execution data to your Lakehouse for analysis and monitoring.
 
-!!! warning
-    The stream address `systemstreams:soda/quality_profile_results_03` may vary depending on the environment. Contact the DBA or a DataOS Operator to confirm the correct stream address.
+!!! info
+    The stream address `systemstreams:soda/quality_profile_results_03` may vary depending on the environment. Contact the Database Administrator or a DataOS Operator to confirm the correct stream address.
 
 
-By syncing queries data to Lakehouse, you can:
+By syndicating queries data to Lakehouse, you can:
 
-- Monitor SQL query execution patterns across all SODA scans.
+- Monitor SQL query execution patterns across all Soda scans.
 - Track query success and failure rates by dataset.
-- Debug SODA check failures by analyzing failed queries.
+- Debug Soda check failures by analyzing failed queries.
 - Understand query volume and performance trends.
 - Identify datasets with frequent query issues.
-- Optimize SODA check configurations based on query patterns.
+- Optimize Soda check configurations based on query patterns.
 
-## Understanding SODA Queries Data
+## Understanding Soda Queries Data
 
-SODA quality checks and profiling operations translate into SQL queries that execute against your data sources. For example:
+Soda quality checks and profiling operations translate into SQL queries that execute against your data sources. For example:
 
 **Quality Check:**
 ```yaml
@@ -45,7 +48,7 @@ SELECT AVG(customer_id), STDDEV(customer_id), MIN(customer_id), MAX(customer_id)
 SELECT COUNT(DISTINCT email), COUNT(*) FROM customer_table WHERE email IS NULL
 ```
 
-Each SODA scan execution generates multiple queries stored in the `queries` array. This workflow extracts these queries, normalizes them, tracks their success/failure status, and aggregates statistics for monitoring.
+Each Soda scan execution generates multiple queries stored in the `queries` array. This workflow extracts these queries, normalizes them, tracks their success/failure status, and aggregates statistics for monitoring.
 
 
 ## Workflow Architecture
@@ -53,7 +56,7 @@ Each SODA scan execution generates multiple queries stored in the `queries` arra
 The queries sync workflow follows a streamlined transformation pipeline:
 
 ```
-SODA Stream (Raw Data)
+Soda Stream (Raw Data)
         ↓
 Complex Transformation with 3 CTEs(Common Table Expression):
   ├─ CTE 1: Explode & Normalize Queries
@@ -96,7 +99,7 @@ workflow:
 
             outputs:
               - name: final
-                dataset: dataos://icebase:sandbox/queries_data?acl=rw
+                dataset: dataos://lakehouse:sandbox/queries_data?acl=rw
                 format: Iceberg
                 options:
                   saveMode: append
@@ -188,7 +191,7 @@ inputs:
 
 **Key Points:**
 
-- **Same Source**: Reads from the same SODA stream as quality checks and profiling workflows
+- **Same Source**: Reads from the same Soda stream as quality checks and profiling workflows
 - **Batch Mode**: `isStream: false` processes all historical query data
 - **Complete Data**: `startingOffsets: earliest` ensures all queries since stream inception are included
 
@@ -197,7 +200,7 @@ inputs:
 ```yaml
 outputs:
   - name: final
-    dataset: dataos://icebase:sandbox/queries_data?acl=rw
+    dataset: dataos://lakehouse:sandbox/queries_data?acl=rw
     format: Iceberg
     options:
       saveMode: append
@@ -266,7 +269,7 @@ Extract and normalize individual queries from the nested `queries` array.
     - `explode(a.queries)`: Converts the `queries` array into separate rows (one row per query)
     - `LATERAL VIEW`: Enables referencing both the original row (`a.*`) and exploded elements (`q.*`)
     - `OUTER`: Preserves rows even if `queries` array is NULL or empty
-    - **Result**: If a SODA scan executed 5 queries, this creates 5 rows
+    - **Result**: If a Soda scan executed 5 queries, this creates 5 rows
 
 2. **Timestamp Parsing**
 
@@ -309,10 +312,10 @@ Extract and normalize individual queries from the nested `queries` array.
 
 **Example Input/Output:**
 
-**Input (SODA Stream Record):**
+**Input (Soda Stream Record):**
 ```json
 {
-  "depot": "icebase",
+  "depot": "lakehouse",
   "collection": "retail",
   "dataset": "customer",
   "datatimestamp": "2024-01-15T10:30:00Z",
@@ -338,9 +341,9 @@ Extract and normalize individual queries from the nested `queries` array.
 ```
 depot    | collection | dataset  | event_time           | sql_norm                                      | exception
 ---------|------------|----------|----------------------|-----------------------------------------------|---------------------------
-icebase  | retail     | customer | 2024-01-15 10:30:00  | select count(*) from customer                 | NULL
-icebase  | retail     | customer | 2024-01-15 10:30:00  | select avg(age), stddev(age) from customer    | NULL
-icebase  | retail     | customer | 2024-01-15 10:30:00  | select count(distinct email) from customer    | Syntax error at line 1
+lakehouse  | retail     | customer | 2024-01-15 10:30:00  | select count(*) from customer                 | NULL
+lakehouse  | retail     | customer | 2024-01-15 10:30:00  | select avg(age), stddev(age) from customer    | NULL
+lakehouse  | retail     | customer | 2024-01-15 10:30:00  | select count(distinct email) from customer    | Syntax error at line 1
 ```
 
 
@@ -435,7 +438,7 @@ ORDER BY
   total_queries DESC
 ```
 
-Aggregate query execution statistics per SODA scan (by dataset, user, time).
+Aggregate query execution statistics per Soda scan (by dataset, user, time).
 
 **Key Operations:**
 
@@ -465,7 +468,7 @@ Aggregate query execution statistics per SODA scan (by dataset, user, time).
     ```sql
     GROUP BY dataset, depot, collection, clustername, branchname, username, event_time
     ```
-    - Each unique combination represents one SODA scan execution
+    - Each unique combination represents one Soda scan execution
     - Aggregates all queries from that scan into summary statistics
 
 5. **Ordering Results**
@@ -482,23 +485,23 @@ Aggregate query execution statistics per SODA scan (by dataset, user, time).
 ```
 depot    | collection | dataset  | username | event_time           | sql_norm                          | has_failure
 ---------|------------|----------|----------|----------------------|-----------------------------------|-------------
-icebase  | retail     | customer | john_doe | 2024-01-15 10:30:00  | select count(*) from customer     | 0
-icebase  | retail     | customer | john_doe | 2024-01-15 10:30:00  | select avg(age) from customer     | 0
-icebase  | retail     | customer | john_doe | 2024-01-15 10:30:00  | select stddev(age) from customer  | 0
-icebase  | retail     | customer | john_doe | 2024-01-15 10:30:00  | select sum(revenue) from customer | 1
-icebase  | retail     | customer | john_doe | 2024-01-15 10:30:00  | select max(price) from customer   | 1
+lakehouse  | retail     | customer | john_doe | 2024-01-15 10:30:00  | select count(*) from customer     | 0
+lakehouse  | retail     | customer | john_doe | 2024-01-15 10:30:00  | select avg(age) from customer     | 0
+lakehouse  | retail     | customer | john_doe | 2024-01-15 10:30:00  | select stddev(age) from customer  | 0
+lakehouse  | retail     | customer | john_doe | 2024-01-15 10:30:00  | select sum(revenue) from customer | 1
+lakehouse  | retail     | customer | john_doe | 2024-01-15 10:30:00  | select max(price) from customer   | 1
 ```
 
 **Output (Final aggregation):**
 ```
 depot    | collection | dataset  | username | event_time           | total_queries | successful_queries | failed_queries
 ---------|------------|----------|----------|----------------------|---------------|--------------------|-----------------
-icebase  | retail     | customer | john_doe | 2024-01-15 10:30:00  | 5             | 3                  | 2
+lakehouse  | retail     | customer | john_doe | 2024-01-15 10:30:00  | 5             | 3                  | 2
 ```
 
 **Interpretation:**
 
-- This SODA scan executed 5 distinct queries
+- This Soda scan executed 5 distinct queries
 - 3 queries succeeded (count, avg, stddev)
 - 2 queries failed (sum, max)
 - Query success rate = 3/5 = 60%
@@ -507,56 +510,42 @@ icebase  | retail     | customer | john_doe | 2024-01-15 10:30:00  | 5          
 
 ## Output Schema
 
+When querying through Workbench, final output looks like following table:
+
+| __metadata | clustername | depot | collection | dataset | username | event_time | total_queries | successful_queries | failed_queries |
+|-----------|-------------|-------|------------|---------|----------|------------|---------------|--------------------|----------------|
+| {"_dataos_run_mapper...} | miniature | postgresmrab | public | customer_data_mrab | jhondoe | 2025-12-22 13:07:06.000 UTC | 25 | 25 | 0 |
+| {"_dataos_run_mapper...} | system | lakehouse | sandbox | soda_quality_checks_02 | iamgroot | 2025-12-15 12:09:31.000 UTC | 16 | 16 | 0 |
+| {"_dataos_run_mapper...} | system | lakehouse | sandbox | soda_quality_checks_02 | iamgroot | 2025-12-15 12:06:29.000 UTC | 1 | 0 | 1 |
+| {"_dataos_run_mapper...} | system | lakehouse | sandbox | soda_quality_checks_02 | iamgroot | 2025-12-15 12:04:55.000 UTC | 1 | 0 | 1 |
+| {"_dataos_run_mapper...} | system | lakehouse | sandbox | soda_quality_checks_02 | iamgroot | 2025-12-15 12:01:33.000 UTC | 1 | 0 | 1 |
+| {"_dataos_run_mapper...} | system | lakehouse | sandbox | soda_quality_checks_02 | iamgroot | 2025-12-15 11:50:40.000 UTC | 1 | 0 | 1 |
+| {"_dataos_run_mapper...} | miniature | postgresmrab | public | customer_data_mrab | jhondoe | 2025-12-22 13:05:14.000 UTC | 1 | 0 | 1 |
+| {"_dataos_run_mapper...} | miniature | postgresmrab | public | customer_data_mrab | jhondoe | 2025-12-19 14:59:37.000 UTC | 25 | 25 | 0 |
+| {"_dataos_run_mapper...} | miniature | postgresmrab | public | customer_data_mrab | jhondoe | 2025-12-19 13:40:00.000 UTC | 25 | 25 | 0 |
+| {"_dataos_run_mapper...} | system | lakehouse | sandbox | soda_quality_checks_data | iamgroot | 2025-12-16 09:49:09.000 UTC | 38 | 38 | 0 |
+
+
 The final output table contains the following columns:
 
 | Column | Type | Description |
 |--------|------|-------------|
-| `clustername` | String | Cluster where SODA scan was executed (e.g., minervaprod, themisprod) |
-| `depot` | String | Data source or depot identifier where queries were executed (e.g., icebase, snowflake) |
+| `clustername` | String | Cluster where Soda scan was executed (e.g., minerva, themis) |
+| `depot` | String | Data source or depot identifier where queries were executed (e.g., lakehouse, snowflake) |
 | `collection` | String | Schema or database name containing the dataset |
 | `dataset` | String | Table or dataset name against which queries were executed |
-| `username` | String | DataOS user who triggered the SODA scan |
-| `event_time` | Timestamp | When the SODA scan was executed (parsed from `datatimestamp`) |
+| `username` | String | DataOS user who triggered the Soda scan |
+| `event_time` | Timestamp | When the Soda scan was executed (parsed from `datatimestamp`) |
 | `total_queries` | Long | Total number of distinct SQL queries executed during the scan |
 | `successful_queries` | Long | Number of queries that completed successfully (without exceptions) |
 | `failed_queries` | Long | Number of queries that encountered errors or exceptions |
 
-### **Calculated Metrics**
-
-You can derive additional metrics from the output:
-
-```sql
--- Query success rate
-SELECT
-  *,
-  ROUND(successful_queries * 100.0 / total_queries, 2) AS success_rate_percent,
-  ROUND(failed_queries * 100.0 / total_queries, 2) AS failure_rate_percent
-FROM dataos://icebase:sandbox/queries_data
-```
-
-### **Sample Output**
-
-```
-clustername  | depot    | collection | dataset  | username | event_time           | total_queries | successful_queries | failed_queries
--------------|----------|------------|----------|----------|----------------------|---------------|--------------------|-----------------
-minervaprod  | icebase  | retail     | customer | john_doe | 2024-01-15 10:30:00  | 12            | 11                 | 1
-themisprod   | icebase  | retail     | orders   | jane_doe | 2024-01-15 09:15:00  | 8             | 8                  | 0
-minervaprod  | snowflake| sales      | revenue  | john_doe | 2024-01-14 16:45:00  | 15            | 13                 | 2
-themisprod   | icebase  | retail     | products | bot_user | 2024-01-14 14:20:00  | 6             | 5                  | 1
-```
-
-**Insights from Sample Data:**
-
-- **Row 1**: Customer dataset scan executed 12 queries with 1 failure (91.7% success rate)
-- **Row 2**: Orders dataset scan had perfect execution (100% success rate)
-- **Row 3**: Revenue dataset scan had 2 query failures (86.7% success rate) - investigate needed
-- **Row 4**: Products dataset scan had 1 failure (83.3% success rate)
 
 <!-- ## Example Case Scenarios
 
 ### **1. Query Success Rate Monitoring**
 
-Monitor overall query health across all SODA scans:
+Monitor overall query health across all Soda scans:
 
 ```sql
 -- Daily query success rate
@@ -566,7 +555,7 @@ SELECT
   SUM(successful_queries) AS successful_queries,
   SUM(failed_queries) AS failed_queries,
   ROUND(SUM(successful_queries) * 100.0 / SUM(total_queries), 2) AS success_rate_percent
-FROM dataos://icebase:sandbox/queries_data
+FROM dataos://lakehouse:sandbox/queries_data
 WHERE event_time >= current_date() - INTERVAL 30 DAYS
 GROUP BY DATE(event_time)
 ORDER BY scan_date DESC
@@ -586,7 +575,7 @@ SELECT
   SUM(failed_queries) AS total_failed,
   ROUND(SUM(failed_queries) * 100.0 / SUM(total_queries), 2) AS failure_rate_percent,
   COUNT(DISTINCT event_time) AS scan_count
-FROM dataos://icebase:sandbox/queries_data
+FROM dataos://lakehouse:sandbox/queries_data
 WHERE event_time >= current_date() - INTERVAL 7 DAYS
 GROUP BY depot, collection, dataset
 HAVING SUM(failed_queries) > 0
@@ -608,7 +597,7 @@ SELECT
   SUM(total_queries) AS total_queries_executed,
   ROUND(AVG(total_queries), 1) AS avg_queries_per_scan,
   MAX(total_queries) AS max_queries_single_scan
-FROM dataos://icebase:sandbox/queries_data
+FROM dataos://lakehouse:sandbox/queries_data
 WHERE event_time >= current_date() - INTERVAL 30 DAYS
 GROUP BY depot, collection, dataset
 ORDER BY total_queries_executed DESC
@@ -617,7 +606,7 @@ LIMIT 20
 
 ### **4. User Activity Monitoring**
 
-Track which users are running SODA scans:
+Track which users are running Soda scans:
 
 ```sql
 -- User query activity
@@ -628,7 +617,7 @@ SELECT
   SUM(total_queries) AS total_queries,
   SUM(failed_queries) AS total_failures,
   ROUND(SUM(failed_queries) * 100.0 / SUM(total_queries), 2) AS failure_rate_percent
-FROM dataos://icebase:sandbox/queries_data
+FROM dataos://lakehouse:sandbox/queries_data
 WHERE event_time >= current_date() - INTERVAL 30 DAYS
 GROUP BY username
 ORDER BY total_scan_executions DESC
@@ -648,7 +637,7 @@ SELECT
   SUM(successful_queries) AS successful_queries,
   SUM(failed_queries) AS failed_queries,
   ROUND(SUM(failed_queries) * 100.0 / SUM(total_queries), 2) AS failure_rate_percent
-FROM dataos://icebase:sandbox/queries_data
+FROM dataos://lakehouse:sandbox/queries_data
 WHERE event_time >= current_date() - INTERVAL 7 DAYS
 GROUP BY clustername
 ORDER BY total_scans DESC
@@ -668,7 +657,7 @@ SELECT
   SUM(CASE WHEN failed_queries > 0 THEN 1 ELSE 0 END) AS scans_with_failures,
   ROUND(SUM(CASE WHEN failed_queries > 0 THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) AS scan_failure_rate_percent,
   MAX(event_time) AS last_scan_time
-FROM dataos://icebase:sandbox/queries_data
+FROM dataos://lakehouse:sandbox/queries_data
 WHERE event_time >= current_date() - INTERVAL 30 DAYS
 GROUP BY depot, collection, dataset
 HAVING SUM(CASE WHEN failed_queries > 0 THEN 1 ELSE 0 END) > 2
@@ -687,7 +676,7 @@ SELECT
   SUM(total_queries) AS total_queries,
   ROUND(AVG(total_queries), 1) AS avg_queries_per_scan,
   ROUND(SUM(failed_queries) * 100.0 / SUM(total_queries), 2) AS failure_rate_percent
-FROM dataos://icebase:sandbox/queries_data
+FROM dataos://lakehouse:sandbox/queries_data
 WHERE event_time >= current_date() - INTERVAL 7 DAYS
 GROUP BY HOUR(event_time)
 ORDER BY execution_hour
@@ -723,7 +712,7 @@ ORDER BY execution_hour
     ```yaml
     outputs:
       - name: final
-        dataset: dataos://icebase:your_collection/your_table_name?acl=rw
+        dataset: dataos://lakehouse:your_collection/your_table_name?acl=rw
     ```
 
     **Enable Scheduling**
@@ -817,17 +806,17 @@ ORDER BY execution_hour
 
     Add deduplication logic if needed:
     ```sql
-    SELECT DISTINCT * FROM dataos://icebase:sandbox/queries_data
+    SELECT DISTINCT * FROM dataos://lakehouse:sandbox/queries_data
     WHERE event_time >= current_date() - INTERVAL 30 DAYS
     ```
 
-    **2. Schedule After SODA Scans**
+    **2. Schedule After Soda Scans**
 
-    Schedule this workflow to run after your SODA check workflows complete:
+    Schedule this workflow to run after your Soda check workflows complete:
 
     ```yaml
     schedule:
-      cron: '15 11 * * *'  # If SODA checks run at 11:00 AM, run this at 11:15 AM
+      cron: '15 11 * * *'  # If Soda checks run at 11:00 AM, run this at 11:15 AM
     ```
 
     **3. Leverage Partitioning**
@@ -837,7 +826,7 @@ ORDER BY execution_hour
     ```sql
     -- GOOD: Uses partitioning
     SELECT * FROM queries_data
-    WHERE depot = 'icebase' AND collection = 'retail' AND dataset = 'customer'
+    WHERE depot = 'lakehouse' AND collection = 'retail' AND dataset = 'customer'
 
     -- BAD: Full table scan
     SELECT * FROM queries_data
@@ -857,14 +846,14 @@ ORDER BY execution_hour
       failed_queries,
       total_queries,
       ROUND(failed_queries * 100.0 / total_queries, 2) AS failure_rate
-    FROM dataos://icebase:sandbox/queries_data
+    FROM dataos://lakehouse:sandbox/queries_data
     WHERE event_time >= current_timestamp() - INTERVAL 1 DAY
       AND failed_queries * 100.0 / total_queries > 10.0
     ```
 
     **5. Monitor Query Volume Growth**
 
-    Track query volume to optimize SODA check configurations:
+    Track query volume to optimize Soda check configurations:
 
     ```sql
     -- Identify checks generating too many queries
@@ -873,7 +862,7 @@ ORDER BY execution_hour
       collection,
       dataset,
       AVG(total_queries) AS avg_queries_per_scan
-    FROM dataos://icebase:sandbox/queries_data
+    FROM dataos://lakehouse:sandbox/queries_data
     WHERE event_time >= current_date() - INTERVAL 7 DAYS
     GROUP BY depot, collection, dataset
     HAVING AVG(total_queries) > 20  -- Threshold
@@ -894,8 +883,8 @@ ORDER BY execution_hour
       q.failed_queries,
       c.check_outcome,
       c.check_definition
-    FROM dataos://icebase:sandbox/queries_data q
-    JOIN dataos://icebase:sys01/slo_quality_checks_a c
+    FROM dataos://lakehouse:sandbox/queries_data q
+    JOIN dataos://lakehouse:sys01/slo_quality_checks_a c
       ON q.depot = c.depot
       AND q.collection = c.collection
       AND q.dataset = c.dataset
@@ -1047,7 +1036,7 @@ SELECT DISTINCT
   total_queries,
   successful_queries,
   failed_queries
-FROM dataos://icebase:sandbox/queries_data
+FROM dataos://lakehouse:sandbox/queries_data
 ```
 
 **Issue: High Failure Rates**
@@ -1089,7 +1078,7 @@ This helps identify the most common query failures.
 
 ## Additional Links
 
-- [SODA Stack Overview](/resources/stacks/soda/)
+- [Soda Stack Overview](/resources/stacks/soda/)
 - [Syncing Quality Check Results to Lakehouse](/resources/stacks/soda/sync_quality_checks_to_lakehouse/)
 - [Syncing Profiling Data to Lakehouse](/resources/stacks/soda/sync_profiling_data_to_lakehouse/)
 - [Flare Stack](/resources/stacks/flare/)

@@ -198,7 +198,7 @@ stackSpec:
 Soda Stack utilizes SodaCL, a YAML-based, low-code, human-readable, domain-specific language for data reliability and data quality management. SodaCL enables data developers to write checks for data quality, then run a scan of the data in the data source to execute those checks.
 
 <div style="text-align: center;">
-  <img src="/resources/stacks/soda/soda_check.png" alt="SODA" style="border:1px solid black; width: 80%; height: auto;">
+  <img src="/resources/stacks/soda/soda_check.png" alt="Soda" style="border:1px solid black; width: 80%; height: auto;">
   <figcaption><i>Anatomy of a regular check in Soda. The dataset identifier is the name of the dataset on which you want to run the check. A metric is a property of the dataset that you wish to evaluate. The threshold is the metric value you want to check for during a scan.</i></figcaption>
 </div>
 
@@ -825,14 +825,14 @@ Each check result on the dashboard indicates whether it has passed or failed bas
 - **Validity:** Passed, indicating the data adheres to the expected validation rules.
 
 <div style="text-align: center;">
-  <img src="/resources/stacks/soda/soda_checks_01.png" alt="SODA" style="border:1px solid black; width: 80%; height: auto;">
+  <img src="/resources/stacks/soda/soda_checks_01.png" alt="Soda" style="border:1px solid black; width: 80%; height: auto;">
   <figcaption><i>Checks Symbol</i></figcaption>
 </div>
 
 When you click on any of the check, a detailed trend chart appears, displaying the specific times the check was executed along with the percentage of SLO compliance over time. The chart includes a graphical representation of how the data met the predefined quality standards, with 100% indicating full compliance. Any dips in the line graph highlight potential issues during specific check runs. Additionally, the dashboard may show more information like dataset details and error messages, offering a comprehensive view of the data quality trends over time. For instance, here you can see that the Trend Chart of the Validity check which indicates the time checks were ran against the percentage of SLOs.
 
 <div style="text-align: center;">
-  <img src="/resources/stacks/soda/image.png" alt="SODA" style="border:1px solid black; width: 80%; height: auto;">
+  <img src="/resources/stacks/soda/image.png" alt="Soda" style="border:1px solid black; width: 80%; height: auto;">
   <figcaption><i>Checks Symbol</i></figcaption>
 </div>
 
