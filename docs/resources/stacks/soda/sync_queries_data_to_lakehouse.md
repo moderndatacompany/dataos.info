@@ -530,7 +530,7 @@ The final output table contains the following columns:
 
 | Column | Type | Description |
 |--------|------|-------------|
-| `clustername` | String | Cluster where Soda scan was executed (e.g., minervaprod, themisprod) |
+| `clustername` | String | Cluster where Soda scan was executed (e.g., minerva, themis) |
 | `depot` | String | Data source or depot identifier where queries were executed (e.g., lakehouse, snowflake) |
 | `collection` | String | Schema or database name containing the dataset |
 | `dataset` | String | Table or dataset name against which queries were executed |
