@@ -65,7 +65,7 @@ These SQL scripts extract relevant fields from your input datasets.
 🎯 **Your Actions:**
 
 1. Create SQL scripts for each entity.
-2. Add SQL files to the `sqls` folder.
+2. Add SQL files to the `sqls` folder. Below is an example of the `customer.sql` file.
 
     ```sql
     # Replace abc with your initials
@@ -82,7 +82,7 @@ These SQL scripts extract relevant fields from your input datasets.
 
 ??? "product.sql"
     ```sql
-    # Replace xx with your initials
+    # Replace abc with your initials
     select 
         customer_id as product_customer_id,
         product_id,
@@ -90,13 +90,13 @@ These SQL scripts extract relevant fields from your input datasets.
         product_name,
         price
     FROM
-        postgresxx.public.product_data
+        postgresabc.public.product_data
     ```
 
 ??? "purchase.sql"
 
     ```sql
-    # Replace xx with your initials
+    # Replace abc with your initials
     SELECT
         customer_id as p_customer_id,
         cast(purchase_date as timestamp) as purchase_date,
@@ -115,7 +115,7 @@ These SQL scripts extract relevant fields from your input datasets.
         numwebpurchases + numcatalogpurchases + numstorepurchases + numstorepurchases as purchases,
         (mntwines+mntmeatproducts+mntfishproducts+mntsweetproducts+mntgoldprods+mntfruits) as spend
     FROM
-        postgresxx.public.purchase_data
+        postgresabc.public.purchase_data
     ```
 
 
@@ -353,9 +353,7 @@ tables:
         description: "The number of products."
 </details>
 
-
-<details>
-<summary>Click to view YAML definition for the `purchase.yaml` table</summary>
+<details><summary>Click to view YAML definition for the `purchase.yaml` table</summary>
 
 ```yaml
 tables:
@@ -501,9 +499,7 @@ tables:
         description: "The potential for cross-selling a secondary product based on previous purchase patterns."
         type: number
 ```
-
 </details>
-
 
 
 ### **Step 4: Define Manifest Files for Business Views**
@@ -712,7 +708,7 @@ This file is your blueprint for configuring your Lens Resource on DataOS. This f
 
 ```yaml
 version: v1alpha
-name: "productaffinity-xx"
+name: "productaffinity-abc"
 layer: user
 type: lens
 tags:
@@ -725,7 +721,7 @@ lens:
       allKeys: true
   source:
     type: depot
-    name: postgresxx
+    name: postgresabc
   repo:
     url: <url> # Ex: https://bitbucket.org/tmdc/product-affinity-training
     lensBaseDir: <basedir>  # Ex: product-affinity-training/build/semantic-model/model
@@ -777,7 +773,7 @@ lens:
 Push the code to Repo and update the repo URL and base directory location under lens section.  Use clear commit messages to describe changes effectively.
 
 <aside class="callout">
-Don’t forget to replace placeholder values with your project-specific info and push changes to your repo with clear commit messages.
+🗣 Don’t forget to replace placeholder values with your project-specific info and push changes to your repo with clear commit messages.
 </aside>
 
 ## Next step

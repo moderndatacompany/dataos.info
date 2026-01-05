@@ -35,26 +35,14 @@ instance-secret:
   type: key-value-properties # Secret type
   acl: ${ACCESS_CONTROL_LIST} # Access control: 'r' for read-only
   data:
-    username: $POSTGRES_USERNAME # replace with postgres username
-    password: $POSTGRES_PASSWORD # replace with postgres password
+    username: ${POSTGRES_USERNAME} # replace with postgres username
+    password: ${POSTGRES_PASSWORD} # replace with postgres password
 ```
 
 <aside class="callout">
 📖 Best Practice: You can use environment variables for attributes like `$POSTGRES_USERNAME` and `$POSTGRES_PASSWORD` to ensure that sensitive data is not hardcoded into the manifest file.
 
 </aside>
-
-#### **Configuring Instance Secret manifest attributes**
-
-Replace the placeholders with actual values specific to your database setup:
-
-| **Attribute** | **Placeholder** | **Description** | **Example Value** |
-| --- | --- | --- | --- |
-| `name` | `${DEPOT_NAME}-${ACCESS_CONTROL_LIST}` | Unique name for the Instance Secret | `postgresdepot-r` |
-| `description` | `${DESCRIPTION}` | Purpose of the Instance Secret | "Postgres read secret" |
-| `acl` | `${ACCESS_CONTROL_LIST}` | Access Control List | `r` (for read access) |
-| `username` | `$POSTGRES_USERNAME` | Username for the PostgreSQL database | `max_postgres_user` |
-| `password` | `$POSTGRES_PASSWORD` | Password for the PostgreSQL database | `securepassword123` |
 
 
 #### **Deploying the Instance Secret**
