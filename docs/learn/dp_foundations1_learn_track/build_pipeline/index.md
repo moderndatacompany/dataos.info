@@ -74,7 +74,7 @@ Here are the available Stacks to handle various processing needs.
 
 Prepare your manifest file to configure the pipeline. 
 
-🎯 **Your Actions: **
+🎯 **Your Actions:**
 
 1. Specify the Workflow Resource, define the input and output data sources, and integrate the Flare Stack. 
 2. Customize the SQL query (used for transformations) for your dataset. The provided query in the `steps` section already include transformations like casting string fields to numerical types.

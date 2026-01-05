@@ -9,17 +9,15 @@
 
 By the end of this course, you’ll be able to:
 
-- **Define business-centric Data Products**  
-  Capture use case requirements, KPIs, and metrics that guide the design of meaningful data products.
+By the end of this course, you’ll be able to:
 
-- **Model, transform, and secure data**  
-  Build semantic models, apply business logic, and implement access control to ensure secure, governed consumption.
+- **Define business-centric Data Products** by capturing use cases, KPIs, and metrics 
 
-- **Enable consumption across tools**  
-  Expose outputs via semantic models and APIs for seamless use in BI tools, notebooks, and apps.
+- **Model, transform, and secure data** using semantic models, business logic, and access controls 
 
-- **Package and deploy your Data Product**  
-  Bundle your resources, define the spec, and register your product in Data Product Hub and Metis.
+- **Enable consumption across tools** via semantic models and APIs for BI, notebooks, and apps
+  
+- **Package and deploy Data Products** by bundling resources, defining specs, and registering in Data Product Hub and Metis
 
 ---
 

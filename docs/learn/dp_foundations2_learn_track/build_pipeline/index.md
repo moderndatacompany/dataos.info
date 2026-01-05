@@ -99,7 +99,7 @@ Analyzes co-purchase patterns between product categories to identify cross-categ
 
                 outputs:
                   - name: final
-                    dataset: dataos://lakehouse:crm_data/product_affinity_matrix?acl=rw
+                    dataset: dataos://lakehouse:crm_data/product_affinity_matrix?acl=rw  # Check the depot name available for in your training instance
                     format: Iceberg
                     options:
                       saveMode: overwrite
@@ -177,7 +177,7 @@ Segments customers by risk and maps them to personalized product pairings.
               
                 outputs:
                   - name: final
-                    dataset: dataos://lakehouse:crm_data/cross_sell_recommendations?acl=rw
+                    dataset: dataos://lakehouse:crm_data/cross_sell_recommendations?acl=rw     # Check the depot name available for in your training instance
                     format: Iceberg
                     options:
                       saveMode: overwrite
