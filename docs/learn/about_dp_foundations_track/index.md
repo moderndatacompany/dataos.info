@@ -3,9 +3,28 @@
 !!! info "Overview"
     Your starting point for building smart, reliable Data Products in DataOS. This track is designed for anyone new to DataOS or just getting started with the concept of data product development. It introduces the foundational concepts, tools, and workflows you’ll use to build and manage Data Products with confidence.
 
+
+## Who should take this track?
+
+The 'Data Product Foundations' course is ideal for the following learner personas:
+
+| Persona & Description | Why It Matters | Level |
+|---|---|---|
+| **New Data Engineers / Developers**
+Beginners in building Data Products or DataOS | Learn the core building blocks without being overwhelmed by deep technical details. | Must-have |
+| **Aspiring Data Product Developers & Owners**
+Business/tech users moving into product roles | Get foundational knowledge to progress into specialized tracks. | Must-have |
+| **Cross-functional Team Members**
+Analysts, QA, support involved in data workflows | Understand how Data Products work and fit into end-to-end data operations. | Recommended |
+| **Technical Decision Makers / Architects**
+Architects, Admins, team leads evaluating DataOS | Gain a high-level overview of key DataOS primitives and workflows for better strategic planning. | Recommended |
+
+✨ Ready to get started? Scroll down to explore the full track structure and dive into each course to begin your Data Product journey.
+
+
 ## Track structure
 
-This learning track is divided into two hands-on modules:
+This learning track is divided into two hands-on courses:
 
 | Course | Title | Description |
 |--------|-------|-------------|
@@ -13,30 +32,13 @@ This learning track is divided into two hands-on modules:
 | 2 | [Creating a Consumer-Aligned Data Product](/learn/about_dp_foundations_track/#course-2-create-a-consumer-aligned-data-product) | Take your product further with transformations, semantic modeling, and governed delivery of metrics tailored for business users. |
 
 
-✨ Ready to get started? Scroll down to explore the full track structure and dive into each course to begin your Data Product journey.
-
-## Who should take this track?
-
-The 'Data Product Foundations' course is ideal for the following learner personas:
-
-| Persona & Description                                                                 | Why It Matters                                                                                      | Level        |
-|----------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|--------------|
-| **New Data Engineers / Developers**  
-Beginners in building Data Products or DataOS                                           | Learn the core building blocks without being overwhelmed by deep technical details.                 | Must-have    |
-| **Aspiring Data Product Developers & Owners**  
-Business/tech users moving into product roles                                           | Get foundational knowledge to progress into specialized tracks.                    | Must-have    |
-| **Cross-functional Team Members**  
-Analysts, QA, support involved in data workflows                                        | Understand how Data Products work and fit into end-to-end data operations.                          | Recommended  |
-| **Technical Decision Makers / Architects**  
-Architects, Admins, team leads evaluating DataOS                                                | Gain a high-level overview of key DataOS primitives and workflows for better strategic planning.    | Recommended  |
-
 <aside class="callout">
 🗣 To fully engage with the hands-on components of this learning track, access to a dedicated DataOS training instance is required. Please contact your training team to obtain the necessary credentials.
 
 </aside>
 
 ## 📚 Track details
-The Foundations Track is split into two structured courses—each designed to walk you through the lifecycle of a Data Product. Each module within these courses covers key topics through step-by-step guidance, hands-on examples, and best practices—ensuring a clear and practical learning experience. This Foundations track keeps the content streamlined, emphasizing core concepts and guiding learners through one complete end-to-end example.
+Find the details of the two courses—each structured and designed to walk you through the lifecycle of a Data Product. Each module within these courses covers key topics through step-by-step guidance, hands-on examples, and best practices—ensuring a clear and practical learning experience. This Foundations track keeps the content streamlined, emphasizing core concepts and guiding learners through one complete end-to-end example.
 
 <aside class="callout">
 🗣 This track features hands-on modules utilizing both the DataOS CLI and GUI. You'll use the CLI to apply YAML configurations and execute workflows. Concurrently, you'll navigate key DataOS graphical interfaces—such as Workbench for querying data, Metis for metadata management, and the Data Product Hub (DPH) for overseeing Data Products—to gain comprehensive insights into the platform's capabilities.
@@ -49,6 +51,13 @@ Build your first Data Product using raw source system data. Learn how to connect
 <div style="text-align: left; padding-left: 1em;">
 <img src="/learn/about_dp_foundations_track/foundations1_track1.png" alt="infographics">
 </div>
+
+### 🌟 **Outcome: What you’ll build**
+
+By the end of this course, you will have a fully deployed Source-Aligned Data Product in DataOS that takes raw source datasets as input and publishes curated output datasets—ready for discovery and consumption.
+
+<img src="/learn/about_dp_foundations_track/outcome_sa.png" alt="infographics">
+
 
 ### 📚 **Core modules**
 
@@ -74,6 +83,12 @@ Take it further by designing a Data Product tailored for business consumption—
 <img src="/learn/about_dp_foundations_track/foundations2_track1.jpg" alt="infographics">
 </div>
 
+### 🌟 **Outcome: What you’ll build**
+
+By the end of this course, you will have a fully deployed Consumer-Aligned Data Product in DataOS designed for business consumption—complete with transformations, semantic modeling, governed access, and reusable metrics.
+
+<img src="/learn/about_dp_foundations_track/outcome_ca.png" alt="infographics">
+
 ### 📚 **Core modules**
 
 | No. | Module                               | Objective/Description                                                                                                                                  | Key Topics                                                                                                                                               |
@@ -90,3 +105,4 @@ Take it further by designing a Data Product tailored for business consumption—
 
 !!! abstract "Ready to Dive In?" 
     :rocket: [Start this course here](/learn/dp_foundations2_learn_track/)
+ 

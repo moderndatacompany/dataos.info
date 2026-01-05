@@ -65,7 +65,8 @@ The type of DataOS Resource you choose for a Job depends on the specific use cas
 Create a Workflow manifest to configure Soda Stack for batch quality checks. Ensure that the metadata and Stack properties are properly defined. You can schedule this workflow to run quality checks automatically at regular intervals.
 
 ```yaml
-name: soda-customer-quality
+# Important: Replace 'abc' with your initials to personalize and distinguish the resource you’ve created.
+name: soda-customer-quality-abc
 version: v1
 type: workflow
 tags:
@@ -106,7 +107,7 @@ Enable profiling to gather insights into the dataset’s characteristics and dat
 ```yaml
 stackSpec:
   inputs:
-    - dataset: dataos://postgres:public/customer_data
+    - dataset: dataos://postgresabc:public/customer_data   
       options:
         engine: minerva
         clusterName: miniature
@@ -121,7 +122,7 @@ Tailor the checks to address issues identified by your team.
 ```yaml
 stackSpec:
   inputs:
-    - dataset: dataos://postgres:public/customer_data
+    - dataset: dataos://postgresabc:public/customer_data
       options:
         engine: minerva
         clusterName: miniature
@@ -203,7 +204,7 @@ dataos-ctl apply -f /path/to/soda-workflow.yaml -w <workspace>
             logLevel: INFO
             stackSpec:
               inputs:
-                - dataset: dataos://postgres:public/customer_data
+                - dataset: dataos://postgresabc:public/customer_data
                   options:
                     engine: minerva
                     clusterName: miniature

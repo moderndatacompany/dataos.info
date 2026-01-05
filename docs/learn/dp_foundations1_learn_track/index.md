@@ -6,22 +6,16 @@
 ---
 
 ## 🌟 What you’ll learn
-
 By the end of this course, you’ll be able to:
 
-- **Create source-aligned Data Products**  
-  Understand the concepts and build a working Data Product using DataOS.
+- **Build source-aligned Data Products** in DataOS  
 
-- **Connect, explore, and ingest Data**  
-  Use depots to connect with source systems, explore external data using Scanner and Workbench, and build Flare workflows for ingestion and transformation.
+- **Connect, explore, and ingest data** using Depots, Scanner, Workbench, and Flare Workflows 
 
-- **Define data quality and set up monitoring**  
-  Define SLOs, run Soda quality checks, and configure monitors and pagers for reliable, observable data workflows.
+- **Define data quality & monitoring** with SLOs, Soda checks, Monitors, and Pagers  
 
-- **Deploy and register Data Products**  
-  Package your work into a bundle, create the Data Product spec, deploy it, and make it searchable in the Data Product Hub.
+- **Deploy & register Data Products** via bundles/specs and publish to the Data Product Hub
 
----
 
 ## 📘 Scenario
 
@@ -117,10 +111,13 @@ You’re part of a retail company’s data team. You’ve been asked to build a 
 </div>
 
 ---
+## Before you begin
+**Get Ready for Hands-on: [Access & Setup](/learn/dp_foundations1_learn_track/prerequisites/)**
 
+---
 ## How to use these modules
 
-Each module in this track is designed for self-paced, hands-on learning.
+Each module in this track is designed for self-paced, hands-on learning. 
 
 To follow along:
 

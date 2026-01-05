@@ -56,17 +56,17 @@ All the specific details related to the Data Product comes under `data` section 
     
     Include a `meta` section, nested under the `data` section, to provide additional context and information to DPH.
     - title which is shown for your Data Product
-    <!-- - The `sourceCodeUrl` key is used to link the associated repository where the DP artefacts are maintained
+    - The `sourceCodeUrl` key is used to link the associated repository where the DP artefacts are maintained
     - The `trackerUrl` key is used to link the associated JIRA ticket where the DP issues are being managed
         
-        ```yaml
-        v1beta:
-          data:
-            meta:
-              sourceCodeUrl: https://bitbucket.org/tmdc/cloud-cost-360/src/main/
-              title: Retail Data # this appears on the UI | If you want to capitalise and format your DP name's appearance on DPH
-              trackerUrl: https://rubikai.atlassian.net/browse/DPRB-19?atlOrigin=eyJpIjoiZDVmMDNmYmYxOWYwNGVjZDlhNDdiYTA4NTZmMjg0NTIiLCJwIjoiaiJ9
-        ``` -->
+      ```yaml
+      v1beta:
+        data:
+          meta:
+            sourceCodeUrl: <url> # if code is pushed to the repo
+            title: Retail Data # this appears on the UI | If you want to capitalise and format your DP name's appearance on DPH
+            trackerUrl: <url>
+      ```
         
 - **Collaborators**
     
@@ -131,7 +131,7 @@ outputs:
     ref: dataset:postgresabc:public:product_data
 ```
         
-<!-- ## Step 5: Configure ports for integration
+## Step 5: Configure ports for integration
 Set up Ports to connect the Data Product to Lens, Talos APIs, REST endpoints, and more:
     
 The Ports section lets you set up links to various services and tools tied to consumption of your Data Product. While it's **optional** for creating a Data Product, adding ports significantly enhances functionality.
@@ -145,7 +145,7 @@ ports:
     talos:
     - ref: service:v1:service-product360-api:public
     refType: dataos
-``` -->
+```
     
 ## Data Product Spec (YAML) file
 

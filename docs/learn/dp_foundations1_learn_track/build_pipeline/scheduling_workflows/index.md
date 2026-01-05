@@ -55,67 +55,84 @@ Key attributes include:
 
 
 ### **Example configuration**
-To set up a profiling task every 2 minutes, configure your Workflow manifest as follows:
+To set up a ingestion workflow to run once daily at 8:00 PM in the specified timezone, configure your Workflow manifest as follows:
 
 ```yaml
 
 # Workflow Scheduling Configuration
-cron: '*/2 * * * *' # Executes every 2 minutes
-concurrencyPolicy: Allow
-endOn: 2024-11-01T23:40:45Z
+cron: '00 20 * * *' # Executes daily at 8 pm 
+concurrencyPolicy: Forbid
+endOn: '2023-12-12T22:00:00Z'
 timezone: Asia/Kolkata
 ```
 #### **Complete Workflow manifest**
 
 ```yaml
 
-# Resource Section
-name: scheduled-job-workflow
+# Important: Replace 'abc' with your initials to personalize and distinguish the resource you’ve created.
 version: v1
+name: wf-customer-data-abc
 type: workflow
 tags:
-  - eventhub
-  - write
-description: Reads data from third party and writes to eventhub
-owner: iamgroot
-# Workflow-specific Section
+  - crm
+description: Ingesting customer data in postgres
 workflow:
-  title: scheduled 
-  schedule: 
-    cron: '*/2 * * * *' 
-    concurrencyPolicy: Allow 
-    endOn: 2024-11-01T23:40:45Z
+  schedule:
+    cron: '00 20 * * *'
+    endOn: '2023-12-12T22:00:00Z'
+    concurrencyPolicy: Forbid
     timezone: Asia/Kolkata
-  dag: 
-   - name: write-snowflake-02
-     title: Reading data and writing to snowflake
-     description: Writes data to snowflake
-     spec:
-       tags:
-         - Connect
-         - write
-       stack: flare:7.0
-       compute: runnable-default
-       stackSpec:
-         job:
-           explain: true
-           inputs:
-             - name: poros_workflows
-               dataset: dataos://systemstreams:poros/workflows
-               isStream: true
-               options:
-                 startingOffsets: earliest
-           logLevel: INFO
-           outputs:
-             - name: poros_workflows
-               dataset: dataos://lakehouse:sys09/poros_workflows_pulsar?acl=rw
-               format: Iceberg
-               options:
-                 saveMode: overwrite
-           options: 
-               SSL: "true"
-               driver: "io.trino.jdbc.TrinoDriver"
-               cluster: "system"
+  dag:
+    - name: dg-customer-data
+      spec:
+        tags:
+          - crm
+        stack: flare:6.0
+        compute: runnable-default
+        stackSpec:
+          driver:
+            coreLimit: 2000m
+            cores: 1
+            memory: 2000m
+          executor:
+            coreLimit: 2000m
+            cores: 1
+            instances: 1
+            memory: 2000m
+          job:
+            explain: true
+            logLevel: INFO
+            inputs:
+              - name: customer_data
+                dataset: dataos://thirdparty:onboarding/customer.csv
+                format: csv
+                options:
+                  inferSchema: true
+
+            steps:
+              - sequence:
+                  - name: final
+                    sql: >
+                      SELECT 
+                        CAST(customer_id AS LONG)  as customer_id,
+                        CAST(birth_year AS LONG) as birth_year,
+                        education, 
+                        marital_status, 
+                        CAST(income AS DOUBLE) as income,
+                        country,
+                        current_timestamp() as created_at
+                      FROM customer_data
+                    
+            outputs:
+              - name: final
+                dataset: dataos://postgresabc:public/customer_data?acl=rw
+                driver: org.postgresql.Driver
+                format: jdbc
+                options:
+                  saveMode: overwrite
+                  
+
+
 
 ```
 ### **Step 3: Apply the configuration**
@@ -123,7 +140,7 @@ After finalizing the configuration, save it as workflow_schedule.yaml and apply 
 
 ```bash
 
-dataos-ctl apply -f workflow_schedule.yaml -w sandbox
+dataos-ctl apply -f <workflow name> -w sandbox
 ```
 Verify the schedule is active by running:
 
@@ -132,38 +149,3 @@ Verify the schedule is active by running:
 dataos-ctl get -t workflow -w sandbox
 
 ```
-## Best practices
-Here are some best practices for scheduling workflows:
-
-1. **Enable retries**: Set retries for transient issues to prevent failures.
-
-```yaml
-
-# Resource Section
-name: retry-workflow
-version: v1
-type: workflow
-tags:
-  - Flare
-description: Ingest data into Raw depot
-
-# Workflow-specific Section
-workflow:
-  title: Demo Ingest Pipeline
-  dag:
-
-# Job 1 specific Section
-    - name: connect-customer
-      file: flare/connect-customer/config_v1.yaml
-      retry: # Retry configuration
-        count: 2
-        strategy: "OnFailure"
-
-# Job 2 specific Section
-    - name: connect-customer-dt
-      file: flare/connect-customer/dataos-tool_v1.yaml
-      dependencies:
-        - connect-customer
-```
-2. **Minimize overlap**: Use concurrency policies like Forbid to prevent conflicts in workflows with shared resources.
-By following these steps and best practices, you will be able to automate data pipelines effectively, reducing manual interventions and enhancing data reliability.

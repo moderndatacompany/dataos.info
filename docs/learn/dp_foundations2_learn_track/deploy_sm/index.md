@@ -21,7 +21,8 @@ Group related components—workflows, scripts, models—into a single bundle for
 ??? "bundle.yaml"
 
     ```yaml
-    name: productaffinity-bundle-practice
+    # Important: Replace 'abc' with your initials to personalize and distinguish the resource you’ve created.
+    name: productaffinity-bundle-abc
     version: v1beta
     type: bundle
     tags:
@@ -39,9 +40,7 @@ Group related components—workflows, scripts, models—into a single bundle for
         workspace: <workspace_name>
         
         # Add other resources (monitors, pagers) you have created
-    
 
-        
         # - id: quality_product
         #   file: build/slo/input/product.yml
         #   workspace: <workspace_name>
@@ -83,7 +82,8 @@ dataos-ctl product apply -f productaffinity.yaml
 <details><summary>Click here to view Data Product Spec file</summary>
 
 ```yaml
-name: productaffinity
+# Important: Replace 'abc' with your initials to personalize and distinguish the resource you’ve created.
+name: productaffinity-abc
 version: v1beta
 type: data
 description: Analyzes product affinity to identify cross-sell opportunities.
@@ -109,7 +109,7 @@ v1beta:
         description: consumer
     resource:
       refType: dataos
-      ref: bundle:v1beta:productaffinity-bundle
+      ref: bundle:v1beta:productaffinity-bundle-abc
     inputs:
       - refType: dataos
         ref: dataset:postgresabc:public:customer_data
@@ -122,7 +122,7 @@ v1beta:
 
     outputs:
       - refType: dataos
-        ref: dataset:lakehouse:crm_data:product_affinity_matrix
+        ref: dataset:lakehouse:crm_data:product_affinity_matrix     # Verify the Depot name for your training instance
 
       - refType: dataos
         ref: dataset:lakehouse:crm_data:cross_sell_recommendations
@@ -178,7 +178,7 @@ workflow:
               markDeletedDataProducts: true
               dataProductFilterPattern:
                 includes:
-                 - productaffinity # Data Product details
+                 - productaffinity-abc # Your Data Product name
 ```
 </details>
 
