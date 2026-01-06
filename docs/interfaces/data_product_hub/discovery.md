@@ -42,7 +42,7 @@ Multiple filter options further help narrow the search using parameters such as 
 
 
     <center>
-    <img src="/interfaces/data_product_hub/discovery/annotely_image%20(2)%20(1).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/discovery/filters.png" alt="DPH" style="width:50rem; border: 1px solid black;" />
     <figcaption><i>Filters</i></figcaption>
     </center>
     
@@ -458,7 +458,7 @@ Perspectives provide flexible options for sharing and management:
 
 
 <center>
-<img src="/interfaces/data_product_hub/discovery/image%20(50).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/discovery/perspectivesnew.png" alt="DPH" style="width:30rem; border: 1px solid black;" />
 <figcaption><i>Perspectives Tab</i></figcaption>
 </center>
 
