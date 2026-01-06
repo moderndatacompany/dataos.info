@@ -226,7 +226,7 @@ Selecting the dimensions `account`, `city,` and the measure account `total_accou
     <img src="/interfaces/data_product_hub/exploration/Screenshot%20from%202024-09-24%2012-04-00.png" alt="DPH" style="width:50rem; border: 1px solid black;" />
     </center>
 
-- **Filtering Option**: A "filter" icon allows users to apply filters to the selected dimension or measure directly from the **Members Tab**.
+- **Filtering Option**: A "filter" icon allows users to apply filters to the selected dimension or measure directly from the **Members Tab**. Users can supply multiple values using the **IN** operator for clearer intent, alongside standard equality logic.
 
     **Example:** Clicking the filter icon on the `city` dimension and applying the filter "city is not equal to Sacramento" will display data for all cities except Sacramento. After applying the filter, click **Run Query** to view the filtered results.
     

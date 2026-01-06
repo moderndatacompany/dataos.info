@@ -20,6 +20,8 @@ Search is available in the top right menu bar across the Data Products page with
 
 A simple yet powerful way to find Data Products is provided by typing the name, description, or owner in the search interface. By default, matching Data Products are displayed, grouped by use cases. The Data Product’s name may be human-readable or a unique identifier.
 
+The search functionality offers a seamless experience where results filter in real-time as you type. Selecting a suggestion populates the search bar with the product title, and the search input clears automatically after navigation to prevent accidental clicks.
+
 <center>
   <img src="/interfaces/data_product_hub/discovery/annotely_image%20(1)%20(1).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
   <figcaption><i>Keyword Search</i></figcaption>
@@ -28,7 +30,7 @@ A simple yet powerful way to find Data Products is provided by typing the name, 
 
 ### **Filters**
 
-Multiple filter options further help narrow the search using parameters such as [Tier](/interfaces/data_product_hub/core_concepts/#tier), [Domain](/interfaces/data_product_hub/core_concepts/#domain), and [Owner](/products/data_product/core_concepts/#data-product-owner).
+Multiple filter options further help narrow the search using parameters such as [Tier](/interfaces/data_product_hub/core_concepts/#tier), [Domain](/interfaces/data_product_hub/core_concepts/#domain), [Owner](/products/data_product/core_concepts/#data-product-owner), and **Custom Tag Groups**.
 
 - **Tier:** Describes how the Data Product is organized, whether it follows a medallion architecture, is source-aligned, or is structured around specific entities or consumer needs.
 
@@ -36,9 +38,11 @@ Multiple filter options further help narrow the search using parameters such as 
 
 - **Owner:** Filters can be applied by owner, allowing users to direct questions to the appropriate person or team. The owner's DataOS User ID is used to list the various owners in the Owner dropdown, and only a single owner can be selected at a time.
 
+- **Custom Tag Groups:** Configurable filters based on Metis tag groups allow organizations to tailor product discovery to their governance models. These filters appear alongside existing options, supporting multi-selection within a group (combined using logical AND). Selected tags are displayed as badges on Data Product cards and detail pages.
+
 
     <center>
-    <img src="/interfaces/data_product_hub/discovery/annotely_image%20(2)%20(1).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/discovery/filters.png" alt="DPH" style="width:50rem; border: 1px solid black;" />
     <figcaption><i>Filters</i></figcaption>
     </center>
     
@@ -445,9 +449,16 @@ To know more about access options, please [refer to this section](/interfaces/da
 
 In the [Perspective](/interfaces/data_product_hub/core_concepts/#perspectives) tab, saved explorations of the Data Products can be accessed as Perspectives.
 
+Perspectives provide flexible options for sharing and management:
+
+*   **Public and Private:** Perspectives can be public (shared commonly used views) or private (personal views).
+*   **Management:** Perspective owners can edit and delete their saved perspectives.
+*   **Collaboration:** Non-owners can modify public perspectives and save the changes as a new perspective, preserving the original.
+*   **Visibility:** Indicators and filters help users quickly identify perspectives they own versus those shared by others.
+
 
 <center>
-<img src="/interfaces/data_product_hub/discovery/image%20(50).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/discovery/perspectivesnew.png" alt="DPH" style="width:30rem; border: 1px solid black;" />
 <figcaption><i>Perspectives Tab</i></figcaption>
 </center>
 
