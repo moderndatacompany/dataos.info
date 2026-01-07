@@ -123,7 +123,6 @@ workflow:
             options:
               dest-table: delta_retail.batch_events
               incremental-strategy: replace
-              aws_region: us-west-2
 ```
 
 !!! info

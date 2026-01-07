@@ -31,7 +31,7 @@ The following configurations must be set up before using the PostgreSQL:
         dest-table: retail.orders
         incremental-strategy: merge
         primary-key: order_id
-        aws_region: us-east-1
+
     ```
 === "Example"
     ```yaml
@@ -65,7 +65,7 @@ The following configurations must be set up before using the PostgreSQL:
                   dest-table: retail.orders
                   incremental-strategy: merge
                   primary-key: order_id
-                  aws_region: us-east-1
+          
     ```
 
 ## Sink Attributes Details

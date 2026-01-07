@@ -94,23 +94,30 @@ If the Depot is not created use the following manifest configuration template to
 ??? note "PostgreSQL Depot Manifest"
 
     ```yaml
-    name: ${{depot-name}}
+    name: ${{postgresdepot}}
     version: v2alpha
     type: depot
+    description: ${{description}}
     tags:
       - ${{tag1}}
       - ${{tag2}}
+    owner: ${{owner-name}}
     layer: user
     depot:
-      type: postgres
-      external: true
-    secrets:
-      - name: ${{instance-secret-name}}-r
-        allkeys: ${{true}}
-
-      - name: ${{instance-secret-name}}-rw
-        allkeys: ${{true}}
-            
+      type: JDBC                  
+      external: ${{true}}
+      secrets:
+        - name: ${{psql-instance-secret-name}}-r
+          allkeys: true
+        - name: ${{psql-instance-secret-name}}-rw
+          allkeys: true
+      jdbc:                        
+        subprotocol: "postgresql"
+        host: ${{host}}
+        port: ${{port}}
+        database: ${{postgres}}
+        params: #Required 
+          sslmode: ${{disable}}
     ```
 
     !!! info

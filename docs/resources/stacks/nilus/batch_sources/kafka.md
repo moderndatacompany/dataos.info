@@ -93,9 +93,7 @@ workflow:
             cpu: 100m
             memory: 256Mi
         logLevel: Info
-        envs:
-          PAGE_SIZE: 50000
-          LOADER_FILE_SIZE: 50000000
+
         stackSpec:
           source:
             address: dataos://testkafkadepot1?acl=rw&batch_size=10&batch_timeout=30&group_id=test_group
