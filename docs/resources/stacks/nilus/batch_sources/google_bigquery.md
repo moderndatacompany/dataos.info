@@ -111,7 +111,6 @@ workflow:
             options:
               dest-table: bq_retail.batch_orders
               incremental-strategy: append
-              aws_region: us-west-2
 
 ```
 

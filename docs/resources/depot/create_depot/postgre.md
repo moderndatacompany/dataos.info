@@ -74,7 +74,7 @@ depot:
      allkeys: true
     - name: ${{sf-instance-secret-name}}-rw
       allkeys: true
-  postgresql:                        
+  jdbc:                        
     subprotocol: "postgresql"
     host: ${{host}}
     port: ${{port}}
@@ -92,7 +92,7 @@ depot:
 ```yaml 
 name: ${{depot-name}}
 version: v2alpha
-type: Depot
+type: depot
 description: ${{description}}
 tags:
   - ${{tag1}}

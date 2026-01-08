@@ -88,7 +88,7 @@ depot:
 
 name: ${{"mysql01"}}
 version: v2alpha
-type: Depot
+type: depot
 description: ${{"MYSQL Sample data"}}
 tags:
   - ${{dropzone}}

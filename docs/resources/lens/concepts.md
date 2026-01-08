@@ -207,7 +207,7 @@ The dimension declaration involves the following properties:
 
 ## Measures
 
-Measures are quantifications, representing fields such as order subtotal, quantity of items purchased, or duration spent on a specific page. They encompass any measurable numerical value on which statistical calculations can be applied, including sum, average, and variance. For instance, with a measure such as the quantity of items purchased, operations can include calculating the average quantity ordered, sorting by descending quantities, summing all quantities, and performing various statistical analyses. For instance, consider the following YAML definition:
+Measures are quantification, representing fields such as order subtotal, quantity of items purchased, or duration spent on a specific page. They encompass any measurable numerical value on which statistical calculations can be applied, including sum, average, and variance. For instance, with a measure such as the quantity of items purchased, operations can include calculating the average quantity ordered, sorting by descending quantities, summing all quantities, and performing various statistical analyses. For instance, consider the following YAML definition:
 
 ```yaml
 tables:
@@ -281,7 +281,7 @@ measures:
    description: Total sales amount across all orders.
 
  - name: total_order_count
-   sql: COUNT(order_id)
+   sql: order_id
    type: count
    description: Total number of orders.
 

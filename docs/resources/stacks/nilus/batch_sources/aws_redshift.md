@@ -115,7 +115,6 @@ workflow:
             options:
               dest-table: redshift_retail.batch_orders
               incremental-strategy: append
-              aws_region: us-west-2
 ```
 
 !!! info

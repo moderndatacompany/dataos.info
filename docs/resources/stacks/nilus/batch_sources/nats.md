@@ -98,9 +98,7 @@ workflow:
             cpu: 100m
             memory: 256Mi
         logLevel: Info
-        envs:
-          PAGE_SIZE: 50000
-          LOADER_FILE_SIZE: 50000000
+
         stackSpec:
           source:
             address: nats+jetstream://<host>:<port>?subject=test&batch_size=10000&timeout=10

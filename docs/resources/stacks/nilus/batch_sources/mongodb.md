@@ -107,7 +107,6 @@ workflow:
             options:
               dest-table: mdb_retail.batch_customer_1
               incremental-strategy: replace
-              aws_region: us-west-2
 ```
 
 !!! info
