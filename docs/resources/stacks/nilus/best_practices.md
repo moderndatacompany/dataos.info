@@ -138,9 +138,6 @@ service:                                                   # Service specificati
   replicas: 1                                              # Number of replicas
   logLevel: INFO                                           # Logging level
   compute: ${{query-default}}                              # Compute type
-  persistentVolume:                                        # Persistent volume configuration
-    name: ${{ncdc-vo1-01}}                                 # Volume name (multiple options commented)
-    directory: ${{nilus_01}}                               # Target directory within the volume
   stack: nilus:3.0                                         # Nilus stack version
   stackSpec:                                               # Stack specification
     source:                                                # Source configuration block
@@ -157,7 +154,6 @@ service:                                                   # Service specificati
       options:                                             # Sink-specific options
         dest-table: pgdb_lenovo_test_004                   # Destination table name in sink
         incremental-strategy: append                       # Append mode for CDC write strategy
-        aws_region: us-west-2                              # AWS region for S3-backed DataOS Lakehouse
 ```
 
 **Recommendation:**

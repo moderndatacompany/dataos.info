@@ -226,7 +226,6 @@ sink:
   options:
     dest-table: analytics.sheet1_data
     incremental-strategy: replace
-    aws_region: us-east-1
 ```
 
 

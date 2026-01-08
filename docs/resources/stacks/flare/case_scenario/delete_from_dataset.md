@@ -42,6 +42,17 @@ workflow:                                                 # Workflow Specific Se
 
 ```
 
+Delete from the dataset with a filter to match rows to delete:
+
+```yaml
+actions:                                # Action Section
+  - name: delete_from_dataset           # Name of the Action
+    input: inputDf                      # Input Dataset Name
+    deleteWhere: "date_time <  TIMESTAMP('2026-01-01 00:00:00')" # Delete where Timestamp is less then given
+```
+
+
+
 ## **Delete from multiple dataset**
 
 The below case scenario also depicts data deletion based on a filter.

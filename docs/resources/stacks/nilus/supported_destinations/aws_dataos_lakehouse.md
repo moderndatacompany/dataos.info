@@ -56,7 +56,6 @@ For AWS-backed Lakehouse, following environment variables must be configured (vi
       options:
         dest-table: ${{destination-table-name}}
         incremental-strategy: ${{incremental-strategy}}
-        aws_region: ${{region}}
     ```
 === "Example"
     ```yaml
@@ -98,7 +97,6 @@ For AWS-backed Lakehouse, following environment variables must be configured (vi
           options:
             dest-table: retail
             incremental-strategy: append
-            aws_region: us-west-2 #optional        
     ```
 
 * `address` – UDL of Lakehouse to write into.
