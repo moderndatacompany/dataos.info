@@ -76,7 +76,7 @@ The Extract phase is the entry point into the Nilus pipeline, responsible for in
 
 Once raw data is extracted, the Normalize phase begins. This stage is critical for ensuring consistency. The goal of normalization in Nilus is to transform disparate source data into a unified, consumable format that aligns with the target data models used in the DataOS Lakehouse.
 
-F* A particularly important feature of normalization is variant handling. Source systems may contain data with inconsistencies - fields that occasionally change type or structure. Nilus identifies and resolves these variations to produce a clean, type-consistent dataset.
+* A particularly important feature of normalization is variant handling. Source systems may contain data with inconsistencies - fields that occasionally change type or structure. Nilus identifies and resolves these variations to produce a clean, type-consistent dataset.
 * This entire process is optimized for speed and scalability, with configurable controls over memory usage, file sizes, and concurrency levels to ensure smooth and predictable processing.
 
 ### **Load**
