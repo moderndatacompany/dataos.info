@@ -57,7 +57,7 @@ mask:
 
     - Data is masked during ingestion, resulting in the destination dataset containing only the masked version.
     - There is no separate unmasked dataset stored; hence, it is not possible to grant access to unmasked data for different users or groups.
-    - Nilus does not support dynamic data masking—masking cannot be applied or removed on-demand.
+    - Nilus does not support dynamic data masking, which means masking cannot be applied or removed on-demand.
     - To access unmasked data, the dataset must be **re-ingested** directly from the source **without** applying masking rules.
 
 ## Masking Algorithms
