@@ -1,14 +1,65 @@
 # Working with user groups and data policies
 
-Lens allows you to secure data in logical tables by defining data policies on their dimensions and segments. User groups are used to manage both data access and API scopes, which control access to specific functionalities and endpoints. This forms part of the access policy, ensuring users interact only with the data and features they are authorized to use.
+In Lens, different users have different responsibilities and access requirements.
+For example:
 
-Additionally, this governance extends to the Lens Studio Interface, where access to specific tabs and functionalities can be controlled. This setup helps in enforcing granular access controls and permissions, supporting compliance with organizational and regulatory standards.
+- Analysts may explore data freely
+
+- Engineers may need operational or ingestion-level access
+
+- Consumers may only view curated or restricted results
+
+To support these use cases, Lens provides a structured access and governance model that allows you to:
+
+- Organize users into groups
+
+- Control which APIs and platform features they can access
+
+- Secure how data is exposed to them
+
+This is achieved using user groups and data policies, which together define Lens’s access and data governance model.
+
+## User groups
+
+User groups define:
+
+- Which users belong to a group
+
+- Which Lens APIs and platform capabilities those users can access
+
+- Which Lens Studio UI features are available to them
+
+It answers "Who is this user and what can they access?".
+
+## Data policies
+
+Data policies are applied at the model level (dimensions and segments) and always reference existing user groups.
+
+Data policies define:
+
+- How data is presented to users, based on their user group
+
+- Whether data should be masked, hashed, or filtered
+
+It answers "How should data behave for users in a given group?"
+
+**How they work together**
+
+1. A user authenticates into Lens.
+
+2. Lens determines the user’s user group membership.
+
+3. API and UI access are granted based on the group’s configuration.
+
+4. Data policies are applied based on the same user groups.
+
+5. The user sees only the APIs and features they are allowed to use.
 
 ## Procedure
 
 Follow these steps to create and manage user groups:
 
-### Create a `user_groups.yml` file in your model folder.
+### **Create a `user_groups.yml` file in your model folder**
 
 ```latex
 model/
@@ -21,24 +72,270 @@ model/
 └── user_groups.yml
 ```
 
-### Define user groups using the following format:
+### **Define `user_group.yaml`**
+
+Define `user_group.yaml` file using following template:
+
+=== "Syntax"
+
+    ```yaml
+    user_groups: # List of user groups
+      - name: ${{user_group_1}} # Name of the group (check regex)
+        description: ${{description for user group}} # Description of the group
+        api_scopes:
+          - ${{meta}}
+          - ${{data}}
+          - ${{graphql}}
+          # - jobs
+          # - source
+        includes: # Users to include in this group
+          - ${{users:id:username}}
+          - ${{users:id:ironman}}
+        excludes: # Users to exclude from this group
+          - $[[users:id:blackwidow]]
+
+      - name: ${{user_group_2}}
+        ##..
+    ```
+
+=== "Example"
+
+    ```yaml
+    user_groups: # List of user groups
+      - name: reader # Name of the group (check regex)
+        description: # Description of the group
+        api_scopes:   
+          - meta
+          - data
+          - graphql
+          # - jobs
+          # - source
+        includes: # Users to include in this group
+          - users:id:thor
+          - users:id:ironman
+        excludes: # Users to exclude from this group
+          - users:id:blackwidow
+
+      - name: analyst
+    ```
+
+This one user group will serve three main purpose:
+
+- **API access control** – It defines which Lens APIs a group can access using api_scopes.
+
+- **Data security reference** – The same user group is reused in data policies to:
+
+      - Secure table dimensions (mask or hash data)
+
+      - Secure table segments (row-level filtering)
+
+Let's explore different examples:
+
+### **Using user groups for API access control**
+
+Different user groups can be given different API permissions.
+
+When defining a user group, you explicitly list:
+
+- Which users belong to the group
+
+- Which Lens APIs they are allowed to access
 
 ```yaml
-user_groups: # List of user groups
-  - name: reader # Name of the group (check regex)
-    description: # Description of the group
+user_groups:
+  - name: reader
+    description: Data analysts who explore data
+    api_scopes:
+      - meta
+      - data
+    includes:
+      - users:id:analyst1
+
+  - name: analyst
+    description: Data engineers with operational access
     api_scopes:
       - meta
       - data
       - graphql
-      # - jobs
-      # - source
-    includes: # Users to include in this group
-      - users:id:thor
-      - users:id:ironman
-    excludes: # Users to exclude from this group
-      - users:id:blackwidow
+    includes:
+      - users:id:engineer1
 ```
+
+In above manifest file:
+
+- Analysts can query data and use GraphQL
+
+- Engineers can access metadata and data APIs but not GraphQL
+
+- API access is controlled without writing custom authorization logic
+
+At this stage, only API access is being controlled.
+
+
+**Example:** Private semantic model for a specific team
+
+In this example, only users in the dataconsumer group can access and explore the semantic model, while all other users fall under the default group and are not intended to use it. This setup is used to keep a semantic model private to a specific team or project.
+
+```yaml
+user_groups:
+  - name: dataconsumer
+    description: Data analysts who explore data
+    api_scopes:
+      - meta
+      - data
+      - graphql
+      - job
+    includes:
+      - users:id:analyst1
+
+  - name: default
+    description: Data engineers with operational access
+    api_scopes:
+      - meta
+      - data
+      - graphql
+
+```
+
+
+### **Secure table's dimension using user group and data policy** 
+
+Once user groups exist, you can reference them in data policies using the `meta.secure` block which defines  which user groups the masking rule applies to.
+
+A data masking policy has two key parts:
+
+  - **The masking function (`func`)** — defines how the data is transformed. 
+
+  - **User group rules (`user_groups`)** — define who the transformation applies to
+
+**Supported data masking functions**
+
+Lens currently supports the following masking functions:
+
+| Function | Description | Use Case |
+|--------|-------------|----------|
+| `redact` | Replaces the value with `--redact--` | Hide sensitive data completely |
+| `md5` | Hashes the value using the MD5 algorithm | Obfuscate data while preserving uniqueness |
+
+**Example: Masking a dimension for a specific user group**
+
+Assume the following requirement:
+
+- Users in the `analyst` group should see masked values for the `gender` dimension.
+
+- Users in the `engineer` group should see the original (unmasked) values.
+
+To achieve this, include the `analyst` group in the `meta.secure.user_groups.includes` list and explicitly exclude the `engineer` group.
+
+```yaml 
+table: 
+#...
+#...
+  - name: gender
+    description: Flag indicating whether the consumer is male or female
+    sql: gender
+    type: string
+    meta:
+      secure:
+        func: redact
+        user_groups:
+          includes:  
+            - analyst  #security rules applies to analyst 
+          excludes:
+            - engineer
+```
+
+On the basis of this, members of `analyst` group will see the `gender` column value as `--redact--`. All members in the `engineer` group will see the gender column value as it is. 
+
+### **Use the user group to secure table's segment**
+
+In Lens, row-level data security is defined using the `meta.secure` block on table segments. This mechanism controls which rows of data are visible to users based on their user group.
+
+Row-level security allows you to filter data at query time so that different users see different subsets of rows from the same table.
+
+A row-level security policy has two main parts:
+
+  - **The segment condition (`sql`)** — defines which rows qualify. It acts like `where` clause.
+
+  - **User group rules (`user_groups`)** — define who the filter applies to.
+
+Unlike dimension masking, row-level security includes or excludes rows entirely rather than transforming values.
+
+**Example1: Apply a row filter based on user group**
+
+**Requirement:** Only non-reader users should see online sales data.
+
+```yaml
+segments:
+  - name: online_sales
+    sql: "{TABLE.order_mode} = 'online'"
+    meta:
+      secure:
+        user_groups:
+          includes:
+            - "*"
+          excludes:
+            - reader
+```
+
+**Example:** Filtering rows to show only online sales data to all user groups except `reader`.
+
+  ```yaml
+  segments:
+    - name: online_sales
+      sql: "{TABLE.order_mode} = 'online'"
+      meta:
+        secure:
+          user_groups:
+            includes:
+              - *
+            excludes:
+              - reader
+  ```
+
+**Example:** In this example, user groups represent regional marketing teams. Each team should only see data related to the country they are running campaigns for.
+
+- The `usa` group represents the US marketing team and is intended to see only US-specific campaign and customer data.
+
+- The `india` group represents the India marketing team and is intended to see only India-specific data.
+
+- The `default` group includes all users and they all will be able to see data of all countries.
+
+These user groups can be referenced in row-level filtering policies so that marketing teams only analyze data for their assigned region, while using the same Data Product and semantic model.
+
+```yaml
+user_groups:
+  - name: usa
+    api_scopes:
+      - meta
+      - data
+      - graphql
+      - jobs
+      - source
+    includes: 
+      - users:id:iamgroot
+
+  - name: india
+    api_scopes:
+      - meta
+      - data
+      - graphql
+      - jobs
+      - source
+    includes: 
+      - users:id:ironman
+
+  - name: default
+    api_scopes:
+      - meta
+      - data
+      - graphql
+      - jobs
+      - source
+    includes: "*"
+```
+ 
+## User group configuration 
 
 | **Attribute** | **Description** | **Requirement** | **Best Practice** |
 | --- | --- | --- | --- |
@@ -50,6 +347,7 @@ user_groups: # List of user groups
 | `excludes` | A list of users to be excluded from the user group. This can be specific user IDs or patterns to exclude certain users from the group. | optional | - If including all users, use `excludes` to remove specific users who should not have access.<br> &nbsp;&nbsp;<br> - Example:<br> excludes:<br> - `users:id:johndoe`<br> |
 
 `api_scopes`** To know more about the api scopes and their endpoints click [here](/resources/lens/api_endpoints_and_scopes/)
+
 
 ## Group priority
 
@@ -68,7 +366,8 @@ user_groups:
       - graphql
       - data
     includes:
-      - users:id:exampleuser
+      - users:id:analyst1
+      - users:id:analyst2
 
   - name: engineer
     description: Data engineer
@@ -76,7 +375,8 @@ user_groups:
       - meta
       - data
     includes:
-      - users:id:exampleuser
+      - users:id:engineer1
+      - users:id:engineer2
 ```
 
 In this example:
@@ -84,91 +384,35 @@ In this example:
 - `exampleuser` is included in both the `analyst` and `engineer` groups.
 - Since the `analyst` group is listed before the `engineer` group, `exampleuser` will have the permissions of the `analyst` group.
 
-## Data policies
+### **Configure user group policies**
 
-Data policies can be applied to dimensions and segments of tables to control data access and masking.
+You can configure user group policies to control access:
 
-### **Defining data masking policy on a Table’s dimension**
+```yaml
+# 1. Security rule applies to everyone
+meta:
+  secure:
+    func: redact | md5
+    user_groups: "*"
 
-You can mask data on a table's dimension using the `secure` property in the meta section. Two data masking functions are available:
+# 2. Security rule applies to everyone, except for default
+meta:
+  secure:
+    func: redact | md5
+    user_groups:
+      includes: "*"
+      excludes:
+        - default
 
-- **Redact**: Replaces the value with the string `redact`.
-- **md5**: Hashes the value using the MD5 algorithm.
-
-#### **Define the data masking function** 
-
-- Include the masking function in the `meta` section of your dimension definition. Here we have masked the gender column for the  specific group `dataconsumer` but the same column is not redacted for the users in the default group. That means everybody can see the row values of gender column except for the users in `dataconsumer` group.
-
-  ```yaml
-  - name: gender
-    description: Flag indicating whether the consumer is male or female
-    sql: gender
-    type: string
-    meta:
-      secure:
-        func: redact
-        user_groups:
-          includes:
-            - dataconsumer
-          excludes:
-            - default
-  ```
-
-#### **Configure user group policies**
-
-- You can configure user group policies to control access:
-
-    ```yaml
-    # 1. Secure for everyone
-    meta:
-      secure:
-        func: redact | md5
-        user_groups: "*"
-
-    # 2. Secure for everyone, except for specific user_group (default)
-    meta:
-      secure:
-        func: redact | md5
-        user_groups:
-          includes: "*"
-          excludes:
-            - default
-
-    # 3. Secure for specific user_group (reader) and exclude some (default)
-    meta:
-      secure:
-        func: redact | md5
-        user_groups:
-          includes:
-            - reader
-          excludes:
-            - default
-
-    ```
-
-### **Defining row filter policy on a Table’s Segment**
-
-You can apply a row filter policy to show specific data based on user groups.
-
-#### **Define the row filter policy**
-
-- Add the filter policy to the `segments` section of your table definition:
-
-**Example:** Filtering rows to show only online sales data to all user groups except `reader`.
-
-  ```yaml
-  segments:
-    - name: online_sales
-      sql: "{TABLE.order_mode} = 'online'"
-      meta:
-        secure:
-          user_groups:
-            includes:
-              - *
-            excludes:
-              - reader
-  ```
-
-
+# 3. Security rule applies to reader user group and exclude default
+meta:
+  secure:
+    func: redact | md5
+    user_groups:
+      includes:
+        - reader
+      excludes:
+        - default
+```
 
 > <b>Note:</b> When you apply any data policy in Lens, it automatically propagates from the Lens model to all BI tool syncs. For example, if you redact the email column for a specific user group using a data policy in Lens, that column will remain redacted when users from that group sync their Lens model with BI tools like Tableau or Power BI. 
