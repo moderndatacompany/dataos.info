@@ -686,8 +686,7 @@ nav:
             - Data Movement Architecture: resources/stacks/nilus/data_movement_architecture.md
             - Setting Up Nilus: resources/stacks/nilus/set_up.md
             - Quick Start: resources/stacks/nilus/quick_start.md
-            - Data Masking: resources/stacks/nilus/data_masking.md
-            - Schema Evolution: resources/stacks/nilus/schema_evolution.md
+            - Configurations: resources/stacks/nilus/configurations.md
             - CDC Sources:
               - resources/stacks/nilus/cdc_sources/index.md
               - IBM Db2: resources/stacks/nilus/cdc_sources/ibm_db2.md
@@ -731,6 +730,8 @@ nav:
               - Snowflake: resources/stacks/nilus/supported_destinations/snowflake.md
               - PostgreSQL: resources/stacks/nilus/supported_destinations/postgresql.md
               - Custom Destination: resources/stacks/nilus/supported_destinations/custom_destination.md
+            - Data Masking: resources/stacks/nilus/data_masking.md
+            - Schema Evolution: resources/stacks/nilus/schema_evolution.md
             # - Governance: resources/stacks/nilus/governance.md
             # - Observability: resources/stacks/nilus/observability.md
             - Best Practices: resources/stacks/nilus/best_practices.md

@@ -127,6 +127,195 @@ Apply the Nilus Server by executing the command below.
 ```bash
 dataos-ctl resource apply -f ${{file-path}} 
 ```
+### **Lifecycle and Deployment**
+
+- On deployment, the Nilus stack initializes with a **Migration step** that creates the required database tables. This step is idempotent; tables are only created if they don't exist.
+- After a successful migration, the **Nilus Server** process is started.
+- Table schema updates require a code change, engineering effort, and a new Nilus stack image.
+
+#### **Table Schemas**
+
+**`runs_info`**
+
+Tracks the high-level metadata and health of pipeline runs.
+
+??? note "Schema"
+    | Column Name | Data Type | Description |
+    | --- | --- | --- |
+    | `id` | String (PK) | Unique identifier for the entry |
+    | `run_id` | String | ID of the pipeline run |
+    | `dataos_resource_id` | String | Associated DataOS resource |
+    | `run_as_user` | String | User initiating the run |
+    | `load_id` | String | Identifier for the load cycle |
+    | `source_depot` | String | Source depot name |
+    | `destination_depot` | String | Destination depot name |
+    | `destination_uri` | String | URI of the destination |
+    | `destination_schema` | String | Schema at destination |
+    | `started_at` | DateTime (TZ) | Start time of run |
+    | `finished_at` | DateTime (TZ) | End time of run |
+    | `duration_sec` | Numeric | Duration of the run in seconds |
+    | `records_count` | JSONB | Record counts per stage |
+    | `files_size_mb` | Numeric | Total file size in MB |
+    | `memory_mb` | Numeric | Memory used in MB |
+    | `cpu_percent` | Numeric | CPU utilization percentage |
+    | `first_run` | Boolean | Flag if it's the first pipeline run |
+    | `is_success` | Boolean | Run success indicator |
+    | `error` | JSONB | Error details, if any |
+    | `pipeline_state` | JSONB | Summary of pipeline status |
+
+??? note "Indices"      
+    | **Index Name** | **Columns** | **Purpose** |
+    | --- | --- | --- |
+    | `runs_info_pkey` | `id` | Primary key ensuring row-level uniqueness and fast direct access. |
+    | `idx_runs_info_run_load` | `run_id`, `load_id` | Optimizes JOINs with extract/normalize/load tables based on run-load keys. |
+    | `idx_runs_info_started_at_desc` | `started_at DESC` | Speeds up retrieval of latest runs |
+    | `idx_runs_info_success_time` | `is_success`, `started_at DESC` | Supports operational queries filtered by run success with recent-first order. |
+    | `idx_runs_info_user_time` | `run_as_user`, `started_at DESC` | Improves user-specific history views sorted by time. |
+    | `idx_runs_info_resource_time` | `dataos_resource_id`, `started_at DESC` | Enables recent run tracking based on dataos_resource_id |
+
+**`extract_info`**
+
+Captures metadata about the extract phase.
+
+??? note "Schema"
+    | Column Name | Data Type | Description |
+    | --- | --- | --- |
+    | `run_id` | String | Associated pipeline run ID |
+    | `load_id` | String (PK) | Unique ID for extract-load cycle |
+    | `table_name` | ARRAY(String) | List of tables extracted |
+    | `started_at` | DateTime (TZ) | Extract start time |
+    | `finished_at` | DateTime (TZ) | Extract end time |
+    | `duration_sec` | Numeric | Duration of extract step |
+    | `records_count` | Integer | Number of records extracted |
+    | `files_size_mb` | Numeric | Size of extracted files in MB |
+    | `memory_mb` | Numeric | Memory consumed during extraction (MB) |
+    | `cpu_percent` | Numeric | CPU usage percentage during extraction |
+    | `state` | String | State of extract phase (e.g., completed, failed) |
+
+??? note "Indices"    
+    | **Index Name** | **Columns** | **Purpose** |
+    | --- | --- | --- |
+    | `extract_info_pkey` | `load_id` | Primary key to uniquely identify each extract entry. |
+    | `idx_extract_info_run_load` | `run_id`, `load_id` | Supports JOINs with `runs_info` table based on composite identifiers. |
+    | `idx_extract_info_run_load_started_at_desc` | `run_id`, `load_id`, `started_at DESC` | Enables optimized filtering and ordering by time for a specific run+load. |
+
+**`normalize_info`**
+
+Stores metadata about the normalization phase, which is destination-specific.
+
+??? note "Schema"
+    | Column Name | Data Type | Description |
+    | --- | --- | --- |
+    | `run_id` | String | Associated pipeline run ID |
+    | `load_id` | String (PK) | Unique ID for normalization load cycle |
+    | `table_name` | ARRAY(String) | List of normalized tables |
+    | `started_at` | DateTime (TZ) | Normalize start time |
+    | `finished_at` | DateTime (TZ) | Normalize end time |
+    | `duration_sec` | Numeric | Duration of normalization phase |
+    | `records_count` | Integer | Number of normalized records |
+    | `files_size_mb` | Numeric | Size of normalized files in MB |
+    | `memory_mb` | Numeric | Memory usage in normalization |
+    | `cpu_percent` | Numeric | CPU usage during normalization |
+    | `state` | String | State of normalization phase |
+
+??? note "Indices"    
+    | **Index Name** | **Columns** | **Purpose** |
+    | --- | --- | --- |
+    | `normalize_info_pkey` | `load_id` | Primary key to uniquely identify each normalize entry. |
+    | `idx_normalize_info_run_load` | `run_id`, `load_id` | Supports efficient JOINs with `runs_info` on composite identifiers. |
+    | `idx_normalize_info_run_load_started_at_desc` | `run_id`, `load_id`, `started_at DESC` | Enables optimized filtering and ordering by time for a specific run+load. |
+
+**`load_info`**
+
+Logs all metadata about the data load step.
+
+??? note "Schema"
+    | Column Name | Data Type | Description |
+    | --- | --- | --- |
+    | `run_id` | String | Associated pipeline run ID |
+    | `load_id` | String (PK) | Unique ID for the load cycle |
+    | `table_name` | ARRAY(String) | Tables loaded |
+    | `started_at` | DateTime (TZ) | Load start time |
+    | `finished_at` | DateTime (TZ) | Load end time |
+    | `duration_sec` | Numeric | Duration of load phase |
+    | `files_loaded` | Integer | Number of files loaded |
+    | `files_size_mb` | Numeric | File size in MB |
+    | `memory_mb` | Numeric | Memory used during load |
+    | `cpu_percent` | Numeric | CPU used during load |
+    | `schema` | JSONB | Loaded schema definition |
+    | `state` | String | State of load phase |
+    
+
+??? note "Indices"    
+    | **Index Name** | **Columns** | **Purpose** |
+    | --- | --- | --- |
+    | `load_info_pkey` | `load_id` | Primary key to uniquely identify each load entry. |
+    | `idx_load_info_run_load` | `run_id`, `load_id` | Facilitates efficient JOINs with `runs_info` and lookups by run/load combo. |
+    | `idx_load_info_run_load_started_at_desc` | `run_id`, `load_id`, `started_at DESC` | Enables optimized filtering and ordering by time for a specific run+load. |
+
+#### **Observability and Monitoring**
+
+- Metrics are pushed to Prometheus via the Pushgateway.
+    
+??? note "Exposed Prometheus Metrics"
+    | **Metric** | **Type** | **Category** | **Description** | **Insights / Use-Cases** |
+    | --- | --- | --- | --- | --- |
+    | `python_gc_objects_collected_total` | counter | Garbage Collection | Number of objects collected by the Python GC, per generation. | Indicates object churn; frequent collections may signal memory pressure. |
+    | `python_gc_objects_uncollectable_total` | counter | Garbage Collection | Number of objects that the GC could not collect. | Detects potential memory leaks or improper object references. |
+    | `python_gc_collections_total` | counter | Garbage Collection | Total number of GC cycles executed, per generation. | Useful to monitor memory cleanup frequency over time. |
+    | `process_virtual_memory_bytes` | gauge | Resource Usage | Total virtual memory used by the process. | Helps track memory allocation and detect memory bloat or leaks. |
+    | `process_resident_memory_bytes` | gauge | Resource Usage | Actual physical memory (RAM) used by the process. | Critical for container resource sizing and threshold alerting. |
+    | `process_start_time_seconds` | gauge | Runtime Info | UNIX timestamp for when the process started. | Useful to determine uptime and detect unexpected restarts. |
+    | `process_cpu_seconds_total` | counter | Resource Usage | Total accumulated CPU time used by the process. | Tracks CPU-bound behavior and supports workload tuning. |
+    | `process_open_fds` | gauge | Resource Usage | Number of open file descriptors. | Surging values may indicate resource leakage; supports alerting. |
+    | `process_max_fds` | gauge | Resource Usage | Maximum number of file descriptors allowed. | Baseline for alerting on open file descriptors. |
+    | `python_info` | gauge | Runtime Info | Metadata about the Python environment (version, implementation). | Useful for environment validation, debugging, and audit. |
+    | `http_requests_total` | counter | HTTP Requests | Count of HTTP requests by endpoint, method, and status code. | Tracks endpoint usage, detects spikes, supports SLI/SLO monitoring. |
+    | `http_requests_created` | gauge | HTTP Requests | Timestamp when a request counter was initialized. | Helps correlate uptime and metric lifecycle. |
+    | `http_request_duration_seconds` | histogram | HTTP Requests | Distribution of HTTP request latencies in seconds. | Enables latency tracking, SLO alerting, and endpoint performance optimization. |
+    | `http_request_duration_seconds_created` | gauge | HTTP Requests | Timestamp for when latency tracking began. | Assists in diagnosing metric setup timing relative to deploys. |
+    
+- Dashboards and alerting mechanisms are configured in Grafana using Prometheus metrics as the data source.
+- Metrics data is persisted in PostgreSQL tables for a configurable retention period of 30, 60, or 90 days.
+- All data is archived in object storage using a wide-row format for deep storage.
+- API endpoints are exposed for data access and integration.
+    
+??? note "Observability API Endpoints"
+
+    `{{base_url}}`: *<dataos_context_url>/nilus/<workspace>:nilus-server*
+
+    **Example: ***https://dataos-training.dataos.app/nilus/system:nilus-server*
+
+    *All endpoints are protected using **Bearer Authentication**.*
+ 
+
+    <!-- [nilus.postman_collection.json](attachment:9584c9c1-2e37-4926-9fd5-94460e5452ac:nilus.postman_collection.json) -->
+
+    | **Endpoint** | **Method** | **Description** |
+    | --- | --- | --- |
+    | `{{base_url}}/health` | **GET** | Service and DB connectivity health |
+    | `{{base_url}}/metrics` | **GET** | Prometheus metrics |
+    | `{{base_url}}/info` | **GET** | Server name and Nilus image version |
+    | `{{base_url}}/api/v1/pipelines` | **GET** | List pipeline runs (filters: run_as_user, is_success, dataos_resource_id, started_at, started_at_gte, started_at_lte, limit, offset) |
+    | `{{base_url}}/api/v1/pipelines/{resource_id}/runs` | **GET** | List runs for a specific DataOS resource (limit, offset) |
+    | `{{base_url}}/api/v1/pipelines/{resource_id}/latest` | **GET** | Most recent run for a specific DataOS resource |
+    | `{{base_url}}/api/v1/pipelines/stats` | **GET** | Overall pipeline stats for a time period (period) |
+    | `{{base_url}}/api/v1/pipelines/{resource_id}/stats` | **GET** | Pipeline stats for a resource over a period (period) |
+    | `{{base_url}}/api/v1/cdc/offset-storage` | **GET** | List CDC offset storage records (filters: offset_key, record_insert_ts_gte, record_insert_ts_lte, limit, offset) |
+    | `{{base_url}}/api/v1/cdc/schema-history` | **GET** | List CDC schema history (filters: id, record_insert_ts_gte, record_insert_ts_lte, limit, offset) |
+    | `{{base_url}}/api/v1/cdc/offset-keys` | **GET** | Debug list of all CDC offset keys |
+
+
+**Additional Notes**
+
+- Each pipeline run consists of one or more extract-normalize-load cycles.
+    
+    - Change Data Capture (CDC) pipelines involve multiple cycles.
+
+    - Batch pipelines involve a single cycle.
+
+- The `load_id` value uniquely identifies each cycle.
+- The `alembic_version` table is required and must retain its original name.
 
 
 ## Sample Nilus Stack
