@@ -278,7 +278,7 @@ Alternatively, you can write more advanced queries that include transformations,
 SELECT
   CAST(customer_id AS VARCHAR) AS customer_id,
   first_name,
-  CAST(DATE_PARSE(birth_date, '%d-%m-%Y') AS TIMESTAMP) AS birth_date,
+  CAST(TO_DATE(birth_date, 'DD-MM-YYYY') AS TIMESTAMP) AS birth_date,
   age,
   CAST(register_date AS TIMESTAMP) AS register_date,
   occupation,
@@ -296,7 +296,7 @@ FROM
 Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For example, to define a table for `sales `data:
 
 ```yaml
-table:
+tables:
   - name: customers
     sql: {{ load_sql('customers') }}
     description: Table containing information about sales transactions.

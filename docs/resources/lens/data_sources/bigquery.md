@@ -5,6 +5,14 @@
 When setting up a semantic model, it is crucial to understand that the semantic model is part of the Data Product. Therefore, you do not need to create a separate Git repository. Instead, semantic model will be in the <code>/build</code> folder of the the Data Product's existing repository. 
 </aside>
 
+
+## Prerequisites
+
+The following prerequisites are required:
+
+- [Instance Secret](/resources/lens/data_sources/minerva/#create-instance-secret-for-data-source-connection)
+- [Active Depot](/resources/lens/data_sources/minerva/#create-postgres-depot-manifes-file)
+
 ## Step 1: Set up a connection with source
 
 To set up a connection with the source, create Depot if the Depot has already been created and activated during the Design phase of the Data Product, skip this step. The Lens model will utilize the existing Depot and the associated Instance Secrets set up. Ensure that the Depot is properly connected to the correct data source and that you have the necessary access credentials (Instance Secrets) available for the Lens deployment.
@@ -24,8 +32,8 @@ instance-secret:
   type: key-value # Type of Instance-secret (mandatory)
   acl: r # Access control list (mandatory)
   data: # Data (mandatory)
-    GITSYNC_USERNAME: <code_repository_username>
-    GITSYNC_PASSWORD: <code_repository_password>
+    username: 
+    password: 
 ```
 
 ```yaml title="instance-secret-rw.yml"
@@ -41,8 +49,8 @@ instance-secret:
   type: key-value # Type of Instance-secret (mandatory)
   acl: rw # Access control list (mandatory)
   data: # Data (mandatory)
-    GITSYNC_USERNAME: <code_repository_username>
-    GITSYNC_PASSWORD: <code_repository_password>
+    username: 
+    password: 
 ```
 
 ```yaml title="bigquery-depot.yml"
@@ -56,15 +64,14 @@ owner: ${{owner-name}}
 layer: user
 depot:
   type: BIGQUERY                 
-      description: ${{description}} # optional
+  description: ${{description}} # optional
   external: ${{true}}
   secrets:
     - name: ${{bq-instance-secret-name}}-r
-      allkeys: true
-
+      allKeys: true
     - name: ${{bq-instance-secret-name}}-rw
-      allkeys: true
-  bigquery:  # optional                         
+      allKeys: true
+  bigquery:  # optional
     project: ${{project-name}} # optional
     params: # optional
       ${{"key1": "value1"}}
@@ -75,7 +82,7 @@ depot:
 
 In the `model` folder, the semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each subfolder contains specific files related to the Lens model. You can download the Lens template to quickly get started.
 
-[lens template](/resources/lens/lens_model_folder_setup/lens-project-template.zip)
+[Lens template](/resources/lens/lens_model_folder_setup/lens-project-template.zip)
 
 
 ### **Step 2.1: Load data from the data source**
@@ -94,7 +101,7 @@ For instance, a simple data load might look as follows:
 SELECT
   *
 FROM
-  "bigquery"."retail".channel;
+  "bigquery"."retail"."channel";
 ```
 
 Alternatively, you can write more advanced queries that include transformations, such as:
@@ -103,7 +110,7 @@ Alternatively, you can write more advanced queries that include transformations,
 SELECT
   CAST(customer_id AS VARCHAR) AS customer_id,
   first_name,
-  CAST(DATE_PARSE(birth_date, '%d-%m-%Y') AS TIMESTAMP) AS birth_date,
+  CAST(PARSE_DATE('%d-%m-%Y', birth_date) AS TIMESTAMP) AS birth_date,
   age,
   CAST(register_date AS TIMESTAMP) AS register_date,
   occupation,
@@ -113,7 +120,7 @@ SELECT
   country,
   zip_code
 FROM
-  "bigquery"."retail".customer;
+  "bigquery"."retail"."customer";
 ```
   
 ### **Step 2.2: Define the table in the model**
@@ -121,7 +128,7 @@ FROM
 Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For instance, to define a table for `sales `data:
 
 ```yaml
-table:
+tables:
   - name: customers
     sql: {{ load_sql('customers') }}
     description: Table containing information about sales transactions.

@@ -29,7 +29,7 @@ User groups define:
 
 - Which Lens Studio UI features are available to them
 
-It answers "Who is this user and what can they access?".
+It answers: "Who is this user and which api can they access in semantic model?".
 
 ## Data policies
 
@@ -119,7 +119,7 @@ Define `user_group.yaml` file using following template:
       - name: analyst
     ```
 
-This one user group will serve three main purpose:
+This user group will serve three main purposes:
 
 - **API access control** – It defines which Lens APIs a group can access using api_scopes.
 
@@ -129,7 +129,7 @@ This one user group will serve three main purpose:
 
       - Secure table segments (row-level filtering)
 
-Let's explore different examples:
+Let's explore different use cases:
 
 ### **Using user groups for API access control**
 
@@ -141,13 +141,14 @@ When defining a user group, you explicitly list:
 
 - Which Lens APIs they are allowed to access
 
+**Example 1: Reader group can only read and access lens but cannot explore it**
+
 ```yaml
 user_groups:
   - name: reader
     description: Data analysts who explore data
     api_scopes:
       - meta
-      - data
     includes:
       - users:id:analyst1
 
@@ -161,7 +162,7 @@ user_groups:
       - users:id:engineer1
 ```
 
-In above manifest file:
+This user group will serve three main purposes:
 
 - Analysts can query data and use GraphQL
 
@@ -172,9 +173,9 @@ In above manifest file:
 At this stage, only API access is being controlled.
 
 
-**Example:** Private semantic model for a specific team
+**Example 2: Private semantic model for a specific team**
 
-In this example, only users in the dataconsumer group can access and explore the semantic model, while all other users fall under the default group and are not intended to use it. This setup is used to keep a semantic model private to a specific team or project.
+In this example, only users in the `dataconsumer` group can access and explore the semantic model, while all other users fall under the default group and are not intended to use it. This setup is used to keep a semantic model private to a specific team or project.
 
 ```yaml
 user_groups:
@@ -188,6 +189,7 @@ user_groups:
     includes:
       - users:id:analyst1
 
+# In this case, leave the default group blank
   - name: default
     description: Data engineers with operational access
     api_scopes:
@@ -198,9 +200,9 @@ user_groups:
 ```
 
 
-### **Secure table's dimension using user group and data policy** 
+### **Secure a table dimension using user group and data policy** 
 
-Once user groups exist, you can reference them in data policies using the `meta.secure` block which defines  which user groups the masking rule applies to.
+Once user groups exist, you can reference them in data policies using the `meta.secure` block which defines to which user groups the masking rule applies to.
 
 A data masking policy has two key parts:
 
@@ -228,7 +230,7 @@ Assume the following requirement:
 To achieve this, include the `analyst` group in the `meta.secure.user_groups.includes` list and explicitly exclude the `engineer` group.
 
 ```yaml 
-table: 
+tables: 
 #...
 #...
   - name: gender
@@ -245,7 +247,7 @@ table:
             - engineer
 ```
 
-On the basis of this, members of `analyst` group will see the `gender` column value as `--redact--`. All members in the `engineer` group will see the gender column value as it is. 
+On the basis of this, members of the `analyst` group will see the `gender` column value as `--redact--`. All members of the `engineer` group will see the gender column value as it is. 
 
 ### **Use the user group to secure table's segment**
 
@@ -255,13 +257,13 @@ Row-level security allows you to filter data at query time so that different use
 
 A row-level security policy has two main parts:
 
-  - **The segment condition (`sql`)** — defines which rows qualify. It acts like `where` clause.
+  - **The segment condition (`sql`)** — defines which rows qualify. It acts like a `WHERE` clause.
 
   - **User group rules (`user_groups`)** — define who the filter applies to.
 
 Unlike dimension masking, row-level security includes or excludes rows entirely rather than transforming values.
 
-**Example1: Apply a row filter based on user group**
+**Example 1: Apply a row filter based on user group**
 
 **Requirement:** Only non-reader users should see online sales data.
 
@@ -278,7 +280,7 @@ segments:
             - reader
 ```
 
-**Example:** Filtering rows to show only online sales data to all user groups except `reader`.
+**Example 2: Filtering rows to show only online sales data to all user groups except `reader`**
 
   ```yaml
   segments:
@@ -293,7 +295,7 @@ segments:
               - reader
   ```
 
-**Example:** In this example, user groups represent regional marketing teams. Each team should only see data related to the country they are running campaigns for.
+**Example 3:** In this example, user groups represent regional marketing teams. Each team should only see data related to the country they are running campaigns for.
 
 - The `usa` group represents the US marketing team and is intended to see only US-specific campaign and customer data.
 
@@ -346,7 +348,7 @@ user_groups:
 | `includes` | A list of users to be included in the user group. This can be specific user IDs or patterns to include multiple users. Use `"*"` to include all users or specify user IDs. | mandatory | - If the number of users is small, prefer using explicit user identifiers (e.g., `users:id:johndoe`) over generic patterns (e.g., `*`). <br> &nbsp;&nbsp;<br> - Example:<br> includes:<br> - `"*"`<br> |
 | `excludes` | A list of users to be excluded from the user group. This can be specific user IDs or patterns to exclude certain users from the group. | optional | - If including all users, use `excludes` to remove specific users who should not have access.<br> &nbsp;&nbsp;<br> - Example:<br> excludes:<br> - `users:id:johndoe`<br> |
 
-`api_scopes`** To know more about the api scopes and their endpoints click [here](/resources/lens/api_endpoints_and_scopes/)
+`api_scopes`** Know more about the [API scopes and their endpoints](/resources/lens/api_endpoints_and_scopes/)
 
 
 ## Group priority

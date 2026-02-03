@@ -39,7 +39,7 @@ To effectively leverage Lens for data modeling, several core concepts are crucia
 
 ## Table
 
-A table is a logical construct used to define a real-world entity such as `customer`, `product.` It contains information about joins (relationships), dimensions, measures, and segments. Each table is defined in a separate YAML file.
+A table is a logical construct used to define a real-world entity such as `customer`, `product`. It contains information about joins (relationships), dimensions, measures, and segments. Each table is defined in a separate YAML file.
 
 We'll use a sample database with two tables, `owner` and `contacts` to illustrate the concepts.
 
@@ -47,7 +47,7 @@ We'll use a sample database with two tables, `owner` and `contacts` to illustrat
 
 <div style="text-align: center;" markdown="1">
 
-| owner_id | owner_name    | owner_email        | city          |
+| id | owner_name    | owner_email        | city          |
 | --------- | -------------- | ------------------- | ------------- |
 | 1         | Alice Johnson  | alice@example.com   | New York      |
 | 2         | Bob Smith      | bob@example.com     | San Francisco |
@@ -90,8 +90,8 @@ tables:
   - name: owner
     sql: >
       SELECT *
-      FROM owner_id, email
-      WHERE owner.owner_id = contacts.owner_id
+      FROM owner, contacts
+      WHERE owner.id = contacts.owner_id
 ```
 
 > Within each table, dimensions, measures, and segments are defined. Joins are used to define relations between tables.
@@ -237,7 +237,7 @@ When a `city` dimension is applied to the measure to answer the question *"Where
 ```sql
 SELECT city, COUNT(id) AS count
 FROM users
-GROUP BY 2;
+GROUP BY 1; --group by city
 ```
 
 You can include multiple dimensions in your query to perform grouping as needed.

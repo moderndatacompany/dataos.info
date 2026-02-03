@@ -43,7 +43,7 @@ Lens is engineered to handle complex and large-scale data models with ease. Key 
 
 - **Governance and access control:** Lens ensures data governance through[ user group management and data policies](/resources/lens/user_groups_and_data_policies/), enabling precise control over who can access and interact with data models. 
 
-- **BI integration:** Lens improves interoperability through robust integration with Superset, Tableau,  and PowerBI. This ensures that data models can be easily utilized across various BI platforms, enhancing the overall analytics experience. 
+- **BI integration:** Lens improves interoperability through robust integration with Superset, Tableau, and Power BI. This ensures that data models can be easily utilized across various BI platforms, enhancing the overall analytics experience. 
 
 - **Performance optimization through Flash:** Designed to work with DataOS Lakehouse and Iceberg-format Depots, [Flash](/resources/stacks/flash/) improves query performance by leveraging in-memory execution. This optimization ensures that data teams can efficiently handle large-scale queries with enhanced speed and performance.
 
@@ -59,7 +59,7 @@ When data resides in a single source such as AWS Redshift, BigQuery, PostgreSQL,
 
 - [AWS Redshift](/resources/lens/data_sources/awsredshift/)
 
-- [Bigquery](/resources/lens/data_sources/bigquery/)
+- [BigQuery](/resources/lens/data_sources/bigquery/)
 
 - [Databricks](/resources/lens/data_sources/databricks/)
 
@@ -95,9 +95,9 @@ After creating a semantic model, the next step is to explore it by running queri
 
 ### **BI Integration**
 
-- [PowerBI Desktop](/interfaces/data_product_hub/activation/bi_sync/powerbi/)
+- [Power BI Desktop](/interfaces/data_product_hub/activation/bi_sync/powerbi/)
 
-- [PowerBI Service](/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/)
+- [Power BI Service](/interfaces/data_product_hub/activation/bi_sync/powerbi/powerbi_service/)
 
 - [Superset](/resources/lens/bi_integration/superset/)
 

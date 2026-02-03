@@ -58,7 +58,7 @@ lens:
     LENS2_SOURCE_WORKSPACE_NAME: public
     LENS2_DB_TIMEOUT: 1500000
   router:
-  logLevel: INFO
+    logLevel: INFO
   envs:
     LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
     LENS2_SOURCE_WORKSPACE_NAME: public
@@ -268,7 +268,7 @@ instance-secret:
 lens:
 	secrets:
 	  - name: github-r
-	    allkeys: true
+	    allKeys: true
 ```
 
 ---

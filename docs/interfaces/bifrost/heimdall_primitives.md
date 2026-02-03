@@ -7,7 +7,7 @@ In DataOS, all resources or applications function as Policy Enforcement Points (
 
 When adding a new application to the DataOS environment, it's imperative to register it as a PEP to enable interaction. To register a new PEP provider, the following details are required:
 
-- **Version**: Indicates the version of the PEP provider. For new applications in dataos, the version is typically set to `0.1.0`.
+- **Version**: Indicates the version of the PEP provider. For new applications in DataOS, the version is typically set to `0.1.0`.
 - **ID**: Unique identifier for the PEP provider.
 - **Name**: Name of the PEP provider.
 - **Description**: Brief description of the PEP provider's purpose.

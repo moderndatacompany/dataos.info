@@ -100,7 +100,7 @@ depot:
   external: true
   secrets:
     - name: databricks-r  #instance-secret created
-      allkeys: true
+      allKeys: true
   jdbc:
     subprotocol: databricks-jdbc
     database: main                               #optional
@@ -197,7 +197,7 @@ FROM
 Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For instance, to define a table for `customer` data:
 
 ```yaml title="customer.yaml"
-table:
+tables:
   - name: customer
     sql: {{ load_sql('customer') }}
     description: Table containing information about sales transactions.

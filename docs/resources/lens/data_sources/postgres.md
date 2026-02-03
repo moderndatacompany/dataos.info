@@ -25,8 +25,8 @@ instance-secret:
   type: key-value # Type of Instance-secret (mandatory)
   acl: r # Access control list (mandatory)
   data: # Data (mandatory)
-    GITSYNC_USERNAME: <code_repository_username>
-    GITSYNC_PASSWORD: <code_repository_password>
+    username: 
+    password: 
 ```
 
 ```yaml title="instance-secret-rw.yml"
@@ -42,8 +42,8 @@ instance-secret:
   type: key-value # Type of Instance-secret (mandatory)
   acl: rw # Access control list (mandatory)
   data: # Data (mandatory)
-    GITSYNC_USERNAME: <code_repository_username>
-    GITSYNC_PASSWORD: <code_repository_password>
+    username: 
+    password: 
 ```
 
 
@@ -58,10 +58,9 @@ depot:
   external: ${{true}}
   secrets:
     - name: ${{sf-instance-secret-name}}-r
-      allkeys: true
-
+      allKeys: true
     - name: ${{sf-instance-secret-name}}-rw
-      allkeys: true
+      allKeys: true
   postgresql:                        
     subprotocol: "postgresql"
     host: ${{host}}
@@ -112,7 +111,7 @@ Alternatively, you can write more advanced queries that include transformations,
 SELECT
   CAST(customer_id AS VARCHAR) AS customer_id,
   first_name,
-  CAST(DATE_PARSE(birth_date, '%d-%m-%Y') AS TIMESTAMP) AS birth_date,
+  CAST(TO_DATE(birth_date, 'DD-MM-YYYY') AS TIMESTAMP) AS birth_date,
   age,
   CAST(register_date AS TIMESTAMP) AS register_date,
   occupation,
@@ -122,7 +121,7 @@ SELECT
   country,
   zip_code
 FROM
-  "postgres"."retail".customer; #catalog_name
+  "postgres"."retail".customer; --catalog_name
 ```
 
 ### **Step 2.2: Define the table in the Model**
@@ -130,7 +129,7 @@ FROM
 Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For example, to define a table for `sales `data:
 
 ```yaml
-table:
+tables:
   - name: customers
     sql: {{ load_sql('customers') }}
     description: Table containing information about sales transactions.

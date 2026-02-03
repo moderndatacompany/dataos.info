@@ -54,7 +54,7 @@ Let's demonstrate an example by adding the filter policy to the `segments` secti
 **Example:** Filtering rows to show online sales data to '`type-analyst` user groups and hide  `reader` user groups.
 
   ```yaml
-  table: 
+  tables: 
 
     #...
 

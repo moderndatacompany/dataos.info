@@ -26,7 +26,7 @@ For example, if a user wants to create a semantic model on certain data in DataO
 
 In addition to data source-level security, governance can also be enforced at the federated query engine level. Federated query engines such as Minerva or Themis supports heterogeneous data sources, enabling integration with multiple systems such as Snowflake, PostgreSQL, BigQuery, and Lakehouse. It provides governance at both the metadata and data levels, ensuring secure and consistent access across various sources. It allows to define access control on who can query what catalog, schema or table or interact with specific datasets. However, the access rules only apply when queries are run through the engine. If someone accesses the data with a different engine or source engine, the engine-level permissions don't apply. 
 
-Governance at the federated query engine levManage Worker in System Workspacesel can be applied in the following ways:
+Governance at the federated query engine level can be applied in the following ways:
 
 * **Access control:** It enables administrators to define role-based access to restrict or grant data access. This ensures that only authorized users can query or modify data according to their assigned roles. In DataOS, access control is managed through Policy Resource and it's interface Bifrost, which provides an intuitive and easy to use GUI to manage access permissions.
 
