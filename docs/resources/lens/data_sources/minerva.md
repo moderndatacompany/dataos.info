@@ -7,7 +7,7 @@ To create a semantic model across multiple data sources using the Minerva Cluste
 The following prerequisites are required:
 
 - [Instance Secret](/resources/lens/data_sources/minerva/#create-instance-secret-for-data-source-connection)
-- [Active Depot](/resources/lens/data_sources/minerva/#create-postgres-depot-manifes-file)
+- [Active Depot](/resources/lens/data_sources/minerva/#create-postgres-depot-manifest-file)
 - [Scanner](/resources/lens/data_sources/minerva/#create-the-scanner-manifest-file)
 - [Cluster](/resources/lens/data_sources/minerva/#create-minerva-cluster-manifest-file)
 

@@ -1,51 +1,55 @@
 # Data Sources
 
-<!-- ## Connecting to sources via Depot/Cluster -->
+---
 
-<!-- [BigQuery](/resources/lens/data_sources/bigquery/)
+## Single source
 
-[AWS Redshift](/resources/lens/data_sources/awsredshift/)
-
-[Themis](/resources/lens/data_sources/themis/)
-
-[Postgres](/resources/lens/data_sources/postgres/)
-
-[Minerva](/resources/lens/data_sources/minerva/)
-
-[Snowflake](/resources/lens/data_sources/snowflake/)
-
-[Flash](/resources/lens/data_sources/flash/)
-
-[Databricks](/resources/lens/data_sources/databricks/) -->
-
-<!-- [Snowflake](/resources/lens/data_sources/snowflake/) -->
-
-# Data Sources
+When data resides in a single source such as AWS Redshift, BigQuery, PostgreSQL, or Snowflake, the semantic model is built directly on top of the source.
 
 <div class="grid cards" markdown>
 
--   [**BigQuery**](/resources/lens/data_sources/bigquery/)  
-    Cloud-native warehouse source.
-
 -   [**AWS Redshift**](/resources/lens/data_sources/awsredshift/)  
-    Amazon data warehouse integration.
+    Amazon cloud data warehouse.
 
--   [**Themis**](/resources/lens/data_sources/themis/)  
-    Internal governance-backed source.
+-   [**BigQuery**](/resources/lens/data_sources/bigquery/)  
+    Google Cloud native warehouse.
+
+-   [**Databricks**](/resources/lens/data_sources/databricks/)  
+    Lakehouse and Spark-based analytics.
 
 -   [**Postgres**](/resources/lens/data_sources/postgres/)  
-    Relational OLTP database.
-
--   [**Minerva**](/resources/lens/data_sources/minerva/)  
-    DataOS compute engine source.
+    Relational OLTP database source.
 
 -   [**Snowflake**](/resources/lens/data_sources/snowflake/)  
     Cloud data platform.
 
--   [**Flash**](/resources/lens/data_sources/flash/)  
-    Fast ingestion connector.
+</div>
 
--   [**Databricks**](/resources/lens/data_sources/databricks/)  
-    Lakehouse and Spark source.
+---
+
+## Multiple source
+
+When working with distributed data systems, a unified semantic model is constructed using Minerva or Themis clusters. These clusters facilitate seamless integration across heterogeneous data sources.
+
+<div class="grid cards" markdown>
+
+-   [**Minerva**](/resources/lens/data_sources/minerva/)  
+    Cluster-based unified semantic modeling.
+
+-   [**Themis**](/resources/lens/data_sources/themis/)  
+    Governance-backed multi-source integration.
+
+</div>
+
+---
+
+## Query acceleration
+
+For high-performance analytical workloads, Flash provides an in-memory query acceleration layer that significantly improves query execution speed.
+
+<div class="grid cards" markdown>
+
+-   [**Flash**](/resources/lens/data_sources/flash/)  
+    In-memory acceleration for fast query execution.
 
 </div>

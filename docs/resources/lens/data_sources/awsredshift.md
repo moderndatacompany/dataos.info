@@ -13,9 +13,9 @@ The following prerequisites are required:
 Set up a secure connection with source and extract the metadata using following Resources: 
 
 
-- [Instance Secret](/resources/lens/data_sources/redshift/#instance-secret): To secure source connection credentials.
-- [Depot](/resources/lens/data_sources/redshift/#depot): To set up a connection with the source.
-- [Scanner](/resources/lens/data_sources/redshift/#depot): To extract the metadata and view on Metis application.
+- [Instance Secret](/resources/lens/data_sources/awsredshift/#instance-secret): To secure source connection credentials.
+- [Depot](/resources/lens/data_sources/awsredshift/#depot): To set up a connection with the source.
+- [Scanner](/resources/lens/data_sources/awsredshift/#depot): To extract the metadata and view on Metis application.
 
 
 ## Step 1: Set up a connection with source
