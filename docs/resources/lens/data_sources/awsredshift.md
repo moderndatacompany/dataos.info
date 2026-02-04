@@ -5,11 +5,26 @@
 When setting up a semantic model, it is crucial to understand that the semantic model is part of the Data Product. Therefore, you do not need to create a separate Git repository. Instead, semantic model will be in the <code>/build</code> folder of the the Data Product's existing repository. 
 </aside>
 
+
+## Prerequisites
+
+The following prerequisites are required:
+
+Set up a secure connection with source and extract the metadata using following Resources: 
+
+
+- [Instance Secret](/resources/lens/data_sources/redshift/#instance-secret): To secure source connection credentials.
+- [Depot](/resources/lens/data_sources/redshift/#depot): To set up a connection with the source.
+- [Scanner](/resources/lens/data_sources/redshift/#depot): To extract the metadata and view on Metis application.
+
+
 ## Step 1: Set up a connection with source
 
 To set up a connection with the source, create Depot if the Depot has already been created and activated during the Design phase of the Data Product, skip this step. The Lens model will utilize the existing Depot and the associated Instance Secrets set up. Ensure that the Depot is properly connected to the correct data source and that you have the necessary access credentials (Instance Secrets) available for the Lens deployment.
 
 Before establishing a connection to the data source, an [Instance Secret](/resources/instance_secret/) must be created. This secret securely stores the credentials required for `read` (`r`) and `read write` (`rw`) access to the data source.
+
+### Instance Secret
 
 ```yaml title="instance-secret-r.yml"
 # RESOURCE META SECTION
@@ -45,6 +60,10 @@ instance-secret:
     password: 
 ```
 
+### Depot
+
+Connect with the source referring recently created Instance-secret.
+
 ```yaml title="redshift-depot.yml"
 name: ${{redshift-depot-name}}
 version: v2alpha
@@ -69,6 +88,30 @@ depot:
 
     - name: ${{redshift-instance-secret-name}}-rw
       allKeys: true
+```
+
+### Scanner
+
+To extract the metadata and view on Metis application.
+
+```yaml
+version: v1
+name: redshift-scanner
+type: workflow
+tags:
+  - redshift-depot-scan
+description: The job scans schema tables and register data to metis
+workflow:
+  dag:
+    - name: redshift-depot
+      description: The job scans schema from redshift depot tables and register data to metis
+      spec:
+        tags:
+          - scanner
+        stack: scanner:2.0
+        compute: runnable-default
+        stackSpec:
+          depot: dataos://redshift
 ```
 
 ## Step 2: Prepare the Lens model folder
@@ -104,9 +147,9 @@ Alternatively, you can write more advanced queries that include transformations,
 
 ```sql
 SELECT
-  CAST(customer_id AS VARCHAR) AS customer_id,
+  CAST(customer_id AS VARCHAR(50)) AS customer_id,
   first_name,
-  CAST(DATE_PARSE(birth_date, '%d-%m-%Y') AS TIMESTAMP) AS birth_date,
+  TO_TIMESTAMP(birth_date, 'DD-MM-YYYY') AS birth_date,
   age,
   CAST(register_date AS TIMESTAMP) AS register_date,
   occupation,
@@ -115,8 +158,7 @@ SELECT
   state,
   country,
   zip_code
-FROM
-  "redshift"."retail".customer;
+FROM retail.customer;
 ```
 ### **Step 2.2: Define the table in the model**
 

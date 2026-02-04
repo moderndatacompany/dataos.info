@@ -1,4 +1,4 @@
-# Attribute of Lens  manifest
+# Attributes of Lens manifest
 
 ## Structure of Lens manifest
 
@@ -38,7 +38,7 @@ lens:
     syncFlags: # refer to the branch of the repo, default main,master branch
       - --ref=lens2test
   api:
-    logLevel: INFO  
+    logLevel: INFO
     replicas: 3
     autoScaling:
       enabled: true
@@ -46,30 +46,30 @@ lens:
       maxReplicas: 3
       targetMemoryUtilizationPercentage: 60
       targetCPUUtilizationPercentage: 60
-  resources:                     #optional
-    requests:
-      cpu: 4Gi
-      memory: 1000m
-    limits:
-      cpu: 16Gi
-      memory: 2000m
-  envs:
-    LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-    LENS2_SOURCE_WORKSPACE_NAME: public
-    LENS2_DB_TIMEOUT: 1500000
+    resources:                     #optional
+      requests:
+        cpu: 4Gi
+        memory: 1000m
+      limits:
+        cpu: 16Gi
+        memory: 2000m
+    envs:
+      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
+      LENS2_SOURCE_WORKSPACE_NAME: public
+      LENS2_DB_TIMEOUT: 1500000
   router:
     logLevel: INFO
-  envs:
-    LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-    LENS2_SOURCE_WORKSPACE_NAME: public
-    LENS2_DB_TIMEOUT: 1500000
-  resources:
-    requests:
-      cpu: 4Gi
-      memory: 1000m
-    limits:
-      cpu: 16Gi
-      memory: 2000m		
+    envs:
+      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
+      LENS2_SOURCE_WORKSPACE_NAME: public
+      LENS2_DB_TIMEOUT: 1500000
+    resources:
+      requests:
+        cpu: 4Gi
+        memory: 1000m
+      limits:
+        cpu: 16Gi
+        memory: 2000m		
     
   worker:
     logLevel: INFO
@@ -77,17 +77,17 @@ lens:
     highAvailabilityConfig:
       level: hostname #hostname/region/zone
       mode: preferred #preferred/required
-  envs:
-    LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-    LENS2_SOURCE_WORKSPACE_NAME: public
-    LENS2_DB_TIMEOUT: 1500000
-  resources:
-    requests:
-      cpu: 4Gi
-      memory: 1000m
-    limits:
-      cpu: 16Gi
-      memory: 2000m		
+    envs:
+      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
+      LENS2_SOURCE_WORKSPACE_NAME: public
+      LENS2_DB_TIMEOUT: 1500000
+    resources:
+      requests:
+        cpu: 4Gi
+        memory: 1000m
+      limits:
+        cpu: 16Gi
+        memory: 2000m		
 ```
 
 ## Resource meta section
@@ -303,7 +303,7 @@ lens:
 
 | Data Type | Requirement | Default Value | Possible Values               |
 |-----------|-------------|---------------|-------------------------------|
-| string    | mandatory   | none          | A valid identifier for the source.For instance, for source type cluster  (e.g., Themis and Minerva), the name refers to the cluster name (e.g., miniature, system). For Depot sources, the name refers to the Depot name. (e.g., bigquerydepot, redshift). |
+| string    | mandatory   | none          | A valid identifier for the source. For instance, for source type cluster (e.g., Themis and Minerva), the name refers to the cluster name (e.g., miniature, system). For Depot sources, the name refers to the Depot name. (e.g., bigquerydepot, redshift). |
 
 ### **`catalog`**
 

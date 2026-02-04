@@ -114,8 +114,8 @@ GraphQL API enables Lens to deliver data over the HTTP protocol to GraphQL enabl
 
 Lens provides a PostgreSQL-compatible interface, enabling users to interact with the semantic model over SQL. The following resources offer detailed instructions on how to set up and use the SQL APIs with Lens:
 
-- To explore how to interact with Lens using SQL APIs, click [here](/resources/lens/sql_apis/supported_functions_and_operators/).
-- To learn about the supported functions and operators within the SQL API, click [here](/resources/lens/sql_apis/supported_functions_and_operators/).
+- [To explore how to interact with Lens using SQL APIs](/resources/lens/exploration_of_lens_using_sql_apis/).
+- [To learn about the supported functions and operators within the SQL API](/resources/lens/sql_apis/supported_functions_and_operators/).
 
 ### **REST APIs**
 

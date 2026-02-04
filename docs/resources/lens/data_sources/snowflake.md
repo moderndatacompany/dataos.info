@@ -5,7 +5,7 @@
 When setting up a semantic model, it is crucial to understand that the semantic model is part of the Data Product. Therefore, no need to create a separate Git repository. Instead, semantic model will be in the <code>/build</code> folder of the the Data Product's existing repository. 
 </aside>
 
-## Pre-requisites for creating a semantic model
+## Prerequisites for creating a semantic model
 
 ### **DataOS requirements**
 
@@ -242,7 +242,6 @@ Apply the Scanner Workflow by executing the command below.
 ```bash
 dataos-ctl resource apply -f /home/data_product/depot/scanner.yaml -w public
 ```
-
 
 ## Step 4: Prepare the semantic model folder inside the cloned Data Product repository
 
