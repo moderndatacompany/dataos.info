@@ -10,7 +10,7 @@ This guide provides comprehensive instructions for accessing and interacting wit
 1. [**Explorer Studio in Data Product Hub**](#using-explorer-studio-in-data-product-hub): An interactive in-browser tool for writing and executing GraphQL queries.
 2. [**Curl**](#using-curl): A command-line tool for transferring data with URLs, useful for automated scripts.
 3. [**Python**](#using-python): Use Python's `requests` library for more complex interactions with the API.
-4. [**Postman**](#using-postman): Use Postman API platform to start using and testing REST APIs.
+4. [**Postman**](#using-postman): Use Postman API platform to start using and testing GraphQL APIs.
 
 ## Authentication and Authorization
 
@@ -156,7 +156,7 @@ Curl is a command-line tool used for transferring data with URLs, making it a co
             https://<DATAOS_FQDN>/lens2/api/<WORKSPACE>:<NAME_OF_LENS>/v2/graphql
             ```
 
-    - **Replace `<DATAOS_API_KEY>` with your actual DataOS API key.** Refer to the [Generating an API Key](#generating-an-api-key) section for more information on obtaining an API key.
+    - **Replace `<DATAOS_API_KEY>` with your actual DataOS API key.** Refer to the [Generating a DataOS API Key](#generating-a-dataos-api-key) section for more information on obtaining an API key.
 
     - **Replace `<DATAOS_FQDN>` with the fully qualified domain name of your DataOS instance.** For example: `alpha-omega.dataos.app` or `happy-kangaroo.dataos.app`.
 
@@ -226,7 +226,7 @@ Python provides a flexible and powerful way to interact with the Lens GraphQL AP
         https://<DATAOS_FQDN>/lens2/api/<WORKSPACE>:<NAME_OF_LENS>/v2/graphql
         ```
 
-    - **Replace `<DATAOS_API_KEY>` with your actual DataOS API key.** Refer to the [Generating an API Key](#generating-an-api-key) section for more information on obtaining an API key.
+    - **Replace `<DATAOS_API_KEY>` with your actual DataOS API key.** Refer to the [Generating a DataOS API Key](#generating-a-dataos-api-key) section for more information on obtaining an API key.
 
     - **Replace `<DATAOS_FQDN>` with the fully qualified domain name of your DataOS instance.** For example: `alpha-omega.dataos.app` or `happy-kangaroo.dataos.app`.
 
@@ -328,7 +328,7 @@ When working with a Postman collection to test APIs, you typically need to confi
           https://<DATAOS_FQDN>/lens2/api/<WORKSPACE>:<NAME_OF_LENS>/v2/graphql
           ```
 
-    - **Replace `<DATAOS_API_KEY>` with your actual DataOS API key.** Refer to the [Generating an API Key](#generating-an-api-key) section for more information on obtaining an API key.
+    - **Replace `<DATAOS_API_KEY>` with your actual DataOS API key.** Refer to the [Generating a DataOS API Key](#generating-a-dataos-api-key) section for more information on obtaining an API key.
 
     - **Replace `<DATAOS_FQDN>` with the fully qualified domain name of your DataOS instance.** For example: `alpha-omega.dataos.app` or `happy-kangaroo.dataos.app`.
 

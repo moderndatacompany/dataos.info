@@ -22,8 +22,8 @@ This documentation outlines essential guidelines while creating a semantic model
 
 If your database uses case-sensitive identifiers, ensure you properly quote table and column names. For example, to reference a Postgres table with uppercase letters:
 
-```yaml
-SELECT * FROM'public."Site"'
+```sql
+SELECT * FROM "public"."Site"
 ```
 
 ### **Materialization**
