@@ -218,10 +218,8 @@ FROM
 WHERE
     (purchase.purchase_date BETWEEN '2024-01-01T15:37:55' AND '2024-12-31T15:38:02' AND (customer.country = 'Australia'))
 GROUP BY 1,2
-LIMIT 
-    10
-OFFSET 
-    0
+LIMIT 10
+OFFSET 0
 ```
 
 ## Query format in the SQL API
@@ -247,18 +245,11 @@ SELECT * FROM customer;
 ### **Dimensions**
 
 To query a table or view with a dimension called country, it can be referenced as a column in the `SELECT` clause.
- <!-- Additionally, it must be included in the GROUP BY clause to ensure correct aggregation. -->
 
 ```
 SELECT country
 FROM customer;
 ```
-
-<!-- ```
-SELECT country
-FROM customer
-GROUP BY 1;
-``` -->
 
 ### **Measures**
 

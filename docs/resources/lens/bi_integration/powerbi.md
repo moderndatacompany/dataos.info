@@ -68,7 +68,8 @@ The folder contains the main components of a Power BI project for syncing the se
 
 Open the `public_productaffinity` file in Power BI, and enter the DataOS username and API key when prompted. Click the connect button. A popup will appear; click OK.
 
-![DPH](/interfaces/data_product_hub/activation/bi_sync/Untitled%20(16).png)
+<!-- TODO: Image file Untitled (16).png not found - needs to be added -->
+<!-- ![DPH](/interfaces/data_product_hub/activation/bi_sync/Untitled%20(16).png) -->
 
 ### **Step 6: View data in Power BI**
 

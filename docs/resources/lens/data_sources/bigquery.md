@@ -1,15 +1,31 @@
-# Creating a semantic model on Bigquery source
+# Creating a semantic model on BigQuery source
 
 <aside class="callout">
 
 When setting up a semantic model, it is crucial to understand that the semantic model is part of the Data Product. Therefore, you do not need to create a separate Git repository. Instead, semantic model will be in the <code>/build</code> folder of the the Data Product's existing repository. 
 </aside>
 
-## Step 1: Set up a connection with source
+
+## Prerequisites
+
+The following prerequisites are required:
+
+Set up a secure connection with source and extract the metadata using following Resources: 
+
+
+- [Instance Secret](/resources/lens/data_sources/bigquery/#instance-secret): To secure source connection credentials.
+- [Depot](/resources/lens/data_sources/bigquery/#depot): To set up a connection with the source.
+- [Scanner](/resources/lens/data_sources/bigquery/#depot): To extract the metadata and view on Metis application.
+
+## Step 1: Set up a secure connection with source using Instance secret
 
 To set up a connection with the source, create Depot if the Depot has already been created and activated during the Design phase of the Data Product, skip this step. The Lens model will utilize the existing Depot and the associated Instance Secrets set up. Ensure that the Depot is properly connected to the correct data source and that you have the necessary access credentials (Instance Secrets) available for the Lens deployment.
 
 Before establishing a connection to the data source, an [Instance Secret](/resources/instance_secret/) must be created. This secret securely stores the credentials required for `read` (`r`) and `read write` (`rw`) access to the data source.
+
+### Instance secret
+
+Secure source connection credentials.
 
 ```yaml title="instance-secret-r.yml"
 # RESOURCE META SECTION
@@ -24,8 +40,8 @@ instance-secret:
   type: key-value # Type of Instance-secret (mandatory)
   acl: r # Access control list (mandatory)
   data: # Data (mandatory)
-    GITSYNC_USERNAME: <code_repository_username>
-    GITSYNC_PASSWORD: <code_repository_password>
+    username: 
+    password: 
 ```
 
 ```yaml title="instance-secret-rw.yml"
@@ -41,9 +57,13 @@ instance-secret:
   type: key-value # Type of Instance-secret (mandatory)
   acl: rw # Access control list (mandatory)
   data: # Data (mandatory)
-    GITSYNC_USERNAME: <code_repository_username>
-    GITSYNC_PASSWORD: <code_repository_password>
+    username: 
+    password: 
 ```
+
+### Depot
+
+Connect with the source referring recently created Instance-secret.
 
 ```yaml title="bigquery-depot.yml"
 name: ${{bigquerydepot}}
@@ -56,26 +76,50 @@ owner: ${{owner-name}}
 layer: user
 depot:
   type: BIGQUERY                 
-      description: ${{description}} # optional
+  description: ${{description}} # optional
   external: ${{true}}
   secrets:
     - name: ${{bq-instance-secret-name}}-r
-      allkeys: true
-
+      allKeys: true
     - name: ${{bq-instance-secret-name}}-rw
-      allkeys: true
-  bigquery:  # optional                         
+      allKeys: true
+  bigquery:  # optional
     project: ${{project-name}} # optional
     params: # optional
       ${{"key1": "value1"}}
       ${{"key2": "value2"}}
 ```
 
+### Scanner
+
+To extract the metadata and view on Metis application.
+
+```yaml
+version: v1
+name: bigquery-scanner
+type: workflow
+tags:
+  - bigquery-depot-scan
+description: The job scans schema tables and register data to metis
+workflow:
+  dag:
+    - name: bigquery-depot
+      description: The job scans schema from bigquery depot tables and register data to metis
+      spec:
+        tags:
+          - scanner
+        stack: scanner:2.0
+        compute: runnable-default
+        stackSpec:
+          depot: dataos://bigquery
+```
+
+
 ## Step 2: Prepare the Lens model folder
 
 In the `model` folder, the semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each subfolder contains specific files related to the Lens model. You can download the Lens template to quickly get started.
 
-[lens template](/resources/lens/lens_model_folder_setup/lens-project-template.zip)
+[Lens template](/resources/lens/lens_model_folder_setup/lens-project-template.zip)
 
 
 ### **Step 2.1: Load data from the data source**
@@ -94,7 +138,7 @@ For instance, a simple data load might look as follows:
 SELECT
   *
 FROM
-  "bigquery"."retail".channel;
+  "bigquery"."retail"."channel";
 ```
 
 Alternatively, you can write more advanced queries that include transformations, such as:
@@ -103,7 +147,7 @@ Alternatively, you can write more advanced queries that include transformations,
 SELECT
   CAST(customer_id AS VARCHAR) AS customer_id,
   first_name,
-  CAST(DATE_PARSE(birth_date, '%d-%m-%Y') AS TIMESTAMP) AS birth_date,
+  CAST(PARSE_DATE('%d-%m-%Y', birth_date) AS TIMESTAMP) AS birth_date,
   age,
   CAST(register_date AS TIMESTAMP) AS register_date,
   occupation,
@@ -113,7 +157,7 @@ SELECT
   country,
   zip_code
 FROM
-  "bigquery"."retail".customer;
+  "bigquery"."retail"."customer";
 ```
   
 ### **Step 2.2: Define the table in the model**
@@ -121,7 +165,7 @@ FROM
 Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For instance, to define a table for `sales `data:
 
 ```yaml
-table:
+tables:
   - name: customers
     sql: {{ load_sql('customers') }}
     description: Table containing information about sales transactions.
@@ -237,9 +281,9 @@ Each section of the YAML template defines key aspects of the Lens deployment. Be
 
 * **Defining the Source:**
 
-      * **Source type:**  The `type` attribute in the `source` section must be explicitly set to `depot`.
+      * **Source type:** The `type` attribute in the `source` section must be explicitly set to `depot`.
 
-      * **Source name:** The `name` attribute in the `source` section should specify the name of the Bigquery Depot created.
+      * **Source name:** The `name` attribute in the `source` section should specify the name of the BigQuery Depot created.
 
 * **Setting Up Compute and Secrets:**
 
@@ -249,13 +293,13 @@ Each section of the YAML template defines key aspects of the Lens deployment. Be
 
 * **Defining Repository:**
 
-      * **`url`** The `url` attribute in the repo section specifies the Git repository where the Lens model files are stored. For instance, if your repo name is lensTutorial then the repo `url` will be  [https://bitbucket.org/tmdc/lensTutorial](https://bitbucket.org/tmdc/lensTutorial)
+      * **`url`** The `url` attribute in the repo section specifies the Git repository where the Lens model files are stored. For instance, if your repo name is lensTutorial then the repo `url` will be [https://bitbucket.org/tmdc/lensTutorial](https://bitbucket.org/tmdc/lensTutorial)
 
-      * **`lensBaseDir`:**  The `lensBaseDir` attribute refers to the directory in the repository containing the Lens model. Example: `sample/lens/source/depot/bigquery/model`.
+      * **`lensBaseDir`:** The `lensBaseDir` attribute refers to the directory in the repository containing the Lens model. Example: `sample/lens/source/depot/bigquery/model`.
 
-      * **`secretId`:**  The `secretId` attribute is used to access private repositories (e.g., Bitbucket, GitHub). It specifies the secret needed to securely authenticate and access the repository.
+      * **`secretId`:** The `secretId` attribute is used to access private repositories (e.g., Bitbucket, GitHub). It specifies the secret needed to securely authenticate and access the repository.
 
-      * **`syncFlags`**:  Specifies additional flags to control repository synchronization. Example: `--ref=dev` specifies that the Lens model resides in the `dev` branch.
+      * **`syncFlags`**: Specifies additional flags to control repository synchronization. Example: `--ref=dev` specifies that the Lens model resides in the `dev` branch.
 
 * **Configuring API, Worker and Metric Settings (Optional):** Set up replicas, logging levels, and resource allocations for APIs, workers, routers, and other components.
 

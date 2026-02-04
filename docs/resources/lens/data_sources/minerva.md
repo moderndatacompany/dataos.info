@@ -7,7 +7,7 @@ To create a semantic model across multiple data sources using the Minerva Cluste
 The following prerequisites are required:
 
 - [Instance Secret](/resources/lens/data_sources/minerva/#create-instance-secret-for-data-source-connection)
-- [Active Depot](/resources/lens/data_sources/minerva/#create-postgres-depot-manifes-file)
+- [Active Depot](/resources/lens/data_sources/minerva/#create-postgres-depot-manifest-file)
 - [Scanner](/resources/lens/data_sources/minerva/#create-the-scanner-manifest-file)
 - [Cluster](/resources/lens/data_sources/minerva/#create-minerva-cluster-manifest-file)
 
@@ -62,12 +62,11 @@ depot:
     - name: postgres-rw
       keys: 
         - postgres-rw
-      allkeys: true
-
+      allKeys: true
     - name: postgres-r
       keys: 
         - postgres-r
-      allkeys: true
+      allKeys: true
     
   jdbc:
     subprotocol: postgresql
@@ -414,7 +413,7 @@ After configuring the deployment file with the necessary settings and specificat
 
 Once the Lens Resource is applied and all configurations are correctly set up, the Lens model will be deployed. Upon deployment, a Lens Service is created in the backend, which may take some time to initialize.
 
-To verify whether the Lens Service is running, execute the following command. The Service name follows the pattern: **`<lens-name>-api`**
+To verify whether the Lens Service is running, execute the following command. The Service name follows the pattern: `${{lens-name}}-api`
 
 Ensure Service is active and running before proceeding to the next steps.
 
@@ -461,4 +460,4 @@ To check the query statistics, please follow the steps below:
       
     <div style="text-align: center;">
         <img src="/resources/lens/data_sources/minerva/Untitled1.png" alt="Untitled" style="max-width: 80%; height: auto; border: 1px solid #000;">
-    </div> --> -->
+    </div> --> 

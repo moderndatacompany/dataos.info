@@ -1,21 +1,53 @@
 # Data Sources
+---
 
-<!-- ## Connecting to sources via Depot/Cluster -->
+## Single source
 
-[Bigquery](/resources/lens/data_sources/bigquery/)
+When data resides in a single source such as AWS Redshift, BigQuery, PostgreSQL, or Snowflake, the semantic model is built directly on top of the source.
 
-[AWS Redshift](/resources/lens/data_sources/awsredshift/)
+<div class="grid cards" markdown>
 
-[Themis](/resources/lens/data_sources/themis/)
+-   [**AWS Redshift**](/resources/lens/data_sources/awsredshift/)  
+    Cloud data warehouse source.
 
-[Postgres](/resources/lens/data_sources/postgres/)
+-   [**BigQuery**](/resources/lens/data_sources/bigquery/)  
+    Cloud data warehouse source.
 
-[Minerva](/resources/lens/data_sources/minerva/)
+-   [**Snowflake**](/resources/lens/data_sources/snowflake/)  
+    Cloud data warehouse source.
 
-[Snowflake](/resources/lens/data_sources/snowflake)
+-   [**Databricks**](/resources/lens/data_sources/databricks/)  
+    Lakehouse platform source.
 
-[Flash](/resources/lens/data_sources/flash/)
+-   [**Postgres**](/resources/lens/data_sources/postgres/)  
+    Relational database source.
 
-[Databricks](/resources/lens/data_sources/databricks/)
 
-<!-- [Snowflake](/resources/lens/data_sources/snowflake/) -->
+</div>
+
+---
+
+## Multiple source
+
+When working with distributed data systems, a unified semantic model is constructed using Minerva or Themis clusters. These clusters facilitate seamless integration across heterogeneous data sources.
+
+<div class="grid cards" markdown>
+
+-   [**Minerva**](/resources/lens/data_sources/minerva/)  
+  
+-   [**Themis**](/resources/lens/data_sources/themis/)  
+
+</div>
+
+---
+
+## Query acceleration
+
+For high-performance analytical workloads, Flash provides an in-memory query acceleration layer that significantly improves query execution speed.
+
+<div class="grid cards" markdown>
+
+-   [**Flash**](/resources/lens/data_sources/flash/)  
+    In-memory acceleration for fast query execution.
+
+</div>

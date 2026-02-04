@@ -5,7 +5,7 @@
 When setting up a semantic model, it is crucial to understand that the semantic model is part of the Data Product. Therefore, no need to create a separate Git repository. Instead, semantic model will be in the <code>/build</code> folder of the the Data Product's existing repository. 
 </aside>
 
-## Pre-requisites for creating a semantic model
+## Prerequisites for creating a semantic model
 
 ### **DataOS requirements**
 
@@ -243,7 +243,6 @@ Apply the Scanner Workflow by executing the command below.
 dataos-ctl resource apply -f /home/data_product/depot/scanner.yaml -w public
 ```
 
-
 ## Step 4: Prepare the semantic model folder inside the cloned Data Product repository
 
 Organize the semantic model folder with the following structure to define tables, views, and governance policies:
@@ -278,7 +277,7 @@ Alternatively, you can write more advanced queries that include transformations,
 SELECT
   CAST(customer_id AS VARCHAR) AS customer_id,
   first_name,
-  CAST(DATE_PARSE(birth_date, '%d-%m-%Y') AS TIMESTAMP) AS birth_date,
+  CAST(TO_DATE(birth_date, 'DD-MM-YYYY') AS TIMESTAMP) AS birth_date,
   age,
   CAST(register_date AS TIMESTAMP) AS register_date,
   occupation,
@@ -296,7 +295,7 @@ FROM
 Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For example, to define a table for `sales `data:
 
 ```yaml
-table:
+tables:
   - name: customers
     sql: {{ load_sql('customers') }}
     description: Table containing information about sales transactions.
