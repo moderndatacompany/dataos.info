@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 ## Are you a first-time user?
 
 If you are new to DataOS Governance, start here to understand:

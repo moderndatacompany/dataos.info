@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 ## Learn to create Access Policy 
 
 

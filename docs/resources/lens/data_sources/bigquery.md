@@ -15,7 +15,7 @@ Set up a secure connection with source and extract the metadata using following 
 
 - [Instance Secret](/resources/lens/data_sources/bigquery/#instance-secret): To secure source connection credentials.
 - [Depot](/resources/lens/data_sources/bigquery/#depot): To set up a connection with the source.
-- [Scanner](/resources/lens/data_sources/bigquery/#depot): To extract the metadata and view on Metis application.
+- [Scanner](/resources/lens/data_sources/bigquery/#scanner): To extract the metadata and view on Metis application.
 
 ## Step 1: Set up a secure connection with source using Instance secret
 
@@ -318,8 +318,8 @@ After configuring the deployment file with the necessary settings and specificat
     dataos-ctl resource apply -f /lens/lens_deployment.yml -w curriculum
     # Expected output
     INFO[0000] 🛠 apply...                                   
-    INFO[0000] 🔧 applying(curriculum) sales360:v1alpha:lens... 
-    INFO[0001] 🔧 applying(curriculum) sales360:v1alpha:lens...created 
+    INFO[0000] 🔧 applying(curriculum) bigquery-lens:v1alpha:lens... 
+    INFO[0001] 🔧 applying(curriculum) bigquery-lens:v1alpha:lens...created 
     INFO[0001] 🛠 apply...complete
     ```
 
@@ -333,14 +333,14 @@ To v**erify whether the Lens Service is running, execute the following command. 
 Ensure Service is active and running before proceeding to the next steps.
 
 ```bash
-dataos-ctl get -t service -n sales-insights-lens-api -w public
+dataos-ctl get -t service -n bigquery-lens-api -w public
 # Expected output:
 INFO[0000] 🔍 get...                                     
 INFO[0002] 🔍 get...complete                             
 
            NAME           | VERSION |  TYPE   | WORKSPACE | STATUS |  RUNTIME  |    OWNER     
 --------------------------|---------|---------|-----------|--------|-----------|--------------
-  sales360-lens-api | v1      | service | public    | active | running:1 | iamgroot
+  bigquery-lens-api | v1      | service | public    | active | running:1 | iamgroot
 ```
 
 </aside>

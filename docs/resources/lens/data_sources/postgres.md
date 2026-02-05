@@ -258,7 +258,7 @@ After setting up the Lens model folder, the next step is to configure the deploy
 
 ```yaml
 version: v1alpha
-name: "postgres-lens"
+name: "postgreslens"
 layer: user
 type: lens
 tags:
@@ -322,8 +322,8 @@ After configuring the deployment file with the necessary settings and specificat
     dataos-ctl resource apply -f /lens/lens_deployment.yml -w curriculum
     # Expected output
     INFO[0000] 🛠 apply...                                   
-    INFO[0000] 🔧 applying(curriculum) sales360:v1alpha:lens... 
-    INFO[0001] 🔧 applying(curriculum) sales360:v1alpha:lens...created 
+    INFO[0000] 🔧 applying(curriculum) postgreslens:v1alpha:lens... 
+    INFO[0001] 🔧 applying(curriculum) postgreslens:v1alpha:lens...created 
     INFO[0001] 🛠 apply...complete
     ```
 
@@ -344,7 +344,7 @@ INFO[0002] 🔍 get...complete
 
            NAME           | VERSION |  TYPE   | WORKSPACE | STATUS |  RUNTIME  |    OWNER     
 --------------------------|---------|---------|-----------|--------|-----------|--------------
-  sales360-lens-api | v1      | service | public    | active | running:1 | iamgroot
+  postgreslens-api | v1      | service | public    | active | running:1 | iamgroot
 ```
 
 </aside>
