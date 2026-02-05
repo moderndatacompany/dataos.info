@@ -425,7 +425,7 @@ INFO[0002] 🔍 get...complete
 
            NAME           | VERSION |  TYPE   | WORKSPACE | STATUS |  RUNTIME  |    OWNER     
 --------------------------|---------|---------|-----------|--------|-----------|--------------
-  minervalens-lens-api | v1      | service | public    | active | running:1 | iamgroot
+  minervalens-api | v1      | service | public    | active | running:1 | iamgroot
 ```
 
 </aside>
