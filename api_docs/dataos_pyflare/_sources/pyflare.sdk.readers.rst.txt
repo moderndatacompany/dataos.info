@@ -1,0 +1,93 @@
+pyflare.sdk.readers package
+===========================
+
+Submodules
+----------
+
+pyflare.sdk.readers.bigquery\_reader module
+-------------------------------------------
+
+.. automodule:: pyflare.sdk.readers.bigquery_reader
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyflare.sdk.readers.delta\_reader module
+----------------------------------------
+
+.. automodule:: pyflare.sdk.readers.delta_reader
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyflare.sdk.readers.elasticsearch\_reader module
+------------------------------------------------
+
+.. automodule:: pyflare.sdk.readers.elasticsearch_reader
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyflare.sdk.readers.fastbase\_reader module
+-------------------------------------------
+
+.. automodule:: pyflare.sdk.readers.fastbase_reader
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyflare.sdk.readers.file\_reader module
+---------------------------------------
+
+.. automodule:: pyflare.sdk.readers.file_reader
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyflare.sdk.readers.iceberg\_reader module
+------------------------------------------
+
+.. automodule:: pyflare.sdk.readers.iceberg_reader
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyflare.sdk.readers.jdbc\_reader module
+---------------------------------------
+
+.. automodule:: pyflare.sdk.readers.jdbc_reader
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyflare.sdk.readers.minerva\_reader module
+------------------------------------------
+
+.. automodule:: pyflare.sdk.readers.minerva_reader
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyflare.sdk.readers.reader module
+---------------------------------
+
+.. automodule:: pyflare.sdk.readers.reader
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyflare.sdk.readers.snowflake\_reader module
+--------------------------------------------
+
+.. automodule:: pyflare.sdk.readers.snowflake_reader
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: pyflare.sdk.readers
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,25 @@
+name: ${{snowflake-depot}}
+version: v2alpha
+type: depot
+tags:
+  - ${{tag1}}
+  - ${{tag2}}
+layer: user
+depot:
+  type: snowflake
+  description: ${{snowflake-depot-description}}
+  snowflake:
+    warehouse: ${{warehouse-name}}
+    url: ${{snowflake-url}}
+    database: ${{database-name}}
+    account: ${{snowflake-account-identifier}}
+  source: ${{snowflake-depot}}  
+  external: true
+  secrets:
+    - name: ${{instance-secret-name}}-r
+      keys: 
+        - ${{instance-secret-name}}-r
+
+    - name: ${{instance-secret-name}}-rw
+      keys: 
+        - ${{instance-secret-name}}-rw

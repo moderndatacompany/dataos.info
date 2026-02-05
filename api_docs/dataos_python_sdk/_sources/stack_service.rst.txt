@@ -1,0 +1,30 @@
+stack\_service package
+======================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   stack_service.apis
+   stack_service.models
+
+Submodules
+----------
+
+stack\_service.stack\_service\_client module
+--------------------------------------------
+
+.. automodule:: stack_service.stack_service_client
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: stack_service
+   :members:
+   :undoc-members:
+   :show-inheritance:

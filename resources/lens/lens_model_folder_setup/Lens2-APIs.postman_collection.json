@@ -1,0 +1,127 @@
+{
+	"info": {
+		"_postman_id": "573d48b5-9595-400b-8bad-cdc7315700ce",
+		"name": "Lens2-APIs",
+		"description": "- Ensure you replace `DATAOS_FQDN` with the fully qualified domain name (FQDN) of the environment where your lens is deployed.\n    \n- Ensure you replace `DATAOS_APIKEY` with the appropriate API key for accessing the lens.\n    \n- Replace the placeholder workspace with the actual workspace where your lens is deployed.\n    \n- Replace the placeholder lens name with the actual lens name used in your environment.\n    \n- Customisethe data you are posting according to the specific entities defined within your lens configuration.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "38581938"
+	},
+	"item": [
+		{
+			"name": "data",
+			"item": [
+				{
+					"name": "load data",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "dG9rZW5fc3RlYWRpbHlfbWVyZWx5X2Z1bl9veXN0ZXIuMjNjYTdkYzktOGU2Zi00MmIzLTgxMjktM2MxNDY5MTNlYzdl"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-request-id",
+								"value": "8daa27ad-08bb-46cf-af49-7adecb2a8a50",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"dimensions\": [\n            \"products.productcategory\"\n        ],\n        \"measures\": [\n            \"products.average_price\",\n            \"products.average_margin\"\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://liberal-monkey.dataos.app/lens2/api/public:sales-analysis/v2/load"
+					},
+					"response": []
+				},
+				{
+					"name": "load sql",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "dG9rZW5fc3RlYWRpbHlfbWVyZWx5X2Z1bl9veXN0ZXIuMjNjYTdkYzktOGU2Zi00MmIzLTgxMjktM2MxNDY5MTNlYzdl"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-request-id",
+								"value": "8daa27ad-08bb-46cf-af49-7adecb2a8a50",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"dimensions\": [\n            \"products.productcategory\"\n        ],\n        \"measures\": [\n            \"products.average_price\",\n            \"products.average_margin\"\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://liberal-monkey.dataos.app/lens2/api/public:sales-analysis/v2/sql"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "meta",
+			"item": [
+				{
+					"name": "meta",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:4000/lens2/api/sales360demo/v2/meta"
+					},
+					"response": []
+				},
+				{
+					"name": "info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://liberal-monkey/lens2/api/sales360demo/v2/info"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

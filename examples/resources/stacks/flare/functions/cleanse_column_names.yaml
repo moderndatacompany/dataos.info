@@ -1,0 +1,53 @@
+version: v1
+name: cleanse-column-names-function-example
+type: workflow
+tags:
+  - flare
+  - functions
+  - cleanse-column-names
+description: Example workflow demonstrating the cleanse_column_names function
+owner: ${owner-name}
+layer: user
+workflow:
+  dag:
+    - name: cleanse-column-names-demo
+      spec:
+        tags:
+          - flare
+          - functions
+        stack: flare:7.0
+        compute: runnable-default
+        stackSpec:
+          job:
+            explain: true
+            logLevel: INFO
+
+            inputs: # Read from Bigquery
+              - name: transactions_connect
+                inputType: bigquery
+                bigquery:
+                  table: transactions_standalone_09_nov
+                  projected: <project-id>
+                  dataset: <dataset-name>
+
+            outputs: # Write to Local System
+              - name: finalDf
+                outputType: file
+                file:
+                  schemaName: retail
+                  tableName: transactions_standalone_readbq02
+                  format: Iceberg
+                  warehousePath: /data/examples/dataout/bigquerydata
+                  options:
+                    saveMode: append
+
+            steps:
+              - sequence:
+                  - name: finalDf
+                    sql: SELECT * FROM transactions_connect LIMIT 1
+
+                    functions:
+                      - name: cleanse_column_names
+                       
+                                       
+                      

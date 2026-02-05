@@ -1,0 +1,30 @@
+poros package
+=============
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   poros.apis
+   poros.models
+
+Submodules
+----------
+
+poros.poros\_client module
+--------------------------
+
+.. automodule:: poros.poros_client
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: poros
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,54 @@
+version: v1
+name: add-column-function-example
+type: workflow
+tags:
+  - flare
+  - functions
+  - add-column
+description: Example workflow demonstrating the add_column function
+owner: ${owner-name}
+layer: user
+workflow:
+  dag:
+    - name: add-column-demo
+      spec:
+        tags:
+          - flare
+          - functions
+        stack: flare:7.0
+        compute: runnable-default
+        stackSpec:
+          job:
+            explain: true
+            logLevel: INFO
+
+            inputs: # Read from Bigquery
+              - name: transactions_connect
+                inputType: bigquery
+                bigquery:
+                  table: transactions_standalone_09_nov
+                  projected: <project-id>
+                  dataset: <dataset-name>
+
+            outputs: # Write to Local System
+              - name: output_with_new_column
+                outputType: file
+                file:
+                  schemaName: retail
+                  tableName: transactions_standalone_readbq02
+                  format: Iceberg
+                  warehousePath: /data/examples/dataout/bigquerydata
+                  options:
+                    saveMode: append
+
+            steps:
+              - sequence:
+                  - name: output_with_new_column
+                    sql: SELECT * FROM sample_data
+
+                    functions:    
+                      - name: add_column 
+                        column: transaction_count
+                        value: 8 
+                        type: int
+
