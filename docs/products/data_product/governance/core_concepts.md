@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Core concepts 
 
 ## Identity

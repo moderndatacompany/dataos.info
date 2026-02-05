@@ -381,7 +381,7 @@ After setting up the semantic model folder, the next step is to configure the de
 ```yaml
 # RESOURCE META SECTION
 version: v1alpha # Lens manifest version (mandatory)
-name: "snowflake-lens" # Lens Resource name (mandatory)
+name: "snowflakelens" # Lens Resource name (mandatory)
 layer: user # DataOS Layer (optional)
 type: lens # Type of Resource (mandatory)
 tags: # Tags (optional)
@@ -449,8 +449,8 @@ After configuring the deployment file with the necessary settings and specificat
     dataos-ctl resource apply -f /lens/lens_deployment.yml -w curriculum
     # Expected output
     INFO[0000] 🛠 apply...                                   
-    INFO[0000] 🔧 applying(curriculum) sales360:v1alpha:lens... 
-    INFO[0001] 🔧 applying(curriculum) sales360:v1alpha:lens...created 
+    INFO[0000] 🔧 applying(curriculum) snowflakelens:v1alpha:lens... 
+    INFO[0001] 🔧 applying(curriculum) snowflakelens:v1alpha:lens...created 
     INFO[0001] 🛠 apply...complete
     ```
 
@@ -464,14 +464,14 @@ To verify whether the Lens Service is running, execute the following command. Th
 Ensure Service is active and running before proceeding to the next steps.
 
 ```bash
-dataos-ctl get -t service -n sales-insights-lens-api -w public
+dataos-ctl get -t service -n snowflakelens-api -w public
 # Expected output:
 INFO[0000] 🔍 get...                                     
 INFO[0002] 🔍 get...complete                             
 
            NAME           | VERSION |  TYPE   | WORKSPACE | STATUS |  RUNTIME  |    OWNER     
 --------------------------|---------|---------|-----------|--------|-----------|--------------
-  sales360-lens-api | v1      | service | public    | active | running:1 | iamgroot
+     snowflakelens-api    | v1      | service | public    | active | running:1 | iamgroot
 ```
 
 </aside>

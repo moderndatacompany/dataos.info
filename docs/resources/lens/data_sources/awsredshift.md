@@ -15,7 +15,7 @@ Set up a secure connection with source and extract the metadata using following 
 
 - [Instance Secret](/resources/lens/data_sources/awsredshift/#instance-secret): To secure source connection credentials.
 - [Depot](/resources/lens/data_sources/awsredshift/#depot): To set up a connection with the source.
-- [Scanner](/resources/lens/data_sources/awsredshift/#depot): To extract the metadata and view on Metis application.
+- [Scanner](/resources/lens/data_sources/awsredshift/#scanner): To extract the metadata and view on Metis application.
 
 
 ## Step 1: Set up a connection with source
@@ -314,8 +314,8 @@ After configuring the deployment file with the necessary settings and specificat
     dataos-ctl resource apply -f /lens/lens_deployment.yml -w curriculum
     # Expected output
     INFO[0000] 🛠 apply...                                   
-    INFO[0000] 🔧 applying(curriculum) sales360:v1alpha:lens... 
-    INFO[0001] 🔧 applying(curriculum) sales360:v1alpha:lens...created 
+    INFO[0000] 🔧 applying(curriculum) redshiftlens:v1alpha:lens... 
+    INFO[0001] 🔧 applying(curriculum) redshiftlens:v1alpha:lens...created 
     INFO[0001] 🛠 apply...complete
     ```
 
@@ -334,14 +334,14 @@ After configuring the deployment file with the necessary settings and specificat
 
 
 ```bash
-dataos-ctl get -t service -n sales-insights-lens-api -w public
+dataos-ctl get -t service -n redshiftlens-api -w public
 # Expected output:
 INFO[0000] 🔍 get...                                     
 INFO[0002] 🔍 get...complete                             
 
            NAME           | VERSION |  TYPE   | WORKSPACE | STATUS |  RUNTIME  |    OWNER     
 --------------------------|---------|---------|-----------|--------|-----------|--------------
-  sales360-lens-api | v1      | service | public    | active | running:1 | iamgroot
+  redshiftlens-api | v1      | service | public    | active | running:1 | iamgroot
 ```
 
 </aside>
