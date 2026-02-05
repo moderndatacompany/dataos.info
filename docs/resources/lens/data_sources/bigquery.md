@@ -8,10 +8,7 @@ When setting up a semantic model, it is crucial to understand that the semantic 
 
 ## Prerequisites
 
-The following prerequisites are required:
-
-Set up a secure connection with source and extract the metadata using following Resources: 
-
+Before proceeding, ensure a secure connection to the source is established and metadata is extracted using the required resources:
 
 - [Instance Secret](/resources/lens/data_sources/bigquery/#instance-secret): To secure source connection credentials.
 - [Depot](/resources/lens/data_sources/bigquery/#depot): To set up a connection with the source.
