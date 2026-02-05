@@ -324,13 +324,7 @@ After configuring the deployment file with the necessary settings and specificat
 
 <aside class="callout">
 
-- Once the Lens Resource is applied and all configurations are correctly set up, the Lens model will be deployed. Upon deployment, a Lens Service is created in the backend, which may take some time to initialize. 
-
-
-- To verify whether the Lens Service is running, execute the following command. The Service name follows the pattern: `<lens-name>-api`
-
-
-- Ensure Service is active and running before proceeding to the next steps.
+Once the Lens Resource is applied and all configurations are correctly set up, the Lens model will be deployed. Upon deployment, a Lens Service is created in the backend, which may take some time to initialize. To verify whether the Lens Service is running, execute the following command. The Service name follows the pattern: `<lens-name>-api`. Ensure Service is active and running before proceeding to the next steps.
 
 
 ```bash

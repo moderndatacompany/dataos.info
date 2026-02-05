@@ -362,7 +362,7 @@ Apply the Lens manifest file by using the following command in terminal:
 
 Once the Lens Resource is applied and all configurations are correctly set up, the Lens model will be deployed. Upon deployment, a Lens Service is created in the backend, which may take some time to initialize.
 
-To verify whether the Lens Service is running, execute the following command. The Service name follows the pattern: **`<lens-name>-api`**
+To verify whether the Lens Service is running, execute the following command. The Service name follows the pattern: <b>`<lens-name>-api`</b>
 
 Ensure Service is active and running before proceeding to the next steps.
 
