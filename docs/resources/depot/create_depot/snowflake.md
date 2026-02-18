@@ -71,15 +71,19 @@ depot:
   secrets:
     - name: ${{snowflake-instance-secret-name}}-r
       allkeys: true
+      keys:
+        - ${{snowflake-instance-secret-name}}-r
     - name: ${{snowflake-instance-secret-name}}-rw
       allkeys: true
+      keys:
+        - ${{snowflake-instance-secret-name}}-rw
   snowflake:
     warehouse: ${{warehouse-name}}
     url: ${{snowflake-url}}
     database: ${{database-name}}
     account: ${{account-name}}
-    role: ${{snowflake-role}} # optional but recommended
-    schema: ${{schema-name}}
+    role: ${{snowflake-role}} # mandatory
+  source: ${{snowflake-depot}} 
 ```
 
 To get the details of each attribute, please refer [to this link](/resources/depot/configurations).
