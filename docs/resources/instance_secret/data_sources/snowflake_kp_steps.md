@@ -1,5 +1,9 @@
 # Steps to Generate and Register a Key Pair in Snowflake
 
+<aside class="callout">
+⚠️ Passphrase authentication does not work with Snowflake free trial accounts.
+</aside>
+
 ## Step 1: Generate and Secure RSA Key Pair
 
 Run the following command sequence to generate an RSA key pair in one step:
