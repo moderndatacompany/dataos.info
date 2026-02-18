@@ -60,6 +60,8 @@ Alternatively, if access is managed through use cases, ensure the following use 
 
 ### **Source System Requirements**
 
+
+
 - **Username**: The Snowflake username used to authenticate to the Snowflake account. This can be obtained from your Snowflake administrator or found in your Snowflake account settings.
 
 - **RSA Key Pair**:
@@ -76,6 +78,10 @@ Alternatively, if access is managed through use cases, ensure the following use 
     For key generation steps, see the [Generate RSA Key Pair section](/resources/instance_secret/data_sources/snowflake_kp_steps/).
 
 - **Passphrase**: A secure passphrase to encrypt the private key.
+
+<aside class="callout">
+⚠️ Passphrase authentication does not work with Snowflake free trial accounts.
+</aside>
 
 ## Steps to configure Key-Pair Authentication
 
