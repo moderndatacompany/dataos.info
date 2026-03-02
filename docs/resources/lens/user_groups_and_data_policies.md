@@ -43,7 +43,7 @@ Data policies define:
 
 It answers "How should data behave for users in a given group?"
 
-**How they work together**
+## How they work together
 
 1. A user authenticates into Lens.
 
@@ -59,7 +59,7 @@ It answers "How should data behave for users in a given group?"
 
 Follow these steps to create and manage user groups:
 
-### **Create a `user_groups.yml` file in your model folder**
+### **Step 1: Create a `user_groups.yaml` file in your model folder**
 
 ```latex
 model/
@@ -72,7 +72,7 @@ model/
 └── user_groups.yml
 ```
 
-### **Define `user_group.yaml`**
+### **Step 2: Define `user_group.yaml`**
 
 Define `user_group.yaml` file using following template:
 
@@ -131,6 +131,10 @@ This user group will serve three main purposes:
 
 Let's explore different use cases:
 
+## Reusing User Groups across governance scenarios
+
+Once user groups are defined, they can be referenced to control API access, apply column-level masking, and enforce row-level filtering within the semantic model.
+
 ### **Using user groups for API access control**
 
 Different user groups can be given different API permissions.
@@ -141,7 +145,7 @@ When defining a user group, you explicitly list:
 
 - Which Lens APIs they are allowed to access
 
-**Example 1: Reader group can only read and access lens but cannot explore it**
+#### **Example 1: Reader group can only read and access lens but cannot explore it**
 
 ```yaml
 user_groups:
@@ -173,7 +177,7 @@ This user group will serve three main purposes:
 At this stage, only API access is being controlled.
 
 
-**Example 2: Private semantic model for a specific team**
+#### **Example 2: Private semantic model for a specific team**
 
 In this example, only users in the `dataconsumer` group can access and explore the semantic model, while all other users fall under the default group and are not intended to use it. This setup is used to keep a semantic model private to a specific team or project.
 
@@ -196,9 +200,7 @@ user_groups:
       - meta
       - data
       - graphql
-
 ```
-
 
 ### **Secure a table dimension using user group and data policy** 
 
@@ -219,7 +221,7 @@ Lens currently supports the following masking functions:
 | `redact` | Replaces the value with `--redact--` | Hide sensitive data completely |
 | `md5` | Hashes the value using the MD5 algorithm | Obfuscate data while preserving uniqueness |
 
-**Example: Masking a dimension for a specific user group**
+#### **Example: Masking a dimension for a specific user group**
 
 Assume the following requirement:
 
@@ -263,7 +265,7 @@ A row-level security policy has two main parts:
 
 Unlike dimension masking, row-level security includes or excludes rows entirely rather than transforming values.
 
-**Example 1: Apply a row filter based on user group**
+#### **Example 1: Apply a row filter based on user group**
 
 **Requirement:** Only non-reader users should see online sales data.
 
@@ -280,7 +282,7 @@ segments:
             - reader
 ```
 
-**Example 2: Filtering rows to show only online sales data to all user groups except `reader`**
+#### **Example 2: Filtering rows to show only online sales data to all user groups except `reader`**
 
   ```yaml
   segments:
@@ -295,7 +297,7 @@ segments:
               - reader
   ```
 
-**Example 3:** In this example, user groups represent regional marketing teams. Each team should only see data related to the country they are running campaigns for.
+#### **Example 3:** In this example, user groups represent regional marketing teams. Each team should only see data related to the country they are running campaigns for.
 
 - The `usa` group represents the US marketing team and is intended to see only US-specific campaign and customer data.
 
