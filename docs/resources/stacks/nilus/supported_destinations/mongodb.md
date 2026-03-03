@@ -25,7 +25,46 @@ Before configuring MongoDB as a sink, ensure the following:
     - Read/write privileges on the target database.
     - Permission to create databases/collections, if they do not already exist.
 
-- **Connection URI Requirements:**
+- **Pre-created MongoDB Depot**
+    A Depot must exist in DataOS with read-write access. It supports depots configured with multiple nodes, enabling users to reuse the same depot created for the MongoDB CDC source for destination use cases as well.
+
+    ??? note "MongoDB Depot Manifest"
+
+        ```yaml
+        name: mongomultiport
+        version: v1
+        type: depot
+        tags:
+          - MongoDb
+          - Sanity
+          - dataos:type:resource
+          - dataos:type:cluster-resource
+          - dataos:resource:depot
+          - dataos:layer:user
+        layer: user
+        depot:
+          type: mongodb
+          description: "MongoDb depot with multiple nodes"
+          compute: niluscompute
+          spec:
+            subprotocol: mongodb
+            nodes: 
+            - <host>.dataos.info:27017
+            - <host>.info:27018
+            - <host>.dataos.info:27019
+            params:
+              authSource: admin
+              replicaSet: rs0
+          external: "true"
+          secrets:
+            - name: ${{instance-secret-name}}-r
+              allkeys: ${{true}}
+
+            - name: ${{instance-secret-name}}-rw
+              allkeys: ${{true}}
+        ```
+
+<!-- - **Connection URI Requirements:**
     A standard MongoDB URI must be provided **without the database name appended**.
 
     ```bash
@@ -33,7 +72,7 @@ Before configuring MongoDB as a sink, ensure the following:
     ```
 
     - `port` defaults to **27017** if omitted.
-    - Any valid MongoDB connection string parameter may be appended (e.g., `tls=true`, `retryWrites=true`).
+    - Any valid MongoDB connection string parameter may be appended (e.g., `tls=true`, `retryWrites=true`). -->
 
 
 !!! info
@@ -46,7 +85,7 @@ Before configuring MongoDB as a sink, ensure the following:
 === "Syntax"
     ```yaml
     sink:
-      address: mongodb://<username>:<password>@<host>:<port>
+      address: dataos://<mongodb-depot-name>
       options:
         dest-table: <database.collection>
         incremental-strategy: replace
@@ -54,18 +93,17 @@ Before configuring MongoDB as a sink, ensure the following:
 
 === "Example"
     ```yaml
-    name: mongo-dest
+    name: mongo-batch
     version: v1
     type: workflow
     tags:
-      - google-sheet
       - workflow
       - nilus-batch
     description: Nilus Batch Service Sample
     workspace: public
     workflow:
       dag:
-        - name: mongo-dest
+        - name: mongo-lakehouse
           spec:
             stack: nilus:1.0
             compute: runnable-default
@@ -73,16 +111,16 @@ Before configuring MongoDB as a sink, ensure the following:
               requests:
                 cpu: 100m
                 memory: 256Mi
-            logLevel: Info
+            logLevel: DEBUG
             stackSpec:
               source:
                 address: dataos://postgresdepot
                 options:
-                  source-table: "retail.product" 
+                  source-table: "test_db.employee"
               sink:
-                address: dataos://mongodepot
+                address: dataos://mongomultiport
                 options:
-                  dest-table: "retail.product"
+                  dest-table: "nilus_testing.employee"
                   incremental-strategy: replace
     ```
 
