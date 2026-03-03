@@ -2,9 +2,6 @@
 
 The Nilus connector for MongoDB supports Change Data Capture (CDC), enabling near real-time replication of data changes from MongoDB to [Supported Destinations](/resources/stacks/nilus/supported_destinations/), such as the Lakehouse. CDC captures change events from MongoDB’s `oplog.rs` and streams them continuously.
 
-!!! info
-    Batch data movement is not supported for MongoDB.
-
 
 ## Prerequisites 
 
@@ -12,7 +9,7 @@ Before enabling CDC, ensure the following configurations depending on your hosti
 
 ### **MongoDB Replica Set**
 
-* MongoDB must run as a replica set, even for single-node deployments.
+* MongoDB must **RUN AS A REPLICA SET**, even for single-node deployments.
 * Nilus CDC for MongoDB relies on the `oplog.rs` collection, which is only available in replica sets.
 
 !!! info
