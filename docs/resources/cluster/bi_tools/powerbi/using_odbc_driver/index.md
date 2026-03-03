@@ -234,7 +234,7 @@ This guide walks you through the process of connecting DataOS with Power BI usin
 
 To use the Simba Presto ODBC Driver in Power BI application, you need to configure a Data Source Name (DSN) to connect to your data in DataOS.
 
-1. Open ODBC Data Source Administrator (64-bit or 32-bit).
+1. **Open ODBC Data Source Administrator (64-bit or 32-bit) as an Administrator**.
 
 2. Click  System DSN tab.
 
@@ -293,7 +293,7 @@ To use the Simba Presto ODBC Driver in Power BI application, you need to configu
 
 ## Access DataOS on Power BI
 
-1. Launch Power BI. Click on the Get Data option in the top menu bar and click More.
+1. **Run Power BI as an Administrator**. Click on the Get Data option in the top menu bar and click More.
 
     <center>
       <div style="text-align: center;">
