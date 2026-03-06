@@ -176,17 +176,17 @@ To create PEP:
         description: access the ui of streamlit
         predicate: get
         paths:
-        - /streamlit/**
+        - "${path}"
       - id: streamlit-view-multiplication
         description: gives permission to view different tabs accordingly
         predicate: view_multiplication
         paths:
-        - /streamlit/**
+        - "${path}"
       - id: streamlit-view-division
         description: gives permission to view different tabs accordingly
         predicate: view_division
         paths:
-        - /streamlit/**
+        - "${path}"
     ```
     </details>
 
