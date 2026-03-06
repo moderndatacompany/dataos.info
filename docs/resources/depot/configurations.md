@@ -90,7 +90,7 @@ version: v2alpha
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value**                                                   |
 | ------------- | --------------- | ----------------- | -------------------------------------------------------------------- |
-| string        | mandatory       | none              | depot(i this case), policy,  secret, service, stack or workflow |
+| string        | mandatory       | none              | depot(in this case), policy,  secret, service, stack or workflow |
 
 **Example usage:**
 
@@ -244,7 +244,7 @@ compute: runnable-default
 ```
 
 ### **`secrets`**
-<b>Description:</b> Specifies the cInstance Secret reference of the data source.<br>
+<b>Description:</b> Specifies the Instance Secret reference of the data source.<br>
 
 | **Data Type**    | **Requirement** | **Default Value** | **Possible Value** |
 |-----------|-------------|---------------|----------------|

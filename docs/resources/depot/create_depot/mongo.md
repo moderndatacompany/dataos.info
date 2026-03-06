@@ -333,3 +333,44 @@ This section involves the alternative steps to create a MongoDB  Depot without a
     ```bash
     dataos-ctl apply -f /home/office/workflow/udscoremongodb.yaml
     ```
+
+
+## MongoDB Depots configured with multiple nodes
+
+MongoDB supports Depots configured with multiple nodes, enabling users to reuse the same depot created for the MongoDB CDC source for destination use cases as well, but limited to the `replace` incremental strategy for destination.
+
+??? note "Multiple nodes MongoDB Depot Manifest"
+
+    ```yaml
+    name: mongomultiport
+    version: v1
+    type: depot
+    tags:
+      - MongoDb
+      - Sanity
+      - dataos:type:resource
+      - dataos:type:cluster-resource
+      - dataos:resource:depot
+      - dataos:layer:user
+    layer: user
+    depot:
+      type: mongodb
+      description: "MongoDb depot with multiple nodes"
+      compute: niluscompute
+      spec:
+        subprotocol: mongodb
+        nodes: 
+        - <host>.dataos.info:27017
+        - <host>.info:27018
+        - <host>.dataos.info:27019
+        params:
+          authSource: admin
+          replicaSet: rs0
+      external: "true"
+      secrets:
+        - name: ${{instance-secret-name}}-r
+          allkeys: ${{true}}
+
+        - name: ${{instance-secret-name}}-rw
+          allkeys: ${{true}}
+    ```

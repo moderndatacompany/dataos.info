@@ -9,7 +9,8 @@ This guide walks you through the process of connecting DataOS with Power BI usin
 
 
 !!! warning "Note"
-    The connection between the Minerva (Trino) engine and Power BI requires the Simba Presto ODBC Driver. This driver must be obtained separately from the third-party vendor and does not come with DataOS.
+    The connection between the Minerva (Trino) engine and Power BI requires the Simba Presto ODBC Driver. 
+    **This driver must be obtained separately from the third-party vendor and does not come with DataOS.**
 
     Follow the link for licensing details and download instructions before proceeding. [Simba Presto Drivers for ODBC and JDBC Connectivity](https://insightsoftware.com/drivers/presto-odbc-jdbc/)
 
@@ -17,7 +18,8 @@ This guide walks you through the process of connecting DataOS with Power BI usin
 
 - **Power BI Desktop** installed on your system - If Power BI is not installed on your system, you can download the latest version from the [Power BI website](https://powerbi.microsoft.com/en-us/downloads/).
 - **Simba Presto ODBC Driver** - In order to connect to DataOS Catalog, you would have to install Simba Presto driver.
-- **DataOS API token** - To authenticate and access DataOS, you will need API token.
+- [**DataOS API token**](#generate-dataos-api-token) - To authenticate and access DataOS, you will need API token.
+- [**DataOS Wrapped token**](#create-wrapped-token) - To authenticate and access Minerva (Trino) engine, you will need wrapped token.
 
 ## Download and Install Presto Driver
 
@@ -126,11 +128,113 @@ This guide walks you through the process of connecting DataOS with Power BI usin
 
 6. Click on the API key to copy it. You need this API key to configure Simba Presto driver.
 
+## Create Wrapped Token 
+
+=== "Windows"
+
+      1. Open Command Prompt or PowerShell CLI, use the command below to create a wrapped token. Provide the apikey token and name of the Cluster.
+        
+          **Command Prompt**
+
+          ```bash
+          C:\Users\Testuser>powershell -Command "[Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes('{"token":"<apikey-token>","cluster":"<cluster-name>"}'))"
+          ```
+
+          **Powershell**
+
+          ```bash
+          C:\Users\Testuser>[Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes('{"token":"<apikey-token>","cluster":"<cluster-name>"}'))
+          ```
+      
+      2. For the following values of api-key and cluster-name, the command will appear as shown below:
+
+          - **apikey-token** = abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
+          - **cluster-name** = miniature
+          - Ensure that JSON string should not contain any spaces.
+
+          **Command Prompt**
+
+          ```bash
+          C:\Users\Testuser>powershell -Command "[Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes('{"token":"abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz","cluster":"miniature"}'))"
+          ```
+
+          **Powershell**
+
+          ```bash
+          C:\Users\Testuser>[Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes('{"token":"abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz","cluster":"miniature"}'))
+          ```
+
+      3. Once the token is created then align it in a single line if it is not. You would need this token to configure the Presto driver.
+
+          ```bash
+          eyJ0b2tlbiI6ImFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6YWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXoiLCAiY2x1c3RlciI6ImphcnZpc2NsdXN0ZXIifQ
+          ```
+
+=== "Mac"
+
+      1. On CLI, use the command below to create a wrapped token. Provide the apikey token and name of the Cluster.
+
+          ```bash
+          echo -n '{"token":"<apikey-token>","cluster":"<cluster-name>"}' | base64
+          ```
+
+
+      2. For the following values of api-key and cluster-name, the command will appear as shown below:
+
+          - **apikey-token** = abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
+          - **cluster-name** = miniature
+          - Ensure that JSON string should not contain any spaces.
+
+          ```bash
+          echo -n '{"token":"abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz","cluster":"miniature"}' | base64
+          ```
+
+
+      3. Upon successful execution, the output will resemble the following, creating a token. You would need this token to configure the Presto driver.
+
+          ```bash
+          eyJ0b2tlbiI6ImFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6YWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXoiLCAiY2x1c3RlciI6ImphcnZpc2NsdXN0ZXIifQ
+          ```
+
+=== "Linux"
+
+      1. On CLI, use the command below to create a wrapped token. Provide the apikey token and name of the Cluster.
+
+          ```bash
+          echo '{"token":"<apikey-token>","cluster":"<cluster-name>"}' | base64
+          ```
+
+
+      2. For the following values of api-key and cluster-name, the command will appear as shown below:
+
+          - **apikey-token** = abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
+          - **cluster-name** = miniature
+          - Ensure that JSON string should not contain any spaces.
+
+          ```bash
+          echo '{"token":"abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz","cluster":"miniature"}' | base64
+          ```
+
+      3. Upon successful execution, the output will resemble the following, creating a token.
+
+          ```bash
+          eyJ0b2tlbiI6ImFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6YWJjZGVmZ2hpamtsbW5vcHFyc3R1
+          dnd4eXoiLCAiY2x1c3RlciI6ImphcnZpc2NsdXN0ZXIifQ
+          ```
+
+
+      4. Once the token is created then align it in a single line. You would need this token to configure the Presto driver.
+
+          ```bash
+          eyJ0b2tlbiI6ImFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6YWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXoiLCAiY2x1c3RlciI6ImphcnZpc2NsdXN0ZXIifQ
+          ```
+
+
 ## Configure Presto ODBC DSN
 
 To use the Simba Presto ODBC Driver in Power BI application, you need to configure a Data Source Name (DSN) to connect to your data in DataOS.
 
-1. Open ODBC Data Source Administrator (64-bit or 32-bit).
+1. **Open ODBC Data Source Administrator (64-bit or 32-bit) as an Administrator**.
 
 2. Click  System DSN tab.
 
@@ -148,8 +252,8 @@ To use the Simba Presto ODBC Driver in Power BI application, you need to configu
 
     - Provide 'Description' for the data source name.
     - In the 'Authentication' section:
-        - Select Authentication type as LDAP Authentication.
-        - Enter username for the User and generated API key as the password.
+        - Select Authentication type as **LDAP** Authentication.
+        - Enter **username** for the User and generated **Wrapped Token** as the password.
     - Now in the 'Data Source' section, provide the required information.
         - Host (e.g. tcp.reasonably-welcome-grub.dataos.io)
         - Port (e.g. 7432)
@@ -189,7 +293,7 @@ To use the Simba Presto ODBC Driver in Power BI application, you need to configu
 
 ## Access DataOS on Power BI
 
-1. Launch Power BI. Click on the Get Data option in the top menu bar and click More.
+1. **Run Power BI as an Administrator**. Click on the Get Data option in the top menu bar and click More.
 
     <center>
       <div style="text-align: center;">
@@ -217,7 +321,7 @@ To use the Simba Presto ODBC Driver in Power BI application, you need to configu
       </div>
     </center>
 
-4. Enter API key for username and password both in the dialogue box and click on Connect.
+4. Enter username of the User and API key for password in the dialogue boxes and click on Connect.
 
     <center>
       <div style="text-align: center;">
