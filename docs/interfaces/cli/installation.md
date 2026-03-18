@@ -322,17 +322,18 @@ You have successfully installed the CLI, now the next step is to [initialize](/i
 
 ## Installation on Windows
 
-1. Check whether your system has an Intel 64 bit chip or an AMD chip. To find out the architecture, use the following command.
-   ```
-   wmic cpu get architecture
+1. Check whether your system has an Intel 64 bit chip or an AMD chip. To find out the architecture, use the following command in Command Prompt.
+
+   ```bash
+   echo %PROCESSOR_ARCHITECTURE%
    ```
    Sample Output:
+   ```bash
+   AMD64
    ```
-   Architecture
-   9 # Required Value
-   ```
-    - If the required value is **0** or **x86,** then it's a 32-bit architecture; in that case, use the **`ARCH`** value as **386**.
-    - If the required value is **6, 9,** or **x64**, then it's a 64-bit architecture; in that case, use the **`ARCH`** value as **amd64**.
+
+    - `x86`: Indicates a 32-bit architecture.
+    - `AMD64`: Indicates a 64-bit architecture.
    
     <aside class="callout">🗣️ Reach out to the DataOS administrator to obtain the latest version of the CLI.</aside>
 
