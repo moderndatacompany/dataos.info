@@ -132,7 +132,7 @@ outputs:
 ```
         
 ## Step 5: Configure ports for integration
-Set up Ports to connect the Data Product to Lens, Talos APIs, REST endpoints, and more:
+Set up Ports to connect the Data Product to Lens, REST endpoints, and more:
     
 The Ports section lets you set up links to various services and tools tied to consumption of your Data Product. While it's **optional** for creating a Data Product, adding ports significantly enhances functionality.
 
@@ -142,9 +142,6 @@ ports:
     ref: lens:v1alpha:product360-lens:public
     refType: dataos
 
-    talos:
-    - ref: service:v1:service-product360-api:public
-    refType: dataos
 ```
     
 ## Data Product Spec (YAML) file

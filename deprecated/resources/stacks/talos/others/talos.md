@@ -1,3 +1,5 @@
+<!-- was in Flash recipies -->
+
 # How to consume cached datasets via Talos APIs?
 
 To expose cached datasets as Data APIs via [Talos APIs](/resources/stacks/talos/), follow these steps to configure Flash as the data source for your Talos API.

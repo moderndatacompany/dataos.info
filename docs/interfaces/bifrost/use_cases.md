@@ -250,7 +250,6 @@ Here is the list of use-cases we currently support:
 | Read Stack related Secrets | resource-management | allows retrieval of a stack image pull secret |
 | Read Workspaces | resource-management | read workspaces |
 | Un-sanitize Resources | resource-management | un-sanitize resources during read operations, this makes secrets and sensitive fields visible |
-| Read Talos | Talos | Read Talos |
 | Manage Profile in Home App | profile | Manage Profile in Home App |
 | Manage User Tokens in Home App | profile | Create and delete user tokens in home app |
 | View home App | profile | View home app |

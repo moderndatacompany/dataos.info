@@ -17,7 +17,7 @@ v1beta:
   data:
     meta:
       title: ${{Product 360}}
-      sourceCodeUrl: ${{https://bitbucket.org/mywork/talos/src/main/}}
+      sourceCodeUrl: ${{https://bitbucket.org/mywork/src/main/}}
       trackerUrl: ${{https://rubikai.atlassian.net/browse/DPRB-65}}
  
     collaborators:
@@ -52,8 +52,5 @@ v1beta:
         ref: ${{lens:v1alpha:cross-sell-affinity:public}}
         refType: ${{dataos}}
 
-      talos:
-        - ref: ${{service:v1:cross-sell-api:public}}
-          refType: ${{dataos}}
 
          

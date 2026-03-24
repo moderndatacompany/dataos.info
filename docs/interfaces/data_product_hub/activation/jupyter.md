@@ -17,7 +17,7 @@ You can consume a Data Product to build the AI/ML models using Jupyter Notebook.
     <img src="/interfaces/data_product_hub/activation/image%20(27).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
     </center>
 
-2. To consume the Data Product via Rest APIs, you first need to create the API using Talos Stack. Follow the steps listed in the [Talos Stack documentation](/resources/stacks/talos/) to create the API. 
+2. To consume the Data Product via Rest APIs, you can navigate to DPH to get the APIs.  
 
 3. Edit the template by providing, the API URL and API key and your actual query by taking help from the query example given in the template as shown below and run the code.
     - Rest APIs template

@@ -274,11 +274,6 @@ v1beta: # mandatory
         refType: ${{dataos}}
           meta:
             foo: ${{bar}}
-      talos:
-        - ref: ${{service:v1:cross-sell-talos:public}}
-          refType: ${{dataos}}
-          meta:
-            foo: ${{bar}}
 
 ```
 

@@ -77,7 +77,6 @@ In the below example, the bundle contains:
 - The ingestion Workflow
 - The Lens model and deployment YAMLs
 - The Soda Quality workflows
-- The Talos API service YAML
 
 ```yaml
 name: retail360-bundle
@@ -255,11 +254,11 @@ This section outlines data product-specific attributes such as Bundle resource, 
         
 - **Ports**
     
-    The **Ports** section lets you set up links to various services and tools tied to your Data Product, such as **Lens**, **Talos**, **REST APIs**, and **Postgres** databases. While it's optional for creating a Data Product, adding ports significantly enhances functionality.
+    The **Ports** section lets you set up links to various services and tools tied to your Data Product, such as **Lens**, **REST APIs**, and **Postgres** databases. While it's optional for creating a Data Product, adding ports significantly enhances functionality.
     
     Adding a **Lens** port enables direct access to data models in the **Model** tab of the Data Product details page, making data exploration seamless.
     
-    **Talos, REST, and Postgres Ports** ports enable integration with external services, APIs, and databases that the data product may interact with.
+    **REST, and Postgres Ports** ports enable integration with external services, APIs, and databases that the data product may interact with.
     
     ```yaml
         ports:
@@ -267,10 +266,7 @@ This section outlines data product-specific attributes such as Bundle resource, 
             ref: lens:v1alpha:retail360-lens:public
             refType: dataos
     
-          talos:
-          - ref: service:v1:service-retail360-api:public
-            refType: dataos
-    
+
           rest: 
           - url: https://liberal-donkey.dataos.app/lens2/api/public:cloud-cost-analysis/v2/rest
           
@@ -336,9 +332,7 @@ This section outlines data product-specific attributes such as Bundle resource, 
             ref: lens:v1alpha:retail360-lens:public
             refType: dataos
     
-          talos:
-          - ref: service:v1:service-retail360-api:public
-            refType: dataos
+
     
     ```
 </details>    

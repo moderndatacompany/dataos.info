@@ -44,7 +44,7 @@ In this learning track, you will get a comprehensive introduction to Data Produc
 | 5       | **Navigating Semantic Models**                  | Explore relationships between business entities and metrics within a semantic model.                     | Visual exploration of metrics, dimensions, and lineage                                              |
 | 6       | **Checking Data Quality**                       | Review quality checks that ensure reliability of the Data Product.                                       | Accuracy, consistency, timeliness, profiling                                                        |
 | 7       | **Managing Data Governance**                    | Learn how access policies and compliance are enforced within Data Products.                              | Role-based access, governance guardrails                                                            |
-| 8       | **Integrating Data Products with Tools & APIs** | Activate Data Products in BI tools, notebooks, and apps through endpoints and APIs.                      | Lens, Talos, Postgres, GraphQL, REST, Jupyter integration                                           |
+| 8       | **Integrating Data Products with Tools & APIs** | Activate Data Products in BI tools, notebooks, and apps through endpoints and APIs.                      | Lens, Postgres, GraphQL, REST, Jupyter integration                                           |
 
 
 <aside class="callout">
