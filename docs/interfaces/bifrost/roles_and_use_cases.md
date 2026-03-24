@@ -50,7 +50,6 @@ The Data Dev Role with  `roles:id:data-dev` tag has the following permissions:
 | read-pods-collated | Read Collated Pod |
 | read-products | Get Products Details From Poros |
 | read-specific-secret | Read Specific Secret |
-| read-talos | Read Talos |
 | read-workspaces | Read Workspaces |
 | run-query-gateway | Run Query Gateway |
 | view-dph-app | View dph app |
@@ -81,7 +80,6 @@ The System Dev Role with  `roles:id:system-dev` tag has the following permission
 | manage-secret-in-system-workspaces | Manage Secret in System Workspaces |
 | manage-secrets | Manage Secrets |
 | manage-service-in-system-workspaces | Manage Service in System Workspaces |
-| manage-talos | Manage Talos |
 | manage-user-tags | Manage User Tags |
 | manage-user-token-in-home-app | Manage User Tokens in Home App |
 | manage-user-tokens | Manage User Tokens |
@@ -136,7 +134,6 @@ The Operator Role with  `roles:id:operator` tag has the following permissions:
 | manage-secrets | Manage Secrets |
 | manage-service-in-user-workspaces | Manage Service in User Workspaces |
 | manage-system-workspaces | Manage Service in User Workspaces |
-| manage-talos | Manage Talos |
 | manage-user-tags | Manage User Tags |
 | manage-user-token-in-home-app | Manage User Tokens in Home App |
 | manage-user-tokens | Manage User Tokens |

@@ -75,10 +75,7 @@ v1beta: # mandatory
         ref: ${{lens:v1alpha:cross-sell-affinity:public}}
         refType: ${{dataos}}
 
-      talos:
-        - ref: ${{service:v1:cross-sell-talos:public}}
-          refType: ${{dataos}}
-            
+
 ```
 
 
@@ -542,7 +539,7 @@ outputs: # optional
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| object | mandatory | none | Contains `lens`, `talos`, `rest`, and `postgres` sections for different types of ports |
+| object | mandatory | none | Contains `lens`, `rest`, and `postgres` sections for different types of ports |
 
 **Example usage:**
 
@@ -552,9 +549,6 @@ ports:
     - ref: ${{lens:v1alpha:sales360:public}}
       refType: ${{dataos}}
 
-  talos:
-    - ref: ${{service:v1:sales360-talos:public}}
-      refType: ${{dataos}}
 
 ```
 

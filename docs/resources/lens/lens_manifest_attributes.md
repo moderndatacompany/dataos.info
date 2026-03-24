@@ -341,7 +341,7 @@ lens:
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
-| string | mandatory | none | URL of the repository (e.g., https://bitbucket.org/mywork15/talos/). |
+| string | mandatory | none | URL of the repository (e.g., https://bitbucket.org/mywork15/abc/). |
 
 **Example usage:**
 

@@ -134,22 +134,18 @@ outputs:
 ```
         
 ## Step 5: Configure ports for integration
-Set up ports for services like Lens, Talos, REST APIs, and databases:
+Set up ports for services like Lens, REST APIs, and databases:
     
-The Ports section lets you set up links to various services and tools tied to your Data Product, such as Lens, Talos, REST APIs, and Postgres databases. While it's optional for creating a Data Product, adding ports significantly enhances functionality.
+The Ports section lets you set up links to various services and tools tied to your Data Product, such as Lens, REST APIs, and Postgres databases. While it's optional for creating a Data Product, adding ports significantly enhances functionality.
 
 Adding a Lens port enables direct access to data models in the Model tab of the Data Product details page, making data exploration seamless.
 
-Talos, REST, and Postgres ports enable integration with external services, APIs, and databases that the data product may interact with.
+REST, and Postgres ports enable integration with external services, APIs, and databases that the data product may interact with.
 
 ```yaml
 ports:
     lens:
     ref: lens:v1alpha:product360-lens:public
-    refType: dataos
-
-    talos:
-    - ref: service:v1:service-product360-api:public
     refType: dataos
 
     rest: 
@@ -186,7 +182,7 @@ v1beta:
   data:
     meta:
       title: Product Affinity
-      sourceCodeUrl: https://bitbucket.org/mywork15/talos/src/main/
+      sourceCodeUrl: https://bitbucket.org/mywork15/src/main/
       trackerUrl: https://rubikai.atlassian.net/browse/DPRB-65
  
     collaborators:
@@ -221,9 +217,6 @@ v1beta:
         ref: lens:v1alpha:cross-sell-affinity:public
         refType: dataos
 
-      talos:
-        - ref: service:v1:affinity-cross-sell-api:public
-          refType: dataos
 
          
 ```

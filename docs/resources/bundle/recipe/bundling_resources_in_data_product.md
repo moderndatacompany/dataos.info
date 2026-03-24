@@ -67,19 +67,19 @@ Resources in this category are involved in one-time or infrequent tasks and gene
 These Resources are bundled together in a Workflow Bundle, ensuring efficient execution without the need for frequent redeployment. Resources that provide ongoing, real-time functionality require continuous updates and interactions, making them better suited for separate bundling:
 
 - **Lens:** A semantic model that organizes and interprets data, providing continuous access to structured data for business users.
-- **Talos:** Real-time analytics and API services that respond to queries and updates as data changes.
 
-By separating service-oriented Resources, such as Lens and Talos, into their own bundles, these Resources can operate continuously without interference from finite tasks within the Workflow-based bundle.
+
+By separating service-oriented Resources, such as Lens into their own bundles, these Resources can operate continuously without interference from finite tasks within the Workflow-based bundle.
 
 <aside class="callout">
 🗣️ The separation of Resources into distinct bundles is typically suggested during the development or testing phase. This approach provides greater flexibility and ease of management as components are iterated upon. However, this strategy is highly subjective and depends on the specific needs of the project. Once the Data Product transitions to production, bundling strategies may be adjusted to optimize for stability and performance in a live environment.
 </aside>
 
-Consider a scenario where we are developing a Data Product focused on product affinity and cross-sell. For the sake of simplicity, we will concentrate on creating a selected set of Resources, namely Flare, Soda, Lens, and Talos. These Resources will be organized into distinct bundles optimized for efficient deployment, management, and scalability, with the assumption that the Depot resource has already been created separately.
+Consider a scenario where we are developing a Data Product focused on product affinity and cross-sell. For the sake of simplicity, we will concentrate on creating a selected set of Resources, namely Flare, Soda, and Lens. These Resources will be organized into distinct bundles optimized for efficient deployment, management, and scalability, with the assumption that the Depot resource has already been created separately.
 In this case, two categories of bundles are created:
 
 - **Ingestion and quality Workflow Bundle:** This Bundle includes Flare for data ingestion and Soda for quality assurance.
-- **Service-based Resources Bundle:** This Bundle includes Lens for the semantic model and Talos for real-time analytics."
+- **Service-based Resources Bundle:** This Bundle includes Lens for the semantic model for real-time analytics."
 
 
 ### **Step 1: Create Super DAG for Ingestion Workflow**
@@ -107,9 +107,9 @@ Since Flare for data ingestion and Soda for data quality checks are finite Resou
 --8<-- "examples/resources/bundle/bundling_resources_in_data_product/bundle_for_dag.yml"
 ```
 
-### **Step 4: Bundle for Lens and Talos**
+### **Step 4: Bundle for Lens**
 
-Assuming the Resources for Lens (semantic model) and Talos (real-time analytics and API services) are already created and stored in the `build/semantic_model` and  `activation/data_apis` directories respectively. These Resources are then referenced in a bundle, which is created in the `deploy/ ` directory for easy deployment. 
+Assuming the Resources for Lens (semantic model) are already created and stored in the `build/semantic_model` and  `activation/data_apis` directories respectively. These Resources are then referenced in a bundle, which is created in the `deploy/ ` directory for easy deployment. 
 
 ```yaml
 --8<-- "examples/resources/bundle/bundling_resources_in_data_product/bundle_for_lens_and_talos.yml"
@@ -117,7 +117,7 @@ Assuming the Resources for Lens (semantic model) and Talos (real-time analytics 
 
 ### **Step 5: Referencing Bundles in the Data Product manifest file**
 
-Once the bundles for Lens and Talos are created, they need to be referenced within the Data Product's manifest file for deployment. The manifest file is a crucial component in linking these separate bundles to the overall Data Product.
+Once the bundles for Lens are created, they need to be referenced within the Data Product's manifest file for deployment. The manifest file is a crucial component in linking these separate bundles to the overall Data Product.
 
 ```yaml
 --8<-- "examples/resources/bundle/bundling_resources_in_data_product/referncing_bundle.yml"

@@ -72,9 +72,9 @@ Document key metadata, purpose, and the structure of your Data Product.
 
 4. Link to your bundle and services (e.g., Lens).
 
-5. Set up ports for services like Lens, Talos, REST APIs, and databases. For this example, we have Lens.
+5. Set up ports for services like Lens, REST APIs, and databases. For this example, we have Lens.
 
-5. Apply using:
+6. Apply using:
 
 ```bash
 dataos-ctl product apply -f productaffinity.yaml
@@ -132,9 +132,6 @@ v1beta:
         ref: lens:v1alpha:productaffinity-abc:public
         refType: dataos
 
-      # talos:
-      #   - ref: service:v1:product-affinity-api:public
-      #     refType: dataos
 ```
 
 </details>

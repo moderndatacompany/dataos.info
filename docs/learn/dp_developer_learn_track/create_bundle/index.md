@@ -40,8 +40,6 @@ In the below example, the bundle contains:
 - The ingestion Workflow
 - The Lens model and deployment YAMLs
 - The Soda Quality workflows
-- The Talos API service YAML
-
 
 ```yaml
 name: product360-01-bundle

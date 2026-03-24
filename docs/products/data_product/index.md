@@ -80,7 +80,7 @@ Control Ports are used for monitoring, logging, and managing the Data Product. T
 
 ### **Experience Ports**
 
-Experience Ports are provided by DataOS to support additional consumption paradigms beyond the standard input, output, and control functionalities. They enable specialized access methods such as BI tools, AI integrations, and data applications. Examples include exposing the Data Product via a REST API using Talos, creating and managing a semantic model with DataOS’s Lens for improved data understanding, and implementing a chat interface using Lens-LLM systems for natural language interactions with the data.
+Experience Ports are provided by DataOS to support additional consumption paradigms beyond the standard input, output, and control functionalities. They enable specialized access methods such as BI tools, AI integrations, and data applications. Examples include exposing the Data Product via a REST API, creating and managing a semantic model with DataOS’s Lens for improved data understanding, and implementing a chat interface using Lens-LLM systems for natural language interactions with the data.
 
 In the following sections, we have outlined the comprehensive thought process involved in developing a Data Product, from defining use cases to the deployment. 
 
@@ -128,7 +128,7 @@ A Data Product manifest outlines essential metadata and configuration details ab
       data: # mandatory
         meta: # optional
           title: ${{Product 360}}
-          sourceCodeUrl: ${{https://bitbucket.org/mywork/talos/src/main/}}
+          sourceCodeUrl: ${{https://bitbucket.org/mywork/src/main/}}
           trackerUrl: ${{https://rubikai.atlassian.net/browse/DPRB-65}}
     
         collaborators: # optional
@@ -163,9 +163,6 @@ A Data Product manifest outlines essential metadata and configuration details ab
             - ref: ${{lens:v1alpha:cross-sell-affinity:public}}
               refType: ${{dataos}}
 
-          talos:
-            - ref: ${{service:v1:cross-sell-api:public}}
-              refType: ${{dataos}}    
     ```
 
 
