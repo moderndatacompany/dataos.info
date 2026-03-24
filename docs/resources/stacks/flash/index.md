@@ -53,5 +53,4 @@ When attempting to create tables or views for datasets with zero records, Flash 
 The following recipes assist in configuring the Flash Service effectively:
 
 - [How to use cached datasets in Lens Models?](/resources/stacks/flash/recipes/lens/)
-- [How to set up Talos for Flash?](/resources/stacks/flash/recipes/talos/)
 

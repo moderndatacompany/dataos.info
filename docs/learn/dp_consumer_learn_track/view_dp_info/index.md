@@ -72,13 +72,8 @@ After discovering the 'Product Affinity' Data Product, follow these steps to exp
 
     - Power BI and MS Excel
     - Jupyter Notebook
-    - Data APIs
     - Postgres
     - GraphQL
-
-    <aside class="callout">
-    🗣 Output datasets are generally consumed via Talos APIs. As well as these outputs can become inputs for some other Data Products.
-    </aside>
 
 
 ## Best practices
@@ -97,14 +92,14 @@ Semantic Models can be explored using tools like Studio or integrated with BI to
 **Q2: What are Metrics in a Semantic Model?**  
 Metrics are quantifiable measures used to track and evaluate the performance of a Data Product or user behavior. Derived from the Semantic Model, they represent key business indicators.
 
-**Q3: How are Outputs consumed in a Data Product?**  
-Outputs are typically consumed via Talos APIs for direct system integration. They can also serve as inputs to other Data Products, enabling seamless data flows. Additionally, you can explore output datasets interactively using Workbench.
+<!-- **Q3: How are Outputs consumed in a Data Product?**  
+Outputs are typically consumed via Talos APIs for direct system integration. They can also serve as inputs to other Data Products, enabling seamless data flows. Additionally, you can explore output datasets interactively using Workbench. -->
 
-**Q4: What are consumption ports?**  
+**Q3: What are consumption ports?**  
 Consumption ports are the methods or interfaces to expose data from a Data Product. Examples include APIs, BI tools, and GraphQL APIs.
 
-**Q5: What happens if a Data Product has no semantic model?**  
-If a Data Product lacks a Semantic Model, its outputs are typically limited to processed output datasets that are consumed using Talos APIs. "Talos" is a service within DataOS that provides APIs for interacting with data.
+<!-- **Q5: What happens if a Data Product has no semantic model?**  
+If a Data Product lacks a Semantic Model, its outputs are typically limited to processed output datasets that are consumed using Talos APIs. "Talos" is a service within DataOS that provides APIs for interacting with data. -->
 
 ## Self-check quiz
 

@@ -209,8 +209,7 @@ dataos-ctl develop stack versions
     soda            │ python  │ 2.0     │ docker.io/rubiklabs/dataos-soda:0.0.27-dev        │ dataos-container-registry  
     stream-monitor  │         │ 1.0     │ docker.io/rubiklabs/monitor-api:0.17.2            │ dataos-container-registry  
     ststack         │ python  │ 1.0     │ docker.io/library/python:3.10.12-slim             │                            
-    talos           │         │ 1.0     │ docker.io/rubiklabs/talos:0.1.26                  │ dataos-container-registry  
-    talos           │         │ 2.0     │ docker.io/rubiklabs/talos:0.1.25                  │ dataos-container-registry  
+    
     ```
 
 </details>

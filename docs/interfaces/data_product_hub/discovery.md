@@ -234,7 +234,7 @@ Key business [Metrics](/interfaces/data_product_hub/core_concepts/#metrics) deri
 
 
     
-
+<!-- 
 #### **Data APIs tab**
 
 API endpoints for developing data applications can be explored in the [Data APIs](/resources/stacks/talos/) tab.
@@ -356,7 +356,7 @@ API endpoints for developing data applications can be explored in the [Data APIs
     
     **GET /top_brand_list** is the **API endpoint** that is called using the HTTP `GET` method. It retrieves data related to a list of top brands. Typically, `GET` methods are used to retrieve data from a server without modifying it.
 
-    
+     -->
 
 #### **Quality tab**
 

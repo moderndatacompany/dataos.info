@@ -32,7 +32,7 @@ To begin building the pipeline, ensure the following pre-requisites are met:
     c. **Client secret, access token, and refresh token:** These can be obtained from the `.dataos` folder within the home/root directory.
         
     <center>
-    <img src="/products/data_product/recipes/ci_cd/dataos.png" alt="Talos" style="width:20rem; border: 1px solid black;" />
+    <img src="/products/data_product/recipes/ci_cd/dataos.png" alt="Data" style="width:20rem; border: 1px solid black;" />
     <figcaption><i>.dataos</i></figcaption>
     </center>
 
@@ -49,7 +49,7 @@ To begin building the CI/CD pipeline for the Data Product, follow these steps.
 a. Log in to your Bitbucket account.
 
 <center>
-<img src="/products/data_product/recipes/ci_cd/open_bb.png" alt="Talos" style="width:40rem; border: 1px solid black;" />
+<img src="/products/data_product/recipes/ci_cd/open_bb.png" alt="Data" style="width:40rem; border: 1px solid black;" />
 <figcaption><i>Bitbucket home page</i></figcaption>
 </center>
 
@@ -57,21 +57,21 @@ a. Log in to your Bitbucket account.
 b. Select the “Create” drop-down menu and choose “Repository.”
 
 <center>
-<img src="/products/data_product/recipes/ci_cd/create_repo_drop.png" alt="Talos" style="width:40rem; border: 1px solid black;" />
+<img src="/products/data_product/recipes/ci_cd/create_repo_drop.png" alt="Data" style="width:40rem; border: 1px solid black;" />
 <figcaption><i>Create drop down</i></figcaption>
 </center>
 
 c. Enter the project, repository name, and default branch name. If you want the repository to be public, uncheck the private repository option. Then, click on “Create repository.”
 
 <center>
-<img src="/products/data_product/recipes/ci_cd/create_repo.png" alt="Talos" style="width:40rem; border: 1px solid black;" />
+<img src="/products/data_product/recipes/ci_cd/create_repo.png" alt="Data" style="width:40rem; border: 1px solid black;" />
 <figcaption><i>Create repository</i></figcaption>
 </center>
 
 d. The repository creation can be verified by navigating to the Repositories tab.
     
 <center>
-<img src="/products/data_product/recipes/ci_cd/verify_repo.png" alt="Talos" style="width:40rem; border: 1px solid black;" />
+<img src="/products/data_product/recipes/ci_cd/verify_repo.png" alt="Data" style="width:40rem; border: 1px solid black;" />
 <figcaption><i>Verify repository</i></figcaption>
 </center>
 
@@ -83,7 +83,7 @@ d. The repository creation can be verified by navigating to the Repositories tab
 a. Open the repository and click the "Clone" button.
 
 <center>
-<img src="/products/data_product/recipes/ci_cd/copy_url.png" alt="Talos" style="width:40rem; border: 1px solid black;" />
+<img src="/products/data_product/recipes/ci_cd/copy_url.png" alt="Data" style="width:40rem; border: 1px solid black;" />
 <figcaption><i>Copy URL</i></figcaption>
 </center>
 
@@ -91,14 +91,14 @@ a. Open the repository and click the "Clone" button.
 b. Copy the provided URL, paste it into your terminal, and press Enter.
 
 <center>
-<img src="/products/data_product/recipes/ci_cd/git_command.png" alt="Talos" style="width:40rem; border: 1px solid black;" />
+<img src="/products/data_product/recipes/ci_cd/git_command.png" alt="Data" style="width:40rem; border: 1px solid black;" />
 <figcaption><i>Git clone command</i></figcaption>
 </center>
 
 c. The repository can now be found in your home/root directory.
     
 <center>
-<img src="/products/data_product/recipes/ci_cd/cloned.png" alt="Talos" style="width:20rem; border: 1px solid black;" />
+<img src="/products/data_product/recipes/ci_cd/cloned.png" alt="Data" style="width:20rem; border: 1px solid black;" />
 <figcaption><i>Root directory</i></figcaption>
 </center>
 
@@ -205,7 +205,7 @@ data-product-deployment
     
 i. Double-check all files and paths to ensure everything is provided correctly and that the manifest files are properly set up.
 
-j. Add configuration files of more Resources as per the requirements, such as Policy, Talos, Lens, etc.
+j. Add configuration files of more Resources as per the requirements, such as Policy, Lens, etc.
 
 ### **4. Configure the pipeline**
 
@@ -332,7 +332,7 @@ Add repository variables to the Bitbucket repository settings by following the b
 a. In the Bitbucket repository, navigate to the repository settings.
     
 <center>
-<img src="/products/data_product/recipes/ci_cd/navigate_repo_settings.png" alt="Talos" style="width:50rem; border: 1px solid black;" />
+<img src="/products/data_product/recipes/ci_cd/navigate_repo_settings.png" alt="Data" style="width:50rem; border: 1px solid black;" />
 <figcaption><i>Repository settings</i></figcaption>
 </center>
     
@@ -342,19 +342,19 @@ b. In the repository variables section, add key-value pairs mentioned in the pre
 🗣 Before adding the repository variables make sure the pipeline deployment is enabled in your Bitbucket settings.
 
 <center>
-<img src="/products/data_product/recipes/ci_cd/repo_settings.png" alt="Talos" style="width:20rem; border: 1px solid black;" />
+<img src="/products/data_product/recipes/ci_cd/repo_settings.png" alt="Data" style="width:20rem; border: 1px solid black;" />
 <figcaption><i>Repository settings</i></figcaption>
 </center>
 
 <center>
-<img src="/products/data_product/recipes/ci_cd/enable_pipeline.png" alt="Talos" style="width:20rem; border: 1px solid black;" />
+<img src="/products/data_product/recipes/ci_cd/enable_pipeline.png" alt="Data" style="width:20rem; border: 1px solid black;" />
 <figcaption><i>Repository settings</i></figcaption>
 </center>
 
 </aside>
     
 <center>
-<img src="/products/data_product/recipes/ci_cd/repo_variables.png" alt="Talos" style="width:50rem; border: 1px solid black;" />
+<img src="/products/data_product/recipes/ci_cd/repo_variables.png" alt="Data" style="width:50rem; border: 1px solid black;" />
 <figcaption><i>Repository variables</i></figcaption>
 </center>
 
@@ -382,14 +382,14 @@ git push
 d. By pushing the changes in Bitbucket, the pipeline will automatically start deploying which can be tracked on the commits section of the Bitbucket repository.
     
 <center>
-<img src="/products/data_product/recipes/ci_cd/commit.png" alt="Talos" style="width:50rem; border: 1px solid black;" />
+<img src="/products/data_product/recipes/ci_cd/commit.png" alt="Data" style="width:50rem; border: 1px solid black;" />
 <figcaption><i>Bitbucket commits</i></figcaption>
 </center>
    
 e. A successful deployment will look like the following.
     
 <center>
-<img src="/products/data_product/recipes/ci_cd/successful.png" alt="Talos" style="width:50rem; border: 1px solid black;" />
+<img src="/products/data_product/recipes/ci_cd/successful.png" alt="Data" style="width:50rem; border: 1px solid black;" />
 <figcaption><i>Bitbucket deployment</i></figcaption>
 </center>
 
@@ -399,12 +399,12 @@ e. A successful deployment will look like the following.
 - If an error occurs during the push due to a large file size, navigate to the repository settings. Under **Repository details**, open the **Advanced** dropdown, uncheck the “Block pushes with files over 100MB” option, and save the changes. Then push again.
     
     <center>
-    <img src="/products/data_product/recipes/ci_cd/error_shell.png" alt="Talos" style="width:50rem; border: 1px solid black;" />
+    <img src="/products/data_product/recipes/ci_cd/error_shell.png" alt="Data" style="width:50rem; border: 1px solid black;" />
     <figcaption><i>Terminal</i></figcaption>
     </center>
 
     <center>
-    <img src="/products/data_product/recipes/ci_cd/file_limit.png" alt="Talos" style="width:50rem; border: 1px solid black;" />
+    <img src="/products/data_product/recipes/ci_cd/file_limit.png" alt="Data" style="width:50rem; border: 1px solid black;" />
     <figcaption><i>Bitbucket settings</i></figcaption>
     </center>
     
@@ -412,7 +412,7 @@ e. A successful deployment will look like the following.
 - If the pipeline fails for any reason, you can make the necessary updates, push the changes, and rerun the failed part of the pipeline based on the error received.
     
     <center>
-    <img src="/products/data_product/recipes/ci_cd/rerun.png" alt="Talos" style="width:50rem; border: 1px solid black;" />
+    <img src="/products/data_product/recipes/ci_cd/rerun.png" alt="Data" style="width:50rem; border: 1px solid black;" />
     <figcaption><i>Bitbucket deployment</i></figcaption>
     </center>
 

@@ -6,7 +6,7 @@ A Depot plays a fundamental role in [Data Product](/resources/depot/) developmen
 
 A large enterprise’s procurement team uses the Vendor Data Insights Data Product to streamline compliance audits and vendor management. By leveraging insights on incorporation details, DBE status, and engagement metrics, they can quickly identify high-risk vendors with missing or outdated registration documents. The Data Product enables automated compliance reports, reducing manual effort, and helps procurement teams filter DBE-certified vendors to meet regulatory requirements. Additionally, vendor insights are exposed via APIs, allowing integration with risk assessment dashboards for real-time monitoring. This ensures better decision-making, improved vendor tracking, and seamless regulatory compliance.
 
-The below  manifest file defines the deployment of the `vendor-data-insights` Data Product, categorized under `Vendor Management` with a `Bronze` tier. The Data Product ingests information from various sources within `operationaldb`, including organizations, categories, vendors, certifications, and user data. The processed insights are stored in `operationlake:analytics:vendor_data_insights`. Additionally, it exposes service endpoints through `Lens` and `Talos` for querying vendor insights and API access.
+The below  manifest file defines the deployment of the `vendor-data-insights` Data Product, categorized under `Vendor Management` with a `Bronze` tier. The Data Product ingests information from various sources within `operationaldb`, including organizations, categories, vendors, certifications, and user data. The processed insights are stored in `operationlake:analytics:vendor_data_insights`. Additionally, it exposes service endpoints through `Lens` for querying vendor insights.
 
 ```yaml
 name: vendor-data-insights
@@ -102,9 +102,6 @@ v1beta:
         ref: lens:v1alpha:vendor-insights360:public
         refType: dataos
 
-        talos:
-        - ref: service:v1:vendor-dataapi:public
-        refType: dataos
 
 
 ```

@@ -184,7 +184,7 @@ data-product-deployment
     
 **i.** Double-check all files and paths to ensure everything is provided correctly and that the manifest files are properly set up.
 
-**j.** You can add configuration files of more Resources as per your requirements, such as Policy, Talos, Lens, etc.
+**j.** You can add configuration files of more Resources as per your requirements, such as Policy, Lens, etc.
 
 ### **Step 4: Configure the pipeline**
 

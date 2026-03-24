@@ -51,6 +51,3 @@ v1beta:
         ref: lens:v1alpha:cross-sell-affinity:public
         refType: dataos
 
-      talos:
-        - ref: service:v1:affinity-cross-sell-api:public
-          refType: dataos

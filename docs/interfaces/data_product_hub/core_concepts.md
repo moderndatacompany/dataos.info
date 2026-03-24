@@ -92,9 +92,9 @@ In the Data Product Hub, an [output](/interfaces/data_product_hub/discovery/#out
 </center>
 
 
-## Data APIs
+<!-- ## Data APIs
 
-A [data API](/interfaces/data_product_hub/discovery/#data-apis-tab) refers to an application programming interface (API) that allows applications to interact with and retrieve data from a data source, such as a database or data warehouse, in a structured and controlled manner. Data APIs are used to enable communication between software applications and databases, allowing developers to query, filter, and manipulate data without directly interacting with the underlying data storage systems. Within DataOS, one can create the data APIs using [Talos Stack](/resources/stacks/talos/).
+A [data API](/interfaces/data_product_hub/discovery/#data-apis-tab) refers to an application programming interface (API) that allows applications to interact with and retrieve data from a data source, such as a database or data warehouse, in a structured and controlled manner. Data APIs are used to enable communication between software applications and databases, allowing developers to query, filter, and manipulate data without directly interacting with the underlying data storage systems. Within DataOS, one can create the data APIs using [Talos Stack](/resources/stacks/talos/). -->
 
 ## Tier
 

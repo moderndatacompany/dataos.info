@@ -28,7 +28,7 @@ As a Data Products Developer, you'll master how to:
 
 - **Ensure Data Quality and Trust**: Apply validation, profiling, masking, and audit controls to maintain clean, compliant, and reliable data.
 
-- **Enable Consumption Through APIs and Models**: Publish semantic models and APIs via Lens, Talos, and other tools to serve analysts, apps, and business users.
+- **Enable Consumption Through APIs and Models**: Publish semantic models and APIs via Lens, and other tools to serve analysts, apps, and business users.
 
 <aside class="callout">
 🗣️ Specific tasks may differ based on the role or objective. 
