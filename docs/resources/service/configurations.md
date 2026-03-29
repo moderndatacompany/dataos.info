@@ -55,7 +55,7 @@ service:
     maxReplicas: ${{max_replicas}}                       # (Required) Maximum number of replicas. Must be an integer.
     targetMemoryUtilizationPercentage: ${{memory_utilization}}  # (Optional) Target memory utilization percentage. Must be an integer.
     targetCPUUtilizationPercentage: ${{cpu_utilization}}        # (Optional) Target CPU utilization percentage. Must be an integer.
-  stack: ${{stack_to_be_orchestrated}}                          # (Required) Stack to be orchestrated (e.g., `bento:1.0`, `flash`, `lakesearch`). Must be a string.
+  stack: ${{stack_to_be_orchestrated}}                          # (Required) Stack to be orchestrated (e.g., `bento:1.0`, `flash`). Must be a string.
   logLevel: ${{log_level}}                                      # (Optional) Logging level. Must be a string.
 
   configs:                                              # (Optional) Key-value mapping for configuration settings.
