@@ -52,7 +52,7 @@ The learning track walks you through each stage of the data product lifecycle wi
 | 4   | **Build and Automate Pipelines**           | Create robust, fault-tolerant pipelines using Flare, DBT, or Bento.                        | Workflow DAGs, scheduling, event triggers, retries, stream/batch handling, monitoring                                 |
 | 5   | **Optimize for Performance and Scalability** | Tune data and workflows to handle scale efficiently.                                       | Partitioning, parallelism, compute monitoring, cost-performance trade-offs                                            |
 | 6   | **Ensure Data Trust and Compliance**       | Integrate profiling, quality checks, and data masking.                                     | Soda stack, validation logic, PII masking, policy enforcement (GDPR, HIPAA, etc.)                                     |
-| 7   | **Serve and Enable Business Consumption**  | Publish data for downstream users via APIs, notebooks, and BI tools.                       | Semantic models (Lens), APIs (Talos, Lakesearch), access control, DPH registration                                    |
+| 7   | **Serve and Enable Business Consumption**  | Publish data for downstream users via APIs, notebooks, and BI tools.                       | Semantic models (Lens), access control, DPH registration                                    |
  
 <aside class="callout">
 🗣 This track includes hands-on modules that use both the DataOS CLI and GUI. You’ll work with CLI in the training environment to apply YAMLs, run workflows, and navigate DataOS GUI (Workbench, Metis, DPH).
