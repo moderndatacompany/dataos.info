@@ -665,19 +665,6 @@ nav:
               - Handling Empty Tables: resources/stacks/flash/handling_empty_tables.md
             - Recipes: 
               - Use cached datasets in Lens models: resources/stacks/flash/recipes/lens.md
-          - Lakesearch:
-            - resources/stacks/lakesearch/index.md
-            - Key concepts: resources/stacks/lakesearch/key_concepts.md
-            - Set up: 
-              - Lakesearch Service: resources/stacks/lakesearch/service.md
-              - Query Rewriter: resources/stacks/lakesearch/rewriter.md
-              # - Vector Embedding: resources/stacks/lakesearch/vector_embedding.md
-            - Configurations: resources/stacks/lakesearch/configurations.md
-            - Governance: resources/stacks/lakesearch/governance.md
-            - Index Searching: resources/stacks/lakesearch/index_searching.md
-            - Observability: resources/stacks/lakesearch/observability.md
-            - Troubleshooting: resources/stacks/lakesearch/troubleshooting.md
-
           - Nilus:
             - resources/stacks/nilus/index.md
             - Data Movement Architecture: resources/stacks/nilus/data_movement_architecture.md
@@ -952,8 +939,9 @@ nav:
               - learn/dp_consumer_learn_track/integrate_postgres/index.md
             - Integration with GraphQL:
               - learn/dp_consumer_learn_track/integrate_graphql/index.md
-            - Integration with LakeSearch:
-              - learn/dp_consumer_learn_track/integrate_lakesearch/index.md
+
+#             - Integration with LakeSearch:
+#               - learn/dp_consumer_learn_track/integrate_lakesearch/index.md
             # - Integration with Data APIs:
             #   - learn/dp_consumer_learn_track/integrate_api/index.md
             - Custom apps to consume Data Products:
@@ -1074,8 +1062,6 @@ nav:
   #           - learn/dp_consumer_learn_track/integrate_postgres/index.md
   #         - Integration with GraphQL:
   #           - learn/dp_consumer_learn_track/integrate_graphql/index.md
-  #         - Integration with LakeSearch:
-  #           - learn/dp_consumer_learn_track/integrate_lakesearch/index.md
   #         - Integration with Data APIs:
   #           - learn/dp_consumer_learn_track/integrate_api/index.md
   #         - Custom apps to consume Data Products:

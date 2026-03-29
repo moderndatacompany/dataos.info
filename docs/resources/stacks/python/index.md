@@ -33,7 +33,6 @@ Before using the Python Stack, ensure the following requirements are met:
       beacon-graphql-v1         | v1alpha | stack |           | active |         | dataos-manager     
       bento-v4                  | v1alpha | stack |           | active |         | dataos-manager     
       flare-v7                  | v1alpha | stack |           | active |         | dataos-manager     
-      lakesearch-v2             | v1alpha | stack |           | active |         | iamloki         
       python-3-12               | v1alpha | stack |           | active |         | iamgroot           
     ```
     

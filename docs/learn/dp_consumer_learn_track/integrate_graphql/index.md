@@ -29,6 +29,6 @@ Here are the steps to access and use the Data Product via GraphQL.
 
 ## Next step
 
-If you want to explore the capabilities such as full-text search, semantic search, etc., refer to the next topic.
+If you want to expose the Data Product through standard APIs, refer to the next topic.
 
-👉 [Integration with LakeSearch](/learn/dp_consumer_learn_track/integrate_lakesearch/)
+👉 [Integration with Data API](/learn/dp_consumer_learn_track/integrate_api/)

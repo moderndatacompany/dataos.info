@@ -31,7 +31,6 @@ Ensure that appropriate access permissions are available to execute this command
   flare           │         │ 6.0     │ docker.io/rubiklabs/flare6:8.0.9                  │ dataos-container-registry  
   flash           │ python  │ 1.0     │ docker.io/rubiklabs/flash:0.0.36                   │ dataos-container-registry  
   flash           │ python  │ 2.0     │ docker.io/rubiklabs/flash:0.0.37-dev              │ dataos-container-registry  
-  lakesearch      │         │ 1.0     │ docker.io/rubiklabs/lakesearch:0.1.11             │ dataos-container-registry  
   scanner         │         │ 1.0     │ docker.io/rubiklabs/dataos-scanner:0.1.28         │ dataos-container-registry  
   scanner         │         │ 2.0     │ docker.io/rubiklabs/dataos-scanner:0.1.28         │ dataos-container-registry  
   soda            │ python  │ 1.0     │ docker.io/rubiklabs/dataos-soda:0.0.19.3          │ dataos-container-registry  

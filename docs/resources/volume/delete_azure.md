@@ -23,7 +23,7 @@ Whenever a Volume Resource is provisioned, in the backend, a corresponding Volum
     ```bash
     NAME                       STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS          VOLUMEATTRIBUTESCLASS     AGE
     cola-volume                Bound    pvc-26574dc5-89ee-4269-abcf-38d8d48801e     50Gi       RWO            juicefs-retain        <unset>                  18d
-    lake-search-store-volume   Bound    pvc4fc91598-4b00-482d-87cf-f3aa34c9f58b     0Gi        RWO            juicefs-retain        <unset>                  14d
+    sample-store-volume        Bound    pvc4fc91598-4b00-482d-87cf-f3aa34c9f58b     0Gi        RWO            juicefs-retain        <unset>                  14d
     ls-test-01                 Bound    pvc4f73155c-2505-4f63-91ac-0fae6dac94aa     8Gi        RWO            disk-premium-delete   <unset>                  28d
     ls-vol-02                  Bound    pvc6e5d2d2d-d3da-4c33-81a3-229d9910c5f      8Gi        RWO            disk-premium-delete   <unset>                  16d
     ncdc-vol-01                Bound    pvc98d352e6-fee6-4395-84a9-2f9d645a986      8Gi        RWO            disk-premium-delete   <unset>                  17d
