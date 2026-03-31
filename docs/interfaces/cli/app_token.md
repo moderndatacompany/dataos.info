@@ -1,4 +1,12 @@
+---
+title: Create Application Token
+search:
+  boost: 5
+---
+
 # Create Application Token
+
+This guide explains how to create and manage an application user and generate an API token using the DataOS CLI, so data applications can securely authenticate and access DataOS resources.
 
 ## Prerequisites
 
