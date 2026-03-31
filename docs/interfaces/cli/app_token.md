@@ -40,10 +40,10 @@ dataos-ctl user create -n <name-of-user> -t application -u <user-id>
 
 **Example:**
 
-The following command creates an app-user named `lakesearch_app_token` with the user ID `lakesearchapi`:
+The following command creates an app-user named `data_app_token` with the user ID `dataappuser`:
 
 ```bash
-dataos-ctl user create -n lakesearch_app_token -t application -u lakesearchapi
+dataos-ctl user create -n data_app_token -t application -u dataappuser
 ```
 
 ### **3. Assign roles and permissions**
@@ -58,11 +58,11 @@ dataos-ctl user tag add -i <user-id> -t roles:id:<role-name>
 
 **Examples:**
 
-To assign roles `system-dev` and `data-dev` to the app-user `lakesearchapi`, use:
+To assign roles `system-dev` and `data-dev` to the app-user `dataappuser`, use:
 
 ```bash
-dataos-ctl user tag add -i lakesearchapi -t roles:id:system-dev
-dataos-ctl user tag add -i lakesearchapi -t roles:id:data-dev
+dataos-ctl user tag add -i dataappuser -t roles:id:system-dev
+dataos-ctl user tag add -i dataappuser -t roles:id:data-dev
 ```
 
 Additional roles can be assigned as needed by repeating the command with appropriate role identifiers.
@@ -77,14 +77,14 @@ dataos-ctl user apikey create -d <duration> -n <name-of-apikey> -i <user-id>
 
 **Examples:**
 
-- Create an API key for the `lakesearchapi` user valid for **9999 hours:**
+- Create an API key for the `dataappuser` user valid for **9999 hours:**
     
     ```bash
-    dataos-ctl user apikey create -d 9999h -n lakesearch_app_api -i lakesearchapi
+    dataos-ctl user apikey create -d 9999h -n data_app_api -i dataappuser
     ```
     
 - Generate an API key for a different app-user with a custom duration of **72 hours:**
 
     ```bash
-    dataos-ctl user apikey create -d 72h -n lakesearch_app_api -i lakesearchapi
+    dataos-ctl user apikey create -d 72h -n data_app_api -i dataappuser
     ```
