@@ -1,7 +1,21 @@
 # Steps to Generate and Register a Key Pair in Snowflake
 
 <aside class="callout">
-⚠️ Passphrase authentication does not work with Snowflake free trial accounts.
+<p><strong>⚠️ For Windows Users</strong></p>
+<p>Use <strong>Git Bash</strong> to run the shell command blocks in <strong>Steps 1, 2, 3, 5, and 6</strong>. Do not run those commands in Command Prompt or PowerShell. They rely on a POSIX shell (<code>~</code>, <code>mkdir -p</code>, <code>chmod</code>, <code>awk</code>, <code>tr</code>, bash line continuations with <code>\</code>), which Git Bash provides; native Windows shells will behave differently. <strong>Step 4</strong> is SQL in Snowflake only—run that in the Snowflake UI or worksheet as usual.</p>
+<p><strong>Check whether Git Bash is installed</strong></p>
+<ol>
+<li>Press <strong>Win</strong>, type <strong>Git Bash</strong>, and open it if it appears in the results.</li>
+<li>If nothing appears, open <strong>File Explorer</strong> and see whether this file exists (default 64-bit install): <code>C:\Program Files\Git\git-bash.exe</code>. If it does, you can start Git Bash from there or pin it to the taskbar.</li>
+<li>Optional: in <strong>Command Prompt</strong>, run <code>where git</code>. If it prints a path under <code>...\Git\cmd\git.exe</code>, Git for Windows is installed and Git Bash is almost always installed with it.</li>
+<li>With Git Bash open, run <code>echo $BASH_VERSION</code>. If a version number prints, the environment is ready for the commands in this guide.</li>
+</ol>
+<p><strong>If Git Bash is not installed</strong></p>
+<ol>
+<li>Download <strong>Git for Windows</strong> from <a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a>.</li>
+<li>Run the installer. On the <strong>Select Components</strong> screen, keep <strong>Git Bash Here</strong> selected (it is selected by default).</li>
+<li>Finish the wizard, then open <strong>Git Bash</strong> from the Start menu and continue with Step 1 below.</li>
+</ol>
 </aside>
 
 ## Step 1: Generate and Secure RSA Key Pair
