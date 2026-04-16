@@ -1,0 +1,32 @@
+name: mysnowflake01
+version: v2alpha
+type: depot
+tags:
+  - dataos:type:resource
+  - dataos:type:cluster-resource
+  - dataos:resource:depot
+  - dataos:layer:user
+description: My v2alpha snowflake depot with private_key
+owner: harshnagar
+layer: user
+depot:
+  name: mysnowflake01
+  type: snowflake
+  description: Snowflake Sample data
+  secrets:
+    - name: mysnowflake01-rw
+      keys:
+        - mysnowflake01-rw
+      allKeys: true
+    - name: mysnowflake01-r
+      keys:
+        - mysnowflake01-r
+      allKeys: true
+  external: false
+  snowflake:
+    database: SNOWFLAKE_LEARNING_DB
+    url: FGDUSDB-LX76786.snowflakecomputing.com
+    warehouse: SNOWFLAKE_LEARNING_WH
+    account: FGDUSDB-LX76786
+    role: ACCOUNTADMIN
+  source: mysnowflake01
