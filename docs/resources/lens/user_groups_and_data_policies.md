@@ -74,7 +74,7 @@ model/
 
 ### **Step 2: Define `user_group.yaml`**
 
-Define `user_group.yaml` file using following template:
+Define `user_groups.yaml` file using following template:
 
 === "Syntax"
 
