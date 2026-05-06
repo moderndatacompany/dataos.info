@@ -1,6 +1,17 @@
 
 ## SQL API references
 
+!!! info
+    Lens Postern service is not a PostgreSQL database; it only provides a PostgreSQL-compatible query interface. While you can write queries using the Postgres SQL dialect, not all PostgreSQL functions and features are supported.
+
+    **This means:**
+
+    - Only a subset of PostgreSQL functions will work.
+    - The system is not fully Postgres-compatible.
+    - It operates on a semantic model, unlike a traditional PostgreSQL database.
+
+    So, think of it as a Postgres-like interface for querying, not an actual Postgres DB engine.
+
 ### **SQL commands**
 
 #### **`SELECT`**
