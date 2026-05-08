@@ -1,21 +1,15 @@
 # Snowflake
 
-<aside class="callout">
-⚠️ Snowflake no longer supports password-based authentication.
-All authentication must now use Key-Pair Authentication with RSA keys
-</aside>
+You can store Snowflake credentials in DataOS using an Instance Secret in either of these ways:
 
-With Key-Pair Authentication:
+- **Username and password**: Store the Snowflake login name and password in the Instance Secret (no RSA keys). Complete [Pre-requisites](#pre-requisites) for your chosen method, then follow [Steps to create an Instance Secret (username and password)](#steps-to-create-an-instance-secret-username-and-password).
 
-- Create a **public/private RSA key pair** locally.
-- Register the **public key** with the Snowflake user account.
-- Register the **private key** with DataOS using an Instance Secret.
+- **RSA key-pair authentication**: Use an RSA key pair, register the **public key** with the Snowflake user, and store the **encrypted private key** in DataOS. Complete [Pre-requisites](#pre-requisites) for your chosen method, then follow [Steps to create an Instance Secret (RSA key-pair authentication)](#steps-to-create-an-instance-secret-rsa-key-pair-authentication).
 
 ## Pre-requisites
 
-To create an Instance Secret for securing Snowflake credentials, you must have the following information:
 
-### **Access Permissions in DataOS**
+### **Access Permissions in DataOS** {#access-permissions-in-dataos}
 
 <aside class="callout">
 🗣️ Note that tags and use cases may have varying access permissions depending on the organization.
@@ -33,7 +27,7 @@ To create an Instance Secret in DataOS, at least one of the following role tags 
         NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS               
     ─────────────┼─────────────┼────────┼──────────────────────┼─────────────────────────────────
     Iamgroot     │   iamgroot  │ person │   iamgroot@tmdc.io   │ roles:id:data-dev,              
-                 │             │        │                      │  roles:id:user,                  
+                 │             │        │                      │ roles:id:user,                  
                  │             │        │                      │ users:id:iamgroot  
     ```
 
@@ -58,36 +52,36 @@ Alternatively, if access is managed through use cases, ensure the following use 
     <figcaption><i>Bifrost Governance</i></figcaption>
     </center>
 
-### **Source System Requirements**
+### **Snowflake credential requirements** {#snowflake-credential-requirements}
 
+Each Instance Secret uses **either** password fields **or** key-pair fields, never both. In both cases you need the Snowflake **username** that will authenticate.
 
+#### Username (required for both methods)
 
 - **Username**: The Snowflake username used to authenticate to the Snowflake account. This can be obtained from your Snowflake administrator or found in your Snowflake account settings.
 
-- **RSA Key Pair**:
-  You must generate a public and private RSA key pair in PKCS#8 PEM format for key-pair authentication.
+#### Additional requirements for username and password authentication
 
-    - The public key (`snowflake_rsa_key.pub`) must be registered with your Snowflake user account using:
+- **Password**: The Snowflake user’s login password. Confirm with your administrator that password-based programmatic access is permitted; policies (for example key-pair-only users or MFA constraints) may make key-pair authentication the viable option instead.
+
+#### Additional requirements for RSA key-pair authentication
+
+- **RSA key pair**: Generate a public and private RSA key pair in PKCS#8 PEM format.
+
+    - Register the public key (`snowflake_rsa_key.pub`) with your Snowflake user account:
 
         ```sql
         ALTER USER <snowflake-username> SET RSA_PUBLIC_KEY='<your_public_key>';
         ```
- 
-    - The private key (`snowflake_rsa_key.p8`)  will be used in Instance Secret.
 
-    For key generation steps, see the [Generate RSA Key Pair section](/resources/instance_secret/data_sources/snowflake_kp_steps/).
+    - The private key (`snowflake_rsa_key.p8`) is pasted into the Instance Secret manifest as `key`.
 
-- **Passphrase**: A secure passphrase to encrypt the private key.
+    For key generation and registration, see the [Generate RSA Key Pair section](/resources/instance_secret/data_sources/snowflake_kp_steps/).
 
-<aside class="callout">
-⚠️ Passphrase authentication does not work with Snowflake free trial accounts.
-</aside>
+- **Passphrase**: A secure passphrase that encrypts the private key (the same value referenced as `passphrase` in the manifest).
 
-## Steps to configure Key-Pair Authentication
 
-Snowflake is a data warehouse that serves as a centralized repository for structured data, enabling efficient query and analysis. Follow the steps below to complete the creation process efficiently and securely.
-
-### **Step 1: Create a manifest file**
+### **Read-only and read-write Instance Secrets**
 
 Begin by creating a manifest file to hold the configuration details for your Snowflake Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below
 
@@ -105,10 +99,86 @@ Begin by creating a manifest file to hold the configuration details for your Sno
     ```
 </aside>
 
+## Steps to create an Instance Secret (username and password)
+
+Use this path when password-based login is allowed for your Snowflake user and you prefer not to manage RSA key material.
+
+### **Step 1: Create a manifest file**
+
+Begin by creating a manifest file to hold the configuration details for your Snowflake Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template below.
+
 === "Read-only Instance Secret"
 
     ```yaml
-    # Snowflake Read Instance-secret Manifest
+    # Snowflake Read Instance-secret Manifest (username and password)
+
+    name: ${snowflake-depot-name}-r # Unique identifier for Resource, replace ${snowflake-depot-name} with depot name
+    version: v1 # Manifest version
+    type: instance-secret # Type of the Resource
+    description: ${description} # Purpose of the Instance-secret
+    layer: user # DataOS layer
+    instance-secret:
+      type: key-value-properties # Secret type
+      acl: r # Access control: 'r' for read-only
+      data:
+        username: ${snowflake-username}
+        password: ${password} # replace with Snowflake password
+    ```
+
+=== "Read-write Instance Secret"
+
+    ```yaml
+    # Snowflake read-write Instance-secret Manifest (username and password)
+
+    name: ${snowflake-depot-name}-rw # Unique identifier for Resource, replace ${snowflake-depot-name} with depot name
+    version: v1 # Manifest version
+    type: instance-secret # Type of the Resource
+    description: ${description} # Purpose of the Instance-secret
+    layer: user # DataOS layer
+    instance-secret:
+      type: key-value-properties # Secret type
+      acl: rw # Access control: 'rw' for read-write
+      data:
+        username: ${snowflake-username}
+        password: ${password} # replace with Snowflake password
+    ```
+
+=== "Example Usage"
+
+    ```yaml
+    # Snowflake Read Instance-secret Manifest (username and password)
+
+    name: sfdepottest-r # Unique identifier for Resource
+    version: v1 # Manifest version
+    type: instance-secret # Type of the Resource
+    description: snowflake credentials # Purpose of the Instance-secret
+    layer: user # DataOS layer
+    instance-secret:
+      type: key-value-properties
+      acl: r
+      data:
+        username: TESTUSER_1
+        password: your-snowflake-password
+    ```
+
+For password-based secrets, the `data` section contains only `username` and `password`. Do not set `auth_mode`, `passphrase`, or `key`—those fields are used only for [RSA key-pair authentication](#steps-to-create-an-instance-secret-rsa-key-pair-authentication).
+
+### **Step 2 and Step 3: Apply and validate**
+
+Use [**Step 2: Apply the manifest**](#step-2-apply-the-manifest) and [**Step 3: Validate the Instance Secret**](#step-3-validate-the-instance-secret) under [RSA key-pair authentication](#steps-to-create-an-instance-secret-rsa-key-pair-authentication) below—the `dataos-ctl` commands are the same for both authentication methods. To remove the Instance Secret, follow [**Delete the Instance Secret**](#delete-the-instance-secret).
+
+## Steps to create an Instance Secret (RSA key-pair authentication)
+
+Snowflake is a data warehouse that serves as a centralized repository for structured data, enabling efficient query and analysis. After you complete the [RSA key-pair material requirements](#snowflake-credential-requirements) and register the public key in Snowflake, follow the steps below to build and apply the Instance Secret.
+
+### **Step 1: Create a manifest file**
+
+Begin by creating a manifest file to hold the configuration details for your Snowflake Instance Secret. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+
+=== "Read-only Instance Secret"
+
+    ```yaml
+    # Snowflake Read Instance-secret Manifest (RSA key-pair)
 
     name: ${snowflake-depot-name}-r # Unique identifier for Resource, replace ${snowflake-depot-name} with depot name
     version: v1 # Manifest version
@@ -131,7 +201,7 @@ Begin by creating a manifest file to hold the configuration details for your Sno
 === "Read-write Instance Secret"
 
     ```yaml
-    # Snowflake read-write Instance-secret Manifest
+    # Snowflake read-write Instance-secret Manifest (RSA key-pair)
 
     name: ${snowflake-depot-name}-rw # Unique identifier for Resource, replace ${snowflake-depot-name} with depot name
     version: v1 # Manifest version
@@ -140,7 +210,7 @@ Begin by creating a manifest file to hold the configuration details for your Sno
     layer: user # DataOS layer
     instance-secret:
       type: key-value-properties # Secret type
-      acl: rw # Access control: 'r' for read-only
+      acl: rw # Access control: 'rw' for read-write
       data:
         username: ${snowflake-username}
         auth_mode: key-pair
@@ -154,7 +224,7 @@ Begin by creating a manifest file to hold the configuration details for your Sno
 === "Example Usage"
 
     ```yaml
-    # Snowflake Read Instance-secret Manifest
+    # Snowflake Read Instance-secret Manifest (RSA key-pair)
 
     name: sfdepottest-r # Unique identifier for Resource
     version: v1 # Manifest version
@@ -188,13 +258,13 @@ The Instance Secret manifest includes a Resource meta section with essential met
 
 **Instance-secret specific section**
 
-This section focuses on attributes specific to Snowflake Instance Secrets. It includes details like:
+This section summarizes attributes under `instance-secret` for Snowflake:
 
-- `type`: Specifies the Instance Secret type (key-value-properties).
+- `type`: Specifies the Instance Secret type (`key-value-properties`).
 
 - `acl`: Access control level (read-only or read-write).
 
-- `data`: Contains sensitive information such as Snowflake username, authentication mode, passphrase, and encrypted private key.
+- `data`: Depends on the authentication method. For **username and password**, include only `username` and `password`. For **RSA key-pair**, include `username`, `auth_mode: key-pair`, `passphrase`, and the encrypted private key in `key`.
 
 For more information, refer to the [configurations section](/resources/instance_secret/configurations/).
 
@@ -390,7 +460,7 @@ Specify the path of the manifest file and use the [`delete`](/interfaces/cli/co
 
 ## Troubleshooting
 
-This section provides guidance on resolving errors encountered during consumption of Snowflake Depot with Key-Pair Authentication.
+This section provides guidance on resolving errors encountered when using a Snowflake Depot, especially with **RSA key-pair** Instance Secrets.
 
 | Issue | Cause|
 | --- | --- |
