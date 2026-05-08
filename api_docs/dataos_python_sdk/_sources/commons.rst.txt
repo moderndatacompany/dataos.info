@@ -1,0 +1,19 @@
+commons package
+===============
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   commons.http
+   commons.utils
+
+Module contents
+---------------
+
+.. automodule:: commons
+   :members:
+   :undoc-members:
+   :show-inheritance:

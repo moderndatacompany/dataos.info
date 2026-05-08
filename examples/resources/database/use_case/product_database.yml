@@ -1,0 +1,16 @@
+name: productdb
+version: v1
+type: database
+description: productdb database created for testing.
+tags:
+  - database
+database:
+  migrate:
+    includes: 
+      - migration/
+    command: up
+  compute: runnable-default
+
+
+
+

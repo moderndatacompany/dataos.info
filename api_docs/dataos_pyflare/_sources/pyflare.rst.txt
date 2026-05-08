@@ -1,0 +1,18 @@
+pyflare package
+===============
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   pyflare.sdk
+
+Module contents
+---------------
+
+.. automodule:: pyflare
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,25 @@
+name: filter-lakehouse-city
+version: v1
+type: policy
+tags:
+  - policy
+  - data
+  - filter
+description: "data policy to filter zip data"
+layer: user
+policy:
+  data:
+    type: filter
+    name: "filterlakehousecity"
+    priority: 10
+    selector:
+      user:
+        match: any
+        tags:
+          - "users:id:iamgroot"
+    filters:
+      - column: county_name
+        operator: not_equals
+        value: "Autauga County"
+    dataset_id: lakehouse.retail.city
+    description: 'data policy to filter data on zip code'

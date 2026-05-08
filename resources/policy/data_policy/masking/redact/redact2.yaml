@@ -1,0 +1,27 @@
+name: {{location}}
+version: v1
+type: policy
+tags:
+  - {{dataos:type:resource}}
+description: >-
+  {{The location of all individuals is redacted and replaced with a constant value
+  ‘REDACTED’. Location can be classified as an individual’s address, zip code,
+  state, or country.}}
+owner: {{iamgroot}}
+layer: user
+policy:
+  data:
+    priority: {{100}}
+    type: mask
+    mask:
+      hash:
+        algo: {{sha256}}
+      operator: redact
+    selector:
+      column:
+        tags:
+          - {{PII.Location}}
+      user:
+        match: {{any}}
+        tags:
+          - {{roles:id:user}}

@@ -1,0 +1,35 @@
+# Resource meta section
+name: sftest01
+version: v1
+type: cluster
+description: We are using this cluster to check the monitor and pager stuff with the help of minerva cluster. 
+tags:
+  - cluster
+  - minerva
+
+# Cluster-specific section
+cluster:
+  compute: query-default
+  type: minerva
+
+  # Minerva-specific section
+  minerva:
+    replicas: 1
+    # resources:
+    #   limits:
+    #     cpu: 2000m
+    #     memory: 4Gi
+    #   requests:
+    #     cpu: 2000m
+    #     memory: 4Gi
+    # debug:
+    #   logLevel: INFO
+    #   trinoLogLevel: ERROR
+    depots:
+      - address: dataos://sfsa
+
+    coordinatorEnvs:
+      "JVM__opts": "--add-opens=java.base/java.nio=ALL-UNNAMED -Dnet.snowflake.jdbc.enableBouncyCastle=TRUE"
+    workerEnvs:
+      "JVM__opts": "--add-opens=java.base/java.nio=ALL-UNNAMED -Dnet.snowflake.jdbc.enableBouncyCastle=TRUE" 
+ 

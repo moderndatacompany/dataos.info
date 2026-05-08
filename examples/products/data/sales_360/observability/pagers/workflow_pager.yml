@@ -1,0 +1,72 @@
+name: workflow-failed-pager
+version: v1alpha
+type: pager
+tags:
+  - dataos:type:resource
+  - workflow-failed-pager
+description: This is for sending Alerts on Microsoft Teams Maggot Channel.
+workspace: public
+pager:
+  conditions:
+    - valueJqFilter: .properties.name
+      operator: equals
+      value: workflowfailed
+    - valueJqFilter: .properties.incident_type
+      operator: equals
+      value: workflowruntimefailure
+    - valueJqFilter: .properties.severity
+      operator: equals
+      value: high
+  output:
+    # msTeams:
+    #   webHookUrl: https://rubikdatasolutions.webhook.office.com/webhookb2/fbf5aa12-0d9b-43c9-8e86-ab4afc1fbacf@2e22bdde-3ec2-43f5-bf92-78e9f35a44fb/IncomingWebhook/780096b780594dc6ae39f5ecf1b8bd90/46089f07-1904-4a1b-aa40-665ca6618696
+    webHook:
+      url: https://rubikdatasolutions.webhook.office.com/webhookb2/23d5940d-c519-40db-8e75-875f3802e790@2e22bdde-3ec2-43f5-bf92-78e9f35a44fb/IncomingWebhook/433adc9d033e4e8f8ac1b36367f4450f/5d420a71-7170-4d0c-af28-680a98583e58
+      verb: post
+      headers:
+        'content-type': 'application/json'
+      bodyTemplate: |
+          {
+            "@type": "MessageCard",
+            "summary": "Workflow has Failed",
+            "themeColor": "0076D7",
+            "sections": [
+              {
+                "activityTitle": "Dear Team,",
+                "activitySubtitle": "⚠️ Our system detected an issue with the workflow and was unable to complete the process as expected.",
+                "facts": [
+                  {
+                    "name": "   The following workflow has failed:",
+                    "value": "{{ index (splitn ":" 4 .ReportContext.ResourceId) "_2" }}"
+                  },
+                  {
+                    "name": "   Failure Time:",
+                    "value": "{{ .CreateTime }}"
+                  },
+                  {
+                    "name": "   Severity:",
+                    "value": "{{ .Properties.severity }}"
+                  },
+                  {
+                    "name": "   Run Details:",
+                    "value": "<a href=\"https://cheerful-maggot.dataos.app/operations/user-space/resources/resource-runtime?name={{ index (splitn ":" 4 .ReportContext.ResourceId) "_2" }}&type=workflow&workspace=public\">Operation</a>"
+                  },
+                  {
+                    "name": "   Logs:",
+                    "value": "<a href=\"https://cheerful-maggot.dataos.app/metis/resources/workflow/dataos.public.{{ index (splitn ":" 4 .ReportContext.ResourceId) "_2" }}/run_history\">Metis</a>"
+                  }
+                ]
+              },
+              {
+                "text": "Schema Change detected !!! \n\n We understand the importance of timely and accurate data processing, and our team is actively working to resolve the issue and get the pipeline back up and running as soon as possible. In the meantime, please be aware that the data processing for the affected workflow may be delayed or incomplete."
+              },
+              {
+                "text": "\n\n"
+              }
+            ]
+          }
+
+
+
+
+

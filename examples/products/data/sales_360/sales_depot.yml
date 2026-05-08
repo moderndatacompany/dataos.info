@@ -1,0 +1,18 @@
+version: v1
+name: "bigquery"
+type: depot
+tags:
+  - dropzone
+  - bigquery
+layer: user
+depot:
+  type: BIGQUERY
+  description: "Google Cloud BigQuery"
+  spec:
+    project: dataos-ck-res-yak-dev
+  external: true
+  connectionSecret:
+    - acl: rw
+      type: key-value-properties
+      files:
+        json_keyfile: ./secrets/gcs-bq.json

@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>depot_service.apis.dataset_api &mdash; dataos-sdk-py 00.00.01 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            dataos-sdk-py
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">asset_tags_service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html#depot-service">depot_service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html#commons">commons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html#gateway">gateway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html#heimdall">heimdall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html#poros">poros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html#stack-service">stack_service</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">dataos-sdk-py</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">depot_service.apis.dataset_api</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for depot_service.apis.dataset_api</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
+
+<span class="kn">import</span> <span class="nn">uuid</span>
+<span class="kn">from</span> <span class="nn">pydantic.fields</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
+
+<span class="kn">from</span> <span class="nn">uplink</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="kn">from</span> <span class="nn">commons.http.client.dataos_consumer</span> <span class="kn">import</span> <span class="n">DataOSBaseConsumer</span>
+<span class="kn">from</span> <span class="nn">commons.http.client.hadler</span> <span class="kn">import</span> <span class="n">raise_for_status_code</span>
+<span class="kn">from</span> <span class="nn">depot_service.models.metadata_version_response</span> <span class="kn">import</span> <span class="n">MetadataVersionResponse</span>
+<span class="kn">from</span> <span class="nn">depot_service.models.dataset_response</span> <span class="kn">import</span> <span class="n">DatasetResponse</span>
+<span class="kn">from</span> <span class="nn">depot_service.models.dataset_request</span> <span class="kn">import</span> <span class="n">DatasetRequest</span>
+<span class="kn">from</span> <span class="nn">depot_service.models.field_rename_request</span> <span class="kn">import</span> <span class="n">FieldRenameRequest</span>
+<span class="kn">from</span> <span class="nn">depot_service.models.field_request</span> <span class="kn">import</span> <span class="n">FieldRequest</span>
+<span class="kn">from</span> <span class="nn">depot_service.models.field_update_request</span> <span class="kn">import</span> <span class="n">FieldUpdateRequest</span>
+<span class="kn">from</span> <span class="nn">depot_service.models.iceberg_partition_spec_request</span> <span class="kn">import</span> <span class="n">IcebergPartitionSpecRequest</span>
+<span class="kn">from</span> <span class="nn">depot_service.models.iceberg_stats</span> <span class="kn">import</span> <span class="n">IcebergStats</span>
+<span class="kn">from</span> <span class="nn">depot_service.models.snapshot_response</span> <span class="kn">import</span> <span class="n">SnapshotResponse</span>
+
+
+<div class="viewcode-block" id="DatasetApi"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.dataset_api.DatasetApi">[docs]</a><span class="k">class</span> <span class="nc">DatasetApi</span><span class="p">(</span><span class="n">DataOSBaseConsumer</span><span class="p">):</span>
+<div class="viewcode-block" id="DatasetApi.add_field"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.dataset_api.DatasetApi.add_field">[docs]</a>    <span class="nd">@json</span>
+    <span class="nd">@raise_for_status_code</span>
+    <span class="nd">@headers</span><span class="p">({</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">})</span>
+    <span class="nd">@patch</span><span class="p">(</span><span class="s2">&quot;api/v2/depots/</span><span class="si">{depot}</span><span class="s2">/collections/</span><span class="si">{collection}</span><span class="s2">/datasets/</span><span class="si">{dataset}</span><span class="s2">/fields&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">add_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">collection</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dataset</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">payload</span><span class="p">:</span> <span class="n">Body</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">FieldRequest</span><span class="p">),</span>
+                  <span class="n">correlation_id</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;dataos-correlation-id&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method to add a new field to a dataset in the specified collection of a depot.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            depot (str): The name of the depot.</span>
+<span class="sd">            collection (str): The name of the collection within the depot.</span>
+<span class="sd">            dataset (str): The name of the dataset within the collection.</span>
+<span class="sd">            payload (Body): The payload containing the field request data.</span>
+<span class="sd">                - type (FieldRequest): The type of the field request.</span>
+<span class="sd">                    Payload Attributes:</span>
+<span class="sd">                        name (str): The name of the new field.</span>
+<span class="sd">                            This attribute is essential and represents the name of the field that needs to be added to a dataset.</span>
+
+<span class="sd">                        type (str): The type of the new field.</span>
+<span class="sd">                            This attribute indicates the data type of the new field, such as string, integer, float, etc.</span>
+
+<span class="sd">                        precision (Optional[int]): The precision of the new field (optional).</span>
+<span class="sd">                            Precision is relevant when the field is of numeric type (e.g., float or decimal),</span>
+<span class="sd">                            and it represents the total number of significant digits in the number.</span>
+
+<span class="sd">                        scale (Optional[int]): The scale of the new field (optional).</span>
+<span class="sd">                            Scale is also relevant for numeric types and represents the number of digits to the right of the decimal point.</span>
+
+<span class="sd">                        keyType (Optional[str]): The key type of the new field (optional).</span>
+<span class="sd">                            This attribute might be used when the field represents a key or identifier with a specific type,</span>
+<span class="sd">                            such as &quot;primary key&quot; or &quot;foreign key.&quot;</span>
+
+<span class="sd">                        valueType (Optional[str]): The value type of the new field (optional).</span>
+<span class="sd">                            This attribute could be used to specify the type of values that the field will hold,</span>
+<span class="sd">                            like &quot;text,&quot; &quot;number,&quot; &quot;date,&quot; etc.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None: This method does not return anything.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DatasetApi.drop_field"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.dataset_api.DatasetApi.drop_field">[docs]</a>    <span class="nd">@raise_for_status_code</span>
+    <span class="nd">@headers</span><span class="p">({</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">})</span>
+    <span class="nd">@delete</span><span class="p">(</span><span class="s2">&quot;api/v2/depots/</span><span class="si">{depot}</span><span class="s2">/collections/</span><span class="si">{collection}</span><span class="s2">/datasets/</span><span class="si">{dataset}</span><span class="s2">/fields/</span><span class="si">{field}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">drop_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">collection</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dataset</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">field</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                   <span class="n">correlation_id</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;dataos-correlation-id&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method to drop a field from a dataset in the specified collection of a depot.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            depot (str): The name of the depot.</span>
+<span class="sd">            collection (str): The name of the collection within the depot.</span>
+<span class="sd">            dataset (str): The name of the dataset within the collection.</span>
+<span class="sd">            field (str): The name of the field to be dropped.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None: This method does not return anything.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DatasetApi.fetch_dataset"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.dataset_api.DatasetApi.fetch_dataset">[docs]</a>    <span class="nd">@raise_for_status_code</span>
+    <span class="nd">@headers</span><span class="p">({</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">})</span>
+    <span class="nd">@get</span><span class="p">(</span><span class="s2">&quot;api/v2/depots/</span><span class="si">{depot}</span><span class="s2">/collections/</span><span class="si">{collection}</span><span class="s2">/datasets/</span><span class="si">{dataset}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">fetch_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">collection</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dataset</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                      <span class="n">correlation_id</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;dataos-correlation-id&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span> <span class="o">-&gt;</span> <span class="n">DatasetResponse</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method to fetch a dataset from the specified collection of a depot.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            depot (str): The name of the depot.</span>
+<span class="sd">            collection (str): The name of the collection within the depot.</span>
+<span class="sd">            dataset (str): The name of the dataset to fetch.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            DatasetResponse: An instance of the DatasetResponse class representing the fetched dataset.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DatasetApi.create_dataset"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.dataset_api.DatasetApi.create_dataset">[docs]</a>    <span class="nd">@raise_for_status_code</span>
+    <span class="nd">@headers</span><span class="p">({</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">})</span>
+    <span class="nd">@json</span>
+    <span class="nd">@post</span><span class="p">(</span><span class="s2">&quot;api/v2/depots/</span><span class="si">{depot}</span><span class="s2">/collections/</span><span class="si">{collection}</span><span class="s2">/datasets/</span><span class="si">{dataset}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">create_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">collection</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dataset</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">payload</span><span class="p">:</span> <span class="n">Body</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">DatasetRequest</span><span class="p">),</span>
+                       <span class="n">correlation_id</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;dataos-correlation-id&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method to create a new dataset in the specified collection of a depot.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            depot (str): The name of the depot.</span>
+<span class="sd">            collection (str): The name of the collection within the depot.</span>
+<span class="sd">            dataset (str): The name of the new dataset to be created.</span>
+<span class="sd">            payload (Body): The payload containing the dataset request data.</span>
+<span class="sd">                - type (DatasetRequest): The type of the dataset request.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None: This method does not return anything.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DatasetApi.drop_dataset"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.dataset_api.DatasetApi.drop_dataset">[docs]</a>    <span class="nd">@raise_for_status_code</span>
+    <span class="nd">@headers</span><span class="p">({</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">})</span>
+    <span class="nd">@delete</span><span class="p">(</span><span class="s2">&quot;api/v2/depots/</span><span class="si">{depot}</span><span class="s2">/collections/</span><span class="si">{collection}</span><span class="s2">/datasets/</span><span class="si">{dataset}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">drop_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">collection</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dataset</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">purge</span><span class="p">:</span> <span class="n">Query</span><span class="p">(</span><span class="s1">&#39;purge&#39;</span><span class="p">)</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+                     <span class="n">correlation_id</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;dataos-correlation-id&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method to drop (delete) a dataset from the specified collection of a depot.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            depot (str): The name of the depot.</span>
+<span class="sd">            collection (str): The name of the collection within the depot.</span>
+<span class="sd">            dataset (str): The name of the dataset to drop.</span>
+<span class="sd">            purge (Query): An optional query parameter to indicate whether to purge the dataset completely.</span>
+<span class="sd">                - Default: False</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None: This method does not return anything.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DatasetApi.update_partition"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.dataset_api.DatasetApi.update_partition">[docs]</a>    <span class="nd">@raise_for_status_code</span>
+    <span class="nd">@json</span>
+    <span class="nd">@headers</span><span class="p">({</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">})</span>
+    <span class="nd">@patch</span><span class="p">(</span><span class="s2">&quot;api/v2/depots/</span><span class="si">{depot}</span><span class="s2">/collections/</span><span class="si">{collection}</span><span class="s2">/datasets/</span><span class="si">{dataset}</span><span class="s2">/partitions&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">update_partition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">collection</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dataset</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                         <span class="n">payload</span><span class="p">:</span> <span class="n">Body</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">List</span><span class="p">[</span><span class="n">IcebergPartitionSpecRequest</span><span class="p">]),</span>
+                         <span class="n">correlation_id</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;dataos-correlation-id&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">         Method to update partitions for a dataset in the specified collection of a depot.</span>
+
+<span class="sd">         Parameters:</span>
+<span class="sd">             depot (str): The name of the depot.</span>
+<span class="sd">             collection (str): The name of the collection within the depot.</span>
+<span class="sd">             dataset (str): The name of the dataset to update partitions.</span>
+<span class="sd">             payload (Body): The payload containing the partition specification request data.</span>
+<span class="sd">                 - type (List[IcebergPartitionSpecRequest]): The list of partition specification requests.</span>
+<span class="sd">                    Attributes:</span>
+<span class="sd">                        index (int): The index of the partition specification.</span>
+<span class="sd">                        type (str): The type of partitioning, e.g., &quot;hash&quot;, &quot;range&quot;, etc.</span>
+<span class="sd">                        column (str): The name of the column to use for partitioning.</span>
+<span class="sd">                        name (Optional[str]): The optional name of the partition.</span>
+<span class="sd">                        num_buckets (Optional[int]): The optional number of buckets for &quot;hash&quot; partitioning.</span>
+<span class="sd">         Returns:</span>
+<span class="sd">             None: This method does not return anything.</span>
+<span class="sd">         &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DatasetApi.fetch_schema"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.dataset_api.DatasetApi.fetch_schema">[docs]</a>    <span class="nd">@raise_for_status_code</span>
+    <span class="nd">@headers</span><span class="p">({</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">})</span>
+    <span class="nd">@get</span><span class="p">(</span><span class="s2">&quot;api/v2/depots/</span><span class="si">{depot}</span><span class="s2">/collections/</span><span class="si">{collection}</span><span class="s2">/datasets/</span><span class="si">{dataset}</span><span class="s2">/schema&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">fetch_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">collection</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dataset</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                     <span class="n">correlation_id</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;dataos-correlation-id&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method to fetch the schema of a dataset in the specified collection of a depot.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            depot (str): The name of the depot.</span>
+<span class="sd">            collection (str): The name of the collection within the depot.</span>
+<span class="sd">            dataset (str): The name of the dataset to fetch the schema.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: A JSON string representing the schema of the dataset.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DatasetApi.list_dataset"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.dataset_api.DatasetApi.list_dataset">[docs]</a>    <span class="nd">@raise_for_status_code</span>
+    <span class="nd">@returns</span><span class="o">.</span><span class="n">json</span>
+    <span class="nd">@get</span><span class="p">(</span><span class="s2">&quot;api/v2/depots/</span><span class="si">{depot}</span><span class="s2">/collections/</span><span class="si">{collection}</span><span class="s2">/datasets&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">list_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">collection</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                     <span class="n">correlation_id</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;dataos-correlation-id&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method to list datasets in the specified collection of a depot.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            depot (str): The name of the depot.</span>
+<span class="sd">            collection (str): The name of the collection within the depot.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List[str]: A list of dataset names available in the specified collection.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DatasetApi.show_stats"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.dataset_api.DatasetApi.show_stats">[docs]</a>    <span class="nd">@raise_for_status_code</span>
+    <span class="nd">@returns</span><span class="o">.</span><span class="n">json</span>
+    <span class="nd">@get</span><span class="p">(</span><span class="s2">&quot;api/v2/depots/</span><span class="si">{depot}</span><span class="s2">/collections/</span><span class="si">{collection}</span><span class="s2">/datasets/</span><span class="si">{dataset}</span><span class="s2">/stats&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">show_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">collection</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dataset</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                   <span class="n">correlation_id</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;dataos-correlation-id&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span> <span class="o">-&gt;</span> <span class="n">IcebergStats</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method to retrieve statistics for a dataset in the specified collection of a depot.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            depot (str): The name of the depot.</span>
+<span class="sd">            collection (str): The name of the collection within the depot.</span>
+<span class="sd">            dataset (str): The name of the dataset to retrieve statistics.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            IcebergStats: An instance of the IcebergStats data model representing the dataset statistics.</span>
+<span class="sd">                Attributes:</span>
+<span class="sd">                    stats (Dict[str, str]): A dictionary containing general statistics for the dataset.</span>
+<span class="sd">                    timeline (Dict[str, Dict[str, str]]): A dictionary representing the timeline of statistics.</span>
+<span class="sd">                    properties (Dict[str, str]): A dictionary containing additional properties related to statistics.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DatasetApi.list_properties"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.dataset_api.DatasetApi.list_properties">[docs]</a>    <span class="nd">@raise_for_status_code</span>
+    <span class="nd">@returns</span><span class="o">.</span><span class="n">json</span>
+    <span class="nd">@get</span><span class="p">(</span><span class="s2">&quot;api/v2/depots/</span><span class="si">{depot}</span><span class="s2">/collections/</span><span class="si">{collection}</span><span class="s2">/datasets/</span><span class="si">{dataset}</span><span class="s2">/properties&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">list_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">collection</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dataset</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                        <span class="n">correlation_id</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;dataos-correlation-id&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method to list properties of a dataset in the specified collection of a depot.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            depot (str): The name of the depot.</span>
+<span class="sd">            collection (str): The name of the collection within the depot.</span>
+<span class="sd">            dataset (str): The name of the dataset to list properties.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Dict[str, str]: A dictionary representing the properties of the dataset.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DatasetApi.remove_properties"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.dataset_api.DatasetApi.remove_properties">[docs]</a>    <span class="nd">@raise_for_status_code</span>
+    <span class="nd">@json</span>
+    <span class="nd">@delete</span><span class="p">(</span><span class="s2">&quot;api/v2/depots/</span><span class="si">{depot}</span><span class="s2">/collections/</span><span class="si">{collection}</span><span class="s2">/datasets/</span><span class="si">{dataset}</span><span class="s2">/properties&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">remove_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">collection</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dataset</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">payload</span><span class="p">:</span> <span class="n">Body</span><span class="p">(</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]),</span>
+                          <span class="n">correlation_id</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;dataos-correlation-id&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method to remove properties from a dataset in the specified collection of a depot.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            depot (str): The name of the depot.</span>
+<span class="sd">            collection (str): The name of the collection within the depot.</span>
+<span class="sd">            dataset (str): The name of the dataset from which properties should be removed.</span>
+<span class="sd">            payload (Body): The payload containing a list of property names to be removed.</span>
+<span class="sd">                - type (List[str]): The list of property names to remove.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None: This method does not return anything.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DatasetApi.add_properties"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.dataset_api.DatasetApi.add_properties">[docs]</a>    <span class="nd">@raise_for_status_code</span>
+    <span class="nd">@json</span>
+    <span class="nd">@patch</span><span class="p">(</span><span class="s2">&quot;api/v2/depots/</span><span class="si">{depot}</span><span class="s2">/collections/</span><span class="si">{collection}</span><span class="s2">/datasets/</span><span class="si">{dataset}</span><span class="s2">/properties&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">add_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">collection</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dataset</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">payload</span><span class="p">:</span> <span class="n">Body</span><span class="p">(</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]),</span>
+                       <span class="n">correlation_id</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;dataos-correlation-id&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method to add properties to a dataset in the specified collection of a depot.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            depot (str): The name of the depot.</span>
+<span class="sd">            collection (str): The name of the collection within the depot.</span>
+<span class="sd">            dataset (str): The name of the dataset to which properties should be added.</span>
+<span class="sd">            payload (Body): The payload containing a dictionary of property names and values to add.</span>
+<span class="sd">                - type (Dict[str, str]): A dictionary of property names and their corresponding values.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None: This method does not return anything.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DatasetApi.list_metadata"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.dataset_api.DatasetApi.list_metadata">[docs]</a>    <span class="nd">@raise_for_status_code</span>
+    <span class="nd">@returns</span><span class="o">.</span><span class="n">json</span>
+    <span class="nd">@get</span><span class="p">(</span><span class="s2">&quot;api/v2/depots/</span><span class="si">{depot}</span><span class="s2">/collections/</span><span class="si">{collection}</span><span class="s2">/datasets/</span><span class="si">{dataset}</span><span class="s2">/metadata&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">list_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">collection</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dataset</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                      <span class="n">correlation_id</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;dataos-correlation-id&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">MetadataVersionResponse</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method to list metadata versions for a dataset in the specified collection of a depot.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            depot (str): The name of the depot.</span>
+<span class="sd">            collection (str): The name of the collection within the depot.</span>
+<span class="sd">            dataset (str): The name of the dataset to list metadata versions.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List[MetadataVersionResponse]: A list of MetadataVersionResponse objects representing metadata versions.</span>
+<span class="sd">                Attributes:</span>
+<span class="sd">                version (str): The version string representing the metadata version.</span>
+<span class="sd">                timestamp (int): The timestamp associated with the metadata version.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DatasetApi.set_metadata"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.dataset_api.DatasetApi.set_metadata">[docs]</a>    <span class="nd">@raise_for_status_code</span>
+    <span class="nd">@json</span>
+    <span class="nd">@patch</span><span class="p">(</span><span class="s2">&quot;api/v2/depots/</span><span class="si">{depot}</span><span class="s2">/collections/</span><span class="si">{collection}</span><span class="s2">/datasets/</span><span class="si">{dataset}</span><span class="s2">/metadata/</span><span class="si">{version}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">set_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">collection</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dataset</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">version</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                     <span class="n">correlation_id</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;dataos-correlation-id&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method to set metadata for a specific version of a dataset in the specified collection of a depot.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            depot (str): The name of the depot.</span>
+<span class="sd">            collection (str): The name of the collection within the depot.</span>
+<span class="sd">            dataset (str): The name of the dataset for which metadata should be set.</span>
+<span class="sd">            version (str): The version of the metadata file to be set.</span>
+<span class="sd">                Valid options: &quot;latest&quot; for the latest version,</span>
+<span class="sd">                               &quot;v2.metadata.json&quot; for a specific version,</span>
+<span class="sd">                               &quot;v2.gz.metadata.json&quot; for a specific version (compressed).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None: This method does not return anything.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DatasetApi.update_nullability"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.dataset_api.DatasetApi.update_nullability">[docs]</a>    <span class="nd">@raise_for_status_code</span>
+    <span class="nd">@json</span>
+    <span class="nd">@patch</span><span class="p">(</span><span class="s2">&quot;api/v2/depots/</span><span class="si">{depot}</span><span class="s2">/collections/</span><span class="si">{collection}</span><span class="s2">/datasets/</span><span class="si">{dataset}</span><span class="s2">/fields/</span><span class="si">{field}</span><span class="s2">/nullable/</span><span class="si">{nullable}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">update_nullability</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">collection</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dataset</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">field</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">nullable</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+                           <span class="n">correlation_id</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;dataos-correlation-id&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method to update the nullability of a field in the specified dataset of a collection within a depot.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            depot (str): The name of the depot.</span>
+<span class="sd">            collection (str): The name of the collection within the depot.</span>
+<span class="sd">            dataset (str): The name of the dataset containing the field.</span>
+<span class="sd">            field (str): The name of the field for which the nullability should be updated.</span>
+<span class="sd">            nullable (bool): The new nullability status of the field. Set to True to make the field nullable,</span>
+<span class="sd">                             or False to make it non-nullable.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None: This method does not return anything.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DatasetApi.list_snapshots"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.dataset_api.DatasetApi.list_snapshots">[docs]</a>    <span class="nd">@raise_for_status_code</span>
+    <span class="nd">@returns</span><span class="o">.</span><span class="n">json</span>
+    <span class="nd">@get</span><span class="p">(</span><span class="s2">&quot;api/v2/depots/</span><span class="si">{depot}</span><span class="s2">/collections/</span><span class="si">{collection}</span><span class="s2">/datasets/</span><span class="si">{dataset}</span><span class="s2">/snapshots&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">list_snapshots</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">collection</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dataset</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                       <span class="n">correlation_id</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;dataos-correlation-id&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">SnapshotResponse</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method to list snapshots for a dataset in the specified collection of a depot.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            depot (str): The name of the depot.</span>
+<span class="sd">            collection (str): The name of the collection within the depot.</span>
+<span class="sd">            dataset (str): The name of the dataset to list snapshots.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List[SnapshotResponse]: A list of SnapshotResponse objects representing the snapshots.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DatasetApi.set_snapshot"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.dataset_api.DatasetApi.set_snapshot">[docs]</a>    <span class="nd">@raise_for_status_code</span>
+    <span class="nd">@patch</span><span class="p">(</span><span class="s2">&quot;api/v2/depots/</span><span class="si">{depot}</span><span class="s2">/collections/</span><span class="si">{collection}</span><span class="s2">/datasets/</span><span class="si">{dataset}</span><span class="s2">/snapshots/</span><span class="si">{id}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">set_snapshot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">collection</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dataset</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+                     <span class="n">correlation_id</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;dataos-correlation-id&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method to set a specific snapshot for a dataset in the specified collection of a depot.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            depot (str): The name of the depot.</span>
+<span class="sd">            collection (str): The name of the collection within the depot.</span>
+<span class="sd">            dataset (str): The name of the dataset for which the snapshot should be set.</span>
+<span class="sd">            id (int): The ID of the snapshot to be set.</span>
+<span class="sd">                eg: 566136990417338097</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None: This method does not return anything.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DatasetApi.rename_field"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.dataset_api.DatasetApi.rename_field">[docs]</a>    <span class="nd">@raise_for_status_code</span>
+    <span class="nd">@json</span>
+    <span class="nd">@patch</span><span class="p">(</span><span class="s2">&quot;api/v2/depots/</span><span class="si">{depot}</span><span class="s2">/collections/</span><span class="si">{collection}</span><span class="s2">/datasets/</span><span class="si">{dataset}</span><span class="s2">/fields/</span><span class="si">{field}</span><span class="s2">/rename&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">rename_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">collection</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dataset</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">field</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                     <span class="n">payload</span><span class="p">:</span> <span class="n">Body</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">FieldRenameRequest</span><span class="p">),</span>
+                     <span class="n">correlation_id</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;dataos-correlation-id&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method to rename a field in the specified dataset of a collection within a depot.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            depot (str): The name of the depot.</span>
+<span class="sd">            collection (str): The name of the collection within the depot.</span>
+<span class="sd">            dataset (str): The name of the dataset containing the field to be renamed.</span>
+<span class="sd">            field (str): The name of the field to be renamed.</span>
+<span class="sd">            payload (Body): The payload containing the new name of the field.</span>
+<span class="sd">                - type (FieldRenameRequest): The request body with the new field name.</span>
+<span class="sd">                  It should have the following attribute:</span>
+<span class="sd">                  - new_name (str): The new name for the field.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None: This method does not return anything.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DatasetApi.update_field"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.dataset_api.DatasetApi.update_field">[docs]</a>    <span class="nd">@raise_for_status_code</span>
+    <span class="nd">@json</span>
+    <span class="nd">@patch</span><span class="p">(</span><span class="s2">&quot;api/v2/depots/</span><span class="si">{depot}</span><span class="s2">/collections/</span><span class="si">{collection}</span><span class="s2">/datasets/</span><span class="si">{dataset}</span><span class="s2">/fields/</span><span class="si">{field}</span><span class="s2">/update&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">update_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">collection</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dataset</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">field</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                     <span class="n">payload</span><span class="p">:</span> <span class="n">Body</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">FieldUpdateRequest</span><span class="p">),</span>
+                     <span class="n">correlation_id</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;dataos-correlation-id&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method to update properties of a field in the specified dataset of a collection within a depot.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            depot (str): The name of the depot.</span>
+<span class="sd">            collection (str): The name of the collection within the depot.</span>
+<span class="sd">            dataset (str): The name of the dataset containing the field to be updated.</span>
+<span class="sd">            field (str): The name of the field to be updated.</span>
+<span class="sd">            payload (Body): The payload containing the updated properties of the field.</span>
+<span class="sd">                - type (FieldUpdateRequest): The request body with the updated properties of the field.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None: This method does not return anything.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DatasetApi.create_namespace"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.dataset_api.DatasetApi.create_namespace">[docs]</a>    <span class="nd">@raise_for_status_code</span>
+    <span class="nd">@json</span>
+    <span class="nd">@post</span><span class="p">(</span><span class="s2">&quot;api/v2/depots/</span><span class="si">{depot}</span><span class="s2">/collections/</span><span class="si">{collection}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">create_namespace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">collection</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                         <span class="n">correlation_id</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;dataos-correlation-id&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method to create a new namespace (collection) within a depot.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            depot (str): The name of the depot.</span>
+<span class="sd">            collection (str): The name of the new collection (namespace) to create.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None: This method does not return anything.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DatasetApi.fetch_schemas"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.dataset_api.DatasetApi.fetch_schemas">[docs]</a>    <span class="nd">@raise_for_status_code</span>
+    <span class="nd">@returns</span><span class="o">.</span><span class="n">json</span>
+    <span class="nd">@get</span><span class="p">(</span><span class="s2">&quot;api/v2/depots/</span><span class="si">{depot}</span><span class="s2">/collections/</span><span class="si">{collection}</span><span class="s2">/datasets/</span><span class="si">{dataset}</span><span class="s2">/schemas&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">fetch_schemas</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">collection</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dataset</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                      <span class="n">correlation_id</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;dataos-correlation-id&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method to fetch schemas for a dataset in the specified collection of a depot.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            depot (str): The name of the depot.</span>
+<span class="sd">            collection (str): The name of the collection within the depot.</span>
+<span class="sd">            dataset (str): The name of the dataset to fetch schemas.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: The schemas for the specified dataset in JSON format.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, tmdc.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

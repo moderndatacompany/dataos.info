@@ -1,0 +1,29 @@
+version: v1
+name: retail-rest
+type: service
+tags:
+  - syndicate
+  - retail
+  - service
+service:
+  replicas: 2
+  ingress:
+    enabled: true
+    stripPath: true
+    path: /retail/api/rest
+    noAuthentication: true
+  stack: beacon+rest
+  beacon:
+    source:
+      type: database
+      name: retail001
+      workspace: public
+  topology:
+  - name: database
+    type: input
+    doc: retail database connection
+  - name: rest-api
+    type: output
+    doc: serves up the retail database as a RESTful API
+    dependencies:
+    - database

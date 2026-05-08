@@ -1,0 +1,27 @@
+name: {{email}}
+version: v1
+type: policy
+tags:
+  - {{dataos:type:resource}}
+  - {{dataos:layer:user}}
+description: >-
+  {{Masks an individual’s email address by replacing it with a generated hash
+  against the value.}}
+owner: {{iamgroot}}
+layer: user
+policy:
+  data:
+    priority: {{98}}
+    type: mask
+    mask:
+      hash:
+        algo: {{sha256}}
+      operator: hash
+    selector:
+      column:
+        tags:
+          - {{PII.Email}}
+      user:
+        match: {{any}}
+        tags:
+          - {{roles:id:user}}

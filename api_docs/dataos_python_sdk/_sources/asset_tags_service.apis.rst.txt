@@ -1,0 +1,21 @@
+asset\_tags\_service.apis package
+=================================
+
+Submodules
+----------
+
+asset\_tags\_service.apis.asset\_tags\_api module
+-------------------------------------------------
+
+.. automodule:: asset_tags_service.apis.asset_tags_api
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: asset_tags_service.apis
+   :members:
+   :undoc-members:
+   :show-inheritance:

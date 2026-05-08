@@ -1,0 +1,13 @@
+# Instance Secret Manifest type: cloud-kernel
+
+name: ${my-instancesecret}
+version: v1
+type: instance-secret
+description: ${cloud kernel instance secret}
+instance-secret:
+  type: cloud-kernel
+  acl: r
+  data:
+    ${a: b}
+    ${c: d}
+    ${e: f}

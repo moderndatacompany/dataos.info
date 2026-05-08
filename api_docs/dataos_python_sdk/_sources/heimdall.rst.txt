@@ -1,0 +1,31 @@
+heimdall package
+================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   heimdall.apis
+   heimdall.auth
+   heimdall.models
+
+Submodules
+----------
+
+heimdall.heimdall\_client module
+--------------------------------
+
+.. automodule:: heimdall.heimdall_client
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: heimdall
+   :members:
+   :undoc-members:
+   :show-inheritance:

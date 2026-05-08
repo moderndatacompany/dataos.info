@@ -1,0 +1,43 @@
+version: v1
+name: redshift-write-01
+type: workflow
+tags:
+  - Connect
+  - read
+  - write
+description: Jobs writes data to redshift
+workflow:
+  title: Connect Redshift
+  dag:
+    - name: write-redshift-01
+      title: Reading data and writing to redshift
+      description: This job writes data to redshift
+      spec:
+        tags:
+          - Connect
+          - write
+        stack: flare:7.0
+        compute: runnable-default
+        envs:
+          DISABLE_HADOOP_PATH_CHECKS: "true"
+        stackSpec:
+          job:
+            explain: true
+            inputs:
+              - name: city_connect
+                dataset: dataos://thirdparty01:none/city
+                format: csv
+                schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc
+                options:
+                    saveMode: append
+            logLevel: INFO
+            outputs:
+              - name: cities
+                dataset: dataos://sanityredshift:public/redshift_write_12?acl=rw
+                format: redshift
+                options:
+                  saveMode: append
+            steps:
+              - sequence:
+                - name: cities
+                  sql: SELECT * FROM city_connect limit 10

@@ -1,0 +1,42 @@
+version: v1
+name: elasticsearch-write
+type: workflow
+tags:
+  - elasticsearch
+  - write
+  - flare
+description: this jobs reads data from thirdparty and writes to elasticsearch
+workflow:
+  title: Connect City
+  dag:
+    - name: elasticsearch-write
+      title: write data to elasticsearch
+      description: write data to elasticsearch
+      spec:
+        tags:
+          - Connect
+          - City
+        stack: flare:7.0
+        compute: runnable-default
+        stackSpec:
+          job:
+            explain: true
+            inputs:
+              - name: city_connect
+                dataset: dataos://thirdparty01:none/city
+                format: csv
+                schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc
+            logLevel: INFO
+            outputs:
+              - name: output01
+                dataset: dataos://sanityelasticsearch:default/elasticsearch_write_csv_13?acl=rw
+                format: elasticsearch
+                options:
+                  saveMode: append
+                  extraOptions:
+                    es.nodes.wan.only: 'true'
+                isStream: false
+            steps:
+              - sequence:
+                  - name: output01
+                    sql: SELECT * FROM city_connect limit 10

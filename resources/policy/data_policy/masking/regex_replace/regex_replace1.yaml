@@ -1,0 +1,27 @@
+name: {{phone-number}}
+version: v1
+type: policy
+tags:
+  - {{dataos:type:resource}}
+description: >-
+  {{Replaces the last five digits of an individual’s phone number with ‘XXXX’ to
+  mask the contact information}}
+owner: {{iamgroot}}
+layer: user
+policy:
+  data:
+    priority: {{{{100}}}}
+    type: mask
+    mask:
+      operator: regex_replace
+      regex_replace:
+        pattern: {{.{5}$}}
+        replacement: {{xxxxx}}
+    selector:
+      column:
+        tags:
+          - {{PII.PhoneNumber}}
+      user:
+        match: {{any}}
+        tags:
+          - {{roles:id:user}}
