@@ -78,10 +78,10 @@ depot:
       keys:
         - ${{snowflake-instance-secret-name}}-rw
   snowflake:
-    warehouse: ${{warehouse-name}}
+    warehouse: ${{snowflake-warehouse-name}}
     url: ${{snowflake-url}}
-    database: ${{database-name}}
-    account: ${{account-name}}
+    database: ${{snowflake-database-name}}
+    account: ${{snowflake-account-identifier}}
     role: ${{snowflake-role}} # mandatory
   source: ${{snowflake-depot}} 
 ```
