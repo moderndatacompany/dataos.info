@@ -39,7 +39,7 @@ To create a Bigquery Depot you must have the following details:
 
 ## Create a Bigquery Depot
 
-DataOS enables the creation of a Depot of type 'Bigquery' to facilitate the reading of data stored in an Azure Blob Storage account. This Depot provides access to the storage account, which can consist of multiple containers. A container serves as a grouping mechanism for multiple blobs. It is recommended to define a separate Depot for each container. To create a Depot of type ‘ABFSS‘, follow the below steps:
+To create a Depot of type BIGQUERY, follow the below steps:
 
 ### **Step 1: Create an Instance Secret for securing Bigquery credentials**
 
