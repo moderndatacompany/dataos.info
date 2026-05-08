@@ -31,7 +31,7 @@ To create a Snowflake Depot you must have the following details:
 
 - **Snowflake Account URL**: The unique URL used to access your Snowflake account, typically in the format `https://<account_name>.snowflakecomputing.com`. You can retrieve this from your Snowflake admin or find it in your Snowflake login credentials email.
 
-- **Snowflake Account Identifier**: The unique identifier assigned to the Snowflake account, usually consisting of letters and numbers. Obtain this information from the Snowflake admin or check it in the Snowflake account details.
+- **Snowflake Account Identifier**: The unique identifier assigned to the Snowflake account, usually consisting of letters and numbers. Obtain this information from the Snowflake admin or check it in the Snowflake account details. 
 
 - **Warehouse**: The name of the warehouse in Snowflake that you require access to. Locate this information in the Snowflake console under Warehouses or consult the team responsible for managing the Snowflake environment.
 
@@ -81,7 +81,7 @@ depot:
     warehouse: ${{snowflake-warehouse-name}}
     url: ${{snowflake-url}}
     database: ${{snowflake-database-name}}
-    account: ${{snowflake-account-identifier}}
+    account: ${{snowflake-account-identifier}} #example: EQZOTUT-JCA67321
     role: ${{snowflake-role}} # mandatory
   source: ${{snowflake-depot}} 
 ```
