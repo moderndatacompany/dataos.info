@@ -121,10 +121,7 @@ Nilus supports two authentication methods for GCP:
 
 ## Sink Attributes Details
 
-| Option                | Required | Description                                               | Callouts                                  |
-|-----------------------|----------|-----------------------------------------------------------|-------------------------------------------|
-| `dest-table`        | yes      | Destination table name in `schema.table` format          |                                           |
-| `incremental-strategy` | yes      | Strategy for writes (`append`, `replace`, `merge`)       | Merge requires `primary-key`             |
-| `primary-key`       | Required for merge | Column(s) used to deduplicate                       |                                           |
-
-
+| Option                 | Required           | Description                                                |
+| ---------------------- | ------------------ | ---------------------------------------------------------- |
+| `dest-table`           | Yes                | Destination table name in `schema.table` format            |
+| `incremental-strategy` | Yes                | Strategy for writes (`append`, `replace`)                  | 

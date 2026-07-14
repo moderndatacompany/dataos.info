@@ -167,12 +167,11 @@ For AWS-backed Lakehouse, following environment variables must be configured (vi
 
 ## Sink Attributes Details
 
-| Option                 | Required           | Description                                                | Callouts                     |
-| ---------------------- | ------------------ | ---------------------------------------------------------- | ---------------------------- |
-| `dest-table`           | Yes                | Destination table name in `schema.table` format            |                              |
-| `incremental-strategy` | Yes                | Strategy for writes (`append`, `replace`, `merge`)         | Merge requires `primary-key` |
-| `primary-key`          | Required for merge | Column(s) used to deduplicate                              |                              |
-| `aws_region`           | Optional           | Only for AWS-backed setups if required by your environment |                              |
+| Option                 | Required           | Description                                                |
+| ---------------------- | ------------------ | ---------------------------------------------------------- |
+| `dest-table`           | Yes                | Destination table name in `schema.table` format            |
+| `incremental-strategy` | Yes                | Strategy for writes (`append`, `replace`)                  | 
+| `aws_region`           | Optional           | Only for AWS-backed setups if required by your environment |
 
 
 

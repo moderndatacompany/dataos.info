@@ -103,9 +103,7 @@ For Azure-backed Lakehouse, following environment variables must be configured (
 
 ## Sink Attributes Details
 
-| Option                 | Required           | Description                                        | Callouts                     |
-| ---------------------- | ------------------ | -------------------------------------------------- | ---------------------------- |
-| `dest-table`           | Yes                | Destination table name in `schema.table` format    |                              |
-| `incremental-strategy` | Yes                | Strategy for writes (`append`, `replace`, `merge`) | Merge requires `primary-key` |
-| `primary-key`          | Required for merge | Column(s) used to deduplicate                      |                              |
-
+| Option                 | Required           | Description                                                |
+| ---------------------- | ------------------ | ---------------------------------------------------------- |
+| `dest-table`           | Yes                | Destination table name in `schema.table` format            |
+| `incremental-strategy` | Yes                | Strategy for writes (`append`, `replace`)                  | 
