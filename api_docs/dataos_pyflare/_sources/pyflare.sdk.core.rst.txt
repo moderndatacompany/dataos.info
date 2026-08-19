@@ -1,0 +1,53 @@
+pyflare.sdk.core package
+========================
+
+Submodules
+----------
+
+pyflare.sdk.core.dataos\_input module
+-------------------------------------
+
+.. automodule:: pyflare.sdk.core.dataos_input
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyflare.sdk.core.dataos\_output module
+--------------------------------------
+
+.. automodule:: pyflare.sdk.core.dataos_output
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyflare.sdk.core.decorator module
+---------------------------------
+
+.. automodule:: pyflare.sdk.core.decorator
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyflare.sdk.core.minerva\_input module
+--------------------------------------
+
+.. automodule:: pyflare.sdk.core.minerva_input
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyflare.sdk.core.session\_builder module
+----------------------------------------
+
+.. automodule:: pyflare.sdk.core.session_builder
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: pyflare.sdk.core
+   :members:
+   :undoc-members:
+   :show-inheritance:

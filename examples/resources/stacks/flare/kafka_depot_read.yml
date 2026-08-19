@@ -1,0 +1,37 @@
+version: v1
+name: read-kafka-01
+type: workflow
+tags:
+  - read-kafka
+description: this jobs reads data from kafka
+workflow:
+  dag:
+    - name: sample-read-kafka-01
+      title: read kafka sample data
+      #description: This job ingest cloudevent data into
+      spec:
+        stack: flare:7.0
+        compute: runnable-default
+        stackSpec:
+          job:
+            explain: true
+            inputs:
+              - name: sample_data
+                dataset: dataos://sanitykafka:default/write_kafka_12
+                format: kafkajson
+                isStream: false
+            logLevel: INFO
+            outputs:
+              - name: finalDf
+                dataset: dataos://lakehouse:smoketest/read_kafka_json_12?acl=rw
+                format: iceberg
+                options:
+                  saveMode: overwrite
+                  iceberg:
+                    properties:
+                      write.metadata.previous-versions-max: "10"
+                      history.expire.max-snapshot-age-ms: "7200000"
+            steps:
+              - sequence:
+                  - name: finalDf
+                    sql: SELECT * FROM sample_data limit 10

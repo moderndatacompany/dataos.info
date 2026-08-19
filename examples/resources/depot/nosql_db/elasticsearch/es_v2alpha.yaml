@@ -1,0 +1,22 @@
+name: ${{depot-name}}
+version: v2alpha
+type: depot
+tags:
+  - ${{tag1}}
+  - ${{tag2}}
+owner: ${{owner-name}}
+layer: user
+depot:
+  type: ELASTICSEARCH              
+  description: ${{description}}
+  external: ${{true}}
+  secrets:
+    - name: ${{instance-secret-name}}-r
+      keys: 
+        - ${{instance-secret-name}}-r
+
+    - name: ${{instance-secret-name}}-rw
+      keys: 
+        - ${{instance-secret-name}}-rw
+  elasticsearch:                           
+    nodes: ${{["localhost:9092", "localhost:9093"]}}

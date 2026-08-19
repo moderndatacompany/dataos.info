@@ -1,0 +1,58 @@
+version: v1
+name: wf-flare-functions-change-case-04
+type: workflow
+tags:
+  - dataos:resources:workflow
+description:  The workflow transforms and cleans data from  source, ensuring it aligns with Lakehouse schema standards. After transformations, the data is ingested into Lakehouse, enabling reliable access for analytics and downstream applications.
+workflow:
+  dag:
+    - name: wf-policy-details-ingestion
+      spec:
+        tags:
+          # - Domain.Sales
+        stack: flare:7.0
+        compute: runnable-default
+        stackSpec:
+          driver:
+            coreLimit: 1050m
+            cores: 1
+            memory: 1200m
+          executor:
+            coreLimit: 1400m
+            cores: 1
+            instances: 1
+            memory: 1600Mi
+          job:
+            explain: true  
+            inputs:
+              - name: input_data
+                dataset: dataos://lakehouse:retail/customer?acl=rw
+                format: Iceberg
+
+            logLevel: INFO
+            outputs:
+              - name: finalDf
+                dataset: dataos://lakehouse:sample/flare_function_testing?acl=rw
+                format: Iceberg
+                options:
+                  saveMode: overwrite
+                  iceberg:                              
+                    properties:
+                      write.format.default: parquet
+                      write.metadata.compression-codec: snappy
+                title: Policy Details Data Transformations
+
+            steps:
+              - sequence:
+                  - name: finalDf
+                    sql: 
+                      SELECT 
+                          *
+                      from input_data
+
+                    functions:
+
+                      - name: change_case 
+                        case: lower
+                        column: mailing_street
+

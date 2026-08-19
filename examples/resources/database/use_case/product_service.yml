@@ -1,0 +1,29 @@
+version: v1
+name: product-db-01     
+type: service
+service:
+  replicas: 1
+  ingress:
+    enabled: true
+    stripPath: true
+    path: /product/api/v1    # naming of path what you want but formatting is neccessary.          
+    noAuthentication: true
+  stack: beacon+rest
+  compute: runnable-default
+  envs:
+    PGRST_OPENAPI_SERVER_PROXY_URI: https://<dataos_fqdn>/product/api/v1
+                                
+  stackSpec:
+    source:
+      type: database
+      name: productdb              
+      workspace: public
+  topology:
+    - name: database
+      type: input
+      doc: product database connection
+    - name: rest-api
+      type: output
+      doc: serves up the customers database as a RESTful API
+      dependencies:
+        - database

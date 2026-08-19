@@ -1,0 +1,40 @@
+version: v1
+name: bq-read
+type: workflow
+tags:
+  - bq
+  - City
+  - flare
+  - bigquery
+description: This job read data from biquery and writes to lakehouse
+title: Write bq
+workflow:
+  dag:
+    - name: bq-read
+      title: City read bq
+      description: This job read data from azure and writes to Sbq
+      spec:
+        tags:
+          - Connect
+          - City
+        stack: flare:7.0
+        compute: runnable-default
+        stackSpec:
+          job:
+            explain: true
+            inputs:
+              - name: city_connect
+                dataset: dataos://sanitybigquery:dev/bigquery_write_csv_12
+                format: bigquery
+
+            logLevel: INFO
+            outputs:
+              - name: finalDf
+                dataset: dataos://lakehouse:smoketest/bigquery_read_csv_12?acl=rw
+                format: iceberg
+                options:
+                  saveMode: overwrite
+            steps:
+              - sequence:
+                  - name: finalDf
+                    sql: SELECT * FROM city_connect limit 10

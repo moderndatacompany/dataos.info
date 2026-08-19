@@ -1,0 +1,12 @@
+name: customersdb
+version: v1
+type: database
+description: customersdb database created for testing.
+tags:
+  - database
+database:
+  migrate:
+    includes: 
+      - migration/
+    command: up
+  compute: runnable-default

@@ -1,0 +1,30 @@
+depot\_service package
+======================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   depot_service.apis
+   depot_service.models
+
+Submodules
+----------
+
+depot\_service.depot\_service\_client module
+--------------------------------------------
+
+.. automodule:: depot_service.depot_service_client
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: depot_service
+   :members:
+   :undoc-members:
+   :show-inheritance:

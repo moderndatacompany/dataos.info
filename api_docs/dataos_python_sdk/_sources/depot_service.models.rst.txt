@@ -1,0 +1,437 @@
+depot\_service.models package
+=============================
+
+Submodules
+----------
+
+depot\_service.models.abfss module
+----------------------------------
+
+.. automodule:: depot_service.models.abfss
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.abfss\_depot module
+-----------------------------------------
+
+.. automodule:: depot_service.models.abfss_depot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.address\_info module
+------------------------------------------
+
+.. automodule:: depot_service.models.address_info
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.big\_query module
+---------------------------------------
+
+.. automodule:: depot_service.models.big_query
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.big\_query\_depot module
+----------------------------------------------
+
+.. automodule:: depot_service.models.big_query_depot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.connection\_details module
+------------------------------------------------
+
+.. automodule:: depot_service.models.connection_details
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.dataset\_request module
+---------------------------------------------
+
+.. automodule:: depot_service.models.dataset_request
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.dataset\_response module
+----------------------------------------------
+
+.. automodule:: depot_service.models.dataset_response
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.depot\_flag\_request module
+-------------------------------------------------
+
+.. automodule:: depot_service.models.depot_flag_request
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.depot\_request module
+-------------------------------------------
+
+.. automodule:: depot_service.models.depot_request
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.depot\_response module
+--------------------------------------------
+
+.. automodule:: depot_service.models.depot_response
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.elastic\_search module
+--------------------------------------------
+
+.. automodule:: depot_service.models.elastic_search
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.elastic\_search\_depot module
+---------------------------------------------------
+
+.. automodule:: depot_service.models.elastic_search_depot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.eventhub module
+-------------------------------------
+
+.. automodule:: depot_service.models.eventhub
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.eventhub\_depot module
+--------------------------------------------
+
+.. automodule:: depot_service.models.eventhub_depot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.field\_rename\_request module
+---------------------------------------------------
+
+.. automodule:: depot_service.models.field_rename_request
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.field\_request module
+-------------------------------------------
+
+.. automodule:: depot_service.models.field_request
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.field\_update\_request module
+---------------------------------------------------
+
+.. automodule:: depot_service.models.field_update_request
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.file\_depot module
+----------------------------------------
+
+.. automodule:: depot_service.models.file_depot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.gcs module
+--------------------------------
+
+.. automodule:: depot_service.models.gcs
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.gcs\_depot module
+---------------------------------------
+
+.. automodule:: depot_service.models.gcs_depot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.http module
+---------------------------------
+
+.. automodule:: depot_service.models.http
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.htttp\_depot module
+-----------------------------------------
+
+.. automodule:: depot_service.models.htttp_depot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.iceberg\_partition\_spec\_request module
+--------------------------------------------------------------
+
+.. automodule:: depot_service.models.iceberg_partition_spec_request
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.iceberg\_stats module
+-------------------------------------------
+
+.. automodule:: depot_service.models.iceberg_stats
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.jdbc module
+---------------------------------
+
+.. automodule:: depot_service.models.jdbc
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.jdbc\_depot module
+----------------------------------------
+
+.. automodule:: depot_service.models.jdbc_depot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.kafka module
+----------------------------------
+
+.. automodule:: depot_service.models.kafka
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.kafka\_depot module
+-----------------------------------------
+
+.. automodule:: depot_service.models.kafka_depot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.metadata\_version\_response module
+--------------------------------------------------------
+
+.. automodule:: depot_service.models.metadata_version_response
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.mongo\_db module
+--------------------------------------
+
+.. automodule:: depot_service.models.mongo_db
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.mongo\_db\_depot module
+---------------------------------------------
+
+.. automodule:: depot_service.models.mongo_db_depot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.mysql\_depot module
+-----------------------------------------
+
+.. automodule:: depot_service.models.mysql_depot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.open\_search\_depot module
+------------------------------------------------
+
+.. automodule:: depot_service.models.open_search_depot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.oracle module
+-----------------------------------
+
+.. automodule:: depot_service.models.oracle
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.oracle\_depot module
+------------------------------------------
+
+.. automodule:: depot_service.models.oracle_depot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.postgres\_depot module
+--------------------------------------------
+
+.. automodule:: depot_service.models.postgres_depot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.presto module
+-----------------------------------
+
+.. automodule:: depot_service.models.presto
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.presto\_depot module
+------------------------------------------
+
+.. automodule:: depot_service.models.presto_depot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.properties\_response module
+-------------------------------------------------
+
+.. automodule:: depot_service.models.properties_response
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.pulsar module
+-----------------------------------
+
+.. automodule:: depot_service.models.pulsar
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.pulsar\_depot module
+------------------------------------------
+
+.. automodule:: depot_service.models.pulsar_depot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.pulsar\_request module
+--------------------------------------------
+
+.. automodule:: depot_service.models.pulsar_request
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.pulsar\_response module
+---------------------------------------------
+
+.. automodule:: depot_service.models.pulsar_response
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.redis module
+----------------------------------
+
+.. automodule:: depot_service.models.redis
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.redis\_depot module
+-----------------------------------------
+
+.. automodule:: depot_service.models.redis_depot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.redshift\_depot module
+--------------------------------------------
+
+.. automodule:: depot_service.models.redshift_depot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.s3 module
+-------------------------------
+
+.. automodule:: depot_service.models.s3
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.s3\_depot module
+--------------------------------------
+
+.. automodule:: depot_service.models.s3_depot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.snapshot\_response module
+-----------------------------------------------
+
+.. automodule:: depot_service.models.snapshot_response
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.snowflake\_depot module
+---------------------------------------------
+
+.. automodule:: depot_service.models.snowflake_depot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.wasbs module
+----------------------------------
+
+.. automodule:: depot_service.models.wasbs
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.models.wasbs\_depot module
+-----------------------------------------
+
+.. automodule:: depot_service.models.wasbs_depot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: depot_service.models
+   :members:
+   :undoc-members:
+   :show-inheritance:

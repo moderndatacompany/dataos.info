@@ -1,0 +1,31 @@
+version: v1
+name: segmentapp-rest
+type: service
+tags:
+  - syndicate
+  - segments
+  - service
+service:
+  replicas: 2
+  ingress:
+    enabled: true
+    stripPath: true
+    path: /segmentapp/api/v1
+    noAuthentication: true
+  stack: beacon+rest
+  envs:
+    PGRST_OPENAPI_SERVER_PROXY_URI: https://{{.CloudKernel.PublicFqdn.Value}}/segmentapp/api/v1
+  beacon:
+    source:
+      type: database
+      name: segmentapp
+      workspace: public
+  topology:
+  - name: database
+    type: input
+    doc: segmentapp database connection
+  - name: rest-api
+    type: output
+    doc: serves up the segmentapp database as a RESTful API
+    dependencies:
+    - database

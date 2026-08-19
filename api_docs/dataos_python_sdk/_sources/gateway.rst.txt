@@ -1,0 +1,30 @@
+gateway package
+===============
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   gateway.apis
+   gateway.models
+
+Submodules
+----------
+
+gateway.gateway\_client module
+------------------------------
+
+.. automodule:: gateway.gateway_client
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: gateway
+   :members:
+   :undoc-members:
+   :show-inheritance:

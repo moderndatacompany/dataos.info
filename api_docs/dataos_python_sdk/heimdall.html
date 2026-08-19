@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>heimdall package &mdash; dataos-sdk-py 00.00.01 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="heimdall.apis package" href="heimdall.apis.html" />
+    <link rel="prev" title="gateway.models package" href="gateway.models.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            dataos-sdk-py
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="modules.html">asset_tags_service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#depot-service">depot_service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#commons">commons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#gateway">gateway</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html#heimdall">heimdall</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">heimdall package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.apis.html">heimdall.apis package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.auth.html">heimdall.auth package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html">heimdall.models package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-heimdall.heimdall_client">heimdall.heimdall_client module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#heimdall.heimdall_client.HeimdallClient"><code class="docutils literal notranslate"><span class="pre">HeimdallClient</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#heimdall.heimdall_client.HeimdallClientBuilder"><code class="docutils literal notranslate"><span class="pre">HeimdallClientBuilder</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-heimdall">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#poros">poros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#stack-service">stack_service</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">dataos-sdk-py</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">asset_tags_service</a></li>
+      <li class="breadcrumb-item active">heimdall package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/heimdall.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="heimdall-package">
+<h1>heimdall package<a class="headerlink" href="#heimdall-package" title="Permalink to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="heimdall.apis.html">heimdall.apis package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="heimdall.apis.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="heimdall.apis.html#module-heimdall.apis.authorize_api">heimdall.apis.authorize_api module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.apis.html#heimdall.apis.authorize_api.AuthorizeApi"><code class="docutils literal notranslate"><span class="pre">AuthorizeApi</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.apis.html#heimdall.apis.authorize_api.AuthorizeApi.authorize"><code class="docutils literal notranslate"><span class="pre">AuthorizeApi.authorize</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.apis.html#heimdall.apis.authorize_api.AuthorizeApi.authorize_batch"><code class="docutils literal notranslate"><span class="pre">AuthorizeApi.authorize_batch</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="heimdall.apis.html#module-heimdall.apis.data_policy_api">heimdall.apis.data_policy_api module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.apis.html#heimdall.apis.data_policy_api.DataPolicyApi"><code class="docutils literal notranslate"><span class="pre">DataPolicyApi</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.apis.html#heimdall.apis.data_policy_api.DataPolicyApi.create"><code class="docutils literal notranslate"><span class="pre">DataPolicyApi.create</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.apis.html#heimdall.apis.data_policy_api.DataPolicyApi.delete"><code class="docutils literal notranslate"><span class="pre">DataPolicyApi.delete</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.apis.html#heimdall.apis.data_policy_api.DataPolicyApi.get"><code class="docutils literal notranslate"><span class="pre">DataPolicyApi.get</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.apis.html#heimdall.apis.data_policy_api.DataPolicyApi.list"><code class="docutils literal notranslate"><span class="pre">DataPolicyApi.list</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.apis.html#heimdall.apis.data_policy_api.DataPolicyApi.update"><code class="docutils literal notranslate"><span class="pre">DataPolicyApi.update</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="heimdall.apis.html#module-heimdall.apis.secret_api">heimdall.apis.secret_api module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.apis.html#heimdall.apis.secret_api.SecretApi"><code class="docutils literal notranslate"><span class="pre">SecretApi</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.apis.html#heimdall.apis.secret_api.SecretApi.get_secret"><code class="docutils literal notranslate"><span class="pre">SecretApi.get_secret</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="heimdall.apis.html#module-heimdall.apis.user_api">heimdall.apis.user_api module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.apis.html#heimdall.apis.user_api.UserApi"><code class="docutils literal notranslate"><span class="pre">UserApi</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.apis.html#heimdall.apis.user_api.UserApi.get_user"><code class="docutils literal notranslate"><span class="pre">UserApi.get_user</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.apis.html#heimdall.apis.user_api.UserApi.get_user_tokens"><code class="docutils literal notranslate"><span class="pre">UserApi.get_user_tokens</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.apis.html#heimdall.apis.user_api.UserApi.list"><code class="docutils literal notranslate"><span class="pre">UserApi.list</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="heimdall.apis.html#module-heimdall.apis">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="heimdall.auth.html">heimdall.auth package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="heimdall.auth.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="heimdall.auth.html#module-heimdall.auth.authorizer">heimdall.auth.authorizer module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.auth.html#heimdall.auth.authorizer.AuthorizationError"><code class="docutils literal notranslate"><span class="pre">AuthorizationError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.auth.html#heimdall.auth.authorizer.Authorizer"><code class="docutils literal notranslate"><span class="pre">Authorizer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.auth.html#heimdall.auth.authorizer.Authorizer.authorize"><code class="docutils literal notranslate"><span class="pre">Authorizer.authorize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.auth.html#heimdall.auth.authorizer.Authorizer.authorize_atom"><code class="docutils literal notranslate"><span class="pre">Authorizer.authorize_atom()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.auth.html#heimdall.auth.authorizer.Authorizer.authorize_batch"><code class="docutils literal notranslate"><span class="pre">Authorizer.authorize_batch()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="heimdall.auth.html#module-heimdall.auth.policy_enforcement_provider">heimdall.auth.policy_enforcement_provider module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.auth.html#heimdall.auth.policy_enforcement_provider.PolicyEnforcementProvider"><code class="docutils literal notranslate"><span class="pre">PolicyEnforcementProvider</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.auth.html#heimdall.auth.policy_enforcement_provider.PolicyEnforcementProvider.add_atom"><code class="docutils literal notranslate"><span class="pre">PolicyEnforcementProvider.add_atom()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.auth.html#heimdall.auth.policy_enforcement_provider.PolicyEnforcementProvider.authorization_atoms"><code class="docutils literal notranslate"><span class="pre">PolicyEnforcementProvider.authorization_atoms</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.auth.html#heimdall.auth.policy_enforcement_provider.PolicyEnforcementProvider.description"><code class="docutils literal notranslate"><span class="pre">PolicyEnforcementProvider.description</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.auth.html#heimdall.auth.policy_enforcement_provider.PolicyEnforcementProvider.export"><code class="docutils literal notranslate"><span class="pre">PolicyEnforcementProvider.export()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.auth.html#heimdall.auth.policy_enforcement_provider.PolicyEnforcementProvider.find_variables"><code class="docutils literal notranslate"><span class="pre">PolicyEnforcementProvider.find_variables()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.auth.html#heimdall.auth.policy_enforcement_provider.PolicyEnforcementProvider.get_atom"><code class="docutils literal notranslate"><span class="pre">PolicyEnforcementProvider.get_atom()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.auth.html#heimdall.auth.policy_enforcement_provider.PolicyEnforcementProvider.id"><code class="docutils literal notranslate"><span class="pre">PolicyEnforcementProvider.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.auth.html#heimdall.auth.policy_enforcement_provider.PolicyEnforcementProvider.name"><code class="docutils literal notranslate"><span class="pre">PolicyEnforcementProvider.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.auth.html#heimdall.auth.policy_enforcement_provider.PolicyEnforcementProvider.replace_variables"><code class="docutils literal notranslate"><span class="pre">PolicyEnforcementProvider.replace_variables()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.auth.html#heimdall.auth.policy_enforcement_provider.PolicyEnforcementProvider.version"><code class="docutils literal notranslate"><span class="pre">PolicyEnforcementProvider.version</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="heimdall.auth.html#module-heimdall.auth">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="heimdall.models.html">heimdall.models package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="heimdall.models.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="heimdall.models.html#module-heimdall.models.authorization_atom">heimdall.models.authorization_atom module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_atom.AuthContext"><code class="docutils literal notranslate"><span class="pre">AuthContext</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_atom.AuthContext.context"><code class="docutils literal notranslate"><span class="pre">AuthContext.context</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_atom.AuthContext.predicate"><code class="docutils literal notranslate"><span class="pre">AuthContext.predicate</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_atom.AuthObject"><code class="docutils literal notranslate"><span class="pre">AuthObject</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_atom.AuthObject.paths"><code class="docutils literal notranslate"><span class="pre">AuthObject.paths</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_atom.AuthObject.tags"><code class="docutils literal notranslate"><span class="pre">AuthObject.tags</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_atom.AuthorizationAtom"><code class="docutils literal notranslate"><span class="pre">AuthorizationAtom</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_atom.AuthorizationAtom.Config"><code class="docutils literal notranslate"><span class="pre">AuthorizationAtom.Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_atom.AuthorizationAtom.copy"><code class="docutils literal notranslate"><span class="pre">AuthorizationAtom.copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_atom.AuthorizationAtom.description"><code class="docutils literal notranslate"><span class="pre">AuthorizationAtom.description</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_atom.AuthorizationAtom.has_variables"><code class="docutils literal notranslate"><span class="pre">AuthorizationAtom.has_variables()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_atom.AuthorizationAtom.id"><code class="docutils literal notranslate"><span class="pre">AuthorizationAtom.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_atom.AuthorizationAtom.paths"><code class="docutils literal notranslate"><span class="pre">AuthorizationAtom.paths</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_atom.AuthorizationAtom.predicate"><code class="docutils literal notranslate"><span class="pre">AuthorizationAtom.predicate</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_atom.AuthorizationAtom.tags"><code class="docutils literal notranslate"><span class="pre">AuthorizationAtom.tags</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_atom.AuthorizationAtom.to_auth_context"><code class="docutils literal notranslate"><span class="pre">AuthorizationAtom.to_auth_context()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_atom.AuthorizationAtom.variables"><code class="docutils literal notranslate"><span class="pre">AuthorizationAtom.variables</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="heimdall.models.html#module-heimdall.models.authorization_request">heimdall.models.authorization_request module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_request.AuthContext"><code class="docutils literal notranslate"><span class="pre">AuthContext</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_request.AuthContext.metadata"><code class="docutils literal notranslate"><span class="pre">AuthContext.metadata</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_request.AuthContext.object"><code class="docutils literal notranslate"><span class="pre">AuthContext.object</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_request.AuthContext.predicate"><code class="docutils literal notranslate"><span class="pre">AuthContext.predicate</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_request.AuthObject"><code class="docutils literal notranslate"><span class="pre">AuthObject</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_request.AuthObject.paths"><code class="docutils literal notranslate"><span class="pre">AuthObject.paths</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_request.AuthObject.tags"><code class="docutils literal notranslate"><span class="pre">AuthObject.tags</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_request.AuthorizationRequest"><code class="docutils literal notranslate"><span class="pre">AuthorizationRequest</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_request.AuthorizationRequest.context"><code class="docutils literal notranslate"><span class="pre">AuthorizationRequest.context</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_request.AuthorizationRequest.pep_context"><code class="docutils literal notranslate"><span class="pre">AuthorizationRequest.pep_context</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_request.AuthorizationRequest.token"><code class="docutils literal notranslate"><span class="pre">AuthorizationRequest.token</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_request.AuthorizationRequestBatch"><code class="docutils literal notranslate"><span class="pre">AuthorizationRequestBatch</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_request.AuthorizationRequestBatch.contexts"><code class="docutils literal notranslate"><span class="pre">AuthorizationRequestBatch.contexts</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_request.AuthorizationRequestBatch.token"><code class="docutils literal notranslate"><span class="pre">AuthorizationRequestBatch.token</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_request.PepContext"><code class="docutils literal notranslate"><span class="pre">PepContext</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_request.PepContext.authorization_atom_id"><code class="docutils literal notranslate"><span class="pre">PepContext.authorization_atom_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_request.PepContext.user_agent"><code class="docutils literal notranslate"><span class="pre">PepContext.user_agent</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="heimdall.models.html#module-heimdall.models.authorization_response">heimdall.models.authorization_response module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_response.AuthObject"><code class="docutils literal notranslate"><span class="pre">AuthObject</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_response.AuthObject.tags"><code class="docutils literal notranslate"><span class="pre">AuthObject.tags</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_response.AuthResponseSingle"><code class="docutils literal notranslate"><span class="pre">AuthResponseSingle</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_response.AuthResponseSingle.allow"><code class="docutils literal notranslate"><span class="pre">AuthResponseSingle.allow</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_response.AuthResponseSingle.error"><code class="docutils literal notranslate"><span class="pre">AuthResponseSingle.error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_response.AuthResponseSingle.valid"><code class="docutils literal notranslate"><span class="pre">AuthResponseSingle.valid</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_response.AuthorizationResponse"><code class="docutils literal notranslate"><span class="pre">AuthorizationResponse</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_response.AuthorizationResponse.allow"><code class="docutils literal notranslate"><span class="pre">AuthorizationResponse.allow</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_response.AuthorizationResponse.error"><code class="docutils literal notranslate"><span class="pre">AuthorizationResponse.error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_response.AuthorizationResponse.result"><code class="docutils literal notranslate"><span class="pre">AuthorizationResponse.result</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_response.AuthorizationResponse.valid"><code class="docutils literal notranslate"><span class="pre">AuthorizationResponse.valid</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_response.AuthorizationResponseBatch"><code class="docutils literal notranslate"><span class="pre">AuthorizationResponseBatch</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_response.AuthorizationResponseBatch.id"><code class="docutils literal notranslate"><span class="pre">AuthorizationResponseBatch.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_response.AuthorizationResponseBatch.results"><code class="docutils literal notranslate"><span class="pre">AuthorizationResponseBatch.results</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_response.AuthorizationResponseBatch.tags"><code class="docutils literal notranslate"><span class="pre">AuthorizationResponseBatch.tags</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_response.Error"><code class="docutils literal notranslate"><span class="pre">Error</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_response.Error.message"><code class="docutils literal notranslate"><span class="pre">Error.message</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_response.Error.status"><code class="docutils literal notranslate"><span class="pre">Error.status</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_response.Result"><code class="docutils literal notranslate"><span class="pre">Result</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_response.Result.id"><code class="docutils literal notranslate"><span class="pre">Result.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_response.Result.tags"><code class="docutils literal notranslate"><span class="pre">Result.tags</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="heimdall.models.html#module-heimdall.models.authorization_result_data">heimdall.models.authorization_result_data module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_result_data.AuthorizationResultData"><code class="docutils literal notranslate"><span class="pre">AuthorizationResultData</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_result_data.AuthorizationResultData.data"><code class="docutils literal notranslate"><span class="pre">AuthorizationResultData.data</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_result_data.AuthorizationResultData.id"><code class="docutils literal notranslate"><span class="pre">AuthorizationResultData.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.authorization_result_data.AuthorizationResultData.tags"><code class="docutils literal notranslate"><span class="pre">AuthorizationResultData.tags</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="heimdall.models.html#module-heimdall.models.data">heimdall.models.data module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.data.Data"><code class="docutils literal notranslate"><span class="pre">Data</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.data.Data.base64Value"><code class="docutils literal notranslate"><span class="pre">Data.base64Value</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.data.Data.key"><code class="docutils literal notranslate"><span class="pre">Data.key</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="heimdall.models.html#module-heimdall.models.data_policy">heimdall.models.data_policy module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.data_policy.ColumnSelector"><code class="docutils literal notranslate"><span class="pre">ColumnSelector</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.data_policy.ColumnSelector.names"><code class="docutils literal notranslate"><span class="pre">ColumnSelector.names</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.data_policy.ColumnSelector.tags"><code class="docutils literal notranslate"><span class="pre">ColumnSelector.tags</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.data_policy.DataPolicy"><code class="docutils literal notranslate"><span class="pre">DataPolicy</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.data_policy.DataPolicy.dataset_id"><code class="docutils literal notranslate"><span class="pre">DataPolicy.dataset_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.data_policy.DataPolicy.description"><code class="docutils literal notranslate"><span class="pre">DataPolicy.description</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.data_policy.DataPolicy.filters"><code class="docutils literal notranslate"><span class="pre">DataPolicy.filters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.data_policy.DataPolicy.mask"><code class="docutils literal notranslate"><span class="pre">DataPolicy.mask</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.data_policy.DataPolicy.name"><code class="docutils literal notranslate"><span class="pre">DataPolicy.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.data_policy.DataPolicy.priority"><code class="docutils literal notranslate"><span class="pre">DataPolicy.priority</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.data_policy.DataPolicy.selector"><code class="docutils literal notranslate"><span class="pre">DataPolicy.selector</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.data_policy.DataPolicy.type"><code class="docutils literal notranslate"><span class="pre">DataPolicy.type</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.data_policy.Selector"><code class="docutils literal notranslate"><span class="pre">Selector</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.data_policy.Selector.column"><code class="docutils literal notranslate"><span class="pre">Selector.column</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.data_policy.Selector.user"><code class="docutils literal notranslate"><span class="pre">Selector.user</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.data_policy.UserSelector"><code class="docutils literal notranslate"><span class="pre">UserSelector</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.data_policy.UserSelector.match"><code class="docutils literal notranslate"><span class="pre">UserSelector.match</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.data_policy.UserSelector.tags"><code class="docutils literal notranslate"><span class="pre">UserSelector.tags</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="heimdall.models.html#module-heimdall.models.dataset">heimdall.models.dataset module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.dataset.Column"><code class="docutils literal notranslate"><span class="pre">Column</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.dataset.Column.data_type"><code class="docutils literal notranslate"><span class="pre">Column.data_type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.dataset.Column.name"><code class="docutils literal notranslate"><span class="pre">Column.name</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.dataset.Dataset"><code class="docutils literal notranslate"><span class="pre">Dataset</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.dataset.Dataset.columns"><code class="docutils literal notranslate"><span class="pre">Dataset.columns</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.dataset.Dataset.id"><code class="docutils literal notranslate"><span class="pre">Dataset.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.dataset.Dataset.tags"><code class="docutils literal notranslate"><span class="pre">Dataset.tags</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="heimdall.models.html#module-heimdall.models.decision">heimdall.models.decision module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.decision.Decision"><code class="docutils literal notranslate"><span class="pre">Decision</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.decision.Decision.filter"><code class="docutils literal notranslate"><span class="pre">Decision.filter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.decision.Decision.masks"><code class="docutils literal notranslate"><span class="pre">Decision.masks</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.decision.Decision.table"><code class="docutils literal notranslate"><span class="pre">Decision.table</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.decision.Decision.user"><code class="docutils literal notranslate"><span class="pre">Decision.user</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="heimdall.models.html#module-heimdall.models.filter">heimdall.models.filter module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.filter.Filter"><code class="docutils literal notranslate"><span class="pre">Filter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.filter.Filter.column"><code class="docutils literal notranslate"><span class="pre">Filter.column</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.filter.Filter.operator"><code class="docutils literal notranslate"><span class="pre">Filter.operator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.filter.Filter.supported_data_types"><code class="docutils literal notranslate"><span class="pre">Filter.supported_data_types</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.filter.Filter.value"><code class="docutils literal notranslate"><span class="pre">Filter.value</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.filter.Filter.value_from"><code class="docutils literal notranslate"><span class="pre">Filter.value_from</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.filter.ValueFrom"><code class="docutils literal notranslate"><span class="pre">ValueFrom</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.filter.ValueFrom.user_attribute"><code class="docutils literal notranslate"><span class="pre">ValueFrom.user_attribute</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="heimdall.models.html#module-heimdall.models.heimdall_secret">heimdall.models.heimdall_secret module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.heimdall_secret.HeimdallSecret"><code class="docutils literal notranslate"><span class="pre">HeimdallSecret</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.heimdall_secret.HeimdallSecret.ABFSS_STORAGE_ACCOUNT_KEY_TEMPLATE"><code class="docutils literal notranslate"><span class="pre">HeimdallSecret.ABFSS_STORAGE_ACCOUNT_KEY_TEMPLATE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.heimdall_secret.HeimdallSecret.ACCESS_KEY_ID"><code class="docutils literal notranslate"><span class="pre">HeimdallSecret.ACCESS_KEY_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.heimdall_secret.HeimdallSecret.AZURE_STORAGE_ACCOUNT_KEY"><code class="docutils literal notranslate"><span class="pre">HeimdallSecret.AZURE_STORAGE_ACCOUNT_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.heimdall_secret.HeimdallSecret.AZURE_STORAGE_ACCOUNT_NAME"><code class="docutils literal notranslate"><span class="pre">HeimdallSecret.AZURE_STORAGE_ACCOUNT_NAME</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.heimdall_secret.HeimdallSecret.S3_ACCESS_KEY"><code class="docutils literal notranslate"><span class="pre">HeimdallSecret.S3_ACCESS_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.heimdall_secret.HeimdallSecret.S3_SECRET_KEY"><code class="docutils literal notranslate"><span class="pre">HeimdallSecret.S3_SECRET_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.heimdall_secret.HeimdallSecret.SECRET_KEY"><code class="docutils literal notranslate"><span class="pre">HeimdallSecret.SECRET_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.heimdall_secret.HeimdallSecret.WASBS_STORAGE_ACCOUNT_KEY_TEMPLATE"><code class="docutils literal notranslate"><span class="pre">HeimdallSecret.WASBS_STORAGE_ACCOUNT_KEY_TEMPLATE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.heimdall_secret.HeimdallSecret.data"><code class="docutils literal notranslate"><span class="pre">HeimdallSecret.data</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.heimdall_secret.HeimdallSecret.id"><code class="docutils literal notranslate"><span class="pre">HeimdallSecret.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.heimdall_secret.HeimdallSecret.links"><code class="docutils literal notranslate"><span class="pre">HeimdallSecret.links</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.heimdall_secret.HeimdallSecret.toABFSSSecrets"><code class="docutils literal notranslate"><span class="pre">HeimdallSecret.toABFSSSecrets()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.heimdall_secret.HeimdallSecret.toGCSSecrets"><code class="docutils literal notranslate"><span class="pre">HeimdallSecret.toGCSSecrets()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.heimdall_secret.HeimdallSecret.toS3Secrets"><code class="docutils literal notranslate"><span class="pre">HeimdallSecret.toS3Secrets()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.heimdall_secret.HeimdallSecret.toWASBSSecrets"><code class="docutils literal notranslate"><span class="pre">HeimdallSecret.toWASBSSecrets()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="heimdall.models.html#module-heimdall.models.links">heimdall.models.links module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.links.Links"><code class="docutils literal notranslate"><span class="pre">Links</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.links.Links.avatars"><code class="docutils literal notranslate"><span class="pre">Links.avatars</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.links.Links.download_avatars"><code class="docutils literal notranslate"><span class="pre">Links.download_avatars</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.links.Links.grants"><code class="docutils literal notranslate"><span class="pre">Links.grants</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.links.Links.policies"><code class="docutils literal notranslate"><span class="pre">Links.policies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.links.Links.self"><code class="docutils literal notranslate"><span class="pre">Links.self</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.links.Links.tags"><code class="docutils literal notranslate"><span class="pre">Links.tags</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.links.Links.tokens"><code class="docutils literal notranslate"><span class="pre">Links.tokens</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="heimdall.models.html#module-heimdall.models.mask">heimdall.models.mask module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.mask.Mask"><code class="docutils literal notranslate"><span class="pre">Mask</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.mask.Mask.bucket_date"><code class="docutils literal notranslate"><span class="pre">Mask.bucket_date</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.mask.Mask.bucket_number"><code class="docutils literal notranslate"><span class="pre">Mask.bucket_number</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.mask.Mask.hash"><code class="docutils literal notranslate"><span class="pre">Mask.hash</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.mask.Mask.operator"><code class="docutils literal notranslate"><span class="pre">Mask.operator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.mask.Mask.pass_through"><code class="docutils literal notranslate"><span class="pre">Mask.pass_through</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.mask.Mask.rand_pattern"><code class="docutils literal notranslate"><span class="pre">Mask.rand_pattern</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.mask.Mask.rand_regexify"><code class="docutils literal notranslate"><span class="pre">Mask.rand_regexify</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.mask.Mask.redact"><code class="docutils literal notranslate"><span class="pre">Mask.redact</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.mask.Mask.regex_replace"><code class="docutils literal notranslate"><span class="pre">Mask.regex_replace</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.mask.Mask.supported_data_types"><code class="docutils literal notranslate"><span class="pre">Mask.supported_data_types</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.mask.MaskBucketDate"><code class="docutils literal notranslate"><span class="pre">MaskBucketDate</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.mask.MaskBucketDate.precision"><code class="docutils literal notranslate"><span class="pre">MaskBucketDate.precision</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.mask.MaskBucketNumber"><code class="docutils literal notranslate"><span class="pre">MaskBucketNumber</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.mask.MaskBucketNumber.buckets"><code class="docutils literal notranslate"><span class="pre">MaskBucketNumber.buckets</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.mask.MaskHash"><code class="docutils literal notranslate"><span class="pre">MaskHash</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.mask.MaskHash.algo"><code class="docutils literal notranslate"><span class="pre">MaskHash.algo</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.mask.MaskPassThrough"><code class="docutils literal notranslate"><span class="pre">MaskPassThrough</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.mask.MaskRandPattern"><code class="docutils literal notranslate"><span class="pre">MaskRandPattern</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.mask.MaskRandPattern.pattern"><code class="docutils literal notranslate"><span class="pre">MaskRandPattern.pattern</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.mask.MaskRandRegexify"><code class="docutils literal notranslate"><span class="pre">MaskRandRegexify</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.mask.MaskRandRegexify.pattern"><code class="docutils literal notranslate"><span class="pre">MaskRandRegexify.pattern</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.mask.MaskRegexReplace"><code class="docutils literal notranslate"><span class="pre">MaskRegexReplace</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.mask.MaskRegexReplace.pattern"><code class="docutils literal notranslate"><span class="pre">MaskRegexReplace.pattern</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.mask.MaskRegexReplace.replacement"><code class="docutils literal notranslate"><span class="pre">MaskRegexReplace.replacement</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="heimdall.models.html#module-heimdall.models.secret_response">heimdall.models.secret_response module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.secret_response.SecretResponse"><code class="docutils literal notranslate"><span class="pre">SecretResponse</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.secret_response.SecretResponse.data"><code class="docutils literal notranslate"><span class="pre">SecretResponse.data</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.secret_response.SecretResponse.id"><code class="docutils literal notranslate"><span class="pre">SecretResponse.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.secret_response.SecretResponse.links"><code class="docutils literal notranslate"><span class="pre">SecretResponse.links</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="heimdall.models.html#module-heimdall.models.token">heimdall.models.token module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.token.Token"><code class="docutils literal notranslate"><span class="pre">Token</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.token.Token.data"><code class="docutils literal notranslate"><span class="pre">Token.data</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.token.Token.expiration"><code class="docutils literal notranslate"><span class="pre">Token.expiration</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.token.Token.links"><code class="docutils literal notranslate"><span class="pre">Token.links</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.token.Token.name"><code class="docutils literal notranslate"><span class="pre">Token.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.token.Token.type"><code class="docutils literal notranslate"><span class="pre">Token.type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.token.Token.user_id"><code class="docutils literal notranslate"><span class="pre">Token.user_id</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="heimdall.models.html#module-heimdall.models.user">heimdall.models.user module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="heimdall.models.html#heimdall.models.user.User"><code class="docutils literal notranslate"><span class="pre">User</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.user.User.cid"><code class="docutils literal notranslate"><span class="pre">User.cid</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.user.User.email"><code class="docutils literal notranslate"><span class="pre">User.email</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.user.User.federated_connector_id"><code class="docutils literal notranslate"><span class="pre">User.federated_connector_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.user.User.federated_user_id"><code class="docutils literal notranslate"><span class="pre">User.federated_user_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.user.User.id"><code class="docutils literal notranslate"><span class="pre">User.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.user.User.links"><code class="docutils literal notranslate"><span class="pre">User.links</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.user.User.name"><code class="docutils literal notranslate"><span class="pre">User.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.user.User.properties"><code class="docutils literal notranslate"><span class="pre">User.properties</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.user.User.tags"><code class="docutils literal notranslate"><span class="pre">User.tags</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="heimdall.models.html#heimdall.models.user.User.type"><code class="docutils literal notranslate"><span class="pre">User.type</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="heimdall.models.html#module-heimdall.models">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-heimdall.heimdall_client">
+<span id="heimdall-heimdall-client-module"></span><h2>heimdall.heimdall_client module<a class="headerlink" href="#module-heimdall.heimdall_client" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="heimdall.heimdall_client.HeimdallClient">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">heimdall.heimdall_client.</span></span><span class="sig-name descname"><span class="pre">HeimdallClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apikey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/heimdall/heimdall_client.html#HeimdallClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#heimdall.heimdall_client.HeimdallClient" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="heimdall.heimdall_client.HeimdallClient.apikey">
+<span class="sig-name descname"><span class="pre">apikey</span></span><a class="headerlink" href="#heimdall.heimdall_client.HeimdallClient.apikey" title="Permalink to this definition"></a></dt>
+<dd><p>Initialize the HeimdallClient.</p>
+<p>This class provides a client to interact with various API endpoints related to Heimdall.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>base_url</strong> (<em>str</em>) – The base URL of the Heimdall API.</p></li>
+<li><p><strong>apikey</strong> (<em>str</em>) – The API key for authentication with the Heimdall API.</p></li>
+<li><p><strong>client</strong> (<em>object</em><em>, </em><em>optional</em>) – An instance of the HTTP client to use for making API requests (default is None).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="heimdall.heimdall_client.HeimdallClient.secret_api">
+<span class="sig-name descname"><span class="pre">secret_api</span></span><a class="headerlink" href="#heimdall.heimdall_client.HeimdallClient.secret_api" title="Permalink to this definition"></a></dt>
+<dd><p>An instance of SecretApi for interacting with the Secret API endpoints.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="depot_service.apis.html#depot_service.apis.secret_api.SecretApi" title="depot_service.apis.secret_api.SecretApi">SecretApi</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="heimdall.heimdall_client.HeimdallClient.user_api">
+<span class="sig-name descname"><span class="pre">user_api</span></span><a class="headerlink" href="#heimdall.heimdall_client.HeimdallClient.user_api" title="Permalink to this definition"></a></dt>
+<dd><p>An instance of UserApi for interacting with the User API endpoints.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="heimdall.apis.html#heimdall.apis.user_api.UserApi" title="heimdall.apis.user_api.UserApi">UserApi</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="heimdall.heimdall_client.HeimdallClient.data_policy_api">
+<span class="sig-name descname"><span class="pre">data_policy_api</span></span><a class="headerlink" href="#heimdall.heimdall_client.HeimdallClient.data_policy_api" title="Permalink to this definition"></a></dt>
+<dd><p>An instance of DataPolicyApi for interacting with the Data Policy API endpoints.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="gateway.apis.html#gateway.apis.data_policy_api.DataPolicyApi" title="gateway.apis.data_policy_api.DataPolicyApi">DataPolicyApi</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="heimdall.heimdall_client.HeimdallClientBuilder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">heimdall.heimdall_client.</span></span><span class="sig-name descname"><span class="pre">HeimdallClientBuilder</span></span><a class="reference internal" href="_modules/heimdall/heimdall_client.html#HeimdallClientBuilder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#heimdall.heimdall_client.HeimdallClientBuilder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="commons.http.client.html#commons.http.client.base_client.BaseHTTPClientBuilder" title="commons.http.client.base_client.BaseHTTPClientBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseHTTPClientBuilder</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="heimdall.heimdall_client.HeimdallClientBuilder.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/heimdall/heimdall_client.html#HeimdallClientBuilder.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#heimdall.heimdall_client.HeimdallClientBuilder.build" title="Permalink to this definition"></a></dt>
+<dd><p>Build the HeimdallClient instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>An instance of HeimdallClient with the configured settings.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#heimdall.heimdall_client.HeimdallClient" title="heimdall.heimdall_client.HeimdallClient">HeimdallClient</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heimdall.heimdall_client.HeimdallClientBuilder.get_default_user_agent_suffix">
+<span class="sig-name descname"><span class="pre">get_default_user_agent_suffix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/heimdall/heimdall_client.html#HeimdallClientBuilder.get_default_user_agent_suffix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#heimdall.heimdall_client.HeimdallClientBuilder.get_default_user_agent_suffix" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-heimdall">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-heimdall" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="gateway.models.html" class="btn btn-neutral float-left" title="gateway.models package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="heimdall.apis.html" class="btn btn-neutral float-right" title="heimdall.apis package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, tmdc.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

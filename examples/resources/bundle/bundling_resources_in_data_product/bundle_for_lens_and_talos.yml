@@ -1,0 +1,27 @@
+name: cross-sell-bundle                          # Name of the bundle resource
+version: v1beta                                  # Version of the resource
+type: bundle                                     # Type of resource being defined
+tags:                                            # Tags associated with this resource
+  - data product                                
+Description: This bundle resource is for DP insights, including semantic modeling and real-time analytics.   # Description of the bundle
+layer: "user"                                    # Logical layer designation for this resource
+bundle:                                          # Definition of the bundle itself
+  workspaces:                                    
+    - name: curriculum                           # Workspace name
+      description: "This workspace runs bundle resources."    # Description of the workspace
+      tags:                                      # Tags for the workspace
+        - dataproduct                            
+        - bundleResource                         
+      labels:                                    # Labels for workspace metadata
+        name: "dataproductBundleResources"       # Label name
+      layer: "user"                              # Layer for workspace definition
+  resources:                                     # List of resources included in the bundle
+    - id: semantic_model                         # ID of the resource
+      file: build/semantic_model/model/deployment.yaml   # Path to the deployment file
+      workspace: public                          # Workspace where the resource is deployed
+
+    - id: api                                    # ID of the resource
+      file: activation/data_apis/service.yml     # Path to the service file
+      workspace: public                          # Workspace where the resource is deployed
+  dependencies:                                  # Dependencies of Resources 
+    - semantic_model                            

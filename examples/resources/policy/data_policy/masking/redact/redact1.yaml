@@ -1,0 +1,26 @@
+name: {{gender}}
+version: v1
+type: policy
+tags:
+  - {{dataos:layer:user}}
+description: >-
+  {{The gender of all individuals is redacted and replaced with a constant value
+  ‘REDACTED’}}
+owner: {{iamgroot}}
+layer: user
+policy:
+  data:
+    priority: {{97}}
+    type: mask
+    mask:
+      hash:
+        algo: {{sha256}}
+      operator: redact
+    selector:
+      column:
+        tags:
+          - {{PII.Gender}}
+      user:
+        match: {{any}}
+        tags:
+          - {{roles:id:user}}
