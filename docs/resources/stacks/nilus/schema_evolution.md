@@ -19,6 +19,9 @@ The schema is visible in Metis UI, showing all column names and their data types
 
 Schema evolution in Nilus handles changes in source data structure across different ingestion runs. The behavior is deterministic and follows specific rules.
 
+!!! info "Destination-dependent schema evolution"
+    Schema-evolution behavior can vary by destination. Nilus detects and normalizes upstream schema changes, but applying those changes depends on the write strategy and the schema-evolution capabilities and restrictions of the destination data system.
+
 ### **Data Type Changes**
 
 When the data type of a field changes between ingestion runs, Nilus creates a **separate column** rather than overwriting the existing one.
